@@ -33,8 +33,9 @@ TravelTerminal::~TravelTerminal() {
 }
 
 
+
 void TravelTerminal::initializeTransientMembers() {
-	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
+	TravelTerminalImplementation* _implementation = static_cast<TravelTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void TravelTerminal::initializeTransientMembers() {
 }
 
 void TravelTerminal::notifyInsertToZone(Zone* zone) {
-	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
+	TravelTerminalImplementation* _implementation = static_cast<TravelTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -61,7 +62,7 @@ void TravelTerminal::notifyInsertToZone(Zone* zone) {
 }
 
 int TravelTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
+	TravelTerminalImplementation* _implementation = static_cast<TravelTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -76,7 +77,7 @@ int TravelTerminal::handleObjectMenuSelect(CreatureObject* player, byte selected
 }
 
 PlanetTravelPoint* TravelTerminal::getPlanetTravelPoint() {
-	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
+	TravelTerminalImplementation* _implementation = static_cast<TravelTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -119,7 +120,7 @@ void TravelTerminalImplementation::_initializeImplementation() {
 }
 
 void TravelTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (TravelTerminal*) stub;
+	_this = static_cast<TravelTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -248,10 +249,10 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		initializeTransientMembers();
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone((Zone*) inv->getObjectParameter());
+		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -261,15 +262,15 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void TravelTerminalAdapter::initializeTransientMembers() {
-	((TravelTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<TravelTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 void TravelTerminalAdapter::notifyInsertToZone(Zone* zone) {
-	((TravelTerminalImplementation*) impl)->notifyInsertToZone(zone);
+	(static_cast<TravelTerminalImplementation*>(impl))->notifyInsertToZone(zone);
 }
 
 int TravelTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((TravelTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<TravelTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -297,7 +298,7 @@ DistributedObjectServant* TravelTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TravelTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TravelTerminalAdapter((TravelTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new TravelTerminalAdapter(static_cast<TravelTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -27,8 +27,9 @@ JunkdealerCreature::~JunkdealerCreature() {
 }
 
 
+
 void JunkdealerCreature::loadTemplateData(SharedObjectTemplate* templateData) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -37,7 +38,7 @@ void JunkdealerCreature::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void JunkdealerCreature::activateRecovery() {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +51,7 @@ void JunkdealerCreature::activateRecovery() {
 }
 
 void JunkdealerCreature::sendInitialMessage(CreatureObject* player) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -64,7 +65,7 @@ void JunkdealerCreature::sendInitialMessage(CreatureObject* player) {
 }
 
 void JunkdealerCreature::sendInitialChoices(CreatureObject* player) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -78,7 +79,7 @@ void JunkdealerCreature::sendInitialChoices(CreatureObject* player) {
 }
 
 void JunkdealerCreature::sendConversationStartTo(SceneObject* obj) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +93,7 @@ void JunkdealerCreature::sendConversationStartTo(SceneObject* obj) {
 }
 
 void JunkdealerCreature::selectConversationOption(int option, SceneObject* obj) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +108,7 @@ void JunkdealerCreature::selectConversationOption(int option, SceneObject* obj) 
 }
 
 String JunkdealerCreature::getLocation() {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +122,7 @@ String JunkdealerCreature::getLocation() {
 }
 
 void JunkdealerCreature::setLocation(const String& loc) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -135,7 +136,7 @@ void JunkdealerCreature::setLocation(const String& loc) {
 }
 
 bool JunkdealerCreature::isAttackableBy(CreatureObject* object) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -149,7 +150,7 @@ bool JunkdealerCreature::isAttackableBy(CreatureObject* object) {
 }
 
 void JunkdealerCreature::createSellJunkLootSelection(CreatureObject* player) {
-	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -197,7 +198,7 @@ void JunkdealerCreatureImplementation::_initializeImplementation() {
 }
 
 void JunkdealerCreatureImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (JunkdealerCreature*) stub;
+	_this = static_cast<JunkdealerCreature*>(stub);
 	CreatureObjectImplementation::_setStub(stub);
 }
 
@@ -347,16 +348,16 @@ Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod
 		activateRecovery();
 		break;
 	case RPC_SENDINITIALMESSAGE__CREATUREOBJECT_:
-		sendInitialMessage((CreatureObject*) inv->getObjectParameter());
+		sendInitialMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDINITIALCHOICES__CREATUREOBJECT_:
-		sendInitialChoices((CreatureObject*) inv->getObjectParameter());
+		sendInitialChoices(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
-		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
+		sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
-		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
+		selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETLOCATION__:
 		resp->insertAscii(getLocation());
@@ -365,10 +366,10 @@ Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod
 		setLocation(inv->getAsciiParameter(_param0_setLocation__String_));
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATESELLJUNKLOOTSELECTION__CREATUREOBJECT_:
-		createSellJunkLootSelection((CreatureObject*) inv->getObjectParameter());
+		createSellJunkLootSelection(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -378,39 +379,39 @@ Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void JunkdealerCreatureAdapter::activateRecovery() {
-	((JunkdealerCreatureImplementation*) impl)->activateRecovery();
+	(static_cast<JunkdealerCreatureImplementation*>(impl))->activateRecovery();
 }
 
 void JunkdealerCreatureAdapter::sendInitialMessage(CreatureObject* player) {
-	((JunkdealerCreatureImplementation*) impl)->sendInitialMessage(player);
+	(static_cast<JunkdealerCreatureImplementation*>(impl))->sendInitialMessage(player);
 }
 
 void JunkdealerCreatureAdapter::sendInitialChoices(CreatureObject* player) {
-	((JunkdealerCreatureImplementation*) impl)->sendInitialChoices(player);
+	(static_cast<JunkdealerCreatureImplementation*>(impl))->sendInitialChoices(player);
 }
 
 void JunkdealerCreatureAdapter::sendConversationStartTo(SceneObject* obj) {
-	((JunkdealerCreatureImplementation*) impl)->sendConversationStartTo(obj);
+	(static_cast<JunkdealerCreatureImplementation*>(impl))->sendConversationStartTo(obj);
 }
 
 void JunkdealerCreatureAdapter::selectConversationOption(int option, SceneObject* obj) {
-	((JunkdealerCreatureImplementation*) impl)->selectConversationOption(option, obj);
+	(static_cast<JunkdealerCreatureImplementation*>(impl))->selectConversationOption(option, obj);
 }
 
 String JunkdealerCreatureAdapter::getLocation() {
-	return ((JunkdealerCreatureImplementation*) impl)->getLocation();
+	return (static_cast<JunkdealerCreatureImplementation*>(impl))->getLocation();
 }
 
 void JunkdealerCreatureAdapter::setLocation(const String& loc) {
-	((JunkdealerCreatureImplementation*) impl)->setLocation(loc);
+	(static_cast<JunkdealerCreatureImplementation*>(impl))->setLocation(loc);
 }
 
 bool JunkdealerCreatureAdapter::isAttackableBy(CreatureObject* object) {
-	return ((JunkdealerCreatureImplementation*) impl)->isAttackableBy(object);
+	return (static_cast<JunkdealerCreatureImplementation*>(impl))->isAttackableBy(object);
 }
 
 void JunkdealerCreatureAdapter::createSellJunkLootSelection(CreatureObject* player) {
-	((JunkdealerCreatureImplementation*) impl)->createSellJunkLootSelection(player);
+	(static_cast<JunkdealerCreatureImplementation*>(impl))->createSellJunkLootSelection(player);
 }
 
 /*
@@ -438,7 +439,7 @@ DistributedObjectServant* JunkdealerCreatureHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* JunkdealerCreatureHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new JunkdealerCreatureAdapter((JunkdealerCreatureImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new JunkdealerCreatureAdapter(static_cast<JunkdealerCreatureImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

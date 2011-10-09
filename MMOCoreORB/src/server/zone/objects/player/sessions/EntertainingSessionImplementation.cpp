@@ -205,7 +205,7 @@ void EntertainingSessionImplementation::activateAction() {
 
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
-	CreatureObject* player = entertainer->isPlayerCreature() ? (CreatureObject*)entertainer.get() : NULL;
+	CreatureObject* player = entertainer->isPlayerCreature() ? cast<CreatureObject*>(entertainer.get()) : NULL;
 
 	if (player != NULL) {
 		if (flourishXp > 0) {

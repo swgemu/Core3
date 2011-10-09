@@ -27,8 +27,9 @@ NonPlayerCreatureObject::~NonPlayerCreatureObject() {
 }
 
 
+
 bool NonPlayerCreatureObject::isNonPlayerCreatureObject() {
-	NonPlayerCreatureObjectImplementation* _implementation = (NonPlayerCreatureObjectImplementation*) _getImplementation();
+	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ bool NonPlayerCreatureObject::isNonPlayerCreatureObject() {
 }
 
 void NonPlayerCreatureObject::notifyPositionUpdate(QuadTreeEntry* entry) {
-	NonPlayerCreatureObjectImplementation* _implementation = (NonPlayerCreatureObjectImplementation*) _getImplementation();
+	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -50,7 +51,7 @@ void NonPlayerCreatureObject::notifyPositionUpdate(QuadTreeEntry* entry) {
 }
 
 void NonPlayerCreatureObject::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
-	NonPlayerCreatureObjectImplementation* _implementation = (NonPlayerCreatureObjectImplementation*) _getImplementation();
+	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -93,7 +94,7 @@ void NonPlayerCreatureObjectImplementation::_initializeImplementation() {
 }
 
 void NonPlayerCreatureObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (NonPlayerCreatureObject*) stub;
+	_this = static_cast<NonPlayerCreatureObject*>(stub);
 	AiAgentImplementation::_setStub(stub);
 }
 
@@ -219,7 +220,7 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 }
 
 bool NonPlayerCreatureObjectAdapter::isNonPlayerCreatureObject() {
-	return ((NonPlayerCreatureObjectImplementation*) impl)->isNonPlayerCreatureObject();
+	return (static_cast<NonPlayerCreatureObjectImplementation*>(impl))->isNonPlayerCreatureObject();
 }
 
 /*
@@ -247,7 +248,7 @@ DistributedObjectServant* NonPlayerCreatureObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* NonPlayerCreatureObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new NonPlayerCreatureObjectAdapter((NonPlayerCreatureObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new NonPlayerCreatureObjectAdapter(static_cast<NonPlayerCreatureObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

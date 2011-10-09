@@ -37,8 +37,9 @@ Region::~Region() {
 }
 
 
+
 void Region::notifyEnter(SceneObject* object) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -52,7 +53,7 @@ void Region::notifyEnter(SceneObject* object) {
 }
 
 void Region::sendGreetingMessage(CreatureObject* player) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -66,7 +67,7 @@ void Region::sendGreetingMessage(CreatureObject* player) {
 }
 
 void Region::sendDepartingMessage(CreatureObject* player) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +81,7 @@ void Region::sendDepartingMessage(CreatureObject* player) {
 }
 
 void Region::notifyExit(SceneObject* object) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -94,7 +95,7 @@ void Region::notifyExit(SceneObject* object) {
 }
 
 void Region::notifyInsertToZone(Zone* zone) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -108,7 +109,7 @@ void Region::notifyInsertToZone(Zone* zone) {
 }
 
 void Region::notifyRemoveFromZone() {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +122,7 @@ void Region::notifyRemoveFromZone() {
 }
 
 void Region::despawnCityObjects() {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +135,7 @@ void Region::despawnCityObjects() {
 }
 
 void Region::addBazaar(BazaarTerminal* ter) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +149,7 @@ void Region::addBazaar(BazaarTerminal* ter) {
 }
 
 BazaarTerminal* Region::getBazaar(int idx) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -156,13 +157,13 @@ BazaarTerminal* Region::getBazaar(int idx) {
 		DistributedMethod method(this, RPC_GETBAZAAR__INT_);
 		method.addSignedIntParameter(idx);
 
-		return (BazaarTerminal*) method.executeWithObjectReturn();
+		return static_cast<BazaarTerminal*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getBazaar(idx);
 }
 
 int Region::getBazaarCount() {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -175,7 +176,7 @@ int Region::getBazaarCount() {
 }
 
 bool Region::isRegion() {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -188,20 +189,20 @@ bool Region::isRegion() {
 }
 
 CityHallObject* Region::getCityHall() {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCITYHALL__);
 
-		return (CityHallObject*) method.executeWithObjectReturn();
+		return static_cast<CityHallObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getCityHall();
 }
 
 void Region::setCityHall(CityHallObject* hall) {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -249,7 +250,7 @@ void RegionImplementation::_initializeImplementation() {
 }
 
 void RegionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Region*) stub;
+	_this = static_cast<Region*>(stub);
 	ActiveAreaImplementation::_setStub(stub);
 }
 
@@ -468,19 +469,19 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter((SceneObject*) inv->getObjectParameter());
+		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_:
-		sendGreetingMessage((CreatureObject*) inv->getObjectParameter());
+		sendGreetingMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_:
-		sendDepartingMessage((CreatureObject*) inv->getObjectParameter());
+		sendDepartingMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit((SceneObject*) inv->getObjectParameter());
+		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone((Zone*) inv->getObjectParameter());
+		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYREMOVEFROMZONE__:
 		notifyRemoveFromZone();
@@ -489,7 +490,7 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		despawnCityObjects();
 		break;
 	case RPC_ADDBAZAAR__BAZAARTERMINAL_:
-		addBazaar((BazaarTerminal*) inv->getObjectParameter());
+		addBazaar(static_cast<BazaarTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETBAZAAR__INT_:
 		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
@@ -504,7 +505,7 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getCityHall()->_getObjectID());
 		break;
 	case RPC_SETCITYHALL__CITYHALLOBJECT_:
-		setCityHall((CityHallObject*) inv->getObjectParameter());
+		setCityHall(static_cast<CityHallObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -514,55 +515,55 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void RegionAdapter::notifyEnter(SceneObject* object) {
-	((RegionImplementation*) impl)->notifyEnter(object);
+	(static_cast<RegionImplementation*>(impl))->notifyEnter(object);
 }
 
 void RegionAdapter::sendGreetingMessage(CreatureObject* player) {
-	((RegionImplementation*) impl)->sendGreetingMessage(player);
+	(static_cast<RegionImplementation*>(impl))->sendGreetingMessage(player);
 }
 
 void RegionAdapter::sendDepartingMessage(CreatureObject* player) {
-	((RegionImplementation*) impl)->sendDepartingMessage(player);
+	(static_cast<RegionImplementation*>(impl))->sendDepartingMessage(player);
 }
 
 void RegionAdapter::notifyExit(SceneObject* object) {
-	((RegionImplementation*) impl)->notifyExit(object);
+	(static_cast<RegionImplementation*>(impl))->notifyExit(object);
 }
 
 void RegionAdapter::notifyInsertToZone(Zone* zone) {
-	((RegionImplementation*) impl)->notifyInsertToZone(zone);
+	(static_cast<RegionImplementation*>(impl))->notifyInsertToZone(zone);
 }
 
 void RegionAdapter::notifyRemoveFromZone() {
-	((RegionImplementation*) impl)->notifyRemoveFromZone();
+	(static_cast<RegionImplementation*>(impl))->notifyRemoveFromZone();
 }
 
 void RegionAdapter::despawnCityObjects() {
-	((RegionImplementation*) impl)->despawnCityObjects();
+	(static_cast<RegionImplementation*>(impl))->despawnCityObjects();
 }
 
 void RegionAdapter::addBazaar(BazaarTerminal* ter) {
-	((RegionImplementation*) impl)->addBazaar(ter);
+	(static_cast<RegionImplementation*>(impl))->addBazaar(ter);
 }
 
 BazaarTerminal* RegionAdapter::getBazaar(int idx) {
-	return ((RegionImplementation*) impl)->getBazaar(idx);
+	return (static_cast<RegionImplementation*>(impl))->getBazaar(idx);
 }
 
 int RegionAdapter::getBazaarCount() {
-	return ((RegionImplementation*) impl)->getBazaarCount();
+	return (static_cast<RegionImplementation*>(impl))->getBazaarCount();
 }
 
 bool RegionAdapter::isRegion() {
-	return ((RegionImplementation*) impl)->isRegion();
+	return (static_cast<RegionImplementation*>(impl))->isRegion();
 }
 
 CityHallObject* RegionAdapter::getCityHall() {
-	return ((RegionImplementation*) impl)->getCityHall();
+	return (static_cast<RegionImplementation*>(impl))->getCityHall();
 }
 
 void RegionAdapter::setCityHall(CityHallObject* hall) {
-	((RegionImplementation*) impl)->setCityHall(hall);
+	(static_cast<RegionImplementation*>(impl))->setCityHall(hall);
 }
 
 /*
@@ -590,7 +591,7 @@ DistributedObjectServant* RegionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RegionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RegionAdapter((RegionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new RegionAdapter(static_cast<RegionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

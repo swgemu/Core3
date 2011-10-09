@@ -122,7 +122,7 @@ public:
         if(!creature->isPlayerCreature())
             return false;
 
-        ManagedReference<CreatureObject*> player = (CreatureObject*)(creature);
+        ManagedReference<CreatureObject*> player = (creature);
         ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
         if(message.isEmpty())
             playerObject->removeCommandMessageString(actionCRC);

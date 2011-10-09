@@ -27,8 +27,9 @@ Drink::~Drink() {
 }
 
 
+
 void Drink::initializeTransientMembers() {
-	DrinkImplementation* _implementation = (DrinkImplementation*) _getImplementation();
+	DrinkImplementation* _implementation = static_cast<DrinkImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ void Drink::initializeTransientMembers() {
 }
 
 void Drink::initializePrivateData() {
-	DrinkImplementation* _implementation = (DrinkImplementation*) _getImplementation();
+	DrinkImplementation* _implementation = static_cast<DrinkImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +89,7 @@ void DrinkImplementation::_initializeImplementation() {
 }
 
 void DrinkImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Drink*) stub;
+	_this = static_cast<Drink*>(stub);
 	ConsumableImplementation::_setStub(stub);
 }
 
@@ -222,11 +223,11 @@ Packet* DrinkAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void DrinkAdapter::initializeTransientMembers() {
-	((DrinkImplementation*) impl)->initializeTransientMembers();
+	(static_cast<DrinkImplementation*>(impl))->initializeTransientMembers();
 }
 
 void DrinkAdapter::initializePrivateData() {
-	((DrinkImplementation*) impl)->initializePrivateData();
+	(static_cast<DrinkImplementation*>(impl))->initializePrivateData();
 }
 
 /*
@@ -254,7 +255,7 @@ DistributedObjectServant* DrinkHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DrinkHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DrinkAdapter((DrinkImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new DrinkAdapter(static_cast<DrinkImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

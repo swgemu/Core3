@@ -25,8 +25,9 @@ SuiListBoxMenuItem::~SuiListBoxMenuItem() {
 }
 
 
+
 unsigned long long SuiListBoxMenuItem::getObjectID() {
-	SuiListBoxMenuItemImplementation* _implementation = (SuiListBoxMenuItemImplementation*) _getImplementation();
+	SuiListBoxMenuItemImplementation* _implementation = static_cast<SuiListBoxMenuItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -39,7 +40,7 @@ unsigned long long SuiListBoxMenuItem::getObjectID() {
 }
 
 String SuiListBoxMenuItem::getOptionName() {
-	SuiListBoxMenuItemImplementation* _implementation = (SuiListBoxMenuItemImplementation*) _getImplementation();
+	SuiListBoxMenuItemImplementation* _implementation = static_cast<SuiListBoxMenuItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -87,7 +88,7 @@ void SuiListBoxMenuItemImplementation::_initializeImplementation() {
 }
 
 void SuiListBoxMenuItemImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiListBoxMenuItem*) stub;
+	_this = static_cast<SuiListBoxMenuItem*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -245,11 +246,11 @@ Packet* SuiListBoxMenuItemAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 unsigned long long SuiListBoxMenuItemAdapter::getObjectID() {
-	return ((SuiListBoxMenuItemImplementation*) impl)->getObjectID();
+	return (static_cast<SuiListBoxMenuItemImplementation*>(impl))->getObjectID();
 }
 
 String SuiListBoxMenuItemAdapter::getOptionName() {
-	return ((SuiListBoxMenuItemImplementation*) impl)->getOptionName();
+	return (static_cast<SuiListBoxMenuItemImplementation*>(impl))->getOptionName();
 }
 
 /*
@@ -277,7 +278,7 @@ DistributedObjectServant* SuiListBoxMenuItemHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiListBoxMenuItemHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiListBoxMenuItemAdapter((SuiListBoxMenuItemImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiListBoxMenuItemAdapter(static_cast<SuiListBoxMenuItemImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

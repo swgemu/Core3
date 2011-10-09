@@ -72,7 +72,7 @@ public:
 
 		String nameLower = arguments.toString().toLowerCase();
 
-		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+		PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 		if (ghost->isIgnoring(nameLower)) {
 			StringIdChatParameter param("cmnty", "ignore_duplicate");

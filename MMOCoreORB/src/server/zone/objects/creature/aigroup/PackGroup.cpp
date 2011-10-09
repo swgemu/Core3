@@ -23,8 +23,9 @@ PackGroup::~PackGroup() {
 }
 
 
+
 bool PackGroup::isPackGroup() {
-	PackGroupImplementation* _implementation = (PackGroupImplementation*) _getImplementation();
+	PackGroupImplementation* _implementation = static_cast<PackGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void PackGroupImplementation::_initializeImplementation() {
 }
 
 void PackGroupImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PackGroup*) stub;
+	_this = static_cast<PackGroup*>(stub);
 	AiGroupImplementation::_setStub(stub);
 }
 
@@ -191,7 +192,7 @@ Packet* PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool PackGroupAdapter::isPackGroup() {
-	return ((PackGroupImplementation*) impl)->isPackGroup();
+	return (static_cast<PackGroupImplementation*>(impl))->isPackGroup();
 }
 
 /*
@@ -219,7 +220,7 @@ DistributedObjectServant* PackGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PackGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PackGroupAdapter((PackGroupImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PackGroupAdapter(static_cast<PackGroupImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

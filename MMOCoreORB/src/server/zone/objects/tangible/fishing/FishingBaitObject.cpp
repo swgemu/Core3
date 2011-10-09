@@ -31,8 +31,9 @@ FishingBaitObject::~FishingBaitObject() {
 }
 
 
+
 void FishingBaitObject::initializeTransientMembers() {
-	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	FishingBaitObjectImplementation* _implementation = static_cast<FishingBaitObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ void FishingBaitObject::initializeTransientMembers() {
 }
 
 int FishingBaitObject::getFreshness() {
-	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	FishingBaitObjectImplementation* _implementation = static_cast<FishingBaitObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ int FishingBaitObject::getFreshness() {
 }
 
 void FishingBaitObject::setFreshness(int value) {
-	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	FishingBaitObjectImplementation* _implementation = static_cast<FishingBaitObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +73,7 @@ void FishingBaitObject::setFreshness(int value) {
 }
 
 void FishingBaitObject::lessFresh() {
-	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	FishingBaitObjectImplementation* _implementation = static_cast<FishingBaitObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void FishingBaitObject::lessFresh() {
 }
 
 int FishingBaitObject::getUseCount() {
-	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	FishingBaitObjectImplementation* _implementation = static_cast<FishingBaitObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +99,7 @@ int FishingBaitObject::getUseCount() {
 }
 
 void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	FishingBaitObjectImplementation* _implementation = static_cast<FishingBaitObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -147,7 +148,7 @@ void FishingBaitObjectImplementation::_initializeImplementation() {
 }
 
 void FishingBaitObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (FishingBaitObject*) stub;
+	_this = static_cast<FishingBaitObject*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -307,7 +308,7 @@ Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertSignedInt(getUseCount());
 		break;
 	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
-		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -317,27 +318,27 @@ Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void FishingBaitObjectAdapter::initializeTransientMembers() {
-	((FishingBaitObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<FishingBaitObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 int FishingBaitObjectAdapter::getFreshness() {
-	return ((FishingBaitObjectImplementation*) impl)->getFreshness();
+	return (static_cast<FishingBaitObjectImplementation*>(impl))->getFreshness();
 }
 
 void FishingBaitObjectAdapter::setFreshness(int value) {
-	((FishingBaitObjectImplementation*) impl)->setFreshness(value);
+	(static_cast<FishingBaitObjectImplementation*>(impl))->setFreshness(value);
 }
 
 void FishingBaitObjectAdapter::lessFresh() {
-	((FishingBaitObjectImplementation*) impl)->lessFresh();
+	(static_cast<FishingBaitObjectImplementation*>(impl))->lessFresh();
 }
 
 int FishingBaitObjectAdapter::getUseCount() {
-	return ((FishingBaitObjectImplementation*) impl)->getUseCount();
+	return (static_cast<FishingBaitObjectImplementation*>(impl))->getUseCount();
 }
 
 void FishingBaitObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	((FishingBaitObjectImplementation*) impl)->fillAttributeList(msg, object);
+	(static_cast<FishingBaitObjectImplementation*>(impl))->fillAttributeList(msg, object);
 }
 
 /*
@@ -365,7 +366,7 @@ DistributedObjectServant* FishingBaitObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FishingBaitObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FishingBaitObjectAdapter((FishingBaitObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new FishingBaitObjectAdapter(static_cast<FishingBaitObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

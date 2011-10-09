@@ -232,7 +232,7 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* playe
 		return 1;
 	}
 
-	Deed* deed = (Deed*) obj.get();
+	Deed* deed = cast<Deed*>( obj.get());
 
 	String structureTemplateString = deed->getGeneratedObjectTemplate();
 	uint32 structureTemplateCRC = structureTemplateString.hashCode();
@@ -324,7 +324,7 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* playe
 		return 1;
 	}
 
-	StructureObject* structureObject = (StructureObject*) sobj.get();
+	StructureObject* structureObject = cast<StructureObject*>( sobj.get());
 
 	//Check requisites.
 	if (!structureObject->checkRequisitesForPlacement(player)) {
@@ -334,13 +334,13 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* playe
 
 	//Surplus Maintenance and Power
 	if (deed->isBuildingDeed()) {
-		BuildingDeed* buildingDeed = (BuildingDeed*) deed;
+		BuildingDeed* buildingDeed = cast<BuildingDeed*>( deed);
 
 		structureObject->setSurplusMaintenance(buildingDeed->getSurplusMaintenance());
 	}
 
 	if (deed->isInstallationDeed()) {
-		InstallationDeed* installationDeed = (InstallationDeed*) deed;
+		InstallationDeed* installationDeed = cast<InstallationDeed*>( deed);
 
 		structureObject->setSurplusMaintenance(installationDeed->getSurplusMaintenance());
 		structureObject->setSurplusPower(installationDeed->getSurplusPower());
@@ -403,12 +403,12 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 		return NULL;
 	}
 
-	StructureObject* structureObject = (StructureObject*) obj.get();
+	StructureObject* structureObject = cast<StructureObject*>( obj.get());
 	structureObject->setOwnerObjectID(creature->getObjectID());
 	structureObject->grantPermission("ADMIN", creature->getFirstName());
 
 	if (structureObject->isBuildingObject())
-		((BuildingObject*) structureObject)->createCellObjects();
+		(cast<BuildingObject*>(structureObject)->createCellObjects());
 
 	structureObject->setPublicStructure(serverTemplate->isPublicStructure());
 	structureObject->initializePosition(x, z, y);
@@ -428,7 +428,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 	float z = zone->getHeight(x, y);
 
 	if (structureObject->isBuildingObject()) {
-		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
+		ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( structureObject);
 
 		for (int i = 0; i < buildingObject->getTotalCellNumber(); ++i) {
 			ManagedReference<CellObject*> cellObject = buildingObject->getCell(i);
@@ -443,7 +443,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 				ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
 
 				if (obj->isPlayerCreature()) {
-					CreatureObject* playerCreature = (CreatureObject*) obj.get();
+					CreatureObject* playerCreature = cast<CreatureObject*>( obj.get());
 
 					playerCreature->teleport(x, z, y, 0);
 				}
@@ -458,7 +458,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 		ManagedReference<SceneObject*> ghost = owner->getSlottedObject("ghost");
 
 		if (ghost != NULL && ghost->isPlayerObject()) {
-			PlayerObject* playerObject = (PlayerObject*) ghost.get();
+			PlayerObject* playerObject = cast<PlayerObject*>( ghost.get());
 			playerObject->removeOwnedStructure(structureObject);
 		}
 	}
@@ -507,7 +507,7 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 		return 1;
 	}
 
-	ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
+	ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( structureObject);
 
 	if (!buildingObject->isOwnerOf(player)) {
 		player->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
@@ -559,7 +559,7 @@ SceneObject* StructureManagerImplementation::getInRangeParkingGarage(SceneObject
 	Locker _locker(zone);
 
 	for (int i = 0; i < obj->inRangeObjectCount(); ++i) {
-		SceneObject* scno = (SceneObject*) obj->getInRangeObject(i);
+		SceneObject* scno = cast<SceneObject*>( obj->getInRangeObject(i));
 
 		if (scno == obj)
 			continue;
@@ -600,9 +600,9 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 		} else {
 			//TODO: Find a cleaner way of handling this.
 			if (deed->isBuildingDeed())
-				((BuildingDeed*) deed.get())->setSurplusMaintenance(maint - redeedCost);
+				(cast<BuildingDeed*>(deed.get()))->setSurplusMaintenance(maint - redeedCost);
 			else if (deed->isInstallationDeed()) {
-				InstallationDeed* installationDeed = (InstallationDeed*) deed.get();
+				InstallationDeed* installationDeed = cast<InstallationDeed*>( deed.get());
 				installationDeed->setSurplusMaintenance(maint - redeedCost);
 				installationDeed->setSurplusPower(structureObject->getSurplusPower());
 			}
@@ -654,7 +654,7 @@ void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, S
 	if (!structure->isBuildingObject())
 		return;
 
-	ManagedReference<BuildingObject*> building = (BuildingObject*) structure;
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( structure);
 
 	Locker _lock(building, creature);
 
@@ -695,7 +695,7 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 	ManagedReference<SceneObject*> ownerObject = server->getZoneServer()->getObject(structure->getOwnerObjectID());
 
 	if (ownerObject != NULL && ownerObject->isCreatureObject()) {
-		CreatureObject* owner = (CreatureObject*) ownerObject.get();
+		CreatureObject* owner = cast<CreatureObject*>( ownerObject.get());
 		status->addMenuItem("@player_structure:owner_prompt " + owner->getFirstName());
 	}
 
@@ -725,14 +725,14 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getBaseMaintenanceRate()) + " cr/hr");
 
 	if (structure->isInstallationObject()) {
-		InstallationObject* installation = (InstallationObject*) structure;
+		InstallationObject* installation = cast<InstallationObject*>( structure);
 
 		status->addMenuItem("@player_structure:power_reserve_prompt " + String::valueOf((int) installation->getSurplusPower()));
 		status->addMenuItem("@player_structure:power_consumption_prompt " + String::valueOf((int) installation->getBasePowerRate()) + " @player_structure:units_per_hour");
 	}
 
 	if (structure->isBuildingObject()) {
-		BuildingObject* building = (BuildingObject*) structure;
+		BuildingObject* building = cast<BuildingObject*>( structure);
 
 		status->addMenuItem("@player_structure:items_in_building_prompt " + String::valueOf(building->getCurrentNumberOfPlayerItems())); //Number of Items in Building:
 	}

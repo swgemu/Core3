@@ -27,6 +27,7 @@ TravelBuildingObject::~TravelBuildingObject() {
 }
 
 
+
 DistributedObjectServant* TravelBuildingObject::_getImplementation() {
 
 	_updated = true;
@@ -62,7 +63,7 @@ void TravelBuildingObjectImplementation::_initializeImplementation() {
 }
 
 void TravelBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (TravelBuildingObject*) stub;
+	_this = static_cast<TravelBuildingObject*>(stub);
 	BuildingObjectImplementation::_setStub(stub);
 }
 
@@ -200,7 +201,7 @@ DistributedObjectServant* TravelBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TravelBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TravelBuildingObjectAdapter((TravelBuildingObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new TravelBuildingObjectAdapter(static_cast<TravelBuildingObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

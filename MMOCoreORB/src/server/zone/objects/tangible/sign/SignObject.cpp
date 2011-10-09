@@ -29,8 +29,9 @@ SignObject::~SignObject() {
 }
 
 
+
 int SignObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	SignObjectImplementation* _implementation = static_cast<SignObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ int SignObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) 
 }
 
 void SignObject::sendSignNameTo(CreatureObject* player) {
-	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	SignObjectImplementation* _implementation = static_cast<SignObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -59,7 +60,7 @@ void SignObject::sendSignNameTo(CreatureObject* player) {
 }
 
 bool SignObject::isSignObject() {
-	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	SignObjectImplementation* _implementation = static_cast<SignObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +73,7 @@ bool SignObject::isSignObject() {
 }
 
 void SignObject::initializeChildObject(SceneObject* controllerObject) {
-	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	SignObjectImplementation* _implementation = static_cast<SignObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ void SignObjectImplementation::_initializeImplementation() {
 }
 
 void SignObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SignObject*) stub;
+	_this = static_cast<SignObject*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -245,16 +246,16 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SENDSIGNNAMETO__CREATUREOBJECT_:
-		sendSignNameTo((CreatureObject*) inv->getObjectParameter());
+		sendSignNameTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISSIGNOBJECT__:
 		resp->insertBoolean(isSignObject());
 		break;
 	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
-		initializeChildObject((SceneObject*) inv->getObjectParameter());
+		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -264,19 +265,19 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int SignObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((SignObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SignObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void SignObjectAdapter::sendSignNameTo(CreatureObject* player) {
-	((SignObjectImplementation*) impl)->sendSignNameTo(player);
+	(static_cast<SignObjectImplementation*>(impl))->sendSignNameTo(player);
 }
 
 bool SignObjectAdapter::isSignObject() {
-	return ((SignObjectImplementation*) impl)->isSignObject();
+	return (static_cast<SignObjectImplementation*>(impl))->isSignObject();
 }
 
 void SignObjectAdapter::initializeChildObject(SceneObject* controllerObject) {
-	((SignObjectImplementation*) impl)->initializeChildObject(controllerObject);
+	(static_cast<SignObjectImplementation*>(impl))->initializeChildObject(controllerObject);
 }
 
 /*
@@ -304,7 +305,7 @@ DistributedObjectServant* SignObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SignObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SignObjectAdapter((SignObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SignObjectAdapter(static_cast<SignObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

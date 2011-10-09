@@ -99,7 +99,7 @@ public:
 			}
 		}
 
-		BuildingObject* building = (BuildingObject*) obj.get();
+		BuildingObject* building = cast<BuildingObject*>( obj.get());
 
 		if (!ghost->isOwnedStructure(building)) {
 			creature->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.

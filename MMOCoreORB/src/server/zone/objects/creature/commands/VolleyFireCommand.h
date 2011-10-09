@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
+		ManagedReference<CreatureObject*> player = creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -120,7 +120,7 @@ public:
 			if (!member->isPlayerCreature() || !member->isInRange(leader, 128.0))
 				continue;
 
-			ManagedReference<CreatureObject*> memberPlayer = (CreatureObject*) member.get();
+			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 
 			if (!memberPlayer->isInCombat())
 				continue;

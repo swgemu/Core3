@@ -23,6 +23,7 @@ FighterShipObject::~FighterShipObject() {
 }
 
 
+
 DistributedObjectServant* FighterShipObject::_getImplementation() {
 
 	_updated = true;
@@ -58,7 +59,7 @@ void FighterShipObjectImplementation::_initializeImplementation() {
 }
 
 void FighterShipObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (FighterShipObject*) stub;
+	_this = static_cast<FighterShipObject*>(stub);
 	ShipObjectImplementation::_setStub(stub);
 }
 
@@ -196,7 +197,7 @@ DistributedObjectServant* FighterShipObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FighterShipObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FighterShipObjectAdapter((FighterShipObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new FighterShipObjectAdapter(static_cast<FighterShipObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -69,7 +69,7 @@ public:
 		if (creature->isPlayerCreature()) {
 			ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
 
-			CreatureObject* player = (CreatureObject*) creature;
+			CreatureObject* player = cast<CreatureObject*>(creature);
 
 			// REMOVE WHEN TESTED
 			manager->freeBait(player);

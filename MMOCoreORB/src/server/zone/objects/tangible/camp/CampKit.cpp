@@ -29,8 +29,9 @@ CampKit::~CampKit() {
 }
 
 
+
 void CampKit::loadTemplateData(SharedObjectTemplate* templateData) {
-	CampKitImplementation* _implementation = (CampKitImplementation*) _getImplementation();
+	CampKitImplementation* _implementation = static_cast<CampKitImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -39,7 +40,7 @@ void CampKit::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 bool CampKit::isCampKitOject() {
-	CampKitImplementation* _implementation = (CampKitImplementation*) _getImplementation();
+	CampKitImplementation* _implementation = static_cast<CampKitImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ void CampKitImplementation::_initializeImplementation() {
 }
 
 void CampKitImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CampKit*) stub;
+	_this = static_cast<CampKit*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -269,7 +270,7 @@ Packet* CampKitAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool CampKitAdapter::isCampKitOject() {
-	return ((CampKitImplementation*) impl)->isCampKitOject();
+	return (static_cast<CampKitImplementation*>(impl))->isCampKitOject();
 }
 
 /*
@@ -297,7 +298,7 @@ DistributedObjectServant* CampKitHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CampKitHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CampKitAdapter((CampKitImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CampKitAdapter(static_cast<CampKitImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

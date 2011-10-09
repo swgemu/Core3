@@ -35,8 +35,9 @@ FireworkObject::~FireworkObject() {
 }
 
 
+
 void FireworkObject::initializeTransientMembers() {
-	FireworkObjectImplementation* _implementation = (FireworkObjectImplementation*) _getImplementation();
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void FireworkObject::initializeTransientMembers() {
 }
 
 int FireworkObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	FireworkObjectImplementation* _implementation = (FireworkObjectImplementation*) _getImplementation();
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -64,7 +65,7 @@ int FireworkObject::handleObjectMenuSelect(CreatureObject* player, byte selected
 }
 
 void FireworkObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	FireworkObjectImplementation* _implementation = (FireworkObjectImplementation*) _getImplementation();
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -73,7 +74,7 @@ void FireworkObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void FireworkObject::launch(CreatureObject* player) {
-	FireworkObjectImplementation* _implementation = (FireworkObjectImplementation*) _getImplementation();
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +122,7 @@ void FireworkObjectImplementation::_initializeImplementation() {
 }
 
 void FireworkObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (FireworkObject*) stub;
+	_this = static_cast<FireworkObject*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -272,10 +273,10 @@ Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_LAUNCH__CREATUREOBJECT_:
-		launch((CreatureObject*) inv->getObjectParameter());
+		launch(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -285,15 +286,15 @@ Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void FireworkObjectAdapter::initializeTransientMembers() {
-	((FireworkObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<FireworkObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 int FireworkObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((FireworkObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FireworkObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void FireworkObjectAdapter::launch(CreatureObject* player) {
-	((FireworkObjectImplementation*) impl)->launch(player);
+	(static_cast<FireworkObjectImplementation*>(impl))->launch(player);
 }
 
 /*
@@ -321,7 +322,7 @@ DistributedObjectServant* FireworkObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FireworkObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FireworkObjectAdapter((FireworkObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new FireworkObjectAdapter(static_cast<FireworkObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

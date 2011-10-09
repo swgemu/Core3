@@ -64,7 +64,7 @@ void ChatManagerImplementation::finalize() {
 }
 
 ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
-	ManagedReference<ChatRoom*> room = (ChatRoom*) ObjectManager::instance()->createObject("ChatRoom", 0 , "");
+	ManagedReference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 0 , ""));
 	room->init(server, parent, roomName, getNextRoomID());
 
 	addRoom(room);
@@ -281,15 +281,15 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	String firstName;
 
 	if (sender->isPlayerCreature())
-		firstName = ((CreatureObject*)sender)->getFirstName();
+		firstName = (cast<CreatureObject*>(sender))->getFirstName();
 
 	for (int i = 0; i < sender->inRangeObjectCount(); ++i) {
-		SceneObject* object = (SceneObject*) sender->getInRangeObject(i);
+		SceneObject* object = cast<SceneObject*>(sender->getInRangeObject(i));
 
 		if (object->isPlayerCreature()) {
-			CreatureObject* creature = (CreatureObject*) object;
+			CreatureObject* creature = cast<CreatureObject*>(object);
 
-			PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+			PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 			if (ghost == NULL)
 				continue;
@@ -398,7 +398,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	String firstName;
 
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
-		CreatureObject* playerCreature = (CreatureObject*) player;
+		CreatureObject* playerCreature = cast<CreatureObject*>(player);
 
 		firstName = playerCreature->getFirstName().toLowerCase();
 		PlayerObject* myGhost = playerCreature->getPlayerObject();
@@ -421,10 +421,10 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	try {
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) player->getInRangeObject(i);
+			SceneObject* object = cast<SceneObject*>(player->getInRangeObject(i));
 
 			if (object->isPlayerCreature()) {
-				CreatureObject* creature = (CreatureObject*) object;
+				CreatureObject* creature = cast<CreatureObject*>(object);
 
 				if (player->isInRange(creature, 128)) {
 
@@ -504,7 +504,7 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 
 //TODO: Refactor into a sendInstantMessage() method that returns a returnCode.
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
-	ManagedReference<CreatureObject*> sender = (CreatureObject*) message->getClient()->getPlayer();
+	ManagedReference<CreatureObject*> sender = cast<CreatureObject*>(message->getClient()->getPlayer());
 
 	if (sender == NULL)
 		return;
@@ -644,7 +644,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 		return;
 	}
 
-	CreatureObject* player = (CreatureObject*) receiver.get();
+	CreatureObject* player = cast<CreatureObject*>(receiver.get());
 
 	/*StringIdChatParameter test("base_player", "sale_fee");
 	test.setDI(100);
@@ -681,7 +681,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (body.length() > PM_MAXSIZE)
 		return IM_TOOLONG;
 
-	CreatureObject* receiver = (CreatureObject*) obj.get();
+	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
 
 	if (receiver->getPlayerObject()->isIgnoring(sendername))
 		return IM_IGNORED;
@@ -736,7 +736,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (body.getCustomString().length() > PM_MAXSIZE)
 		return IM_TOOLONG;
 
-	CreatureObject* receiver = (CreatureObject*) obj.get();
+	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
 
 	if (receiver->getPlayerObject()->isIgnoring(sendername))
 		return IM_IGNORED;
@@ -776,7 +776,7 @@ void ChatManagerImplementation::loadMail(CreatureObject* player) {
 	for (int i = 0; i < messages->size(); ++i) {
 		uint64 messageObjectID = messages->get(i);
 
-		ManagedReference<PersistentMessage*> mail = (PersistentMessage*) Core::getObjectBroker()->lookUp(messageObjectID);
+		ManagedReference<PersistentMessage*> mail = cast<PersistentMessage*>(Core::getObjectBroker()->lookUp(messageObjectID));
 
 		if (mail == NULL) {
 			messages->drop(messageObjectID);
@@ -808,7 +808,7 @@ void ChatManagerImplementation::handleRequestPersistentMsg(CreatureObject* playe
 		return;
 	}
 
-	ManagedReference<PersistentMessage*> mail = (PersistentMessage*) Core::getObjectBroker()->lookUp(messageObjectID);
+	ManagedReference<PersistentMessage*> mail = cast<PersistentMessage*>(Core::getObjectBroker()->lookUp(messageObjectID));
 
 	if (mail == NULL) {
 		messages->drop(messageObjectID);

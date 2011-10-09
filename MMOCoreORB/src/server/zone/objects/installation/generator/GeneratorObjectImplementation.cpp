@@ -26,10 +26,10 @@ void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
-	if (!player->isPlayerCreature() || !isOnAdminList(((CreatureObject*) player)->getFirstName()))
+	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)->getFirstName()))
 		return;
 
-	addOperator((CreatureObject*) player);
+	addOperator(cast<CreatureObject*>(player));
 
 	updateInstallationWork();
 
@@ -43,7 +43,7 @@ void GeneratorObjectImplementation::synchronizedUIStopListen(SceneObject* player
 	if (!player->isPlayerCreature())
 		return;
 
-	removeOperator((CreatureObject*) player);
+	removeOperator(cast<CreatureObject*>(player));
 }
 
 int GeneratorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

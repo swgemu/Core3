@@ -29,8 +29,9 @@ ResourceContainer::~ResourceContainer() {
 }
 
 
+
 void ResourceContainer::initializeTransientMembers() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void ResourceContainer::initializeTransientMembers() {
 }
 
 void ResourceContainer::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,7 +58,7 @@ void ResourceContainer::destroyObjectFromDatabase(bool destroyContainedObjects) 
 }
 
 void ResourceContainer::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -66,7 +67,7 @@ void ResourceContainer::fillAttributeList(AttributeListMessage* msg, CreatureObj
 }
 
 void ResourceContainer::sendBaselinesTo(SceneObject* player) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +81,7 @@ void ResourceContainer::sendBaselinesTo(SceneObject* player) {
 }
 
 void ResourceContainer::setQuantity(unsigned int newQuantity, bool notifyClient) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -95,7 +96,7 @@ void ResourceContainer::setQuantity(unsigned int newQuantity, bool notifyClient)
 }
 
 bool ResourceContainer::isResourceContainer() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -108,7 +109,7 @@ bool ResourceContainer::isResourceContainer() {
 }
 
 int ResourceContainer::getQuantity() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +122,7 @@ int ResourceContainer::getQuantity() {
 }
 
 int ResourceContainer::getUseCount() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +135,7 @@ int ResourceContainer::getUseCount() {
 }
 
 void ResourceContainer::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -149,7 +150,7 @@ void ResourceContainer::setUseCount(unsigned int newUseCount, bool notifyClient)
 }
 
 void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -163,7 +164,7 @@ void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
 }
 
 String ResourceContainer::getSpawnName() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -177,7 +178,7 @@ String ResourceContainer::getSpawnName() {
 }
 
 String ResourceContainer::getSpawnType() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -191,7 +192,7 @@ String ResourceContainer::getSpawnType() {
 }
 
 unsigned long long ResourceContainer::getSpawnID() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -204,20 +205,20 @@ unsigned long long ResourceContainer::getSpawnID() {
 }
 
 ResourceSpawn* ResourceContainer::getSpawnObject() {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETSPAWNOBJECT__);
 
-		return (ResourceSpawn*) method.executeWithObjectReturn();
+		return static_cast<ResourceSpawn*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSpawnObject();
 }
 
 void ResourceContainer::split(int newStackSize) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -231,7 +232,7 @@ void ResourceContainer::split(int newStackSize) {
 }
 
 void ResourceContainer::split(int newStackSize, CreatureObject* player) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -246,7 +247,7 @@ void ResourceContainer::split(int newStackSize, CreatureObject* player) {
 }
 
 void ResourceContainer::combine(ResourceContainer* fromContainer) {
-	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	ResourceContainerImplementation* _implementation = static_cast<ResourceContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -294,7 +295,7 @@ void ResourceContainerImplementation::_initializeImplementation() {
 }
 
 void ResourceContainerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ResourceContainer*) stub;
+	_this = static_cast<ResourceContainer*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -501,7 +502,7 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETQUANTITY__INT_BOOL_:
 		setQuantity(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
@@ -519,7 +520,7 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETSPAWNOBJECT__RESOURCESPAWN_:
-		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
+		setSpawnObject(static_cast<ResourceSpawn*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETSPAWNNAME__:
 		resp->insertAscii(getSpawnName());
@@ -537,10 +538,10 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		split(inv->getSignedIntParameter());
 		break;
 	case RPC_SPLIT__INT_CREATUREOBJECT_:
-		split(inv->getSignedIntParameter(), (CreatureObject*) inv->getObjectParameter());
+		split(inv->getSignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_COMBINE__RESOURCECONTAINER_:
-		combine((ResourceContainer*) inv->getObjectParameter());
+		combine(static_cast<ResourceContainer*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -550,67 +551,67 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ResourceContainerAdapter::initializeTransientMembers() {
-	((ResourceContainerImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ResourceContainerImplementation*>(impl))->initializeTransientMembers();
 }
 
 void ResourceContainerAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	((ResourceContainerImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<ResourceContainerImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void ResourceContainerAdapter::sendBaselinesTo(SceneObject* player) {
-	((ResourceContainerImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<ResourceContainerImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 void ResourceContainerAdapter::setQuantity(unsigned int newQuantity, bool notifyClient) {
-	((ResourceContainerImplementation*) impl)->setQuantity(newQuantity, notifyClient);
+	(static_cast<ResourceContainerImplementation*>(impl))->setQuantity(newQuantity, notifyClient);
 }
 
 bool ResourceContainerAdapter::isResourceContainer() {
-	return ((ResourceContainerImplementation*) impl)->isResourceContainer();
+	return (static_cast<ResourceContainerImplementation*>(impl))->isResourceContainer();
 }
 
 int ResourceContainerAdapter::getQuantity() {
-	return ((ResourceContainerImplementation*) impl)->getQuantity();
+	return (static_cast<ResourceContainerImplementation*>(impl))->getQuantity();
 }
 
 int ResourceContainerAdapter::getUseCount() {
-	return ((ResourceContainerImplementation*) impl)->getUseCount();
+	return (static_cast<ResourceContainerImplementation*>(impl))->getUseCount();
 }
 
 void ResourceContainerAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	((ResourceContainerImplementation*) impl)->setUseCount(newUseCount, notifyClient);
+	(static_cast<ResourceContainerImplementation*>(impl))->setUseCount(newUseCount, notifyClient);
 }
 
 void ResourceContainerAdapter::setSpawnObject(ResourceSpawn* spawn) {
-	((ResourceContainerImplementation*) impl)->setSpawnObject(spawn);
+	(static_cast<ResourceContainerImplementation*>(impl))->setSpawnObject(spawn);
 }
 
 String ResourceContainerAdapter::getSpawnName() {
-	return ((ResourceContainerImplementation*) impl)->getSpawnName();
+	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnName();
 }
 
 String ResourceContainerAdapter::getSpawnType() {
-	return ((ResourceContainerImplementation*) impl)->getSpawnType();
+	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnType();
 }
 
 unsigned long long ResourceContainerAdapter::getSpawnID() {
-	return ((ResourceContainerImplementation*) impl)->getSpawnID();
+	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnID();
 }
 
 ResourceSpawn* ResourceContainerAdapter::getSpawnObject() {
-	return ((ResourceContainerImplementation*) impl)->getSpawnObject();
+	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnObject();
 }
 
 void ResourceContainerAdapter::split(int newStackSize) {
-	((ResourceContainerImplementation*) impl)->split(newStackSize);
+	(static_cast<ResourceContainerImplementation*>(impl))->split(newStackSize);
 }
 
 void ResourceContainerAdapter::split(int newStackSize, CreatureObject* player) {
-	((ResourceContainerImplementation*) impl)->split(newStackSize, player);
+	(static_cast<ResourceContainerImplementation*>(impl))->split(newStackSize, player);
 }
 
 void ResourceContainerAdapter::combine(ResourceContainer* fromContainer) {
-	((ResourceContainerImplementation*) impl)->combine(fromContainer);
+	(static_cast<ResourceContainerImplementation*>(impl))->combine(fromContainer);
 }
 
 /*
@@ -638,7 +639,7 @@ DistributedObjectServant* ResourceContainerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ResourceContainerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ResourceContainerAdapter((ResourceContainerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ResourceContainerAdapter(static_cast<ResourceContainerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

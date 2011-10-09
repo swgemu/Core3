@@ -44,7 +44,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = static_cast<CreatureObject*>(client->getPlayer());
 
 		if (player == NULL)
 			return;

@@ -37,7 +37,7 @@ public:
 		if (obj == NULL || !obj->isPlayerCreature())
 			return;
 
-		CreatureObject* target = (CreatureObject*) obj.get();
+		CreatureObject* target = cast<CreatureObject*>( obj.get());
 
 		guildManager->setMemberTitle(player, target, title);
 	}

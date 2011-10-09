@@ -73,7 +73,7 @@ public:
 		if (creature == targetObject || targetObject == NULL || !targetObject->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) targetObject.get();
+		CreatureObject* player = cast<CreatureObject*>( targetObject.get());
 
 		Locker clocker(player, creature);
 

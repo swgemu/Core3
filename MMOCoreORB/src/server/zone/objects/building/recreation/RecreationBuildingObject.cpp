@@ -27,6 +27,7 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 }
 
 
+
 DistributedObjectServant* RecreationBuildingObject::_getImplementation() {
 
 	_updated = true;
@@ -62,7 +63,7 @@ void RecreationBuildingObjectImplementation::_initializeImplementation() {
 }
 
 void RecreationBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (RecreationBuildingObject*) stub;
+	_this = static_cast<RecreationBuildingObject*>(stub);
 	BuildingObjectImplementation::_setStub(stub);
 }
 
@@ -200,7 +201,7 @@ DistributedObjectServant* RecreationBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RecreationBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RecreationBuildingObjectAdapter((RecreationBuildingObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new RecreationBuildingObjectAdapter(static_cast<RecreationBuildingObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

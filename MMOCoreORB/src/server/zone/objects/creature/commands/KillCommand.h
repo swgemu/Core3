@@ -74,7 +74,7 @@ public:
 		if (obj == NULL || !obj->isTangibleObject())
 			return INVALIDTARGET;
 
-		targetToKill = (TangibleObject*) obj.get();
+		targetToKill = cast<TangibleObject*>( obj.get());
 
 		Locker clocker(targetToKill, creature);
 

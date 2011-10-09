@@ -17,7 +17,7 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 	if (sceneObject == NULL || !sceneObject->isCreatureObject())
 		return;
 
-	CreatureObject* shuttle = (CreatureObject*) sceneObject;
+	CreatureObject* shuttle = cast<CreatureObject*>( sceneObject);
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 

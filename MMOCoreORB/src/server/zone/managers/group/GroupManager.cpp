@@ -124,7 +124,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	if (object == NULL || !object->isPlayerCreature() || object == player)
 		return;
 
-	CreatureObject* inviter = (CreatureObject*) object.get();
+	CreatureObject* inviter = cast<CreatureObject*>( object.get());
 	GroupObject* group = NULL;
 
 	Locker clocker(inviter, player);
@@ -158,8 +158,8 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 
 	if (groupChannel != NULL && player->isPlayerCreature()) {
-		groupChannel->sendTo((CreatureObject*) player);
-		groupChannel->addPlayer((CreatureObject*) player, false);
+		groupChannel->sendTo(cast<CreatureObject*>(player));
+		groupChannel->addPlayer(cast<CreatureObject*>(player), false);
 	}
 
 	player->updateGroupInviterID(0);
@@ -175,7 +175,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 
 	ZoneServer* server = leader->getZone()->getZoneServer();
 
-	ManagedReference<GroupObject*> group = (GroupObject*) ObjectManager::instance()->createObject(0x13dcb432, 0, "");
+	ManagedReference<GroupObject*> group = cast<GroupObject*>( ObjectManager::instance()->createObject(0x13dcb432, 0, ""));
 	group->initializeLeader(leader);
 	group->startChatRoom();
 	group->setZone(leader->getZone());
@@ -202,7 +202,7 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 
 		ChatRoom* groupChannel = group->getGroupChannel();
 		if (groupChannel != NULL && player->isPlayerCreature()) {
-			CreatureObject* playerCreature = (CreatureObject*) player;
+			CreatureObject* playerCreature = cast<CreatureObject*>( player);
 			groupChannel->removePlayer(playerCreature, false);
 			groupChannel->sendDestroyTo(playerCreature);
 
@@ -259,7 +259,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 		}
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			CreatureObject* play = (CreatureObject*) group->getGroupMember(i);
+			CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
 
 			play->sendSystemMessage("group", "disbanded");
 		}
@@ -295,7 +295,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			return;
 		}
 
-		CreatureObject* leader = (CreatureObject*) group->getLeader();
+		CreatureObject* leader = cast<CreatureObject*>( group->getLeader());
 
 		if (player != leader) {
 			player->sendSystemMessage("group", "must_be_leader");
@@ -308,7 +308,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 
 		if (group->getGroupSize() - 1 < 2) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
-				CreatureObject* play = (CreatureObject*) group->getGroupMember(i);
+				CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
 
 				play->sendSystemMessage("group", "disbanded");
 			}
@@ -337,7 +337,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			playerToKick->wlock();
 
 			if (playerToKick->isPlayerCreature()) {
-				CreatureObject* pl = (CreatureObject*) playerToKick;
+				CreatureObject* pl = cast<CreatureObject*>( playerToKick);
 				ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 				groupChannel->removePlayer(pl, false);
 				groupChannel->sendDestroyTo(pl);
@@ -390,7 +390,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		firstNameLeader = "[Offline player]";
 
 		if (newLeader->isPlayerCreature()) {
-			CreatureObject* playerLeader = (CreatureObject*) newLeader;
+			CreatureObject* playerLeader = cast<CreatureObject*>( newLeader);
 
 			if (playerLeader->isOnline())
 				firstNameLeader= playerLeader->getFirstName();
@@ -400,7 +400,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		message << firstNameLeader << " is now the group leader.\n";
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			CreatureObject* play = (CreatureObject*) group->getGroupMember(i);
+			CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
 
 			play->sendSystemMessage(message.toString());
 		}

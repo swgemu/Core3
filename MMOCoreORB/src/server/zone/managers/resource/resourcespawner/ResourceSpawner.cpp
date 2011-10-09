@@ -484,7 +484,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 		// Create new waypoint
 		if (waypoint == NULL)
-			waypoint = (WaypointObject*) server->createObject(0xc456e788, 1);
+			waypoint = cast<WaypointObject*>( server->createObject(0xc456e788, 1));
 
 		// Update new waypoint
 		waypoint->setCustomName(UnicodeString("Resource Survey"));
@@ -694,7 +694,7 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 
 		if (object->isResourceContainer()) {
 			ManagedReference<ResourceContainer*> resource =
-					(ResourceContainer*) object.get();
+					cast<ResourceContainer*>( object.get());
 
 			if (resource->getSpawnName() == resourceSpawn->getName() &&
 					resource->getQuantity() < ResourceContainer::MAXSIZE) {

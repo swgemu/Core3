@@ -29,21 +29,22 @@ SuiInputBox::~SuiInputBox() {
 }
 
 
+
 BaseMessage* SuiInputBox::generateMessage() {
-	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	SuiInputBoxImplementation* _implementation = static_cast<SuiInputBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
-		return (BaseMessage*) method.executeWithObjectReturn();
+		return static_cast<BaseMessage*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->generateMessage();
 }
 
 void SuiInputBox::setMaxInputSize(int size) {
-	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	SuiInputBoxImplementation* _implementation = static_cast<SuiInputBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,7 +58,7 @@ void SuiInputBox::setMaxInputSize(int size) {
 }
 
 void SuiInputBox::setDefaultInput(const String& text) {
-	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	SuiInputBoxImplementation* _implementation = static_cast<SuiInputBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void SuiInputBox::setDefaultInput(const String& text) {
 }
 
 bool SuiInputBox::isFilterBox() {
-	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	SuiInputBoxImplementation* _implementation = static_cast<SuiInputBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ bool SuiInputBox::isFilterBox() {
 }
 
 bool SuiInputBox::isInputBox() {
-	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	SuiInputBoxImplementation* _implementation = static_cast<SuiInputBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,7 +132,7 @@ void SuiInputBoxImplementation::_initializeImplementation() {
 }
 
 void SuiInputBoxImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiInputBox*) stub;
+	_this = static_cast<SuiInputBox*>(stub);
 	SuiBoxImplementation::_setStub(stub);
 }
 
@@ -321,23 +322,23 @@ Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 BaseMessage* SuiInputBoxAdapter::generateMessage() {
-	return ((SuiInputBoxImplementation*) impl)->generateMessage();
+	return (static_cast<SuiInputBoxImplementation*>(impl))->generateMessage();
 }
 
 void SuiInputBoxAdapter::setMaxInputSize(int size) {
-	((SuiInputBoxImplementation*) impl)->setMaxInputSize(size);
+	(static_cast<SuiInputBoxImplementation*>(impl))->setMaxInputSize(size);
 }
 
 void SuiInputBoxAdapter::setDefaultInput(const String& text) {
-	((SuiInputBoxImplementation*) impl)->setDefaultInput(text);
+	(static_cast<SuiInputBoxImplementation*>(impl))->setDefaultInput(text);
 }
 
 bool SuiInputBoxAdapter::isFilterBox() {
-	return ((SuiInputBoxImplementation*) impl)->isFilterBox();
+	return (static_cast<SuiInputBoxImplementation*>(impl))->isFilterBox();
 }
 
 bool SuiInputBoxAdapter::isInputBox() {
-	return ((SuiInputBoxImplementation*) impl)->isInputBox();
+	return (static_cast<SuiInputBoxImplementation*>(impl))->isInputBox();
 }
 
 /*
@@ -365,7 +366,7 @@ DistributedObjectServant* SuiInputBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiInputBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiInputBoxAdapter((SuiInputBoxImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiInputBoxAdapter(static_cast<SuiInputBoxImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

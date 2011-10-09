@@ -23,20 +23,20 @@
 void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	AiAgentImplementation::notifyPositionUpdate(entry);
 
-	SceneObject* scno = (SceneObject*) entry;
+	SceneObject* scno = cast<SceneObject*>( entry);
 
 	// don't worry about this if no one's around, and do it for any creature
 	if (scno == _this || numberOfPlayersInRange <= 0  || !scno->isCreatureObject() || isRetreating() || isFleeing() || isInCombat())
 		return;
 
 	if (followObject == NULL || followObject == scno) {
-		CreatureObject* creo = (CreatureObject*) scno;
+		CreatureObject* creo = cast<CreatureObject*>( scno);
 
 		// TODO: determine if creature can be seen by this (mask scent, et. al.)
 
 		// determine if creature can be a threat
 		if (creo->isAiAgent()) {
-			AiAgent* aio = (AiAgent*)creo;
+			AiAgent* aio = cast<AiAgent*>(creo);
 			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
 				return;
 		} else if (this->isAttackableBy(creo) && isInRange(scno, 15) && !creo->isDead()) { //no aigent<->aigent combat for now
@@ -71,7 +71,7 @@ void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, Cr
 		ManagedReference<CreatureObject*> creo = dynamic_cast<CreatureObject*>(followObject.get());
 		// determine if frightened or threatened
 		if (creo->isAiAgent()) {
-			AiAgent* aio = (AiAgent*)creo.get();
+			AiAgent* aio = cast<AiAgent*>(creo.get());
 			if (getFerocity() > aio->getFerocity() && getLevel() >= aio->getLevel())
 				addDefender(aio);
 			else if (getLevel() < aio->getLevel()) {
@@ -80,7 +80,7 @@ void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, Cr
 			} else
 				setOblivious();
 		} else if (creo->isPlayerCreature()) {
-			CreatureObject* play = (CreatureObject*)creo.get();
+			CreatureObject* play = cast<CreatureObject*>(creo.get());
 			// TODO: tweak this formula based on feedback
 			if ((getFerocity() * getLevel() / 4) < play->getLevel()) {
 				if (!tryRetreat())

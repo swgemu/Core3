@@ -66,13 +66,13 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object != NULL && object->isCreatureObject()) {
-			CreatureObject* creatureObject = (CreatureObject*) object.get();
+			CreatureObject* creatureObject = cast<CreatureObject*>( object.get());
 
 			try {
 				Locker clocker(creatureObject, creature);

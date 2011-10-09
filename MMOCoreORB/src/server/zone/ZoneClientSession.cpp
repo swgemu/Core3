@@ -29,8 +29,9 @@ ZoneClientSession::~ZoneClientSession() {
 }
 
 
+
 void ZoneClientSession::disconnect() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void ZoneClientSession::disconnect() {
 }
 
 void ZoneClientSession::disconnect(bool doLock) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,7 +58,7 @@ void ZoneClientSession::disconnect(bool doLock) {
 }
 
 void ZoneClientSession::sendMessage(BasePacket* msg) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void ZoneClientSession::sendMessage(BasePacket* msg) {
 }
 
 void ZoneClientSession::balancePacketCheckupTime() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ void ZoneClientSession::balancePacketCheckupTime() {
 }
 
 void ZoneClientSession::resetPacketCheckupTime() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -97,7 +98,7 @@ void ZoneClientSession::resetPacketCheckupTime() {
 }
 
 void ZoneClientSession::closeConnection(bool lockPlayer, bool doLock) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -112,7 +113,7 @@ void ZoneClientSession::closeConnection(bool lockPlayer, bool doLock) {
 }
 
 void ZoneClientSession::info(const String& msg, bool force) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,7 +128,7 @@ void ZoneClientSession::info(const String& msg, bool force) {
 }
 
 void ZoneClientSession::error(const String& msg) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -141,7 +142,7 @@ void ZoneClientSession::error(const String& msg) {
 }
 
 String ZoneClientSession::getAddress() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -155,7 +156,7 @@ String ZoneClientSession::getAddress() {
 }
 
 void ZoneClientSession::setPlayer(SceneObject* playerCreature) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -169,7 +170,7 @@ void ZoneClientSession::setPlayer(SceneObject* playerCreature) {
 }
 
 void ZoneClientSession::setSessionID(unsigned int id) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -183,7 +184,7 @@ void ZoneClientSession::setSessionID(unsigned int id) {
 }
 
 void ZoneClientSession::setAccount(Account* acc) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -197,7 +198,7 @@ void ZoneClientSession::setAccount(Account* acc) {
 }
 
 void ZoneClientSession::setAccountID(unsigned int acc) {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -211,7 +212,7 @@ void ZoneClientSession::setAccountID(unsigned int acc) {
 }
 
 BaseClientProxy* ZoneClientSession::getSession() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -220,20 +221,20 @@ BaseClientProxy* ZoneClientSession::getSession() {
 }
 
 SceneObject* ZoneClientSession::getPlayer() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETPLAYER__);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPlayer();
 }
 
 unsigned int ZoneClientSession::getSessionID() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -246,7 +247,7 @@ unsigned int ZoneClientSession::getSessionID() {
 }
 
 unsigned int ZoneClientSession::getAccountID() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -259,14 +260,14 @@ unsigned int ZoneClientSession::getAccountID() {
 }
 
 Account* ZoneClientSession::getAccount() {
-	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETACCOUNT__);
 
-		return (Account*) method.executeWithObjectReturn();
+		return static_cast<Account*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getAccount();
 }
@@ -306,7 +307,7 @@ void ZoneClientSessionImplementation::_initializeImplementation() {
 }
 
 void ZoneClientSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ZoneClientSession*) stub;
+	_this = static_cast<ZoneClientSession*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -539,7 +540,7 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		disconnect(inv->getBooleanParameter());
 		break;
 	case RPC_SENDMESSAGE__BASEPACKET_:
-		sendMessage((BasePacket*) inv->getObjectParameter());
+		sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
 		break;
 	case RPC_BALANCEPACKETCHECKUPTIME__:
 		balancePacketCheckupTime();
@@ -560,13 +561,13 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertAscii(getAddress());
 		break;
 	case RPC_SETPLAYER__SCENEOBJECT_:
-		setPlayer((SceneObject*) inv->getObjectParameter());
+		setPlayer(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETSESSIONID__INT_:
 		setSessionID(inv->getUnsignedIntParameter());
 		break;
 	case RPC_SETACCOUNT__ACCOUNT_:
-		setAccount((Account*) inv->getObjectParameter());
+		setAccount(static_cast<Account*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETACCOUNTID__INT_:
 		setAccountID(inv->getUnsignedIntParameter());
@@ -591,71 +592,71 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ZoneClientSessionAdapter::disconnect() {
-	((ZoneClientSessionImplementation*) impl)->disconnect();
+	(static_cast<ZoneClientSessionImplementation*>(impl))->disconnect();
 }
 
 void ZoneClientSessionAdapter::disconnect(bool doLock) {
-	((ZoneClientSessionImplementation*) impl)->disconnect(doLock);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->disconnect(doLock);
 }
 
 void ZoneClientSessionAdapter::sendMessage(BasePacket* msg) {
-	((ZoneClientSessionImplementation*) impl)->sendMessage(msg);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->sendMessage(msg);
 }
 
 void ZoneClientSessionAdapter::balancePacketCheckupTime() {
-	((ZoneClientSessionImplementation*) impl)->balancePacketCheckupTime();
+	(static_cast<ZoneClientSessionImplementation*>(impl))->balancePacketCheckupTime();
 }
 
 void ZoneClientSessionAdapter::resetPacketCheckupTime() {
-	((ZoneClientSessionImplementation*) impl)->resetPacketCheckupTime();
+	(static_cast<ZoneClientSessionImplementation*>(impl))->resetPacketCheckupTime();
 }
 
 void ZoneClientSessionAdapter::closeConnection(bool lockPlayer, bool doLock) {
-	((ZoneClientSessionImplementation*) impl)->closeConnection(lockPlayer, doLock);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->closeConnection(lockPlayer, doLock);
 }
 
 void ZoneClientSessionAdapter::info(const String& msg, bool force) {
-	((ZoneClientSessionImplementation*) impl)->info(msg, force);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->info(msg, force);
 }
 
 void ZoneClientSessionAdapter::error(const String& msg) {
-	((ZoneClientSessionImplementation*) impl)->error(msg);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->error(msg);
 }
 
 String ZoneClientSessionAdapter::getAddress() {
-	return ((ZoneClientSessionImplementation*) impl)->getAddress();
+	return (static_cast<ZoneClientSessionImplementation*>(impl))->getAddress();
 }
 
 void ZoneClientSessionAdapter::setPlayer(SceneObject* playerCreature) {
-	((ZoneClientSessionImplementation*) impl)->setPlayer(playerCreature);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->setPlayer(playerCreature);
 }
 
 void ZoneClientSessionAdapter::setSessionID(unsigned int id) {
-	((ZoneClientSessionImplementation*) impl)->setSessionID(id);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->setSessionID(id);
 }
 
 void ZoneClientSessionAdapter::setAccount(Account* acc) {
-	((ZoneClientSessionImplementation*) impl)->setAccount(acc);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->setAccount(acc);
 }
 
 void ZoneClientSessionAdapter::setAccountID(unsigned int acc) {
-	((ZoneClientSessionImplementation*) impl)->setAccountID(acc);
+	(static_cast<ZoneClientSessionImplementation*>(impl))->setAccountID(acc);
 }
 
 SceneObject* ZoneClientSessionAdapter::getPlayer() {
-	return ((ZoneClientSessionImplementation*) impl)->getPlayer();
+	return (static_cast<ZoneClientSessionImplementation*>(impl))->getPlayer();
 }
 
 unsigned int ZoneClientSessionAdapter::getSessionID() {
-	return ((ZoneClientSessionImplementation*) impl)->getSessionID();
+	return (static_cast<ZoneClientSessionImplementation*>(impl))->getSessionID();
 }
 
 unsigned int ZoneClientSessionAdapter::getAccountID() {
-	return ((ZoneClientSessionImplementation*) impl)->getAccountID();
+	return (static_cast<ZoneClientSessionImplementation*>(impl))->getAccountID();
 }
 
 Account* ZoneClientSessionAdapter::getAccount() {
-	return ((ZoneClientSessionImplementation*) impl)->getAccount();
+	return (static_cast<ZoneClientSessionImplementation*>(impl))->getAccount();
 }
 
 /*
@@ -683,7 +684,7 @@ DistributedObjectServant* ZoneClientSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneClientSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneClientSessionAdapter((ZoneClientSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ZoneClientSessionAdapter(static_cast<ZoneClientSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

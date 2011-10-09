@@ -31,8 +31,9 @@ FactoryObject::~FactoryObject() {
 }
 
 
+
 void FactoryObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -41,7 +42,7 @@ void FactoryObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void FactoryObject::initializeTransientMembers() {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ void FactoryObject::initializeTransientMembers() {
 }
 
 void FactoryObject::notifyLoadFromDatabase() {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,7 +68,7 @@ void FactoryObject::notifyLoadFromDatabase() {
 }
 
 void FactoryObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -76,7 +77,7 @@ void FactoryObject::fillAttributeList(AttributeListMessage* msg, CreatureObject*
 }
 
 void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -85,7 +86,7 @@ void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Cre
 }
 
 int FactoryObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -100,7 +101,7 @@ int FactoryObject::handleObjectMenuSelect(CreatureObject* player, byte selectedI
 }
 
 bool FactoryObject::isFactory() {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,7 +114,7 @@ bool FactoryObject::isFactory() {
 }
 
 void FactoryObject::createChildObjects() {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -126,7 +127,7 @@ void FactoryObject::createChildObjects() {
 }
 
 void FactoryObject::updateInstallationWork() {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,7 +140,7 @@ void FactoryObject::updateInstallationWork() {
 }
 
 void FactoryObject::sendInsertManuSui(CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +154,7 @@ void FactoryObject::sendInsertManuSui(CreatureObject* player) {
 }
 
 void FactoryObject::sendIngredientsNeededSui(CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -167,7 +168,7 @@ void FactoryObject::sendIngredientsNeededSui(CreatureObject* player) {
 }
 
 void FactoryObject::sendIngredientHopper(CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,7 +182,7 @@ void FactoryObject::sendIngredientHopper(CreatureObject* player) {
 }
 
 void FactoryObject::sendOutputHopper(CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -195,7 +196,7 @@ void FactoryObject::sendOutputHopper(CreatureObject* player) {
 }
 
 void FactoryObject::handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -210,7 +211,7 @@ void FactoryObject::handleInsertFactorySchem(CreatureObject* player, Manufacture
 }
 
 void FactoryObject::handleRemoveFactorySchem(CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -224,7 +225,7 @@ void FactoryObject::handleRemoveFactorySchem(CreatureObject* player) {
 }
 
 void FactoryObject::handleOperateToggle(CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -238,7 +239,7 @@ void FactoryObject::handleOperateToggle(CreatureObject* player) {
 }
 
 void FactoryObject::createNewObject() {
-	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -285,7 +286,7 @@ void FactoryObjectImplementation::_initializeImplementation() {
 }
 
 void FactoryObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (FactoryObject*) stub;
+	_this = static_cast<FactoryObject*>(stub);
 	InstallationObjectImplementation::_setStub(stub);
 }
 
@@ -465,7 +466,7 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		notifyLoadFromDatabase();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISFACTORY__:
 		resp->insertBoolean(isFactory());
@@ -477,25 +478,25 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		updateInstallationWork();
 		break;
 	case RPC_SENDINSERTMANUSUI__CREATUREOBJECT_:
-		sendInsertManuSui((CreatureObject*) inv->getObjectParameter());
+		sendInsertManuSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_:
-		sendIngredientsNeededSui((CreatureObject*) inv->getObjectParameter());
+		sendIngredientsNeededSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_:
-		sendIngredientHopper((CreatureObject*) inv->getObjectParameter());
+		sendIngredientHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_:
-		sendOutputHopper((CreatureObject*) inv->getObjectParameter());
+		sendOutputHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_:
-		handleInsertFactorySchem((CreatureObject*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
+		handleInsertFactorySchem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_:
-		handleRemoveFactorySchem((CreatureObject*) inv->getObjectParameter());
+		handleRemoveFactorySchem(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_:
-		handleOperateToggle((CreatureObject*) inv->getObjectParameter());
+		handleOperateToggle(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CREATENEWOBJECT__:
 		createNewObject();
@@ -508,59 +509,59 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void FactoryObjectAdapter::initializeTransientMembers() {
-	((FactoryObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<FactoryObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void FactoryObjectAdapter::notifyLoadFromDatabase() {
-	((FactoryObjectImplementation*) impl)->notifyLoadFromDatabase();
+	(static_cast<FactoryObjectImplementation*>(impl))->notifyLoadFromDatabase();
 }
 
 int FactoryObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((FactoryObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FactoryObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool FactoryObjectAdapter::isFactory() {
-	return ((FactoryObjectImplementation*) impl)->isFactory();
+	return (static_cast<FactoryObjectImplementation*>(impl))->isFactory();
 }
 
 void FactoryObjectAdapter::createChildObjects() {
-	((FactoryObjectImplementation*) impl)->createChildObjects();
+	(static_cast<FactoryObjectImplementation*>(impl))->createChildObjects();
 }
 
 void FactoryObjectAdapter::updateInstallationWork() {
-	((FactoryObjectImplementation*) impl)->updateInstallationWork();
+	(static_cast<FactoryObjectImplementation*>(impl))->updateInstallationWork();
 }
 
 void FactoryObjectAdapter::sendInsertManuSui(CreatureObject* player) {
-	((FactoryObjectImplementation*) impl)->sendInsertManuSui(player);
+	(static_cast<FactoryObjectImplementation*>(impl))->sendInsertManuSui(player);
 }
 
 void FactoryObjectAdapter::sendIngredientsNeededSui(CreatureObject* player) {
-	((FactoryObjectImplementation*) impl)->sendIngredientsNeededSui(player);
+	(static_cast<FactoryObjectImplementation*>(impl))->sendIngredientsNeededSui(player);
 }
 
 void FactoryObjectAdapter::sendIngredientHopper(CreatureObject* player) {
-	((FactoryObjectImplementation*) impl)->sendIngredientHopper(player);
+	(static_cast<FactoryObjectImplementation*>(impl))->sendIngredientHopper(player);
 }
 
 void FactoryObjectAdapter::sendOutputHopper(CreatureObject* player) {
-	((FactoryObjectImplementation*) impl)->sendOutputHopper(player);
+	(static_cast<FactoryObjectImplementation*>(impl))->sendOutputHopper(player);
 }
 
 void FactoryObjectAdapter::handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic) {
-	((FactoryObjectImplementation*) impl)->handleInsertFactorySchem(player, schematic);
+	(static_cast<FactoryObjectImplementation*>(impl))->handleInsertFactorySchem(player, schematic);
 }
 
 void FactoryObjectAdapter::handleRemoveFactorySchem(CreatureObject* player) {
-	((FactoryObjectImplementation*) impl)->handleRemoveFactorySchem(player);
+	(static_cast<FactoryObjectImplementation*>(impl))->handleRemoveFactorySchem(player);
 }
 
 void FactoryObjectAdapter::handleOperateToggle(CreatureObject* player) {
-	((FactoryObjectImplementation*) impl)->handleOperateToggle(player);
+	(static_cast<FactoryObjectImplementation*>(impl))->handleOperateToggle(player);
 }
 
 void FactoryObjectAdapter::createNewObject() {
-	((FactoryObjectImplementation*) impl)->createNewObject();
+	(static_cast<FactoryObjectImplementation*>(impl))->createNewObject();
 }
 
 /*
@@ -588,7 +589,7 @@ DistributedObjectServant* FactoryObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FactoryObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FactoryObjectAdapter((FactoryObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new FactoryObjectAdapter(static_cast<FactoryObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

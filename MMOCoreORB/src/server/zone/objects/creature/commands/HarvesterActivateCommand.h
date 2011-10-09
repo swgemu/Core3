@@ -66,19 +66,19 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL || !object->isInstallationObject())
 			return GENERALERROR;
 
-		InstallationObject* inso = (InstallationObject*) object.get();
+		InstallationObject* inso = cast<InstallationObject*>( object.get());
 
 	/*	if (!inso->isHarvesterObject())
 			return GENERALERROR;
 
-		HarvesterObject* harvester = (HarvesterObject*) inso;*/
+		HarvesterObject* harvester = cast<HarvesterObject*>( inso);*/
 
 		try {
 			Locker clocker(inso, player);

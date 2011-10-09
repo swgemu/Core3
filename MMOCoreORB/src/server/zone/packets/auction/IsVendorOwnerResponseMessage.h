@@ -69,20 +69,20 @@ public:
 		String vendorName = "unknown";
 
 		if (sceno->isTerminal()) {
-			Terminal* term = (Terminal*) sceno;
+			Terminal* term = cast<Terminal*>( sceno);
 			if (term->isVendorTerminal()) {
-				VendorTerminal* terminal = (VendorTerminal*) term;
+				VendorTerminal* terminal = cast<VendorTerminal*>( term);
 				vendor = terminal->getVendor();
 				if (!terminal->getCustomObjectName().isEmpty())
 					vendorName = terminal->getCustomObjectName().toString();
 			}
 
 		} else if (sceno->isCreatureObject()) {
-			CreatureObject* cero = (CreatureObject*) sceno;
+			CreatureObject* cero = cast<CreatureObject*>( sceno);
 			if (!cero->isVendorCreature())
 				return;
 
-			VendorCreature* vendorCreature = (VendorCreature*) sceno;
+			VendorCreature* vendorCreature = cast<VendorCreature*>( sceno);
 			vendor = vendorCreature->getVendor();
 			if (!vendorCreature->getCustomObjectName().isEmpty())
 				vendorName = vendorCreature->getCustomObjectName().toString();

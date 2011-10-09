@@ -31,8 +31,9 @@ SurveyMissionObjective::~SurveyMissionObjective() {
 }
 
 
+
 void SurveyMissionObjective::initializeTransientMembers() {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ void SurveyMissionObjective::initializeTransientMembers() {
 }
 
 void SurveyMissionObjective::activate() {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ void SurveyMissionObjective::activate() {
 }
 
 void SurveyMissionObjective::abort() {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void SurveyMissionObjective::abort() {
 }
 
 void SurveyMissionObjective::complete() {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ void SurveyMissionObjective::complete() {
 }
 
 int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -102,7 +103,7 @@ int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 }
 
 void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -116,7 +117,7 @@ void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
 }
 
 void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -130,7 +131,7 @@ void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
 }
 
 void SurveyMissionObjective::setEfficiency(unsigned int eff) {
-	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -176,7 +177,7 @@ void SurveyMissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void SurveyMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SurveyMissionObjective*) stub;
+	_this = static_cast<SurveyMissionObjective*>(stub);
 	MissionObjectiveImplementation::_setStub(stub);
 }
 
@@ -368,13 +369,13 @@ Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 		complete();
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_SETSPAWN__RESOURCESPAWN_:
-		setSpawn((ResourceSpawn*) inv->getObjectParameter());
+		setSpawn(static_cast<ResourceSpawn*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETMISSIONGIVER__SCENEOBJECT_:
-		setMissionGiver((SceneObject*) inv->getObjectParameter());
+		setMissionGiver(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETEFFICIENCY__INT_:
 		setEfficiency(inv->getUnsignedIntParameter());
@@ -387,39 +388,39 @@ Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void SurveyMissionObjectiveAdapter::finalize() {
-	((SurveyMissionObjectiveImplementation*) impl)->finalize();
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->finalize();
 }
 
 void SurveyMissionObjectiveAdapter::initializeTransientMembers() {
-	((SurveyMissionObjectiveImplementation*) impl)->initializeTransientMembers();
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
 }
 
 void SurveyMissionObjectiveAdapter::activate() {
-	((SurveyMissionObjectiveImplementation*) impl)->activate();
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->activate();
 }
 
 void SurveyMissionObjectiveAdapter::abort() {
-	((SurveyMissionObjectiveImplementation*) impl)->abort();
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->abort();
 }
 
 void SurveyMissionObjectiveAdapter::complete() {
-	((SurveyMissionObjectiveImplementation*) impl)->complete();
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->complete();
 }
 
 int SurveyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((SurveyMissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<SurveyMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void SurveyMissionObjectiveAdapter::setSpawn(ResourceSpawn* sp) {
-	((SurveyMissionObjectiveImplementation*) impl)->setSpawn(sp);
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->setSpawn(sp);
 }
 
 void SurveyMissionObjectiveAdapter::setMissionGiver(SceneObject* object) {
-	((SurveyMissionObjectiveImplementation*) impl)->setMissionGiver(object);
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->setMissionGiver(object);
 }
 
 void SurveyMissionObjectiveAdapter::setEfficiency(unsigned int eff) {
-	((SurveyMissionObjectiveImplementation*) impl)->setEfficiency(eff);
+	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->setEfficiency(eff);
 }
 
 /*
@@ -447,7 +448,7 @@ DistributedObjectServant* SurveyMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SurveyMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SurveyMissionObjectiveAdapter((SurveyMissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SurveyMissionObjectiveAdapter(static_cast<SurveyMissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -508,7 +508,7 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 		if (objects.put(object) != -1) {
 			if (object->isInQuadTree()) {
-				notifyInsert((QuadTreeEntry*) object->_getImplementation());
+				notifyInsert(object);
 			} else {
 				object->sendTo(player, true);
 			}
@@ -532,7 +532,7 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 
 		if (objects.put(containerObject->getObjectID()) != -1) {
 			if (containerObject->isInQuadTree()) {
-				notifyInsert((QuadTreeEntry*) containerObject->_getImplementation());
+				notifyInsert(containerObject);
 			} else {
 				containerObject->sendTo(player, true);
 			}
@@ -599,7 +599,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 	Locker zoneLocker(getZone());
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* scno = (SceneObject*) getInRangeObject(i);
+		SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
 
 		if (!sendSelf && scno == _this)
 			continue;
@@ -627,7 +627,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 	Locker zoneLocker(getZone());
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* scno = (SceneObject*) getInRangeObject(i);
+		SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
 
 		if (!sendSelf && scno == _this)
 			continue;
@@ -660,7 +660,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 	try {
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* scno = (SceneObject*) getInRangeObject(i);
+			SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
 
 			if (!sendSelf && scno == _this)
 				continue;
@@ -705,7 +705,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 	try {
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* scno = (SceneObject*) getInRangeObject(i);
+			SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
 
 			if (!sendSelf && scno == _this)
 				continue;
@@ -739,7 +739,7 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 	Locker zoneLocker(getZone());
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* scno = (SceneObject*) getInRangeObject(i);
+		SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
 
 		if (scno->isInRange(_this, range) && scno->getGameObjectType() == gameObjectType)
 			++numberOfObjects;
@@ -1072,7 +1072,7 @@ void SceneObjectImplementation::createChildObjects() {
 		obj->setDirection(child->getDirection());
 
 		if (isBuildingObject() && child->getCellId() >= 0) {
-			BuildingObject* buildingObject = (BuildingObject*) (_this.get());
+			BuildingObject* buildingObject = cast<BuildingObject*>( (_this.get()));
 
 			int totalCells = buildingObject->getTotalCellNumber();
 

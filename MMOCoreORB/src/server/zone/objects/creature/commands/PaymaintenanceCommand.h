@@ -75,7 +75,7 @@ public:
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
 
-		StructureObject* structure = (StructureObject*) obj.get();
+		StructureObject* structure = cast<StructureObject*>( obj.get());
 
 		int amount = 0;
 

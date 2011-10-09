@@ -27,8 +27,9 @@ AiGroupObserver::~AiGroupObserver() {
 }
 
 
+
 int AiGroupObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	AiGroupObserverImplementation* _implementation = (AiGroupObserverImplementation*) _getImplementation();
+	AiGroupObserverImplementation* _implementation = static_cast<AiGroupObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +80,7 @@ void AiGroupObserverImplementation::_initializeImplementation() {
 }
 
 void AiGroupObserverImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (AiGroupObserver*) stub;
+	_this = static_cast<AiGroupObserver*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -210,7 +211,7 @@ Packet* AiGroupObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -220,7 +221,7 @@ Packet* AiGroupObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int AiGroupObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((AiGroupObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<AiGroupObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -248,7 +249,7 @@ DistributedObjectServant* AiGroupObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AiGroupObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AiGroupObserverAdapter((AiGroupObserverImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new AiGroupObserverAdapter(static_cast<AiGroupObserverImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

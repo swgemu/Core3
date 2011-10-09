@@ -33,8 +33,9 @@ ReconMissionObjective::~ReconMissionObjective() {
 }
 
 
+
 void ReconMissionObjective::initializeTransientMembers() {
-	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	ReconMissionObjectiveImplementation* _implementation = static_cast<ReconMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void ReconMissionObjective::initializeTransientMembers() {
 }
 
 void ReconMissionObjective::activate() {
-	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	ReconMissionObjectiveImplementation* _implementation = static_cast<ReconMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void ReconMissionObjective::activate() {
 }
 
 void ReconMissionObjective::abort() {
-	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	ReconMissionObjectiveImplementation* _implementation = static_cast<ReconMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ void ReconMissionObjective::abort() {
 }
 
 void ReconMissionObjective::complete() {
-	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	ReconMissionObjectiveImplementation* _implementation = static_cast<ReconMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -118,7 +119,7 @@ void ReconMissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void ReconMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ReconMissionObjective*) stub;
+	_this = static_cast<ReconMissionObjective*>(stub);
 	MissionObjectiveImplementation::_setStub(stub);
 }
 
@@ -274,23 +275,23 @@ Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMet
 }
 
 void ReconMissionObjectiveAdapter::finalize() {
-	((ReconMissionObjectiveImplementation*) impl)->finalize();
+	(static_cast<ReconMissionObjectiveImplementation*>(impl))->finalize();
 }
 
 void ReconMissionObjectiveAdapter::initializeTransientMembers() {
-	((ReconMissionObjectiveImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ReconMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
 }
 
 void ReconMissionObjectiveAdapter::activate() {
-	((ReconMissionObjectiveImplementation*) impl)->activate();
+	(static_cast<ReconMissionObjectiveImplementation*>(impl))->activate();
 }
 
 void ReconMissionObjectiveAdapter::abort() {
-	((ReconMissionObjectiveImplementation*) impl)->abort();
+	(static_cast<ReconMissionObjectiveImplementation*>(impl))->abort();
 }
 
 void ReconMissionObjectiveAdapter::complete() {
-	((ReconMissionObjectiveImplementation*) impl)->complete();
+	(static_cast<ReconMissionObjectiveImplementation*>(impl))->complete();
 }
 
 /*
@@ -318,7 +319,7 @@ DistributedObjectServant* ReconMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ReconMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ReconMissionObjectiveAdapter((ReconMissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ReconMissionObjectiveAdapter(static_cast<ReconMissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

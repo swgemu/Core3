@@ -238,7 +238,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 	//info("BuildingObjectImplementation::notifyInsertToZone");
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* obj = (SceneObject*) getInRangeObject(i);
+		SceneObject* obj = cast<SceneObject*>( getInRangeObject(i));
 
 		if ((obj->isCreatureObject() && isPublicStructure()) || isStaticBuilding()) {
 			object->addInRangeObject(obj, false);
@@ -258,7 +258,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//info("BuildingObjectImplementation::notifyInsert");
-	SceneObject* scno = (SceneObject*) obj;
+	SceneObject* scno = cast<SceneObject*>( obj);
 	bool objectInThisBuilding = scno->getRootParent() == _this;
 
 	for (int i = 0; i < cells.size(); ++i) {
@@ -282,7 +282,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
-	SceneObject* scno = (SceneObject*) obj;
+	SceneObject* scno = cast<SceneObject*>( obj);
 
 //	removeNotifiedSentObject(scno);
 
@@ -301,7 +301,7 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
 	quadTree->insert(entry);
 
-	SceneObject* scno = (SceneObject*) entry;
+	SceneObject* scno = cast<SceneObject*>( entry);
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -373,10 +373,10 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 	Locker _lock(zone);
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		ManagedReference<SceneObject*> obj = (SceneObject*) getInRangeObject(i);
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>( getInRangeObject(i));
 
 		if (obj->isPlayerCreature())
-			updateCellPermissionsTo(((CreatureObject*) obj.get()));
+			updateCellPermissionsTo(cast<CreatureObject*>(obj.get()));
 	}
 }
 
@@ -440,7 +440,7 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 
 bool BuildingObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	if (object->isCellObject()) {
-		addCell((CellObject*) object);
+		addCell(cast<CellObject*>(object));
 		//return true;
 	}
 

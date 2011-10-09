@@ -74,7 +74,7 @@ public:
 	}
 
 	void sendMessage(Message* msg) {
-		BaseClientProxy::sendPacket((BasePacket*) msg);
+		BaseClientProxy::sendPacket(cast<BasePacket*>(msg));
 	}
 };
 

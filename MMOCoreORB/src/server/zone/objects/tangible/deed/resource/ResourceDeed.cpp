@@ -33,8 +33,9 @@ ResourceDeed::~ResourceDeed() {
 }
 
 
+
 void ResourceDeed::initializeTransientMembers() {
-	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
+	ResourceDeedImplementation* _implementation = static_cast<ResourceDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void ResourceDeed::initializeTransientMembers() {
 }
 
 void ResourceDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
+	ResourceDeedImplementation* _implementation = static_cast<ResourceDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -56,7 +57,7 @@ void ResourceDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Crea
 }
 
 int ResourceDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
+	ResourceDeedImplementation* _implementation = static_cast<ResourceDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ int ResourceDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID
 }
 
 int ResourceDeed::useObject(CreatureObject* player) {
-	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
+	ResourceDeedImplementation* _implementation = static_cast<ResourceDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ int ResourceDeed::useObject(CreatureObject* player) {
 }
 
 void ResourceDeed::destroyDeed() {
-	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
+	ResourceDeedImplementation* _implementation = static_cast<ResourceDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -132,7 +133,7 @@ void ResourceDeedImplementation::_initializeImplementation() {
 }
 
 void ResourceDeedImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ResourceDeed*) stub;
+	_this = static_cast<ResourceDeed*>(stub);
 	DeedImplementation::_setStub(stub);
 }
 
@@ -242,10 +243,10 @@ Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_USEOBJECT__CREATUREOBJECT_:
-		resp->insertSignedInt(useObject((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(useObject(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_DESTROYDEED__:
 		destroyDeed();
@@ -258,19 +259,19 @@ Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void ResourceDeedAdapter::initializeTransientMembers() {
-	((ResourceDeedImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ResourceDeedImplementation*>(impl))->initializeTransientMembers();
 }
 
 int ResourceDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((ResourceDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ResourceDeedImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 int ResourceDeedAdapter::useObject(CreatureObject* player) {
-	return ((ResourceDeedImplementation*) impl)->useObject(player);
+	return (static_cast<ResourceDeedImplementation*>(impl))->useObject(player);
 }
 
 void ResourceDeedAdapter::destroyDeed() {
-	((ResourceDeedImplementation*) impl)->destroyDeed();
+	(static_cast<ResourceDeedImplementation*>(impl))->destroyDeed();
 }
 
 /*
@@ -298,7 +299,7 @@ DistributedObjectServant* ResourceDeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ResourceDeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ResourceDeedAdapter((ResourceDeedImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ResourceDeedAdapter(static_cast<ResourceDeedImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -104,7 +104,7 @@ TangibleObject* FactoryCrateImplementation::getPrototype() {
 		return NULL;
 	}
 
-	TangibleObject* prototype = (TangibleObject*) getContainerObject(0);
+	TangibleObject* prototype = cast<TangibleObject*>( getContainerObject(0));
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::getPrototype has a NULL or non-tangible item");
@@ -148,7 +148,7 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
 
 	if (protoclone != NULL) {
 		protoclone->setParent(NULL);
@@ -193,7 +193,7 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
 
 	if(protoclone != NULL) {
 		protoclone->setParent(NULL);
@@ -222,7 +222,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
 
 	ManagedReference<FactoryCrate*> newCrate =
 			dynamic_cast<FactoryCrate*>(server->getZoneServer()->createObject(getServerObjectCRC(), 2));

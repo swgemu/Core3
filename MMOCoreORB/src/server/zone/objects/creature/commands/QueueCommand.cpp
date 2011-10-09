@@ -147,6 +147,6 @@ void QueueCommand::onComplete(uint32 actioncntr, CreatureObject* player, float c
 		return;
 
 	if (addToQueue)
-		((CreatureObject*)player)->clearQueueAction(actioncntr, commandDuration);
+		player->clearQueueAction(actioncntr, commandDuration);
 }
 

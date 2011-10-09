@@ -290,7 +290,7 @@ float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manu
 		if(!ingredientslot->isType(IngredientSlot::RESOURCESLOT))
 			continue;
 
-		ManagedReference<ResourceContainer* > resourceContainer = (ResourceContainer*) ingredientslot->get();
+		ManagedReference<ResourceContainer* > resourceContainer = cast<ResourceContainer*>(ingredientslot->get());
 
 		if(resourceContainer == NULL)
 			continue;

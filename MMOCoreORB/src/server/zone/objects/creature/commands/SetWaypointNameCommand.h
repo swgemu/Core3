@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* playerCreature = (CreatureObject*) creature;
+		CreatureObject* playerCreature = cast<CreatureObject*>( creature);
 		PlayerObject* ghost = playerCreature->getPlayerObject();
 
 		if (ghost == NULL)
@@ -80,7 +80,7 @@ public:
 		if (arguments.isEmpty() || arguments.length() > 20)
 			return GENERALERROR;
 
-		WaypointObject* waypoint = (WaypointObject*) object.get();
+		WaypointObject* waypoint = cast<WaypointObject*>( object.get());
 
 		if (!ghost->hasWaypoint(waypoint->getObjectID()))
 			return GENERALERROR;

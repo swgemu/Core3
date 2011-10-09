@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 

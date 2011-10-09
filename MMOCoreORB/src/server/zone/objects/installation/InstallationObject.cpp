@@ -45,8 +45,9 @@ InstallationObject::~InstallationObject() {
 }
 
 
+
 void InstallationObject::initializeTransientMembers() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -59,7 +60,7 @@ void InstallationObject::initializeTransientMembers() {
 }
 
 void InstallationObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ void InstallationObject::destroyObjectFromDatabase(bool destroyContainedObjects)
 }
 
 void InstallationObject::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -82,7 +83,7 @@ void InstallationObject::fillAttributeList(AttributeListMessage* alm, CreatureOb
 }
 
 void InstallationObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -91,7 +92,7 @@ void InstallationObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void InstallationObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -100,7 +101,7 @@ void InstallationObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse
 }
 
 int InstallationObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -115,7 +116,7 @@ int InstallationObject::handleObjectMenuSelect(CreatureObject* player, byte sele
 }
 
 void InstallationObject::broadcastMessage(BasePacket* message, bool sendSelf) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -130,7 +131,7 @@ void InstallationObject::broadcastMessage(BasePacket* message, bool sendSelf) {
 }
 
 void InstallationObject::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +147,7 @@ void InstallationObject::updateResourceContainerQuantity(ResourceContainer* cont
 }
 
 void InstallationObject::setOperating(bool operating, bool notifyClient) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -161,7 +162,7 @@ void InstallationObject::setOperating(bool operating, bool notifyClient) {
 }
 
 void InstallationObject::activateUiSync() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -174,7 +175,7 @@ void InstallationObject::activateUiSync() {
 }
 
 void InstallationObject::updateOperators() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -187,7 +188,7 @@ void InstallationObject::updateOperators() {
 }
 
 void InstallationObject::verifyOperators() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -200,7 +201,7 @@ void InstallationObject::verifyOperators() {
 }
 
 void InstallationObject::updateInstallationWork() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -213,7 +214,7 @@ void InstallationObject::updateInstallationWork() {
 }
 
 void InstallationObject::handleStructureAddEnergy(CreatureObject* player) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -227,7 +228,7 @@ void InstallationObject::handleStructureAddEnergy(CreatureObject* player) {
 }
 
 void InstallationObject::setActiveResource(ResourceContainer* container) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -241,7 +242,7 @@ void InstallationObject::setActiveResource(ResourceContainer* container) {
 }
 
 void InstallationObject::changeActiveResourceID(unsigned long long spawnObjectID) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -255,7 +256,7 @@ void InstallationObject::changeActiveResourceID(unsigned long long spawnObjectID
 }
 
 void InstallationObject::addResourceToHopper(ResourceContainer* container) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -269,7 +270,7 @@ void InstallationObject::addResourceToHopper(ResourceContainer* container) {
 }
 
 void InstallationObject::removeResourceFromHopper(ResourceContainer* container) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -283,7 +284,7 @@ void InstallationObject::removeResourceFromHopper(ResourceContainer* container) 
 }
 
 void InstallationObject::clearResourceHopper() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -296,7 +297,7 @@ void InstallationObject::clearResourceHopper() {
 }
 
 float InstallationObject::getHopperSize() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -309,7 +310,7 @@ float InstallationObject::getHopperSize() {
 }
 
 bool InstallationObject::updateMaintenance(Time& workingTime) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -318,7 +319,7 @@ bool InstallationObject::updateMaintenance(Time& workingTime) {
 }
 
 void InstallationObject::updateHopper(Time& workingTime, bool shutdownAfterUpdate) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -327,7 +328,7 @@ void InstallationObject::updateHopper(Time& workingTime, bool shutdownAfterUpdat
 }
 
 int InstallationObject::getHopperItemQuantity(ResourceSpawn* spawn) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -341,7 +342,7 @@ int InstallationObject::getHopperItemQuantity(ResourceSpawn* spawn) {
 }
 
 ResourceContainer* InstallationObject::getContainerFromHopper(ResourceSpawn* spawn) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -349,13 +350,13 @@ ResourceContainer* InstallationObject::getContainerFromHopper(ResourceSpawn* spa
 		DistributedMethod method(this, RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_);
 		method.addObjectParameter(spawn);
 
-		return (ResourceContainer*) method.executeWithObjectReturn();
+		return static_cast<ResourceContainer*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getContainerFromHopper(spawn);
 }
 
 unsigned long long InstallationObject::getActiveResourceSpawnID() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -368,7 +369,7 @@ unsigned long long InstallationObject::getActiveResourceSpawnID() {
 }
 
 float InstallationObject::getActualRate() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -381,7 +382,7 @@ float InstallationObject::getActualRate() {
 }
 
 void InstallationObject::broadcastToOperators(BasePacket* packet) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -395,7 +396,7 @@ void InstallationObject::broadcastToOperators(BasePacket* packet) {
 }
 
 void InstallationObject::addOperator(CreatureObject* player) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -409,7 +410,7 @@ void InstallationObject::addOperator(CreatureObject* player) {
 }
 
 void InstallationObject::removeOperator(CreatureObject* player) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -423,7 +424,7 @@ void InstallationObject::removeOperator(CreatureObject* player) {
 }
 
 void InstallationObject::sendBaselinesTo(SceneObject* player) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -437,7 +438,7 @@ void InstallationObject::sendBaselinesTo(SceneObject* player) {
 }
 
 bool InstallationObject::isInstallationObject() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -450,7 +451,7 @@ bool InstallationObject::isInstallationObject() {
 }
 
 bool InstallationObject::isOperating() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -463,7 +464,7 @@ bool InstallationObject::isOperating() {
 }
 
 int InstallationObject::getInstallationType() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -476,7 +477,7 @@ int InstallationObject::getInstallationType() {
 }
 
 float InstallationObject::getExtractionRate() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -489,7 +490,7 @@ float InstallationObject::getExtractionRate() {
 }
 
 float InstallationObject::getHopperSizeMax() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -502,7 +503,7 @@ float InstallationObject::getHopperSizeMax() {
 }
 
 HopperList* InstallationObject::getHopperList() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -511,7 +512,7 @@ HopperList* InstallationObject::getHopperList() {
 }
 
 bool InstallationObject::isHarvesterObject() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -524,7 +525,7 @@ bool InstallationObject::isHarvesterObject() {
 }
 
 bool InstallationObject::isGeneratorObject() {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -571,7 +572,7 @@ void InstallationObjectImplementation::_initializeImplementation() {
 }
 
 void InstallationObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (InstallationObject*) stub;
+	_this = static_cast<InstallationObject*>(stub);
 	StructureObjectImplementation::_setStub(stub);
 }
 
@@ -862,13 +863,13 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_:
-		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
+		broadcastMessage(static_cast<BasePacket*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_:
-		updateResourceContainerQuantity((ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		updateResourceContainerQuantity(static_cast<ResourceContainer*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETOPERATING__BOOL_BOOL_:
 		setOperating(inv->getBooleanParameter(), inv->getBooleanParameter());
@@ -886,19 +887,19 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		updateInstallationWork();
 		break;
 	case RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_:
-		handleStructureAddEnergy((CreatureObject*) inv->getObjectParameter());
+		handleStructureAddEnergy(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETACTIVERESOURCE__RESOURCECONTAINER_:
-		setActiveResource((ResourceContainer*) inv->getObjectParameter());
+		setActiveResource(static_cast<ResourceContainer*>(inv->getObjectParameter()));
 		break;
 	case RPC_CHANGEACTIVERESOURCEID__LONG_:
 		changeActiveResourceID(inv->getUnsignedLongParameter());
 		break;
 	case RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_:
-		addResourceToHopper((ResourceContainer*) inv->getObjectParameter());
+		addResourceToHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_:
-		removeResourceFromHopper((ResourceContainer*) inv->getObjectParameter());
+		removeResourceFromHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
 		break;
 	case RPC_CLEARRESOURCEHOPPER__:
 		clearResourceHopper();
@@ -907,10 +908,10 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertFloat(getHopperSize());
 		break;
 	case RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_:
-		resp->insertSignedInt(getHopperItemQuantity((ResourceSpawn*) inv->getObjectParameter()));
+		resp->insertSignedInt(getHopperItemQuantity(static_cast<ResourceSpawn*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_:
-		resp->insertLong(getContainerFromHopper((ResourceSpawn*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(getContainerFromHopper(static_cast<ResourceSpawn*>(inv->getObjectParameter()))->_getObjectID());
 		break;
 	case RPC_GETACTIVERESOURCESPAWNID__:
 		resp->insertLong(getActiveResourceSpawnID());
@@ -919,16 +920,16 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertFloat(getActualRate());
 		break;
 	case RPC_BROADCASTTOOPERATORS__BASEPACKET_:
-		broadcastToOperators((BasePacket*) inv->getObjectParameter());
+		broadcastToOperators(static_cast<BasePacket*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDOPERATOR__CREATUREOBJECT_:
-		addOperator((CreatureObject*) inv->getObjectParameter());
+		addOperator(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEOPERATOR__CREATUREOBJECT_:
-		removeOperator((CreatureObject*) inv->getObjectParameter());
+		removeOperator(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISINSTALLATIONOBJECT__:
 		resp->insertBoolean(isInstallationObject());
@@ -959,131 +960,131 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void InstallationObjectAdapter::initializeTransientMembers() {
-	((InstallationObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<InstallationObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void InstallationObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	((InstallationObjectImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<InstallationObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int InstallationObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((InstallationObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<InstallationObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf) {
-	((InstallationObjectImplementation*) impl)->broadcastMessage(message, sendSelf);
+	(static_cast<InstallationObjectImplementation*>(impl))->broadcastMessage(message, sendSelf);
 }
 
 void InstallationObjectAdapter::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	((InstallationObjectImplementation*) impl)->updateResourceContainerQuantity(container, newQuantity, notifyClient);
+	(static_cast<InstallationObjectImplementation*>(impl))->updateResourceContainerQuantity(container, newQuantity, notifyClient);
 }
 
 void InstallationObjectAdapter::setOperating(bool operating, bool notifyClient) {
-	((InstallationObjectImplementation*) impl)->setOperating(operating, notifyClient);
+	(static_cast<InstallationObjectImplementation*>(impl))->setOperating(operating, notifyClient);
 }
 
 void InstallationObjectAdapter::activateUiSync() {
-	((InstallationObjectImplementation*) impl)->activateUiSync();
+	(static_cast<InstallationObjectImplementation*>(impl))->activateUiSync();
 }
 
 void InstallationObjectAdapter::updateOperators() {
-	((InstallationObjectImplementation*) impl)->updateOperators();
+	(static_cast<InstallationObjectImplementation*>(impl))->updateOperators();
 }
 
 void InstallationObjectAdapter::verifyOperators() {
-	((InstallationObjectImplementation*) impl)->verifyOperators();
+	(static_cast<InstallationObjectImplementation*>(impl))->verifyOperators();
 }
 
 void InstallationObjectAdapter::updateInstallationWork() {
-	((InstallationObjectImplementation*) impl)->updateInstallationWork();
+	(static_cast<InstallationObjectImplementation*>(impl))->updateInstallationWork();
 }
 
 void InstallationObjectAdapter::handleStructureAddEnergy(CreatureObject* player) {
-	((InstallationObjectImplementation*) impl)->handleStructureAddEnergy(player);
+	(static_cast<InstallationObjectImplementation*>(impl))->handleStructureAddEnergy(player);
 }
 
 void InstallationObjectAdapter::setActiveResource(ResourceContainer* container) {
-	((InstallationObjectImplementation*) impl)->setActiveResource(container);
+	(static_cast<InstallationObjectImplementation*>(impl))->setActiveResource(container);
 }
 
 void InstallationObjectAdapter::changeActiveResourceID(unsigned long long spawnObjectID) {
-	((InstallationObjectImplementation*) impl)->changeActiveResourceID(spawnObjectID);
+	(static_cast<InstallationObjectImplementation*>(impl))->changeActiveResourceID(spawnObjectID);
 }
 
 void InstallationObjectAdapter::addResourceToHopper(ResourceContainer* container) {
-	((InstallationObjectImplementation*) impl)->addResourceToHopper(container);
+	(static_cast<InstallationObjectImplementation*>(impl))->addResourceToHopper(container);
 }
 
 void InstallationObjectAdapter::removeResourceFromHopper(ResourceContainer* container) {
-	((InstallationObjectImplementation*) impl)->removeResourceFromHopper(container);
+	(static_cast<InstallationObjectImplementation*>(impl))->removeResourceFromHopper(container);
 }
 
 void InstallationObjectAdapter::clearResourceHopper() {
-	((InstallationObjectImplementation*) impl)->clearResourceHopper();
+	(static_cast<InstallationObjectImplementation*>(impl))->clearResourceHopper();
 }
 
 float InstallationObjectAdapter::getHopperSize() {
-	return ((InstallationObjectImplementation*) impl)->getHopperSize();
+	return (static_cast<InstallationObjectImplementation*>(impl))->getHopperSize();
 }
 
 int InstallationObjectAdapter::getHopperItemQuantity(ResourceSpawn* spawn) {
-	return ((InstallationObjectImplementation*) impl)->getHopperItemQuantity(spawn);
+	return (static_cast<InstallationObjectImplementation*>(impl))->getHopperItemQuantity(spawn);
 }
 
 ResourceContainer* InstallationObjectAdapter::getContainerFromHopper(ResourceSpawn* spawn) {
-	return ((InstallationObjectImplementation*) impl)->getContainerFromHopper(spawn);
+	return (static_cast<InstallationObjectImplementation*>(impl))->getContainerFromHopper(spawn);
 }
 
 unsigned long long InstallationObjectAdapter::getActiveResourceSpawnID() {
-	return ((InstallationObjectImplementation*) impl)->getActiveResourceSpawnID();
+	return (static_cast<InstallationObjectImplementation*>(impl))->getActiveResourceSpawnID();
 }
 
 float InstallationObjectAdapter::getActualRate() {
-	return ((InstallationObjectImplementation*) impl)->getActualRate();
+	return (static_cast<InstallationObjectImplementation*>(impl))->getActualRate();
 }
 
 void InstallationObjectAdapter::broadcastToOperators(BasePacket* packet) {
-	((InstallationObjectImplementation*) impl)->broadcastToOperators(packet);
+	(static_cast<InstallationObjectImplementation*>(impl))->broadcastToOperators(packet);
 }
 
 void InstallationObjectAdapter::addOperator(CreatureObject* player) {
-	((InstallationObjectImplementation*) impl)->addOperator(player);
+	(static_cast<InstallationObjectImplementation*>(impl))->addOperator(player);
 }
 
 void InstallationObjectAdapter::removeOperator(CreatureObject* player) {
-	((InstallationObjectImplementation*) impl)->removeOperator(player);
+	(static_cast<InstallationObjectImplementation*>(impl))->removeOperator(player);
 }
 
 void InstallationObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((InstallationObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<InstallationObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 bool InstallationObjectAdapter::isInstallationObject() {
-	return ((InstallationObjectImplementation*) impl)->isInstallationObject();
+	return (static_cast<InstallationObjectImplementation*>(impl))->isInstallationObject();
 }
 
 bool InstallationObjectAdapter::isOperating() {
-	return ((InstallationObjectImplementation*) impl)->isOperating();
+	return (static_cast<InstallationObjectImplementation*>(impl))->isOperating();
 }
 
 int InstallationObjectAdapter::getInstallationType() {
-	return ((InstallationObjectImplementation*) impl)->getInstallationType();
+	return (static_cast<InstallationObjectImplementation*>(impl))->getInstallationType();
 }
 
 float InstallationObjectAdapter::getExtractionRate() {
-	return ((InstallationObjectImplementation*) impl)->getExtractionRate();
+	return (static_cast<InstallationObjectImplementation*>(impl))->getExtractionRate();
 }
 
 float InstallationObjectAdapter::getHopperSizeMax() {
-	return ((InstallationObjectImplementation*) impl)->getHopperSizeMax();
+	return (static_cast<InstallationObjectImplementation*>(impl))->getHopperSizeMax();
 }
 
 bool InstallationObjectAdapter::isHarvesterObject() {
-	return ((InstallationObjectImplementation*) impl)->isHarvesterObject();
+	return (static_cast<InstallationObjectImplementation*>(impl))->isHarvesterObject();
 }
 
 bool InstallationObjectAdapter::isGeneratorObject() {
-	return ((InstallationObjectImplementation*) impl)->isGeneratorObject();
+	return (static_cast<InstallationObjectImplementation*>(impl))->isGeneratorObject();
 }
 
 /*
@@ -1111,7 +1112,7 @@ DistributedObjectServant* InstallationObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InstallationObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InstallationObjectAdapter((InstallationObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new InstallationObjectAdapter(static_cast<InstallationObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

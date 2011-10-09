@@ -29,8 +29,9 @@ CreateVendorSession::~CreateVendorSession() {
 }
 
 
+
 void CreateVendorSession::initalizeWindow(CreatureObject* pl) {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -44,7 +45,7 @@ void CreateVendorSession::initalizeWindow(CreatureObject* pl) {
 }
 
 void CreateVendorSession::handleMenuSelect(byte menuID) {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ void CreateVendorSession::handleMenuSelect(byte menuID) {
 }
 
 void CreateVendorSession::createVendor(String& name) {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +73,7 @@ void CreateVendorSession::createVendor(String& name) {
 }
 
 int CreateVendorSession::initializeSession() {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ int CreateVendorSession::initializeSession() {
 }
 
 int CreateVendorSession::cancelSession() {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +99,7 @@ int CreateVendorSession::cancelSession() {
 }
 
 int CreateVendorSession::clearSession() {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +146,7 @@ void CreateVendorSessionImplementation::_initializeImplementation() {
 }
 
 void CreateVendorSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CreateVendorSession*) stub;
+	_this = static_cast<CreateVendorSession*>(stub);
 	FacadeImplementation::_setStub(stub);
 }
 
@@ -362,7 +363,7 @@ Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_INITALIZEWINDOW__CREATUREOBJECT_:
-		initalizeWindow((CreatureObject*) inv->getObjectParameter());
+		initalizeWindow(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEMENUSELECT__BYTE_:
 		handleMenuSelect(inv->getByteParameter());
@@ -387,27 +388,27 @@ Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 void CreateVendorSessionAdapter::initalizeWindow(CreatureObject* pl) {
-	((CreateVendorSessionImplementation*) impl)->initalizeWindow(pl);
+	(static_cast<CreateVendorSessionImplementation*>(impl))->initalizeWindow(pl);
 }
 
 void CreateVendorSessionAdapter::handleMenuSelect(byte menuID) {
-	((CreateVendorSessionImplementation*) impl)->handleMenuSelect(menuID);
+	(static_cast<CreateVendorSessionImplementation*>(impl))->handleMenuSelect(menuID);
 }
 
 void CreateVendorSessionAdapter::createVendor(String& name) {
-	((CreateVendorSessionImplementation*) impl)->createVendor(name);
+	(static_cast<CreateVendorSessionImplementation*>(impl))->createVendor(name);
 }
 
 int CreateVendorSessionAdapter::initializeSession() {
-	return ((CreateVendorSessionImplementation*) impl)->initializeSession();
+	return (static_cast<CreateVendorSessionImplementation*>(impl))->initializeSession();
 }
 
 int CreateVendorSessionAdapter::cancelSession() {
-	return ((CreateVendorSessionImplementation*) impl)->cancelSession();
+	return (static_cast<CreateVendorSessionImplementation*>(impl))->cancelSession();
 }
 
 int CreateVendorSessionAdapter::clearSession() {
-	return ((CreateVendorSessionImplementation*) impl)->clearSession();
+	return (static_cast<CreateVendorSessionImplementation*>(impl))->clearSession();
 }
 
 /*
@@ -435,7 +436,7 @@ DistributedObjectServant* CreateVendorSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CreateVendorSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CreateVendorSessionAdapter((CreateVendorSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CreateVendorSessionAdapter(static_cast<CreateVendorSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

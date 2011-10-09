@@ -39,8 +39,9 @@ GuildManager::~GuildManager() {
 }
 
 
+
 void GuildManager::setChatManager(ChatManager* chatmanager) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ void GuildManager::setChatManager(ChatManager* chatmanager) {
 }
 
 void GuildManager::sendGuildListTo(CreatureObject* player, const String& guildFilter) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +70,7 @@ void GuildManager::sendGuildListTo(CreatureObject* player, const String& guildFi
 }
 
 void GuildManager::addPendingGuild(unsigned long long playerID, const String& guildName) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ void GuildManager::addPendingGuild(unsigned long long playerID, const String& gu
 }
 
 void GuildManager::removePendingGuild(unsigned long long playerID) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +99,7 @@ void GuildManager::removePendingGuild(unsigned long long playerID) {
 }
 
 String GuildManager::getPendingGuildName(unsigned long long playerID) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,7 +114,7 @@ String GuildManager::getPendingGuildName(unsigned long long playerID) {
 }
 
 void GuildManager::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -128,7 +129,7 @@ void GuildManager::addSponsoredPlayer(unsigned long long playerID, GuildObject* 
 }
 
 void GuildManager::removeSponsoredPlayer(unsigned long long playerID) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -142,7 +143,7 @@ void GuildManager::removeSponsoredPlayer(unsigned long long playerID) {
 }
 
 bool GuildManager::isCreatingGuild(unsigned long long playerID) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -156,7 +157,7 @@ bool GuildManager::isCreatingGuild(unsigned long long playerID) {
 }
 
 bool GuildManager::isSponsoredPlayer(unsigned long long playerID) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -170,7 +171,7 @@ bool GuildManager::isSponsoredPlayer(unsigned long long playerID) {
 }
 
 GuildObject* GuildManager::getSponsoredGuild(unsigned long long playerID) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -178,13 +179,13 @@ GuildObject* GuildManager::getSponsoredGuild(unsigned long long playerID) {
 		DistributedMethod method(this, RPC_GETSPONSOREDGUILD__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
-		return (GuildObject*) method.executeWithObjectReturn();
+		return static_cast<GuildObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSponsoredGuild(playerID);
 }
 
 void GuildManager::sendBaselinesTo(CreatureObject* player) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -198,7 +199,7 @@ void GuildManager::sendBaselinesTo(CreatureObject* player) {
 }
 
 void GuildManager::loadGuilds() {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -211,7 +212,7 @@ void GuildManager::loadGuilds() {
 }
 
 void GuildManager::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -226,7 +227,7 @@ void GuildManager::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* 
 }
 
 void GuildManager::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -241,7 +242,7 @@ void GuildManager::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal
 }
 
 void GuildManager::sendGuildInformationTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -257,7 +258,7 @@ void GuildManager::sendGuildInformationTo(CreatureObject* player, GuildObject* g
 }
 
 void GuildManager::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -273,7 +274,7 @@ void GuildManager::sendGuildMemberListTo(CreatureObject* player, GuildObject* gu
 }
 
 void GuildManager::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, unsigned long long memberID, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -290,7 +291,7 @@ void GuildManager::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject*
 }
 
 void GuildManager::sendGuildDisbandConfirmTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -306,7 +307,7 @@ void GuildManager::sendGuildDisbandConfirmTo(CreatureObject* player, GuildObject
 }
 
 void GuildManager::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -322,7 +323,7 @@ void GuildManager::sendGuildSponsoredListTo(CreatureObject* player, GuildObject*
 }
 
 void GuildManager::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, unsigned long long playerID, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -339,7 +340,7 @@ void GuildManager::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObje
 }
 
 void GuildManager::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -355,7 +356,7 @@ void GuildManager::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild
 }
 
 void GuildManager::sendGuildSponsorVerifyTo(CreatureObject* player, CreatureObject* target) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -370,7 +371,7 @@ void GuildManager::sendGuildSponsorVerifyTo(CreatureObject* player, CreatureObje
 }
 
 void GuildManager::sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -385,7 +386,7 @@ void GuildManager::sendGuildKickPromptTo(CreatureObject* player, CreatureObject*
 }
 
 void GuildManager::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -400,7 +401,7 @@ void GuildManager::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* t
 }
 
 void GuildManager::sendMemberPermissionsTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -416,7 +417,7 @@ void GuildManager::sendMemberPermissionsTo(CreatureObject* player, unsigned long
 }
 
 bool GuildManager::validateGuildName(CreatureObject* player, const String& guildName) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -431,7 +432,7 @@ bool GuildManager::validateGuildName(CreatureObject* player, const String& guild
 }
 
 bool GuildManager::validateGuildAbbrev(CreatureObject* player, const String& guildAbbrev) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -446,7 +447,7 @@ bool GuildManager::validateGuildAbbrev(CreatureObject* player, const String& gui
 }
 
 bool GuildManager::guildNameExists(const String& guildName) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -460,7 +461,7 @@ bool GuildManager::guildNameExists(const String& guildName) {
 }
 
 bool GuildManager::guildAbbrevExists(const String& guildAbbrev) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -474,7 +475,7 @@ bool GuildManager::guildAbbrevExists(const String& guildAbbrev) {
 }
 
 GuildObject* GuildManager::createGuild(CreatureObject* player, GuildTerminal* guildTerminal, const String& guildName, const String& guildAbbrev) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -485,13 +486,13 @@ GuildObject* GuildManager::createGuild(CreatureObject* player, GuildTerminal* gu
 		method.addAsciiParameter(guildName);
 		method.addAsciiParameter(guildAbbrev);
 
-		return (GuildObject*) method.executeWithObjectReturn();
+		return static_cast<GuildObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createGuild(player, guildTerminal, guildName, guildAbbrev);
 }
 
 bool GuildManager::disbandGuild(CreatureObject* player, GuildObject* guild) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -506,7 +507,7 @@ bool GuildManager::disbandGuild(CreatureObject* player, GuildObject* guild) {
 }
 
 void GuildManager::sponsorPlayer(CreatureObject* player, GuildTerminal* guildTerminal, const String& playerName) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -522,7 +523,7 @@ void GuildManager::sponsorPlayer(CreatureObject* player, GuildTerminal* guildTer
 }
 
 void GuildManager::acceptSponsorshipRequest(CreatureObject* player, CreatureObject* target) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -537,7 +538,7 @@ void GuildManager::acceptSponsorshipRequest(CreatureObject* player, CreatureObje
 }
 
 void GuildManager::acceptSponsoredPlayer(CreatureObject* player, unsigned long long targetID) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -552,7 +553,7 @@ void GuildManager::acceptSponsoredPlayer(CreatureObject* player, unsigned long l
 }
 
 void GuildManager::kickMember(CreatureObject* player, CreatureObject* target) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -567,7 +568,7 @@ void GuildManager::kickMember(CreatureObject* player, CreatureObject* target) {
 }
 
 void GuildManager::leaveGuild(CreatureObject* player, GuildObject* guild) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -582,7 +583,7 @@ void GuildManager::leaveGuild(CreatureObject* player, GuildObject* guild) {
 }
 
 void GuildManager::setMemberTitle(CreatureObject* player, CreatureObject* target, const String& title) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -598,7 +599,7 @@ void GuildManager::setMemberTitle(CreatureObject* player, CreatureObject* target
 }
 
 void GuildManager::setAllegianceTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -614,7 +615,7 @@ void GuildManager::setAllegianceTo(CreatureObject* player, unsigned long long ta
 }
 
 void GuildManager::toggleGuildPermission(CreatureObject* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -631,7 +632,7 @@ void GuildManager::toggleGuildPermission(CreatureObject* player, unsigned long l
 }
 
 ChatRoom* GuildManager::createGuildChannels(GuildObject* guild) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -639,13 +640,13 @@ ChatRoom* GuildManager::createGuildChannels(GuildObject* guild) {
 		DistributedMethod method(this, RPC_CREATEGUILDCHANNELS__GUILDOBJECT_);
 		method.addObjectParameter(guild);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createGuildChannels(guild);
 }
 
 void GuildManager::sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild) {
-	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -688,7 +689,7 @@ void GuildManagerImplementation::_initializeImplementation() {
 }
 
 void GuildManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (GuildManager*) stub;
+	_this = static_cast<GuildManager*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -920,10 +921,10 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_SETCHATMANAGER__CHATMANAGER_:
-		setChatManager((ChatManager*) inv->getObjectParameter());
+		setChatManager(static_cast<ChatManager*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDLISTTO__CREATUREOBJECT_STRING_:
-		sendGuildListTo((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendGuildListTo__CreatureObject_String_));
+		sendGuildListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendGuildListTo__CreatureObject_String_));
 		break;
 	case RPC_ADDPENDINGGUILD__LONG_STRING_:
 		addPendingGuild(inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param1_addPendingGuild__long_String_));
@@ -935,7 +936,7 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertAscii(getPendingGuildName(inv->getUnsignedLongParameter()));
 		break;
 	case RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_:
-		addSponsoredPlayer(inv->getUnsignedLongParameter(), (GuildObject*) inv->getObjectParameter());
+		addSponsoredPlayer(inv->getUnsignedLongParameter(), static_cast<GuildObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVESPONSOREDPLAYER__LONG_:
 		removeSponsoredPlayer(inv->getUnsignedLongParameter());
@@ -950,55 +951,55 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getSponsoredGuild(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case RPC_SENDBASELINESTO__CREATUREOBJECT_:
-		sendBaselinesTo((CreatureObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_LOADGUILDS__:
 		loadGuilds();
 		break;
 	case RPC_SENDGUILDCREATENAMETO__CREATUREOBJECT_GUILDTERMINAL_:
-		sendGuildCreateNameTo((CreatureObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildCreateNameTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDCREATEABBREVTO__CREATUREOBJECT_GUILDTERMINAL_:
-		sendGuildCreateAbbrevTo((CreatureObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildCreateAbbrevTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDINFORMATIONTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildInformationTo((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildInformationTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDMEMBERLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildMemberListTo((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildMemberListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDMEMBEROPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_:
-		sendGuildMemberOptionsTo((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildMemberOptionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDDISBANDCONFIRMTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildDisbandConfirmTo((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildDisbandConfirmTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDSPONSOREDLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildSponsoredListTo((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildSponsoredListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDSPONSOREDOPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_:
-		sendGuildSponsoredOptionsTo((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildSponsoredOptionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDSPONSORTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildSponsorTo((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendGuildSponsorTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDSPONSORVERIFYTO__CREATUREOBJECT_CREATUREOBJECT_:
-		sendGuildSponsorVerifyTo((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		sendGuildSponsorVerifyTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDKICKPROMPTTO__CREATUREOBJECT_CREATUREOBJECT_:
-		sendGuildKickPromptTo((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		sendGuildKickPromptTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDGUILDSETTITLETO__CREATUREOBJECT_CREATUREOBJECT_:
-		sendGuildSetTitleTo((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		sendGuildSetTitleTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDMEMBERPERMISSIONSTO__CREATUREOBJECT_LONG_GUILDTERMINAL_:
-		sendMemberPermissionsTo((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendMemberPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_VALIDATEGUILDNAME__CREATUREOBJECT_STRING_:
-		resp->insertBoolean(validateGuildName((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildName__CreatureObject_String_)));
+		resp->insertBoolean(validateGuildName(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_validateGuildName__CreatureObject_String_)));
 		break;
 	case RPC_VALIDATEGUILDABBREV__CREATUREOBJECT_STRING_:
-		resp->insertBoolean(validateGuildAbbrev((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildAbbrev__CreatureObject_String_)));
+		resp->insertBoolean(validateGuildAbbrev(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_validateGuildAbbrev__CreatureObject_String_)));
 		break;
 	case RPC_GUILDNAMEEXISTS__STRING_:
 		resp->insertBoolean(guildNameExists(inv->getAsciiParameter(_param0_guildNameExists__String_)));
@@ -1007,37 +1008,37 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(guildAbbrevExists(inv->getAsciiParameter(_param0_guildAbbrevExists__String_)));
 		break;
 	case RPC_CREATEGUILD__CREATUREOBJECT_GUILDTERMINAL_STRING_STRING_:
-		resp->insertLong(createGuild((CreatureObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_createGuild__CreatureObject_GuildTerminal_String_String_), inv->getAsciiParameter(_param3_createGuild__CreatureObject_GuildTerminal_String_String_))->_getObjectID());
+		resp->insertLong(createGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_createGuild__CreatureObject_GuildTerminal_String_String_), inv->getAsciiParameter(_param3_createGuild__CreatureObject_GuildTerminal_String_String_))->_getObjectID());
 		break;
 	case RPC_DISBANDGUILD__CREATUREOBJECT_GUILDOBJECT_:
-		resp->insertBoolean(disbandGuild((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter()));
+		resp->insertBoolean(disbandGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_SPONSORPLAYER__CREATUREOBJECT_GUILDTERMINAL_STRING_:
-		sponsorPlayer((CreatureObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_sponsorPlayer__CreatureObject_GuildTerminal_String_));
+		sponsorPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_sponsorPlayer__CreatureObject_GuildTerminal_String_));
 		break;
 	case RPC_ACCEPTSPONSORSHIPREQUEST__CREATUREOBJECT_CREATUREOBJECT_:
-		acceptSponsorshipRequest((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		acceptSponsorshipRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ACCEPTSPONSOREDPLAYER__CREATUREOBJECT_LONG_:
-		acceptSponsoredPlayer((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		acceptSponsoredPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
 		break;
 	case RPC_KICKMEMBER__CREATUREOBJECT_CREATUREOBJECT_:
-		kickMember((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		kickMember(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_LEAVEGUILD__CREATUREOBJECT_GUILDOBJECT_:
-		leaveGuild((CreatureObject*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter());
+		leaveGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETMEMBERTITLE__CREATUREOBJECT_CREATUREOBJECT_STRING_:
-		setMemberTitle((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_setMemberTitle__CreatureObject_CreatureObject_String_));
+		setMemberTitle(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_setMemberTitle__CreatureObject_CreatureObject_String_));
 		break;
 	case RPC_SETALLEGIANCETO__CREATUREOBJECT_LONG_GUILDTERMINAL_:
-		setAllegianceTo((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		setAllegianceTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_TOGGLEGUILDPERMISSION__CREATUREOBJECT_LONG_INT_GUILDTERMINAL_:
-		toggleGuildPermission((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), (GuildTerminal*) inv->getObjectParameter());
+		toggleGuildPermission(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_CREATEGUILDCHANNELS__GUILDOBJECT_:
-		resp->insertLong(createGuildChannels((GuildObject*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(createGuildChannels(static_cast<GuildObject*>(inv->getObjectParameter()))->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -1047,163 +1048,163 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void GuildManagerAdapter::setChatManager(ChatManager* chatmanager) {
-	((GuildManagerImplementation*) impl)->setChatManager(chatmanager);
+	(static_cast<GuildManagerImplementation*>(impl))->setChatManager(chatmanager);
 }
 
 void GuildManagerAdapter::sendGuildListTo(CreatureObject* player, const String& guildFilter) {
-	((GuildManagerImplementation*) impl)->sendGuildListTo(player, guildFilter);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildListTo(player, guildFilter);
 }
 
 void GuildManagerAdapter::addPendingGuild(unsigned long long playerID, const String& guildName) {
-	((GuildManagerImplementation*) impl)->addPendingGuild(playerID, guildName);
+	(static_cast<GuildManagerImplementation*>(impl))->addPendingGuild(playerID, guildName);
 }
 
 void GuildManagerAdapter::removePendingGuild(unsigned long long playerID) {
-	((GuildManagerImplementation*) impl)->removePendingGuild(playerID);
+	(static_cast<GuildManagerImplementation*>(impl))->removePendingGuild(playerID);
 }
 
 String GuildManagerAdapter::getPendingGuildName(unsigned long long playerID) {
-	return ((GuildManagerImplementation*) impl)->getPendingGuildName(playerID);
+	return (static_cast<GuildManagerImplementation*>(impl))->getPendingGuildName(playerID);
 }
 
 void GuildManagerAdapter::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
-	((GuildManagerImplementation*) impl)->addSponsoredPlayer(playerID, guild);
+	(static_cast<GuildManagerImplementation*>(impl))->addSponsoredPlayer(playerID, guild);
 }
 
 void GuildManagerAdapter::removeSponsoredPlayer(unsigned long long playerID) {
-	((GuildManagerImplementation*) impl)->removeSponsoredPlayer(playerID);
+	(static_cast<GuildManagerImplementation*>(impl))->removeSponsoredPlayer(playerID);
 }
 
 bool GuildManagerAdapter::isCreatingGuild(unsigned long long playerID) {
-	return ((GuildManagerImplementation*) impl)->isCreatingGuild(playerID);
+	return (static_cast<GuildManagerImplementation*>(impl))->isCreatingGuild(playerID);
 }
 
 bool GuildManagerAdapter::isSponsoredPlayer(unsigned long long playerID) {
-	return ((GuildManagerImplementation*) impl)->isSponsoredPlayer(playerID);
+	return (static_cast<GuildManagerImplementation*>(impl))->isSponsoredPlayer(playerID);
 }
 
 GuildObject* GuildManagerAdapter::getSponsoredGuild(unsigned long long playerID) {
-	return ((GuildManagerImplementation*) impl)->getSponsoredGuild(playerID);
+	return (static_cast<GuildManagerImplementation*>(impl))->getSponsoredGuild(playerID);
 }
 
 void GuildManagerAdapter::sendBaselinesTo(CreatureObject* player) {
-	((GuildManagerImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<GuildManagerImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 void GuildManagerAdapter::loadGuilds() {
-	((GuildManagerImplementation*) impl)->loadGuilds();
+	(static_cast<GuildManagerImplementation*>(impl))->loadGuilds();
 }
 
 void GuildManagerAdapter::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildCreateNameTo(player, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildCreateNameTo(player, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildCreateAbbrevTo(player, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildCreateAbbrevTo(player, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildInformationTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildInformationTo(player, guild, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildInformationTo(player, guild, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildMemberListTo(player, guild, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildMemberListTo(player, guild, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, unsigned long long memberID, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildMemberOptionsTo(player, guild, memberID, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildMemberOptionsTo(player, guild, memberID, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildDisbandConfirmTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildDisbandConfirmTo(player, guild, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildDisbandConfirmTo(player, guild, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildSponsoredListTo(player, guild, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildSponsoredListTo(player, guild, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, unsigned long long playerID, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildSponsoredOptionsTo(player, guild, playerID, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildSponsoredOptionsTo(player, guild, playerID, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendGuildSponsorTo(player, guild, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildSponsorTo(player, guild, guildTerminal);
 }
 
 void GuildManagerAdapter::sendGuildSponsorVerifyTo(CreatureObject* player, CreatureObject* target) {
-	((GuildManagerImplementation*) impl)->sendGuildSponsorVerifyTo(player, target);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildSponsorVerifyTo(player, target);
 }
 
 void GuildManagerAdapter::sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target) {
-	((GuildManagerImplementation*) impl)->sendGuildKickPromptTo(player, target);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildKickPromptTo(player, target);
 }
 
 void GuildManagerAdapter::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target) {
-	((GuildManagerImplementation*) impl)->sendGuildSetTitleTo(player, target);
+	(static_cast<GuildManagerImplementation*>(impl))->sendGuildSetTitleTo(player, target);
 }
 
 void GuildManagerAdapter::sendMemberPermissionsTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->sendMemberPermissionsTo(player, targetID, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
 bool GuildManagerAdapter::validateGuildName(CreatureObject* player, const String& guildName) {
-	return ((GuildManagerImplementation*) impl)->validateGuildName(player, guildName);
+	return (static_cast<GuildManagerImplementation*>(impl))->validateGuildName(player, guildName);
 }
 
 bool GuildManagerAdapter::validateGuildAbbrev(CreatureObject* player, const String& guildAbbrev) {
-	return ((GuildManagerImplementation*) impl)->validateGuildAbbrev(player, guildAbbrev);
+	return (static_cast<GuildManagerImplementation*>(impl))->validateGuildAbbrev(player, guildAbbrev);
 }
 
 bool GuildManagerAdapter::guildNameExists(const String& guildName) {
-	return ((GuildManagerImplementation*) impl)->guildNameExists(guildName);
+	return (static_cast<GuildManagerImplementation*>(impl))->guildNameExists(guildName);
 }
 
 bool GuildManagerAdapter::guildAbbrevExists(const String& guildAbbrev) {
-	return ((GuildManagerImplementation*) impl)->guildAbbrevExists(guildAbbrev);
+	return (static_cast<GuildManagerImplementation*>(impl))->guildAbbrevExists(guildAbbrev);
 }
 
 GuildObject* GuildManagerAdapter::createGuild(CreatureObject* player, GuildTerminal* guildTerminal, const String& guildName, const String& guildAbbrev) {
-	return ((GuildManagerImplementation*) impl)->createGuild(player, guildTerminal, guildName, guildAbbrev);
+	return (static_cast<GuildManagerImplementation*>(impl))->createGuild(player, guildTerminal, guildName, guildAbbrev);
 }
 
 bool GuildManagerAdapter::disbandGuild(CreatureObject* player, GuildObject* guild) {
-	return ((GuildManagerImplementation*) impl)->disbandGuild(player, guild);
+	return (static_cast<GuildManagerImplementation*>(impl))->disbandGuild(player, guild);
 }
 
 void GuildManagerAdapter::sponsorPlayer(CreatureObject* player, GuildTerminal* guildTerminal, const String& playerName) {
-	((GuildManagerImplementation*) impl)->sponsorPlayer(player, guildTerminal, playerName);
+	(static_cast<GuildManagerImplementation*>(impl))->sponsorPlayer(player, guildTerminal, playerName);
 }
 
 void GuildManagerAdapter::acceptSponsorshipRequest(CreatureObject* player, CreatureObject* target) {
-	((GuildManagerImplementation*) impl)->acceptSponsorshipRequest(player, target);
+	(static_cast<GuildManagerImplementation*>(impl))->acceptSponsorshipRequest(player, target);
 }
 
 void GuildManagerAdapter::acceptSponsoredPlayer(CreatureObject* player, unsigned long long targetID) {
-	((GuildManagerImplementation*) impl)->acceptSponsoredPlayer(player, targetID);
+	(static_cast<GuildManagerImplementation*>(impl))->acceptSponsoredPlayer(player, targetID);
 }
 
 void GuildManagerAdapter::kickMember(CreatureObject* player, CreatureObject* target) {
-	((GuildManagerImplementation*) impl)->kickMember(player, target);
+	(static_cast<GuildManagerImplementation*>(impl))->kickMember(player, target);
 }
 
 void GuildManagerAdapter::leaveGuild(CreatureObject* player, GuildObject* guild) {
-	((GuildManagerImplementation*) impl)->leaveGuild(player, guild);
+	(static_cast<GuildManagerImplementation*>(impl))->leaveGuild(player, guild);
 }
 
 void GuildManagerAdapter::setMemberTitle(CreatureObject* player, CreatureObject* target, const String& title) {
-	((GuildManagerImplementation*) impl)->setMemberTitle(player, target, title);
+	(static_cast<GuildManagerImplementation*>(impl))->setMemberTitle(player, target, title);
 }
 
 void GuildManagerAdapter::setAllegianceTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->setAllegianceTo(player, targetID, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->setAllegianceTo(player, targetID, guildTerminal);
 }
 
 void GuildManagerAdapter::toggleGuildPermission(CreatureObject* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal) {
-	((GuildManagerImplementation*) impl)->toggleGuildPermission(player, targetID, permissionIndex, guildTerminal);
+	(static_cast<GuildManagerImplementation*>(impl))->toggleGuildPermission(player, targetID, permissionIndex, guildTerminal);
 }
 
 ChatRoom* GuildManagerAdapter::createGuildChannels(GuildObject* guild) {
-	return ((GuildManagerImplementation*) impl)->createGuildChannels(guild);
+	return (static_cast<GuildManagerImplementation*>(impl))->createGuildChannels(guild);
 }
 
 /*
@@ -1231,7 +1232,7 @@ DistributedObjectServant* GuildManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GuildManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GuildManagerAdapter((GuildManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new GuildManagerAdapter(static_cast<GuildManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

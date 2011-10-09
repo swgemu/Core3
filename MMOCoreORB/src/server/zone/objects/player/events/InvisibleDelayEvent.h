@@ -81,7 +81,7 @@ public:
 				if (!targetGhost->isInvisible()) {
 
 					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-						SceneObject* scno = (SceneObject*) player->getInRangeObject(i);
+						SceneObject* scno = cast<SceneObject*>( player->getInRangeObject(i));
 
 						if (scno != player && scno->isPlayerCreature())
 								scno->notifyDissapear(player);
@@ -98,7 +98,7 @@ public:
 					targetGhost->setInvisible(false);
 
 					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-						SceneObject* scno = (SceneObject*) player->getInRangeObject(i);
+						SceneObject* scno = cast<SceneObject*>( player->getInRangeObject(i));
 
 						if (scno != player && scno->isPlayerCreature())
 								scno->notifyInsert(player);

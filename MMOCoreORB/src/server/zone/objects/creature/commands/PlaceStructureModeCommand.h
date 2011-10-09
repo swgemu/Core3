@@ -96,7 +96,7 @@ public:
 		if (!obj->isASubChildOf(inventory))
 			return GENERALERROR; //Deed must be in inventory...
 
-		Deed* deed = (Deed*) obj.get();
+		Deed* deed = cast<Deed*>( obj.get());
 
 		TemplateManager* templateManager = TemplateManager::instance();
 

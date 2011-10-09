@@ -38,7 +38,7 @@ public:
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);
 
 		if (obj != NULL && obj->isPlayerCreature()) {
-			CreatureObject* player = (CreatureObject*) obj.get();
+			CreatureObject* player = cast<CreatureObject*>( obj.get());
 			PlayerObject* ghost = player->getPlayerObject();
 
 			Locker _locker(player);

@@ -31,8 +31,9 @@ StructureTerminal::~StructureTerminal() {
 }
 
 
+
 void StructureTerminal::initializeTransientMembers() {
-	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	StructureTerminalImplementation* _implementation = static_cast<StructureTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ void StructureTerminal::initializeTransientMembers() {
 }
 
 int StructureTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	StructureTerminalImplementation* _implementation = static_cast<StructureTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ int StructureTerminal::handleObjectMenuSelect(CreatureObject* player, byte selec
 }
 
 void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	StructureTerminalImplementation* _implementation = static_cast<StructureTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -103,7 +104,7 @@ void StructureTerminalImplementation::_initializeImplementation() {
 }
 
 void StructureTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (StructureTerminal*) stub;
+	_this = static_cast<StructureTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -237,7 +238,7 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -247,11 +248,11 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void StructureTerminalAdapter::initializeTransientMembers() {
-	((StructureTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<StructureTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 int StructureTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((StructureTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StructureTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -279,7 +280,7 @@ DistributedObjectServant* StructureTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StructureTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StructureTerminalAdapter((StructureTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new StructureTerminalAdapter(static_cast<StructureTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

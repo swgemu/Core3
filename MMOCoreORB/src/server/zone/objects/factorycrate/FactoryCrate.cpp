@@ -33,8 +33,9 @@ FactoryCrate::~FactoryCrate() {
 }
 
 
+
 void FactoryCrate::loadTemplateData(SharedObjectTemplate* templateData) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -43,7 +44,7 @@ void FactoryCrate::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void FactoryCrate::initializeTransientMembers() {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -56,7 +57,7 @@ void FactoryCrate::initializeTransientMembers() {
 }
 
 void FactoryCrate::sendBaselinesTo(SceneObject* player) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -70,7 +71,7 @@ void FactoryCrate::sendBaselinesTo(SceneObject* player) {
 }
 
 void FactoryCrate::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -79,7 +80,7 @@ void FactoryCrate::fillAttributeList(AttributeListMessage* msg, CreatureObject* 
 }
 
 void FactoryCrate::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -88,7 +89,7 @@ void FactoryCrate::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Crea
 }
 
 int FactoryCrate::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -103,7 +104,7 @@ int FactoryCrate::handleObjectMenuSelect(CreatureObject* player, byte selectedID
 }
 
 bool FactoryCrate::isFactoryCrate() {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -116,7 +117,7 @@ bool FactoryCrate::isFactoryCrate() {
 }
 
 void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,20 +132,20 @@ void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
 }
 
 TangibleObject* FactoryCrate::getPrototype() {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETPROTOTYPE__);
 
-		return (TangibleObject*) method.executeWithObjectReturn();
+		return static_cast<TangibleObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPrototype();
 }
 
 String FactoryCrate::getCraftersName() {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -158,7 +159,7 @@ String FactoryCrate::getCraftersName() {
 }
 
 String FactoryCrate::getCraftersSerial() {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -172,7 +173,7 @@ String FactoryCrate::getCraftersSerial() {
 }
 
 bool FactoryCrate::extractObjectToParent() {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -185,7 +186,7 @@ bool FactoryCrate::extractObjectToParent() {
 }
 
 TangibleObject* FactoryCrate::extractObject(int count) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -193,13 +194,13 @@ TangibleObject* FactoryCrate::extractObject(int count) {
 		DistributedMethod method(this, RPC_EXTRACTOBJECT__INT_);
 		method.addSignedIntParameter(count);
 
-		return (TangibleObject*) method.executeWithObjectReturn();
+		return static_cast<TangibleObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->extractObject(count);
 }
 
 void FactoryCrate::split(int newStackSize) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -247,7 +248,7 @@ void FactoryCrateImplementation::_initializeImplementation() {
 }
 
 void FactoryCrateImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (FactoryCrate*) stub;
+	_this = static_cast<FactoryCrate*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -362,10 +363,10 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISFACTORYCRATE__:
 		resp->insertBoolean(isFactoryCrate());
@@ -399,47 +400,47 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void FactoryCrateAdapter::initializeTransientMembers() {
-	((FactoryCrateImplementation*) impl)->initializeTransientMembers();
+	(static_cast<FactoryCrateImplementation*>(impl))->initializeTransientMembers();
 }
 
 void FactoryCrateAdapter::sendBaselinesTo(SceneObject* player) {
-	((FactoryCrateImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<FactoryCrateImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 int FactoryCrateAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((FactoryCrateImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FactoryCrateImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool FactoryCrateAdapter::isFactoryCrate() {
-	return ((FactoryCrateImplementation*) impl)->isFactoryCrate();
+	return (static_cast<FactoryCrateImplementation*>(impl))->isFactoryCrate();
 }
 
 void FactoryCrateAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	((FactoryCrateImplementation*) impl)->setUseCount(newUseCount, notifyClient);
+	(static_cast<FactoryCrateImplementation*>(impl))->setUseCount(newUseCount, notifyClient);
 }
 
 TangibleObject* FactoryCrateAdapter::getPrototype() {
-	return ((FactoryCrateImplementation*) impl)->getPrototype();
+	return (static_cast<FactoryCrateImplementation*>(impl))->getPrototype();
 }
 
 String FactoryCrateAdapter::getCraftersName() {
-	return ((FactoryCrateImplementation*) impl)->getCraftersName();
+	return (static_cast<FactoryCrateImplementation*>(impl))->getCraftersName();
 }
 
 String FactoryCrateAdapter::getCraftersSerial() {
-	return ((FactoryCrateImplementation*) impl)->getCraftersSerial();
+	return (static_cast<FactoryCrateImplementation*>(impl))->getCraftersSerial();
 }
 
 bool FactoryCrateAdapter::extractObjectToParent() {
-	return ((FactoryCrateImplementation*) impl)->extractObjectToParent();
+	return (static_cast<FactoryCrateImplementation*>(impl))->extractObjectToParent();
 }
 
 TangibleObject* FactoryCrateAdapter::extractObject(int count) {
-	return ((FactoryCrateImplementation*) impl)->extractObject(count);
+	return (static_cast<FactoryCrateImplementation*>(impl))->extractObject(count);
 }
 
 void FactoryCrateAdapter::split(int newStackSize) {
-	((FactoryCrateImplementation*) impl)->split(newStackSize);
+	(static_cast<FactoryCrateImplementation*>(impl))->split(newStackSize);
 }
 
 /*
@@ -467,7 +468,7 @@ DistributedObjectServant* FactoryCrateHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FactoryCrateHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FactoryCrateAdapter((FactoryCrateImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new FactoryCrateAdapter(static_cast<FactoryCrateImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

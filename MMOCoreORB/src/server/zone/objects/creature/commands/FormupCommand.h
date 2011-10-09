@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -98,7 +98,7 @@ public:
 			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
 				continue;
 
-			CreatureObject* memberPlayer = (CreatureObject*) member.get();
+			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
 			Locker clocker(memberPlayer, leader);
 
 			sendCombatSpam(memberPlayer);

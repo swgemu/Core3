@@ -47,8 +47,9 @@ ZoneProcessServer::~ZoneProcessServer() {
 }
 
 
+
 void ZoneProcessServer::initialize() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -61,7 +62,7 @@ void ZoneProcessServer::initialize() {
 }
 
 VendorManager* ZoneProcessServer::getVendorManager() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -70,20 +71,20 @@ VendorManager* ZoneProcessServer::getVendorManager() {
 }
 
 ZoneServer* ZoneProcessServer::getZoneServer() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETZONESERVER__);
 
-		return (ZoneServer*) method.executeWithObjectReturn();
+		return static_cast<ZoneServer*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getZoneServer();
 }
 
 ZonePacketHandler* ZoneProcessServer::getPacketHandler() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -92,7 +93,7 @@ ZonePacketHandler* ZoneProcessServer::getPacketHandler() {
 }
 
 SkillManager* ZoneProcessServer::getSkillManager() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -101,7 +102,7 @@ SkillManager* ZoneProcessServer::getSkillManager() {
 }
 
 ObjectController* ZoneProcessServer::getObjectController() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -110,20 +111,20 @@ ObjectController* ZoneProcessServer::getObjectController() {
 }
 
 PlayerManager* ZoneProcessServer::getPlayerManager() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETPLAYERMANAGER__);
 
-		return (PlayerManager*) method.executeWithObjectReturn();
+		return static_cast<PlayerManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPlayerManager();
 }
 
 NameManager* ZoneProcessServer::getNameManager() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -132,7 +133,7 @@ NameManager* ZoneProcessServer::getNameManager() {
 }
 
 HolocronManager* ZoneProcessServer::getHolocronManager() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -141,20 +142,20 @@ HolocronManager* ZoneProcessServer::getHolocronManager() {
 }
 
 ChatManager* ZoneProcessServer::getChatManager() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCHATMANAGER__);
 
-		return (ChatManager*) method.executeWithObjectReturn();
+		return static_cast<ChatManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getChatManager();
 }
 
 SuiManager* ZoneProcessServer::getSuiManager() {
-	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -195,7 +196,7 @@ void ZoneProcessServerImplementation::_initializeImplementation() {
 }
 
 void ZoneProcessServerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ZoneProcessServer*) stub;
+	_this = static_cast<ZoneProcessServer*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -368,23 +369,23 @@ Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ZoneProcessServerAdapter::initialize() {
-	((ZoneProcessServerImplementation*) impl)->initialize();
+	(static_cast<ZoneProcessServerImplementation*>(impl))->initialize();
 }
 
 void ZoneProcessServerAdapter::finalize() {
-	((ZoneProcessServerImplementation*) impl)->finalize();
+	(static_cast<ZoneProcessServerImplementation*>(impl))->finalize();
 }
 
 ZoneServer* ZoneProcessServerAdapter::getZoneServer() {
-	return ((ZoneProcessServerImplementation*) impl)->getZoneServer();
+	return (static_cast<ZoneProcessServerImplementation*>(impl))->getZoneServer();
 }
 
 PlayerManager* ZoneProcessServerAdapter::getPlayerManager() {
-	return ((ZoneProcessServerImplementation*) impl)->getPlayerManager();
+	return (static_cast<ZoneProcessServerImplementation*>(impl))->getPlayerManager();
 }
 
 ChatManager* ZoneProcessServerAdapter::getChatManager() {
-	return ((ZoneProcessServerImplementation*) impl)->getChatManager();
+	return (static_cast<ZoneProcessServerImplementation*>(impl))->getChatManager();
 }
 
 /*
@@ -412,7 +413,7 @@ DistributedObjectServant* ZoneProcessServerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneProcessServerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneProcessServerAdapter((ZoneProcessServerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ZoneProcessServerAdapter(static_cast<ZoneProcessServerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

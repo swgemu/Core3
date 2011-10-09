@@ -37,7 +37,7 @@ public:
 		}
 
 		int idx = Integer::valueOf(args->get(0).toString());
-		SuiListBox* box = (SuiListBox*) suiBox;
+		SuiListBox* box = cast<SuiListBox*>( suiBox);
 		byte menuID = box->getMenuObjectID(idx);
 
 		session->handleMenuSelect(menuID);

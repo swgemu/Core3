@@ -29,8 +29,9 @@ Buff::~Buff() {
 }
 
 
+
 void Buff::initializeTransientMembers() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void Buff::initializeTransientMembers() {
 }
 
 void Buff::init() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -56,7 +57,7 @@ void Buff::init() {
 }
 
 void Buff::sendTo(CreatureObject* player) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -70,7 +71,7 @@ void Buff::sendTo(CreatureObject* player) {
 }
 
 void Buff::sendDestroyTo(CreatureObject* player) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ void Buff::sendDestroyTo(CreatureObject* player) {
 }
 
 void Buff::activate(bool applyModifiers) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +99,7 @@ void Buff::activate(bool applyModifiers) {
 }
 
 void Buff::deactivate(bool removeModifiers) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -112,7 +113,7 @@ void Buff::deactivate(bool removeModifiers) {
 }
 
 void Buff::activate() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -125,7 +126,7 @@ void Buff::activate() {
 }
 
 void Buff::deactivate() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -138,7 +139,7 @@ void Buff::deactivate() {
 }
 
 void Buff::applyAttributeModifiers() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -151,7 +152,7 @@ void Buff::applyAttributeModifiers() {
 }
 
 void Buff::applySkillModifiers() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -164,7 +165,7 @@ void Buff::applySkillModifiers() {
 }
 
 void Buff::removeAttributeModifiers() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -177,7 +178,7 @@ void Buff::removeAttributeModifiers() {
 }
 
 void Buff::removeSkillModifiers() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -190,7 +191,7 @@ void Buff::removeSkillModifiers() {
 }
 
 void Buff::clearBuffEvent() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -203,7 +204,7 @@ void Buff::clearBuffEvent() {
 }
 
 void Buff::setBuffEventNull() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -216,7 +217,7 @@ void Buff::setBuffEventNull() {
 }
 
 void Buff::scheduleBuffEvent() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -229,7 +230,7 @@ void Buff::scheduleBuffEvent() {
 }
 
 void Buff::parseAttributeModifierString(const String& modifierstring) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -243,7 +244,7 @@ void Buff::parseAttributeModifierString(const String& modifierstring) {
 }
 
 void Buff::parseSkillModifierString(const String& modifierstring) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -257,7 +258,7 @@ void Buff::parseSkillModifierString(const String& modifierstring) {
 }
 
 String Buff::getAttributeModifierString() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -271,7 +272,7 @@ String Buff::getAttributeModifierString() {
 }
 
 String Buff::getSkillModifierString() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -285,7 +286,7 @@ String Buff::getSkillModifierString() {
 }
 
 float Buff::getTimeLeft() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -298,7 +299,7 @@ float Buff::getTimeLeft() {
 }
 
 void Buff::setAttributeModifier(byte attribute, int value) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -313,7 +314,7 @@ void Buff::setAttributeModifier(byte attribute, int value) {
 }
 
 void Buff::setSkillModifier(const String& modname, int value) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -328,7 +329,7 @@ void Buff::setSkillModifier(const String& modname, int value) {
 }
 
 void Buff::setSpeedMultiplierMod(float multiplier) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -342,7 +343,7 @@ void Buff::setSpeedMultiplierMod(float multiplier) {
 }
 
 void Buff::setAccelerationMultiplierMod(float multiplier) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -356,7 +357,7 @@ void Buff::setAccelerationMultiplierMod(float multiplier) {
 }
 
 void Buff::setFillAttirbutesOnBuff(bool val) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -370,7 +371,7 @@ void Buff::setFillAttirbutesOnBuff(bool val) {
 }
 
 String Buff::getBuffName() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -384,7 +385,7 @@ String Buff::getBuffName() {
 }
 
 int Buff::getBuffCRC() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -397,7 +398,7 @@ int Buff::getBuffCRC() {
 }
 
 float Buff::getBuffDuration() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -410,7 +411,7 @@ float Buff::getBuffDuration() {
 }
 
 int Buff::getBuffType() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -423,7 +424,7 @@ int Buff::getBuffType() {
 }
 
 int Buff::getAttributeModifierValue(byte attribute) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -437,7 +438,7 @@ int Buff::getAttributeModifierValue(byte attribute) {
 }
 
 int Buff::getSkillModifierValue(const String& modname) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -451,7 +452,7 @@ int Buff::getSkillModifierValue(const String& modname) {
 }
 
 bool Buff::isActive() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -464,7 +465,7 @@ bool Buff::isActive() {
 }
 
 bool Buff::isSpiceBuff() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -477,7 +478,7 @@ bool Buff::isSpiceBuff() {
 }
 
 bool Buff::isAttributeBuff() {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -490,7 +491,7 @@ bool Buff::isAttributeBuff() {
 }
 
 void Buff::setStartMessage(StringIdChatParameter& start) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -499,7 +500,7 @@ void Buff::setStartMessage(StringIdChatParameter& start) {
 }
 
 void Buff::setEndMessage(StringIdChatParameter& start) {
-	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -542,7 +543,7 @@ void BuffImplementation::_initializeImplementation() {
 }
 
 void BuffImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Buff*) stub;
+	_this = static_cast<Buff*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -940,10 +941,10 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		init();
 		break;
 	case RPC_SENDTO__CREATUREOBJECT_:
-		sendTo((CreatureObject*) inv->getObjectParameter());
+		sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDDESTROYTO__CREATUREOBJECT_:
-		sendDestroyTo((CreatureObject*) inv->getObjectParameter());
+		sendDestroyTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
@@ -1043,139 +1044,139 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void BuffAdapter::initializeTransientMembers() {
-	((BuffImplementation*) impl)->initializeTransientMembers();
+	(static_cast<BuffImplementation*>(impl))->initializeTransientMembers();
 }
 
 void BuffAdapter::init() {
-	((BuffImplementation*) impl)->init();
+	(static_cast<BuffImplementation*>(impl))->init();
 }
 
 void BuffAdapter::sendTo(CreatureObject* player) {
-	((BuffImplementation*) impl)->sendTo(player);
+	(static_cast<BuffImplementation*>(impl))->sendTo(player);
 }
 
 void BuffAdapter::sendDestroyTo(CreatureObject* player) {
-	((BuffImplementation*) impl)->sendDestroyTo(player);
+	(static_cast<BuffImplementation*>(impl))->sendDestroyTo(player);
 }
 
 void BuffAdapter::activate(bool applyModifiers) {
-	((BuffImplementation*) impl)->activate(applyModifiers);
+	(static_cast<BuffImplementation*>(impl))->activate(applyModifiers);
 }
 
 void BuffAdapter::deactivate(bool removeModifiers) {
-	((BuffImplementation*) impl)->deactivate(removeModifiers);
+	(static_cast<BuffImplementation*>(impl))->deactivate(removeModifiers);
 }
 
 void BuffAdapter::activate() {
-	((BuffImplementation*) impl)->activate();
+	(static_cast<BuffImplementation*>(impl))->activate();
 }
 
 void BuffAdapter::deactivate() {
-	((BuffImplementation*) impl)->deactivate();
+	(static_cast<BuffImplementation*>(impl))->deactivate();
 }
 
 void BuffAdapter::applyAttributeModifiers() {
-	((BuffImplementation*) impl)->applyAttributeModifiers();
+	(static_cast<BuffImplementation*>(impl))->applyAttributeModifiers();
 }
 
 void BuffAdapter::applySkillModifiers() {
-	((BuffImplementation*) impl)->applySkillModifiers();
+	(static_cast<BuffImplementation*>(impl))->applySkillModifiers();
 }
 
 void BuffAdapter::removeAttributeModifiers() {
-	((BuffImplementation*) impl)->removeAttributeModifiers();
+	(static_cast<BuffImplementation*>(impl))->removeAttributeModifiers();
 }
 
 void BuffAdapter::removeSkillModifiers() {
-	((BuffImplementation*) impl)->removeSkillModifiers();
+	(static_cast<BuffImplementation*>(impl))->removeSkillModifiers();
 }
 
 void BuffAdapter::clearBuffEvent() {
-	((BuffImplementation*) impl)->clearBuffEvent();
+	(static_cast<BuffImplementation*>(impl))->clearBuffEvent();
 }
 
 void BuffAdapter::setBuffEventNull() {
-	((BuffImplementation*) impl)->setBuffEventNull();
+	(static_cast<BuffImplementation*>(impl))->setBuffEventNull();
 }
 
 void BuffAdapter::scheduleBuffEvent() {
-	((BuffImplementation*) impl)->scheduleBuffEvent();
+	(static_cast<BuffImplementation*>(impl))->scheduleBuffEvent();
 }
 
 void BuffAdapter::parseAttributeModifierString(const String& modifierstring) {
-	((BuffImplementation*) impl)->parseAttributeModifierString(modifierstring);
+	(static_cast<BuffImplementation*>(impl))->parseAttributeModifierString(modifierstring);
 }
 
 void BuffAdapter::parseSkillModifierString(const String& modifierstring) {
-	((BuffImplementation*) impl)->parseSkillModifierString(modifierstring);
+	(static_cast<BuffImplementation*>(impl))->parseSkillModifierString(modifierstring);
 }
 
 String BuffAdapter::getAttributeModifierString() {
-	return ((BuffImplementation*) impl)->getAttributeModifierString();
+	return (static_cast<BuffImplementation*>(impl))->getAttributeModifierString();
 }
 
 String BuffAdapter::getSkillModifierString() {
-	return ((BuffImplementation*) impl)->getSkillModifierString();
+	return (static_cast<BuffImplementation*>(impl))->getSkillModifierString();
 }
 
 float BuffAdapter::getTimeLeft() {
-	return ((BuffImplementation*) impl)->getTimeLeft();
+	return (static_cast<BuffImplementation*>(impl))->getTimeLeft();
 }
 
 void BuffAdapter::setAttributeModifier(byte attribute, int value) {
-	((BuffImplementation*) impl)->setAttributeModifier(attribute, value);
+	(static_cast<BuffImplementation*>(impl))->setAttributeModifier(attribute, value);
 }
 
 void BuffAdapter::setSkillModifier(const String& modname, int value) {
-	((BuffImplementation*) impl)->setSkillModifier(modname, value);
+	(static_cast<BuffImplementation*>(impl))->setSkillModifier(modname, value);
 }
 
 void BuffAdapter::setSpeedMultiplierMod(float multiplier) {
-	((BuffImplementation*) impl)->setSpeedMultiplierMod(multiplier);
+	(static_cast<BuffImplementation*>(impl))->setSpeedMultiplierMod(multiplier);
 }
 
 void BuffAdapter::setAccelerationMultiplierMod(float multiplier) {
-	((BuffImplementation*) impl)->setAccelerationMultiplierMod(multiplier);
+	(static_cast<BuffImplementation*>(impl))->setAccelerationMultiplierMod(multiplier);
 }
 
 void BuffAdapter::setFillAttirbutesOnBuff(bool val) {
-	((BuffImplementation*) impl)->setFillAttirbutesOnBuff(val);
+	(static_cast<BuffImplementation*>(impl))->setFillAttirbutesOnBuff(val);
 }
 
 String BuffAdapter::getBuffName() {
-	return ((BuffImplementation*) impl)->getBuffName();
+	return (static_cast<BuffImplementation*>(impl))->getBuffName();
 }
 
 int BuffAdapter::getBuffCRC() {
-	return ((BuffImplementation*) impl)->getBuffCRC();
+	return (static_cast<BuffImplementation*>(impl))->getBuffCRC();
 }
 
 float BuffAdapter::getBuffDuration() {
-	return ((BuffImplementation*) impl)->getBuffDuration();
+	return (static_cast<BuffImplementation*>(impl))->getBuffDuration();
 }
 
 int BuffAdapter::getBuffType() {
-	return ((BuffImplementation*) impl)->getBuffType();
+	return (static_cast<BuffImplementation*>(impl))->getBuffType();
 }
 
 int BuffAdapter::getAttributeModifierValue(byte attribute) {
-	return ((BuffImplementation*) impl)->getAttributeModifierValue(attribute);
+	return (static_cast<BuffImplementation*>(impl))->getAttributeModifierValue(attribute);
 }
 
 int BuffAdapter::getSkillModifierValue(const String& modname) {
-	return ((BuffImplementation*) impl)->getSkillModifierValue(modname);
+	return (static_cast<BuffImplementation*>(impl))->getSkillModifierValue(modname);
 }
 
 bool BuffAdapter::isActive() {
-	return ((BuffImplementation*) impl)->isActive();
+	return (static_cast<BuffImplementation*>(impl))->isActive();
 }
 
 bool BuffAdapter::isSpiceBuff() {
-	return ((BuffImplementation*) impl)->isSpiceBuff();
+	return (static_cast<BuffImplementation*>(impl))->isSpiceBuff();
 }
 
 bool BuffAdapter::isAttributeBuff() {
-	return ((BuffImplementation*) impl)->isAttributeBuff();
+	return (static_cast<BuffImplementation*>(impl))->isAttributeBuff();
 }
 
 /*
@@ -1203,7 +1204,7 @@ DistributedObjectServant* BuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BuffAdapter((BuffImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new BuffAdapter(static_cast<BuffImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

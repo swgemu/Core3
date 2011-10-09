@@ -39,8 +39,9 @@ RevivePack::~RevivePack() {
 }
 
 
+
 void RevivePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -49,7 +50,7 @@ void RevivePack::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void RevivePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void RevivePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* ob
 }
 
 int RevivePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ int RevivePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) 
 }
 
 float RevivePack::getHealthWoundHealed() {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ float RevivePack::getHealthWoundHealed() {
 }
 
 float RevivePack::getHealthHealed() {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -99,7 +100,7 @@ float RevivePack::getHealthHealed() {
 }
 
 float RevivePack::getActionWoundHealed() {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -112,7 +113,7 @@ float RevivePack::getActionWoundHealed() {
 }
 
 float RevivePack::getActionHealed() {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -125,7 +126,7 @@ float RevivePack::getActionHealed() {
 }
 
 float RevivePack::getMindWoundHealed() {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -138,7 +139,7 @@ float RevivePack::getMindWoundHealed() {
 }
 
 float RevivePack::getMindHealed() {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -151,7 +152,7 @@ float RevivePack::getMindHealed() {
 }
 
 bool RevivePack::isRevivePack() {
-	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
+	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -198,7 +199,7 @@ void RevivePackImplementation::_initializeImplementation() {
 }
 
 void RevivePackImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (RevivePack*) stub;
+	_this = static_cast<RevivePack*>(stub);
 	PharmaceuticalObjectImplementation::_setStub(stub);
 }
 
@@ -512,7 +513,7 @@ Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_GETHEALTHWOUNDHEALED__:
 		resp->insertFloat(getHealthWoundHealed());
@@ -543,35 +544,35 @@ Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int RevivePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((RevivePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<RevivePackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 float RevivePackAdapter::getHealthWoundHealed() {
-	return ((RevivePackImplementation*) impl)->getHealthWoundHealed();
+	return (static_cast<RevivePackImplementation*>(impl))->getHealthWoundHealed();
 }
 
 float RevivePackAdapter::getHealthHealed() {
-	return ((RevivePackImplementation*) impl)->getHealthHealed();
+	return (static_cast<RevivePackImplementation*>(impl))->getHealthHealed();
 }
 
 float RevivePackAdapter::getActionWoundHealed() {
-	return ((RevivePackImplementation*) impl)->getActionWoundHealed();
+	return (static_cast<RevivePackImplementation*>(impl))->getActionWoundHealed();
 }
 
 float RevivePackAdapter::getActionHealed() {
-	return ((RevivePackImplementation*) impl)->getActionHealed();
+	return (static_cast<RevivePackImplementation*>(impl))->getActionHealed();
 }
 
 float RevivePackAdapter::getMindWoundHealed() {
-	return ((RevivePackImplementation*) impl)->getMindWoundHealed();
+	return (static_cast<RevivePackImplementation*>(impl))->getMindWoundHealed();
 }
 
 float RevivePackAdapter::getMindHealed() {
-	return ((RevivePackImplementation*) impl)->getMindHealed();
+	return (static_cast<RevivePackImplementation*>(impl))->getMindHealed();
 }
 
 bool RevivePackAdapter::isRevivePack() {
-	return ((RevivePackImplementation*) impl)->isRevivePack();
+	return (static_cast<RevivePackImplementation*>(impl))->isRevivePack();
 }
 
 /*
@@ -599,7 +600,7 @@ DistributedObjectServant* RevivePackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RevivePackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RevivePackAdapter((RevivePackImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new RevivePackAdapter(static_cast<RevivePackImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

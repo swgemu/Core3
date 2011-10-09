@@ -73,8 +73,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
-		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
+		CreatureObject* player = cast<CreatureObject*>(creature);
+		CreatureObject* playerTarget = cast<CreatureObject*>( creatureTarget);
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -106,8 +106,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
-		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
+		CreatureObject* player = cast<CreatureObject*>(creature);
+		CreatureObject* playerTarget = cast<CreatureObject*>( creatureTarget);
 
 		String creatureName = player->getFirstName();
 		String creatureTargetName = playerTarget->getFirstName();
@@ -138,7 +138,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int) round((float) power * 1.0f);
 
@@ -175,14 +175,14 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 	/*	if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_a1"); //Target must be a player or a creature pet in order to tend damage.
 			return GENERALERROR;
 		}*/
 
-		//CreatureObject* creatureTarget = (CreatureObject*) target;
+		//CreatureObject* creatureTarget = cast<CreatureObject*>( target);
 
 		Locker clocker(creatureTarget, creature);
 
@@ -218,8 +218,8 @@ public:
 		}
 
 		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * pt = cast<Player *>( creatureTarget);
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -259,7 +259,7 @@ public:
 
 			if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-				playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
+				playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 			}
 
 			sendHealMessage(creature, creatureTarget, healedHealth, healedAction);
@@ -273,7 +273,7 @@ public:
 				if (creatureTarget == creature)
 					creature->sendSystemMessage("healing_response", "healing_response_67");
 				else if (creatureTarget->isPlayerCreature()){
-					creature->sendSystemMessage(((CreatureObject*)creatureTarget)->getFirstName()
+					creature->sendSystemMessage(creatureTarget->getFirstName()
 							+ " has no wounds of that type to heal.");
 				}
 
@@ -300,7 +300,7 @@ public:
 
 			if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-				playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
+				playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 			}
 
 			sendWoundMessage(creature, creatureTarget, attribute, -healedWounds);

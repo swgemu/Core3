@@ -27,8 +27,9 @@ InstrumentObserver::~InstrumentObserver() {
 }
 
 
+
 int InstrumentObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	InstrumentObserverImplementation* _implementation = (InstrumentObserverImplementation*) _getImplementation();
+	InstrumentObserverImplementation* _implementation = static_cast<InstrumentObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +80,7 @@ void InstrumentObserverImplementation::_initializeImplementation() {
 }
 
 void InstrumentObserverImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (InstrumentObserver*) stub;
+	_this = static_cast<InstrumentObserver*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -199,7 +200,7 @@ Packet* InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -209,7 +210,7 @@ Packet* InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 int InstrumentObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((InstrumentObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<InstrumentObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -237,7 +238,7 @@ DistributedObjectServant* InstrumentObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InstrumentObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InstrumentObserverAdapter((InstrumentObserverImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new InstrumentObserverAdapter(static_cast<InstrumentObserverImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

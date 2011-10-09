@@ -45,8 +45,9 @@ ChatManager::~ChatManager() {
 }
 
 
+
 void ChatManager::initiateRooms() {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -59,7 +60,7 @@ void ChatManager::initiateRooms() {
 }
 
 void ChatManager::destroyRooms() {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +73,7 @@ void ChatManager::destroyRooms() {
 }
 
 ChatRoom* ChatManager::createRoom(const String& roomName, ChatRoom* parent) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -81,13 +82,13 @@ ChatRoom* ChatManager::createRoom(const String& roomName, ChatRoom* parent) {
 		method.addAsciiParameter(roomName);
 		method.addObjectParameter(parent);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createRoom(roomName, parent);
 }
 
 void ChatManager::addRoom(ChatRoom* channel) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -101,7 +102,7 @@ void ChatManager::addRoom(ChatRoom* channel) {
 }
 
 void ChatManager::removeRoom(ChatRoom* channel) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -115,7 +116,7 @@ void ChatManager::removeRoom(ChatRoom* channel) {
 }
 
 void ChatManager::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -130,7 +131,7 @@ void ChatManager::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) 
 }
 
 void ChatManager::sendRoomList(CreatureObject* player) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -144,7 +145,7 @@ void ChatManager::sendRoomList(CreatureObject* player) {
 }
 
 void ChatManager::addPlayer(CreatureObject* player) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -158,7 +159,7 @@ void ChatManager::addPlayer(CreatureObject* player) {
 }
 
 CreatureObject* ChatManager::getPlayer(const String& name) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,13 +167,13 @@ CreatureObject* ChatManager::getPlayer(const String& name) {
 		DistributedMethod method(this, RPC_GETPLAYER__STRING_);
 		method.addAsciiParameter(name);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPlayer(name);
 }
 
 CreatureObject* ChatManager::removePlayer(const String& name) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -180,13 +181,13 @@ CreatureObject* ChatManager::removePlayer(const String& name) {
 		DistributedMethod method(this, RPC_REMOVEPLAYER__STRING_);
 		method.addAsciiParameter(name);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->removePlayer(name);
 }
 
 void ChatManager::broadcastMessage(BaseMessage* message) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -200,7 +201,7 @@ void ChatManager::broadcastMessage(BaseMessage* message) {
 }
 
 void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -218,7 +219,7 @@ void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& 
 }
 
 void ChatManager::handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -233,7 +234,7 @@ void ChatManager::handleSpatialChatInternalMessage(CreatureObject* player, const
 }
 
 void ChatManager::handleGroupChat(CreatureObject* player, const UnicodeString& message) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -248,7 +249,7 @@ void ChatManager::handleGroupChat(CreatureObject* player, const UnicodeString& m
 }
 
 ChatRoom* ChatManager::createRoomByFullPath(const String& path) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -256,13 +257,13 @@ ChatRoom* ChatManager::createRoomByFullPath(const String& path) {
 		DistributedMethod method(this, RPC_CREATEROOMBYFULLPATH__STRING_);
 		method.addAsciiParameter(path);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createRoomByFullPath(path);
 }
 
 ChatRoom* ChatManager::getChatRoomByFullPath(const String& path) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -270,13 +271,13 @@ ChatRoom* ChatManager::getChatRoomByFullPath(const String& path) {
 		DistributedMethod method(this, RPC_GETCHATROOMBYFULLPATH__STRING_);
 		method.addAsciiParameter(path);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getChatRoomByFullPath(path);
 }
 
 ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const String& path) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -285,13 +286,13 @@ ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const String& path)
 		method.addObjectParameter(game);
 		method.addAsciiParameter(path);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getChatRoomByGamePath(game, path);
 }
 
 void ChatManager::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -308,7 +309,7 @@ void ChatManager::handleChatRoomMessage(CreatureObject* sender, const UnicodeStr
 }
 
 void ChatManager::handleChatEnterRoomById(CreatureObject* player, unsigned int counter, unsigned int roomID) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -324,7 +325,7 @@ void ChatManager::handleChatEnterRoomById(CreatureObject* player, unsigned int c
 }
 
 void ChatManager::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -339,7 +340,7 @@ void ChatManager::handleSocialInternalMessage(CreatureObject* sender, const Unic
 }
 
 void ChatManager::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -348,7 +349,7 @@ void ChatManager::handleChatInstantMessageToCharacter(ChatInstantMessageToCharac
 }
 
 void ChatManager::destroyRoom(ChatRoom* room) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -362,7 +363,7 @@ void ChatManager::destroyRoom(ChatRoom* room) {
 }
 
 ChatRoom* ChatManager::createGroupRoom(unsigned long long groupID, CreatureObject* creator) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -371,13 +372,13 @@ ChatRoom* ChatManager::createGroupRoom(unsigned long long groupID, CreatureObjec
 		method.addUnsignedLongParameter(groupID);
 		method.addObjectParameter(creator);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createGroupRoom(groupID, creator);
 }
 
 void ChatManager::loadMail(CreatureObject* player) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -391,7 +392,7 @@ void ChatManager::loadMail(CreatureObject* player) {
 }
 
 void ChatManager::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -408,7 +409,7 @@ void ChatManager::sendMail(const String& sendername, const UnicodeString& header
 }
 
 int ChatManager::sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName, WaypointObject* waypoint) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -417,7 +418,7 @@ int ChatManager::sendMail(const String& sendername, const UnicodeString& subject
 }
 
 int ChatManager::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -426,7 +427,7 @@ int ChatManager::sendMail(const String& sendername, const UnicodeString& subject
 }
 
 void ChatManager::handleRequestPersistentMsg(CreatureObject* player, unsigned int mailID) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -441,7 +442,7 @@ void ChatManager::handleRequestPersistentMsg(CreatureObject* player, unsigned in
 }
 
 void ChatManager::deletePersistentMessage(CreatureObject* player, unsigned int mailID) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -456,7 +457,7 @@ void ChatManager::deletePersistentMessage(CreatureObject* player, unsigned int m
 }
 
 void ChatManager::broadcastGalaxy(CreatureObject* player, const String& message) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -471,7 +472,7 @@ void ChatManager::broadcastGalaxy(CreatureObject* player, const String& message)
 }
 
 void ChatManager::setPlayerManager(PlayerManager* manager) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -485,7 +486,7 @@ void ChatManager::setPlayerManager(PlayerManager* manager) {
 }
 
 ChatRoom* ChatManager::getChatRoom(unsigned int id) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -493,13 +494,13 @@ ChatRoom* ChatManager::getChatRoom(unsigned int id) {
 		DistributedMethod method(this, RPC_GETCHATROOM__INT_);
 		method.addUnsignedIntParameter(id);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getChatRoom(id);
 }
 
 ChatRoom* ChatManager::getGameRoom(const String& game) {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -507,13 +508,13 @@ ChatRoom* ChatManager::getGameRoom(const String& game) {
 		DistributedMethod method(this, RPC_GETGAMEROOM__STRING_);
 		method.addAsciiParameter(game);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getGameRoom(game);
 }
 
 unsigned int ChatManager::getNextRoomID() {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -526,7 +527,7 @@ unsigned int ChatManager::getNextRoomID() {
 }
 
 int ChatManager::getPlayerCount() {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -539,7 +540,7 @@ int ChatManager::getPlayerCount() {
 }
 
 PlayerMap* ChatManager::getPlayerMap() {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -548,27 +549,27 @@ PlayerMap* ChatManager::getPlayerMap() {
 }
 
 ChatRoom* ChatManager::getGuildRoom() {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETGUILDROOM__);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getGuildRoom();
 }
 
 ChatRoom* ChatManager::getGroupRoom() {
-	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETGROUPROOM__);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getGroupRoom();
 }
@@ -606,7 +607,7 @@ void ChatManagerImplementation::_initializeImplementation() {
 }
 
 void ChatManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ChatManager*) stub;
+	_this = static_cast<ChatManager*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -862,22 +863,22 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		destroyRooms();
 		break;
 	case RPC_CREATEROOM__STRING_CHATROOM_:
-		resp->insertLong(createRoom(inv->getAsciiParameter(_param0_createRoom__String_ChatRoom_), (ChatRoom*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(createRoom(inv->getAsciiParameter(_param0_createRoom__String_ChatRoom_), static_cast<ChatRoom*>(inv->getObjectParameter()))->_getObjectID());
 		break;
 	case RPC_ADDROOM__CHATROOM_:
-		addRoom((ChatRoom*) inv->getObjectParameter());
+		addRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEROOM__CHATROOM_:
-		removeRoom((ChatRoom*) inv->getObjectParameter());
+		removeRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
 		break;
 	case RPC_POPULATEROOMLISTMESSAGE__CHATROOM_CHATROOMLIST_:
-		populateRoomListMessage((ChatRoom*) inv->getObjectParameter(), (ChatRoomList*) inv->getObjectParameter());
+		populateRoomListMessage(static_cast<ChatRoom*>(inv->getObjectParameter()), static_cast<ChatRoomList*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDROOMLIST__CREATUREOBJECT_:
-		sendRoomList((CreatureObject*) inv->getObjectParameter());
+		sendRoomList(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDPLAYER__CREATUREOBJECT_:
-		addPlayer((CreatureObject*) inv->getObjectParameter());
+		addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETPLAYER__STRING_:
 		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
@@ -886,16 +887,16 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
 		break;
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
-		broadcastMessage((BaseMessage*) inv->getObjectParameter());
+		broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
 		break;
 	case RPC_BROADCASTMESSAGE__CREATUREOBJECT_UNICODESTRING_LONG_INT_INT_:
-		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case RPC_HANDLESPATIALCHATINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_:
-		handleSpatialChatInternalMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__CreatureObject_UnicodeString_));
+		handleSpatialChatInternalMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__CreatureObject_UnicodeString_));
 		break;
 	case RPC_HANDLEGROUPCHAT__CREATUREOBJECT_UNICODESTRING_:
-		handleGroupChat((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleGroupChat__CreatureObject_UnicodeString_));
+		handleGroupChat(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleGroupChat__CreatureObject_UnicodeString_));
 		break;
 	case RPC_CREATEROOMBYFULLPATH__STRING_:
 		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__String_))->_getObjectID());
@@ -904,40 +905,40 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__String_))->_getObjectID());
 		break;
 	case RPC_GETCHATROOMBYGAMEPATH__CHATROOM_STRING_:
-		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_String_))->_getObjectID());
+		resp->insertLong(getChatRoomByGamePath(static_cast<ChatRoom*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_String_))->_getObjectID());
 		break;
 	case RPC_HANDLECHATROOMMESSAGE__CREATUREOBJECT_UNICODESTRING_INT_INT_:
-		handleChatRoomMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleChatRoomMessage__CreatureObject_UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		handleChatRoomMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleChatRoomMessage__CreatureObject_UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case RPC_HANDLECHATENTERROOMBYID__CREATUREOBJECT_INT_INT_:
-		handleChatEnterRoomById((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		handleChatEnterRoomById(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case RPC_HANDLESOCIALINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_:
-		handleSocialInternalMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSocialInternalMessage__CreatureObject_UnicodeString_));
+		handleSocialInternalMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleSocialInternalMessage__CreatureObject_UnicodeString_));
 		break;
 	case RPC_DESTROYROOM__CHATROOM_:
-		destroyRoom((ChatRoom*) inv->getObjectParameter());
+		destroyRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
 		break;
 	case RPC_CREATEGROUPROOM__LONG_CREATUREOBJECT_:
-		resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), (CreatureObject*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
 		break;
 	case RPC_LOADMAIL__CREATUREOBJECT_:
-		loadMail((CreatureObject*) inv->getObjectParameter());
+		loadMail(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDMAIL__STRING_UNICODESTRING_UNICODESTRING_STRING_:
 		sendMail(inv->getAsciiParameter(_param0_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param1_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param2_sendMail__String_UnicodeString_UnicodeString_String_), inv->getAsciiParameter(_param3_sendMail__String_UnicodeString_UnicodeString_String_));
 		break;
 	case RPC_HANDLEREQUESTPERSISTENTMSG__CREATUREOBJECT_INT_:
-		handleRequestPersistentMsg((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		handleRequestPersistentMsg(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
 		break;
 	case RPC_DELETEPERSISTENTMESSAGE__CREATUREOBJECT_INT_:
-		deletePersistentMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		deletePersistentMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
 		break;
 	case RPC_BROADCASTGALAXY__CREATUREOBJECT_STRING_:
-		broadcastGalaxy((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastGalaxy__CreatureObject_String_));
+		broadcastGalaxy(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_broadcastGalaxy__CreatureObject_String_));
 		break;
 	case RPC_SETPLAYERMANAGER__PLAYERMANAGER_:
-		setPlayerManager((PlayerManager*) inv->getObjectParameter());
+		setPlayerManager(static_cast<PlayerManager*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETCHATROOM__INT_:
 		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
@@ -965,143 +966,143 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void ChatManagerAdapter::finalize() {
-	((ChatManagerImplementation*) impl)->finalize();
+	(static_cast<ChatManagerImplementation*>(impl))->finalize();
 }
 
 void ChatManagerAdapter::initiateRooms() {
-	((ChatManagerImplementation*) impl)->initiateRooms();
+	(static_cast<ChatManagerImplementation*>(impl))->initiateRooms();
 }
 
 void ChatManagerAdapter::destroyRooms() {
-	((ChatManagerImplementation*) impl)->destroyRooms();
+	(static_cast<ChatManagerImplementation*>(impl))->destroyRooms();
 }
 
 ChatRoom* ChatManagerAdapter::createRoom(const String& roomName, ChatRoom* parent) {
-	return ((ChatManagerImplementation*) impl)->createRoom(roomName, parent);
+	return (static_cast<ChatManagerImplementation*>(impl))->createRoom(roomName, parent);
 }
 
 void ChatManagerAdapter::addRoom(ChatRoom* channel) {
-	((ChatManagerImplementation*) impl)->addRoom(channel);
+	(static_cast<ChatManagerImplementation*>(impl))->addRoom(channel);
 }
 
 void ChatManagerAdapter::removeRoom(ChatRoom* channel) {
-	((ChatManagerImplementation*) impl)->removeRoom(channel);
+	(static_cast<ChatManagerImplementation*>(impl))->removeRoom(channel);
 }
 
 void ChatManagerAdapter::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
-	((ChatManagerImplementation*) impl)->populateRoomListMessage(channel, msg);
+	(static_cast<ChatManagerImplementation*>(impl))->populateRoomListMessage(channel, msg);
 }
 
 void ChatManagerAdapter::sendRoomList(CreatureObject* player) {
-	((ChatManagerImplementation*) impl)->sendRoomList(player);
+	(static_cast<ChatManagerImplementation*>(impl))->sendRoomList(player);
 }
 
 void ChatManagerAdapter::addPlayer(CreatureObject* player) {
-	((ChatManagerImplementation*) impl)->addPlayer(player);
+	(static_cast<ChatManagerImplementation*>(impl))->addPlayer(player);
 }
 
 CreatureObject* ChatManagerAdapter::getPlayer(const String& name) {
-	return ((ChatManagerImplementation*) impl)->getPlayer(name);
+	return (static_cast<ChatManagerImplementation*>(impl))->getPlayer(name);
 }
 
 CreatureObject* ChatManagerAdapter::removePlayer(const String& name) {
-	return ((ChatManagerImplementation*) impl)->removePlayer(name);
+	return (static_cast<ChatManagerImplementation*>(impl))->removePlayer(name);
 }
 
 void ChatManagerAdapter::broadcastMessage(BaseMessage* message) {
-	((ChatManagerImplementation*) impl)->broadcastMessage(message);
+	(static_cast<ChatManagerImplementation*>(impl))->broadcastMessage(message);
 }
 
 void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
-	((ChatManagerImplementation*) impl)->broadcastMessage(player, message, target, moodid, mood2);
+	(static_cast<ChatManagerImplementation*>(impl))->broadcastMessage(player, message, target, moodid, mood2);
 }
 
 void ChatManagerAdapter::handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args) {
-	((ChatManagerImplementation*) impl)->handleSpatialChatInternalMessage(player, args);
+	(static_cast<ChatManagerImplementation*>(impl))->handleSpatialChatInternalMessage(player, args);
 }
 
 void ChatManagerAdapter::handleGroupChat(CreatureObject* player, const UnicodeString& message) {
-	((ChatManagerImplementation*) impl)->handleGroupChat(player, message);
+	(static_cast<ChatManagerImplementation*>(impl))->handleGroupChat(player, message);
 }
 
 ChatRoom* ChatManagerAdapter::createRoomByFullPath(const String& path) {
-	return ((ChatManagerImplementation*) impl)->createRoomByFullPath(path);
+	return (static_cast<ChatManagerImplementation*>(impl))->createRoomByFullPath(path);
 }
 
 ChatRoom* ChatManagerAdapter::getChatRoomByFullPath(const String& path) {
-	return ((ChatManagerImplementation*) impl)->getChatRoomByFullPath(path);
+	return (static_cast<ChatManagerImplementation*>(impl))->getChatRoomByFullPath(path);
 }
 
 ChatRoom* ChatManagerAdapter::getChatRoomByGamePath(ChatRoom* game, const String& path) {
-	return ((ChatManagerImplementation*) impl)->getChatRoomByGamePath(game, path);
+	return (static_cast<ChatManagerImplementation*>(impl))->getChatRoomByGamePath(game, path);
 }
 
 void ChatManagerAdapter::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
-	((ChatManagerImplementation*) impl)->handleChatRoomMessage(sender, message, roomID, counter);
+	(static_cast<ChatManagerImplementation*>(impl))->handleChatRoomMessage(sender, message, roomID, counter);
 }
 
 void ChatManagerAdapter::handleChatEnterRoomById(CreatureObject* player, unsigned int counter, unsigned int roomID) {
-	((ChatManagerImplementation*) impl)->handleChatEnterRoomById(player, counter, roomID);
+	(static_cast<ChatManagerImplementation*>(impl))->handleChatEnterRoomById(player, counter, roomID);
 }
 
 void ChatManagerAdapter::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
-	((ChatManagerImplementation*) impl)->handleSocialInternalMessage(sender, arguments);
+	(static_cast<ChatManagerImplementation*>(impl))->handleSocialInternalMessage(sender, arguments);
 }
 
 void ChatManagerAdapter::destroyRoom(ChatRoom* room) {
-	((ChatManagerImplementation*) impl)->destroyRoom(room);
+	(static_cast<ChatManagerImplementation*>(impl))->destroyRoom(room);
 }
 
 ChatRoom* ChatManagerAdapter::createGroupRoom(unsigned long long groupID, CreatureObject* creator) {
-	return ((ChatManagerImplementation*) impl)->createGroupRoom(groupID, creator);
+	return (static_cast<ChatManagerImplementation*>(impl))->createGroupRoom(groupID, creator);
 }
 
 void ChatManagerAdapter::loadMail(CreatureObject* player) {
-	((ChatManagerImplementation*) impl)->loadMail(player);
+	(static_cast<ChatManagerImplementation*>(impl))->loadMail(player);
 }
 
 void ChatManagerAdapter::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
-	((ChatManagerImplementation*) impl)->sendMail(sendername, header, body, name);
+	(static_cast<ChatManagerImplementation*>(impl))->sendMail(sendername, header, body, name);
 }
 
 void ChatManagerAdapter::handleRequestPersistentMsg(CreatureObject* player, unsigned int mailID) {
-	((ChatManagerImplementation*) impl)->handleRequestPersistentMsg(player, mailID);
+	(static_cast<ChatManagerImplementation*>(impl))->handleRequestPersistentMsg(player, mailID);
 }
 
 void ChatManagerAdapter::deletePersistentMessage(CreatureObject* player, unsigned int mailID) {
-	((ChatManagerImplementation*) impl)->deletePersistentMessage(player, mailID);
+	(static_cast<ChatManagerImplementation*>(impl))->deletePersistentMessage(player, mailID);
 }
 
 void ChatManagerAdapter::broadcastGalaxy(CreatureObject* player, const String& message) {
-	((ChatManagerImplementation*) impl)->broadcastGalaxy(player, message);
+	(static_cast<ChatManagerImplementation*>(impl))->broadcastGalaxy(player, message);
 }
 
 void ChatManagerAdapter::setPlayerManager(PlayerManager* manager) {
-	((ChatManagerImplementation*) impl)->setPlayerManager(manager);
+	(static_cast<ChatManagerImplementation*>(impl))->setPlayerManager(manager);
 }
 
 ChatRoom* ChatManagerAdapter::getChatRoom(unsigned int id) {
-	return ((ChatManagerImplementation*) impl)->getChatRoom(id);
+	return (static_cast<ChatManagerImplementation*>(impl))->getChatRoom(id);
 }
 
 ChatRoom* ChatManagerAdapter::getGameRoom(const String& game) {
-	return ((ChatManagerImplementation*) impl)->getGameRoom(game);
+	return (static_cast<ChatManagerImplementation*>(impl))->getGameRoom(game);
 }
 
 unsigned int ChatManagerAdapter::getNextRoomID() {
-	return ((ChatManagerImplementation*) impl)->getNextRoomID();
+	return (static_cast<ChatManagerImplementation*>(impl))->getNextRoomID();
 }
 
 int ChatManagerAdapter::getPlayerCount() {
-	return ((ChatManagerImplementation*) impl)->getPlayerCount();
+	return (static_cast<ChatManagerImplementation*>(impl))->getPlayerCount();
 }
 
 ChatRoom* ChatManagerAdapter::getGuildRoom() {
-	return ((ChatManagerImplementation*) impl)->getGuildRoom();
+	return (static_cast<ChatManagerImplementation*>(impl))->getGuildRoom();
 }
 
 ChatRoom* ChatManagerAdapter::getGroupRoom() {
-	return ((ChatManagerImplementation*) impl)->getGroupRoom();
+	return (static_cast<ChatManagerImplementation*>(impl))->getGroupRoom();
 }
 
 /*
@@ -1129,7 +1130,7 @@ DistributedObjectServant* ChatManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ChatManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ChatManagerAdapter((ChatManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ChatManagerAdapter(static_cast<ChatManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

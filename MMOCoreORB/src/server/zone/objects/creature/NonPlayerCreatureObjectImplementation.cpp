@@ -10,20 +10,20 @@
 void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	AiAgentImplementation::notifyPositionUpdate(entry);
 
-	SceneObject* scno = (SceneObject*) entry;
+	SceneObject* scno = cast<SceneObject*>( entry);
 
 	// don't worry about this if no one's around, and do it for any creature
 	if (scno == _this || numberOfPlayersInRange <= 0  || !scno->isCreatureObject() || isRetreating() || isFleeing() || isInCombat())
 		return;
 
 	if (followObject == NULL || followObject == scno) {
-		CreatureObject* creo = (CreatureObject*)scno;
+		CreatureObject* creo = cast<CreatureObject*>(scno);
 
 		// TODO: determine if creature can be seen by this (mask scent, et. al.)
 
 		// determine if creature can be a threat
 		if (creo->isAiAgent()) {
-			AiAgent* aio = (AiAgent*)creo;
+			AiAgent* aio = cast<AiAgent*>(creo);
 			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
 				return;
 		} else

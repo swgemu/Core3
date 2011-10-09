@@ -23,6 +23,7 @@ SpaceStationObject::~SpaceStationObject() {
 }
 
 
+
 DistributedObjectServant* SpaceStationObject::_getImplementation() {
 
 	_updated = true;
@@ -58,7 +59,7 @@ void SpaceStationObjectImplementation::_initializeImplementation() {
 }
 
 void SpaceStationObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SpaceStationObject*) stub;
+	_this = static_cast<SpaceStationObject*>(stub);
 	ShipObjectImplementation::_setStub(stub);
 }
 
@@ -196,7 +197,7 @@ DistributedObjectServant* SpaceStationObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpaceStationObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpaceStationObjectAdapter((SpaceStationObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SpaceStationObjectAdapter(static_cast<SpaceStationObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

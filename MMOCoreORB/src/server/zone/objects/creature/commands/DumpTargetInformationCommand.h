@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		//Apparently this command doesn't actually pass the targetid, so that probably means that it only accepts a player name
 		//TODO: Reimplement this command as @getPlayerInfo
@@ -83,7 +83,7 @@ public:
 		uint32 buildingTemplate = 0;
 
 		if (cell != NULL && cell->isCellObject()) {
-			cellid = ((CellObject*)cell)->getCellNumber();
+			cellid = (cast<CellObject*>(cell))->getCellNumber();
 			SceneObject* building = cell->getParent();
 			buildingTemplate = building->getServerObjectCRC();
 		}

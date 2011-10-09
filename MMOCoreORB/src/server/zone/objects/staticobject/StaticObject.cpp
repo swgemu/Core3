@@ -27,8 +27,9 @@ StaticObject::~StaticObject() {
 }
 
 
+
 void StaticObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	StaticObjectImplementation* _implementation = (StaticObjectImplementation*) _getImplementation();
+	StaticObjectImplementation* _implementation = static_cast<StaticObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -37,7 +38,7 @@ void StaticObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void StaticObject::sendBaselinesTo(SceneObject* player) {
-	StaticObjectImplementation* _implementation = (StaticObjectImplementation*) _getImplementation();
+	StaticObjectImplementation* _implementation = static_cast<StaticObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void StaticObjectImplementation::_initializeImplementation() {
 }
 
 void StaticObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (StaticObject*) stub;
+	_this = static_cast<StaticObject*>(stub);
 	SceneObjectImplementation::_setStub(stub);
 }
 
@@ -201,7 +202,7 @@ Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -211,7 +212,7 @@ Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void StaticObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((StaticObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<StaticObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 /*
@@ -239,7 +240,7 @@ DistributedObjectServant* StaticObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StaticObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StaticObjectAdapter((StaticObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new StaticObjectAdapter(static_cast<StaticObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

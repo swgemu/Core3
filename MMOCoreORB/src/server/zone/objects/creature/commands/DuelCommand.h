@@ -76,7 +76,7 @@ public:
 
 		CombatManager* combatManager = CombatManager::instance();
 
-		combatManager->requestDuel((CreatureObject*)creature, (CreatureObject*)targetObject.get());
+		combatManager->requestDuel(creature, cast<CreatureObject*>(targetObject.get()));
 
 		return SUCCESS;
 	}

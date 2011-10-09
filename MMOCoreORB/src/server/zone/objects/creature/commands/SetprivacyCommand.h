@@ -69,7 +69,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		BuildingObject* building = (BuildingObject*) obj.get();
+		BuildingObject* building = cast<BuildingObject*>( obj.get());
 
 		if (!building->isOnAdminList(creature->getFirstName())) {
 			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.

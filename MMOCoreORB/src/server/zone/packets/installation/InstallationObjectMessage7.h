@@ -59,7 +59,7 @@ public:
 			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 7, 0x05) {
 
 		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER) {
-			HarvesterObject* hino = (HarvesterObject*) inso;
+			HarvesterObject* hino = cast<HarvesterObject*>( inso);
 			ResourceManager* resourceManager = inso->getZone()->getZoneServer()->getResourceManager();
 			ResourceList* list = resourceManager->getResourceListAtLocation(inso->getZone()->getZoneName(), inso->getPositionX(), inso->getPositionY(), hino->getHarvesterType());
 

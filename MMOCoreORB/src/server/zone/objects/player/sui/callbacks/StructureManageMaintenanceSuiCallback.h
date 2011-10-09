@@ -29,7 +29,7 @@ public:
 			return; //TODO: What message should be shown here?
 
 		//Deposit/Withdraw the maintenance
-		StructureObject* structure = (StructureObject*) obj.get();
+		StructureObject* structure = cast<StructureObject*>( obj.get());
 
 		Locker _lock(structure, creature);
 

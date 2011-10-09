@@ -31,7 +31,7 @@ void FireworkObjectImplementation::launch(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
-	ManagedReference<StaticObject*> launcherObject = (StaticObject*)server->getZoneServer()->createObject(fireworkObject.hashCode(), 0);
+	ManagedReference<StaticObject*> launcherObject = cast<StaticObject*>(server->getZoneServer()->createObject(fireworkObject.hashCode(), 0));
 
 	if (launcherObject == NULL)
 		return;

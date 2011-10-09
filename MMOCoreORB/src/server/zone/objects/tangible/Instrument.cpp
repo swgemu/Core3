@@ -39,8 +39,9 @@ Instrument::~Instrument() {
 }
 
 
+
 void Instrument::initializeTransientMembers() {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -53,7 +54,7 @@ void Instrument::initializeTransientMembers() {
 }
 
 void Instrument::notifyLoadFromDatabase() {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -66,7 +67,7 @@ void Instrument::notifyLoadFromDatabase() {
 }
 
 void Instrument::loadTemplateData(SharedObjectTemplate* templateData) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -75,7 +76,7 @@ void Instrument::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void Instrument::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -84,7 +85,7 @@ void Instrument::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Creatu
 }
 
 int Instrument::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -99,7 +100,7 @@ int Instrument::handleObjectMenuSelect(CreatureObject* player, byte selectedID) 
 }
 
 void Instrument::spawnInForeignCell(CreatureObject* spawner) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,7 +114,7 @@ void Instrument::spawnInForeignCell(CreatureObject* spawner) {
 }
 
 void Instrument::spawnInAdminCell(CreatureObject* spawner) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,7 +128,7 @@ void Instrument::spawnInAdminCell(CreatureObject* spawner) {
 }
 
 void Instrument::spawnOutside(CreatureObject* spawner) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -141,7 +142,7 @@ void Instrument::spawnOutside(CreatureObject* spawner) {
 }
 
 int Instrument::getInstrumentType() {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -154,20 +155,20 @@ int Instrument::getInstrumentType() {
 }
 
 CreatureObject* Instrument::getSpawnerPlayer() {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETSPAWNERPLAYER__);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSpawnerPlayer();
 }
 
 void Instrument::setSpawnerPlayer(CreatureObject* pla) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,7 +182,7 @@ void Instrument::setSpawnerPlayer(CreatureObject* pla) {
 }
 
 bool Instrument::isBeingUsed() {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -194,7 +195,7 @@ bool Instrument::isBeingUsed() {
 }
 
 void Instrument::setBeingUsed(bool val) {
-	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -242,7 +243,7 @@ void InstrumentImplementation::_initializeImplementation() {
 }
 
 void InstrumentImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Instrument*) stub;
+	_this = static_cast<Instrument*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -488,16 +489,16 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		notifyLoadFromDatabase();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SPAWNINFOREIGNCELL__CREATUREOBJECT_:
-		spawnInForeignCell((CreatureObject*) inv->getObjectParameter());
+		spawnInForeignCell(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SPAWNINADMINCELL__CREATUREOBJECT_:
-		spawnInAdminCell((CreatureObject*) inv->getObjectParameter());
+		spawnInAdminCell(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SPAWNOUTSIDE__CREATUREOBJECT_:
-		spawnOutside((CreatureObject*) inv->getObjectParameter());
+		spawnOutside(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETINSTRUMENTTYPE__:
 		resp->insertSignedInt(getInstrumentType());
@@ -506,7 +507,7 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getSpawnerPlayer()->_getObjectID());
 		break;
 	case RPC_SETSPAWNERPLAYER__CREATUREOBJECT_:
-		setSpawnerPlayer((CreatureObject*) inv->getObjectParameter());
+		setSpawnerPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISBEINGUSED__:
 		resp->insertBoolean(isBeingUsed());
@@ -522,47 +523,47 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void InstrumentAdapter::initializeTransientMembers() {
-	((InstrumentImplementation*) impl)->initializeTransientMembers();
+	(static_cast<InstrumentImplementation*>(impl))->initializeTransientMembers();
 }
 
 void InstrumentAdapter::notifyLoadFromDatabase() {
-	((InstrumentImplementation*) impl)->notifyLoadFromDatabase();
+	(static_cast<InstrumentImplementation*>(impl))->notifyLoadFromDatabase();
 }
 
 int InstrumentAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((InstrumentImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<InstrumentImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstrumentAdapter::spawnInForeignCell(CreatureObject* spawner) {
-	((InstrumentImplementation*) impl)->spawnInForeignCell(spawner);
+	(static_cast<InstrumentImplementation*>(impl))->spawnInForeignCell(spawner);
 }
 
 void InstrumentAdapter::spawnInAdminCell(CreatureObject* spawner) {
-	((InstrumentImplementation*) impl)->spawnInAdminCell(spawner);
+	(static_cast<InstrumentImplementation*>(impl))->spawnInAdminCell(spawner);
 }
 
 void InstrumentAdapter::spawnOutside(CreatureObject* spawner) {
-	((InstrumentImplementation*) impl)->spawnOutside(spawner);
+	(static_cast<InstrumentImplementation*>(impl))->spawnOutside(spawner);
 }
 
 int InstrumentAdapter::getInstrumentType() {
-	return ((InstrumentImplementation*) impl)->getInstrumentType();
+	return (static_cast<InstrumentImplementation*>(impl))->getInstrumentType();
 }
 
 CreatureObject* InstrumentAdapter::getSpawnerPlayer() {
-	return ((InstrumentImplementation*) impl)->getSpawnerPlayer();
+	return (static_cast<InstrumentImplementation*>(impl))->getSpawnerPlayer();
 }
 
 void InstrumentAdapter::setSpawnerPlayer(CreatureObject* pla) {
-	((InstrumentImplementation*) impl)->setSpawnerPlayer(pla);
+	(static_cast<InstrumentImplementation*>(impl))->setSpawnerPlayer(pla);
 }
 
 bool InstrumentAdapter::isBeingUsed() {
-	return ((InstrumentImplementation*) impl)->isBeingUsed();
+	return (static_cast<InstrumentImplementation*>(impl))->isBeingUsed();
 }
 
 void InstrumentAdapter::setBeingUsed(bool val) {
-	((InstrumentImplementation*) impl)->setBeingUsed(val);
+	(static_cast<InstrumentImplementation*>(impl))->setBeingUsed(val);
 }
 
 /*
@@ -590,7 +591,7 @@ DistributedObjectServant* InstrumentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InstrumentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InstrumentAdapter((InstrumentImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new InstrumentAdapter(static_cast<InstrumentImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

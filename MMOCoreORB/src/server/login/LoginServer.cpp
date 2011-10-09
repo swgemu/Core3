@@ -39,8 +39,9 @@ LoginServer::~LoginServer() {
 }
 
 
+
 void LoginServer::initializeTransientMembers() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -53,7 +54,7 @@ void LoginServer::initializeTransientMembers() {
 }
 
 LoginClient* LoginServer::createConnection(Socket* sock, SocketAddress& addr) {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -62,7 +63,7 @@ LoginClient* LoginServer::createConnection(Socket* sock, SocketAddress& addr) {
 }
 
 void LoginServer::initialize() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ void LoginServer::initialize() {
 }
 
 void LoginServer::shutdown() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +89,7 @@ void LoginServer::shutdown() {
 }
 
 void LoginServer::startManagers() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -101,7 +102,7 @@ void LoginServer::startManagers() {
 }
 
 void LoginServer::stopManagers() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -114,7 +115,7 @@ void LoginServer::stopManagers() {
 }
 
 void LoginServer::start(int p, int mconn) {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -129,7 +130,7 @@ void LoginServer::start(int p, int mconn) {
 }
 
 void LoginServer::stop() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -142,7 +143,7 @@ void LoginServer::stop() {
 }
 
 void LoginServer::handleMessage(LoginClient* client, Packet* message) {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -151,7 +152,7 @@ void LoginServer::handleMessage(LoginClient* client, Packet* message) {
 }
 
 void LoginServer::processMessage(Message* message) {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -160,7 +161,7 @@ void LoginServer::processMessage(Message* message) {
 }
 
 bool LoginServer::handleError(ServiceClient* client, Exception& e) {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -169,7 +170,7 @@ bool LoginServer::handleError(ServiceClient* client, Exception& e) {
 }
 
 void LoginServer::printInfo() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -182,7 +183,7 @@ void LoginServer::printInfo() {
 }
 
 void LoginServer::populateGalaxyList() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -195,7 +196,7 @@ void LoginServer::populateGalaxyList() {
 }
 
 AccountManager* LoginServer::getAccountManager() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -204,7 +205,7 @@ AccountManager* LoginServer::getAccountManager() {
 }
 
 Account* LoginServer::getAccount(unsigned int accountID) {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -212,13 +213,13 @@ Account* LoginServer::getAccount(unsigned int accountID) {
 		DistributedMethod method(this, RPC_GETACCOUNT__INT_);
 		method.addUnsignedIntParameter(accountID);
 
-		return (Account*) method.executeWithObjectReturn();
+		return static_cast<Account*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getAccount(accountID);
 }
 
 LoginClient* LoginServer::getLoginClient(ServiceClient* session) {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -227,27 +228,27 @@ LoginClient* LoginServer::getLoginClient(ServiceClient* session) {
 }
 
 LoginEnumCluster* LoginServer::getLoginEnumClusterMessage() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETLOGINENUMCLUSTERMESSAGE__);
 
-		return (LoginEnumCluster*) method.executeWithObjectReturn();
+		return static_cast<LoginEnumCluster*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getLoginEnumClusterMessage();
 }
 
 LoginClusterStatus* LoginServer::getLoginClusterStatusMessage() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	LoginServerImplementation* _implementation = static_cast<LoginServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETLOGINCLUSTERSTATUSMESSAGE__);
 
-		return (LoginClusterStatus*) method.executeWithObjectReturn();
+		return static_cast<LoginClusterStatus*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getLoginClusterStatusMessage();
 }
@@ -287,7 +288,7 @@ void LoginServerImplementation::_initializeImplementation() {
 }
 
 void LoginServerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (LoginServer*) stub;
+	_this = static_cast<LoginServer*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -388,12 +389,12 @@ Account* LoginServerImplementation::getAccount(unsigned int accountID) {
 
 LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage() {
 	// server/login/LoginServer.idl():  		return (LoginEnumCluster) enumClusterMessage.clone();
-	return (LoginEnumCluster*) enumClusterMessage->clone();
+	return cast<LoginEnumCluster*>(enumClusterMessage->clone());
 }
 
 LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
 	// server/login/LoginServer.idl():  		return (LoginClusterStatus) clusterStatusMessage.clone();
-	return (LoginClusterStatus*) clusterStatusMessage->clone();
+	return cast<LoginClusterStatus*>(clusterStatusMessage->clone());
 }
 
 /*
@@ -451,51 +452,51 @@ Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void LoginServerAdapter::initializeTransientMembers() {
-	((LoginServerImplementation*) impl)->initializeTransientMembers();
+	(static_cast<LoginServerImplementation*>(impl))->initializeTransientMembers();
 }
 
 void LoginServerAdapter::initialize() {
-	((LoginServerImplementation*) impl)->initialize();
+	(static_cast<LoginServerImplementation*>(impl))->initialize();
 }
 
 void LoginServerAdapter::shutdown() {
-	((LoginServerImplementation*) impl)->shutdown();
+	(static_cast<LoginServerImplementation*>(impl))->shutdown();
 }
 
 void LoginServerAdapter::startManagers() {
-	((LoginServerImplementation*) impl)->startManagers();
+	(static_cast<LoginServerImplementation*>(impl))->startManagers();
 }
 
 void LoginServerAdapter::stopManagers() {
-	((LoginServerImplementation*) impl)->stopManagers();
+	(static_cast<LoginServerImplementation*>(impl))->stopManagers();
 }
 
 void LoginServerAdapter::start(int p, int mconn) {
-	((LoginServerImplementation*) impl)->start(p, mconn);
+	(static_cast<LoginServerImplementation*>(impl))->start(p, mconn);
 }
 
 void LoginServerAdapter::stop() {
-	((LoginServerImplementation*) impl)->stop();
+	(static_cast<LoginServerImplementation*>(impl))->stop();
 }
 
 void LoginServerAdapter::printInfo() {
-	((LoginServerImplementation*) impl)->printInfo();
+	(static_cast<LoginServerImplementation*>(impl))->printInfo();
 }
 
 void LoginServerAdapter::populateGalaxyList() {
-	((LoginServerImplementation*) impl)->populateGalaxyList();
+	(static_cast<LoginServerImplementation*>(impl))->populateGalaxyList();
 }
 
 Account* LoginServerAdapter::getAccount(unsigned int accountID) {
-	return ((LoginServerImplementation*) impl)->getAccount(accountID);
+	return (static_cast<LoginServerImplementation*>(impl))->getAccount(accountID);
 }
 
 LoginEnumCluster* LoginServerAdapter::getLoginEnumClusterMessage() {
-	return ((LoginServerImplementation*) impl)->getLoginEnumClusterMessage();
+	return (static_cast<LoginServerImplementation*>(impl))->getLoginEnumClusterMessage();
 }
 
 LoginClusterStatus* LoginServerAdapter::getLoginClusterStatusMessage() {
-	return ((LoginServerImplementation*) impl)->getLoginClusterStatusMessage();
+	return (static_cast<LoginServerImplementation*>(impl))->getLoginClusterStatusMessage();
 }
 
 /*
@@ -523,7 +524,7 @@ DistributedObjectServant* LoginServerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LoginServerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LoginServerAdapter((LoginServerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new LoginServerAdapter(static_cast<LoginServerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

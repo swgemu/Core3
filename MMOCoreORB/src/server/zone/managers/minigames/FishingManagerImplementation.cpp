@@ -13,6 +13,7 @@
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
 #include "server/zone/objects/tangible/fishing/FishObject.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/Zone.h"
@@ -404,7 +405,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 			return;
 		} else {
 			String lootFish = "object/tangible/fishing/fish/" + fishType.get(fish) + ".iff";
-			ManagedReference<FishObject*> lootFishObject = (FishObject*)zoneServer->createObject(lootFish.hashCode(), 2);
+			ManagedReference<FishObject*> lootFishObject = cast<FishObject*>(zoneServer->createObject(lootFish.hashCode(), 2));
 
 			if (lootFishObject != NULL) {
 				String time = getTime();
@@ -457,7 +458,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				lootFishObject->setCustomizationVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, color.get(zone->getZoneName()));
 
 				String baitString = "object/tangible/fishing/bait/bait_chum.iff";
-				ManagedReference<TangibleObject*> baitObject = (TangibleObject*)zoneServer->createObject(baitString.hashCode(), 2);
+				ManagedReference<TangibleObject*> baitObject = cast<TangibleObject*>(zoneServer->createObject(baitString.hashCode(), 2));
 
 				int useCount = System::random(5);
 				if (useCount > 1)
@@ -473,14 +474,14 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				resourceString = "seafood_fish_" + resourceString;
 				int amount = System::random(50)+factor;
 				ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
-				ManagedReference<SceneObject*> resource = (SceneObject*)resourceManager->harvestResource(player, resourceString, amount);
+				ManagedReference<SceneObject*> resource = cast<SceneObject*>(resourceManager->harvestResource(player, resourceString, amount));
 
 				if (resource != NULL) {
 					resource->sendTo(player, true);
 					lootFishObject->addObject(resource, -1, true);
 				}
 
-				sendReward(player, marker, (SceneObject*)lootFishObject);
+				sendReward(player, marker, cast<SceneObject*>(lootFishObject.get()));
 			}
 		}
 	}
@@ -652,7 +653,7 @@ FishingPoleObject* FishingManagerImplementation::getPole(CreatureObject* player)
 
 	if (pole != NULL) {
 		if (pole->isFishingPoleObject()) {
-			ManagedReference<FishingPoleObject*> poleObject = (FishingPoleObject*)pole;
+			ManagedReference<FishingPoleObject*> poleObject = cast<FishingPoleObject*>(pole);
 
 			return poleObject;
 		}
@@ -672,7 +673,7 @@ FishingBaitObject* FishingManagerImplementation::getBait(CreatureObject* player)
 
 	if (pole != NULL) {
 		if (pole->isFishingPoleObject() && pole->hasFullContainerObjects()) {
-			ManagedReference<FishingBaitObject*> bait = (FishingBaitObject*)pole->getContainerObject(0);
+			ManagedReference<FishingBaitObject*> bait = cast<FishingBaitObject*>(pole->getContainerObject(0));
 
 			if (bait != NULL) {
 				if (bait->isFishingBait()) {
@@ -918,7 +919,7 @@ bool FishingManagerImplementation::loseBait(CreatureObject* player) {
 				if (!bait->isFishingBait())
 					return false;
 
-				ManagedReference<FishingBaitObject*> fishBait = (FishingBaitObject*) bait.get();
+				ManagedReference<FishingBaitObject*> fishBait = cast<FishingBaitObject*>( bait.get());
 
 				if (fishBait->getUseCount() > 1)
 					fishBait->setUseCount(fishBait->getUseCount() - 1, true);

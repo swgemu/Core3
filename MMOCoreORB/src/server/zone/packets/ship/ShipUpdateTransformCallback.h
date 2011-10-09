@@ -84,7 +84,7 @@ public:
 		msg << "velA:" << velA << " velB:" << velB;
 		info(msg.toString(), true);*/
 
-		CreatureObject* object = (CreatureObject*) client->getPlayer();
+		CreatureObject* object = cast<CreatureObject*>( client->getPlayer());
 
 		if (object == NULL)
 			return;

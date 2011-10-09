@@ -35,8 +35,9 @@ VendorTerminal::~VendorTerminal() {
 }
 
 
+
 void VendorTerminal::initializeTransientMembers() {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void VendorTerminal::initializeTransientMembers() {
 }
 
 void VendorTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void VendorTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void VendorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -67,7 +68,7 @@ void VendorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Cr
 }
 
 int VendorTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,7 +83,7 @@ int VendorTerminal::handleObjectMenuSelect(CreatureObject* player, byte selected
 }
 
 void VendorTerminal::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ void VendorTerminal::destroyObjectFromDatabase(bool destroyContainedObjects) {
 }
 
 void VendorTerminal::addVendorToMap() {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ void VendorTerminal::addVendorToMap() {
 }
 
 void VendorTerminal::setOwnerID(unsigned long long ownerID) {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -123,7 +124,7 @@ void VendorTerminal::setOwnerID(unsigned long long ownerID) {
 }
 
 Vendor* VendorTerminal::getVendor() {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -132,7 +133,7 @@ Vendor* VendorTerminal::getVendor() {
 }
 
 bool VendorTerminal::isVendor() {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +146,7 @@ bool VendorTerminal::isVendor() {
 }
 
 bool VendorTerminal::isVendorTerminal() {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -190,7 +191,7 @@ void VendorTerminalImplementation::_initializeImplementation() {
 }
 
 void VendorTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (VendorTerminal*) stub;
+	_this = static_cast<VendorTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -336,7 +337,7 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		finalize();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
@@ -361,35 +362,35 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void VendorTerminalAdapter::initializeTransientMembers() {
-	((VendorTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<VendorTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 void VendorTerminalAdapter::finalize() {
-	((VendorTerminalImplementation*) impl)->finalize();
+	(static_cast<VendorTerminalImplementation*>(impl))->finalize();
 }
 
 int VendorTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((VendorTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VendorTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VendorTerminalAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	((VendorTerminalImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<VendorTerminalImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void VendorTerminalAdapter::addVendorToMap() {
-	((VendorTerminalImplementation*) impl)->addVendorToMap();
+	(static_cast<VendorTerminalImplementation*>(impl))->addVendorToMap();
 }
 
 void VendorTerminalAdapter::setOwnerID(unsigned long long ownerID) {
-	((VendorTerminalImplementation*) impl)->setOwnerID(ownerID);
+	(static_cast<VendorTerminalImplementation*>(impl))->setOwnerID(ownerID);
 }
 
 bool VendorTerminalAdapter::isVendor() {
-	return ((VendorTerminalImplementation*) impl)->isVendor();
+	return (static_cast<VendorTerminalImplementation*>(impl))->isVendor();
 }
 
 bool VendorTerminalAdapter::isVendorTerminal() {
-	return ((VendorTerminalImplementation*) impl)->isVendorTerminal();
+	return (static_cast<VendorTerminalImplementation*>(impl))->isVendorTerminal();
 }
 
 /*
@@ -417,7 +418,7 @@ DistributedObjectServant* VendorTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VendorTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VendorTerminalAdapter((VendorTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new VendorTerminalAdapter(static_cast<VendorTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

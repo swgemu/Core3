@@ -33,8 +33,9 @@ BazaarTerminal::~BazaarTerminal() {
 }
 
 
+
 void BazaarTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	BazaarTerminalImplementation* _implementation = (BazaarTerminalImplementation*) _getImplementation();
+	BazaarTerminalImplementation* _implementation = static_cast<BazaarTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -43,7 +44,7 @@ void BazaarTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 int BazaarTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	BazaarTerminalImplementation* _implementation = (BazaarTerminalImplementation*) _getImplementation();
+	BazaarTerminalImplementation* _implementation = static_cast<BazaarTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ int BazaarTerminal::handleObjectMenuSelect(CreatureObject* player, byte selected
 }
 
 bool BazaarTerminal::isBazaarTerminal() {
-	BazaarTerminalImplementation* _implementation = (BazaarTerminalImplementation*) _getImplementation();
+	BazaarTerminalImplementation* _implementation = static_cast<BazaarTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -105,7 +106,7 @@ void BazaarTerminalImplementation::_initializeImplementation() {
 }
 
 void BazaarTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (BazaarTerminal*) stub;
+	_this = static_cast<BazaarTerminal*>(stub);
 	VendorTerminalImplementation::_setStub(stub);
 }
 
@@ -222,7 +223,7 @@ Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISBAZAARTERMINAL__:
 		resp->insertBoolean(isBazaarTerminal());
@@ -235,11 +236,11 @@ Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 int BazaarTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((BazaarTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<BazaarTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool BazaarTerminalAdapter::isBazaarTerminal() {
-	return ((BazaarTerminalImplementation*) impl)->isBazaarTerminal();
+	return (static_cast<BazaarTerminalImplementation*>(impl))->isBazaarTerminal();
 }
 
 /*
@@ -267,7 +268,7 @@ DistributedObjectServant* BazaarTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BazaarTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BazaarTerminalAdapter((BazaarTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new BazaarTerminalAdapter(static_cast<BazaarTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

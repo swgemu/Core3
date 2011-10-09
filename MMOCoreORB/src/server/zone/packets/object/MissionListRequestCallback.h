@@ -10,6 +10,7 @@
 
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 
 class MissionListRequestCallback : public MessageCallback {
 	uint16 unk1;
@@ -37,7 +38,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
 
 		if (player == NULL)
 			return;
@@ -52,7 +53,7 @@ public:
 		if (!terminal->isMissionTerminal())
 			return;
 
-		MissionTerminal* missionTerminal = (MissionTerminal*) terminal.get();
+		MissionTerminal* missionTerminal = cast<MissionTerminal*>( terminal.get());
 
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
 		manager->handleMissionListRequest(missionTerminal, player, unk2);

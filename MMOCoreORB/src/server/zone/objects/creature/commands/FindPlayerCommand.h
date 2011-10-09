@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		//TODO: Research if this gets handled already by the absence of the 'admin' skill.
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
@@ -98,7 +98,7 @@ public:
 			return GENERALERROR;
 		}
 
-		CreatureObject* targetObject = (CreatureObject*) obj.get();
+		CreatureObject* targetObject = cast<CreatureObject*>( obj.get());
 		PlayerObject* targetGhost = targetObject->getPlayerObject();
 
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0x00);
@@ -113,7 +113,7 @@ public:
 		text << "World Position:\t  {x:" << worldPosition.getX() << ", z:" << worldPosition.getZ() << ", y:" << worldPosition.getY() << "} " << "\n";
 
 		if (targetObject->getParent() != NULL && targetObject->getParent()->isCellObject()) {
-			ManagedReference<CellObject*> cell = (CellObject*) targetObject->getParent();
+			ManagedReference<CellObject*> cell = cast<CellObject*>( targetObject->getParent());
 			Vector3 cellPosition = targetObject->getPosition();
 			text << "Cell Position:\t  {x:" << cellPosition.getX() << ", z:" << cellPosition.getZ() << ", y:" << cellPosition.getY() << "} Cell: " << cell->getCellNumber() << " (" << cell->getObjectID() << ")\n";
 		}

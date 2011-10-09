@@ -158,10 +158,10 @@ private:
 		for (int i = 0; i < totalObjects; ++i) {
 			ManagedReference<SceneObject*> obj = inventory->getContainerObject(i);
 
-			if (!obj->isTangibleObject() || !((TangibleObject*) obj.get())->isTicketObject())
+			if (!obj->isTangibleObject() || !(cast<TangibleObject*>(obj.get()))->isTicketObject())
 				continue;
 
-			TicketObject* ticket = (TicketObject*) obj.get();
+			TicketObject* ticket = cast<TicketObject*>( obj.get());
 
 			//Check to see if the ticket is for this destination
 			if (!departurePoint->isPoint(ticket->getDeparturePlanet(), ticket->getDeparturePoint()))
@@ -185,7 +185,7 @@ private:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<SuiListBox*> suiListBox = new SuiListBox(player, SuiWindowType::TRAVEL_TICKET_SELECTION);
 		suiListBox->setPromptTitle("Select Destination");

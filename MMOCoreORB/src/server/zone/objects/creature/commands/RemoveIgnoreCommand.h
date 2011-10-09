@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+		PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 		ghost->removeIgnore(arguments.toString());
 
 		return SUCCESS;

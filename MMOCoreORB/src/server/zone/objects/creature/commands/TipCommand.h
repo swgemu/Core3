@@ -193,9 +193,9 @@ public:
 					server->getZoneServer()->getObject(target);
 
 			if (object != NULL && object->isCreatureObject()
-					&& ((CreatureObject*) object.get())->getPlayerObject()
+					&& (cast<CreatureObject*>(object.get()))->getPlayerObject()
 							!= NULL) {
-				targetPlayer = (CreatureObject*) object.get();
+				targetPlayer = cast<CreatureObject*>( object.get());
 			} else if (object != NULL) {
 				StringIdChatParameter ptip("base_player",
 						"prose_tip_invalid_param"); // /TIP: invalid amount ("%TO") parameter.

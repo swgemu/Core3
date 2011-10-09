@@ -158,7 +158,7 @@ void LoginServerImplementation::handleMessage(LoginClient* client, Packet* messa
 	if (phandler == NULL)
 		return;
 
-	BaseClientProxy* session = (BaseClientProxy*) client->getSession();
+	BaseClientProxy* session = cast<BaseClientProxy*>(client->getSession());
 
 	try {
 		if (session != NULL && session->isAvailable())
@@ -186,7 +186,7 @@ LoginClient* LoginServerImplementation::getLoginClient(ServiceClient* session) {
 }
 
 bool LoginServerImplementation::handleError(ServiceClient* client, Exception& e) {
-	BaseClientProxy* bclient = (BaseClientProxy*) client;
+	BaseClientProxy* bclient = cast<BaseClientProxy*>(client);
 	bclient->setError();
 
 	bclient->disconnect();

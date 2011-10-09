@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (!player->isInGuild()) {
 			player->sendSystemMessage("@guild:guildremove_not_in_guild"); //You are not in a guild.

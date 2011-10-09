@@ -29,8 +29,9 @@ InstallationDeed::~InstallationDeed() {
 }
 
 
+
 void InstallationDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -39,7 +40,7 @@ void InstallationDeed::fillAttributeList(AttributeListMessage* alm, CreatureObje
 }
 
 void InstallationDeed::initializeTransientMembers() {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -52,7 +53,7 @@ void InstallationDeed::initializeTransientMembers() {
 }
 
 int InstallationDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,7 +68,7 @@ int InstallationDeed::handleObjectMenuSelect(CreatureObject* player, byte select
 }
 
 void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -81,7 +82,7 @@ void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 }
 
 unsigned int InstallationDeed::getSurplusMaintenance() {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -94,7 +95,7 @@ unsigned int InstallationDeed::getSurplusMaintenance() {
 }
 
 unsigned int InstallationDeed::getSurplusPower() {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +108,7 @@ unsigned int InstallationDeed::getSurplusPower() {
 }
 
 void InstallationDeed::setSurplusPower(unsigned int power) {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +122,7 @@ void InstallationDeed::setSurplusPower(unsigned int power) {
 }
 
 bool InstallationDeed::isInstallationDeed() {
-	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -168,7 +169,7 @@ void InstallationDeedImplementation::_initializeImplementation() {
 }
 
 void InstallationDeedImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (InstallationDeed*) stub;
+	_this = static_cast<InstallationDeed*>(stub);
 	DeedImplementation::_setStub(stub);
 }
 
@@ -333,7 +334,7 @@ Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getUnsignedIntParameter());
@@ -358,31 +359,31 @@ Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void InstallationDeedAdapter::initializeTransientMembers() {
-	((InstallationDeedImplementation*) impl)->initializeTransientMembers();
+	(static_cast<InstallationDeedImplementation*>(impl))->initializeTransientMembers();
 }
 
 int InstallationDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((InstallationDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<InstallationDeedImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationDeedAdapter::setSurplusMaintenance(unsigned int surplusMaint) {
-	((InstallationDeedImplementation*) impl)->setSurplusMaintenance(surplusMaint);
+	(static_cast<InstallationDeedImplementation*>(impl))->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int InstallationDeedAdapter::getSurplusMaintenance() {
-	return ((InstallationDeedImplementation*) impl)->getSurplusMaintenance();
+	return (static_cast<InstallationDeedImplementation*>(impl))->getSurplusMaintenance();
 }
 
 unsigned int InstallationDeedAdapter::getSurplusPower() {
-	return ((InstallationDeedImplementation*) impl)->getSurplusPower();
+	return (static_cast<InstallationDeedImplementation*>(impl))->getSurplusPower();
 }
 
 void InstallationDeedAdapter::setSurplusPower(unsigned int power) {
-	((InstallationDeedImplementation*) impl)->setSurplusPower(power);
+	(static_cast<InstallationDeedImplementation*>(impl))->setSurplusPower(power);
 }
 
 bool InstallationDeedAdapter::isInstallationDeed() {
-	return ((InstallationDeedImplementation*) impl)->isInstallationDeed();
+	return (static_cast<InstallationDeedImplementation*>(impl))->isInstallationDeed();
 }
 
 /*
@@ -410,7 +411,7 @@ DistributedObjectServant* InstallationDeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InstallationDeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InstallationDeedAdapter((InstallationDeedImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new InstallationDeedAdapter(static_cast<InstallationDeedImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -47,7 +47,7 @@ void AuctionManagerImplementation::initialize() {
 	uint64 objectID = 0;
 
 	while (iterator.getNextKey(objectID)) {
-		AuctionItem* auctionItem = (AuctionItem*) Core::getObjectBroker()->lookUp(objectID);
+		AuctionItem* auctionItem = cast<AuctionItem*>(Core::getObjectBroker()->lookUp(objectID));
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if (auctionItem->isOnBazaar())
@@ -212,7 +212,7 @@ void AuctionManagerImplementation::checkAuctions() {
 					float waypointX = vendorRef->getWorldPositionX();
 					float waypointY = vendorRef->getWorldPositionY();
 
-					ManagedReference<WaypointObject*> waypoint =(WaypointObject*) zoneServer->createObject(0xc456e788, 1);
+					ManagedReference<WaypointObject*> waypoint = cast<WaypointObject*>(zoneServer->createObject(0xc456e788, 1));
 					waypoint->setPlanetCRC(vendorRef->getPlanetCRC());
 					waypoint->setPosition(waypointX, 0, waypointY);
 
@@ -400,7 +400,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 			return;
 		}
 
-		ManagedReference<CreatureObject*> strongOwnerRef = (CreatureObject*) strongRef.get();
+		ManagedReference<CreatureObject*> strongOwnerRef = cast<CreatureObject*>(strongRef.get());
 		strongOwnerRef->sendSystemMessage(player->getFirstName() + " has offered an item to " + terminal->getObjectName()->getDisplayedName());
 	}
 
@@ -455,7 +455,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	float waypointX = vendorRef->getWorldPositionX();
 	float waypointY = vendorRef->getWorldPositionY();
 
-	ManagedReference<WaypointObject*> waypoint =(WaypointObject*) zoneServer->createObject(0xc456e788, 1);
+	ManagedReference<WaypointObject*> waypoint = cast<WaypointObject*>(zoneServer->createObject(0xc456e788, 1));
 	waypoint->setPlanetCRC(vendorRef->getPlanetCRC());
 	waypoint->setPosition(waypointX, 0, waypointY);
 
@@ -1232,7 +1232,7 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 		return;
 	}
 
-	TangibleObject* tano = (TangibleObject*) object.get();
+	TangibleObject* tano = cast<TangibleObject*>(object.get());
 
 	description = item->getItemDescription();
 
@@ -1304,19 +1304,19 @@ Vendor* AuctionManagerImplementation::getVendorFromObject(SceneObject* obj) {
 	Vendor* vendor = NULL;
 
 	if (obj->isTerminal()) {
-		Terminal* term = (Terminal*) obj;
+		Terminal* term = cast<Terminal*>(obj);
 
 		if (term->isVendorTerminal()) {
-			VendorTerminal* terminal = (VendorTerminal*) term;
+			VendorTerminal* terminal = cast<VendorTerminal*>(term);
 			if (terminal != NULL)
 				vendor = terminal->getVendor();
 		}
 
 	} else if (obj->isCreatureObject()) {
-		CreatureObject* creature = (CreatureObject*) obj;
+		CreatureObject* creature = cast<CreatureObject*>(obj);
 
 		if (creature->isVendorCreature()) {
-			VendorCreature* vendorCreature = (VendorCreature*) obj;
+			VendorCreature* vendorCreature = cast<VendorCreature*>(obj);
 			if (vendorCreature != NULL)
 				vendor = vendorCreature->getVendor();
 		}

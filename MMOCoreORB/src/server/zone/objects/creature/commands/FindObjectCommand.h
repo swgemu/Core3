@@ -90,7 +90,7 @@ public:
 
 		//CreateClientPathMessage* msg = new CreateClientPathMessage();
 
-		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+		PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 		for (int i = 0; i < path->size(); ++i) {
 			WorldCoordinates* coord = &path->get(i);
@@ -98,12 +98,12 @@ public:
 
 			//msg->addCoordinate(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
 
-			ManagedReference<WaypointObject*> obj = (WaypointObject*) server->getZoneServer()->createObject(0xc456e788, 1);
+			ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
 			obj->setPlanetCRC(targetObject->getPlanetCRC());
 			obj->setPosition(worldPosition.getX(), 0, worldPosition.getY());
 
 			if (coord->getCell() != NULL) {
-				CellObject* cell = (CellObject*) coord->getCell();
+				CellObject* cell = cast<CellObject*>( coord->getCell());
 				obj->setCellID(cell->getCellNumber());
 			}
 

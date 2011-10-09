@@ -73,7 +73,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		PlayerObject* ghost = player->getPlayerObject();
 
@@ -116,7 +116,7 @@ public:
 			y = targetPlayer->getPositionY();
 		}
 
-		ManagedReference<WaypointObject*> obj = (WaypointObject*) server->getZoneServer()->createObject(0xc456e788, 1);
+		ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
 		obj->setPlanetCRC(planet.hashCode());
 		obj->setPosition(x, z, y);
 		obj->setCustomName(name);

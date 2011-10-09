@@ -27,8 +27,9 @@ MedicalBuildingObject::~MedicalBuildingObject() {
 }
 
 
+
 bool MedicalBuildingObject::isMedicalBuildingObject() {
-	MedicalBuildingObjectImplementation* _implementation = (MedicalBuildingObjectImplementation*) _getImplementation();
+	MedicalBuildingObjectImplementation* _implementation = static_cast<MedicalBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ void MedicalBuildingObjectImplementation::_initializeImplementation() {
 }
 
 void MedicalBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (MedicalBuildingObject*) stub;
+	_this = static_cast<MedicalBuildingObject*>(stub);
 	BuildingObjectImplementation::_setStub(stub);
 }
 
@@ -197,7 +198,7 @@ Packet* MedicalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMet
 }
 
 bool MedicalBuildingObjectAdapter::isMedicalBuildingObject() {
-	return ((MedicalBuildingObjectImplementation*) impl)->isMedicalBuildingObject();
+	return (static_cast<MedicalBuildingObjectImplementation*>(impl))->isMedicalBuildingObject();
 }
 
 /*
@@ -225,7 +226,7 @@ DistributedObjectServant* MedicalBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MedicalBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MedicalBuildingObjectAdapter((MedicalBuildingObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new MedicalBuildingObjectAdapter(static_cast<MedicalBuildingObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

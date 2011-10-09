@@ -27,8 +27,9 @@ AuctionItem::~AuctionItem() {
 }
 
 
+
 void AuctionItem::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void AuctionItem::setLocation(const String& planet, const String& header, unsign
 }
 
 void AuctionItem::setVendorID(unsigned long long val) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -61,7 +62,7 @@ void AuctionItem::setVendorID(unsigned long long val) {
 }
 
 void AuctionItem::setItemName(const String& name) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ void AuctionItem::setItemName(const String& name) {
 }
 
 void AuctionItem::setItemDescription(const String& descr) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +90,7 @@ void AuctionItem::setItemDescription(const String& descr) {
 }
 
 void AuctionItem::setPrice(int newPrice) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -103,7 +104,7 @@ void AuctionItem::setPrice(int newPrice) {
 }
 
 void AuctionItem::setAuctionedItemObjectID(unsigned long long objectID) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -117,7 +118,7 @@ void AuctionItem::setAuctionedItemObjectID(unsigned long long objectID) {
 }
 
 void AuctionItem::setItemType(int type) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,7 +132,7 @@ void AuctionItem::setItemType(int type) {
 }
 
 void AuctionItem::setOwnerID(unsigned long long ownerObjectID) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +146,7 @@ void AuctionItem::setOwnerID(unsigned long long ownerObjectID) {
 }
 
 void AuctionItem::setBidderName(const String& name) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -159,7 +160,7 @@ void AuctionItem::setBidderName(const String& name) {
 }
 
 void AuctionItem::setPlanet(const String& planetid) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -168,7 +169,7 @@ void AuctionItem::setPlanet(const String& planetid) {
 }
 
 void AuctionItem::setOwnerName(const String& name) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -182,7 +183,7 @@ void AuctionItem::setOwnerName(const String& name) {
 }
 
 void AuctionItem::setAuction(bool isAuction) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -196,7 +197,7 @@ void AuctionItem::setAuction(bool isAuction) {
 }
 
 void AuctionItem::setSold(bool isSold) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -210,7 +211,7 @@ void AuctionItem::setSold(bool isSold) {
 }
 
 void AuctionItem::setRemovedByOwner(bool isRemovedByOwner) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -224,7 +225,7 @@ void AuctionItem::setRemovedByOwner(bool isRemovedByOwner) {
 }
 
 void AuctionItem::setAuctionPremium() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -237,7 +238,7 @@ void AuctionItem::setAuctionPremium() {
 }
 
 void AuctionItem::setAuctionWithdraw() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -250,7 +251,7 @@ void AuctionItem::setAuctionWithdraw() {
 }
 
 void AuctionItem::clearAuctionWithdraw() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -263,7 +264,7 @@ void AuctionItem::clearAuctionWithdraw() {
 }
 
 void AuctionItem::setInStockroom(bool inStock) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -277,7 +278,7 @@ void AuctionItem::setInStockroom(bool inStock) {
 }
 
 void AuctionItem::setOfferToVendor(bool val) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -291,7 +292,7 @@ void AuctionItem::setOfferToVendor(bool val) {
 }
 
 void AuctionItem::setOnBazaar(bool val) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -305,7 +306,7 @@ void AuctionItem::setOnBazaar(bool val) {
 }
 
 void AuctionItem::setExpireTime(int time) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -319,7 +320,7 @@ void AuctionItem::setExpireTime(int time) {
 }
 
 void AuctionItem::setBuyerID(unsigned long long id) {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -333,7 +334,7 @@ void AuctionItem::setBuyerID(unsigned long long id) {
 }
 
 bool AuctionItem::isOnBazaar() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -346,7 +347,7 @@ bool AuctionItem::isOnBazaar() {
 }
 
 bool AuctionItem::isSold() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -359,7 +360,7 @@ bool AuctionItem::isSold() {
 }
 
 bool AuctionItem::isAuction() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -372,7 +373,7 @@ bool AuctionItem::isAuction() {
 }
 
 bool AuctionItem::isRemovedByOwner() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -385,7 +386,7 @@ bool AuctionItem::isRemovedByOwner() {
 }
 
 bool AuctionItem::isInStockroom() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -398,7 +399,7 @@ bool AuctionItem::isInStockroom() {
 }
 
 bool AuctionItem::isOfferToVendor() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -411,7 +412,7 @@ bool AuctionItem::isOfferToVendor() {
 }
 
 unsigned long long AuctionItem::getVendorID() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -424,7 +425,7 @@ unsigned long long AuctionItem::getVendorID() {
 }
 
 unsigned long long AuctionItem::getAuctionedItemObjectID() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -437,7 +438,7 @@ unsigned long long AuctionItem::getAuctionedItemObjectID() {
 }
 
 unsigned long long AuctionItem::getOwnerID() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -450,7 +451,7 @@ unsigned long long AuctionItem::getOwnerID() {
 }
 
 String AuctionItem::getTerminalTitle() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -464,7 +465,7 @@ String AuctionItem::getTerminalTitle() {
 }
 
 String AuctionItem::getOwnerName() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -478,7 +479,7 @@ String AuctionItem::getOwnerName() {
 }
 
 String AuctionItem::getItemName() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -492,7 +493,7 @@ String AuctionItem::getItemName() {
 }
 
 int AuctionItem::getExpireTime() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -505,7 +506,7 @@ int AuctionItem::getExpireTime() {
 }
 
 int AuctionItem::getPrice() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -518,7 +519,7 @@ int AuctionItem::getPrice() {
 }
 
 int AuctionItem::getItemType() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -531,7 +532,7 @@ int AuctionItem::getItemType() {
 }
 
 unsigned long long AuctionItem::getBuyerID() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -544,7 +545,7 @@ unsigned long long AuctionItem::getBuyerID() {
 }
 
 String AuctionItem::getBidderName() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -558,7 +559,7 @@ String AuctionItem::getBidderName() {
 }
 
 String AuctionItem::getItemDescription() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -572,7 +573,7 @@ String AuctionItem::getItemDescription() {
 }
 
 String AuctionItem::getLocation() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -586,7 +587,7 @@ String AuctionItem::getLocation() {
 }
 
 int AuctionItem::getAuctionOptions() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -599,7 +600,7 @@ int AuctionItem::getAuctionOptions() {
 }
 
 bool AuctionItem::isPremiumAuction() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -612,7 +613,7 @@ bool AuctionItem::isPremiumAuction() {
 }
 
 bool AuctionItem::isOwner() {
-	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -659,7 +660,7 @@ void AuctionItemImplementation::_initializeImplementation() {
 }
 
 void AuctionItemImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (AuctionItem*) stub;
+	_this = static_cast<AuctionItem*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -1452,175 +1453,175 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void AuctionItemAdapter::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
-	((AuctionItemImplementation*) impl)->setLocation(planet, header, vendorid, x, z, vendor);
+	(static_cast<AuctionItemImplementation*>(impl))->setLocation(planet, header, vendorid, x, z, vendor);
 }
 
 void AuctionItemAdapter::setVendorID(unsigned long long val) {
-	((AuctionItemImplementation*) impl)->setVendorID(val);
+	(static_cast<AuctionItemImplementation*>(impl))->setVendorID(val);
 }
 
 void AuctionItemAdapter::setItemName(const String& name) {
-	((AuctionItemImplementation*) impl)->setItemName(name);
+	(static_cast<AuctionItemImplementation*>(impl))->setItemName(name);
 }
 
 void AuctionItemAdapter::setItemDescription(const String& descr) {
-	((AuctionItemImplementation*) impl)->setItemDescription(descr);
+	(static_cast<AuctionItemImplementation*>(impl))->setItemDescription(descr);
 }
 
 void AuctionItemAdapter::setPrice(int newPrice) {
-	((AuctionItemImplementation*) impl)->setPrice(newPrice);
+	(static_cast<AuctionItemImplementation*>(impl))->setPrice(newPrice);
 }
 
 void AuctionItemAdapter::setAuctionedItemObjectID(unsigned long long objectID) {
-	((AuctionItemImplementation*) impl)->setAuctionedItemObjectID(objectID);
+	(static_cast<AuctionItemImplementation*>(impl))->setAuctionedItemObjectID(objectID);
 }
 
 void AuctionItemAdapter::setItemType(int type) {
-	((AuctionItemImplementation*) impl)->setItemType(type);
+	(static_cast<AuctionItemImplementation*>(impl))->setItemType(type);
 }
 
 void AuctionItemAdapter::setOwnerID(unsigned long long ownerObjectID) {
-	((AuctionItemImplementation*) impl)->setOwnerID(ownerObjectID);
+	(static_cast<AuctionItemImplementation*>(impl))->setOwnerID(ownerObjectID);
 }
 
 void AuctionItemAdapter::setBidderName(const String& name) {
-	((AuctionItemImplementation*) impl)->setBidderName(name);
+	(static_cast<AuctionItemImplementation*>(impl))->setBidderName(name);
 }
 
 void AuctionItemAdapter::setOwnerName(const String& name) {
-	((AuctionItemImplementation*) impl)->setOwnerName(name);
+	(static_cast<AuctionItemImplementation*>(impl))->setOwnerName(name);
 }
 
 void AuctionItemAdapter::setAuction(bool isAuction) {
-	((AuctionItemImplementation*) impl)->setAuction(isAuction);
+	(static_cast<AuctionItemImplementation*>(impl))->setAuction(isAuction);
 }
 
 void AuctionItemAdapter::setSold(bool isSold) {
-	((AuctionItemImplementation*) impl)->setSold(isSold);
+	(static_cast<AuctionItemImplementation*>(impl))->setSold(isSold);
 }
 
 void AuctionItemAdapter::setRemovedByOwner(bool isRemovedByOwner) {
-	((AuctionItemImplementation*) impl)->setRemovedByOwner(isRemovedByOwner);
+	(static_cast<AuctionItemImplementation*>(impl))->setRemovedByOwner(isRemovedByOwner);
 }
 
 void AuctionItemAdapter::setAuctionPremium() {
-	((AuctionItemImplementation*) impl)->setAuctionPremium();
+	(static_cast<AuctionItemImplementation*>(impl))->setAuctionPremium();
 }
 
 void AuctionItemAdapter::setAuctionWithdraw() {
-	((AuctionItemImplementation*) impl)->setAuctionWithdraw();
+	(static_cast<AuctionItemImplementation*>(impl))->setAuctionWithdraw();
 }
 
 void AuctionItemAdapter::clearAuctionWithdraw() {
-	((AuctionItemImplementation*) impl)->clearAuctionWithdraw();
+	(static_cast<AuctionItemImplementation*>(impl))->clearAuctionWithdraw();
 }
 
 void AuctionItemAdapter::setInStockroom(bool inStock) {
-	((AuctionItemImplementation*) impl)->setInStockroom(inStock);
+	(static_cast<AuctionItemImplementation*>(impl))->setInStockroom(inStock);
 }
 
 void AuctionItemAdapter::setOfferToVendor(bool val) {
-	((AuctionItemImplementation*) impl)->setOfferToVendor(val);
+	(static_cast<AuctionItemImplementation*>(impl))->setOfferToVendor(val);
 }
 
 void AuctionItemAdapter::setOnBazaar(bool val) {
-	((AuctionItemImplementation*) impl)->setOnBazaar(val);
+	(static_cast<AuctionItemImplementation*>(impl))->setOnBazaar(val);
 }
 
 void AuctionItemAdapter::setExpireTime(int time) {
-	((AuctionItemImplementation*) impl)->setExpireTime(time);
+	(static_cast<AuctionItemImplementation*>(impl))->setExpireTime(time);
 }
 
 void AuctionItemAdapter::setBuyerID(unsigned long long id) {
-	((AuctionItemImplementation*) impl)->setBuyerID(id);
+	(static_cast<AuctionItemImplementation*>(impl))->setBuyerID(id);
 }
 
 bool AuctionItemAdapter::isOnBazaar() {
-	return ((AuctionItemImplementation*) impl)->isOnBazaar();
+	return (static_cast<AuctionItemImplementation*>(impl))->isOnBazaar();
 }
 
 bool AuctionItemAdapter::isSold() {
-	return ((AuctionItemImplementation*) impl)->isSold();
+	return (static_cast<AuctionItemImplementation*>(impl))->isSold();
 }
 
 bool AuctionItemAdapter::isAuction() {
-	return ((AuctionItemImplementation*) impl)->isAuction();
+	return (static_cast<AuctionItemImplementation*>(impl))->isAuction();
 }
 
 bool AuctionItemAdapter::isRemovedByOwner() {
-	return ((AuctionItemImplementation*) impl)->isRemovedByOwner();
+	return (static_cast<AuctionItemImplementation*>(impl))->isRemovedByOwner();
 }
 
 bool AuctionItemAdapter::isInStockroom() {
-	return ((AuctionItemImplementation*) impl)->isInStockroom();
+	return (static_cast<AuctionItemImplementation*>(impl))->isInStockroom();
 }
 
 bool AuctionItemAdapter::isOfferToVendor() {
-	return ((AuctionItemImplementation*) impl)->isOfferToVendor();
+	return (static_cast<AuctionItemImplementation*>(impl))->isOfferToVendor();
 }
 
 unsigned long long AuctionItemAdapter::getVendorID() {
-	return ((AuctionItemImplementation*) impl)->getVendorID();
+	return (static_cast<AuctionItemImplementation*>(impl))->getVendorID();
 }
 
 unsigned long long AuctionItemAdapter::getAuctionedItemObjectID() {
-	return ((AuctionItemImplementation*) impl)->getAuctionedItemObjectID();
+	return (static_cast<AuctionItemImplementation*>(impl))->getAuctionedItemObjectID();
 }
 
 unsigned long long AuctionItemAdapter::getOwnerID() {
-	return ((AuctionItemImplementation*) impl)->getOwnerID();
+	return (static_cast<AuctionItemImplementation*>(impl))->getOwnerID();
 }
 
 String AuctionItemAdapter::getTerminalTitle() {
-	return ((AuctionItemImplementation*) impl)->getTerminalTitle();
+	return (static_cast<AuctionItemImplementation*>(impl))->getTerminalTitle();
 }
 
 String AuctionItemAdapter::getOwnerName() {
-	return ((AuctionItemImplementation*) impl)->getOwnerName();
+	return (static_cast<AuctionItemImplementation*>(impl))->getOwnerName();
 }
 
 String AuctionItemAdapter::getItemName() {
-	return ((AuctionItemImplementation*) impl)->getItemName();
+	return (static_cast<AuctionItemImplementation*>(impl))->getItemName();
 }
 
 int AuctionItemAdapter::getExpireTime() {
-	return ((AuctionItemImplementation*) impl)->getExpireTime();
+	return (static_cast<AuctionItemImplementation*>(impl))->getExpireTime();
 }
 
 int AuctionItemAdapter::getPrice() {
-	return ((AuctionItemImplementation*) impl)->getPrice();
+	return (static_cast<AuctionItemImplementation*>(impl))->getPrice();
 }
 
 int AuctionItemAdapter::getItemType() {
-	return ((AuctionItemImplementation*) impl)->getItemType();
+	return (static_cast<AuctionItemImplementation*>(impl))->getItemType();
 }
 
 unsigned long long AuctionItemAdapter::getBuyerID() {
-	return ((AuctionItemImplementation*) impl)->getBuyerID();
+	return (static_cast<AuctionItemImplementation*>(impl))->getBuyerID();
 }
 
 String AuctionItemAdapter::getBidderName() {
-	return ((AuctionItemImplementation*) impl)->getBidderName();
+	return (static_cast<AuctionItemImplementation*>(impl))->getBidderName();
 }
 
 String AuctionItemAdapter::getItemDescription() {
-	return ((AuctionItemImplementation*) impl)->getItemDescription();
+	return (static_cast<AuctionItemImplementation*>(impl))->getItemDescription();
 }
 
 String AuctionItemAdapter::getLocation() {
-	return ((AuctionItemImplementation*) impl)->getLocation();
+	return (static_cast<AuctionItemImplementation*>(impl))->getLocation();
 }
 
 int AuctionItemAdapter::getAuctionOptions() {
-	return ((AuctionItemImplementation*) impl)->getAuctionOptions();
+	return (static_cast<AuctionItemImplementation*>(impl))->getAuctionOptions();
 }
 
 bool AuctionItemAdapter::isPremiumAuction() {
-	return ((AuctionItemImplementation*) impl)->isPremiumAuction();
+	return (static_cast<AuctionItemImplementation*>(impl))->isPremiumAuction();
 }
 
 bool AuctionItemAdapter::isOwner() {
-	return ((AuctionItemImplementation*) impl)->isOwner();
+	return (static_cast<AuctionItemImplementation*>(impl))->isOwner();
 }
 
 /*
@@ -1648,7 +1649,7 @@ DistributedObjectServant* AuctionItemHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AuctionItemHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AuctionItemAdapter((AuctionItemImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new AuctionItemAdapter(static_cast<AuctionItemImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -153,7 +153,7 @@ public:
 				uint64 target = packet->parseLong();
 
 				TangibleObject* targetTanoObject;
-				targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+				targetTanoObject = cast<TangibleObject*>( player->getInventoryItem(target));
 
 				if (targetTanoObject != NULL) {
 					Inventory* inventory = player->getInventory();

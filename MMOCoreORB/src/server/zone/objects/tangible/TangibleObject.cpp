@@ -39,8 +39,9 @@ TangibleObject::~TangibleObject() {
 }
 
 
+
 void TangibleObject::initializeMembers() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -53,7 +54,7 @@ void TangibleObject::initializeMembers() {
 }
 
 void TangibleObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -62,7 +63,7 @@ void TangibleObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void TangibleObject::initializeTransientMembers() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ void TangibleObject::initializeTransientMembers() {
 }
 
 void TangibleObject::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -90,7 +91,7 @@ void TangibleObject::setCustomObjectName(const UnicodeString& name, bool notifyC
 }
 
 void TangibleObject::sendBaselinesTo(SceneObject* player) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -104,7 +105,7 @@ void TangibleObject::sendBaselinesTo(SceneObject* player) {
 }
 
 void TangibleObject::synchronizedUIListen(SceneObject* player, int value) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -119,7 +120,7 @@ void TangibleObject::synchronizedUIListen(SceneObject* player, int value) {
 }
 
 void TangibleObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +135,7 @@ void TangibleObject::synchronizedUIStopListen(SceneObject* player, int value) {
 }
 
 void TangibleObject::setDefender(SceneObject* defender) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +149,7 @@ void TangibleObject::setDefender(SceneObject* defender) {
 }
 
 void TangibleObject::addDefender(SceneObject* defender) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -162,7 +163,7 @@ void TangibleObject::addDefender(SceneObject* defender) {
 }
 
 void TangibleObject::removeDefender(SceneObject* defender) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -176,7 +177,7 @@ void TangibleObject::removeDefender(SceneObject* defender) {
 }
 
 void TangibleObject::removeDefenders() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -189,7 +190,7 @@ void TangibleObject::removeDefenders() {
 }
 
 void TangibleObject::setCombatState() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -202,7 +203,7 @@ void TangibleObject::setCombatState() {
 }
 
 void TangibleObject::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -217,7 +218,7 @@ void TangibleObject::setUseCount(unsigned int newUseCount, bool notifyClient) {
 }
 
 void TangibleObject::decreaseUseCount(CreatureObject* player) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -231,7 +232,7 @@ void TangibleObject::decreaseUseCount(CreatureObject* player) {
 }
 
 void TangibleObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -240,7 +241,7 @@ void TangibleObject::fillAttributeList(AttributeListMessage* msg, CreatureObject
 }
 
 void TangibleObject::clearCombatState(bool clearDefenders) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -254,7 +255,7 @@ void TangibleObject::clearCombatState(bool clearDefenders) {
 }
 
 bool TangibleObject::hasDefender(SceneObject* defender) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -268,7 +269,7 @@ bool TangibleObject::hasDefender(SceneObject* defender) {
 }
 
 bool TangibleObject::isAttackableBy(CreatureObject* object) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -282,7 +283,7 @@ bool TangibleObject::isAttackableBy(CreatureObject* object) {
 }
 
 bool TangibleObject::isAggressiveTo(CreatureObject* object) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -296,7 +297,7 @@ bool TangibleObject::isAggressiveTo(CreatureObject* object) {
 }
 
 void TangibleObject::sendPvpStatusTo(CreatureObject* player) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -310,7 +311,7 @@ void TangibleObject::sendPvpStatusTo(CreatureObject* player) {
 }
 
 int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -328,7 +329,7 @@ int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int 
 }
 
 int TangibleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -345,7 +346,7 @@ int TangibleObject::healDamage(TangibleObject* healer, int damageType, int damag
 }
 
 void TangibleObject::setConditionDamage(int condDamage, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -360,7 +361,7 @@ void TangibleObject::setConditionDamage(int condDamage, bool notifyClient) {
 }
 
 void TangibleObject::setCustomizationVariable(byte type, byte value, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -376,7 +377,7 @@ void TangibleObject::setCustomizationVariable(byte type, byte value, bool notify
 }
 
 void TangibleObject::setCustomizationVariable(const String& type, byte value, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -392,7 +393,7 @@ void TangibleObject::setCustomizationVariable(const String& type, byte value, bo
 }
 
 void TangibleObject::setOptionsBitmask(unsigned int bitmask, bool notifyClient) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -407,7 +408,7 @@ void TangibleObject::setOptionsBitmask(unsigned int bitmask, bool notifyClient) 
 }
 
 void TangibleObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -416,7 +417,7 @@ void TangibleObject::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 int TangibleObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -431,7 +432,7 @@ int TangibleObject::notifyObjectDestructionObservers(TangibleObject* attacker, i
 }
 
 byte TangibleObject::getUnknownByte() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -444,7 +445,7 @@ byte TangibleObject::getUnknownByte() {
 }
 
 bool TangibleObject::isTicketCollector() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -457,7 +458,7 @@ bool TangibleObject::isTicketCollector() {
 }
 
 bool TangibleObject::isTicketObject() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -470,7 +471,7 @@ bool TangibleObject::isTicketObject() {
 }
 
 CustomizationVariables* TangibleObject::getCustomizationVariables() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -479,7 +480,7 @@ CustomizationVariables* TangibleObject::getCustomizationVariables() {
 }
 
 int TangibleObject::getUseCount() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -492,7 +493,7 @@ int TangibleObject::getUseCount() {
 }
 
 int TangibleObject::getMaxCondition() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -505,7 +506,7 @@ int TangibleObject::getMaxCondition() {
 }
 
 void TangibleObject::setMaxCondition(int maxCond) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -519,7 +520,7 @@ void TangibleObject::setMaxCondition(int maxCond) {
 }
 
 int TangibleObject::getConditionDamage() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -532,7 +533,7 @@ int TangibleObject::getConditionDamage() {
 }
 
 int TangibleObject::getVolume() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -545,7 +546,7 @@ int TangibleObject::getVolume() {
 }
 
 float TangibleObject::getComplexity() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -558,7 +559,7 @@ float TangibleObject::getComplexity() {
 }
 
 unsigned int TangibleObject::getOptionsBitmask() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -571,7 +572,7 @@ unsigned int TangibleObject::getOptionsBitmask() {
 }
 
 int TangibleObject::getLevel() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -584,7 +585,7 @@ int TangibleObject::getLevel() {
 }
 
 unsigned int TangibleObject::getPvpStatusBitmask() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -597,7 +598,7 @@ unsigned int TangibleObject::getPvpStatusBitmask() {
 }
 
 bool TangibleObject::isTangibleObject() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -610,7 +611,7 @@ bool TangibleObject::isTangibleObject() {
 }
 
 void TangibleObject::getCustomizationString(String& variables) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -624,7 +625,7 @@ void TangibleObject::getCustomizationString(String& variables) {
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObject::getDefenderList() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -633,20 +634,20 @@ DeltaVector<ManagedReference<SceneObject* > >* TangibleObject::getDefenderList()
 }
 
 SceneObject* TangibleObject::getMainDefender() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETMAINDEFENDER__);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getMainDefender();
 }
 
 bool TangibleObject::isDestroyed() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -659,7 +660,7 @@ bool TangibleObject::isDestroyed() {
 }
 
 unsigned int TangibleObject::getPlayerUseMask() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -672,7 +673,7 @@ unsigned int TangibleObject::getPlayerUseMask() {
 }
 
 void TangibleObject::setFaction(unsigned int crc) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -686,7 +687,7 @@ void TangibleObject::setFaction(unsigned int crc) {
 }
 
 int TangibleObject::getFaction() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -699,7 +700,7 @@ int TangibleObject::getFaction() {
 }
 
 bool TangibleObject::isRebel() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -712,7 +713,7 @@ bool TangibleObject::isRebel() {
 }
 
 bool TangibleObject::isImperial() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -725,7 +726,7 @@ bool TangibleObject::isImperial() {
 }
 
 bool TangibleObject::isNeutral() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -738,7 +739,7 @@ bool TangibleObject::isNeutral() {
 }
 
 bool TangibleObject::isSliceable() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -751,7 +752,7 @@ bool TangibleObject::isSliceable() {
 }
 
 bool TangibleObject::isSliced() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -764,7 +765,7 @@ bool TangibleObject::isSliced() {
 }
 
 void TangibleObject::setSliceable(bool val) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -778,7 +779,7 @@ void TangibleObject::setSliceable(bool val) {
 }
 
 void TangibleObject::setSliced(bool slice) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -792,7 +793,7 @@ void TangibleObject::setSliced(bool slice) {
 }
 
 bool TangibleObject::isPharmaceuticalObject() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -805,7 +806,7 @@ bool TangibleObject::isPharmaceuticalObject() {
 }
 
 void TangibleObject::setCustomizationString(const String& vars) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -819,7 +820,7 @@ void TangibleObject::setCustomizationString(const String& vars) {
 }
 
 void TangibleObject::setPvpStatusBitmask(int bitmask) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -833,7 +834,7 @@ void TangibleObject::setPvpStatusBitmask(int bitmask) {
 }
 
 void TangibleObject::setCraftersName(String& name) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -847,7 +848,7 @@ void TangibleObject::setCraftersName(String& name) {
 }
 
 String TangibleObject::getCraftersName() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -861,7 +862,7 @@ String TangibleObject::getCraftersName() {
 }
 
 void TangibleObject::setCraftersSerial(String& serial) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -875,7 +876,7 @@ void TangibleObject::setCraftersSerial(String& serial) {
 }
 
 void TangibleObject::setLevel(int lev) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -889,7 +890,7 @@ void TangibleObject::setLevel(int lev) {
 }
 
 String TangibleObject::getCraftersSerial() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -903,7 +904,7 @@ String TangibleObject::getCraftersSerial() {
 }
 
 bool TangibleObject::isFromFactoryCrate() {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -916,7 +917,7 @@ bool TangibleObject::isFromFactoryCrate() {
 }
 
 void TangibleObject::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -931,7 +932,7 @@ void TangibleObject::setInitialCraftingValues(ManufactureSchematic* manufactureS
 }
 
 bool TangibleObject::applyComponentStats(ManufactureSchematic* manufactureSchematic) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -945,7 +946,7 @@ bool TangibleObject::applyComponentStats(ManufactureSchematic* manufactureSchema
 }
 
 FactoryCrate* TangibleObject::createFactoryCrate(bool insertSelf) {
-	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -953,7 +954,7 @@ FactoryCrate* TangibleObject::createFactoryCrate(bool insertSelf) {
 		DistributedMethod method(this, RPC_CREATEFACTORYCRATE__BOOL_);
 		method.addBooleanParameter(insertSelf);
 
-		return (FactoryCrate*) method.executeWithObjectReturn();
+		return static_cast<FactoryCrate*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createFactoryCrate(insertSelf);
 }
@@ -993,7 +994,7 @@ void TangibleObjectImplementation::_initializeImplementation() {
 }
 
 void TangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (TangibleObject*) stub;
+	_this = static_cast<TangibleObject*>(stub);
 	SceneObjectImplementation::_setStub(stub);
 }
 
@@ -1614,22 +1615,22 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_SETDEFENDER__SCENEOBJECT_:
-		setDefender((SceneObject*) inv->getObjectParameter());
+		setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDDEFENDER__SCENEOBJECT_:
-		addDefender((SceneObject*) inv->getObjectParameter());
+		addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
-		removeDefender((SceneObject*) inv->getObjectParameter());
+		removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEDEFENDERS__:
 		removeDefenders();
@@ -1641,28 +1642,28 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_DECREASEUSECOUNT__CREATUREOBJECT_:
-		decreaseUseCount((CreatureObject*) inv->getObjectParameter());
+		decreaseUseCount(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CLEARCOMBATSTATE__BOOL_:
 		clearCombatState(inv->getBooleanParameter());
 		break;
 	case RPC_HASDEFENDER__SCENEOBJECT_:
-		resp->insertBoolean(hasDefender((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(hasDefender(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ISAGGRESSIVETO__CREATUREOBJECT_:
-		resp->insertBoolean(isAggressiveTo((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_SENDPVPSTATUSTO__CREATUREOBJECT_:
-		sendPvpStatusTo((CreatureObject*) inv->getObjectParameter());
+		sendPvpStatusTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_:
-		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_SETCONDITIONDAMAGE__INT_BOOL_:
 		setConditionDamage(inv->getSignedIntParameter(), inv->getBooleanParameter());
@@ -1677,7 +1678,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setOptionsBitmask(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
 	case RPC_GETUNKNOWNBYTE__:
 		resp->insertByte(getUnknownByte());
@@ -1785,10 +1786,10 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isFromFactoryCrate());
 		break;
 	case RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_:
-		setInitialCraftingValues((ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		setInitialCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_:
-		resp->insertBoolean(applyComponentStats((ManufactureSchematic*) inv->getObjectParameter()));
+		resp->insertBoolean(applyComponentStats(static_cast<ManufactureSchematic*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATEFACTORYCRATE__BOOL_:
 		resp->insertLong(createFactoryCrate(inv->getBooleanParameter())->_getObjectID());
@@ -1801,255 +1802,255 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void TangibleObjectAdapter::initializeMembers() {
-	((TangibleObjectImplementation*) impl)->initializeMembers();
+	(static_cast<TangibleObjectImplementation*>(impl))->initializeMembers();
 }
 
 void TangibleObjectAdapter::initializeTransientMembers() {
-	((TangibleObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<TangibleObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void TangibleObjectAdapter::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	((TangibleObjectImplementation*) impl)->setCustomObjectName(name, notifyClient);
+	(static_cast<TangibleObjectImplementation*>(impl))->setCustomObjectName(name, notifyClient);
 }
 
 void TangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((TangibleObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<TangibleObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 void TangibleObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	((TangibleObjectImplementation*) impl)->synchronizedUIListen(player, value);
+	(static_cast<TangibleObjectImplementation*>(impl))->synchronizedUIListen(player, value);
 }
 
 void TangibleObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	((TangibleObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
+	(static_cast<TangibleObjectImplementation*>(impl))->synchronizedUIStopListen(player, value);
 }
 
 void TangibleObjectAdapter::setDefender(SceneObject* defender) {
-	((TangibleObjectImplementation*) impl)->setDefender(defender);
+	(static_cast<TangibleObjectImplementation*>(impl))->setDefender(defender);
 }
 
 void TangibleObjectAdapter::addDefender(SceneObject* defender) {
-	((TangibleObjectImplementation*) impl)->addDefender(defender);
+	(static_cast<TangibleObjectImplementation*>(impl))->addDefender(defender);
 }
 
 void TangibleObjectAdapter::removeDefender(SceneObject* defender) {
-	((TangibleObjectImplementation*) impl)->removeDefender(defender);
+	(static_cast<TangibleObjectImplementation*>(impl))->removeDefender(defender);
 }
 
 void TangibleObjectAdapter::removeDefenders() {
-	((TangibleObjectImplementation*) impl)->removeDefenders();
+	(static_cast<TangibleObjectImplementation*>(impl))->removeDefenders();
 }
 
 void TangibleObjectAdapter::setCombatState() {
-	((TangibleObjectImplementation*) impl)->setCombatState();
+	(static_cast<TangibleObjectImplementation*>(impl))->setCombatState();
 }
 
 void TangibleObjectAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	((TangibleObjectImplementation*) impl)->setUseCount(newUseCount, notifyClient);
+	(static_cast<TangibleObjectImplementation*>(impl))->setUseCount(newUseCount, notifyClient);
 }
 
 void TangibleObjectAdapter::decreaseUseCount(CreatureObject* player) {
-	((TangibleObjectImplementation*) impl)->decreaseUseCount(player);
+	(static_cast<TangibleObjectImplementation*>(impl))->decreaseUseCount(player);
 }
 
 void TangibleObjectAdapter::clearCombatState(bool clearDefenders) {
-	((TangibleObjectImplementation*) impl)->clearCombatState(clearDefenders);
+	(static_cast<TangibleObjectImplementation*>(impl))->clearCombatState(clearDefenders);
 }
 
 bool TangibleObjectAdapter::hasDefender(SceneObject* defender) {
-	return ((TangibleObjectImplementation*) impl)->hasDefender(defender);
+	return (static_cast<TangibleObjectImplementation*>(impl))->hasDefender(defender);
 }
 
 bool TangibleObjectAdapter::isAttackableBy(CreatureObject* object) {
-	return ((TangibleObjectImplementation*) impl)->isAttackableBy(object);
+	return (static_cast<TangibleObjectImplementation*>(impl))->isAttackableBy(object);
 }
 
 bool TangibleObjectAdapter::isAggressiveTo(CreatureObject* object) {
-	return ((TangibleObjectImplementation*) impl)->isAggressiveTo(object);
+	return (static_cast<TangibleObjectImplementation*>(impl))->isAggressiveTo(object);
 }
 
 void TangibleObjectAdapter::sendPvpStatusTo(CreatureObject* player) {
-	((TangibleObjectImplementation*) impl)->sendPvpStatusTo(player);
+	(static_cast<TangibleObjectImplementation*>(impl))->sendPvpStatusTo(player);
 }
 
 int TangibleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	return ((TangibleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return (static_cast<TangibleObjectImplementation*>(impl))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int TangibleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
-	return ((TangibleObjectImplementation*) impl)->healDamage(healer, damageType, damageToHeal, notifyClient);
+	return (static_cast<TangibleObjectImplementation*>(impl))->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
 void TangibleObjectAdapter::setConditionDamage(int condDamage, bool notifyClient) {
-	((TangibleObjectImplementation*) impl)->setConditionDamage(condDamage, notifyClient);
+	(static_cast<TangibleObjectImplementation*>(impl))->setConditionDamage(condDamage, notifyClient);
 }
 
 void TangibleObjectAdapter::setCustomizationVariable(byte type, byte value, bool notifyClient) {
-	((TangibleObjectImplementation*) impl)->setCustomizationVariable(type, value, notifyClient);
+	(static_cast<TangibleObjectImplementation*>(impl))->setCustomizationVariable(type, value, notifyClient);
 }
 
 void TangibleObjectAdapter::setCustomizationVariable(const String& type, byte value, bool notifyClient) {
-	((TangibleObjectImplementation*) impl)->setCustomizationVariable(type, value, notifyClient);
+	(static_cast<TangibleObjectImplementation*>(impl))->setCustomizationVariable(type, value, notifyClient);
 }
 
 void TangibleObjectAdapter::setOptionsBitmask(unsigned int bitmask, bool notifyClient) {
-	((TangibleObjectImplementation*) impl)->setOptionsBitmask(bitmask, notifyClient);
+	(static_cast<TangibleObjectImplementation*>(impl))->setOptionsBitmask(bitmask, notifyClient);
 }
 
 int TangibleObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	return ((TangibleObjectImplementation*) impl)->notifyObjectDestructionObservers(attacker, condition);
+	return (static_cast<TangibleObjectImplementation*>(impl))->notifyObjectDestructionObservers(attacker, condition);
 }
 
 byte TangibleObjectAdapter::getUnknownByte() {
-	return ((TangibleObjectImplementation*) impl)->getUnknownByte();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getUnknownByte();
 }
 
 bool TangibleObjectAdapter::isTicketCollector() {
-	return ((TangibleObjectImplementation*) impl)->isTicketCollector();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isTicketCollector();
 }
 
 bool TangibleObjectAdapter::isTicketObject() {
-	return ((TangibleObjectImplementation*) impl)->isTicketObject();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isTicketObject();
 }
 
 int TangibleObjectAdapter::getUseCount() {
-	return ((TangibleObjectImplementation*) impl)->getUseCount();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getUseCount();
 }
 
 int TangibleObjectAdapter::getMaxCondition() {
-	return ((TangibleObjectImplementation*) impl)->getMaxCondition();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getMaxCondition();
 }
 
 void TangibleObjectAdapter::setMaxCondition(int maxCond) {
-	((TangibleObjectImplementation*) impl)->setMaxCondition(maxCond);
+	(static_cast<TangibleObjectImplementation*>(impl))->setMaxCondition(maxCond);
 }
 
 int TangibleObjectAdapter::getConditionDamage() {
-	return ((TangibleObjectImplementation*) impl)->getConditionDamage();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getConditionDamage();
 }
 
 int TangibleObjectAdapter::getVolume() {
-	return ((TangibleObjectImplementation*) impl)->getVolume();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getVolume();
 }
 
 float TangibleObjectAdapter::getComplexity() {
-	return ((TangibleObjectImplementation*) impl)->getComplexity();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getComplexity();
 }
 
 unsigned int TangibleObjectAdapter::getOptionsBitmask() {
-	return ((TangibleObjectImplementation*) impl)->getOptionsBitmask();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getOptionsBitmask();
 }
 
 int TangibleObjectAdapter::getLevel() {
-	return ((TangibleObjectImplementation*) impl)->getLevel();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getLevel();
 }
 
 unsigned int TangibleObjectAdapter::getPvpStatusBitmask() {
-	return ((TangibleObjectImplementation*) impl)->getPvpStatusBitmask();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getPvpStatusBitmask();
 }
 
 bool TangibleObjectAdapter::isTangibleObject() {
-	return ((TangibleObjectImplementation*) impl)->isTangibleObject();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isTangibleObject();
 }
 
 void TangibleObjectAdapter::getCustomizationString(String& variables) {
-	((TangibleObjectImplementation*) impl)->getCustomizationString(variables);
+	(static_cast<TangibleObjectImplementation*>(impl))->getCustomizationString(variables);
 }
 
 SceneObject* TangibleObjectAdapter::getMainDefender() {
-	return ((TangibleObjectImplementation*) impl)->getMainDefender();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getMainDefender();
 }
 
 bool TangibleObjectAdapter::isDestroyed() {
-	return ((TangibleObjectImplementation*) impl)->isDestroyed();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isDestroyed();
 }
 
 unsigned int TangibleObjectAdapter::getPlayerUseMask() {
-	return ((TangibleObjectImplementation*) impl)->getPlayerUseMask();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getPlayerUseMask();
 }
 
 void TangibleObjectAdapter::setFaction(unsigned int crc) {
-	((TangibleObjectImplementation*) impl)->setFaction(crc);
+	(static_cast<TangibleObjectImplementation*>(impl))->setFaction(crc);
 }
 
 int TangibleObjectAdapter::getFaction() {
-	return ((TangibleObjectImplementation*) impl)->getFaction();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getFaction();
 }
 
 bool TangibleObjectAdapter::isRebel() {
-	return ((TangibleObjectImplementation*) impl)->isRebel();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isRebel();
 }
 
 bool TangibleObjectAdapter::isImperial() {
-	return ((TangibleObjectImplementation*) impl)->isImperial();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isImperial();
 }
 
 bool TangibleObjectAdapter::isNeutral() {
-	return ((TangibleObjectImplementation*) impl)->isNeutral();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isNeutral();
 }
 
 bool TangibleObjectAdapter::isSliceable() {
-	return ((TangibleObjectImplementation*) impl)->isSliceable();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isSliceable();
 }
 
 bool TangibleObjectAdapter::isSliced() {
-	return ((TangibleObjectImplementation*) impl)->isSliced();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isSliced();
 }
 
 void TangibleObjectAdapter::setSliceable(bool val) {
-	((TangibleObjectImplementation*) impl)->setSliceable(val);
+	(static_cast<TangibleObjectImplementation*>(impl))->setSliceable(val);
 }
 
 void TangibleObjectAdapter::setSliced(bool slice) {
-	((TangibleObjectImplementation*) impl)->setSliced(slice);
+	(static_cast<TangibleObjectImplementation*>(impl))->setSliced(slice);
 }
 
 bool TangibleObjectAdapter::isPharmaceuticalObject() {
-	return ((TangibleObjectImplementation*) impl)->isPharmaceuticalObject();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isPharmaceuticalObject();
 }
 
 void TangibleObjectAdapter::setCustomizationString(const String& vars) {
-	((TangibleObjectImplementation*) impl)->setCustomizationString(vars);
+	(static_cast<TangibleObjectImplementation*>(impl))->setCustomizationString(vars);
 }
 
 void TangibleObjectAdapter::setPvpStatusBitmask(int bitmask) {
-	((TangibleObjectImplementation*) impl)->setPvpStatusBitmask(bitmask);
+	(static_cast<TangibleObjectImplementation*>(impl))->setPvpStatusBitmask(bitmask);
 }
 
 void TangibleObjectAdapter::setCraftersName(String& name) {
-	((TangibleObjectImplementation*) impl)->setCraftersName(name);
+	(static_cast<TangibleObjectImplementation*>(impl))->setCraftersName(name);
 }
 
 String TangibleObjectAdapter::getCraftersName() {
-	return ((TangibleObjectImplementation*) impl)->getCraftersName();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getCraftersName();
 }
 
 void TangibleObjectAdapter::setCraftersSerial(String& serial) {
-	((TangibleObjectImplementation*) impl)->setCraftersSerial(serial);
+	(static_cast<TangibleObjectImplementation*>(impl))->setCraftersSerial(serial);
 }
 
 void TangibleObjectAdapter::setLevel(int lev) {
-	((TangibleObjectImplementation*) impl)->setLevel(lev);
+	(static_cast<TangibleObjectImplementation*>(impl))->setLevel(lev);
 }
 
 String TangibleObjectAdapter::getCraftersSerial() {
-	return ((TangibleObjectImplementation*) impl)->getCraftersSerial();
+	return (static_cast<TangibleObjectImplementation*>(impl))->getCraftersSerial();
 }
 
 bool TangibleObjectAdapter::isFromFactoryCrate() {
-	return ((TangibleObjectImplementation*) impl)->isFromFactoryCrate();
+	return (static_cast<TangibleObjectImplementation*>(impl))->isFromFactoryCrate();
 }
 
 void TangibleObjectAdapter::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
-	((TangibleObjectImplementation*) impl)->setInitialCraftingValues(manufactureSchematic, assemblySuccess);
+	(static_cast<TangibleObjectImplementation*>(impl))->setInitialCraftingValues(manufactureSchematic, assemblySuccess);
 }
 
 bool TangibleObjectAdapter::applyComponentStats(ManufactureSchematic* manufactureSchematic) {
-	return ((TangibleObjectImplementation*) impl)->applyComponentStats(manufactureSchematic);
+	return (static_cast<TangibleObjectImplementation*>(impl))->applyComponentStats(manufactureSchematic);
 }
 
 FactoryCrate* TangibleObjectAdapter::createFactoryCrate(bool insertSelf) {
-	return ((TangibleObjectImplementation*) impl)->createFactoryCrate(insertSelf);
+	return (static_cast<TangibleObjectImplementation*>(impl))->createFactoryCrate(insertSelf);
 }
 
 /*
@@ -2077,7 +2078,7 @@ DistributedObjectServant* TangibleObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TangibleObjectAdapter((TangibleObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new TangibleObjectAdapter(static_cast<TangibleObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

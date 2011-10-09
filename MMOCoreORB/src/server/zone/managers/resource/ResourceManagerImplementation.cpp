@@ -81,10 +81,10 @@ bool ResourceManagerImplementation::loadConfigFile() {
 
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::POSTURECHANGED) {
-		CreatureObject* creature = (CreatureObject*) observable;
+		CreatureObject* creature = cast<CreatureObject*>( observable);
 		// Cancel Sampling on posture change
-		Reference<SampleTask*> task = (SampleTask*) creature->getPendingTask("sample");
-		Reference<SampleResultsTask*> sampleResultsTask = (SampleResultsTask*) creature->getPendingTask("sampleresults");
+		Reference<SampleTask*> task = cast<SampleTask*>( creature->getPendingTask("sample"));
+		Reference<SampleResultsTask*> sampleResultsTask = cast<SampleResultsTask*>( creature->getPendingTask("sampleresults"));
 
 		if (task != NULL) {
 
@@ -310,12 +310,12 @@ uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(CreatureObject
 	uint32 power = 0;
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<SceneObject*> obj = (SceneObject*) inventory->getContainerObject(i);
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>( inventory->getContainerObject(i));
 
 		if (obj == NULL || !obj->isResourceContainer())
 			continue;
 
-		ResourceContainer* rcno = (ResourceContainer*) obj.get();
+		ResourceContainer* rcno = cast<ResourceContainer*>( obj.get());
 		ManagedReference<ResourceSpawn*> spawn = rcno->getSpawnObject();
 
 		if (spawn == NULL || !spawn->isEnergy())
@@ -346,7 +346,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 		if (obj == NULL || !obj->isResourceContainer())
 			continue;
 
-		ResourceContainer* rcno = (ResourceContainer*) obj.get();
+		ResourceContainer* rcno = cast<ResourceContainer*>( obj.get());
 		ManagedReference<ResourceSpawn*> spawn = rcno->getSpawnObject();
 
 		if (spawn == NULL || !spawn->isEnergy())

@@ -128,7 +128,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	creature = createCreature(objectCRC);
 
 	if (creature != NULL && creature->isAiAgent()) {
-		AiAgent* npc = (AiAgent*)creature;
+		AiAgent* npc = cast<AiAgent*>(creature);
 		npc->loadTemplateData(creoTempl);
 	}
 
@@ -158,7 +158,7 @@ CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC
 		return NULL;
 	}
 
-	CreatureObject* creature = (CreatureObject*) object.get();
+	CreatureObject* creature = cast<CreatureObject*>( object.get());
 
 	if (!createCreatureChildrenObjects(creature)) {
 		StringBuffer errMsg;
@@ -195,7 +195,7 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 	Locker _locker(creature);
 
 	if (creature->isAiAgent()) {
-		AiAgent* aio = (AiAgent*)creature;
+		AiAgent* aio = cast<AiAgent*>(creature);
 		aio->setHomeLocation(x, z, y, cellParent);
 	}
 

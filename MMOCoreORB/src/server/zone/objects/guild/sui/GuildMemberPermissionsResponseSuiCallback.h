@@ -30,7 +30,7 @@ public:
 		if (index == -1)
 			return;
 
-		SuiListBox* listBox = (SuiListBox*) suiBox;
+		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		uint64 memberID = listBox->getMenuObjectID(index);
 
@@ -44,12 +44,12 @@ public:
 		if (obj == NULL || !obj->isTerminal())
 			return;
 
-		Terminal* terminal = (Terminal*) obj.get();
+		Terminal* terminal = cast<Terminal*>( obj.get());
 
 		if (!terminal->isGuildTerminal())
 			return;
 
-		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
 

@@ -70,7 +70,7 @@ public:
 		if(!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
 		ManagedReference<CraftingManager*> craftingManager = player->getZoneServer()->getCraftingManager();
 
@@ -94,7 +94,7 @@ public:
 				return GENERALERROR;
 			}
 
-			ManagedReference<ManufactureSchematic* > manuSchematic = (ManufactureSchematic*) draftSchematic->createManufactureSchematic();
+			ManagedReference<ManufactureSchematic* > manuSchematic = cast<ManufactureSchematic*>( draftSchematic->createManufactureSchematic());
 
 			if(manuSchematic == NULL) {
 				creature->sendSystemMessage("Error creating ManufactureSchematic from DraftSchematic");

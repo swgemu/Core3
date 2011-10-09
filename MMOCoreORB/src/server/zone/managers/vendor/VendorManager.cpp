@@ -279,7 +279,7 @@ void VendorManager::handleAwardVendorLookXP(CreatureObject* player, Vendor* vend
 	if (ownerRef == NULL || !ownerRef->isPlayerCreature())
 		return;
 
-	ManagedReference<CreatureObject*> owner = (CreatureObject*) ownerRef.get();
+	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>( ownerRef.get());
 	ManagedReference<SceneObject*> vendorRef = vendor->getVendor();
 
 	if (!player->checkCooldownRecovery("vendoruse" + String::valueOf(vendorRef->getObjectID()))) {

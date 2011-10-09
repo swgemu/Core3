@@ -37,8 +37,9 @@ WeaponObject::~WeaponObject() {
 }
 
 
+
 void WeaponObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -47,7 +48,7 @@ void WeaponObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void WeaponObject::initializeTransientMembers() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void WeaponObject::initializeTransientMembers() {
 }
 
 void WeaponObject::sendBaselinesTo(SceneObject* player) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -74,7 +75,7 @@ void WeaponObject::sendBaselinesTo(SceneObject* player) {
 }
 
 void WeaponObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -83,7 +84,7 @@ void WeaponObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* 
 }
 
 int WeaponObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +99,7 @@ int WeaponObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID
 }
 
 void WeaponObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -112,7 +113,7 @@ void WeaponObject::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 bool WeaponObject::isCertifiedFor(CreatureObject* object) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -126,7 +127,7 @@ bool WeaponObject::isCertifiedFor(CreatureObject* object) {
 }
 
 Vector<String>* WeaponObject::getDamageModifiers() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -135,7 +136,7 @@ Vector<String>* WeaponObject::getDamageModifiers() {
 }
 
 Vector<String>* WeaponObject::getSpeedModifiers() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -144,7 +145,7 @@ Vector<String>* WeaponObject::getSpeedModifiers() {
 }
 
 Vector<String>* WeaponObject::getCreatureAccuracyModifiers() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -153,7 +154,7 @@ Vector<String>* WeaponObject::getCreatureAccuracyModifiers() {
 }
 
 Vector<String>* WeaponObject::getDefenderDefenseModifiers() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -162,7 +163,7 @@ Vector<String>* WeaponObject::getDefenderDefenseModifiers() {
 }
 
 Vector<String>* WeaponObject::getDefenderSecondaryDefenseModifiers() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -171,7 +172,7 @@ Vector<String>* WeaponObject::getDefenderSecondaryDefenseModifiers() {
 }
 
 void WeaponObject::setCertified(bool cert) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -185,7 +186,7 @@ void WeaponObject::setCertified(bool cert) {
 }
 
 int WeaponObject::getAttackType() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -198,7 +199,7 @@ int WeaponObject::getAttackType() {
 }
 
 bool WeaponObject::isCertified() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -211,7 +212,7 @@ bool WeaponObject::isCertified() {
 }
 
 int WeaponObject::getPointBlankAccuracy() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -224,7 +225,7 @@ int WeaponObject::getPointBlankAccuracy() {
 }
 
 void WeaponObject::setPointBlankAccuracy(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -238,7 +239,7 @@ void WeaponObject::setPointBlankAccuracy(int value) {
 }
 
 int WeaponObject::getPointBlankRange() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -251,7 +252,7 @@ int WeaponObject::getPointBlankRange() {
 }
 
 int WeaponObject::getIdealRange() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -264,7 +265,7 @@ int WeaponObject::getIdealRange() {
 }
 
 void WeaponObject::setIdealRange(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -278,7 +279,7 @@ void WeaponObject::setIdealRange(int value) {
 }
 
 int WeaponObject::getMaxRange() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -291,7 +292,7 @@ int WeaponObject::getMaxRange() {
 }
 
 void WeaponObject::setMaxRange(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -305,7 +306,7 @@ void WeaponObject::setMaxRange(int value) {
 }
 
 int WeaponObject::getIdealAccuracy() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -318,7 +319,7 @@ int WeaponObject::getIdealAccuracy() {
 }
 
 void WeaponObject::setIdealAccuracy(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -332,7 +333,7 @@ void WeaponObject::setIdealAccuracy(int value) {
 }
 
 int WeaponObject::getArmorPiercing() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -345,7 +346,7 @@ int WeaponObject::getArmorPiercing() {
 }
 
 int WeaponObject::getMaxRangeAccuracy() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -358,7 +359,7 @@ int WeaponObject::getMaxRangeAccuracy() {
 }
 
 void WeaponObject::setMaxRangeAccuracy(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -372,7 +373,7 @@ void WeaponObject::setMaxRangeAccuracy(int value) {
 }
 
 float WeaponObject::getAttackSpeed() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -385,7 +386,7 @@ float WeaponObject::getAttackSpeed() {
 }
 
 void WeaponObject::setAttackSpeed(float value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -399,7 +400,7 @@ void WeaponObject::setAttackSpeed(float value) {
 }
 
 float WeaponObject::getMaxDamage() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -412,7 +413,7 @@ float WeaponObject::getMaxDamage() {
 }
 
 void WeaponObject::setMaxDamage(float value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -426,7 +427,7 @@ void WeaponObject::setMaxDamage(float value) {
 }
 
 float WeaponObject::getMinDamage() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -439,7 +440,7 @@ float WeaponObject::getMinDamage() {
 }
 
 void WeaponObject::setMinDamage(float value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -453,7 +454,7 @@ void WeaponObject::setMinDamage(float value) {
 }
 
 float WeaponObject::getWoundsRatio() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -466,7 +467,7 @@ float WeaponObject::getWoundsRatio() {
 }
 
 void WeaponObject::setWoundsRatio(float value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -480,7 +481,7 @@ void WeaponObject::setWoundsRatio(float value) {
 }
 
 int WeaponObject::getHealthAttackCost() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -493,7 +494,7 @@ int WeaponObject::getHealthAttackCost() {
 }
 
 void WeaponObject::setHealthAttackCost(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -507,7 +508,7 @@ void WeaponObject::setHealthAttackCost(int value) {
 }
 
 int WeaponObject::getActionAttackCost() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -520,7 +521,7 @@ int WeaponObject::getActionAttackCost() {
 }
 
 void WeaponObject::setActionAttackCost(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -534,7 +535,7 @@ void WeaponObject::setActionAttackCost(int value) {
 }
 
 int WeaponObject::getMindAttackCost() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -547,7 +548,7 @@ int WeaponObject::getMindAttackCost() {
 }
 
 void WeaponObject::setMindAttackCost(int value) {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -561,7 +562,7 @@ void WeaponObject::setMindAttackCost(int value) {
 }
 
 int WeaponObject::getForceCost() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -574,7 +575,7 @@ int WeaponObject::getForceCost() {
 }
 
 int WeaponObject::getDamageType() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -587,7 +588,7 @@ int WeaponObject::getDamageType() {
 }
 
 String WeaponObject::getXpType() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -601,7 +602,7 @@ String WeaponObject::getXpType() {
 }
 
 bool WeaponObject::isUnarmedWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -614,7 +615,7 @@ bool WeaponObject::isUnarmedWeapon() {
 }
 
 bool WeaponObject::isMeleeWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -627,7 +628,7 @@ bool WeaponObject::isMeleeWeapon() {
 }
 
 bool WeaponObject::isRangedWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -640,7 +641,7 @@ bool WeaponObject::isRangedWeapon() {
 }
 
 bool WeaponObject::isRifleWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -653,7 +654,7 @@ bool WeaponObject::isRifleWeapon() {
 }
 
 bool WeaponObject::isThrownWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -666,7 +667,7 @@ bool WeaponObject::isThrownWeapon() {
 }
 
 bool WeaponObject::isHeavyWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -679,7 +680,7 @@ bool WeaponObject::isHeavyWeapon() {
 }
 
 bool WeaponObject::isSpecialHeavyWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -692,7 +693,7 @@ bool WeaponObject::isSpecialHeavyWeapon() {
 }
 
 bool WeaponObject::isLightningRifle() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -705,7 +706,7 @@ bool WeaponObject::isLightningRifle() {
 }
 
 bool WeaponObject::isCarbineWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -718,7 +719,7 @@ bool WeaponObject::isCarbineWeapon() {
 }
 
 bool WeaponObject::isPistolWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -731,7 +732,7 @@ bool WeaponObject::isPistolWeapon() {
 }
 
 bool WeaponObject::isOneHandMeleeWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -744,7 +745,7 @@ bool WeaponObject::isOneHandMeleeWeapon() {
 }
 
 bool WeaponObject::isPolearmWeaponObject() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -757,7 +758,7 @@ bool WeaponObject::isPolearmWeaponObject() {
 }
 
 bool WeaponObject::isTwoHandMeleeWeapon() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -770,7 +771,7 @@ bool WeaponObject::isTwoHandMeleeWeapon() {
 }
 
 bool WeaponObject::isWeaponObject() {
-	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -817,7 +818,7 @@ void WeaponObjectImplementation::_initializeImplementation() {
 }
 
 void WeaponObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (WeaponObject*) stub;
+	_this = static_cast<WeaponObject*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -1493,16 +1494,16 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISCERTIFIEDFOR__CREATUREOBJECT_:
-		resp->insertBoolean(isCertifiedFor((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isCertifiedFor(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_SETCERTIFIED__BOOL_:
 		setCertified(inv->getBooleanParameter());
@@ -1650,207 +1651,207 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void WeaponObjectAdapter::initializeTransientMembers() {
-	((WeaponObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<WeaponObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((WeaponObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<WeaponObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 int WeaponObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((WeaponObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<WeaponObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void WeaponObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((WeaponObjectImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<WeaponObjectImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 bool WeaponObjectAdapter::isCertifiedFor(CreatureObject* object) {
-	return ((WeaponObjectImplementation*) impl)->isCertifiedFor(object);
+	return (static_cast<WeaponObjectImplementation*>(impl))->isCertifiedFor(object);
 }
 
 void WeaponObjectAdapter::setCertified(bool cert) {
-	((WeaponObjectImplementation*) impl)->setCertified(cert);
+	(static_cast<WeaponObjectImplementation*>(impl))->setCertified(cert);
 }
 
 int WeaponObjectAdapter::getAttackType() {
-	return ((WeaponObjectImplementation*) impl)->getAttackType();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getAttackType();
 }
 
 bool WeaponObjectAdapter::isCertified() {
-	return ((WeaponObjectImplementation*) impl)->isCertified();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isCertified();
 }
 
 int WeaponObjectAdapter::getPointBlankAccuracy() {
-	return ((WeaponObjectImplementation*) impl)->getPointBlankAccuracy();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getPointBlankAccuracy();
 }
 
 void WeaponObjectAdapter::setPointBlankAccuracy(int value) {
-	((WeaponObjectImplementation*) impl)->setPointBlankAccuracy(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setPointBlankAccuracy(value);
 }
 
 int WeaponObjectAdapter::getPointBlankRange() {
-	return ((WeaponObjectImplementation*) impl)->getPointBlankRange();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getPointBlankRange();
 }
 
 int WeaponObjectAdapter::getIdealRange() {
-	return ((WeaponObjectImplementation*) impl)->getIdealRange();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getIdealRange();
 }
 
 void WeaponObjectAdapter::setIdealRange(int value) {
-	((WeaponObjectImplementation*) impl)->setIdealRange(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setIdealRange(value);
 }
 
 int WeaponObjectAdapter::getMaxRange() {
-	return ((WeaponObjectImplementation*) impl)->getMaxRange();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getMaxRange();
 }
 
 void WeaponObjectAdapter::setMaxRange(int value) {
-	((WeaponObjectImplementation*) impl)->setMaxRange(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setMaxRange(value);
 }
 
 int WeaponObjectAdapter::getIdealAccuracy() {
-	return ((WeaponObjectImplementation*) impl)->getIdealAccuracy();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getIdealAccuracy();
 }
 
 void WeaponObjectAdapter::setIdealAccuracy(int value) {
-	((WeaponObjectImplementation*) impl)->setIdealAccuracy(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setIdealAccuracy(value);
 }
 
 int WeaponObjectAdapter::getArmorPiercing() {
-	return ((WeaponObjectImplementation*) impl)->getArmorPiercing();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getArmorPiercing();
 }
 
 int WeaponObjectAdapter::getMaxRangeAccuracy() {
-	return ((WeaponObjectImplementation*) impl)->getMaxRangeAccuracy();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getMaxRangeAccuracy();
 }
 
 void WeaponObjectAdapter::setMaxRangeAccuracy(int value) {
-	((WeaponObjectImplementation*) impl)->setMaxRangeAccuracy(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setMaxRangeAccuracy(value);
 }
 
 float WeaponObjectAdapter::getAttackSpeed() {
-	return ((WeaponObjectImplementation*) impl)->getAttackSpeed();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getAttackSpeed();
 }
 
 void WeaponObjectAdapter::setAttackSpeed(float value) {
-	((WeaponObjectImplementation*) impl)->setAttackSpeed(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setAttackSpeed(value);
 }
 
 float WeaponObjectAdapter::getMaxDamage() {
-	return ((WeaponObjectImplementation*) impl)->getMaxDamage();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getMaxDamage();
 }
 
 void WeaponObjectAdapter::setMaxDamage(float value) {
-	((WeaponObjectImplementation*) impl)->setMaxDamage(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setMaxDamage(value);
 }
 
 float WeaponObjectAdapter::getMinDamage() {
-	return ((WeaponObjectImplementation*) impl)->getMinDamage();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getMinDamage();
 }
 
 void WeaponObjectAdapter::setMinDamage(float value) {
-	((WeaponObjectImplementation*) impl)->setMinDamage(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setMinDamage(value);
 }
 
 float WeaponObjectAdapter::getWoundsRatio() {
-	return ((WeaponObjectImplementation*) impl)->getWoundsRatio();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getWoundsRatio();
 }
 
 void WeaponObjectAdapter::setWoundsRatio(float value) {
-	((WeaponObjectImplementation*) impl)->setWoundsRatio(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setWoundsRatio(value);
 }
 
 int WeaponObjectAdapter::getHealthAttackCost() {
-	return ((WeaponObjectImplementation*) impl)->getHealthAttackCost();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getHealthAttackCost();
 }
 
 void WeaponObjectAdapter::setHealthAttackCost(int value) {
-	((WeaponObjectImplementation*) impl)->setHealthAttackCost(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setHealthAttackCost(value);
 }
 
 int WeaponObjectAdapter::getActionAttackCost() {
-	return ((WeaponObjectImplementation*) impl)->getActionAttackCost();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getActionAttackCost();
 }
 
 void WeaponObjectAdapter::setActionAttackCost(int value) {
-	((WeaponObjectImplementation*) impl)->setActionAttackCost(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setActionAttackCost(value);
 }
 
 int WeaponObjectAdapter::getMindAttackCost() {
-	return ((WeaponObjectImplementation*) impl)->getMindAttackCost();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getMindAttackCost();
 }
 
 void WeaponObjectAdapter::setMindAttackCost(int value) {
-	((WeaponObjectImplementation*) impl)->setMindAttackCost(value);
+	(static_cast<WeaponObjectImplementation*>(impl))->setMindAttackCost(value);
 }
 
 int WeaponObjectAdapter::getForceCost() {
-	return ((WeaponObjectImplementation*) impl)->getForceCost();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getForceCost();
 }
 
 int WeaponObjectAdapter::getDamageType() {
-	return ((WeaponObjectImplementation*) impl)->getDamageType();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getDamageType();
 }
 
 String WeaponObjectAdapter::getXpType() {
-	return ((WeaponObjectImplementation*) impl)->getXpType();
+	return (static_cast<WeaponObjectImplementation*>(impl))->getXpType();
 }
 
 bool WeaponObjectAdapter::isUnarmedWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isUnarmedWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isUnarmedWeapon();
 }
 
 bool WeaponObjectAdapter::isMeleeWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isMeleeWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isMeleeWeapon();
 }
 
 bool WeaponObjectAdapter::isRangedWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isRangedWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isRangedWeapon();
 }
 
 bool WeaponObjectAdapter::isRifleWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isRifleWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isRifleWeapon();
 }
 
 bool WeaponObjectAdapter::isThrownWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isThrownWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isThrownWeapon();
 }
 
 bool WeaponObjectAdapter::isHeavyWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isHeavyWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isHeavyWeapon();
 }
 
 bool WeaponObjectAdapter::isSpecialHeavyWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isSpecialHeavyWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isSpecialHeavyWeapon();
 }
 
 bool WeaponObjectAdapter::isLightningRifle() {
-	return ((WeaponObjectImplementation*) impl)->isLightningRifle();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isLightningRifle();
 }
 
 bool WeaponObjectAdapter::isCarbineWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isCarbineWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isCarbineWeapon();
 }
 
 bool WeaponObjectAdapter::isPistolWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isPistolWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isPistolWeapon();
 }
 
 bool WeaponObjectAdapter::isOneHandMeleeWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isOneHandMeleeWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isOneHandMeleeWeapon();
 }
 
 bool WeaponObjectAdapter::isPolearmWeaponObject() {
-	return ((WeaponObjectImplementation*) impl)->isPolearmWeaponObject();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isPolearmWeaponObject();
 }
 
 bool WeaponObjectAdapter::isTwoHandMeleeWeapon() {
-	return ((WeaponObjectImplementation*) impl)->isTwoHandMeleeWeapon();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isTwoHandMeleeWeapon();
 }
 
 bool WeaponObjectAdapter::isWeaponObject() {
-	return ((WeaponObjectImplementation*) impl)->isWeaponObject();
+	return (static_cast<WeaponObjectImplementation*>(impl))->isWeaponObject();
 }
 
 /*
@@ -1878,7 +1879,7 @@ DistributedObjectServant* WeaponObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WeaponObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WeaponObjectAdapter((WeaponObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new WeaponObjectAdapter(static_cast<WeaponObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

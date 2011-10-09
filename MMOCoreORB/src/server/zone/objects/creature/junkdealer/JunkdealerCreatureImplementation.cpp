@@ -26,7 +26,7 @@ void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 	if (!obj->isPlayerCreature())
 		return;
 
-	CreatureObject* player = (CreatureObject*) obj;
+	CreatureObject* player = cast<CreatureObject*>( obj);
 
 	PlayerObject* ghost = player->getPlayerObject();
 
@@ -74,7 +74,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 	if (!obj->isPlayerCreature())
 		return;
 
-	CreatureObject* player = (CreatureObject*) obj;
+	CreatureObject* player = cast<CreatureObject*>( obj);
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost->getLastNpcConvStr() != getObjectNameStringIdName())
@@ -274,7 +274,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 			ghost->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
 
-			ManagedReference<LootkitObject*> lootkit = (LootkitObject*)server->getZoneServer()->createObject(CRC, 2);
+			ManagedReference<LootkitObject*> lootkit = cast<LootkitObject*>(server->getZoneServer()->createObject(CRC, 2));
 
 			lootkit->sendTo(player, true);
 			if (!inventory->addObject(lootkit, -1, true))

@@ -31,8 +31,9 @@ ChatRoom::~ChatRoom() {
 }
 
 
+
 void ChatRoom::init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void ChatRoom::init(ZoneServer* serv, ChatRoom* par, const String& roomName, uns
 }
 
 void ChatRoom::sendTo(CreatureObject* player) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -63,7 +64,7 @@ void ChatRoom::sendTo(CreatureObject* player) {
 }
 
 void ChatRoom::sendDestroyTo(CreatureObject* player) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ void ChatRoom::sendDestroyTo(CreatureObject* player) {
 }
 
 void ChatRoom::addSubRoom(ChatRoom* channel) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -91,7 +92,7 @@ void ChatRoom::addSubRoom(ChatRoom* channel) {
 }
 
 void ChatRoom::removeSubRoom(ChatRoom* channel) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -105,7 +106,7 @@ void ChatRoom::removeSubRoom(ChatRoom* channel) {
 }
 
 ChatRoom* ChatRoom::getSubRoom(int i) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,13 +114,13 @@ ChatRoom* ChatRoom::getSubRoom(int i) {
 		DistributedMethod method(this, RPC_GETSUBROOM__INT_);
 		method.addSignedIntParameter(i);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSubRoom(i);
 }
 
 ChatRoom* ChatRoom::getSubRoom(const String& name) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,13 +128,13 @@ ChatRoom* ChatRoom::getSubRoom(const String& name) {
 		DistributedMethod method(this, RPC_GETSUBROOM__STRING_);
 		method.addAsciiParameter(name);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSubRoom(name);
 }
 
 void ChatRoom::addPlayer(CreatureObject* player, bool doLock) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +149,7 @@ void ChatRoom::addPlayer(CreatureObject* player, bool doLock) {
 }
 
 void ChatRoom::removePlayer(CreatureObject* player, bool doLock) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -163,7 +164,7 @@ void ChatRoom::removePlayer(CreatureObject* player, bool doLock) {
 }
 
 void ChatRoom::removePlayer(const String& player) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -177,7 +178,7 @@ void ChatRoom::removePlayer(const String& player) {
 }
 
 void ChatRoom::broadcastMessage(BaseMessage* msg) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -191,7 +192,7 @@ void ChatRoom::broadcastMessage(BaseMessage* msg) {
 }
 
 void ChatRoom::broadcastMessages(Vector<BaseMessage*>* messages) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -200,7 +201,7 @@ void ChatRoom::broadcastMessages(Vector<BaseMessage*>* messages) {
 }
 
 bool ChatRoom::hasPlayer(CreatureObject* player) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -214,7 +215,7 @@ bool ChatRoom::hasPlayer(CreatureObject* player) {
 }
 
 bool ChatRoom::hasPlayer(const String& name) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -228,7 +229,7 @@ bool ChatRoom::hasPlayer(const String& name) {
 }
 
 void ChatRoom::removeAllPlayers() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -241,7 +242,7 @@ void ChatRoom::removeAllPlayers() {
 }
 
 void ChatRoom::setPrivate() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -254,7 +255,7 @@ void ChatRoom::setPrivate() {
 }
 
 void ChatRoom::setPublic() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -267,7 +268,7 @@ void ChatRoom::setPublic() {
 }
 
 bool ChatRoom::isPublic() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -280,7 +281,7 @@ bool ChatRoom::isPublic() {
 }
 
 bool ChatRoom::isPrivate() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -293,7 +294,7 @@ bool ChatRoom::isPrivate() {
 }
 
 bool ChatRoom::isModerated() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -306,7 +307,7 @@ bool ChatRoom::isModerated() {
 }
 
 void ChatRoom::setModerated(bool moderate) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -320,7 +321,7 @@ void ChatRoom::setModerated(bool moderate) {
 }
 
 CreatureObject* ChatRoom::getPlayer(int idx) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -328,13 +329,13 @@ CreatureObject* ChatRoom::getPlayer(int idx) {
 		DistributedMethod method(this, RPC_GETPLAYER__INT_);
 		method.addSignedIntParameter(idx);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPlayer(idx);
 }
 
 int ChatRoom::getPlayerSize() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -347,7 +348,7 @@ int ChatRoom::getPlayerSize() {
 }
 
 void ChatRoom::setName(const String& Name) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -361,7 +362,7 @@ void ChatRoom::setName(const String& Name) {
 }
 
 String ChatRoom::getName() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -375,7 +376,7 @@ String ChatRoom::getName() {
 }
 
 String ChatRoom::getFullPath() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -389,7 +390,7 @@ String ChatRoom::getFullPath() {
 }
 
 String ChatRoom::getOwner() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -403,7 +404,7 @@ String ChatRoom::getOwner() {
 }
 
 String ChatRoom::getCreator() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -417,7 +418,7 @@ String ChatRoom::getCreator() {
 }
 
 UnicodeString ChatRoom::getTitle() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -431,7 +432,7 @@ UnicodeString ChatRoom::getTitle() {
 }
 
 String ChatRoom::getGalaxyName() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -445,7 +446,7 @@ String ChatRoom::getGalaxyName() {
 }
 
 void ChatRoom::setOwner(const String& Owner) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -459,7 +460,7 @@ void ChatRoom::setOwner(const String& Owner) {
 }
 
 void ChatRoom::setCreator(const String& Creator) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -473,7 +474,7 @@ void ChatRoom::setCreator(const String& Creator) {
 }
 
 void ChatRoom::setTitle(const String& Title) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -487,7 +488,7 @@ void ChatRoom::setTitle(const String& Title) {
 }
 
 void ChatRoom::setRoomID(int id) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -501,7 +502,7 @@ void ChatRoom::setRoomID(int id) {
 }
 
 unsigned int ChatRoom::getRoomID() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -514,7 +515,7 @@ unsigned int ChatRoom::getRoomID() {
 }
 
 int ChatRoom::getSubRoomsSize() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -527,20 +528,20 @@ int ChatRoom::getSubRoomsSize() {
 }
 
 ChatRoom* ChatRoom::getParent() {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETPARENT__);
 
-		return (ChatRoom*) method.executeWithObjectReturn();
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getParent();
 }
 
 int ChatRoom::compareTo(ChatRoom* obj) {
-	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
+	ChatRoomImplementation* _implementation = static_cast<ChatRoomImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -588,7 +589,7 @@ void ChatRoomImplementation::_initializeImplementation() {
 }
 
 void ChatRoomImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ChatRoom*) stub;
+	_this = static_cast<ChatRoom*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -1119,19 +1120,19 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_:
-		init((ZoneServer*) inv->getObjectParameter(), (ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_init__ZoneServer_ChatRoom_String_int_), inv->getUnsignedIntParameter());
+		init(static_cast<ZoneServer*>(inv->getObjectParameter()), static_cast<ChatRoom*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_init__ZoneServer_ChatRoom_String_int_), inv->getUnsignedIntParameter());
 		break;
 	case RPC_SENDTO__CREATUREOBJECT_:
-		sendTo((CreatureObject*) inv->getObjectParameter());
+		sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDDESTROYTO__CREATUREOBJECT_:
-		sendDestroyTo((CreatureObject*) inv->getObjectParameter());
+		sendDestroyTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDSUBROOM__CHATROOM_:
-		addSubRoom((ChatRoom*) inv->getObjectParameter());
+		addSubRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVESUBROOM__CHATROOM_:
-		removeSubRoom((ChatRoom*) inv->getObjectParameter());
+		removeSubRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETSUBROOM__INT_:
 		resp->insertLong(getSubRoom(inv->getSignedIntParameter())->_getObjectID());
@@ -1140,19 +1141,19 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getSubRoom(inv->getAsciiParameter(_param0_getSubRoom__String_))->_getObjectID());
 		break;
 	case RPC_ADDPLAYER__CREATUREOBJECT_BOOL_:
-		addPlayer((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_REMOVEPLAYER__CREATUREOBJECT_BOOL_:
-		removePlayer((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		removePlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_REMOVEPLAYER__STRING_:
 		removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_));
 		break;
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
-		broadcastMessage((BaseMessage*) inv->getObjectParameter());
+		broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
 		break;
 	case RPC_HASPLAYER__CREATUREOBJECT_:
-		resp->insertBoolean(hasPlayer((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(hasPlayer(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_HASPLAYER__STRING_:
 		resp->insertBoolean(hasPlayer(inv->getAsciiParameter(_param0_hasPlayer__String_)));
@@ -1227,7 +1228,7 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getParent()->_getObjectID());
 		break;
 	case RPC_COMPARETO__CHATROOM_:
-		resp->insertSignedInt(compareTo((ChatRoom*) inv->getObjectParameter()));
+		resp->insertSignedInt(compareTo(static_cast<ChatRoom*>(inv->getObjectParameter())));
 		break;
 	default:
 		return NULL;
@@ -1237,151 +1238,151 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ChatRoomAdapter::init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID) {
-	((ChatRoomImplementation*) impl)->init(serv, par, roomName, channelID);
+	(static_cast<ChatRoomImplementation*>(impl))->init(serv, par, roomName, channelID);
 }
 
 void ChatRoomAdapter::sendTo(CreatureObject* player) {
-	((ChatRoomImplementation*) impl)->sendTo(player);
+	(static_cast<ChatRoomImplementation*>(impl))->sendTo(player);
 }
 
 void ChatRoomAdapter::sendDestroyTo(CreatureObject* player) {
-	((ChatRoomImplementation*) impl)->sendDestroyTo(player);
+	(static_cast<ChatRoomImplementation*>(impl))->sendDestroyTo(player);
 }
 
 void ChatRoomAdapter::addSubRoom(ChatRoom* channel) {
-	((ChatRoomImplementation*) impl)->addSubRoom(channel);
+	(static_cast<ChatRoomImplementation*>(impl))->addSubRoom(channel);
 }
 
 void ChatRoomAdapter::removeSubRoom(ChatRoom* channel) {
-	((ChatRoomImplementation*) impl)->removeSubRoom(channel);
+	(static_cast<ChatRoomImplementation*>(impl))->removeSubRoom(channel);
 }
 
 ChatRoom* ChatRoomAdapter::getSubRoom(int i) {
-	return ((ChatRoomImplementation*) impl)->getSubRoom(i);
+	return (static_cast<ChatRoomImplementation*>(impl))->getSubRoom(i);
 }
 
 ChatRoom* ChatRoomAdapter::getSubRoom(const String& name) {
-	return ((ChatRoomImplementation*) impl)->getSubRoom(name);
+	return (static_cast<ChatRoomImplementation*>(impl))->getSubRoom(name);
 }
 
 void ChatRoomAdapter::addPlayer(CreatureObject* player, bool doLock) {
-	((ChatRoomImplementation*) impl)->addPlayer(player, doLock);
+	(static_cast<ChatRoomImplementation*>(impl))->addPlayer(player, doLock);
 }
 
 void ChatRoomAdapter::removePlayer(CreatureObject* player, bool doLock) {
-	((ChatRoomImplementation*) impl)->removePlayer(player, doLock);
+	(static_cast<ChatRoomImplementation*>(impl))->removePlayer(player, doLock);
 }
 
 void ChatRoomAdapter::removePlayer(const String& player) {
-	((ChatRoomImplementation*) impl)->removePlayer(player);
+	(static_cast<ChatRoomImplementation*>(impl))->removePlayer(player);
 }
 
 void ChatRoomAdapter::broadcastMessage(BaseMessage* msg) {
-	((ChatRoomImplementation*) impl)->broadcastMessage(msg);
+	(static_cast<ChatRoomImplementation*>(impl))->broadcastMessage(msg);
 }
 
 bool ChatRoomAdapter::hasPlayer(CreatureObject* player) {
-	return ((ChatRoomImplementation*) impl)->hasPlayer(player);
+	return (static_cast<ChatRoomImplementation*>(impl))->hasPlayer(player);
 }
 
 bool ChatRoomAdapter::hasPlayer(const String& name) {
-	return ((ChatRoomImplementation*) impl)->hasPlayer(name);
+	return (static_cast<ChatRoomImplementation*>(impl))->hasPlayer(name);
 }
 
 void ChatRoomAdapter::removeAllPlayers() {
-	((ChatRoomImplementation*) impl)->removeAllPlayers();
+	(static_cast<ChatRoomImplementation*>(impl))->removeAllPlayers();
 }
 
 void ChatRoomAdapter::setPrivate() {
-	((ChatRoomImplementation*) impl)->setPrivate();
+	(static_cast<ChatRoomImplementation*>(impl))->setPrivate();
 }
 
 void ChatRoomAdapter::setPublic() {
-	((ChatRoomImplementation*) impl)->setPublic();
+	(static_cast<ChatRoomImplementation*>(impl))->setPublic();
 }
 
 bool ChatRoomAdapter::isPublic() {
-	return ((ChatRoomImplementation*) impl)->isPublic();
+	return (static_cast<ChatRoomImplementation*>(impl))->isPublic();
 }
 
 bool ChatRoomAdapter::isPrivate() {
-	return ((ChatRoomImplementation*) impl)->isPrivate();
+	return (static_cast<ChatRoomImplementation*>(impl))->isPrivate();
 }
 
 bool ChatRoomAdapter::isModerated() {
-	return ((ChatRoomImplementation*) impl)->isModerated();
+	return (static_cast<ChatRoomImplementation*>(impl))->isModerated();
 }
 
 void ChatRoomAdapter::setModerated(bool moderate) {
-	((ChatRoomImplementation*) impl)->setModerated(moderate);
+	(static_cast<ChatRoomImplementation*>(impl))->setModerated(moderate);
 }
 
 CreatureObject* ChatRoomAdapter::getPlayer(int idx) {
-	return ((ChatRoomImplementation*) impl)->getPlayer(idx);
+	return (static_cast<ChatRoomImplementation*>(impl))->getPlayer(idx);
 }
 
 int ChatRoomAdapter::getPlayerSize() {
-	return ((ChatRoomImplementation*) impl)->getPlayerSize();
+	return (static_cast<ChatRoomImplementation*>(impl))->getPlayerSize();
 }
 
 void ChatRoomAdapter::setName(const String& Name) {
-	((ChatRoomImplementation*) impl)->setName(Name);
+	(static_cast<ChatRoomImplementation*>(impl))->setName(Name);
 }
 
 String ChatRoomAdapter::getName() {
-	return ((ChatRoomImplementation*) impl)->getName();
+	return (static_cast<ChatRoomImplementation*>(impl))->getName();
 }
 
 String ChatRoomAdapter::getFullPath() {
-	return ((ChatRoomImplementation*) impl)->getFullPath();
+	return (static_cast<ChatRoomImplementation*>(impl))->getFullPath();
 }
 
 String ChatRoomAdapter::getOwner() {
-	return ((ChatRoomImplementation*) impl)->getOwner();
+	return (static_cast<ChatRoomImplementation*>(impl))->getOwner();
 }
 
 String ChatRoomAdapter::getCreator() {
-	return ((ChatRoomImplementation*) impl)->getCreator();
+	return (static_cast<ChatRoomImplementation*>(impl))->getCreator();
 }
 
 UnicodeString ChatRoomAdapter::getTitle() {
-	return ((ChatRoomImplementation*) impl)->getTitle();
+	return (static_cast<ChatRoomImplementation*>(impl))->getTitle();
 }
 
 String ChatRoomAdapter::getGalaxyName() {
-	return ((ChatRoomImplementation*) impl)->getGalaxyName();
+	return (static_cast<ChatRoomImplementation*>(impl))->getGalaxyName();
 }
 
 void ChatRoomAdapter::setOwner(const String& Owner) {
-	((ChatRoomImplementation*) impl)->setOwner(Owner);
+	(static_cast<ChatRoomImplementation*>(impl))->setOwner(Owner);
 }
 
 void ChatRoomAdapter::setCreator(const String& Creator) {
-	((ChatRoomImplementation*) impl)->setCreator(Creator);
+	(static_cast<ChatRoomImplementation*>(impl))->setCreator(Creator);
 }
 
 void ChatRoomAdapter::setTitle(const String& Title) {
-	((ChatRoomImplementation*) impl)->setTitle(Title);
+	(static_cast<ChatRoomImplementation*>(impl))->setTitle(Title);
 }
 
 void ChatRoomAdapter::setRoomID(int id) {
-	((ChatRoomImplementation*) impl)->setRoomID(id);
+	(static_cast<ChatRoomImplementation*>(impl))->setRoomID(id);
 }
 
 unsigned int ChatRoomAdapter::getRoomID() {
-	return ((ChatRoomImplementation*) impl)->getRoomID();
+	return (static_cast<ChatRoomImplementation*>(impl))->getRoomID();
 }
 
 int ChatRoomAdapter::getSubRoomsSize() {
-	return ((ChatRoomImplementation*) impl)->getSubRoomsSize();
+	return (static_cast<ChatRoomImplementation*>(impl))->getSubRoomsSize();
 }
 
 ChatRoom* ChatRoomAdapter::getParent() {
-	return ((ChatRoomImplementation*) impl)->getParent();
+	return (static_cast<ChatRoomImplementation*>(impl))->getParent();
 }
 
 int ChatRoomAdapter::compareTo(ChatRoom* obj) {
-	return ((ChatRoomImplementation*) impl)->compareTo(obj);
+	return (static_cast<ChatRoomImplementation*>(impl))->compareTo(obj);
 }
 
 /*
@@ -1409,7 +1410,7 @@ DistributedObjectServant* ChatRoomHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ChatRoomHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ChatRoomAdapter((ChatRoomImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ChatRoomAdapter(static_cast<ChatRoomImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

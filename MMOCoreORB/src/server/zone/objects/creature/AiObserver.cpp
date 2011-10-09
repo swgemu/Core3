@@ -27,8 +27,9 @@ AiObserver::~AiObserver() {
 }
 
 
+
 int AiObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	AiObserverImplementation* _implementation = (AiObserverImplementation*) _getImplementation();
+	AiObserverImplementation* _implementation = static_cast<AiObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +80,7 @@ void AiObserverImplementation::_initializeImplementation() {
 }
 
 void AiObserverImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (AiObserver*) stub;
+	_this = static_cast<AiObserver*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -218,7 +219,7 @@ Packet* AiObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -228,7 +229,7 @@ Packet* AiObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int AiObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((AiObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<AiObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -256,7 +257,7 @@ DistributedObjectServant* AiObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AiObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AiObserverAdapter((AiObserverImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new AiObserverAdapter(static_cast<AiObserverImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

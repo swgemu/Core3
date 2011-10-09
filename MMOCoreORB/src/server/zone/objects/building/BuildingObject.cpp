@@ -39,8 +39,9 @@ BuildingObject::~BuildingObject() {
 }
 
 
+
 void BuildingObject::createCellObjects() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -53,7 +54,7 @@ void BuildingObject::createCellObjects() {
 }
 
 void BuildingObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,7 +68,7 @@ void BuildingObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 }
 
 void BuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -76,7 +77,7 @@ void BuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void BuildingObject::initializeTransientMembers() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +90,7 @@ void BuildingObject::initializeTransientMembers() {
 }
 
 void BuildingObject::createContainerComponent() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -102,7 +103,7 @@ void BuildingObject::createContainerComponent() {
 }
 
 void BuildingObject::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -117,7 +118,7 @@ void BuildingObject::setCustomObjectName(const UnicodeString& name, bool notifyC
 }
 
 void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,7 +132,7 @@ void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
 }
 
 void BuildingObject::updateCellPermissionsTo(CreatureObject* creature) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +146,7 @@ void BuildingObject::updateCellPermissionsTo(CreatureObject* creature) {
 }
 
 void BuildingObject::broadcastCellPermissions() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -158,7 +159,7 @@ void BuildingObject::broadcastCellPermissions() {
 }
 
 bool BuildingObject::isAllowedEntry(const String& firstName) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -172,7 +173,7 @@ bool BuildingObject::isAllowedEntry(const String& firstName) {
 }
 
 int BuildingObject::notifyStructurePlaced(CreatureObject* player) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -186,7 +187,7 @@ int BuildingObject::notifyStructurePlaced(CreatureObject* player) {
 }
 
 Vector3 BuildingObject::getEjectionPoint() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -195,7 +196,7 @@ Vector3 BuildingObject::getEjectionPoint() {
 }
 
 void BuildingObject::ejectObject(SceneObject* obj) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -209,7 +210,7 @@ void BuildingObject::ejectObject(SceneObject* obj) {
 }
 
 void BuildingObject::notifyRemoveFromZone() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -222,7 +223,7 @@ void BuildingObject::notifyRemoveFromZone() {
 }
 
 void BuildingObject::notifyLoadFromDatabase() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -235,7 +236,7 @@ void BuildingObject::notifyLoadFromDatabase() {
 }
 
 void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -244,7 +245,7 @@ void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -253,7 +254,7 @@ void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::notifyObjectInsertedToZone(SceneObject* object) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -267,7 +268,7 @@ void BuildingObject::notifyObjectInsertedToZone(SceneObject* object) {
 }
 
 void BuildingObject::insert(QuadTreeEntry* obj) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -276,7 +277,7 @@ void BuildingObject::insert(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::remove(QuadTreeEntry* obj) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -285,7 +286,7 @@ void BuildingObject::remove(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::update(QuadTreeEntry* obj) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -294,7 +295,7 @@ void BuildingObject::update(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -303,7 +304,7 @@ void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 }
 
 void BuildingObject::sendTo(SceneObject* player, bool doClose) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -318,7 +319,7 @@ void BuildingObject::sendTo(SceneObject* player, bool doClose) {
 }
 
 void BuildingObject::sendBaselinesTo(SceneObject* player) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -332,7 +333,7 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 }
 
 void BuildingObject::sendDestroyTo(SceneObject* player) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -346,7 +347,7 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 }
 
 bool BuildingObject::isStaticBuilding() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -359,7 +360,7 @@ bool BuildingObject::isStaticBuilding() {
 }
 
 CellObject* BuildingObject::getCell(int idx) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -367,13 +368,13 @@ CellObject* BuildingObject::getCell(int idx) {
 		DistributedMethod method(this, RPC_GETCELL__INT_);
 		method.addSignedIntParameter(idx);
 
-		return (CellObject*) method.executeWithObjectReturn();
+		return static_cast<CellObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getCell(idx);
 }
 
 int BuildingObject::getTotalCellNumber() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -386,7 +387,7 @@ int BuildingObject::getTotalCellNumber() {
 }
 
 bool BuildingObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -402,7 +403,7 @@ bool BuildingObject::addObject(SceneObject* object, int containmentType, bool no
 }
 
 int BuildingObject::getCurrentNumberOfPlayerItems() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -415,7 +416,7 @@ int BuildingObject::getCurrentNumberOfPlayerItems() {
 }
 
 void BuildingObject::destroyAllPlayerItems() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -428,7 +429,7 @@ void BuildingObject::destroyAllPlayerItems() {
 }
 
 void BuildingObject::onEnter(CreatureObject* player) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -442,7 +443,7 @@ void BuildingObject::onEnter(CreatureObject* player) {
 }
 
 void BuildingObject::onExit(CreatureObject* player) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -456,7 +457,7 @@ void BuildingObject::onExit(CreatureObject* player) {
 }
 
 bool BuildingObject::isBuildingObject() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -469,7 +470,7 @@ bool BuildingObject::isBuildingObject() {
 }
 
 bool BuildingObject::isMedicalBuildingObject() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -482,7 +483,7 @@ bool BuildingObject::isMedicalBuildingObject() {
 }
 
 void BuildingObject::setSignObject(SignObject* sign) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -496,20 +497,20 @@ void BuildingObject::setSignObject(SignObject* sign) {
 }
 
 SignObject* BuildingObject::getSignObject() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETSIGNOBJECT__);
 
-		return (SignObject*) method.executeWithObjectReturn();
+		return static_cast<SignObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSignObject();
 }
 
 bool BuildingObject::isCityHallBuilding() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -522,7 +523,7 @@ bool BuildingObject::isCityHallBuilding() {
 }
 
 void BuildingObject::setAccessFee(int fee) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -536,7 +537,7 @@ void BuildingObject::setAccessFee(int fee) {
 }
 
 int BuildingObject::getAccessFee() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -549,7 +550,7 @@ int BuildingObject::getAccessFee() {
 }
 
 bool BuildingObject::isPublicStructure() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -562,7 +563,7 @@ bool BuildingObject::isPublicStructure() {
 }
 
 bool BuildingObject::isPrivateStructure() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -575,7 +576,7 @@ bool BuildingObject::isPrivateStructure() {
 }
 
 void BuildingObject::setPublicStructure(bool privacy) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -589,7 +590,7 @@ void BuildingObject::setPublicStructure(bool privacy) {
 }
 
 bool BuildingObject::togglePrivacy() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -602,7 +603,7 @@ bool BuildingObject::togglePrivacy() {
 }
 
 unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -649,7 +650,7 @@ void BuildingObjectImplementation::_initializeImplementation() {
 }
 
 void BuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (BuildingObject*) stub;
+	_this = static_cast<BuildingObject*>(stub);
 	StructureObjectImplementation::_setStub(stub);
 }
 
@@ -964,10 +965,10 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
 		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_:
-		updateCellPermissionsTo((CreatureObject*) inv->getObjectParameter());
+		updateCellPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_BROADCASTCELLPERMISSIONS__:
 		broadcastCellPermissions();
@@ -976,10 +977,10 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isAllowedEntry(inv->getAsciiParameter(_param0_isAllowedEntry__String_)));
 		break;
 	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_:
-		resp->insertSignedInt(notifyStructurePlaced((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_EJECTOBJECT__SCENEOBJECT_:
-		ejectObject((SceneObject*) inv->getObjectParameter());
+		ejectObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYREMOVEFROMZONE__:
 		notifyRemoveFromZone();
@@ -988,16 +989,16 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		notifyLoadFromDatabase();
 		break;
 	case RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_:
-		notifyObjectInsertedToZone((SceneObject*) inv->getObjectParameter());
+		notifyObjectInsertedToZone(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDDESTROYTO__SCENEOBJECT_:
-		sendDestroyTo((SceneObject*) inv->getObjectParameter());
+		sendDestroyTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISSTATICBUILDING__:
 		resp->insertBoolean(isStaticBuilding());
@@ -1009,7 +1010,7 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(getTotalCellNumber());
 		break;
 	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(addObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_GETCURRENTNUMBEROFPLAYERITEMS__:
 		resp->insertSignedInt(getCurrentNumberOfPlayerItems());
@@ -1018,10 +1019,10 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		destroyAllPlayerItems();
 		break;
 	case RPC_ONENTER__CREATUREOBJECT_:
-		onEnter((CreatureObject*) inv->getObjectParameter());
+		onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ONEXIT__CREATUREOBJECT_:
-		onExit((CreatureObject*) inv->getObjectParameter());
+		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISBUILDINGOBJECT__:
 		resp->insertBoolean(isBuildingObject());
@@ -1030,7 +1031,7 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isMedicalBuildingObject());
 		break;
 	case RPC_SETSIGNOBJECT__SIGNOBJECT_:
-		setSignObject((SignObject*) inv->getObjectParameter());
+		setSignObject(static_cast<SignObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETSIGNOBJECT__:
 		resp->insertLong(getSignObject()->_getObjectID());
@@ -1067,151 +1068,151 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void BuildingObjectAdapter::createCellObjects() {
-	((BuildingObjectImplementation*) impl)->createCellObjects();
+	(static_cast<BuildingObjectImplementation*>(impl))->createCellObjects();
 }
 
 void BuildingObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	((BuildingObjectImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<BuildingObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void BuildingObjectAdapter::initializeTransientMembers() {
-	((BuildingObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<BuildingObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void BuildingObjectAdapter::createContainerComponent() {
-	((BuildingObjectImplementation*) impl)->createContainerComponent();
+	(static_cast<BuildingObjectImplementation*>(impl))->createContainerComponent();
 }
 
 void BuildingObjectAdapter::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	((BuildingObjectImplementation*) impl)->setCustomObjectName(name, notifyClient);
+	(static_cast<BuildingObjectImplementation*>(impl))->setCustomObjectName(name, notifyClient);
 }
 
 void BuildingObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
-	((BuildingObjectImplementation*) impl)->sendContainerObjectsTo(player);
+	(static_cast<BuildingObjectImplementation*>(impl))->sendContainerObjectsTo(player);
 }
 
 void BuildingObjectAdapter::updateCellPermissionsTo(CreatureObject* creature) {
-	((BuildingObjectImplementation*) impl)->updateCellPermissionsTo(creature);
+	(static_cast<BuildingObjectImplementation*>(impl))->updateCellPermissionsTo(creature);
 }
 
 void BuildingObjectAdapter::broadcastCellPermissions() {
-	((BuildingObjectImplementation*) impl)->broadcastCellPermissions();
+	(static_cast<BuildingObjectImplementation*>(impl))->broadcastCellPermissions();
 }
 
 bool BuildingObjectAdapter::isAllowedEntry(const String& firstName) {
-	return ((BuildingObjectImplementation*) impl)->isAllowedEntry(firstName);
+	return (static_cast<BuildingObjectImplementation*>(impl))->isAllowedEntry(firstName);
 }
 
 int BuildingObjectAdapter::notifyStructurePlaced(CreatureObject* player) {
-	return ((BuildingObjectImplementation*) impl)->notifyStructurePlaced(player);
+	return (static_cast<BuildingObjectImplementation*>(impl))->notifyStructurePlaced(player);
 }
 
 void BuildingObjectAdapter::ejectObject(SceneObject* obj) {
-	((BuildingObjectImplementation*) impl)->ejectObject(obj);
+	(static_cast<BuildingObjectImplementation*>(impl))->ejectObject(obj);
 }
 
 void BuildingObjectAdapter::notifyRemoveFromZone() {
-	((BuildingObjectImplementation*) impl)->notifyRemoveFromZone();
+	(static_cast<BuildingObjectImplementation*>(impl))->notifyRemoveFromZone();
 }
 
 void BuildingObjectAdapter::notifyLoadFromDatabase() {
-	((BuildingObjectImplementation*) impl)->notifyLoadFromDatabase();
+	(static_cast<BuildingObjectImplementation*>(impl))->notifyLoadFromDatabase();
 }
 
 void BuildingObjectAdapter::notifyObjectInsertedToZone(SceneObject* object) {
-	((BuildingObjectImplementation*) impl)->notifyObjectInsertedToZone(object);
+	(static_cast<BuildingObjectImplementation*>(impl))->notifyObjectInsertedToZone(object);
 }
 
 void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	((BuildingObjectImplementation*) impl)->sendTo(player, doClose);
+	(static_cast<BuildingObjectImplementation*>(impl))->sendTo(player, doClose);
 }
 
 void BuildingObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((BuildingObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<BuildingObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 void BuildingObjectAdapter::sendDestroyTo(SceneObject* player) {
-	((BuildingObjectImplementation*) impl)->sendDestroyTo(player);
+	(static_cast<BuildingObjectImplementation*>(impl))->sendDestroyTo(player);
 }
 
 bool BuildingObjectAdapter::isStaticBuilding() {
-	return ((BuildingObjectImplementation*) impl)->isStaticBuilding();
+	return (static_cast<BuildingObjectImplementation*>(impl))->isStaticBuilding();
 }
 
 CellObject* BuildingObjectAdapter::getCell(int idx) {
-	return ((BuildingObjectImplementation*) impl)->getCell(idx);
+	return (static_cast<BuildingObjectImplementation*>(impl))->getCell(idx);
 }
 
 int BuildingObjectAdapter::getTotalCellNumber() {
-	return ((BuildingObjectImplementation*) impl)->getTotalCellNumber();
+	return (static_cast<BuildingObjectImplementation*>(impl))->getTotalCellNumber();
 }
 
 bool BuildingObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return ((BuildingObjectImplementation*) impl)->addObject(object, containmentType, notifyClient);
+	return (static_cast<BuildingObjectImplementation*>(impl))->addObject(object, containmentType, notifyClient);
 }
 
 int BuildingObjectAdapter::getCurrentNumberOfPlayerItems() {
-	return ((BuildingObjectImplementation*) impl)->getCurrentNumberOfPlayerItems();
+	return (static_cast<BuildingObjectImplementation*>(impl))->getCurrentNumberOfPlayerItems();
 }
 
 void BuildingObjectAdapter::destroyAllPlayerItems() {
-	((BuildingObjectImplementation*) impl)->destroyAllPlayerItems();
+	(static_cast<BuildingObjectImplementation*>(impl))->destroyAllPlayerItems();
 }
 
 void BuildingObjectAdapter::onEnter(CreatureObject* player) {
-	((BuildingObjectImplementation*) impl)->onEnter(player);
+	(static_cast<BuildingObjectImplementation*>(impl))->onEnter(player);
 }
 
 void BuildingObjectAdapter::onExit(CreatureObject* player) {
-	((BuildingObjectImplementation*) impl)->onExit(player);
+	(static_cast<BuildingObjectImplementation*>(impl))->onExit(player);
 }
 
 bool BuildingObjectAdapter::isBuildingObject() {
-	return ((BuildingObjectImplementation*) impl)->isBuildingObject();
+	return (static_cast<BuildingObjectImplementation*>(impl))->isBuildingObject();
 }
 
 bool BuildingObjectAdapter::isMedicalBuildingObject() {
-	return ((BuildingObjectImplementation*) impl)->isMedicalBuildingObject();
+	return (static_cast<BuildingObjectImplementation*>(impl))->isMedicalBuildingObject();
 }
 
 void BuildingObjectAdapter::setSignObject(SignObject* sign) {
-	((BuildingObjectImplementation*) impl)->setSignObject(sign);
+	(static_cast<BuildingObjectImplementation*>(impl))->setSignObject(sign);
 }
 
 SignObject* BuildingObjectAdapter::getSignObject() {
-	return ((BuildingObjectImplementation*) impl)->getSignObject();
+	return (static_cast<BuildingObjectImplementation*>(impl))->getSignObject();
 }
 
 bool BuildingObjectAdapter::isCityHallBuilding() {
-	return ((BuildingObjectImplementation*) impl)->isCityHallBuilding();
+	return (static_cast<BuildingObjectImplementation*>(impl))->isCityHallBuilding();
 }
 
 void BuildingObjectAdapter::setAccessFee(int fee) {
-	((BuildingObjectImplementation*) impl)->setAccessFee(fee);
+	(static_cast<BuildingObjectImplementation*>(impl))->setAccessFee(fee);
 }
 
 int BuildingObjectAdapter::getAccessFee() {
-	return ((BuildingObjectImplementation*) impl)->getAccessFee();
+	return (static_cast<BuildingObjectImplementation*>(impl))->getAccessFee();
 }
 
 bool BuildingObjectAdapter::isPublicStructure() {
-	return ((BuildingObjectImplementation*) impl)->isPublicStructure();
+	return (static_cast<BuildingObjectImplementation*>(impl))->isPublicStructure();
 }
 
 bool BuildingObjectAdapter::isPrivateStructure() {
-	return ((BuildingObjectImplementation*) impl)->isPrivateStructure();
+	return (static_cast<BuildingObjectImplementation*>(impl))->isPrivateStructure();
 }
 
 void BuildingObjectAdapter::setPublicStructure(bool privacy) {
-	((BuildingObjectImplementation*) impl)->setPublicStructure(privacy);
+	(static_cast<BuildingObjectImplementation*>(impl))->setPublicStructure(privacy);
 }
 
 bool BuildingObjectAdapter::togglePrivacy() {
-	return ((BuildingObjectImplementation*) impl)->togglePrivacy();
+	return (static_cast<BuildingObjectImplementation*>(impl))->togglePrivacy();
 }
 
 unsigned int BuildingObjectAdapter::getMaximumNumberOfPlayerItems() {
-	return ((BuildingObjectImplementation*) impl)->getMaximumNumberOfPlayerItems();
+	return (static_cast<BuildingObjectImplementation*>(impl))->getMaximumNumberOfPlayerItems();
 }
 
 /*
@@ -1239,7 +1240,7 @@ DistributedObjectServant* BuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BuildingObjectAdapter((BuildingObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new BuildingObjectAdapter(static_cast<BuildingObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

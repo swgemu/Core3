@@ -29,7 +29,7 @@ public:
 		if (index == -1)
 			return;
 
-		SuiListBox* listBox = (SuiListBox*) suiBox;
+		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		uint64 guildObjectID = listBox->getMenuObjectID(index);
 
@@ -38,7 +38,7 @@ public:
 		if (obj == NULL || !obj->isGuildObject())
 			return;
 
-		GuildObject* guild = (GuildObject*) obj.get();
+		GuildObject* guild = cast<GuildObject*>( obj.get());
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 

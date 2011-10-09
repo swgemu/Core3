@@ -48,6 +48,7 @@
 #include "IngredientSlot.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 class ResourceSlot: public IngredientSlot {
 
@@ -101,7 +102,7 @@ public:
 
 			previousParent = tano->getParent();
 
-			ResourceContainer* incomingResource = (ResourceContainer*) tano;
+			ResourceContainer* incomingResource = cast<ResourceContainer*>( tano);
 
 			/// Verify the resource is the right type
 			if(!incomingResource->getSpawnObject()->isType(type))
@@ -160,7 +161,7 @@ public:
 
 	inline TangibleObject* get() {
 
-		return (TangibleObject*) contents;
+		return cast<TangibleObject*>( contents.get());
 	}
 
 	inline bool isComplete() {
@@ -192,7 +193,7 @@ public:
 					previousParent->getContainerObject(i);
 
 			if (object->isResourceContainer()) {
-				ManagedReference<ResourceContainer*> resource = (ResourceContainer*) object.get();
+				ManagedReference<ResourceContainer*> resource = cast<ResourceContainer*>( object.get());
 
 				if (resource->getSpawnName() == contents->getSpawnName()) {
 					int newStackSize = resource->getQuantity() + contents->getQuantity();

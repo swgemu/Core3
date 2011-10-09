@@ -54,12 +54,28 @@ namespace login {
 namespace packets {
 
 class LoginClusterStatus : public BaseMessage {
+protected:
+	int galaxyCount;
 public:
 	LoginClusterStatus(uint32 galcnt) : BaseMessage(100) {
 		insertShort(0x03);
 		insertInt(0x3436AEB6);
 
 		insertInt(galcnt); //Zone Server List Count
+
+		galaxyCount = galcnt;
+	}
+
+	LoginClusterStatus* clone() {
+		LoginClusterStatus* pack = new LoginClusterStatus(galaxyCount);
+		copy(pack, 0);
+
+		pack->doSeq = doSeq;
+		pack->doEncr = doEncr;
+		pack->doComp = doComp;
+		pack->doCRCTest = doCRCTest;
+
+		return pack;
 	}
 
 	void addGalaxy(uint32 gid, String& address, uint16 port, uint16 pingport) {

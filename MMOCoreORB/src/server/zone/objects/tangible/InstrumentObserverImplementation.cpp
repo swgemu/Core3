@@ -15,7 +15,7 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 		return 1;
 	}
 
-	SceneObject* creature = (SceneObject*) observable;
+	SceneObject* creature = cast<SceneObject*>( observable);
 
 	if (instrument == NULL || instrument->getZone() == NULL) {
 		/*if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {

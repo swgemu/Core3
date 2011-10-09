@@ -33,8 +33,9 @@ CityTerminal::~CityTerminal() {
 }
 
 
+
 void CityTerminal::initializeTransientMembers() {
-	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	CityTerminalImplementation* _implementation = static_cast<CityTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void CityTerminal::initializeTransientMembers() {
 }
 
 void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	CityTerminalImplementation* _implementation = static_cast<CityTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +63,7 @@ void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Crea
 }
 
 int CityTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	CityTerminalImplementation* _implementation = static_cast<CityTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ int CityTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID
 }
 
 bool CityTerminal::isCityTerminal() {
-	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	CityTerminalImplementation* _implementation = static_cast<CityTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -124,7 +125,7 @@ void CityTerminalImplementation::_initializeImplementation() {
 }
 
 void CityTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CityTerminal*) stub;
+	_this = static_cast<CityTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -246,10 +247,10 @@ Packet* CityTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISCITYTERMINAL__:
 		resp->insertBoolean(isCityTerminal());
@@ -262,19 +263,19 @@ Packet* CityTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void CityTerminalAdapter::initializeTransientMembers() {
-	((CityTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<CityTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 void CityTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	((CityTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<CityTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int CityTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((CityTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CityTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool CityTerminalAdapter::isCityTerminal() {
-	return ((CityTerminalImplementation*) impl)->isCityTerminal();
+	return (static_cast<CityTerminalImplementation*>(impl))->isCityTerminal();
 }
 
 /*
@@ -302,7 +303,7 @@ DistributedObjectServant* CityTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CityTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CityTerminalAdapter((CityTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CityTerminalAdapter(static_cast<CityTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

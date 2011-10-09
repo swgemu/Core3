@@ -71,7 +71,7 @@ void GuildManagerImplementation::loadGuilds() {
 			if (object == NULL || !object->isGuildObject())
 				continue;
 
-			GuildObject* guild = (GuildObject*) object.get();
+			GuildObject* guild = cast<GuildObject*>( object.get());
 			guildList.add(guild->getGuildKey(), guild);
 
 			//Add sponsored player to the sponsoredPlayers VectorMap.
@@ -315,7 +315,7 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		CreatureObject* member = (CreatureObject*) obj.get();
+		CreatureObject* member = cast<CreatureObject*>( obj.get());
 		suiBox->addMenuItem(member->getObjectName()->getDisplayedName(), playerID);
 	}
 
@@ -371,7 +371,7 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		CreatureObject* sponsoredPlayer = (CreatureObject*) obj.get();
+		CreatureObject* sponsoredPlayer = cast<CreatureObject*>( obj.get());
 
 		suiBox->addMenuItem(sponsoredPlayer->getObjectName()->getDisplayedName(), playerID);
 	}
@@ -463,7 +463,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	if (isCreatingGuild(playerID))
 		removePendingGuild(playerID);
 
-	ManagedReference<GuildObject*> guild = (GuildObject*) ObjectManager::instance()->createObject(0xD6888614, 1, "guilds"); //object/guild/guild_object.iff
+	ManagedReference<GuildObject*> guild = cast<GuildObject*>( ObjectManager::instance()->createObject(0xD6888614, 1, "guilds")); //object/guild/guild_object.iff
 	guild->setGuildLeaderID(playerID);
 	guild->setGuildID(Long::hashCode(guild->getObjectID()));
 	guild->setGuildName(guildName);
@@ -547,7 +547,7 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		CreatureObject* member = (CreatureObject*) obj.get();
+		CreatureObject* member = cast<CreatureObject*>( obj.get());
 
 		member->setGuildObject(NULL);
 
@@ -681,7 +681,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, u
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	CreatureObject* target = (CreatureObject*) obj.get();
+	CreatureObject* target = cast<CreatureObject*>( obj.get());
 
 	Locker _lock(target, player);
 
@@ -1047,7 +1047,7 @@ void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdCh
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		CreatureObject* recipient = (CreatureObject*) obj.get();
+		CreatureObject* recipient = cast<CreatureObject*>( obj.get());
 
 		chatManager->sendMail(guild->getGuildName(), subject, body, recipient->getFirstName());
 	}

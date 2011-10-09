@@ -95,7 +95,7 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 		float minRange = 16000.f;
 
 		for (int i = 0; i < creature->inRangeObjectCount(); ++i) {
-			ManagedReference<SceneObject*> obj = (SceneObject*) creature->getInRangeObject(i);
+			ManagedReference<SceneObject*> obj = cast<SceneObject*>( creature->getInRangeObject(i));
 
 			if (obj == NULL || !obj->isBuildingObject())
 				continue;
@@ -103,7 +103,7 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 			float objRange = obj->getDistanceTo(creature);
 
 			if (objRange < minRange) {
-				closestBuilding = (BuildingObject*) obj.get();
+				closestBuilding = cast<BuildingObject*>( obj.get());
 				minRange = objRange;
 			}
 		}

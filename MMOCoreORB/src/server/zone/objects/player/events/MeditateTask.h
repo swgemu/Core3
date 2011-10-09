@@ -80,7 +80,7 @@ public:
 		Locker playerLocker(player);
 
 		try {
-			Reference<MeditateTask*> meditateTask = (MeditateTask*) player->getPendingTask("meditate");
+			Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( player->getPendingTask("meditate"));
 			int meditateMod = player->getSkillMod("meditate"); // get Meditate Skill Mod
 
 			if (!player->isMeditating())

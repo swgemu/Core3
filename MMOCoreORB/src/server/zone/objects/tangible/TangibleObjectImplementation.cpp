@@ -101,7 +101,7 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(tano6);
 
 	if (player->isPlayerCreature())
-		sendPvpStatusTo((CreatureObject*) player);
+		sendPvpStatusTo(cast<CreatureObject*>(player));
 }
 
 void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
@@ -150,7 +150,7 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 
 			temp = defenderList.get(0);
 
-			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
 			dtano6->startUpdate(0x01);
 
 			defenderList.set(0, defender, dtano6, 2);
@@ -181,7 +181,7 @@ void TangibleObjectImplementation::addDefender(SceneObject* defender) {
 
 	//info("adding defender");
 
-	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
 	dtano6->startUpdate(0x01);
 
 	defenderList.add(defender, dtano6);
@@ -200,7 +200,7 @@ void TangibleObjectImplementation::removeDefenders() {
 		return;
 	}
 
-	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
 	dtano6->startUpdate(0x01);
 
 	defenderList.removeAll(dtano6);
@@ -503,7 +503,7 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 
 			if (tano->isComponent()) {
 
-				ManagedReference<Component*> component = (Component*) tano.get();
+				ManagedReference<Component*> component = cast<Component*>( tano.get());
 
 				for (int j = 0; j < component->getPropertyCount(); ++j) {
 
@@ -602,7 +602,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 	} else {
 
-		ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(_this);
+		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(_this));
 
 		if (protoclone == NULL)
 			return NULL;

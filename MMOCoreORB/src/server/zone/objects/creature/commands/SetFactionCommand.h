@@ -68,14 +68,14 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 		if (obj == NULL || !obj->isTangibleObject())
 			return INVALIDTARGET;
 
-		TangibleObject* tano = (TangibleObject*) obj.get();
+		TangibleObject* tano = cast<TangibleObject*>( obj.get());
 
 		//First, check if they passed a name with the command.
 		UnicodeTokenizer tokenizer(arguments);

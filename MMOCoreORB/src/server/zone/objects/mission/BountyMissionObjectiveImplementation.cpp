@@ -72,7 +72,7 @@ void BountyMissionObjectiveImplementation::abort() {
 }
 
 void BountyMissionObjectiveImplementation::complete() {
-	CreatureObject* player = (CreatureObject*) getPlayerOwner();
+	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
 
 	if (player == NULL)
 		return;
@@ -107,7 +107,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		npcTarget = (AiAgent*) zoneServer->createObject(npcTemplateToSpawn->getServerObjectCRC(), 0);
+		npcTarget = cast<AiAgent*>( zoneServer->createObject(npcTemplateToSpawn->getServerObjectCRC(), 0));
 	}
 
 	if (npcTarget == NULL || (npcTarget != NULL && !npcTarget->isInQuadTree())) {
@@ -128,8 +128,8 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 
 int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::CONVERSE) {
-		CreatureObject* player = (CreatureObject*)observable;
-		InformantCreature* informant = (InformantCreature*)arg1;
+		CreatureObject* player = cast<CreatureObject*>(observable);
+		InformantCreature* informant = cast<InformantCreature*>(arg1);
 		int level = informant->getLevel();
 
 		player->sendMessage(new StartNpcConversation(player, informant->getObjectID(), ""));

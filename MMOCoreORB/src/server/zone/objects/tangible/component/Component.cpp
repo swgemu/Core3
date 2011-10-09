@@ -35,8 +35,9 @@ Component::~Component() {
 }
 
 
+
 void Component::initializeTransientMembers() {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void Component::initializeTransientMembers() {
 }
 
 void Component::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void Component::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Creatur
 }
 
 void Component::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -67,7 +68,7 @@ void Component::fillAttributeList(AttributeListMessage* msg, CreatureObject* obj
 }
 
 bool Component::isComponent() {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +81,7 @@ bool Component::isComponent() {
 }
 
 void Component::generateLootStats(const String& lootstring, int level) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -95,7 +96,7 @@ void Component::generateLootStats(const String& lootstring, int level) {
 }
 
 bool Component::compare(Component* inCmpo) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ bool Component::compare(Component* inCmpo) {
 }
 
 bool Component::hasKey(const String& key) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -123,7 +124,7 @@ bool Component::hasKey(const String& key) {
 }
 
 void Component::updateCraftingValues(ManufactureSchematic* schematic) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -137,7 +138,7 @@ void Component::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void Component::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -155,7 +156,7 @@ void Component::addProperty(const String& attributeName, const float value, cons
 }
 
 float Component::getAttributeValue(String& attributeName) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -169,7 +170,7 @@ float Component::getAttributeValue(String& attributeName) {
 }
 
 int Component::getAttributePrecision(String& attributeName) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -183,7 +184,7 @@ int Component::getAttributePrecision(String& attributeName) {
 }
 
 String Component::getAttributeTitle(String& attributeName) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -198,7 +199,7 @@ String Component::getAttributeTitle(String& attributeName) {
 }
 
 bool Component::getAttributeHidden(String& attributeName) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -212,7 +213,7 @@ bool Component::getAttributeHidden(String& attributeName) {
 }
 
 void Component::setPropertyToHidden(const String& property) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -226,7 +227,7 @@ void Component::setPropertyToHidden(const String& property) {
 }
 
 void Component::addProperty(const String& attribute, const float value, const int precision, const String& title) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -243,7 +244,7 @@ void Component::addProperty(const String& attribute, const float value, const in
 }
 
 int Component::getPropertyCount() {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -256,7 +257,7 @@ int Component::getPropertyCount() {
 }
 
 String Component::getProperty(const int j) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -271,7 +272,7 @@ String Component::getProperty(const int j) {
 }
 
 bool Component::changeAttributeValue(String& property, float value) {
-	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -320,7 +321,7 @@ void ComponentImplementation::_initializeImplementation() {
 }
 
 void ComponentImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Component*) stub;
+	_this = static_cast<Component*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -518,13 +519,13 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateLootStats(inv->getAsciiParameter(_param0_generateLootStats__String_int_), inv->getSignedIntParameter());
 		break;
 	case RPC_COMPARE__COMPONENT_:
-		resp->insertBoolean(compare((Component*) inv->getObjectParameter()));
+		resp->insertBoolean(compare(static_cast<Component*>(inv->getObjectParameter())));
 		break;
 	case RPC_HASKEY__STRING_:
 		resp->insertBoolean(hasKey(inv->getAsciiParameter(_param0_hasKey__String_)));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_:
 		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_bool_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_bool_), inv->getBooleanParameter());
@@ -564,67 +565,67 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ComponentAdapter::initializeTransientMembers() {
-	((ComponentImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ComponentImplementation*>(impl))->initializeTransientMembers();
 }
 
 bool ComponentAdapter::isComponent() {
-	return ((ComponentImplementation*) impl)->isComponent();
+	return (static_cast<ComponentImplementation*>(impl))->isComponent();
 }
 
 void ComponentAdapter::generateLootStats(const String& lootstring, int level) {
-	((ComponentImplementation*) impl)->generateLootStats(lootstring, level);
+	(static_cast<ComponentImplementation*>(impl))->generateLootStats(lootstring, level);
 }
 
 bool ComponentAdapter::compare(Component* inCmpo) {
-	return ((ComponentImplementation*) impl)->compare(inCmpo);
+	return (static_cast<ComponentImplementation*>(impl))->compare(inCmpo);
 }
 
 bool ComponentAdapter::hasKey(const String& key) {
-	return ((ComponentImplementation*) impl)->hasKey(key);
+	return (static_cast<ComponentImplementation*>(impl))->hasKey(key);
 }
 
 void ComponentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((ComponentImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<ComponentImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 void ComponentAdapter::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {
-	((ComponentImplementation*) impl)->addProperty(attributeName, value, precision, craftingTitle, hidden);
+	(static_cast<ComponentImplementation*>(impl))->addProperty(attributeName, value, precision, craftingTitle, hidden);
 }
 
 float ComponentAdapter::getAttributeValue(String& attributeName) {
-	return ((ComponentImplementation*) impl)->getAttributeValue(attributeName);
+	return (static_cast<ComponentImplementation*>(impl))->getAttributeValue(attributeName);
 }
 
 int ComponentAdapter::getAttributePrecision(String& attributeName) {
-	return ((ComponentImplementation*) impl)->getAttributePrecision(attributeName);
+	return (static_cast<ComponentImplementation*>(impl))->getAttributePrecision(attributeName);
 }
 
 String ComponentAdapter::getAttributeTitle(String& attributeName) {
-	return ((ComponentImplementation*) impl)->getAttributeTitle(attributeName);
+	return (static_cast<ComponentImplementation*>(impl))->getAttributeTitle(attributeName);
 }
 
 bool ComponentAdapter::getAttributeHidden(String& attributeName) {
-	return ((ComponentImplementation*) impl)->getAttributeHidden(attributeName);
+	return (static_cast<ComponentImplementation*>(impl))->getAttributeHidden(attributeName);
 }
 
 void ComponentAdapter::setPropertyToHidden(const String& property) {
-	((ComponentImplementation*) impl)->setPropertyToHidden(property);
+	(static_cast<ComponentImplementation*>(impl))->setPropertyToHidden(property);
 }
 
 void ComponentAdapter::addProperty(const String& attribute, const float value, const int precision, const String& title) {
-	((ComponentImplementation*) impl)->addProperty(attribute, value, precision, title);
+	(static_cast<ComponentImplementation*>(impl))->addProperty(attribute, value, precision, title);
 }
 
 int ComponentAdapter::getPropertyCount() {
-	return ((ComponentImplementation*) impl)->getPropertyCount();
+	return (static_cast<ComponentImplementation*>(impl))->getPropertyCount();
 }
 
 String ComponentAdapter::getProperty(const int j) {
-	return ((ComponentImplementation*) impl)->getProperty(j);
+	return (static_cast<ComponentImplementation*>(impl))->getProperty(j);
 }
 
 bool ComponentAdapter::changeAttributeValue(String& property, float value) {
-	return ((ComponentImplementation*) impl)->changeAttributeValue(property, value);
+	return (static_cast<ComponentImplementation*>(impl))->changeAttributeValue(property, value);
 }
 
 /*
@@ -652,7 +653,7 @@ DistributedObjectServant* ComponentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ComponentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ComponentAdapter((ComponentImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ComponentAdapter(static_cast<ComponentImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

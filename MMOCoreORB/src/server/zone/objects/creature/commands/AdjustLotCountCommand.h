@@ -68,7 +68,7 @@ public:
 		if (targetObject == NULL || !targetObject->isCreatureObject())
 			return INVALIDTARGET;
 
-		CreatureObject* targetCreature = (CreatureObject*) targetObject.get();
+		CreatureObject* targetCreature = cast<CreatureObject*>( targetObject.get());
 
 		ManagedReference<PlayerObject*> ghost = targetCreature->getPlayerObject();
 

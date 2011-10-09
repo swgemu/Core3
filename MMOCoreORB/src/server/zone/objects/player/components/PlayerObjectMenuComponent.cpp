@@ -56,7 +56,7 @@ void PlayerObjectMenuComponent::fillObjectMenuResponse(
 	if (!sceneObject->isCreatureObject())
 		return;
 
-	CreatureObject* creature = (CreatureObject*) sceneObject;
+	CreatureObject* creature = cast<CreatureObject*>( sceneObject);
 	GroupObject* group = creature->getGroup();
 
 	if (group != NULL) {

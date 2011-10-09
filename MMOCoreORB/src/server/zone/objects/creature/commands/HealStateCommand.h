@@ -84,7 +84,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int)round((float)power * 1.f);
 
@@ -102,8 +102,8 @@ public:
 		if (!creatureTarget->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
-		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
+		CreatureObject* player = cast<CreatureObject*>(creature);
+		CreatureObject* playerTarget = cast<CreatureObject*>( creatureTarget);
 		StringBuffer msgPlayer, msgTarget;
 
 		String stateName = CreatureState::instance()->getName(state, true);
@@ -166,8 +166,8 @@ public:
 		}
 
 		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * pt = cast<Player *>( creatureTarget);
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -200,13 +200,13 @@ public:
 				if (!object->isTangibleObject())
 					continue;
 
-				TangibleObject* item = (TangibleObject*) object;
+				TangibleObject* item = cast<TangibleObject*>( object);
 
 				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = (PharmaceuticalObject*) item;
+					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
 
 					if (pharma->isStatePack()) {
-						StatePack* statePack = (StatePack*) pharma;
+						StatePack* statePack = cast<StatePack*>( pharma);
 
 						if (statePack->getMedicineUseRequired() <= medicineUse && statePack->getState() == state)
 							return statePack;
@@ -252,7 +252,7 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
 

@@ -54,14 +54,14 @@ public:
 			return;
 		}
 
-		Terminal* terminal = (Terminal*) obj.get();
+		Terminal* terminal = cast<Terminal*>( obj.get());
 
 		if (!terminal->isGuildTerminal()) {
 			guildManager->removePendingGuild(playerID);
 			return;
 		}
 
-		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		if (guildManager->validateGuildAbbrev(player, guildAbbrev)) {
 			String guildName = guildManager->getPendingGuildName(playerID);

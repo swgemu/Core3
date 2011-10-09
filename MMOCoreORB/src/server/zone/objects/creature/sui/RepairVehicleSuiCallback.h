@@ -27,14 +27,14 @@ public:
 		if (!suiBox->isListBox() || cancelPressed)
 			return;
 
-		SuiListBox* listBox = (SuiListBox*) suiBox;
+		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		ManagedReference<SceneObject*> obj = listBox->getUsingObject();
 
 		if (obj == NULL || !obj->isVehicleObject())
 			return;
 
-		VehicleObject* vehicle = (VehicleObject*) obj.get();
+		VehicleObject* vehicle = cast<VehicleObject*>( obj.get());
 
 		Locker _lock(vehicle, player);
 
@@ -43,7 +43,7 @@ public:
 		ManagedReference<ActiveArea*> activeArea = vehicle->getActiveRegion();
 
 		if (activeArea != NULL && activeArea->isRegion() && !player->getPlayerObject()->isPrivileged()) {
-			Region* region = (Region*) activeArea.get();
+			Region* region = cast<Region*>( activeArea.get());
 
 			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 

@@ -84,14 +84,14 @@ void FactionManager::awardFactionPoints(TangibleObject* killer, TangibleObject* 
 	//Temporary for testing.
 
 	if (killer->isPlayerCreature()) {
-		CreatureObject* playerKiller = (CreatureObject*) killer;
+		CreatureObject* playerKiller = cast<CreatureObject*>( killer);
 
 		ManagedReference<PlayerObject*> ghost = playerKiller->getPlayerObject();
 		ghost->getFactionStandingList()->increaseRebelPoints(45);
 	}
 
 	if (destructedObject->isPlayerCreature()) {
-		CreatureObject* victim = (CreatureObject*) destructedObject;
+		CreatureObject* victim = cast<CreatureObject*>( destructedObject);
 
 		ManagedReference<PlayerObject*> ghost = victim->getPlayerObject();
 		ghost->getFactionStandingList()->decreaseImperialPoints(30);

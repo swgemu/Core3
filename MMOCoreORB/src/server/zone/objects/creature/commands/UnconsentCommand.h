@@ -80,7 +80,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (!arguments.isEmpty()) {
 			StringTokenizer tokenizer(arguments.toString());
@@ -100,7 +100,7 @@ public:
 			if (object == NULL || !object->isPlayerCreature() || object == creature)
 				return INVALIDTARGET;
 
-			CreatureObject* playerTarget = (CreatureObject*) object.get();
+			CreatureObject* playerTarget = cast<CreatureObject*>( object.get());
 
 			unconscent(player, playerTarget->getFirstName().toLowerCase());
 

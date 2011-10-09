@@ -27,8 +27,9 @@ SlicingSession::~SlicingSession() {
 }
 
 
+
 void SlicingSession::initalizeSlicingMenu(CreatureObject* pl, TangibleObject* obj) {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -37,7 +38,7 @@ void SlicingSession::initalizeSlicingMenu(CreatureObject* pl, TangibleObject* ob
 }
 
 void SlicingSession::handleMenuSelect(CreatureObject* pl, byte menuID, SuiListBox* suiBox) {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -46,7 +47,7 @@ void SlicingSession::handleMenuSelect(CreatureObject* pl, byte menuID, SuiListBo
 }
 
 int SlicingSession::initializeSession() {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -59,7 +60,7 @@ int SlicingSession::initializeSession() {
 }
 
 int SlicingSession::cancelSession() {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +73,7 @@ int SlicingSession::cancelSession() {
 }
 
 int SlicingSession::clearSession() {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ int SlicingSession::clearSession() {
 }
 
 void SlicingSession::endSlicing() {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +99,7 @@ void SlicingSession::endSlicing() {
 }
 
 int SlicingSession::getSlicingSkill(CreatureObject* slicer) {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -112,7 +113,7 @@ int SlicingSession::getSlicingSkill(CreatureObject* slicer) {
 }
 
 bool SlicingSession::hasPrecisionLaserKnife(bool removeItem) {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -126,7 +127,7 @@ bool SlicingSession::hasPrecisionLaserKnife(bool removeItem) {
 }
 
 bool SlicingSession::hasWeaponUpgradeKit() {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,7 +140,7 @@ bool SlicingSession::hasWeaponUpgradeKit() {
 }
 
 bool SlicingSession::hasArmorUpgradeKit() {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -152,7 +153,7 @@ bool SlicingSession::hasArmorUpgradeKit() {
 }
 
 void SlicingSession::useClampFromInventory(SlicingTool* clamp) {
-	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -200,7 +201,7 @@ void SlicingSessionImplementation::_initializeImplementation() {
 }
 
 void SlicingSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SlicingSession*) stub;
+	_this = static_cast<SlicingSession*>(stub);
 	FacadeImplementation::_setStub(stub);
 }
 
@@ -475,7 +476,7 @@ Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		endSlicing();
 		break;
 	case RPC_GETSLICINGSKILL__CREATUREOBJECT_:
-		resp->insertSignedInt(getSlicingSkill((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(getSlicingSkill(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_HASPRECISIONLASERKNIFE__BOOL_:
 		resp->insertBoolean(hasPrecisionLaserKnife(inv->getBooleanParameter()));
@@ -487,7 +488,7 @@ Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(hasArmorUpgradeKit());
 		break;
 	case RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_:
-		useClampFromInventory((SlicingTool*) inv->getObjectParameter());
+		useClampFromInventory(static_cast<SlicingTool*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -497,39 +498,39 @@ Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 int SlicingSessionAdapter::initializeSession() {
-	return ((SlicingSessionImplementation*) impl)->initializeSession();
+	return (static_cast<SlicingSessionImplementation*>(impl))->initializeSession();
 }
 
 int SlicingSessionAdapter::cancelSession() {
-	return ((SlicingSessionImplementation*) impl)->cancelSession();
+	return (static_cast<SlicingSessionImplementation*>(impl))->cancelSession();
 }
 
 int SlicingSessionAdapter::clearSession() {
-	return ((SlicingSessionImplementation*) impl)->clearSession();
+	return (static_cast<SlicingSessionImplementation*>(impl))->clearSession();
 }
 
 void SlicingSessionAdapter::endSlicing() {
-	((SlicingSessionImplementation*) impl)->endSlicing();
+	(static_cast<SlicingSessionImplementation*>(impl))->endSlicing();
 }
 
 int SlicingSessionAdapter::getSlicingSkill(CreatureObject* slicer) {
-	return ((SlicingSessionImplementation*) impl)->getSlicingSkill(slicer);
+	return (static_cast<SlicingSessionImplementation*>(impl))->getSlicingSkill(slicer);
 }
 
 bool SlicingSessionAdapter::hasPrecisionLaserKnife(bool removeItem) {
-	return ((SlicingSessionImplementation*) impl)->hasPrecisionLaserKnife(removeItem);
+	return (static_cast<SlicingSessionImplementation*>(impl))->hasPrecisionLaserKnife(removeItem);
 }
 
 bool SlicingSessionAdapter::hasWeaponUpgradeKit() {
-	return ((SlicingSessionImplementation*) impl)->hasWeaponUpgradeKit();
+	return (static_cast<SlicingSessionImplementation*>(impl))->hasWeaponUpgradeKit();
 }
 
 bool SlicingSessionAdapter::hasArmorUpgradeKit() {
-	return ((SlicingSessionImplementation*) impl)->hasArmorUpgradeKit();
+	return (static_cast<SlicingSessionImplementation*>(impl))->hasArmorUpgradeKit();
 }
 
 void SlicingSessionAdapter::useClampFromInventory(SlicingTool* clamp) {
-	((SlicingSessionImplementation*) impl)->useClampFromInventory(clamp);
+	(static_cast<SlicingSessionImplementation*>(impl))->useClampFromInventory(clamp);
 }
 
 /*
@@ -557,7 +558,7 @@ DistributedObjectServant* SlicingSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SlicingSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SlicingSessionAdapter((SlicingSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SlicingSessionAdapter(static_cast<SlicingSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

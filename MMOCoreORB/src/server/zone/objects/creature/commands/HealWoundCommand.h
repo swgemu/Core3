@@ -74,7 +74,7 @@ public:
 		int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
 
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
-			DelayedBuff* buff = (DelayedBuff*) creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY);
+			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
 			if (buff != NULL) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
@@ -107,7 +107,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int)round((float)power * 0.5f);
 
@@ -122,8 +122,8 @@ public:
 		if (!object->isPlayerCreature() || !target->isPlayerCreature())
 			return;
 
-		CreatureObject* creature = (CreatureObject*) object;
-		CreatureObject* creatureTarget = (CreatureObject*)  target;
+		CreatureObject* creature = cast<CreatureObject*>( object);
+		CreatureObject* creatureTarget = cast<CreatureObject*>(  target);
 
 		String creatureName = creature->getFirstName();
 		String creatureTargetName = creatureTarget->getFirstName();
@@ -199,8 +199,8 @@ public:
 		}
 
 		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * pt = cast<Player *>( creatureTarget);
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -269,13 +269,13 @@ public:
 				if (!object->isTangibleObject())
 					continue;
 
-				TangibleObject* item = (TangibleObject*) object;
+				TangibleObject* item = cast<TangibleObject*>( object);
 
 				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = (PharmaceuticalObject*) item;
+					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
 
 					if (pharma->isWoundPack()) {
-						WoundPack* woundPack = (WoundPack*) pharma;
+						WoundPack* woundPack = cast<WoundPack*>( pharma);
 
 						if (woundPack->getMedicineUseRequired() <= medicineUse && woundPack->getAttribute() == attribute)
 							return woundPack;
@@ -302,7 +302,7 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
 
@@ -354,7 +354,7 @@ public:
 				//TODO: Patch the tre later to include a %NT.
 				if (creatureTarget->isPlayerCreature()) {
 				StringBuffer message;
-				message << ((CreatureObject*)creatureTarget)->getFirstName() << " has no wounds of that type to heal.";
+				message << (cast<CreatureObject*>(creatureTarget))->getFirstName() << " has no wounds of that type to heal.";
 				creature->sendSystemMessage(message.toString());
 				}
 			}
@@ -370,7 +370,7 @@ public:
 
 		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
+			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}
 
 		sendWoundMessage(creature, creatureTarget, attribute, woundHealed);

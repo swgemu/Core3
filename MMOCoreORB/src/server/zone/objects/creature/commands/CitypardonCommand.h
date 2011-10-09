@@ -66,14 +66,14 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( creature);
 
 		ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(target);
 
 		if (targetObject == NULL || !targetObject->isPlayerCreature())
 			return INVALIDTARGET;
 
-		CreatureObject* targetPlayer = (CreatureObject*) targetObject.get();
+		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 
 		/*
 		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
@@ -81,7 +81,7 @@ public:
 		if (activeRegion == NULL || !activeRegion->isRegion())
 			return GENERALERROR;
 
-		Region* region = (Region*) activeRegion.get();
+		Region* region = cast<Region*>( activeRegion.get());
 
 		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 

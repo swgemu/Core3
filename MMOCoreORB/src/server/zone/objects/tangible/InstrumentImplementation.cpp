@@ -29,7 +29,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			if (!playerParent->isCellObject()) {
 				return 1;
 			} else {
-				CellObject* cell = (CellObject*) playerParent;
+				CellObject* cell = cast<CellObject*>( playerParent);
 
 				StructureObject* structureObject = dynamic_cast<StructureObject*>(cell->getParent());
 
@@ -84,7 +84,7 @@ void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
 	}
 
 	if (spawnedObject->getZone() == NULL) {
-		Instrument* instrument = (Instrument*) spawnedObject.get();
+		Instrument* instrument = cast<Instrument*>( spawnedObject.get());
 		player->getParent()->addObject(instrument, -1);
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
@@ -109,7 +109,7 @@ void InstrumentImplementation::spawnOutside(CreatureObject* player) {
 	}
 
 	if (spawnedObject->getZone() == NULL) {
-		Instrument* instrument = (Instrument*) spawnedObject.get();
+		Instrument* instrument = cast<Instrument*>( spawnedObject.get());
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
 		//instrument->insertToZone(player->getZone());

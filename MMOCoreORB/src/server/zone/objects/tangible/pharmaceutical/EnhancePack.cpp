@@ -45,8 +45,9 @@ EnhancePack::~EnhancePack() {
 }
 
 
+
 void EnhancePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -55,7 +56,7 @@ void EnhancePack::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void EnhancePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -64,7 +65,7 @@ void EnhancePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* o
 }
 
 void EnhancePack::loadTemplateData(SharedObjectTemplate* templateData) {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -73,7 +74,7 @@ void EnhancePack::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 int EnhancePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +89,7 @@ int EnhancePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID)
 }
 
 unsigned int EnhancePack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -104,7 +105,7 @@ unsigned int EnhancePack::calculatePower(CreatureObject* healer, CreatureObject*
 }
 
 float EnhancePack::getEffectiveness() {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -117,7 +118,7 @@ float EnhancePack::getEffectiveness() {
 }
 
 byte EnhancePack::getAttribute() {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -130,7 +131,7 @@ byte EnhancePack::getAttribute() {
 }
 
 float EnhancePack::getDuration() {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -143,7 +144,7 @@ float EnhancePack::getDuration() {
 }
 
 bool EnhancePack::isEnhancePack() {
-	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -190,7 +191,7 @@ void EnhancePackImplementation::_initializeImplementation() {
 }
 
 void EnhancePackImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (EnhancePack*) stub;
+	_this = static_cast<EnhancePack*>(stub);
 	PharmaceuticalObjectImplementation::_setStub(stub);
 }
 
@@ -458,10 +459,10 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
-		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
 	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
@@ -483,27 +484,27 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 int EnhancePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((EnhancePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<EnhancePackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned int EnhancePackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	return ((EnhancePackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
+	return (static_cast<EnhancePackImplementation*>(impl))->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float EnhancePackAdapter::getEffectiveness() {
-	return ((EnhancePackImplementation*) impl)->getEffectiveness();
+	return (static_cast<EnhancePackImplementation*>(impl))->getEffectiveness();
 }
 
 byte EnhancePackAdapter::getAttribute() {
-	return ((EnhancePackImplementation*) impl)->getAttribute();
+	return (static_cast<EnhancePackImplementation*>(impl))->getAttribute();
 }
 
 float EnhancePackAdapter::getDuration() {
-	return ((EnhancePackImplementation*) impl)->getDuration();
+	return (static_cast<EnhancePackImplementation*>(impl))->getDuration();
 }
 
 bool EnhancePackAdapter::isEnhancePack() {
-	return ((EnhancePackImplementation*) impl)->isEnhancePack();
+	return (static_cast<EnhancePackImplementation*>(impl))->isEnhancePack();
 }
 
 /*
@@ -531,7 +532,7 @@ DistributedObjectServant* EnhancePackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* EnhancePackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EnhancePackAdapter((EnhancePackImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new EnhancePackAdapter(static_cast<EnhancePackImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

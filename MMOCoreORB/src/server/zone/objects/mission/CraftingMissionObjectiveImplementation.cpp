@@ -34,7 +34,7 @@ void CraftingMissionObjectiveImplementation::abort() {
 }
 
 void CraftingMissionObjectiveImplementation::complete() {
-	CreatureObject* player = (CreatureObject*) getPlayerOwner();
+	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
 
 	if (player == NULL)
 		return;

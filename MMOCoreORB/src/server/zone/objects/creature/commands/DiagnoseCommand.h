@@ -76,7 +76,7 @@ public:
 			return GENERALERROR;
 		}
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
 
@@ -103,7 +103,7 @@ public:
 			 objectName->getFullPath(targetName);
 		}
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::MEDIC_DIAGNOSE);
 		StringBuffer title;

@@ -35,8 +35,9 @@ CloningTerminal::~CloningTerminal() {
 }
 
 
+
 int CloningTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	CloningTerminalImplementation* _implementation = (CloningTerminalImplementation*) _getImplementation();
+	CloningTerminalImplementation* _implementation = static_cast<CloningTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void CloningTerminalImplementation::_initializeImplementation() {
 }
 
 void CloningTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CloningTerminal*) stub;
+	_this = static_cast<CloningTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -192,7 +193,7 @@ Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -202,7 +203,7 @@ Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int CloningTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((CloningTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CloningTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -230,7 +231,7 @@ DistributedObjectServant* CloningTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CloningTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CloningTerminalAdapter((CloningTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CloningTerminalAdapter(static_cast<CloningTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

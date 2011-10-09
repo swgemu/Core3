@@ -72,7 +72,7 @@ public:
 		if(!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<CreatureObject* > player = (CreatureObject*) creature;
+		ManagedReference<CreatureObject* > player = cast<CreatureObject*>( creature);
 
 		PlayerObject* ghost = player->getPlayerObject();
 

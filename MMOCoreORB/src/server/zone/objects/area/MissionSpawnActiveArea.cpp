@@ -31,8 +31,9 @@ MissionSpawnActiveArea::~MissionSpawnActiveArea() {
 }
 
 
+
 void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
-	MissionSpawnActiveAreaImplementation* _implementation = (MissionSpawnActiveAreaImplementation*) _getImplementation();
+	MissionSpawnActiveAreaImplementation* _implementation = static_cast<MissionSpawnActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -46,7 +47,7 @@ void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
 }
 
 void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* mission) {
-	MissionSpawnActiveAreaImplementation* _implementation = (MissionSpawnActiveAreaImplementation*) _getImplementation();
+	MissionSpawnActiveAreaImplementation* _implementation = static_cast<MissionSpawnActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -94,7 +95,7 @@ void MissionSpawnActiveAreaImplementation::_initializeImplementation() {
 }
 
 void MissionSpawnActiveAreaImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (MissionSpawnActiveArea*) stub;
+	_this = static_cast<MissionSpawnActiveArea*>(stub);
 	ActiveAreaImplementation::_setStub(stub);
 }
 
@@ -247,10 +248,10 @@ Packet* MissionSpawnActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMe
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter((SceneObject*) inv->getObjectParameter());
+		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETMISSIONOBJECTIVE__DESTROYMISSIONOBJECTIVE_:
-		setMissionObjective((DestroyMissionObjective*) inv->getObjectParameter());
+		setMissionObjective(static_cast<DestroyMissionObjective*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -260,11 +261,11 @@ Packet* MissionSpawnActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void MissionSpawnActiveAreaAdapter::notifyEnter(SceneObject* player) {
-	((MissionSpawnActiveAreaImplementation*) impl)->notifyEnter(player);
+	(static_cast<MissionSpawnActiveAreaImplementation*>(impl))->notifyEnter(player);
 }
 
 void MissionSpawnActiveAreaAdapter::setMissionObjective(DestroyMissionObjective* mission) {
-	((MissionSpawnActiveAreaImplementation*) impl)->setMissionObjective(mission);
+	(static_cast<MissionSpawnActiveAreaImplementation*>(impl))->setMissionObjective(mission);
 }
 
 /*
@@ -292,7 +293,7 @@ DistributedObjectServant* MissionSpawnActiveAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionSpawnActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionSpawnActiveAreaAdapter((MissionSpawnActiveAreaImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new MissionSpawnActiveAreaAdapter(static_cast<MissionSpawnActiveAreaImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -18,7 +18,7 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if (!sceneObject->isTangibleObject())
 		return;
 
-	TangibleObject* tano = (TangibleObject*) sceneObject;
+	TangibleObject* tano = cast<TangibleObject*>( sceneObject);
 
 	// Figure out what the object is and if its able to be Sliced.
 	if(!tano->isSliceable())
@@ -42,7 +42,7 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
-	TangibleObject* tano = (TangibleObject*) sceneObject;
+	TangibleObject* tano = cast<TangibleObject*>( sceneObject);
 
 
 	if (selectedID == 69) { // Slice [PlayerLootCrate]

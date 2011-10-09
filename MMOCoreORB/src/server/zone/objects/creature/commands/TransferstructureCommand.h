@@ -73,7 +73,7 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		StructureObject* structure = (StructureObject*) obj.get();
+		StructureObject* structure = cast<StructureObject*>( obj.get());
 
 		if (!structure->isOwnerOf(creature)) {
 			creature->sendSystemMessage("@player_structure:not_owner"); //You are not the owner of this structure.
@@ -97,7 +97,7 @@ public:
 			return GENERALERROR;
 		}
 
-		CreatureObject* targetCreature = (CreatureObject*) targetObject.get();
+		CreatureObject* targetCreature = cast<CreatureObject*>( targetObject.get());
 
 		if (structure->isOnBanList(targetCreature->getFirstName())) {
 			creature->sendSystemMessage("@player_structure:no_banned_player"); //You cannot transfer ownership to a banend player.
@@ -164,7 +164,7 @@ public:
 
 		//Update the cell permissions if the structure is private and a building.
 		if (!structure->isPublicStructure() && structure->isBuildingObject()) {
-			BuildingObject* buildingObject = (BuildingObject*) structure;
+			BuildingObject* buildingObject = cast<BuildingObject*>( structure);
 
 			buildingObject->updateCellPermissionsTo(targetCreature);
 			buildingObject->updateCellPermissionsTo(creature);

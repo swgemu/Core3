@@ -72,7 +72,7 @@ public:
 		if (object == NULL || !object->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* targetObject = (CreatureObject*) object.get();
+		CreatureObject* targetObject = cast<CreatureObject*>( object.get());
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 		if (group == NULL)

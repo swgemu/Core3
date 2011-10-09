@@ -66,7 +66,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
-		chatManager->handleGroupChat((CreatureObject*) creature, arguments);
+		chatManager->handleGroupChat( creature, arguments);
 
 		return SUCCESS;
 	}

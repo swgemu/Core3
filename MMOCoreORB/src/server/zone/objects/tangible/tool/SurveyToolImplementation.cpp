@@ -436,7 +436,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(CreatureObject* player, int v
 
 	// Create new waypoint
 	if (waypoint == NULL)
-		newwaypoint = (WaypointObject*) player->getZoneServer()->createObject(0xc456e788, 1);
+		newwaypoint = cast<WaypointObject*>( player->getZoneServer()->createObject(0xc456e788, 1));
 	else {
 		player->getPlayerObject()->removeWaypoint(waypoint->getObjectID(), true);
 		newwaypoint = waypoint.get();

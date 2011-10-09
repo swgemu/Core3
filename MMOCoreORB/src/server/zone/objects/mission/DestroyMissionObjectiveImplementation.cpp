@@ -40,7 +40,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 	}
 
 	if (spawnActiveArea == NULL) {
-		spawnActiveArea = (MissionSpawnActiveArea*) Core::lookupObject<ZoneServer>("ZoneServer")->createObject(String("object/mission_spawn_area.iff").hashCode(), 1);
+		spawnActiveArea = cast<MissionSpawnActiveArea*>( Core::lookupObject<ZoneServer>("ZoneServer")->createObject(String("object/mission_spawn_area.iff").hashCode(), 1));
 		spawnActiveArea->setMissionObjective(_this);
 	}
 
@@ -93,7 +93,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
 
 	if (lairObject == NULL)
-		lairObject = (LairObject*) Core::lookupObject<ZoneServer>("ZoneServer")->createObject(lairTemplateToSpawn->getServerObjectCRC(), 0);
+		lairObject = cast<LairObject*>( Core::lookupObject<ZoneServer>("ZoneServer")->createObject(lairTemplateToSpawn->getServerObjectCRC(), 0));
 
 	if (!lairObject->isInQuadTree()) {
 		lairObject->initializePosition(newX, zone->getHeight(newX, newY), newY);
@@ -136,7 +136,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 }
 
 void DestroyMissionObjectiveImplementation::complete() {
-	CreatureObject* player = (CreatureObject*) getPlayerOwner();
+	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
 
 	if (player == NULL)
 		return;

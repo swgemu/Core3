@@ -27,21 +27,22 @@ SuiCharacterBuilderBox::~SuiCharacterBuilderBox() {
 }
 
 
+
 BaseMessage* SuiCharacterBuilderBox::generateMessage() {
-	SuiCharacterBuilderBoxImplementation* _implementation = (SuiCharacterBuilderBoxImplementation*) _getImplementation();
+	SuiCharacterBuilderBoxImplementation* _implementation = static_cast<SuiCharacterBuilderBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
-		return (BaseMessage*) method.executeWithObjectReturn();
+		return static_cast<BaseMessage*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->generateMessage();
 }
 
 CharacterBuilderMenuNode* SuiCharacterBuilderBox::getCurrentNode() {
-	SuiCharacterBuilderBoxImplementation* _implementation = (SuiCharacterBuilderBoxImplementation*) _getImplementation();
+	SuiCharacterBuilderBoxImplementation* _implementation = static_cast<SuiCharacterBuilderBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -50,7 +51,7 @@ CharacterBuilderMenuNode* SuiCharacterBuilderBox::getCurrentNode() {
 }
 
 void SuiCharacterBuilderBox::setCurrentNode(CharacterBuilderMenuNode* node) {
-	SuiCharacterBuilderBoxImplementation* _implementation = (SuiCharacterBuilderBoxImplementation*) _getImplementation();
+	SuiCharacterBuilderBoxImplementation* _implementation = static_cast<SuiCharacterBuilderBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -59,7 +60,7 @@ void SuiCharacterBuilderBox::setCurrentNode(CharacterBuilderMenuNode* node) {
 }
 
 bool SuiCharacterBuilderBox::isCharacterBuilderBox() {
-	SuiCharacterBuilderBoxImplementation* _implementation = (SuiCharacterBuilderBoxImplementation*) _getImplementation();
+	SuiCharacterBuilderBoxImplementation* _implementation = static_cast<SuiCharacterBuilderBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +107,7 @@ void SuiCharacterBuilderBoxImplementation::_initializeImplementation() {
 }
 
 void SuiCharacterBuilderBoxImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiCharacterBuilderBox*) stub;
+	_this = static_cast<SuiCharacterBuilderBox*>(stub);
 	SuiListBoxImplementation::_setStub(stub);
 }
 
@@ -239,11 +240,11 @@ Packet* SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 BaseMessage* SuiCharacterBuilderBoxAdapter::generateMessage() {
-	return ((SuiCharacterBuilderBoxImplementation*) impl)->generateMessage();
+	return (static_cast<SuiCharacterBuilderBoxImplementation*>(impl))->generateMessage();
 }
 
 bool SuiCharacterBuilderBoxAdapter::isCharacterBuilderBox() {
-	return ((SuiCharacterBuilderBoxImplementation*) impl)->isCharacterBuilderBox();
+	return (static_cast<SuiCharacterBuilderBoxImplementation*>(impl))->isCharacterBuilderBox();
 }
 
 /*
@@ -271,7 +272,7 @@ DistributedObjectServant* SuiCharacterBuilderBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiCharacterBuilderBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiCharacterBuilderBoxAdapter((SuiCharacterBuilderBoxImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiCharacterBuilderBoxAdapter(static_cast<SuiCharacterBuilderBoxImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

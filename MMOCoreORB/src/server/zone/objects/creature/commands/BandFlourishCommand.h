@@ -113,12 +113,12 @@ public:
 			Locker locker(group);
 
 			for (int i = 0; i < group->getGroupSize(); i++) {
-				ManagedReference<CreatureObject*> groupMember = (CreatureObject*)group->getGroupMember(i);
+				ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(group->getGroupMember(i));
 
 				Locker clocker(groupMember, group);
 
 				if (groupMember != leader && groupMember->isPlayerCreature()) {
-					CreatureObject* player = (CreatureObject*)groupMember.get();
+					CreatureObject* player = cast<CreatureObject*>(groupMember.get());
 
 					ManagedReference<Facade*> pfacade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 
@@ -265,7 +265,7 @@ public:
 
 		String stringA, stringB;
 
-		CreatureObject* leader = (CreatureObject*)creature;
+		CreatureObject* leader = cast<CreatureObject*>(creature);
 
 		if (!creature->isEntertaining()) {
 			leader->sendSystemMessage("performance", "flourish_not_performing");

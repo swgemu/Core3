@@ -114,7 +114,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
@@ -141,7 +141,7 @@ public:
 
 			if (nala != NULL && dynamic_cast<Instrument*>(nala.get())) {
 				targetedInstrument = true;
-				instrument = (Instrument*) nala.get();
+				instrument = cast<Instrument*>( nala.get());
 				SceneObject* creatureParent = creature->getParent();
 
 				if (creature->getDistanceTo(nala) >= 3 || !nala->isInQuadTree() || (creatureParent == NULL && NULL != nala->getParent())) {

@@ -77,7 +77,7 @@ public:
 
 		if (objectsParent != NULL && objectsParent->isCellObject()) {
 
-			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+			ManagedReference<BuildingObject*> building = cast<BuildingObject*>( objectsParent->getParent());
 
 			if (!building->isOnAdminList(creature->getFirstName())) {
 				return GENERALERROR;

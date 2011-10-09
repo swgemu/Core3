@@ -10,6 +10,7 @@
 #include "MissionObject.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
@@ -20,7 +21,7 @@ void SurveyMissionObjectiveImplementation::activate() {
 		return;
 	}
 
-	CreatureObject* player = (CreatureObject*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+	CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
 
 	ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
 	ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
@@ -38,7 +39,7 @@ void SurveyMissionObjectiveImplementation::abort() {
 
 	if (mission != NULL) {
 
-		CreatureObject* player = (CreatureObject*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
 
 		player->dropObserver(ObserverEventType::SAMPLE, observer);
 	}
@@ -49,7 +50,7 @@ void SurveyMissionObjectiveImplementation::abort() {
 }
 
 void SurveyMissionObjectiveImplementation::complete() {
-	CreatureObject* player = (CreatureObject*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+	CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
 
 	if (player == NULL)
 		return;
@@ -73,8 +74,8 @@ void SurveyMissionObjectiveImplementation::complete() {
 
 int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::SAMPLE) {
-		CreatureObject* player = (CreatureObject*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
-		ResourceSpawn* sampledSpawn = (ResourceSpawn*) arg1;
+		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+		ResourceSpawn* sampledSpawn = cast<ResourceSpawn*>( arg1);
 
 		int sampledDensity = (int)arg2;
 

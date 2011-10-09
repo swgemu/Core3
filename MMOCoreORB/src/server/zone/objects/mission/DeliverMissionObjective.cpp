@@ -41,8 +41,9 @@ DeliverMissionObjective::~DeliverMissionObjective() {
 }
 
 
+
 void DeliverMissionObjective::initializeTransientMembers() {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -55,7 +56,7 @@ void DeliverMissionObjective::initializeTransientMembers() {
 }
 
 void DeliverMissionObjective::setTarget(AiAgent* t) {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +70,7 @@ void DeliverMissionObjective::setTarget(AiAgent* t) {
 }
 
 void DeliverMissionObjective::setTargetDest(AiAgent* t) {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,20 +84,20 @@ void DeliverMissionObjective::setTargetDest(AiAgent* t) {
 }
 
 TangibleObject* DeliverMissionObjective::getItem() {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETITEM__);
 
-		return (TangibleObject*) method.executeWithObjectReturn();
+		return static_cast<TangibleObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getItem();
 }
 
 void DeliverMissionObjective::activate() {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ void DeliverMissionObjective::activate() {
 }
 
 void DeliverMissionObjective::abort() {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -122,7 +123,7 @@ void DeliverMissionObjective::abort() {
 }
 
 void DeliverMissionObjective::complete() {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -135,7 +136,7 @@ void DeliverMissionObjective::complete() {
 }
 
 int DeliverMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +154,7 @@ int DeliverMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 }
 
 bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
-	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -199,7 +200,7 @@ void DeliverMissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void DeliverMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (DeliverMissionObjective*) stub;
+	_this = static_cast<DeliverMissionObjective*>(stub);
 	MissionObjectiveImplementation::_setStub(stub);
 }
 
@@ -391,10 +392,10 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		initializeTransientMembers();
 		break;
 	case RPC_SETTARGET__AIAGENT_:
-		setTarget((AiAgent*) inv->getObjectParameter());
+		setTarget(static_cast<AiAgent*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETTARGETDEST__AIAGENT_:
-		setTargetDest((AiAgent*) inv->getObjectParameter());
+		setTargetDest(static_cast<AiAgent*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETITEM__:
 		resp->insertLong(getItem()->_getObjectID());
@@ -409,10 +410,10 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		complete();
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_:
-		resp->insertBoolean(updateMissionTarget((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(updateMissionTarget(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
 		return NULL;
@@ -422,43 +423,43 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 }
 
 void DeliverMissionObjectiveAdapter::finalize() {
-	((DeliverMissionObjectiveImplementation*) impl)->finalize();
+	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->finalize();
 }
 
 void DeliverMissionObjectiveAdapter::initializeTransientMembers() {
-	((DeliverMissionObjectiveImplementation*) impl)->initializeTransientMembers();
+	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
 }
 
 void DeliverMissionObjectiveAdapter::setTarget(AiAgent* t) {
-	((DeliverMissionObjectiveImplementation*) impl)->setTarget(t);
+	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->setTarget(t);
 }
 
 void DeliverMissionObjectiveAdapter::setTargetDest(AiAgent* t) {
-	((DeliverMissionObjectiveImplementation*) impl)->setTargetDest(t);
+	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->setTargetDest(t);
 }
 
 TangibleObject* DeliverMissionObjectiveAdapter::getItem() {
-	return ((DeliverMissionObjectiveImplementation*) impl)->getItem();
+	return (static_cast<DeliverMissionObjectiveImplementation*>(impl))->getItem();
 }
 
 void DeliverMissionObjectiveAdapter::activate() {
-	((DeliverMissionObjectiveImplementation*) impl)->activate();
+	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->activate();
 }
 
 void DeliverMissionObjectiveAdapter::abort() {
-	((DeliverMissionObjectiveImplementation*) impl)->abort();
+	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->abort();
 }
 
 void DeliverMissionObjectiveAdapter::complete() {
-	((DeliverMissionObjectiveImplementation*) impl)->complete();
+	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->complete();
 }
 
 int DeliverMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((DeliverMissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<DeliverMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 bool DeliverMissionObjectiveAdapter::updateMissionTarget(CreatureObject* player) {
-	return ((DeliverMissionObjectiveImplementation*) impl)->updateMissionTarget(player);
+	return (static_cast<DeliverMissionObjectiveImplementation*>(impl))->updateMissionTarget(player);
 }
 
 /*
@@ -486,7 +487,7 @@ DistributedObjectServant* DeliverMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DeliverMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DeliverMissionObjectiveAdapter((DeliverMissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new DeliverMissionObjectiveAdapter(static_cast<DeliverMissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

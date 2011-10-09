@@ -37,8 +37,9 @@ ObjectController::~ObjectController() {
 }
 
 
+
 void ObjectController::loadCommands() {
-	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	ObjectControllerImplementation* _implementation = static_cast<ObjectControllerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -51,7 +52,7 @@ void ObjectController::loadCommands() {
 }
 
 bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
-	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	ObjectControllerImplementation* _implementation = static_cast<ObjectControllerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -68,7 +69,7 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 }
 
 float ObjectController::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
-	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	ObjectControllerImplementation* _implementation = static_cast<ObjectControllerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ float ObjectController::activateCommand(CreatureObject* object, unsigned int act
 }
 
 void ObjectController::addQueueCommand(QueueCommand* command) {
-	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	ObjectControllerImplementation* _implementation = static_cast<ObjectControllerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -95,7 +96,7 @@ void ObjectController::addQueueCommand(QueueCommand* command) {
 }
 
 QueueCommand* ObjectController::getQueueCommand(const String& name) {
-	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	ObjectControllerImplementation* _implementation = static_cast<ObjectControllerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -104,7 +105,7 @@ QueueCommand* ObjectController::getQueueCommand(const String& name) {
 }
 
 QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
-	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	ObjectControllerImplementation* _implementation = static_cast<ObjectControllerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -145,7 +146,7 @@ void ObjectControllerImplementation::_initializeImplementation() {
 }
 
 void ObjectControllerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ObjectController*) stub;
+	_this = static_cast<ObjectController*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -266,10 +267,10 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		loadCommands();
 		break;
 	case RPC_TRANSFEROBJECT__SCENEOBJECT_SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_ACTIVATECOMMAND__CREATUREOBJECT_INT_INT_LONG_UNICODESTRING_:
-		resp->insertFloat(activateCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_activateCommand__CreatureObject_int_int_long_UnicodeString_)));
+		resp->insertFloat(activateCommand(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_activateCommand__CreatureObject_int_int_long_UnicodeString_)));
 		break;
 	default:
 		return NULL;
@@ -279,19 +280,19 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void ObjectControllerAdapter::finalize() {
-	((ObjectControllerImplementation*) impl)->finalize();
+	(static_cast<ObjectControllerImplementation*>(impl))->finalize();
 }
 
 void ObjectControllerAdapter::loadCommands() {
-	((ObjectControllerImplementation*) impl)->loadCommands();
+	(static_cast<ObjectControllerImplementation*>(impl))->loadCommands();
 }
 
 bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
-	return ((ObjectControllerImplementation*) impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+	return (static_cast<ObjectControllerImplementation*>(impl))->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
 float ObjectControllerAdapter::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
-	return ((ObjectControllerImplementation*) impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
+	return (static_cast<ObjectControllerImplementation*>(impl))->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 /*
@@ -319,7 +320,7 @@ DistributedObjectServant* ObjectControllerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ObjectControllerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ObjectControllerAdapter((ObjectControllerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ObjectControllerAdapter(static_cast<ObjectControllerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

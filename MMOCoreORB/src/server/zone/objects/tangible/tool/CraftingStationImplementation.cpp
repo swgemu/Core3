@@ -108,7 +108,7 @@ SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* pla
 
 		if (object != NULL && object->isCraftingTool()) {
 
-			CraftingTool* tool = (CraftingTool*) object;
+			CraftingTool* tool = cast<CraftingTool*>( object);
 
 			if(!tool->isReady())
 				continue;

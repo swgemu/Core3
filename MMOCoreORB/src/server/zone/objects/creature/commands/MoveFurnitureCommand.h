@@ -68,7 +68,7 @@ public:
 		if (parent == NULL || !parent->isCellObject())
 			return true;
 
-		CellObject* cell = (CellObject*) parent.get();
+		CellObject* cell = cast<CellObject*>( parent.get());
 
 		SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
 		PortalLayout* portalLayout = objectTemplate->getPortalLayout();
@@ -150,7 +150,7 @@ public:
 				return GENERALERROR;
 			}
 
-			BuildingObject* buildingObject = (BuildingObject*) creatureParent.get();
+			BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
 
 			if (buildingObject != rootParent || !buildingObject->isOnAdminList(creature->getFirstName())) {
 				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.

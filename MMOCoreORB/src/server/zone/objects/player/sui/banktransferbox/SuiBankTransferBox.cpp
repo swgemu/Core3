@@ -29,8 +29,9 @@ SuiBankTransferBox::~SuiBankTransferBox() {
 }
 
 
+
 void SuiBankTransferBox::addCash(int cash) {
-	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	SuiBankTransferBoxImplementation* _implementation = static_cast<SuiBankTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -44,7 +45,7 @@ void SuiBankTransferBox::addCash(int cash) {
 }
 
 void SuiBankTransferBox::addBank(int bank) {
-	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	SuiBankTransferBoxImplementation* _implementation = static_cast<SuiBankTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,33 +59,33 @@ void SuiBankTransferBox::addBank(int bank) {
 }
 
 SceneObject* SuiBankTransferBox::getBank() {
-	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	SuiBankTransferBoxImplementation* _implementation = static_cast<SuiBankTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETBANK__);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getBank();
 }
 
 BaseMessage* SuiBankTransferBox::generateMessage() {
-	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	SuiBankTransferBoxImplementation* _implementation = static_cast<SuiBankTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
-		return (BaseMessage*) method.executeWithObjectReturn();
+		return static_cast<BaseMessage*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->generateMessage();
 }
 
 bool SuiBankTransferBox::isBankTransferBox() {
-	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	SuiBankTransferBoxImplementation* _implementation = static_cast<SuiBankTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,7 +132,7 @@ void SuiBankTransferBoxImplementation::_initializeImplementation() {
 }
 
 void SuiBankTransferBoxImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiBankTransferBox*) stub;
+	_this = static_cast<SuiBankTransferBox*>(stub);
 	SuiBoxImplementation::_setStub(stub);
 }
 
@@ -409,23 +410,23 @@ Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void SuiBankTransferBoxAdapter::addCash(int cash) {
-	((SuiBankTransferBoxImplementation*) impl)->addCash(cash);
+	(static_cast<SuiBankTransferBoxImplementation*>(impl))->addCash(cash);
 }
 
 void SuiBankTransferBoxAdapter::addBank(int bank) {
-	((SuiBankTransferBoxImplementation*) impl)->addBank(bank);
+	(static_cast<SuiBankTransferBoxImplementation*>(impl))->addBank(bank);
 }
 
 SceneObject* SuiBankTransferBoxAdapter::getBank() {
-	return ((SuiBankTransferBoxImplementation*) impl)->getBank();
+	return (static_cast<SuiBankTransferBoxImplementation*>(impl))->getBank();
 }
 
 BaseMessage* SuiBankTransferBoxAdapter::generateMessage() {
-	return ((SuiBankTransferBoxImplementation*) impl)->generateMessage();
+	return (static_cast<SuiBankTransferBoxImplementation*>(impl))->generateMessage();
 }
 
 bool SuiBankTransferBoxAdapter::isBankTransferBox() {
-	return ((SuiBankTransferBoxImplementation*) impl)->isBankTransferBox();
+	return (static_cast<SuiBankTransferBoxImplementation*>(impl))->isBankTransferBox();
 }
 
 /*
@@ -453,7 +454,7 @@ DistributedObjectServant* SuiBankTransferBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiBankTransferBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiBankTransferBoxAdapter((SuiBankTransferBoxImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiBankTransferBoxAdapter(static_cast<SuiBankTransferBoxImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

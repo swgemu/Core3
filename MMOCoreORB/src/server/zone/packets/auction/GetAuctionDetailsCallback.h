@@ -26,7 +26,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
 
 		if (player == NULL)
 			return;

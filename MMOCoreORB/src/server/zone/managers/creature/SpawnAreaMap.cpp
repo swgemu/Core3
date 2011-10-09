@@ -43,7 +43,7 @@ void SpawnAreaMap::loadMap(Zone* z) {
 		for (int i = 0; i < size(); ++i) {
 			SpawnArea* area = get(i);
 			if (area->isDynamicArea()) {
-				DynamicSpawnArea* dynamicArea = (DynamicSpawnArea*)area;
+				DynamicSpawnArea* dynamicArea = cast<DynamicSpawnArea*>(area);
 
 				Vector3 d(dynamicArea->getPositionX(), dynamicArea->getPositionY(), 0);
 
@@ -101,7 +101,7 @@ void SpawnAreaMap::loadStaticSpawns() {
 				creatureObject->setDirection(Math::deg2rad(heading));
 
 				if (creatureObject->isAiAgent()) {
-					AiAgent* ai = (AiAgent*) creatureObject.get();
+					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
 					ai->setRespawnTimer(respawn);
 				}
 			} else {
@@ -167,7 +167,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	if (area->isStaticArea()) {
 		noSpawnAreas.add(area);
 		if (tier == 1) {
-			StaticSpawnArea* staticArea = (StaticSpawnArea*)area.get();
+			StaticSpawnArea* staticArea = cast<StaticSpawnArea*>(area.get());
 			staticArea->spawnCreatures();
 		}
 	}

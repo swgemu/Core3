@@ -23,8 +23,9 @@ StructureStatusSession::~StructureStatusSession() {
 }
 
 
+
 int StructureStatusSession::initializeSession() {
-	StructureStatusSessionImplementation* _implementation = (StructureStatusSessionImplementation*) _getImplementation();
+	StructureStatusSessionImplementation* _implementation = static_cast<StructureStatusSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -37,7 +38,7 @@ int StructureStatusSession::initializeSession() {
 }
 
 int StructureStatusSession::updateStatus() {
-	StructureStatusSessionImplementation* _implementation = (StructureStatusSessionImplementation*) _getImplementation();
+	StructureStatusSessionImplementation* _implementation = static_cast<StructureStatusSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +51,7 @@ int StructureStatusSession::updateStatus() {
 }
 
 int StructureStatusSession::cancelSession() {
-	StructureStatusSessionImplementation* _implementation = (StructureStatusSessionImplementation*) _getImplementation();
+	StructureStatusSessionImplementation* _implementation = static_cast<StructureStatusSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -63,7 +64,7 @@ int StructureStatusSession::cancelSession() {
 }
 
 int StructureStatusSession::clearSession() {
-	StructureStatusSessionImplementation* _implementation = (StructureStatusSessionImplementation*) _getImplementation();
+	StructureStatusSessionImplementation* _implementation = static_cast<StructureStatusSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -110,7 +111,7 @@ void StructureStatusSessionImplementation::_initializeImplementation() {
 }
 
 void StructureStatusSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (StructureStatusSession*) stub;
+	_this = static_cast<StructureStatusSession*>(stub);
 	FacadeImplementation::_setStub(stub);
 }
 
@@ -275,19 +276,19 @@ Packet* StructureStatusSessionAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 int StructureStatusSessionAdapter::initializeSession() {
-	return ((StructureStatusSessionImplementation*) impl)->initializeSession();
+	return (static_cast<StructureStatusSessionImplementation*>(impl))->initializeSession();
 }
 
 int StructureStatusSessionAdapter::updateStatus() {
-	return ((StructureStatusSessionImplementation*) impl)->updateStatus();
+	return (static_cast<StructureStatusSessionImplementation*>(impl))->updateStatus();
 }
 
 int StructureStatusSessionAdapter::cancelSession() {
-	return ((StructureStatusSessionImplementation*) impl)->cancelSession();
+	return (static_cast<StructureStatusSessionImplementation*>(impl))->cancelSession();
 }
 
 int StructureStatusSessionAdapter::clearSession() {
-	return ((StructureStatusSessionImplementation*) impl)->clearSession();
+	return (static_cast<StructureStatusSessionImplementation*>(impl))->clearSession();
 }
 
 /*
@@ -315,7 +316,7 @@ DistributedObjectServant* StructureStatusSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StructureStatusSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StructureStatusSessionAdapter((StructureStatusSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new StructureStatusSessionAdapter(static_cast<StructureStatusSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

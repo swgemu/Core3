@@ -87,7 +87,7 @@ void DraftSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 void DraftSchematicImplementation::sendDraftSlotsTo(CreatureObject* player) {
 
-	CreatureObject* playerCreature = (CreatureObject*) player;
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
 

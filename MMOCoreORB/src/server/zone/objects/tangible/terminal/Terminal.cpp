@@ -27,8 +27,9 @@ Terminal::~Terminal() {
 }
 
 
+
 void Terminal::initializeTransientMembers() {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ void Terminal::initializeTransientMembers() {
 }
 
 bool Terminal::isTerminal() {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ bool Terminal::isTerminal() {
 }
 
 bool Terminal::isGuildTerminal() {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,7 +68,7 @@ bool Terminal::isGuildTerminal() {
 }
 
 void Terminal::setControlledObject(SceneObject* obj) {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -81,20 +82,20 @@ void Terminal::setControlledObject(SceneObject* obj) {
 }
 
 SceneObject* Terminal::getControlledObject() {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCONTROLLEDOBJECT__);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getControlledObject();
 }
 
 bool Terminal::isElevatorTerminal() {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +108,7 @@ bool Terminal::isElevatorTerminal() {
 }
 
 bool Terminal::isVendorTerminal() {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ bool Terminal::isVendorTerminal() {
 }
 
 bool Terminal::isBazaarTerminal() {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +134,7 @@ bool Terminal::isBazaarTerminal() {
 }
 
 void Terminal::initializeChildObject(SceneObject* controllerObject) {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	TerminalImplementation* _implementation = static_cast<TerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,7 +182,7 @@ void TerminalImplementation::_initializeImplementation() {
 }
 
 void TerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Terminal*) stub;
+	_this = static_cast<Terminal*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -352,7 +353,7 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isGuildTerminal());
 		break;
 	case RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_:
-		setControlledObject((SceneObject*) inv->getObjectParameter());
+		setControlledObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETCONTROLLEDOBJECT__:
 		resp->insertLong(getControlledObject()->_getObjectID());
@@ -367,7 +368,7 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isBazaarTerminal());
 		break;
 	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
-		initializeChildObject((SceneObject*) inv->getObjectParameter());
+		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -377,39 +378,39 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void TerminalAdapter::initializeTransientMembers() {
-	((TerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<TerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 bool TerminalAdapter::isTerminal() {
-	return ((TerminalImplementation*) impl)->isTerminal();
+	return (static_cast<TerminalImplementation*>(impl))->isTerminal();
 }
 
 bool TerminalAdapter::isGuildTerminal() {
-	return ((TerminalImplementation*) impl)->isGuildTerminal();
+	return (static_cast<TerminalImplementation*>(impl))->isGuildTerminal();
 }
 
 void TerminalAdapter::setControlledObject(SceneObject* obj) {
-	((TerminalImplementation*) impl)->setControlledObject(obj);
+	(static_cast<TerminalImplementation*>(impl))->setControlledObject(obj);
 }
 
 SceneObject* TerminalAdapter::getControlledObject() {
-	return ((TerminalImplementation*) impl)->getControlledObject();
+	return (static_cast<TerminalImplementation*>(impl))->getControlledObject();
 }
 
 bool TerminalAdapter::isElevatorTerminal() {
-	return ((TerminalImplementation*) impl)->isElevatorTerminal();
+	return (static_cast<TerminalImplementation*>(impl))->isElevatorTerminal();
 }
 
 bool TerminalAdapter::isVendorTerminal() {
-	return ((TerminalImplementation*) impl)->isVendorTerminal();
+	return (static_cast<TerminalImplementation*>(impl))->isVendorTerminal();
 }
 
 bool TerminalAdapter::isBazaarTerminal() {
-	return ((TerminalImplementation*) impl)->isBazaarTerminal();
+	return (static_cast<TerminalImplementation*>(impl))->isBazaarTerminal();
 }
 
 void TerminalAdapter::initializeChildObject(SceneObject* controllerObject) {
-	((TerminalImplementation*) impl)->initializeChildObject(controllerObject);
+	(static_cast<TerminalImplementation*>(impl))->initializeChildObject(controllerObject);
 }
 
 /*
@@ -437,7 +438,7 @@ DistributedObjectServant* TerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TerminalAdapter((TerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new TerminalAdapter(static_cast<TerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

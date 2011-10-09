@@ -26,7 +26,7 @@ public:
 		if (tano->getGameObjectType() != SceneObject::STATICLOOTCONTAINER && !tano->isContainerObject())
 			return;
 
-		Container* container = (Container*) tano.get();
+		Container* container = cast<Container*>( tano.get());
 
 		container->setSliced(false);
 		container->setLockedStatus(true);

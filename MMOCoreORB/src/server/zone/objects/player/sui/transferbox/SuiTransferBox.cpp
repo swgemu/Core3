@@ -29,21 +29,22 @@ SuiTransferBox::~SuiTransferBox() {
 }
 
 
+
 BaseMessage* SuiTransferBox::generateMessage() {
-	SuiTransferBoxImplementation* _implementation = (SuiTransferBoxImplementation*) _getImplementation();
+	SuiTransferBoxImplementation* _implementation = static_cast<SuiTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
-		return (BaseMessage*) method.executeWithObjectReturn();
+		return static_cast<BaseMessage*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->generateMessage();
 }
 
 void SuiTransferBox::addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom) {
-	SuiTransferBoxImplementation* _implementation = (SuiTransferBoxImplementation*) _getImplementation();
+	SuiTransferBoxImplementation* _implementation = static_cast<SuiTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void SuiTransferBox::addFrom(const String& from, const String& startingFrom, con
 }
 
 void SuiTransferBox::addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo) {
-	SuiTransferBoxImplementation* _implementation = (SuiTransferBoxImplementation*) _getImplementation();
+	SuiTransferBoxImplementation* _implementation = static_cast<SuiTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ void SuiTransferBox::addTo(const String& to, const String& startingTo, const Str
 }
 
 bool SuiTransferBox::isTransferBox() {
-	SuiTransferBoxImplementation* _implementation = (SuiTransferBoxImplementation*) _getImplementation();
+	SuiTransferBoxImplementation* _implementation = static_cast<SuiTransferBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -124,7 +125,7 @@ void SuiTransferBoxImplementation::_initializeImplementation() {
 }
 
 void SuiTransferBoxImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiTransferBox*) stub;
+	_this = static_cast<SuiTransferBox*>(stub);
 	SuiBoxImplementation::_setStub(stub);
 }
 
@@ -357,19 +358,19 @@ Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 BaseMessage* SuiTransferBoxAdapter::generateMessage() {
-	return ((SuiTransferBoxImplementation*) impl)->generateMessage();
+	return (static_cast<SuiTransferBoxImplementation*>(impl))->generateMessage();
 }
 
 void SuiTransferBoxAdapter::addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom) {
-	((SuiTransferBoxImplementation*) impl)->addFrom(from, startingFrom, inputFrom, rFrom);
+	(static_cast<SuiTransferBoxImplementation*>(impl))->addFrom(from, startingFrom, inputFrom, rFrom);
 }
 
 void SuiTransferBoxAdapter::addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo) {
-	((SuiTransferBoxImplementation*) impl)->addTo(to, startingTo, inputTo, rTo);
+	(static_cast<SuiTransferBoxImplementation*>(impl))->addTo(to, startingTo, inputTo, rTo);
 }
 
 bool SuiTransferBoxAdapter::isTransferBox() {
-	return ((SuiTransferBoxImplementation*) impl)->isTransferBox();
+	return (static_cast<SuiTransferBoxImplementation*>(impl))->isTransferBox();
 }
 
 /*
@@ -397,7 +398,7 @@ DistributedObjectServant* SuiTransferBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiTransferBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiTransferBoxAdapter((SuiTransferBoxImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiTransferBoxAdapter(static_cast<SuiTransferBoxImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

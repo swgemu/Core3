@@ -25,7 +25,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 		return;
 
 	if (controlledObject != NULL && controlledObject->isStructureObject()) {
-		StructureObject* structureObject = (StructureObject*) controlledObject.get();
+		StructureObject* structureObject = cast<StructureObject*>( controlledObject.get());
 
 		if (structureObject->isOnAdminList(creature->getFirstName())) {
 			menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
@@ -73,7 +73,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* crea
 	if (controlledObject == NULL || !controlledObject->isStructureObject())
 		return 1;
 
-	StructureObject* structureObject = (StructureObject*) controlledObject.get();
+	StructureObject* structureObject = cast<StructureObject*>( controlledObject.get());
 
 	if (!structureObject->isOnAdminList(creature->getFirstName()) && !ghost->isPrivileged())
 		return 1;

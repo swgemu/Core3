@@ -98,8 +98,7 @@ public:
 				return SUCCESS;
 			}
 
-			ManagedReference<CreatureObject*> playerCreature =
-					(CreatureObject*) creature;
+			ManagedReference<CreatureObject*> playerCreature = creature;
 
 			PlayerObject* ghost = playerCreature->getPlayerObject();
 

@@ -71,8 +71,9 @@ ZoneServer::~ZoneServer() {
 }
 
 
+
 void ZoneServer::initializeTransientMembers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void ZoneServer::initializeTransientMembers() {
 }
 
 ZoneClientSession* ZoneServer::createConnection(Socket* sock, SocketAddress& addr) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -94,7 +95,7 @@ ZoneClientSession* ZoneServer::createConnection(Socket* sock, SocketAddress& add
 }
 
 void ZoneServer::initialize() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +108,7 @@ void ZoneServer::initialize() {
 }
 
 void ZoneServer::shutdown() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ void ZoneServer::shutdown() {
 }
 
 void ZoneServer::startManagers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +134,7 @@ void ZoneServer::startManagers() {
 }
 
 void ZoneServer::startZones() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +147,7 @@ void ZoneServer::startZones() {
 }
 
 void ZoneServer::stopManagers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -159,7 +160,7 @@ void ZoneServer::stopManagers() {
 }
 
 void ZoneServer::start(int p, int mconn) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -174,7 +175,7 @@ void ZoneServer::start(int p, int mconn) {
 }
 
 void ZoneServer::stop() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -187,7 +188,7 @@ void ZoneServer::stop() {
 }
 
 void ZoneServer::handleMessage(ZoneClientSession* client, Packet* message) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -196,7 +197,7 @@ void ZoneServer::handleMessage(ZoneClientSession* client, Packet* message) {
 }
 
 void ZoneServer::processMessage(Message* message) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -205,7 +206,7 @@ void ZoneServer::processMessage(Message* message) {
 }
 
 bool ZoneServer::handleError(ZoneClientSession* client, Exception& e) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -214,7 +215,7 @@ bool ZoneServer::handleError(ZoneClientSession* client, Exception& e) {
 }
 
 void ZoneServer::addTotalSentPacket(int count) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -228,7 +229,7 @@ void ZoneServer::addTotalSentPacket(int count) {
 }
 
 void ZoneServer::addTotalResentPacket(int count) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -242,7 +243,7 @@ void ZoneServer::addTotalResentPacket(int count) {
 }
 
 void ZoneServer::printInfo(bool forcedLog) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -256,7 +257,7 @@ void ZoneServer::printInfo(bool forcedLog) {
 }
 
 void ZoneServer::printEvents() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -269,7 +270,7 @@ void ZoneServer::printEvents() {
 }
 
 SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -278,13 +279,13 @@ SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 		method.addUnsignedLongParameter(objectID);
 		method.addBooleanParameter(doLock);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getObject(objectID, doLock);
 }
 
 SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -294,13 +295,13 @@ SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceL
 		method.addSignedIntParameter(persistenceLevel);
 		method.addUnsignedLongParameter(objectID);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createObject(templateCRC, persistenceLevel, objectID);
 }
 
 SceneObject* ZoneServer::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -309,13 +310,13 @@ SceneObject* ZoneServer::createClientObject(unsigned int templateCRC, unsigned l
 		method.addUnsignedIntParameter(templateCRC);
 		method.addUnsignedLongParameter(objectID);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createClientObject(templateCRC, objectID);
 }
 
 void ZoneServer::updateObjectToDatabase(SceneObject* object) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -329,7 +330,7 @@ void ZoneServer::updateObjectToDatabase(SceneObject* object) {
 }
 
 void ZoneServer::updateObjectToStaticDatabase(SceneObject* object) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -343,7 +344,7 @@ void ZoneServer::updateObjectToStaticDatabase(SceneObject* object) {
 }
 
 void ZoneServer::destroyObjectFromDatabase(unsigned long long objectID) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -357,7 +358,7 @@ void ZoneServer::destroyObjectFromDatabase(unsigned long long objectID) {
 }
 
 void ZoneServer::lock(bool doLock) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -371,7 +372,7 @@ void ZoneServer::lock(bool doLock) {
 }
 
 void ZoneServer::unlock(bool doLock) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -385,7 +386,7 @@ void ZoneServer::unlock(bool doLock) {
 }
 
 void ZoneServer::fixScheduler() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -398,7 +399,7 @@ void ZoneServer::fixScheduler() {
 }
 
 void ZoneServer::changeUserCap(int amount) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -412,7 +413,7 @@ void ZoneServer::changeUserCap(int amount) {
 }
 
 int ZoneServer::getConnectionCount() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -425,7 +426,7 @@ int ZoneServer::getConnectionCount() {
 }
 
 void ZoneServer::increaseOnlinePlayers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -438,7 +439,7 @@ void ZoneServer::increaseOnlinePlayers() {
 }
 
 void ZoneServer::decreaseOnlinePlayers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -451,7 +452,7 @@ void ZoneServer::decreaseOnlinePlayers() {
 }
 
 void ZoneServer::increaseTotalDeletedPlayers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -464,7 +465,7 @@ void ZoneServer::increaseTotalDeletedPlayers() {
 }
 
 int ZoneServer::getGalaxyID() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -477,7 +478,7 @@ int ZoneServer::getGalaxyID() {
 }
 
 String ZoneServer::getGalaxyName() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -491,7 +492,7 @@ String ZoneServer::getGalaxyName() {
 }
 
 void ZoneServer::setGalaxyName(const String& name) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -505,7 +506,7 @@ void ZoneServer::setGalaxyName(const String& name) {
 }
 
 bool ZoneServer::isServerLocked() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -518,7 +519,7 @@ bool ZoneServer::isServerLocked() {
 }
 
 bool ZoneServer::isServerOnline() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -531,7 +532,7 @@ bool ZoneServer::isServerOnline() {
 }
 
 bool ZoneServer::isServerOffline() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -544,7 +545,7 @@ bool ZoneServer::isServerOffline() {
 }
 
 bool ZoneServer::isServerLoading() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -557,7 +558,7 @@ bool ZoneServer::isServerLoading() {
 }
 
 int ZoneServer::getServerState() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -570,7 +571,7 @@ int ZoneServer::getServerState() {
 }
 
 Zone* ZoneServer::getZone(const String& terrainName) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -578,13 +579,13 @@ Zone* ZoneServer::getZone(const String& terrainName) {
 		DistributedMethod method(this, RPC_GETZONE__STRING_);
 		method.addAsciiParameter(terrainName);
 
-		return (Zone*) method.executeWithObjectReturn();
+		return static_cast<Zone*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getZone(terrainName);
 }
 
 Zone* ZoneServer::getZone(int idx) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -592,13 +593,13 @@ Zone* ZoneServer::getZone(int idx) {
 		DistributedMethod method(this, RPC_GETZONE__INT_);
 		method.addSignedIntParameter(idx);
 
-		return (Zone*) method.executeWithObjectReturn();
+		return static_cast<Zone*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getZone(idx);
 }
 
 int ZoneServer::getZoneCount() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -611,7 +612,7 @@ int ZoneServer::getZoneCount() {
 }
 
 int ZoneServer::getMaxPlayers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -624,7 +625,7 @@ int ZoneServer::getMaxPlayers() {
 }
 
 int ZoneServer::getTotalPlayers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -637,7 +638,7 @@ int ZoneServer::getTotalPlayers() {
 }
 
 int ZoneServer::getDeletedPlayers() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -650,7 +651,7 @@ int ZoneServer::getDeletedPlayers() {
 }
 
 ObjectManager* ZoneServer::getObjectManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -659,176 +660,176 @@ ObjectManager* ZoneServer::getObjectManager() {
 }
 
 PlayerManager* ZoneServer::getPlayerManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETPLAYERMANAGER__);
 
-		return (PlayerManager*) method.executeWithObjectReturn();
+		return static_cast<PlayerManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPlayerManager();
 }
 
 ChatManager* ZoneServer::getChatManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCHATMANAGER__);
 
-		return (ChatManager*) method.executeWithObjectReturn();
+		return static_cast<ChatManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getChatManager();
 }
 
 ObjectController* ZoneServer::getObjectController() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETOBJECTCONTROLLER__);
 
-		return (ObjectController*) method.executeWithObjectReturn();
+		return static_cast<ObjectController*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getObjectController();
 }
 
 MissionManager* ZoneServer::getMissionManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETMISSIONMANAGER__);
 
-		return (MissionManager*) method.executeWithObjectReturn();
+		return static_cast<MissionManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getMissionManager();
 }
 
 RadialManager* ZoneServer::getRadialManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETRADIALMANAGER__);
 
-		return (RadialManager*) method.executeWithObjectReturn();
+		return static_cast<RadialManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getRadialManager();
 }
 
 GuildManager* ZoneServer::getGuildManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETGUILDMANAGER__);
 
-		return (GuildManager*) method.executeWithObjectReturn();
+		return static_cast<GuildManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getGuildManager();
 }
 
 ResourceManager* ZoneServer::getResourceManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETRESOURCEMANAGER__);
 
-		return (ResourceManager*) method.executeWithObjectReturn();
+		return static_cast<ResourceManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getResourceManager();
 }
 
 CraftingManager* ZoneServer::getCraftingManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCRAFTINGMANAGER__);
 
-		return (CraftingManager*) method.executeWithObjectReturn();
+		return static_cast<CraftingManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getCraftingManager();
 }
 
 LootManager* ZoneServer::getLootManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETLOOTMANAGER__);
 
-		return (LootManager*) method.executeWithObjectReturn();
+		return static_cast<LootManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getLootManager();
 }
 
 AuctionManager* ZoneServer::getAuctionManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETAUCTIONMANAGER__);
 
-		return (AuctionManager*) method.executeWithObjectReturn();
+		return static_cast<AuctionManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getAuctionManager();
 }
 
 FishingManager* ZoneServer::getFishingManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETFISHINGMANAGER__);
 
-		return (FishingManager*) method.executeWithObjectReturn();
+		return static_cast<FishingManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getFishingManager();
 }
 
 GamblingManager* ZoneServer::getGamblingManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETGAMBLINGMANAGER__);
 
-		return (GamblingManager*) method.executeWithObjectReturn();
+		return static_cast<GamblingManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getGamblingManager();
 }
 
 ForageManager* ZoneServer::getForageManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETFORAGEMANAGER__);
 
-		return (ForageManager*) method.executeWithObjectReturn();
+		return static_cast<ForageManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getForageManager();
 }
 
 Account* ZoneServer::getAccount(unsigned int accountID) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -836,13 +837,13 @@ Account* ZoneServer::getAccount(unsigned int accountID) {
 		DistributedMethod method(this, RPC_GETACCOUNT__INT_);
 		method.addUnsignedIntParameter(accountID);
 
-		return (Account*) method.executeWithObjectReturn();
+		return static_cast<Account*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getAccount(accountID);
 }
 
 SkillManager* ZoneServer::getSkillManager() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -851,7 +852,7 @@ SkillManager* ZoneServer::getSkillManager() {
 }
 
 Time* ZoneServer::getStartTimestamp() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -860,7 +861,7 @@ Time* ZoneServer::getStartTimestamp() {
 }
 
 void ZoneServer::setGalaxyID(int galaxyid) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -874,7 +875,7 @@ void ZoneServer::setGalaxyID(int galaxyid) {
 }
 
 void ZoneServer::setServerState(int state) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -888,7 +889,7 @@ void ZoneServer::setServerState(int state) {
 }
 
 void ZoneServer::setServerStateLocked() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -901,7 +902,7 @@ void ZoneServer::setServerStateLocked() {
 }
 
 void ZoneServer::setServerStateOnline() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -914,7 +915,7 @@ void ZoneServer::setServerStateOnline() {
 }
 
 void ZoneServer::loadLoginMessage() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -927,7 +928,7 @@ void ZoneServer::loadLoginMessage() {
 }
 
 void ZoneServer::changeLoginMessage(const String& motd) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -941,7 +942,7 @@ void ZoneServer::changeLoginMessage(const String& motd) {
 }
 
 String ZoneServer::getLoginMessage() {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -989,7 +990,7 @@ void ZoneServerImplementation::_initializeImplementation() {
 }
 
 void ZoneServerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ZoneServer*) stub;
+	_this = static_cast<ZoneServer*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -1584,10 +1585,10 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(createClientObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_:
-		updateObjectToDatabase((SceneObject*) inv->getObjectParameter());
+		updateObjectToDatabase(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_:
-		updateObjectToStaticDatabase((SceneObject*) inv->getObjectParameter());
+		updateObjectToStaticDatabase(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__LONG_:
 		destroyObjectFromDatabase(inv->getUnsignedLongParameter());
@@ -1729,247 +1730,247 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ZoneServerAdapter::initializeTransientMembers() {
-	((ZoneServerImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ZoneServerImplementation*>(impl))->initializeTransientMembers();
 }
 
 void ZoneServerAdapter::initialize() {
-	((ZoneServerImplementation*) impl)->initialize();
+	(static_cast<ZoneServerImplementation*>(impl))->initialize();
 }
 
 void ZoneServerAdapter::shutdown() {
-	((ZoneServerImplementation*) impl)->shutdown();
+	(static_cast<ZoneServerImplementation*>(impl))->shutdown();
 }
 
 void ZoneServerAdapter::startManagers() {
-	((ZoneServerImplementation*) impl)->startManagers();
+	(static_cast<ZoneServerImplementation*>(impl))->startManagers();
 }
 
 void ZoneServerAdapter::startZones() {
-	((ZoneServerImplementation*) impl)->startZones();
+	(static_cast<ZoneServerImplementation*>(impl))->startZones();
 }
 
 void ZoneServerAdapter::stopManagers() {
-	((ZoneServerImplementation*) impl)->stopManagers();
+	(static_cast<ZoneServerImplementation*>(impl))->stopManagers();
 }
 
 void ZoneServerAdapter::start(int p, int mconn) {
-	((ZoneServerImplementation*) impl)->start(p, mconn);
+	(static_cast<ZoneServerImplementation*>(impl))->start(p, mconn);
 }
 
 void ZoneServerAdapter::stop() {
-	((ZoneServerImplementation*) impl)->stop();
+	(static_cast<ZoneServerImplementation*>(impl))->stop();
 }
 
 void ZoneServerAdapter::addTotalSentPacket(int count) {
-	((ZoneServerImplementation*) impl)->addTotalSentPacket(count);
+	(static_cast<ZoneServerImplementation*>(impl))->addTotalSentPacket(count);
 }
 
 void ZoneServerAdapter::addTotalResentPacket(int count) {
-	((ZoneServerImplementation*) impl)->addTotalResentPacket(count);
+	(static_cast<ZoneServerImplementation*>(impl))->addTotalResentPacket(count);
 }
 
 void ZoneServerAdapter::printInfo(bool forcedLog) {
-	((ZoneServerImplementation*) impl)->printInfo(forcedLog);
+	(static_cast<ZoneServerImplementation*>(impl))->printInfo(forcedLog);
 }
 
 void ZoneServerAdapter::printEvents() {
-	((ZoneServerImplementation*) impl)->printEvents();
+	(static_cast<ZoneServerImplementation*>(impl))->printEvents();
 }
 
 SceneObject* ZoneServerAdapter::getObject(unsigned long long objectID, bool doLock) {
-	return ((ZoneServerImplementation*) impl)->getObject(objectID, doLock);
+	return (static_cast<ZoneServerImplementation*>(impl))->getObject(objectID, doLock);
 }
 
 SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
-	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistenceLevel, objectID);
+	return (static_cast<ZoneServerImplementation*>(impl))->createObject(templateCRC, persistenceLevel, objectID);
 }
 
 SceneObject* ZoneServerAdapter::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
-	return ((ZoneServerImplementation*) impl)->createClientObject(templateCRC, objectID);
+	return (static_cast<ZoneServerImplementation*>(impl))->createClientObject(templateCRC, objectID);
 }
 
 void ZoneServerAdapter::updateObjectToDatabase(SceneObject* object) {
-	((ZoneServerImplementation*) impl)->updateObjectToDatabase(object);
+	(static_cast<ZoneServerImplementation*>(impl))->updateObjectToDatabase(object);
 }
 
 void ZoneServerAdapter::updateObjectToStaticDatabase(SceneObject* object) {
-	((ZoneServerImplementation*) impl)->updateObjectToStaticDatabase(object);
+	(static_cast<ZoneServerImplementation*>(impl))->updateObjectToStaticDatabase(object);
 }
 
 void ZoneServerAdapter::destroyObjectFromDatabase(unsigned long long objectID) {
-	((ZoneServerImplementation*) impl)->destroyObjectFromDatabase(objectID);
+	(static_cast<ZoneServerImplementation*>(impl))->destroyObjectFromDatabase(objectID);
 }
 
 void ZoneServerAdapter::lock(bool doLock) {
-	((ZoneServerImplementation*) impl)->lock(doLock);
+	(static_cast<ZoneServerImplementation*>(impl))->lock(doLock);
 }
 
 void ZoneServerAdapter::unlock(bool doLock) {
-	((ZoneServerImplementation*) impl)->unlock(doLock);
+	(static_cast<ZoneServerImplementation*>(impl))->unlock(doLock);
 }
 
 void ZoneServerAdapter::fixScheduler() {
-	((ZoneServerImplementation*) impl)->fixScheduler();
+	(static_cast<ZoneServerImplementation*>(impl))->fixScheduler();
 }
 
 void ZoneServerAdapter::changeUserCap(int amount) {
-	((ZoneServerImplementation*) impl)->changeUserCap(amount);
+	(static_cast<ZoneServerImplementation*>(impl))->changeUserCap(amount);
 }
 
 int ZoneServerAdapter::getConnectionCount() {
-	return ((ZoneServerImplementation*) impl)->getConnectionCount();
+	return (static_cast<ZoneServerImplementation*>(impl))->getConnectionCount();
 }
 
 void ZoneServerAdapter::increaseOnlinePlayers() {
-	((ZoneServerImplementation*) impl)->increaseOnlinePlayers();
+	(static_cast<ZoneServerImplementation*>(impl))->increaseOnlinePlayers();
 }
 
 void ZoneServerAdapter::decreaseOnlinePlayers() {
-	((ZoneServerImplementation*) impl)->decreaseOnlinePlayers();
+	(static_cast<ZoneServerImplementation*>(impl))->decreaseOnlinePlayers();
 }
 
 void ZoneServerAdapter::increaseTotalDeletedPlayers() {
-	((ZoneServerImplementation*) impl)->increaseTotalDeletedPlayers();
+	(static_cast<ZoneServerImplementation*>(impl))->increaseTotalDeletedPlayers();
 }
 
 int ZoneServerAdapter::getGalaxyID() {
-	return ((ZoneServerImplementation*) impl)->getGalaxyID();
+	return (static_cast<ZoneServerImplementation*>(impl))->getGalaxyID();
 }
 
 String ZoneServerAdapter::getGalaxyName() {
-	return ((ZoneServerImplementation*) impl)->getGalaxyName();
+	return (static_cast<ZoneServerImplementation*>(impl))->getGalaxyName();
 }
 
 void ZoneServerAdapter::setGalaxyName(const String& name) {
-	((ZoneServerImplementation*) impl)->setGalaxyName(name);
+	(static_cast<ZoneServerImplementation*>(impl))->setGalaxyName(name);
 }
 
 bool ZoneServerAdapter::isServerLocked() {
-	return ((ZoneServerImplementation*) impl)->isServerLocked();
+	return (static_cast<ZoneServerImplementation*>(impl))->isServerLocked();
 }
 
 bool ZoneServerAdapter::isServerOnline() {
-	return ((ZoneServerImplementation*) impl)->isServerOnline();
+	return (static_cast<ZoneServerImplementation*>(impl))->isServerOnline();
 }
 
 bool ZoneServerAdapter::isServerOffline() {
-	return ((ZoneServerImplementation*) impl)->isServerOffline();
+	return (static_cast<ZoneServerImplementation*>(impl))->isServerOffline();
 }
 
 bool ZoneServerAdapter::isServerLoading() {
-	return ((ZoneServerImplementation*) impl)->isServerLoading();
+	return (static_cast<ZoneServerImplementation*>(impl))->isServerLoading();
 }
 
 int ZoneServerAdapter::getServerState() {
-	return ((ZoneServerImplementation*) impl)->getServerState();
+	return (static_cast<ZoneServerImplementation*>(impl))->getServerState();
 }
 
 Zone* ZoneServerAdapter::getZone(const String& terrainName) {
-	return ((ZoneServerImplementation*) impl)->getZone(terrainName);
+	return (static_cast<ZoneServerImplementation*>(impl))->getZone(terrainName);
 }
 
 Zone* ZoneServerAdapter::getZone(int idx) {
-	return ((ZoneServerImplementation*) impl)->getZone(idx);
+	return (static_cast<ZoneServerImplementation*>(impl))->getZone(idx);
 }
 
 int ZoneServerAdapter::getZoneCount() {
-	return ((ZoneServerImplementation*) impl)->getZoneCount();
+	return (static_cast<ZoneServerImplementation*>(impl))->getZoneCount();
 }
 
 int ZoneServerAdapter::getMaxPlayers() {
-	return ((ZoneServerImplementation*) impl)->getMaxPlayers();
+	return (static_cast<ZoneServerImplementation*>(impl))->getMaxPlayers();
 }
 
 int ZoneServerAdapter::getTotalPlayers() {
-	return ((ZoneServerImplementation*) impl)->getTotalPlayers();
+	return (static_cast<ZoneServerImplementation*>(impl))->getTotalPlayers();
 }
 
 int ZoneServerAdapter::getDeletedPlayers() {
-	return ((ZoneServerImplementation*) impl)->getDeletedPlayers();
+	return (static_cast<ZoneServerImplementation*>(impl))->getDeletedPlayers();
 }
 
 PlayerManager* ZoneServerAdapter::getPlayerManager() {
-	return ((ZoneServerImplementation*) impl)->getPlayerManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getPlayerManager();
 }
 
 ChatManager* ZoneServerAdapter::getChatManager() {
-	return ((ZoneServerImplementation*) impl)->getChatManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getChatManager();
 }
 
 ObjectController* ZoneServerAdapter::getObjectController() {
-	return ((ZoneServerImplementation*) impl)->getObjectController();
+	return (static_cast<ZoneServerImplementation*>(impl))->getObjectController();
 }
 
 MissionManager* ZoneServerAdapter::getMissionManager() {
-	return ((ZoneServerImplementation*) impl)->getMissionManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getMissionManager();
 }
 
 RadialManager* ZoneServerAdapter::getRadialManager() {
-	return ((ZoneServerImplementation*) impl)->getRadialManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getRadialManager();
 }
 
 GuildManager* ZoneServerAdapter::getGuildManager() {
-	return ((ZoneServerImplementation*) impl)->getGuildManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getGuildManager();
 }
 
 ResourceManager* ZoneServerAdapter::getResourceManager() {
-	return ((ZoneServerImplementation*) impl)->getResourceManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getResourceManager();
 }
 
 CraftingManager* ZoneServerAdapter::getCraftingManager() {
-	return ((ZoneServerImplementation*) impl)->getCraftingManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getCraftingManager();
 }
 
 LootManager* ZoneServerAdapter::getLootManager() {
-	return ((ZoneServerImplementation*) impl)->getLootManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getLootManager();
 }
 
 AuctionManager* ZoneServerAdapter::getAuctionManager() {
-	return ((ZoneServerImplementation*) impl)->getAuctionManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getAuctionManager();
 }
 
 FishingManager* ZoneServerAdapter::getFishingManager() {
-	return ((ZoneServerImplementation*) impl)->getFishingManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getFishingManager();
 }
 
 GamblingManager* ZoneServerAdapter::getGamblingManager() {
-	return ((ZoneServerImplementation*) impl)->getGamblingManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getGamblingManager();
 }
 
 ForageManager* ZoneServerAdapter::getForageManager() {
-	return ((ZoneServerImplementation*) impl)->getForageManager();
+	return (static_cast<ZoneServerImplementation*>(impl))->getForageManager();
 }
 
 Account* ZoneServerAdapter::getAccount(unsigned int accountID) {
-	return ((ZoneServerImplementation*) impl)->getAccount(accountID);
+	return (static_cast<ZoneServerImplementation*>(impl))->getAccount(accountID);
 }
 
 void ZoneServerAdapter::setGalaxyID(int galaxyid) {
-	((ZoneServerImplementation*) impl)->setGalaxyID(galaxyid);
+	(static_cast<ZoneServerImplementation*>(impl))->setGalaxyID(galaxyid);
 }
 
 void ZoneServerAdapter::setServerState(int state) {
-	((ZoneServerImplementation*) impl)->setServerState(state);
+	(static_cast<ZoneServerImplementation*>(impl))->setServerState(state);
 }
 
 void ZoneServerAdapter::setServerStateLocked() {
-	((ZoneServerImplementation*) impl)->setServerStateLocked();
+	(static_cast<ZoneServerImplementation*>(impl))->setServerStateLocked();
 }
 
 void ZoneServerAdapter::setServerStateOnline() {
-	((ZoneServerImplementation*) impl)->setServerStateOnline();
+	(static_cast<ZoneServerImplementation*>(impl))->setServerStateOnline();
 }
 
 void ZoneServerAdapter::loadLoginMessage() {
-	((ZoneServerImplementation*) impl)->loadLoginMessage();
+	(static_cast<ZoneServerImplementation*>(impl))->loadLoginMessage();
 }
 
 void ZoneServerAdapter::changeLoginMessage(const String& motd) {
-	((ZoneServerImplementation*) impl)->changeLoginMessage(motd);
+	(static_cast<ZoneServerImplementation*>(impl))->changeLoginMessage(motd);
 }
 
 String ZoneServerAdapter::getLoginMessage() {
-	return ((ZoneServerImplementation*) impl)->getLoginMessage();
+	return (static_cast<ZoneServerImplementation*>(impl))->getLoginMessage();
 }
 
 /*
@@ -1997,7 +1998,7 @@ DistributedObjectServant* ZoneServerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneServerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneServerAdapter((ZoneServerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ZoneServerAdapter(static_cast<ZoneServerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

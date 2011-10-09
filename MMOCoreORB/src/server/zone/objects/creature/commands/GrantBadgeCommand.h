@@ -81,7 +81,7 @@ public:
 			}
 
 		} else {
-			player = (CreatureObject*) object.get();
+			player = cast<CreatureObject*>( object.get());
 		}
 
 		if (player == NULL) {

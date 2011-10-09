@@ -83,7 +83,7 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
 
@@ -114,8 +114,8 @@ public:
 		}
 
 		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * pt = cast<Player *>( creatureTarget);
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -139,7 +139,7 @@ public:
 			if (creatureTarget != creature) {
 				if (creatureTarget->isPlayerCreature()) {
 					StringBuffer message;
-					message << "You apply first aid to " << ((CreatureObject*)creatureTarget)->getFirstName() << ".";
+					message << "You apply first aid to " << (cast<CreatureObject*>(creatureTarget))->getFirstName() << ".";
 					creature->sendSystemMessage(message.toString());
 				}
 			} else {

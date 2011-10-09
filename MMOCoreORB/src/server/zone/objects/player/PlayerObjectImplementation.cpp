@@ -124,7 +124,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	if (parent == NULL || !parent->isCreatureObject())
 		return;
 
-	CreatureObject* creature = (CreatureObject*) parent.get();
+	CreatureObject* creature = cast<CreatureObject*>( parent.get());
 
 	SkillList* playerSkillList = creature->getSkillList();
 
@@ -190,7 +190,7 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
 		if (object->isControlDevice()) {
-			ControlDevice* device = (ControlDevice*) object.get();
+			ControlDevice* device = cast<ControlDevice*>( object.get());
 
 			device->storeObject(creo);
 		}
@@ -368,7 +368,7 @@ bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) 
 		characterBitmask |= bit;
 
 		if (notifyClient) {
-			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
+			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3(_this);
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
 
@@ -384,7 +384,7 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient
 		characterBitmask &= ~bit;
 
 		if (notifyClient) {
-			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
+			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3( _this);
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
 
@@ -533,7 +533,7 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 
 
 void PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	ManagedReference<WaypointObject*> obj = (WaypointObject*) getZoneServer()->createObject(0xc456e788, 1);
+	ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( getZoneServer()->createObject(0xc456e788, 1));
 	obj->setPlanetCRC(planet.hashCode());
 	obj->setPosition(positionX, 0, positionY);
 	obj->setActive(true);
@@ -691,7 +691,7 @@ void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftS
 	 */
 	ZoneServer* zoneServer = server->getZoneServer();
 	SkillManager* skillManager = zoneServer->getSkillManager();
-	CreatureObject* player = (CreatureObject*) getParentRecursively(SceneObject::PLAYERCREATURE);
+	CreatureObject* player = cast<CreatureObject*>( getParentRecursively(SceneObject::PLAYERCREATURE));
 
 	if(player == NULL)
 		return;
@@ -730,7 +730,7 @@ void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool
 	 */
 	ZoneServer* zoneServer = server->getZoneServer();
 	SkillManager* skillManager = zoneServer->getSkillManager();
-	CreatureObject* player = (CreatureObject*) getParentRecursively(SceneObject::PLAYERCREATURE);
+	CreatureObject* player = cast<CreatureObject*>( getParentRecursively(SceneObject::PLAYERCREATURE));
 
 	if(player == NULL)
 		return;
@@ -778,14 +778,14 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 		if (notifyClient) {
 			StringIdChatParameter param("cmnty", "friend_not_found");
 			param.setTT(nameLower);
-			((CreatureObject*) parent.get())->sendSystemMessage(param);
+			(cast<CreatureObject*>( parent.get()))->sendSystemMessage(param);
 		}
 
 		return;
 	}
 
 	PlayerObject* playerToAddGhost = playerToAdd->getPlayerObject();
-	playerToAddGhost->addReverseFriend(((CreatureObject*) parent.get())->getFirstName());
+	playerToAddGhost->addReverseFriend(cast<CreatureObject*>(parent.get())->getFirstName());
 	playerToAddGhost->updateToDatabase();
 
 	if (notifyClient) {
@@ -810,7 +810,7 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 
 		StringIdChatParameter param("cmnty", "friend_added");
 		param.setTT(nameLower);
-		((CreatureObject*) parent.get())->sendSystemMessage(param);
+		(cast<CreatureObject*>(parent.get()))->sendSystemMessage(param);
 
 	} else {
 		friendList.add(nameLower);
@@ -824,7 +824,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 		if (notifyClient) {
 			StringIdChatParameter param("cmnty", "friend_not_found");
 			param.setTT(nameLower);
-			((CreatureObject*) parent.get())->sendSystemMessage(param);
+			(cast<CreatureObject*>(parent.get()))->sendSystemMessage(param);
 		}
 
 		return;
@@ -841,14 +841,14 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 		if (notifyClient) {
 			StringIdChatParameter param("cmnty", "friend_not_found");
 			param.setTT(nameLower);
-			((CreatureObject*) parent.get())->sendSystemMessage(param);
+			(cast<CreatureObject*>(parent.get()))->sendSystemMessage(param);
 		}
 
 		return;
 	}
 
 	PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
-	playerToRemoveGhost->removeReverseFriend(((CreatureObject*) parent.get())->getFirstName());
+	playerToRemoveGhost->removeReverseFriend(cast<CreatureObject*>(parent.get())->getFirstName());
 	playerToRemoveGhost->updateToDatabase();
 
 	if (notifyClient) {
@@ -865,7 +865,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 
 		StringIdChatParameter param("cmnty", "friend_removed");
 		param.setTT(nameLower);
-		((CreatureObject*) parent.get())->sendSystemMessage(param);
+		(cast<CreatureObject*>(parent.get()))->sendSystemMessage(param);
 
 	} else {
 		friendList.removePlayer(nameLower);
@@ -890,7 +890,7 @@ void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient
 
 		StringIdChatParameter param("cmnty", "ignore_added");
 		param.setTT(nameLower);
-		((CreatureObject*) parent.get())->sendSystemMessage(param);
+		(cast<CreatureObject*>(parent.get()))->sendSystemMessage(param);
 
 	} else {
 		ignoreList.add(nameLower);
@@ -905,7 +905,7 @@ void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyCli
 		if (notifyClient) {
 			StringIdChatParameter param("cmnty", "ignore_not_found");
 			param.setTT(nameLower);
-			((CreatureObject*) parent.get())->sendSystemMessage(param);
+			(cast<CreatureObject*>(parent.get()))->sendSystemMessage(param);
 		}
 
 		return;
@@ -925,7 +925,7 @@ void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyCli
 
 		StringIdChatParameter param("cmnty", "ignore_removed");
 		param.setTT(nameLower);
-		((CreatureObject*) parent.get())->sendSystemMessage(param);
+		cast<CreatureObject*>(parent.get())->sendSystemMessage(param);
 
 	} else {
 		ignoreList.removePlayer(nameLower);
@@ -947,7 +947,7 @@ void PlayerObjectImplementation::setTitle(const String& characterTitle, bool not
 }
 
 void PlayerObjectImplementation::notifyOnline() {
-	CreatureObject* playerCreature = (CreatureObject*) parent.get();
+	CreatureObject* playerCreature = cast<CreatureObject*>( parent.get());
 	ChatManager* chatManager = server->getChatManager();
 
 	Vector<String>* reverseTable = friendList.getReverseTable();
@@ -986,7 +986,7 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	Vector<String>* reverseTable = friendList.getReverseTable();
 
-	String firstName = ((CreatureObject*) parent.get())->getFirstName();
+	String firstName = (cast<CreatureObject*>(parent.get()))->getFirstName();
 	firstName = firstName.toLowerCase();
 
 	for (int i = 0; i < reverseTable->size(); ++i) {
@@ -1074,7 +1074,7 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 	if (newAmount == 0)
 		msg.setStringId("@base_player:prose_max_faction");
 
-	CreatureObject* player = (CreatureObject*) parent.get();
+	CreatureObject* player = cast<CreatureObject*>( parent.get());
 	player->sendSystemMessage(msg);
 }
 
@@ -1127,7 +1127,7 @@ void PlayerObjectImplementation::decreaseFactionStanding(const String& factionNa
 	if (newAmount == 0)
 		msg.setStringId("@base_player:prose_min_faction");
 
-	CreatureObject* player = (CreatureObject*) parent.get();
+	CreatureObject* player = cast<CreatureObject*>( parent.get());
 	player->sendSystemMessage(msg);
 }
 
@@ -1136,14 +1136,14 @@ float PlayerObjectImplementation::getFactionStanding(const String& factionName) 
 }
 
 bool PlayerObjectImplementation::isFirstIncapacitationExpired() {
-	CreatureObject* creature = (CreatureObject*) parent.get();
+	CreatureObject* creature = cast<CreatureObject*>( parent.get());
 
 	return creature->checkCooldownRecovery("firstIncapacitationTime");
 }
 
 
 void PlayerObjectImplementation::resetFirstIncapacitationTime() {
-	CreatureObject* creature = (CreatureObject*) parent.get();
+	CreatureObject* creature = cast<CreatureObject*>( parent.get());
 
 	if (!isFirstIncapacitation())
 		resetIncapacitationCounter();

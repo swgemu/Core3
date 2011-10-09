@@ -199,8 +199,8 @@ public:
 			return GENERALERROR;
 		}
 
-		CreatureObject* targetPlayer = (CreatureObject*) object.get();
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* targetPlayer = cast<CreatureObject*>( object.get());
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		Locker clocker(targetPlayer, creature);
 
@@ -212,7 +212,7 @@ public:
 
 
 		/*if (target->isPlayer()) {
-			targetPlayer = (Player*)target;
+			targetPlayer = cast<Player*>(target);
 		} else {
 			player->sendSystemMessage("healing_response", "healing_response_a6"); //"You may only drag players!"
 			return GENERALERROR;

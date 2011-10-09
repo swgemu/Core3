@@ -297,7 +297,7 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	CreatureObject* playerCreature = (CreatureObject*) player;
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
 	sendPvpStatusTo(playerCreature);
 }
@@ -1393,7 +1393,7 @@ uint32 CreatureObjectImplementation::getWearableMask() {
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
 	if (object->isWeaponObject())
-		setWeapon((WeaponObject*)object);
+		setWeapon(cast<WeaponObject*>(object));
 
 	return TangibleObjectImplementation::notifyObjectInserted(object);
 }
@@ -1727,7 +1727,7 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 
 	//Check for passive wound healing
 	/*if (isInBuilding()) {
-		BuildingObject* building = (BuildingObject*) getBuilding();
+		BuildingObject* building = cast<BuildingObject*>( getBuilding());
 		passiveWoundHeal += building->getPassiveWoundHealRate();
 
 		if (passiveWoundHeal >= 100) {
@@ -1751,7 +1751,7 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 
 	//TODO: Refactor this into an event handler
 	if (isPlayer()) {
-		Player* player = (Player*)_this;
+		Player* player = cast<Player*>(_this);
 		if (player->getPowerboosted() && pbMind != 0) {
 			doPowerboostTick(player);
 		}
@@ -1759,7 +1759,7 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 
 	//TODO: Refactor this into an event handler
 	if (isPlayer()) {
-		Player* player = (Player*)_this;
+		Player* player = cast<Player*>(_this);
 		if (channelForceHAM != 0) {
 			doChannelForceTick(player);
 		}

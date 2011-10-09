@@ -74,7 +74,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		StructureObject* structure = (StructureObject*) obj.get();
+		StructureObject* structure = cast<StructureObject*>( obj.get());
 
 		Locker _lock(structure, creature);
 
@@ -97,7 +97,7 @@ public:
 
 		structure->setCustomObjectName(name, true);
 
-		if (structure->isBuildingObject() && ((BuildingObject*) structure)->getSignObject() != NULL) {
+		if (structure->isBuildingObject() && (cast<BuildingObject*>(structure))->getSignObject() != NULL) {
 			StringIdChatParameter params("@player_structure:prose_sign_name_updated"); //Sign name successfully updated to '%TO'.
 			params.setTO(name);
 			creature->sendSystemMessage(params);

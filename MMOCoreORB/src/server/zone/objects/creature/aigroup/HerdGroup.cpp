@@ -23,8 +23,9 @@ HerdGroup::~HerdGroup() {
 }
 
 
+
 bool HerdGroup::isHerdGroup() {
-	HerdGroupImplementation* _implementation = (HerdGroupImplementation*) _getImplementation();
+	HerdGroupImplementation* _implementation = static_cast<HerdGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void HerdGroupImplementation::_initializeImplementation() {
 }
 
 void HerdGroupImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (HerdGroup*) stub;
+	_this = static_cast<HerdGroup*>(stub);
 	AiGroupImplementation::_setStub(stub);
 }
 
@@ -191,7 +192,7 @@ Packet* HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool HerdGroupAdapter::isHerdGroup() {
-	return ((HerdGroupImplementation*) impl)->isHerdGroup();
+	return (static_cast<HerdGroupImplementation*>(impl))->isHerdGroup();
 }
 
 /*
@@ -219,7 +220,7 @@ DistributedObjectServant* HerdGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* HerdGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new HerdGroupAdapter((HerdGroupImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new HerdGroupAdapter(static_cast<HerdGroupImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

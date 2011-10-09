@@ -66,7 +66,7 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	if (!strongOwnerRef->isPlayerCreature())
 		return;
 
-	CreatureObject* owner = (CreatureObject*) strongOwnerRef.get();
+	CreatureObject* owner = cast<CreatureObject*>( strongOwnerRef.get());
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
 	String sender = vendorRef->getObjectName()->getDisplayedName();
@@ -96,7 +96,7 @@ void Vendor::sendVendorDestroyMail() {
 	if (strongOwnerRef == NULL || !strongOwnerRef->isPlayerCreature())
 		return;
 
-	CreatureObject* owner = (CreatureObject*) strongOwnerRef.get();
+	CreatureObject* owner = cast<CreatureObject*>( strongOwnerRef.get());
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
 	String sender = vendorRef->getObjectName()->getDisplayedName();

@@ -27,8 +27,9 @@ IntangibleObject::~IntangibleObject() {
 }
 
 
+
 void IntangibleObject::initializeTransientMembers() {
-	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	IntangibleObjectImplementation* _implementation = static_cast<IntangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ void IntangibleObject::initializeTransientMembers() {
 }
 
 void IntangibleObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	IntangibleObjectImplementation* _implementation = static_cast<IntangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -50,7 +51,7 @@ void IntangibleObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 bool IntangibleObject::isIntangibleObject() {
-	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	IntangibleObjectImplementation* _implementation = static_cast<IntangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -63,7 +64,7 @@ bool IntangibleObject::isIntangibleObject() {
 }
 
 void IntangibleObject::sendBaselinesTo(SceneObject* player) {
-	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	IntangibleObjectImplementation* _implementation = static_cast<IntangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ void IntangibleObject::sendBaselinesTo(SceneObject* player) {
 }
 
 void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
-	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	IntangibleObjectImplementation* _implementation = static_cast<IntangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +93,7 @@ void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
 }
 
 unsigned int IntangibleObject::getStatus() {
-	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	IntangibleObjectImplementation* _implementation = static_cast<IntangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -137,7 +138,7 @@ void IntangibleObjectImplementation::_initializeImplementation() {
 }
 
 void IntangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (IntangibleObject*) stub;
+	_this = static_cast<IntangibleObject*>(stub);
 	SceneObjectImplementation::_setStub(stub);
 }
 
@@ -286,7 +287,7 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertBoolean(isIntangibleObject());
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATESTATUS__INT_BOOL_:
 		updateStatus(inv->getSignedIntParameter(), inv->getBooleanParameter());
@@ -302,27 +303,27 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void IntangibleObjectAdapter::finalize() {
-	((IntangibleObjectImplementation*) impl)->finalize();
+	(static_cast<IntangibleObjectImplementation*>(impl))->finalize();
 }
 
 void IntangibleObjectAdapter::initializeTransientMembers() {
-	((IntangibleObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<IntangibleObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 bool IntangibleObjectAdapter::isIntangibleObject() {
-	return ((IntangibleObjectImplementation*) impl)->isIntangibleObject();
+	return (static_cast<IntangibleObjectImplementation*>(impl))->isIntangibleObject();
 }
 
 void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((IntangibleObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<IntangibleObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 void IntangibleObjectAdapter::updateStatus(int newStatus, bool notifyClient) {
-	((IntangibleObjectImplementation*) impl)->updateStatus(newStatus, notifyClient);
+	(static_cast<IntangibleObjectImplementation*>(impl))->updateStatus(newStatus, notifyClient);
 }
 
 unsigned int IntangibleObjectAdapter::getStatus() {
-	return ((IntangibleObjectImplementation*) impl)->getStatus();
+	return (static_cast<IntangibleObjectImplementation*>(impl))->getStatus();
 }
 
 /*
@@ -350,7 +351,7 @@ DistributedObjectServant* IntangibleObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* IntangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new IntangibleObjectAdapter((IntangibleObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new IntangibleObjectAdapter(static_cast<IntangibleObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -24,7 +24,7 @@ bool ShuttleInstallationImplementation::checkRequisitesForPlacement(CreatureObje
 	*/
 
 	/*
-	Region* region = (Region*) playerArea.get();
+	Region* region = cast<Region*>( playerArea.get());
 
 	if (region->getShuttle() != NULL) {
 		player->sendSystemMessage("@player_structure:cant_place_unique"); //This city can only support a single structure of this type.

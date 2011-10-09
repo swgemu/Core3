@@ -31,8 +31,9 @@ CharacterBuilderTerminal::~CharacterBuilderTerminal() {
 }
 
 
+
 void CharacterBuilderTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
+	CharacterBuilderTerminalImplementation* _implementation = static_cast<CharacterBuilderTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -41,7 +42,7 @@ void CharacterBuilderTerminal::loadTemplateData(SharedObjectTemplate* templateDa
 }
 
 void CharacterBuilderTerminal::initializeTransientMembers() {
-	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
+	CharacterBuilderTerminalImplementation* _implementation = static_cast<CharacterBuilderTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ void CharacterBuilderTerminal::initializeTransientMembers() {
 }
 
 int CharacterBuilderTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
+	CharacterBuilderTerminalImplementation* _implementation = static_cast<CharacterBuilderTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +70,7 @@ int CharacterBuilderTerminal::handleObjectMenuSelect(CreatureObject* player, byt
 }
 
 void CharacterBuilderTerminal::sendInitialChoices(CreatureObject* player) {
-	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
+	CharacterBuilderTerminalImplementation* _implementation = static_cast<CharacterBuilderTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,7 +84,7 @@ void CharacterBuilderTerminal::sendInitialChoices(CreatureObject* player) {
 }
 
 void CharacterBuilderTerminal::giveLanguages(CreatureObject* player) {
-	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
+	CharacterBuilderTerminalImplementation* _implementation = static_cast<CharacterBuilderTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -97,7 +98,7 @@ void CharacterBuilderTerminal::giveLanguages(CreatureObject* player) {
 }
 
 void CharacterBuilderTerminal::enhanceCharacter(CreatureObject* player) {
-	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
+	CharacterBuilderTerminalImplementation* _implementation = static_cast<CharacterBuilderTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +146,7 @@ void CharacterBuilderTerminalImplementation::_initializeImplementation() {
 }
 
 void CharacterBuilderTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CharacterBuilderTerminal*) stub;
+	_this = static_cast<CharacterBuilderTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -255,16 +256,16 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SENDINITIALCHOICES__CREATUREOBJECT_:
-		sendInitialChoices((CreatureObject*) inv->getObjectParameter());
+		sendInitialChoices(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GIVELANGUAGES__CREATUREOBJECT_:
-		giveLanguages((CreatureObject*) inv->getObjectParameter());
+		giveLanguages(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ENHANCECHARACTER__CREATUREOBJECT_:
-		enhanceCharacter((CreatureObject*) inv->getObjectParameter());
+		enhanceCharacter(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -274,23 +275,23 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 }
 
 void CharacterBuilderTerminalAdapter::initializeTransientMembers() {
-	((CharacterBuilderTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 int CharacterBuilderTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((CharacterBuilderTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CharacterBuilderTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void CharacterBuilderTerminalAdapter::sendInitialChoices(CreatureObject* player) {
-	((CharacterBuilderTerminalImplementation*) impl)->sendInitialChoices(player);
+	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->sendInitialChoices(player);
 }
 
 void CharacterBuilderTerminalAdapter::giveLanguages(CreatureObject* player) {
-	((CharacterBuilderTerminalImplementation*) impl)->giveLanguages(player);
+	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->giveLanguages(player);
 }
 
 void CharacterBuilderTerminalAdapter::enhanceCharacter(CreatureObject* player) {
-	((CharacterBuilderTerminalImplementation*) impl)->enhanceCharacter(player);
+	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->enhanceCharacter(player);
 }
 
 /*
@@ -318,7 +319,7 @@ DistributedObjectServant* CharacterBuilderTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CharacterBuilderTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CharacterBuilderTerminalAdapter((CharacterBuilderTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CharacterBuilderTerminalAdapter(static_cast<CharacterBuilderTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

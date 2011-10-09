@@ -132,7 +132,7 @@ void AiAgentImplementation::doRecovery() {
 			SceneObject* tarObj = defenderList.get(i);
 
 			if (tarObj->isCreatureObject()) {
-				CreatureObject* targetCreature = (CreatureObject*)tarObj;
+				CreatureObject* targetCreature = cast<CreatureObject*>(tarObj);
 
 				if (!targetCreature->isDead()) {
 					target = targetCreature;
@@ -349,7 +349,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 
 	if (defender != NULL) {
 		if (defender->isCreatureObject())
-			damageMap.dropDamage((CreatureObject*)defender);
+			damageMap.dropDamage(cast<CreatureObject*>(defender));
 
 		if (aiObserverMap.size() > 0)
 			defender->dropObserver(ObserverEventType::SPECIALATTACK, aiObserverMap.get(0));
@@ -361,7 +361,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 		if (target == NULL && defenderList.size() > 0) {
 			SceneObject* tarObj = defenderList.get(0);
 			if (tarObj->isCreatureObject())
-				target = (CreatureObject*)tarObj;
+				target = cast<CreatureObject*>(tarObj);
 		}
 
 		if (target == NULL) {
@@ -389,7 +389,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) entry;
+	SceneObject* scno = cast<SceneObject*>( entry);
 
 	if (scno == _this)
 		return;
@@ -452,7 +452,7 @@ void AiAgentImplementation::scheduleDespawn() {
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) entry;
+	SceneObject* scno = cast<SceneObject*>( entry);
 
 	if (scno == _this)
 		return;
@@ -841,7 +841,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	activateRecovery();
 
 	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) attacker;
+		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
 			damageMap.addDamage(player, damage);
@@ -990,7 +990,7 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	if (observers == NULL || (observers != NULL && observers->size() <= 0))
 		sendDefaultConversationTo(player);
 	else
-		notifyConverseObservers((CreatureObject*)player);
+		notifyConverseObservers(cast<CreatureObject*>(player));
 }
 
 void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
@@ -1003,7 +1003,7 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 
 	broadcastNextPositionUpdate(&current);
 
-	CreatureObject* playerCreature = (CreatureObject*) player;
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
 	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
 
@@ -1086,7 +1086,7 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 	if (!obj->isCreatureObject())
 		return;
 
-	CreatureObject* player = (CreatureObject*) obj;
+	CreatureObject* player = cast<CreatureObject*>( obj);
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 

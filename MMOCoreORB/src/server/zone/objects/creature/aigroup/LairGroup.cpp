@@ -25,8 +25,9 @@ LairGroup::~LairGroup() {
 }
 
 
+
 bool LairGroup::isLairGroup() {
-	LairGroupImplementation* _implementation = (LairGroupImplementation*) _getImplementation();
+	LairGroupImplementation* _implementation = static_cast<LairGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ void LairGroupImplementation::_initializeImplementation() {
 }
 
 void LairGroupImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (LairGroup*) stub;
+	_this = static_cast<LairGroup*>(stub);
 	AiGroupImplementation::_setStub(stub);
 }
 
@@ -206,7 +207,7 @@ Packet* LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool LairGroupAdapter::isLairGroup() {
-	return ((LairGroupImplementation*) impl)->isLairGroup();
+	return (static_cast<LairGroupImplementation*>(impl))->isLairGroup();
 }
 
 /*
@@ -234,7 +235,7 @@ DistributedObjectServant* LairGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LairGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LairGroupAdapter((LairGroupImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new LairGroupAdapter(static_cast<LairGroupImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

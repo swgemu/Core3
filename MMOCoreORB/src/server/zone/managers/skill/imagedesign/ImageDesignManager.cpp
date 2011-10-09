@@ -331,7 +331,7 @@ void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObje
 	if (creo == NULL)
 		return;
 
-	TangibleObject* hair = (TangibleObject*) creo->getSlottedObject("hair");
+	TangibleObject* hair = cast<TangibleObject*>( creo->getSlottedObject("hair"));
 
 	if (hair != NULL) {
 		creo->removeObject(hair);

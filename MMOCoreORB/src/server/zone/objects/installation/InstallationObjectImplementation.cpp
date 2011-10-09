@@ -58,7 +58,7 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 	ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
 
 	if (obj != NULL && obj->isCreatureObject()) {
-		CreatureObject* owner = (CreatureObject*) obj.get();
+		CreatureObject* owner = cast<CreatureObject*>( obj.get());
 
 		String fullName = owner->getCustomObjectName().toString();
 
@@ -139,7 +139,7 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 	Locker zoneLocker(getZone());
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		ManagedReference<SceneObject*> scno = (SceneObject*) getInRangeObject(i);
+		ManagedReference<SceneObject*> scno = cast<SceneObject*>( getInRangeObject(i));
 
 		if (!sendSelf && scno == _this)
 			continue;
@@ -147,7 +147,7 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 		if(!scno->isPlayerCreature())
 			continue;
 
-		CreatureObject* creo = (CreatureObject*) scno.get();
+		CreatureObject* creo = cast<CreatureObject*>( scno.get());
 
 		if(isOnAdminList(creo->getFirstName()))
 			scno->sendMessage(message->clone());

@@ -23,8 +23,9 @@ ScreenPlayObserver::~ScreenPlayObserver() {
 }
 
 
+
 int ScreenPlayObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	ScreenPlayObserverImplementation* _implementation = (ScreenPlayObserverImplementation*) _getImplementation();
+	ScreenPlayObserverImplementation* _implementation = static_cast<ScreenPlayObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ int ScreenPlayObserver::notifyObserverEvent(unsigned int eventType, Observable* 
 }
 
 void ScreenPlayObserver::setScreenPlay(const String& screen) {
-	ScreenPlayObserverImplementation* _implementation = (ScreenPlayObserverImplementation*) _getImplementation();
+	ScreenPlayObserverImplementation* _implementation = static_cast<ScreenPlayObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -55,7 +56,7 @@ void ScreenPlayObserver::setScreenPlay(const String& screen) {
 }
 
 void ScreenPlayObserver::setScreenKey(const String& screenKey) {
-	ScreenPlayObserverImplementation* _implementation = (ScreenPlayObserverImplementation*) _getImplementation();
+	ScreenPlayObserverImplementation* _implementation = static_cast<ScreenPlayObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +70,7 @@ void ScreenPlayObserver::setScreenKey(const String& screenKey) {
 }
 
 String ScreenPlayObserver::getScreenPlay() {
-	ScreenPlayObserverImplementation* _implementation = (ScreenPlayObserverImplementation*) _getImplementation();
+	ScreenPlayObserverImplementation* _implementation = static_cast<ScreenPlayObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,7 +84,7 @@ String ScreenPlayObserver::getScreenPlay() {
 }
 
 String ScreenPlayObserver::getScreenKey() {
-	ScreenPlayObserverImplementation* _implementation = (ScreenPlayObserverImplementation*) _getImplementation();
+	ScreenPlayObserverImplementation* _implementation = static_cast<ScreenPlayObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,7 +132,7 @@ void ScreenPlayObserverImplementation::_initializeImplementation() {
 }
 
 void ScreenPlayObserverImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ScreenPlayObserver*) stub;
+	_this = static_cast<ScreenPlayObserver*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -284,7 +285,7 @@ Packet* ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_SETSCREENPLAY__STRING_:
 		setScreenPlay(inv->getAsciiParameter(_param0_setScreenPlay__String_));
@@ -306,23 +307,23 @@ Packet* ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 int ScreenPlayObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((ScreenPlayObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<ScreenPlayObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void ScreenPlayObserverAdapter::setScreenPlay(const String& screen) {
-	((ScreenPlayObserverImplementation*) impl)->setScreenPlay(screen);
+	(static_cast<ScreenPlayObserverImplementation*>(impl))->setScreenPlay(screen);
 }
 
 void ScreenPlayObserverAdapter::setScreenKey(const String& screenKey) {
-	((ScreenPlayObserverImplementation*) impl)->setScreenKey(screenKey);
+	(static_cast<ScreenPlayObserverImplementation*>(impl))->setScreenKey(screenKey);
 }
 
 String ScreenPlayObserverAdapter::getScreenPlay() {
-	return ((ScreenPlayObserverImplementation*) impl)->getScreenPlay();
+	return (static_cast<ScreenPlayObserverImplementation*>(impl))->getScreenPlay();
 }
 
 String ScreenPlayObserverAdapter::getScreenKey() {
-	return ((ScreenPlayObserverImplementation*) impl)->getScreenKey();
+	return (static_cast<ScreenPlayObserverImplementation*>(impl))->getScreenKey();
 }
 
 /*
@@ -350,7 +351,7 @@ DistributedObjectServant* ScreenPlayObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ScreenPlayObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ScreenPlayObserverAdapter((ScreenPlayObserverImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ScreenPlayObserverAdapter(static_cast<ScreenPlayObserverImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

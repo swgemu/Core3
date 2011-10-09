@@ -25,8 +25,9 @@ PersistentMessage::~PersistentMessage() {
 }
 
 
+
 void PersistentMessage::sendTo(CreatureObject* player, bool sendBody) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ void PersistentMessage::sendTo(CreatureObject* player, bool sendBody) {
 }
 
 StringIdChatParameterVector* PersistentMessage::getStringIdParameters() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -50,7 +51,7 @@ StringIdChatParameterVector* PersistentMessage::getStringIdParameters() {
 }
 
 WaypointChatParameterVector* PersistentMessage::getWaypointParameters() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -59,7 +60,7 @@ WaypointChatParameterVector* PersistentMessage::getWaypointParameters() {
 }
 
 int PersistentMessage::getMailID() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +73,7 @@ int PersistentMessage::getMailID() {
 }
 
 unsigned long long PersistentMessage::getObjectID() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ unsigned long long PersistentMessage::getObjectID() {
 }
 
 String PersistentMessage::getSenderName() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -99,7 +100,7 @@ String PersistentMessage::getSenderName() {
 }
 
 unsigned long long PersistentMessage::getReceiverObjectID() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -112,7 +113,7 @@ unsigned long long PersistentMessage::getReceiverObjectID() {
 }
 
 byte PersistentMessage::getStatus() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -125,7 +126,7 @@ byte PersistentMessage::getStatus() {
 }
 
 int PersistentMessage::getTimeStamp() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -138,7 +139,7 @@ int PersistentMessage::getTimeStamp() {
 }
 
 UnicodeString PersistentMessage::getBody() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -152,7 +153,7 @@ UnicodeString PersistentMessage::getBody() {
 }
 
 UnicodeString PersistentMessage::getSubject() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,7 +167,7 @@ UnicodeString PersistentMessage::getSubject() {
 }
 
 void PersistentMessage::setSenderName(const String& name) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -180,7 +181,7 @@ void PersistentMessage::setSenderName(const String& name) {
 }
 
 void PersistentMessage::setReceiverObjectID(unsigned long long oid) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -194,7 +195,7 @@ void PersistentMessage::setReceiverObjectID(unsigned long long oid) {
 }
 
 void PersistentMessage::setStatus(byte stat) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -208,7 +209,7 @@ void PersistentMessage::setStatus(byte stat) {
 }
 
 void PersistentMessage::setTimeStamp(int stamp) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -222,7 +223,7 @@ void PersistentMessage::setTimeStamp(int stamp) {
 }
 
 void PersistentMessage::setBody(const UnicodeString& message) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -236,7 +237,7 @@ void PersistentMessage::setBody(const UnicodeString& message) {
 }
 
 void PersistentMessage::setSubject(const UnicodeString& subj) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -250,7 +251,7 @@ void PersistentMessage::setSubject(const UnicodeString& subj) {
 }
 
 bool PersistentMessage::isNew() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -263,7 +264,7 @@ bool PersistentMessage::isNew() {
 }
 
 bool PersistentMessage::isRead() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -276,7 +277,7 @@ bool PersistentMessage::isRead() {
 }
 
 bool PersistentMessage::isUnread() {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -289,7 +290,7 @@ bool PersistentMessage::isUnread() {
 }
 
 void PersistentMessage::addStringIdParameter(StringIdChatParameter& param) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -298,7 +299,7 @@ void PersistentMessage::addStringIdParameter(StringIdChatParameter& param) {
 }
 
 void PersistentMessage::addWaypointParameter(WaypointChatParameter& param) {
-	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -341,7 +342,7 @@ void PersistentMessageImplementation::_initializeImplementation() {
 }
 
 void PersistentMessageImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PersistentMessage*) stub;
+	_this = static_cast<PersistentMessage*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -641,7 +642,7 @@ Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case RPC_SENDTO__CREATUREOBJECT_BOOL_:
-		sendTo((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_GETMAILID__:
 		resp->insertSignedInt(getMailID());
@@ -702,75 +703,75 @@ Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void PersistentMessageAdapter::sendTo(CreatureObject* player, bool sendBody) {
-	((PersistentMessageImplementation*) impl)->sendTo(player, sendBody);
+	(static_cast<PersistentMessageImplementation*>(impl))->sendTo(player, sendBody);
 }
 
 int PersistentMessageAdapter::getMailID() {
-	return ((PersistentMessageImplementation*) impl)->getMailID();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getMailID();
 }
 
 unsigned long long PersistentMessageAdapter::getObjectID() {
-	return ((PersistentMessageImplementation*) impl)->getObjectID();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getObjectID();
 }
 
 String PersistentMessageAdapter::getSenderName() {
-	return ((PersistentMessageImplementation*) impl)->getSenderName();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getSenderName();
 }
 
 unsigned long long PersistentMessageAdapter::getReceiverObjectID() {
-	return ((PersistentMessageImplementation*) impl)->getReceiverObjectID();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getReceiverObjectID();
 }
 
 byte PersistentMessageAdapter::getStatus() {
-	return ((PersistentMessageImplementation*) impl)->getStatus();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getStatus();
 }
 
 int PersistentMessageAdapter::getTimeStamp() {
-	return ((PersistentMessageImplementation*) impl)->getTimeStamp();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getTimeStamp();
 }
 
 UnicodeString PersistentMessageAdapter::getBody() {
-	return ((PersistentMessageImplementation*) impl)->getBody();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getBody();
 }
 
 UnicodeString PersistentMessageAdapter::getSubject() {
-	return ((PersistentMessageImplementation*) impl)->getSubject();
+	return (static_cast<PersistentMessageImplementation*>(impl))->getSubject();
 }
 
 void PersistentMessageAdapter::setSenderName(const String& name) {
-	((PersistentMessageImplementation*) impl)->setSenderName(name);
+	(static_cast<PersistentMessageImplementation*>(impl))->setSenderName(name);
 }
 
 void PersistentMessageAdapter::setReceiverObjectID(unsigned long long oid) {
-	((PersistentMessageImplementation*) impl)->setReceiverObjectID(oid);
+	(static_cast<PersistentMessageImplementation*>(impl))->setReceiverObjectID(oid);
 }
 
 void PersistentMessageAdapter::setStatus(byte stat) {
-	((PersistentMessageImplementation*) impl)->setStatus(stat);
+	(static_cast<PersistentMessageImplementation*>(impl))->setStatus(stat);
 }
 
 void PersistentMessageAdapter::setTimeStamp(int stamp) {
-	((PersistentMessageImplementation*) impl)->setTimeStamp(stamp);
+	(static_cast<PersistentMessageImplementation*>(impl))->setTimeStamp(stamp);
 }
 
 void PersistentMessageAdapter::setBody(const UnicodeString& message) {
-	((PersistentMessageImplementation*) impl)->setBody(message);
+	(static_cast<PersistentMessageImplementation*>(impl))->setBody(message);
 }
 
 void PersistentMessageAdapter::setSubject(const UnicodeString& subj) {
-	((PersistentMessageImplementation*) impl)->setSubject(subj);
+	(static_cast<PersistentMessageImplementation*>(impl))->setSubject(subj);
 }
 
 bool PersistentMessageAdapter::isNew() {
-	return ((PersistentMessageImplementation*) impl)->isNew();
+	return (static_cast<PersistentMessageImplementation*>(impl))->isNew();
 }
 
 bool PersistentMessageAdapter::isRead() {
-	return ((PersistentMessageImplementation*) impl)->isRead();
+	return (static_cast<PersistentMessageImplementation*>(impl))->isRead();
 }
 
 bool PersistentMessageAdapter::isUnread() {
-	return ((PersistentMessageImplementation*) impl)->isUnread();
+	return (static_cast<PersistentMessageImplementation*>(impl))->isUnread();
 }
 
 /*
@@ -798,7 +799,7 @@ DistributedObjectServant* PersistentMessageHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PersistentMessageHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PersistentMessageAdapter((PersistentMessageImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PersistentMessageAdapter(static_cast<PersistentMessageImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

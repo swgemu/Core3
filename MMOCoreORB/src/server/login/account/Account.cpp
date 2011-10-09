@@ -27,8 +27,9 @@ Account::~Account() {
 }
 
 
+
 bool Account::hasMaxOnlineCharacters() {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ bool Account::hasMaxOnlineCharacters() {
 }
 
 ZoneClientSession* Account::getZoneSession(unsigned int sessionID) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,13 +50,13 @@ ZoneClientSession* Account::getZoneSession(unsigned int sessionID) {
 		DistributedMethod method(this, RPC_GETZONESESSION__INT_);
 		method.addUnsignedIntParameter(sessionID);
 
-		return (ZoneClientSession*) method.executeWithObjectReturn();
+		return static_cast<ZoneClientSession*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getZoneSession(sessionID);
 }
 
 bool Account::containsZoneSession(unsigned int sessionID) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +70,7 @@ bool Account::containsZoneSession(unsigned int sessionID) {
 }
 
 void Account::addZoneSession(ZoneClientSession* client) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,7 +84,7 @@ void Account::addZoneSession(ZoneClientSession* client) {
 }
 
 void Account::removeZoneSession(unsigned int sessionID) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -97,7 +98,7 @@ void Account::removeZoneSession(unsigned int sessionID) {
 }
 
 void Account::setAccountID(unsigned int accountid) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -111,7 +112,7 @@ void Account::setAccountID(unsigned int accountid) {
 }
 
 void Account::setStationID(unsigned int stationid) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -125,7 +126,7 @@ void Account::setStationID(unsigned int stationid) {
 }
 
 void Account::setAdminLevel(unsigned int adminlvl) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,7 +140,7 @@ void Account::setAdminLevel(unsigned int adminlvl) {
 }
 
 void Account::setUsername(const String& usern) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +154,7 @@ void Account::setUsername(const String& usern) {
 }
 
 void Account::setTimeCreated(unsigned int seconds) {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -167,7 +168,7 @@ void Account::setTimeCreated(unsigned int seconds) {
 }
 
 unsigned int Account::getAccountID() {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -180,7 +181,7 @@ unsigned int Account::getAccountID() {
 }
 
 unsigned int Account::getStationID() {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -193,7 +194,7 @@ unsigned int Account::getStationID() {
 }
 
 unsigned int Account::getAdminLevel() {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -206,7 +207,7 @@ unsigned int Account::getAdminLevel() {
 }
 
 String Account::getUsername() {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -220,7 +221,7 @@ String Account::getUsername() {
 }
 
 unsigned int Account::getTimeCreated() {
-	AccountImplementation* _implementation = (AccountImplementation*) _getImplementation();
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -267,7 +268,7 @@ void AccountImplementation::_initializeImplementation() {
 }
 
 void AccountImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Account*) stub;
+	_this = static_cast<Account*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -553,7 +554,7 @@ Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(containsZoneSession(inv->getUnsignedIntParameter()));
 		break;
 	case RPC_ADDZONESESSION__ZONECLIENTSESSION_:
-		addZoneSession((ZoneClientSession*) inv->getObjectParameter());
+		addZoneSession(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEZONESESSION__INT_:
 		removeZoneSession(inv->getUnsignedIntParameter());
@@ -596,63 +597,63 @@ Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool AccountAdapter::hasMaxOnlineCharacters() {
-	return ((AccountImplementation*) impl)->hasMaxOnlineCharacters();
+	return (static_cast<AccountImplementation*>(impl))->hasMaxOnlineCharacters();
 }
 
 ZoneClientSession* AccountAdapter::getZoneSession(unsigned int sessionID) {
-	return ((AccountImplementation*) impl)->getZoneSession(sessionID);
+	return (static_cast<AccountImplementation*>(impl))->getZoneSession(sessionID);
 }
 
 bool AccountAdapter::containsZoneSession(unsigned int sessionID) {
-	return ((AccountImplementation*) impl)->containsZoneSession(sessionID);
+	return (static_cast<AccountImplementation*>(impl))->containsZoneSession(sessionID);
 }
 
 void AccountAdapter::addZoneSession(ZoneClientSession* client) {
-	((AccountImplementation*) impl)->addZoneSession(client);
+	(static_cast<AccountImplementation*>(impl))->addZoneSession(client);
 }
 
 void AccountAdapter::removeZoneSession(unsigned int sessionID) {
-	((AccountImplementation*) impl)->removeZoneSession(sessionID);
+	(static_cast<AccountImplementation*>(impl))->removeZoneSession(sessionID);
 }
 
 void AccountAdapter::setAccountID(unsigned int accountid) {
-	((AccountImplementation*) impl)->setAccountID(accountid);
+	(static_cast<AccountImplementation*>(impl))->setAccountID(accountid);
 }
 
 void AccountAdapter::setStationID(unsigned int stationid) {
-	((AccountImplementation*) impl)->setStationID(stationid);
+	(static_cast<AccountImplementation*>(impl))->setStationID(stationid);
 }
 
 void AccountAdapter::setAdminLevel(unsigned int adminlvl) {
-	((AccountImplementation*) impl)->setAdminLevel(adminlvl);
+	(static_cast<AccountImplementation*>(impl))->setAdminLevel(adminlvl);
 }
 
 void AccountAdapter::setUsername(const String& usern) {
-	((AccountImplementation*) impl)->setUsername(usern);
+	(static_cast<AccountImplementation*>(impl))->setUsername(usern);
 }
 
 void AccountAdapter::setTimeCreated(unsigned int seconds) {
-	((AccountImplementation*) impl)->setTimeCreated(seconds);
+	(static_cast<AccountImplementation*>(impl))->setTimeCreated(seconds);
 }
 
 unsigned int AccountAdapter::getAccountID() {
-	return ((AccountImplementation*) impl)->getAccountID();
+	return (static_cast<AccountImplementation*>(impl))->getAccountID();
 }
 
 unsigned int AccountAdapter::getStationID() {
-	return ((AccountImplementation*) impl)->getStationID();
+	return (static_cast<AccountImplementation*>(impl))->getStationID();
 }
 
 unsigned int AccountAdapter::getAdminLevel() {
-	return ((AccountImplementation*) impl)->getAdminLevel();
+	return (static_cast<AccountImplementation*>(impl))->getAdminLevel();
 }
 
 String AccountAdapter::getUsername() {
-	return ((AccountImplementation*) impl)->getUsername();
+	return (static_cast<AccountImplementation*>(impl))->getUsername();
 }
 
 unsigned int AccountAdapter::getTimeCreated() {
-	return ((AccountImplementation*) impl)->getTimeCreated();
+	return (static_cast<AccountImplementation*>(impl))->getTimeCreated();
 }
 
 /*
@@ -680,7 +681,7 @@ DistributedObjectServant* AccountHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AccountHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AccountAdapter((AccountImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new AccountAdapter(static_cast<AccountImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

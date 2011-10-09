@@ -231,7 +231,7 @@ CreatureObject* PlayerManagerImplementation::getPlayer(const String& name) {
 	if (obj == NULL || !obj->isPlayerCreature())
 		return NULL;
 
-	return (CreatureObject*) obj;
+	return cast<CreatureObject*>( obj);
 }
 
 uint64 PlayerManagerImplementation::getObjectID(const String& name) {
@@ -268,7 +268,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 }
 
 bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallback) {
-	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) messageCallback;
+	ClientCreateCharacterCallback* callback = cast<ClientCreateCharacterCallback*>( messageCallback);
 	ZoneClientSession* client = callback->getClient();
 
 	NameManager* nm = processor->getNameManager();
@@ -340,7 +340,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 	Locker _locker(_this);
 
-	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+	ClientCreateCharacterCallback* callback = cast<ClientCreateCharacterCallback*>( data);
 	ZoneClientSession* client = data->getClient();
 
 	/*ManagedReference<Account*> account = client->getAccount();
@@ -387,7 +387,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		return false;
 	}
 
-	CreatureObject* playerCreature = (CreatureObject*) player.get();
+	CreatureObject* playerCreature = cast<CreatureObject*>( player.get());
 
 	playerCreature->setCustomObjectName(name, false);
 
@@ -567,7 +567,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 
 		return NULL;
 	} else {
-		hairObject = (TangibleObject*) hair;
+		hairObject = cast<TangibleObject*>( hair);
 
 		hairObject->setCustomizationString(hairCustomization);
 
@@ -652,8 +652,8 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 	inventory->addObject(backpackObject, -1);*/
 
 	/// Add vehicle
-	/*VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
-	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);
+	/*VehicleControlDevice* vehicleControlDevice = cast<VehicleControlDevice*>( server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1));
+	VehicleObject* vehicle = cast<VehicleObject*>( server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1));
 	vehicleControlDevice->setControlledObject(vehicle);
 	datapad->addObject(vehicleControlDevice, -1);*/
 
@@ -669,9 +669,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 	datapad->addObject(mission, -1);*/
 
 	//Add a ship
-	ShipControlDevice* shipControlDevice = (ShipControlDevice*) server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1);
-	//ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
-	ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1);
+	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1));
+	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
+	ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1));
 	
 	shipControlDevice->setControlledObject(ship);
 
@@ -688,7 +688,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	String tut = "object/building/general/newbie_hall.iff";
 	String cell = "object/cell/cell.iff";
 
-	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
+	BuildingObject* tutorial = cast<BuildingObject*>( server->createObject(tut.hashCode(), 1));
 	tutorial->createCellObjects();
 
 	/*int totalCellNumber = tutorial->getTotalCellNumber();
@@ -738,7 +738,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 	String tut = "object/building/general/newbie_hall_skipped.iff";
 	String cell = "object/cell/cell.iff";
 
-	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
+	BuildingObject* tutorial = cast<BuildingObject*>( server->createObject(tut.hashCode(), 1));
 	tutorial->createCellObjects();
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 
@@ -933,7 +933,7 @@ int PlayerManagerImplementation::notifyDefendersOfIncapacitation(TangibleObject*
 
 			Locker clocker(defender, destructedObject);
 
-			((TangibleObject*)defender)->removeDefender(destructedObject);
+			(cast<TangibleObject*>(defender))->removeDefender(destructedObject);
 		}
 
 		destructedObject->clearCombatState(true);
@@ -954,7 +954,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	if (!destructedObject->isPlayerCreature())
 		return 1;
 
-	CreatureObject* playerCreature = (CreatureObject*) destructedObject;
+	CreatureObject* playerCreature = cast<CreatureObject*>( destructedObject);
 
 	if (playerCreature->isIncapacitated() || playerCreature->isDead())
 		return 1;
@@ -1019,7 +1019,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	if (attacker->isPlayerCreature()) {
 		stringId.setStringId("base_player", "prose_target_dead");
 		stringId.setTT(player->getObjectID());
-		((CreatureObject*)attacker)->sendSystemMessage(stringId);
+		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
 	}
 
 	if (player->isRidingMount()) {
@@ -1101,7 +1101,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		return;
 	}
 
-	CloningBuildingObject* cloningBuilding = (CloningBuildingObject*) cloner.get();
+	CloningBuildingObject* cloningBuilding = cast<CloningBuildingObject*>( cloner.get());
 
 	CloneSpawnPoint* clonePoint = cloningBuilding->getRandomSpawnPoint();
 
@@ -1139,7 +1139,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		if (!creature->isPlayerCreature())
 			continue;
 
-		CreatureObject* player = (CreatureObject*)creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		DamageMapEntry* entry = &damageMap->elementAt(i).getValue();
 
@@ -1207,7 +1207,7 @@ void PlayerManagerImplementation::awardSquadLeaderExperience(GroupObject* group,
 	if (!leader->isPlayerCreature())
 		return;
 
-	ManagedReference<CreatureObject*> leaderPlayer = (CreatureObject*) leader.get();
+	ManagedReference<CreatureObject*> leaderPlayer = cast<CreatureObject*>( leader.get());
 
 	Locker clocker(leaderPlayer, source);
 
@@ -1449,7 +1449,7 @@ void PlayerManagerImplementation::handleAbortTradeMessage(CreatureObject* player
 		AbortTradeMessage* msg = new AbortTradeMessage();
 
 		if (obj != NULL && obj->isPlayerCreature()) {
-			CreatureObject* receiver = (CreatureObject*) obj.get();
+			CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 			Locker locker(receiver, player);
 			//receiver->wlock(player);
@@ -1495,7 +1495,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	CreatureObject* receiver = (CreatureObject*) obj.get();
+	CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
 	ManagedReference<SceneObject*> inventoryObject = inventory->getContainerObject(itemID);
@@ -1532,7 +1532,7 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(CreatureObject* player,
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
 
 	if (obj != NULL && obj->isPlayerCreature()) {
-		CreatureObject* receiver = (CreatureObject*) obj.get();
+		CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 		GiveMoneyMessage* msg = new GiveMoneyMessage(value);
 		receiver->sendMessage(msg);
@@ -1555,7 +1555,7 @@ void PlayerManagerImplementation::handleAcceptTransactionMessage(CreatureObject*
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
 
 	if (obj != NULL && obj->isPlayerCreature()) {
-		CreatureObject* receiver = (CreatureObject*)obj.get();
+		CreatureObject* receiver = cast<CreatureObject*>(obj.get());
 
 		AcceptTransactionMessage* msg = new AcceptTransactionMessage();
 		receiver->sendMessage(msg);
@@ -1575,7 +1575,7 @@ void PlayerManagerImplementation::handleUnAcceptTransactionMessage(CreatureObjec
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
 
 	if (obj != NULL && obj->isPlayerCreature()) {
-		CreatureObject* receiver = (CreatureObject*)obj.get();
+		CreatureObject* receiver = cast<CreatureObject*>(obj.get());
 
 		UnAcceptTransactionMessage* msg = new UnAcceptTransactionMessage();
 		receiver->sendMessage(msg);
@@ -1671,7 +1671,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
 
 	if (obj != NULL && obj->isPlayerCreature()) {
-		CreatureObject* receiver = (CreatureObject*)obj.get();
+		CreatureObject* receiver = cast<CreatureObject*>(obj.get());
 
 		Locker clocker(receiver, player);
 
@@ -1739,10 +1739,10 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 }
 int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::POSTURECHANGED) {
-		CreatureObject* creature = (CreatureObject*) observable;
+		CreatureObject* creature = cast<CreatureObject*>( observable);
 
 		// Check POSTERCHANGE on Meditate...
-		Reference<MeditateTask*> meditateTask = (MeditateTask*) creature->getPendingTask("meditate");
+		Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( creature->getPendingTask("meditate"));
 		if (meditateTask != NULL) {
 			creature->removePendingTask("meditate");
 			creature->sendSystemMessage("teraskasi", "med_end");
@@ -1807,7 +1807,7 @@ int PlayerManagerImplementation::getMedicalFacilityRating(CreatureObject* creatu
 		return 0;
 
 	if (rootParent->isBuildingObject()) {
-		BuildingObject* building = (BuildingObject*) rootParent;
+		BuildingObject* building = cast<BuildingObject*>( rootParent);
 
 		if (building->isCloningBuildingObject() || building->isMedicalBuildingObject())
 			return 100;
@@ -1863,7 +1863,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 		return;
 	}
 
-	CreatureObject* entertainer = (CreatureObject*) object.get();
+	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
 
 	if (entertainer == creature)
 		return;
@@ -1903,7 +1903,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 		esession->sendEntertainmentUpdate(creature, 0, creature->getMoodString());
 
 	if (creature->isPlayerCreature() && entertainer != NULL) {
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>( creature);
 
 		StringIdChatParameter stringID;
 
@@ -1948,7 +1948,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 		return;
 	}
 
-	CreatureObject* entertainer = (CreatureObject*) object.get();
+	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
 
 	if (entertainer == creature)
 		return;
@@ -1989,7 +1989,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 
 	//System Message.
 	if (creature->isPlayerCreature() && entertainer != NULL) {
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>( creature);
 
 		StringIdChatParameter stringID;
 		//StfParameter* params = new StfParameter;
@@ -2042,7 +2042,7 @@ void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 en
 		return;
 	}
 
-	CreatureObject* entertainer = (CreatureObject*) object.get();
+	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
 
 	if (creature == entertainer)
 		return;
@@ -2115,7 +2115,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 		return;
 	}
 
-	CreatureObject* entertainer = (CreatureObject*) object.get();
+	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
 
 	if (creature == entertainer)
 		return;
@@ -2182,14 +2182,14 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	if (targetID != 0) {
 		obj = zoneServer->getObject(targetID);
 
-		if (obj != NULL && obj->isStructureObject() && ((StructureObject*)obj.get())->isOnAdminList(creature->getFirstName()))
+		if (obj != NULL && obj->isStructureObject() && (cast<StructureObject*>(obj.get()))->isOnAdminList(creature->getFirstName()))
 			return obj.get();
 	}
 
 
 	ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-	if (rootParent != NULL && rootParent->isStructureObject() && ((StructureObject*)rootParent.get())->isOnAdminList(creature->getFirstName())) {
+	if (rootParent != NULL && rootParent->isStructureObject() && (cast<StructureObject*>(rootParent.get()))->isOnAdminList(creature->getFirstName())) {
 		return rootParent;
 	}
 
@@ -2200,13 +2200,13 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	Locker _locker(creature->getZone());
 
 	for (int i = 0; i < creature->inRangeObjectCount(); ++i) {
-		ManagedReference<SceneObject*> tObj = (SceneObject*) creature->getInRangeObject(i);
+		ManagedReference<SceneObject*> tObj = cast<SceneObject*>( creature->getInRangeObject(i));
 
 		if (tObj != NULL) {
 			if (tObj->isStructureObject()) {
 				float dist = tObj->getDistanceTo(creature);
 
-				StructureObject* structureObject = (StructureObject*) tObj.get();
+				StructureObject* structureObject = cast<StructureObject*>( tObj.get());
 
 				if (structureObject->isOnAdminList(creature->getFirstName()) && dist < distance) {
 					structure = structureObject;
@@ -2302,7 +2302,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 
 
 	if (parent != NULL && parent->isVehicleObject()) {
-		VehicleObject* vehicle = (VehicleObject*) parent.get();
+		VehicleObject* vehicle = cast<VehicleObject*>( parent.get());
 
 		allowedSpeedMod = vehicle->getSpeedMultiplierMod();
 		allowedSpeedBase = vehicle->getRunSpeed();

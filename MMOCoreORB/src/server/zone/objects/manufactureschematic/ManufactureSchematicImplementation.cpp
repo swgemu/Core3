@@ -117,7 +117,7 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	CreatureObject* playerCreature = (CreatureObject*) player;
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
 	ManufactureSchematicObjectMessage3* msco3;
 
@@ -170,11 +170,11 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 	if(!player->isPlayerCreature())
 		return;
 
-	ManagedReference<CreatureObject* > playerCreature = (CreatureObject*) player;
+	ManagedReference<CreatureObject* > playerCreature = cast<CreatureObject*>( player);
 
 	if(parent != NULL && parent->isCraftingTool()) {
 
-		ManagedReference<CraftingTool* > craftingTool = (CraftingTool*) parent.get();
+		ManagedReference<CraftingTool* > craftingTool = cast<CraftingTool*>( parent.get());
 
 		if(craftingTool != NULL)
 			craftingTool->synchronizedUIListenForSchematic(playerCreature);

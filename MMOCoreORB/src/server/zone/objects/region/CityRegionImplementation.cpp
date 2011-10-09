@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/ObserverEventType.h"
 
 void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float radius) {
-	ManagedReference<ActiveArea*> area = (ActiveArea*) ObjectManager::instance()->createObject(String("object/active_area.iff").hashCode(), 0, "");
+	ManagedReference<ActiveArea*> area = cast<ActiveArea*>( ObjectManager::instance()->createObject(String("object/active_area.iff").hashCode(), 0, ""));
 	area->registerObserver(ObserverEventType::ENTEREDAREA, _this);
 	area->registerObserver(ObserverEventType::EXITEDAREA, _this);
 	area->initializePosition(x, 0, y);

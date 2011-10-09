@@ -89,7 +89,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObje
 	//Create the city region
 	uint32 crc = String("object/region_area.iff").hashCode();
 
-	Region* cityRegion = (Region*) ObjectManager::instance()->createObject(crc, 2, "cityregions");
+	Region* cityRegion = cast<Region*>(ObjectManager::instance()->createObject(crc, 2, "cityregions"));
 	city->setCityRegion(cityRegion);
 	cityRegion->initializePosition(city->getPositionX(), 0, city->getPositionY());
 	cityRegion->setRadius(radiusPerRank.get(NEWCITY));
@@ -170,7 +170,7 @@ void CityManagerImplementation::sendMailToMayor(CityHallObject* city, const Stri
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	CreatureObject* mayor = (CreatureObject*) obj.get();
+	CreatureObject* mayor = cast<CreatureObject*>( obj.get());
 
 	chatManager->sendMail(sendername, subject, body, mayor->getFirstName());
 }
@@ -190,7 +190,7 @@ void CityManagerImplementation::sendMailToAllCitizens(CityHallObject* city, cons
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		CreatureObject* player = (CreatureObject*) obj.get();
+		CreatureObject* player = cast<CreatureObject*>( obj.get());
 
 		Locker _lock(player);
 
@@ -352,7 +352,7 @@ void CityManagerImplementation::declareCitizenship(CityHallObject* city, Creatur
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	CreatureObject* mayor = (CreatureObject*) obj.get();
+	CreatureObject* mayor = cast<CreatureObject*>( obj.get());
 
 	String mayorName = mayor->getObjectName()->getDisplayedName();
 
@@ -478,7 +478,7 @@ void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, Creatu
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	CreatureObject* citizen = (CreatureObject*) obj.get();
+	CreatureObject* citizen = cast<CreatureObject*>( obj.get());
 
 	if (citizen->isOnline())
 		citizen->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.

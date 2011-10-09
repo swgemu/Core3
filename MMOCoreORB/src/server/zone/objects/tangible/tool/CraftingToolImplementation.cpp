@@ -99,7 +99,7 @@ void CraftingToolImplementation::fillObjectMenuResponse(
 
 TangibleObject* CraftingToolImplementation::getPrototype() {
 	if(getContainerObjectsSize() > 0)
-		return (TangibleObject*)getContainerObject(0);
+		return cast<TangibleObject*>(getContainerObject(0));
 	else
 		return NULL;
 }
@@ -383,11 +383,11 @@ void CraftingToolImplementation::locateCraftingStation(CreatureObject* player,
 	ManagedReference<CraftingStation*> station = NULL;
 
 	for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-		SceneObject* scno = (SceneObject*) player->getInRangeObject(i);
+		SceneObject* scno = cast<SceneObject*>( player->getInRangeObject(i));
 
 		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
 
-			station = (CraftingStation*) server->getObject(scno->getObjectID());
+			station = cast<CraftingStation*>( server->getObject(scno->getObjectID()));
 
 			if (station == NULL)
 				continue;
@@ -485,7 +485,7 @@ bool CraftingToolImplementation::createSessionObjects(CreatureObject* player, Dr
 bool CraftingToolImplementation::createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic
-			= (ManufactureSchematic*) draftschematic->createManufactureSchematic(_this);
+			= cast<ManufactureSchematic*>( draftschematic->createManufactureSchematic(_this));
 	manufactureSchematic->createChildObjects();
 
 	if (manufactureSchematic == NULL) {

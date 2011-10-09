@@ -94,18 +94,18 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 			if (player->getClient() == _this) {
 				//((CreatureObject*)player.get())->disconnect(false, true);
-				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((CreatureObject*)player.get(), _this, DisconnectClientEvent::DISCONNECT);
+				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this, DisconnectClientEvent::DISCONNECT);
 				Core::getTaskManager()->executeTask(task);
 			}
 		}
 
 		closeConnection(true, false);
 	} else if (player != NULL) {
-		PlayerObject* ghost = (PlayerObject*) player->getSlottedObject("ghost");
+		PlayerObject* ghost = cast<PlayerObject*>( player->getSlottedObject("ghost"));
 
 		if (ghost->isLoggingOut() && player->getClient() == _this) {
 			//((CreatureObject*)player.get())->logout(true);
-			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((CreatureObject*)player.get(), _this, DisconnectClientEvent::LOGOUT);
+			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this, DisconnectClientEvent::LOGOUT);
 			Core::getTaskManager()->executeTask(task);
 		}
 		else {
@@ -114,7 +114,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 				if (player->getClient() == _this) {
 					//((CreatureObject*)player.get())->setLinkDead();
-					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((CreatureObject*)player.get(), _this, DisconnectClientEvent::SETLINKDEAD);
+					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this, DisconnectClientEvent::SETLINKDEAD);
 					Core::getTaskManager()->executeTask(task);
 				}
 
@@ -138,7 +138,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	session->info("disconnecting client \'" + session->getIPAddress() + "\'");
 
 	ZoneServer* server = NULL;
-	ManagedReference<CreatureObject*> play = (CreatureObject*)player.get();
+	ManagedReference<CreatureObject*> play = cast<CreatureObject*>(player.get());
 
 	if (play != NULL) {
 		server = play->getZoneServer();

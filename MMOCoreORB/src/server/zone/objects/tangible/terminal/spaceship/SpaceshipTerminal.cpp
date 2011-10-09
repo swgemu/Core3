@@ -25,8 +25,9 @@ SpaceshipTerminal::~SpaceshipTerminal() {
 }
 
 
+
 int SpaceshipTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	SpaceshipTerminalImplementation* _implementation = (SpaceshipTerminalImplementation*) _getImplementation();
+	SpaceshipTerminalImplementation* _implementation = static_cast<SpaceshipTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ void SpaceshipTerminalImplementation::_initializeImplementation() {
 }
 
 void SpaceshipTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SpaceshipTerminal*) stub;
+	_this = static_cast<SpaceshipTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -182,7 +183,7 @@ Packet* SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -192,7 +193,7 @@ Packet* SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 int SpaceshipTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((SpaceshipTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SpaceshipTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -220,7 +221,7 @@ DistributedObjectServant* SpaceshipTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpaceshipTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpaceshipTerminalAdapter((SpaceshipTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SpaceshipTerminalAdapter(static_cast<SpaceshipTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

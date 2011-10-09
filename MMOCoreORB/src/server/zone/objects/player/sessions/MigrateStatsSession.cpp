@@ -27,8 +27,9 @@ MigrateStatsSession::~MigrateStatsSession() {
 }
 
 
+
 int MigrateStatsSession::initializeSession() {
-	MigrateStatsSessionImplementation* _implementation = (MigrateStatsSessionImplementation*) _getImplementation();
+	MigrateStatsSessionImplementation* _implementation = static_cast<MigrateStatsSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ int MigrateStatsSession::initializeSession() {
 }
 
 int MigrateStatsSession::cancelSession() {
-	MigrateStatsSessionImplementation* _implementation = (MigrateStatsSessionImplementation*) _getImplementation();
+	MigrateStatsSessionImplementation* _implementation = static_cast<MigrateStatsSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ int MigrateStatsSession::cancelSession() {
 }
 
 int MigrateStatsSession::clearSession() {
-	MigrateStatsSessionImplementation* _implementation = (MigrateStatsSessionImplementation*) _getImplementation();
+	MigrateStatsSessionImplementation* _implementation = static_cast<MigrateStatsSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,7 +68,7 @@ int MigrateStatsSession::clearSession() {
 }
 
 void MigrateStatsSession::setAttributeToModify(int attribute, int value) {
-	MigrateStatsSessionImplementation* _implementation = (MigrateStatsSessionImplementation*) _getImplementation();
+	MigrateStatsSessionImplementation* _implementation = static_cast<MigrateStatsSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,7 +83,7 @@ void MigrateStatsSession::setAttributeToModify(int attribute, int value) {
 }
 
 int MigrateStatsSession::getAttribtueToModify(int attribute) {
-	MigrateStatsSessionImplementation* _implementation = (MigrateStatsSessionImplementation*) _getImplementation();
+	MigrateStatsSessionImplementation* _implementation = static_cast<MigrateStatsSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ int MigrateStatsSession::getAttribtueToModify(int attribute) {
 }
 
 void MigrateStatsSession::migrateStats() {
-	MigrateStatsSessionImplementation* _implementation = (MigrateStatsSessionImplementation*) _getImplementation();
+	MigrateStatsSessionImplementation* _implementation = static_cast<MigrateStatsSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -143,7 +144,7 @@ void MigrateStatsSessionImplementation::_initializeImplementation() {
 }
 
 void MigrateStatsSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (MigrateStatsSession*) stub;
+	_this = static_cast<MigrateStatsSession*>(stub);
 	FacadeImplementation::_setStub(stub);
 }
 
@@ -371,27 +372,27 @@ Packet* MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 int MigrateStatsSessionAdapter::initializeSession() {
-	return ((MigrateStatsSessionImplementation*) impl)->initializeSession();
+	return (static_cast<MigrateStatsSessionImplementation*>(impl))->initializeSession();
 }
 
 int MigrateStatsSessionAdapter::cancelSession() {
-	return ((MigrateStatsSessionImplementation*) impl)->cancelSession();
+	return (static_cast<MigrateStatsSessionImplementation*>(impl))->cancelSession();
 }
 
 int MigrateStatsSessionAdapter::clearSession() {
-	return ((MigrateStatsSessionImplementation*) impl)->clearSession();
+	return (static_cast<MigrateStatsSessionImplementation*>(impl))->clearSession();
 }
 
 void MigrateStatsSessionAdapter::setAttributeToModify(int attribute, int value) {
-	((MigrateStatsSessionImplementation*) impl)->setAttributeToModify(attribute, value);
+	(static_cast<MigrateStatsSessionImplementation*>(impl))->setAttributeToModify(attribute, value);
 }
 
 int MigrateStatsSessionAdapter::getAttribtueToModify(int attribute) {
-	return ((MigrateStatsSessionImplementation*) impl)->getAttribtueToModify(attribute);
+	return (static_cast<MigrateStatsSessionImplementation*>(impl))->getAttribtueToModify(attribute);
 }
 
 void MigrateStatsSessionAdapter::migrateStats() {
-	((MigrateStatsSessionImplementation*) impl)->migrateStats();
+	(static_cast<MigrateStatsSessionImplementation*>(impl))->migrateStats();
 }
 
 /*
@@ -419,7 +420,7 @@ DistributedObjectServant* MigrateStatsSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MigrateStatsSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MigrateStatsSessionAdapter((MigrateStatsSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new MigrateStatsSessionAdapter(static_cast<MigrateStatsSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

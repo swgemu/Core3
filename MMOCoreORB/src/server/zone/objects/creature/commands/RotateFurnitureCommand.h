@@ -72,7 +72,7 @@ public:
 
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*) rootParent.get() : NULL) : NULL;
+		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? cast<BuildingObject*>( rootParent.get()) : NULL) : NULL;
 
 		if (!ghost->isPrivileged()) {
 			if (buildingObject == NULL) {

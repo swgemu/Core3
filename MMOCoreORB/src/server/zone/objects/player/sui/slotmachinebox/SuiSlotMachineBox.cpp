@@ -31,8 +31,9 @@ SuiSlotMachineBox::~SuiSlotMachineBox() {
 }
 
 
+
 unsigned int SuiSlotMachineBox::getPayoutBoxID() {
-	SuiSlotMachineBoxImplementation* _implementation = (SuiSlotMachineBoxImplementation*) _getImplementation();
+	SuiSlotMachineBoxImplementation* _implementation = static_cast<SuiSlotMachineBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +80,7 @@ void SuiSlotMachineBoxImplementation::_initializeImplementation() {
 }
 
 void SuiSlotMachineBoxImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiSlotMachineBox*) stub;
+	_this = static_cast<SuiSlotMachineBox*>(stub);
 	SuiListBoxImplementation::_setStub(stub);
 }
 
@@ -214,7 +215,7 @@ Packet* SuiSlotMachineBoxAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 unsigned int SuiSlotMachineBoxAdapter::getPayoutBoxID() {
-	return ((SuiSlotMachineBoxImplementation*) impl)->getPayoutBoxID();
+	return (static_cast<SuiSlotMachineBoxImplementation*>(impl))->getPayoutBoxID();
 }
 
 /*
@@ -242,7 +243,7 @@ DistributedObjectServant* SuiSlotMachineBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiSlotMachineBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiSlotMachineBoxAdapter((SuiSlotMachineBoxImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiSlotMachineBoxAdapter(static_cast<SuiSlotMachineBoxImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

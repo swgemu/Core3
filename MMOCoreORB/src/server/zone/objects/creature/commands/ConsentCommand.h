@@ -80,7 +80,7 @@ public:
 
 		//System::out << "past initiali checks ConsentCommand" << endl;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		PlayerObject* ghost = player->getPlayerObject();
 
@@ -109,7 +109,7 @@ public:
 				return INVALIDTARGET;
 			}
 
-			CreatureObject* playerTarget = (CreatureObject*) object.get();
+			CreatureObject* playerTarget = cast<CreatureObject*>( object.get());
 
 			consent(player, playerTarget->getFirstName().toLowerCase());
 

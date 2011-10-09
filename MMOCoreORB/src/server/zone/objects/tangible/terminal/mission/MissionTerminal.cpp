@@ -31,8 +31,9 @@ MissionTerminal::~MissionTerminal() {
 }
 
 
+
 void MissionTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -41,7 +42,7 @@ void MissionTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void MissionTerminal::initializeTransientMembers() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ void MissionTerminal::initializeTransientMembers() {
 }
 
 int MissionTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +70,7 @@ int MissionTerminal::handleObjectMenuSelect(CreatureObject* player, byte selecte
 }
 
 bool MissionTerminal::isMissionTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,7 +83,7 @@ bool MissionTerminal::isMissionTerminal() {
 }
 
 bool MissionTerminal::isArtisanTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -95,7 +96,7 @@ bool MissionTerminal::isArtisanTerminal() {
 }
 
 bool MissionTerminal::isGeneralTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -108,7 +109,7 @@ bool MissionTerminal::isGeneralTerminal() {
 }
 
 bool MissionTerminal::isBountyTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +122,7 @@ bool MissionTerminal::isBountyTerminal() {
 }
 
 bool MissionTerminal::isEntertainerTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +135,7 @@ bool MissionTerminal::isEntertainerTerminal() {
 }
 
 bool MissionTerminal::isImperialTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -147,7 +148,7 @@ bool MissionTerminal::isImperialTerminal() {
 }
 
 bool MissionTerminal::isNewbieTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -160,7 +161,7 @@ bool MissionTerminal::isNewbieTerminal() {
 }
 
 bool MissionTerminal::isRebelTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -173,7 +174,7 @@ bool MissionTerminal::isRebelTerminal() {
 }
 
 bool MissionTerminal::isScoutTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -186,7 +187,7 @@ bool MissionTerminal::isScoutTerminal() {
 }
 
 bool MissionTerminal::isStatueTerminal() {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -199,7 +200,7 @@ bool MissionTerminal::isStatueTerminal() {
 }
 
 bool MissionTerminal::isSlicer(CreatureObject* slicer) {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -213,7 +214,7 @@ bool MissionTerminal::isSlicer(CreatureObject* slicer) {
 }
 
 void MissionTerminal::addSlicer(CreatureObject* slicer) {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -227,7 +228,7 @@ void MissionTerminal::addSlicer(CreatureObject* slicer) {
 }
 
 void MissionTerminal::removeSlicer(CreatureObject* slicer) {
-	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -275,7 +276,7 @@ void MissionTerminalImplementation::_initializeImplementation() {
 }
 
 void MissionTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (MissionTerminal*) stub;
+	_this = static_cast<MissionTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -500,7 +501,7 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISMISSIONTERMINAL__:
 		resp->insertBoolean(isMissionTerminal());
@@ -533,13 +534,13 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isStatueTerminal());
 		break;
 	case RPC_ISSLICER__CREATUREOBJECT_:
-		resp->insertBoolean(isSlicer((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isSlicer(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ADDSLICER__CREATUREOBJECT_:
-		addSlicer((CreatureObject*) inv->getObjectParameter());
+		addSlicer(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVESLICER__CREATUREOBJECT_:
-		removeSlicer((CreatureObject*) inv->getObjectParameter());
+		removeSlicer(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -549,63 +550,63 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void MissionTerminalAdapter::initializeTransientMembers() {
-	((MissionTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<MissionTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 int MissionTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((MissionTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<MissionTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool MissionTerminalAdapter::isMissionTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isMissionTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isMissionTerminal();
 }
 
 bool MissionTerminalAdapter::isArtisanTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isArtisanTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isArtisanTerminal();
 }
 
 bool MissionTerminalAdapter::isGeneralTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isGeneralTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isGeneralTerminal();
 }
 
 bool MissionTerminalAdapter::isBountyTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isBountyTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isBountyTerminal();
 }
 
 bool MissionTerminalAdapter::isEntertainerTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isEntertainerTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isEntertainerTerminal();
 }
 
 bool MissionTerminalAdapter::isImperialTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isImperialTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isImperialTerminal();
 }
 
 bool MissionTerminalAdapter::isNewbieTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isNewbieTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isNewbieTerminal();
 }
 
 bool MissionTerminalAdapter::isRebelTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isRebelTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isRebelTerminal();
 }
 
 bool MissionTerminalAdapter::isScoutTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isScoutTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isScoutTerminal();
 }
 
 bool MissionTerminalAdapter::isStatueTerminal() {
-	return ((MissionTerminalImplementation*) impl)->isStatueTerminal();
+	return (static_cast<MissionTerminalImplementation*>(impl))->isStatueTerminal();
 }
 
 bool MissionTerminalAdapter::isSlicer(CreatureObject* slicer) {
-	return ((MissionTerminalImplementation*) impl)->isSlicer(slicer);
+	return (static_cast<MissionTerminalImplementation*>(impl))->isSlicer(slicer);
 }
 
 void MissionTerminalAdapter::addSlicer(CreatureObject* slicer) {
-	((MissionTerminalImplementation*) impl)->addSlicer(slicer);
+	(static_cast<MissionTerminalImplementation*>(impl))->addSlicer(slicer);
 }
 
 void MissionTerminalAdapter::removeSlicer(CreatureObject* slicer) {
-	((MissionTerminalImplementation*) impl)->removeSlicer(slicer);
+	(static_cast<MissionTerminalImplementation*>(impl))->removeSlicer(slicer);
 }
 
 /*
@@ -633,7 +634,7 @@ DistributedObjectServant* MissionTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionTerminalAdapter((MissionTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new MissionTerminalAdapter(static_cast<MissionTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

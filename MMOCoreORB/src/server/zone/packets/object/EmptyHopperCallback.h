@@ -40,7 +40,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(harvesterId);
 
@@ -50,12 +50,12 @@ public:
 		GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
 		player->sendMessage(gr);
 
-		InstallationObject* inso = (InstallationObject*) object.get();
+		InstallationObject* inso = cast<InstallationObject*>( object.get());
 
 		/*if (!inso->isHarvesterObject())
 			return;
 
-		HarvesterObject* harvester = (HarvesterObject*) inso;*/
+		HarvesterObject* harvester = cast<HarvesterObject*>( inso);*/
 
 		try {
 			Locker clocker(inso, player);

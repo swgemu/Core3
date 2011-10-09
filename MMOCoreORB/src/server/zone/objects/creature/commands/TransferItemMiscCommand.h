@@ -125,7 +125,7 @@ public:
 		if (objectsParent != NULL && objectsParent->getGameObjectType() != SceneObject::STATICLOOTCONTAINER) {
 			if (objectsParent->isCellObject()) {
 
-				ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+				ManagedReference<BuildingObject*> building = cast<BuildingObject*>( objectsParent->getParent());
 
 				if (!building->isOnAdminList(creature->getFirstName())) {
 					return GENERALERROR;
@@ -166,7 +166,7 @@ public:
 		//TODO: This needs to be looked at more!
 		//If transferring the object to a cell, ensure that the creature has permission to drop the item to the cell.
 		if (destinationObject->isCellObject()) {
-			ManagedReference<BuildingObject*> building = (BuildingObject*) destinationObject->getParent();
+			ManagedReference<BuildingObject*> building = cast<BuildingObject*>( destinationObject->getParent());
 
 			if (!building->isOnAdminList(creature->getFirstName())) {
 				return GENERALERROR;
@@ -236,7 +236,7 @@ public:
 				TangibleObject* targetTanoObject;
 
 				if (destinationID == player->getObjectID()) { //equipping misc. item to player
-					targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+					targetTanoObject = cast<TangibleObject*>( player->getInventoryItem(target));
 
 					if (targetTanoObject != NULL) {
 						Inventory* inventory = player->getInventory();
@@ -257,14 +257,14 @@ public:
 					}
 
 				} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory
-					targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+					targetTanoObject = cast<TangibleObject*>( player->getInventoryItem(target));
 
 					if (targetTanoObject == NULL){ //the item can't be found in the inventory - maybe a world object?
 						Zone* zone = player->getZone();
 
 						//Here we check to see if the player is staff, and if not, we check to see if they have permission to pickup the item in the structure they are in.
 						if (player->getAdminLevel() == CreatureObject* player->isInBuilding()) {
-							BuildingObject* building = (BuildingObject*) player->getBuilding();
+							BuildingObject* building = cast<BuildingObject*>( player->getBuilding());
 
 							if (building != NULL) {
 								try {
@@ -285,7 +285,7 @@ public:
 						}
 
 						if (zone != NULL) {
-							targetTanoObject = (TangibleObject*) zone->lookupObject(target);
+							targetTanoObject = cast<TangibleObject*>( zone->lookupObject(target));
 						}
 					}
 
@@ -318,7 +318,7 @@ public:
 
 					//CreatureObject* players inventory
 					if (targetObject != NULL && targetObject->isNonPlayerCreature()) {
-						Creature* creature = (Creature*) targetObject;
+						Creature* creature = cast<Creature*>( targetObject);
 
 						SceneObject* object;
 
@@ -362,7 +362,7 @@ public:
 
 					//Here we check to see if the player is staff, and if not, we check to see if they have permission to drop the item in the structure they are in.
 					if (player->getAdminLevel() == CreatureObject* player->isInBuilding()) {
-						BuildingObject* building = (BuildingObject*) player->getBuilding();
+						BuildingObject* building = cast<BuildingObject*>( player->getBuilding());
 
 						if (building != NULL) {
 							try {

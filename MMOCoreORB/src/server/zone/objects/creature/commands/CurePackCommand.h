@@ -59,13 +59,13 @@ public:
 				if (!object->isTangibleObject())
 					continue;
 
-				TangibleObject* item = (TangibleObject*) object;
+				TangibleObject* item = cast<TangibleObject*>( object);
 
 				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = (PharmaceuticalObject*) item;
+					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
 
 					if (pharma->isCurePack()) {
-						CurePack* curePack = (CurePack*) pharma;
+						CurePack* curePack = cast<CurePack*>( pharma);
 
 						if (curePack->getMedicineUseRequired() <= medicineUse && curePack->getState() == state)
 							return curePack;
@@ -84,8 +84,8 @@ public:
 		if (!target->isPlayerCreature())
 			return;
 
-		CreatureObject* creature = (CreatureObject*) object;
-		CreatureObject* creatureTarget = (CreatureObject*) target;
+		CreatureObject* creature = cast<CreatureObject*>( object);
+		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
 		StringBuffer msgTarget, msgPlayer;
 		String msgSelf;
 		switch (state) {
@@ -133,7 +133,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int) round((float) power * 1.0f);
 
@@ -193,7 +193,7 @@ public:
 			zone->rlock();
 
 			for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
-				SceneObject* object = (SceneObject*) areaCenter->getInRangeObject(i);
+				SceneObject* object = cast<SceneObject*>( areaCenter->getInRangeObject(i));
 
 				if (!object->isPlayerCreature())
 					continue;
@@ -204,7 +204,7 @@ public:
 				if (!areaCenter->isInRange(object, range))
 					continue;
 
-				CreatureObject* creatureTarget = (CreatureObject*) object;
+				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
 				if (creatureTarget->isAttackableBy(creature))
 					continue;
@@ -239,7 +239,7 @@ public:
 		CurePack* curePack = NULL;
 
 		if (pharma->isCurePack())
-			curePack = (CurePack*) pharma;
+			curePack = cast<CurePack*>( pharma);
 		else
 			return;
 
@@ -325,8 +325,8 @@ public:
 		}
 
 		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * pt = cast<Player *>( creatureTarget);
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -370,7 +370,7 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* targetCreature = (CreatureObject*) object.get();
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
 		Locker clocker(targetCreature, creature);
 

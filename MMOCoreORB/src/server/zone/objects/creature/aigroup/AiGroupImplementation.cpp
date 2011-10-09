@@ -74,7 +74,7 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 			if (!cellParent->isCellObject())
 				cellParent = NULL;
 			else
-				cellParent->addObject((SceneObject*)this, -1);
+				cellParent->addObject(_this, -1);
 		}
 
 		setParent(cellParent);
@@ -144,7 +144,7 @@ void AiGroupImplementation::setup(DynamicSpawnGroup* templ) {
 }
 
 int AiGroupImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	AiAgent* member = (AiAgent*)observable;
+	AiAgent* member = cast<AiAgent*>(observable);
 
 	switch (eventType) {
 	case ObserverEventType::DESTINATIONREACHED:

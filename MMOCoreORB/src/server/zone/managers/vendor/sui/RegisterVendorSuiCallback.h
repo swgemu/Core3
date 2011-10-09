@@ -51,7 +51,7 @@ public:
 		if (vendor == NULL)
 			return;
 
-		SuiListBox* suiListBox = (SuiListBox*) suiBox;
+		SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
 
 		int index = Integer::valueOf(args->get(0).toString());
 

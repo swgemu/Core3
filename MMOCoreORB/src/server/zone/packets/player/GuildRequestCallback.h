@@ -31,7 +31,7 @@ public:
 		if (obj == NULL || !obj->isCreatureObject())
 			return;
 
-		CreatureObject* creature = (CreatureObject*) obj.get();
+		CreatureObject* creature = cast<CreatureObject*>( obj.get());
 
 		//ManagedReference<GuildObject*> guild = creature->getGuildObject();
 

@@ -33,8 +33,9 @@ GuildTerminal::~GuildTerminal() {
 }
 
 
+
 void GuildTerminal::initializeTransientMembers() {
-	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	GuildTerminalImplementation* _implementation = static_cast<GuildTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void GuildTerminal::initializeTransientMembers() {
 }
 
 void GuildTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	GuildTerminalImplementation* _implementation = static_cast<GuildTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +63,7 @@ void GuildTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Cre
 }
 
 int GuildTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	GuildTerminalImplementation* _implementation = static_cast<GuildTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ int GuildTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedI
 }
 
 bool GuildTerminal::isGuildTerminal() {
-	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	GuildTerminalImplementation* _implementation = static_cast<GuildTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -90,7 +91,7 @@ bool GuildTerminal::isGuildTerminal() {
 }
 
 void GuildTerminal::setGuildObject(GuildObject* guild) {
-	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	GuildTerminalImplementation* _implementation = static_cast<GuildTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -104,14 +105,14 @@ void GuildTerminal::setGuildObject(GuildObject* guild) {
 }
 
 GuildObject* GuildTerminal::getGuildObject() {
-	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	GuildTerminalImplementation* _implementation = static_cast<GuildTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETGUILDOBJECT__);
 
-		return (GuildObject*) method.executeWithObjectReturn();
+		return static_cast<GuildObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getGuildObject();
 }
@@ -151,7 +152,7 @@ void GuildTerminalImplementation::_initializeImplementation() {
 }
 
 void GuildTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (GuildTerminal*) stub;
+	_this = static_cast<GuildTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -298,16 +299,16 @@ Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		initializeTransientMembers();
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISGUILDTERMINAL__:
 		resp->insertBoolean(isGuildTerminal());
 		break;
 	case RPC_SETGUILDOBJECT__GUILDOBJECT_:
-		setGuildObject((GuildObject*) inv->getObjectParameter());
+		setGuildObject(static_cast<GuildObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETGUILDOBJECT__:
 		resp->insertLong(getGuildObject()->_getObjectID());
@@ -320,27 +321,27 @@ Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void GuildTerminalAdapter::initializeTransientMembers() {
-	((GuildTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<GuildTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 void GuildTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	((GuildTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<GuildTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int GuildTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((GuildTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<GuildTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool GuildTerminalAdapter::isGuildTerminal() {
-	return ((GuildTerminalImplementation*) impl)->isGuildTerminal();
+	return (static_cast<GuildTerminalImplementation*>(impl))->isGuildTerminal();
 }
 
 void GuildTerminalAdapter::setGuildObject(GuildObject* guild) {
-	((GuildTerminalImplementation*) impl)->setGuildObject(guild);
+	(static_cast<GuildTerminalImplementation*>(impl))->setGuildObject(guild);
 }
 
 GuildObject* GuildTerminalAdapter::getGuildObject() {
-	return ((GuildTerminalImplementation*) impl)->getGuildObject();
+	return (static_cast<GuildTerminalImplementation*>(impl))->getGuildObject();
 }
 
 /*
@@ -368,7 +369,7 @@ DistributedObjectServant* GuildTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GuildTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GuildTerminalAdapter((GuildTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new GuildTerminalAdapter(static_cast<GuildTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

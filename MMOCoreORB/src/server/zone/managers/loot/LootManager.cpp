@@ -31,8 +31,9 @@ LootManager::~LootManager() {
 }
 
 
+
 void LootManager::initialize() {
-	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ void LootManager::initialize() {
 }
 
 void LootManager::createLoot(SceneObject* container, CreatureObject* creature) {
-	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void LootManager::createLoot(SceneObject* container, CreatureObject* creature) {
 }
 
 void LootManager::createLoot(SceneObject* container, const String& lootGroup) {
-	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ void LootManagerImplementation::_initializeImplementation() {
 }
 
 void LootManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (LootManager*) stub;
+	_this = static_cast<LootManager*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -227,10 +228,10 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		initialize();
 		break;
 	case RPC_CREATELOOT__SCENEOBJECT_CREATUREOBJECT_:
-		createLoot((SceneObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CREATELOOT__SCENEOBJECT_STRING_:
-		createLoot((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_));
+		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_));
 		break;
 	default:
 		return NULL;
@@ -240,15 +241,15 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void LootManagerAdapter::initialize() {
-	((LootManagerImplementation*) impl)->initialize();
+	(static_cast<LootManagerImplementation*>(impl))->initialize();
 }
 
 void LootManagerAdapter::createLoot(SceneObject* container, CreatureObject* creature) {
-	((LootManagerImplementation*) impl)->createLoot(container, creature);
+	(static_cast<LootManagerImplementation*>(impl))->createLoot(container, creature);
 }
 
 void LootManagerAdapter::createLoot(SceneObject* container, const String& lootGroup) {
-	((LootManagerImplementation*) impl)->createLoot(container, lootGroup);
+	(static_cast<LootManagerImplementation*>(impl))->createLoot(container, lootGroup);
 }
 
 /*
@@ -276,7 +277,7 @@ DistributedObjectServant* LootManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LootManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LootManagerAdapter((LootManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new LootManagerAdapter(static_cast<LootManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

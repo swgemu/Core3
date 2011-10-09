@@ -33,8 +33,9 @@ BountyMissionObjective::~BountyMissionObjective() {
 }
 
 
+
 void BountyMissionObjective::initializeTransientMembers() {
-	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void BountyMissionObjective::initializeTransientMembers() {
 }
 
 void BountyMissionObjective::activate() {
-	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void BountyMissionObjective::activate() {
 }
 
 void BountyMissionObjective::abort() {
-	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ void BountyMissionObjective::abort() {
 }
 
 void BountyMissionObjective::complete() {
-	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ void BountyMissionObjective::complete() {
 }
 
 void BountyMissionObjective::spawnTarget(const String& zoneName) {
-	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -100,7 +101,7 @@ void BountyMissionObjective::spawnTarget(const String& zoneName) {
 }
 
 int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -118,7 +119,7 @@ int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 }
 
 void BountyMissionObjective::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
-	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -159,7 +160,7 @@ void BountyMissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void BountyMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (BountyMissionObjective*) stub;
+	_this = static_cast<BountyMissionObjective*>(stub);
 	MissionObjectiveImplementation::_setStub(stub);
 }
 
@@ -322,7 +323,7 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 		spawnTarget(inv->getAsciiParameter(_param0_spawnTarget__String_));
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -332,31 +333,31 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void BountyMissionObjectiveAdapter::finalize() {
-	((BountyMissionObjectiveImplementation*) impl)->finalize();
+	(static_cast<BountyMissionObjectiveImplementation*>(impl))->finalize();
 }
 
 void BountyMissionObjectiveAdapter::initializeTransientMembers() {
-	((BountyMissionObjectiveImplementation*) impl)->initializeTransientMembers();
+	(static_cast<BountyMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
 }
 
 void BountyMissionObjectiveAdapter::activate() {
-	((BountyMissionObjectiveImplementation*) impl)->activate();
+	(static_cast<BountyMissionObjectiveImplementation*>(impl))->activate();
 }
 
 void BountyMissionObjectiveAdapter::abort() {
-	((BountyMissionObjectiveImplementation*) impl)->abort();
+	(static_cast<BountyMissionObjectiveImplementation*>(impl))->abort();
 }
 
 void BountyMissionObjectiveAdapter::complete() {
-	((BountyMissionObjectiveImplementation*) impl)->complete();
+	(static_cast<BountyMissionObjectiveImplementation*>(impl))->complete();
 }
 
 void BountyMissionObjectiveAdapter::spawnTarget(const String& zoneName) {
-	((BountyMissionObjectiveImplementation*) impl)->spawnTarget(zoneName);
+	(static_cast<BountyMissionObjectiveImplementation*>(impl))->spawnTarget(zoneName);
 }
 
 int BountyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((BountyMissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<BountyMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -384,7 +385,7 @@ DistributedObjectServant* BountyMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BountyMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BountyMissionObjectiveAdapter((BountyMissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new BountyMissionObjectiveAdapter(static_cast<BountyMissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

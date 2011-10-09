@@ -33,8 +33,9 @@ AiGroup::~AiGroup() {
 }
 
 
+
 void AiGroup::setPatrolPoints() {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void AiGroup::setPatrolPoints() {
 }
 
 void AiGroup::setPatrolPoint(AiAgent* member) {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -61,7 +62,7 @@ void AiGroup::setPatrolPoint(AiAgent* member) {
 }
 
 void AiGroup::setup(StaticSpawnGroup* templ) {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -70,7 +71,7 @@ void AiGroup::setup(StaticSpawnGroup* templ) {
 }
 
 void AiGroup::setup(DynamicSpawnGroup* templ) {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -79,7 +80,7 @@ void AiGroup::setup(DynamicSpawnGroup* templ) {
 }
 
 int AiGroup::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ int AiGroup::notifyObserverEvent(unsigned int eventType, Observable* observable,
 }
 
 bool AiGroup::isHerdGroup() {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ bool AiGroup::isHerdGroup() {
 }
 
 bool AiGroup::isPackGroup() {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -122,7 +123,7 @@ bool AiGroup::isPackGroup() {
 }
 
 bool AiGroup::isLairGroup() {
-	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	AiGroupImplementation* _implementation = static_cast<AiGroupImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -169,7 +170,7 @@ void AiGroupImplementation::_initializeImplementation() {
 }
 
 void AiGroupImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (AiGroup*) stub;
+	_this = static_cast<AiGroup*>(stub);
 	SceneObjectImplementation::_setStub(stub);
 }
 
@@ -510,10 +511,10 @@ Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setPatrolPoints();
 		break;
 	case RPC_SETPATROLPOINT__AIAGENT_:
-		setPatrolPoint((AiAgent*) inv->getObjectParameter());
+		setPatrolPoint(static_cast<AiAgent*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_ISHERDGROUP__:
 		resp->insertBoolean(isHerdGroup());
@@ -532,27 +533,27 @@ Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void AiGroupAdapter::setPatrolPoints() {
-	((AiGroupImplementation*) impl)->setPatrolPoints();
+	(static_cast<AiGroupImplementation*>(impl))->setPatrolPoints();
 }
 
 void AiGroupAdapter::setPatrolPoint(AiAgent* member) {
-	((AiGroupImplementation*) impl)->setPatrolPoint(member);
+	(static_cast<AiGroupImplementation*>(impl))->setPatrolPoint(member);
 }
 
 int AiGroupAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((AiGroupImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<AiGroupImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 bool AiGroupAdapter::isHerdGroup() {
-	return ((AiGroupImplementation*) impl)->isHerdGroup();
+	return (static_cast<AiGroupImplementation*>(impl))->isHerdGroup();
 }
 
 bool AiGroupAdapter::isPackGroup() {
-	return ((AiGroupImplementation*) impl)->isPackGroup();
+	return (static_cast<AiGroupImplementation*>(impl))->isPackGroup();
 }
 
 bool AiGroupAdapter::isLairGroup() {
-	return ((AiGroupImplementation*) impl)->isLairGroup();
+	return (static_cast<AiGroupImplementation*>(impl))->isLairGroup();
 }
 
 /*
@@ -580,7 +581,7 @@ DistributedObjectServant* AiGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AiGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AiGroupAdapter((AiGroupImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new AiGroupAdapter(static_cast<AiGroupImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

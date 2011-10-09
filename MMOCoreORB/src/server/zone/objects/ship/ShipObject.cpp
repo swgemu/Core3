@@ -23,8 +23,9 @@ ShipObject::~ShipObject() {
 }
 
 
+
 unsigned short ShipObject::getUniqueID() {
-	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	ShipObjectImplementation* _implementation = static_cast<ShipObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -37,7 +38,7 @@ unsigned short ShipObject::getUniqueID() {
 }
 
 void ShipObject::initializeTransientMembers() {
-	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	ShipObjectImplementation* _implementation = static_cast<ShipObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +51,7 @@ void ShipObject::initializeTransientMembers() {
 }
 
 void ShipObject::sendTo(SceneObject* player, bool doClose) {
-	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	ShipObjectImplementation* _implementation = static_cast<ShipObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -65,7 +66,7 @@ void ShipObject::sendTo(SceneObject* player, bool doClose) {
 }
 
 void ShipObject::sendBaselinesTo(SceneObject* player) {
-	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	ShipObjectImplementation* _implementation = static_cast<ShipObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +80,7 @@ void ShipObject::sendBaselinesTo(SceneObject* player) {
 }
 
 float ShipObject::getTotalMass() {
-	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	ShipObjectImplementation* _implementation = static_cast<ShipObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +93,7 @@ float ShipObject::getTotalMass() {
 }
 
 bool ShipObject::isShipObject() {
-	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	ShipObjectImplementation* _implementation = static_cast<ShipObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,7 +140,7 @@ void ShipObjectImplementation::_initializeImplementation() {
 }
 
 void ShipObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ShipObject*) stub;
+	_this = static_cast<ShipObject*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -279,10 +280,10 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializeTransientMembers();
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETTOTALMASS__:
 		resp->insertFloat(getTotalMass());
@@ -298,27 +299,27 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 unsigned short ShipObjectAdapter::getUniqueID() {
-	return ((ShipObjectImplementation*) impl)->getUniqueID();
+	return (static_cast<ShipObjectImplementation*>(impl))->getUniqueID();
 }
 
 void ShipObjectAdapter::initializeTransientMembers() {
-	((ShipObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ShipObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void ShipObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	((ShipObjectImplementation*) impl)->sendTo(player, doClose);
+	(static_cast<ShipObjectImplementation*>(impl))->sendTo(player, doClose);
 }
 
 void ShipObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((ShipObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<ShipObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 float ShipObjectAdapter::getTotalMass() {
-	return ((ShipObjectImplementation*) impl)->getTotalMass();
+	return (static_cast<ShipObjectImplementation*>(impl))->getTotalMass();
 }
 
 bool ShipObjectAdapter::isShipObject() {
-	return ((ShipObjectImplementation*) impl)->isShipObject();
+	return (static_cast<ShipObjectImplementation*>(impl))->isShipObject();
 }
 
 /*
@@ -346,7 +347,7 @@ DistributedObjectServant* ShipObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ShipObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ShipObjectAdapter((ShipObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ShipObjectAdapter(static_cast<ShipObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

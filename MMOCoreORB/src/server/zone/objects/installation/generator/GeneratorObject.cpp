@@ -25,8 +25,9 @@ GeneratorObject::~GeneratorObject() {
 }
 
 
+
 void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	GeneratorObjectImplementation* _implementation = static_cast<GeneratorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -35,7 +36,7 @@ void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, C
 }
 
 int GeneratorObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	GeneratorObjectImplementation* _implementation = static_cast<GeneratorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +51,7 @@ int GeneratorObject::handleObjectMenuSelect(CreatureObject* player, byte selecte
 }
 
 void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
-	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	GeneratorObjectImplementation* _implementation = static_cast<GeneratorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -65,7 +66,7 @@ void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
 }
 
 void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	GeneratorObjectImplementation* _implementation = static_cast<GeneratorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +81,7 @@ void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
 }
 
 bool GeneratorObject::isGeneratorObject() {
-	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	GeneratorObjectImplementation* _implementation = static_cast<GeneratorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,7 +128,7 @@ void GeneratorObjectImplementation::_initializeImplementation() {
 }
 
 void GeneratorObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (GeneratorObject*) stub;
+	_this = static_cast<GeneratorObject*>(stub);
 	InstallationObjectImplementation::_setStub(stub);
 }
 
@@ -239,13 +240,13 @@ Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_ISGENERATOROBJECT__:
 		resp->insertBoolean(isGeneratorObject());
@@ -258,19 +259,19 @@ Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int GeneratorObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((GeneratorObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<GeneratorObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void GeneratorObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	((GeneratorObjectImplementation*) impl)->synchronizedUIListen(player, value);
+	(static_cast<GeneratorObjectImplementation*>(impl))->synchronizedUIListen(player, value);
 }
 
 void GeneratorObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	((GeneratorObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
+	(static_cast<GeneratorObjectImplementation*>(impl))->synchronizedUIStopListen(player, value);
 }
 
 bool GeneratorObjectAdapter::isGeneratorObject() {
-	return ((GeneratorObjectImplementation*) impl)->isGeneratorObject();
+	return (static_cast<GeneratorObjectImplementation*>(impl))->isGeneratorObject();
 }
 
 /*
@@ -298,7 +299,7 @@ DistributedObjectServant* GeneratorObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GeneratorObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GeneratorObjectAdapter((GeneratorObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new GeneratorObjectAdapter(static_cast<GeneratorObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

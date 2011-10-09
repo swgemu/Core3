@@ -41,8 +41,9 @@ ShuttleInstallation::~ShuttleInstallation() {
 }
 
 
+
 bool ShuttleInstallation::checkRequisitesForPlacement(CreatureObject* player) {
-	ShuttleInstallationImplementation* _implementation = (ShuttleInstallationImplementation*) _getImplementation();
+	ShuttleInstallationImplementation* _implementation = static_cast<ShuttleInstallationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -90,7 +91,7 @@ void ShuttleInstallationImplementation::_initializeImplementation() {
 }
 
 void ShuttleInstallationImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ShuttleInstallation*) stub;
+	_this = static_cast<ShuttleInstallation*>(stub);
 	InstallationObjectImplementation::_setStub(stub);
 }
 
@@ -197,7 +198,7 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
-		resp->insertBoolean(checkRequisitesForPlacement((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(checkRequisitesForPlacement(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
 		return NULL;
@@ -207,7 +208,7 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 bool ShuttleInstallationAdapter::checkRequisitesForPlacement(CreatureObject* player) {
-	return ((ShuttleInstallationImplementation*) impl)->checkRequisitesForPlacement(player);
+	return (static_cast<ShuttleInstallationImplementation*>(impl))->checkRequisitesForPlacement(player);
 }
 
 /*
@@ -235,7 +236,7 @@ DistributedObjectServant* ShuttleInstallationHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ShuttleInstallationHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ShuttleInstallationAdapter((ShuttleInstallationImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ShuttleInstallationAdapter(static_cast<ShuttleInstallationImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

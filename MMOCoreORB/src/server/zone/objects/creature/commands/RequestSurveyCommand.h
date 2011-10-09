@@ -83,7 +83,7 @@ public:
 				return SUCCESS;
 
 			if (sampletask != NULL) {
-				SampleTask* sampleTask = (SampleTask*) sampletask.get();
+				SampleTask* sampleTask = cast<SampleTask*>( sampletask.get());
 
 				if (sampleTask != NULL) {
 					if (!sampleTask->isCancelled()) {
@@ -95,8 +95,7 @@ public:
 			}
 
 
-			ManagedReference<CreatureObject*> playerCreature =
-					(CreatureObject*) creature;
+			ManagedReference<CreatureObject*> playerCreature = creature;
 
 			PlayerObject* ghost = playerCreature->getPlayerObject();
 

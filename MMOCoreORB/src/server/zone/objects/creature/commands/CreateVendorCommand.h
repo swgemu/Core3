@@ -69,7 +69,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		SceneObject* parent = player->getRootParent();
 
 		if (parent == NULL || !parent->isBuildingObject()) {
@@ -77,7 +77,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<BuildingObject*> building = (BuildingObject*) parent;
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent);
 
 		if (!building->isOnAdminList(player->getFirstName())) {
 			player->sendSystemMessage("@player_structure:must_be_admin");

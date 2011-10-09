@@ -27,8 +27,9 @@ CloningBuildingObject::~CloningBuildingObject() {
 }
 
 
+
 void CloningBuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	CloningBuildingObjectImplementation* _implementation = (CloningBuildingObjectImplementation*) _getImplementation();
+	CloningBuildingObjectImplementation* _implementation = static_cast<CloningBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -37,7 +38,7 @@ void CloningBuildingObject::loadTemplateData(SharedObjectTemplate* templateData)
 }
 
 bool CloningBuildingObject::isCloningBuildingObject() {
-	CloningBuildingObjectImplementation* _implementation = (CloningBuildingObjectImplementation*) _getImplementation();
+	CloningBuildingObjectImplementation* _implementation = static_cast<CloningBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +51,7 @@ bool CloningBuildingObject::isCloningBuildingObject() {
 }
 
 CloneSpawnPoint* CloningBuildingObject::getRandomSpawnPoint() {
-	CloningBuildingObjectImplementation* _implementation = (CloningBuildingObjectImplementation*) _getImplementation();
+	CloningBuildingObjectImplementation* _implementation = static_cast<CloningBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -93,7 +94,7 @@ void CloningBuildingObjectImplementation::_initializeImplementation() {
 }
 
 void CloningBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CloningBuildingObject*) stub;
+	_this = static_cast<CloningBuildingObject*>(stub);
 	BuildingObjectImplementation::_setStub(stub);
 }
 
@@ -237,7 +238,7 @@ Packet* CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMet
 }
 
 bool CloningBuildingObjectAdapter::isCloningBuildingObject() {
-	return ((CloningBuildingObjectImplementation*) impl)->isCloningBuildingObject();
+	return (static_cast<CloningBuildingObjectImplementation*>(impl))->isCloningBuildingObject();
 }
 
 /*
@@ -265,7 +266,7 @@ DistributedObjectServant* CloningBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CloningBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CloningBuildingObjectAdapter((CloningBuildingObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CloningBuildingObjectAdapter(static_cast<CloningBuildingObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -68,7 +68,7 @@ public:
 		if (wp == NULL || !wp->isWaypointObject())
 			return INVALIDPARAMETERS;
 
-		WaypointObject* waypoint = (WaypointObject*) wp.get();
+		WaypointObject* waypoint = cast<WaypointObject*>( wp.get());
 
 		waypoint->toggleStatus();
 

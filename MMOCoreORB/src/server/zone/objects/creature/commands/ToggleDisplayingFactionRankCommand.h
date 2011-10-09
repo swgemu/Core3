@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+		PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 		if (ghost != NULL)
 			ghost->toggleCharacterBit(PlayerObject::FACTIONRANK);

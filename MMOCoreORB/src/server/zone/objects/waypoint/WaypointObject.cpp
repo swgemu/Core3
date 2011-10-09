@@ -27,8 +27,9 @@ WaypointObject::~WaypointObject() {
 }
 
 
+
 void WaypointObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -37,7 +38,7 @@ void WaypointObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void WaypointObject::insertToMessage(BaseMessage* msg) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -46,7 +47,7 @@ void WaypointObject::insertToMessage(BaseMessage* msg) {
 }
 
 void WaypointObject::setCellID(unsigned int id) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void WaypointObject::setCellID(unsigned int id) {
 }
 
 void WaypointObject::setPlanetCRC(unsigned int crc) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -74,7 +75,7 @@ void WaypointObject::setPlanetCRC(unsigned int crc) {
 }
 
 unsigned int WaypointObject::getPlanetCRC() {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -87,7 +88,7 @@ unsigned int WaypointObject::getPlanetCRC() {
 }
 
 void WaypointObject::setCustomName(const UnicodeString& name) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -101,7 +102,7 @@ void WaypointObject::setCustomName(const UnicodeString& name) {
 }
 
 UnicodeString WaypointObject::getCustomName() {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -115,7 +116,7 @@ UnicodeString WaypointObject::getCustomName() {
 }
 
 void WaypointObject::setColor(byte newColor) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -129,7 +130,7 @@ void WaypointObject::setColor(byte newColor) {
 }
 
 void WaypointObject::setActive(byte newStatus) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -143,7 +144,7 @@ void WaypointObject::setActive(byte newStatus) {
 }
 
 void WaypointObject::setUnknown(unsigned long long id) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -157,7 +158,7 @@ void WaypointObject::setUnknown(unsigned long long id) {
 }
 
 void WaypointObject::setSpecialTypeID(int id) {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -171,7 +172,7 @@ void WaypointObject::setSpecialTypeID(int id) {
 }
 
 int WaypointObject::getSpecialTypeID() {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -184,7 +185,7 @@ int WaypointObject::getSpecialTypeID() {
 }
 
 void WaypointObject::toggleStatus() {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -197,7 +198,7 @@ void WaypointObject::toggleStatus() {
 }
 
 bool WaypointObject::isActive() {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -210,7 +211,7 @@ bool WaypointObject::isActive() {
 }
 
 byte WaypointObject::getColor() {
-	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -257,7 +258,7 @@ void WaypointObjectImplementation::_initializeImplementation() {
 }
 
 void WaypointObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (WaypointObject*) stub;
+	_this = static_cast<WaypointObject*>(stub);
 	IntangibleObjectImplementation::_setStub(stub);
 }
 
@@ -566,55 +567,55 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void WaypointObjectAdapter::setCellID(unsigned int id) {
-	((WaypointObjectImplementation*) impl)->setCellID(id);
+	(static_cast<WaypointObjectImplementation*>(impl))->setCellID(id);
 }
 
 void WaypointObjectAdapter::setPlanetCRC(unsigned int crc) {
-	((WaypointObjectImplementation*) impl)->setPlanetCRC(crc);
+	(static_cast<WaypointObjectImplementation*>(impl))->setPlanetCRC(crc);
 }
 
 unsigned int WaypointObjectAdapter::getPlanetCRC() {
-	return ((WaypointObjectImplementation*) impl)->getPlanetCRC();
+	return (static_cast<WaypointObjectImplementation*>(impl))->getPlanetCRC();
 }
 
 void WaypointObjectAdapter::setCustomName(const UnicodeString& name) {
-	((WaypointObjectImplementation*) impl)->setCustomName(name);
+	(static_cast<WaypointObjectImplementation*>(impl))->setCustomName(name);
 }
 
 UnicodeString WaypointObjectAdapter::getCustomName() {
-	return ((WaypointObjectImplementation*) impl)->getCustomName();
+	return (static_cast<WaypointObjectImplementation*>(impl))->getCustomName();
 }
 
 void WaypointObjectAdapter::setColor(byte newColor) {
-	((WaypointObjectImplementation*) impl)->setColor(newColor);
+	(static_cast<WaypointObjectImplementation*>(impl))->setColor(newColor);
 }
 
 void WaypointObjectAdapter::setActive(byte newStatus) {
-	((WaypointObjectImplementation*) impl)->setActive(newStatus);
+	(static_cast<WaypointObjectImplementation*>(impl))->setActive(newStatus);
 }
 
 void WaypointObjectAdapter::setUnknown(unsigned long long id) {
-	((WaypointObjectImplementation*) impl)->setUnknown(id);
+	(static_cast<WaypointObjectImplementation*>(impl))->setUnknown(id);
 }
 
 void WaypointObjectAdapter::setSpecialTypeID(int id) {
-	((WaypointObjectImplementation*) impl)->setSpecialTypeID(id);
+	(static_cast<WaypointObjectImplementation*>(impl))->setSpecialTypeID(id);
 }
 
 int WaypointObjectAdapter::getSpecialTypeID() {
-	return ((WaypointObjectImplementation*) impl)->getSpecialTypeID();
+	return (static_cast<WaypointObjectImplementation*>(impl))->getSpecialTypeID();
 }
 
 void WaypointObjectAdapter::toggleStatus() {
-	((WaypointObjectImplementation*) impl)->toggleStatus();
+	(static_cast<WaypointObjectImplementation*>(impl))->toggleStatus();
 }
 
 bool WaypointObjectAdapter::isActive() {
-	return ((WaypointObjectImplementation*) impl)->isActive();
+	return (static_cast<WaypointObjectImplementation*>(impl))->isActive();
 }
 
 byte WaypointObjectAdapter::getColor() {
-	return ((WaypointObjectImplementation*) impl)->getColor();
+	return (static_cast<WaypointObjectImplementation*>(impl))->getColor();
 }
 
 /*
@@ -642,7 +643,7 @@ DistributedObjectServant* WaypointObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WaypointObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WaypointObjectAdapter((WaypointObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new WaypointObjectAdapter(static_cast<WaypointObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

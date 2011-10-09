@@ -31,7 +31,7 @@ public:
 
 		String name = args->get(0).toString();
 
-		TangibleObject* vendor = (TangibleObject*) suiBox->getUsingObject();
+		TangibleObject* vendor = cast<TangibleObject*>( suiBox->getUsingObject());
 
 		if (vendor == NULL)
 			return;

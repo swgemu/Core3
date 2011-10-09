@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		// Check to see if "innate_vitalize" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_vitalize")) {

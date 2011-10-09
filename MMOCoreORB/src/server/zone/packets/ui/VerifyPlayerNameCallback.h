@@ -35,7 +35,7 @@ public:
 		if (playerClient == NULL)
 			return;
 
-		CreatureObject* playerCreature = (CreatureObject*) playerClient.get();
+		CreatureObject* playerCreature = cast<CreatureObject*>( playerClient.get());
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 		bool success = playerManager->existsName(name.toString());

@@ -27,8 +27,9 @@ PsgArmorObject::~PsgArmorObject() {
 }
 
 
+
 void PsgArmorObject::initializeTransientMembers() {
-	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	PsgArmorObjectImplementation* _implementation = static_cast<PsgArmorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ void PsgArmorObject::initializeTransientMembers() {
 }
 
 bool PsgArmorObject::isPsgArmorObject() {
-	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	PsgArmorObjectImplementation* _implementation = static_cast<PsgArmorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ bool PsgArmorObject::isPsgArmorObject() {
 }
 
 void PsgArmorObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	PsgArmorObjectImplementation* _implementation = static_cast<PsgArmorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -63,7 +64,7 @@ void PsgArmorObject::fillAttributeList(AttributeListMessage* msg, CreatureObject
 }
 
 void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	PsgArmorObjectImplementation* _implementation = static_cast<PsgArmorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -111,7 +112,7 @@ void PsgArmorObjectImplementation::_initializeImplementation() {
 }
 
 void PsgArmorObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PsgArmorObject*) stub;
+	_this = static_cast<PsgArmorObject*>(stub);
 	WearableObjectImplementation::_setStub(stub);
 }
 
@@ -229,7 +230,7 @@ Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isPsgArmorObject());
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -239,15 +240,15 @@ Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void PsgArmorObjectAdapter::initializeTransientMembers() {
-	((PsgArmorObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<PsgArmorObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 bool PsgArmorObjectAdapter::isPsgArmorObject() {
-	return ((PsgArmorObjectImplementation*) impl)->isPsgArmorObject();
+	return (static_cast<PsgArmorObjectImplementation*>(impl))->isPsgArmorObject();
 }
 
 void PsgArmorObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((PsgArmorObjectImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<PsgArmorObjectImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 /*
@@ -275,7 +276,7 @@ DistributedObjectServant* PsgArmorObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PsgArmorObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PsgArmorObjectAdapter((PsgArmorObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PsgArmorObjectAdapter(static_cast<PsgArmorObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

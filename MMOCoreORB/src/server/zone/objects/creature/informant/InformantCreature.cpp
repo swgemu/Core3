@@ -29,8 +29,9 @@ InformantCreature::~InformantCreature() {
 }
 
 
+
 void InformantCreature::loadTemplateData(SharedObjectTemplate* templateData) {
-	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	InformantCreatureImplementation* _implementation = static_cast<InformantCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -39,7 +40,7 @@ void InformantCreature::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void InformantCreature::activateRecovery() {
-	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	InformantCreatureImplementation* _implementation = static_cast<InformantCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -52,7 +53,7 @@ void InformantCreature::activateRecovery() {
 }
 
 void InformantCreature::setLevel(int l) {
-	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	InformantCreatureImplementation* _implementation = static_cast<InformantCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -66,7 +67,7 @@ void InformantCreature::setLevel(int l) {
 }
 
 int InformantCreature::getLevel() {
-	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	InformantCreatureImplementation* _implementation = static_cast<InformantCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +80,7 @@ int InformantCreature::getLevel() {
 }
 
 bool InformantCreature::isInformantCreature() {
-	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	InformantCreatureImplementation* _implementation = static_cast<InformantCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +93,7 @@ bool InformantCreature::isInformantCreature() {
 }
 
 bool InformantCreature::isAttackableBy(CreatureObject* object) {
-	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	InformantCreatureImplementation* _implementation = static_cast<InformantCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +107,7 @@ bool InformantCreature::isAttackableBy(CreatureObject* object) {
 }
 
 void InformantCreature::sendConversationStartTo(SceneObject* player) {
-	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	InformantCreatureImplementation* _implementation = static_cast<InformantCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -154,7 +155,7 @@ void InformantCreatureImplementation::_initializeImplementation() {
 }
 
 void InformantCreatureImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (InformantCreature*) stub;
+	_this = static_cast<InformantCreature*>(stub);
 	AiAgentImplementation::_setStub(stub);
 }
 
@@ -320,10 +321,10 @@ Packet* InformantCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertBoolean(isInformantCreature());
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
-		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
+		sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -333,27 +334,27 @@ Packet* InformantCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void InformantCreatureAdapter::activateRecovery() {
-	((InformantCreatureImplementation*) impl)->activateRecovery();
+	(static_cast<InformantCreatureImplementation*>(impl))->activateRecovery();
 }
 
 void InformantCreatureAdapter::setLevel(int l) {
-	((InformantCreatureImplementation*) impl)->setLevel(l);
+	(static_cast<InformantCreatureImplementation*>(impl))->setLevel(l);
 }
 
 int InformantCreatureAdapter::getLevel() {
-	return ((InformantCreatureImplementation*) impl)->getLevel();
+	return (static_cast<InformantCreatureImplementation*>(impl))->getLevel();
 }
 
 bool InformantCreatureAdapter::isInformantCreature() {
-	return ((InformantCreatureImplementation*) impl)->isInformantCreature();
+	return (static_cast<InformantCreatureImplementation*>(impl))->isInformantCreature();
 }
 
 bool InformantCreatureAdapter::isAttackableBy(CreatureObject* object) {
-	return ((InformantCreatureImplementation*) impl)->isAttackableBy(object);
+	return (static_cast<InformantCreatureImplementation*>(impl))->isAttackableBy(object);
 }
 
 void InformantCreatureAdapter::sendConversationStartTo(SceneObject* player) {
-	((InformantCreatureImplementation*) impl)->sendConversationStartTo(player);
+	(static_cast<InformantCreatureImplementation*>(impl))->sendConversationStartTo(player);
 }
 
 /*
@@ -381,7 +382,7 @@ DistributedObjectServant* InformantCreatureHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InformantCreatureHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InformantCreatureAdapter((InformantCreatureImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new InformantCreatureAdapter(static_cast<InformantCreatureImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

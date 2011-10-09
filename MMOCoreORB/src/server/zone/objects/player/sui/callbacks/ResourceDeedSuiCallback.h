@@ -23,14 +23,14 @@ public:
 		if (!sui->isListBox() || cancelPressed)
 			return;
 
-		SuiListBox* listBox = (SuiListBox*) sui;
+		SuiListBox* listBox = cast<SuiListBox*>( sui);
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject();
 
 		if (obj == NULL || !obj->isDeedObject())
 			return;
 
-		Deed* deed = (Deed*) obj.get();
+		Deed* deed = cast<Deed*>( obj.get());
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 

@@ -80,7 +80,7 @@ public:
 		int delay = (int)round((modSkill * -(1.0f / 8.0f)) + 21.0f);
 
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
-			DelayedBuff* buff = (DelayedBuff*) creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY);
+			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
 			if (buff != NULL) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
@@ -143,20 +143,20 @@ public:
 			if (!item->isTangibleObject())
 				continue;
 
-			TangibleObject* tano = (TangibleObject*) item;
+			TangibleObject* tano = cast<TangibleObject*>( item);
 
 			if (tano->isPharmaceuticalObject()) {
-				PharmaceuticalObject* pharma = (PharmaceuticalObject*) tano;
+				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano);
 
 				if (melee && pharma->isStimPack()) {
-					StimPack* stimPack = (StimPack*)pharma;
+					StimPack* stimPack = cast<StimPack*>(pharma);
 
 					if (stimPack->getMedicineUseRequired() <= medicineUse)
 						return stimPack;
 				}
 
 				if (pharma->isRangedStimPack()) {
-					RangedStimPack* stimPack = (RangedStimPack*)pharma;
+					RangedStimPack* stimPack = cast<RangedStimPack*>(pharma);
 
 					if (stimPack->getMedicineUseRequired() <= combatMedicineUse && stimPack->getRange(creature))
 						return stimPack;
@@ -229,8 +229,8 @@ public:
 		}
 
 		/*if (creatureTarget->isPlayerCreature() && creature->isPlayerCreature()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * pt = cast<Player *>( creatureTarget);
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -257,7 +257,7 @@ public:
 		}
 
 		if (stimPack->isRangedStimPack()) {
-			RangedStimPack* rangedStimPack = (RangedStimPack*)stimPack;
+			RangedStimPack* rangedStimPack = cast<RangedStimPack*>(stimPack);
 			int combatMedicineUse = creature->getSkillMod("combat_healing_ability");
 
 			if (rangedStimPack->getMedicineUseRequired() > combatMedicineUse || !rangedStimPack->getRange(creature)) {
@@ -274,8 +274,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
-		CreatureObject* playerTarget = (CreatureObject*)  creatureTarget;
+		CreatureObject* player = cast<CreatureObject*>(creature);
+		CreatureObject* playerTarget = cast<CreatureObject*>(  creatureTarget);
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -309,7 +309,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int)round((float)power * 0.25f);
 
@@ -322,7 +322,7 @@ public:
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* targetCreature, PharmaceuticalObject* pharma) {
 		if (pharma->isRangedStimPack()) {
-			RangedStimPack* rangeStim = (RangedStimPack*) pharma;
+			RangedStimPack* rangeStim = cast<RangedStimPack*>( pharma);
 
 			if (pharma == NULL)
 				return;
@@ -334,7 +334,7 @@ public:
 
 			if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-				playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)targetCreature);
+				playerManager->sendBattleFatigueMessage(creature, targetCreature);
 			}
 
 			sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
@@ -356,7 +356,7 @@ public:
 			zone->rlock();
 
 			for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
-				SceneObject* object = (SceneObject*) areaCenter->getInRangeObject(i);
+				SceneObject* object = cast<SceneObject*>( areaCenter->getInRangeObject(i));
 
 				if (!object->isPlayerCreature())
 					continue;
@@ -367,7 +367,7 @@ public:
 				if (!areaCenter->isInRange(object, range))
 					continue;
 
-				CreatureObject* creatureTarget = (CreatureObject*) object;
+				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
 				if (creatureTarget->isAttackableBy(creature))
 					continue;
@@ -414,7 +414,7 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* targetCreature = (CreatureObject*) object.get();
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
 		Locker clocker(targetCreature, creature);
 
@@ -448,7 +448,7 @@ public:
 		float rangeToCheck = 7;
 
 		if (stimPack->isRangedStimPack())
-			rangeToCheck = ((RangedStimPack*)stimPack.get())->getRange();
+			rangeToCheck = (cast<RangedStimPack*>(stimPack.get()))->getRange();
 		/*} else {
 
 		}*/
@@ -469,7 +469,7 @@ public:
 		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
 
 		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)targetCreature);
+			playerManager->sendBattleFatigueMessage(creature, targetCreature);
 		}
 
 		sendHealMessage(creature, targetCreature, healthHealed, actionHealed);

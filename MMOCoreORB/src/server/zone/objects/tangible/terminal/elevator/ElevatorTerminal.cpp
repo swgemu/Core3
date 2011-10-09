@@ -33,8 +33,9 @@ ElevatorTerminal::~ElevatorTerminal() {
 }
 
 
+
 void ElevatorTerminal::notifyInsert(QuadTreeEntry* obj) {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -43,7 +44,7 @@ void ElevatorTerminal::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 }
 
 int ElevatorTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ int ElevatorTerminal::handleObjectMenuSelect(CreatureObject* player, byte select
 }
 
 bool ElevatorTerminal::isElevatorTerminal() {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ bool ElevatorTerminal::isElevatorTerminal() {
 }
 
 void ElevatorTerminal::setElevatorUp(ElevatorTerminal* term) {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -100,7 +101,7 @@ void ElevatorTerminal::setElevatorUp(ElevatorTerminal* term) {
 }
 
 void ElevatorTerminal::setElevatorDown(ElevatorTerminal* term) {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -114,27 +115,27 @@ void ElevatorTerminal::setElevatorDown(ElevatorTerminal* term) {
 }
 
 ElevatorTerminal* ElevatorTerminal::getElevatorUp() {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETELEVATORUP__);
 
-		return (ElevatorTerminal*) method.executeWithObjectReturn();
+		return static_cast<ElevatorTerminal*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getElevatorUp();
 }
 
 ElevatorTerminal* ElevatorTerminal::getElevatorDown() {
-	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	ElevatorTerminalImplementation* _implementation = static_cast<ElevatorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETELEVATORDOWN__);
 
-		return (ElevatorTerminal*) method.executeWithObjectReturn();
+		return static_cast<ElevatorTerminal*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getElevatorDown();
 }
@@ -174,7 +175,7 @@ void ElevatorTerminalImplementation::_initializeImplementation() {
 }
 
 void ElevatorTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ElevatorTerminal*) stub;
+	_this = static_cast<ElevatorTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -336,19 +337,19 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISELEVATORTERMINAL__:
 		resp->insertBoolean(isElevatorTerminal());
 		break;
 	case RPC_SETELEVATORUP__ELEVATORTERMINAL_:
-		setElevatorUp((ElevatorTerminal*) inv->getObjectParameter());
+		setElevatorUp(static_cast<ElevatorTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETELEVATORDOWN__ELEVATORTERMINAL_:
-		setElevatorDown((ElevatorTerminal*) inv->getObjectParameter());
+		setElevatorDown(static_cast<ElevatorTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETELEVATORUP__:
 		resp->insertLong(getElevatorUp()->_getObjectID());
@@ -364,31 +365,31 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void ElevatorTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	((ElevatorTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<ElevatorTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int ElevatorTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((ElevatorTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ElevatorTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool ElevatorTerminalAdapter::isElevatorTerminal() {
-	return ((ElevatorTerminalImplementation*) impl)->isElevatorTerminal();
+	return (static_cast<ElevatorTerminalImplementation*>(impl))->isElevatorTerminal();
 }
 
 void ElevatorTerminalAdapter::setElevatorUp(ElevatorTerminal* term) {
-	((ElevatorTerminalImplementation*) impl)->setElevatorUp(term);
+	(static_cast<ElevatorTerminalImplementation*>(impl))->setElevatorUp(term);
 }
 
 void ElevatorTerminalAdapter::setElevatorDown(ElevatorTerminal* term) {
-	((ElevatorTerminalImplementation*) impl)->setElevatorDown(term);
+	(static_cast<ElevatorTerminalImplementation*>(impl))->setElevatorDown(term);
 }
 
 ElevatorTerminal* ElevatorTerminalAdapter::getElevatorUp() {
-	return ((ElevatorTerminalImplementation*) impl)->getElevatorUp();
+	return (static_cast<ElevatorTerminalImplementation*>(impl))->getElevatorUp();
 }
 
 ElevatorTerminal* ElevatorTerminalAdapter::getElevatorDown() {
-	return ((ElevatorTerminalImplementation*) impl)->getElevatorDown();
+	return (static_cast<ElevatorTerminalImplementation*>(impl))->getElevatorDown();
 }
 
 /*
@@ -416,7 +417,7 @@ DistributedObjectServant* ElevatorTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ElevatorTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ElevatorTerminalAdapter((ElevatorTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ElevatorTerminalAdapter(static_cast<ElevatorTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

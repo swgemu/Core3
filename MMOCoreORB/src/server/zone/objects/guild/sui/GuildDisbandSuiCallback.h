@@ -30,14 +30,14 @@ public:
 		if (obj == NULL || !obj->isTerminal())
 			return;
 
-		Terminal* terminal = (Terminal*) obj.get();
+		Terminal* terminal = cast<Terminal*>( obj.get());
 
 		if (!terminal->isGuildTerminal())
 			return;
 
 		Locker _lock(terminal);
 
-		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
 

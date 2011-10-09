@@ -35,7 +35,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
 
 		ManagedReference<SceneObject*> mission = server->getZoneServer()->getObject(missionObjectID);
 
@@ -45,7 +45,7 @@ public:
 		if (!mission->isMissionObject())
 			return;
 
-		MissionObject* missionObject = (MissionObject*) mission.get();
+		MissionObject* missionObject = cast<MissionObject*>( mission.get());
 
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
 		manager->handleMissionAbort(missionObject, player);

@@ -29,8 +29,9 @@ ImageDesignSession::~ImageDesignSession() {
 }
 
 
+
 void ImageDesignSession::initializeTransientMembers() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void ImageDesignSession::initializeTransientMembers() {
 }
 
 void ImageDesignSession::startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer) {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -52,7 +53,7 @@ void ImageDesignSession::startImageDesign(CreatureObject* designer, CreatureObje
 }
 
 void ImageDesignSession::updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data) {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -61,7 +62,7 @@ void ImageDesignSession::updateImageDesign(unsigned long long designer, unsigned
 }
 
 void ImageDesignSession::cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data) {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -70,7 +71,7 @@ void ImageDesignSession::cancelImageDesign(unsigned long long designer, unsigned
 }
 
 int ImageDesignSession::initializeSession() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,7 +84,7 @@ int ImageDesignSession::initializeSession() {
 }
 
 int ImageDesignSession::doPayment() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ int ImageDesignSession::doPayment() {
 }
 
 int ImageDesignSession::cancelSession() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ int ImageDesignSession::cancelSession() {
 }
 
 int ImageDesignSession::clearSession() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -122,7 +123,7 @@ int ImageDesignSession::clearSession() {
 }
 
 void ImageDesignSession::clearIdTimeoutEvent() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -135,7 +136,7 @@ void ImageDesignSession::clearIdTimeoutEvent() {
 }
 
 void ImageDesignSession::dequeueIdTimeoutEvent() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +149,7 @@ void ImageDesignSession::dequeueIdTimeoutEvent() {
 }
 
 void ImageDesignSession::sessionTimeout() {
-	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -195,7 +196,7 @@ void ImageDesignSessionImplementation::_initializeImplementation() {
 }
 
 void ImageDesignSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ImageDesignSession*) stub;
+	_this = static_cast<ImageDesignSession*>(stub);
 	FacadeImplementation::_setStub(stub);
 }
 
@@ -448,35 +449,35 @@ Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void ImageDesignSessionAdapter::initializeTransientMembers() {
-	((ImageDesignSessionImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ImageDesignSessionImplementation*>(impl))->initializeTransientMembers();
 }
 
 int ImageDesignSessionAdapter::initializeSession() {
-	return ((ImageDesignSessionImplementation*) impl)->initializeSession();
+	return (static_cast<ImageDesignSessionImplementation*>(impl))->initializeSession();
 }
 
 int ImageDesignSessionAdapter::doPayment() {
-	return ((ImageDesignSessionImplementation*) impl)->doPayment();
+	return (static_cast<ImageDesignSessionImplementation*>(impl))->doPayment();
 }
 
 int ImageDesignSessionAdapter::cancelSession() {
-	return ((ImageDesignSessionImplementation*) impl)->cancelSession();
+	return (static_cast<ImageDesignSessionImplementation*>(impl))->cancelSession();
 }
 
 int ImageDesignSessionAdapter::clearSession() {
-	return ((ImageDesignSessionImplementation*) impl)->clearSession();
+	return (static_cast<ImageDesignSessionImplementation*>(impl))->clearSession();
 }
 
 void ImageDesignSessionAdapter::clearIdTimeoutEvent() {
-	((ImageDesignSessionImplementation*) impl)->clearIdTimeoutEvent();
+	(static_cast<ImageDesignSessionImplementation*>(impl))->clearIdTimeoutEvent();
 }
 
 void ImageDesignSessionAdapter::dequeueIdTimeoutEvent() {
-	((ImageDesignSessionImplementation*) impl)->dequeueIdTimeoutEvent();
+	(static_cast<ImageDesignSessionImplementation*>(impl))->dequeueIdTimeoutEvent();
 }
 
 void ImageDesignSessionAdapter::sessionTimeout() {
-	((ImageDesignSessionImplementation*) impl)->sessionTimeout();
+	(static_cast<ImageDesignSessionImplementation*>(impl))->sessionTimeout();
 }
 
 /*
@@ -504,7 +505,7 @@ DistributedObjectServant* ImageDesignSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ImageDesignSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ImageDesignSessionAdapter((ImageDesignSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ImageDesignSessionAdapter(static_cast<ImageDesignSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

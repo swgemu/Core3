@@ -69,7 +69,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
 		ZoneServer* zoneServer = server->getZoneServer();
 
@@ -97,7 +97,7 @@ public:
 			return GENERALERROR;
 		}
 
-		CreatureObject* targetCreature = (CreatureObject*) obj.get();
+		CreatureObject* targetCreature = cast<CreatureObject*>( obj.get());
 
 		StringIdChatParameter params;
 		params.setTU(targetCreature->getObjectName()->getDisplayedName());

@@ -151,7 +151,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		object->info("activating characterAbility " + characterAbility);
 
 		if (object->isPlayerCreature()) {
-			PlayerObject* playerObject = (PlayerObject*) object->getSlottedObject("ghost");
+			PlayerObject* playerObject = cast<PlayerObject*>( object->getSlottedObject("ghost"));
 
 			if (!playerObject->hasAbility(characterAbility)) {
 				object->clearQueueAction(actionCount, 0, 2);

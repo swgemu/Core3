@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -104,7 +104,7 @@ public:
 			if (!member->isPlayerCreature() || member == NULL || member->getZone() != leader->getZone())
 				continue;
 
-			ManagedReference<CreatureObject*> memberPlayer = (CreatureObject*) member.get();
+			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 			Locker clocker(memberPlayer, leader);
 
 			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);

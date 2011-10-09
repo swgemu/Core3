@@ -81,7 +81,7 @@ namespace login {
 		}
 
 		void sendMessage(Message* msg) {
-			session->sendPacket((BasePacket*) msg);
+			session->sendPacket(cast<BasePacket*>(msg));
 		}
 	
 		void sendErrorMessage(const String& title, const String& text, bool fatal = false) {

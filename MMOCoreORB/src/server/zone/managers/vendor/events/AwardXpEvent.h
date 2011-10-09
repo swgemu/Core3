@@ -54,7 +54,7 @@ public:
 			if (ownerRef == NULL || pman == NULL || !ownerRef->isPlayerCreature())
 				continue;
 
-			ManagedReference<CreatureObject*> owner = (CreatureObject*) ownerRef.get();
+			ManagedReference<CreatureObject*> owner = cast<CreatureObject*>( ownerRef.get());
 
 			Locker locker(owner);
 

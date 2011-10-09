@@ -76,18 +76,18 @@ void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	if (temp == NULL)
 		return;
 
-	SceneObject* scno = (SceneObject*) obj;
+	SceneObject* scno = cast<SceneObject*>( obj);
 
 	//Only check elevator terminals in the same cell.
 	if (scno->getParent() != parent || !scno->isTerminal())
 		return;
 
-	Terminal* terminal = (Terminal*) scno;
+	Terminal* terminal = cast<Terminal*>( scno);
 
 	if (!terminal->isElevatorTerminal())
 		return;
 
-	ElevatorTerminal* eterm = (ElevatorTerminal*) terminal;
+	ElevatorTerminal* eterm = cast<ElevatorTerminal*>( terminal);
 
 	float z = eterm->getPositionZ();
 

@@ -130,10 +130,10 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 	Locker zoneLocker(zone);
 
 	if (parent != NULL && parent->isCellObject()) {
-		CellObject* cell = (CellObject*) parent;
+		CellObject* cell = cast<CellObject*>( parent);
 
 		if (cell->getParent() != NULL)
-			removeFromBuilding(sceneObject, (BuildingObject*)cell->getParent());
+			removeFromBuilding(sceneObject, cast<BuildingObject*>(cell->getParent()));
 
 		sceneObject->setParent(NULL);
 
@@ -202,10 +202,10 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 			insert = true;
 		} else {
 			if (sceneObject->getParent()->isCellObject()) {
-				BuildingObject* building = (BuildingObject*) sceneObject->getParent()->getParent();
+				BuildingObject* building = cast<BuildingObject*>( sceneObject->getParent()->getParent());
 				SceneObject* newObj = newParent->getParent();
 
-				BuildingObject* newBuilding = (BuildingObject*) newObj;
+				BuildingObject* newBuilding = cast<BuildingObject*>( newObj);
 
 				if (building != newBuilding) {
 					//System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
@@ -232,7 +232,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		sceneObject->broadcastMessage(sceneObject->link(sceneObject->getParent()->getObjectID(), 0xFFFFFFFF), true, false);
 	}
 
-	ManagedReference<BuildingObject*> building = (BuildingObject*) sceneObject->getParent()->getParent();
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( sceneObject->getParent()->getParent());
 
 	if (insert) {
 		info("insertToBuilding from updateZoneWithParent");

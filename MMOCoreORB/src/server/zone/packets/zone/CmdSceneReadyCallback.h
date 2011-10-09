@@ -25,7 +25,7 @@ public:
 	}
 
 	void run() {
-		CreatureObject* object = (CreatureObject*) client->getPlayer();
+		CreatureObject* object = cast<CreatureObject*>( client->getPlayer());
 
 		if (object == NULL)
 			return;

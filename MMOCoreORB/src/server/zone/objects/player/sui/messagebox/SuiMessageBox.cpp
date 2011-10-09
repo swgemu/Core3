@@ -29,21 +29,22 @@ SuiMessageBox::~SuiMessageBox() {
 }
 
 
+
 BaseMessage* SuiMessageBox::generateMessage() {
-	SuiMessageBoxImplementation* _implementation = (SuiMessageBoxImplementation*) _getImplementation();
+	SuiMessageBoxImplementation* _implementation = static_cast<SuiMessageBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
-		return (BaseMessage*) method.executeWithObjectReturn();
+		return static_cast<BaseMessage*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->generateMessage();
 }
 
 bool SuiMessageBox::isMessageBox() {
-	SuiMessageBoxImplementation* _implementation = (SuiMessageBoxImplementation*) _getImplementation();
+	SuiMessageBoxImplementation* _implementation = static_cast<SuiMessageBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -90,7 +91,7 @@ void SuiMessageBoxImplementation::_initializeImplementation() {
 }
 
 void SuiMessageBoxImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiMessageBox*) stub;
+	_this = static_cast<SuiMessageBox*>(stub);
 	SuiBoxImplementation::_setStub(stub);
 }
 
@@ -214,11 +215,11 @@ Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 BaseMessage* SuiMessageBoxAdapter::generateMessage() {
-	return ((SuiMessageBoxImplementation*) impl)->generateMessage();
+	return (static_cast<SuiMessageBoxImplementation*>(impl))->generateMessage();
 }
 
 bool SuiMessageBoxAdapter::isMessageBox() {
-	return ((SuiMessageBoxImplementation*) impl)->isMessageBox();
+	return (static_cast<SuiMessageBoxImplementation*>(impl))->isMessageBox();
 }
 
 /*
@@ -246,7 +247,7 @@ DistributedObjectServant* SuiMessageBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiMessageBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiMessageBoxAdapter((SuiMessageBoxImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiMessageBoxAdapter(static_cast<SuiMessageBoxImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -71,7 +71,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		StructureObject* structure = (StructureObject*) obj.get();
+		StructureObject* structure = cast<StructureObject*>( obj.get());
 
 		structure->updateStructureStatus();
 

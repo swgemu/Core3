@@ -59,7 +59,7 @@ float TerrainManager::getHighestHeight(float x0, float y0, float x1, float y1, i
 }
 
 int TerrainManager::notifyPositionUpdate(CreatureObject* object) {
-	CreatureObject* creature = (CreatureObject*) object;
+	CreatureObject* creature = cast<CreatureObject*>( object);
 
 	float waterHeight;
 

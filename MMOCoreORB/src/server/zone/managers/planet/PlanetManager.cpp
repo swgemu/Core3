@@ -41,8 +41,9 @@ PlanetManager::~PlanetManager() {
 }
 
 
+
 void PlanetManager::initializeTransientMembers() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -55,7 +56,7 @@ void PlanetManager::initializeTransientMembers() {
 }
 
 void PlanetManager::initialize() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -68,7 +69,7 @@ void PlanetManager::initialize() {
 }
 
 void PlanetManager::loadClientRegions() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -81,7 +82,7 @@ void PlanetManager::loadClientRegions() {
 }
 
 void PlanetManager::loadPlayerRegions() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -94,7 +95,7 @@ void PlanetManager::loadPlayerRegions() {
 }
 
 void PlanetManager::loadNoBuildAreas() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +108,7 @@ void PlanetManager::loadNoBuildAreas() {
 }
 
 void PlanetManager::loadBadgeAreas() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ void PlanetManager::loadBadgeAreas() {
 }
 
 void PlanetManager::loadPerformanceLocations() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +134,7 @@ void PlanetManager::loadPerformanceLocations() {
 }
 
 void PlanetManager::loadHuntingTargets() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +147,7 @@ void PlanetManager::loadHuntingTargets() {
 }
 
 void PlanetManager::loadReconLocations() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -159,7 +160,7 @@ void PlanetManager::loadReconLocations() {
 }
 
 PlanetTravelPoint* PlanetManager::getNearestPlanetTravelPoint(SceneObject* object, float range) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -168,7 +169,7 @@ PlanetTravelPoint* PlanetManager::getNearestPlanetTravelPoint(SceneObject* objec
 }
 
 bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -177,7 +178,7 @@ bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
 }
 
 bool PlanetManager::isBuildingPermittedAt(float x, float y) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -192,7 +193,7 @@ bool PlanetManager::isBuildingPermittedAt(float x, float y) {
 }
 
 int PlanetManager::getTravelFare(const String& destinationPlanet) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -206,7 +207,7 @@ int PlanetManager::getTravelFare(const String& destinationPlanet) {
 }
 
 void PlanetManager::sendPlanetTravelPointListResponse(CreatureObject* player) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -220,7 +221,7 @@ void PlanetManager::sendPlanetTravelPointListResponse(CreatureObject* player) {
 }
 
 SceneObject* PlanetManager::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -230,13 +231,13 @@ SceneObject* PlanetManager::createTicket(const String& departurePoint, const Str
 		method.addAsciiParameter(arrivalPlanet);
 		method.addAsciiParameter(arrivalPoint);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
 }
 
 Vector<ManagedReference<CityRegion* > > PlanetManager::getRegions(StringId& regionName) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -245,20 +246,20 @@ Vector<ManagedReference<CityRegion* > > PlanetManager::getRegions(StringId& regi
 }
 
 WeatherManager* PlanetManager::getWeatherManager() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETWEATHERMANAGER__);
 
-		return (WeatherManager*) method.executeWithObjectReturn();
+		return static_cast<WeatherManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getWeatherManager();
 }
 
 TerrainManager* PlanetManager::getTerrainManager() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -267,7 +268,7 @@ TerrainManager* PlanetManager::getTerrainManager() {
 }
 
 CityRegion* PlanetManager::getRegion(float x, float y) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -276,13 +277,13 @@ CityRegion* PlanetManager::getRegion(float x, float y) {
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
-		return (CityRegion*) method.executeWithObjectReturn();
+		return static_cast<CityRegion*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getRegion(x, y);
 }
 
 int PlanetManager::getRegionCount() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -295,7 +296,7 @@ int PlanetManager::getRegionCount() {
 }
 
 int PlanetManager::getNumberOfCities() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -308,7 +309,7 @@ int PlanetManager::getNumberOfCities() {
 }
 
 void PlanetManager::increaseNumberOfCities() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -321,7 +322,7 @@ void PlanetManager::increaseNumberOfCities() {
 }
 
 CityRegion* PlanetManager::getRegion(int index) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -329,13 +330,13 @@ CityRegion* PlanetManager::getRegion(int index) {
 		DistributedMethod method(this, RPC_GETREGION__INT_);
 		method.addSignedIntParameter(index);
 
-		return (CityRegion*) method.executeWithObjectReturn();
+		return static_cast<CityRegion*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getRegion(index);
 }
 
 void PlanetManager::addRegion(CityRegion* region) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -349,7 +350,7 @@ void PlanetManager::addRegion(CityRegion* region) {
 }
 
 void PlanetManager::dropRegion(const String& region) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -363,7 +364,7 @@ void PlanetManager::dropRegion(const String& region) {
 }
 
 bool PlanetManager::hasRegion(const String& name) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -377,7 +378,7 @@ bool PlanetManager::hasRegion(const String& name) {
 }
 
 void PlanetManager::addPerformanceLocation(SceneObject* obj) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -391,7 +392,7 @@ void PlanetManager::addPerformanceLocation(SceneObject* obj) {
 }
 
 MissionTargetMap* PlanetManager::getPerformanceLocations() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -400,7 +401,7 @@ MissionTargetMap* PlanetManager::getPerformanceLocations() {
 }
 
 void PlanetManager::addMissionNpc(SceneObject* npc) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -414,7 +415,7 @@ void PlanetManager::addMissionNpc(SceneObject* npc) {
 }
 
 MissionTargetMap* PlanetManager::getMissionNpcs() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -423,7 +424,7 @@ MissionTargetMap* PlanetManager::getMissionNpcs() {
 }
 
 void PlanetManager::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -439,7 +440,7 @@ void PlanetManager::addHuntingTargetTemplate(const String& temp1, const String& 
 }
 
 HuntingTargetEntry* PlanetManager::getHuntingTargetTemplate(int level) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -448,7 +449,7 @@ HuntingTargetEntry* PlanetManager::getHuntingTargetTemplate(int level) {
 }
 
 void PlanetManager::addReconLoc(SceneObject* obj) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -462,7 +463,7 @@ void PlanetManager::addReconLoc(SceneObject* obj) {
 }
 
 MissionTargetMap* PlanetManager::getReconLocs() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -471,7 +472,7 @@ MissionTargetMap* PlanetManager::getReconLocs() {
 }
 
 void PlanetManager::addInformant(SceneObject* obj) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -485,7 +486,7 @@ void PlanetManager::addInformant(SceneObject* obj) {
 }
 
 MissionTargetMap* PlanetManager::getInformants() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -494,7 +495,7 @@ MissionTargetMap* PlanetManager::getInformants() {
 }
 
 bool PlanetManager::isExistingPlanetTravelPoint(const String& pointName) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -508,7 +509,7 @@ bool PlanetManager::isExistingPlanetTravelPoint(const String& pointName) {
 }
 
 bool PlanetManager::isInterplanetaryTravelAllowed(const String& pointName) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -522,7 +523,7 @@ bool PlanetManager::isInterplanetaryTravelAllowed(const String& pointName) {
 }
 
 PlanetTravelPoint* PlanetManager::getPlanetTravelPoint(const String& pointName) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -531,7 +532,7 @@ PlanetTravelPoint* PlanetManager::getPlanetTravelPoint(const String& pointName) 
 }
 
 bool PlanetManager::isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -547,7 +548,7 @@ bool PlanetManager::isTravelToLocationPermitted(const String& destinationPoint, 
 }
 
 void PlanetManager::scheduleShuttle(CreatureObject* shuttle) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -561,7 +562,7 @@ void PlanetManager::scheduleShuttle(CreatureObject* shuttle) {
 }
 
 bool PlanetManager::checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -608,7 +609,7 @@ void PlanetManagerImplementation::_initializeImplementation() {
 }
 
 void PlanetManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PlanetManager*) stub;
+	_this = static_cast<PlanetManager*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -1025,7 +1026,7 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
 		break;
 	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_:
-		sendPlanetTravelPointListResponse((CreatureObject*) inv->getObjectParameter());
+		sendPlanetTravelPointListResponse(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CREATETICKET__STRING_STRING_STRING_:
 		resp->insertLong(createTicket(inv->getAsciiParameter(_param0_createTicket__String_String_String_), inv->getAsciiParameter(_param1_createTicket__String_String_String_), inv->getAsciiParameter(_param2_createTicket__String_String_String_))->_getObjectID());
@@ -1049,7 +1050,7 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case RPC_ADDREGION__CITYREGION_:
-		addRegion((CityRegion*) inv->getObjectParameter());
+		addRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
 		break;
 	case RPC_DROPREGION__STRING_:
 		dropRegion(inv->getAsciiParameter(_param0_dropRegion__String_));
@@ -1058,19 +1059,19 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(hasRegion(inv->getAsciiParameter(_param0_hasRegion__String_)));
 		break;
 	case RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_:
-		addPerformanceLocation((SceneObject*) inv->getObjectParameter());
+		addPerformanceLocation(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDMISSIONNPC__SCENEOBJECT_:
-		addMissionNpc((SceneObject*) inv->getObjectParameter());
+		addMissionNpc(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_:
 		addHuntingTargetTemplate(inv->getAsciiParameter(_param0_addHuntingTargetTemplate__String_String_int_), inv->getAsciiParameter(_param1_addHuntingTargetTemplate__String_String_int_), inv->getSignedIntParameter());
 		break;
 	case RPC_ADDRECONLOC__SCENEOBJECT_:
-		addReconLoc((SceneObject*) inv->getObjectParameter());
+		addReconLoc(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDINFORMANT__SCENEOBJECT_:
-		addInformant((SceneObject*) inv->getObjectParameter());
+		addInformant(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_:
 		resp->insertBoolean(isExistingPlanetTravelPoint(inv->getAsciiParameter(_param0_isExistingPlanetTravelPoint__String_)));
@@ -1082,10 +1083,10 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isTravelToLocationPermitted(inv->getAsciiParameter(_param0_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param1_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param2_isTravelToLocationPermitted__String_String_String_)));
 		break;
 	case RPC_SCHEDULESHUTTLE__CREATUREOBJECT_:
-		scheduleShuttle((CreatureObject*) inv->getObjectParameter());
+		scheduleShuttle(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_:
-		resp->insertBoolean(checkShuttleStatus((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(checkShuttleStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
 		return NULL;
@@ -1095,135 +1096,135 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void PlanetManagerAdapter::initializeTransientMembers() {
-	((PlanetManagerImplementation*) impl)->initializeTransientMembers();
+	(static_cast<PlanetManagerImplementation*>(impl))->initializeTransientMembers();
 }
 
 void PlanetManagerAdapter::finalize() {
-	((PlanetManagerImplementation*) impl)->finalize();
+	(static_cast<PlanetManagerImplementation*>(impl))->finalize();
 }
 
 void PlanetManagerAdapter::initialize() {
-	((PlanetManagerImplementation*) impl)->initialize();
+	(static_cast<PlanetManagerImplementation*>(impl))->initialize();
 }
 
 void PlanetManagerAdapter::loadClientRegions() {
-	((PlanetManagerImplementation*) impl)->loadClientRegions();
+	(static_cast<PlanetManagerImplementation*>(impl))->loadClientRegions();
 }
 
 void PlanetManagerAdapter::loadPlayerRegions() {
-	((PlanetManagerImplementation*) impl)->loadPlayerRegions();
+	(static_cast<PlanetManagerImplementation*>(impl))->loadPlayerRegions();
 }
 
 void PlanetManagerAdapter::loadNoBuildAreas() {
-	((PlanetManagerImplementation*) impl)->loadNoBuildAreas();
+	(static_cast<PlanetManagerImplementation*>(impl))->loadNoBuildAreas();
 }
 
 void PlanetManagerAdapter::loadBadgeAreas() {
-	((PlanetManagerImplementation*) impl)->loadBadgeAreas();
+	(static_cast<PlanetManagerImplementation*>(impl))->loadBadgeAreas();
 }
 
 void PlanetManagerAdapter::loadPerformanceLocations() {
-	((PlanetManagerImplementation*) impl)->loadPerformanceLocations();
+	(static_cast<PlanetManagerImplementation*>(impl))->loadPerformanceLocations();
 }
 
 void PlanetManagerAdapter::loadHuntingTargets() {
-	((PlanetManagerImplementation*) impl)->loadHuntingTargets();
+	(static_cast<PlanetManagerImplementation*>(impl))->loadHuntingTargets();
 }
 
 void PlanetManagerAdapter::loadReconLocations() {
-	((PlanetManagerImplementation*) impl)->loadReconLocations();
+	(static_cast<PlanetManagerImplementation*>(impl))->loadReconLocations();
 }
 
 bool PlanetManagerAdapter::isBuildingPermittedAt(float x, float y) {
-	return ((PlanetManagerImplementation*) impl)->isBuildingPermittedAt(x, y);
+	return (static_cast<PlanetManagerImplementation*>(impl))->isBuildingPermittedAt(x, y);
 }
 
 int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {
-	return ((PlanetManagerImplementation*) impl)->getTravelFare(destinationPlanet);
+	return (static_cast<PlanetManagerImplementation*>(impl))->getTravelFare(destinationPlanet);
 }
 
 void PlanetManagerAdapter::sendPlanetTravelPointListResponse(CreatureObject* player) {
-	((PlanetManagerImplementation*) impl)->sendPlanetTravelPointListResponse(player);
+	(static_cast<PlanetManagerImplementation*>(impl))->sendPlanetTravelPointListResponse(player);
 }
 
 SceneObject* PlanetManagerAdapter::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
-	return ((PlanetManagerImplementation*) impl)->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
+	return (static_cast<PlanetManagerImplementation*>(impl))->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
 }
 
 WeatherManager* PlanetManagerAdapter::getWeatherManager() {
-	return ((PlanetManagerImplementation*) impl)->getWeatherManager();
+	return (static_cast<PlanetManagerImplementation*>(impl))->getWeatherManager();
 }
 
 CityRegion* PlanetManagerAdapter::getRegion(float x, float y) {
-	return ((PlanetManagerImplementation*) impl)->getRegion(x, y);
+	return (static_cast<PlanetManagerImplementation*>(impl))->getRegion(x, y);
 }
 
 int PlanetManagerAdapter::getRegionCount() {
-	return ((PlanetManagerImplementation*) impl)->getRegionCount();
+	return (static_cast<PlanetManagerImplementation*>(impl))->getRegionCount();
 }
 
 int PlanetManagerAdapter::getNumberOfCities() {
-	return ((PlanetManagerImplementation*) impl)->getNumberOfCities();
+	return (static_cast<PlanetManagerImplementation*>(impl))->getNumberOfCities();
 }
 
 void PlanetManagerAdapter::increaseNumberOfCities() {
-	((PlanetManagerImplementation*) impl)->increaseNumberOfCities();
+	(static_cast<PlanetManagerImplementation*>(impl))->increaseNumberOfCities();
 }
 
 CityRegion* PlanetManagerAdapter::getRegion(int index) {
-	return ((PlanetManagerImplementation*) impl)->getRegion(index);
+	return (static_cast<PlanetManagerImplementation*>(impl))->getRegion(index);
 }
 
 void PlanetManagerAdapter::addRegion(CityRegion* region) {
-	((PlanetManagerImplementation*) impl)->addRegion(region);
+	(static_cast<PlanetManagerImplementation*>(impl))->addRegion(region);
 }
 
 void PlanetManagerAdapter::dropRegion(const String& region) {
-	((PlanetManagerImplementation*) impl)->dropRegion(region);
+	(static_cast<PlanetManagerImplementation*>(impl))->dropRegion(region);
 }
 
 bool PlanetManagerAdapter::hasRegion(const String& name) {
-	return ((PlanetManagerImplementation*) impl)->hasRegion(name);
+	return (static_cast<PlanetManagerImplementation*>(impl))->hasRegion(name);
 }
 
 void PlanetManagerAdapter::addPerformanceLocation(SceneObject* obj) {
-	((PlanetManagerImplementation*) impl)->addPerformanceLocation(obj);
+	(static_cast<PlanetManagerImplementation*>(impl))->addPerformanceLocation(obj);
 }
 
 void PlanetManagerAdapter::addMissionNpc(SceneObject* npc) {
-	((PlanetManagerImplementation*) impl)->addMissionNpc(npc);
+	(static_cast<PlanetManagerImplementation*>(impl))->addMissionNpc(npc);
 }
 
 void PlanetManagerAdapter::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
-	((PlanetManagerImplementation*) impl)->addHuntingTargetTemplate(temp1, temp2, level);
+	(static_cast<PlanetManagerImplementation*>(impl))->addHuntingTargetTemplate(temp1, temp2, level);
 }
 
 void PlanetManagerAdapter::addReconLoc(SceneObject* obj) {
-	((PlanetManagerImplementation*) impl)->addReconLoc(obj);
+	(static_cast<PlanetManagerImplementation*>(impl))->addReconLoc(obj);
 }
 
 void PlanetManagerAdapter::addInformant(SceneObject* obj) {
-	((PlanetManagerImplementation*) impl)->addInformant(obj);
+	(static_cast<PlanetManagerImplementation*>(impl))->addInformant(obj);
 }
 
 bool PlanetManagerAdapter::isExistingPlanetTravelPoint(const String& pointName) {
-	return ((PlanetManagerImplementation*) impl)->isExistingPlanetTravelPoint(pointName);
+	return (static_cast<PlanetManagerImplementation*>(impl))->isExistingPlanetTravelPoint(pointName);
 }
 
 bool PlanetManagerAdapter::isInterplanetaryTravelAllowed(const String& pointName) {
-	return ((PlanetManagerImplementation*) impl)->isInterplanetaryTravelAllowed(pointName);
+	return (static_cast<PlanetManagerImplementation*>(impl))->isInterplanetaryTravelAllowed(pointName);
 }
 
 bool PlanetManagerAdapter::isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint) {
-	return ((PlanetManagerImplementation*) impl)->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
+	return (static_cast<PlanetManagerImplementation*>(impl))->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
 }
 
 void PlanetManagerAdapter::scheduleShuttle(CreatureObject* shuttle) {
-	((PlanetManagerImplementation*) impl)->scheduleShuttle(shuttle);
+	(static_cast<PlanetManagerImplementation*>(impl))->scheduleShuttle(shuttle);
 }
 
 bool PlanetManagerAdapter::checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle) {
-	return ((PlanetManagerImplementation*) impl)->checkShuttleStatus(creature, shuttle);
+	return (static_cast<PlanetManagerImplementation*>(impl))->checkShuttleStatus(creature, shuttle);
 }
 
 /*
@@ -1251,7 +1252,7 @@ DistributedObjectServant* PlanetManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PlanetManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PlanetManagerAdapter((PlanetManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PlanetManagerAdapter(static_cast<PlanetManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -32,7 +32,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(targetToTrade);
 
@@ -41,7 +41,7 @@ public:
 			return;
 		}
 
-		CreatureObject* targetPlayer = (CreatureObject*) targetObject.get();
+		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 		PlayerObject* ghost = player->getPlayerObject();
 
 		TradeContainer* playerTradeContainer = ghost->getTradeContainer();

@@ -37,7 +37,7 @@ void DynamicSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerObject())
 		return;
 
-	PlayerObject* player = (PlayerObject*)object;
+	PlayerObject* player = cast<PlayerObject*>(object);
 
 	notifyObservers(ObserverEventType::ENTEREDAREA, player, 0);
 
@@ -49,7 +49,7 @@ void DynamicSpawnAreaImplementation::notifyExit(SceneObject* object) {
 	if (!object->isPlayerObject())
 		return;
 
-	PlayerObject* player = (PlayerObject*)object;
+	PlayerObject* player = cast<PlayerObject*>(object);
 
 	notifyObservers(ObserverEventType::EXITEDAREA, player, 0);
 
@@ -88,8 +88,8 @@ void DynamicSpawnAreaImplementation::doDespawnEvent() {
 }
 
 int DynamicSpawnAreaImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	PlayerObject* player = (PlayerObject*)arg1;
-	DynamicSpawnArea* area = (DynamicSpawnArea*)observable;
+	PlayerObject* player = cast<PlayerObject*>(arg1);
+	DynamicSpawnArea* area = cast<DynamicSpawnArea*>(observable);
 
 	VectorMapEntry<ManagedReference<PlayerObject*>, ManagedReference<DynamicSpawnArea*> > entry(player, area);
 	int pos = excludedPlayerOccupants.SortedVector<VectorMapEntry<ManagedReference<PlayerObject*>, ManagedReference<DynamicSpawnArea*> > >::find(entry);

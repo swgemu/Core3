@@ -37,8 +37,9 @@ SlicingTool::~SlicingTool() {
 }
 
 
+
 int SlicingTool::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
+	SlicingToolImplementation* _implementation = static_cast<SlicingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -53,7 +54,7 @@ int SlicingTool::handleObjectMenuSelect(CreatureObject* player, byte selectedID)
 }
 
 void SlicingTool::loadTemplateData(SharedObjectTemplate* templateData) {
-	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
+	SlicingToolImplementation* _implementation = static_cast<SlicingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -62,7 +63,7 @@ void SlicingTool::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void SlicingTool::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
+	SlicingToolImplementation* _implementation = static_cast<SlicingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -71,7 +72,7 @@ void SlicingTool::fillAttributeList(AttributeListMessage* msg, CreatureObject* o
 }
 
 void SlicingTool::updateCraftingValues(ManufactureSchematic* schematic) {
-	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
+	SlicingToolImplementation* _implementation = static_cast<SlicingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void SlicingTool::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 bool SlicingTool::calculateSuccessRate() {
-	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
+	SlicingToolImplementation* _implementation = static_cast<SlicingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +99,7 @@ bool SlicingTool::calculateSuccessRate() {
 }
 
 float SlicingTool::getEffectiveness() {
-	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
+	SlicingToolImplementation* _implementation = static_cast<SlicingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +146,7 @@ void SlicingToolImplementation::_initializeImplementation() {
 }
 
 void SlicingToolImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SlicingTool*) stub;
+	_this = static_cast<SlicingTool*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -272,10 +273,10 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	case RPC_CALCULATESUCCESSRATE__:
 		resp->insertBoolean(calculateSuccessRate());
@@ -291,19 +292,19 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 int SlicingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((SlicingToolImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SlicingToolImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void SlicingToolAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((SlicingToolImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<SlicingToolImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 bool SlicingToolAdapter::calculateSuccessRate() {
-	return ((SlicingToolImplementation*) impl)->calculateSuccessRate();
+	return (static_cast<SlicingToolImplementation*>(impl))->calculateSuccessRate();
 }
 
 float SlicingToolAdapter::getEffectiveness() {
-	return ((SlicingToolImplementation*) impl)->getEffectiveness();
+	return (static_cast<SlicingToolImplementation*>(impl))->getEffectiveness();
 }
 
 /*
@@ -331,7 +332,7 @@ DistributedObjectServant* SlicingToolHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SlicingToolHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SlicingToolAdapter((SlicingToolImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SlicingToolAdapter(static_cast<SlicingToolImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

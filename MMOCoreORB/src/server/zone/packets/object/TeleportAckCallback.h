@@ -27,7 +27,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = static_cast<CreatureObject*>(client->getPlayer());
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setTeleporting(false);

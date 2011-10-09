@@ -73,8 +73,8 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		return 1;
 	}
 
-	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1);
-	VehicleObject* vehicle = (VehicleObject*) server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1);
+	VehicleControlDevice* vehicleControlDevice = cast<VehicleControlDevice*>( server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1));
+	VehicleObject* vehicle = cast<VehicleObject*>( server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1));
 
 	vehicle->setMaxCondition(hitPoints);
 	vehicle->setConditionDamage(0);

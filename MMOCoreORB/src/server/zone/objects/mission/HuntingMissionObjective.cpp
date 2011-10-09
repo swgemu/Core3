@@ -33,8 +33,9 @@ HuntingMissionObjective::~HuntingMissionObjective() {
 }
 
 
+
 void HuntingMissionObjective::initializeTransientMembers() {
-	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	HuntingMissionObjectiveImplementation* _implementation = static_cast<HuntingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void HuntingMissionObjective::initializeTransientMembers() {
 }
 
 void HuntingMissionObjective::activate() {
-	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	HuntingMissionObjectiveImplementation* _implementation = static_cast<HuntingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void HuntingMissionObjective::activate() {
 }
 
 void HuntingMissionObjective::abort() {
-	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	HuntingMissionObjectiveImplementation* _implementation = static_cast<HuntingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ void HuntingMissionObjective::abort() {
 }
 
 void HuntingMissionObjective::complete() {
-	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	HuntingMissionObjectiveImplementation* _implementation = static_cast<HuntingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ void HuntingMissionObjective::complete() {
 }
 
 int HuntingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	HuntingMissionObjectiveImplementation* _implementation = static_cast<HuntingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -136,7 +137,7 @@ void HuntingMissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void HuntingMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (HuntingMissionObjective*) stub;
+	_this = static_cast<HuntingMissionObjective*>(stub);
 	MissionObjectiveImplementation::_setStub(stub);
 }
 
@@ -283,7 +284,7 @@ Packet* HuntingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		complete();
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -293,27 +294,27 @@ Packet* HuntingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 }
 
 void HuntingMissionObjectiveAdapter::finalize() {
-	((HuntingMissionObjectiveImplementation*) impl)->finalize();
+	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->finalize();
 }
 
 void HuntingMissionObjectiveAdapter::initializeTransientMembers() {
-	((HuntingMissionObjectiveImplementation*) impl)->initializeTransientMembers();
+	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
 }
 
 void HuntingMissionObjectiveAdapter::activate() {
-	((HuntingMissionObjectiveImplementation*) impl)->activate();
+	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->activate();
 }
 
 void HuntingMissionObjectiveAdapter::abort() {
-	((HuntingMissionObjectiveImplementation*) impl)->abort();
+	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->abort();
 }
 
 void HuntingMissionObjectiveAdapter::complete() {
-	((HuntingMissionObjectiveImplementation*) impl)->complete();
+	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->complete();
 }
 
 int HuntingMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((HuntingMissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<HuntingMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -341,7 +342,7 @@ DistributedObjectServant* HuntingMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* HuntingMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new HuntingMissionObjectiveAdapter((HuntingMissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new HuntingMissionObjectiveAdapter(static_cast<HuntingMissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -76,13 +76,13 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		if (object->canBeDestroyed((CreatureObject*) creature) != 0)
+		if (object->canBeDestroyed(creature) != 0)
 			return GENERALERROR;
 
 		// need to add checks.. inventory, datapad, bank, waypoint
 
 		if (object->isWaypointObject()) {
-			PlayerObject* playerObject = (PlayerObject*) creature->getSlottedObject("ghost");
+			PlayerObject* playerObject = cast<PlayerObject*>( creature->getSlottedObject("ghost"));
 
 			if (playerObject != NULL)
 				playerObject->removeWaypoint(target);

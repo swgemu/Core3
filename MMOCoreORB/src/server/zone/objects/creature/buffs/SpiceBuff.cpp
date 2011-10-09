@@ -31,8 +31,9 @@ SpiceBuff::~SpiceBuff() {
 }
 
 
+
 void SpiceBuff::activate(bool applyModifiers) {
-	SpiceBuffImplementation* _implementation = (SpiceBuffImplementation*) _getImplementation();
+	SpiceBuffImplementation* _implementation = static_cast<SpiceBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -46,7 +47,7 @@ void SpiceBuff::activate(bool applyModifiers) {
 }
 
 void SpiceBuff::deactivate(bool removeModifiers) {
-	SpiceBuffImplementation* _implementation = (SpiceBuffImplementation*) _getImplementation();
+	SpiceBuffImplementation* _implementation = static_cast<SpiceBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void SpiceBuff::deactivate(bool removeModifiers) {
 }
 
 void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
-	SpiceBuffImplementation* _implementation = (SpiceBuffImplementation*) _getImplementation();
+	SpiceBuffImplementation* _implementation = static_cast<SpiceBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ void SpiceBuffImplementation::_initializeImplementation() {
 }
 
 void SpiceBuffImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SpiceBuff*) stub;
+	_this = static_cast<SpiceBuff*>(stub);
 	BuffImplementation::_setStub(stub);
 }
 
@@ -231,7 +232,7 @@ Packet* SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		deactivate(inv->getBooleanParameter());
 		break;
 	case RPC_SETDOWNERATTRIBUTES__CREATUREOBJECT_BUFF_:
-		setDownerAttributes((CreatureObject*) inv->getObjectParameter(), (Buff*) inv->getObjectParameter());
+		setDownerAttributes(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Buff*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -241,15 +242,15 @@ Packet* SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void SpiceBuffAdapter::activate(bool applyModifiers) {
-	((SpiceBuffImplementation*) impl)->activate(applyModifiers);
+	(static_cast<SpiceBuffImplementation*>(impl))->activate(applyModifiers);
 }
 
 void SpiceBuffAdapter::deactivate(bool removeModifiers) {
-	((SpiceBuffImplementation*) impl)->deactivate(removeModifiers);
+	(static_cast<SpiceBuffImplementation*>(impl))->deactivate(removeModifiers);
 }
 
 void SpiceBuffAdapter::setDownerAttributes(CreatureObject* creature, Buff* buff) {
-	((SpiceBuffImplementation*) impl)->setDownerAttributes(creature, buff);
+	(static_cast<SpiceBuffImplementation*>(impl))->setDownerAttributes(creature, buff);
 }
 
 /*
@@ -277,7 +278,7 @@ DistributedObjectServant* SpiceBuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpiceBuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpiceBuffAdapter((SpiceBuffImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SpiceBuffAdapter(static_cast<SpiceBuffImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

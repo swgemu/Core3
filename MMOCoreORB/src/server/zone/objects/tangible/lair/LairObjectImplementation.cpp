@@ -20,7 +20,7 @@ void LairObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
 	if (templateData->isLairObjectTemplate())
-		lairTemplate = (LairObjectTemplate*) templateData;
+		lairTemplate = cast<LairObjectTemplate*>( templateData);
 }
 
 void LairObjectImplementation::initializeTransientMembers() {
@@ -36,7 +36,7 @@ int LairObjectImplementation::inflictDamage(TangibleObject* attacker, int damage
 	checkForHeal(attacker);
 
 	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) attacker;
+		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0)
 			damageMap.addDamage(player, damage);
@@ -63,7 +63,7 @@ int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* a
 		CreatureObject* obj = spawnedCreatures.get(i);
 
 		if (obj->isAiAgent())
-			((AiAgent*)obj)->setDespawnOnNoPlayerInRange(true);
+			(cast<AiAgent*>(obj))->setDespawnOnNoPlayerInRange(true);
 	}
 
 	DamageMap copyDamageMap(damageMap);
@@ -114,7 +114,7 @@ void LairObjectImplementation::healLair(TangibleObject* attacker) {
 		damageToHeal += 100;
 
 		if (creo->isAiAgent() && System::random(1) == 1 && attacker != NULL) {
-			AiAgent* ai = (AiAgent*) creo;
+			AiAgent* ai = cast<AiAgent*>( creo);
 
 			Locker clocker(creo, _this);
 
@@ -165,7 +165,7 @@ void LairObjectImplementation::checkForNewSpawns() {
 	if (!creature->isAiAgent()) {
 		error("spawned non player creature with template " + TemplateManager::instance()->getTemplateFile(templateToSpawn));
 	} else {
-		AiAgent* npc = (AiAgent*) creature.get();
+		AiAgent* npc = cast<AiAgent*>( creature.get());
 
 		Locker clocker(npc, _this);
 

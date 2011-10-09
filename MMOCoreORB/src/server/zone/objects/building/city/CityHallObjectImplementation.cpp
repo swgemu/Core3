@@ -83,7 +83,7 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(CreatureObject* p
 	if (obj == NULL || !obj->isRegion())
 		return true;
 
-	Region* city = (Region*) obj.get();
+	Region* city = cast<Region*>( obj.get());
 
 	if (city->isInRange(player, 1000.f + MAX(1000.f, city->getRadius()))) {
 		StringIdChatParameter stringID("@player_structure:city_too_close"); //You cannot place here. It is too close to %TO.
@@ -132,7 +132,7 @@ void CityHallObjectImplementation::sendStatusTo(CreatureObject* player) {
 	if (mayorObject == NULL || !mayorObject->isPlayerCreature())
 		return;
 
-	CreatureObject* mayor = (CreatureObject*) mayorObject.get();
+	CreatureObject* mayor = cast<CreatureObject*>( mayorObject.get());
 
 	String mayorName = mayor->getObjectName()->getDisplayedName();
 
@@ -239,7 +239,7 @@ void CityHallObjectImplementation::sendManageMilitiaTo(CreatureObject* player) {
 		if (obj == NULL || !obj->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) obj.get();
+		CreatureObject* player = cast<CreatureObject*>( obj.get());
 
 		listBox->addMenuItem(player->getObjectName()->getDisplayedName(), playerid);
 	}

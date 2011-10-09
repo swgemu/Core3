@@ -37,8 +37,9 @@ CraftingStation::~CraftingStation() {
 }
 
 
+
 void CraftingStation::initializeTransientMembers() {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -51,7 +52,7 @@ void CraftingStation::initializeTransientMembers() {
 }
 
 void CraftingStation::loadTemplateData(SharedObjectTemplate* templateData) {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -60,7 +61,7 @@ void CraftingStation::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void CraftingStation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -69,7 +70,7 @@ void CraftingStation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, C
 }
 
 int CraftingStation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ int CraftingStation::handleObjectMenuSelect(CreatureObject* player, byte selecte
 }
 
 void CraftingStation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -93,7 +94,7 @@ void CraftingStation::fillAttributeList(AttributeListMessage* msg, CreatureObjec
 }
 
 void CraftingStation::updateCraftingValues(ManufactureSchematic* schematic) {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +108,7 @@ void CraftingStation::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 bool CraftingStation::isCraftingStation() {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ bool CraftingStation::isCraftingStation() {
 }
 
 int CraftingStation::getComplexityLevel() {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +134,7 @@ int CraftingStation::getComplexityLevel() {
 }
 
 int CraftingStation::getStationType() {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +147,7 @@ int CraftingStation::getStationType() {
 }
 
 void CraftingStation::setComplexityLevel(int level) {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -160,7 +161,7 @@ void CraftingStation::setComplexityLevel(int level) {
 }
 
 SceneObject* CraftingStation::findCraftingTool(CreatureObject* player) {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -168,13 +169,13 @@ SceneObject* CraftingStation::findCraftingTool(CreatureObject* player) {
 		DistributedMethod method(this, RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->findCraftingTool(player);
 }
 
 void CraftingStation::createChildObjects() {
-	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -221,7 +222,7 @@ void CraftingStationImplementation::_initializeImplementation() {
 }
 
 void CraftingStationImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CraftingStation*) stub;
+	_this = static_cast<CraftingStation*>(stub);
 	ToolTangibleObjectImplementation::_setStub(stub);
 }
 
@@ -401,10 +402,10 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISCRAFTINGSTATION__:
 		resp->insertBoolean(isCraftingStation());
@@ -419,7 +420,7 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		setComplexityLevel(inv->getSignedIntParameter());
 		break;
 	case RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_:
-		resp->insertLong(findCraftingTool((CreatureObject*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(findCraftingTool(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
 		break;
 	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
@@ -432,39 +433,39 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void CraftingStationAdapter::initializeTransientMembers() {
-	((CraftingStationImplementation*) impl)->initializeTransientMembers();
+	(static_cast<CraftingStationImplementation*>(impl))->initializeTransientMembers();
 }
 
 int CraftingStationAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((CraftingStationImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CraftingStationImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void CraftingStationAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((CraftingStationImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<CraftingStationImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 bool CraftingStationAdapter::isCraftingStation() {
-	return ((CraftingStationImplementation*) impl)->isCraftingStation();
+	return (static_cast<CraftingStationImplementation*>(impl))->isCraftingStation();
 }
 
 int CraftingStationAdapter::getComplexityLevel() {
-	return ((CraftingStationImplementation*) impl)->getComplexityLevel();
+	return (static_cast<CraftingStationImplementation*>(impl))->getComplexityLevel();
 }
 
 int CraftingStationAdapter::getStationType() {
-	return ((CraftingStationImplementation*) impl)->getStationType();
+	return (static_cast<CraftingStationImplementation*>(impl))->getStationType();
 }
 
 void CraftingStationAdapter::setComplexityLevel(int level) {
-	((CraftingStationImplementation*) impl)->setComplexityLevel(level);
+	(static_cast<CraftingStationImplementation*>(impl))->setComplexityLevel(level);
 }
 
 SceneObject* CraftingStationAdapter::findCraftingTool(CreatureObject* player) {
-	return ((CraftingStationImplementation*) impl)->findCraftingTool(player);
+	return (static_cast<CraftingStationImplementation*>(impl))->findCraftingTool(player);
 }
 
 void CraftingStationAdapter::createChildObjects() {
-	((CraftingStationImplementation*) impl)->createChildObjects();
+	(static_cast<CraftingStationImplementation*>(impl))->createChildObjects();
 }
 
 /*
@@ -492,7 +493,7 @@ DistributedObjectServant* CraftingStationHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CraftingStationHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CraftingStationAdapter((CraftingStationImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CraftingStationAdapter(static_cast<CraftingStationImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

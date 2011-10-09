@@ -29,8 +29,9 @@ ZoneManager::~ZoneManager() {
 }
 
 
+
 void ZoneManager::setZoneProcessor(ZoneProcessServer* server) {
-	ZoneManagerImplementation* _implementation = (ZoneManagerImplementation*) _getImplementation();
+	ZoneManagerImplementation* _implementation = static_cast<ZoneManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -78,7 +79,7 @@ void ZoneManagerImplementation::_initializeImplementation() {
 }
 
 void ZoneManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ZoneManager*) stub;
+	_this = static_cast<ZoneManager*>(stub);
 	ManagedServiceImplementation::_setStub(stub);
 }
 
@@ -204,7 +205,7 @@ Packet* ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_:
-		setZoneProcessor((ZoneProcessServer*) inv->getObjectParameter());
+		setZoneProcessor(static_cast<ZoneProcessServer*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -214,7 +215,7 @@ Packet* ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void ZoneManagerAdapter::setZoneProcessor(ZoneProcessServer* server) {
-	((ZoneManagerImplementation*) impl)->setZoneProcessor(server);
+	(static_cast<ZoneManagerImplementation*>(impl))->setZoneProcessor(server);
 }
 
 /*
@@ -242,7 +243,7 @@ DistributedObjectServant* ZoneManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneManagerAdapter((ZoneManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ZoneManagerAdapter(static_cast<ZoneManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

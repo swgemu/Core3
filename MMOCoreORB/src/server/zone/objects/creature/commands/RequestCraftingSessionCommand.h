@@ -79,25 +79,24 @@ public:
 		/// Logic for if target oid is crafting tool
 		if(object->isCraftingTool()) {
 
-			CraftingTool* craftingTool = (CraftingTool*) object.get();
+			CraftingTool* craftingTool = cast<CraftingTool*>( object.get());
 
 			Locker locker(craftingTool);
 
-			craftingTool->requestCraftingSession((CreatureObject*)creature);
+			craftingTool->requestCraftingSession(creature);
 
 		/// Logic for if target oid is crafting station
 		} else if(object->isCraftingStation()) {
 
-			CraftingStation* craftingStation = (CraftingStation*) object.get();
+			CraftingStation* craftingStation = cast<CraftingStation*>( object.get());
 
-			ManagedReference<CraftingTool* > craftingTool = (CraftingTool*)
-					craftingStation->findCraftingTool((CreatureObject*)creature);
+			ManagedReference<CraftingTool* > craftingTool = cast<CraftingTool*>(craftingStation->findCraftingTool(creature));
 
 			if(craftingTool != NULL) {
 
 				Locker locker(craftingTool);
 
-				craftingTool->requestCraftingSession((CreatureObject*)creature, craftingStation);
+				craftingTool->requestCraftingSession(creature, craftingStation);
 			}
 
 		} else

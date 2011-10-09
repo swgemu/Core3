@@ -35,8 +35,9 @@ VendorCreature::~VendorCreature() {
 }
 
 
+
 void VendorCreature::initializeTransientMembers() {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void VendorCreature::initializeTransientMembers() {
 }
 
 void VendorCreature::loadTemplateData(SharedObjectTemplate* templateData) {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void VendorCreature::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void VendorCreature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -67,7 +68,7 @@ void VendorCreature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Cr
 }
 
 int VendorCreature::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,7 +83,7 @@ int VendorCreature::handleObjectMenuSelect(CreatureObject* player, byte selected
 }
 
 void VendorCreature::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -91,7 +92,7 @@ void VendorCreature::fillAttributeList(AttributeListMessage* msg, CreatureObject
 }
 
 void VendorCreature::addClothingItem(CreatureObject* player, TangibleObject* clothing) {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +107,7 @@ void VendorCreature::addClothingItem(CreatureObject* player, TangibleObject* clo
 }
 
 void VendorCreature::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ void VendorCreature::destroyObjectFromDatabase(bool destroyContainedObjects) {
 }
 
 void VendorCreature::createChildObjects() {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +134,7 @@ void VendorCreature::createChildObjects() {
 }
 
 void VendorCreature::addVendorToMap() {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +147,7 @@ void VendorCreature::addVendorToMap() {
 }
 
 Vendor* VendorCreature::getVendor() {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -155,7 +156,7 @@ Vendor* VendorCreature::getVendor() {
 }
 
 void VendorCreature::setOwnerID(unsigned long long ownerID) {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -169,7 +170,7 @@ void VendorCreature::setOwnerID(unsigned long long ownerID) {
 }
 
 bool VendorCreature::isVendor() {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -182,7 +183,7 @@ bool VendorCreature::isVendor() {
 }
 
 bool VendorCreature::isVendorCreature() {
-	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -227,7 +228,7 @@ void VendorCreatureImplementation::_initializeImplementation() {
 }
 
 void VendorCreatureImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (VendorCreature*) stub;
+	_this = static_cast<VendorCreature*>(stub);
 	CreatureObjectImplementation::_setStub(stub);
 }
 
@@ -373,10 +374,10 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		finalize();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_:
-		addClothingItem((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		addClothingItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
@@ -404,43 +405,43 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void VendorCreatureAdapter::initializeTransientMembers() {
-	((VendorCreatureImplementation*) impl)->initializeTransientMembers();
+	(static_cast<VendorCreatureImplementation*>(impl))->initializeTransientMembers();
 }
 
 void VendorCreatureAdapter::finalize() {
-	((VendorCreatureImplementation*) impl)->finalize();
+	(static_cast<VendorCreatureImplementation*>(impl))->finalize();
 }
 
 int VendorCreatureAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((VendorCreatureImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VendorCreatureImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VendorCreatureAdapter::addClothingItem(CreatureObject* player, TangibleObject* clothing) {
-	((VendorCreatureImplementation*) impl)->addClothingItem(player, clothing);
+	(static_cast<VendorCreatureImplementation*>(impl))->addClothingItem(player, clothing);
 }
 
 void VendorCreatureAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	((VendorCreatureImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<VendorCreatureImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void VendorCreatureAdapter::createChildObjects() {
-	((VendorCreatureImplementation*) impl)->createChildObjects();
+	(static_cast<VendorCreatureImplementation*>(impl))->createChildObjects();
 }
 
 void VendorCreatureAdapter::addVendorToMap() {
-	((VendorCreatureImplementation*) impl)->addVendorToMap();
+	(static_cast<VendorCreatureImplementation*>(impl))->addVendorToMap();
 }
 
 void VendorCreatureAdapter::setOwnerID(unsigned long long ownerID) {
-	((VendorCreatureImplementation*) impl)->setOwnerID(ownerID);
+	(static_cast<VendorCreatureImplementation*>(impl))->setOwnerID(ownerID);
 }
 
 bool VendorCreatureAdapter::isVendor() {
-	return ((VendorCreatureImplementation*) impl)->isVendor();
+	return (static_cast<VendorCreatureImplementation*>(impl))->isVendor();
 }
 
 bool VendorCreatureAdapter::isVendorCreature() {
-	return ((VendorCreatureImplementation*) impl)->isVendorCreature();
+	return (static_cast<VendorCreatureImplementation*>(impl))->isVendorCreature();
 }
 
 /*
@@ -468,7 +469,7 @@ DistributedObjectServant* VendorCreatureHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VendorCreatureHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VendorCreatureAdapter((VendorCreatureImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new VendorCreatureAdapter(static_cast<VendorCreatureImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

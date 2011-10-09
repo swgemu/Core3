@@ -18,7 +18,7 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 	SceneObject* parent = sceneObject->getParent();
 
 	if (parent == NULL && !sceneObject->isInQuadTree() && sceneObject->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) sceneObject;
+		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
 		uint64 savedParentID = 0;
@@ -34,13 +34,13 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 }
 
 void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) entry;
+	SceneObject* scno = cast<SceneObject*>( entry);
 
 	if (scno == NULL || scno == sceneObject)
 		return;
 
 	if (scno->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) scno;
+		CreatureObject* player = cast<CreatureObject*>( scno);
 
 		PlayerObject* ghost = player->getPlayerObject();
 
@@ -74,7 +74,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 }
 
 void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) entry;
+	SceneObject* scno = cast<SceneObject*>( entry);
 
 	if (scno == NULL || scno == sceneObject)
 		return;
@@ -86,7 +86,7 @@ void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 
 void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	if (sceneObject->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) sceneObject;
+		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setSavedParentID(0);
@@ -101,7 +101,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 	ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 
 	if (sceneObject->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) sceneObject;
+		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setTeleporting(true);
@@ -121,7 +121,7 @@ void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 	ZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
 
 	if (sceneObject->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) sceneObject;
+		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setSavedParentID(0);
@@ -132,7 +132,7 @@ void PlayerZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneOb
 	ZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
 
 	if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) sceneObject;
+		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setSavedParentID(sceneObject->getParentID());
@@ -151,7 +151,7 @@ void PlayerZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingO
 	building->onExit(dynamic_cast<CreatureObject*>(sceneObject));
 
 	/*if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) sceneObject;
+		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setSavedParentID(0);

@@ -33,8 +33,9 @@ EntertainerMissionObjective::~EntertainerMissionObjective() {
 }
 
 
+
 void EntertainerMissionObjective::initializeTransientMembers() {
-	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void EntertainerMissionObjective::initializeTransientMembers() {
 }
 
 void EntertainerMissionObjective::activate() {
-	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void EntertainerMissionObjective::activate() {
 }
 
 void EntertainerMissionObjective::abort() {
-	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ void EntertainerMissionObjective::abort() {
 }
 
 void EntertainerMissionObjective::complete() {
-	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ void EntertainerMissionObjective::complete() {
 }
 
 int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -136,7 +137,7 @@ void EntertainerMissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void EntertainerMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (EntertainerMissionObjective*) stub;
+	_this = static_cast<EntertainerMissionObjective*>(stub);
 	MissionObjectiveImplementation::_setStub(stub);
 }
 
@@ -270,7 +271,7 @@ Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, Distribu
 		complete();
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -280,27 +281,27 @@ Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, Distribu
 }
 
 void EntertainerMissionObjectiveAdapter::finalize() {
-	((EntertainerMissionObjectiveImplementation*) impl)->finalize();
+	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->finalize();
 }
 
 void EntertainerMissionObjectiveAdapter::initializeTransientMembers() {
-	((EntertainerMissionObjectiveImplementation*) impl)->initializeTransientMembers();
+	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
 }
 
 void EntertainerMissionObjectiveAdapter::activate() {
-	((EntertainerMissionObjectiveImplementation*) impl)->activate();
+	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->activate();
 }
 
 void EntertainerMissionObjectiveAdapter::abort() {
-	((EntertainerMissionObjectiveImplementation*) impl)->abort();
+	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->abort();
 }
 
 void EntertainerMissionObjectiveAdapter::complete() {
-	((EntertainerMissionObjectiveImplementation*) impl)->complete();
+	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->complete();
 }
 
 int EntertainerMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((EntertainerMissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<EntertainerMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -328,7 +329,7 @@ DistributedObjectServant* EntertainerMissionObjectiveHelper::instantiateServant(
 }
 
 DistributedObjectAdapter* EntertainerMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EntertainerMissionObjectiveAdapter((EntertainerMissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new EntertainerMissionObjectiveAdapter(static_cast<EntertainerMissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

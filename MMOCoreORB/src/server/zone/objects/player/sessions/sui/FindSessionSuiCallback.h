@@ -28,7 +28,7 @@ public:
 		ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
 
 		if (session == NULL) {
-			ManagedReference<CreatureObject*> pl = (CreatureObject*) suiBox->getUsingObject();
+			ManagedReference<CreatureObject*> pl = cast<CreatureObject*>( suiBox->getUsingObject());
 			if (pl != NULL)
 				pl->dropActiveSession(SessionFacadeType::FIND);
 
@@ -42,7 +42,7 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		SuiListBox* listBox = (SuiListBox*) suiBox;
+		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		String maploctype = listBox->getMenuItemName(index).subString(14);
 

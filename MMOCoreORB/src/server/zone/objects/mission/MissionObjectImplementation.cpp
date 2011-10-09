@@ -182,7 +182,7 @@ void MissionObjectImplementation::setTargetTemplate(SharedObjectTemplate* templa
 }
 
 WaypointObject* MissionObjectImplementation::createWaypoint() {
-	waypointToMission = (WaypointObject*) getZoneServer()->createObject(0xc456e788, 1);
+	waypointToMission = cast<WaypointObject*>( getZoneServer()->createObject(0xc456e788, 1));
 	//obj->setPlanetCRC(planet.hashCode());
 	//obj->setPosition(positionX, 0, positionY);
 	waypointToMission->setActive(false);
@@ -195,7 +195,7 @@ void MissionObjectImplementation::updateMissionLocation() {
 	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3((MissionObject*)_this);
+		MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3(_this);
 		dmiso3->updateWaypoint(waypointToMission);
 		dmiso3->close();
 

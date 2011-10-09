@@ -31,8 +31,9 @@ MissionObjective::~MissionObjective() {
 }
 
 
+
 void MissionObjective::destroyObjectFromDatabase() {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ void MissionObjective::destroyObjectFromDatabase() {
 }
 
 int MissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -63,7 +64,7 @@ int MissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned in
 }
 
 void MissionObjective::activate() {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -76,7 +77,7 @@ void MissionObjective::activate() {
 }
 
 void MissionObjective::abort() {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +90,7 @@ void MissionObjective::abort() {
 }
 
 void MissionObjective::complete() {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -102,20 +103,20 @@ void MissionObjective::complete() {
 }
 
 MissionObject* MissionObjective::getMissionObject() {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETMISSIONOBJECT__);
 
-		return (MissionObject*) method.executeWithObjectReturn();
+		return static_cast<MissionObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getMissionObject();
 }
 
 unsigned int MissionObjective::getObjectiveType() {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -128,14 +129,14 @@ unsigned int MissionObjective::getObjectiveType() {
 }
 
 CreatureObject* MissionObjective::getPlayerOwner() {
-	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETPLAYEROWNER__);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPlayerOwner();
 }
@@ -175,7 +176,7 @@ void MissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void MissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (MissionObjective*) stub;
+	_this = static_cast<MissionObjective*>(stub);
 	ManagedObjectImplementation::_setStub(stub);
 }
 
@@ -350,7 +351,7 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		destroyObjectFromDatabase();
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_ACTIVATE__:
 		activate();
@@ -378,35 +379,35 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void MissionObjectiveAdapter::destroyObjectFromDatabase() {
-	((MissionObjectiveImplementation*) impl)->destroyObjectFromDatabase();
+	(static_cast<MissionObjectiveImplementation*>(impl))->destroyObjectFromDatabase();
 }
 
 int MissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((MissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<MissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void MissionObjectiveAdapter::activate() {
-	((MissionObjectiveImplementation*) impl)->activate();
+	(static_cast<MissionObjectiveImplementation*>(impl))->activate();
 }
 
 void MissionObjectiveAdapter::abort() {
-	((MissionObjectiveImplementation*) impl)->abort();
+	(static_cast<MissionObjectiveImplementation*>(impl))->abort();
 }
 
 void MissionObjectiveAdapter::complete() {
-	((MissionObjectiveImplementation*) impl)->complete();
+	(static_cast<MissionObjectiveImplementation*>(impl))->complete();
 }
 
 MissionObject* MissionObjectiveAdapter::getMissionObject() {
-	return ((MissionObjectiveImplementation*) impl)->getMissionObject();
+	return (static_cast<MissionObjectiveImplementation*>(impl))->getMissionObject();
 }
 
 unsigned int MissionObjectiveAdapter::getObjectiveType() {
-	return ((MissionObjectiveImplementation*) impl)->getObjectiveType();
+	return (static_cast<MissionObjectiveImplementation*>(impl))->getObjectiveType();
 }
 
 CreatureObject* MissionObjectiveAdapter::getPlayerOwner() {
-	return ((MissionObjectiveImplementation*) impl)->getPlayerOwner();
+	return (static_cast<MissionObjectiveImplementation*>(impl))->getPlayerOwner();
 }
 
 /*
@@ -434,7 +435,7 @@ DistributedObjectServant* MissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionObjectiveAdapter((MissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new MissionObjectiveAdapter(static_cast<MissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

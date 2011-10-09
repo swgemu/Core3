@@ -57,8 +57,9 @@ PlayerObject::~PlayerObject() {
 }
 
 
+
 void PlayerObject::notifyLoadFromDatabase() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void PlayerObject::notifyLoadFromDatabase() {
 }
 
 void PlayerObject::unload() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ void PlayerObject::unload() {
 }
 
 void PlayerObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -93,7 +94,7 @@ void PlayerObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void PlayerObject::initializeTransientMembers() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +107,7 @@ void PlayerObject::initializeTransientMembers() {
 }
 
 void PlayerObject::sendBaselinesTo(SceneObject* player) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ void PlayerObject::sendBaselinesTo(SceneObject* player) {
 }
 
 void PlayerObject::sendMessage(BasePacket* msg) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +135,7 @@ void PlayerObject::sendMessage(BasePacket* msg) {
 }
 
 void PlayerObject::addOwnedStructure(StructureObject* obj) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +149,7 @@ void PlayerObject::addOwnedStructure(StructureObject* obj) {
 }
 
 void PlayerObject::removeOwnedStructure(StructureObject* obj) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -162,7 +163,7 @@ void PlayerObject::removeOwnedStructure(StructureObject* obj) {
 }
 
 int PlayerObject::getTotalOwnedStructureCount() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -175,7 +176,7 @@ int PlayerObject::getTotalOwnedStructureCount() {
 }
 
 bool PlayerObject::isOwnedStructure(StructureObject* obj) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -189,7 +190,7 @@ bool PlayerObject::isOwnedStructure(StructureObject* obj) {
 }
 
 StructureObject* PlayerObject::getOwnedStructure(int i) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -197,13 +198,13 @@ StructureObject* PlayerObject::getOwnedStructure(int i) {
 		DistributedMethod method(this, RPC_GETOWNEDSTRUCTURE__INT_);
 		method.addSignedIntParameter(i);
 
-		return (StructureObject*) method.executeWithObjectReturn();
+		return static_cast<StructureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getOwnedStructure(i);
 }
 
 int PlayerObject::getLotsRemaining() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -216,7 +217,7 @@ int PlayerObject::getLotsRemaining() {
 }
 
 bool PlayerObject::hasLotsRemaining(int lots) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -230,7 +231,7 @@ bool PlayerObject::hasLotsRemaining(int lots) {
 }
 
 void PlayerObject::notifySceneReady() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -243,7 +244,7 @@ void PlayerObject::notifySceneReady() {
 }
 
 int PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -259,7 +260,7 @@ int PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient)
 }
 
 void PlayerObject::removeExperience(const String& xpType, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -274,7 +275,7 @@ void PlayerObject::removeExperience(const String& xpType, bool notifyClient) {
 }
 
 void PlayerObject::addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -290,7 +291,7 @@ void PlayerObject::addWaypoint(WaypointObject* waypoint, bool checkName, bool no
 }
 
 void PlayerObject::setWaypoint(WaypointObject* waypoint, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -305,7 +306,7 @@ void PlayerObject::setWaypoint(WaypointObject* waypoint, bool notifyClient) {
 }
 
 void PlayerObject::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -322,7 +323,7 @@ void PlayerObject::addWaypoint(const String& planet, float positionX, float posi
 }
 
 void PlayerObject::removeWaypoint(unsigned long long waypointID, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -337,7 +338,7 @@ void PlayerObject::removeWaypoint(unsigned long long waypointID, bool notifyClie
 }
 
 void PlayerObject::addAbilities(Vector<Ability*>& abilities, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -346,7 +347,7 @@ void PlayerObject::addAbilities(Vector<Ability*>& abilities, bool notifyClient) 
 }
 
 void PlayerObject::addAbility(Ability* ability, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -355,7 +356,7 @@ void PlayerObject::addAbility(Ability* ability, bool notifyClient) {
 }
 
 void PlayerObject::removeAbilities(Vector<Ability*>& abilities, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -364,7 +365,7 @@ void PlayerObject::removeAbilities(Vector<Ability*>& abilities, bool notifyClien
 }
 
 void PlayerObject::removeAbility(Ability* ability, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -373,7 +374,7 @@ void PlayerObject::removeAbility(Ability* ability, bool notifyClient) {
 }
 
 void PlayerObject::addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -382,7 +383,7 @@ void PlayerObject::addSchematics(Vector<ManagedReference<DraftSchematic* > >& sc
 }
 
 void PlayerObject::removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -391,7 +392,7 @@ void PlayerObject::removeSchematics(Vector<ManagedReference<DraftSchematic* > >&
 }
 
 void PlayerObject::addSchematic(DraftSchematic* schematic, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -400,7 +401,7 @@ void PlayerObject::addSchematic(DraftSchematic* schematic, bool notifyClient) {
 }
 
 void PlayerObject::removeSchematic(DraftSchematic* schematic, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -409,7 +410,7 @@ void PlayerObject::removeSchematic(DraftSchematic* schematic, bool notifyClient)
 }
 
 void PlayerObject::setLanguageID(byte language, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -424,7 +425,7 @@ void PlayerObject::setLanguageID(byte language, bool notifyClient) {
 }
 
 void PlayerObject::addFriend(const String& name, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -439,7 +440,7 @@ void PlayerObject::addFriend(const String& name, bool notifyClient) {
 }
 
 void PlayerObject::removeFriend(const String& name, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -454,7 +455,7 @@ void PlayerObject::removeFriend(const String& name, bool notifyClient) {
 }
 
 void PlayerObject::addIgnore(const String& name, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -469,7 +470,7 @@ void PlayerObject::addIgnore(const String& name, bool notifyClient) {
 }
 
 void PlayerObject::removeIgnore(const String& name, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -484,7 +485,7 @@ void PlayerObject::removeIgnore(const String& name, bool notifyClient) {
 }
 
 void PlayerObject::setTitle(const String& characterTitle, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -499,7 +500,7 @@ void PlayerObject::setTitle(const String& characterTitle, bool notifyClient) {
 }
 
 void PlayerObject::setFoodFilling(int newValue, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -514,7 +515,7 @@ void PlayerObject::setFoodFilling(int newValue, bool notifyClient) {
 }
 
 void PlayerObject::setDrinkFilling(int newValue, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -529,7 +530,7 @@ void PlayerObject::setDrinkFilling(int newValue, bool notifyClient) {
 }
 
 void PlayerObject::increaseFactionStanding(const String& factionName, float amount) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -544,7 +545,7 @@ void PlayerObject::increaseFactionStanding(const String& factionName, float amou
 }
 
 void PlayerObject::decreaseFactionStanding(const String& factionName, float amount) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -559,7 +560,7 @@ void PlayerObject::decreaseFactionStanding(const String& factionName, float amou
 }
 
 float PlayerObject::getFactionStanding(const String& factionName) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -573,20 +574,20 @@ float PlayerObject::getFactionStanding(const String& factionName) {
 }
 
 WaypointObject* PlayerObject::getSurveyWaypoint() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETSURVEYWAYPOINT__);
 
-		return (WaypointObject*) method.executeWithObjectReturn();
+		return static_cast<WaypointObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSurveyWaypoint();
 }
 
 void PlayerObject::activateRecovery() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -599,7 +600,7 @@ void PlayerObject::activateRecovery() {
 }
 
 void PlayerObject::doRecovery() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -612,7 +613,7 @@ void PlayerObject::doRecovery() {
 }
 
 void PlayerObject::disconnect(bool closeClient, bool doLock) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -627,7 +628,7 @@ void PlayerObject::disconnect(bool closeClient, bool doLock) {
 }
 
 void PlayerObject::reload(ZoneClientSession* client) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -641,7 +642,7 @@ void PlayerObject::reload(ZoneClientSession* client) {
 }
 
 void PlayerObject::setOffline() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -654,7 +655,7 @@ void PlayerObject::setOffline() {
 }
 
 void PlayerObject::setLinkDead() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -667,7 +668,7 @@ void PlayerObject::setLinkDead() {
 }
 
 void PlayerObject::setOnline() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -680,7 +681,7 @@ void PlayerObject::setOnline() {
 }
 
 void PlayerObject::setLoggingOut() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -693,7 +694,7 @@ void PlayerObject::setLoggingOut() {
 }
 
 void PlayerObject::sendBadgesResponseTo(CreatureObject* player) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -707,7 +708,7 @@ void PlayerObject::sendBadgesResponseTo(CreatureObject* player) {
 }
 
 void PlayerObject::logout(bool doLock) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -721,7 +722,7 @@ void PlayerObject::logout(bool doLock) {
 }
 
 FactionStandingList* PlayerObject::getFactionStandingList() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -730,7 +731,7 @@ FactionStandingList* PlayerObject::getFactionStandingList() {
 }
 
 void PlayerObject::setLastNpcConvStr(const String& conv) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -744,7 +745,7 @@ void PlayerObject::setLastNpcConvStr(const String& conv) {
 }
 
 void PlayerObject::setLastNpcConvMessStr(const String& mess) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -758,7 +759,7 @@ void PlayerObject::setLastNpcConvMessStr(const String& mess) {
 }
 
 String PlayerObject::getLastNpcConvStr() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -772,7 +773,7 @@ String PlayerObject::getLastNpcConvStr() {
 }
 
 String PlayerObject::getLastNpcConvMessStr() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -786,7 +787,7 @@ String PlayerObject::getLastNpcConvMessStr() {
 }
 
 String PlayerObject::getLastNpcConvOption(int idx) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -801,7 +802,7 @@ String PlayerObject::getLastNpcConvOption(int idx) {
 }
 
 void PlayerObject::addLastNpcConvOptions(const String& option) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -815,7 +816,7 @@ void PlayerObject::addLastNpcConvOptions(const String& option) {
 }
 
 int PlayerObject::countLastNpcConvOptions() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -828,7 +829,7 @@ int PlayerObject::countLastNpcConvOptions() {
 }
 
 void PlayerObject::clearLastNpcConvOptions() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -841,7 +842,7 @@ void PlayerObject::clearLastNpcConvOptions() {
 }
 
 void PlayerObject::setConversatingCreature(CreatureObject* creature) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -855,20 +856,20 @@ void PlayerObject::setConversatingCreature(CreatureObject* creature) {
 }
 
 CreatureObject* PlayerObject::getConversatingCreature() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCONVERSATINGCREATURE__);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getConversatingCreature();
 }
 
 SortedVector<unsigned long long>* PlayerObject::getPersistentMessages() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -877,7 +878,7 @@ SortedVector<unsigned long long>* PlayerObject::getPersistentMessages() {
 }
 
 void PlayerObject::addPersistentMessage(unsigned long long id) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -891,7 +892,7 @@ void PlayerObject::addPersistentMessage(unsigned long long id) {
 }
 
 void PlayerObject::dropPersistentMessage(unsigned long long id) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -905,7 +906,7 @@ void PlayerObject::dropPersistentMessage(unsigned long long id) {
 }
 
 void PlayerObject::unloadSpawnedChildren() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -918,7 +919,7 @@ void PlayerObject::unloadSpawnedChildren() {
 }
 
 void PlayerObject::addToConsentList(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -932,7 +933,7 @@ void PlayerObject::addToConsentList(const String& name) {
 }
 
 bool PlayerObject::hasInConsentList(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -946,7 +947,7 @@ bool PlayerObject::hasInConsentList(const String& name) {
 }
 
 void PlayerObject::removeFromConsentList(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -960,7 +961,7 @@ void PlayerObject::removeFromConsentList(const String& name) {
 }
 
 String PlayerObject::getConsentName(int i) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -975,7 +976,7 @@ String PlayerObject::getConsentName(int i) {
 }
 
 int PlayerObject::getConsentListSize() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -988,7 +989,7 @@ int PlayerObject::getConsentListSize() {
 }
 
 String PlayerObject::getFactionRank() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -997,7 +998,7 @@ String PlayerObject::getFactionRank() {
 }
 
 void PlayerObject::setFactionRank(const String& rank) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1006,7 +1007,7 @@ void PlayerObject::setFactionRank(const String& rank) {
 }
 
 void PlayerObject::setCommandMessageString(unsigned int actionCRC, String& message) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1021,7 +1022,7 @@ void PlayerObject::setCommandMessageString(unsigned int actionCRC, String& messa
 }
 
 void PlayerObject::removeCommandMessageString(unsigned int actionCRC) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1035,20 +1036,20 @@ void PlayerObject::removeCommandMessageString(unsigned int actionCRC) {
 }
 
 BuildingObject* PlayerObject::getDeclaredResidence() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETDECLAREDRESIDENCE__);
 
-		return (BuildingObject*) method.executeWithObjectReturn();
+		return static_cast<BuildingObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getDeclaredResidence();
 }
 
 void PlayerObject::setDeclaredResidence(BuildingObject* residence) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1062,7 +1063,7 @@ void PlayerObject::setDeclaredResidence(BuildingObject* residence) {
 }
 
 void PlayerObject::setCloningFacility(BuildingObject* cloningfac) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1076,20 +1077,20 @@ void PlayerObject::setCloningFacility(BuildingObject* cloningfac) {
 }
 
 BuildingObject* PlayerObject::getCloningFacility() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCLONINGFACILITY__);
 
-		return (BuildingObject*) method.executeWithObjectReturn();
+		return static_cast<BuildingObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getCloningFacility();
 }
 
 void PlayerObject::notifyOnline() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1102,7 +1103,7 @@ void PlayerObject::notifyOnline() {
 }
 
 void PlayerObject::doDigest() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1115,7 +1116,7 @@ void PlayerObject::doDigest() {
 }
 
 bool PlayerObject::isDigesting() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1128,7 +1129,7 @@ bool PlayerObject::isDigesting() {
 }
 
 String PlayerObject::getSavedTerrainName() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1142,7 +1143,7 @@ String PlayerObject::getSavedTerrainName() {
 }
 
 void PlayerObject::setSavedParentID(unsigned long long id) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1156,7 +1157,7 @@ void PlayerObject::setSavedParentID(unsigned long long id) {
 }
 
 void PlayerObject::setSavedTerrainName(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1170,7 +1171,7 @@ void PlayerObject::setSavedTerrainName(const String& name) {
 }
 
 unsigned long long PlayerObject::getSavedParentID() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1183,7 +1184,7 @@ unsigned long long PlayerObject::getSavedParentID() {
 }
 
 unsigned int PlayerObject::getNewSuiBoxID(unsigned int type) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1197,7 +1198,7 @@ unsigned int PlayerObject::getNewSuiBoxID(unsigned int type) {
 }
 
 bool PlayerObject::hasSuiBox(unsigned int boxID) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1211,7 +1212,7 @@ bool PlayerObject::hasSuiBox(unsigned int boxID) {
 }
 
 SuiBox* PlayerObject::getSuiBox(unsigned int boxID) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1219,13 +1220,13 @@ SuiBox* PlayerObject::getSuiBox(unsigned int boxID) {
 		DistributedMethod method(this, RPC_GETSUIBOX__INT_);
 		method.addUnsignedIntParameter(boxID);
 
-		return (SuiBox*) method.executeWithObjectReturn();
+		return static_cast<SuiBox*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSuiBox(boxID);
 }
 
 void PlayerObject::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1240,7 +1241,7 @@ void PlayerObject::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
 }
 
 void PlayerObject::removeSuiBoxType(unsigned int windowType) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1254,7 +1255,7 @@ void PlayerObject::removeSuiBoxType(unsigned int windowType) {
 }
 
 bool PlayerObject::hasSuiBoxWindowType(unsigned int windowType) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1268,7 +1269,7 @@ bool PlayerObject::hasSuiBoxWindowType(unsigned int windowType) {
 }
 
 void PlayerObject::closeSuiWindowType(unsigned int windowType) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1282,7 +1283,7 @@ void PlayerObject::closeSuiWindowType(unsigned int windowType) {
 }
 
 SuiBox* PlayerObject::getSuiBoxFromWindowType(unsigned int windowType) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1290,13 +1291,13 @@ SuiBox* PlayerObject::getSuiBoxFromWindowType(unsigned int windowType) {
 		DistributedMethod method(this, RPC_GETSUIBOXFROMWINDOWTYPE__INT_);
 		method.addUnsignedIntParameter(windowType);
 
-		return (SuiBox*) method.executeWithObjectReturn();
+		return static_cast<SuiBox*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSuiBoxFromWindowType(windowType);
 }
 
 void PlayerObject::addSuiBox(SuiBox* sui) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1310,7 +1311,7 @@ void PlayerObject::addSuiBox(SuiBox* sui) {
 }
 
 bool PlayerObject::isFirstIncapacitationExpired() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1323,7 +1324,7 @@ bool PlayerObject::isFirstIncapacitationExpired() {
 }
 
 void PlayerObject::resetIncapacitationCounter() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1336,7 +1337,7 @@ void PlayerObject::resetIncapacitationCounter() {
 }
 
 void PlayerObject::resetFirstIncapacitationTime() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1349,7 +1350,7 @@ void PlayerObject::resetFirstIncapacitationTime() {
 }
 
 void PlayerObject::updateIncapacitationCounter() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1362,7 +1363,7 @@ void PlayerObject::updateIncapacitationCounter() {
 }
 
 bool PlayerObject::isFirstIncapacitation() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1375,7 +1376,7 @@ bool PlayerObject::isFirstIncapacitation() {
 }
 
 byte PlayerObject::getIncapacitationCounter() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1388,7 +1389,7 @@ byte PlayerObject::getIncapacitationCounter() {
 }
 
 void PlayerObject::addToDuelList(CreatureObject* targetPlayer) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1402,7 +1403,7 @@ void PlayerObject::addToDuelList(CreatureObject* targetPlayer) {
 }
 
 void PlayerObject::removeFromDuelList(CreatureObject* targetPlayer) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1416,7 +1417,7 @@ void PlayerObject::removeFromDuelList(CreatureObject* targetPlayer) {
 }
 
 CreatureObject* PlayerObject::getDuelListObject(int index) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1424,13 +1425,13 @@ CreatureObject* PlayerObject::getDuelListObject(int index) {
 		DistributedMethod method(this, RPC_GETDUELLISTOBJECT__INT_);
 		method.addSignedIntParameter(index);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getDuelListObject(index);
 }
 
 bool PlayerObject::requestedDuelTo(CreatureObject* targetPlayer) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1444,7 +1445,7 @@ bool PlayerObject::requestedDuelTo(CreatureObject* targetPlayer) {
 }
 
 bool PlayerObject::isDuelListEmpty() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1457,7 +1458,7 @@ bool PlayerObject::isDuelListEmpty() {
 }
 
 int PlayerObject::getDuelListSize() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1470,7 +1471,7 @@ int PlayerObject::getDuelListSize() {
 }
 
 UnicodeString PlayerObject::getBiography() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1484,7 +1485,7 @@ UnicodeString PlayerObject::getBiography() {
 }
 
 void PlayerObject::notifyOffline() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1497,7 +1498,7 @@ void PlayerObject::notifyOffline() {
 }
 
 void PlayerObject::setBadge(unsigned int badge) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1511,7 +1512,7 @@ void PlayerObject::setBadge(unsigned int badge) {
 }
 
 void PlayerObject::awardBadge(unsigned int badge) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1525,7 +1526,7 @@ void PlayerObject::awardBadge(unsigned int badge) {
 }
 
 void PlayerObject::setSurveyTool(SurveyTool* tool) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1539,33 +1540,33 @@ void PlayerObject::setSurveyTool(SurveyTool* tool) {
 }
 
 SurveyTool* PlayerObject::getSurveyTool() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETSURVEYTOOL__);
 
-		return (SurveyTool*) method.executeWithObjectReturn();
+		return static_cast<SurveyTool*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSurveyTool();
 }
 
 CraftingTool* PlayerObject::getLastCraftingToolUsed() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETLASTCRAFTINGTOOLUSED__);
 
-		return (CraftingTool*) method.executeWithObjectReturn();
+		return static_cast<CraftingTool*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getLastCraftingToolUsed();
 }
 
 void PlayerObject::setLastCraftingToolUsed(CraftingTool* tool) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1579,7 +1580,7 @@ void PlayerObject::setLastCraftingToolUsed(CraftingTool* tool) {
 }
 
 void PlayerObject::setTeleporting(bool val) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1593,7 +1594,7 @@ void PlayerObject::setTeleporting(bool val) {
 }
 
 int PlayerObject::getNumBadges() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1606,7 +1607,7 @@ int PlayerObject::getNumBadges() {
 }
 
 int PlayerObject::getBadgeTypeCount(byte type) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1620,7 +1621,7 @@ int PlayerObject::getBadgeTypeCount(byte type) {
 }
 
 bool PlayerObject::hasFriend(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1634,7 +1635,7 @@ bool PlayerObject::hasFriend(const String& name) {
 }
 
 bool PlayerObject::isIgnoring(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1648,7 +1649,7 @@ bool PlayerObject::isIgnoring(const String& name) {
 }
 
 void PlayerObject::addReverseFriend(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1662,7 +1663,7 @@ void PlayerObject::addReverseFriend(const String& name) {
 }
 
 void PlayerObject::removeReverseFriend(const String& name) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1676,7 +1677,7 @@ void PlayerObject::removeReverseFriend(const String& name) {
 }
 
 void PlayerObject::sendFriendLists() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1689,7 +1690,7 @@ void PlayerObject::sendFriendLists() {
 }
 
 bool PlayerObject::hasWaypoint(unsigned long long objectID) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1703,7 +1704,7 @@ bool PlayerObject::hasWaypoint(unsigned long long objectID) {
 }
 
 bool PlayerObject::hasAbility(const String& ability) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1712,7 +1713,7 @@ bool PlayerObject::hasAbility(const String& ability) {
 }
 
 bool PlayerObject::hasCommandMessageString(unsigned int actionCRC) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1726,7 +1727,7 @@ bool PlayerObject::hasCommandMessageString(unsigned int actionCRC) {
 }
 
 unsigned int PlayerObject::getCharacterBitmask() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1739,7 +1740,7 @@ unsigned int PlayerObject::getCharacterBitmask() {
 }
 
 String PlayerObject::getTitle() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1753,7 +1754,7 @@ String PlayerObject::getTitle() {
 }
 
 unsigned int PlayerObject::getAdminLevel() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1766,7 +1767,7 @@ unsigned int PlayerObject::getAdminLevel() {
 }
 
 void PlayerObject::setAdminLevel(unsigned int adminlvl) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1780,7 +1781,7 @@ void PlayerObject::setAdminLevel(unsigned int adminlvl) {
 }
 
 void PlayerObject::setBiography(const UnicodeString& bio) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1794,7 +1795,7 @@ void PlayerObject::setBiography(const UnicodeString& bio) {
 }
 
 bool PlayerObject::isDeveloper() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1807,7 +1808,7 @@ bool PlayerObject::isDeveloper() {
 }
 
 bool PlayerObject::isCSR() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1820,7 +1821,7 @@ bool PlayerObject::isCSR() {
 }
 
 bool PlayerObject::isPrivileged() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1833,7 +1834,7 @@ bool PlayerObject::isPrivileged() {
 }
 
 void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1847,7 +1848,7 @@ void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
 }
 
 bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1862,7 +1863,7 @@ bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
 }
 
 bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1877,7 +1878,7 @@ bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
 }
 
 void PlayerObject::toggleCharacterBit(unsigned int bit) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1891,7 +1892,7 @@ void PlayerObject::toggleCharacterBit(unsigned int bit) {
 }
 
 VectorMap<String, int>* PlayerObject::getXpTypeCapList() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1900,7 +1901,7 @@ VectorMap<String, int>* PlayerObject::getXpTypeCapList() {
 }
 
 DeltaVectorMap<String, int>* PlayerObject::getExperienceList() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1909,7 +1910,7 @@ DeltaVectorMap<String, int>* PlayerObject::getExperienceList() {
 }
 
 int PlayerObject::getForcePower() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1922,7 +1923,7 @@ int PlayerObject::getForcePower() {
 }
 
 int PlayerObject::getForcePowerMax() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1935,7 +1936,7 @@ int PlayerObject::getForcePowerMax() {
 }
 
 WaypointList* PlayerObject::getWaypointList() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1944,7 +1945,7 @@ WaypointList* PlayerObject::getWaypointList() {
 }
 
 AbilityList* PlayerObject::getAbilityList() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1953,7 +1954,7 @@ AbilityList* PlayerObject::getAbilityList() {
 }
 
 SchematicList* PlayerObject::getSchematics() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1962,7 +1963,7 @@ SchematicList* PlayerObject::getSchematics() {
 }
 
 DraftSchematic* PlayerObject::getSchematic(int i) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1970,13 +1971,13 @@ DraftSchematic* PlayerObject::getSchematic(int i) {
 		DistributedMethod method(this, RPC_GETSCHEMATIC__INT_);
 		method.addSignedIntParameter(i);
 
-		return (DraftSchematic*) method.executeWithObjectReturn();
+		return static_cast<DraftSchematic*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSchematic(i);
 }
 
 Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(CreatureObject* player, Vector<unsigned int>* enabledTabs, int complexityLevel) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1985,7 +1986,7 @@ Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(Cr
 }
 
 int PlayerObject::getFoodFilling() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1998,7 +1999,7 @@ int PlayerObject::getFoodFilling() {
 }
 
 int PlayerObject::getFoodFillingMax() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2011,7 +2012,7 @@ int PlayerObject::getFoodFillingMax() {
 }
 
 int PlayerObject::getDrinkFilling() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2024,7 +2025,7 @@ int PlayerObject::getDrinkFilling() {
 }
 
 int PlayerObject::getDrinkFillingMax() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2037,7 +2038,7 @@ int PlayerObject::getDrinkFillingMax() {
 }
 
 int PlayerObject::getJediState() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2050,7 +2051,7 @@ int PlayerObject::getJediState() {
 }
 
 byte PlayerObject::getLanguageID() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2063,7 +2064,7 @@ byte PlayerObject::getLanguageID() {
 }
 
 DeltaVector<String>* PlayerObject::getFriendList() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2072,7 +2073,7 @@ DeltaVector<String>* PlayerObject::getFriendList() {
 }
 
 bool PlayerObject::isTeleporting() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2085,7 +2086,7 @@ bool PlayerObject::isTeleporting() {
 }
 
 void PlayerObject::addChatRoom(ChatRoom* room) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2099,7 +2100,7 @@ void PlayerObject::addChatRoom(ChatRoom* room) {
 }
 
 void PlayerObject::removeChatRoom(ChatRoom* room) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2113,7 +2114,7 @@ void PlayerObject::removeChatRoom(ChatRoom* room) {
 }
 
 void PlayerObject::clearTradeContainer() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2122,7 +2123,7 @@ void PlayerObject::clearTradeContainer() {
 }
 
 TradeContainer* PlayerObject::getTradeContainer() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2131,7 +2132,7 @@ TradeContainer* PlayerObject::getTradeContainer() {
 }
 
 DeltaVector<String>* PlayerObject::getIgnoreList() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2140,7 +2141,7 @@ DeltaVector<String>* PlayerObject::getIgnoreList() {
 }
 
 int PlayerObject::getExperience(const String& xp) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2154,7 +2155,7 @@ int PlayerObject::getExperience(const String& xp) {
 }
 
 String PlayerObject::getCommandMessageString(unsigned int actionCRC) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2169,7 +2170,7 @@ String PlayerObject::getCommandMessageString(unsigned int actionCRC) {
 }
 
 bool PlayerObject::hasBadge(unsigned int badge) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2183,7 +2184,7 @@ bool PlayerObject::hasBadge(unsigned int badge) {
 }
 
 void PlayerObject::clearDisconnectEvent() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2196,7 +2197,7 @@ void PlayerObject::clearDisconnectEvent() {
 }
 
 void PlayerObject::clearRecoveryEvent() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2209,7 +2210,7 @@ void PlayerObject::clearRecoveryEvent() {
 }
 
 bool PlayerObject::isOnline() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2222,7 +2223,7 @@ bool PlayerObject::isOnline() {
 }
 
 bool PlayerObject::isOffline() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2235,7 +2236,7 @@ bool PlayerObject::isOffline() {
 }
 
 bool PlayerObject::isLoading() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2248,7 +2249,7 @@ bool PlayerObject::isLoading() {
 }
 
 bool PlayerObject::isLinkDead() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2261,7 +2262,7 @@ bool PlayerObject::isLinkDead() {
 }
 
 bool PlayerObject::isLoggingIn() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2274,7 +2275,7 @@ bool PlayerObject::isLoggingIn() {
 }
 
 bool PlayerObject::isLoggingOut() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2287,7 +2288,7 @@ bool PlayerObject::isLoggingOut() {
 }
 
 void PlayerObject::setSkillPoints(int points) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2301,7 +2302,7 @@ void PlayerObject::setSkillPoints(int points) {
 }
 
 void PlayerObject::addSkillPoints(int points) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2315,7 +2316,7 @@ void PlayerObject::addSkillPoints(int points) {
 }
 
 int PlayerObject::getSkillPoints() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2328,7 +2329,7 @@ int PlayerObject::getSkillPoints() {
 }
 
 ValidatedPosition* PlayerObject::getLastValidatedPosition() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2337,7 +2338,7 @@ ValidatedPosition* PlayerObject::getLastValidatedPosition() {
 }
 
 void PlayerObject::updateLastValidatedPosition() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2350,7 +2351,7 @@ void PlayerObject::updateLastValidatedPosition() {
 }
 
 void PlayerObject::setSpawnedBlueFrog() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2363,7 +2364,7 @@ void PlayerObject::setSpawnedBlueFrog() {
 }
 
 bool PlayerObject::hasSpawnedBlueFrog() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2376,7 +2377,7 @@ bool PlayerObject::hasSpawnedBlueFrog() {
 }
 
 unsigned int PlayerObject::getAccountID() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2389,7 +2390,7 @@ unsigned int PlayerObject::getAccountID() {
 }
 
 unsigned long long PlayerObject::getServerMovementTimeDelta() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2402,7 +2403,7 @@ unsigned long long PlayerObject::getServerMovementTimeDelta() {
 }
 
 Time* PlayerObject::getServerMovementTimeStamp() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2411,7 +2412,7 @@ Time* PlayerObject::getServerMovementTimeStamp() {
 }
 
 void PlayerObject::setClientLastMovementStamp(unsigned int stamp) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2425,7 +2426,7 @@ void PlayerObject::setClientLastMovementStamp(unsigned int stamp) {
 }
 
 void PlayerObject::updateServerLastMovementStamp() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2438,7 +2439,7 @@ void PlayerObject::updateServerLastMovementStamp() {
 }
 
 void PlayerObject::setAccountID(unsigned int id) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2452,7 +2453,7 @@ void PlayerObject::setAccountID(unsigned int id) {
 }
 
 int PlayerObject::getFactionStatus() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2465,7 +2466,7 @@ int PlayerObject::getFactionStatus() {
 }
 
 unsigned int PlayerObject::getClientLastMovementStamp() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2478,7 +2479,7 @@ unsigned int PlayerObject::getClientLastMovementStamp() {
 }
 
 int PlayerObject::getCenteredBonus() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2491,7 +2492,7 @@ int PlayerObject::getCenteredBonus() {
 }
 
 void PlayerObject::setCenteredBonus(int bonus) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2505,7 +2506,7 @@ void PlayerObject::setCenteredBonus(int bonus) {
 }
 
 bool PlayerObject::isInvisible() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2518,7 +2519,7 @@ bool PlayerObject::isInvisible() {
 }
 
 void PlayerObject::setInvisible(bool invis) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2532,7 +2533,7 @@ void PlayerObject::setInvisible(bool invis) {
 }
 
 void PlayerObject::setHologrindMask(unsigned int mask) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2546,7 +2547,7 @@ void PlayerObject::setHologrindMask(unsigned int mask) {
 }
 
 unsigned int PlayerObject::getHologrindMask() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2559,7 +2560,7 @@ unsigned int PlayerObject::getHologrindMask() {
 }
 
 byte PlayerObject::getRaceID() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2572,7 +2573,7 @@ byte PlayerObject::getRaceID() {
 }
 
 void PlayerObject::setRaceID(byte race) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2586,7 +2587,7 @@ void PlayerObject::setRaceID(byte race) {
 }
 
 void PlayerObject::setMaximumLots(byte lots) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2600,7 +2601,7 @@ void PlayerObject::setMaximumLots(byte lots) {
 }
 
 byte PlayerObject::getMaximumLots() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2645,7 +2646,7 @@ void PlayerObjectImplementation::_initializeImplementation() {
 }
 
 void PlayerObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PlayerObject*) stub;
+	_this = static_cast<PlayerObject*>(stub);
 	IntangibleObjectImplementation::_setStub(stub);
 }
 
@@ -4280,22 +4281,22 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDMESSAGE__BASEPACKET_:
-		sendMessage((BasePacket*) inv->getObjectParameter());
+		sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_:
-		addOwnedStructure((StructureObject*) inv->getObjectParameter());
+		addOwnedStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_:
-		removeOwnedStructure((StructureObject*) inv->getObjectParameter());
+		removeOwnedStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETTOTALOWNEDSTRUCTURECOUNT__:
 		resp->insertSignedInt(getTotalOwnedStructureCount());
 		break;
 	case RPC_ISOWNEDSTRUCTURE__STRUCTUREOBJECT_:
-		resp->insertBoolean(isOwnedStructure((StructureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isOwnedStructure(static_cast<StructureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETOWNEDSTRUCTURE__INT_:
 		resp->insertLong(getOwnedStructure(inv->getSignedIntParameter())->_getObjectID());
@@ -4316,10 +4317,10 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		removeExperience(inv->getAsciiParameter(_param0_removeExperience__String_bool_), inv->getBooleanParameter());
 		break;
 	case RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_:
-		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		addWaypoint(static_cast<WaypointObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_:
-		setWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		setWaypoint(static_cast<WaypointObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_:
 		addWaypoint(inv->getAsciiParameter(_param0_addWaypoint__String_float_float_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter());
@@ -4373,7 +4374,7 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		disconnect(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_RELOAD__ZONECLIENTSESSION_:
-		reload((ZoneClientSession*) inv->getObjectParameter());
+		reload(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETOFFLINE__:
 		setOffline();
@@ -4388,7 +4389,7 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		setLoggingOut();
 		break;
 	case RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_:
-		sendBadgesResponseTo((CreatureObject*) inv->getObjectParameter());
+		sendBadgesResponseTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_LOGOUT__BOOL_:
 		logout(inv->getBooleanParameter());
@@ -4418,7 +4419,7 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		clearLastNpcConvOptions();
 		break;
 	case RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_:
-		setConversatingCreature((CreatureObject*) inv->getObjectParameter());
+		setConversatingCreature(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETCONVERSATINGCREATURE__:
 		resp->insertLong(getConversatingCreature()->_getObjectID());
@@ -4457,10 +4458,10 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getDeclaredResidence()->_getObjectID());
 		break;
 	case RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_:
-		setDeclaredResidence((BuildingObject*) inv->getObjectParameter());
+		setDeclaredResidence(static_cast<BuildingObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETCLONINGFACILITY__BUILDINGOBJECT_:
-		setCloningFacility((BuildingObject*) inv->getObjectParameter());
+		setCloningFacility(static_cast<BuildingObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETCLONINGFACILITY__:
 		resp->insertLong(getCloningFacility()->_getObjectID());
@@ -4511,7 +4512,7 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getSuiBoxFromWindowType(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case RPC_ADDSUIBOX__SUIBOX_:
-		addSuiBox((SuiBox*) inv->getObjectParameter());
+		addSuiBox(static_cast<SuiBox*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISFIRSTINCAPACITATIONEXPIRED__:
 		resp->insertBoolean(isFirstIncapacitationExpired());
@@ -4532,16 +4533,16 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertByte(getIncapacitationCounter());
 		break;
 	case RPC_ADDTODUELLIST__CREATUREOBJECT_:
-		addToDuelList((CreatureObject*) inv->getObjectParameter());
+		addToDuelList(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_:
-		removeFromDuelList((CreatureObject*) inv->getObjectParameter());
+		removeFromDuelList(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETDUELLISTOBJECT__INT_:
 		resp->insertLong(getDuelListObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case RPC_REQUESTEDDUELTO__CREATUREOBJECT_:
-		resp->insertBoolean(requestedDuelTo((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(requestedDuelTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ISDUELLISTEMPTY__:
 		resp->insertBoolean(isDuelListEmpty());
@@ -4562,7 +4563,7 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		awardBadge(inv->getUnsignedIntParameter());
 		break;
 	case RPC_SETSURVEYTOOL__SURVEYTOOL_:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		setSurveyTool(static_cast<SurveyTool*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETSURVEYTOOL__:
 		resp->insertLong(getSurveyTool()->_getObjectID());
@@ -4571,7 +4572,7 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getLastCraftingToolUsed()->_getObjectID());
 		break;
 	case RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_:
-		setLastCraftingToolUsed((CraftingTool*) inv->getObjectParameter());
+		setLastCraftingToolUsed(static_cast<CraftingTool*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETTELEPORTING__BOOL_:
 		setTeleporting(inv->getBooleanParameter());
@@ -4670,10 +4671,10 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isTeleporting());
 		break;
 	case RPC_ADDCHATROOM__CHATROOM_:
-		addChatRoom((ChatRoom*) inv->getObjectParameter());
+		addChatRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVECHATROOM__CHATROOM_:
-		removeChatRoom((ChatRoom*) inv->getObjectParameter());
+		removeChatRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETEXPERIENCE__STRING_:
 		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__String_)));
@@ -4785,683 +4786,683 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void PlayerObjectAdapter::finalize() {
-	((PlayerObjectImplementation*) impl)->finalize();
+	(static_cast<PlayerObjectImplementation*>(impl))->finalize();
 }
 
 void PlayerObjectAdapter::notifyLoadFromDatabase() {
-	((PlayerObjectImplementation*) impl)->notifyLoadFromDatabase();
+	(static_cast<PlayerObjectImplementation*>(impl))->notifyLoadFromDatabase();
 }
 
 void PlayerObjectAdapter::unload() {
-	((PlayerObjectImplementation*) impl)->unload();
+	(static_cast<PlayerObjectImplementation*>(impl))->unload();
 }
 
 void PlayerObjectAdapter::initializeTransientMembers() {
-	((PlayerObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<PlayerObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void PlayerObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((PlayerObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<PlayerObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 void PlayerObjectAdapter::sendMessage(BasePacket* msg) {
-	((PlayerObjectImplementation*) impl)->sendMessage(msg);
+	(static_cast<PlayerObjectImplementation*>(impl))->sendMessage(msg);
 }
 
 void PlayerObjectAdapter::addOwnedStructure(StructureObject* obj) {
-	((PlayerObjectImplementation*) impl)->addOwnedStructure(obj);
+	(static_cast<PlayerObjectImplementation*>(impl))->addOwnedStructure(obj);
 }
 
 void PlayerObjectAdapter::removeOwnedStructure(StructureObject* obj) {
-	((PlayerObjectImplementation*) impl)->removeOwnedStructure(obj);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeOwnedStructure(obj);
 }
 
 int PlayerObjectAdapter::getTotalOwnedStructureCount() {
-	return ((PlayerObjectImplementation*) impl)->getTotalOwnedStructureCount();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getTotalOwnedStructureCount();
 }
 
 bool PlayerObjectAdapter::isOwnedStructure(StructureObject* obj) {
-	return ((PlayerObjectImplementation*) impl)->isOwnedStructure(obj);
+	return (static_cast<PlayerObjectImplementation*>(impl))->isOwnedStructure(obj);
 }
 
 StructureObject* PlayerObjectAdapter::getOwnedStructure(int i) {
-	return ((PlayerObjectImplementation*) impl)->getOwnedStructure(i);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getOwnedStructure(i);
 }
 
 int PlayerObjectAdapter::getLotsRemaining() {
-	return ((PlayerObjectImplementation*) impl)->getLotsRemaining();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getLotsRemaining();
 }
 
 bool PlayerObjectAdapter::hasLotsRemaining(int lots) {
-	return ((PlayerObjectImplementation*) impl)->hasLotsRemaining(lots);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasLotsRemaining(lots);
 }
 
 void PlayerObjectAdapter::notifySceneReady() {
-	((PlayerObjectImplementation*) impl)->notifySceneReady();
+	(static_cast<PlayerObjectImplementation*>(impl))->notifySceneReady();
 }
 
 int PlayerObjectAdapter::addExperience(const String& xpType, int xp, bool notifyClient) {
-	return ((PlayerObjectImplementation*) impl)->addExperience(xpType, xp, notifyClient);
+	return (static_cast<PlayerObjectImplementation*>(impl))->addExperience(xpType, xp, notifyClient);
 }
 
 void PlayerObjectAdapter::removeExperience(const String& xpType, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->removeExperience(xpType, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeExperience(xpType, notifyClient);
 }
 
 void PlayerObjectAdapter::addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->addWaypoint(waypoint, checkName, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->addWaypoint(waypoint, checkName, notifyClient);
 }
 
 void PlayerObjectAdapter::setWaypoint(WaypointObject* waypoint, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->setWaypoint(waypoint, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->setWaypoint(waypoint, notifyClient);
 }
 
 void PlayerObjectAdapter::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->addWaypoint(planet, positionX, positionY, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->addWaypoint(planet, positionX, positionY, notifyClient);
 }
 
 void PlayerObjectAdapter::removeWaypoint(unsigned long long waypointID, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->removeWaypoint(waypointID, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeWaypoint(waypointID, notifyClient);
 }
 
 void PlayerObjectAdapter::setLanguageID(byte language, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->setLanguageID(language, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->setLanguageID(language, notifyClient);
 }
 
 void PlayerObjectAdapter::addFriend(const String& name, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->addFriend(name, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->addFriend(name, notifyClient);
 }
 
 void PlayerObjectAdapter::removeFriend(const String& name, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->removeFriend(name, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeFriend(name, notifyClient);
 }
 
 void PlayerObjectAdapter::addIgnore(const String& name, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->addIgnore(name, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->addIgnore(name, notifyClient);
 }
 
 void PlayerObjectAdapter::removeIgnore(const String& name, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->removeIgnore(name, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeIgnore(name, notifyClient);
 }
 
 void PlayerObjectAdapter::setTitle(const String& characterTitle, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->setTitle(characterTitle, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->setTitle(characterTitle, notifyClient);
 }
 
 void PlayerObjectAdapter::setFoodFilling(int newValue, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->setFoodFilling(newValue, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->setFoodFilling(newValue, notifyClient);
 }
 
 void PlayerObjectAdapter::setDrinkFilling(int newValue, bool notifyClient) {
-	((PlayerObjectImplementation*) impl)->setDrinkFilling(newValue, notifyClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->setDrinkFilling(newValue, notifyClient);
 }
 
 void PlayerObjectAdapter::increaseFactionStanding(const String& factionName, float amount) {
-	((PlayerObjectImplementation*) impl)->increaseFactionStanding(factionName, amount);
+	(static_cast<PlayerObjectImplementation*>(impl))->increaseFactionStanding(factionName, amount);
 }
 
 void PlayerObjectAdapter::decreaseFactionStanding(const String& factionName, float amount) {
-	((PlayerObjectImplementation*) impl)->decreaseFactionStanding(factionName, amount);
+	(static_cast<PlayerObjectImplementation*>(impl))->decreaseFactionStanding(factionName, amount);
 }
 
 float PlayerObjectAdapter::getFactionStanding(const String& factionName) {
-	return ((PlayerObjectImplementation*) impl)->getFactionStanding(factionName);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getFactionStanding(factionName);
 }
 
 WaypointObject* PlayerObjectAdapter::getSurveyWaypoint() {
-	return ((PlayerObjectImplementation*) impl)->getSurveyWaypoint();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSurveyWaypoint();
 }
 
 void PlayerObjectAdapter::activateRecovery() {
-	((PlayerObjectImplementation*) impl)->activateRecovery();
+	(static_cast<PlayerObjectImplementation*>(impl))->activateRecovery();
 }
 
 void PlayerObjectAdapter::doRecovery() {
-	((PlayerObjectImplementation*) impl)->doRecovery();
+	(static_cast<PlayerObjectImplementation*>(impl))->doRecovery();
 }
 
 void PlayerObjectAdapter::disconnect(bool closeClient, bool doLock) {
-	((PlayerObjectImplementation*) impl)->disconnect(closeClient, doLock);
+	(static_cast<PlayerObjectImplementation*>(impl))->disconnect(closeClient, doLock);
 }
 
 void PlayerObjectAdapter::reload(ZoneClientSession* client) {
-	((PlayerObjectImplementation*) impl)->reload(client);
+	(static_cast<PlayerObjectImplementation*>(impl))->reload(client);
 }
 
 void PlayerObjectAdapter::setOffline() {
-	((PlayerObjectImplementation*) impl)->setOffline();
+	(static_cast<PlayerObjectImplementation*>(impl))->setOffline();
 }
 
 void PlayerObjectAdapter::setLinkDead() {
-	((PlayerObjectImplementation*) impl)->setLinkDead();
+	(static_cast<PlayerObjectImplementation*>(impl))->setLinkDead();
 }
 
 void PlayerObjectAdapter::setOnline() {
-	((PlayerObjectImplementation*) impl)->setOnline();
+	(static_cast<PlayerObjectImplementation*>(impl))->setOnline();
 }
 
 void PlayerObjectAdapter::setLoggingOut() {
-	((PlayerObjectImplementation*) impl)->setLoggingOut();
+	(static_cast<PlayerObjectImplementation*>(impl))->setLoggingOut();
 }
 
 void PlayerObjectAdapter::sendBadgesResponseTo(CreatureObject* player) {
-	((PlayerObjectImplementation*) impl)->sendBadgesResponseTo(player);
+	(static_cast<PlayerObjectImplementation*>(impl))->sendBadgesResponseTo(player);
 }
 
 void PlayerObjectAdapter::logout(bool doLock) {
-	((PlayerObjectImplementation*) impl)->logout(doLock);
+	(static_cast<PlayerObjectImplementation*>(impl))->logout(doLock);
 }
 
 void PlayerObjectAdapter::setLastNpcConvStr(const String& conv) {
-	((PlayerObjectImplementation*) impl)->setLastNpcConvStr(conv);
+	(static_cast<PlayerObjectImplementation*>(impl))->setLastNpcConvStr(conv);
 }
 
 void PlayerObjectAdapter::setLastNpcConvMessStr(const String& mess) {
-	((PlayerObjectImplementation*) impl)->setLastNpcConvMessStr(mess);
+	(static_cast<PlayerObjectImplementation*>(impl))->setLastNpcConvMessStr(mess);
 }
 
 String PlayerObjectAdapter::getLastNpcConvStr() {
-	return ((PlayerObjectImplementation*) impl)->getLastNpcConvStr();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getLastNpcConvStr();
 }
 
 String PlayerObjectAdapter::getLastNpcConvMessStr() {
-	return ((PlayerObjectImplementation*) impl)->getLastNpcConvMessStr();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getLastNpcConvMessStr();
 }
 
 String PlayerObjectAdapter::getLastNpcConvOption(int idx) {
-	return ((PlayerObjectImplementation*) impl)->getLastNpcConvOption(idx);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getLastNpcConvOption(idx);
 }
 
 void PlayerObjectAdapter::addLastNpcConvOptions(const String& option) {
-	((PlayerObjectImplementation*) impl)->addLastNpcConvOptions(option);
+	(static_cast<PlayerObjectImplementation*>(impl))->addLastNpcConvOptions(option);
 }
 
 int PlayerObjectAdapter::countLastNpcConvOptions() {
-	return ((PlayerObjectImplementation*) impl)->countLastNpcConvOptions();
+	return (static_cast<PlayerObjectImplementation*>(impl))->countLastNpcConvOptions();
 }
 
 void PlayerObjectAdapter::clearLastNpcConvOptions() {
-	((PlayerObjectImplementation*) impl)->clearLastNpcConvOptions();
+	(static_cast<PlayerObjectImplementation*>(impl))->clearLastNpcConvOptions();
 }
 
 void PlayerObjectAdapter::setConversatingCreature(CreatureObject* creature) {
-	((PlayerObjectImplementation*) impl)->setConversatingCreature(creature);
+	(static_cast<PlayerObjectImplementation*>(impl))->setConversatingCreature(creature);
 }
 
 CreatureObject* PlayerObjectAdapter::getConversatingCreature() {
-	return ((PlayerObjectImplementation*) impl)->getConversatingCreature();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getConversatingCreature();
 }
 
 void PlayerObjectAdapter::addPersistentMessage(unsigned long long id) {
-	((PlayerObjectImplementation*) impl)->addPersistentMessage(id);
+	(static_cast<PlayerObjectImplementation*>(impl))->addPersistentMessage(id);
 }
 
 void PlayerObjectAdapter::dropPersistentMessage(unsigned long long id) {
-	((PlayerObjectImplementation*) impl)->dropPersistentMessage(id);
+	(static_cast<PlayerObjectImplementation*>(impl))->dropPersistentMessage(id);
 }
 
 void PlayerObjectAdapter::unloadSpawnedChildren() {
-	((PlayerObjectImplementation*) impl)->unloadSpawnedChildren();
+	(static_cast<PlayerObjectImplementation*>(impl))->unloadSpawnedChildren();
 }
 
 void PlayerObjectAdapter::addToConsentList(const String& name) {
-	((PlayerObjectImplementation*) impl)->addToConsentList(name);
+	(static_cast<PlayerObjectImplementation*>(impl))->addToConsentList(name);
 }
 
 bool PlayerObjectAdapter::hasInConsentList(const String& name) {
-	return ((PlayerObjectImplementation*) impl)->hasInConsentList(name);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasInConsentList(name);
 }
 
 void PlayerObjectAdapter::removeFromConsentList(const String& name) {
-	((PlayerObjectImplementation*) impl)->removeFromConsentList(name);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeFromConsentList(name);
 }
 
 String PlayerObjectAdapter::getConsentName(int i) {
-	return ((PlayerObjectImplementation*) impl)->getConsentName(i);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getConsentName(i);
 }
 
 int PlayerObjectAdapter::getConsentListSize() {
-	return ((PlayerObjectImplementation*) impl)->getConsentListSize();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getConsentListSize();
 }
 
 void PlayerObjectAdapter::setCommandMessageString(unsigned int actionCRC, String& message) {
-	((PlayerObjectImplementation*) impl)->setCommandMessageString(actionCRC, message);
+	(static_cast<PlayerObjectImplementation*>(impl))->setCommandMessageString(actionCRC, message);
 }
 
 void PlayerObjectAdapter::removeCommandMessageString(unsigned int actionCRC) {
-	((PlayerObjectImplementation*) impl)->removeCommandMessageString(actionCRC);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeCommandMessageString(actionCRC);
 }
 
 BuildingObject* PlayerObjectAdapter::getDeclaredResidence() {
-	return ((PlayerObjectImplementation*) impl)->getDeclaredResidence();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getDeclaredResidence();
 }
 
 void PlayerObjectAdapter::setDeclaredResidence(BuildingObject* residence) {
-	((PlayerObjectImplementation*) impl)->setDeclaredResidence(residence);
+	(static_cast<PlayerObjectImplementation*>(impl))->setDeclaredResidence(residence);
 }
 
 void PlayerObjectAdapter::setCloningFacility(BuildingObject* cloningfac) {
-	((PlayerObjectImplementation*) impl)->setCloningFacility(cloningfac);
+	(static_cast<PlayerObjectImplementation*>(impl))->setCloningFacility(cloningfac);
 }
 
 BuildingObject* PlayerObjectAdapter::getCloningFacility() {
-	return ((PlayerObjectImplementation*) impl)->getCloningFacility();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getCloningFacility();
 }
 
 void PlayerObjectAdapter::notifyOnline() {
-	((PlayerObjectImplementation*) impl)->notifyOnline();
+	(static_cast<PlayerObjectImplementation*>(impl))->notifyOnline();
 }
 
 void PlayerObjectAdapter::doDigest() {
-	((PlayerObjectImplementation*) impl)->doDigest();
+	(static_cast<PlayerObjectImplementation*>(impl))->doDigest();
 }
 
 bool PlayerObjectAdapter::isDigesting() {
-	return ((PlayerObjectImplementation*) impl)->isDigesting();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isDigesting();
 }
 
 String PlayerObjectAdapter::getSavedTerrainName() {
-	return ((PlayerObjectImplementation*) impl)->getSavedTerrainName();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSavedTerrainName();
 }
 
 void PlayerObjectAdapter::setSavedParentID(unsigned long long id) {
-	((PlayerObjectImplementation*) impl)->setSavedParentID(id);
+	(static_cast<PlayerObjectImplementation*>(impl))->setSavedParentID(id);
 }
 
 void PlayerObjectAdapter::setSavedTerrainName(const String& name) {
-	((PlayerObjectImplementation*) impl)->setSavedTerrainName(name);
+	(static_cast<PlayerObjectImplementation*>(impl))->setSavedTerrainName(name);
 }
 
 unsigned long long PlayerObjectAdapter::getSavedParentID() {
-	return ((PlayerObjectImplementation*) impl)->getSavedParentID();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSavedParentID();
 }
 
 unsigned int PlayerObjectAdapter::getNewSuiBoxID(unsigned int type) {
-	return ((PlayerObjectImplementation*) impl)->getNewSuiBoxID(type);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getNewSuiBoxID(type);
 }
 
 bool PlayerObjectAdapter::hasSuiBox(unsigned int boxID) {
-	return ((PlayerObjectImplementation*) impl)->hasSuiBox(boxID);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasSuiBox(boxID);
 }
 
 SuiBox* PlayerObjectAdapter::getSuiBox(unsigned int boxID) {
-	return ((PlayerObjectImplementation*) impl)->getSuiBox(boxID);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSuiBox(boxID);
 }
 
 void PlayerObjectAdapter::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
-	((PlayerObjectImplementation*) impl)->removeSuiBox(boxID, closeWindowToClient);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeSuiBox(boxID, closeWindowToClient);
 }
 
 void PlayerObjectAdapter::removeSuiBoxType(unsigned int windowType) {
-	((PlayerObjectImplementation*) impl)->removeSuiBoxType(windowType);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeSuiBoxType(windowType);
 }
 
 bool PlayerObjectAdapter::hasSuiBoxWindowType(unsigned int windowType) {
-	return ((PlayerObjectImplementation*) impl)->hasSuiBoxWindowType(windowType);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasSuiBoxWindowType(windowType);
 }
 
 void PlayerObjectAdapter::closeSuiWindowType(unsigned int windowType) {
-	((PlayerObjectImplementation*) impl)->closeSuiWindowType(windowType);
+	(static_cast<PlayerObjectImplementation*>(impl))->closeSuiWindowType(windowType);
 }
 
 SuiBox* PlayerObjectAdapter::getSuiBoxFromWindowType(unsigned int windowType) {
-	return ((PlayerObjectImplementation*) impl)->getSuiBoxFromWindowType(windowType);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSuiBoxFromWindowType(windowType);
 }
 
 void PlayerObjectAdapter::addSuiBox(SuiBox* sui) {
-	((PlayerObjectImplementation*) impl)->addSuiBox(sui);
+	(static_cast<PlayerObjectImplementation*>(impl))->addSuiBox(sui);
 }
 
 bool PlayerObjectAdapter::isFirstIncapacitationExpired() {
-	return ((PlayerObjectImplementation*) impl)->isFirstIncapacitationExpired();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isFirstIncapacitationExpired();
 }
 
 void PlayerObjectAdapter::resetIncapacitationCounter() {
-	((PlayerObjectImplementation*) impl)->resetIncapacitationCounter();
+	(static_cast<PlayerObjectImplementation*>(impl))->resetIncapacitationCounter();
 }
 
 void PlayerObjectAdapter::resetFirstIncapacitationTime() {
-	((PlayerObjectImplementation*) impl)->resetFirstIncapacitationTime();
+	(static_cast<PlayerObjectImplementation*>(impl))->resetFirstIncapacitationTime();
 }
 
 void PlayerObjectAdapter::updateIncapacitationCounter() {
-	((PlayerObjectImplementation*) impl)->updateIncapacitationCounter();
+	(static_cast<PlayerObjectImplementation*>(impl))->updateIncapacitationCounter();
 }
 
 bool PlayerObjectAdapter::isFirstIncapacitation() {
-	return ((PlayerObjectImplementation*) impl)->isFirstIncapacitation();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isFirstIncapacitation();
 }
 
 byte PlayerObjectAdapter::getIncapacitationCounter() {
-	return ((PlayerObjectImplementation*) impl)->getIncapacitationCounter();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getIncapacitationCounter();
 }
 
 void PlayerObjectAdapter::addToDuelList(CreatureObject* targetPlayer) {
-	((PlayerObjectImplementation*) impl)->addToDuelList(targetPlayer);
+	(static_cast<PlayerObjectImplementation*>(impl))->addToDuelList(targetPlayer);
 }
 
 void PlayerObjectAdapter::removeFromDuelList(CreatureObject* targetPlayer) {
-	((PlayerObjectImplementation*) impl)->removeFromDuelList(targetPlayer);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeFromDuelList(targetPlayer);
 }
 
 CreatureObject* PlayerObjectAdapter::getDuelListObject(int index) {
-	return ((PlayerObjectImplementation*) impl)->getDuelListObject(index);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getDuelListObject(index);
 }
 
 bool PlayerObjectAdapter::requestedDuelTo(CreatureObject* targetPlayer) {
-	return ((PlayerObjectImplementation*) impl)->requestedDuelTo(targetPlayer);
+	return (static_cast<PlayerObjectImplementation*>(impl))->requestedDuelTo(targetPlayer);
 }
 
 bool PlayerObjectAdapter::isDuelListEmpty() {
-	return ((PlayerObjectImplementation*) impl)->isDuelListEmpty();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isDuelListEmpty();
 }
 
 int PlayerObjectAdapter::getDuelListSize() {
-	return ((PlayerObjectImplementation*) impl)->getDuelListSize();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getDuelListSize();
 }
 
 UnicodeString PlayerObjectAdapter::getBiography() {
-	return ((PlayerObjectImplementation*) impl)->getBiography();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getBiography();
 }
 
 void PlayerObjectAdapter::notifyOffline() {
-	((PlayerObjectImplementation*) impl)->notifyOffline();
+	(static_cast<PlayerObjectImplementation*>(impl))->notifyOffline();
 }
 
 void PlayerObjectAdapter::setBadge(unsigned int badge) {
-	((PlayerObjectImplementation*) impl)->setBadge(badge);
+	(static_cast<PlayerObjectImplementation*>(impl))->setBadge(badge);
 }
 
 void PlayerObjectAdapter::awardBadge(unsigned int badge) {
-	((PlayerObjectImplementation*) impl)->awardBadge(badge);
+	(static_cast<PlayerObjectImplementation*>(impl))->awardBadge(badge);
 }
 
 void PlayerObjectAdapter::setSurveyTool(SurveyTool* tool) {
-	((PlayerObjectImplementation*) impl)->setSurveyTool(tool);
+	(static_cast<PlayerObjectImplementation*>(impl))->setSurveyTool(tool);
 }
 
 SurveyTool* PlayerObjectAdapter::getSurveyTool() {
-	return ((PlayerObjectImplementation*) impl)->getSurveyTool();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSurveyTool();
 }
 
 CraftingTool* PlayerObjectAdapter::getLastCraftingToolUsed() {
-	return ((PlayerObjectImplementation*) impl)->getLastCraftingToolUsed();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getLastCraftingToolUsed();
 }
 
 void PlayerObjectAdapter::setLastCraftingToolUsed(CraftingTool* tool) {
-	((PlayerObjectImplementation*) impl)->setLastCraftingToolUsed(tool);
+	(static_cast<PlayerObjectImplementation*>(impl))->setLastCraftingToolUsed(tool);
 }
 
 void PlayerObjectAdapter::setTeleporting(bool val) {
-	((PlayerObjectImplementation*) impl)->setTeleporting(val);
+	(static_cast<PlayerObjectImplementation*>(impl))->setTeleporting(val);
 }
 
 int PlayerObjectAdapter::getNumBadges() {
-	return ((PlayerObjectImplementation*) impl)->getNumBadges();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getNumBadges();
 }
 
 int PlayerObjectAdapter::getBadgeTypeCount(byte type) {
-	return ((PlayerObjectImplementation*) impl)->getBadgeTypeCount(type);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getBadgeTypeCount(type);
 }
 
 bool PlayerObjectAdapter::hasFriend(const String& name) {
-	return ((PlayerObjectImplementation*) impl)->hasFriend(name);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasFriend(name);
 }
 
 bool PlayerObjectAdapter::isIgnoring(const String& name) {
-	return ((PlayerObjectImplementation*) impl)->isIgnoring(name);
+	return (static_cast<PlayerObjectImplementation*>(impl))->isIgnoring(name);
 }
 
 void PlayerObjectAdapter::addReverseFriend(const String& name) {
-	((PlayerObjectImplementation*) impl)->addReverseFriend(name);
+	(static_cast<PlayerObjectImplementation*>(impl))->addReverseFriend(name);
 }
 
 void PlayerObjectAdapter::removeReverseFriend(const String& name) {
-	((PlayerObjectImplementation*) impl)->removeReverseFriend(name);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeReverseFriend(name);
 }
 
 void PlayerObjectAdapter::sendFriendLists() {
-	((PlayerObjectImplementation*) impl)->sendFriendLists();
+	(static_cast<PlayerObjectImplementation*>(impl))->sendFriendLists();
 }
 
 bool PlayerObjectAdapter::hasWaypoint(unsigned long long objectID) {
-	return ((PlayerObjectImplementation*) impl)->hasWaypoint(objectID);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasWaypoint(objectID);
 }
 
 bool PlayerObjectAdapter::hasCommandMessageString(unsigned int actionCRC) {
-	return ((PlayerObjectImplementation*) impl)->hasCommandMessageString(actionCRC);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasCommandMessageString(actionCRC);
 }
 
 unsigned int PlayerObjectAdapter::getCharacterBitmask() {
-	return ((PlayerObjectImplementation*) impl)->getCharacterBitmask();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getCharacterBitmask();
 }
 
 String PlayerObjectAdapter::getTitle() {
-	return ((PlayerObjectImplementation*) impl)->getTitle();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getTitle();
 }
 
 unsigned int PlayerObjectAdapter::getAdminLevel() {
-	return ((PlayerObjectImplementation*) impl)->getAdminLevel();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getAdminLevel();
 }
 
 void PlayerObjectAdapter::setAdminLevel(unsigned int adminlvl) {
-	((PlayerObjectImplementation*) impl)->setAdminLevel(adminlvl);
+	(static_cast<PlayerObjectImplementation*>(impl))->setAdminLevel(adminlvl);
 }
 
 void PlayerObjectAdapter::setBiography(const UnicodeString& bio) {
-	((PlayerObjectImplementation*) impl)->setBiography(bio);
+	(static_cast<PlayerObjectImplementation*>(impl))->setBiography(bio);
 }
 
 bool PlayerObjectAdapter::isDeveloper() {
-	return ((PlayerObjectImplementation*) impl)->isDeveloper();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isDeveloper();
 }
 
 bool PlayerObjectAdapter::isCSR() {
-	return ((PlayerObjectImplementation*) impl)->isCSR();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isCSR();
 }
 
 bool PlayerObjectAdapter::isPrivileged() {
-	return ((PlayerObjectImplementation*) impl)->isPrivileged();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isPrivileged();
 }
 
 void PlayerObjectAdapter::setCharacterBitmask(unsigned int bitmask) {
-	((PlayerObjectImplementation*) impl)->setCharacterBitmask(bitmask);
+	(static_cast<PlayerObjectImplementation*>(impl))->setCharacterBitmask(bitmask);
 }
 
 bool PlayerObjectAdapter::setCharacterBit(unsigned int bit, bool notifyClient) {
-	return ((PlayerObjectImplementation*) impl)->setCharacterBit(bit, notifyClient);
+	return (static_cast<PlayerObjectImplementation*>(impl))->setCharacterBit(bit, notifyClient);
 }
 
 bool PlayerObjectAdapter::clearCharacterBit(unsigned int bit, bool notifyClient) {
-	return ((PlayerObjectImplementation*) impl)->clearCharacterBit(bit, notifyClient);
+	return (static_cast<PlayerObjectImplementation*>(impl))->clearCharacterBit(bit, notifyClient);
 }
 
 void PlayerObjectAdapter::toggleCharacterBit(unsigned int bit) {
-	((PlayerObjectImplementation*) impl)->toggleCharacterBit(bit);
+	(static_cast<PlayerObjectImplementation*>(impl))->toggleCharacterBit(bit);
 }
 
 int PlayerObjectAdapter::getForcePower() {
-	return ((PlayerObjectImplementation*) impl)->getForcePower();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getForcePower();
 }
 
 int PlayerObjectAdapter::getForcePowerMax() {
-	return ((PlayerObjectImplementation*) impl)->getForcePowerMax();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getForcePowerMax();
 }
 
 DraftSchematic* PlayerObjectAdapter::getSchematic(int i) {
-	return ((PlayerObjectImplementation*) impl)->getSchematic(i);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSchematic(i);
 }
 
 int PlayerObjectAdapter::getFoodFilling() {
-	return ((PlayerObjectImplementation*) impl)->getFoodFilling();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getFoodFilling();
 }
 
 int PlayerObjectAdapter::getFoodFillingMax() {
-	return ((PlayerObjectImplementation*) impl)->getFoodFillingMax();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getFoodFillingMax();
 }
 
 int PlayerObjectAdapter::getDrinkFilling() {
-	return ((PlayerObjectImplementation*) impl)->getDrinkFilling();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getDrinkFilling();
 }
 
 int PlayerObjectAdapter::getDrinkFillingMax() {
-	return ((PlayerObjectImplementation*) impl)->getDrinkFillingMax();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getDrinkFillingMax();
 }
 
 int PlayerObjectAdapter::getJediState() {
-	return ((PlayerObjectImplementation*) impl)->getJediState();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getJediState();
 }
 
 byte PlayerObjectAdapter::getLanguageID() {
-	return ((PlayerObjectImplementation*) impl)->getLanguageID();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getLanguageID();
 }
 
 bool PlayerObjectAdapter::isTeleporting() {
-	return ((PlayerObjectImplementation*) impl)->isTeleporting();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isTeleporting();
 }
 
 void PlayerObjectAdapter::addChatRoom(ChatRoom* room) {
-	((PlayerObjectImplementation*) impl)->addChatRoom(room);
+	(static_cast<PlayerObjectImplementation*>(impl))->addChatRoom(room);
 }
 
 void PlayerObjectAdapter::removeChatRoom(ChatRoom* room) {
-	((PlayerObjectImplementation*) impl)->removeChatRoom(room);
+	(static_cast<PlayerObjectImplementation*>(impl))->removeChatRoom(room);
 }
 
 int PlayerObjectAdapter::getExperience(const String& xp) {
-	return ((PlayerObjectImplementation*) impl)->getExperience(xp);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getExperience(xp);
 }
 
 String PlayerObjectAdapter::getCommandMessageString(unsigned int actionCRC) {
-	return ((PlayerObjectImplementation*) impl)->getCommandMessageString(actionCRC);
+	return (static_cast<PlayerObjectImplementation*>(impl))->getCommandMessageString(actionCRC);
 }
 
 bool PlayerObjectAdapter::hasBadge(unsigned int badge) {
-	return ((PlayerObjectImplementation*) impl)->hasBadge(badge);
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasBadge(badge);
 }
 
 void PlayerObjectAdapter::clearDisconnectEvent() {
-	((PlayerObjectImplementation*) impl)->clearDisconnectEvent();
+	(static_cast<PlayerObjectImplementation*>(impl))->clearDisconnectEvent();
 }
 
 void PlayerObjectAdapter::clearRecoveryEvent() {
-	((PlayerObjectImplementation*) impl)->clearRecoveryEvent();
+	(static_cast<PlayerObjectImplementation*>(impl))->clearRecoveryEvent();
 }
 
 bool PlayerObjectAdapter::isOnline() {
-	return ((PlayerObjectImplementation*) impl)->isOnline();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isOnline();
 }
 
 bool PlayerObjectAdapter::isOffline() {
-	return ((PlayerObjectImplementation*) impl)->isOffline();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isOffline();
 }
 
 bool PlayerObjectAdapter::isLoading() {
-	return ((PlayerObjectImplementation*) impl)->isLoading();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isLoading();
 }
 
 bool PlayerObjectAdapter::isLinkDead() {
-	return ((PlayerObjectImplementation*) impl)->isLinkDead();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isLinkDead();
 }
 
 bool PlayerObjectAdapter::isLoggingIn() {
-	return ((PlayerObjectImplementation*) impl)->isLoggingIn();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isLoggingIn();
 }
 
 bool PlayerObjectAdapter::isLoggingOut() {
-	return ((PlayerObjectImplementation*) impl)->isLoggingOut();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isLoggingOut();
 }
 
 void PlayerObjectAdapter::setSkillPoints(int points) {
-	((PlayerObjectImplementation*) impl)->setSkillPoints(points);
+	(static_cast<PlayerObjectImplementation*>(impl))->setSkillPoints(points);
 }
 
 void PlayerObjectAdapter::addSkillPoints(int points) {
-	((PlayerObjectImplementation*) impl)->addSkillPoints(points);
+	(static_cast<PlayerObjectImplementation*>(impl))->addSkillPoints(points);
 }
 
 int PlayerObjectAdapter::getSkillPoints() {
-	return ((PlayerObjectImplementation*) impl)->getSkillPoints();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getSkillPoints();
 }
 
 void PlayerObjectAdapter::updateLastValidatedPosition() {
-	((PlayerObjectImplementation*) impl)->updateLastValidatedPosition();
+	(static_cast<PlayerObjectImplementation*>(impl))->updateLastValidatedPosition();
 }
 
 void PlayerObjectAdapter::setSpawnedBlueFrog() {
-	((PlayerObjectImplementation*) impl)->setSpawnedBlueFrog();
+	(static_cast<PlayerObjectImplementation*>(impl))->setSpawnedBlueFrog();
 }
 
 bool PlayerObjectAdapter::hasSpawnedBlueFrog() {
-	return ((PlayerObjectImplementation*) impl)->hasSpawnedBlueFrog();
+	return (static_cast<PlayerObjectImplementation*>(impl))->hasSpawnedBlueFrog();
 }
 
 unsigned int PlayerObjectAdapter::getAccountID() {
-	return ((PlayerObjectImplementation*) impl)->getAccountID();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getAccountID();
 }
 
 unsigned long long PlayerObjectAdapter::getServerMovementTimeDelta() {
-	return ((PlayerObjectImplementation*) impl)->getServerMovementTimeDelta();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getServerMovementTimeDelta();
 }
 
 void PlayerObjectAdapter::setClientLastMovementStamp(unsigned int stamp) {
-	((PlayerObjectImplementation*) impl)->setClientLastMovementStamp(stamp);
+	(static_cast<PlayerObjectImplementation*>(impl))->setClientLastMovementStamp(stamp);
 }
 
 void PlayerObjectAdapter::updateServerLastMovementStamp() {
-	((PlayerObjectImplementation*) impl)->updateServerLastMovementStamp();
+	(static_cast<PlayerObjectImplementation*>(impl))->updateServerLastMovementStamp();
 }
 
 void PlayerObjectAdapter::setAccountID(unsigned int id) {
-	((PlayerObjectImplementation*) impl)->setAccountID(id);
+	(static_cast<PlayerObjectImplementation*>(impl))->setAccountID(id);
 }
 
 int PlayerObjectAdapter::getFactionStatus() {
-	return ((PlayerObjectImplementation*) impl)->getFactionStatus();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getFactionStatus();
 }
 
 unsigned int PlayerObjectAdapter::getClientLastMovementStamp() {
-	return ((PlayerObjectImplementation*) impl)->getClientLastMovementStamp();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getClientLastMovementStamp();
 }
 
 int PlayerObjectAdapter::getCenteredBonus() {
-	return ((PlayerObjectImplementation*) impl)->getCenteredBonus();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getCenteredBonus();
 }
 
 void PlayerObjectAdapter::setCenteredBonus(int bonus) {
-	((PlayerObjectImplementation*) impl)->setCenteredBonus(bonus);
+	(static_cast<PlayerObjectImplementation*>(impl))->setCenteredBonus(bonus);
 }
 
 bool PlayerObjectAdapter::isInvisible() {
-	return ((PlayerObjectImplementation*) impl)->isInvisible();
+	return (static_cast<PlayerObjectImplementation*>(impl))->isInvisible();
 }
 
 void PlayerObjectAdapter::setInvisible(bool invis) {
-	((PlayerObjectImplementation*) impl)->setInvisible(invis);
+	(static_cast<PlayerObjectImplementation*>(impl))->setInvisible(invis);
 }
 
 void PlayerObjectAdapter::setHologrindMask(unsigned int mask) {
-	((PlayerObjectImplementation*) impl)->setHologrindMask(mask);
+	(static_cast<PlayerObjectImplementation*>(impl))->setHologrindMask(mask);
 }
 
 unsigned int PlayerObjectAdapter::getHologrindMask() {
-	return ((PlayerObjectImplementation*) impl)->getHologrindMask();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getHologrindMask();
 }
 
 byte PlayerObjectAdapter::getRaceID() {
-	return ((PlayerObjectImplementation*) impl)->getRaceID();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getRaceID();
 }
 
 void PlayerObjectAdapter::setRaceID(byte race) {
-	((PlayerObjectImplementation*) impl)->setRaceID(race);
+	(static_cast<PlayerObjectImplementation*>(impl))->setRaceID(race);
 }
 
 void PlayerObjectAdapter::setMaximumLots(byte lots) {
-	((PlayerObjectImplementation*) impl)->setMaximumLots(lots);
+	(static_cast<PlayerObjectImplementation*>(impl))->setMaximumLots(lots);
 }
 
 byte PlayerObjectAdapter::getMaximumLots() {
-	return ((PlayerObjectImplementation*) impl)->getMaximumLots();
+	return (static_cast<PlayerObjectImplementation*>(impl))->getMaximumLots();
 }
 
 /*
@@ -5489,7 +5490,7 @@ DistributedObjectServant* PlayerObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PlayerObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PlayerObjectAdapter((PlayerObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PlayerObjectAdapter(static_cast<PlayerObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

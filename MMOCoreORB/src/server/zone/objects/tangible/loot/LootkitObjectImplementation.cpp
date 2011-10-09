@@ -45,11 +45,11 @@ void LootkitObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 CreatureObject* LootkitObjectImplementation::getPlayer() {
 	SceneObject* player = getParent()->getParent();
 	if (player->isPlayerCreature()) {
-		return (CreatureObject*) player;
+		return cast<CreatureObject*>( player);
 	} else {
 		player = player->getParent();
 		if (player->isPlayerCreature()) {
-			return (CreatureObject*) player;
+			return cast<CreatureObject*>( player);
 		}
 	}
 	return NULL;

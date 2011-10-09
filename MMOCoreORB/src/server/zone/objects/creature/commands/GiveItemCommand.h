@@ -74,7 +74,7 @@ public:
 
 		if (object != NULL) {
 			if (object->isAttachment()) {
-				Attachment* attachment = (Attachment*) object.get();
+				Attachment* attachment = cast<Attachment*>( object.get());
 
 				if (!args.hasMoreTokens())
 					return GENERALERROR;
@@ -84,18 +84,18 @@ public:
 				ManagedReference<SceneObject*> scenObj = server->getZoneServer()->getObject(targetObjectID);
 
 				if (scenObj->isWearableObject()) {
-					WearableObject* wearable = (WearableObject*) scenObj.get();
-					wearable->applyAttachment((CreatureObject*) creature, attachment);
+					WearableObject* wearable = cast<WearableObject*>( scenObj.get());
+					wearable->applyAttachment(creature, attachment);
 					return SUCCESS;
 				}
 
 			} else if (object->isWearableObject() || object->isWeaponObject()) {
-				CreatureObject* player = (CreatureObject*) creature;
+				CreatureObject* player = cast<CreatureObject*>(creature);
 				if (player->getSkillMod("hiring") < 90) {
 					player->sendSystemMessage("You lack the necessary skills to perform that action");
 					return GENERALERROR;
 				}
-				TangibleObject* clothing = (TangibleObject*) object.get();
+				TangibleObject* clothing = cast<TangibleObject*>( object.get());
 
 				if (!args.hasMoreTokens())
 					return GENERALERROR;
@@ -106,7 +106,7 @@ public:
 
 				if (sceno->isVendor() && sceno->isCreatureObject()) {
 					VendorCreature* vendor = dynamic_cast<VendorCreature*>(sceno.get());
-					vendor->addClothingItem((CreatureObject*) creature, clothing);
+					vendor->addClothingItem(creature, clothing);
 					return SUCCESS;
 
 				}

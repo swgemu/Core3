@@ -29,8 +29,9 @@ MissionObserver::~MissionObserver() {
 }
 
 
+
 int MissionObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	MissionObserverImplementation* _implementation = (MissionObserverImplementation*) _getImplementation();
+	MissionObserverImplementation* _implementation = static_cast<MissionObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ int MissionObserver::notifyObserverEvent(unsigned int eventType, Observable* obs
 }
 
 void MissionObserver::destroyObjectFromDatabase() {
-	MissionObserverImplementation* _implementation = (MissionObserverImplementation*) _getImplementation();
+	MissionObserverImplementation* _implementation = static_cast<MissionObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -94,7 +95,7 @@ void MissionObserverImplementation::_initializeImplementation() {
 }
 
 void MissionObserverImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (MissionObserver*) stub;
+	_this = static_cast<MissionObserver*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -216,7 +217,7 @@ Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__:
 		destroyObjectFromDatabase();
@@ -229,11 +230,11 @@ Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int MissionObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((MissionObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<MissionObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void MissionObserverAdapter::destroyObjectFromDatabase() {
-	((MissionObserverImplementation*) impl)->destroyObjectFromDatabase();
+	(static_cast<MissionObserverImplementation*>(impl))->destroyObjectFromDatabase();
 }
 
 /*
@@ -261,7 +262,7 @@ DistributedObjectServant* MissionObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionObserverAdapter((MissionObserverImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new MissionObserverAdapter(static_cast<MissionObserverImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -39,8 +39,9 @@ DotPack::~DotPack() {
 }
 
 
+
 void DotPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -49,7 +50,7 @@ void DotPack::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void DotPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void DotPack::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void DotPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -67,7 +68,7 @@ void DotPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* objec
 }
 
 int DotPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,7 +83,7 @@ int DotPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 }
 
 int DotPack::calculatePower(CreatureObject* creature) {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ int DotPack::calculatePower(CreatureObject* creature) {
 }
 
 bool DotPack::isPoisonDeliveryUnit() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ bool DotPack::isPoisonDeliveryUnit() {
 }
 
 bool DotPack::isDiseaseDeliveryUnit() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -122,7 +123,7 @@ bool DotPack::isDiseaseDeliveryUnit() {
 }
 
 float DotPack::getEffectiveness() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -135,7 +136,7 @@ float DotPack::getEffectiveness() {
 }
 
 float DotPack::getRange() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +149,7 @@ float DotPack::getRange() {
 }
 
 float DotPack::getArea() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -161,7 +162,7 @@ float DotPack::getArea() {
 }
 
 float DotPack::getRangeMod() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -174,7 +175,7 @@ float DotPack::getRangeMod() {
 }
 
 float DotPack::getPotency() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -187,7 +188,7 @@ float DotPack::getPotency() {
 }
 
 unsigned int DotPack::getDuration() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -200,7 +201,7 @@ unsigned int DotPack::getDuration() {
 }
 
 bool DotPack::isArea() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -213,7 +214,7 @@ bool DotPack::isArea() {
 }
 
 unsigned int DotPack::getPool() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -226,7 +227,7 @@ unsigned int DotPack::getPool() {
 }
 
 unsigned int DotPack::getDotType() {
-	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -273,7 +274,7 @@ void DotPackImplementation::_initializeImplementation() {
 }
 
 void DotPackImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (DotPack*) stub;
+	_this = static_cast<DotPack*>(stub);
 	PharmaceuticalObjectImplementation::_setStub(stub);
 }
 
@@ -687,10 +688,10 @@ Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_:
-		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ISPOISONDELIVERYUNIT__:
 		resp->insertBoolean(isPoisonDeliveryUnit());
@@ -733,55 +734,55 @@ Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int DotPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((DotPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<DotPackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 int DotPackAdapter::calculatePower(CreatureObject* creature) {
-	return ((DotPackImplementation*) impl)->calculatePower(creature);
+	return (static_cast<DotPackImplementation*>(impl))->calculatePower(creature);
 }
 
 bool DotPackAdapter::isPoisonDeliveryUnit() {
-	return ((DotPackImplementation*) impl)->isPoisonDeliveryUnit();
+	return (static_cast<DotPackImplementation*>(impl))->isPoisonDeliveryUnit();
 }
 
 bool DotPackAdapter::isDiseaseDeliveryUnit() {
-	return ((DotPackImplementation*) impl)->isDiseaseDeliveryUnit();
+	return (static_cast<DotPackImplementation*>(impl))->isDiseaseDeliveryUnit();
 }
 
 float DotPackAdapter::getEffectiveness() {
-	return ((DotPackImplementation*) impl)->getEffectiveness();
+	return (static_cast<DotPackImplementation*>(impl))->getEffectiveness();
 }
 
 float DotPackAdapter::getRange() {
-	return ((DotPackImplementation*) impl)->getRange();
+	return (static_cast<DotPackImplementation*>(impl))->getRange();
 }
 
 float DotPackAdapter::getArea() {
-	return ((DotPackImplementation*) impl)->getArea();
+	return (static_cast<DotPackImplementation*>(impl))->getArea();
 }
 
 float DotPackAdapter::getRangeMod() {
-	return ((DotPackImplementation*) impl)->getRangeMod();
+	return (static_cast<DotPackImplementation*>(impl))->getRangeMod();
 }
 
 float DotPackAdapter::getPotency() {
-	return ((DotPackImplementation*) impl)->getPotency();
+	return (static_cast<DotPackImplementation*>(impl))->getPotency();
 }
 
 unsigned int DotPackAdapter::getDuration() {
-	return ((DotPackImplementation*) impl)->getDuration();
+	return (static_cast<DotPackImplementation*>(impl))->getDuration();
 }
 
 bool DotPackAdapter::isArea() {
-	return ((DotPackImplementation*) impl)->isArea();
+	return (static_cast<DotPackImplementation*>(impl))->isArea();
 }
 
 unsigned int DotPackAdapter::getPool() {
-	return ((DotPackImplementation*) impl)->getPool();
+	return (static_cast<DotPackImplementation*>(impl))->getPool();
 }
 
 unsigned int DotPackAdapter::getDotType() {
-	return ((DotPackImplementation*) impl)->getDotType();
+	return (static_cast<DotPackImplementation*>(impl))->getDotType();
 }
 
 /*
@@ -809,7 +810,7 @@ DistributedObjectServant* DotPackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DotPackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DotPackAdapter((DotPackImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new DotPackAdapter(static_cast<DotPackImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

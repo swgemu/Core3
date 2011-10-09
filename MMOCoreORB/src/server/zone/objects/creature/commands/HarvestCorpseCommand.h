@@ -72,19 +72,19 @@ public:
 		ManagedReference<SceneObject* > object =
 				server->getZoneServer()->getObject(target);
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
 		StringTokenizer args(arguments.toString());
 
 		if (object == NULL || !object->isCreatureObject() || player == NULL)
 			return INVALIDTARGET;
 
-		CreatureObject* creo = (CreatureObject*) object.get();
+		CreatureObject* creo = cast<CreatureObject*>( object.get());
 
 		if (!creo->isCreature())
 			return INVALIDTARGET;
 
-		Creature* cr = (Creature*) creo;
+		Creature* cr = cast<Creature*>( creo);
 
 		String harvesttype = "";
 

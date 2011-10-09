@@ -29,8 +29,9 @@ ArmorComponent::~ArmorComponent() {
 }
 
 
+
 void ArmorComponent::initializeTransientMembers() {
-	ArmorComponentImplementation* _implementation = (ArmorComponentImplementation*) _getImplementation();
+	ArmorComponentImplementation* _implementation = static_cast<ArmorComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void ArmorComponent::initializeTransientMembers() {
 }
 
 void ArmorComponent::updateCraftingValues(ManufactureSchematic* schematic) {
-	ArmorComponentImplementation* _implementation = (ArmorComponentImplementation*) _getImplementation();
+	ArmorComponentImplementation* _implementation = static_cast<ArmorComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -91,7 +92,7 @@ void ArmorComponentImplementation::_initializeImplementation() {
 }
 
 void ArmorComponentImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ArmorComponent*) stub;
+	_this = static_cast<ArmorComponent*>(stub);
 	ComponentImplementation::_setStub(stub);
 }
 
@@ -216,7 +217,7 @@ Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		initializeTransientMembers();
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -226,11 +227,11 @@ Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void ArmorComponentAdapter::initializeTransientMembers() {
-	((ArmorComponentImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ArmorComponentImplementation*>(impl))->initializeTransientMembers();
 }
 
 void ArmorComponentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((ArmorComponentImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<ArmorComponentImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 /*
@@ -258,7 +259,7 @@ DistributedObjectServant* ArmorComponentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ArmorComponentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ArmorComponentAdapter((ArmorComponentImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ArmorComponentAdapter(static_cast<ArmorComponentImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

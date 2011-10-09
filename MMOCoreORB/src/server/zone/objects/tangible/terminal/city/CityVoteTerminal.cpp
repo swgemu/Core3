@@ -33,8 +33,9 @@ CityVoteTerminal::~CityVoteTerminal() {
 }
 
 
+
 void CityVoteTerminal::initializeTransientMembers() {
-	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	CityVoteTerminalImplementation* _implementation = static_cast<CityVoteTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void CityVoteTerminal::initializeTransientMembers() {
 }
 
 void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	CityVoteTerminalImplementation* _implementation = static_cast<CityVoteTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +63,7 @@ void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 }
 
 int CityVoteTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	CityVoteTerminalImplementation* _implementation = static_cast<CityVoteTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ int CityVoteTerminal::handleObjectMenuSelect(CreatureObject* player, byte select
 }
 
 bool CityVoteTerminal::isCityVoteTerminal() {
-	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	CityVoteTerminalImplementation* _implementation = static_cast<CityVoteTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -124,7 +125,7 @@ void CityVoteTerminalImplementation::_initializeImplementation() {
 }
 
 void CityVoteTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CityVoteTerminal*) stub;
+	_this = static_cast<CityVoteTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -246,10 +247,10 @@ Packet* CityVoteTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		initializeTransientMembers();
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_ISCITYVOTETERMINAL__:
 		resp->insertBoolean(isCityVoteTerminal());
@@ -262,19 +263,19 @@ Packet* CityVoteTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void CityVoteTerminalAdapter::initializeTransientMembers() {
-	((CityVoteTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<CityVoteTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 void CityVoteTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	((CityVoteTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<CityVoteTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int CityVoteTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((CityVoteTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CityVoteTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool CityVoteTerminalAdapter::isCityVoteTerminal() {
-	return ((CityVoteTerminalImplementation*) impl)->isCityVoteTerminal();
+	return (static_cast<CityVoteTerminalImplementation*>(impl))->isCityVoteTerminal();
 }
 
 /*
@@ -302,7 +303,7 @@ DistributedObjectServant* CityVoteTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CityVoteTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CityVoteTerminalAdapter((CityVoteTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CityVoteTerminalAdapter(static_cast<CityVoteTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

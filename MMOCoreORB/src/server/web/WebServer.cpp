@@ -57,10 +57,10 @@ WebServer::WebServer() {
 	configManager = NULL;
 
 	// Lookup zone to have access to playerobjects
-	zoneServer = (ZoneServer*)DistributedObjectBroker::instance()->lookUp("ZoneServer");
+	zoneServer = cast<ZoneServer*>(DistributedObjectBroker::instance()->lookUp("ZoneServer"));
 
 	// Lookup login for account info
-	loginServer = (LoginServer*)DistributedObjectBroker::instance()->lookUp("LoginServer");
+	loginServer = cast<LoginServer*>(DistributedObjectBroker::instance()->lookUp("LoginServer"));
 
 	sessionTimeout = 600;
 

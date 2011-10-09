@@ -118,7 +118,7 @@ public:
 			targetCreature = playerManager->getPlayer(targetName);
 		} else {
 			if (obj->isCreatureObject())
-				targetCreature = (CreatureObject*) obj.get();
+				targetCreature = cast<CreatureObject*>(obj.get());
 		}
 
 		if (targetCreature == NULL) {

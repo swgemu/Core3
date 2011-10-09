@@ -72,7 +72,7 @@ public:
 
 		if (creature->isPlayerCreature()) {
 
-			CreatureObject* player = (CreatureObject*) creature;
+			CreatureObject* player = cast<CreatureObject*>(creature);
 
 			if (player == NULL)
 				return GENERALERROR;

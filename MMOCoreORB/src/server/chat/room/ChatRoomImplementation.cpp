@@ -56,7 +56,7 @@ which carries forward this exception.
 
 void ChatRoomImplementation::sendTo(CreatureObject* player) {
 	ChatRoomList* crl = new ChatRoomList();
-	crl->addChannel((ChatRoom*) _this);
+	crl->addChannel(_this);
 
 	crl->insertChannelListCount();
 	player->sendMessage(crl);
@@ -83,7 +83,7 @@ void ChatRoomImplementation::addPlayer(CreatureObject* player, bool doLock) {
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	ghost->addChatRoom((ChatRoom*) _this);
+	ghost->addChatRoom(_this);
 
 
 	/*ChatOnReceiveRoomInvitation* corri = new ChatOnReceiveRoomInvitation(name);
@@ -97,7 +97,7 @@ void ChatRoomImplementation::removePlayer(CreatureObject* player, bool doLock) {
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	ghost->removeChatRoom((ChatRoom*) _this);
+	ghost->removeChatRoom(_this);
 
 	locker.release();
 
@@ -105,7 +105,7 @@ void ChatRoomImplementation::removePlayer(CreatureObject* player, bool doLock) {
 
 	playerList.drop(player->getFirstName());
 
-	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, player);
+	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this, player);
 	player->sendMessage(msg);
 }
 
@@ -125,9 +125,9 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 
 	PlayerObject* ghost = play->getPlayerObject();
 
-	ghost->removeChatRoom((ChatRoom*) _this);
+	ghost->removeChatRoom(_this);
 
-	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, play);
+	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this, play);
 	play->sendMessage(msg);
 }
 
@@ -150,7 +150,7 @@ void ChatRoomImplementation::removeAllPlayers() {
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		ghost->removeChatRoom((ChatRoom*) _this);
+		ghost->removeChatRoom(_this);
 	}
 
 	playerList.removeAll();

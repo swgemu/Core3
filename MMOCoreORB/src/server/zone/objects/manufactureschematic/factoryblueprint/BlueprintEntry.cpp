@@ -76,7 +76,7 @@ void BlueprintEntry::createEntry(TangibleObject* ingredient, bool isIdentical) {
 
 	if (ingredient->isResourceContainer()) {
 
-		ResourceContainer* rcnoObject = (ResourceContainer*) ingredient;
+		ResourceContainer* rcnoObject = cast<ResourceContainer*>( ingredient);
 
 		key = rcnoObject->getSpawnName();
 

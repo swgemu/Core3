@@ -65,8 +65,7 @@ public:
 
 		if (creature->isPlayerCreature()) {
 
-			ManagedReference<CreatureObject*> playerCreature =
-					(CreatureObject*) creature;
+			ManagedReference<CreatureObject*> playerCreature = creature;
 
 			PlayerObject* ghost = playerCreature->getPlayerObject();
 

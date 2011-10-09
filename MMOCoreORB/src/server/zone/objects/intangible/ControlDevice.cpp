@@ -35,8 +35,9 @@ ControlDevice::~ControlDevice() {
 }
 
 
+
 void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
-	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	ControlDeviceImplementation* _implementation = static_cast<ControlDeviceImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +51,7 @@ void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
 }
 
 void ControlDevice::storeObject(CreatureObject* player) {
-	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	ControlDeviceImplementation* _implementation = static_cast<ControlDeviceImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -64,7 +65,7 @@ void ControlDevice::storeObject(CreatureObject* player) {
 }
 
 void ControlDevice::generateObject(CreatureObject* player) {
-	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	ControlDeviceImplementation* _implementation = static_cast<ControlDeviceImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -78,7 +79,7 @@ void ControlDevice::generateObject(CreatureObject* player) {
 }
 
 void ControlDevice::setControlledObject(TangibleObject* object) {
-	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	ControlDeviceImplementation* _implementation = static_cast<ControlDeviceImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,20 +93,20 @@ void ControlDevice::setControlledObject(TangibleObject* object) {
 }
 
 TangibleObject* ControlDevice::getControlledObject() {
-	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	ControlDeviceImplementation* _implementation = static_cast<ControlDeviceImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCONTROLLEDOBJECT__);
 
-		return (TangibleObject*) method.executeWithObjectReturn();
+		return static_cast<TangibleObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getControlledObject();
 }
 
 bool ControlDevice::isControlDevice() {
-	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	ControlDeviceImplementation* _implementation = static_cast<ControlDeviceImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -152,7 +153,7 @@ void ControlDeviceImplementation::_initializeImplementation() {
 }
 
 void ControlDeviceImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ControlDevice*) stub;
+	_this = static_cast<ControlDevice*>(stub);
 	IntangibleObjectImplementation::_setStub(stub);
 }
 
@@ -321,13 +322,13 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
 	case RPC_STOREOBJECT__CREATUREOBJECT_:
-		storeObject((CreatureObject*) inv->getObjectParameter());
+		storeObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
-		generateObject((CreatureObject*) inv->getObjectParameter());
+		generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_:
-		setControlledObject((TangibleObject*) inv->getObjectParameter());
+		setControlledObject(static_cast<TangibleObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETCONTROLLEDOBJECT__:
 		resp->insertLong(getControlledObject()->_getObjectID());
@@ -343,27 +344,27 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void ControlDeviceAdapter::updateToDatabaseAllObjects(bool startTask) {
-	((ControlDeviceImplementation*) impl)->updateToDatabaseAllObjects(startTask);
+	(static_cast<ControlDeviceImplementation*>(impl))->updateToDatabaseAllObjects(startTask);
 }
 
 void ControlDeviceAdapter::storeObject(CreatureObject* player) {
-	((ControlDeviceImplementation*) impl)->storeObject(player);
+	(static_cast<ControlDeviceImplementation*>(impl))->storeObject(player);
 }
 
 void ControlDeviceAdapter::generateObject(CreatureObject* player) {
-	((ControlDeviceImplementation*) impl)->generateObject(player);
+	(static_cast<ControlDeviceImplementation*>(impl))->generateObject(player);
 }
 
 void ControlDeviceAdapter::setControlledObject(TangibleObject* object) {
-	((ControlDeviceImplementation*) impl)->setControlledObject(object);
+	(static_cast<ControlDeviceImplementation*>(impl))->setControlledObject(object);
 }
 
 TangibleObject* ControlDeviceAdapter::getControlledObject() {
-	return ((ControlDeviceImplementation*) impl)->getControlledObject();
+	return (static_cast<ControlDeviceImplementation*>(impl))->getControlledObject();
 }
 
 bool ControlDeviceAdapter::isControlDevice() {
-	return ((ControlDeviceImplementation*) impl)->isControlDevice();
+	return (static_cast<ControlDeviceImplementation*>(impl))->isControlDevice();
 }
 
 /*
@@ -391,7 +392,7 @@ DistributedObjectServant* ControlDeviceHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ControlDeviceHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ControlDeviceAdapter((ControlDeviceImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ControlDeviceAdapter(static_cast<ControlDeviceImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

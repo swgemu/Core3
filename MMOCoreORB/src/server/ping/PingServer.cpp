@@ -79,7 +79,7 @@ PingClient* PingServer::createConnection(Socket* sock, SocketAddress& addr) {
 }
 
 void PingServer::handleMessage(ServiceClient* client, Packet* message) {
-	PingClient* lclient = (PingClient*) client;
+	PingClient* lclient = cast<PingClient*>(client);
 
 	try {
 
@@ -101,7 +101,7 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 }
 
 bool PingServer::handleError(ServiceClient* client, Exception& e) {
-	PingClient* lclient = (PingClient*) client;
+	PingClient* lclient = cast<PingClient*>(client);
 	lclient->setError();
 
 	lclient->disconnect();

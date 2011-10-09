@@ -35,8 +35,9 @@ PlaceStructureSession::~PlaceStructureSession() {
 }
 
 
+
 int PlaceStructureSession::initializeSession() {
-	PlaceStructureSessionImplementation* _implementation = (PlaceStructureSessionImplementation*) _getImplementation();
+	PlaceStructureSessionImplementation* _implementation = static_cast<PlaceStructureSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ int PlaceStructureSession::initializeSession() {
 }
 
 int PlaceStructureSession::constructStructure(float x, float y, int angle) {
-	PlaceStructureSessionImplementation* _implementation = (PlaceStructureSessionImplementation*) _getImplementation();
+	PlaceStructureSessionImplementation* _implementation = static_cast<PlaceStructureSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -65,7 +66,7 @@ int PlaceStructureSession::constructStructure(float x, float y, int angle) {
 }
 
 int PlaceStructureSession::completeSession() {
-	PlaceStructureSessionImplementation* _implementation = (PlaceStructureSessionImplementation*) _getImplementation();
+	PlaceStructureSessionImplementation* _implementation = static_cast<PlaceStructureSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -78,7 +79,7 @@ int PlaceStructureSession::completeSession() {
 }
 
 int PlaceStructureSession::cancelSession() {
-	PlaceStructureSessionImplementation* _implementation = (PlaceStructureSessionImplementation*) _getImplementation();
+	PlaceStructureSessionImplementation* _implementation = static_cast<PlaceStructureSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -91,7 +92,7 @@ int PlaceStructureSession::cancelSession() {
 }
 
 int PlaceStructureSession::clearSession() {
-	PlaceStructureSessionImplementation* _implementation = (PlaceStructureSessionImplementation*) _getImplementation();
+	PlaceStructureSessionImplementation* _implementation = static_cast<PlaceStructureSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -138,7 +139,7 @@ void PlaceStructureSessionImplementation::_initializeImplementation() {
 }
 
 void PlaceStructureSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PlaceStructureSession*) stub;
+	_this = static_cast<PlaceStructureSession*>(stub);
 	FacadeImplementation::_setStub(stub);
 }
 
@@ -391,23 +392,23 @@ Packet* PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMet
 }
 
 int PlaceStructureSessionAdapter::initializeSession() {
-	return ((PlaceStructureSessionImplementation*) impl)->initializeSession();
+	return (static_cast<PlaceStructureSessionImplementation*>(impl))->initializeSession();
 }
 
 int PlaceStructureSessionAdapter::constructStructure(float x, float y, int angle) {
-	return ((PlaceStructureSessionImplementation*) impl)->constructStructure(x, y, angle);
+	return (static_cast<PlaceStructureSessionImplementation*>(impl))->constructStructure(x, y, angle);
 }
 
 int PlaceStructureSessionAdapter::completeSession() {
-	return ((PlaceStructureSessionImplementation*) impl)->completeSession();
+	return (static_cast<PlaceStructureSessionImplementation*>(impl))->completeSession();
 }
 
 int PlaceStructureSessionAdapter::cancelSession() {
-	return ((PlaceStructureSessionImplementation*) impl)->cancelSession();
+	return (static_cast<PlaceStructureSessionImplementation*>(impl))->cancelSession();
 }
 
 int PlaceStructureSessionAdapter::clearSession() {
-	return ((PlaceStructureSessionImplementation*) impl)->clearSession();
+	return (static_cast<PlaceStructureSessionImplementation*>(impl))->clearSession();
 }
 
 /*
@@ -435,7 +436,7 @@ DistributedObjectServant* PlaceStructureSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PlaceStructureSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PlaceStructureSessionAdapter((PlaceStructureSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PlaceStructureSessionAdapter(static_cast<PlaceStructureSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

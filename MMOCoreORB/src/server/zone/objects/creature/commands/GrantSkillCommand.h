@@ -73,7 +73,7 @@ public:
 		if (object == NULL || !object->isCreatureObject())
 			return INVALIDTARGET;
 
-		CreatureObject* targetCreature = (CreatureObject*) object.get();
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
 		Locker clocker(targetCreature, creature);
 

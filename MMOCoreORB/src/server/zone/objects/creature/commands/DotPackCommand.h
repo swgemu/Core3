@@ -89,7 +89,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int)round((float)power);
 
@@ -112,7 +112,7 @@ public:
 			zone->rlock();
 
 			for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
-				SceneObject* object = (SceneObject*) areaCenter->getInRangeObject(i);
+				SceneObject* object = cast<SceneObject*>( areaCenter->getInRangeObject(i));
 
 				if (!object->isCreatureObject())
 					continue;
@@ -123,7 +123,7 @@ public:
 				if (!areaCenter->isInRange(object, range))
 					continue;
 
-				CreatureObject* creatureTarget = (CreatureObject*) object;
+				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
 				if (!creatureTarget->isAttackableBy(creature))
 					continue;
@@ -156,7 +156,7 @@ public:
 		DotPack* dotPack = NULL;
 
 		if (pharma->isPoisonDeliveryUnit() || pharma->isDiseaseDeliveryUnit())
-			dotPack = (DotPack*) pharma;
+			dotPack = cast<DotPack*>( pharma);
 
 		int dotPower = dotPack->calculatePower(creature);
 
@@ -206,7 +206,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return 0;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int wpnMind = 150;
 
@@ -277,7 +277,7 @@ public:
 		if (dotPack == NULL)
 			return GENERALERROR;
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		PlayerManager* playerManager = server->getPlayerManager();
 

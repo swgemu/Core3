@@ -6,6 +6,7 @@
  */
 
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "MissionObjective.h"
 #include "MissionObserver.h"
 #include "MissionObject.h"
@@ -23,7 +24,7 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 
 CreatureObject* MissionObjectiveImplementation::getPlayerOwner() {
 	if (mission != NULL)
-		return (CreatureObject*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+		return cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
 	else
 		return NULL;
 }

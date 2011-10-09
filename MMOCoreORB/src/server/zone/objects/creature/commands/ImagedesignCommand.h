@@ -73,12 +73,12 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 		CreatureObject* playerTarget = NULL;
-		CreatureObject* designer = (CreatureObject*) creature;
+		CreatureObject* designer = cast<CreatureObject*>( creature);
 
 		if (object == NULL || !object->isPlayerCreature())
 			playerTarget = designer;
 		else
-			playerTarget = (CreatureObject*) object.get();
+			playerTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(playerTarget, creature);
 
@@ -100,7 +100,7 @@ public:
 			}
 		}
 
-		/*BuildingObject* buildingObj = (BuildingObject*) designer->getParentRecursively(SceneObject::SALONBUILDING);
+		/*BuildingObject* buildingObj = cast<BuildingObject*>( designer->getParentRecursively(SceneObject::SALONBUILDING));
 
 		if (buildingObj == NULL) {
 			designer->sendSystemMessage("You must be inside an Image Design tent in order to perform that action.");
@@ -111,7 +111,7 @@ public:
 			return GENERALERROR;
 		}
 
-		buildingObj = (BuildingObject*) playerTarget->getRootParent();
+		buildingObj = cast<BuildingObject*>( playerTarget->getRootParent());
 
 		if (buildingObj == NULL || buildingObj->getGameObjectType() != BuildingObject::SALONBUILDING) {
 			playerTarget->sendSystemMessage("You must be inside an Image Design tent in order to be Image Designed.");

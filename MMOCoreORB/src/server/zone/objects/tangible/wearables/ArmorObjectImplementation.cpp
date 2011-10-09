@@ -23,7 +23,7 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	if (!templateData->isArmorObjectTemplate())
 		return;
 
-	ArmorObjectTemplate* armorTemplate = (ArmorObjectTemplate*) templateData;
+	ArmorObjectTemplate* armorTemplate = cast<ArmorObjectTemplate*>( templateData);
 
 	vulnerabilites = armorTemplate->getVulnerabilites();
 

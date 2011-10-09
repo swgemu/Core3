@@ -33,8 +33,9 @@ Container::~Container() {
 }
 
 
+
 void Container::loadTemplateData(SharedObjectTemplate* templateData) {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -43,7 +44,7 @@ void Container::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void Container::initializeTransientMembers() {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -56,7 +57,7 @@ void Container::initializeTransientMembers() {
 }
 
 void Container::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -65,7 +66,7 @@ void Container::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Creatur
 }
 
 int Container::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +81,7 @@ int Container::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 }
 
 bool Container::checkPermission(CreatureObject* player) {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -94,7 +95,7 @@ bool Container::checkPermission(CreatureObject* player) {
 }
 
 int Container::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -110,7 +111,7 @@ int Container::canAddObject(SceneObject* object, int containmentType, String& er
 }
 
 bool Container::isContainerObject() {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -123,7 +124,7 @@ bool Container::isContainerObject() {
 }
 
 bool Container::isContainerLocked() {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -136,7 +137,7 @@ bool Container::isContainerLocked() {
 }
 
 void Container::setLockedStatus(bool lock) {
-	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -184,7 +185,7 @@ void ContainerImplementation::_initializeImplementation() {
 }
 
 void ContainerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Container*) stub;
+	_this = static_cast<Container*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -324,13 +325,13 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_CHECKPERMISSION__CREATUREOBJECT_:
-		resp->insertBoolean(checkPermission((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(checkPermission(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
 	case RPC_ISCONTAINEROBJECT__:
 		resp->insertBoolean(isContainerObject());
@@ -349,31 +350,31 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ContainerAdapter::initializeTransientMembers() {
-	((ContainerImplementation*) impl)->initializeTransientMembers();
+	(static_cast<ContainerImplementation*>(impl))->initializeTransientMembers();
 }
 
 int ContainerAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((ContainerImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ContainerImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool ContainerAdapter::checkPermission(CreatureObject* player) {
-	return ((ContainerImplementation*) impl)->checkPermission(player);
+	return (static_cast<ContainerImplementation*>(impl))->checkPermission(player);
 }
 
 int ContainerAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return ((ContainerImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
+	return (static_cast<ContainerImplementation*>(impl))->canAddObject(object, containmentType, errorDescription);
 }
 
 bool ContainerAdapter::isContainerObject() {
-	return ((ContainerImplementation*) impl)->isContainerObject();
+	return (static_cast<ContainerImplementation*>(impl))->isContainerObject();
 }
 
 bool ContainerAdapter::isContainerLocked() {
-	return ((ContainerImplementation*) impl)->isContainerLocked();
+	return (static_cast<ContainerImplementation*>(impl))->isContainerLocked();
 }
 
 void ContainerAdapter::setLockedStatus(bool lock) {
-	((ContainerImplementation*) impl)->setLockedStatus(lock);
+	(static_cast<ContainerImplementation*>(impl))->setLockedStatus(lock);
 }
 
 /*
@@ -401,7 +402,7 @@ DistributedObjectServant* ContainerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ContainerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ContainerAdapter((ContainerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ContainerAdapter(static_cast<ContainerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

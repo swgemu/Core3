@@ -33,8 +33,9 @@ CityRegion::~CityRegion() {
 }
 
 
+
 int CityRegion::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -51,7 +52,7 @@ int CityRegion::notifyObserverEvent(unsigned int eventType, Observable* observab
 }
 
 void CityRegion::notifyEnter(SceneObject* object) {
-	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -65,7 +66,7 @@ void CityRegion::notifyEnter(SceneObject* object) {
 }
 
 void CityRegion::notifyExit(SceneObject* object) {
-	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +80,7 @@ void CityRegion::notifyExit(SceneObject* object) {
 }
 
 void CityRegion::addActiveArea(Zone* zone, float x, float y, float radius) {
-	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ void CityRegion::addActiveArea(Zone* zone, float x, float y, float radius) {
 }
 
 SortedVector<ManagedReference<SceneObject* > > CityRegion::getRegionObjectsByPlanetMapCategory(const String& catname) {
-	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -105,7 +106,7 @@ SortedVector<ManagedReference<SceneObject* > > CityRegion::getRegionObjectsByPla
 }
 
 bool CityRegion::containsPoint(float x, float y) {
-	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +121,7 @@ bool CityRegion::containsPoint(float x, float y) {
 }
 
 String CityRegion::getRegionName() {
-	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -168,7 +169,7 @@ void CityRegionImplementation::_initializeImplementation() {
 }
 
 void CityRegionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CityRegion*) stub;
+	_this = static_cast<CityRegion*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -373,16 +374,16 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter((SceneObject*) inv->getObjectParameter());
+		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit((SceneObject*) inv->getObjectParameter());
+		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_:
-		addActiveArea((Zone*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		addActiveArea(static_cast<Zone*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
@@ -398,27 +399,27 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int CityRegionAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((CityRegionImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<CityRegionImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void CityRegionAdapter::notifyEnter(SceneObject* object) {
-	((CityRegionImplementation*) impl)->notifyEnter(object);
+	(static_cast<CityRegionImplementation*>(impl))->notifyEnter(object);
 }
 
 void CityRegionAdapter::notifyExit(SceneObject* object) {
-	((CityRegionImplementation*) impl)->notifyExit(object);
+	(static_cast<CityRegionImplementation*>(impl))->notifyExit(object);
 }
 
 void CityRegionAdapter::addActiveArea(Zone* zone, float x, float y, float radius) {
-	((CityRegionImplementation*) impl)->addActiveArea(zone, x, y, radius);
+	(static_cast<CityRegionImplementation*>(impl))->addActiveArea(zone, x, y, radius);
 }
 
 bool CityRegionAdapter::containsPoint(float x, float y) {
-	return ((CityRegionImplementation*) impl)->containsPoint(x, y);
+	return (static_cast<CityRegionImplementation*>(impl))->containsPoint(x, y);
 }
 
 String CityRegionAdapter::getRegionName() {
-	return ((CityRegionImplementation*) impl)->getRegionName();
+	return (static_cast<CityRegionImplementation*>(impl))->getRegionName();
 }
 
 /*
@@ -446,7 +447,7 @@ DistributedObjectServant* CityRegionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CityRegionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CityRegionAdapter((CityRegionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CityRegionAdapter(static_cast<CityRegionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

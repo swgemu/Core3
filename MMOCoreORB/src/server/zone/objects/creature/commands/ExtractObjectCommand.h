@@ -74,7 +74,7 @@ public:
 				return GENERALERROR;
 			}
 
-			ManagedReference<FactoryCrate*> crate = (FactoryCrate*) object.get();
+			ManagedReference<FactoryCrate*> crate = cast<FactoryCrate*>( object.get());
 
 			if (!crate->extractObjectToParent()) {
 				//error("Error extracting object in ExtractObjectCommand");

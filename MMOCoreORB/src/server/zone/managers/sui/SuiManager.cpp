@@ -252,7 +252,7 @@ void SuiManager::handleManageMaintenance(CreatureObject* player, SuiBox* suiBox,
 	if (object == NULL || !object->isStructureObject())
 		return;
 
-	StructureObject* structureObject = (StructureObject*) object.get();
+	StructureObject* structureObject = cast<StructureObject*>( object.get());
 
 	if (args->size() < 1)
 		return;
@@ -306,7 +306,7 @@ void SuiManager::handleAddEnergy(CreatureObject* player, SuiBox* suiBox, uint32 
 	if (object == NULL || !object->isInstallationObject())
 		return;
 
-	InstallationObject* installation = (InstallationObject*) object.get();
+	InstallationObject* installation = cast<InstallationObject*>( object.get());
 
 	ManagedReference<ResourceManager*> resourceManager = player->getZoneServer()->getResourceManager();
 
@@ -350,7 +350,7 @@ void SuiManager::handleStartDancing(CreatureObject* player, SuiBox* suiBox, uint
 	bool change = (uint16)id == SuiWindowType::DANCING_CHANGE;
 
 
-	SuiListBox* listBox = (SuiListBox*) suiBox;
+	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 	String dance = listBox->getMenuItemName(index);
 
@@ -373,7 +373,7 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 
 	bool change = (uint16)id == SuiWindowType::MUSIC_CHANGE;
 
-	SuiListBox* listBox = (SuiListBox*) suiBox;
+	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 	String dance = listBox->getMenuItemName(index);
 
@@ -447,7 +447,7 @@ void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* s
 	if (args->size() < 1)
 		return;
 
-	SuiListBox* listBox = (SuiListBox*) suiBox;
+	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 	int index = Integer::valueOf(args->get(0).toString());
 
@@ -466,12 +466,12 @@ void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* s
 	if (obj == NULL || !obj->isTangibleObject())
 		return;
 
-	TangibleObject* tano = (TangibleObject*) obj.get();
+	TangibleObject* tano = cast<TangibleObject*>( obj.get());
 
 	if (!tano->isTicketObject())
 		return;
 
-	TicketObject* ticket = (TicketObject*) tano;
+	TicketObject* ticket = cast<TicketObject*>( tano);
 	ticket->handleObjectMenuSelect(player, 20);
 }
 
@@ -485,7 +485,7 @@ void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint
 	int cash = Integer::valueOf(args->get(0).toString());
 	int bank = Integer::valueOf(args->get(1).toString());
 
-	SuiBankTransferBox* suiBank = (SuiBankTransferBox*) suiBox;
+	SuiBankTransferBox* suiBank = cast<SuiBankTransferBox*>( suiBox);
 
 	ManagedReference<SceneObject*> bankObject = suiBank->getBank();
 
@@ -583,7 +583,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 	if (!suiBox->isCharacterBuilderBox())
 		return;
 
-	ManagedReference<SuiCharacterBuilderBox*> cbSui = (SuiCharacterBuilderBox*) suiBox;
+	ManagedReference<SuiCharacterBuilderBox*> cbSui = cast<SuiCharacterBuilderBox*>( suiBox);
 
 	CharacterBuilderMenuNode* currentNode = cbSui->getCurrentNode();
 
@@ -648,7 +648,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				if (scob != NULL) {
 
 					if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
-						CharacterBuilderTerminal* bluefrog = (CharacterBuilderTerminal*) scob;
+						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob);
 						bluefrog->enhanceCharacter(player);
 					}
 				}
@@ -664,7 +664,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				if (scob != NULL) {
 
 					if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
-						CharacterBuilderTerminal* bluefrog = (CharacterBuilderTerminal*) scob;
+						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob);
 						bluefrog->giveLanguages(player);
 					}
 				}
@@ -737,7 +737,7 @@ void SuiManager::handleCloneRequest(CreatureObject* player, SuiBox* suiBox, uint
 		if (!player->isDead()) {
 			player->sendSystemMessage("You must be dead to activate your clone.");
 		} else {
-			SuiListBox* suiListBox = (SuiListBox*) suiBox;
+			SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
 			playerManager->sendPlayerToCloner(player, suiListBox->getMenuObjectID(index));
 		}
 	} else {
@@ -761,7 +761,7 @@ void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32
 	if (index == -1)
 		return;
 
-	SuiListBox* suiList = (SuiListBox*) suiBox;
+	SuiListBox* suiList = cast<SuiListBox*>( suiBox);
 
 	String name = suiList->getMenuItemName(index);
 	UnconsentCommand::unconscent(player, name);
@@ -776,14 +776,14 @@ void SuiManager::handleInsertFactorySchem2(CreatureObject* player, SuiBox* suiBo
 
 	int index = Integer::valueOf(args->get(0).toString());
 
-	SuiListBox* listBox = (SuiListBox*) suiBox;
+	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
 	if (object == NULL || !object->isFactory())
 		return;
 
-	FactoryObject* factory = (FactoryObject*) object.get();
+	FactoryObject* factory = cast<FactoryObject*>( object.get());
 
 	Locker _lock(factory, player);
 
@@ -801,14 +801,14 @@ void SuiManager::handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBo
 	bool otherPressed = Bool::valueOf(args->get(0).toString());
 	int index = Integer::valueOf(args->get(1).toString());
 
-	SuiListBox* listBox = (SuiListBox*) suiBox;
+	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
 	if (object == NULL || !object->isFactory())
 		return;
 
-	FactoryObject* factory = (FactoryObject*) object.get();
+	FactoryObject* factory = cast<FactoryObject*>( object.get());
 
 	Locker _lock(factory, player);
 
@@ -829,12 +829,12 @@ void SuiManager::handleCityEnableZoning(CreatureObject* player, SuiBox* suiBox, 
 	if (usingObject == NULL || !usingObject->isBuildingObject())
 		return;
 
-	BuildingObject* buildingObject = (BuildingObject*) usingObject.get();
+	BuildingObject* buildingObject = cast<BuildingObject*>( usingObject.get());
 
 	if (!buildingObject->isCityHallBuilding())
 		return;
 
-	CityHallObject* cityHall = (CityHallObject*) buildingObject;
+	CityHallObject* cityHall = cast<CityHallObject*>( buildingObject);
 
 	Locker _lock(cityHall, player);
 	cityHall->toggleZoningEnabled(player);
@@ -854,12 +854,12 @@ void SuiManager::handleChangeCityName(CreatureObject* player, SuiBox* suiBox, ui
 	if (usingObject == NULL || !usingObject->isBuildingObject())
 		return;
 
-	BuildingObject* building = (BuildingObject*) usingObject.get();
+	BuildingObject* building = cast<BuildingObject*>( usingObject.get());
 
 	if (!building->isCityHallBuilding())
 		return;
 
-	CityHallObject* cityHall = (CityHallObject*) building;
+	CityHallObject* cityHall = cast<CityHallObject*>( building);
 
 	Locker _lock(cityHall, player);
 
@@ -890,12 +890,12 @@ void SuiManager::handleCreateCity(CreatureObject* player, SuiBox* suiBox, uint32
 	if (usingObject == NULL || !usingObject->isBuildingObject())
 		return;
 
-	BuildingObject* building = (BuildingObject*) usingObject.get();
+	BuildingObject* building = cast<BuildingObject*>( usingObject.get());
 
 	if (!building->isCityHallBuilding())
 		return;
 
-	CityHallObject* cityHall = (CityHallObject*) building;
+	CityHallObject* cityHall = cast<CityHallObject*>( building);
 
 	Locker _lock(cityHall, player);
 
@@ -922,19 +922,19 @@ void SuiManager::handleManageMilitia(CreatureObject* player, SuiBox* suiBox, uin
 	bool otherPressed = Bool::valueOf(args->get(0).toString());
 	int index = Integer::valueOf(args->get(1).toString());
 
-	SuiListBox* listBox = (SuiListBox*) suiBox;
+	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 	ManagedReference<SceneObject*> obj = listBox->getUsingObject();
 
 	if (obj == NULL || !obj->isBuildingObject())
 		return;
 
-	BuildingObject* building = (BuildingObject*) obj.get();
+	BuildingObject* building = cast<BuildingObject*>( obj.get());
 
 	if (!building->isCityHallBuilding())
 		return;
 
-	CityHallObject* city = (CityHallObject*) building;
+	CityHallObject* city = cast<CityHallObject*>( building);
 
 	Locker _lock(city, player);
 
@@ -969,12 +969,12 @@ void SuiManager::handleAddMilitia(CreatureObject* player, SuiBox* suiBox, uint32
 	if (obj == NULL || !obj->isBuildingObject())
 		return;
 
-	BuildingObject* building = (BuildingObject*) obj.get();
+	BuildingObject* building = cast<BuildingObject*>( obj.get());
 
 	if (!building->isCityHallBuilding())
 		return;
 
-	CityHallObject* city = (CityHallObject*) building;
+	CityHallObject* city = cast<CityHallObject*>( building);
 
 	Locker _lock(city, player);
 

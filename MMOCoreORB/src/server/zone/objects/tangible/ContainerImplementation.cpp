@@ -80,7 +80,7 @@ bool ContainerImplementation::checkPermission(CreatureObject* player) {
 			return false;
 		else {
 
-			BuildingObject* building = (BuildingObject*) parent->getParent();
+			BuildingObject* building = cast<BuildingObject*>( parent->getParent());
 
 			if (!building->isOnAdminList(player->getFirstName()))
 				return false;

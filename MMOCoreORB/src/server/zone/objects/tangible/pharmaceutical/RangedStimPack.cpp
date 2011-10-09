@@ -41,8 +41,9 @@ RangedStimPack::~RangedStimPack() {
 }
 
 
+
 void RangedStimPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -51,7 +52,7 @@ void RangedStimPack::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void RangedStimPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -60,7 +61,7 @@ void RangedStimPack::fillAttributeList(AttributeListMessage* msg, CreatureObject
 }
 
 int RangedStimPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ int RangedStimPack::handleObjectMenuSelect(CreatureObject* player, byte selected
 }
 
 void RangedStimPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -84,7 +85,7 @@ void RangedStimPack::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -100,7 +101,7 @@ unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObje
 }
 
 float RangedStimPack::getRange(CreatureObject* creature) {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -114,7 +115,7 @@ float RangedStimPack::getRange(CreatureObject* creature) {
 }
 
 float RangedStimPack::getEffectiveness() {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,7 +128,7 @@ float RangedStimPack::getEffectiveness() {
 }
 
 float RangedStimPack::getArea() {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -140,7 +141,7 @@ float RangedStimPack::getArea() {
 }
 
 bool RangedStimPack::isArea() {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +154,7 @@ bool RangedStimPack::isArea() {
 }
 
 float RangedStimPack::getRangeMod() {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,7 +167,7 @@ float RangedStimPack::getRangeMod() {
 }
 
 bool RangedStimPack::isRangedStimPack() {
-	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -213,7 +214,7 @@ void RangedStimPackImplementation::_initializeImplementation() {
 }
 
 void RangedStimPackImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (RangedStimPack*) stub;
+	_this = static_cast<RangedStimPack*>(stub);
 	StimPackImplementation::_setStub(stub);
 }
 
@@ -499,13 +500,13 @@ Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
-		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
 	case RPC_GETRANGE__CREATUREOBJECT_:
-		resp->insertFloat(getRange((CreatureObject*) inv->getObjectParameter()));
+		resp->insertFloat(getRange(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
@@ -530,35 +531,35 @@ Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 int RangedStimPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((RangedStimPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<RangedStimPackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned int RangedStimPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	return ((RangedStimPackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
+	return (static_cast<RangedStimPackImplementation*>(impl))->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float RangedStimPackAdapter::getRange(CreatureObject* creature) {
-	return ((RangedStimPackImplementation*) impl)->getRange(creature);
+	return (static_cast<RangedStimPackImplementation*>(impl))->getRange(creature);
 }
 
 float RangedStimPackAdapter::getEffectiveness() {
-	return ((RangedStimPackImplementation*) impl)->getEffectiveness();
+	return (static_cast<RangedStimPackImplementation*>(impl))->getEffectiveness();
 }
 
 float RangedStimPackAdapter::getArea() {
-	return ((RangedStimPackImplementation*) impl)->getArea();
+	return (static_cast<RangedStimPackImplementation*>(impl))->getArea();
 }
 
 bool RangedStimPackAdapter::isArea() {
-	return ((RangedStimPackImplementation*) impl)->isArea();
+	return (static_cast<RangedStimPackImplementation*>(impl))->isArea();
 }
 
 float RangedStimPackAdapter::getRangeMod() {
-	return ((RangedStimPackImplementation*) impl)->getRangeMod();
+	return (static_cast<RangedStimPackImplementation*>(impl))->getRangeMod();
 }
 
 bool RangedStimPackAdapter::isRangedStimPack() {
-	return ((RangedStimPackImplementation*) impl)->isRangedStimPack();
+	return (static_cast<RangedStimPackImplementation*>(impl))->isRangedStimPack();
 }
 
 /*
@@ -586,7 +587,7 @@ DistributedObjectServant* RangedStimPackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RangedStimPackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RangedStimPackAdapter((RangedStimPackImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new RangedStimPackAdapter(static_cast<RangedStimPackImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

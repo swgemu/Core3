@@ -25,8 +25,9 @@ HarvesterObject::~HarvesterObject() {
 }
 
 
+
 void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -35,7 +36,7 @@ void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -44,7 +45,7 @@ void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, C
 }
 
 int HarvesterObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -59,7 +60,7 @@ int HarvesterObject::handleObjectMenuSelect(CreatureObject* player, byte selecte
 }
 
 void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
-	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -74,7 +75,7 @@ void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
 }
 
 void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +90,7 @@ void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
 }
 
 void HarvesterObject::updateOperators() {
-	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -102,7 +103,7 @@ void HarvesterObject::updateOperators() {
 }
 
 bool HarvesterObject::isHarvesterObject() {
-	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -149,7 +150,7 @@ void HarvesterObjectImplementation::_initializeImplementation() {
 }
 
 void HarvesterObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (HarvesterObject*) stub;
+	_this = static_cast<HarvesterObject*>(stub);
 	InstallationObjectImplementation::_setStub(stub);
 }
 
@@ -270,13 +271,13 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_UPDATEOPERATORS__:
 		updateOperators();
@@ -292,23 +293,23 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int HarvesterObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((HarvesterObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<HarvesterObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void HarvesterObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	((HarvesterObjectImplementation*) impl)->synchronizedUIListen(player, value);
+	(static_cast<HarvesterObjectImplementation*>(impl))->synchronizedUIListen(player, value);
 }
 
 void HarvesterObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	((HarvesterObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
+	(static_cast<HarvesterObjectImplementation*>(impl))->synchronizedUIStopListen(player, value);
 }
 
 void HarvesterObjectAdapter::updateOperators() {
-	((HarvesterObjectImplementation*) impl)->updateOperators();
+	(static_cast<HarvesterObjectImplementation*>(impl))->updateOperators();
 }
 
 bool HarvesterObjectAdapter::isHarvesterObject() {
-	return ((HarvesterObjectImplementation*) impl)->isHarvesterObject();
+	return (static_cast<HarvesterObjectImplementation*>(impl))->isHarvesterObject();
 }
 
 /*
@@ -336,7 +337,7 @@ DistributedObjectServant* HarvesterObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* HarvesterObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new HarvesterObjectAdapter((HarvesterObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new HarvesterObjectAdapter(static_cast<HarvesterObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

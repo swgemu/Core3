@@ -437,7 +437,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 	else if (varName == "defaultTime")
 		slashCommand->setDefaultTime(Lua::getFloatParameter(L));
 	else if (slashCommand->isCombatCommand()) { // define combat variables (for combat commands)
-		CombatQueueCommand* combatCommand = (CombatQueueCommand*)slashCommand;
+		CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(slashCommand);
 		if (varName == "damageMultiplier")
 			combatCommand->setDamageMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "speedMultiplier")
@@ -502,7 +502,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		else if (varName == "effectString")
 			combatCommand->setEffectString(Lua::getStringParameter(L));
 		else if (combatCommand->isSquadLeaderCommand()) {
-			SquadLeaderCommand* slCommand = (SquadLeaderCommand*)combatCommand;
+			SquadLeaderCommand* slCommand = cast<SquadLeaderCommand*>(combatCommand);
 			if (varName == "action")
 				slCommand->setAction(Lua::getStringParameter(L));
 			else {

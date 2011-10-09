@@ -79,10 +79,10 @@ int PlaceStructureSessionImplementation::completeSession() {
 	//TODO: Encapsulate this better?
 	//Set the power and maintenance back from the deed to the structure.
 	if (deedObject->isBuildingDeed()) {
-		BuildingDeed* buildingDeed = (BuildingDeed*) deedObject.get();
+		BuildingDeed* buildingDeed = cast<BuildingDeed*>( deedObject.get());
 		structureObject->setSurplusMaintenance(buildingDeed->getSurplusMaintenance());
 	} else if (deedObject->isInstallationDeed()) {
-		InstallationDeed* installationDeed = (InstallationDeed*) deedObject.get();
+		InstallationDeed* installationDeed = cast<InstallationDeed*>( deedObject.get());
 		structureObject->setSurplusMaintenance(installationDeed->getSurplusMaintenance());
 		structureObject->setSurplusPower(installationDeed->getSurplusPower());
 	}
@@ -93,7 +93,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 		ghost->addOwnedStructure(structureObject);
 
 		//Create Waypoint
-		ManagedReference<WaypointObject*> waypointObject = (WaypointObject*) zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1);
+		ManagedReference<WaypointObject*> waypointObject = cast<WaypointObject*>( zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1));
 		waypointObject->setCustomName(structureObject->getObjectName()->getDisplayedName());
 		waypointObject->setActive(true);
 		waypointObject->setPosition(positionX, 0, positionY);
@@ -115,7 +115,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 		}
 
 		if (structureObject->isBuildingObject()) {
-			BuildingObject* building = (BuildingObject*) structureObject.get();
+			BuildingObject* building = cast<BuildingObject*>( structureObject.get());
 			building->setCustomObjectName(creatureObject->getFirstName() + "'s House", true); //Set the house sign.
 		}
 	}

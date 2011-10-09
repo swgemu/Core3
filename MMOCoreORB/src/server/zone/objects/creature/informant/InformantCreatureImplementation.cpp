@@ -12,7 +12,7 @@ void InformantCreatureImplementation::sendConversationStartTo(SceneObject* playe
 	if (!player->isPlayerCreature())
 		return;
 
-	CreatureObject* playerCreature = (CreatureObject*)player;
+	CreatureObject* playerCreature = cast<CreatureObject*>(player);
 
 	if (playerCreature->getObserverCount(ObserverEventType::CONVERSE) <= 0)
 		sendDefaultConversationTo(player);

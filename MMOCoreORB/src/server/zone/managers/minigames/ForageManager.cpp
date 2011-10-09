@@ -29,8 +29,9 @@ ForageManager::~ForageManager() {
 }
 
 
+
 void ForageManager::deleteForageAreaCollection(String& playerName) {
-	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
+	ForageManagerImplementation* _implementation = static_cast<ForageManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -44,7 +45,7 @@ void ForageManager::deleteForageAreaCollection(String& playerName) {
 }
 
 void ForageManager::startForaging(CreatureObject* player, bool scoutForage) {
-	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
+	ForageManagerImplementation* _implementation = static_cast<ForageManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -59,7 +60,7 @@ void ForageManager::startForaging(CreatureObject* player, bool scoutForage) {
 }
 
 void ForageManager::finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
-	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
+	ForageManagerImplementation* _implementation = static_cast<ForageManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ void ForageManager::finishForaging(CreatureObject* player, bool scoutForage, flo
 }
 
 void ForageManager::forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
-	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
+	ForageManagerImplementation* _implementation = static_cast<ForageManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -95,7 +96,7 @@ void ForageManager::forageGiveItems(CreatureObject* player, bool scoutForage, fl
 }
 
 void ForageManager::forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet) {
-	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
+	ForageManagerImplementation* _implementation = static_cast<ForageManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +147,7 @@ void ForageManagerImplementation::_initializeImplementation() {
 }
 
 void ForageManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ForageManager*) stub;
+	_this = static_cast<ForageManager*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -293,16 +294,16 @@ Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		deleteForageAreaCollection(inv->getAsciiParameter(_param0_deleteForageAreaCollection__String_));
 		break;
 	case RPC_STARTFORAGING__CREATUREOBJECT_BOOL_:
-		startForaging((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		startForaging(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_FINISHFORAGING__CREATUREOBJECT_BOOL_FLOAT_FLOAT_STRING_:
-		finishForaging((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_finishForaging__CreatureObject_bool_float_float_String_));
+		finishForaging(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_finishForaging__CreatureObject_bool_float_float_String_));
 		break;
 	case RPC_FORAGEGIVEITEMS__CREATUREOBJECT_BOOL_FLOAT_FLOAT_STRING_:
-		forageGiveItems((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_forageGiveItems__CreatureObject_bool_float_float_String_));
+		forageGiveItems(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_forageGiveItems__CreatureObject_bool_float_float_String_));
 		break;
 	case RPC_FORAGEGIVERESOURCE__CREATUREOBJECT_FLOAT_FLOAT_STRING_:
-		forageGiveResource((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_forageGiveResource__CreatureObject_float_float_String_));
+		forageGiveResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_forageGiveResource__CreatureObject_float_float_String_));
 		break;
 	default:
 		return NULL;
@@ -312,23 +313,23 @@ Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void ForageManagerAdapter::deleteForageAreaCollection(String& playerName) {
-	((ForageManagerImplementation*) impl)->deleteForageAreaCollection(playerName);
+	(static_cast<ForageManagerImplementation*>(impl))->deleteForageAreaCollection(playerName);
 }
 
 void ForageManagerAdapter::startForaging(CreatureObject* player, bool scoutForage) {
-	((ForageManagerImplementation*) impl)->startForaging(player, scoutForage);
+	(static_cast<ForageManagerImplementation*>(impl))->startForaging(player, scoutForage);
 }
 
 void ForageManagerAdapter::finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
-	((ForageManagerImplementation*) impl)->finishForaging(player, scoutForage, forageX, forageY, planet);
+	(static_cast<ForageManagerImplementation*>(impl))->finishForaging(player, scoutForage, forageX, forageY, planet);
 }
 
 void ForageManagerAdapter::forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
-	((ForageManagerImplementation*) impl)->forageGiveItems(player, scoutForage, forageX, forageY, planet);
+	(static_cast<ForageManagerImplementation*>(impl))->forageGiveItems(player, scoutForage, forageX, forageY, planet);
 }
 
 void ForageManagerAdapter::forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet) {
-	((ForageManagerImplementation*) impl)->forageGiveResource(player, forageX, forageY, planet);
+	(static_cast<ForageManagerImplementation*>(impl))->forageGiveResource(player, forageX, forageY, planet);
 }
 
 /*
@@ -356,7 +357,7 @@ DistributedObjectServant* ForageManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ForageManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ForageManagerAdapter((ForageManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ForageManagerAdapter(static_cast<ForageManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

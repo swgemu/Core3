@@ -32,7 +32,7 @@ public:
 		if (obj == NULL || !obj->isPlayerCreature())
 			return;
 
-		CreatureObject* sponsor = (CreatureObject*) obj.get();
+		CreatureObject* sponsor = cast<CreatureObject*>( obj.get());
 
 		ManagedReference<GuildObject*> guild = sponsor->getGuildObject();
 

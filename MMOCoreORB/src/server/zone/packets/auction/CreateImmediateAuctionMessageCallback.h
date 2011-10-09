@@ -44,7 +44,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
 		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(vendorID);
 
 		if (player == NULL || sceno == NULL || !sceno->isVendor())
@@ -54,18 +54,18 @@ public:
 		Vendor* vendor = NULL;
 
 		if (sceno->isTerminal()) {
-			Terminal* term = (Terminal*) sceno.get();
+			Terminal* term = cast<Terminal*>( sceno.get());
 			if (term->isVendorTerminal()) {
-				VendorTerminal* terminal = (VendorTerminal*) term;
+				VendorTerminal* terminal = cast<VendorTerminal*>( term);
 				vendor = terminal->getVendor();
 			}
 
 		} else if (sceno->isCreatureObject()) {
-			CreatureObject* cero = (CreatureObject*) sceno.get();
+			CreatureObject* cero = cast<CreatureObject*>( sceno.get());
 			if (!cero->isVendorCreature())
 				return;
 
-			VendorCreature* vendorCreature = (VendorCreature*) cero;
+			VendorCreature* vendorCreature = cast<VendorCreature*>( cero);
 			vendor = vendorCreature->getVendor();
 
 		} else

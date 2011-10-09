@@ -68,7 +68,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -105,7 +105,7 @@ public:
 			if (!member->isPlayerCreature())
 				continue;
 
-			CreatureObject* memberPlayer = (CreatureObject*) member.get();
+			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
 			Locker clocker(memberPlayer, leader);
 
 			for (int j = 0; j < 9; j++) {
@@ -130,7 +130,7 @@ public:
 			if (!member->isPlayerCreature())
 				continue;
 
-			CreatureObject* memberPlayer = (CreatureObject*) member.get();
+			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
 
 			Locker clocker(memberPlayer, leader);
 

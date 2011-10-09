@@ -296,7 +296,7 @@ void PlayerCreationManager::loadLuaConfig() {
 bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+	ClientCreateCharacterCallback* callback = cast<ClientCreateCharacterCallback*>( data);
 	ZoneClientSession* client = data->getClient();
 
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
@@ -426,9 +426,9 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	}
 
 	//Add a ship
-	ShipControlDevice* shipControlDevice = (ShipControlDevice*) zoneServer->createObject(String("object/intangible/ship/basic_tiefighter_pcd.iff").hashCode(), 1);
-	//ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
-	ShipObject* ship = (ShipObject*) zoneServer->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1);
+	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( zoneServer->createObject(String("object/intangible/ship/basic_tiefighter_pcd.iff").hashCode(), 1));
+	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
+	ShipObject* ship = cast<ShipObject*>( zoneServer->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1));
 
 	shipControlDevice->setControlledObject(ship);
 
@@ -533,7 +533,7 @@ void PlayerCreationManager::addHair(CreatureObject* creature, const String& hair
 	if (hair == NULL || !hair->isTangibleObject())
 		return;
 
-	TangibleObject* tanoHair = (TangibleObject*) hair.get();
+	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
 	tanoHair->setCustomizationString(hairCustomization);
 
 	creature->addObject(tanoHair, 4);

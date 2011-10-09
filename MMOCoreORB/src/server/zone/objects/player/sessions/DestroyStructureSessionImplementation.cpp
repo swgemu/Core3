@@ -25,7 +25,7 @@ int DestroyStructureSessionImplementation::initializeSession() {
 
 	Locker _lock(creatureObject, structureObject);
 
-	CreatureObject* player = (CreatureObject*) creatureObject.get();
+	CreatureObject* player = cast<CreatureObject*>( creatureObject.get());
 
 	String no = "\\#FF6347 @player_structure:can_redeed_no_suffix \\#.";
 	String yes = "\\#32CD32 @player_structure:can_redeed_yes_suffix \\#.";
@@ -71,7 +71,7 @@ int DestroyStructureSessionImplementation::sendDestroyCode() {
 
 	Locker _lock(creatureObject, structureObject);
 
-	CreatureObject* player = (CreatureObject*) creatureObject.get();
+	CreatureObject* player = cast<CreatureObject*>( creatureObject.get());
 
 	destroyCode = System::random(899999) + 100000;
 

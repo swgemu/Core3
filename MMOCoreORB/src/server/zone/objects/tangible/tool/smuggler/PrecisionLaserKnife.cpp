@@ -39,8 +39,9 @@ PrecisionLaserKnife::~PrecisionLaserKnife() {
 }
 
 
+
 int PrecisionLaserKnife::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	PrecisionLaserKnifeImplementation* _implementation = (PrecisionLaserKnifeImplementation*) _getImplementation();
+	PrecisionLaserKnifeImplementation* _implementation = static_cast<PrecisionLaserKnifeImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -55,7 +56,7 @@ int PrecisionLaserKnife::handleObjectMenuSelect(CreatureObject* player, byte sel
 }
 
 void PrecisionLaserKnife::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	PrecisionLaserKnifeImplementation* _implementation = (PrecisionLaserKnifeImplementation*) _getImplementation();
+	PrecisionLaserKnifeImplementation* _implementation = static_cast<PrecisionLaserKnifeImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -64,7 +65,7 @@ void PrecisionLaserKnife::fillAttributeList(AttributeListMessage* msg, CreatureO
 }
 
 void PrecisionLaserKnife::updateCraftingValues(ManufactureSchematic* schematic) {
-	PrecisionLaserKnifeImplementation* _implementation = (PrecisionLaserKnifeImplementation*) _getImplementation();
+	PrecisionLaserKnifeImplementation* _implementation = static_cast<PrecisionLaserKnifeImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -78,7 +79,7 @@ void PrecisionLaserKnife::updateCraftingValues(ManufactureSchematic* schematic) 
 }
 
 void PrecisionLaserKnife::updateCharges(int val) {
-	PrecisionLaserKnifeImplementation* _implementation = (PrecisionLaserKnifeImplementation*) _getImplementation();
+	PrecisionLaserKnifeImplementation* _implementation = static_cast<PrecisionLaserKnifeImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +93,7 @@ void PrecisionLaserKnife::updateCharges(int val) {
 }
 
 void PrecisionLaserKnife::useCharge(CreatureObject* player) {
-	PrecisionLaserKnifeImplementation* _implementation = (PrecisionLaserKnifeImplementation*) _getImplementation();
+	PrecisionLaserKnifeImplementation* _implementation = static_cast<PrecisionLaserKnifeImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +107,7 @@ void PrecisionLaserKnife::useCharge(CreatureObject* player) {
 }
 
 int PrecisionLaserKnife::getCharges() {
-	PrecisionLaserKnifeImplementation* _implementation = (PrecisionLaserKnifeImplementation*) _getImplementation();
+	PrecisionLaserKnifeImplementation* _implementation = static_cast<PrecisionLaserKnifeImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +154,7 @@ void PrecisionLaserKnifeImplementation::_initializeImplementation() {
 }
 
 void PrecisionLaserKnifeImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PrecisionLaserKnife*) stub;
+	_this = static_cast<PrecisionLaserKnife*>(stub);
 	SlicingToolImplementation::_setStub(stub);
 }
 
@@ -301,16 +302,16 @@ Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATECHARGES__INT_:
 		updateCharges(inv->getSignedIntParameter());
 		break;
 	case RPC_USECHARGE__CREATUREOBJECT_:
-		useCharge((CreatureObject*) inv->getObjectParameter());
+		useCharge(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETCHARGES__:
 		resp->insertSignedInt(getCharges());
@@ -323,23 +324,23 @@ Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 int PrecisionLaserKnifeAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((PrecisionLaserKnifeImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<PrecisionLaserKnifeImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void PrecisionLaserKnifeAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((PrecisionLaserKnifeImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<PrecisionLaserKnifeImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 void PrecisionLaserKnifeAdapter::updateCharges(int val) {
-	((PrecisionLaserKnifeImplementation*) impl)->updateCharges(val);
+	(static_cast<PrecisionLaserKnifeImplementation*>(impl))->updateCharges(val);
 }
 
 void PrecisionLaserKnifeAdapter::useCharge(CreatureObject* player) {
-	((PrecisionLaserKnifeImplementation*) impl)->useCharge(player);
+	(static_cast<PrecisionLaserKnifeImplementation*>(impl))->useCharge(player);
 }
 
 int PrecisionLaserKnifeAdapter::getCharges() {
-	return ((PrecisionLaserKnifeImplementation*) impl)->getCharges();
+	return (static_cast<PrecisionLaserKnifeImplementation*>(impl))->getCharges();
 }
 
 /*
@@ -367,7 +368,7 @@ DistributedObjectServant* PrecisionLaserKnifeHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PrecisionLaserKnifeHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PrecisionLaserKnifeAdapter((PrecisionLaserKnifeImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PrecisionLaserKnifeAdapter(static_cast<PrecisionLaserKnifeImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

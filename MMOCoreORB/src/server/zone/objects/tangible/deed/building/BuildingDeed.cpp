@@ -31,8 +31,9 @@ BuildingDeed::~BuildingDeed() {
 }
 
 
+
 void BuildingDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
+	BuildingDeedImplementation* _implementation = static_cast<BuildingDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -41,7 +42,7 @@ void BuildingDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* 
 }
 
 void BuildingDeed::initializeTransientMembers() {
-	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
+	BuildingDeedImplementation* _implementation = static_cast<BuildingDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +55,7 @@ void BuildingDeed::initializeTransientMembers() {
 }
 
 int BuildingDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
+	BuildingDeedImplementation* _implementation = static_cast<BuildingDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +70,7 @@ int BuildingDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID
 }
 
 void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
-	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
+	BuildingDeedImplementation* _implementation = static_cast<BuildingDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,7 +84,7 @@ void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 }
 
 unsigned int BuildingDeed::getSurplusMaintenance() {
-	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
+	BuildingDeedImplementation* _implementation = static_cast<BuildingDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ unsigned int BuildingDeed::getSurplusMaintenance() {
 }
 
 bool BuildingDeed::isBuildingDeed() {
-	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
+	BuildingDeedImplementation* _implementation = static_cast<BuildingDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -143,7 +144,7 @@ void BuildingDeedImplementation::_initializeImplementation() {
 }
 
 void BuildingDeedImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (BuildingDeed*) stub;
+	_this = static_cast<BuildingDeed*>(stub);
 	DeedImplementation::_setStub(stub);
 }
 
@@ -283,7 +284,7 @@ Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getUnsignedIntParameter());
@@ -302,23 +303,23 @@ Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void BuildingDeedAdapter::initializeTransientMembers() {
-	((BuildingDeedImplementation*) impl)->initializeTransientMembers();
+	(static_cast<BuildingDeedImplementation*>(impl))->initializeTransientMembers();
 }
 
 int BuildingDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((BuildingDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<BuildingDeedImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void BuildingDeedAdapter::setSurplusMaintenance(unsigned int surplusMaint) {
-	((BuildingDeedImplementation*) impl)->setSurplusMaintenance(surplusMaint);
+	(static_cast<BuildingDeedImplementation*>(impl))->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int BuildingDeedAdapter::getSurplusMaintenance() {
-	return ((BuildingDeedImplementation*) impl)->getSurplusMaintenance();
+	return (static_cast<BuildingDeedImplementation*>(impl))->getSurplusMaintenance();
 }
 
 bool BuildingDeedAdapter::isBuildingDeed() {
-	return ((BuildingDeedImplementation*) impl)->isBuildingDeed();
+	return (static_cast<BuildingDeedImplementation*>(impl))->isBuildingDeed();
 }
 
 /*
@@ -346,7 +347,7 @@ DistributedObjectServant* BuildingDeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BuildingDeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BuildingDeedAdapter((BuildingDeedImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new BuildingDeedAdapter(static_cast<BuildingDeedImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

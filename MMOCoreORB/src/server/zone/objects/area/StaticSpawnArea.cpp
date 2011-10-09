@@ -31,8 +31,9 @@ StaticSpawnArea::~StaticSpawnArea() {
 }
 
 
+
 void StaticSpawnArea::spawnCreatures() {
-	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
+	StaticSpawnAreaImplementation* _implementation = static_cast<StaticSpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ void StaticSpawnArea::spawnCreatures() {
 }
 
 bool StaticSpawnArea::isStaticArea() {
-	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
+	StaticSpawnAreaImplementation* _implementation = static_cast<StaticSpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +93,7 @@ void StaticSpawnAreaImplementation::_initializeImplementation() {
 }
 
 void StaticSpawnAreaImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (StaticSpawnArea*) stub;
+	_this = static_cast<StaticSpawnArea*>(stub);
 	SpawnAreaImplementation::_setStub(stub);
 }
 
@@ -230,11 +231,11 @@ Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void StaticSpawnAreaAdapter::spawnCreatures() {
-	((StaticSpawnAreaImplementation*) impl)->spawnCreatures();
+	(static_cast<StaticSpawnAreaImplementation*>(impl))->spawnCreatures();
 }
 
 bool StaticSpawnAreaAdapter::isStaticArea() {
-	return ((StaticSpawnAreaImplementation*) impl)->isStaticArea();
+	return (static_cast<StaticSpawnAreaImplementation*>(impl))->isStaticArea();
 }
 
 /*
@@ -262,7 +263,7 @@ DistributedObjectServant* StaticSpawnAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StaticSpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StaticSpawnAreaAdapter((StaticSpawnAreaImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new StaticSpawnAreaAdapter(static_cast<StaticSpawnAreaImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

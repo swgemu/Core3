@@ -55,7 +55,7 @@ void HuntingMissionObjectiveImplementation::abort() {
 }
 
 void HuntingMissionObjectiveImplementation::complete() {
-	CreatureObject* player = (CreatureObject*) getPlayerOwner();
+	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
 
 	if (player == NULL)
 		return;
@@ -81,10 +81,10 @@ void HuntingMissionObjectiveImplementation::complete() {
 
 int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::KILLEDCREATURE) {
-		if ((CreatureObject*)observable != getPlayerOwner())
+		if (cast<CreatureObject*>(observable) != getPlayerOwner())
 			return 0;
 
-		CreatureObject* creature = (CreatureObject*)arg1;
+		CreatureObject* creature = cast<CreatureObject*>(arg1);
 		String temp1 = mission->getTemplateString1();
 		String temp2 = mission->getTemplateString2();
 

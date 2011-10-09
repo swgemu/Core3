@@ -69,7 +69,7 @@ public:
 			return GENERALERROR;
 
 		// Meditate
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		Reference<Task*> task = player->getPendingTask("meditate");
 

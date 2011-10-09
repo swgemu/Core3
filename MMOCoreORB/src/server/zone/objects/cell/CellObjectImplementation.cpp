@@ -91,9 +91,9 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	bool allowEntry = true;
 
 	if (player->isCreatureObject() && parent != NULL && parent->isBuildingObject()) {
-		ManagedReference<CreatureObject*> creature = (CreatureObject*) player;
+		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>( player);
 
-		allowEntry = ((BuildingObject*) parent.get())->isAllowedEntry(creature->getFirstName());
+		allowEntry = (cast<BuildingObject*>(parent.get()))->isAllowedEntry(creature->getFirstName());
 	}
 
 	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
@@ -102,7 +102,7 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 int CellObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (parent != NULL && parent->isBuildingObject()) {
-		ManagedReference<BuildingObject*> building = (BuildingObject*) parent.get();
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get());
 
 		if (building->getCurrentNumberOfPlayerItems() >= building->getMaximumNumberOfPlayerItems()) {
 			errorDescription = "@container_error_message:container13";

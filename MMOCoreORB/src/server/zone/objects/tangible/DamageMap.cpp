@@ -79,7 +79,7 @@ CreatureObject* DamageMap::getHighestDamagePlayer() {
 
 		if (totalDamage > maxDamage && creature->isPlayerCreature()) {
 			maxDamage = totalDamage;
-			player = (CreatureObject*)creature;
+			player = cast<CreatureObject*>(creature);
 		}
 	}
 

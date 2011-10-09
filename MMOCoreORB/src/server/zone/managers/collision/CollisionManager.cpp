@@ -125,10 +125,10 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float heightEnd = 1.f;
 
 	if (object1->isCreatureObject())
-		heightOrigin = getRayOriginPoint((CreatureObject*)object1);
+		heightOrigin = getRayOriginPoint(cast<CreatureObject*>(object1));
 
 	if (object2->isCreatureObject())
-		heightEnd = getRayOriginPoint((CreatureObject*)object2);
+		heightEnd = getRayOriginPoint(cast<CreatureObject*>(object2));
 
 	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + heightOrigin);
 
@@ -144,7 +144,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	for (int i = 0; i < object1->inRangeObjectCount(); ++i) {
 		AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = (SceneObject*) object1->getInRangeObject(i);
+		SceneObject* scno = cast<SceneObject*>(object1->getInRangeObject(i));
 
 		try {
 			aabbTree = getAABBTree(scno, 255);

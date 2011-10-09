@@ -146,7 +146,7 @@ bool ZoneContainerComponent::addObject(SceneObject* sceneObject, SceneObject* ob
 
 	if (object->isInQuadTree()) {
 		for (int i = 0; i < object->inRangeObjectCount(); ++i) {
-			SceneObject* obj = (SceneObject*) object->getInRangeObject(i);
+			SceneObject* obj = cast<SceneObject*>( object->getInRangeObject(i));
 
 			if (obj != object->getRootParent()) //our building is sent in sendToOwner
 				object->notifyInsert(obj);
@@ -177,7 +177,7 @@ bool ZoneContainerComponent::addObject(SceneObject* sceneObject, SceneObject* ob
 
 			zone->inRange(object, 192);
 		} else if (parent->isCellObject()) {
-			BuildingObject* building = (BuildingObject*) parent->getParent();
+			BuildingObject* building = cast<BuildingObject*>( parent->getParent());
 			object->insertToBuilding(building);
 
 			building->notifyObjectInsertedToZone(object);
@@ -215,7 +215,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		//ManagedReference<SceneObject*> par = parent.get();
 
 		if (parent != NULL && parent->isCellObject()) {
-			BuildingObject* building = (BuildingObject*)parent->getParent();
+			BuildingObject* building = cast<BuildingObject*>(parent->getParent());
 
 			//par = parent;
 			if (building != NULL)

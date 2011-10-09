@@ -75,7 +75,7 @@ public:
 
 		try {
 
-			CreatureObject* player = (CreatureObject*) creature;
+			CreatureObject* player = cast<CreatureObject*>(creature);
 			StringTokenizer args(arguments.toString());
 			String location;
 

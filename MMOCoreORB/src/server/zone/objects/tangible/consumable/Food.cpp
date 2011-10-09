@@ -27,8 +27,9 @@ Food::~Food() {
 }
 
 
+
 void Food::initializeTransientMembers() {
-	FoodImplementation* _implementation = (FoodImplementation*) _getImplementation();
+	FoodImplementation* _implementation = static_cast<FoodImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ void Food::initializeTransientMembers() {
 }
 
 void Food::initializePrivateData() {
-	FoodImplementation* _implementation = (FoodImplementation*) _getImplementation();
+	FoodImplementation* _implementation = static_cast<FoodImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +89,7 @@ void FoodImplementation::_initializeImplementation() {
 }
 
 void FoodImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Food*) stub;
+	_this = static_cast<Food*>(stub);
 	ConsumableImplementation::_setStub(stub);
 }
 
@@ -222,11 +223,11 @@ Packet* FoodAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void FoodAdapter::initializeTransientMembers() {
-	((FoodImplementation*) impl)->initializeTransientMembers();
+	(static_cast<FoodImplementation*>(impl))->initializeTransientMembers();
 }
 
 void FoodAdapter::initializePrivateData() {
-	((FoodImplementation*) impl)->initializePrivateData();
+	(static_cast<FoodImplementation*>(impl))->initializePrivateData();
 }
 
 /*
@@ -254,7 +255,7 @@ DistributedObjectServant* FoodHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FoodHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FoodAdapter((FoodImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new FoodAdapter(static_cast<FoodImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

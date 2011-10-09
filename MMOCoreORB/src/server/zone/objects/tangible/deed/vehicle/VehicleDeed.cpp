@@ -35,8 +35,9 @@ VehicleDeed::~VehicleDeed() {
 }
 
 
+
 void VehicleDeed::initializeTransientMembers() {
-	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
+	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void VehicleDeed::initializeTransientMembers() {
 }
 
 void VehicleDeed::loadTemplateData(SharedObjectTemplate* templateData) {
-	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
+	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void VehicleDeed::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void VehicleDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
+	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -67,7 +68,7 @@ void VehicleDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* o
 }
 
 void VehicleDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
+	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -76,7 +77,7 @@ void VehicleDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Creat
 }
 
 int VehicleDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
+	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -91,7 +92,7 @@ int VehicleDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID)
 }
 
 void VehicleDeed::updateCraftingValues(ManufactureSchematic* schematic) {
-	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
+	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -105,7 +106,7 @@ void VehicleDeed::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 bool VehicleDeed::isVehicleDeedObject() {
-	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
+	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -152,7 +153,7 @@ void VehicleDeedImplementation::_initializeImplementation() {
 }
 
 void VehicleDeedImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (VehicleDeed*) stub;
+	_this = static_cast<VehicleDeed*>(stub);
 	DeedImplementation::_setStub(stub);
 }
 
@@ -295,10 +296,10 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISVEHICLEDEEDOBJECT__:
 		resp->insertBoolean(isVehicleDeedObject());
@@ -311,19 +312,19 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void VehicleDeedAdapter::initializeTransientMembers() {
-	((VehicleDeedImplementation*) impl)->initializeTransientMembers();
+	(static_cast<VehicleDeedImplementation*>(impl))->initializeTransientMembers();
 }
 
 int VehicleDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((VehicleDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VehicleDeedImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleDeedAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	((VehicleDeedImplementation*) impl)->updateCraftingValues(schematic);
+	(static_cast<VehicleDeedImplementation*>(impl))->updateCraftingValues(schematic);
 }
 
 bool VehicleDeedAdapter::isVehicleDeedObject() {
-	return ((VehicleDeedImplementation*) impl)->isVehicleDeedObject();
+	return (static_cast<VehicleDeedImplementation*>(impl))->isVehicleDeedObject();
 }
 
 /*
@@ -351,7 +352,7 @@ DistributedObjectServant* VehicleDeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VehicleDeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VehicleDeedAdapter((VehicleDeedImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new VehicleDeedAdapter(static_cast<VehicleDeedImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

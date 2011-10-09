@@ -38,12 +38,12 @@ public:
 		if (obj == NULL || !obj->isTerminal())
 			return;
 
-		Terminal* terminal = (Terminal*) obj.get();
+		Terminal* terminal = cast<Terminal*>( obj.get());
 
 		if (!terminal->isGuildTerminal())
 			return;
 
-		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		//Check to see if the guild terminal already has a guild object tied to it.
 		if (guildTerminal->getGuildObject() != NULL)

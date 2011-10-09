@@ -27,8 +27,9 @@ SpawnArea::~SpawnArea() {
 }
 
 
+
 void SpawnArea::registerObservers() {
-	SpawnAreaImplementation* _implementation = (SpawnAreaImplementation*) _getImplementation();
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -41,7 +42,7 @@ void SpawnArea::registerObservers() {
 }
 
 int SpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	SpawnAreaImplementation* _implementation = (SpawnAreaImplementation*) _getImplementation();
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ int SpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observabl
 }
 
 void SpawnArea::addTemplate(unsigned int tempCRC) {
-	SpawnAreaImplementation* _implementation = (SpawnAreaImplementation*) _getImplementation();
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +73,7 @@ void SpawnArea::addTemplate(unsigned int tempCRC) {
 }
 
 void SpawnArea::setTier(int n) {
-	SpawnAreaImplementation* _implementation = (SpawnAreaImplementation*) _getImplementation();
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ void SpawnArea::setTier(int n) {
 }
 
 void SpawnArea::setSpawnConstant(int n) {
-	SpawnAreaImplementation* _implementation = (SpawnAreaImplementation*) _getImplementation();
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -100,7 +101,7 @@ void SpawnArea::setSpawnConstant(int n) {
 }
 
 bool SpawnArea::isStaticArea() {
-	SpawnAreaImplementation* _implementation = (SpawnAreaImplementation*) _getImplementation();
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,7 +114,7 @@ bool SpawnArea::isStaticArea() {
 }
 
 bool SpawnArea::isDynamicArea() {
-	SpawnAreaImplementation* _implementation = (SpawnAreaImplementation*) _getImplementation();
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -160,7 +161,7 @@ void SpawnAreaImplementation::_initializeImplementation() {
 }
 
 void SpawnAreaImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SpawnArea*) stub;
+	_this = static_cast<SpawnArea*>(stub);
 	ActiveAreaImplementation::_setStub(stub);
 }
 
@@ -357,7 +358,7 @@ Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		registerObservers();
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	case RPC_ADDTEMPLATE__INT_:
 		addTemplate(inv->getUnsignedIntParameter());
@@ -382,31 +383,31 @@ Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void SpawnAreaAdapter::registerObservers() {
-	((SpawnAreaImplementation*) impl)->registerObservers();
+	(static_cast<SpawnAreaImplementation*>(impl))->registerObservers();
 }
 
 int SpawnAreaAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((SpawnAreaImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<SpawnAreaImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void SpawnAreaAdapter::addTemplate(unsigned int tempCRC) {
-	((SpawnAreaImplementation*) impl)->addTemplate(tempCRC);
+	(static_cast<SpawnAreaImplementation*>(impl))->addTemplate(tempCRC);
 }
 
 void SpawnAreaAdapter::setTier(int n) {
-	((SpawnAreaImplementation*) impl)->setTier(n);
+	(static_cast<SpawnAreaImplementation*>(impl))->setTier(n);
 }
 
 void SpawnAreaAdapter::setSpawnConstant(int n) {
-	((SpawnAreaImplementation*) impl)->setSpawnConstant(n);
+	(static_cast<SpawnAreaImplementation*>(impl))->setSpawnConstant(n);
 }
 
 bool SpawnAreaAdapter::isStaticArea() {
-	return ((SpawnAreaImplementation*) impl)->isStaticArea();
+	return (static_cast<SpawnAreaImplementation*>(impl))->isStaticArea();
 }
 
 bool SpawnAreaAdapter::isDynamicArea() {
-	return ((SpawnAreaImplementation*) impl)->isDynamicArea();
+	return (static_cast<SpawnAreaImplementation*>(impl))->isDynamicArea();
 }
 
 /*
@@ -434,7 +435,7 @@ DistributedObjectServant* SpawnAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpawnAreaAdapter((SpawnAreaImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SpawnAreaAdapter(static_cast<SpawnAreaImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

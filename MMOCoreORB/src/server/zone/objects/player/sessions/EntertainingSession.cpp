@@ -35,8 +35,9 @@ EntertainingSession::~EntertainingSession() {
 }
 
 
+
 void EntertainingSession::doEntertainerPatronEffects() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void EntertainingSession::doEntertainerPatronEffects() {
 }
 
 void EntertainingSession::doPerformanceAction() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +63,7 @@ void EntertainingSession::doPerformanceAction() {
 }
 
 void EntertainingSession::addEntertainerFlourishBuff() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ void EntertainingSession::addEntertainerFlourishBuff() {
 }
 
 void EntertainingSession::startDancing(const String& dance, const String& animation) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -90,7 +91,7 @@ void EntertainingSession::startDancing(const String& dance, const String& animat
 }
 
 void EntertainingSession::startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +107,7 @@ void EntertainingSession::startPlayingMusic(const String& song, const String& in
 }
 
 void EntertainingSession::startEntertaining() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -119,7 +120,7 @@ void EntertainingSession::startEntertaining() {
 }
 
 void EntertainingSession::healWounds(CreatureObject* creature, float woundHeal, float shockHeal) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -135,7 +136,7 @@ void EntertainingSession::healWounds(CreatureObject* creature, float woundHeal, 
 }
 
 bool EntertainingSession::isInEntertainingBuilding(CreatureObject* creature) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -149,7 +150,7 @@ bool EntertainingSession::isInEntertainingBuilding(CreatureObject* creature) {
 }
 
 void EntertainingSession::doFlourish(int flourishNumber) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -163,7 +164,7 @@ void EntertainingSession::doFlourish(int flourishNumber) {
 }
 
 bool EntertainingSession::canGiveEntertainBuff() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -176,7 +177,7 @@ bool EntertainingSession::canGiveEntertainBuff() {
 }
 
 void EntertainingSession::addFlourishXp(int xp) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -190,7 +191,7 @@ void EntertainingSession::addFlourishXp(int xp) {
 }
 
 void EntertainingSession::addHealingXp(int xp) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -204,7 +205,7 @@ void EntertainingSession::addHealingXp(int xp) {
 }
 
 int EntertainingSession::initializeSession() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -217,7 +218,7 @@ int EntertainingSession::initializeSession() {
 }
 
 int EntertainingSession::cancelSession() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -230,7 +231,7 @@ int EntertainingSession::cancelSession() {
 }
 
 int EntertainingSession::clearSession() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -243,7 +244,7 @@ int EntertainingSession::clearSession() {
 }
 
 void EntertainingSession::stopPlayingMusic() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -256,7 +257,7 @@ void EntertainingSession::stopPlayingMusic() {
 }
 
 void EntertainingSession::stopDancing() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -269,7 +270,7 @@ void EntertainingSession::stopDancing() {
 }
 
 void EntertainingSession::activateAction() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -282,7 +283,7 @@ void EntertainingSession::activateAction() {
 }
 
 void EntertainingSession::startTickTask() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -295,7 +296,7 @@ void EntertainingSession::startTickTask() {
 }
 
 void EntertainingSession::addEntertainerBuffDuration(CreatureObject* creature, int performanceType, float duration) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -304,7 +305,7 @@ void EntertainingSession::addEntertainerBuffDuration(CreatureObject* creature, i
 }
 
 void EntertainingSession::addEntertainerBuffStrength(CreatureObject* creature, int performanceType, float strength) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -313,7 +314,7 @@ void EntertainingSession::addEntertainerBuffStrength(CreatureObject* creature, i
 }
 
 void EntertainingSession::setEntertainerBuffDuration(CreatureObject* creature, int performanceType, float duration) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -322,7 +323,7 @@ void EntertainingSession::setEntertainerBuffDuration(CreatureObject* creature, i
 }
 
 void EntertainingSession::setEntertainerBuffStrength(CreatureObject* creature, int performanceType, float strength) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -331,7 +332,7 @@ void EntertainingSession::setEntertainerBuffStrength(CreatureObject* creature, i
 }
 
 int EntertainingSession::getEntertainerBuffStrength(CreatureObject* creature, int performanceType) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -346,7 +347,7 @@ int EntertainingSession::getEntertainerBuffStrength(CreatureObject* creature, in
 }
 
 int EntertainingSession::getEntertainerBuffDuration(CreatureObject* creature, int performanceType) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -361,7 +362,7 @@ int EntertainingSession::getEntertainerBuffDuration(CreatureObject* creature, in
 }
 
 void EntertainingSession::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -379,7 +380,7 @@ void EntertainingSession::sendEntertainingUpdate(CreatureObject* creature, float
 }
 
 void EntertainingSession::sendEntertainmentUpdate(CreatureObject* creature, unsigned long long entid, const String& mood, bool updateEntValue) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -396,7 +397,7 @@ void EntertainingSession::sendEntertainmentUpdate(CreatureObject* creature, unsi
 }
 
 void EntertainingSession::activateEntertainerBuff(CreatureObject* creature, int performanceType) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -411,7 +412,7 @@ void EntertainingSession::activateEntertainerBuff(CreatureObject* creature, int 
 }
 
 Instrument* EntertainingSession::getInstrument(CreatureObject* creature) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -419,13 +420,13 @@ Instrument* EntertainingSession::getInstrument(CreatureObject* creature) {
 		DistributedMethod method(this, RPC_GETINSTRUMENT__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
-		return (Instrument*) method.executeWithObjectReturn();
+		return static_cast<Instrument*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getInstrument(creature);
 }
 
 void EntertainingSession::addWatcher(CreatureObject* creature) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -439,7 +440,7 @@ void EntertainingSession::addWatcher(CreatureObject* creature) {
 }
 
 void EntertainingSession::addListener(CreatureObject* listener) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -453,7 +454,7 @@ void EntertainingSession::addListener(CreatureObject* listener) {
 }
 
 bool EntertainingSession::isDancing() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -466,7 +467,7 @@ bool EntertainingSession::isDancing() {
 }
 
 bool EntertainingSession::isPlayingMusic() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -479,7 +480,7 @@ bool EntertainingSession::isPlayingMusic() {
 }
 
 bool EntertainingSession::isAcceptingBandFlourishes() {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -492,7 +493,7 @@ bool EntertainingSession::isAcceptingBandFlourishes() {
 }
 
 void EntertainingSession::setAcceptingBandFlourishes(bool val) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -506,7 +507,7 @@ void EntertainingSession::setAcceptingBandFlourishes(bool val) {
 }
 
 void EntertainingSession::removeWatcher(CreatureObject* creature) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -520,7 +521,7 @@ void EntertainingSession::removeWatcher(CreatureObject* creature) {
 }
 
 void EntertainingSession::removeListener(CreatureObject* creature) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -534,7 +535,7 @@ void EntertainingSession::removeListener(CreatureObject* creature) {
 }
 
 void EntertainingSession::setPerformanceName(const String& name) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -548,7 +549,7 @@ void EntertainingSession::setPerformanceName(const String& name) {
 }
 
 void EntertainingSession::setDancing(bool val) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -562,7 +563,7 @@ void EntertainingSession::setDancing(bool val) {
 }
 
 void EntertainingSession::setTargetInstrument(bool var) {
-	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -608,7 +609,7 @@ void EntertainingSessionImplementation::_initializeImplementation() {
 }
 
 void EntertainingSessionImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (EntertainingSession*) stub;
+	_this = static_cast<EntertainingSession*>(stub);
 	FacadeImplementation::_setStub(stub);
 }
 
@@ -1027,10 +1028,10 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		finalize();
 		break;
 	case RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_:
-		healWounds((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		healWounds(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_:
-		resp->insertBoolean(isInEntertainingBuilding((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isInEntertainingBuilding(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_DOFLOURISH__INT_:
 		doFlourish(inv->getSignedIntParameter());
@@ -1066,28 +1067,28 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		startTickTask();
 		break;
 	case RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_:
-		resp->insertSignedInt(getEntertainerBuffStrength((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertSignedInt(getEntertainerBuffStrength(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
 	case RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_:
-		resp->insertSignedInt(getEntertainerBuffDuration((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertSignedInt(getEntertainerBuffDuration(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
 	case RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_:
-		sendEntertainingUpdate((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		sendEntertainingUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getAsciiParameter(_param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_:
-		sendEntertainmentUpdate((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_), inv->getBooleanParameter());
+		sendEntertainmentUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_), inv->getBooleanParameter());
 		break;
 	case RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_:
-		activateEntertainerBuff((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		activateEntertainerBuff(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_GETINSTRUMENT__CREATUREOBJECT_:
-		resp->insertLong(getInstrument((CreatureObject*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(getInstrument(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
 		break;
 	case RPC_ADDWATCHER__CREATUREOBJECT_:
-		addWatcher((CreatureObject*) inv->getObjectParameter());
+		addWatcher(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDLISTENER__CREATUREOBJECT_:
-		addListener((CreatureObject*) inv->getObjectParameter());
+		addListener(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISDANCING__:
 		resp->insertBoolean(isDancing());
@@ -1102,10 +1103,10 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		setAcceptingBandFlourishes(inv->getBooleanParameter());
 		break;
 	case RPC_REMOVEWATCHER__CREATUREOBJECT_:
-		removeWatcher((CreatureObject*) inv->getObjectParameter());
+		removeWatcher(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVELISTENER__CREATUREOBJECT_:
-		removeListener((CreatureObject*) inv->getObjectParameter());
+		removeListener(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETPERFORMANCENAME__STRING_:
 		setPerformanceName(inv->getAsciiParameter(_param0_setPerformanceName__String_));
@@ -1124,151 +1125,151 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 void EntertainingSessionAdapter::doEntertainerPatronEffects() {
-	((EntertainingSessionImplementation*) impl)->doEntertainerPatronEffects();
+	(static_cast<EntertainingSessionImplementation*>(impl))->doEntertainerPatronEffects();
 }
 
 void EntertainingSessionAdapter::doPerformanceAction() {
-	((EntertainingSessionImplementation*) impl)->doPerformanceAction();
+	(static_cast<EntertainingSessionImplementation*>(impl))->doPerformanceAction();
 }
 
 void EntertainingSessionAdapter::addEntertainerFlourishBuff() {
-	((EntertainingSessionImplementation*) impl)->addEntertainerFlourishBuff();
+	(static_cast<EntertainingSessionImplementation*>(impl))->addEntertainerFlourishBuff();
 }
 
 void EntertainingSessionAdapter::startDancing(const String& dance, const String& animation) {
-	((EntertainingSessionImplementation*) impl)->startDancing(dance, animation);
+	(static_cast<EntertainingSessionImplementation*>(impl))->startDancing(dance, animation);
 }
 
 void EntertainingSessionAdapter::startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid) {
-	((EntertainingSessionImplementation*) impl)->startPlayingMusic(song, instrumentAnimation, instrid);
+	(static_cast<EntertainingSessionImplementation*>(impl))->startPlayingMusic(song, instrumentAnimation, instrid);
 }
 
 void EntertainingSessionAdapter::startEntertaining() {
-	((EntertainingSessionImplementation*) impl)->startEntertaining();
+	(static_cast<EntertainingSessionImplementation*>(impl))->startEntertaining();
 }
 
 void EntertainingSessionAdapter::finalize() {
-	((EntertainingSessionImplementation*) impl)->finalize();
+	(static_cast<EntertainingSessionImplementation*>(impl))->finalize();
 }
 
 void EntertainingSessionAdapter::healWounds(CreatureObject* creature, float woundHeal, float shockHeal) {
-	((EntertainingSessionImplementation*) impl)->healWounds(creature, woundHeal, shockHeal);
+	(static_cast<EntertainingSessionImplementation*>(impl))->healWounds(creature, woundHeal, shockHeal);
 }
 
 bool EntertainingSessionAdapter::isInEntertainingBuilding(CreatureObject* creature) {
-	return ((EntertainingSessionImplementation*) impl)->isInEntertainingBuilding(creature);
+	return (static_cast<EntertainingSessionImplementation*>(impl))->isInEntertainingBuilding(creature);
 }
 
 void EntertainingSessionAdapter::doFlourish(int flourishNumber) {
-	((EntertainingSessionImplementation*) impl)->doFlourish(flourishNumber);
+	(static_cast<EntertainingSessionImplementation*>(impl))->doFlourish(flourishNumber);
 }
 
 bool EntertainingSessionAdapter::canGiveEntertainBuff() {
-	return ((EntertainingSessionImplementation*) impl)->canGiveEntertainBuff();
+	return (static_cast<EntertainingSessionImplementation*>(impl))->canGiveEntertainBuff();
 }
 
 void EntertainingSessionAdapter::addFlourishXp(int xp) {
-	((EntertainingSessionImplementation*) impl)->addFlourishXp(xp);
+	(static_cast<EntertainingSessionImplementation*>(impl))->addFlourishXp(xp);
 }
 
 void EntertainingSessionAdapter::addHealingXp(int xp) {
-	((EntertainingSessionImplementation*) impl)->addHealingXp(xp);
+	(static_cast<EntertainingSessionImplementation*>(impl))->addHealingXp(xp);
 }
 
 int EntertainingSessionAdapter::initializeSession() {
-	return ((EntertainingSessionImplementation*) impl)->initializeSession();
+	return (static_cast<EntertainingSessionImplementation*>(impl))->initializeSession();
 }
 
 int EntertainingSessionAdapter::cancelSession() {
-	return ((EntertainingSessionImplementation*) impl)->cancelSession();
+	return (static_cast<EntertainingSessionImplementation*>(impl))->cancelSession();
 }
 
 int EntertainingSessionAdapter::clearSession() {
-	return ((EntertainingSessionImplementation*) impl)->clearSession();
+	return (static_cast<EntertainingSessionImplementation*>(impl))->clearSession();
 }
 
 void EntertainingSessionAdapter::stopPlayingMusic() {
-	((EntertainingSessionImplementation*) impl)->stopPlayingMusic();
+	(static_cast<EntertainingSessionImplementation*>(impl))->stopPlayingMusic();
 }
 
 void EntertainingSessionAdapter::stopDancing() {
-	((EntertainingSessionImplementation*) impl)->stopDancing();
+	(static_cast<EntertainingSessionImplementation*>(impl))->stopDancing();
 }
 
 void EntertainingSessionAdapter::activateAction() {
-	((EntertainingSessionImplementation*) impl)->activateAction();
+	(static_cast<EntertainingSessionImplementation*>(impl))->activateAction();
 }
 
 void EntertainingSessionAdapter::startTickTask() {
-	((EntertainingSessionImplementation*) impl)->startTickTask();
+	(static_cast<EntertainingSessionImplementation*>(impl))->startTickTask();
 }
 
 int EntertainingSessionAdapter::getEntertainerBuffStrength(CreatureObject* creature, int performanceType) {
-	return ((EntertainingSessionImplementation*) impl)->getEntertainerBuffStrength(creature, performanceType);
+	return (static_cast<EntertainingSessionImplementation*>(impl))->getEntertainerBuffStrength(creature, performanceType);
 }
 
 int EntertainingSessionAdapter::getEntertainerBuffDuration(CreatureObject* creature, int performanceType) {
-	return ((EntertainingSessionImplementation*) impl)->getEntertainerBuffDuration(creature, performanceType);
+	return (static_cast<EntertainingSessionImplementation*>(impl))->getEntertainerBuffDuration(creature, performanceType);
 }
 
 void EntertainingSessionAdapter::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid) {
-	((EntertainingSessionImplementation*) impl)->sendEntertainingUpdate(creature, entval, performance, perfcntr, instrid);
+	(static_cast<EntertainingSessionImplementation*>(impl))->sendEntertainingUpdate(creature, entval, performance, perfcntr, instrid);
 }
 
 void EntertainingSessionAdapter::sendEntertainmentUpdate(CreatureObject* creature, unsigned long long entid, const String& mood, bool updateEntValue) {
-	((EntertainingSessionImplementation*) impl)->sendEntertainmentUpdate(creature, entid, mood, updateEntValue);
+	(static_cast<EntertainingSessionImplementation*>(impl))->sendEntertainmentUpdate(creature, entid, mood, updateEntValue);
 }
 
 void EntertainingSessionAdapter::activateEntertainerBuff(CreatureObject* creature, int performanceType) {
-	((EntertainingSessionImplementation*) impl)->activateEntertainerBuff(creature, performanceType);
+	(static_cast<EntertainingSessionImplementation*>(impl))->activateEntertainerBuff(creature, performanceType);
 }
 
 Instrument* EntertainingSessionAdapter::getInstrument(CreatureObject* creature) {
-	return ((EntertainingSessionImplementation*) impl)->getInstrument(creature);
+	return (static_cast<EntertainingSessionImplementation*>(impl))->getInstrument(creature);
 }
 
 void EntertainingSessionAdapter::addWatcher(CreatureObject* creature) {
-	((EntertainingSessionImplementation*) impl)->addWatcher(creature);
+	(static_cast<EntertainingSessionImplementation*>(impl))->addWatcher(creature);
 }
 
 void EntertainingSessionAdapter::addListener(CreatureObject* listener) {
-	((EntertainingSessionImplementation*) impl)->addListener(listener);
+	(static_cast<EntertainingSessionImplementation*>(impl))->addListener(listener);
 }
 
 bool EntertainingSessionAdapter::isDancing() {
-	return ((EntertainingSessionImplementation*) impl)->isDancing();
+	return (static_cast<EntertainingSessionImplementation*>(impl))->isDancing();
 }
 
 bool EntertainingSessionAdapter::isPlayingMusic() {
-	return ((EntertainingSessionImplementation*) impl)->isPlayingMusic();
+	return (static_cast<EntertainingSessionImplementation*>(impl))->isPlayingMusic();
 }
 
 bool EntertainingSessionAdapter::isAcceptingBandFlourishes() {
-	return ((EntertainingSessionImplementation*) impl)->isAcceptingBandFlourishes();
+	return (static_cast<EntertainingSessionImplementation*>(impl))->isAcceptingBandFlourishes();
 }
 
 void EntertainingSessionAdapter::setAcceptingBandFlourishes(bool val) {
-	((EntertainingSessionImplementation*) impl)->setAcceptingBandFlourishes(val);
+	(static_cast<EntertainingSessionImplementation*>(impl))->setAcceptingBandFlourishes(val);
 }
 
 void EntertainingSessionAdapter::removeWatcher(CreatureObject* creature) {
-	((EntertainingSessionImplementation*) impl)->removeWatcher(creature);
+	(static_cast<EntertainingSessionImplementation*>(impl))->removeWatcher(creature);
 }
 
 void EntertainingSessionAdapter::removeListener(CreatureObject* creature) {
-	((EntertainingSessionImplementation*) impl)->removeListener(creature);
+	(static_cast<EntertainingSessionImplementation*>(impl))->removeListener(creature);
 }
 
 void EntertainingSessionAdapter::setPerformanceName(const String& name) {
-	((EntertainingSessionImplementation*) impl)->setPerformanceName(name);
+	(static_cast<EntertainingSessionImplementation*>(impl))->setPerformanceName(name);
 }
 
 void EntertainingSessionAdapter::setDancing(bool val) {
-	((EntertainingSessionImplementation*) impl)->setDancing(val);
+	(static_cast<EntertainingSessionImplementation*>(impl))->setDancing(val);
 }
 
 void EntertainingSessionAdapter::setTargetInstrument(bool var) {
-	((EntertainingSessionImplementation*) impl)->setTargetInstrument(var);
+	(static_cast<EntertainingSessionImplementation*>(impl))->setTargetInstrument(var);
 }
 
 /*
@@ -1296,7 +1297,7 @@ DistributedObjectServant* EntertainingSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* EntertainingSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EntertainingSessionAdapter((EntertainingSessionImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new EntertainingSessionAdapter(static_cast<EntertainingSessionImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

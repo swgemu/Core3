@@ -14,7 +14,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
 
 	if (object->isTangibleObject() && containmentType == 4) {
-		TangibleObject* wearable = (TangibleObject*) object;
+		TangibleObject* wearable = cast<TangibleObject*>( object);
 
 		uint16 charMask = creo->getWearableMask();
 		uint16 objMask = wearable->getPlayerUseMask();
@@ -34,7 +34,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	if (object->isArmorObject() && containmentType == 4) {
 		PlayerManager* playerManager = sceneObject->getZoneServer()->getPlayerManager();
 
-		if (!playerManager->checkEncumbrancies(dynamic_cast<CreatureObject*>(sceneObject), (ArmorObject*) object)) {
+		if (!playerManager->checkEncumbrancies(dynamic_cast<CreatureObject*>(sceneObject), cast<ArmorObject*>( object))) {
 			errorDescription = "You lack the necessary secondary stats to equip this item";
 
 			return TransferErrorCode::NOTENOUGHENCUMBRANCE;
@@ -54,13 +54,13 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	if (object->isArmorObject()) {
 		PlayerManager* playerManager = sceneObject->getZoneServer()->getPlayerManager();
 
-		playerManager->applyEncumbrancies(creo, (ArmorObject*)object);
+		playerManager->applyEncumbrancies(creo, cast<ArmorObject*>(object));
 
-		WearableObject* armor = (WearableObject*) object;
+		WearableObject* armor = cast<WearableObject*>( object);
 		armor->setAttachmentMods(creo);
 
 	} else if (object->isWearableObject()) {
-		WearableObject* clothing = (WearableObject*) object;
+		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo);
 	}
 
@@ -80,13 +80,13 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	if (object->isArmorObject()) {
 		PlayerManager* playerManager = creo->getZoneServer()->getPlayerManager();
 
-		playerManager->removeEncumbrancies(creo, (ArmorObject*)object);
+		playerManager->removeEncumbrancies(creo, cast<ArmorObject*>(object));
 
-		WearableObject* armor = (WearableObject*) object;
+		WearableObject* armor = cast<WearableObject*>( object);
 		armor->setAttachmentMods(creo, true);
 
 	} else if (object->isWearableObject()) {
-		WearableObject* clothing = (WearableObject*) object;
+		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo, true);
 	}
 

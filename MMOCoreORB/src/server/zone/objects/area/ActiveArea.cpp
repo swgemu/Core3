@@ -27,8 +27,9 @@ ActiveArea::~ActiveArea() {
 }
 
 
+
 void ActiveArea::sendTo(SceneObject* player, bool doClose) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void ActiveArea::sendTo(SceneObject* player, bool doClose) {
 }
 
 void ActiveArea::enqueueEnterEvent(SceneObject* obj) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,7 +58,7 @@ void ActiveArea::enqueueEnterEvent(SceneObject* obj) {
 }
 
 void ActiveArea::enqueueExitEvent(SceneObject* obj) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void ActiveArea::enqueueExitEvent(SceneObject* obj) {
 }
 
 void ActiveArea::notifyEnter(SceneObject* object) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void ActiveArea::notifyEnter(SceneObject* object) {
 }
 
 void ActiveArea::notifyExit(SceneObject* object) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -99,7 +100,7 @@ void ActiveArea::notifyExit(SceneObject* object) {
 }
 
 bool ActiveArea::isActiveArea() {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -112,7 +113,7 @@ bool ActiveArea::isActiveArea() {
 }
 
 bool ActiveArea::isRegion() {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -125,7 +126,7 @@ bool ActiveArea::isRegion() {
 }
 
 bool ActiveArea::containsPoint(float x, float y) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -140,7 +141,7 @@ bool ActiveArea::containsPoint(float x, float y) {
 }
 
 float ActiveArea::getRadius() {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +154,7 @@ float ActiveArea::getRadius() {
 }
 
 float ActiveArea::getRadius2() {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,7 +167,7 @@ float ActiveArea::getRadius2() {
 }
 
 void ActiveArea::setRadius(float r) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -214,7 +215,7 @@ void ActiveAreaImplementation::_initializeImplementation() {
 }
 
 void ActiveAreaImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (ActiveArea*) stub;
+	_this = static_cast<ActiveArea*>(stub);
 	SceneObjectImplementation::_setStub(stub);
 }
 
@@ -381,19 +382,19 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_ENQUEUEENTEREVENT__SCENEOBJECT_:
-		enqueueEnterEvent((SceneObject*) inv->getObjectParameter());
+		enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ENQUEUEEXITEVENT__SCENEOBJECT_:
-		enqueueExitEvent((SceneObject*) inv->getObjectParameter());
+		enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter((SceneObject*) inv->getObjectParameter());
+		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit((SceneObject*) inv->getObjectParameter());
+		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISACTIVEAREA__:
 		resp->insertBoolean(isActiveArea());
@@ -421,47 +422,47 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ActiveAreaAdapter::sendTo(SceneObject* player, bool doClose) {
-	((ActiveAreaImplementation*) impl)->sendTo(player, doClose);
+	(static_cast<ActiveAreaImplementation*>(impl))->sendTo(player, doClose);
 }
 
 void ActiveAreaAdapter::enqueueEnterEvent(SceneObject* obj) {
-	((ActiveAreaImplementation*) impl)->enqueueEnterEvent(obj);
+	(static_cast<ActiveAreaImplementation*>(impl))->enqueueEnterEvent(obj);
 }
 
 void ActiveAreaAdapter::enqueueExitEvent(SceneObject* obj) {
-	((ActiveAreaImplementation*) impl)->enqueueExitEvent(obj);
+	(static_cast<ActiveAreaImplementation*>(impl))->enqueueExitEvent(obj);
 }
 
 void ActiveAreaAdapter::notifyEnter(SceneObject* object) {
-	((ActiveAreaImplementation*) impl)->notifyEnter(object);
+	(static_cast<ActiveAreaImplementation*>(impl))->notifyEnter(object);
 }
 
 void ActiveAreaAdapter::notifyExit(SceneObject* object) {
-	((ActiveAreaImplementation*) impl)->notifyExit(object);
+	(static_cast<ActiveAreaImplementation*>(impl))->notifyExit(object);
 }
 
 bool ActiveAreaAdapter::isActiveArea() {
-	return ((ActiveAreaImplementation*) impl)->isActiveArea();
+	return (static_cast<ActiveAreaImplementation*>(impl))->isActiveArea();
 }
 
 bool ActiveAreaAdapter::isRegion() {
-	return ((ActiveAreaImplementation*) impl)->isRegion();
+	return (static_cast<ActiveAreaImplementation*>(impl))->isRegion();
 }
 
 bool ActiveAreaAdapter::containsPoint(float x, float y) {
-	return ((ActiveAreaImplementation*) impl)->containsPoint(x, y);
+	return (static_cast<ActiveAreaImplementation*>(impl))->containsPoint(x, y);
 }
 
 float ActiveAreaAdapter::getRadius() {
-	return ((ActiveAreaImplementation*) impl)->getRadius();
+	return (static_cast<ActiveAreaImplementation*>(impl))->getRadius();
 }
 
 float ActiveAreaAdapter::getRadius2() {
-	return ((ActiveAreaImplementation*) impl)->getRadius2();
+	return (static_cast<ActiveAreaImplementation*>(impl))->getRadius2();
 }
 
 void ActiveAreaAdapter::setRadius(float r) {
-	((ActiveAreaImplementation*) impl)->setRadius(r);
+	(static_cast<ActiveAreaImplementation*>(impl))->setRadius(r);
 }
 
 /*
@@ -489,7 +490,7 @@ DistributedObjectServant* ActiveAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ActiveAreaAdapter((ActiveAreaImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ActiveAreaAdapter(static_cast<ActiveAreaImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -29,8 +29,9 @@ SuiListBox::~SuiListBox() {
 }
 
 
+
 void SuiListBox::init() {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void SuiListBox::init() {
 }
 
 void SuiListBox::addMenuItem(const String& name, unsigned long long objectID) {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ void SuiListBox::addMenuItem(const String& name, unsigned long long objectID) {
 }
 
 String SuiListBox::getMenuItemName(int index) {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ String SuiListBox::getMenuItemName(int index) {
 }
 
 void SuiListBox::removeAllMenuItems() {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ void SuiListBox::removeAllMenuItems() {
 }
 
 unsigned long long SuiListBox::getMenuObjectID(unsigned int idx) {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -100,7 +101,7 @@ unsigned long long SuiListBox::getMenuObjectID(unsigned int idx) {
 }
 
 int SuiListBox::getMenuSize() {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,20 +114,20 @@ int SuiListBox::getMenuSize() {
 }
 
 BaseMessage* SuiListBox::generateMessage() {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
-		return (BaseMessage*) method.executeWithObjectReturn();
+		return static_cast<BaseMessage*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->generateMessage();
 }
 
 void SuiListBox::setNextBox(unsigned int boxID) {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -140,7 +141,7 @@ void SuiListBox::setNextBox(unsigned int boxID) {
 }
 
 void SuiListBox::setPreviousBox(unsigned int boxID) {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -154,7 +155,7 @@ void SuiListBox::setPreviousBox(unsigned int boxID) {
 }
 
 unsigned long long SuiListBox::getNextBox() {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -167,7 +168,7 @@ unsigned long long SuiListBox::getNextBox() {
 }
 
 unsigned long long SuiListBox::getPreviousBox() {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -180,7 +181,7 @@ unsigned long long SuiListBox::getPreviousBox() {
 }
 
 bool SuiListBox::isListBox() {
-	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	SuiListBoxImplementation* _implementation = static_cast<SuiListBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -227,7 +228,7 @@ void SuiListBoxImplementation::_initializeImplementation() {
 }
 
 void SuiListBoxImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SuiListBox*) stub;
+	_this = static_cast<SuiListBox*>(stub);
 	SuiBoxImplementation::_setStub(stub);
 }
 
@@ -501,51 +502,51 @@ Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void SuiListBoxAdapter::init() {
-	((SuiListBoxImplementation*) impl)->init();
+	(static_cast<SuiListBoxImplementation*>(impl))->init();
 }
 
 void SuiListBoxAdapter::addMenuItem(const String& name, unsigned long long objectID) {
-	((SuiListBoxImplementation*) impl)->addMenuItem(name, objectID);
+	(static_cast<SuiListBoxImplementation*>(impl))->addMenuItem(name, objectID);
 }
 
 String SuiListBoxAdapter::getMenuItemName(int index) {
-	return ((SuiListBoxImplementation*) impl)->getMenuItemName(index);
+	return (static_cast<SuiListBoxImplementation*>(impl))->getMenuItemName(index);
 }
 
 void SuiListBoxAdapter::removeAllMenuItems() {
-	((SuiListBoxImplementation*) impl)->removeAllMenuItems();
+	(static_cast<SuiListBoxImplementation*>(impl))->removeAllMenuItems();
 }
 
 unsigned long long SuiListBoxAdapter::getMenuObjectID(unsigned int idx) {
-	return ((SuiListBoxImplementation*) impl)->getMenuObjectID(idx);
+	return (static_cast<SuiListBoxImplementation*>(impl))->getMenuObjectID(idx);
 }
 
 int SuiListBoxAdapter::getMenuSize() {
-	return ((SuiListBoxImplementation*) impl)->getMenuSize();
+	return (static_cast<SuiListBoxImplementation*>(impl))->getMenuSize();
 }
 
 BaseMessage* SuiListBoxAdapter::generateMessage() {
-	return ((SuiListBoxImplementation*) impl)->generateMessage();
+	return (static_cast<SuiListBoxImplementation*>(impl))->generateMessage();
 }
 
 void SuiListBoxAdapter::setNextBox(unsigned int boxID) {
-	((SuiListBoxImplementation*) impl)->setNextBox(boxID);
+	(static_cast<SuiListBoxImplementation*>(impl))->setNextBox(boxID);
 }
 
 void SuiListBoxAdapter::setPreviousBox(unsigned int boxID) {
-	((SuiListBoxImplementation*) impl)->setPreviousBox(boxID);
+	(static_cast<SuiListBoxImplementation*>(impl))->setPreviousBox(boxID);
 }
 
 unsigned long long SuiListBoxAdapter::getNextBox() {
-	return ((SuiListBoxImplementation*) impl)->getNextBox();
+	return (static_cast<SuiListBoxImplementation*>(impl))->getNextBox();
 }
 
 unsigned long long SuiListBoxAdapter::getPreviousBox() {
-	return ((SuiListBoxImplementation*) impl)->getPreviousBox();
+	return (static_cast<SuiListBoxImplementation*>(impl))->getPreviousBox();
 }
 
 bool SuiListBoxAdapter::isListBox() {
-	return ((SuiListBoxImplementation*) impl)->isListBox();
+	return (static_cast<SuiListBoxImplementation*>(impl))->isListBox();
 }
 
 /*
@@ -573,7 +574,7 @@ DistributedObjectServant* SuiListBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiListBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiListBoxAdapter((SuiListBoxImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SuiListBoxAdapter(static_cast<SuiListBoxImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

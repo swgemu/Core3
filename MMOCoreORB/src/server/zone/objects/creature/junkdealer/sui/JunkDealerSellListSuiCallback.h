@@ -37,7 +37,7 @@ public:
 		/*try {
 			player->wlock();
 
-			SuiListBox* listbox = (SuiListBox*) player->getSuiBox(boxid);
+			SuiListBox* listbox = cast<SuiListBox*>( player->getSuiBox(boxid));
 
 			if (listbox == NULL) {
 				player->unlock();
@@ -81,7 +81,7 @@ public:
 				}
 
 				uint64 itemid = listbox->getMenuObjectID(index);
-				TangibleObject* item = (TangibleObject*) player->getInventoryItem(itemid);
+				TangibleObject* item = cast<TangibleObject*>( player->getInventoryItem(itemid));
 
 				if (item == NULL) {
 					player->sendSystemMessage("An error has occurred, preventing you from selling your junk to the junk dealer.");

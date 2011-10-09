@@ -72,7 +72,7 @@ public:
 		if (object == NULL || !object->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* inviter = (CreatureObject*) object.get();
+		CreatureObject* inviter = cast<CreatureObject*>( object.get());
 
 		creature->updateGroupInviterID(0);
 

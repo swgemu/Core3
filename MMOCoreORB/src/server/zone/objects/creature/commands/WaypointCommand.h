@@ -189,9 +189,9 @@ public:
 		y = (y < -8192) ? -8192 : y;
 		y = (y > 8192) ? 8192 : y;
 
-		PlayerObject* playerObject = (PlayerObject*) creature->getSlottedObject("ghost");
+		PlayerObject* playerObject = cast<PlayerObject*>( creature->getSlottedObject("ghost"));
 
-		ManagedReference<WaypointObject*> obj = (WaypointObject*) server->getZoneServer()->createObject(0xc456e788, 1);
+		ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
 		obj->setPlanetCRC(planet.hashCode());
 		obj->setPosition(x, z, y);
 		obj->setCustomName(waypointName);

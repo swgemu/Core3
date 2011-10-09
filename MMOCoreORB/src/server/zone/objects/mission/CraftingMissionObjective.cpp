@@ -33,8 +33,9 @@ CraftingMissionObjective::~CraftingMissionObjective() {
 }
 
 
+
 void CraftingMissionObjective::initializeTransientMembers() {
-	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	CraftingMissionObjectiveImplementation* _implementation = static_cast<CraftingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void CraftingMissionObjective::initializeTransientMembers() {
 }
 
 void CraftingMissionObjective::activate() {
-	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	CraftingMissionObjectiveImplementation* _implementation = static_cast<CraftingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ void CraftingMissionObjective::activate() {
 }
 
 void CraftingMissionObjective::abort() {
-	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	CraftingMissionObjectiveImplementation* _implementation = static_cast<CraftingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ void CraftingMissionObjective::abort() {
 }
 
 void CraftingMissionObjective::complete() {
-	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	CraftingMissionObjectiveImplementation* _implementation = static_cast<CraftingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -86,7 +87,7 @@ void CraftingMissionObjective::complete() {
 }
 
 int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	CraftingMissionObjectiveImplementation* _implementation = static_cast<CraftingMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -136,7 +137,7 @@ void CraftingMissionObjectiveImplementation::_initializeImplementation() {
 }
 
 void CraftingMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CraftingMissionObjective*) stub;
+	_this = static_cast<CraftingMissionObjective*>(stub);
 	MissionObjectiveImplementation::_setStub(stub);
 }
 
@@ -270,7 +271,7 @@ Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, Distributed
 		complete();
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -280,27 +281,27 @@ Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, Distributed
 }
 
 void CraftingMissionObjectiveAdapter::finalize() {
-	((CraftingMissionObjectiveImplementation*) impl)->finalize();
+	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->finalize();
 }
 
 void CraftingMissionObjectiveAdapter::initializeTransientMembers() {
-	((CraftingMissionObjectiveImplementation*) impl)->initializeTransientMembers();
+	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
 }
 
 void CraftingMissionObjectiveAdapter::activate() {
-	((CraftingMissionObjectiveImplementation*) impl)->activate();
+	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->activate();
 }
 
 void CraftingMissionObjectiveAdapter::abort() {
-	((CraftingMissionObjectiveImplementation*) impl)->abort();
+	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->abort();
 }
 
 void CraftingMissionObjectiveAdapter::complete() {
-	((CraftingMissionObjectiveImplementation*) impl)->complete();
+	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->complete();
 }
 
 int CraftingMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((CraftingMissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<CraftingMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -328,7 +329,7 @@ DistributedObjectServant* CraftingMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CraftingMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CraftingMissionObjectiveAdapter((CraftingMissionObjectiveImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CraftingMissionObjectiveAdapter(static_cast<CraftingMissionObjectiveImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -25,8 +25,9 @@ SpawnObserver::~SpawnObserver() {
 }
 
 
+
 int SpawnObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	SpawnObserverImplementation* _implementation = (SpawnObserverImplementation*) _getImplementation();
+	SpawnObserverImplementation* _implementation = static_cast<SpawnObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ void SpawnObserverImplementation::_initializeImplementation() {
 }
 
 void SpawnObserverImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SpawnObserver*) stub;
+	_this = static_cast<SpawnObserver*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -208,7 +209,7 @@ Packet* SpawnObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -218,7 +219,7 @@ Packet* SpawnObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 int SpawnObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((SpawnObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<SpawnObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -246,7 +247,7 @@ DistributedObjectServant* SpawnObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpawnObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpawnObserverAdapter((SpawnObserverImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SpawnObserverAdapter(static_cast<SpawnObserverImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -79,8 +79,8 @@ public:
 
 		Locker clocker(container, creature);
 
-		container->closeContainerTo((CreatureObject*)creature, false);
-		container->notifyCloseContainer((CreatureObject*)creature);
+		container->closeContainerTo(cast<CreatureObject*>(creature), false);
+		container->notifyCloseContainer(cast<CreatureObject*>(creature));
 
 		return SUCCESS;
 	}

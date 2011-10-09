@@ -26,7 +26,7 @@ void ReconMissionObjectiveImplementation::activate() {
 	ManagedReference<ZoneServer*> zoneServer = Core::lookupObject<ZoneServer>("ZoneServer");
 
 	if (locationActiveArea == NULL) {
-		locationActiveArea = (MissionReconActiveArea*) zoneServer->createObject(String("object/mission_recon_area.iff").hashCode(), 1);
+		locationActiveArea = cast<MissionReconActiveArea*>( zoneServer->createObject(String("object/mission_recon_area.iff").hashCode(), 1));
 		locationActiveArea->setMissionObjective(_this);
 	}
 
@@ -62,7 +62,7 @@ void ReconMissionObjectiveImplementation::abort() {
 }
 
 void ReconMissionObjectiveImplementation::complete() {
-	CreatureObject* player = (CreatureObject*) getPlayerOwner();
+	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
 
 	if (player == NULL)
 		return;

@@ -46,10 +46,10 @@ public:
 			ManagedReference<SceneObject*> datapadObject = datapadObjects->get(i);
 
 			if (datapadObject->getGameObjectType() == SceneObject::SHIPCONTROLDEVICE) {
-				ManagedReference<ShipControlDevice*> shipControlDevice = (ShipControlDevice*) datapadObject.get();
+				ManagedReference<ShipControlDevice*> shipControlDevice = cast<ShipControlDevice*>( datapadObject.get());
 
 				if (shipControlDevice->getControlledObject() != NULL /*&& shipControlDevice->getControlledObject()->isShipObject()*/) {
-					ManagedReference<ShipObject*> ship = (ShipObject*) shipControlDevice->getControlledObject();
+					ManagedReference<ShipObject*> ship = cast<ShipObject*>( shipControlDevice->getControlledObject());
 
 					insertLong(ship->getObjectID());
 					insertAscii("cRush Rocks"); //TODO: Fix to retrieve ship->getParkedLocation();

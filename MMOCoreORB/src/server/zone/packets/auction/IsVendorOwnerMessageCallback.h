@@ -40,7 +40,7 @@ public:
 		if (zone == NULL)
 			return;
 
-		CreatureObject* player = (CreatureObject*) client->getPlayer();
+		CreatureObject* player = cast<CreatureObject*>( client->getPlayer());
 
 		if (player == NULL)
 			return;
@@ -49,7 +49,7 @@ public:
 		String vendorRegion = ""; // TODO: Vendors don't have regions impl yet.
 
 		//TODO: Relook at this! - POLONEL
-		if (sceno->isTerminal() && ((Terminal*)sceno.get())->isBazaarTerminal()) {
+		if (sceno->isTerminal() && (cast<Terminal*>(sceno.get()))->isBazaarTerminal()) {
 			ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion();
 
 			if (cityRegion == NULL) {

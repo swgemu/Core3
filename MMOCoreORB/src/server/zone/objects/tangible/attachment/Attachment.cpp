@@ -37,8 +37,9 @@ Attachment::~Attachment() {
 }
 
 
+
 void Attachment::initializeTransientMembers() {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -51,7 +52,7 @@ void Attachment::initializeTransientMembers() {
 }
 
 void Attachment::initializeMembers() {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -64,7 +65,7 @@ void Attachment::initializeMembers() {
 }
 
 void Attachment::loadTemplateData(SharedObjectTemplate* templateData) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -73,7 +74,7 @@ void Attachment::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void Attachment::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -82,7 +83,7 @@ void Attachment::fillAttributeList(AttributeListMessage* msg, CreatureObject* ob
 }
 
 void Attachment::setSkillModCount(int modCount) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ void Attachment::setSkillModCount(int modCount) {
 }
 
 int Attachment::getSkillModCount() {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ int Attachment::getSkillModCount() {
 }
 
 String Attachment::getSkillModName(int idx) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -124,7 +125,7 @@ String Attachment::getSkillModName(int idx) {
 }
 
 int Attachment::getSkillModValue(int idx) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -138,7 +139,7 @@ int Attachment::getSkillModValue(int idx) {
 }
 
 int Attachment::getSkillModValue(String& name) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -152,7 +153,7 @@ int Attachment::getSkillModValue(String& name) {
 }
 
 void Attachment::parseSkillModAttributeString(String& attr) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,7 +167,7 @@ void Attachment::parseSkillModAttributeString(String& attr) {
 }
 
 void Attachment::addSkillMod(const String& skillModType, int skillModValue) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,7 +182,7 @@ void Attachment::addSkillMod(const String& skillModType, int skillModValue) {
 }
 
 bool Attachment::removeAttachment(CreatureObject* player) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -195,7 +196,7 @@ bool Attachment::removeAttachment(CreatureObject* player) {
 }
 
 void Attachment::generateSkillMods() {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -208,7 +209,7 @@ void Attachment::generateSkillMods() {
 }
 
 int Attachment::getRandomModValue(int luck, int creatureLevel) {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -223,7 +224,7 @@ int Attachment::getRandomModValue(int luck, int creatureLevel) {
 }
 
 bool Attachment::isAttachment() {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -236,7 +237,7 @@ bool Attachment::isAttachment() {
 }
 
 bool Attachment::isArmorAttachment() {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -249,7 +250,7 @@ bool Attachment::isArmorAttachment() {
 }
 
 bool Attachment::isClothingAttachment() {
-	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -296,7 +297,7 @@ void AttachmentImplementation::_initializeImplementation() {
 }
 
 void AttachmentImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Attachment*) stub;
+	_this = static_cast<Attachment*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -512,7 +513,7 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_int_), inv->getSignedIntParameter());
 		break;
 	case RPC_REMOVEATTACHMENT__CREATUREOBJECT_:
-		resp->insertBoolean(removeAttachment((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(removeAttachment(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GENERATESKILLMODS__:
 		generateSkillMods();
@@ -537,63 +538,63 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void AttachmentAdapter::initializeTransientMembers() {
-	((AttachmentImplementation*) impl)->initializeTransientMembers();
+	(static_cast<AttachmentImplementation*>(impl))->initializeTransientMembers();
 }
 
 void AttachmentAdapter::initializeMembers() {
-	((AttachmentImplementation*) impl)->initializeMembers();
+	(static_cast<AttachmentImplementation*>(impl))->initializeMembers();
 }
 
 void AttachmentAdapter::setSkillModCount(int modCount) {
-	((AttachmentImplementation*) impl)->setSkillModCount(modCount);
+	(static_cast<AttachmentImplementation*>(impl))->setSkillModCount(modCount);
 }
 
 int AttachmentAdapter::getSkillModCount() {
-	return ((AttachmentImplementation*) impl)->getSkillModCount();
+	return (static_cast<AttachmentImplementation*>(impl))->getSkillModCount();
 }
 
 String AttachmentAdapter::getSkillModName(int idx) {
-	return ((AttachmentImplementation*) impl)->getSkillModName(idx);
+	return (static_cast<AttachmentImplementation*>(impl))->getSkillModName(idx);
 }
 
 int AttachmentAdapter::getSkillModValue(int idx) {
-	return ((AttachmentImplementation*) impl)->getSkillModValue(idx);
+	return (static_cast<AttachmentImplementation*>(impl))->getSkillModValue(idx);
 }
 
 int AttachmentAdapter::getSkillModValue(String& name) {
-	return ((AttachmentImplementation*) impl)->getSkillModValue(name);
+	return (static_cast<AttachmentImplementation*>(impl))->getSkillModValue(name);
 }
 
 void AttachmentAdapter::parseSkillModAttributeString(String& attr) {
-	((AttachmentImplementation*) impl)->parseSkillModAttributeString(attr);
+	(static_cast<AttachmentImplementation*>(impl))->parseSkillModAttributeString(attr);
 }
 
 void AttachmentAdapter::addSkillMod(const String& skillModType, int skillModValue) {
-	((AttachmentImplementation*) impl)->addSkillMod(skillModType, skillModValue);
+	(static_cast<AttachmentImplementation*>(impl))->addSkillMod(skillModType, skillModValue);
 }
 
 bool AttachmentAdapter::removeAttachment(CreatureObject* player) {
-	return ((AttachmentImplementation*) impl)->removeAttachment(player);
+	return (static_cast<AttachmentImplementation*>(impl))->removeAttachment(player);
 }
 
 void AttachmentAdapter::generateSkillMods() {
-	((AttachmentImplementation*) impl)->generateSkillMods();
+	(static_cast<AttachmentImplementation*>(impl))->generateSkillMods();
 }
 
 int AttachmentAdapter::getRandomModValue(int luck, int creatureLevel) {
-	return ((AttachmentImplementation*) impl)->getRandomModValue(luck, creatureLevel);
+	return (static_cast<AttachmentImplementation*>(impl))->getRandomModValue(luck, creatureLevel);
 }
 
 bool AttachmentAdapter::isAttachment() {
-	return ((AttachmentImplementation*) impl)->isAttachment();
+	return (static_cast<AttachmentImplementation*>(impl))->isAttachment();
 }
 
 bool AttachmentAdapter::isArmorAttachment() {
-	return ((AttachmentImplementation*) impl)->isArmorAttachment();
+	return (static_cast<AttachmentImplementation*>(impl))->isArmorAttachment();
 }
 
 bool AttachmentAdapter::isClothingAttachment() {
-	return ((AttachmentImplementation*) impl)->isClothingAttachment();
+	return (static_cast<AttachmentImplementation*>(impl))->isClothingAttachment();
 }
 
 /*
@@ -621,7 +622,7 @@ DistributedObjectServant* AttachmentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AttachmentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AttachmentAdapter((AttachmentImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new AttachmentAdapter(static_cast<AttachmentImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

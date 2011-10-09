@@ -118,7 +118,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 		String templateFile = planetObject.getStringField("templateFile");
 
-		ManagedReference<SceneObject*> obj = (SceneObject*) ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>( ObjectManager::instance()->createObject(templateFile.hashCode(), 0, ""));
 
 		if (obj != NULL) {
 			float x = planetObject.getFloatField("x");
@@ -490,12 +490,12 @@ SceneObject* PlanetManagerImplementation::createTicket(const String& departurePo
 	if (obj == NULL || !obj->isTangibleObject())
 		return NULL;
 
-	TangibleObject* tano = (TangibleObject*) obj.get();
+	TangibleObject* tano = cast<TangibleObject*>( obj.get());
 
 	if (!tano->isTicketObject())
 		return tano;
 
-	TicketObject* ticket = (TicketObject*) tano;
+	TicketObject* ticket = cast<TicketObject*>( tano);
 	ticket->setDeparturePlanet(zone->getZoneName());
 	ticket->setDeparturePoint(departurePoint);
 	ticket->setArrivalPlanet(arrivalPlanet);

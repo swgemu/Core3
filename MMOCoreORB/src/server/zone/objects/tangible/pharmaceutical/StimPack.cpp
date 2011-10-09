@@ -39,8 +39,9 @@ StimPack::~StimPack() {
 }
 
 
+
 void StimPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
+	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -49,7 +50,7 @@ void StimPack::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void StimPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
+	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void StimPack::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
+	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -74,7 +75,7 @@ unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* pa
 }
 
 int StimPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
+	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +90,7 @@ int StimPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 }
 
 void StimPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
+	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -98,7 +99,7 @@ void StimPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* obje
 }
 
 float StimPack::getEffectiveness() {
-	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
+	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -111,7 +112,7 @@ float StimPack::getEffectiveness() {
 }
 
 bool StimPack::isStimPack() {
-	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
+	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -158,7 +159,7 @@ void StimPackImplementation::_initializeImplementation() {
 }
 
 void StimPackImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (StimPack*) stub;
+	_this = static_cast<StimPack*>(stub);
 	PharmaceuticalObjectImplementation::_setStub(stub);
 }
 
@@ -362,10 +363,10 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
-		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
@@ -381,19 +382,19 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 unsigned int StimPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	return ((StimPackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
+	return (static_cast<StimPackImplementation*>(impl))->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 int StimPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((StimPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StimPackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 float StimPackAdapter::getEffectiveness() {
-	return ((StimPackImplementation*) impl)->getEffectiveness();
+	return (static_cast<StimPackImplementation*>(impl))->getEffectiveness();
 }
 
 bool StimPackAdapter::isStimPack() {
-	return ((StimPackImplementation*) impl)->isStimPack();
+	return (static_cast<StimPackImplementation*>(impl))->isStimPack();
 }
 
 /*
@@ -421,7 +422,7 @@ DistributedObjectServant* StimPackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StimPackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StimPackAdapter((StimPackImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new StimPackAdapter(static_cast<StimPackImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

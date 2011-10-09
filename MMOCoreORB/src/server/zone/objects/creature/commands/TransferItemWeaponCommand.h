@@ -143,12 +143,12 @@ public:
 			if (creature == destinationObject) {
 
 				if (objectToTransfer->isWeaponObject()) {
-					WeaponObject* weaponObject = (WeaponObject*) objectToTransfer.get();
+					WeaponObject* weaponObject = cast<WeaponObject*>( objectToTransfer.get());
 
 					creature->setWeapon(weaponObject, true);
 
 					if (creature->isPlayerCreature()) {
-						CreatureObject* playerCreature = (CreatureObject*) creature;
+						CreatureObject* playerCreature = creature;
 
 						if (weaponObject->isCertifiedFor(playerCreature)) {
 							weaponObject->setCertified(true);
@@ -182,7 +182,7 @@ public:
 		/*uint64 target = packet->parseLong();
 
 			TangibleObject* targetTanoObject;
-			targetTanoObject = (TangibleObject*) creature->getInventoryItem(target);
+			targetTanoObject = cast<TangibleObject*>( creature->getInventoryItem(target));
 
 			if (targetTanoObject != NULL) {
 				Inventory* inventory = creature->getInventory();

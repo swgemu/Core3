@@ -66,7 +66,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		// Check to see if "innate_equilibrium" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_equilibrium")) {

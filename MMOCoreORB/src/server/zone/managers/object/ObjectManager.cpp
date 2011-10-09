@@ -349,7 +349,7 @@ void ObjectManager::loadLastUsedObjectID() {
 		if (!database->isObjectDatabase())
 			continue;
 
-		ObjectDatabase* db = (ObjectDatabase*) database;
+		ObjectDatabase* db = cast<ObjectDatabase*>(database);
 
 		String dbName;
 		db->getDatabaseName(dbName);
@@ -385,7 +385,7 @@ void ObjectManager::loadStaticObjects() {
 	ObjectInputStream objectData(2000);
 
 	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
-		SceneObject* object = (SceneObject*) getObject(objectID);
+		SceneObject* object = cast<SceneObject*>(getObject(objectID));
 
 		if (object != NULL)
 			continue;
@@ -419,10 +419,10 @@ int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
 		return 1;*/
 
 	try {
-		ManagedObject* managedObject = ((ManagedObject*)object);
+		ManagedObject* managedObject = cast<ManagedObject*>(object);
 		ObjectOutputStream* objectData = new ObjectOutputStream(500);
 
-		((ManagedObject*)object)->writeObject(objectData);
+		(cast<ManagedObject*>(object))->writeObject(objectData);
 
 		uint64 oid = object->_getObjectID();
 
@@ -560,7 +560,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient) {
 	ObjectOutputStream objectData(500);
 
-	((ManagedObject*)object)->writeObject(&objectData);
+	(cast<ManagedObject*>(object))->writeObject(&objectData);
 	objectData.reset();
 
 	ObjectInputStream objectInput;
@@ -652,14 +652,14 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	if (db == NULL || !db->isObjectDatabase())
 		return NULL;
 
-	ObjectDatabase* database = (ObjectDatabase*) db;
+	ObjectDatabase* database = cast<ObjectDatabase*>( db);
 
 	// only for debugging proposes
 	DistributedObject* dobject = getObject(objectID);
 
 	if (dobject != NULL) {
 		//error("different object already in database");
-		return (DistributedObjectStub*) dobject;
+		return cast<DistributedObjectStub*>( dobject);
 	}
 
 	ObjectInputStream objectData(500);
@@ -681,9 +681,9 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			}
 
 			_locker.release();
-			deSerializeObject((SceneObject*)object, &objectData);
+			deSerializeObject(cast<SceneObject*>(object), &objectData);
 
-			((SceneObject*)object)->info("loaded from db");
+			(cast<SceneObject*>(object))->info("loaded from db");
 
 		} else if (Serializable::getVariable<String>("_className", &className, &objectData)) {
 			object = createObject(className, false, "", objectID);
@@ -694,7 +694,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			}
 
 			_locker.release();
-			deSerializeObject((ManagedObject*)object, &objectData);
+			deSerializeObject(cast<ManagedObject*>(object), &objectData);
 
 		} else {
 			error("could not load object from database, unknown template crc or class name");
@@ -834,7 +834,7 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 	DistributedObjectClassHelper* helper = classMap->get(className);
 
 	if (helper != NULL) {
-		object = (ManagedObject*) helper->instantiateObject();
+		object = cast<ManagedObject*>( helper->instantiateObject());
 		DistributedObjectServant* servant = helper->instantiateServant();
 
 		loadTable(database, oid);
@@ -947,7 +947,7 @@ ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 		if (local == NULL || !local->isObjectDatabase())
 			return NULL;
 		else
-			table = (ObjectDatabase*) local;
+			table = cast<ObjectDatabase*>( local);
 	}
 
 	return table;

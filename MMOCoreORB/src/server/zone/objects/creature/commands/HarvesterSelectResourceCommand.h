@@ -69,14 +69,14 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL || !object->isInstallationObject())
 			return GENERALERROR;
 
-		InstallationObject* inso = (InstallationObject*) object.get();
+		InstallationObject* inso = cast<InstallationObject*>( object.get());
 
 		/*if (!inso->isHarvesterObject())
 			return GENERALERROR;*/
@@ -86,7 +86,7 @@ public:
 		try {
 			Locker clocker(object, player);
 
-		//	HarvesterObject* harvester = (HarvesterObject*) inso;
+		//	HarvesterObject* harvester = cast<HarvesterObject*>( inso);
 
 			if (inso->isOnAdminList(player->getFirstName()) && inso->isInRange(player, 20))
 				inso->changeActiveResourceID(spawnId);

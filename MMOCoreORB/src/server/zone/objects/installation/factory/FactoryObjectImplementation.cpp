@@ -417,7 +417,7 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 			emailBody.setDI(di);
 		UnicodeString subject = "@system_msg:manf_done_sub";
 
-		/*WaypointObject* newwaypoint = (WaypointObject*) server->getZoneServer()->createObject(0xc456e788, 1);
+		/*WaypointObject* newwaypoint = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
 
 		newwaypoint->setCustomName(UnicodeString(this->getObjectName()->getDisplayedName()));
 		newwaypoint->setPlanetCRC(Planet::getPlanetCRC(getZone()->getPlanetName()));
@@ -527,7 +527,7 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 		if(object == NULL || !object->isFactoryCrate())
 			continue;
 
-		FactoryCrate* crate = (FactoryCrate*) object.get();
+		FactoryCrate* crate = cast<FactoryCrate*>( object.get());
 
 		if(crate->getPrototype() != NULL && crate->getPrototype()->getCraftersSerial() ==
 				prototype->getCraftersSerial() && crate->getUseCount() < FactoryCrate::MAXCAPACITY) {
@@ -567,7 +567,7 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(
 	for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
 
 		ManagedReference<TangibleObject*> object =
-				(TangibleObject*) inputHopper->getContainerObject(i);
+				cast<TangibleObject*>( inputHopper->getContainerObject(i));
 
 		if (object == NULL) {
 			error("NULL hopper object in FactoryObjectImplementation::countItemInInputHopper");
@@ -579,7 +579,7 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(
 
 		if (object->isResourceContainer()) {
 
-			ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
+			ResourceContainer* rcnoObject = cast<ResourceContainer*>( object.get());
 
 			key = rcnoObject->getSpawnName();
 
@@ -593,7 +593,7 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(
 			TangibleObject* prototype = NULL;
 
 			if (object->isFactoryCrate()) {
-				FactoryCrate* crate = (FactoryCrate*) object.get();
+				FactoryCrate* crate = cast<FactoryCrate*>( object.get());
 				prototype = crate->getPrototype();
 			} else {
 				prototype = object;

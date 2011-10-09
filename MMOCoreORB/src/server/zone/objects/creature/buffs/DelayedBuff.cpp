@@ -29,8 +29,9 @@ DelayedBuff::~DelayedBuff() {
 }
 
 
+
 void DelayedBuff::activate() {
-	DelayedBuffImplementation* _implementation = (DelayedBuffImplementation*) _getImplementation();
+	DelayedBuffImplementation* _implementation = static_cast<DelayedBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void DelayedBuff::activate() {
 }
 
 void DelayedBuff::deactivate() {
-	DelayedBuffImplementation* _implementation = (DelayedBuffImplementation*) _getImplementation();
+	DelayedBuffImplementation* _implementation = static_cast<DelayedBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -56,7 +57,7 @@ void DelayedBuff::deactivate() {
 }
 
 void DelayedBuff::useCharge(CreatureObject* creature) {
-	DelayedBuffImplementation* _implementation = (DelayedBuffImplementation*) _getImplementation();
+	DelayedBuffImplementation* _implementation = static_cast<DelayedBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -70,7 +71,7 @@ void DelayedBuff::useCharge(CreatureObject* creature) {
 }
 
 void DelayedBuff::setUsesRemaining(int uses) {
-	DelayedBuffImplementation* _implementation = (DelayedBuffImplementation*) _getImplementation();
+	DelayedBuffImplementation* _implementation = static_cast<DelayedBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -118,7 +119,7 @@ void DelayedBuffImplementation::_initializeImplementation() {
 }
 
 void DelayedBuffImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (DelayedBuff*) stub;
+	_this = static_cast<DelayedBuff*>(stub);
 	BuffImplementation::_setStub(stub);
 }
 
@@ -269,7 +270,7 @@ Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		deactivate();
 		break;
 	case RPC_USECHARGE__CREATUREOBJECT_:
-		useCharge((CreatureObject*) inv->getObjectParameter());
+		useCharge(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETUSESREMAINING__INT_:
 		setUsesRemaining(inv->getSignedIntParameter());
@@ -282,19 +283,19 @@ Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void DelayedBuffAdapter::activate() {
-	((DelayedBuffImplementation*) impl)->activate();
+	(static_cast<DelayedBuffImplementation*>(impl))->activate();
 }
 
 void DelayedBuffAdapter::deactivate() {
-	((DelayedBuffImplementation*) impl)->deactivate();
+	(static_cast<DelayedBuffImplementation*>(impl))->deactivate();
 }
 
 void DelayedBuffAdapter::useCharge(CreatureObject* creature) {
-	((DelayedBuffImplementation*) impl)->useCharge(creature);
+	(static_cast<DelayedBuffImplementation*>(impl))->useCharge(creature);
 }
 
 void DelayedBuffAdapter::setUsesRemaining(int uses) {
-	((DelayedBuffImplementation*) impl)->setUsesRemaining(uses);
+	(static_cast<DelayedBuffImplementation*>(impl))->setUsesRemaining(uses);
 }
 
 /*
@@ -322,7 +323,7 @@ DistributedObjectServant* DelayedBuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DelayedBuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DelayedBuffAdapter((DelayedBuffImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new DelayedBuffAdapter(static_cast<DelayedBuffImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

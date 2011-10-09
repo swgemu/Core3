@@ -65,7 +65,7 @@ public:
 		insertInt(0);
 		insertAscii(stringId->getStringID());
 
-		if (tano->isPlayerCreature() && ((CreatureObject*)tano)->getPlayerObject() != NULL && ((CreatureObject*)tano)->getPlayerObject()->isPrivileged()) {
+		if (tano->isPlayerCreature() && (cast<CreatureObject*>(tano))->getPlayerObject() != NULL && (cast<CreatureObject*>(tano))->getPlayerObject()->isPrivileged()) {
 			UnicodeString name = stringId->getCustomString();
 			insertUnicode(name + " \\#ffff00[SWGEmu-Staff]\\#.");
 		} else

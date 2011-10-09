@@ -30,7 +30,7 @@ public:
 		if (index == -1)
 			return;
 
-		SuiListBox* listBox = (SuiListBox*) suiBox;
+		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		uint64 memberID = listBox->getMenuObjectID(index);
 
@@ -44,12 +44,12 @@ public:
 		if (obj == NULL || !obj->isTerminal())
 			return;
 
-		Terminal* terminal = (Terminal*) obj.get();
+		Terminal* terminal = cast<Terminal*>( obj.get());
 
 		if (!terminal->isGuildTerminal())
 			return;
 
-		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
 
@@ -61,7 +61,7 @@ public:
 		if (playObj == NULL || !playObj->isPlayerCreature())
 			return;
 
-		CreatureObject* target = (CreatureObject*) playObj.get();
+		CreatureObject* target = cast<CreatureObject*>( playObj.get());
 
 		//Guild Leader doesn't have the set allegiance option, so if this player is the guild leader, then we need to increment the index by 1!
 		if (guild->isGuildLeader(player))

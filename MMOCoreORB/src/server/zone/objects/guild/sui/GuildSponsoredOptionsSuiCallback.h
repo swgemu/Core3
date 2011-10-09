@@ -33,12 +33,12 @@ public:
 		if (obj == NULL || !obj->isTerminal())
 			return;
 
-		Terminal* terminal = (Terminal*) obj.get();
+		Terminal* terminal = cast<Terminal*>( obj.get());
 
 		if (!terminal->isGuildTerminal())
 			return;
 
-		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
 
@@ -47,7 +47,7 @@ public:
 			return;
 		}
 
-		SuiListBox* listBox = (SuiListBox*) suiBox;
+		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		uint64 playerID = listBox->getMenuObjectID(index);
 

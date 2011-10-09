@@ -28,7 +28,7 @@ public:
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 
 		if (session == NULL) {
-			ManagedReference<TangibleObject*> obj = (TangibleObject*) suiBox->getUsingObject();
+			ManagedReference<TangibleObject*> obj = cast<TangibleObject*>( suiBox->getUsingObject());
 			if (obj != NULL)
 				obj->dropActiveSession(SessionFacadeType::SLICING);
 
@@ -42,7 +42,7 @@ public:
 
 		int idx = Integer::valueOf(args->get(0).toString());
 
-		SuiListBox* box = (SuiListBox*) suiBox;
+		SuiListBox* box = cast<SuiListBox*>( suiBox);
 
 		byte menuID = box->getMenuObjectID(idx);
 

@@ -158,7 +158,7 @@ bool MissionManagerImplementation::hasSurveyMission(CreatureObject* player, cons
 		SceneObject* obj = datapad->getContainerObject(i);
 
 		if (obj->isMissionObject()) {
-			MissionObject* mission = (MissionObject*) obj;
+			MissionObject* mission = cast<MissionObject*>( obj);
 
 			if (mission->getTargetName() == spawn)
 				return true;
@@ -310,7 +310,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	int bagSize = missionBag->getContainerObjectsSize();
 
 	for (int i = 0; i < bagSize; ++i) {
-		MissionObject* mission = (MissionObject*) missionBag->getContainerObject(i);
+		MissionObject* mission = cast<MissionObject*>( missionBag->getContainerObject(i));
 
 		// TODO: make mission distribution function more like live
 		if (missionTerminal->isGeneralTerminal()) {
@@ -388,7 +388,7 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 		return;
 	}
 
-	LairObjectTemplate* lairObjectTemplate = (LairObjectTemplate*) templateObject;
+	LairObjectTemplate* lairObjectTemplate = cast<LairObjectTemplate*>( templateObject);
 
 	NameManager* nm = processor->getNameManager();
 

@@ -74,7 +74,7 @@ void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 		ManagedReference<ActiveArea*> activeArea = getActiveRegion();
 
 		if (activeArea != NULL && activeArea->isRegion()) {
-			Region* region = (Region*) activeArea.get();
+			Region* region = cast<Region*>( activeArea.get());
 
 			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 

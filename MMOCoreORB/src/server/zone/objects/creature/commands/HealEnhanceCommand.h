@@ -74,7 +74,7 @@ public:
 		int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
 
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
-			DelayedBuff* buff = (DelayedBuff*) creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY);
+			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
 			if (buff != NULL) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
@@ -106,13 +106,13 @@ public:
 				if (!object->isTangibleObject())
 					continue;
 
-				TangibleObject* item = (TangibleObject*) object;
+				TangibleObject* item = cast<TangibleObject*>( object);
 
 				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = (PharmaceuticalObject*) item;
+					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
 
 					if (pharma->isEnhancePack()) {
-						EnhancePack* enhancePack = (EnhancePack*) pharma;
+						EnhancePack* enhancePack = cast<EnhancePack*>( pharma);
 
 						if (enhancePack->getMedicineUseRequired() <= medicineUse && enhancePack->getAttribute() == attribute)
 							return enhancePack;
@@ -176,8 +176,8 @@ public:
 		}
 
 		/*if (patient->isPlayerCreature() && enhancer->isPlayerCreature()) {
-			CreatureObject* pt = (CreatureObject*) patient;
-			CreatureObject* p = (CreatureObject*) enhancer;
+			CreatureObject* pt = cast<CreatureObject*>( patient);
+			CreatureObject* p = cast<CreatureObject*>( enhancer);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				p->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -228,8 +228,8 @@ public:
 		if (!target->isPlayerCreature())
 			return;
 
-		CreatureObject* enhancer = (CreatureObject*) creature;
-		CreatureObject* patient = (CreatureObject*) target;
+		CreatureObject* enhancer = cast<CreatureObject*>( creature);
+		CreatureObject* patient = cast<CreatureObject*>( target);
 
 		String enhancerName = enhancer->getFirstName();
 		String patientName = patient->getFirstName();
@@ -268,7 +268,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int)round((float)power * 0.5f);
 
@@ -310,7 +310,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		CreatureObject* targetCreature = (CreatureObject*) object.get();
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
 		uint8 attribute = BuffAttribute::UNKNOWN;
 		uint64 objectId = 0;
@@ -337,7 +337,7 @@ public:
 			enhancePack = findEnhancePack(creature, attribute);
 		}
 
-		CreatureObject* patient = (CreatureObject*) targetCreature;
+		CreatureObject* patient = cast<CreatureObject*>( targetCreature);
 
 		Locker clocker(patient, creature);
 
@@ -374,7 +374,7 @@ public:
 		uint32 amountEnhanced = playerManager->healEnhance(enhancer, patient, attribute, buffPower, enhancePack->getDuration());
 
 		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)targetCreature);
+			playerManager->sendBattleFatigueMessage(creature, targetCreature);
 		}
 
 		sendEnhanceMessage(enhancer, patient, attribute, amountEnhanced);

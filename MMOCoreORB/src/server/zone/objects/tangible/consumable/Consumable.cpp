@@ -43,8 +43,9 @@ Consumable::~Consumable() {
 }
 
 
+
 int Consumable::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -59,7 +60,7 @@ int Consumable::handleObjectMenuSelect(CreatureObject* player, byte selectedID) 
 }
 
 void Consumable::updateCraftingValues(ManufactureSchematic* schematic) {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -68,7 +69,7 @@ void Consumable::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void Consumable::loadTemplateData(SharedObjectTemplate* templateData) {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -77,7 +78,7 @@ void Consumable::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void Consumable::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -86,7 +87,7 @@ void Consumable::fillAttributeList(AttributeListMessage* msg, CreatureObject* ob
 }
 
 void Consumable::setModifiers(Buff* buff, bool skillModifiers) {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -101,7 +102,7 @@ void Consumable::setModifiers(Buff* buff, bool skillModifiers) {
 }
 
 bool Consumable::isSpiceEffect() {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -114,7 +115,7 @@ bool Consumable::isSpiceEffect() {
 }
 
 bool Consumable::isAttributeEffect() {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,7 +128,7 @@ bool Consumable::isAttributeEffect() {
 }
 
 bool Consumable::isDrink() {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -140,7 +141,7 @@ bool Consumable::isDrink() {
 }
 
 bool Consumable::isFood() {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +154,7 @@ bool Consumable::isFood() {
 }
 
 bool Consumable::isForagedFood() {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,7 +167,7 @@ bool Consumable::isForagedFood() {
 }
 
 bool Consumable::isSpice() {
-	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	ConsumableImplementation* _implementation = static_cast<ConsumableImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -213,7 +214,7 @@ void ConsumableImplementation::_initializeImplementation() {
 }
 
 void ConsumableImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Consumable*) stub;
+	_this = static_cast<Consumable*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -640,10 +641,10 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SETMODIFIERS__BUFF_BOOL_:
-		setModifiers((Buff*) inv->getObjectParameter(), inv->getBooleanParameter());
+		setModifiers(static_cast<Buff*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_ISSPICEEFFECT__:
 		resp->insertBoolean(isSpiceEffect());
@@ -671,35 +672,35 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int ConsumableAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((ConsumableImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ConsumableImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void ConsumableAdapter::setModifiers(Buff* buff, bool skillModifiers) {
-	((ConsumableImplementation*) impl)->setModifiers(buff, skillModifiers);
+	(static_cast<ConsumableImplementation*>(impl))->setModifiers(buff, skillModifiers);
 }
 
 bool ConsumableAdapter::isSpiceEffect() {
-	return ((ConsumableImplementation*) impl)->isSpiceEffect();
+	return (static_cast<ConsumableImplementation*>(impl))->isSpiceEffect();
 }
 
 bool ConsumableAdapter::isAttributeEffect() {
-	return ((ConsumableImplementation*) impl)->isAttributeEffect();
+	return (static_cast<ConsumableImplementation*>(impl))->isAttributeEffect();
 }
 
 bool ConsumableAdapter::isDrink() {
-	return ((ConsumableImplementation*) impl)->isDrink();
+	return (static_cast<ConsumableImplementation*>(impl))->isDrink();
 }
 
 bool ConsumableAdapter::isFood() {
-	return ((ConsumableImplementation*) impl)->isFood();
+	return (static_cast<ConsumableImplementation*>(impl))->isFood();
 }
 
 bool ConsumableAdapter::isForagedFood() {
-	return ((ConsumableImplementation*) impl)->isForagedFood();
+	return (static_cast<ConsumableImplementation*>(impl))->isForagedFood();
 }
 
 bool ConsumableAdapter::isSpice() {
-	return ((ConsumableImplementation*) impl)->isSpice();
+	return (static_cast<ConsumableImplementation*>(impl))->isSpice();
 }
 
 /*
@@ -727,7 +728,7 @@ DistributedObjectServant* ConsumableHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ConsumableHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ConsumableAdapter((ConsumableImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new ConsumableAdapter(static_cast<ConsumableImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

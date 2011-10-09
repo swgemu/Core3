@@ -35,8 +35,9 @@ TutorialBuildingObject::~TutorialBuildingObject() {
 }
 
 
+
 void TutorialBuildingObject::notifyRemoveFromZone() {
-	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
+	TutorialBuildingObjectImplementation* _implementation = static_cast<TutorialBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +50,7 @@ void TutorialBuildingObject::notifyRemoveFromZone() {
 }
 
 void TutorialBuildingObject::initializeTransientMembers() {
-	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
+	TutorialBuildingObjectImplementation* _implementation = static_cast<TutorialBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +63,7 @@ void TutorialBuildingObject::initializeTransientMembers() {
 }
 
 void TutorialBuildingObject::onEnter(CreatureObject* player) {
-	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
+	TutorialBuildingObjectImplementation* _implementation = static_cast<TutorialBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -76,7 +77,7 @@ void TutorialBuildingObject::onEnter(CreatureObject* player) {
 }
 
 void TutorialBuildingObject::onExit(CreatureObject* player) {
-	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
+	TutorialBuildingObjectImplementation* _implementation = static_cast<TutorialBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -90,7 +91,7 @@ void TutorialBuildingObject::onExit(CreatureObject* player) {
 }
 
 void TutorialBuildingObject::clearUnloadEvent() {
-	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
+	TutorialBuildingObjectImplementation* _implementation = static_cast<TutorialBuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -137,7 +138,7 @@ void TutorialBuildingObjectImplementation::_initializeImplementation() {
 }
 
 void TutorialBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (TutorialBuildingObject*) stub;
+	_this = static_cast<TutorialBuildingObject*>(stub);
 	BuildingObjectImplementation::_setStub(stub);
 }
 
@@ -286,10 +287,10 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 		initializeTransientMembers();
 		break;
 	case RPC_ONENTER__CREATUREOBJECT_:
-		onEnter((CreatureObject*) inv->getObjectParameter());
+		onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ONEXIT__CREATUREOBJECT_:
-		onExit((CreatureObject*) inv->getObjectParameter());
+		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CLEARUNLOADEVENT__:
 		clearUnloadEvent();
@@ -302,23 +303,23 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void TutorialBuildingObjectAdapter::notifyRemoveFromZone() {
-	((TutorialBuildingObjectImplementation*) impl)->notifyRemoveFromZone();
+	(static_cast<TutorialBuildingObjectImplementation*>(impl))->notifyRemoveFromZone();
 }
 
 void TutorialBuildingObjectAdapter::initializeTransientMembers() {
-	((TutorialBuildingObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<TutorialBuildingObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void TutorialBuildingObjectAdapter::onEnter(CreatureObject* player) {
-	((TutorialBuildingObjectImplementation*) impl)->onEnter(player);
+	(static_cast<TutorialBuildingObjectImplementation*>(impl))->onEnter(player);
 }
 
 void TutorialBuildingObjectAdapter::onExit(CreatureObject* player) {
-	((TutorialBuildingObjectImplementation*) impl)->onExit(player);
+	(static_cast<TutorialBuildingObjectImplementation*>(impl))->onExit(player);
 }
 
 void TutorialBuildingObjectAdapter::clearUnloadEvent() {
-	((TutorialBuildingObjectImplementation*) impl)->clearUnloadEvent();
+	(static_cast<TutorialBuildingObjectImplementation*>(impl))->clearUnloadEvent();
 }
 
 /*
@@ -346,7 +347,7 @@ DistributedObjectServant* TutorialBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TutorialBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TutorialBuildingObjectAdapter((TutorialBuildingObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new TutorialBuildingObjectAdapter(static_cast<TutorialBuildingObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

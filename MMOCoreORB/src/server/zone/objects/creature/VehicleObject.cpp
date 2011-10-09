@@ -35,8 +35,9 @@ VehicleObject::~VehicleObject() {
 }
 
 
+
 void VehicleObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -45,7 +46,7 @@ void VehicleObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void VehicleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -54,7 +55,7 @@ void VehicleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Cre
 }
 
 bool VehicleObject::checkInRangeGarage() {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,7 +68,7 @@ bool VehicleObject::checkInRangeGarage() {
 }
 
 void VehicleObject::notifyInsertToZone(Zone* zone) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -81,7 +82,7 @@ void VehicleObject::notifyInsertToZone(Zone* zone) {
 }
 
 void VehicleObject::setPosture(int newPosture, bool notifyClient) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ void VehicleObject::setPosture(int newPosture, bool notifyClient) {
 }
 
 int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -114,7 +115,7 @@ int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int d
 }
 
 int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,7 +132,7 @@ int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damage
 }
 
 void VehicleObject::addDefender(SceneObject* defender) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +146,7 @@ void VehicleObject::addDefender(SceneObject* defender) {
 }
 
 void VehicleObject::removeDefender(SceneObject* defender) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -159,7 +160,7 @@ void VehicleObject::removeDefender(SceneObject* defender) {
 }
 
 void VehicleObject::setDefender(SceneObject* defender) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -173,7 +174,7 @@ void VehicleObject::setDefender(SceneObject* defender) {
 }
 
 bool VehicleObject::isAttackableBy(CreatureObject* object) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -187,7 +188,7 @@ bool VehicleObject::isAttackableBy(CreatureObject* object) {
 }
 
 int VehicleObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -202,7 +203,7 @@ int VehicleObject::notifyObjectDestructionObservers(TangibleObject* attacker, in
 }
 
 int VehicleObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -217,7 +218,7 @@ int VehicleObject::handleObjectMenuSelect(CreatureObject* player, byte selectedI
 }
 
 void VehicleObject::repairVehicle(CreatureObject* player) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -231,7 +232,7 @@ void VehicleObject::repairVehicle(CreatureObject* player) {
 }
 
 int VehicleObject::calculateRepairCost(CreatureObject* player) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -245,7 +246,7 @@ int VehicleObject::calculateRepairCost(CreatureObject* player) {
 }
 
 void VehicleObject::sendRepairConfirmTo(CreatureObject* player) {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -259,7 +260,7 @@ void VehicleObject::sendRepairConfirmTo(CreatureObject* player) {
 }
 
 bool VehicleObject::isVehicleObject() {
-	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -306,7 +307,7 @@ void VehicleObjectImplementation::_initializeImplementation() {
 }
 
 void VehicleObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (VehicleObject*) stub;
+	_this = static_cast<VehicleObject*>(stub);
 	CreatureObjectImplementation::_setStub(stub);
 }
 
@@ -471,43 +472,43 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(checkInRangeGarage());
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone((Zone*) inv->getObjectParameter());
+		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETPOSTURE__INT_BOOL_:
 		setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_:
-		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_ADDDEFENDER__SCENEOBJECT_:
-		addDefender((SceneObject*) inv->getObjectParameter());
+		addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
-		removeDefender((SceneObject*) inv->getObjectParameter());
+		removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETDEFENDER__SCENEOBJECT_:
-		setDefender((SceneObject*) inv->getObjectParameter());
+		setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_REPAIRVEHICLE__CREATUREOBJECT_:
-		repairVehicle((CreatureObject*) inv->getObjectParameter());
+		repairVehicle(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_:
-		resp->insertSignedInt(calculateRepairCost((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(calculateRepairCost(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_:
-		sendRepairConfirmTo((CreatureObject*) inv->getObjectParameter());
+		sendRepairConfirmTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISVEHICLEOBJECT__:
 		resp->insertBoolean(isVehicleObject());
@@ -520,63 +521,63 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 bool VehicleObjectAdapter::checkInRangeGarage() {
-	return ((VehicleObjectImplementation*) impl)->checkInRangeGarage();
+	return (static_cast<VehicleObjectImplementation*>(impl))->checkInRangeGarage();
 }
 
 void VehicleObjectAdapter::notifyInsertToZone(Zone* zone) {
-	((VehicleObjectImplementation*) impl)->notifyInsertToZone(zone);
+	(static_cast<VehicleObjectImplementation*>(impl))->notifyInsertToZone(zone);
 }
 
 void VehicleObjectAdapter::setPosture(int newPosture, bool notifyClient) {
-	((VehicleObjectImplementation*) impl)->setPosture(newPosture, notifyClient);
+	(static_cast<VehicleObjectImplementation*>(impl))->setPosture(newPosture, notifyClient);
 }
 
 int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	return ((VehicleObjectImplementation*) impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return (static_cast<VehicleObjectImplementation*>(impl))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int VehicleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
-	return ((VehicleObjectImplementation*) impl)->healDamage(healer, damageType, damageToHeal, notifyClient);
+	return (static_cast<VehicleObjectImplementation*>(impl))->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
 void VehicleObjectAdapter::addDefender(SceneObject* defender) {
-	((VehicleObjectImplementation*) impl)->addDefender(defender);
+	(static_cast<VehicleObjectImplementation*>(impl))->addDefender(defender);
 }
 
 void VehicleObjectAdapter::removeDefender(SceneObject* defender) {
-	((VehicleObjectImplementation*) impl)->removeDefender(defender);
+	(static_cast<VehicleObjectImplementation*>(impl))->removeDefender(defender);
 }
 
 void VehicleObjectAdapter::setDefender(SceneObject* defender) {
-	((VehicleObjectImplementation*) impl)->setDefender(defender);
+	(static_cast<VehicleObjectImplementation*>(impl))->setDefender(defender);
 }
 
 bool VehicleObjectAdapter::isAttackableBy(CreatureObject* object) {
-	return ((VehicleObjectImplementation*) impl)->isAttackableBy(object);
+	return (static_cast<VehicleObjectImplementation*>(impl))->isAttackableBy(object);
 }
 
 int VehicleObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	return ((VehicleObjectImplementation*) impl)->notifyObjectDestructionObservers(attacker, condition);
+	return (static_cast<VehicleObjectImplementation*>(impl))->notifyObjectDestructionObservers(attacker, condition);
 }
 
 int VehicleObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((VehicleObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VehicleObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleObjectAdapter::repairVehicle(CreatureObject* player) {
-	((VehicleObjectImplementation*) impl)->repairVehicle(player);
+	(static_cast<VehicleObjectImplementation*>(impl))->repairVehicle(player);
 }
 
 int VehicleObjectAdapter::calculateRepairCost(CreatureObject* player) {
-	return ((VehicleObjectImplementation*) impl)->calculateRepairCost(player);
+	return (static_cast<VehicleObjectImplementation*>(impl))->calculateRepairCost(player);
 }
 
 void VehicleObjectAdapter::sendRepairConfirmTo(CreatureObject* player) {
-	((VehicleObjectImplementation*) impl)->sendRepairConfirmTo(player);
+	(static_cast<VehicleObjectImplementation*>(impl))->sendRepairConfirmTo(player);
 }
 
 bool VehicleObjectAdapter::isVehicleObject() {
-	return ((VehicleObjectImplementation*) impl)->isVehicleObject();
+	return (static_cast<VehicleObjectImplementation*>(impl))->isVehicleObject();
 }
 
 /*
@@ -604,7 +605,7 @@ DistributedObjectServant* VehicleObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VehicleObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VehicleObjectAdapter((VehicleObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new VehicleObjectAdapter(static_cast<VehicleObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

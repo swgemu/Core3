@@ -69,7 +69,7 @@ public:
 		if (mount == NULL || !mount->isCreatureObject())
 			return GENERALERROR;
 
-		CreatureObject* vehicle = (CreatureObject*) mount.get();
+		CreatureObject* vehicle = cast<CreatureObject*>( mount.get());
 
 		Locker clocker(vehicle, creature);
 

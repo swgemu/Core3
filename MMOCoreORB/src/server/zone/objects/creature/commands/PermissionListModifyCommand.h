@@ -74,7 +74,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		StructureObject* structureObject = (StructureObject*) obj.get();
+		StructureObject* structureObject = cast<StructureObject*>( obj.get());
 
 		String targetName, listName, action;
 
@@ -190,7 +190,7 @@ public:
 
 		//Update the cell permissions in case the player is in the building currently.
 		if (targetPlayer != NULL && structureObject->isBuildingObject()) {
-			BuildingObject* buildingObject = (BuildingObject*) structureObject;
+			BuildingObject* buildingObject = cast<BuildingObject*>( structureObject);
 			buildingObject->updateCellPermissionsTo(targetPlayer);
 		}
 

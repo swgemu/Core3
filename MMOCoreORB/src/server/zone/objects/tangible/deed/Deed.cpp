@@ -33,8 +33,9 @@ Deed::~Deed() {
 }
 
 
+
 void Deed::initializeTransientMembers() {
-	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void Deed::initializeTransientMembers() {
 }
 
 void Deed::loadTemplateData(SharedObjectTemplate* templateData) {
-	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -56,7 +57,7 @@ void Deed::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void Deed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -65,7 +66,7 @@ void Deed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) 
 }
 
 void Deed::updateCraftingValues(ManufactureSchematic* schematic) {
-	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -74,7 +75,7 @@ void Deed::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void Deed::setGeneratedObjectTemplate(const String& templ) {
-	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +89,7 @@ void Deed::setGeneratedObjectTemplate(const String& templ) {
 }
 
 String Deed::getGeneratedObjectTemplate() {
-	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -102,7 +103,7 @@ String Deed::getGeneratedObjectTemplate() {
 }
 
 bool Deed::isDeedObject() {
-	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -149,7 +150,7 @@ void DeedImplementation::_initializeImplementation() {
 }
 
 void DeedImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (Deed*) stub;
+	_this = static_cast<Deed*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -323,19 +324,19 @@ Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void DeedAdapter::initializeTransientMembers() {
-	((DeedImplementation*) impl)->initializeTransientMembers();
+	(static_cast<DeedImplementation*>(impl))->initializeTransientMembers();
 }
 
 void DeedAdapter::setGeneratedObjectTemplate(const String& templ) {
-	((DeedImplementation*) impl)->setGeneratedObjectTemplate(templ);
+	(static_cast<DeedImplementation*>(impl))->setGeneratedObjectTemplate(templ);
 }
 
 String DeedAdapter::getGeneratedObjectTemplate() {
-	return ((DeedImplementation*) impl)->getGeneratedObjectTemplate();
+	return (static_cast<DeedImplementation*>(impl))->getGeneratedObjectTemplate();
 }
 
 bool DeedAdapter::isDeedObject() {
-	return ((DeedImplementation*) impl)->isDeedObject();
+	return (static_cast<DeedImplementation*>(impl))->isDeedObject();
 }
 
 /*
@@ -363,7 +364,7 @@ DistributedObjectServant* DeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DeedAdapter((DeedImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new DeedAdapter(static_cast<DeedImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

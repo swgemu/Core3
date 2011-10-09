@@ -31,8 +31,9 @@ CraftingManager::~CraftingManager() {
 }
 
 
+
 void CraftingManager::initialize() {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -41,7 +42,7 @@ void CraftingManager::initialize() {
 }
 
 void CraftingManager::awardSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -50,7 +51,7 @@ void CraftingManager::awardSchematicGroup(PlayerObject* playerObject, Vector<Str
 }
 
 void CraftingManager::removeSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -59,7 +60,7 @@ void CraftingManager::removeSchematicGroup(PlayerObject* playerObject, Vector<St
 }
 
 DraftSchematic* CraftingManager::getSchematic(unsigned int schematicID) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,13 +68,13 @@ DraftSchematic* CraftingManager::getSchematic(unsigned int schematicID) {
 		DistributedMethod method(this, RPC_GETSCHEMATIC__INT_);
 		method.addUnsignedIntParameter(schematicID);
 
-		return (DraftSchematic*) method.executeWithObjectReturn();
+		return static_cast<DraftSchematic*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSchematic(schematicID);
 }
 
 void CraftingManager::sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +89,7 @@ void CraftingManager::sendDraftSlotsTo(CreatureObject* player, unsigned int sche
 }
 
 void CraftingManager::sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -103,7 +104,7 @@ void CraftingManager::sendResourceWeightsTo(CreatureObject* player, unsigned int
 }
 
 int CraftingManager::calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -119,7 +120,7 @@ int CraftingManager::calculateAssemblySuccess(CreatureObject* player, DraftSchem
 }
 
 float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +134,7 @@ float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
 }
 
 float CraftingManager::getAssemblyPercentage(float value) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -147,7 +148,7 @@ float CraftingManager::getAssemblyPercentage(float value) {
 }
 
 int CraftingManager::calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -163,7 +164,7 @@ int CraftingManager::calculateExperimentationFailureRate(CreatureObject* player,
 }
 
 int CraftingManager::calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -179,7 +180,7 @@ int CraftingManager::calculateExperimentationSuccess(CreatureObject* player, Dra
 }
 
 float CraftingManager::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -194,7 +195,7 @@ float CraftingManager::calculateExperimentationValueModifier(int experimentation
 }
 
 float CraftingManager::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -209,7 +210,7 @@ float CraftingManager::getWeightedValue(ManufactureSchematic* manufactureSchemat
 }
 
 String CraftingManager::generateSerial() {
-	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -257,7 +258,7 @@ void CraftingManagerImplementation::_initializeImplementation() {
 }
 
 void CraftingManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (CraftingManager*) stub;
+	_this = static_cast<CraftingManager*>(stub);
 	ZoneManagerImplementation::_setStub(stub);
 }
 
@@ -370,13 +371,13 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(getSchematic(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_:
-		sendDraftSlotsTo((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		sendDraftSlotsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
 		break;
 	case RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_:
-		sendResourceWeightsTo((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		sendResourceWeightsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
 		break;
 	case RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_:
-		resp->insertSignedInt(calculateAssemblySuccess((CreatureObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
+		resp->insertSignedInt(calculateAssemblySuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
 		break;
 	case RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_:
 		resp->insertFloat(calculateAssemblyValueModifier(inv->getSignedIntParameter()));
@@ -385,16 +386,16 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
 		break;
 	case RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_:
-		resp->insertSignedInt(calculateExperimentationFailureRate((CreatureObject*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertSignedInt(calculateExperimentationFailureRate(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
 	case RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_:
-		resp->insertSignedInt(calculateExperimentationSuccess((CreatureObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
+		resp->insertSignedInt(calculateExperimentationSuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
 		break;
 	case RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_:
 		resp->insertFloat(calculateExperimentationValueModifier(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
 		break;
 	case RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_:
-		resp->insertFloat(getWeightedValue((ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertFloat(getWeightedValue(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
 	case RPC_GENERATESERIAL__:
 		resp->insertAscii(generateSerial());
@@ -407,47 +408,47 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 DraftSchematic* CraftingManagerAdapter::getSchematic(unsigned int schematicID) {
-	return ((CraftingManagerImplementation*) impl)->getSchematic(schematicID);
+	return (static_cast<CraftingManagerImplementation*>(impl))->getSchematic(schematicID);
 }
 
 void CraftingManagerAdapter::sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID) {
-	((CraftingManagerImplementation*) impl)->sendDraftSlotsTo(player, schematicID);
+	(static_cast<CraftingManagerImplementation*>(impl))->sendDraftSlotsTo(player, schematicID);
 }
 
 void CraftingManagerAdapter::sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID) {
-	((CraftingManagerImplementation*) impl)->sendResourceWeightsTo(player, schematicID);
+	(static_cast<CraftingManagerImplementation*>(impl))->sendResourceWeightsTo(player, schematicID);
 }
 
 int CraftingManagerAdapter::calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
-	return ((CraftingManagerImplementation*) impl)->calculateAssemblySuccess(player, draftSchematic, effectiveness);
+	return (static_cast<CraftingManagerImplementation*>(impl))->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
 float CraftingManagerAdapter::calculateAssemblyValueModifier(int assemblyResult) {
-	return ((CraftingManagerImplementation*) impl)->calculateAssemblyValueModifier(assemblyResult);
+	return (static_cast<CraftingManagerImplementation*>(impl))->calculateAssemblyValueModifier(assemblyResult);
 }
 
 float CraftingManagerAdapter::getAssemblyPercentage(float value) {
-	return ((CraftingManagerImplementation*) impl)->getAssemblyPercentage(value);
+	return (static_cast<CraftingManagerImplementation*>(impl))->getAssemblyPercentage(value);
 }
 
 int CraftingManagerAdapter::calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
-	return ((CraftingManagerImplementation*) impl)->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
+	return (static_cast<CraftingManagerImplementation*>(impl))->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
 }
 
 int CraftingManagerAdapter::calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
-	return ((CraftingManagerImplementation*) impl)->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
+	return (static_cast<CraftingManagerImplementation*>(impl))->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
 }
 
 float CraftingManagerAdapter::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
-	return ((CraftingManagerImplementation*) impl)->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
+	return (static_cast<CraftingManagerImplementation*>(impl))->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
 }
 
 float CraftingManagerAdapter::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
-	return ((CraftingManagerImplementation*) impl)->getWeightedValue(manufactureSchematic, type);
+	return (static_cast<CraftingManagerImplementation*>(impl))->getWeightedValue(manufactureSchematic, type);
 }
 
 String CraftingManagerAdapter::generateSerial() {
-	return ((CraftingManagerImplementation*) impl)->generateSerial();
+	return (static_cast<CraftingManagerImplementation*>(impl))->generateSerial();
 }
 
 /*
@@ -475,7 +476,7 @@ DistributedObjectServant* CraftingManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CraftingManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CraftingManagerAdapter((CraftingManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new CraftingManagerAdapter(static_cast<CraftingManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

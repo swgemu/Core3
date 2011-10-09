@@ -67,7 +67,7 @@ public:
 		StringTokenizer tokenizer(arguments.toString());
 		int newStackSize = tokenizer.getIntToken();
 
-		ManagedReference<ResourceContainer* > resourceContainer = (ResourceContainer*) server->getZoneServer()->getObject(target);
+		ManagedReference<ResourceContainer* > resourceContainer = cast<ResourceContainer*>( server->getZoneServer()->getObject(target));
 
 		if ((resourceContainer == NULL || !resourceContainer->isResourceContainer() ||!creature->isPlayerCreature()))
 			return INVALIDTARGET;

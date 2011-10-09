@@ -16,12 +16,12 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 	if (controlledObject == NULL || !controlledObject->isBuildingObject())
 		return;
 
-	BuildingObject* building = (BuildingObject*) controlledObject.get();
+	BuildingObject* building = cast<BuildingObject*>( controlledObject.get());
 
 	if (!building->isCityHallBuilding())
 		return;
 
-	CityHallObject* cityHall = (CityHallObject*) building;
+	CityHallObject* cityHall = cast<CityHallObject*>( building);
 
 	Locker _locker(cityHall);
 
@@ -67,12 +67,12 @@ int CityTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, b
 	if (controlledObject == NULL || !controlledObject->isBuildingObject())
 		return 0;
 
-	BuildingObject* building = (BuildingObject*) controlledObject.get();
+	BuildingObject* building = cast<BuildingObject*>( controlledObject.get());
 
 	if (!building->isCityHallBuilding())
 		return 0;
 
-	CityHallObject* cityHallObject = (CityHallObject*) building;
+	CityHallObject* cityHallObject = cast<CityHallObject*>( building);
 
 	Locker _locker(cityHallObject);
 

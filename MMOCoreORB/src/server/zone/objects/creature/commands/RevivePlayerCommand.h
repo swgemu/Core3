@@ -104,7 +104,7 @@ public:
 
 		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
 			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -121,12 +121,12 @@ public:
 
 		if (group == NULL || !group->hasMember(creatureTarget)) {
 			if (creature->isPlayerCreature()) {
-				CreatureObject* player = (CreatureObject*) creature;
+				CreatureObject* player = cast<CreatureObject*>(creature);
 
 				//At this point, we know that the creatureTarget is either a player or a creaturePet.
 				//TODO: Activate this switch once creature pet's are introduced.
-				//Player* consentOwner = (creatureTarget->isPlayer()) ? (Player*) creatureTarget : (CreaturePet*) creatureTarget->getOwner();
-				CreatureObject* consentOwner = (CreatureObject*) creatureTarget;
+				//Player* consentOwner = cast<creatureTarget->isPlayer()) ? (Player*) creatureTarget : (CreaturePet*>( creatureTarget->getOwner());
+				CreatureObject* consentOwner = cast<CreatureObject*>( creatureTarget);
 
 				PlayerObject* ghost = consentOwner->getPlayerObject();
 
@@ -163,7 +163,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		int amount = (int)round((float)power * 0.5f);
 
@@ -185,13 +185,13 @@ public:
 				if (!object->isTangibleObject())
 					continue;
 
-				TangibleObject* item = (TangibleObject*) object;
+				TangibleObject* item = cast<TangibleObject*>( object);
 
 				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = (PharmaceuticalObject*) item;
+					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
 
 					if (pharma->isRevivePack()) {
-						RevivePack* revivePack = (RevivePack*) pharma;
+						RevivePack* revivePack = cast<RevivePack*>( pharma);
 
 						if (revivePack->getMedicineUseRequired() <= medicineUse)
 							return revivePack;
@@ -227,7 +227,7 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
 

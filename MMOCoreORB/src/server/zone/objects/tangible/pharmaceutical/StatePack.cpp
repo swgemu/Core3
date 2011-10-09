@@ -39,8 +39,9 @@ StatePack::~StatePack() {
 }
 
 
+
 void StatePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
+	StatePackImplementation* _implementation = static_cast<StatePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -49,7 +50,7 @@ void StatePack::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void StatePack::loadTemplateData(SharedObjectTemplate* templateData) {
-	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
+	StatePackImplementation* _implementation = static_cast<StatePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -58,7 +59,7 @@ void StatePack::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 int StatePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
+	StatePackImplementation* _implementation = static_cast<StatePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +74,7 @@ int StatePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 }
 
 void StatePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
+	StatePackImplementation* _implementation = static_cast<StatePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -82,7 +83,7 @@ void StatePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* obj
 }
 
 unsigned long long StatePack::getState() {
-	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
+	StatePackImplementation* _implementation = static_cast<StatePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -95,7 +96,7 @@ unsigned long long StatePack::getState() {
 }
 
 bool StatePack::isStatePack() {
-	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
+	StatePackImplementation* _implementation = static_cast<StatePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -142,7 +143,7 @@ void StatePackImplementation::_initializeImplementation() {
 }
 
 void StatePackImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (StatePack*) stub;
+	_this = static_cast<StatePack*>(stub);
 	PharmaceuticalObjectImplementation::_setStub(stub);
 }
 
@@ -342,7 +343,7 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_GETSTATE__:
 		resp->insertLong(getState());
@@ -358,15 +359,15 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int StatePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((StatePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StatePackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned long long StatePackAdapter::getState() {
-	return ((StatePackImplementation*) impl)->getState();
+	return (static_cast<StatePackImplementation*>(impl))->getState();
 }
 
 bool StatePackAdapter::isStatePack() {
-	return ((StatePackImplementation*) impl)->isStatePack();
+	return (static_cast<StatePackImplementation*>(impl))->isStatePack();
 }
 
 /*
@@ -394,7 +395,7 @@ DistributedObjectServant* StatePackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StatePackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StatePackAdapter((StatePackImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new StatePackAdapter(static_cast<StatePackImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

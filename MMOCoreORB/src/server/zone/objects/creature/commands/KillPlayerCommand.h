@@ -74,7 +74,7 @@ public:
 			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 			if (obj != NULL && obj->isPlayerCreature())
-				targetToKill = (CreatureObject*) obj.get();
+				targetToKill = cast<CreatureObject*>( obj.get());
 		}
 
 		if (targetToKill == NULL)

@@ -33,13 +33,13 @@ void DeliverMissionObjectiveImplementation::activate() {
 	if (targetObject == NULL || !targetObject->isCreatureObject() || targetObjectDest == NULL || !targetObjectDest->isCreatureObject())
 		return;
 
-	CreatureObject* targetCreature = (CreatureObject*)targetObject;
-	CreatureObject* targetCreatureDest = (CreatureObject*)targetObjectDest;
+	CreatureObject* targetCreature = cast<CreatureObject*>(targetObject);
+	CreatureObject* targetCreatureDest = cast<CreatureObject*>(targetObjectDest);
 	if (!targetCreature->isAiAgent() || !targetCreatureDest->isAiAgent())
 		return;
 
-	target = (AiAgent*)targetCreature;
-	targetDest = (AiAgent*)targetCreatureDest;
+	target = cast<AiAgent*>(targetCreature);
+	targetDest = cast<AiAgent*>(targetCreatureDest);
 	objectiveStatus = 0;
 
 	ManagedReference<MissionObserver*> observer1 =  new MissionObserver(_this);
@@ -90,7 +90,7 @@ void DeliverMissionObjectiveImplementation::abort() {
 }
 
 void DeliverMissionObjectiveImplementation::complete() {
-	CreatureObject* player = (CreatureObject*) getPlayerOwner();
+	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
 
 	if (player == NULL)
 		return;
@@ -116,11 +116,11 @@ void DeliverMissionObjectiveImplementation::complete() {
 
 int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::CONVERSE) {
-		CreatureObject* player = (CreatureObject*)arg1;
+		CreatureObject* player = cast<CreatureObject*>(arg1);
 		if (!player->isPlayerCreature())
 			return 0;
 
-		AiAgent* converser = (AiAgent*)observable;
+		AiAgent* converser = cast<AiAgent*>(observable);
 		SceneObject* targetNpc = target;
 		if (objectiveStatus == 1)
 			targetNpc = targetDest;
@@ -128,7 +128,7 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 		if (targetNpc != converser)
 			converser->sendDefaultConversationTo(player);
 		else {
-			CreatureObject* playerCreature = (CreatureObject*) player;
+			CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
 			player->sendMessage(new StartNpcConversation(playerCreature, converser->getObjectID(), ""));
 			StringBuffer response, itemEntry;
@@ -144,7 +144,7 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 				response << "p";
 				item = NULL;
 			   	// just create a datadisk for now... not many missions that use something else and can add in a table lookup later
-			   	item = (TangibleObject*) player->getZoneServer()->createObject(String("object/tangible/mission/mission_datadisk.iff").hashCode(), 2);
+			   	item = cast<TangibleObject*>( player->getZoneServer()->createObject(String("object/tangible/mission/mission_datadisk.iff").hashCode(), 2));
 			   	if (item == NULL)
 			   			return 0;
 

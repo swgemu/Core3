@@ -28,7 +28,7 @@ public:
 		if (obj == NULL || !obj->isBuildingObject())
 			return;
 
-		BuildingObject* building = (BuildingObject*) obj.get();
+		BuildingObject* building = cast<BuildingObject*>( obj.get());
 
 		Locker _lock(building, creature);
 

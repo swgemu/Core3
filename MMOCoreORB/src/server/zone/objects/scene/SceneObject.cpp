@@ -47,8 +47,9 @@ SceneObject::~SceneObject() {
 }
 
 
+
 void SceneObject::initializePrivateData() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -61,7 +62,7 @@ void SceneObject::initializePrivateData() {
 }
 
 void SceneObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -70,7 +71,7 @@ void SceneObject::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void SceneObject::createComponents() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,7 +84,7 @@ void SceneObject::createComponents() {
 }
 
 void SceneObject::createContainerComponent() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +97,7 @@ void SceneObject::createContainerComponent() {
 }
 
 void SceneObject::initializeTransientMembers() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +110,7 @@ void SceneObject::initializeTransientMembers() {
 }
 
 void SceneObject::notifyLoadFromDatabase() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -122,7 +123,7 @@ void SceneObject::notifyLoadFromDatabase() {
 }
 
 void SceneObject::info(const String& msg, bool forced) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -137,7 +138,7 @@ void SceneObject::info(const String& msg, bool forced) {
 }
 
 void SceneObject::error(const String& msg) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -151,7 +152,7 @@ void SceneObject::error(const String& msg) {
 }
 
 int SceneObject::inRangeObjects(unsigned int gameObjectType, float range) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,7 +167,7 @@ int SceneObject::inRangeObjects(unsigned int gameObjectType, float range) {
 }
 
 bool SceneObject::isInRange(SceneObject* obj, float range) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,7 +182,7 @@ bool SceneObject::isInRange(SceneObject* obj, float range) {
 }
 
 bool SceneObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -197,7 +198,7 @@ bool SceneObject::addObject(SceneObject* object, int containmentType, bool notif
 }
 
 bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -212,7 +213,7 @@ bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
 }
 
 int SceneObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -228,7 +229,7 @@ int SceneObject::canAddObject(SceneObject* object, int containmentType, String& 
 }
 
 void SceneObject::synchronizedUIListen(SceneObject* player, int value) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -243,7 +244,7 @@ void SceneObject::synchronizedUIListen(SceneObject* player, int value) {
 }
 
 void SceneObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -258,7 +259,7 @@ void SceneObject::synchronizedUIStopListen(SceneObject* player, int value) {
 }
 
 void SceneObject::updateToDatabase() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -271,7 +272,7 @@ void SceneObject::updateToDatabase() {
 }
 
 void SceneObject::updateToDatabaseWithoutChildren() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -284,7 +285,7 @@ void SceneObject::updateToDatabaseWithoutChildren() {
 }
 
 void SceneObject::updateToDatabaseAllObjects(bool startTask) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -298,7 +299,7 @@ void SceneObject::updateToDatabaseAllObjects(bool startTask) {
 }
 
 void SceneObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -312,7 +313,7 @@ void SceneObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 }
 
 int SceneObject::canBeDestroyed(CreatureObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -326,7 +327,7 @@ int SceneObject::canBeDestroyed(CreatureObject* player) {
 }
 
 void SceneObject::create(ZoneClientSession* client) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -340,7 +341,7 @@ void SceneObject::create(ZoneClientSession* client) {
 }
 
 void SceneObject::destroy(ZoneClientSession* client) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -354,7 +355,7 @@ void SceneObject::destroy(ZoneClientSession* client) {
 }
 
 void SceneObject::close(ZoneClientSession* client) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -368,7 +369,7 @@ void SceneObject::close(ZoneClientSession* client) {
 }
 
 void SceneObject::link(ZoneClientSession* client, unsigned int containmentType) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -383,7 +384,7 @@ void SceneObject::link(ZoneClientSession* client, unsigned int containmentType) 
 }
 
 BaseMessage* SceneObject::link(unsigned long long objectID, unsigned int containmentType) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -392,13 +393,13 @@ BaseMessage* SceneObject::link(unsigned long long objectID, unsigned int contain
 		method.addUnsignedLongParameter(objectID);
 		method.addUnsignedIntParameter(containmentType);
 
-		return (BaseMessage*) method.executeWithObjectReturn();
+		return static_cast<BaseMessage*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->link(objectID, containmentType);
 }
 
 void SceneObject::sendTo(SceneObject* player, bool doClose) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -413,7 +414,7 @@ void SceneObject::sendTo(SceneObject* player, bool doClose) {
 }
 
 void SceneObject::sendWithoutParentTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -427,7 +428,7 @@ void SceneObject::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObject::sendWithoutContainerObjectsTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -441,7 +442,7 @@ void SceneObject::sendWithoutContainerObjectsTo(SceneObject* player) {
 }
 
 void SceneObject::sendDestroyTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -455,7 +456,7 @@ void SceneObject::sendDestroyTo(SceneObject* player) {
 }
 
 void SceneObject::sendBaselinesTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -469,7 +470,7 @@ void SceneObject::sendBaselinesTo(SceneObject* player) {
 }
 
 void SceneObject::sendContainerObjectsTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -483,7 +484,7 @@ void SceneObject::sendContainerObjectsTo(SceneObject* player) {
 }
 
 void SceneObject::sendSlottedObjectsTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -497,7 +498,7 @@ void SceneObject::sendSlottedObjectsTo(SceneObject* player) {
 }
 
 void SceneObject::sendToOwner(bool doClose) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -511,7 +512,7 @@ void SceneObject::sendToOwner(bool doClose) {
 }
 
 void SceneObject::sendAttributeListTo(CreatureObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -525,7 +526,7 @@ void SceneObject::sendAttributeListTo(CreatureObject* object) {
 }
 
 void SceneObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -534,7 +535,7 @@ void SceneObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* o
 }
 
 void SceneObject::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -549,7 +550,7 @@ void SceneObject::setCustomObjectName(const UnicodeString& name, bool notifyClie
 }
 
 void SceneObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -558,7 +559,7 @@ void SceneObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Creat
 }
 
 void SceneObject::openContainerTo(CreatureObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -572,7 +573,7 @@ void SceneObject::openContainerTo(CreatureObject* player) {
 }
 
 void SceneObject::closeContainerTo(CreatureObject* player, bool notify) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -587,7 +588,7 @@ void SceneObject::closeContainerTo(CreatureObject* player, bool notify) {
 }
 
 void SceneObject::notifyInsertToZone(Zone* zone) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -601,7 +602,7 @@ void SceneObject::notifyInsertToZone(Zone* zone) {
 }
 
 void SceneObject::insertToBuilding(BuildingObject* building) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -615,7 +616,7 @@ void SceneObject::insertToBuilding(BuildingObject* building) {
 }
 
 void SceneObject::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -633,7 +634,7 @@ void SceneObject::switchZone(const String& newTerrainName, float newPostionX, fl
 }
 
 void SceneObject::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -650,7 +651,7 @@ void SceneObject::teleport(float newPositionX, float newPositionZ, float newPosi
 }
 
 void SceneObject::updateDirection(float fw, float fx, float fy, float fz) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -667,7 +668,7 @@ void SceneObject::updateDirection(float fw, float fx, float fy, float fz) {
 }
 
 void SceneObject::notifyInsert(QuadTreeEntry* entry) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -676,7 +677,7 @@ void SceneObject::notifyInsert(QuadTreeEntry* entry) {
 }
 
 void SceneObject::notifyDissapear(QuadTreeEntry* entry) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -685,7 +686,7 @@ void SceneObject::notifyDissapear(QuadTreeEntry* entry) {
 }
 
 void SceneObject::removeFromZone() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -698,7 +699,7 @@ void SceneObject::removeFromZone() {
 }
 
 void SceneObject::notifyRemoveFromZone() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -711,7 +712,7 @@ void SceneObject::notifyRemoveFromZone() {
 }
 
 void SceneObject::removeFromBuilding(BuildingObject* building) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -725,7 +726,7 @@ void SceneObject::removeFromBuilding(BuildingObject* building) {
 }
 
 void SceneObject::updateZone(bool lightUpdate, bool sendPackets) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -740,7 +741,7 @@ void SceneObject::updateZone(bool lightUpdate, bool sendPackets) {
 }
 
 void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -756,7 +757,7 @@ void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate,
 }
 
 void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -772,7 +773,7 @@ void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lock
 }
 
 void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -787,7 +788,7 @@ void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
 }
 
 void SceneObject::broadcastDestroy(SceneObject* object, bool sendSelf) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -802,7 +803,7 @@ void SceneObject::broadcastDestroy(SceneObject* object, bool sendSelf) {
 }
 
 void SceneObject::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -811,7 +812,7 @@ void SceneObject::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf
 }
 
 void SceneObject::sendMessage(BasePacket* msg) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -825,7 +826,7 @@ void SceneObject::sendMessage(BasePacket* msg) {
 }
 
 int SceneObject::compareTo(SceneObject* obj) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -839,7 +840,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 }
 
 void SceneObject::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -848,7 +849,7 @@ void SceneObject::getSlottedObjects(VectorMap<String, ManagedReference<SceneObje
 }
 
 unsigned long long SceneObject::getParentID() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -861,7 +862,7 @@ unsigned long long SceneObject::getParentID() {
 }
 
 void SceneObject::addPendingTask(const String& name, Task* task) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -870,7 +871,7 @@ void SceneObject::addPendingTask(const String& name, Task* task) {
 }
 
 void SceneObject::removePendingTask(const String& name) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -879,7 +880,7 @@ void SceneObject::removePendingTask(const String& name) {
 }
 
 Task* SceneObject::getPendingTask(const String& name) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -888,7 +889,7 @@ Task* SceneObject::getPendingTask(const String& name) {
 }
 
 void SceneObject::showFlyText(const String& file, const String& uax, byte red, byte green, byte blue) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -906,7 +907,7 @@ void SceneObject::showFlyText(const String& file, const String& uax, byte red, b
 }
 
 Facade* SceneObject::getActiveSession(unsigned int type) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -914,13 +915,13 @@ Facade* SceneObject::getActiveSession(unsigned int type) {
 		DistributedMethod method(this, RPC_GETACTIVESESSION__INT_);
 		method.addUnsignedIntParameter(type);
 
-		return (Facade*) method.executeWithObjectReturn();
+		return static_cast<Facade*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getActiveSession(type);
 }
 
 void SceneObject::addActiveSession(unsigned int type, Facade* session) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -935,7 +936,7 @@ void SceneObject::addActiveSession(unsigned int type, Facade* session) {
 }
 
 bool SceneObject::containsActiveSession(unsigned int type) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -949,7 +950,7 @@ bool SceneObject::containsActiveSession(unsigned int type) {
 }
 
 bool SceneObject::dropActiveSession(unsigned int type) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -963,7 +964,7 @@ bool SceneObject::dropActiveSession(unsigned int type) {
 }
 
 int SceneObject::getActiveSessionsCount() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -976,7 +977,7 @@ int SceneObject::getActiveSessionsCount() {
 }
 
 VectorMap<unsigned int, ManagedReference<Facade* > >* SceneObject::getObjectActiveSessions() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -985,7 +986,7 @@ VectorMap<unsigned int, ManagedReference<Facade* > >* SceneObject::getObjectActi
 }
 
 int SceneObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1000,7 +1001,7 @@ int SceneObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID)
 }
 
 void SceneObject::notifyAddedToCloseObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1013,7 +1014,7 @@ void SceneObject::notifyAddedToCloseObjects() {
 }
 
 void SceneObject::notifyRemovedFromCloseObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1026,7 +1027,7 @@ void SceneObject::notifyRemovedFromCloseObjects() {
 }
 
 float SceneObject::getDistanceTo(SceneObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1040,7 +1041,7 @@ float SceneObject::getDistanceTo(SceneObject* object) {
 }
 
 float SceneObject::getDistanceTo(Coordinate* coordinate) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1049,7 +1050,7 @@ float SceneObject::getDistanceTo(Coordinate* coordinate) {
 }
 
 void SceneObject::updateVehiclePosition() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1062,7 +1063,7 @@ void SceneObject::updateVehiclePosition() {
 }
 
 int SceneObject::notifyObjectInserted(SceneObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1076,7 +1077,7 @@ int SceneObject::notifyObjectInserted(SceneObject* object) {
 }
 
 int SceneObject::notifyObjectRemoved(SceneObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1090,7 +1091,7 @@ int SceneObject::notifyObjectRemoved(SceneObject* object) {
 }
 
 void SceneObject::addActiveArea(ActiveArea* area) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1104,7 +1105,7 @@ void SceneObject::addActiveArea(ActiveArea* area) {
 }
 
 void SceneObject::dropActiveArea(ActiveArea* area) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1118,7 +1119,7 @@ void SceneObject::dropActiveArea(ActiveArea* area) {
 }
 
 bool SceneObject::hasActiveArea(ActiveArea* area) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1132,7 +1133,7 @@ bool SceneObject::hasActiveArea(ActiveArea* area) {
 }
 
 Vector<ManagedReference<ActiveArea* > >* SceneObject::getActiveAreas() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1141,7 +1142,7 @@ Vector<ManagedReference<ActiveArea* > >* SceneObject::getActiveAreas() {
 }
 
 int SceneObject::getActiveAreasSize() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1154,33 +1155,33 @@ int SceneObject::getActiveAreasSize() {
 }
 
 ActiveArea* SceneObject::getActiveRegion() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETACTIVEREGION__);
 
-		return (ActiveArea*) method.executeWithObjectReturn();
+		return static_cast<ActiveArea*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getActiveRegion();
 }
 
 CityRegion* SceneObject::getCityRegion() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCITYREGION__);
 
-		return (CityRegion*) method.executeWithObjectReturn();
+		return static_cast<CityRegion*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getCityRegion();
 }
 
 void SceneObject::setCityRegion(CityRegion* region) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1194,20 +1195,20 @@ void SceneObject::setCityRegion(CityRegion* region) {
 }
 
 Zone* SceneObject::getZone() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETZONE__);
 
-		return (Zone*) method.executeWithObjectReturn();
+		return static_cast<Zone*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getZone();
 }
 
 unsigned long long SceneObject::getObjectID() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1220,7 +1221,7 @@ unsigned long long SceneObject::getObjectID() {
 }
 
 Vector3 SceneObject::getCoordinate(float distance, float angleDegrees) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1229,7 +1230,7 @@ Vector3 SceneObject::getCoordinate(float distance, float angleDegrees) {
 }
 
 float SceneObject::getWorldPositionX() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1242,7 +1243,7 @@ float SceneObject::getWorldPositionX() {
 }
 
 float SceneObject::getWorldPositionY() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1255,7 +1256,7 @@ float SceneObject::getWorldPositionY() {
 }
 
 float SceneObject::getWorldPositionZ() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1268,7 +1269,7 @@ float SceneObject::getWorldPositionZ() {
 }
 
 Vector3 SceneObject::getWorldPosition() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1277,7 +1278,7 @@ Vector3 SceneObject::getWorldPosition() {
 }
 
 float SceneObject::getDirectionX() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1290,7 +1291,7 @@ float SceneObject::getDirectionX() {
 }
 
 float SceneObject::getDirectionZ() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1303,7 +1304,7 @@ float SceneObject::getDirectionZ() {
 }
 
 float SceneObject::getDirectionY() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1316,7 +1317,7 @@ float SceneObject::getDirectionY() {
 }
 
 float SceneObject::getDirectionW() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1329,7 +1330,7 @@ float SceneObject::getDirectionW() {
 }
 
 Quaternion* SceneObject::getDirection() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1338,7 +1339,7 @@ Quaternion* SceneObject::getDirection() {
 }
 
 unsigned int SceneObject::getClientObjectCRC() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1351,7 +1352,7 @@ unsigned int SceneObject::getClientObjectCRC() {
 }
 
 unsigned int SceneObject::getServerObjectCRC() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1364,7 +1365,7 @@ unsigned int SceneObject::getServerObjectCRC() {
 }
 
 bool SceneObject::isWaypointObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1377,7 +1378,7 @@ bool SceneObject::isWaypointObject() {
 }
 
 StringId* SceneObject::getObjectName() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1386,7 +1387,7 @@ StringId* SceneObject::getObjectName() {
 }
 
 String SceneObject::getObjectNameStringIdFile() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1400,7 +1401,7 @@ String SceneObject::getObjectNameStringIdFile() {
 }
 
 String SceneObject::getObjectNameStringIdName() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1414,7 +1415,7 @@ String SceneObject::getObjectNameStringIdName() {
 }
 
 String SceneObject::getDetailedDescription() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1423,7 +1424,7 @@ String SceneObject::getDetailedDescription() {
 }
 
 int SceneObject::getArrangementDescriptorSize() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1436,7 +1437,7 @@ int SceneObject::getArrangementDescriptorSize() {
 }
 
 String SceneObject::getArrangementDescriptor(int idx) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1451,7 +1452,7 @@ String SceneObject::getArrangementDescriptor(int idx) {
 }
 
 String SceneObject::getSlotDescriptor(int idx) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1466,7 +1467,7 @@ String SceneObject::getSlotDescriptor(int idx) {
 }
 
 bool SceneObject::hasSlotDescriptor(const String& descr) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1480,7 +1481,7 @@ bool SceneObject::hasSlotDescriptor(const String& descr) {
 }
 
 VectorMap<String, ManagedReference<SceneObject* > >* SceneObject::getSlottedObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1489,7 +1490,7 @@ VectorMap<String, ManagedReference<SceneObject* > >* SceneObject::getSlottedObje
 }
 
 SceneObject* SceneObject::getSlottedObject(const String& slot) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1497,13 +1498,13 @@ SceneObject* SceneObject::getSlottedObject(const String& slot) {
 		DistributedMethod method(this, RPC_GETSLOTTEDOBJECT__STRING_);
 		method.addAsciiParameter(slot);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSlottedObject(slot);
 }
 
 int SceneObject::getSlotDescriptorSize() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1516,7 +1517,7 @@ int SceneObject::getSlotDescriptorSize() {
 }
 
 SceneObject* SceneObject::getSlottedObject(int idx) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1524,13 +1525,13 @@ SceneObject* SceneObject::getSlottedObject(int idx) {
 		DistributedMethod method(this, RPC_GETSLOTTEDOBJECT__INT_);
 		method.addSignedIntParameter(idx);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSlottedObject(idx);
 }
 
 void SceneObject::dropSlottedObject(const String& arrengementDescriptor) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1544,7 +1545,7 @@ void SceneObject::dropSlottedObject(const String& arrengementDescriptor) {
 }
 
 void SceneObject::removeSlottedObject(int index) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1558,7 +1559,7 @@ void SceneObject::removeSlottedObject(int index) {
 }
 
 int SceneObject::getContainerObjectsSize() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1571,7 +1572,7 @@ int SceneObject::getContainerObjectsSize() {
 }
 
 int SceneObject::getSlottedObjectsSize() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1584,7 +1585,7 @@ int SceneObject::getSlottedObjectsSize() {
 }
 
 bool SceneObject::hasFullContainerObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1597,7 +1598,7 @@ bool SceneObject::hasFullContainerObjects() {
 }
 
 unsigned int SceneObject::getContainerVolumeLimit() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1610,7 +1611,7 @@ unsigned int SceneObject::getContainerVolumeLimit() {
 }
 
 SceneObject* SceneObject::getContainerObject(int idx) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1618,13 +1619,13 @@ SceneObject* SceneObject::getContainerObject(int idx) {
 		DistributedMethod method(this, RPC_GETCONTAINEROBJECT__INT_);
 		method.addSignedIntParameter(idx);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getContainerObject(idx);
 }
 
 VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1633,7 +1634,7 @@ VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::ge
 }
 
 bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1647,7 +1648,7 @@ bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
 }
 
 bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1661,7 +1662,7 @@ bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
 }
 
 SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1669,13 +1670,13 @@ SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
 		DistributedMethod method(this, RPC_GETCONTAINEROBJECT__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getContainerObject(objectID);
 }
 
 void SceneObject::removeAllContainerObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1688,7 +1689,7 @@ void SceneObject::removeAllContainerObjects() {
 }
 
 void SceneObject::putInContainer(SceneObject* obj, unsigned long long key) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1703,7 +1704,7 @@ void SceneObject::putInContainer(SceneObject* obj, unsigned long long key) {
 }
 
 void SceneObject::removeFromContainerObjects(int index) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1717,7 +1718,7 @@ void SceneObject::removeFromContainerObjects(int index) {
 }
 
 void SceneObject::setContainerVolumeLimit(int lim) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1731,7 +1732,7 @@ void SceneObject::setContainerVolumeLimit(int lim) {
 }
 
 void SceneObject::setContainerType(int type) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1745,7 +1746,7 @@ void SceneObject::setContainerType(int type) {
 }
 
 unsigned int SceneObject::getContainerType() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1758,20 +1759,20 @@ unsigned int SceneObject::getContainerType() {
 }
 
 ZoneClientSession* SceneObject::getClient() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCLIENT__);
 
-		return (ZoneClientSession*) method.executeWithObjectReturn();
+		return static_cast<ZoneClientSession*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getClient();
 }
 
 unsigned int SceneObject::getGameObjectType() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1784,7 +1785,7 @@ unsigned int SceneObject::getGameObjectType() {
 }
 
 unsigned int SceneObject::getClientGameObjectType() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1797,7 +1798,7 @@ unsigned int SceneObject::getClientGameObjectType() {
 }
 
 unsigned int SceneObject::getContainmentType() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1810,7 +1811,7 @@ unsigned int SceneObject::getContainmentType() {
 }
 
 float SceneObject::getDirectionAngle() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1823,7 +1824,7 @@ float SceneObject::getDirectionAngle() {
 }
 
 float SceneObject::getSpecialDirectionAngle() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1836,7 +1837,7 @@ float SceneObject::getSpecialDirectionAngle() {
 }
 
 void SceneObject::rotate(int degrees) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1850,7 +1851,7 @@ void SceneObject::rotate(int degrees) {
 }
 
 void SceneObject::faceObject(SceneObject* obj) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1864,7 +1865,7 @@ void SceneObject::faceObject(SceneObject* obj) {
 }
 
 void SceneObject::notifySelfPositionUpdate() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1877,7 +1878,7 @@ void SceneObject::notifySelfPositionUpdate() {
 }
 
 void SceneObject::notifyPositionUpdate(QuadTreeEntry* entry) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1891,7 +1892,7 @@ void SceneObject::notifyPositionUpdate(QuadTreeEntry* entry) {
 }
 
 void SceneObject::notifyCloseContainer(CreatureObject* player) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1905,7 +1906,7 @@ void SceneObject::notifyCloseContainer(CreatureObject* player) {
 }
 
 unsigned int SceneObject::getMovementCounter() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1918,46 +1919,46 @@ unsigned int SceneObject::getMovementCounter() {
 }
 
 SceneObject* SceneObject::getParent() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETPARENT__);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getParent();
 }
 
 ZoneServer* SceneObject::getZoneServer() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETZONESERVER__);
 
-		return (ZoneServer*) method.executeWithObjectReturn();
+		return static_cast<ZoneServer*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getZoneServer();
 }
 
 SceneObject* SceneObject::getRootParent() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETROOTPARENT__);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getRootParent();
 }
 
 SceneObject* SceneObject::getParentRecursively(unsigned int gameObjectType) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1965,13 +1966,13 @@ SceneObject* SceneObject::getParentRecursively(unsigned int gameObjectType) {
 		DistributedMethod method(this, RPC_GETPARENTRECURSIVELY__INT_);
 		method.addUnsignedIntParameter(gameObjectType);
 
-		return (SceneObject*) method.executeWithObjectReturn();
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getParentRecursively(gameObjectType);
 }
 
 bool SceneObject::isASubChildOf(SceneObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1985,7 +1986,7 @@ bool SceneObject::isASubChildOf(SceneObject* object) {
 }
 
 UnicodeString SceneObject::getCustomObjectName() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1999,7 +2000,7 @@ UnicodeString SceneObject::getCustomObjectName() {
 }
 
 String SceneObject::getLoggingName() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2013,7 +2014,7 @@ String SceneObject::getLoggingName() {
 }
 
 bool SceneObject::isPlayerCreature() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2026,7 +2027,7 @@ bool SceneObject::isPlayerCreature() {
 }
 
 bool SceneObject::isVendor() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2039,7 +2040,7 @@ bool SceneObject::isVendor() {
 }
 
 ZoneComponent* SceneObject::getZoneComponent() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2048,7 +2049,7 @@ ZoneComponent* SceneObject::getZoneComponent() {
 }
 
 ObjectMenuComponent* SceneObject::getObjectMenuComponent() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2057,7 +2058,7 @@ ObjectMenuComponent* SceneObject::getObjectMenuComponent() {
 }
 
 bool SceneObject::isContainerFull() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2070,7 +2071,7 @@ bool SceneObject::isContainerFull() {
 }
 
 bool SceneObject::isShuttleInstallation() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2083,7 +2084,7 @@ bool SceneObject::isShuttleInstallation() {
 }
 
 bool SceneObject::isPlayerObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2096,7 +2097,7 @@ bool SceneObject::isPlayerObject() {
 }
 
 bool SceneObject::isActiveArea() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2109,7 +2110,7 @@ bool SceneObject::isActiveArea() {
 }
 
 bool SceneObject::isRegion() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2122,7 +2123,7 @@ bool SceneObject::isRegion() {
 }
 
 bool SceneObject::isCreatureObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2135,7 +2136,7 @@ bool SceneObject::isCreatureObject() {
 }
 
 bool SceneObject::isShipObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2148,7 +2149,7 @@ bool SceneObject::isShipObject() {
 }
 
 bool SceneObject::isVehicleObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2161,7 +2162,7 @@ bool SceneObject::isVehicleObject() {
 }
 
 bool SceneObject::isBuildingObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2174,7 +2175,7 @@ bool SceneObject::isBuildingObject() {
 }
 
 bool SceneObject::isCloningBuildingObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2187,7 +2188,7 @@ bool SceneObject::isCloningBuildingObject() {
 }
 
 bool SceneObject::isGarage() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2200,7 +2201,7 @@ bool SceneObject::isGarage() {
 }
 
 bool SceneObject::isWeaponObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2213,7 +2214,7 @@ bool SceneObject::isWeaponObject() {
 }
 
 bool SceneObject::isWearableObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2226,7 +2227,7 @@ bool SceneObject::isWearableObject() {
 }
 
 bool SceneObject::isArmorObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2239,7 +2240,7 @@ bool SceneObject::isArmorObject() {
 }
 
 bool SceneObject::isPsgArmorObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2252,7 +2253,7 @@ bool SceneObject::isPsgArmorObject() {
 }
 
 bool SceneObject::isCellObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2265,7 +2266,7 @@ bool SceneObject::isCellObject() {
 }
 
 bool SceneObject::isTangibleObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2278,7 +2279,7 @@ bool SceneObject::isTangibleObject() {
 }
 
 bool SceneObject::isResourceContainer() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2291,7 +2292,7 @@ bool SceneObject::isResourceContainer() {
 }
 
 bool SceneObject::isComponent() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2304,7 +2305,7 @@ bool SceneObject::isComponent() {
 }
 
 bool SceneObject::isIntangibleObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2317,7 +2318,7 @@ bool SceneObject::isIntangibleObject() {
 }
 
 bool SceneObject::isInstrument() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2330,7 +2331,7 @@ bool SceneObject::isInstrument() {
 }
 
 bool SceneObject::isInstallationObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2343,7 +2344,7 @@ bool SceneObject::isInstallationObject() {
 }
 
 bool SceneObject::isCityTerminal() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2356,7 +2357,7 @@ bool SceneObject::isCityTerminal() {
 }
 
 bool SceneObject::isCityVoteTerminal() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2369,7 +2370,7 @@ bool SceneObject::isCityVoteTerminal() {
 }
 
 bool SceneObject::isFactory() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2382,7 +2383,7 @@ bool SceneObject::isFactory() {
 }
 
 bool SceneObject::isFactoryCrate() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2395,7 +2396,7 @@ bool SceneObject::isFactoryCrate() {
 }
 
 bool SceneObject::isFishingPoleObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2408,7 +2409,7 @@ bool SceneObject::isFishingPoleObject() {
 }
 
 bool SceneObject::isDeedObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2421,7 +2422,7 @@ bool SceneObject::isDeedObject() {
 }
 
 bool SceneObject::isVehicleDeedObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2434,7 +2435,7 @@ bool SceneObject::isVehicleDeedObject() {
 }
 
 bool SceneObject::isBuildingDeed() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2447,7 +2448,7 @@ bool SceneObject::isBuildingDeed() {
 }
 
 bool SceneObject::isSignObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2460,7 +2461,7 @@ bool SceneObject::isSignObject() {
 }
 
 bool SceneObject::isInstallationDeed() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2473,7 +2474,7 @@ bool SceneObject::isInstallationDeed() {
 }
 
 bool SceneObject::isCraftingTool() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2486,7 +2487,7 @@ bool SceneObject::isCraftingTool() {
 }
 
 bool SceneObject::isCraftingStation() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2499,7 +2500,7 @@ bool SceneObject::isCraftingStation() {
 }
 
 bool SceneObject::isManufactureSchematic() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2512,7 +2513,7 @@ bool SceneObject::isManufactureSchematic() {
 }
 
 bool SceneObject::isStructureObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2525,7 +2526,7 @@ bool SceneObject::isStructureObject() {
 }
 
 bool SceneObject::isFishingBait() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2538,7 +2539,7 @@ bool SceneObject::isFishingBait() {
 }
 
 bool SceneObject::isAttachment() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2551,7 +2552,7 @@ bool SceneObject::isAttachment() {
 }
 
 void SceneObject::setGameObjectType(unsigned int type) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2565,7 +2566,7 @@ void SceneObject::setGameObjectType(unsigned int type) {
 }
 
 void SceneObject::setClientObjectCRC(unsigned int objCRC) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2579,7 +2580,7 @@ void SceneObject::setClientObjectCRC(unsigned int objCRC) {
 }
 
 void SceneObject::setServerObjectCRC(unsigned int objCRC) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2593,7 +2594,7 @@ void SceneObject::setServerObjectCRC(unsigned int objCRC) {
 }
 
 void SceneObject::setParent(SceneObject* par) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2607,7 +2608,7 @@ void SceneObject::setParent(SceneObject* par) {
 }
 
 void SceneObject::setZoneProcessServer(ZoneProcessServer* srv) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2616,7 +2617,7 @@ void SceneObject::setZoneProcessServer(ZoneProcessServer* srv) {
 }
 
 void SceneObject::setZone(Zone* zone) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2630,7 +2631,7 @@ void SceneObject::setZone(Zone* zone) {
 }
 
 void SceneObject::setObjectName(StringId& stringID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2639,7 +2640,7 @@ void SceneObject::setObjectName(StringId& stringID) {
 }
 
 void SceneObject::setDirection(float fw, float fx, float fy, float fz) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2656,7 +2657,7 @@ void SceneObject::setDirection(float fw, float fx, float fy, float fz) {
 }
 
 void SceneObject::setDirection(float headingAngleRadians) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2670,7 +2671,7 @@ void SceneObject::setDirection(float headingAngleRadians) {
 }
 
 void SceneObject::setDirection(const Quaternion& dir) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2679,7 +2680,7 @@ void SceneObject::setDirection(const Quaternion& dir) {
 }
 
 void SceneObject::setMovementCounter(unsigned int count) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2693,7 +2694,7 @@ void SceneObject::setMovementCounter(unsigned int count) {
 }
 
 void SceneObject::incrementMovementCounter() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2706,7 +2707,7 @@ void SceneObject::incrementMovementCounter() {
 }
 
 void SceneObject::setContainmentType(unsigned int type) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2720,7 +2721,7 @@ void SceneObject::setContainmentType(unsigned int type) {
 }
 
 void SceneObject::setLoggingName(const String& name) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2734,7 +2735,7 @@ void SceneObject::setLoggingName(const String& name) {
 }
 
 void SceneObject::setClientObject(bool val) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2748,7 +2749,7 @@ void SceneObject::setClientObject(bool val) {
 }
 
 unsigned int SceneObject::getPlanetCRC() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2761,7 +2762,7 @@ unsigned int SceneObject::getPlanetCRC() {
 }
 
 bool SceneObject::isStaticObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2774,7 +2775,7 @@ bool SceneObject::isStaticObject() {
 }
 
 bool SceneObject::isContainerObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2787,7 +2788,7 @@ bool SceneObject::isContainerObject() {
 }
 
 bool SceneObject::isTerminal() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2800,7 +2801,7 @@ bool SceneObject::isTerminal() {
 }
 
 bool SceneObject::isGroupObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2813,7 +2814,7 @@ bool SceneObject::isGroupObject() {
 }
 
 bool SceneObject::isGuildObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2826,7 +2827,7 @@ bool SceneObject::isGuildObject() {
 }
 
 bool SceneObject::isControlDevice() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2839,7 +2840,7 @@ bool SceneObject::isControlDevice() {
 }
 
 bool SceneObject::isMissionTerminal() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2852,7 +2853,7 @@ bool SceneObject::isMissionTerminal() {
 }
 
 bool SceneObject::isMissionObject() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2865,7 +2866,7 @@ bool SceneObject::isMissionObject() {
 }
 
 int SceneObject::getPlanetMapCategoryCRC() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2878,7 +2879,7 @@ int SceneObject::getPlanetMapCategoryCRC() {
 }
 
 int SceneObject::getPlanetMapSubCategoryCRC() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2891,7 +2892,7 @@ int SceneObject::getPlanetMapSubCategoryCRC() {
 }
 
 void SceneObject::setPlanetMapCategory(PlanetMapCategory* pmc) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2900,7 +2901,7 @@ void SceneObject::setPlanetMapCategory(PlanetMapCategory* pmc) {
 }
 
 void SceneObject::setPlanetMapSubCategory(PlanetMapCategory* pmc) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2909,7 +2910,7 @@ void SceneObject::setPlanetMapSubCategory(PlanetMapCategory* pmc) {
 }
 
 PlanetMapCategory* SceneObject::getPlanetMapCategory() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2918,7 +2919,7 @@ PlanetMapCategory* SceneObject::getPlanetMapCategory() {
 }
 
 PlanetMapCategory* SceneObject::getPlanetMapSubCategory() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2927,7 +2928,7 @@ PlanetMapCategory* SceneObject::getPlanetMapSubCategory() {
 }
 
 SortedVector<ManagedReference<SceneObject* > >* SceneObject::getChildObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2936,7 +2937,7 @@ SortedVector<ManagedReference<SceneObject* > >* SceneObject::getChildObjects() {
 }
 
 bool SceneObject::containsChildObject(SceneObject* obj) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2950,7 +2951,7 @@ bool SceneObject::containsChildObject(SceneObject* obj) {
 }
 
 SharedObjectTemplate* SceneObject::getObjectTemplate() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2959,7 +2960,7 @@ SharedObjectTemplate* SceneObject::getObjectTemplate() {
 }
 
 void SceneObject::createChildObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2972,7 +2973,7 @@ void SceneObject::createChildObjects() {
 }
 
 void SceneObject::initializeChildObject(SceneObject* controllerObject) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3018,7 +3019,7 @@ void SceneObjectImplementation::_initializeImplementation() {
 }
 
 void SceneObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (SceneObject*) stub;
+	_this = static_cast<SceneObject*>(stub);
 	QuadTreeEntryImplementation::_setStub(stub);
 }
 
@@ -4237,22 +4238,22 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(inRangeObjects(inv->getUnsignedIntParameter(), inv->getFloatParameter()));
 		break;
 	case RPC_ISINRANGE__SCENEOBJECT_FLOAT_:
-		resp->insertBoolean(isInRange((SceneObject*) inv->getObjectParameter(), inv->getFloatParameter()));
+		resp->insertBoolean(isInRange(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getFloatParameter()));
 		break;
 	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(addObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_:
-		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_UPDATETODATABASE__:
 		updateToDatabase();
@@ -4267,64 +4268,64 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
 	case RPC_CANBEDESTROYED__CREATUREOBJECT_:
-		resp->insertSignedInt(canBeDestroyed((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(canBeDestroyed(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATE__ZONECLIENTSESSION_:
-		create((ZoneClientSession*) inv->getObjectParameter());
+		create(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
 		break;
 	case RPC_DESTROY__ZONECLIENTSESSION_:
-		destroy((ZoneClientSession*) inv->getObjectParameter());
+		destroy(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
 		break;
 	case RPC_CLOSE__ZONECLIENTSESSION_:
-		close((ZoneClientSession*) inv->getObjectParameter());
+		close(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
 		break;
 	case RPC_LINK__ZONECLIENTSESSION_INT_:
-		link((ZoneClientSession*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		link(static_cast<ZoneClientSession*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
 		break;
 	case RPC_LINK__LONG_INT_:
 		resp->insertLong(link(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_:
-		sendWithoutParentTo((SceneObject*) inv->getObjectParameter());
+		sendWithoutParentTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendWithoutContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		sendWithoutContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDDESTROYTO__SCENEOBJECT_:
-		sendDestroyTo((SceneObject*) inv->getObjectParameter());
+		sendDestroyTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_:
-		sendSlottedObjectsTo((SceneObject*) inv->getObjectParameter());
+		sendSlottedObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SENDTOOWNER__BOOL_:
 		sendToOwner(inv->getBooleanParameter());
 		break;
 	case RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_:
-		sendAttributeListTo((CreatureObject*) inv->getObjectParameter());
+		sendAttributeListTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_:
 		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
 		break;
 	case RPC_OPENCONTAINERTO__CREATUREOBJECT_:
-		openContainerTo((CreatureObject*) inv->getObjectParameter());
+		openContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_:
-		closeContainerTo((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		closeContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone((Zone*) inv->getObjectParameter());
+		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
 	case RPC_INSERTTOBUILDING__BUILDINGOBJECT_:
-		insertToBuilding((BuildingObject*) inv->getObjectParameter());
+		insertToBuilding(static_cast<BuildingObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_:
 		switchZone(inv->getAsciiParameter(_param0_switchZone__String_float_float_float_long_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
@@ -4342,28 +4343,28 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		notifyRemoveFromZone();
 		break;
 	case RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_:
-		removeFromBuilding((BuildingObject*) inv->getObjectParameter());
+		removeFromBuilding(static_cast<BuildingObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATEZONE__BOOL_BOOL_:
 		updateZone(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_:
-		updateZoneWithParent((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		updateZoneWithParent(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_:
-		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		broadcastMessage(static_cast<BasePacket*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_:
-		broadcastObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		broadcastObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_:
-		broadcastDestroy((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		broadcastDestroy(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_SENDMESSAGE__BASEPACKET_:
-		sendMessage((BasePacket*) inv->getObjectParameter());
+		sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
 		break;
 	case RPC_COMPARETO__SCENEOBJECT_:
-		resp->insertSignedInt(compareTo((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(compareTo(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETPARENTID__:
 		resp->insertLong(getParentID());
@@ -4375,7 +4376,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getActiveSession(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case RPC_ADDACTIVESESSION__INT_FACADE_:
-		addActiveSession(inv->getUnsignedIntParameter(), (Facade*) inv->getObjectParameter());
+		addActiveSession(inv->getUnsignedIntParameter(), static_cast<Facade*>(inv->getObjectParameter()));
 		break;
 	case RPC_CONTAINSACTIVESESSION__INT_:
 		resp->insertBoolean(containsActiveSession(inv->getUnsignedIntParameter()));
@@ -4387,7 +4388,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(getActiveSessionsCount());
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_NOTIFYADDEDTOCLOSEOBJECTS__:
 		notifyAddedToCloseObjects();
@@ -4396,25 +4397,25 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		notifyRemovedFromCloseObjects();
 		break;
 	case RPC_GETDISTANCETO__SCENEOBJECT_:
-		resp->insertFloat(getDistanceTo((SceneObject*) inv->getObjectParameter()));
+		resp->insertFloat(getDistanceTo(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_UPDATEVEHICLEPOSITION__:
 		updateVehiclePosition();
 		break;
 	case RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectInserted((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(notifyObjectInserted(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectRemoved((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(notifyObjectRemoved(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ADDACTIVEAREA__ACTIVEAREA_:
-		addActiveArea((ActiveArea*) inv->getObjectParameter());
+		addActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter()));
 		break;
 	case RPC_DROPACTIVEAREA__ACTIVEAREA_:
-		dropActiveArea((ActiveArea*) inv->getObjectParameter());
+		dropActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter()));
 		break;
 	case RPC_HASACTIVEAREA__ACTIVEAREA_:
-		resp->insertBoolean(hasActiveArea((ActiveArea*) inv->getObjectParameter()));
+		resp->insertBoolean(hasActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETACTIVEAREASSIZE__:
 		resp->insertSignedInt(getActiveAreasSize());
@@ -4426,7 +4427,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getCityRegion()->_getObjectID());
 		break;
 	case RPC_SETCITYREGION__CITYREGION_:
-		setCityRegion((CityRegion*) inv->getObjectParameter());
+		setCityRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETZONE__:
 		resp->insertLong(getZone()->_getObjectID());
@@ -4516,7 +4517,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(hasObjectInContainer(inv->getUnsignedLongParameter()));
 		break;
 	case RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_:
-		resp->insertBoolean(hasObjectInSlottedContainer((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(hasObjectInSlottedContainer(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETCONTAINEROBJECT__LONG_:
 		resp->insertLong(getContainerObject(inv->getUnsignedLongParameter())->_getObjectID());
@@ -4525,7 +4526,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		removeAllContainerObjects();
 		break;
 	case RPC_PUTINCONTAINER__SCENEOBJECT_LONG_:
-		putInContainer((SceneObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		putInContainer(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
 		break;
 	case RPC_REMOVEFROMCONTAINEROBJECTS__INT_:
 		removeFromContainerObjects(inv->getSignedIntParameter());
@@ -4561,16 +4562,16 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		rotate(inv->getSignedIntParameter());
 		break;
 	case RPC_FACEOBJECT__SCENEOBJECT_:
-		faceObject((SceneObject*) inv->getObjectParameter());
+		faceObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYSELFPOSITIONUPDATE__:
 		notifySelfPositionUpdate();
 		break;
 	case RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_:
-		notifyPositionUpdate((QuadTreeEntry*) inv->getObjectParameter());
+		notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
 		break;
 	case RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_:
-		notifyCloseContainer((CreatureObject*) inv->getObjectParameter());
+		notifyCloseContainer(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETMOVEMENTCOUNTER__:
 		resp->insertInt(getMovementCounter());
@@ -4588,7 +4589,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getParentRecursively(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case RPC_ISASUBCHILDOF__SCENEOBJECT_:
-		resp->insertBoolean(isASubChildOf((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isASubChildOf(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETCUSTOMOBJECTNAME__:
 		resp->insertUnicode(getCustomObjectName());
@@ -4726,10 +4727,10 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setServerObjectCRC(inv->getUnsignedIntParameter());
 		break;
 	case RPC_SETPARENT__SCENEOBJECT_:
-		setParent((SceneObject*) inv->getObjectParameter());
+		setParent(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETZONE__ZONE_:
-		setZone((Zone*) inv->getObjectParameter());
+		setZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_:
 		setDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
@@ -4786,13 +4787,13 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(getPlanetMapSubCategoryCRC());
 		break;
 	case RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_:
-		resp->insertBoolean(containsChildObject((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(containsChildObject(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
 		break;
 	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
-		initializeChildObject((SceneObject*) inv->getObjectParameter());
+		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -4802,783 +4803,783 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void SceneObjectAdapter::finalize() {
-	((SceneObjectImplementation*) impl)->finalize();
+	(static_cast<SceneObjectImplementation*>(impl))->finalize();
 }
 
 void SceneObjectAdapter::initializePrivateData() {
-	((SceneObjectImplementation*) impl)->initializePrivateData();
+	(static_cast<SceneObjectImplementation*>(impl))->initializePrivateData();
 }
 
 void SceneObjectAdapter::createComponents() {
-	((SceneObjectImplementation*) impl)->createComponents();
+	(static_cast<SceneObjectImplementation*>(impl))->createComponents();
 }
 
 void SceneObjectAdapter::createContainerComponent() {
-	((SceneObjectImplementation*) impl)->createContainerComponent();
+	(static_cast<SceneObjectImplementation*>(impl))->createContainerComponent();
 }
 
 void SceneObjectAdapter::initializeTransientMembers() {
-	((SceneObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<SceneObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 void SceneObjectAdapter::notifyLoadFromDatabase() {
-	((SceneObjectImplementation*) impl)->notifyLoadFromDatabase();
+	(static_cast<SceneObjectImplementation*>(impl))->notifyLoadFromDatabase();
 }
 
 void SceneObjectAdapter::info(const String& msg, bool forced) {
-	((SceneObjectImplementation*) impl)->info(msg, forced);
+	(static_cast<SceneObjectImplementation*>(impl))->info(msg, forced);
 }
 
 void SceneObjectAdapter::error(const String& msg) {
-	((SceneObjectImplementation*) impl)->error(msg);
+	(static_cast<SceneObjectImplementation*>(impl))->error(msg);
 }
 
 int SceneObjectAdapter::inRangeObjects(unsigned int gameObjectType, float range) {
-	return ((SceneObjectImplementation*) impl)->inRangeObjects(gameObjectType, range);
+	return (static_cast<SceneObjectImplementation*>(impl))->inRangeObjects(gameObjectType, range);
 }
 
 bool SceneObjectAdapter::isInRange(SceneObject* obj, float range) {
-	return ((SceneObjectImplementation*) impl)->isInRange(obj, range);
+	return (static_cast<SceneObjectImplementation*>(impl))->isInRange(obj, range);
 }
 
 bool SceneObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return ((SceneObjectImplementation*) impl)->addObject(object, containmentType, notifyClient);
+	return (static_cast<SceneObjectImplementation*>(impl))->addObject(object, containmentType, notifyClient);
 }
 
 bool SceneObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
-	return ((SceneObjectImplementation*) impl)->removeObject(object, notifyClient);
+	return (static_cast<SceneObjectImplementation*>(impl))->removeObject(object, notifyClient);
 }
 
 int SceneObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return ((SceneObjectImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
+	return (static_cast<SceneObjectImplementation*>(impl))->canAddObject(object, containmentType, errorDescription);
 }
 
 void SceneObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	((SceneObjectImplementation*) impl)->synchronizedUIListen(player, value);
+	(static_cast<SceneObjectImplementation*>(impl))->synchronizedUIListen(player, value);
 }
 
 void SceneObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	((SceneObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
+	(static_cast<SceneObjectImplementation*>(impl))->synchronizedUIStopListen(player, value);
 }
 
 void SceneObjectAdapter::updateToDatabase() {
-	((SceneObjectImplementation*) impl)->updateToDatabase();
+	(static_cast<SceneObjectImplementation*>(impl))->updateToDatabase();
 }
 
 void SceneObjectAdapter::updateToDatabaseWithoutChildren() {
-	((SceneObjectImplementation*) impl)->updateToDatabaseWithoutChildren();
+	(static_cast<SceneObjectImplementation*>(impl))->updateToDatabaseWithoutChildren();
 }
 
 void SceneObjectAdapter::updateToDatabaseAllObjects(bool startTask) {
-	((SceneObjectImplementation*) impl)->updateToDatabaseAllObjects(startTask);
+	(static_cast<SceneObjectImplementation*>(impl))->updateToDatabaseAllObjects(startTask);
 }
 
 void SceneObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	((SceneObjectImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<SceneObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int SceneObjectAdapter::canBeDestroyed(CreatureObject* player) {
-	return ((SceneObjectImplementation*) impl)->canBeDestroyed(player);
+	return (static_cast<SceneObjectImplementation*>(impl))->canBeDestroyed(player);
 }
 
 void SceneObjectAdapter::create(ZoneClientSession* client) {
-	((SceneObjectImplementation*) impl)->create(client);
+	(static_cast<SceneObjectImplementation*>(impl))->create(client);
 }
 
 void SceneObjectAdapter::destroy(ZoneClientSession* client) {
-	((SceneObjectImplementation*) impl)->destroy(client);
+	(static_cast<SceneObjectImplementation*>(impl))->destroy(client);
 }
 
 void SceneObjectAdapter::close(ZoneClientSession* client) {
-	((SceneObjectImplementation*) impl)->close(client);
+	(static_cast<SceneObjectImplementation*>(impl))->close(client);
 }
 
 void SceneObjectAdapter::link(ZoneClientSession* client, unsigned int containmentType) {
-	((SceneObjectImplementation*) impl)->link(client, containmentType);
+	(static_cast<SceneObjectImplementation*>(impl))->link(client, containmentType);
 }
 
 BaseMessage* SceneObjectAdapter::link(unsigned long long objectID, unsigned int containmentType) {
-	return ((SceneObjectImplementation*) impl)->link(objectID, containmentType);
+	return (static_cast<SceneObjectImplementation*>(impl))->link(objectID, containmentType);
 }
 
 void SceneObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	((SceneObjectImplementation*) impl)->sendTo(player, doClose);
+	(static_cast<SceneObjectImplementation*>(impl))->sendTo(player, doClose);
 }
 
 void SceneObjectAdapter::sendWithoutParentTo(SceneObject* player) {
-	((SceneObjectImplementation*) impl)->sendWithoutParentTo(player);
+	(static_cast<SceneObjectImplementation*>(impl))->sendWithoutParentTo(player);
 }
 
 void SceneObjectAdapter::sendWithoutContainerObjectsTo(SceneObject* player) {
-	((SceneObjectImplementation*) impl)->sendWithoutContainerObjectsTo(player);
+	(static_cast<SceneObjectImplementation*>(impl))->sendWithoutContainerObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendDestroyTo(SceneObject* player) {
-	((SceneObjectImplementation*) impl)->sendDestroyTo(player);
+	(static_cast<SceneObjectImplementation*>(impl))->sendDestroyTo(player);
 }
 
 void SceneObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((SceneObjectImplementation*) impl)->sendBaselinesTo(player);
+	(static_cast<SceneObjectImplementation*>(impl))->sendBaselinesTo(player);
 }
 
 void SceneObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
-	((SceneObjectImplementation*) impl)->sendContainerObjectsTo(player);
+	(static_cast<SceneObjectImplementation*>(impl))->sendContainerObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendSlottedObjectsTo(SceneObject* player) {
-	((SceneObjectImplementation*) impl)->sendSlottedObjectsTo(player);
+	(static_cast<SceneObjectImplementation*>(impl))->sendSlottedObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendToOwner(bool doClose) {
-	((SceneObjectImplementation*) impl)->sendToOwner(doClose);
+	(static_cast<SceneObjectImplementation*>(impl))->sendToOwner(doClose);
 }
 
 void SceneObjectAdapter::sendAttributeListTo(CreatureObject* object) {
-	((SceneObjectImplementation*) impl)->sendAttributeListTo(object);
+	(static_cast<SceneObjectImplementation*>(impl))->sendAttributeListTo(object);
 }
 
 void SceneObjectAdapter::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	((SceneObjectImplementation*) impl)->setCustomObjectName(name, notifyClient);
+	(static_cast<SceneObjectImplementation*>(impl))->setCustomObjectName(name, notifyClient);
 }
 
 void SceneObjectAdapter::openContainerTo(CreatureObject* player) {
-	((SceneObjectImplementation*) impl)->openContainerTo(player);
+	(static_cast<SceneObjectImplementation*>(impl))->openContainerTo(player);
 }
 
 void SceneObjectAdapter::closeContainerTo(CreatureObject* player, bool notify) {
-	((SceneObjectImplementation*) impl)->closeContainerTo(player, notify);
+	(static_cast<SceneObjectImplementation*>(impl))->closeContainerTo(player, notify);
 }
 
 void SceneObjectAdapter::notifyInsertToZone(Zone* zone) {
-	((SceneObjectImplementation*) impl)->notifyInsertToZone(zone);
+	(static_cast<SceneObjectImplementation*>(impl))->notifyInsertToZone(zone);
 }
 
 void SceneObjectAdapter::insertToBuilding(BuildingObject* building) {
-	((SceneObjectImplementation*) impl)->insertToBuilding(building);
+	(static_cast<SceneObjectImplementation*>(impl))->insertToBuilding(building);
 }
 
 void SceneObjectAdapter::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	((SceneObjectImplementation*) impl)->switchZone(newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
+	(static_cast<SceneObjectImplementation*>(impl))->switchZone(newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectAdapter::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	((SceneObjectImplementation*) impl)->teleport(newPositionX, newPositionZ, newPositionY, parentID);
+	(static_cast<SceneObjectImplementation*>(impl))->teleport(newPositionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectAdapter::updateDirection(float fw, float fx, float fy, float fz) {
-	((SceneObjectImplementation*) impl)->updateDirection(fw, fx, fy, fz);
+	(static_cast<SceneObjectImplementation*>(impl))->updateDirection(fw, fx, fy, fz);
 }
 
 void SceneObjectAdapter::removeFromZone() {
-	((SceneObjectImplementation*) impl)->removeFromZone();
+	(static_cast<SceneObjectImplementation*>(impl))->removeFromZone();
 }
 
 void SceneObjectAdapter::notifyRemoveFromZone() {
-	((SceneObjectImplementation*) impl)->notifyRemoveFromZone();
+	(static_cast<SceneObjectImplementation*>(impl))->notifyRemoveFromZone();
 }
 
 void SceneObjectAdapter::removeFromBuilding(BuildingObject* building) {
-	((SceneObjectImplementation*) impl)->removeFromBuilding(building);
+	(static_cast<SceneObjectImplementation*>(impl))->removeFromBuilding(building);
 }
 
 void SceneObjectAdapter::updateZone(bool lightUpdate, bool sendPackets) {
-	((SceneObjectImplementation*) impl)->updateZone(lightUpdate, sendPackets);
+	(static_cast<SceneObjectImplementation*>(impl))->updateZone(lightUpdate, sendPackets);
 }
 
 void SceneObjectAdapter::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	((SceneObjectImplementation*) impl)->updateZoneWithParent(newParent, lightUpdate, sendPackets);
+	(static_cast<SceneObjectImplementation*>(impl))->updateZoneWithParent(newParent, lightUpdate, sendPackets);
 }
 
 void SceneObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	((SceneObjectImplementation*) impl)->broadcastMessage(message, sendSelf, lockZone);
+	(static_cast<SceneObjectImplementation*>(impl))->broadcastMessage(message, sendSelf, lockZone);
 }
 
 void SceneObjectAdapter::broadcastObject(SceneObject* object, bool sendSelf) {
-	((SceneObjectImplementation*) impl)->broadcastObject(object, sendSelf);
+	(static_cast<SceneObjectImplementation*>(impl))->broadcastObject(object, sendSelf);
 }
 
 void SceneObjectAdapter::broadcastDestroy(SceneObject* object, bool sendSelf) {
-	((SceneObjectImplementation*) impl)->broadcastDestroy(object, sendSelf);
+	(static_cast<SceneObjectImplementation*>(impl))->broadcastDestroy(object, sendSelf);
 }
 
 void SceneObjectAdapter::sendMessage(BasePacket* msg) {
-	((SceneObjectImplementation*) impl)->sendMessage(msg);
+	(static_cast<SceneObjectImplementation*>(impl))->sendMessage(msg);
 }
 
 int SceneObjectAdapter::compareTo(SceneObject* obj) {
-	return ((SceneObjectImplementation*) impl)->compareTo(obj);
+	return (static_cast<SceneObjectImplementation*>(impl))->compareTo(obj);
 }
 
 unsigned long long SceneObjectAdapter::getParentID() {
-	return ((SceneObjectImplementation*) impl)->getParentID();
+	return (static_cast<SceneObjectImplementation*>(impl))->getParentID();
 }
 
 void SceneObjectAdapter::showFlyText(const String& file, const String& uax, byte red, byte green, byte blue) {
-	((SceneObjectImplementation*) impl)->showFlyText(file, uax, red, green, blue);
+	(static_cast<SceneObjectImplementation*>(impl))->showFlyText(file, uax, red, green, blue);
 }
 
 Facade* SceneObjectAdapter::getActiveSession(unsigned int type) {
-	return ((SceneObjectImplementation*) impl)->getActiveSession(type);
+	return (static_cast<SceneObjectImplementation*>(impl))->getActiveSession(type);
 }
 
 void SceneObjectAdapter::addActiveSession(unsigned int type, Facade* session) {
-	((SceneObjectImplementation*) impl)->addActiveSession(type, session);
+	(static_cast<SceneObjectImplementation*>(impl))->addActiveSession(type, session);
 }
 
 bool SceneObjectAdapter::containsActiveSession(unsigned int type) {
-	return ((SceneObjectImplementation*) impl)->containsActiveSession(type);
+	return (static_cast<SceneObjectImplementation*>(impl))->containsActiveSession(type);
 }
 
 bool SceneObjectAdapter::dropActiveSession(unsigned int type) {
-	return ((SceneObjectImplementation*) impl)->dropActiveSession(type);
+	return (static_cast<SceneObjectImplementation*>(impl))->dropActiveSession(type);
 }
 
 int SceneObjectAdapter::getActiveSessionsCount() {
-	return ((SceneObjectImplementation*) impl)->getActiveSessionsCount();
+	return (static_cast<SceneObjectImplementation*>(impl))->getActiveSessionsCount();
 }
 
 int SceneObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((SceneObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SceneObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void SceneObjectAdapter::notifyAddedToCloseObjects() {
-	((SceneObjectImplementation*) impl)->notifyAddedToCloseObjects();
+	(static_cast<SceneObjectImplementation*>(impl))->notifyAddedToCloseObjects();
 }
 
 void SceneObjectAdapter::notifyRemovedFromCloseObjects() {
-	((SceneObjectImplementation*) impl)->notifyRemovedFromCloseObjects();
+	(static_cast<SceneObjectImplementation*>(impl))->notifyRemovedFromCloseObjects();
 }
 
 float SceneObjectAdapter::getDistanceTo(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->getDistanceTo(object);
+	return (static_cast<SceneObjectImplementation*>(impl))->getDistanceTo(object);
 }
 
 void SceneObjectAdapter::updateVehiclePosition() {
-	((SceneObjectImplementation*) impl)->updateVehiclePosition();
+	(static_cast<SceneObjectImplementation*>(impl))->updateVehiclePosition();
 }
 
 int SceneObjectAdapter::notifyObjectInserted(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->notifyObjectInserted(object);
+	return (static_cast<SceneObjectImplementation*>(impl))->notifyObjectInserted(object);
 }
 
 int SceneObjectAdapter::notifyObjectRemoved(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->notifyObjectRemoved(object);
+	return (static_cast<SceneObjectImplementation*>(impl))->notifyObjectRemoved(object);
 }
 
 void SceneObjectAdapter::addActiveArea(ActiveArea* area) {
-	((SceneObjectImplementation*) impl)->addActiveArea(area);
+	(static_cast<SceneObjectImplementation*>(impl))->addActiveArea(area);
 }
 
 void SceneObjectAdapter::dropActiveArea(ActiveArea* area) {
-	((SceneObjectImplementation*) impl)->dropActiveArea(area);
+	(static_cast<SceneObjectImplementation*>(impl))->dropActiveArea(area);
 }
 
 bool SceneObjectAdapter::hasActiveArea(ActiveArea* area) {
-	return ((SceneObjectImplementation*) impl)->hasActiveArea(area);
+	return (static_cast<SceneObjectImplementation*>(impl))->hasActiveArea(area);
 }
 
 int SceneObjectAdapter::getActiveAreasSize() {
-	return ((SceneObjectImplementation*) impl)->getActiveAreasSize();
+	return (static_cast<SceneObjectImplementation*>(impl))->getActiveAreasSize();
 }
 
 ActiveArea* SceneObjectAdapter::getActiveRegion() {
-	return ((SceneObjectImplementation*) impl)->getActiveRegion();
+	return (static_cast<SceneObjectImplementation*>(impl))->getActiveRegion();
 }
 
 CityRegion* SceneObjectAdapter::getCityRegion() {
-	return ((SceneObjectImplementation*) impl)->getCityRegion();
+	return (static_cast<SceneObjectImplementation*>(impl))->getCityRegion();
 }
 
 void SceneObjectAdapter::setCityRegion(CityRegion* region) {
-	((SceneObjectImplementation*) impl)->setCityRegion(region);
+	(static_cast<SceneObjectImplementation*>(impl))->setCityRegion(region);
 }
 
 Zone* SceneObjectAdapter::getZone() {
-	return ((SceneObjectImplementation*) impl)->getZone();
+	return (static_cast<SceneObjectImplementation*>(impl))->getZone();
 }
 
 unsigned long long SceneObjectAdapter::getObjectID() {
-	return ((SceneObjectImplementation*) impl)->getObjectID();
+	return (static_cast<SceneObjectImplementation*>(impl))->getObjectID();
 }
 
 float SceneObjectAdapter::getWorldPositionX() {
-	return ((SceneObjectImplementation*) impl)->getWorldPositionX();
+	return (static_cast<SceneObjectImplementation*>(impl))->getWorldPositionX();
 }
 
 float SceneObjectAdapter::getWorldPositionY() {
-	return ((SceneObjectImplementation*) impl)->getWorldPositionY();
+	return (static_cast<SceneObjectImplementation*>(impl))->getWorldPositionY();
 }
 
 float SceneObjectAdapter::getWorldPositionZ() {
-	return ((SceneObjectImplementation*) impl)->getWorldPositionZ();
+	return (static_cast<SceneObjectImplementation*>(impl))->getWorldPositionZ();
 }
 
 float SceneObjectAdapter::getDirectionX() {
-	return ((SceneObjectImplementation*) impl)->getDirectionX();
+	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionX();
 }
 
 float SceneObjectAdapter::getDirectionZ() {
-	return ((SceneObjectImplementation*) impl)->getDirectionZ();
+	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionZ();
 }
 
 float SceneObjectAdapter::getDirectionY() {
-	return ((SceneObjectImplementation*) impl)->getDirectionY();
+	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionY();
 }
 
 float SceneObjectAdapter::getDirectionW() {
-	return ((SceneObjectImplementation*) impl)->getDirectionW();
+	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionW();
 }
 
 unsigned int SceneObjectAdapter::getClientObjectCRC() {
-	return ((SceneObjectImplementation*) impl)->getClientObjectCRC();
+	return (static_cast<SceneObjectImplementation*>(impl))->getClientObjectCRC();
 }
 
 unsigned int SceneObjectAdapter::getServerObjectCRC() {
-	return ((SceneObjectImplementation*) impl)->getServerObjectCRC();
+	return (static_cast<SceneObjectImplementation*>(impl))->getServerObjectCRC();
 }
 
 bool SceneObjectAdapter::isWaypointObject() {
-	return ((SceneObjectImplementation*) impl)->isWaypointObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isWaypointObject();
 }
 
 String SceneObjectAdapter::getObjectNameStringIdFile() {
-	return ((SceneObjectImplementation*) impl)->getObjectNameStringIdFile();
+	return (static_cast<SceneObjectImplementation*>(impl))->getObjectNameStringIdFile();
 }
 
 String SceneObjectAdapter::getObjectNameStringIdName() {
-	return ((SceneObjectImplementation*) impl)->getObjectNameStringIdName();
+	return (static_cast<SceneObjectImplementation*>(impl))->getObjectNameStringIdName();
 }
 
 int SceneObjectAdapter::getArrangementDescriptorSize() {
-	return ((SceneObjectImplementation*) impl)->getArrangementDescriptorSize();
+	return (static_cast<SceneObjectImplementation*>(impl))->getArrangementDescriptorSize();
 }
 
 String SceneObjectAdapter::getArrangementDescriptor(int idx) {
-	return ((SceneObjectImplementation*) impl)->getArrangementDescriptor(idx);
+	return (static_cast<SceneObjectImplementation*>(impl))->getArrangementDescriptor(idx);
 }
 
 String SceneObjectAdapter::getSlotDescriptor(int idx) {
-	return ((SceneObjectImplementation*) impl)->getSlotDescriptor(idx);
+	return (static_cast<SceneObjectImplementation*>(impl))->getSlotDescriptor(idx);
 }
 
 bool SceneObjectAdapter::hasSlotDescriptor(const String& descr) {
-	return ((SceneObjectImplementation*) impl)->hasSlotDescriptor(descr);
+	return (static_cast<SceneObjectImplementation*>(impl))->hasSlotDescriptor(descr);
 }
 
 SceneObject* SceneObjectAdapter::getSlottedObject(const String& slot) {
-	return ((SceneObjectImplementation*) impl)->getSlottedObject(slot);
+	return (static_cast<SceneObjectImplementation*>(impl))->getSlottedObject(slot);
 }
 
 int SceneObjectAdapter::getSlotDescriptorSize() {
-	return ((SceneObjectImplementation*) impl)->getSlotDescriptorSize();
+	return (static_cast<SceneObjectImplementation*>(impl))->getSlotDescriptorSize();
 }
 
 SceneObject* SceneObjectAdapter::getSlottedObject(int idx) {
-	return ((SceneObjectImplementation*) impl)->getSlottedObject(idx);
+	return (static_cast<SceneObjectImplementation*>(impl))->getSlottedObject(idx);
 }
 
 void SceneObjectAdapter::dropSlottedObject(const String& arrengementDescriptor) {
-	((SceneObjectImplementation*) impl)->dropSlottedObject(arrengementDescriptor);
+	(static_cast<SceneObjectImplementation*>(impl))->dropSlottedObject(arrengementDescriptor);
 }
 
 void SceneObjectAdapter::removeSlottedObject(int index) {
-	((SceneObjectImplementation*) impl)->removeSlottedObject(index);
+	(static_cast<SceneObjectImplementation*>(impl))->removeSlottedObject(index);
 }
 
 int SceneObjectAdapter::getContainerObjectsSize() {
-	return ((SceneObjectImplementation*) impl)->getContainerObjectsSize();
+	return (static_cast<SceneObjectImplementation*>(impl))->getContainerObjectsSize();
 }
 
 int SceneObjectAdapter::getSlottedObjectsSize() {
-	return ((SceneObjectImplementation*) impl)->getSlottedObjectsSize();
+	return (static_cast<SceneObjectImplementation*>(impl))->getSlottedObjectsSize();
 }
 
 bool SceneObjectAdapter::hasFullContainerObjects() {
-	return ((SceneObjectImplementation*) impl)->hasFullContainerObjects();
+	return (static_cast<SceneObjectImplementation*>(impl))->hasFullContainerObjects();
 }
 
 unsigned int SceneObjectAdapter::getContainerVolumeLimit() {
-	return ((SceneObjectImplementation*) impl)->getContainerVolumeLimit();
+	return (static_cast<SceneObjectImplementation*>(impl))->getContainerVolumeLimit();
 }
 
 SceneObject* SceneObjectAdapter::getContainerObject(int idx) {
-	return ((SceneObjectImplementation*) impl)->getContainerObject(idx);
+	return (static_cast<SceneObjectImplementation*>(impl))->getContainerObject(idx);
 }
 
 bool SceneObjectAdapter::hasObjectInContainer(unsigned long long objectID) {
-	return ((SceneObjectImplementation*) impl)->hasObjectInContainer(objectID);
+	return (static_cast<SceneObjectImplementation*>(impl))->hasObjectInContainer(objectID);
 }
 
 bool SceneObjectAdapter::hasObjectInSlottedContainer(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->hasObjectInSlottedContainer(object);
+	return (static_cast<SceneObjectImplementation*>(impl))->hasObjectInSlottedContainer(object);
 }
 
 SceneObject* SceneObjectAdapter::getContainerObject(unsigned long long objectID) {
-	return ((SceneObjectImplementation*) impl)->getContainerObject(objectID);
+	return (static_cast<SceneObjectImplementation*>(impl))->getContainerObject(objectID);
 }
 
 void SceneObjectAdapter::removeAllContainerObjects() {
-	((SceneObjectImplementation*) impl)->removeAllContainerObjects();
+	(static_cast<SceneObjectImplementation*>(impl))->removeAllContainerObjects();
 }
 
 void SceneObjectAdapter::putInContainer(SceneObject* obj, unsigned long long key) {
-	((SceneObjectImplementation*) impl)->putInContainer(obj, key);
+	(static_cast<SceneObjectImplementation*>(impl))->putInContainer(obj, key);
 }
 
 void SceneObjectAdapter::removeFromContainerObjects(int index) {
-	((SceneObjectImplementation*) impl)->removeFromContainerObjects(index);
+	(static_cast<SceneObjectImplementation*>(impl))->removeFromContainerObjects(index);
 }
 
 void SceneObjectAdapter::setContainerVolumeLimit(int lim) {
-	((SceneObjectImplementation*) impl)->setContainerVolumeLimit(lim);
+	(static_cast<SceneObjectImplementation*>(impl))->setContainerVolumeLimit(lim);
 }
 
 void SceneObjectAdapter::setContainerType(int type) {
-	((SceneObjectImplementation*) impl)->setContainerType(type);
+	(static_cast<SceneObjectImplementation*>(impl))->setContainerType(type);
 }
 
 unsigned int SceneObjectAdapter::getContainerType() {
-	return ((SceneObjectImplementation*) impl)->getContainerType();
+	return (static_cast<SceneObjectImplementation*>(impl))->getContainerType();
 }
 
 ZoneClientSession* SceneObjectAdapter::getClient() {
-	return ((SceneObjectImplementation*) impl)->getClient();
+	return (static_cast<SceneObjectImplementation*>(impl))->getClient();
 }
 
 unsigned int SceneObjectAdapter::getGameObjectType() {
-	return ((SceneObjectImplementation*) impl)->getGameObjectType();
+	return (static_cast<SceneObjectImplementation*>(impl))->getGameObjectType();
 }
 
 unsigned int SceneObjectAdapter::getClientGameObjectType() {
-	return ((SceneObjectImplementation*) impl)->getClientGameObjectType();
+	return (static_cast<SceneObjectImplementation*>(impl))->getClientGameObjectType();
 }
 
 unsigned int SceneObjectAdapter::getContainmentType() {
-	return ((SceneObjectImplementation*) impl)->getContainmentType();
+	return (static_cast<SceneObjectImplementation*>(impl))->getContainmentType();
 }
 
 float SceneObjectAdapter::getDirectionAngle() {
-	return ((SceneObjectImplementation*) impl)->getDirectionAngle();
+	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionAngle();
 }
 
 float SceneObjectAdapter::getSpecialDirectionAngle() {
-	return ((SceneObjectImplementation*) impl)->getSpecialDirectionAngle();
+	return (static_cast<SceneObjectImplementation*>(impl))->getSpecialDirectionAngle();
 }
 
 void SceneObjectAdapter::rotate(int degrees) {
-	((SceneObjectImplementation*) impl)->rotate(degrees);
+	(static_cast<SceneObjectImplementation*>(impl))->rotate(degrees);
 }
 
 void SceneObjectAdapter::faceObject(SceneObject* obj) {
-	((SceneObjectImplementation*) impl)->faceObject(obj);
+	(static_cast<SceneObjectImplementation*>(impl))->faceObject(obj);
 }
 
 void SceneObjectAdapter::notifySelfPositionUpdate() {
-	((SceneObjectImplementation*) impl)->notifySelfPositionUpdate();
+	(static_cast<SceneObjectImplementation*>(impl))->notifySelfPositionUpdate();
 }
 
 void SceneObjectAdapter::notifyPositionUpdate(QuadTreeEntry* entry) {
-	((SceneObjectImplementation*) impl)->notifyPositionUpdate(entry);
+	(static_cast<SceneObjectImplementation*>(impl))->notifyPositionUpdate(entry);
 }
 
 void SceneObjectAdapter::notifyCloseContainer(CreatureObject* player) {
-	((SceneObjectImplementation*) impl)->notifyCloseContainer(player);
+	(static_cast<SceneObjectImplementation*>(impl))->notifyCloseContainer(player);
 }
 
 unsigned int SceneObjectAdapter::getMovementCounter() {
-	return ((SceneObjectImplementation*) impl)->getMovementCounter();
+	return (static_cast<SceneObjectImplementation*>(impl))->getMovementCounter();
 }
 
 SceneObject* SceneObjectAdapter::getParent() {
-	return ((SceneObjectImplementation*) impl)->getParent();
+	return (static_cast<SceneObjectImplementation*>(impl))->getParent();
 }
 
 ZoneServer* SceneObjectAdapter::getZoneServer() {
-	return ((SceneObjectImplementation*) impl)->getZoneServer();
+	return (static_cast<SceneObjectImplementation*>(impl))->getZoneServer();
 }
 
 SceneObject* SceneObjectAdapter::getRootParent() {
-	return ((SceneObjectImplementation*) impl)->getRootParent();
+	return (static_cast<SceneObjectImplementation*>(impl))->getRootParent();
 }
 
 SceneObject* SceneObjectAdapter::getParentRecursively(unsigned int gameObjectType) {
-	return ((SceneObjectImplementation*) impl)->getParentRecursively(gameObjectType);
+	return (static_cast<SceneObjectImplementation*>(impl))->getParentRecursively(gameObjectType);
 }
 
 bool SceneObjectAdapter::isASubChildOf(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->isASubChildOf(object);
+	return (static_cast<SceneObjectImplementation*>(impl))->isASubChildOf(object);
 }
 
 UnicodeString SceneObjectAdapter::getCustomObjectName() {
-	return ((SceneObjectImplementation*) impl)->getCustomObjectName();
+	return (static_cast<SceneObjectImplementation*>(impl))->getCustomObjectName();
 }
 
 String SceneObjectAdapter::getLoggingName() {
-	return ((SceneObjectImplementation*) impl)->getLoggingName();
+	return (static_cast<SceneObjectImplementation*>(impl))->getLoggingName();
 }
 
 bool SceneObjectAdapter::isPlayerCreature() {
-	return ((SceneObjectImplementation*) impl)->isPlayerCreature();
+	return (static_cast<SceneObjectImplementation*>(impl))->isPlayerCreature();
 }
 
 bool SceneObjectAdapter::isVendor() {
-	return ((SceneObjectImplementation*) impl)->isVendor();
+	return (static_cast<SceneObjectImplementation*>(impl))->isVendor();
 }
 
 bool SceneObjectAdapter::isContainerFull() {
-	return ((SceneObjectImplementation*) impl)->isContainerFull();
+	return (static_cast<SceneObjectImplementation*>(impl))->isContainerFull();
 }
 
 bool SceneObjectAdapter::isShuttleInstallation() {
-	return ((SceneObjectImplementation*) impl)->isShuttleInstallation();
+	return (static_cast<SceneObjectImplementation*>(impl))->isShuttleInstallation();
 }
 
 bool SceneObjectAdapter::isPlayerObject() {
-	return ((SceneObjectImplementation*) impl)->isPlayerObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isPlayerObject();
 }
 
 bool SceneObjectAdapter::isActiveArea() {
-	return ((SceneObjectImplementation*) impl)->isActiveArea();
+	return (static_cast<SceneObjectImplementation*>(impl))->isActiveArea();
 }
 
 bool SceneObjectAdapter::isRegion() {
-	return ((SceneObjectImplementation*) impl)->isRegion();
+	return (static_cast<SceneObjectImplementation*>(impl))->isRegion();
 }
 
 bool SceneObjectAdapter::isCreatureObject() {
-	return ((SceneObjectImplementation*) impl)->isCreatureObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isCreatureObject();
 }
 
 bool SceneObjectAdapter::isShipObject() {
-	return ((SceneObjectImplementation*) impl)->isShipObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isShipObject();
 }
 
 bool SceneObjectAdapter::isVehicleObject() {
-	return ((SceneObjectImplementation*) impl)->isVehicleObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isVehicleObject();
 }
 
 bool SceneObjectAdapter::isBuildingObject() {
-	return ((SceneObjectImplementation*) impl)->isBuildingObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isBuildingObject();
 }
 
 bool SceneObjectAdapter::isCloningBuildingObject() {
-	return ((SceneObjectImplementation*) impl)->isCloningBuildingObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isCloningBuildingObject();
 }
 
 bool SceneObjectAdapter::isGarage() {
-	return ((SceneObjectImplementation*) impl)->isGarage();
+	return (static_cast<SceneObjectImplementation*>(impl))->isGarage();
 }
 
 bool SceneObjectAdapter::isWeaponObject() {
-	return ((SceneObjectImplementation*) impl)->isWeaponObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isWeaponObject();
 }
 
 bool SceneObjectAdapter::isWearableObject() {
-	return ((SceneObjectImplementation*) impl)->isWearableObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isWearableObject();
 }
 
 bool SceneObjectAdapter::isArmorObject() {
-	return ((SceneObjectImplementation*) impl)->isArmorObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isArmorObject();
 }
 
 bool SceneObjectAdapter::isPsgArmorObject() {
-	return ((SceneObjectImplementation*) impl)->isPsgArmorObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isPsgArmorObject();
 }
 
 bool SceneObjectAdapter::isCellObject() {
-	return ((SceneObjectImplementation*) impl)->isCellObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isCellObject();
 }
 
 bool SceneObjectAdapter::isTangibleObject() {
-	return ((SceneObjectImplementation*) impl)->isTangibleObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isTangibleObject();
 }
 
 bool SceneObjectAdapter::isResourceContainer() {
-	return ((SceneObjectImplementation*) impl)->isResourceContainer();
+	return (static_cast<SceneObjectImplementation*>(impl))->isResourceContainer();
 }
 
 bool SceneObjectAdapter::isComponent() {
-	return ((SceneObjectImplementation*) impl)->isComponent();
+	return (static_cast<SceneObjectImplementation*>(impl))->isComponent();
 }
 
 bool SceneObjectAdapter::isIntangibleObject() {
-	return ((SceneObjectImplementation*) impl)->isIntangibleObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isIntangibleObject();
 }
 
 bool SceneObjectAdapter::isInstrument() {
-	return ((SceneObjectImplementation*) impl)->isInstrument();
+	return (static_cast<SceneObjectImplementation*>(impl))->isInstrument();
 }
 
 bool SceneObjectAdapter::isInstallationObject() {
-	return ((SceneObjectImplementation*) impl)->isInstallationObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isInstallationObject();
 }
 
 bool SceneObjectAdapter::isCityTerminal() {
-	return ((SceneObjectImplementation*) impl)->isCityTerminal();
+	return (static_cast<SceneObjectImplementation*>(impl))->isCityTerminal();
 }
 
 bool SceneObjectAdapter::isCityVoteTerminal() {
-	return ((SceneObjectImplementation*) impl)->isCityVoteTerminal();
+	return (static_cast<SceneObjectImplementation*>(impl))->isCityVoteTerminal();
 }
 
 bool SceneObjectAdapter::isFactory() {
-	return ((SceneObjectImplementation*) impl)->isFactory();
+	return (static_cast<SceneObjectImplementation*>(impl))->isFactory();
 }
 
 bool SceneObjectAdapter::isFactoryCrate() {
-	return ((SceneObjectImplementation*) impl)->isFactoryCrate();
+	return (static_cast<SceneObjectImplementation*>(impl))->isFactoryCrate();
 }
 
 bool SceneObjectAdapter::isFishingPoleObject() {
-	return ((SceneObjectImplementation*) impl)->isFishingPoleObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isFishingPoleObject();
 }
 
 bool SceneObjectAdapter::isDeedObject() {
-	return ((SceneObjectImplementation*) impl)->isDeedObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isDeedObject();
 }
 
 bool SceneObjectAdapter::isVehicleDeedObject() {
-	return ((SceneObjectImplementation*) impl)->isVehicleDeedObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isVehicleDeedObject();
 }
 
 bool SceneObjectAdapter::isBuildingDeed() {
-	return ((SceneObjectImplementation*) impl)->isBuildingDeed();
+	return (static_cast<SceneObjectImplementation*>(impl))->isBuildingDeed();
 }
 
 bool SceneObjectAdapter::isSignObject() {
-	return ((SceneObjectImplementation*) impl)->isSignObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isSignObject();
 }
 
 bool SceneObjectAdapter::isInstallationDeed() {
-	return ((SceneObjectImplementation*) impl)->isInstallationDeed();
+	return (static_cast<SceneObjectImplementation*>(impl))->isInstallationDeed();
 }
 
 bool SceneObjectAdapter::isCraftingTool() {
-	return ((SceneObjectImplementation*) impl)->isCraftingTool();
+	return (static_cast<SceneObjectImplementation*>(impl))->isCraftingTool();
 }
 
 bool SceneObjectAdapter::isCraftingStation() {
-	return ((SceneObjectImplementation*) impl)->isCraftingStation();
+	return (static_cast<SceneObjectImplementation*>(impl))->isCraftingStation();
 }
 
 bool SceneObjectAdapter::isManufactureSchematic() {
-	return ((SceneObjectImplementation*) impl)->isManufactureSchematic();
+	return (static_cast<SceneObjectImplementation*>(impl))->isManufactureSchematic();
 }
 
 bool SceneObjectAdapter::isStructureObject() {
-	return ((SceneObjectImplementation*) impl)->isStructureObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isStructureObject();
 }
 
 bool SceneObjectAdapter::isFishingBait() {
-	return ((SceneObjectImplementation*) impl)->isFishingBait();
+	return (static_cast<SceneObjectImplementation*>(impl))->isFishingBait();
 }
 
 bool SceneObjectAdapter::isAttachment() {
-	return ((SceneObjectImplementation*) impl)->isAttachment();
+	return (static_cast<SceneObjectImplementation*>(impl))->isAttachment();
 }
 
 void SceneObjectAdapter::setGameObjectType(unsigned int type) {
-	((SceneObjectImplementation*) impl)->setGameObjectType(type);
+	(static_cast<SceneObjectImplementation*>(impl))->setGameObjectType(type);
 }
 
 void SceneObjectAdapter::setClientObjectCRC(unsigned int objCRC) {
-	((SceneObjectImplementation*) impl)->setClientObjectCRC(objCRC);
+	(static_cast<SceneObjectImplementation*>(impl))->setClientObjectCRC(objCRC);
 }
 
 void SceneObjectAdapter::setServerObjectCRC(unsigned int objCRC) {
-	((SceneObjectImplementation*) impl)->setServerObjectCRC(objCRC);
+	(static_cast<SceneObjectImplementation*>(impl))->setServerObjectCRC(objCRC);
 }
 
 void SceneObjectAdapter::setParent(SceneObject* par) {
-	((SceneObjectImplementation*) impl)->setParent(par);
+	(static_cast<SceneObjectImplementation*>(impl))->setParent(par);
 }
 
 void SceneObjectAdapter::setZone(Zone* zone) {
-	((SceneObjectImplementation*) impl)->setZone(zone);
+	(static_cast<SceneObjectImplementation*>(impl))->setZone(zone);
 }
 
 void SceneObjectAdapter::setDirection(float fw, float fx, float fy, float fz) {
-	((SceneObjectImplementation*) impl)->setDirection(fw, fx, fy, fz);
+	(static_cast<SceneObjectImplementation*>(impl))->setDirection(fw, fx, fy, fz);
 }
 
 void SceneObjectAdapter::setDirection(float headingAngleRadians) {
-	((SceneObjectImplementation*) impl)->setDirection(headingAngleRadians);
+	(static_cast<SceneObjectImplementation*>(impl))->setDirection(headingAngleRadians);
 }
 
 void SceneObjectAdapter::setMovementCounter(unsigned int count) {
-	((SceneObjectImplementation*) impl)->setMovementCounter(count);
+	(static_cast<SceneObjectImplementation*>(impl))->setMovementCounter(count);
 }
 
 void SceneObjectAdapter::incrementMovementCounter() {
-	((SceneObjectImplementation*) impl)->incrementMovementCounter();
+	(static_cast<SceneObjectImplementation*>(impl))->incrementMovementCounter();
 }
 
 void SceneObjectAdapter::setContainmentType(unsigned int type) {
-	((SceneObjectImplementation*) impl)->setContainmentType(type);
+	(static_cast<SceneObjectImplementation*>(impl))->setContainmentType(type);
 }
 
 void SceneObjectAdapter::setLoggingName(const String& name) {
-	((SceneObjectImplementation*) impl)->setLoggingName(name);
+	(static_cast<SceneObjectImplementation*>(impl))->setLoggingName(name);
 }
 
 void SceneObjectAdapter::setClientObject(bool val) {
-	((SceneObjectImplementation*) impl)->setClientObject(val);
+	(static_cast<SceneObjectImplementation*>(impl))->setClientObject(val);
 }
 
 unsigned int SceneObjectAdapter::getPlanetCRC() {
-	return ((SceneObjectImplementation*) impl)->getPlanetCRC();
+	return (static_cast<SceneObjectImplementation*>(impl))->getPlanetCRC();
 }
 
 bool SceneObjectAdapter::isStaticObject() {
-	return ((SceneObjectImplementation*) impl)->isStaticObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isStaticObject();
 }
 
 bool SceneObjectAdapter::isContainerObject() {
-	return ((SceneObjectImplementation*) impl)->isContainerObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isContainerObject();
 }
 
 bool SceneObjectAdapter::isTerminal() {
-	return ((SceneObjectImplementation*) impl)->isTerminal();
+	return (static_cast<SceneObjectImplementation*>(impl))->isTerminal();
 }
 
 bool SceneObjectAdapter::isGroupObject() {
-	return ((SceneObjectImplementation*) impl)->isGroupObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isGroupObject();
 }
 
 bool SceneObjectAdapter::isGuildObject() {
-	return ((SceneObjectImplementation*) impl)->isGuildObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isGuildObject();
 }
 
 bool SceneObjectAdapter::isControlDevice() {
-	return ((SceneObjectImplementation*) impl)->isControlDevice();
+	return (static_cast<SceneObjectImplementation*>(impl))->isControlDevice();
 }
 
 bool SceneObjectAdapter::isMissionTerminal() {
-	return ((SceneObjectImplementation*) impl)->isMissionTerminal();
+	return (static_cast<SceneObjectImplementation*>(impl))->isMissionTerminal();
 }
 
 bool SceneObjectAdapter::isMissionObject() {
-	return ((SceneObjectImplementation*) impl)->isMissionObject();
+	return (static_cast<SceneObjectImplementation*>(impl))->isMissionObject();
 }
 
 int SceneObjectAdapter::getPlanetMapCategoryCRC() {
-	return ((SceneObjectImplementation*) impl)->getPlanetMapCategoryCRC();
+	return (static_cast<SceneObjectImplementation*>(impl))->getPlanetMapCategoryCRC();
 }
 
 int SceneObjectAdapter::getPlanetMapSubCategoryCRC() {
-	return ((SceneObjectImplementation*) impl)->getPlanetMapSubCategoryCRC();
+	return (static_cast<SceneObjectImplementation*>(impl))->getPlanetMapSubCategoryCRC();
 }
 
 bool SceneObjectAdapter::containsChildObject(SceneObject* obj) {
-	return ((SceneObjectImplementation*) impl)->containsChildObject(obj);
+	return (static_cast<SceneObjectImplementation*>(impl))->containsChildObject(obj);
 }
 
 void SceneObjectAdapter::createChildObjects() {
-	((SceneObjectImplementation*) impl)->createChildObjects();
+	(static_cast<SceneObjectImplementation*>(impl))->createChildObjects();
 }
 
 void SceneObjectAdapter::initializeChildObject(SceneObject* controllerObject) {
-	((SceneObjectImplementation*) impl)->initializeChildObject(controllerObject);
+	(static_cast<SceneObjectImplementation*>(impl))->initializeChildObject(controllerObject);
 }
 
 /*
@@ -5606,7 +5607,7 @@ DistributedObjectServant* SceneObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SceneObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SceneObjectAdapter((SceneObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new SceneObjectAdapter(static_cast<SceneObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

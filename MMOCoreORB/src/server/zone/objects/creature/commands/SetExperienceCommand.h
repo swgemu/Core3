@@ -86,7 +86,7 @@ public:
 				}
 
 			} else {
-				player = (CreatureObject*) object.get();
+				player = cast<CreatureObject*>(object.get());
 			}
 
 			if (player == NULL) {
@@ -98,7 +98,7 @@ public:
 			args.getStringToken(xpType);
 			int amount = args.getIntToken();
 
-			int num = ((PlayerObject*)player->getSlottedObject("ghost"))->getExperience(xpType);
+			int num = cast<PlayerObject*>(player->getSlottedObject("ghost"))->getExperience(xpType);
 			amount -= num;
 			player->getZoneServer()->getPlayerManager()->awardExperience(player, xpType, amount);
 

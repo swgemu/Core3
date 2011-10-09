@@ -35,8 +35,9 @@ GamblingManager::~GamblingManager() {
 }
 
 
+
 Vector<String>* GamblingManager::getRoulette() {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -45,7 +46,7 @@ Vector<String>* GamblingManager::getRoulette() {
 }
 
 void GamblingManager::initializeSlotTimer() {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +59,7 @@ void GamblingManager::initializeSlotTimer() {
 }
 
 void GamblingManager::initializeRouletteTimer() {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void GamblingManager::initializeRouletteTimer() {
 }
 
 void GamblingManager::initializeSlots() {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ void GamblingManager::initializeSlots() {
 }
 
 void GamblingManager::initializeRouletteRed() {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -97,7 +98,7 @@ void GamblingManager::initializeRouletteRed() {
 }
 
 void GamblingManager::initializeRoulette() {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -110,7 +111,7 @@ void GamblingManager::initializeRoulette() {
 }
 
 int GamblingManager::notify(SceneObject* sceneObject) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -124,7 +125,7 @@ int GamblingManager::notify(SceneObject* sceneObject) {
 }
 
 bool GamblingManager::isHigh(int value) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -138,7 +139,7 @@ bool GamblingManager::isHigh(int value) {
 }
 
 bool GamblingManager::isLow(int value) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -152,7 +153,7 @@ bool GamblingManager::isLow(int value) {
 }
 
 bool GamblingManager::isEven(int value) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -166,7 +167,7 @@ bool GamblingManager::isEven(int value) {
 }
 
 bool GamblingManager::isOdd(int value) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -180,7 +181,7 @@ bool GamblingManager::isOdd(int value) {
 }
 
 bool GamblingManager::isBlack(int value) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -194,7 +195,7 @@ bool GamblingManager::isBlack(int value) {
 }
 
 bool GamblingManager::isRed(int value) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -208,7 +209,7 @@ bool GamblingManager::isRed(int value) {
 }
 
 void GamblingManager::handleSlot(CreatureObject* player, bool cancel, bool other) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -224,7 +225,7 @@ void GamblingManager::handleSlot(CreatureObject* player, bool cancel, bool other
 }
 
 void GamblingManager::bet(CreatureObject* player, int amount, int target, int machineType) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -241,7 +242,7 @@ void GamblingManager::bet(CreatureObject* player, int amount, int target, int ma
 }
 
 void GamblingManager::bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -258,7 +259,7 @@ void GamblingManager::bet(GamblingTerminal* terminal, CreatureObject* player, in
 }
 
 void GamblingManager::startGame(CreatureObject* player, int machineType) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -273,7 +274,7 @@ void GamblingManager::startGame(CreatureObject* player, int machineType) {
 }
 
 void GamblingManager::startGame(GamblingTerminal* terminal) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -287,7 +288,7 @@ void GamblingManager::startGame(GamblingTerminal* terminal) {
 }
 
 void GamblingManager::leaveTerminal(CreatureObject* player, int machineType) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -302,7 +303,7 @@ void GamblingManager::leaveTerminal(CreatureObject* player, int machineType) {
 }
 
 void GamblingManager::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -317,7 +318,7 @@ void GamblingManager::registerPlayer(GamblingTerminal* terminal, CreatureObject*
 }
 
 void GamblingManager::refreshRouletteMenu(CreatureObject* player) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -331,7 +332,7 @@ void GamblingManager::refreshRouletteMenu(CreatureObject* player) {
 }
 
 void GamblingManager::continueGame(GamblingTerminal* terminal) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -345,7 +346,7 @@ void GamblingManager::continueGame(GamblingTerminal* terminal) {
 }
 
 void GamblingManager::stopGame(GamblingTerminal* terminal, bool cancel) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -360,7 +361,7 @@ void GamblingManager::stopGame(GamblingTerminal* terminal, bool cancel) {
 }
 
 void GamblingManager::calculateOutcome(GamblingTerminal* terminal) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -374,7 +375,7 @@ void GamblingManager::calculateOutcome(GamblingTerminal* terminal) {
 }
 
 unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, CreatureObject* player) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -389,7 +390,7 @@ unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, CreatureO
 }
 
 unsigned int GamblingManager::createPayoutWindow(CreatureObject* player) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -403,7 +404,7 @@ unsigned int GamblingManager::createPayoutWindow(CreatureObject* player) {
 }
 
 unsigned int GamblingManager::createSlotWindow(CreatureObject* player, unsigned int payoutBoxID) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -418,7 +419,7 @@ unsigned int GamblingManager::createSlotWindow(CreatureObject* player, unsigned 
 }
 
 unsigned int GamblingManager::createRouletteWindow(CreatureObject* player) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -432,7 +433,7 @@ unsigned int GamblingManager::createRouletteWindow(CreatureObject* player) {
 }
 
 void GamblingManager::createEvent(GamblingTerminal* terminal, int time) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -447,7 +448,7 @@ void GamblingManager::createEvent(GamblingTerminal* terminal, int time) {
 }
 
 bool GamblingManager::isPlaying(CreatureObject* player) {
-	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	GamblingManagerImplementation* _implementation = static_cast<GamblingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -495,7 +496,7 @@ void GamblingManagerImplementation::_initializeImplementation() {
 }
 
 void GamblingManagerImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (GamblingManager*) stub;
+	_this = static_cast<GamblingManager*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -1012,7 +1013,7 @@ Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		initializeRoulette();
 		break;
 	case RPC_NOTIFY__SCENEOBJECT_:
-		resp->insertSignedInt(notify((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(notify(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ISHIGH__INT_:
 		resp->insertBoolean(isHigh(inv->getSignedIntParameter()));
@@ -1033,55 +1034,55 @@ Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isRed(inv->getSignedIntParameter()));
 		break;
 	case RPC_HANDLESLOT__CREATUREOBJECT_BOOL_BOOL_:
-		handleSlot((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		handleSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_BET__CREATUREOBJECT_INT_INT_INT_:
-		bet((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		bet(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_BET__GAMBLINGTERMINAL_CREATUREOBJECT_INT_INT_:
-		bet((GamblingTerminal*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		bet(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_STARTGAME__CREATUREOBJECT_INT_:
-		startGame((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		startGame(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_STARTGAME__GAMBLINGTERMINAL_:
-		startGame((GamblingTerminal*) inv->getObjectParameter());
+		startGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_LEAVETERMINAL__CREATUREOBJECT_INT_:
-		leaveTerminal((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		leaveTerminal(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_REGISTERPLAYER__GAMBLINGTERMINAL_CREATUREOBJECT_:
-		registerPlayer((GamblingTerminal*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
+		registerPlayer(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_REFRESHROULETTEMENU__CREATUREOBJECT_:
-		refreshRouletteMenu((CreatureObject*) inv->getObjectParameter());
+		refreshRouletteMenu(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_CONTINUEGAME__GAMBLINGTERMINAL_:
-		continueGame((GamblingTerminal*) inv->getObjectParameter());
+		continueGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_:
-		stopGame((GamblingTerminal*) inv->getObjectParameter(), inv->getBooleanParameter());
+		stopGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_:
-		calculateOutcome((GamblingTerminal*) inv->getObjectParameter());
+		calculateOutcome(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
 		break;
 	case RPC_CREATEWINDOW__GAMBLINGTERMINAL_CREATUREOBJECT_:
-		resp->insertInt(createWindow((GamblingTerminal*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter()));
+		resp->insertInt(createWindow(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATEPAYOUTWINDOW__CREATUREOBJECT_:
-		resp->insertInt(createPayoutWindow((CreatureObject*) inv->getObjectParameter()));
+		resp->insertInt(createPayoutWindow(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATESLOTWINDOW__CREATUREOBJECT_INT_:
-		resp->insertInt(createSlotWindow((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
+		resp->insertInt(createSlotWindow(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter()));
 		break;
 	case RPC_CREATEROULETTEWINDOW__CREATUREOBJECT_:
-		resp->insertInt(createRouletteWindow((CreatureObject*) inv->getObjectParameter()));
+		resp->insertInt(createRouletteWindow(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_:
-		createEvent((GamblingTerminal*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		createEvent(static_cast<GamblingTerminal*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_ISPLAYING__CREATUREOBJECT_:
-		resp->insertBoolean(isPlaying((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isPlaying(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
 		return NULL;
@@ -1091,119 +1092,119 @@ Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void GamblingManagerAdapter::initializeSlotTimer() {
-	((GamblingManagerImplementation*) impl)->initializeSlotTimer();
+	(static_cast<GamblingManagerImplementation*>(impl))->initializeSlotTimer();
 }
 
 void GamblingManagerAdapter::initializeRouletteTimer() {
-	((GamblingManagerImplementation*) impl)->initializeRouletteTimer();
+	(static_cast<GamblingManagerImplementation*>(impl))->initializeRouletteTimer();
 }
 
 void GamblingManagerAdapter::initializeSlots() {
-	((GamblingManagerImplementation*) impl)->initializeSlots();
+	(static_cast<GamblingManagerImplementation*>(impl))->initializeSlots();
 }
 
 void GamblingManagerAdapter::initializeRouletteRed() {
-	((GamblingManagerImplementation*) impl)->initializeRouletteRed();
+	(static_cast<GamblingManagerImplementation*>(impl))->initializeRouletteRed();
 }
 
 void GamblingManagerAdapter::initializeRoulette() {
-	((GamblingManagerImplementation*) impl)->initializeRoulette();
+	(static_cast<GamblingManagerImplementation*>(impl))->initializeRoulette();
 }
 
 int GamblingManagerAdapter::notify(SceneObject* sceneObject) {
-	return ((GamblingManagerImplementation*) impl)->notify(sceneObject);
+	return (static_cast<GamblingManagerImplementation*>(impl))->notify(sceneObject);
 }
 
 bool GamblingManagerAdapter::isHigh(int value) {
-	return ((GamblingManagerImplementation*) impl)->isHigh(value);
+	return (static_cast<GamblingManagerImplementation*>(impl))->isHigh(value);
 }
 
 bool GamblingManagerAdapter::isLow(int value) {
-	return ((GamblingManagerImplementation*) impl)->isLow(value);
+	return (static_cast<GamblingManagerImplementation*>(impl))->isLow(value);
 }
 
 bool GamblingManagerAdapter::isEven(int value) {
-	return ((GamblingManagerImplementation*) impl)->isEven(value);
+	return (static_cast<GamblingManagerImplementation*>(impl))->isEven(value);
 }
 
 bool GamblingManagerAdapter::isOdd(int value) {
-	return ((GamblingManagerImplementation*) impl)->isOdd(value);
+	return (static_cast<GamblingManagerImplementation*>(impl))->isOdd(value);
 }
 
 bool GamblingManagerAdapter::isBlack(int value) {
-	return ((GamblingManagerImplementation*) impl)->isBlack(value);
+	return (static_cast<GamblingManagerImplementation*>(impl))->isBlack(value);
 }
 
 bool GamblingManagerAdapter::isRed(int value) {
-	return ((GamblingManagerImplementation*) impl)->isRed(value);
+	return (static_cast<GamblingManagerImplementation*>(impl))->isRed(value);
 }
 
 void GamblingManagerAdapter::handleSlot(CreatureObject* player, bool cancel, bool other) {
-	((GamblingManagerImplementation*) impl)->handleSlot(player, cancel, other);
+	(static_cast<GamblingManagerImplementation*>(impl))->handleSlot(player, cancel, other);
 }
 
 void GamblingManagerAdapter::bet(CreatureObject* player, int amount, int target, int machineType) {
-	((GamblingManagerImplementation*) impl)->bet(player, amount, target, machineType);
+	(static_cast<GamblingManagerImplementation*>(impl))->bet(player, amount, target, machineType);
 }
 
 void GamblingManagerAdapter::bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target) {
-	((GamblingManagerImplementation*) impl)->bet(terminal, player, amount, target);
+	(static_cast<GamblingManagerImplementation*>(impl))->bet(terminal, player, amount, target);
 }
 
 void GamblingManagerAdapter::startGame(CreatureObject* player, int machineType) {
-	((GamblingManagerImplementation*) impl)->startGame(player, machineType);
+	(static_cast<GamblingManagerImplementation*>(impl))->startGame(player, machineType);
 }
 
 void GamblingManagerAdapter::startGame(GamblingTerminal* terminal) {
-	((GamblingManagerImplementation*) impl)->startGame(terminal);
+	(static_cast<GamblingManagerImplementation*>(impl))->startGame(terminal);
 }
 
 void GamblingManagerAdapter::leaveTerminal(CreatureObject* player, int machineType) {
-	((GamblingManagerImplementation*) impl)->leaveTerminal(player, machineType);
+	(static_cast<GamblingManagerImplementation*>(impl))->leaveTerminal(player, machineType);
 }
 
 void GamblingManagerAdapter::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
-	((GamblingManagerImplementation*) impl)->registerPlayer(terminal, player);
+	(static_cast<GamblingManagerImplementation*>(impl))->registerPlayer(terminal, player);
 }
 
 void GamblingManagerAdapter::refreshRouletteMenu(CreatureObject* player) {
-	((GamblingManagerImplementation*) impl)->refreshRouletteMenu(player);
+	(static_cast<GamblingManagerImplementation*>(impl))->refreshRouletteMenu(player);
 }
 
 void GamblingManagerAdapter::continueGame(GamblingTerminal* terminal) {
-	((GamblingManagerImplementation*) impl)->continueGame(terminal);
+	(static_cast<GamblingManagerImplementation*>(impl))->continueGame(terminal);
 }
 
 void GamblingManagerAdapter::stopGame(GamblingTerminal* terminal, bool cancel) {
-	((GamblingManagerImplementation*) impl)->stopGame(terminal, cancel);
+	(static_cast<GamblingManagerImplementation*>(impl))->stopGame(terminal, cancel);
 }
 
 void GamblingManagerAdapter::calculateOutcome(GamblingTerminal* terminal) {
-	((GamblingManagerImplementation*) impl)->calculateOutcome(terminal);
+	(static_cast<GamblingManagerImplementation*>(impl))->calculateOutcome(terminal);
 }
 
 unsigned int GamblingManagerAdapter::createWindow(GamblingTerminal* terminal, CreatureObject* player) {
-	return ((GamblingManagerImplementation*) impl)->createWindow(terminal, player);
+	return (static_cast<GamblingManagerImplementation*>(impl))->createWindow(terminal, player);
 }
 
 unsigned int GamblingManagerAdapter::createPayoutWindow(CreatureObject* player) {
-	return ((GamblingManagerImplementation*) impl)->createPayoutWindow(player);
+	return (static_cast<GamblingManagerImplementation*>(impl))->createPayoutWindow(player);
 }
 
 unsigned int GamblingManagerAdapter::createSlotWindow(CreatureObject* player, unsigned int payoutBoxID) {
-	return ((GamblingManagerImplementation*) impl)->createSlotWindow(player, payoutBoxID);
+	return (static_cast<GamblingManagerImplementation*>(impl))->createSlotWindow(player, payoutBoxID);
 }
 
 unsigned int GamblingManagerAdapter::createRouletteWindow(CreatureObject* player) {
-	return ((GamblingManagerImplementation*) impl)->createRouletteWindow(player);
+	return (static_cast<GamblingManagerImplementation*>(impl))->createRouletteWindow(player);
 }
 
 void GamblingManagerAdapter::createEvent(GamblingTerminal* terminal, int time) {
-	((GamblingManagerImplementation*) impl)->createEvent(terminal, time);
+	(static_cast<GamblingManagerImplementation*>(impl))->createEvent(terminal, time);
 }
 
 bool GamblingManagerAdapter::isPlaying(CreatureObject* player) {
-	return ((GamblingManagerImplementation*) impl)->isPlaying(player);
+	return (static_cast<GamblingManagerImplementation*>(impl))->isPlaying(player);
 }
 
 /*
@@ -1231,7 +1232,7 @@ DistributedObjectServant* GamblingManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GamblingManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GamblingManagerAdapter((GamblingManagerImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new GamblingManagerAdapter(static_cast<GamblingManagerImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -75,8 +75,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		CreatureObject* player = (CreatureObject*) creature;
-		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
+		CreatureObject* player = cast<CreatureObject*>(creature);
+		CreatureObject* playerTarget = cast<CreatureObject*>( creatureTarget);
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -121,14 +121,14 @@ public:
 		} else if (object == NULL)
 			object = creature;
 
-		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
 
 		/*if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;*/
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (creatureTarget == creature) {
 			creature->sendSystemMessage("healing", "no_heal_mind_self");
@@ -164,8 +164,8 @@ public:
 		}
 
 		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = (Player *) creature;
+			Player * pt = cast<Player *>( creatureTarget);
+			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -209,7 +209,7 @@ public:
 		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, healPower);
 
 		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
-			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
+			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}
 
 		sendHealMessage(creature, creatureTarget, healedMind);

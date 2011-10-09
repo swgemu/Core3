@@ -29,8 +29,9 @@ PowerBoostBuff::~PowerBoostBuff() {
 }
 
 
+
 void PowerBoostBuff::initializeTransientMembers() {
-	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	PowerBoostBuffImplementation* _implementation = static_cast<PowerBoostBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void PowerBoostBuff::initializeTransientMembers() {
 }
 
 void PowerBoostBuff::activate(bool applyModifiers) {
-	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	PowerBoostBuffImplementation* _implementation = static_cast<PowerBoostBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,7 +58,7 @@ void PowerBoostBuff::activate(bool applyModifiers) {
 }
 
 void PowerBoostBuff::deactivate(bool removeModifiers) {
-	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	PowerBoostBuffImplementation* _implementation = static_cast<PowerBoostBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ void PowerBoostBuff::deactivate(bool removeModifiers) {
 }
 
 void PowerBoostBuff::doHealthAndActionTick(bool up) {
-	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	PowerBoostBuffImplementation* _implementation = static_cast<PowerBoostBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void PowerBoostBuff::doHealthAndActionTick(bool up) {
 }
 
 void PowerBoostBuff::doMindTick(bool up) {
-	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	PowerBoostBuffImplementation* _implementation = static_cast<PowerBoostBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -99,7 +100,7 @@ void PowerBoostBuff::doMindTick(bool up) {
 }
 
 void PowerBoostBuff::clearBuffEvent() {
-	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	PowerBoostBuffImplementation* _implementation = static_cast<PowerBoostBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +147,7 @@ void PowerBoostBuffImplementation::_initializeImplementation() {
 }
 
 void PowerBoostBuffImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (PowerBoostBuff*) stub;
+	_this = static_cast<PowerBoostBuff*>(stub);
 	BuffImplementation::_setStub(stub);
 }
 
@@ -351,27 +352,27 @@ Packet* PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void PowerBoostBuffAdapter::initializeTransientMembers() {
-	((PowerBoostBuffImplementation*) impl)->initializeTransientMembers();
+	(static_cast<PowerBoostBuffImplementation*>(impl))->initializeTransientMembers();
 }
 
 void PowerBoostBuffAdapter::activate(bool applyModifiers) {
-	((PowerBoostBuffImplementation*) impl)->activate(applyModifiers);
+	(static_cast<PowerBoostBuffImplementation*>(impl))->activate(applyModifiers);
 }
 
 void PowerBoostBuffAdapter::deactivate(bool removeModifiers) {
-	((PowerBoostBuffImplementation*) impl)->deactivate(removeModifiers);
+	(static_cast<PowerBoostBuffImplementation*>(impl))->deactivate(removeModifiers);
 }
 
 void PowerBoostBuffAdapter::doHealthAndActionTick(bool up) {
-	((PowerBoostBuffImplementation*) impl)->doHealthAndActionTick(up);
+	(static_cast<PowerBoostBuffImplementation*>(impl))->doHealthAndActionTick(up);
 }
 
 void PowerBoostBuffAdapter::doMindTick(bool up) {
-	((PowerBoostBuffImplementation*) impl)->doMindTick(up);
+	(static_cast<PowerBoostBuffImplementation*>(impl))->doMindTick(up);
 }
 
 void PowerBoostBuffAdapter::clearBuffEvent() {
-	((PowerBoostBuffImplementation*) impl)->clearBuffEvent();
+	(static_cast<PowerBoostBuffImplementation*>(impl))->clearBuffEvent();
 }
 
 /*
@@ -399,7 +400,7 @@ DistributedObjectServant* PowerBoostBuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PowerBoostBuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PowerBoostBuffAdapter((PowerBoostBuffImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new PowerBoostBuffAdapter(static_cast<PowerBoostBuffImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

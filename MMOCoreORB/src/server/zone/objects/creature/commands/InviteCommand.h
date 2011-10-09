@@ -77,7 +77,7 @@ public:
 
 
 		if (object->isPlayerCreature()) {
-			CreatureObject* player = (CreatureObject*) object.get();
+			CreatureObject* player = cast<CreatureObject*>( object.get());
 
 			groupManager->inviteToGroup(creature, player);
 		}
@@ -88,13 +88,13 @@ public:
 					return false;
 
 				 	if (object->isPlayer()) {
-				 		Player* invitePlayer = (Player*) object;
+				 		Player* invitePlayer = cast<Player*>( object);
 				 		groupManager->inviteToGroup(player, invitePlayer);
 				 	}
 				 	if (object->isNonPlayerCreature()) {
-				 		CreatureObject* creo = (CreatureObject*) object;
+				 		CreatureObject* creo = cast<CreatureObject*>( object);
 				 		if (creo->isPet()) {
-				 			groupManager->invitePetToGroup(player,(CreaturePet*)creo);
+				 			groupManager->invitePetToGroupcast<player,(CreaturePet*>(creo));
 				 		}
 				 	}*/
 

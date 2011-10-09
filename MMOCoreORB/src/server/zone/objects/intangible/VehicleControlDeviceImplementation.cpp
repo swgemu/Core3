@@ -33,7 +33,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
 		if (object->isControlDevice()) {
-			ControlDevice* device = (ControlDevice*) object.get();
+			ControlDevice* device = cast<ControlDevice*>( object.get());
 
 			ManagedReference<SceneObject*> vehicle = device->getControlledObject();
 
@@ -54,8 +54,8 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 
 	//TODO: Refactor
 	if (controlledObject->isCreatureObject()) {
-		((CreatureObject*)controlledObject.get())->setCreatureLink(player);
-		((CreatureObject*)controlledObject.get())->setControlDevice(_this);
+		cast<CreatureObject*>(controlledObject.get())->setCreatureLink(player);
+		cast<CreatureObject*>(controlledObject.get())->setControlDevice(_this);
 	}
 
 	//controlledObject->insertToZone(player->getZone());
@@ -82,7 +82,7 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 	controlledObject->removeFromZone();
 
 	if (controlledObject->isCreatureObject())
-		((CreatureObject*) controlledObject.get())->setCreatureLink(NULL);
+		(cast<CreatureObject*>(controlledObject.get()))->setCreatureLink(NULL);
 
 	updateStatus(0);
 }

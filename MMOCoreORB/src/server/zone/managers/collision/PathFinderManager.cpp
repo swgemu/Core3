@@ -49,7 +49,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
-	CellObject* targetCell = (CellObject*) pointB.getCell();
+	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
 	BuildingObject* building = dynamic_cast<BuildingObject*>(targetCell->getParent());
 
 	if (building == NULL) {
@@ -230,8 +230,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
 	path->add(pointA);
 
-	CellObject* ourCell = (CellObject*) pointA.getCell();
-	BuildingObject* building = (BuildingObject*) ourCell->getParent();
+	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
+	BuildingObject* building = cast<BuildingObject*>( ourCell->getParent());
 	int ourCellID = ourCell->getCellNumber();
 	SharedObjectTemplate* templateObject = ourCell->getParent()->getObjectTemplate();
 
@@ -384,14 +384,14 @@ void PathFinderManager::addTriangleNodeEdges(const Vector3& source, const Vector
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	//info ("findPathFromCellToDifferentCell", true);
 
-	CellObject* ourCell = (CellObject*) pointA.getCell();
-	CellObject* targetCell = (CellObject*) pointB.getCell();
+	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
+	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
 
 	int ourCellID = ourCell->getCellNumber();
 	int targetCellID = targetCell->getCellNumber();
 
-	BuildingObject* building1 = (BuildingObject*) ourCell->getParent();
-	BuildingObject* building2 = (BuildingObject*) targetCell->getParent();
+	BuildingObject* building1 = cast<BuildingObject*>( ourCell->getParent());
+	BuildingObject* building2 = cast<BuildingObject*>( targetCell->getParent());
 
 	if (building1 != building2) // TODO: implement path finding between 2 buildings
 		return NULL;
@@ -531,15 +531,15 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
-	CellObject* ourCell = (CellObject*) pointA.getCell();
-	CellObject* targetCell = (CellObject*) pointB.getCell();
+	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
+	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
 
 	if (ourCell != targetCell)
 		return findPathFromCellToDifferentCell(pointA, pointB);
 
 	int ourCellID = ourCell->getCellNumber();
 
-	BuildingObject* building = (BuildingObject*) ourCell->getParent();
+	BuildingObject* building = cast<BuildingObject*>( ourCell->getParent());
 
 	SharedObjectTemplate* templateObject = building->getObjectTemplate();
 

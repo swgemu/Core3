@@ -41,8 +41,9 @@ WoundPack::~WoundPack() {
 }
 
 
+
 void WoundPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -51,7 +52,7 @@ void WoundPack::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 void WoundPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -60,7 +61,7 @@ void WoundPack::loadTemplateData(SharedObjectTemplate* templateData) {
 }
 
 void WoundPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -69,7 +70,7 @@ void WoundPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* obj
 }
 
 int WoundPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -84,7 +85,7 @@ int WoundPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 }
 
 unsigned int WoundPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -100,7 +101,7 @@ unsigned int WoundPack::calculatePower(CreatureObject* healer, CreatureObject* p
 }
 
 float WoundPack::getEffectiveness() {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,7 +114,7 @@ float WoundPack::getEffectiveness() {
 }
 
 bool WoundPack::isWoundPack() {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -126,7 +127,7 @@ bool WoundPack::isWoundPack() {
 }
 
 byte WoundPack::getAttribute() {
-	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -173,7 +174,7 @@ void WoundPackImplementation::_initializeImplementation() {
 }
 
 void WoundPackImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (WoundPack*) stub;
+	_this = static_cast<WoundPack*>(stub);
 	PharmaceuticalObjectImplementation::_setStub(stub);
 }
 
@@ -411,10 +412,10 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
-		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
 	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
@@ -433,23 +434,23 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int WoundPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((WoundPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<WoundPackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned int WoundPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	return ((WoundPackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
+	return (static_cast<WoundPackImplementation*>(impl))->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float WoundPackAdapter::getEffectiveness() {
-	return ((WoundPackImplementation*) impl)->getEffectiveness();
+	return (static_cast<WoundPackImplementation*>(impl))->getEffectiveness();
 }
 
 bool WoundPackAdapter::isWoundPack() {
-	return ((WoundPackImplementation*) impl)->isWoundPack();
+	return (static_cast<WoundPackImplementation*>(impl))->isWoundPack();
 }
 
 byte WoundPackAdapter::getAttribute() {
-	return ((WoundPackImplementation*) impl)->getAttribute();
+	return (static_cast<WoundPackImplementation*>(impl))->getAttribute();
 }
 
 /*
@@ -477,7 +478,7 @@ DistributedObjectServant* WoundPackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WoundPackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WoundPackAdapter((WoundPackImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new WoundPackAdapter(static_cast<WoundPackImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

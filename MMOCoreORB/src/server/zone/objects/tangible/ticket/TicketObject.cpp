@@ -33,8 +33,9 @@ TicketObject::~TicketObject() {
 }
 
 
+
 void TicketObject::initializeTransientMembers() {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +48,7 @@ void TicketObject::initializeTransientMembers() {
 }
 
 void TicketObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -56,7 +57,7 @@ void TicketObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* 
 }
 
 int TicketObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +72,7 @@ int TicketObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID
 }
 
 void TicketObject::setDeparturePlanet(const String& departureplanet) {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +86,7 @@ void TicketObject::setDeparturePlanet(const String& departureplanet) {
 }
 
 void TicketObject::setDeparturePoint(const String& departurepoint) {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -99,7 +100,7 @@ void TicketObject::setDeparturePoint(const String& departurepoint) {
 }
 
 void TicketObject::setArrivalPlanet(const String& arrival) {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,7 +114,7 @@ void TicketObject::setArrivalPlanet(const String& arrival) {
 }
 
 void TicketObject::setArrivalPoint(const String& arrival) {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,7 +128,7 @@ void TicketObject::setArrivalPoint(const String& arrival) {
 }
 
 String TicketObject::getDeparturePlanet() {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -141,7 +142,7 @@ String TicketObject::getDeparturePlanet() {
 }
 
 String TicketObject::getDeparturePoint() {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -155,7 +156,7 @@ String TicketObject::getDeparturePoint() {
 }
 
 String TicketObject::getArrivalPlanet() {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -169,7 +170,7 @@ String TicketObject::getArrivalPlanet() {
 }
 
 String TicketObject::getArrivalPoint() {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -183,7 +184,7 @@ String TicketObject::getArrivalPoint() {
 }
 
 bool TicketObject::isTicketObject() {
-	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
+	TicketObjectImplementation* _implementation = static_cast<TicketObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -230,7 +231,7 @@ void TicketObjectImplementation::_initializeImplementation() {
 }
 
 void TicketObjectImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (TicketObject*) stub;
+	_this = static_cast<TicketObject*>(stub);
 	TangibleObjectImplementation::_setStub(stub);
 }
 
@@ -444,7 +445,7 @@ Packet* TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_SETDEPARTUREPLANET__STRING_:
 		setDeparturePlanet(inv->getAsciiParameter(_param0_setDeparturePlanet__String_));
@@ -481,47 +482,47 @@ Packet* TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void TicketObjectAdapter::initializeTransientMembers() {
-	((TicketObjectImplementation*) impl)->initializeTransientMembers();
+	(static_cast<TicketObjectImplementation*>(impl))->initializeTransientMembers();
 }
 
 int TicketObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((TicketObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<TicketObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void TicketObjectAdapter::setDeparturePlanet(const String& departureplanet) {
-	((TicketObjectImplementation*) impl)->setDeparturePlanet(departureplanet);
+	(static_cast<TicketObjectImplementation*>(impl))->setDeparturePlanet(departureplanet);
 }
 
 void TicketObjectAdapter::setDeparturePoint(const String& departurepoint) {
-	((TicketObjectImplementation*) impl)->setDeparturePoint(departurepoint);
+	(static_cast<TicketObjectImplementation*>(impl))->setDeparturePoint(departurepoint);
 }
 
 void TicketObjectAdapter::setArrivalPlanet(const String& arrival) {
-	((TicketObjectImplementation*) impl)->setArrivalPlanet(arrival);
+	(static_cast<TicketObjectImplementation*>(impl))->setArrivalPlanet(arrival);
 }
 
 void TicketObjectAdapter::setArrivalPoint(const String& arrival) {
-	((TicketObjectImplementation*) impl)->setArrivalPoint(arrival);
+	(static_cast<TicketObjectImplementation*>(impl))->setArrivalPoint(arrival);
 }
 
 String TicketObjectAdapter::getDeparturePlanet() {
-	return ((TicketObjectImplementation*) impl)->getDeparturePlanet();
+	return (static_cast<TicketObjectImplementation*>(impl))->getDeparturePlanet();
 }
 
 String TicketObjectAdapter::getDeparturePoint() {
-	return ((TicketObjectImplementation*) impl)->getDeparturePoint();
+	return (static_cast<TicketObjectImplementation*>(impl))->getDeparturePoint();
 }
 
 String TicketObjectAdapter::getArrivalPlanet() {
-	return ((TicketObjectImplementation*) impl)->getArrivalPlanet();
+	return (static_cast<TicketObjectImplementation*>(impl))->getArrivalPlanet();
 }
 
 String TicketObjectAdapter::getArrivalPoint() {
-	return ((TicketObjectImplementation*) impl)->getArrivalPoint();
+	return (static_cast<TicketObjectImplementation*>(impl))->getArrivalPoint();
 }
 
 bool TicketObjectAdapter::isTicketObject() {
-	return ((TicketObjectImplementation*) impl)->isTicketObject();
+	return (static_cast<TicketObjectImplementation*>(impl))->isTicketObject();
 }
 
 /*
@@ -549,7 +550,7 @@ DistributedObjectServant* TicketObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TicketObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TicketObjectAdapter((TicketObjectImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new TicketObjectAdapter(static_cast<TicketObjectImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

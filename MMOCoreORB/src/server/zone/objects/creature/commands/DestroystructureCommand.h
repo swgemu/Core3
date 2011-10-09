@@ -76,7 +76,7 @@ public:
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
 
-		StructureObject* structure = (StructureObject*) obj.get();
+		StructureObject* structure = cast<StructureObject*>( obj.get());
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -88,7 +88,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		if (structure->isBuildingObject() && ((BuildingObject*) structure)->getCurrentNumberOfPlayerItems() > 0) {
+		if (structure->isBuildingObject() && (cast<BuildingObject*>(structure))->getCurrentNumberOfPlayerItems() > 0) {
 			creature->sendSystemMessage("@player_structure:clear_building_for_delete"); //Please remove all items from the structure's interior before deleting it.
 			return INVALIDTARGET;
 		}

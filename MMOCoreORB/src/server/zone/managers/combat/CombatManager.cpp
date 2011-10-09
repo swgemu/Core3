@@ -42,7 +42,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
-	if (defender->isCreatureObject() && ((CreatureObject*)defender)->isIncapacitated())
+	if (defender->isCreatureObject() && (cast<CreatureObject*>(defender))->isIncapacitated())
 		return false;
 
 	attacker->clearState(CreatureState::PEACE);
@@ -67,7 +67,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 		if (!object->isTangibleObject())
 			continue;
 
-		TangibleObject* defender = (TangibleObject*) object.get();
+		TangibleObject* defender = cast<TangibleObject*>( object.get());
 
 		try {
 			Locker clocker(defender, attacker);
@@ -75,7 +75,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 			if (defender->hasDefender(attacker)) {
 
 				if (defender->isCreatureObject()) {
-					CreatureObject* creature = (CreatureObject*) defender;
+					CreatureObject* creature = cast<CreatureObject*>( defender);
 
 					if (creature->getMainDefender() != attacker) {
 						attacker->removeDefender(defender);
@@ -129,7 +129,7 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 		if (!object->isTangibleObject())
 			continue;
 
-		TangibleObject* defender = (TangibleObject*) object.get();
+		TangibleObject* defender = cast<TangibleObject*>( object.get());
 
 		Locker clocker(defender, attacker);
 
@@ -195,7 +195,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	uint8 hit = damage != 0 ? 1 : 0;
 
 	if (defenderObject->isCreatureObject()) {
-		combatAction = new CombatAction(attacker, (CreatureObject*)defenderObject, animationCRC, hit);
+		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit);
 	} else {
 		combatAction = new CombatAction(attacker, defenderObject, data.getAnimationCRC(), hit);
 	}
@@ -227,7 +227,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	tano->addDefender(attacker);
 
 	if (tano->isCreatureObject()) {
-		CreatureObject* defender = (CreatureObject*) tano;
+		CreatureObject* defender = cast<CreatureObject*>( tano);
 
 		damage = doTargetCombatAction(attacker, defender, data);
 	} else {
@@ -542,25 +542,25 @@ int CombatManager::getHealthArmorReduction(CreatureObject* attacker, CreatureObj
 	ArmorObject* armorToHit = NULL;
 
 	if (chest != NULL && chest->isArmorObject())
-		armorToHit = (ArmorObject*) chest;
+		armorToHit = cast<ArmorObject*>( chest);
 
 	/*int rand = System::random(100);
 
 	if (rand < 20) { // chest
 		if (chest != NULL && chest->isArmorObject())
-			armorToHit = (ArmorObject*) chest;
+			armorToHit = cast<ArmorObject*>( chest);
 	} else if (rand < 40) { // bicepr
 		if (bicepr != NULL && bicepr->isArmorObject())
-			armorToHit = (ArmorObject*) bicepr;
+			armorToHit = cast<ArmorObject*>( bicepr);
 	} else if (rand < 60) { // bicepl
 		if (bicepl != NULL && bicepl->isArmorObject())
-			armorToHit = (ArmorObject*) bicepl;
+			armorToHit = cast<ArmorObject*>( bicepl);
 	} else if (rand < 80) { // bracerr
 		if (bracerr != NULL && bracerr->isArmorObject())
-			armorToHit = (ArmorObject*) bracerr;
+			armorToHit = cast<ArmorObject*>( bracerr);
 	} else { //bracerl
 		if (bracerl != NULL && bracerl->isArmorObject())
-			armorToHit = (ArmorObject*) bracerl;
+			armorToHit = cast<ArmorObject*>( bracerl);
 	}*/
 
 	if (armorToHit == NULL)
@@ -579,10 +579,10 @@ int CombatManager::getActionArmorReduction(CreatureObject* attacker, CreatureObj
 
 	if (rand == 1) {
 		if (gloves != NULL && gloves->isArmorObject())
-			armorToHit = (ArmorObject*) gloves;
+			armorToHit = cast<ArmorObject*>( gloves);
 	} else {
 		if (boots != NULL && boots->isArmorObject())
-			armorToHit = (ArmorObject*) boots;
+			armorToHit = cast<ArmorObject*>( boots);
 	}
 
 	if (armorToHit == NULL)
@@ -595,7 +595,7 @@ int CombatManager::getMindArmorReduction(CreatureObject* attacker, CreatureObjec
 	SceneObject* helmet = defender->getSlottedObject("hat");
 
 	if (helmet != NULL && helmet->isArmorObject())
-		return getArmorObjectReduction(attacker, (ArmorObject*) helmet);
+		return getArmorObjectReduction(attacker, cast<ArmorObject*>(helmet));
 
 	return 0;
 }
@@ -646,7 +646,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		return 0;
 
 	if (defender->isAiAgent()) {
-		return getArmorNpcReduction(attacker, (AiAgent*)defender, weapon);
+		return getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
 	}
 
 	if (poolToDamage & CombatManager::HEALTH) {
@@ -684,7 +684,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage = System::random(diff) + (int) minDamage;
 
 	if (attacker->isPlayerCreature()) {
-		if (!weapon->isCertifiedFor((CreatureObject*) attacker))
+		if (!weapon->isCertifiedFor(cast<CreatureObject*>(attacker)))
 			damage /= 5;
 
 		int FR = attacker->getSkillMod("force_run");
@@ -1279,14 +1279,14 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 		zone->rlock();
 
 		for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
-			ManagedReference<SceneObject*> object = (SceneObject*) attacker->getInRangeObject(i);
+			ManagedReference<SceneObject*> object = cast<SceneObject*>( attacker->getInRangeObject(i));
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
 				continue;
 			}
 
-			TangibleObject* tano = (TangibleObject*) object.get();
+			TangibleObject* tano = cast<TangibleObject*>( object.get());
 
 			if (object == attacker) {
 				//error("object is attacker");
@@ -1303,7 +1303,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				continue;
 			}
 
-			if (tano->isCreatureObject() && ((CreatureObject*)tano)->isIncapacitated()) {
+			if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
 			}
@@ -1339,10 +1339,10 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 	Locker _locker(zone);
 
 	for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
-		SceneObject* object = (SceneObject*) attacker->getInRangeObject(i);
+		SceneObject* object = cast<SceneObject*>( attacker->getInRangeObject(i));
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
-			CreatureObject* player = (CreatureObject*) object;
+			CreatureObject* player = cast<CreatureObject*>( object);
 
 			CombatSpam* msg = new CombatSpam(attacker, defender, weapon, damage, "cbt_spam", stringid, player);
 			player->sendMessage(msg);

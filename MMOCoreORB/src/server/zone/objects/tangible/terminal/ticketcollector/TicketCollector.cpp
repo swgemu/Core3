@@ -31,8 +31,9 @@ TicketCollector::~TicketCollector() {
 }
 
 
+
 void TicketCollector::initializeTransientMembers() {
-	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
+	TicketCollectorImplementation* _implementation = static_cast<TicketCollectorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +46,7 @@ void TicketCollector::initializeTransientMembers() {
 }
 
 int TicketCollector::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
+	TicketCollectorImplementation* _implementation = static_cast<TicketCollectorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -60,7 +61,7 @@ int TicketCollector::handleObjectMenuSelect(CreatureObject* player, byte selecte
 }
 
 void TicketCollector::useTicket(CreatureObject* player, TicketObject* ticket) {
-	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
+	TicketCollectorImplementation* _implementation = static_cast<TicketCollectorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +76,7 @@ void TicketCollector::useTicket(CreatureObject* player, TicketObject* ticket) {
 }
 
 bool TicketCollector::isTicketCollector() {
-	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
+	TicketCollectorImplementation* _implementation = static_cast<TicketCollectorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -122,7 +123,7 @@ void TicketCollectorImplementation::_initializeImplementation() {
 }
 
 void TicketCollectorImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (TicketCollector*) stub;
+	_this = static_cast<TicketCollector*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -244,10 +245,10 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_USETICKET__CREATUREOBJECT_TICKETOBJECT_:
-		useTicket((CreatureObject*) inv->getObjectParameter(), (TicketObject*) inv->getObjectParameter());
+		useTicket(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TicketObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISTICKETCOLLECTOR__:
 		resp->insertBoolean(isTicketCollector());
@@ -260,19 +261,19 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void TicketCollectorAdapter::initializeTransientMembers() {
-	((TicketCollectorImplementation*) impl)->initializeTransientMembers();
+	(static_cast<TicketCollectorImplementation*>(impl))->initializeTransientMembers();
 }
 
 int TicketCollectorAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((TicketCollectorImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<TicketCollectorImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 void TicketCollectorAdapter::useTicket(CreatureObject* player, TicketObject* ticket) {
-	((TicketCollectorImplementation*) impl)->useTicket(player, ticket);
+	(static_cast<TicketCollectorImplementation*>(impl))->useTicket(player, ticket);
 }
 
 bool TicketCollectorAdapter::isTicketCollector() {
-	return ((TicketCollectorImplementation*) impl)->isTicketCollector();
+	return (static_cast<TicketCollectorImplementation*>(impl))->isTicketCollector();
 }
 
 /*
@@ -300,7 +301,7 @@ DistributedObjectServant* TicketCollectorHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TicketCollectorHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TicketCollectorAdapter((TicketCollectorImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new TicketCollectorAdapter(static_cast<TicketCollectorImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

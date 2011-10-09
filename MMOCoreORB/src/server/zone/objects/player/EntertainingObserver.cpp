@@ -25,8 +25,9 @@ EntertainingObserver::~EntertainingObserver() {
 }
 
 
+
 int EntertainingObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	EntertainingObserverImplementation* _implementation = (EntertainingObserverImplementation*) _getImplementation();
+	EntertainingObserverImplementation* _implementation = static_cast<EntertainingObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +78,7 @@ void EntertainingObserverImplementation::_initializeImplementation() {
 }
 
 void EntertainingObserverImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (EntertainingObserver*) stub;
+	_this = static_cast<EntertainingObserver*>(stub);
 	ObserverImplementation::_setStub(stub);
 }
 
@@ -197,7 +198,7 @@ Packet* EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMeth
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -207,7 +208,7 @@ Packet* EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMeth
 }
 
 int EntertainingObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((EntertainingObserverImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<EntertainingObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -235,7 +236,7 @@ DistributedObjectServant* EntertainingObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* EntertainingObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EntertainingObserverAdapter((EntertainingObserverImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new EntertainingObserverAdapter(static_cast<EntertainingObserverImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -23,7 +23,7 @@ void GarageInstallationImplementation::createChildObjects() {
 	if (obj == NULL)
 		return;
 
-	ActiveArea* activeArea = (ActiveArea*) obj.get();
+	ActiveArea* activeArea = cast<ActiveArea*>( obj.get());
 
 	activeArea->setRadius(64);
 	activeArea->initializePosition(getPositionX(), getPositionZ(), getPositionY());

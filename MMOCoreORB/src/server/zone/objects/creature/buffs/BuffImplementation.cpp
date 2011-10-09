@@ -102,7 +102,7 @@ void BuffImplementation::activate(bool applyModifiers) {
 		Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
 
 		if (creature->isPlayerCreature())
-			sendTo(((CreatureObject*) creature.get()));
+			sendTo((cast<CreatureObject*>(creature.get())));
 
 		if (!startMessage.isEmpty())
 			creature->sendSystemMessage(startMessage);
@@ -125,7 +125,7 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 		}
 
 		if (creature->isPlayerCreature())
-			sendDestroyTo((CreatureObject*) creature.get());
+			sendDestroyTo(cast<CreatureObject*>(creature.get()));
 
 		if (!endMessage.isEmpty())
 			creature->sendSystemMessage(endMessage);

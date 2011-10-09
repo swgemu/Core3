@@ -17,7 +17,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return 1;
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<WeatherManager*> weatherManager = player->getZone()->getPlanetManager()->getWeatherManager();
 
 		//Check for valid zone. Handle this in your manager.

@@ -24,7 +24,7 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 	if (obj == NULL || !obj->isBuildingObject())
 		return;
 
-	ManagedReference<BuildingObject*> buio = (BuildingObject*) obj.get();
+	ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( obj.get());
 
 	//Is this player on the permission list?
 	if (!buio->isOnAdminList(player->getFirstName()))

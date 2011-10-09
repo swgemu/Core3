@@ -75,9 +75,9 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* playerCreature = (CreatureObject*) object.get();
+		CreatureObject* playerCreature = cast<CreatureObject*>( object.get());
 
-		Biography* bio = new Biography((CreatureObject*)creature, playerCreature);
+		Biography* bio = new Biography(creature, playerCreature);
 		creature->sendMessage(bio);
 
 		return SUCCESS;

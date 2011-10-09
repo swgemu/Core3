@@ -247,7 +247,7 @@ bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 		uint32 objType = sceno->getGameObjectType();
 
 		if (objType == SceneObject::LASERKNIFE) {
-			PrecisionLaserKnife* knife = (PrecisionLaserKnife*) sceno.get();
+			PrecisionLaserKnife* knife = cast<PrecisionLaserKnife*>( sceno.get());
 			if (removeItem)
 				knife->useCharge(player);
 			return 1;
@@ -369,7 +369,7 @@ void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 		uint32 objType = sceno->getGameObjectType();
 
 		if (objType == SceneObject::FLOWANALYZER) {
-			SlicingTool* node = (SlicingTool*) sceno.get();
+			SlicingTool* node = cast<SlicingTool*>( sceno.get());
 			nodeCable = node->calculateSuccessRate();
 
 			if (nodeCable) // PASSED
@@ -413,7 +413,7 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 		handleContainerSlice();
 		playerManager->awardExperience(player, "slicing", 125, true); // Container Slice XP
 	} else	if (tangibleObject->isMissionTerminal()) {
-		MissionTerminal* term = (MissionTerminal*) tangibleObject.get();
+		MissionTerminal* term = cast<MissionTerminal*>( tangibleObject.get());
 		playerManager->awardExperience(player, "slicing", 250, true); // Terminal Slice XP
 		term->addSlicer(player);
 		player->sendSystemMessage("@slicing/slicing:terminal_success");
@@ -470,7 +470,7 @@ void SlicingSessionImplementation::handleSliceDamage(uint8 percent) {
 	if (tangibleObject == NULL || player == NULL || !tangibleObject->isWeaponObject())
 		return;
 
-	WeaponObject* weap = (WeaponObject*) tangibleObject.get();
+	WeaponObject* weap = cast<WeaponObject*>( tangibleObject.get());
 
 	Locker locker(weap);
 
@@ -493,7 +493,7 @@ void SlicingSessionImplementation::handleSliceSpeed(uint8 percent) {
 	if (tangibleObject == NULL || player == NULL || !tangibleObject->isWeaponObject())
 		return;
 
-	WeaponObject* weap = (WeaponObject*) tangibleObject.get();
+	WeaponObject* weap = cast<WeaponObject*>( tangibleObject.get());
 
 	Locker locker(weap);
 
@@ -553,7 +553,7 @@ void SlicingSessionImplementation::handleSliceEncumbrance(uint8 percent) {
 	if (tangibleObject == NULL || player == NULL || !tangibleObject->isArmorObject())
 		return;
 
-	ArmorObject* armor = (ArmorObject*) tangibleObject.get();
+	ArmorObject* armor = cast<ArmorObject*>( tangibleObject.get());
 
 	Locker locker(armor);
 
@@ -574,7 +574,7 @@ void SlicingSessionImplementation::handleSliceEffectiveness(uint8 percent) {
 	if (tangibleObject == NULL || player == NULL || !tangibleObject->isArmorObject())
 		return;
 
-	ArmorObject* armor = (ArmorObject*) tangibleObject.get();
+	ArmorObject* armor = cast<ArmorObject*>( tangibleObject.get());
 
 	Locker locker(armor);
 

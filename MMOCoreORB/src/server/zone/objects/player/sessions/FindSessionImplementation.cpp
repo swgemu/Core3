@@ -70,7 +70,7 @@ void FindSessionImplementation::addWaypoint(float x, float y, const String& name
 	StringIdChatParameter msg;
 
 	ManagedReference<WaypointObject*> wpt =
-			(WaypointObject*) player->getZoneServer()->createObject(0xc456e788, 1); // 0xC456E788 Waypoint
+			cast<WaypointObject*>( player->getZoneServer()->createObject(0xc456e788, 1)); // 0xC456E788 Waypoint
 
 	wpt->setPlanetCRC(planet.hashCode());
 	wpt->setPosition(x, 0, y);

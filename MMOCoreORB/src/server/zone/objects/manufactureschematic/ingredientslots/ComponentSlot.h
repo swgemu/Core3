@@ -130,7 +130,7 @@ public:
 
 		if (incomingTano->isFactoryCrate()) {
 
-			FactoryCrate* crate = (FactoryCrate*) incomingTano;
+			FactoryCrate* crate = cast<FactoryCrate*>( incomingTano);
 
 			TangibleObject* prototype = crate->getPrototype();
 
@@ -146,7 +146,7 @@ public:
 
 		if (incomingTano->isFactoryCrate()) {
 
-			FactoryCrate* crate = (FactoryCrate*) incomingTano;
+			FactoryCrate* crate = cast<FactoryCrate*>( incomingTano);
 
 			if (incomingTano->getUseCount() >= needs)
 				incomingTano = crate->extractObject(needs);
@@ -186,7 +186,7 @@ public:
 				dtano3->close();
 				incomingTano->getParent()->broadcastMessage(dtano3, true);
 
-				TangibleObject* newTano = (TangibleObject*) objectManager->cloneObject(incomingTano);
+				TangibleObject* newTano = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
 				newTano->setUseCount(needs, false);
 				newTano->setParent(NULL);
 
@@ -205,7 +205,7 @@ public:
 
 				incomingTano->setUseCount(incomingTano->getUseCount() - needs, true);
 
-				TangibleObject* newTano = (TangibleObject*) objectManager->cloneObject(incomingTano);
+				TangibleObject* newTano = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
 				newTano->setUseCount(needs, true);
 				newTano->setParent(NULL);
 
@@ -276,7 +276,7 @@ public:
 
 	/*inline TangibleObject* get() {
 
-	 return (TangibleObject*) contents;
+	 return cast<TangibleObject*>( contents);
 	 }*/
 
 	inline bool isComplete() {

@@ -69,7 +69,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		SceneObject* cell = creature->getParent();
 
@@ -77,7 +77,7 @@ public:
 		uint32 buildingTemplate = 0;
 
 		if (cell != NULL && cell->isCellObject()) {
-			cellid = ((CellObject*)cell)->getCellNumber();
+			cellid = (cast<CellObject*>(cell))->getCellNumber();
 			SceneObject* building = cell->getParent();
 			buildingTemplate = building->getServerObjectCRC();
 		}

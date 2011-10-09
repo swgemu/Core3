@@ -112,7 +112,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 
 bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
 	if (obj->isCreatureObject()) {
-		ManagedReference<PlayerObject*> ghost = ((CreatureObject*) obj)->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = (cast<CreatureObject*>( obj))->getPlayerObject();
 
 		if (ghost->isPrivileged())
 			return true;
@@ -125,7 +125,7 @@ bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
 	ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(objid);
 
 	if (obj != NULL && obj->isPlayerCreature()) {
-		CreatureObject* player = (CreatureObject*) obj.get();
+		CreatureObject* player = cast<CreatureObject*>( obj.get());
 
 		if (player->getPlayerObject()->isPrivileged())
 			return true;

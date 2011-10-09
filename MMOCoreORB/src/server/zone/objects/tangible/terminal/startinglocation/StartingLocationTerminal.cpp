@@ -29,8 +29,9 @@ StartingLocationTerminal::~StartingLocationTerminal() {
 }
 
 
+
 void StartingLocationTerminal::initializeTransientMembers() {
-	StartingLocationTerminalImplementation* _implementation = (StartingLocationTerminalImplementation*) _getImplementation();
+	StartingLocationTerminalImplementation* _implementation = static_cast<StartingLocationTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +44,7 @@ void StartingLocationTerminal::initializeTransientMembers() {
 }
 
 int StartingLocationTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	StartingLocationTerminalImplementation* _implementation = (StartingLocationTerminalImplementation*) _getImplementation();
+	StartingLocationTerminalImplementation* _implementation = static_cast<StartingLocationTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +93,7 @@ void StartingLocationTerminalImplementation::_initializeImplementation() {
 }
 
 void StartingLocationTerminalImplementation::_setStub(DistributedObjectStub* stub) {
-	_this = (StartingLocationTerminal*) stub;
+	_this = static_cast<StartingLocationTerminal*>(stub);
 	TerminalImplementation::_setStub(stub);
 }
 
@@ -202,7 +203,7 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 		initializeTransientMembers();
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -212,11 +213,11 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 }
 
 void StartingLocationTerminalAdapter::initializeTransientMembers() {
-	((StartingLocationTerminalImplementation*) impl)->initializeTransientMembers();
+	(static_cast<StartingLocationTerminalImplementation*>(impl))->initializeTransientMembers();
 }
 
 int StartingLocationTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return ((StartingLocationTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StartingLocationTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -244,7 +245,7 @@ DistributedObjectServant* StartingLocationTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StartingLocationTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StartingLocationTerminalAdapter((StartingLocationTerminalImplementation*) obj->_getImplementation());
+	DistributedObjectAdapter* adapter = new StartingLocationTerminalAdapter(static_cast<StartingLocationTerminalImplementation*>(obj->_getImplementation()));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

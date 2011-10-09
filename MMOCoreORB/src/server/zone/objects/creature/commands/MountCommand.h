@@ -83,7 +83,7 @@ public:
 		if (!object->isVehicleObject() /* && !object->isPetObject() */)
 			return GENERALERROR;
 
-		CreatureObject* vehicle = (CreatureObject*) object.get();
+		CreatureObject* vehicle = cast<CreatureObject*>( object.get());
 
 		if (vehicle->getCreatureLinkID() != creature->getObjectID())
 			return GENERALERROR;

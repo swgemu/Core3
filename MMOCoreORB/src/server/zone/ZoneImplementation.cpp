@@ -327,7 +327,7 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 					float objDistance = object->getDistanceTo(creature);
 
 					if (objDistance < distance) {
-						cloning = (CloningBuildingObject*) object;
+						cloning = cast<CloningBuildingObject*>( object);
 						distance = objDistance;
 					}
 				}
