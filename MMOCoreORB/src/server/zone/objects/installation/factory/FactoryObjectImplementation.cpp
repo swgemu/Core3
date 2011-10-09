@@ -515,7 +515,7 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 
 	if(outputHopper == NULL || prototype == NULL) {
 		stopFactory("manf_error_6", "", "", -1);
-		return false;
+		return NULL;
 	}
 
 	for (int i = 0; i < outputHopper->getContainerObjectsSize(); ++i) {

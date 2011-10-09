@@ -188,7 +188,7 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
-		return false;
+		return NULL;
 	}
 
 	ObjectManager* objectManager = ObjectManager::instance();

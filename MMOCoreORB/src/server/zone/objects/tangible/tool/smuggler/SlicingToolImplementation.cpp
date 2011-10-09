@@ -75,7 +75,7 @@ void SlicingToolImplementation::updateCraftingValues(ManufactureSchematic* schem
 bool SlicingToolImplementation::calculateSuccessRate() {
 	if (getGameObjectType() == SceneObject::FLOWANALYZER) {
 		int chance = System::random(100);
-		chance =+ (chance + effectiveness);
+		chance += (chance + effectiveness);
 		if (chance > 25) // 25% chance to fail
 			return true;
 	}

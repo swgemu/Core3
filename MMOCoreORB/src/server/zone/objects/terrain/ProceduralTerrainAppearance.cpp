@@ -195,7 +195,7 @@ float ProceduralTerrainAppearance::calculateFeathering(float value, int featheri
 		result = result * result * (3 - 2 * result);
 		break;
 	case 0:
-		result = result;
+		//result = result;
 		break;
 	default:
 		result = 0;
