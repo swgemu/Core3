@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_missile_wpn_launcher_seismic_mk1 = object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_mass", "exp_armor", "null", "exp_energy_maintenance"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
+	experimentalMin = {0, 0, 293, 2125, 147, 1, 893},
+	experimentalMax = {0, 0, 397, 2875, 198, 1, 1208},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_wpn_launcher_seismic_mk1, "object/tangible/ship/crafted/weapon/missile/wpn_launcher_seismic_mk1.iff")

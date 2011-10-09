@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_weapon_armor_effectiveness_intensifier_mk5 = object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Armor Effectiveness Intensifier - Mark V",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 34, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 625, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "chassis_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "effectiveness_enhancer"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "radioactive_polymetric"},
+   resourceQuantities = {2000, 500},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/armor_effectiveness_intensifier_mk5.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/weapon/shared_armor_effectiveness_intensifier_mk5.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_armor_effectiveness_intensifier_mk5, "object/draft_schematic/space/weapon/armor_effectiveness_intensifier_mk5.iff")

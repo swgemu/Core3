@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_booster_booster_overdriver_mk5 = object_draft_schematic_space_booster_shared_booster_overdriver_mk5:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Booster Overdriver - Mark V",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 34, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 625, 
+
+   assemblySkill = "booster_assembly", 
+   experimentingSkill = "booster_experimentation", 
+   customizationSkill = "booster_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"overdriver_components", "special_fuel_enhancer"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "radioactive_polymetric"},
+   resourceQuantities = {2000, 500},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/booster/booster_overdriver_mk5.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/booster/shared_booster_overdriver_mk5.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_booster_overdriver_mk5, "object/draft_schematic/space/booster/booster_overdriver_mk5.iff")

@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_armor_armor_reinforcement_panel_mk4 = object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Armor Reinforcement Panel - Mark IV",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"reinforcing_ship_materials", "strong_alloy"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "steel_bicorbantium"},
+   resourceQuantities = {1000, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/armor/armor_reinforcement_panel_mk4.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk4.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_armor_reinforcement_panel_mk4, "object/draft_schematic/space/armor/armor_reinforcement_panel_mk4.iff")

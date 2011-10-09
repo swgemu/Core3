@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_shields_light_deflector_shields = object_tangible_ship_crafted_shields_shared_light_deflector_shields:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 1, 2, 3, 3, 3},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "CD", "OQ", "SR", "CD", "OQ", "SR", "CD", "OQ", "SR"},
+	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_shield_recharge"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "shield_max_front_hp", "shield_max_back_hp", "shield_recharge"},
+	experimentalMin = {0, 0, 128, 1, 850, 64, 1, 2125, 213, 213, 1700},
+	experimentalMax = {0, 0, 173, 1, 1150, 86, 1, 2875, 288, 288, 2300},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_shields_light_deflector_shields, "object/tangible/ship/crafted/shields/light_deflector_shields.iff")

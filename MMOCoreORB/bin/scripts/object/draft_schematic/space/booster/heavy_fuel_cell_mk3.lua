@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_booster_heavy_fuel_cell_mk3 = object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Heavy Fuel Cell - Mark III",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 27, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 125, 
+
+   assemblySkill = "booster_assembly", 
+   experimentingSkill = "booster_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"fuel_cell_core", "adv_fuel_cell_enhancer"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "gas_reactive_organometallic"},
+   resourceQuantities = {350, 150},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/booster/heavy_fuel_cell_mk3.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/booster/shared_heavy_fuel_cell_mk3.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_heavy_fuel_cell_mk3, "object/draft_schematic/space/booster/heavy_fuel_cell_mk3.iff")

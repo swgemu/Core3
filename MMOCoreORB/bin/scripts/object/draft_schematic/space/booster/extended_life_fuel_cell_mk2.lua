@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_booster_extended_life_fuel_cell_mk2 = object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Extended Life Fuel Cell - Mark II",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 63, 
+
+   assemblySkill = "booster_assembly", 
+   experimentingSkill = "booster_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"fuel_cell_core", "adv_fuel_cell_enhancer"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "radioactive_polymetric"},
+   resourceQuantities = {200, 50},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/booster/extended_life_fuel_cell_mk2.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/booster/shared_extended_life_fuel_cell_mk2.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_extended_life_fuel_cell_mk2, "object/draft_schematic/space/booster/extended_life_fuel_cell_mk2.iff")

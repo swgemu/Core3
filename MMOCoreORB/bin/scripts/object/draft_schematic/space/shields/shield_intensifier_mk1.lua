@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_shields_shield_intensifier_mk1 = object_draft_schematic_space_shields_shared_shield_intensifier_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Shield Intensifier - Mark I",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 25, 
+
+   assemblySkill = "shields_assembly", 
+   experimentingSkill = "shields_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "shield_intensifying_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "fiberplast_gravitonic"},
+   resourceQuantities = {75, 25},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/shields/shield_intensifier_mk1.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shield_intensifier_mk1, "object/draft_schematic/space/shields/shield_intensifier_mk1.iff")

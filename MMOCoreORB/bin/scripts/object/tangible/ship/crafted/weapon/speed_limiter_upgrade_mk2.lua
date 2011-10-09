@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_speed_limiter_upgrade_mk2 = object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "SR", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_refire_rate", "exp_energy_per_shot"},
+	experimentalSubGroupTitles = {"null", "null", "refire_rate", "energy_per_shot"},
+	experimentalMin = {0, 0, 23, -5},
+	experimentalMax = {0, 0, 42, -3},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_speed_limiter_upgrade_mk2, "object/tangible/ship/crafted/weapon/speed_limiter_upgrade_mk2.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_capacitor_energy_saver_battery_mk3 = object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 3, 1, 3, 1},
+	experimentalGroupTitles = {"null", "null", "exp_cap_max_energy", "exp_energy_maintenance"},
+	experimentalSubGroupTitles = {"null", "null", "cap_max_energy", "energy_maintenance"},
+	experimentalMin = {0, 0, -139, -230},
+	experimentalMax = {0, 0, -103, -170},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_energy_saver_battery_mk3, "object/tangible/ship/crafted/capacitor/energy_saver_battery_mk3.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk2 = object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_droid_command_speed", "exp_energy_maintenance"},
+	experimentalSubGroupTitles = {"null", "null", "droid_command_speed", "energy_maintenance"},
+	experimentalMin = {0, 0, 1, -80},
+	experimentalMax = {0, 0, 2, -50},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk2, "object/tangible/ship/crafted/droid_interface/maintenance_reduction_kit_mk2.iff")

@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_reactor_reactor_overcharger_mk2 = object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Reactor Overcharger - Mark II",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 63, 
+
+   assemblySkill = "power_systems", 
+   experimentingSkill = "power_systems_experimentation", 
+   customizationSkill = "advanced_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "reactor_overcharging_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "radioactive_polymetric"},
+   resourceQuantities = {200, 50},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/reactor/reactor_overcharger_mk2.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk2.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_reactor_overcharger_mk2, "object/draft_schematic/space/reactor/reactor_overcharger_mk2.iff")

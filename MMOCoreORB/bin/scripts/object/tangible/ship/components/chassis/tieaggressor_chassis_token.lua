@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_chassis_tieaggressor_chassis_token = object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token:new {
 
+
+	numberExperimentalProperties = {1, 1, 4, 4},
+	experimentalProperties = {"XX", "XX", "HR", "OQ", "SR", "UT", "MA", "OQ", "SR", "UT"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_massMax"},
+	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
+	experimentalMin = {0, 0, 2100, 117000},
+	experimentalMax = {0, 0, 2600, 123000},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_tieaggressor_chassis_token, "object/tangible/ship/components/chassis/tieaggressor_chassis_token.iff")

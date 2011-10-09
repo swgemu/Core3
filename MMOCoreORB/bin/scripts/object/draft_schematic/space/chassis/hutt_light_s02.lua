@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_chassis_hutt_light_s02 = object_draft_schematic_space_chassis_shared_hutt_light_s02:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Scyk Light Fighter Chassis Blueprints, Style 2",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 1250, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "chassis_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"frame", "ship_skin", "structural_support", "basic_heat_shielding"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"steel", "aluminum", "ore", "petrochem_inert"},
+   resourceQuantities = {2000, 1000, 1000, 1000},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/components/chassis/hutt_light_s02_chassis_token.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_hutt_light_s02, "object/draft_schematic/space/chassis/hutt_light_s02.iff")

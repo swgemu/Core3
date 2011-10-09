@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_chassis_z95 = object_draft_schematic_space_chassis_shared_z95:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Z-95 Chassis Blueprints",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 1250, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"frame", "basic_heat_shielding", "structural_support", "ship_skin"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"steel", "petrochem_inert", "ore", "aluminum"},
+   resourceQuantities = {2000, 1000, 1000, 1000},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/components/chassis/z95_chassis_token.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_z95, "object/draft_schematic/space/chassis/z95.iff")

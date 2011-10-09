@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_droid_interface_ddi_mk3 = object_draft_schematic_space_droid_interface_shared_ddi_mk3:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark III Droid Interface",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 29, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 250, 
+
+   assemblySkill = "advanced_assembly", 
+   experimentingSkill = "advanced_ship_experimentation", 
+   customizationSkill = "advanced_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "neural_network_fibers", "droid_interface_upgrade", "electronic_components", "protective_elements"},
+   ingredientSlotType = {0, 0, 4, 0, 0},
+   resourceTypes = {"steel", "fiberplast", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "copper", "ore"},
+   resourceQuantities = {250, 250, 1, 250, 250},
+   combineTypes = {0, 0, 1, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/droid_interface/ddi_mk3.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/droid_interface/shared_ddi_mk3.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_ddi_mk3, "object/draft_schematic/space/droid_interface/ddi_mk3.iff")

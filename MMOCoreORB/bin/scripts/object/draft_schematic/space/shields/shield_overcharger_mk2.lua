@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_shields_shield_overcharger_mk2 = object_draft_schematic_space_shields_shared_shield_overcharger_mk2:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Shield Overcharger - Mark II",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 63, 
+
+   assemblySkill = "shields_assembly", 
+   experimentingSkill = "shields_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "shield_overcharger_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "fiberplast_gravitonic"},
+   resourceQuantities = {200, 50},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/shields/shield_overcharger_mk2.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shield_overcharger_mk2, "object/draft_schematic/space/shields/shield_overcharger_mk2.iff")

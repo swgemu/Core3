@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_capacitor_extended_life_battery_mk4 = object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 3, 1, 3, 1},
+	experimentalGroupTitles = {"null", "null", "exp_cap_max_energy", "exp_recharge"},
+	experimentalSubGroupTitles = {"null", "null", "cap_max_energy", "cap_recharge_rate"},
+	experimentalMin = {0, 0, 113, -6},
+	experimentalMax = {0, 0, 153, -5},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_extended_life_battery_mk4, "object/tangible/ship/crafted/capacitor/extended_life_battery_mk4.iff")

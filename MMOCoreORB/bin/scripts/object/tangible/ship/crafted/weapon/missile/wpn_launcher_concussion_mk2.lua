@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_missile_wpn_launcher_concussion_mk2 = object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_mass", "exp_armor", "null", "exp_energy_maintenance"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
+	experimentalMin = {0, 0, 540, 2125, 270, 1, 935},
+	experimentalMax = {0, 0, 730, 2875, 365, 1, 1265},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_wpn_launcher_concussion_mk2, "object/tangible/ship/crafted/weapon/missile/wpn_launcher_concussion_mk2.iff")

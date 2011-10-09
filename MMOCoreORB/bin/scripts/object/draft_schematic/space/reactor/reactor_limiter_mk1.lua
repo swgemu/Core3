@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_reactor_reactor_limiter_mk1 = object_draft_schematic_space_reactor_shared_reactor_limiter_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Reactor Limiter - Mark I",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 25, 
+
+   assemblySkill = "power_systems", 
+   experimentingSkill = "power_systems_experimentation", 
+   customizationSkill = "advanced_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "reactor_limiting_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "radioactive_polymetric"},
+   resourceQuantities = {75, 25},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/reactor/reactor_limiter_mk1.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk1.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_reactor_limiter_mk1, "object/draft_schematic/space/reactor/reactor_limiter_mk1.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_quick_shot_upgrade_mk3 = object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_refire_rate", "exp_energy_per_shot"},
+	experimentalSubGroupTitles = {"null", "null", "refire_rate", "energy_per_shot"},
+	experimentalMin = {0, 0, -51, 3},
+	experimentalMax = {0, 0, -27, 5},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_quick_shot_upgrade_mk3, "object/tangible/ship/crafted/weapon/quick_shot_upgrade_mk3.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_engine_eng_mk5 = object_tangible_ship_crafted_engine_shared_eng_mk5:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 1, 2, 3, 3, 3, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 3, 1, 1, 3, 1, 3, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_pitch", "exp_yaw", "exp_roll", "exp_speed"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "engine_pitch", "engine_yaw", "engine_roll", "engine_speed"},
+	experimentalMin = {0, 0, 935, 1, 26520, 468, 1, 1530, 48, 48, 48, 67},
+	experimentalMax = {0, 0, 1265, 1, 35880, 633, 1, 2070, 65, 65, 65, 91},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_eng_mk5, "object/tangible/ship/crafted/engine/eng_mk5.iff")

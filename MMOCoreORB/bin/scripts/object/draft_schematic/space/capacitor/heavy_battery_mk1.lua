@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_capacitor_heavy_battery_mk1 = object_draft_schematic_space_capacitor_shared_heavy_battery_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Heavy Battery - Mark I",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 25, 
+
+   assemblySkill = "advanced_assembly", 
+   experimentingSkill = "advanced_ship_experimentation", 
+   customizationSkill = "advanced_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"battery_casing", "enhanced_battery_core"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "copper_borocarbitic"},
+   resourceQuantities = {75, 25},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/capacitor/heavy_battery_mk1.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk1.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_heavy_battery_mk1, "object/draft_schematic/space/capacitor/heavy_battery_mk1.iff")

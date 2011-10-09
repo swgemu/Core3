@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_capacitor_quick_recharge_battery_mk4 = object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Quick Recharge Battery - Mark IV",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "advanced_assembly", 
+   experimentingSkill = "advanced_ship_experimentation", 
+   customizationSkill = "advanced_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"battery_casing", "enhanced_battery_core"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "copper_borocarbitic"},
+   resourceQuantities = {1000, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/capacitor/quick_recharge_battery_mk4.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk4.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_quick_recharge_battery_mk4, "object/draft_schematic/space/capacitor/quick_recharge_battery_mk4.iff")

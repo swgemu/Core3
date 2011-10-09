@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_missile_countermeasure_confuser_pack = object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_maximum_chaff_effectiveness", "exp_min_chaff_effectiveness", "null", "exp_ammo", "null"},
+	experimentalSubGroupTitles = {"null", "null", "fltmaxeffectiveness", "fltmineffectiveness", "fltrefirerate", "fltmaxammo", "energy_per_shot"},
+	experimentalMin = {0, 0, 94, 68, 289, 7, 0},
+	experimentalMax = {0, 0, 127, 92, 391, 9, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_confuser_pack, "object/tangible/ship/crafted/weapon/missile/countermeasure_confuser_pack.iff")

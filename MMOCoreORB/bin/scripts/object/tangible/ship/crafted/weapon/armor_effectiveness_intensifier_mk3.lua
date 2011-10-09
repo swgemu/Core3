@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_armor_effectiveness_intensifier_mk3 = object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_shield_effectiveness", "exp_effective_armor"},
+	experimentalSubGroupTitles = {"null", "null", "effective_shields", "effective_armor"},
+	experimentalMin = {0, 0, -97, 83},
+	experimentalMax = {0, 0, -83, 97},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_armor_effectiveness_intensifier_mk3, "object/tangible/ship/crafted/weapon/armor_effectiveness_intensifier_mk3.iff")

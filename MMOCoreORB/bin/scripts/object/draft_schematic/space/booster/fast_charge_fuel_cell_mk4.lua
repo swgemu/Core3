@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_booster_fast_charge_fuel_cell_mk4 = object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Fast Charge Fuel Cell - Mark IV",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "booster_assembly", 
+   experimentingSkill = "booster_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"fuel_cell_core", "adv_fuel_cell_enhancer"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "gas_reactive_organometallic"},
+   resourceQuantities = {1000, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/booster/fast_charge_fuel_cell_mk4.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/booster/shared_fast_charge_fuel_cell_mk4.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_fast_charge_fuel_cell_mk4, "object/draft_schematic/space/booster/fast_charge_fuel_cell_mk4.iff")

@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_shields_shield_energy_saver_kit_mk3 = object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Shield Energy Saver Kit - Mark III",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 27, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 125, 
+
+   assemblySkill = "shields_assembly", 
+   experimentingSkill = "shields_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "energy_saving_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "fiberplast_gravitonic"},
+   resourceQuantities = {350, 150},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/shields/shield_energy_saver_kit_mk3.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shield_energy_saver_kit_mk3, "object/draft_schematic/space/shields/shield_energy_saver_kit_mk3.iff")

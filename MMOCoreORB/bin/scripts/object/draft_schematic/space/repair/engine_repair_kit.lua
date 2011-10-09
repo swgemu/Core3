@@ -49,13 +49,13 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
 
    craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
-   size = 0, 
+   size = 1, 
 
    xpType = "shipwright", 
    xp = 32, 
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
@@ -65,8 +65,8 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
    ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", ""},
-   resourceQuantities = {20, 0},
+   resourceTypes = {"steel", "fiberplast"},
+   resourceQuantities = {60, 50},
    combineTypes = {0, 0},
    contribution = {100, 100},
 

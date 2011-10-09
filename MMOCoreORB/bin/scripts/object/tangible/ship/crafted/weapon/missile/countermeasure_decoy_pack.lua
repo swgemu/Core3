@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_missile_countermeasure_decoy_pack = object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_maximum_chaff_effectiveness", "exp_min_chaff_effectiveness", "null", "exp_ammo", "null"},
+	experimentalSubGroupTitles = {"null", "null", "fltmaxeffectiveness", "fltmineffectiveness", "fltrefirerate", "fltmaxammo", "energy_per_shot"},
+	experimentalMin = {0, 0, 77, 51, 289, 12, 0},
+	experimentalMax = {0, 0, 104, 69, 391, 16, 0},
+	experimentalPrecision = {0, 0, 10, 10, 0, 10, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_decoy_pack, "object/tangible/ship/crafted/weapon/missile/countermeasure_decoy_pack.iff")

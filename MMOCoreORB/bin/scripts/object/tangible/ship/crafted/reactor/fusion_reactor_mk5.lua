@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_reactor_fusion_reactor_mk5 = object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk5:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 1, 1, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "XX", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hpmax", "null", "exp_mass", "exp_armorhpmax", "null", "null", "exp_energy_gen_rate"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "energy_gen_rate"},
+	experimentalMin = {0, 0, 935, 1, 33150, 468, 1, 0, 13175},
+	experimentalMax = {0, 0, 1265, 1, 44850, 633, 1, 0, 17825},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_fusion_reactor_mk5, "object/tangible/ship/crafted/reactor/fusion_reactor_mk5.iff")

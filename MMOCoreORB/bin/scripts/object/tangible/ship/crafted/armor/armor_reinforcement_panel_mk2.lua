@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_armor_armor_reinforcement_panel_mk2 = object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "XX", "HR", "UT", "OQ", "UT"},
+	experimentalWeights = {1, 1, 1, 1, 3, 1, 3},
+	experimentalGroupTitles = {"null", "null", "exp_hitpointsmax", "exp_armorhpmax", "exp_mass"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "armorhpmax", "mass"},
+	experimentalMin = {0, 0, 98, 98, 255},
+	experimentalMax = {0, 0, 132, 132, 345},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_armor_reinforcement_panel_mk2, "object/tangible/ship/crafted/armor/armor_reinforcement_panel_mk2.iff")

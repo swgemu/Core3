@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_booster_extended_life_fuel_cell_mk5 = object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk5:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2},
+	experimentalGroupTitles = {"null", "null", "exp_booster_energy", "exp_booster_recharge"},
+	experimentalSubGroupTitles = {"null", "null", "booster_energy", "booster_recharge"},
+	experimentalMin = {0, 0, 410, -19},
+	experimentalMax = {0, 0, 761, -10},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_extended_life_fuel_cell_mk5, "object/tangible/ship/crafted/booster/extended_life_fuel_cell_mk5.iff")

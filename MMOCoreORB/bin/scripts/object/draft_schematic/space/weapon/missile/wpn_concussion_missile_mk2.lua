@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_weapon_missile_wpn_concussion_missile_mk2 = object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk2:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark II Concussion Missile Pack",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 0, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "warhead"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "radioactive_polymetric"},
+   resourceQuantities = {1000, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/missile/wpn_concussion_missile_mk2.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_wpn_concussion_missile_mk2, "object/draft_schematic/space/weapon/missile/wpn_concussion_missile_mk2.iff")

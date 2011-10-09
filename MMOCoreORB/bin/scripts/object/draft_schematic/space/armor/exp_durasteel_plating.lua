@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_armor_exp_durasteel_plating = object_draft_schematic_space_armor_shared_exp_durasteel_plating:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark V Durasteel Plating",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 36, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 1250, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"ship_skin", "steel_frame", "armor_upgrade", "absorptive_layer", "plate_lubricant"},
+   ingredientSlotType = {0, 0, 4, 0, 0},
+   resourceTypes = {"aluminum", "steel", "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk5.iff", "ore", "petrochem_inert"},
+   resourceQuantities = {1250, 1250, 1, 1250, 1250},
+   combineTypes = {0, 0, 1, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/armor/experimental_armor.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_exp_durasteel_plating, "object/draft_schematic/space/armor/exp_durasteel_plating.iff")

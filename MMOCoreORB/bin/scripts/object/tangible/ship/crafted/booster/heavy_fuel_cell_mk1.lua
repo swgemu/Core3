@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_booster_heavy_fuel_cell_mk1 = object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk1:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1},
+	experimentalGroupTitles = {"null", "null", "exp_booster_energy", "exp_booster_consumption"},
+	experimentalSubGroupTitles = {"null", "null", "booster_energy", "booster_consumption"},
+	experimentalMin = {0, 0, 255, 17},
+	experimentalMax = {0, 0, 345, 23},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_heavy_fuel_cell_mk1, "object/tangible/ship/crafted/booster/heavy_fuel_cell_mk1.iff")

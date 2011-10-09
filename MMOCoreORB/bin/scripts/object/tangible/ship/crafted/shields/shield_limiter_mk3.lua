@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_shields_shield_limiter_mk3 = object_tangible_ship_crafted_shields_shared_shield_limiter_mk3:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_shield_recharge"},
+	experimentalSubGroupTitles = {"null", "null", "shield_max_front_hp", "shield_max_back_hp", "shield_recharge"},
+	experimentalMin = {0, 0, -243, -243, 1510},
+	experimentalMax = {0, 0, -180, -180, 2043},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_shields_shield_limiter_mk3, "object/tangible/ship/crafted/shields/shield_limiter_mk3.iff")

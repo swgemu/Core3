@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_engine_engine_overdriver_mk3 = object_draft_schematic_space_engine_shared_engine_overdriver_mk3:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Engine Overdriver - Mark III",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 27, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 125, 
+
+   assemblySkill = "engine_assembly", 
+   experimentingSkill = "engine_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "overdriving_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "ore_siliclastic_fermionic"},
+   resourceQuantities = {350, 150},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/engine/engine_overdriver_mk3.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk3.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_engine_overdriver_mk3, "object/draft_schematic/space/engine/engine_overdriver_mk3.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_capacitor_capacitor_mk4 = object_tangible_ship_crafted_capacitor_shared_capacitor_mk4:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_cap_max_energy", "exp_recharge"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "cap_max_energy", "cap_recharge_rate"},
+	experimentalMin = {0, 0, 794, 1, 11934, 397, 1, 978, 566, 23},
+	experimentalMax = {0, 0, 1075, 1, 16146, 537, 1, 1323, 765, 31},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_capacitor_mk4, "object/tangible/ship/crafted/capacitor/capacitor_mk4.iff")

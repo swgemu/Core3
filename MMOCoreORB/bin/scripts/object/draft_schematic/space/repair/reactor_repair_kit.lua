@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_repair_reactor_repair_kit = object_draft_schematic_space_repair_shared_reactor_repair_kit:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Reactor Repair Kit",
+
+   craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 32, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "fiberplast"},
+   resourceQuantities = {60, 50},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_reactor.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_reactor_repair_kit, "object/draft_schematic/space/repair/reactor_repair_kit.iff")

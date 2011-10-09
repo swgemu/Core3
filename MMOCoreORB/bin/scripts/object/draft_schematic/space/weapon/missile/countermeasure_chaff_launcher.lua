@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_weapon_missile_countermeasure_chaff_launcher = object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_launcher:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chaff Launcher",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 50, 
+
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"core", "casing"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"radioactive", "steel"},
+   resourceQuantities = {50, 150},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_launcher.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_countermeasure_chaff_launcher, "object/draft_schematic/space/weapon/missile/countermeasure_chaff_launcher.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_droid_interface_ddi_mk1 = object_tangible_ship_crafted_droid_interface_shared_ddi_mk1:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 1, 2, 3},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "CD", "OQ", "SR"},
+	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_droid_speed"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "droid_command_speed"},
+	experimentalMin = {0, 0, 128, 1, 340, 64, 1, 425, 26},
+	experimentalMax = {0, 0, 173, 1, 460, 86, 1, 575, 35},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_ddi_mk1, "object/tangible/ship/crafted/droid_interface/ddi_mk1.iff")

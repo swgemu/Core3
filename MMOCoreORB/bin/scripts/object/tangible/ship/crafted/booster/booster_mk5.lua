@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_booster_booster_mk5 = object_tangible_ship_crafted_booster_shared_booster_mk5:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 1, 2, 3, 3, 3, 3, 3},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_maintenance", "exp_booster_energy", "exp_booster_recharge", "booster_consumption", "exp_booster_speed", "exp_booster_acceleration"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "booster_energy", "booster_recharge", "booster_consumption", "booster_speed", "booster_acceleration"},
+	experimentalMin = {0, 0, 770, 1, 19110, 385, 1, 420, 1025, 26, 102, 16, 20},
+	experimentalMax = {0, 0, 1430, 1, 35490, 715, 1, 780, 1903, 48, 190, 30, 38},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_booster_mk5, "object/tangible/ship/crafted/booster/booster_mk5.iff")

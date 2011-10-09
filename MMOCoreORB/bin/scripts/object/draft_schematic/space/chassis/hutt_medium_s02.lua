@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_chassis_hutt_medium_s02 = object_draft_schematic_space_chassis_shared_hutt_medium_s02:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Dunelizard Chassis Blueprints, Style 2",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 27, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 3750, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"frame", "advanced_frame_infrastructure", "structural_support", "base_chassis_plating", "basic_heat_shielding", "ship_skin"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0},
+   resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum"},
+   resourceQuantities = {5000, 2000, 2000, 2000, 2000, 2000},
+   combineTypes = {0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/components/chassis/hutt_medium_s02_chassis_token.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_hutt_medium_s02, "object/draft_schematic/space/chassis/hutt_medium_s02.iff")

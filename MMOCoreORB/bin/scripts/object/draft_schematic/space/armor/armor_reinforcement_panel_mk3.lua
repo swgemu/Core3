@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_armor_armor_reinforcement_panel_mk3 = object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Armor Reinforcement Panel - Mark III",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 27, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"reinforcing_ship_materials", "strong_alloy"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "steel_bicorbantium"},
+   resourceQuantities = {350, 150},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/armor/armor_reinforcement_panel_mk3.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/armor/shared_armor_reinforcement_panel_mk3.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_armor_reinforcement_panel_mk3, "object/draft_schematic/space/armor/armor_reinforcement_panel_mk3.iff")

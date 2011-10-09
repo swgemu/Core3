@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_booster_fast_charge_fuel_cell_mk2 = object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2},
+	experimentalGroupTitles = {"null", "null", "exp_booster_energy", "exp_booster_recharge"},
+	experimentalSubGroupTitles = {"null", "null", "booster_energy", "booster_recharge"},
+	experimentalMin = {0, 0, -572, 8},
+	experimentalMax = {0, 0, -308, 14},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_fast_charge_fuel_cell_mk2, "object/tangible/ship/crafted/booster/fast_charge_fuel_cell_mk2.iff")

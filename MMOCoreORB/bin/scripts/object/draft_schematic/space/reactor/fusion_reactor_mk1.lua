@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_reactor_fusion_reactor_mk1 = object_draft_schematic_space_reactor_shared_fusion_reactor_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark I Fusion Reactor",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 50, 
+
+   assemblySkill = "power_systems", 
+   experimentingSkill = "power_systems_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"reactor_casing", "reactor_electrical_core", "reactor_upgrade", "reactor_radioactive_core", "reactor_cooling_system"},
+   ingredientSlotType = {0, 0, 4, 0, 0},
+   resourceTypes = {"steel", "copper", "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk1.iff", "radioactive", "gas_inert"},
+   resourceQuantities = {50, 50, 1, 50, 50},
+   combineTypes = {0, 0, 1, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/reactor/fusion_reactor_mk1.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_fusion_reactor_mk1, "object/draft_schematic/space/reactor/fusion_reactor_mk1.iff")

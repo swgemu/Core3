@@ -44,9 +44,9 @@
 object_tangible_ship_crafted_repair_repair_kit_engine = object_tangible_ship_crafted_repair_shared_repair_kit_engine:new {
 
 
-	numberExperimentalProperties = {1, 1, 1},
-	experimentalProperties = {"XX", "XX", "XX"},
-	experimentalWeights = {1, 1, 1},
+	numberExperimentalProperties = {1, 1, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 3},
 	experimentalGroupTitles = {"null", "null", "exp_repaircharges"},
 	experimentalSubGroupTitles = {"null", "null", "repaircharges"},
 	experimentalMin = {0, 0, 8000},

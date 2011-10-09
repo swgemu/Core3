@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_chassis_tie_light_duty = object_draft_schematic_space_chassis_shared_tie_light_duty:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "TIE Light Duty Fighter Chassis Blueprints",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 1250, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "chassis_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"frame", "ship_skin", "structural_support", "basic_heat_shielding"},
+   ingredientSlotType = {0, 1, 1, 1},
+   resourceTypes = {"steel", "aluminum", "ore", "petrochem_inert"},
+   resourceQuantities = {2000, 1000, 1000, 1000},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/components/chassis/tie_light_duty_chassis_token.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_tie_light_duty, "object/draft_schematic/space/chassis/tie_light_duty.iff")

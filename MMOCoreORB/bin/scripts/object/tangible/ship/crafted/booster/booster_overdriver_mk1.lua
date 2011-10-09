@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_booster_booster_overdriver_mk1 = object_tangible_ship_crafted_booster_shared_booster_overdriver_mk1:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2, 2, 1},
+	experimentalGroupTitles = {"null", "null", "exp_booster_acceleration", "exp_booster_speed", "exp_mass"},
+	experimentalSubGroupTitles = {"null", "null", "booster_acceleration", "booster_speed", "mass"},
+	experimentalMin = {0, 0, 7, 7, 147},
+	experimentalMax = {0, 0, 13, 14, 273},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_booster_overdriver_mk1, "object/tangible/ship/crafted/booster/booster_overdriver_mk1.iff")

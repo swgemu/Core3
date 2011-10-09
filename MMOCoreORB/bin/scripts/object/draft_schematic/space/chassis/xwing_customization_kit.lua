@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_chassis_xwing_customization_kit = object_draft_schematic_space_chassis_shared_xwing_customization_kit:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Starship Paint Kit",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 50, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "paint"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "petrochem_inert"},
+   resourceQuantities = {250, 300},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/chassis/xwing_customization_kit.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_xwing_customization_kit, "object/draft_schematic/space/chassis/xwing_customization_kit.iff")

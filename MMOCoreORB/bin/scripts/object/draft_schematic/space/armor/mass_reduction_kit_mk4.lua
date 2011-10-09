@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_armor_mass_reduction_kit_mk4 = object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mass Reduction Kit - Mark IV",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"lighter_ship_materials", "ultralight_alloy"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"aluminum", "aluminum_perovskitic"},
+   resourceQuantities = {850, 400},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/armor/mass_reduction_kit_mk4.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/armor/shared_mass_reduction_kit_mk4.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_mass_reduction_kit_mk4, "object/draft_schematic/space/armor/mass_reduction_kit_mk4.iff")

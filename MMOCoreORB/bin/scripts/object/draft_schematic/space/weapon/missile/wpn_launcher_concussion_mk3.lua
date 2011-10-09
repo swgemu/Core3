@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_weapon_missile_wpn_launcher_concussion_mk3 = object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk3:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark III Concussion Launcher",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 1250, 
+
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "weapon_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "ammo_chamber"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "aluminum"},
+   resourceQuantities = {4000, 1000},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/missile/wpn_launcher_concussion_mk3.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk3.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_wpn_launcher_concussion_mk3, "object/draft_schematic/space/weapon/missile/wpn_launcher_concussion_mk3.iff")

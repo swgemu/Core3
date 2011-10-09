@@ -54,8 +54,8 @@ object_draft_schematic_space_repair_chassis_repair_kit = object_draft_schematic_
    xpType = "shipwright", 
    xp = 32, 
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_engine_engine_limiter_mk5 = object_draft_schematic_space_engine_shared_engine_limiter_mk5:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Engine Limiter - Mark V",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 34, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 625, 
+
+   assemblySkill = "engine_assembly", 
+   experimentingSkill = "engine_experimentation", 
+   customizationSkill = "engine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "speed_limiting_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "ore_siliclastic_fermionic"},
+   resourceQuantities = {2000, 500},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/engine/engine_limiter_mk5.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/engine/shared_engine_limiter_mk5.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_engine_limiter_mk5, "object/draft_schematic/space/engine/engine_limiter_mk5.iff")

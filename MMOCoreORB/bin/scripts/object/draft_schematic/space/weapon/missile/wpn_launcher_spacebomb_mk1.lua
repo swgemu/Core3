@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_weapon_missile_wpn_launcher_spacebomb_mk1 = object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark I Spacebomb Launcher",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 19, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 625, 
+
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "ammo_chamber"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "aluminum"},
+   resourceQuantities = {2000, 500},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/missile/wpn_launcher_spacebomb_mk1.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_wpn_launcher_spacebomb_mk1, "object/draft_schematic/space/weapon/missile/wpn_launcher_spacebomb_mk1.iff")

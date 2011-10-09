@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_droid_interface_maintenance_reduction_kit_mk4 = object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk4:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Maintenance Reduction Kit - Mark IV",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "advanced_assembly", 
+   experimentingSkill = "advanced_ship_experimentation", 
+   customizationSkill = "advanced_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "droid_interface_electronics"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "copper_borocarbitic"},
+   resourceQuantities = {1000, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/droid_interface/maintenance_reduction_kit_mk4.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk4.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_maintenance_reduction_kit_mk4, "object/draft_schematic/space/droid_interface/maintenance_reduction_kit_mk4.iff")

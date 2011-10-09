@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_armor_mass_reduction_kit_mk2 = object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},
+	experimentalWeights = {1, 1, 1, 3, 1, 3, 1, 3},
+	experimentalGroupTitles = {"null", "null", "exp_hitpointsmax", "exp_armorhpmax", "exp_mass"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "armorhpmax", "mass"},
+	experimentalMin = {0, 0, -106, -106, -230},
+	experimentalMax = {0, 0, -78, -78, -170},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_mass_reduction_kit_mk2, "object/tangible/ship/crafted/armor/mass_reduction_kit_mk2.iff")

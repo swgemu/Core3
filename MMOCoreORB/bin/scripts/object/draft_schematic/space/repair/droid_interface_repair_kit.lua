@@ -54,8 +54,8 @@ object_draft_schematic_space_repair_droid_interface_repair_kit = object_draft_sc
    xpType = "shipwright", 
    xp = 32, 
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
@@ -65,8 +65,8 @@ object_draft_schematic_space_repair_droid_interface_repair_kit = object_draft_sc
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
    ingredientSlotType = {0, 0},
-   resourceTypes = {"", ""},
-   resourceQuantities = {0, 0},
+   resourceTypes = {"steel", "fiberplast"},
+   resourceQuantities = {60, 50},
    combineTypes = {0, 0},
    contribution = {100, 100},
 

@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_engine_engine_limiter_mk2 = object_tangible_ship_crafted_engine_shared_engine_limiter_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_energy_maintenance", "exp_engine_speed"},
+	experimentalSubGroupTitles = {"null", "null", "energy_maintenance", "engine_speed"},
+	experimentalMin = {0, 0, -224, -11},
+	experimentalMax = {0, 0, -166, -8},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_engine_limiter_mk2, "object/tangible/ship/crafted/engine/engine_limiter_mk2.iff")

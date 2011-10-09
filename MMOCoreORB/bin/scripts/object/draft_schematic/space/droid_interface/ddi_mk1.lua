@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_droid_interface_ddi_mk1 = object_draft_schematic_space_droid_interface_shared_ddi_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark I Droid Interface",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 50, 
+
+   assemblySkill = "advanced_assembly", 
+   experimentingSkill = "advanced_ship_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "neural_network_fibers", "droid_interface_upgrade", "electronic_components", "protective_elements"},
+   ingredientSlotType = {0, 0, 4, 0, 0},
+   resourceTypes = {"steel", "fiberplast", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff", "copper", "ore"},
+   resourceQuantities = {50, 50, 1, 50, 50},
+   combineTypes = {0, 0, 1, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/droid_interface/ddi_mk1.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_ddi_mk1, "object/draft_schematic/space/droid_interface/ddi_mk1.iff")

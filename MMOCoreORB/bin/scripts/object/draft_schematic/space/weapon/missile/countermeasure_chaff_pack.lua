@@ -54,8 +54,8 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_d
    xpType = "shipwright", 
    xp = 25, 
 
-   assemblySkill = "jedi_saber_assembly", 
-   experimentingSkill = "medicine_experimentation", 
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

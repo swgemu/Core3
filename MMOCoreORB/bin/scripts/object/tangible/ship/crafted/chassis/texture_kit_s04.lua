@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_chassis_texture_kit_s04 = object_tangible_ship_crafted_chassis_shared_texture_kit_s04:new {
 
+
+	numberExperimentalProperties = {1, 1},
+	experimentalProperties = {"XX", "XX"},
+	experimentalWeights = {1, 1},
+	experimentalGroupTitles = {"null", "null"},
+	experimentalSubGroupTitles = {"null", "null"},
+	experimentalMin = {0, 0},
+	experimentalMax = {0, 0},
+	experimentalPrecision = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_texture_kit_s04, "object/tangible/ship/crafted/chassis/texture_kit_s04.iff")

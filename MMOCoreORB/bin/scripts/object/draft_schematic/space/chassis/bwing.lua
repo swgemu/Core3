@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_chassis_bwing = object_draft_schematic_space_chassis_shared_bwing:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "B-Wing Chassis Blueprints",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 43, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 37500, 
+
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"frame", "advanced_frame_infrastructure", "structural_support", "base_chassis_plating", "basic_heat_shielding", "ship_skin", "shock_absorption_layer", "cockpit_insulation", "advanced_structural_support", "chassis_pulse_shielding"},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast", "ore_siliclastic", "copper"},
+   resourceQuantities = {60000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000},
+   combineTypes = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/components/chassis/bwing_chassis_token.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_bwing, "object/draft_schematic/space/chassis/bwing.iff")

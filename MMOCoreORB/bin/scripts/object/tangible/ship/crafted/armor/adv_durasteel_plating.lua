@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_armor_adv_durasteel_plating = object_tangible_ship_crafted_armor_shared_adv_durasteel_plating:new {
 
+
+	numberExperimentalProperties = {1, 1, 3, 1, 3, 3, 1, 1},
+	experimentalProperties = {"XX", "XX", "HR", "OQ", "UT", "XX", "HR", "OQ", "UT", "HR", "OQ", "UT", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
+	experimentalMin = {0, 0, 1059, 1, 10608, 1165, 0, 0},
+	experimentalMax = {0, 0, 1433, 1, 14352, 1576, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_adv_durasteel_plating, "object/tangible/ship/crafted/armor/adv_durasteel_plating.iff")

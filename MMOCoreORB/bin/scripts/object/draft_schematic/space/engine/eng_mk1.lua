@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_engine_eng_mk1 = object_draft_schematic_space_engine_shared_eng_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark I Starfighter Engine",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 50, 
+
+   assemblySkill = "engine_assembly", 
+   experimentingSkill = "engine_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"engine_housing", "engine_core", "engine_upgrade", "fuel_mixing_chamber", "engine_nozzles"},
+   ingredientSlotType = {0, 0, 4, 0, 0},
+   resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/engine/shared_eng_mk1.iff", "iron", "aluminum"},
+   resourceQuantities = {50, 50, 1, 50, 50},
+   combineTypes = {0, 0, 1, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/engine/eng_mk1.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_eng_mk1, "object/draft_schematic/space/engine/eng_mk1.iff")

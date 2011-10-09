@@ -43,6 +43,39 @@
 
 object_draft_schematic_space_weapon_missile_countermeasure_decoy_pack = object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_pack:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Sensor Decoy Pack",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 13, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 63, 
+
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "chaff_bits"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "metal"},
+   resourceQuantities = {200, 50},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/missile/countermeasure_decoy_pack.iff",
+
+   additionalTemplates = {
+              "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_pack.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_countermeasure_decoy_pack, "object/draft_schematic/space/weapon/missile/countermeasure_decoy_pack.iff")

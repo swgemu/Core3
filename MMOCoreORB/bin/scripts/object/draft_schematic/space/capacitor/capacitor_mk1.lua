@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_capacitor_capacitor_mk1 = object_draft_schematic_space_capacitor_shared_capacitor_mk1:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mark I Weapons Capacitor",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 21, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 50, 
+
+   assemblySkill = "advanced_assembly", 
+   experimentingSkill = "advanced_ship_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "capacitor_charge_core", "cooling_agent", "capacitor_upgrade", "capacitor_outer_shielding"},
+   ingredientSlotType = {0, 0, 0, 4, 0},
+   resourceTypes = {"steel", "copper", "gas_inert", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff", "ore"},
+   resourceQuantities = {50, 50, 50, 1, 50},
+   combineTypes = {0, 0, 0, 1, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/capacitor/capacitor_mk1.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_capacitor_mk1, "object/draft_schematic/space/capacitor/capacitor_mk1.iff")
