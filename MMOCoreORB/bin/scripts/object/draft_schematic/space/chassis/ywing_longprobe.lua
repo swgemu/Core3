@@ -45,7 +45,7 @@ object_draft_schematic_space_chassis_ywing_longprobe = object_draft_schematic_sp
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Y-Wing "Longprobe" Chassis Blueprints",
+   customObjectName = "Y-Wing \"Longprobe\" Chassis Blueprints",
 
    craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
    complexity = 31, 

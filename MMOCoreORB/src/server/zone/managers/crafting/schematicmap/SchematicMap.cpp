@@ -159,10 +159,17 @@ void SchematicMap::loadDraftSchematicFile() {
 		luaObject.pop();
 
 		if (schematic == NULL) {
-			schematic = dynamic_cast<DraftSchematic*> (objectManager->createObject(servercrc, 1, "draftschematics"));
+			try {
+				schematic = dynamic_cast<DraftSchematic*> (objectManager->createObject(servercrc, 1, "draftschematics"));
 
-			if(schematic == NULL) {
-				error("Could not create schematic with crc: " + String::valueOf(servercrc));
+				if(schematic == NULL) {
+					error("Could not create schematic with crc: " + String::valueOf(servercrc));
+					continue;
+				}
+
+			} catch (Exception& e) {
+				error(e.getMessage());
+				error("Could not create schematic with template: " + path);
 				continue;
 			}
 
