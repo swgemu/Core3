@@ -1175,7 +1175,7 @@ int FishingManagerImplementation::notifyObserverEvent(unsigned int eventType, Ob
 	// server/zone/managers/minigames/FishingManager.idl():  		return 
 	if (eventType == ObserverEventType::POSITIONCHANGED){
 	// server/zone/managers/minigames/FishingManager.idl():  			checkFishingOnPositionUpdate((CreatureObject) observable);
-	checkFishingOnPositionUpdate(cast<CreatureObject*>(observable));
+	checkFishingOnPositionUpdate((CreatureObject*) observable);
 	// server/zone/managers/minigames/FishingManager.idl():  			return 0;
 	return 0;
 }
@@ -1183,7 +1183,7 @@ int FishingManagerImplementation::notifyObserverEvent(unsigned int eventType, Ob
 	else 	// server/zone/managers/minigames/FishingManager.idl():  		return 
 	if (eventType == ObserverEventType::CLOSECONTAINER){
 	// server/zone/managers/minigames/FishingManager.idl():  			return notifyCloseContainer((CreatureObject)arg1, (SceneObject)observable);
-	return notifyCloseContainer(cast<CreatureObject*>(arg1), cast<SceneObject*>(observable));
+	return notifyCloseContainer((CreatureObject*) arg1, (SceneObject*) observable);
 }
 	// server/zone/managers/minigames/FishingManager.idl():  		return 1;
 	return 1;

@@ -87,7 +87,7 @@ class StructureObject extends TangibleObject {
 	protected float surplusMaintenance;
 	protected float surplusPower;
 
-	private static final string MAINTENANCE_FEES_1;
+	private static transient final string MAINTENANCE_FEES_1;
 	
 	public StructureObject() {
 		Logger.setLoggingName("StructureObject");

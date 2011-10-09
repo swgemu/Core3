@@ -389,12 +389,12 @@ Account* LoginServerImplementation::getAccount(unsigned int accountID) {
 
 LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage() {
 	// server/login/LoginServer.idl():  		return (LoginEnumCluster) enumClusterMessage.clone();
-	return cast<LoginEnumCluster*>(enumClusterMessage->clone());
+	return (LoginEnumCluster*) enumClusterMessage->clone();
 }
 
 LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
 	// server/login/LoginServer.idl():  		return (LoginClusterStatus) clusterStatusMessage.clone();
-	return cast<LoginClusterStatus*>(clusterStatusMessage->clone());
+	return (LoginClusterStatus*) clusterStatusMessage->clone();
 }
 
 /*

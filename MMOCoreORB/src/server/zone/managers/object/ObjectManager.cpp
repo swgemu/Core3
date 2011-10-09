@@ -1143,6 +1143,8 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 		localObjectDirectory.removeHelper(object->_getObjectID());
 	}
 
+	info("finished deleting objects from ram", true);
+
 #ifdef WITH_STM
 	TransactionalMemoryManager::instance()->unblockTransactions();
 #endif

@@ -455,6 +455,9 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	if (scno == _this)
 		return;
 
+	if (entry == followObject.get())
+		setFollowObject(NULL);
+
 	if (scno->isPlayerCreature()) {
 		if ((--numberOfPlayersInRange <= 0)  && (despawnEvent == NULL)) {
 			/*despawnEvent = new DespawnCreatureOnPlayerDissappear(_this);

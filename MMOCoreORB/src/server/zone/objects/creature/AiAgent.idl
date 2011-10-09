@@ -113,7 +113,7 @@ class AiAgent extends CreatureObject {
 	
 	protected boolean despawnOnNoPlayerInRange;
 	
-	@weakReference
+	//@weakReference
 	protected SceneObject followObject;
 	protected unsigned int followState;
 	

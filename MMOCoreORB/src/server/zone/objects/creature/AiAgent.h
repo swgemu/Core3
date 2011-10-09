@@ -489,7 +489,7 @@ protected:
 
 	bool despawnOnNoPlayerInRange;
 
-	ManagedWeakReference<SceneObject* > followObject;
+	ManagedReference<SceneObject* > followObject;
 
 	unsigned int followState;
 

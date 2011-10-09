@@ -64,7 +64,7 @@ public:
 	/*
 	 * Constructor
 	 */
-	AttachmentEntry() {
+	AttachmentEntry() : Serializable() {
 		addSerializableVariable("skillModifiers", &skillModifiers);
 		addSerializableVariable("skillModifierValues", &skillModifierValues);
 	}
@@ -72,6 +72,9 @@ public:
 	AttachmentEntry(const AttachmentEntry& entry) : Object(), Serializable() {
 		skillModifiers = entry.skillModifiers;
 		skillModifierValues = entry.skillModifierValues;
+
+		addSerializableVariable("skillModifiers", &skillModifiers);
+		addSerializableVariable("skillModifierValues", &skillModifierValues);
 	}
 
 	AttachmentEntry& operator=(const AttachmentEntry& entry) {
@@ -85,12 +88,12 @@ public:
 	}
 
 
-	void add(String key, int value) {
+	void add(const String& key, int value) {
 		skillModifiers.add(key);
 		skillModifierValues.put(key, value);
 	}
 
-	void remove(String key) {
+	void remove(const String& key) {
 		skillModifiers.removeElement(key);
 		skillModifierValues.drop(key);
 	}

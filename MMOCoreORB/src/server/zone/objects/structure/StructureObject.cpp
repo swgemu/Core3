@@ -399,14 +399,14 @@ int StructureObject::getRedeedCost() {
 }
 
 PlayerObject* StructureObject::getOwnerObject() {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETOWNEROBJECT__);
 
-		return (PlayerObject*) method.executeWithObjectReturn();
+		return static_cast<PlayerObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getOwnerObject();
 }
@@ -451,7 +451,7 @@ int StructureObject::getLotSize() {
 }
 
 float StructureObject::getMaintenanceRate() {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -464,7 +464,7 @@ float StructureObject::getMaintenanceRate() {
 }
 
 String StructureObject::getMaintenanceMods() {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1443,7 +1443,7 @@ int StructureObjectAdapter::getRedeedCost() {
 }
 
 PlayerObject* StructureObjectAdapter::getOwnerObject() {
-	return ((StructureObjectImplementation*) impl)->getOwnerObject();
+	return (static_cast<StructureObjectImplementation*>(impl))->getOwnerObject();
 }
 
 unsigned long long StructureObjectAdapter::getOwnerObjectID() {
@@ -1459,11 +1459,11 @@ int StructureObjectAdapter::getLotSize() {
 }
 
 float StructureObjectAdapter::getMaintenanceRate() {
-	return ((StructureObjectImplementation*) impl)->getMaintenanceRate();
+	return (static_cast<StructureObjectImplementation*>(impl))->getMaintenanceRate();
 }
 
 String StructureObjectAdapter::getMaintenanceMods() {
-	return ((StructureObjectImplementation*) impl)->getMaintenanceMods();
+	return (static_cast<StructureObjectImplementation*>(impl))->getMaintenanceMods();
 }
 
 int StructureObjectAdapter::getBaseMaintenanceRate() {

@@ -184,7 +184,7 @@ public:
 				TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(incomingTano);
 				dtano3->setQuantity(newCount);
 				dtano3->close();
-				incomingTano->getParent()->broadcastMessage(dtano3, true);
+				incomingTano->broadcastMessage(dtano3, true);
 
 				TangibleObject* newTano = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
 				newTano->setUseCount(needs, false);

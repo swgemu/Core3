@@ -103,10 +103,11 @@ void AuctionManagerImplementation::checkVendorItems() {
 				//Send the mail to the vendor owner
 				String sender = "auctioner";
 
-				PlayerManager* pman = zoneServer->getPlayerManager();
+				/*PlayerManager* pman = zoneServer->getPlayerManager();
 				ManagedReference<CreatureObject*> seller = pman->getPlayer(item->getOwnerName());
 
-				Locker _locker(seller);
+				if (seller)
+				Locker _locker(seller);*/
 
 				UnicodeString subject1("@auction:subject_vendor_seller");
 

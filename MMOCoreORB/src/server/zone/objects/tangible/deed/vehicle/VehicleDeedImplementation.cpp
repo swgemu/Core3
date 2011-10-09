@@ -73,8 +73,13 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		return 1;
 	}
 
-	VehicleControlDevice* vehicleControlDevice = cast<VehicleControlDevice*>( server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1));
-	VehicleObject* vehicle = cast<VehicleObject*>( server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1));
+	VehicleControlDevice* vehicleControlDevice = dynamic_cast<VehicleControlDevice*>(server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1));
+	VehicleObject* vehicle = dynamic_cast<VehicleObject*>(server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1));
+
+	if (vehicle == NULL) {
+		player->sendSystemMessage("wrong vehicle object template " + generatedObjectTemplate);
+		return 1;
+	}
 
 	vehicle->setMaxCondition(hitPoints);
 	vehicle->setConditionDamage(0);

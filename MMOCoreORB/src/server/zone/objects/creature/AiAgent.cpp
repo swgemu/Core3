@@ -1256,7 +1256,7 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const St
 	}
 
 	if (_name == "followObject") {
-		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&followObject, stream);
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&followObject, stream);
 		return true;
 	}
 
@@ -1371,7 +1371,7 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&followObject, stream);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&followObject, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
