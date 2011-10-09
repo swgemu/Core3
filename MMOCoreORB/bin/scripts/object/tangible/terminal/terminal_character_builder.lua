@@ -971,39 +971,39 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					},
 					"Master", "outdoors_scout_master"
 				},
-				--"Shipwright",
-				--{
-					--"Novice", "crafting_shipwright_novice",
-					--"Spaceframe Engineering",
-					--{
-						--"Spaceframe Engineering I", "crafting_shipwright_engineering_01",
-						--"Spaceframe Engineering II", "crafting_shipwright_engineering_02",
-						--"Spaceframe Engineering III", "crafting_shipwright_engineering_03",
-						--"Spaceframe Engineering IV", "crafting_shipwright_engineering_04"
-					--},
-					--"Propulsion Technology",
-					--{
-						--"Propulsion Technology I", "crafting_shipwright_propulsion_01",
-						--"Propulsion Technology II", "crafting_shipwright_propulsion_02",
-						--"Propulsion Technology III", "crafting_shipwright_propulsion_03",
-						--"Propulsion Technology IV", "crafting_shipwright_propulsion_04"
-					--},
-					--"Core Systems",
-					--{
-						--"Core Systems I", "crafting_shipwright_systems_01",
-						--"Core Systems II", "crafting_shipwright_systems_02",
-						--"Core Systems III", "crafting_shipwright_systems_03",
-						--"Core Systems IV", "crafting_shipwright_systems_04"
-					--},
-					--"Defense Systems",
-					--{
-						--"Defense Systems I", "crafting_shipwright_defense_01",
-						--"Defense Systems II", "crafting_shipwright_defense_02",
-						--"Defense Systems III", "crafting_shipwright_defense_03",
-						--"Defense Systems IV", "crafting_shipwright_defense_04"
-					--},
-					--"Master", "crafting_shipwright_master"
-				--},
+				"Shipwright",
+				{
+					"Novice", "crafting_shipwright_novice",
+					"Spaceframe Engineering",
+					{
+						"Spaceframe Engineering I", "crafting_shipwright_engineering_01",
+						"Spaceframe Engineering II", "crafting_shipwright_engineering_02",
+						"Spaceframe Engineering III", "crafting_shipwright_engineering_03",
+						"Spaceframe Engineering IV", "crafting_shipwright_engineering_04"
+					},
+					"Propulsion Technology",
+					{
+						"Propulsion Technology I", "crafting_shipwright_propulsion_01",
+						"Propulsion Technology II", "crafting_shipwright_propulsion_02",
+						"Propulsion Technology III", "crafting_shipwright_propulsion_03",
+						"Propulsion Technology IV", "crafting_shipwright_propulsion_04"
+					},
+					"Core Systems",
+					{
+						"Core Systems I", "crafting_shipwright_systems_01",
+						"Core Systems II", "crafting_shipwright_systems_02",
+						"Core Systems III", "crafting_shipwright_systems_03",
+						"Core Systems IV", "crafting_shipwright_systems_04"
+					},
+					"Defense Systems",
+					{
+						"Defense Systems I", "crafting_shipwright_defense_01",
+						"Defense Systems II", "crafting_shipwright_defense_02",
+						"Defense Systems III", "crafting_shipwright_defense_03",
+						"Defense Systems IV", "crafting_shipwright_defense_04"
+					},
+					"Master", "crafting_shipwright_master"
+				},
 				"Smuggler",
 				{
 					"Novice", "combat_smuggler_novice",
