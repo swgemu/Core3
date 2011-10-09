@@ -266,8 +266,7 @@ void CreatureImplementation::scheduleDespawn() {
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
 	//despawn->schedule(300000); /// 5 minutes
-	despawn->schedule(45000); /// 45 seconds
-	addPendingTask("despawn", despawn);
+	addPendingTask("despawn", despawn, 45000); /// 45 seconds
 }
 
 bool CreatureImplementation::hasOrganics() {

@@ -76,8 +76,7 @@ public:
 
 		StringIdChatParameter message("healing_response", "healing_response_59");
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "stateTreatment");
-		creature->addPendingTask("stateTreatment", task);
-		task->schedule(delay * 1000);
+		creature->addPendingTask("stateTreatment", task, delay * 1000);
 	}
 
 	void awardXp(CreatureObject* creature, String type, int power) {

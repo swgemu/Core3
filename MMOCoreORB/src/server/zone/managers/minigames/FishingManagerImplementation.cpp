@@ -1197,16 +1197,16 @@ FishingEvent* FishingManagerImplementation::createFishingEvent(CreatureObject* p
 	if ((player == NULL) || (zoneServer == NULL))
 		return NULL;
 
-	FishingEvent* fishingEvent = new FishingEvent(player, zoneServer, state);
-	if (fishingEvent != NULL) {
-		int timer = System::random(1000);
-		if (state >= CATCH)
-			fishingEvent->schedule(timer+4000);
-		else
-			fishingEvent->schedule(timer+6000);
-		player->removePendingTask("fishing");
-		player->addPendingTask("fishing", fishingEvent);
-	}
+	Reference<FishingEvent*> fishingEvent = new FishingEvent(player, zoneServer, state);
+	player->removePendingTask("fishing");
+
+	int timer = System::random(1000);
+
+	if (state >= CATCH)
+		player->addPendingTask("fishing", fishingEvent, timer + 4000);
+	else
+		player->addPendingTask("fishing", fishingEvent, timer + 6000);
+
 	return fishingEvent;
 }
 

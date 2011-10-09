@@ -43,6 +43,7 @@
 
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/player/events/MeditateTask.h"
+#include "server/zone/objects/player/events/LogoutTask.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -988,8 +989,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		}
 
 		Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature, false);
-		task->schedule(incapTime * 1000);
-		playerCreature->addPendingTask("incapacitationRecovery", task);
+		playerCreature->addPendingTask("incapacitationRecovery", task, incapTime * 1000);
 
 		StringIdChatParameter stringId;
 
@@ -1751,6 +1751,12 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 
 			if (meditateTask->isScheduled())
 				meditateTask->cancel();
+		}
+
+		// Check POSTURECHANGED disrupting Logout...
+		Reference<LogoutTask*> logoutTask = (LogoutTask*) creature->getPendingTask("logout");
+		if(logoutTask != NULL) {
+			logoutTask->cancelLogout();
 		}
 	}
 

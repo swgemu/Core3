@@ -503,8 +503,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 	Reference<SurveyTask*> surveyTask = new SurveyTask(player, surveyMessage,
 			waypoint);
-	surveyTask->schedule(3000);
-	player->addPendingTask("survey", surveyTask);
+	player->addPendingTask("survey", surveyTask, 3000);
 }
 
 void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
@@ -543,13 +542,11 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 	// Add sampleresultstask
 	Reference<SampleResultsTask*> sampleResultsTask = new SampleResultsTask(
 			player, this, density, resname);
-	sampleResultsTask->schedule(3000);
-	player->addPendingTask("sampleresults", sampleResultsTask);
+	player->addPendingTask("sampleresults", sampleResultsTask, 3000);
 
 	// Add sampletask
 	Reference<SampleTask*> sampleTask = new SampleTask(player, surveyTool);
-	sampleTask->schedule(18000);
-	player->addPendingTask("sample", sampleTask);
+	player->addPendingTask("sample", sampleTask, 18000);
 }
 
 void ResourceSpawner::sendSampleResults(CreatureObject* player,

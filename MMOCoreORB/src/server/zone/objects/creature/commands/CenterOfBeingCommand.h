@@ -106,10 +106,8 @@ public:
 		player->sendSystemMessage("combat_effects", "center_start");
 		player->showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
 
-		CenterOfBeingEvent* centerOfBeingEvent = new CenterOfBeingEvent(player);
-		centerOfBeingEvent->schedule(duration * 1000);
-
-		player->addPendingTask("centerofbeing", centerOfBeingEvent);
+		Reference<CenterOfBeingEvent*> centerOfBeingEvent = new CenterOfBeingEvent(player);
+		player->addPendingTask("centerofbeing", centerOfBeingEvent, duration * 1000);
 
 		return SUCCESS;
 	}

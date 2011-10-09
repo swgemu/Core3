@@ -861,13 +861,13 @@ unsigned long long SceneObject::getParentID() {
 		return _implementation->getParentID();
 }
 
-void SceneObject::addPendingTask(const String& name, Task* task) {
+void SceneObject::addPendingTask(const String& name, Task* task, int miliseconds) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->addPendingTask(name, task);
+		_implementation->addPendingTask(name, task, miliseconds);
 }
 
 void SceneObject::removePendingTask(const String& name) {
@@ -3456,9 +3456,11 @@ unsigned long long SceneObjectImplementation::getParentID() {
 	return 0;
 }
 
-void SceneObjectImplementation::addPendingTask(const String& name, Task* task) {
+void SceneObjectImplementation::addPendingTask(const String& name, Task* task, int miliseconds) {
 	// server/zone/objects/scene/SceneObject.idl():  		pendingTasks.put(name, task);
 	(&pendingTasks)->put(name, task);
+	// server/zone/objects/scene/SceneObject.idl():  		task.schedule(miliseconds);
+	task->schedule(miliseconds);
 }
 
 void SceneObjectImplementation::removePendingTask(const String& name) {

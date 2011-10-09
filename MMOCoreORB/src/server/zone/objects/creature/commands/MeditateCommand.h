@@ -85,8 +85,7 @@ public:
 
 		player->setMeditateState();
 
-		meditateTask->schedule(3500);
-		player->addPendingTask("meditate", meditateTask);
+		player->addPendingTask("meditate", meditateTask, 3500);
 
 		PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
 		player->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);

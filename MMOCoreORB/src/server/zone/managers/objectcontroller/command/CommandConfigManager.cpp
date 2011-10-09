@@ -70,7 +70,7 @@ CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
 	registerCommands();
 }
 
-void CommandConfigManager::loadCommandData(String filename) {
+void CommandConfigManager::loadCommandData(const String& filename) {
 	int num = 0;
 
 	IffStream* metatable = TemplateManager::instance()->openIffFile(filename);
@@ -96,7 +96,8 @@ void CommandConfigManager::loadCommandData(String filename) {
 		if (iffStream == NULL) {
 			error("Could not load commands from " + tableName + ".");
 			return;
-		}
+		} else
+			info("opened " + tableName);
 
 		DataTableIff dtiff;
 		dtiff.readObject(iffStream);
@@ -272,7 +273,7 @@ void CommandConfigManager::loadCommandData(String filename) {
 	info("Loaded " + String::valueOf(num) + " commands from " + filename + ".");
 }
 
-QueueCommand* CommandConfigManager::createCommand(String name) {
+QueueCommand* CommandConfigManager::createCommand(const String& name) {
 	QueueCommand* command = NULL;
 
 	command = commandFactory.createCommand(name, name, server);
@@ -282,12 +283,22 @@ QueueCommand* CommandConfigManager::createCommand(String name) {
 
 	slashCommands->put(command);
 
+	info("created command " + name);
+
 	return command;
 }
 
 void CommandConfigManager::registerSpecialCommands() {
 	QueueCommand* admin = new QueueCommand("admin", server);
 	slashCommands->put(admin);
+	// Fri Oct  7 17:09:26 PDT 2011 - Karl Bunch <karlbunch@karlbunch.com>
+	// Turns out this isn't in the base datatables/command/command_tables_shared.iff file
+	// Meanwhile the client sends this to the server as part of the /logout command sequence
+	QueueCommand* slashCommand = createCommand(String("logout").toLowerCase());
+
+	if (slashCommand == NULL) {
+		error("Could not create command /logout");
+	}
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -927,6 +938,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<ListCompletedQuestsCommand>(String("listCompletedQuests").toLowerCase());
 	commandFactory.registerCommand<ListenCommand>(String("listen").toLowerCase());
 	commandFactory.registerCommand<ListGuildsCommand>(String("listGuilds").toLowerCase());
+	commandFactory.registerCommand<LogoutCommand>(String("logout").toLowerCase());
 	commandFactory.registerCommand<LogoutServerCommand>(String("logoutServer").toLowerCase());
 	commandFactory.registerCommand<LootCommand>(String("loot").toLowerCase());
 	commandFactory.registerCommand<LootPlayerCorpseCommand>(String("lootPlayerCorpse").toLowerCase());

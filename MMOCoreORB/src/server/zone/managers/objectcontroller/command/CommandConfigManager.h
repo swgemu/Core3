@@ -177,8 +177,8 @@ public:
 		return commandFactory.containsCommand(name);
 	}
 
-	void loadCommandData(String filename);
-	QueueCommand* createCommand(String name);
+	void loadCommandData(const String& filename);
+	QueueCommand* createCommand(const String& name);
 
 	//lua functions
 	static int runSlashCommandsFile(lua_State* L);

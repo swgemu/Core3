@@ -868,7 +868,7 @@ public:
 
 	unsigned long long getParentID();
 
-	void addPendingTask(const String& name, Task* task);
+	void addPendingTask(const String& name, Task* task, int miliseconds);
 
 	void removePendingTask(const String& name);
 
@@ -1930,7 +1930,7 @@ public:
 
 	unsigned long long getParentID();
 
-	void addPendingTask(const String& name, Task* task);
+	void addPendingTask(const String& name, Task* task, int miliseconds);
 
 	void removePendingTask(const String& name);
 

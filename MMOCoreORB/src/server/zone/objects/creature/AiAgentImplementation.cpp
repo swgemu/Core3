@@ -446,9 +446,7 @@ void AiAgentImplementation::scheduleDespawn() {
 		return;
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
-	//despawn->schedule(300000); /// 5 minutes
-	despawn->schedule(10000); /// 45 seconds
-	addPendingTask("despawn", despawn);
+	addPendingTask("despawn", despawn, 10000); // 45 seconds
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {

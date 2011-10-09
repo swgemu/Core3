@@ -89,11 +89,7 @@ public:
 				Reference<InvisibleDelayEvent*> invisTask = new InvisibleDelayEvent(player);
 
 				player->playEffect("clienteffect/pl_force_resist_disease_self.cef");
-
-				invisTask->schedule(1600);
-
-				player->addPendingTask("invisibledelayevent", invisTask);
-
+				player->addPendingTask("invisibledelayevent", invisTask, 1600);
 			}
 
 		} else {

@@ -1595,9 +1595,8 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 	if (getPendingTask("dizzyFallDownEvent") != NULL)
 		return;
 
-	Task* task = new DizzyFallDownEvent(_this);
-	addPendingTask("dizzyFallDownEvent", task);
-	task->schedule(200);
+	Reference<Task*> task = new DizzyFallDownEvent(_this);
+	addPendingTask("dizzyFallDownEvent", task, 200);
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {

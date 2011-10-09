@@ -939,8 +939,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param task Task to add
 	 */
 	@local
-	public void addPendingTask(final string name, Task task) {
+	public void addPendingTask(final string name, Task task, int miliseconds) {
 		pendingTasks.put(name, task);
+		task.schedule(miliseconds);
 	}
 	
 	/**

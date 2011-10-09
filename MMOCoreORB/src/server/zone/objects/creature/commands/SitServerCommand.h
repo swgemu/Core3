@@ -66,6 +66,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->isInCombat())
+			return INVALIDSTATE;
+
 		if (arguments.isEmpty()) {
 			creature->setPosture(CreaturePosture::SITTING);
 		} else {

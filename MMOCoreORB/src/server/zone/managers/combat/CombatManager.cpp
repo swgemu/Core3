@@ -10,6 +10,7 @@
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/events/LogoutTask.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
@@ -49,6 +50,12 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	if (attacker->isEntertaining())
 		attacker->stopEntertaining();
+
+	Reference<LogoutTask*> logoutTask = cast<LogoutTask*>(attacker->getPendingTask("logout"));
+
+	if (logoutTask != NULL) {
+		logoutTask->cancelLogout();
+	}
 
 	Locker clocker(defender, attacker);
 

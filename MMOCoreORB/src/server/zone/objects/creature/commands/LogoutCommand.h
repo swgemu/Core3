@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/*
+ * LogoutCommand.h
+ *
+ *  Updated on: Sat Oct  8 11:00:07 EDT 2011 by lordkator
+ */
+
 #ifndef LOGOUTCOMMAND_H_
 #define LOGOUTCOMMAND_H_
 
@@ -63,9 +69,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		// TODO: Check if eligible for logout here??
+
 		return SUCCESS;
 	}
-
 };
 
 #endif //LOGOUTCOMMAND_H_

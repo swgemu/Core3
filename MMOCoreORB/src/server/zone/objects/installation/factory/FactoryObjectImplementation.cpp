@@ -366,9 +366,7 @@ bool FactoryObjectImplementation::startFactory() {
 
 	// Add sampletask
 	Reference<CreateFactoryObjectTask* > createFactoryObjectTask = new CreateFactoryObjectTask(_this);
-	addPendingTask("createFactoryObject", createFactoryObjectTask);
-
-	createFactoryObjectTask->schedule(timer * 1000);
+	addPendingTask("createFactoryObject", createFactoryObjectTask, timer * 1000);
 
 	operating = true;
 

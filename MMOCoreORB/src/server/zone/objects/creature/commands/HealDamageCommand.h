@@ -96,8 +96,7 @@ public:
 
 		StringIdChatParameter message("healing_response", "healing_response_58");
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "injuryTreatment");
-		creature->addPendingTask("injuryTreatment", task);
-		task->schedule(delay * 1000);
+		creature->addPendingTask("injuryTreatment", task, delay * 1000);
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
