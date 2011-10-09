@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_max_damage_intensifier_mk4 = object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 3, 1, 3},
+	experimentalGroupTitles = {"null", "null", "exp_damage_min", "exp_damage_max"},
+	experimentalSubGroupTitles = {"null", "null", "damage_min", "damage_max"},
+	experimentalMin = {0, 0, -183, 209},
+	experimentalMax = {0, 0, -135, 283},
+	experimentalPrecision = {0, 0, 10, 10},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_max_damage_intensifier_mk4, "object/tangible/ship/crafted/weapon/max_damage_intensifier_mk4.iff")

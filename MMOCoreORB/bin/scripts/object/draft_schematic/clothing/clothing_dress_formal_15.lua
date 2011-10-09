@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_dress_formal_15 = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Grand Healer's Robe",
+   customObjectName = "Grand Healer\'s Robe",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 

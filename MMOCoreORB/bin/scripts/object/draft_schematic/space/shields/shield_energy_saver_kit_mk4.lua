@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_shields_shield_energy_saver_kit_mk4 = object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Shield Energy Saver Kit - Mark IV",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "shields_assembly", 
+   experimentingSkill = "shields_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "energy_saving_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "fiberplast_gravitonic"},
+   resourceQuantities = {1000, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/shields/shield_energy_saver_kit_mk4.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shield_energy_saver_kit_mk4, "object/draft_schematic/space/shields/shield_energy_saver_kit_mk4.iff")

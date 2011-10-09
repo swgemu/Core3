@@ -45,7 +45,7 @@ object_draft_schematic_furniture_furniture_lamp_freestanding = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Free-standing Lamp 'Blueleaf'",
+   customObjectName = "Free-standing Lamp \'Blueleaf\'",
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 18, 

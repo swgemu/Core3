@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_wke_hood_s01 = object_draft_schematic_c
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Tree-Dweller's Hood",
+   customObjectName = "Tree-Dweller\'s Hood",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 9, 

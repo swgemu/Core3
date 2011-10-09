@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_hat_chef_01 = object_draft_schematic_cl
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Kitchen Master's Hat",
+   customObjectName = "Kitchen Master\'s Hat",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 

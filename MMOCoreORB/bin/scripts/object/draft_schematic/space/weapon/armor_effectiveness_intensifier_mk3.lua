@@ -54,8 +54,8 @@ object_draft_schematic_space_weapon_armor_effectiveness_intensifier_mk3 = object
    xpType = "shipwright", 
    xp = 125, 
 
-   assemblySkill = "shields_assembly", 
-   experimentingSkill = "shields_experimentation", 
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

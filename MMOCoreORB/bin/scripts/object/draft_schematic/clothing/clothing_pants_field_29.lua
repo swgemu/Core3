@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_pants_field_29 = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Crafter's Pants",
+   customObjectName = "Crafter\'s Pants",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 

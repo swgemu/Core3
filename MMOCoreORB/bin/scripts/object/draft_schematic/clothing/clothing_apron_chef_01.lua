@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Chef's Apron",
+   customObjectName = "Chef\'s Apron",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 

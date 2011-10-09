@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_05 = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Grand Twi'lek Headpiece",
+   customObjectName = "Grand Twi\'lek Headpiece",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 25, 

@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_04 = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Lekku Ys'rak",
+   customObjectName = "Lekku Ys\'rak",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 25, 

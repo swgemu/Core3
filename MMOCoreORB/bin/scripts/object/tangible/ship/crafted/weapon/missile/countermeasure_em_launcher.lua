@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_missile_countermeasure_em_launcher = object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_mass", "exp_armor", "null", "exp_energy_maintenance", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "energy_per_shot"},
+	experimentalMin = {0, 0, 935, 33150, 468, 1, 1020, 0},
+	experimentalMax = {0, 0, 1265, 44850, 633, 1, 1380, 0},
+	experimentalPrecision = {0, 0, 10, 10, 10, 0, 10, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_em_launcher, "object/tangible/ship/crafted/weapon/missile/countermeasure_em_launcher.iff")

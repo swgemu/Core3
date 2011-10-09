@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_weapon_missile_wpn_imagerec_missile_mk2 = object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE", "XX", "XX", "OQ", "PE", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_damage_max", "exp_damage_min", "misc", "misc", "exp_ammo", "exp_fltrefirerate"},
+	experimentalSubGroupTitles = {"null", "null", "fltmaxdamage", "fltmindamage", "fltshieldeffectiveness", "fltarmoreffectiveness", "fltmaxammo", "fltrefirerate"},
+	experimentalMin = {0, 0, 3446, 1671, 350, 350, 4, 3570},
+	experimentalMax = {0, 0, 6399, 3104, 650, 650, 8, 6630},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_wpn_imagerec_missile_mk2, "object/tangible/ship/crafted/weapon/missile/wpn_imagerec_missile_mk2.iff")

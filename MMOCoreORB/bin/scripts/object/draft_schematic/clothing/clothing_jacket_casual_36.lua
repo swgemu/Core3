@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_jacket_casual_36 = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Pilot's Jacket",
+   customObjectName = "Pilot\'s Jacket",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 22, 

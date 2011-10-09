@@ -45,7 +45,7 @@ object_draft_schematic_furniture_furniture_candle_table_s02_on = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Candle 'Theed'",
+   customObjectName = "Candle \'Theed\'",
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 20, 

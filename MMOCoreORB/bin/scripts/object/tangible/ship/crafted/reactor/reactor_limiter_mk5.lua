@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_reactor_reactor_limiter_mk5 = object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_energy_gen_rate", "exp_mass"},
+	experimentalSubGroupTitles = {"null", "null", "energy_gen_rate", "mass"},
+	experimentalMin = {0, 0, -1950, -10140},
+	experimentalMax = {0, 0, -1050, -5460},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_reactor_limiter_mk5, "object/tangible/ship/crafted/reactor/reactor_limiter_mk5.iff")

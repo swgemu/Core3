@@ -43,6 +43,15 @@
 
 object_tangible_ship_crafted_shields_shield_intensifier_mk5 = object_tangible_ship_crafted_shields_shared_shield_intensifier_mk5:new {
 
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_energy_maintenance"},
+	experimentalSubGroupTitles = {"null", "null", "shield_max_front_hp", "shield_max_back_hp", "energy_maintenance"},
+	experimentalMin = {0, 0, 312, 312, 446},
+	experimentalMax = {0, 0, 422, 422, 604},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_shields_shield_intensifier_mk5, "object/tangible/ship/crafted/shields/shield_intensifier_mk5.iff")

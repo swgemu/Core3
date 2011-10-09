@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_ith_dress_formal_03 = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Ithorian Elder's Dress",
+   customObjectName = "Ithorian Elder\'s Dress",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 22, 

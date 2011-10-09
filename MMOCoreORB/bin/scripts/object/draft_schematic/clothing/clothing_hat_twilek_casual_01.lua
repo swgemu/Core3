@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_hat_twilek_casual_01 = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Twi'lek Bone Crest",
+   customObjectName = "Twi\'lek Bone Crest",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 

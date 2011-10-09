@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_gloves_field_11 = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Workman's Gloves",
+   customObjectName = "Workman\'s Gloves",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 

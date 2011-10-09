@@ -45,7 +45,7 @@ object_draft_schematic_furniture_furniture_lamp_free_s04_on = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Free-standing Lamp 'Azeron'",
+   customObjectName = "Free-standing Lamp \'Azeron\'",
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 18, 

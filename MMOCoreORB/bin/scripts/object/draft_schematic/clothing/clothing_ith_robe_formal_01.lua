@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_ith_robe_formal_01 = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Ithorian Priest's Robe",
+   customObjectName = "Ithorian Priest\'s Robe",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 

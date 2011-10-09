@@ -54,8 +54,8 @@ object_draft_schematic_space_capacitor_extended_life_battery_mk5 = object_draft_
    xpType = "shipwright", 
    xp = 625, 
 
-   assemblySkill = "power_systems", 
-   experimentingSkill = "power_systems_experimentation", 
+   assemblySkill = "advanced_assembly", 
+   experimentingSkill = "advanced_ship_experimentation", 
    customizationSkill = "power_customization", 
 
    customizationOptions = {},

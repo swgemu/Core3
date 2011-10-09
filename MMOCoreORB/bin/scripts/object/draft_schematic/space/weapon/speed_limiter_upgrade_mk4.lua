@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_weapon_speed_limiter_upgrade_mk4 = object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Speed Limiter Upgrade - Mark IV",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "limiting_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "ore_siliclastic_fermionic"},
+   resourceQuantities = {1000, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/speed_limiter_upgrade_mk4.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_speed_limiter_upgrade_mk4, "object/draft_schematic/space/weapon/speed_limiter_upgrade_mk4.iff")

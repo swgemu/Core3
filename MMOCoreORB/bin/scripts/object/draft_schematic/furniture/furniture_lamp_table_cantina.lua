@@ -45,7 +45,7 @@ object_draft_schematic_furniture_furniture_lamp_table_cantina = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Table-top Lamp 'Coruscant'",
+   customObjectName = "Table-top Lamp \'Coruscant\'",
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 19, 

@@ -45,7 +45,7 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Crash n' Burn",
+   customObjectName = "Crash n\' Burn",
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 

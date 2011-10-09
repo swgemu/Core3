@@ -45,7 +45,7 @@ object_draft_schematic_food_drink_tssolok = object_draft_schematic_food_shared_d
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "T'ssolok",
+   customObjectName = "T\'ssolok",
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 

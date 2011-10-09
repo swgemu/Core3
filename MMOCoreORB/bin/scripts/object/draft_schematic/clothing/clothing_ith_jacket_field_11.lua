@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_ith_jacket_field_11 = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Ithorian Officer's Jacket",
+   customObjectName = "Ithorian Officer\'s Jacket",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 

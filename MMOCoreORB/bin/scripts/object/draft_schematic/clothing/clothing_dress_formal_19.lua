@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_dress_formal_19 = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Doctor's Dress",
+   customObjectName = "Doctor\'s Dress",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 22, 

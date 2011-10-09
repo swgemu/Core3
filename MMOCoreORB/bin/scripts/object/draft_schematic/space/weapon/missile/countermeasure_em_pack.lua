@@ -43,6 +43,38 @@
 
 object_draft_schematic_space_weapon_missile_countermeasure_em_pack = object_draft_schematic_space_weapon_missile_shared_countermeasure_em_pack:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "EM Emitter Pack",
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 17, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 313, 
+
+   assemblySkill = "weapon_systems", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "chaff_bits"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "metal"},
+   resourceQuantities = {2000, 500},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/ship/crafted/weapon/missile/countermeasure_em_pack.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_countermeasure_em_pack, "object/draft_schematic/space/weapon/missile/countermeasure_em_pack.iff")

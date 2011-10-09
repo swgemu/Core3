@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_bodysuit_casual_12 = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Trader's Flightsuit",
+   customObjectName = "Trader\'s Flightsuit",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 

@@ -45,7 +45,7 @@ object_draft_schematic_furniture_furniture_lamp_table_s03_on = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Table-top Lamp 'Naboo'",
+   customObjectName = "Table-top Lamp \'Naboo\'",
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
