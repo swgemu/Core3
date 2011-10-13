@@ -523,6 +523,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
+		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		server/zone/templates/customization/AssetCustomizationManagerTemplate.cpp \
 		main.cpp

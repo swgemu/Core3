@@ -56,7 +56,8 @@ object_creature_player_bothan_female = object_creature_player_shared_bothan_fema
 		{templateFile = "object/tangible/mission_bag/mission_bag.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 4},
 		{templateFile = "object/weapon/melee/unarmed/unarmed_default_player.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 4},
 		{templateFile = "object/tangible/bank/character_bank.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 4}
-	}
+	},
+	startingSkills = { "species_bothan", "social_language_basic_comprehend", "social_language_basic_speak" , "social_language_bothan_comprehend", "social_language_bothan_speak" }
 }
 
 ObjectTemplates:addTemplate(object_creature_player_bothan_female, "object/creature/player/bothan_female.iff")

@@ -15,7 +15,7 @@
 #include "primitives/IntegerParam.h"
 #include "RangedIntCustomizationVariable.h"
 
-class PaletteColorCustomizationVariable : public RangedIntCustomizationVariable{
+class PaletteColorCustomizationVariable : public RangedIntCustomizationVariable {
 protected:
 	StringParam variableName;
 	StringParam palettePathName;
@@ -32,7 +32,7 @@ public:
 		setType(PALETTECOLORCUSTOMIZATION);
 	}
 
-	PaletteColorCustomizationVariable(const PaletteColorCustomizationVariable& p) {
+	PaletteColorCustomizationVariable(const PaletteColorCustomizationVariable& p) : RangedIntCustomizationVariable() {
 		variableName = p.variableName;
 		palettePathName = p.palettePathName;
 		defaultPaletteIndex = p.defaultPaletteIndex;

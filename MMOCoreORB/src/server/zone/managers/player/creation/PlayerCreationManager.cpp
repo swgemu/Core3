@@ -367,7 +367,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	addHair(playerCreature, hairTemplate, hairCustomization);
 	addProfessionStartingItems(playerCreature, profession, clientTemplate);
 	addStartingItems(playerCreature, clientTemplate);
-	addRacialMods(playerCreature, fileName);
+	addRacialMods(playerCreature, fileName, playerTemplate->getStartingSkills());
 
 	// Set starting cash and starting bank
 	playerCreature->setCashCredits(startingCash, false);
@@ -467,6 +467,50 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	return true;
 }
 
+int PlayerCreationManager::getMaximumAttributeLimit(const String& race, int attributeNumber) {
+	String maleRace = race + "_male";
+
+	if (attributeNumber < 0 || attributeNumber > 8) {
+		attributeNumber = 0;
+	}
+
+	Reference<RacialCreationData*> racialData = racialCreationData.get(maleRace);
+
+	if (racialData != NULL) {
+		return racialData->getAttributeMax(attributeNumber);
+	} else {
+		return racialCreationData.get("human_male")->getAttributeMax(attributeNumber);
+	}
+}
+
+int PlayerCreationManager::getMinimumAttributeLimit(const String& race, int attributeNumber) {
+	String maleRace = race + "_male";
+
+	if (attributeNumber < 0 || attributeNumber > 8) {
+		attributeNumber = 0;
+	}
+
+	Reference<RacialCreationData*> racialData = racialCreationData.get(maleRace);
+
+	if (racialData != NULL) {
+		return racialData->getAttributeMin(attributeNumber);
+	} else {
+		return racialCreationData.get("human_male")->getAttributeMin(attributeNumber);
+	}
+}
+
+int PlayerCreationManager::getTotalAttributeLimit(const String& race) {
+	String maleRace = race + "_male";
+
+	Reference<RacialCreationData*> racialData = racialCreationData.get(maleRace);
+
+	if (racialData != NULL) {
+		return racialData->getAttributeTotal();
+	} else {
+		return racialCreationData.get("human_male")->getAttributeTotal();
+	}
+}
+
 bool PlayerCreationManager::validateCharacterName(const String& characterName) {
 	return true;
 }
@@ -549,7 +593,7 @@ void PlayerCreationManager::addCustomization(CreatureObject* creature, const Str
 	creature->setCustomizationString(customizationString);
 }
 
-void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String& race) {
+void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingItems) {
 	Reference<RacialCreationData*> racialData = racialCreationData.get(race);
 
 	if (racialData == NULL)
@@ -560,5 +604,11 @@ void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String
 		creature->setBaseHAM(i, mod, false);
 		creature->setHAM(i, mod, false);
 		creature->setMaxHAM(i, mod, false);
+	}
+
+	if (startingItems != NULL) {
+		for (int i = 0; i < startingItems->size(); ++i) {
+			SkillManager::instance()->awardSkill(startingItems->get(i), creature, false, true);
+		}
 	}
 }

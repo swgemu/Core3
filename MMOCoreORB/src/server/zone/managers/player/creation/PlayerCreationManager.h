@@ -107,7 +107,7 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 
 	void addCustomization(CreatureObject* creature, const String& customizationString);
 	void addHair(CreatureObject* creature, const String& hairTemplate, const String& hairCustomization);
-	void addRacialMods(CreatureObject* creature, const String& race);
+	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingItems);
 	void addStartingItems(CreatureObject* creature, const String& clientTemplate);
 	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate);
 	//void generateHologrindProfessions(CreatureObject* creature);
@@ -125,6 +125,29 @@ public:
 	 * Attempts to create a character, validating the information passed back by the client.
 	 */
 	bool createCharacter(MessageCallback* data);
+
+	/**
+	 * Returns the requested maximum attribute limit for the specified race.
+	 * @param race the race of interest.
+	 * @param attributeNumber The attribute number (starting from 0).
+	 * @return maximum attribute limit.
+	 */
+	int getMaximumAttributeLimit(const String& race, int attributeNumber);
+
+	/**
+	 * Returns the requested minimum attribute limit for the specified race.
+	 * @param race the race of interest.
+	 * @param attributeNumber The attribute number (starting from 0).
+	 * @return minimum attribute limit.
+	 */
+	int getMinimumAttributeLimit(const String& race, int attributeNumber);
+
+	/**
+	 * Returns the total attribute limit for the specified race.
+	 * @param race the race of interest.
+	 * @return total attribute limit.
+	 */
+	int getTotalAttributeLimit(const String& race);
 };
 
 }

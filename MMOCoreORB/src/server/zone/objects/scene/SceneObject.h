@@ -1100,6 +1100,8 @@ public:
 
 	bool isInstallationObject();
 
+	bool isGeneratorObject();
+
 	bool isCityTerminal();
 
 	bool isCityVoteTerminal();
@@ -2164,6 +2166,8 @@ public:
 
 	virtual bool isInstallationObject();
 
+	virtual bool isGeneratorObject();
+
 	virtual bool isCityTerminal();
 
 	virtual bool isCityVoteTerminal();
@@ -2614,6 +2618,8 @@ public:
 	bool isInstrument();
 
 	bool isInstallationObject();
+
+	bool isGeneratorObject();
 
 	bool isCityTerminal();
 

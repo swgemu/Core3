@@ -45,8 +45,8 @@ which carries forward this exception.
 #define SKILLMANAGER_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/player/variables/Ability.h"
 
-class Ability;
 class Skill;
 class PerformanceManager;
 class ImageDesignManager;

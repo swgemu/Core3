@@ -13,9 +13,11 @@
 
 class PlayerCreatureTemplate : public SharedCreatureObjectTemplate {
 	CustomizationDataMap dataMap;
+	Reference<Vector<String>* > startingSkills;
 
 public:
 	PlayerCreatureTemplate() {
+		startingSkills = new Vector<String>();
 	}
 
 	~PlayerCreatureTemplate() {
@@ -29,13 +31,17 @@ public:
 		return &dataMap.get(customizationName);
 	}
 
+	Vector<String>* getStartingSkills() {
+		return startingSkills;
+	}
+
 	void setCustomizationDataMap(const CustomizationDataMap& map) {
 		dataMap = map;
 	}
 
-	void readObject(LuaObject* templateData) {
-		SharedCreatureObjectTemplate::readObject(templateData);
-	}
+	void parseVariableData(const String& varName, LuaObject* templateData);
+
+	void readObject(LuaObject* templateData);
 };
 
 #endif /* PLAYERCREATURETEMPLATE_H_ */

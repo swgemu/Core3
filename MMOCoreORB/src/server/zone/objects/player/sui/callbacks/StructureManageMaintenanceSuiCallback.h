@@ -21,7 +21,7 @@ public:
 			return;
 
 		uint32 received = Integer::valueOf(args->get(0).toString());
-		uint32 transfered = Integer::valueOf(args->get(1).toString());
+		uint32 transferred = Integer::valueOf(args->get(1).toString());
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject();
 
@@ -33,7 +33,20 @@ public:
 
 		Locker _lock(structure, creature);
 
-		structure->addMaintenance(transfered);
+		//No wrap around in the maintenance pool.
+		if (structure->getSurplusMaintenance() + (int)transferred < structure->getSurplusMaintenance()) {
+			return; //TODO: Find a suitable message for this.
+		}
+
+		// Ensure that the creature has the credits that will be transferred.
+		if (creature->getCashCredits() < transferred) {
+			StringIdChatParameter stringId("player_structure", "insufficient_funds");
+			creature->sendSystemMessage(stringId);
+			return;
+		}
+
+		creature->substractCashCredits(transferred);
+		structure->addMaintenance(transferred);
 		structure->scheduleMaintenanceExpirationEvent();
 	}
 };

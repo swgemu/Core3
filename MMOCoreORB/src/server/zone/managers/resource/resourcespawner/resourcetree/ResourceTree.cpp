@@ -227,11 +227,7 @@ void ResourceTree::setSurveyToolType(ResourceTreeEntry* entry) {
 		entry->setSurveyToolType(SurveyTool::GAS);
 
 	else if(entry->isType("mineral")) {
-
-		if(entry->isType("radioactive"))
-			entry->setSurveyToolType(SurveyTool::FUSION);
-		else
-			entry->setSurveyToolType(SurveyTool::MINERAL);
+		entry->setSurveyToolType(SurveyTool::MINERAL);
 	}
 
 	else if(entry->isType("water"))

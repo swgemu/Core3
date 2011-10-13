@@ -729,7 +729,7 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getMaintenanceRate()) + " cr/hr");
 	status->addMenuItem("@player_structure:maintenance_mods_prompt " + structure->getMaintenanceMods());
 
-	if (structure->isInstallationObject()) {
+	if (structure->isInstallationObject() && !structure->isGeneratorObject()) {
 		InstallationObject* installation = cast<InstallationObject*>( structure);
 
 		status->addMenuItem("@player_structure:power_reserve_prompt " + String::valueOf((int) installation->getSurplusPower()));

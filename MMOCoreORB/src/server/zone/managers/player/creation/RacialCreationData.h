@@ -21,6 +21,7 @@ class RacialCreationData : public Object {
 	Vector<int> minAttributes;
 	Vector<int> maxAttributes;
 	Vector<int> modAttributes;
+	int totalAttributes;
 
 public:
 	RacialCreationData() {
@@ -30,6 +31,7 @@ public:
 		minAttributes = cd.minAttributes;
 		maxAttributes = cd.maxAttributes;
 		modAttributes = cd.modAttributes;
+		totalAttributes = cd.totalAttributes;
 	}
 
 	RacialCreationData& operator= (const RacialCreationData& cd) {
@@ -39,6 +41,7 @@ public:
 		minAttributes = cd.minAttributes;
 		maxAttributes = cd.maxAttributes;
 		modAttributes = cd.modAttributes;
+		totalAttributes = cd.totalAttributes;
 
 		return *this;
 	}
@@ -55,12 +58,14 @@ public:
 			minAttributes.add(min);
 			maxAttributes.add(max);
 		}
+
+		row->getValue(20, totalAttributes);
 	}
 
 	void parseRacialModData(DataTableRow* row) {
 		int mod = 0;
 
-		for (int i = 2; i < 9; ++i) {
+		for (int i = 2; i < 11; ++i) {
 			row->getValue(i, mod);
 
 			modAttributes.add(mod);
@@ -77,6 +82,10 @@ public:
 
 	inline int getAttributeMod(int idx) {
 		return modAttributes.get(idx);
+	}
+
+	inline int getAttributeTotal() {
+		return totalAttributes;
 	}
 
 	String toString() const {
