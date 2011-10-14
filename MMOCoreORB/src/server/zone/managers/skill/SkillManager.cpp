@@ -110,7 +110,34 @@ void SkillManager::loadClientData() {
 	if (!abilityMap.containsKey("admin"))
 		abilityMap.put("admin", new Ability("admin"));
 
+	loadXpLimits();
+
 	info("Successfully loaded " + String::valueOf(skillMap.size()) + " skills and " + String::valueOf(abilityMap.size()) + " abilities.", true);
+}
+
+void SkillManager::loadXpLimits() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/skill/xp_limits.iff");
+
+	if (iffStream == NULL) {
+		error("Could not load skills.");
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+
+		String type;
+		int value;
+		row->getValue(0, type);
+		row->getValue(1, value);
+		defaultXpLimits.put(type, value);
+		info(type + ": " + String::valueOf(value));
+	}
 }
 
 void SkillManager::addAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient) {
@@ -207,6 +234,9 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		//Add draft schematic groups
 		Vector<String>* schematicsGranted = skill->getSchematicsGranted();
 		SchematicMap::instance()->addSchematics(ghost, *schematicsGranted, notifyClient);
+
+		//Update maximum experience.
+		updateXpLimits(ghost);
 	}
 
 	return true;
@@ -247,6 +277,9 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		//Remove draft schematic groups
 		Vector<String>* schematicsGranted = skill->getSchematicsGranted();
 		SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+
+		//Update maximum experience.
+		updateXpLimits(ghost);
 	}
 
 	return true;
@@ -287,5 +320,50 @@ void SkillManager::awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool 
 		//Add draft schematic groups
 		Vector<String>* schematicsGranted = skill->getSchematicsGranted();
 		SchematicMap::instance()->addSchematics(ghost, *schematicsGranted, notifyClient);
+	}
+}
+
+void SkillManager::updateXpLimits(PlayerObject* ghost) {
+	if (ghost == NULL || !ghost->isPlayerObject()) {
+		return;
+	}
+
+	VectorMap<String, int>* xpTypeCapList = ghost->getXpTypeCapList();
+
+	//Clear all xp limits to the default limits.
+	for (int i = 0; i < defaultXpLimits.size(); ++i) {
+		String xpType = defaultXpLimits.elementAt(i).getKey();
+		int xpLimit = defaultXpLimits.elementAt(i).getValue();
+
+		if (xpTypeCapList->contains(xpType)) {
+			xpTypeCapList->get(xpType) = xpLimit;
+		} else {
+			xpTypeCapList->put(xpType, xpLimit);
+		}
+	}
+
+	//Iterate over the player skills and update xp limits accordingly.
+	CreatureObject* player = cast<CreatureObject*>(ghost->getParentRecursively(SceneObject::PLAYERCREATURE));
+
+	if(player == NULL)
+		return;
+
+	SkillList* playerSkillBoxList = player->getSkillList();
+
+	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
+		Skill* skillBox = playerSkillBoxList->get(i);
+		if (xpTypeCapList->contains(skillBox->getXpType()) && (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap())) {
+			xpTypeCapList->get(skillBox->getXpType()) = skillBox->getXpCap();
+		}
+	}
+
+	//Iterate over the player xp types and cap all xp types to the limits.
+	DeltaVectorMap<String, int>* experienceList = ghost->getExperienceList();
+
+	for (int i = 0; i < experienceList->size(); ++i) {
+		String xpType = experienceList->getKeyAt(i);
+		if (experienceList->get(xpType) > xpTypeCapList->get(xpType)) {
+			ghost->addExperience(xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
+		}
 	}
 }

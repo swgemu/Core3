@@ -133,6 +133,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 		skillManager->awardDraftSchematics(skill, _this, false);
 	}
 
+	skillManager->updateXpLimits(_this);
 }
 
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

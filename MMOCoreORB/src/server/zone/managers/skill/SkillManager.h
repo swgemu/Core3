@@ -89,11 +89,14 @@ class SkillManager : public Singleton<SkillManager>, public Logger, public Objec
 
 	Reference<Skill*> rootNode;
 
+	VectorMap<String, int> defaultXpLimits;
+
 public:
 	SkillManager();
 	~SkillManager();
 
 	void loadClientData();
+	void loadXpLimits();
 
 	void addAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient = true);
 	void removeAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient = true);
@@ -106,6 +109,8 @@ public:
 
 	bool surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true);
 	void surrenderAllSkills(CreatureObject* creature, bool notifyClient = true);
+
+	void updateXpLimits(PlayerObject* ghost);
 
 	Skill* getSkill(const String& skillName) {
 		return skillMap.get(skillName);

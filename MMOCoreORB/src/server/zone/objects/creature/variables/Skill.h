@@ -176,6 +176,14 @@ public:
 		return skillsRequired.contains(skill->getSkillName());
 	}
 
+	inline String getXpType() {
+		return xpType;
+	}
+
+	inline int getXpCap() {
+		return xpCap;
+	}
+
 private:
 	inline void setParentNode(Skill* skill) {
 		parentNode = skill;
