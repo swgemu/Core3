@@ -379,22 +379,22 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 	int i = 0;
 
 	try {
-		uint64 currentZoneObjectID = zone->_getObjectID();
+		String currentZoneName = zone->getZoneName();
 		ObjectDatabaseIterator iterator(cityRegionsDatabase);
 
 		uint64 objectID;
 		ObjectInputStream* objectData = new ObjectInputStream(2000);
 
-		uint64 zoneObjectID = 0;
+		String zoneName;
 		int gameObjectType = 0;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<uint64>("zone", &zoneObjectID, objectData)) {
+			if (!Serializable::getVariable<String>("zone", &zoneName, objectData)) {
 				objectData->clear();
 				continue;
 			}
 
-			if (zoneObjectID != currentZoneObjectID) {
+			if (zoneName != currentZoneName) {
 				objectData->clear();
 				continue;
 			}
