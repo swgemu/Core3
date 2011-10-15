@@ -49,7 +49,7 @@ Melee1hBodyHit1Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	--animationCRC = String("counter_high_right_light").hashCode(),
+	animationCRC = hashCode("counter_high_right_light"),
 
 	combatSpam = "saimai",
 

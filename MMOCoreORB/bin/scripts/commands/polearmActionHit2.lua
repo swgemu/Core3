@@ -46,7 +46,7 @@ PolearmActionHit2Command = {
 	damageMultiplier = 2,
 	speedMultiplier = 3,
 
-	--animationCRC = String("lower_posture_2hmelee_2").hashCode(),
+	animationCRC = hashCode("lower_posture_2hmelee_2"),
 
 	combatSpam = "melee",
 

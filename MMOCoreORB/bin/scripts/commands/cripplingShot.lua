@@ -52,7 +52,7 @@ CripplingShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_5_single_light_face").hashCode(),
+	animationCRC = hashCode("fire_5_single_light_face"),
 
 	combatSpam = "cripplingshot",
 

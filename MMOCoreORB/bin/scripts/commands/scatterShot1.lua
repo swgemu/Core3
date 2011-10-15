@@ -50,7 +50,7 @@ ScatterShot1Command = {
 	actionCostMultiplier = 1.1,
 	mindCostMultiplier = 0.5,
 
-	--animationCRC = String("fire_5_single_medium").hashCode(),
+	animationCRC = hashCode("fire_5_single_medium"),
 
 	combatSpam = "scattershot",
 

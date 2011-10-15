@@ -50,7 +50,7 @@ FullAutoSingle1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	--animationCRC = String("fire_5_special_single_medium").hashCode(),
+	animationCRC = hashCode("fire_5_special_single_medium"),
 
 	combatSpam = "multishot",
 

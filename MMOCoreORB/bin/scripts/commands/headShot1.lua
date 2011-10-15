@@ -52,7 +52,7 @@ HeadShot1Command = {
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
-	--animationCRC = String("fire_1_special_single_medium_face").hashCode(),
+	animationCRC = hashCode("fire_1_special_single_medium_face"),
 
 	combatSpam = "headshot",
 

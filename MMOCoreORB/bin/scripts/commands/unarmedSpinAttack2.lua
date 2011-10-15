@@ -52,7 +52,7 @@ UnarmedSpinAttack2Command = {
 	actionCostMultiplier = 2,
 	mindCostMultiplier = 2,
 
-	--animationCRC = String("combo_3d_medium").hashCode(),
+	animationCRC = hashCode("combo_3d_medium"),
 
 	combatSpam = "melee",
 

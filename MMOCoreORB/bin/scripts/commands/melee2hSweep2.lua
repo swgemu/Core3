@@ -48,7 +48,7 @@ Melee2hSweep2Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	--animationCRC = String("lower_posture_2hmelee_6").hashCode(),
+	animationCRC = hashCode("lower_posture_2hmelee_6"),
 
 	combatSpam = "melee2hsweep1",
 

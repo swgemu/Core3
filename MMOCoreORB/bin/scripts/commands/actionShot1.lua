@@ -52,7 +52,7 @@ ActionShot1Command = {
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
-	--animationCRC = String("fire_3_single_light").hashCode(),
+	animationCRC = hashCode("fire_3_single_light"),
 
 	combatSpam = "kneecapshot",
 

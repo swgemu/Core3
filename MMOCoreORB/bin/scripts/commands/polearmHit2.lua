@@ -49,7 +49,7 @@ PolearmHit2Command = {
 
 	stunStateChance = 20,
 
-	--animationCRC = String("combo_3a_medium").hashCode(),
+	animationCRC = hashCode("combo_3a_medium"),
 
 	combatSpam = "bonebreaker",
 

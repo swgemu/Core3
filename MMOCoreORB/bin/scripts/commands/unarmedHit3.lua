@@ -51,7 +51,7 @@ UnarmedHit3Command = {
 	actionCostMultiplier = 2,
 	mindCostMultiplier = 2,
 
-	--animationCRC = String("combo_5a_medium").hashCode(),
+	animationCRC = hashCode("combo_5a_medium"),
 
 	combatSpam = "unarmed_dam2",
 

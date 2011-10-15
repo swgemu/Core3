@@ -50,7 +50,7 @@ DisarmingShot1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	--animationCRC = String("fire_3_single_light_face").hashCode(),
+	animationCRC = hashCode("fire_3_single_light_face"),
 
 	combatSpam = "disarmshot",
 

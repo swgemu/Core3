@@ -53,7 +53,7 @@ ConfusionShotCommand = {
 	stunStateChance = 40,
 	dizzyStateChance = 30,
 
-	--animationCRC = String("fire_5_special_single_medium_face").hashCode(),
+	animationCRC = hashCode("fire_5_special_single_medium_face"),
 
 	combatSpam = "confusionshot",
 

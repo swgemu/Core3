@@ -53,7 +53,7 @@ KnockdownFireCommand = {
 	knockdownStateChance = 30,
 	dizzyStateChance = 30,
 
-	--animationCRC = String("fire_1_special_single_medium").hashCode(),
+	animationCRC = hashCode("fire_1_special_single_medium"),
 
 	combatSpam = "knockdownfire",
 

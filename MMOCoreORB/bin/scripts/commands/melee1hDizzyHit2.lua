@@ -49,7 +49,7 @@ Melee1hDizzyHit2Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	--animationCRC = String("combo_4a_light").hashCode(),
+	animationCRC = hashCode("combo_4a_light"),
 
 	combatSpam = "sword1_dizzy",
 

@@ -50,7 +50,7 @@ PolearmSpinAttack1Command = {
 	areaAction = true,
 	areaRange = 7,
 
-	--animationCRC = String("attack_high_left_light_2").hashCode(),
+	animationCRC = hashCode("attack_high_left_light_2"),
 
 	combatSpam = "melee",
 

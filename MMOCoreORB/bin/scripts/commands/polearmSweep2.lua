@@ -51,7 +51,7 @@ PolearmSweep2Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	--animationCRC = String("combo_3d_medium").hashCode(),
+	animationCRC = hashCode("combo_3d_medium"),
 
 	combatSpam = "melee",
 

@@ -49,7 +49,7 @@ Melee1hHealthHit2Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	--animationCRC = String("combo_3c_light").hashCode(),
+	animationCRC = hashCode("combo_3c_light"),
 
 	combatSpam = "shiimshiak",
 

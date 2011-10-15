@@ -52,7 +52,7 @@ PolearmArea2Command = {
 	dizzyStateChance = 30,
 	stunStateChance = 30,
 
-	--animationCRC = String("lower_posture_2hmelee_6").hashCode(),
+	animationCRC = hashCode("lower_posture_2hmelee_6"),
 
 	combatSpam = "melee",
 

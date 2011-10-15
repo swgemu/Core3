@@ -47,7 +47,7 @@ Melee1hLunge2Command = {
 	damageMultiplier = 2,
 	speedMultiplier = 1.5,
 
-	--animationCRC = String("melee1hlunge2").hashCode(),
+	animationCRC = hashCode("melee1hlunge2"),
 
 	combatSpam = "sword1_knockdown",
 

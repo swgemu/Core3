@@ -52,7 +52,7 @@ WildShot2Command = {
 	coneAngle = 30,
 	coneAction = true,
 
-	--animationCRC = String("fire_7_single_medium").hashCode(),
+	animationCRC = hashCode("fire_7_single_medium"),
 
 	combatSpam = "wildshot",
 

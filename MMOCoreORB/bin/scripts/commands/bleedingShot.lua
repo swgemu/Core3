@@ -50,7 +50,7 @@ BleedingShotCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	--animationCRC = String("fire_3_single_light").hashCode(),
+	animationCRC = hashCode("fire_3_single_light"),
 
 	combatSpam = "bleedingshot",
 

@@ -52,7 +52,7 @@ ConcealShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_1_special_single_medium").hashCode(),
+	animationCRC = hashCode("fire_1_special_single_medium"),
 
 	combatSpam = "concealedshot",
 

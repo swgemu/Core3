@@ -56,7 +56,7 @@ FlurryShot2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_area_medium").hashCode(),
+	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "flurry",
 

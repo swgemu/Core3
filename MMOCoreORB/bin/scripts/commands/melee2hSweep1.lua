@@ -47,7 +47,7 @@ Melee2hSweep1Command = {
 	damageMultiplier = 1.5,
 	speedMultiplier = 1.7,
 
-	--animationCRC = String("lower_posture_2hmelee_3").hashCode(),
+	animationCRC = hashCode("lower_posture_2hmelee_3"),
 
 	combatSpam = "melee2hsweep1",
 

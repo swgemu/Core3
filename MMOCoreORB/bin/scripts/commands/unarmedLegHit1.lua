@@ -53,7 +53,7 @@ UnarmedLegHit1Command = {
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
-	--animationCRC = String("attack_special_foot_stomp_medium").hashCode(),
+	animationCRC = hashCode("attack_special_foot_stomp_medium"),
 
 	combatSpam = "melee",
 

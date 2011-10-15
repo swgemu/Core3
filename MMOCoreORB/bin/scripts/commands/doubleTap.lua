@@ -52,7 +52,7 @@ DoubleTapCommand = {
 
 	poolsToDamage = ACTION_ATTRIBUTE + HEALTH_ATTRIBUTE,
 
-	--animationCRC = String("fire_7_single_light_face").hashCode(),
+	animationCRC = hashCode("fire_7_single_light_face"),
 
 	combatSpam = "doubletap",
 

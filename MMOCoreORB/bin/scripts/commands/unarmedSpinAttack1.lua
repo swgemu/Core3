@@ -52,7 +52,7 @@ UnarmedSpinAttack1Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
-	--animationCRC = String("combo_3c_light").hashCode(),
+	animationCRC = hashCode("combo_3c_light"),
 
 	combatSpam = "spinningsmash",
 

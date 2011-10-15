@@ -53,7 +53,7 @@ UnarmedCombo2Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE,
 
-	--animationCRC = String("combo_4a_light").hashCode(),
+	animationCRC = hashCode("combo_4a_light"),
 
 	combatSpam = "melee",
 

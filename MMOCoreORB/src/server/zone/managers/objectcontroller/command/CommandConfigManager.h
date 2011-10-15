@@ -189,6 +189,7 @@ public:
 
 	// AddSlashCommand functions
 	static int addCommand(lua_State* L);
+	static int hashCode(lua_State* L);
 };
 
 }

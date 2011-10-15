@@ -54,7 +54,7 @@ FlurryShot1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_5_special_single_medium_face").hashCode(),
+	animationCRC = hashCode("fire_5_special_single_medium_face"),
 
 	combatSpam = "flurryshot",
 

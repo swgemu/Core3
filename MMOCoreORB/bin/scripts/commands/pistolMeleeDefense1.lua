@@ -54,7 +54,7 @@ PistolMeleeDefense1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("ranged_melee_light").hashCode(),
+	animationCRC = hashCode("ranged_melee_light"),
 
 	combatSpam = "pistolwhip",
 

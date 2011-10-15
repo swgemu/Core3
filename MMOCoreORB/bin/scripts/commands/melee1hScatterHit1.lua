@@ -47,7 +47,7 @@ Melee1hScatterHit1Command = {
 	damageMultiplier = 3,
 	speedMultiplier = 1.25,
 
-	--animationCRC = String("combo_3b_light").hashCode(),
+	animationCRC = hashCode("combo_3b_light"),
 
 	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE,
 

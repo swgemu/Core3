@@ -52,7 +52,7 @@ PointBlankArea2Command = {
 	coneAngle = 30,
 	coneAction = true,
 
-	--animationCRC = String("fire_area_no_trails_light").hashCode(),
+	animationCRC = hashCode("fire_area_no_trails_light"),
 
 	combatSpam = "areashot",
 

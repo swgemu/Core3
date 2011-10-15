@@ -51,7 +51,7 @@ PolearmStun2Command = {
 
 	stunStateChance = 40,
 
-	--animationCRC = String("lower_posture_2hmelee_5").hashCode(),
+	animationCRC = hashCode("lower_posture_2hmelee_5"),
 
 	combatSpam = "breathtaker",
 

@@ -50,7 +50,7 @@ FullAutoArea1Command = {
 	actionCostMultiplier = 2,
 	mindCostMultiplier = 0.5,
 
-	--animationCRC = String("fire_defender_posture_change_down").hashCode(),
+	animationCRC = hashCode("fire_defender_posture_change_down"),
 
 	combatSpam = "a_auto",
 

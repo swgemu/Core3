@@ -54,7 +54,7 @@ StrafeShot1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_5_special_single_medium").hashCode(),
+	animationCRC = hashCode("fire_5_special_single_medium"),
 
 	combatSpam = "strafeshot",
 

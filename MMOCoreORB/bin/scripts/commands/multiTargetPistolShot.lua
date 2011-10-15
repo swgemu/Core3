@@ -54,7 +54,7 @@ MultiTargetPistolShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_5_special_single_light").hashCode(),
+	animationCRC = hashCode("fire_5_special_single_light"),
 
 	combatSpam = "pistolmultishot",
 

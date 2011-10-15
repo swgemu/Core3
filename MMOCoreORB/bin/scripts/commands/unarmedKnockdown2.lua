@@ -54,7 +54,7 @@ UnarmedKnockdown2Command = {
 	knockdownStateChance = 15,
 	dizzyStateChance = 1,
 
-	--animationCRC = String("attack_special_hammerfist_light").hashCode(),
+	animationCRC = hashCode("attack_special_hammerfist_light"),
 
 	combatSpam = "melee",
 

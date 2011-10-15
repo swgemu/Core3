@@ -50,7 +50,7 @@ FullAutoSingle2Command = {
 	actionCostMultiplier = 2.0,
 	mindCostMultiplier = 0.5,
 
-	--animationCRC = String("fire_7_single_medium_face").hashCode(),
+	animationCRC = hashCode("fire_7_single_medium_face"),
 
 	combatSpam = "s_auto",
 

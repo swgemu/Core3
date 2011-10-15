@@ -55,7 +55,7 @@ FlushingShot1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_3_special_single_medium").hashCode(),
+	animationCRC = hashCode("fire_3_special_single_medium"),
 
 	combatSpam = "flushingshot",
 

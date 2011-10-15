@@ -55,7 +55,7 @@ Intimidate2Command = {
 	durationStateTime = 120,
 
 	combatSpam = "intim",
-	--animationCRC = String("intimidate").hashCode(),
+	animationCRC = hashCode("intimidate"),
 	effectString = "clienteffect/combat_special_attacker_intimidate.cef",
 	range = 15,
 

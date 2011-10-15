@@ -51,7 +51,7 @@ Melee2hArea1Command = {
 	postureDownStateChance = 15,
 	blindStateChance = 20,
 
-	--animationCRC = String("attack_high_right_light_2").hashCode(),
+	animationCRC = hashCode("attack_high_right_light_2"),
 
 	combatSpam = "melee",
 

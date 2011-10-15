@@ -49,7 +49,7 @@ Melee2hHeadHit1Command = {
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
-	--animationCRC = String("combo_2d_medium").hashCode(),
+	animationCRC = hashCode("combo_2d_medium"),
 
 	combatSpam = "sword2_head",
 

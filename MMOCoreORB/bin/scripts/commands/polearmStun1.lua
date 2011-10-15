@@ -47,7 +47,7 @@ PolearmStun1Command = {
 	damageMultiplier = 1.5,
 	speedMultiplier = 1.6,
 
-	--animationCRC = String("combo_4a_light").hashCode(),
+	animationCRC = hashCode("combo_4a_light"),
 
 	combatSpam = "breathstealer",
 

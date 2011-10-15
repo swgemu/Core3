@@ -52,7 +52,7 @@ StoppingShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_1_special_single_light").hashCode(),
+	animationCRC = hashCode("fire_1_special_single_light"),
 
 	combatSpam = "stoppingshot",
 

@@ -47,7 +47,7 @@ Melee1hDizzyHit1Command = {
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.45,
 
-	--animationCRC = String("combo_2b_medium").hashCode(),
+	animationCRC = hashCode("combo_2b_medium"),
 
 	combatSpam = "sword1_dizzy",
 

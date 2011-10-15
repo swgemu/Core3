@@ -53,7 +53,7 @@ UnarmedHeadHit1Command = {
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
-	--animationCRC = String("knockdown_unarmed_1").hashCode(),
+	animationCRC = hashCode("knockdown_unarmed_1"),
 
 	combatSpam = "melee",
 

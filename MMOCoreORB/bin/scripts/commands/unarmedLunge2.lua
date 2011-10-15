@@ -47,7 +47,7 @@ UnarmedLunge2Command = {
 	damageMultiplier = 3,
 	speedMultiplier = 2,
 
-	--animationCRC = String("counter_mid_center_light").hashCode(),
+	animationCRC = hashCode("counter_mid_center_light"),
 
 	combatSpam = "unarmed_knockdown",
 

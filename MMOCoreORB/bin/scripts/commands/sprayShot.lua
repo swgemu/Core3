@@ -54,7 +54,7 @@ SprayShotCommand = {
 	dizzyStateChance = 30,
 	blindStateChance = 30,
 
-	--animationCRC = String("fire_7_single_medium").hashCode(),
+	animationCRC = hashCode("fire_7_single_medium"),
 
 	combatSpam = "sprayshot",
 

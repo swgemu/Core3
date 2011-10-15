@@ -52,7 +52,7 @@ Melee2hArea3Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	--animationCRC = String("combo_3a_light").hashCode(),
+	animationCRC = hashCode("combo_3a_light"),
 
 	combatSpam = "melee",
 

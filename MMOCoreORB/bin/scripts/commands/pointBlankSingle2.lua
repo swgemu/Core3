@@ -49,7 +49,7 @@ PointBlankSingle2Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	--animationCRC = String("fire_5_single_light").hashCode(),
+	animationCRC = hashCode("fire_5_single_light"),
 
 	combatSpam = "pointblankblast",
 

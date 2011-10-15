@@ -47,7 +47,7 @@ DefaultAttackCommand = {
 	speedMultiplier = 1,
 
 	combatSpam = "attack",
-	--animationCRC = 0,
+	animationCRC = 0,
 
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,

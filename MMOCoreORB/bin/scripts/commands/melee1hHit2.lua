@@ -47,7 +47,7 @@ Melee1hHit2Command = {
 	damageMultiplier = 3.5,
 	speedMultiplier = 1.25,
 
-	--animationCRC = String("combo_4a_medium").hashCode(),
+	animationCRC = hashCode("combo_4a_medium"),
 
 	combatSpam = "chosun",
 

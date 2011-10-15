@@ -50,7 +50,7 @@ OverChargeShot1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	--animationCRC = String("fire_1_special_single_medium").hashCode(),
+	animationCRC = hashCode("fire_1_special_single_medium"),
 
 	combatSpam = "overchargeshot",
 

@@ -47,7 +47,7 @@ Melee1hScatterHit2Command = {
 	damageMultiplier = 4,
 	speedMultiplier = 2,
 
-	--animationCRC = String("combo_5b_light").hashCode(),
+	animationCRC = hashCode("combo_5b_light"),
 
 	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE,
 

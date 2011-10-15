@@ -47,7 +47,7 @@ Melee1hHit3Command = {
 	damageMultiplier = 5,
 	speedMultiplier = 2,
 
-	--animationCRC = String("combo_5a_light").hashCode(),
+	animationCRC = hashCode("combo_5a_light"),
 
 	blindStateChance = 40,
 

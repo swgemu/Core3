@@ -53,7 +53,7 @@ FanShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_area_light").hashCode(),
+	animationCRC = hashCode("fire_area_light"),
 
 	combatSpam = "fanshot",
 

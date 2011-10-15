@@ -54,7 +54,7 @@ Warcry2Command = {
 	durationStateTime = 30,
 
 	combatSpam = "warcry",
-	--animationCRC = String("warcry").hashCode(),
+	animationCRC = hashCode("warcry"),
 	effectString = "clienteffect/combat_special_attacker_warcry.cef",
 	range = 15,
 

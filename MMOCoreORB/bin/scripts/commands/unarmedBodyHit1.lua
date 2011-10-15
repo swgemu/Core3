@@ -53,7 +53,7 @@ UnarmedBodyHit1Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	--animationCRC = String("attack_special_shoulder_bash_medium").hashCode(),
+	animationCRC = hashCode("attack_special_shoulder_bash_medium"),
 
 	combatSpam = "melee",
 

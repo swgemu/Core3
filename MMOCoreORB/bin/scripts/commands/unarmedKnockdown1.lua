@@ -53,7 +53,7 @@ UnarmedKnockdown1Command = {
 
 	knockdownStateChance = 15,
 
-	--animationCRC = String("attack_special_shoulder_bash_medium").hashCode(),
+	animationCRC = hashCode("attack_special_shoulder_bash_medium"),
 
 	combatSpam = "melee",
 

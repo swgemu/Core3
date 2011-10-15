@@ -50,7 +50,7 @@ PointBlankSingle1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	--animationCRC = String("fire_3_single_medium").hashCode(),
+	animationCRC = hashCode("fire_3_single_medium"),
 
 	combatSpam = "semiautoattack",
 

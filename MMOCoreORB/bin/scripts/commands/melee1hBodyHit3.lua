@@ -49,7 +49,7 @@ Melee1hBodyHit3Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	--animationCRC = String("combo_3a_light").hashCode(),
+	animationCRC = hashCode("combo_3a_light"),
 
 	combatSpam = "saitok",
 

@@ -47,7 +47,7 @@ Melee1hSpinAttack2Command = {
 	damageMultiplier = 3,
 	speedMultiplier = 1.45,
 
-	--animationCRC = String("lower_posture_2hmelee_6").hashCode(),
+	animationCRC = hashCode("lower_posture_2hmelee_6"),
 
 	combatSpam = "blindspin",
 

@@ -52,7 +52,7 @@ LegShot2Command = {
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
-	--animationCRC = String("test_homing").hashCode(),
+	animationCRC = hashCode("test_homing"),
 
 	combatSpam = "legshot",
 

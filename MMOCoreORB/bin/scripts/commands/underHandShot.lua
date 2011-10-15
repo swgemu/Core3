@@ -52,7 +52,7 @@ UnderHandShotCommand = {
 
 	knockdownStateChance = 30,
 
-	--animationCRC = String("fire_5_single_medium_face").hashCode(),
+	animationCRC = hashCode("fire_5_single_medium_face"),
 
 	combatSpam = "underhandshot",
 

@@ -50,7 +50,7 @@ ChargeShot2Command = {
 	actionCostMultiplier = 2.9,
 	mindCostMultiplier = 1.9,
 
-	--animationCRC = String("charge").hashCode(),
+	animationCRC = hashCode("charge"),
 
 	combatSpam = "chargeblast",
 

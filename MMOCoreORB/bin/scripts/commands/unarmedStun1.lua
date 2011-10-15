@@ -47,7 +47,7 @@ UnarmedStun1Command = {
 	damageMultiplier = 1.25,
 	speedMultiplier = 2,
 
-	--animationCRC = String("combo_4c_light").hashCode(),
+	animationCRC = hashCode("combo_4c_light"),
 
 	combatSpam = "unarmed_stun",
 

@@ -53,7 +53,7 @@ UnarmedDizzy1Command = {
 
 	dizzyStateChance = 1,
 
-	--animationCRC = String("attack_special_wookiee_slap_light").hashCode(),
+	animationCRC = hashCode("attack_special_wookiee_slap_light"),
 
 	combatSpam = "unarmed_dizzy",
 

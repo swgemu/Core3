@@ -49,7 +49,7 @@ Melee2hSpinAttack2Command = {
 	areaAction = true,
 	areaRange = 7,
 
-	--animationCRC = String("combo_4b_medium").hashCode(),
+	animationCRC = hashCode("combo_4b_medium"),
 
 	combatSpam = "melee",
 

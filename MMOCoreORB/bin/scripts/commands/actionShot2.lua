@@ -55,7 +55,7 @@ ActionShot2Command = {
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
-	--animationCRC = String("fire_area_medium").hashCode(),
+	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "legshot",
 

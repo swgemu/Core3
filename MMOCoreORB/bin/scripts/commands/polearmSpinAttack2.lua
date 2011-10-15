@@ -52,7 +52,7 @@ PolearmSpinAttack2Command = {
 
 	dizzyStateChance = 30,
 
-	--animationCRC = String("combo_2c_medium").hashCode(),
+	animationCRC = hashCode("combo_2c_medium"),
 
 	combatSpam = "melee",
 

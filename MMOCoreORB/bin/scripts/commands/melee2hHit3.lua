@@ -47,7 +47,7 @@ Melee2hHit3Command = {
 	speedMultiplier = 3.3,
 
 	dizzyStateChance = 25,
-	--animationCRC = String("combo_4a_medium").hashCode(),
+	animationCRC = hashCode("combo_4a_medium"),
 
 	combatSpam = "sword2_dam1",
 

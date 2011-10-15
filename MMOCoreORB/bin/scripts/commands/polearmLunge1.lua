@@ -47,7 +47,7 @@ PolearmLunge1Command = {
 	damageMultiplier = 1,
 	speedMultiplier = 1.5,
 
-	--animationCRC = String("attack_high_center_light_2").hashCode(),
+	animationCRC = hashCode("attack_high_center_light_2"),
 
 	combatSpam = "polearm_sweep",
 

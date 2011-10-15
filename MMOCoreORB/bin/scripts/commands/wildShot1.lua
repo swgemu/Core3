@@ -50,7 +50,7 @@ WildShot1Command = {
 	actionCostMultiplier = 1.1,
 	mindCostMultiplier = 0.5,
 
-	--animationCRC = String("fire_7_single_medium").hashCode(),
+	animationCRC = hashCode("fire_7_single_medium"),
 
 	combatSpam = "wildshot",
 

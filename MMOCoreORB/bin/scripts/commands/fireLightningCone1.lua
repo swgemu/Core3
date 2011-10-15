@@ -50,7 +50,7 @@ FireLightningCone1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	--animationCRC = String("fire_area_medium").hashCode(),
+	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "firelightningcone1",
 

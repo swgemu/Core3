@@ -49,7 +49,7 @@ PolearmArea1Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	--animationCRC = String("combo_2c_medium").hashCode(),
+	animationCRC = hashCode("combo_2c_medium"),
 
 	combatSpam = "melee",
 

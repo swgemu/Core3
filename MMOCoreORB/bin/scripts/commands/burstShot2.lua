@@ -54,7 +54,7 @@ BurstShot2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_7_single_medium").hashCode(),
+	animationCRC = hashCode("fire_7_single_medium"),
 
 	combatSpam = "burstblast",
 

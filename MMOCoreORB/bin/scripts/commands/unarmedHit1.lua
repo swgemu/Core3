@@ -47,7 +47,7 @@ UnarmedHit1Command = {
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
 
-	--animationCRC = String("combo_2d_light").hashCode(),
+	animationCRC = hashCode("combo_2d_light"),
 
 	combatSpam = "unarmed_dam1",
 

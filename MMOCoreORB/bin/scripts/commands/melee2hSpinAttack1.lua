@@ -50,7 +50,7 @@ Melee2hSpinAttack1Command = {
 	areaAction = true,
 	areaRange = 7,
 
-	--animationCRC = String("attack_high_right_light_2").hashCode(),
+	animationCRC = hashCode("attack_high_right_light_2"),
 
 	combatSpam = "melee",
 

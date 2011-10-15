@@ -49,7 +49,7 @@ PolearmSweep1Command = {
 
 	knockdownStateChance = 10,
 
-	--animationCRC = String("attack_low_right_medium_0").hashCode(),
+	animationCRC = hashCode("attack_low_right_medium_0"),
 
 	combatSpam = "melee",
 

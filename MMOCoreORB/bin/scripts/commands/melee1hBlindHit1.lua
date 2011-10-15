@@ -53,7 +53,7 @@ Melee1hBlindHit1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("combo_4b_medium").hashCode(),
+	animationCRC = hashCode("combo_4b_medium"),
 
 	combatSpam = "blindingstab",
 

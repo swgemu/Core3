@@ -51,7 +51,7 @@ BodyShot3Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	--animationCRC = String("fire_1_special_single_light").hashCode(),
+	animationCRC = hashCode("fire_1_special_single_light"),
 
 	combatSpam = "bodyshot",
 

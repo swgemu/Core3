@@ -46,7 +46,7 @@ Melee2hHit2Command = {
 	damageMultiplier = 3,
 	speedMultiplier = 2.3,
 
-	--animationCRC = String("combo_2a_medium").hashCode(),
+	animationCRC = hashCode("combo_2a_medium"),
 
 	combatSpam = "sword2_dam1",
 

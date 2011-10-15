@@ -53,7 +53,7 @@ Melee2hMindHit1Command = {
 	dotDuration = 30,
 	dotPool = MIND_ATTRIBUTE,
 
-	--animationCRC = String("combo_2b_medium").hashCode(),
+	animationCRC = hashCode("combo_2b_medium"),
 
 	combatSpam = "melee2hsweep1",
 

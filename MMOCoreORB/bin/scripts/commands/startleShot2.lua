@@ -54,7 +54,7 @@ StartleShot2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	--animationCRC = String("fire_defender_posture_change_up").hashCode(),
+	animationCRC = hashCode("fire_defender_posture_change_up"),
 
 	combatSpam = "startleshot",
 

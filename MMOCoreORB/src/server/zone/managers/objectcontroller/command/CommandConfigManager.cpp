@@ -305,6 +305,7 @@ void CommandConfigManager::registerFunctions() {
 	//lua generic
 	lua_register(getLuaState(), "RunSlashCommandsFile", runSlashCommandsFile);
 	lua_register(getLuaState(), "AddCommand", addCommand);
+	lua_register(getLuaState(), "hashCode", hashCode);
 }
 
 void CommandConfigManager::registerGlobals() {
@@ -540,6 +541,14 @@ void CommandConfigManager::parseAlternativeNames(String& alternativeNames, Queue
 
 		slashCommands->put(token, slashCommand);
 	}
+}
+
+int CommandConfigManager::hashCode(lua_State* L) {
+	const char* anim = lua_tostring(L, -1);
+
+	lua_pushnumber(L, String(anim).hashCode());
+
+	return 1;
 }
 
 int CommandConfigManager::addCommand(lua_State* L) {

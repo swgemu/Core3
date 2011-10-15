@@ -47,7 +47,7 @@ Melee1hHit1Command = {
 	damageMultiplier = 2.5,
 	speedMultiplier = 1.45,
 
-	--animationCRC = String("counter_high_center_light").hashCode(),
+	animationCRC = hashCode("counter_high_center_light"),
 
 	combatSpam = "chomai",
 

@@ -52,7 +52,7 @@ TorsoShotCommand = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	--animationCRC = String("fire_3_special_single_light_face").hashCode(),
+	animationCRC = hashCode("fire_3_special_single_light_face"),
 
 	combatSpam = "torsoshot",
 
