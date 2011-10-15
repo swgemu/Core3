@@ -59,12 +59,12 @@ import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 import engine.util.u3d.Vector3;
-
+import system.lang.StackTrace;
 include server.zone.objects.cell.CellObject;
 
 class BuildingObject extends StructureObject {
 	@dereferenced
-	protected Vector<CellObject> cells;
+	protected VectorMap<unsigned int, CellObject> cells;
 
 	protected int totalCellNumber;
 	
@@ -205,13 +205,23 @@ class BuildingObject extends StructureObject {
 	public native void sendBaselinesTo(SceneObject player);
 	public native void sendDestroyTo(SceneObject player);
 	
-	private native void addCell(CellObject cell);
+	public native void addCell(CellObject cell, unsigned int cellNumber);
 	
 	public boolean isStaticBuilding() {
 		return super.staticObject;
 	}
 	
-	public CellObject getCell(int idx) {
+	/**
+	 * Returns cell based on the index.
+	 * Cells start index 1
+	 */
+	public CellObject getCell(unsigned int idx) {
+		if (idx == 0) {
+			super.error("trying to get Cell with id = 0");
+			
+			StackTrace.printStackTrace();
+		}
+			
 		return cells.get(idx);
 	}
 	

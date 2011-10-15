@@ -122,7 +122,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 
 			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
 		} else { // we are inside the building
-			SceneObject* pathCell = building->getCell(cellID - 1);
+			SceneObject* pathCell = building->getCell(cellID);
 
 			path->add(WorldCoordinates(pathNode->getPosition(), pathCell));
 
@@ -312,7 +312,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 
 			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
 		} else { // we are inside the building
-			SceneObject* pathCell = building->getCell(cellID - 1);
+			SceneObject* pathCell = building->getCell(cellID);
 
 			path->add(WorldCoordinates(pathNode->getPosition(), pathCell));
 		}
@@ -489,7 +489,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
 		} else {
-			SceneObject* pathCell = building1->getCell(cellID - 1);
+			SceneObject* pathCell = building1->getCell(cellID);
 
 			WorldCoordinates coord(pathNode->getPosition(), pathCell);
 

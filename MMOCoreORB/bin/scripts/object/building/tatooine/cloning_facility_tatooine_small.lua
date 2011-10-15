@@ -47,11 +47,11 @@ object_building_tatooine_cloning_facility_tatooine_small = object_building_tatoo
 
 
 	childObjects = {
-		{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -0.42, z = -0.38, y = -0.4, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 9, containmentType = -1}
+		{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -0.42, z = -0.38, y = -0.4, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 10, containmentType = -1}
 	},
 	spawningPoints = { 
 			-- Needs Revisited, Needs elevator terms.
-			{ x = 0.445015, z = 0.271775, y = 1.39199, ow = 0.707176, ox = 0, oz = 0, oy = 0.707038, cellid = 9 }
+			{ x = 0.445015, z = 0.271775, y = 1.39199, ow = 0.707176, ox = 0, oz = 0, oy = 0.707038, cellid = 10 }
 			}, -- { x, z, y, ow, ox, oy, oz, cellid }
 	templateType = CLONINGBUILDING
 }

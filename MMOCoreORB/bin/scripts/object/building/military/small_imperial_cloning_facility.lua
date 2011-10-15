@@ -47,7 +47,7 @@ object_building_military_small_imperial_cloning_facility = object_building_milit
 
 
 	spawningPoints = {
-		{ x = 3.82471, z = 0.125266, y = -3.7097, ow = -0.70527, ox = 0, oz = 0, oy = 0.708939, cellid = 5 }
+		{ x = 3.82471, z = 0.125266, y = -3.7097, ow = -0.70527, ox = 0, oz = 0, oy = 0.708939, cellid = 6 }
 		}, -- { x, z, y, ow, ox, oy, oz, cellid }
 	templateType = CLONINGBUILDING
 }

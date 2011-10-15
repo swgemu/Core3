@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -346,6 +346,21 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 		_implementation->sendDestroyTo(player);
 }
 
+void BuildingObject::addCell(CellObject* cell, unsigned int cellNumber) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDCELL__CELLOBJECT_INT_);
+		method.addObjectParameter(cell);
+		method.addUnsignedIntParameter(cellNumber);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addCell(cell, cellNumber);
+}
+
 bool BuildingObject::isStaticBuilding() {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -359,14 +374,14 @@ bool BuildingObject::isStaticBuilding() {
 		return _implementation->isStaticBuilding();
 }
 
-CellObject* BuildingObject::getCell(int idx) {
+CellObject* BuildingObject::getCell(unsigned int idx) {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETCELL__INT_);
-		method.addSignedIntParameter(idx);
+		method.addUnsignedIntParameter(idx);
 
 		return static_cast<CellObject*>(method.executeWithObjectReturn());
 	} else
@@ -721,7 +736,7 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 
 	if (_name == "cells") {
-		TypeInfo<Vector<ManagedReference<CellObject* > > >::parseFromBinaryStream(&cells, stream);
+		TypeInfo<VectorMap<unsigned int, ManagedReference<CellObject* > > >::parseFromBinaryStream(&cells, stream);
 		return true;
 	}
 
@@ -769,7 +784,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Vector<ManagedReference<CellObject* > > >::toBinaryStream(&cells, stream);
+	TypeInfo<VectorMap<unsigned int, ManagedReference<CellObject* > > >::toBinaryStream(&cells, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -870,7 +885,14 @@ bool BuildingObjectImplementation::isStaticBuilding() {
 	return StructureObjectImplementation::staticObject;
 }
 
-CellObject* BuildingObjectImplementation::getCell(int idx) {
+CellObject* BuildingObjectImplementation::getCell(unsigned int idx) {
+	// server/zone/objects/building/BuildingObject.idl():  		return 
+	if (idx == 0){
+	// server/zone/objects/building/BuildingObject.idl():  			super.error("trying to get Cell with id = 0");
+	StructureObjectImplementation::error("trying to get Cell with id = 0");
+	// server/zone/objects/building/BuildingObject.idl():  			StackTrace.printStackTrace();
+	StackTrace::printStackTrace();
+}
 	// server/zone/objects/building/BuildingObject.idl():  		return cells.get(idx);
 	return (&cells)->get(idx);
 }
@@ -1000,11 +1022,14 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SENDDESTROYTO__SCENEOBJECT_:
 		sendDestroyTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_ADDCELL__CELLOBJECT_INT_:
+		addCell(static_cast<CellObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		break;
 	case RPC_ISSTATICBUILDING__:
 		resp->insertBoolean(isStaticBuilding());
 		break;
 	case RPC_GETCELL__INT_:
-		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getCell(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case RPC_GETTOTALCELLNUMBER__:
 		resp->insertSignedInt(getTotalCellNumber());
@@ -1135,11 +1160,15 @@ void BuildingObjectAdapter::sendDestroyTo(SceneObject* player) {
 	(static_cast<BuildingObjectImplementation*>(impl))->sendDestroyTo(player);
 }
 
+void BuildingObjectAdapter::addCell(CellObject* cell, unsigned int cellNumber) {
+	(static_cast<BuildingObjectImplementation*>(impl))->addCell(cell, cellNumber);
+}
+
 bool BuildingObjectAdapter::isStaticBuilding() {
 	return (static_cast<BuildingObjectImplementation*>(impl))->isStaticBuilding();
 }
 
-CellObject* BuildingObjectAdapter::getCell(int idx) {
+CellObject* BuildingObjectAdapter::getCell(unsigned int idx) {
 	return (static_cast<BuildingObjectImplementation*>(impl))->getCell(idx);
 }
 

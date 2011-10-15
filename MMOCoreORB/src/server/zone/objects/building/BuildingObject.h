@@ -135,6 +135,8 @@ using namespace server::zone::templates;
 
 #include "engine/util/u3d/Vector3.h"
 
+#include "system/lang/StackTrace.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -196,9 +198,11 @@ public:
 
 	void sendDestroyTo(SceneObject* player);
 
+	void addCell(CellObject* cell, unsigned int cellNumber);
+
 	bool isStaticBuilding();
 
-	CellObject* getCell(int idx);
+	CellObject* getCell(unsigned int idx);
 
 	int getTotalCellNumber();
 
@@ -262,7 +266,7 @@ namespace building {
 
 class BuildingObjectImplementation : public StructureObjectImplementation {
 protected:
-	Vector<ManagedReference<CellObject* > > cells;
+	VectorMap<unsigned int, ManagedReference<CellObject* > > cells;
 
 	int totalCellNumber;
 
@@ -333,13 +337,11 @@ public:
 
 	void sendDestroyTo(SceneObject* player);
 
-private:
-	void addCell(CellObject* cell);
+	void addCell(CellObject* cell, unsigned int cellNumber);
 
-public:
 	bool isStaticBuilding();
 
-	CellObject* getCell(int idx);
+	CellObject* getCell(unsigned int idx);
 
 	int getTotalCellNumber();
 
@@ -454,9 +456,11 @@ public:
 
 	void sendDestroyTo(SceneObject* player);
 
+	void addCell(CellObject* cell, unsigned int cellNumber);
+
 	bool isStaticBuilding();
 
-	CellObject* getCell(int idx);
+	CellObject* getCell(unsigned int idx);
 
 	int getTotalCellNumber();
 

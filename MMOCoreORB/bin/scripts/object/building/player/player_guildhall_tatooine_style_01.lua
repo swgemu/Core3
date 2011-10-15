@@ -51,10 +51,10 @@ object_building_player_player_guildhall_tatooine_style_01 = object_building_play
 	width = 8,
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 4.34, z = 3.4, y = 18.40, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 17.88, z= 2.75, y = 10.45, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 6, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0, z = -8.5, y = 13.5, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 8, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 0, z = 2.75, y = 13.5, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 8, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_guild.iff", x = -17.0, z = 2.75, y = 20, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 5, containmentType = -1}
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 17.88, z= 2.75, y = 10.45, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 7, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0, z = -8.5, y = 13.5, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 9, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 0, z = 2.75, y = 13.5, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 9, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_guild.iff", x = -17.0, z = 2.75, y = 20, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 6, containmentType = -1}
 	}
 }
 

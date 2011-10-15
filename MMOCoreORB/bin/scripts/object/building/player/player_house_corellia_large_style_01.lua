@@ -48,7 +48,7 @@ object_building_player_player_house_corellia_large_style_01 = object_building_pl
 	publicStructure = 0,
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = 3.68, z = 2, y = 13.04, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.17, z = 4.585, y = -4.4, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 7, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.17, z = 4.585, y = -4.4, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 8, containmentType = -1},
 	},
 	constructionMarker = "object/building/player/construction/construction_player_house_corellia_large_style_01.iff",
 	length = 5,

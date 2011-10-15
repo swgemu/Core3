@@ -48,7 +48,7 @@ object_building_player_player_house_generic_small_style_02_floorplan_02 = object
 	publicStructure = 0,
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address.iff", x = -1.91, z = 2, y = 8.35, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -6.69, z = 0.625, y = 3.55, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 0, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -6.69, z = 0.625, y = 3.55, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 1, containmentType = -1},
 	},
 	constructionMarker = "object/building/player/construction/construction_player_house_corellia_small_style_02.iff",
 	length = 4,

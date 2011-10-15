@@ -197,6 +197,12 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 	object->initializePosition(position.getX(), position.getZ(), position.getY());
 	object->setDirection(node->getDirection());
 
+	if (parentObject != NULL && parentObject->isBuildingObject() && object->isCellObject()) {
+		CellObject* cell = cast<CellObject*>(object);
+		BuildingObject* building = cast<BuildingObject*>(parentObject);
+		building->addCell(cell, node->getCellID());
+	}
+
 	if (parentObject != NULL)
 		parentObject->addObject(object, -1);
 

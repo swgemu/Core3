@@ -48,7 +48,7 @@ object_building_player_player_house_tatooine_small_style_02 = object_building_pl
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 4, z = 2, y = 7.9, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.79, z = 0.75, y = 6.02, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 0, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.79, z = 0.75, y = 6.02, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1},
 	},
 	constructionMarker = "object/building/player/construction/construction_player_house_tatooine_small_style_01.iff",
 	length = 3,

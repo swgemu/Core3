@@ -18,7 +18,7 @@ class WorldSnapshotNode : public Object {
 	uint32 objectID;
 	uint32 parentID;
 	uint32 nameID;
-	uint32 unknown1;
+	uint32 cellid; //cellid in the cells
 
 	Quaternion direction;
 	Vector3 position;
@@ -36,7 +36,7 @@ public:
 		objectID = wsn.objectID;
 		parentID = wsn.parentID;
 		nameID = wsn.nameID;
-		unknown1 = wsn.unknown1;
+		cellid = wsn.cellid;
 		direction = wsn.direction;
 		position = wsn.position;
 		gameObjectType = wsn.gameObjectType;
@@ -51,7 +51,7 @@ public:
 		objectID = wsn.objectID;
 		parentID = wsn.parentID;
 		nameID = wsn.nameID;
-		unknown1 = wsn.unknown1;
+		cellid = wsn.cellid;
 		direction = wsn.direction;
 		position = wsn.position;
 		gameObjectType = wsn.gameObjectType;
@@ -73,7 +73,7 @@ public:
 			objectID = data->readInt();
 			parentID = data->readInt();
 			nameID = data->readInt();
-			unknown1 = data->readInt();
+			cellid = data->readInt();
 
 			float qw = data->readFloat();
 			float qx = data->readFloat();
@@ -132,8 +132,8 @@ public:
 		return position;
 	}
 
-	uint32 getUnknown1() const {
-		return unknown1;
+	uint32 getCellID() const {
+		return cellid;
 	}
 
 	uint32 getUnknown2() const {

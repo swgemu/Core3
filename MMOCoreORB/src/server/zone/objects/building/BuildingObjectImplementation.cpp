@@ -99,6 +99,8 @@ void BuildingObjectImplementation::createCellObjects() {
 
 		if (!addObject(newCell, -1))
 			error("could not add cell");
+
+		addCell(cast<CellObject*>(newCell), i + 1);
 	}
 
 	updateToDatabase();
@@ -111,7 +113,7 @@ void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 		if (cell->getParent() == NULL)
 			cell->setParent(_this);
 
-		cell->setCellNumber(i + 1);
+//		cell->setCellNumber(i + 1);
 		cell->sendTo(player, true);
 	}
 }
@@ -340,13 +342,10 @@ void BuildingObjectImplementation::inRange(QuadTreeEntry* entry, float range) {
 	quadTree->inRange(entry, range);
 }
 
-void BuildingObjectImplementation::addCell(CellObject* cell) {
-	cells.add(cell);
+void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) {
+	cells.put(cellNumber, cell);
 
-	cell->setCellNumber(cells.size());
-
-	/*if (!addObject(cell, -1))
-	 error("could not add cell");*/
+	cell->setCellNumber(cellNumber);
 }
 
 void BuildingObjectImplementation::destroyObjectFromDatabase(
@@ -439,11 +438,6 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 }
 
 bool BuildingObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	if (object->isCellObject()) {
-		addCell(cast<CellObject*>(object));
-		//return true;
-	}
-
 	return StructureObjectImplementation::addObject(object, containmentType, notifyClient);
 }
 

@@ -64,7 +64,7 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	abilityRequired = "",
 	
 	--Sign is a childObject for the default sign of this structure.
-	sign = {templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 0},
+	sign = {templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 0},
 	
 	--Should the structure be public by default?
 	publicStructure = 1,

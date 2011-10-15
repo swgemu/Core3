@@ -703,10 +703,10 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 /*	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
 	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);*/
 
-	SceneObject* cellTut = tutorial->getCell(10);
+	SceneObject* cellTut = tutorial->getCell(11);
 	cellTut->addObject(travelTutorialTerminal, -1);
 
-	SceneObject* cellTutPlayer = tutorial->getCell(0);
+	SceneObject* cellTutPlayer = tutorial->getCell(1);
 //	cellTut->addObject(blueFrogTemplate, -1);
 
 	//tutorial->insertToZone(zone);
@@ -745,7 +745,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
-	SceneObject* cellTut = tutorial->getCell(0);
+	SceneObject* cellTut = tutorial->getCell(1);
 	cellTut->addObject(travelTutorialTerminal, -1);
 
 	//tutorial->insertToZone(zone);
@@ -1114,7 +1114,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	Quaternion* direction = clonePoint->getDirection();
 	int cellID = clonePoint->getCellID();
 
-	SceneObject* cell = cloningBuilding->getCell(cellID - 1);
+	SceneObject* cell = cloningBuilding->getCell(cellID);
 
 	Zone* zone = player->getZone();
 

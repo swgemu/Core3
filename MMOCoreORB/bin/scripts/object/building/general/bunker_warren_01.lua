@@ -46,10 +46,10 @@ object_building_general_bunker_warren_01 = object_building_general_shared_bunker
 
 
 	childObjects = {
-		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 1.05087, z = -3.66955, y = -15.5655, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 12, containmentType = -1},
-		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 1.05852, z = 1.33045, y = -15.563, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 12, containmentType = -1},
-		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 3.27517, z = 1.23045, y = -21.8704, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 12, containmentType = -1},
-		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 3.25385, z = 5.33045, y = -21.8635, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 12, containmentType = -1}
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 1.05087, z = -3.66955, y = -15.5655, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 1.05852, z = 1.33045, y = -15.563, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 3.27517, z = 1.23045, y = -21.8704, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 3.25385, z = 5.33045, y = -21.8635, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 13, containmentType = -1}
 	}
 }
 

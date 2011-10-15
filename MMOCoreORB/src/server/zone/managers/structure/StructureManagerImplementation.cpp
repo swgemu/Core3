@@ -434,7 +434,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 	if (structureObject->isBuildingObject()) {
 		ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( structureObject);
 
-		for (int i = 0; i < buildingObject->getTotalCellNumber(); ++i) {
+		for (uint32 i = 1; i <= buildingObject->getTotalCellNumber(); ++i) {
 			ManagedReference<CellObject*> cellObject = buildingObject->getCell(i);
 
 			int childObjects = cellObject->getContainerObjectsSize();
@@ -664,13 +664,13 @@ void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, S
 
 	Locker _lock(building, creature);
 
-	for (int i = 0; i < building->getTotalCellNumber(); ++i) {
+	for (uint32 i = 1; i <= building->getTotalCellNumber(); ++i) {
 		ManagedReference<CellObject*> cell = building->getCell(i);
 
 		int size = cell->getContainerObjectsSize();
 
-		for (int i = 0; i < size; ++i) {
-			ManagedReference<SceneObject*> childObject = cell->getContainerObject(i);
+		for (int j = 0; j < size; ++j) {
+			ManagedReference<SceneObject*> childObject = cell->getContainerObject(j);
 
 			if (!building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
 				childObject->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
