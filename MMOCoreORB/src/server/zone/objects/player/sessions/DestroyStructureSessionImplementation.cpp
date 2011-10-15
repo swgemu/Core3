@@ -23,7 +23,7 @@ int DestroyStructureSessionImplementation::initializeSession() {
 
 	creatureObject->addActiveSession(SessionFacadeType::DESTROYSTRUCTURE, _this);
 
-	Locker _lock(creatureObject, structureObject);
+	Locker _lock(structureObject, creatureObject);
 
 	CreatureObject* player = cast<CreatureObject*>( creatureObject.get());
 

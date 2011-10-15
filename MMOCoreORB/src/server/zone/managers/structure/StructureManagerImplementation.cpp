@@ -586,6 +586,8 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 	if (structureObject == NULL)
 		return 0;
 
+	Locker _locker(structureObject);
+
 	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(zone->getZoneServer()->getObject(structureObject->getDeedObjectID()));
 	structureObject->setDeedObjectID(0); //Set this to 0 so the deed doesn't get destroyed with the structure.
 
