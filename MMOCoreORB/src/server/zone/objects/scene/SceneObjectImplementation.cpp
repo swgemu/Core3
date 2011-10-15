@@ -1077,7 +1077,7 @@ void SceneObjectImplementation::createChildObjects() {
 			int totalCells = buildingObject->getTotalCellNumber();
 
 			try {
-				if (totalCells > child->getCellId()) {
+				if (totalCells >= child->getCellId()) {
 					ManagedReference<CellObject*> cellObject = buildingObject->getCell(child->getCellId());
 
 					if (cellObject != NULL) {
