@@ -211,13 +211,6 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 		CellObject* cell = cast<CellObject*>(object);
 		BuildingObject* building = cast<BuildingObject*>(parentObject);
 		building->addCell(cell, node->getCellID());
-
-		if (building->getMapCellSize() != node->getCellID()) {
-			//
-			StringBuffer msg;
-			msg << "diff cellids old:" << building->getMapCellSize() << " new:" << node->getCellID() << " template:" << object->getObjectTemplate()->getFullTemplateString();
-			info(msg.toString(), true);
-		}
 	}
 
 	if (parentObject != NULL)
