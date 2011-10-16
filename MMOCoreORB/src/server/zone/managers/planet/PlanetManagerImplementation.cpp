@@ -71,6 +71,16 @@ void PlanetManagerImplementation::initialize() {
 
 	loadStaticTangibleObjects();
 
+#if DEBUG_TRAVEL
+	info("final PlanetTravelPoints: START", true);
+	for (int i = 0; i < planetTravelPointList->size(); ++i) {
+		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
+
+		info(String::valueOf(i) + ") " + ptp->toString(), true);
+	}
+	info("final PlanetTravelPoints: END", true);
+#endif
+
 	weatherManager = new WeatherManager(zone);
 	weatherManager->initialize();
 }
@@ -201,6 +211,13 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 		CellObject* cell = cast<CellObject*>(object);
 		BuildingObject* building = cast<BuildingObject*>(parentObject);
 		building->addCell(cell, node->getCellID());
+
+		if (building->getMapCellSize() != node->getCellID()) {
+			//
+			StringBuffer msg;
+			msg << "diff cellids old:" << building->getMapCellSize() << " new:" << node->getCellID() << " template:" << object->getObjectTemplate()->getFullTemplateString();
+			info(msg.toString(), true);
+		}
 	}
 
 	if (parentObject != NULL)
@@ -299,23 +316,39 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(CreatureObje
 	player->sendMessage(ptplr);
 }
 
-PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(SceneObject* object, float range) {
+PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(SceneObject* object, float searchrange) {
+#if DEBUG_TRAVEL
+	StringBuffer callDesc;
+
+	callDesc << "getNearestPlanetTravelPoint("
+			 << object->getObjectNameStringIdName()
+			 << ":" << object->getObjectID()
+			 << ", " << searchrange
+			 << ") @ " << object->getWorldPosition().toString();
+#endif
 	Reference<PlanetTravelPoint*> planetTravelPoint = NULL;
+	float range = searchrange;
+	Vector3 originvector = object->getWorldPosition();
 
 	for (int i = 0; i < planetTravelPointList->size(); ++i) {
 		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
 
-		Coordinate coord;
-		coord.setPosition(ptp->getX(), ptp->getZ(), ptp->getY());
-
-		float dist = object->getDistanceTo(&coord);
+		float dist = originvector.distanceTo(ptp->getDeparturePosition());
 
 		if (dist < range) {
 			range = dist;
 			planetTravelPoint = ptp;
 		}
 	}
+#if DEBUG_TRAVEL
 
+	if(planetTravelPoint == NULL)
+		callDesc << ": DID NOT FIND POINT IN RANGE";
+	else
+		callDesc << ": returning: " << planetTravelPoint->toString();
+
+	info(callDesc, true);
+#endif
 	return planetTravelPoint;
 }
 

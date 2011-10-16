@@ -42,6 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/*
+** Updated on: Thu Oct 13 08:27:23 PDT 2011 by lordkator - made getPlanetTravelPoint delayed lookup
+*/
+
 package server.zone.objects.tangible.terminal.travel;
 
 import server.zone.objects.tangible.terminal.Terminal;
@@ -56,7 +60,7 @@ include server.zone.managers.planet.PlanetTravelPoint;
 
 class TravelTerminal extends Terminal {	
 	@local
-	protected transient PlanetTravelPoint planetTravelPoint;
+	private transient PlanetTravelPoint planetTravelPoint;
 	
 	public TravelTerminal() {		
 		Logger.setLoggingName("TravelTerminal");
@@ -68,14 +72,9 @@ class TravelTerminal extends Terminal {
 		super.initializeTransientMembers();
 		
 		Logger.setLoggingName("TravelTerminal");
-		
-		Zone zone = getZone();
-		if (zone != null)
-			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
 	}
-	
+
 	public native void notifyInsertToZone(Zone zone);
-	
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -85,8 +84,18 @@ class TravelTerminal extends Terminal {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	/**
+	 * Return the planetTravelPoint for this Travel Terminal
+	 *
+	 * NOTE: Resolution of the planetTravelPoint is delayed so the PlanetTravelPoints can get properly updated as objects load
+	 */
 	@local
 	public PlanetTravelPoint getPlanetTravelPoint() {
+		if(planetTravelPoint != null)
+		    return planetTravelPoint;
+	
+		planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
+
 		return planetTravelPoint;
 	}
 }

@@ -3,22 +3,15 @@
  *
  *  Created on: May 13, 2011
  *      Author: crush
+ *  Updated on: Sat Oct 15 10:40:05 PDT 2011 by lordkator - Converted to Vector3, arrival/departure and a number of fixes to make travel more stable
  */
 
 #ifndef PLANETTRAVELPOINT_H_
 #define PLANETTRAVELPOINT_H_
 
 #include "engine/engine.h"
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-	class CreatureObject;
-}
-}
-}
-}
+#include "engine/util/u3d/Coordinate.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 using namespace server::zone::objects::creature;
 
@@ -27,30 +20,24 @@ class PlanetTravelPoint : public Object {
 
 	String pointZone;
 	String pointName;
-	float x;
-	float z;
-	float y;
+	Vector3 arrivalVector;
+	Vector3 departureVector;
 	bool interplanetaryTravelAllowed;
 
 public:
 	PlanetTravelPoint(const String& zoneName) {
 		pointZone = zoneName;
-		x = 0.f;
-		z = 0.f;
-		y = 0.f;
+		arrivalVector.set(0.f, 0.f, 0.f);
 		interplanetaryTravelAllowed = false;
-
 		shuttleObject = NULL;
 	}
 
 	PlanetTravelPoint(const PlanetTravelPoint& ptp) : Object() {
 		pointZone = ptp.pointZone;
 		pointName = ptp.pointName;
-		x = ptp.x;
-		z = ptp.z;
-		y = ptp.y;
+		arrivalVector = ptp.arrivalVector;
+		departureVector = ptp.departureVector;
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
-
 		shuttleObject = ptp.shuttleObject;
 	}
 
@@ -60,9 +47,8 @@ public:
 
 		pointZone = ptp.pointZone;
 		pointName = ptp.pointName;
-		x = ptp.x;
-		z = ptp.z;
-		y = ptp.y;
+		arrivalVector = ptp.arrivalVector;
+		departureVector = ptp.departureVector;
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
 		shuttleObject = ptp.shuttleObject;
 
@@ -71,10 +57,22 @@ public:
 
 	void readLuaObject(LuaObject* luaObject) {
 		pointName = luaObject->getStringField("name");
-		x = luaObject->getFloatField("x");
-		z = luaObject->getFloatField("z");
-		y = luaObject->getFloatField("y");
+		arrivalVector.set(
+				luaObject->getFloatField("x"),
+				luaObject->getFloatField("z"),
+				luaObject->getFloatField("y")
+		);
+		departureVector = arrivalVector;
+
 		interplanetaryTravelAllowed = (bool) luaObject->getByteField("interplanetaryTravelAllowed");
+	}
+
+	// Called by the shuttles and transports to set the shuttle object for the nearest travel point
+	void setShuttle(CreatureObject* shuttle) {
+		shuttleObject = shuttle;
+
+		// Departure point is the shuttle's position itself
+		departureVector = shuttle->getWorldPosition();
 	}
 
 	inline String& getPointZone() {
@@ -85,20 +83,36 @@ public:
 		return pointName;
 	}
 
-	inline float getX() const {
-		return x;
+	inline float getArrivalPositionX() const {
+		return arrivalVector.getX();
 	}
 
-	inline float getY() const {
-		return y;
+	inline float getArrivalPositionY() const {
+		return arrivalVector.getY();
 	}
 
-	inline float getZ() const {
-		return z;
+	inline float getArrivalPositionZ() const {
+		return arrivalVector.getZ();
 	}
 
-	inline bool isInterplanetary() {
-		return interplanetaryTravelAllowed;
+	inline Vector3 getArrivalPosition() const {
+		return arrivalVector;
+	}
+
+	inline float getDeparturePositionX() const {
+		return departureVector.getX();
+	}
+
+	inline float getDeparturePositionY() const {
+		return departureVector.getY();
+	}
+
+	inline float getDeparturePositionZ() const {
+		return departureVector.getZ();
+	}
+
+	inline Vector3 getDeparturePosition() const {
+		return departureVector;
 	}
 
 	/**
@@ -109,6 +123,13 @@ public:
 	}
 
 	/**
+	 * Returns true if this location allows interplanetary travel
+	 */
+	inline bool isInterplanetary() {
+		return interplanetaryTravelAllowed;
+	}
+
+	/**
 	 * Returns true if travel between this point and the passed in point is permitted.
 	 * @param arrivalPoint The destination point.
 	 */
@@ -116,15 +137,36 @@ public:
 		if (arrivalPoint->getPointZone() == pointZone)
 			return true;
 
-		return (interplanetaryTravelAllowed && arrivalPoint->isInterplanetary());
-	}
-
-	void setShuttle(CreatureObject* shuttle) {
-		shuttleObject = shuttle;
+		return (interplanetaryTravelAllowed);
 	}
 
 	CreatureObject* getShuttle() {
 		return shuttleObject;
+	}
+
+	String toString() {
+		StringBuffer buf;
+
+		buf << "[PlanetTravelPoint 0x" + String::hexvalueOf((int64)this)
+			<< " Zone = '" << pointZone
+			<< "' Name = '" << pointName
+			<< "' StarPort = " << interplanetaryTravelAllowed
+			<< " Departure: " << departureVector.toString()
+			<< " Arrival: " << arrivalVector.toString()
+			<< " shuttle = ";
+
+		if(shuttleObject == NULL) {
+			buf << "NULL";
+		} else {
+			buf << "[oid:" << shuttleObject->getObjectID()
+				<< " " << shuttleObject->getObjectNameStringIdName()
+				<< " @ " << shuttleObject->getWorldPosition().toString()
+				<< "]";
+		}
+
+		buf << "]";
+
+		return buf.toString();
 	}
 };
 

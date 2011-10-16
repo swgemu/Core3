@@ -222,14 +222,14 @@ void TravelTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Zone zone = getZone();
-	Zone* zone = getZone();
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  	}
-	if (zone != NULL)	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
-	planetTravelPoint = zone->getPlanetManager()->getNearestPlanetTravelPoint(_this);
 }
 
 PlanetTravelPoint* TravelTerminalImplementation::getPlanetTravelPoint() {
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		planetTravelPoint 
+	if (planetTravelPoint != NULL)	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		 return planetTravelPoint;
+	return planetTravelPoint;
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
+	planetTravelPoint = zone->getPlanetManager()->getNearestPlanetTravelPoint(_this);
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		return planetTravelPoint;
 	return planetTravelPoint;
 }

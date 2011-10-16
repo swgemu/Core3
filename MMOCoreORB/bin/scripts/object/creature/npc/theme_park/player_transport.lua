@@ -40,9 +40,11 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
+-- Updated on: Sat Oct 15 09:39:53 PDT 2011 by lordkator - added zoneComponent so this object will find it's PlanetTravelPoint dynamically
 
 object_creature_npc_theme_park_player_transport = object_creature_npc_theme_park_shared_player_transport:new {
-	optionsBitmask = 256
+	optionsBitmask = 256,
+        zoneComponent = "ShuttleZoneComponent"
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_player_transport, "object/creature/npc/theme_park/player_transport.iff")

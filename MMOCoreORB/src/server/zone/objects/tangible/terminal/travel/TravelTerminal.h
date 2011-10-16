@@ -133,7 +133,6 @@ namespace terminal {
 namespace travel {
 
 class TravelTerminalImplementation : public TerminalImplementation {
-protected:
 	Reference<PlanetTravelPoint* > planetTravelPoint;
 
 public:

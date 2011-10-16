@@ -236,6 +236,8 @@ public:
 
 	void setPublicStructure(bool privacy);
 
+	int getMapCellSize();
+
 	bool togglePrivacy();
 
 	unsigned int getMaximumNumberOfPlayerItems();
@@ -375,6 +377,8 @@ public:
 
 	void setPublicStructure(bool privacy);
 
+	int getMapCellSize();
+
 	bool togglePrivacy();
 
 	virtual unsigned int getMaximumNumberOfPlayerItems();
@@ -493,6 +497,8 @@ public:
 	bool isPrivateStructure();
 
 	void setPublicStructure(bool privacy);
+
+	int getMapCellSize();
 
 	bool togglePrivacy();
 

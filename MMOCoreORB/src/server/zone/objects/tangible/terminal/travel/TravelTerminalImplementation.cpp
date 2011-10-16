@@ -3,6 +3,7 @@
  *
  *  Created on: 31/05/2010
  *      Author: victor
+ *  Updated on: Thu Oct 13 08:34:42 PDT 2011 by lordkator - use getPlanetTravelPoint() instead of trying to resolve here
  */
 
 #include "TravelTerminal.h"
@@ -18,10 +19,15 @@ int TravelTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 	if (selectedID != 20)
 		return 0;
 
-	if (controlledObject == NULL)
-		return 0;
+	Reference<PlanetTravelPoint*> ptp = getPlanetTravelPoint();
 
-	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(planetTravelPoint);
+	// Complain loudly if we failed to find a travel point for this terminal
+	if(ptp == NULL) {
+		error("TravelTerminalImplementation::handleObjectMenuSelect(" + String::valueOf(getObjectID()) + " Could not determine related PlanetTravelPoint");
+		return 0;
+	}
+
+	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(ptp);
 	player->sendMessage(etpm);
 
 	return 0;
@@ -29,10 +35,4 @@ int TravelTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 void TravelTerminalImplementation::notifyInsertToZone(Zone* zone) {
 	TerminalImplementation::notifyInsertToZone(zone);
-
-	//Set the travel point name to which this travel terminal is bound.
-	PlanetManager* planetManager = zone->getPlanetManager();
-	Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(controlledObject);
-
-	planetTravelPoint = ptp;
 }

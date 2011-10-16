@@ -41,10 +41,12 @@
 --this exception also makes it possible to release a modified version 
 
 
+-- Updated on: Sat Oct 15 05:19:25 PDT 2011 by lordkator - Shuttle port ticket terminals on tatooine were spawning partly in the shuttle port wall
+
 object_building_tatooine_shuttleport_tatooine = object_building_tatooine_shared_shuttleport_tatooine:new {
 	planetMapCategory = "shuttleport",
 	childObjects = {
-		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -13, z = 0.6, y = -10, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -13, z = 0.6, y = -9, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/travel/ticket_collector/ticket_collector.iff", x = -13, z = 0.6, y = 10, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 		{templateFile = "object/creature/npc/theme_park/player_shuttle.iff", x = 0, z = 0.6, y = 0, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
 	}

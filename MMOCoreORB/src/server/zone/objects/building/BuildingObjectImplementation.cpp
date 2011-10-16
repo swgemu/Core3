@@ -344,7 +344,17 @@ void BuildingObjectImplementation::inRange(QuadTreeEntry* entry, float range) {
 
 void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) {
 	cells.put(cellNumber, cell);
+#ifdef DEBUG_CELL_ORDER
+	int n = cells.size();
+	// Before 3373 it was assumed that cells came in order from snapshots but it turned out there was a CellId in the snapshot
+	if(n != cellNumber) {
+		StringBuffer buf;
 
+		buf << "WARNING: oid:" << cell->getObjectID() << " [poid: " << getObjectID() << " " << getObjectNameStringIdName() << " " << getWorldPosition().toString() << "] Cell# " << cellNumber << " may have been " << n << " prior to 3373.";
+
+		info(buf.toString(), true);
+	}
+#endif
 	cell->setCellNumber(cellNumber);
 }
 

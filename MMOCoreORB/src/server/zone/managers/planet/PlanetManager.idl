@@ -167,7 +167,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 * Returns the closest PlanetTravelPoint within the given range.
 	 * @param object The object to use as reference.
 	 * @param range The maximum range to search within.
-	 * @return Returns a string of the name of the closest PlanetTravelPoint.
+	 * @return Returns a PlanetTravelPoint or NULL if not found in range
 	 */
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);

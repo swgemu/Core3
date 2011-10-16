@@ -34,9 +34,9 @@ public:
 
 		for (int i = 0; i < totalPoints; ++i) {
 			Reference<PlanetTravelPoint*> ptp = get(i);
-			message->insertFloat(ptp->getX());
-			message->insertFloat(ptp->getZ());
-			message->insertFloat(ptp->getY());
+			message->insertFloat(ptp->getArrivalPositionX());
+			message->insertFloat(ptp->getArrivalPositionZ());
+			message->insertFloat(ptp->getArrivalPositionY());
 		}
 
 		message->insertInt(totalPoints);
