@@ -59,6 +59,16 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 		return;
 	}
 
+	//bugfix 814,819
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	if (inventory == NULL)
+		return;
+
+	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObject::STATICLOOTCONTAINER) {
+		player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
+		return;
+	}
+
 	if (tangibleObject->isWeaponObject() && !hasWeaponUpgradeKit()) {
 		player->sendSystemMessage("@slicing/slicing:no_weapon_kit");
 		return;
@@ -66,15 +76,6 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 
 	if (tangibleObject->isArmorObject() && !hasArmorUpgradeKit()) {
 		player->sendSystemMessage("@slicing/slicing:no_armor_kit");
-		return;
-	}
-
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-	if (inventory == NULL)
-		return;
-
-	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObject::STATICLOOTCONTAINER) {
-		player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
 		return;
 	}
 
@@ -180,6 +181,8 @@ void SlicingSessionImplementation::handleMenuSelect(CreatureObject* pl, byte men
 		if (hasPrecisionLaserKnife()) {
 			if (firstCable != menuID)
 				handleSlice(suiBox); // Handle Successful Slice
+			else
+				handleSliceFailed(); // Handle failed slice attempt //bugfix 820
 			return;
 		} else
 			player->sendSystemMessage("@slicing/slicing:no_knife");

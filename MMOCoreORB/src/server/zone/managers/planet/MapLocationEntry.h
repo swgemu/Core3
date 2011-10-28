@@ -3,6 +3,7 @@
  *
  *  Created on: 18/06/2010
  *      Author: victor
+ *  Updated on: Sun Oct 16 16:30:54 PDT 2011 by lordkator - resolve displayName on add in setObject()
  */
 
 #ifndef MAPLOCATIONENTRY_H_
@@ -28,6 +29,7 @@ using namespace server::zone::objects::scene;
 
 class MapLocationEntry : public Object {
 	ManagedReference<SceneObject*> object;
+	UnicodeString displayName;
 	bool active;
 
 public:
@@ -36,13 +38,14 @@ public:
 	}
 
 	MapLocationEntry(SceneObject* obj) {
-		object = obj;
+		setObject(obj);
 		active = false;
 	}
 
 	MapLocationEntry(const MapLocationEntry& entry) : Object() {
 		object = entry.object;
 		active = entry.active;
+		displayName = entry.displayName;
 	}
 
 	int compareTo(const MapLocationEntry& entry) const;
@@ -53,9 +56,7 @@ public:
 
 	uint64 getObjectID() const;
 
-	inline void setObject(SceneObject* obj) {
-		object = obj;
-	}
+	void setObject(SceneObject* obj);
 
 	inline SceneObject* getObject() {
 		return object;
