@@ -13,7 +13,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	end
 	
 	--spawn stormtroopers
-	targetCellObject:_setObject(buildingObject:getCell(0))
+	targetCellObject:_setObject(buildingObject:getCell(1))
 	
 	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", -2.4, 0, -17.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
@@ -25,7 +25,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	
 	-- 
-	targetCellObject:_setObject(buildingObject:getCell(1))
+	targetCellObject:_setObject(buildingObject:getCell(2))
 	
 	--spawn commoners
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 30.2, 0, -43.1, targetCellObject:getObjectID())
@@ -73,7 +73,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 		spawnedSceneObject:addObject(item, -1, 1)
 	end
 	
-	targetCellObject:_setObject(buildingObject:getCell(2))
+	targetCellObject:_setObject(buildingObject:getCell(3))
 	
 	--spawn second officer banker
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_2", 44, 0, 2, targetCellObject:getObjectID())
@@ -103,7 +103,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	writeData(creature:getObjectID() .. ":tutorial:bazaar", spawnedSceneObject:getObjectID())
 	
 	--spawn more commoners
-	targetCellObject:_setObject(buildingObject:getCell(3))
+	targetCellObject:_setObject(buildingObject:getCell(4))
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 51.1, -7, -51, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.589, 0, -0.807, 0)
@@ -127,7 +127,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	
 	--spawn q-3p0
-	targetCellObject:_setObject(buildingObject:getCell(4))
+	targetCellObject:_setObject(buildingObject:getCell(5))
 	spawnedPointer = spawnMobile("tutorial", "protocol_droid_3po_silver", 11.9, -7, -56.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "cloningDroidStopConversation", spawnedPointer)
@@ -153,14 +153,14 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	writeData(creature:getObjectID() .. ":tutorial:insurance", spawnedSceneObject:getObjectID())
 	
 	--spawn npc panic 1
-	--targetCellObject:_setObject(buildingObject:getCell(5))
+	--targetCellObject:_setObject(buildingObject:getCell(6))
 	spawnedPointer = spawnMobile("tutorial", "panic_npc_1", -3.3, -7, -75.6, targetCellObject:getObjectID())
 	
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "panic1MoveObserver", spawnedPointer) --move observer
 	
 	
 	--spawn officer3
-	targetCellObject:_setObject(buildingObject:getCell(6))
+	targetCellObject:_setObject(buildingObject:getCell(7))
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_3", 38.1, -7, -79.7, targetCellObject:getObjectID())
 	--create observer to catch when the player stops talking
 	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "officer3StopConversation", spawnedPointer)
@@ -168,14 +168,14 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "converseWithOfficer3Observer", spawnedPointer) --move observer
 	
 	--spawn debris
-	targetCellObject:_setObject(buildingObject:getCell(13))
+	targetCellObject:_setObject(buildingObject:getCell(14))
 	
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/newbie_tutorial/debris.iff", 76.9, -4, -94.3, targetCellObject:getObjectID(), 1, 0, 0, 0)
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "nearDebrisObserver", spawnedPointer) --move observer
 	createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyedObserver", spawnedPointer) --destroy observer
 	
 	--spawn retard to kill
-	targetCellObject:_setObject(buildingObject:getCell(7))
+	targetCellObject:_setObject(buildingObject:getCell(8))
 	spawnedPointer = spawnMobile("tutorial", "bandit_tutorial_1", 38.1, -5.9, -113.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
