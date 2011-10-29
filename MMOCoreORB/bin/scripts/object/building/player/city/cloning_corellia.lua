@@ -50,7 +50,7 @@ object_building_player_city_cloning_corellia = object_building_player_city_share
 	length = 5,
 	width = 5,
 	cityRankRequired = 3,
-	spawningPoints = { {x = -9.7, z = -1.2, y = -6.2, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 5} }, -- { x, z, y, ow, ox, oy, oz, cellid }
+	spawningPoints = { {x = -9.7, z = -1.2, y = -6.2, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 4} }, -- { x, z, y, ow, ox, oy, oz, cellid }
 	templateType = CLONINGBUILDING,
 	abilityRequired = "place_cloning",
 	alwaysPublic = 1,
