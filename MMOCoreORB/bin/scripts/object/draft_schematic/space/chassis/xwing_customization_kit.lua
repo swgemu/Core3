@@ -54,8 +54,8 @@ object_draft_schematic_space_chassis_xwing_customization_kit = object_draft_sche
    xpType = "shipwright", 
    xp = 50, 
 
-   assemblySkill = "chassis_assembly", 
-   experimentingSkill = "chassis_experimentation", 
+   assemblySkill = "grenade_assembly", 
+   experimentingSkill = "general_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

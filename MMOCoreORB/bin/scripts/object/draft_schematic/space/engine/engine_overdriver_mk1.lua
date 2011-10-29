@@ -63,10 +63,10 @@ object_draft_schematic_space_engine_engine_overdriver_mk1 = object_draft_schemat
    customizationDefaults = {},
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"overdriving_mechanism", "casing"},
-   ingredientSlotType = {0, 2},
-   resourceTypes = {"ore_siliclastic_fermionic", "steel"},
-   resourceQuantities = {25, 75},
+   ingredientTitleNames = {"casing", "overdriving_mechanism"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "ore_siliclastic_fermionic"},
+   resourceQuantities = {75, 25},
    combineTypes = {0, 0},
    contribution = {100, 100},
 

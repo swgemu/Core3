@@ -54,8 +54,8 @@ object_draft_schematic_space_chassis_hutt_light_s01 = object_draft_schematic_spa
    xpType = "shipwright", 
    xp = 1250, 
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
+   assemblySkill = "chassis_assembly", 
+   experimentingSkill = "chassis_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

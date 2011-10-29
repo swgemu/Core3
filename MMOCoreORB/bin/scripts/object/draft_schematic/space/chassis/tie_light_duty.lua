@@ -64,7 +64,7 @@ object_draft_schematic_space_chassis_tie_light_duty = object_draft_schematic_spa
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"frame", "ship_skin", "structural_support", "basic_heat_shielding"},
-   ingredientSlotType = {0, 1, 1, 1},
+   ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"steel", "aluminum", "ore", "petrochem_inert"},
    resourceQuantities = {2000, 1000, 1000, 1000},
    combineTypes = {0, 0, 0, 0},

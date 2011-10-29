@@ -54,8 +54,8 @@ object_draft_schematic_space_chassis_texture_kit_s05 = object_draft_schematic_sp
    xpType = "shipwright", 
    xp = 44, 
 
-   assemblySkill = "chassis_assembly", 
-   experimentingSkill = "chassis_experimentation", 
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
