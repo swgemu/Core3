@@ -184,5 +184,6 @@ void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) 
 void ResourceContainerImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
-	spawnObject->decreaseContainerReferenceCount();
+	if (spawnObject != NULL)
+		spawnObject->decreaseContainerReferenceCount();
 }
