@@ -47,9 +47,9 @@ object_building_military_outpost_cloning_facility_s02 = object_building_military
 
 
 	spawningPoints = {                     
-		{ x = 4.44727, z = 0.125266, y = -3.80136, ow = 0.707745, ox = 0, oz = 0, oy = -0.706468, cellid = 6 },
-		{ x = 4.65395, z = 0.125266, y = 1.49466, ow = -0.699587, ox = 0, oz = 0, oy = 0.714548, cellid = 5 },
-		{ x = -3.99569, z = 0.125266, y = -3.51553, ow = 0.710131, ox = 0, oz = 0, oy = 0.70407, cellid = 7 }
+		{ x = 4.44727, z = 0.125266, y = -3.80136, ow = 0.707745, ox = 0, oz = 0, oy = -0.706468, cellid = 5 },
+		{ x = 4.65395, z = 0.125266, y = 1.49466, ow = -0.699587, ox = 0, oz = 0, oy = 0.714548, cellid = 4 },
+		{ x = -3.99569, z = 0.125266, y = -3.51553, ow = 0.710131, ox = 0, oz = 0, oy = 0.70407, cellid = 6 }
 		}, -- { x, z, y, ow, ox, oy, oz, cellid }
 	templateType = CLONINGBUILDING
 }
