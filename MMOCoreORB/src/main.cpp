@@ -47,7 +47,21 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/Container.h"
 
 #include "test/stmtest.h"
+#include "test/stmmemtest.h"
 #include "test/memprottest.h"
+
+#include "system/mm/AllocationTracker.h"
+
+AllocationTracker* tracker;
+
+void initializeTracker() {
+	printf("malloc initialization Hook installed\n");
+
+	tracker = AllocationTracker::getInstance();
+	tracker->install();
+}
+
+//void (*__malloc_initialize_hook)(void) = initializeTracker;
 
 int main(int argc, char* argv[]) {
 	try {
@@ -63,6 +77,8 @@ int main(int argc, char* argv[]) {
 				testTransactions();
 			else if (arguments.get(0) == "memtest")
 				testMemoryProtection();
+			else if (arguments.get(0) == "stmmemtest")
+				testSTMMemory();
 		} else
 			core.start();
 

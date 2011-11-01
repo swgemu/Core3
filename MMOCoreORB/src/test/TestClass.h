@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #ifdef WITH_STM
 class TestClass : public Object {
-	static const int ELEMENT_COUNT = 100;
+	static const int ELEMENT_COUNT = 10;
 
 	int values[ELEMENT_COUNT];
 
@@ -85,11 +85,11 @@ public:
 	}
 
 	Object* clone() {
-		return new TestClass(*this);
+		return ObjectCloner<TestClass>::clone(this);
 	}
 
 	Object* clone(void* object) {
-		return dynamic_cast<Object*>(new (TransactionalMemoryManager::instance()->create(sizeof(TestClass))) TestClass(*this));
+		return TransactionalObjectCloner<TestClass>::clone(this);
 	}
 
 	void free() {
@@ -103,13 +103,20 @@ class TestTask : public Task {
 public:
 	TestTask(Vector<TransactionalReference<TestClass*> >* refs) {
 		references = refs;
+
+		for (int i = 0; i < references->size(); ++i) {
+			assert(references->get(i) != NULL);
+		}
 	}
 
 	void run() {
 		//Task* task = new TestTask(references);
 
 		for (int i = 0; i < 25; ++i) {
-			TestClass* object = references->get(System::random(references->size() - 1)).getForUpdate();
+			int index = System::random(references->size() - 1);
+			TransactionalReference<TestClass*>& reference = references->get(index);
+
+			TestClass* object = reference.getForUpdate();
 
 			/*char str[80];
 			sprintf(str, "values %i\n", object->getz());

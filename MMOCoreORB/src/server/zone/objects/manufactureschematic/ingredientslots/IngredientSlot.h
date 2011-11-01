@@ -128,7 +128,11 @@ public:
 	}
 
 	Object* clone() {
-		return new IngredientSlot(*this);
+		return ObjectCloner<IngredientSlot>::clone(this);
+	}
+
+	Object* clone(void* object) {
+		return TransactionalObjectCloner<IngredientSlot>::clone(this);
 	}
 
 	bool isType(int type) {

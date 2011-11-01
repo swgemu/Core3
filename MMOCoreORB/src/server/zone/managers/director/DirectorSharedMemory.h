@@ -26,7 +26,11 @@ public:
 	}
 
 	Object* clone() {
-		return new DirectorSharedMemory(*this);
+		return ObjectCloner<DirectorSharedMemory>::clone(this);
+	}
+
+	Object* clone(void* object) {
+		return TransactionalObjectCloner<DirectorSharedMemory>::clone(this);
 	}
 };
 

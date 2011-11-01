@@ -38,7 +38,11 @@ public:
 	}
 
 	Object* clone() {
-		return new MapLocationTable(*this);
+		return ObjectCloner<MapLocationTable>::clone(this);
+	}
+
+	Object* clone(void* object) {
+		return TransactionalObjectCloner<MapLocationTable>::clone(this);
 	}
 
 	void addObject(SceneObject* object);

@@ -45,7 +45,6 @@ which carries forward this exception.
 #ifndef SERVERCORE_H_
 #define SERVERCORE_H_
 
-#include "system/lang.h"
 #include "engine/engine.h"
 
 namespace server {
@@ -56,13 +55,7 @@ namespace server {
 
 using namespace server::zone;
 
-namespace server {
-	namespace login {
-		class LoginServer;
-	}
-}
-
-using namespace server::login;
+#include "login/LoginServer.h"
 
 namespace server {
 	namespace conf {
@@ -89,7 +82,7 @@ class ServerCore : public Core, public Logger {
 
 	DistributedObjectBroker* orb;
 
-	LoginServer* loginServer;
+	ManagedReference<server::login::LoginServer*> loginServer;
 
 	StatusServer* statusServer;
 

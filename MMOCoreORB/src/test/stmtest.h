@@ -52,12 +52,12 @@ void testTransactions() {
 
 	printf("creating objects\n");
 
-	for (int i = 0; i < 10000; ++i)
+	for (int i = 0; i < 1000; ++i)
 		references.add(new TestClass(1));
 
 	printf("adding tasks\n");
 
-	for (int i = 0; i < 10000; ++i) {
+	for (int i = 0; i < 1000; ++i) {
 		Task* task = new TestTask(&references);
 
 		//Core::getTaskManager()->scheduleTask(task, 1000);
@@ -70,24 +70,24 @@ void testTransactions() {
 
 	Thread::sleep(3000);
 
-	while(true) {
+	for (int i = 0; i < 500; ++i) {
 		Thread::sleep(1000);
 
 		int scheduledTasks = Core::getTaskManager()->getScheduledTaskSize();
 		int executedTasks = Core::getTaskManager()->getExecutingTaskSize();
 
 		int taskToSchedule = 500;
-		int taskToExecute = 1000;
+		int taskToExecute = 500;
 
-		if (scheduledTasks > 20000)
+		if (scheduledTasks > 5000)
 			taskToSchedule = 0;
 		else if (scheduledTasks < 1000)
-			taskToSchedule = 5000;
+			taskToSchedule = 3000;
 
-		if (executedTasks > 20000)
+		if (executedTasks > 5000)
 			taskToExecute = 0;
 		else if (executedTasks < 1000)
-			taskToExecute = 5000;
+			taskToExecute = 3000;
 
 		for (int i = 0; i < taskToSchedule; ++i) {
 			Task* task = new TestTask(&references);
@@ -95,11 +95,11 @@ void testTransactions() {
 			Core::getTaskManager()->scheduleTask(task, System::random(2000));
 		}
 
-		for (int i = 0; i < taskToExecute; ++i) {
+		/*for (int i = 0; i < taskToExecute; ++i) {
 			Task* task = new TestTask(&references);
 
 			Core::getTaskManager()->executeTask(task);
-		}
+		}*/
 
 		TransactionalMemoryManager::commitPureTransaction();
 	}
@@ -112,7 +112,7 @@ void testTransactions() {
 
 	TransactionalMemoryManager::commitPureTransaction();
 
-	Thread::sleep(1000);
+	Thread::sleep(5000);
 #endif
 
 	exit(0);

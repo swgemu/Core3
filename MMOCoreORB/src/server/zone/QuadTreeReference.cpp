@@ -35,7 +35,11 @@ bool QuadTreeReference::parseFromBinaryStream(ObjectInputStream* stream) {
 }
 
 QuadTree* QuadTreeReference::operator=(QuadTree* obj) {
+#ifdef WITH_STM
+	setObject(obj);
+#else
 	updateObject(obj);
+#endif
 
 	return obj;
 }

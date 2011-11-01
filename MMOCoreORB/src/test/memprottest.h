@@ -63,7 +63,7 @@ public:
 	}
 };
 
-SignalTranslator<SegFault> segmentationFaultTranslator;
+//SignalTranslator<SegFault> segmentationFaultTranslator;
 
 #ifdef WITH_STM
 class MemoryTestTask : public Task {

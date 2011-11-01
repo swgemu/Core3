@@ -52,7 +52,11 @@ public:
 	}
 
 	Object* clone() {
-		return new CommandQueueActionVector(*this);
+		return ObjectCloner<CommandQueueActionVector>::clone(this);
+	}
+
+	Object* clone(void* object) {
+		return TransactionalObjectCloner<CommandQueueActionVector>::clone(this);
 	}
 };
 
