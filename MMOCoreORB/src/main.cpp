@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "test/stmmemtest.h"
 #include "test/memprottest.h"
 
-#include "system/mm/AllocationTracker.h"
+/*#include "system/mm/AllocationTracker.h"
 
 AllocationTracker* tracker;
 
@@ -59,7 +59,7 @@ void initializeTracker() {
 
 	tracker = AllocationTracker::getInstance();
 	tracker->install();
-}
+}*/
 
 //void (*__malloc_initialize_hook)(void) = initializeTracker;
 
