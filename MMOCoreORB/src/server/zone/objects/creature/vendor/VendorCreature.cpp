@@ -360,7 +360,7 @@ bool VendorCreatureImplementation::isVendorCreature() {
  *	VendorCreatureAdapter
  */
 
-VendorCreatureAdapter::VendorCreatureAdapter(VendorCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
+VendorCreatureAdapter::VendorCreatureAdapter(VendorCreature* obj) : CreatureObjectAdapter(obj) {
 }
 
 Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -405,43 +405,43 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void VendorCreatureAdapter::initializeTransientMembers() {
-	(static_cast<VendorCreatureImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<VendorCreature*>(stub))->initializeTransientMembers();
 }
 
 void VendorCreatureAdapter::finalize() {
-	(static_cast<VendorCreatureImplementation*>(impl))->finalize();
+	(static_cast<VendorCreature*>(stub))->finalize();
 }
 
 int VendorCreatureAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<VendorCreatureImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VendorCreature*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VendorCreatureAdapter::addClothingItem(CreatureObject* player, TangibleObject* clothing) {
-	(static_cast<VendorCreatureImplementation*>(impl))->addClothingItem(player, clothing);
+	(static_cast<VendorCreature*>(stub))->addClothingItem(player, clothing);
 }
 
 void VendorCreatureAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<VendorCreatureImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<VendorCreature*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void VendorCreatureAdapter::createChildObjects() {
-	(static_cast<VendorCreatureImplementation*>(impl))->createChildObjects();
+	(static_cast<VendorCreature*>(stub))->createChildObjects();
 }
 
 void VendorCreatureAdapter::addVendorToMap() {
-	(static_cast<VendorCreatureImplementation*>(impl))->addVendorToMap();
+	(static_cast<VendorCreature*>(stub))->addVendorToMap();
 }
 
 void VendorCreatureAdapter::setOwnerID(unsigned long long ownerID) {
-	(static_cast<VendorCreatureImplementation*>(impl))->setOwnerID(ownerID);
+	(static_cast<VendorCreature*>(stub))->setOwnerID(ownerID);
 }
 
 bool VendorCreatureAdapter::isVendor() {
-	return (static_cast<VendorCreatureImplementation*>(impl))->isVendor();
+	return (static_cast<VendorCreature*>(stub))->isVendor();
 }
 
 bool VendorCreatureAdapter::isVendorCreature() {
-	return (static_cast<VendorCreatureImplementation*>(impl))->isVendorCreature();
+	return (static_cast<VendorCreature*>(stub))->isVendorCreature();
 }
 
 /*
@@ -469,7 +469,7 @@ DistributedObjectServant* VendorCreatureHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VendorCreatureHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VendorCreatureAdapter(static_cast<VendorCreatureImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new VendorCreatureAdapter(static_cast<VendorCreature*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

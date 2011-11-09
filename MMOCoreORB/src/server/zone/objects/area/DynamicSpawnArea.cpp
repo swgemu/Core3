@@ -445,7 +445,7 @@ bool DynamicSpawnAreaImplementation::isDynamicArea() {
  *	DynamicSpawnAreaAdapter
  */
 
-DynamicSpawnAreaAdapter::DynamicSpawnAreaAdapter(DynamicSpawnAreaImplementation* obj) : SpawnAreaAdapter(obj) {
+DynamicSpawnAreaAdapter::DynamicSpawnAreaAdapter(DynamicSpawnArea* obj) : SpawnAreaAdapter(obj) {
 }
 
 Packet* DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -490,43 +490,43 @@ Packet* DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void DynamicSpawnAreaAdapter::registerObservers() {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->registerObservers();
+	(static_cast<DynamicSpawnArea*>(stub))->registerObservers();
 }
 
 void DynamicSpawnAreaAdapter::spawnCreature(unsigned int templateCRC, PlayerObject* player) {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->spawnCreature(templateCRC, player);
+	(static_cast<DynamicSpawnArea*>(stub))->spawnCreature(templateCRC, player);
 }
 
 void DynamicSpawnAreaAdapter::notifyEnter(SceneObject* object) {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->notifyEnter(object);
+	(static_cast<DynamicSpawnArea*>(stub))->notifyEnter(object);
 }
 
 void DynamicSpawnAreaAdapter::notifyExit(SceneObject* object) {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->notifyExit(object);
+	(static_cast<DynamicSpawnArea*>(stub))->notifyExit(object);
 }
 
 void DynamicSpawnAreaAdapter::doSpawnEvent(PlayerObject* player) {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->doSpawnEvent(player);
+	(static_cast<DynamicSpawnArea*>(stub))->doSpawnEvent(player);
 }
 
 void DynamicSpawnAreaAdapter::doDespawnEvent() {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->doDespawnEvent();
+	(static_cast<DynamicSpawnArea*>(stub))->doDespawnEvent();
 }
 
 int DynamicSpawnAreaAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<DynamicSpawnAreaImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<DynamicSpawnArea*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void DynamicSpawnAreaAdapter::setMaxCreaturesToSpawn(int num) {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->setMaxCreaturesToSpawn(num);
+	(static_cast<DynamicSpawnArea*>(stub))->setMaxCreaturesToSpawn(num);
 }
 
 void DynamicSpawnAreaAdapter::addNoSpawnArea(SpawnArea* area) {
-	(static_cast<DynamicSpawnAreaImplementation*>(impl))->addNoSpawnArea(area);
+	(static_cast<DynamicSpawnArea*>(stub))->addNoSpawnArea(area);
 }
 
 bool DynamicSpawnAreaAdapter::isDynamicArea() {
-	return (static_cast<DynamicSpawnAreaImplementation*>(impl))->isDynamicArea();
+	return (static_cast<DynamicSpawnArea*>(stub))->isDynamicArea();
 }
 
 /*
@@ -554,7 +554,7 @@ DistributedObjectServant* DynamicSpawnAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DynamicSpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DynamicSpawnAreaAdapter(static_cast<DynamicSpawnAreaImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DynamicSpawnAreaAdapter(static_cast<DynamicSpawnArea*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

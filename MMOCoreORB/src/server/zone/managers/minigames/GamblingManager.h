@@ -326,7 +326,7 @@ protected:
 
 class GamblingManagerAdapter : public ObserverAdapter {
 public:
-	GamblingManagerAdapter(GamblingManagerImplementation* impl);
+	GamblingManagerAdapter(GamblingManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

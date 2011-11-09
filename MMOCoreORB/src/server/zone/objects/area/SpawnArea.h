@@ -164,7 +164,7 @@ protected:
 
 class SpawnAreaAdapter : public ActiveAreaAdapter {
 public:
-	SpawnAreaAdapter(SpawnAreaImplementation* impl);
+	SpawnAreaAdapter(SpawnArea* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

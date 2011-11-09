@@ -234,7 +234,7 @@ protected:
 
 class SlicingSessionAdapter : public FacadeAdapter {
 public:
-	SlicingSessionAdapter(SlicingSessionImplementation* impl);
+	SlicingSessionAdapter(SlicingSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

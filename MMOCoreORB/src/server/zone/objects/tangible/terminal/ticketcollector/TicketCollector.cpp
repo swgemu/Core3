@@ -234,7 +234,7 @@ bool TicketCollectorImplementation::isTicketCollector() {
  *	TicketCollectorAdapter
  */
 
-TicketCollectorAdapter::TicketCollectorAdapter(TicketCollectorImplementation* obj) : TerminalAdapter(obj) {
+TicketCollectorAdapter::TicketCollectorAdapter(TicketCollector* obj) : TerminalAdapter(obj) {
 }
 
 Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -261,19 +261,19 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void TicketCollectorAdapter::initializeTransientMembers() {
-	(static_cast<TicketCollectorImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<TicketCollector*>(stub))->initializeTransientMembers();
 }
 
 int TicketCollectorAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<TicketCollectorImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<TicketCollector*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void TicketCollectorAdapter::useTicket(CreatureObject* player, TicketObject* ticket) {
-	(static_cast<TicketCollectorImplementation*>(impl))->useTicket(player, ticket);
+	(static_cast<TicketCollector*>(stub))->useTicket(player, ticket);
 }
 
 bool TicketCollectorAdapter::isTicketCollector() {
-	return (static_cast<TicketCollectorImplementation*>(impl))->isTicketCollector();
+	return (static_cast<TicketCollector*>(stub))->isTicketCollector();
 }
 
 /*
@@ -301,7 +301,7 @@ DistributedObjectServant* TicketCollectorHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TicketCollectorHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TicketCollectorAdapter(static_cast<TicketCollectorImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new TicketCollectorAdapter(static_cast<TicketCollector*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

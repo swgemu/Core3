@@ -378,7 +378,7 @@ protected:
 
 class ManufactureSchematicAdapter : public IntangibleObjectAdapter {
 public:
-	ManufactureSchematicAdapter(ManufactureSchematicImplementation* impl);
+	ManufactureSchematicAdapter(ManufactureSchematic* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

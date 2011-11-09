@@ -159,7 +159,7 @@ protected:
 
 class TerminalAdapter : public TangibleObjectAdapter {
 public:
-	TerminalAdapter(TerminalImplementation* impl);
+	TerminalAdapter(Terminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

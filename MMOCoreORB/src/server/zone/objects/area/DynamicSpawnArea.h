@@ -262,7 +262,7 @@ protected:
 
 class DynamicSpawnAreaAdapter : public SpawnAreaAdapter {
 public:
-	DynamicSpawnAreaAdapter(DynamicSpawnAreaImplementation* impl);
+	DynamicSpawnAreaAdapter(DynamicSpawnArea* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

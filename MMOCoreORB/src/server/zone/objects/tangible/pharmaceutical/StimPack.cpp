@@ -355,7 +355,7 @@ bool StimPackImplementation::isStimPack() {
  *	StimPackAdapter
  */
 
-StimPackAdapter::StimPackAdapter(StimPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
+StimPackAdapter::StimPackAdapter(StimPack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
 Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -382,19 +382,19 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 unsigned int StimPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	return (static_cast<StimPackImplementation*>(impl))->calculatePower(healer, patient, applyBattleFatigue);
+	return (static_cast<StimPack*>(stub))->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 int StimPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<StimPackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StimPack*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 float StimPackAdapter::getEffectiveness() {
-	return (static_cast<StimPackImplementation*>(impl))->getEffectiveness();
+	return (static_cast<StimPack*>(stub))->getEffectiveness();
 }
 
 bool StimPackAdapter::isStimPack() {
-	return (static_cast<StimPackImplementation*>(impl))->isStimPack();
+	return (static_cast<StimPack*>(stub))->isStimPack();
 }
 
 /*
@@ -422,7 +422,7 @@ DistributedObjectServant* StimPackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StimPackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StimPackAdapter(static_cast<StimPackImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StimPackAdapter(static_cast<StimPack*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

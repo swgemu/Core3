@@ -355,7 +355,7 @@ int CreateVendorSessionImplementation::clearSession() {
  *	CreateVendorSessionAdapter
  */
 
-CreateVendorSessionAdapter::CreateVendorSessionAdapter(CreateVendorSessionImplementation* obj) : FacadeAdapter(obj) {
+CreateVendorSessionAdapter::CreateVendorSessionAdapter(CreateVendorSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -388,27 +388,27 @@ Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 void CreateVendorSessionAdapter::initalizeWindow(CreatureObject* pl) {
-	(static_cast<CreateVendorSessionImplementation*>(impl))->initalizeWindow(pl);
+	(static_cast<CreateVendorSession*>(stub))->initalizeWindow(pl);
 }
 
 void CreateVendorSessionAdapter::handleMenuSelect(byte menuID) {
-	(static_cast<CreateVendorSessionImplementation*>(impl))->handleMenuSelect(menuID);
+	(static_cast<CreateVendorSession*>(stub))->handleMenuSelect(menuID);
 }
 
 void CreateVendorSessionAdapter::createVendor(String& name) {
-	(static_cast<CreateVendorSessionImplementation*>(impl))->createVendor(name);
+	(static_cast<CreateVendorSession*>(stub))->createVendor(name);
 }
 
 int CreateVendorSessionAdapter::initializeSession() {
-	return (static_cast<CreateVendorSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<CreateVendorSession*>(stub))->initializeSession();
 }
 
 int CreateVendorSessionAdapter::cancelSession() {
-	return (static_cast<CreateVendorSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<CreateVendorSession*>(stub))->cancelSession();
 }
 
 int CreateVendorSessionAdapter::clearSession() {
-	return (static_cast<CreateVendorSessionImplementation*>(impl))->clearSession();
+	return (static_cast<CreateVendorSession*>(stub))->clearSession();
 }
 
 /*
@@ -436,7 +436,7 @@ DistributedObjectServant* CreateVendorSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CreateVendorSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CreateVendorSessionAdapter(static_cast<CreateVendorSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CreateVendorSessionAdapter(static_cast<CreateVendorSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

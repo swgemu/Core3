@@ -340,7 +340,7 @@ protected:
 
 class AuctionManagerAdapter : public ManagedServiceAdapter {
 public:
-	AuctionManagerAdapter(AuctionManagerImplementation* impl);
+	AuctionManagerAdapter(AuctionManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

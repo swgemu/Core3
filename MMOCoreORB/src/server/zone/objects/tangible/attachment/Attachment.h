@@ -277,7 +277,7 @@ protected:
 
 class AttachmentAdapter : public TangibleObjectAdapter {
 public:
-	AttachmentAdapter(AttachmentImplementation* impl);
+	AttachmentAdapter(Attachment* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

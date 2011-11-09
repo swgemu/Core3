@@ -67,7 +67,7 @@ public:
 		client->sendPacket((BasePacket*) msg);
 
 	#ifdef WITH_STM
-		TransactionalMemoryManager::commitPureTransaction();
+		//TransactionalMemoryManager::commitPureTransaction();
 	#endif
 	}
 

@@ -126,7 +126,7 @@ protected:
 
 class GeneratorObjectAdapter : public InstallationObjectAdapter {
 public:
-	GeneratorObjectAdapter(GeneratorObjectImplementation* impl);
+	GeneratorObjectAdapter(GeneratorObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

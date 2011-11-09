@@ -513,7 +513,7 @@ byte WaypointObjectImplementation::getColor() {
  *	WaypointObjectAdapter
  */
 
-WaypointObjectAdapter::WaypointObjectAdapter(WaypointObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
+WaypointObjectAdapter::WaypointObjectAdapter(WaypointObject* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -567,55 +567,55 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void WaypointObjectAdapter::setCellID(unsigned int id) {
-	(static_cast<WaypointObjectImplementation*>(impl))->setCellID(id);
+	(static_cast<WaypointObject*>(stub))->setCellID(id);
 }
 
 void WaypointObjectAdapter::setPlanetCRC(unsigned int crc) {
-	(static_cast<WaypointObjectImplementation*>(impl))->setPlanetCRC(crc);
+	(static_cast<WaypointObject*>(stub))->setPlanetCRC(crc);
 }
 
 unsigned int WaypointObjectAdapter::getPlanetCRC() {
-	return (static_cast<WaypointObjectImplementation*>(impl))->getPlanetCRC();
+	return (static_cast<WaypointObject*>(stub))->getPlanetCRC();
 }
 
 void WaypointObjectAdapter::setCustomName(const UnicodeString& name) {
-	(static_cast<WaypointObjectImplementation*>(impl))->setCustomName(name);
+	(static_cast<WaypointObject*>(stub))->setCustomName(name);
 }
 
 UnicodeString WaypointObjectAdapter::getCustomName() {
-	return (static_cast<WaypointObjectImplementation*>(impl))->getCustomName();
+	return (static_cast<WaypointObject*>(stub))->getCustomName();
 }
 
 void WaypointObjectAdapter::setColor(byte newColor) {
-	(static_cast<WaypointObjectImplementation*>(impl))->setColor(newColor);
+	(static_cast<WaypointObject*>(stub))->setColor(newColor);
 }
 
 void WaypointObjectAdapter::setActive(byte newStatus) {
-	(static_cast<WaypointObjectImplementation*>(impl))->setActive(newStatus);
+	(static_cast<WaypointObject*>(stub))->setActive(newStatus);
 }
 
 void WaypointObjectAdapter::setUnknown(unsigned long long id) {
-	(static_cast<WaypointObjectImplementation*>(impl))->setUnknown(id);
+	(static_cast<WaypointObject*>(stub))->setUnknown(id);
 }
 
 void WaypointObjectAdapter::setSpecialTypeID(int id) {
-	(static_cast<WaypointObjectImplementation*>(impl))->setSpecialTypeID(id);
+	(static_cast<WaypointObject*>(stub))->setSpecialTypeID(id);
 }
 
 int WaypointObjectAdapter::getSpecialTypeID() {
-	return (static_cast<WaypointObjectImplementation*>(impl))->getSpecialTypeID();
+	return (static_cast<WaypointObject*>(stub))->getSpecialTypeID();
 }
 
 void WaypointObjectAdapter::toggleStatus() {
-	(static_cast<WaypointObjectImplementation*>(impl))->toggleStatus();
+	(static_cast<WaypointObject*>(stub))->toggleStatus();
 }
 
 bool WaypointObjectAdapter::isActive() {
-	return (static_cast<WaypointObjectImplementation*>(impl))->isActive();
+	return (static_cast<WaypointObject*>(stub))->isActive();
 }
 
 byte WaypointObjectAdapter::getColor() {
-	return (static_cast<WaypointObjectImplementation*>(impl))->getColor();
+	return (static_cast<WaypointObject*>(stub))->getColor();
 }
 
 /*
@@ -643,7 +643,7 @@ DistributedObjectServant* WaypointObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WaypointObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WaypointObjectAdapter(static_cast<WaypointObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new WaypointObjectAdapter(static_cast<WaypointObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

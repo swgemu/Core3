@@ -227,7 +227,7 @@ void StructureTerminalImplementation::linkTerminal(CreatureObject* creature) {
  *	StructureTerminalAdapter
  */
 
-StructureTerminalAdapter::StructureTerminalAdapter(StructureTerminalImplementation* obj) : TerminalAdapter(obj) {
+StructureTerminalAdapter::StructureTerminalAdapter(StructureTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -248,11 +248,11 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void StructureTerminalAdapter::initializeTransientMembers() {
-	(static_cast<StructureTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<StructureTerminal*>(stub))->initializeTransientMembers();
 }
 
 int StructureTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<StructureTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StructureTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -280,7 +280,7 @@ DistributedObjectServant* StructureTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StructureTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StructureTerminalAdapter(static_cast<StructureTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StructureTerminalAdapter(static_cast<StructureTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

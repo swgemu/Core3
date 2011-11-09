@@ -165,7 +165,7 @@ protected:
 
 class InformantCreatureAdapter : public AiAgentAdapter {
 public:
-	InformantCreatureAdapter(InformantCreatureImplementation* impl);
+	InformantCreatureAdapter(InformantCreature* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

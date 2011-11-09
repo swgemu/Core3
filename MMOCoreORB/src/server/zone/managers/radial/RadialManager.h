@@ -155,7 +155,7 @@ protected:
 
 class RadialManagerAdapter : public ManagedObjectAdapter {
 public:
-	RadialManagerAdapter(RadialManagerImplementation* impl);
+	RadialManagerAdapter(RadialManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

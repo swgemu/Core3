@@ -232,7 +232,7 @@ bool GeneratorObjectImplementation::isGeneratorObject() {
  *	GeneratorObjectAdapter
  */
 
-GeneratorObjectAdapter::GeneratorObjectAdapter(GeneratorObjectImplementation* obj) : InstallationObjectAdapter(obj) {
+GeneratorObjectAdapter::GeneratorObjectAdapter(GeneratorObject* obj) : InstallationObjectAdapter(obj) {
 }
 
 Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -259,19 +259,19 @@ Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int GeneratorObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<GeneratorObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<GeneratorObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void GeneratorObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	(static_cast<GeneratorObjectImplementation*>(impl))->synchronizedUIListen(player, value);
+	(static_cast<GeneratorObject*>(stub))->synchronizedUIListen(player, value);
 }
 
 void GeneratorObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	(static_cast<GeneratorObjectImplementation*>(impl))->synchronizedUIStopListen(player, value);
+	(static_cast<GeneratorObject*>(stub))->synchronizedUIStopListen(player, value);
 }
 
 bool GeneratorObjectAdapter::isGeneratorObject() {
-	return (static_cast<GeneratorObjectImplementation*>(impl))->isGeneratorObject();
+	return (static_cast<GeneratorObject*>(stub))->isGeneratorObject();
 }
 
 /*
@@ -299,7 +299,7 @@ DistributedObjectServant* GeneratorObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GeneratorObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GeneratorObjectAdapter(static_cast<GeneratorObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new GeneratorObjectAdapter(static_cast<GeneratorObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

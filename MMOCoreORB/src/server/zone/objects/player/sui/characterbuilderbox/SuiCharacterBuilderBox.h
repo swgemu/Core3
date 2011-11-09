@@ -148,7 +148,7 @@ protected:
 
 class SuiCharacterBuilderBoxAdapter : public SuiListBoxAdapter {
 public:
-	SuiCharacterBuilderBoxAdapter(SuiCharacterBuilderBoxImplementation* impl);
+	SuiCharacterBuilderBoxAdapter(SuiCharacterBuilderBox* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

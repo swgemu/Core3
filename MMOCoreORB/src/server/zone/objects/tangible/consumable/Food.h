@@ -129,7 +129,7 @@ protected:
 
 class FoodAdapter : public ConsumableAdapter {
 public:
-	FoodAdapter(FoodImplementation* impl);
+	FoodAdapter(Food* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

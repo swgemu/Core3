@@ -209,7 +209,7 @@ MissionObserverImplementation::MissionObserverImplementation(MissionObjective* o
  *	MissionObserverAdapter
  */
 
-MissionObserverAdapter::MissionObserverAdapter(MissionObserverImplementation* obj) : ObserverAdapter(obj) {
+MissionObserverAdapter::MissionObserverAdapter(MissionObserver* obj) : ObserverAdapter(obj) {
 }
 
 Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -230,11 +230,11 @@ Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int MissionObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<MissionObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<MissionObserver*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void MissionObserverAdapter::destroyObjectFromDatabase() {
-	(static_cast<MissionObserverImplementation*>(impl))->destroyObjectFromDatabase();
+	(static_cast<MissionObserver*>(stub))->destroyObjectFromDatabase();
 }
 
 /*
@@ -262,7 +262,7 @@ DistributedObjectServant* MissionObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionObserverAdapter(static_cast<MissionObserverImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new MissionObserverAdapter(static_cast<MissionObserver*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

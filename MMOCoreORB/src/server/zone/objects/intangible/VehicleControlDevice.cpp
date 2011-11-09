@@ -293,7 +293,7 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* p
  *	VehicleControlDeviceAdapter
  */
 
-VehicleControlDeviceAdapter::VehicleControlDeviceAdapter(VehicleControlDeviceImplementation* obj) : ControlDeviceAdapter(obj) {
+VehicleControlDeviceAdapter::VehicleControlDeviceAdapter(VehicleControlDevice* obj) : ControlDeviceAdapter(obj) {
 }
 
 Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -323,23 +323,23 @@ Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMeth
 }
 
 void VehicleControlDeviceAdapter::storeObject(CreatureObject* player) {
-	(static_cast<VehicleControlDeviceImplementation*>(impl))->storeObject(player);
+	(static_cast<VehicleControlDevice*>(stub))->storeObject(player);
 }
 
 void VehicleControlDeviceAdapter::generateObject(CreatureObject* player) {
-	(static_cast<VehicleControlDeviceImplementation*>(impl))->generateObject(player);
+	(static_cast<VehicleControlDevice*>(stub))->generateObject(player);
 }
 
 int VehicleControlDeviceAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<VehicleControlDeviceImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VehicleControlDevice*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleControlDeviceAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<VehicleControlDeviceImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<VehicleControlDevice*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int VehicleControlDeviceAdapter::canBeDestroyed(CreatureObject* player) {
-	return (static_cast<VehicleControlDeviceImplementation*>(impl))->canBeDestroyed(player);
+	return (static_cast<VehicleControlDevice*>(stub))->canBeDestroyed(player);
 }
 
 /*
@@ -367,7 +367,7 @@ DistributedObjectServant* VehicleControlDeviceHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VehicleControlDeviceHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VehicleControlDeviceAdapter(static_cast<VehicleControlDeviceImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new VehicleControlDeviceAdapter(static_cast<VehicleControlDevice*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

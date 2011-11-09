@@ -233,7 +233,7 @@ protected:
 
 class StatePackAdapter : public PharmaceuticalObjectAdapter {
 public:
-	StatePackAdapter(StatePackImplementation* impl);
+	StatePackAdapter(StatePack* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

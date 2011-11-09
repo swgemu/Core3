@@ -21,7 +21,7 @@
 #include "UpdateModifiedObjectsThread.h"
 #include "server/chat/ChatManager.h"
 #include "UpdateModifiedObjectsTask.h"
-#include "engine/db/berkley/Transaction.h"
+#include "engine/db/berkley/BTransaction.h"
 #include "CommitMasterTransactionTask.h"
 #include "ObjectVersionUpdateManager.h"
 

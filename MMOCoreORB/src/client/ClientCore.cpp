@@ -80,7 +80,7 @@ void ClientCore::run() {
 
 	#ifdef WITH_STM
 		try {
-			TransactionalMemoryManager::commitPureTransaction();
+			//TransactionalMemoryManager::commitPureTransaction();
 		} catch (const TransactionAbortedException& e) {
 		}
 	#endif

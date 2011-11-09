@@ -130,7 +130,7 @@ protected:
 
 class AiObserverAdapter : public ObserverAdapter {
 public:
-	AiObserverAdapter(AiObserverImplementation* impl);
+	AiObserverAdapter(AiObserver* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

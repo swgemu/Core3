@@ -349,7 +349,7 @@ protected:
 
 class ConsumableAdapter : public TangibleObjectAdapter {
 public:
-	ConsumableAdapter(ConsumableImplementation* impl);
+	ConsumableAdapter(Consumable* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

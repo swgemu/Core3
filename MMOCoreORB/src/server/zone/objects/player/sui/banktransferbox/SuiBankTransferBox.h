@@ -188,7 +188,7 @@ protected:
 
 class SuiBankTransferBoxAdapter : public SuiBoxAdapter {
 public:
-	SuiBankTransferBoxAdapter(SuiBankTransferBoxImplementation* impl);
+	SuiBankTransferBoxAdapter(SuiBankTransferBox* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

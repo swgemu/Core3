@@ -213,7 +213,7 @@ protected:
 
 class TutorialBuildingObjectAdapter : public BuildingObjectAdapter {
 public:
-	TutorialBuildingObjectAdapter(TutorialBuildingObjectImplementation* impl);
+	TutorialBuildingObjectAdapter(TutorialBuildingObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

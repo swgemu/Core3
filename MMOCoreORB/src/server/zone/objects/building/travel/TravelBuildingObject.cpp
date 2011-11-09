@@ -12,8 +12,6 @@
  *	TravelBuildingObjectStub
  */
 
-enum {};
-
 TravelBuildingObject::TravelBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	TravelBuildingObjectImplementation* _implementation = new TravelBuildingObjectImplementation();
 	_impl = _implementation;
@@ -162,7 +160,7 @@ TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
  *	TravelBuildingObjectAdapter
  */
 
-TravelBuildingObjectAdapter::TravelBuildingObjectAdapter(TravelBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
+TravelBuildingObjectAdapter::TravelBuildingObjectAdapter(TravelBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
 Packet* TravelBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -201,7 +199,7 @@ DistributedObjectServant* TravelBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TravelBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TravelBuildingObjectAdapter(static_cast<TravelBuildingObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new TravelBuildingObjectAdapter(static_cast<TravelBuildingObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

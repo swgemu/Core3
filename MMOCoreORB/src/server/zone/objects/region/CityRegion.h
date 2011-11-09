@@ -202,7 +202,7 @@ protected:
 
 class CityRegionAdapter : public ObserverAdapter {
 public:
-	CityRegionAdapter(CityRegionImplementation* impl);
+	CityRegionAdapter(CityRegion* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

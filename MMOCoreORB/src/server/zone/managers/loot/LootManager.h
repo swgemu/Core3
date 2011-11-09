@@ -181,7 +181,7 @@ protected:
 
 class LootManagerAdapter : public ManagedServiceAdapter {
 public:
-	LootManagerAdapter(LootManagerImplementation* impl);
+	LootManagerAdapter(LootManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

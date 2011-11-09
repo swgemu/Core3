@@ -982,7 +982,7 @@ bool BuildingObjectImplementation::togglePrivacy() {
  *	BuildingObjectAdapter
  */
 
-BuildingObjectAdapter::BuildingObjectAdapter(BuildingObjectImplementation* obj) : StructureObjectAdapter(obj) {
+BuildingObjectAdapter::BuildingObjectAdapter(BuildingObject* obj) : StructureObjectAdapter(obj) {
 }
 
 Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1114,159 +1114,159 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void BuildingObjectAdapter::createCellObjects() {
-	(static_cast<BuildingObjectImplementation*>(impl))->createCellObjects();
+	(static_cast<BuildingObject*>(stub))->createCellObjects();
 }
 
 void BuildingObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<BuildingObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<BuildingObject*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void BuildingObjectAdapter::initializeTransientMembers() {
-	(static_cast<BuildingObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<BuildingObject*>(stub))->initializeTransientMembers();
 }
 
 void BuildingObjectAdapter::createContainerComponent() {
-	(static_cast<BuildingObjectImplementation*>(impl))->createContainerComponent();
+	(static_cast<BuildingObject*>(stub))->createContainerComponent();
 }
 
 void BuildingObjectAdapter::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	(static_cast<BuildingObjectImplementation*>(impl))->setCustomObjectName(name, notifyClient);
+	(static_cast<BuildingObject*>(stub))->setCustomObjectName(name, notifyClient);
 }
 
 void BuildingObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
-	(static_cast<BuildingObjectImplementation*>(impl))->sendContainerObjectsTo(player);
+	(static_cast<BuildingObject*>(stub))->sendContainerObjectsTo(player);
 }
 
 void BuildingObjectAdapter::updateCellPermissionsTo(CreatureObject* creature) {
-	(static_cast<BuildingObjectImplementation*>(impl))->updateCellPermissionsTo(creature);
+	(static_cast<BuildingObject*>(stub))->updateCellPermissionsTo(creature);
 }
 
 void BuildingObjectAdapter::broadcastCellPermissions() {
-	(static_cast<BuildingObjectImplementation*>(impl))->broadcastCellPermissions();
+	(static_cast<BuildingObject*>(stub))->broadcastCellPermissions();
 }
 
 bool BuildingObjectAdapter::isAllowedEntry(const String& firstName) {
-	return (static_cast<BuildingObjectImplementation*>(impl))->isAllowedEntry(firstName);
+	return (static_cast<BuildingObject*>(stub))->isAllowedEntry(firstName);
 }
 
 int BuildingObjectAdapter::notifyStructurePlaced(CreatureObject* player) {
-	return (static_cast<BuildingObjectImplementation*>(impl))->notifyStructurePlaced(player);
+	return (static_cast<BuildingObject*>(stub))->notifyStructurePlaced(player);
 }
 
 void BuildingObjectAdapter::ejectObject(SceneObject* obj) {
-	(static_cast<BuildingObjectImplementation*>(impl))->ejectObject(obj);
+	(static_cast<BuildingObject*>(stub))->ejectObject(obj);
 }
 
 void BuildingObjectAdapter::notifyRemoveFromZone() {
-	(static_cast<BuildingObjectImplementation*>(impl))->notifyRemoveFromZone();
+	(static_cast<BuildingObject*>(stub))->notifyRemoveFromZone();
 }
 
 void BuildingObjectAdapter::notifyLoadFromDatabase() {
-	(static_cast<BuildingObjectImplementation*>(impl))->notifyLoadFromDatabase();
+	(static_cast<BuildingObject*>(stub))->notifyLoadFromDatabase();
 }
 
 void BuildingObjectAdapter::notifyObjectInsertedToZone(SceneObject* object) {
-	(static_cast<BuildingObjectImplementation*>(impl))->notifyObjectInsertedToZone(object);
+	(static_cast<BuildingObject*>(stub))->notifyObjectInsertedToZone(object);
 }
 
 void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	(static_cast<BuildingObjectImplementation*>(impl))->sendTo(player, doClose);
+	(static_cast<BuildingObject*>(stub))->sendTo(player, doClose);
 }
 
 void BuildingObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<BuildingObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<BuildingObject*>(stub))->sendBaselinesTo(player);
 }
 
 void BuildingObjectAdapter::sendDestroyTo(SceneObject* player) {
-	(static_cast<BuildingObjectImplementation*>(impl))->sendDestroyTo(player);
+	(static_cast<BuildingObject*>(stub))->sendDestroyTo(player);
 }
 
 void BuildingObjectAdapter::addCell(CellObject* cell, unsigned int cellNumber) {
-	(static_cast<BuildingObjectImplementation*>(impl))->addCell(cell, cellNumber);
+	(static_cast<BuildingObject*>(stub))->addCell(cell, cellNumber);
 }
 
 bool BuildingObjectAdapter::isStaticBuilding() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->isStaticBuilding();
+	return (static_cast<BuildingObject*>(stub))->isStaticBuilding();
 }
 
 CellObject* BuildingObjectAdapter::getCell(unsigned int idx) {
-	return (static_cast<BuildingObjectImplementation*>(impl))->getCell(idx);
+	return (static_cast<BuildingObject*>(stub))->getCell(idx);
 }
 
 int BuildingObjectAdapter::getTotalCellNumber() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->getTotalCellNumber();
+	return (static_cast<BuildingObject*>(stub))->getTotalCellNumber();
 }
 
 bool BuildingObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return (static_cast<BuildingObjectImplementation*>(impl))->addObject(object, containmentType, notifyClient);
+	return (static_cast<BuildingObject*>(stub))->addObject(object, containmentType, notifyClient);
 }
 
 int BuildingObjectAdapter::getCurrentNumberOfPlayerItems() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->getCurrentNumberOfPlayerItems();
+	return (static_cast<BuildingObject*>(stub))->getCurrentNumberOfPlayerItems();
 }
 
 void BuildingObjectAdapter::destroyAllPlayerItems() {
-	(static_cast<BuildingObjectImplementation*>(impl))->destroyAllPlayerItems();
+	(static_cast<BuildingObject*>(stub))->destroyAllPlayerItems();
 }
 
 void BuildingObjectAdapter::onEnter(CreatureObject* player) {
-	(static_cast<BuildingObjectImplementation*>(impl))->onEnter(player);
+	(static_cast<BuildingObject*>(stub))->onEnter(player);
 }
 
 void BuildingObjectAdapter::onExit(CreatureObject* player) {
-	(static_cast<BuildingObjectImplementation*>(impl))->onExit(player);
+	(static_cast<BuildingObject*>(stub))->onExit(player);
 }
 
 bool BuildingObjectAdapter::isBuildingObject() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->isBuildingObject();
+	return (static_cast<BuildingObject*>(stub))->isBuildingObject();
 }
 
 bool BuildingObjectAdapter::isMedicalBuildingObject() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->isMedicalBuildingObject();
+	return (static_cast<BuildingObject*>(stub))->isMedicalBuildingObject();
 }
 
 void BuildingObjectAdapter::setSignObject(SignObject* sign) {
-	(static_cast<BuildingObjectImplementation*>(impl))->setSignObject(sign);
+	(static_cast<BuildingObject*>(stub))->setSignObject(sign);
 }
 
 SignObject* BuildingObjectAdapter::getSignObject() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->getSignObject();
+	return (static_cast<BuildingObject*>(stub))->getSignObject();
 }
 
 bool BuildingObjectAdapter::isCityHallBuilding() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->isCityHallBuilding();
+	return (static_cast<BuildingObject*>(stub))->isCityHallBuilding();
 }
 
 void BuildingObjectAdapter::setAccessFee(int fee) {
-	(static_cast<BuildingObjectImplementation*>(impl))->setAccessFee(fee);
+	(static_cast<BuildingObject*>(stub))->setAccessFee(fee);
 }
 
 int BuildingObjectAdapter::getAccessFee() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->getAccessFee();
+	return (static_cast<BuildingObject*>(stub))->getAccessFee();
 }
 
 bool BuildingObjectAdapter::isPublicStructure() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->isPublicStructure();
+	return (static_cast<BuildingObject*>(stub))->isPublicStructure();
 }
 
 bool BuildingObjectAdapter::isPrivateStructure() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->isPrivateStructure();
+	return (static_cast<BuildingObject*>(stub))->isPrivateStructure();
 }
 
 void BuildingObjectAdapter::setPublicStructure(bool privacy) {
-	(static_cast<BuildingObjectImplementation*>(impl))->setPublicStructure(privacy);
+	(static_cast<BuildingObject*>(stub))->setPublicStructure(privacy);
 }
 
 int BuildingObjectAdapter::getMapCellSize() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->getMapCellSize();
+	return (static_cast<BuildingObject*>(stub))->getMapCellSize();
 }
 
 bool BuildingObjectAdapter::togglePrivacy() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->togglePrivacy();
+	return (static_cast<BuildingObject*>(stub))->togglePrivacy();
 }
 
 unsigned int BuildingObjectAdapter::getMaximumNumberOfPlayerItems() {
-	return (static_cast<BuildingObjectImplementation*>(impl))->getMaximumNumberOfPlayerItems();
+	return (static_cast<BuildingObject*>(stub))->getMaximumNumberOfPlayerItems();
 }
 
 /*
@@ -1294,7 +1294,7 @@ DistributedObjectServant* BuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BuildingObjectAdapter(static_cast<BuildingObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new BuildingObjectAdapter(static_cast<BuildingObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

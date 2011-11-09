@@ -15,6 +15,10 @@ public:
 	DataTableCell() {
 	}
 
+	virtual ~DataTableCell() {
+
+	}
+
 	virtual void parse(Chunk* chunk) = 0;
 
 	/*template<typename V>

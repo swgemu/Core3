@@ -124,7 +124,7 @@ protected:
 
 class GarageAreaAdapter : public ActiveAreaAdapter {
 public:
-	GarageAreaAdapter(GarageAreaImplementation* impl);
+	GarageAreaAdapter(GarageArea* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

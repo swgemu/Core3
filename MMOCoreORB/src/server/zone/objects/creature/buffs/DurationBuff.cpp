@@ -183,7 +183,7 @@ void DurationBuffImplementation::activate(bool applyModifiers) {
  *	DurationBuffAdapter
  */
 
-DurationBuffAdapter::DurationBuffAdapter(DurationBuffImplementation* obj) : BuffAdapter(obj) {
+DurationBuffAdapter::DurationBuffAdapter(DurationBuff* obj) : BuffAdapter(obj) {
 }
 
 Packet* DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -201,7 +201,7 @@ Packet* DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void DurationBuffAdapter::activate(bool applyModifiers) {
-	(static_cast<DurationBuffImplementation*>(impl))->activate(applyModifiers);
+	(static_cast<DurationBuff*>(stub))->activate(applyModifiers);
 }
 
 /*
@@ -229,7 +229,7 @@ DistributedObjectServant* DurationBuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DurationBuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DurationBuffAdapter(static_cast<DurationBuffImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DurationBuffAdapter(static_cast<DurationBuff*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

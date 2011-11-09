@@ -430,7 +430,7 @@ protected:
 
 class InstallationObjectAdapter : public StructureObjectAdapter {
 public:
-	InstallationObjectAdapter(InstallationObjectImplementation* impl);
+	InstallationObjectAdapter(InstallationObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

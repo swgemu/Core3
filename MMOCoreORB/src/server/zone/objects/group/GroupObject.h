@@ -237,7 +237,7 @@ protected:
 
 class GroupObjectAdapter : public SceneObjectAdapter {
 public:
-	GroupObjectAdapter(GroupObjectImplementation* impl);
+	GroupObjectAdapter(GroupObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

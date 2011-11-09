@@ -337,7 +337,7 @@ bool JunkdealerCreatureImplementation::isAttackableBy(CreatureObject* object) {
  *	JunkdealerCreatureAdapter
  */
 
-JunkdealerCreatureAdapter::JunkdealerCreatureAdapter(JunkdealerCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
+JunkdealerCreatureAdapter::JunkdealerCreatureAdapter(JunkdealerCreature* obj) : CreatureObjectAdapter(obj) {
 }
 
 Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -379,39 +379,39 @@ Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void JunkdealerCreatureAdapter::activateRecovery() {
-	(static_cast<JunkdealerCreatureImplementation*>(impl))->activateRecovery();
+	(static_cast<JunkdealerCreature*>(stub))->activateRecovery();
 }
 
 void JunkdealerCreatureAdapter::sendInitialMessage(CreatureObject* player) {
-	(static_cast<JunkdealerCreatureImplementation*>(impl))->sendInitialMessage(player);
+	(static_cast<JunkdealerCreature*>(stub))->sendInitialMessage(player);
 }
 
 void JunkdealerCreatureAdapter::sendInitialChoices(CreatureObject* player) {
-	(static_cast<JunkdealerCreatureImplementation*>(impl))->sendInitialChoices(player);
+	(static_cast<JunkdealerCreature*>(stub))->sendInitialChoices(player);
 }
 
 void JunkdealerCreatureAdapter::sendConversationStartTo(SceneObject* obj) {
-	(static_cast<JunkdealerCreatureImplementation*>(impl))->sendConversationStartTo(obj);
+	(static_cast<JunkdealerCreature*>(stub))->sendConversationStartTo(obj);
 }
 
 void JunkdealerCreatureAdapter::selectConversationOption(int option, SceneObject* obj) {
-	(static_cast<JunkdealerCreatureImplementation*>(impl))->selectConversationOption(option, obj);
+	(static_cast<JunkdealerCreature*>(stub))->selectConversationOption(option, obj);
 }
 
 String JunkdealerCreatureAdapter::getLocation() {
-	return (static_cast<JunkdealerCreatureImplementation*>(impl))->getLocation();
+	return (static_cast<JunkdealerCreature*>(stub))->getLocation();
 }
 
 void JunkdealerCreatureAdapter::setLocation(const String& loc) {
-	(static_cast<JunkdealerCreatureImplementation*>(impl))->setLocation(loc);
+	(static_cast<JunkdealerCreature*>(stub))->setLocation(loc);
 }
 
 bool JunkdealerCreatureAdapter::isAttackableBy(CreatureObject* object) {
-	return (static_cast<JunkdealerCreatureImplementation*>(impl))->isAttackableBy(object);
+	return (static_cast<JunkdealerCreature*>(stub))->isAttackableBy(object);
 }
 
 void JunkdealerCreatureAdapter::createSellJunkLootSelection(CreatureObject* player) {
-	(static_cast<JunkdealerCreatureImplementation*>(impl))->createSellJunkLootSelection(player);
+	(static_cast<JunkdealerCreature*>(stub))->createSellJunkLootSelection(player);
 }
 
 /*
@@ -439,7 +439,7 @@ DistributedObjectServant* JunkdealerCreatureHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* JunkdealerCreatureHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new JunkdealerCreatureAdapter(static_cast<JunkdealerCreatureImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new JunkdealerCreatureAdapter(static_cast<JunkdealerCreature*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

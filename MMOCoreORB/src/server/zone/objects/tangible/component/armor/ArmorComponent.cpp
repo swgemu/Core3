@@ -206,7 +206,7 @@ ArmorComponentImplementation::ArmorComponentImplementation() {
  *	ArmorComponentAdapter
  */
 
-ArmorComponentAdapter::ArmorComponentAdapter(ArmorComponentImplementation* obj) : ComponentAdapter(obj) {
+ArmorComponentAdapter::ArmorComponentAdapter(ArmorComponent* obj) : ComponentAdapter(obj) {
 }
 
 Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -227,11 +227,11 @@ Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void ArmorComponentAdapter::initializeTransientMembers() {
-	(static_cast<ArmorComponentImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ArmorComponent*>(stub))->initializeTransientMembers();
 }
 
 void ArmorComponentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<ArmorComponentImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<ArmorComponent*>(stub))->updateCraftingValues(schematic);
 }
 
 /*
@@ -259,7 +259,7 @@ DistributedObjectServant* ArmorComponentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ArmorComponentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ArmorComponentAdapter(static_cast<ArmorComponentImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ArmorComponentAdapter(static_cast<ArmorComponent*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

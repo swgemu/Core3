@@ -137,7 +137,7 @@ protected:
 
 class PsgArmorObjectAdapter : public WearableObjectAdapter {
 public:
-	PsgArmorObjectAdapter(PsgArmorObjectImplementation* impl);
+	PsgArmorObjectAdapter(PsgArmorObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -297,7 +297,7 @@ void BountyMissionObjectiveImplementation::initializeTransientMembers() {
  *	BountyMissionObjectiveAdapter
  */
 
-BountyMissionObjectiveAdapter::BountyMissionObjectiveAdapter(BountyMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+BountyMissionObjectiveAdapter::BountyMissionObjectiveAdapter(BountyMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -333,31 +333,31 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void BountyMissionObjectiveAdapter::finalize() {
-	(static_cast<BountyMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<BountyMissionObjective*>(stub))->finalize();
 }
 
 void BountyMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<BountyMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<BountyMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void BountyMissionObjectiveAdapter::activate() {
-	(static_cast<BountyMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<BountyMissionObjective*>(stub))->activate();
 }
 
 void BountyMissionObjectiveAdapter::abort() {
-	(static_cast<BountyMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<BountyMissionObjective*>(stub))->abort();
 }
 
 void BountyMissionObjectiveAdapter::complete() {
-	(static_cast<BountyMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<BountyMissionObjective*>(stub))->complete();
 }
 
 void BountyMissionObjectiveAdapter::spawnTarget(const String& zoneName) {
-	(static_cast<BountyMissionObjectiveImplementation*>(impl))->spawnTarget(zoneName);
+	(static_cast<BountyMissionObjective*>(stub))->spawnTarget(zoneName);
 }
 
 int BountyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<BountyMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<BountyMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -385,7 +385,7 @@ DistributedObjectServant* BountyMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BountyMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BountyMissionObjectiveAdapter(static_cast<BountyMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new BountyMissionObjectiveAdapter(static_cast<BountyMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

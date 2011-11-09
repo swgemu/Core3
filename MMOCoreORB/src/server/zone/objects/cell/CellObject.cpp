@@ -383,7 +383,7 @@ bool CellObjectImplementation::isCellObject() {
  *	CellObjectAdapter
  */
 
-CellObjectAdapter::CellObjectAdapter(CellObjectImplementation* obj) : SceneObjectAdapter(obj) {
+CellObjectAdapter::CellObjectAdapter(CellObject* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -434,51 +434,51 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void CellObjectAdapter::notifyLoadFromDatabase() {
-	(static_cast<CellObjectImplementation*>(impl))->notifyLoadFromDatabase();
+	(static_cast<CellObject*>(stub))->notifyLoadFromDatabase();
 }
 
 void CellObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
-	(static_cast<CellObjectImplementation*>(impl))->sendContainerObjectsTo(player);
+	(static_cast<CellObject*>(stub))->sendContainerObjectsTo(player);
 }
 
 int CellObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return (static_cast<CellObjectImplementation*>(impl))->canAddObject(object, containmentType, errorDescription);
+	return (static_cast<CellObject*>(stub))->canAddObject(object, containmentType, errorDescription);
 }
 
 bool CellObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return (static_cast<CellObjectImplementation*>(impl))->addObject(object, containmentType, notifyClient);
+	return (static_cast<CellObject*>(stub))->addObject(object, containmentType, notifyClient);
 }
 
 bool CellObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
-	return (static_cast<CellObjectImplementation*>(impl))->removeObject(object, notifyClient);
+	return (static_cast<CellObject*>(stub))->removeObject(object, notifyClient);
 }
 
 void CellObjectAdapter::initializeTransientMembers() {
-	(static_cast<CellObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<CellObject*>(stub))->initializeTransientMembers();
 }
 
 void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<CellObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<CellObject*>(stub))->sendBaselinesTo(player);
 }
 
 int CellObjectAdapter::getCurrentNumberOfPlayerItems() {
-	return (static_cast<CellObjectImplementation*>(impl))->getCurrentNumberOfPlayerItems();
+	return (static_cast<CellObject*>(stub))->getCurrentNumberOfPlayerItems();
 }
 
 void CellObjectAdapter::destroyAllPlayerItems() {
-	(static_cast<CellObjectImplementation*>(impl))->destroyAllPlayerItems();
+	(static_cast<CellObject*>(stub))->destroyAllPlayerItems();
 }
 
 int CellObjectAdapter::getCellNumber() {
-	return (static_cast<CellObjectImplementation*>(impl))->getCellNumber();
+	return (static_cast<CellObject*>(stub))->getCellNumber();
 }
 
 void CellObjectAdapter::setCellNumber(int number) {
-	(static_cast<CellObjectImplementation*>(impl))->setCellNumber(number);
+	(static_cast<CellObject*>(stub))->setCellNumber(number);
 }
 
 bool CellObjectAdapter::isCellObject() {
-	return (static_cast<CellObjectImplementation*>(impl))->isCellObject();
+	return (static_cast<CellObject*>(stub))->isCellObject();
 }
 
 /*
@@ -506,7 +506,7 @@ DistributedObjectServant* CellObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CellObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CellObjectAdapter(static_cast<CellObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CellObjectAdapter(static_cast<CellObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

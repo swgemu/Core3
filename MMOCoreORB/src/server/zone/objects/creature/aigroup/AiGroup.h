@@ -237,7 +237,7 @@ protected:
 
 class AiGroupAdapter : public SceneObjectAdapter {
 public:
-	AiGroupAdapter(AiGroupImplementation* impl);
+	AiGroupAdapter(AiGroup* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

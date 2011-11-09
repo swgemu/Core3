@@ -216,7 +216,7 @@ bool PsgArmorObjectImplementation::isPsgArmorObject() {
  *	PsgArmorObjectAdapter
  */
 
-PsgArmorObjectAdapter::PsgArmorObjectAdapter(PsgArmorObjectImplementation* obj) : WearableObjectAdapter(obj) {
+PsgArmorObjectAdapter::PsgArmorObjectAdapter(PsgArmorObject* obj) : WearableObjectAdapter(obj) {
 }
 
 Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -240,15 +240,15 @@ Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void PsgArmorObjectAdapter::initializeTransientMembers() {
-	(static_cast<PsgArmorObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<PsgArmorObject*>(stub))->initializeTransientMembers();
 }
 
 bool PsgArmorObjectAdapter::isPsgArmorObject() {
-	return (static_cast<PsgArmorObjectImplementation*>(impl))->isPsgArmorObject();
+	return (static_cast<PsgArmorObject*>(stub))->isPsgArmorObject();
 }
 
 void PsgArmorObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<PsgArmorObjectImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<PsgArmorObject*>(stub))->updateCraftingValues(schematic);
 }
 
 /*
@@ -276,7 +276,7 @@ DistributedObjectServant* PsgArmorObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PsgArmorObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PsgArmorObjectAdapter(static_cast<PsgArmorObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PsgArmorObjectAdapter(static_cast<PsgArmorObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

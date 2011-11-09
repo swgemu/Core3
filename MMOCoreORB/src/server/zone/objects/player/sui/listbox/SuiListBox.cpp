@@ -451,7 +451,7 @@ bool SuiListBoxImplementation::isListBox() {
  *	SuiListBoxAdapter
  */
 
-SuiListBoxAdapter::SuiListBoxAdapter(SuiListBoxImplementation* obj) : SuiBoxAdapter(obj) {
+SuiListBoxAdapter::SuiListBoxAdapter(SuiListBox* obj) : SuiBoxAdapter(obj) {
 }
 
 Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -502,51 +502,51 @@ Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void SuiListBoxAdapter::init() {
-	(static_cast<SuiListBoxImplementation*>(impl))->init();
+	(static_cast<SuiListBox*>(stub))->init();
 }
 
 void SuiListBoxAdapter::addMenuItem(const String& name, unsigned long long objectID) {
-	(static_cast<SuiListBoxImplementation*>(impl))->addMenuItem(name, objectID);
+	(static_cast<SuiListBox*>(stub))->addMenuItem(name, objectID);
 }
 
 String SuiListBoxAdapter::getMenuItemName(int index) {
-	return (static_cast<SuiListBoxImplementation*>(impl))->getMenuItemName(index);
+	return (static_cast<SuiListBox*>(stub))->getMenuItemName(index);
 }
 
 void SuiListBoxAdapter::removeAllMenuItems() {
-	(static_cast<SuiListBoxImplementation*>(impl))->removeAllMenuItems();
+	(static_cast<SuiListBox*>(stub))->removeAllMenuItems();
 }
 
 unsigned long long SuiListBoxAdapter::getMenuObjectID(unsigned int idx) {
-	return (static_cast<SuiListBoxImplementation*>(impl))->getMenuObjectID(idx);
+	return (static_cast<SuiListBox*>(stub))->getMenuObjectID(idx);
 }
 
 int SuiListBoxAdapter::getMenuSize() {
-	return (static_cast<SuiListBoxImplementation*>(impl))->getMenuSize();
+	return (static_cast<SuiListBox*>(stub))->getMenuSize();
 }
 
 BaseMessage* SuiListBoxAdapter::generateMessage() {
-	return (static_cast<SuiListBoxImplementation*>(impl))->generateMessage();
+	return (static_cast<SuiListBox*>(stub))->generateMessage();
 }
 
 void SuiListBoxAdapter::setNextBox(unsigned int boxID) {
-	(static_cast<SuiListBoxImplementation*>(impl))->setNextBox(boxID);
+	(static_cast<SuiListBox*>(stub))->setNextBox(boxID);
 }
 
 void SuiListBoxAdapter::setPreviousBox(unsigned int boxID) {
-	(static_cast<SuiListBoxImplementation*>(impl))->setPreviousBox(boxID);
+	(static_cast<SuiListBox*>(stub))->setPreviousBox(boxID);
 }
 
 unsigned long long SuiListBoxAdapter::getNextBox() {
-	return (static_cast<SuiListBoxImplementation*>(impl))->getNextBox();
+	return (static_cast<SuiListBox*>(stub))->getNextBox();
 }
 
 unsigned long long SuiListBoxAdapter::getPreviousBox() {
-	return (static_cast<SuiListBoxImplementation*>(impl))->getPreviousBox();
+	return (static_cast<SuiListBox*>(stub))->getPreviousBox();
 }
 
 bool SuiListBoxAdapter::isListBox() {
-	return (static_cast<SuiListBoxImplementation*>(impl))->isListBox();
+	return (static_cast<SuiListBox*>(stub))->isListBox();
 }
 
 /*
@@ -574,7 +574,7 @@ DistributedObjectServant* SuiListBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiListBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiListBoxAdapter(static_cast<SuiListBoxImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SuiListBoxAdapter(static_cast<SuiListBox*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

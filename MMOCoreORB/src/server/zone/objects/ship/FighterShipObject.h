@@ -94,7 +94,7 @@ protected:
 
 class FighterShipObjectAdapter : public ShipObjectAdapter {
 public:
-	FighterShipObjectAdapter(FighterShipObjectImplementation* impl);
+	FighterShipObjectAdapter(FighterShipObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

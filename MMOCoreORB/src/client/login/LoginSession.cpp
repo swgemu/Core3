@@ -46,7 +46,7 @@ void LoginSession::run() {
 	info("connected to login server");
 
 #ifdef WITH_STM
-	TransactionalMemoryManager::commitPureTransaction();
+	//TransactionalMemoryManager::commitPureTransaction();
 #endif
 
 	char userinput[32];

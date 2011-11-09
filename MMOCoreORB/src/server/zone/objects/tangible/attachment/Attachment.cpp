@@ -478,7 +478,7 @@ bool AttachmentImplementation::isClothingAttachment() {
  *	AttachmentAdapter
  */
 
-AttachmentAdapter::AttachmentAdapter(AttachmentImplementation* obj) : TangibleObjectAdapter(obj) {
+AttachmentAdapter::AttachmentAdapter(Attachment* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -538,63 +538,63 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void AttachmentAdapter::initializeTransientMembers() {
-	(static_cast<AttachmentImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<Attachment*>(stub))->initializeTransientMembers();
 }
 
 void AttachmentAdapter::initializeMembers() {
-	(static_cast<AttachmentImplementation*>(impl))->initializeMembers();
+	(static_cast<Attachment*>(stub))->initializeMembers();
 }
 
 void AttachmentAdapter::setSkillModCount(int modCount) {
-	(static_cast<AttachmentImplementation*>(impl))->setSkillModCount(modCount);
+	(static_cast<Attachment*>(stub))->setSkillModCount(modCount);
 }
 
 int AttachmentAdapter::getSkillModCount() {
-	return (static_cast<AttachmentImplementation*>(impl))->getSkillModCount();
+	return (static_cast<Attachment*>(stub))->getSkillModCount();
 }
 
 String AttachmentAdapter::getSkillModName(int idx) {
-	return (static_cast<AttachmentImplementation*>(impl))->getSkillModName(idx);
+	return (static_cast<Attachment*>(stub))->getSkillModName(idx);
 }
 
 int AttachmentAdapter::getSkillModValue(int idx) {
-	return (static_cast<AttachmentImplementation*>(impl))->getSkillModValue(idx);
+	return (static_cast<Attachment*>(stub))->getSkillModValue(idx);
 }
 
 int AttachmentAdapter::getSkillModValue(String& name) {
-	return (static_cast<AttachmentImplementation*>(impl))->getSkillModValue(name);
+	return (static_cast<Attachment*>(stub))->getSkillModValue(name);
 }
 
 void AttachmentAdapter::parseSkillModAttributeString(String& attr) {
-	(static_cast<AttachmentImplementation*>(impl))->parseSkillModAttributeString(attr);
+	(static_cast<Attachment*>(stub))->parseSkillModAttributeString(attr);
 }
 
 void AttachmentAdapter::addSkillMod(const String& skillModType, int skillModValue) {
-	(static_cast<AttachmentImplementation*>(impl))->addSkillMod(skillModType, skillModValue);
+	(static_cast<Attachment*>(stub))->addSkillMod(skillModType, skillModValue);
 }
 
 bool AttachmentAdapter::removeAttachment(CreatureObject* player) {
-	return (static_cast<AttachmentImplementation*>(impl))->removeAttachment(player);
+	return (static_cast<Attachment*>(stub))->removeAttachment(player);
 }
 
 void AttachmentAdapter::generateSkillMods() {
-	(static_cast<AttachmentImplementation*>(impl))->generateSkillMods();
+	(static_cast<Attachment*>(stub))->generateSkillMods();
 }
 
 int AttachmentAdapter::getRandomModValue(int luck, int creatureLevel) {
-	return (static_cast<AttachmentImplementation*>(impl))->getRandomModValue(luck, creatureLevel);
+	return (static_cast<Attachment*>(stub))->getRandomModValue(luck, creatureLevel);
 }
 
 bool AttachmentAdapter::isAttachment() {
-	return (static_cast<AttachmentImplementation*>(impl))->isAttachment();
+	return (static_cast<Attachment*>(stub))->isAttachment();
 }
 
 bool AttachmentAdapter::isArmorAttachment() {
-	return (static_cast<AttachmentImplementation*>(impl))->isArmorAttachment();
+	return (static_cast<Attachment*>(stub))->isArmorAttachment();
 }
 
 bool AttachmentAdapter::isClothingAttachment() {
-	return (static_cast<AttachmentImplementation*>(impl))->isClothingAttachment();
+	return (static_cast<Attachment*>(stub))->isClothingAttachment();
 }
 
 /*
@@ -622,7 +622,7 @@ DistributedObjectServant* AttachmentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AttachmentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AttachmentAdapter(static_cast<AttachmentImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AttachmentAdapter(static_cast<Attachment*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

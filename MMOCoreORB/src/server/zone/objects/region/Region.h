@@ -264,7 +264,7 @@ protected:
 
 class RegionAdapter : public ActiveAreaAdapter {
 public:
-	RegionAdapter(RegionImplementation* impl);
+	RegionAdapter(Region* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

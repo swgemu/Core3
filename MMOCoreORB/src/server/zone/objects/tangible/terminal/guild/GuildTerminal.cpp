@@ -288,7 +288,7 @@ GuildObject* GuildTerminalImplementation::getGuildObject() {
  *	GuildTerminalAdapter
  */
 
-GuildTerminalAdapter::GuildTerminalAdapter(GuildTerminalImplementation* obj) : TerminalAdapter(obj) {
+GuildTerminalAdapter::GuildTerminalAdapter(GuildTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -321,27 +321,27 @@ Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void GuildTerminalAdapter::initializeTransientMembers() {
-	(static_cast<GuildTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<GuildTerminal*>(stub))->initializeTransientMembers();
 }
 
 void GuildTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	(static_cast<GuildTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<GuildTerminal*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int GuildTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<GuildTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<GuildTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool GuildTerminalAdapter::isGuildTerminal() {
-	return (static_cast<GuildTerminalImplementation*>(impl))->isGuildTerminal();
+	return (static_cast<GuildTerminal*>(stub))->isGuildTerminal();
 }
 
 void GuildTerminalAdapter::setGuildObject(GuildObject* guild) {
-	(static_cast<GuildTerminalImplementation*>(impl))->setGuildObject(guild);
+	(static_cast<GuildTerminal*>(stub))->setGuildObject(guild);
 }
 
 GuildObject* GuildTerminalAdapter::getGuildObject() {
-	return (static_cast<GuildTerminalImplementation*>(impl))->getGuildObject();
+	return (static_cast<GuildTerminal*>(stub))->getGuildObject();
 }
 
 /*
@@ -369,7 +369,7 @@ DistributedObjectServant* GuildTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GuildTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GuildTerminalAdapter(static_cast<GuildTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new GuildTerminalAdapter(static_cast<GuildTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

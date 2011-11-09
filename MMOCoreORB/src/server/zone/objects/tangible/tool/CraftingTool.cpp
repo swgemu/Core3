@@ -767,7 +767,7 @@ int CraftingToolImplementation::getExperimentationResult() {
  *	CraftingToolAdapter
  */
 
-CraftingToolAdapter::CraftingToolAdapter(CraftingToolImplementation* obj) : ToolTangibleObjectAdapter(obj) {
+CraftingToolAdapter::CraftingToolAdapter(CraftingTool* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
 Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -863,111 +863,111 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void CraftingToolAdapter::initializeTransientMembers() {
-	(static_cast<CraftingToolImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<CraftingTool*>(stub))->initializeTransientMembers();
 }
 
 int CraftingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<CraftingToolImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CraftingTool*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void CraftingToolAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<CraftingToolImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<CraftingTool*>(stub))->updateCraftingValues(schematic);
 }
 
 bool CraftingToolAdapter::isCraftingTool() {
-	return (static_cast<CraftingToolImplementation*>(impl))->isCraftingTool();
+	return (static_cast<CraftingTool*>(stub))->isCraftingTool();
 }
 
 bool CraftingToolAdapter::isReady() {
-	return (static_cast<CraftingToolImplementation*>(impl))->isReady();
+	return (static_cast<CraftingTool*>(stub))->isReady();
 }
 
 int CraftingToolAdapter::getToolType() {
-	return (static_cast<CraftingToolImplementation*>(impl))->getToolType();
+	return (static_cast<CraftingTool*>(stub))->getToolType();
 }
 
 TangibleObject* CraftingToolAdapter::getPrototype() {
-	return (static_cast<CraftingToolImplementation*>(impl))->getPrototype();
+	return (static_cast<CraftingTool*>(stub))->getPrototype();
 }
 
 ManufactureSchematic* CraftingToolAdapter::getManufactureSchematic() {
-	return (static_cast<CraftingToolImplementation*>(impl))->getManufactureSchematic();
+	return (static_cast<CraftingTool*>(stub))->getManufactureSchematic();
 }
 
 void CraftingToolAdapter::requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation) {
-	(static_cast<CraftingToolImplementation*>(impl))->requestCraftingSession(player, craftingStation);
+	(static_cast<CraftingTool*>(stub))->requestCraftingSession(player, craftingStation);
 }
 
 void CraftingToolAdapter::cancelCraftingSession(CreatureObject* player) {
-	(static_cast<CraftingToolImplementation*>(impl))->cancelCraftingSession(player);
+	(static_cast<CraftingTool*>(stub))->cancelCraftingSession(player);
 }
 
 void CraftingToolAdapter::clearCraftingSession() {
-	(static_cast<CraftingToolImplementation*>(impl))->clearCraftingSession();
+	(static_cast<CraftingTool*>(stub))->clearCraftingSession();
 }
 
 void CraftingToolAdapter::selectDraftSchematic(CreatureObject* player, int index) {
-	(static_cast<CraftingToolImplementation*>(impl))->selectDraftSchematic(player, index);
+	(static_cast<CraftingTool*>(stub))->selectDraftSchematic(player, index);
 }
 
 bool CraftingToolAdapter::createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic) {
-	return (static_cast<CraftingToolImplementation*>(impl))->createSessionObjects(player, draftschematic);
+	return (static_cast<CraftingTool*>(stub))->createSessionObjects(player, draftschematic);
 }
 
 bool CraftingToolAdapter::createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic) {
-	return (static_cast<CraftingToolImplementation*>(impl))->createManufactureSchematic(player, draftschematic);
+	return (static_cast<CraftingTool*>(stub))->createManufactureSchematic(player, draftschematic);
 }
 
 bool CraftingToolAdapter::createPrototype(CreatureObject* player, DraftSchematic* draftschematic) {
-	return (static_cast<CraftingToolImplementation*>(impl))->createPrototype(player, draftschematic);
+	return (static_cast<CraftingTool*>(stub))->createPrototype(player, draftschematic);
 }
 
 void CraftingToolAdapter::synchronizedUIListenForSchematic(CreatureObject* player) {
-	(static_cast<CraftingToolImplementation*>(impl))->synchronizedUIListenForSchematic(player);
+	(static_cast<CraftingTool*>(stub))->synchronizedUIListenForSchematic(player);
 }
 
 void CraftingToolAdapter::addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
-	(static_cast<CraftingToolImplementation*>(impl))->addIngredient(player, tano, slot, clientCounter);
+	(static_cast<CraftingTool*>(stub))->addIngredient(player, tano, slot, clientCounter);
 }
 
 void CraftingToolAdapter::removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
-	(static_cast<CraftingToolImplementation*>(impl))->removeIngredient(player, tano, slot, clientCounter);
+	(static_cast<CraftingTool*>(stub))->removeIngredient(player, tano, slot, clientCounter);
 }
 
 void CraftingToolAdapter::nextCraftingStage(CreatureObject* player, int clientCounter) {
-	(static_cast<CraftingToolImplementation*>(impl))->nextCraftingStage(player, clientCounter);
+	(static_cast<CraftingTool*>(stub))->nextCraftingStage(player, clientCounter);
 }
 
 void CraftingToolAdapter::experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter) {
-	(static_cast<CraftingToolImplementation*>(impl))->experiment(player, numRowsAttempted, expString, clientCounter);
+	(static_cast<CraftingTool*>(stub))->experiment(player, numRowsAttempted, expString, clientCounter);
 }
 
 void CraftingToolAdapter::customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization) {
-	(static_cast<CraftingToolImplementation*>(impl))->customization(player, name, templateChoice, schematicCount, customization);
+	(static_cast<CraftingTool*>(stub))->customization(player, name, templateChoice, schematicCount, customization);
 }
 
 void CraftingToolAdapter::createPrototype(CreatureObject* player, int clientCounter, int practice) {
-	(static_cast<CraftingToolImplementation*>(impl))->createPrototype(player, clientCounter, practice);
+	(static_cast<CraftingTool*>(stub))->createPrototype(player, clientCounter, practice);
 }
 
 void CraftingToolAdapter::createManfSchematic(CreatureObject* player, int clientCounter) {
-	(static_cast<CraftingToolImplementation*>(impl))->createManfSchematic(player, clientCounter);
+	(static_cast<CraftingTool*>(stub))->createManfSchematic(player, clientCounter);
 }
 
 void CraftingToolAdapter::createObject(CreatureObject* player, int timer, bool create) {
-	(static_cast<CraftingToolImplementation*>(impl))->createObject(player, timer, create);
+	(static_cast<CraftingTool*>(stub))->createObject(player, timer, create);
 }
 
 void CraftingToolAdapter::depositObject(CreatureObject* player, bool practice) {
-	(static_cast<CraftingToolImplementation*>(impl))->depositObject(player, practice);
+	(static_cast<CraftingTool*>(stub))->depositObject(player, practice);
 }
 
 unsigned long long CraftingToolAdapter::getLastExperimentationTimestamp() {
-	return (static_cast<CraftingToolImplementation*>(impl))->getLastExperimentationTimestamp();
+	return (static_cast<CraftingTool*>(stub))->getLastExperimentationTimestamp();
 }
 
 int CraftingToolAdapter::getExperimentationResult() {
-	return (static_cast<CraftingToolImplementation*>(impl))->getExperimentationResult();
+	return (static_cast<CraftingTool*>(stub))->getExperimentationResult();
 }
 
 /*
@@ -995,7 +995,7 @@ DistributedObjectServant* CraftingToolHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CraftingToolHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CraftingToolAdapter(static_cast<CraftingToolImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CraftingToolAdapter(static_cast<CraftingTool*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

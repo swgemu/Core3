@@ -219,7 +219,7 @@ bool SuiCharacterBuilderBoxImplementation::isCharacterBuilderBox() {
  *	SuiCharacterBuilderBoxAdapter
  */
 
-SuiCharacterBuilderBoxAdapter::SuiCharacterBuilderBoxAdapter(SuiCharacterBuilderBoxImplementation* obj) : SuiListBoxAdapter(obj) {
+SuiCharacterBuilderBoxAdapter::SuiCharacterBuilderBoxAdapter(SuiCharacterBuilderBox* obj) : SuiListBoxAdapter(obj) {
 }
 
 Packet* SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -240,11 +240,11 @@ Packet* SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 BaseMessage* SuiCharacterBuilderBoxAdapter::generateMessage() {
-	return (static_cast<SuiCharacterBuilderBoxImplementation*>(impl))->generateMessage();
+	return (static_cast<SuiCharacterBuilderBox*>(stub))->generateMessage();
 }
 
 bool SuiCharacterBuilderBoxAdapter::isCharacterBuilderBox() {
-	return (static_cast<SuiCharacterBuilderBoxImplementation*>(impl))->isCharacterBuilderBox();
+	return (static_cast<SuiCharacterBuilderBox*>(stub))->isCharacterBuilderBox();
 }
 
 /*
@@ -272,7 +272,7 @@ DistributedObjectServant* SuiCharacterBuilderBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiCharacterBuilderBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiCharacterBuilderBoxAdapter(static_cast<SuiCharacterBuilderBoxImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SuiCharacterBuilderBoxAdapter(static_cast<SuiCharacterBuilderBox*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -174,7 +174,7 @@ bool HerdGroupImplementation::isHerdGroup() {
  *	HerdGroupAdapter
  */
 
-HerdGroupAdapter::HerdGroupAdapter(HerdGroupImplementation* obj) : AiGroupAdapter(obj) {
+HerdGroupAdapter::HerdGroupAdapter(HerdGroup* obj) : AiGroupAdapter(obj) {
 }
 
 Packet* HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -192,7 +192,7 @@ Packet* HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool HerdGroupAdapter::isHerdGroup() {
-	return (static_cast<HerdGroupImplementation*>(impl))->isHerdGroup();
+	return (static_cast<HerdGroup*>(stub))->isHerdGroup();
 }
 
 /*
@@ -220,7 +220,7 @@ DistributedObjectServant* HerdGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* HerdGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new HerdGroupAdapter(static_cast<HerdGroupImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new HerdGroupAdapter(static_cast<HerdGroup*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

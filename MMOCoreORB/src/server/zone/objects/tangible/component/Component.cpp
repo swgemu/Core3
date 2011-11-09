@@ -502,7 +502,7 @@ bool ComponentImplementation::hasKey(const String& key) {
  *	ComponentAdapter
  */
 
-ComponentAdapter::ComponentAdapter(ComponentImplementation* obj) : TangibleObjectAdapter(obj) {
+ComponentAdapter::ComponentAdapter(Component* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -565,67 +565,67 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ComponentAdapter::initializeTransientMembers() {
-	(static_cast<ComponentImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<Component*>(stub))->initializeTransientMembers();
 }
 
 bool ComponentAdapter::isComponent() {
-	return (static_cast<ComponentImplementation*>(impl))->isComponent();
+	return (static_cast<Component*>(stub))->isComponent();
 }
 
 void ComponentAdapter::generateLootStats(const String& lootstring, int level) {
-	(static_cast<ComponentImplementation*>(impl))->generateLootStats(lootstring, level);
+	(static_cast<Component*>(stub))->generateLootStats(lootstring, level);
 }
 
 bool ComponentAdapter::compare(Component* inCmpo) {
-	return (static_cast<ComponentImplementation*>(impl))->compare(inCmpo);
+	return (static_cast<Component*>(stub))->compare(inCmpo);
 }
 
 bool ComponentAdapter::hasKey(const String& key) {
-	return (static_cast<ComponentImplementation*>(impl))->hasKey(key);
+	return (static_cast<Component*>(stub))->hasKey(key);
 }
 
 void ComponentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<ComponentImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<Component*>(stub))->updateCraftingValues(schematic);
 }
 
 void ComponentAdapter::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {
-	(static_cast<ComponentImplementation*>(impl))->addProperty(attributeName, value, precision, craftingTitle, hidden);
+	(static_cast<Component*>(stub))->addProperty(attributeName, value, precision, craftingTitle, hidden);
 }
 
 float ComponentAdapter::getAttributeValue(String& attributeName) {
-	return (static_cast<ComponentImplementation*>(impl))->getAttributeValue(attributeName);
+	return (static_cast<Component*>(stub))->getAttributeValue(attributeName);
 }
 
 int ComponentAdapter::getAttributePrecision(String& attributeName) {
-	return (static_cast<ComponentImplementation*>(impl))->getAttributePrecision(attributeName);
+	return (static_cast<Component*>(stub))->getAttributePrecision(attributeName);
 }
 
 String ComponentAdapter::getAttributeTitle(String& attributeName) {
-	return (static_cast<ComponentImplementation*>(impl))->getAttributeTitle(attributeName);
+	return (static_cast<Component*>(stub))->getAttributeTitle(attributeName);
 }
 
 bool ComponentAdapter::getAttributeHidden(String& attributeName) {
-	return (static_cast<ComponentImplementation*>(impl))->getAttributeHidden(attributeName);
+	return (static_cast<Component*>(stub))->getAttributeHidden(attributeName);
 }
 
 void ComponentAdapter::setPropertyToHidden(const String& property) {
-	(static_cast<ComponentImplementation*>(impl))->setPropertyToHidden(property);
+	(static_cast<Component*>(stub))->setPropertyToHidden(property);
 }
 
 void ComponentAdapter::addProperty(const String& attribute, const float value, const int precision, const String& title) {
-	(static_cast<ComponentImplementation*>(impl))->addProperty(attribute, value, precision, title);
+	(static_cast<Component*>(stub))->addProperty(attribute, value, precision, title);
 }
 
 int ComponentAdapter::getPropertyCount() {
-	return (static_cast<ComponentImplementation*>(impl))->getPropertyCount();
+	return (static_cast<Component*>(stub))->getPropertyCount();
 }
 
 String ComponentAdapter::getProperty(const int j) {
-	return (static_cast<ComponentImplementation*>(impl))->getProperty(j);
+	return (static_cast<Component*>(stub))->getProperty(j);
 }
 
 bool ComponentAdapter::changeAttributeValue(String& property, float value) {
-	return (static_cast<ComponentImplementation*>(impl))->changeAttributeValue(property, value);
+	return (static_cast<Component*>(stub))->changeAttributeValue(property, value);
 }
 
 /*
@@ -653,7 +653,7 @@ DistributedObjectServant* ComponentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ComponentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ComponentAdapter(static_cast<ComponentImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ComponentAdapter(static_cast<Component*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

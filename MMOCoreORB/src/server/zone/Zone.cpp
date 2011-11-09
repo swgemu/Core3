@@ -705,7 +705,7 @@ unsigned int ZoneImplementation::getZoneCRC() {
  *	ZoneAdapter
  */
 
-ZoneAdapter::ZoneAdapter(ZoneImplementation* obj) : SceneObjectAdapter(obj) {
+ZoneAdapter::ZoneAdapter(Zone* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -804,115 +804,115 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ZoneAdapter::initializeTransientMembers() {
-	(static_cast<ZoneImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<Zone*>(stub))->initializeTransientMembers();
 }
 
 void ZoneAdapter::finalize() {
-	(static_cast<ZoneImplementation*>(impl))->finalize();
+	(static_cast<Zone*>(stub))->finalize();
 }
 
 CloningBuildingObject* ZoneAdapter::getNearestCloningBuilding(CreatureObject* creature) {
-	return (static_cast<ZoneImplementation*>(impl))->getNearestCloningBuilding(creature);
+	return (static_cast<Zone*>(stub))->getNearestCloningBuilding(creature);
 }
 
 SceneObject* ZoneAdapter::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
-	return (static_cast<ZoneImplementation*>(impl))->getNearestPlanetaryObject(object, mapObjectLocationType);
+	return (static_cast<Zone*>(stub))->getNearestPlanetaryObject(object, mapObjectLocationType);
 }
 
 void ZoneAdapter::initializePrivateData() {
-	(static_cast<ZoneImplementation*>(impl))->initializePrivateData();
+	(static_cast<Zone*>(stub))->initializePrivateData();
 }
 
 void ZoneAdapter::createContainerComponent() {
-	(static_cast<ZoneImplementation*>(impl))->createContainerComponent();
+	(static_cast<Zone*>(stub))->createContainerComponent();
 }
 
 void ZoneAdapter::updateActiveAreas(SceneObject* object) {
-	(static_cast<ZoneImplementation*>(impl))->updateActiveAreas(object);
+	(static_cast<Zone*>(stub))->updateActiveAreas(object);
 }
 
 void ZoneAdapter::startManagers() {
-	(static_cast<ZoneImplementation*>(impl))->startManagers();
+	(static_cast<Zone*>(stub))->startManagers();
 }
 
 void ZoneAdapter::stopManagers() {
-	(static_cast<ZoneImplementation*>(impl))->stopManagers();
+	(static_cast<Zone*>(stub))->stopManagers();
 }
 
 float ZoneAdapter::getHeight(float x, float y) {
-	return (static_cast<ZoneImplementation*>(impl))->getHeight(x, y);
+	return (static_cast<Zone*>(stub))->getHeight(x, y);
 }
 
 void ZoneAdapter::addSceneObject(SceneObject* object) {
-	(static_cast<ZoneImplementation*>(impl))->addSceneObject(object);
+	(static_cast<Zone*>(stub))->addSceneObject(object);
 }
 
 void ZoneAdapter::sendMapLocationsTo(SceneObject* player) {
-	(static_cast<ZoneImplementation*>(impl))->sendMapLocationsTo(player);
+	(static_cast<Zone*>(stub))->sendMapLocationsTo(player);
 }
 
 void ZoneAdapter::dropSceneObject(SceneObject* object) {
-	(static_cast<ZoneImplementation*>(impl))->dropSceneObject(object);
+	(static_cast<Zone*>(stub))->dropSceneObject(object);
 }
 
 PlanetManager* ZoneAdapter::getPlanetManager() {
-	return (static_cast<ZoneImplementation*>(impl))->getPlanetManager();
+	return (static_cast<Zone*>(stub))->getPlanetManager();
 }
 
 StructureManager* ZoneAdapter::getStructureManager() {
-	return (static_cast<ZoneImplementation*>(impl))->getStructureManager();
+	return (static_cast<Zone*>(stub))->getStructureManager();
 }
 
 CityManager* ZoneAdapter::getCityManager() {
-	return (static_cast<ZoneImplementation*>(impl))->getCityManager();
+	return (static_cast<Zone*>(stub))->getCityManager();
 }
 
 ZoneServer* ZoneAdapter::getZoneServer() {
-	return (static_cast<ZoneImplementation*>(impl))->getZoneServer();
+	return (static_cast<Zone*>(stub))->getZoneServer();
 }
 
 CreatureManager* ZoneAdapter::getCreatureManager() {
-	return (static_cast<ZoneImplementation*>(impl))->getCreatureManager();
+	return (static_cast<Zone*>(stub))->getCreatureManager();
 }
 
 unsigned long long ZoneAdapter::getGalacticTime() {
-	return (static_cast<ZoneImplementation*>(impl))->getGalacticTime();
+	return (static_cast<Zone*>(stub))->getGalacticTime();
 }
 
 bool ZoneAdapter::hasManagersStarted() {
-	return (static_cast<ZoneImplementation*>(impl))->hasManagersStarted();
+	return (static_cast<Zone*>(stub))->hasManagersStarted();
 }
 
 float ZoneAdapter::getMinX() {
-	return (static_cast<ZoneImplementation*>(impl))->getMinX();
+	return (static_cast<Zone*>(stub))->getMinX();
 }
 
 float ZoneAdapter::getMaxX() {
-	return (static_cast<ZoneImplementation*>(impl))->getMaxX();
+	return (static_cast<Zone*>(stub))->getMaxX();
 }
 
 float ZoneAdapter::getMinY() {
-	return (static_cast<ZoneImplementation*>(impl))->getMinY();
+	return (static_cast<Zone*>(stub))->getMinY();
 }
 
 float ZoneAdapter::getMaxY() {
-	return (static_cast<ZoneImplementation*>(impl))->getMaxY();
+	return (static_cast<Zone*>(stub))->getMaxY();
 }
 
 void ZoneAdapter::registerObjectWithPlanetaryMap(SceneObject* object) {
-	(static_cast<ZoneImplementation*>(impl))->registerObjectWithPlanetaryMap(object);
+	(static_cast<Zone*>(stub))->registerObjectWithPlanetaryMap(object);
 }
 
 void ZoneAdapter::unregisterObjectWithPlanetaryMap(SceneObject* object) {
-	(static_cast<ZoneImplementation*>(impl))->unregisterObjectWithPlanetaryMap(object);
+	(static_cast<Zone*>(stub))->unregisterObjectWithPlanetaryMap(object);
 }
 
 String ZoneAdapter::getZoneName() {
-	return (static_cast<ZoneImplementation*>(impl))->getZoneName();
+	return (static_cast<Zone*>(stub))->getZoneName();
 }
 
 unsigned int ZoneAdapter::getZoneCRC() {
-	return (static_cast<ZoneImplementation*>(impl))->getZoneCRC();
+	return (static_cast<Zone*>(stub))->getZoneCRC();
 }
 
 /*
@@ -940,7 +940,7 @@ DistributedObjectServant* ZoneHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneAdapter(static_cast<ZoneImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ZoneAdapter(static_cast<Zone*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -1483,7 +1483,7 @@ bool WeaponObjectImplementation::isWeaponObject() {
  *	WeaponObjectAdapter
  */
 
-WeaponObjectAdapter::WeaponObjectAdapter(WeaponObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+WeaponObjectAdapter::WeaponObjectAdapter(WeaponObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1651,207 +1651,207 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void WeaponObjectAdapter::initializeTransientMembers() {
-	(static_cast<WeaponObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<WeaponObject*>(stub))->initializeTransientMembers();
 }
 
 void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<WeaponObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<WeaponObject*>(stub))->sendBaselinesTo(player);
 }
 
 int WeaponObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<WeaponObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<WeaponObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void WeaponObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<WeaponObjectImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<WeaponObject*>(stub))->updateCraftingValues(schematic);
 }
 
 bool WeaponObjectAdapter::isCertifiedFor(CreatureObject* object) {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isCertifiedFor(object);
+	return (static_cast<WeaponObject*>(stub))->isCertifiedFor(object);
 }
 
 void WeaponObjectAdapter::setCertified(bool cert) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setCertified(cert);
+	(static_cast<WeaponObject*>(stub))->setCertified(cert);
 }
 
 int WeaponObjectAdapter::getAttackType() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getAttackType();
+	return (static_cast<WeaponObject*>(stub))->getAttackType();
 }
 
 bool WeaponObjectAdapter::isCertified() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isCertified();
+	return (static_cast<WeaponObject*>(stub))->isCertified();
 }
 
 int WeaponObjectAdapter::getPointBlankAccuracy() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getPointBlankAccuracy();
+	return (static_cast<WeaponObject*>(stub))->getPointBlankAccuracy();
 }
 
 void WeaponObjectAdapter::setPointBlankAccuracy(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setPointBlankAccuracy(value);
+	(static_cast<WeaponObject*>(stub))->setPointBlankAccuracy(value);
 }
 
 int WeaponObjectAdapter::getPointBlankRange() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getPointBlankRange();
+	return (static_cast<WeaponObject*>(stub))->getPointBlankRange();
 }
 
 int WeaponObjectAdapter::getIdealRange() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getIdealRange();
+	return (static_cast<WeaponObject*>(stub))->getIdealRange();
 }
 
 void WeaponObjectAdapter::setIdealRange(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setIdealRange(value);
+	(static_cast<WeaponObject*>(stub))->setIdealRange(value);
 }
 
 int WeaponObjectAdapter::getMaxRange() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getMaxRange();
+	return (static_cast<WeaponObject*>(stub))->getMaxRange();
 }
 
 void WeaponObjectAdapter::setMaxRange(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setMaxRange(value);
+	(static_cast<WeaponObject*>(stub))->setMaxRange(value);
 }
 
 int WeaponObjectAdapter::getIdealAccuracy() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getIdealAccuracy();
+	return (static_cast<WeaponObject*>(stub))->getIdealAccuracy();
 }
 
 void WeaponObjectAdapter::setIdealAccuracy(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setIdealAccuracy(value);
+	(static_cast<WeaponObject*>(stub))->setIdealAccuracy(value);
 }
 
 int WeaponObjectAdapter::getArmorPiercing() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getArmorPiercing();
+	return (static_cast<WeaponObject*>(stub))->getArmorPiercing();
 }
 
 int WeaponObjectAdapter::getMaxRangeAccuracy() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getMaxRangeAccuracy();
+	return (static_cast<WeaponObject*>(stub))->getMaxRangeAccuracy();
 }
 
 void WeaponObjectAdapter::setMaxRangeAccuracy(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setMaxRangeAccuracy(value);
+	(static_cast<WeaponObject*>(stub))->setMaxRangeAccuracy(value);
 }
 
 float WeaponObjectAdapter::getAttackSpeed() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getAttackSpeed();
+	return (static_cast<WeaponObject*>(stub))->getAttackSpeed();
 }
 
 void WeaponObjectAdapter::setAttackSpeed(float value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setAttackSpeed(value);
+	(static_cast<WeaponObject*>(stub))->setAttackSpeed(value);
 }
 
 float WeaponObjectAdapter::getMaxDamage() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getMaxDamage();
+	return (static_cast<WeaponObject*>(stub))->getMaxDamage();
 }
 
 void WeaponObjectAdapter::setMaxDamage(float value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setMaxDamage(value);
+	(static_cast<WeaponObject*>(stub))->setMaxDamage(value);
 }
 
 float WeaponObjectAdapter::getMinDamage() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getMinDamage();
+	return (static_cast<WeaponObject*>(stub))->getMinDamage();
 }
 
 void WeaponObjectAdapter::setMinDamage(float value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setMinDamage(value);
+	(static_cast<WeaponObject*>(stub))->setMinDamage(value);
 }
 
 float WeaponObjectAdapter::getWoundsRatio() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getWoundsRatio();
+	return (static_cast<WeaponObject*>(stub))->getWoundsRatio();
 }
 
 void WeaponObjectAdapter::setWoundsRatio(float value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setWoundsRatio(value);
+	(static_cast<WeaponObject*>(stub))->setWoundsRatio(value);
 }
 
 int WeaponObjectAdapter::getHealthAttackCost() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getHealthAttackCost();
+	return (static_cast<WeaponObject*>(stub))->getHealthAttackCost();
 }
 
 void WeaponObjectAdapter::setHealthAttackCost(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setHealthAttackCost(value);
+	(static_cast<WeaponObject*>(stub))->setHealthAttackCost(value);
 }
 
 int WeaponObjectAdapter::getActionAttackCost() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getActionAttackCost();
+	return (static_cast<WeaponObject*>(stub))->getActionAttackCost();
 }
 
 void WeaponObjectAdapter::setActionAttackCost(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setActionAttackCost(value);
+	(static_cast<WeaponObject*>(stub))->setActionAttackCost(value);
 }
 
 int WeaponObjectAdapter::getMindAttackCost() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getMindAttackCost();
+	return (static_cast<WeaponObject*>(stub))->getMindAttackCost();
 }
 
 void WeaponObjectAdapter::setMindAttackCost(int value) {
-	(static_cast<WeaponObjectImplementation*>(impl))->setMindAttackCost(value);
+	(static_cast<WeaponObject*>(stub))->setMindAttackCost(value);
 }
 
 int WeaponObjectAdapter::getForceCost() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getForceCost();
+	return (static_cast<WeaponObject*>(stub))->getForceCost();
 }
 
 int WeaponObjectAdapter::getDamageType() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getDamageType();
+	return (static_cast<WeaponObject*>(stub))->getDamageType();
 }
 
 String WeaponObjectAdapter::getXpType() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->getXpType();
+	return (static_cast<WeaponObject*>(stub))->getXpType();
 }
 
 bool WeaponObjectAdapter::isUnarmedWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isUnarmedWeapon();
+	return (static_cast<WeaponObject*>(stub))->isUnarmedWeapon();
 }
 
 bool WeaponObjectAdapter::isMeleeWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isMeleeWeapon();
+	return (static_cast<WeaponObject*>(stub))->isMeleeWeapon();
 }
 
 bool WeaponObjectAdapter::isRangedWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isRangedWeapon();
+	return (static_cast<WeaponObject*>(stub))->isRangedWeapon();
 }
 
 bool WeaponObjectAdapter::isRifleWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isRifleWeapon();
+	return (static_cast<WeaponObject*>(stub))->isRifleWeapon();
 }
 
 bool WeaponObjectAdapter::isThrownWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isThrownWeapon();
+	return (static_cast<WeaponObject*>(stub))->isThrownWeapon();
 }
 
 bool WeaponObjectAdapter::isHeavyWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isHeavyWeapon();
+	return (static_cast<WeaponObject*>(stub))->isHeavyWeapon();
 }
 
 bool WeaponObjectAdapter::isSpecialHeavyWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isSpecialHeavyWeapon();
+	return (static_cast<WeaponObject*>(stub))->isSpecialHeavyWeapon();
 }
 
 bool WeaponObjectAdapter::isLightningRifle() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isLightningRifle();
+	return (static_cast<WeaponObject*>(stub))->isLightningRifle();
 }
 
 bool WeaponObjectAdapter::isCarbineWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isCarbineWeapon();
+	return (static_cast<WeaponObject*>(stub))->isCarbineWeapon();
 }
 
 bool WeaponObjectAdapter::isPistolWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isPistolWeapon();
+	return (static_cast<WeaponObject*>(stub))->isPistolWeapon();
 }
 
 bool WeaponObjectAdapter::isOneHandMeleeWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isOneHandMeleeWeapon();
+	return (static_cast<WeaponObject*>(stub))->isOneHandMeleeWeapon();
 }
 
 bool WeaponObjectAdapter::isPolearmWeaponObject() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isPolearmWeaponObject();
+	return (static_cast<WeaponObject*>(stub))->isPolearmWeaponObject();
 }
 
 bool WeaponObjectAdapter::isTwoHandMeleeWeapon() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isTwoHandMeleeWeapon();
+	return (static_cast<WeaponObject*>(stub))->isTwoHandMeleeWeapon();
 }
 
 bool WeaponObjectAdapter::isWeaponObject() {
-	return (static_cast<WeaponObjectImplementation*>(impl))->isWeaponObject();
+	return (static_cast<WeaponObject*>(stub))->isWeaponObject();
 }
 
 /*
@@ -1879,7 +1879,7 @@ DistributedObjectServant* WeaponObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WeaponObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WeaponObjectAdapter(static_cast<WeaponObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new WeaponObjectAdapter(static_cast<WeaponObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

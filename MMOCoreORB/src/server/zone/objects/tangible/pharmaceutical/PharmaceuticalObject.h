@@ -237,7 +237,7 @@ protected:
 
 class PharmaceuticalObjectAdapter : public TangibleObjectAdapter {
 public:
-	PharmaceuticalObjectAdapter(PharmaceuticalObjectImplementation* impl);
+	PharmaceuticalObjectAdapter(PharmaceuticalObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

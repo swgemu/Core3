@@ -46,10 +46,6 @@ which carries forward this exception.
 
 #include "server/zone/objects/tangible/Container.h"
 
-#include "test/stmtest.h"
-#include "test/stmmemtest.h"
-#include "test/memprottest.h"
-
 /*#include "system/mm/AllocationTracker.h"
 
 AllocationTracker* tracker;
@@ -72,15 +68,7 @@ int main(int argc, char* argv[]) {
 
 		ServerCore core;
 
-		if (!arguments.isEmpty()) {
-			if (arguments.get(0) == "stmtest")
-				testTransactions();
-			else if (arguments.get(0) == "memtest")
-				testMemoryProtection();
-			else if (arguments.get(0) == "stmmemtest")
-				testSTMMemory();
-		} else
-			core.start();
+		core.start();
 
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";

@@ -324,7 +324,7 @@ void DestroyMissionObjectiveImplementation::initializeTransientMembers() {
  *	DestroyMissionObjectiveAdapter
  */
 
-DestroyMissionObjectiveAdapter::DestroyMissionObjectiveAdapter(DestroyMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+DestroyMissionObjectiveAdapter::DestroyMissionObjectiveAdapter(DestroyMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -363,35 +363,35 @@ Packet* DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 }
 
 void DestroyMissionObjectiveAdapter::finalize() {
-	(static_cast<DestroyMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<DestroyMissionObjective*>(stub))->finalize();
 }
 
 void DestroyMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<DestroyMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<DestroyMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void DestroyMissionObjectiveAdapter::activate() {
-	(static_cast<DestroyMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<DestroyMissionObjective*>(stub))->activate();
 }
 
 void DestroyMissionObjectiveAdapter::abort() {
-	(static_cast<DestroyMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<DestroyMissionObjective*>(stub))->abort();
 }
 
 void DestroyMissionObjectiveAdapter::complete() {
-	(static_cast<DestroyMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<DestroyMissionObjective*>(stub))->complete();
 }
 
 void DestroyMissionObjectiveAdapter::spawnLair() {
-	(static_cast<DestroyMissionObjectiveImplementation*>(impl))->spawnLair();
+	(static_cast<DestroyMissionObjective*>(stub))->spawnLair();
 }
 
 void DestroyMissionObjectiveAdapter::destroyObjectFromDatabase() {
-	(static_cast<DestroyMissionObjectiveImplementation*>(impl))->destroyObjectFromDatabase();
+	(static_cast<DestroyMissionObjective*>(stub))->destroyObjectFromDatabase();
 }
 
 int DestroyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<DestroyMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<DestroyMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -419,7 +419,7 @@ DistributedObjectServant* DestroyMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DestroyMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DestroyMissionObjectiveAdapter(static_cast<DestroyMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DestroyMissionObjectiveAdapter(static_cast<DestroyMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

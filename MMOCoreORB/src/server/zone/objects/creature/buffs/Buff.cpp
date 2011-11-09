@@ -927,7 +927,7 @@ bool BuffImplementation::isAttributeBuff() {
  *	BuffAdapter
  */
 
-BuffAdapter::BuffAdapter(BuffImplementation* obj) : ManagedObjectAdapter(obj) {
+BuffAdapter::BuffAdapter(Buff* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1044,139 +1044,139 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void BuffAdapter::initializeTransientMembers() {
-	(static_cast<BuffImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<Buff*>(stub))->initializeTransientMembers();
 }
 
 void BuffAdapter::init() {
-	(static_cast<BuffImplementation*>(impl))->init();
+	(static_cast<Buff*>(stub))->init();
 }
 
 void BuffAdapter::sendTo(CreatureObject* player) {
-	(static_cast<BuffImplementation*>(impl))->sendTo(player);
+	(static_cast<Buff*>(stub))->sendTo(player);
 }
 
 void BuffAdapter::sendDestroyTo(CreatureObject* player) {
-	(static_cast<BuffImplementation*>(impl))->sendDestroyTo(player);
+	(static_cast<Buff*>(stub))->sendDestroyTo(player);
 }
 
 void BuffAdapter::activate(bool applyModifiers) {
-	(static_cast<BuffImplementation*>(impl))->activate(applyModifiers);
+	(static_cast<Buff*>(stub))->activate(applyModifiers);
 }
 
 void BuffAdapter::deactivate(bool removeModifiers) {
-	(static_cast<BuffImplementation*>(impl))->deactivate(removeModifiers);
+	(static_cast<Buff*>(stub))->deactivate(removeModifiers);
 }
 
 void BuffAdapter::activate() {
-	(static_cast<BuffImplementation*>(impl))->activate();
+	(static_cast<Buff*>(stub))->activate();
 }
 
 void BuffAdapter::deactivate() {
-	(static_cast<BuffImplementation*>(impl))->deactivate();
+	(static_cast<Buff*>(stub))->deactivate();
 }
 
 void BuffAdapter::applyAttributeModifiers() {
-	(static_cast<BuffImplementation*>(impl))->applyAttributeModifiers();
+	(static_cast<Buff*>(stub))->applyAttributeModifiers();
 }
 
 void BuffAdapter::applySkillModifiers() {
-	(static_cast<BuffImplementation*>(impl))->applySkillModifiers();
+	(static_cast<Buff*>(stub))->applySkillModifiers();
 }
 
 void BuffAdapter::removeAttributeModifiers() {
-	(static_cast<BuffImplementation*>(impl))->removeAttributeModifiers();
+	(static_cast<Buff*>(stub))->removeAttributeModifiers();
 }
 
 void BuffAdapter::removeSkillModifiers() {
-	(static_cast<BuffImplementation*>(impl))->removeSkillModifiers();
+	(static_cast<Buff*>(stub))->removeSkillModifiers();
 }
 
 void BuffAdapter::clearBuffEvent() {
-	(static_cast<BuffImplementation*>(impl))->clearBuffEvent();
+	(static_cast<Buff*>(stub))->clearBuffEvent();
 }
 
 void BuffAdapter::setBuffEventNull() {
-	(static_cast<BuffImplementation*>(impl))->setBuffEventNull();
+	(static_cast<Buff*>(stub))->setBuffEventNull();
 }
 
 void BuffAdapter::scheduleBuffEvent() {
-	(static_cast<BuffImplementation*>(impl))->scheduleBuffEvent();
+	(static_cast<Buff*>(stub))->scheduleBuffEvent();
 }
 
 void BuffAdapter::parseAttributeModifierString(const String& modifierstring) {
-	(static_cast<BuffImplementation*>(impl))->parseAttributeModifierString(modifierstring);
+	(static_cast<Buff*>(stub))->parseAttributeModifierString(modifierstring);
 }
 
 void BuffAdapter::parseSkillModifierString(const String& modifierstring) {
-	(static_cast<BuffImplementation*>(impl))->parseSkillModifierString(modifierstring);
+	(static_cast<Buff*>(stub))->parseSkillModifierString(modifierstring);
 }
 
 String BuffAdapter::getAttributeModifierString() {
-	return (static_cast<BuffImplementation*>(impl))->getAttributeModifierString();
+	return (static_cast<Buff*>(stub))->getAttributeModifierString();
 }
 
 String BuffAdapter::getSkillModifierString() {
-	return (static_cast<BuffImplementation*>(impl))->getSkillModifierString();
+	return (static_cast<Buff*>(stub))->getSkillModifierString();
 }
 
 float BuffAdapter::getTimeLeft() {
-	return (static_cast<BuffImplementation*>(impl))->getTimeLeft();
+	return (static_cast<Buff*>(stub))->getTimeLeft();
 }
 
 void BuffAdapter::setAttributeModifier(byte attribute, int value) {
-	(static_cast<BuffImplementation*>(impl))->setAttributeModifier(attribute, value);
+	(static_cast<Buff*>(stub))->setAttributeModifier(attribute, value);
 }
 
 void BuffAdapter::setSkillModifier(const String& modname, int value) {
-	(static_cast<BuffImplementation*>(impl))->setSkillModifier(modname, value);
+	(static_cast<Buff*>(stub))->setSkillModifier(modname, value);
 }
 
 void BuffAdapter::setSpeedMultiplierMod(float multiplier) {
-	(static_cast<BuffImplementation*>(impl))->setSpeedMultiplierMod(multiplier);
+	(static_cast<Buff*>(stub))->setSpeedMultiplierMod(multiplier);
 }
 
 void BuffAdapter::setAccelerationMultiplierMod(float multiplier) {
-	(static_cast<BuffImplementation*>(impl))->setAccelerationMultiplierMod(multiplier);
+	(static_cast<Buff*>(stub))->setAccelerationMultiplierMod(multiplier);
 }
 
 void BuffAdapter::setFillAttirbutesOnBuff(bool val) {
-	(static_cast<BuffImplementation*>(impl))->setFillAttirbutesOnBuff(val);
+	(static_cast<Buff*>(stub))->setFillAttirbutesOnBuff(val);
 }
 
 String BuffAdapter::getBuffName() {
-	return (static_cast<BuffImplementation*>(impl))->getBuffName();
+	return (static_cast<Buff*>(stub))->getBuffName();
 }
 
 int BuffAdapter::getBuffCRC() {
-	return (static_cast<BuffImplementation*>(impl))->getBuffCRC();
+	return (static_cast<Buff*>(stub))->getBuffCRC();
 }
 
 float BuffAdapter::getBuffDuration() {
-	return (static_cast<BuffImplementation*>(impl))->getBuffDuration();
+	return (static_cast<Buff*>(stub))->getBuffDuration();
 }
 
 int BuffAdapter::getBuffType() {
-	return (static_cast<BuffImplementation*>(impl))->getBuffType();
+	return (static_cast<Buff*>(stub))->getBuffType();
 }
 
 int BuffAdapter::getAttributeModifierValue(byte attribute) {
-	return (static_cast<BuffImplementation*>(impl))->getAttributeModifierValue(attribute);
+	return (static_cast<Buff*>(stub))->getAttributeModifierValue(attribute);
 }
 
 int BuffAdapter::getSkillModifierValue(const String& modname) {
-	return (static_cast<BuffImplementation*>(impl))->getSkillModifierValue(modname);
+	return (static_cast<Buff*>(stub))->getSkillModifierValue(modname);
 }
 
 bool BuffAdapter::isActive() {
-	return (static_cast<BuffImplementation*>(impl))->isActive();
+	return (static_cast<Buff*>(stub))->isActive();
 }
 
 bool BuffAdapter::isSpiceBuff() {
-	return (static_cast<BuffImplementation*>(impl))->isSpiceBuff();
+	return (static_cast<Buff*>(stub))->isSpiceBuff();
 }
 
 bool BuffAdapter::isAttributeBuff() {
-	return (static_cast<BuffImplementation*>(impl))->isAttributeBuff();
+	return (static_cast<Buff*>(stub))->isAttributeBuff();
 }
 
 /*
@@ -1204,7 +1204,7 @@ DistributedObjectServant* BuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BuffAdapter(static_cast<BuffImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new BuffAdapter(static_cast<Buff*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

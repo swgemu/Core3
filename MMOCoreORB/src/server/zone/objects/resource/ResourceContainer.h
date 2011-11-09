@@ -223,7 +223,7 @@ protected:
 
 class ResourceContainerAdapter : public TangibleObjectAdapter {
 public:
-	ResourceContainerAdapter(ResourceContainerImplementation* impl);
+	ResourceContainerAdapter(ResourceContainer* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

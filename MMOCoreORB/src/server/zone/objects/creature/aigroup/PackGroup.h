@@ -99,7 +99,7 @@ protected:
 
 class PackGroupAdapter : public AiGroupAdapter {
 public:
-	PackGroupAdapter(PackGroupImplementation* impl);
+	PackGroupAdapter(PackGroup* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

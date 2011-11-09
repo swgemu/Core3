@@ -190,7 +190,7 @@ int EntertainingObserverImplementation::notifyObserverEvent(unsigned int eventTy
  *	EntertainingObserverAdapter
  */
 
-EntertainingObserverAdapter::EntertainingObserverAdapter(EntertainingObserverImplementation* obj) : ObserverAdapter(obj) {
+EntertainingObserverAdapter::EntertainingObserverAdapter(EntertainingObserver* obj) : ObserverAdapter(obj) {
 }
 
 Packet* EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -208,7 +208,7 @@ Packet* EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMeth
 }
 
 int EntertainingObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<EntertainingObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<EntertainingObserver*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -236,7 +236,7 @@ DistributedObjectServant* EntertainingObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* EntertainingObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EntertainingObserverAdapter(static_cast<EntertainingObserverImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new EntertainingObserverAdapter(static_cast<EntertainingObserver*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

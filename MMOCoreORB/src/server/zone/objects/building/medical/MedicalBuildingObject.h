@@ -125,7 +125,7 @@ protected:
 
 class MedicalBuildingObjectAdapter : public BuildingObjectAdapter {
 public:
-	MedicalBuildingObjectAdapter(MedicalBuildingObjectImplementation* impl);
+	MedicalBuildingObjectAdapter(MedicalBuildingObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

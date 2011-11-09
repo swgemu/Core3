@@ -300,7 +300,7 @@ protected:
 
 class WeatherManagerAdapter : public ManagedServiceAdapter {
 public:
-	WeatherManagerAdapter(WeatherManagerImplementation* impl);
+	WeatherManagerAdapter(WeatherManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

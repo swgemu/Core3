@@ -194,7 +194,7 @@ void StaticObjectImplementation::loadTemplateData(SharedObjectTemplate* template
  *	StaticObjectAdapter
  */
 
-StaticObjectAdapter::StaticObjectAdapter(StaticObjectImplementation* obj) : SceneObjectAdapter(obj) {
+StaticObjectAdapter::StaticObjectAdapter(StaticObject* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -212,7 +212,7 @@ Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void StaticObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<StaticObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<StaticObject*>(stub))->sendBaselinesTo(player);
 }
 
 /*
@@ -240,7 +240,7 @@ DistributedObjectServant* StaticObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StaticObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StaticObjectAdapter(static_cast<StaticObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StaticObjectAdapter(static_cast<StaticObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

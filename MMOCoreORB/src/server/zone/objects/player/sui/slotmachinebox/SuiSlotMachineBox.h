@@ -172,7 +172,7 @@ protected:
 
 class SuiSlotMachineBoxAdapter : public SuiListBoxAdapter {
 public:
-	SuiSlotMachineBoxAdapter(SuiSlotMachineBoxImplementation* impl);
+	SuiSlotMachineBoxAdapter(SuiSlotMachineBox* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -320,7 +320,7 @@ void LootkitObjectImplementation::initializeTransientMembers() {
  *	LootkitObjectAdapter
  */
 
-LootkitObjectAdapter::LootkitObjectAdapter(LootkitObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+LootkitObjectAdapter::LootkitObjectAdapter(LootkitObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -350,23 +350,23 @@ Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void LootkitObjectAdapter::initializeTransientMembers() {
-	(static_cast<LootkitObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<LootkitObject*>(stub))->initializeTransientMembers();
 }
 
 int LootkitObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return (static_cast<LootkitObjectImplementation*>(impl))->canAddObject(object, containmentType, errorDescription);
+	return (static_cast<LootkitObject*>(stub))->canAddObject(object, containmentType, errorDescription);
 }
 
 int LootkitObjectAdapter::notifyObjectInserted(SceneObject* object) {
-	return (static_cast<LootkitObjectImplementation*>(impl))->notifyObjectInserted(object);
+	return (static_cast<LootkitObject*>(stub))->notifyObjectInserted(object);
 }
 
 CreatureObject* LootkitObjectAdapter::getPlayer() {
-	return (static_cast<LootkitObjectImplementation*>(impl))->getPlayer();
+	return (static_cast<LootkitObject*>(stub))->getPlayer();
 }
 
 void LootkitObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	(static_cast<LootkitObjectImplementation*>(impl))->fillAttributeList(msg, object);
+	(static_cast<LootkitObject*>(stub))->fillAttributeList(msg, object);
 }
 
 /*
@@ -394,7 +394,7 @@ DistributedObjectServant* LootkitObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LootkitObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LootkitObjectAdapter(static_cast<LootkitObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new LootkitObjectAdapter(static_cast<LootkitObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

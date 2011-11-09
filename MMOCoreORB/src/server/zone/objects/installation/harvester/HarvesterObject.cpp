@@ -263,7 +263,7 @@ bool HarvesterObjectImplementation::isHarvesterObject() {
  *	HarvesterObjectAdapter
  */
 
-HarvesterObjectAdapter::HarvesterObjectAdapter(HarvesterObjectImplementation* obj) : InstallationObjectAdapter(obj) {
+HarvesterObjectAdapter::HarvesterObjectAdapter(HarvesterObject* obj) : InstallationObjectAdapter(obj) {
 }
 
 Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -293,23 +293,23 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int HarvesterObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<HarvesterObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<HarvesterObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void HarvesterObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	(static_cast<HarvesterObjectImplementation*>(impl))->synchronizedUIListen(player, value);
+	(static_cast<HarvesterObject*>(stub))->synchronizedUIListen(player, value);
 }
 
 void HarvesterObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	(static_cast<HarvesterObjectImplementation*>(impl))->synchronizedUIStopListen(player, value);
+	(static_cast<HarvesterObject*>(stub))->synchronizedUIStopListen(player, value);
 }
 
 void HarvesterObjectAdapter::updateOperators() {
-	(static_cast<HarvesterObjectImplementation*>(impl))->updateOperators();
+	(static_cast<HarvesterObject*>(stub))->updateOperators();
 }
 
 bool HarvesterObjectAdapter::isHarvesterObject() {
-	return (static_cast<HarvesterObjectImplementation*>(impl))->isHarvesterObject();
+	return (static_cast<HarvesterObject*>(stub))->isHarvesterObject();
 }
 
 /*
@@ -337,7 +337,7 @@ DistributedObjectServant* HarvesterObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* HarvesterObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new HarvesterObjectAdapter(static_cast<HarvesterObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new HarvesterObjectAdapter(static_cast<HarvesterObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

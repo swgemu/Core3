@@ -162,7 +162,7 @@ protected:
 
 class MigrateStatsSessionAdapter : public FacadeAdapter {
 public:
-	MigrateStatsSessionAdapter(MigrateStatsSessionImplementation* impl);
+	MigrateStatsSessionAdapter(MigrateStatsSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

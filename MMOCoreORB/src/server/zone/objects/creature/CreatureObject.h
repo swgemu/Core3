@@ -1558,7 +1558,7 @@ protected:
 
 class CreatureObjectAdapter : public TangibleObjectAdapter {
 public:
-	CreatureObjectAdapter(CreatureObjectImplementation* impl);
+	CreatureObjectAdapter(CreatureObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

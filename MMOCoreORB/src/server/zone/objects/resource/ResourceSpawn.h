@@ -380,7 +380,7 @@ protected:
 
 class ResourceSpawnAdapter : public SceneObjectAdapter {
 public:
-	ResourceSpawnAdapter(ResourceSpawnImplementation* impl);
+	ResourceSpawnAdapter(ResourceSpawn* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

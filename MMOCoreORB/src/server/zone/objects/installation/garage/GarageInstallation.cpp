@@ -200,7 +200,7 @@ GarageInstallationImplementation::GarageInstallationImplementation() {
  *	GarageInstallationAdapter
  */
 
-GarageInstallationAdapter::GarageInstallationAdapter(GarageInstallationImplementation* obj) : InstallationObjectAdapter(obj) {
+GarageInstallationAdapter::GarageInstallationAdapter(GarageInstallation* obj) : InstallationObjectAdapter(obj) {
 }
 
 Packet* GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -221,11 +221,11 @@ Packet* GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void GarageInstallationAdapter::createChildObjects() {
-	(static_cast<GarageInstallationImplementation*>(impl))->createChildObjects();
+	(static_cast<GarageInstallation*>(stub))->createChildObjects();
 }
 
 void GarageInstallationAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<GarageInstallationImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<GarageInstallation*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 /*
@@ -253,7 +253,7 @@ DistributedObjectServant* GarageInstallationHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GarageInstallationHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GarageInstallationAdapter(static_cast<GarageInstallationImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new GarageInstallationAdapter(static_cast<GarageInstallation*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

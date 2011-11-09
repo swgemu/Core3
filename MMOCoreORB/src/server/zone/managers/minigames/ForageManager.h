@@ -160,7 +160,7 @@ protected:
 
 class ForageManagerAdapter : public ObserverAdapter {
 public:
-	ForageManagerAdapter(ForageManagerImplementation* impl);
+	ForageManagerAdapter(ForageManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

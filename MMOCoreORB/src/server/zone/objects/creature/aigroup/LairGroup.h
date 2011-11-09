@@ -116,7 +116,7 @@ protected:
 
 class LairGroupAdapter : public AiGroupAdapter {
 public:
-	LairGroupAdapter(LairGroupImplementation* impl);
+	LairGroupAdapter(LairGroup* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

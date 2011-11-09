@@ -152,7 +152,7 @@ protected:
 
 class SignObjectAdapter : public TangibleObjectAdapter {
 public:
-	SignObjectAdapter(SignObjectImplementation* impl);
+	SignObjectAdapter(SignObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -419,7 +419,7 @@ void StructureManagerImplementation::initialize() {
  *	StructureManagerAdapter
  */
 
-StructureManagerAdapter::StructureManagerAdapter(StructureManagerImplementation* obj) : ManagedServiceAdapter(obj) {
+StructureManagerAdapter::StructureManagerAdapter(StructureManager* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -476,59 +476,59 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void StructureManagerAdapter::initialize() {
-	(static_cast<StructureManagerImplementation*>(impl))->initialize();
+	(static_cast<StructureManager*>(stub))->initialize();
 }
 
 int StructureManagerAdapter::placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle) {
-	return (static_cast<StructureManagerImplementation*>(impl))->placeStructureFromDeed(creature, deedID, x, y, angle);
+	return (static_cast<StructureManager*>(stub))->placeStructureFromDeed(creature, deedID, x, y, angle);
 }
 
 StructureObject* StructureManagerAdapter::placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle) {
-	return (static_cast<StructureManagerImplementation*>(impl))->placeStructure(creature, structureTemplatePath, x, y, angle);
+	return (static_cast<StructureManager*>(stub))->placeStructure(creature, structureTemplatePath, x, y, angle);
 }
 
 int StructureManagerAdapter::destroyStructure(StructureObject* structureObject) {
-	return (static_cast<StructureManagerImplementation*>(impl))->destroyStructure(structureObject);
+	return (static_cast<StructureManager*>(stub))->destroyStructure(structureObject);
 }
 
 int StructureManagerAdapter::redeedStructure(CreatureObject* creature) {
-	return (static_cast<StructureManagerImplementation*>(impl))->redeedStructure(creature);
+	return (static_cast<StructureManager*>(stub))->redeedStructure(creature);
 }
 
 int StructureManagerAdapter::declareResidence(CreatureObject* player, StructureObject* structureObject) {
-	return (static_cast<StructureManagerImplementation*>(impl))->declareResidence(player, structureObject);
+	return (static_cast<StructureManager*>(stub))->declareResidence(player, structureObject);
 }
 
 String StructureManagerAdapter::getTimeString(unsigned int timestamp) {
-	return (static_cast<StructureManagerImplementation*>(impl))->getTimeString(timestamp);
+	return (static_cast<StructureManager*>(stub))->getTimeString(timestamp);
 }
 
 SceneObject* StructureManagerAdapter::getInRangeParkingGarage(SceneObject* obj, int range) {
-	return (static_cast<StructureManagerImplementation*>(impl))->getInRangeParkingGarage(obj, range);
+	return (static_cast<StructureManager*>(stub))->getInRangeParkingGarage(obj, range);
 }
 
 void StructureManagerAdapter::reportStructureStatus(CreatureObject* creature, StructureObject* structure) {
-	(static_cast<StructureManagerImplementation*>(impl))->reportStructureStatus(creature, structure);
+	(static_cast<StructureManager*>(stub))->reportStructureStatus(creature, structure);
 }
 
 void StructureManagerAdapter::promptNameStructure(CreatureObject* creature, StructureObject* structure) {
-	(static_cast<StructureManagerImplementation*>(impl))->promptNameStructure(creature, structure);
+	(static_cast<StructureManager*>(stub))->promptNameStructure(creature, structure);
 }
 
 void StructureManagerAdapter::promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal) {
-	(static_cast<StructureManagerImplementation*>(impl))->promptManageMaintenance(creature, structure, allowWithdrawal);
+	(static_cast<StructureManager*>(stub))->promptManageMaintenance(creature, structure, allowWithdrawal);
 }
 
 void StructureManagerAdapter::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
-	(static_cast<StructureManagerImplementation*>(impl))->promptDeleteAllItems(creature, structure);
+	(static_cast<StructureManager*>(stub))->promptDeleteAllItems(creature, structure);
 }
 
 void StructureManagerAdapter::promptFindLostItems(CreatureObject* creature, StructureObject* structure) {
-	(static_cast<StructureManagerImplementation*>(impl))->promptFindLostItems(creature, structure);
+	(static_cast<StructureManager*>(stub))->promptFindLostItems(creature, structure);
 }
 
 void StructureManagerAdapter::moveFirstItemTo(CreatureObject* creature, StructureObject* structure) {
-	(static_cast<StructureManagerImplementation*>(impl))->moveFirstItemTo(creature, structure);
+	(static_cast<StructureManager*>(stub))->moveFirstItemTo(creature, structure);
 }
 
 /*
@@ -556,7 +556,7 @@ DistributedObjectServant* StructureManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StructureManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StructureManagerAdapter(static_cast<StructureManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StructureManagerAdapter(static_cast<StructureManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -161,7 +161,7 @@ protected:
 
 class SpiceDownerBuffAdapter : public BuffAdapter {
 public:
-	SpiceDownerBuffAdapter(SpiceDownerBuffImplementation* impl);
+	SpiceDownerBuffAdapter(SpiceDownerBuff* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

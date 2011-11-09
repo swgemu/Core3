@@ -181,7 +181,7 @@ protected:
 
 class BazaarTerminalAdapter : public VendorTerminalAdapter {
 public:
-	BazaarTerminalAdapter(BazaarTerminalImplementation* impl);
+	BazaarTerminalAdapter(BazaarTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

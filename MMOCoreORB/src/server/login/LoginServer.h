@@ -283,7 +283,7 @@ protected:
 
 class LoginServerAdapter : public ManagedServiceAdapter {
 public:
-	LoginServerAdapter(LoginServerImplementation* impl);
+	LoginServerAdapter(LoginServer* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

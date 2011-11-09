@@ -191,7 +191,7 @@ protected:
 
 class CharacterBuilderTerminalAdapter : public TerminalAdapter {
 public:
-	CharacterBuilderTerminalAdapter(CharacterBuilderTerminalImplementation* impl);
+	CharacterBuilderTerminalAdapter(CharacterBuilderTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -227,7 +227,7 @@ protected:
 
 class WearableObjectAdapter : public TangibleObjectAdapter {
 public:
-	WearableObjectAdapter(WearableObjectImplementation* impl);
+	WearableObjectAdapter(WearableObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

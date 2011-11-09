@@ -221,7 +221,7 @@ protected:
 
 class ObjectControllerAdapter : public ManagedServiceAdapter {
 public:
-	ObjectControllerAdapter(ObjectControllerImplementation* impl);
+	ObjectControllerAdapter(ObjectController* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -171,7 +171,7 @@ protected:
 
 class DelayedBuffAdapter : public BuffAdapter {
 public:
-	DelayedBuffAdapter(DelayedBuffImplementation* impl);
+	DelayedBuffAdapter(DelayedBuff* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

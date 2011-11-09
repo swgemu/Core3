@@ -137,13 +137,6 @@ void ServerCore::initialize() {
 
 		ZoneServer* zoneServer = zoneServerRef.get();
 
-		if (loginServer != NULL) {
-			int loginPort = configManager->getLoginPort();
-			int loginAllowedConnections = configManager->getLoginAllowedConnections();
-
-			loginServer->start(loginPort, loginAllowedConnections);
-		}
-
 		if (zoneServer != NULL) {
 			int zonePort = 44463;
 			int zoneAllowedConnections = configManager->getZoneAllowedConnections();
@@ -182,11 +175,18 @@ void ServerCore::initialize() {
 			pingServer->start(pingPort, pingAllowedConnections);
 		}
 
+		if (loginServer != NULL) {
+			int loginPort = configManager->getLoginPort();
+			int loginAllowedConnections = configManager->getLoginAllowedConnections();
+
+			loginServer->start(loginPort, loginAllowedConnections);
+		}
+
 	#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
 	#else
 		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
-		statiscticsTask->schedulePeriodic(1000, 1000);
+		statiscticsTask->schedulePeriodic(10000, 10000);
 	#endif
 
 		info("initialized", true);
@@ -273,6 +273,11 @@ void ServerCore::shutdown() {
 
 void ServerCore::handleCommands() {
 	while (true) {
+
+#ifdef WITH_STM
+		Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
+#endif
+
 		try {
 			String command;
 
@@ -349,12 +354,13 @@ void ServerCore::handleCommands() {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 
-	#ifdef WITH_STM
+#ifdef WITH_STM
 		try {
-			TransactionalMemoryManager::commitPureTransaction();
+			TransactionalMemoryManager::commitPureTransaction(transaction);
 		} catch (const TransactionAbortedException& e) {
 		}
 	#endif
+
 	}
 }
 

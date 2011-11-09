@@ -63,6 +63,9 @@ void SpawnAreaMap::loadMap(Zone* z) {
 	}
 
 	lua->deinit();
+
+	delete lua;
+	lua = NULL;
 }
 
 void SpawnAreaMap::loadStaticSpawns() {

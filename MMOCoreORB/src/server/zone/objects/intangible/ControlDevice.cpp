@@ -311,7 +311,7 @@ bool ControlDeviceImplementation::isControlDevice() {
  *	ControlDeviceAdapter
  */
 
-ControlDeviceAdapter::ControlDeviceAdapter(ControlDeviceImplementation* obj) : IntangibleObjectAdapter(obj) {
+ControlDeviceAdapter::ControlDeviceAdapter(ControlDevice* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -344,27 +344,27 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void ControlDeviceAdapter::updateToDatabaseAllObjects(bool startTask) {
-	(static_cast<ControlDeviceImplementation*>(impl))->updateToDatabaseAllObjects(startTask);
+	(static_cast<ControlDevice*>(stub))->updateToDatabaseAllObjects(startTask);
 }
 
 void ControlDeviceAdapter::storeObject(CreatureObject* player) {
-	(static_cast<ControlDeviceImplementation*>(impl))->storeObject(player);
+	(static_cast<ControlDevice*>(stub))->storeObject(player);
 }
 
 void ControlDeviceAdapter::generateObject(CreatureObject* player) {
-	(static_cast<ControlDeviceImplementation*>(impl))->generateObject(player);
+	(static_cast<ControlDevice*>(stub))->generateObject(player);
 }
 
 void ControlDeviceAdapter::setControlledObject(TangibleObject* object) {
-	(static_cast<ControlDeviceImplementation*>(impl))->setControlledObject(object);
+	(static_cast<ControlDevice*>(stub))->setControlledObject(object);
 }
 
 TangibleObject* ControlDeviceAdapter::getControlledObject() {
-	return (static_cast<ControlDeviceImplementation*>(impl))->getControlledObject();
+	return (static_cast<ControlDevice*>(stub))->getControlledObject();
 }
 
 bool ControlDeviceAdapter::isControlDevice() {
-	return (static_cast<ControlDeviceImplementation*>(impl))->isControlDevice();
+	return (static_cast<ControlDevice*>(stub))->isControlDevice();
 }
 
 /*
@@ -392,7 +392,7 @@ DistributedObjectServant* ControlDeviceHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ControlDeviceHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ControlDeviceAdapter(static_cast<ControlDeviceImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ControlDeviceAdapter(static_cast<ControlDevice*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

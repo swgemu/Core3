@@ -189,7 +189,7 @@ bool LairGroupImplementation::isLairGroup() {
  *	LairGroupAdapter
  */
 
-LairGroupAdapter::LairGroupAdapter(LairGroupImplementation* obj) : AiGroupAdapter(obj) {
+LairGroupAdapter::LairGroupAdapter(LairGroup* obj) : AiGroupAdapter(obj) {
 }
 
 Packet* LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -207,7 +207,7 @@ Packet* LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool LairGroupAdapter::isLairGroup() {
-	return (static_cast<LairGroupImplementation*>(impl))->isLairGroup();
+	return (static_cast<LairGroup*>(stub))->isLairGroup();
 }
 
 /*
@@ -235,7 +235,7 @@ DistributedObjectServant* LairGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LairGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LairGroupAdapter(static_cast<LairGroupImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new LairGroupAdapter(static_cast<LairGroup*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -170,7 +170,7 @@ protected:
 
 class TicketCollectorAdapter : public TerminalAdapter {
 public:
-	TicketCollectorAdapter(TicketCollectorImplementation* impl);
+	TicketCollectorAdapter(TicketCollector* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

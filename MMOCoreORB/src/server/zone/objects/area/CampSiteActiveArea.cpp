@@ -382,7 +382,7 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* player) {
  *	CampSiteActiveAreaAdapter
  */
 
-CampSiteActiveAreaAdapter::CampSiteActiveAreaAdapter(CampSiteActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
+CampSiteActiveAreaAdapter::CampSiteActiveAreaAdapter(CampSiteActiveArea* obj) : ActiveAreaAdapter(obj) {
 }
 
 Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -400,7 +400,7 @@ Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void CampSiteActiveAreaAdapter::notifyEnter(SceneObject* player) {
-	(static_cast<CampSiteActiveAreaImplementation*>(impl))->notifyEnter(player);
+	(static_cast<CampSiteActiveArea*>(stub))->notifyEnter(player);
 }
 
 /*
@@ -428,7 +428,7 @@ DistributedObjectServant* CampSiteActiveAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CampSiteActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CampSiteActiveAreaAdapter(static_cast<CampSiteActiveAreaImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CampSiteActiveAreaAdapter(static_cast<CampSiteActiveArea*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

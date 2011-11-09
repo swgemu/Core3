@@ -331,7 +331,7 @@ bool SuiTransferBoxImplementation::isTransferBox() {
  *	SuiTransferBoxAdapter
  */
 
-SuiTransferBoxAdapter::SuiTransferBoxAdapter(SuiTransferBoxImplementation* obj) : SuiBoxAdapter(obj) {
+SuiTransferBoxAdapter::SuiTransferBoxAdapter(SuiTransferBox* obj) : SuiBoxAdapter(obj) {
 }
 
 Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -358,19 +358,19 @@ Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 BaseMessage* SuiTransferBoxAdapter::generateMessage() {
-	return (static_cast<SuiTransferBoxImplementation*>(impl))->generateMessage();
+	return (static_cast<SuiTransferBox*>(stub))->generateMessage();
 }
 
 void SuiTransferBoxAdapter::addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom) {
-	(static_cast<SuiTransferBoxImplementation*>(impl))->addFrom(from, startingFrom, inputFrom, rFrom);
+	(static_cast<SuiTransferBox*>(stub))->addFrom(from, startingFrom, inputFrom, rFrom);
 }
 
 void SuiTransferBoxAdapter::addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo) {
-	(static_cast<SuiTransferBoxImplementation*>(impl))->addTo(to, startingTo, inputTo, rTo);
+	(static_cast<SuiTransferBox*>(stub))->addTo(to, startingTo, inputTo, rTo);
 }
 
 bool SuiTransferBoxAdapter::isTransferBox() {
-	return (static_cast<SuiTransferBoxImplementation*>(impl))->isTransferBox();
+	return (static_cast<SuiTransferBox*>(stub))->isTransferBox();
 }
 
 /*
@@ -398,7 +398,7 @@ DistributedObjectServant* SuiTransferBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiTransferBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiTransferBoxAdapter(static_cast<SuiTransferBoxImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SuiTransferBoxAdapter(static_cast<SuiTransferBox*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

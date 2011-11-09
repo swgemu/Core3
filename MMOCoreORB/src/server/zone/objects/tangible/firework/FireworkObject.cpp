@@ -262,7 +262,7 @@ void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
  *	FireworkObjectAdapter
  */
 
-FireworkObjectAdapter::FireworkObjectAdapter(FireworkObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+FireworkObjectAdapter::FireworkObjectAdapter(FireworkObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -286,15 +286,15 @@ Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void FireworkObjectAdapter::initializeTransientMembers() {
-	(static_cast<FireworkObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<FireworkObject*>(stub))->initializeTransientMembers();
 }
 
 int FireworkObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<FireworkObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FireworkObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void FireworkObjectAdapter::launch(CreatureObject* player) {
-	(static_cast<FireworkObjectImplementation*>(impl))->launch(player);
+	(static_cast<FireworkObject*>(stub))->launch(player);
 }
 
 /*
@@ -322,7 +322,7 @@ DistributedObjectServant* FireworkObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FireworkObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FireworkObjectAdapter(static_cast<FireworkObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FireworkObjectAdapter(static_cast<FireworkObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

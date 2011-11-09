@@ -285,7 +285,7 @@ void FishingBaitObjectImplementation::lessFresh() {
  *	FishingBaitObjectAdapter
  */
 
-FishingBaitObjectAdapter::FishingBaitObjectAdapter(FishingBaitObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+FishingBaitObjectAdapter::FishingBaitObjectAdapter(FishingBaitObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -318,27 +318,27 @@ Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void FishingBaitObjectAdapter::initializeTransientMembers() {
-	(static_cast<FishingBaitObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<FishingBaitObject*>(stub))->initializeTransientMembers();
 }
 
 int FishingBaitObjectAdapter::getFreshness() {
-	return (static_cast<FishingBaitObjectImplementation*>(impl))->getFreshness();
+	return (static_cast<FishingBaitObject*>(stub))->getFreshness();
 }
 
 void FishingBaitObjectAdapter::setFreshness(int value) {
-	(static_cast<FishingBaitObjectImplementation*>(impl))->setFreshness(value);
+	(static_cast<FishingBaitObject*>(stub))->setFreshness(value);
 }
 
 void FishingBaitObjectAdapter::lessFresh() {
-	(static_cast<FishingBaitObjectImplementation*>(impl))->lessFresh();
+	(static_cast<FishingBaitObject*>(stub))->lessFresh();
 }
 
 int FishingBaitObjectAdapter::getUseCount() {
-	return (static_cast<FishingBaitObjectImplementation*>(impl))->getUseCount();
+	return (static_cast<FishingBaitObject*>(stub))->getUseCount();
 }
 
 void FishingBaitObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	(static_cast<FishingBaitObjectImplementation*>(impl))->fillAttributeList(msg, object);
+	(static_cast<FishingBaitObject*>(stub))->fillAttributeList(msg, object);
 }
 
 /*
@@ -366,7 +366,7 @@ DistributedObjectServant* FishingBaitObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FishingBaitObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FishingBaitObjectAdapter(static_cast<FishingBaitObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FishingBaitObjectAdapter(static_cast<FishingBaitObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -186,7 +186,7 @@ void GarageAreaImplementation::notifyEnter(SceneObject* player) {
  *	GarageAreaAdapter
  */
 
-GarageAreaAdapter::GarageAreaAdapter(GarageAreaImplementation* obj) : ActiveAreaAdapter(obj) {
+GarageAreaAdapter::GarageAreaAdapter(GarageArea* obj) : ActiveAreaAdapter(obj) {
 }
 
 Packet* GarageAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -204,7 +204,7 @@ Packet* GarageAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void GarageAreaAdapter::notifyEnter(SceneObject* player) {
-	(static_cast<GarageAreaImplementation*>(impl))->notifyEnter(player);
+	(static_cast<GarageArea*>(stub))->notifyEnter(player);
 }
 
 /*
@@ -232,7 +232,7 @@ DistributedObjectServant* GarageAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GarageAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GarageAreaAdapter(static_cast<GarageAreaImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new GarageAreaAdapter(static_cast<GarageArea*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

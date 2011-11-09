@@ -833,7 +833,7 @@ bool GuildObjectImplementation::isGuildLeader(CreatureObject* player) {
  *	GuildObjectAdapter
  */
 
-GuildObjectAdapter::GuildObjectAdapter(GuildObjectImplementation* obj) : SceneObjectAdapter(obj) {
+GuildObjectAdapter::GuildObjectAdapter(GuildObject* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -944,131 +944,131 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void GuildObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<GuildObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<GuildObject*>(stub))->sendBaselinesTo(player);
 }
 
 void GuildObjectAdapter::broadcastMessage(BaseMessage* msg) {
-	(static_cast<GuildObjectImplementation*>(impl))->broadcastMessage(msg);
+	(static_cast<GuildObject*>(stub))->broadcastMessage(msg);
 }
 
 void GuildObjectAdapter::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
-	(static_cast<GuildObjectImplementation*>(impl))->broadcastMessage(player, msg, sendSelf);
+	(static_cast<GuildObject*>(stub))->broadcastMessage(player, msg, sendSelf);
 }
 
 void GuildObjectAdapter::addMember(unsigned long long playerID) {
-	(static_cast<GuildObjectImplementation*>(impl))->addMember(playerID);
+	(static_cast<GuildObject*>(stub))->addMember(playerID);
 }
 
 void GuildObjectAdapter::removeMember(unsigned long long playerID) {
-	(static_cast<GuildObjectImplementation*>(impl))->removeMember(playerID);
+	(static_cast<GuildObject*>(stub))->removeMember(playerID);
 }
 
 bool GuildObjectAdapter::hasMember(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasMember(playerID);
+	return (static_cast<GuildObject*>(stub))->hasMember(playerID);
 }
 
 void GuildObjectAdapter::addSponsoredPlayer(unsigned long long playerID) {
-	(static_cast<GuildObjectImplementation*>(impl))->addSponsoredPlayer(playerID);
+	(static_cast<GuildObject*>(stub))->addSponsoredPlayer(playerID);
 }
 
 void GuildObjectAdapter::removeSponsoredPlayer(unsigned long long playerID) {
-	(static_cast<GuildObjectImplementation*>(impl))->removeSponsoredPlayer(playerID);
+	(static_cast<GuildObject*>(stub))->removeSponsoredPlayer(playerID);
 }
 
 bool GuildObjectAdapter::hasSponsoredPlayer(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasSponsoredPlayer(playerID);
+	return (static_cast<GuildObject*>(stub))->hasSponsoredPlayer(playerID);
 }
 
 unsigned long long GuildObjectAdapter::getSponsoredPlayer(int idx) {
-	return (static_cast<GuildObjectImplementation*>(impl))->getSponsoredPlayer(idx);
+	return (static_cast<GuildObject*>(stub))->getSponsoredPlayer(idx);
 }
 
 int GuildObjectAdapter::getSponsoredPlayerCount() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getSponsoredPlayerCount();
+	return (static_cast<GuildObject*>(stub))->getSponsoredPlayerCount();
 }
 
 void GuildObjectAdapter::setChatRoom(ChatRoom* room) {
-	(static_cast<GuildObjectImplementation*>(impl))->setChatRoom(room);
+	(static_cast<GuildObject*>(stub))->setChatRoom(room);
 }
 
 ChatRoom* GuildObjectAdapter::getChatRoom() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getChatRoom();
+	return (static_cast<GuildObject*>(stub))->getChatRoom();
 }
 
 int GuildObjectAdapter::getTotalMembers() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getTotalMembers();
+	return (static_cast<GuildObject*>(stub))->getTotalMembers();
 }
 
 unsigned long long GuildObjectAdapter::getGuildLeaderID() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getGuildLeaderID();
+	return (static_cast<GuildObject*>(stub))->getGuildLeaderID();
 }
 
 String GuildObjectAdapter::getGuildAbbrev() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getGuildAbbrev();
+	return (static_cast<GuildObject*>(stub))->getGuildAbbrev();
 }
 
 void GuildObjectAdapter::setGuildAbbrev(const String& abbrev) {
-	(static_cast<GuildObjectImplementation*>(impl))->setGuildAbbrev(abbrev);
+	(static_cast<GuildObject*>(stub))->setGuildAbbrev(abbrev);
 }
 
 void GuildObjectAdapter::setGuildLeaderID(unsigned long long leaderID) {
-	(static_cast<GuildObjectImplementation*>(impl))->setGuildLeaderID(leaderID);
+	(static_cast<GuildObject*>(stub))->setGuildLeaderID(leaderID);
 }
 
 void GuildObjectAdapter::setGuildID(unsigned int id) {
-	(static_cast<GuildObjectImplementation*>(impl))->setGuildID(id);
+	(static_cast<GuildObject*>(stub))->setGuildID(id);
 }
 
 unsigned int GuildObjectAdapter::getGuildID() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getGuildID();
+	return (static_cast<GuildObject*>(stub))->getGuildID();
 }
 
 void GuildObjectAdapter::setGuildName(const String& gname) {
-	(static_cast<GuildObjectImplementation*>(impl))->setGuildName(gname);
+	(static_cast<GuildObject*>(stub))->setGuildName(gname);
 }
 
 String GuildObjectAdapter::getGuildName() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getGuildName();
+	return (static_cast<GuildObject*>(stub))->getGuildName();
 }
 
 String GuildObjectAdapter::getGuildKey() {
-	return (static_cast<GuildObjectImplementation*>(impl))->getGuildKey();
+	return (static_cast<GuildObject*>(stub))->getGuildKey();
 }
 
 bool GuildObjectAdapter::isGuildObject() {
-	return (static_cast<GuildObjectImplementation*>(impl))->isGuildObject();
+	return (static_cast<GuildObject*>(stub))->isGuildObject();
 }
 
 bool GuildObjectAdapter::isGuildLeader(CreatureObject* player) {
-	return (static_cast<GuildObjectImplementation*>(impl))->isGuildLeader(player);
+	return (static_cast<GuildObject*>(stub))->isGuildLeader(player);
 }
 
 bool GuildObjectAdapter::hasMailPermission(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasMailPermission(playerID);
+	return (static_cast<GuildObject*>(stub))->hasMailPermission(playerID);
 }
 
 bool GuildObjectAdapter::hasSponsorPermission(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasSponsorPermission(playerID);
+	return (static_cast<GuildObject*>(stub))->hasSponsorPermission(playerID);
 }
 
 bool GuildObjectAdapter::hasAcceptPermission(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasAcceptPermission(playerID);
+	return (static_cast<GuildObject*>(stub))->hasAcceptPermission(playerID);
 }
 
 bool GuildObjectAdapter::hasDisbandPermission(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasDisbandPermission(playerID);
+	return (static_cast<GuildObject*>(stub))->hasDisbandPermission(playerID);
 }
 
 bool GuildObjectAdapter::hasKickPermission(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasKickPermission(playerID);
+	return (static_cast<GuildObject*>(stub))->hasKickPermission(playerID);
 }
 
 bool GuildObjectAdapter::hasNamePermission(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasNamePermission(playerID);
+	return (static_cast<GuildObject*>(stub))->hasNamePermission(playerID);
 }
 
 bool GuildObjectAdapter::hasTitlePermission(unsigned long long playerID) {
-	return (static_cast<GuildObjectImplementation*>(impl))->hasTitlePermission(playerID);
+	return (static_cast<GuildObject*>(stub))->hasTitlePermission(playerID);
 }
 
 /*
@@ -1096,7 +1096,7 @@ DistributedObjectServant* GuildObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GuildObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GuildObjectAdapter(static_cast<GuildObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new GuildObjectAdapter(static_cast<GuildObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

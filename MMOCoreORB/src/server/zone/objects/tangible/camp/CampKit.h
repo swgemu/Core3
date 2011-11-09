@@ -149,7 +149,7 @@ protected:
 
 class CampKitAdapter : public TangibleObjectAdapter {
 public:
-	CampKitAdapter(CampKitImplementation* impl);
+	CampKitAdapter(CampKit* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

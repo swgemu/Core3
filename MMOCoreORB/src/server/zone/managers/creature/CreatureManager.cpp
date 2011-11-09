@@ -495,7 +495,7 @@ int CreatureManagerImplementation::getSpawnedRandomCreatures() {
  *	CreatureManagerAdapter
  */
 
-CreatureManagerAdapter::CreatureManagerAdapter(CreatureManagerImplementation* obj) : ZoneManagerAdapter(obj) {
+CreatureManagerAdapter::CreatureManagerAdapter(CreatureManager* obj) : ZoneManagerAdapter(obj) {
 }
 
 Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -555,63 +555,63 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void CreatureManagerAdapter::initialize() {
-	(static_cast<CreatureManagerImplementation*>(impl))->initialize();
+	(static_cast<CreatureManager*>(stub))->initialize();
 }
 
 CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID) {
-	return (static_cast<CreatureManagerImplementation*>(impl))->spawnCreature(templateCRC, x, z, y, parentID);
+	return (static_cast<CreatureManager*>(stub))->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
 CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID) {
-	return (static_cast<CreatureManagerImplementation*>(impl))->spawnCreature(templateCRC, objectCRC, x, z, y, parentID);
+	return (static_cast<CreatureManager*>(stub))->spawnCreature(templateCRC, objectCRC, x, z, y, parentID);
 }
 
 CreatureObject* CreatureManagerAdapter::createCreature(unsigned int templateCRC) {
-	return (static_cast<CreatureManagerImplementation*>(impl))->createCreature(templateCRC);
+	return (static_cast<CreatureManager*>(stub))->createCreature(templateCRC);
 }
 
 void CreatureManagerAdapter::placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID) {
-	(static_cast<CreatureManagerImplementation*>(impl))->placeCreature(creature, x, z, y, parentID);
+	(static_cast<CreatureManager*>(stub))->placeCreature(creature, x, z, y, parentID);
 }
 
 void CreatureManagerAdapter::loadSpawnAreas() {
-	(static_cast<CreatureManagerImplementation*>(impl))->loadSpawnAreas();
+	(static_cast<CreatureManager*>(stub))->loadSpawnAreas();
 }
 
 void CreatureManagerAdapter::loadSingleSpawns() {
-	(static_cast<CreatureManagerImplementation*>(impl))->loadSingleSpawns();
+	(static_cast<CreatureManager*>(stub))->loadSingleSpawns();
 }
 
 void CreatureManagerAdapter::loadTrainers() {
-	(static_cast<CreatureManagerImplementation*>(impl))->loadTrainers();
+	(static_cast<CreatureManager*>(stub))->loadTrainers();
 }
 
 void CreatureManagerAdapter::loadMissionSpawns() {
-	(static_cast<CreatureManagerImplementation*>(impl))->loadMissionSpawns();
+	(static_cast<CreatureManager*>(stub))->loadMissionSpawns();
 }
 
 void CreatureManagerAdapter::loadInformants() {
-	(static_cast<CreatureManagerImplementation*>(impl))->loadInformants();
+	(static_cast<CreatureManager*>(stub))->loadInformants();
 }
 
 void CreatureManagerAdapter::spawnRandomCreaturesAround(SceneObject* creature) {
-	(static_cast<CreatureManagerImplementation*>(impl))->spawnRandomCreaturesAround(creature);
+	(static_cast<CreatureManager*>(stub))->spawnRandomCreaturesAround(creature);
 }
 
 void CreatureManagerAdapter::spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID) {
-	(static_cast<CreatureManagerImplementation*>(impl))->spawnRandomCreature(number, x, z, y, parentID);
+	(static_cast<CreatureManager*>(stub))->spawnRandomCreature(number, x, z, y, parentID);
 }
 
 void CreatureManagerAdapter::harvest(Creature* creature, CreatureObject* player, int selectedID) {
-	(static_cast<CreatureManagerImplementation*>(impl))->harvest(creature, player, selectedID);
+	(static_cast<CreatureManager*>(stub))->harvest(creature, player, selectedID);
 }
 
 void CreatureManagerAdapter::addToReservePool(AiAgent* agent) {
-	(static_cast<CreatureManagerImplementation*>(impl))->addToReservePool(agent);
+	(static_cast<CreatureManager*>(stub))->addToReservePool(agent);
 }
 
 int CreatureManagerAdapter::getSpawnedRandomCreatures() {
-	return (static_cast<CreatureManagerImplementation*>(impl))->getSpawnedRandomCreatures();
+	return (static_cast<CreatureManager*>(stub))->getSpawnedRandomCreatures();
 }
 
 /*
@@ -639,7 +639,7 @@ DistributedObjectServant* CreatureManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CreatureManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CreatureManagerAdapter(static_cast<CreatureManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CreatureManagerAdapter(static_cast<CreatureManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

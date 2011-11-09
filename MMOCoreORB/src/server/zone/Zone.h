@@ -411,7 +411,7 @@ protected:
 
 class ZoneAdapter : public SceneObjectAdapter {
 public:
-	ZoneAdapter(ZoneImplementation* impl);
+	ZoneAdapter(Zone* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

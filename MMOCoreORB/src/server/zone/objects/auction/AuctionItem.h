@@ -375,7 +375,7 @@ protected:
 
 class AuctionItemAdapter : public ManagedObjectAdapter {
 public:
-	AuctionItemAdapter(AuctionItemImplementation* impl);
+	AuctionItemAdapter(AuctionItem* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

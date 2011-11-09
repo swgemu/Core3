@@ -58,7 +58,7 @@ public:
 			return false;
 		}
 
-		updateObject((O) obj);
+		Reference<O>::updateObject((O) obj);
 
 		return true;
 	}
@@ -84,7 +84,7 @@ public:
 			return false;
 		}
 
-		updateObject((O) obj);
+		Reference<O>::updateObject((O) obj);
 
 		return true;
 	}

@@ -995,7 +995,7 @@ void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
  *	ArmorObjectAdapter
  */
 
-ArmorObjectAdapter::ArmorObjectAdapter(ArmorObjectImplementation* obj) : WearableObjectAdapter(obj) {
+ArmorObjectAdapter::ArmorObjectAdapter(ArmorObject* obj) : WearableObjectAdapter(obj) {
 }
 
 Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1106,131 +1106,131 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void ArmorObjectAdapter::initializeTransientMembers() {
-	(static_cast<ArmorObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ArmorObject*>(stub))->initializeTransientMembers();
 }
 
 int ArmorObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<ArmorObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ArmorObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void ArmorObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<ArmorObjectImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<ArmorObject*>(stub))->updateCraftingValues(schematic);
 }
 
 bool ArmorObjectAdapter::isSpecial(int type) {
-	return (static_cast<ArmorObjectImplementation*>(impl))->isSpecial(type);
+	return (static_cast<ArmorObject*>(stub))->isSpecial(type);
 }
 
 bool ArmorObjectAdapter::isVulnerable(int type) {
-	return (static_cast<ArmorObjectImplementation*>(impl))->isVulnerable(type);
+	return (static_cast<ArmorObject*>(stub))->isVulnerable(type);
 }
 
 bool ArmorObjectAdapter::isArmorObject() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->isArmorObject();
+	return (static_cast<ArmorObject*>(stub))->isArmorObject();
 }
 
 void ArmorObjectAdapter::setRating(int rate) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setRating(rate);
+	(static_cast<ArmorObject*>(stub))->setRating(rate);
 }
 
 int ArmorObjectAdapter::getRating() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getRating();
+	return (static_cast<ArmorObject*>(stub))->getRating();
 }
 
 float ArmorObjectAdapter::getKinetic() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getKinetic();
+	return (static_cast<ArmorObject*>(stub))->getKinetic();
 }
 
 void ArmorObjectAdapter::setKinetic(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setKinetic(value);
+	(static_cast<ArmorObject*>(stub))->setKinetic(value);
 }
 
 float ArmorObjectAdapter::getEnergy() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getEnergy();
+	return (static_cast<ArmorObject*>(stub))->getEnergy();
 }
 
 void ArmorObjectAdapter::setEnergy(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setEnergy(value);
+	(static_cast<ArmorObject*>(stub))->setEnergy(value);
 }
 
 float ArmorObjectAdapter::getElectricity() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getElectricity();
+	return (static_cast<ArmorObject*>(stub))->getElectricity();
 }
 
 void ArmorObjectAdapter::setElectricity(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setElectricity(value);
+	(static_cast<ArmorObject*>(stub))->setElectricity(value);
 }
 
 float ArmorObjectAdapter::getStun() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getStun();
+	return (static_cast<ArmorObject*>(stub))->getStun();
 }
 
 void ArmorObjectAdapter::setStun(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setStun(value);
+	(static_cast<ArmorObject*>(stub))->setStun(value);
 }
 
 float ArmorObjectAdapter::getBlast() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getBlast();
+	return (static_cast<ArmorObject*>(stub))->getBlast();
 }
 
 void ArmorObjectAdapter::setBlast(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setBlast(value);
+	(static_cast<ArmorObject*>(stub))->setBlast(value);
 }
 
 float ArmorObjectAdapter::getHeat() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getHeat();
+	return (static_cast<ArmorObject*>(stub))->getHeat();
 }
 
 void ArmorObjectAdapter::setHeat(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setHeat(value);
+	(static_cast<ArmorObject*>(stub))->setHeat(value);
 }
 
 float ArmorObjectAdapter::getCold() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getCold();
+	return (static_cast<ArmorObject*>(stub))->getCold();
 }
 
 void ArmorObjectAdapter::setCold(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setCold(value);
+	(static_cast<ArmorObject*>(stub))->setCold(value);
 }
 
 float ArmorObjectAdapter::getAcid() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getAcid();
+	return (static_cast<ArmorObject*>(stub))->getAcid();
 }
 
 void ArmorObjectAdapter::setAcid(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setAcid(value);
+	(static_cast<ArmorObject*>(stub))->setAcid(value);
 }
 
 float ArmorObjectAdapter::getLightSaber() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getLightSaber();
+	return (static_cast<ArmorObject*>(stub))->getLightSaber();
 }
 
 void ArmorObjectAdapter::setLightSaber(float value) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setLightSaber(value);
+	(static_cast<ArmorObject*>(stub))->setLightSaber(value);
 }
 
 int ArmorObjectAdapter::getHealthEncumbrance() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getHealthEncumbrance();
+	return (static_cast<ArmorObject*>(stub))->getHealthEncumbrance();
 }
 
 void ArmorObjectAdapter::setHealthEncumbrance(int encumber) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setHealthEncumbrance(encumber);
+	(static_cast<ArmorObject*>(stub))->setHealthEncumbrance(encumber);
 }
 
 int ArmorObjectAdapter::getActionEncumbrance() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getActionEncumbrance();
+	return (static_cast<ArmorObject*>(stub))->getActionEncumbrance();
 }
 
 void ArmorObjectAdapter::setActionEncumbrance(int encumber) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setActionEncumbrance(encumber);
+	(static_cast<ArmorObject*>(stub))->setActionEncumbrance(encumber);
 }
 
 int ArmorObjectAdapter::getMindEncumbrance() {
-	return (static_cast<ArmorObjectImplementation*>(impl))->getMindEncumbrance();
+	return (static_cast<ArmorObject*>(stub))->getMindEncumbrance();
 }
 
 void ArmorObjectAdapter::setMindEncumbrance(int encumber) {
-	(static_cast<ArmorObjectImplementation*>(impl))->setMindEncumbrance(encumber);
+	(static_cast<ArmorObject*>(stub))->setMindEncumbrance(encumber);
 }
 
 /*
@@ -1258,7 +1258,7 @@ DistributedObjectServant* ArmorObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ArmorObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ArmorObjectAdapter(static_cast<ArmorObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ArmorObjectAdapter(static_cast<ArmorObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

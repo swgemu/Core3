@@ -183,7 +183,7 @@ protected:
 
 class SpiceBuffAdapter : public BuffAdapter {
 public:
-	SpiceBuffAdapter(SpiceBuffImplementation* impl);
+	SpiceBuffAdapter(SpiceBuff* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

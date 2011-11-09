@@ -236,7 +236,7 @@ bool CityVoteTerminalImplementation::isCityVoteTerminal() {
  *	CityVoteTerminalAdapter
  */
 
-CityVoteTerminalAdapter::CityVoteTerminalAdapter(CityVoteTerminalImplementation* obj) : TerminalAdapter(obj) {
+CityVoteTerminalAdapter::CityVoteTerminalAdapter(CityVoteTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* CityVoteTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -263,19 +263,19 @@ Packet* CityVoteTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void CityVoteTerminalAdapter::initializeTransientMembers() {
-	(static_cast<CityVoteTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<CityVoteTerminal*>(stub))->initializeTransientMembers();
 }
 
 void CityVoteTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	(static_cast<CityVoteTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<CityVoteTerminal*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int CityVoteTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<CityVoteTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CityVoteTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool CityVoteTerminalAdapter::isCityVoteTerminal() {
-	return (static_cast<CityVoteTerminalImplementation*>(impl))->isCityVoteTerminal();
+	return (static_cast<CityVoteTerminal*>(stub))->isCityVoteTerminal();
 }
 
 /*
@@ -303,7 +303,7 @@ DistributedObjectServant* CityVoteTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CityVoteTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CityVoteTerminalAdapter(static_cast<CityVoteTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CityVoteTerminalAdapter(static_cast<CityVoteTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

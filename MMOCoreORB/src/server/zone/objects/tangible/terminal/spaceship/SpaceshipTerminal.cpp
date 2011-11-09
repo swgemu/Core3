@@ -175,7 +175,7 @@ SpaceshipTerminalImplementation::SpaceshipTerminalImplementation() {
  *	SpaceshipTerminalAdapter
  */
 
-SpaceshipTerminalAdapter::SpaceshipTerminalAdapter(SpaceshipTerminalImplementation* obj) : TerminalAdapter(obj) {
+SpaceshipTerminalAdapter::SpaceshipTerminalAdapter(SpaceshipTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -193,7 +193,7 @@ Packet* SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 int SpaceshipTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<SpaceshipTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SpaceshipTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -221,7 +221,7 @@ DistributedObjectServant* SpaceshipTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpaceshipTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpaceshipTerminalAdapter(static_cast<SpaceshipTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SpaceshipTerminalAdapter(static_cast<SpaceshipTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -461,7 +461,7 @@ void RegionImplementation::setCityHall(CityHallObject* hall) {
  *	RegionAdapter
  */
 
-RegionAdapter::RegionAdapter(RegionImplementation* obj) : ActiveAreaAdapter(obj) {
+RegionAdapter::RegionAdapter(Region* obj) : ActiveAreaAdapter(obj) {
 }
 
 Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -515,55 +515,55 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void RegionAdapter::notifyEnter(SceneObject* object) {
-	(static_cast<RegionImplementation*>(impl))->notifyEnter(object);
+	(static_cast<Region*>(stub))->notifyEnter(object);
 }
 
 void RegionAdapter::sendGreetingMessage(CreatureObject* player) {
-	(static_cast<RegionImplementation*>(impl))->sendGreetingMessage(player);
+	(static_cast<Region*>(stub))->sendGreetingMessage(player);
 }
 
 void RegionAdapter::sendDepartingMessage(CreatureObject* player) {
-	(static_cast<RegionImplementation*>(impl))->sendDepartingMessage(player);
+	(static_cast<Region*>(stub))->sendDepartingMessage(player);
 }
 
 void RegionAdapter::notifyExit(SceneObject* object) {
-	(static_cast<RegionImplementation*>(impl))->notifyExit(object);
+	(static_cast<Region*>(stub))->notifyExit(object);
 }
 
 void RegionAdapter::notifyInsertToZone(Zone* zone) {
-	(static_cast<RegionImplementation*>(impl))->notifyInsertToZone(zone);
+	(static_cast<Region*>(stub))->notifyInsertToZone(zone);
 }
 
 void RegionAdapter::notifyRemoveFromZone() {
-	(static_cast<RegionImplementation*>(impl))->notifyRemoveFromZone();
+	(static_cast<Region*>(stub))->notifyRemoveFromZone();
 }
 
 void RegionAdapter::despawnCityObjects() {
-	(static_cast<RegionImplementation*>(impl))->despawnCityObjects();
+	(static_cast<Region*>(stub))->despawnCityObjects();
 }
 
 void RegionAdapter::addBazaar(BazaarTerminal* ter) {
-	(static_cast<RegionImplementation*>(impl))->addBazaar(ter);
+	(static_cast<Region*>(stub))->addBazaar(ter);
 }
 
 BazaarTerminal* RegionAdapter::getBazaar(int idx) {
-	return (static_cast<RegionImplementation*>(impl))->getBazaar(idx);
+	return (static_cast<Region*>(stub))->getBazaar(idx);
 }
 
 int RegionAdapter::getBazaarCount() {
-	return (static_cast<RegionImplementation*>(impl))->getBazaarCount();
+	return (static_cast<Region*>(stub))->getBazaarCount();
 }
 
 bool RegionAdapter::isRegion() {
-	return (static_cast<RegionImplementation*>(impl))->isRegion();
+	return (static_cast<Region*>(stub))->isRegion();
 }
 
 CityHallObject* RegionAdapter::getCityHall() {
-	return (static_cast<RegionImplementation*>(impl))->getCityHall();
+	return (static_cast<Region*>(stub))->getCityHall();
 }
 
 void RegionAdapter::setCityHall(CityHallObject* hall) {
-	(static_cast<RegionImplementation*>(impl))->setCityHall(hall);
+	(static_cast<Region*>(stub))->setCityHall(hall);
 }
 
 /*
@@ -591,7 +591,7 @@ DistributedObjectServant* RegionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RegionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RegionAdapter(static_cast<RegionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new RegionAdapter(static_cast<Region*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -701,7 +701,7 @@ String DraftSchematicImplementation::getTemplate(int i) {
  *	DraftSchematicAdapter
  */
 
-DraftSchematicAdapter::DraftSchematicAdapter(DraftSchematicImplementation* obj) : IntangibleObjectAdapter(obj) {
+DraftSchematicAdapter::DraftSchematicAdapter(DraftSchematic* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -800,115 +800,115 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void DraftSchematicAdapter::initializeTransientMembers() {
-	(static_cast<DraftSchematicImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<DraftSchematic*>(stub))->initializeTransientMembers();
 }
 
 void DraftSchematicAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<DraftSchematicImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<DraftSchematic*>(stub))->sendBaselinesTo(player);
 }
 
 void DraftSchematicAdapter::sendDraftSlotsTo(CreatureObject* player) {
-	(static_cast<DraftSchematicImplementation*>(impl))->sendDraftSlotsTo(player);
+	(static_cast<DraftSchematic*>(stub))->sendDraftSlotsTo(player);
 }
 
 void DraftSchematicAdapter::sendResourceWeightsTo(CreatureObject* player) {
-	(static_cast<DraftSchematicImplementation*>(impl))->sendResourceWeightsTo(player);
+	(static_cast<DraftSchematic*>(stub))->sendResourceWeightsTo(player);
 }
 
 SceneObject* DraftSchematicAdapter::createManufactureSchematic(SceneObject* craftingTool) {
-	return (static_cast<DraftSchematicImplementation*>(impl))->createManufactureSchematic(craftingTool);
+	return (static_cast<DraftSchematic*>(stub))->createManufactureSchematic(craftingTool);
 }
 
 void DraftSchematicAdapter::setSchematicID(unsigned int id) {
-	(static_cast<DraftSchematicImplementation*>(impl))->setSchematicID(id);
+	(static_cast<DraftSchematic*>(stub))->setSchematicID(id);
 }
 
 unsigned int DraftSchematicAdapter::getSchematicID() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getSchematicID();
+	return (static_cast<DraftSchematic*>(stub))->getSchematicID();
 }
 
 void DraftSchematicAdapter::setGroupName(String& name) {
-	(static_cast<DraftSchematicImplementation*>(impl))->setGroupName(name);
+	(static_cast<DraftSchematic*>(stub))->setGroupName(name);
 }
 
 String DraftSchematicAdapter::getGroupName() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getGroupName();
+	return (static_cast<DraftSchematic*>(stub))->getGroupName();
 }
 
 int DraftSchematicAdapter::getDraftSlotCount() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getDraftSlotCount();
+	return (static_cast<DraftSchematic*>(stub))->getDraftSlotCount();
 }
 
 bool DraftSchematicAdapter::isValidDraftSchematic() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->isValidDraftSchematic();
+	return (static_cast<DraftSchematic*>(stub))->isValidDraftSchematic();
 }
 
 int DraftSchematicAdapter::getResourceWeightCount() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getResourceWeightCount();
+	return (static_cast<DraftSchematic*>(stub))->getResourceWeightCount();
 }
 
 float DraftSchematicAdapter::getComplexity() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getComplexity();
+	return (static_cast<DraftSchematic*>(stub))->getComplexity();
 }
 
 unsigned int DraftSchematicAdapter::getToolTab() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getToolTab();
+	return (static_cast<DraftSchematic*>(stub))->getToolTab();
 }
 
 float DraftSchematicAdapter::getSize() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getSize();
+	return (static_cast<DraftSchematic*>(stub))->getSize();
 }
 
 String DraftSchematicAdapter::getXpType() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getXpType();
+	return (static_cast<DraftSchematic*>(stub))->getXpType();
 }
 
 int DraftSchematicAdapter::getXpAmount() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getXpAmount();
+	return (static_cast<DraftSchematic*>(stub))->getXpAmount();
 }
 
 String DraftSchematicAdapter::getAssemblySkill() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getAssemblySkill();
+	return (static_cast<DraftSchematic*>(stub))->getAssemblySkill();
 }
 
 String DraftSchematicAdapter::getExperimentationSkill() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getExperimentationSkill();
+	return (static_cast<DraftSchematic*>(stub))->getExperimentationSkill();
 }
 
 String DraftSchematicAdapter::getCustomizationSkill() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getCustomizationSkill();
+	return (static_cast<DraftSchematic*>(stub))->getCustomizationSkill();
 }
 
 String DraftSchematicAdapter::getCustomName() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getCustomName();
+	return (static_cast<DraftSchematic*>(stub))->getCustomName();
 }
 
 unsigned int DraftSchematicAdapter::getTanoCRC() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getTanoCRC();
+	return (static_cast<DraftSchematic*>(stub))->getTanoCRC();
 }
 
 int DraftSchematicAdapter::getUseCount() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getUseCount();
+	return (static_cast<DraftSchematic*>(stub))->getUseCount();
 }
 
 void DraftSchematicAdapter::setUseCount(int count) {
-	(static_cast<DraftSchematicImplementation*>(impl))->setUseCount(count);
+	(static_cast<DraftSchematic*>(stub))->setUseCount(count);
 }
 
 void DraftSchematicAdapter::decreaseUseCount(int count) {
-	(static_cast<DraftSchematicImplementation*>(impl))->decreaseUseCount(count);
+	(static_cast<DraftSchematic*>(stub))->decreaseUseCount(count);
 }
 
 void DraftSchematicAdapter::increaseUseCount(int count) {
-	(static_cast<DraftSchematicImplementation*>(impl))->increaseUseCount(count);
+	(static_cast<DraftSchematic*>(stub))->increaseUseCount(count);
 }
 
 int DraftSchematicAdapter::getTemplateListSize() {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getTemplateListSize();
+	return (static_cast<DraftSchematic*>(stub))->getTemplateListSize();
 }
 
 String DraftSchematicAdapter::getTemplate(int i) {
-	return (static_cast<DraftSchematicImplementation*>(impl))->getTemplate(i);
+	return (static_cast<DraftSchematic*>(stub))->getTemplate(i);
 }
 
 /*
@@ -936,7 +936,7 @@ DistributedObjectServant* DraftSchematicHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DraftSchematicHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DraftSchematicAdapter(static_cast<DraftSchematicImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DraftSchematicAdapter(static_cast<DraftSchematic*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

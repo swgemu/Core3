@@ -168,7 +168,7 @@ protected:
 
 class StructureTerminalAdapter : public TerminalAdapter {
 public:
-	StructureTerminalAdapter(StructureTerminalImplementation* impl);
+	StructureTerminalAdapter(StructureTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

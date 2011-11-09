@@ -650,7 +650,7 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, Zone
  *	MissionManagerAdapter
  */
 
-MissionManagerAdapter::MissionManagerAdapter(MissionManagerImplementation* obj) : ObserverAdapter(obj) {
+MissionManagerAdapter::MissionManagerAdapter(MissionManager* obj) : ObserverAdapter(obj) {
 }
 
 Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -749,115 +749,115 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void MissionManagerAdapter::loadLairObjectsToSpawn() {
-	(static_cast<MissionManagerImplementation*>(impl))->loadLairObjectsToSpawn();
+	(static_cast<MissionManager*>(stub))->loadLairObjectsToSpawn();
 }
 
 void MissionManagerAdapter::loadNpcObjectsToSpawn() {
-	(static_cast<MissionManagerImplementation*>(impl))->loadNpcObjectsToSpawn();
+	(static_cast<MissionManager*>(stub))->loadNpcObjectsToSpawn();
 }
 
 void MissionManagerAdapter::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
-	(static_cast<MissionManagerImplementation*>(impl))->handleMissionListRequest(missionTerminal, player, counter);
+	(static_cast<MissionManager*>(stub))->handleMissionListRequest(missionTerminal, player, counter);
 }
 
 void MissionManagerAdapter::handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->handleMissionAccept(missionTerminal, mission, player);
+	(static_cast<MissionManager*>(stub))->handleMissionAccept(missionTerminal, mission, player);
 }
 
 void MissionManagerAdapter::handleMissionAbort(MissionObject* mission, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->handleMissionAbort(mission, player);
+	(static_cast<MissionManager*>(stub))->handleMissionAbort(mission, player);
 }
 
 void MissionManagerAdapter::removeMission(MissionObject* mission, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->removeMission(mission, player);
+	(static_cast<MissionManager*>(stub))->removeMission(mission, player);
 }
 
 void MissionManagerAdapter::populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
-	(static_cast<MissionManagerImplementation*>(impl))->populateMissionList(missionTerminal, player, counter);
+	(static_cast<MissionManager*>(stub))->populateMissionList(missionTerminal, player, counter);
 }
 
 void MissionManagerAdapter::randomizeSurveyMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeSurveyMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeSurveyMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeDestroyMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeDestroyMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeDestroyMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeBountyMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeBountyMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeBountyMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeDeliverMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeDeliverMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeDeliverMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeCraftingMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeCraftingMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeCraftingMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeEntertainerMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeEntertainerMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeEntertainerMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeHuntingMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeHuntingMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeHuntingMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeReconMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeReconMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeReconMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeImperialDestroyMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeImperialDestroyMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeImperialDeliverMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeImperialDeliverMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeRebelDestroyMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeRebelDestroyMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
-	(static_cast<MissionManagerImplementation*>(impl))->randomizeRebelDeliverMission(player, mission);
+	(static_cast<MissionManager*>(stub))->randomizeRebelDeliverMission(player, mission);
 }
 
 void MissionManagerAdapter::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManagerAdapter::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createSurveyMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createSurveyMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManagerAdapter::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createDestroyMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createDestroyMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManagerAdapter::createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createDeliverMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createDeliverMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManagerAdapter::createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createEntertainerMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createEntertainerMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManagerAdapter::createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createHuntingMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createHuntingMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManagerAdapter::createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createReconMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createReconMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManagerAdapter::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	(static_cast<MissionManagerImplementation*>(impl))->createBountyMissionObjectives(mission, missionTerminal, player);
+	(static_cast<MissionManager*>(stub))->createBountyMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManagerAdapter::hasSurveyMission(CreatureObject* player, const String& spawn) {
-	return (static_cast<MissionManagerImplementation*>(impl))->hasSurveyMission(player, spawn);
+	return (static_cast<MissionManager*>(stub))->hasSurveyMission(player, spawn);
 }
 
 /*
@@ -885,7 +885,7 @@ DistributedObjectServant* MissionManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionManagerAdapter(static_cast<MissionManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new MissionManagerAdapter(static_cast<MissionManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -456,7 +456,7 @@ byte SlicingSessionImplementation::getProgress() {
  *	SlicingSessionAdapter
  */
 
-SlicingSessionAdapter::SlicingSessionAdapter(SlicingSessionImplementation* obj) : FacadeAdapter(obj) {
+SlicingSessionAdapter::SlicingSessionAdapter(SlicingSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -498,39 +498,39 @@ Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 int SlicingSessionAdapter::initializeSession() {
-	return (static_cast<SlicingSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<SlicingSession*>(stub))->initializeSession();
 }
 
 int SlicingSessionAdapter::cancelSession() {
-	return (static_cast<SlicingSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<SlicingSession*>(stub))->cancelSession();
 }
 
 int SlicingSessionAdapter::clearSession() {
-	return (static_cast<SlicingSessionImplementation*>(impl))->clearSession();
+	return (static_cast<SlicingSession*>(stub))->clearSession();
 }
 
 void SlicingSessionAdapter::endSlicing() {
-	(static_cast<SlicingSessionImplementation*>(impl))->endSlicing();
+	(static_cast<SlicingSession*>(stub))->endSlicing();
 }
 
 int SlicingSessionAdapter::getSlicingSkill(CreatureObject* slicer) {
-	return (static_cast<SlicingSessionImplementation*>(impl))->getSlicingSkill(slicer);
+	return (static_cast<SlicingSession*>(stub))->getSlicingSkill(slicer);
 }
 
 bool SlicingSessionAdapter::hasPrecisionLaserKnife(bool removeItem) {
-	return (static_cast<SlicingSessionImplementation*>(impl))->hasPrecisionLaserKnife(removeItem);
+	return (static_cast<SlicingSession*>(stub))->hasPrecisionLaserKnife(removeItem);
 }
 
 bool SlicingSessionAdapter::hasWeaponUpgradeKit() {
-	return (static_cast<SlicingSessionImplementation*>(impl))->hasWeaponUpgradeKit();
+	return (static_cast<SlicingSession*>(stub))->hasWeaponUpgradeKit();
 }
 
 bool SlicingSessionAdapter::hasArmorUpgradeKit() {
-	return (static_cast<SlicingSessionImplementation*>(impl))->hasArmorUpgradeKit();
+	return (static_cast<SlicingSession*>(stub))->hasArmorUpgradeKit();
 }
 
 void SlicingSessionAdapter::useClampFromInventory(SlicingTool* clamp) {
-	(static_cast<SlicingSessionImplementation*>(impl))->useClampFromInventory(clamp);
+	(static_cast<SlicingSession*>(stub))->useClampFromInventory(clamp);
 }
 
 /*
@@ -558,7 +558,7 @@ DistributedObjectServant* SlicingSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SlicingSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SlicingSessionAdapter(static_cast<SlicingSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SlicingSessionAdapter(static_cast<SlicingSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -99,7 +99,7 @@ protected:
 
 class HerdGroupAdapter : public AiGroupAdapter {
 public:
-	HerdGroupAdapter(HerdGroupImplementation* impl);
+	HerdGroupAdapter(HerdGroup* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

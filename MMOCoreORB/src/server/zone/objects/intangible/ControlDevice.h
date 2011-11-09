@@ -202,7 +202,7 @@ protected:
 
 class ControlDeviceAdapter : public IntangibleObjectAdapter {
 public:
-	ControlDeviceAdapter(ControlDeviceImplementation* impl);
+	ControlDeviceAdapter(ControlDevice* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

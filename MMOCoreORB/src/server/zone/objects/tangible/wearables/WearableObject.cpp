@@ -381,7 +381,7 @@ void WearableObjectImplementation::setMaxSockets(int sockets) {
  *	WearableObjectAdapter
  */
 
-WearableObjectAdapter::WearableObjectAdapter(WearableObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+WearableObjectAdapter::WearableObjectAdapter(WearableObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -426,43 +426,43 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void WearableObjectAdapter::initializeTransientMembers() {
-	(static_cast<WearableObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<WearableObject*>(stub))->initializeTransientMembers();
 }
 
 void WearableObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<WearableObjectImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<WearableObject*>(stub))->updateCraftingValues(schematic);
 }
 
 void WearableObjectAdapter::applyAttachment(CreatureObject* player, Attachment* attachment) {
-	(static_cast<WearableObjectImplementation*>(impl))->applyAttachment(player, attachment);
+	(static_cast<WearableObject*>(stub))->applyAttachment(player, attachment);
 }
 
 void WearableObjectAdapter::setAttachmentMods(CreatureObject* player, bool remove) {
-	(static_cast<WearableObjectImplementation*>(impl))->setAttachmentMods(player, remove);
+	(static_cast<WearableObject*>(stub))->setAttachmentMods(player, remove);
 }
 
 bool WearableObjectAdapter::isWearableObject() {
-	return (static_cast<WearableObjectImplementation*>(impl))->isWearableObject();
+	return (static_cast<WearableObject*>(stub))->isWearableObject();
 }
 
 bool WearableObjectAdapter::isEquipped() {
-	return (static_cast<WearableObjectImplementation*>(impl))->isEquipped();
+	return (static_cast<WearableObject*>(stub))->isEquipped();
 }
 
 int WearableObjectAdapter::getMaxSockets() {
-	return (static_cast<WearableObjectImplementation*>(impl))->getMaxSockets();
+	return (static_cast<WearableObject*>(stub))->getMaxSockets();
 }
 
 int WearableObjectAdapter::socketsUsed() {
-	return (static_cast<WearableObjectImplementation*>(impl))->socketsUsed();
+	return (static_cast<WearableObject*>(stub))->socketsUsed();
 }
 
 int WearableObjectAdapter::socketsLeft() {
-	return (static_cast<WearableObjectImplementation*>(impl))->socketsLeft();
+	return (static_cast<WearableObject*>(stub))->socketsLeft();
 }
 
 void WearableObjectAdapter::setMaxSockets(int sockets) {
-	(static_cast<WearableObjectImplementation*>(impl))->setMaxSockets(sockets);
+	(static_cast<WearableObject*>(stub))->setMaxSockets(sockets);
 }
 
 /*
@@ -490,7 +490,7 @@ DistributedObjectServant* WearableObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WearableObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WearableObjectAdapter(static_cast<WearableObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new WearableObjectAdapter(static_cast<WearableObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

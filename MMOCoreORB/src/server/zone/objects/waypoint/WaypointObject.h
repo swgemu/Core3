@@ -244,7 +244,7 @@ protected:
 
 class WaypointObjectAdapter : public IntangibleObjectAdapter {
 public:
-	WaypointObjectAdapter(WaypointObjectImplementation* impl);
+	WaypointObjectAdapter(WaypointObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

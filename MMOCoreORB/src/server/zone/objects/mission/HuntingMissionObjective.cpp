@@ -261,7 +261,7 @@ void HuntingMissionObjectiveImplementation::initializeTransientMembers() {
  *	HuntingMissionObjectiveAdapter
  */
 
-HuntingMissionObjectiveAdapter::HuntingMissionObjectiveAdapter(HuntingMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+HuntingMissionObjectiveAdapter::HuntingMissionObjectiveAdapter(HuntingMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* HuntingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -294,27 +294,27 @@ Packet* HuntingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 }
 
 void HuntingMissionObjectiveAdapter::finalize() {
-	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<HuntingMissionObjective*>(stub))->finalize();
 }
 
 void HuntingMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<HuntingMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void HuntingMissionObjectiveAdapter::activate() {
-	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<HuntingMissionObjective*>(stub))->activate();
 }
 
 void HuntingMissionObjectiveAdapter::abort() {
-	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<HuntingMissionObjective*>(stub))->abort();
 }
 
 void HuntingMissionObjectiveAdapter::complete() {
-	(static_cast<HuntingMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<HuntingMissionObjective*>(stub))->complete();
 }
 
 int HuntingMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<HuntingMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<HuntingMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -342,7 +342,7 @@ DistributedObjectServant* HuntingMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* HuntingMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new HuntingMissionObjectiveAdapter(static_cast<HuntingMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new HuntingMissionObjectiveAdapter(static_cast<HuntingMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

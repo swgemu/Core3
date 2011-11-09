@@ -174,7 +174,7 @@ bool PackGroupImplementation::isPackGroup() {
  *	PackGroupAdapter
  */
 
-PackGroupAdapter::PackGroupAdapter(PackGroupImplementation* obj) : AiGroupAdapter(obj) {
+PackGroupAdapter::PackGroupAdapter(PackGroup* obj) : AiGroupAdapter(obj) {
 }
 
 Packet* PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -192,7 +192,7 @@ Packet* PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool PackGroupAdapter::isPackGroup() {
-	return (static_cast<PackGroupImplementation*>(impl))->isPackGroup();
+	return (static_cast<PackGroup*>(stub))->isPackGroup();
 }
 
 /*
@@ -220,7 +220,7 @@ DistributedObjectServant* PackGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PackGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PackGroupAdapter(static_cast<PackGroupImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PackGroupAdapter(static_cast<PackGroup*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

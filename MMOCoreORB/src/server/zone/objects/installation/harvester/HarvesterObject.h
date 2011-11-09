@@ -137,7 +137,7 @@ protected:
 
 class HarvesterObjectAdapter : public InstallationObjectAdapter {
 public:
-	HarvesterObjectAdapter(HarvesterObjectImplementation* impl);
+	HarvesterObjectAdapter(HarvesterObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -1101,7 +1101,7 @@ int ResourceSpawnImplementation::getAttributeValue(int index) {
  *	ResourceSpawnAdapter
  */
 
-ResourceSpawnAdapter::ResourceSpawnAdapter(ResourceSpawnImplementation* obj) : SceneObjectAdapter(obj) {
+ResourceSpawnAdapter::ResourceSpawnAdapter(ResourceSpawn* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1218,139 +1218,139 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void ResourceSpawnAdapter::finalize() {
-	(static_cast<ResourceSpawnImplementation*>(impl))->finalize();
+	(static_cast<ResourceSpawn*>(stub))->finalize();
 }
 
 void ResourceSpawnAdapter::initializeTransientMembers() {
-	(static_cast<ResourceSpawnImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ResourceSpawn*>(stub))->initializeTransientMembers();
 }
 
 void ResourceSpawnAdapter::decreaseContainerReferenceCount() {
-	(static_cast<ResourceSpawnImplementation*>(impl))->decreaseContainerReferenceCount();
+	(static_cast<ResourceSpawn*>(stub))->decreaseContainerReferenceCount();
 }
 
 void ResourceSpawnAdapter::setName(const String& name) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setName(name);
+	(static_cast<ResourceSpawn*>(stub))->setName(name);
 }
 
 void ResourceSpawnAdapter::setType(const String& type) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setType(type);
+	(static_cast<ResourceSpawn*>(stub))->setType(type);
 }
 
 void ResourceSpawnAdapter::setSpawnPool(int pool) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setSpawnPool(pool);
+	(static_cast<ResourceSpawn*>(stub))->setSpawnPool(pool);
 }
 
 void ResourceSpawnAdapter::setZoneRestriction(const String& zoneName) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setZoneRestriction(zoneName);
+	(static_cast<ResourceSpawn*>(stub))->setZoneRestriction(zoneName);
 }
 
 void ResourceSpawnAdapter::addClass(const String& newclass) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->addClass(newclass);
+	(static_cast<ResourceSpawn*>(stub))->addClass(newclass);
 }
 
 void ResourceSpawnAdapter::addStfClass(const String& newclass) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->addStfClass(newclass);
+	(static_cast<ResourceSpawn*>(stub))->addStfClass(newclass);
 }
 
 void ResourceSpawnAdapter::addAttribute(const String& attribute, int value) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->addAttribute(attribute, value);
+	(static_cast<ResourceSpawn*>(stub))->addAttribute(attribute, value);
 }
 
 bool ResourceSpawnAdapter::isType(const String& type) {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->isType(type);
+	return (static_cast<ResourceSpawn*>(stub))->isType(type);
 }
 
 void ResourceSpawnAdapter::setSurveyToolType(int type) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setSurveyToolType(type);
+	(static_cast<ResourceSpawn*>(stub))->setSurveyToolType(type);
 }
 
 void ResourceSpawnAdapter::setIsEnergy(bool val) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setIsEnergy(val);
+	(static_cast<ResourceSpawn*>(stub))->setIsEnergy(val);
 }
 
 String ResourceSpawnAdapter::getName() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getName();
+	return (static_cast<ResourceSpawn*>(stub))->getName();
 }
 
 String ResourceSpawnAdapter::getType() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getType();
+	return (static_cast<ResourceSpawn*>(stub))->getType();
 }
 
 String ResourceSpawnAdapter::getClass(int index) {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getClass(index);
+	return (static_cast<ResourceSpawn*>(stub))->getClass(index);
 }
 
 String ResourceSpawnAdapter::getFinalClass() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getFinalClass();
+	return (static_cast<ResourceSpawn*>(stub))->getFinalClass();
 }
 
 String ResourceSpawnAdapter::getFamilyName() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getFamilyName();
+	return (static_cast<ResourceSpawn*>(stub))->getFamilyName();
 }
 
 void ResourceSpawnAdapter::setSpawned(unsigned long long t) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setSpawned(t);
+	(static_cast<ResourceSpawn*>(stub))->setSpawned(t);
 }
 
 void ResourceSpawnAdapter::setDespawned(unsigned long long t) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setDespawned(t);
+	(static_cast<ResourceSpawn*>(stub))->setDespawned(t);
 }
 
 unsigned long long ResourceSpawnAdapter::getDespawned() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getDespawned();
+	return (static_cast<ResourceSpawn*>(stub))->getDespawned();
 }
 
 void ResourceSpawnAdapter::setContainerCRC(unsigned int crc) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->setContainerCRC(crc);
+	(static_cast<ResourceSpawn*>(stub))->setContainerCRC(crc);
 }
 
 unsigned int ResourceSpawnAdapter::getContainerCRC() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getContainerCRC();
+	return (static_cast<ResourceSpawn*>(stub))->getContainerCRC();
 }
 
 int ResourceSpawnAdapter::getSpawnPool() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getSpawnPool();
+	return (static_cast<ResourceSpawn*>(stub))->getSpawnPool();
 }
 
 bool ResourceSpawnAdapter::isEnergy() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->isEnergy();
+	return (static_cast<ResourceSpawn*>(stub))->isEnergy();
 }
 
 String ResourceSpawnAdapter::getZoneRestriction() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getZoneRestriction();
+	return (static_cast<ResourceSpawn*>(stub))->getZoneRestriction();
 }
 
 int ResourceSpawnAdapter::getSurveyToolType() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getSurveyToolType();
+	return (static_cast<ResourceSpawn*>(stub))->getSurveyToolType();
 }
 
 int ResourceSpawnAdapter::getSpawnMapSize() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getSpawnMapSize();
+	return (static_cast<ResourceSpawn*>(stub))->getSpawnMapSize();
 }
 
 void ResourceSpawnAdapter::extractResource(const String& zoneName, int units) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->extractResource(zoneName, units);
+	(static_cast<ResourceSpawn*>(stub))->extractResource(zoneName, units);
 }
 
 ResourceContainer* ResourceSpawnAdapter::createResource(int units) {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->createResource(units);
+	return (static_cast<ResourceSpawn*>(stub))->createResource(units);
 }
 
 unsigned int ResourceSpawnAdapter::getPlanetCRC() {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getPlanetCRC();
+	return (static_cast<ResourceSpawn*>(stub))->getPlanetCRC();
 }
 
 int ResourceSpawnAdapter::getAttributeValue(int index) {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getAttributeValue(index);
+	return (static_cast<ResourceSpawn*>(stub))->getAttributeValue(index);
 }
 
 int ResourceSpawnAdapter::getValueOf(int index) {
-	return (static_cast<ResourceSpawnImplementation*>(impl))->getValueOf(index);
+	return (static_cast<ResourceSpawn*>(stub))->getValueOf(index);
 }
 
 void ResourceSpawnAdapter::addStatsToDeedListBox(SuiListBox* suil) {
-	(static_cast<ResourceSpawnImplementation*>(impl))->addStatsToDeedListBox(suil);
+	(static_cast<ResourceSpawn*>(stub))->addStatsToDeedListBox(suil);
 }
 
 /*
@@ -1378,7 +1378,7 @@ DistributedObjectServant* ResourceSpawnHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ResourceSpawnHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ResourceSpawnAdapter(static_cast<ResourceSpawnImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ResourceSpawnAdapter(static_cast<ResourceSpawn*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

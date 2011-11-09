@@ -500,7 +500,7 @@ bool AiGroupImplementation::isLairGroup() {
  *	AiGroupAdapter
  */
 
-AiGroupAdapter::AiGroupAdapter(AiGroupImplementation* obj) : SceneObjectAdapter(obj) {
+AiGroupAdapter::AiGroupAdapter(AiGroup* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -533,27 +533,27 @@ Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void AiGroupAdapter::setPatrolPoints() {
-	(static_cast<AiGroupImplementation*>(impl))->setPatrolPoints();
+	(static_cast<AiGroup*>(stub))->setPatrolPoints();
 }
 
 void AiGroupAdapter::setPatrolPoint(AiAgent* member) {
-	(static_cast<AiGroupImplementation*>(impl))->setPatrolPoint(member);
+	(static_cast<AiGroup*>(stub))->setPatrolPoint(member);
 }
 
 int AiGroupAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<AiGroupImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<AiGroup*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 bool AiGroupAdapter::isHerdGroup() {
-	return (static_cast<AiGroupImplementation*>(impl))->isHerdGroup();
+	return (static_cast<AiGroup*>(stub))->isHerdGroup();
 }
 
 bool AiGroupAdapter::isPackGroup() {
-	return (static_cast<AiGroupImplementation*>(impl))->isPackGroup();
+	return (static_cast<AiGroup*>(stub))->isPackGroup();
 }
 
 bool AiGroupAdapter::isLairGroup() {
-	return (static_cast<AiGroupImplementation*>(impl))->isLairGroup();
+	return (static_cast<AiGroup*>(stub))->isLairGroup();
 }
 
 /*
@@ -581,7 +581,7 @@ DistributedObjectServant* AiGroupHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AiGroupHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AiGroupAdapter(static_cast<AiGroupImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AiGroupAdapter(static_cast<AiGroup*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

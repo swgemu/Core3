@@ -301,7 +301,7 @@ bool InformantCreatureImplementation::isAttackableBy(CreatureObject* object) {
  *	InformantCreatureAdapter
  */
 
-InformantCreatureAdapter::InformantCreatureAdapter(InformantCreatureImplementation* obj) : AiAgentAdapter(obj) {
+InformantCreatureAdapter::InformantCreatureAdapter(InformantCreature* obj) : AiAgentAdapter(obj) {
 }
 
 Packet* InformantCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -334,27 +334,27 @@ Packet* InformantCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void InformantCreatureAdapter::activateRecovery() {
-	(static_cast<InformantCreatureImplementation*>(impl))->activateRecovery();
+	(static_cast<InformantCreature*>(stub))->activateRecovery();
 }
 
 void InformantCreatureAdapter::setLevel(int l) {
-	(static_cast<InformantCreatureImplementation*>(impl))->setLevel(l);
+	(static_cast<InformantCreature*>(stub))->setLevel(l);
 }
 
 int InformantCreatureAdapter::getLevel() {
-	return (static_cast<InformantCreatureImplementation*>(impl))->getLevel();
+	return (static_cast<InformantCreature*>(stub))->getLevel();
 }
 
 bool InformantCreatureAdapter::isInformantCreature() {
-	return (static_cast<InformantCreatureImplementation*>(impl))->isInformantCreature();
+	return (static_cast<InformantCreature*>(stub))->isInformantCreature();
 }
 
 bool InformantCreatureAdapter::isAttackableBy(CreatureObject* object) {
-	return (static_cast<InformantCreatureImplementation*>(impl))->isAttackableBy(object);
+	return (static_cast<InformantCreature*>(stub))->isAttackableBy(object);
 }
 
 void InformantCreatureAdapter::sendConversationStartTo(SceneObject* player) {
-	(static_cast<InformantCreatureImplementation*>(impl))->sendConversationStartTo(player);
+	(static_cast<InformantCreature*>(stub))->sendConversationStartTo(player);
 }
 
 /*
@@ -382,7 +382,7 @@ DistributedObjectServant* InformantCreatureHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InformantCreatureHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InformantCreatureAdapter(static_cast<InformantCreatureImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new InformantCreatureAdapter(static_cast<InformantCreature*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -257,7 +257,7 @@ protected:
 
 class CurePackAdapter : public PharmaceuticalObjectAdapter {
 public:
-	CurePackAdapter(CurePackImplementation* impl);
+	CurePackAdapter(CurePack* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

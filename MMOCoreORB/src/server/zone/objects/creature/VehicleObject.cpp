@@ -461,7 +461,7 @@ bool VehicleObjectImplementation::isVehicleObject() {
  *	VehicleObjectAdapter
  */
 
-VehicleObjectAdapter::VehicleObjectAdapter(VehicleObjectImplementation* obj) : CreatureObjectAdapter(obj) {
+VehicleObjectAdapter::VehicleObjectAdapter(VehicleObject* obj) : CreatureObjectAdapter(obj) {
 }
 
 Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -521,63 +521,63 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 bool VehicleObjectAdapter::checkInRangeGarage() {
-	return (static_cast<VehicleObjectImplementation*>(impl))->checkInRangeGarage();
+	return (static_cast<VehicleObject*>(stub))->checkInRangeGarage();
 }
 
 void VehicleObjectAdapter::notifyInsertToZone(Zone* zone) {
-	(static_cast<VehicleObjectImplementation*>(impl))->notifyInsertToZone(zone);
+	(static_cast<VehicleObject*>(stub))->notifyInsertToZone(zone);
 }
 
 void VehicleObjectAdapter::setPosture(int newPosture, bool notifyClient) {
-	(static_cast<VehicleObjectImplementation*>(impl))->setPosture(newPosture, notifyClient);
+	(static_cast<VehicleObject*>(stub))->setPosture(newPosture, notifyClient);
 }
 
 int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	return (static_cast<VehicleObjectImplementation*>(impl))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return (static_cast<VehicleObject*>(stub))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int VehicleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
-	return (static_cast<VehicleObjectImplementation*>(impl))->healDamage(healer, damageType, damageToHeal, notifyClient);
+	return (static_cast<VehicleObject*>(stub))->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
 void VehicleObjectAdapter::addDefender(SceneObject* defender) {
-	(static_cast<VehicleObjectImplementation*>(impl))->addDefender(defender);
+	(static_cast<VehicleObject*>(stub))->addDefender(defender);
 }
 
 void VehicleObjectAdapter::removeDefender(SceneObject* defender) {
-	(static_cast<VehicleObjectImplementation*>(impl))->removeDefender(defender);
+	(static_cast<VehicleObject*>(stub))->removeDefender(defender);
 }
 
 void VehicleObjectAdapter::setDefender(SceneObject* defender) {
-	(static_cast<VehicleObjectImplementation*>(impl))->setDefender(defender);
+	(static_cast<VehicleObject*>(stub))->setDefender(defender);
 }
 
 bool VehicleObjectAdapter::isAttackableBy(CreatureObject* object) {
-	return (static_cast<VehicleObjectImplementation*>(impl))->isAttackableBy(object);
+	return (static_cast<VehicleObject*>(stub))->isAttackableBy(object);
 }
 
 int VehicleObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	return (static_cast<VehicleObjectImplementation*>(impl))->notifyObjectDestructionObservers(attacker, condition);
+	return (static_cast<VehicleObject*>(stub))->notifyObjectDestructionObservers(attacker, condition);
 }
 
 int VehicleObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<VehicleObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VehicleObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleObjectAdapter::repairVehicle(CreatureObject* player) {
-	(static_cast<VehicleObjectImplementation*>(impl))->repairVehicle(player);
+	(static_cast<VehicleObject*>(stub))->repairVehicle(player);
 }
 
 int VehicleObjectAdapter::calculateRepairCost(CreatureObject* player) {
-	return (static_cast<VehicleObjectImplementation*>(impl))->calculateRepairCost(player);
+	return (static_cast<VehicleObject*>(stub))->calculateRepairCost(player);
 }
 
 void VehicleObjectAdapter::sendRepairConfirmTo(CreatureObject* player) {
-	(static_cast<VehicleObjectImplementation*>(impl))->sendRepairConfirmTo(player);
+	(static_cast<VehicleObject*>(stub))->sendRepairConfirmTo(player);
 }
 
 bool VehicleObjectAdapter::isVehicleObject() {
-	return (static_cast<VehicleObjectImplementation*>(impl))->isVehicleObject();
+	return (static_cast<VehicleObject*>(stub))->isVehicleObject();
 }
 
 /*
@@ -605,7 +605,7 @@ DistributedObjectServant* VehicleObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VehicleObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VehicleObjectAdapter(static_cast<VehicleObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new VehicleObjectAdapter(static_cast<VehicleObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

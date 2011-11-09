@@ -212,7 +212,7 @@ protected:
 
 class VehicleControlDeviceAdapter : public ControlDeviceAdapter {
 public:
-	VehicleControlDeviceAdapter(VehicleControlDeviceImplementation* impl);
+	VehicleControlDeviceAdapter(VehicleControlDevice* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

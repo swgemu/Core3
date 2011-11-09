@@ -248,7 +248,7 @@ void CraftingMissionObjectiveImplementation::initializeTransientMembers() {
  *	CraftingMissionObjectiveAdapter
  */
 
-CraftingMissionObjectiveAdapter::CraftingMissionObjectiveAdapter(CraftingMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+CraftingMissionObjectiveAdapter::CraftingMissionObjectiveAdapter(CraftingMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -281,27 +281,27 @@ Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, Distributed
 }
 
 void CraftingMissionObjectiveAdapter::finalize() {
-	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<CraftingMissionObjective*>(stub))->finalize();
 }
 
 void CraftingMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<CraftingMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void CraftingMissionObjectiveAdapter::activate() {
-	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<CraftingMissionObjective*>(stub))->activate();
 }
 
 void CraftingMissionObjectiveAdapter::abort() {
-	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<CraftingMissionObjective*>(stub))->abort();
 }
 
 void CraftingMissionObjectiveAdapter::complete() {
-	(static_cast<CraftingMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<CraftingMissionObjective*>(stub))->complete();
 }
 
 int CraftingMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<CraftingMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<CraftingMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -329,7 +329,7 @@ DistributedObjectServant* CraftingMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CraftingMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CraftingMissionObjectiveAdapter(static_cast<CraftingMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CraftingMissionObjectiveAdapter(static_cast<CraftingMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

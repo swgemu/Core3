@@ -329,7 +329,7 @@ protected:
 
 class BuffAdapter : public ManagedObjectAdapter {
 public:
-	BuffAdapter(BuffImplementation* impl);
+	BuffAdapter(Buff* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

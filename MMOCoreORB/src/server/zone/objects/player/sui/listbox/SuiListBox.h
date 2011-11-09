@@ -223,7 +223,7 @@ protected:
 
 class SuiListBoxAdapter : public SuiBoxAdapter {
 public:
-	SuiListBoxAdapter(SuiListBoxImplementation* impl);
+	SuiListBoxAdapter(SuiListBox* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

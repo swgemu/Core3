@@ -141,7 +141,7 @@ protected:
 
 class CloningBuildingObjectAdapter : public BuildingObjectAdapter {
 public:
-	CloningBuildingObjectAdapter(CloningBuildingObjectImplementation* impl);
+	CloningBuildingObjectAdapter(CloningBuildingObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -270,7 +270,7 @@ unsigned int IntangibleObjectImplementation::getStatus() {
  *	IntangibleObjectAdapter
  */
 
-IntangibleObjectAdapter::IntangibleObjectAdapter(IntangibleObjectImplementation* obj) : SceneObjectAdapter(obj) {
+IntangibleObjectAdapter::IntangibleObjectAdapter(IntangibleObject* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -303,27 +303,27 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void IntangibleObjectAdapter::finalize() {
-	(static_cast<IntangibleObjectImplementation*>(impl))->finalize();
+	(static_cast<IntangibleObject*>(stub))->finalize();
 }
 
 void IntangibleObjectAdapter::initializeTransientMembers() {
-	(static_cast<IntangibleObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<IntangibleObject*>(stub))->initializeTransientMembers();
 }
 
 bool IntangibleObjectAdapter::isIntangibleObject() {
-	return (static_cast<IntangibleObjectImplementation*>(impl))->isIntangibleObject();
+	return (static_cast<IntangibleObject*>(stub))->isIntangibleObject();
 }
 
 void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<IntangibleObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<IntangibleObject*>(stub))->sendBaselinesTo(player);
 }
 
 void IntangibleObjectAdapter::updateStatus(int newStatus, bool notifyClient) {
-	(static_cast<IntangibleObjectImplementation*>(impl))->updateStatus(newStatus, notifyClient);
+	(static_cast<IntangibleObject*>(stub))->updateStatus(newStatus, notifyClient);
 }
 
 unsigned int IntangibleObjectAdapter::getStatus() {
-	return (static_cast<IntangibleObjectImplementation*>(impl))->getStatus();
+	return (static_cast<IntangibleObject*>(stub))->getStatus();
 }
 
 /*
@@ -351,7 +351,7 @@ DistributedObjectServant* IntangibleObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* IntangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new IntangibleObjectAdapter(static_cast<IntangibleObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new IntangibleObjectAdapter(static_cast<IntangibleObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

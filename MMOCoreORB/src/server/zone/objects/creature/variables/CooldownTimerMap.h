@@ -11,14 +11,14 @@
 #include "engine/engine.h"
 
 class CooldownTimer : public Variable {
-	Time* timeStamp;
+	Time timeStamp;
 
 public:
 	CooldownTimer() : Variable() {
-		timeStamp = NULL;
+		//timeStamp = NULL;
 	}
 
-	CooldownTimer(Time* timestamp) : Variable() {
+	CooldownTimer(const Time& timestamp) : Variable() {
 		timeStamp = timestamp;
 	}
 
@@ -26,64 +26,66 @@ public:
 		timeStamp = obj.timeStamp;
 	}
 
-	void operator=(Time* obj) {
+	void operator=(Time obj) {
 		timeStamp = obj;
 	}
 
 	bool toString(String& str) {
-		timeStamp->toString(str);
+		timeStamp.toString(str);
 
 		return true;
 	}
 
 	bool parseFromString(const String& str, int version = 0) {
-		if (timeStamp != NULL) {
-			timeStamp->parseFromString(str);
-		} else {
-			Time newTimeStamp;
-			newTimeStamp.parseFromString(str);
+		Time parsed;
 
-			if (!newTimeStamp.isPast())
-				timeStamp = new Time(newTimeStamp);
-			else
-				return false;
-		}
+		parsed.parseFromString(str);
+
+		if (parsed.isPast())
+			return false;
+
+		timeStamp = parsed;
 
 		return true;
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
-		timeStamp->toBinaryStream(stream);
+		timeStamp.toBinaryStream(stream);
 
 		return true;
 	}
 
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
-		if (timeStamp != NULL) {
-			timeStamp->parseFromBinaryStream(stream);
-		} else {
-			Time newTimeStamp;
-			newTimeStamp.parseFromBinaryStream(stream);
+		Time parsed;
 
-			if (!newTimeStamp.isPast())
-				timeStamp = new Time(newTimeStamp);
-			else
-				return false;
-		}
+		parsed.parseFromBinaryStream(stream);
+
+		if (parsed.isPast())
+			return false;
+
+		timeStamp = parsed;
 
 		return true;
 	}
 
-	Time* operator->() const {
-		return timeStamp;
+	bool isPast() {
+		return timeStamp.isPast();
 	}
 
-	Time* get() const {
+	void addMiliTime(uint64 mtime) {
+		timeStamp.addMiliTime(mtime);
+	}
+
+	/*Time& get() {
 		return timeStamp;
 	}
 
 	operator Time*() const {
-		return timeStamp;
+		return &timeStamp;
+	}*/
+
+	Time* getTime() {
+		return &timeStamp;
 	}
 
 
@@ -96,20 +98,18 @@ public:
 	CooldownTimerMap() {
 	}
 
-	~CooldownTimerMap() {
-		HashTableIterator<String, CooldownTimer> iterator = timers.iterator();
+	CooldownTimerMap(const CooldownTimerMap& map) {
+		timers = map.timers;
+	}
 
-		while (iterator.hasNext())
-			delete iterator.getNextValue().get();
+	~CooldownTimerMap() {
 	}
 
 	bool isPast(const String& cooldownName) {
-		Time* cooldown = timers.get(cooldownName);
-
-		if (cooldown == NULL)
+		if (!timers.containsKey(cooldownName))
 			return true;
-		else
-			return cooldown->isPast();
+
+		return timers.get(cooldownName).isPast();
 	}
 
 	void updateToCurrentAndAddMili(const String& cooldownName, uint64 mili) {
@@ -119,37 +119,40 @@ public:
 	}
 
 	Time* updateToCurrentTime(const String& cooldownName) {
-		Time* cooldown = timers.get(cooldownName);
-
-		if (cooldown == NULL) {
-			cooldown = new Time();
-			timers.put(cooldownName, cooldown);
-		} else {
-			cooldown->updateToCurrentTime();
+		if (!timers.containsKey(cooldownName)) {
+			timers.put(cooldownName, Time());
 		}
+
+		Time* cooldown = timers.get(cooldownName).getTime();
+		cooldown->updateToCurrentTime();
 
 		return cooldown;
 	}
 
 	void addMiliTime(const String& cooldownName, uint64 mili) {
-		Time* cooldown = timers.get(cooldownName);
-
-		if (cooldown == NULL) {
-			cooldown = new Time();
-			cooldown->addMiliTime(mili);
-			timers.put(cooldownName, cooldown);
-		} else {
-			cooldown->addMiliTime(mili);
+		if (!timers.containsKey(cooldownName)) {
+			timers.put(cooldownName, Time());
 		}
+
+		Time* cooldown = timers.get(cooldownName).getTime();;
+		cooldown->addMiliTime(mili);
 	}
 
 	Time* getTime(const String& cooldownName) {
-		Time* cooldown = timers.get(cooldownName);
-
-		if (cooldown == NULL)
+		if (!timers.containsKey(cooldownName))
 			return NULL;
-		else
-			return cooldown;
+
+		Time* cooldown = timers.get(cooldownName).getTime();;
+
+		return cooldown;
+	}
+
+	Object* clone() {
+		return ObjectCloner<CooldownTimerMap>::clone(this);
+	}
+
+	Object* clone(void* object) {
+		return TransactionalObjectCloner<CooldownTimerMap>::clone(this);
 	}
 
 

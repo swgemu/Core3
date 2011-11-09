@@ -680,7 +680,7 @@ unsigned int DotPackImplementation::getDotType() {
  *	DotPackAdapter
  */
 
-DotPackAdapter::DotPackAdapter(DotPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
+DotPackAdapter::DotPackAdapter(DotPack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
 Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -734,55 +734,55 @@ Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int DotPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<DotPackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<DotPack*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 int DotPackAdapter::calculatePower(CreatureObject* creature) {
-	return (static_cast<DotPackImplementation*>(impl))->calculatePower(creature);
+	return (static_cast<DotPack*>(stub))->calculatePower(creature);
 }
 
 bool DotPackAdapter::isPoisonDeliveryUnit() {
-	return (static_cast<DotPackImplementation*>(impl))->isPoisonDeliveryUnit();
+	return (static_cast<DotPack*>(stub))->isPoisonDeliveryUnit();
 }
 
 bool DotPackAdapter::isDiseaseDeliveryUnit() {
-	return (static_cast<DotPackImplementation*>(impl))->isDiseaseDeliveryUnit();
+	return (static_cast<DotPack*>(stub))->isDiseaseDeliveryUnit();
 }
 
 float DotPackAdapter::getEffectiveness() {
-	return (static_cast<DotPackImplementation*>(impl))->getEffectiveness();
+	return (static_cast<DotPack*>(stub))->getEffectiveness();
 }
 
 float DotPackAdapter::getRange() {
-	return (static_cast<DotPackImplementation*>(impl))->getRange();
+	return (static_cast<DotPack*>(stub))->getRange();
 }
 
 float DotPackAdapter::getArea() {
-	return (static_cast<DotPackImplementation*>(impl))->getArea();
+	return (static_cast<DotPack*>(stub))->getArea();
 }
 
 float DotPackAdapter::getRangeMod() {
-	return (static_cast<DotPackImplementation*>(impl))->getRangeMod();
+	return (static_cast<DotPack*>(stub))->getRangeMod();
 }
 
 float DotPackAdapter::getPotency() {
-	return (static_cast<DotPackImplementation*>(impl))->getPotency();
+	return (static_cast<DotPack*>(stub))->getPotency();
 }
 
 unsigned int DotPackAdapter::getDuration() {
-	return (static_cast<DotPackImplementation*>(impl))->getDuration();
+	return (static_cast<DotPack*>(stub))->getDuration();
 }
 
 bool DotPackAdapter::isArea() {
-	return (static_cast<DotPackImplementation*>(impl))->isArea();
+	return (static_cast<DotPack*>(stub))->isArea();
 }
 
 unsigned int DotPackAdapter::getPool() {
-	return (static_cast<DotPackImplementation*>(impl))->getPool();
+	return (static_cast<DotPack*>(stub))->getPool();
 }
 
 unsigned int DotPackAdapter::getDotType() {
-	return (static_cast<DotPackImplementation*>(impl))->getDotType();
+	return (static_cast<DotPack*>(stub))->getDotType();
 }
 
 /*
@@ -810,7 +810,7 @@ DistributedObjectServant* DotPackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DotPackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DotPackAdapter(static_cast<DotPackImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DotPackAdapter(static_cast<DotPack*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

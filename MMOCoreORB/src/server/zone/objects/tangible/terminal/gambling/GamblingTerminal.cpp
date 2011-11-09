@@ -1006,7 +1006,7 @@ bool GamblingTerminalImplementation::gameRunning() {
  *	GamblingTerminalAdapter
  */
 
-GamblingTerminalAdapter::GamblingTerminalAdapter(GamblingTerminalImplementation* obj) : TerminalAdapter(obj) {
+GamblingTerminalAdapter::GamblingTerminalAdapter(GamblingTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1111,123 +1111,123 @@ Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void GamblingTerminalAdapter::initializeTransientMembers() {
-	(static_cast<GamblingTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<GamblingTerminal*>(stub))->initializeTransientMembers();
 }
 
 void GamblingTerminalAdapter::reset() {
-	(static_cast<GamblingTerminalImplementation*>(impl))->reset();
+	(static_cast<GamblingTerminal*>(stub))->reset();
 }
 
 int GamblingTerminalAdapter::getFirst() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getFirst();
+	return (static_cast<GamblingTerminal*>(stub))->getFirst();
 }
 
 int GamblingTerminalAdapter::getSecond() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getSecond();
+	return (static_cast<GamblingTerminal*>(stub))->getSecond();
 }
 
 int GamblingTerminalAdapter::getThird() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getThird();
+	return (static_cast<GamblingTerminal*>(stub))->getThird();
 }
 
 void GamblingTerminalAdapter::setFirst(int value) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->setFirst(value);
+	(static_cast<GamblingTerminal*>(stub))->setFirst(value);
 }
 
 void GamblingTerminalAdapter::setSecond(int value) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->setSecond(value);
+	(static_cast<GamblingTerminal*>(stub))->setSecond(value);
 }
 
 void GamblingTerminalAdapter::setThird(int value) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->setThird(value);
+	(static_cast<GamblingTerminal*>(stub))->setThird(value);
 }
 
 int GamblingTerminalAdapter::getMinBet() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getMinBet();
+	return (static_cast<GamblingTerminal*>(stub))->getMinBet();
 }
 
 int GamblingTerminalAdapter::getMaxBet() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getMaxBet();
+	return (static_cast<GamblingTerminal*>(stub))->getMaxBet();
 }
 
 int GamblingTerminalAdapter::getState() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getState();
+	return (static_cast<GamblingTerminal*>(stub))->getState();
 }
 
 void GamblingTerminalAdapter::setState(int value) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->setState(value);
+	(static_cast<GamblingTerminal*>(stub))->setState(value);
 }
 
 int GamblingTerminalAdapter::getMachineType() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getMachineType();
+	return (static_cast<GamblingTerminal*>(stub))->getMachineType();
 }
 
 void GamblingTerminalAdapter::incGameCount() {
-	(static_cast<GamblingTerminalImplementation*>(impl))->incGameCount();
+	(static_cast<GamblingTerminal*>(stub))->incGameCount();
 }
 
 int GamblingTerminalAdapter::getGameCount() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getGameCount();
+	return (static_cast<GamblingTerminal*>(stub))->getGameCount();
 }
 
 bool GamblingTerminalAdapter::isGoneEmpty() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->isGoneEmpty();
+	return (static_cast<GamblingTerminal*>(stub))->isGoneEmpty();
 }
 
 String GamblingTerminalAdapter::getMachineTypeText() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getMachineTypeText();
+	return (static_cast<GamblingTerminal*>(stub))->getMachineTypeText();
 }
 
 String GamblingTerminalAdapter::getText(CreatureObject* player) {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getText(player);
+	return (static_cast<GamblingTerminal*>(stub))->getText(player);
 }
 
 void GamblingTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<GamblingTerminal*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int GamblingTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<GamblingTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void GamblingTerminalAdapter::setGamblingRegion(const String& region) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->setGamblingRegion(region);
+	(static_cast<GamblingTerminal*>(stub))->setGamblingRegion(region);
 }
 
 String GamblingTerminalAdapter::getGamblingRegion() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->getGamblingRegion();
+	return (static_cast<GamblingTerminal*>(stub))->getGamblingRegion();
 }
 
 bool GamblingTerminalAdapter::gameRunning() {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->gameRunning();
+	return (static_cast<GamblingTerminal*>(stub))->gameRunning();
 }
 
 bool GamblingTerminalAdapter::checkJoin(CreatureObject* player) {
-	return (static_cast<GamblingTerminalImplementation*>(impl))->checkJoin(player);
+	return (static_cast<GamblingTerminal*>(stub))->checkJoin(player);
 }
 
 void GamblingTerminalAdapter::joinTerminal(CreatureObject* player) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->joinTerminal(player);
+	(static_cast<GamblingTerminal*>(stub))->joinTerminal(player);
 }
 
 void GamblingTerminalAdapter::leaveTerminal(CreatureObject* player) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->leaveTerminal(player);
+	(static_cast<GamblingTerminal*>(stub))->leaveTerminal(player);
 }
 
 void GamblingTerminalAdapter::closeMenu(CreatureObject* player, bool payout) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->closeMenu(player, payout);
+	(static_cast<GamblingTerminal*>(stub))->closeMenu(player, payout);
 }
 
 void GamblingTerminalAdapter::closeAllMenus() {
-	(static_cast<GamblingTerminalImplementation*>(impl))->closeAllMenus();
+	(static_cast<GamblingTerminal*>(stub))->closeAllMenus();
 }
 
 void GamblingTerminalAdapter::statusUpdate(CreatureObject* player, int event) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->statusUpdate(player, event);
+	(static_cast<GamblingTerminal*>(stub))->statusUpdate(player, event);
 }
 
 void GamblingTerminalAdapter::statusUpdate(int event) {
-	(static_cast<GamblingTerminalImplementation*>(impl))->statusUpdate(event);
+	(static_cast<GamblingTerminal*>(stub))->statusUpdate(event);
 }
 
 /*
@@ -1255,7 +1255,7 @@ DistributedObjectServant* GamblingTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GamblingTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GamblingTerminalAdapter(static_cast<GamblingTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new GamblingTerminalAdapter(static_cast<GamblingTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

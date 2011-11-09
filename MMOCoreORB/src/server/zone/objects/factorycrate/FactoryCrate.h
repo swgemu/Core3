@@ -226,7 +226,7 @@ protected:
 
 class FactoryCrateAdapter : public TangibleObjectAdapter {
 public:
-	FactoryCrateAdapter(FactoryCrateImplementation* impl);
+	FactoryCrateAdapter(FactoryCrate* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

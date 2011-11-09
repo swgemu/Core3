@@ -209,7 +209,7 @@ protected:
 
 class LootkitObjectAdapter : public TangibleObjectAdapter {
 public:
-	LootkitObjectAdapter(LootkitObjectImplementation* impl);
+	LootkitObjectAdapter(LootkitObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

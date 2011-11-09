@@ -220,7 +220,7 @@ protected:
 
 class SlicingToolAdapter : public TangibleObjectAdapter {
 public:
-	SlicingToolAdapter(SlicingToolImplementation* impl);
+	SlicingToolAdapter(SlicingTool* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

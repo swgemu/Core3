@@ -195,7 +195,7 @@ protected:
 
 class DeedAdapter : public TangibleObjectAdapter {
 public:
-	DeedAdapter(DeedImplementation* impl);
+	DeedAdapter(Deed* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

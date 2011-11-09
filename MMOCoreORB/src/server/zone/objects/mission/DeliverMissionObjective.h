@@ -268,7 +268,7 @@ protected:
 
 class DeliverMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	DeliverMissionObjectiveAdapter(DeliverMissionObjectiveImplementation* impl);
+	DeliverMissionObjectiveAdapter(DeliverMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

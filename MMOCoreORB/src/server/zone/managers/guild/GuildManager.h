@@ -385,7 +385,7 @@ protected:
 
 class GuildManagerAdapter : public ManagedServiceAdapter {
 public:
-	GuildManagerAdapter(GuildManagerImplementation* impl);
+	GuildManagerAdapter(GuildManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

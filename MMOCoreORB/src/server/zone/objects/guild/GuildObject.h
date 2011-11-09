@@ -340,7 +340,7 @@ protected:
 
 class GuildObjectAdapter : public SceneObjectAdapter {
 public:
-	GuildObjectAdapter(GuildObjectImplementation* impl);
+	GuildObjectAdapter(GuildObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

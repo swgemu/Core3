@@ -175,7 +175,7 @@ protected:
 
 class InstallationDeedAdapter : public DeedAdapter {
 public:
-	InstallationDeedAdapter(InstallationDeedImplementation* impl);
+	InstallationDeedAdapter(InstallationDeed* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

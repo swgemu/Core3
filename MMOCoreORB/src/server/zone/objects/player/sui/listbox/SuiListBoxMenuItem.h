@@ -128,7 +128,7 @@ protected:
 
 class SuiListBoxMenuItemAdapter : public ManagedObjectAdapter {
 public:
-	SuiListBoxMenuItemAdapter(SuiListBoxMenuItemImplementation* impl);
+	SuiListBoxMenuItemAdapter(SuiListBoxMenuItem* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -342,7 +342,7 @@ SortedVector<unsigned int>* LairObjectImplementation::getObjectsToSpawn() {
  *	LairObjectAdapter
  */
 
-LairObjectAdapter::LairObjectAdapter(LairObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+LairObjectAdapter::LairObjectAdapter(LairObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -381,35 +381,35 @@ Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void LairObjectAdapter::initializeTransientMembers() {
-	(static_cast<LairObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<LairObject*>(stub))->initializeTransientMembers();
 }
 
 int LairObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	return (static_cast<LairObjectImplementation*>(impl))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return (static_cast<LairObject*>(stub))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 void LairObjectAdapter::checkForNewSpawns() {
-	(static_cast<LairObjectImplementation*>(impl))->checkForNewSpawns();
+	(static_cast<LairObject*>(stub))->checkForNewSpawns();
 }
 
 void LairObjectAdapter::checkForHeal(TangibleObject* attacker, bool forceNewUpdate) {
-	(static_cast<LairObjectImplementation*>(impl))->checkForHeal(attacker, forceNewUpdate);
+	(static_cast<LairObject*>(stub))->checkForHeal(attacker, forceNewUpdate);
 }
 
 void LairObjectAdapter::healLair(TangibleObject* attacker) {
-	(static_cast<LairObjectImplementation*>(impl))->healLair(attacker);
+	(static_cast<LairObject*>(stub))->healLair(attacker);
 }
 
 int LairObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	return (static_cast<LairObjectImplementation*>(impl))->notifyObjectDestructionObservers(attacker, condition);
+	return (static_cast<LairObject*>(stub))->notifyObjectDestructionObservers(attacker, condition);
 }
 
 bool LairObjectAdapter::isAttackableBy(CreatureObject* object) {
-	return (static_cast<LairObjectImplementation*>(impl))->isAttackableBy(object);
+	return (static_cast<LairObject*>(stub))->isAttackableBy(object);
 }
 
 int LairObjectAdapter::getMaxObjectsToSpawn() {
-	return (static_cast<LairObjectImplementation*>(impl))->getMaxObjectsToSpawn();
+	return (static_cast<LairObject*>(stub))->getMaxObjectsToSpawn();
 }
 
 /*
@@ -437,7 +437,7 @@ DistributedObjectServant* LairObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LairObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LairObjectAdapter(static_cast<LairObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new LairObjectAdapter(static_cast<LairObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

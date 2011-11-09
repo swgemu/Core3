@@ -148,7 +148,7 @@ protected:
 
 class ArmorComponentAdapter : public ComponentAdapter {
 public:
-	ArmorComponentAdapter(ArmorComponentImplementation* impl);
+	ArmorComponentAdapter(ArmorComponent* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -211,7 +211,7 @@ int AiObserverImplementation::notifyObserverEvent(unsigned int eventType, Observ
  *	AiObserverAdapter
  */
 
-AiObserverAdapter::AiObserverAdapter(AiObserverImplementation* obj) : ObserverAdapter(obj) {
+AiObserverAdapter::AiObserverAdapter(AiObserver* obj) : ObserverAdapter(obj) {
 }
 
 Packet* AiObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -229,7 +229,7 @@ Packet* AiObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int AiObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<AiObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<AiObserver*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -257,7 +257,7 @@ DistributedObjectServant* AiObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AiObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AiObserverAdapter(static_cast<AiObserverImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AiObserverAdapter(static_cast<AiObserver*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

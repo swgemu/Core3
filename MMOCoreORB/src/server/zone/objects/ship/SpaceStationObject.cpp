@@ -8,8 +8,6 @@
  *	SpaceStationObjectStub
  */
 
-enum {};
-
 SpaceStationObject::SpaceStationObject() : ShipObject(DummyConstructorParameter::instance()) {
 	SpaceStationObjectImplementation* _implementation = new SpaceStationObjectImplementation();
 	_impl = _implementation;
@@ -158,7 +156,7 @@ SpaceStationObjectImplementation::SpaceStationObjectImplementation() {
  *	SpaceStationObjectAdapter
  */
 
-SpaceStationObjectAdapter::SpaceStationObjectAdapter(SpaceStationObjectImplementation* obj) : ShipObjectAdapter(obj) {
+SpaceStationObjectAdapter::SpaceStationObjectAdapter(SpaceStationObject* obj) : ShipObjectAdapter(obj) {
 }
 
 Packet* SpaceStationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -197,7 +195,7 @@ DistributedObjectServant* SpaceStationObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpaceStationObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpaceStationObjectAdapter(static_cast<SpaceStationObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SpaceStationObjectAdapter(static_cast<SpaceStationObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

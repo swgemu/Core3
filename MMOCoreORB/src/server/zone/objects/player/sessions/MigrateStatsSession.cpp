@@ -339,7 +339,7 @@ i = i + 1) {
  *	MigrateStatsSessionAdapter
  */
 
-MigrateStatsSessionAdapter::MigrateStatsSessionAdapter(MigrateStatsSessionImplementation* obj) : FacadeAdapter(obj) {
+MigrateStatsSessionAdapter::MigrateStatsSessionAdapter(MigrateStatsSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -372,27 +372,27 @@ Packet* MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 int MigrateStatsSessionAdapter::initializeSession() {
-	return (static_cast<MigrateStatsSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<MigrateStatsSession*>(stub))->initializeSession();
 }
 
 int MigrateStatsSessionAdapter::cancelSession() {
-	return (static_cast<MigrateStatsSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<MigrateStatsSession*>(stub))->cancelSession();
 }
 
 int MigrateStatsSessionAdapter::clearSession() {
-	return (static_cast<MigrateStatsSessionImplementation*>(impl))->clearSession();
+	return (static_cast<MigrateStatsSession*>(stub))->clearSession();
 }
 
 void MigrateStatsSessionAdapter::setAttributeToModify(int attribute, int value) {
-	(static_cast<MigrateStatsSessionImplementation*>(impl))->setAttributeToModify(attribute, value);
+	(static_cast<MigrateStatsSession*>(stub))->setAttributeToModify(attribute, value);
 }
 
 int MigrateStatsSessionAdapter::getAttribtueToModify(int attribute) {
-	return (static_cast<MigrateStatsSessionImplementation*>(impl))->getAttribtueToModify(attribute);
+	return (static_cast<MigrateStatsSession*>(stub))->getAttribtueToModify(attribute);
 }
 
 void MigrateStatsSessionAdapter::migrateStats() {
-	(static_cast<MigrateStatsSessionImplementation*>(impl))->migrateStats();
+	(static_cast<MigrateStatsSession*>(stub))->migrateStats();
 }
 
 /*
@@ -420,7 +420,7 @@ DistributedObjectServant* MigrateStatsSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MigrateStatsSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MigrateStatsSessionAdapter(static_cast<MigrateStatsSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new MigrateStatsSessionAdapter(static_cast<MigrateStatsSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

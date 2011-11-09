@@ -468,7 +468,7 @@ bool CurePackImplementation::isCurePack() {
  *	CurePackAdapter
  */
 
-CurePackAdapter::CurePackAdapter(CurePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
+CurePackAdapter::CurePackAdapter(CurePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
 Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -504,31 +504,31 @@ Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int CurePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<CurePackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CurePack*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 int CurePackAdapter::calculatePower(CreatureObject* creature) {
-	return (static_cast<CurePackImplementation*>(impl))->calculatePower(creature);
+	return (static_cast<CurePack*>(stub))->calculatePower(creature);
 }
 
 bool CurePackAdapter::isArea() {
-	return (static_cast<CurePackImplementation*>(impl))->isArea();
+	return (static_cast<CurePack*>(stub))->isArea();
 }
 
 float CurePackAdapter::getArea() {
-	return (static_cast<CurePackImplementation*>(impl))->getArea();
+	return (static_cast<CurePack*>(stub))->getArea();
 }
 
 unsigned long long CurePackAdapter::getState() {
-	return (static_cast<CurePackImplementation*>(impl))->getState();
+	return (static_cast<CurePack*>(stub))->getState();
 }
 
 float CurePackAdapter::getEffectiveness() {
-	return (static_cast<CurePackImplementation*>(impl))->getEffectiveness();
+	return (static_cast<CurePack*>(stub))->getEffectiveness();
 }
 
 bool CurePackAdapter::isCurePack() {
-	return (static_cast<CurePackImplementation*>(impl))->isCurePack();
+	return (static_cast<CurePack*>(stub))->isCurePack();
 }
 
 /*
@@ -556,7 +556,7 @@ DistributedObjectServant* CurePackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CurePackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CurePackAdapter(static_cast<CurePackImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CurePackAdapter(static_cast<CurePack*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

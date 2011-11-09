@@ -8,8 +8,6 @@
  *	FighterShipObjectStub
  */
 
-enum {};
-
 FighterShipObject::FighterShipObject() : ShipObject(DummyConstructorParameter::instance()) {
 	FighterShipObjectImplementation* _implementation = new FighterShipObjectImplementation();
 	_impl = _implementation;
@@ -158,7 +156,7 @@ FighterShipObjectImplementation::FighterShipObjectImplementation() {
  *	FighterShipObjectAdapter
  */
 
-FighterShipObjectAdapter::FighterShipObjectAdapter(FighterShipObjectImplementation* obj) : ShipObjectAdapter(obj) {
+FighterShipObjectAdapter::FighterShipObjectAdapter(FighterShipObject* obj) : ShipObjectAdapter(obj) {
 }
 
 Packet* FighterShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -197,7 +195,7 @@ DistributedObjectServant* FighterShipObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FighterShipObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FighterShipObjectAdapter(static_cast<FighterShipObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FighterShipObjectAdapter(static_cast<FighterShipObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

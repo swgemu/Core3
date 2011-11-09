@@ -135,7 +135,7 @@ protected:
 
 class ZoneManagerAdapter : public ManagedServiceAdapter {
 public:
-	ZoneManagerAdapter(ZoneManagerImplementation* impl);
+	ZoneManagerAdapter(ZoneManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

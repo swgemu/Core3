@@ -208,7 +208,7 @@ protected:
 
 class ImageDesignSessionAdapter : public FacadeAdapter {
 public:
-	ImageDesignSessionAdapter(ImageDesignSessionImplementation* impl);
+	ImageDesignSessionAdapter(ImageDesignSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

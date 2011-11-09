@@ -331,7 +331,7 @@ protected:
 
 class DraftSchematicAdapter : public IntangibleObjectAdapter {
 public:
-	DraftSchematicAdapter(DraftSchematicImplementation* impl);
+	DraftSchematicAdapter(DraftSchematic* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

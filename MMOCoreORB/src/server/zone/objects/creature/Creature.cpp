@@ -490,7 +490,7 @@ float CreatureImplementation::getMeatMax() {
  *	CreatureAdapter
  */
 
-CreatureAdapter::CreatureAdapter(CreatureImplementation* obj) : AiAgentAdapter(obj) {
+CreatureAdapter::CreatureAdapter(Creature* obj) : AiAgentAdapter(obj) {
 }
 
 Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -553,67 +553,67 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool CreatureAdapter::isCreature() {
-	return (static_cast<CreatureImplementation*>(impl))->isCreature();
+	return (static_cast<Creature*>(stub))->isCreature();
 }
 
 void CreatureAdapter::runAway(CreatureObject* target) {
-	(static_cast<CreatureImplementation*>(impl))->runAway(target);
+	(static_cast<Creature*>(stub))->runAway(target);
 }
 
 int CreatureAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<CreatureImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<Creature*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void CreatureAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	(static_cast<CreatureImplementation*>(impl))->fillAttributeList(msg, object);
+	(static_cast<Creature*>(stub))->fillAttributeList(msg, object);
 }
 
 void CreatureAdapter::scheduleDespawn() {
-	(static_cast<CreatureImplementation*>(impl))->scheduleDespawn();
+	(static_cast<Creature*>(stub))->scheduleDespawn();
 }
 
 bool CreatureAdapter::hasOrganics() {
-	return (static_cast<CreatureImplementation*>(impl))->hasOrganics();
+	return (static_cast<Creature*>(stub))->hasOrganics();
 }
 
 bool CreatureAdapter::canHarvestMe(CreatureObject* player) {
-	return (static_cast<CreatureImplementation*>(impl))->canHarvestMe(player);
+	return (static_cast<Creature*>(stub))->canHarvestMe(player);
 }
 
 bool CreatureAdapter::isBaby() {
-	return (static_cast<CreatureImplementation*>(impl))->isBaby();
+	return (static_cast<Creature*>(stub))->isBaby();
 }
 
 float CreatureAdapter::getTame() {
-	return (static_cast<CreatureImplementation*>(impl))->getTame();
+	return (static_cast<Creature*>(stub))->getTame();
 }
 
 String CreatureAdapter::getMeatType() {
-	return (static_cast<CreatureImplementation*>(impl))->getMeatType();
+	return (static_cast<Creature*>(stub))->getMeatType();
 }
 
 String CreatureAdapter::getBoneType() {
-	return (static_cast<CreatureImplementation*>(impl))->getBoneType();
+	return (static_cast<Creature*>(stub))->getBoneType();
 }
 
 String CreatureAdapter::getHideType() {
-	return (static_cast<CreatureImplementation*>(impl))->getHideType();
+	return (static_cast<Creature*>(stub))->getHideType();
 }
 
 float CreatureAdapter::getMilk() {
-	return (static_cast<CreatureImplementation*>(impl))->getMilk();
+	return (static_cast<Creature*>(stub))->getMilk();
 }
 
 float CreatureAdapter::getHideMax() {
-	return (static_cast<CreatureImplementation*>(impl))->getHideMax();
+	return (static_cast<Creature*>(stub))->getHideMax();
 }
 
 float CreatureAdapter::getBoneMax() {
-	return (static_cast<CreatureImplementation*>(impl))->getBoneMax();
+	return (static_cast<Creature*>(stub))->getBoneMax();
 }
 
 float CreatureAdapter::getMeatMax() {
-	return (static_cast<CreatureImplementation*>(impl))->getMeatMax();
+	return (static_cast<Creature*>(stub))->getMeatMax();
 }
 
 /*
@@ -641,7 +641,7 @@ DistributedObjectServant* CreatureHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CreatureHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CreatureAdapter(static_cast<CreatureImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CreatureAdapter(static_cast<Creature*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -238,7 +238,7 @@ PlanetTravelPoint* TravelTerminalImplementation::getPlanetTravelPoint() {
  *	TravelTerminalAdapter
  */
 
-TravelTerminalAdapter::TravelTerminalAdapter(TravelTerminalImplementation* obj) : TerminalAdapter(obj) {
+TravelTerminalAdapter::TravelTerminalAdapter(TravelTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -262,15 +262,15 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void TravelTerminalAdapter::initializeTransientMembers() {
-	(static_cast<TravelTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<TravelTerminal*>(stub))->initializeTransientMembers();
 }
 
 void TravelTerminalAdapter::notifyInsertToZone(Zone* zone) {
-	(static_cast<TravelTerminalImplementation*>(impl))->notifyInsertToZone(zone);
+	(static_cast<TravelTerminal*>(stub))->notifyInsertToZone(zone);
 }
 
 int TravelTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<TravelTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<TravelTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -298,7 +298,7 @@ DistributedObjectServant* TravelTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TravelTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TravelTerminalAdapter(static_cast<TravelTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new TravelTerminalAdapter(static_cast<TravelTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

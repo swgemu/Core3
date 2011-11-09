@@ -273,7 +273,7 @@ void TutorialBuildingObjectImplementation::dequeueUnloadEvent() {
  *	TutorialBuildingObjectAdapter
  */
 
-TutorialBuildingObjectAdapter::TutorialBuildingObjectAdapter(TutorialBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
+TutorialBuildingObjectAdapter::TutorialBuildingObjectAdapter(TutorialBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
 Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -303,23 +303,23 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void TutorialBuildingObjectAdapter::notifyRemoveFromZone() {
-	(static_cast<TutorialBuildingObjectImplementation*>(impl))->notifyRemoveFromZone();
+	(static_cast<TutorialBuildingObject*>(stub))->notifyRemoveFromZone();
 }
 
 void TutorialBuildingObjectAdapter::initializeTransientMembers() {
-	(static_cast<TutorialBuildingObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<TutorialBuildingObject*>(stub))->initializeTransientMembers();
 }
 
 void TutorialBuildingObjectAdapter::onEnter(CreatureObject* player) {
-	(static_cast<TutorialBuildingObjectImplementation*>(impl))->onEnter(player);
+	(static_cast<TutorialBuildingObject*>(stub))->onEnter(player);
 }
 
 void TutorialBuildingObjectAdapter::onExit(CreatureObject* player) {
-	(static_cast<TutorialBuildingObjectImplementation*>(impl))->onExit(player);
+	(static_cast<TutorialBuildingObject*>(stub))->onExit(player);
 }
 
 void TutorialBuildingObjectAdapter::clearUnloadEvent() {
-	(static_cast<TutorialBuildingObjectImplementation*>(impl))->clearUnloadEvent();
+	(static_cast<TutorialBuildingObject*>(stub))->clearUnloadEvent();
 }
 
 /*
@@ -347,7 +347,7 @@ DistributedObjectServant* TutorialBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TutorialBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TutorialBuildingObjectAdapter(static_cast<TutorialBuildingObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new TutorialBuildingObjectAdapter(static_cast<TutorialBuildingObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

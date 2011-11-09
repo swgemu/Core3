@@ -1372,7 +1372,7 @@ void CityHallObjectImplementation::setCityRank(byte rank) {
  *	CityHallObjectAdapter
  */
 
-CityHallObjectAdapter::CityHallObjectAdapter(CityHallObjectImplementation* obj) : BuildingObjectAdapter(obj) {
+CityHallObjectAdapter::CityHallObjectAdapter(CityHallObject* obj) : BuildingObjectAdapter(obj) {
 }
 
 Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1555,227 +1555,227 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void CityHallObjectAdapter::notifyInsertToZone(Zone* zone) {
-	(static_cast<CityHallObjectImplementation*>(impl))->notifyInsertToZone(zone);
+	(static_cast<CityHallObject*>(stub))->notifyInsertToZone(zone);
 }
 
 void CityHallObjectAdapter::notifyRemoveFromZone() {
-	(static_cast<CityHallObjectImplementation*>(impl))->notifyRemoveFromZone();
+	(static_cast<CityHallObject*>(stub))->notifyRemoveFromZone();
 }
 
 void CityHallObjectAdapter::notifyLoadFromDatabase() {
-	(static_cast<CityHallObjectImplementation*>(impl))->notifyLoadFromDatabase();
+	(static_cast<CityHallObject*>(stub))->notifyLoadFromDatabase();
 }
 
 void CityHallObjectAdapter::spawnCityHallObjects() {
-	(static_cast<CityHallObjectImplementation*>(impl))->spawnCityHallObjects();
+	(static_cast<CityHallObject*>(stub))->spawnCityHallObjects();
 }
 
 void CityHallObjectAdapter::despawnCityHallObjects() {
-	(static_cast<CityHallObjectImplementation*>(impl))->despawnCityHallObjects();
+	(static_cast<CityHallObject*>(stub))->despawnCityHallObjects();
 }
 
 bool CityHallObjectAdapter::checkRequisitesForPlacement(CreatureObject* player) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->checkRequisitesForPlacement(player);
+	return (static_cast<CityHallObject*>(stub))->checkRequisitesForPlacement(player);
 }
 
 void CityHallObjectAdapter::setCityName(const String& name) {
-	(static_cast<CityHallObjectImplementation*>(impl))->setCityName(name);
+	(static_cast<CityHallObject*>(stub))->setCityName(name);
 }
 
 String CityHallObjectAdapter::getCityName() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCityName();
+	return (static_cast<CityHallObject*>(stub))->getCityName();
 }
 
 byte CityHallObjectAdapter::getCityRank() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCityRank();
+	return (static_cast<CityHallObject*>(stub))->getCityRank();
 }
 
 void CityHallObjectAdapter::sendCityNamePromptTo(CreatureObject* player, bool newCity) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendCityNamePromptTo(player, newCity);
+	(static_cast<CityHallObject*>(stub))->sendCityNamePromptTo(player, newCity);
 }
 
 void CityHallObjectAdapter::sendStatusTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendStatusTo(player);
+	(static_cast<CityHallObject*>(stub))->sendStatusTo(player);
 }
 
 void CityHallObjectAdapter::sendCitizenshipReportTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendCitizenshipReportTo(player);
+	(static_cast<CityHallObject*>(stub))->sendCitizenshipReportTo(player);
 }
 
 void CityHallObjectAdapter::sendStructureReportTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendStructureReportTo(player);
+	(static_cast<CityHallObject*>(stub))->sendStructureReportTo(player);
 }
 
 void CityHallObjectAdapter::sendTreasuryReportTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendTreasuryReportTo(player);
+	(static_cast<CityHallObject*>(stub))->sendTreasuryReportTo(player);
 }
 
 void CityHallObjectAdapter::sendCityAdvancementTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendCityAdvancementTo(player);
+	(static_cast<CityHallObject*>(stub))->sendCityAdvancementTo(player);
 }
 
 void CityHallObjectAdapter::sendMaintenanceReportTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendMaintenanceReportTo(player);
+	(static_cast<CityHallObject*>(stub))->sendMaintenanceReportTo(player);
 }
 
 void CityHallObjectAdapter::sendChangeCityNameTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendChangeCityNameTo(player);
+	(static_cast<CityHallObject*>(stub))->sendChangeCityNameTo(player);
 }
 
 void CityHallObjectAdapter::sendEnableZoningTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendEnableZoningTo(player);
+	(static_cast<CityHallObject*>(stub))->sendEnableZoningTo(player);
 }
 
 void CityHallObjectAdapter::sendManageMilitiaTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendManageMilitiaTo(player);
+	(static_cast<CityHallObject*>(stub))->sendManageMilitiaTo(player);
 }
 
 void CityHallObjectAdapter::sendAddMilitiaMemberTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendAddMilitiaMemberTo(player);
+	(static_cast<CityHallObject*>(stub))->sendAddMilitiaMemberTo(player);
 }
 
 void CityHallObjectAdapter::sendAdjustTaxesTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendAdjustTaxesTo(player);
+	(static_cast<CityHallObject*>(stub))->sendAdjustTaxesTo(player);
 }
 
 void CityHallObjectAdapter::sendTreasuryDepositTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendTreasuryDepositTo(player);
+	(static_cast<CityHallObject*>(stub))->sendTreasuryDepositTo(player);
 }
 
 void CityHallObjectAdapter::sendTreasuryWithdrawalTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendTreasuryWithdrawalTo(player);
+	(static_cast<CityHallObject*>(stub))->sendTreasuryWithdrawalTo(player);
 }
 
 void CityHallObjectAdapter::sendCitySpecializationSelectionTo(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->sendCitySpecializationSelectionTo(player);
+	(static_cast<CityHallObject*>(stub))->sendCitySpecializationSelectionTo(player);
 }
 
 void CityHallObjectAdapter::toggleCityRegistration(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->toggleCityRegistration(player);
+	(static_cast<CityHallObject*>(stub))->toggleCityRegistration(player);
 }
 
 void CityHallObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<CityHallObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<CityHallObject*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int CityHallObjectAdapter::notifyStructurePlaced(CreatureObject* creature) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->notifyStructurePlaced(creature);
+	return (static_cast<CityHallObject*>(stub))->notifyStructurePlaced(creature);
 }
 
 bool CityHallObjectAdapter::isCityHallBuilding() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->isCityHallBuilding();
+	return (static_cast<CityHallObject*>(stub))->isCityHallBuilding();
 }
 
 void CityHallObjectAdapter::addZoningRights(unsigned long long playerID, unsigned int seconds) {
-	(static_cast<CityHallObjectImplementation*>(impl))->addZoningRights(playerID, seconds);
+	(static_cast<CityHallObject*>(stub))->addZoningRights(playerID, seconds);
 }
 
 void CityHallObjectAdapter::removeZoningRights(unsigned long long playerID) {
-	(static_cast<CityHallObjectImplementation*>(impl))->removeZoningRights(playerID);
+	(static_cast<CityHallObject*>(stub))->removeZoningRights(playerID);
 }
 
 bool CityHallObjectAdapter::hasZoningRights(unsigned long long playerID) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->hasZoningRights(playerID);
+	return (static_cast<CityHallObject*>(stub))->hasZoningRights(playerID);
 }
 
 unsigned long long CityHallObjectAdapter::getMayorObjectID() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getMayorObjectID();
+	return (static_cast<CityHallObject*>(stub))->getMayorObjectID();
 }
 
 void CityHallObjectAdapter::setMayorObjectID(unsigned long long oid) {
-	(static_cast<CityHallObjectImplementation*>(impl))->setMayorObjectID(oid);
+	(static_cast<CityHallObject*>(stub))->setMayorObjectID(oid);
 }
 
 bool CityHallObjectAdapter::isMayor(unsigned long long playerID) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->isMayor(playerID);
+	return (static_cast<CityHallObject*>(stub))->isMayor(playerID);
 }
 
 bool CityHallObjectAdapter::isBanned(unsigned long long playerID) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->isBanned(playerID);
+	return (static_cast<CityHallObject*>(stub))->isBanned(playerID);
 }
 
 void CityHallObjectAdapter::addBannedPlayer(unsigned long long playerID) {
-	(static_cast<CityHallObjectImplementation*>(impl))->addBannedPlayer(playerID);
+	(static_cast<CityHallObject*>(stub))->addBannedPlayer(playerID);
 }
 
 void CityHallObjectAdapter::removeBannedPlayer(unsigned long long playerID) {
-	(static_cast<CityHallObjectImplementation*>(impl))->removeBannedPlayer(playerID);
+	(static_cast<CityHallObject*>(stub))->removeBannedPlayer(playerID);
 }
 
 CityTerminal* CityHallObjectAdapter::getCityTerminal() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCityTerminal();
+	return (static_cast<CityHallObject*>(stub))->getCityTerminal();
 }
 
 CityVoteTerminal* CityHallObjectAdapter::getCityVoteTerminal() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCityVoteTerminal();
+	return (static_cast<CityHallObject*>(stub))->getCityVoteTerminal();
 }
 
 Region* CityHallObjectAdapter::getCityRegion() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCityRegion();
+	return (static_cast<CityHallObject*>(stub))->getCityRegion();
 }
 
 void CityHallObjectAdapter::setCityRegion(Region* region) {
-	(static_cast<CityHallObjectImplementation*>(impl))->setCityRegion(region);
+	(static_cast<CityHallObject*>(stub))->setCityRegion(region);
 }
 
 int CityHallObjectAdapter::getCivicStructureCap() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCivicStructureCap();
+	return (static_cast<CityHallObject*>(stub))->getCivicStructureCap();
 }
 
 bool CityHallObjectAdapter::isZoningEnabled() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->isZoningEnabled();
+	return (static_cast<CityHallObject*>(stub))->isZoningEnabled();
 }
 
 void CityHallObjectAdapter::toggleZoningEnabled(CreatureObject* player) {
-	(static_cast<CityHallObjectImplementation*>(impl))->toggleZoningEnabled(player);
+	(static_cast<CityHallObject*>(stub))->toggleZoningEnabled(player);
 }
 
 void CityHallObjectAdapter::setZoningEnabled(bool enabled) {
-	(static_cast<CityHallObjectImplementation*>(impl))->setZoningEnabled(enabled);
+	(static_cast<CityHallObject*>(stub))->setZoningEnabled(enabled);
 }
 
 bool CityHallObjectAdapter::isCityUpdatePast() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->isCityUpdatePast();
+	return (static_cast<CityHallObject*>(stub))->isCityUpdatePast();
 }
 
 void CityHallObjectAdapter::rescheduleCityUpdate(unsigned int minutes) {
-	(static_cast<CityHallObjectImplementation*>(impl))->rescheduleCityUpdate(minutes);
+	(static_cast<CityHallObject*>(stub))->rescheduleCityUpdate(minutes);
 }
 
 int CityHallObjectAdapter::getCitizenCount() {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCitizenCount();
+	return (static_cast<CityHallObject*>(stub))->getCitizenCount();
 }
 
 void CityHallObjectAdapter::addCitizen(unsigned long long playerID) {
-	(static_cast<CityHallObjectImplementation*>(impl))->addCitizen(playerID);
+	(static_cast<CityHallObject*>(stub))->addCitizen(playerID);
 }
 
 void CityHallObjectAdapter::removeCitizen(unsigned long long playerID) {
-	(static_cast<CityHallObjectImplementation*>(impl))->removeCitizen(playerID);
+	(static_cast<CityHallObject*>(stub))->removeCitizen(playerID);
 }
 
 bool CityHallObjectAdapter::isCitizen(unsigned long long playerID) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->isCitizen(playerID);
+	return (static_cast<CityHallObject*>(stub))->isCitizen(playerID);
 }
 
 void CityHallObjectAdapter::addMilitiaMember(unsigned long long playerID) {
-	(static_cast<CityHallObjectImplementation*>(impl))->addMilitiaMember(playerID);
+	(static_cast<CityHallObject*>(stub))->addMilitiaMember(playerID);
 }
 
 void CityHallObjectAdapter::removeMilitiaMember(unsigned long long playerID) {
-	(static_cast<CityHallObjectImplementation*>(impl))->removeMilitiaMember(playerID);
+	(static_cast<CityHallObject*>(stub))->removeMilitiaMember(playerID);
 }
 
 bool CityHallObjectAdapter::isMilitiaMember(unsigned long long playerID) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->isMilitiaMember(playerID);
+	return (static_cast<CityHallObject*>(stub))->isMilitiaMember(playerID);
 }
 
 unsigned long long CityHallObjectAdapter::getCitizenObjectID(int idx) {
-	return (static_cast<CityHallObjectImplementation*>(impl))->getCitizenObjectID(idx);
+	return (static_cast<CityHallObject*>(stub))->getCitizenObjectID(idx);
 }
 
 void CityHallObjectAdapter::setCityRank(byte rank) {
-	(static_cast<CityHallObjectImplementation*>(impl))->setCityRank(rank);
+	(static_cast<CityHallObject*>(stub))->setCityRank(rank);
 }
 
 /*
@@ -1803,7 +1803,7 @@ DistributedObjectServant* CityHallObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CityHallObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CityHallObjectAdapter(static_cast<CityHallObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CityHallObjectAdapter(static_cast<CityHallObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

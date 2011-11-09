@@ -201,7 +201,7 @@ int SpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Obs
  *	SpawnObserverAdapter
  */
 
-SpawnObserverAdapter::SpawnObserverAdapter(SpawnObserverImplementation* obj) : ObserverAdapter(obj) {
+SpawnObserverAdapter::SpawnObserverAdapter(SpawnObserver* obj) : ObserverAdapter(obj) {
 }
 
 Packet* SpawnObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -219,7 +219,7 @@ Packet* SpawnObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 int SpawnObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<SpawnObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<SpawnObserver*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -247,7 +247,7 @@ DistributedObjectServant* SpawnObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpawnObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpawnObserverAdapter(static_cast<SpawnObserverImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SpawnObserverAdapter(static_cast<SpawnObserver*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

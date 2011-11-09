@@ -382,7 +382,7 @@ protected:
 
 class EntertainingSessionAdapter : public FacadeAdapter {
 public:
-	EntertainingSessionAdapter(EntertainingSessionImplementation* impl);
+	EntertainingSessionAdapter(EntertainingSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

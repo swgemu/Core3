@@ -123,7 +123,7 @@ protected:
 
 class ScreenPlayObserverAdapter : public ObserverAdapter {
 public:
-	ScreenPlayObserverAdapter(ScreenPlayObserverImplementation* impl);
+	ScreenPlayObserverAdapter(ScreenPlayObserver* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

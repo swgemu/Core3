@@ -192,7 +192,7 @@ StartingLocationTerminalImplementation::StartingLocationTerminalImplementation()
  *	StartingLocationTerminalAdapter
  */
 
-StartingLocationTerminalAdapter::StartingLocationTerminalAdapter(StartingLocationTerminalImplementation* obj) : TerminalAdapter(obj) {
+StartingLocationTerminalAdapter::StartingLocationTerminalAdapter(StartingLocationTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -213,11 +213,11 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 }
 
 void StartingLocationTerminalAdapter::initializeTransientMembers() {
-	(static_cast<StartingLocationTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<StartingLocationTerminal*>(stub))->initializeTransientMembers();
 }
 
 int StartingLocationTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<StartingLocationTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StartingLocationTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -245,7 +245,7 @@ DistributedObjectServant* StartingLocationTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StartingLocationTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StartingLocationTerminalAdapter(static_cast<StartingLocationTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StartingLocationTerminalAdapter(static_cast<StartingLocationTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -1309,7 +1309,7 @@ bool AuctionItemImplementation::isOwner() {
  *	AuctionItemAdapter
  */
 
-AuctionItemAdapter::AuctionItemAdapter(AuctionItemImplementation* obj) : ManagedObjectAdapter(obj) {
+AuctionItemAdapter::AuctionItemAdapter(AuctionItem* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1453,175 +1453,175 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void AuctionItemAdapter::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
-	(static_cast<AuctionItemImplementation*>(impl))->setLocation(planet, header, vendorid, x, z, vendor);
+	(static_cast<AuctionItem*>(stub))->setLocation(planet, header, vendorid, x, z, vendor);
 }
 
 void AuctionItemAdapter::setVendorID(unsigned long long val) {
-	(static_cast<AuctionItemImplementation*>(impl))->setVendorID(val);
+	(static_cast<AuctionItem*>(stub))->setVendorID(val);
 }
 
 void AuctionItemAdapter::setItemName(const String& name) {
-	(static_cast<AuctionItemImplementation*>(impl))->setItemName(name);
+	(static_cast<AuctionItem*>(stub))->setItemName(name);
 }
 
 void AuctionItemAdapter::setItemDescription(const String& descr) {
-	(static_cast<AuctionItemImplementation*>(impl))->setItemDescription(descr);
+	(static_cast<AuctionItem*>(stub))->setItemDescription(descr);
 }
 
 void AuctionItemAdapter::setPrice(int newPrice) {
-	(static_cast<AuctionItemImplementation*>(impl))->setPrice(newPrice);
+	(static_cast<AuctionItem*>(stub))->setPrice(newPrice);
 }
 
 void AuctionItemAdapter::setAuctionedItemObjectID(unsigned long long objectID) {
-	(static_cast<AuctionItemImplementation*>(impl))->setAuctionedItemObjectID(objectID);
+	(static_cast<AuctionItem*>(stub))->setAuctionedItemObjectID(objectID);
 }
 
 void AuctionItemAdapter::setItemType(int type) {
-	(static_cast<AuctionItemImplementation*>(impl))->setItemType(type);
+	(static_cast<AuctionItem*>(stub))->setItemType(type);
 }
 
 void AuctionItemAdapter::setOwnerID(unsigned long long ownerObjectID) {
-	(static_cast<AuctionItemImplementation*>(impl))->setOwnerID(ownerObjectID);
+	(static_cast<AuctionItem*>(stub))->setOwnerID(ownerObjectID);
 }
 
 void AuctionItemAdapter::setBidderName(const String& name) {
-	(static_cast<AuctionItemImplementation*>(impl))->setBidderName(name);
+	(static_cast<AuctionItem*>(stub))->setBidderName(name);
 }
 
 void AuctionItemAdapter::setOwnerName(const String& name) {
-	(static_cast<AuctionItemImplementation*>(impl))->setOwnerName(name);
+	(static_cast<AuctionItem*>(stub))->setOwnerName(name);
 }
 
 void AuctionItemAdapter::setAuction(bool isAuction) {
-	(static_cast<AuctionItemImplementation*>(impl))->setAuction(isAuction);
+	(static_cast<AuctionItem*>(stub))->setAuction(isAuction);
 }
 
 void AuctionItemAdapter::setSold(bool isSold) {
-	(static_cast<AuctionItemImplementation*>(impl))->setSold(isSold);
+	(static_cast<AuctionItem*>(stub))->setSold(isSold);
 }
 
 void AuctionItemAdapter::setRemovedByOwner(bool isRemovedByOwner) {
-	(static_cast<AuctionItemImplementation*>(impl))->setRemovedByOwner(isRemovedByOwner);
+	(static_cast<AuctionItem*>(stub))->setRemovedByOwner(isRemovedByOwner);
 }
 
 void AuctionItemAdapter::setAuctionPremium() {
-	(static_cast<AuctionItemImplementation*>(impl))->setAuctionPremium();
+	(static_cast<AuctionItem*>(stub))->setAuctionPremium();
 }
 
 void AuctionItemAdapter::setAuctionWithdraw() {
-	(static_cast<AuctionItemImplementation*>(impl))->setAuctionWithdraw();
+	(static_cast<AuctionItem*>(stub))->setAuctionWithdraw();
 }
 
 void AuctionItemAdapter::clearAuctionWithdraw() {
-	(static_cast<AuctionItemImplementation*>(impl))->clearAuctionWithdraw();
+	(static_cast<AuctionItem*>(stub))->clearAuctionWithdraw();
 }
 
 void AuctionItemAdapter::setInStockroom(bool inStock) {
-	(static_cast<AuctionItemImplementation*>(impl))->setInStockroom(inStock);
+	(static_cast<AuctionItem*>(stub))->setInStockroom(inStock);
 }
 
 void AuctionItemAdapter::setOfferToVendor(bool val) {
-	(static_cast<AuctionItemImplementation*>(impl))->setOfferToVendor(val);
+	(static_cast<AuctionItem*>(stub))->setOfferToVendor(val);
 }
 
 void AuctionItemAdapter::setOnBazaar(bool val) {
-	(static_cast<AuctionItemImplementation*>(impl))->setOnBazaar(val);
+	(static_cast<AuctionItem*>(stub))->setOnBazaar(val);
 }
 
 void AuctionItemAdapter::setExpireTime(int time) {
-	(static_cast<AuctionItemImplementation*>(impl))->setExpireTime(time);
+	(static_cast<AuctionItem*>(stub))->setExpireTime(time);
 }
 
 void AuctionItemAdapter::setBuyerID(unsigned long long id) {
-	(static_cast<AuctionItemImplementation*>(impl))->setBuyerID(id);
+	(static_cast<AuctionItem*>(stub))->setBuyerID(id);
 }
 
 bool AuctionItemAdapter::isOnBazaar() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isOnBazaar();
+	return (static_cast<AuctionItem*>(stub))->isOnBazaar();
 }
 
 bool AuctionItemAdapter::isSold() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isSold();
+	return (static_cast<AuctionItem*>(stub))->isSold();
 }
 
 bool AuctionItemAdapter::isAuction() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isAuction();
+	return (static_cast<AuctionItem*>(stub))->isAuction();
 }
 
 bool AuctionItemAdapter::isRemovedByOwner() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isRemovedByOwner();
+	return (static_cast<AuctionItem*>(stub))->isRemovedByOwner();
 }
 
 bool AuctionItemAdapter::isInStockroom() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isInStockroom();
+	return (static_cast<AuctionItem*>(stub))->isInStockroom();
 }
 
 bool AuctionItemAdapter::isOfferToVendor() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isOfferToVendor();
+	return (static_cast<AuctionItem*>(stub))->isOfferToVendor();
 }
 
 unsigned long long AuctionItemAdapter::getVendorID() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getVendorID();
+	return (static_cast<AuctionItem*>(stub))->getVendorID();
 }
 
 unsigned long long AuctionItemAdapter::getAuctionedItemObjectID() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getAuctionedItemObjectID();
+	return (static_cast<AuctionItem*>(stub))->getAuctionedItemObjectID();
 }
 
 unsigned long long AuctionItemAdapter::getOwnerID() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getOwnerID();
+	return (static_cast<AuctionItem*>(stub))->getOwnerID();
 }
 
 String AuctionItemAdapter::getTerminalTitle() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getTerminalTitle();
+	return (static_cast<AuctionItem*>(stub))->getTerminalTitle();
 }
 
 String AuctionItemAdapter::getOwnerName() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getOwnerName();
+	return (static_cast<AuctionItem*>(stub))->getOwnerName();
 }
 
 String AuctionItemAdapter::getItemName() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getItemName();
+	return (static_cast<AuctionItem*>(stub))->getItemName();
 }
 
 int AuctionItemAdapter::getExpireTime() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getExpireTime();
+	return (static_cast<AuctionItem*>(stub))->getExpireTime();
 }
 
 int AuctionItemAdapter::getPrice() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getPrice();
+	return (static_cast<AuctionItem*>(stub))->getPrice();
 }
 
 int AuctionItemAdapter::getItemType() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getItemType();
+	return (static_cast<AuctionItem*>(stub))->getItemType();
 }
 
 unsigned long long AuctionItemAdapter::getBuyerID() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getBuyerID();
+	return (static_cast<AuctionItem*>(stub))->getBuyerID();
 }
 
 String AuctionItemAdapter::getBidderName() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getBidderName();
+	return (static_cast<AuctionItem*>(stub))->getBidderName();
 }
 
 String AuctionItemAdapter::getItemDescription() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getItemDescription();
+	return (static_cast<AuctionItem*>(stub))->getItemDescription();
 }
 
 String AuctionItemAdapter::getLocation() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getLocation();
+	return (static_cast<AuctionItem*>(stub))->getLocation();
 }
 
 int AuctionItemAdapter::getAuctionOptions() {
-	return (static_cast<AuctionItemImplementation*>(impl))->getAuctionOptions();
+	return (static_cast<AuctionItem*>(stub))->getAuctionOptions();
 }
 
 bool AuctionItemAdapter::isPremiumAuction() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isPremiumAuction();
+	return (static_cast<AuctionItem*>(stub))->isPremiumAuction();
 }
 
 bool AuctionItemAdapter::isOwner() {
-	return (static_cast<AuctionItemImplementation*>(impl))->isOwner();
+	return (static_cast<AuctionItem*>(stub))->isOwner();
 }
 
 /*
@@ -1649,7 +1649,7 @@ DistributedObjectServant* AuctionItemHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AuctionItemHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AuctionItemAdapter(static_cast<AuctionItemImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AuctionItemAdapter(static_cast<AuctionItem*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

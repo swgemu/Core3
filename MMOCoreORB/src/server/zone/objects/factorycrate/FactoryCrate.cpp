@@ -352,7 +352,7 @@ bool FactoryCrateImplementation::isFactoryCrate() {
  *	FactoryCrateAdapter
  */
 
-FactoryCrateAdapter::FactoryCrateAdapter(FactoryCrateImplementation* obj) : TangibleObjectAdapter(obj) {
+FactoryCrateAdapter::FactoryCrateAdapter(FactoryCrate* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -400,47 +400,47 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void FactoryCrateAdapter::initializeTransientMembers() {
-	(static_cast<FactoryCrateImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<FactoryCrate*>(stub))->initializeTransientMembers();
 }
 
 void FactoryCrateAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<FactoryCrateImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<FactoryCrate*>(stub))->sendBaselinesTo(player);
 }
 
 int FactoryCrateAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<FactoryCrateImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FactoryCrate*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool FactoryCrateAdapter::isFactoryCrate() {
-	return (static_cast<FactoryCrateImplementation*>(impl))->isFactoryCrate();
+	return (static_cast<FactoryCrate*>(stub))->isFactoryCrate();
 }
 
 void FactoryCrateAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	(static_cast<FactoryCrateImplementation*>(impl))->setUseCount(newUseCount, notifyClient);
+	(static_cast<FactoryCrate*>(stub))->setUseCount(newUseCount, notifyClient);
 }
 
 TangibleObject* FactoryCrateAdapter::getPrototype() {
-	return (static_cast<FactoryCrateImplementation*>(impl))->getPrototype();
+	return (static_cast<FactoryCrate*>(stub))->getPrototype();
 }
 
 String FactoryCrateAdapter::getCraftersName() {
-	return (static_cast<FactoryCrateImplementation*>(impl))->getCraftersName();
+	return (static_cast<FactoryCrate*>(stub))->getCraftersName();
 }
 
 String FactoryCrateAdapter::getCraftersSerial() {
-	return (static_cast<FactoryCrateImplementation*>(impl))->getCraftersSerial();
+	return (static_cast<FactoryCrate*>(stub))->getCraftersSerial();
 }
 
 bool FactoryCrateAdapter::extractObjectToParent() {
-	return (static_cast<FactoryCrateImplementation*>(impl))->extractObjectToParent();
+	return (static_cast<FactoryCrate*>(stub))->extractObjectToParent();
 }
 
 TangibleObject* FactoryCrateAdapter::extractObject(int count) {
-	return (static_cast<FactoryCrateImplementation*>(impl))->extractObject(count);
+	return (static_cast<FactoryCrate*>(stub))->extractObject(count);
 }
 
 void FactoryCrateAdapter::split(int newStackSize) {
-	(static_cast<FactoryCrateImplementation*>(impl))->split(newStackSize);
+	(static_cast<FactoryCrate*>(stub))->split(newStackSize);
 }
 
 /*
@@ -468,7 +468,7 @@ DistributedObjectServant* FactoryCrateHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FactoryCrateHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FactoryCrateAdapter(static_cast<FactoryCrateImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FactoryCrateAdapter(static_cast<FactoryCrate*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

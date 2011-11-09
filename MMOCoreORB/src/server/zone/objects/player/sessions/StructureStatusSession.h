@@ -112,7 +112,7 @@ protected:
 
 class StructureStatusSessionAdapter : public FacadeAdapter {
 public:
-	StructureStatusSessionAdapter(StructureStatusSessionImplementation* impl);
+	StructureStatusSessionAdapter(StructureStatusSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

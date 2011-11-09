@@ -537,7 +537,7 @@ unsigned int AccountImplementation::getTimeCreated() {
  *	AccountAdapter
  */
 
-AccountAdapter::AccountAdapter(AccountImplementation* obj) : ManagedObjectAdapter(obj) {
+AccountAdapter::AccountAdapter(Account* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -597,63 +597,63 @@ Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool AccountAdapter::hasMaxOnlineCharacters() {
-	return (static_cast<AccountImplementation*>(impl))->hasMaxOnlineCharacters();
+	return (static_cast<Account*>(stub))->hasMaxOnlineCharacters();
 }
 
 ZoneClientSession* AccountAdapter::getZoneSession(unsigned int sessionID) {
-	return (static_cast<AccountImplementation*>(impl))->getZoneSession(sessionID);
+	return (static_cast<Account*>(stub))->getZoneSession(sessionID);
 }
 
 bool AccountAdapter::containsZoneSession(unsigned int sessionID) {
-	return (static_cast<AccountImplementation*>(impl))->containsZoneSession(sessionID);
+	return (static_cast<Account*>(stub))->containsZoneSession(sessionID);
 }
 
 void AccountAdapter::addZoneSession(ZoneClientSession* client) {
-	(static_cast<AccountImplementation*>(impl))->addZoneSession(client);
+	(static_cast<Account*>(stub))->addZoneSession(client);
 }
 
 void AccountAdapter::removeZoneSession(unsigned int sessionID) {
-	(static_cast<AccountImplementation*>(impl))->removeZoneSession(sessionID);
+	(static_cast<Account*>(stub))->removeZoneSession(sessionID);
 }
 
 void AccountAdapter::setAccountID(unsigned int accountid) {
-	(static_cast<AccountImplementation*>(impl))->setAccountID(accountid);
+	(static_cast<Account*>(stub))->setAccountID(accountid);
 }
 
 void AccountAdapter::setStationID(unsigned int stationid) {
-	(static_cast<AccountImplementation*>(impl))->setStationID(stationid);
+	(static_cast<Account*>(stub))->setStationID(stationid);
 }
 
 void AccountAdapter::setAdminLevel(unsigned int adminlvl) {
-	(static_cast<AccountImplementation*>(impl))->setAdminLevel(adminlvl);
+	(static_cast<Account*>(stub))->setAdminLevel(adminlvl);
 }
 
 void AccountAdapter::setUsername(const String& usern) {
-	(static_cast<AccountImplementation*>(impl))->setUsername(usern);
+	(static_cast<Account*>(stub))->setUsername(usern);
 }
 
 void AccountAdapter::setTimeCreated(unsigned int seconds) {
-	(static_cast<AccountImplementation*>(impl))->setTimeCreated(seconds);
+	(static_cast<Account*>(stub))->setTimeCreated(seconds);
 }
 
 unsigned int AccountAdapter::getAccountID() {
-	return (static_cast<AccountImplementation*>(impl))->getAccountID();
+	return (static_cast<Account*>(stub))->getAccountID();
 }
 
 unsigned int AccountAdapter::getStationID() {
-	return (static_cast<AccountImplementation*>(impl))->getStationID();
+	return (static_cast<Account*>(stub))->getStationID();
 }
 
 unsigned int AccountAdapter::getAdminLevel() {
-	return (static_cast<AccountImplementation*>(impl))->getAdminLevel();
+	return (static_cast<Account*>(stub))->getAdminLevel();
 }
 
 String AccountAdapter::getUsername() {
-	return (static_cast<AccountImplementation*>(impl))->getUsername();
+	return (static_cast<Account*>(stub))->getUsername();
 }
 
 unsigned int AccountAdapter::getTimeCreated() {
-	return (static_cast<AccountImplementation*>(impl))->getTimeCreated();
+	return (static_cast<Account*>(stub))->getTimeCreated();
 }
 
 /*
@@ -681,7 +681,7 @@ DistributedObjectServant* AccountHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AccountHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AccountAdapter(static_cast<AccountImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AccountAdapter(static_cast<Account*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

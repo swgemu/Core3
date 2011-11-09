@@ -147,7 +147,7 @@ protected:
 
 class BadgeActiveAreaAdapter : public ActiveAreaAdapter {
 public:
-	BadgeActiveAreaAdapter(BadgeActiveAreaImplementation* impl);
+	BadgeActiveAreaAdapter(BadgeActiveArea* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

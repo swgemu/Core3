@@ -211,6 +211,7 @@ class Zone extends SceneObject {
 	 */
 	public native void unregisterObjectWithPlanetaryMap(SceneObject object);
 	
+	@dirty
 	public string getZoneName() {
 		return zoneName;
 	}

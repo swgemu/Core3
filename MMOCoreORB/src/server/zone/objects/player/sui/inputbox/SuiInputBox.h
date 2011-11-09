@@ -180,7 +180,7 @@ protected:
 
 class SuiInputBoxAdapter : public SuiBoxAdapter {
 public:
-	SuiInputBoxAdapter(SuiInputBoxImplementation* impl);
+	SuiInputBoxAdapter(SuiInputBox* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

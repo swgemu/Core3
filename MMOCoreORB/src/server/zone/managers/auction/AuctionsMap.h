@@ -198,7 +198,7 @@ protected:
 
 class AuctionsMapAdapter : public ManagedObjectAdapter {
 public:
-	AuctionsMapAdapter(AuctionsMapImplementation* impl);
+	AuctionsMapAdapter(AuctionsMap* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -94,7 +94,7 @@ protected:
 
 class SpaceStationObjectAdapter : public ShipObjectAdapter {
 public:
-	SpaceStationObjectAdapter(SpaceStationObjectImplementation* impl);
+	SpaceStationObjectAdapter(SpaceStationObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

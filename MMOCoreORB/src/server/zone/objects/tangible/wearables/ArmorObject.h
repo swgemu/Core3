@@ -313,7 +313,7 @@ protected:
 
 class ArmorObjectAdapter : public WearableObjectAdapter {
 public:
-	ArmorObjectAdapter(ArmorObjectImplementation* impl);
+	ArmorObjectAdapter(ArmorObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

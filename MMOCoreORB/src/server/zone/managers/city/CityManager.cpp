@@ -473,7 +473,7 @@ int CityManagerImplementation::getTotalCities() {
  *	CityManagerAdapter
  */
 
-CityManagerAdapter::CityManagerAdapter(CityManagerImplementation* obj) : ManagedServiceAdapter(obj) {
+CityManagerAdapter::CityManagerAdapter(CityManager* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -536,67 +536,67 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void CityManagerAdapter::loadLuaConfig() {
-	(static_cast<CityManagerImplementation*>(impl))->loadLuaConfig();
+	(static_cast<CityManager*>(stub))->loadLuaConfig();
 }
 
 void CityManagerAdapter::createNewCity(CityHallObject* city, CreatureObject* player, const String& name) {
-	(static_cast<CityManagerImplementation*>(impl))->createNewCity(city, player, name);
+	(static_cast<CityManager*>(stub))->createNewCity(city, player, name);
 }
 
 void CityManagerAdapter::changeCityName(CityHallObject* city, CreatureObject* player, const String& name) {
-	(static_cast<CityManagerImplementation*>(impl))->changeCityName(city, player, name);
+	(static_cast<CityManager*>(stub))->changeCityName(city, player, name);
 }
 
 bool CityManagerAdapter::validateCityName(const String& name) {
-	return (static_cast<CityManagerImplementation*>(impl))->validateCityName(name);
+	return (static_cast<CityManager*>(stub))->validateCityName(name);
 }
 
 void CityManagerAdapter::handleCityAdvancement(CityHallObject* city) {
-	(static_cast<CityManagerImplementation*>(impl))->handleCityAdvancement(city);
+	(static_cast<CityManager*>(stub))->handleCityAdvancement(city);
 }
 
 void CityManagerAdapter::expandCity(CityHallObject* city) {
-	(static_cast<CityManagerImplementation*>(impl))->expandCity(city);
+	(static_cast<CityManager*>(stub))->expandCity(city);
 }
 
 void CityManagerAdapter::contractCity(CityHallObject* city) {
-	(static_cast<CityManagerImplementation*>(impl))->contractCity(city);
+	(static_cast<CityManager*>(stub))->contractCity(city);
 }
 
 void CityManagerAdapter::destroyCity(CityHallObject* city) {
-	(static_cast<CityManagerImplementation*>(impl))->destroyCity(city);
+	(static_cast<CityManager*>(stub))->destroyCity(city);
 }
 
 void CityManagerAdapter::declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
-	(static_cast<CityManagerImplementation*>(impl))->declareCitizenship(city, player, sendMail);
+	(static_cast<CityManager*>(stub))->declareCitizenship(city, player, sendMail);
 }
 
 void CityManagerAdapter::revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
-	(static_cast<CityManagerImplementation*>(impl))->revokeCitizenship(city, player, sendMail);
+	(static_cast<CityManager*>(stub))->revokeCitizenship(city, player, sendMail);
 }
 
 void CityManagerAdapter::addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName) {
-	(static_cast<CityManagerImplementation*>(impl))->addMilitiaMember(city, player, citizenName);
+	(static_cast<CityManager*>(stub))->addMilitiaMember(city, player, citizenName);
 }
 
 void CityManagerAdapter::removeMilitiaMember(CityHallObject* city, CreatureObject* player, unsigned long long playerID) {
-	(static_cast<CityManagerImplementation*>(impl))->removeMilitiaMember(city, player, playerID);
+	(static_cast<CityManager*>(stub))->removeMilitiaMember(city, player, playerID);
 }
 
 bool CityManagerAdapter::checkCitiesCappedAtRank(byte rank) {
-	return (static_cast<CityManagerImplementation*>(impl))->checkCitiesCappedAtRank(rank);
+	return (static_cast<CityManager*>(stub))->checkCitiesCappedAtRank(rank);
 }
 
 byte CityManagerAdapter::getCitiesAllowed(byte rank) {
-	return (static_cast<CityManagerImplementation*>(impl))->getCitiesAllowed(rank);
+	return (static_cast<CityManager*>(stub))->getCitiesAllowed(rank);
 }
 
 void CityManagerAdapter::addCity(CityHallObject* city) {
-	(static_cast<CityManagerImplementation*>(impl))->addCity(city);
+	(static_cast<CityManager*>(stub))->addCity(city);
 }
 
 int CityManagerAdapter::getTotalCities() {
-	return (static_cast<CityManagerImplementation*>(impl))->getTotalCities();
+	return (static_cast<CityManager*>(stub))->getTotalCities();
 }
 
 /*
@@ -624,7 +624,7 @@ DistributedObjectServant* CityManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CityManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CityManagerAdapter(static_cast<CityManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CityManagerAdapter(static_cast<CityManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

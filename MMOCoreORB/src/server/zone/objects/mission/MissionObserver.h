@@ -148,7 +148,7 @@ protected:
 
 class MissionObserverAdapter : public ObserverAdapter {
 public:
-	MissionObserverAdapter(MissionObserverImplementation* impl);
+	MissionObserverAdapter(MissionObserver* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

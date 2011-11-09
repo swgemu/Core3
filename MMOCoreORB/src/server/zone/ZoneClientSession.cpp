@@ -526,7 +526,7 @@ Account* ZoneClientSessionImplementation::getAccount() {
  *	ZoneClientSessionAdapter
  */
 
-ZoneClientSessionAdapter::ZoneClientSessionAdapter(ZoneClientSessionImplementation* obj) : ManagedObjectAdapter(obj) {
+ZoneClientSessionAdapter::ZoneClientSessionAdapter(ZoneClientSession* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -592,71 +592,71 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ZoneClientSessionAdapter::disconnect() {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->disconnect();
+	(static_cast<ZoneClientSession*>(stub))->disconnect();
 }
 
 void ZoneClientSessionAdapter::disconnect(bool doLock) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->disconnect(doLock);
+	(static_cast<ZoneClientSession*>(stub))->disconnect(doLock);
 }
 
 void ZoneClientSessionAdapter::sendMessage(BasePacket* msg) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->sendMessage(msg);
+	(static_cast<ZoneClientSession*>(stub))->sendMessage(msg);
 }
 
 void ZoneClientSessionAdapter::balancePacketCheckupTime() {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->balancePacketCheckupTime();
+	(static_cast<ZoneClientSession*>(stub))->balancePacketCheckupTime();
 }
 
 void ZoneClientSessionAdapter::resetPacketCheckupTime() {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->resetPacketCheckupTime();
+	(static_cast<ZoneClientSession*>(stub))->resetPacketCheckupTime();
 }
 
 void ZoneClientSessionAdapter::closeConnection(bool lockPlayer, bool doLock) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->closeConnection(lockPlayer, doLock);
+	(static_cast<ZoneClientSession*>(stub))->closeConnection(lockPlayer, doLock);
 }
 
 void ZoneClientSessionAdapter::info(const String& msg, bool force) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->info(msg, force);
+	(static_cast<ZoneClientSession*>(stub))->info(msg, force);
 }
 
 void ZoneClientSessionAdapter::error(const String& msg) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->error(msg);
+	(static_cast<ZoneClientSession*>(stub))->error(msg);
 }
 
 String ZoneClientSessionAdapter::getAddress() {
-	return (static_cast<ZoneClientSessionImplementation*>(impl))->getAddress();
+	return (static_cast<ZoneClientSession*>(stub))->getAddress();
 }
 
 void ZoneClientSessionAdapter::setPlayer(SceneObject* playerCreature) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->setPlayer(playerCreature);
+	(static_cast<ZoneClientSession*>(stub))->setPlayer(playerCreature);
 }
 
 void ZoneClientSessionAdapter::setSessionID(unsigned int id) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->setSessionID(id);
+	(static_cast<ZoneClientSession*>(stub))->setSessionID(id);
 }
 
 void ZoneClientSessionAdapter::setAccount(Account* acc) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->setAccount(acc);
+	(static_cast<ZoneClientSession*>(stub))->setAccount(acc);
 }
 
 void ZoneClientSessionAdapter::setAccountID(unsigned int acc) {
-	(static_cast<ZoneClientSessionImplementation*>(impl))->setAccountID(acc);
+	(static_cast<ZoneClientSession*>(stub))->setAccountID(acc);
 }
 
 SceneObject* ZoneClientSessionAdapter::getPlayer() {
-	return (static_cast<ZoneClientSessionImplementation*>(impl))->getPlayer();
+	return (static_cast<ZoneClientSession*>(stub))->getPlayer();
 }
 
 unsigned int ZoneClientSessionAdapter::getSessionID() {
-	return (static_cast<ZoneClientSessionImplementation*>(impl))->getSessionID();
+	return (static_cast<ZoneClientSession*>(stub))->getSessionID();
 }
 
 unsigned int ZoneClientSessionAdapter::getAccountID() {
-	return (static_cast<ZoneClientSessionImplementation*>(impl))->getAccountID();
+	return (static_cast<ZoneClientSession*>(stub))->getAccountID();
 }
 
 Account* ZoneClientSessionAdapter::getAccount() {
-	return (static_cast<ZoneClientSessionImplementation*>(impl))->getAccount();
+	return (static_cast<ZoneClientSession*>(stub))->getAccount();
 }
 
 /*
@@ -684,7 +684,7 @@ DistributedObjectServant* ZoneClientSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneClientSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneClientSessionAdapter(static_cast<ZoneClientSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ZoneClientSessionAdapter(static_cast<ZoneClientSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

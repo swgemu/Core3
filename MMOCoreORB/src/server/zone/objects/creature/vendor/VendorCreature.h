@@ -241,7 +241,7 @@ protected:
 
 class VendorCreatureAdapter : public CreatureObjectAdapter {
 public:
-	VendorCreatureAdapter(VendorCreatureImplementation* impl);
+	VendorCreatureAdapter(VendorCreature* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

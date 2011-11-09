@@ -186,7 +186,7 @@ protected:
 
 class CraftingMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	CraftingMissionObjectiveAdapter(CraftingMissionObjectiveImplementation* impl);
+	CraftingMissionObjectiveAdapter(CraftingMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

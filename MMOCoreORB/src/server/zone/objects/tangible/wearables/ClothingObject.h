@@ -129,7 +129,7 @@ protected:
 
 class ClothingObjectAdapter : public WearableObjectAdapter {
 public:
-	ClothingObjectAdapter(ClothingObjectImplementation* impl);
+	ClothingObjectAdapter(ClothingObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

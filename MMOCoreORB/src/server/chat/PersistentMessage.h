@@ -236,7 +236,7 @@ protected:
 
 class PersistentMessageAdapter : public ManagedObjectAdapter {
 public:
-	PersistentMessageAdapter(PersistentMessageImplementation* impl);
+	PersistentMessageAdapter(PersistentMessage* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

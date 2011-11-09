@@ -205,7 +205,7 @@ protected:
 
 class FishObjectAdapter : public TangibleObjectAdapter {
 public:
-	FishObjectAdapter(FishObjectImplementation* impl);
+	FishObjectAdapter(FishObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

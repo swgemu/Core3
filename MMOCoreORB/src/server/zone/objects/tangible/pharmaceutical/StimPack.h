@@ -239,7 +239,7 @@ protected:
 
 class StimPackAdapter : public PharmaceuticalObjectAdapter {
 public:
-	StimPackAdapter(StimPackImplementation* impl);
+	StimPackAdapter(StimPack* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

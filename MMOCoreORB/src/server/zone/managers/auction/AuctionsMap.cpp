@@ -654,7 +654,7 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMapImpl
  *	AuctionsMapAdapter
  */
 
-AuctionsMapAdapter::AuctionsMapAdapter(AuctionsMapImplementation* obj) : ManagedObjectAdapter(obj) {
+AuctionsMapAdapter::AuctionsMapAdapter(AuctionsMap* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -723,75 +723,75 @@ Packet* AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 int AuctionsMapAdapter::getVendorItemCount() {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getVendorItemCount();
+	return (static_cast<AuctionsMap*>(stub))->getVendorItemCount();
 }
 
 bool AuctionsMapAdapter::containsVendorItem(unsigned long long objectID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->containsVendorItem(objectID);
+	return (static_cast<AuctionsMap*>(stub))->containsVendorItem(objectID);
 }
 
 void AuctionsMapAdapter::addVendorItem(unsigned long long objectID, AuctionItem* item) {
-	(static_cast<AuctionsMapImplementation*>(impl))->addVendorItem(objectID, item);
+	(static_cast<AuctionsMap*>(stub))->addVendorItem(objectID, item);
 }
 
 int AuctionsMapAdapter::getPlayerVendorItemCount(unsigned long long objectID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getPlayerVendorItemCount(objectID);
+	return (static_cast<AuctionsMap*>(stub))->getPlayerVendorItemCount(objectID);
 }
 
 void AuctionsMapAdapter::dropVendorItem(unsigned long long objectID) {
-	(static_cast<AuctionsMapImplementation*>(impl))->dropVendorItem(objectID);
+	(static_cast<AuctionsMap*>(stub))->dropVendorItem(objectID);
 }
 
 AuctionItem* AuctionsMapAdapter::getVendorItem(unsigned long long objectID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getVendorItem(objectID);
+	return (static_cast<AuctionsMap*>(stub))->getVendorItem(objectID);
 }
 
 AuctionItem* AuctionsMapAdapter::getVendorItem(int index) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getVendorItem(index);
+	return (static_cast<AuctionsMap*>(stub))->getVendorItem(index);
 }
 
 void AuctionsMapAdapter::increasePlayerVendorCount(unsigned long long playerID) {
-	(static_cast<AuctionsMapImplementation*>(impl))->increasePlayerVendorCount(playerID);
+	(static_cast<AuctionsMap*>(stub))->increasePlayerVendorCount(playerID);
 }
 
 void AuctionsMapAdapter::decreasePlayerVendorCount(unsigned long long playerID) {
-	(static_cast<AuctionsMapImplementation*>(impl))->decreasePlayerVendorCount(playerID);
+	(static_cast<AuctionsMap*>(stub))->decreasePlayerVendorCount(playerID);
 }
 
 int AuctionsMapAdapter::getPlayerVendorCount(unsigned long long playerID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getPlayerVendorCount(playerID);
+	return (static_cast<AuctionsMap*>(stub))->getPlayerVendorCount(playerID);
 }
 
 int AuctionsMapAdapter::getAuctionCount() {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getAuctionCount();
+	return (static_cast<AuctionsMap*>(stub))->getAuctionCount();
 }
 
 bool AuctionsMapAdapter::containsAuction(unsigned long long objectID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->containsAuction(objectID);
+	return (static_cast<AuctionsMap*>(stub))->containsAuction(objectID);
 }
 
 void AuctionsMapAdapter::addBazaarItem(unsigned long long objectID, AuctionItem* item) {
-	(static_cast<AuctionsMapImplementation*>(impl))->addBazaarItem(objectID, item);
+	(static_cast<AuctionsMap*>(stub))->addBazaarItem(objectID, item);
 }
 
 int AuctionsMapAdapter::getPlayerAuctionCount(unsigned long long objectID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getPlayerAuctionCount(objectID);
+	return (static_cast<AuctionsMap*>(stub))->getPlayerAuctionCount(objectID);
 }
 
 void AuctionsMapAdapter::dropBazaarItem(unsigned long long objectID) {
-	(static_cast<AuctionsMapImplementation*>(impl))->dropBazaarItem(objectID);
+	(static_cast<AuctionsMap*>(stub))->dropBazaarItem(objectID);
 }
 
 AuctionItem* AuctionsMapAdapter::getBazaarItem(unsigned long long objectID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getBazaarItem(objectID);
+	return (static_cast<AuctionsMap*>(stub))->getBazaarItem(objectID);
 }
 
 AuctionItem* AuctionsMapAdapter::getBazaarItem(int index) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->getBazaarItem(index);
+	return (static_cast<AuctionsMap*>(stub))->getBazaarItem(index);
 }
 
 bool AuctionsMapAdapter::checkInStockroom(unsigned long long objectID) {
-	return (static_cast<AuctionsMapImplementation*>(impl))->checkInStockroom(objectID);
+	return (static_cast<AuctionsMap*>(stub))->checkInStockroom(objectID);
 }
 
 /*
@@ -819,7 +819,7 @@ DistributedObjectServant* AuctionsMapHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AuctionsMapHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AuctionsMapAdapter(static_cast<AuctionsMapImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AuctionsMapAdapter(static_cast<AuctionsMap*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

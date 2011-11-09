@@ -192,7 +192,7 @@ protected:
 
 class GuildTerminalAdapter : public TerminalAdapter {
 public:
-	GuildTerminalAdapter(GuildTerminalImplementation* impl);
+	GuildTerminalAdapter(GuildTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -190,7 +190,7 @@ ShuttleInstallationImplementation::ShuttleInstallationImplementation() {
  *	ShuttleInstallationAdapter
  */
 
-ShuttleInstallationAdapter::ShuttleInstallationAdapter(ShuttleInstallationImplementation* obj) : InstallationObjectAdapter(obj) {
+ShuttleInstallationAdapter::ShuttleInstallationAdapter(ShuttleInstallation* obj) : InstallationObjectAdapter(obj) {
 }
 
 Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -208,7 +208,7 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 bool ShuttleInstallationAdapter::checkRequisitesForPlacement(CreatureObject* player) {
-	return (static_cast<ShuttleInstallationImplementation*>(impl))->checkRequisitesForPlacement(player);
+	return (static_cast<ShuttleInstallation*>(stub))->checkRequisitesForPlacement(player);
 }
 
 /*
@@ -236,7 +236,7 @@ DistributedObjectServant* ShuttleInstallationHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ShuttleInstallationHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ShuttleInstallationAdapter(static_cast<ShuttleInstallationImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ShuttleInstallationAdapter(static_cast<ShuttleInstallation*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

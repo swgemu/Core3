@@ -224,7 +224,7 @@ protected:
 
 class TicketObjectAdapter : public TangibleObjectAdapter {
 public:
-	TicketObjectAdapter(TicketObjectImplementation* impl);
+	TicketObjectAdapter(TicketObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

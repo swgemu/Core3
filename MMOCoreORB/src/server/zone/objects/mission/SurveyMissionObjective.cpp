@@ -346,7 +346,7 @@ void SurveyMissionObjectiveImplementation::setEfficiency(unsigned int eff) {
  *	SurveyMissionObjectiveAdapter
  */
 
-SurveyMissionObjectiveAdapter::SurveyMissionObjectiveAdapter(SurveyMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+SurveyMissionObjectiveAdapter::SurveyMissionObjectiveAdapter(SurveyMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -388,39 +388,39 @@ Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void SurveyMissionObjectiveAdapter::finalize() {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<SurveyMissionObjective*>(stub))->finalize();
 }
 
 void SurveyMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<SurveyMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void SurveyMissionObjectiveAdapter::activate() {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<SurveyMissionObjective*>(stub))->activate();
 }
 
 void SurveyMissionObjectiveAdapter::abort() {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<SurveyMissionObjective*>(stub))->abort();
 }
 
 void SurveyMissionObjectiveAdapter::complete() {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<SurveyMissionObjective*>(stub))->complete();
 }
 
 int SurveyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<SurveyMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<SurveyMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void SurveyMissionObjectiveAdapter::setSpawn(ResourceSpawn* sp) {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->setSpawn(sp);
+	(static_cast<SurveyMissionObjective*>(stub))->setSpawn(sp);
 }
 
 void SurveyMissionObjectiveAdapter::setMissionGiver(SceneObject* object) {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->setMissionGiver(object);
+	(static_cast<SurveyMissionObjective*>(stub))->setMissionGiver(object);
 }
 
 void SurveyMissionObjectiveAdapter::setEfficiency(unsigned int eff) {
-	(static_cast<SurveyMissionObjectiveImplementation*>(impl))->setEfficiency(eff);
+	(static_cast<SurveyMissionObjective*>(stub))->setEfficiency(eff);
 }
 
 /*
@@ -448,7 +448,7 @@ DistributedObjectServant* SurveyMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SurveyMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SurveyMissionObjectiveAdapter(static_cast<SurveyMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SurveyMissionObjectiveAdapter(static_cast<SurveyMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

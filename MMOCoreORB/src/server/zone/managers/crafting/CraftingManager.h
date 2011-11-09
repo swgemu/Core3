@@ -303,7 +303,7 @@ protected:
 
 class CraftingManagerAdapter : public ZoneManagerAdapter {
 public:
-	CraftingManagerAdapter(CraftingManagerImplementation* impl);
+	CraftingManagerAdapter(CraftingManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

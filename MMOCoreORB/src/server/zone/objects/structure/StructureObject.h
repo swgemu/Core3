@@ -430,7 +430,7 @@ protected:
 
 class StructureObjectAdapter : public TangibleObjectAdapter {
 public:
-	StructureObjectAdapter(StructureObjectImplementation* impl);
+	StructureObjectAdapter(StructureObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

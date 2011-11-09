@@ -1112,7 +1112,7 @@ int ChatRoomImplementation::compareTo(ChatRoom* obj) {
  *	ChatRoomAdapter
  */
 
-ChatRoomAdapter::ChatRoomAdapter(ChatRoomImplementation* obj) : ManagedObjectAdapter(obj) {
+ChatRoomAdapter::ChatRoomAdapter(ChatRoom* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1238,151 +1238,151 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ChatRoomAdapter::init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID) {
-	(static_cast<ChatRoomImplementation*>(impl))->init(serv, par, roomName, channelID);
+	(static_cast<ChatRoom*>(stub))->init(serv, par, roomName, channelID);
 }
 
 void ChatRoomAdapter::sendTo(CreatureObject* player) {
-	(static_cast<ChatRoomImplementation*>(impl))->sendTo(player);
+	(static_cast<ChatRoom*>(stub))->sendTo(player);
 }
 
 void ChatRoomAdapter::sendDestroyTo(CreatureObject* player) {
-	(static_cast<ChatRoomImplementation*>(impl))->sendDestroyTo(player);
+	(static_cast<ChatRoom*>(stub))->sendDestroyTo(player);
 }
 
 void ChatRoomAdapter::addSubRoom(ChatRoom* channel) {
-	(static_cast<ChatRoomImplementation*>(impl))->addSubRoom(channel);
+	(static_cast<ChatRoom*>(stub))->addSubRoom(channel);
 }
 
 void ChatRoomAdapter::removeSubRoom(ChatRoom* channel) {
-	(static_cast<ChatRoomImplementation*>(impl))->removeSubRoom(channel);
+	(static_cast<ChatRoom*>(stub))->removeSubRoom(channel);
 }
 
 ChatRoom* ChatRoomAdapter::getSubRoom(int i) {
-	return (static_cast<ChatRoomImplementation*>(impl))->getSubRoom(i);
+	return (static_cast<ChatRoom*>(stub))->getSubRoom(i);
 }
 
 ChatRoom* ChatRoomAdapter::getSubRoom(const String& name) {
-	return (static_cast<ChatRoomImplementation*>(impl))->getSubRoom(name);
+	return (static_cast<ChatRoom*>(stub))->getSubRoom(name);
 }
 
 void ChatRoomAdapter::addPlayer(CreatureObject* player, bool doLock) {
-	(static_cast<ChatRoomImplementation*>(impl))->addPlayer(player, doLock);
+	(static_cast<ChatRoom*>(stub))->addPlayer(player, doLock);
 }
 
 void ChatRoomAdapter::removePlayer(CreatureObject* player, bool doLock) {
-	(static_cast<ChatRoomImplementation*>(impl))->removePlayer(player, doLock);
+	(static_cast<ChatRoom*>(stub))->removePlayer(player, doLock);
 }
 
 void ChatRoomAdapter::removePlayer(const String& player) {
-	(static_cast<ChatRoomImplementation*>(impl))->removePlayer(player);
+	(static_cast<ChatRoom*>(stub))->removePlayer(player);
 }
 
 void ChatRoomAdapter::broadcastMessage(BaseMessage* msg) {
-	(static_cast<ChatRoomImplementation*>(impl))->broadcastMessage(msg);
+	(static_cast<ChatRoom*>(stub))->broadcastMessage(msg);
 }
 
 bool ChatRoomAdapter::hasPlayer(CreatureObject* player) {
-	return (static_cast<ChatRoomImplementation*>(impl))->hasPlayer(player);
+	return (static_cast<ChatRoom*>(stub))->hasPlayer(player);
 }
 
 bool ChatRoomAdapter::hasPlayer(const String& name) {
-	return (static_cast<ChatRoomImplementation*>(impl))->hasPlayer(name);
+	return (static_cast<ChatRoom*>(stub))->hasPlayer(name);
 }
 
 void ChatRoomAdapter::removeAllPlayers() {
-	(static_cast<ChatRoomImplementation*>(impl))->removeAllPlayers();
+	(static_cast<ChatRoom*>(stub))->removeAllPlayers();
 }
 
 void ChatRoomAdapter::setPrivate() {
-	(static_cast<ChatRoomImplementation*>(impl))->setPrivate();
+	(static_cast<ChatRoom*>(stub))->setPrivate();
 }
 
 void ChatRoomAdapter::setPublic() {
-	(static_cast<ChatRoomImplementation*>(impl))->setPublic();
+	(static_cast<ChatRoom*>(stub))->setPublic();
 }
 
 bool ChatRoomAdapter::isPublic() {
-	return (static_cast<ChatRoomImplementation*>(impl))->isPublic();
+	return (static_cast<ChatRoom*>(stub))->isPublic();
 }
 
 bool ChatRoomAdapter::isPrivate() {
-	return (static_cast<ChatRoomImplementation*>(impl))->isPrivate();
+	return (static_cast<ChatRoom*>(stub))->isPrivate();
 }
 
 bool ChatRoomAdapter::isModerated() {
-	return (static_cast<ChatRoomImplementation*>(impl))->isModerated();
+	return (static_cast<ChatRoom*>(stub))->isModerated();
 }
 
 void ChatRoomAdapter::setModerated(bool moderate) {
-	(static_cast<ChatRoomImplementation*>(impl))->setModerated(moderate);
+	(static_cast<ChatRoom*>(stub))->setModerated(moderate);
 }
 
 CreatureObject* ChatRoomAdapter::getPlayer(int idx) {
-	return (static_cast<ChatRoomImplementation*>(impl))->getPlayer(idx);
+	return (static_cast<ChatRoom*>(stub))->getPlayer(idx);
 }
 
 int ChatRoomAdapter::getPlayerSize() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getPlayerSize();
+	return (static_cast<ChatRoom*>(stub))->getPlayerSize();
 }
 
 void ChatRoomAdapter::setName(const String& Name) {
-	(static_cast<ChatRoomImplementation*>(impl))->setName(Name);
+	(static_cast<ChatRoom*>(stub))->setName(Name);
 }
 
 String ChatRoomAdapter::getName() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getName();
+	return (static_cast<ChatRoom*>(stub))->getName();
 }
 
 String ChatRoomAdapter::getFullPath() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getFullPath();
+	return (static_cast<ChatRoom*>(stub))->getFullPath();
 }
 
 String ChatRoomAdapter::getOwner() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getOwner();
+	return (static_cast<ChatRoom*>(stub))->getOwner();
 }
 
 String ChatRoomAdapter::getCreator() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getCreator();
+	return (static_cast<ChatRoom*>(stub))->getCreator();
 }
 
 UnicodeString ChatRoomAdapter::getTitle() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getTitle();
+	return (static_cast<ChatRoom*>(stub))->getTitle();
 }
 
 String ChatRoomAdapter::getGalaxyName() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getGalaxyName();
+	return (static_cast<ChatRoom*>(stub))->getGalaxyName();
 }
 
 void ChatRoomAdapter::setOwner(const String& Owner) {
-	(static_cast<ChatRoomImplementation*>(impl))->setOwner(Owner);
+	(static_cast<ChatRoom*>(stub))->setOwner(Owner);
 }
 
 void ChatRoomAdapter::setCreator(const String& Creator) {
-	(static_cast<ChatRoomImplementation*>(impl))->setCreator(Creator);
+	(static_cast<ChatRoom*>(stub))->setCreator(Creator);
 }
 
 void ChatRoomAdapter::setTitle(const String& Title) {
-	(static_cast<ChatRoomImplementation*>(impl))->setTitle(Title);
+	(static_cast<ChatRoom*>(stub))->setTitle(Title);
 }
 
 void ChatRoomAdapter::setRoomID(int id) {
-	(static_cast<ChatRoomImplementation*>(impl))->setRoomID(id);
+	(static_cast<ChatRoom*>(stub))->setRoomID(id);
 }
 
 unsigned int ChatRoomAdapter::getRoomID() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getRoomID();
+	return (static_cast<ChatRoom*>(stub))->getRoomID();
 }
 
 int ChatRoomAdapter::getSubRoomsSize() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getSubRoomsSize();
+	return (static_cast<ChatRoom*>(stub))->getSubRoomsSize();
 }
 
 ChatRoom* ChatRoomAdapter::getParent() {
-	return (static_cast<ChatRoomImplementation*>(impl))->getParent();
+	return (static_cast<ChatRoom*>(stub))->getParent();
 }
 
 int ChatRoomAdapter::compareTo(ChatRoom* obj) {
-	return (static_cast<ChatRoomImplementation*>(impl))->compareTo(obj);
+	return (static_cast<ChatRoom*>(stub))->compareTo(obj);
 }
 
 /*
@@ -1410,7 +1410,7 @@ DistributedObjectServant* ChatRoomHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ChatRoomHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ChatRoomAdapter(static_cast<ChatRoomImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ChatRoomAdapter(static_cast<ChatRoom*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

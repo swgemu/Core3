@@ -268,7 +268,7 @@ protected:
 
 class ComponentAdapter : public TangibleObjectAdapter {
 public:
-	ComponentAdapter(ComponentImplementation* impl);
+	ComponentAdapter(Component* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

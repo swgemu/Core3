@@ -1280,7 +1280,7 @@ String MissionObjectImplementation::getTemplateString2() {
  *	MissionObjectAdapter
  */
 
-MissionObjectAdapter::MissionObjectAdapter(MissionObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
+MissionObjectAdapter::MissionObjectAdapter(MissionObject* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1427,179 +1427,179 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 WaypointObject* MissionObjectAdapter::createWaypoint() {
-	return (static_cast<MissionObjectImplementation*>(impl))->createWaypoint();
+	return (static_cast<MissionObject*>(stub))->createWaypoint();
 }
 
 void MissionObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<MissionObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<MissionObject*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void MissionObjectAdapter::updateToDatabaseAllObjects(bool startTask) {
-	(static_cast<MissionObjectImplementation*>(impl))->updateToDatabaseAllObjects(startTask);
+	(static_cast<MissionObject*>(stub))->updateToDatabaseAllObjects(startTask);
 }
 
 void MissionObjectAdapter::setRefreshCounter(int ctr, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setRefreshCounter(ctr, notifyClient);
+	(static_cast<MissionObject*>(stub))->setRefreshCounter(ctr, notifyClient);
 }
 
 void MissionObjectAdapter::setTypeCRC(unsigned int crc, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setTypeCRC(crc, notifyClient);
+	(static_cast<MissionObject*>(stub))->setTypeCRC(crc, notifyClient);
 }
 
 void MissionObjectAdapter::initializeTransientMembers() {
-	(static_cast<MissionObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<MissionObject*>(stub))->initializeTransientMembers();
 }
 
 void MissionObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<MissionObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<MissionObject*>(stub))->sendBaselinesTo(player);
 }
 
 void MissionObjectAdapter::setMissionDescription(const String& file, const String& id, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionDescription(file, id, notifyClient);
+	(static_cast<MissionObject*>(stub))->setMissionDescription(file, id, notifyClient);
 }
 
 void MissionObjectAdapter::setMissionTitle(const String& file, const String& id, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionTitle(file, id, notifyClient);
+	(static_cast<MissionObject*>(stub))->setMissionTitle(file, id, notifyClient);
 }
 
 void MissionObjectAdapter::setMissionTargetName(const String& target, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionTargetName(target, notifyClient);
+	(static_cast<MissionObject*>(stub))->setMissionTargetName(target, notifyClient);
 }
 
 void MissionObjectAdapter::setMissionDifficulty(int difficulty, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionDifficulty(difficulty, notifyClient);
+	(static_cast<MissionObject*>(stub))->setMissionDifficulty(difficulty, notifyClient);
 }
 
 void MissionObjectAdapter::setRewardCredits(int creds, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setRewardCredits(creds, notifyClient);
+	(static_cast<MissionObject*>(stub))->setRewardCredits(creds, notifyClient);
 }
 
 void MissionObjectAdapter::setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setStartPosition(posX, posY, planetCRC, notifyClient);
+	(static_cast<MissionObject*>(stub))->setStartPosition(posX, posY, planetCRC, notifyClient);
 }
 
 void MissionObjectAdapter::setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setEndPosition(posX, posY, planetCRC, notifyClient);
+	(static_cast<MissionObject*>(stub))->setEndPosition(posX, posY, planetCRC, notifyClient);
 }
 
 void MissionObjectAdapter::setCreatorName(const String& name, bool notifyClient) {
-	(static_cast<MissionObjectImplementation*>(impl))->setCreatorName(name, notifyClient);
+	(static_cast<MissionObject*>(stub))->setCreatorName(name, notifyClient);
 }
 
 void MissionObjectAdapter::updateMissionLocation() {
-	(static_cast<MissionObjectImplementation*>(impl))->updateMissionLocation();
+	(static_cast<MissionObject*>(stub))->updateMissionLocation();
 }
 
 void MissionObjectAdapter::abort() {
-	(static_cast<MissionObjectImplementation*>(impl))->abort();
+	(static_cast<MissionObject*>(stub))->abort();
 }
 
 void MissionObjectAdapter::setMissionObjective(MissionObjective* obj) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionObjective(obj);
+	(static_cast<MissionObject*>(stub))->setMissionObjective(obj);
 }
 
 void MissionObjectAdapter::setStartPlanetCRC(unsigned int crc) {
-	(static_cast<MissionObjectImplementation*>(impl))->setStartPlanetCRC(crc);
+	(static_cast<MissionObject*>(stub))->setStartPlanetCRC(crc);
 }
 
 void MissionObjectAdapter::setEndPlanetCRC(unsigned int crc) {
-	(static_cast<MissionObjectImplementation*>(impl))->setEndPlanetCRC(crc);
+	(static_cast<MissionObject*>(stub))->setEndPlanetCRC(crc);
 }
 
 void MissionObjectAdapter::setMissionTarget(SceneObject* target) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionTarget(target);
+	(static_cast<MissionObject*>(stub))->setMissionTarget(target);
 }
 
 void MissionObjectAdapter::setMissionTargetDest(SceneObject* target) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionTargetDest(target);
+	(static_cast<MissionObject*>(stub))->setMissionTargetDest(target);
 }
 
 void MissionObjectAdapter::setMissionNumber(int num) {
-	(static_cast<MissionObjectImplementation*>(impl))->setMissionNumber(num);
+	(static_cast<MissionObject*>(stub))->setMissionNumber(num);
 }
 
 void MissionObjectAdapter::setTemplateStrings(const String& temp1, const String& temp2) {
-	(static_cast<MissionObjectImplementation*>(impl))->setTemplateStrings(temp1, temp2);
+	(static_cast<MissionObject*>(stub))->setTemplateStrings(temp1, temp2);
 }
 
 float MissionObjectAdapter::getStartPositionX() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getStartPositionX();
+	return (static_cast<MissionObject*>(stub))->getStartPositionX();
 }
 
 float MissionObjectAdapter::getStartPositionY() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getStartPositionY();
+	return (static_cast<MissionObject*>(stub))->getStartPositionY();
 }
 
 unsigned int MissionObjectAdapter::getStartPlanetCRC() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getStartPlanetCRC();
+	return (static_cast<MissionObject*>(stub))->getStartPlanetCRC();
 }
 
 float MissionObjectAdapter::getEndPositionX() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getEndPositionX();
+	return (static_cast<MissionObject*>(stub))->getEndPositionX();
 }
 
 float MissionObjectAdapter::getEndPositionY() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getEndPositionY();
+	return (static_cast<MissionObject*>(stub))->getEndPositionY();
 }
 
 unsigned int MissionObjectAdapter::getEndPlanetCRC() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getEndPlanetCRC();
+	return (static_cast<MissionObject*>(stub))->getEndPlanetCRC();
 }
 
 WaypointObject* MissionObjectAdapter::getWaypointToMission() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getWaypointToMission();
+	return (static_cast<MissionObject*>(stub))->getWaypointToMission();
 }
 
 SceneObject* MissionObjectAdapter::getMissionTarget() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getMissionTarget();
+	return (static_cast<MissionObject*>(stub))->getMissionTarget();
 }
 
 SceneObject* MissionObjectAdapter::getMissionTargetDest() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getMissionTargetDest();
+	return (static_cast<MissionObject*>(stub))->getMissionTargetDest();
 }
 
 unsigned int MissionObjectAdapter::getTypeCRC() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getTypeCRC();
+	return (static_cast<MissionObject*>(stub))->getTypeCRC();
 }
 
 int MissionObjectAdapter::getRewardCredits() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getRewardCredits();
+	return (static_cast<MissionObject*>(stub))->getRewardCredits();
 }
 
 UnicodeString MissionObjectAdapter::getCreatorName() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getCreatorName();
+	return (static_cast<MissionObject*>(stub))->getCreatorName();
 }
 
 int MissionObjectAdapter::getDifficultyLevel() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getDifficultyLevel();
+	return (static_cast<MissionObject*>(stub))->getDifficultyLevel();
 }
 
 String MissionObjectAdapter::getTargetName() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getTargetName();
+	return (static_cast<MissionObject*>(stub))->getTargetName();
 }
 
 int MissionObjectAdapter::getRefreshCounter() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getRefreshCounter();
+	return (static_cast<MissionObject*>(stub))->getRefreshCounter();
 }
 
 int MissionObjectAdapter::getMissionNumber() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getMissionNumber();
+	return (static_cast<MissionObject*>(stub))->getMissionNumber();
 }
 
 bool MissionObjectAdapter::isSurveyMission() {
-	return (static_cast<MissionObjectImplementation*>(impl))->isSurveyMission();
+	return (static_cast<MissionObject*>(stub))->isSurveyMission();
 }
 
 bool MissionObjectAdapter::isMissionObject() {
-	return (static_cast<MissionObjectImplementation*>(impl))->isMissionObject();
+	return (static_cast<MissionObject*>(stub))->isMissionObject();
 }
 
 String MissionObjectAdapter::getTemplateString1() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getTemplateString1();
+	return (static_cast<MissionObject*>(stub))->getTemplateString1();
 }
 
 String MissionObjectAdapter::getTemplateString2() {
-	return (static_cast<MissionObjectImplementation*>(impl))->getTemplateString2();
+	return (static_cast<MissionObject*>(stub))->getTemplateString2();
 }
 
 /*
@@ -1627,7 +1627,7 @@ DistributedObjectServant* MissionObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionObjectAdapter(static_cast<MissionObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new MissionObjectAdapter(static_cast<MissionObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

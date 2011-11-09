@@ -410,7 +410,7 @@ void ImageDesignSessionImplementation::sessionTimeout() {
  *	ImageDesignSessionAdapter
  */
 
-ImageDesignSessionAdapter::ImageDesignSessionAdapter(ImageDesignSessionImplementation* obj) : FacadeAdapter(obj) {
+ImageDesignSessionAdapter::ImageDesignSessionAdapter(ImageDesignSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -449,35 +449,35 @@ Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void ImageDesignSessionAdapter::initializeTransientMembers() {
-	(static_cast<ImageDesignSessionImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ImageDesignSession*>(stub))->initializeTransientMembers();
 }
 
 int ImageDesignSessionAdapter::initializeSession() {
-	return (static_cast<ImageDesignSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<ImageDesignSession*>(stub))->initializeSession();
 }
 
 int ImageDesignSessionAdapter::doPayment() {
-	return (static_cast<ImageDesignSessionImplementation*>(impl))->doPayment();
+	return (static_cast<ImageDesignSession*>(stub))->doPayment();
 }
 
 int ImageDesignSessionAdapter::cancelSession() {
-	return (static_cast<ImageDesignSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<ImageDesignSession*>(stub))->cancelSession();
 }
 
 int ImageDesignSessionAdapter::clearSession() {
-	return (static_cast<ImageDesignSessionImplementation*>(impl))->clearSession();
+	return (static_cast<ImageDesignSession*>(stub))->clearSession();
 }
 
 void ImageDesignSessionAdapter::clearIdTimeoutEvent() {
-	(static_cast<ImageDesignSessionImplementation*>(impl))->clearIdTimeoutEvent();
+	(static_cast<ImageDesignSession*>(stub))->clearIdTimeoutEvent();
 }
 
 void ImageDesignSessionAdapter::dequeueIdTimeoutEvent() {
-	(static_cast<ImageDesignSessionImplementation*>(impl))->dequeueIdTimeoutEvent();
+	(static_cast<ImageDesignSession*>(stub))->dequeueIdTimeoutEvent();
 }
 
 void ImageDesignSessionAdapter::sessionTimeout() {
-	(static_cast<ImageDesignSessionImplementation*>(impl))->sessionTimeout();
+	(static_cast<ImageDesignSession*>(stub))->sessionTimeout();
 }
 
 /*
@@ -505,7 +505,7 @@ DistributedObjectServant* ImageDesignSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ImageDesignSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ImageDesignSessionAdapter(static_cast<ImageDesignSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ImageDesignSessionAdapter(static_cast<ImageDesignSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

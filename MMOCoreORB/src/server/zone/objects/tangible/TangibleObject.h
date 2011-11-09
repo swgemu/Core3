@@ -659,7 +659,7 @@ protected:
 
 class TangibleObjectAdapter : public SceneObjectAdapter {
 public:
-	TangibleObjectAdapter(TangibleObjectImplementation* impl);
+	TangibleObjectAdapter(TangibleObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

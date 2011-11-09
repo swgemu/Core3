@@ -186,7 +186,7 @@ protected:
 
 class EntertainerMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	EntertainerMissionObjectiveAdapter(EntertainerMissionObjectiveImplementation* impl);
+	EntertainerMissionObjectiveAdapter(EntertainerMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

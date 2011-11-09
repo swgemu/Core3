@@ -255,7 +255,7 @@ protected:
 
 class RevivePackAdapter : public PharmaceuticalObjectAdapter {
 public:
-	RevivePackAdapter(RevivePackImplementation* impl);
+	RevivePackAdapter(RevivePack* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

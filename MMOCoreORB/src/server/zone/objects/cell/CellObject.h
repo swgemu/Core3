@@ -174,7 +174,7 @@ protected:
 
 class CellObjectAdapter : public SceneObjectAdapter {
 public:
-	CellObjectAdapter(CellObjectImplementation* impl);
+	CellObjectAdapter(CellObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

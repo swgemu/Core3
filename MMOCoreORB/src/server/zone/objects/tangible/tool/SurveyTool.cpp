@@ -705,7 +705,7 @@ bool SurveyToolImplementation::isInUse() {
  *	SurveyToolAdapter
  */
 
-SurveyToolAdapter::SurveyToolAdapter(SurveyToolImplementation* obj) : ToolTangibleObjectAdapter(obj) {
+SurveyToolAdapter::SurveyToolAdapter(SurveyTool* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
 Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -783,87 +783,87 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void SurveyToolAdapter::initializeTransientMembers() {
-	(static_cast<SurveyToolImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<SurveyTool*>(stub))->initializeTransientMembers();
 }
 
 void SurveyToolAdapter::setRange(int r) {
-	(static_cast<SurveyToolImplementation*>(impl))->setRange(r);
+	(static_cast<SurveyTool*>(stub))->setRange(r);
 }
 
 int SurveyToolAdapter::getRange(CreatureObject* player) {
-	return (static_cast<SurveyToolImplementation*>(impl))->getRange(player);
+	return (static_cast<SurveyTool*>(stub))->getRange(player);
 }
 
 int SurveyToolAdapter::getPoints() {
-	return (static_cast<SurveyToolImplementation*>(impl))->getPoints();
+	return (static_cast<SurveyTool*>(stub))->getPoints();
 }
 
 bool SurveyToolAdapter::canSampleRadioactive() {
-	return (static_cast<SurveyToolImplementation*>(impl))->canSampleRadioactive();
+	return (static_cast<SurveyTool*>(stub))->canSampleRadioactive();
 }
 
 bool SurveyToolAdapter::tryGamble() {
-	return (static_cast<SurveyToolImplementation*>(impl))->tryGamble();
+	return (static_cast<SurveyTool*>(stub))->tryGamble();
 }
 
 void SurveyToolAdapter::clearGamble() {
-	(static_cast<SurveyToolImplementation*>(impl))->clearGamble();
+	(static_cast<SurveyTool*>(stub))->clearGamble();
 }
 
 void SurveyToolAdapter::consentRadioactiveSample(CreatureObject* player) {
-	(static_cast<SurveyToolImplementation*>(impl))->consentRadioactiveSample(player);
+	(static_cast<SurveyTool*>(stub))->consentRadioactiveSample(player);
 }
 
 void SurveyToolAdapter::sendRadioactiveWarning(CreatureObject* player) {
-	(static_cast<SurveyToolImplementation*>(impl))->sendRadioactiveWarning(player);
+	(static_cast<SurveyTool*>(stub))->sendRadioactiveWarning(player);
 }
 
 void SurveyToolAdapter::sendRangeSui(CreatureObject* player) {
-	(static_cast<SurveyToolImplementation*>(impl))->sendRangeSui(player);
+	(static_cast<SurveyTool*>(stub))->sendRangeSui(player);
 }
 
 void SurveyToolAdapter::surveyCnodeMinigameSui(CreatureObject* player) {
-	(static_cast<SurveyToolImplementation*>(impl))->surveyCnodeMinigameSui(player);
+	(static_cast<SurveyTool*>(stub))->surveyCnodeMinigameSui(player);
 }
 
 void SurveyToolAdapter::surveyCnodeMinigame(CreatureObject* player, int value) {
-	(static_cast<SurveyToolImplementation*>(impl))->surveyCnodeMinigame(player, value);
+	(static_cast<SurveyTool*>(stub))->surveyCnodeMinigame(player, value);
 }
 
 void SurveyToolAdapter::clearRichSampleLocation() {
-	(static_cast<SurveyToolImplementation*>(impl))->clearRichSampleLocation();
+	(static_cast<SurveyTool*>(stub))->clearRichSampleLocation();
 }
 
 void SurveyToolAdapter::setInUse(bool use) {
-	(static_cast<SurveyToolImplementation*>(impl))->setInUse(use);
+	(static_cast<SurveyTool*>(stub))->setInUse(use);
 }
 
 bool SurveyToolAdapter::isInUse() {
-	return (static_cast<SurveyToolImplementation*>(impl))->isInUse();
+	return (static_cast<SurveyTool*>(stub))->isInUse();
 }
 
 void SurveyToolAdapter::surveyGnodeMinigameSui(CreatureObject* player) {
-	(static_cast<SurveyToolImplementation*>(impl))->surveyGnodeMinigameSui(player);
+	(static_cast<SurveyTool*>(stub))->surveyGnodeMinigameSui(player);
 }
 
 void SurveyToolAdapter::surveyGnodeMinigame(CreatureObject* player, int value) {
-	(static_cast<SurveyToolImplementation*>(impl))->surveyGnodeMinigame(player, value);
+	(static_cast<SurveyTool*>(stub))->surveyGnodeMinigame(player, value);
 }
 
 int SurveyToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<SurveyToolImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SurveyTool*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void SurveyToolAdapter::sendResourceListTo(CreatureObject* player) {
-	(static_cast<SurveyToolImplementation*>(impl))->sendResourceListTo(player);
+	(static_cast<SurveyTool*>(stub))->sendResourceListTo(player);
 }
 
 void SurveyToolAdapter::sendSurveyTo(CreatureObject* player, const String& resname) {
-	(static_cast<SurveyToolImplementation*>(impl))->sendSurveyTo(player, resname);
+	(static_cast<SurveyTool*>(stub))->sendSurveyTo(player, resname);
 }
 
 void SurveyToolAdapter::sendSampleTo(CreatureObject* player, const String& resname) {
-	(static_cast<SurveyToolImplementation*>(impl))->sendSampleTo(player, resname);
+	(static_cast<SurveyTool*>(stub))->sendSampleTo(player, resname);
 }
 
 /*
@@ -891,7 +891,7 @@ DistributedObjectServant* SurveyToolHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SurveyToolHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SurveyToolAdapter(static_cast<SurveyToolImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SurveyToolAdapter(static_cast<SurveyTool*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

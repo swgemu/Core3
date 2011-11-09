@@ -451,7 +451,7 @@ bool EnhancePackImplementation::isEnhancePack() {
  *	EnhancePackAdapter
  */
 
-EnhancePackAdapter::EnhancePackAdapter(EnhancePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
+EnhancePackAdapter::EnhancePackAdapter(EnhancePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
 Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -484,27 +484,27 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 int EnhancePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<EnhancePackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<EnhancePack*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned int EnhancePackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	return (static_cast<EnhancePackImplementation*>(impl))->calculatePower(healer, patient, applyBattleFatigue);
+	return (static_cast<EnhancePack*>(stub))->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float EnhancePackAdapter::getEffectiveness() {
-	return (static_cast<EnhancePackImplementation*>(impl))->getEffectiveness();
+	return (static_cast<EnhancePack*>(stub))->getEffectiveness();
 }
 
 byte EnhancePackAdapter::getAttribute() {
-	return (static_cast<EnhancePackImplementation*>(impl))->getAttribute();
+	return (static_cast<EnhancePack*>(stub))->getAttribute();
 }
 
 float EnhancePackAdapter::getDuration() {
-	return (static_cast<EnhancePackImplementation*>(impl))->getDuration();
+	return (static_cast<EnhancePack*>(stub))->getDuration();
 }
 
 bool EnhancePackAdapter::isEnhancePack() {
-	return (static_cast<EnhancePackImplementation*>(impl))->isEnhancePack();
+	return (static_cast<EnhancePack*>(stub))->isEnhancePack();
 }
 
 /*
@@ -532,7 +532,7 @@ DistributedObjectServant* EnhancePackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* EnhancePackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EnhancePackAdapter(static_cast<EnhancePackImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new EnhancePackAdapter(static_cast<EnhancePack*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

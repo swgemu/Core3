@@ -297,7 +297,7 @@ bool DeedImplementation::isDeedObject() {
  *	DeedAdapter
  */
 
-DeedAdapter::DeedAdapter(DeedImplementation* obj) : TangibleObjectAdapter(obj) {
+DeedAdapter::DeedAdapter(Deed* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -324,19 +324,19 @@ Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void DeedAdapter::initializeTransientMembers() {
-	(static_cast<DeedImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<Deed*>(stub))->initializeTransientMembers();
 }
 
 void DeedAdapter::setGeneratedObjectTemplate(const String& templ) {
-	(static_cast<DeedImplementation*>(impl))->setGeneratedObjectTemplate(templ);
+	(static_cast<Deed*>(stub))->setGeneratedObjectTemplate(templ);
 }
 
 String DeedAdapter::getGeneratedObjectTemplate() {
-	return (static_cast<DeedImplementation*>(impl))->getGeneratedObjectTemplate();
+	return (static_cast<Deed*>(stub))->getGeneratedObjectTemplate();
 }
 
 bool DeedAdapter::isDeedObject() {
-	return (static_cast<DeedImplementation*>(impl))->isDeedObject();
+	return (static_cast<Deed*>(stub))->isDeedObject();
 }
 
 /*
@@ -364,7 +364,7 @@ DistributedObjectServant* DeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DeedAdapter(static_cast<DeedImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DeedAdapter(static_cast<Deed*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

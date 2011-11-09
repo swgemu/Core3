@@ -149,6 +149,7 @@ class DraftSchematic extends IntangibleObject {
 		groupName = name;
 	}
 	
+	@dirty
 	public string getGroupName() {
 		return groupName;
 	}

@@ -118,7 +118,7 @@ protected:
 
 class SpaceshipTerminalAdapter : public TerminalAdapter {
 public:
-	SpaceshipTerminalAdapter(SpaceshipTerminalImplementation* impl);
+	SpaceshipTerminalAdapter(SpaceshipTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -226,7 +226,7 @@ void SpiceDownerBuffImplementation::deactivate(bool applyModifiers) {
  *	SpiceDownerBuffAdapter
  */
 
-SpiceDownerBuffAdapter::SpiceDownerBuffAdapter(SpiceDownerBuffImplementation* obj) : BuffAdapter(obj) {
+SpiceDownerBuffAdapter::SpiceDownerBuffAdapter(SpiceDownerBuff* obj) : BuffAdapter(obj) {
 }
 
 Packet* SpiceDownerBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -247,11 +247,11 @@ Packet* SpiceDownerBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void SpiceDownerBuffAdapter::activate(bool applyModifiers) {
-	(static_cast<SpiceDownerBuffImplementation*>(impl))->activate(applyModifiers);
+	(static_cast<SpiceDownerBuff*>(stub))->activate(applyModifiers);
 }
 
 void SpiceDownerBuffAdapter::deactivate(bool applyModifiers) {
-	(static_cast<SpiceDownerBuffImplementation*>(impl))->deactivate(applyModifiers);
+	(static_cast<SpiceDownerBuff*>(stub))->deactivate(applyModifiers);
 }
 
 /*
@@ -279,7 +279,7 @@ DistributedObjectServant* SpiceDownerBuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpiceDownerBuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpiceDownerBuffAdapter(static_cast<SpiceDownerBuffImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SpiceDownerBuffAdapter(static_cast<SpiceDownerBuff*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

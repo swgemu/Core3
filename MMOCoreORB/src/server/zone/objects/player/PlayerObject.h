@@ -1347,7 +1347,7 @@ protected:
 
 class PlayerObjectAdapter : public IntangibleObjectAdapter {
 public:
-	PlayerObjectAdapter(PlayerObjectImplementation* impl);
+	PlayerObjectAdapter(PlayerObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

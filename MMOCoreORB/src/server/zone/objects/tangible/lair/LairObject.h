@@ -207,7 +207,7 @@ protected:
 
 class LairObjectAdapter : public TangibleObjectAdapter {
 public:
-	LairObjectAdapter(LairObjectImplementation* impl);
+	LairObjectAdapter(LairObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

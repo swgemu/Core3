@@ -196,7 +196,7 @@ protected:
 
 class ContainerAdapter : public TangibleObjectAdapter {
 public:
-	ContainerAdapter(ContainerImplementation* impl);
+	ContainerAdapter(Container* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

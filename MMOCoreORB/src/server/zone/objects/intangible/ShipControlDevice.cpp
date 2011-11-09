@@ -261,7 +261,7 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
  *	ShipControlDeviceAdapter
  */
 
-ShipControlDeviceAdapter::ShipControlDeviceAdapter(ShipControlDeviceImplementation* obj) : ControlDeviceAdapter(obj) {
+ShipControlDeviceAdapter::ShipControlDeviceAdapter(ShipControlDevice* obj) : ControlDeviceAdapter(obj) {
 }
 
 Packet* ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -285,15 +285,15 @@ Packet* ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ShipControlDeviceAdapter::storeObject(CreatureObject* player) {
-	(static_cast<ShipControlDeviceImplementation*>(impl))->storeObject(player);
+	(static_cast<ShipControlDevice*>(stub))->storeObject(player);
 }
 
 void ShipControlDeviceAdapter::generateObject(CreatureObject* player) {
-	(static_cast<ShipControlDeviceImplementation*>(impl))->generateObject(player);
+	(static_cast<ShipControlDevice*>(stub))->generateObject(player);
 }
 
 int ShipControlDeviceAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<ShipControlDeviceImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ShipControlDevice*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -321,7 +321,7 @@ DistributedObjectServant* ShipControlDeviceHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ShipControlDeviceHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ShipControlDeviceAdapter(static_cast<ShipControlDeviceImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ShipControlDeviceAdapter(static_cast<ShipControlDevice*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

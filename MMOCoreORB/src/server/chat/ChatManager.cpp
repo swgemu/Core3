@@ -846,7 +846,7 @@ ChatRoom* ChatManagerImplementation::getGroupRoom() {
  *	ChatManagerAdapter
  */
 
-ChatManagerAdapter::ChatManagerAdapter(ChatManagerImplementation* obj) : ManagedServiceAdapter(obj) {
+ChatManagerAdapter::ChatManagerAdapter(ChatManager* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -966,143 +966,143 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void ChatManagerAdapter::finalize() {
-	(static_cast<ChatManagerImplementation*>(impl))->finalize();
+	(static_cast<ChatManager*>(stub))->finalize();
 }
 
 void ChatManagerAdapter::initiateRooms() {
-	(static_cast<ChatManagerImplementation*>(impl))->initiateRooms();
+	(static_cast<ChatManager*>(stub))->initiateRooms();
 }
 
 void ChatManagerAdapter::destroyRooms() {
-	(static_cast<ChatManagerImplementation*>(impl))->destroyRooms();
+	(static_cast<ChatManager*>(stub))->destroyRooms();
 }
 
 ChatRoom* ChatManagerAdapter::createRoom(const String& roomName, ChatRoom* parent) {
-	return (static_cast<ChatManagerImplementation*>(impl))->createRoom(roomName, parent);
+	return (static_cast<ChatManager*>(stub))->createRoom(roomName, parent);
 }
 
 void ChatManagerAdapter::addRoom(ChatRoom* channel) {
-	(static_cast<ChatManagerImplementation*>(impl))->addRoom(channel);
+	(static_cast<ChatManager*>(stub))->addRoom(channel);
 }
 
 void ChatManagerAdapter::removeRoom(ChatRoom* channel) {
-	(static_cast<ChatManagerImplementation*>(impl))->removeRoom(channel);
+	(static_cast<ChatManager*>(stub))->removeRoom(channel);
 }
 
 void ChatManagerAdapter::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
-	(static_cast<ChatManagerImplementation*>(impl))->populateRoomListMessage(channel, msg);
+	(static_cast<ChatManager*>(stub))->populateRoomListMessage(channel, msg);
 }
 
 void ChatManagerAdapter::sendRoomList(CreatureObject* player) {
-	(static_cast<ChatManagerImplementation*>(impl))->sendRoomList(player);
+	(static_cast<ChatManager*>(stub))->sendRoomList(player);
 }
 
 void ChatManagerAdapter::addPlayer(CreatureObject* player) {
-	(static_cast<ChatManagerImplementation*>(impl))->addPlayer(player);
+	(static_cast<ChatManager*>(stub))->addPlayer(player);
 }
 
 CreatureObject* ChatManagerAdapter::getPlayer(const String& name) {
-	return (static_cast<ChatManagerImplementation*>(impl))->getPlayer(name);
+	return (static_cast<ChatManager*>(stub))->getPlayer(name);
 }
 
 CreatureObject* ChatManagerAdapter::removePlayer(const String& name) {
-	return (static_cast<ChatManagerImplementation*>(impl))->removePlayer(name);
+	return (static_cast<ChatManager*>(stub))->removePlayer(name);
 }
 
 void ChatManagerAdapter::broadcastMessage(BaseMessage* message) {
-	(static_cast<ChatManagerImplementation*>(impl))->broadcastMessage(message);
+	(static_cast<ChatManager*>(stub))->broadcastMessage(message);
 }
 
 void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
-	(static_cast<ChatManagerImplementation*>(impl))->broadcastMessage(player, message, target, moodid, mood2);
+	(static_cast<ChatManager*>(stub))->broadcastMessage(player, message, target, moodid, mood2);
 }
 
 void ChatManagerAdapter::handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args) {
-	(static_cast<ChatManagerImplementation*>(impl))->handleSpatialChatInternalMessage(player, args);
+	(static_cast<ChatManager*>(stub))->handleSpatialChatInternalMessage(player, args);
 }
 
 void ChatManagerAdapter::handleGroupChat(CreatureObject* player, const UnicodeString& message) {
-	(static_cast<ChatManagerImplementation*>(impl))->handleGroupChat(player, message);
+	(static_cast<ChatManager*>(stub))->handleGroupChat(player, message);
 }
 
 ChatRoom* ChatManagerAdapter::createRoomByFullPath(const String& path) {
-	return (static_cast<ChatManagerImplementation*>(impl))->createRoomByFullPath(path);
+	return (static_cast<ChatManager*>(stub))->createRoomByFullPath(path);
 }
 
 ChatRoom* ChatManagerAdapter::getChatRoomByFullPath(const String& path) {
-	return (static_cast<ChatManagerImplementation*>(impl))->getChatRoomByFullPath(path);
+	return (static_cast<ChatManager*>(stub))->getChatRoomByFullPath(path);
 }
 
 ChatRoom* ChatManagerAdapter::getChatRoomByGamePath(ChatRoom* game, const String& path) {
-	return (static_cast<ChatManagerImplementation*>(impl))->getChatRoomByGamePath(game, path);
+	return (static_cast<ChatManager*>(stub))->getChatRoomByGamePath(game, path);
 }
 
 void ChatManagerAdapter::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
-	(static_cast<ChatManagerImplementation*>(impl))->handleChatRoomMessage(sender, message, roomID, counter);
+	(static_cast<ChatManager*>(stub))->handleChatRoomMessage(sender, message, roomID, counter);
 }
 
 void ChatManagerAdapter::handleChatEnterRoomById(CreatureObject* player, unsigned int counter, unsigned int roomID) {
-	(static_cast<ChatManagerImplementation*>(impl))->handleChatEnterRoomById(player, counter, roomID);
+	(static_cast<ChatManager*>(stub))->handleChatEnterRoomById(player, counter, roomID);
 }
 
 void ChatManagerAdapter::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
-	(static_cast<ChatManagerImplementation*>(impl))->handleSocialInternalMessage(sender, arguments);
+	(static_cast<ChatManager*>(stub))->handleSocialInternalMessage(sender, arguments);
 }
 
 void ChatManagerAdapter::destroyRoom(ChatRoom* room) {
-	(static_cast<ChatManagerImplementation*>(impl))->destroyRoom(room);
+	(static_cast<ChatManager*>(stub))->destroyRoom(room);
 }
 
 ChatRoom* ChatManagerAdapter::createGroupRoom(unsigned long long groupID, CreatureObject* creator) {
-	return (static_cast<ChatManagerImplementation*>(impl))->createGroupRoom(groupID, creator);
+	return (static_cast<ChatManager*>(stub))->createGroupRoom(groupID, creator);
 }
 
 void ChatManagerAdapter::loadMail(CreatureObject* player) {
-	(static_cast<ChatManagerImplementation*>(impl))->loadMail(player);
+	(static_cast<ChatManager*>(stub))->loadMail(player);
 }
 
 void ChatManagerAdapter::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
-	(static_cast<ChatManagerImplementation*>(impl))->sendMail(sendername, header, body, name);
+	(static_cast<ChatManager*>(stub))->sendMail(sendername, header, body, name);
 }
 
 void ChatManagerAdapter::handleRequestPersistentMsg(CreatureObject* player, unsigned int mailID) {
-	(static_cast<ChatManagerImplementation*>(impl))->handleRequestPersistentMsg(player, mailID);
+	(static_cast<ChatManager*>(stub))->handleRequestPersistentMsg(player, mailID);
 }
 
 void ChatManagerAdapter::deletePersistentMessage(CreatureObject* player, unsigned int mailID) {
-	(static_cast<ChatManagerImplementation*>(impl))->deletePersistentMessage(player, mailID);
+	(static_cast<ChatManager*>(stub))->deletePersistentMessage(player, mailID);
 }
 
 void ChatManagerAdapter::broadcastGalaxy(CreatureObject* player, const String& message) {
-	(static_cast<ChatManagerImplementation*>(impl))->broadcastGalaxy(player, message);
+	(static_cast<ChatManager*>(stub))->broadcastGalaxy(player, message);
 }
 
 void ChatManagerAdapter::setPlayerManager(PlayerManager* manager) {
-	(static_cast<ChatManagerImplementation*>(impl))->setPlayerManager(manager);
+	(static_cast<ChatManager*>(stub))->setPlayerManager(manager);
 }
 
 ChatRoom* ChatManagerAdapter::getChatRoom(unsigned int id) {
-	return (static_cast<ChatManagerImplementation*>(impl))->getChatRoom(id);
+	return (static_cast<ChatManager*>(stub))->getChatRoom(id);
 }
 
 ChatRoom* ChatManagerAdapter::getGameRoom(const String& game) {
-	return (static_cast<ChatManagerImplementation*>(impl))->getGameRoom(game);
+	return (static_cast<ChatManager*>(stub))->getGameRoom(game);
 }
 
 unsigned int ChatManagerAdapter::getNextRoomID() {
-	return (static_cast<ChatManagerImplementation*>(impl))->getNextRoomID();
+	return (static_cast<ChatManager*>(stub))->getNextRoomID();
 }
 
 int ChatManagerAdapter::getPlayerCount() {
-	return (static_cast<ChatManagerImplementation*>(impl))->getPlayerCount();
+	return (static_cast<ChatManager*>(stub))->getPlayerCount();
 }
 
 ChatRoom* ChatManagerAdapter::getGuildRoom() {
-	return (static_cast<ChatManagerImplementation*>(impl))->getGuildRoom();
+	return (static_cast<ChatManager*>(stub))->getGuildRoom();
 }
 
 ChatRoom* ChatManagerAdapter::getGroupRoom() {
-	return (static_cast<ChatManagerImplementation*>(impl))->getGroupRoom();
+	return (static_cast<ChatManager*>(stub))->getGroupRoom();
 }
 
 /*
@@ -1130,7 +1130,7 @@ DistributedObjectServant* ChatManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ChatManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ChatManagerAdapter(static_cast<ChatManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ChatManagerAdapter(static_cast<ChatManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

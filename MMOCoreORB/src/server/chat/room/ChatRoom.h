@@ -333,7 +333,7 @@ protected:
 
 class ChatRoomAdapter : public ManagedObjectAdapter {
 public:
-	ChatRoomAdapter(ChatRoomImplementation* impl);
+	ChatRoomAdapter(ChatRoom* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

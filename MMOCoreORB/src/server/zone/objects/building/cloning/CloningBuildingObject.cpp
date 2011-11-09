@@ -220,7 +220,7 @@ CloneSpawnPoint* CloningBuildingObjectImplementation::getRandomSpawnPoint() {
  *	CloningBuildingObjectAdapter
  */
 
-CloningBuildingObjectAdapter::CloningBuildingObjectAdapter(CloningBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
+CloningBuildingObjectAdapter::CloningBuildingObjectAdapter(CloningBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
 Packet* CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -238,7 +238,7 @@ Packet* CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMet
 }
 
 bool CloningBuildingObjectAdapter::isCloningBuildingObject() {
-	return (static_cast<CloningBuildingObjectImplementation*>(impl))->isCloningBuildingObject();
+	return (static_cast<CloningBuildingObject*>(stub))->isCloningBuildingObject();
 }
 
 /*
@@ -266,7 +266,7 @@ DistributedObjectServant* CloningBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CloningBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CloningBuildingObjectAdapter(static_cast<CloningBuildingObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CloningBuildingObjectAdapter(static_cast<CloningBuildingObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

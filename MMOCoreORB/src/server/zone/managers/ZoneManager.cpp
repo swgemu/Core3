@@ -197,7 +197,7 @@ void ZoneManagerImplementation::setZoneProcessor(ZoneProcessServer* server) {
  *	ZoneManagerAdapter
  */
 
-ZoneManagerAdapter::ZoneManagerAdapter(ZoneManagerImplementation* obj) : ManagedServiceAdapter(obj) {
+ZoneManagerAdapter::ZoneManagerAdapter(ZoneManager* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -215,7 +215,7 @@ Packet* ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void ZoneManagerAdapter::setZoneProcessor(ZoneProcessServer* server) {
-	(static_cast<ZoneManagerImplementation*>(impl))->setZoneProcessor(server);
+	(static_cast<ZoneManager*>(stub))->setZoneProcessor(server);
 }
 
 /*
@@ -243,7 +243,7 @@ DistributedObjectServant* ZoneManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneManagerAdapter(static_cast<ZoneManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ZoneManagerAdapter(static_cast<ZoneManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

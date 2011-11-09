@@ -174,7 +174,7 @@ protected:
 
 class CampSiteActiveAreaAdapter : public ActiveAreaAdapter {
 public:
-	CampSiteActiveAreaAdapter(CampSiteActiveAreaImplementation* impl);
+	CampSiteActiveAreaAdapter(CampSiteActiveArea* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

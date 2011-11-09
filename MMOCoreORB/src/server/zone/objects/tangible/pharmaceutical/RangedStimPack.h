@@ -269,7 +269,7 @@ protected:
 
 class RangedStimPackAdapter : public StimPackAdapter {
 public:
-	RangedStimPackAdapter(RangedStimPackImplementation* impl);
+	RangedStimPackAdapter(RangedStimPack* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

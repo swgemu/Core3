@@ -1119,7 +1119,7 @@ SuiCallback* SuiBoxImplementation::getCallback() {
  *	SuiBoxAdapter
  */
 
-SuiBoxAdapter::SuiBoxAdapter(SuiBoxImplementation* obj) : ManagedObjectAdapter(obj) {
+SuiBoxAdapter::SuiBoxAdapter(SuiBox* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1245,151 +1245,151 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void SuiBoxAdapter::initialize() {
-	(static_cast<SuiBoxImplementation*>(impl))->initialize();
+	(static_cast<SuiBox*>(stub))->initialize();
 }
 
 void SuiBoxAdapter::finalize() {
-	(static_cast<SuiBoxImplementation*>(impl))->finalize();
+	(static_cast<SuiBox*>(stub))->finalize();
 }
 
 void SuiBoxAdapter::initializeTransientMembers() {
-	(static_cast<SuiBoxImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<SuiBox*>(stub))->initializeTransientMembers();
 }
 
 void SuiBoxAdapter::generateHeader(SuiCreatePageMessage* message) {
-	(static_cast<SuiBoxImplementation*>(impl))->generateHeader(message);
+	(static_cast<SuiBox*>(stub))->generateHeader(message);
 }
 
 void SuiBoxAdapter::generateBody(SuiCreatePageMessage* message) {
-	(static_cast<SuiBoxImplementation*>(impl))->generateBody(message);
+	(static_cast<SuiBox*>(stub))->generateBody(message);
 }
 
 void SuiBoxAdapter::generateFooter(SuiCreatePageMessage* message, int type) {
-	(static_cast<SuiBoxImplementation*>(impl))->generateFooter(message, type);
+	(static_cast<SuiBox*>(stub))->generateFooter(message, type);
 }
 
 BaseMessage* SuiBoxAdapter::generateMessage() {
-	return (static_cast<SuiBoxImplementation*>(impl))->generateMessage();
+	return (static_cast<SuiBox*>(stub))->generateMessage();
 }
 
 BaseMessage* SuiBoxAdapter::generateCloseMessage() {
-	return (static_cast<SuiBoxImplementation*>(impl))->generateCloseMessage();
+	return (static_cast<SuiBox*>(stub))->generateCloseMessage();
 }
 
 void SuiBoxAdapter::addSetting(const String& optType, const String& variable, const String& setting, const String& value) {
-	(static_cast<SuiBoxImplementation*>(impl))->addSetting(optType, variable, setting, value);
+	(static_cast<SuiBox*>(stub))->addSetting(optType, variable, setting, value);
 }
 
 void SuiBoxAdapter::addHeader(const String& variable, const String& type) {
-	(static_cast<SuiBoxImplementation*>(impl))->addHeader(variable, type);
+	(static_cast<SuiBox*>(stub))->addHeader(variable, type);
 }
 
 void SuiBoxAdapter::clearOptions() {
-	(static_cast<SuiBoxImplementation*>(impl))->clearOptions();
+	(static_cast<SuiBox*>(stub))->clearOptions();
 }
 
 int SuiBoxAdapter::compareTo(SuiBox* obj) {
-	return (static_cast<SuiBoxImplementation*>(impl))->compareTo(obj);
+	return (static_cast<SuiBox*>(stub))->compareTo(obj);
 }
 
 bool SuiBoxAdapter::hasGeneratedMessage() {
-	return (static_cast<SuiBoxImplementation*>(impl))->hasGeneratedMessage();
+	return (static_cast<SuiBox*>(stub))->hasGeneratedMessage();
 }
 
 void SuiBoxAdapter::setPromptTitle(const String& name) {
-	(static_cast<SuiBoxImplementation*>(impl))->setPromptTitle(name);
+	(static_cast<SuiBox*>(stub))->setPromptTitle(name);
 }
 
 void SuiBoxAdapter::setPromptText(const String& name) {
-	(static_cast<SuiBoxImplementation*>(impl))->setPromptText(name);
+	(static_cast<SuiBox*>(stub))->setPromptText(name);
 }
 
 String SuiBoxAdapter::getPromptTitle() {
-	return (static_cast<SuiBoxImplementation*>(impl))->getPromptTitle();
+	return (static_cast<SuiBox*>(stub))->getPromptTitle();
 }
 
 void SuiBoxAdapter::setHandlerText(const String& text) {
-	(static_cast<SuiBoxImplementation*>(impl))->setHandlerText(text);
+	(static_cast<SuiBox*>(stub))->setHandlerText(text);
 }
 
 void SuiBoxAdapter::setWindowType(unsigned int type) {
-	(static_cast<SuiBoxImplementation*>(impl))->setWindowType(type);
+	(static_cast<SuiBox*>(stub))->setWindowType(type);
 }
 
 void SuiBoxAdapter::setBoxType(int type) {
-	(static_cast<SuiBoxImplementation*>(impl))->setBoxType(type);
+	(static_cast<SuiBox*>(stub))->setBoxType(type);
 }
 
 bool SuiBoxAdapter::isInputBox() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isInputBox();
+	return (static_cast<SuiBox*>(stub))->isInputBox();
 }
 
 bool SuiBoxAdapter::isListBox() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isListBox();
+	return (static_cast<SuiBox*>(stub))->isListBox();
 }
 
 bool SuiBoxAdapter::isMessageBox() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isMessageBox();
+	return (static_cast<SuiBox*>(stub))->isMessageBox();
 }
 
 bool SuiBoxAdapter::isTransferBox() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isTransferBox();
+	return (static_cast<SuiBox*>(stub))->isTransferBox();
 }
 
 bool SuiBoxAdapter::isBankTransferBox() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isBankTransferBox();
+	return (static_cast<SuiBox*>(stub))->isBankTransferBox();
 }
 
 bool SuiBoxAdapter::isSlicingBox() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isSlicingBox();
+	return (static_cast<SuiBox*>(stub))->isSlicingBox();
 }
 
 bool SuiBoxAdapter::isCharacterBuilderBox() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isCharacterBuilderBox();
+	return (static_cast<SuiBox*>(stub))->isCharacterBuilderBox();
 }
 
 bool SuiBoxAdapter::isColorPicker() {
-	return (static_cast<SuiBoxImplementation*>(impl))->isColorPicker();
+	return (static_cast<SuiBox*>(stub))->isColorPicker();
 }
 
 void SuiBoxAdapter::setCancelButton(bool value, const String& cancelText) {
-	(static_cast<SuiBoxImplementation*>(impl))->setCancelButton(value, cancelText);
+	(static_cast<SuiBox*>(stub))->setCancelButton(value, cancelText);
 }
 
 void SuiBoxAdapter::setOtherButton(bool value, const String& backText) {
-	(static_cast<SuiBoxImplementation*>(impl))->setOtherButton(value, backText);
+	(static_cast<SuiBox*>(stub))->setOtherButton(value, backText);
 }
 
 void SuiBoxAdapter::setOkButton(bool value, const String& okText) {
-	(static_cast<SuiBoxImplementation*>(impl))->setOkButton(value, okText);
+	(static_cast<SuiBox*>(stub))->setOkButton(value, okText);
 }
 
 void SuiBoxAdapter::setForceCloseDistance(float dist) {
-	(static_cast<SuiBoxImplementation*>(impl))->setForceCloseDistance(dist);
+	(static_cast<SuiBox*>(stub))->setForceCloseDistance(dist);
 }
 
 void SuiBoxAdapter::setForceCloseDisabled() {
-	(static_cast<SuiBoxImplementation*>(impl))->setForceCloseDisabled();
+	(static_cast<SuiBox*>(stub))->setForceCloseDisabled();
 }
 
 CreatureObject* SuiBoxAdapter::getPlayer() {
-	return (static_cast<SuiBoxImplementation*>(impl))->getPlayer();
+	return (static_cast<SuiBox*>(stub))->getPlayer();
 }
 
 unsigned int SuiBoxAdapter::getBoxID() {
-	return (static_cast<SuiBoxImplementation*>(impl))->getBoxID();
+	return (static_cast<SuiBox*>(stub))->getBoxID();
 }
 
 int SuiBoxAdapter::getWindowType() {
-	return (static_cast<SuiBoxImplementation*>(impl))->getWindowType();
+	return (static_cast<SuiBox*>(stub))->getWindowType();
 }
 
 SceneObject* SuiBoxAdapter::getUsingObject() {
-	return (static_cast<SuiBoxImplementation*>(impl))->getUsingObject();
+	return (static_cast<SuiBox*>(stub))->getUsingObject();
 }
 
 void SuiBoxAdapter::setUsingObject(SceneObject* object) {
-	(static_cast<SuiBoxImplementation*>(impl))->setUsingObject(object);
+	(static_cast<SuiBox*>(stub))->setUsingObject(object);
 }
 
 /*
@@ -1417,7 +1417,7 @@ DistributedObjectServant* SuiBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiBoxAdapter(static_cast<SuiBoxImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SuiBoxAdapter(static_cast<SuiBox*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

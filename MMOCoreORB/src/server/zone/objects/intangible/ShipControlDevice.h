@@ -140,7 +140,7 @@ protected:
 
 class ShipControlDeviceAdapter : public ControlDeviceAdapter {
 public:
-	ShipControlDeviceAdapter(ShipControlDeviceImplementation* impl);
+	ShipControlDeviceAdapter(ShipControlDevice* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

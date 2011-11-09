@@ -331,7 +331,7 @@ void FishObjectImplementation::setAttributes(const String& playerName, const Str
  *	FishObjectAdapter
  */
 
-FishObjectAdapter::FishObjectAdapter(FishObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+FishObjectAdapter::FishObjectAdapter(FishObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -364,27 +364,27 @@ Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void FishObjectAdapter::initializeTransientMembers() {
-	(static_cast<FishObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<FishObject*>(stub))->initializeTransientMembers();
 }
 
 void FishObjectAdapter::setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength) {
-	(static_cast<FishObjectImplementation*>(impl))->setAttributes(playerName, terrainN, timestamp, fishLength);
+	(static_cast<FishObject*>(stub))->setAttributes(playerName, terrainN, timestamp, fishLength);
 }
 
 void FishObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	(static_cast<FishObjectImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<FishObject*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FishObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<FishObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FishObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void FishObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	(static_cast<FishObjectImplementation*>(impl))->fillAttributeList(msg, object);
+	(static_cast<FishObject*>(stub))->fillAttributeList(msg, object);
 }
 
 void FishObjectAdapter::filet(CreatureObject* player) {
-	(static_cast<FishObjectImplementation*>(impl))->filet(player);
+	(static_cast<FishObject*>(stub))->filet(player);
 }
 
 /*
@@ -412,7 +412,7 @@ DistributedObjectServant* FishObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FishObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FishObjectAdapter(static_cast<FishObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FishObjectAdapter(static_cast<FishObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

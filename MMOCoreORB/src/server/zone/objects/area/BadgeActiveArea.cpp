@@ -245,7 +245,7 @@ unsigned int BadgeActiveAreaImplementation::getBadge() {
  *	BadgeActiveAreaAdapter
  */
 
-BadgeActiveAreaAdapter::BadgeActiveAreaAdapter(BadgeActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
+BadgeActiveAreaAdapter::BadgeActiveAreaAdapter(BadgeActiveArea* obj) : ActiveAreaAdapter(obj) {
 }
 
 Packet* BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -269,15 +269,15 @@ Packet* BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void BadgeActiveAreaAdapter::notifyEnter(SceneObject* player) {
-	(static_cast<BadgeActiveAreaImplementation*>(impl))->notifyEnter(player);
+	(static_cast<BadgeActiveArea*>(stub))->notifyEnter(player);
 }
 
 void BadgeActiveAreaAdapter::setBadge(unsigned int a) {
-	(static_cast<BadgeActiveAreaImplementation*>(impl))->setBadge(a);
+	(static_cast<BadgeActiveArea*>(stub))->setBadge(a);
 }
 
 unsigned int BadgeActiveAreaAdapter::getBadge() {
-	return (static_cast<BadgeActiveAreaImplementation*>(impl))->getBadge();
+	return (static_cast<BadgeActiveArea*>(stub))->getBadge();
 }
 
 /*
@@ -305,7 +305,7 @@ DistributedObjectServant* BadgeActiveAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BadgeActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BadgeActiveAreaAdapter(static_cast<BadgeActiveAreaImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new BadgeActiveAreaAdapter(static_cast<BadgeActiveArea*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

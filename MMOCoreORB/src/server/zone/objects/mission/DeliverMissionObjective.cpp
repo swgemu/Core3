@@ -378,7 +378,7 @@ TangibleObject* DeliverMissionObjectiveImplementation::getItem() {
  *	DeliverMissionObjectiveAdapter
  */
 
-DeliverMissionObjectiveAdapter::DeliverMissionObjectiveAdapter(DeliverMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+DeliverMissionObjectiveAdapter::DeliverMissionObjectiveAdapter(DeliverMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -423,43 +423,43 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 }
 
 void DeliverMissionObjectiveAdapter::finalize() {
-	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<DeliverMissionObjective*>(stub))->finalize();
 }
 
 void DeliverMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<DeliverMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void DeliverMissionObjectiveAdapter::setTarget(AiAgent* t) {
-	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->setTarget(t);
+	(static_cast<DeliverMissionObjective*>(stub))->setTarget(t);
 }
 
 void DeliverMissionObjectiveAdapter::setTargetDest(AiAgent* t) {
-	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->setTargetDest(t);
+	(static_cast<DeliverMissionObjective*>(stub))->setTargetDest(t);
 }
 
 TangibleObject* DeliverMissionObjectiveAdapter::getItem() {
-	return (static_cast<DeliverMissionObjectiveImplementation*>(impl))->getItem();
+	return (static_cast<DeliverMissionObjective*>(stub))->getItem();
 }
 
 void DeliverMissionObjectiveAdapter::activate() {
-	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<DeliverMissionObjective*>(stub))->activate();
 }
 
 void DeliverMissionObjectiveAdapter::abort() {
-	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<DeliverMissionObjective*>(stub))->abort();
 }
 
 void DeliverMissionObjectiveAdapter::complete() {
-	(static_cast<DeliverMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<DeliverMissionObjective*>(stub))->complete();
 }
 
 int DeliverMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<DeliverMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<DeliverMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 bool DeliverMissionObjectiveAdapter::updateMissionTarget(CreatureObject* player) {
-	return (static_cast<DeliverMissionObjectiveImplementation*>(impl))->updateMissionTarget(player);
+	return (static_cast<DeliverMissionObjective*>(stub))->updateMissionTarget(player);
 }
 
 /*
@@ -487,7 +487,7 @@ DistributedObjectServant* DeliverMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DeliverMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DeliverMissionObjectiveAdapter(static_cast<DeliverMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DeliverMissionObjectiveAdapter(static_cast<DeliverMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

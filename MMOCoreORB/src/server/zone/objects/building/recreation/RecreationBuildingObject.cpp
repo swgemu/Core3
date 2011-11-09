@@ -12,8 +12,6 @@
  *	RecreationBuildingObjectStub
  */
 
-enum {};
-
 RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	RecreationBuildingObjectImplementation* _implementation = new RecreationBuildingObjectImplementation();
 	_impl = _implementation;
@@ -162,7 +160,7 @@ RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation()
  *	RecreationBuildingObjectAdapter
  */
 
-RecreationBuildingObjectAdapter::RecreationBuildingObjectAdapter(RecreationBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
+RecreationBuildingObjectAdapter::RecreationBuildingObjectAdapter(RecreationBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
 Packet* RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -201,7 +199,7 @@ DistributedObjectServant* RecreationBuildingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RecreationBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RecreationBuildingObjectAdapter(static_cast<RecreationBuildingObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new RecreationBuildingObjectAdapter(static_cast<RecreationBuildingObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

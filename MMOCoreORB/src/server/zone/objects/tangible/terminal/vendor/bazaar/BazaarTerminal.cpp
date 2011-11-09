@@ -215,7 +215,7 @@ bool BazaarTerminalImplementation::isBazaarTerminal() {
  *	BazaarTerminalAdapter
  */
 
-BazaarTerminalAdapter::BazaarTerminalAdapter(BazaarTerminalImplementation* obj) : VendorTerminalAdapter(obj) {
+BazaarTerminalAdapter::BazaarTerminalAdapter(BazaarTerminal* obj) : VendorTerminalAdapter(obj) {
 }
 
 Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -236,11 +236,11 @@ Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 int BazaarTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<BazaarTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<BazaarTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool BazaarTerminalAdapter::isBazaarTerminal() {
-	return (static_cast<BazaarTerminalImplementation*>(impl))->isBazaarTerminal();
+	return (static_cast<BazaarTerminal*>(stub))->isBazaarTerminal();
 }
 
 /*
@@ -268,7 +268,7 @@ DistributedObjectServant* BazaarTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BazaarTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BazaarTerminalAdapter(static_cast<BazaarTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new BazaarTerminalAdapter(static_cast<BazaarTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

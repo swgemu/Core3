@@ -323,7 +323,7 @@ bool VendorTerminalImplementation::isVendorTerminal() {
  *	VendorTerminalAdapter
  */
 
-VendorTerminalAdapter::VendorTerminalAdapter(VendorTerminalImplementation* obj) : TerminalAdapter(obj) {
+VendorTerminalAdapter::VendorTerminalAdapter(VendorTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -362,35 +362,35 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void VendorTerminalAdapter::initializeTransientMembers() {
-	(static_cast<VendorTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<VendorTerminal*>(stub))->initializeTransientMembers();
 }
 
 void VendorTerminalAdapter::finalize() {
-	(static_cast<VendorTerminalImplementation*>(impl))->finalize();
+	(static_cast<VendorTerminal*>(stub))->finalize();
 }
 
 int VendorTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<VendorTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VendorTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VendorTerminalAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<VendorTerminalImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<VendorTerminal*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void VendorTerminalAdapter::addVendorToMap() {
-	(static_cast<VendorTerminalImplementation*>(impl))->addVendorToMap();
+	(static_cast<VendorTerminal*>(stub))->addVendorToMap();
 }
 
 void VendorTerminalAdapter::setOwnerID(unsigned long long ownerID) {
-	(static_cast<VendorTerminalImplementation*>(impl))->setOwnerID(ownerID);
+	(static_cast<VendorTerminal*>(stub))->setOwnerID(ownerID);
 }
 
 bool VendorTerminalAdapter::isVendor() {
-	return (static_cast<VendorTerminalImplementation*>(impl))->isVendor();
+	return (static_cast<VendorTerminal*>(stub))->isVendor();
 }
 
 bool VendorTerminalAdapter::isVendorTerminal() {
-	return (static_cast<VendorTerminalImplementation*>(impl))->isVendorTerminal();
+	return (static_cast<VendorTerminal*>(stub))->isVendorTerminal();
 }
 
 /*
@@ -418,7 +418,7 @@ DistributedObjectServant* VendorTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VendorTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VendorTerminalAdapter(static_cast<VendorTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new VendorTerminalAdapter(static_cast<VendorTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

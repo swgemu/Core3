@@ -301,7 +301,7 @@ protected:
 
 class ResourceManagerAdapter : public ObserverAdapter {
 public:
-	ResourceManagerAdapter(ResourceManagerImplementation* impl);
+	ResourceManagerAdapter(ResourceManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -222,7 +222,7 @@ protected:
 
 class MissionTerminalAdapter : public TerminalAdapter {
 public:
-	MissionTerminalAdapter(MissionTerminalImplementation* impl);
+	MissionTerminalAdapter(MissionTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

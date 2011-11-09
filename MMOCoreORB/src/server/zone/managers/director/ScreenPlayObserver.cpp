@@ -277,7 +277,7 @@ String ScreenPlayObserverImplementation::getScreenKey() {
  *	ScreenPlayObserverAdapter
  */
 
-ScreenPlayObserverAdapter::ScreenPlayObserverAdapter(ScreenPlayObserverImplementation* obj) : ObserverAdapter(obj) {
+ScreenPlayObserverAdapter::ScreenPlayObserverAdapter(ScreenPlayObserver* obj) : ObserverAdapter(obj) {
 }
 
 Packet* ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -307,23 +307,23 @@ Packet* ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 int ScreenPlayObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<ScreenPlayObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<ScreenPlayObserver*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void ScreenPlayObserverAdapter::setScreenPlay(const String& screen) {
-	(static_cast<ScreenPlayObserverImplementation*>(impl))->setScreenPlay(screen);
+	(static_cast<ScreenPlayObserver*>(stub))->setScreenPlay(screen);
 }
 
 void ScreenPlayObserverAdapter::setScreenKey(const String& screenKey) {
-	(static_cast<ScreenPlayObserverImplementation*>(impl))->setScreenKey(screenKey);
+	(static_cast<ScreenPlayObserver*>(stub))->setScreenKey(screenKey);
 }
 
 String ScreenPlayObserverAdapter::getScreenPlay() {
-	return (static_cast<ScreenPlayObserverImplementation*>(impl))->getScreenPlay();
+	return (static_cast<ScreenPlayObserver*>(stub))->getScreenPlay();
 }
 
 String ScreenPlayObserverAdapter::getScreenKey() {
-	return (static_cast<ScreenPlayObserverImplementation*>(impl))->getScreenKey();
+	return (static_cast<ScreenPlayObserver*>(stub))->getScreenKey();
 }
 
 /*
@@ -351,7 +351,7 @@ DistributedObjectServant* ScreenPlayObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ScreenPlayObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ScreenPlayObserverAdapter(static_cast<ScreenPlayObserverImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ScreenPlayObserverAdapter(static_cast<ScreenPlayObserver*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

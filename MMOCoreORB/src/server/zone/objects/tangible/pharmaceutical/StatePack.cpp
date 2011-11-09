@@ -335,7 +335,7 @@ bool StatePackImplementation::isStatePack() {
  *	StatePackAdapter
  */
 
-StatePackAdapter::StatePackAdapter(StatePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
+StatePackAdapter::StatePackAdapter(StatePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
 Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -359,15 +359,15 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int StatePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<StatePackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<StatePack*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned long long StatePackAdapter::getState() {
-	return (static_cast<StatePackImplementation*>(impl))->getState();
+	return (static_cast<StatePack*>(stub))->getState();
 }
 
 bool StatePackAdapter::isStatePack() {
-	return (static_cast<StatePackImplementation*>(impl))->isStatePack();
+	return (static_cast<StatePack*>(stub))->isStatePack();
 }
 
 /*
@@ -395,7 +395,7 @@ DistributedObjectServant* StatePackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StatePackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StatePackAdapter(static_cast<StatePackImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StatePackAdapter(static_cast<StatePack*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

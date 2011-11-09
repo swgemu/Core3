@@ -142,7 +142,7 @@ protected:
 
 class InstrumentObserverAdapter : public ObserverAdapter {
 public:
-	InstrumentObserverAdapter(InstrumentObserverImplementation* impl);
+	InstrumentObserverAdapter(InstrumentObserver* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -154,7 +154,7 @@ protected:
 
 class MissionSpawnActiveAreaAdapter : public ActiveAreaAdapter {
 public:
-	MissionSpawnActiveAreaAdapter(MissionSpawnActiveAreaImplementation* impl);
+	MissionSpawnActiveAreaAdapter(MissionSpawnActiveArea* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

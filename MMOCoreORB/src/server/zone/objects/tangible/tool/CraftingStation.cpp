@@ -391,7 +391,7 @@ void CraftingStationImplementation::setComplexityLevel(int level) {
  *	CraftingStationAdapter
  */
 
-CraftingStationAdapter::CraftingStationAdapter(CraftingStationImplementation* obj) : ToolTangibleObjectAdapter(obj) {
+CraftingStationAdapter::CraftingStationAdapter(CraftingStation* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
 Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -433,39 +433,39 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void CraftingStationAdapter::initializeTransientMembers() {
-	(static_cast<CraftingStationImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<CraftingStation*>(stub))->initializeTransientMembers();
 }
 
 int CraftingStationAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<CraftingStationImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CraftingStation*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void CraftingStationAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<CraftingStationImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<CraftingStation*>(stub))->updateCraftingValues(schematic);
 }
 
 bool CraftingStationAdapter::isCraftingStation() {
-	return (static_cast<CraftingStationImplementation*>(impl))->isCraftingStation();
+	return (static_cast<CraftingStation*>(stub))->isCraftingStation();
 }
 
 int CraftingStationAdapter::getComplexityLevel() {
-	return (static_cast<CraftingStationImplementation*>(impl))->getComplexityLevel();
+	return (static_cast<CraftingStation*>(stub))->getComplexityLevel();
 }
 
 int CraftingStationAdapter::getStationType() {
-	return (static_cast<CraftingStationImplementation*>(impl))->getStationType();
+	return (static_cast<CraftingStation*>(stub))->getStationType();
 }
 
 void CraftingStationAdapter::setComplexityLevel(int level) {
-	(static_cast<CraftingStationImplementation*>(impl))->setComplexityLevel(level);
+	(static_cast<CraftingStation*>(stub))->setComplexityLevel(level);
 }
 
 SceneObject* CraftingStationAdapter::findCraftingTool(CreatureObject* player) {
-	return (static_cast<CraftingStationImplementation*>(impl))->findCraftingTool(player);
+	return (static_cast<CraftingStation*>(stub))->findCraftingTool(player);
 }
 
 void CraftingStationAdapter::createChildObjects() {
-	(static_cast<CraftingStationImplementation*>(impl))->createChildObjects();
+	(static_cast<CraftingStation*>(stub))->createChildObjects();
 }
 
 /*
@@ -493,7 +493,7 @@ DistributedObjectServant* CraftingStationHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CraftingStationHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CraftingStationAdapter(static_cast<CraftingStationImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CraftingStationAdapter(static_cast<CraftingStation*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

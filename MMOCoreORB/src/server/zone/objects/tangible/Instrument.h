@@ -302,7 +302,7 @@ protected:
 
 class InstrumentAdapter : public TangibleObjectAdapter {
 public:
-	InstrumentAdapter(InstrumentImplementation* impl);
+	InstrumentAdapter(Instrument* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

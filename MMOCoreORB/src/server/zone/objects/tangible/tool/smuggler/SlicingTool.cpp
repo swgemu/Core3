@@ -265,7 +265,7 @@ float SlicingToolImplementation::getEffectiveness() {
  *	SlicingToolAdapter
  */
 
-SlicingToolAdapter::SlicingToolAdapter(SlicingToolImplementation* obj) : TangibleObjectAdapter(obj) {
+SlicingToolAdapter::SlicingToolAdapter(SlicingTool* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -292,19 +292,19 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 int SlicingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<SlicingToolImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SlicingTool*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void SlicingToolAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<SlicingToolImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<SlicingTool*>(stub))->updateCraftingValues(schematic);
 }
 
 bool SlicingToolAdapter::calculateSuccessRate() {
-	return (static_cast<SlicingToolImplementation*>(impl))->calculateSuccessRate();
+	return (static_cast<SlicingTool*>(stub))->calculateSuccessRate();
 }
 
 float SlicingToolAdapter::getEffectiveness() {
-	return (static_cast<SlicingToolImplementation*>(impl))->getEffectiveness();
+	return (static_cast<SlicingTool*>(stub))->getEffectiveness();
 }
 
 /*
@@ -332,7 +332,7 @@ DistributedObjectServant* SlicingToolHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SlicingToolHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SlicingToolAdapter(static_cast<SlicingToolImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SlicingToolAdapter(static_cast<SlicingTool*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

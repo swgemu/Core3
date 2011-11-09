@@ -499,7 +499,7 @@ protected:
 
 class PlayerManagerAdapter : public ObserverAdapter {
 public:
-	PlayerManagerAdapter(PlayerManagerImplementation* impl);
+	PlayerManagerAdapter(PlayerManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

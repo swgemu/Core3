@@ -5319,7 +5319,7 @@ bool CreatureObjectImplementation::isVendorCreature() {
  *	CreatureObjectAdapter
  */
 
-CreatureObjectAdapter::CreatureObjectAdapter(CreatureObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+CreatureObjectAdapter::CreatureObjectAdapter(CreatureObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -6075,991 +6075,991 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void CreatureObjectAdapter::initializeMembers() {
-	(static_cast<CreatureObjectImplementation*>(impl))->initializeMembers();
+	(static_cast<CreatureObject*>(stub))->initializeMembers();
 }
 
 void CreatureObjectAdapter::finalize() {
-	(static_cast<CreatureObjectImplementation*>(impl))->finalize();
+	(static_cast<CreatureObject*>(stub))->finalize();
 }
 
 void CreatureObjectAdapter::createChildObjects() {
-	(static_cast<CreatureObjectImplementation*>(impl))->createChildObjects();
+	(static_cast<CreatureObject*>(stub))->createChildObjects();
 }
 
 void CreatureObjectAdapter::initializeTransientMembers() {
-	(static_cast<CreatureObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<CreatureObject*>(stub))->initializeTransientMembers();
 }
 
 void CreatureObjectAdapter::clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2) {
-	(static_cast<CreatureObjectImplementation*>(impl))->clearQueueAction(actioncntr, timer, tab1, tab2);
+	(static_cast<CreatureObject*>(stub))->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
 void CreatureObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<CreatureObject*>(stub))->sendBaselinesTo(player);
 }
 
 void CreatureObjectAdapter::sendToOwner(bool doClose) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendToOwner(doClose);
+	(static_cast<CreatureObject*>(stub))->sendToOwner(doClose);
 }
 
 void CreatureObjectAdapter::sendSystemMessage(const String& message) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendSystemMessage(message);
+	(static_cast<CreatureObject*>(stub))->sendSystemMessage(message);
 }
 
 void CreatureObjectAdapter::playMusicMessage(const String& file) {
-	(static_cast<CreatureObjectImplementation*>(impl))->playMusicMessage(file);
+	(static_cast<CreatureObject*>(stub))->playMusicMessage(file);
 }
 
 void CreatureObjectAdapter::sendNewbieTutorialRequest(const String& request) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendNewbieTutorialRequest(request);
+	(static_cast<CreatureObject*>(stub))->sendNewbieTutorialRequest(request);
 }
 
 void CreatureObjectAdapter::sendNewbieTutorialEnableHudElement(const String& ui, bool enable) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendNewbieTutorialEnableHudElement(ui, enable);
+	(static_cast<CreatureObject*>(stub))->sendNewbieTutorialEnableHudElement(ui, enable);
 }
 
 void CreatureObjectAdapter::sendOpenHolocronToPageMessage() {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendOpenHolocronToPageMessage();
+	(static_cast<CreatureObject*>(stub))->sendOpenHolocronToPageMessage();
 }
 
 void CreatureObjectAdapter::sendSystemMessage(UnicodeString& message) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendSystemMessage(message);
+	(static_cast<CreatureObject*>(stub))->sendSystemMessage(message);
 }
 
 void CreatureObjectAdapter::sendSystemMessage(const String& file, const String& stringid) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendSystemMessage(file, stringid);
+	(static_cast<CreatureObject*>(stub))->sendSystemMessage(file, stringid);
 }
 
 void CreatureObjectAdapter::sendSlottedObjectsTo(SceneObject* player) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendSlottedObjectsTo(player);
+	(static_cast<CreatureObject*>(stub))->sendSlottedObjectsTo(player);
 }
 
 void CreatureObjectAdapter::setCombatState() {
-	(static_cast<CreatureObjectImplementation*>(impl))->setCombatState();
+	(static_cast<CreatureObject*>(stub))->setCombatState();
 }
 
 void CreatureObjectAdapter::clearCombatState(bool clearDefenders) {
-	(static_cast<CreatureObjectImplementation*>(impl))->clearCombatState(clearDefenders);
+	(static_cast<CreatureObject*>(stub))->clearCombatState(clearDefenders);
 }
 
 void CreatureObjectAdapter::setPosture(int newPosture, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setPosture(newPosture, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setPosture(newPosture, notifyClient);
 }
 
 void CreatureObjectAdapter::updateLocomotion() {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateLocomotion();
+	(static_cast<CreatureObject*>(stub))->updateLocomotion();
 }
 
 void CreatureObjectAdapter::setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setAccelerationMultiplierBase(newMultiplierBase, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setAccelerationMultiplierBase(newMultiplierBase, notifyClient);
 }
 
 void CreatureObjectAdapter::setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setAccelerationMultiplierMod(newMultiplierMod, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setAccelerationMultiplierMod(newMultiplierMod, notifyClient);
 }
 
 void CreatureObjectAdapter::setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setSpeedMultiplierBase(newMultiplierBase, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setSpeedMultiplierBase(newMultiplierBase, notifyClient);
 }
 
 void CreatureObjectAdapter::setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setSpeedMultiplierMod(newMultiplierMod, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setSpeedMultiplierMod(newMultiplierMod, notifyClient);
 }
 
 void CreatureObjectAdapter::setRunSpeed(float newSpeed, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setRunSpeed(newSpeed, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setRunSpeed(newSpeed, notifyClient);
 }
 
 void CreatureObjectAdapter::setHAM(int type, int value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setHAM(type, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setHAM(type, value, notifyClient);
 }
 
 int CreatureObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return (static_cast<CreatureObject*>(stub))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 bool CreatureObjectAdapter::hasDamage(int attribute) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->hasDamage(attribute);
+	return (static_cast<CreatureObject*>(stub))->hasDamage(attribute);
 }
 
 int CreatureObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->healDamage(healer, damageType, damage, notifyClient);
+	return (static_cast<CreatureObject*>(stub))->healDamage(healer, damageType, damage, notifyClient);
 }
 
 void CreatureObjectAdapter::setBaseHAM(int type, int value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setBaseHAM(type, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setBaseHAM(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setWounds(int type, int value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setWounds(type, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setWounds(type, value, notifyClient);
 }
 
 int CreatureObjectAdapter::addWounds(int type, int value, bool notifyClient) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->addWounds(type, value, notifyClient);
+	return (static_cast<CreatureObject*>(stub))->addWounds(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setMaxHAM(int type, int value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setMaxHAM(type, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setMaxHAM(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::addMaxHAM(int type, int value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addMaxHAM(type, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->addMaxHAM(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setEncumbrance(int type, int value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setEncumbrance(type, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setEncumbrance(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::addEncumbrance(int type, int value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addEncumbrance(type, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->addEncumbrance(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setWeapon(WeaponObject* weao, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setWeapon(weao, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setWeapon(weao, notifyClient);
 }
 
 int CreatureObjectAdapter::notifyObjectInserted(SceneObject* object) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->notifyObjectInserted(object);
+	return (static_cast<CreatureObject*>(stub))->notifyObjectInserted(object);
 }
 
 int CreatureObjectAdapter::notifyObjectRemoved(SceneObject* object) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->notifyObjectRemoved(object);
+	return (static_cast<CreatureObject*>(stub))->notifyObjectRemoved(object);
 }
 
 void CreatureObjectAdapter::setInstrumentID(int instrumentid, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setInstrumentID(instrumentid, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setInstrumentID(instrumentid, notifyClient);
 }
 
 void CreatureObjectAdapter::setListenToID(unsigned long long id, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setListenToID(id, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setListenToID(id, notifyClient);
 }
 
 void CreatureObjectAdapter::setPerformanceCounter(int counter, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setPerformanceCounter(counter, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setPerformanceCounter(counter, notifyClient);
 }
 
 void CreatureObjectAdapter::setPerformanceAnimation(const String& animation, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setPerformanceAnimation(animation, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setPerformanceAnimation(animation, notifyClient);
 }
 
 void CreatureObjectAdapter::setShockWounds(int newShock, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setShockWounds(newShock, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setShockWounds(newShock, notifyClient);
 }
 
 void CreatureObjectAdapter::addShockWounds(int shockToAdd, bool notiyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addShockWounds(shockToAdd, notiyClient);
+	(static_cast<CreatureObject*>(stub))->addShockWounds(shockToAdd, notiyClient);
 }
 
 void CreatureObjectAdapter::setTargetID(unsigned long long targetID, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setTargetID(targetID, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setTargetID(targetID, notifyClient);
 }
 
 void CreatureObjectAdapter::setBankCredits(int credits, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setBankCredits(credits, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setBankCredits(credits, notifyClient);
 }
 
 void CreatureObjectAdapter::addBuff(Buff* buff) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addBuff(buff);
+	(static_cast<CreatureObject*>(stub))->addBuff(buff);
 }
 
 void CreatureObjectAdapter::removeBuff(unsigned int buffcrc) {
-	(static_cast<CreatureObjectImplementation*>(impl))->removeBuff(buffcrc);
+	(static_cast<CreatureObject*>(stub))->removeBuff(buffcrc);
 }
 
 void CreatureObjectAdapter::removeBuff(Buff* buff) {
-	(static_cast<CreatureObjectImplementation*>(impl))->removeBuff(buff);
+	(static_cast<CreatureObject*>(stub))->removeBuff(buff);
 }
 
 void CreatureObjectAdapter::clearBuffs(bool updateclient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->clearBuffs(updateclient);
+	(static_cast<CreatureObject*>(stub))->clearBuffs(updateclient);
 }
 
 void CreatureObjectAdapter::sendBuffsTo(CreatureObject* creature) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendBuffsTo(creature);
+	(static_cast<CreatureObject*>(stub))->sendBuffsTo(creature);
 }
 
 Buff* CreatureObjectAdapter::getBuff(unsigned int buffcrc) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getBuff(buffcrc);
+	return (static_cast<CreatureObject*>(stub))->getBuff(buffcrc);
 }
 
 int CreatureObjectAdapter::addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->addDotState(dotType, strength, type, duration, potency, defense);
+	return (static_cast<CreatureObject*>(stub))->addDotState(dotType, strength, type, duration, potency, defense);
 }
 
 bool CreatureObjectAdapter::healDot(unsigned long long dotType, int reduction) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->healDot(dotType, reduction);
+	return (static_cast<CreatureObject*>(stub))->healDot(dotType, reduction);
 }
 
 void CreatureObjectAdapter::clearDots() {
-	(static_cast<CreatureObjectImplementation*>(impl))->clearDots();
+	(static_cast<CreatureObject*>(stub))->clearDots();
 }
 
 void CreatureObjectAdapter::removeDotsFromVector() {
-	(static_cast<CreatureObjectImplementation*>(impl))->removeDotsFromVector();
+	(static_cast<CreatureObject*>(stub))->removeDotsFromVector();
 }
 
 bool CreatureObjectAdapter::hasBuff(unsigned int buffcrc) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->hasBuff(buffcrc);
+	return (static_cast<CreatureObject*>(stub))->hasBuff(buffcrc);
 }
 
 void CreatureObjectAdapter::notifySelfPositionUpdate() {
-	(static_cast<CreatureObjectImplementation*>(impl))->notifySelfPositionUpdate();
+	(static_cast<CreatureObject*>(stub))->notifySelfPositionUpdate();
 }
 
 void CreatureObjectAdapter::notifyPostureChange(int newPosture) {
-	(static_cast<CreatureObjectImplementation*>(impl))->notifyPostureChange(newPosture);
+	(static_cast<CreatureObject*>(stub))->notifyPostureChange(newPosture);
 }
 
 void CreatureObjectAdapter::updateToDatabaseAllObjects(bool startTask) {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateToDatabaseAllObjects(startTask);
+	(static_cast<CreatureObject*>(stub))->updateToDatabaseAllObjects(startTask);
 }
 
 bool CreatureObjectAdapter::isResuscitable() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isResuscitable();
+	return (static_cast<CreatureObject*>(stub))->isResuscitable();
 }
 
 void CreatureObjectAdapter::addBankCredits(int credits, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addBankCredits(credits, notifyClient);
+	(static_cast<CreatureObject*>(stub))->addBankCredits(credits, notifyClient);
 }
 
 void CreatureObjectAdapter::addCashCredits(int credits, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addCashCredits(credits, notifyClient);
+	(static_cast<CreatureObject*>(stub))->addCashCredits(credits, notifyClient);
 }
 
 void CreatureObjectAdapter::substractBankCredits(int credits) {
-	(static_cast<CreatureObjectImplementation*>(impl))->substractBankCredits(credits);
+	(static_cast<CreatureObject*>(stub))->substractBankCredits(credits);
 }
 
 void CreatureObjectAdapter::substractCashCredits(int credits) {
-	(static_cast<CreatureObjectImplementation*>(impl))->substractCashCredits(credits);
+	(static_cast<CreatureObject*>(stub))->substractCashCredits(credits);
 }
 
 bool CreatureObjectAdapter::verifyCashCredits(int credits) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->verifyCashCredits(credits);
+	return (static_cast<CreatureObject*>(stub))->verifyCashCredits(credits);
 }
 
 bool CreatureObjectAdapter::verifyBankCredits(int credits) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->verifyBankCredits(credits);
+	return (static_cast<CreatureObject*>(stub))->verifyBankCredits(credits);
 }
 
 bool CreatureObjectAdapter::isDancing() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isDancing();
+	return (static_cast<CreatureObject*>(stub))->isDancing();
 }
 
 bool CreatureObjectAdapter::isPlayingMusic() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isPlayingMusic();
+	return (static_cast<CreatureObject*>(stub))->isPlayingMusic();
 }
 
 void CreatureObjectAdapter::stopEntertaining() {
-	(static_cast<CreatureObjectImplementation*>(impl))->stopEntertaining();
+	(static_cast<CreatureObject*>(stub))->stopEntertaining();
 }
 
 bool CreatureObjectAdapter::isEntertaining() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isEntertaining();
+	return (static_cast<CreatureObject*>(stub))->isEntertaining();
 }
 
 void CreatureObjectAdapter::setCashCredits(int credits, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setCashCredits(credits, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setCashCredits(credits, notifyClient);
 }
 
 void CreatureObjectAdapter::setTerrainNegotiation(float value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setTerrainNegotiation(value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setTerrainNegotiation(value, notifyClient);
 }
 
 void CreatureObjectAdapter::addSkill(const String& skill, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addSkill(skill, notifyClient);
+	(static_cast<CreatureObject*>(stub))->addSkill(skill, notifyClient);
 }
 
 void CreatureObjectAdapter::removeSkill(const String& skill, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->removeSkill(skill, notifyClient);
+	(static_cast<CreatureObject*>(stub))->removeSkill(skill, notifyClient);
 }
 
 void CreatureObjectAdapter::addSkillMod(const String& skillMod, long long value, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addSkillMod(skillMod, value, notifyClient);
+	(static_cast<CreatureObject*>(stub))->addSkillMod(skillMod, value, notifyClient);
 }
 
 void CreatureObjectAdapter::removeSkillMod(const String& skillMod, bool notifyCLient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->removeSkillMod(skillMod, notifyCLient);
+	(static_cast<CreatureObject*>(stub))->removeSkillMod(skillMod, notifyCLient);
 }
 
 void CreatureObjectAdapter::updateGroupInviterID(unsigned long long id, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateGroupInviterID(id, notifyClient);
+	(static_cast<CreatureObject*>(stub))->updateGroupInviterID(id, notifyClient);
 }
 
 void CreatureObjectAdapter::updateGroup(GroupObject* group, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateGroup(group, notifyClient);
+	(static_cast<CreatureObject*>(stub))->updateGroup(group, notifyClient);
 }
 
 void CreatureObjectAdapter::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments, int priority) {
-	(static_cast<CreatureObjectImplementation*>(impl))->enqueueCommand(actionCRC, actionCount, targetID, arguments, priority);
+	(static_cast<CreatureObject*>(stub))->enqueueCommand(actionCRC, actionCount, targetID, arguments, priority);
 }
 
 void CreatureObjectAdapter::setMood(byte moodID, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setMood(moodID, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setMood(moodID, notifyClient);
 }
 
 void CreatureObjectAdapter::setMoodString(const String& animation, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setMoodString(animation, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setMoodString(animation, notifyClient);
 }
 
 void CreatureObjectAdapter::deleteQueueAction(unsigned int actionCount) {
-	(static_cast<CreatureObjectImplementation*>(impl))->deleteQueueAction(actionCount);
+	(static_cast<CreatureObject*>(stub))->deleteQueueAction(actionCount);
 }
 
 bool CreatureObjectAdapter::setState(unsigned long long state, bool notifyClient) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->setState(state, notifyClient);
+	return (static_cast<CreatureObject*>(stub))->setState(state, notifyClient);
 }
 
 bool CreatureObjectAdapter::clearState(unsigned long long state, bool notifyClient) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->clearState(state, notifyClient);
+	return (static_cast<CreatureObject*>(stub))->clearState(state, notifyClient);
 }
 
 void CreatureObjectAdapter::setControlDevice(ControlDevice* device) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setControlDevice(device);
+	(static_cast<CreatureObject*>(stub))->setControlDevice(device);
 }
 
 unsigned int CreatureObjectAdapter::getWearableMask() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getWearableMask();
+	return (static_cast<CreatureObject*>(stub))->getWearableMask();
 }
 
 void CreatureObjectAdapter::setCreatureLink(CreatureObject* object, bool notifyClient) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setCreatureLink(object, notifyClient);
+	(static_cast<CreatureObject*>(stub))->setCreatureLink(object, notifyClient);
 }
 
 void CreatureObjectAdapter::executeObjectControllerAction(unsigned int actionCRC) {
-	(static_cast<CreatureObjectImplementation*>(impl))->executeObjectControllerAction(actionCRC);
+	(static_cast<CreatureObject*>(stub))->executeObjectControllerAction(actionCRC);
 }
 
 void CreatureObjectAdapter::executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args) {
-	(static_cast<CreatureObjectImplementation*>(impl))->executeObjectControllerAction(actionCRC, targetID, args);
+	(static_cast<CreatureObject*>(stub))->executeObjectControllerAction(actionCRC, targetID, args);
 }
 
 bool CreatureObjectAdapter::isAttackableBy(CreatureObject* object) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isAttackableBy(object);
+	return (static_cast<CreatureObject*>(stub))->isAttackableBy(object);
 }
 
 void CreatureObjectAdapter::sendConversationStartTo(SceneObject* player) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendConversationStartTo(player);
+	(static_cast<CreatureObject*>(stub))->sendConversationStartTo(player);
 }
 
 void CreatureObjectAdapter::selectConversationOption(int option, SceneObject* obj) {
-	(static_cast<CreatureObjectImplementation*>(impl))->selectConversationOption(option, obj);
+	(static_cast<CreatureObject*>(stub))->selectConversationOption(option, obj);
 }
 
 void CreatureObjectAdapter::sendMessage(BasePacket* msg) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendMessage(msg);
+	(static_cast<CreatureObject*>(stub))->sendMessage(msg);
 }
 
 void CreatureObjectAdapter::sendExecuteConsoleCommand(const String& command) {
-	(static_cast<CreatureObjectImplementation*>(impl))->sendExecuteConsoleCommand(command);
+	(static_cast<CreatureObject*>(stub))->sendExecuteConsoleCommand(command);
 }
 
 bool CreatureObjectAdapter::isAggressiveTo(CreatureObject* object) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isAggressiveTo(object);
+	return (static_cast<CreatureObject*>(stub))->isAggressiveTo(object);
 }
 
 int CreatureObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->notifyObjectDestructionObservers(attacker, condition);
+	return (static_cast<CreatureObject*>(stub))->notifyObjectDestructionObservers(attacker, condition);
 }
 
 String CreatureObjectAdapter::getFirstName() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getFirstName();
+	return (static_cast<CreatureObject*>(stub))->getFirstName();
 }
 
 String CreatureObjectAdapter::getLastName() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getLastName();
+	return (static_cast<CreatureObject*>(stub))->getLastName();
 }
 
 bool CreatureObjectAdapter::isOnline() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isOnline();
+	return (static_cast<CreatureObject*>(stub))->isOnline();
 }
 
 bool CreatureObjectAdapter::canTreatInjuries() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->canTreatInjuries();
+	return (static_cast<CreatureObject*>(stub))->canTreatInjuries();
 }
 
 bool CreatureObjectAdapter::canTreatStates() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->canTreatStates();
+	return (static_cast<CreatureObject*>(stub))->canTreatStates();
 }
 
 bool CreatureObjectAdapter::canTreatWounds() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->canTreatWounds();
+	return (static_cast<CreatureObject*>(stub))->canTreatWounds();
 }
 
 bool CreatureObjectAdapter::canTreatConditions() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->canTreatConditions();
+	return (static_cast<CreatureObject*>(stub))->canTreatConditions();
 }
 
 PlayerObject* CreatureObjectAdapter::getPlayerObject() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getPlayerObject();
+	return (static_cast<CreatureObject*>(stub))->getPlayerObject();
 }
 
 bool CreatureObjectAdapter::isListening() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isListening();
+	return (static_cast<CreatureObject*>(stub))->isListening();
 }
 
 bool CreatureObjectAdapter::isWatching() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isWatching();
+	return (static_cast<CreatureObject*>(stub))->isWatching();
 }
 
 void CreatureObjectAdapter::setClient(ZoneClientSession* cli) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setClient(cli);
+	(static_cast<CreatureObject*>(stub))->setClient(cli);
 }
 
 void CreatureObjectAdapter::dismount() {
-	(static_cast<CreatureObjectImplementation*>(impl))->dismount();
+	(static_cast<CreatureObject*>(stub))->dismount();
 }
 
 float CreatureObjectAdapter::calculateBFRatio() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->calculateBFRatio();
+	return (static_cast<CreatureObject*>(stub))->calculateBFRatio();
 }
 
 void CreatureObjectAdapter::setDizziedState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setDizziedState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setDizziedState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setRalliedState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setRalliedState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setRalliedState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setAimingState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setAimingState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setAimingState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setCoverState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setCoverState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setCoverState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setBerserkedState(unsigned int duration) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setBerserkedState(duration);
+	(static_cast<CreatureObject*>(stub))->setBerserkedState(duration);
 }
 
 void CreatureObjectAdapter::setStunnedState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setStunnedState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setStunnedState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setBlindedState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setBlindedState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setBlindedState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setIntimidatedState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setIntimidatedState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setIntimidatedState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setSnaredState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setSnaredState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setSnaredState(durationSeconds);
 }
 
 void CreatureObjectAdapter::setRootedState(int durationSeconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setRootedState(durationSeconds);
+	(static_cast<CreatureObject*>(stub))->setRootedState(durationSeconds);
 }
 
 bool CreatureObjectAdapter::setNextAttackDelay(int del) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->setNextAttackDelay(del);
+	return (static_cast<CreatureObject*>(stub))->setNextAttackDelay(del);
 }
 
 void CreatureObjectAdapter::setMeditateState() {
-	(static_cast<CreatureObjectImplementation*>(impl))->setMeditateState();
+	(static_cast<CreatureObject*>(stub))->setMeditateState();
 }
 
 void CreatureObjectAdapter::activateHAMRegeneration() {
-	(static_cast<CreatureObjectImplementation*>(impl))->activateHAMRegeneration();
+	(static_cast<CreatureObject*>(stub))->activateHAMRegeneration();
 }
 
 void CreatureObjectAdapter::activateStateRecovery() {
-	(static_cast<CreatureObjectImplementation*>(impl))->activateStateRecovery();
+	(static_cast<CreatureObject*>(stub))->activateStateRecovery();
 }
 
 void CreatureObjectAdapter::updateTimeOfDeath() {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateTimeOfDeath();
+	(static_cast<CreatureObject*>(stub))->updateTimeOfDeath();
 }
 
 bool CreatureObjectAdapter::hasAttackDelay() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->hasAttackDelay();
+	return (static_cast<CreatureObject*>(stub))->hasAttackDelay();
 }
 
 void CreatureObjectAdapter::removeAttackDelay() {
-	(static_cast<CreatureObjectImplementation*>(impl))->removeAttackDelay();
+	(static_cast<CreatureObject*>(stub))->removeAttackDelay();
 }
 
 bool CreatureObjectAdapter::hasSpice() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->hasSpice();
+	return (static_cast<CreatureObject*>(stub))->hasSpice();
 }
 
 void CreatureObjectAdapter::updateLastSuccessfulCombatAction() {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateLastSuccessfulCombatAction();
+	(static_cast<CreatureObject*>(stub))->updateLastSuccessfulCombatAction();
 }
 
 void CreatureObjectAdapter::updateKnockdownRecovery() {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateKnockdownRecovery();
+	(static_cast<CreatureObject*>(stub))->updateKnockdownRecovery();
 }
 
 void CreatureObjectAdapter::queueDizzyFallEvent() {
-	(static_cast<CreatureObjectImplementation*>(impl))->queueDizzyFallEvent();
+	(static_cast<CreatureObject*>(stub))->queueDizzyFallEvent();
 }
 
 void CreatureObjectAdapter::updateLastKnockdown() {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateLastKnockdown();
+	(static_cast<CreatureObject*>(stub))->updateLastKnockdown();
 }
 
 bool CreatureObjectAdapter::checkKnockdownRecovery() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->checkKnockdownRecovery();
+	return (static_cast<CreatureObject*>(stub))->checkKnockdownRecovery();
 }
 
 bool CreatureObjectAdapter::checkLastKnockdown() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->checkLastKnockdown();
+	return (static_cast<CreatureObject*>(stub))->checkLastKnockdown();
 }
 
 void CreatureObjectAdapter::updatePostureDownRecovery() {
-	(static_cast<CreatureObjectImplementation*>(impl))->updatePostureDownRecovery();
+	(static_cast<CreatureObject*>(stub))->updatePostureDownRecovery();
 }
 
 void CreatureObjectAdapter::updatePostureUpRecovery() {
-	(static_cast<CreatureObjectImplementation*>(impl))->updatePostureUpRecovery();
+	(static_cast<CreatureObject*>(stub))->updatePostureUpRecovery();
 }
 
 bool CreatureObjectAdapter::checkPostureDownRecovery() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->checkPostureDownRecovery();
+	return (static_cast<CreatureObject*>(stub))->checkPostureDownRecovery();
 }
 
 unsigned long long CreatureObjectAdapter::getScreenPlayState(const String& screenPlay) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getScreenPlayState(screenPlay);
+	return (static_cast<CreatureObject*>(stub))->getScreenPlayState(screenPlay);
 }
 
 void CreatureObjectAdapter::setScreenPlayState(const String& screenPlay, unsigned long long state) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setScreenPlayState(screenPlay, state);
+	(static_cast<CreatureObject*>(stub))->setScreenPlayState(screenPlay, state);
 }
 
 bool CreatureObjectAdapter::checkPostureUpRecovery() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->checkPostureUpRecovery();
+	return (static_cast<CreatureObject*>(stub))->checkPostureUpRecovery();
 }
 
 void CreatureObjectAdapter::updateCooldownTimer(const String& coooldownTimer, unsigned int miliSecondsToAdd) {
-	(static_cast<CreatureObjectImplementation*>(impl))->updateCooldownTimer(coooldownTimer, miliSecondsToAdd);
+	(static_cast<CreatureObject*>(stub))->updateCooldownTimer(coooldownTimer, miliSecondsToAdd);
 }
 
 bool CreatureObjectAdapter::checkCooldownRecovery(const String& cooldown) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->checkCooldownRecovery(cooldown);
+	return (static_cast<CreatureObject*>(stub))->checkCooldownRecovery(cooldown);
 }
 
 void CreatureObjectAdapter::addCooldown(const String& name, unsigned int miliseconds) {
-	(static_cast<CreatureObjectImplementation*>(impl))->addCooldown(name, miliseconds);
+	(static_cast<CreatureObject*>(stub))->addCooldown(name, miliseconds);
 }
 
 void CreatureObjectAdapter::doAnimation(const String& animation) {
-	(static_cast<CreatureObjectImplementation*>(impl))->doAnimation(animation);
+	(static_cast<CreatureObject*>(stub))->doAnimation(animation);
 }
 
 void CreatureObjectAdapter::doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit) {
-	(static_cast<CreatureObjectImplementation*>(impl))->doCombatAnimation(defender, animationCRC, hit);
+	(static_cast<CreatureObject*>(stub))->doCombatAnimation(defender, animationCRC, hit);
 }
 
 void CreatureObjectAdapter::playEffect(const String& file, const String& aux) {
-	(static_cast<CreatureObjectImplementation*>(impl))->playEffect(file, aux);
+	(static_cast<CreatureObject*>(stub))->playEffect(file, aux);
 }
 
 void CreatureObjectAdapter::playEffect(const String& file) {
-	(static_cast<CreatureObjectImplementation*>(impl))->playEffect(file);
+	(static_cast<CreatureObject*>(stub))->playEffect(file);
 }
 
 void CreatureObjectAdapter::activateQueueAction() {
-	(static_cast<CreatureObjectImplementation*>(impl))->activateQueueAction();
+	(static_cast<CreatureObject*>(stub))->activateQueueAction();
 }
 
 void CreatureObjectAdapter::activateImmediateAction() {
-	(static_cast<CreatureObjectImplementation*>(impl))->activateImmediateAction();
+	(static_cast<CreatureObject*>(stub))->activateImmediateAction();
 }
 
 UnicodeString CreatureObjectAdapter::getCreatureName() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getCreatureName();
+	return (static_cast<CreatureObject*>(stub))->getCreatureName();
 }
 
 bool CreatureObjectAdapter::isGrouped() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isGrouped();
+	return (static_cast<CreatureObject*>(stub))->isGrouped();
 }
 
 int CreatureObjectAdapter::getBankCredits() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getBankCredits();
+	return (static_cast<CreatureObject*>(stub))->getBankCredits();
 }
 
 int CreatureObjectAdapter::getCashCredits() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getCashCredits();
+	return (static_cast<CreatureObject*>(stub))->getCashCredits();
 }
 
 int CreatureObjectAdapter::getBaseHAM(int idx) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getBaseHAM(idx);
+	return (static_cast<CreatureObject*>(stub))->getBaseHAM(idx);
 }
 
 int CreatureObjectAdapter::getWounds(int idx) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getWounds(idx);
+	return (static_cast<CreatureObject*>(stub))->getWounds(idx);
 }
 
 int CreatureObjectAdapter::getHAM(int idx) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getHAM(idx);
+	return (static_cast<CreatureObject*>(stub))->getHAM(idx);
 }
 
 int CreatureObjectAdapter::getMaxHAM(int idx) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getMaxHAM(idx);
+	return (static_cast<CreatureObject*>(stub))->getMaxHAM(idx);
 }
 
 int CreatureObjectAdapter::getEncumbrance(int idx) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getEncumbrance(idx);
+	return (static_cast<CreatureObject*>(stub))->getEncumbrance(idx);
 }
 
 byte CreatureObjectAdapter::getPosture() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getPosture();
+	return (static_cast<CreatureObject*>(stub))->getPosture();
 }
 
 byte CreatureObjectAdapter::getLocomotion() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getLocomotion();
+	return (static_cast<CreatureObject*>(stub))->getLocomotion();
 }
 
 byte CreatureObjectAdapter::getFactionRank() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getFactionRank();
+	return (static_cast<CreatureObject*>(stub))->getFactionRank();
 }
 
 CreatureObject* CreatureObjectAdapter::getLinkedCreature() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getLinkedCreature();
+	return (static_cast<CreatureObject*>(stub))->getLinkedCreature();
 }
 
 unsigned long long CreatureObjectAdapter::getCreatureLinkID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getCreatureLinkID();
+	return (static_cast<CreatureObject*>(stub))->getCreatureLinkID();
 }
 
 float CreatureObjectAdapter::getShockWounds() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getShockWounds();
+	return (static_cast<CreatureObject*>(stub))->getShockWounds();
 }
 
 unsigned long long CreatureObjectAdapter::getWatchToID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getWatchToID();
+	return (static_cast<CreatureObject*>(stub))->getWatchToID();
 }
 
 unsigned long long CreatureObjectAdapter::getStateBitmask() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getStateBitmask();
+	return (static_cast<CreatureObject*>(stub))->getStateBitmask();
 }
 
 bool CreatureObjectAdapter::hasState(unsigned long long state) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->hasState(state);
+	return (static_cast<CreatureObject*>(stub))->hasState(state);
 }
 
 bool CreatureObjectAdapter::hasStates() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->hasStates();
+	return (static_cast<CreatureObject*>(stub))->hasStates();
 }
 
 unsigned long long CreatureObjectAdapter::getListenID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getListenID();
+	return (static_cast<CreatureObject*>(stub))->getListenID();
 }
 
 float CreatureObjectAdapter::getAccelerationMultiplierBase() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getAccelerationMultiplierBase();
+	return (static_cast<CreatureObject*>(stub))->getAccelerationMultiplierBase();
 }
 
 float CreatureObjectAdapter::getAccelerationMultiplierMod() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getAccelerationMultiplierMod();
+	return (static_cast<CreatureObject*>(stub))->getAccelerationMultiplierMod();
 }
 
 float CreatureObjectAdapter::getSpeedMultiplierBase() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getSpeedMultiplierBase();
+	return (static_cast<CreatureObject*>(stub))->getSpeedMultiplierBase();
 }
 
 float CreatureObjectAdapter::getSpeedMultiplierMod() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getSpeedMultiplierMod();
+	return (static_cast<CreatureObject*>(stub))->getSpeedMultiplierMod();
 }
 
 float CreatureObjectAdapter::getRunSpeed() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getRunSpeed();
+	return (static_cast<CreatureObject*>(stub))->getRunSpeed();
 }
 
 float CreatureObjectAdapter::getWalkSpeed() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getWalkSpeed();
+	return (static_cast<CreatureObject*>(stub))->getWalkSpeed();
 }
 
 float CreatureObjectAdapter::getTerrainNegotiation() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getTerrainNegotiation();
+	return (static_cast<CreatureObject*>(stub))->getTerrainNegotiation();
 }
 
 float CreatureObjectAdapter::getRunAcceleration() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getRunAcceleration();
+	return (static_cast<CreatureObject*>(stub))->getRunAcceleration();
 }
 
 float CreatureObjectAdapter::getWalkAcceleration() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getWalkAcceleration();
+	return (static_cast<CreatureObject*>(stub))->getWalkAcceleration();
 }
 
 String CreatureObjectAdapter::getPerformanceAnimation() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getPerformanceAnimation();
+	return (static_cast<CreatureObject*>(stub))->getPerformanceAnimation();
 }
 
 String CreatureObjectAdapter::getMoodString() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getMoodString();
+	return (static_cast<CreatureObject*>(stub))->getMoodString();
 }
 
 unsigned long long CreatureObjectAdapter::getWeaponID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getWeaponID();
+	return (static_cast<CreatureObject*>(stub))->getWeaponID();
 }
 
 WeaponObject* CreatureObjectAdapter::getWeapon() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getWeapon();
+	return (static_cast<CreatureObject*>(stub))->getWeapon();
 }
 
 GuildObject* CreatureObjectAdapter::getGuildObject() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getGuildObject();
+	return (static_cast<CreatureObject*>(stub))->getGuildObject();
 }
 
 int CreatureObjectAdapter::getGuildID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getGuildID();
+	return (static_cast<CreatureObject*>(stub))->getGuildID();
 }
 
 bool CreatureObjectAdapter::isInGuild() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isInGuild();
+	return (static_cast<CreatureObject*>(stub))->isInGuild();
 }
 
 void CreatureObjectAdapter::setGuildObject(GuildObject* guildobj) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setGuildObject(guildobj);
+	(static_cast<CreatureObject*>(stub))->setGuildObject(guildobj);
 }
 
 unsigned long long CreatureObjectAdapter::getGroupID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getGroupID();
+	return (static_cast<CreatureObject*>(stub))->getGroupID();
 }
 
 unsigned long long CreatureObjectAdapter::getGroupInviterID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getGroupInviterID();
+	return (static_cast<CreatureObject*>(stub))->getGroupInviterID();
 }
 
 GroupObject* CreatureObjectAdapter::getGroup() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getGroup();
+	return (static_cast<CreatureObject*>(stub))->getGroup();
 }
 
 unsigned long long CreatureObjectAdapter::getGroupInviteCounter() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getGroupInviteCounter();
+	return (static_cast<CreatureObject*>(stub))->getGroupInviteCounter();
 }
 
 unsigned long long CreatureObjectAdapter::getTargetID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getTargetID();
+	return (static_cast<CreatureObject*>(stub))->getTargetID();
 }
 
 byte CreatureObjectAdapter::getMoodID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getMoodID();
+	return (static_cast<CreatureObject*>(stub))->getMoodID();
 }
 
 float CreatureObjectAdapter::getSlopeModPercent() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getSlopeModPercent();
+	return (static_cast<CreatureObject*>(stub))->getSlopeModPercent();
 }
 
 int CreatureObjectAdapter::getPerformanceCounter() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getPerformanceCounter();
+	return (static_cast<CreatureObject*>(stub))->getPerformanceCounter();
 }
 
 int CreatureObjectAdapter::getInstrumentID() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getInstrumentID();
+	return (static_cast<CreatureObject*>(stub))->getInstrumentID();
 }
 
 byte CreatureObjectAdapter::getFrozen() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getFrozen();
+	return (static_cast<CreatureObject*>(stub))->getFrozen();
 }
 
 float CreatureObjectAdapter::getHeight() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getHeight();
+	return (static_cast<CreatureObject*>(stub))->getHeight();
 }
 
 int CreatureObjectAdapter::getSpecies() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getSpecies();
+	return (static_cast<CreatureObject*>(stub))->getSpecies();
 }
 
 String CreatureObjectAdapter::getSpeciesName() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getSpeciesName();
+	return (static_cast<CreatureObject*>(stub))->getSpeciesName();
 }
 
 int CreatureObjectAdapter::getGender() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getGender();
+	return (static_cast<CreatureObject*>(stub))->getGender();
 }
 
 long long CreatureObjectAdapter::getSkillMod(const String& skillmod) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getSkillMod(skillmod);
+	return (static_cast<CreatureObject*>(stub))->getSkillMod(skillmod);
 }
 
 bool CreatureObjectAdapter::hasSkill(const String& skill) {
-	return (static_cast<CreatureObjectImplementation*>(impl))->hasSkill(skill);
+	return (static_cast<CreatureObject*>(stub))->hasSkill(skill);
 }
 
 void CreatureObjectAdapter::setHeight(float heigh) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setHeight(heigh);
+	(static_cast<CreatureObject*>(stub))->setHeight(heigh);
 }
 
 void CreatureObjectAdapter::setWatchToID(unsigned long long id) {
-	(static_cast<CreatureObjectImplementation*>(impl))->setWatchToID(id);
+	(static_cast<CreatureObject*>(stub))->setWatchToID(id);
 }
 
 bool CreatureObjectAdapter::isCreatureObject() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isCreatureObject();
+	return (static_cast<CreatureObject*>(stub))->isCreatureObject();
 }
 
 bool CreatureObjectAdapter::isNextActionPast() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isNextActionPast();
+	return (static_cast<CreatureObject*>(stub))->isNextActionPast();
 }
 
 bool CreatureObjectAdapter::isTrainerCreature() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isTrainerCreature();
+	return (static_cast<CreatureObject*>(stub))->isTrainerCreature();
 }
 
 bool CreatureObjectAdapter::isSwimming() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isSwimming();
+	return (static_cast<CreatureObject*>(stub))->isSwimming();
 }
 
 ZoneClientSession* CreatureObjectAdapter::getClient() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getClient();
+	return (static_cast<CreatureObject*>(stub))->getClient();
 }
 
 bool CreatureObjectAdapter::isRidingMount() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isRidingMount();
+	return (static_cast<CreatureObject*>(stub))->isRidingMount();
 }
 
 ControlDevice* CreatureObjectAdapter::getControlDevice() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getControlDevice();
+	return (static_cast<CreatureObject*>(stub))->getControlDevice();
 }
 
 float CreatureObjectAdapter::getSwimHeight() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->getSwimHeight();
+	return (static_cast<CreatureObject*>(stub))->getSwimHeight();
 }
 
 bool CreatureObjectAdapter::isIncapacitated() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isIncapacitated();
+	return (static_cast<CreatureObject*>(stub))->isIncapacitated();
 }
 
 bool CreatureObjectAdapter::isDead() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isDead();
+	return (static_cast<CreatureObject*>(stub))->isDead();
 }
 
 bool CreatureObjectAdapter::isKnockedDown() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isKnockedDown();
+	return (static_cast<CreatureObject*>(stub))->isKnockedDown();
 }
 
 bool CreatureObjectAdapter::isKneeling() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isKneeling();
+	return (static_cast<CreatureObject*>(stub))->isKneeling();
 }
 
 bool CreatureObjectAdapter::isProne() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isProne();
+	return (static_cast<CreatureObject*>(stub))->isProne();
 }
 
 bool CreatureObjectAdapter::isStanding() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isStanding();
+	return (static_cast<CreatureObject*>(stub))->isStanding();
 }
 
 bool CreatureObjectAdapter::isSitting() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isSitting();
+	return (static_cast<CreatureObject*>(stub))->isSitting();
 }
 
 bool CreatureObjectAdapter::isSkillAnimating() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isSkillAnimating();
+	return (static_cast<CreatureObject*>(stub))->isSkillAnimating();
 }
 
 bool CreatureObjectAdapter::isRallied() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isRallied();
+	return (static_cast<CreatureObject*>(stub))->isRallied();
 }
 
 bool CreatureObjectAdapter::isInCombat() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isInCombat();
+	return (static_cast<CreatureObject*>(stub))->isInCombat();
 }
 
 bool CreatureObjectAdapter::isDizzied() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isDizzied();
+	return (static_cast<CreatureObject*>(stub))->isDizzied();
 }
 
 bool CreatureObjectAdapter::isBerserked() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isBerserked();
+	return (static_cast<CreatureObject*>(stub))->isBerserked();
 }
 
 bool CreatureObjectAdapter::isStunned() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isStunned();
+	return (static_cast<CreatureObject*>(stub))->isStunned();
 }
 
 bool CreatureObjectAdapter::isBlinded() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isBlinded();
+	return (static_cast<CreatureObject*>(stub))->isBlinded();
 }
 
 bool CreatureObjectAdapter::isIntimidated() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isIntimidated();
+	return (static_cast<CreatureObject*>(stub))->isIntimidated();
 }
 
 bool CreatureObjectAdapter::isSnared() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isSnared();
+	return (static_cast<CreatureObject*>(stub))->isSnared();
 }
 
 bool CreatureObjectAdapter::isImmobilized() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isImmobilized();
+	return (static_cast<CreatureObject*>(stub))->isImmobilized();
 }
 
 bool CreatureObjectAdapter::isRooted() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isRooted();
+	return (static_cast<CreatureObject*>(stub))->isRooted();
 }
 
 bool CreatureObjectAdapter::isFrozen() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isFrozen();
+	return (static_cast<CreatureObject*>(stub))->isFrozen();
 }
 
 bool CreatureObjectAdapter::isDiseased() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isDiseased();
+	return (static_cast<CreatureObject*>(stub))->isDiseased();
 }
 
 bool CreatureObjectAdapter::isPoisoned() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isPoisoned();
+	return (static_cast<CreatureObject*>(stub))->isPoisoned();
 }
 
 bool CreatureObjectAdapter::isBleeding() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isBleeding();
+	return (static_cast<CreatureObject*>(stub))->isBleeding();
 }
 
 bool CreatureObjectAdapter::isOnFire() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isOnFire();
+	return (static_cast<CreatureObject*>(stub))->isOnFire();
 }
 
 bool CreatureObjectAdapter::isMounted() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isMounted();
+	return (static_cast<CreatureObject*>(stub))->isMounted();
 }
 
 bool CreatureObjectAdapter::isRidingCreature() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isRidingCreature();
+	return (static_cast<CreatureObject*>(stub))->isRidingCreature();
 }
 
 bool CreatureObjectAdapter::isPeaced() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isPeaced();
+	return (static_cast<CreatureObject*>(stub))->isPeaced();
 }
 
 bool CreatureObjectAdapter::isMeditating() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isMeditating();
+	return (static_cast<CreatureObject*>(stub))->isMeditating();
 }
 
 bool CreatureObjectAdapter::isAiming() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isAiming();
+	return (static_cast<CreatureObject*>(stub))->isAiming();
 }
 
 bool CreatureObjectAdapter::isInCover() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isInCover();
+	return (static_cast<CreatureObject*>(stub))->isInCover();
 }
 
 bool CreatureObjectAdapter::isNonPlayerCreatureObject() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isNonPlayerCreatureObject();
+	return (static_cast<CreatureObject*>(stub))->isNonPlayerCreatureObject();
 }
 
 bool CreatureObjectAdapter::isCreature() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isCreature();
+	return (static_cast<CreatureObject*>(stub))->isCreature();
 }
 
 bool CreatureObjectAdapter::isPlayerCreature() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isPlayerCreature();
+	return (static_cast<CreatureObject*>(stub))->isPlayerCreature();
 }
 
 bool CreatureObjectAdapter::isAiAgent() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isAiAgent();
+	return (static_cast<CreatureObject*>(stub))->isAiAgent();
 }
 
 bool CreatureObjectAdapter::isInformantCreature() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isInformantCreature();
+	return (static_cast<CreatureObject*>(stub))->isInformantCreature();
 }
 
 bool CreatureObjectAdapter::isVendorCreature() {
-	return (static_cast<CreatureObjectImplementation*>(impl))->isVendorCreature();
+	return (static_cast<CreatureObject*>(stub))->isVendorCreature();
 }
 
 /*
@@ -7087,7 +7087,7 @@ DistributedObjectServant* CreatureObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CreatureObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CreatureObjectAdapter(static_cast<CreatureObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CreatureObjectAdapter(static_cast<CreatureObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

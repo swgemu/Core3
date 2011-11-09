@@ -283,7 +283,7 @@ void ForageManagerImplementation::deleteForageAreaCollection(String& playerName)
  *	ForageManagerAdapter
  */
 
-ForageManagerAdapter::ForageManagerAdapter(ForageManagerImplementation* obj) : ObserverAdapter(obj) {
+ForageManagerAdapter::ForageManagerAdapter(ForageManager* obj) : ObserverAdapter(obj) {
 }
 
 Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -313,23 +313,23 @@ Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void ForageManagerAdapter::deleteForageAreaCollection(String& playerName) {
-	(static_cast<ForageManagerImplementation*>(impl))->deleteForageAreaCollection(playerName);
+	(static_cast<ForageManager*>(stub))->deleteForageAreaCollection(playerName);
 }
 
 void ForageManagerAdapter::startForaging(CreatureObject* player, bool scoutForage) {
-	(static_cast<ForageManagerImplementation*>(impl))->startForaging(player, scoutForage);
+	(static_cast<ForageManager*>(stub))->startForaging(player, scoutForage);
 }
 
 void ForageManagerAdapter::finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
-	(static_cast<ForageManagerImplementation*>(impl))->finishForaging(player, scoutForage, forageX, forageY, planet);
+	(static_cast<ForageManager*>(stub))->finishForaging(player, scoutForage, forageX, forageY, planet);
 }
 
 void ForageManagerAdapter::forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
-	(static_cast<ForageManagerImplementation*>(impl))->forageGiveItems(player, scoutForage, forageX, forageY, planet);
+	(static_cast<ForageManager*>(stub))->forageGiveItems(player, scoutForage, forageX, forageY, planet);
 }
 
 void ForageManagerAdapter::forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet) {
-	(static_cast<ForageManagerImplementation*>(impl))->forageGiveResource(player, forageX, forageY, planet);
+	(static_cast<ForageManager*>(stub))->forageGiveResource(player, forageX, forageY, planet);
 }
 
 /*
@@ -357,7 +357,7 @@ DistributedObjectServant* ForageManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ForageManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ForageManagerAdapter(static_cast<ForageManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ForageManagerAdapter(static_cast<ForageManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

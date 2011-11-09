@@ -441,7 +441,7 @@ protected:
 
 class ChatManagerAdapter : public ManagedServiceAdapter {
 public:
-	ChatManagerAdapter(ChatManagerImplementation* impl);
+	ChatManagerAdapter(ChatManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

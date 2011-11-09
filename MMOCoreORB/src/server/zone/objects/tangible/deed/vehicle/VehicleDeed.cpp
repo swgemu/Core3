@@ -285,7 +285,7 @@ bool VehicleDeedImplementation::isVehicleDeedObject() {
  *	VehicleDeedAdapter
  */
 
-VehicleDeedAdapter::VehicleDeedAdapter(VehicleDeedImplementation* obj) : DeedAdapter(obj) {
+VehicleDeedAdapter::VehicleDeedAdapter(VehicleDeed* obj) : DeedAdapter(obj) {
 }
 
 Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -312,19 +312,19 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void VehicleDeedAdapter::initializeTransientMembers() {
-	(static_cast<VehicleDeedImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<VehicleDeed*>(stub))->initializeTransientMembers();
 }
 
 int VehicleDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<VehicleDeedImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<VehicleDeed*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleDeedAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<VehicleDeedImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<VehicleDeed*>(stub))->updateCraftingValues(schematic);
 }
 
 bool VehicleDeedAdapter::isVehicleDeedObject() {
-	return (static_cast<VehicleDeedImplementation*>(impl))->isVehicleDeedObject();
+	return (static_cast<VehicleDeed*>(stub))->isVehicleDeedObject();
 }
 
 /*
@@ -352,7 +352,7 @@ DistributedObjectServant* VehicleDeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* VehicleDeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new VehicleDeedAdapter(static_cast<VehicleDeedImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new VehicleDeedAdapter(static_cast<VehicleDeed*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

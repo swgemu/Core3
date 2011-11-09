@@ -849,7 +849,7 @@ bool InstallationObjectImplementation::isGeneratorObject() {
  *	InstallationObjectAdapter
  */
 
-InstallationObjectAdapter::InstallationObjectAdapter(InstallationObjectImplementation* obj) : StructureObjectAdapter(obj) {
+InstallationObjectAdapter::InstallationObjectAdapter(InstallationObject* obj) : StructureObjectAdapter(obj) {
 }
 
 Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -960,131 +960,131 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void InstallationObjectAdapter::initializeTransientMembers() {
-	(static_cast<InstallationObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<InstallationObject*>(stub))->initializeTransientMembers();
 }
 
 void InstallationObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<InstallationObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<InstallationObject*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int InstallationObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<InstallationObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<InstallationObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf) {
-	(static_cast<InstallationObjectImplementation*>(impl))->broadcastMessage(message, sendSelf);
+	(static_cast<InstallationObject*>(stub))->broadcastMessage(message, sendSelf);
 }
 
 void InstallationObjectAdapter::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	(static_cast<InstallationObjectImplementation*>(impl))->updateResourceContainerQuantity(container, newQuantity, notifyClient);
+	(static_cast<InstallationObject*>(stub))->updateResourceContainerQuantity(container, newQuantity, notifyClient);
 }
 
 void InstallationObjectAdapter::setOperating(bool operating, bool notifyClient) {
-	(static_cast<InstallationObjectImplementation*>(impl))->setOperating(operating, notifyClient);
+	(static_cast<InstallationObject*>(stub))->setOperating(operating, notifyClient);
 }
 
 void InstallationObjectAdapter::activateUiSync() {
-	(static_cast<InstallationObjectImplementation*>(impl))->activateUiSync();
+	(static_cast<InstallationObject*>(stub))->activateUiSync();
 }
 
 void InstallationObjectAdapter::updateOperators() {
-	(static_cast<InstallationObjectImplementation*>(impl))->updateOperators();
+	(static_cast<InstallationObject*>(stub))->updateOperators();
 }
 
 void InstallationObjectAdapter::verifyOperators() {
-	(static_cast<InstallationObjectImplementation*>(impl))->verifyOperators();
+	(static_cast<InstallationObject*>(stub))->verifyOperators();
 }
 
 void InstallationObjectAdapter::updateInstallationWork() {
-	(static_cast<InstallationObjectImplementation*>(impl))->updateInstallationWork();
+	(static_cast<InstallationObject*>(stub))->updateInstallationWork();
 }
 
 void InstallationObjectAdapter::handleStructureAddEnergy(CreatureObject* player) {
-	(static_cast<InstallationObjectImplementation*>(impl))->handleStructureAddEnergy(player);
+	(static_cast<InstallationObject*>(stub))->handleStructureAddEnergy(player);
 }
 
 void InstallationObjectAdapter::setActiveResource(ResourceContainer* container) {
-	(static_cast<InstallationObjectImplementation*>(impl))->setActiveResource(container);
+	(static_cast<InstallationObject*>(stub))->setActiveResource(container);
 }
 
 void InstallationObjectAdapter::changeActiveResourceID(unsigned long long spawnObjectID) {
-	(static_cast<InstallationObjectImplementation*>(impl))->changeActiveResourceID(spawnObjectID);
+	(static_cast<InstallationObject*>(stub))->changeActiveResourceID(spawnObjectID);
 }
 
 void InstallationObjectAdapter::addResourceToHopper(ResourceContainer* container) {
-	(static_cast<InstallationObjectImplementation*>(impl))->addResourceToHopper(container);
+	(static_cast<InstallationObject*>(stub))->addResourceToHopper(container);
 }
 
 void InstallationObjectAdapter::removeResourceFromHopper(ResourceContainer* container) {
-	(static_cast<InstallationObjectImplementation*>(impl))->removeResourceFromHopper(container);
+	(static_cast<InstallationObject*>(stub))->removeResourceFromHopper(container);
 }
 
 void InstallationObjectAdapter::clearResourceHopper() {
-	(static_cast<InstallationObjectImplementation*>(impl))->clearResourceHopper();
+	(static_cast<InstallationObject*>(stub))->clearResourceHopper();
 }
 
 float InstallationObjectAdapter::getHopperSize() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getHopperSize();
+	return (static_cast<InstallationObject*>(stub))->getHopperSize();
 }
 
 int InstallationObjectAdapter::getHopperItemQuantity(ResourceSpawn* spawn) {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getHopperItemQuantity(spawn);
+	return (static_cast<InstallationObject*>(stub))->getHopperItemQuantity(spawn);
 }
 
 ResourceContainer* InstallationObjectAdapter::getContainerFromHopper(ResourceSpawn* spawn) {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getContainerFromHopper(spawn);
+	return (static_cast<InstallationObject*>(stub))->getContainerFromHopper(spawn);
 }
 
 unsigned long long InstallationObjectAdapter::getActiveResourceSpawnID() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getActiveResourceSpawnID();
+	return (static_cast<InstallationObject*>(stub))->getActiveResourceSpawnID();
 }
 
 float InstallationObjectAdapter::getActualRate() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getActualRate();
+	return (static_cast<InstallationObject*>(stub))->getActualRate();
 }
 
 void InstallationObjectAdapter::broadcastToOperators(BasePacket* packet) {
-	(static_cast<InstallationObjectImplementation*>(impl))->broadcastToOperators(packet);
+	(static_cast<InstallationObject*>(stub))->broadcastToOperators(packet);
 }
 
 void InstallationObjectAdapter::addOperator(CreatureObject* player) {
-	(static_cast<InstallationObjectImplementation*>(impl))->addOperator(player);
+	(static_cast<InstallationObject*>(stub))->addOperator(player);
 }
 
 void InstallationObjectAdapter::removeOperator(CreatureObject* player) {
-	(static_cast<InstallationObjectImplementation*>(impl))->removeOperator(player);
+	(static_cast<InstallationObject*>(stub))->removeOperator(player);
 }
 
 void InstallationObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<InstallationObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<InstallationObject*>(stub))->sendBaselinesTo(player);
 }
 
 bool InstallationObjectAdapter::isInstallationObject() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->isInstallationObject();
+	return (static_cast<InstallationObject*>(stub))->isInstallationObject();
 }
 
 bool InstallationObjectAdapter::isOperating() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->isOperating();
+	return (static_cast<InstallationObject*>(stub))->isOperating();
 }
 
 int InstallationObjectAdapter::getInstallationType() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getInstallationType();
+	return (static_cast<InstallationObject*>(stub))->getInstallationType();
 }
 
 float InstallationObjectAdapter::getExtractionRate() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getExtractionRate();
+	return (static_cast<InstallationObject*>(stub))->getExtractionRate();
 }
 
 float InstallationObjectAdapter::getHopperSizeMax() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->getHopperSizeMax();
+	return (static_cast<InstallationObject*>(stub))->getHopperSizeMax();
 }
 
 bool InstallationObjectAdapter::isHarvesterObject() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->isHarvesterObject();
+	return (static_cast<InstallationObject*>(stub))->isHarvesterObject();
 }
 
 bool InstallationObjectAdapter::isGeneratorObject() {
-	return (static_cast<InstallationObjectImplementation*>(impl))->isGeneratorObject();
+	return (static_cast<InstallationObject*>(stub))->isGeneratorObject();
 }
 
 /*
@@ -1112,7 +1112,7 @@ DistributedObjectServant* InstallationObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InstallationObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InstallationObjectAdapter(static_cast<InstallationObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new InstallationObjectAdapter(static_cast<InstallationObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

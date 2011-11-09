@@ -124,7 +124,7 @@ protected:
 
 class StaticObjectAdapter : public SceneObjectAdapter {
 public:
-	StaticObjectAdapter(StaticObjectImplementation* impl);
+	StaticObjectAdapter(StaticObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

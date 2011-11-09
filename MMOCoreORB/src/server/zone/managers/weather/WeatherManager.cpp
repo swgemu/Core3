@@ -725,7 +725,7 @@ float WeatherManagerImplementation::getWindY() {
  *	WeatherManagerAdapter
  */
 
-WeatherManagerAdapter::WeatherManagerAdapter(WeatherManagerImplementation* obj) : ManagedServiceAdapter(obj) {
+WeatherManagerAdapter::WeatherManagerAdapter(WeatherManager* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -791,71 +791,71 @@ Packet* WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void WeatherManagerAdapter::initialize() {
-	(static_cast<WeatherManagerImplementation*>(impl))->initialize();
+	(static_cast<WeatherManager*>(stub))->initialize();
 }
 
 void WeatherManagerAdapter::generateNewWeather() {
-	(static_cast<WeatherManagerImplementation*>(impl))->generateNewWeather();
+	(static_cast<WeatherManager*>(stub))->generateNewWeather();
 }
 
 void WeatherManagerAdapter::weatherTransition() {
-	(static_cast<WeatherManagerImplementation*>(impl))->weatherTransition();
+	(static_cast<WeatherManager*>(stub))->weatherTransition();
 }
 
 void WeatherManagerAdapter::sendWeatherPacket(CreatureObject* player) {
-	(static_cast<WeatherManagerImplementation*>(impl))->sendWeatherPacket(player);
+	(static_cast<WeatherManager*>(stub))->sendWeatherPacket(player);
 }
 
 void WeatherManagerAdapter::sandstormTick() {
-	(static_cast<WeatherManagerImplementation*>(impl))->sandstormTick();
+	(static_cast<WeatherManager*>(stub))->sandstormTick();
 }
 
 void WeatherManagerAdapter::enableWeather(CreatureObject* player) {
-	(static_cast<WeatherManagerImplementation*>(impl))->enableWeather(player);
+	(static_cast<WeatherManager*>(stub))->enableWeather(player);
 }
 
 void WeatherManagerAdapter::disableWeather(CreatureObject* player) {
-	(static_cast<WeatherManagerImplementation*>(impl))->disableWeather(player);
+	(static_cast<WeatherManager*>(stub))->disableWeather(player);
 }
 
 void WeatherManagerAdapter::changeWeather(CreatureObject* player, int newWeather) {
-	(static_cast<WeatherManagerImplementation*>(impl))->changeWeather(player, newWeather);
+	(static_cast<WeatherManager*>(stub))->changeWeather(player, newWeather);
 }
 
 void WeatherManagerAdapter::weatherInfo(CreatureObject* player) {
-	(static_cast<WeatherManagerImplementation*>(impl))->weatherInfo(player);
+	(static_cast<WeatherManager*>(stub))->weatherInfo(player);
 }
 
 void WeatherManagerAdapter::setWeatherID(unsigned int value) {
-	(static_cast<WeatherManagerImplementation*>(impl))->setWeatherID(value);
+	(static_cast<WeatherManager*>(stub))->setWeatherID(value);
 }
 
 unsigned int WeatherManagerAdapter::getWeatherID() {
-	return (static_cast<WeatherManagerImplementation*>(impl))->getWeatherID();
+	return (static_cast<WeatherManager*>(stub))->getWeatherID();
 }
 
 bool WeatherManagerAdapter::isWeatherEnabled() {
-	return (static_cast<WeatherManagerImplementation*>(impl))->isWeatherEnabled();
+	return (static_cast<WeatherManager*>(stub))->isWeatherEnabled();
 }
 
 void WeatherManagerAdapter::setWeatherEnabled(bool value) {
-	(static_cast<WeatherManagerImplementation*>(impl))->setWeatherEnabled(value);
+	(static_cast<WeatherManager*>(stub))->setWeatherEnabled(value);
 }
 
 void WeatherManagerAdapter::setWindX(float value) {
-	(static_cast<WeatherManagerImplementation*>(impl))->setWindX(value);
+	(static_cast<WeatherManager*>(stub))->setWindX(value);
 }
 
 void WeatherManagerAdapter::setWindY(float value) {
-	(static_cast<WeatherManagerImplementation*>(impl))->setWindY(value);
+	(static_cast<WeatherManager*>(stub))->setWindY(value);
 }
 
 float WeatherManagerAdapter::getWindX() {
-	return (static_cast<WeatherManagerImplementation*>(impl))->getWindX();
+	return (static_cast<WeatherManager*>(stub))->getWindX();
 }
 
 float WeatherManagerAdapter::getWindY() {
-	return (static_cast<WeatherManagerImplementation*>(impl))->getWindY();
+	return (static_cast<WeatherManager*>(stub))->getWindY();
 }
 
 /*
@@ -883,7 +883,7 @@ DistributedObjectServant* WeatherManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WeatherManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WeatherManagerAdapter(static_cast<WeatherManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new WeatherManagerAdapter(static_cast<WeatherManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

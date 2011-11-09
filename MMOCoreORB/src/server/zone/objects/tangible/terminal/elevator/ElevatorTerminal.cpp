@@ -329,7 +329,7 @@ ElevatorTerminal* ElevatorTerminalImplementation::getElevatorDown() {
  *	ElevatorTerminalAdapter
  */
 
-ElevatorTerminalAdapter::ElevatorTerminalAdapter(ElevatorTerminalImplementation* obj) : TerminalAdapter(obj) {
+ElevatorTerminalAdapter::ElevatorTerminalAdapter(ElevatorTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -365,31 +365,31 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void ElevatorTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	(static_cast<ElevatorTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<ElevatorTerminal*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int ElevatorTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<ElevatorTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ElevatorTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool ElevatorTerminalAdapter::isElevatorTerminal() {
-	return (static_cast<ElevatorTerminalImplementation*>(impl))->isElevatorTerminal();
+	return (static_cast<ElevatorTerminal*>(stub))->isElevatorTerminal();
 }
 
 void ElevatorTerminalAdapter::setElevatorUp(ElevatorTerminal* term) {
-	(static_cast<ElevatorTerminalImplementation*>(impl))->setElevatorUp(term);
+	(static_cast<ElevatorTerminal*>(stub))->setElevatorUp(term);
 }
 
 void ElevatorTerminalAdapter::setElevatorDown(ElevatorTerminal* term) {
-	(static_cast<ElevatorTerminalImplementation*>(impl))->setElevatorDown(term);
+	(static_cast<ElevatorTerminal*>(stub))->setElevatorDown(term);
 }
 
 ElevatorTerminal* ElevatorTerminalAdapter::getElevatorUp() {
-	return (static_cast<ElevatorTerminalImplementation*>(impl))->getElevatorUp();
+	return (static_cast<ElevatorTerminal*>(stub))->getElevatorUp();
 }
 
 ElevatorTerminal* ElevatorTerminalAdapter::getElevatorDown() {
-	return (static_cast<ElevatorTerminalImplementation*>(impl))->getElevatorDown();
+	return (static_cast<ElevatorTerminal*>(stub))->getElevatorDown();
 }
 
 /*
@@ -417,7 +417,7 @@ DistributedObjectServant* ElevatorTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ElevatorTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ElevatorTerminalAdapter(static_cast<ElevatorTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ElevatorTerminalAdapter(static_cast<ElevatorTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

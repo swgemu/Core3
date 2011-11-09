@@ -488,7 +488,7 @@ ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
  *	ResourceContainerAdapter
  */
 
-ResourceContainerAdapter::ResourceContainerAdapter(ResourceContainerImplementation* obj) : TangibleObjectAdapter(obj) {
+ResourceContainerAdapter::ResourceContainerAdapter(ResourceContainer* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -551,67 +551,67 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ResourceContainerAdapter::initializeTransientMembers() {
-	(static_cast<ResourceContainerImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ResourceContainer*>(stub))->initializeTransientMembers();
 }
 
 void ResourceContainerAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<ResourceContainerImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<ResourceContainer*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void ResourceContainerAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<ResourceContainerImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<ResourceContainer*>(stub))->sendBaselinesTo(player);
 }
 
 void ResourceContainerAdapter::setQuantity(unsigned int newQuantity, bool notifyClient) {
-	(static_cast<ResourceContainerImplementation*>(impl))->setQuantity(newQuantity, notifyClient);
+	(static_cast<ResourceContainer*>(stub))->setQuantity(newQuantity, notifyClient);
 }
 
 bool ResourceContainerAdapter::isResourceContainer() {
-	return (static_cast<ResourceContainerImplementation*>(impl))->isResourceContainer();
+	return (static_cast<ResourceContainer*>(stub))->isResourceContainer();
 }
 
 int ResourceContainerAdapter::getQuantity() {
-	return (static_cast<ResourceContainerImplementation*>(impl))->getQuantity();
+	return (static_cast<ResourceContainer*>(stub))->getQuantity();
 }
 
 int ResourceContainerAdapter::getUseCount() {
-	return (static_cast<ResourceContainerImplementation*>(impl))->getUseCount();
+	return (static_cast<ResourceContainer*>(stub))->getUseCount();
 }
 
 void ResourceContainerAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	(static_cast<ResourceContainerImplementation*>(impl))->setUseCount(newUseCount, notifyClient);
+	(static_cast<ResourceContainer*>(stub))->setUseCount(newUseCount, notifyClient);
 }
 
 void ResourceContainerAdapter::setSpawnObject(ResourceSpawn* spawn) {
-	(static_cast<ResourceContainerImplementation*>(impl))->setSpawnObject(spawn);
+	(static_cast<ResourceContainer*>(stub))->setSpawnObject(spawn);
 }
 
 String ResourceContainerAdapter::getSpawnName() {
-	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnName();
+	return (static_cast<ResourceContainer*>(stub))->getSpawnName();
 }
 
 String ResourceContainerAdapter::getSpawnType() {
-	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnType();
+	return (static_cast<ResourceContainer*>(stub))->getSpawnType();
 }
 
 unsigned long long ResourceContainerAdapter::getSpawnID() {
-	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnID();
+	return (static_cast<ResourceContainer*>(stub))->getSpawnID();
 }
 
 ResourceSpawn* ResourceContainerAdapter::getSpawnObject() {
-	return (static_cast<ResourceContainerImplementation*>(impl))->getSpawnObject();
+	return (static_cast<ResourceContainer*>(stub))->getSpawnObject();
 }
 
 void ResourceContainerAdapter::split(int newStackSize) {
-	(static_cast<ResourceContainerImplementation*>(impl))->split(newStackSize);
+	(static_cast<ResourceContainer*>(stub))->split(newStackSize);
 }
 
 void ResourceContainerAdapter::split(int newStackSize, CreatureObject* player) {
-	(static_cast<ResourceContainerImplementation*>(impl))->split(newStackSize, player);
+	(static_cast<ResourceContainer*>(stub))->split(newStackSize, player);
 }
 
 void ResourceContainerAdapter::combine(ResourceContainer* fromContainer) {
-	(static_cast<ResourceContainerImplementation*>(impl))->combine(fromContainer);
+	(static_cast<ResourceContainer*>(stub))->combine(fromContainer);
 }
 
 /*
@@ -639,7 +639,7 @@ DistributedObjectServant* ResourceContainerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ResourceContainerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ResourceContainerAdapter(static_cast<ResourceContainerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ResourceContainerAdapter(static_cast<ResourceContainer*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

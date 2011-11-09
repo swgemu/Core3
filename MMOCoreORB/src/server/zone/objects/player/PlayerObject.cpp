@@ -4261,7 +4261,7 @@ byte PlayerObjectImplementation::getMaximumLots() {
  *	PlayerObjectAdapter
  */
 
-PlayerObjectAdapter::PlayerObjectAdapter(PlayerObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
+PlayerObjectAdapter::PlayerObjectAdapter(PlayerObject* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -4786,683 +4786,683 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void PlayerObjectAdapter::finalize() {
-	(static_cast<PlayerObjectImplementation*>(impl))->finalize();
+	(static_cast<PlayerObject*>(stub))->finalize();
 }
 
 void PlayerObjectAdapter::notifyLoadFromDatabase() {
-	(static_cast<PlayerObjectImplementation*>(impl))->notifyLoadFromDatabase();
+	(static_cast<PlayerObject*>(stub))->notifyLoadFromDatabase();
 }
 
 void PlayerObjectAdapter::unload() {
-	(static_cast<PlayerObjectImplementation*>(impl))->unload();
+	(static_cast<PlayerObject*>(stub))->unload();
 }
 
 void PlayerObjectAdapter::initializeTransientMembers() {
-	(static_cast<PlayerObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<PlayerObject*>(stub))->initializeTransientMembers();
 }
 
 void PlayerObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<PlayerObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<PlayerObject*>(stub))->sendBaselinesTo(player);
 }
 
 void PlayerObjectAdapter::sendMessage(BasePacket* msg) {
-	(static_cast<PlayerObjectImplementation*>(impl))->sendMessage(msg);
+	(static_cast<PlayerObject*>(stub))->sendMessage(msg);
 }
 
 void PlayerObjectAdapter::addOwnedStructure(StructureObject* obj) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addOwnedStructure(obj);
+	(static_cast<PlayerObject*>(stub))->addOwnedStructure(obj);
 }
 
 void PlayerObjectAdapter::removeOwnedStructure(StructureObject* obj) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeOwnedStructure(obj);
+	(static_cast<PlayerObject*>(stub))->removeOwnedStructure(obj);
 }
 
 int PlayerObjectAdapter::getTotalOwnedStructureCount() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getTotalOwnedStructureCount();
+	return (static_cast<PlayerObject*>(stub))->getTotalOwnedStructureCount();
 }
 
 bool PlayerObjectAdapter::isOwnedStructure(StructureObject* obj) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isOwnedStructure(obj);
+	return (static_cast<PlayerObject*>(stub))->isOwnedStructure(obj);
 }
 
 StructureObject* PlayerObjectAdapter::getOwnedStructure(int i) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getOwnedStructure(i);
+	return (static_cast<PlayerObject*>(stub))->getOwnedStructure(i);
 }
 
 int PlayerObjectAdapter::getLotsRemaining() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getLotsRemaining();
+	return (static_cast<PlayerObject*>(stub))->getLotsRemaining();
 }
 
 bool PlayerObjectAdapter::hasLotsRemaining(int lots) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasLotsRemaining(lots);
+	return (static_cast<PlayerObject*>(stub))->hasLotsRemaining(lots);
 }
 
 void PlayerObjectAdapter::notifySceneReady() {
-	(static_cast<PlayerObjectImplementation*>(impl))->notifySceneReady();
+	(static_cast<PlayerObject*>(stub))->notifySceneReady();
 }
 
 int PlayerObjectAdapter::addExperience(const String& xpType, int xp, bool notifyClient) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->addExperience(xpType, xp, notifyClient);
+	return (static_cast<PlayerObject*>(stub))->addExperience(xpType, xp, notifyClient);
 }
 
 void PlayerObjectAdapter::removeExperience(const String& xpType, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeExperience(xpType, notifyClient);
+	(static_cast<PlayerObject*>(stub))->removeExperience(xpType, notifyClient);
 }
 
 void PlayerObjectAdapter::addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addWaypoint(waypoint, checkName, notifyClient);
+	(static_cast<PlayerObject*>(stub))->addWaypoint(waypoint, checkName, notifyClient);
 }
 
 void PlayerObjectAdapter::setWaypoint(WaypointObject* waypoint, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setWaypoint(waypoint, notifyClient);
+	(static_cast<PlayerObject*>(stub))->setWaypoint(waypoint, notifyClient);
 }
 
 void PlayerObjectAdapter::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addWaypoint(planet, positionX, positionY, notifyClient);
+	(static_cast<PlayerObject*>(stub))->addWaypoint(planet, positionX, positionY, notifyClient);
 }
 
 void PlayerObjectAdapter::removeWaypoint(unsigned long long waypointID, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeWaypoint(waypointID, notifyClient);
+	(static_cast<PlayerObject*>(stub))->removeWaypoint(waypointID, notifyClient);
 }
 
 void PlayerObjectAdapter::setLanguageID(byte language, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setLanguageID(language, notifyClient);
+	(static_cast<PlayerObject*>(stub))->setLanguageID(language, notifyClient);
 }
 
 void PlayerObjectAdapter::addFriend(const String& name, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addFriend(name, notifyClient);
+	(static_cast<PlayerObject*>(stub))->addFriend(name, notifyClient);
 }
 
 void PlayerObjectAdapter::removeFriend(const String& name, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeFriend(name, notifyClient);
+	(static_cast<PlayerObject*>(stub))->removeFriend(name, notifyClient);
 }
 
 void PlayerObjectAdapter::addIgnore(const String& name, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addIgnore(name, notifyClient);
+	(static_cast<PlayerObject*>(stub))->addIgnore(name, notifyClient);
 }
 
 void PlayerObjectAdapter::removeIgnore(const String& name, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeIgnore(name, notifyClient);
+	(static_cast<PlayerObject*>(stub))->removeIgnore(name, notifyClient);
 }
 
 void PlayerObjectAdapter::setTitle(const String& characterTitle, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setTitle(characterTitle, notifyClient);
+	(static_cast<PlayerObject*>(stub))->setTitle(characterTitle, notifyClient);
 }
 
 void PlayerObjectAdapter::setFoodFilling(int newValue, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setFoodFilling(newValue, notifyClient);
+	(static_cast<PlayerObject*>(stub))->setFoodFilling(newValue, notifyClient);
 }
 
 void PlayerObjectAdapter::setDrinkFilling(int newValue, bool notifyClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setDrinkFilling(newValue, notifyClient);
+	(static_cast<PlayerObject*>(stub))->setDrinkFilling(newValue, notifyClient);
 }
 
 void PlayerObjectAdapter::increaseFactionStanding(const String& factionName, float amount) {
-	(static_cast<PlayerObjectImplementation*>(impl))->increaseFactionStanding(factionName, amount);
+	(static_cast<PlayerObject*>(stub))->increaseFactionStanding(factionName, amount);
 }
 
 void PlayerObjectAdapter::decreaseFactionStanding(const String& factionName, float amount) {
-	(static_cast<PlayerObjectImplementation*>(impl))->decreaseFactionStanding(factionName, amount);
+	(static_cast<PlayerObject*>(stub))->decreaseFactionStanding(factionName, amount);
 }
 
 float PlayerObjectAdapter::getFactionStanding(const String& factionName) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getFactionStanding(factionName);
+	return (static_cast<PlayerObject*>(stub))->getFactionStanding(factionName);
 }
 
 WaypointObject* PlayerObjectAdapter::getSurveyWaypoint() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSurveyWaypoint();
+	return (static_cast<PlayerObject*>(stub))->getSurveyWaypoint();
 }
 
 void PlayerObjectAdapter::activateRecovery() {
-	(static_cast<PlayerObjectImplementation*>(impl))->activateRecovery();
+	(static_cast<PlayerObject*>(stub))->activateRecovery();
 }
 
 void PlayerObjectAdapter::doRecovery() {
-	(static_cast<PlayerObjectImplementation*>(impl))->doRecovery();
+	(static_cast<PlayerObject*>(stub))->doRecovery();
 }
 
 void PlayerObjectAdapter::disconnect(bool closeClient, bool doLock) {
-	(static_cast<PlayerObjectImplementation*>(impl))->disconnect(closeClient, doLock);
+	(static_cast<PlayerObject*>(stub))->disconnect(closeClient, doLock);
 }
 
 void PlayerObjectAdapter::reload(ZoneClientSession* client) {
-	(static_cast<PlayerObjectImplementation*>(impl))->reload(client);
+	(static_cast<PlayerObject*>(stub))->reload(client);
 }
 
 void PlayerObjectAdapter::setOffline() {
-	(static_cast<PlayerObjectImplementation*>(impl))->setOffline();
+	(static_cast<PlayerObject*>(stub))->setOffline();
 }
 
 void PlayerObjectAdapter::setLinkDead() {
-	(static_cast<PlayerObjectImplementation*>(impl))->setLinkDead();
+	(static_cast<PlayerObject*>(stub))->setLinkDead();
 }
 
 void PlayerObjectAdapter::setOnline() {
-	(static_cast<PlayerObjectImplementation*>(impl))->setOnline();
+	(static_cast<PlayerObject*>(stub))->setOnline();
 }
 
 void PlayerObjectAdapter::setLoggingOut() {
-	(static_cast<PlayerObjectImplementation*>(impl))->setLoggingOut();
+	(static_cast<PlayerObject*>(stub))->setLoggingOut();
 }
 
 void PlayerObjectAdapter::sendBadgesResponseTo(CreatureObject* player) {
-	(static_cast<PlayerObjectImplementation*>(impl))->sendBadgesResponseTo(player);
+	(static_cast<PlayerObject*>(stub))->sendBadgesResponseTo(player);
 }
 
 void PlayerObjectAdapter::logout(bool doLock) {
-	(static_cast<PlayerObjectImplementation*>(impl))->logout(doLock);
+	(static_cast<PlayerObject*>(stub))->logout(doLock);
 }
 
 void PlayerObjectAdapter::setLastNpcConvStr(const String& conv) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setLastNpcConvStr(conv);
+	(static_cast<PlayerObject*>(stub))->setLastNpcConvStr(conv);
 }
 
 void PlayerObjectAdapter::setLastNpcConvMessStr(const String& mess) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setLastNpcConvMessStr(mess);
+	(static_cast<PlayerObject*>(stub))->setLastNpcConvMessStr(mess);
 }
 
 String PlayerObjectAdapter::getLastNpcConvStr() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getLastNpcConvStr();
+	return (static_cast<PlayerObject*>(stub))->getLastNpcConvStr();
 }
 
 String PlayerObjectAdapter::getLastNpcConvMessStr() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getLastNpcConvMessStr();
+	return (static_cast<PlayerObject*>(stub))->getLastNpcConvMessStr();
 }
 
 String PlayerObjectAdapter::getLastNpcConvOption(int idx) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getLastNpcConvOption(idx);
+	return (static_cast<PlayerObject*>(stub))->getLastNpcConvOption(idx);
 }
 
 void PlayerObjectAdapter::addLastNpcConvOptions(const String& option) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addLastNpcConvOptions(option);
+	(static_cast<PlayerObject*>(stub))->addLastNpcConvOptions(option);
 }
 
 int PlayerObjectAdapter::countLastNpcConvOptions() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->countLastNpcConvOptions();
+	return (static_cast<PlayerObject*>(stub))->countLastNpcConvOptions();
 }
 
 void PlayerObjectAdapter::clearLastNpcConvOptions() {
-	(static_cast<PlayerObjectImplementation*>(impl))->clearLastNpcConvOptions();
+	(static_cast<PlayerObject*>(stub))->clearLastNpcConvOptions();
 }
 
 void PlayerObjectAdapter::setConversatingCreature(CreatureObject* creature) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setConversatingCreature(creature);
+	(static_cast<PlayerObject*>(stub))->setConversatingCreature(creature);
 }
 
 CreatureObject* PlayerObjectAdapter::getConversatingCreature() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getConversatingCreature();
+	return (static_cast<PlayerObject*>(stub))->getConversatingCreature();
 }
 
 void PlayerObjectAdapter::addPersistentMessage(unsigned long long id) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addPersistentMessage(id);
+	(static_cast<PlayerObject*>(stub))->addPersistentMessage(id);
 }
 
 void PlayerObjectAdapter::dropPersistentMessage(unsigned long long id) {
-	(static_cast<PlayerObjectImplementation*>(impl))->dropPersistentMessage(id);
+	(static_cast<PlayerObject*>(stub))->dropPersistentMessage(id);
 }
 
 void PlayerObjectAdapter::unloadSpawnedChildren() {
-	(static_cast<PlayerObjectImplementation*>(impl))->unloadSpawnedChildren();
+	(static_cast<PlayerObject*>(stub))->unloadSpawnedChildren();
 }
 
 void PlayerObjectAdapter::addToConsentList(const String& name) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addToConsentList(name);
+	(static_cast<PlayerObject*>(stub))->addToConsentList(name);
 }
 
 bool PlayerObjectAdapter::hasInConsentList(const String& name) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasInConsentList(name);
+	return (static_cast<PlayerObject*>(stub))->hasInConsentList(name);
 }
 
 void PlayerObjectAdapter::removeFromConsentList(const String& name) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeFromConsentList(name);
+	(static_cast<PlayerObject*>(stub))->removeFromConsentList(name);
 }
 
 String PlayerObjectAdapter::getConsentName(int i) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getConsentName(i);
+	return (static_cast<PlayerObject*>(stub))->getConsentName(i);
 }
 
 int PlayerObjectAdapter::getConsentListSize() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getConsentListSize();
+	return (static_cast<PlayerObject*>(stub))->getConsentListSize();
 }
 
 void PlayerObjectAdapter::setCommandMessageString(unsigned int actionCRC, String& message) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setCommandMessageString(actionCRC, message);
+	(static_cast<PlayerObject*>(stub))->setCommandMessageString(actionCRC, message);
 }
 
 void PlayerObjectAdapter::removeCommandMessageString(unsigned int actionCRC) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeCommandMessageString(actionCRC);
+	(static_cast<PlayerObject*>(stub))->removeCommandMessageString(actionCRC);
 }
 
 BuildingObject* PlayerObjectAdapter::getDeclaredResidence() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getDeclaredResidence();
+	return (static_cast<PlayerObject*>(stub))->getDeclaredResidence();
 }
 
 void PlayerObjectAdapter::setDeclaredResidence(BuildingObject* residence) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setDeclaredResidence(residence);
+	(static_cast<PlayerObject*>(stub))->setDeclaredResidence(residence);
 }
 
 void PlayerObjectAdapter::setCloningFacility(BuildingObject* cloningfac) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setCloningFacility(cloningfac);
+	(static_cast<PlayerObject*>(stub))->setCloningFacility(cloningfac);
 }
 
 BuildingObject* PlayerObjectAdapter::getCloningFacility() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getCloningFacility();
+	return (static_cast<PlayerObject*>(stub))->getCloningFacility();
 }
 
 void PlayerObjectAdapter::notifyOnline() {
-	(static_cast<PlayerObjectImplementation*>(impl))->notifyOnline();
+	(static_cast<PlayerObject*>(stub))->notifyOnline();
 }
 
 void PlayerObjectAdapter::doDigest() {
-	(static_cast<PlayerObjectImplementation*>(impl))->doDigest();
+	(static_cast<PlayerObject*>(stub))->doDigest();
 }
 
 bool PlayerObjectAdapter::isDigesting() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isDigesting();
+	return (static_cast<PlayerObject*>(stub))->isDigesting();
 }
 
 String PlayerObjectAdapter::getSavedTerrainName() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSavedTerrainName();
+	return (static_cast<PlayerObject*>(stub))->getSavedTerrainName();
 }
 
 void PlayerObjectAdapter::setSavedParentID(unsigned long long id) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setSavedParentID(id);
+	(static_cast<PlayerObject*>(stub))->setSavedParentID(id);
 }
 
 void PlayerObjectAdapter::setSavedTerrainName(const String& name) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setSavedTerrainName(name);
+	(static_cast<PlayerObject*>(stub))->setSavedTerrainName(name);
 }
 
 unsigned long long PlayerObjectAdapter::getSavedParentID() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSavedParentID();
+	return (static_cast<PlayerObject*>(stub))->getSavedParentID();
 }
 
 unsigned int PlayerObjectAdapter::getNewSuiBoxID(unsigned int type) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getNewSuiBoxID(type);
+	return (static_cast<PlayerObject*>(stub))->getNewSuiBoxID(type);
 }
 
 bool PlayerObjectAdapter::hasSuiBox(unsigned int boxID) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasSuiBox(boxID);
+	return (static_cast<PlayerObject*>(stub))->hasSuiBox(boxID);
 }
 
 SuiBox* PlayerObjectAdapter::getSuiBox(unsigned int boxID) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSuiBox(boxID);
+	return (static_cast<PlayerObject*>(stub))->getSuiBox(boxID);
 }
 
 void PlayerObjectAdapter::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeSuiBox(boxID, closeWindowToClient);
+	(static_cast<PlayerObject*>(stub))->removeSuiBox(boxID, closeWindowToClient);
 }
 
 void PlayerObjectAdapter::removeSuiBoxType(unsigned int windowType) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeSuiBoxType(windowType);
+	(static_cast<PlayerObject*>(stub))->removeSuiBoxType(windowType);
 }
 
 bool PlayerObjectAdapter::hasSuiBoxWindowType(unsigned int windowType) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasSuiBoxWindowType(windowType);
+	return (static_cast<PlayerObject*>(stub))->hasSuiBoxWindowType(windowType);
 }
 
 void PlayerObjectAdapter::closeSuiWindowType(unsigned int windowType) {
-	(static_cast<PlayerObjectImplementation*>(impl))->closeSuiWindowType(windowType);
+	(static_cast<PlayerObject*>(stub))->closeSuiWindowType(windowType);
 }
 
 SuiBox* PlayerObjectAdapter::getSuiBoxFromWindowType(unsigned int windowType) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSuiBoxFromWindowType(windowType);
+	return (static_cast<PlayerObject*>(stub))->getSuiBoxFromWindowType(windowType);
 }
 
 void PlayerObjectAdapter::addSuiBox(SuiBox* sui) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addSuiBox(sui);
+	(static_cast<PlayerObject*>(stub))->addSuiBox(sui);
 }
 
 bool PlayerObjectAdapter::isFirstIncapacitationExpired() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isFirstIncapacitationExpired();
+	return (static_cast<PlayerObject*>(stub))->isFirstIncapacitationExpired();
 }
 
 void PlayerObjectAdapter::resetIncapacitationCounter() {
-	(static_cast<PlayerObjectImplementation*>(impl))->resetIncapacitationCounter();
+	(static_cast<PlayerObject*>(stub))->resetIncapacitationCounter();
 }
 
 void PlayerObjectAdapter::resetFirstIncapacitationTime() {
-	(static_cast<PlayerObjectImplementation*>(impl))->resetFirstIncapacitationTime();
+	(static_cast<PlayerObject*>(stub))->resetFirstIncapacitationTime();
 }
 
 void PlayerObjectAdapter::updateIncapacitationCounter() {
-	(static_cast<PlayerObjectImplementation*>(impl))->updateIncapacitationCounter();
+	(static_cast<PlayerObject*>(stub))->updateIncapacitationCounter();
 }
 
 bool PlayerObjectAdapter::isFirstIncapacitation() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isFirstIncapacitation();
+	return (static_cast<PlayerObject*>(stub))->isFirstIncapacitation();
 }
 
 byte PlayerObjectAdapter::getIncapacitationCounter() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getIncapacitationCounter();
+	return (static_cast<PlayerObject*>(stub))->getIncapacitationCounter();
 }
 
 void PlayerObjectAdapter::addToDuelList(CreatureObject* targetPlayer) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addToDuelList(targetPlayer);
+	(static_cast<PlayerObject*>(stub))->addToDuelList(targetPlayer);
 }
 
 void PlayerObjectAdapter::removeFromDuelList(CreatureObject* targetPlayer) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeFromDuelList(targetPlayer);
+	(static_cast<PlayerObject*>(stub))->removeFromDuelList(targetPlayer);
 }
 
 CreatureObject* PlayerObjectAdapter::getDuelListObject(int index) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getDuelListObject(index);
+	return (static_cast<PlayerObject*>(stub))->getDuelListObject(index);
 }
 
 bool PlayerObjectAdapter::requestedDuelTo(CreatureObject* targetPlayer) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->requestedDuelTo(targetPlayer);
+	return (static_cast<PlayerObject*>(stub))->requestedDuelTo(targetPlayer);
 }
 
 bool PlayerObjectAdapter::isDuelListEmpty() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isDuelListEmpty();
+	return (static_cast<PlayerObject*>(stub))->isDuelListEmpty();
 }
 
 int PlayerObjectAdapter::getDuelListSize() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getDuelListSize();
+	return (static_cast<PlayerObject*>(stub))->getDuelListSize();
 }
 
 UnicodeString PlayerObjectAdapter::getBiography() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getBiography();
+	return (static_cast<PlayerObject*>(stub))->getBiography();
 }
 
 void PlayerObjectAdapter::notifyOffline() {
-	(static_cast<PlayerObjectImplementation*>(impl))->notifyOffline();
+	(static_cast<PlayerObject*>(stub))->notifyOffline();
 }
 
 void PlayerObjectAdapter::setBadge(unsigned int badge) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setBadge(badge);
+	(static_cast<PlayerObject*>(stub))->setBadge(badge);
 }
 
 void PlayerObjectAdapter::awardBadge(unsigned int badge) {
-	(static_cast<PlayerObjectImplementation*>(impl))->awardBadge(badge);
+	(static_cast<PlayerObject*>(stub))->awardBadge(badge);
 }
 
 void PlayerObjectAdapter::setSurveyTool(SurveyTool* tool) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setSurveyTool(tool);
+	(static_cast<PlayerObject*>(stub))->setSurveyTool(tool);
 }
 
 SurveyTool* PlayerObjectAdapter::getSurveyTool() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSurveyTool();
+	return (static_cast<PlayerObject*>(stub))->getSurveyTool();
 }
 
 CraftingTool* PlayerObjectAdapter::getLastCraftingToolUsed() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getLastCraftingToolUsed();
+	return (static_cast<PlayerObject*>(stub))->getLastCraftingToolUsed();
 }
 
 void PlayerObjectAdapter::setLastCraftingToolUsed(CraftingTool* tool) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setLastCraftingToolUsed(tool);
+	(static_cast<PlayerObject*>(stub))->setLastCraftingToolUsed(tool);
 }
 
 void PlayerObjectAdapter::setTeleporting(bool val) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setTeleporting(val);
+	(static_cast<PlayerObject*>(stub))->setTeleporting(val);
 }
 
 int PlayerObjectAdapter::getNumBadges() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getNumBadges();
+	return (static_cast<PlayerObject*>(stub))->getNumBadges();
 }
 
 int PlayerObjectAdapter::getBadgeTypeCount(byte type) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getBadgeTypeCount(type);
+	return (static_cast<PlayerObject*>(stub))->getBadgeTypeCount(type);
 }
 
 bool PlayerObjectAdapter::hasFriend(const String& name) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasFriend(name);
+	return (static_cast<PlayerObject*>(stub))->hasFriend(name);
 }
 
 bool PlayerObjectAdapter::isIgnoring(const String& name) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isIgnoring(name);
+	return (static_cast<PlayerObject*>(stub))->isIgnoring(name);
 }
 
 void PlayerObjectAdapter::addReverseFriend(const String& name) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addReverseFriend(name);
+	(static_cast<PlayerObject*>(stub))->addReverseFriend(name);
 }
 
 void PlayerObjectAdapter::removeReverseFriend(const String& name) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeReverseFriend(name);
+	(static_cast<PlayerObject*>(stub))->removeReverseFriend(name);
 }
 
 void PlayerObjectAdapter::sendFriendLists() {
-	(static_cast<PlayerObjectImplementation*>(impl))->sendFriendLists();
+	(static_cast<PlayerObject*>(stub))->sendFriendLists();
 }
 
 bool PlayerObjectAdapter::hasWaypoint(unsigned long long objectID) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasWaypoint(objectID);
+	return (static_cast<PlayerObject*>(stub))->hasWaypoint(objectID);
 }
 
 bool PlayerObjectAdapter::hasCommandMessageString(unsigned int actionCRC) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasCommandMessageString(actionCRC);
+	return (static_cast<PlayerObject*>(stub))->hasCommandMessageString(actionCRC);
 }
 
 unsigned int PlayerObjectAdapter::getCharacterBitmask() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getCharacterBitmask();
+	return (static_cast<PlayerObject*>(stub))->getCharacterBitmask();
 }
 
 String PlayerObjectAdapter::getTitle() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getTitle();
+	return (static_cast<PlayerObject*>(stub))->getTitle();
 }
 
 unsigned int PlayerObjectAdapter::getAdminLevel() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getAdminLevel();
+	return (static_cast<PlayerObject*>(stub))->getAdminLevel();
 }
 
 void PlayerObjectAdapter::setAdminLevel(unsigned int adminlvl) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setAdminLevel(adminlvl);
+	(static_cast<PlayerObject*>(stub))->setAdminLevel(adminlvl);
 }
 
 void PlayerObjectAdapter::setBiography(const UnicodeString& bio) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setBiography(bio);
+	(static_cast<PlayerObject*>(stub))->setBiography(bio);
 }
 
 bool PlayerObjectAdapter::isDeveloper() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isDeveloper();
+	return (static_cast<PlayerObject*>(stub))->isDeveloper();
 }
 
 bool PlayerObjectAdapter::isCSR() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isCSR();
+	return (static_cast<PlayerObject*>(stub))->isCSR();
 }
 
 bool PlayerObjectAdapter::isPrivileged() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isPrivileged();
+	return (static_cast<PlayerObject*>(stub))->isPrivileged();
 }
 
 void PlayerObjectAdapter::setCharacterBitmask(unsigned int bitmask) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setCharacterBitmask(bitmask);
+	(static_cast<PlayerObject*>(stub))->setCharacterBitmask(bitmask);
 }
 
 bool PlayerObjectAdapter::setCharacterBit(unsigned int bit, bool notifyClient) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->setCharacterBit(bit, notifyClient);
+	return (static_cast<PlayerObject*>(stub))->setCharacterBit(bit, notifyClient);
 }
 
 bool PlayerObjectAdapter::clearCharacterBit(unsigned int bit, bool notifyClient) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->clearCharacterBit(bit, notifyClient);
+	return (static_cast<PlayerObject*>(stub))->clearCharacterBit(bit, notifyClient);
 }
 
 void PlayerObjectAdapter::toggleCharacterBit(unsigned int bit) {
-	(static_cast<PlayerObjectImplementation*>(impl))->toggleCharacterBit(bit);
+	(static_cast<PlayerObject*>(stub))->toggleCharacterBit(bit);
 }
 
 int PlayerObjectAdapter::getForcePower() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getForcePower();
+	return (static_cast<PlayerObject*>(stub))->getForcePower();
 }
 
 int PlayerObjectAdapter::getForcePowerMax() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getForcePowerMax();
+	return (static_cast<PlayerObject*>(stub))->getForcePowerMax();
 }
 
 DraftSchematic* PlayerObjectAdapter::getSchematic(int i) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSchematic(i);
+	return (static_cast<PlayerObject*>(stub))->getSchematic(i);
 }
 
 int PlayerObjectAdapter::getFoodFilling() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getFoodFilling();
+	return (static_cast<PlayerObject*>(stub))->getFoodFilling();
 }
 
 int PlayerObjectAdapter::getFoodFillingMax() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getFoodFillingMax();
+	return (static_cast<PlayerObject*>(stub))->getFoodFillingMax();
 }
 
 int PlayerObjectAdapter::getDrinkFilling() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getDrinkFilling();
+	return (static_cast<PlayerObject*>(stub))->getDrinkFilling();
 }
 
 int PlayerObjectAdapter::getDrinkFillingMax() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getDrinkFillingMax();
+	return (static_cast<PlayerObject*>(stub))->getDrinkFillingMax();
 }
 
 int PlayerObjectAdapter::getJediState() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getJediState();
+	return (static_cast<PlayerObject*>(stub))->getJediState();
 }
 
 byte PlayerObjectAdapter::getLanguageID() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getLanguageID();
+	return (static_cast<PlayerObject*>(stub))->getLanguageID();
 }
 
 bool PlayerObjectAdapter::isTeleporting() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isTeleporting();
+	return (static_cast<PlayerObject*>(stub))->isTeleporting();
 }
 
 void PlayerObjectAdapter::addChatRoom(ChatRoom* room) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addChatRoom(room);
+	(static_cast<PlayerObject*>(stub))->addChatRoom(room);
 }
 
 void PlayerObjectAdapter::removeChatRoom(ChatRoom* room) {
-	(static_cast<PlayerObjectImplementation*>(impl))->removeChatRoom(room);
+	(static_cast<PlayerObject*>(stub))->removeChatRoom(room);
 }
 
 int PlayerObjectAdapter::getExperience(const String& xp) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getExperience(xp);
+	return (static_cast<PlayerObject*>(stub))->getExperience(xp);
 }
 
 String PlayerObjectAdapter::getCommandMessageString(unsigned int actionCRC) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getCommandMessageString(actionCRC);
+	return (static_cast<PlayerObject*>(stub))->getCommandMessageString(actionCRC);
 }
 
 bool PlayerObjectAdapter::hasBadge(unsigned int badge) {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasBadge(badge);
+	return (static_cast<PlayerObject*>(stub))->hasBadge(badge);
 }
 
 void PlayerObjectAdapter::clearDisconnectEvent() {
-	(static_cast<PlayerObjectImplementation*>(impl))->clearDisconnectEvent();
+	(static_cast<PlayerObject*>(stub))->clearDisconnectEvent();
 }
 
 void PlayerObjectAdapter::clearRecoveryEvent() {
-	(static_cast<PlayerObjectImplementation*>(impl))->clearRecoveryEvent();
+	(static_cast<PlayerObject*>(stub))->clearRecoveryEvent();
 }
 
 bool PlayerObjectAdapter::isOnline() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isOnline();
+	return (static_cast<PlayerObject*>(stub))->isOnline();
 }
 
 bool PlayerObjectAdapter::isOffline() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isOffline();
+	return (static_cast<PlayerObject*>(stub))->isOffline();
 }
 
 bool PlayerObjectAdapter::isLoading() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isLoading();
+	return (static_cast<PlayerObject*>(stub))->isLoading();
 }
 
 bool PlayerObjectAdapter::isLinkDead() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isLinkDead();
+	return (static_cast<PlayerObject*>(stub))->isLinkDead();
 }
 
 bool PlayerObjectAdapter::isLoggingIn() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isLoggingIn();
+	return (static_cast<PlayerObject*>(stub))->isLoggingIn();
 }
 
 bool PlayerObjectAdapter::isLoggingOut() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isLoggingOut();
+	return (static_cast<PlayerObject*>(stub))->isLoggingOut();
 }
 
 void PlayerObjectAdapter::setSkillPoints(int points) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setSkillPoints(points);
+	(static_cast<PlayerObject*>(stub))->setSkillPoints(points);
 }
 
 void PlayerObjectAdapter::addSkillPoints(int points) {
-	(static_cast<PlayerObjectImplementation*>(impl))->addSkillPoints(points);
+	(static_cast<PlayerObject*>(stub))->addSkillPoints(points);
 }
 
 int PlayerObjectAdapter::getSkillPoints() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getSkillPoints();
+	return (static_cast<PlayerObject*>(stub))->getSkillPoints();
 }
 
 void PlayerObjectAdapter::updateLastValidatedPosition() {
-	(static_cast<PlayerObjectImplementation*>(impl))->updateLastValidatedPosition();
+	(static_cast<PlayerObject*>(stub))->updateLastValidatedPosition();
 }
 
 void PlayerObjectAdapter::setSpawnedBlueFrog() {
-	(static_cast<PlayerObjectImplementation*>(impl))->setSpawnedBlueFrog();
+	(static_cast<PlayerObject*>(stub))->setSpawnedBlueFrog();
 }
 
 bool PlayerObjectAdapter::hasSpawnedBlueFrog() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->hasSpawnedBlueFrog();
+	return (static_cast<PlayerObject*>(stub))->hasSpawnedBlueFrog();
 }
 
 unsigned int PlayerObjectAdapter::getAccountID() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getAccountID();
+	return (static_cast<PlayerObject*>(stub))->getAccountID();
 }
 
 unsigned long long PlayerObjectAdapter::getServerMovementTimeDelta() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getServerMovementTimeDelta();
+	return (static_cast<PlayerObject*>(stub))->getServerMovementTimeDelta();
 }
 
 void PlayerObjectAdapter::setClientLastMovementStamp(unsigned int stamp) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setClientLastMovementStamp(stamp);
+	(static_cast<PlayerObject*>(stub))->setClientLastMovementStamp(stamp);
 }
 
 void PlayerObjectAdapter::updateServerLastMovementStamp() {
-	(static_cast<PlayerObjectImplementation*>(impl))->updateServerLastMovementStamp();
+	(static_cast<PlayerObject*>(stub))->updateServerLastMovementStamp();
 }
 
 void PlayerObjectAdapter::setAccountID(unsigned int id) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setAccountID(id);
+	(static_cast<PlayerObject*>(stub))->setAccountID(id);
 }
 
 int PlayerObjectAdapter::getFactionStatus() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getFactionStatus();
+	return (static_cast<PlayerObject*>(stub))->getFactionStatus();
 }
 
 unsigned int PlayerObjectAdapter::getClientLastMovementStamp() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getClientLastMovementStamp();
+	return (static_cast<PlayerObject*>(stub))->getClientLastMovementStamp();
 }
 
 int PlayerObjectAdapter::getCenteredBonus() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getCenteredBonus();
+	return (static_cast<PlayerObject*>(stub))->getCenteredBonus();
 }
 
 void PlayerObjectAdapter::setCenteredBonus(int bonus) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setCenteredBonus(bonus);
+	(static_cast<PlayerObject*>(stub))->setCenteredBonus(bonus);
 }
 
 bool PlayerObjectAdapter::isInvisible() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->isInvisible();
+	return (static_cast<PlayerObject*>(stub))->isInvisible();
 }
 
 void PlayerObjectAdapter::setInvisible(bool invis) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setInvisible(invis);
+	(static_cast<PlayerObject*>(stub))->setInvisible(invis);
 }
 
 void PlayerObjectAdapter::setHologrindMask(unsigned int mask) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setHologrindMask(mask);
+	(static_cast<PlayerObject*>(stub))->setHologrindMask(mask);
 }
 
 unsigned int PlayerObjectAdapter::getHologrindMask() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getHologrindMask();
+	return (static_cast<PlayerObject*>(stub))->getHologrindMask();
 }
 
 byte PlayerObjectAdapter::getRaceID() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getRaceID();
+	return (static_cast<PlayerObject*>(stub))->getRaceID();
 }
 
 void PlayerObjectAdapter::setRaceID(byte race) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setRaceID(race);
+	(static_cast<PlayerObject*>(stub))->setRaceID(race);
 }
 
 void PlayerObjectAdapter::setMaximumLots(byte lots) {
-	(static_cast<PlayerObjectImplementation*>(impl))->setMaximumLots(lots);
+	(static_cast<PlayerObject*>(stub))->setMaximumLots(lots);
 }
 
 byte PlayerObjectAdapter::getMaximumLots() {
-	return (static_cast<PlayerObjectImplementation*>(impl))->getMaximumLots();
+	return (static_cast<PlayerObject*>(stub))->getMaximumLots();
 }
 
 /*
@@ -5490,7 +5490,7 @@ DistributedObjectServant* PlayerObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PlayerObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PlayerObjectAdapter(static_cast<PlayerObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PlayerObjectAdapter(static_cast<PlayerObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

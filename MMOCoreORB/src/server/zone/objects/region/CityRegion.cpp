@@ -366,7 +366,7 @@ String CityRegionImplementation::getRegionName() {
  *	CityRegionAdapter
  */
 
-CityRegionAdapter::CityRegionAdapter(CityRegionImplementation* obj) : ObserverAdapter(obj) {
+CityRegionAdapter::CityRegionAdapter(CityRegion* obj) : ObserverAdapter(obj) {
 }
 
 Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -399,27 +399,27 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int CityRegionAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<CityRegionImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<CityRegion*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void CityRegionAdapter::notifyEnter(SceneObject* object) {
-	(static_cast<CityRegionImplementation*>(impl))->notifyEnter(object);
+	(static_cast<CityRegion*>(stub))->notifyEnter(object);
 }
 
 void CityRegionAdapter::notifyExit(SceneObject* object) {
-	(static_cast<CityRegionImplementation*>(impl))->notifyExit(object);
+	(static_cast<CityRegion*>(stub))->notifyExit(object);
 }
 
 void CityRegionAdapter::addActiveArea(Zone* zone, float x, float y, float radius) {
-	(static_cast<CityRegionImplementation*>(impl))->addActiveArea(zone, x, y, radius);
+	(static_cast<CityRegion*>(stub))->addActiveArea(zone, x, y, radius);
 }
 
 bool CityRegionAdapter::containsPoint(float x, float y) {
-	return (static_cast<CityRegionImplementation*>(impl))->containsPoint(x, y);
+	return (static_cast<CityRegion*>(stub))->containsPoint(x, y);
 }
 
 String CityRegionAdapter::getRegionName() {
-	return (static_cast<CityRegionImplementation*>(impl))->getRegionName();
+	return (static_cast<CityRegion*>(stub))->getRegionName();
 }
 
 /*
@@ -447,7 +447,7 @@ DistributedObjectServant* CityRegionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CityRegionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CityRegionAdapter(static_cast<CityRegionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CityRegionAdapter(static_cast<CityRegion*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

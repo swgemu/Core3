@@ -205,7 +205,7 @@ int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
  *	RadialManagerAdapter
  */
 
-RadialManagerAdapter::RadialManagerAdapter(RadialManagerImplementation* obj) : ManagedObjectAdapter(obj) {
+RadialManagerAdapter::RadialManagerAdapter(RadialManager* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -226,11 +226,11 @@ Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void RadialManagerAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectID, unsigned long long objectID) {
-	(static_cast<RadialManagerImplementation*>(impl))->handleObjectMenuSelect(player, selectID, objectID);
+	(static_cast<RadialManager*>(stub))->handleObjectMenuSelect(player, selectID, objectID);
 }
 
 void RadialManagerAdapter::handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
-	(static_cast<RadialManagerImplementation*>(impl))->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
+	(static_cast<RadialManager*>(stub))->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
 
 /*
@@ -258,7 +258,7 @@ DistributedObjectServant* RadialManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RadialManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RadialManagerAdapter(static_cast<RadialManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new RadialManagerAdapter(static_cast<RadialManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

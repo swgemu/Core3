@@ -1532,7 +1532,7 @@ void ZoneServerImplementation::setServerState(int state) {
  *	ZoneServerAdapter
  */
 
-ZoneServerAdapter::ZoneServerAdapter(ZoneServerImplementation* obj) : ManagedServiceAdapter(obj) {
+ZoneServerAdapter::ZoneServerAdapter(ZoneServer* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1730,247 +1730,247 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ZoneServerAdapter::initializeTransientMembers() {
-	(static_cast<ZoneServerImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ZoneServer*>(stub))->initializeTransientMembers();
 }
 
 void ZoneServerAdapter::initialize() {
-	(static_cast<ZoneServerImplementation*>(impl))->initialize();
+	(static_cast<ZoneServer*>(stub))->initialize();
 }
 
 void ZoneServerAdapter::shutdown() {
-	(static_cast<ZoneServerImplementation*>(impl))->shutdown();
+	(static_cast<ZoneServer*>(stub))->shutdown();
 }
 
 void ZoneServerAdapter::startManagers() {
-	(static_cast<ZoneServerImplementation*>(impl))->startManagers();
+	(static_cast<ZoneServer*>(stub))->startManagers();
 }
 
 void ZoneServerAdapter::startZones() {
-	(static_cast<ZoneServerImplementation*>(impl))->startZones();
+	(static_cast<ZoneServer*>(stub))->startZones();
 }
 
 void ZoneServerAdapter::stopManagers() {
-	(static_cast<ZoneServerImplementation*>(impl))->stopManagers();
+	(static_cast<ZoneServer*>(stub))->stopManagers();
 }
 
 void ZoneServerAdapter::start(int p, int mconn) {
-	(static_cast<ZoneServerImplementation*>(impl))->start(p, mconn);
+	(static_cast<ZoneServer*>(stub))->start(p, mconn);
 }
 
 void ZoneServerAdapter::stop() {
-	(static_cast<ZoneServerImplementation*>(impl))->stop();
+	(static_cast<ZoneServer*>(stub))->stop();
 }
 
 void ZoneServerAdapter::addTotalSentPacket(int count) {
-	(static_cast<ZoneServerImplementation*>(impl))->addTotalSentPacket(count);
+	(static_cast<ZoneServer*>(stub))->addTotalSentPacket(count);
 }
 
 void ZoneServerAdapter::addTotalResentPacket(int count) {
-	(static_cast<ZoneServerImplementation*>(impl))->addTotalResentPacket(count);
+	(static_cast<ZoneServer*>(stub))->addTotalResentPacket(count);
 }
 
 void ZoneServerAdapter::printInfo(bool forcedLog) {
-	(static_cast<ZoneServerImplementation*>(impl))->printInfo(forcedLog);
+	(static_cast<ZoneServer*>(stub))->printInfo(forcedLog);
 }
 
 void ZoneServerAdapter::printEvents() {
-	(static_cast<ZoneServerImplementation*>(impl))->printEvents();
+	(static_cast<ZoneServer*>(stub))->printEvents();
 }
 
 SceneObject* ZoneServerAdapter::getObject(unsigned long long objectID, bool doLock) {
-	return (static_cast<ZoneServerImplementation*>(impl))->getObject(objectID, doLock);
+	return (static_cast<ZoneServer*>(stub))->getObject(objectID, doLock);
 }
 
 SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
-	return (static_cast<ZoneServerImplementation*>(impl))->createObject(templateCRC, persistenceLevel, objectID);
+	return (static_cast<ZoneServer*>(stub))->createObject(templateCRC, persistenceLevel, objectID);
 }
 
 SceneObject* ZoneServerAdapter::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
-	return (static_cast<ZoneServerImplementation*>(impl))->createClientObject(templateCRC, objectID);
+	return (static_cast<ZoneServer*>(stub))->createClientObject(templateCRC, objectID);
 }
 
 void ZoneServerAdapter::updateObjectToDatabase(SceneObject* object) {
-	(static_cast<ZoneServerImplementation*>(impl))->updateObjectToDatabase(object);
+	(static_cast<ZoneServer*>(stub))->updateObjectToDatabase(object);
 }
 
 void ZoneServerAdapter::updateObjectToStaticDatabase(SceneObject* object) {
-	(static_cast<ZoneServerImplementation*>(impl))->updateObjectToStaticDatabase(object);
+	(static_cast<ZoneServer*>(stub))->updateObjectToStaticDatabase(object);
 }
 
 void ZoneServerAdapter::destroyObjectFromDatabase(unsigned long long objectID) {
-	(static_cast<ZoneServerImplementation*>(impl))->destroyObjectFromDatabase(objectID);
+	(static_cast<ZoneServer*>(stub))->destroyObjectFromDatabase(objectID);
 }
 
 void ZoneServerAdapter::lock(bool doLock) {
-	(static_cast<ZoneServerImplementation*>(impl))->lock(doLock);
+	(static_cast<ZoneServer*>(stub))->lock(doLock);
 }
 
 void ZoneServerAdapter::unlock(bool doLock) {
-	(static_cast<ZoneServerImplementation*>(impl))->unlock(doLock);
+	(static_cast<ZoneServer*>(stub))->unlock(doLock);
 }
 
 void ZoneServerAdapter::fixScheduler() {
-	(static_cast<ZoneServerImplementation*>(impl))->fixScheduler();
+	(static_cast<ZoneServer*>(stub))->fixScheduler();
 }
 
 void ZoneServerAdapter::changeUserCap(int amount) {
-	(static_cast<ZoneServerImplementation*>(impl))->changeUserCap(amount);
+	(static_cast<ZoneServer*>(stub))->changeUserCap(amount);
 }
 
 int ZoneServerAdapter::getConnectionCount() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getConnectionCount();
+	return (static_cast<ZoneServer*>(stub))->getConnectionCount();
 }
 
 void ZoneServerAdapter::increaseOnlinePlayers() {
-	(static_cast<ZoneServerImplementation*>(impl))->increaseOnlinePlayers();
+	(static_cast<ZoneServer*>(stub))->increaseOnlinePlayers();
 }
 
 void ZoneServerAdapter::decreaseOnlinePlayers() {
-	(static_cast<ZoneServerImplementation*>(impl))->decreaseOnlinePlayers();
+	(static_cast<ZoneServer*>(stub))->decreaseOnlinePlayers();
 }
 
 void ZoneServerAdapter::increaseTotalDeletedPlayers() {
-	(static_cast<ZoneServerImplementation*>(impl))->increaseTotalDeletedPlayers();
+	(static_cast<ZoneServer*>(stub))->increaseTotalDeletedPlayers();
 }
 
 int ZoneServerAdapter::getGalaxyID() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getGalaxyID();
+	return (static_cast<ZoneServer*>(stub))->getGalaxyID();
 }
 
 String ZoneServerAdapter::getGalaxyName() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getGalaxyName();
+	return (static_cast<ZoneServer*>(stub))->getGalaxyName();
 }
 
 void ZoneServerAdapter::setGalaxyName(const String& name) {
-	(static_cast<ZoneServerImplementation*>(impl))->setGalaxyName(name);
+	(static_cast<ZoneServer*>(stub))->setGalaxyName(name);
 }
 
 bool ZoneServerAdapter::isServerLocked() {
-	return (static_cast<ZoneServerImplementation*>(impl))->isServerLocked();
+	return (static_cast<ZoneServer*>(stub))->isServerLocked();
 }
 
 bool ZoneServerAdapter::isServerOnline() {
-	return (static_cast<ZoneServerImplementation*>(impl))->isServerOnline();
+	return (static_cast<ZoneServer*>(stub))->isServerOnline();
 }
 
 bool ZoneServerAdapter::isServerOffline() {
-	return (static_cast<ZoneServerImplementation*>(impl))->isServerOffline();
+	return (static_cast<ZoneServer*>(stub))->isServerOffline();
 }
 
 bool ZoneServerAdapter::isServerLoading() {
-	return (static_cast<ZoneServerImplementation*>(impl))->isServerLoading();
+	return (static_cast<ZoneServer*>(stub))->isServerLoading();
 }
 
 int ZoneServerAdapter::getServerState() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getServerState();
+	return (static_cast<ZoneServer*>(stub))->getServerState();
 }
 
 Zone* ZoneServerAdapter::getZone(const String& terrainName) {
-	return (static_cast<ZoneServerImplementation*>(impl))->getZone(terrainName);
+	return (static_cast<ZoneServer*>(stub))->getZone(terrainName);
 }
 
 Zone* ZoneServerAdapter::getZone(int idx) {
-	return (static_cast<ZoneServerImplementation*>(impl))->getZone(idx);
+	return (static_cast<ZoneServer*>(stub))->getZone(idx);
 }
 
 int ZoneServerAdapter::getZoneCount() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getZoneCount();
+	return (static_cast<ZoneServer*>(stub))->getZoneCount();
 }
 
 int ZoneServerAdapter::getMaxPlayers() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getMaxPlayers();
+	return (static_cast<ZoneServer*>(stub))->getMaxPlayers();
 }
 
 int ZoneServerAdapter::getTotalPlayers() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getTotalPlayers();
+	return (static_cast<ZoneServer*>(stub))->getTotalPlayers();
 }
 
 int ZoneServerAdapter::getDeletedPlayers() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getDeletedPlayers();
+	return (static_cast<ZoneServer*>(stub))->getDeletedPlayers();
 }
 
 PlayerManager* ZoneServerAdapter::getPlayerManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getPlayerManager();
+	return (static_cast<ZoneServer*>(stub))->getPlayerManager();
 }
 
 ChatManager* ZoneServerAdapter::getChatManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getChatManager();
+	return (static_cast<ZoneServer*>(stub))->getChatManager();
 }
 
 ObjectController* ZoneServerAdapter::getObjectController() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getObjectController();
+	return (static_cast<ZoneServer*>(stub))->getObjectController();
 }
 
 MissionManager* ZoneServerAdapter::getMissionManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getMissionManager();
+	return (static_cast<ZoneServer*>(stub))->getMissionManager();
 }
 
 RadialManager* ZoneServerAdapter::getRadialManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getRadialManager();
+	return (static_cast<ZoneServer*>(stub))->getRadialManager();
 }
 
 GuildManager* ZoneServerAdapter::getGuildManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getGuildManager();
+	return (static_cast<ZoneServer*>(stub))->getGuildManager();
 }
 
 ResourceManager* ZoneServerAdapter::getResourceManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getResourceManager();
+	return (static_cast<ZoneServer*>(stub))->getResourceManager();
 }
 
 CraftingManager* ZoneServerAdapter::getCraftingManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getCraftingManager();
+	return (static_cast<ZoneServer*>(stub))->getCraftingManager();
 }
 
 LootManager* ZoneServerAdapter::getLootManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getLootManager();
+	return (static_cast<ZoneServer*>(stub))->getLootManager();
 }
 
 AuctionManager* ZoneServerAdapter::getAuctionManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getAuctionManager();
+	return (static_cast<ZoneServer*>(stub))->getAuctionManager();
 }
 
 FishingManager* ZoneServerAdapter::getFishingManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getFishingManager();
+	return (static_cast<ZoneServer*>(stub))->getFishingManager();
 }
 
 GamblingManager* ZoneServerAdapter::getGamblingManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getGamblingManager();
+	return (static_cast<ZoneServer*>(stub))->getGamblingManager();
 }
 
 ForageManager* ZoneServerAdapter::getForageManager() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getForageManager();
+	return (static_cast<ZoneServer*>(stub))->getForageManager();
 }
 
 Account* ZoneServerAdapter::getAccount(unsigned int accountID) {
-	return (static_cast<ZoneServerImplementation*>(impl))->getAccount(accountID);
+	return (static_cast<ZoneServer*>(stub))->getAccount(accountID);
 }
 
 void ZoneServerAdapter::setGalaxyID(int galaxyid) {
-	(static_cast<ZoneServerImplementation*>(impl))->setGalaxyID(galaxyid);
+	(static_cast<ZoneServer*>(stub))->setGalaxyID(galaxyid);
 }
 
 void ZoneServerAdapter::setServerState(int state) {
-	(static_cast<ZoneServerImplementation*>(impl))->setServerState(state);
+	(static_cast<ZoneServer*>(stub))->setServerState(state);
 }
 
 void ZoneServerAdapter::setServerStateLocked() {
-	(static_cast<ZoneServerImplementation*>(impl))->setServerStateLocked();
+	(static_cast<ZoneServer*>(stub))->setServerStateLocked();
 }
 
 void ZoneServerAdapter::setServerStateOnline() {
-	(static_cast<ZoneServerImplementation*>(impl))->setServerStateOnline();
+	(static_cast<ZoneServer*>(stub))->setServerStateOnline();
 }
 
 void ZoneServerAdapter::loadLoginMessage() {
-	(static_cast<ZoneServerImplementation*>(impl))->loadLoginMessage();
+	(static_cast<ZoneServer*>(stub))->loadLoginMessage();
 }
 
 void ZoneServerAdapter::changeLoginMessage(const String& motd) {
-	(static_cast<ZoneServerImplementation*>(impl))->changeLoginMessage(motd);
+	(static_cast<ZoneServer*>(stub))->changeLoginMessage(motd);
 }
 
 String ZoneServerAdapter::getLoginMessage() {
-	return (static_cast<ZoneServerImplementation*>(impl))->getLoginMessage();
+	return (static_cast<ZoneServer*>(stub))->getLoginMessage();
 }
 
 /*
@@ -1998,7 +1998,7 @@ DistributedObjectServant* ZoneServerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneServerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneServerAdapter(static_cast<ZoneServerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ZoneServerAdapter(static_cast<ZoneServer*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

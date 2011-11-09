@@ -252,7 +252,7 @@ bool CampKitImplementation::isCampKitOject() {
  *	CampKitAdapter
  */
 
-CampKitAdapter::CampKitAdapter(CampKitImplementation* obj) : TangibleObjectAdapter(obj) {
+CampKitAdapter::CampKitAdapter(CampKit* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* CampKitAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -270,7 +270,7 @@ Packet* CampKitAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 bool CampKitAdapter::isCampKitOject() {
-	return (static_cast<CampKitImplementation*>(impl))->isCampKitOject();
+	return (static_cast<CampKit*>(stub))->isCampKitOject();
 }
 
 /*
@@ -298,7 +298,7 @@ DistributedObjectServant* CampKitHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CampKitHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CampKitAdapter(static_cast<CampKitImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CampKitAdapter(static_cast<CampKit*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -197,7 +197,7 @@ protected:
 
 class JunkdealerCreatureAdapter : public CreatureObjectAdapter {
 public:
-	JunkdealerCreatureAdapter(JunkdealerCreatureImplementation* impl);
+	JunkdealerCreatureAdapter(JunkdealerCreature* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

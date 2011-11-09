@@ -319,7 +319,7 @@ PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo,
  *	PowerBoostBuffAdapter
  */
 
-PowerBoostBuffAdapter::PowerBoostBuffAdapter(PowerBoostBuffImplementation* obj) : BuffAdapter(obj) {
+PowerBoostBuffAdapter::PowerBoostBuffAdapter(PowerBoostBuff* obj) : BuffAdapter(obj) {
 }
 
 Packet* PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -352,27 +352,27 @@ Packet* PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void PowerBoostBuffAdapter::initializeTransientMembers() {
-	(static_cast<PowerBoostBuffImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<PowerBoostBuff*>(stub))->initializeTransientMembers();
 }
 
 void PowerBoostBuffAdapter::activate(bool applyModifiers) {
-	(static_cast<PowerBoostBuffImplementation*>(impl))->activate(applyModifiers);
+	(static_cast<PowerBoostBuff*>(stub))->activate(applyModifiers);
 }
 
 void PowerBoostBuffAdapter::deactivate(bool removeModifiers) {
-	(static_cast<PowerBoostBuffImplementation*>(impl))->deactivate(removeModifiers);
+	(static_cast<PowerBoostBuff*>(stub))->deactivate(removeModifiers);
 }
 
 void PowerBoostBuffAdapter::doHealthAndActionTick(bool up) {
-	(static_cast<PowerBoostBuffImplementation*>(impl))->doHealthAndActionTick(up);
+	(static_cast<PowerBoostBuff*>(stub))->doHealthAndActionTick(up);
 }
 
 void PowerBoostBuffAdapter::doMindTick(bool up) {
-	(static_cast<PowerBoostBuffImplementation*>(impl))->doMindTick(up);
+	(static_cast<PowerBoostBuff*>(stub))->doMindTick(up);
 }
 
 void PowerBoostBuffAdapter::clearBuffEvent() {
-	(static_cast<PowerBoostBuffImplementation*>(impl))->clearBuffEvent();
+	(static_cast<PowerBoostBuff*>(stub))->clearBuffEvent();
 }
 
 /*
@@ -400,7 +400,7 @@ DistributedObjectServant* PowerBoostBuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PowerBoostBuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PowerBoostBuffAdapter(static_cast<PowerBoostBuffImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PowerBoostBuffAdapter(static_cast<PowerBoostBuff*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

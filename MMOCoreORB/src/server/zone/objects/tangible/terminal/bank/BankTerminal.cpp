@@ -259,7 +259,7 @@ int BankTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, b
  *	BankTerminalAdapter
  */
 
-BankTerminalAdapter::BankTerminalAdapter(BankTerminalImplementation* obj) : TerminalAdapter(obj) {
+BankTerminalAdapter::BankTerminalAdapter(BankTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* BankTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -283,15 +283,15 @@ Packet* BankTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void BankTerminalAdapter::initializeTransientMembers() {
-	(static_cast<BankTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<BankTerminal*>(stub))->initializeTransientMembers();
 }
 
 void BankTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	(static_cast<BankTerminalImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<BankTerminal*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int BankTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<BankTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<BankTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -319,7 +319,7 @@ DistributedObjectServant* BankTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BankTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BankTerminalAdapter(static_cast<BankTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new BankTerminalAdapter(static_cast<BankTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

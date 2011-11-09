@@ -142,7 +142,7 @@ protected:
 
 class IntangibleObjectAdapter : public SceneObjectAdapter {
 public:
-	IntangibleObjectAdapter(IntangibleObjectImplementation* impl);
+	IntangibleObjectAdapter(IntangibleObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

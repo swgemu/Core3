@@ -136,7 +136,7 @@ protected:
 
 class NonPlayerCreatureObjectAdapter : public AiAgentAdapter {
 public:
-	NonPlayerCreatureObjectAdapter(NonPlayerCreatureObjectImplementation* impl);
+	NonPlayerCreatureObjectAdapter(NonPlayerCreatureObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

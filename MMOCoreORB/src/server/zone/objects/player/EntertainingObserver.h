@@ -126,7 +126,7 @@ protected:
 
 class EntertainingObserverAdapter : public ObserverAdapter {
 public:
-	EntertainingObserverAdapter(EntertainingObserverImplementation* impl);
+	EntertainingObserverAdapter(EntertainingObserver* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

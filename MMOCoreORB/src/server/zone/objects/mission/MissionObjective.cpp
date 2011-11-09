@@ -340,7 +340,7 @@ unsigned int MissionObjectiveImplementation::getObjectiveType() {
  *	MissionObjectiveAdapter
  */
 
-MissionObjectiveAdapter::MissionObjectiveAdapter(MissionObjectiveImplementation* obj) : ManagedObjectAdapter(obj) {
+MissionObjectiveAdapter::MissionObjectiveAdapter(MissionObjective* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -379,35 +379,35 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void MissionObjectiveAdapter::destroyObjectFromDatabase() {
-	(static_cast<MissionObjectiveImplementation*>(impl))->destroyObjectFromDatabase();
+	(static_cast<MissionObjective*>(stub))->destroyObjectFromDatabase();
 }
 
 int MissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<MissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<MissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void MissionObjectiveAdapter::activate() {
-	(static_cast<MissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<MissionObjective*>(stub))->activate();
 }
 
 void MissionObjectiveAdapter::abort() {
-	(static_cast<MissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<MissionObjective*>(stub))->abort();
 }
 
 void MissionObjectiveAdapter::complete() {
-	(static_cast<MissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<MissionObjective*>(stub))->complete();
 }
 
 MissionObject* MissionObjectiveAdapter::getMissionObject() {
-	return (static_cast<MissionObjectiveImplementation*>(impl))->getMissionObject();
+	return (static_cast<MissionObjective*>(stub))->getMissionObject();
 }
 
 unsigned int MissionObjectiveAdapter::getObjectiveType() {
-	return (static_cast<MissionObjectiveImplementation*>(impl))->getObjectiveType();
+	return (static_cast<MissionObjective*>(stub))->getObjectiveType();
 }
 
 CreatureObject* MissionObjectiveAdapter::getPlayerOwner() {
-	return (static_cast<MissionObjectiveImplementation*>(impl))->getPlayerOwner();
+	return (static_cast<MissionObjective*>(stub))->getPlayerOwner();
 }
 
 /*
@@ -435,7 +435,7 @@ DistributedObjectServant* MissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionObjectiveAdapter(static_cast<MissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new MissionObjectiveAdapter(static_cast<MissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -245,7 +245,7 @@ void ReconMissionObjectiveImplementation::initializeTransientMembers() {
  *	ReconMissionObjectiveAdapter
  */
 
-ReconMissionObjectiveAdapter::ReconMissionObjectiveAdapter(ReconMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+ReconMissionObjectiveAdapter::ReconMissionObjectiveAdapter(ReconMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -275,23 +275,23 @@ Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMet
 }
 
 void ReconMissionObjectiveAdapter::finalize() {
-	(static_cast<ReconMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<ReconMissionObjective*>(stub))->finalize();
 }
 
 void ReconMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<ReconMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ReconMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void ReconMissionObjectiveAdapter::activate() {
-	(static_cast<ReconMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<ReconMissionObjective*>(stub))->activate();
 }
 
 void ReconMissionObjectiveAdapter::abort() {
-	(static_cast<ReconMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<ReconMissionObjective*>(stub))->abort();
 }
 
 void ReconMissionObjectiveAdapter::complete() {
-	(static_cast<ReconMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<ReconMissionObjective*>(stub))->complete();
 }
 
 /*
@@ -319,7 +319,7 @@ DistributedObjectServant* ReconMissionObjectiveHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ReconMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ReconMissionObjectiveAdapter(static_cast<ReconMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ReconMissionObjectiveAdapter(static_cast<ReconMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

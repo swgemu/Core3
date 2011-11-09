@@ -191,7 +191,7 @@ protected:
 
 class PowerBoostBuffAdapter : public BuffAdapter {
 public:
-	PowerBoostBuffAdapter(PowerBoostBuffImplementation* impl);
+	PowerBoostBuffAdapter(PowerBoostBuff* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

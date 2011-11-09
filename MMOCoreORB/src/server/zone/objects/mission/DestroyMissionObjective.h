@@ -220,7 +220,7 @@ protected:
 
 class DestroyMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	DestroyMissionObjectiveAdapter(DestroyMissionObjectiveImplementation* impl);
+	DestroyMissionObjectiveAdapter(DestroyMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

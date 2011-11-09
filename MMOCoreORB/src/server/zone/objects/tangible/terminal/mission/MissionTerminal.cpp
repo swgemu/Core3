@@ -490,7 +490,7 @@ void MissionTerminalImplementation::removeSlicer(CreatureObject* slicer) {
  *	MissionTerminalAdapter
  */
 
-MissionTerminalAdapter::MissionTerminalAdapter(MissionTerminalImplementation* obj) : TerminalAdapter(obj) {
+MissionTerminalAdapter::MissionTerminalAdapter(MissionTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -550,63 +550,63 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void MissionTerminalAdapter::initializeTransientMembers() {
-	(static_cast<MissionTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<MissionTerminal*>(stub))->initializeTransientMembers();
 }
 
 int MissionTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<MissionTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<MissionTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool MissionTerminalAdapter::isMissionTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isMissionTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isMissionTerminal();
 }
 
 bool MissionTerminalAdapter::isArtisanTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isArtisanTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isArtisanTerminal();
 }
 
 bool MissionTerminalAdapter::isGeneralTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isGeneralTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isGeneralTerminal();
 }
 
 bool MissionTerminalAdapter::isBountyTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isBountyTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isBountyTerminal();
 }
 
 bool MissionTerminalAdapter::isEntertainerTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isEntertainerTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isEntertainerTerminal();
 }
 
 bool MissionTerminalAdapter::isImperialTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isImperialTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isImperialTerminal();
 }
 
 bool MissionTerminalAdapter::isNewbieTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isNewbieTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isNewbieTerminal();
 }
 
 bool MissionTerminalAdapter::isRebelTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isRebelTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isRebelTerminal();
 }
 
 bool MissionTerminalAdapter::isScoutTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isScoutTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isScoutTerminal();
 }
 
 bool MissionTerminalAdapter::isStatueTerminal() {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isStatueTerminal();
+	return (static_cast<MissionTerminal*>(stub))->isStatueTerminal();
 }
 
 bool MissionTerminalAdapter::isSlicer(CreatureObject* slicer) {
-	return (static_cast<MissionTerminalImplementation*>(impl))->isSlicer(slicer);
+	return (static_cast<MissionTerminal*>(stub))->isSlicer(slicer);
 }
 
 void MissionTerminalAdapter::addSlicer(CreatureObject* slicer) {
-	(static_cast<MissionTerminalImplementation*>(impl))->addSlicer(slicer);
+	(static_cast<MissionTerminal*>(stub))->addSlicer(slicer);
 }
 
 void MissionTerminalAdapter::removeSlicer(CreatureObject* slicer) {
-	(static_cast<MissionTerminalImplementation*>(impl))->removeSlicer(slicer);
+	(static_cast<MissionTerminal*>(stub))->removeSlicer(slicer);
 }
 
 /*
@@ -634,7 +634,7 @@ DistributedObjectServant* MissionTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionTerminalAdapter(static_cast<MissionTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new MissionTerminalAdapter(static_cast<MissionTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

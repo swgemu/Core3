@@ -217,7 +217,7 @@ protected:
 
 class FishingPoleObjectAdapter : public TangibleObjectAdapter {
 public:
-	FishingPoleObjectAdapter(FishingPoleObjectImplementation* impl);
+	FishingPoleObjectAdapter(FishingPoleObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

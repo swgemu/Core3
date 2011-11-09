@@ -452,7 +452,7 @@ bool FactoryObjectImplementation::isFactory() {
  *	FactoryObjectAdapter
  */
 
-FactoryObjectAdapter::FactoryObjectAdapter(FactoryObjectImplementation* obj) : InstallationObjectAdapter(obj) {
+FactoryObjectAdapter::FactoryObjectAdapter(FactoryObject* obj) : InstallationObjectAdapter(obj) {
 }
 
 Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -509,59 +509,59 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void FactoryObjectAdapter::initializeTransientMembers() {
-	(static_cast<FactoryObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<FactoryObject*>(stub))->initializeTransientMembers();
 }
 
 void FactoryObjectAdapter::notifyLoadFromDatabase() {
-	(static_cast<FactoryObjectImplementation*>(impl))->notifyLoadFromDatabase();
+	(static_cast<FactoryObject*>(stub))->notifyLoadFromDatabase();
 }
 
 int FactoryObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<FactoryObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FactoryObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool FactoryObjectAdapter::isFactory() {
-	return (static_cast<FactoryObjectImplementation*>(impl))->isFactory();
+	return (static_cast<FactoryObject*>(stub))->isFactory();
 }
 
 void FactoryObjectAdapter::createChildObjects() {
-	(static_cast<FactoryObjectImplementation*>(impl))->createChildObjects();
+	(static_cast<FactoryObject*>(stub))->createChildObjects();
 }
 
 void FactoryObjectAdapter::updateInstallationWork() {
-	(static_cast<FactoryObjectImplementation*>(impl))->updateInstallationWork();
+	(static_cast<FactoryObject*>(stub))->updateInstallationWork();
 }
 
 void FactoryObjectAdapter::sendInsertManuSui(CreatureObject* player) {
-	(static_cast<FactoryObjectImplementation*>(impl))->sendInsertManuSui(player);
+	(static_cast<FactoryObject*>(stub))->sendInsertManuSui(player);
 }
 
 void FactoryObjectAdapter::sendIngredientsNeededSui(CreatureObject* player) {
-	(static_cast<FactoryObjectImplementation*>(impl))->sendIngredientsNeededSui(player);
+	(static_cast<FactoryObject*>(stub))->sendIngredientsNeededSui(player);
 }
 
 void FactoryObjectAdapter::sendIngredientHopper(CreatureObject* player) {
-	(static_cast<FactoryObjectImplementation*>(impl))->sendIngredientHopper(player);
+	(static_cast<FactoryObject*>(stub))->sendIngredientHopper(player);
 }
 
 void FactoryObjectAdapter::sendOutputHopper(CreatureObject* player) {
-	(static_cast<FactoryObjectImplementation*>(impl))->sendOutputHopper(player);
+	(static_cast<FactoryObject*>(stub))->sendOutputHopper(player);
 }
 
 void FactoryObjectAdapter::handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic) {
-	(static_cast<FactoryObjectImplementation*>(impl))->handleInsertFactorySchem(player, schematic);
+	(static_cast<FactoryObject*>(stub))->handleInsertFactorySchem(player, schematic);
 }
 
 void FactoryObjectAdapter::handleRemoveFactorySchem(CreatureObject* player) {
-	(static_cast<FactoryObjectImplementation*>(impl))->handleRemoveFactorySchem(player);
+	(static_cast<FactoryObject*>(stub))->handleRemoveFactorySchem(player);
 }
 
 void FactoryObjectAdapter::handleOperateToggle(CreatureObject* player) {
-	(static_cast<FactoryObjectImplementation*>(impl))->handleOperateToggle(player);
+	(static_cast<FactoryObject*>(stub))->handleOperateToggle(player);
 }
 
 void FactoryObjectAdapter::createNewObject() {
-	(static_cast<FactoryObjectImplementation*>(impl))->createNewObject();
+	(static_cast<FactoryObject*>(stub))->createNewObject();
 }
 
 /*
@@ -589,7 +589,7 @@ DistributedObjectServant* FactoryObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FactoryObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FactoryObjectAdapter(static_cast<FactoryObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FactoryObjectAdapter(static_cast<FactoryObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -201,7 +201,7 @@ void ClothingObjectImplementation::updateCraftingValues(ManufactureSchematic* sc
  *	ClothingObjectAdapter
  */
 
-ClothingObjectAdapter::ClothingObjectAdapter(ClothingObjectImplementation* obj) : WearableObjectAdapter(obj) {
+ClothingObjectAdapter::ClothingObjectAdapter(ClothingObject* obj) : WearableObjectAdapter(obj) {
 }
 
 Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -222,11 +222,11 @@ Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void ClothingObjectAdapter::initializeTransientMembers() {
-	(static_cast<ClothingObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ClothingObject*>(stub))->initializeTransientMembers();
 }
 
 void ClothingObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<ClothingObjectImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<ClothingObject*>(stub))->updateCraftingValues(schematic);
 }
 
 /*
@@ -254,7 +254,7 @@ DistributedObjectServant* ClothingObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ClothingObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ClothingObjectAdapter(static_cast<ClothingObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ClothingObjectAdapter(static_cast<ClothingObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -146,7 +146,7 @@ protected:
 
 class StartingLocationTerminalAdapter : public TerminalAdapter {
 public:
-	StartingLocationTerminalAdapter(StartingLocationTerminalImplementation* impl);
+	StartingLocationTerminalAdapter(StartingLocationTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

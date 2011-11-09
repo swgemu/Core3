@@ -567,7 +567,7 @@ protected:
 
 class WeaponObjectAdapter : public TangibleObjectAdapter {
 public:
-	WeaponObjectAdapter(WeaponObjectImplementation* impl);
+	WeaponObjectAdapter(WeaponObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

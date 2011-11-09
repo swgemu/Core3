@@ -339,7 +339,7 @@ SuiManager* ZoneProcessServerImplementation::getSuiManager() {
  *	ZoneProcessServerAdapter
  */
 
-ZoneProcessServerAdapter::ZoneProcessServerAdapter(ZoneProcessServerImplementation* obj) : ManagedServiceAdapter(obj) {
+ZoneProcessServerAdapter::ZoneProcessServerAdapter(ZoneProcessServer* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -369,23 +369,23 @@ Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ZoneProcessServerAdapter::initialize() {
-	(static_cast<ZoneProcessServerImplementation*>(impl))->initialize();
+	(static_cast<ZoneProcessServer*>(stub))->initialize();
 }
 
 void ZoneProcessServerAdapter::finalize() {
-	(static_cast<ZoneProcessServerImplementation*>(impl))->finalize();
+	(static_cast<ZoneProcessServer*>(stub))->finalize();
 }
 
 ZoneServer* ZoneProcessServerAdapter::getZoneServer() {
-	return (static_cast<ZoneProcessServerImplementation*>(impl))->getZoneServer();
+	return (static_cast<ZoneProcessServer*>(stub))->getZoneServer();
 }
 
 PlayerManager* ZoneProcessServerAdapter::getPlayerManager() {
-	return (static_cast<ZoneProcessServerImplementation*>(impl))->getPlayerManager();
+	return (static_cast<ZoneProcessServer*>(stub))->getPlayerManager();
 }
 
 ChatManager* ZoneProcessServerAdapter::getChatManager() {
-	return (static_cast<ZoneProcessServerImplementation*>(impl))->getChatManager();
+	return (static_cast<ZoneProcessServer*>(stub))->getChatManager();
 }
 
 /*
@@ -413,7 +413,7 @@ DistributedObjectServant* ZoneProcessServerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ZoneProcessServerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ZoneProcessServerAdapter(static_cast<ZoneProcessServerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ZoneProcessServerAdapter(static_cast<ZoneProcessServer*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

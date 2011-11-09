@@ -194,7 +194,7 @@ bool SuiMessageBoxImplementation::isMessageBox() {
  *	SuiMessageBoxAdapter
  */
 
-SuiMessageBoxAdapter::SuiMessageBoxAdapter(SuiMessageBoxImplementation* obj) : SuiBoxAdapter(obj) {
+SuiMessageBoxAdapter::SuiMessageBoxAdapter(SuiMessageBox* obj) : SuiBoxAdapter(obj) {
 }
 
 Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -215,11 +215,11 @@ Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 BaseMessage* SuiMessageBoxAdapter::generateMessage() {
-	return (static_cast<SuiMessageBoxImplementation*>(impl))->generateMessage();
+	return (static_cast<SuiMessageBox*>(stub))->generateMessage();
 }
 
 bool SuiMessageBoxAdapter::isMessageBox() {
-	return (static_cast<SuiMessageBoxImplementation*>(impl))->isMessageBox();
+	return (static_cast<SuiMessageBox*>(stub))->isMessageBox();
 }
 
 /*
@@ -247,7 +247,7 @@ DistributedObjectServant* SuiMessageBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiMessageBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiMessageBoxAdapter(static_cast<SuiMessageBoxImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SuiMessageBoxAdapter(static_cast<SuiMessageBox*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

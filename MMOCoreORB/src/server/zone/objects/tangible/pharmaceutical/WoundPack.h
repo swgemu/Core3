@@ -257,7 +257,7 @@ protected:
 
 class WoundPackAdapter : public PharmaceuticalObjectAdapter {
 public:
-	WoundPackAdapter(WoundPackImplementation* impl);
+	WoundPackAdapter(WoundPack* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

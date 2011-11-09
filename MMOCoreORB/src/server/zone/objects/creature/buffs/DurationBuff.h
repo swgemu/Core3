@@ -175,7 +175,7 @@ protected:
 
 class DurationBuffAdapter : public BuffAdapter {
 public:
-	DurationBuffAdapter(DurationBuffImplementation* impl);
+	DurationBuffAdapter(DurationBuff* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -152,7 +152,7 @@ protected:
 
 class FindSessionAdapter : public FacadeAdapter {
 public:
-	FindSessionAdapter(FindSessionImplementation* impl);
+	FindSessionAdapter(FindSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

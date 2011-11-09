@@ -245,7 +245,7 @@ CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation()
  *	CharacterBuilderTerminalAdapter
  */
 
-CharacterBuilderTerminalAdapter::CharacterBuilderTerminalAdapter(CharacterBuilderTerminalImplementation* obj) : TerminalAdapter(obj) {
+CharacterBuilderTerminalAdapter::CharacterBuilderTerminalAdapter(CharacterBuilderTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -275,23 +275,23 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 }
 
 void CharacterBuilderTerminalAdapter::initializeTransientMembers() {
-	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<CharacterBuilderTerminal*>(stub))->initializeTransientMembers();
 }
 
 int CharacterBuilderTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<CharacterBuilderTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CharacterBuilderTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void CharacterBuilderTerminalAdapter::sendInitialChoices(CreatureObject* player) {
-	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->sendInitialChoices(player);
+	(static_cast<CharacterBuilderTerminal*>(stub))->sendInitialChoices(player);
 }
 
 void CharacterBuilderTerminalAdapter::giveLanguages(CreatureObject* player) {
-	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->giveLanguages(player);
+	(static_cast<CharacterBuilderTerminal*>(stub))->giveLanguages(player);
 }
 
 void CharacterBuilderTerminalAdapter::enhanceCharacter(CreatureObject* player) {
-	(static_cast<CharacterBuilderTerminalImplementation*>(impl))->enhanceCharacter(player);
+	(static_cast<CharacterBuilderTerminal*>(stub))->enhanceCharacter(player);
 }
 
 /*
@@ -319,7 +319,7 @@ DistributedObjectServant* CharacterBuilderTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CharacterBuilderTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CharacterBuilderTerminalAdapter(static_cast<CharacterBuilderTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CharacterBuilderTerminalAdapter(static_cast<CharacterBuilderTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

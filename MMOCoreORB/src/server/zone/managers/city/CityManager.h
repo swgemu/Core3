@@ -261,7 +261,7 @@ protected:
 
 class CityManagerAdapter : public ManagedServiceAdapter {
 public:
-	CityManagerAdapter(CityManagerImplementation* impl);
+	CityManagerAdapter(CityManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

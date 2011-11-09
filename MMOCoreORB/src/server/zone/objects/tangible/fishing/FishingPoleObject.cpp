@@ -348,7 +348,7 @@ void FishingPoleObjectImplementation::setQuality(int value) {
  *	FishingPoleObjectAdapter
  */
 
-FishingPoleObjectAdapter::FishingPoleObjectAdapter(FishingPoleObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+FishingPoleObjectAdapter::FishingPoleObjectAdapter(FishingPoleObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -393,43 +393,43 @@ Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void FishingPoleObjectAdapter::initializeTransientMembers() {
-	(static_cast<FishingPoleObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<FishingPoleObject*>(stub))->initializeTransientMembers();
 }
 
 int FishingPoleObjectAdapter::getQuality() {
-	return (static_cast<FishingPoleObjectImplementation*>(impl))->getQuality();
+	return (static_cast<FishingPoleObject*>(stub))->getQuality();
 }
 
 void FishingPoleObjectAdapter::setQuality(int value) {
-	(static_cast<FishingPoleObjectImplementation*>(impl))->setQuality(value);
+	(static_cast<FishingPoleObject*>(stub))->setQuality(value);
 }
 
 void FishingPoleObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	(static_cast<FishingPoleObjectImplementation*>(impl))->fillObjectMenuResponse(menuResponse, player);
+	(static_cast<FishingPoleObject*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FishingPoleObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<FishingPoleObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<FishingPoleObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 int FishingPoleObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return (static_cast<FishingPoleObjectImplementation*>(impl))->canAddObject(object, containmentType, errorDescription);
+	return (static_cast<FishingPoleObject*>(stub))->canAddObject(object, containmentType, errorDescription);
 }
 
 void FishingPoleObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	(static_cast<FishingPoleObjectImplementation*>(impl))->fillAttributeList(msg, object);
+	(static_cast<FishingPoleObject*>(stub))->fillAttributeList(msg, object);
 }
 
 void FishingPoleObjectAdapter::doFishing(CreatureObject* player) {
-	(static_cast<FishingPoleObjectImplementation*>(impl))->doFishing(player);
+	(static_cast<FishingPoleObject*>(stub))->doFishing(player);
 }
 
 String FishingPoleObjectAdapter::getText(CreatureObject* player) {
-	return (static_cast<FishingPoleObjectImplementation*>(impl))->getText(player);
+	return (static_cast<FishingPoleObject*>(stub))->getText(player);
 }
 
 bool FishingPoleObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
-	return (static_cast<FishingPoleObjectImplementation*>(impl))->removeObject(object, notifyClient);
+	return (static_cast<FishingPoleObject*>(stub))->removeObject(object, notifyClient);
 }
 
 /*
@@ -457,7 +457,7 @@ DistributedObjectServant* FishingPoleObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FishingPoleObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FishingPoleObjectAdapter(static_cast<FishingPoleObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FishingPoleObjectAdapter(static_cast<FishingPoleObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

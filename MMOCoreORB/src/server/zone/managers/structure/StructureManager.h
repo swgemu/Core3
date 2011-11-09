@@ -295,7 +295,7 @@ protected:
 
 class StructureManagerAdapter : public ManagedServiceAdapter {
 public:
-	StructureManagerAdapter(StructureManagerImplementation* impl);
+	StructureManagerAdapter(StructureManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

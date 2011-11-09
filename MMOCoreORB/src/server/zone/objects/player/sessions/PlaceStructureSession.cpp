@@ -362,7 +362,7 @@ int PlaceStructureSessionImplementation::clearSession() {
  *	PlaceStructureSessionAdapter
  */
 
-PlaceStructureSessionAdapter::PlaceStructureSessionAdapter(PlaceStructureSessionImplementation* obj) : FacadeAdapter(obj) {
+PlaceStructureSessionAdapter::PlaceStructureSessionAdapter(PlaceStructureSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -392,23 +392,23 @@ Packet* PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMet
 }
 
 int PlaceStructureSessionAdapter::initializeSession() {
-	return (static_cast<PlaceStructureSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<PlaceStructureSession*>(stub))->initializeSession();
 }
 
 int PlaceStructureSessionAdapter::constructStructure(float x, float y, int angle) {
-	return (static_cast<PlaceStructureSessionImplementation*>(impl))->constructStructure(x, y, angle);
+	return (static_cast<PlaceStructureSession*>(stub))->constructStructure(x, y, angle);
 }
 
 int PlaceStructureSessionAdapter::completeSession() {
-	return (static_cast<PlaceStructureSessionImplementation*>(impl))->completeSession();
+	return (static_cast<PlaceStructureSession*>(stub))->completeSession();
 }
 
 int PlaceStructureSessionAdapter::cancelSession() {
-	return (static_cast<PlaceStructureSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<PlaceStructureSession*>(stub))->cancelSession();
 }
 
 int PlaceStructureSessionAdapter::clearSession() {
-	return (static_cast<PlaceStructureSessionImplementation*>(impl))->clearSession();
+	return (static_cast<PlaceStructureSession*>(stub))->clearSession();
 }
 
 /*
@@ -436,7 +436,7 @@ DistributedObjectServant* PlaceStructureSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PlaceStructureSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PlaceStructureSessionAdapter(static_cast<PlaceStructureSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PlaceStructureSessionAdapter(static_cast<PlaceStructureSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

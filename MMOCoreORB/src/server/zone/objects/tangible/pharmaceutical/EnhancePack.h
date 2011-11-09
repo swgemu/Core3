@@ -291,7 +291,7 @@ protected:
 
 class EnhancePackAdapter : public PharmaceuticalObjectAdapter {
 public:
-	EnhancePackAdapter(EnhancePackImplementation* impl);
+	EnhancePackAdapter(EnhancePack* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

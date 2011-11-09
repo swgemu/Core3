@@ -210,7 +210,7 @@ bool StaticSpawnAreaImplementation::isStaticArea() {
  *	StaticSpawnAreaAdapter
  */
 
-StaticSpawnAreaAdapter::StaticSpawnAreaAdapter(StaticSpawnAreaImplementation* obj) : SpawnAreaAdapter(obj) {
+StaticSpawnAreaAdapter::StaticSpawnAreaAdapter(StaticSpawnArea* obj) : SpawnAreaAdapter(obj) {
 }
 
 Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -231,11 +231,11 @@ Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void StaticSpawnAreaAdapter::spawnCreatures() {
-	(static_cast<StaticSpawnAreaImplementation*>(impl))->spawnCreatures();
+	(static_cast<StaticSpawnArea*>(stub))->spawnCreatures();
 }
 
 bool StaticSpawnAreaAdapter::isStaticArea() {
-	return (static_cast<StaticSpawnAreaImplementation*>(impl))->isStaticArea();
+	return (static_cast<StaticSpawnArea*>(stub))->isStaticArea();
 }
 
 /*
@@ -263,7 +263,7 @@ DistributedObjectServant* StaticSpawnAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StaticSpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StaticSpawnAreaAdapter(static_cast<StaticSpawnAreaImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StaticSpawnAreaAdapter(static_cast<StaticSpawnArea*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

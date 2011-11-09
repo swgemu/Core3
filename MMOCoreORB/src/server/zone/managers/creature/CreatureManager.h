@@ -298,7 +298,7 @@ protected:
 
 class CreatureManagerAdapter : public ZoneManagerAdapter {
 public:
-	CreatureManagerAdapter(CreatureManagerImplementation* impl);
+	CreatureManagerAdapter(CreatureManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

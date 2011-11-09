@@ -187,7 +187,7 @@ protected:
 
 class TravelTerminalAdapter : public TerminalAdapter {
 public:
-	TravelTerminalAdapter(TravelTerminalImplementation* impl);
+	TravelTerminalAdapter(TravelTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

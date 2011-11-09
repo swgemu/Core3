@@ -121,7 +121,7 @@ protected:
 
 class TravelBuildingObjectAdapter : public BuildingObjectAdapter {
 public:
-	TravelBuildingObjectAdapter(TravelBuildingObjectImplementation* impl);
+	TravelBuildingObjectAdapter(TravelBuildingObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

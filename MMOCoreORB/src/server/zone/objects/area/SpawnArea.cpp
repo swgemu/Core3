@@ -347,7 +347,7 @@ bool SpawnAreaImplementation::isDynamicArea() {
  *	SpawnAreaAdapter
  */
 
-SpawnAreaAdapter::SpawnAreaAdapter(SpawnAreaImplementation* obj) : ActiveAreaAdapter(obj) {
+SpawnAreaAdapter::SpawnAreaAdapter(SpawnArea* obj) : ActiveAreaAdapter(obj) {
 }
 
 Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -383,31 +383,31 @@ Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void SpawnAreaAdapter::registerObservers() {
-	(static_cast<SpawnAreaImplementation*>(impl))->registerObservers();
+	(static_cast<SpawnArea*>(stub))->registerObservers();
 }
 
 int SpawnAreaAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<SpawnAreaImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<SpawnArea*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void SpawnAreaAdapter::addTemplate(unsigned int tempCRC) {
-	(static_cast<SpawnAreaImplementation*>(impl))->addTemplate(tempCRC);
+	(static_cast<SpawnArea*>(stub))->addTemplate(tempCRC);
 }
 
 void SpawnAreaAdapter::setTier(int n) {
-	(static_cast<SpawnAreaImplementation*>(impl))->setTier(n);
+	(static_cast<SpawnArea*>(stub))->setTier(n);
 }
 
 void SpawnAreaAdapter::setSpawnConstant(int n) {
-	(static_cast<SpawnAreaImplementation*>(impl))->setSpawnConstant(n);
+	(static_cast<SpawnArea*>(stub))->setSpawnConstant(n);
 }
 
 bool SpawnAreaAdapter::isStaticArea() {
-	return (static_cast<SpawnAreaImplementation*>(impl))->isStaticArea();
+	return (static_cast<SpawnArea*>(stub))->isStaticArea();
 }
 
 bool SpawnAreaAdapter::isDynamicArea() {
-	return (static_cast<SpawnAreaImplementation*>(impl))->isDynamicArea();
+	return (static_cast<SpawnArea*>(stub))->isDynamicArea();
 }
 
 /*
@@ -435,7 +435,7 @@ DistributedObjectServant* SpawnAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SpawnAreaAdapter(static_cast<SpawnAreaImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SpawnAreaAdapter(static_cast<SpawnArea*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -336,7 +336,7 @@ void TerminalImplementation::initializeChildObject(SceneObject* controllerObject
  *	TerminalAdapter
  */
 
-TerminalAdapter::TerminalAdapter(TerminalImplementation* obj) : TangibleObjectAdapter(obj) {
+TerminalAdapter::TerminalAdapter(Terminal* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -378,39 +378,39 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void TerminalAdapter::initializeTransientMembers() {
-	(static_cast<TerminalImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<Terminal*>(stub))->initializeTransientMembers();
 }
 
 bool TerminalAdapter::isTerminal() {
-	return (static_cast<TerminalImplementation*>(impl))->isTerminal();
+	return (static_cast<Terminal*>(stub))->isTerminal();
 }
 
 bool TerminalAdapter::isGuildTerminal() {
-	return (static_cast<TerminalImplementation*>(impl))->isGuildTerminal();
+	return (static_cast<Terminal*>(stub))->isGuildTerminal();
 }
 
 void TerminalAdapter::setControlledObject(SceneObject* obj) {
-	(static_cast<TerminalImplementation*>(impl))->setControlledObject(obj);
+	(static_cast<Terminal*>(stub))->setControlledObject(obj);
 }
 
 SceneObject* TerminalAdapter::getControlledObject() {
-	return (static_cast<TerminalImplementation*>(impl))->getControlledObject();
+	return (static_cast<Terminal*>(stub))->getControlledObject();
 }
 
 bool TerminalAdapter::isElevatorTerminal() {
-	return (static_cast<TerminalImplementation*>(impl))->isElevatorTerminal();
+	return (static_cast<Terminal*>(stub))->isElevatorTerminal();
 }
 
 bool TerminalAdapter::isVendorTerminal() {
-	return (static_cast<TerminalImplementation*>(impl))->isVendorTerminal();
+	return (static_cast<Terminal*>(stub))->isVendorTerminal();
 }
 
 bool TerminalAdapter::isBazaarTerminal() {
-	return (static_cast<TerminalImplementation*>(impl))->isBazaarTerminal();
+	return (static_cast<Terminal*>(stub))->isBazaarTerminal();
 }
 
 void TerminalAdapter::initializeChildObject(SceneObject* controllerObject) {
-	(static_cast<TerminalImplementation*>(impl))->initializeChildObject(controllerObject);
+	(static_cast<Terminal*>(stub))->initializeChildObject(controllerObject);
 }
 
 /*
@@ -438,7 +438,7 @@ DistributedObjectServant* TerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* TerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new TerminalAdapter(static_cast<TerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new TerminalAdapter(static_cast<Terminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

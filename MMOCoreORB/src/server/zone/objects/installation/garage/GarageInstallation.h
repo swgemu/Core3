@@ -119,7 +119,7 @@ protected:
 
 class GarageInstallationAdapter : public InstallationObjectAdapter {
 public:
-	GarageInstallationAdapter(GarageInstallationImplementation* impl);
+	GarageInstallationAdapter(GarageInstallation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

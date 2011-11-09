@@ -248,7 +248,7 @@ void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {
  *	EntertainerMissionObjectiveAdapter
  */
 
-EntertainerMissionObjectiveAdapter::EntertainerMissionObjectiveAdapter(EntertainerMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
+EntertainerMissionObjectiveAdapter::EntertainerMissionObjectiveAdapter(EntertainerMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
 Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -281,27 +281,27 @@ Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, Distribu
 }
 
 void EntertainerMissionObjectiveAdapter::finalize() {
-	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->finalize();
+	(static_cast<EntertainerMissionObjective*>(stub))->finalize();
 }
 
 void EntertainerMissionObjectiveAdapter::initializeTransientMembers() {
-	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<EntertainerMissionObjective*>(stub))->initializeTransientMembers();
 }
 
 void EntertainerMissionObjectiveAdapter::activate() {
-	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->activate();
+	(static_cast<EntertainerMissionObjective*>(stub))->activate();
 }
 
 void EntertainerMissionObjectiveAdapter::abort() {
-	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->abort();
+	(static_cast<EntertainerMissionObjective*>(stub))->abort();
 }
 
 void EntertainerMissionObjectiveAdapter::complete() {
-	(static_cast<EntertainerMissionObjectiveImplementation*>(impl))->complete();
+	(static_cast<EntertainerMissionObjective*>(stub))->complete();
 }
 
 int EntertainerMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<EntertainerMissionObjectiveImplementation*>(impl))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+	return (static_cast<EntertainerMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -329,7 +329,7 @@ DistributedObjectServant* EntertainerMissionObjectiveHelper::instantiateServant(
 }
 
 DistributedObjectAdapter* EntertainerMissionObjectiveHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EntertainerMissionObjectiveAdapter(static_cast<EntertainerMissionObjectiveImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new EntertainerMissionObjectiveAdapter(static_cast<EntertainerMissionObjective*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

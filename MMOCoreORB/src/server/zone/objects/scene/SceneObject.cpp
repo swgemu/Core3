@@ -4242,7 +4242,7 @@ SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {
  *	SceneObjectAdapter
  */
 
-SceneObjectAdapter::SceneObjectAdapter(SceneObjectImplementation* obj) : QuadTreeEntryAdapter(obj) {
+SceneObjectAdapter::SceneObjectAdapter(SceneObject* obj) : QuadTreeEntryAdapter(obj) {
 }
 
 Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -4848,791 +4848,791 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void SceneObjectAdapter::finalize() {
-	(static_cast<SceneObjectImplementation*>(impl))->finalize();
+	(static_cast<SceneObject*>(stub))->finalize();
 }
 
 void SceneObjectAdapter::initializePrivateData() {
-	(static_cast<SceneObjectImplementation*>(impl))->initializePrivateData();
+	(static_cast<SceneObject*>(stub))->initializePrivateData();
 }
 
 void SceneObjectAdapter::createComponents() {
-	(static_cast<SceneObjectImplementation*>(impl))->createComponents();
+	(static_cast<SceneObject*>(stub))->createComponents();
 }
 
 void SceneObjectAdapter::createContainerComponent() {
-	(static_cast<SceneObjectImplementation*>(impl))->createContainerComponent();
+	(static_cast<SceneObject*>(stub))->createContainerComponent();
 }
 
 void SceneObjectAdapter::initializeTransientMembers() {
-	(static_cast<SceneObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<SceneObject*>(stub))->initializeTransientMembers();
 }
 
 void SceneObjectAdapter::notifyLoadFromDatabase() {
-	(static_cast<SceneObjectImplementation*>(impl))->notifyLoadFromDatabase();
+	(static_cast<SceneObject*>(stub))->notifyLoadFromDatabase();
 }
 
 void SceneObjectAdapter::info(const String& msg, bool forced) {
-	(static_cast<SceneObjectImplementation*>(impl))->info(msg, forced);
+	(static_cast<SceneObject*>(stub))->info(msg, forced);
 }
 
 void SceneObjectAdapter::error(const String& msg) {
-	(static_cast<SceneObjectImplementation*>(impl))->error(msg);
+	(static_cast<SceneObject*>(stub))->error(msg);
 }
 
 int SceneObjectAdapter::inRangeObjects(unsigned int gameObjectType, float range) {
-	return (static_cast<SceneObjectImplementation*>(impl))->inRangeObjects(gameObjectType, range);
+	return (static_cast<SceneObject*>(stub))->inRangeObjects(gameObjectType, range);
 }
 
 bool SceneObjectAdapter::isInRange(SceneObject* obj, float range) {
-	return (static_cast<SceneObjectImplementation*>(impl))->isInRange(obj, range);
+	return (static_cast<SceneObject*>(stub))->isInRange(obj, range);
 }
 
 bool SceneObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return (static_cast<SceneObjectImplementation*>(impl))->addObject(object, containmentType, notifyClient);
+	return (static_cast<SceneObject*>(stub))->addObject(object, containmentType, notifyClient);
 }
 
 bool SceneObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
-	return (static_cast<SceneObjectImplementation*>(impl))->removeObject(object, notifyClient);
+	return (static_cast<SceneObject*>(stub))->removeObject(object, notifyClient);
 }
 
 int SceneObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return (static_cast<SceneObjectImplementation*>(impl))->canAddObject(object, containmentType, errorDescription);
+	return (static_cast<SceneObject*>(stub))->canAddObject(object, containmentType, errorDescription);
 }
 
 void SceneObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	(static_cast<SceneObjectImplementation*>(impl))->synchronizedUIListen(player, value);
+	(static_cast<SceneObject*>(stub))->synchronizedUIListen(player, value);
 }
 
 void SceneObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	(static_cast<SceneObjectImplementation*>(impl))->synchronizedUIStopListen(player, value);
+	(static_cast<SceneObject*>(stub))->synchronizedUIStopListen(player, value);
 }
 
 void SceneObjectAdapter::updateToDatabase() {
-	(static_cast<SceneObjectImplementation*>(impl))->updateToDatabase();
+	(static_cast<SceneObject*>(stub))->updateToDatabase();
 }
 
 void SceneObjectAdapter::updateToDatabaseWithoutChildren() {
-	(static_cast<SceneObjectImplementation*>(impl))->updateToDatabaseWithoutChildren();
+	(static_cast<SceneObject*>(stub))->updateToDatabaseWithoutChildren();
 }
 
 void SceneObjectAdapter::updateToDatabaseAllObjects(bool startTask) {
-	(static_cast<SceneObjectImplementation*>(impl))->updateToDatabaseAllObjects(startTask);
+	(static_cast<SceneObject*>(stub))->updateToDatabaseAllObjects(startTask);
 }
 
 void SceneObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<SceneObjectImplementation*>(impl))->destroyObjectFromDatabase(destroyContainedObjects);
+	(static_cast<SceneObject*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int SceneObjectAdapter::canBeDestroyed(CreatureObject* player) {
-	return (static_cast<SceneObjectImplementation*>(impl))->canBeDestroyed(player);
+	return (static_cast<SceneObject*>(stub))->canBeDestroyed(player);
 }
 
 void SceneObjectAdapter::create(ZoneClientSession* client) {
-	(static_cast<SceneObjectImplementation*>(impl))->create(client);
+	(static_cast<SceneObject*>(stub))->create(client);
 }
 
 void SceneObjectAdapter::destroy(ZoneClientSession* client) {
-	(static_cast<SceneObjectImplementation*>(impl))->destroy(client);
+	(static_cast<SceneObject*>(stub))->destroy(client);
 }
 
 void SceneObjectAdapter::close(ZoneClientSession* client) {
-	(static_cast<SceneObjectImplementation*>(impl))->close(client);
+	(static_cast<SceneObject*>(stub))->close(client);
 }
 
 void SceneObjectAdapter::link(ZoneClientSession* client, unsigned int containmentType) {
-	(static_cast<SceneObjectImplementation*>(impl))->link(client, containmentType);
+	(static_cast<SceneObject*>(stub))->link(client, containmentType);
 }
 
 BaseMessage* SceneObjectAdapter::link(unsigned long long objectID, unsigned int containmentType) {
-	return (static_cast<SceneObjectImplementation*>(impl))->link(objectID, containmentType);
+	return (static_cast<SceneObject*>(stub))->link(objectID, containmentType);
 }
 
 void SceneObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendTo(player, doClose);
+	(static_cast<SceneObject*>(stub))->sendTo(player, doClose);
 }
 
 void SceneObjectAdapter::sendWithoutParentTo(SceneObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendWithoutParentTo(player);
+	(static_cast<SceneObject*>(stub))->sendWithoutParentTo(player);
 }
 
 void SceneObjectAdapter::sendWithoutContainerObjectsTo(SceneObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendWithoutContainerObjectsTo(player);
+	(static_cast<SceneObject*>(stub))->sendWithoutContainerObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendDestroyTo(SceneObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendDestroyTo(player);
+	(static_cast<SceneObject*>(stub))->sendDestroyTo(player);
 }
 
 void SceneObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<SceneObject*>(stub))->sendBaselinesTo(player);
 }
 
 void SceneObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendContainerObjectsTo(player);
+	(static_cast<SceneObject*>(stub))->sendContainerObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendSlottedObjectsTo(SceneObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendSlottedObjectsTo(player);
+	(static_cast<SceneObject*>(stub))->sendSlottedObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendToOwner(bool doClose) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendToOwner(doClose);
+	(static_cast<SceneObject*>(stub))->sendToOwner(doClose);
 }
 
 void SceneObjectAdapter::sendAttributeListTo(CreatureObject* object) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendAttributeListTo(object);
+	(static_cast<SceneObject*>(stub))->sendAttributeListTo(object);
 }
 
 void SceneObjectAdapter::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	(static_cast<SceneObjectImplementation*>(impl))->setCustomObjectName(name, notifyClient);
+	(static_cast<SceneObject*>(stub))->setCustomObjectName(name, notifyClient);
 }
 
 void SceneObjectAdapter::openContainerTo(CreatureObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->openContainerTo(player);
+	(static_cast<SceneObject*>(stub))->openContainerTo(player);
 }
 
 void SceneObjectAdapter::closeContainerTo(CreatureObject* player, bool notify) {
-	(static_cast<SceneObjectImplementation*>(impl))->closeContainerTo(player, notify);
+	(static_cast<SceneObject*>(stub))->closeContainerTo(player, notify);
 }
 
 void SceneObjectAdapter::notifyInsertToZone(Zone* zone) {
-	(static_cast<SceneObjectImplementation*>(impl))->notifyInsertToZone(zone);
+	(static_cast<SceneObject*>(stub))->notifyInsertToZone(zone);
 }
 
 void SceneObjectAdapter::insertToBuilding(BuildingObject* building) {
-	(static_cast<SceneObjectImplementation*>(impl))->insertToBuilding(building);
+	(static_cast<SceneObject*>(stub))->insertToBuilding(building);
 }
 
 void SceneObjectAdapter::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	(static_cast<SceneObjectImplementation*>(impl))->switchZone(newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
+	(static_cast<SceneObject*>(stub))->switchZone(newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectAdapter::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	(static_cast<SceneObjectImplementation*>(impl))->teleport(newPositionX, newPositionZ, newPositionY, parentID);
+	(static_cast<SceneObject*>(stub))->teleport(newPositionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectAdapter::updateDirection(float fw, float fx, float fy, float fz) {
-	(static_cast<SceneObjectImplementation*>(impl))->updateDirection(fw, fx, fy, fz);
+	(static_cast<SceneObject*>(stub))->updateDirection(fw, fx, fy, fz);
 }
 
 void SceneObjectAdapter::removeFromZone() {
-	(static_cast<SceneObjectImplementation*>(impl))->removeFromZone();
+	(static_cast<SceneObject*>(stub))->removeFromZone();
 }
 
 void SceneObjectAdapter::notifyRemoveFromZone() {
-	(static_cast<SceneObjectImplementation*>(impl))->notifyRemoveFromZone();
+	(static_cast<SceneObject*>(stub))->notifyRemoveFromZone();
 }
 
 void SceneObjectAdapter::removeFromBuilding(BuildingObject* building) {
-	(static_cast<SceneObjectImplementation*>(impl))->removeFromBuilding(building);
+	(static_cast<SceneObject*>(stub))->removeFromBuilding(building);
 }
 
 void SceneObjectAdapter::updateZone(bool lightUpdate, bool sendPackets) {
-	(static_cast<SceneObjectImplementation*>(impl))->updateZone(lightUpdate, sendPackets);
+	(static_cast<SceneObject*>(stub))->updateZone(lightUpdate, sendPackets);
 }
 
 void SceneObjectAdapter::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	(static_cast<SceneObjectImplementation*>(impl))->updateZoneWithParent(newParent, lightUpdate, sendPackets);
+	(static_cast<SceneObject*>(stub))->updateZoneWithParent(newParent, lightUpdate, sendPackets);
 }
 
 void SceneObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	(static_cast<SceneObjectImplementation*>(impl))->broadcastMessage(message, sendSelf, lockZone);
+	(static_cast<SceneObject*>(stub))->broadcastMessage(message, sendSelf, lockZone);
 }
 
 void SceneObjectAdapter::broadcastObject(SceneObject* object, bool sendSelf) {
-	(static_cast<SceneObjectImplementation*>(impl))->broadcastObject(object, sendSelf);
+	(static_cast<SceneObject*>(stub))->broadcastObject(object, sendSelf);
 }
 
 void SceneObjectAdapter::broadcastDestroy(SceneObject* object, bool sendSelf) {
-	(static_cast<SceneObjectImplementation*>(impl))->broadcastDestroy(object, sendSelf);
+	(static_cast<SceneObject*>(stub))->broadcastDestroy(object, sendSelf);
 }
 
 void SceneObjectAdapter::sendMessage(BasePacket* msg) {
-	(static_cast<SceneObjectImplementation*>(impl))->sendMessage(msg);
+	(static_cast<SceneObject*>(stub))->sendMessage(msg);
 }
 
 int SceneObjectAdapter::compareTo(SceneObject* obj) {
-	return (static_cast<SceneObjectImplementation*>(impl))->compareTo(obj);
+	return (static_cast<SceneObject*>(stub))->compareTo(obj);
 }
 
 unsigned long long SceneObjectAdapter::getParentID() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getParentID();
+	return (static_cast<SceneObject*>(stub))->getParentID();
 }
 
 bool SceneObjectAdapter::containsPendingTask(const String& name) {
-	return (static_cast<SceneObjectImplementation*>(impl))->containsPendingTask(name);
+	return (static_cast<SceneObject*>(stub))->containsPendingTask(name);
 }
 
 void SceneObjectAdapter::showFlyText(const String& file, const String& uax, byte red, byte green, byte blue) {
-	(static_cast<SceneObjectImplementation*>(impl))->showFlyText(file, uax, red, green, blue);
+	(static_cast<SceneObject*>(stub))->showFlyText(file, uax, red, green, blue);
 }
 
 Facade* SceneObjectAdapter::getActiveSession(unsigned int type) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getActiveSession(type);
+	return (static_cast<SceneObject*>(stub))->getActiveSession(type);
 }
 
 void SceneObjectAdapter::addActiveSession(unsigned int type, Facade* session) {
-	(static_cast<SceneObjectImplementation*>(impl))->addActiveSession(type, session);
+	(static_cast<SceneObject*>(stub))->addActiveSession(type, session);
 }
 
 bool SceneObjectAdapter::containsActiveSession(unsigned int type) {
-	return (static_cast<SceneObjectImplementation*>(impl))->containsActiveSession(type);
+	return (static_cast<SceneObject*>(stub))->containsActiveSession(type);
 }
 
 bool SceneObjectAdapter::dropActiveSession(unsigned int type) {
-	return (static_cast<SceneObjectImplementation*>(impl))->dropActiveSession(type);
+	return (static_cast<SceneObject*>(stub))->dropActiveSession(type);
 }
 
 int SceneObjectAdapter::getActiveSessionsCount() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getActiveSessionsCount();
+	return (static_cast<SceneObject*>(stub))->getActiveSessionsCount();
 }
 
 int SceneObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<SceneObjectImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<SceneObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void SceneObjectAdapter::notifyAddedToCloseObjects() {
-	(static_cast<SceneObjectImplementation*>(impl))->notifyAddedToCloseObjects();
+	(static_cast<SceneObject*>(stub))->notifyAddedToCloseObjects();
 }
 
 void SceneObjectAdapter::notifyRemovedFromCloseObjects() {
-	(static_cast<SceneObjectImplementation*>(impl))->notifyRemovedFromCloseObjects();
+	(static_cast<SceneObject*>(stub))->notifyRemovedFromCloseObjects();
 }
 
 float SceneObjectAdapter::getDistanceTo(SceneObject* object) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getDistanceTo(object);
+	return (static_cast<SceneObject*>(stub))->getDistanceTo(object);
 }
 
 void SceneObjectAdapter::updateVehiclePosition() {
-	(static_cast<SceneObjectImplementation*>(impl))->updateVehiclePosition();
+	(static_cast<SceneObject*>(stub))->updateVehiclePosition();
 }
 
 int SceneObjectAdapter::notifyObjectInserted(SceneObject* object) {
-	return (static_cast<SceneObjectImplementation*>(impl))->notifyObjectInserted(object);
+	return (static_cast<SceneObject*>(stub))->notifyObjectInserted(object);
 }
 
 int SceneObjectAdapter::notifyObjectRemoved(SceneObject* object) {
-	return (static_cast<SceneObjectImplementation*>(impl))->notifyObjectRemoved(object);
+	return (static_cast<SceneObject*>(stub))->notifyObjectRemoved(object);
 }
 
 void SceneObjectAdapter::addActiveArea(ActiveArea* area) {
-	(static_cast<SceneObjectImplementation*>(impl))->addActiveArea(area);
+	(static_cast<SceneObject*>(stub))->addActiveArea(area);
 }
 
 void SceneObjectAdapter::dropActiveArea(ActiveArea* area) {
-	(static_cast<SceneObjectImplementation*>(impl))->dropActiveArea(area);
+	(static_cast<SceneObject*>(stub))->dropActiveArea(area);
 }
 
 bool SceneObjectAdapter::hasActiveArea(ActiveArea* area) {
-	return (static_cast<SceneObjectImplementation*>(impl))->hasActiveArea(area);
+	return (static_cast<SceneObject*>(stub))->hasActiveArea(area);
 }
 
 int SceneObjectAdapter::getActiveAreasSize() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getActiveAreasSize();
+	return (static_cast<SceneObject*>(stub))->getActiveAreasSize();
 }
 
 ActiveArea* SceneObjectAdapter::getActiveRegion() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getActiveRegion();
+	return (static_cast<SceneObject*>(stub))->getActiveRegion();
 }
 
 CityRegion* SceneObjectAdapter::getCityRegion() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getCityRegion();
+	return (static_cast<SceneObject*>(stub))->getCityRegion();
 }
 
 void SceneObjectAdapter::setCityRegion(CityRegion* region) {
-	(static_cast<SceneObjectImplementation*>(impl))->setCityRegion(region);
+	(static_cast<SceneObject*>(stub))->setCityRegion(region);
 }
 
 Zone* SceneObjectAdapter::getZone() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getZone();
+	return (static_cast<SceneObject*>(stub))->getZone();
 }
 
 unsigned long long SceneObjectAdapter::getObjectID() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getObjectID();
+	return (static_cast<SceneObject*>(stub))->getObjectID();
 }
 
 float SceneObjectAdapter::getWorldPositionX() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getWorldPositionX();
+	return (static_cast<SceneObject*>(stub))->getWorldPositionX();
 }
 
 float SceneObjectAdapter::getWorldPositionY() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getWorldPositionY();
+	return (static_cast<SceneObject*>(stub))->getWorldPositionY();
 }
 
 float SceneObjectAdapter::getWorldPositionZ() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getWorldPositionZ();
+	return (static_cast<SceneObject*>(stub))->getWorldPositionZ();
 }
 
 float SceneObjectAdapter::getDirectionX() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionX();
+	return (static_cast<SceneObject*>(stub))->getDirectionX();
 }
 
 float SceneObjectAdapter::getDirectionZ() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionZ();
+	return (static_cast<SceneObject*>(stub))->getDirectionZ();
 }
 
 float SceneObjectAdapter::getDirectionY() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionY();
+	return (static_cast<SceneObject*>(stub))->getDirectionY();
 }
 
 float SceneObjectAdapter::getDirectionW() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionW();
+	return (static_cast<SceneObject*>(stub))->getDirectionW();
 }
 
 unsigned int SceneObjectAdapter::getClientObjectCRC() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getClientObjectCRC();
+	return (static_cast<SceneObject*>(stub))->getClientObjectCRC();
 }
 
 unsigned int SceneObjectAdapter::getServerObjectCRC() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getServerObjectCRC();
+	return (static_cast<SceneObject*>(stub))->getServerObjectCRC();
 }
 
 bool SceneObjectAdapter::isWaypointObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isWaypointObject();
+	return (static_cast<SceneObject*>(stub))->isWaypointObject();
 }
 
 String SceneObjectAdapter::getObjectNameStringIdFile() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getObjectNameStringIdFile();
+	return (static_cast<SceneObject*>(stub))->getObjectNameStringIdFile();
 }
 
 String SceneObjectAdapter::getObjectNameStringIdName() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getObjectNameStringIdName();
+	return (static_cast<SceneObject*>(stub))->getObjectNameStringIdName();
 }
 
 int SceneObjectAdapter::getArrangementDescriptorSize() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getArrangementDescriptorSize();
+	return (static_cast<SceneObject*>(stub))->getArrangementDescriptorSize();
 }
 
 String SceneObjectAdapter::getArrangementDescriptor(int idx) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getArrangementDescriptor(idx);
+	return (static_cast<SceneObject*>(stub))->getArrangementDescriptor(idx);
 }
 
 String SceneObjectAdapter::getSlotDescriptor(int idx) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getSlotDescriptor(idx);
+	return (static_cast<SceneObject*>(stub))->getSlotDescriptor(idx);
 }
 
 bool SceneObjectAdapter::hasSlotDescriptor(const String& descr) {
-	return (static_cast<SceneObjectImplementation*>(impl))->hasSlotDescriptor(descr);
+	return (static_cast<SceneObject*>(stub))->hasSlotDescriptor(descr);
 }
 
 SceneObject* SceneObjectAdapter::getSlottedObject(const String& slot) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getSlottedObject(slot);
+	return (static_cast<SceneObject*>(stub))->getSlottedObject(slot);
 }
 
 int SceneObjectAdapter::getSlotDescriptorSize() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getSlotDescriptorSize();
+	return (static_cast<SceneObject*>(stub))->getSlotDescriptorSize();
 }
 
 SceneObject* SceneObjectAdapter::getSlottedObject(int idx) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getSlottedObject(idx);
+	return (static_cast<SceneObject*>(stub))->getSlottedObject(idx);
 }
 
 void SceneObjectAdapter::dropSlottedObject(const String& arrengementDescriptor) {
-	(static_cast<SceneObjectImplementation*>(impl))->dropSlottedObject(arrengementDescriptor);
+	(static_cast<SceneObject*>(stub))->dropSlottedObject(arrengementDescriptor);
 }
 
 void SceneObjectAdapter::removeSlottedObject(int index) {
-	(static_cast<SceneObjectImplementation*>(impl))->removeSlottedObject(index);
+	(static_cast<SceneObject*>(stub))->removeSlottedObject(index);
 }
 
 int SceneObjectAdapter::getContainerObjectsSize() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getContainerObjectsSize();
+	return (static_cast<SceneObject*>(stub))->getContainerObjectsSize();
 }
 
 int SceneObjectAdapter::getSlottedObjectsSize() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getSlottedObjectsSize();
+	return (static_cast<SceneObject*>(stub))->getSlottedObjectsSize();
 }
 
 bool SceneObjectAdapter::hasFullContainerObjects() {
-	return (static_cast<SceneObjectImplementation*>(impl))->hasFullContainerObjects();
+	return (static_cast<SceneObject*>(stub))->hasFullContainerObjects();
 }
 
 unsigned int SceneObjectAdapter::getContainerVolumeLimit() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getContainerVolumeLimit();
+	return (static_cast<SceneObject*>(stub))->getContainerVolumeLimit();
 }
 
 SceneObject* SceneObjectAdapter::getContainerObject(int idx) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getContainerObject(idx);
+	return (static_cast<SceneObject*>(stub))->getContainerObject(idx);
 }
 
 bool SceneObjectAdapter::hasObjectInContainer(unsigned long long objectID) {
-	return (static_cast<SceneObjectImplementation*>(impl))->hasObjectInContainer(objectID);
+	return (static_cast<SceneObject*>(stub))->hasObjectInContainer(objectID);
 }
 
 bool SceneObjectAdapter::hasObjectInSlottedContainer(SceneObject* object) {
-	return (static_cast<SceneObjectImplementation*>(impl))->hasObjectInSlottedContainer(object);
+	return (static_cast<SceneObject*>(stub))->hasObjectInSlottedContainer(object);
 }
 
 SceneObject* SceneObjectAdapter::getContainerObject(unsigned long long objectID) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getContainerObject(objectID);
+	return (static_cast<SceneObject*>(stub))->getContainerObject(objectID);
 }
 
 void SceneObjectAdapter::removeAllContainerObjects() {
-	(static_cast<SceneObjectImplementation*>(impl))->removeAllContainerObjects();
+	(static_cast<SceneObject*>(stub))->removeAllContainerObjects();
 }
 
 void SceneObjectAdapter::putInContainer(SceneObject* obj, unsigned long long key) {
-	(static_cast<SceneObjectImplementation*>(impl))->putInContainer(obj, key);
+	(static_cast<SceneObject*>(stub))->putInContainer(obj, key);
 }
 
 void SceneObjectAdapter::removeFromContainerObjects(int index) {
-	(static_cast<SceneObjectImplementation*>(impl))->removeFromContainerObjects(index);
+	(static_cast<SceneObject*>(stub))->removeFromContainerObjects(index);
 }
 
 void SceneObjectAdapter::setContainerVolumeLimit(int lim) {
-	(static_cast<SceneObjectImplementation*>(impl))->setContainerVolumeLimit(lim);
+	(static_cast<SceneObject*>(stub))->setContainerVolumeLimit(lim);
 }
 
 void SceneObjectAdapter::setContainerType(int type) {
-	(static_cast<SceneObjectImplementation*>(impl))->setContainerType(type);
+	(static_cast<SceneObject*>(stub))->setContainerType(type);
 }
 
 unsigned int SceneObjectAdapter::getContainerType() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getContainerType();
+	return (static_cast<SceneObject*>(stub))->getContainerType();
 }
 
 ZoneClientSession* SceneObjectAdapter::getClient() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getClient();
+	return (static_cast<SceneObject*>(stub))->getClient();
 }
 
 unsigned int SceneObjectAdapter::getGameObjectType() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getGameObjectType();
+	return (static_cast<SceneObject*>(stub))->getGameObjectType();
 }
 
 unsigned int SceneObjectAdapter::getClientGameObjectType() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getClientGameObjectType();
+	return (static_cast<SceneObject*>(stub))->getClientGameObjectType();
 }
 
 unsigned int SceneObjectAdapter::getContainmentType() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getContainmentType();
+	return (static_cast<SceneObject*>(stub))->getContainmentType();
 }
 
 float SceneObjectAdapter::getDirectionAngle() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getDirectionAngle();
+	return (static_cast<SceneObject*>(stub))->getDirectionAngle();
 }
 
 float SceneObjectAdapter::getSpecialDirectionAngle() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getSpecialDirectionAngle();
+	return (static_cast<SceneObject*>(stub))->getSpecialDirectionAngle();
 }
 
 void SceneObjectAdapter::rotate(int degrees) {
-	(static_cast<SceneObjectImplementation*>(impl))->rotate(degrees);
+	(static_cast<SceneObject*>(stub))->rotate(degrees);
 }
 
 void SceneObjectAdapter::faceObject(SceneObject* obj) {
-	(static_cast<SceneObjectImplementation*>(impl))->faceObject(obj);
+	(static_cast<SceneObject*>(stub))->faceObject(obj);
 }
 
 void SceneObjectAdapter::notifySelfPositionUpdate() {
-	(static_cast<SceneObjectImplementation*>(impl))->notifySelfPositionUpdate();
+	(static_cast<SceneObject*>(stub))->notifySelfPositionUpdate();
 }
 
 void SceneObjectAdapter::notifyPositionUpdate(QuadTreeEntry* entry) {
-	(static_cast<SceneObjectImplementation*>(impl))->notifyPositionUpdate(entry);
+	(static_cast<SceneObject*>(stub))->notifyPositionUpdate(entry);
 }
 
 void SceneObjectAdapter::notifyCloseContainer(CreatureObject* player) {
-	(static_cast<SceneObjectImplementation*>(impl))->notifyCloseContainer(player);
+	(static_cast<SceneObject*>(stub))->notifyCloseContainer(player);
 }
 
 unsigned int SceneObjectAdapter::getMovementCounter() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getMovementCounter();
+	return (static_cast<SceneObject*>(stub))->getMovementCounter();
 }
 
 SceneObject* SceneObjectAdapter::getParent() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getParent();
+	return (static_cast<SceneObject*>(stub))->getParent();
 }
 
 ZoneServer* SceneObjectAdapter::getZoneServer() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getZoneServer();
+	return (static_cast<SceneObject*>(stub))->getZoneServer();
 }
 
 SceneObject* SceneObjectAdapter::getRootParent() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getRootParent();
+	return (static_cast<SceneObject*>(stub))->getRootParent();
 }
 
 SceneObject* SceneObjectAdapter::getParentRecursively(unsigned int gameObjectType) {
-	return (static_cast<SceneObjectImplementation*>(impl))->getParentRecursively(gameObjectType);
+	return (static_cast<SceneObject*>(stub))->getParentRecursively(gameObjectType);
 }
 
 bool SceneObjectAdapter::isASubChildOf(SceneObject* object) {
-	return (static_cast<SceneObjectImplementation*>(impl))->isASubChildOf(object);
+	return (static_cast<SceneObject*>(stub))->isASubChildOf(object);
 }
 
 UnicodeString SceneObjectAdapter::getCustomObjectName() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getCustomObjectName();
+	return (static_cast<SceneObject*>(stub))->getCustomObjectName();
 }
 
 String SceneObjectAdapter::getLoggingName() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getLoggingName();
+	return (static_cast<SceneObject*>(stub))->getLoggingName();
 }
 
 bool SceneObjectAdapter::isPlayerCreature() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isPlayerCreature();
+	return (static_cast<SceneObject*>(stub))->isPlayerCreature();
 }
 
 bool SceneObjectAdapter::isVendor() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isVendor();
+	return (static_cast<SceneObject*>(stub))->isVendor();
 }
 
 bool SceneObjectAdapter::isContainerFull() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isContainerFull();
+	return (static_cast<SceneObject*>(stub))->isContainerFull();
 }
 
 bool SceneObjectAdapter::isShuttleInstallation() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isShuttleInstallation();
+	return (static_cast<SceneObject*>(stub))->isShuttleInstallation();
 }
 
 bool SceneObjectAdapter::isPlayerObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isPlayerObject();
+	return (static_cast<SceneObject*>(stub))->isPlayerObject();
 }
 
 bool SceneObjectAdapter::isActiveArea() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isActiveArea();
+	return (static_cast<SceneObject*>(stub))->isActiveArea();
 }
 
 bool SceneObjectAdapter::isRegion() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isRegion();
+	return (static_cast<SceneObject*>(stub))->isRegion();
 }
 
 bool SceneObjectAdapter::isCreatureObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isCreatureObject();
+	return (static_cast<SceneObject*>(stub))->isCreatureObject();
 }
 
 bool SceneObjectAdapter::isShipObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isShipObject();
+	return (static_cast<SceneObject*>(stub))->isShipObject();
 }
 
 bool SceneObjectAdapter::isVehicleObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isVehicleObject();
+	return (static_cast<SceneObject*>(stub))->isVehicleObject();
 }
 
 bool SceneObjectAdapter::isBuildingObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isBuildingObject();
+	return (static_cast<SceneObject*>(stub))->isBuildingObject();
 }
 
 bool SceneObjectAdapter::isCloningBuildingObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isCloningBuildingObject();
+	return (static_cast<SceneObject*>(stub))->isCloningBuildingObject();
 }
 
 bool SceneObjectAdapter::isGarage() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isGarage();
+	return (static_cast<SceneObject*>(stub))->isGarage();
 }
 
 bool SceneObjectAdapter::isWeaponObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isWeaponObject();
+	return (static_cast<SceneObject*>(stub))->isWeaponObject();
 }
 
 bool SceneObjectAdapter::isWearableObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isWearableObject();
+	return (static_cast<SceneObject*>(stub))->isWearableObject();
 }
 
 bool SceneObjectAdapter::isArmorObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isArmorObject();
+	return (static_cast<SceneObject*>(stub))->isArmorObject();
 }
 
 bool SceneObjectAdapter::isPsgArmorObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isPsgArmorObject();
+	return (static_cast<SceneObject*>(stub))->isPsgArmorObject();
 }
 
 bool SceneObjectAdapter::isCellObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isCellObject();
+	return (static_cast<SceneObject*>(stub))->isCellObject();
 }
 
 bool SceneObjectAdapter::isTangibleObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isTangibleObject();
+	return (static_cast<SceneObject*>(stub))->isTangibleObject();
 }
 
 bool SceneObjectAdapter::isResourceContainer() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isResourceContainer();
+	return (static_cast<SceneObject*>(stub))->isResourceContainer();
 }
 
 bool SceneObjectAdapter::isComponent() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isComponent();
+	return (static_cast<SceneObject*>(stub))->isComponent();
 }
 
 bool SceneObjectAdapter::isIntangibleObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isIntangibleObject();
+	return (static_cast<SceneObject*>(stub))->isIntangibleObject();
 }
 
 bool SceneObjectAdapter::isInstrument() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isInstrument();
+	return (static_cast<SceneObject*>(stub))->isInstrument();
 }
 
 bool SceneObjectAdapter::isInstallationObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isInstallationObject();
+	return (static_cast<SceneObject*>(stub))->isInstallationObject();
 }
 
 bool SceneObjectAdapter::isGeneratorObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isGeneratorObject();
+	return (static_cast<SceneObject*>(stub))->isGeneratorObject();
 }
 
 bool SceneObjectAdapter::isCityTerminal() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isCityTerminal();
+	return (static_cast<SceneObject*>(stub))->isCityTerminal();
 }
 
 bool SceneObjectAdapter::isCityVoteTerminal() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isCityVoteTerminal();
+	return (static_cast<SceneObject*>(stub))->isCityVoteTerminal();
 }
 
 bool SceneObjectAdapter::isFactory() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isFactory();
+	return (static_cast<SceneObject*>(stub))->isFactory();
 }
 
 bool SceneObjectAdapter::isFactoryCrate() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isFactoryCrate();
+	return (static_cast<SceneObject*>(stub))->isFactoryCrate();
 }
 
 bool SceneObjectAdapter::isFishingPoleObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isFishingPoleObject();
+	return (static_cast<SceneObject*>(stub))->isFishingPoleObject();
 }
 
 bool SceneObjectAdapter::isDeedObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isDeedObject();
+	return (static_cast<SceneObject*>(stub))->isDeedObject();
 }
 
 bool SceneObjectAdapter::isVehicleDeedObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isVehicleDeedObject();
+	return (static_cast<SceneObject*>(stub))->isVehicleDeedObject();
 }
 
 bool SceneObjectAdapter::isBuildingDeed() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isBuildingDeed();
+	return (static_cast<SceneObject*>(stub))->isBuildingDeed();
 }
 
 bool SceneObjectAdapter::isSignObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isSignObject();
+	return (static_cast<SceneObject*>(stub))->isSignObject();
 }
 
 bool SceneObjectAdapter::isInstallationDeed() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isInstallationDeed();
+	return (static_cast<SceneObject*>(stub))->isInstallationDeed();
 }
 
 bool SceneObjectAdapter::isCraftingTool() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isCraftingTool();
+	return (static_cast<SceneObject*>(stub))->isCraftingTool();
 }
 
 bool SceneObjectAdapter::isCraftingStation() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isCraftingStation();
+	return (static_cast<SceneObject*>(stub))->isCraftingStation();
 }
 
 bool SceneObjectAdapter::isManufactureSchematic() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isManufactureSchematic();
+	return (static_cast<SceneObject*>(stub))->isManufactureSchematic();
 }
 
 bool SceneObjectAdapter::isStructureObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isStructureObject();
+	return (static_cast<SceneObject*>(stub))->isStructureObject();
 }
 
 bool SceneObjectAdapter::isFishingBait() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isFishingBait();
+	return (static_cast<SceneObject*>(stub))->isFishingBait();
 }
 
 bool SceneObjectAdapter::isAttachment() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isAttachment();
+	return (static_cast<SceneObject*>(stub))->isAttachment();
 }
 
 void SceneObjectAdapter::setGameObjectType(unsigned int type) {
-	(static_cast<SceneObjectImplementation*>(impl))->setGameObjectType(type);
+	(static_cast<SceneObject*>(stub))->setGameObjectType(type);
 }
 
 void SceneObjectAdapter::setClientObjectCRC(unsigned int objCRC) {
-	(static_cast<SceneObjectImplementation*>(impl))->setClientObjectCRC(objCRC);
+	(static_cast<SceneObject*>(stub))->setClientObjectCRC(objCRC);
 }
 
 void SceneObjectAdapter::setServerObjectCRC(unsigned int objCRC) {
-	(static_cast<SceneObjectImplementation*>(impl))->setServerObjectCRC(objCRC);
+	(static_cast<SceneObject*>(stub))->setServerObjectCRC(objCRC);
 }
 
 void SceneObjectAdapter::setParent(SceneObject* par) {
-	(static_cast<SceneObjectImplementation*>(impl))->setParent(par);
+	(static_cast<SceneObject*>(stub))->setParent(par);
 }
 
 void SceneObjectAdapter::setZone(Zone* zone) {
-	(static_cast<SceneObjectImplementation*>(impl))->setZone(zone);
+	(static_cast<SceneObject*>(stub))->setZone(zone);
 }
 
 void SceneObjectAdapter::setDirection(float fw, float fx, float fy, float fz) {
-	(static_cast<SceneObjectImplementation*>(impl))->setDirection(fw, fx, fy, fz);
+	(static_cast<SceneObject*>(stub))->setDirection(fw, fx, fy, fz);
 }
 
 void SceneObjectAdapter::setDirection(float headingAngleRadians) {
-	(static_cast<SceneObjectImplementation*>(impl))->setDirection(headingAngleRadians);
+	(static_cast<SceneObject*>(stub))->setDirection(headingAngleRadians);
 }
 
 void SceneObjectAdapter::setMovementCounter(unsigned int count) {
-	(static_cast<SceneObjectImplementation*>(impl))->setMovementCounter(count);
+	(static_cast<SceneObject*>(stub))->setMovementCounter(count);
 }
 
 void SceneObjectAdapter::incrementMovementCounter() {
-	(static_cast<SceneObjectImplementation*>(impl))->incrementMovementCounter();
+	(static_cast<SceneObject*>(stub))->incrementMovementCounter();
 }
 
 void SceneObjectAdapter::setContainmentType(unsigned int type) {
-	(static_cast<SceneObjectImplementation*>(impl))->setContainmentType(type);
+	(static_cast<SceneObject*>(stub))->setContainmentType(type);
 }
 
 void SceneObjectAdapter::setLoggingName(const String& name) {
-	(static_cast<SceneObjectImplementation*>(impl))->setLoggingName(name);
+	(static_cast<SceneObject*>(stub))->setLoggingName(name);
 }
 
 void SceneObjectAdapter::setClientObject(bool val) {
-	(static_cast<SceneObjectImplementation*>(impl))->setClientObject(val);
+	(static_cast<SceneObject*>(stub))->setClientObject(val);
 }
 
 unsigned int SceneObjectAdapter::getPlanetCRC() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getPlanetCRC();
+	return (static_cast<SceneObject*>(stub))->getPlanetCRC();
 }
 
 bool SceneObjectAdapter::isStaticObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isStaticObject();
+	return (static_cast<SceneObject*>(stub))->isStaticObject();
 }
 
 bool SceneObjectAdapter::isContainerObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isContainerObject();
+	return (static_cast<SceneObject*>(stub))->isContainerObject();
 }
 
 bool SceneObjectAdapter::isTerminal() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isTerminal();
+	return (static_cast<SceneObject*>(stub))->isTerminal();
 }
 
 bool SceneObjectAdapter::isGroupObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isGroupObject();
+	return (static_cast<SceneObject*>(stub))->isGroupObject();
 }
 
 bool SceneObjectAdapter::isGuildObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isGuildObject();
+	return (static_cast<SceneObject*>(stub))->isGuildObject();
 }
 
 bool SceneObjectAdapter::isControlDevice() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isControlDevice();
+	return (static_cast<SceneObject*>(stub))->isControlDevice();
 }
 
 bool SceneObjectAdapter::isMissionTerminal() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isMissionTerminal();
+	return (static_cast<SceneObject*>(stub))->isMissionTerminal();
 }
 
 bool SceneObjectAdapter::isMissionObject() {
-	return (static_cast<SceneObjectImplementation*>(impl))->isMissionObject();
+	return (static_cast<SceneObject*>(stub))->isMissionObject();
 }
 
 int SceneObjectAdapter::getPlanetMapCategoryCRC() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getPlanetMapCategoryCRC();
+	return (static_cast<SceneObject*>(stub))->getPlanetMapCategoryCRC();
 }
 
 int SceneObjectAdapter::getPlanetMapSubCategoryCRC() {
-	return (static_cast<SceneObjectImplementation*>(impl))->getPlanetMapSubCategoryCRC();
+	return (static_cast<SceneObject*>(stub))->getPlanetMapSubCategoryCRC();
 }
 
 bool SceneObjectAdapter::containsChildObject(SceneObject* obj) {
-	return (static_cast<SceneObjectImplementation*>(impl))->containsChildObject(obj);
+	return (static_cast<SceneObject*>(stub))->containsChildObject(obj);
 }
 
 void SceneObjectAdapter::createChildObjects() {
-	(static_cast<SceneObjectImplementation*>(impl))->createChildObjects();
+	(static_cast<SceneObject*>(stub))->createChildObjects();
 }
 
 void SceneObjectAdapter::initializeChildObject(SceneObject* controllerObject) {
-	(static_cast<SceneObjectImplementation*>(impl))->initializeChildObject(controllerObject);
+	(static_cast<SceneObject*>(stub))->initializeChildObject(controllerObject);
 }
 
 /*
@@ -5660,7 +5660,7 @@ DistributedObjectServant* SceneObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SceneObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SceneObjectAdapter(static_cast<SceneObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SceneObjectAdapter(static_cast<SceneObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

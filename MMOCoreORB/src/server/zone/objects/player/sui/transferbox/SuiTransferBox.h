@@ -178,7 +178,7 @@ protected:
 
 class SuiTransferBoxAdapter : public SuiBoxAdapter {
 public:
-	SuiTransferBoxAdapter(SuiTransferBoxImplementation* impl);
+	SuiTransferBoxAdapter(SuiTransferBox* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

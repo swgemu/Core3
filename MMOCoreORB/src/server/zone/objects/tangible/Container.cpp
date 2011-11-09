@@ -314,7 +314,7 @@ void ContainerImplementation::setLockedStatus(bool lock) {
  *	ContainerAdapter
  */
 
-ContainerAdapter::ContainerAdapter(ContainerImplementation* obj) : TangibleObjectAdapter(obj) {
+ContainerAdapter::ContainerAdapter(Container* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -350,31 +350,31 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ContainerAdapter::initializeTransientMembers() {
-	(static_cast<ContainerImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<Container*>(stub))->initializeTransientMembers();
 }
 
 int ContainerAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<ContainerImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<Container*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool ContainerAdapter::checkPermission(CreatureObject* player) {
-	return (static_cast<ContainerImplementation*>(impl))->checkPermission(player);
+	return (static_cast<Container*>(stub))->checkPermission(player);
 }
 
 int ContainerAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return (static_cast<ContainerImplementation*>(impl))->canAddObject(object, containmentType, errorDescription);
+	return (static_cast<Container*>(stub))->canAddObject(object, containmentType, errorDescription);
 }
 
 bool ContainerAdapter::isContainerObject() {
-	return (static_cast<ContainerImplementation*>(impl))->isContainerObject();
+	return (static_cast<Container*>(stub))->isContainerObject();
 }
 
 bool ContainerAdapter::isContainerLocked() {
-	return (static_cast<ContainerImplementation*>(impl))->isContainerLocked();
+	return (static_cast<Container*>(stub))->isContainerLocked();
 }
 
 void ContainerAdapter::setLockedStatus(bool lock) {
-	(static_cast<ContainerImplementation*>(impl))->setLockedStatus(lock);
+	(static_cast<Container*>(stub))->setLockedStatus(lock);
 }
 
 /*
@@ -402,7 +402,7 @@ DistributedObjectServant* ContainerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ContainerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ContainerAdapter(static_cast<ContainerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ContainerAdapter(static_cast<Container*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

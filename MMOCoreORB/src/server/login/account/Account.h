@@ -195,7 +195,7 @@ protected:
 
 class AccountAdapter : public ManagedObjectAdapter {
 public:
-	AccountAdapter(AccountImplementation* impl);
+	AccountAdapter(Account* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

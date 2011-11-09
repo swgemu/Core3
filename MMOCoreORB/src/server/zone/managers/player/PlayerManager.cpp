@@ -1010,7 +1010,7 @@ void PlayerManagerImplementation::addPlayer(CreatureObject* player) {
  *	PlayerManagerAdapter
  */
 
-PlayerManagerAdapter::PlayerManagerAdapter(PlayerManagerImplementation* obj) : ObserverAdapter(obj) {
+PlayerManagerAdapter::PlayerManagerAdapter(PlayerManager* obj) : ObserverAdapter(obj) {
 }
 
 Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1175,203 +1175,203 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void PlayerManagerAdapter::loadNameMap() {
-	(static_cast<PlayerManagerImplementation*>(impl))->loadNameMap();
+	(static_cast<PlayerManager*>(stub))->loadNameMap();
 }
 
 int PlayerManagerAdapter::getHighestBadgeIndex() {
-	return (static_cast<PlayerManagerImplementation*>(impl))->getHighestBadgeIndex();
+	return (static_cast<PlayerManager*>(stub))->getHighestBadgeIndex();
 }
 
 void PlayerManagerAdapter::finalize() {
-	(static_cast<PlayerManagerImplementation*>(impl))->finalize();
+	(static_cast<PlayerManager*>(stub))->finalize();
 }
 
 bool PlayerManagerAdapter::kickUser(const String& name, const String& admin) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->kickUser(name, admin);
+	return (static_cast<PlayerManager*>(stub))->kickUser(name, admin);
 }
 
 int PlayerManagerAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<PlayerManager*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 int PlayerManagerAdapter::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->notifyDestruction(destructor, destructedObject, condition);
+	return (static_cast<PlayerManager*>(stub))->notifyDestruction(destructor, destructedObject, condition);
 }
 
 int PlayerManagerAdapter::notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->notifyDefendersOfIncapacitation(destructor, destructedObject);
+	return (static_cast<PlayerManager*>(stub))->notifyDefendersOfIncapacitation(destructor, destructedObject);
 }
 
 void PlayerManagerAdapter::killPlayer(TangibleObject* attacker, CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->killPlayer(attacker, player);
+	(static_cast<PlayerManager*>(stub))->killPlayer(attacker, player);
 }
 
 byte PlayerManagerAdapter::calculateIncapacitationTimer(CreatureObject* player, int condition) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->calculateIncapacitationTimer(player, condition);
+	return (static_cast<PlayerManager*>(stub))->calculateIncapacitationTimer(player, condition);
 }
 
 bool PlayerManagerAdapter::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->checkEncumbrancies(player, armor);
+	return (static_cast<PlayerManager*>(stub))->checkEncumbrancies(player, armor);
 }
 
 void PlayerManagerAdapter::applyEncumbrancies(CreatureObject* player, ArmorObject* armor) {
-	(static_cast<PlayerManagerImplementation*>(impl))->applyEncumbrancies(player, armor);
+	(static_cast<PlayerManager*>(stub))->applyEncumbrancies(player, armor);
 }
 
 void PlayerManagerAdapter::removeEncumbrancies(CreatureObject* player, ArmorObject* armor) {
-	(static_cast<PlayerManagerImplementation*>(impl))->removeEncumbrancies(player, armor);
+	(static_cast<PlayerManager*>(stub))->removeEncumbrancies(player, armor);
 }
 
 void PlayerManagerAdapter::awardBadge(PlayerObject* ghost, unsigned int badge) {
-	(static_cast<PlayerManagerImplementation*>(impl))->awardBadge(ghost, badge);
+	(static_cast<PlayerManager*>(stub))->awardBadge(ghost, badge);
 }
 
 void PlayerManagerAdapter::setExperienceMultiplier(float globalMultiplier) {
-	(static_cast<PlayerManagerImplementation*>(impl))->setExperienceMultiplier(globalMultiplier);
+	(static_cast<PlayerManager*>(stub))->setExperienceMultiplier(globalMultiplier);
 }
 
 void PlayerManagerAdapter::awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier) {
-	(static_cast<PlayerManagerImplementation*>(impl))->awardExperience(player, xpType, amount, sendSystemMessage, localMultiplier);
+	(static_cast<PlayerManager*>(stub))->awardExperience(player, xpType, amount, sendSystemMessage, localMultiplier);
 }
 
 void PlayerManagerAdapter::handleAbortTradeMessage(CreatureObject* player, bool doLock) {
-	(static_cast<PlayerManagerImplementation*>(impl))->handleAbortTradeMessage(player, doLock);
+	(static_cast<PlayerManager*>(stub))->handleAbortTradeMessage(player, doLock);
 }
 
 void PlayerManagerAdapter::handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID) {
-	(static_cast<PlayerManagerImplementation*>(impl))->handleAddItemToTradeWindow(player, itemID);
+	(static_cast<PlayerManager*>(stub))->handleAddItemToTradeWindow(player, itemID);
 }
 
 void PlayerManagerAdapter::handleGiveMoneyMessage(CreatureObject* player, unsigned int value) {
-	(static_cast<PlayerManagerImplementation*>(impl))->handleGiveMoneyMessage(player, value);
+	(static_cast<PlayerManager*>(stub))->handleGiveMoneyMessage(player, value);
 }
 
 void PlayerManagerAdapter::handleAcceptTransactionMessage(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->handleAcceptTransactionMessage(player);
+	(static_cast<PlayerManager*>(stub))->handleAcceptTransactionMessage(player);
 }
 
 void PlayerManagerAdapter::handleUnAcceptTransactionMessage(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->handleUnAcceptTransactionMessage(player);
+	(static_cast<PlayerManager*>(stub))->handleUnAcceptTransactionMessage(player);
 }
 
 void PlayerManagerAdapter::handleVerifyTradeMessage(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->handleVerifyTradeMessage(player);
+	(static_cast<PlayerManager*>(stub))->handleVerifyTradeMessage(player);
 }
 
 bool PlayerManagerAdapter::checkTradeItems(CreatureObject* player, CreatureObject* receiver) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->checkTradeItems(player, receiver);
+	return (static_cast<PlayerManager*>(stub))->checkTradeItems(player, receiver);
 }
 
 SceneObject* PlayerManagerAdapter::getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->getInRangeStructureWithAdminRights(creature, targetID);
+	return (static_cast<PlayerManager*>(stub))->getInRangeStructureWithAdminRights(creature, targetID);
 }
 
 StructureObject* PlayerManagerAdapter::getInRangeOwnedStructure(CreatureObject* creature, float range) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->getInRangeOwnedStructure(creature, range);
+	return (static_cast<PlayerManager*>(stub))->getInRangeOwnedStructure(creature, range);
 }
 
 void PlayerManagerAdapter::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
-	(static_cast<PlayerManagerImplementation*>(impl))->sendBattleFatigueMessage(player, target);
+	(static_cast<PlayerManager*>(stub))->sendBattleFatigueMessage(player, target);
 }
 
 int PlayerManagerAdapter::getMedicalFacilityRating(CreatureObject* creature) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->getMedicalFacilityRating(creature);
+	return (static_cast<PlayerManager*>(stub))->getMedicalFacilityRating(creature);
 }
 
 void PlayerManagerAdapter::stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
-	(static_cast<PlayerManagerImplementation*>(impl))->stopWatch(creature, entid, doSendPackets, forced, doLock, outOfRange);
+	(static_cast<PlayerManager*>(stub))->stopWatch(creature, entid, doSendPackets, forced, doLock, outOfRange);
 }
 
 void PlayerManagerAdapter::stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
-	(static_cast<PlayerManagerImplementation*>(impl))->stopListen(creature, entid, doSendPackets, forced, doLock, outOfRange);
+	(static_cast<PlayerManager*>(stub))->stopListen(creature, entid, doSendPackets, forced, doLock, outOfRange);
 }
 
 void PlayerManagerAdapter::startWatch(CreatureObject* creature, unsigned long long entid) {
-	(static_cast<PlayerManagerImplementation*>(impl))->startWatch(creature, entid);
+	(static_cast<PlayerManager*>(stub))->startWatch(creature, entid);
 }
 
 void PlayerManagerAdapter::startListen(CreatureObject* creature, unsigned long long entid) {
-	(static_cast<PlayerManagerImplementation*>(impl))->startListen(creature, entid);
+	(static_cast<PlayerManager*>(stub))->startListen(creature, entid);
 }
 
 int PlayerManagerAdapter::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->healEnhance(enhancer, patient, attribute, buffvalue, duration);
+	return (static_cast<PlayerManager*>(stub))->healEnhance(enhancer, patient, attribute, buffvalue, duration);
 }
 
 bool PlayerManagerAdapter::squadLeaderCheck(CreatureObject* player, GroupObject* group) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->squadLeaderCheck(player, group);
+	return (static_cast<PlayerManager*>(stub))->squadLeaderCheck(player, group);
 }
 
 void PlayerManagerAdapter::awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source) {
-	(static_cast<PlayerManagerImplementation*>(impl))->awardSquadLeaderExperience(group, amount, source);
+	(static_cast<PlayerManager*>(stub))->awardSquadLeaderExperience(group, amount, source);
 }
 
 void PlayerManagerAdapter::sendLoginMessage(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->sendLoginMessage(player);
+	(static_cast<PlayerManager*>(stub))->sendLoginMessage(player);
 }
 
 void PlayerManagerAdapter::resendLoginMessageToAll() {
-	(static_cast<PlayerManagerImplementation*>(impl))->resendLoginMessageToAll();
+	(static_cast<PlayerManager*>(stub))->resendLoginMessageToAll();
 }
 
 void PlayerManagerAdapter::sendActivateCloneRequest(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->sendActivateCloneRequest(player);
+	(static_cast<PlayerManager*>(stub))->sendActivateCloneRequest(player);
 }
 
 void PlayerManagerAdapter::sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID) {
-	(static_cast<PlayerManagerImplementation*>(impl))->sendPlayerToCloner(player, clonerID);
+	(static_cast<PlayerManager*>(stub))->sendPlayerToCloner(player, clonerID);
 }
 
 bool PlayerManagerAdapter::checkExistentNameInDatabase(const String& firstName) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->checkExistentNameInDatabase(firstName);
+	return (static_cast<PlayerManager*>(stub))->checkExistentNameInDatabase(firstName);
 }
 
 TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->createHairObject(hairObjectFile, hairCustomization);
+	return (static_cast<PlayerManager*>(stub))->createHairObject(hairObjectFile, hairCustomization);
 }
 
 bool PlayerManagerAdapter::createAllPlayerObjects(CreatureObject* player) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->createAllPlayerObjects(player);
+	return (static_cast<PlayerManager*>(stub))->createAllPlayerObjects(player);
 }
 
 void PlayerManagerAdapter::createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile) {
-	(static_cast<PlayerManagerImplementation*>(impl))->createDefaultPlayerItems(player, profession, templateFile);
+	(static_cast<PlayerManager*>(stub))->createDefaultPlayerItems(player, profession, templateFile);
 }
 
 void PlayerManagerAdapter::createTutorialBuilding(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->createTutorialBuilding(player);
+	(static_cast<PlayerManager*>(stub))->createTutorialBuilding(player);
 }
 
 void PlayerManagerAdapter::createSkippedTutorialBuilding(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->createSkippedTutorialBuilding(player);
+	(static_cast<PlayerManager*>(stub))->createSkippedTutorialBuilding(player);
 }
 
 int PlayerManagerAdapter::checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->checkSpeedHackSecondTest(player, newX, newZ, newY, newStamp, newParent);
+	return (static_cast<PlayerManager*>(stub))->checkSpeedHackSecondTest(player, newX, newZ, newY, newStamp, newParent);
 }
 
 bool PlayerManagerAdapter::existsName(const String& name) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->existsName(name);
+	return (static_cast<PlayerManager*>(stub))->existsName(name);
 }
 
 unsigned long long PlayerManagerAdapter::getObjectID(const String& name) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->getObjectID(name);
+	return (static_cast<PlayerManager*>(stub))->getObjectID(name);
 }
 
 CreatureObject* PlayerManagerAdapter::getPlayer(const String& name) {
-	return (static_cast<PlayerManagerImplementation*>(impl))->getPlayer(name);
+	return (static_cast<PlayerManager*>(stub))->getPlayer(name);
 }
 
 void PlayerManagerAdapter::updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel) {
-	(static_cast<PlayerManagerImplementation*>(impl))->updateAdminLevel(player, targetName, adminLevel);
+	(static_cast<PlayerManager*>(stub))->updateAdminLevel(player, targetName, adminLevel);
 }
 
 void PlayerManagerAdapter::generateHologrindSkills(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->generateHologrindSkills(player);
+	(static_cast<PlayerManager*>(stub))->generateHologrindSkills(player);
 }
 
 void PlayerManagerAdapter::addPlayer(CreatureObject* player) {
-	(static_cast<PlayerManagerImplementation*>(impl))->addPlayer(player);
+	(static_cast<PlayerManager*>(stub))->addPlayer(player);
 }
 
 /*
@@ -1399,7 +1399,7 @@ DistributedObjectServant* PlayerManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PlayerManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PlayerManagerAdapter(static_cast<PlayerManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PlayerManagerAdapter(static_cast<PlayerManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

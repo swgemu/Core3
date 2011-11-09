@@ -70,7 +70,7 @@ void Zone::run() {
 		started = true;
 
 #ifdef WITH_STM
-	TransactionalMemoryManager::commitPureTransaction();
+	//TransactionalMemoryManager::commitPureTransaction();
 #endif
 
 	} catch (sys::lang::Exception& e) {

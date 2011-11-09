@@ -194,7 +194,7 @@ protected:
 
 class MissionObjectiveAdapter : public ManagedObjectAdapter {
 public:
-	MissionObjectiveAdapter(MissionObjectiveImplementation* impl);
+	MissionObjectiveAdapter(MissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

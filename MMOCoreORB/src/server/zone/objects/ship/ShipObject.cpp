@@ -266,7 +266,7 @@ bool ShipObjectImplementation::isShipObject() {
  *	ShipObjectAdapter
  */
 
-ShipObjectAdapter::ShipObjectAdapter(ShipObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+ShipObjectAdapter::ShipObjectAdapter(ShipObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -299,27 +299,27 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 unsigned short ShipObjectAdapter::getUniqueID() {
-	return (static_cast<ShipObjectImplementation*>(impl))->getUniqueID();
+	return (static_cast<ShipObject*>(stub))->getUniqueID();
 }
 
 void ShipObjectAdapter::initializeTransientMembers() {
-	(static_cast<ShipObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ShipObject*>(stub))->initializeTransientMembers();
 }
 
 void ShipObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	(static_cast<ShipObjectImplementation*>(impl))->sendTo(player, doClose);
+	(static_cast<ShipObject*>(stub))->sendTo(player, doClose);
 }
 
 void ShipObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<ShipObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<ShipObject*>(stub))->sendBaselinesTo(player);
 }
 
 float ShipObjectAdapter::getTotalMass() {
-	return (static_cast<ShipObjectImplementation*>(impl))->getTotalMass();
+	return (static_cast<ShipObject*>(stub))->getTotalMass();
 }
 
 bool ShipObjectAdapter::isShipObject() {
-	return (static_cast<ShipObjectImplementation*>(impl))->isShipObject();
+	return (static_cast<ShipObject*>(stub))->isShipObject();
 }
 
 /*
@@ -347,7 +347,7 @@ DistributedObjectServant* ShipObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ShipObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ShipObjectAdapter(static_cast<ShipObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ShipObjectAdapter(static_cast<ShipObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

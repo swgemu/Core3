@@ -247,7 +247,7 @@ protected:
 
 class FactoryObjectAdapter : public InstallationObjectAdapter {
 public:
-	FactoryObjectAdapter(FactoryObjectImplementation* impl);
+	FactoryObjectAdapter(FactoryObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

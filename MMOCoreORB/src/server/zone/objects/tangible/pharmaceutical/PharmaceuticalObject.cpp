@@ -404,7 +404,7 @@ bool PharmaceuticalObjectImplementation::isRevivePack() {
  *	PharmaceuticalObjectAdapter
  */
 
-PharmaceuticalObjectAdapter::PharmaceuticalObjectAdapter(PharmaceuticalObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+PharmaceuticalObjectAdapter::PharmaceuticalObjectAdapter(PharmaceuticalObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -455,51 +455,51 @@ Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 }
 
 int PharmaceuticalObjectAdapter::getMedicineUseRequired() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->getMedicineUseRequired();
+	return (static_cast<PharmaceuticalObject*>(stub))->getMedicineUseRequired();
 }
 
 float PharmaceuticalObjectAdapter::getRange(CreatureObject* creature) {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->getRange(creature);
+	return (static_cast<PharmaceuticalObject*>(stub))->getRange(creature);
 }
 
 bool PharmaceuticalObjectAdapter::isArea() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isArea();
+	return (static_cast<PharmaceuticalObject*>(stub))->isArea();
 }
 
 float PharmaceuticalObjectAdapter::getArea() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->getArea();
+	return (static_cast<PharmaceuticalObject*>(stub))->getArea();
 }
 
 bool PharmaceuticalObjectAdapter::isPharmaceuticalObject() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isPharmaceuticalObject();
+	return (static_cast<PharmaceuticalObject*>(stub))->isPharmaceuticalObject();
 }
 
 bool PharmaceuticalObjectAdapter::isStimPack() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isStimPack();
+	return (static_cast<PharmaceuticalObject*>(stub))->isStimPack();
 }
 
 bool PharmaceuticalObjectAdapter::isRangedStimPack() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isRangedStimPack();
+	return (static_cast<PharmaceuticalObject*>(stub))->isRangedStimPack();
 }
 
 bool PharmaceuticalObjectAdapter::isEnhancePack() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isEnhancePack();
+	return (static_cast<PharmaceuticalObject*>(stub))->isEnhancePack();
 }
 
 bool PharmaceuticalObjectAdapter::isWoundPack() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isWoundPack();
+	return (static_cast<PharmaceuticalObject*>(stub))->isWoundPack();
 }
 
 bool PharmaceuticalObjectAdapter::isCurePack() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isCurePack();
+	return (static_cast<PharmaceuticalObject*>(stub))->isCurePack();
 }
 
 bool PharmaceuticalObjectAdapter::isStatePack() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isStatePack();
+	return (static_cast<PharmaceuticalObject*>(stub))->isStatePack();
 }
 
 bool PharmaceuticalObjectAdapter::isRevivePack() {
-	return (static_cast<PharmaceuticalObjectImplementation*>(impl))->isRevivePack();
+	return (static_cast<PharmaceuticalObject*>(stub))->isRevivePack();
 }
 
 /*
@@ -527,7 +527,7 @@ DistributedObjectServant* PharmaceuticalObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PharmaceuticalObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PharmaceuticalObjectAdapter(static_cast<PharmaceuticalObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PharmaceuticalObjectAdapter(static_cast<PharmaceuticalObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

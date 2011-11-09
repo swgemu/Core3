@@ -327,7 +327,7 @@ StructureObject* DestroyStructureSessionImplementation::getStructureObject() {
  *	DestroyStructureSessionAdapter
  */
 
-DestroyStructureSessionAdapter::DestroyStructureSessionAdapter(DestroyStructureSessionImplementation* obj) : FacadeAdapter(obj) {
+DestroyStructureSessionAdapter::DestroyStructureSessionAdapter(DestroyStructureSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -363,31 +363,31 @@ Packet* DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedM
 }
 
 bool DestroyStructureSessionAdapter::isDestroyCode(unsigned int code) {
-	return (static_cast<DestroyStructureSessionImplementation*>(impl))->isDestroyCode(code);
+	return (static_cast<DestroyStructureSession*>(stub))->isDestroyCode(code);
 }
 
 int DestroyStructureSessionAdapter::initializeSession() {
-	return (static_cast<DestroyStructureSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<DestroyStructureSession*>(stub))->initializeSession();
 }
 
 int DestroyStructureSessionAdapter::sendDestroyCode() {
-	return (static_cast<DestroyStructureSessionImplementation*>(impl))->sendDestroyCode();
+	return (static_cast<DestroyStructureSession*>(stub))->sendDestroyCode();
 }
 
 int DestroyStructureSessionAdapter::destroyStructure() {
-	return (static_cast<DestroyStructureSessionImplementation*>(impl))->destroyStructure();
+	return (static_cast<DestroyStructureSession*>(stub))->destroyStructure();
 }
 
 int DestroyStructureSessionAdapter::cancelSession() {
-	return (static_cast<DestroyStructureSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<DestroyStructureSession*>(stub))->cancelSession();
 }
 
 int DestroyStructureSessionAdapter::clearSession() {
-	return (static_cast<DestroyStructureSessionImplementation*>(impl))->clearSession();
+	return (static_cast<DestroyStructureSession*>(stub))->clearSession();
 }
 
 StructureObject* DestroyStructureSessionAdapter::getStructureObject() {
-	return (static_cast<DestroyStructureSessionImplementation*>(impl))->getStructureObject();
+	return (static_cast<DestroyStructureSession*>(stub))->getStructureObject();
 }
 
 /*
@@ -415,7 +415,7 @@ DistributedObjectServant* DestroyStructureSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DestroyStructureSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DestroyStructureSessionAdapter(static_cast<DestroyStructureSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DestroyStructureSessionAdapter(static_cast<DestroyStructureSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

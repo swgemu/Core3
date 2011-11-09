@@ -1027,7 +1027,7 @@ int ManufactureSchematicImplementation::getBlueprintSize() {
  *	ManufactureSchematicAdapter
  */
 
-ManufactureSchematicAdapter::ManufactureSchematicAdapter(ManufactureSchematicImplementation* obj) : IntangibleObjectAdapter(obj) {
+ManufactureSchematicAdapter::ManufactureSchematicAdapter(ManufactureSchematic* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1150,147 +1150,147 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 }
 
 void ManufactureSchematicAdapter::initializeTransientMembers() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ManufactureSchematic*>(stub))->initializeTransientMembers();
 }
 
 void ManufactureSchematicAdapter::sendTo(SceneObject* player, bool doClose) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->sendTo(player, doClose);
+	(static_cast<ManufactureSchematic*>(stub))->sendTo(player, doClose);
 }
 
 void ManufactureSchematicAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<ManufactureSchematic*>(stub))->sendBaselinesTo(player);
 }
 
 void ManufactureSchematicAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->synchronizedUIListen(player, value);
+	(static_cast<ManufactureSchematic*>(stub))->synchronizedUIListen(player, value);
 }
 
 void ManufactureSchematicAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->synchronizedUIStopListen(player, value);
+	(static_cast<ManufactureSchematic*>(stub))->synchronizedUIStopListen(player, value);
 }
 
 bool ManufactureSchematicAdapter::isManufactureSchematic() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->isManufactureSchematic();
+	return (static_cast<ManufactureSchematic*>(stub))->isManufactureSchematic();
 }
 
 void ManufactureSchematicAdapter::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setDraftSchematic(craftingTool, schematic);
+	(static_cast<ManufactureSchematic*>(stub))->setDraftSchematic(craftingTool, schematic);
 }
 
 void ManufactureSchematicAdapter::initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->initializeIngredientSlots(craftingTool, schematic);
+	(static_cast<ManufactureSchematic*>(stub))->initializeIngredientSlots(craftingTool, schematic);
 }
 
 void ManufactureSchematicAdapter::cleanupIngredientSlots() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->cleanupIngredientSlots();
+	(static_cast<ManufactureSchematic*>(stub))->cleanupIngredientSlots();
 }
 
 DraftSchematic* ManufactureSchematicAdapter::getDraftSchematic() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getDraftSchematic();
+	return (static_cast<ManufactureSchematic*>(stub))->getDraftSchematic();
 }
 
 int ManufactureSchematicAdapter::getSlotCount() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getSlotCount();
+	return (static_cast<ManufactureSchematic*>(stub))->getSlotCount();
 }
 
 void ManufactureSchematicAdapter::increaseComplexity() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->increaseComplexity();
+	(static_cast<ManufactureSchematic*>(stub))->increaseComplexity();
 }
 
 void ManufactureSchematicAdapter::decreaseComplexity() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->decreaseComplexity();
+	(static_cast<ManufactureSchematic*>(stub))->decreaseComplexity();
 }
 
 float ManufactureSchematicAdapter::getComplexity() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getComplexity();
+	return (static_cast<ManufactureSchematic*>(stub))->getComplexity();
 }
 
 bool ManufactureSchematicAdapter::isFirstCraftingUpdate() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->isFirstCraftingUpdate();
+	return (static_cast<ManufactureSchematic*>(stub))->isFirstCraftingUpdate();
 }
 
 void ManufactureSchematicAdapter::setFirstCraftingUpdateComplete() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setFirstCraftingUpdateComplete();
+	(static_cast<ManufactureSchematic*>(stub))->setFirstCraftingUpdateComplete();
 }
 
 bool ManufactureSchematicAdapter::isReadyForAssembly() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->isReadyForAssembly();
+	return (static_cast<ManufactureSchematic*>(stub))->isReadyForAssembly();
 }
 
 void ManufactureSchematicAdapter::setAssembled() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setAssembled();
+	(static_cast<ManufactureSchematic*>(stub))->setAssembled();
 }
 
 bool ManufactureSchematicAdapter::isAssembled() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->isAssembled();
+	return (static_cast<ManufactureSchematic*>(stub))->isAssembled();
 }
 
 void ManufactureSchematicAdapter::setCompleted() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setCompleted();
+	(static_cast<ManufactureSchematic*>(stub))->setCompleted();
 }
 
 bool ManufactureSchematicAdapter::isCompleted() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->isCompleted();
+	return (static_cast<ManufactureSchematic*>(stub))->isCompleted();
 }
 
 void ManufactureSchematicAdapter::setCrafter(CreatureObject* player) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setCrafter(player);
+	(static_cast<ManufactureSchematic*>(stub))->setCrafter(player);
 }
 
 CreatureObject* ManufactureSchematicAdapter::getCrafter() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getCrafter();
+	return (static_cast<ManufactureSchematic*>(stub))->getCrafter();
 }
 
 void ManufactureSchematicAdapter::setExperimentingCounter(int value) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setExperimentingCounter(value);
+	(static_cast<ManufactureSchematic*>(stub))->setExperimentingCounter(value);
 }
 
 int ManufactureSchematicAdapter::getExperimentingCounter() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getExperimentingCounter();
+	return (static_cast<ManufactureSchematic*>(stub))->getExperimentingCounter();
 }
 
 int ManufactureSchematicAdapter::getExperimentingCounterPrevious() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getExperimentingCounterPrevious();
+	return (static_cast<ManufactureSchematic*>(stub))->getExperimentingCounterPrevious();
 }
 
 void ManufactureSchematicAdapter::updateIngredientCounter() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->updateIngredientCounter();
+	(static_cast<ManufactureSchematic*>(stub))->updateIngredientCounter();
 }
 
 int ManufactureSchematicAdapter::getIngredientCounter() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getIngredientCounter();
+	return (static_cast<ManufactureSchematic*>(stub))->getIngredientCounter();
 }
 
 void ManufactureSchematicAdapter::setManufactureLimit(int limit) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setManufactureLimit(limit);
+	(static_cast<ManufactureSchematic*>(stub))->setManufactureLimit(limit);
 }
 
 int ManufactureSchematicAdapter::getManufactureLimit() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getManufactureLimit();
+	return (static_cast<ManufactureSchematic*>(stub))->getManufactureLimit();
 }
 
 void ManufactureSchematicAdapter::setPrototype(TangibleObject* tano) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->setPrototype(tano);
+	(static_cast<ManufactureSchematic*>(stub))->setPrototype(tano);
 }
 
 TangibleObject* ManufactureSchematicAdapter::getPrototype() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getPrototype();
+	return (static_cast<ManufactureSchematic*>(stub))->getPrototype();
 }
 
 void ManufactureSchematicAdapter::canManufactureItem(String& type, String& displayedName) {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->canManufactureItem(type, displayedName);
+	(static_cast<ManufactureSchematic*>(stub))->canManufactureItem(type, displayedName);
 }
 
 void ManufactureSchematicAdapter::manufactureItem() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->manufactureItem();
+	(static_cast<ManufactureSchematic*>(stub))->manufactureItem();
 }
 
 void ManufactureSchematicAdapter::createFactoryBlueprint() {
-	(static_cast<ManufactureSchematicImplementation*>(impl))->createFactoryBlueprint();
+	(static_cast<ManufactureSchematic*>(stub))->createFactoryBlueprint();
 }
 
 int ManufactureSchematicAdapter::getBlueprintSize() {
-	return (static_cast<ManufactureSchematicImplementation*>(impl))->getBlueprintSize();
+	return (static_cast<ManufactureSchematic*>(stub))->getBlueprintSize();
 }
 
 /*
@@ -1318,7 +1318,7 @@ DistributedObjectServant* ManufactureSchematicHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ManufactureSchematicHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ManufactureSchematicAdapter(static_cast<ManufactureSchematicImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ManufactureSchematicAdapter(static_cast<ManufactureSchematic*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

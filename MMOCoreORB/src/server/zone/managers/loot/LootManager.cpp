@@ -217,7 +217,7 @@ LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, 
  *	LootManagerAdapter
  */
 
-LootManagerAdapter::LootManagerAdapter(LootManagerImplementation* obj) : ManagedServiceAdapter(obj) {
+LootManagerAdapter::LootManagerAdapter(LootManager* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -241,15 +241,15 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void LootManagerAdapter::initialize() {
-	(static_cast<LootManagerImplementation*>(impl))->initialize();
+	(static_cast<LootManager*>(stub))->initialize();
 }
 
 void LootManagerAdapter::createLoot(SceneObject* container, CreatureObject* creature) {
-	(static_cast<LootManagerImplementation*>(impl))->createLoot(container, creature);
+	(static_cast<LootManager*>(stub))->createLoot(container, creature);
 }
 
 void LootManagerAdapter::createLoot(SceneObject* container, const String& lootGroup) {
-	(static_cast<LootManagerImplementation*>(impl))->createLoot(container, lootGroup);
+	(static_cast<LootManager*>(stub))->createLoot(container, lootGroup);
 }
 
 /*
@@ -277,7 +277,7 @@ DistributedObjectServant* LootManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LootManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LootManagerAdapter(static_cast<LootManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new LootManagerAdapter(static_cast<LootManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -125,7 +125,7 @@ protected:
 
 class ToolTangibleObjectAdapter : public TangibleObjectAdapter {
 public:
-	ToolTangibleObjectAdapter(ToolTangibleObjectImplementation* impl);
+	ToolTangibleObjectAdapter(ToolTangibleObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

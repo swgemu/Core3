@@ -294,7 +294,7 @@ int PrecisionLaserKnifeImplementation::getCharges() {
  *	PrecisionLaserKnifeAdapter
  */
 
-PrecisionLaserKnifeAdapter::PrecisionLaserKnifeAdapter(PrecisionLaserKnifeImplementation* obj) : SlicingToolAdapter(obj) {
+PrecisionLaserKnifeAdapter::PrecisionLaserKnifeAdapter(PrecisionLaserKnife* obj) : SlicingToolAdapter(obj) {
 }
 
 Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -324,23 +324,23 @@ Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 int PrecisionLaserKnifeAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<PrecisionLaserKnifeImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<PrecisionLaserKnife*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void PrecisionLaserKnifeAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<PrecisionLaserKnifeImplementation*>(impl))->updateCraftingValues(schematic);
+	(static_cast<PrecisionLaserKnife*>(stub))->updateCraftingValues(schematic);
 }
 
 void PrecisionLaserKnifeAdapter::updateCharges(int val) {
-	(static_cast<PrecisionLaserKnifeImplementation*>(impl))->updateCharges(val);
+	(static_cast<PrecisionLaserKnife*>(stub))->updateCharges(val);
 }
 
 void PrecisionLaserKnifeAdapter::useCharge(CreatureObject* player) {
-	(static_cast<PrecisionLaserKnifeImplementation*>(impl))->useCharge(player);
+	(static_cast<PrecisionLaserKnife*>(stub))->useCharge(player);
 }
 
 int PrecisionLaserKnifeAdapter::getCharges() {
-	return (static_cast<PrecisionLaserKnifeImplementation*>(impl))->getCharges();
+	return (static_cast<PrecisionLaserKnife*>(stub))->getCharges();
 }
 
 /*
@@ -368,7 +368,7 @@ DistributedObjectServant* PrecisionLaserKnifeHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* PrecisionLaserKnifeHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new PrecisionLaserKnifeAdapter(static_cast<PrecisionLaserKnifeImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new PrecisionLaserKnifeAdapter(static_cast<PrecisionLaserKnife*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

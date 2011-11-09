@@ -380,7 +380,7 @@ bool SuiBankTransferBoxImplementation::isBankTransferBox() {
  *	SuiBankTransferBoxAdapter
  */
 
-SuiBankTransferBoxAdapter::SuiBankTransferBoxAdapter(SuiBankTransferBoxImplementation* obj) : SuiBoxAdapter(obj) {
+SuiBankTransferBoxAdapter::SuiBankTransferBoxAdapter(SuiBankTransferBox* obj) : SuiBoxAdapter(obj) {
 }
 
 Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -410,23 +410,23 @@ Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void SuiBankTransferBoxAdapter::addCash(int cash) {
-	(static_cast<SuiBankTransferBoxImplementation*>(impl))->addCash(cash);
+	(static_cast<SuiBankTransferBox*>(stub))->addCash(cash);
 }
 
 void SuiBankTransferBoxAdapter::addBank(int bank) {
-	(static_cast<SuiBankTransferBoxImplementation*>(impl))->addBank(bank);
+	(static_cast<SuiBankTransferBox*>(stub))->addBank(bank);
 }
 
 SceneObject* SuiBankTransferBoxAdapter::getBank() {
-	return (static_cast<SuiBankTransferBoxImplementation*>(impl))->getBank();
+	return (static_cast<SuiBankTransferBox*>(stub))->getBank();
 }
 
 BaseMessage* SuiBankTransferBoxAdapter::generateMessage() {
-	return (static_cast<SuiBankTransferBoxImplementation*>(impl))->generateMessage();
+	return (static_cast<SuiBankTransferBox*>(stub))->generateMessage();
 }
 
 bool SuiBankTransferBoxAdapter::isBankTransferBox() {
-	return (static_cast<SuiBankTransferBoxImplementation*>(impl))->isBankTransferBox();
+	return (static_cast<SuiBankTransferBox*>(stub))->isBankTransferBox();
 }
 
 /*
@@ -454,7 +454,7 @@ DistributedObjectServant* SuiBankTransferBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiBankTransferBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiBankTransferBoxAdapter(static_cast<SuiBankTransferBoxImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SuiBankTransferBoxAdapter(static_cast<SuiBankTransferBox*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

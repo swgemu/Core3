@@ -447,7 +447,7 @@ protected:
 
 class CraftingToolAdapter : public ToolTangibleObjectAdapter {
 public:
-	CraftingToolAdapter(CraftingToolImplementation* impl);
+	CraftingToolAdapter(CraftingTool* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

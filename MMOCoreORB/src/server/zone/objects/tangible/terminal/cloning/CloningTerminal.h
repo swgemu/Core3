@@ -184,7 +184,7 @@ protected:
 
 class CloningTerminalAdapter : public TerminalAdapter {
 public:
-	CloningTerminalAdapter(CloningTerminalImplementation* impl);
+	CloningTerminalAdapter(CloningTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

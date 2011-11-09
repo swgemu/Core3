@@ -1177,7 +1177,7 @@ bool StructureObjectImplementation::isRedeedable() {
  *	StructureObjectAdapter
  */
 
-StructureObjectAdapter::StructureObjectAdapter(StructureObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+StructureObjectAdapter::StructureObjectAdapter(StructureObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1339,199 +1339,199 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void StructureObjectAdapter::initializeTransientMembers() {
-	(static_cast<StructureObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<StructureObject*>(stub))->initializeTransientMembers();
 }
 
 void StructureObjectAdapter::finalize() {
-	(static_cast<StructureObjectImplementation*>(impl))->finalize();
+	(static_cast<StructureObject*>(stub))->finalize();
 }
 
 void StructureObjectAdapter::createChildObjects() {
-	(static_cast<StructureObjectImplementation*>(impl))->createChildObjects();
+	(static_cast<StructureObject*>(stub))->createChildObjects();
 }
 
 int StructureObjectAdapter::notifyStructurePlaced(CreatureObject* creature) {
-	return (static_cast<StructureObjectImplementation*>(impl))->notifyStructurePlaced(creature);
+	return (static_cast<StructureObject*>(stub))->notifyStructurePlaced(creature);
 }
 
 bool StructureObjectAdapter::checkRequisitesForPlacement(CreatureObject* player) {
-	return (static_cast<StructureObjectImplementation*>(impl))->checkRequisitesForPlacement(player);
+	return (static_cast<StructureObject*>(stub))->checkRequisitesForPlacement(player);
 }
 
 String StructureObjectAdapter::getTimeString(unsigned int timestamp) {
-	return (static_cast<StructureObjectImplementation*>(impl))->getTimeString(timestamp);
+	return (static_cast<StructureObject*>(stub))->getTimeString(timestamp);
 }
 
 void StructureObjectAdapter::scheduleMaintenanceExpirationEvent() {
-	(static_cast<StructureObjectImplementation*>(impl))->scheduleMaintenanceExpirationEvent();
+	(static_cast<StructureObject*>(stub))->scheduleMaintenanceExpirationEvent();
 }
 
 void StructureObjectAdapter::updateStructureStatus() {
-	(static_cast<StructureObjectImplementation*>(impl))->updateStructureStatus();
+	(static_cast<StructureObject*>(stub))->updateStructureStatus();
 }
 
 bool StructureObjectAdapter::isOnAdminList(const String& playerName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOnAdminList(playerName);
+	return (static_cast<StructureObject*>(stub))->isOnAdminList(playerName);
 }
 
 bool StructureObjectAdapter::isOnEntryList(const String& playerName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOnEntryList(playerName);
+	return (static_cast<StructureObject*>(stub))->isOnEntryList(playerName);
 }
 
 bool StructureObjectAdapter::isOnBanList(const String& playerName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOnBanList(playerName);
+	return (static_cast<StructureObject*>(stub))->isOnBanList(playerName);
 }
 
 bool StructureObjectAdapter::isOnHopperList(const String& playerName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOnHopperList(playerName);
+	return (static_cast<StructureObject*>(stub))->isOnHopperList(playerName);
 }
 
 bool StructureObjectAdapter::isOnPermissionList(const String& listName, const String& playerName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOnPermissionList(listName, playerName);
+	return (static_cast<StructureObject*>(stub))->isOnPermissionList(listName, playerName);
 }
 
 bool StructureObjectAdapter::isOwnerOf(SceneObject* obj) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOwnerOf(obj);
+	return (static_cast<StructureObject*>(stub))->isOwnerOf(obj);
 }
 
 bool StructureObjectAdapter::isOwnerOf(unsigned long long oid) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOwnerOf(oid);
+	return (static_cast<StructureObject*>(stub))->isOwnerOf(oid);
 }
 
 bool StructureObjectAdapter::isOnAccessList(SceneObject* obj) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOnAccessList(obj);
+	return (static_cast<StructureObject*>(stub))->isOnAccessList(obj);
 }
 
 bool StructureObjectAdapter::isOnAccessList(unsigned long long oid) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isOnAccessList(oid);
+	return (static_cast<StructureObject*>(stub))->isOnAccessList(oid);
 }
 
 void StructureObjectAdapter::sendPermissionListTo(CreatureObject* creature, const String& listName) {
-	(static_cast<StructureObjectImplementation*>(impl))->sendPermissionListTo(creature, listName);
+	(static_cast<StructureObject*>(stub))->sendPermissionListTo(creature, listName);
 }
 
 bool StructureObjectAdapter::hasPermissionList(const String& listName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->hasPermissionList(listName);
+	return (static_cast<StructureObject*>(stub))->hasPermissionList(listName);
 }
 
 bool StructureObjectAdapter::isPermissionListFull(const String& listName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->isPermissionListFull(listName);
+	return (static_cast<StructureObject*>(stub))->isPermissionListFull(listName);
 }
 
 int StructureObjectAdapter::togglePermission(const String& listName, const String& targetName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->togglePermission(listName, targetName);
+	return (static_cast<StructureObject*>(stub))->togglePermission(listName, targetName);
 }
 
 int StructureObjectAdapter::grantPermission(const String& listName, const String& targetName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->grantPermission(listName, targetName);
+	return (static_cast<StructureObject*>(stub))->grantPermission(listName, targetName);
 }
 
 int StructureObjectAdapter::revokePermission(const String& listName, const String& targetName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->revokePermission(listName, targetName);
+	return (static_cast<StructureObject*>(stub))->revokePermission(listName, targetName);
 }
 
 int StructureObjectAdapter::revokeAllPermissions(const String& targetName) {
-	return (static_cast<StructureObjectImplementation*>(impl))->revokeAllPermissions(targetName);
+	return (static_cast<StructureObject*>(stub))->revokeAllPermissions(targetName);
 }
 
 void StructureObjectAdapter::createVendor(CreatureObject* player) {
-	(static_cast<StructureObjectImplementation*>(impl))->createVendor(player);
+	(static_cast<StructureObject*>(stub))->createVendor(player);
 }
 
 int StructureObjectAdapter::getRedeedCost() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getRedeedCost();
+	return (static_cast<StructureObject*>(stub))->getRedeedCost();
 }
 
 PlayerObject* StructureObjectAdapter::getOwnerObject() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getOwnerObject();
+	return (static_cast<StructureObject*>(stub))->getOwnerObject();
 }
 
 unsigned long long StructureObjectAdapter::getOwnerObjectID() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getOwnerObjectID();
+	return (static_cast<StructureObject*>(stub))->getOwnerObjectID();
 }
 
 unsigned long long StructureObjectAdapter::getDeedObjectID() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getDeedObjectID();
+	return (static_cast<StructureObject*>(stub))->getDeedObjectID();
 }
 
 int StructureObjectAdapter::getLotSize() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getLotSize();
+	return (static_cast<StructureObject*>(stub))->getLotSize();
 }
 
 float StructureObjectAdapter::getMaintenanceRate() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getMaintenanceRate();
+	return (static_cast<StructureObject*>(stub))->getMaintenanceRate();
 }
 
 String StructureObjectAdapter::getMaintenanceMods() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getMaintenanceMods();
+	return (static_cast<StructureObject*>(stub))->getMaintenanceMods();
 }
 
 int StructureObjectAdapter::getBaseMaintenanceRate() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getBaseMaintenanceRate();
+	return (static_cast<StructureObject*>(stub))->getBaseMaintenanceRate();
 }
 
 int StructureObjectAdapter::getBasePowerRate() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getBasePowerRate();
+	return (static_cast<StructureObject*>(stub))->getBasePowerRate();
 }
 
 int StructureObjectAdapter::getSurplusMaintenance() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getSurplusMaintenance();
+	return (static_cast<StructureObject*>(stub))->getSurplusMaintenance();
 }
 
 int StructureObjectAdapter::getSurplusPower() {
-	return (static_cast<StructureObjectImplementation*>(impl))->getSurplusPower();
+	return (static_cast<StructureObject*>(stub))->getSurplusPower();
 }
 
 bool StructureObjectAdapter::isPublicStructure() {
-	return (static_cast<StructureObjectImplementation*>(impl))->isPublicStructure();
+	return (static_cast<StructureObject*>(stub))->isPublicStructure();
 }
 
 bool StructureObjectAdapter::isPrivateStructure() {
-	return (static_cast<StructureObjectImplementation*>(impl))->isPrivateStructure();
+	return (static_cast<StructureObject*>(stub))->isPrivateStructure();
 }
 
 void StructureObjectAdapter::setOwnerObjectID(unsigned long long objectID) {
-	(static_cast<StructureObjectImplementation*>(impl))->setOwnerObjectID(objectID);
+	(static_cast<StructureObject*>(stub))->setOwnerObjectID(objectID);
 }
 
 void StructureObjectAdapter::setDeedObjectID(unsigned long long deedID) {
-	(static_cast<StructureObjectImplementation*>(impl))->setDeedObjectID(deedID);
+	(static_cast<StructureObject*>(stub))->setDeedObjectID(deedID);
 }
 
 void StructureObjectAdapter::setBaseMaintenanceRate(int rate) {
-	(static_cast<StructureObjectImplementation*>(impl))->setBaseMaintenanceRate(rate);
+	(static_cast<StructureObject*>(stub))->setBaseMaintenanceRate(rate);
 }
 
 void StructureObjectAdapter::setBasePowerRate(int rate) {
-	(static_cast<StructureObjectImplementation*>(impl))->setBasePowerRate(rate);
+	(static_cast<StructureObject*>(stub))->setBasePowerRate(rate);
 }
 
 void StructureObjectAdapter::setSurplusMaintenance(int surplus) {
-	(static_cast<StructureObjectImplementation*>(impl))->setSurplusMaintenance(surplus);
+	(static_cast<StructureObject*>(stub))->setSurplusMaintenance(surplus);
 }
 
 void StructureObjectAdapter::addMaintenance(int add) {
-	(static_cast<StructureObjectImplementation*>(impl))->addMaintenance(add);
+	(static_cast<StructureObject*>(stub))->addMaintenance(add);
 }
 
 void StructureObjectAdapter::setSurplusPower(int surplus) {
-	(static_cast<StructureObjectImplementation*>(impl))->setSurplusPower(surplus);
+	(static_cast<StructureObject*>(stub))->setSurplusPower(surplus);
 }
 
 void StructureObjectAdapter::addPower(int add) {
-	(static_cast<StructureObjectImplementation*>(impl))->addPower(add);
+	(static_cast<StructureObject*>(stub))->addPower(add);
 }
 
 void StructureObjectAdapter::setPublicStructure(bool privacy) {
-	(static_cast<StructureObjectImplementation*>(impl))->setPublicStructure(privacy);
+	(static_cast<StructureObject*>(stub))->setPublicStructure(privacy);
 }
 
 bool StructureObjectAdapter::isStructureObject() {
-	return (static_cast<StructureObjectImplementation*>(impl))->isStructureObject();
+	return (static_cast<StructureObject*>(stub))->isStructureObject();
 }
 
 bool StructureObjectAdapter::isRedeedable() {
-	return (static_cast<StructureObjectImplementation*>(impl))->isRedeedable();
+	return (static_cast<StructureObject*>(stub))->isRedeedable();
 }
 
 /*
@@ -1559,7 +1559,7 @@ DistributedObjectServant* StructureObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* StructureObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new StructureObjectAdapter(static_cast<StructureObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new StructureObjectAdapter(static_cast<StructureObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -182,7 +182,7 @@ void ToolTangibleObjectImplementation::initializeTransientMembers() {
  *	ToolTangibleObjectAdapter
  */
 
-ToolTangibleObjectAdapter::ToolTangibleObjectAdapter(ToolTangibleObjectImplementation* obj) : TangibleObjectAdapter(obj) {
+ToolTangibleObjectAdapter::ToolTangibleObjectAdapter(ToolTangibleObject* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* ToolTangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -200,7 +200,7 @@ Packet* ToolTangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 void ToolTangibleObjectAdapter::initializeTransientMembers() {
-	(static_cast<ToolTangibleObjectImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ToolTangibleObject*>(stub))->initializeTransientMembers();
 }
 
 /*
@@ -228,7 +228,7 @@ DistributedObjectServant* ToolTangibleObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ToolTangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ToolTangibleObjectAdapter(static_cast<ToolTangibleObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ToolTangibleObjectAdapter(static_cast<ToolTangibleObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -185,7 +185,7 @@ CloningTerminalImplementation::CloningTerminalImplementation() {
  *	CloningTerminalAdapter
  */
 
-CloningTerminalAdapter::CloningTerminalAdapter(CloningTerminalImplementation* obj) : TerminalAdapter(obj) {
+CloningTerminalAdapter::CloningTerminalAdapter(CloningTerminal* obj) : TerminalAdapter(obj) {
 }
 
 Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -203,7 +203,7 @@ Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 int CloningTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<CloningTerminalImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<CloningTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -231,7 +231,7 @@ DistributedObjectServant* CloningTerminalHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CloningTerminalHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CloningTerminalAdapter(static_cast<CloningTerminalImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CloningTerminalAdapter(static_cast<CloningTerminal*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

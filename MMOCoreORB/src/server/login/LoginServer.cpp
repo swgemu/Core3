@@ -401,7 +401,7 @@ LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
  *	LoginServerAdapter
  */
 
-LoginServerAdapter::LoginServerAdapter(LoginServerImplementation* obj) : ManagedServiceAdapter(obj) {
+LoginServerAdapter::LoginServerAdapter(LoginServer* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -452,51 +452,51 @@ Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void LoginServerAdapter::initializeTransientMembers() {
-	(static_cast<LoginServerImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<LoginServer*>(stub))->initializeTransientMembers();
 }
 
 void LoginServerAdapter::initialize() {
-	(static_cast<LoginServerImplementation*>(impl))->initialize();
+	(static_cast<LoginServer*>(stub))->initialize();
 }
 
 void LoginServerAdapter::shutdown() {
-	(static_cast<LoginServerImplementation*>(impl))->shutdown();
+	(static_cast<LoginServer*>(stub))->shutdown();
 }
 
 void LoginServerAdapter::startManagers() {
-	(static_cast<LoginServerImplementation*>(impl))->startManagers();
+	(static_cast<LoginServer*>(stub))->startManagers();
 }
 
 void LoginServerAdapter::stopManagers() {
-	(static_cast<LoginServerImplementation*>(impl))->stopManagers();
+	(static_cast<LoginServer*>(stub))->stopManagers();
 }
 
 void LoginServerAdapter::start(int p, int mconn) {
-	(static_cast<LoginServerImplementation*>(impl))->start(p, mconn);
+	(static_cast<LoginServer*>(stub))->start(p, mconn);
 }
 
 void LoginServerAdapter::stop() {
-	(static_cast<LoginServerImplementation*>(impl))->stop();
+	(static_cast<LoginServer*>(stub))->stop();
 }
 
 void LoginServerAdapter::printInfo() {
-	(static_cast<LoginServerImplementation*>(impl))->printInfo();
+	(static_cast<LoginServer*>(stub))->printInfo();
 }
 
 void LoginServerAdapter::populateGalaxyList() {
-	(static_cast<LoginServerImplementation*>(impl))->populateGalaxyList();
+	(static_cast<LoginServer*>(stub))->populateGalaxyList();
 }
 
 Account* LoginServerAdapter::getAccount(unsigned int accountID) {
-	return (static_cast<LoginServerImplementation*>(impl))->getAccount(accountID);
+	return (static_cast<LoginServer*>(stub))->getAccount(accountID);
 }
 
 LoginEnumCluster* LoginServerAdapter::getLoginEnumClusterMessage() {
-	return (static_cast<LoginServerImplementation*>(impl))->getLoginEnumClusterMessage();
+	return (static_cast<LoginServer*>(stub))->getLoginEnumClusterMessage();
 }
 
 LoginClusterStatus* LoginServerAdapter::getLoginClusterStatusMessage() {
-	return (static_cast<LoginServerImplementation*>(impl))->getLoginClusterStatusMessage();
+	return (static_cast<LoginServer*>(stub))->getLoginClusterStatusMessage();
 }
 
 /*
@@ -524,7 +524,7 @@ DistributedObjectServant* LoginServerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* LoginServerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new LoginServerAdapter(static_cast<LoginServerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new LoginServerAdapter(static_cast<LoginServer*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

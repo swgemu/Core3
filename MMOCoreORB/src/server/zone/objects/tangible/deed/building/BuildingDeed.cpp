@@ -273,7 +273,7 @@ bool BuildingDeedImplementation::isBuildingDeed() {
  *	BuildingDeedAdapter
  */
 
-BuildingDeedAdapter::BuildingDeedAdapter(BuildingDeedImplementation* obj) : DeedAdapter(obj) {
+BuildingDeedAdapter::BuildingDeedAdapter(BuildingDeed* obj) : DeedAdapter(obj) {
 }
 
 Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -303,23 +303,23 @@ Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void BuildingDeedAdapter::initializeTransientMembers() {
-	(static_cast<BuildingDeedImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<BuildingDeed*>(stub))->initializeTransientMembers();
 }
 
 int BuildingDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<BuildingDeedImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<BuildingDeed*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void BuildingDeedAdapter::setSurplusMaintenance(unsigned int surplusMaint) {
-	(static_cast<BuildingDeedImplementation*>(impl))->setSurplusMaintenance(surplusMaint);
+	(static_cast<BuildingDeed*>(stub))->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int BuildingDeedAdapter::getSurplusMaintenance() {
-	return (static_cast<BuildingDeedImplementation*>(impl))->getSurplusMaintenance();
+	return (static_cast<BuildingDeed*>(stub))->getSurplusMaintenance();
 }
 
 bool BuildingDeedAdapter::isBuildingDeed() {
-	return (static_cast<BuildingDeedImplementation*>(impl))->isBuildingDeed();
+	return (static_cast<BuildingDeed*>(stub))->isBuildingDeed();
 }
 
 /*
@@ -347,7 +347,7 @@ DistributedObjectServant* BuildingDeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* BuildingDeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new BuildingDeedAdapter(static_cast<BuildingDeedImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new BuildingDeedAdapter(static_cast<BuildingDeed*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

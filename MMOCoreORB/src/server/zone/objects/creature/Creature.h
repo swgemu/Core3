@@ -248,7 +248,7 @@ protected:
 
 class CreatureAdapter : public AiAgentAdapter {
 public:
-	CreatureAdapter(CreatureImplementation* impl);
+	CreatureAdapter(Creature* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

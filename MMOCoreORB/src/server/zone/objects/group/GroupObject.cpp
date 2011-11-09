@@ -569,7 +569,7 @@ bool GroupObjectImplementation::isGroupObject() {
  *	GroupObjectAdapter
  */
 
-GroupObjectAdapter::GroupObjectAdapter(GroupObjectImplementation* obj) : SceneObjectAdapter(obj) {
+GroupObjectAdapter::GroupObjectAdapter(GroupObject* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -653,95 +653,95 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void GroupObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	(static_cast<GroupObjectImplementation*>(impl))->sendBaselinesTo(player);
+	(static_cast<GroupObject*>(stub))->sendBaselinesTo(player);
 }
 
 void GroupObjectAdapter::broadcastMessage(BaseMessage* msg) {
-	(static_cast<GroupObjectImplementation*>(impl))->broadcastMessage(msg);
+	(static_cast<GroupObject*>(stub))->broadcastMessage(msg);
 }
 
 void GroupObjectAdapter::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
-	(static_cast<GroupObjectImplementation*>(impl))->broadcastMessage(player, msg, sendSelf);
+	(static_cast<GroupObject*>(stub))->broadcastMessage(player, msg, sendSelf);
 }
 
 void GroupObjectAdapter::addMember(SceneObject* player) {
-	(static_cast<GroupObjectImplementation*>(impl))->addMember(player);
+	(static_cast<GroupObject*>(stub))->addMember(player);
 }
 
 void GroupObjectAdapter::removeMember(SceneObject* player) {
-	(static_cast<GroupObjectImplementation*>(impl))->removeMember(player);
+	(static_cast<GroupObject*>(stub))->removeMember(player);
 }
 
 void GroupObjectAdapter::disband() {
-	(static_cast<GroupObjectImplementation*>(impl))->disband();
+	(static_cast<GroupObject*>(stub))->disband();
 }
 
 void GroupObjectAdapter::makeLeader(SceneObject* player) {
-	(static_cast<GroupObjectImplementation*>(impl))->makeLeader(player);
+	(static_cast<GroupObject*>(stub))->makeLeader(player);
 }
 
 bool GroupObjectAdapter::hasMember(SceneObject* player) {
-	return (static_cast<GroupObjectImplementation*>(impl))->hasMember(player);
+	return (static_cast<GroupObject*>(stub))->hasMember(player);
 }
 
 void GroupObjectAdapter::startChatRoom() {
-	(static_cast<GroupObjectImplementation*>(impl))->startChatRoom();
+	(static_cast<GroupObject*>(stub))->startChatRoom();
 }
 
 void GroupObjectAdapter::destroyChatRoom() {
-	(static_cast<GroupObjectImplementation*>(impl))->destroyChatRoom();
+	(static_cast<GroupObject*>(stub))->destroyChatRoom();
 }
 
 float GroupObjectAdapter::getGroupHarvestModifier(CreatureObject* player) {
-	return (static_cast<GroupObjectImplementation*>(impl))->getGroupHarvestModifier(player);
+	return (static_cast<GroupObject*>(stub))->getGroupHarvestModifier(player);
 }
 
 int GroupObjectAdapter::getGroupLevel() {
-	return (static_cast<GroupObjectImplementation*>(impl))->getGroupLevel();
+	return (static_cast<GroupObject*>(stub))->getGroupLevel();
 }
 
 ChatRoom* GroupObjectAdapter::getGroupChannel() {
-	return (static_cast<GroupObjectImplementation*>(impl))->getGroupChannel();
+	return (static_cast<GroupObject*>(stub))->getGroupChannel();
 }
 
 int GroupObjectAdapter::getGroupSize() {
-	return (static_cast<GroupObjectImplementation*>(impl))->getGroupSize();
+	return (static_cast<GroupObject*>(stub))->getGroupSize();
 }
 
 SceneObject* GroupObjectAdapter::getGroupMember(int index) {
-	return (static_cast<GroupObjectImplementation*>(impl))->getGroupMember(index);
+	return (static_cast<GroupObject*>(stub))->getGroupMember(index);
 }
 
 void GroupObjectAdapter::initializeLeader(SceneObject* player) {
-	(static_cast<GroupObjectImplementation*>(impl))->initializeLeader(player);
+	(static_cast<GroupObject*>(stub))->initializeLeader(player);
 }
 
 SceneObject* GroupObjectAdapter::getLeader() {
-	return (static_cast<GroupObjectImplementation*>(impl))->getLeader();
+	return (static_cast<GroupObject*>(stub))->getLeader();
 }
 
 bool GroupObjectAdapter::isGroupObject() {
-	return (static_cast<GroupObjectImplementation*>(impl))->isGroupObject();
+	return (static_cast<GroupObject*>(stub))->isGroupObject();
 }
 
 bool GroupObjectAdapter::hasSquadLeader() {
-	return (static_cast<GroupObjectImplementation*>(impl))->hasSquadLeader();
+	return (static_cast<GroupObject*>(stub))->hasSquadLeader();
 }
 
 void GroupObjectAdapter::addGroupModifiers() {
-	(static_cast<GroupObjectImplementation*>(impl))->addGroupModifiers();
+	(static_cast<GroupObject*>(stub))->addGroupModifiers();
 }
 
 void GroupObjectAdapter::removeGroupModifiers() {
-	(static_cast<GroupObjectImplementation*>(impl))->removeGroupModifiers();
+	(static_cast<GroupObject*>(stub))->removeGroupModifiers();
 }
 
 void GroupObjectAdapter::addGroupModifiers(CreatureObject* player) {
-	(static_cast<GroupObjectImplementation*>(impl))->addGroupModifiers(player);
+	(static_cast<GroupObject*>(stub))->addGroupModifiers(player);
 }
 
 void GroupObjectAdapter::removeGroupModifiers(CreatureObject* player) {
-	(static_cast<GroupObjectImplementation*>(impl))->removeGroupModifiers(player);
+	(static_cast<GroupObject*>(stub))->removeGroupModifiers(player);
 }
 
 /*
@@ -769,7 +769,7 @@ DistributedObjectServant* GroupObjectHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* GroupObjectHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new GroupObjectAdapter(static_cast<GroupObjectImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new GroupObjectAdapter(static_cast<GroupObject*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

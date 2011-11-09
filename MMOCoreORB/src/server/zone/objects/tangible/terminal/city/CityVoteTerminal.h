@@ -184,7 +184,7 @@ protected:
 
 class CityVoteTerminalAdapter : public TerminalAdapter {
 public:
-	CityVoteTerminalAdapter(CityVoteTerminalImplementation* impl);
+	CityVoteTerminalAdapter(CityVoteTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -459,7 +459,7 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server,
  *	ResourceManagerAdapter
  */
 
-ResourceManagerAdapter::ResourceManagerAdapter(ResourceManagerImplementation* obj) : ObserverAdapter(obj) {
+ResourceManagerAdapter::ResourceManagerAdapter(ResourceManager* obj) : ObserverAdapter(obj) {
 }
 
 Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -525,71 +525,71 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 void ResourceManagerAdapter::stop() {
-	(static_cast<ResourceManagerImplementation*>(impl))->stop();
+	(static_cast<ResourceManager*>(stub))->stop();
 }
 
 void ResourceManagerAdapter::initialize() {
-	(static_cast<ResourceManagerImplementation*>(impl))->initialize();
+	(static_cast<ResourceManager*>(stub))->initialize();
 }
 
 void ResourceManagerAdapter::shiftResources() {
-	(static_cast<ResourceManagerImplementation*>(impl))->shiftResources();
+	(static_cast<ResourceManager*>(stub))->shiftResources();
 }
 
 int ResourceManagerAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<ResourceManagerImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<ResourceManager*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void ResourceManagerAdapter::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
-	(static_cast<ResourceManagerImplementation*>(impl))->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+	(static_cast<ResourceManager*>(stub))->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
 
 void ResourceManagerAdapter::sendSurvey(CreatureObject* playerCreature, const String& resname) {
-	(static_cast<ResourceManagerImplementation*>(impl))->sendSurvey(playerCreature, resname);
+	(static_cast<ResourceManager*>(stub))->sendSurvey(playerCreature, resname);
 }
 
 void ResourceManagerAdapter::sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation) {
-	(static_cast<ResourceManagerImplementation*>(impl))->sendSample(playerCreature, resname, sampleAnimation);
+	(static_cast<ResourceManager*>(stub))->sendSample(playerCreature, resname, sampleAnimation);
 }
 
 ResourceContainer* ResourceManagerAdapter::harvestResource(CreatureObject* player, const String& type, const int quantity) {
-	return (static_cast<ResourceManagerImplementation*>(impl))->harvestResource(player, type, quantity);
+	return (static_cast<ResourceManager*>(stub))->harvestResource(player, type, quantity);
 }
 
 void ResourceManagerAdapter::harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity) {
-	(static_cast<ResourceManagerImplementation*>(impl))->harvestResourceToPlayer(player, resourceSpawn, quantity);
+	(static_cast<ResourceManager*>(stub))->harvestResourceToPlayer(player, resourceSpawn, quantity);
 }
 
 unsigned int ResourceManagerAdapter::getAvailablePowerFromPlayer(CreatureObject* player) {
-	return (static_cast<ResourceManagerImplementation*>(impl))->getAvailablePowerFromPlayer(player);
+	return (static_cast<ResourceManager*>(stub))->getAvailablePowerFromPlayer(player);
 }
 
 void ResourceManagerAdapter::removePowerFromPlayer(CreatureObject* player, unsigned int power) {
-	(static_cast<ResourceManagerImplementation*>(impl))->removePowerFromPlayer(player, power);
+	(static_cast<ResourceManager*>(stub))->removePowerFromPlayer(player, power);
 }
 
 void ResourceManagerAdapter::createResourceSpawn(CreatureObject* playerCreature, const String& restype) {
-	(static_cast<ResourceManagerImplementation*>(impl))->createResourceSpawn(playerCreature, restype);
+	(static_cast<ResourceManager*>(stub))->createResourceSpawn(playerCreature, restype);
 }
 
 void ResourceManagerAdapter::givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity) {
-	(static_cast<ResourceManagerImplementation*>(impl))->givePlayerResource(playerCreature, restype, quantity);
+	(static_cast<ResourceManager*>(stub))->givePlayerResource(playerCreature, restype, quantity);
 }
 
 ResourceSpawn* ResourceManagerAdapter::getCurrentSpawn(const String& restype, const String& zoneName) {
-	return (static_cast<ResourceManagerImplementation*>(impl))->getCurrentSpawn(restype, zoneName);
+	return (static_cast<ResourceManager*>(stub))->getCurrentSpawn(restype, zoneName);
 }
 
 ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName) {
-	return (static_cast<ResourceManagerImplementation*>(impl))->getResourceSpawn(spawnName);
+	return (static_cast<ResourceManager*>(stub))->getResourceSpawn(spawnName);
 }
 
 void ResourceManagerAdapter::addNodeToListBox(SuiListBox* sui, const String& nodeName) {
-	(static_cast<ResourceManagerImplementation*>(impl))->addNodeToListBox(sui, nodeName);
+	(static_cast<ResourceManager*>(stub))->addNodeToListBox(sui, nodeName);
 }
 
 String ResourceManagerAdapter::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
-	return (static_cast<ResourceManagerImplementation*>(impl))->addParentNodeToListBox(sui, currentNode);
+	return (static_cast<ResourceManager*>(stub))->addParentNodeToListBox(sui, currentNode);
 }
 
 /*
@@ -617,7 +617,7 @@ DistributedObjectServant* ResourceManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ResourceManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ResourceManagerAdapter(static_cast<ResourceManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ResourceManagerAdapter(static_cast<ResourceManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

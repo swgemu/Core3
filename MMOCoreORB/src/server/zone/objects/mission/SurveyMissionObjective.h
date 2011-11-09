@@ -192,7 +192,7 @@ protected:
 
 class SurveyMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	SurveyMissionObjectiveAdapter(SurveyMissionObjectiveImplementation* impl);
+	SurveyMissionObjectiveAdapter(SurveyMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -192,7 +192,7 @@ InstrumentObserverImplementation::InstrumentObserverImplementation(Instrument* i
  *	InstrumentObserverAdapter
  */
 
-InstrumentObserverAdapter::InstrumentObserverAdapter(InstrumentObserverImplementation* obj) : ObserverAdapter(obj) {
+InstrumentObserverAdapter::InstrumentObserverAdapter(InstrumentObserver* obj) : ObserverAdapter(obj) {
 }
 
 Packet* InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -210,7 +210,7 @@ Packet* InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod
 }
 
 int InstrumentObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<InstrumentObserverImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<InstrumentObserver*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*
@@ -238,7 +238,7 @@ DistributedObjectServant* InstrumentObserverHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* InstrumentObserverHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new InstrumentObserverAdapter(static_cast<InstrumentObserverImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new InstrumentObserverAdapter(static_cast<InstrumentObserver*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -404,7 +404,7 @@ byte WoundPackImplementation::getAttribute() {
  *	WoundPackAdapter
  */
 
-WoundPackAdapter::WoundPackAdapter(WoundPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
+WoundPackAdapter::WoundPackAdapter(WoundPack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
 Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -434,23 +434,23 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int WoundPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<WoundPackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<WoundPack*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned int WoundPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	return (static_cast<WoundPackImplementation*>(impl))->calculatePower(healer, patient, applyBattleFatigue);
+	return (static_cast<WoundPack*>(stub))->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float WoundPackAdapter::getEffectiveness() {
-	return (static_cast<WoundPackImplementation*>(impl))->getEffectiveness();
+	return (static_cast<WoundPack*>(stub))->getEffectiveness();
 }
 
 bool WoundPackAdapter::isWoundPack() {
-	return (static_cast<WoundPackImplementation*>(impl))->isWoundPack();
+	return (static_cast<WoundPack*>(stub))->isWoundPack();
 }
 
 byte WoundPackAdapter::getAttribute() {
-	return (static_cast<WoundPackImplementation*>(impl))->getAttribute();
+	return (static_cast<WoundPack*>(stub))->getAttribute();
 }
 
 /*
@@ -478,7 +478,7 @@ DistributedObjectServant* WoundPackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* WoundPackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new WoundPackAdapter(static_cast<WoundPackImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new WoundPackAdapter(static_cast<WoundPack*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

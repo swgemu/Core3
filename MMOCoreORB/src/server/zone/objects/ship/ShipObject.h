@@ -120,7 +120,7 @@ protected:
 
 class ShipObjectAdapter : public TangibleObjectAdapter {
 public:
-	ShipObjectAdapter(ShipObjectImplementation* impl);
+	ShipObjectAdapter(ShipObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

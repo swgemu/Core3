@@ -360,7 +360,7 @@ DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schemat
  *	CraftingManagerAdapter
  */
 
-CraftingManagerAdapter::CraftingManagerAdapter(CraftingManagerImplementation* obj) : ZoneManagerAdapter(obj) {
+CraftingManagerAdapter::CraftingManagerAdapter(CraftingManager* obj) : ZoneManagerAdapter(obj) {
 }
 
 Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -408,47 +408,47 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 }
 
 DraftSchematic* CraftingManagerAdapter::getSchematic(unsigned int schematicID) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->getSchematic(schematicID);
+	return (static_cast<CraftingManager*>(stub))->getSchematic(schematicID);
 }
 
 void CraftingManagerAdapter::sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID) {
-	(static_cast<CraftingManagerImplementation*>(impl))->sendDraftSlotsTo(player, schematicID);
+	(static_cast<CraftingManager*>(stub))->sendDraftSlotsTo(player, schematicID);
 }
 
 void CraftingManagerAdapter::sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID) {
-	(static_cast<CraftingManagerImplementation*>(impl))->sendResourceWeightsTo(player, schematicID);
+	(static_cast<CraftingManager*>(stub))->sendResourceWeightsTo(player, schematicID);
 }
 
 int CraftingManagerAdapter::calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->calculateAssemblySuccess(player, draftSchematic, effectiveness);
+	return (static_cast<CraftingManager*>(stub))->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
 float CraftingManagerAdapter::calculateAssemblyValueModifier(int assemblyResult) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->calculateAssemblyValueModifier(assemblyResult);
+	return (static_cast<CraftingManager*>(stub))->calculateAssemblyValueModifier(assemblyResult);
 }
 
 float CraftingManagerAdapter::getAssemblyPercentage(float value) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->getAssemblyPercentage(value);
+	return (static_cast<CraftingManager*>(stub))->getAssemblyPercentage(value);
 }
 
 int CraftingManagerAdapter::calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
+	return (static_cast<CraftingManager*>(stub))->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
 }
 
 int CraftingManagerAdapter::calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
+	return (static_cast<CraftingManager*>(stub))->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
 }
 
 float CraftingManagerAdapter::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
+	return (static_cast<CraftingManager*>(stub))->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
 }
 
 float CraftingManagerAdapter::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
-	return (static_cast<CraftingManagerImplementation*>(impl))->getWeightedValue(manufactureSchematic, type);
+	return (static_cast<CraftingManager*>(stub))->getWeightedValue(manufactureSchematic, type);
 }
 
 String CraftingManagerAdapter::generateSerial() {
-	return (static_cast<CraftingManagerImplementation*>(impl))->generateSerial();
+	return (static_cast<CraftingManager*>(stub))->generateSerial();
 }
 
 /*
@@ -476,7 +476,7 @@ DistributedObjectServant* CraftingManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* CraftingManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new CraftingManagerAdapter(static_cast<CraftingManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new CraftingManagerAdapter(static_cast<CraftingManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

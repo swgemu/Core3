@@ -480,7 +480,7 @@ AuctionsMap* AuctionManagerImplementation::getAuctionMap() {
  *	AuctionManagerAdapter
  */
 
-AuctionManagerAdapter::AuctionManagerAdapter(AuctionManagerImplementation* obj) : ManagedServiceAdapter(obj) {
+AuctionManagerAdapter::AuctionManagerAdapter(AuctionManager* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -531,51 +531,51 @@ Packet* AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void AuctionManagerAdapter::initialize() {
-	(static_cast<AuctionManagerImplementation*>(impl))->initialize();
+	(static_cast<AuctionManager*>(stub))->initialize();
 }
 
 void AuctionManagerAdapter::checkVendorItems() {
-	(static_cast<AuctionManagerImplementation*>(impl))->checkVendorItems();
+	(static_cast<AuctionManager*>(stub))->checkVendorItems();
 }
 
 void AuctionManagerAdapter::checkAuctions() {
-	(static_cast<AuctionManagerImplementation*>(impl))->checkAuctions();
+	(static_cast<AuctionManager*>(stub))->checkAuctions();
 }
 
 void AuctionManagerAdapter::getItemAttributes(CreatureObject* player, unsigned long long objectid) {
-	(static_cast<AuctionManagerImplementation*>(impl))->getItemAttributes(player, objectid);
+	(static_cast<AuctionManager*>(stub))->getItemAttributes(player, objectid);
 }
 
 void AuctionManagerAdapter::getData(CreatureObject* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset) {
-	(static_cast<AuctionManagerImplementation*>(impl))->getData(player, extent, vendorObjectID, screen, category, count, offset);
+	(static_cast<AuctionManager*>(stub))->getData(player, extent, vendorObjectID, screen, category, count, offset);
 }
 
 void AuctionManagerAdapter::retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID) {
-	(static_cast<AuctionManagerImplementation*>(impl))->retrieveItem(player, objectid, vendorID);
+	(static_cast<AuctionManager*>(stub))->retrieveItem(player, objectid, vendorID);
 }
 
 void AuctionManagerAdapter::buyItem(CreatureObject* player, unsigned long long objectid, int price1, int price2) {
-	(static_cast<AuctionManagerImplementation*>(impl))->buyItem(player, objectid, price1, price2);
+	(static_cast<AuctionManager*>(stub))->buyItem(player, objectid, price1, price2);
 }
 
 void AuctionManagerAdapter::doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2) {
-	(static_cast<AuctionManagerImplementation*>(impl))->doAuctionBid(player, item, price1, price2);
+	(static_cast<AuctionManager*>(stub))->doAuctionBid(player, item, price1, price2);
 }
 
 void AuctionManagerAdapter::doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2) {
-	(static_cast<AuctionManagerImplementation*>(impl))->doInstantBuy(player, item, price1, price2);
+	(static_cast<AuctionManager*>(stub))->doInstantBuy(player, item, price1, price2);
 }
 
 int AuctionManagerAdapter::checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2) {
-	return (static_cast<AuctionManagerImplementation*>(impl))->checkBidAuction(player, item, price1, price2);
+	return (static_cast<AuctionManager*>(stub))->checkBidAuction(player, item, price1, price2);
 }
 
 void AuctionManagerAdapter::cancelItem(CreatureObject* player, unsigned long long objectID) {
-	(static_cast<AuctionManagerImplementation*>(impl))->cancelItem(player, objectID);
+	(static_cast<AuctionManager*>(stub))->cancelItem(player, objectID);
 }
 
 AuctionsMap* AuctionManagerAdapter::getAuctionMap() {
-	return (static_cast<AuctionManagerImplementation*>(impl))->getAuctionMap();
+	return (static_cast<AuctionManager*>(stub))->getAuctionMap();
 }
 
 /*
@@ -603,7 +603,7 @@ DistributedObjectServant* AuctionManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AuctionManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AuctionManagerAdapter(static_cast<AuctionManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AuctionManagerAdapter(static_cast<AuctionManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

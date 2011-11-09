@@ -780,7 +780,7 @@ protected:
 
 class ZoneServerAdapter : public ManagedServiceAdapter {
 public:
-	ZoneServerAdapter(ZoneServerImplementation* impl);
+	ZoneServerAdapter(ZoneServer* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

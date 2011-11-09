@@ -256,7 +256,7 @@ void DelayedBuffImplementation::setUsesRemaining(int uses) {
  *	DelayedBuffAdapter
  */
 
-DelayedBuffAdapter::DelayedBuffAdapter(DelayedBuffImplementation* obj) : BuffAdapter(obj) {
+DelayedBuffAdapter::DelayedBuffAdapter(DelayedBuff* obj) : BuffAdapter(obj) {
 }
 
 Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -283,19 +283,19 @@ Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void DelayedBuffAdapter::activate() {
-	(static_cast<DelayedBuffImplementation*>(impl))->activate();
+	(static_cast<DelayedBuff*>(stub))->activate();
 }
 
 void DelayedBuffAdapter::deactivate() {
-	(static_cast<DelayedBuffImplementation*>(impl))->deactivate();
+	(static_cast<DelayedBuff*>(stub))->deactivate();
 }
 
 void DelayedBuffAdapter::useCharge(CreatureObject* creature) {
-	(static_cast<DelayedBuffImplementation*>(impl))->useCharge(creature);
+	(static_cast<DelayedBuff*>(stub))->useCharge(creature);
 }
 
 void DelayedBuffAdapter::setUsesRemaining(int uses) {
-	(static_cast<DelayedBuffImplementation*>(impl))->setUsesRemaining(uses);
+	(static_cast<DelayedBuff*>(stub))->setUsesRemaining(uses);
 }
 
 /*
@@ -323,7 +323,7 @@ DistributedObjectServant* DelayedBuffHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* DelayedBuffHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new DelayedBuffAdapter(static_cast<DelayedBuffImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new DelayedBuffAdapter(static_cast<DelayedBuff*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

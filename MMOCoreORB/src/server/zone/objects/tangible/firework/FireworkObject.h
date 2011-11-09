@@ -195,7 +195,7 @@ protected:
 
 class FireworkObjectAdapter : public TangibleObjectAdapter {
 public:
-	FireworkObjectAdapter(FireworkObjectImplementation* impl);
+	FireworkObjectAdapter(FireworkObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

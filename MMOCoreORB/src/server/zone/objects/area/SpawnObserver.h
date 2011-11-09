@@ -118,7 +118,7 @@ protected:
 
 class SpawnObserverAdapter : public ObserverAdapter {
 public:
-	SpawnObserverAdapter(SpawnObserverImplementation* impl);
+	SpawnObserverAdapter(SpawnObserver* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

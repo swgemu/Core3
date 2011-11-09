@@ -232,7 +232,7 @@ ResourceDeedImplementation::ResourceDeedImplementation() {
  *	ResourceDeedAdapter
  */
 
-ResourceDeedAdapter::ResourceDeedAdapter(ResourceDeedImplementation* obj) : DeedAdapter(obj) {
+ResourceDeedAdapter::ResourceDeedAdapter(ResourceDeed* obj) : DeedAdapter(obj) {
 }
 
 Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -259,19 +259,19 @@ Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void ResourceDeedAdapter::initializeTransientMembers() {
-	(static_cast<ResourceDeedImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<ResourceDeed*>(stub))->initializeTransientMembers();
 }
 
 int ResourceDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<ResourceDeedImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<ResourceDeed*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 int ResourceDeedAdapter::useObject(CreatureObject* player) {
-	return (static_cast<ResourceDeedImplementation*>(impl))->useObject(player);
+	return (static_cast<ResourceDeed*>(stub))->useObject(player);
 }
 
 void ResourceDeedAdapter::destroyDeed() {
-	(static_cast<ResourceDeedImplementation*>(impl))->destroyDeed();
+	(static_cast<ResourceDeed*>(stub))->destroyDeed();
 }
 
 /*
@@ -299,7 +299,7 @@ DistributedObjectServant* ResourceDeedHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ResourceDeedHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ResourceDeedAdapter(static_cast<ResourceDeedImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ResourceDeedAdapter(static_cast<ResourceDeed*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

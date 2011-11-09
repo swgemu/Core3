@@ -31,9 +31,17 @@ public:
 		setAllowDuplicateInsertPlan();
 	}
 
+	SpawnAreaMap(const SpawnAreaMap& l) : VectorMap<uint32, ManagedReference<SpawnArea*> >(l) {
+		lua = l.lua;
+
+		noSpawnAreas = l.noSpawnAreas;
+	}
+
 	virtual ~SpawnAreaMap() {
-		delete lua;
-		lua = NULL;
+		if (lua != NULL) {
+			delete lua;
+			lua = NULL;
+		}
 	}
 
 	void loadMap(Zone* z);

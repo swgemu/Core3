@@ -999,7 +999,7 @@ void EntertainingSessionImplementation::setTargetInstrument(bool var) {
  *	EntertainingSessionAdapter
  */
 
-EntertainingSessionAdapter::EntertainingSessionAdapter(EntertainingSessionImplementation* obj) : FacadeAdapter(obj) {
+EntertainingSessionAdapter::EntertainingSessionAdapter(EntertainingSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1125,151 +1125,151 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 }
 
 void EntertainingSessionAdapter::doEntertainerPatronEffects() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->doEntertainerPatronEffects();
+	(static_cast<EntertainingSession*>(stub))->doEntertainerPatronEffects();
 }
 
 void EntertainingSessionAdapter::doPerformanceAction() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->doPerformanceAction();
+	(static_cast<EntertainingSession*>(stub))->doPerformanceAction();
 }
 
 void EntertainingSessionAdapter::addEntertainerFlourishBuff() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->addEntertainerFlourishBuff();
+	(static_cast<EntertainingSession*>(stub))->addEntertainerFlourishBuff();
 }
 
 void EntertainingSessionAdapter::startDancing(const String& dance, const String& animation) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->startDancing(dance, animation);
+	(static_cast<EntertainingSession*>(stub))->startDancing(dance, animation);
 }
 
 void EntertainingSessionAdapter::startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->startPlayingMusic(song, instrumentAnimation, instrid);
+	(static_cast<EntertainingSession*>(stub))->startPlayingMusic(song, instrumentAnimation, instrid);
 }
 
 void EntertainingSessionAdapter::startEntertaining() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->startEntertaining();
+	(static_cast<EntertainingSession*>(stub))->startEntertaining();
 }
 
 void EntertainingSessionAdapter::finalize() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->finalize();
+	(static_cast<EntertainingSession*>(stub))->finalize();
 }
 
 void EntertainingSessionAdapter::healWounds(CreatureObject* creature, float woundHeal, float shockHeal) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->healWounds(creature, woundHeal, shockHeal);
+	(static_cast<EntertainingSession*>(stub))->healWounds(creature, woundHeal, shockHeal);
 }
 
 bool EntertainingSessionAdapter::isInEntertainingBuilding(CreatureObject* creature) {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->isInEntertainingBuilding(creature);
+	return (static_cast<EntertainingSession*>(stub))->isInEntertainingBuilding(creature);
 }
 
 void EntertainingSessionAdapter::doFlourish(int flourishNumber) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->doFlourish(flourishNumber);
+	(static_cast<EntertainingSession*>(stub))->doFlourish(flourishNumber);
 }
 
 bool EntertainingSessionAdapter::canGiveEntertainBuff() {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->canGiveEntertainBuff();
+	return (static_cast<EntertainingSession*>(stub))->canGiveEntertainBuff();
 }
 
 void EntertainingSessionAdapter::addFlourishXp(int xp) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->addFlourishXp(xp);
+	(static_cast<EntertainingSession*>(stub))->addFlourishXp(xp);
 }
 
 void EntertainingSessionAdapter::addHealingXp(int xp) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->addHealingXp(xp);
+	(static_cast<EntertainingSession*>(stub))->addHealingXp(xp);
 }
 
 int EntertainingSessionAdapter::initializeSession() {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<EntertainingSession*>(stub))->initializeSession();
 }
 
 int EntertainingSessionAdapter::cancelSession() {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<EntertainingSession*>(stub))->cancelSession();
 }
 
 int EntertainingSessionAdapter::clearSession() {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->clearSession();
+	return (static_cast<EntertainingSession*>(stub))->clearSession();
 }
 
 void EntertainingSessionAdapter::stopPlayingMusic() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->stopPlayingMusic();
+	(static_cast<EntertainingSession*>(stub))->stopPlayingMusic();
 }
 
 void EntertainingSessionAdapter::stopDancing() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->stopDancing();
+	(static_cast<EntertainingSession*>(stub))->stopDancing();
 }
 
 void EntertainingSessionAdapter::activateAction() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->activateAction();
+	(static_cast<EntertainingSession*>(stub))->activateAction();
 }
 
 void EntertainingSessionAdapter::startTickTask() {
-	(static_cast<EntertainingSessionImplementation*>(impl))->startTickTask();
+	(static_cast<EntertainingSession*>(stub))->startTickTask();
 }
 
 int EntertainingSessionAdapter::getEntertainerBuffStrength(CreatureObject* creature, int performanceType) {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->getEntertainerBuffStrength(creature, performanceType);
+	return (static_cast<EntertainingSession*>(stub))->getEntertainerBuffStrength(creature, performanceType);
 }
 
 int EntertainingSessionAdapter::getEntertainerBuffDuration(CreatureObject* creature, int performanceType) {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->getEntertainerBuffDuration(creature, performanceType);
+	return (static_cast<EntertainingSession*>(stub))->getEntertainerBuffDuration(creature, performanceType);
 }
 
 void EntertainingSessionAdapter::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->sendEntertainingUpdate(creature, entval, performance, perfcntr, instrid);
+	(static_cast<EntertainingSession*>(stub))->sendEntertainingUpdate(creature, entval, performance, perfcntr, instrid);
 }
 
 void EntertainingSessionAdapter::sendEntertainmentUpdate(CreatureObject* creature, unsigned long long entid, const String& mood, bool updateEntValue) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->sendEntertainmentUpdate(creature, entid, mood, updateEntValue);
+	(static_cast<EntertainingSession*>(stub))->sendEntertainmentUpdate(creature, entid, mood, updateEntValue);
 }
 
 void EntertainingSessionAdapter::activateEntertainerBuff(CreatureObject* creature, int performanceType) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->activateEntertainerBuff(creature, performanceType);
+	(static_cast<EntertainingSession*>(stub))->activateEntertainerBuff(creature, performanceType);
 }
 
 Instrument* EntertainingSessionAdapter::getInstrument(CreatureObject* creature) {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->getInstrument(creature);
+	return (static_cast<EntertainingSession*>(stub))->getInstrument(creature);
 }
 
 void EntertainingSessionAdapter::addWatcher(CreatureObject* creature) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->addWatcher(creature);
+	(static_cast<EntertainingSession*>(stub))->addWatcher(creature);
 }
 
 void EntertainingSessionAdapter::addListener(CreatureObject* listener) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->addListener(listener);
+	(static_cast<EntertainingSession*>(stub))->addListener(listener);
 }
 
 bool EntertainingSessionAdapter::isDancing() {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->isDancing();
+	return (static_cast<EntertainingSession*>(stub))->isDancing();
 }
 
 bool EntertainingSessionAdapter::isPlayingMusic() {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->isPlayingMusic();
+	return (static_cast<EntertainingSession*>(stub))->isPlayingMusic();
 }
 
 bool EntertainingSessionAdapter::isAcceptingBandFlourishes() {
-	return (static_cast<EntertainingSessionImplementation*>(impl))->isAcceptingBandFlourishes();
+	return (static_cast<EntertainingSession*>(stub))->isAcceptingBandFlourishes();
 }
 
 void EntertainingSessionAdapter::setAcceptingBandFlourishes(bool val) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->setAcceptingBandFlourishes(val);
+	(static_cast<EntertainingSession*>(stub))->setAcceptingBandFlourishes(val);
 }
 
 void EntertainingSessionAdapter::removeWatcher(CreatureObject* creature) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->removeWatcher(creature);
+	(static_cast<EntertainingSession*>(stub))->removeWatcher(creature);
 }
 
 void EntertainingSessionAdapter::removeListener(CreatureObject* creature) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->removeListener(creature);
+	(static_cast<EntertainingSession*>(stub))->removeListener(creature);
 }
 
 void EntertainingSessionAdapter::setPerformanceName(const String& name) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->setPerformanceName(name);
+	(static_cast<EntertainingSession*>(stub))->setPerformanceName(name);
 }
 
 void EntertainingSessionAdapter::setDancing(bool val) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->setDancing(val);
+	(static_cast<EntertainingSession*>(stub))->setDancing(val);
 }
 
 void EntertainingSessionAdapter::setTargetInstrument(bool var) {
-	(static_cast<EntertainingSessionImplementation*>(impl))->setTargetInstrument(var);
+	(static_cast<EntertainingSession*>(stub))->setTargetInstrument(var);
 }
 
 /*
@@ -1297,7 +1297,7 @@ DistributedObjectServant* EntertainingSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* EntertainingSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new EntertainingSessionAdapter(static_cast<EntertainingSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new EntertainingSessionAdapter(static_cast<EntertainingSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

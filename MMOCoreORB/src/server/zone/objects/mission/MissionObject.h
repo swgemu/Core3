@@ -482,7 +482,7 @@ protected:
 
 class MissionObjectAdapter : public IntangibleObjectAdapter {
 public:
-	MissionObjectAdapter(MissionObjectImplementation* impl);
+	MissionObjectAdapter(MissionObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

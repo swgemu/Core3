@@ -187,7 +187,7 @@ protected:
 
 class HuntingMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	HuntingMissionObjectiveAdapter(HuntingMissionObjectiveImplementation* impl);
+	HuntingMissionObjectiveAdapter(HuntingMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

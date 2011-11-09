@@ -505,7 +505,7 @@ bool RevivePackImplementation::isRevivePack() {
  *	RevivePackAdapter
  */
 
-RevivePackAdapter::RevivePackAdapter(RevivePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
+RevivePackAdapter::RevivePackAdapter(RevivePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
 Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -544,35 +544,35 @@ Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int RevivePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<RevivePackImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<RevivePack*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 float RevivePackAdapter::getHealthWoundHealed() {
-	return (static_cast<RevivePackImplementation*>(impl))->getHealthWoundHealed();
+	return (static_cast<RevivePack*>(stub))->getHealthWoundHealed();
 }
 
 float RevivePackAdapter::getHealthHealed() {
-	return (static_cast<RevivePackImplementation*>(impl))->getHealthHealed();
+	return (static_cast<RevivePack*>(stub))->getHealthHealed();
 }
 
 float RevivePackAdapter::getActionWoundHealed() {
-	return (static_cast<RevivePackImplementation*>(impl))->getActionWoundHealed();
+	return (static_cast<RevivePack*>(stub))->getActionWoundHealed();
 }
 
 float RevivePackAdapter::getActionHealed() {
-	return (static_cast<RevivePackImplementation*>(impl))->getActionHealed();
+	return (static_cast<RevivePack*>(stub))->getActionHealed();
 }
 
 float RevivePackAdapter::getMindWoundHealed() {
-	return (static_cast<RevivePackImplementation*>(impl))->getMindWoundHealed();
+	return (static_cast<RevivePack*>(stub))->getMindWoundHealed();
 }
 
 float RevivePackAdapter::getMindHealed() {
-	return (static_cast<RevivePackImplementation*>(impl))->getMindHealed();
+	return (static_cast<RevivePack*>(stub))->getMindHealed();
 }
 
 bool RevivePackAdapter::isRevivePack() {
-	return (static_cast<RevivePackImplementation*>(impl))->isRevivePack();
+	return (static_cast<RevivePack*>(stub))->isRevivePack();
 }
 
 /*
@@ -600,7 +600,7 @@ DistributedObjectServant* RevivePackHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* RevivePackHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new RevivePackAdapter(static_cast<RevivePackImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new RevivePackAdapter(static_cast<RevivePack*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

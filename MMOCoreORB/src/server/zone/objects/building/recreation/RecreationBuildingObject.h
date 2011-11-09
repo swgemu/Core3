@@ -121,7 +121,7 @@ protected:
 
 class RecreationBuildingObjectAdapter : public BuildingObjectAdapter {
 public:
-	RecreationBuildingObjectAdapter(RecreationBuildingObjectImplementation* impl);
+	RecreationBuildingObjectAdapter(RecreationBuildingObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

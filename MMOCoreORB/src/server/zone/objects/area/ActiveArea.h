@@ -166,7 +166,7 @@ protected:
 
 class ActiveAreaAdapter : public SceneObjectAdapter {
 public:
-	ActiveAreaAdapter(ActiveAreaImplementation* impl);
+	ActiveAreaAdapter(ActiveArea* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

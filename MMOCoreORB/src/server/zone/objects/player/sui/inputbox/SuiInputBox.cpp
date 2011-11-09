@@ -292,7 +292,7 @@ bool SuiInputBoxImplementation::isInputBox() {
  *	SuiInputBoxAdapter
  */
 
-SuiInputBoxAdapter::SuiInputBoxAdapter(SuiInputBoxImplementation* obj) : SuiBoxAdapter(obj) {
+SuiInputBoxAdapter::SuiInputBoxAdapter(SuiInputBox* obj) : SuiBoxAdapter(obj) {
 }
 
 Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -322,23 +322,23 @@ Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 BaseMessage* SuiInputBoxAdapter::generateMessage() {
-	return (static_cast<SuiInputBoxImplementation*>(impl))->generateMessage();
+	return (static_cast<SuiInputBox*>(stub))->generateMessage();
 }
 
 void SuiInputBoxAdapter::setMaxInputSize(int size) {
-	(static_cast<SuiInputBoxImplementation*>(impl))->setMaxInputSize(size);
+	(static_cast<SuiInputBox*>(stub))->setMaxInputSize(size);
 }
 
 void SuiInputBoxAdapter::setDefaultInput(const String& text) {
-	(static_cast<SuiInputBoxImplementation*>(impl))->setDefaultInput(text);
+	(static_cast<SuiInputBox*>(stub))->setDefaultInput(text);
 }
 
 bool SuiInputBoxAdapter::isFilterBox() {
-	return (static_cast<SuiInputBoxImplementation*>(impl))->isFilterBox();
+	return (static_cast<SuiInputBox*>(stub))->isFilterBox();
 }
 
 bool SuiInputBoxAdapter::isInputBox() {
-	return (static_cast<SuiInputBoxImplementation*>(impl))->isInputBox();
+	return (static_cast<SuiInputBox*>(stub))->isInputBox();
 }
 
 /*
@@ -366,7 +366,7 @@ DistributedObjectServant* SuiInputBoxHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* SuiInputBoxHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new SuiInputBoxAdapter(static_cast<SuiInputBoxImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new SuiInputBoxAdapter(static_cast<SuiInputBox*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

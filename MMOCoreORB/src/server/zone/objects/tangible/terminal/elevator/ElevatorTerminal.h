@@ -202,7 +202,7 @@ protected:
 
 class ElevatorTerminalAdapter : public TerminalAdapter {
 public:
-	ElevatorTerminalAdapter(ElevatorTerminalImplementation* impl);
+	ElevatorTerminalAdapter(ElevatorTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

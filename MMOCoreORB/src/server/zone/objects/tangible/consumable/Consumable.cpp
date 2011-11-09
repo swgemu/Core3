@@ -633,7 +633,7 @@ bool ConsumableImplementation::isSpice() {
  *	ConsumableAdapter
  */
 
-ConsumableAdapter::ConsumableAdapter(ConsumableImplementation* obj) : TangibleObjectAdapter(obj) {
+ConsumableAdapter::ConsumableAdapter(Consumable* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -672,35 +672,35 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 int ConsumableAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<ConsumableImplementation*>(impl))->handleObjectMenuSelect(player, selectedID);
+	return (static_cast<Consumable*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void ConsumableAdapter::setModifiers(Buff* buff, bool skillModifiers) {
-	(static_cast<ConsumableImplementation*>(impl))->setModifiers(buff, skillModifiers);
+	(static_cast<Consumable*>(stub))->setModifiers(buff, skillModifiers);
 }
 
 bool ConsumableAdapter::isSpiceEffect() {
-	return (static_cast<ConsumableImplementation*>(impl))->isSpiceEffect();
+	return (static_cast<Consumable*>(stub))->isSpiceEffect();
 }
 
 bool ConsumableAdapter::isAttributeEffect() {
-	return (static_cast<ConsumableImplementation*>(impl))->isAttributeEffect();
+	return (static_cast<Consumable*>(stub))->isAttributeEffect();
 }
 
 bool ConsumableAdapter::isDrink() {
-	return (static_cast<ConsumableImplementation*>(impl))->isDrink();
+	return (static_cast<Consumable*>(stub))->isDrink();
 }
 
 bool ConsumableAdapter::isFood() {
-	return (static_cast<ConsumableImplementation*>(impl))->isFood();
+	return (static_cast<Consumable*>(stub))->isFood();
 }
 
 bool ConsumableAdapter::isForagedFood() {
-	return (static_cast<ConsumableImplementation*>(impl))->isForagedFood();
+	return (static_cast<Consumable*>(stub))->isForagedFood();
 }
 
 bool ConsumableAdapter::isSpice() {
-	return (static_cast<ConsumableImplementation*>(impl))->isSpice();
+	return (static_cast<Consumable*>(stub))->isSpice();
 }
 
 /*
@@ -728,7 +728,7 @@ DistributedObjectServant* ConsumableHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ConsumableHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ConsumableAdapter(static_cast<ConsumableImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ConsumableAdapter(static_cast<Consumable*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

@@ -1779,7 +1779,7 @@ bool AiAgentImplementation::hasLoot() {
  *	AiAgentAdapter
  */
 
-AiAgentAdapter::AiAgentAdapter(AiAgentImplementation* obj) : CreatureObjectAdapter(obj) {
+AiAgentAdapter::AiAgentAdapter(AiAgent* obj) : CreatureObjectAdapter(obj) {
 }
 
 Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -2007,287 +2007,287 @@ Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void AiAgentAdapter::initializeTransientMembers() {
-	(static_cast<AiAgentImplementation*>(impl))->initializeTransientMembers();
+	(static_cast<AiAgent*>(stub))->initializeTransientMembers();
 }
 
 void AiAgentAdapter::finalize() {
-	(static_cast<AiAgentImplementation*>(impl))->finalize();
+	(static_cast<AiAgent*>(stub))->finalize();
 }
 
 void AiAgentAdapter::activateRecovery() {
-	(static_cast<AiAgentImplementation*>(impl))->activateRecovery();
+	(static_cast<AiAgent*>(stub))->activateRecovery();
 }
 
 void AiAgentAdapter::activateMovementEvent() {
-	(static_cast<AiAgentImplementation*>(impl))->activateMovementEvent();
+	(static_cast<AiAgent*>(stub))->activateMovementEvent();
 }
 
 void AiAgentAdapter::activateWaitEvent() {
-	(static_cast<AiAgentImplementation*>(impl))->activateWaitEvent();
+	(static_cast<AiAgent*>(stub))->activateWaitEvent();
 }
 
 void AiAgentAdapter::activateAwarenessEvent(CreatureObject* target) {
-	(static_cast<AiAgentImplementation*>(impl))->activateAwarenessEvent(target);
+	(static_cast<AiAgent*>(stub))->activateAwarenessEvent(target);
 }
 
 bool AiAgentAdapter::tryRetreat() {
-	return (static_cast<AiAgentImplementation*>(impl))->tryRetreat();
+	return (static_cast<AiAgent*>(stub))->tryRetreat();
 }
 
 void AiAgentAdapter::doRecovery() {
-	(static_cast<AiAgentImplementation*>(impl))->doRecovery();
+	(static_cast<AiAgent*>(stub))->doRecovery();
 }
 
 void AiAgentAdapter::doMovement() {
-	(static_cast<AiAgentImplementation*>(impl))->doMovement();
+	(static_cast<AiAgent*>(stub))->doMovement();
 }
 
 void AiAgentAdapter::checkNewAngle() {
-	(static_cast<AiAgentImplementation*>(impl))->checkNewAngle();
+	(static_cast<AiAgent*>(stub))->checkNewAngle();
 }
 
 void AiAgentAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	(static_cast<AiAgentImplementation*>(impl))->fillAttributeList(msg, object);
+	(static_cast<AiAgent*>(stub))->fillAttributeList(msg, object);
 }
 
 void AiAgentAdapter::setNextPosition(float x, float z, float y, SceneObject* cell) {
-	(static_cast<AiAgentImplementation*>(impl))->setNextPosition(x, z, y, cell);
+	(static_cast<AiAgent*>(stub))->setNextPosition(x, z, y, cell);
 }
 
 void AiAgentAdapter::clearPatrolPoints() {
-	(static_cast<AiAgentImplementation*>(impl))->clearPatrolPoints();
+	(static_cast<AiAgent*>(stub))->clearPatrolPoints();
 }
 
 int AiAgentAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	return (static_cast<AiAgentImplementation*>(impl))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return (static_cast<AiAgent*>(stub))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 void AiAgentAdapter::sendConversationStartTo(SceneObject* player) {
-	(static_cast<AiAgentImplementation*>(impl))->sendConversationStartTo(player);
+	(static_cast<AiAgent*>(stub))->sendConversationStartTo(player);
 }
 
 void AiAgentAdapter::sendDefaultConversationTo(SceneObject* player) {
-	(static_cast<AiAgentImplementation*>(impl))->sendDefaultConversationTo(player);
+	(static_cast<AiAgent*>(stub))->sendDefaultConversationTo(player);
 }
 
 void AiAgentAdapter::selectConversationOption(int option, SceneObject* obj) {
-	(static_cast<AiAgentImplementation*>(impl))->selectConversationOption(option, obj);
+	(static_cast<AiAgent*>(stub))->selectConversationOption(option, obj);
 }
 
 int AiAgentAdapter::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	return (static_cast<AiAgentImplementation*>(impl))->notifyObjectDestructionObservers(attacker, condition);
+	return (static_cast<AiAgent*>(stub))->notifyObjectDestructionObservers(attacker, condition);
 }
 
 int AiAgentAdapter::notifyConverseObservers(CreatureObject* converser) {
-	return (static_cast<AiAgentImplementation*>(impl))->notifyConverseObservers(converser);
+	return (static_cast<AiAgent*>(stub))->notifyConverseObservers(converser);
 }
 
 int AiAgentAdapter::notifyAttack(Observable* observable) {
-	return (static_cast<AiAgentImplementation*>(impl))->notifyAttack(observable);
+	return (static_cast<AiAgent*>(stub))->notifyAttack(observable);
 }
 
 int AiAgentAdapter::notifyCallForHelp(Observable* observable, ManagedObject* arg1) {
-	return (static_cast<AiAgentImplementation*>(impl))->notifyCallForHelp(observable, arg1);
+	return (static_cast<AiAgent*>(stub))->notifyCallForHelp(observable, arg1);
 }
 
 void AiAgentAdapter::activatePostureRecovery() {
-	(static_cast<AiAgentImplementation*>(impl))->activatePostureRecovery();
+	(static_cast<AiAgent*>(stub))->activatePostureRecovery();
 }
 
 void AiAgentAdapter::clearCombatState(bool clearDefenders) {
-	(static_cast<AiAgentImplementation*>(impl))->clearCombatState(clearDefenders);
+	(static_cast<AiAgent*>(stub))->clearCombatState(clearDefenders);
 }
 
 void AiAgentAdapter::setDefender(SceneObject* defender) {
-	(static_cast<AiAgentImplementation*>(impl))->setDefender(defender);
+	(static_cast<AiAgent*>(stub))->setDefender(defender);
 }
 
 void AiAgentAdapter::addDefender(SceneObject* defender) {
-	(static_cast<AiAgentImplementation*>(impl))->addDefender(defender);
+	(static_cast<AiAgent*>(stub))->addDefender(defender);
 }
 
 void AiAgentAdapter::removeDefender(SceneObject* defender) {
-	(static_cast<AiAgentImplementation*>(impl))->removeDefender(defender);
+	(static_cast<AiAgent*>(stub))->removeDefender(defender);
 }
 
 void AiAgentAdapter::setDespawnOnNoPlayerInRange(bool val) {
-	(static_cast<AiAgentImplementation*>(impl))->setDespawnOnNoPlayerInRange(val);
+	(static_cast<AiAgent*>(stub))->setDespawnOnNoPlayerInRange(val);
 }
 
 void AiAgentAdapter::notifyDespawn(Zone* zone) {
-	(static_cast<AiAgentImplementation*>(impl))->notifyDespawn(zone);
+	(static_cast<AiAgent*>(stub))->notifyDespawn(zone);
 }
 
 void AiAgentAdapter::scheduleDespawn() {
-	(static_cast<AiAgentImplementation*>(impl))->scheduleDespawn();
+	(static_cast<AiAgent*>(stub))->scheduleDespawn();
 }
 
 void AiAgentAdapter::respawn(Zone* zone, int level) {
-	(static_cast<AiAgentImplementation*>(impl))->respawn(zone, level);
+	(static_cast<AiAgent*>(stub))->respawn(zone, level);
 }
 
 void AiAgentAdapter::setHomeLocation(float x, float z, float y, SceneObject* cell) {
-	(static_cast<AiAgentImplementation*>(impl))->setHomeLocation(x, z, y, cell);
+	(static_cast<AiAgent*>(stub))->setHomeLocation(x, z, y, cell);
 }
 
 void AiAgentAdapter::setRespawnTimer(float resp) {
-	(static_cast<AiAgentImplementation*>(impl))->setRespawnTimer(resp);
+	(static_cast<AiAgent*>(stub))->setRespawnTimer(resp);
 }
 
 bool AiAgentAdapter::isAttackableBy(CreatureObject* object) {
-	return (static_cast<AiAgentImplementation*>(impl))->isAttackableBy(object);
+	return (static_cast<AiAgent*>(stub))->isAttackableBy(object);
 }
 
 bool AiAgentAdapter::isAggressiveTo(CreatureObject* object) {
-	return (static_cast<AiAgentImplementation*>(impl))->isAggressiveTo(object);
+	return (static_cast<AiAgent*>(stub))->isAggressiveTo(object);
 }
 
 void AiAgentAdapter::setOblivious() {
-	(static_cast<AiAgentImplementation*>(impl))->setOblivious();
+	(static_cast<AiAgent*>(stub))->setOblivious();
 }
 
 void AiAgentAdapter::setWatchObject(SceneObject* obj) {
-	(static_cast<AiAgentImplementation*>(impl))->setWatchObject(obj);
+	(static_cast<AiAgent*>(stub))->setWatchObject(obj);
 }
 
 void AiAgentAdapter::setStalkObject(SceneObject* obj) {
-	(static_cast<AiAgentImplementation*>(impl))->setStalkObject(obj);
+	(static_cast<AiAgent*>(stub))->setStalkObject(obj);
 }
 
 void AiAgentAdapter::setFollowObject(SceneObject* obj) {
-	(static_cast<AiAgentImplementation*>(impl))->setFollowObject(obj);
+	(static_cast<AiAgent*>(stub))->setFollowObject(obj);
 }
 
 void AiAgentAdapter::setTargetObject(SceneObject* obj) {
-	(static_cast<AiAgentImplementation*>(impl))->setTargetObject(obj);
+	(static_cast<AiAgent*>(stub))->setTargetObject(obj);
 }
 
 void AiAgentAdapter::selectWeapon() {
-	(static_cast<AiAgentImplementation*>(impl))->selectWeapon();
+	(static_cast<AiAgent*>(stub))->selectWeapon();
 }
 
 bool AiAgentAdapter::validateStateAttack(CreatureObject* target, String& args) {
-	return (static_cast<AiAgentImplementation*>(impl))->validateStateAttack(target, args);
+	return (static_cast<AiAgent*>(stub))->validateStateAttack(target, args);
 }
 
 bool AiAgentAdapter::isRetreating() {
-	return (static_cast<AiAgentImplementation*>(impl))->isRetreating();
+	return (static_cast<AiAgent*>(stub))->isRetreating();
 }
 
 bool AiAgentAdapter::isFleeing() {
-	return (static_cast<AiAgentImplementation*>(impl))->isFleeing();
+	return (static_cast<AiAgent*>(stub))->isFleeing();
 }
 
 void AiAgentAdapter::clearDespawnEvent() {
-	(static_cast<AiAgentImplementation*>(impl))->clearDespawnEvent();
+	(static_cast<AiAgent*>(stub))->clearDespawnEvent();
 }
 
 float AiAgentAdapter::getKinetic() {
-	return (static_cast<AiAgentImplementation*>(impl))->getKinetic();
+	return (static_cast<AiAgent*>(stub))->getKinetic();
 }
 
 float AiAgentAdapter::getEnergy() {
-	return (static_cast<AiAgentImplementation*>(impl))->getEnergy();
+	return (static_cast<AiAgent*>(stub))->getEnergy();
 }
 
 float AiAgentAdapter::getElectricity() {
-	return (static_cast<AiAgentImplementation*>(impl))->getElectricity();
+	return (static_cast<AiAgent*>(stub))->getElectricity();
 }
 
 float AiAgentAdapter::getStun() {
-	return (static_cast<AiAgentImplementation*>(impl))->getStun();
+	return (static_cast<AiAgent*>(stub))->getStun();
 }
 
 float AiAgentAdapter::getBlast() {
-	return (static_cast<AiAgentImplementation*>(impl))->getBlast();
+	return (static_cast<AiAgent*>(stub))->getBlast();
 }
 
 float AiAgentAdapter::getHeat() {
-	return (static_cast<AiAgentImplementation*>(impl))->getHeat();
+	return (static_cast<AiAgent*>(stub))->getHeat();
 }
 
 float AiAgentAdapter::getCold() {
-	return (static_cast<AiAgentImplementation*>(impl))->getCold();
+	return (static_cast<AiAgent*>(stub))->getCold();
 }
 
 float AiAgentAdapter::getAcid() {
-	return (static_cast<AiAgentImplementation*>(impl))->getAcid();
+	return (static_cast<AiAgent*>(stub))->getAcid();
 }
 
 float AiAgentAdapter::getLightSaber() {
-	return (static_cast<AiAgentImplementation*>(impl))->getLightSaber();
+	return (static_cast<AiAgent*>(stub))->getLightSaber();
 }
 
 bool AiAgentAdapter::isStalker() {
-	return (static_cast<AiAgentImplementation*>(impl))->isStalker();
+	return (static_cast<AiAgent*>(stub))->isStalker();
 }
 
 bool AiAgentAdapter::isKiller() {
-	return (static_cast<AiAgentImplementation*>(impl))->isKiller();
+	return (static_cast<AiAgent*>(stub))->isKiller();
 }
 
 unsigned int AiAgentAdapter::getFerocity() {
-	return (static_cast<AiAgentImplementation*>(impl))->getFerocity();
+	return (static_cast<AiAgent*>(stub))->getFerocity();
 }
 
 unsigned int AiAgentAdapter::getArmor() {
-	return (static_cast<AiAgentImplementation*>(impl))->getArmor();
+	return (static_cast<AiAgent*>(stub))->getArmor();
 }
 
 bool AiAgentAdapter::getDespawnOnNoPlayerInRange() {
-	return (static_cast<AiAgentImplementation*>(impl))->getDespawnOnNoPlayerInRange();
+	return (static_cast<AiAgent*>(stub))->getDespawnOnNoPlayerInRange();
 }
 
 int AiAgentAdapter::getNumberOfPlayersInRange() {
-	return (static_cast<AiAgentImplementation*>(impl))->getNumberOfPlayersInRange();
+	return (static_cast<AiAgent*>(stub))->getNumberOfPlayersInRange();
 }
 
 String AiAgentAdapter::getFactionString() {
-	return (static_cast<AiAgentImplementation*>(impl))->getFactionString();
+	return (static_cast<AiAgent*>(stub))->getFactionString();
 }
 
 String AiAgentAdapter::getSocialGroup() {
-	return (static_cast<AiAgentImplementation*>(impl))->getSocialGroup();
+	return (static_cast<AiAgent*>(stub))->getSocialGroup();
 }
 
 float AiAgentAdapter::getChanceHit() {
-	return (static_cast<AiAgentImplementation*>(impl))->getChanceHit();
+	return (static_cast<AiAgent*>(stub))->getChanceHit();
 }
 
 int AiAgentAdapter::getDamageMin() {
-	return (static_cast<AiAgentImplementation*>(impl))->getDamageMin();
+	return (static_cast<AiAgent*>(stub))->getDamageMin();
 }
 
 int AiAgentAdapter::getDamageMax() {
-	return (static_cast<AiAgentImplementation*>(impl))->getDamageMax();
+	return (static_cast<AiAgent*>(stub))->getDamageMax();
 }
 
 int AiAgentAdapter::getBaseXp() {
-	return (static_cast<AiAgentImplementation*>(impl))->getBaseXp();
+	return (static_cast<AiAgent*>(stub))->getBaseXp();
 }
 
 unsigned int AiAgentAdapter::getDiet() {
-	return (static_cast<AiAgentImplementation*>(impl))->getDiet();
+	return (static_cast<AiAgent*>(stub))->getDiet();
 }
 
 float AiAgentAdapter::getRespawnTimer() {
-	return (static_cast<AiAgentImplementation*>(impl))->getRespawnTimer();
+	return (static_cast<AiAgent*>(stub))->getRespawnTimer();
 }
 
 bool AiAgentAdapter::isAiAgent() {
-	return (static_cast<AiAgentImplementation*>(impl))->isAiAgent();
+	return (static_cast<AiAgent*>(stub))->isAiAgent();
 }
 
 void AiAgentAdapter::setLootOwner(CreatureObject* owner) {
-	(static_cast<AiAgentImplementation*>(impl))->setLootOwner(owner);
+	(static_cast<AiAgent*>(stub))->setLootOwner(owner);
 }
 
 CreatureObject* AiAgentAdapter::getLootOwner() {
-	return (static_cast<AiAgentImplementation*>(impl))->getLootOwner();
+	return (static_cast<AiAgent*>(stub))->getLootOwner();
 }
 
 bool AiAgentAdapter::hasLoot() {
-	return (static_cast<AiAgentImplementation*>(impl))->hasLoot();
+	return (static_cast<AiAgent*>(stub))->hasLoot();
 }
 
 /*
@@ -2315,7 +2315,7 @@ DistributedObjectServant* AiAgentHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* AiAgentHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new AiAgentAdapter(static_cast<AiAgentImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new AiAgentAdapter(static_cast<AiAgent*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

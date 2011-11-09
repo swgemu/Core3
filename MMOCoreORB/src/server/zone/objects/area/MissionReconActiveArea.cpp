@@ -242,7 +242,7 @@ void MissionReconActiveAreaImplementation::setMissionObjective(ReconMissionObjec
  *	MissionReconActiveAreaAdapter
  */
 
-MissionReconActiveAreaAdapter::MissionReconActiveAreaAdapter(MissionReconActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
+MissionReconActiveAreaAdapter::MissionReconActiveAreaAdapter(MissionReconActiveArea* obj) : ActiveAreaAdapter(obj) {
 }
 
 Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -263,11 +263,11 @@ Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMe
 }
 
 void MissionReconActiveAreaAdapter::notifyEnter(SceneObject* player) {
-	(static_cast<MissionReconActiveAreaImplementation*>(impl))->notifyEnter(player);
+	(static_cast<MissionReconActiveArea*>(stub))->notifyEnter(player);
 }
 
 void MissionReconActiveAreaAdapter::setMissionObjective(ReconMissionObjective* mission) {
-	(static_cast<MissionReconActiveAreaImplementation*>(impl))->setMissionObjective(mission);
+	(static_cast<MissionReconActiveArea*>(stub))->setMissionObjective(mission);
 }
 
 /*
@@ -295,7 +295,7 @@ DistributedObjectServant* MissionReconActiveAreaHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* MissionReconActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new MissionReconActiveAreaAdapter(static_cast<MissionReconActiveAreaImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new MissionReconActiveAreaAdapter(static_cast<MissionReconActiveArea*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

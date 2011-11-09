@@ -129,7 +129,7 @@ protected:
 
 class DrinkAdapter : public ConsumableAdapter {
 public:
-	DrinkAdapter(DrinkImplementation* impl);
+	DrinkAdapter(Drink* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

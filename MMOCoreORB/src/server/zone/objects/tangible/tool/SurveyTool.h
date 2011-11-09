@@ -319,7 +319,7 @@ protected:
 
 class SurveyToolAdapter : public ToolTangibleObjectAdapter {
 public:
-	SurveyToolAdapter(SurveyToolImplementation* impl);
+	SurveyToolAdapter(SurveyTool* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -214,7 +214,7 @@ protected:
 
 class BankTerminalAdapter : public TerminalAdapter {
 public:
-	BankTerminalAdapter(BankTerminalImplementation* impl);
+	BankTerminalAdapter(BankTerminal* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

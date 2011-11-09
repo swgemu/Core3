@@ -253,7 +253,7 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
  *	ObjectControllerAdapter
  */
 
-ObjectControllerAdapter::ObjectControllerAdapter(ObjectControllerImplementation* obj) : ManagedServiceAdapter(obj) {
+ObjectControllerAdapter::ObjectControllerAdapter(ObjectController* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -280,19 +280,19 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void ObjectControllerAdapter::finalize() {
-	(static_cast<ObjectControllerImplementation*>(impl))->finalize();
+	(static_cast<ObjectController*>(stub))->finalize();
 }
 
 void ObjectControllerAdapter::loadCommands() {
-	(static_cast<ObjectControllerImplementation*>(impl))->loadCommands();
+	(static_cast<ObjectController*>(stub))->loadCommands();
 }
 
 bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
-	return (static_cast<ObjectControllerImplementation*>(impl))->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+	return (static_cast<ObjectController*>(stub))->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
 float ObjectControllerAdapter::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
-	return (static_cast<ObjectControllerImplementation*>(impl))->activateCommand(object, actionCRC, actionCount, targetID, arguments);
+	return (static_cast<ObjectController*>(stub))->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 /*
@@ -320,7 +320,7 @@ DistributedObjectServant* ObjectControllerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* ObjectControllerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new ObjectControllerAdapter(static_cast<ObjectControllerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new ObjectControllerAdapter(static_cast<ObjectController*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

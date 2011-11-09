@@ -229,7 +229,7 @@ protected:
 
 class ZoneClientSessionAdapter : public ManagedObjectAdapter {
 public:
-	ZoneClientSessionAdapter(ZoneClientSessionImplementation* impl);
+	ZoneClientSessionAdapter(ZoneClientSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

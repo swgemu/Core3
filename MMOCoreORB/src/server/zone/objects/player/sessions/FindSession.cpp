@@ -300,7 +300,7 @@ int FindSessionImplementation::clearSession() {
  *	FindSessionAdapter
  */
 
-FindSessionAdapter::FindSessionAdapter(FindSessionImplementation* obj) : FacadeAdapter(obj) {
+FindSessionAdapter::FindSessionAdapter(FindSession* obj) : FacadeAdapter(obj) {
 }
 
 Packet* FindSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -330,23 +330,23 @@ Packet* FindSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 int FindSessionAdapter::initializeSession() {
-	return (static_cast<FindSessionImplementation*>(impl))->initializeSession();
+	return (static_cast<FindSession*>(stub))->initializeSession();
 }
 
 int FindSessionAdapter::cancelSession() {
-	return (static_cast<FindSessionImplementation*>(impl))->cancelSession();
+	return (static_cast<FindSession*>(stub))->cancelSession();
 }
 
 int FindSessionAdapter::clearSession() {
-	return (static_cast<FindSessionImplementation*>(impl))->clearSession();
+	return (static_cast<FindSession*>(stub))->clearSession();
 }
 
 void FindSessionAdapter::addWaypoint(float x, float y, const String& name) {
-	(static_cast<FindSessionImplementation*>(impl))->addWaypoint(x, y, name);
+	(static_cast<FindSession*>(stub))->addWaypoint(x, y, name);
 }
 
 void FindSessionAdapter::clearWaypoint() {
-	(static_cast<FindSessionImplementation*>(impl))->clearWaypoint();
+	(static_cast<FindSession*>(stub))->clearWaypoint();
 }
 
 /*
@@ -374,7 +374,7 @@ DistributedObjectServant* FindSessionHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FindSessionHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FindSessionAdapter(static_cast<FindSessionImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FindSessionAdapter(static_cast<FindSession*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

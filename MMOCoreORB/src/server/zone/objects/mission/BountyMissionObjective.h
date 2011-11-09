@@ -198,7 +198,7 @@ protected:
 
 class BountyMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	BountyMissionObjectiveAdapter(BountyMissionObjectiveImplementation* impl);
+	BountyMissionObjectiveAdapter(BountyMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

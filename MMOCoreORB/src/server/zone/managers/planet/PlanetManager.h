@@ -472,7 +472,7 @@ protected:
 
 class PlanetManagerAdapter : public ManagedServiceAdapter {
 public:
-	PlanetManagerAdapter(PlanetManagerImplementation* impl);
+	PlanetManagerAdapter(PlanetManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

@@ -184,7 +184,7 @@ protected:
 
 class ReconMissionObjectiveAdapter : public MissionObjectiveAdapter {
 public:
-	ReconMissionObjectiveAdapter(ReconMissionObjectiveImplementation* impl);
+	ReconMissionObjectiveAdapter(ReconMissionObjective* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

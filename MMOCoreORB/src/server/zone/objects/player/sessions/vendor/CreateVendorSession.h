@@ -191,7 +191,7 @@ protected:
 
 class CreateVendorSessionAdapter : public FacadeAdapter {
 public:
-	CreateVendorSessionAdapter(CreateVendorSessionImplementation* impl);
+	CreateVendorSessionAdapter(CreateVendorSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

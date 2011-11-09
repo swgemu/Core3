@@ -242,7 +242,7 @@ protected:
 
 class CraftingStationAdapter : public ToolTangibleObjectAdapter {
 public:
-	CraftingStationAdapter(CraftingStationImplementation* impl);
+	CraftingStationAdapter(CraftingStation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 

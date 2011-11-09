@@ -1193,7 +1193,7 @@ int FishingManagerImplementation::notifyObserverEvent(unsigned int eventType, Ob
  *	FishingManagerAdapter
  */
 
-FishingManagerAdapter::FishingManagerAdapter(FishingManagerImplementation* obj) : ObserverAdapter(obj) {
+FishingManagerAdapter::FishingManagerAdapter(FishingManager* obj) : ObserverAdapter(obj) {
 }
 
 Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -1343,183 +1343,183 @@ Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void FishingManagerAdapter::initializeBaitStatus() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeBaitStatus();
+	(static_cast<FishingManager*>(stub))->initializeBaitStatus();
 }
 
 void FishingManagerAdapter::initializeProperty() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeProperty();
+	(static_cast<FishingManager*>(stub))->initializeProperty();
 }
 
 void FishingManagerAdapter::initializeAction() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeAction();
+	(static_cast<FishingManager*>(stub))->initializeAction();
 }
 
 void FishingManagerAdapter::initializeState() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeState();
+	(static_cast<FishingManager*>(stub))->initializeState();
 }
 
 void FishingManagerAdapter::initializeFishType() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeFishType();
+	(static_cast<FishingManager*>(stub))->initializeFishType();
 }
 
 void FishingManagerAdapter::initializeFishLength() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeFishLength();
+	(static_cast<FishingManager*>(stub))->initializeFishLength();
 }
 
 void FishingManagerAdapter::initializeLoot() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeLoot();
+	(static_cast<FishingManager*>(stub))->initializeLoot();
 }
 
 void FishingManagerAdapter::initializeColor() {
-	(static_cast<FishingManagerImplementation*>(impl))->initializeColor();
+	(static_cast<FishingManager*>(stub))->initializeColor();
 }
 
 int FishingManagerAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<FishingManagerImplementation*>(impl))->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return (static_cast<FishingManager*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void FishingManagerAdapter::checkFishingOnPositionUpdate(CreatureObject* player) {
-	(static_cast<FishingManagerImplementation*>(impl))->checkFishingOnPositionUpdate(player);
+	(static_cast<FishingManager*>(stub))->checkFishingOnPositionUpdate(player);
 }
 
 int FishingManagerAdapter::notifyCloseContainer(CreatureObject* player, SceneObject* container) {
-	return (static_cast<FishingManagerImplementation*>(impl))->notifyCloseContainer(player, container);
+	return (static_cast<FishingManager*>(stub))->notifyCloseContainer(player, container);
 }
 
 int FishingManagerAdapter::startFishing(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->startFishing(player);
+	return (static_cast<FishingManager*>(stub))->startFishing(player);
 }
 
 void FishingManagerAdapter::stopFishing(CreatureObject* player, unsigned int boxID, bool rem) {
-	(static_cast<FishingManagerImplementation*>(impl))->stopFishing(player, boxID, rem);
+	(static_cast<FishingManager*>(stub))->stopFishing(player, boxID, rem);
 }
 
 void FishingManagerAdapter::fishingStep(CreatureObject* player) {
-	(static_cast<FishingManagerImplementation*>(impl))->fishingStep(player);
+	(static_cast<FishingManager*>(stub))->fishingStep(player);
 }
 
 void FishingManagerAdapter::success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID) {
-	(static_cast<FishingManagerImplementation*>(impl))->success(player, fish, marker, boxID);
+	(static_cast<FishingManager*>(stub))->success(player, fish, marker, boxID);
 }
 
 String FishingManagerAdapter::getTime() {
-	return (static_cast<FishingManagerImplementation*>(impl))->getTime();
+	return (static_cast<FishingManager*>(stub))->getTime();
 }
 
 void FishingManagerAdapter::sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot) {
-	(static_cast<FishingManagerImplementation*>(impl))->sendReward(player, marker, loot);
+	(static_cast<FishingManager*>(stub))->sendReward(player, marker, loot);
 }
 
 unsigned int FishingManagerAdapter::createWindow(CreatureObject* player, unsigned int boxID) {
-	return (static_cast<FishingManagerImplementation*>(impl))->createWindow(player, boxID);
+	return (static_cast<FishingManager*>(stub))->createWindow(player, boxID);
 }
 
 void FishingManagerAdapter::closeMenu(CreatureObject* player, unsigned int boxID) {
-	(static_cast<FishingManagerImplementation*>(impl))->closeMenu(player, boxID);
+	(static_cast<FishingManager*>(stub))->closeMenu(player, boxID);
 }
 
 int FishingManagerAdapter::vegetation(SceneObject* marker) {
-	return (static_cast<FishingManagerImplementation*>(impl))->vegetation(marker);
+	return (static_cast<FishingManager*>(stub))->vegetation(marker);
 }
 
 int FishingManagerAdapter::density(SceneObject* marker) {
-	return (static_cast<FishingManagerImplementation*>(impl))->density(marker);
+	return (static_cast<FishingManager*>(stub))->density(marker);
 }
 
 int FishingManagerAdapter::getFish(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->getFish(player);
+	return (static_cast<FishingManager*>(stub))->getFish(player);
 }
 
 int FishingManagerAdapter::getNextAction(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->getNextAction(player);
+	return (static_cast<FishingManager*>(stub))->getNextAction(player);
 }
 
 void FishingManagerAdapter::setNextAction(CreatureObject* player, int next) {
-	(static_cast<FishingManagerImplementation*>(impl))->setNextAction(player, next);
+	(static_cast<FishingManager*>(stub))->setNextAction(player, next);
 }
 
 FishingPoleObject* FishingManagerAdapter::getPole(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->getPole(player);
+	return (static_cast<FishingManager*>(stub))->getPole(player);
 }
 
 FishingBaitObject* FishingManagerAdapter::getBait(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->getBait(player);
+	return (static_cast<FishingManager*>(stub))->getBait(player);
 }
 
 unsigned int FishingManagerAdapter::getFishBoxID(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->getFishBoxID(player);
+	return (static_cast<FishingManager*>(stub))->getFishBoxID(player);
 }
 
 void FishingManagerAdapter::setFishBoxID(CreatureObject* player, unsigned int boxID) {
-	(static_cast<FishingManagerImplementation*>(impl))->setFishBoxID(player, boxID);
+	(static_cast<FishingManager*>(stub))->setFishBoxID(player, boxID);
 }
 
 int FishingManagerAdapter::getFishingState(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->getFishingState(player);
+	return (static_cast<FishingManager*>(stub))->getFishingState(player);
 }
 
 void FishingManagerAdapter::setFishingState(CreatureObject* player, int state) {
-	(static_cast<FishingManagerImplementation*>(impl))->setFishingState(player, state);
+	(static_cast<FishingManager*>(stub))->setFishingState(player, state);
 }
 
 SceneObject* FishingManagerAdapter::getFishMarker(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->getFishMarker(player);
+	return (static_cast<FishingManager*>(stub))->getFishMarker(player);
 }
 
 void FishingManagerAdapter::setFishMarker(CreatureObject* player, SceneObject* marker) {
-	(static_cast<FishingManagerImplementation*>(impl))->setFishMarker(player, marker);
+	(static_cast<FishingManager*>(stub))->setFishMarker(player, marker);
 }
 
 void FishingManagerAdapter::freeBait(CreatureObject* player) {
-	(static_cast<FishingManagerImplementation*>(impl))->freeBait(player);
+	(static_cast<FishingManager*>(stub))->freeBait(player);
 }
 
 void FishingManagerAdapter::fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString) {
-	(static_cast<FishingManagerImplementation*>(impl))->fishingProceed(player, nextAction, marker, fish, boxID, newstate, notifyClient, moodString);
+	(static_cast<FishingManager*>(stub))->fishingProceed(player, nextAction, marker, fish, boxID, newstate, notifyClient, moodString);
 }
 
 void FishingManagerAdapter::mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString) {
-	(static_cast<FishingManagerImplementation*>(impl))->mishapEvent(text, player, boxID, losebait, moodString);
+	(static_cast<FishingManager*>(stub))->mishapEvent(text, player, boxID, losebait, moodString);
 }
 
 bool FishingManagerAdapter::loseBait(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->loseBait(player);
+	return (static_cast<FishingManager*>(stub))->loseBait(player);
 }
 
 void FishingManagerAdapter::animate(CreatureObject* player, int nextAction) {
-	(static_cast<FishingManagerImplementation*>(impl))->animate(player, nextAction);
+	(static_cast<FishingManager*>(stub))->animate(player, nextAction);
 }
 
 SceneObject* FishingManagerAdapter::createMarker(float x, float y, float z, Zone* zone) {
-	return (static_cast<FishingManagerImplementation*>(impl))->createMarker(x, y, z, zone);
+	return (static_cast<FishingManager*>(stub))->createMarker(x, y, z, zone);
 }
 
 void FishingManagerAdapter::createSplash(float x, float y, float z, Zone* zone, CreatureObject* player) {
-	(static_cast<FishingManagerImplementation*>(impl))->createSplash(x, y, z, zone, player);
+	(static_cast<FishingManager*>(stub))->createSplash(x, y, z, zone, player);
 }
 
 bool FishingManagerAdapter::isPlaying(CreatureObject* player) {
-	return (static_cast<FishingManagerImplementation*>(impl))->isPlaying(player);
+	return (static_cast<FishingManager*>(stub))->isPlaying(player);
 }
 
 SceneObject* FishingManagerAdapter::updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer) {
-	return (static_cast<FishingManagerImplementation*>(impl))->updateMarker(player, marker, notifyPlayer);
+	return (static_cast<FishingManager*>(stub))->updateMarker(player, marker, notifyPlayer);
 }
 
 void FishingManagerAdapter::removeMarker(CreatureObject* player, SceneObject* container) {
-	(static_cast<FishingManagerImplementation*>(impl))->removeMarker(player, container);
+	(static_cast<FishingManager*>(stub))->removeMarker(player, container);
 }
 
 void FishingManagerAdapter::removeSplash(SceneObject* splash) {
-	(static_cast<FishingManagerImplementation*>(impl))->removeSplash(splash);
+	(static_cast<FishingManager*>(stub))->removeSplash(splash);
 }
 
 void FishingManagerAdapter::createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash) {
-	(static_cast<FishingManagerImplementation*>(impl))->createFishingSplashEvent(player, zoneServer, splash);
+	(static_cast<FishingManager*>(stub))->createFishingSplashEvent(player, zoneServer, splash);
 }
 
 void FishingManagerAdapter::stopFishingEvent(CreatureObject* player) {
-	(static_cast<FishingManagerImplementation*>(impl))->stopFishingEvent(player);
+	(static_cast<FishingManager*>(stub))->stopFishingEvent(player);
 }
 
 /*
@@ -1547,7 +1547,7 @@ DistributedObjectServant* FishingManagerHelper::instantiateServant() {
 }
 
 DistributedObjectAdapter* FishingManagerHelper::createAdapter(DistributedObjectStub* obj) {
-	DistributedObjectAdapter* adapter = new FishingManagerAdapter(static_cast<FishingManagerImplementation*>(obj->_getImplementation()));
+	DistributedObjectAdapter* adapter = new FishingManagerAdapter(static_cast<FishingManager*>(obj));
 
 	obj->_setClassName(className);
 	obj->_setClassHelper(this);

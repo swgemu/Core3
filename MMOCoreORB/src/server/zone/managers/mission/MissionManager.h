@@ -330,7 +330,7 @@ protected:
 
 class MissionManagerAdapter : public ObserverAdapter {
 public:
-	MissionManagerAdapter(MissionManagerImplementation* impl);
+	MissionManagerAdapter(MissionManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
