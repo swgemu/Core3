@@ -31,7 +31,7 @@ public:
 		setAllowDuplicateInsertPlan();
 	}
 
-	SpawnAreaMap(const SpawnAreaMap& l) : VectorMap<uint32, ManagedReference<SpawnArea*> >(l) {
+	SpawnAreaMap(const SpawnAreaMap& l) : VectorMap<uint32, ManagedReference<SpawnArea*> >(l) , Logger("SpawnAreaMap") {
 		lua = l.lua;
 
 		noSpawnAreas = l.noSpawnAreas;

@@ -98,7 +98,7 @@ public:
 	CooldownTimerMap() {
 	}
 
-	CooldownTimerMap(const CooldownTimerMap& map) {
+	CooldownTimerMap(const CooldownTimerMap& map) : Object() {
 		timers = map.timers;
 	}
 
