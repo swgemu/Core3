@@ -1072,7 +1072,7 @@ void SceneObjectImplementation::createChildObjects() {
 		obj->setDirection(child->getDirection());
 
 		if (isBuildingObject() && child->getCellId() >= 0) {
-			BuildingObject* buildingObject = cast<BuildingObject*>( (_this.get()));
+			BuildingObject* buildingObject = cast<BuildingObject*>( (_this));
 
 			int totalCells = buildingObject->getTotalCellNumber();
 
