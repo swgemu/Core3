@@ -557,7 +557,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
 
-		Vector<WorldCoordinates>* path = pathFinder->findPath(_this, targetPosition->getCoordinates());
+		Vector<WorldCoordinates>* path = pathFinder->findPath(_this.get(), targetPosition->getCoordinates());
 
 		if (path == NULL) {
 			patrolPoints.remove(0);
