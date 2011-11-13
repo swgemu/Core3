@@ -97,48 +97,58 @@ class ZoneProcessServer extends ManagedService {
 	public native void finalize();
 
 	@local
+	@dirty
 	public VendorManager getVendorManager() {
 		return vendorManager;
 	}
 
+	@dirty
 	public ZoneServer getZoneServer() {
 		return zoneServer;
 	}
 
 	@local
+	@dirty
 	public ZonePacketHandler getPacketHandler() {
 		return zonePacketHandler;
 	}
 	
 	@local
+	@dirty
 	public SkillManager getSkillManager() {
 		return professionManager;
 	}
 
 	@local
+	@dirty
 	public ObjectController getObjectController() {
 		return objectController;
 	}
 
+	@dirty
 	public PlayerManager getPlayerManager() {
 		return zoneServer.getPlayerManager();
 	}
 
 	@local
+	@dirty
 	public NameManager getNameManager() {
 		return nameManager;
 	}
 	
 	@local
+	@dirty
 	public HolocronManager getHolocronManager() {
 		return holocronManager;
 	}
 
+	@dirty
 	public ChatManager getChatManager() {
 		return zoneServer.getChatManager();
 	}
 
 	@local
+	@dirty
 	public SuiManager getSuiManager() {
 		return suiManager;
 	}

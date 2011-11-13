@@ -156,6 +156,7 @@ class Zone extends SceneObject {
 
 	public native void stopManagers();
 	
+	@dirty
 	public native float getHeight(float x, float y);
 
 	public native void addSceneObject(SceneObject object);
@@ -164,22 +165,27 @@ class Zone extends SceneObject {
 	
 	public native void dropSceneObject(SceneObject object);
 	
+	@dirty
 	public PlanetManager getPlanetManager() {
 		return planetManager;
 	}
 	
+	@dirty
 	public StructureManager getStructureManager() {
 		return structureManager;
 	}
 	
+	@dirty
 	public CityManager getCityManager() {
 		return cityManager;
 	}
 
+	@dirty
 	public ZoneServer getZoneServer() {
 		return server;
 	}
 	
+	@dirty
 	public CreatureManager getCreatureManager() {
 		return creatureManager;
 	}
@@ -195,9 +201,16 @@ class Zone extends SceneObject {
 	/**
 	 * These functions return the size of the terrain file for this zone.
 	 */
-	public native float getMinX();	
+	@dirty
+	public native float getMinX();
+	
+	@dirty
 	public native float getMaxX();
+	
+	@dirty
 	public native float getMinY();
+	
+	@dirty
 	public native float getMaxY();
 	
 	/**
@@ -216,6 +229,7 @@ class Zone extends SceneObject {
 		return zoneName;
 	}
 	
+	@dirty
 	public unsigned int getZoneCRC() {
 		return zoneCRC;
 	}

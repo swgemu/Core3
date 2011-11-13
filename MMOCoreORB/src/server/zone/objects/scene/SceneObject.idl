@@ -854,6 +854,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
 	 * @param sendSelf if true the owner if this object receives the message too
 	 */
+	@read
 	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone = true);
 
 	/**
@@ -863,6 +864,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param object SceneObject that will be sent to the in range objects
 	 * @param sendSelf if true the owner of this object receives the object too
 	 */
+	@read
 	public native void broadcastObject(SceneObject object, boolean sendSelf);
 
 	/**
@@ -872,6 +874,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param object SceneObject that will be sent to the in range objects
 	 * @param sendSelf if true the owner of this object receives the object too
 	 */
+	@read
 	public native void broadcastDestroy(SceneObject object, boolean sendSelf);
 
 
@@ -891,6 +894,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post {owner of this object received message, message is deleted }
 	 * @param msg BasePacket to be sent
 	 */
+	@dirty
 	public abstract native void sendMessage(BasePacket msg);
 
 	/**
@@ -900,6 +904,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param obj SceneObject that will be compared to
 	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
 	 */
+	@read
 	public int compareTo(SceneObject obj) {
 		if (getObjectID() < obj.getObjectID())
 			return 1;
@@ -924,6 +929,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked }
 	 * @return returns 0 if this object doesnt have a parent, otherwise returns its object id
 	 */
+	@read
 	public unsigned long getParentID() {
 		if (parent != null) {
 			return parent.getObjectID();
@@ -1091,10 +1097,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		cityRegion = region;
 	}
 	
+	@read
 	public Zone getZone() {
 		return zone.get();
 	}
 
+	@read
 	public native unsigned long getObjectID();
 	
 	@local
@@ -1334,10 +1342,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return movementCounter;
 	}
 
+	@read
 	public SceneObject getParent() {
 		return parent;
 	}
 
+	@read
 	public ZoneServer getZoneServer() {
 		if (server != null)
 			return server.getZoneServer();
@@ -1351,6 +1361,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked }
 	 * @return returns the parent of all children in the object tree
 	 */
+	@read
 	public native SceneObject getRootParent();
 	
 	/**
@@ -1378,6 +1389,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return Logger.getLoggingName();
 	}
 
+	@dirty
 	public abstract boolean isPlayerCreature() {
 		return false;
 	}

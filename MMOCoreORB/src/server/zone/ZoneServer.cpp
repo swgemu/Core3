@@ -1517,13 +1517,11 @@ Time* ZoneServerImplementation::getStartTimestamp() {
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
-	Locker _locker(_this);
 	// server/zone/ZoneServer.idl():  		galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
-	Locker _locker(_this);
 	// server/zone/ZoneServer.idl():  		serverState = state;
 	serverState = state;
 }

@@ -885,6 +885,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { message is sent to client }
 	 * @param msg BasePacket to send
 	 */
+	@dirty
 	public native void sendMessage(BasePacket msg);
 	
 	/**
@@ -1539,6 +1540,7 @@ class CreatureObject extends TangibleObject {
 		return false;
 	}
 	
+	@read
 	public boolean isPlayerCreature() {
 		return getPlayerObject() != null;
 	}
