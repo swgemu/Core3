@@ -46,7 +46,7 @@ ENGINE3_PATH=../../../../MMOEngine
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql \
+	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
 	    -I/usr/local/BerkeleyDB.5.0/include \
 	    -I/usr/include/db5.0
 			
@@ -55,7 +55,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
 	-L/usr/local/BerkeleyDB.5.0/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
-	-L$(ENGINE3_PATH)/lib/unix -L$(ENGINE3_PATH)/external/ptmalloc3 \
+	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
 	-lmysqlclient -lz -lengine3 -llua -ldb-5.0
 	
