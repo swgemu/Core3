@@ -75,6 +75,8 @@ void VendorCheckTask::run() {
 
 	if (vendor->isBazaarTerminal())
 		return;
+		
+	vendor->setVendor(vendorObj);
 
 	int itemCount = vendor->getVendorItemCount();
 	int itemWarningLevel = vendor->getItemWarningLevel();
