@@ -60,7 +60,7 @@ import system.lang.ref.Reference;
 include engine.util.Observer;
 
 
-class GamblingManager extends ManagedObject implements Logger, Observer {
+class GamblingManager extends Observer implements Logger {
 	protected ZoneServer zoneServer;
 
 	@dereferenced
