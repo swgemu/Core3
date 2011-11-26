@@ -69,6 +69,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("NEWBIECLOSEINVENTORY", ObserverEventType::NEWBIECLOSEINVENTORY);
 	luaEngine->setGlobalInt("OBJECTRADIALUSED", ObserverEventType::OBJECTRADIALUSED);
 	luaEngine->setGlobalInt("DAMAGERECEIVED", ObserverEventType::DAMAGERECEIVED);
+	luaEngine->setGlobalInt("SURVEY", ObserverEventType::SURVEY);
 
 
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());

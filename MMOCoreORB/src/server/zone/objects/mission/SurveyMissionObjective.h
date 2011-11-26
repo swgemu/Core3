@@ -94,7 +94,7 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void setSpawn(ResourceSpawn* sp);
+	void setSpawnFamily(String& spf);
 
 	void setMissionGiver(SceneObject* object);
 
@@ -126,7 +126,7 @@ namespace mission {
 
 class SurveyMissionObjectiveImplementation : public MissionObjectiveImplementation {
 protected:
-	ManagedReference<ResourceSpawn* > spawn;
+	String spawnFamily;
 
 	unsigned int efficiency;
 
@@ -149,7 +149,7 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void setSpawn(ResourceSpawn* sp);
+	void setSpawnFamily(String& spf);
 
 	void setMissionGiver(SceneObject* object);
 
@@ -208,12 +208,14 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void setSpawn(ResourceSpawn* sp);
+	void setSpawnFamily(String& spf);
 
 	void setMissionGiver(SceneObject* object);
 
 	void setEfficiency(unsigned int eff);
 
+protected:
+	String _param0_setSpawnFamily__String_;
 };
 
 class SurveyMissionObjectiveHelper : public DistributedObjectClassHelper, public Singleton<SurveyMissionObjectiveHelper> {

@@ -37,6 +37,7 @@ public:
 	const static int OBJECTRADIALUSED = 25; //ManagedObject arg1 = player that used the radial, long arg2 = radial selected id
 	const static int DAMAGERECEIVED = 26; //ManagedObject arg1 = object that is doing the damage, long arg2 = damage did
 	const static int OBJECTNAMECHANGED = 27; //ManagedObject arg1 = object whose name changed, long arg2 = 0
+	const static int SURVEY = 28; //ManagedObject arg1 = ResourceSpawn, long arg2 = density
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

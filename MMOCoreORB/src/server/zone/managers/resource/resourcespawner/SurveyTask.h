@@ -62,12 +62,16 @@ class SurveyTask : public Task {
 	ManagedReference<CreatureObject* > playerCreature;
 	Survey* surveyMessage;
 	ManagedReference<WaypointObject*> waypoint;
+	float density;
+	ManagedReference<ResourceSpawn*> resourceSpawn;
 
 public:
-	SurveyTask(ManagedReference<CreatureObject* > play, Survey* surveyM, ManagedReference<WaypointObject*> way) {
+	SurveyTask(ManagedReference<CreatureObject* > play, Survey* surveyM, ManagedReference<WaypointObject*> way, float density, ManagedReference<ResourceSpawn*> resourceSpawn) {
 		playerCreature = play;
 		surveyMessage = surveyM;
 		waypoint = way;
+		this->density = density;
+		this->resourceSpawn = resourceSpawn;
 	}
 
 	void run() {
@@ -82,6 +86,9 @@ public:
 
 			// Send Waypoint System Message
 			playerCreature->sendSystemMessage("@survey:survey_waypoint");
+
+			//Notify any survey mission observers.
+			playerCreature->notifyObservers(ObserverEventType::SURVEY, resourceSpawn, density);
 		}
 
 		playerCreature->removePendingTask("survey");

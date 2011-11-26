@@ -16,7 +16,7 @@
  *	SurveyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETSPAWN__RESOURCESPAWN_,RPC_SETMISSIONGIVER__SCENEOBJECT_,RPC_SETEFFICIENCY__INT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETSPAWNFAMILY__STRING_,RPC_SETMISSIONGIVER__SCENEOBJECT_,RPC_SETEFFICIENCY__INT_};
 
 SurveyMissionObjective::SurveyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	SurveyMissionObjectiveImplementation* _implementation = new SurveyMissionObjectiveImplementation(mission);
@@ -102,18 +102,18 @@ int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
-void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
+void SurveyMissionObjective::setSpawnFamily(String& spf) {
 	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETSPAWN__RESOURCESPAWN_);
-		method.addObjectParameter(sp);
+		DistributedMethod method(this, RPC_SETSPAWNFAMILY__STRING_);
+		method.addAsciiParameter(spf);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setSpawn(sp);
+		_implementation->setSpawnFamily(spf);
 }
 
 void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
@@ -247,8 +247,8 @@ bool SurveyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawn") {
-		TypeInfo<ManagedReference<ResourceSpawn* > >::parseFromBinaryStream(&spawn, stream);
+	if (_name == "spawnFamily") {
+		TypeInfo<String >::parseFromBinaryStream(&spawnFamily, stream);
 		return true;
 	}
 
@@ -277,11 +277,11 @@ int SurveyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawn";
+	_name = "spawnFamily";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<ResourceSpawn* > >::toBinaryStream(&spawn, stream);
+	TypeInfo<String >::toBinaryStream(&spawnFamily, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -323,13 +323,11 @@ void SurveyMissionObjectiveImplementation::initializeTransientMembers() {
 	MissionObjectiveImplementation::initializeTransientMembers();
 	// server/zone/objects/mission/SurveyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/SurveyMissionObjective.idl():  		activate();
-	activate();
 }
 
-void SurveyMissionObjectiveImplementation::setSpawn(ResourceSpawn* sp) {
-	// server/zone/objects/mission/SurveyMissionObjective.idl():  		spawn = sp;
-	spawn = sp;
+void SurveyMissionObjectiveImplementation::setSpawnFamily(String& spf) {
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		spawnFamily = spf;
+	spawnFamily = spf;
 }
 
 void SurveyMissionObjectiveImplementation::setMissionGiver(SceneObject* object) {
@@ -371,8 +369,8 @@ Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
-	case RPC_SETSPAWN__RESOURCESPAWN_:
-		setSpawn(static_cast<ResourceSpawn*>(inv->getObjectParameter()));
+	case RPC_SETSPAWNFAMILY__STRING_:
+		setSpawnFamily(inv->getAsciiParameter(_param0_setSpawnFamily__String_));
 		break;
 	case RPC_SETMISSIONGIVER__SCENEOBJECT_:
 		setMissionGiver(static_cast<SceneObject*>(inv->getObjectParameter()));
@@ -411,8 +409,8 @@ int SurveyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer
 	return (static_cast<SurveyMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
-void SurveyMissionObjectiveAdapter::setSpawn(ResourceSpawn* sp) {
-	(static_cast<SurveyMissionObjective*>(stub))->setSpawn(sp);
+void SurveyMissionObjectiveAdapter::setSpawnFamily(String& spf) {
+	(static_cast<SurveyMissionObjective*>(stub))->setSpawnFamily(spf);
 }
 
 void SurveyMissionObjectiveAdapter::setMissionGiver(SceneObject* object) {

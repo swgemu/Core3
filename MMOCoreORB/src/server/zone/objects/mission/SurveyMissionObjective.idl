@@ -54,7 +54,7 @@ import server.zone.objects.resource.ResourceSpawn;
 import engine.core.ManagedObject;
 
 class SurveyMissionObjective extends MissionObjective {
-	protected ResourceSpawn spawn;
+	protected string spawnFamily;
 	protected unsigned int efficiency;
 	protected SceneObject missionGiver;
 	
@@ -75,7 +75,7 @@ class SurveyMissionObjective extends MissionObjective {
 		
 		Logger.setLoggingName("MissionObject");
 		
-		activate();
+		//activate();
 	}
 	
 	public native void activate();
@@ -84,8 +84,8 @@ class SurveyMissionObjective extends MissionObjective {
 	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	
-	public void setSpawn(ResourceSpawn sp) {
-		spawn = sp;
+	public void setSpawnFamily(string spf) {
+		spawnFamily = spf;
 	}
 	
 	public void setMissionGiver(SceneObject object) {

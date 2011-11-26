@@ -192,15 +192,8 @@ void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* 
 	objective->setEfficiency(mission->getDifficultyLevel());
 
 	String spawnName = mission->getTargetName();
-	ResourceManager* manager = server->getResourceManager();
-	ManagedReference<ResourceSpawn*> spawn = manager->getResourceSpawn(spawnName);
 
-	if (spawn == NULL) {
-		error("spawn not found for " + spawnName);
-		return;
-	}
-
-	objective->setSpawn(spawn);
+	objective->setSpawnFamily(spawnName);
 	objective->setMissionGiver(missionTerminal);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
@@ -416,42 +409,46 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 }
 
 void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player, MissionObject* mission) {
-	/*
 	int maxLevel = 50;
-	int minLevel = 10;
-
-	if (player->hasSkillBox("crafting_artisan_survey_04")) {
-		minLevel = 10, maxLevel = 50;
-	} else if (player->hasSkillBox("crafting_artisan_survey_03")) {
-		minLevel = 10, maxLevel = 40;
-	} else if (player->hasSkillBox("crafting_artisan_survey_02")) {
-		minLevel = 10, maxLevel = 30;
-	} else if (player->hasSkillBox("crafting_artisan_survey_01")) {
-		minLevel = 10, maxLevel = 20;
-	} else {
-		minLevel = 10, maxLevel = 10;
+	int minLevel = 50;
+	long long surveySkill = player->getSkillMod("surveying");
+	if (surveySkill > 30) {
+		maxLevel += 10;
+	}
+	if (surveySkill > 50) {
+		maxLevel += 10;
+	}
+	if (surveySkill > 70) {
+		maxLevel += 10;
+	}
+	if (surveySkill > 90) {
+		maxLevel += 10;
+	}
+	if (surveySkill > 100) {
+		//Max mission level is 95.
+		maxLevel += 5;
 	}
 
-	int randLevel = minLevel + System::random(maxLevel - minLevel);
-
-	if (randLevel == 0)
-		randLevel = 1;
+	//Mission level used as needed concentration in increments of 5. I.e. 50, 55, 60 etc. up to 95.
+	int randLevel = minLevel + 5 * System::random((maxLevel - minLevel) / 5);
 
 	if (randLevel > maxLevel)
 		randLevel = maxLevel;
 
 	ResourceManager* manager = server->getResourceManager();
 
-	int zoneID = player->getZone()->getZoneID();
+	String zoneName = player->getZone()->getZoneName();
 
 	Vector<ManagedReference<ResourceSpawn*> > resources;
 
 	int toolType = SurveyTool::MINERAL;
 
-	if (System::random(1) == 0)
+	//75 % mineral, 25 % chemical.
+	if (System::random(3) == 0) {
 		toolType = SurveyTool::CHEMICAL;
+	}
 
-	manager->getResourceListByType(resources, toolType, zoneID);
+	manager->getResourceListByType(resources, toolType, zoneName);
 
 	ManagedReference<ResourceSpawn*> spawn = resources.get(System::random(resources.size() - 1));
 	uint32 containerCRC = spawn->getContainerCRC();
@@ -464,21 +461,20 @@ void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player
 	if (texts == 0)
 		texts = 1;
 
-	// TODO: make less static
-	//mission->setMissionTarget(spawn);
-	//mission->setStartPosition(0, 0, player->getPlanetCRC());
-	mission->setMissionTargetName(spawn->getName());
+	mission->setMissionTargetName(spawn->getFamilyName());
 	mission->setTargetTemplate(templateObject);
-	mission->setRewardCredits(500 + System::random(500));
+
+	//Reward depending on mission level.
+	mission->setRewardCredits(400 + (randLevel - minLevel) * 20 + System::random(100));
+
 	mission->setMissionDifficulty(randLevel);
-	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
+	mission->setStartPlanetCRC(zoneName.hashCode());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getPlanetCRC());
 	mission->setMissionTitle("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "t");
 	mission->setMissionDescription("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "o");
 	mission->setCreatorName(nm->makeCreatureName());
 
 	mission->setTypeCRC(MissionObject::SURVEY);
-	*/
 }
 
 void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player, MissionObject* mission) {

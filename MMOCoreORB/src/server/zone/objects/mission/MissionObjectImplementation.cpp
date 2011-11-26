@@ -17,11 +17,13 @@ void MissionObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("MissionObject");
+
+	if (missionObjective != NULL) {
+		missionObjective->activate();
+	}
 }
 
 void MissionObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	info("sending miso baselines");
-
 	BaseMessage* tano3 = new MissionObjectMessage3(_this);
 	player->sendMessage(tano3);
 

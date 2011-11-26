@@ -501,8 +501,8 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 	player->sendMessage(sysMessage);
 
-	Reference<SurveyTask*> surveyTask = new SurveyTask(player, surveyMessage,
-			waypoint);
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
+	Reference<SurveyTask*> surveyTask = new SurveyTask(player, surveyMessage, waypoint, maxDensity * 100, resourceSpawn);
 	player->addPendingTask("survey", surveyTask, 3000);
 }
 
@@ -655,9 +655,6 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 
 	if (playerManager != NULL)
 		playerManager->awardExperience(player, "resource_harvesting_inorganic", xp, true);
-
-	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density
-			* 100);
 
 	addResourceToPlayerInventory(player, resourceSpawn, unitsExtracted);
 

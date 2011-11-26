@@ -21,14 +21,17 @@ void SurveyMissionObjectiveImplementation::activate() {
 		return;
 	}
 
-	CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+	if(mission != NULL) {
+		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+		if (player != NULL) {
+			ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
+			ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
 
-	ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-	ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+			player->registerObserver(ObserverEventType::SURVEY, observer);
 
-	player->registerObserver(ObserverEventType::SAMPLE, observer);
-
-	observers.put(observer);
+			observers.put(observer);
+		}
+	}
 }
 
 void SurveyMissionObjectiveImplementation::abort() {
@@ -41,7 +44,7 @@ void SurveyMissionObjectiveImplementation::abort() {
 
 		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
 
-		player->dropObserver(ObserverEventType::SAMPLE, observer);
+		player->dropObserver(ObserverEventType::SURVEY, observer);
 	}
 
 	observer->destroyObjectFromDatabase();
@@ -64,6 +67,8 @@ void SurveyMissionObjectiveImplementation::complete() {
 	stringId.setDI(missionReward);
 	player->sendSystemMessage(stringId);
 
+	Locker _lock(player);
+
 	player->addBankCredits(missionReward, true);
 
 	ZoneServer* zoneServer = player->getZoneServer();
@@ -73,13 +78,12 @@ void SurveyMissionObjectiveImplementation::complete() {
 }
 
 int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType == ObserverEventType::SAMPLE) {
+	if (eventType == ObserverEventType::SURVEY) {
 		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
 		ResourceSpawn* sampledSpawn = cast<ResourceSpawn*>( arg1);
 
 		int sampledDensity = (int)arg2;
-
-		if (sampledSpawn == spawn && (sampledDensity >= efficiency)) {
+		if (sampledSpawn->getFamilyName() == spawnFamily && (sampledDensity >= efficiency)) {
 
 			if (!player->isInRange(missionGiver, 1024)) {
 				complete();
