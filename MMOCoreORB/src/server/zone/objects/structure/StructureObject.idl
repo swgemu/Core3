@@ -323,6 +323,17 @@ class StructureObject extends TangibleObject {
 	public void addMaintenance(int add) {
 		surplusMaintenance += add;
 	}
+
+	/**
+	 * Withdraws maintenance from payer and deposits it in the structure
+	 * maintenance pool. Updates maintenance modifier depending on skill
+	 * of payer.
+	 * @pre payer and structure objects are locked.
+	 * @post payer and structure objects are locked.
+	 * @param maintenance maintenance amount to deposit.
+	 * @param payer payer object.
+	 */
+	public native void payMaintenance(int maintenance, CreatureObject payer);
 	
 	public void setSurplusPower(int surplus) {
 		surplusPower = surplus;

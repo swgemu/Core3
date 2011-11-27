@@ -71,8 +71,7 @@ public:
 		if (owner->getBankCredits() >= oneWeekMaintenance && !structureObject->isDecaying()) {
 			//Withdraw 1 week maintenance from owner bank account and add to the structure
 			//maintenance pool.
-			owner->substractBankCredits(oneWeekMaintenance);
-			structureObject->addMaintenance(oneWeekMaintenance);
+			structureObject->payMaintenance(oneWeekMaintenance, owner);
 
 			//Send email notification to owner.
 			sendMailMaintenanceWithdrawnFromBank(owner);

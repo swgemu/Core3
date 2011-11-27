@@ -32,6 +32,7 @@ public:
 		//Deposit/Withdraw the maintenance
 		StructureObject* structure = cast<StructureObject*>( obj.get());
 
+		Locker _creatureLock(creature);
 		Locker _lock(structure, creature);
 
 		//No wrap around in the maintenance pool.
@@ -46,15 +47,7 @@ public:
 			return;
 		}
 
-		creature->substractCashCredits(transferred);
-		structure->addMaintenance(transferred);
-
-		ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
-		if (ghost != NULL) {
-			structure->setMaintenanceReduced(ghost->hasAbility("maintenance_fees_1"));
-		} else {
-			structure->setMaintenanceReduced(false);
-		}
+		structure->payMaintenance(transferred, creature);
 
 		if (structure->isBuildingObject()) {
 			//Update sign name if it previously was condemned.

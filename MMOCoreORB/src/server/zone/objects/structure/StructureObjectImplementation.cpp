@@ -232,3 +232,17 @@ int StructureObjectImplementation::getDecayPercentage() {
 	}
 	return percentage;
 }
+
+void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObject* payer) {
+	//Pay maintenance.
+	payer->substractBankCredits(maintenance);
+	addMaintenance(maintenance);
+
+	//Update maintenance reduced.
+	ManagedReference<PlayerObject* > ghost = payer->getPlayerObject();
+	if (ghost != NULL) {
+		setMaintenanceReduced(ghost->hasAbility("maintenance_fees_1"));
+	} else {
+		setMaintenanceReduced(false);
+	}
+}
