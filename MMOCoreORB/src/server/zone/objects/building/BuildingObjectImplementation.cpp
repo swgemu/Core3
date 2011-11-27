@@ -458,3 +458,16 @@ void BuildingObjectImplementation::destroyAllPlayerItems() {
 		cell->destroyAllPlayerItems();
 	}
 }
+
+void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
+	//TODO: Fix sign object to handle string id's.
+	UnicodeString signNameToSet("@player_structure:fix_condemned_title");
+	if (!isCondemned()){
+		signNameToSet = signName;
+	}
+	if (signObject != NULL) {
+		signObject->setCustomObjectName(signNameToSet, notifyClient);
+	} else {
+		StructureObjectImplementation::setCustomObjectName(signNameToSet, notifyClient);
+	}
+}

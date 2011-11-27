@@ -176,7 +176,7 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 			return;
 		}
 
-		if (baseMaintenanceRate != 0 && surplusMaintenance <= 0) {
+		if (getMaintenanceRate() != 0 && surplusMaintenance <= 0) {
 			StringIdChatParameter stringId("shared", "harvester_no_maint_4");
 			ChatSystemMessage* msg = new ChatSystemMessage(stringId);
 
@@ -327,7 +327,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 	float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
 	float workTimePermitted = elapsedTime;
 
-	float payAmount = (elapsedTime / 3600.0) * baseMaintenanceRate;
+	float payAmount = (elapsedTime / 3600.0) * getMaintenanceRate();
 
 	bool shutdownWork = false;
 
@@ -335,7 +335,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 		//payAmount = surplusMaintenance;
 		//setOperating(false);
 
-		workTimePermitted = surplusMaintenance / baseMaintenanceRate * 3600;
+		workTimePermitted = surplusMaintenance / getMaintenanceRate() * 3600;
 
 		Time workTill(lastMaintenanceTime.getTime() + (int) workTimePermitted);
 		workingTime = workTill;

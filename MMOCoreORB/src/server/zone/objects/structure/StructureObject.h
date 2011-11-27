@@ -146,6 +146,8 @@ public:
 
 	void scheduleMaintenanceExpirationEvent();
 
+	void scheduleMaintenanceTask(int timeFromNow);
+
 	void updateStructureStatus();
 
 	bool isOnAdminList(const String& playerName);
@@ -184,13 +186,15 @@ public:
 
 	int getRedeedCost();
 
-	PlayerObject* getOwnerObject();
+	CreatureObject* getOwnerCreatureObject();
 
 	unsigned long long getOwnerObjectID();
 
 	unsigned long long getDeedObjectID();
 
 	int getLotSize();
+
+	void setMaintenanceReduced(bool value);
 
 	float getMaintenanceRate();
 
@@ -223,6 +227,14 @@ public:
 	void setSurplusPower(int surplus);
 
 	void addPower(int add);
+
+	bool isDecaying();
+
+	bool isDecayed();
+
+	int getDecayPercentage();
+
+	bool isCondemned();
 
 	void setPublicStructure(bool privacy);
 
@@ -283,8 +295,7 @@ protected:
 
 	float surplusPower;
 
-private:
-	static const String MAINTENANCE_FEES_1;
+	bool maintenanceReduced;
 
 public:
 	StructureObjectImplementation();
@@ -306,6 +317,8 @@ public:
 	String getTimeString(unsigned int timestamp);
 
 	void scheduleMaintenanceExpirationEvent();
+
+	void scheduleMaintenanceTask(int timeFromNow);
 
 	virtual void updateStructureStatus();
 
@@ -345,13 +358,15 @@ public:
 
 	int getRedeedCost();
 
-	PlayerObject* getOwnerObject();
+	CreatureObject* getOwnerCreatureObject();
 
 	unsigned long long getOwnerObjectID();
 
 	unsigned long long getDeedObjectID();
 
 	int getLotSize();
+
+	void setMaintenanceReduced(bool value);
 
 	float getMaintenanceRate();
 
@@ -384,6 +399,14 @@ public:
 	void setSurplusPower(int surplus);
 
 	void addPower(int add);
+
+	bool isDecaying();
+
+	bool isDecayed();
+
+	int getDecayPercentage();
+
+	virtual bool isCondemned();
 
 	virtual void setPublicStructure(bool privacy);
 
@@ -448,6 +471,8 @@ public:
 
 	void scheduleMaintenanceExpirationEvent();
 
+	void scheduleMaintenanceTask(int timeFromNow);
+
 	void updateStructureStatus();
 
 	bool isOnAdminList(const String& playerName);
@@ -486,13 +511,15 @@ public:
 
 	int getRedeedCost();
 
-	PlayerObject* getOwnerObject();
+	CreatureObject* getOwnerCreatureObject();
 
 	unsigned long long getOwnerObjectID();
 
 	unsigned long long getDeedObjectID();
 
 	int getLotSize();
+
+	void setMaintenanceReduced(bool value);
 
 	float getMaintenanceRate();
 
@@ -525,6 +552,14 @@ public:
 	void setSurplusPower(int surplus);
 
 	void addPower(int add);
+
+	bool isDecaying();
+
+	bool isDecayed();
+
+	int getDecayPercentage();
+
+	bool isCondemned();
 
 	void setPublicStructure(bool privacy);
 

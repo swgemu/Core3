@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -115,6 +115,20 @@ void BuildingObject::setCustomObjectName(const UnicodeString& name, bool notifyC
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setCustomObjectName(name, notifyClient);
+}
+
+void BuildingObject::updateSignName(bool notifyClient) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATESIGNNAME__BOOL_);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateSignName(notifyClient);
 }
 
 void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
@@ -604,6 +618,19 @@ void BuildingObject::setPublicStructure(bool privacy) {
 		_implementation->setPublicStructure(privacy);
 }
 
+bool BuildingObject::isCondemned() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCONDEMNED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCondemned();
+}
+
 int BuildingObject::getMapCellSize() {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -778,6 +805,11 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "signName") {
+		TypeInfo<UnicodeString >::parseFromBinaryStream(&signName, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -841,8 +873,16 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "signName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<UnicodeString >::toBinaryStream(&signName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 6 + StructureObjectImplementation::writeObjectMembers(stream);
+
+	return 7 + StructureObjectImplementation::writeObjectMembers(stream);
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
@@ -862,19 +902,15 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	deedObjectID = 0;
 	// server/zone/objects/building/BuildingObject.idl():  		publicStructure = true;
 	publicStructure = true;
+	// server/zone/objects/building/BuildingObject.idl():  		signName = "";
+	signName = "";
 }
 
 void BuildingObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	// server/zone/objects/building/BuildingObject.idl():  		}
-	if (signObject != NULL){
-	// server/zone/objects/building/BuildingObject.idl():  			signObject.setCustomObjectName(name, notifyClient);
-	signObject->setCustomObjectName(name, notifyClient);
-}
-
-	else {
-	// server/zone/objects/building/BuildingObject.idl():  			super.setCustomObjectName(name, notifyClient);
-	StructureObjectImplementation::setCustomObjectName(name, notifyClient);
-}
+	// server/zone/objects/building/BuildingObject.idl():  		signName = name;
+	signName = name;
+	// server/zone/objects/building/BuildingObject.idl():  		updateSignName(notifyClient);
+	updateSignName(notifyClient);
 }
 
 bool BuildingObjectImplementation::isAllowedEntry(const String& firstName) {
@@ -968,6 +1004,11 @@ void BuildingObjectImplementation::setPublicStructure(bool privacy) {
 	publicStructure = privacy;
 }
 
+bool BuildingObjectImplementation::isCondemned() {
+	// server/zone/objects/building/BuildingObject.idl():  		return super.isDecayed();
+	return StructureObjectImplementation::isDecayed();
+}
+
 int BuildingObjectImplementation::getMapCellSize() {
 	// server/zone/objects/building/BuildingObject.idl():  		return cells.size();
 	return (&cells)->size();
@@ -1003,6 +1044,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_:
 		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
+		break;
+	case RPC_UPDATESIGNNAME__BOOL_:
+		updateSignName(inv->getBooleanParameter());
 		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
 		sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
@@ -1097,6 +1141,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETPUBLICSTRUCTURE__BOOL_:
 		setPublicStructure(inv->getBooleanParameter());
 		break;
+	case RPC_ISCONDEMNED__:
+		resp->insertBoolean(isCondemned());
+		break;
 	case RPC_GETMAPCELLSIZE__:
 		resp->insertSignedInt(getMapCellSize());
 		break;
@@ -1131,6 +1178,10 @@ void BuildingObjectAdapter::createContainerComponent() {
 
 void BuildingObjectAdapter::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
 	(static_cast<BuildingObject*>(stub))->setCustomObjectName(name, notifyClient);
+}
+
+void BuildingObjectAdapter::updateSignName(bool notifyClient) {
+	(static_cast<BuildingObject*>(stub))->updateSignName(notifyClient);
 }
 
 void BuildingObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
@@ -1255,6 +1306,10 @@ bool BuildingObjectAdapter::isPrivateStructure() {
 
 void BuildingObjectAdapter::setPublicStructure(bool privacy) {
 	(static_cast<BuildingObject*>(stub))->setPublicStructure(privacy);
+}
+
+bool BuildingObjectAdapter::isCondemned() {
+	return (static_cast<BuildingObject*>(stub))->isCondemned();
 }
 
 int BuildingObjectAdapter::getMapCellSize() {

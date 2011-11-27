@@ -80,6 +80,8 @@ class BuildingObject extends StructureObject {
 	public boolean publicStructure;
 	
 	public static final int MAXPLAYERITEMS = 400;
+
+	protected unicode signName;
 	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
@@ -96,6 +98,8 @@ class BuildingObject extends StructureObject {
 		deedObjectID = 0;
 		
 		publicStructure = true;
+
+		signName = "";
 	}
 	
 	public native void createCellObjects();
@@ -110,12 +114,11 @@ class BuildingObject extends StructureObject {
 	public native void createContainerComponent();
 
 	public void setCustomObjectName(final unicode name, boolean notifyClient) {
-		if (signObject != null) {
-			signObject.setCustomObjectName(name, notifyClient);
-		} else {
-			super.setCustomObjectName(name, notifyClient);
-		}
+		signName = name;
+		updateSignName(notifyClient);
 	}
+
+	public native void updateSignName(boolean notifyClient);
 	
 	/**
 	 * Sends the contained non slotted objects to the specified player
@@ -298,6 +301,10 @@ class BuildingObject extends StructureObject {
 	
 	public void setPublicStructure(boolean privacy) {
 		publicStructure = privacy;
+	}
+
+	public boolean isCondemned() {
+		return super.isDecayed();
 	}
 	
 	public int getMapCellSize() {

@@ -87,7 +87,7 @@ class StructureObject extends TangibleObject {
 	protected float surplusMaintenance;
 	protected float surplusPower;
 
-	private static transient final string MAINTENANCE_FEES_1;
+	protected boolean maintenanceReduced;
 	
 	public StructureObject() {
 		Logger.setLoggingName("StructureObject");
@@ -107,6 +107,8 @@ class StructureObject extends TangibleObject {
 		surplusPower = 0;
 		
 		structureMaintenanceTask = null;
+
+		maintenanceReduced = false;
 	}
 	
 	public native void initializeTransientMembers();
@@ -144,6 +146,12 @@ class StructureObject extends TangibleObject {
 	 * This method calls updateStructureStatus before running.
 	 */
 	public native void scheduleMaintenanceExpirationEvent();
+
+	/**
+	 * Schedules the maintenance task.
+	 * @param timeFromNow the time till the task should be run.
+	 */
+	public native void scheduleMaintenanceTask(int timeFromNow);
 	
 	/**
 	 * This method should be called anytime a method needs up to date information about
@@ -248,7 +256,7 @@ class StructureObject extends TangibleObject {
 		return (baseMaintenanceRate * 50);
 	}
 
-	public native PlayerObject getOwnerObject();
+	public native CreatureObject getOwnerCreatureObject(); 
 	
 	public unsigned long getOwnerObjectID() {
 		return ownerObjectID;
@@ -259,6 +267,10 @@ class StructureObject extends TangibleObject {
 	}
 	
 	public native int getLotSize();
+
+	public void setMaintenanceReduced(boolean value) {
+		maintenanceReduced = value;
+	}
 
 	public native float getMaintenanceRate();
 
@@ -318,6 +330,18 @@ class StructureObject extends TangibleObject {
 	
 	public void addPower(int add) {
 		surplusPower += add;
+	}
+
+	public boolean isDecaying() {
+		return (surplusMaintenance < 0);
+	}
+
+	public native boolean isDecayed();
+
+	public native int getDecayPercentage();
+
+	public abstract boolean isCondemned() {
+		return false;
 	}
 	
 	public abstract void setPublicStructure(boolean privacy) {

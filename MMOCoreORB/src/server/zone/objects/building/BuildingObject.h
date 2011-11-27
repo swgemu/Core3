@@ -160,6 +160,8 @@ public:
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
+	void updateSignName(bool notifyClient);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(CreatureObject* creature);
@@ -236,6 +238,8 @@ public:
 
 	void setPublicStructure(bool privacy);
 
+	bool isCondemned();
+
 	int getMapCellSize();
 
 	bool togglePrivacy();
@@ -285,6 +289,10 @@ public:
 
 	static const int MAXPLAYERITEMS = 400;
 
+protected:
+	UnicodeString signName;
+
+public:
 	BuildingObjectImplementation();
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
@@ -300,6 +308,8 @@ public:
 	void createContainerComponent();
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
+	void updateSignName(bool notifyClient);
 
 	void sendContainerObjectsTo(SceneObject* player);
 
@@ -377,6 +387,8 @@ public:
 
 	void setPublicStructure(bool privacy);
 
+	bool isCondemned();
+
 	int getMapCellSize();
 
 	bool togglePrivacy();
@@ -435,6 +447,8 @@ public:
 	void createContainerComponent();
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
+	void updateSignName(bool notifyClient);
 
 	void sendContainerObjectsTo(SceneObject* player);
 
@@ -497,6 +511,8 @@ public:
 	bool isPrivateStructure();
 
 	void setPublicStructure(bool privacy);
+
+	bool isCondemned();
 
 	int getMapCellSize();
 

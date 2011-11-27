@@ -9,6 +9,7 @@
 #define STRUCTUREMANAGEMAINTENANCESUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 
 class StructureManageMaintenanceSuiCallback : public SuiCallback {
@@ -47,6 +48,20 @@ public:
 
 		creature->substractCashCredits(transferred);
 		structure->addMaintenance(transferred);
+
+		ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
+		if (ghost != NULL) {
+			structure->setMaintenanceReduced(ghost->hasAbility("maintenance_fees_1"));
+		} else {
+			structure->setMaintenanceReduced(false);
+		}
+
+		if (structure->isBuildingObject()) {
+			//Update sign name if it previously was condemned.
+			BuildingObject* building = cast<BuildingObject* >(structure);
+			building->updateSignName(true);
+		}
+
 		structure->scheduleMaintenanceExpirationEvent();
 	}
 };

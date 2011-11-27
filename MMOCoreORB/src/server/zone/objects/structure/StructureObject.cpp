@@ -22,7 +22,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECT__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETMAINTENANCERATE__,RPC_GETMAINTENANCEMODS__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_SCHEDULEMAINTENANCETASK__INT_,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNERCREATUREOBJECT__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_SETMAINTENANCEREDUCED__BOOL_,RPC_GETMAINTENANCERATE__,RPC_GETMAINTENANCEMODS__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_ISDECAYING__,RPC_ISDECAYED__,RPC_GETDECAYPERCENTAGE__,RPC_ISCONDEMNED__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -127,6 +127,20 @@ void StructureObject::scheduleMaintenanceExpirationEvent() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->scheduleMaintenanceExpirationEvent();
+}
+
+void StructureObject::scheduleMaintenanceTask(int timeFromNow) {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SCHEDULEMAINTENANCETASK__INT_);
+		method.addSignedIntParameter(timeFromNow);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->scheduleMaintenanceTask(timeFromNow);
 }
 
 void StructureObject::updateStructureStatus() {
@@ -398,17 +412,17 @@ int StructureObject::getRedeedCost() {
 		return _implementation->getRedeedCost();
 }
 
-PlayerObject* StructureObject::getOwnerObject() {
+CreatureObject* StructureObject::getOwnerCreatureObject() {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETOWNEROBJECT__);
+		DistributedMethod method(this, RPC_GETOWNERCREATUREOBJECT__);
 
-		return static_cast<PlayerObject*>(method.executeWithObjectReturn());
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
-		return _implementation->getOwnerObject();
+		return _implementation->getOwnerCreatureObject();
 }
 
 unsigned long long StructureObject::getOwnerObjectID() {
@@ -448,6 +462,20 @@ int StructureObject::getLotSize() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getLotSize();
+}
+
+void StructureObject::setMaintenanceReduced(bool value) {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMAINTENANCEREDUCED__BOOL_);
+		method.addBooleanParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMaintenanceReduced(value);
 }
 
 float StructureObject::getMaintenanceRate() {
@@ -667,6 +695,58 @@ void StructureObject::addPower(int add) {
 		_implementation->addPower(add);
 }
 
+bool StructureObject::isDecaying() {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISDECAYING__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isDecaying();
+}
+
+bool StructureObject::isDecayed() {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISDECAYED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isDecayed();
+}
+
+int StructureObject::getDecayPercentage() {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDECAYPERCENTAGE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDecayPercentage();
+}
+
+bool StructureObject::isCondemned() {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCONDEMNED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCondemned();
+}
+
 void StructureObject::setPublicStructure(bool privacy) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -869,6 +949,11 @@ bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, 
 		return true;
 	}
 
+	if (_name == "maintenanceReduced") {
+		TypeInfo<bool >::parseFromBinaryStream(&maintenanceReduced, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -964,8 +1049,16 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "maintenanceReduced";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&maintenanceReduced, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 10 + TangibleObjectImplementation::writeObjectMembers(stream);
+
+	return 11 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 StructureObjectImplementation::StructureObjectImplementation() {
@@ -988,6 +1081,8 @@ StructureObjectImplementation::StructureObjectImplementation() {
 	surplusPower = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		structureMaintenanceTask = null;
 	structureMaintenanceTask = NULL;
+	// server/zone/objects/structure/StructureObject.idl():  		maintenanceReduced = false;
+	maintenanceReduced = false;
 }
 
 void StructureObjectImplementation::createChildObjects() {
@@ -1090,6 +1185,11 @@ unsigned long long StructureObjectImplementation::getDeedObjectID() {
 	return deedObjectID;
 }
 
+void StructureObjectImplementation::setMaintenanceReduced(bool value) {
+	// server/zone/objects/structure/StructureObject.idl():  		maintenanceReduced = value;
+	maintenanceReduced = value;
+}
+
 int StructureObjectImplementation::getBaseMaintenanceRate() {
 	// server/zone/objects/structure/StructureObject.idl():  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
@@ -1160,6 +1260,16 @@ void StructureObjectImplementation::addPower(int add) {
 	surplusPower += add;
 }
 
+bool StructureObjectImplementation::isDecaying() {
+	// server/zone/objects/structure/StructureObject.idl():  		return (surplusMaintenance < 0);
+	return (surplusMaintenance < 0);
+}
+
+bool StructureObjectImplementation::isCondemned() {
+	// server/zone/objects/structure/StructureObject.idl():  		return false;
+	return false;
+}
+
 void StructureObjectImplementation::setPublicStructure(bool privacy) {
 }
 
@@ -1204,6 +1314,9 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__:
 		scheduleMaintenanceExpirationEvent();
+		break;
+	case RPC_SCHEDULEMAINTENANCETASK__INT_:
+		scheduleMaintenanceTask(inv->getSignedIntParameter());
 		break;
 	case RPC_UPDATESTRUCTURESTATUS__:
 		updateStructureStatus();
@@ -1262,8 +1375,8 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GETREDEEDCOST__:
 		resp->insertSignedInt(getRedeedCost());
 		break;
-	case RPC_GETOWNEROBJECT__:
-		resp->insertLong(getOwnerObject()->_getObjectID());
+	case RPC_GETOWNERCREATUREOBJECT__:
+		resp->insertLong(getOwnerCreatureObject()->_getObjectID());
 		break;
 	case RPC_GETOWNEROBJECTID__:
 		resp->insertLong(getOwnerObjectID());
@@ -1273,6 +1386,9 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_GETLOTSIZE__:
 		resp->insertSignedInt(getLotSize());
+		break;
+	case RPC_SETMAINTENANCEREDUCED__BOOL_:
+		setMaintenanceReduced(inv->getBooleanParameter());
 		break;
 	case RPC_GETMAINTENANCERATE__:
 		resp->insertFloat(getMaintenanceRate());
@@ -1322,6 +1438,18 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ADDPOWER__INT_:
 		addPower(inv->getSignedIntParameter());
 		break;
+	case RPC_ISDECAYING__:
+		resp->insertBoolean(isDecaying());
+		break;
+	case RPC_ISDECAYED__:
+		resp->insertBoolean(isDecayed());
+		break;
+	case RPC_GETDECAYPERCENTAGE__:
+		resp->insertSignedInt(getDecayPercentage());
+		break;
+	case RPC_ISCONDEMNED__:
+		resp->insertBoolean(isCondemned());
+		break;
 	case RPC_SETPUBLICSTRUCTURE__BOOL_:
 		setPublicStructure(inv->getBooleanParameter());
 		break;
@@ -1364,6 +1492,10 @@ String StructureObjectAdapter::getTimeString(unsigned int timestamp) {
 
 void StructureObjectAdapter::scheduleMaintenanceExpirationEvent() {
 	(static_cast<StructureObject*>(stub))->scheduleMaintenanceExpirationEvent();
+}
+
+void StructureObjectAdapter::scheduleMaintenanceTask(int timeFromNow) {
+	(static_cast<StructureObject*>(stub))->scheduleMaintenanceTask(timeFromNow);
 }
 
 void StructureObjectAdapter::updateStructureStatus() {
@@ -1442,8 +1574,8 @@ int StructureObjectAdapter::getRedeedCost() {
 	return (static_cast<StructureObject*>(stub))->getRedeedCost();
 }
 
-PlayerObject* StructureObjectAdapter::getOwnerObject() {
-	return (static_cast<StructureObject*>(stub))->getOwnerObject();
+CreatureObject* StructureObjectAdapter::getOwnerCreatureObject() {
+	return (static_cast<StructureObject*>(stub))->getOwnerCreatureObject();
 }
 
 unsigned long long StructureObjectAdapter::getOwnerObjectID() {
@@ -1456,6 +1588,10 @@ unsigned long long StructureObjectAdapter::getDeedObjectID() {
 
 int StructureObjectAdapter::getLotSize() {
 	return (static_cast<StructureObject*>(stub))->getLotSize();
+}
+
+void StructureObjectAdapter::setMaintenanceReduced(bool value) {
+	(static_cast<StructureObject*>(stub))->setMaintenanceReduced(value);
 }
 
 float StructureObjectAdapter::getMaintenanceRate() {
@@ -1520,6 +1656,22 @@ void StructureObjectAdapter::setSurplusPower(int surplus) {
 
 void StructureObjectAdapter::addPower(int add) {
 	(static_cast<StructureObject*>(stub))->addPower(add);
+}
+
+bool StructureObjectAdapter::isDecaying() {
+	return (static_cast<StructureObject*>(stub))->isDecaying();
+}
+
+bool StructureObjectAdapter::isDecayed() {
+	return (static_cast<StructureObject*>(stub))->isDecayed();
+}
+
+int StructureObjectAdapter::getDecayPercentage() {
+	return (static_cast<StructureObject*>(stub))->getDecayPercentage();
+}
+
+bool StructureObjectAdapter::isCondemned() {
+	return (static_cast<StructureObject*>(stub))->isCondemned();
 }
 
 void StructureObjectAdapter::setPublicStructure(bool privacy) {
