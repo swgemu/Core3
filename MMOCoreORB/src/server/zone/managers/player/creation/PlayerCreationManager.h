@@ -96,8 +96,14 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 	VectorMap<String, SortedVector<String> > defaultCharacterEquipment;
 	VectorMap<String, Reference<HairStyleInfo*> > hairStyleInfo;
 
+	/**
+	 * Vector containing starting items common for all races and professions.
+	 */
+	Vector<String> commonStartingItems;
+
 	int startingCash;
 	int startingBank;
+	int skillPoints;
 
 	void loadLuaConfig();
 	void loadRacialCreationData();
@@ -105,9 +111,16 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 	void loadProfessionDefaultsInfo();
 	void loadHairStyleInfo();
 
+	/**
+	 * Loads all starting items (profession specific, race specific, common) and
+	 * starting clothes.
+	 * @param lua pointer to a Lua object which contains the starting items and clothes.
+	 */
+	void loadLuaStartingItems(Lua* lua);
+
 	void addCustomization(CreatureObject* creature, const String& customizationString);
 	void addHair(CreatureObject* creature, const String& hairTemplate, const String& hairCustomization);
-	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingItems);
+	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingSkills, Vector<String>* startingItems);
 	void addStartingItems(CreatureObject* creature, const String& clientTemplate);
 	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate);
 	//void generateHologrindProfessions(CreatureObject* creature);

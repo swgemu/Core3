@@ -22,6 +22,7 @@ class ProfessionDefaultsInfo : public Object {
 	Reference<Skill*> skill;
 	VectorMap<String, SortedVector<String> > professionItems;
 	VectorMap<uint8, int> professionMods;
+	Vector<String> startingItems;
 
 public:
 	ProfessionDefaultsInfo() : Object() {
@@ -97,6 +98,10 @@ public:
 
 	int getAttributeMod(uint8 idx) {
 		return professionMods.get(idx);
+	}
+
+	inline Vector<String>* getStartingItems() {
+		return &startingItems;
 	}
 };
 

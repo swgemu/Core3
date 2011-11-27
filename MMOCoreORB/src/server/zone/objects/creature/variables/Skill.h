@@ -184,6 +184,30 @@ public:
 		return xpCap;
 	}
 
+	/**
+	 * Returns the XP cost for the skill.
+	 * @return XP cost for the skill.
+	 */
+	inline int getXpCost() {
+		return xpCost;
+	}
+
+	/**
+	 * Returns the credits required for training the skill at a trainer.
+	 * @return the credits required for training the skill at a trainer.
+	 */
+	inline int getMoneyRequired() {
+		return moneyRequired;
+	}
+
+	/**
+	 * Returns the number of skill points required for the skill.
+	 * @return the number of skill points required for the skill.
+	 */
+	inline int getSkillPointsRequired() {
+		return pointsRequired;
+	}
+
 private:
 	inline void setParentNode(Skill* skill) {
 		parentNode = skill;

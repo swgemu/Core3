@@ -1025,8 +1025,17 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public int getExperience(final string xp) {
-		return experienceList.get(xp);
+		if (experienceList.contains(xp)) {
+			return experienceList.get(xp);
+		} else {
+			return 0;
+		}
 	}
+
+	/**
+	 * Maximizes all types of experience for the player.
+	 */
+	public native void maximizeExperience();
 	
 	public string getCommandMessageString(unsigned int actionCRC) {
 		return commandMessageStrings.get(actionCRC);

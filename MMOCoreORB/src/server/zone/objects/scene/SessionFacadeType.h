@@ -18,6 +18,7 @@ public:
 	const static int PLACESTRUCTURE = 6;
 	const static int DESTROYSTRUCTURE = 7;
 	const static int FIND = 8;
+	const static int CONVERSATION = 9;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

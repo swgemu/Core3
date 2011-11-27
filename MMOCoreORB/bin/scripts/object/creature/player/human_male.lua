@@ -58,6 +58,7 @@ object_creature_player_human_male = object_creature_player_shared_human_male:new
 		{templateFile = "object/weapon/melee/unarmed/unarmed_default_player.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
 		
 	},
+	startingItems = { },
 	startingSkills = { "species_human", "social_language_basic_comprehend", "social_language_basic_speak" }
 }
 

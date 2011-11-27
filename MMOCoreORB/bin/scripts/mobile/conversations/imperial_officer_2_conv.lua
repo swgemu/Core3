@@ -1,5 +1,6 @@
 imperial_officer_2_convotemplate = ConvoTemplate:new {
 	initialScreen = "convoscreen1",
+	templateType = "Normal",
 	screens = {}
 }
 

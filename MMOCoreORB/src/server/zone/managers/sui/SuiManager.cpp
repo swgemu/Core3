@@ -676,11 +676,14 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				player->addDotState(CreatureState::ONFIRE, 100, CreatureAttribute::HEALTH, 60, 80, 0);
 			} else if (templatePath == "clear_dots") {
 				player->clearDots();
+			} else if (templatePath == "max_xp") {
+				ghost->maximizeExperience();
+				player->sendSystemMessage("You have maximized all xp types.");
 			} else {
 
 				if (templatePath.length() > 0) {
 
-					SkillManager::instance()->awardSkill(templatePath, player, true, true);
+					SkillManager::instance()->awardSkill(templatePath, player, true, true, true);
 					if (player->hasSkill(templatePath))
 						player->sendSystemMessage("You have learned a skill.");
 

@@ -77,11 +77,11 @@ PlayerCreationManager::PlayerCreationManager()
 	startingCash = 100;
 	startingBank = 1000;
 
-	loadLuaConfig();
 	loadRacialCreationData();
 	loadDefaultCharacterItems();
 	loadProfessionDefaultsInfo();
 	loadHairStyleInfo();
+	loadLuaConfig();
 }
 
 PlayerCreationManager::~PlayerCreationManager() {
@@ -288,9 +288,47 @@ void PlayerCreationManager::loadLuaConfig() {
 
 	startingCash = lua->getGlobalInt("startingCash");
 	startingBank = lua->getGlobalInt("startingBank");
+	skillPoints = lua->getGlobalInt("skillPoints");
+
+	loadLuaStartingItems(lua);
 
 	delete lua;
 	lua = NULL;
+}
+
+void PlayerCreationManager::loadLuaStartingItems(Lua* lua) {
+	// Catch potential errors from loading starting items.
+	try {
+		// Read professions.
+		Vector<String> professions;
+		LuaObject professionsLuaObject = lua->getGlobalObject("professions");
+		for (int professionNumber = 1; professionNumber <= professionsLuaObject.getTableSize(); professionNumber++) {
+			professions.add(professionsLuaObject.getStringAt(professionNumber));
+		}
+		professionsLuaObject.pop();
+
+		// Read profession specific items.
+		LuaObject professionSpecificItems = lua->getGlobalObject("professionSpecificItems");
+		for (int professionNumber = 0; professionNumber < professions.size(); professionNumber++) {
+			LuaObject professionSpecificItemList = professionSpecificItems.getObjectField(professions.get(professionNumber));
+			for (int itemNumber = 1; itemNumber <= professionSpecificItemList.getTableSize(); itemNumber++) {
+				professionDefaultsInfo.get(professions.get(professionNumber))->getStartingItems()->add(professionSpecificItemList.getStringAt(itemNumber));
+			}
+			professionSpecificItemList.pop();
+		}
+		professionSpecificItems.pop();
+
+		// Read common starting items.
+		LuaObject commonStartingItemsLuaObject = lua->getGlobalObject("commonStartingItems");
+		for (int itemNumber = 1; itemNumber <= commonStartingItemsLuaObject.getTableSize(); itemNumber++) {
+			commonStartingItems.add(commonStartingItemsLuaObject.getStringAt(itemNumber));
+		}
+		commonStartingItemsLuaObject.pop();
+	}
+	catch (Exception e) {
+		error("Failed to load starting items.");
+		error(e.getMessage());
+	}
 }
 
 bool PlayerCreationManager::createCharacter(MessageCallback* data) {
@@ -363,12 +401,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	client->setPlayer(playerCreature);
 	playerCreature->setClient(client);
 
-	addCustomization(playerCreature, customization);
-	addHair(playerCreature, hairTemplate, hairCustomization);
-	addProfessionStartingItems(playerCreature, profession, clientTemplate);
-	addStartingItems(playerCreature, clientTemplate);
-	addRacialMods(playerCreature, fileName, playerTemplate->getStartingSkills());
-
 	// Set starting cash and starting bank
 	playerCreature->setCashCredits(startingCash, false);
 	playerCreature->setBankCredits(startingBank, false);
@@ -376,6 +408,22 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
 
 	if (ghost != NULL) {
+		//Set skillpoints before adding any skills.
+		ghost->setSkillPoints(skillPoints);
+	}
+
+	addCustomization(playerCreature, customization);
+	addHair(playerCreature, hairTemplate, hairCustomization);
+	addProfessionStartingItems(playerCreature, profession, clientTemplate);
+	addStartingItems(playerCreature, clientTemplate);
+	addRacialMods(playerCreature, fileName, playerTemplate->getStartingSkills(), playerTemplate->getStartingItems());
+
+	// Set starting cash and starting bank
+	playerCreature->setCashCredits(startingCash, false);
+	playerCreature->setBankCredits(startingBank, false);
+
+	if (ghost != NULL) {
+
 		ghost->setAccountID(client->getAccountID());
 
 		try {
@@ -531,6 +579,17 @@ void PlayerCreationManager::addStartingItems(CreatureObject* creature, const Str
 		if (item != NULL)
 			creature->addObject(item, 4, false);
 	}
+
+	// Get inventory.
+	SceneObject* inventory = creature->getSlottedObject("inventory");
+
+	//Add common starting items.
+	for (int itemNumber = 0; itemNumber < commonStartingItems.size(); itemNumber++) {
+		ManagedReference<SceneObject*> item = zoneServer->createObject(commonStartingItems.get(itemNumber).hashCode(), 1);
+		if (item != NULL && inventory != NULL) {
+			inventory->addObject(item, -1, false);
+		}
+	}
 }
 
 void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate) {
@@ -541,7 +600,8 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 
 	Reference<Skill*> startingSkill = professionData->getSkill();
 
-	SkillManager::instance()->awardSkill(startingSkill->getSkillName(), creature, false, true);
+	//Starting skill.
+	SkillManager::instance()->awardSkill(startingSkill->getSkillName(), creature, false, true, true);
 
 	SortedVector<String>* itemTemplates = professionData->getProfessionItems(clientTemplate);
 
@@ -555,6 +615,17 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 
 		if (item != NULL)
 			creature->addObject(item, 4, false);
+	}
+
+	// Get inventory.
+	SceneObject* inventory = creature->getSlottedObject("inventory");
+
+	//Add profession specific items.
+	for (int itemNumber = 0; itemNumber < professionDefaultsInfo.get(profession)->getStartingItems()->size(); itemNumber++) {
+		ManagedReference<SceneObject*> item = zoneServer->createObject(professionDefaultsInfo.get(profession)->getStartingItems()->get(itemNumber).hashCode(), 1);
+		if (item != NULL && inventory != NULL) {
+			inventory->addObject(item, -1, false);
+		}
 	}
 
 	//Set the hams.
@@ -593,7 +664,7 @@ void PlayerCreationManager::addCustomization(CreatureObject* creature, const Str
 	creature->setCustomizationString(customizationString);
 }
 
-void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingItems) {
+void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingSkills, Vector<String>* startingItems) {
 	Reference<RacialCreationData*> racialData = racialCreationData.get(race);
 
 	if (racialData == NULL)
@@ -606,9 +677,21 @@ void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String
 		creature->setMaxHAM(i, mod, false);
 	}
 
+	if (startingSkills != NULL) {
+		for (int i = 0; i < startingSkills->size(); ++i) {
+			SkillManager::instance()->awardSkill(startingSkills->get(i), creature, false, true, true);
+		}
+	}
+
+	// Get inventory.
+	SceneObject* inventory = creature->getSlottedObject("inventory");
+
 	if (startingItems != NULL) {
 		for (int i = 0; i < startingItems->size(); ++i) {
-			SkillManager::instance()->awardSkill(startingItems->get(i), creature, false, true);
+			ManagedReference<SceneObject*> item = zoneServer->createObject(startingItems->get(i).hashCode(), 1);
+
+			if (item != NULL && inventory != NULL)
+				inventory->addObject(item, -1, false);
 		}
 	}
 }

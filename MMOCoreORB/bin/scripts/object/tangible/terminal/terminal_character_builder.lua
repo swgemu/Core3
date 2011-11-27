@@ -1209,7 +1209,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Learn Languages", "language",
 			"Credits", "credits",
 			"Apply DOTs", "apply_dots",
-			"Clear DOTs", "clear_dots"
+			"Clear DOTs", "clear_dots",
+			"Max XP", "max_xp"
 		},
 		"Items",
 		{

@@ -654,6 +654,8 @@ public:
 
 	int getExperience(const String& xp);
 
+	void maximizeExperience();
+
 	String getCommandMessageString(unsigned int actionCRC);
 
 	bool hasBadge(unsigned int badge);
@@ -1240,6 +1242,8 @@ public:
 
 	int getExperience(const String& xp);
 
+	void maximizeExperience();
+
 	String getCommandMessageString(unsigned int actionCRC);
 
 	bool hasBadge(unsigned int badge);
@@ -1624,6 +1628,8 @@ public:
 	void removeChatRoom(ChatRoom* room);
 
 	int getExperience(const String& xp);
+
+	void maximizeExperience();
 
 	String getCommandMessageString(unsigned int actionCRC);
 

@@ -188,7 +188,7 @@ void SkillManager::removeAbilities(PlayerObject* ghost, Vector<String>& abilityN
 	return true;
 }*/
 
-bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool awardRequiredSkills) {
+bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool awardRequiredSkills, bool noXpRequired) {
 	Skill* skill = skillMap.get(skillName);
 
 	if (skill == NULL)
@@ -208,25 +208,37 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 			continue;
 
 		if (awardRequiredSkills)
-			awardSkill(requiredSkillName, creature, notifyClient, awardRequiredSkills);
+			awardSkill(requiredSkillName, creature, notifyClient, awardRequiredSkills, noXpRequired);
 
 		if (!creature->hasSkill(requiredSkillName))
 			return false;
 	}
 
-	creature->addSkill(skill, notifyClient);
-
-	//Add skill modifiers
-	VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
-
-	for (int i = 0; i < skillModifiers->size(); ++i) {
-		VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
-		creature->addSkillMod(entry->getKey(), entry->getValue(), notifyClient);
+	if (!canLearnSkill(skillName, creature, noXpRequired)) {
+		return false;
 	}
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost != NULL) {
+		//Withdraw skill points.
+		ghost->addSkillPoints(-skill->getSkillPointsRequired());
+
+		//Witdraw experience.
+		if (!noXpRequired) {
+			ghost->addExperience(skill->getXpType(), -skill->getXpCost(), true);
+		}
+
+		creature->addSkill(skill, notifyClient);
+
+		//Add skill modifiers
+		VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
+
+		for (int i = 0; i < skillModifiers->size(); ++i) {
+			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
+			creature->addSkillMod(entry->getKey(), entry->getValue(), notifyClient);
+		}
+
 		//Add abilities
 		Vector<String>* abilityNames = skill->getAbilities();
 		addAbilities(ghost, *abilityNames, notifyClient);
@@ -270,6 +282,9 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost != NULL) {
+		//Give the player the used skill points back.
+		ghost->addSkillPoints(skill->getSkillPointsRequired());
+
 		//Remove abilities
 		Vector<String>* abilityNames = skill->getAbilities();
 		removeAbilities(ghost, *abilityNames, notifyClient);
@@ -304,6 +319,9 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 		}
 
 		if (ghost != NULL) {
+			//Give the player the used skill points back.
+			ghost->addSkillPoints(skill->getSkillPointsRequired());
+
 			//Remove abilities
 			Vector<String>* abilityNames = skill->getAbilities();
 			removeAbilities(ghost, *abilityNames, notifyClient);
@@ -366,4 +384,89 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 			ghost->addExperience(xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
 		}
 	}
+}
+
+bool SkillManager::canLearnSkill(const String& skillName, CreatureObject* creature, bool noXpRequired) {
+	Skill* skill = skillMap.get(skillName);
+
+	if (skill == NULL) {
+		return false;
+	}
+
+	//If they already have the skill, then return false.
+	if (creature->hasSkill(skillName)) {
+		return false;
+	}
+
+	if (!fullfillsSkillPrerequisites(skillName, creature)) {
+		return false;
+	}
+
+	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
+	if (ghost != NULL) {
+		//Check if player has enough xp to learn the skill.
+		if (!noXpRequired) {
+			if (ghost->getExperience(skill->getXpType()) < skill->getXpCost()) {
+				return false;
+			}
+		}
+
+		//Check if player has enough skill points to learn the skill.
+		if (ghost->getSkillPoints() < skill->getSkillPointsRequired()) {
+			return false;
+		}
+	} else {
+		//Could not retrieve player object.
+		return false;
+	}
+
+
+	return true;
+}
+
+bool SkillManager::fullfillsSkillPrerequisitesAndXp(const String& skillName, CreatureObject* creature) {
+	if (!fullfillsSkillPrerequisites(skillName, creature)) {
+		return false;
+	}
+
+	Skill* skill = skillMap.get(skillName);
+
+	if (skill == NULL) {
+		return false;
+	}
+
+	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
+	if (ghost != NULL) {
+		//Check if player has enough xp to learn the skill.
+		if (skill->getXpCost() > 0 && ghost->getExperience(skill->getXpType()) < skill->getXpCost()) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, CreatureObject* creature) {
+	Skill* skill = skillMap.get(skillName);
+
+	if (skill == NULL) {
+		return false;
+	}
+
+	//Check for required skills.
+	Vector<String>* requiredSkills = skill->getSkillsRequired();
+	for (int i = 0; i < requiredSkills->size(); ++i) {
+		String requiredSkillName = requiredSkills->get(i);
+		Skill* requiredSkill = skillMap.get(requiredSkillName);
+
+		if (requiredSkill == NULL) {
+			continue;
+		}
+
+		if (!creature->hasSkill(requiredSkillName)) {
+			return false;
+		}
+	}
+
+	return true;
 }

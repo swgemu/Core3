@@ -78,7 +78,7 @@ public:
 		Locker clocker(targetCreature, creature);
 
 		SkillManager* skillManager = SkillManager::instance();
-		skillManager->awardSkill(arguments.toString(), targetCreature, true, true);
+		skillManager->awardSkill(arguments.toString(), targetCreature, true, true, true);
 
 		return SUCCESS;
 	}

@@ -14,10 +14,12 @@
 class PlayerCreatureTemplate : public SharedCreatureObjectTemplate {
 	CustomizationDataMap dataMap;
 	Reference<Vector<String>* > startingSkills;
+	Reference<Vector<String>* > startingItems;
 
 public:
 	PlayerCreatureTemplate() {
 		startingSkills = new Vector<String>();
+		startingItems = new Vector<String>();
 	}
 
 	~PlayerCreatureTemplate() {
@@ -33,6 +35,10 @@ public:
 
 	Vector<String>* getStartingSkills() {
 		return startingSkills;
+	}
+
+	Vector<String>* getStartingItems() {
+		return startingItems;
 	}
 
 	void setCustomizationDataMap(const CustomizationDataMap& map) {

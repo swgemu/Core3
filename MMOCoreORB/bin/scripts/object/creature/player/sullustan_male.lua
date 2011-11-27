@@ -57,6 +57,7 @@ object_creature_player_sullustan_male = object_creature_player_shared_sullustan_
 		{templateFile = "object/weapon/melee/unarmed/unarmed_default_player.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4},
 		{templateFile = "object/tangible/bank/character_bank.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
 	},
+	startingItems = { },
 	startingSkills = { "species_sullustan", "social_language_basic_comprehend", "social_language_basic_speak" , "social_language_sullustan_comprehend", "social_language_sullustan_speak" }
 }
 

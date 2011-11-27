@@ -139,6 +139,9 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
 				server/zone/objects/player/sessions/PlaceStructureSession.cpp \
 				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
+				server/zone/objects/player/sessions/ConversationSession.cpp \
+				server/zone/objects/player/sessions/TrainerConversationSession.cpp \
+				server/zone/objects/player/sessions/TrainerConversationSessionImplementation.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
@@ -326,6 +329,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/guild/GuildMemberInfo.cpp \
 		server/zone/managers/holocron/HolocronManager.cpp \
 		server/zone/managers/name/NameManager.cpp \
+		server/zone/managers/conversation/ConversationManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/skill/PerformanceManager.cpp \
 		server/zone/managers/skill/imagedesign/ImageDesignManager.cpp \
@@ -426,6 +430,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/PackGroupImplementation.cpp \
+		server/zone/objects/creature/conversation/ConversationObserver.cpp \
+		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
+		server/zone/objects/creature/conversation/TrainerConversationObserver.cpp \
+		server/zone/objects/creature/conversation/TrainerConversationObserverImplementation.cpp \
+		server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/AbilityList.cpp \
 		server/zone/objects/player/variables/SchematicList.cpp \

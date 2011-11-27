@@ -1350,4 +1350,10 @@ WaypointObject* PlayerObjectImplementation::getSurveyWaypoint() {
 	return NULL;
 }
 
+void PlayerObjectImplementation::maximizeExperience() {
+	VectorMap<String, int>* xpCapList = getXpTypeCapList();
 
+	for (int i = 0; i < xpCapList->size(); ++i) {
+		addExperience(xpCapList->elementAt(i).getKey(), xpCapList->elementAt(i).getValue(), true);
+	}
+}

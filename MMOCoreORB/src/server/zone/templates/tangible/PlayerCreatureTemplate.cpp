@@ -53,6 +53,14 @@ void PlayerCreatureTemplate::parseVariableData(const String& varName, LuaObject*
 		}
 
 		skills.pop();
+	} else if (varName == "startingItems") {
+		LuaObject items(state);
+
+		for (int i = 1; i <= items.getTableSize(); ++i) {
+			startingItems->add(items.getStringAt(i));
+		}
+
+		items.pop();
 	} else {
 		templateData->pop();
 	}

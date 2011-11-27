@@ -15,8 +15,9 @@
 #include "events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/conversation/ConversationManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/templates/TemplateManager.h"
@@ -986,16 +987,35 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	SortedVector<ManagedReference<Observer*> >* observers = observerEventMap.getObservers(ObserverEventType::CONVERSE);
+	//Face player.
+	faceObject(player);
 
-	if (observers == NULL || (observers != NULL && observers->size() <= 0))
-		sendDefaultConversationTo(player);
-	else
-		notifyConverseObservers(cast<CreatureObject*>(player));
+	PatrolPoint current(coordinates.getPosition(), parent);
+
+	broadcastNextPositionUpdate(&current);
+
+	//Create conversation observer.
+	if (getObserverCount(ObserverEventType::STARTCONVERSATION) <= 0) {
+		ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
+
+		if (conversationObserver != NULL) {
+			//Register observers.
+			registerObserver(ObserverEventType::CONVERSE, conversationObserver);
+			registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
+			registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
+			registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
+		} else {
+			error("Could not create conversation observer.");
+		}
+	}
+
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	player->sendMessage(conv);
 }
 
 void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
-	if (!player->isPlayerCreature())
+	/*if (!player->isPlayerCreature())
 		return;
 
 	faceObject(player);
@@ -1080,11 +1100,11 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 
 	//player->sendMessage(slist);
 
-	//playerCreature->setLastNpcConvMessStr("chitchat");
+	//playerCreature->setLastNpcConvMessStr("chitchat");*/
 }
 
 void AiAgentImplementation::selectConversationOption(int option, SceneObject* obj) {
-	if (!obj->isCreatureObject())
+	/*if (!obj->isCreatureObject())
 		return;
 
 	CreatureObject* player = cast<CreatureObject*>( obj);
@@ -1154,5 +1174,5 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 
 	// Parse and send the options:
 	StringList* slist = new StringList(player);
-	player->sendMessage(slist);
+	player->sendMessage(slist);*/
 }
