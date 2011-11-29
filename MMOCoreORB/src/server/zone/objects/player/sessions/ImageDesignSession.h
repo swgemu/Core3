@@ -79,6 +79,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class ImageDesignSession : public Facade {
 public:
@@ -118,17 +119,19 @@ protected:
 	friend class ImageDesignSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class ImageDesignSessionImplementation : public FacadeImplementation {
 	Reference<ImageDesignManager* > imageDesignManager;
@@ -247,11 +250,12 @@ public:
 	friend class Singleton<ImageDesignSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*IMAGEDESIGNSESSION_H_*/

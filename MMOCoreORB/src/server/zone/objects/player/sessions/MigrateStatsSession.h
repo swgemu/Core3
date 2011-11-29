@@ -59,6 +59,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class MigrateStatsSession : public Facade {
 public:
@@ -88,17 +89,19 @@ protected:
 	friend class MigrateStatsSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class MigrateStatsSessionImplementation : public FacadeImplementation {
 protected:
@@ -197,11 +200,12 @@ public:
 	friend class Singleton<MigrateStatsSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*MIGRATESTATSSESSION_H_*/

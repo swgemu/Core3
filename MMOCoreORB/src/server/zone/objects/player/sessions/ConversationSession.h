@@ -19,6 +19,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class ConversationSession : public Facade {
 public:
@@ -42,17 +43,19 @@ protected:
 	friend class ConversationSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class ConversationSessionImplementation : public FacadeImplementation {
 	String lastConversationScreenName;
@@ -134,11 +137,12 @@ public:
 	friend class Singleton<ConversationSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*CONVERSATIONSESSION_H_*/

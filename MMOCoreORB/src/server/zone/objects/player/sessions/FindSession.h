@@ -45,6 +45,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class FindSession : public Facade {
 public:
@@ -76,17 +77,19 @@ protected:
 	friend class FindSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class FindSessionImplementation : public FacadeImplementation {
 protected:
@@ -187,11 +190,12 @@ public:
 	friend class Singleton<FindSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*FINDSESSION_H_*/

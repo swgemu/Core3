@@ -21,6 +21,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class TrainerConversationSession : public ConversationSession {
 public:
@@ -67,17 +68,19 @@ protected:
 	friend class TrainerConversationSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class TrainerConversationSessionImplementation : public ConversationSessionImplementation {
 	Vector<String> trainableSkills;
@@ -208,11 +211,12 @@ public:
 	friend class Singleton<TrainerConversationSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*TRAINERCONVERSATIONSESSION_H_*/

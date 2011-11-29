@@ -75,6 +75,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class DestroyStructureSession : public Facade {
 public:
@@ -106,17 +107,19 @@ protected:
 	friend class DestroyStructureSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class DestroyStructureSessionImplementation : public FacadeImplementation {
 protected:
@@ -221,11 +224,12 @@ public:
 	friend class Singleton<DestroyStructureSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*DESTROYSTRUCTURESESSION_H_*/

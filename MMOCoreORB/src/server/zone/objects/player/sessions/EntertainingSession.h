@@ -117,6 +117,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class EntertainingSession : public Facade {
 public:
@@ -214,17 +215,19 @@ protected:
 	friend class EntertainingSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class EntertainingSessionImplementation : public FacadeImplementation {
 protected:
@@ -487,11 +490,12 @@ public:
 	friend class Singleton<EntertainingSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*ENTERTAININGSESSION_H_*/

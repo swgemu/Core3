@@ -63,6 +63,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class SlicingSession : public Facade {
 public:
@@ -102,17 +103,19 @@ protected:
 	friend class SlicingSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class SlicingSessionImplementation : public FacadeImplementation {
 protected:
@@ -275,11 +278,12 @@ public:
 	friend class Singleton<SlicingSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*SLICINGSESSION_H_*/

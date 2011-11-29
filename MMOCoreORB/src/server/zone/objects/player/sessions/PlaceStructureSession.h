@@ -101,6 +101,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class PlaceStructureSession : public Facade {
 public:
@@ -128,17 +129,19 @@ protected:
 	friend class PlaceStructureSessionHelper;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
 
 class PlaceStructureSessionImplementation : public FacadeImplementation {
 protected:
@@ -243,11 +246,12 @@ public:
 	friend class Singleton<PlaceStructureSessionHelper>;
 };
 
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions;
 
 #endif /*PLACESTRUCTURESESSION_H_*/
