@@ -45,10 +45,10 @@ which carries forward this exception.
 #include "ConversationManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 
 ConversationManager::ConversationManager()
 	: Logger("ConversationManager") {
-	//Do nothing.
 }
 
 ConversationManager::~ConversationManager() {
@@ -56,13 +56,13 @@ ConversationManager::~ConversationManager() {
 }
 
 ConversationObserver* ConversationManager::getConversationObserver(uint32 conversationTemplateCRC) {
-	if (conversationObservers.contains(conversationTemplateCRC)) {
+	if (conversationObservers.containsKey(conversationTemplateCRC)) {
 		//Observer does already exist, return it.
-		info("Returning existing template: " + String::valueOf(conversationTemplateCRC), true);
-		return conversationObservers.get(conversationTemplateCRC);
+		//info("Returning existing template: " + String::valueOf(conversationTemplateCRC), true);
+		return conversationObservers.get(conversationTemplateCRC).get();
 	} else {
 		//No observer, create it.
-		ConversationObserver* conversationObserver = NULL;
+		ManagedReference<ConversationObserver*> conversationObserver = NULL;
 		ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(conversationTemplateCRC);
 		if (conversationTemplate != NULL) {
 			switch (conversationTemplate->getConversationTemplateType()) {
@@ -70,15 +70,16 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 				conversationObserver = new ConversationObserver(conversationTemplate);
 				break;
 			case ConversationTemplate::ConversationTemplateTypeTrainer:
-				info("Trainer observer created.", true);
+				//info("Trainer observer created.", true);
 				conversationObserver = new TrainerConversationObserver(conversationTemplate);
 				break;
 			default:
 				conversationObserver = new ConversationObserver(conversationTemplate);
 				break;
 			}
+
 			if (conversationObserver != NULL) {
-				info("Adding template: " + String::valueOf(conversationTemplateCRC), true);
+				//info("Adding template: " + String::valueOf(conversationTemplateCRC), true);
 				//Add it to the map.
 				conversationObservers.put(conversationTemplateCRC, conversationObserver);
 			}

@@ -77,6 +77,8 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
+namespace vendor {
 
 class CreateVendorSession : public Facade {
 public:
@@ -106,17 +108,21 @@ protected:
 	friend class CreateVendorSessionHelper;
 };
 
+} // namespace vendor
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions::vendor;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
+namespace sessions {
+namespace vendor {
 
 class CreateVendorSessionImplementation : public FacadeImplementation {
 protected:
@@ -228,11 +234,13 @@ public:
 	friend class Singleton<CreateVendorSessionHelper>;
 };
 
+} // namespace vendor
+} // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sessions::vendor;
 
 #endif /*CREATEVENDORSESSION_H_*/

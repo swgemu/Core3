@@ -58,6 +58,9 @@ void Vendor::runVendorCheck() {
 
 void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	//Send the mail to the vendor owner
+	if (vendorRef == NULL)
+		return;
+
 	ManagedReference<SceneObject*> strongOwnerRef = vendorRef->getZoneServer()->getObject(ownerID);
 
 	if (strongOwnerRef == NULL)

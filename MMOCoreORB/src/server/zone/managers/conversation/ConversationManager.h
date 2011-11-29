@@ -46,10 +46,18 @@ which carries forward this exception.
 #define CONVERSATIONMANAGER_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 
 namespace server {
 namespace zone {
+
+	namespace objects {
+	 namespace creature {
+	  namespace conversation {
+	   class ConversationObserver;
+	  }
+	 }
+	}
+
 namespace managers {
 namespace conversation {
 
@@ -61,7 +69,7 @@ class ConversationManager : public Singleton<ConversationManager>, public Logger
 	/**
 	 * Map with conversation template crc as the key and the created conversation observer as the value.
 	 */
-	VectorMap<uint32, ConversationObserver*> conversationObservers;
+	HashTable<uint32, ManagedReference<objects::creature::conversation::ConversationObserver*> > conversationObservers;
 
 public:
 	/**
@@ -79,7 +87,7 @@ public:
 	 * @param conversationTemplateCRC the CRC value of the template for the conversation observer.
 	 * @return a conversation observer running the template.
 	 */
-	ConversationObserver* getConversationObserver(uint32 conversationTemplateCRC);
+	objects::creature::conversation::ConversationObserver* getConversationObserver(uint32 conversationTemplateCRC);
 };
 
 }

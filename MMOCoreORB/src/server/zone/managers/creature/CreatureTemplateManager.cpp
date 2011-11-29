@@ -88,10 +88,10 @@ int CreatureTemplateManager::addConversationTemplate(lua_State* L) {
 	uint32 crc = (uint32) ascii.hashCode();
 
 	LuaObject obj(L);
-	Reference<ConversationTemplate*> newTemp = new ConversationTemplate();
-	newTemp->readObject(&obj);
-
+	Reference<ConversationTemplate*> newTemp = new ConversationTemplate(crc);
 	CreatureTemplateManager::instance()->conversations.put(crc, newTemp);
+
+	newTemp->readObject(&obj);
 
 	return 0;
 }

@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef CONVERSATIONTEMPLATE_H_
 #define CONVERSATIONTEMPLATE_H_
@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "ConversationScreen.h"
+
+#include "server/zone/managers/conversation/ConversationManager.h"
 
 namespace server {
 namespace zone {
@@ -61,11 +63,13 @@ protected:
 	String initialScreenID;
 	VectorMap<String, Reference<ConversationScreen*> > screens;
 	ConversationTemplateType conversationTemplateType;
+	uint32 crc;
 
 public:
 
-	ConversationTemplate() : Logger("ConversationTemplate") {
+	ConversationTemplate(uint32 hashCode) : Logger("ConversationTemplate") {
 		screens.setNoDuplicateInsertPlan();
+		crc = hashCode;
 	}
 
 	virtual ~ConversationTemplate() {
@@ -75,7 +79,8 @@ public:
 	void readObject(LuaObject* templateData) {
 		initialScreenID = templateData->getStringField("initialScreen");
 
-		String templateType = "";
+		String templateType;
+
 		try {
 			templateType = templateData->getStringField("templateType");
 		}
@@ -83,6 +88,7 @@ public:
 			Logger::info("Missing templateType.", true);
 			templateType = "Normal";
 		}
+
 		if (templateType == "Trainer") {
 			conversationTemplateType = ConversationTemplateTypeTrainer;
 		} else {
@@ -105,6 +111,8 @@ public:
 		}
 
 		screensTable.pop();
+
+		ConversationManager::instance()->getConversationObserver(crc);
 	}
 
 	ConversationScreen* getInitialScreen() {
@@ -117,6 +125,10 @@ public:
 
 	ConversationTemplateType getConversationTemplateType() {
 		return conversationTemplateType;
+	}
+
+	uint32 getCRC() {
+		return crc;
 	}
 };
 

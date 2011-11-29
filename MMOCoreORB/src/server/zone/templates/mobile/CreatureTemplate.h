@@ -11,7 +11,6 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
-#include "ConversationTemplate.h"
 
 namespace server {
 namespace zone {
