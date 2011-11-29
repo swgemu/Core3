@@ -971,20 +971,10 @@ ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	Locker _locker(this);
 
-	/*ObjectDatabase* table = getTable(objectID);
-
-	if (table != NULL) {
-		table->deleteData(objectID);
-	} else {
-		StringBuffer msg;
-		msg << "could not delete object id from database table NULL for id 0x" << hex << objectID;
-		error(msg);
-	}*/
-
-	/*DistributedObject* obj = getObject(objectID);
+	DistributedObject* obj = getObject(objectID);
 
 	if (obj != NULL)
-		obj->_setMarkedForDeletion(true);*/
+		obj->_setMarkedForDeletion(true);
 
 	return 1;
 }
