@@ -44,11 +44,6 @@ void StructureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	Logger::setLoggingName("StructureObject");
-
-	//Schedule maintenance expiration event when everything is loaded, guess 10 minuts?
-	//Todo: solve this by either saving scheduled taks somehow or find a way to schedule after
-	//everything has been loaded.
-	scheduleMaintenanceTask(10 * 60);
 }
 
 void StructureObjectImplementation::finalize() {

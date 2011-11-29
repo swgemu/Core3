@@ -136,6 +136,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void notifyInsertToZone(Zone* zone);
+
 	void createChildObjects();
 
 	int notifyStructurePlaced(CreatureObject* creature);
@@ -310,6 +312,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void notifyInsertToZone(Zone* zone);
+
 	void createChildObjects();
 
 	virtual int notifyStructurePlaced(CreatureObject* creature);
@@ -464,6 +468,8 @@ public:
 	void initializeTransientMembers();
 
 	void finalize();
+
+	void notifyInsertToZone(Zone* zone);
 
 	void createChildObjects();
 

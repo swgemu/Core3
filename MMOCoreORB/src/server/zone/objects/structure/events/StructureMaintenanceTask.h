@@ -43,6 +43,9 @@ public:
 			return;
 		}
 
+		if (structureObject->getZone() == NULL)
+			return;
+
 		if (structureObject->getSurplusMaintenance() > 0) {
 			//Incorrect scheduling, reschedule.
 			structureObject->scheduleMaintenanceExpirationEvent();

@@ -124,6 +124,14 @@ class StructureObject extends TangibleObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
+	
+	public void notifyInsertToZone(Zone zone) {
+		super.notifyInsertToZone(zone);
+		
+		if (!super.staticObject)
+			scheduleMaintenanceTask(10 * 60);
+	}
+	
 	public void createChildObjects() {
 		super.createChildObjects();
 	}
