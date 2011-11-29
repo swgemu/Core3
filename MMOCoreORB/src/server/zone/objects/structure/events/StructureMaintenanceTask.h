@@ -37,9 +37,12 @@ public:
 	}
 
 	void run() {
+		ManagedReference<StructureObject*> strongRef = structureObject.get();
+
 		if (structureObject == NULL) {
 			return;
 		}
+
 		if (structureObject->getSurplusMaintenance() > 0) {
 			//Incorrect scheduling, reschedule.
 			structureObject->scheduleMaintenanceExpirationEvent();
@@ -103,7 +106,7 @@ public:
 
 	void sendMailMaintenanceWithdrawnFromBank(CreatureObject* owner) {
 		//Create an email.
-		ManagedReference<ChatManager*> chatManager =  structureObject->getZone()->getZoneServer()->getChatManager();
+		ManagedReference<ChatManager*> chatManager =  structureObject->getZoneServer()->getChatManager();
 
 		if (chatManager != NULL) {
 			UnicodeString subject = "@player_structure:structure_maintenance_empty_subject";
@@ -119,7 +122,7 @@ public:
 
 	void sendMailDecay(CreatureObject* owner) {
 		//Create an email.
-		ManagedReference<ChatManager*> chatManager = structureObject->getZone()->getZoneServer()->getChatManager();
+		ManagedReference<ChatManager*> chatManager = structureObject->getZoneServer()->getChatManager();
 
 		if (chatManager != NULL) {
 			UnicodeString subject = "@player_structure:mail_structure_damage_sub";
@@ -142,7 +145,7 @@ public:
 
 	void sendMailCondemned(CreatureObject* owner) {
 		//Create an email.
-		ManagedReference<ChatManager*> chatManager = structureObject->getZone()->getZoneServer()->getChatManager();
+		ManagedReference<ChatManager*> chatManager = structureObject->getZoneServer()->getChatManager();
 
 		if (chatManager != NULL) {
 			UnicodeString subject = "@player_structure:structure_condemned_subject";
