@@ -65,7 +65,8 @@ int StructureObjectImplementation::getLotSize() {
 
 CreatureObject* StructureObjectImplementation::getOwnerCreatureObject() {
  	//Get the owner of the structure
- 	ManagedReference<SceneObject*> owner = zone->getZoneServer()->getObject(getOwnerObjectID());
+ 	ManagedReference<SceneObject*> owner = getZoneServer()->getObject(getOwnerObjectID());
+
  	if (owner != NULL && owner->isCreatureObject()) {
  		return cast<CreatureObject* >(owner.get());
  	} else {
