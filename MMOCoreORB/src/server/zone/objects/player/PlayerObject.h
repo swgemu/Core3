@@ -502,6 +502,12 @@ public:
 
 	void setSavedTerrainName(const String& name);
 
+	void setForcePower(int fp, bool notifyClient = true);
+
+	void setForcePowerMax(int fpm, bool notifyClient = true);
+
+	void activateForceRegen();
+
 	unsigned long long getSavedParentID();
 
 	unsigned int getNewSuiBoxID(unsigned int type);
@@ -1090,6 +1096,12 @@ public:
 
 	void setSavedTerrainName(const String& name);
 
+	void setForcePower(int fp, bool notifyClient = true);
+
+	void setForcePowerMax(int fpm, bool notifyClient = true);
+
+	void activateForceRegen();
+
 	unsigned long long getSavedParentID();
 
 	unsigned int getNewSuiBoxID(unsigned int type);
@@ -1498,6 +1510,12 @@ public:
 	void setSavedParentID(unsigned long long id);
 
 	void setSavedTerrainName(const String& name);
+
+	void setForcePower(int fp, bool notifyClient);
+
+	void setForcePowerMax(int fpm, bool notifyClient);
+
+	void activateForceRegen();
 
 	unsigned long long getSavedParentID();
 

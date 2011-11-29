@@ -685,7 +685,14 @@ class PlayerObject extends IntangibleObject {
 	public void setSavedTerrainName(final string name) {
 		savedTerrainName = name;
 	}
-	
+
+	public native void setForcePower(int fp, boolean notifyClient = true);
+
+	public native void setForcePowerMax(int fpm, boolean notifyClient = true);
+
+	public native void activateForceRegen();
+
+
 	public unsigned long getSavedParentID() {
 		return savedParentID;
 	}

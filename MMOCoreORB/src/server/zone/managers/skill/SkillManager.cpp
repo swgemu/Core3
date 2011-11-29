@@ -237,6 +237,10 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		for (int i = 0; i < skillModifiers->size(); ++i) {
 			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
 			creature->addSkillMod(entry->getKey(), entry->getValue(), notifyClient);
+
+			//Update Force Power Bar.
+			if (entry->getKey() == "jedi_force_power_max")
+				ghost->setForcePowerMax(ghost->getForcePowerMax() + entry->getValue());
 		}
 
 		//Add abilities
@@ -249,6 +253,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		//Update maximum experience.
 		updateXpLimits(ghost);
+
 	}
 
 	return true;
@@ -274,12 +279,17 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	//Remove skill modifiers
 	VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
 
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
 	for (int i = 0; i < skillModifiers->size(); ++i) {
 		VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
 		creature->addSkillMod(entry->getKey(), -entry->getValue(), notifyClient);
-	}
 
-	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		//Update Force Power Bar.
+		if (entry->getKey() == "jedi_force_power_max" && ghost != NULL)
+			ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue());
+			ghost->setForcePower(ghost->getForcePower() - entry->getValue());
+	}
 
 	if (ghost != NULL) {
 		//Give the player the used skill points back.
@@ -316,6 +326,11 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 		for (int i = 0; i < skillModifiers->size(); ++i) {
 			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
 			creature->addSkillMod(entry->getKey(), -entry->getValue(), notifyClient);
+
+			//Update Force Power Bar.
+			if (entry->getKey() == "jedi_force_power_max")
+				ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue());
+				ghost->setForcePower(ghost->getForcePower() - entry->getValue());
 		}
 
 		if (ghost != NULL) {

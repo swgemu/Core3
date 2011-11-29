@@ -134,6 +134,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	}
 
 	skillManager->updateXpLimits(_this);
+
 }
 
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -143,8 +144,8 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	adminLevel = 0;
 
-	forcePower = 0;
-	forcePowerMax = 0;
+	forcePower = getForcePower();
+	forcePowerMax = getForcePowerMax();
 
 	foodFilling = 0;
 	foodFillingMax = 100;
@@ -1206,6 +1207,9 @@ void PlayerObjectImplementation::doRecovery() {
 	creature->activateHAMRegeneration();
 	creature->activateStateRecovery();
 
+	if (getForcePowerMax() > 0) // Prevents packet crashing client.
+	activateForceRegen();
+
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
 	if (cooldownTimerMap->isPast("digestEvent")) {
@@ -1356,4 +1360,58 @@ void PlayerObjectImplementation::maximizeExperience() {
 	for (int i = 0; i < xpCapList->size(); ++i) {
 		addExperience(xpCapList->elementAt(i).getKey(), xpCapList->elementAt(i).getValue(), true);
 	}
+}
+
+void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
+
+	forcePower = fp;
+
+	if (notifyClient == true){
+		// Update the force power bar.
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->addIntUpdate(0x02, getForcePower());
+		dplay8->close();
+
+		sendMessage(dplay8);
+	}
+
+}
+
+void PlayerObjectImplementation::setForcePowerMax(int fpm, bool notifyClient) {
+
+	forcePowerMax = fpm;
+
+	if (notifyClient == true){
+		// Update the force power bar max.
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->addIntUpdate(0x03, getForcePower());
+		dplay8->close();
+
+		sendMessage(dplay8);
+	}
+
+}
+
+
+void PlayerObjectImplementation::activateForceRegen() {
+	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get());
+
+	if (creature->isIncapacitated() || creature->isDead())
+		return;
+
+	if (getForcePower() == getForcePowerMax())
+		return;
+
+	if (getForcePower() < 0)
+		setForcePower(0);
+
+	float modifier = 1.f;
+	// if (isForceMeditating()) modifier = 3.f;
+
+	uint32 forceTick = creature->getSkillMod("jedi_force_power_regen") / 5 * modifier;
+
+	if (forceTick < 1)
+		forceTick = 1;
+
+	setForcePower(getForcePower() + forceTick);
 }
