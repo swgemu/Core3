@@ -153,7 +153,7 @@ protected:
 	 * activeSkillMods is a list of active skill mods based on innate mods and attachment application rules
 	 */
 	VectorMap<String, int> activeSkillModMap;
-	Vector<String> activeSkillModIndex;
+	SortedVector<String> activeSkillModIndex;
 
 public:
 	/*
@@ -161,6 +161,8 @@ public:
 	 */
 	WearableSkillModMap() {
 		maxAttachments = 0;
+
+		activeSkillModIndex.setNoDuplicateInsertPlan();
 
 		addSerializableVariables();
 	}
@@ -171,6 +173,8 @@ public:
 		maxAttachments = sk.maxAttachments;
 		activeSkillModMap = sk.activeSkillModMap;
 		activeSkillModIndex = sk.activeSkillModIndex;
+
+		activeSkillModIndex.setNoDuplicateInsertPlan();
 
 		addSerializableVariables();
 	}
@@ -300,7 +304,7 @@ public:
 						statValue = statValue * -1;
 
 					activeSkillModMap.put(statName, statValue);
-					activeSkillModIndex.add(statName);
+					activeSkillModIndex.put(statName);
 
 				} else
 					// If a skill mod wasn't actually added. Remove the Attachment from the Vector
