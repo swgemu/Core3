@@ -81,10 +81,14 @@ public:
 
 		structure->payMaintenance(uncondemnCost, creature, false);
 
+		//Give the player 10 minutes to pay more maintenance before sending out new mails.
+		structure->scheduleMaintenanceTask(10 * 60);
+
 		if (structure->isBuildingObject()) {
 			BuildingObject* building = cast<BuildingObject* >(structure);
 
 			if (building != NULL) {
+				//Remove ***** Condemned Structure ***** sign name.
 				building->updateSignName(true);
 			}
 		}

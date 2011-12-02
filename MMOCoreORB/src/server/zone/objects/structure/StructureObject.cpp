@@ -1119,8 +1119,12 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 	// server/zone/objects/structure/StructureObject.idl():  		super.notifyInsertToZone(zone);
 	TangibleObjectImplementation::notifyInsertToZone(zone);
 	// server/zone/objects/structure/StructureObject.idl():  	}
-	if (!TangibleObjectImplementation::staticObject)	// server/zone/objects/structure/StructureObject.idl():  			scheduleMaintenanceTask(10 * 60);
+	if (!TangibleObjectImplementation::staticObject){
+	// server/zone/objects/structure/StructureObject.idl():  			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
+	TangibleObjectImplementation::maxCondition = baseMaintenanceRate * 24 * 7 * 4;
+	// server/zone/objects/structure/StructureObject.idl():  			scheduleMaintenanceTask(10 * 60);
 	scheduleMaintenanceTask(10 * 60);
+}
 }
 
 void StructureObjectImplementation::createChildObjects() {

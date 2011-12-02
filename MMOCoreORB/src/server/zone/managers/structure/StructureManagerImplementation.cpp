@@ -719,16 +719,8 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 		status->addMenuItem("@player_structure:structure_public"); //This structure is public
 	}
 
-	status->addMenuItem("@player_structure:condition_prompt " + String::valueOf((int) ((structure->getMaxCondition() - structure->getConditionDamage()) / structure->getMaxCondition() * 100)) + "%");
+	status->addMenuItem("@player_structure:condition_prompt " + String::valueOf(structure->getDecayPercentage()) + "%");
 	//TODO: Calculate how much time is remaining on the current maintenance pool.
-	/*
-	ssmpool << dec << "@player_structure:maintenance_pool_prompt " << maintpool; //Maintenance Pool:
-
-	if (maintpool > 0) {
-		uint32 seconds = (uint32) floor(((float) maintpool) / (((float) maintrate) / 3600.0f));
-		ssmpool << dec << " (" << getTimeString(seconds) << ")";
-	}
-	*/
 	status->addMenuItem("@player_structure:maintenance_pool_prompt " + String::valueOf((int) floor((float)structure->getSurplusMaintenance())));
 	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getMaintenanceRate()) + " cr/hr");
 	status->addMenuItem("@player_structure:maintenance_mods_prompt " + structure->getMaintenanceMods());

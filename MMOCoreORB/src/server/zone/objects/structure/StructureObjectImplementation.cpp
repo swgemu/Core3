@@ -205,6 +205,13 @@ void StructureObjectImplementation::updateStructureStatus() {
 	//Maintenance is used as decay as well so let it go below 0.
 	surplusMaintenance -= maintenanceDue;
 
+	//Update structure condition.
+	if (surplusMaintenance < 0) {
+		setConditionDamage(-surplusMaintenance, true);
+	} else {
+		setConditionDamage(0, true);
+	}
+
 	if (surplusPower > 0.f)
 		surplusPower -= powerDue;
 	//else if installation, shutdown.
@@ -215,10 +222,13 @@ bool StructureObjectImplementation::isDecayed() {
 }
 
 int StructureObjectImplementation::getDecayPercentage() {
-	//It takes 4 weeks for a building to decay.
-	//Todo: Correct the decay time.
-	int decayedBelowMaintenance = (baseMaintenanceRate * 24 * 7 * 4);
-	int percentage = (decayedBelowMaintenance + surplusMaintenance) * 100 / decayedBelowMaintenance;
+	//Update structure status.
+	updateStructureStatus();
+
+	//Calculate decay.
+	int decayedBelowMaintenance = getMaxCondition();
+	int percentage = (decayedBelowMaintenance - getConditionDamage()) * 100 / decayedBelowMaintenance;
+
 	//Calculation above truncates the percentage value but we want to round it upwards.
 	percentage += 1;
 	if (percentage < 0) {
@@ -226,6 +236,7 @@ int StructureObjectImplementation::getDecayPercentage() {
 	} else if (percentage > 100) {
 		percentage = 100;
 	}
+
 	return percentage;
 }
 
