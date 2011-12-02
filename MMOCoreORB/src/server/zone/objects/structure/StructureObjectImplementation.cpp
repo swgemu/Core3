@@ -227,17 +227,21 @@ int StructureObjectImplementation::getDecayPercentage() {
 
 	//Calculate decay.
 	int decayedBelowMaintenance = getMaxCondition();
-	int percentage = (decayedBelowMaintenance - getConditionDamage()) * 100 / decayedBelowMaintenance;
 
-	//Calculation above truncates the percentage value but we want to round it upwards.
-	percentage += 1;
-	if (percentage < 0) {
-		percentage = 0;
-	} else if (percentage > 100) {
-		percentage = 100;
-	}
+	if (decayedBelowMaintenance != 0) {
+		int percentage = (decayedBelowMaintenance - getConditionDamage()) * 100 / decayedBelowMaintenance;
 
-	return percentage;
+		//Calculation above truncates the percentage value but we want to round it upwards.
+		percentage += 1;
+		if (percentage < 0) {
+			percentage = 0;
+		} else if (percentage > 100) {
+			percentage = 100;
+		}
+
+		return percentage;
+	} else
+		return 0;
 }
 
 void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst) {
