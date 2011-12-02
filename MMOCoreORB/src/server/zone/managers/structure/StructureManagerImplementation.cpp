@@ -17,6 +17,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
@@ -69,6 +70,7 @@
 #include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureManageMaintenanceSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructurePayUncondemnMaintenanceSuiCallback.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -776,8 +778,9 @@ void StructureManagerImplementation::promptManageMaintenance(CreatureObject* cre
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == NULL) {
 		return;
+	}
 
 	//Get the most up to date maintenance count.
 	structure->updateStructureStatus();
@@ -791,6 +794,58 @@ void StructureManagerImplementation::promptManageMaintenance(CreatureObject* cre
 	sui->setPromptText("@player_structure:select_maint_amount \n@player_structure:current_maint_pool " + String::valueOf(surplusMaintenance));
 	sui->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
 	sui->addTo("@player_structure:to_pay", "0", "0", "1");
+
+	ghost->addSuiBox(sui);
+	creature->sendMessage(sui->generateMessage());
+}
+
+void StructureManagerImplementation::promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL) {
+		return;
+	}
+
+	int uncondemnCost = -structure->getSurplusMaintenance();
+
+	ManagedReference<SuiMessageBox*> sui;
+	String text;
+
+	if (creature->getCashCredits() + creature->getBankCredits() >= uncondemnCost) {
+		//Owner can un-condemn the structure.
+		sui = new SuiMessageBox(creature, SuiWindowType::STRUCTURE_UNCONDEMN_CONFIRM);
+		if (sui == NULL) {
+			//TODO: what message should be shown here?
+			return;
+		}
+
+		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
+		String textStringId = "@player_structure:structure_condemned_owner_has_credits";
+		text = StringIdManager::instance()->getStringId(textStringId.hashCode());
+		text = text.replaceFirst("%DI", String::valueOf(uncondemnCost));
+
+		sui->setCancelButton(true, "@cancel");
+		sui->setCallback(new StructurePayUncondemnMaintenanceSuiCallback(server->getZoneServer()));
+	} else {
+		//Owner cannot un-condemn the structure.
+		sui = new SuiMessageBox(creature, SuiWindowType::NONE);
+		if (sui == NULL) {
+			//TODO: what message should be shown here?
+			return;
+		}
+
+		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
+		String textStringId = "@player_structure:structure_condemned_owner_no_credits";
+		text = StringIdManager::instance()->getStringId(textStringId.hashCode());
+		text = text.replaceFirst("%DI", String::valueOf(uncondemnCost));
+
+		sui->setCancelButton(false, "@cancel");
+	}
+
+	sui->setPromptText(text);
+	sui->setOkButton(true, "@ok");
+	sui->setPromptTitle("@player_structure:fix_condemned_title");
+	sui->setUsingObject(structure);
 
 	ghost->addSuiBox(sui);
 	creature->sendMessage(sui->generateMessage());

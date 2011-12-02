@@ -32,7 +32,7 @@ public:
 		//Deposit/Withdraw the maintenance
 		StructureObject* structure = cast<StructureObject*>( obj.get());
 
-		Locker _creatureLock(creature);
+		//Creature is already locked (done in handleSuiEventNotification in SuiManager).
 		Locker _lock(structure, creature);
 
 		//No wrap around in the maintenance pool.
@@ -47,7 +47,7 @@ public:
 			return;
 		}
 
-		structure->payMaintenance(transferred, creature);
+		structure->payMaintenance(transferred, creature, true);
 
 		if (structure->isBuildingObject()) {
 			//Update sign name if it previously was condemned.

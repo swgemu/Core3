@@ -340,8 +340,10 @@ class StructureObject extends TangibleObject {
 	 * @post payer and structure objects are locked.
 	 * @param maintenance maintenance amount to deposit.
 	 * @param payer payer object.
+	 * @param cashFirst Indicates if the amount should be withdrawn from
+	 * the player's cash or bank account first.
 	 */
-	public native void payMaintenance(int maintenance, CreatureObject payer);
+	public native void payMaintenance(int maintenance, CreatureObject payer, boolean cashFirst);
 	
 	public void setSurplusPower(int surplus) {
 		surplusPower = surplus;

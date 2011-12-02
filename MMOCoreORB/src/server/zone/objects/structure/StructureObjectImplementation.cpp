@@ -217,7 +217,7 @@ bool StructureObjectImplementation::isDecayed() {
 int StructureObjectImplementation::getDecayPercentage() {
 	//It takes 4 weeks for a building to decay.
 	//Todo: Correct the decay time.
-	int decayedBelowMaintenance = (baseMaintenanceRate * 24 * 7 *4);
+	int decayedBelowMaintenance = (baseMaintenanceRate * 24 * 7 * 4);
 	int percentage = (decayedBelowMaintenance + surplusMaintenance) * 100 / decayedBelowMaintenance;
 	//Calculation above truncates the percentage value but we want to round it upwards.
 	percentage += 1;
@@ -229,9 +229,26 @@ int StructureObjectImplementation::getDecayPercentage() {
 	return percentage;
 }
 
-void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObject* payer) {
+void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst) {
 	//Pay maintenance.
-	payer->substractBankCredits(maintenance);
+	int payedSoFar;
+	if (cashFirst) {
+		if (payer->getCashCredits() >= maintenance) {
+			payer->substractCashCredits(maintenance);
+		} else {
+			payedSoFar = payer->getCashCredits();
+			payer->substractCashCredits(payedSoFar);
+			payer->substractBankCredits(maintenance - payedSoFar);
+		}
+	} else {
+		if (payer->getBankCredits() >= maintenance) {
+			payer->substractBankCredits(maintenance);
+		} else {
+			payedSoFar = payer->getBankCredits();
+			payer->substractBankCredits(payedSoFar);
+			payer->substractCashCredits(maintenance - payedSoFar);
+		}
+	}
 	addMaintenance(maintenance);
 
 	//Update maintenance reduced.

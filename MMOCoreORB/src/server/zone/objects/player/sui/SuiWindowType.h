@@ -123,6 +123,7 @@ public:
 	static const uint16 STRUCTURE_DESTROY_VENDOR_CONFIRM = 148;
 	static const uint16 STRUCTURE_VENDOR_STATUS = 149;
 	static const uint16 STRUCTURE_VENDOR_REGISTER = 150;
+	static const uint16 STRUCTURE_UNCONDEMN_CONFIRM = 151;
 
 	//Admin 171 - 220
 	static const uint16 ADMIN_COMMANDS = 171;

@@ -29,6 +29,8 @@
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -393,8 +395,9 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 	bool allowEntry = isAllowedEntry(creature->getFirstName());
 
 	//If they are inside, and aren't allowed to be, then kick them out!
-	if (!allowEntry && creature->getRootParent() == _this)
+	if (!allowEntry && creature->getRootParent() == _this) {
 		ejectObject(creature);
+	}
 
 	for (int i = 0; i < cells.size(); ++i) {
 		ManagedReference<CellObject*> cell = cells.get(i);
@@ -428,8 +431,28 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		return;
 
 	//If they are inside, and aren't allowed to be, then kick them out!
-	if (!isAllowedEntry(player->getFirstName()))
+	if (!isAllowedEntry(player->getFirstName()) || isCondemned()) {
 		ejectObject(player);
+
+		if (isCondemned()) {
+			//Handle condemned messages.
+			CreatureObject* owner = getOwnerCreatureObject();
+			if (owner != NULL && owner->getFirstName() == player->getFirstName()) {
+				//Owner trying to enter building.
+				ManagedReference<Zone* >zone = getZone();
+				if (zone != NULL) {
+					ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
+					if (structureManager != NULL) {
+						structureManager->promptPayUncondemnMaintenance(player, _this);
+					}
+				}
+			} else {
+				//Other player than the owner trying to enter the building.
+				StringIdChatParameter message("@player_structure:structure_condemned_not_owner");
+				player->sendSystemMessage(message);
+			}
+		}
+	}
 }
 
 uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
@@ -461,7 +484,8 @@ void BuildingObjectImplementation::destroyAllPlayerItems() {
 
 void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 	//TODO: Fix sign object to handle string id's.
-	UnicodeString signNameToSet("@player_structure:fix_condemned_title");
+	String condemned = "@player_structure:fix_condemned_title";
+	UnicodeString signNameToSet = StringIdManager::instance()->getStringId(condemned.hashCode());
 	if (!isCondemned()){
 		signNameToSet = signName;
 	}

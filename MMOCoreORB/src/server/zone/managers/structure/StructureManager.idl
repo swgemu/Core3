@@ -172,5 +172,13 @@ class StructureManager extends ManagedService implements Logger {
 	 * @param structure The structure containing the item.
 	 */
 	public native void moveFirstItemTo(CreatureObject creature, StructureObject structure);
+
+	/**
+	 * Sends a Sui prompt to the player asking if they want to pay the
+	 * required maintenance and fee to un-condemn the structure.
+	 * @param creature The creature who owns the structure.
+	 * @param structure The condemned structure.
+	 */
+	public native void promptPayUncondemnMaintenance(CreatureObject creature, StructureObject structure);
 }
 

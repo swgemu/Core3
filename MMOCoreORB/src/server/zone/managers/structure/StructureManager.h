@@ -186,6 +186,8 @@ public:
 
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
 
+	void promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -255,6 +257,8 @@ public:
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
 
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
+
+	void promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure);
 
 	WeakReference<StructureManager*> _this;
 
@@ -326,6 +330,8 @@ public:
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
 
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
+
+	void promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure);
 
 protected:
 	String _param1_placeStructure__CreatureObject_String_float_float_int_;

@@ -226,7 +226,7 @@ public:
 
 	void addMaintenance(int add);
 
-	void payMaintenance(int maintenance, CreatureObject* payer);
+	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
 
@@ -402,7 +402,7 @@ public:
 
 	void addMaintenance(int add);
 
-	void payMaintenance(int maintenance, CreatureObject* payer);
+	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
 
@@ -559,7 +559,7 @@ public:
 
 	void addMaintenance(int add);
 
-	void payMaintenance(int maintenance, CreatureObject* payer);
+	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
 
