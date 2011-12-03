@@ -491,7 +491,5 @@ void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 	}
 	if (signObject != NULL) {
 		signObject->setCustomObjectName(signNameToSet, notifyClient);
-	} else {
-		StructureObjectImplementation::setCustomObjectName(signNameToSet, notifyClient);
 	}
 }
