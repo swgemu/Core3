@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TRAINERINFOSCREENHANDLER_H_
-#define TRAINERINFOSCREENHANDLER_H_
+#ifndef TRAINERSCREENHANDLERS_H_
+#define TRAINERSCREENHANDLERS_H_
 
 #include "ScreenHandler.h"
 
@@ -174,4 +174,4 @@ public:
 
 using namespace server::zone::objects::creature::conversation::screenhandlers;
 
-#endif /* TRAINERINFOSCREENHANDLER_H_ */
+#endif /* TRAINERSCREENHANDLERS_H_ */
