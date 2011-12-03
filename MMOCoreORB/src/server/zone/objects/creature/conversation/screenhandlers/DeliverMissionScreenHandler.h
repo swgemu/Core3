@@ -42,49 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ConversationManager.h"
-#include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/objects/creature/conversation/DeliverMissionConversationObserver.h"
-#include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
-#include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#ifndef DELIVERMISSIONSCREENHANDLER_H_
+#define DELIVERMISSIONSCREENHANDLER_H_
 
-ConversationManager::ConversationManager()
-	: Logger("ConversationManager") {
-}
+#include "ScreenHandler.h"
 
-ConversationManager::~ConversationManager() {
-	//Do nothing.
-}
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace conversation {
+namespace screenhandlers {
 
-ConversationObserver* ConversationManager::getConversationObserver(uint32 conversationTemplateCRC) {
-	if (conversationObservers.containsKey(conversationTemplateCRC)) {
-		//Observer does already exist, return it.
-		return conversationObservers.get(conversationTemplateCRC).get();
-	} else {
-		//No observer, create it.
-		ManagedReference<ConversationObserver*> conversationObserver = NULL;
-		ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(conversationTemplateCRC);
-		if (conversationTemplate != NULL) {
-			switch (conversationTemplate->getConversationTemplateType()) {
-			case ConversationTemplate::ConversationTemplateTypeNormal:
-				conversationObserver = new ConversationObserver(conversationTemplate);
-				break;
-			case ConversationTemplate::ConversationTemplateTypeTrainer:
-				conversationObserver = new TrainerConversationObserver(conversationTemplate);
-				break;
-			case ConversationTemplate::ConversationTemplateTypeDeliverMission:
-				conversationObserver = new DeliverMissionConversationObserver(conversationTemplate);
-				break;
-			default:
-				conversationObserver = new ConversationObserver(conversationTemplate);
-				break;
-			}
+class DeliverMissionScreenHandler : public ScreenHandler {
+public:
+	static const String STARTSCREENHANDLERID;
 
-			if (conversationObserver != NULL) {
-				//Add it to the map.
-				conversationObservers.put(conversationTemplateCRC, conversationObserver);
-			}
-		}
-		return conversationObserver;
+	DeliverMissionScreenHandler() : ScreenHandler() {}
+
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return true;
 	}
-}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return true;
+	}
+};
+
+} // namespace screenhandlers
+} // namespace conversation
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::conversation::screenhandlers;
+
+#endif /* DELIVERMISSIONSCREENHANDLER_H_ */

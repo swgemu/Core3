@@ -13,3 +13,6 @@ includeFile("spawn/serverobjects.lua")
 
 -- Trainer
 includeFile("trainer/serverobjects.lua")
+
+-- Mission
+includeFile("mission/serverobjects.lua")

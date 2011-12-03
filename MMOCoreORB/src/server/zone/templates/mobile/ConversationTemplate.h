@@ -58,7 +58,11 @@ namespace mobile {
 
 class ConversationTemplate : public Object, public Logger {
 public:
-	enum ConversationTemplateType { ConversationTemplateTypeNormal, ConversationTemplateTypeTrainer };
+	enum ConversationTemplateType {
+		ConversationTemplateTypeNormal,
+		ConversationTemplateTypeTrainer,
+		ConversationTemplateTypeDeliverMission
+	};
 protected:
 	String initialScreenID;
 	VectorMap<String, Reference<ConversationScreen*> > screens;
@@ -91,6 +95,8 @@ public:
 
 		if (templateType == "Trainer") {
 			conversationTemplateType = ConversationTemplateTypeTrainer;
+		} else if (templateType == "DeliverNPC") {
+			conversationTemplateType = ConversationTemplateTypeDeliverMission;
 		} else {
 			conversationTemplateType = ConversationTemplateTypeNormal;
 		}

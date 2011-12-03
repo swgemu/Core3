@@ -42,49 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ConversationManager.h"
-#include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/objects/creature/conversation/DeliverMissionConversationObserver.h"
-#include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
-#include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "DeliverMissionScreenHandler.h"
 
-ConversationManager::ConversationManager()
-	: Logger("ConversationManager") {
-}
+const String DeliverMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 
-ConversationManager::~ConversationManager() {
-	//Do nothing.
-}
-
-ConversationObserver* ConversationManager::getConversationObserver(uint32 conversationTemplateCRC) {
-	if (conversationObservers.containsKey(conversationTemplateCRC)) {
-		//Observer does already exist, return it.
-		return conversationObservers.get(conversationTemplateCRC).get();
-	} else {
-		//No observer, create it.
-		ManagedReference<ConversationObserver*> conversationObserver = NULL;
-		ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(conversationTemplateCRC);
-		if (conversationTemplate != NULL) {
-			switch (conversationTemplate->getConversationTemplateType()) {
-			case ConversationTemplate::ConversationTemplateTypeNormal:
-				conversationObserver = new ConversationObserver(conversationTemplate);
-				break;
-			case ConversationTemplate::ConversationTemplateTypeTrainer:
-				conversationObserver = new TrainerConversationObserver(conversationTemplate);
-				break;
-			case ConversationTemplate::ConversationTemplateTypeDeliverMission:
-				conversationObserver = new DeliverMissionConversationObserver(conversationTemplate);
-				break;
-			default:
-				conversationObserver = new ConversationObserver(conversationTemplate);
-				break;
-			}
-
-			if (conversationObserver != NULL) {
-				//Add it to the map.
-				conversationObservers.put(conversationTemplateCRC, conversationObserver);
-			}
-		}
-		return conversationObserver;
-	}
+ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+	return conversationScreen;
 }
