@@ -8,6 +8,8 @@
 #ifndef PERFORMANCE_H_
 #define PERFORMANCE_H_
 
+#include "engine/engine.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
 
 class PerformanceType {
 public:
@@ -267,6 +269,44 @@ public:
 	inline float getLoopDuration() {
 		return loopDuration;
 	}
+
+	void parseDataTableRow(DataTableRow* row) {
+			row->getValue(0, performanceName);
+			row->getValue(1, instrumentAudioId);
+			row->getValue(2, requiredSong);
+			row->getValue(3, requiredInstrument);
+			row->getValue(4, requiredDance);
+			row->getValue(5, danceVisualId);
+			row->getValue(6, actionPointsPerLoop);
+			row->getValue(7, loopDuration);
+			uint32 typeHex;
+			row->getValue(8, typeHex);
+			if ((int)typeHex == PerformanceType::MUSIC )
+			{
+				type=PerformanceType::MUSIC;
+			}
+			else if ((int)typeHex == PerformanceType::DANCE )
+			{
+				type=PerformanceType::DANCE;
+			}
+			row->getValue(9, baseXp);
+			row->getValue(10, flourishXpMod);
+			row->getValue(11, healMindWound);
+			row->getValue(12, healShockWound);
+			row->getValue(13, requiredSkillMod);
+			row->getValue(14, requiredSkillModValue);
+			row->getValue(15, mainloop);
+			row->getValue(16, flourish1);
+			row->getValue(17, flourish2);
+			row->getValue(18, flourish3);
+			row->getValue(19, flourish4);
+			row->getValue(20, flourish5);
+			row->getValue(21, flourish6);
+			row->getValue(22, flourish7);
+			row->getValue(23, flourish8);
+			row->getValue(24, intro);
+			row->getValue(25, outro);
+		}
 
 };
 

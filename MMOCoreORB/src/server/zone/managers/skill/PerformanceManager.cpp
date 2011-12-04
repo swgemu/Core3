@@ -47,9 +47,11 @@ which carries forward this exception.
 
 #include "PerformanceManager.h"
 #include "server/db/ServerDatabase.h"
+#include "server/zone/templates/datatables/DataTableIff.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/objects/tangible/Instrument.h"
 
-PerformanceManager::PerformanceManager() {
+PerformanceManager::PerformanceManager(): Logger("PerformanceManager") {
 	loadPerformances();
 
 	danceMap.put("basic", "dance_1");
@@ -90,6 +92,8 @@ PerformanceManager::PerformanceManager() {
 	instrumentIdMap.put("western", 101);
 	instrumentIdMap.put("starwars4", 111);
 	instrumentIdMap.put("funk", 121);
+
+
 
 }
 
@@ -199,7 +203,7 @@ PerformanceManager::~PerformanceManager() {
 }
 
 void PerformanceManager::loadPerformances() {
-	/*
+
 	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/performance/performance.iff");
 
 	if (iffStream == NULL) {
@@ -212,58 +216,17 @@ void PerformanceManager::loadPerformances() {
 
 	delete iffStream;
 
+	performances = new Vector<Performance*>();
 	for (int i = 0; i < dtable.getTotalRows(); ++i) {
 		DataTableRow* row = dtable.getRow(i);
 
-		Reference<Performance*> performance = new Performance();
+		Performance* performance = new Performance();
 		performance->parseDataTableRow(row);
+		performances->add(performance);
 	}
 
-	info("Loaded " + String::valueOf(performanceMap.size()) + " performances.", true);*/
+	info("Loaded " + String::valueOf(performances->size()) + " performances.", true);
 
-	performances = new Vector<Performance*>();
-
-	try {
-		String query = "SELECT * FROM performance";
-
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
-
-		while (res->next()) {
-			Performance *performance = new Performance();
-
-			performance->setName(res->getString(0));
-			performance->setInstrumentAudioId(res->getInt(1));
-			performance->setRequiredSong(res->getString(2));
-			performance->setRequiredInstrument(res->getString(3));
-			performance->setRequiredDance(res->getString(4));
-			performance->setDanceVisualId(res->getInt(5));
-			performance->setActionPointsPerLoop(res->getInt(6));
-			performance->setLoopDuration(res->getFloat(7));
-			performance->setType(res->getInt(8));
-			performance->setBaseXp(res->getInt(9));
-			performance->setFlourishXpMod(res->getInt(10));
-			performance->setHealMindWound(res->getInt(11));
-			performance->setHealShockWound(res->getInt(12));
-			performance->setRequiredSkillMod(res->getString(13));
-			performance->setRequiredSkillModValue(res->getInt(14));
-			performance->setMainloop(res->getString(15));
-			performance->setFlourish1(res->getString(16));
-			performance->setFlourish2(res->getString(17));
-			performance->setFlourish3(res->getString(18));
-			performance->setFlourish4(res->getString(19));
-			performance->setFlourish5(res->getString(20));
-			performance->setFlourish6(res->getString(21));
-			performance->setFlourish7(res->getString(22));
-			performance->setFlourish8(res->getString(23));
-			performance->setIntro(res->getString(24));
-			performance->setOutro(res->getString(25));
-
-			performances->add(performance);
-			loadedCount++;
-		}
-	} catch (DatabaseException& e) {
-		System::out << e.getMessage() << endl;
-	}
 }
 
 Performance* PerformanceManager::getDance(const String& name) {

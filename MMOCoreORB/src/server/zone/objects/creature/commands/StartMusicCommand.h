@@ -86,7 +86,7 @@ public:
 
 			String abilityName = ability->getAbilityName();
 
-			if (abilityName.indexOf("startmusic") != -1) {
+			if (abilityName.indexOf("startMusic") != -1) {
 				int args = abilityName.indexOf("+");
 
 				if (args != -1) {

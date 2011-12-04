@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "server/zone/ZoneProcessServer.h"
 #include "Performance.h"
 
-class PerformanceManager {
+class PerformanceManager:public Logger{
 	HashTable<String, String> danceMap;
 	HashTable<String, int> instrumentIdMap;
 
