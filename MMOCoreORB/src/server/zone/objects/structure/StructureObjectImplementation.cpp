@@ -121,11 +121,16 @@ String StructureObjectImplementation::getTimeString(uint32 timestamp) {
 
 //Only gets called when maintenance has been changed by an outside source
 void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
+	if (getMaintenanceRate() == 0) {
+		//No maintenance cost, structure maintenance cannot expire.
+		return;
+	}
+
 	updateStructureStatus();
 
 	int timeRemaining = (int) (surplusMaintenance * 3600.f / getMaintenanceRate());
 
-	if (timeRemaining < 0) {
+	if (timeRemaining <= 0) {
 		//Decaying structures should be scheduled as soon as possible. Maintenance task will handle
 		//any further rescheduling.
 		timeRemaining = 1;
