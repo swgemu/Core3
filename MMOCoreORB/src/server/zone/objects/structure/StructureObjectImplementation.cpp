@@ -240,8 +240,10 @@ int StructureObjectImplementation::getDecayPercentage() {
 		}
 
 		return percentage;
-	} else
-		return 0;
+	} else {
+		//Structure has 0 in max condition, i.e. it cannot decay. Condition is therefore always 100 %.
+		return 100;
+	}
 }
 
 void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst) {
