@@ -84,7 +84,7 @@ public:
 			} else if (container->isContainerLocked()) {
 				creature->sendSystemMessage("@slicing/slicing:locked");
 				return GENERALERROR;
-			} else if (objectToOpen->getGameObjectType() == SceneObject::STATICLOOTCONTAINER) {
+			} else if (objectToOpen->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
 				// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??
 				objectToOpen->openContainerTo(cast<CreatureObject*>( creature));
 				return SUCCESS;

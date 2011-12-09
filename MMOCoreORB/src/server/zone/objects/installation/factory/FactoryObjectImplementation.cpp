@@ -59,12 +59,12 @@ void FactoryObjectImplementation::createChildObjects() {
 	String ingredientHopperName = "object/tangible/hopper/manufacture_installation_ingredient_hopper_1.iff";
 	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), 1);
 
-	addObject(ingredientHopper, 4);
+	transferObject(ingredientHopper, 4);
 
 	String outputHopperName = "object/tangible/hopper/manufacture_installation_output_hopper_1.iff";
 	ManagedReference<SceneObject*> outputHopper = server->getZoneServer()->createObject(outputHopperName.hashCode(), 1);
 
-	addObject(outputHopper, 4);
+	transferObject(outputHopper, 4);
 }
 
 void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -294,9 +294,9 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
-	datapad->removeObject(schematic, true);
+	//datapad->removeObject(schematic, true);
 
-	addObject(schematic, -1, true);
+	transferObject(schematic, -1, true);
 
 	StringIdChatParameter message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
 
@@ -319,12 +319,12 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 	ManagedReference<SceneObject*> schematic = getContainerObject(0);
-	removeObject(schematic);
+	schematic->destroyObjectFromWorld(true);
 
 	if(!schematic->isManufactureSchematic())
 		return;
 
-	datapad->addObject(schematic, -1, true);
+	datapad->transferObject(schematic, -1, true);
 	datapad->broadcastObject(schematic, true);
 
 	StringIdChatParameter message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
@@ -499,7 +499,8 @@ void FactoryObjectImplementation::createNewObject() {
 
 	if (schematic->getManufactureLimit() == 0) {
 
-		removeObject(schematic);
+		//removeObject(schematic);
+		schematic->destroyObjectFromWorld(true);
 		stopFactory("manf_done", getObjectName()->getDisplayedName(), "",
 				currentRunCount);
 
@@ -553,7 +554,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return NULL;
 	}
 
-	outputHopper->addObject(crate, -1, false);
+	outputHopper->transferObject(crate, -1, false);
 
 	return crate;
 }

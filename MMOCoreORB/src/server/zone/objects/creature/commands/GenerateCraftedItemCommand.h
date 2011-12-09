@@ -142,11 +142,11 @@ public:
 				ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(true);
 				crate->setUseCount(quantity);
 
-				inventory->addObject(crate, -1, true);
+				inventory->transferObject(crate, -1, true);
 				crate->sendTo(creature, true);
 
 			} else {
-				inventory->addObject(prototype, -1, true);
+				inventory->transferObject(prototype, -1, true);
 				prototype->sendTo(creature, true);
 			}
 

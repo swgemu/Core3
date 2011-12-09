@@ -1410,8 +1410,8 @@ String WeaponObjectImplementation::getXpType() {
 }
 
 bool WeaponObjectImplementation::isUnarmedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::WEAPON || TangibleObjectImplementation::gameObjectType == SceneObject::MELEEWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.WEAPON || super.gameObjectType == SceneObjectType.MELEEWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::WEAPON || TangibleObjectImplementation::gameObjectType == SceneObjectType::MELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isMeleeWeapon() {
@@ -1425,53 +1425,53 @@ bool WeaponObjectImplementation::isRangedWeapon() {
 }
 
 bool WeaponObjectImplementation::isRifleWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.RIFLE;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::RIFLE;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.RIFLE;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::RIFLE;
 }
 
 bool WeaponObjectImplementation::isThrownWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.THROWNWEAPON;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::THROWNWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.THROWNWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::THROWNWEAPON;
 }
 
 bool WeaponObjectImplementation::isHeavyWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.HEAVYWEAPON;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::HEAVYWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.HEAVYWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::HEAVYWEAPON;
 }
 
 bool WeaponObjectImplementation::isSpecialHeavyWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.SPECIALHEAVYWEAPON;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::SPECIALHEAVYWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.SPECIALHEAVYWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::SPECIALHEAVYWEAPON;
 }
 
 bool WeaponObjectImplementation::isLightningRifle() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.LIGHTNINGRIFLE;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::LIGHTNINGRIFLE;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.LIGHTNINGRIFLE;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::LIGHTNINGRIFLE;
 }
 
 bool WeaponObjectImplementation::isCarbineWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.CARBINE;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::CARBINE;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.CARBINE;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::CARBINE;
 }
 
 bool WeaponObjectImplementation::isPistolWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.PISTOL;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::PISTOL;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.PISTOL;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::PISTOL;
 }
 
 bool WeaponObjectImplementation::isOneHandMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.ONEHANDMELEEWEAPON;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::ONEHANDMELEEWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.ONEHANDMELEEWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::ONEHANDMELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isPolearmWeaponObject() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.POLEARM;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::POLEARM;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.POLEARM;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::POLEARM;
 }
 
 bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObject.TWOHANDMELEEWEAPON;
-	return TangibleObjectImplementation::gameObjectType == SceneObject::TWOHANDMELEEWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.TWOHANDMELEEWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::TWOHANDMELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isWeaponObject() {

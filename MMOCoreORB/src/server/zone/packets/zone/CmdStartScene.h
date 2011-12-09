@@ -60,6 +60,9 @@ public:
 	CmdStartScene(CreatureObject* creo) : BaseMessage(50) {
 		Zone* zone = creo->getZone();
 
+		/*if (zone == NULL)
+			zone = creo->getRootParent()->getZone();*/
+
 		insertShort(0x09);
 		insertInt(0x3AE6DFAE);
 		insertByte(0);
@@ -74,7 +77,7 @@ public:
 		String file = TemplateManager::instance()->getTemplateFile(crc);
 	 	insertAscii(file);
 	 	
-	 	insertLong(creo->getZone()->getGalacticTime()); //galactic time
+	 	insertLong(zone->getGalacticTime()); //galactic time
 	}
 
 	static void parse(Packet* pack) {

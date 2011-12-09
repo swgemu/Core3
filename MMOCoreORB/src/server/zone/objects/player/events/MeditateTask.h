@@ -68,7 +68,7 @@ public:
 		player = pl;
 	}
 
-	void setMoodString(String ms) {
+	void setMoodString(const String& ms) {
 		moodString = ms;
 	}
 
@@ -80,7 +80,7 @@ public:
 		Locker playerLocker(player);
 
 		try {
-			Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( player->getPendingTask("meditate"));
+			Reference<MeditateTask*> meditateTask = dynamic_cast<MeditateTask*>(player->getPendingTask("meditate"));
 			int meditateMod = player->getSkillMod("meditate"); // get Meditate Skill Mod
 
 			if (!player->isMeditating())

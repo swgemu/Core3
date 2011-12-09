@@ -119,6 +119,8 @@ using namespace server::zone::packets::object;
 
 #include "server/zone/objects/creature/CreatureFlag.h"
 
+#include "server/zone/objects/scene/SceneObjectType.h"
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"

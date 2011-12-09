@@ -219,7 +219,7 @@ public:
 			return types[badgeID];
 		}
 
-		static int getID(String name) {
+		static int getID(const String& name) {
 			for (int i = 0; i < 140; i++) {
 				if (name.compareTo(names[i]) == 0)
 					return i;

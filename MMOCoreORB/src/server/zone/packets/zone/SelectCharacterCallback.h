@@ -35,6 +35,8 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 		//ObjectManager* objectManager = zoneServer->getObjectManager();
 
+		//Logger::console.info("selected char id: 0x" + String::hexvalueOf((int64)characterID), true);
+
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);
 
 		if (obj != NULL && obj->isPlayerCreature()) {
@@ -64,8 +66,33 @@ public:
 			player->setClient(client);
 			client->setPlayer(obj);
 
-			Zone* zone = player->getZone();
+			String zoneName = ghost->getSavedTerrainName();
+			uint64 savedParentID = ghost->getSavedParentID();
+			ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
 
+			Zone* zone = zoneServer->getZone(zoneName);
+			ManagedReference<SceneObject*> currentParent = player->getParent();
+
+			if ((playerParent != NULL && currentParent == NULL) || (currentParent != NULL && currentParent->isCellObject())) {
+				ghost->setTeleporting(true);
+				player->setMovementCounter(0);
+				ghost->setClientLastMovementStamp(0);
+
+				//if (currentParent != playerParent) {
+					playerParent->transferObject(player, -1, false);
+				//}
+
+				ghost->updateLastValidatedPosition();
+
+				player->sendToOwner(true);
+			} else if (currentParent == NULL) {
+				zone->transferObject(player, -1, true);
+			} else {
+				player->sendToOwner(true);
+			}
+
+
+			/*
 			if (zone != NULL && player->isInQuadTree()) {
 				//reload
 
@@ -83,9 +110,6 @@ public:
 				if (parent == NULL)
 					parent = zoneServer->getObject(savedParentID, true);
 
-				/*if (currentParent != NULL && parent != NULL && parent->isCellObject() && currentParent->isCellObject()) {
-					parent = currentParent;
-				}*/
 
 				try {
 					zone = zoneServer->getZone(zoneName);
@@ -100,9 +124,9 @@ public:
 
 
 						if (parent->isCellObject())
-							parent->addObject(player, -1, false);
+							parent->transferObject(player, -1, false);
 						else if (parent->isVehicleObject())
-							parent->addObject(player, 4, false);
+							parent->transferObject(player, 4, false);
 
 					} catch (Exception& e) {
 						parent->error("error adding player");
@@ -125,10 +149,12 @@ public:
 					zone = zoneServer->getZone(0); //Send them to whatever the first zone is...
 
 				//player->insertToZone(zone);
-				zone->addObject(player, -1, true);
-			}
+				zone->transferObject(player, -1, true);
+			}*/
 
-			ghost->setSavedParentID(0);
+			if (playerParent == NULL)
+				ghost->setSavedParentID(0);
+
 			ghost->setOnline();
 
 			ChatManager* chatManager = zoneServer->getChatManager();

@@ -22,7 +22,7 @@ void SurveyMissionObjectiveImplementation::activate() {
 	}
 
 	if(mission != NULL) {
-		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 		if (player != NULL) {
 			ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
 			ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
@@ -42,7 +42,7 @@ void SurveyMissionObjectiveImplementation::abort() {
 
 	if (mission != NULL) {
 
-		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 
 		player->dropObserver(ObserverEventType::SURVEY, observer);
 	}
@@ -53,7 +53,7 @@ void SurveyMissionObjectiveImplementation::abort() {
 }
 
 void SurveyMissionObjectiveImplementation::complete() {
-	CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+	CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 
 	if (player == NULL)
 		return;
@@ -79,7 +79,7 @@ void SurveyMissionObjectiveImplementation::complete() {
 
 int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::SURVEY) {
-		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 		ResourceSpawn* sampledSpawn = cast<ResourceSpawn*>( arg1);
 
 		int sampledDensity = (int)arg2;

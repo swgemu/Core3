@@ -467,7 +467,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 				if (baitObject != NULL) {
 					baitObject->sendTo(player, true);
-					lootFishObject->addObject(baitObject, -1, true);
+					lootFishObject->transferObject(baitObject, -1, true);
 				}
 
 				String resourceString = zone->getZoneName();
@@ -478,7 +478,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 				if (resource != NULL) {
 					resource->sendTo(player, true);
-					lootFishObject->addObject(resource, -1, true);
+					lootFishObject->transferObject(resource, -1, true);
 				}
 
 				sendReward(player, marker, cast<SceneObject*>(lootFishObject.get()));
@@ -498,7 +498,7 @@ void FishingManagerImplementation::sendReward(CreatureObject* player, SceneObjec
 
 		Locker markerLocker(marker);
 
-		if (marker->addObject(loot, -1, true)) {
+		if (marker->transferObject(loot, -1, true)) {
 			marker->openContainerTo(player);
 
 			loot->getObjectName()->getFullPath(itemName);
@@ -771,7 +771,7 @@ void FishingManagerImplementation::freeBait(CreatureObject* player) {
 		ManagedReference<FishingPoleObject*> pole = getPole(player);
 
 		if ((pole != NULL) && (!pole->hasFullContainerObjects())) {
-			pole->addObject(baitObject, -1, true);
+			pole->transferObject(baitObject, -1, true);
 		}
 	}
 }
@@ -924,8 +924,7 @@ bool FishingManagerImplementation::loseBait(CreatureObject* player) {
 				if (fishBait->getUseCount() > 1)
 					fishBait->setUseCount(fishBait->getUseCount() - 1, true);
 				else {
-
-					pole->removeObject(bait, true);
+					bait->destroyObjectFromWorld(true);
 
 					if (bait->isPersistent())
 						bait->destroyObjectFromDatabase(true);
@@ -975,7 +974,7 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 
 	markerObject->initializePosition(x, z, y);
 	//markerObject->insertToZone(zone);
-	zone->addObject(markerObject, -1, true);
+	zone->transferObject(markerObject, -1, true);
 
 	markerObject->registerObserver(ObserverEventType::CLOSECONTAINER, _this);
 
@@ -991,7 +990,7 @@ void FishingManagerImplementation::createSplash(float x, float y, float z, Zone*
 		if (splashObject != NULL) {
 			splashObject->initializePosition(x, z + 0.5, y);
 			//splashObject->insertToZone(zone);
-			zone->addObject(splashObject, -1, true);
+			zone->transferObject(splashObject, -1, true);
 
 			createFishingSplashEvent(player, zoneServer, splashObject);
 		}
@@ -1143,7 +1142,7 @@ void FishingManagerImplementation::removeMarker(CreatureObject* player, SceneObj
 
 				setFishMarker(player, NULL);
 
-				marker->removeFromZone();
+				marker->destroyObjectFromWorld(true);
 
 				if (marker->isPersistent()) {
 					marker->destroyObjectFromDatabase(true);
@@ -1158,7 +1157,7 @@ void FishingManagerImplementation::removeMarker(CreatureObject* player, SceneObj
 						object->destroyObjectFromDatabase(true);
 					}
 
-					marker->removeObject(object);
+					object->destroyObjectFromWorld(true);
 				}
 			}
 		}
@@ -1168,7 +1167,7 @@ void FishingManagerImplementation::removeMarker(CreatureObject* player, SceneObj
 void FishingManagerImplementation::removeSplash(SceneObject* splash) {
 	if (splash != NULL) {
 		if (!splash->isPlayerCreature()) {
-			splash->removeFromZone();
+			splash->destroyObjectFromWorld(true);
 
 			if (splash->isPersistent()) {
 				splash->destroyObjectFromDatabase(true);

@@ -37,7 +37,7 @@ void MissionObjectImplementation::setRefreshCounter(int ctr, bool notifyClient) 
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -57,7 +57,7 @@ void MissionObjectImplementation::setTypeCRC(uint32 crc, bool notifyClient) {
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -74,7 +74,7 @@ void MissionObjectImplementation::setMissionDescription(const String& file, cons
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -91,7 +91,7 @@ void MissionObjectImplementation::setMissionTitle(const String& file, const Stri
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -108,7 +108,7 @@ void MissionObjectImplementation::setMissionTargetName(const String& target, boo
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -128,7 +128,7 @@ void MissionObjectImplementation::setMissionDifficulty(int difficulty, bool noti
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -148,7 +148,7 @@ void MissionObjectImplementation::setRewardCredits(int creds, bool notifyClient)
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -172,7 +172,7 @@ void MissionObjectImplementation::setTargetTemplate(SharedObjectTemplate* templa
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -194,7 +194,7 @@ WaypointObject* MissionObjectImplementation::createWaypoint() {
 }
 
 void MissionObjectImplementation::updateMissionLocation() {
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3(_this);
@@ -234,7 +234,7 @@ void MissionObjectImplementation::setStartPosition(float posX, float posY, uint3
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -253,7 +253,7 @@ void MissionObjectImplementation::setEndPosition(float posX, float posY, uint32 
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
@@ -270,7 +270,7 @@ void MissionObjectImplementation::setCreatorName(const String& name, bool notify
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);

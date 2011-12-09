@@ -74,10 +74,10 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 			if (!cellParent->isCellObject())
 				cellParent = NULL;
 			else
-				cellParent->addObject(_this, -1);
+				cellParent->transferObject(_this, -1);
 		}
 
-		setParent(cellParent);
+		//setParent(cellParent);
 	}
 
 	Vector<SpawnCoordinate>* members = templ->getSpawnList();

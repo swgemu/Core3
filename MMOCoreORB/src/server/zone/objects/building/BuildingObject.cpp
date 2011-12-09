@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -258,6 +258,20 @@ void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
 		_implementation->notifyInsert(obj);
 }
 
+void BuildingObject::notifyInsertToZone(Zone* zone) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__ZONE_);
+		method.addObjectParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyInsertToZone(zone);
+}
+
 void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -415,20 +429,51 @@ int BuildingObject::getTotalCellNumber() {
 		return _implementation->getTotalCellNumber();
 }
 
-bool BuildingObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+bool BuildingObject::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_);
+		DistributedMethod method(this, RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->addObject(object, containmentType, notifyClient);
+		return _implementation->transferObject(object, containmentType, notifyClient);
+}
+
+int BuildingObject::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(object);
+		method.addObjectParameter(child);
+		method.addObjectParameter(oldParent);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyObjectInsertedToChild(object, child, oldParent);
+}
+
+int BuildingObject::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(object);
+		method.addObjectParameter(child);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyObjectRemovedFromChild(object, child);
 }
 
 int BuildingObject::getCurrentNumberOfPlayerItems() {
@@ -1072,6 +1117,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
+	case RPC_NOTIFYINSERTTOZONE__ZONE_:
+		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		break;
 	case RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_:
 		notifyObjectInsertedToZone(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
@@ -1096,8 +1144,14 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETTOTALCELLNUMBER__:
 		resp->insertSignedInt(getTotalCellNumber());
 		break;
-	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(addObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+	case RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_:
+		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_:
+		resp->insertSignedInt(notifyObjectInsertedToChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		break;
+	case RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_:
+		resp->insertSignedInt(notifyObjectRemovedFromChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETCURRENTNUMBEROFPLAYERITEMS__:
 		resp->insertSignedInt(getCurrentNumberOfPlayerItems());
@@ -1216,6 +1270,10 @@ void BuildingObjectAdapter::notifyLoadFromDatabase() {
 	(static_cast<BuildingObject*>(stub))->notifyLoadFromDatabase();
 }
 
+void BuildingObjectAdapter::notifyInsertToZone(Zone* zone) {
+	(static_cast<BuildingObject*>(stub))->notifyInsertToZone(zone);
+}
+
 void BuildingObjectAdapter::notifyObjectInsertedToZone(SceneObject* object) {
 	(static_cast<BuildingObject*>(stub))->notifyObjectInsertedToZone(object);
 }
@@ -1248,8 +1306,16 @@ int BuildingObjectAdapter::getTotalCellNumber() {
 	return (static_cast<BuildingObject*>(stub))->getTotalCellNumber();
 }
 
-bool BuildingObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return (static_cast<BuildingObject*>(stub))->addObject(object, containmentType, notifyClient);
+bool BuildingObjectAdapter::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
+	return (static_cast<BuildingObject*>(stub))->transferObject(object, containmentType, notifyClient);
+}
+
+int BuildingObjectAdapter::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
+	return (static_cast<BuildingObject*>(stub))->notifyObjectInsertedToChild(object, child, oldParent);
+}
+
+int BuildingObjectAdapter::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
+	return (static_cast<BuildingObject*>(stub))->notifyObjectRemovedFromChild(object, child);
 }
 
 int BuildingObjectAdapter::getCurrentNumberOfPlayerItems() {

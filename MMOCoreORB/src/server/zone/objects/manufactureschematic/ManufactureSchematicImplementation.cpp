@@ -172,7 +172,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 
 	ManagedReference<CreatureObject* > playerCreature = cast<CreatureObject*>( player);
 
-	if(parent != NULL && parent->isCraftingTool()) {
+	if (parent != NULL && getParent()->isCraftingTool()) {
 
 		ManagedReference<CraftingTool* > craftingTool = cast<CraftingTool*>( parent.get());
 
@@ -284,7 +284,8 @@ void ManufactureSchematicImplementation::createFactoryBlueprint() {
 		TangibleObject* ingredient = ingredientSlot->get();
 
 		if(ingredient->getParent() != NULL)
-			ingredient->getParent()->removeObject(ingredient, true);
+			//ingredient->getParent()->removeObject(ingredient, true);
+			ingredient->destroyObjectFromWorld(true);
 
 		ingredient->setUseCount(ingredientSlot->getRequiredQuantity(), false);
 

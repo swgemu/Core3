@@ -182,6 +182,8 @@ public:
 
 	void notifyInsert(QuadTreeEntry* obj);
 
+	void notifyInsertToZone(Zone* zone);
+
 	void notifyDissapear(QuadTreeEntry* obj);
 
 	void notifyObjectInsertedToZone(SceneObject* object);
@@ -208,7 +210,11 @@ public:
 
 	int getTotalCellNumber();
 
-	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+
+	int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
+
+	int notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child);
 
 	int getCurrentNumberOfPlayerItems();
 
@@ -331,6 +337,8 @@ public:
 
 	void notifyInsert(QuadTreeEntry* obj);
 
+	void notifyInsertToZone(Zone* zone);
+
 	void notifyDissapear(QuadTreeEntry* obj);
 
 	void notifyObjectInsertedToZone(SceneObject* object);
@@ -357,7 +365,11 @@ public:
 
 	int getTotalCellNumber();
 
-	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	virtual bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+
+	int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
+
+	int notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child);
 
 	int getCurrentNumberOfPlayerItems();
 
@@ -466,6 +478,8 @@ public:
 
 	void notifyLoadFromDatabase();
 
+	void notifyInsertToZone(Zone* zone);
+
 	void notifyObjectInsertedToZone(SceneObject* object);
 
 	void sendTo(SceneObject* player, bool doClose);
@@ -482,7 +496,11 @@ public:
 
 	int getTotalCellNumber();
 
-	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
+
+	int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
+
+	int notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child);
 
 	int getCurrentNumberOfPlayerItems();
 

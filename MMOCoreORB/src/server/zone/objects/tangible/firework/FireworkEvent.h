@@ -67,7 +67,7 @@ public:
 		try {
 			Locker locker(firework);
 
-			firework->removeFromZone();
+			firework->destroyObjectFromWorld(true);
 		} catch (Exception& e) {
 			player->error("unreported exception on FireworkEvent::run()");
 		}

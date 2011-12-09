@@ -171,28 +171,9 @@ public:
 				}
 			}
 
-		} /*else if (transferType == 4) {
-
-				}*/ else {
-					creature->error("unknown transferType in transfermiscweapon command");
-				}
-
-
-
-		/*uint64 target = packet->parseLong();
-
-			TangibleObject* targetTanoObject;
-			targetTanoObject = cast<TangibleObject*>( creature->getInventoryItem(target));
-
-			if (targetTanoObject != NULL) {
-				Inventory* inventory = creature->getInventory();
-
-				if (inventory != NULL)
-					inventory->moveObjectToTopLevel(creature, targetTanoObject);
-
-				creature->changeWeapon(target, true);
-			}*/
-
+		} else {
+			creature->error("unknown transferType in transfermiscweapon command");
+		}
 
 		return SUCCESS;
 	}

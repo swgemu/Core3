@@ -24,7 +24,7 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 
 CreatureObject* MissionObjectiveImplementation::getPlayerOwner() {
 	if (mission != NULL)
-		return cast<CreatureObject*>( mission->getParentRecursively(SceneObject::PLAYERCREATURE));
+		return cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 	else
 		return NULL;
 }

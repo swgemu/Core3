@@ -229,7 +229,7 @@ public:
 	virtual void parseBaseline6(Message* message) {
 	}
 
-	bool addObject(SceneObject* object, int containmentType);
+	bool transferObject(SceneObject* object, int containmentType);
 	bool removeObject(SceneObject* object);
 
 	StringId& getObjectName() {

@@ -30,8 +30,8 @@ public:
 			return;
 		}
 
-		if (obj->isInQuadTree())
-			obj->removeFromZone();
+
+		obj->destroyObjectFromWorld(true);
 
 		obj->destroyObjectFromDatabase(true);
 

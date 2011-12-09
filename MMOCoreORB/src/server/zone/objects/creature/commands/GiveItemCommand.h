@@ -147,7 +147,7 @@ public:
 				}
 
 				inventory->broadcastObject(object, true);
-				inventory->addObject(object, -1, true);
+				inventory->transferObject(object, -1, true);
 			} else if (commandType.beginsWith("resource")) {
 				String resourceName;
 				args.getStringToken(resourceName);

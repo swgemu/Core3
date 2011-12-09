@@ -43,8 +43,8 @@ public:
 		if (!creature->getDespawnOnNoPlayerInRange())
 			return;
 
-		if (strongRef->inRangeObjects(SceneObject::PLAYERCREATURE, 128) == 0 && strongRef->getNumberOfPlayersInRange() <= 0) {
-			creature->removeFromZone();
+		if (strongRef->inRangeObjects(SceneObjectType::PLAYERCREATURE, 128) == 0 && strongRef->getNumberOfPlayersInRange() <= 0) {
+			creature->destroyObjectFromWorld(true);
 			creature->notifyDespawn(zone);
 		}
 	}

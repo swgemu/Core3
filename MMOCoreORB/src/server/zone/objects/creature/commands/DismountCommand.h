@@ -75,15 +75,18 @@ public:
 
 		vehicle->clearState(CreatureState::MOUNTEDCREATURE);
 
-		if (!vehicle->removeObject(creature, true))
-			vehicle->error("could not remove creature from mount creature");
+		/*if (!vehicle->removeObject(creature, true))
+			vehicle->error("could not remove creature from mount creature");*/
+
+		Zone* zone = vehicle->getZone();
+
+		zone->transferObject(creature, -1, false);
 
 		if (creature->hasBuff(String("burstrun").hashCode())
 				|| creature->hasBuff(String("retreat").hashCode())) {
 
 			creature->setSpeedMultiplierMod(1.822f);
 			creature->setAccelerationMultiplierMod(1.822f);
-
 		}
 
 		creature->clearState(CreatureState::RIDINGMOUNT);

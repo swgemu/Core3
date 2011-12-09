@@ -28,7 +28,7 @@ void GarageInstallationImplementation::createChildObjects() {
 	activeArea->setRadius(64);
 	activeArea->initializePosition(getPositionX(), getPositionZ(), getPositionY());
 	//activeArea->insertToZone(getZone());
-	getZone()->addObject(activeArea, -1, true);
+	getZone()->transferObject(activeArea, -1, true);
 
 	garageArea = activeArea;
 }

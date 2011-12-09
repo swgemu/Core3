@@ -23,7 +23,7 @@ public:
 
 	void run() {
 		// Relocks static loot containers
-		if (tano->getGameObjectType() != SceneObject::STATICLOOTCONTAINER && !tano->isContainerObject())
+		if (tano->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER && !tano->isContainerObject())
 			return;
 
 		Container* container = cast<Container*>( tano.get());

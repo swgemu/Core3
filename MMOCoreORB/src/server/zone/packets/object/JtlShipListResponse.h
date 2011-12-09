@@ -45,7 +45,7 @@ public:
 		for (int i = 0; i < datapadObjects->size(); ++i) {
 			ManagedReference<SceneObject*> datapadObject = datapadObjects->get(i);
 
-			if (datapadObject->getGameObjectType() == SceneObject::SHIPCONTROLDEVICE) {
+			if (datapadObject->getGameObjectType() == SceneObjectType::SHIPCONTROLDEVICE) {
 				ManagedReference<ShipControlDevice*> shipControlDevice = cast<ShipControlDevice*>( datapadObject.get());
 
 				if (shipControlDevice->getControlledObject() != NULL /*&& shipControlDevice->getControlledObject()->isShipObject()*/) {

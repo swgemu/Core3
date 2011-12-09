@@ -70,7 +70,7 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 	}
 
 	if (craftersSerial != "") {
-		if (gameObjectType != LIGHTSABERCRYSTAL)
+		if (gameObjectType != SceneObjectType::LIGHTSABERCRYSTAL)
 			alm->insertAttribute("serial_number", craftersSerial);
 	}
 

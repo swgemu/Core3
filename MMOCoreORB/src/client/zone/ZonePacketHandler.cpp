@@ -362,5 +362,5 @@ void ZonePacketHandler::handleUpdateContainmentMessage(Message* pack) {
 		return;
 	}
 
-	parent->addObject(object, type);
+	parent->transferObject(object, type);
 }

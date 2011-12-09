@@ -69,8 +69,8 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 			createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "foodUsed", item)
 		end 
 		
-		inventoryObj:removeObject(item, 1)
-		spawnedSceneObject:addObject(item, -1, 1)
+		--inventoryObj:removeObject(item, 1)
+		spawnedSceneObject:transferObject(item, -1, 1)
 	end
 	
 	targetCellObject:_setObject(buildingObject:getCell(3))
@@ -1096,7 +1096,7 @@ function TutorialScreenPlay:debrisDestroyedObserver(debrisObject, playerObject)
 	player:sendNewbieTutorialEnableHudElement("all", 1)
 	--player:sendSystemMessage("good job retard")
 	
-	debris:removeFromZone()
+	debris:destroyObjectFromWorld()
 	
 	player:clearCombatState(1)
 	

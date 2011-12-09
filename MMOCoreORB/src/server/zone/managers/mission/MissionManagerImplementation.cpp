@@ -89,7 +89,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 
 	while (missionBag->getContainerObjectsSize() < 6) {
 		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission
-		missionBag->addObject(mission, -1, false);
+		missionBag->transferObject(mission, -1, false);
 		mission->sendTo(player, true);
 		//missionBag->updateToDatabaseWithoutChildren();
 	}
@@ -140,9 +140,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 		}
 	}*/
 
-	missionBag->removeObject(mission);
-
-	datapad->addObject(mission, -1, true);
+	datapad->transferObject(mission, -1, true);
 
 	createMissionObjectives(mission, missionTerminal, player);
 
@@ -285,7 +283,7 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 	if (missionParent != datapad)
 		return;
 
-	datapad->removeObject(mission, true);
+	mission->destroyObjectFromWorld(true);
 	mission->sendDestroyTo(player);
 
 	mission->destroyObjectFromDatabase(true);

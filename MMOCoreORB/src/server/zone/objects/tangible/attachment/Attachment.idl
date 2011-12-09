@@ -55,6 +55,7 @@ import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
 include server.zone.objects.tangible.wearables.WearableSkillMods;
 include server.zone.packets.scene.AttributeListMessage;
+include server.zone.objects.scene.SceneObjectType;
 import server.zone.Zone;
 import system.util.VectorMap;
 
@@ -187,10 +188,10 @@ class Attachment extends TangibleObject {
 	}        
 
 	public boolean isArmorAttachment() {
-		return super.gameObjectType == super.ARMORATTACHMENT;
+		return super.gameObjectType == SceneObjectType.ARMORATTACHMENT;
 	}          
 
 	public boolean isClothingAttachment() {
-		return super.gameObjectType == super.CLOTHINGATTACHMENT;
+		return super.gameObjectType == SceneObjectType.CLOTHINGATTACHMENT;
 	}                                                       
 }

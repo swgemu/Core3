@@ -57,13 +57,22 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		return false;
 	}
 
-	if (destinationObject->getZone() != NULL && objectToTransfer->getZone() == NULL)
+	uint32 oldContainmentType = objectToTransfer->getContainmentType();
+
+	if (!destinationObject->transferObject(objectToTransfer, containmentType, notifyClient)) {
+		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
+		parent->transferObject(objectToTransfer, oldContainmentType);
+
+		return false;
+	}
+
+	/*if (destinationObject->getZone() != NULL && objectToTransfer->getZone() == NULL)
 		destinationObject->broadcastObject(objectToTransfer, false);
 
 	uint32 oldContainmentType = objectToTransfer->getContainmentType();
 
 	//What about nested containers inside of the inventory...
-	SceneObject* playerParent = objectToTransfer->getParentRecursively(SceneObject::PLAYERCREATURE);
+	SceneObject* playerParent = objectToTransfer->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (playerParent != NULL && destinationObject->isCellObject())
 		objectToTransfer->sendDestroyTo(playerParent);
@@ -82,15 +91,15 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		objectToTransfer->sendTo(destinationObject->getParent(), true);
 	}
 
-	if (!destinationObject->addObject(objectToTransfer, containmentType, notifyClient)) {
+	if (!destinationObject->transferObject(objectToTransfer, containmentType, notifyClient)) {
 		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
-		parent->addObject(objectToTransfer, oldContainmentType);
+		parent->transferObject(objectToTransfer, oldContainmentType);
 
 		if (parent->isCellObject()) {
 			Zone* zne = destinationObject->getParent()->getZone();
 
 			//objectToTransfer->insertToZone(zne);
-			zne->addObject(objectToTransfer, -1, true);
+			zne->transferObject(objectToTransfer, -1, true);
 		}
 
 		return false;
@@ -102,13 +111,13 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 
 			if (zne != NULL) {
 				//objectToTransfer->insertToZone(zne);
-				zne->addObject(objectToTransfer, -1, true);
+				zne->transferObject(objectToTransfer, -1, true);
 				//System::out << "Inserted to zone" << endl;
 			}
 		}
 	}
 
-	if (parent->isContainerObject() && parent->getGameObjectType() == SceneObject::STATICLOOTCONTAINER) {
+	if (parent->isContainerObject() && parent->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
 		objectToTransfer->sendTo(destinationObject, true);
 	}
 
@@ -121,7 +130,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 
 	parent->updateToDatabase();
 	//destinationObject->updateToDatabaseAllObjects(false);
-
+	*/
 	return true;
 }
 

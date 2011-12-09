@@ -58,7 +58,7 @@ void ReconMissionObjectiveImplementation::activate() {
 
 void ReconMissionObjectiveImplementation::abort() {
 	if (locationActiveArea != NULL)
-		locationActiveArea->removeFromZone();
+		locationActiveArea->destroyObjectFromWorld(true);
 }
 
 void ReconMissionObjectiveImplementation::complete() {
@@ -67,7 +67,7 @@ void ReconMissionObjectiveImplementation::complete() {
 	if (player == NULL)
 		return;
 
-	locationActiveArea->removeFromZone();
+	locationActiveArea->destroyObjectFromWorld(true);
 
 	Locker locker(player);
 

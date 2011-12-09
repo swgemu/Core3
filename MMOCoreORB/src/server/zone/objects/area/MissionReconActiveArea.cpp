@@ -227,8 +227,8 @@ void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 
 	else {
-	// server/zone/objects/area/MissionReconActiveArea.idl():  				getZone().removeObject(this, true);
-	getZone()->removeObject(_this, true);
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				super.destroyObjectFromWorld(true);
+	ActiveAreaImplementation::destroyObjectFromWorld(true);
 }
 }
 }

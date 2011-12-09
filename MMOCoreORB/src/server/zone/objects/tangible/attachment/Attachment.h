@@ -109,6 +109,8 @@ using namespace server::zone;
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/objects/scene/SceneObjectType.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"

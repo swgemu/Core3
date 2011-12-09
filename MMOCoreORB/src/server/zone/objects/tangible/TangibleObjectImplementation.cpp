@@ -289,12 +289,7 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 	useCount = newUseCount;
 
 	if (useCount < 1) {
-
-		broadcastDestroy(_this, true);
-
-		if (parent != NULL) {
-			parent->removeObject(_this, true);
-		}
+		destroyObjectFromWorld(true);
 
 		destroyObjectFromDatabase(true);
 
@@ -564,21 +559,21 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	String file;
 	uint32 type = getGameObjectType();
 
-	if(type & SceneObject::ARMOR)
+	if(type & SceneObjectType::ARMOR)
 		file = "object/factory/factory_crate_armor.iff";
-	else if(type == SceneObject::CHEMICAL || type == SceneObject::PHARMACEUTICAL || type == SceneObject::PETMEDECINE)
+	else if(type == SceneObjectType::CHEMICAL || type == SceneObjectType::PHARMACEUTICAL || type == SceneObjectType::PETMEDECINE)
 		file = "object/factory/factory_crate_chemicals.iff";
-	else if(type & SceneObject::CLOTHING)
+	else if(type & SceneObjectType::CLOTHING)
 		file = "object/factory/factory_crate_clothing.iff";
-	else if(type == SceneObject::ELECTRONICS)
+	else if(type == SceneObjectType::ELECTRONICS)
 		file = "object/factory/factory_crate_electronics.iff";
-	else if(type == SceneObject::FOOD || type == SceneObject::DRINK)
+	else if(type == SceneObjectType::FOOD || type == SceneObjectType::DRINK)
 		file = "object/factory/factory_crate_food.iff";
-	else if(type == SceneObject::FURNITURE)
+	else if(type == SceneObjectType::FURNITURE)
 		file = "object/factory/factory_crate_furniture.iff";
-	else if(type & SceneObject::INSTALLATION)
+	else if(type & SceneObjectType::INSTALLATION)
 		file = "object/factory/factory_crate_installation.iff";
-	else if(type & SceneObject::WEAPON)
+	else if(type & SceneObjectType::WEAPON)
 		file = "object/factory/factory_crate_weapon.iff";
 	else
 		file = "object/factory/factory_crate_generic_items.iff";
@@ -595,10 +590,10 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	if (insertSelf) {
 
 		if (parent != NULL) {
-			parent->removeObject(_this, true);
+			getParent()->removeObject(_this, true);
 		}
 
-		crate->addObject(_this, -1, false);
+		crate->transferObject(_this, -1, false);
 
 	} else {
 
@@ -609,7 +604,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 		protoclone->setParent(NULL);
 		protoclone->setOptionsBitmask(0x2100);
-		crate->addObject(protoclone, -1, false);
+		crate->transferObject(protoclone, -1, false);
 	}
 
 	crate->setObjectName(*getObjectName());

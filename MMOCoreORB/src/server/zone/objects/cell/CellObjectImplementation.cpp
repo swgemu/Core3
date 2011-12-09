@@ -60,21 +60,17 @@ void CellObjectImplementation::notifyLoadFromDatabase() {
 void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//SceneObjectImplementation::sendContainerObjectsTo(player);
 	//info("sending cell containers", true);
-	BuildingObject* building = dynamic_cast<BuildingObject*>(parent.get());
+	/*BuildingObject* building = dynamic_cast<BuildingObject*>(parent.get());
 	bool publicStructure = (building != NULL) ? building->isPublicStructure() : true;
+
+
 
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* containerObject = getContainerObject(j);
 
-		/*if (containerObject->getParent() == NULL)
-			containerObject->setParent(_this);*/
-
-		//if (!containerObject->isInQuadTree() /*&& !containerObject->isPlayerCreature()*/)
-		//if (!containerObject->isPlayerCreature())
-
-		if (containerObject->isCreatureObject() && publicStructure)
+		if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject)
 			containerObject->sendTo(player, true);
-	}
+	}*/
 }
 
 /*void CellObjectImplementation::sendTo(SceneObject* player, bool doClose) {
@@ -90,7 +86,7 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	bool allowEntry = true;
 
-	if (player->isCreatureObject() && parent != NULL && parent->isBuildingObject()) {
+	if (player->isCreatureObject() && parent != NULL && getParent()->isBuildingObject()) {
 		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>( player);
 
 		allowEntry = (cast<BuildingObject*>(parent.get()))->isAllowedEntry(creature->getFirstName());
@@ -101,7 +97,7 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 int CellObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (parent != NULL && parent->isBuildingObject()) {
+	if (parent != NULL && getParent()->isBuildingObject()) {
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get());
 
 		if (building->getCurrentNumberOfPlayerItems() >= building->getMaximumNumberOfPlayerItems()) {
@@ -114,32 +110,15 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 	return SceneObjectImplementation::canAddObject(object, containmentType, errorDescription);
 }
 
-bool CellObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+bool CellObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
 	Locker locker(_this);
 
-	/*bool count = false;
+	bool ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient);
 
-	if (!object->isTerminal() && !object->isCreatureObject() && !containerObjects.contains(object->getObjectID()))
-		count = true;*/
+	Zone* zone = getZone();
 
-	bool ret = SceneObjectImplementation::addObject(object, containmentType, notifyClient);
-
-	/*if (count && ret) {
-		++currentNumberOfItems;
-	}*/
-
-	return ret;
-}
-
-bool CellObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
-	Locker locker(_this);
-
-	bool ret = SceneObjectImplementation::removeObject(object, notifyClient);
-
-	/*if (ret && !object->isTerminal() && !object->isCreatureObject()) {
-		if (currentNumberOfItems > 0)
-			--currentNumberOfItems;
-	}*/
+	if (zone != NULL)
+		zone->updateActiveAreas(object);
 
 	return ret;
 }
@@ -151,7 +130,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-			if (!parent->containsChildObject(containerObject) && !containerObject->isCreatureObject())
+			if (!getParent()->containsChildObject(containerObject) && !containerObject->isCreatureObject())
 				++count;
 		}
 	}
@@ -168,14 +147,15 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 	for (int j = containerSize - 1; j >= 0; --j) {
 		ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-		if (parent->containsChildObject(containerObject))
+		if (getParent()->containsChildObject(containerObject))
 			continue;
 
 		if (containerObject->isCreatureObject())
 			continue;
 
-		containerObject->broadcastDestroy(containerObject, false);
-		removeObject(containerObject, false);
+		containerObject->destroyObjectFromWorld(true);
+		//containerObject->broadcastDestroy(containerObject, false);
+		//removeObject(containerObject, false);
 
 		containerObject->destroyObjectFromDatabase(true);
 	}

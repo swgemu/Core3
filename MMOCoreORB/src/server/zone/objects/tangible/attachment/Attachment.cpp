@@ -465,13 +465,13 @@ bool AttachmentImplementation::isAttachment() {
 }
 
 bool AttachmentImplementation::isArmorAttachment() {
-	// server/zone/objects/tangible/attachment/Attachment.idl():  		return super.gameObjectType == super.ARMORATTACHMENT;
-	return TangibleObjectImplementation::gameObjectType == TangibleObjectImplementation::ARMORATTACHMENT;
+	// server/zone/objects/tangible/attachment/Attachment.idl():  		return super.gameObjectType == SceneObjectType.ARMORATTACHMENT;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::ARMORATTACHMENT;
 }
 
 bool AttachmentImplementation::isClothingAttachment() {
-	// server/zone/objects/tangible/attachment/Attachment.idl():  		return super.gameObjectType == super.CLOTHINGATTACHMENT;
-	return TangibleObjectImplementation::gameObjectType == TangibleObjectImplementation::CLOTHINGATTACHMENT;
+	// server/zone/objects/tangible/attachment/Attachment.idl():  		return super.gameObjectType == SceneObjectType.CLOTHINGATTACHMENT;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::CLOTHINGATTACHMENT;
 }
 
 /*

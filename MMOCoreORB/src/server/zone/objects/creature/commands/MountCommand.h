@@ -102,7 +102,7 @@ public:
 
 			vehicle->setState(CreatureState::MOUNTEDCREATURE);
 
-			if (!vehicle->addObject(creature, 4, true))
+			if (!vehicle->transferObject(creature, 4, true))
 				vehicle->error("could not add creature");
 
 			if (creature->hasBuff(String("burstrun").hashCode())

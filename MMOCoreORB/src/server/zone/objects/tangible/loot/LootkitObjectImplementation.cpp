@@ -76,7 +76,8 @@ void LootkitObjectImplementation::addToKit(SceneObject* object) {
 				ManagedReference<SceneObject*> inventory = getPlayer()->getSlottedObject("inventory");
 				Locker locker(object);
 				Locker iLocker(inventory);
-				removeObject(object, true);
+				//removeObject(object, true);
+				object->destroyObjectFromWorld(true);
 
 				if (object->isPersistent())
 					object->destroyObjectFromDatabase(true);
@@ -108,8 +109,9 @@ void LootkitObjectImplementation::createItem() {
 
 		Locker clocker(inventory, player);
 		rewardObject->sendTo(player, true);
-		if (inventory->addObject(rewardObject, -1, true)) {
-			getParent()->removeObject(_this, true);
+		if (inventory->transferObject(rewardObject, -1, true)) {
+			//getParent()->removeObject(_this, true);
+			destroyObjectFromWorld(true);
 
 			if (isPersistent())
 				destroyObjectFromDatabase(true);

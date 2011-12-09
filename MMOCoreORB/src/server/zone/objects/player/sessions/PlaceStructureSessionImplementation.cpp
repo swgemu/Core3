@@ -44,7 +44,7 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 			constructionBarricade->initializePosition(x, 0, y); //The construction barricades are always at the terrain height.
 			constructionBarricade->rotate(angle + 180); //All construction barricades need to be rotated 180 degrees for some reason.
 			//constructionBarricade->insertToZone(zone);
-			zone->addObject(constructionBarricade, -1, true);
+			zone->transferObject(constructionBarricade, -1, true);
 
 			constructionDuration = serverTemplate->getLotSize() * 3000; //3 seconds per lot.
 		}
@@ -58,7 +58,7 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 
 int PlaceStructureSessionImplementation::completeSession() {
 	if (constructionBarricade != NULL)
-		constructionBarricade->removeFromZone();
+		constructionBarricade->destroyObjectFromWorld(true);
 
 	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
 
@@ -69,7 +69,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 		ManagedReference<SceneObject*> inventory = creatureObject->getSlottedObject("inventory");
 
 		if (inventory != NULL)
-			inventory->addObject(deedObject, -1, true);
+			inventory->transferObject(deedObject, -1, true);
 
 		return cancelSession();
 	}

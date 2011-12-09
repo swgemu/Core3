@@ -39,7 +39,7 @@ public:
 	 * @param notifyClient if true in range objects will be updated with the change
 	 * @return returns true if the object has been successfully added
 	 */
-	virtual bool addObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false);
+	virtual bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false);
 
 	/**
 	 * Tries to remove/unlink object

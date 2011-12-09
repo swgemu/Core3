@@ -411,8 +411,8 @@ int VehicleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 VehicleObjectImplementation::VehicleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/VehicleObject.idl():  		vehicleType = SceneObject.HOVERVEHICLE;
-	vehicleType = SceneObject::HOVERVEHICLE;
+	// server/zone/objects/creature/VehicleObject.idl():  		vehicleType = SceneObjectType.HOVERVEHICLE;
+	vehicleType = SceneObjectType::HOVERVEHICLE;
 	// server/zone/objects/creature/VehicleObject.idl():  		Logger.setLoggingName("VehicleObject");
 	Logger::setLoggingName("VehicleObject");
 	// server/zone/objects/creature/VehicleObject.idl():  		Logger.setLogging(false);

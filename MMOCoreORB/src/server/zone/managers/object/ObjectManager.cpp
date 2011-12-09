@@ -8,7 +8,6 @@
 #include "ObjectManager.h"
 #include "objects.h"
 
-
 #include "server/db/ServerDatabase.h"
 
 #include "ObjectMap.h"
@@ -24,6 +23,8 @@
 #include "engine/db/berkley/BTransaction.h"
 #include "CommitMasterTransactionTask.h"
 #include "ObjectVersionUpdateManager.h"
+#include "server/ServerCore.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
 
 using namespace engine::db;
 
@@ -32,7 +33,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	objectUpdateInProcess = false;
 
 	databaseManager = ObjectDatabaseManager::instance();
-	databaseManager->loadDatabases();
+	databaseManager->loadDatabases(ServerCore::truncateDatabases());
 	templateManager = TemplateManager::instance();
 	templateManager->loadLuaTemplates();
 
@@ -82,253 +83,253 @@ void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<TangibleObject>(6);
-	objectFactory.registerObject<TangibleObject>(SceneObject::GENERALTANGIBLEOBJECT);
-	objectFactory.registerObject<StaticObject>(SceneObject::FLORA);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::GENERALTANGIBLEOBJECT);
+	objectFactory.registerObject<StaticObject>(SceneObjectType::FLORA);
 
-	objectFactory.registerObject<ActiveArea>(SceneObject::ACTIVEAREA);
-	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
-	objectFactory.registerObject<GarageArea>(SceneObject::GARAGEAREA);
-	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObject::MISSIONSPAWNAREA);
-	objectFactory.registerObject<MissionReconActiveArea>(SceneObject::MISSIONRECONAREA);
-	objectFactory.registerObject<DynamicSpawnArea>(SceneObject::DYNAMICSPAWNAREA);
-	objectFactory.registerObject<StaticSpawnArea>(SceneObject::STATICSPAWNAREA);
-	objectFactory.registerObject<Region>(SceneObject::REGIONAREA);
-	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
-	objectFactory.registerObject<Creature>(SceneObject::CREATURE);
-	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObject::NPCCREATURE);
-	objectFactory.registerObject<JunkdealerCreature>(SceneObject::JUNKDEALERCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
-	objectFactory.registerObject<InformantCreature>(SceneObject::INFORMANTCREATURE);
-	objectFactory.registerObject<VendorCreature>(SceneObject::VENDORCREATURE);
+	objectFactory.registerObject<ActiveArea>(SceneObjectType::ACTIVEAREA);
+	objectFactory.registerObject<BadgeActiveArea>(SceneObjectType::BADGEAREA);
+	objectFactory.registerObject<GarageArea>(SceneObjectType::GARAGEAREA);
+	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObjectType::MISSIONSPAWNAREA);
+	objectFactory.registerObject<MissionReconActiveArea>(SceneObjectType::MISSIONRECONAREA);
+	objectFactory.registerObject<DynamicSpawnArea>(SceneObjectType::DYNAMICSPAWNAREA);
+	objectFactory.registerObject<StaticSpawnArea>(SceneObjectType::STATICSPAWNAREA);
+	objectFactory.registerObject<Region>(SceneObjectType::REGIONAREA);
+	objectFactory.registerObject<StaticObject>(SceneObjectType::STATICOBJECT);
+	objectFactory.registerObject<Creature>(SceneObjectType::CREATURE);
+	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::NPCCREATURE);
+	objectFactory.registerObject<JunkdealerCreature>(SceneObjectType::JUNKDEALERCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObjectType::DROIDCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObjectType::PROBOTCREATURE);
+	objectFactory.registerObject<InformantCreature>(SceneObjectType::INFORMANTCREATURE);
+	objectFactory.registerObject<VendorCreature>(SceneObjectType::VENDORCREATURE);
 
-	objectFactory.registerObject<CreatureObject>(SceneObject::PLAYERCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObjectType::PLAYERCREATURE);
 
-	objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
+	objectFactory.registerObject<IntangibleObject>(SceneObjectType::INTANGIBLE);
 
-	objectFactory.registerObject<ArmorObject>(SceneObject::ARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObject::BODYARMOR); //chest plates
-	objectFactory.registerObject<ArmorObject>(SceneObject::HEADARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObject::MISCARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObject::LEGARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObject::ARMARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObject::HANDARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObject::FOOTARMOR);
-	objectFactory.registerObject<PsgArmorObject>(SceneObject::SHIELDGENERATOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::BODYARMOR); //chest plates
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::HEADARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::MISCARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::LEGARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::HANDARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::FOOTARMOR);
+	objectFactory.registerObject<PsgArmorObject>(SceneObjectType::SHIELDGENERATOR);
 
-	objectFactory.registerObject<ToolTangibleObject>(SceneObject::TOOL);
-	objectFactory.registerObject<ToolTangibleObject>(SceneObject::REPAIRTOOL);
-	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);
-	objectFactory.registerObject<SurveyTool>(SceneObject::SURVEYTOOL);
+	objectFactory.registerObject<ToolTangibleObject>(SceneObjectType::TOOL);
+	objectFactory.registerObject<ToolTangibleObject>(SceneObjectType::REPAIRTOOL);
+	objectFactory.registerObject<CraftingTool>(SceneObjectType::CRAFTINGTOOL);
+	objectFactory.registerObject<SurveyTool>(SceneObjectType::SURVEYTOOL);
 
-	objectFactory.registerObject<CraftingStation>(SceneObject::CRAFTINGSTATION);
+	objectFactory.registerObject<CraftingStation>(SceneObjectType::CRAFTINGSTATION);
 
-	objectFactory.registerObject<TangibleObject>(SceneObject::FURNITURE);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::FURNITURE);
 
-	objectFactory.registerObject<SignObject>(SceneObject::SIGN);
+	objectFactory.registerObject<SignObject>(SceneObjectType::SIGN);
 
-	objectFactory.registerObject<Instrument>(SceneObject::INSTRUMENT);
-	objectFactory.registerObject<Food>(SceneObject::FOOD);
-	objectFactory.registerObject<Drink>(SceneObject::DRINK);
-	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
-	objectFactory.registerObject<FireworkObject>(SceneObject::FIREWORK);
-	objectFactory.registerObject<TangibleObject>(SceneObject::ITEM);
-	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
-	objectFactory.registerObject<Container>(SceneObject::WEARABLECONTAINER);
-	objectFactory.registerObject<LootkitObject>(SceneObject::LOOTKIT);
-	objectFactory.registerObject<CampKit>(SceneObject::CAMPKIT);
-	objectFactory.registerObject<Container>(SceneObject::STATICLOOTCONTAINER);
-	objectFactory.registerObject<TangibleObject>(SceneObject::PLAYERLOOTCRATE);
+	objectFactory.registerObject<Instrument>(SceneObjectType::INSTRUMENT);
+	objectFactory.registerObject<Food>(SceneObjectType::FOOD);
+	objectFactory.registerObject<Drink>(SceneObjectType::DRINK);
+	objectFactory.registerObject<Container>(SceneObjectType::CONTAINER);
+	objectFactory.registerObject<FireworkObject>(SceneObjectType::FIREWORK);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::ITEM);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::GENERICITEM);
+	objectFactory.registerObject<Container>(SceneObjectType::WEARABLECONTAINER);
+	objectFactory.registerObject<LootkitObject>(SceneObjectType::LOOTKIT);
+	objectFactory.registerObject<CampKit>(SceneObjectType::CAMPKIT);
+	objectFactory.registerObject<Container>(SceneObjectType::STATICLOOTCONTAINER);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::PLAYERLOOTCRATE);
 
-	objectFactory.registerObject<SlicingTool>(SceneObject::SLICINGTOOL);
-	objectFactory.registerObject<SlicingTool>(SceneObject::FLOWANALYZER);
-	objectFactory.registerObject<SlicingTool>(SceneObject::MOLECULARCLAMP);
-	objectFactory.registerObject<SlicingTool>(SceneObject::WEAPONUPGRADEKIT);
-	objectFactory.registerObject<SlicingTool>(SceneObject::ARMORUPGRADEKIT);
-	objectFactory.registerObject<PrecisionLaserKnife>(SceneObject::LASERKNIFE);
+	objectFactory.registerObject<SlicingTool>(SceneObjectType::SLICINGTOOL);
+	objectFactory.registerObject<SlicingTool>(SceneObjectType::FLOWANALYZER);
+	objectFactory.registerObject<SlicingTool>(SceneObjectType::MOLECULARCLAMP);
+	objectFactory.registerObject<SlicingTool>(SceneObjectType::WEAPONUPGRADEKIT);
+	objectFactory.registerObject<SlicingTool>(SceneObjectType::ARMORUPGRADEKIT);
+	objectFactory.registerObject<PrecisionLaserKnife>(SceneObjectType::LASERKNIFE);
 
-	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
-	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
+	objectFactory.registerObject<CellObject>(SceneObjectType::CELLOBJECT);
+	objectFactory.registerObject<PlayerObject>(SceneObjectType::PLAYEROBJECT);
 
-	objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
+	objectFactory.registerObject<WaypointObject>(SceneObjectType::WAYPOINT);
 
-	objectFactory.registerObject<WearableObject>(SceneObject::WEARABLE);
-	objectFactory.registerObject<WearableObject>(SceneObject::RING);
-	objectFactory.registerObject<WearableObject>(SceneObject::BRACELET);
-	objectFactory.registerObject<WearableObject>(SceneObject::NECKLACE);
-	objectFactory.registerObject<WearableObject>(SceneObject::EARRING);
+	objectFactory.registerObject<WearableObject>(SceneObjectType::WEARABLE);
+	objectFactory.registerObject<WearableObject>(SceneObjectType::RING);
+	objectFactory.registerObject<WearableObject>(SceneObjectType::BRACELET);
+	objectFactory.registerObject<WearableObject>(SceneObjectType::NECKLACE);
+	objectFactory.registerObject<WearableObject>(SceneObjectType::EARRING);
 
-	objectFactory.registerObject<Attachment>(SceneObject::ARMORATTACHMENT);
-	objectFactory.registerObject<Attachment>(SceneObject::CLOTHINGATTACHMENT);
+	objectFactory.registerObject<Attachment>(SceneObjectType::ARMORATTACHMENT);
+	objectFactory.registerObject<Attachment>(SceneObjectType::CLOTHINGATTACHMENT);
 
-	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::CAPITOLBUILDING);
-	objectFactory.registerObject<TutorialBuildingObject>(SceneObject::TUTORIALBUILDING);
-	objectFactory.registerObject<CloningBuildingObject>(SceneObject::CLONINGBUILDING);
-	objectFactory.registerObject<MedicalBuildingObject>(SceneObject::MEDICALBUILDING);
-	objectFactory.registerObject<TravelBuildingObject>(SceneObject::TRAVELBUILDING);
-	objectFactory.registerObject<RecreationBuildingObject>(SceneObject::RECREATIONBUILDING);
-	objectFactory.registerObject<TravelBuildingObject>(SceneObject::STARPORTBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::FACTIONPERKBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::HOTELBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::THEATERBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::COMBATBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::COMMERCEBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::UNIVERSITYBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::GARAGEBUILDING);
-	objectFactory.registerObject<CityHallObject>(SceneObject::CITYHALLBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObject::SALONBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::BUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::CAPITOLBUILDING);
+	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectType::TUTORIALBUILDING);
+	objectFactory.registerObject<CloningBuildingObject>(SceneObjectType::CLONINGBUILDING);
+	objectFactory.registerObject<MedicalBuildingObject>(SceneObjectType::MEDICALBUILDING);
+	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::TRAVELBUILDING);
+	objectFactory.registerObject<RecreationBuildingObject>(SceneObjectType::RECREATIONBUILDING);
+	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::STARPORTBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::FACTIONPERKBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::HOTELBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::THEATERBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::COMBATBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::COMMERCEBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::UNIVERSITYBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::GARAGEBUILDING);
+	objectFactory.registerObject<CityHallObject>(SceneObjectType::CITYHALLBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::SALONBUILDING);
 
 
-	objectFactory.registerObject<InstallationObject>(SceneObject::INSTALLATION);
-	objectFactory.registerObject<GarageInstallation>(SceneObject::GARAGEINSTALLATION);
-	objectFactory.registerObject<ShuttleInstallation>(SceneObject::SHUTTLEINSTALLATION);
-	objectFactory.registerObject<HarvesterObject>(SceneObject::HARVESTER);
-	objectFactory.registerObject<FactoryObject>(SceneObject::FACTORY);
-	objectFactory.registerObject<GeneratorObject>(SceneObject::GENERATOR);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::INSTALLATION);
+	objectFactory.registerObject<GarageInstallation>(SceneObjectType::GARAGEINSTALLATION);
+	objectFactory.registerObject<ShuttleInstallation>(SceneObjectType::SHUTTLEINSTALLATION);
+	objectFactory.registerObject<HarvesterObject>(SceneObjectType::HARVESTER);
+	objectFactory.registerObject<FactoryObject>(SceneObjectType::FACTORY);
+	objectFactory.registerObject<GeneratorObject>(SceneObjectType::GENERATOR);
 
-	objectFactory.registerObject<WeaponObject>(SceneObject::WEAPON);
-	objectFactory.registerObject<WeaponObject>(SceneObject::MELEEWEAPON);
-	objectFactory.registerObject<WeaponObject>(SceneObject::PISTOL);
-	objectFactory.registerObject<WeaponObject>(SceneObject::RANGEDWEAPON);
-	objectFactory.registerObject<WeaponObject>(SceneObject::ONEHANDMELEEWEAPON);
-	objectFactory.registerObject<WeaponObject>(SceneObject::RIFLE);
-	objectFactory.registerObject<WeaponObject>(SceneObject::CARBINE);
-	objectFactory.registerObject<WeaponObject>(SceneObject::POLEARM);
-	objectFactory.registerObject<WeaponObject>(SceneObject::TWOHANDMELEEWEAPON);
-	objectFactory.registerObject<WeaponObject>(SceneObject::LIGHTNINGRIFLE);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::WEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::MELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::PISTOL);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::RANGEDWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::ONEHANDMELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::RIFLE);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::CARBINE);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::POLEARM);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::TWOHANDMELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::LIGHTNINGRIFLE);
 
-	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
+	objectFactory.registerObject<MissionObject>(SceneObjectType::MISSIONOBJECT);
 
-	objectFactory.registerObject<Terminal>(SceneObject::TERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObject::INSURANCE);
-	objectFactory.registerObject<SpaceshipTerminal>(SceneObject::SPACETERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);
-	objectFactory.registerObject<MissionTerminal>(SceneObject::MISSIONTERMINAL);
-	objectFactory.registerObject<BazaarTerminal>(SceneObject::BAZAAR);
-	objectFactory.registerObject<BankTerminal>(SceneObject::BANK);
-	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
-	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObject::CHARACTERBUILDERTERMINAL);
-	objectFactory.registerObject<StructureTerminal>(SceneObject::PLAYERTERMINALSTRUCTURE);
-	objectFactory.registerObject<ElevatorTerminal>(SceneObject::ELEVATORTERMINAL);
-	objectFactory.registerObject<TicketCollector>(SceneObject::TICKETCOLLECTOR);
-	objectFactory.registerObject<TicketObject>(SceneObject::TRAVELTICKET);
-	objectFactory.registerObject<TravelTerminal>(SceneObject::TRAVELTERMINAL);
-	objectFactory.registerObject<GuildTerminal>(SceneObject::GUILDTERMINAL);
-	objectFactory.registerObject<CityTerminal>(SceneObject::CITYTERMINAL);
-	objectFactory.registerObject<CityVoteTerminal>(SceneObject::CITYVOTETERMINAL);
-	objectFactory.registerObject<GamblingTerminal>(SceneObject::GAMBLINGTERMINAL);
-	objectFactory.registerObject<CloningTerminal>(SceneObject::CLONING);
-	objectFactory.registerObject<VendorTerminal>(SceneObject::VENDORTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectType::TERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectType::INSURANCE);
+	objectFactory.registerObject<SpaceshipTerminal>(SceneObjectType::SPACETERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectType::SHIPPINGTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectType::INTERACTIVETERMINAL);
+	objectFactory.registerObject<MissionTerminal>(SceneObjectType::MISSIONTERMINAL);
+	objectFactory.registerObject<BazaarTerminal>(SceneObjectType::BAZAAR);
+	objectFactory.registerObject<BankTerminal>(SceneObjectType::BANK);
+	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectType::NEWBIETUTORIALTERMINAL);
+	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObjectType::CHARACTERBUILDERTERMINAL);
+	objectFactory.registerObject<StructureTerminal>(SceneObjectType::PLAYERTERMINALSTRUCTURE);
+	objectFactory.registerObject<ElevatorTerminal>(SceneObjectType::ELEVATORTERMINAL);
+	objectFactory.registerObject<TicketCollector>(SceneObjectType::TICKETCOLLECTOR);
+	objectFactory.registerObject<TicketObject>(SceneObjectType::TRAVELTICKET);
+	objectFactory.registerObject<TravelTerminal>(SceneObjectType::TRAVELTERMINAL);
+	objectFactory.registerObject<GuildTerminal>(SceneObjectType::GUILDTERMINAL);
+	objectFactory.registerObject<CityTerminal>(SceneObjectType::CITYTERMINAL);
+	objectFactory.registerObject<CityVoteTerminal>(SceneObjectType::CITYVOTETERMINAL);
+	objectFactory.registerObject<GamblingTerminal>(SceneObjectType::GAMBLINGTERMINAL);
+	objectFactory.registerObject<CloningTerminal>(SceneObjectType::CLONING);
+	objectFactory.registerObject<VendorTerminal>(SceneObjectType::VENDORTERMINAL);
 
-	objectFactory.registerObject<LairObject>(SceneObject::LAIR);
+	objectFactory.registerObject<LairObject>(SceneObjectType::LAIR);
 
-	objectFactory.registerObject<Deed>(SceneObject::DEED);
-	objectFactory.registerObject<VehicleDeed>(SceneObject::VEHICLEDEED);
-	objectFactory.registerObject<BuildingDeed>(SceneObject::BUILDINGDEED);
-	objectFactory.registerObject<InstallationDeed>(SceneObject::INSTALLATIONDEED);
-	objectFactory.registerObject<ResourceDeed>(SceneObject::RESOURCEDEED);
+	objectFactory.registerObject<Deed>(SceneObjectType::DEED);
+	objectFactory.registerObject<VehicleDeed>(SceneObjectType::VEHICLEDEED);
+	objectFactory.registerObject<BuildingDeed>(SceneObjectType::BUILDINGDEED);
+	objectFactory.registerObject<InstallationDeed>(SceneObjectType::INSTALLATIONDEED);
+	objectFactory.registerObject<ResourceDeed>(SceneObjectType::RESOURCEDEED);
 
-	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
-	objectFactory.registerObject<GuildObject>(SceneObject::GUILDOBJECT);
+	objectFactory.registerObject<GroupObject>(SceneObjectType::GROUPOBJECT);
+	objectFactory.registerObject<GuildObject>(SceneObjectType::GUILDOBJECT);
 
-	objectFactory.registerObject<StimPack>(SceneObject::STIMPACK);
-	objectFactory.registerObject<RangedStimPack>(SceneObject::RANGEDSTIMPACK);
-	objectFactory.registerObject<EnhancePack>(SceneObject::ENHANCEPACK);
-	objectFactory.registerObject<CurePack>(SceneObject::CUREPACK);
-	objectFactory.registerObject<DotPack>(SceneObject::DOTPACK);
-	objectFactory.registerObject<WoundPack>(SceneObject::WOUNDPACK);
-	objectFactory.registerObject<StatePack>(SceneObject::STATEPACK);
-	objectFactory.registerObject<RevivePack>(SceneObject::REVIVEPACK);
+	objectFactory.registerObject<StimPack>(SceneObjectType::STIMPACK);
+	objectFactory.registerObject<RangedStimPack>(SceneObjectType::RANGEDSTIMPACK);
+	objectFactory.registerObject<EnhancePack>(SceneObjectType::ENHANCEPACK);
+	objectFactory.registerObject<CurePack>(SceneObjectType::CUREPACK);
+	objectFactory.registerObject<DotPack>(SceneObjectType::DOTPACK);
+	objectFactory.registerObject<WoundPack>(SceneObjectType::WOUNDPACK);
+	objectFactory.registerObject<StatePack>(SceneObjectType::STATEPACK);
+	objectFactory.registerObject<RevivePack>(SceneObjectType::REVIVEPACK);
 
 	//clothing
-	objectFactory.registerObject<ClothingObject>(SceneObject::CLOTHING);
-	objectFactory.registerObject<ClothingObject>(SceneObject::BANDOLIER);
-	objectFactory.registerObject<ClothingObject>(SceneObject::BELT);
-	objectFactory.registerObject<ClothingObject>(SceneObject::BODYSUIT);
-	objectFactory.registerObject<ClothingObject>(SceneObject::CAPE);
-	objectFactory.registerObject<ClothingObject>(SceneObject::CLOAK);
-	objectFactory.registerObject<ClothingObject>(SceneObject::FOOTWEAR);
-	objectFactory.registerObject<ClothingObject>(SceneObject::HEADWEAR);
-	objectFactory.registerObject<ClothingObject>(SceneObject::DRESS);
-	objectFactory.registerObject<ClothingObject>(SceneObject::HANDWEAR);
-	objectFactory.registerObject<ClothingObject>(SceneObject::JACKET);
-	objectFactory.registerObject<ClothingObject>(SceneObject::PANTS);
-	objectFactory.registerObject<ClothingObject>(SceneObject::ROBE);
-	objectFactory.registerObject<ClothingObject>(SceneObject::SHIRT);
-	objectFactory.registerObject<ClothingObject>(SceneObject::VEST);
-	objectFactory.registerObject<ClothingObject>(SceneObject::WOOKIEGARB);
-	objectFactory.registerObject<ClothingObject>(SceneObject::MISCCLOTHING);
-	objectFactory.registerObject<ClothingObject>(SceneObject::SKIRT);
-	objectFactory.registerObject<ClothingObject>(SceneObject::ITHOGARB);
-	objectFactory.registerObject<FishingPoleObject>(SceneObject::FISHINGPOLE);
-	objectFactory.registerObject<FishingBaitObject>(SceneObject::FISHINGBAIT);
-	objectFactory.registerObject<FishObject>(SceneObject::FISH);
-	objectFactory.registerObject<TangibleObject>(SceneObject::TANGIBLE);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::CLOTHING);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::BANDOLIER);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::BELT);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::BODYSUIT);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::CAPE);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::CLOAK);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::FOOTWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::HEADWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::DRESS);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::HANDWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::JACKET);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::PANTS);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::ROBE);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::SHIRT);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::VEST);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::WOOKIEGARB);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::MISCCLOTHING);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::SKIRT);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::ITHOGARB);
+	objectFactory.registerObject<FishingPoleObject>(SceneObjectType::FISHINGPOLE);
+	objectFactory.registerObject<FishingBaitObject>(SceneObjectType::FISHINGBAIT);
+	objectFactory.registerObject<FishObject>(SceneObjectType::FISH);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::TANGIBLE);
 
-	objectFactory.registerObject<VehicleControlDevice>(SceneObject::VEHICLECONTROLDEVICE);
-	objectFactory.registerObject<ShipControlDevice>(SceneObject::SHIPCONTROLDEVICE);
+	objectFactory.registerObject<VehicleControlDevice>(SceneObjectType::VEHICLECONTROLDEVICE);
+	objectFactory.registerObject<ShipControlDevice>(SceneObjectType::SHIPCONTROLDEVICE);
 
-	objectFactory.registerObject<VehicleObject>(SceneObject::VEHICLE);
-	objectFactory.registerObject<VehicleObject>(SceneObject::HOVERVEHICLE);
+	objectFactory.registerObject<VehicleObject>(SceneObjectType::VEHICLE);
+	objectFactory.registerObject<VehicleObject>(SceneObjectType::HOVERVEHICLE);
 
-	objectFactory.registerObject<ResourceSpawn>(SceneObject::RESOURCESPAWN);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::RESOURCECONTAINER);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYGAS);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYLIQUID);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYRADIOACTIVE);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::ENERGYSOLID);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::INORGANICCHEMICAL);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::INORGANICGAS);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::INORGANICMINERAL);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::WATER);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICFOOD);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICHIDE);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICSTRUCTURAL);
-	objectFactory.registerObject<ResourceContainer>(SceneObject::QUESTREOURCE);
+	objectFactory.registerObject<ResourceSpawn>(SceneObjectType::RESOURCESPAWN);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::RESOURCECONTAINER);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ENERGYGAS);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ENERGYLIQUID);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ENERGYRADIOACTIVE);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ENERGYSOLID);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::INORGANICCHEMICAL);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::INORGANICGAS);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::INORGANICMINERAL);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::WATER);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ORGANICFOOD);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ORGANICHIDE);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ORGANICSTRUCTURAL);
+	objectFactory.registerObject<ResourceContainer>(SceneObjectType::QUESTREOURCE);
 
-	objectFactory.registerObject<DraftSchematic>(SceneObject::DRAFTSCHEMATIC);
-	objectFactory.registerObject<ManufactureSchematic>(SceneObject::MANUFACTURINGSCHEMATIC);
-	objectFactory.registerObject<Component>(SceneObject::COMPONENT);
-	objectFactory.registerObject<ArmorComponent>(SceneObject::ARMORCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::CHEMISTRYCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::CLOTHINGCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::COMMUNITYCRAFTINGCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::DROIDCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::ELECTRONICSCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::GENETICCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::LIGHTSABERCRYSTAL);
-	objectFactory.registerObject<Component>(SceneObject::MELEEWEAPONCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::MUNITIONCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::RANGEDWEAPONCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::STRUCTURECOMPONENT);
-	objectFactory.registerObject<Component>(SceneObject::TISSUECOMPONENT);
+	objectFactory.registerObject<DraftSchematic>(SceneObjectType::DRAFTSCHEMATIC);
+	objectFactory.registerObject<ManufactureSchematic>(SceneObjectType::MANUFACTURINGSCHEMATIC);
+	objectFactory.registerObject<Component>(SceneObjectType::COMPONENT);
+	objectFactory.registerObject<ArmorComponent>(SceneObjectType::ARMORCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::CHEMISTRYCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::CLOTHINGCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::COMMUNITYCRAFTINGCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::DROIDCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::ELECTRONICSCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::GENETICCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::LIGHTSABERCRYSTAL);
+	objectFactory.registerObject<Component>(SceneObjectType::MELEEWEAPONCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::MUNITIONCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::RANGEDWEAPONCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::STRUCTURECOMPONENT);
+	objectFactory.registerObject<Component>(SceneObjectType::TISSUECOMPONENT);
 
-	objectFactory.registerObject<Component>(SceneObject::SHIPATTACHMENT);
-	objectFactory.registerObject<Component>(SceneObject::SHIPREACTOR);
-	objectFactory.registerObject<Component>(SceneObject::SHIPENGINE);
-	objectFactory.registerObject<Component>(SceneObject::SHIPSHIELDGENERATOR);
-	objectFactory.registerObject<Component>(SceneObject::SHIPARMOR);
-	objectFactory.registerObject<Component>(SceneObject::SHIPWEAPON);
-	objectFactory.registerObject<Component>(SceneObject::SHIPWEAPONCAPACITOR);
-	objectFactory.registerObject<Component>(SceneObject::SHIPBOOSTER);
-	objectFactory.registerObject<Component>(SceneObject::SHIPDRIODINTERFACE);
-	objectFactory.registerObject<Component>(SceneObject::SHIPCHASSIS);
-	objectFactory.registerObject<Component>(SceneObject::SHIPMISSILE);
-	objectFactory.registerObject<Component>(SceneObject::SHIPCOUNTERMEASURE);
-	objectFactory.registerObject<Component>(SceneObject::SHIPWEAPONLAUNCHER);
-	objectFactory.registerObject<Component>(SceneObject::SHIPCOUNTERMEASURELAUNCHER);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPATTACHMENT);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPREACTOR);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPENGINE);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPSHIELDGENERATOR);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPARMOR);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPWEAPON);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPWEAPONCAPACITOR);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPBOOSTER);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPDRIODINTERFACE);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPCHASSIS);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPMISSILE);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPCOUNTERMEASURE);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPWEAPONLAUNCHER);
+	objectFactory.registerObject<Component>(SceneObjectType::SHIPCOUNTERMEASURELAUNCHER);
 
-	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
+	objectFactory.registerObject<FactoryCrate>(SceneObjectType::FACTORYCRATE);
 
-	objectFactory.registerObject<AiGroup>(SceneObject::AIGROUP);
-	objectFactory.registerObject<HerdGroup>(SceneObject::HERDGROUP);
-	objectFactory.registerObject<PackGroup>(SceneObject::PACKGROUP);
-	objectFactory.registerObject<LairGroup>(SceneObject::LAIRGROUP);
+	objectFactory.registerObject<AiGroup>(SceneObjectType::AIGROUP);
+	objectFactory.registerObject<HerdGroup>(SceneObjectType::HERDGROUP);
+	objectFactory.registerObject<PackGroup>(SceneObjectType::PACKGROUP);
+	objectFactory.registerObject<LairGroup>(SceneObjectType::LAIRGROUP);
 
-	objectFactory.registerObject<FighterShipObject>(SceneObject::SHIPFIGHTER);
-	objectFactory.registerObject<SpaceStationObject>(SceneObject::SHIPSTATION);
+	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
+	objectFactory.registerObject<SpaceStationObject>(SceneObjectType::SHIPSTATION);
 }
 
 void ObjectManager::updateObjectVersion() {
@@ -342,7 +343,7 @@ void ObjectManager::loadLastUsedObjectID() {
 
 	uint64 storedID = databaseManager->getLastUsedObjectID();
 
-	if (storedID != 0) {
+	if (!ServerCore::truncateDatabases() && storedID != 0) {
 		info("loading stored id..");
 		nextObjectID = storedID + 1;
 

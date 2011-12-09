@@ -426,6 +426,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 		ghost->setAccountID(client->getAccountID());
 
+#ifndef FREE_GOD_MODE
 		try {
 			uint32 accID = client->getAccountID();
 
@@ -454,12 +455,13 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		} catch (Exception& e) {
 			error(e.getMessage());
 		}
-
+#else
 		//********************************
 		// Uncomment to make all new players admins
-		//ghost->setAdminLevel(2);
-		//skillManager->addAbility(ghost, "admin", false);
+		ghost->setAdminLevel(2);
+		skillManager->addAbility(ghost, "admin", false);
 		//********************************
+#endif
 
 		if (doTutorial)
 			playerManager->createTutorialBuilding(playerCreature);
@@ -484,11 +486,11 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	shipControlDevice->setControlledObject(ship);
 
-	if (!shipControlDevice->addObject(ship, 4))
+	if (!shipControlDevice->transferObject(ship, 4))
 		error("Adding of ship to device failed");
 
 	SceneObject* datapad = playerCreature->getSlottedObject("datapad");
-	datapad->addObject(shipControlDevice, -1);
+	datapad->transferObject(shipControlDevice, -1);
 
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(playerCreature->getObjectID());
 	playerCreature->sendMessage(msg);
@@ -577,7 +579,7 @@ void PlayerCreationManager::addStartingItems(CreatureObject* creature, const Str
 		ManagedReference<SceneObject*> item = zoneServer->createObject(itemTemplate.hashCode(), 1);
 
 		if (item != NULL)
-			creature->addObject(item, 4, false);
+			creature->transferObject(item, 4, false);
 	}
 
 	// Get inventory.
@@ -587,7 +589,7 @@ void PlayerCreationManager::addStartingItems(CreatureObject* creature, const Str
 	for (int itemNumber = 0; itemNumber < commonStartingItems.size(); itemNumber++) {
 		ManagedReference<SceneObject*> item = zoneServer->createObject(commonStartingItems.get(itemNumber).hashCode(), 1);
 		if (item != NULL && inventory != NULL) {
-			inventory->addObject(item, -1, false);
+			inventory->transferObject(item, -1, false);
 		}
 	}
 }
@@ -614,7 +616,7 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 		ManagedReference<SceneObject*> item = zoneServer->createObject(itemTemplate.hashCode(), 1);
 
 		if (item != NULL)
-			creature->addObject(item, 4, false);
+			creature->transferObject(item, 4, false);
 	}
 
 	// Get inventory.
@@ -624,7 +626,7 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 	for (int itemNumber = 0; itemNumber < professionDefaultsInfo.get(profession)->getStartingItems()->size(); itemNumber++) {
 		ManagedReference<SceneObject*> item = zoneServer->createObject(professionDefaultsInfo.get(profession)->getStartingItems()->get(itemNumber).hashCode(), 1);
 		if (item != NULL && inventory != NULL) {
-			inventory->addObject(item, -1, false);
+			inventory->transferObject(item, -1, false);
 		}
 	}
 
@@ -655,7 +657,7 @@ void PlayerCreationManager::addHair(CreatureObject* creature, const String& hair
 	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
 	tanoHair->setCustomizationString(hairCustomization);
 
-	creature->addObject(tanoHair, 4);
+	creature->transferObject(tanoHair, 4);
 }
 
 void PlayerCreationManager::addCustomization(CreatureObject* creature, const String& customizationString) {
@@ -691,7 +693,7 @@ void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String
 			ManagedReference<SceneObject*> item = zoneServer->createObject(startingItems->get(i).hashCode(), 1);
 
 			if (item != NULL && inventory != NULL)
-				inventory->addObject(item, -1, false);
+				inventory->transferObject(item, -1, false);
 		}
 	}
 }

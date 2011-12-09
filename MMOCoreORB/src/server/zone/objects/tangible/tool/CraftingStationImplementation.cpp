@@ -134,7 +134,7 @@ void CraftingStationImplementation::createChildObjects() {
 	String ingredientHopperName = "object/tangible/hopper/crafting_station_ingredient_hopper_1.iff";
 	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), 1);
 
-	addObject(ingredientHopper, 4);
+	transferObject(ingredientHopper, 4);
 }
 
 void CraftingStationImplementation::updateCraftingValues(ManufactureSchematic* schematic) {

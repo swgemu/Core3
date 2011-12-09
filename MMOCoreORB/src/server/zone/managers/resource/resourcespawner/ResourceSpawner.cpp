@@ -704,7 +704,7 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
 
 	harvestedResource->sendTo(player, true);
-	inventory->addObject(harvestedResource, -1, true);
+	inventory->transferObject(harvestedResource, -1, true);
 }
 
 ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,

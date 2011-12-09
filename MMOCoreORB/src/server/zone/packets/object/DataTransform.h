@@ -126,8 +126,8 @@ public:
 		if (ghost->isTeleporting())
 			return;
 
-		if (!object->isInQuadTree())
-			return;
+		/*if (!object->isInQuadTree())
+			return;*/
 
 		if (positionX > 7680.0f || positionX < -7680.0f || positionY > 7680.0f || positionY < -7680.0f) {
 			StringBuffer msg;
@@ -200,7 +200,7 @@ public:
 
 		/*StringBuffer posMsg;
 		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
-		object->info(posMsg.toString());*/
+		object->info(posMsg.toString(), true);*/
 
 		if (objectControllerMain->getPriority() == 0x23)
 			object->updateZone(false);

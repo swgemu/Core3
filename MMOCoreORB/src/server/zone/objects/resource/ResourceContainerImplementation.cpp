@@ -84,15 +84,17 @@ void ResourceContainerImplementation::setUseCount(uint32 newQuantity, bool notif
 
 void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify) {
 	Locker _locker(_this);
-
+	SceneObject* parent = getParent();
 	stackQuantity = quantity;
 
 	if(stackQuantity < 1) {
 
 		if(parent != NULL) {
-			parent->broadcastDestroy(_this, true);
-			parent->removeObject(_this, true);
-			setParent(NULL);
+			/*parent->broadcastDestroy(_this, true);
+			parent->removeObject(_this, false);*/
+			//setParent(NULL);
+
+			destroyObjectFromWorld(true);
 		}
 
 		destroyObjectFromDatabase(true);
@@ -112,7 +114,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 
 			ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
 
-			parent->addObject(harvestedResource, -1, true);
+			parent->transferObject(harvestedResource, -1, true);
 			parent->broadcastObject(harvestedResource, true);
 		}
 	}
@@ -136,7 +138,9 @@ void ResourceContainerImplementation::split(int newStackSize) {
 	if(parent == NULL || newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
-	if(parent->addObject(newResource, -1, true)) {
+	SceneObject* parent = getParent();
+
+	if(parent->transferObject(newResource, -1, true)) {
 		parent->broadcastObject(newResource, true);
 
 		setQuantity(getQuantity() - newStackSize);
@@ -155,7 +159,7 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 	if (newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
-	if(inventory->addObject(newResource, -1, true)) {
+	if(inventory->transferObject(newResource, -1, true)) {
 		newResource->sendTo(player, true);
 
 		setQuantity(getQuantity() - newStackSize);
@@ -173,10 +177,8 @@ void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) 
 	setQuantity(getQuantity() + fromContainer->getQuantity());
 	fromContainer->setQuantity(0);
 
-	if(parent != NULL) {
-		Locker _parentlocker(parent);
-		parent->removeObject(fromContainer, true);
-	}
+	//parent->removeObject(fromContainer, true);
+	fromContainer->destroyObjectFromWorld(true);
 
 	fromContainer->destroyObjectFromDatabase(true);
 }

@@ -181,18 +181,21 @@ void VendorCreatureImplementation::addClothingItem(CreatureObject* player, Tangi
 	if (clothingParent == NULL)
 		return;
 
-	clothingParent->removeObject(clothing, true);
+	//clothingParent->removeObject(clothing, true);
+	//clothing->destroyObjectFromWorld(true);
 
 	for (int i = 0; i < clothing->getArrangementDescriptorSize(); ++i) {
 		String arrangementDescriptor = clothing->getArrangementDescriptor(i);
 		ManagedReference<SceneObject*> slot = getSlottedObject(arrangementDescriptor);
+
 		if (slot != NULL) {
-			removeObject(slot, true);
+			slot->destroyObjectFromWorld(true);
+
 			slot->destroyObjectFromDatabase(true);
 		}
 	}
 
-	addObject(clothing, 4, false);
+	transferObject(clothing, 4, false);
 	doAnimation("pose_proudly");
 	broadcastObject(clothing, true);
 	//TODO: Add Chat message from vendor when item is added.
@@ -225,7 +228,7 @@ void VendorCreatureImplementation::createChildObjects() {
 		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
 
 		if (hair != NULL)
-			addObject(hair, 4);
+			transferObject(hair, 4);
 	}
 
 	Vector<uint32>* clothing = outfit->getClothing();
@@ -239,12 +242,13 @@ void VendorCreatureImplementation::createChildObjects() {
 			String arrangementDescriptor = obj->getArrangementDescriptor(k);
 			ManagedReference<SceneObject*> slot = getSlottedObject(arrangementDescriptor);
 			if (slot != NULL) {
-				removeObject(slot, false);
+				slot->destroyObjectFromWorld(true);
+
 				slot->destroyObjectFromDatabase(true);
 			}
 		}
 
-		addObject(obj, 4);
+		transferObject(obj, 4);
 	}
 
 	// Customization Variables -- TESTING

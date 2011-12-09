@@ -241,6 +241,8 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	if (owner == NULL)
 		return;
 
+	setMovementCounter(0);
+
 	owner->balancePacketCheckupTime();
 
 	BaseMessage* byteFlag = new unkByteFlag();
@@ -252,24 +254,35 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	BaseMessage* parameters = new ParametersMessage();
 	owner->sendMessage(parameters);
 
-	if (parent != NULL) {
-		SceneObject* grandParent = getRootParent();
-
-		grandParent->sendTo(_this, true);
-
-//		addNotifiedSentObject(grandParent);
-		//notifiedSentObjects.put(grandParent);
-
-		//info("parent not null", true);
-
-		/*if (grandParent->isBuildingObject())
-			((BuildingObject*)grandParent)->addNotifiedSentObject(_this);*/
-	}
-
 	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 	guildManager->sendBaselinesTo(_this);
 
-	sendTo(_this, doClose);
+	SceneObject* grandParent = getRootParent();
+
+	if (parent != NULL) {
+		grandParent->sendTo(_this, true);
+	} else
+		sendTo(_this, doClose);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(getInRangeObject(i));
+
+		if (obj != _this) {
+			if (obj != grandParent) {
+				notifyInsert(obj);
+				//obj->sendTo(_this, true);
+			}
+
+			if (obj->isPlayerCreature()) { //we need to destroy object to reset movement counter on near clients
+				obj->notifyDissapear(_this);
+			}
+
+			//obj->notifyInsert(_this);
+			sendTo(obj, true);
+		}
+
+	}
+
 
 	if (group != NULL)
 		group->sendTo(_this, true);
@@ -279,6 +292,8 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (player == _this) {
+		//info("sending baselines to myself", true);
+
 		CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
 		player->sendMessage(msg);
 	}
@@ -1924,7 +1939,7 @@ void CreatureObjectImplementation::createChildObjects() {
 
 		obj->initializeChildObject(_this);
 
-		addObject(obj, child->getContainmentType());
+		transferObject(obj, child->getContainmentType());
 	}
 }
 

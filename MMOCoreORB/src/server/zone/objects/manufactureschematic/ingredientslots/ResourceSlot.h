@@ -131,7 +131,7 @@ public:
 				contents = spawn->createResource(requiredQuantity);
 
 				contents->setParent(NULL);
-				craftingTool->addObject(contents, -1, false);
+				craftingTool->transferObject(contents, -1, false);
 
 				contents->sendTo(player, true);
 				contents->sendAttributeListTo(player);
@@ -140,12 +140,14 @@ public:
 
 				contents = incomingResource;
 
-				if(contents->getParent() != NULL)
-					contents->getParent()->removeObject(contents, true);
-				craftingTool->addObject(contents, -1, false);
+				/*if(contents->getParent() != NULL)
+					contents->getParent()->removeObject(contents, true);*/
+				craftingTool->transferObject(contents, -1, false);
 
-				if(previousParent != NULL)
-					previousParent->removeObject(incomingResource, true);
+				if(previousParent != NULL) {
+					//previousParent->removeObject(incomingResource, true);
+					incomingResource->destroyObjectFromWorld(true);
+				}
 			}
 
 			return true;
@@ -184,8 +186,10 @@ public:
 		if(contents == NULL || previousParent == NULL || contents->getQuantity() > requiredQuantity)
 			return false;
 
-		if(contents->getParent() != NULL)
-			contents->getParent()->removeObject(contents, true);
+		if(contents->getParent() != NULL) {
+			//contents->getParent()->removeObject(contents, true);
+			contents->destroyObjectFromWorld(true);
+		}
 
 		// Check inventory for resource and add if existing
 		for (int i = 0; i < previousParent->getContainerObjectsSize(); ++i) {
@@ -205,7 +209,7 @@ public:
 			}
 		}
 
-		previousParent->addObject(contents, -1, true);
+		previousParent->transferObject(contents, -1, true);
 		contents = NULL;
 		return true;
 	}

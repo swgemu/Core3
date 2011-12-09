@@ -56,9 +56,7 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
-
-	bool removeObject(SceneObject* object, bool notifyClient = false);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	void initializeTransientMembers();
 
@@ -117,9 +115,7 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
-
-	bool removeObject(SceneObject* object, bool notifyClient = false);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	void initializeTransientMembers();
 
@@ -184,9 +180,7 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
-
-	bool removeObject(SceneObject* object, bool notifyClient);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
 
 	void initializeTransientMembers();
 

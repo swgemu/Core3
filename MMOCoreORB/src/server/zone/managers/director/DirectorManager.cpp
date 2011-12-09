@@ -218,11 +218,9 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		}
 
 		if (cellParent != NULL) {
-			cellParent->addObject(object, -1);
-		}
-
-		//object->insertToZone(zone);
-		zone->addObject(object, -1, true);
+			cellParent->transferObject(object, -1);
+		} else
+			zone->transferObject(object, -1, true);
 	}
 
 	lua_pushlightuserdata(L, object.get());

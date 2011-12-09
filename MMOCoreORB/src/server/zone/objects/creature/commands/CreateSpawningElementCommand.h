@@ -118,13 +118,16 @@ public:
 
 				ManagedReference<SceneObject*> parent = creature->getParent();
 
-				if (parent != NULL && parent->isCellObject())
-					parent->addObject(object, -1);
-
 				object->initializePosition(x, z, y);
 				object->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
+
+				if (parent != NULL && parent->isCellObject())
+					parent->transferObject(object, -1);
+				else
+					creature->getZone()->transferObject(object, -1, true);
+
 				//object->insertToZone(creature->getZone());
-				creature->getZone()->addObject(object, -1, true);
+
 
 				uint64 objectID = object->getObjectID();
 				creature->sendSystemMessage("oid: " + String::valueOf(objectID));
@@ -146,7 +149,7 @@ public:
 					return GENERALERROR;
 				}
 
-				object->removeFromZone();
+				object->destroyObjectFromWorld(true);
 
 				creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
 			}

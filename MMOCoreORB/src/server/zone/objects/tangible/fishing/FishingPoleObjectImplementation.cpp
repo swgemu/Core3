@@ -75,7 +75,7 @@ String FishingPoleObjectImplementation::getText(CreatureObject* player) {
 
 bool FishingPoleObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
 	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
-	if ((parent.get() != NULL) && (parent.get()->isPlayerCreature())) {
+	if ((parent.get() != NULL) && (getParent()->isPlayerCreature())) {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(parent.get());
 		if ((player != NULL) && (object->isFishingBait())) {
 			if (manager->getFishingState(player) != FishingManager::NOTFISHING) {

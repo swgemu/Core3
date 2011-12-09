@@ -19,11 +19,11 @@ void AttachmentImplementation::initializeTransientMembers() {
 }
 
 void AttachmentImplementation::initializeMembers() {
-	if (gameObjectType == SceneObject::CLOTHINGATTACHMENT) {
+	if (gameObjectType == SceneObjectType::CLOTHINGATTACHMENT) {
 		setOptionsBitmask(32, true);
 		attachmentType = CLOTHINGTYPE;
 
-	} else if (gameObjectType == SceneObject::ARMORATTACHMENT) {
+	} else if (gameObjectType == SceneObjectType::ARMORATTACHMENT) {
 		setOptionsBitmask(32, true);
 		attachmentType = ARMORTYPE;
 
@@ -76,7 +76,7 @@ void AttachmentImplementation::addSkillMod(const String& skillModType, int skill
 }
 
 bool AttachmentImplementation::removeAttachment(CreatureObject* player) {
-	SceneObject* container = parent;
+	SceneObject* container = getParent();
 
 	if (container == NULL)
 		return 0;
@@ -87,7 +87,8 @@ bool AttachmentImplementation::removeAttachment(CreatureObject* player) {
 	Locker _locker(container);
 
 	if (container->hasObjectInContainer(getObjectID())) {
-		container->removeObject(_this, true);
+		//container->removeObject(_this, true);
+		destroyObjectFromWorld(true);
 
 		return 1;
 	}

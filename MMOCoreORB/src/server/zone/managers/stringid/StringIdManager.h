@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/db/ServerDatabase.h"
+#include "server/ServerCore.h"
 
 namespace server {
 namespace zone {
@@ -61,7 +62,7 @@ public:
 
 		stringsDatabase = databaseManager->loadLocalDatabase("strings", true);
 
-		if (fill)
+		if (fill || ServerCore::truncateDatabases())
 			populateDatabase();
 
 		ObjectDatabaseManager::instance()->commitLocalTransaction();

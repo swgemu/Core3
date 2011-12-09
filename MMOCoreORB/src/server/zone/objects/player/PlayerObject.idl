@@ -257,6 +257,9 @@ class PlayerObject extends IntangibleObject {
 		
 		skillPoints = 0;
 		
+		forcePower = 0;
+		forcePowerMax = 0;
+		
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
@@ -1099,7 +1102,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public void updateLastValidatedPosition() {
-		lastValidatedPosition.update(super.parent);
+		lastValidatedPosition.update(super.getParent());
 		serverLastMovementStamp.updateToCurrentTime();
 	}
 

@@ -167,9 +167,9 @@ bool EntertainingSessionImplementation::isInEntertainingBuilding(CreatureObject*
 		uint32 gameObjectType = root->getGameObjectType();
 
 		switch (gameObjectType) {
-		case SceneObject::RECREATIONBUILDING:
-		case SceneObject::HOTELBUILDING:
-		case SceneObject::THEATERBUILDING:
+		case SceneObjectType::RECREATIONBUILDING:
+		case SceneObjectType::HOTELBUILDING:
+		case SceneObjectType::THEATERBUILDING:
 			return true;
 		}
 	}

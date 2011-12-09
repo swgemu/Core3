@@ -47,16 +47,6 @@ public:
 	 */
 	virtual void notifyInsertToZone(SceneObject* sceneObject, Zone* zone);
 
-
-
-	/**
-	 * Inserts this object into the building, this method is only to be called from insertToZone
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is in the building, this object is locked, zone is locked }
-	 * @param building BuildingObject where this object will be inserted
-	 */
-	virtual void insertToBuilding(SceneObject* sceneObject, BuildingObject* building);
-
 	/**
 	 * Switches zone and position of this object
 	 * @pre { this object is locked }
@@ -76,14 +66,6 @@ public:
 	 * @post { this object is locked and not in zone}
 	 */
 	virtual void notifyRemoveFromZone(SceneObject* sceneObject);
-
-	/**
-	 * Removes this object from the building, this method is only to be called from removeFromZone
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is not in the building, this object is locked, zone is locked }
-	 * @param building BuildingObject from where this object will be removed
-	 */
-	virtual void removeFromBuilding(SceneObject* sceneObject, BuildingObject* building);
 
 	/**
 	 * Updates position of this object to the rest of in range objects

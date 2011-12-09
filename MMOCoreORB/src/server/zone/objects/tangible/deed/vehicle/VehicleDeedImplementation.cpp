@@ -61,7 +61,7 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	if (generated)
 		return 1;
 
-	if (player->isInCombat() || player->getParentRecursively(SceneObject::BUILDING) != NULL) {
+	if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != NULL) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call_vehicle"); //You can only unpack vehicles while Outside and not in Combat.
 		return 1;
 	}
@@ -84,7 +84,7 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	vehicle->setMaxCondition(hitPoints);
 	vehicle->setConditionDamage(0);
 	vehicleControlDevice->setControlledObject(vehicle);
-	datapad->addObject(vehicleControlDevice, -1);
+	datapad->transferObject(vehicleControlDevice, -1);
 
 	datapad->broadcastObject(vehicleControlDevice, true);
 	vehicleControlDevice->generateObject(player);
@@ -93,8 +93,9 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	ManagedReference<SceneObject*> deedContainer = getParent();
 
 	if (deedContainer != NULL) {
-		deedContainer->removeObject(_this, true);
-		broadcastDestroy(_this, false);
+		/*deedContainer->removeObject(_this, true);
+		broadcastDestroy(_this, false);*/
+		destroyObjectFromWorld(true);
 	}
 
 	generated = true;

@@ -57,7 +57,7 @@ int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* a
 	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", getZone()->getZoneName(), getPositionX(), getPositionZ(), getPositionY());
 	broadcastMessage(explodeLoc, false);
 
-	removeFromZone();
+	destroyObjectFromWorld(true);
 
 	for (int i = 0; i < spawnedCreatures.size(); ++i) {
 		CreatureObject* obj = spawnedCreatures.get(i);

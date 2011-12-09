@@ -60,9 +60,10 @@ void TutorialBuildingObjectImplementation::notifyRemoveFromZone() {
 		while (cell->getContainerObjectsSize() > 0) {
 			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
 
-			obj->removeFromZone();
+			//obj->removeFromZone();
+			obj->destroyObjectFromWorld(true);
 
-			cell->removeObject(obj);
+			//cell->removeObject(obj);
 
 			if (!obj->isPlayerCreature())
 				terminalsToSave.add(obj);
@@ -71,7 +72,7 @@ void TutorialBuildingObjectImplementation::notifyRemoveFromZone() {
 		for (int j = 0; j < terminalsToSave.size(); ++j) {
 			SceneObject* obj = terminalsToSave.get(j);
 
-			cell->addObject(obj, -1, false);
+			cell->transferObject(obj, -1, false);
 		}
 	}
 

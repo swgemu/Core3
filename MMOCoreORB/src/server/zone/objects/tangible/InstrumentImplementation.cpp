@@ -85,11 +85,13 @@ void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
 
 	if (spawnedObject->getZone() == NULL) {
 		Instrument* instrument = cast<Instrument*>( spawnedObject.get());
-		player->getParent()->addObject(instrument, -1);
+
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
+
+		player->getParent()->transferObject(instrument, -1);
 		//instrument->insertToZone(player->getZone());
-		player->getZone()->addObject(instrument, -1, true);
+		//player->getZone()->transferObject(instrument, -1, true);
 
 		ManagedReference<InstrumentObserver*> posObserver = new InstrumentObserver(instrument);
 		player->registerObserver(ObserverEventType::POSITIONCHANGED, posObserver);
@@ -113,7 +115,7 @@ void InstrumentImplementation::spawnOutside(CreatureObject* player) {
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
 		//instrument->insertToZone(player->getZone());
-		player->getZone()->addObject(instrument, -1, true);
+		player->getZone()->transferObject(instrument, -1, true);
 
 		ManagedReference<InstrumentObserver*> posObserver = new InstrumentObserver(instrument);
 		player->registerObserver(ObserverEventType::POSITIONCHANGED, posObserver);
@@ -136,7 +138,7 @@ void InstrumentImplementation::spawnInAdminCell(CreatureObject* player) {
 	spawnerPlayer = NULL;
 
 	if (spawnedObject != NULL) {
-		spawnedObject->removeFromZone();
+		spawnedObject->destroyObjectFromWorld(true);
 		spawnedObject = NULL;
 	}
 }

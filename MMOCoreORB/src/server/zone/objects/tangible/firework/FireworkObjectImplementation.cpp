@@ -54,14 +54,15 @@ void FireworkObjectImplementation::launch(CreatureObject* player) {
 
 	launcherObject->initializePosition(x, z, y);
 	//launcherObject->insertToZone(player->getZone());
-	player->getZone()->addObject(launcherObject, -1, true);
+	player->getZone()->transferObject(launcherObject, -1, true);
 
 	if (getUseCount() > 1) {
 		setUseCount(getUseCount() - 1, true);
 	} else {
 
-		if (parent != NULL)
-			parent->removeObject(_this, true);
+		destroyObjectFromWorld(true);
+		/*if (parent != NULL)
+			getParent()->removeObject(_this, true);*/
 
 		if (isPersistent())
 			destroyObjectFromDatabase(true);

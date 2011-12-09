@@ -144,7 +144,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 			obj->setDirection(ow, ox, oy, oz);
 			//TODO: Parent
 			//obj->insertToZone(zone);
-			zone->addObject(obj, -1, true);
+			zone->transferObject(obj, -1, true);
 		}
 
 		planetObject.pop();
@@ -214,11 +214,13 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 	}
 
 	if (parentObject != NULL)
-		parentObject->addObject(object, -1);
+		parentObject->transferObject(object, -1);
+	else if (node->getParentID() != 0)
+		error("parent id " + String::valueOf(node->getParentID()));
 
 	if (parentObject == NULL || parentObject->isCellObject())
 		//object->insertToZone(zone);
-		zone->addObject(object, -1, true);
+		zone->transferObject(object, -1, true);
 
 	//Load child nodes
 	for (int i = 0; i < node->getNodeCount(); ++i) {
@@ -399,7 +401,6 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 	msg << "PlanetManagerImplementation::loadRegions()";
 	info(msg.toString());
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-	//dbManager->loadDatabases();
 
 	ObjectDatabase* cityRegionsDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
 

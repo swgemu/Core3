@@ -70,7 +70,7 @@ public:
 		if (ghost == NULL)
 			return INVALIDPARAMETERS;
 
-		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObject::BUILDING);
+		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObjectType::BUILDING);
 
 		if (obj == NULL)
 			return INVALIDTARGET;

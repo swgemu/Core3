@@ -99,7 +99,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObje
 	objectName->setCustomString(name);
 
 	//cityRegion->insertToZone(zone);
-	zone->addObject(cityRegion, -1, true);
+	zone->transferObject(cityRegion, -1, true);
 
 	cityRegion->updateToDatabase();
 	city->updateToDatabaseWithoutChildren();

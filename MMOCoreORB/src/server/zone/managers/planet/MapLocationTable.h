@@ -45,7 +45,7 @@ public:
 		return TransactionalObjectCloner<MapLocationTable>::clone(this);
 	}
 
-	void addObject(SceneObject* object);
+	void transferObject(SceneObject* object);
 
 	void dropObject(SceneObject* object);
 

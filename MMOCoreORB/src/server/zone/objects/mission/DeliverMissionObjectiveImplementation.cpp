@@ -153,7 +153,7 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 			   	item->sendTo(player, true);
 
 				// give player the item to deliver
-			   	inventory->addObject(item, -1, true);
+			   	inventory->transferObject(item, -1, true);
 
 			   	updateMissionTarget(player);
 
@@ -165,7 +165,8 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 				if (item == NULL || !inventory->hasObjectInContainer(item->getObjectID()))
 					return 0;
 
-				inventory->removeObject(item, true);
+				item->destroyObjectFromWorld(true);
+				//inventory->removeObject(item, true);
 
 				complete();
 				break;

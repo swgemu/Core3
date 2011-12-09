@@ -371,8 +371,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		auctionMap->addVendorItem(objectid, item);
 
 	objectToSell->sendDestroyTo(player);
-	toSellParent->removeObject(objectToSell, true);
-	terminal->addObject(objectToSell, -1, false);
+	terminal->transferObject(objectToSell, -1, true);
 
 	if (vendor->isBazaarTerminal()) {
 		StringIdChatParameter str("@base_player:sale_fee");
@@ -759,12 +758,12 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 		return;
 	}
 
-	terminal->removeObject(objectToRetrieve);
+	//terminal->removeObject(objectToRetrieve);
 
 	objectToRetrieve->sendTo(player, true);
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
-	inventory->addObject(objectToRetrieve, -1, true);
+	inventory->transferObject(objectToRetrieve, -1, true);
 
 	//TODO: CHANGE THIS VAR TO MAKE MORE SENSE
 	item->setRemovedByOwner(true);

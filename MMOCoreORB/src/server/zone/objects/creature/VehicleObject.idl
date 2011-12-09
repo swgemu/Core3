@@ -54,13 +54,14 @@ import engine.core.ManagedObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
 import server.zone.Zone;
+include server.zone.objects.scene.SceneObjectType;
 import server.zone.templates.SharedObjectTemplate;
 
 class VehicleObject extends CreatureObject {
 	protected int vehicleType;
 	
 	public VehicleObject() {
-		vehicleType = SceneObject.HOVERVEHICLE;
+		vehicleType = SceneObjectType.HOVERVEHICLE;
 		
 		Logger.setLoggingName("VehicleObject");
 		Logger.setLogging(false);
@@ -121,7 +122,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked, defender is in the defender vector }
 	 * @param defender SceneObject to add to the defender vector
 	 */
-	public native void addDefender(SceneObject defender) {
+	public void addDefender(SceneObject defender) {
 		
 	}
 	
@@ -131,7 +132,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked, defender is not in the defender vector }
 	 * @param defender SceneObject to remove from the defender vector
 	 */
-	public native void removeDefender(SceneObject defender) {
+	public void removeDefender(SceneObject defender) {
 		
 	}
 	
@@ -141,7 +142,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked, defender is active }
 	 * @param defender SceneObject to set as the active defender
 	 */
-	public native void setDefender(SceneObject defender) {
+	public void setDefender(SceneObject defender) {
 		
 	}
 	

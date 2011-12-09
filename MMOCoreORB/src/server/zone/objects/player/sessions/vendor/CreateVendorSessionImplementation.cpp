@@ -172,7 +172,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 
 	vendor->setCustomObjectName("Vendor: " + name, true);
 
-	inventory->addObject(vendor, -1);
+	inventory->transferObject(vendor, -1);
 	vendor->sendTo(player, true);
 
 	player->sendSystemMessage("@player_structure:create_success");

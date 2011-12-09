@@ -9,7 +9,7 @@
 #include "server/zone/managers/templates/PlanetMapCategory.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
-void MapLocationTable::addObject(SceneObject* object) {
+void MapLocationTable::transferObject(SceneObject* object) {
 	PlanetMapCategory* pmc = object->getPlanetMapCategory();
 
 	if (pmc == NULL)

@@ -66,18 +66,21 @@ void BuildingObjectImplementation::createContainerComponent() {
 }
 
 void BuildingObjectImplementation::notifyLoadFromDatabase() {
-	SceneObjectImplementation::notifyLoadFromDatabase();
+	StructureObjectImplementation::notifyLoadFromDatabase();
+}
 
-	if (isInQuadTree()) {
-		for (int i = 0; i < cells.size(); ++i) {
-			CellObject* cell = cells.get(i);
+void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
+	StructureObjectImplementation::notifyInsertToZone(zone);
 
-			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				SceneObject* containerObject = cell->getContainerObject(j);
+	Locker locker(zone);
 
-				//containerObject->insertToZone(getZone());
-				getZone()->addObject(containerObject, -1, true);
-			}
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			SceneObject* child = cell->getContainerObject(j);
+
+			notifyObjectInsertedToZone(child);
 		}
 	}
 }
@@ -99,7 +102,7 @@ void BuildingObjectImplementation::createCellObjects() {
 		SceneObject* newCell = getZoneServer()->createObject(0xAD431713,
 				getPersistenceLevel());
 
-		if (!addObject(newCell, -1))
+		if (!transferObject(newCell, -1))
 			error("could not add cell");
 
 		addCell(cast<CellObject*>(newCell), i + 1);
@@ -112,33 +115,32 @@ void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
-		if (cell->getParent() == NULL)
-			cell->setParent(_this);
-
-//		cell->setCellNumber(i + 1);
 		cell->sendTo(player, true);
 	}
 }
 
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	info("building sendto..");
+	//info("building sendto..", true);
 
 	if (!isStaticBuilding()) { // send Baselines etc..
-		info("sending building object create");
+		//info("sending building object create");
 
 		SceneObjectImplementation::sendTo(player, doClose);
-	} else { // just send the objects that are in the building, without the cells because they are static in the client
-		for (int i = 0; i < cells.size(); ++i) {
-			CellObject* cell = cells.get(i);
+	} //else { // just send the objects that are in the building, without the cells because they are static in the client
 
-			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				SceneObject* childStub = cell->getContainerObject(j);
 
-				//if (!childStub->isInQuadTree())
-					childStub->sendTo(player, true);
-			}
+	// for some reason client doesnt like when you send cell creatures while sending cells?
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			SceneObject* containerObject = cell->getContainerObject(j);
+
+			if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject || player->containsInRangeObject(containerObject))
+				containerObject->sendTo(player, true);
 		}
 	}
+	//}
 }
 
 Vector3 BuildingObjectImplementation::getEjectionPoint() {
@@ -193,9 +195,10 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		while (cell->getContainerObjectsSize() > 0) {
 			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
 
-			obj->removeFromZone();
+			/*obj->removeFromZone();
 
-			cell->removeObject(obj);
+			cell->removeObject(obj);*/
+			obj->destroyObjectFromWorld(true);
 
 			VectorMap<uint64, ManagedReference<SceneObject*> >* cont =
 					cell->getContainerObjects();
@@ -212,7 +215,7 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		}
 
 		if (signObject != NULL) {
-			signObject->removeFromZone();
+			signObject->destroyObjectFromWorld(true);
 		}
 	}
 
@@ -239,17 +242,20 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
-	//info("BuildingObjectImplementation::notifyInsertToZone");
+	//info("BuildingObjectImplementation::notifyInsertToZone", true);
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* obj = cast<SceneObject*>( getInRangeObject(i));
+		SceneObject* obj = cast<SceneObject*>(getInRangeObject(i));
 
 		if ((obj->isCreatureObject() && isPublicStructure()) || isStaticBuilding()) {
-			object->addInRangeObject(obj, false);
-			object->sendTo(obj, true);
 
-			obj->addInRangeObject(object, false);
-			obj->sendTo(object, true);
+			if (obj->getRootParent() != _this) {
+				object->addInRangeObject(obj, false);
+				//object->sendTo(obj, true);
+
+				obj->addInRangeObject(object, false);
+				//obj->sendTo(object, true);
+			}
 		}
 	}
 
@@ -257,11 +263,15 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 	object->addInRangeObject(_this, false);
 	addInRangeObject(object, false);
+
 	//this->sendTo(object, true);
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//info("BuildingObjectImplementation::notifyInsert");
+	//remove when done
+	//return;
+
 	SceneObject* scno = cast<SceneObject*>( obj);
 	bool objectInThisBuilding = scno->getRootParent() == _this;
 
@@ -275,10 +285,12 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 				if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
 					//if (is)
 					child->addInRangeObject(obj, false);
-					child->sendTo(scno, true);
+					child->sendTo(scno, true);//sendTo because notifyInsert doesnt send objects with parent
 
 					scno->addInRangeObject(child, false);
-					scno->sendTo(child, true);
+
+					if (scno->getParent() != NULL)
+						scno->sendTo(child, true);
 				}
 			}
 		}
@@ -287,6 +299,9 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObject* scno = cast<SceneObject*>( obj);
+	//remove when done
+	//return;
+
 
 //	removeNotifiedSentObject(scno);
 
@@ -303,45 +318,22 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
-	quadTree->insert(entry);
-
-	SceneObject* scno = cast<SceneObject*>( entry);
-
-	for (int i = 0; i < cells.size(); ++i) {
-		CellObject* cell = cells.get(i);
-
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* child = cell->getContainerObject(j);
-
-			if (child != scno) {
-				//if (child->isCreatureObject() && isPublicStructure()) {
-					//if (is)
-				//if (!child->containsInRangeObject(scno)) {
-					child->addInRangeObject(scno, false);
-					child->sendTo(scno, true);
-				//}
-
-				//if (!scno->containsInRangeObject(child)) {
-					scno->addInRangeObject(child, false);
-					scno->sendTo(child, true);
-				//}
-				//}
-			}
-		}
-	}
+	//quadTree->insert(entry);
+	//remove when done
+	//return;
 }
 
 void BuildingObjectImplementation::remove(QuadTreeEntry* entry) {
-	if (entry->isInQuadTree())
-		quadTree->remove(entry);
+	/*if (entry->isInQuadTree())
+		quadTree->remove(entry);*/
 }
 
 void BuildingObjectImplementation::update(QuadTreeEntry* entry) {
-	quadTree->update(entry);
+	//quadTree->update(entry);
 }
 
 void BuildingObjectImplementation::inRange(QuadTreeEntry* entry, float range) {
-	quadTree->inRange(entry, range);
+	//quadTree->inRange(entry, range);
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) {
@@ -424,6 +416,9 @@ void BuildingObjectImplementation::ejectObject(SceneObject* obj) {
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {
+	if (player == NULL)
+		return;
+
 	if (getZone() == NULL)
 		return;
 
@@ -470,8 +465,109 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 	return MIN(MAXPLAYERITEMS, lots * 100);
 }
 
-bool BuildingObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return StructureObjectImplementation::addObject(object, containmentType, notifyClient);
+bool BuildingObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
+	return StructureObjectImplementation::transferObject(object, containmentType, notifyClient);
+}
+
+int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
+	//if ()
+
+	ManagedReference<Zone*> zone = getZone();
+
+	Locker* _locker = NULL;
+
+	if (zone != NULL)
+		_locker = new Locker(zone);
+
+	try {
+		object->addInRangeObject(object, false);
+		//info("SceneObjectImplementation::insertToBuilding");
+
+		//parent->transferObject(_this, 0xFFFFFFFF);
+
+		if (object->getParent()->isCellObject()) {
+
+			bool runInRange = true;
+
+			if ((oldParent == NULL || !oldParent->isCellObject()) || oldParent == object->getParent()) {
+				//insert(object);
+
+				if (oldParent == NULL || (oldParent != NULL && dynamic_cast<Zone*>(oldParent) == NULL && !oldParent->isCellObject())) {
+					notifyObjectInsertedToZone(object);
+					runInRange = false;
+				}
+
+				if (!object->isPlayerCreature()) {
+					broadcastDestroy(object, true);
+					broadcastObject(object, false);
+				}
+
+				if (object->isCreatureObject())
+					onEnter(cast<CreatureObject*>(object));
+				//notifyObjectInsertedToZone(object);
+			}
+
+			if (runInRange) {
+				CellObject* cell = cast<CellObject*>(object->getParent());
+
+				for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+					SceneObject* child = cell->getContainerObject(j);
+
+					if (child != object) {
+						//if (is)
+						if (!child->containsInRangeObject(object)) {
+							child->addInRangeObject(object, false);
+							child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+						}
+
+						if (!object->containsInRangeObject(child)) {
+							object->addInRangeObject(child, false);
+							object->sendTo(child, true);
+						}
+						//scno->sendTo(child, true);
+					}
+				}
+			}
+
+		}
+
+		//sceneObject->broadcastMessage(sceneObject->link(parent->getObjectID(), 0xFFFFFFFF), true, false);
+
+		//info("sent cell link to everyone else");
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+
+	if (zone != NULL)
+		delete _locker;
+
+	return 0;
+}
+
+int BuildingObjectImplementation::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
+	/*SceneObject* parent = sceneObject->getParent();
+	Zone* zone = sceneObject->getZone();
+
+	if (!parent->isCellObject())
+		return;
+
+	if (building != parent->getParent()) {
+		error("removing from wrong building object");
+		return;
+	}
+
+    sceneObject->broadcastMessage(sceneObject->link((uint64)0, (uint32)0xFFFFFFFF), true, false);*/
+
+    //parent->removeObject(sceneObject, false);
+
+
+    remove(object);
+
+//    	building->removeNotifiedSentObject(sceneObject);
+
+
+	return 0;
 }
 
 void BuildingObjectImplementation::destroyAllPlayerItems() {

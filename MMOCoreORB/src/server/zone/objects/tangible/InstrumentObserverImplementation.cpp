@@ -30,14 +30,14 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 
 		if (eventType == ObserverEventType::POSITIONCHANGED) {
 			if (creature->getDistanceTo(instrument) > 8) {
-				instrument->removeFromZone();
+				instrument->destroyObjectFromWorld(true);
 
 				//observable->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this);
 
 				return 1;
 			}
 		} else if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
-			instrument->removeFromZone();
+			instrument->destroyObjectFromWorld(true);
 
 			//observable->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
 

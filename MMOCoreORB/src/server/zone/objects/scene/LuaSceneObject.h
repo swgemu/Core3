@@ -44,11 +44,11 @@ namespace scene {
 		int getContainerObject(lua_State* L);
 		int getContainerObjectsSize(lua_State* L);
 		int getSlottedObject(lua_State* L);
-		int addObject(lua_State* L);
-		int removeObject(lua_State* L);
+		int transferObject(lua_State* L);
+		//int removeObject(lua_State* L);
 		int getGameObjectType(lua_State* L);
 		int faceObject(lua_State* L);
-		int removeFromZone(lua_State* L);
+		int destroyObjectFromWorld(lua_State* L);
 		int updateDirection(lua_State* L);
 		int isCreatureObject(lua_State* L);
 

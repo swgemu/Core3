@@ -69,7 +69,7 @@ public:
 		try {
 			building->clearUnloadEvent();
 
-			building->removeFromZone();
+			building->destroyObjectFromWorld(true);
 		} catch (Exception& e) {
 			building->error("unreported exception caught in UnloadBuildingTask::run");
 

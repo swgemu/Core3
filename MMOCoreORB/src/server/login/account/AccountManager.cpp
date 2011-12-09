@@ -17,6 +17,7 @@
 #include "server/login/packets/LoginClientToken.h"
 #include "server/login/packets/LoginClusterStatus.h"
 #include "server/login/packets/LoginEnumCluster.h"
+#include "server/ServerCore.h"
 
 AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager") {
 	loginServer = loginserv;
@@ -29,6 +30,18 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 
 	setLogging(false);
 	setGlobalLogging(false);
+
+	if (ServerCore::truncateDatabases()) {
+		try {
+			String query = "TRUNCATE TABLE characters";
+
+			Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+
+			info("characters table truncated", true);
+		} catch (Exception& e) {
+			error(e.getMessage());
+		}
+	}
 }
 
 AccountManager::~AccountManager() {

@@ -17,7 +17,7 @@
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) {
 	SceneObject* parent = sceneObject->getParent();
 
-	if (parent == NULL && !sceneObject->isInQuadTree() && sceneObject->isPlayerCreature()) {
+	/*if (parent == NULL && !sceneObject->isInQuadTree() && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
@@ -26,6 +26,14 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 		if (ghost != NULL && (savedParentID = ghost->getSavedParentID()) != 0) {
 			sceneObject->setParent(sceneObject->getZoneServer()->getObject(savedParentID));
 		}
+
+
+	}*/
+
+	if (sceneObject->isPlayerCreature()) {
+		PlayerObject* ghost = cast<CreatureObject*>(sceneObject)->getPlayerObject();
+
+		ghost->setSavedTerrainName(newZone->getZoneName());
 	}
 
 	ZoneComponent::notifyInsertToZone(sceneObject, newZone);
@@ -46,31 +54,15 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 
 		if (ghost->isInvisible())
 			return;
-
 	}
 
 	SceneObject* parent = scno->getParent();
 
-	if (parent != NULL && parent->isCellObject()) {
+	if (parent != NULL /*&& parent->isCellObject()*/) {
 		return;
 	}
 
 	scno->sendTo(sceneObject, true);
-
-	/*if (sceneObject->getParent() != NULL)
-		return;
-
-	SceneObject* rootParent = scno->getRootParent();
-
-	if (rootParent != NULL && rootParent->isInQuadTree()) {
-		if (sceneObject->hasNotifiedSentObject(rootParent) && sceneObject->addNotifiedSentObject(scno) != -1)
-			scno->sendTo(sceneObject, true);
-		else {
-			if (sceneObject->addNotifiedSentObject(rootParent) != -1)
-				rootParent->sendTo(sceneObject, true);
-		}
-	} else if (sceneObject->addNotifiedSentObject(scno) != -1)
-		scno->sendTo(sceneObject, true);*/
 }
 
 void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
@@ -138,7 +130,7 @@ void PlayerZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneOb
 		ghost->setSavedParentID(sceneObject->getParentID());
 	}
 }
-
+/*
 void PlayerZoneComponent::insertToBuilding(SceneObject* sceneObject, BuildingObject* building) {
 	ZoneComponent::insertToBuilding(sceneObject, building);
 
@@ -150,13 +142,7 @@ void PlayerZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingO
 
 	building->onExit(dynamic_cast<CreatureObject*>(sceneObject));
 
-	/*if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( sceneObject);
-		PlayerObject* ghost = player->getPlayerObject();
-
-		ghost->setSavedParentID(0);
-	}*/
-}
+}*/
 
 void PlayerZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {
 	ZoneComponent::notifySelfPositionUpdate(sceneObject);

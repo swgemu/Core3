@@ -100,17 +100,7 @@ class CellObject extends SceneObject {
 	 * @param notifyClient if true in range objects will be updated with the change
 	 * @return returns true if the object has been successfully added
 	 */
-	public native boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
-
-	/**
-	 * Tries to remove/unlink object
-	 * @pre { this object is locked, object is locked }
-	 * @post {this object is locked, object is locked }
-	 * @param object SceneObject that will be removed from the current object
-	 * @param notifyClient not used currently
-	 * @return returns true if the object has been successfully removed
-	 */
-	public native boolean removeObject(SceneObject object, boolean notifyClient = false);
+	public native boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false);
 	
 	/**
 	 * Sends the necessary messages to player in order to create this object

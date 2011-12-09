@@ -168,10 +168,10 @@ public:
 				contents.add(incomingTano);
 				contentsPreviousParent.add(incomingTanoParent);
 
-				if (incomingTano->getParent() != NULL)
-					incomingTano->getParent()->removeObject(incomingTano, true);
+				/*if (incomingTano->getParent() != NULL)
+					incomingTano->getParent()->removeObject(incomingTano, true);*/
 
-				craftingTool->addObject(incomingTano, -1, false);
+				craftingTool->transferObject(incomingTano, -1, false);
 
 				incomingTano->sendTo(player, true);
 				incomingTano->sendAttributeListTo(player);
@@ -192,7 +192,7 @@ public:
 
 				if (contents.add(newTano)) {
 					contentsPreviousParent.add(incomingTanoParent);
-					craftingTool->addObject(newTano, -1, false);
+					craftingTool->transferObject(newTano, -1, false);
 
 					newTano->sendTo(player, true);
 					newTano->sendAttributeListTo(player);
@@ -211,7 +211,7 @@ public:
 
 				if(contents.add(newTano)) {
 					contentsPreviousParent.add(incomingTanoParent);
-					craftingTool->addObject(newTano, -1, false);
+					craftingTool->transferObject(newTano, -1, false);
 				}
 
 			} else {
@@ -219,10 +219,10 @@ public:
 				if(contents.add(incomingTano)) {
 					contentsPreviousParent.add(incomingTanoParent);
 
-					if (incomingTano->getParent() != NULL)
-						incomingTano->getParent()->removeObject(incomingTano, true);
+					/*if (incomingTano->getParent() != NULL)
+						incomingTano->getParent()->removeObject(incomingTano, true);*/
 
-					craftingTool->addObject(incomingTano, -1, false);
+					craftingTool->transferObject(incomingTano, -1, false);
 				}
 			}
 		}
@@ -250,8 +250,8 @@ public:
 			if (item == NULL)
 				continue;
 
-			if (item->getParent() != NULL)
-				item->getParent()->removeObject(item, true);
+			/*if (item->getParent() != NULL)
+				item->getParent()->removeObject(item, true);*/
 
 			Reference<SharedObjectTemplate*> baseTemplate =
 					item->getObjectTemplate();
@@ -264,7 +264,7 @@ public:
 			dtano3->close();
 
 			if (objectsOldParent != NULL) {
-				objectsOldParent->addObject(item, -1, true);
+				objectsOldParent->transferObject(item, -1, true);
 				objectsOldParent->broadcastMessage(dtano3, true);
 			} else {
 				item->broadcastMessage(dtano3, true);

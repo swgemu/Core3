@@ -171,11 +171,9 @@ public:
 
 		//remove the ticket from inventory and destory it.
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
-		inventory->removeObject(ticketObject, true);
-		ticketObject->sendDestroyTo(creature);
+		ticketObject->destroyObjectFromWorld(true);
 
 		ticketObject->destroyObjectFromDatabase(true);
-
 		return SUCCESS;
 	}
 

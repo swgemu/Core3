@@ -77,7 +77,7 @@ void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClie
 	if (parent == NULL)
 		return;
 
-	SceneObject* player = parent->getParent();
+	SceneObject* player = getParent()->getParent();
 
 	if (player == NULL)
 		return;

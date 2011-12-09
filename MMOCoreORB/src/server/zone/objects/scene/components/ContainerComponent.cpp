@@ -43,6 +43,7 @@ which carries forward this exception.
 
 #include "ContainerComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/Zone.h"
 
 int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
 	if (sceneObject == object) {
@@ -74,7 +75,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		}
 
 	} else {
-		sceneObject->error("unkown containmentType type");
+		sceneObject->error("unkown containmentType in canAddObject type " + String::valueOf(containmentType));
 
 		errorDescription = "DEBUG: cant move item unkown containmentType type";
 		return TransferErrorCode::UNKNOWNCONTAIMENTTYPE;
@@ -83,19 +84,30 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	return 0;
 }
 
-bool ContainerComponent::addObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
+bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
 	if (sceneObject == object)
 		return false;
 
-	if (object->getParent() != NULL && object->getParent() != sceneObject) {
-		ManagedReference<SceneObject*> objParent = object->getParent();
+	ManagedReference<SceneObject*> objParent = object->getParent();
+	ManagedReference<Zone*> objZone = object->getLocalZone();
 
-		if (objParent->hasObjectInContainer(object->getObjectID()) || objParent->hasObjectInSlottedContainer(object)) {
-			sceneObject->error("trying to add an object with a parent already");
-			objParent->info("the object is in here", true);
+	if (objParent != NULL || objZone != NULL) {
+		if (objParent != NULL)
+			objParent->removeObject(object, false);
+
+		if (object->getParent() != NULL) {
+			object->error("error removing from from parent");
+
 			return false;
-		} else
-			object->setParent(NULL);
+		}
+
+		if (objZone != NULL)
+			objZone->remove(object);
+
+		object->setZone(NULL);
+
+		if (objParent == NULL)
+			objParent = objZone;
 	}
 
 	bool update = true;
@@ -129,14 +141,17 @@ bool ContainerComponent::addObject(SceneObject* sceneObject, SceneObject* object
 			update = false;
 
 	} else {
-		sceneObject->error("unknown container type");
+		sceneObject->error("unknown contained type " + String::valueOf(containmentType));
+		StackTrace::printStackTrace();
 		return false;
 	}
 
 	object->setParent(sceneObject);
 	object->setContainmentType(containmentType);
 
-	if (notifyClient)
+	if (containmentType == 4 || containmentType == 5)
+		sceneObject->broadcastObject(object, true);
+	else if (notifyClient)
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
 
 	notifyObjectInserted(sceneObject, object);
@@ -145,6 +160,8 @@ bool ContainerComponent::addObject(SceneObject* sceneObject, SceneObject* object
 		sceneObject->updateToDatabase();
 		//object->updateToDatabaseWithoutChildren()();
 	}
+
+	object->getRootParent()->notifyObjectInsertedToChild(object, sceneObject, objParent);
 
 	return true;
 }
@@ -195,7 +212,9 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 		containerObjects->drop(object->getObjectID());
 	} else {
-		sceneObject->error("unkown container type");
+		sceneObject->error("unknown contained type " + String::valueOf(containedType));
+		StackTrace::printStackTrace();
+
 		return false;
 	}
 
@@ -208,6 +227,12 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	sceneObject->updateToDatabase();
 	object->updateToDatabase();
+
+	if (sceneObject->getParent() == NULL) {
+		sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
+	} else {
+		sceneObject->getRootParent()->notifyObjectRemovedFromChild(object, sceneObject);
+	}
 
 	return true;
 }

@@ -157,12 +157,12 @@ public:
 		//ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
 		ManagedReference<SceneObject*> ticket1 = pmDeparture->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
 		ticket1->sendTo(creature, true);
-		inventory->addObject(ticket1, -1, true);
+		inventory->transferObject(ticket1, -1, true);
 
 		if (roundTrip) {
 			ManagedReference<SceneObject*> ticket2 = pmArrival->createTicket(arrivalPoint, departurePlanet, departurePoint);
 			ticket2->sendTo(creature, true);
-			inventory->addObject(ticket2, -1, true);
+			inventory->transferObject(ticket2, -1, true);
 		}
 
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);

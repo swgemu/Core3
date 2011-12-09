@@ -119,8 +119,10 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 
 		if(prototype == NULL) {
 
-			while(getContainerObjectsSize() > 0)
-				removeObject(getContainerObject(0));
+			while(getContainerObjectsSize() > 0) {
+				//removeObject(getContainerObject(0));
+				getContainerObject(0)->destroyObjectFromWorld(true);
+			}
 
 			playerCreature->sendSystemMessage("Tool does not have a valid prototype, resetting tool.  Contact Kyle if you see this message");
 			status = "@crafting:tool_status_ready";
@@ -130,9 +132,9 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 		if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
 
 			playerCreature->sendSystemMessage("system_msg", "prototype_transferred");
-			removeObject(prototype);
+			//removeObject(prototype);
 
-			inventory->addObject(prototype, -1, true);
+			inventory->transferObject(prototype, -1, true);
 
 			status = "@crafting:tool_status_ready";
 		} else {
@@ -325,7 +327,8 @@ void CraftingToolImplementation::clearCraftingSession() {
 	if (manufactureSchematic != NULL) {
 
 		if(manufactureSchematic->getParent() == _this) {
-			removeObject(manufactureSchematic);
+			//removeObject(manufactureSchematic);
+			manufactureSchematic->destroyObjectFromWorld(true);
 			manufactureSchematic->setDraftSchematic(NULL, NULL);
 			manufactureSchematic->cleanupIngredientSlots();
 		}
@@ -334,14 +337,18 @@ void CraftingToolImplementation::clearCraftingSession() {
 	}
 
 	// Remove all items that aren't the prototype
-	while(getContainerObjectsSize() > 1)
-		removeObject(getContainerObject(1));
+	while(getContainerObjectsSize() > 1) {
+		//removeObject(getContainerObject(1));
+		getContainerObject(1)->destroyObjectFromWorld(true);
+	}
 
 	if (prototype != NULL) {
 		if(status == "@crafting:tool_status_ready") {
 
-			if(prototype->getParent() == _this)
-				removeObject(prototype);
+			if(prototype->getParent() == _this) {
+				//removeObject(prototype);
+				prototype->destroyObjectFromWorld(true);
+			}
 
 			prototype = NULL;
 		}
@@ -495,7 +502,7 @@ bool CraftingToolImplementation::createManufactureSchematic(CreatureObject* play
 		return false;
 	}
 
-	addObject(manufactureSchematic, 0x4, false);
+	transferObject(manufactureSchematic, 0x4, false);
 	manufactureSchematic->sendTo(player, true);
 
 	return true;
@@ -504,8 +511,10 @@ bool CraftingToolImplementation::createManufactureSchematic(CreatureObject* play
 bool CraftingToolImplementation::createPrototype(CreatureObject* player, DraftSchematic* draftschematic) {
 
 	// Remove all items, incase there are any
-	while(getContainerObjectsSize() > 0)
-		removeObject(getContainerObject(0));
+	while(getContainerObjectsSize() > 0) {
+		//removeObject(getContainerObject(0));
+		getContainerObject(0)->destroyObjectFromWorld(true);
+	}
 
 	ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
 			draftschematic->getTanoCRC(), 0));
@@ -519,7 +528,7 @@ bool CraftingToolImplementation::createPrototype(CreatureObject* player, DraftSc
 
 	prototype->createChildObjects();
 
-	addObject(prototype, -1, false);
+	transferObject(prototype, -1, false);
 	prototype->sendTo(player, true);
 
 	return true;
@@ -1342,13 +1351,14 @@ void CraftingToolImplementation::createManfSchematic(CreatureObject* player,
 		player->sendMessage(objMsg);
 
 		SceneObject* datapad = player->getSlottedObject("datapad");
-		removeObject(manufactureSchematic);
-		removeObject(prototype);
+		//removeObject(manufactureSchematic);
+		//removeObject(prototype);
+		prototype->destroyObjectFromWorld(0);
 
 		manufactureSchematic->setPersistent(2);
 		prototype->setPersistent(2);
 
-		datapad->addObject(manufactureSchematic, -1, true);
+		datapad->transferObject(manufactureSchematic, -1, true);
 		manufactureSchematic->setPrototype(prototype);
 
 	} else {
@@ -1406,7 +1416,8 @@ void CraftingToolImplementation::depositObject(CreatureObject* player, bool prac
 		return;
 
 	if(practice) {
-	    removeObject(prototype);
+	    //removeObject(prototype);
+		prototype->destroyObjectFromWorld(true);
 		status = "@crafting:tool_status_ready";
 		return;
 	}
@@ -1416,9 +1427,9 @@ void CraftingToolImplementation::depositObject(CreatureObject* player, bool prac
 	if (inventory->getContainerObjectsSize() < 80) {
 
 		player->sendSystemMessage("system_msg", "prototype_transferred");
-		removeObject(prototype);
+		//removeObject(prototype);
 
-		inventory->addObject(prototype, -1, true);
+		inventory->transferObject(prototype, -1, true);
 
 		status = "@crafting:tool_status_ready";
 

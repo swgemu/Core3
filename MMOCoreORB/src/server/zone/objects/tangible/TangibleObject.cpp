@@ -1528,7 +1528,7 @@ bool TangibleObjectImplementation::isSliceable() {
 	return sliceable;
 
 	else 	// server/zone/objects/tangible/TangibleObject.idl():  		return 
-	if (SceneObjectImplementation::gameObjectType == SceneObjectImplementation::PLAYERLOOTCRATE)	// server/zone/objects/tangible/TangibleObject.idl():  			return sliceable;
+	if (SceneObjectImplementation::gameObjectType == SceneObjectType::PLAYERLOOTCRATE)	// server/zone/objects/tangible/TangibleObject.idl():  			return sliceable;
 	return sliceable;
 	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;

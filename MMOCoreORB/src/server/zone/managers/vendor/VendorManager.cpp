@@ -129,7 +129,7 @@ void VendorManager::handleDestoryCallback(CreatureObject* player, Vendor* vendor
 	if (vendorObj == NULL)
 		return;
 
-	vendorObj->removeFromZone();
+	vendorObj->destroyObjectFromWorld(true);
 	vendorObj->destroyObjectFromDatabase(true);
 
 }

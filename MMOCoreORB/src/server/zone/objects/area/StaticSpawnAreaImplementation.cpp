@@ -49,7 +49,7 @@ void StaticSpawnAreaImplementation::spawnCreatures() {
 		group->setPosition(x, z, y);
 
 		//group->insertToZone(getZone());
-		getZone()->addObject(group, -1, true);
+		getZone()->transferObject(group, -1, true);
 
 		group->setup(templ);
 

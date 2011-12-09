@@ -26,7 +26,7 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 	MissionObjectiveImplementation::destroyObjectFromDatabase();
 
 	if (spawnActiveArea != NULL) {
-		spawnActiveArea->removeFromZone();
+		spawnActiveArea->destroyObjectFromWorld(true);
 		spawnActiveArea->destroyObjectFromDatabase(true);
 
 		spawnActiveArea = NULL;
@@ -79,7 +79,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	Zone* zone = spawnActiveArea->getZone();
 
-	spawnActiveArea->removeFromZone();
+	spawnActiveArea->destroyObjectFromWorld(true);
 
 	float newX = spawnActiveArea->getPositionX() + (256.0f - (float) System::random(512));
 	float newY = spawnActiveArea->getPositionY() + (256.0f - (float) System::random(512));
@@ -98,7 +98,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	if (!lairObject->isInQuadTree()) {
 		lairObject->initializePosition(newX, zone->getHeight(newX, newY), newY);
 		//lairObject->insertToZone(zone);
-		zone->addObject(lairObject, -1, true);
+		zone->transferObject(lairObject, -1, true);
 
 		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
@@ -122,7 +122,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 
 			lairObject->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 			observer->destroyObjectFromDatabase();
-			lairObject->removeFromZone();
+			lairObject->destroyObjectFromWorld(true);
 
 			lairObject = NULL;
 
@@ -132,7 +132,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 	}
 
 	if (spawnActiveArea != NULL)
-		spawnActiveArea->removeFromZone();
+		spawnActiveArea->destroyObjectFromWorld(true);
 }
 
 void DestroyMissionObjectiveImplementation::complete() {

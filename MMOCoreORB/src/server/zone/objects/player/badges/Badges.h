@@ -73,7 +73,7 @@ public:
 
 public:
 	void setBadge(int badgeindex) {
-		wlock();
+		Locker locker(this);
 
 		int bitmaskNumber = badgeindex >> 5;
 
@@ -85,12 +85,10 @@ public:
 			badgeTypeCounts[Badge::getType(badgeindex)]++;
 			badgeTotal++;
 		}
-
-		unlock();
 	}
 
 	void unsetBadge(int badgeindex) {
-		wlock();
+		Locker locker(this);
 
 		int bitmaskNumber = badgeindex >> 5;
 
@@ -103,7 +101,6 @@ public:
 			badgeTotal--;
 		}
 
-		unlock();
 	}
 
 
@@ -124,11 +121,9 @@ public:
 	}
 
 	void setBitmask(int index, uint32 bitmask) {
-		wlock();
+		Locker locker(this);
 
 		badgeBitmask[index] = bitmask;
-
-		unlock();
 	}
 
 	uint32 getBitmask(int index) {
@@ -144,11 +139,9 @@ public:
 	}
 
 	void setTypeCount(uint8 index, uint8 value) {
-		wlock();
+		Locker locker(this);
 
 		badgeTypeCounts[index] = value;
-
-		unlock();
 	}
 
 	uint8 getTypeCount(uint8 type) {
@@ -172,11 +165,9 @@ public:
 	}
 
 	void setNumBadges(uint8 value) {
-		wlock();
+		Locker locker(this);
 
 		badgeTotal = value;
-
-		unlock();
 	}
 };
 

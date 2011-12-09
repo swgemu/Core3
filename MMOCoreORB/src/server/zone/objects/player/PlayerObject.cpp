@@ -3518,6 +3518,10 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 	savedParentID = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		skillPoints = 0;
 	skillPoints = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		forcePower = 0;
+	forcePower = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		forcePowerMax = 0;
+	forcePowerMax = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		duelList.setNoDuplicateInsertPlan();
 	(&duelList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/player/PlayerObject.idl():  		persistentMessages.setNoDuplicateInsertPlan();
@@ -4215,8 +4219,8 @@ ValidatedPosition* PlayerObjectImplementation::getLastValidatedPosition() {
 }
 
 void PlayerObjectImplementation::updateLastValidatedPosition() {
-	// server/zone/objects/player/PlayerObject.idl():  		lastValidatedPosition.update(super.parent);
-	(&lastValidatedPosition)->update(IntangibleObjectImplementation::parent.getForUpdate());
+	// server/zone/objects/player/PlayerObject.idl():  		lastValidatedPosition.update(super.getParent());
+	(&lastValidatedPosition)->update(IntangibleObjectImplementation::getParent());
 	// server/zone/objects/player/PlayerObject.idl():  		serverLastMovementStamp.updateToCurrentTime();
 	(&serverLastMovementStamp)->updateToCurrentTime();
 }

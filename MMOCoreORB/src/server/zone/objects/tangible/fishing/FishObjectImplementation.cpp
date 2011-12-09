@@ -49,9 +49,9 @@ void FishObjectImplementation::filet(CreatureObject* player) {
 			while (getContainerObjectsSize() > 0) {
 				item = getContainerObject((int)0);
 
-				removeObject(item, false);
+				//removeObject(item, false);
 
-				inventory->addObject(item, -1, true);
+				inventory->transferObject(item, -1, true);
 			}
 
 			player->sendSystemMessage("@fishing:good_filet");

@@ -94,8 +94,10 @@ class ServerCore : public Core, public Logger {
 
 	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
 
+	static bool truncateAllData;
+
 public:
-	ServerCore();
+	ServerCore(bool truncateDatabases);
 
 	void initialize();
 
@@ -110,6 +112,10 @@ public:
 	// getters
 	static server::zone::ZoneServer* getZoneServer() {
 		return zoneServerRef.get();
+	}
+
+	static bool truncateDatabases() {
+		return truncateAllData;
 	}
 
 };

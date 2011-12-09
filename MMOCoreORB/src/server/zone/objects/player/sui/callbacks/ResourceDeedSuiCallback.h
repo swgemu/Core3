@@ -60,8 +60,9 @@ public:
 		//They chose the resource, eat the deed and give them what they want...fuck it.
 		if (!backPressed && spawn != NULL) {
 			resourceManager->givePlayerResource(creature, nodeName, ResourceManager::RESOURCE_DEED_QUANTITY);
-			deed->broadcastDestroy(deed, false);
-			inventory->removeObject(deed, true);
+			/*deed->broadcastDestroy(deed, false);
+			inventory->removeObject(deed, true);*/
+			deed->destroyObjectFromWorld(true);
 			return;
 		}
 

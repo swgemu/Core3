@@ -368,7 +368,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 			tanod3->close();
 			player->sendMessage(tanod3);
 		} else {
-			inventory->removeObject(rcno, true);
+			rcno->destroyObjectFromWorld(true);
 			rcno->destroyObjectFromDatabase(true);
 		}
 
@@ -392,7 +392,7 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 		if(newResource != NULL) {
 			spawn->extractResource("", quantity);
 			inventory->broadcastObject(newResource, true);
-			inventory->addObject(newResource, -1, true);
+			inventory->transferObject(newResource, -1, true);
 		}
 	}
 }

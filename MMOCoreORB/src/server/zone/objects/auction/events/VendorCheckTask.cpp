@@ -92,7 +92,7 @@ void VendorCheckTask::run() {
 
 	if (itemWarningLevel == 0x02) {
 		vendor->sendVendorDestroyMail();
-		vendorObj->removeFromZone();
+		vendorObj->destroyObjectFromWorld(true);
 		vendorObj->destroyObjectFromDatabase(true);
 		return;
 	}

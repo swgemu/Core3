@@ -52,7 +52,7 @@ void BountyMissionObjectiveImplementation::abort() {
 
 			npcTarget->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 			npcTarget->destroyObjectFromDatabase();
-			npcTarget->removeFromZone();
+			npcTarget->destroyObjectFromWorld(true);
 
 			npcTarget = NULL;
 
@@ -115,7 +115,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 		int y = System::random(15000) - 7500;
 		npcTarget->initializePosition(x, zone->getHeight(x, y), y);
 		//npcTarget->insertToZone(zone);
-		zone->addObject(npcTarget, -1, true);
+		zone->transferObject(npcTarget, -1, true);
 
 		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");

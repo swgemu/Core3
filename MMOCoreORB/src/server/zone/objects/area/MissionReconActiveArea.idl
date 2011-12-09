@@ -73,7 +73,8 @@ class MissionReconActiveArea extends ActiveArea {
 					missionObjective.complete();
 				}
 			} else {
-				getZone().removeObject(this, true);
+				super.destroyObjectFromWorld(false);
+				//getZone().removeObject(this, true);
 				//super.removeFromZone();
 			}
 		}

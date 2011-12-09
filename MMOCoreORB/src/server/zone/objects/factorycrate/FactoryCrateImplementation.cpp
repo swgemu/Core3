@@ -157,21 +157,21 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 		String errorDescription;
 		int errorNumber = 0;
 
-		if ((errorNumber = parent->canAddObject(protoclone, -1, errorDescription)) != 0) {
+		if ((errorNumber = getParent()->canAddObject(protoclone, -1, errorDescription)) != 0) {
 			if (errorDescription.length() > 1) {
-				ManagedReference<SceneObject*> player = parent->getParentRecursively(SceneObject::PLAYERCREATURE);
+				ManagedReference<SceneObject*> player = getParent()->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 				if (player != NULL)
 					player->sendMessage(new ChatSystemMessage(errorDescription));
 			} else
-				parent->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
+				getParent()->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
 
 			return false;
 		}
 
 		if (parent != NULL) {
-			parent->addObject(protoclone, -1, true);
-			parent->broadcastObject(protoclone, true);
+			getParent()->transferObject(protoclone, -1, true);
+			getParent()->broadcastObject(protoclone, true);
 		}
 
 		setUseCount(getUseCount() - 1);
@@ -201,7 +201,7 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 		protoclone->setUseCount(count, false);
 
 		if (parent != NULL)
-			parent->addObject(protoclone, -1, true);
+			getParent()->transferObject(protoclone, -1, true);
 
 		setUseCount(getUseCount() - count, true);
 
@@ -235,7 +235,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	protoclone->setOptionsBitmask(0x2100);
 	newCrate->setOptionsBitmask(0x2100);
 
-	newCrate->addObject(protoclone, -1, false);
+	newCrate->transferObject(protoclone, -1, false);
 
 	newCrate->setUseCount(newStackSize, false);
 	setUseCount(getUseCount() - newStackSize, true);
@@ -243,8 +243,8 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	newCrate->setObjectName(*getObjectName());
 
 	if (parent != NULL) {
-		parent->addObject(newCrate, -1, true);
-		parent->broadcastObject(newCrate, true);
+		getParent()->transferObject(newCrate, -1, true);
+		getParent()->broadcastObject(newCrate, true);
 	}
 }
 
@@ -255,11 +255,7 @@ void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClie
 	useCount = newUseCount;
 
 	if (useCount < 1) {
-		if (parent != NULL) {
-			parent->removeObject(_this, true);
-		}
-
-		broadcastDestroy(_this, true);
+		destroyObjectFromWorld(true);
 
 		destroyObjectFromDatabase(true);
 

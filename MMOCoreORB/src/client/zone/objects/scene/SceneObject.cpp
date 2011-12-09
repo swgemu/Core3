@@ -85,7 +85,7 @@ SceneObject::~SceneObject() {
 	}*/
 }
 
-bool SceneObject::addObject(SceneObject* object, int containmentType) {
+bool SceneObject::transferObject(SceneObject* object, int containmentType) {
 	info("adding object " + object->getLoggingName());
 
 	if (containerType == 1) {

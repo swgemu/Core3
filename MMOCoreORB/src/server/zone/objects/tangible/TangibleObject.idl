@@ -56,7 +56,7 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.CreatureFlag;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.factorycrate.FactoryCrate;
-
+include server.zone.objects.scene.SceneObjectType;
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.scene.variables.DeltaVector;
 import server.zone.templates.SharedObjectTemplate;
@@ -480,7 +480,7 @@ class TangibleObject extends SceneObject {
 			return sliceable;
 		else if (isArmorObject())
 			return sliceable;
-		else if (super.gameObjectType == super.PLAYERLOOTCRATE)
+		else if (super.gameObjectType == SceneObjectType.PLAYERLOOTCRATE)
 			return sliceable;
 
 		return false;

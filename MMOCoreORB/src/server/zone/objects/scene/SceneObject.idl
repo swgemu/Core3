@@ -68,7 +68,7 @@ include engine.util.Facade;
 import engine.util.Observable;
 include server.zone.objects.scene.ObserverEventType;
 include server.zone.ZoneReference;
-
+include server.zone.objects.scene.SceneObjectType;
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
 import server.zone.Zone;
@@ -117,12 +117,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
 	
-	/*@dereferenced
-	protected transient SortedVector<SceneObject> notifiedSentObjects;*/
-
-	@weakReference
-	protected SceneObject parent;
-	
 	@dereferenced
 	protected SortedVector<SceneObject> childObjects;
 
@@ -145,8 +139,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected VectorMap<unsigned int, Facade> objectActiveSessions;
 
-	/*protected unsigned int containerType;
-	protected unsigned int containerVolumeLimit;*/
 	protected unsigned int gameObjectType;
 	protected unsigned int clientGameObjectType;
 	protected unsigned int containmentType;
@@ -155,288 +147,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected int planetMapSubCategory;
 	
 	protected transient SharedObjectTemplate templateObject;
-
-	public static final int CELLOBJECT = 11; //This is marked as 0x00 in the client types xls
-	public static final int PLAYEROBJECT = 12;
-	public static final int GROUPOBJECT = 0x02;
-	public static final int GUILDOBJECT = 0x03;
-	
-	public static final int GENERALTANGIBLEOBJECT = 4;
-	public static final int STATICOBJECT = 5;
-	public static final int VENDORTERMINAL = 7;
-
-	public static final int ARMOR = 0x100;
-	public static final int BODYARMOR = 0x101;
-	public static final int HEADARMOR = 0x102;
-	public static final int MISCARMOR = 0x103;
-	public static final int LEGARMOR = 0x104;
-	public static final int ARMARMOR = 0x105;
-	public static final int HANDARMOR = 0x106;
-	public static final int FOOTARMOR = 0x107;
-	public static final int SHIELDGENERATOR = 0x108;
-
-	public static final int BUILDING = 0x200;
-	public static final int MUNICIPALBUILDING = 0x201;
-	public static final int FACTIONPERKBUILDING = 0x203;
-	public static final int TUTORIALBUILDING = 0x204;
-	public static final int MEDICALBUILDING = 0x205;
-	public static final int RECREATIONBUILDING = 0x206;
-	public static final int CLONINGBUILDING = 0x207;
-	public static final int TRAVELBUILDING = 0x208;
-	public static final int STARPORTBUILDING = 0x209;
-	public static final int CAPITOLBUILDING = 0x20A;
-	public static final int HOTELBUILDING = 0x20B;
-	public static final int THEATERBUILDING = 0x20C;
-	public static final int COMBATBUILDING = 0x20D;
-	public static final int COMMERCEBUILDING = 0x20E;
-	public static final int UNIVERSITYBUILDING = 0x20F;
-	public static final int GARAGEBUILDING = 0x210;
-	public static final int CITYHALLBUILDING = 0x211;
-	public static final int SALONBUILDING = 0x212;
-
-	public static final int CREATURE = 0x400;
-	public static final int NPCCREATURE = 0x401;
-	public static final int DROIDCREATURE = 0x402;
-	public static final int PROBOTCREATURE = 0x403;
-	public static final int PLAYERCREATURE = 0x409;
-	public static final int TRAINERCREATURE = 0x40A;
-	public static final int JUNKDEALERCREATURE = 0x40C;
-	public static final int INFORMANTCREATURE = 0x40D;
-	public static final int VENDORCREATURE = 0x40E;
-
-	public static final int INTANGIBLE = 0x800;
-	public static final int DRAFTSCHEMATIC = 0x801;
-	public static final int MANUFACTURINGSCHEMATIC = 0x802;
-	public static final int MISSIONOBJECT = 0x803;
-	public static final int TOKEN = 0x804;
-	public static final int WAYPOINT = 0x805;
-	public static final int DATA2 = 0x806;
-	public static final int PETCONTROLDEVICE = 0x807;
-	public static final int VEHICLECONTROLDEVICE = 0x808;
-	public static final int SHIPCONTROLDEVICE = 0x80A;
-	public static final int DROIDCONTROLDEVICE = 0x80B;
-
-	public static final int INSTALLATION = 0x1000;
-	public static final int FACTORY = 0x1001;
-	public static final int GENERATOR = 0x1002;
-	public static final int HARVESTER = 0x1003;
-	public static final int TURRET = 0x1004;
-	public static final int MINEFIELD = 0x1005;
-	public static final int GARAGEINSTALLATION = 0x1006;
-	public static final int SHUTTLEINSTALLATION = 0x1007;
-
-	public static final int TANGIBLE = 0x2000;
-	public static final int AMMUNITION = 0x2001;
-	public static final int CHEMICAL = 0x2002;
-	public static final int CONTAINER = 0x2005;
-	public static final int CRAFTINGSTATION = 0x2006;
-	public static final int ELECTRONICS = 0x2008;
-	public static final int FLORA = 0x2009;
-	public static final int FOOD = 0x200A;
-	public static final int FURNITURE = 0x200B;
-	public static final int INSTRUMENT = 0x200C;
-	public static final int PHARMACEUTICAL = 0x200D;
-	public static final int SIGN = 0x200F;
-	public static final int COUNTER = 0x2010;
-	public static final int FACTORYCRATE = 0x2011;
-	public static final int TRAVELTICKET = 0x2012;
-	public static final int GENERICITEM = 0x2013;
-	public static final int TRAP = 0x2014;
-	public static final int WEARABLECONTAINER = 0x2015;
-	public static final int FISHINGPOLE = 0x2016;
-	public static final int FISHINGBAIT = 0x2017;
-	public static final int DRINK = 0x2018;
-	public static final int FIREWORK = 0x2019;
-	public static final int ITEM = 0x201A;
-	public static final int PETMEDECINE = 0x201B;
-	public static final int FIREWORKSHOW = 0x201C;
-	public static final int CLOTHINGATTACHMENT = 0x201D;
-	public static final int LIVESAMPLE = 0x201E;
-	public static final int ARMORATTACHMENT = 0x201F;
-	public static final int COMMUNITYCRAFTINGPROJECT = 0x2020;
-	public static final int CRYSTAL = 0x2021;
-	public static final int DROIDPROGRAMMINGCHIP = 0x2022;
-	public static final int ASTEROID = 0x2023;
-	public static final int PILOTCHAIR = 0x2024;
-	public static final int OPERATIONSCHAIR = 0x2025;
-	public static final int TURRETACCESSLADDER = 0x2026;
-	public static final int CONTAINER2 = 0x2027;
-	public static final int CAMOKIT = 0x2028;
-	public static final int LOOTKIT = 0x2029;
-	public static final int FISH = 0x202A;
-	public static final int LAIR = 0x202B;
-	public static final int STIMPACK = 0x202C;
-	public static final int RANGEDSTIMPACK = 0x202D;
-	public static final int ENHANCEPACK = 0x202E;
-	public static final int CUREPACK = 0x202F;
-	public static final int DOTPACK = 0x2030;
-	public static final int WOUNDPACK = 0x2031;
-	public static final int STATEPACK = 0x2032;
-	public static final int REVIVEPACK = 0x2033;
-	public static final int STATICLOOTCONTAINER = 0x2034;
-	public static final int PLAYERLOOTCRATE = 0x2035;
-
-	public static final int TERMINAL = 0x4000;
-	public static final int BANK = 0x4001;
-	public static final int BAZAAR = 0x4002;
-	public static final int CLONING = 0x4003;
-	public static final int INSURANCE = 0x4004;
-	public static final int MISSIONTERMINAL = 0x4006;
-	public static final int PLAYERTERMINALSTRUCTURE = 0x4008;
-	public static final int SHIPPINGTERMINAL = 0x4009;
-	public static final int SPACETERMINAL = 0x400B;
-	public static final int INTERACTIVETERMINAL = 0x400C;
-	public static final int NEWBIETUTORIALTERMINAL = 0x400F;
-	public static final int CHARACTERBUILDERTERMINAL = 0x4010;
-	public static final int TICKETCOLLECTOR = 0x4011;
-	public static final int TRAVELTERMINAL = 0x4012;
-	public static final int ELEVATORTERMINAL = 0x4013;
-	public static final int GUILDTERMINAL = 0x4014;
-	public static final int CITYTERMINAL = 0x4015;
-	public static final int CITYVOTETERMINAL = 0x4016;
-	public static final int GAMBLINGTERMINAL = 0x4017;
-
-	public static final int TOOL = 0x8000;
-	public static final int CRAFTINGTOOL = 0x8001;
-	public static final int SURVEYTOOL = 0x8002;
-	public static final int REPAIRTOOL = 0x8003;
-	public static final int CAMPKIT = 0x8004;
-	public static final int SHIPCOMPONENTREPAIRITEM = 0x8005;
-	public static final int SLICINGTOOL = 0x8006;
-	public static final int MOLECULARCLAMP = 0x8007;
-	public static final int FLOWANALYZER = 0x8008;
-	public static final int LASERKNIFE = 0x8009;
-	public static final int WEAPONUPGRADEKIT = 0x800A;
-	public static final int ARMORUPGRADEKIT = 0x800B;
-
-	public static final int VEHICLE = 0x10000;
-	public static final int HOVERVEHICLE = 0x10001;
-
-	public static final int WEAPON = 0x20000;
-	public static final int MELEEWEAPON = 0x20001;
-	public static final int RANGEDWEAPON = 0x20002;
-	public static final int THROWNWEAPON = 0x20003;
-	public static final int HEAVYWEAPON = 0x20004;
-	public static final int MINE = 0x20005;
-	public static final int SPECIALHEAVYWEAPON = 0x20006;
-	public static final int ONEHANDMELEEWEAPON = 0x20007;
-	public static final int TWOHANDMELEEWEAPON = 0x20008;
-	public static final int POLEARM = 0x20009;
-	public static final int PISTOL = 0x2000A;
-	public static final int CARBINE = 0x2000B;
-	public static final int RIFLE = 0x2000C;
-	public static final int GRENADE = 0x2000E;
-	public static final int LIGHTNINGRIFLE = 0x2000F;
-
-	public static final int COMPONENT = 0x40000;
-	public static final int ARMORCOMPONENT = 0x40001;
-	public static final int CHEMISTRYCOMPONENT = 0x40002;
-	public static final int CLOTHINGCOMPONENT = 0x40003;
-	public static final int COMMUNITYCRAFTINGCOMPONENT = 0x40004;
-	public static final int DROIDCOMPONENT = 0x40005;
-	public static final int ELECTRONICSCOMPONENT = 0x40006;
-	public static final int GENETICCOMPONENT = 0x40007;
-	public static final int LIGHTSABERCRYSTAL = 0x40008;
-	public static final int MELEEWEAPONCOMPONENT = 0x40009;
-	public static final int MUNITIONCOMPONENT = 0x4000A;
-	public static final int RANGEDWEAPONCOMPONENT = 0x4000B;
-	public static final int STRUCTURECOMPONENT = 0x4000C;
-	public static final int TISSUECOMPONENT = 0x4000D;
-
-	public static final int WEAPONPOWERUP = 0x80000;
-	public static final int MELEEWEAPONPOWERUP = 0x80001;
-	public static final int RANGEDWEAPONPOWERUP = 0x80002;
-	public static final int THROWNWEAPONPOWERUP = 0x80003;
-	public static final int HEAVYWEAPONPOWERUP = 0x80004;
-	public static final int MINEPOWERUP = 0x80005;
-	public static final int SPECIALHEAVYWEAPONPOWERUP = 0x80006;
-
-	public static final int WEARABLE = 0x200000;
-	public static final int RING = 0x200001;
-	public static final int BRACELET = 0x200002;
-	public static final int NECKLACE = 0x200003;
-	public static final int EARRING = 0x200004;
-
-	public static final int RESOURCECONTAINER = 0x400000;
-	public static final int ENERGYGAS = 0x400001;
-	public static final int ENERGYLIQUID = 0x400002;
-	public static final int ENERGYRADIOACTIVE = 0x400003;
-	public static final int ENERGYSOLID = 0x400004;
-	public static final int INORGANICCHEMICAL = 0x400005;
-	public static final int INORGANICGAS = 0x400006;
-	public static final int INORGANICMINERAL = 0x400007;
-	public static final int WATER = 0x400008;
-	public static final int ORGANICFOOD = 0x400009;
-	public static final int ORGANICHIDE = 0x40000A;
-	public static final int ORGANICSTRUCTURAL = 0x40000B;
-	public static final int QUESTREOURCE = 0x40000C;
-
-	public static final int RESOURCESPAWN = 0x410000;
-	
-	public static final int DEED = 0x800000;
-	public static final int BUILDINGDEED = 0x800001;
-	public static final int INSTALLATIONDEED = 0x800002;
-	public static final int PETDEED = 0x800003;
-	public static final int DROIDDEED = 0x800004;
-	public static final int VEHICLEDEED = 0x800005;
-	public static final int RESOURCEDEED = 0x800006;
-
-	public static final int CLOTHING = 0x1000000;
-	public static final int BANDOLIER = 0x1000001;
-	public static final int BELT = 0x1000002;
-	public static final int BODYSUIT = 0x1000003;
-	public static final int CAPE = 0x1000004;
-	public static final int CLOAK = 0x1000005;
-	public static final int FOOTWEAR = 0x1000006;
-	public static final int DRESS = 0x1000007;
-	public static final int HANDWEAR = 0x1000008;
-	public static final int EYEWEAR = 0x1000009;
-	public static final int HEADWEAR = 0x100000A;
-	public static final int JACKET = 0x100000B;
-	public static final int PANTS = 0x100000C;
-	public static final int ROBE = 0x100000D;
-	public static final int SHIRT = 0x100000E;
-	public static final int VEST = 0x100000F;
-	public static final int WOOKIEGARB = 0x1000010;
-	public static final int MISCCLOTHING = 0x1000011;
-	public static final int SKIRT = 0x1000012;
-	public static final int ITHOGARB = 0x1000013;
-	
-	
-	public static final int BADGEAREA = 0x2000000;
-	public static final int REGIONAREA = 0x2000001;
-	public static final int MISSIONSPAWNAREA = 0x2000002;
-	public static final int MISSIONRECONAREA = 0x2000003;
-	public static final int DYNAMICSPAWNAREA = 0x2000004;
-	public static final int STATICSPAWNAREA = 0x2000005;
-	public static final int GARAGEAREA = 0x2000006;
-	public static final int ACTIVEAREA = 0x2000007;
-	
-	public static final int AIGROUP = 0x4000000;
-	public static final int HERDGROUP = 0x4000001;
-	public static final int PACKGROUP = 0x4000002;
-	public static final int LAIRGROUP = 0x4000003;
-	
-	public static final int SHIP = 0x20000000;
-	public static final int SHIPFIGHTER = 0x20000001;
-	public static final int SHIPCAPITAL = 0x20000002;
-	public static final int SHIPSTATION = 0x20000003;
-	public static final int SHIPTRANSPORT = 0x20000004;
-	
-	public static final int SHIPATTACHMENT = 0x40000000;
-	public static final int SHIPREACTOR = 0x40000001;
-	public static final int SHIPENGINE = 0x40000002;
-	public static final int SHIPSHIELDGENERATOR = 0x40000003;
-	public static final int SHIPARMOR = 0x40000004;
-	public static final int SHIPWEAPON = 0x40000005;
-	public static final int SHIPWEAPONCAPACITOR = 0x40000006;
-	public static final int SHIPBOOSTER = 0x40000007;
-	public static final int SHIPDRIODINTERFACE = 0x40000008;
-	public static final int SHIPCHASSIS = 0x4000000C;
-	public static final int SHIPMISSILE = 0x4000000D;
-	public static final int SHIPCOUNTERMEASURE = 0x4000000E;
-	public static final int SHIPWEAPONLAUNCHER = 0x4000000F;
-	public static final int SHIPCOUNTERMEASURELAUNCHER = 0x40000010;
 	
 	/**
 	 * SceneObject constructor, used to initialize the object.
@@ -488,6 +198,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param msg message to print
 	 * @param forced if true, always prints the message to console 
 	 */
+	@dirty
 	public void info(final string msg, boolean forced = false) {
 		Logger.info(msg, forced);
 	}
@@ -498,6 +209,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post {error message has been printed to console and file }
 	 * @param msg error message to print
 	 */
+	@dirty
 	public void error(final string msg) {
 		Logger.error(msg);
 	}
@@ -518,6 +230,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param range range to check
 	 * @return returns true if this object is in range with obj
 	 */
+	@read
 	public native boolean isInRange(SceneObject obj, float range);
 
 	/**
@@ -529,7 +242,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param notifyClient if true in range objects will be updated with the change
 	 * @return returns true if the object has been successfully added
 	 */
-	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
+	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false);
 
 	/**
 	 * Tries to remove/unlink object
@@ -540,6 +253,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @return returns true if the object has been successfully removed
 	 */
 	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
+	
+	/**
+	 * Destroys the object from the world
+	 */
+	public native abstract void destroyObjectFromWorld(boolean sendSelfDestroy);
 
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
@@ -549,7 +267,21 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param error error string that the player will receive on error
 	 * @return returns 0 on success, or error code
 	 */
+	@read
 	public native abstract int canAddObject(SceneObject object, int containmentType, string errorDescription);
+	
+	/**
+	 * 
+	 */
+	@dirty
+	public abstract int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent) {
+		return 0;
+	}
+	
+	@dirty
+	public abstract int notifyObjectRemovedFromChild(SceneObject object, SceneObject child) {
+		return 0;
+	}
 	
 	/**
 	 * Calls the appropriate UI Listener Function
@@ -558,6 +290,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
+	@dirty
 	public abstract void synchronizedUIListen(SceneObject player, int value) {
 		Logger.info("Unhandled synchronizedUIListen", true);
 	}
@@ -569,6 +302,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
+	@dirty
 	public abstract void synchronizedUIStopListen(SceneObject player, int value) {
 		Logger.info("Unhandled synchronizedUIStopListen", true);
 	}
@@ -579,12 +313,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked }
 	 * @param startTask if true, queues a new update task
 	 */
+	@dirty
 	 public native void updateToDatabase();
 	 
 	 /**
 	  * Updates only this object to database without updating children
 	  * WARNING use only when necessary
 	  */
+	@dirty
 	 public native void updateToDatabaseWithoutChildren();
 
 	/**
@@ -593,6 +329,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked }
 	 * @param startTask if true, queues a new update task
 	 */
+	@dirty
 	public native void updateToDatabaseAllObjects(boolean startTask);
 	
 	/**
@@ -610,6 +347,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param player Player that attempts to destroy this object
 	 * @returns 0 on succes, != 0 on error
 	 */
+	@dirty
 	public abstract int canBeDestroyed(CreatureObject player) {
 		return 0;
 	}
@@ -620,6 +358,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post {this object is locked, client received the SceneObjectCreateMessage message }
 	 * @param client ZoneClientSession that will receive the message
 	 */
+	@dirty
 	public native void create(ZoneClientSession client);
 
 	/**
@@ -628,6 +367,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, client received the destroy message }
 	 * @param client ZoneClientSession that will receive the message
 	 */
+	@dirty
 	public native void destroy(ZoneClientSession client);
 
 	/**
@@ -636,6 +376,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, client received the close message }
 	 * @param client ZoneClientSession that will receive the message
 	 */
+	@dirty
 	public native void close(ZoneClientSession client);
 
 	/**
@@ -645,6 +386,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param client ZoneClientSession that will receive the message
 	 * @param containmentType arrangement type?
 	 */
+	@dirty
 	public native void link(ZoneClientSession client, unsigned int containmentType = 4);
 
 	/**
@@ -655,6 +397,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param containmentType arrangement type?
 	 * @return returns a new valid UpdateContainmentMessage
 	 */
+	@dirty
 	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
 
 	/**
@@ -664,13 +407,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param player SceneObject that will receive the messages
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
+	@read
 	public native abstract void sendTo(SceneObject player, boolean doClose);
 	
 	/**
 	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
 	 */
+	@read
 	public native abstract void sendWithoutParentTo(SceneObject player);
 	
+	@read
 	public native abstract void sendWithoutContainerObjectsTo(SceneObject player);
 
 	/**
@@ -679,6 +425,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, player received the destroy message }
 	 * @param plaer SceneObject that will receive the message 
 	 */
+	@dirty
 	public native abstract void sendDestroyTo(SceneObject player);
 
 	/**
@@ -687,6 +434,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
 	 */
+	@dirty
 	public abstract void sendBaselinesTo(SceneObject player) {
 	}
 
@@ -696,6 +444,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, player received the container objects }
 	 * @param player SceneObject that will receive the objects 
 	 */
+	@ready
 	public native abstract void sendContainerObjectsTo(SceneObject player);
 
 	/**
@@ -704,6 +453,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, player received the slotted objects }
 	 * @param player SceneObject that will receive the objects 
 	 */
+	@ready
 	public native abstract void sendSlottedObjectsTo(SceneObject player);
 
 	/**
@@ -712,6 +462,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, owner received its own scene object }
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
+	@dirty
 	public abstract void sendToOwner(boolean doClose = true) {
 	}
 
@@ -721,6 +472,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, object received the attribute list message }
 	 * @param object SceneObject that will receive the message
 	 */
+	@read
 	public native abstract void sendAttributeListTo(CreatureObject object);
 	
 	/**
@@ -731,6 +483,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public abstract void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		
 	}
@@ -751,6 +504,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
+	@read
 	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -759,11 +513,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { }
 	 * @param player CreatureObject to open the container to   
 	 */
+	@dirty
 	public abstract native void openContainerTo(CreatureObject player);
 	
 	/**
 	 * Closes the container of a player
 	 */
+	@dirty
 	public abstract native void closeContainerTo(CreatureObject player, boolean notify = true);
 	
 	/**
@@ -773,14 +529,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param zone Zone object where this object will be inserted
 	 */
 	public native abstract void notifyInsertToZone(Zone zone);
-
-	/**
-	 * Inserts this object into the building, this method is only to be called from insertToZone
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is in the building, this object is locked, zone is locked }
-	 * @param building BuildingObject where this object will be inserted
-	 */
-	public native abstract void insertToBuilding(BuildingObject building);
 
 	/**
 	 * Switches zone and position of this object
@@ -801,35 +549,19 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	public native void updateDirection(float fw, float fx, float fy, float fz);
 	
+	@dirty
 	@local
 	public void notifyInsert(QuadTreeEntry entry) {
 		zoneComponent.notifyInsert(this, entry);
 	}
 	
+	@dirty
 	@local
 	public void notifyDissapear(QuadTreeEntry entry) {
 		zoneComponent.notifyDissapear(this, entry);
 	}
-
-	/**
-	 * Removes object from zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and not in zone}
-	 */
-	public void removeFromZone() {
-		if (zone.get() != null)
-			zone.get().removeObject(this, true);
-	}
 	
 	public native abstract void notifyRemoveFromZone();
-
-	/**
-	 * Removes this object from the building, this method is only to be called from removeFromZone
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is not in the building, this object is locked, zone is locked }
-	 * @param building BuildingObject from where this object will be removed
-	 */
-	public native abstract void removeFromBuilding(BuildingObject building);
 
 	/**
 	 * Updates position of this object to the rest of in range objects
@@ -886,6 +618,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param sendSelf if true the owner of this object receives the messages too
 	 */
 	@local
+	@read
 	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
 
 	/**
@@ -921,6 +654,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param objects the vector map that will contain the objects and their occupied slots 
 	 */
 	@local
+	@read
 	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
 
 	/**
@@ -931,8 +665,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@read
 	public unsigned long getParentID() {
-		if (parent != null) {
-			return parent.getObjectID();
+		if (super.parent != null) {
+			return super.parent.getObjectID();
 		} else
 			return 0;
 	}
@@ -968,19 +702,23 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param name Name of the task to lookup
 	 */
 	@local
+	@read
 	public Task getPendingTask(final string name) {
 		return pendingTasks.get(name);
 	}
 	
+	@read
 	public boolean containsPendingTask(final string name) {
 		return pendingTasks.contains(name);
 	}
 	
+	@dirty
 	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
 	
 	/**
 	 * Returns a Facade session
 	 */
+	@read
 	public Facade getActiveSession(unsigned int type) {
 		return objectActiveSessions.get(type);
 	}
@@ -989,6 +727,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		objectActiveSessions.put(type, session);
 	}
 	
+	@read
 	public boolean containsActiveSession(unsigned int type) {
 		return objectActiveSessions.contains(type);
 	}
@@ -997,11 +736,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return objectActiveSessions.drop(type);
 	}
 	
+	@read
 	public int getActiveSessionsCount() {
 		return objectActiveSessions.size();
 	}
 	
-	@local	
+	@local
+	@read
 	public VectorMap<unsigned int, Facade> getObjectActiveSessions() {
 		return objectActiveSessions;
 	}
@@ -1016,13 +757,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native void notifyAddedToCloseObjects();
-	public native void notifyRemovedFromCloseObjects();
-	
-	
+	@read
 	public native float getDistanceTo(SceneObject object);
 	
 	@local
+	@read
 	public native float getDistanceTo(Coordinate coordinate);
 	
 	public native void updateVehiclePosition();
@@ -1032,6 +771,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Is called when this object has been inserted with an object
 	 * @param object object that has been inserted
 	 */
+	@dirty
 	public abstract int notifyObjectInserted(SceneObject object) {
 		return 0;
 	}
@@ -1040,6 +780,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Is called when an object was removed
 	 * @param object object that has been inserted
 	 */
+	@dirty
 	public abstract int notifyObjectRemoved(SceneObject object) {
 		return 0;
 	}
@@ -1064,19 +805,23 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		activeAreas.drop(area);
 	}
 	
+	@read
 	public boolean hasActiveArea(ActiveArea area) {
 		return activeAreas.contains(area);
 	}
 	
 	@local
+	@read
 	public Vector<ActiveArea> getActiveAreas() {
 		return activeAreas;
 	}
 	
+	@read
 	public int getActiveAreasSize() {
 		return activeAreas.size();
 	}
 	
+	@read
 	public ActiveArea getActiveRegion() {
 		for (int i = 0; i < activeAreas.size(); i++) {
 			ActiveArea region = activeAreas.get(i);
@@ -1089,6 +834,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return null;
 	}
 	
+	@read
 	public CityRegion getCityRegion() {
 		return cityRegion;
 	}
@@ -1099,73 +845,99 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public Zone getZone() {
+		if (getParent() != null) {
+			return getRootParent().getZone();
+		} else {
+			return zone.get();
+		}
+	}
+	
+	@read 
+	public Zone getLocalZone() {
 		return zone.get();
 	}
 
-	@read
+	@dirty
 	public native unsigned long getObjectID();
 	
 	@local
 	@dereferenced
 	public native Vector3 getCoordinate(float distance, float angleDegrees);
 	
+	@read
 	public native float getWorldPositionX();
+	@read
 	public native float getWorldPositionY();
+	@read
 	public native float getWorldPositionZ();
 	
+	@read
 	@local
 	@dereferenced
 	public native Vector3 getWorldPosition();
 
+	@read
 	public float getDirectionX() {
 		return direction.getX();
 	}
 
+	@read
 	public float getDirectionZ() {
 		return direction.getZ();
 	}
 
+	@read
 	public float getDirectionY() {
 		return direction.getY();
 	}
 
+	@read
 	public float getDirectionW() {
 		return direction.getW();
 	}
 	
+	@read
 	@local
 	public native Quaternion getDirection();
 
+	@read
 	public unsigned int getClientObjectCRC() {
 		return clientObjectCRC;
 	}
 
+	@read
 	public unsigned int getServerObjectCRC() {
 		return serverObjectCRC;
 	}
 	
+	@read
 	public boolean isWaypointObject() {
-		return gameObjectType == WAYPOINT;
+		return gameObjectType == SceneObjectType.WAYPOINT;
 	}
 
 	@local
+	@read
 	public StringId getObjectName() {
 		return objectName;
 	}
 	
+	@read
 	public string getObjectNameStringIdFile() {
 		return objectName.getFile();
 	}
 	
+	@read
 	public string getObjectNameStringIdName() {
 		return objectName.getStringID();
 	}
 
 	@local
+	@read
 	public string getDetailedDescription() {
 		return templateObject.getDetailedDescription();
 	}
 
+	@read
 	public int getArrangementDescriptorSize() {
 		if (templateObject.getArrangementDescriptors() != null)
 			return templateObject.getArrangementDescriptors().size();
@@ -1173,14 +945,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return 0;
 	}
 
+	@read
 	public string getArrangementDescriptor(int idx) {
 		return templateObject.getArrangementDescriptors().get(idx);
 	}
 
+	@read
 	public string getSlotDescriptor(int idx) {
 		return templateObject.getSlotDescriptors().get(idx);
 	}
 	
+	@read
 	public boolean hasSlotDescriptor(final string descr) {
 		for (int i = 0; i < getSlotDescriptorSize(); ++i) {
 			if (getSlotDescriptor(i) == descr)
@@ -1195,10 +970,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return slottedObjects;
 	}
 
+	@read
 	public SceneObject getSlottedObject(final string slot) {
 		return slottedObjects.get(slot);
 	}
 
+	@read
 	public int getSlotDescriptorSize() {
 		if (templateObject.getSlotDescriptors() != null)
 			return templateObject.getSlotDescriptors().size();
@@ -1206,6 +983,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return 0;
 	}
 
+	@read
 	public SceneObject getSlottedObject(int idx) {
 		return slottedObjects.get(idx);
 	}
@@ -1218,22 +996,27 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		slottedObjects.remove(index);
 	}
 	
+	@read
 	public int getContainerObjectsSize() {
 		return containerObjects.size();
 	}
 	
+	@read
 	public int getSlottedObjectsSize() {
 		return slottedObjects.size();
 	}
 	
+	@read
 	public boolean hasFullContainerObjects() {
 		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
 	}
 	
+	@read
 	public unsigned int getContainerVolumeLimit() {
 		return containerVolumeLimit;
 	}
 
+	@read
 	public SceneObject getContainerObject(int idx) {
 		return containerObjects.get(idx);
 	}
@@ -1243,10 +1026,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return containerObjects;
 	}
 	
+	@read
 	public boolean hasObjectInContainer(unsigned long objectID) {
 		return containerObjects.contains(objectID);
 	}
 	
+	@read
 	public boolean hasObjectInSlottedContainer(SceneObject object) {
 		int arrangementSize = object.getArrangementDescriptorSize();
 		
@@ -1263,6 +1048,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		}
 	}
 	
+	@read
 	public SceneObject getContainerObject(unsigned long objectID) {
 		return containerObjects.get(objectID);
 	}
@@ -1287,30 +1073,37 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		containerType = type;
 	}
 	
+	@read
 	public unsigned int getContainerType() {
 		return containerType;
 	}
 
+	@dirty
 	public abstract ZoneClientSession getClient() {
 		return null;
 	}
 
+	@read
 	public unsigned int getGameObjectType() {
 		return gameObjectType;
 	}
 	
+	@read
 	public unsigned int getClientGameObjectType() {
 		return clientGameObjectType;
 	}
 
+	@read
 	public unsigned int getContainmentType() {
 		return containmentType;
 	}
 
+	@read
 	public float getDirectionAngle() {
 		return direction.getDegrees();
 	}
 	
+	@read
 	public float getSpecialDirectionAngle() {
 		return direction.getSpecialDegrees();
 	}
@@ -1338,14 +1131,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	public native abstract void notifyCloseContainer(CreatureObject player);
 
+	@read
 	public unsigned int getMovementCounter() {
 		return movementCounter;
 	}
 
 	@read
-	public SceneObject getParent() {
-		return parent;
-	}
+	public native SceneObject getParent();
 
 	@read
 	public ZoneServer getZoneServer() {
@@ -1370,6 +1162,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked }
 	 * @return Returns the parent of object type in the tree
 	 */
+	@read
 	public native SceneObject getParentRecursively(unsigned int gameObjectType);
 
 
@@ -1379,12 +1172,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked }
 	 * @return returns true if this object is a child of object
 	 */
+	@read
 	public native boolean isASubChildOf(SceneObject object);
 	
+	@read
 	public unicode getCustomObjectName() {
 		return objectName.getCustomString();
 	}
 
+	@read
 	public string getLoggingName() {
 		return Logger.getLoggingName();
 	}
@@ -1394,172 +1190,214 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isVendor() {
 		return false;
 	}
 	
 	@local
+	@read
 	public ZoneComponent getZoneComponent() {
 		return zoneComponent;
 	}
 	
 	@local
+	@read
 	public ObjectMenuComponent getObjectMenuComponent() {
 		return objectMenuComponent;
 	}
 	
+	@read
 	public boolean isContainerFull() {
 		return containerVolumeLimit <= containerObjects.size();
 	}
 	
+	@read
 	public boolean isShuttleInstallation() {
-		return gameObjectType == SHUTTLEINSTALLATION;
+		return gameObjectType == SceneObjectType.SHUTTLEINSTALLATION;
 	}
 	
+	@read
 	public boolean isPlayerObject() {
-		return gameObjectType == PLAYEROBJECT;
+		return gameObjectType == SceneObjectType.PLAYEROBJECT;
 	}
 	
+	@dirty
 	public abstract boolean isActiveArea() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isRegion() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isCreatureObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isShipObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isVehicleObject() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isBuildingObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isCloningBuildingObject() {
 		return false;
 	}
 	
+	@read
 	public boolean isGarage() {
-		return gameObjectType == GARAGEBUILDING || gameObjectType == GARAGEINSTALLATION;
+		return gameObjectType == SceneObjectType.GARAGEBUILDING || gameObjectType == SceneObjectType.GARAGEINSTALLATION;
 	}
 
+	@dirty
 	public abstract boolean isWeaponObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isWearableObject() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isArmorObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isPsgArmorObject() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isCellObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isTangibleObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isResourceContainer() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isComponent() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isIntangibleObject() {
 		return false;
 	}
 	
+	@read
 	public boolean isInstrument() {
-		return gameObjectType == INSTRUMENT;
+		return gameObjectType == SceneObjectType.INSTRUMENT;
 	}
 	
+	@dirty
 	public abstract boolean isInstallationObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isGeneratorObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isCityTerminal() {
 		return false;
 	}
-	
+
+	@dirty
 	public abstract boolean isCityVoteTerminal() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isFactory() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isFactoryCrate() {
 		return false;
 	}
 	
+	@read
 	public boolean isFishingPoleObject() {
-		return gameObjectType == FISHINGPOLE;
+		return gameObjectType == SceneObjectType.FISHINGPOLE;
 	}
 	
+	@dirty
 	public abstract boolean isDeedObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isVehicleDeedObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isBuildingDeed() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isSignObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isInstallationDeed() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isCraftingTool() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isCraftingStation() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isManufactureSchematic() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isStructureObject() {
 		return false;
 	}
 
+	@read
 	public boolean isFishingBait() {
-		return gameObjectType == FISHINGBAIT;
+		return gameObjectType == SceneObjectType.FISHINGBAIT;
 	}
 
+	@dirty
 	public abstract boolean isAttachment() {
 		return false;
 	}
@@ -1574,10 +1412,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public void setServerObjectCRC(unsigned int objCRC) {
 		serverObjectCRC = objCRC;
-	}
-
-	public void setParent(SceneObject par) {
-		parent = par;
 	}
 
 	@local
@@ -1621,44 +1455,55 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		staticObject = val;
 	}
 	
+	@read
 	public abstract native unsigned int getPlanetCRC();
 	
+	@read
 	public boolean isStaticObject() {
 		return staticObject;
 	}
 	
+	@dirty
 	public abstract boolean isContainerObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isTerminal() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isGroupObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isGuildObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isControlDevice() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isMissionTerminal() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isMissionObject() {
 		return false;
 	}
 
+	@read
 	public int getPlanetMapCategoryCRC() {
 		return planetMapCategory;
 	}
 	
+	@read
 	public int getPlanetMapSubCategoryCRC() {
 		return planetMapSubCategory;
 	}
@@ -1676,12 +1521,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@local
+	@read
 	public PlanetMapCategory getPlanetMapCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
 		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
 	}
 	
 	@local
+	@read
 	public PlanetMapCategory getPlanetMapSubCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
 		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
@@ -1692,6 +1539,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return childObjects;
 	}
 	
+	@read
 	public boolean containsChildObject(SceneObject obj) {
 		return childObjects.contains(obj);
 	}
@@ -1702,6 +1550,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}*/
 	
 	@local
+	@read
 	public SharedObjectTemplate getObjectTemplate() {
 		return templateObject;
 	}

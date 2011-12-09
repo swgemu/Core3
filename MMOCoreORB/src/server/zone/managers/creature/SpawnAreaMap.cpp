@@ -161,7 +161,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		area->addTemplate(areaObj.getStringAt(j).hashCode());
 
 	//area->insertToZone(zone);
-	zone->addObject(area, -1, true);
+	zone->transferObject(area, -1, true);
 
 	area->updateToDatabase();
 

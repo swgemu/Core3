@@ -647,7 +647,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				SceneObject* scob = cbSui->getUsingObject();
 				if (scob != NULL) {
 
-					if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
+					if (scob->getGameObjectType() == SceneObjectType::CHARACTERBUILDERTERMINAL) {
 						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob);
 						bluefrog->enhanceCharacter(player);
 					}
@@ -663,7 +663,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				SceneObject* scob = cbSui->getUsingObject();
 				if (scob != NULL) {
 
-					if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
+					if (scob->getGameObjectType() == SceneObjectType::CHARACTERBUILDERTERMINAL) {
 						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob);
 						bluefrog->giveLanguages(player);
 					}
@@ -709,7 +709,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 			item->sendTo(player, true);
-			inventory->addObject(item, -1, true);
+			inventory->transferObject(item, -1, true);
 
 			StringIdChatParameter stringId;
 			stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.

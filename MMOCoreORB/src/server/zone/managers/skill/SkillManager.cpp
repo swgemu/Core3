@@ -376,7 +376,7 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	}
 
 	//Iterate over the player skills and update xp limits accordingly.
-	CreatureObject* player = cast<CreatureObject*>(ghost->getParentRecursively(SceneObject::PLAYERCREATURE));
+	CreatureObject* player = cast<CreatureObject*>(ghost->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 
 	if(player == NULL)
 		return;

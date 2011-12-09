@@ -64,7 +64,7 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 	if (inventory == NULL)
 		return;
 
-	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObject::STATICLOOTCONTAINER) {
+	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER) {
 		player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
 		return;
 	}
@@ -82,7 +82,7 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 	slicingSuiBox = new SuiListBox(player, SuiWindowType::SLICING_MENU, 2);
 	slicingSuiBox->setCallback(new SlicingSessionSuiCallback(player->getZoneServer()));
 
-	if (tangibleObject->getGameObjectType() == SceneObject::PLAYERLOOTCRATE)
+	if (tangibleObject->getGameObjectType() == SceneObjectType::PLAYERLOOTCRATE)
 		// Don't close the window when we remove PlayerLootContainer from the player's inventory.
 		slicingSuiBox->setForceCloseDisabled();
 
@@ -249,7 +249,7 @@ bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 
 		uint32 objType = sceno->getGameObjectType();
 
-		if (objType == SceneObject::LASERKNIFE) {
+		if (objType == SceneObjectType::LASERKNIFE) {
 			PrecisionLaserKnife* knife = cast<PrecisionLaserKnife*>( sceno.get());
 			if (removeItem)
 				knife->useCharge(player);
@@ -277,8 +277,9 @@ bool SlicingSessionImplementation::hasWeaponUpgradeKit() {
 
 		uint32 objType = sceno->getGameObjectType();
 
-		if (objType == SceneObject::WEAPONUPGRADEKIT) {
-			inventory->removeObject(sceno, true);
+		if (objType == SceneObjectType::WEAPONUPGRADEKIT) {
+			//inventory->removeObject(sceno, true);
+			sceno->destroyObjectFromWorld(true);
 			return true;
 		}
 	}
@@ -303,8 +304,9 @@ bool SlicingSessionImplementation::hasArmorUpgradeKit() {
 
 		uint32 objType = sceno->getGameObjectType();
 
-		if (objType == SceneObject::ARMORUPGRADEKIT) {
-			inventory->removeObject(sceno, true);
+		if (objType == SceneObjectType::ARMORUPGRADEKIT) {
+			sceno->destroyObjectFromWorld(true);
+			//inventory->removeObject(sceno, true);
 			return true;
 		}
 	}
@@ -314,14 +316,15 @@ bool SlicingSessionImplementation::hasArmorUpgradeKit() {
 }
 
 void SlicingSessionImplementation::useClampFromInventory(SlicingTool* clamp) {
-	if (clamp == NULL || clamp->getGameObjectType() != SceneObject::MOLECULARCLAMP)
+	if (clamp == NULL || clamp->getGameObjectType() != SceneObjectType::MOLECULARCLAMP)
 		return;
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 	Locker inventoryLocker(inventory);
 
-	inventory->removeObject(clamp, true);
+	//inventory->removeObject(clamp, true);
+	clamp->destroyObjectFromWorld(true);
 	player->sendSystemMessage("@slicing/slicing:used_clamp");
 	usedClamp = true;
 
@@ -345,8 +348,10 @@ void SlicingSessionImplementation::handleUseClamp() {
 
 		uint32 objType = sceno->getGameObjectType();
 
-		if (objType == SceneObject::MOLECULARCLAMP) {
-			inventory->removeObject(sceno, true);
+		if (objType == SceneObjectType::MOLECULARCLAMP) {
+			//inventory->removeObject(sceno, true);
+			sceno->destroyObjectFromWorld(true);
+
 			player->sendSystemMessage("@slicing/slicing:used_clamp");
 			usedClamp = true;
 			return;
@@ -371,7 +376,7 @@ void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 
 		uint32 objType = sceno->getGameObjectType();
 
-		if (objType == SceneObject::FLOWANALYZER) {
+		if (objType == SceneObjectType::FLOWANALYZER) {
 			SlicingTool* node = cast<SlicingTool*>( sceno.get());
 			nodeCable = node->calculateSuccessRate();
 
@@ -382,7 +387,9 @@ void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 					nodeCable = 0; // Failed - Make the Cable incorrect
 			}
 
-			inventory->removeObject(sceno, true);
+			//inventory->removeObject(sceno, true);
+			sceno->destroyObjectFromWorld(true);
+
 			player->sendSystemMessage("@slicing/slicing:used_node");
 			usedNode = true;
 			return;
@@ -412,7 +419,7 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 
-	if (tangibleObject->isContainerObject() || tangibleObject->getGameObjectType() == SceneObject::PLAYERLOOTCRATE) {
+	if (tangibleObject->isContainerObject() || tangibleObject->getGameObjectType() == SceneObjectType::PLAYERLOOTCRATE) {
 		handleContainerSlice();
 		playerManager->awardExperience(player, "slicing", 125, true); // Container Slice XP
 	} else	if (tangibleObject->isMissionTerminal()) {
@@ -652,7 +659,7 @@ void SlicingSessionImplementation::handleContainerSlice() {
 
 	LootManager* lootManager = player->getZoneServer()->getLootManager();
 
-	if (tangibleObject->getGameObjectType() == SceneObject::PLAYERLOOTCRATE) {
+	if (tangibleObject->getGameObjectType() == SceneObjectType::PLAYERLOOTCRATE) {
 		SceneObject* containerSceno = player->getZoneServer()->createObject(String("object/tangible/container/loot/loot_crate.iff").hashCode(), 1);
 
 		if (containerSceno == NULL)
@@ -667,11 +674,13 @@ void SlicingSessionImplementation::handleContainerSlice() {
 
 		lootManager->createLoot(container, "lootedContainer");
 
-		inventory->addObject(container, -1);
+		inventory->transferObject(container, -1);
 		container->sendTo(player, true);
 
-		if (inventory->hasObjectInContainer(tangibleObject->getObjectID()))
-			inventory->removeObject(tangibleObject, true);
+		if (inventory->hasObjectInContainer(tangibleObject->getObjectID())) {
+			//inventory->removeObject(tangibleObject, true);
+			tangibleObject->destroyObjectFromWorld(true);
+		}
 
 	} else if (tangibleObject->isContainerObject()) {
 		Container* container = dynamic_cast<Container*>(tangibleObject.get());
@@ -703,7 +712,7 @@ void SlicingSessionImplementation::handleSliceFailed() {
 		player->sendSystemMessage("@slicing/slicing:fail_weapon");
 	else if (tangibleObject->isArmorObject())
 		player->sendSystemMessage("@slicing/slicing:fail_armor");
-	else if (tangibleObject->isContainerObject() || tangibleObject->getGameObjectType() == SceneObject::PLAYERLOOTCRATE)
+	else if (tangibleObject->isContainerObject() || tangibleObject->getGameObjectType() == SceneObjectType::PLAYERLOOTCRATE)
 		player->sendSystemMessage("@slicing/slicing:container_fail");
 	else
 		player->sendSystemMessage("Your attempt to slice the object has failed.");

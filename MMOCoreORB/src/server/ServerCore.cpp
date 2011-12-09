@@ -67,8 +67,9 @@ which carries forward this exception.
 #include "zone/objects/creature/CreatureObject.h"
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
+bool ServerCore::truncateAllData = false;
 
-ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
+ServerCore::ServerCore(bool truncateDatabases) : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;
@@ -77,6 +78,8 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	pingServer = NULL;
 	webServer = NULL;
 	database = NULL;
+
+	truncateAllData = truncateDatabases;
 
 	configManager = ConfigManager::instance();
 
@@ -142,7 +145,7 @@ void ServerCore::initialize() {
 			int zoneAllowedConnections = configManager->getZoneAllowedConnections();
 
 			ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-			dbManager->loadDatabases();
+			dbManager->loadDatabases(truncateDatabases());
 
 			int galaxyID = configManager->getZoneGalaxyID();
 

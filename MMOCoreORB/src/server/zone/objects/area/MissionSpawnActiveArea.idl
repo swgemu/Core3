@@ -79,7 +79,8 @@ class MissionSpawnActiveArea extends ActiveArea {
 				}
 			} else {
 				//super.removeFromZone();
-				getZone().removeObject(this, true);
+				//getZone().removeObject(this, true);
+				super.destroyObjectFromWorld(false);
 			}
 		}
 	}

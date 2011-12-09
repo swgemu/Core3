@@ -105,8 +105,7 @@ public:
 			{
 				ManagedReference<SceneObject*> object = inventory->getContainerObject(0);
 
-				inventory->removeObject(object);
-				object->sendDestroyTo(player);
+				object->destroyObjectFromWorld(true);
 				object->destroyObjectFromDatabase(true);
 			}
 

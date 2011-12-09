@@ -55,12 +55,12 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ() + 10, player->getPositionY());
 
-	player->getZone()->addObject(controlledObject, -1, true);
+	player->getZone()->transferObject(controlledObject, -1, true);
 	//controlledObject->insertToZone(player->getZone());
 
-	removeObject(controlledObject, true);
+	//removeObject(controlledObject, true);
 
-	controlledObject->addObject(player, 5, true);
+	controlledObject->transferObject(player, 5, true);
 	player->setState(CreatureState::PILOTINGSHIP);
 	//controlledObject->inflictDamage(player, 0, System::random(50), true);
 
@@ -76,11 +76,20 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
 	player->clearState(CreatureState::PILOTINGSHIP);
 
 	Locker clocker(controlledObject, player);
-	//if (controlledObject->isInQua
-	controlledObject->removeObject(player, true);
-	controlledObject->removeFromZone();
+
+	if (!controlledObject->isInQuadTree())
+		return;
+
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	zone->transferObject(player, -1, false);
 	
-	addObject(controlledObject, 4, true);
+	controlledObject->destroyObjectFromWorld(true);
+
+	transferObject(controlledObject, 4, true);
 	
 	updateStatus(0);
 }

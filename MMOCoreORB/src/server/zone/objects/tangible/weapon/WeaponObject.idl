@@ -51,7 +51,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
-
+include server.zone.objects.scene.SceneObjectType;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -345,7 +345,7 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public boolean isUnarmedWeapon() {
-		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
+		return super.gameObjectType == SceneObjectType.WEAPON || super.gameObjectType == SceneObjectType.MELEEWEAPON;
 	}
 	
 	public boolean isMeleeWeapon() {
@@ -357,43 +357,43 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public boolean isRifleWeapon() {
-		return super.gameObjectType == SceneObject.RIFLE;
+		return super.gameObjectType == SceneObjectType.RIFLE;
 	}
 
 	public boolean isThrownWeapon() {
-		return super.gameObjectType == SceneObject.THROWNWEAPON;
+		return super.gameObjectType == SceneObjectType.THROWNWEAPON;
 	}
 	
 	public boolean isHeavyWeapon() {
-		return super.gameObjectType == SceneObject.HEAVYWEAPON;
+		return super.gameObjectType == SceneObjectType.HEAVYWEAPON;
 	}
 	
 	public boolean isSpecialHeavyWeapon() {
-		return super.gameObjectType == SceneObject.SPECIALHEAVYWEAPON;
+		return super.gameObjectType == SceneObjectType.SPECIALHEAVYWEAPON;
 	}
 	
 	public boolean isLightningRifle() {
-		return super.gameObjectType == SceneObject.LIGHTNINGRIFLE;
+		return super.gameObjectType == SceneObjectType.LIGHTNINGRIFLE;
 	}
 	
 	public boolean isCarbineWeapon() {
-		return super.gameObjectType == SceneObject.CARBINE;
+		return super.gameObjectType == SceneObjectType.CARBINE;
 	}
 	
 	public boolean isPistolWeapon() {
-		return super.gameObjectType == SceneObject.PISTOL;
+		return super.gameObjectType == SceneObjectType.PISTOL;
 	}
 	
 	public boolean isOneHandMeleeWeapon() {
-		return super.gameObjectType == SceneObject.ONEHANDMELEEWEAPON;
+		return super.gameObjectType == SceneObjectType.ONEHANDMELEEWEAPON;
 	}
 	
 	public boolean isPolearmWeaponObject() {
-		return super.gameObjectType == SceneObject.POLEARM;
+		return super.gameObjectType == SceneObjectType.POLEARM;
 	}
 	
 	public boolean isTwoHandMeleeWeapon() {
-		return super.gameObjectType == SceneObject.TWOHANDMELEEWEAPON;
+		return super.gameObjectType == SceneObjectType.TWOHANDMELEEWEAPON;
 	}
 	
 	public boolean isWeaponObject() {

@@ -76,7 +76,7 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 
 bool ContainerImplementation::checkPermission(CreatureObject* player) {
 	if (!isASubChildOf(player)) {
-		if (parent == NULL || !parent->isCellObject())
+		if (parent == NULL || !getParent()->isCellObject())
 			return false;
 		else {
 
@@ -150,7 +150,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 	}
 
 	if (containmentType == -1) {
-		if (gameObjectType == WEARABLECONTAINER && object->getGameObjectType() == WEARABLECONTAINER) {
+		if (gameObjectType == SceneObjectType::WEARABLECONTAINER && object->getGameObjectType() == SceneObjectType::WEARABLECONTAINER) {
 			errorDescription = "@container_error_message:container12";
 
 			return TransferErrorCode::CANTNESTOBJECT;

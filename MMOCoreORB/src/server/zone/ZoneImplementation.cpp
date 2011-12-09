@@ -161,7 +161,7 @@ void ZoneImplementation::stopManagers() {
 }
 
 /*void ZoneImplementation::registerObject(SceneObject* obj) {
-	server->addObject(obj);
+	server->transferObject(obj);
 }
 
 SceneObject* ZoneImplementation::lookupObject(uint64 oid) {
@@ -284,7 +284,7 @@ void ZoneImplementation::registerObjectWithPlanetaryMap(SceneObject* object) {
 #ifndef WITH_STM
 	Locker locker(mapLocations);
 #endif
-	mapLocations->addObject(object);
+	mapLocations->transferObject(object);
 }
 
 void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {

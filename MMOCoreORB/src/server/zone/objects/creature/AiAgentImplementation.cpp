@@ -416,10 +416,9 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	Locker zoneLocker(zone);
 
 	if (cell != NULL)
-		cell->addObject(_this, -1);
-
-	//insertToZone(zone);
-	zone->addObject(_this, -1, true);
+		cell->transferObject(_this, -1);
+	else
+		zone->transferObject(_this, -1, true);
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
@@ -526,8 +525,8 @@ void AiAgentImplementation::checkNewAngle() {
 	} else {
 		++movementCounter;
 
-		if (parent != NULL && parent->isCellObject())
-			updateZoneWithParent(parent, true, true);
+		if (parent != NULL && getParent()->isCellObject())
+			updateZoneWithParent(getParent(), true, true);
 		else
 			updateZone(true, true);
 	}
@@ -676,13 +675,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
-	if (isDead() || getZone() == NULL || !isInQuadTree()) {
+	if (isDead() || (getZone() == NULL && getParent() == NULL)) {
 		setFollowObject(NULL);
 		return;
 	}
 
 	ManagedReference<SceneObject*> storage = followObject.get();
-
 
 	if (currentSpeed != 0) {
 		updateCurrentPosition(&nextStepPosition);
@@ -990,7 +988,7 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	//Face player.
 	faceObject(player);
 
-	PatrolPoint current(coordinates.getPosition(), parent);
+	PatrolPoint current(coordinates.getPosition(), getParent());
 
 	broadcastNextPositionUpdate(&current);
 
@@ -1020,7 +1018,7 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 
 	faceObject(player);
 
-	PatrolPoint current(coordinates.getPosition(), parent);
+	PatrolPoint current(coordinates.getPosition(), getParent());
 
 	broadcastNextPositionUpdate(&current);
 

@@ -168,6 +168,8 @@ public:
 
 	bool isDerivedFrom(const String& iffPath, bool includeSelf = true);
 
+	static String getType(int type);
+
     inline String getAppearanceFilename() const {
 		return appearanceFilename;
 	}

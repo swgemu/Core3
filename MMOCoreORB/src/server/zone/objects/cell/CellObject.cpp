@@ -12,7 +12,7 @@
  *	CellObjectStub
  */
 
-enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
+enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
@@ -80,7 +80,7 @@ int CellObject::canAddObject(SceneObject* object, int containmentType, String& e
 		return _implementation->canAddObject(object, containmentType, errorDescription);
 }
 
-bool CellObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+bool CellObject::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
 	CellObjectImplementation* _implementation = static_cast<CellObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -93,22 +93,7 @@ bool CellObject::addObject(SceneObject* object, int containmentType, bool notify
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->addObject(object, containmentType, notifyClient);
-}
-
-bool CellObject::removeObject(SceneObject* object, bool notifyClient) {
-	CellObjectImplementation* _implementation = static_cast<CellObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_);
-		method.addObjectParameter(object);
-		method.addBooleanParameter(notifyClient);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->removeObject(object, notifyClient);
+		return _implementation->transferObject(object, containmentType, notifyClient);
 }
 
 void CellObject::initializeTransientMembers() {
@@ -400,10 +385,7 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
 	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(addObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
-		break;
-	case RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_:
-		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
@@ -445,12 +427,8 @@ int CellObjectAdapter::canAddObject(SceneObject* object, int containmentType, St
 	return (static_cast<CellObject*>(stub))->canAddObject(object, containmentType, errorDescription);
 }
 
-bool CellObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return (static_cast<CellObject*>(stub))->addObject(object, containmentType, notifyClient);
-}
-
-bool CellObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
-	return (static_cast<CellObject*>(stub))->removeObject(object, notifyClient);
+bool CellObjectAdapter::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
+	return (static_cast<CellObject*>(stub))->transferObject(object, containmentType, notifyClient);
 }
 
 void CellObjectAdapter::initializeTransientMembers() {

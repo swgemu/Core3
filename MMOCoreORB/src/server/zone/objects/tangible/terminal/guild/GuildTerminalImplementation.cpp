@@ -16,7 +16,7 @@
 
 void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (guildObject == NULL) {
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( getParentRecursively(SceneObject::BUILDING));
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( getParentRecursively(SceneObjectType::BUILDING));
 
 		if (building != NULL && building->isOwnerOf(player)) {
 			if (!player->isInGuild()) {

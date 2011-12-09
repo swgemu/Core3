@@ -39,26 +39,6 @@ public:
 	 */
 	void updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
-	/**
-	 * Inserts this object into the building, this method is only to be called from insertToZone
-	 * Includes a trigger to BuildingObject::onEnter
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is in the building, building->onEnter has been triggered,
-	 * 		   this object is locked, zone is locked }
-	 * @param building BuildingObject where this object will be inserted
-	 */
-	void insertToBuilding(SceneObject* sceneObject, BuildingObject* building);
-
-	/**
-	 * Removes this object from the building, this method is only to be called from removeFromZone
-	 * Includes a trigger to BuildingObject::onExit
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is not in the building, building->onExit has been triggered,
-	 * 		   this object is locked, zone is locked }
-	 * @param building BuildingObject from where this object will be removed
-	 */
-	void removeFromBuilding(SceneObject* sceneObject, BuildingObject* building);
-
 	void notifySelfPositionUpdate(SceneObject* sceneObject);
 
 };

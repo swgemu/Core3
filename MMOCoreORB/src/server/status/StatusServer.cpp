@@ -141,7 +141,7 @@ bool StatusServer::testZone() {
 	timestamp.updateToCurrentTime();
 
 	/*try {
-		zoneServer->addObject(obj);
+		zoneServer->transferObject(obj);
 
 		return zoneServer->removeObject(oid) == obj;
 	} catch (...) {

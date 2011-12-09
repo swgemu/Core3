@@ -60,7 +60,7 @@ void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) 
 	if (newZone == NULL)
 		return;
 
-	//newZone->addObject(sceneObject, -1, true);
+	//newZone->transferObject(sceneObject, -1, true);
 
 	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
 
@@ -77,9 +77,8 @@ void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zon
 		if (outdoorChild == NULL)
 			continue;
 
-		if (outdoorChild->getContainmentType() != 4)
-			//outdoorChild->insertToZone(zone);
-			zone->addObject(outdoorChild, -1, true);
+		if (outdoorChild->getContainmentType() != 4 && outdoorChild->getParent() == NULL)
+			zone->transferObject(outdoorChild, -1, true);
 	}
 }
 
@@ -117,33 +116,28 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 }
 
 void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) {
+	SceneObject* parent = sceneObject->getParent();
 	Zone* zone = sceneObject->getZone();
 
 	if (zone == NULL)
-		return;
-
-	SceneObject* parent = sceneObject->getParent();
+		zone = parent->getRootParent()->getZone();
 
 	if (parent != NULL && parent->isVehicleObject())
 		sceneObject->updateVehiclePosition();
 
-	Locker zoneLocker(zone);
+	Locker _locker(zone);
 
 	if (parent != NULL && parent->isCellObject()) {
-		CellObject* cell = cast<CellObject*>( parent);
+		//parent->removeObject(sceneObject, true);
+		//removeFromBuilding(sceneObject, dynamic_cast<BuildingObject*>(parent->getParent()));
 
-		if (cell->getParent() != NULL)
-			removeFromBuilding(sceneObject, cast<BuildingObject*>(cell->getParent()));
+		zone = parent->getRootParent()->getZone();
 
-		sceneObject->setParent(NULL);
-
-		zone->insert(sceneObject);
-	} else
+		zone->transferObject(sceneObject, -1, false);
+	} else {
 		zone->update(sceneObject);
-
-	parent = sceneObject->getParent();
-
-	zone->inRange(sceneObject, 512);
+		zone->inRange(sceneObject, 512);
+	}
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
@@ -157,6 +151,62 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 	zone->updateActiveAreas(sceneObject);
 
+	zone->unlock();
+
+	try {
+		notifySelfPositionUpdate(sceneObject);
+	} catch (Exception& e) {
+		sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZone");
+		sceneObject->error(e.getMessage());
+	}
+
+	zone->wlock();
+}
+
+void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) {
+	ManagedReference<Zone*> zone = sceneObject->getZone();
+	ManagedReference<SceneObject*> oldParent = sceneObject->getParent();
+
+	if (oldParent != NULL && !oldParent->isCellObject())
+		return;
+
+	if (zone == NULL)
+		zone = newParent->getRootParent()->getZone();
+
+	Locker _locker(zone);
+
+	if (oldParent == NULL) { // we are in zone, enter cell
+		//zone->remove(sceneObject);
+
+		newParent->transferObject(sceneObject, -1, true);
+		//insertToBuilding(sceneObject, dynamic_cast<BuildingObject*>(newParent->getParent()));
+	} else { // we are in cell already
+		if (oldParent != newParent) {
+			//oldParent->removeObject(sceneObject, false);
+			newParent->transferObject(sceneObject, -1, true);
+		} else
+			zone->updateActiveAreas(sceneObject);
+
+		//notify in range objects that i moved
+	}
+
+	for (int i = 0; i < sceneObject->inRangeObjectCount(); ++i) {
+		SceneObject* object = cast<SceneObject*>(sceneObject->getInRangeObject(i));
+
+		object->notifyPositionUpdate(sceneObject);
+	}
+
+
+	if (sendPackets) {
+		if (lightUpdate) {
+			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(sceneObject);
+			sceneObject->broadcastMessage(message, false, false);
+		} else {
+			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(sceneObject);
+			sceneObject->broadcastMessage(message, false, false);
+		}
+	}
+
 	//zoneLocker.release();
 
 	zone->unlock();
@@ -164,16 +214,14 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 	try {
 		notifySelfPositionUpdate(sceneObject);
 	} catch (Exception& e) {
-
+		sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZoneWithParent");
+		sceneObject->error(e.getMessage());
 	}
 
 	zone->wlock();
 
-	//notifySelfPositionUpdate();
-}
 
-void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	Zone* zone = sceneObject->getZone();
+	/*Zone* zone = sceneObject->getZone();
 
 	if (zone == NULL)
 		return;
@@ -185,14 +233,6 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	}
 
 	bool insert = false;
-
-	/*StringBuffer msg;
-	msg << "world posx: " << getWorldPositionX() << " wolrd posy: " << getWorldPositionY() << " posz: " << getWorldPositionZ();
-	info(msg.toString(), true);
-
-	StringBuffer msg2;
-	msg2 << "cell x: " << positionX << " cell y: " << positionY;
-	info(msg2.toString(), true);*/
 
 	Locker zoneLocker(zone);
 
@@ -225,7 +265,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
 		// add to new cell
 		//parent = newParent;
-		if (!newParent->addObject(sceneObject, -1, false)) {
+		if (!newParent->transferObject(sceneObject, -1, false)) {
 			error("could not add to parent " + newParent->getLoggingName());
 		}
 
@@ -265,59 +305,39 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 
 	}
 
-	zone->wlock();
+	zone->wlock();*/
 }
 
 void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
-	if (zone == NULL)
-		return;
+	/*if (zone == NULL)
+		return;*/
 
 	Zone* newZone = sceneObject->getZoneServer()->getZone(newTerrainName);
 
-	if (newZone == NULL)
+	if (newZone == NULL) {
+		error("attempting to switch to unkown/disabled zone " + newTerrainName);
 		return;
+	}
 
 	//removeObject(sceneObject, false);
-	sceneObject->removeFromZone();
+	//if (zone == NULL)
+	sceneObject->destroyObjectFromWorld(true);
 
 	SceneObject* newParent = sceneObject->getZoneServer()->getObject(parentID);
 
 	Locker locker(newZone);
 
-	if (newParent != NULL && newParent->isCellObject())
-		newParent->addObject(sceneObject, -1, false);
-
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
-	//insertToZone(sceneObject, newZone);
-	newZone->addObject(sceneObject, -1, true);
-}
-
-void ZoneComponent::insertToBuilding(SceneObject* sceneObject, BuildingObject* building) {
-	SceneObject* parent = sceneObject->getParent();
-
-	if (sceneObject->isInQuadTree() || !parent->isCellObject())
-		return;
-
-	try {
-		//info("SceneObjectImplementation::insertToBuilding");
-
-		//parent->addObject(_this, 0xFFFFFFFF);
-
-		building->insert(sceneObject);
-
-		building->inRange(sceneObject, 512);
-
-		sceneObject->broadcastMessage(sceneObject->link(parent->getObjectID(), 0xFFFFFFFF), true, false);
-
-		//info("sent cell link to everyone else");
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
+	if (newParent != NULL) {
+		newParent->transferObject(sceneObject, -1, false);
 	}
+
+	newZone->transferObject(sceneObject, -1, true);
+	//insertToZone(sceneObject, newZone);
 }
 
 void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
@@ -325,29 +345,6 @@ void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
 	Zone* zone = sceneObject->getZone();
 
 	zone->removeObject(sceneObject);*/
-}
-
-void ZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingObject* building) {
-	SceneObject* parent = sceneObject->getParent();
-	Zone* zone = sceneObject->getZone();
-
-	if (/*!sceneObject->isInQuadTree() || */!parent->isCellObject())
-		return;
-
-	if (building != parent->getParent()) {
-		error("removing from wrong building object");
-		return;
-	}
-
-    sceneObject->broadcastMessage(sceneObject->link((uint64)0, (uint32)0xFFFFFFFF), true, false);
-
-    parent->removeObject(sceneObject);
-
-    if (building != NULL) {
-    	building->remove(sceneObject);
-
-//    	building->removeNotifiedSentObject(sceneObject);
-    }
 }
 
 void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {

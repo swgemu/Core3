@@ -130,15 +130,12 @@ double MapFractal::calculateCombination1(float v39, float v41) {
 
 	float v42 = v41 + zOffset; // + 16 = z.offset
 	float v36 = v39 + xOffset; // + 12 = x.offset
-	float v15, v16, v33 = 0;
+	float v33 = 0;
 	double coord[2];
 
 	for (int i = 0; i < octaves; ++i) {
-		v15 = v42 * v48;
-		v16 = v36 * v48;
-
-		coord[0] = v16;
-		coord[1] = v15;
+		coord[0] = v36 * v48;
+		coord[1] = v42 * v48;
 
 		v33 = noise->noise2(coord) * v47 + v33;
 		v48 = v48 * octavesParam; // + 24 octaves param
@@ -155,20 +152,16 @@ double MapFractal::calculateCombination1(float v39, float v41) {
 
 double MapFractal::calculateCombination2(float v39, float v41) {
 	float v34 = 0;
+	float v42 = v39 + xOffset;
 	float v43 = v41 + zOffset; // + 16 = z.offset
-	float v19, v18, v20;
 	float v48 = 1.0;
 	float v47 = 1.0;
 	double result = 0;
 	double coord[2];
 
 	for (int i = 0; i < octaves; ++i) {
-		v19 = v43 * v48;
-		v18 = v39 + xOffset; //  + 12 = x.offset
-		v20 = v18 * v48;
-
-		coord[0] = v20;
-		coord[1] = v19;
+		coord[0] = v42 * v48;;
+		coord[1] = v43 * v48;
 
 		v34 = (1.0 - fabs(noise->noise2(coord))) * v47 + v34;
 		v48 = v48 * octavesParam;  // + 24 octaves param
@@ -189,17 +182,13 @@ double MapFractal::calculateCombination3(float v39, float v41) {
 	double result = 0;
 	float v34 = 0;
 	float v44 = v41 + zOffset; // + 16 = z.offset
-	float v23, v22, v24;
+	float v22 = v39 + xOffset;;
 
 	double coord[2];
 
 	for (int i = 0; i < octaves; ++i) {
-		v23 = v44 * v48;
-		v22 = v39 + xOffset; //  + 12 = x.offset
-		v24 = v22 * v48;
-
-		coord[0] = v24;
-		coord[1] = v23;
+		coord[0] = v22 * v48;;
+		coord[1] = v44 * v48;;
 
 		v34 = fabs(noise->noise2(coord)) * v47 + v34;
 		v48 = v48 * octavesParam; // + 24 octaves param
@@ -216,7 +205,7 @@ double MapFractal::calculateCombination3(float v39, float v41) {
 
 double MapFractal::calculateCombination4(float v39, float v41) {
 	float v34 = 0;
-	float v27, v28, v26;
+	float v26;
 	float v45 = v41 + zOffset; // + 16 = z.offset
 	float v37 = v39 + xOffset; //  + 12 = x.offset
 	double coord[2];
@@ -226,11 +215,8 @@ double MapFractal::calculateCombination4(float v39, float v41) {
 	double result = 0;
 
 	for (int i = 0; i < octaves; ++i) {
-		v27 = v45 * v48;
-		v28 = v37 * v48;
-
-		coord[0] = v28;
-		coord[1] = v27;
+		coord[0] = v37 * v48;
+		coord[1] = v45 * v48;
 
 		v26 = noise->noise2(coord);
 		if ( v26 >= 0.0 ) {
@@ -255,7 +241,7 @@ double MapFractal::calculateCombination4(float v39, float v41) {
 
 double MapFractal::calculateCombination5(float v39, float v41) {
 	float v34 = 0;
-	float v31, v32, v30;
+	float v30;
 	float v46 = v41 + zOffset; //  + 16 = z.offset
 	float v38 = v39 + xOffset; //  + 12 = x.offset
 	double coord[2];
@@ -265,11 +251,8 @@ double MapFractal::calculateCombination5(float v39, float v41) {
 	float v47 = 1.0;
 
 	for (int i = 0; i < octaves; ++i) {
-		v31 = v46 * v48;
-		v32 = v38 * v48;
-
-		coord[0] = v32;
-		coord[1] = v31;
+		coord[0] = v38 * v48;
+		coord[1] = v46 * v48;
 
 		v30 = noise->noise2(coord); //
 

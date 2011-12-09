@@ -59,7 +59,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	}
 
 	//controlledObject->insertToZone(player->getZone());
-	player->getZone()->addObject(controlledObject, -1, true);
+	player->getZone()->transferObject(controlledObject, -1, true);
 	controlledObject->inflictDamage(player, 0, System::random(50), true);
 
 	updateStatus(1);
@@ -69,8 +69,8 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 	if (controlledObject == NULL)
 		return;
 
-	if (!controlledObject->isInQuadTree())
-		return;
+	/*if (!controlledObject->isInQuadTree())
+		return;*/
 
 	if (player->isRidingMount() && player->getParent() == controlledObject) {
 		player->executeObjectControllerAction(String("dismount").hashCode());
@@ -79,7 +79,7 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 			return;
 	}
 
-	controlledObject->removeFromZone();
+	controlledObject->destroyObjectFromWorld(true);
 
 	if (controlledObject->isCreatureObject())
 		(cast<CreatureObject*>(controlledObject.get()))->setCreatureLink(NULL);

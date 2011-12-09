@@ -97,13 +97,13 @@ public:
 
 				ManagedReference<SceneObject*> parent = creature->getParent();
 
-				if (parent != NULL && parent->isCellObject())
-					parent->addObject(blueFrog, -1);
-
 				blueFrog->initializePosition(x, z, y);
-				blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
-				//blueFrog->insertToZone(creature->getZone());
-				creature->getZone()->addObject(blueFrog, -1, true);
+								blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
+
+				if (parent != NULL && parent->isCellObject())
+					parent->transferObject(blueFrog, -1);
+				else
+					creature->getZone()->transferObject(blueFrog, -1, true);
 
 				info("blue frog created", true);
 			}

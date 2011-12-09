@@ -228,8 +228,8 @@ PlanetTravelPoint* TravelTerminalImplementation::getPlanetTravelPoint() {
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		planetTravelPoint 
 	if (planetTravelPoint != NULL)	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		 return planetTravelPoint;
 	return planetTravelPoint;
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
-	planetTravelPoint = zone->getPlanetManager()->getNearestPlanetTravelPoint(_this);
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		planetTravelPoint = getZone().getPlanetManager().getNearestPlanetTravelPoint(this);
+	planetTravelPoint = getZone()->getPlanetManager()->getNearestPlanetTravelPoint(_this);
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		return planetTravelPoint;
 	return planetTravelPoint;
 }

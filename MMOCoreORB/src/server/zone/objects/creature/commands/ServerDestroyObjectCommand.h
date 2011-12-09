@@ -115,14 +115,7 @@ public:
 	}
 
 	void destroyObject(SceneObject* object, CreatureObject* creature) {
-		ManagedReference<SceneObject*> parent = object->getParent();
-
-		parent->removeObject(object);
-
-		if (parent == creature)
-			creature->broadcastDestroy(object, true);
-		else
-			object->sendDestroyTo(creature);
+		object->destroyObjectFromWorld(true);
 
 		object->destroyObjectFromDatabase(true);
 	}

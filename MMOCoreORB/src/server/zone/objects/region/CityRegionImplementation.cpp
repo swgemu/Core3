@@ -63,7 +63,7 @@ void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float
 	}
 
 	//area->insertToZone(zone);
-	zone->addObject(area, -1, true);
+	zone->transferObject(area, -1, true);
 
 	activeAreas.put(area);
 }

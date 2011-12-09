@@ -89,6 +89,8 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "server/zone/objects/scene/SceneObjectType.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"

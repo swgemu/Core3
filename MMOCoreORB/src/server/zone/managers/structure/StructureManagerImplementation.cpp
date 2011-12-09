@@ -79,7 +79,6 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	info(msg.toString());
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-	//dbManager->loadDatabases();
 
 	ObjectDatabase* playerStructuresDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("playerstructures", true);
 
@@ -207,8 +206,7 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 	session->constructStructure(x, y, angle);
 
 	//Remove the deed from it's container.
-	deed->getParent()->removeObject(deed, true);
-
+	deed->destroyObjectFromWorld(true);
 	return 0;
 }
 /*
@@ -420,7 +418,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	structureObject->initializePosition(x, z, y);
 	structureObject->rotate(angle);
 	//structureObject->insertToZone(zone);
-	zone->addObject(structureObject, -1, true);
+	zone->transferObject(structureObject, -1, true);
 	structureObject->createChildObjects();
 
 	structureObject->notifyStructurePlaced(creature);
@@ -469,7 +467,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 		}
 	}
 
-	structureObject->removeFromZone();
+	structureObject->destroyObjectFromWorld(true);
 	structureObject->destroyObjectFromDatabase(true);
 
 	return 0;
@@ -615,7 +613,7 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 				installationDeed->setSurplusPower(structureObject->getSurplusPower());
 			}
 
-			inventory->addObject(deed, -1, true);
+			inventory->transferObject(deed, -1, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 		}
 	} else {

@@ -31,7 +31,7 @@ void ImageDesignSessionImplementation::initializeTransientMembers() {
 void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer) {
 	uint64 tentID = 0;
 
-	ManagedReference<SceneObject*> obj = designer->getParentRecursively(SceneObject::SALONBUILDING);
+	ManagedReference<SceneObject*> obj = designer->getParentRecursively(SceneObjectType::SALONBUILDING);
 
 	if (obj != NULL)
 		tentID = obj->getObjectID();

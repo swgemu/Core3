@@ -133,8 +133,8 @@ public:
 		if (ghost->isTeleporting())
 			return;
 
-		if (!object->isInQuadTree())
-			return;
+		/*if (!object->isInQuadTree())
+			return;*/
 
 		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {
 			StringBuffer msg;
@@ -144,8 +144,8 @@ public:
 			return;
 		}
 
-		if (object->getZone() == NULL)
-			return;
+		/*if (object->getZone() == NULL)
+			return;*/
 
 		if (object->isRidingMount()) {
 			ZoneServer* zoneServer = server->getZoneServer();
@@ -206,8 +206,8 @@ public:
 
 		StringBuffer posMsg;
 		posMsg << "posX: " << positionX << " posZ: " << positionZ << " posY:" << positionY;
-		object->info(posMsg.toString(), true);
-		*/
+		object->info(posMsg.toString(), true);*/
+
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 

@@ -331,22 +331,19 @@ void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObje
 	if (creo == NULL)
 		return;
 
-	TangibleObject* hair = cast<TangibleObject*>( creo->getSlottedObject("hair"));
+	ManagedReference<TangibleObject*> hair = cast<TangibleObject*>( creo->getSlottedObject("hair"));
 
 	if (hair != NULL) {
-		creo->removeObject(hair);
-		creo->broadcastDestroy(hair, true);
-
+		hair->destroyObjectFromWorld(true);
 	}
 
 	if (!hairObject.isEmpty()) {
 		ManagedReference<PlayerManager*> playerMgr = creo->getZoneServer()->getPlayerManager();
 		hair = playerMgr->createHairObject(hairObject, hairCustomization);
-		creo->addObject(hair, 4);
+		creo->transferObject(hair, 4);
 		creo->broadcastObject(hair, true);
 
 	}
-
 }
 
 ImageDesignManager::~ImageDesignManager() {

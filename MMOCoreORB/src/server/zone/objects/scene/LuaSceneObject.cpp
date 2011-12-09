@@ -27,11 +27,11 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getContainerObject", &LuaSceneObject::getContainerObject },
 		{ "getContainerObjectsSize", &LuaSceneObject::getContainerObjectsSize },
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject },
-		{ "addObject", &LuaSceneObject::addObject },
-		{ "removeObject", &LuaSceneObject::removeObject },
+		{ "transferObject", &LuaSceneObject::transferObject },
+//		{ "removeObject", &LuaSceneObject::removeObject },
 		{ "getGameObjectType", &LuaSceneObject::getGameObjectType },
 		{ "faceObject", &LuaSceneObject::faceObject },
-		{ "removeFromZone", &LuaSceneObject::removeFromZone },
+		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
 
 		{ 0, 0 }
@@ -166,19 +166,19 @@ int LuaSceneObject::getSlottedObject(lua_State* L) {
 	return 1;
 }
 
-int LuaSceneObject::addObject(lua_State* L) {
-	//addObject(SceneObject object, int containmentType, boolean notifyClient = false);
+int LuaSceneObject::transferObject(lua_State* L) {
+	//transferObject(SceneObject object, int containmentType, boolean notifyClient = false);
 
 	bool notifyClient = lua_tonumber(L, -1);
 	int containmentType = lua_tonumber(L, -2);
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -3);
 
-	realObject->addObject(obj, containmentType, notifyClient);
+	realObject->transferObject(obj, containmentType, notifyClient);
 
 	return 0;
 }
 
-int LuaSceneObject::removeObject(lua_State* L) {
+/*int LuaSceneObject::removeObject(lua_State* L) {
 
 	//removeObject(SceneObject object, boolean notifyClient = false);
 
@@ -188,7 +188,7 @@ int LuaSceneObject::removeObject(lua_State* L) {
 	realObject->removeObject(obj, notifyClient);
 
 	return 0;
-}
+}*/
 
 int LuaSceneObject::getContainerObjectsSize(lua_State* L) {
 	int num = realObject->getContainerObjectsSize();
@@ -226,8 +226,8 @@ int LuaSceneObject::updateDirection(lua_State* L) {
 	return 0;
 }
 
-int LuaSceneObject::removeFromZone(lua_State* L) {
-	realObject->removeFromZone();
+int LuaSceneObject::destroyObjectFromWorld(lua_State* L) {
+	realObject->destroyObjectFromWorld(true);
 
 	return 0;
 }

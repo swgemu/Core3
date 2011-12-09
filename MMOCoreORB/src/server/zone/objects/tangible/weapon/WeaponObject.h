@@ -103,6 +103,8 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+#include "server/zone/objects/scene/SceneObjectType.h"
+
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"

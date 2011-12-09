@@ -94,7 +94,7 @@ class TravelTerminal extends Terminal {
 		if(planetTravelPoint != null)
 		    return planetTravelPoint;
 	
-		planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
+		planetTravelPoint = getZone().getPlanetManager().getNearestPlanetTravelPoint(this);
 
 		return planetTravelPoint;
 	}

@@ -70,6 +70,7 @@
 
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
+#include "server/ServerCore.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 	Logger("PlayerManager") {
@@ -89,6 +90,18 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	setGlobalLogging(true);
 	setLogging(false);
+
+	if (ServerCore::truncateDatabases()) {
+		try {
+			String query = "TRUNCATE TABLE characters";
+
+			Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+
+			info("characters table truncated", true);
+		} catch (Exception& e) {
+			error(e.getMessage());
+		}
+	}
 
 	loadNameMap();
 }
@@ -383,7 +396,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		return false;
 	}
 
-	if (player->getGameObjectType() != SceneObject::PLAYERCREATURE) {
+	if (player->getGameObjectType() != SceneObjectType::PLAYERCREATURE) {
 		error("could not create player... wrong object type");
 		return false;
 	}
@@ -489,7 +502,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
 
 	if (hair != NULL) {
-		player->addObject(hair, 4);
+		player->transferObject(hair, 4);
 
 		info("created hair object");
 	}
@@ -560,7 +573,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 		return NULL;
 	}
 
-	if (hair->getGameObjectType() != SceneObjectImplementation::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
+	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
 		//info("wrong hair object type");
 		//hair->finalize();
 
@@ -586,7 +599,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 		return false;
 	}
 
-	player->addObject(inventory, 4);
+	player->transferObject(inventory, 4);
 
 	SceneObject* datapad = server->createObject(0x95ae7939, 1); //datapad
 
@@ -595,7 +608,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 		return false;
 	}
 
-	player->addObject(datapad, 4);
+	player->transferObject(datapad, 4);
 
 	SceneObject* playerObject = server->createObject(String("object/player/player.iff").hashCode(), 1); //player object
 
@@ -604,7 +617,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 		return false;
 	}
 
-	player->addObject(playerObject, 4);
+	player->transferObject(playerObject, 4);
 
 	SceneObject* bank = server->createObject(0xf5b8caa5, 1); //bank
 
@@ -613,7 +626,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 		return false;
 	}
 
-	player->addObject(bank, 4);
+	player->transferObject(bank, 4);
 
 	SceneObject* missionBag = server->createObject(0xaa5efb52, 1); //mission bag
 
@@ -622,7 +635,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 		return false;
 	}
 
-	player->addObject(missionBag, 4);
+	player->transferObject(missionBag, 4);
 
 	uint32 defaultWeaponCRC = String("object/weapon/melee/unarmed/unarmed_default_player.iff").hashCode();
 
@@ -633,41 +646,41 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 		return false;
 	}
 
-	player->addObject(defaultWeapon, 4);
+	player->transferObject(defaultWeapon, 4);
 
 	// temp
 
 	/*SceneObject* vibro = server->createObject(0x652688CE, 1);
-	player->addObject(vibro, 4);
+	player->transferObject(vibro, 4);
 	player->setWeaponID(vibro->getObjectID());
 
 	SceneObject* vibro2 = server->createObject(0x652688CE, 1);
-	inventory->addObject(vibro2, -1);
+	inventory->transferObject(vibro2, -1);
 
 	String bharmor = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff";
 	SceneObject* armor = server->createObject(bharmor.hashCode(), 1);
-	inventory->addObject(armor, -1);
+	inventory->transferObject(armor, -1);
 
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
 	SceneObject* backpackObject = server->createObject(backpack.hashCode(), 1);
-	inventory->addObject(backpackObject, -1);*/
+	inventory->transferObject(backpackObject, -1);*/
 
 	/// Add vehicle
 	/*VehicleControlDevice* vehicleControlDevice = cast<VehicleControlDevice*>( server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1));
 	VehicleObject* vehicle = cast<VehicleObject*>( server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1));
 	vehicleControlDevice->setControlledObject(vehicle);
-	datapad->addObject(vehicleControlDevice, -1);*/
+	datapad->transferObject(vehicleControlDevice, -1);*/
 
 	String pole = "object/tangible/fishing/fishing_pole.iff";
 	SceneObject* poleObject = server->createObject(pole.hashCode(), 1);
-	inventory->addObject(poleObject, -1);
+	inventory->transferObject(poleObject, -1);
 
 	String bait = "object/tangible/fishing/bait/bait_worm.iff";
 	SceneObject* baitObject = server->createObject(bait.hashCode(), 1);
-	inventory->addObject(baitObject, -1);
+	inventory->transferObject(baitObject, -1);
 
 	/*SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
-	datapad->addObject(mission, -1);*/
+	datapad->transferObject(mission, -1);*/
 
 	//Add a ship
 	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1));
@@ -676,9 +689,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 	
 	shipControlDevice->setControlledObject(ship);
 
-	if (!shipControlDevice->addObject(ship, 4))
+	if (!shipControlDevice->transferObject(ship, 4))
 		info("Adding of ship to device failed");
-	datapad->addObject(shipControlDevice, -1);
+	datapad->transferObject(shipControlDevice, -1);
 
 	return true;
 }
@@ -697,6 +710,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	info("totalCellNumber " + String::valueOf(totalCellNumber), true);*/
 
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
+	zone->transferObject(tutorial, -1, true);
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
@@ -704,13 +718,12 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);*/
 
 	SceneObject* cellTut = tutorial->getCell(11);
-	cellTut->addObject(travelTutorialTerminal, -1);
+	cellTut->transferObject(travelTutorialTerminal, -1);
 
 	SceneObject* cellTutPlayer = tutorial->getCell(1);
-//	cellTut->addObject(blueFrogTemplate, -1);
+//	cellTut->transferObject(blueFrogTemplate, -1);
 
 	//tutorial->insertToZone(zone);
-	zone->addObject(tutorial, -1, true);
 
 	//addPermission
 
@@ -718,17 +731,17 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	//travelTutorialTerminal->insertToZone(zone);
-	zone->addObject(travelTutorialTerminal, -1, true);
+	//zone->transferObject(travelTutorialTerminal, -1, true);
 //	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
 //	blueFrogTemplate->insertToZone(zone);
 
 	//player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->initializePosition(0, 0, -3);
-	player->setZone(zone);
-	cellTutPlayer->addObject(player, -1);
+	//player->setZone(zone);
+	cellTutPlayer->transferObject(player, -1);
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->setSavedTerrainName(zone->getZoneName());
-	ghost->setSavedParentID(cellTut->getObjectID());
+	ghost->setSavedParentID(cellTutPlayer->getObjectID());
 
 	tutorial->updateToDatabase();
 }
@@ -742,21 +755,22 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 	BuildingObject* tutorial = cast<BuildingObject*>( server->createObject(tut.hashCode(), 1));
 	tutorial->createCellObjects();
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
+	zone->transferObject(tutorial, -1, true);
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
 	SceneObject* cellTut = tutorial->getCell(1);
-	cellTut->addObject(travelTutorialTerminal, -1);
+	cellTut->transferObject(travelTutorialTerminal, -1);
 
 	//tutorial->insertToZone(zone);
-	zone->addObject(tutorial, -1, true);
+
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	//travelTutorialTerminal->insertToZone(zone);
-	zone->addObject(travelTutorialTerminal, -1, true);
+	//zone->transferObject(travelTutorialTerminal, -1, true);
 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
-	player->setZone(zone);
-	cellTut->addObject(player, -1);
+	//player->setZone(zone);
+	cellTut->transferObject(player, -1);
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->setSavedTerrainName(zone->getZoneName());
 	ghost->setSavedParentID(cellTut->getObjectID());
@@ -809,9 +823,9 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 		}
 
 		if (item.createEquipped()) {
-			player->addObject(obj, 4);
+			player->transferObject(obj, 4);
 		} else {
-			inventory->addObject(obj, -1);
+			inventory->transferObject(obj, -1);
 		}
 	}
 
@@ -831,9 +845,9 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 		}
 
 		if (item.createEquipped()) {
-			player->addObject(obj, 4);
+			player->transferObject(obj, 4);
 		} else {
-			inventory->addObject(obj, -1);
+			inventory->transferObject(obj, -1);
 		}
 	}
 
@@ -854,9 +868,9 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 		}
 
 		if (item.createEquipped()) {
-			player->addObject(obj, 4);
+			player->transferObject(obj, 4);
 		} else {
-			inventory->addObject(obj, -1);
+			inventory->transferObject(obj, -1);
 		}
 	}
 
@@ -877,9 +891,9 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 		}
 
 		if (item.createEquipped()) {
-			player->addObject(obj, 4);
+			player->transferObject(obj, 4);
 		} else {
-			inventory->addObject(obj, -1);
+			inventory->transferObject(obj, -1);
 		}
 	}
 
@@ -1115,6 +1129,13 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	int cellID = clonePoint->getCellID();
 
 	SceneObject* cell = cloningBuilding->getCell(cellID);
+
+	if (cell == NULL) {
+		StringBuffer msg;
+		msg << "null cell for cellID " << cellID << " in building: " << cloningBuilding->getObjectTemplate()->getFullTemplateString();
+		error(msg.toString());
+		return;
+	}
 
 	Zone* zone = player->getZone();
 

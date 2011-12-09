@@ -28,7 +28,7 @@ public:
 
 		creature->removePendingTask("despawn");
 
-		creature->removeFromZone();
+		creature->destroyObjectFromWorld(true);
 		creature->notifyDespawn(zone);
 
 		//creature->printReferenceHolders();

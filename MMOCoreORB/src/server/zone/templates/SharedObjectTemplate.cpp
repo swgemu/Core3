@@ -302,11 +302,21 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 
 }
 
+String SharedObjectTemplate::getType(int type) {
+	//char* chars = (char*)&type;
+	int reversed = htonl(type);
+	char chars[5];
+	memcpy(chars, &reversed, 4);
+	chars[4] = 0;
+
+	return String(chars);
+}
+
 void SharedObjectTemplate::readObject(IffStream* iffStream) {
 	uint32 nextType = iffStream->getNextFormType();
 
 	if (nextType != 'SHOT') {
-		Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType) + " in file: " + iffStream->getFileName());
+		Logger::console.warning("expecting SHOT got " + getType(nextType) + " in file: " + iffStream->getFileName());
 
 		iffStream->openForm(nextType);
 		iffStream->closeForm(nextType);

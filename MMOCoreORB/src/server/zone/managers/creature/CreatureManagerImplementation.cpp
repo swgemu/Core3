@@ -186,10 +186,6 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 		}
 	}
 
-	if (cellParent != NULL) {
-		cellParent->addObject(creature, -1);
-	}
-
 	//addCreatureToMap(creature);
 
 	Locker _locker(creature);
@@ -202,7 +198,11 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 	creature->initializePosition(x, z, y);
 
 	//creature->insertToZone(zone);
-	zone->addObject(creature, -1, true);
+
+	if (cellParent != NULL) {
+		cellParent->transferObject(creature, -1);
+	} else
+		zone->transferObject(creature, -1, true);
 }
 
 bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature) {
@@ -217,7 +217,7 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 			return false;
 		}
 
-		creature->addObject(defaultWeapon, 4);
+		creature->transferObject(defaultWeapon, 4);
 	}
 
 	return true;

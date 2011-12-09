@@ -24,7 +24,7 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if(!tano->isSliceable())
 		return;
 	else { // Check to see if the player has the correct skill level
-		if ((gameObjectType == SceneObject::PLAYERLOOTCRATE || sceneObject->isContainerObject()) && !player->hasSkill("combat_smuggler_novice"))
+		if ((gameObjectType == SceneObjectType::PLAYERLOOTCRATE || sceneObject->isContainerObject()) && !player->hasSkill("combat_smuggler_novice"))
 			return;
 		else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
 			return;

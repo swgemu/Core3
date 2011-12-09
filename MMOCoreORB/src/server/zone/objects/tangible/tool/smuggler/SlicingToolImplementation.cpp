@@ -38,7 +38,7 @@ int SlicingToolImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		return 0;
 	}
 
-	if (getGameObjectType() == SceneObject::MOLECULARCLAMP)
+	if (getGameObjectType() == SceneObjectType::MOLECULARCLAMP)
 		session->useClampFromInventory(_this);
 
 	player->sendSystemMessage("You are unable to use that item right now");
@@ -52,7 +52,7 @@ void SlicingToolImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 	uint32 gameObjType = getGameObjectType();
 
-	if (gameObjType != SceneObject::MOLECULARCLAMP)
+	if (gameObjType != SceneObjectType::MOLECULARCLAMP)
 		msg->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
 
 	if (craftersName != "") {
@@ -73,7 +73,7 @@ void SlicingToolImplementation::updateCraftingValues(ManufactureSchematic* schem
 }
 
 bool SlicingToolImplementation::calculateSuccessRate() {
-	if (getGameObjectType() == SceneObject::FLOWANALYZER) {
+	if (getGameObjectType() == SceneObjectType::FLOWANALYZER) {
 		int chance = System::random(100);
 		chance += (chance + effectiveness);
 		if (chance > 25) // 25% chance to fail

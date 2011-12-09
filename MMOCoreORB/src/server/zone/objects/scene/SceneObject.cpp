@@ -32,7 +32,7 @@
  *	SceneObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__CREATUREOBJECT_,RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYREMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_CONTAINSPENDINGTASK__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETCITYREGION__,RPC_SETCITYREGION__CITYREGION_,RPC_GETZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISSHIPOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__CREATUREOBJECT_,RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_CONTAINSPENDINGTASK__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETCITYREGION__,RPC_SETCITYREGION__CITYREGION_,RPC_GETZONE__,RPC_GETLOCALZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISSHIPOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
 
 SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()) {
 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
@@ -181,20 +181,20 @@ bool SceneObject::isInRange(SceneObject* obj, float range) {
 		return _implementation->isInRange(obj, range);
 }
 
-bool SceneObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+bool SceneObject::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_);
+		DistributedMethod method(this, RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->addObject(object, containmentType, notifyClient);
+		return _implementation->transferObject(object, containmentType, notifyClient);
 }
 
 bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
@@ -212,6 +212,20 @@ bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
 		return _implementation->removeObject(object, notifyClient);
 }
 
+void SceneObject::destroyObjectFromWorld(bool sendSelfDestroy) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMWORLD__BOOL_);
+		method.addBooleanParameter(sendSelfDestroy);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->destroyObjectFromWorld(sendSelfDestroy);
+}
+
 int SceneObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -226,6 +240,37 @@ int SceneObject::canAddObject(SceneObject* object, int containmentType, String& 
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->canAddObject(object, containmentType, errorDescription);
+}
+
+int SceneObject::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(object);
+		method.addObjectParameter(child);
+		method.addObjectParameter(oldParent);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyObjectInsertedToChild(object, child, oldParent);
+}
+
+int SceneObject::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(object);
+		method.addObjectParameter(child);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyObjectRemovedFromChild(object, child);
 }
 
 void SceneObject::synchronizedUIListen(SceneObject* player, int value) {
@@ -601,20 +646,6 @@ void SceneObject::notifyInsertToZone(Zone* zone) {
 		_implementation->notifyInsertToZone(zone);
 }
 
-void SceneObject::insertToBuilding(BuildingObject* building) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INSERTTOBUILDING__BUILDINGOBJECT_);
-		method.addObjectParameter(building);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->insertToBuilding(building);
-}
-
 void SceneObject::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -685,19 +716,6 @@ void SceneObject::notifyDissapear(QuadTreeEntry* entry) {
 		_implementation->notifyDissapear(entry);
 }
 
-void SceneObject::removeFromZone() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeFromZone();
-}
-
 void SceneObject::notifyRemoveFromZone() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -709,20 +727,6 @@ void SceneObject::notifyRemoveFromZone() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyRemoveFromZone();
-}
-
-void SceneObject::removeFromBuilding(BuildingObject* building) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_);
-		method.addObjectParameter(building);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeFromBuilding(building);
 }
 
 void SceneObject::updateZone(bool lightUpdate, bool sendPackets) {
@@ -1014,32 +1018,6 @@ int SceneObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID)
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void SceneObject::notifyAddedToCloseObjects() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_NOTIFYADDEDTOCLOSEOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->notifyAddedToCloseObjects();
-}
-
-void SceneObject::notifyRemovedFromCloseObjects() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->notifyRemovedFromCloseObjects();
-}
-
 float SceneObject::getDistanceTo(SceneObject* object) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1219,6 +1197,19 @@ Zone* SceneObject::getZone() {
 		return static_cast<Zone*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getZone();
+}
+
+Zone* SceneObject::getLocalZone() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLOCALZONE__);
+
+		return static_cast<Zone*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getLocalZone();
 }
 
 unsigned long long SceneObject::getObjectID() {
@@ -2620,20 +2611,6 @@ void SceneObject::setServerObjectCRC(unsigned int objCRC) {
 		_implementation->setServerObjectCRC(objCRC);
 }
 
-void SceneObject::setParent(SceneObject* par) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETPARENT__SCENEOBJECT_);
-		method.addObjectParameter(par);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setParent(par);
-}
-
 void SceneObject::setZoneProcessServer(ZoneProcessServer* srv) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -3146,11 +3123,6 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
-	if (_name == "parent") {
-		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&parent, stream);
-		return true;
-	}
-
 	if (_name == "childObjects") {
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&childObjects, stream);
 		return true;
@@ -3279,14 +3251,6 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "parent";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&parent, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "childObjects";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -3392,7 +3356,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 20 + QuadTreeEntryImplementation::writeObjectMembers(stream);
+	return 19 + QuadTreeEntryImplementation::writeObjectMembers(stream);
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {
@@ -3412,6 +3376,16 @@ void SceneObjectImplementation::info(const String& msg, bool forced) {
 void SceneObjectImplementation::error(const String& msg) {
 	// server/zone/objects/scene/SceneObject.idl():  		Logger.error(msg);
 	Logger::error(msg);
+}
+
+int SceneObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
+	// server/zone/objects/scene/SceneObject.idl():  		return 0;
+	return 0;
+}
+
+int SceneObjectImplementation::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
+	// server/zone/objects/scene/SceneObject.idl():  		return 0;
+	return 0;
 }
 
 void SceneObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
@@ -3453,12 +3427,6 @@ void SceneObjectImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	zoneComponent->notifyDissapear(_this, entry);
 }
 
-void SceneObjectImplementation::removeFromZone() {
-	// server/zone/objects/scene/SceneObject.idl():  	}
-	if ((&zone)->get() != NULL)	// server/zone/objects/scene/SceneObject.idl():  			zone.get().removeObject(this, true);
-	(&zone)->get()->removeObject(_this, true);
-}
-
 int SceneObjectImplementation::compareTo(SceneObject* obj) {
 	// server/zone/objects/scene/SceneObject.idl():  			return 0;
 	if (getObjectID() < obj->getObjectID())	// server/zone/objects/scene/SceneObject.idl():  			return 1;
@@ -3474,9 +3442,9 @@ int SceneObjectImplementation::compareTo(SceneObject* obj) {
 
 unsigned long long SceneObjectImplementation::getParentID() {
 	// server/zone/objects/scene/SceneObject.idl():  			return 0;
-	if (parent != NULL){
-	// server/zone/objects/scene/SceneObject.idl():  			return parent.getObjectID();
-	return parent->getObjectID();
+	if (QuadTreeEntryImplementation::parent.getForUpdate() != NULL){
+	// server/zone/objects/scene/SceneObject.idl():  			return super.parent.getObjectID();
+	return QuadTreeEntryImplementation::parent.getForUpdate()->getObjectID();
 }
 
 	else 	// server/zone/objects/scene/SceneObject.idl():  			return 0;
@@ -3599,6 +3567,19 @@ void SceneObjectImplementation::setCityRegion(CityRegion* region) {
 }
 
 Zone* SceneObjectImplementation::getZone() {
+	// server/zone/objects/scene/SceneObject.idl():  		}
+	if (getParent() != NULL){
+	// server/zone/objects/scene/SceneObject.idl():  			return getRootParent().getZone();
+	return getRootParent()->getZone();
+}
+
+	else {
+	// server/zone/objects/scene/SceneObject.idl():  			return zone.get();
+	return (&zone)->get();
+}
+}
+
+Zone* SceneObjectImplementation::getLocalZone() {
 	// server/zone/objects/scene/SceneObject.idl():  		return zone.get();
 	return (&zone)->get();
 }
@@ -3634,8 +3615,8 @@ unsigned int SceneObjectImplementation::getServerObjectCRC() {
 }
 
 bool SceneObjectImplementation::isWaypointObject() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == WAYPOINT;
-	return gameObjectType == WAYPOINT;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.WAYPOINT;
+	return gameObjectType == SceneObjectType::WAYPOINT;
 }
 
 StringId* SceneObjectImplementation::getObjectName() {
@@ -3850,11 +3831,6 @@ unsigned int SceneObjectImplementation::getMovementCounter() {
 	return movementCounter;
 }
 
-SceneObject* SceneObjectImplementation::getParent() {
-	// server/zone/objects/scene/SceneObject.idl():  		return parent;
-	return parent;
-}
-
 ZoneServer* SceneObjectImplementation::getZoneServer() {
 	// server/zone/objects/scene/SceneObject.idl():  			return null;
 	if (server != NULL)	// server/zone/objects/scene/SceneObject.idl():  			return server.getZoneServer();
@@ -3900,13 +3876,13 @@ bool SceneObjectImplementation::isContainerFull() {
 }
 
 bool SceneObjectImplementation::isShuttleInstallation() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SHUTTLEINSTALLATION;
-	return gameObjectType == SHUTTLEINSTALLATION;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.SHUTTLEINSTALLATION;
+	return gameObjectType == SceneObjectType::SHUTTLEINSTALLATION;
 }
 
 bool SceneObjectImplementation::isPlayerObject() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == PLAYEROBJECT;
-	return gameObjectType == PLAYEROBJECT;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.PLAYEROBJECT;
+	return gameObjectType == SceneObjectType::PLAYEROBJECT;
 }
 
 bool SceneObjectImplementation::isActiveArea() {
@@ -3945,8 +3921,8 @@ bool SceneObjectImplementation::isCloningBuildingObject() {
 }
 
 bool SceneObjectImplementation::isGarage() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == GARAGEBUILDING || gameObjectType == GARAGEINSTALLATION;
-	return gameObjectType == GARAGEBUILDING || gameObjectType == GARAGEINSTALLATION;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.GARAGEBUILDING || gameObjectType == SceneObjectType.GARAGEINSTALLATION;
+	return gameObjectType == SceneObjectType::GARAGEBUILDING || gameObjectType == SceneObjectType::GARAGEINSTALLATION;
 }
 
 bool SceneObjectImplementation::isWeaponObject() {
@@ -3995,8 +3971,8 @@ bool SceneObjectImplementation::isIntangibleObject() {
 }
 
 bool SceneObjectImplementation::isInstrument() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == INSTRUMENT;
-	return gameObjectType == INSTRUMENT;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.INSTRUMENT;
+	return gameObjectType == SceneObjectType::INSTRUMENT;
 }
 
 bool SceneObjectImplementation::isInstallationObject() {
@@ -4030,8 +4006,8 @@ bool SceneObjectImplementation::isFactoryCrate() {
 }
 
 bool SceneObjectImplementation::isFishingPoleObject() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == FISHINGPOLE;
-	return gameObjectType == FISHINGPOLE;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.FISHINGPOLE;
+	return gameObjectType == SceneObjectType::FISHINGPOLE;
 }
 
 bool SceneObjectImplementation::isDeedObject() {
@@ -4080,8 +4056,8 @@ bool SceneObjectImplementation::isStructureObject() {
 }
 
 bool SceneObjectImplementation::isFishingBait() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == FISHINGBAIT;
-	return gameObjectType == FISHINGBAIT;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.FISHINGBAIT;
+	return gameObjectType == SceneObjectType::FISHINGBAIT;
 }
 
 bool SceneObjectImplementation::isAttachment() {
@@ -4102,11 +4078,6 @@ void SceneObjectImplementation::setClientObjectCRC(unsigned int objCRC) {
 void SceneObjectImplementation::setServerObjectCRC(unsigned int objCRC) {
 	// server/zone/objects/scene/SceneObject.idl():  		serverObjectCRC = objCRC;
 	serverObjectCRC = objCRC;
-}
-
-void SceneObjectImplementation::setParent(SceneObject* par) {
-	// server/zone/objects/scene/SceneObject.idl():  		parent = par;
-	parent = par;
 }
 
 void SceneObjectImplementation::setZoneProcessServer(ZoneProcessServer* srv) {
@@ -4279,14 +4250,23 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_ISINRANGE__SCENEOBJECT_FLOAT_:
 		resp->insertBoolean(isInRange(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getFloatParameter()));
 		break;
-	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(addObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+	case RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_:
+		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_:
 		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
+	case RPC_DESTROYOBJECTFROMWORLD__BOOL_:
+		destroyObjectFromWorld(inv->getBooleanParameter());
+		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		break;
+	case RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_:
+		resp->insertSignedInt(notifyObjectInsertedToChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		break;
+	case RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_:
+		resp->insertSignedInt(notifyObjectRemovedFromChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
 		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
@@ -4363,9 +4343,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
 		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
-	case RPC_INSERTTOBUILDING__BUILDINGOBJECT_:
-		insertToBuilding(static_cast<BuildingObject*>(inv->getObjectParameter()));
-		break;
 	case RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_:
 		switchZone(inv->getAsciiParameter(_param0_switchZone__String_float_float_float_long_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
@@ -4375,14 +4352,8 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_:
 		updateDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
-	case RPC_REMOVEFROMZONE__:
-		removeFromZone();
-		break;
 	case RPC_NOTIFYREMOVEFROMZONE__:
 		notifyRemoveFromZone();
-		break;
-	case RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_:
-		removeFromBuilding(static_cast<BuildingObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATEZONE__BOOL_BOOL_:
 		updateZone(inv->getBooleanParameter(), inv->getBooleanParameter());
@@ -4432,12 +4403,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
-	case RPC_NOTIFYADDEDTOCLOSEOBJECTS__:
-		notifyAddedToCloseObjects();
-		break;
-	case RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__:
-		notifyRemovedFromCloseObjects();
-		break;
 	case RPC_GETDISTANCETO__SCENEOBJECT_:
 		resp->insertFloat(getDistanceTo(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
@@ -4473,6 +4438,9 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case RPC_GETZONE__:
 		resp->insertLong(getZone()->_getObjectID());
+		break;
+	case RPC_GETLOCALZONE__:
+		resp->insertLong(getLocalZone()->_getObjectID());
 		break;
 	case RPC_GETOBJECTID__:
 		resp->insertLong(getObjectID());
@@ -4771,9 +4739,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SETSERVEROBJECTCRC__INT_:
 		setServerObjectCRC(inv->getUnsignedIntParameter());
 		break;
-	case RPC_SETPARENT__SCENEOBJECT_:
-		setParent(static_cast<SceneObject*>(inv->getObjectParameter()));
-		break;
 	case RPC_SETZONE__ZONE_:
 		setZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
@@ -4887,16 +4852,28 @@ bool SceneObjectAdapter::isInRange(SceneObject* obj, float range) {
 	return (static_cast<SceneObject*>(stub))->isInRange(obj, range);
 }
 
-bool SceneObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return (static_cast<SceneObject*>(stub))->addObject(object, containmentType, notifyClient);
+bool SceneObjectAdapter::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
+	return (static_cast<SceneObject*>(stub))->transferObject(object, containmentType, notifyClient);
 }
 
 bool SceneObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
 	return (static_cast<SceneObject*>(stub))->removeObject(object, notifyClient);
 }
 
+void SceneObjectAdapter::destroyObjectFromWorld(bool sendSelfDestroy) {
+	(static_cast<SceneObject*>(stub))->destroyObjectFromWorld(sendSelfDestroy);
+}
+
 int SceneObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	return (static_cast<SceneObject*>(stub))->canAddObject(object, containmentType, errorDescription);
+}
+
+int SceneObjectAdapter::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
+	return (static_cast<SceneObject*>(stub))->notifyObjectInsertedToChild(object, child, oldParent);
+}
+
+int SceneObjectAdapter::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
+	return (static_cast<SceneObject*>(stub))->notifyObjectRemovedFromChild(object, child);
 }
 
 void SceneObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
@@ -4999,10 +4976,6 @@ void SceneObjectAdapter::notifyInsertToZone(Zone* zone) {
 	(static_cast<SceneObject*>(stub))->notifyInsertToZone(zone);
 }
 
-void SceneObjectAdapter::insertToBuilding(BuildingObject* building) {
-	(static_cast<SceneObject*>(stub))->insertToBuilding(building);
-}
-
 void SceneObjectAdapter::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
 	(static_cast<SceneObject*>(stub))->switchZone(newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
 }
@@ -5015,16 +4988,8 @@ void SceneObjectAdapter::updateDirection(float fw, float fx, float fy, float fz)
 	(static_cast<SceneObject*>(stub))->updateDirection(fw, fx, fy, fz);
 }
 
-void SceneObjectAdapter::removeFromZone() {
-	(static_cast<SceneObject*>(stub))->removeFromZone();
-}
-
 void SceneObjectAdapter::notifyRemoveFromZone() {
 	(static_cast<SceneObject*>(stub))->notifyRemoveFromZone();
-}
-
-void SceneObjectAdapter::removeFromBuilding(BuildingObject* building) {
-	(static_cast<SceneObject*>(stub))->removeFromBuilding(building);
 }
 
 void SceneObjectAdapter::updateZone(bool lightUpdate, bool sendPackets) {
@@ -5091,14 +5056,6 @@ int SceneObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte sele
 	return (static_cast<SceneObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
-void SceneObjectAdapter::notifyAddedToCloseObjects() {
-	(static_cast<SceneObject*>(stub))->notifyAddedToCloseObjects();
-}
-
-void SceneObjectAdapter::notifyRemovedFromCloseObjects() {
-	(static_cast<SceneObject*>(stub))->notifyRemovedFromCloseObjects();
-}
-
 float SceneObjectAdapter::getDistanceTo(SceneObject* object) {
 	return (static_cast<SceneObject*>(stub))->getDistanceTo(object);
 }
@@ -5145,6 +5102,10 @@ void SceneObjectAdapter::setCityRegion(CityRegion* region) {
 
 Zone* SceneObjectAdapter::getZone() {
 	return (static_cast<SceneObject*>(stub))->getZone();
+}
+
+Zone* SceneObjectAdapter::getLocalZone() {
+	return (static_cast<SceneObject*>(stub))->getLocalZone();
 }
 
 unsigned long long SceneObjectAdapter::getObjectID() {
@@ -5541,10 +5502,6 @@ void SceneObjectAdapter::setClientObjectCRC(unsigned int objCRC) {
 
 void SceneObjectAdapter::setServerObjectCRC(unsigned int objCRC) {
 	(static_cast<SceneObject*>(stub))->setServerObjectCRC(objCRC);
-}
-
-void SceneObjectAdapter::setParent(SceneObject* par) {
-	(static_cast<SceneObject*>(stub))->setParent(par);
 }
 
 void SceneObjectAdapter::setZone(Zone* zone) {

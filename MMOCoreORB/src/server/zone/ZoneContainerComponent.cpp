@@ -25,7 +25,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	if (activeArea->isInQuadTree() && newZone != zone) {
 		activeArea->error("trying to insert to zone an object that is already in a different quadtree");
 
-		activeArea->removeFromZone();
+		activeArea->destroyObjectFromWorld(true);
 
 		//StackTrace::printStackTrace();
 	}
@@ -105,7 +105,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	return true;
 }
 
-bool ZoneContainerComponent::addObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
+bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
 	Zone* newZone = dynamic_cast<Zone*>(sceneObject);
 	Zone* zone = object->getZone();
 
@@ -121,11 +121,28 @@ bool ZoneContainerComponent::addObject(SceneObject* sceneObject, SceneObject* ob
 	if (object->isInQuadTree() && newZone != zone) {
 		object->error("trying to insert to zone an object that is already in a different quadtree");
 
-		object->removeFromZone();
+		object->destroyObjectFromWorld(true);
 
 		return false;
 
 		//StackTrace::printStackTrace();
+	}
+
+	ManagedReference<SceneObject*> parent = object->getParent();
+
+	if (parent != NULL/* && parent->isCellObject()*/) {
+		parent->removeObject(object, true);
+
+		if (parent->isCellObject()) {
+			BuildingObject* build = cast<BuildingObject*>(parent->getParent());
+
+			if (build != NULL) {
+				CreatureObject* creature = cast<CreatureObject*>(object);
+
+				if (creature != NULL)
+					build->onExit(creature);
+			}
+		}
 	}
 
 	object->setZone(newZone);
@@ -133,56 +150,15 @@ bool ZoneContainerComponent::addObject(SceneObject* sceneObject, SceneObject* ob
 
 	zone->addSceneObject(object);
 
-	SceneObject* parent = object->getParent();
+	if (notifyClient)
+		object->sendToOwner(true);
 
-	if (parent != NULL && parent->isCellObject())
-		parent->addObject(object, -1, false);
-
-	/*SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
-
-		notifiedSentObjects->removeAll();*/
-
-	object->sendToOwner(true);
-
-	if (object->isInQuadTree()) {
-		for (int i = 0; i < object->inRangeObjectCount(); ++i) {
-			SceneObject* obj = cast<SceneObject*>( object->getInRangeObject(i));
-
-			if (obj != object->getRootParent()) //our building is sent in sendToOwner
-				object->notifyInsert(obj);
-
-			if (obj != object) {
-				/*if (object->getParentRecursively(SceneObject::BUILDING) != NULL) {
-						if (notifiedSentObjects->put(object) != -1)
-							object->sendTo(sceneObject, true);
-					}*/
-
-				if (obj->isPlayerCreature()) { //we need to destroy object to reset movement counter on near clients
-					obj->notifyDissapear(object);
-					//object->sendTo(sceneObject, true);
-					object->sendTo(obj, true);
-				} else
-					obj->notifyInsert(object);
-			}
-		}
-	} else {
+	if (parent == NULL)
 		object->initializePosition(object->getPositionX(), object->getPositionZ(), object->getPositionY());
-		object->removeInRangeObjects();
 
-		//movementCounter = 0;
-		object->setMovementCounter(0);
+	zone->insert(object);
 
-		if (parent == NULL || !parent->isCellObject() || parent->getParent() == NULL) {
-			zone->insert(object);
-
-			zone->inRange(object, 192);
-		} else if (parent->isCellObject()) {
-			BuildingObject* building = cast<BuildingObject*>( parent->getParent());
-			object->insertToBuilding(building);
-
-			building->notifyObjectInsertedToZone(object);
-		}
-	}
+	zone->inRange(object, 512);
 
 	zone->updateActiveAreas(object);
 
@@ -214,7 +190,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 		//ManagedReference<SceneObject*> par = parent.get();
 
-		if (parent != NULL && parent->isCellObject()) {
+		/*if (parent != NULL && parent->isCellObject()) {
 			BuildingObject* building = cast<BuildingObject*>(parent->getParent());
 
 			//par = parent;
@@ -223,10 +199,18 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			else
 				zone->remove(object);
 		} else
+			zone->remove(object);*/
+
+		if (parent != NULL) {
+			/*if (parent->isCellObject())
+				object->removeFromBuilding(dynamic_cast<BuildingObject*>(parent->getParent()));
+			else*/
+				parent->removeObject(object, false);
+		} else
 			zone->remove(object);
 
 		while (object->inRangeObjectCount() > 0) {
-			QuadTreeEntry* obj = object->getInRangeObject(0);
+			ManagedReference<QuadTreeEntry*> obj = object->getInRangeObject(0);
 
 			if (obj != object)
 				obj->removeInRangeObject(object);
@@ -250,7 +234,8 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			if (outdoorChild == NULL)
 				continue;
 
-			outdoorChild->removeFromZone();
+			if (outdoorChild->isInQuadTree())
+				outdoorChild->destroyObjectFromWorld(true);
 		}
 
 		//removeInRangeObjects();
