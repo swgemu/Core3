@@ -44,29 +44,27 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
-#include "server/zone/objects/tangible/Container.h"
-
 /*#include "system/mm/AllocationTracker.h"
 
-AllocationTracker* tracker;
+	AllocationTracker* tracker;
 
-void initializeTracker() {
-	printf("malloc initialization Hook installed\n");
+	void initializeTracker() {
+	        printf("malloc initialization Hook installed\n");
 
-	tracker = AllocationTracker::getInstance();
-	tracker->install();
+	        tracker = AllocationTracker::getInstance();
+	        tracker->install();
 }*/
-
-//void (*__malloc_initialize_hook)(void) = initializeTracker;
 
 int main(int argc, char* argv[]) {
 	try {
-		Vector<String> arguments;
+		SortedVector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
-			arguments.add(argv[i]);
+			arguments.put(argv[i]);
 		}
 
-		ServerCore core;
+		bool truncateData = arguments.contains("clean");
+
+		ServerCore core(truncateData);
 
 		core.start();
 
