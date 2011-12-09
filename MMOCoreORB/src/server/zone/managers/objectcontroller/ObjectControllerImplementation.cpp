@@ -156,7 +156,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 	String characterAbility = queueCommand->getCharacterAbility();
 
-	/*if (characterAbility.length() > 1) {
+	if (characterAbility.length() > 1) {
 		object->info("activating characterAbility " + characterAbility);
 
 		if (object->isPlayerCreature()) {
@@ -168,7 +168,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 				return 0.f;
 			}
 		}
-	}*/
+	}
 
 	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 

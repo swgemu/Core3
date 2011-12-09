@@ -52,7 +52,7 @@ void TutorialBuildingObjectImplementation::enqueueUnloadEvent() {
 }
 
 void TutorialBuildingObjectImplementation::notifyRemoveFromZone() {
-	for (int i = 0; i < cells.size(); ++i) {
+	/*for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
 		Vector<ManagedReference<SceneObject*> > terminalsToSave;
@@ -74,7 +74,7 @@ void TutorialBuildingObjectImplementation::notifyRemoveFromZone() {
 
 			cell->transferObject(obj, -1, false);
 		}
-	}
+	}*/
 
 	TangibleObjectImplementation::notifyRemoveFromZone();
 }
