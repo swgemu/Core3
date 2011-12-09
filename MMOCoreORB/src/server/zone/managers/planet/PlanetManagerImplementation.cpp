@@ -218,7 +218,7 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 	else if (node->getParentID() != 0)
 		error("parent id " + String::valueOf(node->getParentID()));
 
-	if (parentObject == NULL || parentObject->isCellObject())
+	if (parentObject == NULL)
 		//object->insertToZone(zone);
 		zone->transferObject(object, -1, true);
 
