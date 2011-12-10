@@ -56,6 +56,7 @@ import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.stringid.StringIdManager;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
+include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 
 class MissionManager extends Observer implements Logger {
 	@weakReference
@@ -64,6 +65,9 @@ class MissionManager extends Observer implements Logger {
 	
 	@dereferenced
 	protected LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
+	
+	@dereferenced
+	protected MissionNpcSpawnMap missionNpcSpawnMap;
 	
 	@dereferenced
 	protected SortedVector<unsigned int> npcObjectTemplatesToSpawn;
@@ -79,6 +83,8 @@ class MissionManager extends Observer implements Logger {
 		
 		loadLairObjectsToSpawn();
 		loadNpcObjectsToSpawn();
+		
+		missionNpcSpawnMap.loadSpawnPointsFromLua();
 	}
 	
 	public native void loadLairObjectsToSpawn();

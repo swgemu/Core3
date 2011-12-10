@@ -121,6 +121,8 @@ using namespace server::zone::managers::stringid;
 
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
 
+#include "server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.h"
+
 #include "system/util/SortedVector.h"
 
 #include "engine/util/Observer.h"
@@ -225,6 +227,8 @@ private:
 
 protected:
 	LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
+
+	MissionNpcSpawnMap missionNpcSpawnMap;
 
 	SortedVector<unsigned int> npcObjectTemplatesToSpawn;
 

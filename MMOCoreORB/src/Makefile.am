@@ -483,6 +483,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/terrain/TerrainManager.cpp \
 		server/zone/managers/templates/TemplateManager.cpp \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
+		server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \

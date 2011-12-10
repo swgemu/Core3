@@ -582,6 +582,11 @@ bool MissionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "missionNpcSpawnMap") {
+		TypeInfo<MissionNpcSpawnMap >::parseFromBinaryStream(&missionNpcSpawnMap, stream);
+		return true;
+	}
+
 	if (_name == "npcObjectTemplatesToSpawn") {
 		TypeInfo<SortedVector<unsigned int> >::parseFromBinaryStream(&npcObjectTemplatesToSpawn, stream);
 		return true;
@@ -618,6 +623,14 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "missionNpcSpawnMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<MissionNpcSpawnMap >::toBinaryStream(&missionNpcSpawnMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "npcObjectTemplatesToSpawn";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -627,7 +640,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + ObserverImplementation::writeObjectMembers(stream);
+	return 4 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServer* impl) {
@@ -644,6 +657,8 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, Zone
 	loadLairObjectsToSpawn();
 	// server/zone/managers/mission/MissionManager.idl():  		loadNpcObjectsToSpawn();
 	loadNpcObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl():  		missionNpcSpawnMap.loadSpawnPointsFromLua();
+	(&missionNpcSpawnMap)->loadSpawnPointsFromLua();
 }
 
 /*
