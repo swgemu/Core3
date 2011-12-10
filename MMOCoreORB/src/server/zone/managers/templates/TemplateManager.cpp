@@ -44,7 +44,6 @@
 #include "server/zone/templates/tangible/LootkitObjectTemplate.h"
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/templates/tangible/FireworkObjectTemplate.h"
-#include "server/zone/templates/tangible/LairObjectTemplate.h"
 #include "server/zone/templates/tangible/CampKitTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
@@ -353,7 +352,6 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<CloningBuildingObjectTemplate>(SharedObjectTemplate::CLONINGBUILDING);
 	templateFactory.registerObject<DraftSchematicObjectTemplate>(SharedObjectTemplate::DRAFTSCHEMATIC);
 	templateFactory.registerObject<NonPlayerCreatureObjectTemplate>(SharedObjectTemplate::NPCCREATURE);
-	templateFactory.registerObject<LairObjectTemplate>(SharedObjectTemplate::LAIRTEMPLATE);
 	templateFactory.registerObject<FactoryObjectTemplate>(SharedObjectTemplate::FACTORY);
 	templateFactory.registerObject<StimPackTemplate>(SharedObjectTemplate::STIMPACK);
 	templateFactory.registerObject<RangedStimPackTemplate>(SharedObjectTemplate::RANGEDSTIMPACK);

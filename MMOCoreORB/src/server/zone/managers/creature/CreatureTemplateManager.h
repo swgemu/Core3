@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/mobile/ConversationTemplate.h"
+#include "server/zone/templates/mobile/LairTemplate.h"
 #include "SpawnGroup.h"
 #include "StaticSpawnGroup.h"
 #include "DynamicSpawnGroup.h"
@@ -30,6 +31,8 @@ protected:
 
 	HashTable<uint32, Reference<ConversationTemplate*> > conversations;
 
+	HashTable<uint32, Reference<LairTemplate*> > lairTemplates;
+
 public:
 	CreatureTemplateManager();
 	virtual ~CreatureTemplateManager();
@@ -41,6 +44,7 @@ public:
 	static int addDynamicGroup(lua_State* L);
 	static int addStaticGroup(lua_State* L);
 	static int addConversationTemplate(lua_State* L);
+	static int addLairTemplate(lua_State* L);
 
 	int size() {
 		return hashTable.size();
@@ -88,6 +92,10 @@ public:
 
 	StaticSpawnGroup* getStaticGroup(String ascii) {
 		return staticGroupMap.get(ascii.hashCode());
+	}
+
+	LairTemplate* getLairTemplate(uint32 crc) {
+		return lairTemplates.get(crc);
 	}
 
 };

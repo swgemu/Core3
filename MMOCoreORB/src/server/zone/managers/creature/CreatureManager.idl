@@ -49,6 +49,8 @@ class CreatureManager extends ZoneManager {
 		loadInformants();
 	}
 	
+	public native TangibleObject spawnLair(unsigned int lairTemplate, float x, float z, float y);
+	
 	/**
 	 * Spawns the specified creature into zone
 	 * @pre { this unlocked }
@@ -59,6 +61,7 @@ class CreatureManager extends ZoneManager {
 	 * @param parentID cell object id (optional)
 	 * @return returns creature object that has been spawned, NULL on error
 	 */
+	public native CreatureObject spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject createCreature(unsigned int templateCRC);

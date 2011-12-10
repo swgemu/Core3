@@ -11,22 +11,6 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace lair {
-
-class LairObject;
-
-} // namespace lair
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::lair;
-
 #include "server/zone/objects/creature/aigroup/AiGroup.h"
 
 namespace server {
@@ -68,7 +52,6 @@ namespace creature {
 namespace aigroup {
 
 class LairGroupImplementation : public AiGroupImplementation {
-	ManagedReference<LairObject* > lair;
 
 public:
 	LairGroupImplementation();

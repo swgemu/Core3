@@ -20,6 +20,10 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
 /*
  *	TangibleObjectStub
  */
@@ -916,6 +920,15 @@ bool TangibleObject::isFromFactoryCrate() {
 		return _implementation->isFromFactoryCrate();
 }
 
+DamageMap* TangibleObject::getDamageMap() {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getDamageMap();
+}
+
 void TangibleObject::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1326,6 +1339,7 @@ TangibleObjectImplementation::TangibleObjectImplementation() {
 }
 
 void TangibleObjectImplementation::initializeMembers() {
+	Reference<DamageMap*> _ref0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		faction = 0;
 	faction = 0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		level = 1;
@@ -1346,6 +1360,8 @@ void TangibleObjectImplementation::initializeMembers() {
 	sliceable = false;
 	// server/zone/objects/tangible/TangibleObject.idl():  		sliced = false;
 	sliced = false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		damageMap = new DamageMap();
+	damageMap = _ref0 = new DamageMap();
 }
 
 void TangibleObjectImplementation::setCombatState() {
@@ -1592,6 +1608,11 @@ String TangibleObjectImplementation::getCraftersSerial() {
 bool TangibleObjectImplementation::isFromFactoryCrate() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return optionsBitmask & 0x2100;
 	return optionsBitmask & 0x2100;
+}
+
+DamageMap* TangibleObjectImplementation::getDamageMap() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return damageMap;
+	return damageMap;
 }
 
 /*

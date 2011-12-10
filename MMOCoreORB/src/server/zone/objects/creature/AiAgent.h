@@ -223,8 +223,6 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/WorldCoordinates.h"
 
-#include "server/zone/objects/tangible/DamageMap.h"
-
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 
 #include "engine/lua/LuaObject.h"
@@ -398,8 +396,6 @@ public:
 
 	int getNumberOfPlayersInRange();
 
-	DamageMap* getDamageMap();
-
 	String getFactionString();
 
 	String getSocialGroup();
@@ -472,8 +468,6 @@ protected:
 	PatrolPoint homeLocation;
 
 	PatrolPoint nextStepPosition;
-
-	DamageMap damageMap;
 
 	SortedVector<ManagedReference<AiObserver* > > aiObserverMap;
 
@@ -653,8 +647,6 @@ public:
 	bool getDespawnOnNoPlayerInRange();
 
 	int getNumberOfPlayersInRange();
-
-	DamageMap* getDamageMap();
 
 	String getFactionString();
 

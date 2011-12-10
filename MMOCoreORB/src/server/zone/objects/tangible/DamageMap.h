@@ -13,14 +13,14 @@
 namespace server {
  namespace zone {
   namespace objects {
-   namespace player {
-    class PlayerCreature;
+   namespace creature {
+    class CreatureObject;
    }
   }
  }
 }
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 
 namespace server {
@@ -39,9 +39,11 @@ class WeaponObject;
 
 using namespace server::zone::objects::tangible::weapon;
 
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace tangible {
+
 
 class DamageMapEntry : public VectorMap<ManagedReference<WeaponObject*>, uint32> {
 
@@ -86,5 +88,13 @@ public:
 
 	uint32 getTotalDamage();
 };
+
+
+   }
+  }
+ }
+}
+
+using namespace server::zone::objects::tangible;
 
 #endif /* DAMAGEMAP_H_ */

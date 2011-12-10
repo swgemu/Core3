@@ -921,15 +921,6 @@ int AiAgent::getNumberOfPlayersInRange() {
 		return _implementation->getNumberOfPlayersInRange();
 }
 
-DamageMap* AiAgent::getDamageMap() {
-	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getDamageMap();
-}
-
 String AiAgent::getFactionString() {
 	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1230,11 +1221,6 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
-	if (_name == "damageMap") {
-		TypeInfo<DamageMap >::parseFromBinaryStream(&damageMap, stream);
-		return true;
-	}
-
 	if (_name == "aiObserverMap") {
 		TypeInfo<SortedVector<ManagedReference<AiObserver* > > >::parseFromBinaryStream(&aiObserverMap, stream);
 		return true;
@@ -1327,14 +1313,6 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "damageMap";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<DamageMap >::toBinaryStream(&damageMap, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "aiObserverMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1408,7 +1386,7 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 14 + CreatureObjectImplementation::writeObjectMembers(stream);
+	return 13 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 AiAgentImplementation::AiAgentImplementation() {
@@ -1674,11 +1652,6 @@ bool AiAgentImplementation::getDespawnOnNoPlayerInRange() {
 int AiAgentImplementation::getNumberOfPlayersInRange() {
 	// server/zone/objects/creature/AiAgent.idl():  		return numberOfPlayersInRange;
 	return numberOfPlayersInRange;
-}
-
-DamageMap* AiAgentImplementation::getDamageMap() {
-	// server/zone/objects/creature/AiAgent.idl():  		return damageMap;
-	return (&damageMap);
 }
 
 String AiAgentImplementation::getFactionString() {

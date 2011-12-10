@@ -8,7 +8,6 @@
 #include "EntertainerMissionObjective.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
@@ -16,6 +15,9 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void EntertainerMissionObjectiveImplementation::activate() {
 	WaypointObject* waypoint = mission->getWaypointToMission();

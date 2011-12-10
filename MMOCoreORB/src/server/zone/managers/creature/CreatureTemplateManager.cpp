@@ -6,7 +6,6 @@
  */
 
 #include "CreatureTemplateManager.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
 
 CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateManager") {
 	/*setLogging(false);
@@ -23,6 +22,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua_register(lua->getLuaState(), "addDynamicGroup", addDynamicGroup);
 	lua_register(lua->getLuaState(), "addStaticGroup", addStaticGroup);
 	lua_register(lua->getLuaState(), "addConversationTemplate", addConversationTemplate);
+	lua_register(lua->getLuaState(), "addLairTemplate", addLairTemplate);
 
 	lua->setGlobalInt("NONE", CreatureFlag::NONE);
 	lua->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
@@ -128,6 +128,20 @@ int CreatureTemplateManager::addStaticGroup(lua_State* L) {
 
 	LuaObject obj(L);
 	CreatureTemplateManager::instance()->staticGroupMap.put(crc, new StaticSpawnGroup(ascii, obj));
+
+	return 0;
+}
+
+int CreatureTemplateManager::addLairTemplate(lua_State* L) {
+	String ascii = lua_tostring(L, -2);
+	uint32 crc = (uint32) ascii.hashCode();
+
+	LuaObject obj(L);
+
+	Reference<LairTemplate*> templ = new LairTemplate(ascii);
+	templ->readObject(&obj);
+
+	CreatureTemplateManager::instance()->lairTemplates.put(crc, templ);
 
 	return 0;
 }

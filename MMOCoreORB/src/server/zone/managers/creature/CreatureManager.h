@@ -148,6 +148,10 @@ public:
 
 	void initialize();
 
+	TangibleObject* spawnLair(unsigned int lairTemplate, float x, float z, float y);
+
+	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
+
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID = 0);
@@ -220,6 +224,10 @@ public:
 	CreatureManagerImplementation(DummyConstructorParameter* param);
 
 	void initialize();
+
+	TangibleObject* spawnLair(unsigned int lairTemplate, float x, float z, float y);
+
+	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
@@ -303,6 +311,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initialize();
+
+	TangibleObject* spawnLair(unsigned int lairTemplate, float x, float z, float y);
+
+	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID);
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
 

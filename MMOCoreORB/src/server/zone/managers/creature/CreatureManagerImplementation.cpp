@@ -31,6 +31,8 @@
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/objects/tangible/DamageMap.h"
+#include "LairObserver.h"
 
 void CreatureManagerImplementation::setCreatureTemplateManager() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
@@ -54,6 +56,48 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	float newY = creature->getPositionY() + (-80.f + (float)System::random(160));
 
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
+}
+
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, float x, float z, float y) {
+	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
+
+	if (lairTmpl == NULL)
+		return NULL;
+
+ 	String buildingToSpawn;
+
+ 	VectorMap<String, uint32>* mobiles = lairTmpl->getMobiles();
+
+ 	int rand = System::random(mobiles->size() - 1);
+
+ 	String mobile = mobiles->elementAt(rand).getKey();
+ 	int level = mobiles->elementAt(rand).getValue();
+
+ 	buildingToSpawn = lairTmpl->getBuilding(level);
+
+ 	TangibleObject* building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
+
+ 	if (building == NULL) {
+ 		error("error spawning " + buildingToSpawn);
+ 		return NULL;
+ 	}
+
+ 	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
+ 	building->setOptionsBitmask(0, false);
+ 	building->setMaxCondition(level * 1000);
+ 	building->setConditionDamage(0, false);
+ 	building->initializePosition(x, z, y);
+
+ 	ManagedReference<LairObserver*> lairObserver = new LairObserver();
+ 	lairObserver->deploy();
+ 	lairObserver->setLairTemplate(lairTmpl);
+
+ 	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
+ 	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
+
+ 	zone->transferObject(building, -1, false);
+
+ 	return building;
 }
 
 void CreatureManagerImplementation::spawnRandomCreature(int number, float x, float z, float y, uint64 parentID) {
@@ -100,6 +144,15 @@ void CreatureManagerImplementation::spawnRandomCreature(int number, float x, flo
 		if (spawnCreature(randomTemplate, 0, x, z, y, parentID) != NULL)
 			++spawnedRandomCreatures;
 	}
+}
+
+CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, uint64 parentID ) {
+	CreatureObject* creature = spawnCreature(mobileTemplateCRC, 0, x, z, y, parentID);
+
+	if (creature != NULL)
+		creature->setLevel(level);
+
+	return creature;
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID) {

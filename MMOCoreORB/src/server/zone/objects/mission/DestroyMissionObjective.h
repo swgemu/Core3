@@ -83,17 +83,15 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace tangible {
-namespace lair {
 
-class LairObject;
+class TangibleObject;
 
-} // namespace lair
 } // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::tangible::lair;
+using namespace server::zone::objects::tangible;
 
 #include "server/zone/templates/TemplateReference.h"
 
@@ -158,7 +156,7 @@ protected:
 
 	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea;
 
-	ManagedReference<LairObject* > lairObject;
+	ManagedReference<TangibleObject* > lairObject;
 
 public:
 	DestroyMissionObjectiveImplementation(MissionObject* mission);

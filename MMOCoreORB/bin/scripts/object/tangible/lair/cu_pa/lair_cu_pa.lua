@@ -42,11 +42,6 @@
 
 
 object_tangible_lair_cu_pa_lair_cu_pa = object_tangible_lair_cu_pa_shared_lair_cu_pa:new {
-	templateType = LAIRTEMPLATE,
-	objectsToSpawn = { "cu_pa" },
-	gameObjectType = 8235,
-	maxCondition = 20000,
-	maxObjectsToSpawn = 10
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_lair_cu_pa, "object/tangible/lair/cu_pa/lair_cu_pa.iff")

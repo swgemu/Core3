@@ -118,6 +118,22 @@ using namespace server::zone::objects::tangible::wearables;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
 class PlayerObject;
@@ -143,6 +159,20 @@ class StructureObject;
 
 using namespace server::zone::objects::structure;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class DamageMap;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
 #include "server/zone/managers/player/StartingLocationList.h"
 
 #include "server/zone/managers/player/StartingLocation.h"
@@ -150,8 +180,6 @@ using namespace server::zone::objects::structure;
 #include "server/zone/objects/player/ValidatedPosition.h"
 
 #include "server/zone/managers/player/StartingItemList.h"
-
-#include "server/zone/objects/tangible/DamageMap.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 

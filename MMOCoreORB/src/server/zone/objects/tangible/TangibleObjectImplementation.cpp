@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "TangibleObject.h"
 
-#include "../../managers/object/ObjectManager.h"
-#include "../scene/variables/CustomizationVariables.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
@@ -61,6 +61,8 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/DamageMap.h"
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -334,6 +336,13 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	setConditionDamage(newConditionDamage, notifyClient);
 
+	if (attacker->isPlayerCreature()) {
+		CreatureObject* player = cast<CreatureObject*>( attacker);
+
+		if (damage > 0 && attacker != _this)
+			damageMap->addDamage(player, damage);
+	}
+
 	if (newConditionDamage >= maxCondition)
 		notifyObjectDestructionObservers(attacker, newConditionDamage);
 
@@ -342,6 +351,8 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
+
+	damageMap->removeAll();
 
 	return 1;
 }

@@ -225,8 +225,8 @@ void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 
 	else {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				super.destroyObjectFromWorld(true);
-	ActiveAreaImplementation::destroyObjectFromWorld(true);
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				super.destroyObjectFromWorld(false);
+	ActiveAreaImplementation::destroyObjectFromWorld(false);
 }
 }
 }

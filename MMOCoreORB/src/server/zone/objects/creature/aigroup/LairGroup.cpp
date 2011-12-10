@@ -4,8 +4,6 @@
 
 #include "LairGroup.h"
 
-#include "server/zone/objects/tangible/lair/LairObject.h"
-
 /*
  *	LairGroupStub
  */
@@ -144,11 +142,6 @@ bool LairGroupImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (AiGroupImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lair") {
-		TypeInfo<ManagedReference<LairObject* > >::parseFromBinaryStream(&lair, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -164,16 +157,8 @@ int LairGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lair";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<LairObject* > >::toBinaryStream(&lair, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 1 + AiGroupImplementation::writeObjectMembers(stream);
+	return 0 + AiGroupImplementation::writeObjectMembers(stream);
 }
 
 LairGroupImplementation::LairGroupImplementation() : AiGroupImplementation() {

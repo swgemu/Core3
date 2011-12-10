@@ -121,22 +121,6 @@ class MissionSpawnActiveArea;
 
 using namespace server::zone::objects::area;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace lair {
-
-class LairObject;
-
-} // namespace lair
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::lair;
-
 #include "server/zone/templates/TemplateReference.h"
 
 #include "engine/util/Observer.h"

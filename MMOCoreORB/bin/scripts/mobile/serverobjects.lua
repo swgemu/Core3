@@ -16,3 +16,6 @@ includeFile("trainer/serverobjects.lua")
 
 -- Mission
 includeFile("mission/serverobjects.lua")
+
+-- Lairs
+includeFile("lair/serverobjects.lua")

@@ -20,8 +20,6 @@
 
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 
-#include "server/zone/objects/tangible/lair/LairObject.h"
-
 /*
  *	DeliverMissionObjectiveStub
  */

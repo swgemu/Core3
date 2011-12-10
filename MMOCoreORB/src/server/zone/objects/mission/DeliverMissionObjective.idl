@@ -56,7 +56,6 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
-import server.zone.objects.tangible.lair.LairObject;
 
 class DeliverMissionObjective extends MissionObjective {
 	protected AiAgent target;

@@ -63,6 +63,8 @@ import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.tangible.DamageMap;
+import server.zone.objects.tangible.weapon.WeaponObject;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -87,6 +89,9 @@ class TangibleObject extends SceneObject {
 	protected byte unknownByte;
 	protected string craftersName;
 	protected string craftersSerial;
+	
+	@transactional
+	protected transient DamageMap damageMap;
 	
 	@dereferenced
 	protected DeltaVector<SceneObject> defenderList;
@@ -163,6 +168,8 @@ class TangibleObject extends SceneObject {
 		
 		sliceable = false;
 		sliced = false;
+		
+		damageMap = new DamageMap();
 	}
 	
 	/**
@@ -532,6 +539,11 @@ class TangibleObject extends SceneObject {
 	
 	public boolean isFromFactoryCrate() {
 		return optionsBitmask & 0x2100;
+	}
+	
+	@local
+	public DamageMap getDamageMap() {
+		return damageMap;
 	}
 	
 	/*

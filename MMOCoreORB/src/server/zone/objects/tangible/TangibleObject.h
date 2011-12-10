@@ -117,6 +117,36 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class DamageMap;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
 #include "server/zone/objects/creature/CreatureFlag.h"
 
 #include "server/zone/objects/scene/SceneObjectType.h"
@@ -344,6 +374,8 @@ public:
 
 	bool isFromFactoryCrate();
 
+	DamageMap* getDamageMap();
+
 	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
 
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
@@ -406,6 +438,8 @@ protected:
 	String craftersName;
 
 	String craftersSerial;
+
+	Reference<DamageMap* > damageMap;
 
 	DeltaVector<ManagedReference<SceneObject* > > defenderList;
 
@@ -615,6 +649,8 @@ public:
 	virtual String getCraftersSerial();
 
 	bool isFromFactoryCrate();
+
+	DamageMap* getDamageMap();
 
 	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
 

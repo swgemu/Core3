@@ -408,8 +408,8 @@ void InstrumentImplementation::notifyLoadFromDatabase() {
 	beingUsed = false;
 	// server/zone/objects/tangible/Instrument.idl():  	}
 	if (spawnedObject != NULL){
-	// server/zone/objects/tangible/Instrument.idl():  			spawnedObject.destroyObjectFromWorld(true);
-	spawnedObject->destroyObjectFromWorld(true);
+	// server/zone/objects/tangible/Instrument.idl():  			spawnedObject.destroyObjectFromWorld(false);
+	spawnedObject->destroyObjectFromWorld(false);
 }
 }
 

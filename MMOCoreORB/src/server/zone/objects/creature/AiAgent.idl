@@ -66,7 +66,6 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.templates.mobile.CreatureTemplate;
-include server.zone.objects.tangible.DamageMap;
 import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 include server.zone.objects.creature.variables.CreatureAttackMap;
 import engine.util.u3d.Coordinate;
@@ -94,9 +93,6 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected PatrolPoint nextStepPosition;
-	
-	@dereferenced
-	protected DamageMap damageMap;
 	
 	@dereferenced
 	protected SortedVector<AiObserver> aiObserverMap;
@@ -517,11 +513,6 @@ class AiAgent extends CreatureObject {
 	
 	public int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange;
-	}
-	
-	@local
-	public DamageMap getDamageMap() {
-		return damageMap;
 	}
 	
 	public string getFactionString() {

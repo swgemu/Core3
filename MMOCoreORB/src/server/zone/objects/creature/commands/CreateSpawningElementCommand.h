@@ -47,9 +47,10 @@ which carries forward this exception.
 
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../../managers/player/PlayerManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 
 class CreateSpawningElementCommand : public QueueCommand {
 public:
@@ -95,12 +96,12 @@ public:
 		String itemtype;
 		args.getStringToken(itemtype);
 
+		ZoneServer* zserv = server->getZoneServer();
+
 		try
 		{
 			if (itemtype.toLowerCase() == "spawn")
 			{
-				ZoneServer* zserv = server->getZoneServer();
-
 				String objectTemplate;
 				args.getStringToken(objectTemplate);
 
@@ -135,7 +136,7 @@ public:
 
 			else if (itemtype.toLowerCase() == "delete")
 			{
-				ZoneServer* zserv = server->getZoneServer();
+
 
 				String chatObjectID;
 				args.getStringToken(chatObjectID);
@@ -153,11 +154,39 @@ public:
 
 				creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
 			}
+
+			else if (itemtype.toLowerCase() == "lair") {
+				String lairTemplate;
+				args.getStringToken(lairTemplate);
+
+				if (creature->getZone() == NULL)
+					return GENERALERROR;
+
+				if (creature->getParent() != NULL) {
+					creature->sendSystemMessage("You need to be outside and unmounted to execute this command");
+
+					return GENERALERROR;
+				}
+
+				CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
+
+				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+
+				if (tano != NULL) {
+					creature->sendSystemMessage("lair spawned");
+					//String className = TypeInfo<TangibleObject>::getClassName(tano, true);
+					creature->sendSystemMessage("pvpStatusBitmask " + String::valueOf(tano->getPvpStatusBitmask()));
+
+					//creature->sendSystemMessage(className + " class created");
+				} else
+					creature->sendSystemMessage("error spawning lair");
+			}
 		}
 
 		catch (Exception& e)
 		{
 			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
+			creature->sendSystemMessage("Spawn: /createSpawningElement lair lair_template");
 			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
 		}
 

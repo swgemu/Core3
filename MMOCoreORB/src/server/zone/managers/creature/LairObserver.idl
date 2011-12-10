@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,19 +38,45 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-package server.zone.objects.creature.aigroup;
+package server.zone.managers.creature;
+import engine.core.ManagedObject;
+import engine.util.Observer;
+import engine.util.Observable;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.templates.mobile.LairTemplate;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.managers.creature.HealLairObserverEvent;
 
-import server.zone.objects.creature.aigroup.AiGroup;
-
-class LairGroup extends AiGroup {
+class LairObserver extends Observer implements Logger {
+	protected transient LairTemplate lairTemplate;
 	
-	public LairGroup() {
+	@dereferenced
+	protected Vector<CreatureObject> spawnedCreatures;
+	
+	protected transient HealLairObserverEvent healLairEvent;
+
+	public LairObserver() {
 		super();
+		
+		Logger.setLoggingName("LairObserver");
+		
+		lairTemplate = null;
+		healLairEvent = null;
 	}
 	
-	public boolean isLairGroup() {
-		return true;
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	
+	public native void notifyDestruction(TangibleObject lair, TangibleObject attacker, int condition);
+	
+	public native void checkForNewSpawns(TangibleObject lair);
+	public native void healLair(TangibleObject lair, TangibleObject attacker);
+	public native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
+	
+	@local
+	public void setLairTemplate(LairTemplate tmpl) {
+		lairTemplate = tmpl;
 	}
 }

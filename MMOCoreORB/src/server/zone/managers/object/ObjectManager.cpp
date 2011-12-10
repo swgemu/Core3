@@ -223,8 +223,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CloningTerminal>(SceneObjectType::CLONING);
 	objectFactory.registerObject<VendorTerminal>(SceneObjectType::VENDORTERMINAL);
 
-	objectFactory.registerObject<LairObject>(SceneObjectType::LAIR);
-
 	objectFactory.registerObject<Deed>(SceneObjectType::DEED);
 	objectFactory.registerObject<VehicleDeed>(SceneObjectType::VEHICLEDEED);
 	objectFactory.registerObject<BuildingDeed>(SceneObjectType::BUILDINGDEED);

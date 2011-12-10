@@ -23,21 +23,50 @@ protected:
 
 	VectorMap<uint32, Vector<String>* > buildings;
 
-public:
-	const static uint32 VERYEASY = 0;
-	const static uint32 EASY = 1;
-	const static uint32 MEDIUM = 2;
-	const static uint32 HARD = 3;
-	const static uint32 VERYHARD = 4;
+	String name;
 
-	LairTemplate() {
+public:
+	enum { VERYEASY = 0, EASY, MEDIUM, HARD, VERYHARD};
+
+	//      0-50 50-100 100-200 200-300 300+
+
+	LairTemplate(const String& templateName) {
 		buildings.setAllowDuplicateInsertPlan();
 		buildings.setNullValue(NULL);
+
+		name = templateName;
 	}
 
 	virtual ~LairTemplate() {
 		for (int i = 0; i < buildings.size(); ++i)
 			delete buildings.elementAt(i).getValue();
+	}
+
+	String getBuilding(int level) {
+		Vector<String>* objects = NULL;
+
+		if (level <= 50) {
+			objects = buildings.get((uint32)VERYEASY);
+		} else if (level <= 100) {
+			objects = buildings.get((uint32)EASY);
+		} else if (level <= 200) {
+			objects = buildings.get((uint32)MEDIUM);
+		} else if (level <= 300) {
+			objects = buildings.get((uint32)HARD);
+		} else {
+			objects = buildings.get((uint32)VERYHARD);
+		}
+
+		if (objects == NULL) {
+			for (int i = 0; i < buildings.size() && objects == NULL; ++i) {
+				objects = buildings.elementAt(i).getValue();
+			}
+		}
+
+		if (objects != NULL)
+			return objects->get(System::random(objects->size() - 1));
+		else
+			return String();
 	}
 
 	void readObject(LuaObject* templateData) {
@@ -62,7 +91,7 @@ public:
 		mobs.pop();
 
 		LuaObject veryEasy = templateData->getObjectField("buildingsVeryEasy");
-		Vector<String>* buildings = this->buildings.get(VERYEASY);
+		Vector<String>* buildings = this->buildings.get((uint32)VERYEASY);
 
 		if (buildings == NULL) {
 			buildings = new Vector<String>();
@@ -76,7 +105,7 @@ public:
 		veryEasy.pop();
 
 		LuaObject easy = templateData->getObjectField("buildingsEasy");
-		buildings = this->buildings.get(EASY);
+		buildings = this->buildings.get((uint32)EASY);
 
 		if (buildings == NULL) {
 			buildings = new Vector<String>();
@@ -91,7 +120,7 @@ public:
 
 		LuaObject medium = templateData->getObjectField("buildingsMedium");
 
-		buildings = this->buildings.get(MEDIUM);
+		buildings = this->buildings.get((uint32)MEDIUM);
 
 		if (buildings == NULL) {
 			buildings = new Vector<String>();
@@ -106,7 +135,7 @@ public:
 
 		LuaObject hard = templateData->getObjectField("buildingsHard");
 
-		buildings = this->buildings.get(HARD);
+		buildings = this->buildings.get((uint32)HARD);
 
 		if (buildings == NULL) {
 			buildings = new Vector<String>();
@@ -121,11 +150,11 @@ public:
 
 		LuaObject veryHard = templateData->getObjectField("buildingsVeryHard");
 
-		buildings = this->buildings.get(VERYHARD);
+		buildings = this->buildings.get((uint32)VERYHARD);
 
 		if (buildings == NULL) {
 			buildings = new Vector<String>();
-			this->buildings.put(VERYHARD, buildings);
+			this->buildings.put((uint32)VERYHARD, buildings);
 		}
 
 		for (int i = 1; i <= veryHard.getTableSize(); ++i) {
@@ -136,6 +165,13 @@ public:
 
 	}
 
+	int getSpawnLimit() {
+		return spawnLimit;
+	}
+
+	VectorMap<String, uint32>* getMobiles() {
+		return &mobiles;
+	}
 
 };
 

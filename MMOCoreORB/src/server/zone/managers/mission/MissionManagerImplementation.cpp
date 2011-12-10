@@ -23,7 +23,6 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/MissionTargetMap.h"
 #include "server/zone/managers/name/NameManager.h"
-#include "server/zone/templates/tangible/LairObjectTemplate.h"
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/Zone.h"

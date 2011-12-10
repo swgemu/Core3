@@ -18,6 +18,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/tangible/DamageMap.h"
 
 
 void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
@@ -100,7 +101,7 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 
 	setOblivious();
 
-	damageMap.removeAll();
+	damageMap->removeAll();
 
 	Vector3 runTrajectory(getPositionX() - target->getPositionX(), getPositionY() - target->getPositionY(), 0);
 	runTrajectory = runTrajectory * (100 / runTrajectory.length());

@@ -14,7 +14,7 @@
 
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 
-#include "server/zone/objects/tangible/lair/LairObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 /*
  *	DestroyMissionObjectiveStub
@@ -255,7 +255,7 @@ bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 	}
 
 	if (_name == "lairObject") {
-		TypeInfo<ManagedReference<LairObject* > >::parseFromBinaryStream(&lairObject, stream);
+		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&lairObject, stream);
 		return true;
 	}
 
@@ -294,7 +294,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<LairObject* > >::toBinaryStream(&lairObject, stream);
+	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&lairObject, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

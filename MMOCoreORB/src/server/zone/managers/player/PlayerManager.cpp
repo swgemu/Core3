@@ -20,9 +20,13 @@
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
 #include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/objects/structure/StructureObject.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
 
 /*
  *	PlayerManagerStub

@@ -8,7 +8,6 @@
 #include "HuntingMissionObjective.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
