@@ -115,6 +115,9 @@ public:
 		if (object == NULL)
 			return;
 
+		if (object->getZone() == NULL)
+			return;
+
 		PlayerObject* ghost = object->getPlayerObject();
 
 		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
@@ -196,7 +199,6 @@ public:
 
 		object->setPosition(positionX, positionZ, positionY);
 		ghost->setClientLastMovementStamp(movementStamp);
-
 
 		/*StringBuffer posMsg;
 		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
