@@ -188,24 +188,8 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 		Locker zoneLocker(zone);
 
-		//ManagedReference<SceneObject*> par = parent.get();
-
-		/*if (parent != NULL && parent->isCellObject()) {
-			BuildingObject* building = cast<BuildingObject*>(parent->getParent());
-
-			//par = parent;
-			if (building != NULL)
-				object->removeFromBuilding(building);
-			else
-				zone->remove(object);
-		} else
-			zone->remove(object);*/
-
 		if (parent != NULL) {
-			/*if (parent->isCellObject())
-				object->removeFromBuilding(dynamic_cast<BuildingObject*>(parent->getParent()));
-			else*/
-				parent->removeObject(object, false);
+			parent->removeObject(object, false);
 		} else
 			zone->remove(object);
 
@@ -238,10 +222,6 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 				outdoorChild->destroyObjectFromWorld(true);
 		}
 
-		//removeInRangeObjects();
-
-		//notifiedSentObjects->removeAll();
-
 		Zone* oldZone = zone;
 		zone = NULL;
 
@@ -261,7 +241,6 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			continue;
 
 		facade->cancelSession();
-		//objectActiveSessions.remove(0);
 	}
 
 	//activeAreas.removeAll();
@@ -269,6 +248,8 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 	object->info("removed from zone");
 
 	object->notifyRemoveFromZone();
+
+	object->setZone(NULL);
 
 	return true;
 }

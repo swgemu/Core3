@@ -42,6 +42,8 @@ namespace server {
 
 		   Locker locker(lair);
 
+		   Locker clocker(attacker, lair);
+
 		   observer->healLair(lair, attacker);
 
 		   if (lair->getConditionDamage() > 0)

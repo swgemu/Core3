@@ -1,5 +1,5 @@
 -- {"regionName", xCenter, yCenter, radius, tier, spawnConstant, ["spawnGroup1"], [...]}
--- tier: 0 = no spawn, 1 = static spawn area, 2 = dynamic spawn area
+-- tier: 0 = no spawn, 1 = static spawn area, 2 = dynamic spawn area, 3 lair spawn area
 
 corellia_regions = {
 	{"coronet",0,0,0,0,1},
@@ -37,7 +37,7 @@ corellia_regions = {
 	{"forest4",0,0,0,0,1},
 	{"forest5",0,0,0,0,1},
 	{"swamp1",0,0,0,0,1},
-	{"world_spawner",0,0,0,0,1},
+	{"world_spawner",0,0,512,3,1, "tatooine_test"},
 	{"coronest_easy_newbie",0,0,0,0,1},
 	{"coronet_medium_newbie",0,0,0,0,1},
 	{"tyrena_easy_newbie",0,0,0,0,1},

@@ -74,7 +74,7 @@ public:
 
 	void notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition);
 
-	void checkForNewSpawns(TangibleObject* lair);
+	void checkForNewSpawns(TangibleObject* lair, bool forceSpawn = false);
 
 	void healLair(TangibleObject* lair, TangibleObject* attacker);
 
@@ -123,7 +123,7 @@ public:
 
 	void notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition);
 
-	void checkForNewSpawns(TangibleObject* lair);
+	void checkForNewSpawns(TangibleObject* lair, bool forceSpawn = false);
 
 	void healLair(TangibleObject* lair, TangibleObject* attacker);
 
@@ -178,7 +178,7 @@ public:
 
 	void notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition);
 
-	void checkForNewSpawns(TangibleObject* lair);
+	void checkForNewSpawns(TangibleObject* lair, bool forceSpawn);
 
 	void healLair(TangibleObject* lair, TangibleObject* attacker);
 

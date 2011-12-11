@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,73 +38,55 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
 package server.zone.objects.area;
-
-import server.zone.Zone;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.area.SpawnArea;
-import system.util.SortedVector;
-import system.util.Vector;
-import system.util.VectorMap;
-import engine.util.u3d.Vector3;
-import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedObject;
+import server.zone.objects.area.ActiveArea;
+import system.util.SortedVector;
+import system.util.VectorMap;
 import server.zone.objects.creature.aigroup.AiGroup;
-import server.zone.objects.area.SpawnObserver;
-import server.zone.objects.area.SpawnDynamicAreaCreatureTask;
+import server.zone.objects.area.SpawnArea;
 import engine.util.Observable;
+import server.zone.managers.creature.LairSpawnGroup;
+import server.zone.objects.area.SpawnObserver;
+import system.util.HashTable;
 
-class DynamicSpawnArea extends SpawnArea {
-	@dereferenced
-	protected SortedVector<AiGroup> spawnedGroups;
+class LairSpawnArea extends SpawnArea {
+	
+	protected transient LairSpawnGroup spawnGroup;
+	protected int currentlySpawnedLairs;
+	
+	protected SpawnObserver exitObserver;
 	
 	@dereferenced
-	protected VectorMap<CreatureObject, SpawnDynamicAreaCreatureTask> playerOccupants;
+	protected HashTable<unsigned int, int> spawnedGroupsCount;
 	
 	@dereferenced
-	protected VectorMap<CreatureObject, DynamicSpawnArea> excludedPlayerOccupants;
-	
-	@dereferenced
-	protected SortedVector<SpawnObserver> observers;
-	
-	@dereferenced
-	protected Time lastSpawnTime;
-	
-	protected int maxCreaturesToSpawn;
-	
-	public DynamicSpawnArea() {
-		Logger.setLoggingName("DynamicSpawnArea");
-		maxCreaturesToSpawn = 1;
+	protected HashTable<unsigned long, unsigned int> lairTypes;
+
+	public LairSpawnArea() {
+		super();
 		
-		playerOccupants.setNoDuplicateInsertPlan();
-		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
-				
-		registerObservers();
+		currentlySpawnedLairs = 0;
+		
+		exitObserver = null;
+		
+		Logger.setLoggingName("LairSpawnArea");
 	}
-	
-	public native void registerObservers();
-	
-	public native void spawnCreature(unsigned int templateCRC, CreatureObject player);
 	
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 	
-	@local
-	public native SpawnDynamicAreaCreatureTask addSpawnTask(CreatureObject player);
-	
-	public native void doSpawnEvent(CreatureObject player);
-	public native void doDespawnEvent();
-	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-		
-	public void setMaxCreaturesToSpawn(int num) {
-		maxCreaturesToSpawn = num;
+	
+	public boolean isLairSpawnArea() {
+		return true;
 	}
 	
-	public abstract boolean isDynamicArea() {
-		return true;
+	@local
+	public void setSpawnGroup(LairSpawnGroup group) {
+		spawnGroup = group;
 	}
 }

@@ -71,7 +71,7 @@ class LairObserver extends Observer implements Logger {
 	
 	public native void notifyDestruction(TangibleObject lair, TangibleObject attacker, int condition);
 	
-	public native void checkForNewSpawns(TangibleObject lair);
+	public native void checkForNewSpawns(TangibleObject lair, boolean forceSpawn = false);
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
 	public native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
 	

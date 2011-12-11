@@ -62,6 +62,8 @@ which carries forward this exception.
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
+#define FREE_GOD_MODE
+
 PlayerCreationManager::PlayerCreationManager()
 		: Logger("PlayerCreationManager") {
 

@@ -50,6 +50,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.objects.area.SpawnObserver;
 import engine.util.Observable;
+import server.zone.objects.scene.SceneObject;
 
 class SpawnArea extends ActiveArea {
 	@dereferenced
@@ -57,6 +58,9 @@ class SpawnArea extends ActiveArea {
 	
 	@dereferenced
 	protected SortedVector<SpawnObserver> observers;
+	
+	@dereferenced
+	protected Vector<SpawnArea> noSpawnAreas;
 	
 	protected int tier;
 	protected int spawnConstant;
@@ -68,6 +72,10 @@ class SpawnArea extends ActiveArea {
 	
 	public abstract void registerObservers() {
 	}
+	
+	@local
+	@dereferenced
+	public native Vector3 getRandomPosition(SceneObject player);
 	
 	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		return 1;
@@ -85,11 +93,19 @@ class SpawnArea extends ActiveArea {
 		spawnConstant = n;
 	}
 	
+	public void addNoSpawnArea(SpawnArea area) {
+		noSpawnAreas.add(area);
+	}
+	
 	public abstract boolean isStaticArea() {
 		return false;
 	}
 	
 	public abstract boolean isDynamicArea() {
+		return false;
+	}
+	
+	public abstract boolean isLairSpawnArea() {
 		return false;
 	}
 }

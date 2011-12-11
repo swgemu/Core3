@@ -41,6 +41,20 @@ class SpawnObserver;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "system/util/SortedVector.h"
@@ -60,6 +74,8 @@ public:
 
 	void registerObservers();
 
+	Vector3 getRandomPosition(SceneObject* player);
+
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void addTemplate(unsigned int tempCRC);
@@ -68,9 +84,13 @@ public:
 
 	void setSpawnConstant(int n);
 
+	void addNoSpawnArea(SpawnArea* area);
+
 	bool isStaticArea();
 
 	bool isDynamicArea();
+
+	bool isLairSpawnArea();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -102,6 +122,8 @@ protected:
 
 	SortedVector<ManagedReference<SpawnObserver* > > observers;
 
+	Vector<ManagedReference<SpawnArea* > > noSpawnAreas;
+
 	int tier;
 
 	int spawnConstant;
@@ -113,6 +135,8 @@ public:
 
 	virtual void registerObservers();
 
+	Vector3 getRandomPosition(SceneObject* player);
+
 	virtual int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void addTemplate(unsigned int tempCRC);
@@ -121,9 +145,13 @@ public:
 
 	void setSpawnConstant(int n);
 
+	void addNoSpawnArea(SpawnArea* area);
+
 	virtual bool isStaticArea();
 
 	virtual bool isDynamicArea();
+
+	virtual bool isLairSpawnArea();
 
 	WeakReference<SpawnArea*> _this;
 
@@ -178,9 +206,13 @@ public:
 
 	void setSpawnConstant(int n);
 
+	void addNoSpawnArea(SpawnArea* area);
+
 	bool isStaticArea();
 
 	bool isDynamicArea();
+
+	bool isLairSpawnArea();
 
 };
 

@@ -42,19 +42,19 @@ void SpawnAreaMap::loadMap(Zone* z) {
 
 		for (int i = 0; i < size(); ++i) {
 			SpawnArea* area = get(i);
-			if (area->isDynamicArea()) {
-				DynamicSpawnArea* dynamicArea = cast<DynamicSpawnArea*>(area);
+			/*if (area->isDynamicArea()) {
+				DynamicSpawnArea* dynamicArea = cast<DynamicSpawnArea*>(area);*/
 
-				Vector3 d(dynamicArea->getPositionX(), dynamicArea->getPositionY(), 0);
+			Vector3 d(area->getPositionX(), area->getPositionY(), 0);
 
-				for (int j = 0; j < noSpawnAreas.size(); ++j) {
-					SpawnArea* notHere = noSpawnAreas.get(j);
-					Vector3 offset(notHere->getPosition());
+			for (int j = 0; j < noSpawnAreas.size(); ++j) {
+				SpawnArea* notHere = noSpawnAreas.get(j);
+				Vector3 offset(notHere->getPosition());
 
-					if (d.distanceTo(offset) < dynamicArea->getRadius() + notHere->getRadius())
-						dynamicArea->addNoSpawnArea(notHere);
-				}
+				if (d.distanceTo(offset) < area->getRadius() + notHere->getRadius())
+					area->addNoSpawnArea(notHere);
 			}
+			//}
 		}
 
 		loadStaticSpawns();
@@ -135,13 +135,26 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	int tier = areaObj.getIntAt(5);
 	int constant = areaObj.getIntAt(6);
 
-	uint32 crc;
-	if (tier < 2)
+	uint32 crc = 0;
+	switch (tier) {
+	case 0:
+		return;
+	case 1:
 		crc = String("object/static_spawn_area.iff").hashCode();
-	else
+		break;
+	case 2:
 		crc = String("object/dynamic_spawn_area.iff").hashCode();
+		break;
+	case 3:
+		crc = String("object/lair_spawn_area.iff").hashCode();
+		break;
+	default:
+		error("unknown tier " + String::valueOf(tier));
+		crc = String("object/dynamic_spawn_area.iff").hashCode();
+		break;
+	}
 
-	ManagedReference<SpawnArea*> area = dynamic_cast<SpawnArea*>(ObjectManager::instance()->createObject(crc, 2, "spawnareas"));
+	ManagedReference<SpawnArea*> area = dynamic_cast<SpawnArea*>(ObjectManager::instance()->createObject(crc, 0, "spawnareas"));
 	if (area == NULL)
 		return;
 
@@ -160,7 +173,6 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	for (int j = 7; j <= areaObj.getTableSize(); ++j)
 		area->addTemplate(areaObj.getStringAt(j).hashCode());
 
-	//area->insertToZone(zone);
 	zone->transferObject(area, -1, true);
 
 	area->updateToDatabase();

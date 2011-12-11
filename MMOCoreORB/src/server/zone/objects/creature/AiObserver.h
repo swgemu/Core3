@@ -82,7 +82,7 @@ namespace creature {
 
 class AiObserverImplementation : public ObserverImplementation, public Logger {
 protected:
-	ManagedReference<AiAgent* > aiAgent;
+	ManagedWeakReference<AiAgent* > aiAgent;
 
 public:
 	AiObserverImplementation(AiAgent* agent);

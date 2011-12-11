@@ -8,11 +8,13 @@
 
 #include "server/zone/objects/area/SpawnObserver.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	SpawnAreaStub
  */
 
-enum {RPC_REGISTEROBSERVERS__ = 6,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDTEMPLATE__INT_,RPC_SETTIER__INT_,RPC_SETSPAWNCONSTANT__INT_,RPC_ISSTATICAREA__,RPC_ISDYNAMICAREA__};
+enum {RPC_REGISTEROBSERVERS__ = 6,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDTEMPLATE__INT_,RPC_SETTIER__INT_,RPC_SETSPAWNCONSTANT__INT_,RPC_ADDNOSPAWNAREA__SPAWNAREA_,RPC_ISSTATICAREA__,RPC_ISDYNAMICAREA__,RPC_ISLAIRSPAWNAREA__};
 
 SpawnArea::SpawnArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	SpawnAreaImplementation* _implementation = new SpawnAreaImplementation();
@@ -39,6 +41,15 @@ void SpawnArea::registerObservers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->registerObservers();
+}
+
+Vector3 SpawnArea::getRandomPosition(SceneObject* player) {
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRandomPosition(player);
 }
 
 int SpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -100,6 +111,20 @@ void SpawnArea::setSpawnConstant(int n) {
 		_implementation->setSpawnConstant(n);
 }
 
+void SpawnArea::addNoSpawnArea(SpawnArea* area) {
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDNOSPAWNAREA__SPAWNAREA_);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addNoSpawnArea(area);
+}
+
 bool SpawnArea::isStaticArea() {
 	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -124,6 +149,19 @@ bool SpawnArea::isDynamicArea() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isDynamicArea();
+}
+
+bool SpawnArea::isLairSpawnArea() {
+	SpawnAreaImplementation* _implementation = static_cast<SpawnAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISLAIRSPAWNAREA__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isLairSpawnArea();
 }
 
 DistributedObjectServant* SpawnArea::_getImplementation() {
@@ -241,6 +279,11 @@ bool SpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const 
 		return true;
 	}
 
+	if (_name == "noSpawnAreas") {
+		TypeInfo<Vector<ManagedReference<SpawnArea* > > >::parseFromBinaryStream(&noSpawnAreas, stream);
+		return true;
+	}
+
 	if (_name == "tier") {
 		TypeInfo<int >::parseFromBinaryStream(&tier, stream);
 		return true;
@@ -282,6 +325,14 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "noSpawnAreas";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<SpawnArea* > > >::toBinaryStream(&noSpawnAreas, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "tier";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -299,7 +350,7 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return 5 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 SpawnAreaImplementation::SpawnAreaImplementation() {
@@ -333,12 +384,22 @@ void SpawnAreaImplementation::setSpawnConstant(int n) {
 	spawnConstant = n;
 }
 
+void SpawnAreaImplementation::addNoSpawnArea(SpawnArea* area) {
+	// server/zone/objects/area/SpawnArea.idl():  		noSpawnAreas.add(area);
+	(&noSpawnAreas)->add(area);
+}
+
 bool SpawnAreaImplementation::isStaticArea() {
 	// server/zone/objects/area/SpawnArea.idl():  		return false;
 	return false;
 }
 
 bool SpawnAreaImplementation::isDynamicArea() {
+	// server/zone/objects/area/SpawnArea.idl():  		return false;
+	return false;
+}
+
+bool SpawnAreaImplementation::isLairSpawnArea() {
 	// server/zone/objects/area/SpawnArea.idl():  		return false;
 	return false;
 }
@@ -369,11 +430,17 @@ Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETSPAWNCONSTANT__INT_:
 		setSpawnConstant(inv->getSignedIntParameter());
 		break;
+	case RPC_ADDNOSPAWNAREA__SPAWNAREA_:
+		addNoSpawnArea(static_cast<SpawnArea*>(inv->getObjectParameter()));
+		break;
 	case RPC_ISSTATICAREA__:
 		resp->insertBoolean(isStaticArea());
 		break;
 	case RPC_ISDYNAMICAREA__:
 		resp->insertBoolean(isDynamicArea());
+		break;
+	case RPC_ISLAIRSPAWNAREA__:
+		resp->insertBoolean(isLairSpawnArea());
 		break;
 	default:
 		return NULL;
@@ -402,12 +469,20 @@ void SpawnAreaAdapter::setSpawnConstant(int n) {
 	(static_cast<SpawnArea*>(stub))->setSpawnConstant(n);
 }
 
+void SpawnAreaAdapter::addNoSpawnArea(SpawnArea* area) {
+	(static_cast<SpawnArea*>(stub))->addNoSpawnArea(area);
+}
+
 bool SpawnAreaAdapter::isStaticArea() {
 	return (static_cast<SpawnArea*>(stub))->isStaticArea();
 }
 
 bool SpawnAreaAdapter::isDynamicArea() {
 	return (static_cast<SpawnArea*>(stub))->isDynamicArea();
+}
+
+bool SpawnAreaAdapter::isLairSpawnArea() {
+	return (static_cast<SpawnArea*>(stub))->isLairSpawnArea();
 }
 
 /*

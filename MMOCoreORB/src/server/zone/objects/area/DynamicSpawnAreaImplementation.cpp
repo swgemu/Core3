@@ -13,7 +13,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/aigroup/AiGroup.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 
@@ -34,10 +34,10 @@ void DynamicSpawnAreaImplementation::registerObservers() {
 }
 
 void DynamicSpawnAreaImplementation::notifyEnter(SceneObject* object) {
-	if (!object->isPlayerObject())
+	if (!object->isCreatureObject())
 		return;
 
-	PlayerObject* player = cast<PlayerObject*>(object);
+	CreatureObject* player = cast<CreatureObject*>(object);
 
 	notifyObservers(ObserverEventType::ENTEREDAREA, player, 0);
 
@@ -46,10 +46,10 @@ void DynamicSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 }
 
 void DynamicSpawnAreaImplementation::notifyExit(SceneObject* object) {
-	if (!object->isPlayerObject())
+	if (!object->isCreatureObject())
 		return;
 
-	PlayerObject* player = cast<PlayerObject*>(object);
+	CreatureObject* player = cast<CreatureObject*>(object);
 
 	notifyObservers(ObserverEventType::EXITEDAREA, player, 0);
 
@@ -63,14 +63,14 @@ void DynamicSpawnAreaImplementation::notifyExit(SceneObject* object) {
 	// TODO: add despawn task if players are gone
 }
 
-SpawnDynamicAreaCreatureTask* DynamicSpawnAreaImplementation::addSpawnTask(PlayerObject* player) {
+SpawnDynamicAreaCreatureTask* DynamicSpawnAreaImplementation::addSpawnTask(CreatureObject* player) {
 	Reference<SpawnDynamicAreaCreatureTask*> task = new SpawnDynamicAreaCreatureTask(_this, player);
 	task->schedule(10000 / (spawnConstant > 0 ? spawnConstant : 1)); // is 10 seconds appropriate?
 
 	return task;
 }
 
-void DynamicSpawnAreaImplementation::doSpawnEvent(PlayerObject* player) {
+void DynamicSpawnAreaImplementation::doSpawnEvent(CreatureObject* player) {
 	// TODO: add death rate to spawn chance
 	if (excludedPlayerOccupants.contains(player))
 		return;
@@ -88,11 +88,11 @@ void DynamicSpawnAreaImplementation::doDespawnEvent() {
 }
 
 int DynamicSpawnAreaImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	PlayerObject* player = cast<PlayerObject*>(arg1);
+	CreatureObject* player = cast<CreatureObject*>(arg1);
 	DynamicSpawnArea* area = cast<DynamicSpawnArea*>(observable);
 
-	VectorMapEntry<ManagedReference<PlayerObject*>, ManagedReference<DynamicSpawnArea*> > entry(player, area);
-	int pos = excludedPlayerOccupants.SortedVector<VectorMapEntry<ManagedReference<PlayerObject*>, ManagedReference<DynamicSpawnArea*> > >::find(entry);
+	VectorMapEntry<ManagedReference<CreatureObject*>, ManagedReference<DynamicSpawnArea*> > entry(player, area);
+	int pos = excludedPlayerOccupants.SortedVector<VectorMapEntry<ManagedReference<CreatureObject*>, ManagedReference<DynamicSpawnArea*> > >::find(entry);
 	SpawnDynamicAreaCreatureTask* task = playerOccupants.get(player);
 
 	switch (eventType) {
@@ -121,7 +121,7 @@ int DynamicSpawnAreaImplementation::notifyObserverEvent(uint32 eventType, Observ
 	return 0;
 }
 
-void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObject* player) {
+void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, CreatureObject* player) {
 	DynamicSpawnGroup* templ = CreatureTemplateManager::instance()->getDynamicGroup(templateCRC);
 
 	uint32 crc;
@@ -158,58 +158,4 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 	group->setup(templ);
 
 	spawnedGroups.put(group);
-}
-
-Vector3 DynamicSpawnAreaImplementation::getRandomPosition(PlayerObject* player) {
-	double angle = System::random(359) * Math::DEG2RAD;
-	Vector3 rOuter(64.f * (float)Math::cos(angle), 64.f * (float)Math::sin(angle), 0);
-	float lowIntersect = 1, highIntersect = 0;
-
-	for (int i = 0; i < noSpawnAreas.size(); ++i) {
-		SpawnArea* noSpawnArea = noSpawnAreas.get(i);
-		Vector3 offset(noSpawnArea->getPositionX() - player->getPositionX(), noSpawnArea->getPositionY() - player->getPositionY(), 0);
-		if (offset.squaredLength() >= noSpawnArea->getRadius2() + (64.f * 64.f))
-			continue;
-
-		float t1 = 0, t2 = 0;
-		float a = rOuter.dotProduct(rOuter);
-		float b = 2 * (offset.dotProduct(rOuter));
-		float c = offset.dotProduct(offset) - noSpawnArea->getRadius2();
-
-		float discriminant = (b * b) - (4 * a * c);
-		if (discriminant < 0)
-			continue;
-
-		if (discriminant == 0)
-			t1 = (-b)/(2 * a);
-		else {
-			discriminant = Math::sqrt(discriminant);
-			t1 = (-b + discriminant)/(2 * a);
-			t2 = (-b - discriminant)/(2 * a);
-		}
-
-		if (t1 > 0 && t1 < lowIntersect)
-			lowIntersect = t1;
-		else if (t1 <= 1 && t1 > highIntersect)
-			highIntersect = t1;
-
-		if (t2 > 0 && t2 < lowIntersect)
-			lowIntersect = t2;
-		else if (t2 <= 1 && t2 > highIntersect)
-			highIntersect = t2;
-	}
-
-	float difference = (highIntersect - lowIntersect) * 1000;
-	if (difference < 0)
-		difference = 0;
-
-	float randomLength = (float)System::random(1000 - (int)difference);
-	if (randomLength >= lowIntersect)
-		randomLength = randomLength + difference;
-
-	randomLength /= 1000;
-
-	rOuter = randomLength * rOuter;
-
-	return rOuter;
 }

@@ -70,7 +70,7 @@ namespace area {
 
 class SpawnObserverImplementation : public ObserverImplementation, public Logger {
 protected:
-	ManagedReference<SpawnArea* > spawnArea;
+	ManagedWeakReference<SpawnArea* > spawnArea;
 
 public:
 	SpawnObserverImplementation(SpawnArea* area);

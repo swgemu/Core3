@@ -51,6 +51,7 @@ include server.zone.objects.area.SpawnArea;
 import server.zone.objects.scene.SceneObject;
 
 class SpawnObserver extends Observer implements Logger {
+	@weakReference
 	protected SpawnArea spawnArea;
 	
 	public SpawnObserver(SpawnArea area) {

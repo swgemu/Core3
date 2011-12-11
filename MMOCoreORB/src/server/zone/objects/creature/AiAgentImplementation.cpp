@@ -433,8 +433,11 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	shockWounds = 0;
 	damageMap->removeAll();
 
+	setTargetObject(NULL);
+	setFollowObject(NULL);
+
 	if (respawnTimer == 0) {
-		zone->getCreatureManager()->addToReservePool(_this);
+		//zone->getCreatureManager()->addToReservePool(_this);
 		return;
 	}
 

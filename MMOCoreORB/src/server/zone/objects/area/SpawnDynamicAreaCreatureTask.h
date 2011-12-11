@@ -9,7 +9,7 @@
 #define SPAWNDYNAMICAREACREATURETASK_H_
 
 #include "DynamicSpawnArea.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
  namespace zone {
@@ -18,10 +18,10 @@ namespace server {
 
    class SpawnDynamicAreaCreatureTask : public Task {
 	   ManagedReference<DynamicSpawnArea*> area;
-	   ManagedReference<PlayerObject*> player;
+	   ManagedReference<CreatureObject*> player;
 
    public:
-	   SpawnDynamicAreaCreatureTask(DynamicSpawnArea* ar, PlayerObject* play) {
+	   SpawnDynamicAreaCreatureTask(DynamicSpawnArea* ar, CreatureObject* play) {
 		   area = ar;
 		   player = play;
 	   }
@@ -30,6 +30,7 @@ namespace server {
 		   if (area == NULL || player == NULL)
 			   return;
 
+		   Locker locker(area);
 		   area->doSpawnEvent(player);
 	   }
    };

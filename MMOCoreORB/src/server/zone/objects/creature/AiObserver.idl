@@ -51,6 +51,7 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.ObserverEventType;
 
 class AiObserver extends Observer implements Logger {
+	@weakReference
 	protected AiAgent aiAgent;
 	
 	public AiObserver(AiAgent agent) {

@@ -14,7 +14,7 @@
  *	LairObserverStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,};
 
 LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
@@ -63,18 +63,19 @@ void LairObserver::notifyDestruction(TangibleObject* lair, TangibleObject* attac
 		_implementation->notifyDestruction(lair, attacker, condition);
 }
 
-void LairObserver::checkForNewSpawns(TangibleObject* lair) {
+void LairObserver::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
 	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_);
+		DistributedMethod method(this, RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_);
 		method.addObjectParameter(lair);
+		method.addBooleanParameter(forceSpawn);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->checkForNewSpawns(lair);
+		_implementation->checkForNewSpawns(lair, forceSpawn);
 }
 
 void LairObserver::healLair(TangibleObject* lair, TangibleObject* attacker) {
@@ -286,8 +287,8 @@ Packet* LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_:
 		notifyDestruction(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
-	case RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_:
-		checkForNewSpawns(static_cast<TangibleObject*>(inv->getObjectParameter()));
+	case RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_:
+		checkForNewSpawns(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
 	case RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_:
 		healLair(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
@@ -310,8 +311,8 @@ void LairObserverAdapter::notifyDestruction(TangibleObject* lair, TangibleObject
 	(static_cast<LairObserver*>(stub))->notifyDestruction(lair, attacker, condition);
 }
 
-void LairObserverAdapter::checkForNewSpawns(TangibleObject* lair) {
-	(static_cast<LairObserver*>(stub))->checkForNewSpawns(lair);
+void LairObserverAdapter::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
+	(static_cast<LairObserver*>(stub))->checkForNewSpawns(lair, forceSpawn);
 }
 
 void LairObserverAdapter::healLair(TangibleObject* lair, TangibleObject* attacker) {

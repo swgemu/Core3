@@ -6,6 +6,7 @@
  */
 
 #include "CreatureTemplateManager.h"
+#include "LairSpawnGroup.h"
 
 CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateManager") {
 	/*setLogging(false);
@@ -23,6 +24,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua_register(lua->getLuaState(), "addStaticGroup", addStaticGroup);
 	lua_register(lua->getLuaState(), "addConversationTemplate", addConversationTemplate);
 	lua_register(lua->getLuaState(), "addLairTemplate", addLairTemplate);
+	lua_register(lua->getLuaState(), "addLairGroup", addLairGroup);
 
 	lua->setGlobalInt("NONE", CreatureFlag::NONE);
 	lua->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
@@ -128,6 +130,16 @@ int CreatureTemplateManager::addStaticGroup(lua_State* L) {
 
 	LuaObject obj(L);
 	CreatureTemplateManager::instance()->staticGroupMap.put(crc, new StaticSpawnGroup(ascii, obj));
+
+	return 0;
+}
+
+int CreatureTemplateManager::addLairGroup(lua_State* L) {
+	String ascii = lua_tostring(L, -2);
+	uint32 crc = (uint32) ascii.hashCode();
+
+	LuaObject obj(L);
+	CreatureTemplateManager::instance()->lairSpawnGroupMap.put(crc, new LairSpawnGroup(ascii, obj));
 
 	return 0;
 }

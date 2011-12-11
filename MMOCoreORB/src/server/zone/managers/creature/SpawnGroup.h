@@ -27,7 +27,7 @@ protected:
 public:
 	SpawnGroup() {}
 
-	SpawnGroup(String tempName, LuaObject group) {
+	SpawnGroup(const String& tempName, LuaObject& group) {
 		templateName = tempName;
 		wanderRadius = group.getFloatField("wanderRadius");
 		commandLevel = group.getIntField("commandLevel");

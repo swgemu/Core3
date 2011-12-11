@@ -130,6 +130,8 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	if (lair->getZone() == NULL)
 		return;
 
+	Locker locker(lair);
+
 	int damageToHeal = 0;
 
 	for (int i = 0; i < spawnedCreatures.size(); ++i) {
@@ -164,14 +166,14 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	lair->broadcastMessage(healLoc, false);
 }
 
-void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair) {
+void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
 	if (lair->getZone() == NULL)
 		return;
 
 	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
 		return;
 
-	if (System::random(3) == 1)
+	if (!forceSpawn && System::random(3) == 1)
 		return;
 
 	//SortedVector<uint32>* objectsToSpawn = getObjectsToSpawn();

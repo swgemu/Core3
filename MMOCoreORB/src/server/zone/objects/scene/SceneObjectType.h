@@ -265,6 +265,7 @@ public:
 	const static int STATICSPAWNAREA = 0x2000005;
 	const static int GARAGEAREA = 0x2000006;
 	const static int ACTIVEAREA = 0x2000007;
+	const static int LAIRSPAWNAREA = 0x2000008;
 
 	const static int AIGROUP = 0x4000000;
 	const static int HERDGROUP = 0x4000001;

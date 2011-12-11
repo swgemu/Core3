@@ -82,6 +82,8 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  		return NULL;
  	}
 
+ 	Locker blocker(building);
+
  	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
  	building->setMaxCondition(level * 1000);
@@ -96,6 +98,9 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
 
  	zone->transferObject(building, -1, false);
+
+ 	for (int i = 0; i < 3; ++i)
+ 		lairObserver->checkForNewSpawns(building, true);
 
  	return building;
 }

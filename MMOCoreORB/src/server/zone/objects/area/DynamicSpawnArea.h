@@ -38,16 +38,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerObject;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -132,25 +132,21 @@ public:
 
 	void registerObservers();
 
-	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
-
-	Vector3 getRandomPosition(PlayerObject* player);
+	void spawnCreature(unsigned int templateCRC, CreatureObject* player);
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
-	SpawnDynamicAreaCreatureTask* addSpawnTask(PlayerObject* player);
+	SpawnDynamicAreaCreatureTask* addSpawnTask(CreatureObject* player);
 
-	void doSpawnEvent(PlayerObject* player);
+	void doSpawnEvent(CreatureObject* player);
 
 	void doDespawnEvent();
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setMaxCreaturesToSpawn(int num);
-
-	void addNoSpawnArea(SpawnArea* area);
 
 	bool isDynamicArea();
 
@@ -182,11 +178,9 @@ class DynamicSpawnAreaImplementation : public SpawnAreaImplementation {
 protected:
 	SortedVector<ManagedReference<AiGroup* > > spawnedGroups;
 
-	Vector<ManagedReference<SpawnArea* > > noSpawnAreas;
+	VectorMap<ManagedReference<CreatureObject* >, SpawnDynamicAreaCreatureTask*> playerOccupants;
 
-	VectorMap<ManagedReference<PlayerObject* >, SpawnDynamicAreaCreatureTask*> playerOccupants;
-
-	VectorMap<ManagedReference<PlayerObject* >, ManagedReference<DynamicSpawnArea* > > excludedPlayerOccupants;
+	VectorMap<ManagedReference<CreatureObject* >, ManagedReference<DynamicSpawnArea* > > excludedPlayerOccupants;
 
 	SortedVector<ManagedReference<SpawnObserver* > > observers;
 
@@ -201,25 +195,21 @@ public:
 
 	void registerObservers();
 
-	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
-
-	Vector3 getRandomPosition(PlayerObject* player);
+	void spawnCreature(unsigned int templateCRC, CreatureObject* player);
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
-	SpawnDynamicAreaCreatureTask* addSpawnTask(PlayerObject* player);
+	SpawnDynamicAreaCreatureTask* addSpawnTask(CreatureObject* player);
 
-	void doSpawnEvent(PlayerObject* player);
+	void doSpawnEvent(CreatureObject* player);
 
 	void doDespawnEvent();
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setMaxCreaturesToSpawn(int num);
-
-	void addNoSpawnArea(SpawnArea* area);
 
 	virtual bool isDynamicArea();
 
@@ -268,21 +258,19 @@ public:
 
 	void registerObservers();
 
-	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
+	void spawnCreature(unsigned int templateCRC, CreatureObject* player);
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
-	void doSpawnEvent(PlayerObject* player);
+	void doSpawnEvent(CreatureObject* player);
 
 	void doDespawnEvent();
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setMaxCreaturesToSpawn(int num);
-
-	void addNoSpawnArea(SpawnArea* area);
 
 	bool isDynamicArea();
 

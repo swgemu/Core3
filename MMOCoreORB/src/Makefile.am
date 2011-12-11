@@ -67,7 +67,8 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3 #odb3
 
-core3_IDLS =	server/zone/managers/creature/LairObserver.cpp \
+core3_IDLS =	server/zone/objects/area/LairSpawnArea.cpp \
+				server/zone/managers/creature/LairObserver.cpp \
 				server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/ship/SpaceStationObject.cpp \
@@ -267,6 +268,7 @@ core3_IDLS =	server/zone/managers/creature/LairObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/area/LairSpawnAreaImplementation.cpp \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
@@ -358,6 +360,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/scene/WorldCoordinates.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
+		server/zone/objects/area/SpawnAreaImplementation.cpp \
 		server/zone/objects/area/DynamicSpawnAreaImplementation.cpp \
 		server/zone/objects/area/StaticSpawnAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \

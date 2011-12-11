@@ -70,7 +70,7 @@ tatooine_regions = {
 	{"e_dune_sea_4",0,0,0,0,1},
 	{"tusken_march",0,0,0,0,1},
 	{"southern_reach_1",0,0,0,0,1},
-	{"world_spawner",0,0,0,0,1},
+	{"world_spawner",0,0,512,3,1, "tatooine_test"},
 	{"northern_wasteland",0,0,0,0,1},
 	{"medium_slavers_se",0,0,0,0,1},
 	{"easy_militia_se",0,0,0,0,1},

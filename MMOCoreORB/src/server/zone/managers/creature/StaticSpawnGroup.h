@@ -90,7 +90,7 @@ public:
 		cellID = gr.cellID;
 	}
 
-	StaticSpawnGroup(String tempName, LuaObject group) : SpawnGroup(tempName, group) {
+	StaticSpawnGroup(const String& tempName, LuaObject& group) : SpawnGroup(tempName, group) {
 		respawnTime = group.getIntField("respawnTime");
 		x = group.getFloatField("x");
 		y = group.getFloatField("y");

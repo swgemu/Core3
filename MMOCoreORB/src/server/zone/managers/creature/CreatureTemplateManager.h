@@ -15,6 +15,7 @@
 #include "SpawnGroup.h"
 #include "StaticSpawnGroup.h"
 #include "DynamicSpawnGroup.h"
+#include "LairSpawnGroup.h"
 
 namespace server {
 namespace zone {
@@ -32,6 +33,7 @@ protected:
 	HashTable<uint32, Reference<ConversationTemplate*> > conversations;
 
 	HashTable<uint32, Reference<LairTemplate*> > lairTemplates;
+	HashTable<uint32, Reference<LairSpawnGroup*> > lairSpawnGroupMap;
 
 public:
 	CreatureTemplateManager();
@@ -45,6 +47,7 @@ public:
 	static int addStaticGroup(lua_State* L);
 	static int addConversationTemplate(lua_State* L);
 	static int addLairTemplate(lua_State* L);
+	static int addLairGroup(lua_State* L);
 
 	int size() {
 		return hashTable.size();
@@ -88,6 +91,10 @@ public:
 
 	StaticSpawnGroup* getStaticGroup(uint32 crc) {
 		return staticGroupMap.get(crc);
+	}
+
+	LairSpawnGroup* getLairGroup(uint32 crc) {
+		return lairSpawnGroupMap.get(crc);
 	}
 
 	StaticSpawnGroup* getStaticGroup(String ascii) {
