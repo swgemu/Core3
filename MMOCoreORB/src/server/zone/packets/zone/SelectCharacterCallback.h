@@ -84,73 +84,18 @@ public:
 
 				ghost->updateLastValidatedPosition();
 
+				if (player->getZone() == NULL) {
+					SceneObject* root = player->getRootParent();
+
+					zone->transferObject(root, -1, false);
+				}
+
 				player->sendToOwner(true);
 			} else if (currentParent == NULL) {
 				zone->transferObject(player, -1, true);
 			} else {
 				player->sendToOwner(true);
 			}
-
-
-			/*
-			if (zone != NULL && player->isInQuadTree()) {
-				//reload
-
-				ghost->reload(client);
-				player->info("reloading");
-
-			} else {
-				String zoneName = ghost->getSavedTerrainName();
-				uint64 savedParentID = ghost->getSavedParentID();
-
-
-				ManagedReference<SceneObject*> parent = player->getParent();
-				//ManagedReference<SceneObject*> parent;
-
-				if (parent == NULL)
-					parent = zoneServer->getObject(savedParentID, true);
-
-
-				try {
-					zone = zoneServer->getZone(zoneName);
-				} catch (Exception& e) {
-					zone = NULL;
-				}
-
-				if (parent != NULL && (parent->isCellObject() || parent->isVehicleObject())) {
-					try {
-						Locker clocker(parent, player);
-
-
-
-						if (parent->isCellObject())
-							parent->transferObject(player, -1, false);
-						else if (parent->isVehicleObject())
-							parent->transferObject(player, 4, false);
-
-					} catch (Exception& e) {
-						parent->error("error adding player");
-					}
-				}
-
-				if (parent != NULL) {
-					zone = parent->getZone();
-
-					if (zone == NULL) {
-						SceneObject* root = parent->getRootParent();
-
-						if (root != NULL)
-							zone = root->getZone();
-					}
-
-				}
-
-				if (zone == NULL)
-					zone = zoneServer->getZone(0); //Send them to whatever the first zone is...
-
-				//player->insertToZone(zone);
-				zone->transferObject(player, -1, true);
-			}*/
 
 			if (playerParent == NULL)
 				ghost->setSavedParentID(0);
