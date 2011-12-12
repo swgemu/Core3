@@ -101,6 +101,15 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	}
 
 	objectName = npcTemplate->getObjectName();
+
+	String currentLogName = getLoggingName();
+
+	if (!currentLogName.contains(npcTemplate->getTemplateName())) {
+		StringBuffer logName;
+		logName << getLoggingName() << "[" << npcTemplate->getTemplateName() << "]";
+
+		setLoggingName(logName.toString());
+	}
 }
 
 void AiAgentImplementation::initializeTransientMembers() {

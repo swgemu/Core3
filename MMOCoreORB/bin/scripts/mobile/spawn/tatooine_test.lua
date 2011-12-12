@@ -1,13 +1,12 @@
 tatooine_test = {
 	wanderRadius = 10,
 	commandLevel = 0,
-		
+
 	type = LAIR,
-	
 	maxSpawnLimit = 80,
-	
+
 	lairSpawns = {
-		{   
+		{
 			lairTemplateName = "cu_pa_easy",
 			spawnLimit = -1,
 			minDifficulty = 10,

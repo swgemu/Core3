@@ -46,7 +46,9 @@ which carries forward this exception.
 #include "server/zone/managers/creature/LairSpawnGroup.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "SpawnObserver.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 
 void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
@@ -110,6 +112,29 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	if (currentlySpawnedLairs >= spawnGroup->getMaxSpawnLimit())
 		return;
 
+	if (object->inRangeObjectCount() > 300)
+		return;
+
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	Vector3 randomPosition = getRandomPosition(object);
+
+	//dont spawn in cities
+	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY())) {
+		return;
+	}
+
+	float spawnZ = getZone()->getHeight(randomPosition.getX(), randomPosition.getY());
+
+	TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+	float waterHeight;
+
+	//dont spawn in water..
+	if (terrainManager->getWaterHeight(randomPosition.getX(), randomPosition.getY(), waterHeight)) {
+		if (waterHeight > spawnZ)
+			return;
+	}
 	//Lets choose 3 random spawns;
 
 	LairSpawn* firstSpawn = lairs->get(System::random(totalSize - 1));
@@ -144,17 +169,15 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 			return;
 	}
 
-	Vector3 randomPosition = getRandomPosition(object);
-
-	float spawnZ = getZone()->getHeight(randomPosition.getX(), randomPosition.getY());
-
 	CreatureManager* creatureManager = getZone()->getCreatureManager();
 
 	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, finalSpawn->getMinDifficulty(), finalSpawn->getMaxDifficulty(), randomPosition.getX(), spawnZ, randomPosition.getY());
 
-	if (obj != NULL)
-		obj->info("lair spawned");
-	else {
+	if (obj != NULL) {
+		StringBuffer msg;
+		msg << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY() << " with player in range object count " << object->inRangeObjectCount();
+		obj->info(msg.toString());
+	} else {
 		error("could not spawn lair");
 
 		return;

@@ -6,18 +6,28 @@
  */
 
 #include "SpawnArea.h"
+#include "server/zone/Zone.h"
 
 Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	double angle = System::random(359) * Math::DEG2RAD;
 
-	Vector3 rOuter(radius * (float)Math::cos(angle), radius * (float)Math::sin(angle), 0);
+	float rad = radius;
+	bool playerOrigin = false;
+
+	if (getZone() != NULL && radius >= getZone()->getMaxX()) {
+		rad = 64.f;
+
+		playerOrigin = true;
+	}
+
+	Vector3 rOuter(rad * (float)Math::cos(angle), rad * (float)Math::sin(angle), 0);
 
 	float lowIntersect = 1, highIntersect = 0;
 
 	for (int i = 0; i < noSpawnAreas.size(); ++i) {
 		SpawnArea* noSpawnArea = noSpawnAreas.get(i);
 		Vector3 offset(noSpawnArea->getPositionX() - player->getPositionX(), noSpawnArea->getPositionY() - player->getPositionY(), 0);
-		if (offset.squaredLength() >= noSpawnArea->getRadius2() + (radius2))
+		if (offset.squaredLength() >= noSpawnArea->getRadius2() + (rad * rad))
 			continue;
 
 		float t1 = 0, t2 = 0;
@@ -61,6 +71,16 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	//info("randomLength = " + String::valueOf(randomLength), true);
 
 	rOuter = randomLength * rOuter;
+
+	if (playerOrigin) {
+		Vector3 playerWorldPos = player->getWorldPosition();
+
+		rOuter.setX(rOuter.getX() + playerWorldPos.getX());
+		rOuter.setY(rOuter.getY() + playerWorldPos.getY());
+	} else {
+		rOuter.setX(rOuter.getX() + getPositionX());
+		rOuter.setY(rOuter.getY() + getPositionY());
+	}
 
 	return rOuter;
 }

@@ -274,6 +274,20 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		}
 	}
 
+	// update world areas
+	Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
+
+	for (int i = 0; i < worldAreas->size(); ++i) {
+		ActiveArea* activeArea = worldAreas->get(i);
+
+		if (!object->hasActiveArea(activeArea)) {
+			object->addActiveArea(activeArea);
+			activeArea->enqueueEnterEvent(object);
+		} else {
+			activeArea->notifyPositionUpdate(object);
+		}
+	}
+
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {

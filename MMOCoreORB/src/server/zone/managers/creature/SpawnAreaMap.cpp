@@ -173,7 +173,15 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	for (int j = 7; j <= areaObj.getTableSize(); ++j)
 		area->addTemplate(areaObj.getStringAt(j).hashCode());
 
-	zone->transferObject(area, -1, true);
+	if (radius != -1)
+		zone->transferObject(area, -1, true);
+	else {
+		area->setRadius(zone->getMaxX());
+
+		worldSpawnAreas.add(area);
+
+		area->setZone(zone);
+	}
 
 	area->updateToDatabase();
 

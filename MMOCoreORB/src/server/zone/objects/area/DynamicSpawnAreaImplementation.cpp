@@ -146,8 +146,8 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, CreatureO
 
 	Vector3 rOuter = getRandomPosition(player);
 
-	float x = rOuter.getX() + getPositionX();
-	float y = rOuter.getY() + getPositionY();
+	float x = rOuter.getX();
+	float y = rOuter.getY();
 	float z = getZone()->getHeight(x, y);
 
 	group->setPosition(x, z, y);

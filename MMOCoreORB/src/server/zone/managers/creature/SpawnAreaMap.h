@@ -12,6 +12,7 @@
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/objects/area/DynamicSpawnArea.h"
 #include "server/zone/objects/area/StaticSpawnArea.h"
+#include "server/zone/objects/area/LairSpawnArea.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
@@ -21,6 +22,8 @@ protected:
 	ManagedReference<Zone*> zone;
 
 	Vector<ManagedReference<SpawnArea*> > noSpawnAreas;
+
+	Vector<ManagedReference<SpawnArea*> > worldSpawnAreas;
 
 	void readAreaObject(LuaObject& areaObj);
 	void loadStaticSpawns();
@@ -45,6 +48,10 @@ public:
 	}
 
 	void loadMap(Zone* z);
+
+	Vector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
+		return &worldSpawnAreas;
+	}
 };
 
 

@@ -131,11 +131,27 @@ class CreatureTemplateManager;
 
 using namespace server::zone::managers::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class SpawnArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/managers/creature/CreatureMap.h"
 
 #include "server/zone/managers/creature/SpawnAreaMap.h"
 
 #include "server/zone/managers/ZoneManager.h"
+
+#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {
@@ -181,6 +197,8 @@ public:
 	void addToReservePool(AiAgent* agent);
 
 	int getSpawnedRandomCreatures();
+
+	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -266,6 +284,8 @@ public:
 	void addToReservePool(AiAgent* agent);
 
 	int getSpawnedRandomCreatures();
+
+	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
 
 	WeakReference<CreatureManager*> _this;
 

@@ -10,6 +10,8 @@ import server.zone.objects.creature.Creature;
 import server.zone.managers.ZoneManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.creature.CreatureTemplateManager;
+import server.zone.objects.area.SpawnArea;
+import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
 
@@ -109,5 +111,10 @@ class CreatureManager extends ZoneManager {
 	
 	public int getSpawnedRandomCreatures() {
 		return spawnedRandomCreatures;
+	}
+	
+	@local
+	public Vector<SpawnArea> getWorldSpawnAreas() {
+		return spawnAreaMap.getWorldSpawnAreas();
 	}
 }
