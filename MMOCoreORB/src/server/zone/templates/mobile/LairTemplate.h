@@ -63,7 +63,7 @@ public:
 			}
 		}
 
-		if (objects != NULL)
+		if (objects != NULL && objects->size() > 0)
 			return objects->get(System::random(objects->size() - 1));
 		else
 			return String();
