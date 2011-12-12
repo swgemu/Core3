@@ -115,6 +115,49 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 	}
 }
 
+void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sceneObject->getCloseObjects();
+	SortedVector<ManagedReference<QuadTreeEntry*> >* parentCloseObjects = sceneObject->getRootParent()->getCloseObjects();
+
+	//remove old ones
+	float rangesq = 512.f * 512.f;
+
+	float x = sceneObject->getPositionX();
+	float y = sceneObject->getPositionY();
+
+	float oldx = sceneObject->getPreviousPositionX();
+	float oldy = sceneObject->getPreviousPositionY();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		QuadTreeEntry* o = closeObjects->get(i);
+
+		if (o->getParent() != NULL)
+			o = o->getRootParent();
+
+		if (o != sceneObject) {
+			float deltaX = x - o->getPositionX();
+			float deltaY = y - o->getPositionY();
+
+			if (deltaX * deltaX + deltaY * deltaY > rangesq) {
+				float oldDeltaX = oldx - o->getPositionX();
+				float oldDeltaY = oldy - o->getPositionY();
+
+				if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
+					sceneObject->removeInRangeObject(o);
+					o->removeInRangeObject(sceneObject);
+				}
+			}
+		}
+	}
+
+	//insert new ones
+	for (int i = 0; i < parentCloseObjects->size(); ++i) {
+		QuadTreeEntry* o = parentCloseObjects->get(i);
+
+		sceneObject->addInRangeObject(o, false);
+	}
+}
+
 void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) {
 	SceneObject* parent = sceneObject->getParent();
 	Zone* zone = sceneObject->getZone();
@@ -135,8 +178,13 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 		zone->transferObject(sceneObject, -1, false);
 	} else {
-		zone->update(sceneObject);
-		zone->inRange(sceneObject, 512);
+		if (sceneObject->getLocalZone() != NULL) {
+			zone->update(sceneObject);
+
+			zone->inRange(sceneObject, 512);
+		} else if (parent != NULL) {
+			updateInRangeObjectsOnMount(sceneObject);
+		}
 	}
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {

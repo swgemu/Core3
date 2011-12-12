@@ -77,7 +77,7 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
-
+import engine.util.Observer;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
@@ -1554,6 +1554,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public SharedObjectTemplate getObjectTemplate() {
 		return templateObject;
 	}
+	
+	@local
+	public native SortedVector<Observer> getObservers(unsigned int eventType);
 	
 	public native abstract void createChildObjects();
 	

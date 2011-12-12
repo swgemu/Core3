@@ -94,6 +94,10 @@ public:
 
 	void notifyExit(SceneObject* object);
 
+	void notifyPositionUpdate(QuadTreeEntry* obj);
+
+	void spawnLair(SceneObject* object);
+
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	bool isLairSpawnArea();
@@ -144,6 +148,10 @@ public:
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
+
+	void notifyPositionUpdate(QuadTreeEntry* obj);
+
+	void spawnLair(SceneObject* object);
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -197,6 +205,10 @@ public:
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
+
+	void notifyPositionUpdate(QuadTreeEntry* obj);
+
+	void spawnLair(SceneObject* object);
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 

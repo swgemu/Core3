@@ -58,7 +58,7 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, float x, float z, float y) {
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL)
@@ -71,9 +71,8 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  	int rand = System::random(mobiles->size() - 1);
 
  	String mobile = mobiles->elementAt(rand).getKey();
- 	int level = mobiles->elementAt(rand).getValue();
 
- 	buildingToSpawn = lairTmpl->getBuilding(level);
+ 	buildingToSpawn = lairTmpl->getBuilding(maxDifficulty);
 
  	TangibleObject* building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
 
@@ -86,20 +85,23 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
- 	building->setMaxCondition(level * 1000);
+ 	building->setMaxCondition(maxDifficulty * 1000);
  	building->setConditionDamage(0, false);
  	building->initializePosition(x, z, y);
 
  	ManagedReference<LairObserver*> lairObserver = new LairObserver();
  	lairObserver->deploy();
  	lairObserver->setLairTemplate(lairTmpl);
+ 	lairObserver->setDifficulty(minDifficulty, maxDifficulty);
 
  	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
  	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
 
  	zone->transferObject(building, -1, false);
 
- 	for (int i = 0; i < 3; ++i)
+ 	int count = 1 + System::random(4);
+
+ 	for (int i = 0; i < count; ++i)
  		lairObserver->checkForNewSpawns(building, true);
 
  	return building;

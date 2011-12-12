@@ -144,8 +144,8 @@ public:
 			return;
 		}
 
-		/*if (object->getZone() == NULL)
-			return;*/
+		if (object->getZone() == NULL)
+			return;
 
 		if (object->isRidingMount()) {
 			ZoneServer* zoneServer = server->getZoneServer();

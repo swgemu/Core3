@@ -82,6 +82,8 @@ public:
 
 	void setLairTemplate(LairTemplate* tmpl);
 
+	void setDifficulty(int min, int max);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -114,6 +116,10 @@ protected:
 
 	Reference<HealLairObserverEvent* > healLairEvent;
 
+	int minDifficulty;
+
+	int maxDifficulty;
+
 public:
 	LairObserverImplementation();
 
@@ -130,6 +136,8 @@ public:
 	void checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate = false);
 
 	void setLairTemplate(LairTemplate* tmpl);
+
+	void setDifficulty(int min, int max);
 
 	WeakReference<LairObserver*> _this;
 
@@ -183,6 +191,8 @@ public:
 	void healLair(TangibleObject* lair, TangibleObject* attacker);
 
 	void checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate);
+
+	void setDifficulty(int min, int max);
 
 };
 

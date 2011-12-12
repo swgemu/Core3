@@ -2963,6 +2963,15 @@ SharedObjectTemplate* SceneObject::getObjectTemplate() {
 		return _implementation->getObjectTemplate();
 }
 
+SortedVector<ManagedReference<Observer* > >* SceneObject::getObservers(unsigned int eventType) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getObservers(eventType);
+}
+
 void SceneObject::createChildObjects() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

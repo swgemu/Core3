@@ -57,11 +57,17 @@ class LairObserver extends Observer implements Logger {
 	protected Vector<CreatureObject> spawnedCreatures;
 	
 	protected transient HealLairObserverEvent healLairEvent;
+	
+	protected int minDifficulty;
+	protected int maxDifficulty;
 
 	public LairObserver() {
 		super();
 		
 		Logger.setLoggingName("LairObserver");
+		
+		minDifficulty = 0;
+		maxDifficulty = 500;
 		
 		lairTemplate = null;
 		healLairEvent = null;
@@ -78,5 +84,10 @@ class LairObserver extends Observer implements Logger {
 	@local
 	public void setLairTemplate(LairTemplate tmpl) {
 		lairTemplate = tmpl;
+	}
+	
+	public void setDifficulty(int min, int max) {
+		minDifficulty = min;
+		maxDifficulty = max;
 	}
 }

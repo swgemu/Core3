@@ -258,6 +258,8 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
 			object->dropActiveArea(area);
 			area->enqueueExitEvent(object);
+		} else {
+			area->notifyPositionUpdate(object);
 		}
 	}
 

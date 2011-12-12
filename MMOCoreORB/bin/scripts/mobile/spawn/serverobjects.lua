@@ -1,4 +1,5 @@
 -- spawn groups
 
-includeFile("spawn/naboo/capper_spineflap.lua")
-includeFile("spawn/tatooine/tatooine_test.lua")
+includeFile("spawn/capper_spineflap.lua")
+includeFile("spawn/dynamic_capper_spineflap.lua")
+includeFile("spawn/tatooine_test.lua")

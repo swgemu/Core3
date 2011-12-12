@@ -188,7 +188,13 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	float y = lair->getPositionY() + (20.0f - System::random(400) / 10.0f);
 	float z = lair->getZone()->getHeight(x, y);
 
-	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), objectsToSpawn->get(templateToSpawn), x, z, y);
+	int defaultLevel = objectsToSpawn->get(templateToSpawn);
+
+	if (minDifficulty != 0 || maxDifficulty != 0) {
+		defaultLevel = minDifficulty + System::random(abs(maxDifficulty - minDifficulty));
+	}
+
+	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), defaultLevel, x, z, y);
 
 	if (creature == NULL)
 		return;

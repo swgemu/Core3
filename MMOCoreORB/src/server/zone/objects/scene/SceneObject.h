@@ -227,6 +227,8 @@ using namespace server::zone::objects::creature;
 
 #include "engine/util/Observable.h"
 
+#include "engine/util/Observer.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -681,6 +683,8 @@ public:
 	bool containsChildObject(SceneObject* obj);
 
 	SharedObjectTemplate* getObjectTemplate();
+
+	SortedVector<ManagedReference<Observer* > >* getObservers(unsigned int eventType);
 
 	void createChildObjects();
 
@@ -1225,6 +1229,8 @@ public:
 	bool containsChildObject(SceneObject* obj);
 
 	SharedObjectTemplate* getObjectTemplate();
+
+	SortedVector<ManagedReference<Observer* > >* getObservers(unsigned int eventType);
 
 	virtual void createChildObjects();
 

@@ -148,7 +148,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
 
@@ -225,7 +225,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
 
@@ -312,7 +312,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID);
 

@@ -14,7 +14,7 @@
  *	LairObserverStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_SETDIFFICULTY__INT_INT_};
 
 LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
@@ -116,6 +116,21 @@ void LairObserver::setLairTemplate(LairTemplate* tmpl) {
 
 	} else
 		_implementation->setLairTemplate(tmpl);
+}
+
+void LairObserver::setDifficulty(int min, int max) {
+	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDIFFICULTY__INT_INT_);
+		method.addSignedIntParameter(min);
+		method.addSignedIntParameter(max);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDifficulty(min, max);
 }
 
 DistributedObjectServant* LairObserver::_getImplementation() {
@@ -228,6 +243,16 @@ bool LairObserverImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "minDifficulty") {
+		TypeInfo<int >::parseFromBinaryStream(&minDifficulty, stream);
+		return true;
+	}
+
+	if (_name == "maxDifficulty") {
+		TypeInfo<int >::parseFromBinaryStream(&maxDifficulty, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -251,14 +276,34 @@ int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "minDifficulty";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&minDifficulty, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 1 + ObserverImplementation::writeObjectMembers(stream);
+	_name = "maxDifficulty";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxDifficulty, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 LairObserverImplementation::LairObserverImplementation() : ObserverImplementation() {
 	_initializeImplementation();
 	// server/zone/managers/creature/LairObserver.idl():  		Logger.setLoggingName("LairObserver");
 	Logger::setLoggingName("LairObserver");
+	// server/zone/managers/creature/LairObserver.idl():  		minDifficulty = 0;
+	minDifficulty = 0;
+	// server/zone/managers/creature/LairObserver.idl():  		maxDifficulty = 500;
+	maxDifficulty = 500;
 	// server/zone/managers/creature/LairObserver.idl():  		lairTemplate = null;
 	lairTemplate = NULL;
 	// server/zone/managers/creature/LairObserver.idl():  		healLairEvent = null;
@@ -268,6 +313,13 @@ LairObserverImplementation::LairObserverImplementation() : ObserverImplementatio
 void LairObserverImplementation::setLairTemplate(LairTemplate* tmpl) {
 	// server/zone/managers/creature/LairObserver.idl():  		lairTemplate = tmpl;
 	lairTemplate = tmpl;
+}
+
+void LairObserverImplementation::setDifficulty(int min, int max) {
+	// server/zone/managers/creature/LairObserver.idl():  		minDifficulty = min;
+	minDifficulty = min;
+	// server/zone/managers/creature/LairObserver.idl():  		maxDifficulty = max;
+	maxDifficulty = max;
 }
 
 /*
@@ -296,6 +348,9 @@ Packet* LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_:
 		checkForHeal(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
+	case RPC_SETDIFFICULTY__INT_INT_:
+		setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -321,6 +376,10 @@ void LairObserverAdapter::healLair(TangibleObject* lair, TangibleObject* attacke
 
 void LairObserverAdapter::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
 	(static_cast<LairObserver*>(stub))->checkForHeal(lair, attacker, forceNewUpdate);
+}
+
+void LairObserverAdapter::setDifficulty(int min, int max) {
+	(static_cast<LairObserver*>(stub))->setDifficulty(min, max);
 }
 
 /*

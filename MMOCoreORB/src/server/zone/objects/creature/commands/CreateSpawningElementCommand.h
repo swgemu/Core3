@@ -168,9 +168,12 @@ public:
 					return GENERALERROR;
 				}
 
+				int minLevel = args.getIntToken();
+				int maxLevel = args.getIntToken();
+
 				CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
 
-				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), minLevel, maxLevel, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
 
 				if (tano != NULL) {
 					creature->sendSystemMessage("lair spawned");
@@ -186,7 +189,7 @@ public:
 		catch (Exception& e)
 		{
 			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
-			creature->sendSystemMessage("Spawn: /createSpawningElement lair lair_template");
+			creature->sendSystemMessage("Spawn: /createSpawningElement lair lair_template min_level max_level");
 			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
 		}
 

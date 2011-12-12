@@ -105,7 +105,7 @@ public:
 		if (ghost->isTeleporting())
 			return;
 
-		if (!object->isInQuadTree())
+		if (object->getZone() == NULL)
 			return;
 
 		if (positionX > 8000.0f || positionX < -8000.0f || positionY > 8000.0f || positionY < -8000.0f) {
@@ -140,15 +140,15 @@ public:
 			return;
 		}
 
-		object->setPosition(positionX, positionZ, positionY);
-		object->setDirection(directionW, directionX, directionY, directionZ);
-
-		object->updateZone(false);
-		
 		ship->setMovementCounter(counter);
 		ship->setPosition(positionX, positionZ, positionY);
 		ship->setDirection(directionW, directionX, directionY, directionZ);
 		ship->updateZone(false);
+
+		object->setPosition(positionX, positionZ, positionY);
+		object->setDirection(directionW, directionX, directionY, directionZ);
+
+		object->updateZone(false);
 
 		ShipUpdateTransformMessage* msga = new ShipUpdateTransformMessage(ship, dirX, dirY, dirZ, dirW, posX, posZ, posY, velA, velB, rotA, rotB, rotC);
 		object->broadcastMessage(msga, false);

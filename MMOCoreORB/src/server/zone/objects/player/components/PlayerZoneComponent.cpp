@@ -81,6 +81,12 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
+		SceneObject* par = sceneObject->getParent();
+
+		if (par->isVehicleObject()) {
+			player->executeObjectControllerAction(String("dismount").hashCode());
+		}
+
 		ghost->setSavedParentID(0);
 	}
 
@@ -89,11 +95,23 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	//sceneObject->setTeleporting(true);
+	CreatureObject* player = NULL;
+
+	if (sceneObject->isPlayerCreature()) {
+		player = cast<CreatureObject*>( sceneObject);
+	}
+
+	if (player != NULL && sceneObject->getParent() != NULL) {
+		SceneObject* par = sceneObject->getParent();
+
+		if (par->isVehicleObject()) {
+			player->executeObjectControllerAction(String("dismount").hashCode());
+		}
+	}
 
 	ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 
-	if (sceneObject->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( sceneObject);
+	if (player != NULL) {
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setTeleporting(true);

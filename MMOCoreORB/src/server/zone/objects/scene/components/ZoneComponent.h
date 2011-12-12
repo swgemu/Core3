@@ -92,6 +92,8 @@ public:
 	virtual void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
 	}
 
+	void updateInRangeObjectsOnMount(SceneObject* sceneObject);
+
 
 };
 

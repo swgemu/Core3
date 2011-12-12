@@ -506,6 +506,8 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	if (rootZone != NULL) {
 		Locker locker(rootZone);
 
+		rootZone->remove(_this);
+
 		if (inRangeObjectCount() > 0 || activeAreas.size() > 0) {
 			while (inRangeObjectCount() > 0) {
 				ManagedReference<QuadTreeEntry*> obj = getInRangeObject(0);
@@ -1133,3 +1135,6 @@ SceneObject* SceneObjectImplementation::getParent() {
 	return dynamic_cast<SceneObject*>(parent.get());
 }
 
+SortedVector<ManagedReference<Observer* > >* SceneObjectImplementation::getObservers(unsigned int eventType) {
+	return observerEventMap.getObservers(eventType);
+}

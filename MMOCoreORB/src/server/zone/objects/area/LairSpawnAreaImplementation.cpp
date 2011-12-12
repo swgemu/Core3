@@ -52,6 +52,36 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
 
+	spawnLair(object);
+}
+
+int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	if (eventType != ObserverEventType::OBJECTREMOVEDFROMZONE)
+		return 1;
+
+	TangibleObject* tano = dynamic_cast<TangibleObject*>(observable);
+
+	if (tano == NULL)
+		return 1;
+
+	Locker locker(_this);
+
+	uint32 lairTemplate = lairTypes.remove(tano->getObjectID());
+	int currentSpawnCount = spawnedGroupsCount.get(lairTemplate) - 1;
+
+	if (currentSpawnCount < 1)
+		spawnedGroupsCount.remove(lairTemplate);
+	else
+		spawnedGroupsCount.put(lairTemplate, currentSpawnCount);
+
+	--currentlySpawnedLairs;
+
+	//info("removing spawned lair from here", true);
+
+	return 1;
+}
+
+void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	if (spawnGroup == NULL && spawnCreatureTemplates.size() != 0) {
 		uint32 templateGroupCRC = spawnCreatureTemplates.get(0);
 
@@ -114,14 +144,13 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 			return;
 	}
 
-
 	Vector3 randomPosition = getRandomPosition(object);
 
 	float spawnZ = getZone()->getHeight(randomPosition.getX(), randomPosition.getY());
 
 	CreatureManager* creatureManager = getZone()->getCreatureManager();
 
-	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, randomPosition.getX(), spawnZ, randomPosition.getY());
+	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, finalSpawn->getMinDifficulty(), finalSpawn->getMaxDifficulty(), randomPosition.getX(), spawnZ, randomPosition.getY());
 
 	if (obj != NULL)
 		obj->info("lair spawned");
@@ -147,30 +176,17 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	spawnedGroupsCount.put(lairTemplate.hashCode(), currentSpawnCount);
 }
 
-int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType != ObserverEventType::OBJECTREMOVEDFROMZONE)
-		return 1;
+void LairSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
+	CreatureObject* creature = dynamic_cast<CreatureObject*>(obj);
 
-	TangibleObject* tano = dynamic_cast<TangibleObject*>(observable);
+	if (creature == NULL)
+		return;
 
-	if (tano == NULL)
-		return 1;
+	if (!creature->isPlayerCreature())
+		return;
 
-	Locker locker(_this);
-
-	uint32 lairTemplate = lairTypes.remove(tano->getObjectID());
-	int currentSpawnCount = spawnedGroupsCount.get(lairTemplate) - 1;
-
-	if (currentSpawnCount < 1)
-		spawnedGroupsCount.remove(lairTemplate);
-	else
-		spawnedGroupsCount.put(lairTemplate, currentSpawnCount);
-
-	--currentlySpawnedLairs;
-
-	//info("removing spawned lair from here", true);
-
-	return 1;
+	if (System::random(10) == 1)
+		spawnLair(creature);
 }
 
 void LairSpawnAreaImplementation::notifyExit(SceneObject* object) {
