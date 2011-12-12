@@ -68,11 +68,14 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	VectorMap<String, uint32>* mobiles = lairTmpl->getMobiles();
 
+ 	if (mobiles->size() == 0)
+ 		return NULL;
+
  	int rand = System::random(mobiles->size() - 1);
 
  	String mobile = mobiles->elementAt(rand).getKey();
 
- 	buildingToSpawn = lairTmpl->getBuilding(maxDifficulty);
+ 	buildingToSpawn = lairTmpl->getBuilding((uint32)maxDifficulty);
 
  	TangibleObject* building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
 

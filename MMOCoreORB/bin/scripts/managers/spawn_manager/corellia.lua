@@ -21,7 +21,7 @@ corellia_regions = {
 	{"corellia_rebel_riverside_fort",0,0,0,0,1},
 	{"coronest_easy_newbie",0,0,0,0,1},
 	{"coronet",0,0,0,0,1},
-	{"coronet_medium_newbie",298,-4664,512,3,1,"coro_newbie"},
+	{"coronet_medium_newbie",58,-4392,512,3,1,"coro_newbie"},
 	{"daoba_guerfel",0,0,0,0,1},
 	{"denendre_valley_1",0,0,0,0,1},
 	{"denendre_valley_2",0,0,0,0,1},
