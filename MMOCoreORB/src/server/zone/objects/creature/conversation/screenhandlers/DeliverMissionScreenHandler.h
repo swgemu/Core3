@@ -60,7 +60,7 @@ public:
 
 	DeliverMissionScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		return true;

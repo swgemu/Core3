@@ -101,7 +101,7 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 
 		if (conversationScreen != NULL) {
 			//Modify the conversation screen.
-			conversationScreen = runScreenHandlers(player, selectedOption, conversationScreen);
+			conversationScreen = runScreenHandlers(player, npc, selectedOption, conversationScreen);
 		}
 
 		//Send the conversation screen to the player.
@@ -145,7 +145,7 @@ ConversationScreen* ConversationObserverImplementation::getNextConversationScree
 	return nextConversationScreen;
 }
 
-ConversationScreen* ConversationObserverImplementation::runScreenHandlers(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* ConversationObserverImplementation::runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	ConversationScreen* modifiedScreen = NULL;
 
 	//Loop until a screen has been modified.
@@ -153,7 +153,7 @@ ConversationScreen* ConversationObserverImplementation::runScreenHandlers(Creatu
 		//Call appropriate screen handler.
 		if (screenHandlers.contains(conversationScreen->getScreenID())) {
 			//Copy the conversation screen to preserve the template.
-			modifiedScreen = screenHandlers.get(conversationScreen->getScreenID())->handleScreen(conversingPlayer, selectedOption, new ConversationScreen(*conversationScreen));
+			modifiedScreen = screenHandlers.get(conversationScreen->getScreenID())->handleScreen(conversingPlayer, conversingNPC, selectedOption, new ConversationScreen(*conversationScreen));
 
 			//Check if another screen should be handled
 			if (modifiedScreen == NULL) {

@@ -46,6 +46,7 @@ which carries forward this exception.
 
 const String DeliverMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 
-ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
+	conversingPlayer->getPlayerObject()->getSlottedObject("mission_bag");
 	return conversationScreen;
 }

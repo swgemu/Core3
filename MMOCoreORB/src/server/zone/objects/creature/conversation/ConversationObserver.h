@@ -90,7 +90,7 @@ private:
 
 	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
 
-	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 	void sendConversationScreenToPlayer(CreatureObject* conversingPlayer, ConversationScreen* conversationScreen);
 

@@ -60,7 +60,7 @@ const String TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID = "convoscreent
 const String TrainerScreenHandlers::ERRORSCREENHANDLERID = "convoscreenerror";
 const String TrainerScreenHandlers::NONEXISTINGSCREENHANDLERID = "non-existing-screen";
 
-ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
@@ -81,7 +81,7 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 	return conversationScreen;
 }
 
-ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	Vector<String> trainableSkills;
 
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
@@ -139,7 +139,7 @@ void TrainerTrainableSkillsScreenHandler::getTrainableSkillsList(CreatureObject*
 	}
 }
 
-ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	Vector<String> nextSkills;
 
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
@@ -197,7 +197,7 @@ void TrainerNextSkillsScreenHandler::getNextSkillsList(CreatureObject* conversin
 	}
 }
 
-ConversationScreen* TrainerSkillInfoScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerSkillInfoScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Get conversation session.
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 	if (session == NULL) {
@@ -225,7 +225,7 @@ ConversationScreen* TrainerSkillInfoScreenHandler::handleScreen(CreatureObject* 
 	return conversationScreen;
 }
 
-ConversationScreen* TrainerCanLearnSkillScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerCanLearnSkillScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Get conversation session.
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 	if (session == NULL) {
@@ -264,7 +264,7 @@ ConversationScreen* TrainerCanLearnSkillScreenHandler::handleScreen(CreatureObje
 	return conversationScreen;
 }
 
-ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	ManagedReference<PlayerObject* > ghost = conversingPlayer->getPlayerObject();
 
 	//Skill previously stored in player session.
@@ -343,7 +343,7 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 	return conversationScreen;
 }
 
-ConversationScreen* TrainerNotEnoughCreditsScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerNotEnoughCreditsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Skill previously stored in player session.
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 	if (session == NULL) {
@@ -364,7 +364,7 @@ ConversationScreen* TrainerNotEnoughCreditsScreenHandler::handleScreen(CreatureO
 	return conversationScreen;
 }
 
-ConversationScreen* TrainerNotEnoughSkillPointsScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerNotEnoughSkillPointsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Skill previously stored in player session.
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 	if (session == NULL) {
@@ -387,7 +387,7 @@ ConversationScreen* TrainerNotEnoughSkillPointsScreenHandler::handleScreen(Creat
 	return conversationScreen;
 }
 
-ConversationScreen* TrainerTrainedMasterScreenHandler::handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* TrainerTrainedMasterScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	String name;
 	//Add a space between first and last name only if both names are used.
 	if (conversingPlayer->getFirstName() != "" && conversingPlayer->getLastName() != "") {

@@ -58,7 +58,7 @@ class TrainerInfoScreenHandler : public ScreenHandler {
 public:
 	TrainerInfoScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerTrainableSkillsScreenHandler : public ScreenHandler {
@@ -66,7 +66,7 @@ class TrainerTrainableSkillsScreenHandler : public ScreenHandler {
 public:
 	TrainerTrainableSkillsScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerNextSkillsScreenHandler : public ScreenHandler {
@@ -74,49 +74,49 @@ class TrainerNextSkillsScreenHandler : public ScreenHandler {
 public:
 	TrainerNextSkillsScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerSkillInfoScreenHandler : public ScreenHandler {
 public:
 	TrainerSkillInfoScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerCanLearnSkillScreenHandler : public ScreenHandler {
 public:
 	TrainerCanLearnSkillScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerTrainSkillScreenHandler : public ScreenHandler {
 public:
 	TrainerTrainSkillScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerNotEnoughCreditsScreenHandler : public ScreenHandler {
 public:
 	TrainerNotEnoughCreditsScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerNotEnoughSkillPointsScreenHandler : public ScreenHandler {
 public:
 	TrainerNotEnoughSkillPointsScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 class TrainerTrainedMasterScreenHandler : public ScreenHandler {
 public:
 	TrainerTrainedMasterScreenHandler() : ScreenHandler() {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 };
 
 /**
