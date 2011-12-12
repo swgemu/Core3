@@ -83,7 +83,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 
 		SceneObject* par = sceneObject->getParent();
 
-		if (par->isVehicleObject()) {
+		if (par != NULL && par->isVehicleObject()) {
 			player->executeObjectControllerAction(String("dismount").hashCode());
 		}
 
