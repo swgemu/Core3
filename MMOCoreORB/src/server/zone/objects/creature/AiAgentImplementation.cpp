@@ -432,6 +432,11 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
+	if (moveEvent != NULL) {
+		moveEvent->clearCreatureObject();
+		moveEvent = NULL;
+	}
+
 	if (objectTemplate == NULL || npcTemplate == NULL)
 		return;
 

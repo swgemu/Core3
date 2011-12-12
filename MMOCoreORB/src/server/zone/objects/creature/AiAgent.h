@@ -318,6 +318,8 @@ public:
 
 	int notifyCallForHelp(Observable* observable, ManagedObject* arg1);
 
+	void destroyObjectFromWorld(bool sendSelfDestroy);
+
 	void activatePostureRecovery();
 
 	void clearCombatState(bool clearDefenders = true);
@@ -570,6 +572,8 @@ public:
 
 	int notifyCallForHelp(Observable* observable, ManagedObject* arg1);
 
+	void destroyObjectFromWorld(bool sendSelfDestroy);
+
 	void activatePostureRecovery();
 
 	void clearCombatState(bool clearDefenders = true);
@@ -758,6 +762,8 @@ public:
 	int notifyAttack(Observable* observable);
 
 	int notifyCallForHelp(Observable* observable, ManagedObject* arg1);
+
+	void destroyObjectFromWorld(bool sendSelfDestroy);
 
 	void activatePostureRecovery();
 

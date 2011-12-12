@@ -18,7 +18,7 @@ namespace creature {
 namespace events {
 
 class AiMoveEvent : public Task {
-	ManagedWeakReference<AiAgent*> creature;
+	ManagedReference<AiAgent*> creature;
 
 public:
 	AiMoveEvent(AiAgent* pl) : Task(1000) {
@@ -37,6 +37,10 @@ public:
 		Locker locker(strongRef);
 
 		strongRef->doMovement();
+	}
+
+	void clearCreatureObject() {
+		creature = NULL;
 	}
 
 };
