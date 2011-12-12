@@ -155,6 +155,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 		QuadTreeEntry* o = parentCloseObjects->get(i);
 
 		sceneObject->addInRangeObject(o, false);
+		o->addInRangeObject(sceneObject, true);
 	}
 }
 
