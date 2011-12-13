@@ -111,14 +111,29 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 }
 
 bool CellObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
-	Locker locker(_this);
-
-	bool ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient);
+	//Locker locker(_this);
 
 	Zone* zone = getZone();
 
-	if (zone != NULL)
-		zone->updateActiveAreas(object);
+	Locker* locker = NULL;
+
+	if (zone != NULL) {
+		locker = new Locker(zone);
+	}
+
+	bool ret = false;
+
+	try {
+		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient);
+
+		if (zone != NULL)
+			zone->updateActiveAreas(object);
+	} catch (...) {
+
+	}
+
+	if (locker != NULL)
+		delete locker;
 
 	return ret;
 }
