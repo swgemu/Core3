@@ -18,11 +18,15 @@
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/area/LairSpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/MissionTargetMap.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/Zone.h"
@@ -167,7 +171,8 @@ bool MissionManagerImplementation::hasSurveyMission(CreatureObject* player, cons
 
 void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<DestroyMissionObjective*> objective = new DestroyMissionObjective(mission);
-	objective->setLairTemplateToSpawn(mission->getTargetTemplate());
+	objective->setLairTemplateToSpawn(mission->getTargetOptionalTemplate());
+	objective->setDifficulty(mission->getDifficultyLevel(), mission->getDifficultyLevel());
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
@@ -359,26 +364,70 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 }
 
 void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* player, MissionObject* mission) {
-	/* TODO: Redo this section to use zoneName
+	 //TODO: Redo this section to use zoneName
 	//String mission = "mission/mission_destroy_neutral_easy_creature_naboo";
-	int zoneID = player->getZone()->getZoneID();
+	//int zoneID = player->getZone()->getZoneID();
+	Zone* zone = player->getZone();
 
-	uint32 templateCRC = lairObjectTemplatesToSpawn.getRandomTemplate(zoneID);
+	mission->setTypeCRC(0);
 
-	if (templateCRC == 0) {
-		mission->setTypeCRC(0);
+	if (zone == NULL)
+		return;
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+	Vector<ManagedReference<SpawnArea* > >* worldAreas = creatureManager->getWorldSpawnAreas();
+	ManagedReference<SpawnArea*> spawnArea;
+
+	if (worldAreas->size() == 0) {
 		return;
 	}
 
-	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
+	int rand = System::random(worldAreas->size() - 1);
 
-	if (templateObject == NULL || !templateObject->isLairObjectTemplate()) {
-		mission->setTypeCRC(0);
-		error("incorrect template object in randomizeDestroyMission " + String::valueOf(templateCRC));
+	spawnArea = worldAreas->get(rand);
+
+	if (!spawnArea->isLairSpawnArea()) {
 		return;
 	}
 
-	LairObjectTemplate* lairObjectTemplate = cast<LairObjectTemplate*>( templateObject);
+	LairSpawnArea* lairSpawnArea = cast<LairSpawnArea*>(spawnArea.get());
+
+	LairSpawnGroup* lairSpawnGroup = lairSpawnArea->getSpawnGroup();
+
+	if (lairSpawnGroup == NULL) {
+		return;
+	}
+
+	Vector<Reference<LairSpawn*> >* availableLairList = lairSpawnGroup->getLairList();
+
+	if (availableLairList->size() == 0) {
+		return;
+	}
+
+	LairSpawn* randomLairSpawn = availableLairList->get(System::random(availableLairList->size() - 1));
+
+	String lairTemplate = randomLairSpawn->getLairTemplateName();
+
+	LairTemplate* lairTemplateObject = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
+
+	if (lairTemplateObject == NULL) {
+		return;
+	}
+
+	int difficulty = 5; //TODO make this dynamic
+
+	String building = lairTemplateObject->getBuilding(difficulty);
+
+	if (building.isEmpty()) {
+		return;
+	}
+
+	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(building.hashCode());
+
+	if (templateObject == NULL || !templateObject->isSharedTangibleObjectTemplate()) {
+		error("incorrect template object in randomizeDestroyMission " + building);
+		return;
+	}
 
 	NameManager* nm = processor->getNameManager();
 
@@ -388,21 +437,22 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 
 	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
 	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
-	mission->setStartPlanetCRC(player->getZone()->getZoneCRC());
-	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getPlanetCRC());
+	mission->setStartPlanet(player->getZone()->getZoneName());
+	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getZone()->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setMissionTargetName(lairObjectTemplate->getObjectName());
-	mission->setTargetTemplate(lairObjectTemplate);
+	mission->setMissionTargetName(templateObject->getObjectName());
+	mission->setTargetTemplate(templateObject);
+	mission->setTargetOptionalTemplate(lairTemplate);
 
 	// TODO: this all needs to change to be less static and use player levels
 	mission->setRewardCredits(500 + System::random(500));
-	mission->setMissionDifficulty(5);
+	mission->setMissionDifficulty(difficulty);
 	mission->setMissionTitle("mission/mission_destroy_neutral_easy_creature", "m" + String::valueOf(randTexts) + "t");
 	mission->setMissionDescription("mission/mission_destroy_neutral_easy_creature", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::DESTROY);
-	*/
+
 }
 
 void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player, MissionObject* mission) {
@@ -465,8 +515,7 @@ void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player
 	mission->setRewardCredits(400 + (randLevel - minLevel) * 20 + System::random(100));
 
 	mission->setMissionDifficulty(randLevel);
-	mission->setStartPlanetCRC(zoneName.hashCode());
-	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getPlanetCRC());
+	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 	mission->setMissionTitle("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "t");
 	mission->setMissionDescription("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "o");
 	mission->setCreatorName(nm->makeCreatureName());

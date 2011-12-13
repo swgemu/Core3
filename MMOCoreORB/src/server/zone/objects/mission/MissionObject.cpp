@@ -22,7 +22,7 @@
  *	MissionObjectStub
  */
 
-enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANETCRC__INT_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__SCENEOBJECT_,RPC_SETMISSIONTARGETDEST__SCENEOBJECT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETSTARTPLANETCRC__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__SCENEOBJECT_,RPC_SETMISSIONTARGETDEST__SCENEOBJECT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
@@ -222,21 +222,21 @@ void MissionObject::setTargetTemplate(SharedObjectTemplate* templ, bool notifyCl
 		_implementation->setTargetTemplate(templ, notifyClient);
 }
 
-void MissionObject::setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient) {
+void MissionObject::setStartPosition(float posX, float posY, const String& planet, bool notifyClient) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_);
+		DistributedMethod method(this, RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_);
 		method.addFloatParameter(posX);
 		method.addFloatParameter(posY);
-		method.addUnsignedIntParameter(planetCRC);
+		method.addAsciiParameter(planet);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setStartPosition(posX, posY, planetCRC, notifyClient);
+		_implementation->setStartPosition(posX, posY, planet, notifyClient);
 }
 
 void MissionObject::setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient) {
@@ -269,6 +269,19 @@ void MissionObject::setCreatorName(const String& name, bool notifyClient) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setCreatorName(name, notifyClient);
+}
+
+unsigned int MissionObject::getStartPlanetCRC() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTARTPLANETCRC__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getStartPlanetCRC();
 }
 
 void MissionObject::updateMissionLocation() {
@@ -311,18 +324,18 @@ void MissionObject::setMissionObjective(MissionObjective* obj) {
 		_implementation->setMissionObjective(obj);
 }
 
-void MissionObject::setStartPlanetCRC(unsigned int crc) {
+void MissionObject::setStartPlanet(const String& planet) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETSTARTPLANETCRC__INT_);
-		method.addUnsignedIntParameter(crc);
+		DistributedMethod method(this, RPC_SETSTARTPLANET__STRING_);
+		method.addAsciiParameter(planet);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setStartPlanetCRC(crc);
+		_implementation->setStartPlanet(planet);
 }
 
 void MissionObject::setEndPlanetCRC(unsigned int crc) {
@@ -381,6 +394,20 @@ void MissionObject::setMissionNumber(int num) {
 		_implementation->setMissionNumber(num);
 }
 
+void MissionObject::setTargetOptionalTemplate(const String& tml) {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETTARGETOPTIONALTEMPLATE__STRING_);
+		method.addAsciiParameter(tml);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTargetOptionalTemplate(tml);
+}
+
 void MissionObject::setTemplateStrings(const String& temp1, const String& temp2) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -422,17 +449,32 @@ float MissionObject::getStartPositionY() {
 		return _implementation->getStartPositionY();
 }
 
-unsigned int MissionObject::getStartPlanetCRC() {
+String MissionObject::getTargetOptionalTemplate() {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETSTARTPLANETCRC__);
+		DistributedMethod method(this, RPC_GETTARGETOPTIONALTEMPLATE__);
 
-		return method.executeWithUnsignedIntReturn();
+		method.executeWithAsciiReturn(_return_getTargetOptionalTemplate);
+		return _return_getTargetOptionalTemplate;
 	} else
-		return _implementation->getStartPlanetCRC();
+		return _implementation->getTargetOptionalTemplate();
+}
+
+String MissionObject::getStartPlanet() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTARTPLANET__);
+
+		method.executeWithAsciiReturn(_return_getStartPlanet);
+		return _return_getStartPlanet;
+	} else
+		return _implementation->getStartPlanet();
 }
 
 float MissionObject::getEndPositionX() {
@@ -837,8 +879,8 @@ bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
-	if (_name == "startPlanetCRC") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&startPlanetCRC, stream);
+	if (_name == "startPlanet") {
+		TypeInfo<String >::parseFromBinaryStream(&startPlanet, stream);
 		return true;
 	}
 
@@ -899,6 +941,11 @@ bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 
 	if (_name == "targetTemplate") {
 		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&targetTemplate, stream);
+		return true;
+	}
+
+	if (_name == "targetOptionalTemplate") {
+		TypeInfo<String >::parseFromBinaryStream(&targetOptionalTemplate, stream);
 		return true;
 	}
 
@@ -989,11 +1036,11 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "startPlanetCRC";
+	_name = "startPlanet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<unsigned int >::toBinaryStream(&startPlanetCRC, stream);
+	TypeInfo<String >::toBinaryStream(&startPlanet, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1093,8 +1140,16 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "targetOptionalTemplate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&targetOptionalTemplate, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 22 + IntangibleObjectImplementation::writeObjectMembers(stream);
+
+	return 23 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 MissionObjectImplementation::MissionObjectImplementation() {
@@ -1117,8 +1172,6 @@ MissionObjectImplementation::MissionObjectImplementation() {
 	startPositionX = 0;
 	// server/zone/objects/mission/MissionObject.idl():  		startPositionY = 0;
 	startPositionY = 0;
-	// server/zone/objects/mission/MissionObject.idl():  		startPlanetCRC = 0;
-	startPlanetCRC = 0;
 	// server/zone/objects/mission/MissionObject.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
@@ -1134,9 +1187,9 @@ void MissionObjectImplementation::setMissionObjective(MissionObjective* obj) {
 	missionObjective = obj;
 }
 
-void MissionObjectImplementation::setStartPlanetCRC(unsigned int crc) {
-	// server/zone/objects/mission/MissionObject.idl():  		startPlanetCRC = crc;
-	startPlanetCRC = crc;
+void MissionObjectImplementation::setStartPlanet(const String& planet) {
+	// server/zone/objects/mission/MissionObject.idl():  		startPlanet = planet;
+	startPlanet = planet;
 }
 
 void MissionObjectImplementation::setEndPlanetCRC(unsigned int crc) {
@@ -1159,6 +1212,11 @@ void MissionObjectImplementation::setMissionNumber(int num) {
 	missionNumber = num;
 }
 
+void MissionObjectImplementation::setTargetOptionalTemplate(const String& tml) {
+	// server/zone/objects/mission/MissionObject.idl():  		targetOptionalTemplate = tml;
+	targetOptionalTemplate = tml;
+}
+
 void MissionObjectImplementation::setTemplateStrings(const String& temp1, const String& temp2) {
 	// server/zone/objects/mission/MissionObject.idl():  		templateString1 = temp1;
 	templateString1 = temp1;
@@ -1176,9 +1234,14 @@ float MissionObjectImplementation::getStartPositionY() {
 	return startPositionY;
 }
 
-unsigned int MissionObjectImplementation::getStartPlanetCRC() {
-	// server/zone/objects/mission/MissionObject.idl():  		return startPlanetCRC;
-	return startPlanetCRC;
+String MissionObjectImplementation::getTargetOptionalTemplate() {
+	// server/zone/objects/mission/MissionObject.idl():  		return targetOptionalTemplate;
+	return targetOptionalTemplate;
+}
+
+String MissionObjectImplementation::getStartPlanet() {
+	// server/zone/objects/mission/MissionObject.idl():  		return startPlanet;
+	return startPlanet;
 }
 
 float MissionObjectImplementation::getEndPositionX() {
@@ -1323,14 +1386,17 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SETREWARDCREDITS__INT_BOOL_:
 		setRewardCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_:
-		setStartPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+	case RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_:
+		setStartPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_setStartPosition__float_float_String_bool_), inv->getBooleanParameter());
 		break;
 	case RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_:
 		setEndPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETCREATORNAME__STRING_BOOL_:
 		setCreatorName(inv->getAsciiParameter(_param0_setCreatorName__String_bool_), inv->getBooleanParameter());
+		break;
+	case RPC_GETSTARTPLANETCRC__:
+		resp->insertInt(getStartPlanetCRC());
 		break;
 	case RPC_UPDATEMISSIONLOCATION__:
 		updateMissionLocation();
@@ -1341,8 +1407,8 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_:
 		setMissionObjective(static_cast<MissionObjective*>(inv->getObjectParameter()));
 		break;
-	case RPC_SETSTARTPLANETCRC__INT_:
-		setStartPlanetCRC(inv->getUnsignedIntParameter());
+	case RPC_SETSTARTPLANET__STRING_:
+		setStartPlanet(inv->getAsciiParameter(_param0_setStartPlanet__String_));
 		break;
 	case RPC_SETENDPLANETCRC__INT_:
 		setEndPlanetCRC(inv->getUnsignedIntParameter());
@@ -1356,6 +1422,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SETMISSIONNUMBER__INT_:
 		setMissionNumber(inv->getSignedIntParameter());
 		break;
+	case RPC_SETTARGETOPTIONALTEMPLATE__STRING_:
+		setTargetOptionalTemplate(inv->getAsciiParameter(_param0_setTargetOptionalTemplate__String_));
+		break;
 	case RPC_SETTEMPLATESTRINGS__STRING_STRING_:
 		setTemplateStrings(inv->getAsciiParameter(_param0_setTemplateStrings__String_String_), inv->getAsciiParameter(_param1_setTemplateStrings__String_String_));
 		break;
@@ -1365,8 +1434,11 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_GETSTARTPOSITIONY__:
 		resp->insertFloat(getStartPositionY());
 		break;
-	case RPC_GETSTARTPLANETCRC__:
-		resp->insertInt(getStartPlanetCRC());
+	case RPC_GETTARGETOPTIONALTEMPLATE__:
+		resp->insertAscii(getTargetOptionalTemplate());
+		break;
+	case RPC_GETSTARTPLANET__:
+		resp->insertAscii(getStartPlanet());
 		break;
 	case RPC_GETENDPOSITIONX__:
 		resp->insertFloat(getEndPositionX());
@@ -1474,8 +1546,8 @@ void MissionObjectAdapter::setRewardCredits(int creds, bool notifyClient) {
 	(static_cast<MissionObject*>(stub))->setRewardCredits(creds, notifyClient);
 }
 
-void MissionObjectAdapter::setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient) {
-	(static_cast<MissionObject*>(stub))->setStartPosition(posX, posY, planetCRC, notifyClient);
+void MissionObjectAdapter::setStartPosition(float posX, float posY, const String& planet, bool notifyClient) {
+	(static_cast<MissionObject*>(stub))->setStartPosition(posX, posY, planet, notifyClient);
 }
 
 void MissionObjectAdapter::setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient) {
@@ -1484,6 +1556,10 @@ void MissionObjectAdapter::setEndPosition(float posX, float posY, unsigned int p
 
 void MissionObjectAdapter::setCreatorName(const String& name, bool notifyClient) {
 	(static_cast<MissionObject*>(stub))->setCreatorName(name, notifyClient);
+}
+
+unsigned int MissionObjectAdapter::getStartPlanetCRC() {
+	return (static_cast<MissionObject*>(stub))->getStartPlanetCRC();
 }
 
 void MissionObjectAdapter::updateMissionLocation() {
@@ -1498,8 +1574,8 @@ void MissionObjectAdapter::setMissionObjective(MissionObjective* obj) {
 	(static_cast<MissionObject*>(stub))->setMissionObjective(obj);
 }
 
-void MissionObjectAdapter::setStartPlanetCRC(unsigned int crc) {
-	(static_cast<MissionObject*>(stub))->setStartPlanetCRC(crc);
+void MissionObjectAdapter::setStartPlanet(const String& planet) {
+	(static_cast<MissionObject*>(stub))->setStartPlanet(planet);
 }
 
 void MissionObjectAdapter::setEndPlanetCRC(unsigned int crc) {
@@ -1518,6 +1594,10 @@ void MissionObjectAdapter::setMissionNumber(int num) {
 	(static_cast<MissionObject*>(stub))->setMissionNumber(num);
 }
 
+void MissionObjectAdapter::setTargetOptionalTemplate(const String& tml) {
+	(static_cast<MissionObject*>(stub))->setTargetOptionalTemplate(tml);
+}
+
 void MissionObjectAdapter::setTemplateStrings(const String& temp1, const String& temp2) {
 	(static_cast<MissionObject*>(stub))->setTemplateStrings(temp1, temp2);
 }
@@ -1530,8 +1610,12 @@ float MissionObjectAdapter::getStartPositionY() {
 	return (static_cast<MissionObject*>(stub))->getStartPositionY();
 }
 
-unsigned int MissionObjectAdapter::getStartPlanetCRC() {
-	return (static_cast<MissionObject*>(stub))->getStartPlanetCRC();
+String MissionObjectAdapter::getTargetOptionalTemplate() {
+	return (static_cast<MissionObject*>(stub))->getTargetOptionalTemplate();
+}
+
+String MissionObjectAdapter::getStartPlanet() {
+	return (static_cast<MissionObject*>(stub))->getStartPlanet();
 }
 
 float MissionObjectAdapter::getEndPositionX() {

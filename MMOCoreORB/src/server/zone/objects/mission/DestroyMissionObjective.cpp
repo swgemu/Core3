@@ -14,13 +14,17 @@
 
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 
+#include "server/zone/templates/mobile/LairTemplate.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/Zone.h"
 
 /*
  *	DestroyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNLAIR__,RPC_DESTROYOBJECTFROMDATABASE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNLAIR__,RPC_DESTROYOBJECTFROMDATABASE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETDIFFICULTY__INT_INT_};
 
 DestroyMissionObjective::DestroyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DestroyMissionObjectiveImplementation* _implementation = new DestroyMissionObjectiveImplementation(mission);
@@ -114,6 +118,15 @@ void DestroyMissionObjective::destroyObjectFromDatabase() {
 		_implementation->destroyObjectFromDatabase();
 }
 
+Vector3 DestroyMissionObjective::findValidSpawnPosition(Zone* zone) {
+	DestroyMissionObjectiveImplementation* _implementation = static_cast<DestroyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->findValidSpawnPosition(zone);
+}
+
 int DestroyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	DestroyMissionObjectiveImplementation* _implementation = static_cast<DestroyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -132,13 +145,28 @@ int DestroyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
-void DestroyMissionObjective::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
+void DestroyMissionObjective::setLairTemplateToSpawn(const String& sp) {
 	DestroyMissionObjectiveImplementation* _implementation = static_cast<DestroyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
 		_implementation->setLairTemplateToSpawn(sp);
+}
+
+void DestroyMissionObjective::setDifficulty(int min, int max) {
+	DestroyMissionObjectiveImplementation* _implementation = static_cast<DestroyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDIFFICULTY__INT_INT_);
+		method.addSignedIntParameter(min);
+		method.addSignedIntParameter(max);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDifficulty(min, max);
 }
 
 DistributedObjectServant* DestroyMissionObjective::_getImplementation() {
@@ -244,8 +272,8 @@ bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lairTemplateToSpawn") {
-		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&lairTemplateToSpawn, stream);
+	if (_name == "lairTemplate") {
+		TypeInfo<String >::parseFromBinaryStream(&lairTemplate, stream);
 		return true;
 	}
 
@@ -256,6 +284,16 @@ bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 
 	if (_name == "lairObject") {
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&lairObject, stream);
+		return true;
+	}
+
+	if (_name == "minDifficulty") {
+		TypeInfo<int >::parseFromBinaryStream(&minDifficulty, stream);
+		return true;
+	}
+
+	if (_name == "maxDifficulty") {
+		TypeInfo<int >::parseFromBinaryStream(&maxDifficulty, stream);
 		return true;
 	}
 
@@ -274,11 +312,11 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lairTemplateToSpawn";
+	_name = "lairTemplate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<TemplateReference<SharedObjectTemplate*> >::toBinaryStream(&lairTemplateToSpawn, stream);
+	TypeInfo<String >::toBinaryStream(&lairTemplate, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -298,12 +336,32 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "minDifficulty";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&minDifficulty, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 3 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	_name = "maxDifficulty";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxDifficulty, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 5 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		minDifficulty = 0;
+	minDifficulty = 0;
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		maxDifficulty = 0;
+	maxDifficulty = 0;
 	// server/zone/objects/mission/DestroyMissionObjective.idl():  		Logger.setLoggingName("DestroyMissionObjective");
 	Logger::setLoggingName("DestroyMissionObjective");
 }
@@ -318,6 +376,13 @@ void DestroyMissionObjectiveImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("MissionObject");
 	// server/zone/objects/mission/DestroyMissionObjective.idl():  		activate();
 	activate();
+}
+
+void DestroyMissionObjectiveImplementation::setDifficulty(int min, int max) {
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		minDifficulty = min;
+	minDifficulty = min;
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		maxDifficulty = max;
+	maxDifficulty = max;
 }
 
 /*
@@ -354,6 +419,9 @@ Packet* DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		break;
+	case RPC_SETDIFFICULTY__INT_INT_:
+		setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -392,6 +460,10 @@ void DestroyMissionObjectiveAdapter::destroyObjectFromDatabase() {
 
 int DestroyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	return (static_cast<DestroyMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+}
+
+void DestroyMissionObjectiveAdapter::setDifficulty(int min, int max) {
+	(static_cast<DestroyMissionObjective*>(stub))->setDifficulty(min, max);
 }
 
 /*

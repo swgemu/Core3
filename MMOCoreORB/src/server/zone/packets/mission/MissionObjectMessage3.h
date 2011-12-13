@@ -83,7 +83,7 @@ public:
 		insertFloat(0); //z
 		insertFloat(mi->getStartPositionY());//insertFloat(mi->getTargetY()); //y
 		insertLong(0); //Start obj id
-		insertInt(mi->getStartPlanetCRC());//
+		insertInt(mi->getStartPlanet().hashCode());//
 
 		//Creator Name
 		insertUnicode(mi->getCreatorName());

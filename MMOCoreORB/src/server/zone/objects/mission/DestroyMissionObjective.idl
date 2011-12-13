@@ -53,18 +53,26 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
+import server.zone.templates.mobile.LairTemplate;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.Zone;
 
 class DestroyMissionObjective extends MissionObjective {
 	@dereferenced
-	protected TemplateReference<SharedObjectTemplate> lairTemplateToSpawn;
+	protected string lairTemplate;
 	
 	protected MissionSpawnActiveArea spawnActiveArea;
 	
 	protected TangibleObject lairObject;
 	
+	int minDifficulty;
+	int maxDifficulty;
+	
 	public DestroyMissionObjective(MissionObject mission) {
 		super(mission);
+		
+		minDifficulty = 0;
+		maxDifficulty = 0;
 		
 		Logger.setLoggingName("DestroyMissionObjective");
 	}
@@ -94,8 +102,17 @@ class DestroyMissionObjective extends MissionObjective {
 	 */
 	public native void destroyObjectFromDatabase();
 	
+	@local
+	@dereferenced
+	public native Vector3 findValidSpawnPosition(Zone zone);
+	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	
 	@local
-	public native void setLairTemplateToSpawn(SharedObjectTemplate sp);
+	public native void setLairTemplateToSpawn(final string sp);
+	
+	public void setDifficulty(int min, int max) {
+		minDifficulty = min;
+		maxDifficulty = max;
+	}
 }

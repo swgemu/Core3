@@ -71,7 +71,8 @@ class MissionObject extends IntangibleObject {
 	
 	protected float startPositionX;
 	protected float startPositionY;
-	protected unsigned int startPlanetCRC;
+	//protected unsigned int startPlanetCRC;
+	protected string startPlanet;
 	
 	protected float endPositionX;
 	protected float endPositionY;
@@ -95,6 +96,8 @@ class MissionObject extends IntangibleObject {
 	//protected unsigned int targetTemplateCRC;
 	@dereferenced
 	protected TemplateReference<SharedObjectTemplate> targetTemplate;
+	
+	protected string targetOptionalTemplate;
 	
 	// mission type crc's ex: String("destroy").hashCode() = 0x74ef9be3
 	public static final int DESTROY = 0x74EF9BE3; // generic
@@ -127,7 +130,6 @@ class MissionObject extends IntangibleObject {
 		
 		startPositionX = 0;
 		startPositionY = 0;
-		startPlanetCRC = 0;
 		
 		Logger.setLoggingName("MissionObject");
 	}
@@ -163,9 +165,11 @@ class MissionObject extends IntangibleObject {
 	public native void setRewardCredits(int creds, boolean notifyClient = true);
 	@local
 	public native void setTargetTemplate(SharedObjectTemplate templ, boolean notifyClient = true);
-	public native void setStartPosition(float posX, float posY, unsigned int planetCRC, boolean notifyClient = true);
+	public native void setStartPosition(float posX, float posY, final string planet, boolean notifyClient = true);
 	public native void setEndPosition(float posX, float posY, unsigned int planetCRC, boolean notifyClient = true);
 	public native void setCreatorName(final string name, boolean notifyClient = true);
+	
+	public native unsigned int getStartPlanetCRC();
 	
 	public native void updateMissionLocation();
 	
@@ -178,8 +182,8 @@ class MissionObject extends IntangibleObject {
 		missionObjective = obj;
 	}
 	
-	public void setStartPlanetCRC(unsigned int crc) {
-		startPlanetCRC = crc;
+	public void setStartPlanet(final string planet) {
+		startPlanet = planet;
 	}
 	
 	public void setEndPlanetCRC(unsigned int crc) {
@@ -198,6 +202,10 @@ class MissionObject extends IntangibleObject {
 		missionNumber = num;
 	}
 	
+	public void setTargetOptionalTemplate(final string tml) {
+		targetOptionalTemplate = tml;
+	}
+	
 	public void setTemplateStrings(final string temp1, final string temp2) {
 		templateString1 = temp1;
 		templateString2 = temp2;
@@ -211,8 +219,12 @@ class MissionObject extends IntangibleObject {
 		return startPositionY;
 	}
 	
-	public unsigned int getStartPlanetCRC() {
-		return startPlanetCRC;
+	public string getTargetOptionalTemplate() {
+		return targetOptionalTemplate;
+	}
+	
+	public string getStartPlanet() {
+		return startPlanet;
 	}
 	
 	public float getEndPositionX() {

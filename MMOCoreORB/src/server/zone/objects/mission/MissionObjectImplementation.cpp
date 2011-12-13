@@ -226,10 +226,10 @@ void MissionObjectImplementation::destroyObjectFromDatabase(bool destroyContaine
 
 }
 
-void MissionObjectImplementation::setStartPosition(float posX, float posY, uint32 planetCRC, bool notifyClient) {
+void MissionObjectImplementation::setStartPosition(float posX, float posY, const String& planet, bool notifyClient) {
 	startPositionX = posX;
 	startPositionY = posY;
-	startPlanetCRC = planetCRC;
+	startPlanet = planet;
 
 	if (!notifyClient)
 		return;
@@ -238,11 +238,15 @@ void MissionObjectImplementation::setStartPosition(float posX, float posY, uint3
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
-		delta->updateStartPosition(posX, posY, planetCRC);
+		delta->updateStartPosition(posX, posY, planet.hashCode());
 		delta->close();
 
 		player->sendMessage(delta);
 	}
+}
+
+uint32 MissionObjectImplementation::getStartPlanetCRC() {
+	return startPlanet.hashCode();
 }
 
 void MissionObjectImplementation::setEndPosition(float posX, float posY, uint32 planetCRC, bool notifyClient) {

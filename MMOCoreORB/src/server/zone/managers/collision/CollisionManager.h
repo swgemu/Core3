@@ -29,17 +29,22 @@ namespace ship {
 	class ShipObject;
 }
 }
+
+	class Zone;
 }
 }
 
 using namespace server::zone::objects::scene;
 using namespace server::zone::objects::creature;
 using namespace server::zone::objects::ship;
+using namespace server::zone;
 
 class CollisionManager : public Singleton<CollisionManager> {
 protected:
 	static AABBTree* getAABBTree(SceneObject* scno, int collisionBlockFlags);
 	static Ray convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model);
+	static Vector3 convertToModelSpace(const Vector3& point, SceneObject* model);
+	static Matrix4 getTransformMatrix(SceneObject* model);
 public:
 	static TriangleNode* getTriangle(const Vector3& point, FloorMesh* floor);
 
@@ -53,6 +58,8 @@ public:
 	static float getRayOriginPoint(CreatureObject* creature);
 
 	static bool checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint);
+
+	static bool checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone);
 
 };
 

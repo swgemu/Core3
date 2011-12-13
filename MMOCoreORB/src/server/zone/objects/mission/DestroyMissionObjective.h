@@ -81,6 +81,20 @@ using namespace server::zone::objects::area;
 
 namespace server {
 namespace zone {
+namespace templates {
+namespace mobile {
+
+class LairTemplate;
+
+} // namespace mobile
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates::mobile;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace tangible {
 
@@ -92,6 +106,16 @@ class TangibleObject;
 } // namespace server
 
 using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
 
 #include "server/zone/templates/TemplateReference.h"
 
@@ -122,9 +146,13 @@ public:
 
 	void destroyObjectFromDatabase();
 
+	Vector3 findValidSpawnPosition(Zone* zone);
+
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void setLairTemplateToSpawn(SharedObjectTemplate* sp);
+	void setLairTemplateToSpawn(const String& sp);
+
+	void setDifficulty(int min, int max);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -152,11 +180,16 @@ namespace mission {
 
 class DestroyMissionObjectiveImplementation : public MissionObjectiveImplementation {
 protected:
-	TemplateReference<SharedObjectTemplate*> lairTemplateToSpawn;
+	String lairTemplate;
 
 	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea;
 
 	ManagedReference<TangibleObject* > lairObject;
+
+private:
+	int minDifficulty;
+
+	int maxDifficulty;
 
 public:
 	DestroyMissionObjectiveImplementation(MissionObject* mission);
@@ -177,9 +210,13 @@ public:
 
 	void destroyObjectFromDatabase();
 
+	Vector3 findValidSpawnPosition(Zone* zone);
+
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void setLairTemplateToSpawn(SharedObjectTemplate* sp);
+	void setLairTemplateToSpawn(const String& sp);
+
+	void setDifficulty(int min, int max);
 
 	WeakReference<DestroyMissionObjective*> _this;
 
@@ -237,6 +274,8 @@ public:
 	void destroyObjectFromDatabase();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void setDifficulty(int min, int max);
 
 };
 

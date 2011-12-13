@@ -99,6 +99,48 @@ AABBTree* CollisionManager::getAABBTree(SceneObject* scno, int collisionBlockFla
 	return mesh->getAABBTree();
 }
 
+bool CollisionManager::checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone) {
+	SortedVector<ManagedReference<SceneObject*> > objects(512, 512);
+	zone->getInRangeObjects(sphereOrigin.getX(), sphereOrigin.getY(), 512, &objects);
+
+	for (int i = 0; i < objects.size(); ++i) {
+		AABBTree* aabbTree = NULL;
+
+		SceneObject* scno = objects.get(i);
+
+		try {
+			aabbTree = getAABBTree(scno, -1);
+
+			if (aabbTree == NULL)
+				continue;
+
+		} catch (Exception& e) {
+			aabbTree = NULL;
+		} catch (...) {
+			throw;
+		}
+
+		if (aabbTree != NULL) {
+			//moving ray to model space
+
+			try {
+				Sphere sphere(convertToModelSpace(sphereOrigin, scno), radius);
+				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+
+				if (aabbTree->testCollide(sphere)) {
+					return true;
+				}
+			} catch (Exception& e) {
+				scno->error(e.getMessage());
+			} catch (...) {
+				throw;
+			}
+		}
+	}
+
+	return false;
+}
+
 bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 
@@ -218,7 +260,15 @@ TriangleNode* CollisionManager::getTriangle(const Vector3& point, FloorMesh* flo
 	return triangleNode;
 }
 
-Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model) {
+Vector3 CollisionManager::convertToModelSpace(const Vector3& point, SceneObject* model) {
+	Matrix4 modelMatrix = getTransformMatrix(model);
+
+	Vector3 transformedPoint = point * modelMatrix;
+
+	return transformedPoint;
+}
+
+Matrix4 CollisionManager::getTransformMatrix(SceneObject* model) {
 	Matrix4 translationMatrix;
 	translationMatrix.setTranslation(-model->getPositionX(), -model->getPositionZ(), -model->getPositionY());
 
@@ -238,6 +288,12 @@ Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector
 
 	Matrix4 modelMatrix;
 	modelMatrix = translationMatrix * rotateMatrix;
+
+	return modelMatrix;
+}
+
+Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model) {
+	Matrix4 modelMatrix = getTransformMatrix(model);
 
 	Vector3 transformedOrigin = rayOrigin * modelMatrix;
 	Vector3 transformedEnd = rayEnd * modelMatrix;

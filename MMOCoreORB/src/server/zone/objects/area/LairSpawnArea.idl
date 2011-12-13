@@ -93,4 +93,7 @@ class LairSpawnArea extends SpawnArea {
 	public void setSpawnGroup(LairSpawnGroup group) {
 		spawnGroup = group;
 	}
+	
+	@local
+	public native LairSpawnGroup getSpawnGroup();
 }

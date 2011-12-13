@@ -104,6 +104,8 @@ public:
 
 	void setSpawnGroup(LairSpawnGroup* group);
 
+	LairSpawnGroup* getSpawnGroup();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -158,6 +160,8 @@ public:
 	bool isLairSpawnArea();
 
 	void setSpawnGroup(LairSpawnGroup* group);
+
+	LairSpawnGroup* getSpawnGroup();
 
 	WeakReference<LairSpawnArea*> _this;
 

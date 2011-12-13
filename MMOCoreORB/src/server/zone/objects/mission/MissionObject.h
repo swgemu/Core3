@@ -172,11 +172,13 @@ public:
 
 	void setTargetTemplate(SharedObjectTemplate* templ, bool notifyClient = true);
 
-	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
 	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
 
 	void setCreatorName(const String& name, bool notifyClient = true);
+
+	unsigned int getStartPlanetCRC();
 
 	void updateMissionLocation();
 
@@ -184,7 +186,7 @@ public:
 
 	void setMissionObjective(MissionObjective* obj);
 
-	void setStartPlanetCRC(unsigned int crc);
+	void setStartPlanet(const String& planet);
 
 	void setEndPlanetCRC(unsigned int crc);
 
@@ -194,13 +196,17 @@ public:
 
 	void setMissionNumber(int num);
 
+	void setTargetOptionalTemplate(const String& tml);
+
 	void setTemplateStrings(const String& temp1, const String& temp2);
 
 	float getStartPositionX();
 
 	float getStartPositionY();
 
-	unsigned int getStartPlanetCRC();
+	String getTargetOptionalTemplate();
+
+	String getStartPlanet();
 
 	float getEndPositionX();
 
@@ -251,7 +257,9 @@ protected:
 
 	virtual ~MissionObject();
 
+	String _return_getStartPlanet;
 	String _return_getTargetName;
+	String _return_getTargetOptionalTemplate;
 	String _return_getTemplateString1;
 	String _return_getTemplateString2;
 
@@ -292,7 +300,7 @@ protected:
 
 	float startPositionY;
 
-	unsigned int startPlanetCRC;
+	String startPlanet;
 
 	float endPositionX;
 
@@ -317,6 +325,8 @@ protected:
 	String templateString2;
 
 	TemplateReference<SharedObjectTemplate*> targetTemplate;
+
+	String targetOptionalTemplate;
 
 public:
 	static const int DESTROY = 0x74EF9BE3;
@@ -373,11 +383,13 @@ public:
 
 	void setTargetTemplate(SharedObjectTemplate* templ, bool notifyClient = true);
 
-	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
 	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
 
 	void setCreatorName(const String& name, bool notifyClient = true);
+
+	unsigned int getStartPlanetCRC();
 
 	void updateMissionLocation();
 
@@ -385,7 +397,7 @@ public:
 
 	void setMissionObjective(MissionObjective* obj);
 
-	void setStartPlanetCRC(unsigned int crc);
+	void setStartPlanet(const String& planet);
 
 	void setEndPlanetCRC(unsigned int crc);
 
@@ -395,13 +407,17 @@ public:
 
 	void setMissionNumber(int num);
 
+	void setTargetOptionalTemplate(const String& tml);
+
 	void setTemplateStrings(const String& temp1, const String& temp2);
 
 	float getStartPositionX();
 
 	float getStartPositionY();
 
-	unsigned int getStartPlanetCRC();
+	String getTargetOptionalTemplate();
+
+	String getStartPlanet();
 
 	float getEndPositionX();
 
@@ -510,11 +526,13 @@ public:
 
 	void setRewardCredits(int creds, bool notifyClient);
 
-	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient);
+	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient);
 
 	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient);
 
 	void setCreatorName(const String& name, bool notifyClient);
+
+	unsigned int getStartPlanetCRC();
 
 	void updateMissionLocation();
 
@@ -522,7 +540,7 @@ public:
 
 	void setMissionObjective(MissionObjective* obj);
 
-	void setStartPlanetCRC(unsigned int crc);
+	void setStartPlanet(const String& planet);
 
 	void setEndPlanetCRC(unsigned int crc);
 
@@ -532,13 +550,17 @@ public:
 
 	void setMissionNumber(int num);
 
+	void setTargetOptionalTemplate(const String& tml);
+
 	void setTemplateStrings(const String& temp1, const String& temp2);
 
 	float getStartPositionX();
 
 	float getStartPositionY();
 
-	unsigned int getStartPlanetCRC();
+	String getTargetOptionalTemplate();
+
+	String getStartPlanet();
 
 	float getEndPositionX();
 
@@ -580,7 +602,10 @@ protected:
 	String _param0_setMissionTitle__String_String_bool_;
 	String _param1_setMissionTitle__String_String_bool_;
 	String _param0_setMissionTargetName__String_bool_;
+	String _param2_setStartPosition__float_float_String_bool_;
 	String _param0_setCreatorName__String_bool_;
+	String _param0_setStartPlanet__String_;
+	String _param0_setTargetOptionalTemplate__String_;
 	String _param0_setTemplateStrings__String_String_;
 	String _param1_setTemplateStrings__String_String_;
 };

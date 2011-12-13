@@ -127,6 +127,15 @@ void LairSpawnArea::setSpawnGroup(LairSpawnGroup* group) {
 		_implementation->setSpawnGroup(group);
 }
 
+LairSpawnGroup* LairSpawnArea::getSpawnGroup() {
+	LairSpawnAreaImplementation* _implementation = static_cast<LairSpawnAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getSpawnGroup();
+}
+
 DistributedObjectServant* LairSpawnArea::_getImplementation() {
 
 	_updated = true;

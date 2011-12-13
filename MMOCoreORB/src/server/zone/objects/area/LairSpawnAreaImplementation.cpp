@@ -83,6 +83,16 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 	return 1;
 }
 
+LairSpawnGroup* LairSpawnAreaImplementation::getSpawnGroup() {
+	if (spawnGroup == NULL && spawnCreatureTemplates.size() != 0) {
+		uint32 templateGroupCRC = spawnCreatureTemplates.get(0);
+
+		spawnGroup = CreatureTemplateManager::instance()->getLairGroup(templateGroupCRC);
+	}
+
+	return spawnGroup;
+}
+
 void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	if (spawnGroup == NULL && spawnCreatureTemplates.size() != 0) {
 		uint32 templateGroupCRC = spawnCreatureTemplates.get(0);
