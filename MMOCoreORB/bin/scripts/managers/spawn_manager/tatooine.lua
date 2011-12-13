@@ -217,11 +217,10 @@ tatooine_regions = {
 	{"western_oasis",0,0,0,0,1},
 	{"wind_harvest_complex",0,0,0,0,1},
 	{"wind_harvest_unit",0,0,0,0,1},
-	{"world_spawner",0,0,512,3,1,"tatooine_test"},
+	{"world_spawner",0,0,-1,3,1,"tatooine_creatures_world"},
 }
 
 tatooine_static_spawns = {
-	{"corellian_butterfly_defender",0,0,0,0,0,0},
 	{"trainer_1hsword",0,4.4,0.2,-7.8,36,9655496},
 	{"trainer_1hsword",0,-2964,5,2021,33,0},
 	{"trainer_2hsword",0,-2971,5,2032,174,0},
