@@ -510,21 +510,23 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 			if (runInRange) {
 				CellObject* cell = cast<CellObject*>(object->getParent());
 
-				for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-					SceneObject* child = cell->getContainerObject(j);
+				if (cell != NULL) {
+					for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+						SceneObject* child = cell->getContainerObject(j);
 
-					if (child != object) {
-						//if (is)
-						if (!child->containsInRangeObject(object)) {
-							child->addInRangeObject(object, false);
-							child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
-						}
+						if (child != object) {
+							//if (is)
+							if (!child->containsInRangeObject(object)) {
+								child->addInRangeObject(object, false);
+								child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+							}
 
-						if (!object->containsInRangeObject(child)) {
-							object->addInRangeObject(child, false);
-							object->sendTo(child, true);
+							if (!object->containsInRangeObject(child)) {
+								object->addInRangeObject(child, false);
+								object->sendTo(child, true);
+							}
+							//scno->sendTo(child, true);
 						}
-						//scno->sendTo(child, true);
 					}
 				}
 			}

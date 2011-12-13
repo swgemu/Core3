@@ -77,6 +77,11 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	buildingToSpawn = lairTmpl->getBuilding((uint32)maxDifficulty);
 
+ 	if (buildingToSpawn.isEmpty()) {
+ 		error("error spawning " + buildingToSpawn);
+ 		return NULL;
+ 	}
+
  	TangibleObject* building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
 
  	if (building == NULL) {
