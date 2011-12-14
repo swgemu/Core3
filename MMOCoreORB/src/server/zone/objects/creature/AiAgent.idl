@@ -258,7 +258,7 @@ class AiAgent extends CreatureObject {
 	public native int notifyAttack(Observable observable);
 	public native int notifyCallForHelp(Observable observable, ManagedObject arg1);
 	
-	public native void destroyObjectFromWorld(boolean sendSelfDestroy) {
+	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
 		super.destroyObjectFromWorld(sendSelfDestroy);
 		
 		if (moveEvent != null) {

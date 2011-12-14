@@ -130,6 +130,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		QuadTreeEntry* o = closeObjects->get(i);
+		QuadTreeEntry* objectToRemove = o;
 
 		if (o->getParent() != NULL)
 			o = o->getRootParent();
@@ -143,8 +144,8 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 				float oldDeltaY = oldy - o->getPositionY();
 
 				if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
-					sceneObject->removeInRangeObject(o);
-					o->removeInRangeObject(sceneObject);
+					sceneObject->removeInRangeObject(objectToRemove);
+					objectToRemove->removeInRangeObject(sceneObject);
 				}
 			}
 		}

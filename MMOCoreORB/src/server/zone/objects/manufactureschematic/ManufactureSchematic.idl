@@ -84,7 +84,8 @@ class ManufactureSchematic extends IntangibleObject {
 	protected int experimentingCounter;
 	protected int experimentingCounterPrevious;
 	
-	protected CraftingValues craftingValues;
+	@transactional
+	protected transient CraftingValues craftingValues;
 	
 	@dereferenced
 	protected Vector<byte> customizationOptions;

@@ -725,11 +725,6 @@ bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* str
 		return true;
 	}
 
-	if (_name == "craftingValues") {
-		TypeInfo<Reference<CraftingValues* > >::parseFromBinaryStream(&craftingValues, stream);
-		return true;
-	}
-
 	if (_name == "customizationOptions") {
 		TypeInfo<Vector<byte> >::parseFromBinaryStream(&customizationOptions, stream);
 		return true;
@@ -859,14 +854,6 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "craftingValues";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Reference<CraftingValues* > >::toBinaryStream(&craftingValues, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "customizationOptions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -884,7 +871,7 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 16 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 15 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {

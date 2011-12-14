@@ -77,8 +77,11 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	DamageMap copyDamageMap(*damageMap);
 	damageMap->removeAll(); // we can clear the original one
 
-	if (lair->getZone() == NULL)
+	if (lair->getZone() == NULL) {
+		spawnedCreatures.removeAll();
+
 		return;
+	}
 
 	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(lair, "clienteffect/lair_damage_heavy.cef", "");
 	lair->broadcastMessage(explode, false);

@@ -23,10 +23,10 @@ public:
 
 		Zone* zone = creature->getZone();
 
+		creature->removePendingTask("despawn");
+
 		if (zone == NULL)
 			return;
-
-		creature->removePendingTask("despawn");
 
 		creature->destroyObjectFromWorld(true);
 		creature->notifyDespawn(zone);

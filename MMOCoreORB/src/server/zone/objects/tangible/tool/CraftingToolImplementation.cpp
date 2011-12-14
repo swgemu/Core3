@@ -383,8 +383,13 @@ void CraftingToolImplementation::locateCraftingStation(CreatureObject* player,
 
 	/// pre: player and _this locked
 
-	ZoneServer* server = player->getZone()->getZoneServer();
 	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	ZoneServer* server = player->getZoneServer();
+
 
 	Locker zoneLocker(zone);
 	ManagedReference<CraftingStation*> station = NULL;

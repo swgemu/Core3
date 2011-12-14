@@ -42,7 +42,7 @@ namespace server {
 
 		   Locker locker(lair);
 
-		   Locker clocker(attacker, lair);
+		  // Locker clocker(attacker, lair);
 
 		   observer->healLair(lair, attacker);
 

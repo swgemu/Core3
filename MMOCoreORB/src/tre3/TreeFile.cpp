@@ -96,7 +96,7 @@ void TreeFile::readFileBlock(FileInputStream* fileStream) {
 	//Load the records.
 	uint32 bufferOffset = 0;
 	for (int i = 0; i < totalRecords; ++i) {
-		TreeFileRecord* tfr = new TreeFileRecord();
+		Reference<TreeFileRecord*> tfr = new TreeFileRecord();
 		tfr->setTreeFilePath(filePath);
 		bufferOffset += tfr->readFromBuffer(uncompressedData + bufferOffset);
 

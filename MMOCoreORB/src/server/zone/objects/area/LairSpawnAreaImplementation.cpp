@@ -54,6 +54,11 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
 
+	SceneObject* parent = object->getParent();
+
+	if (parent != NULL && parent->isCellObject())
+		return;
+
 	spawnLair(object);
 }
 
@@ -216,6 +221,11 @@ void LairSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		return;
 
 	if (!creature->isPlayerCreature())
+		return;
+
+	SceneObject* parent = creature->getParent();
+
+	if (parent != NULL && parent->isCellObject())
 		return;
 
 	if (System::random(50) == 1)

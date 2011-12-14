@@ -41,10 +41,10 @@ public:
 			record->setRecordName(fileName);
 
 			if (nodeMap.containsKey(dir)) {
-				TreeDirectory* records = nodeMap.get(dir);
+				Reference<TreeDirectory*> records = nodeMap.get(dir);
 				records->put(record);
 			} else {
-				TreeDirectory* records = new TreeDirectory();
+				Reference<TreeDirectory*> records = new TreeDirectory();
 				records->put(record);
 
 				nodeMap.put(dir, records);
