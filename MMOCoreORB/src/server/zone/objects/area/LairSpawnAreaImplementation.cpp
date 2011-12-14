@@ -218,7 +218,7 @@ void LairSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	if (!creature->isPlayerCreature())
 		return;
 
-	if (System::random(10) == 1)
+	if (System::random(50) == 1)
 		spawnLair(creature);
 }
 

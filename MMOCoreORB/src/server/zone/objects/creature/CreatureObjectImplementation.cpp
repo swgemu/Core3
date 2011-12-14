@@ -735,8 +735,8 @@ void CreatureObjectImplementation::setWounds(int type, int value, bool notifyCli
 	if (value < 0)
 		value = 0;
 
-	if (value >= maxHamList.get(type))
-		value = maxHamList.get(type) - 1;
+	if (value >= baseHAM.get(type))
+		value = baseHAM.get(type) - 1;
 
 	if (wounds.get(type) == value)
 		return;

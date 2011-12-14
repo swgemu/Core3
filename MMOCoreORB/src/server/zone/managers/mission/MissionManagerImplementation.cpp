@@ -23,6 +23,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/MissionTargetMap.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
@@ -414,7 +415,7 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 		return;
 	}
 
-	int difficulty = 5; //TODO make this dynamic
+	int difficulty = server->getPlayerManager()->calculatePlayerLevel(player);
 
 	String building = lairTemplateObject->getBuilding(difficulty);
 
@@ -445,11 +446,20 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 	mission->setTargetTemplate(templateObject);
 	mission->setTargetOptionalTemplate(lairTemplate);
 
-	// TODO: this all needs to change to be less static and use player levels
-	mission->setRewardCredits(500 + System::random(500));
+	mission->setRewardCredits(System::random(difficulty * 100) + (difficulty * 200));
 	mission->setMissionDifficulty(difficulty);
-	mission->setMissionTitle("mission/mission_destroy_neutral_easy_creature", "m" + String::valueOf(randTexts) + "t");
-	mission->setMissionDescription("mission/mission_destroy_neutral_easy_creature", "m" + String::valueOf(randTexts) + "d");
+
+	String messageDifficulty;
+
+	if (difficulty <= 10)
+		messageDifficulty = "_easy";
+	else if (difficulty <= 17)
+		messageDifficulty = "_medium";
+	else
+		messageDifficulty = "_hard";
+
+	mission->setMissionTitle("mission/mission_destroy_neutral" + messageDifficulty + "_creature", "m" + String::valueOf(randTexts) + "t");
+	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + "_creature", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::DESTROY);
 
