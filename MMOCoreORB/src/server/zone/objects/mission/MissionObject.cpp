@@ -4,8 +4,6 @@
 
 #include "MissionObject.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "server/zone/objects/waypoint/WaypointObject.h"
 
 #include "server/zone/Zone.h"
@@ -18,11 +16,13 @@
 
 #include "server/zone/objects/mission/MissionObjective.h"
 
+#include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
+
 /*
  *	MissionObjectStub
  */
 
-enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__SCENEOBJECT_,RPC_SETMISSIONTARGETDEST__SCENEOBJECT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_CLEARTARGETANDDESTINATION__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
@@ -352,13 +352,13 @@ void MissionObject::setEndPlanetCRC(unsigned int crc) {
 		_implementation->setEndPlanetCRC(crc);
 }
 
-void MissionObject::setMissionTarget(SceneObject* target) {
+void MissionObject::setMissionTarget(NpcSpawnPoint* target) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETMISSIONTARGET__SCENEOBJECT_);
+		DistributedMethod method(this, RPC_SETMISSIONTARGET__NPCSPAWNPOINT_);
 		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
@@ -366,13 +366,13 @@ void MissionObject::setMissionTarget(SceneObject* target) {
 		_implementation->setMissionTarget(target);
 }
 
-void MissionObject::setMissionTargetDest(SceneObject* target) {
+void MissionObject::setMissionTargetDest(NpcSpawnPoint* target) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETMISSIONTARGETDEST__SCENEOBJECT_);
+		DistributedMethod method(this, RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_);
 		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
@@ -421,6 +421,19 @@ void MissionObject::setTemplateStrings(const String& temp1, const String& temp2)
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setTemplateStrings(temp1, temp2);
+}
+
+MissionObjective* MissionObject::getMissionObjective() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMISSIONOBJECTIVE__);
+
+		return static_cast<MissionObjective*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getMissionObjective();
 }
 
 float MissionObject::getStartPositionX() {
@@ -529,7 +542,7 @@ WaypointObject* MissionObject::getWaypointToMission() {
 		return _implementation->getWaypointToMission();
 }
 
-SceneObject* MissionObject::getMissionTarget() {
+NpcSpawnPoint* MissionObject::getMissionTarget() {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -537,12 +550,12 @@ SceneObject* MissionObject::getMissionTarget() {
 
 		DistributedMethod method(this, RPC_GETMISSIONTARGET__);
 
-		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+		return static_cast<NpcSpawnPoint*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getMissionTarget();
 }
 
-SceneObject* MissionObject::getMissionTargetDest() {
+NpcSpawnPoint* MissionObject::getMissionTargetDest() {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -550,9 +563,22 @@ SceneObject* MissionObject::getMissionTargetDest() {
 
 		DistributedMethod method(this, RPC_GETMISSIONTARGETDEST__);
 
-		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+		return static_cast<NpcSpawnPoint*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getMissionTargetDest();
+}
+
+void MissionObject::clearTargetAndDestination() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEARTARGETANDDESTINATION__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->clearTargetAndDestination();
 }
 
 unsigned int MissionObject::getTypeCRC() {
@@ -920,12 +946,12 @@ bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 	}
 
 	if (_name == "missionTarget") {
-		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&missionTarget, stream);
+		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&missionTarget, stream);
 		return true;
 	}
 
 	if (_name == "missionTargetDest") {
-		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&missionTargetDest, stream);
+		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&missionTargetDest, stream);
 		return true;
 	}
 
@@ -1104,7 +1130,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&missionTarget, stream);
+	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&missionTarget, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1112,7 +1138,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&missionTargetDest, stream);
+	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&missionTargetDest, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1172,6 +1198,10 @@ MissionObjectImplementation::MissionObjectImplementation() {
 	startPositionX = 0;
 	// server/zone/objects/mission/MissionObject.idl():  		startPositionY = 0;
 	startPositionY = 0;
+	// server/zone/objects/mission/MissionObject.idl():  		missionTarget = null;
+	missionTarget = NULL;
+	// server/zone/objects/mission/MissionObject.idl():  		missionTargetDest = null;
+	missionTargetDest = NULL;
 	// server/zone/objects/mission/MissionObject.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
@@ -1197,12 +1227,12 @@ void MissionObjectImplementation::setEndPlanetCRC(unsigned int crc) {
 	endPlanetCRC = crc;
 }
 
-void MissionObjectImplementation::setMissionTarget(SceneObject* target) {
+void MissionObjectImplementation::setMissionTarget(NpcSpawnPoint* target) {
 	// server/zone/objects/mission/MissionObject.idl():  		missionTarget = target;
 	missionTarget = target;
 }
 
-void MissionObjectImplementation::setMissionTargetDest(SceneObject* target) {
+void MissionObjectImplementation::setMissionTargetDest(NpcSpawnPoint* target) {
 	// server/zone/objects/mission/MissionObject.idl():  		missionTargetDest = target;
 	missionTargetDest = target;
 }
@@ -1222,6 +1252,11 @@ void MissionObjectImplementation::setTemplateStrings(const String& temp1, const 
 	templateString1 = temp1;
 	// server/zone/objects/mission/MissionObject.idl():  		templateString2 = temp2;
 	templateString2 = temp2;
+}
+
+MissionObjective* MissionObjectImplementation::getMissionObjective() {
+	// server/zone/objects/mission/MissionObject.idl():  		return missionObjective;
+	return missionObjective;
 }
 
 float MissionObjectImplementation::getStartPositionX() {
@@ -1264,14 +1299,31 @@ WaypointObject* MissionObjectImplementation::getWaypointToMission() {
 	return waypointToMission;
 }
 
-SceneObject* MissionObjectImplementation::getMissionTarget() {
+NpcSpawnPoint* MissionObjectImplementation::getMissionTarget() {
 	// server/zone/objects/mission/MissionObject.idl():  		return missionTarget;
 	return missionTarget;
 }
 
-SceneObject* MissionObjectImplementation::getMissionTargetDest() {
+NpcSpawnPoint* MissionObjectImplementation::getMissionTargetDest() {
 	// server/zone/objects/mission/MissionObject.idl():  		return missionTargetDest;
 	return missionTargetDest;
+}
+
+void MissionObjectImplementation::clearTargetAndDestination() {
+	// server/zone/objects/mission/MissionObject.idl():  		if 
+	if (missionTarget != NULL){
+	// server/zone/objects/mission/MissionObject.idl():  			missionTarget.setInUse(false);
+	missionTarget->setInUse(false);
+	// server/zone/objects/mission/MissionObject.idl():  			missionTarget = null;
+	missionTarget = NULL;
+}
+	// server/zone/objects/mission/MissionObject.idl():  	}
+	if (missionTargetDest != NULL){
+	// server/zone/objects/mission/MissionObject.idl():  			missionTargetDest.setInUse(false);
+	missionTargetDest->setInUse(false);
+	// server/zone/objects/mission/MissionObject.idl():  			missionTargetDest = null;
+	missionTargetDest = NULL;
+}
 }
 
 unsigned int MissionObjectImplementation::getTypeCRC() {
@@ -1413,11 +1465,11 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SETENDPLANETCRC__INT_:
 		setEndPlanetCRC(inv->getUnsignedIntParameter());
 		break;
-	case RPC_SETMISSIONTARGET__SCENEOBJECT_:
-		setMissionTarget(static_cast<SceneObject*>(inv->getObjectParameter()));
+	case RPC_SETMISSIONTARGET__NPCSPAWNPOINT_:
+		setMissionTarget(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
 		break;
-	case RPC_SETMISSIONTARGETDEST__SCENEOBJECT_:
-		setMissionTargetDest(static_cast<SceneObject*>(inv->getObjectParameter()));
+	case RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_:
+		setMissionTargetDest(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
 		break;
 	case RPC_SETMISSIONNUMBER__INT_:
 		setMissionNumber(inv->getSignedIntParameter());
@@ -1427,6 +1479,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_SETTEMPLATESTRINGS__STRING_STRING_:
 		setTemplateStrings(inv->getAsciiParameter(_param0_setTemplateStrings__String_String_), inv->getAsciiParameter(_param1_setTemplateStrings__String_String_));
+		break;
+	case RPC_GETMISSIONOBJECTIVE__:
+		resp->insertLong(getMissionObjective()->_getObjectID());
 		break;
 	case RPC_GETSTARTPOSITIONX__:
 		resp->insertFloat(getStartPositionX());
@@ -1457,6 +1512,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_GETMISSIONTARGETDEST__:
 		resp->insertLong(getMissionTargetDest()->_getObjectID());
+		break;
+	case RPC_CLEARTARGETANDDESTINATION__:
+		clearTargetAndDestination();
 		break;
 	case RPC_GETTYPECRC__:
 		resp->insertInt(getTypeCRC());
@@ -1582,11 +1640,11 @@ void MissionObjectAdapter::setEndPlanetCRC(unsigned int crc) {
 	(static_cast<MissionObject*>(stub))->setEndPlanetCRC(crc);
 }
 
-void MissionObjectAdapter::setMissionTarget(SceneObject* target) {
+void MissionObjectAdapter::setMissionTarget(NpcSpawnPoint* target) {
 	(static_cast<MissionObject*>(stub))->setMissionTarget(target);
 }
 
-void MissionObjectAdapter::setMissionTargetDest(SceneObject* target) {
+void MissionObjectAdapter::setMissionTargetDest(NpcSpawnPoint* target) {
 	(static_cast<MissionObject*>(stub))->setMissionTargetDest(target);
 }
 
@@ -1600,6 +1658,10 @@ void MissionObjectAdapter::setTargetOptionalTemplate(const String& tml) {
 
 void MissionObjectAdapter::setTemplateStrings(const String& temp1, const String& temp2) {
 	(static_cast<MissionObject*>(stub))->setTemplateStrings(temp1, temp2);
+}
+
+MissionObjective* MissionObjectAdapter::getMissionObjective() {
+	return (static_cast<MissionObject*>(stub))->getMissionObjective();
 }
 
 float MissionObjectAdapter::getStartPositionX() {
@@ -1634,12 +1696,16 @@ WaypointObject* MissionObjectAdapter::getWaypointToMission() {
 	return (static_cast<MissionObject*>(stub))->getWaypointToMission();
 }
 
-SceneObject* MissionObjectAdapter::getMissionTarget() {
+NpcSpawnPoint* MissionObjectAdapter::getMissionTarget() {
 	return (static_cast<MissionObject*>(stub))->getMissionTarget();
 }
 
-SceneObject* MissionObjectAdapter::getMissionTargetDest() {
+NpcSpawnPoint* MissionObjectAdapter::getMissionTargetDest() {
 	return (static_cast<MissionObject*>(stub))->getMissionTargetDest();
+}
+
+void MissionObjectAdapter::clearTargetAndDestination() {
+	(static_cast<MissionObject*>(stub))->clearTargetAndDestination();
 }
 
 unsigned int MissionObjectAdapter::getTypeCRC() {

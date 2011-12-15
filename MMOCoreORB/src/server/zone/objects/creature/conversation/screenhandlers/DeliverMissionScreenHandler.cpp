@@ -43,10 +43,100 @@ which carries forward this exception.
 */
 
 #include "DeliverMissionScreenHandler.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
 
 const String DeliverMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 
+MissionObject* DeliverMissionScreenHandler::getRelevantMissionObject(CreatureObject* player, CreatureObject* npc) {
+	if (player == NULL || npc == NULL) {
+		return NULL;
+	}
+
+	SceneObject* datapad = player->getSlottedObject("datapad");
+
+	if (datapad == NULL) {
+		return NULL;
+	}
+
+	int datapadSize = datapad->getContainerObjectsSize();
+
+	for (int i = 0; i < datapadSize; ++i) {
+		if (datapad->getContainerObject(i)->isMissionObject()) {
+			MissionObject* mission = cast<MissionObject*>(datapad->getContainerObject(i));
+
+			if (mission != NULL && mission->getTypeCRC() == MissionObject::DELIVER) {
+				DeliverMissionObjective* objective = cast<DeliverMissionObjective*>(mission->getMissionObjective());
+				if (objective != NULL) {
+					//Check if it is target or destination NPC
+					if (isTargetNpc(objective, npc->getPosition()) ||
+							isDestinationNpc(objective, npc->getPosition())) {
+						return mission;
+					}
+				}
+			}
+		}
+	}
+
+	//No relevant mission found.
+	return NULL;
+}
+
+bool DeliverMissionScreenHandler::isTargetNpc(DeliverMissionObjective* objective, const Vector3& npcPosition) {
+	return isSameSpawnPoint(objective->getTargetSpawnPoint()->getPosition()->getX(), objective->getTargetSpawnPoint()->getPosition()->getY(), npcPosition);
+}
+
+bool DeliverMissionScreenHandler::isDestinationNpc(DeliverMissionObjective* objective, const Vector3& npcPosition) {
+	return isSameSpawnPoint(objective->getDestinationSpawnPoint()->getPosition()->getX(), objective->getDestinationSpawnPoint()->getPosition()->getY(), npcPosition);
+}
+
+bool DeliverMissionScreenHandler::isSameSpawnPoint(const float& positionX, const float& positionY, const Vector3& comparisonPosition) {
+	if (positionX == comparisonPosition.getX() &&
+			positionY == comparisonPosition.getY()) {
+		//Spawn point is the same.
+		return true;
+	}
+	return false;
+}
+
 ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
-	conversingPlayer->getPlayerObject()->getSlottedObject("mission_bag");
+	//Get relevant mission object if it exists.
+	MissionObject* mission = getRelevantMissionObject(conversingPlayer, conversingNPC);
+
+	if (mission == NULL) {
+		//NPC is not related to any mission for this player.
+		int randomAnswer = System::random(4);
+		conversationScreen->setDialogText("@mission/mission_generic:deliver_incorrect_player_" + String::valueOf(randomAnswer));
+	} else {
+		//NPC is related to a mission for this player.
+		DeliverMissionObjective* objective = cast<DeliverMissionObjective*>(mission->getMissionObjective());
+		if (objective != NULL) {
+			//Run mission logic.
+
+			String text;
+			if (isTargetNpc(objective, conversingNPC->getPosition())) {
+				//Target NPC.
+				if (objective->getObjectiveStatus() == DeliverMissionObjective::INITSTATUS) {
+					objective->updateMissionStatus(conversingPlayer);
+					conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
+				} else {
+					text = "@mission/mission_generic:deliver_already_picked_up";
+					conversationScreen->setDialogText(text);
+				}
+			} else {
+				//Destination NPC.
+				if (objective->getObjectiveStatus() == DeliverMissionObjective::PICKEDUPSTATUS) {
+					objective->updateMissionStatus(conversingPlayer);
+					conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+				} else if (objective->getObjectiveStatus() == DeliverMissionObjective::INITSTATUS) {
+					text = "@mission/mission_generic:give_item";
+					conversationScreen->setDialogText(text);
+				} else {
+					text = "@mission/mission_generic:deliver_already_dropped_off";
+					conversationScreen->setDialogText(text);
+				}
+			}
+		}
+	}
 	return conversationScreen;
 }

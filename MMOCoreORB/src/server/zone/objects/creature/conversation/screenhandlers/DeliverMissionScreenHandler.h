@@ -46,6 +46,9 @@ which carries forward this exception.
 #define DELIVERMISSIONSCREENHANDLER_H_
 
 #include "ScreenHandler.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "engine/log/Logger.h"
 
 namespace server {
 namespace zone {
@@ -54,11 +57,20 @@ namespace creature {
 namespace conversation {
 namespace screenhandlers {
 
-class DeliverMissionScreenHandler : public ScreenHandler {
+class DeliverMissionScreenHandler : public ScreenHandler, Logger {
+protected:
+	MissionObject* getRelevantMissionObject(CreatureObject* player, CreatureObject* npc);
+
+	bool isTargetNpc(DeliverMissionObjective* objective, const Vector3& npcPosition);
+
+	bool isDestinationNpc(DeliverMissionObjective* objective, const Vector3& npcPosition);
+
+	bool isSameSpawnPoint(const float& positionX, const float& positionY, const Vector3& comparisonPosition);
+
 public:
 	static const String STARTSCREENHANDLERID;
 
-	DeliverMissionScreenHandler() : ScreenHandler() {}
+	DeliverMissionScreenHandler() : ScreenHandler(), Logger("DeliverMissionScreenHandler") {}
 
 	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 

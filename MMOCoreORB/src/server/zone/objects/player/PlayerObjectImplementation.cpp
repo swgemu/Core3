@@ -102,6 +102,8 @@ which carries forward this exception.
 #include "events/PlayerRecoveryEvent.h"
 #include "server/zone/objects/player/variables/Ability.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -134,7 +136,6 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	}
 
 	skillManager->updateXpLimits(_this);
-
 }
 
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -1265,6 +1266,8 @@ void PlayerObjectImplementation::setOnline() {
 	clearCharacterBit(PlayerObjectImplementation::LD, true);
 
 	doRecovery();
+
+	activateMissions();
 }
 
 void PlayerObjectImplementation::reload(ZoneClientSession* client) {
@@ -1365,6 +1368,36 @@ void PlayerObjectImplementation::maximizeExperience() {
 
 	for (int i = 0; i < xpCapList->size(); ++i) {
 		addExperience(xpCapList->elementAt(i).getKey(), xpCapList->elementAt(i).getValue(), true);
+	}
+}
+
+void PlayerObjectImplementation::activateMissions() {
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get());
+
+	if (creature == NULL) {
+		return;
+	}
+
+	SceneObject* datapad = creature->getSlottedObject("datapad");
+
+	if (datapad == NULL) {
+		return;
+	}
+
+	int datapadSize = datapad->getContainerObjectsSize();
+
+	for (int i = 0; i < datapadSize; ++i) {
+		if (datapad->getContainerObject(i)->isMissionObject()) {
+			MissionObject* mission = cast<MissionObject*>(datapad->getContainerObject(i));
+
+			if (mission != NULL) {
+				//Check if it is target or destination NPC
+				MissionObjective* objective = mission->getMissionObjective();
+				if (objective != NULL) {
+					objective->activate();
+				}
+			}
+		}
 	}
 }
 

@@ -17,10 +17,6 @@ void MissionObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("MissionObject");
-
-	if (missionObjective != NULL) {
-		missionObjective->activate();
-	}
 }
 
 void MissionObjectImplementation::sendBaselinesTo(SceneObject* player) {

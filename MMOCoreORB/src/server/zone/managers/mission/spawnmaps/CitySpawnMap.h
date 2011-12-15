@@ -75,13 +75,13 @@ protected:
 	 * @param minDistance the minimum distance between the spawn point and the supplied position.
 	 * @param minDistance the maximum distance between the spawn point and the supplied position.
 	 * @param spawnType spawn type bitmask that must be fulfilled.
+	 * @param mustBeFree the spawn point must be free to use.
 	 * @return true if the spawn fulfills spawn type, distance and is free, false otherwise.
 	 */
-	bool fulfillsRequirements(NpcSpawnPoint* npc, const Vector3* position, const float minDistance, const float maxDistance, int spawnType) {
+	bool fulfillsRequirements(NpcSpawnPoint* npc, const Vector3* position, const float minDistance, const float maxDistance, int spawnType, const bool mustBeFree) {
 		if (npc != NULL) {
-			if (((npc->getSpawnType() & spawnType) == spawnType) && (!npc->getInUse())) {
+			if (((npc->getSpawnType() & spawnType) == spawnType) && (!mustBeFree || !npc->getInUse())) {
 				float squaredDistance = npc->getPosition()->squaredDistanceTo(*position);
-
 				if ((squaredDistance <= maxDistance * maxDistance) &&
 					(squaredDistance >= minDistance * minDistance)) {
 					//NPC matches requirements.
@@ -108,6 +108,7 @@ public:
 		cityCenter.setZ(0);
 
 		LuaObject npcSpawns = luaObject->getObjectField("npcs");
+
 		for (int numberOfSpawns = 1; numberOfSpawns <= npcSpawns.getTableSize(); ++numberOfSpawns) {
 			lua_rawgeti(luaObject->getLuaState(), -1, numberOfSpawns);
 
@@ -120,6 +121,7 @@ public:
 
 			luaSpawnObj.pop();
 		}
+		npcSpawns.pop();
 	}
 
 	/**
@@ -135,19 +137,20 @@ public:
 	 * from the given position if it exists.
 	 * @param position The position to measure distance from.
 	 * @param spawnType the spawn type bit mask needed on the spawn point.
+	 * @param mustBeFree the spawn point must be free to use.
 	 * @param minDistance minimum distance between the spawn point and the given position.
 	 * @param maxDistance maximum distance between the spawn point and the given position.
 	 * @return random spawn point matching the requirements or NULL if none can be found.
 	 */
-	NpcSpawnPoint* getRandomNpcSpawnPoint(const Vector3* position, const int spawnType, const float minDistance = 0.0, const float maxDistance = 100000.0) {
+	NpcSpawnPoint* getRandomNpcSpawnPoint(const Vector3* position, const int spawnType, const bool mustBeFree, const float minDistance = 0.0, const float maxDistance = 100000.0) {
 		//Try 100 random npc spawn points, return the first that fulfills the requirements.
-		int maximumNumberOfTries = 100;
+		int maximumNumberOfTries = (npcSpawnMap.size() / 4) + 1;
 		while (maximumNumberOfTries > 0) {
 			int npcNumber = System::random(npcSpawnMap.size() - 1);
 
 			NpcSpawnPoint* npc = npcSpawnMap.get(npcNumber);
 
-			if (fulfillsRequirements(npc, position, maxDistance, minDistance, spawnType)) {
+			if (fulfillsRequirements(npc, position, minDistance, maxDistance, spawnType, mustBeFree)) {
 				return npc;
 			}
 
@@ -158,7 +161,7 @@ public:
 		for (int i = 0; i < npcSpawnMap.size(); ++i) {
 			NpcSpawnPoint* npc = npcSpawnMap.get(i);
 
-			if (fulfillsRequirements(npc, position, maxDistance, minDistance, spawnType)) {
+			if (fulfillsRequirements(npc, position, minDistance, maxDistance, spawnType, mustBeFree)) {
 				return npc;
 			}
 		}

@@ -56,16 +56,26 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
+include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 
 class DeliverMissionObjective extends MissionObjective {
 	protected AiAgent target;
-	protected AiAgent targetDest;
+	protected AiAgent destination;
 	protected TangibleObject item;
+	
+	protected NpcSpawnPoint targetSpawnPoint;
+	protected NpcSpawnPoint destinationSpawnPoint;
 	
 	protected int objectiveStatus;
 	
+	public static final int INITSTATUS = 0;
+	public static final int PICKEDUPSTATUS = 1;
+	public static final int DELIVEREDSTATUS = 2;
+	
 	public DeliverMissionObjective(MissionObject mission) {
 		super(mission);
+		
+		objectiveStatus = INITSTATUS;
 		
 		Logger.setLoggingName("DeliverMissionObjective");
 	}
@@ -78,27 +88,39 @@ class DeliverMissionObjective extends MissionObjective {
 		super.initializeTransientMembers();
 		
 		Logger.setLoggingName("MissionObject");
-		
-		activate();
-	}
-	
-	public void setTarget(AiAgent t) {
-		target = t;
-	}
-	
-	public void setTargetDest(AiAgent t) {
-		targetDest = t;
 	}
 	
 	public native TangibleObject getItem() {
 		return item;
 	}
 	
+	public int getObjectiveStatus() {
+		return objectiveStatus;
+	}
+	
 	public native void activate();
+	public native boolean activateWithResult();
 	public native void abort();
 	public native void complete();
 	
-	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	public void despawnNpcs() {
+		if (target != null) {
+			target.scheduleDespawn();
+		}
+		if (destination != null) {
+			destination.scheduleDespawn();
+		}
+	}
+	
+	public native void updateMissionStatus(CreatureObject player);
 	
 	public native boolean updateMissionTarget(CreatureObject player);
+	
+	public NpcSpawnPoint getTargetSpawnPoint() {
+		return targetSpawnPoint;
+	}
+	
+	public NpcSpawnPoint getDestinationSpawnPoint() {
+		return destinationSpawnPoint;
+	}
 }

@@ -289,8 +289,6 @@ void BountyMissionObjectiveImplementation::initializeTransientMembers() {
 	MissionObjectiveImplementation::initializeTransientMembers();
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/BountyMissionObjective.idl():  		activate();
-	activate();
 }
 
 /*

@@ -15,7 +15,9 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
@@ -24,76 +26,118 @@
 #include "MissionObserver.h"
 
 void DeliverMissionObjectiveImplementation::activate() {
-	if (observers.size() != 0)  {
-		return;
+	if (!activateWithResult()) {
+		//Send error message to player.
+		CreatureObject* owner = getPlayerOwner();
+		if (owner == NULL) {
+			return;
+		}
+
+		int randomNumber = System::random(4) + 1;
+		StringIdChatParameter message("@mission/mission_generic:mission_incomplete_0" + String::valueOf(randomNumber));
+
+		owner->sendSystemMessage(message);
+	}
+}
+
+bool DeliverMissionObjectiveImplementation::activateWithResult() {
+	CreatureObject* owner = getPlayerOwner();
+	if (owner == NULL) {
+		return false;
+	}
+	Zone* zone = owner->getZone();
+	if (zone == NULL) {
+		return false;
 	}
 
-	SceneObject* targetObject = mission->getMissionTarget();
-	SceneObject* targetObjectDest = mission->getMissionTargetDest();
-	if (targetObject == NULL || !targetObject->isCreatureObject() || targetObjectDest == NULL || !targetObjectDest->isCreatureObject())
-		return;
+	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	CreatureObject* targetCreature = cast<CreatureObject*>(targetObject);
-	CreatureObject* targetCreatureDest = cast<CreatureObject*>(targetObjectDest);
-	if (!targetCreature->isAiAgent() || !targetCreatureDest->isAiAgent())
-		return;
+	PlanetManager* planetManager = zone->getPlanetManager();
+	if (planetManager == NULL) {
+		return false;
+	}
+	TerrainManager* terrainManager = planetManager->getTerrainManager();
+	if (terrainManager == NULL) {
+		return false;
+	}
 
-	target = cast<AiAgent*>(targetCreature);
-	targetDest = cast<AiAgent*>(targetCreatureDest);
-	objectiveStatus = 0;
+	ZoneServer* zoneServer = owner->getZoneServer();
+	if (zoneServer == NULL) {
+		return false;
+	}
 
-	ManagedReference<MissionObserver*> observer1 =  new MissionObserver(_this);
-	ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
+	MissionManager* missionManager = zoneServer->getMissionManager();
+	if (missionManager == NULL) {
+		return false;
+	}
 
-	Locker locker1(target);
-	target->registerObserver(ObserverEventType::CONVERSE, observer1);
-	observers.put(observer1);
-	locker1.release();
+	//Spawn target and destination NPC's.
+	//Target NPC
+	//Find a free spawn point.
+	targetSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), NpcSpawnPoint::NEUTRALSPAWN);
+	if (targetSpawnPoint == NULL) {
+		return false;
+	}
+	Vector3* targetPosition = targetSpawnPoint->getPosition();
+	if (targetPosition == NULL) {
+		return false;
+	}
+	String deliverNpc = "deliver_npc";
+	float z = terrainManager->getHeight(targetPosition->getX(), targetPosition->getY());
+	target = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, targetPosition->getX(), z, targetPosition->getY(), 0));
+	StringId targetName = mission->getCreatorName();
+	target->setObjectName(targetName);
 
-	ManagedReference<MissionObserver*> observer2 =  new MissionObserver(_this);
-	ObjectManager::instance()->persistObject(observer2, 1, "missionobservers");
 
-	Locker locker2(targetDest);
-	targetDest->registerObserver(ObserverEventType::CONVERSE, observer2);
-	observers.put(observer2);
+	//Destination NPC.
+	//Find a free spawn point.
+	destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanetCRC(), mission->getEndPositionX(), mission->getEndPositionY(), NpcSpawnPoint::NEUTRALSPAWN);
+	if (destinationSpawnPoint == NULL) {
+		return false;
+	}
+	Vector3* destinationPosition = destinationSpawnPoint->getPosition();
+	if (destinationPosition == NULL) {
+		return false;
+	}
+	z = terrainManager->getHeight(destinationPosition->getX(), destinationPosition->getY());
+	destination = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, destinationPosition->getX(), z, destinationPosition->getY(), 0));
+	StringId destinationName = mission->getTargetName();
+	destination->setObjectName(destinationName);
 
-	WaypointObject* waypoint = mission->getWaypointToMission();
+	//Create waypoint and activate it.
+	if (objectiveStatus == 0) {
+		WaypointObject* waypoint = mission->getWaypointToMission();
 
-	if (waypoint == NULL)
-		waypoint = mission->createWaypoint();
+		if (waypoint == NULL) {
+			waypoint = mission->createWaypoint();
+		}
 
-	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
-	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
-	waypoint->setActive(true);
+		waypoint->setPlanetCRC(mission->getStartPlanetCRC());
+		waypoint->setPosition(targetPosition->getX(), 0, targetPosition->getY());
+		waypoint->setActive(true);
 
-	mission->updateMissionLocation();
+		mission->updateMissionLocation();
+	} else {
+		updateMissionTarget(getPlayerOwner());
+	}
+
+	return true;
 }
 
 void DeliverMissionObjectiveImplementation::abort() {
-	for (int i = 0; i < observers.size(); i++) {
-		ManagedReference<MissionObserver*> observer = observers.get(i);
-
-		AiAgent* observed = targetDest;
-		if (i == 0)
-			observed = target;
-
-		if (observed != NULL) {
-			Locker locker(observed);
-
-			observed->dropObserver(ObserverEventType::CONVERSE, observer);
-			observer->destroyObjectFromDatabase();
-			locker.release();
-		}
-	}
-
-	observers.removeAll();
+	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+	MissionManager* missionManager = zoneServer->getMissionManager();
+	missionManager->returnSpawnPoint(targetSpawnPoint);
+	missionManager->returnSpawnPoint(destinationSpawnPoint);
+	despawnNpcs();
 }
 
 void DeliverMissionObjectiveImplementation::complete() {
-	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
+	CreatureObject* player = cast<CreatureObject*>(getPlayerOwner());
 
-	if (player == NULL)
+	if (player == NULL) {
 		return;
+	}
 
 	Locker locker(player);
 
@@ -112,86 +156,68 @@ void DeliverMissionObjectiveImplementation::complete() {
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
 	missionManager->removeMission(mission, player);
+
+	missionManager->returnSpawnPoint(targetSpawnPoint);
+	missionManager->returnSpawnPoint(destinationSpawnPoint);
+	despawnNpcs();
 }
 
-int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType == ObserverEventType::CONVERSE) {
-		CreatureObject* player = cast<CreatureObject*>(arg1);
-		if (!player->isPlayerCreature())
-			return 0;
+void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
+	StringBuffer itemEntry;
+	itemEntry << "m" << mission->getMissionNumber();
 
-		AiAgent* converser = cast<AiAgent*>(observable);
-		SceneObject* targetNpc = target;
-		if (objectiveStatus == 1)
-			targetNpc = targetDest;
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	StringId itemName;
 
-		if (targetNpc != converser)
-			converser->sendDefaultConversationTo(player);
-		else {
-			CreatureObject* playerCreature = cast<CreatureObject*>( player);
-
-			player->sendMessage(new StartNpcConversation(playerCreature, converser->getObjectID(), ""));
-			StringBuffer response, itemEntry;
-			response << "m" << mission->getMissionNumber();
-			itemEntry = response;
-
-		   	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-		   	StringId itemName;
-
-			switch (objectiveStatus) {
-			case 0:
-				itemEntry << "l";
-				response << "p";
-				item = NULL;
-			   	// just create a datadisk for now... not many missions that use something else and can add in a table lookup later
-			   	item = cast<TangibleObject*>( player->getZoneServer()->createObject(String("object/tangible/mission/mission_datadisk.iff").hashCode(), 2));
-			   	if (item == NULL)
-			   			return 0;
-
-			   	itemName.setStringId("mission/mission_deliver_neutral_easy", itemEntry.toString());
-			   	item->setObjectName(itemName);
-			   	item->sendTo(player, true);
-
-				// give player the item to deliver
-			   	inventory->transferObject(item, -1, true);
-
-			   	updateMissionTarget(player);
-
-				objectiveStatus = 1;
-				break;
-			case 1:
-				response << "r";
-				// check for item, then remove item
-				if (item == NULL || !inventory->hasObjectInContainer(item->getObjectID()))
-					return 0;
-
-				item->destroyObjectFromWorld(true);
-				//inventory->removeObject(item, true);
-
-				complete();
-				break;
-			default:
-				break;
-			}
-
-			// TODO: make this less static, there can be more than one difficulty (start this back in MissionManager)
-			StringIdChatParameter params("missing/mission_deliver_neutral_easy", response.toString());
-			player->sendMessage(new NpcConversationMessage(playerCreature, params));
-			player->sendMessage(new StopNpcConversation(player, converser->getObjectID()));
+	switch (objectiveStatus) {
+	case 0:
+		itemEntry << "l";
+		item = NULL;
+		//TODO: create correct item.
+		item = cast<TangibleObject*>( player->getZoneServer()->createObject(String("object/tangible/mission/mission_datadisk.iff").hashCode(), 2));
+		if (item == NULL) {
+			return;
 		}
-	}
 
-	return 1;
+		itemName.setStringId("mission/mission_deliver_neutral_easy", itemEntry.toString());
+		item->setObjectName(itemName);
+		item->sendTo(player, true);
+
+		//Give player the item to deliver
+		inventory->transferObject(item, -1, true);
+
+		updateMissionTarget(player);
+
+		objectiveStatus = PICKEDUPSTATUS;
+		break;
+	case 1:
+		// check for item, then remove item
+		if (item == NULL || !inventory->hasObjectInContainer(item->getObjectID())) {
+			return;
+		}
+
+		item->destroyObjectFromWorld(true);
+
+		complete();
+
+		objectiveStatus = DELIVEREDSTATUS;
+		break;
+	default:
+		break;
+	}
 }
 
 bool DeliverMissionObjectiveImplementation::updateMissionTarget(CreatureObject* player) {
-	// now update the waypoint to the new target
+	//Now update the waypoint to the new target
 	WaypointObject* waypoint = mission->getWaypointToMission();
-	if (waypoint == NULL)
+	if (waypoint == NULL) {
 		waypoint = mission->createWaypoint();
+	}
+
 	waypoint->setPlanetCRC(mission->getEndPlanetCRC());
-	waypoint->setPosition(targetDest->getPositionX(), 0, targetDest->getPositionY());
+	waypoint->setPosition(destinationSpawnPoint->getPosition()->getX(), 0, destinationSpawnPoint->getPosition()->getY());
 	waypoint->setActive(true);
+
 	mission->updateMissionLocation();
 
 	return true;

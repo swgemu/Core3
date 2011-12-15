@@ -57,6 +57,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.managers.stringid.StringIdManager;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
+include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 
 class MissionManager extends Observer implements Logger {
 	@weakReference
@@ -102,6 +103,7 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeBountyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeDeliverMission(CreatureObject player, MissionObject mission);
+	public native boolean randomDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission);
 	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
 	public native void randomizeEntertainerMission(CreatureObject player, MissionObject mission);
 	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
@@ -111,6 +113,8 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeRebelDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelDeliverMission(CreatureObject player, MissionObject mission);
 
+	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
+	public native void returnSpawnPoint(NpcSpawnPoint spawnPoint);
 	
 	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);

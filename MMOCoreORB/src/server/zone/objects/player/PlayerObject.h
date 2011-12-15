@@ -662,6 +662,8 @@ public:
 
 	void maximizeExperience();
 
+	void activateMissions();
+
 	String getCommandMessageString(unsigned int actionCRC);
 
 	bool hasBadge(unsigned int badge);
@@ -1256,6 +1258,8 @@ public:
 
 	void maximizeExperience();
 
+	void activateMissions();
+
 	String getCommandMessageString(unsigned int actionCRC);
 
 	bool hasBadge(unsigned int badge);
@@ -1648,6 +1652,8 @@ public:
 	int getExperience(const String& xp);
 
 	void maximizeExperience();
+
+	void activateMissions();
 
 	String getCommandMessageString(unsigned int actionCRC);
 

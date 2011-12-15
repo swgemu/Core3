@@ -69,6 +69,25 @@ protected:
 	 */
 	String planetName;
 
+	/**
+	 * Finds the city number closest to the supplied position on the planet.
+	 * @param position the position to search from.
+	 * @return closest city number or -1 if none is found.
+	 */
+	int getClosestCityNumber(const Vector3* position) {
+		int city = -1;
+		float minSquaredDistance = 100000.0 * 100000.0;
+		for (int i = 0; i < citySpawnMaps.size(); i++) {
+			float squaredDistance = citySpawnMaps.get(i)->getCityCenter()->distanceTo(*position);
+			if (minSquaredDistance >= squaredDistance) {
+				minSquaredDistance = squaredDistance;
+				city = i;
+			}
+		}
+
+		return city;
+	}
+
 public:
 	/**
 	 * Loads the object from a LuaObject.
@@ -90,6 +109,7 @@ public:
 
 			luaCityObj.pop();
 		}
+		cities.pop();
 	}
 
 	/**
@@ -106,17 +126,35 @@ public:
 	 * @return closest city or NULL if no city is available on the planet.
 	 */
 	CitySpawnMap* getClosestCity(const Vector3* position) {
-		Reference<CitySpawnMap* > city = NULL;
-		float minSquaredDistance = 100000.0 * 100000.0;
-		for (int i = 0; i < citySpawnMaps.size(); i++) {
-			float squaredDistance = citySpawnMaps.get(i)->getCityCenter()->distanceTo(*position);
-			if (minSquaredDistance >= squaredDistance) {
-				minSquaredDistance = squaredDistance;
-				city = citySpawnMaps.get(i);
-			}
-		}
+		int cityNumber = getClosestCityNumber(position);
 
-		return city;
+		if (cityNumber >= 0) {
+			return citySpawnMaps.get(cityNumber);
+		} else {
+			return NULL;
+		}
+	}
+
+	CitySpawnMap* getRandomCityNotCloseTo(const Vector3* position) {
+		if (citySpawnMaps.size() == 1) {
+			//Only one city, return it.
+			return citySpawnMaps.get(0);
+		} else if (citySpawnMaps.size() > 1) {
+			//Get city number of city closest to the supplied position.
+			int closestCityNumber = getClosestCityNumber(position);
+
+			//Generate a random city number.
+			int randomCityNumber = System::random(citySpawnMaps.size() - 2);
+			if (randomCityNumber >= closestCityNumber) {
+				//Add one to the city number to skip the closest city.
+				randomCityNumber++;
+			}
+
+			return citySpawnMaps.get(randomCityNumber);
+		} else {
+			//No cities.
+			return NULL;
+		}
 	}
 
 	/**

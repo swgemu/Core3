@@ -123,6 +123,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/templates/TemplateReference.h"
 
+#include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
+
 #include "engine/util/Observer.h"
 
 #include "engine/util/Observable.h"
@@ -136,25 +138,37 @@ namespace mission {
 
 class DeliverMissionObjective : public MissionObjective {
 public:
+	static const int INITSTATUS = 0;
+
+	static const int PICKEDUPSTATUS = 1;
+
+	static const int DELIVEREDSTATUS = 2;
+
 	DeliverMissionObjective(MissionObject* mission);
 
 	void initializeTransientMembers();
 
-	void setTarget(AiAgent* t);
-
-	void setTargetDest(AiAgent* t);
-
 	TangibleObject* getItem();
 
+	int getObjectiveStatus();
+
 	void activate();
+
+	bool activateWithResult();
 
 	void abort();
 
 	void complete();
 
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+	void despawnNpcs();
+
+	void updateMissionStatus(CreatureObject* player);
 
 	bool updateMissionTarget(CreatureObject* player);
+
+	NpcSpawnPoint* getTargetSpawnPoint();
+
+	NpcSpawnPoint* getDestinationSpawnPoint();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -184,13 +198,23 @@ class DeliverMissionObjectiveImplementation : public MissionObjectiveImplementat
 protected:
 	ManagedReference<AiAgent* > target;
 
-	ManagedReference<AiAgent* > targetDest;
+	ManagedReference<AiAgent* > destination;
 
 	ManagedReference<TangibleObject* > item;
+
+	Reference<NpcSpawnPoint* > targetSpawnPoint;
+
+	Reference<NpcSpawnPoint* > destinationSpawnPoint;
 
 	int objectiveStatus;
 
 public:
+	static const int INITSTATUS = 0;
+
+	static const int PICKEDUPSTATUS = 1;
+
+	static const int DELIVEREDSTATUS = 2;
+
 	DeliverMissionObjectiveImplementation(MissionObject* mission);
 
 	DeliverMissionObjectiveImplementation(DummyConstructorParameter* param);
@@ -199,21 +223,27 @@ public:
 
 	void initializeTransientMembers();
 
-	void setTarget(AiAgent* t);
-
-	void setTargetDest(AiAgent* t);
-
 	TangibleObject* getItem();
 
+	int getObjectiveStatus();
+
 	void activate();
+
+	bool activateWithResult();
 
 	void abort();
 
 	void complete();
 
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+	void despawnNpcs();
+
+	void updateMissionStatus(CreatureObject* player);
 
 	bool updateMissionTarget(CreatureObject* player);
+
+	NpcSpawnPoint* getTargetSpawnPoint();
+
+	NpcSpawnPoint* getDestinationSpawnPoint();
 
 	WeakReference<DeliverMissionObjective*> _this;
 
@@ -260,21 +290,27 @@ public:
 
 	void initializeTransientMembers();
 
-	void setTarget(AiAgent* t);
-
-	void setTargetDest(AiAgent* t);
-
 	TangibleObject* getItem();
 
+	int getObjectiveStatus();
+
 	void activate();
+
+	bool activateWithResult();
 
 	void abort();
 
 	void complete();
 
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+	void despawnNpcs();
+
+	void updateMissionStatus(CreatureObject* player);
 
 	bool updateMissionTarget(CreatureObject* player);
+
+	NpcSpawnPoint* getTargetSpawnPoint();
+
+	NpcSpawnPoint* getDestinationSpawnPoint();
 
 };
 

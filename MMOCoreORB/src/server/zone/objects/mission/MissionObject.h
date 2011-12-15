@@ -14,20 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace waypoint {
 
 class WaypointObject;
@@ -102,6 +88,22 @@ class MissionObjective;
 } // namespace server
 
 using namespace server::zone::objects::mission;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace mission {
+namespace spawnmaps {
+
+class NpcSpawnPoint;
+
+} // namespace spawnmaps
+} // namespace mission
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::mission::spawnmaps;
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
@@ -190,15 +192,17 @@ public:
 
 	void setEndPlanetCRC(unsigned int crc);
 
-	void setMissionTarget(SceneObject* target);
+	void setMissionTarget(NpcSpawnPoint* target);
 
-	void setMissionTargetDest(SceneObject* target);
+	void setMissionTargetDest(NpcSpawnPoint* target);
 
 	void setMissionNumber(int num);
 
 	void setTargetOptionalTemplate(const String& tml);
 
 	void setTemplateStrings(const String& temp1, const String& temp2);
+
+	MissionObjective* getMissionObjective();
 
 	float getStartPositionX();
 
@@ -216,9 +220,11 @@ public:
 
 	WaypointObject* getWaypointToMission();
 
-	SceneObject* getMissionTarget();
+	NpcSpawnPoint* getMissionTarget();
 
-	SceneObject* getMissionTargetDest();
+	NpcSpawnPoint* getMissionTargetDest();
+
+	void clearTargetAndDestination();
 
 	unsigned int getTypeCRC();
 
@@ -316,9 +322,9 @@ protected:
 
 	String targetName;
 
-	ManagedReference<SceneObject* > missionTarget;
+	Reference<NpcSpawnPoint* > missionTarget;
 
-	ManagedReference<SceneObject* > missionTargetDest;
+	Reference<NpcSpawnPoint* > missionTargetDest;
 
 	String templateString1;
 
@@ -401,15 +407,17 @@ public:
 
 	void setEndPlanetCRC(unsigned int crc);
 
-	void setMissionTarget(SceneObject* target);
+	void setMissionTarget(NpcSpawnPoint* target);
 
-	void setMissionTargetDest(SceneObject* target);
+	void setMissionTargetDest(NpcSpawnPoint* target);
 
 	void setMissionNumber(int num);
 
 	void setTargetOptionalTemplate(const String& tml);
 
 	void setTemplateStrings(const String& temp1, const String& temp2);
+
+	MissionObjective* getMissionObjective();
 
 	float getStartPositionX();
 
@@ -427,9 +435,11 @@ public:
 
 	WaypointObject* getWaypointToMission();
 
-	SceneObject* getMissionTarget();
+	NpcSpawnPoint* getMissionTarget();
 
-	SceneObject* getMissionTargetDest();
+	NpcSpawnPoint* getMissionTargetDest();
+
+	void clearTargetAndDestination();
 
 	unsigned int getTypeCRC();
 
@@ -544,15 +554,17 @@ public:
 
 	void setEndPlanetCRC(unsigned int crc);
 
-	void setMissionTarget(SceneObject* target);
+	void setMissionTarget(NpcSpawnPoint* target);
 
-	void setMissionTargetDest(SceneObject* target);
+	void setMissionTargetDest(NpcSpawnPoint* target);
 
 	void setMissionNumber(int num);
 
 	void setTargetOptionalTemplate(const String& tml);
 
 	void setTemplateStrings(const String& temp1, const String& temp2);
+
+	MissionObjective* getMissionObjective();
 
 	float getStartPositionX();
 
@@ -570,9 +582,11 @@ public:
 
 	WaypointObject* getWaypointToMission();
 
-	SceneObject* getMissionTarget();
+	NpcSpawnPoint* getMissionTarget();
 
-	SceneObject* getMissionTargetDest();
+	NpcSpawnPoint* getMissionTargetDest();
+
+	void clearTargetAndDestination();
 
 	unsigned int getTypeCRC();
 

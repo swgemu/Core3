@@ -240,8 +240,6 @@ void CraftingMissionObjectiveImplementation::initializeTransientMembers() {
 	MissionObjectiveImplementation::initializeTransientMembers();
 	// server/zone/objects/mission/CraftingMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/CraftingMissionObjective.idl():  		activate();
-	activate();
 }
 
 /*

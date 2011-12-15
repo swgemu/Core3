@@ -1047,6 +1047,8 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native void maximizeExperience();
 	
+	public native void activateMissions();
+	
 	public string getCommandMessageString(unsigned int actionCRC) {
 		return commandMessageStrings.get(actionCRC);
 	}

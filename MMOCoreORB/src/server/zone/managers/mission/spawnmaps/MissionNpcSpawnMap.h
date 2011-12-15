@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/util/u3d/Vector3.h"
 #include "engine/log/Logger.h"
 #include "UniverseSpawnMap.h"
+#include "engine/core/ManagedObject.h"
 
 namespace server {
 namespace zone {
@@ -58,7 +59,7 @@ namespace spawnmaps {
 /**
  * Class implementing methods to find a suitable spawn point for mission NPC's.
  */
-class MissionNpcSpawnMap : public Logger {
+class MissionNpcSpawnMap : public ManagedObject, Logger {
 protected:
 	/**
 	 * Spawn points in the world.
@@ -69,7 +70,7 @@ public:
 	/**
 	 * Constructor.
 	 */
-	MissionNpcSpawnMap() : Logger("MissionNpcSpawnMap") {}
+	MissionNpcSpawnMap() : ManagedObject(), Logger("MissionNpcSpawnMap") {}
 	
 	/**
 	 * Destructor.
@@ -84,8 +85,23 @@ public:
 	/**
 	 * Find a random spawn point on the requested planet within the minimum and maximum distance from the
 	 * supplied position of the requested spawn type.
+	 * @param planetCRC the CRC of the name of the planet to find a spawn on.
+	 * @param position the position to measure distance from/to.
+	 * @param spawnType the spawn type bitmask required for the spawn.
+	 * @param minDistance the minimum distance between the spawn point and the position supplied.
+	 * @param minDistance the maximum distance between the spawn point and the position supplied.
+	 * @param mustBeFree the spawn point must be free to use (automatically set to used when found).
+	 * @return random npc matching requirements or NULL if none could be found.
 	 */
-	NpcSpawnPoint* getRandomNpcSpawnPoint(const String& planetName, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance);
+	NpcSpawnPoint* getRandomNpcSpawnPoint(const uint32 planetCRC, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance, const bool mustBeFree);
+
+	/**
+	 * Get the center coordinates of a random city not close to the supplied coordinates.
+	 * @param planetCRC the CRC of the name of the planet to find a city on.
+	 * @param notCloseToPosition the city closest to this position will not be returned unless it is the only city.
+	 * @return random city not close to the coordinates.
+	 */
+	Vector3* getRandomCityCoordinates(const uint32 planetCRC, const Vector3* notCloseToPosition);
 
 	/**
 	 * Read the object from a stream.

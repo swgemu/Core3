@@ -123,6 +123,8 @@ using namespace server::zone::managers::stringid;
 
 #include "server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.h"
 
+#include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
+
 #include "system/util/SortedVector.h"
 
 #include "engine/util/Observer.h"
@@ -160,6 +162,8 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
+	bool randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission);
+
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
@@ -175,6 +179,10 @@ public:
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
+
+	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
+
+	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
@@ -261,6 +269,8 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
+	bool randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission);
+
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
@@ -276,6 +286,10 @@ public:
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
+
+	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
+
+	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
@@ -360,6 +374,8 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
+	bool randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission);
+
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
@@ -375,6 +391,10 @@ public:
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
+
+	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
+
+	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 

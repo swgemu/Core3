@@ -91,7 +91,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	if (missionBag == NULL)
 		return;
 
-	while (missionBag->getContainerObjectsSize() < 6) {
+	while (missionBag->getContainerObjectsSize() < 12) {
 		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission
 		missionBag->transferObject(mission, -1, false);
 		mission->sendTo(player, true);
@@ -307,6 +307,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 
 	for (int i = 0; i < bagSize; ++i) {
 		MissionObject* mission = cast<MissionObject*>( missionBag->getContainerObject(i));
+		mission->clearTargetAndDestination();
 
 		// TODO: make mission distribution function more like live
 		if (missionTerminal->isGeneralTerminal()) {
@@ -352,8 +353,11 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				randomizeReconMission(player, mission);
 			else
 				randomizeHuntingMission(player, mission);
-		} else if (missionTerminal->isBountyTerminal())
-			randomizeBountyMission(player, mission);
+		} else if (missionTerminal->isBountyTerminal()) {
+			if (i < bagSize / 2) {
+				randomizeBountyMission(player, mission);
+			}
+		}
 
 		mission->setRefreshCounter(counter, true);
 	}
@@ -575,48 +579,118 @@ void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player
 }
 
 void MissionManagerImplementation::randomizeDeliverMission(CreatureObject* player, MissionObject* mission) {
-	/*
-	PlanetManager* pmng = player->getZone()->getPlanetManager();
-	MissionTargetMap* missionNpcs = pmng->getMissionNpcs();
-	// need at least 2 NPCs to have a delivery mission
-	if (missionNpcs->size() <= 1) {
-		mission->setTypeCRC(0);
-		return;
+	//Randomize in city or between city missions.
+	bool inTownMission = true;
+	if (System::random(1) == 1) {
+		inTownMission = false;
 	}
 
-	ManagedReference<SceneObject*> target = missionNpcs->getRandomTarget(player, 1);
-	ManagedReference<SceneObject*> targetDest = missionNpcs->getRandomTarget(player, 1);
-
-	if (target == NULL || targetDest == NULL || target == targetDest) {
-		mission->setTypeCRC(0);
-		return;
+	if (!randomDeliverMission(player, mission, inTownMission)) {
+		//In town or out of town mission failed try the other sort of mission instead.
+		inTownMission = !inTownMission;
+		randomDeliverMission(player, mission, inTownMission);
 	}
+}
+
+bool MissionManagerImplementation::randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission) {
+	//Get the current planet and position of the player.
+	String planetName = player->getZone()->getZoneName();
+
+	Vector3 playerPosition = player->getPosition();
+	Vector3* startPosition = &playerPosition;
+
+	//Lock spawn point map for the search.
+	Locker missionSpawnLocker(&missionNpcSpawnMap);
+
+	//Find a spawn point in current city.
+	float minDistance = 0.0f;
+	float maxDistance = 300.0f;
+	Reference<NpcSpawnPoint*> startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, NpcSpawnPoint::NEUTRALSPAWN, minDistance, maxDistance, false);
+
+	if (startNpc == NULL) {
+		//Couldn't find a suitable spawn point.
+		return false;
+	}
+
+	//Find a spawn point for the delivery target.
+	Vector3* endPosition = startPosition;
+	if (!inTownMission) {
+		//Find city center of another city and use as position to search for spawn points from.
+		endPosition = missionNpcSpawnMap.getRandomCityCoordinates(planetName.hashCode(), startPosition);
+
+	}
+	//Search in all parts of the city for the end spawn.
+	maxDistance = 1500.0f;
+	Reference<NpcSpawnPoint*> endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, NpcSpawnPoint::NEUTRALSPAWN, minDistance, maxDistance, false);
+
+	if (endNpc == NULL) {
+		//Couldn't find a suitable spawn point.
+		return false;
+	}
+
+	//Randomize mission description strings/delivery object.
+	int randomTexts = System::random(29) + 1;
+
+	//Setup mission object.
+	mission->setMissionNumber(randomTexts);
+	mission->setMissionTarget(startNpc);
+	mission->setMissionTargetDest(endNpc);
 
 	NameManager* nm = processor->getNameManager();
-
-	int randTexts = System::random(29) + 1;
-
-	mission->setMissionNumber(randTexts);
-	mission->setMissionTarget(target);
-	mission->setMissionTargetDest(targetDest);
 	mission->setCreatorName(nm->makeCreatureName());
+	mission->setMissionTargetName(nm->makeCreatureName());
 
-	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
-	mission->setStartPosition(target->getPositionX(), target->getPositionY(), target->getPlanetCRC());
-	mission->setEndPosition(targetDest->getPositionX(), targetDest->getPositionY(), targetDest->getPlanetCRC());
+	String planet = player->getZone()->getZoneName();
+	mission->setStartPlanet(planet);
+	mission->setStartPosition(startNpc->getPosition()->getX(), startNpc->getPosition()->getY(), planet, true);
+	mission->setEndPosition(endNpc->getPosition()->getX(), endNpc->getPosition()->getY(), planet.hashCode());
 
-	// TODO: will need to do table lookup to get the other types of deliver missions (most are datadisk)
-	mission->setMissionTargetName("Datadisc");
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode()));
 
-	// TODO: this all needs to change to be less static and use distance
-	mission->setRewardCredits(100 + System::random(100));
+	int baseCredits = 50;
+	int startDistanceCredits = startNpc->getPosition()->distanceTo(playerPosition) / 10;
+	int deliverDistanceCredits = startNpc->getPosition()->distanceTo(*(endNpc->getPosition())) / 10;
+
+	mission->setRewardCredits(baseCredits + startDistanceCredits + deliverDistanceCredits);
+
 	mission->setMissionDifficulty(5);
-	mission->setMissionTitle("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randTexts) + "t");
-	mission->setMissionDescription("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randTexts) + "d");
+	mission->setMissionTitle("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randomTexts) + "t");
+	mission->setMissionDescription("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randomTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::DELIVER);
-	*/
+
+	return true;
+}
+
+NpcSpawnPoint* MissionManagerImplementation::getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
+	float min = 0.0f;
+	float max = 50.0f;
+
+	Locker missionSpawnLocker(&missionNpcSpawnMap);
+
+	//Try to find a free NPC spawn point in a circle with a radius of max.
+	while (max <= 1600.0f) {
+		Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, new Vector3(x, y, 0), spawnType, min, max, true);
+		if (npc != NULL) {
+			//Found NPC spawn point, allocate it and return it.
+			npc->setInUse(true);
+			return npc;
+		} else {
+			//No NPC spawn point found, double the search area radius.
+			max *= 2;
+		}
+	}
+
+	//Couldn't find any free NPC spawn point.
+	return NULL;
+}
+
+void MissionManagerImplementation::returnSpawnPoint(NpcSpawnPoint* spawnPoint) {
+	if (spawnPoint != NULL) {
+		//Lock spawn map before changing the spawn point parameters.
+		Locker missionSpawnLocker(&missionNpcSpawnMap);
+		spawnPoint->setInUse(true);
+	}
 }
 
 void MissionManagerImplementation::randomizeCraftingMission(CreatureObject* player, MissionObject* mission) {

@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/util/u3d/Vector3.h"
 #include "engine/log/Logger.h"
 #include "engine/lua/Lua.h"
-#include "system/lang/Object.h"
+#include "engine/orb/object/DistributedObject.h"
 
 namespace server {
 namespace zone {
@@ -59,7 +59,7 @@ namespace spawnmaps {
 /**
  * Container for a NPC spawn point usable in missions.
  */
-class NpcSpawnPoint : public Object {
+class NpcSpawnPoint : public DistributedObject {
 protected:
 	/**
 	 * The position on the planet.
@@ -105,6 +105,7 @@ public:
 		position.setX(x);
 		position.setY(y);
 		position.setZ(0);
+		inUse = false;
 	}
 
 	/**
@@ -171,4 +172,3 @@ public:
 using namespace server::zone::managers::mission::spawnmaps;
 
 #endif /* NPCSPAWNPOINT_H_ */
-

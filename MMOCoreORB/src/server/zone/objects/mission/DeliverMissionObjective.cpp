@@ -24,7 +24,7 @@
  *	DeliverMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETTARGET__AIAGENT_,RPC_SETTARGETDEST__AIAGENT_,RPC_GETITEM__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GETITEM__,RPC_GETOBJECTIVESTATUS__,RPC_ACTIVATE__,RPC_ACTIVATEWITHRESULT__,RPC_ABORT__,RPC_COMPLETE__,RPC_DESPAWNNPCS__,RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_,RPC_GETTARGETSPAWNPOINT__,RPC_GETDESTINATIONSPAWNPOINT__};
 
 DeliverMissionObjective::DeliverMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DeliverMissionObjectiveImplementation* _implementation = new DeliverMissionObjectiveImplementation(mission);
@@ -53,34 +53,6 @@ void DeliverMissionObjective::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void DeliverMissionObjective::setTarget(AiAgent* t) {
-	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETTARGET__AIAGENT_);
-		method.addObjectParameter(t);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setTarget(t);
-}
-
-void DeliverMissionObjective::setTargetDest(AiAgent* t) {
-	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETTARGETDEST__AIAGENT_);
-		method.addObjectParameter(t);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setTargetDest(t);
-}
-
 TangibleObject* DeliverMissionObjective::getItem() {
 	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -94,6 +66,19 @@ TangibleObject* DeliverMissionObjective::getItem() {
 		return _implementation->getItem();
 }
 
+int DeliverMissionObjective::getObjectiveStatus() {
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETOBJECTIVESTATUS__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getObjectiveStatus();
+}
+
 void DeliverMissionObjective::activate() {
 	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -105,6 +90,19 @@ void DeliverMissionObjective::activate() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->activate();
+}
+
+bool DeliverMissionObjective::activateWithResult() {
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ACTIVATEWITHRESULT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->activateWithResult();
 }
 
 void DeliverMissionObjective::abort() {
@@ -133,22 +131,31 @@ void DeliverMissionObjective::complete() {
 		_implementation->complete();
 }
 
-int DeliverMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+void DeliverMissionObjective::despawnNpcs() {
 	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
-		method.addObjectParameter(observer);
-		method.addUnsignedIntParameter(eventType);
-		method.addObjectParameter(observable);
-		method.addObjectParameter(arg1);
-		method.addSignedLongParameter(arg2);
+		DistributedMethod method(this, RPC_DESPAWNNPCS__);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithVoidReturn();
 	} else
-		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		_implementation->despawnNpcs();
+}
+
+void DeliverMissionObjective::updateMissionStatus(CreatureObject* player) {
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateMissionStatus(player);
 }
 
 bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
@@ -163,6 +170,32 @@ bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->updateMissionTarget(player);
+}
+
+NpcSpawnPoint* DeliverMissionObjective::getTargetSpawnPoint() {
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTARGETSPAWNPOINT__);
+
+		return static_cast<NpcSpawnPoint*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getTargetSpawnPoint();
+}
+
+NpcSpawnPoint* DeliverMissionObjective::getDestinationSpawnPoint() {
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDESTINATIONSPAWNPOINT__);
+
+		return static_cast<NpcSpawnPoint*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getDestinationSpawnPoint();
 }
 
 DistributedObjectServant* DeliverMissionObjective::_getImplementation() {
@@ -273,13 +306,23 @@ bool DeliverMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 		return true;
 	}
 
-	if (_name == "targetDest") {
-		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&targetDest, stream);
+	if (_name == "destination") {
+		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&destination, stream);
 		return true;
 	}
 
 	if (_name == "item") {
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&item, stream);
+		return true;
+	}
+
+	if (_name == "targetSpawnPoint") {
+		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&targetSpawnPoint, stream);
+		return true;
+	}
+
+	if (_name == "destinationSpawnPoint") {
+		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&destinationSpawnPoint, stream);
 		return true;
 	}
 
@@ -311,11 +354,11 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "targetDest";
+	_name = "destination";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&targetDest, stream);
+	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&destination, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -324,6 +367,22 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&item, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "targetSpawnPoint";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&targetSpawnPoint, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "destinationSpawnPoint";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&destinationSpawnPoint, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -336,11 +395,13 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return 6 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		objectiveStatus = INITSTATUS;
+	objectiveStatus = INITSTATUS;
 	// server/zone/objects/mission/DeliverMissionObjective.idl():  		Logger.setLoggingName("DeliverMissionObjective");
 	Logger::setLoggingName("DeliverMissionObjective");
 }
@@ -353,23 +414,39 @@ void DeliverMissionObjectiveImplementation::initializeTransientMembers() {
 	MissionObjectiveImplementation::initializeTransientMembers();
 	// server/zone/objects/mission/DeliverMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  		activate();
-	activate();
-}
-
-void DeliverMissionObjectiveImplementation::setTarget(AiAgent* t) {
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  		target = t;
-	target = t;
-}
-
-void DeliverMissionObjectiveImplementation::setTargetDest(AiAgent* t) {
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  		targetDest = t;
-	targetDest = t;
 }
 
 TangibleObject* DeliverMissionObjectiveImplementation::getItem() {
 	// server/zone/objects/mission/DeliverMissionObjective.idl():  		return item;
 	return item;
+}
+
+int DeliverMissionObjectiveImplementation::getObjectiveStatus() {
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		return objectiveStatus;
+	return objectiveStatus;
+}
+
+void DeliverMissionObjectiveImplementation::despawnNpcs() {
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		if 
+	if (target != NULL){
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  			target.scheduleDespawn();
+	target->scheduleDespawn();
+}
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  	}
+	if (destination != NULL){
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  			destination.scheduleDespawn();
+	destination->scheduleDespawn();
+}
+}
+
+NpcSpawnPoint* DeliverMissionObjectiveImplementation::getTargetSpawnPoint() {
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		return targetSpawnPoint;
+	return targetSpawnPoint;
+}
+
+NpcSpawnPoint* DeliverMissionObjectiveImplementation::getDestinationSpawnPoint() {
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		return destinationSpawnPoint;
+	return destinationSpawnPoint;
 }
 
 /*
@@ -389,17 +466,17 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_SETTARGET__AIAGENT_:
-		setTarget(static_cast<AiAgent*>(inv->getObjectParameter()));
-		break;
-	case RPC_SETTARGETDEST__AIAGENT_:
-		setTargetDest(static_cast<AiAgent*>(inv->getObjectParameter()));
-		break;
 	case RPC_GETITEM__:
 		resp->insertLong(getItem()->_getObjectID());
 		break;
+	case RPC_GETOBJECTIVESTATUS__:
+		resp->insertSignedInt(getObjectiveStatus());
+		break;
 	case RPC_ACTIVATE__:
 		activate();
+		break;
+	case RPC_ACTIVATEWITHRESULT__:
+		resp->insertBoolean(activateWithResult());
 		break;
 	case RPC_ABORT__:
 		abort();
@@ -407,11 +484,20 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_COMPLETE__:
 		complete();
 		break;
-	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+	case RPC_DESPAWNNPCS__:
+		despawnNpcs();
+		break;
+	case RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_:
+		updateMissionStatus(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_:
 		resp->insertBoolean(updateMissionTarget(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
+	case RPC_GETTARGETSPAWNPOINT__:
+		resp->insertLong(getTargetSpawnPoint()->_getObjectID());
+		break;
+	case RPC_GETDESTINATIONSPAWNPOINT__:
+		resp->insertLong(getDestinationSpawnPoint()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -428,20 +514,20 @@ void DeliverMissionObjectiveAdapter::initializeTransientMembers() {
 	(static_cast<DeliverMissionObjective*>(stub))->initializeTransientMembers();
 }
 
-void DeliverMissionObjectiveAdapter::setTarget(AiAgent* t) {
-	(static_cast<DeliverMissionObjective*>(stub))->setTarget(t);
-}
-
-void DeliverMissionObjectiveAdapter::setTargetDest(AiAgent* t) {
-	(static_cast<DeliverMissionObjective*>(stub))->setTargetDest(t);
-}
-
 TangibleObject* DeliverMissionObjectiveAdapter::getItem() {
 	return (static_cast<DeliverMissionObjective*>(stub))->getItem();
 }
 
+int DeliverMissionObjectiveAdapter::getObjectiveStatus() {
+	return (static_cast<DeliverMissionObjective*>(stub))->getObjectiveStatus();
+}
+
 void DeliverMissionObjectiveAdapter::activate() {
 	(static_cast<DeliverMissionObjective*>(stub))->activate();
+}
+
+bool DeliverMissionObjectiveAdapter::activateWithResult() {
+	return (static_cast<DeliverMissionObjective*>(stub))->activateWithResult();
 }
 
 void DeliverMissionObjectiveAdapter::abort() {
@@ -452,12 +538,24 @@ void DeliverMissionObjectiveAdapter::complete() {
 	(static_cast<DeliverMissionObjective*>(stub))->complete();
 }
 
-int DeliverMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return (static_cast<DeliverMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+void DeliverMissionObjectiveAdapter::despawnNpcs() {
+	(static_cast<DeliverMissionObjective*>(stub))->despawnNpcs();
+}
+
+void DeliverMissionObjectiveAdapter::updateMissionStatus(CreatureObject* player) {
+	(static_cast<DeliverMissionObjective*>(stub))->updateMissionStatus(player);
 }
 
 bool DeliverMissionObjectiveAdapter::updateMissionTarget(CreatureObject* player) {
 	return (static_cast<DeliverMissionObjective*>(stub))->updateMissionTarget(player);
+}
+
+NpcSpawnPoint* DeliverMissionObjectiveAdapter::getTargetSpawnPoint() {
+	return (static_cast<DeliverMissionObjective*>(stub))->getTargetSpawnPoint();
+}
+
+NpcSpawnPoint* DeliverMissionObjectiveAdapter::getDestinationSpawnPoint() {
+	return (static_cast<DeliverMissionObjective*>(stub))->getDestinationSpawnPoint();
 }
 
 /*

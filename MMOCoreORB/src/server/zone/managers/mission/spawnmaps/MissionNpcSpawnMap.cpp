@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "engine/lua/Lua.h"
 
 void MissionNpcSpawnMap::loadSpawnPointsFromLua() {
+	info("Loading NPC mission spawn points.", true);
 	try {
 		Lua* lua = new Lua();
 		lua->init();
@@ -57,21 +58,36 @@ void MissionNpcSpawnMap::loadSpawnPointsFromLua() {
 		spawnMap.readObject(&universeObject);
 	}
 	catch (Exception& e) {
-		error(e.getMessage());
+		info(e.getMessage(), true);
 	}
 }
 
-NpcSpawnPoint* MissionNpcSpawnMap::getRandomNpcSpawnPoint(const String& planetName, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance) {
-	Reference<PlanetSpawnMap* > planet = spawnMap.getPlanet(planetName);
+NpcSpawnPoint* MissionNpcSpawnMap::getRandomNpcSpawnPoint(const uint32 planetCRC, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance, const bool mustBeFree) {
+	Reference<PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
 
 	if (planet != NULL) {
 		Reference<CitySpawnMap* > city = planet->getClosestCity(position);
 
 		if (city != NULL) {
-			return city->getRandomNpcSpawnPoint(position, spawnType, minDistance, maxDistance);
+			Reference<NpcSpawnPoint*> npc = city->getRandomNpcSpawnPoint(position, spawnType, mustBeFree, minDistance, maxDistance);
+			if (mustBeFree && npc != NULL) {
+				npc->setInUse(true);
+			}
+			return npc;
 		}
 	}
 
 	//Planet or city not found.
+	return NULL;
+}
+
+Vector3* MissionNpcSpawnMap::getRandomCityCoordinates(const uint32 planetCRC, const Vector3* notCloseToPosition) {
+	Reference<PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
+
+	if (planet != NULL) {
+		return planet->getRandomCityNotCloseTo(notCloseToPosition)->getCityCenter();
+	}
+
+	//Planet not found.
 	return NULL;
 }

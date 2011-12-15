@@ -45,10 +45,10 @@ end
 -- z coordinate is taken from terrain height at the x, y coordinate.
 -- Spawn types can be ored to have multiple definitions.
 -- Spawn types:
---   1 = no spawn
---   2 = neutral spawn
---   4 = imperial spawn
---   8 = rebel spawn
+--NOSPAWN = 1;
+--NEUTRALSPAWN = 2;
+--IMPERIALSPAWN = 4;
+--REBELSPAWN = 8;
 
 universe = UniverseSpawnMap:new {
 	planets = {	}
@@ -57,16 +57,54 @@ universe = UniverseSpawnMap:new {
 planet_tatooine = PlanetSpawnMap:new {
 	name = "tatooine",
 	cities = { }
-} 
+}
+
+planet_corellia = PlanetSpawnMap:new {
+	name = "corellia",
+	cities = { }
+}
 
 city_mos_eisley = CitySpawnMap:new {
 	citycenter = {0, 0},
 	npcs = {
-		{ 3511.0, -4859.0, 2 },
-		{ 3501.0, -4856.0, 2 }
+		{ 3511.0, -4859.0, 2},
+		{ 3501.0, -4856.0, 2}
+	}
+}
+
+city_coronet = CitySpawnMap:new {
+	citycenter = {0, -4500},
+	npcs = {
+		{ -498.0, -4667.0, 2},
+		{ -498.0, -4657.0, 2},
+		{ -498.0, -4677.0, 2},
+		{ -356.0, -4635.0, 2},
+		{ -295.0, -4558.0, 2},
+		{ -306.0, -4436.0, 2},
+		{ -189.0, -4409.0, 2},
+		{  -93.0, -4413.0, 2},
+		{    4.0, -4425.0, 2},
+		{    4.0, -4435.0, 2},
+		{    4.0, -4445.0, 2}
+	}
+}
+
+city_kor_vella = CitySpawnMap:new {
+	citycenter = {-3500, 3150},
+	npcs = {
+		{ -3774.0, 3214.0, 2},
+		{ -3779.0, 3189.0, 2},
+		{ -3669.0, 3138.0, 2},
+		{ -3608.0, 3144.0, 2},
+		{ -3500.0, 3158.0, 2},
+		{ -3369.0, 3144.0, 2},
+		{ -3285.0, 3085.0, 2}
 	}
 }
 
 planet_tatooine:addCity(city_mos_eisley);
+planet_corellia:addCity(city_coronet);
+planet_corellia:addCity(city_kor_vella);
 
 universe:addPlanet(planet_tatooine);
+universe:addPlanet(planet_corellia);

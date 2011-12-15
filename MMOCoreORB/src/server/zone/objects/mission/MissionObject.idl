@@ -45,7 +45,6 @@ which carries forward this exception.
 package server.zone.objects.mission;
 
 import engine.lua.LuaObject;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.waypoint.WaypointObject;
 import server.zone.Zone;
@@ -57,6 +56,7 @@ import server.zone.objects.creature.CreatureObject;
 import system.util.SortedVector;
 import server.zone.objects.mission.MissionObjective;
 include server.zone.templates.TemplateReference;
+import server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
@@ -87,8 +87,8 @@ class MissionObject extends IntangibleObject {
 	protected unsigned int refreshCounter;
 	
 	protected string targetName;
-	protected SceneObject missionTarget;
-	protected SceneObject missionTargetDest;
+	protected NpcSpawnPoint missionTarget;
+	protected NpcSpawnPoint missionTargetDest;
 	
 	protected string templateString1;
 	protected string templateString2;
@@ -130,6 +130,9 @@ class MissionObject extends IntangibleObject {
 		
 		startPositionX = 0;
 		startPositionY = 0;
+
+		missionTarget = null;
+		missionTargetDest = null;
 		
 		Logger.setLoggingName("MissionObject");
 	}
@@ -190,11 +193,11 @@ class MissionObject extends IntangibleObject {
 		endPlanetCRC = crc;
 	}
 
-	public void setMissionTarget(SceneObject target) {
+	public void setMissionTarget(NpcSpawnPoint target) {
 		missionTarget = target;
 	}
 
-	public void setMissionTargetDest(SceneObject target) {
+	public void setMissionTargetDest(NpcSpawnPoint target) {
 		missionTargetDest = target;
 	}
 	
@@ -209,6 +212,10 @@ class MissionObject extends IntangibleObject {
 	public void setTemplateStrings(final string temp1, final string temp2) {
 		templateString1 = temp1;
 		templateString2 = temp2;
+	}
+	
+	public MissionObjective getMissionObjective() {
+		return missionObjective;
 	}
 	
 	public float getStartPositionX() {
@@ -243,12 +250,23 @@ class MissionObject extends IntangibleObject {
 		return waypointToMission;
 	}
 	
-	public SceneObject getMissionTarget() {
+	public NpcSpawnPoint getMissionTarget() {
 		return missionTarget;
 	}
 	
-	public SceneObject getMissionTargetDest() {
+	public NpcSpawnPoint getMissionTargetDest() {
 		return missionTargetDest;
+	}
+	
+	public void clearTargetAndDestination() {
+		if (missionTarget != null) {
+			missionTarget.setInUse(false);
+			missionTarget = null;
+		}
+		if (missionTargetDest != null) {
+			missionTargetDest.setInUse(false);
+			missionTargetDest = null;
+		}
 	}
 	
 	public unsigned int getTypeCRC() {

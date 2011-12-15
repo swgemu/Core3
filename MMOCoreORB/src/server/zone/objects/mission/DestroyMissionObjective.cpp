@@ -374,8 +374,6 @@ void DestroyMissionObjectiveImplementation::initializeTransientMembers() {
 	MissionObjectiveImplementation::initializeTransientMembers();
 	// server/zone/objects/mission/DestroyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/DestroyMissionObjective.idl():  		activate();
-	activate();
 }
 
 void DestroyMissionObjectiveImplementation::setDifficulty(int min, int max) {

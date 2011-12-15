@@ -240,8 +240,6 @@ void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {
 	MissionObjectiveImplementation::initializeTransientMembers();
 	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		activate();
-	activate();
 }
 
 /*

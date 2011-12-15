@@ -61,7 +61,7 @@ protected:
 	/**
 	 * Map for all planets and their spawn points.
 	 */
-	VectorMap<String, Reference<PlanetSpawnMap* > > planetSpawnMaps;
+	VectorMap<uint32, Reference<PlanetSpawnMap* > > planetSpawnMaps;
 
 public:
 	/**
@@ -79,10 +79,11 @@ public:
 			Reference<PlanetSpawnMap*> planet = new PlanetSpawnMap();
 			planet->readObject(&luaPlanetObj);
 
-			planetSpawnMaps.put(planet->getPlanetName(), planet);
+			planetSpawnMaps.put(planet->getPlanetName().hashCode(), planet);
 
 			luaPlanetObj.pop();
 		}
+		planets.pop();
 	}
 
 	/**
@@ -90,8 +91,8 @@ public:
 	 * @param planetName the name of the planet.
 	 * @return the requested planet.
 	 */
-	PlanetSpawnMap* getPlanet(const String& planetName) {
-		return planetSpawnMaps.get(planetName);
+	PlanetSpawnMap* getPlanet(const uint32 planetCRC) {
+		return planetSpawnMaps.get(planetCRC);
 	}
 
 	/**
