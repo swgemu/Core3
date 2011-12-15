@@ -211,6 +211,7 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 
 		npc->setDespawnOnNoPlayerInRange(false);
 		npc->setHomeLocation(x, z, y);
+		npc->setRespawnTimer(0);
 
 		spawnedCreatures.add(creature);
 	}

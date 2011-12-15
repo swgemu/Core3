@@ -450,6 +450,10 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	setTargetObject(NULL);
 	setFollowObject(NULL);
 
+	//_this->printReferenceHolders();
+
+	//printf("%d ref count\n", _this->getReferenceCount());
+
 	if (respawnTimer == 0) {
 		//zone->getCreatureManager()->addToReservePool(_this);
 		return;
@@ -693,7 +697,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
-	if (isDead() || (getZone() == NULL && getParent() == NULL)) {
+	if (isDead() || (getZone() == NULL)) {
 		setFollowObject(NULL);
 		return;
 	}
@@ -790,6 +794,9 @@ void AiAgentImplementation::doMovement() {
 }
 
 void AiAgentImplementation::activateMovementEvent() {
+	if (getZone() == NULL)
+		return;
+
 	if (moveEvent == NULL) {
 		moveEvent = new AiMoveEvent(_this);
 
@@ -801,6 +808,9 @@ void AiAgentImplementation::activateMovementEvent() {
 }
 
 void AiAgentImplementation::activateWaitEvent() {
+	if (getZone() == NULL)
+			return;
+
 	if (waitEvent == NULL) {
 		waitEvent = new AiWaitEvent(_this);
 
