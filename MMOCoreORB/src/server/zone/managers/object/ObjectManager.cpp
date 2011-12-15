@@ -1148,6 +1148,8 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 		localObjectDirectory.removeHelper(object->_getObjectID());
 	}
 
+	objectsToDeleteFromRAM.removeAll();
+
 	info("finished deleting objects from ram", true);
 
 #ifdef WITH_STM
