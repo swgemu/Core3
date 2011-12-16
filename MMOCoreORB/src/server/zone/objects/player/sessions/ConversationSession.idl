@@ -54,7 +54,7 @@ class ConversationSession extends Facade {
 		lastConversationScreenName = "";
 	}
 
-	public void setLastConversationScreenName(string screenName) {
+	public void setLastConversationScreenName(final string screenName) {
 		lastConversationScreenName = screenName;
 	}
 

@@ -8,6 +8,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreentrainerinfo = ConvoScreen:new {
 		id = "convoscreentrainerinfo",
 		leftDialog = "@skill_teacher:" .. trainer, -- Storage for the trainer master skill.
+		stopConversation = "false",
 		options = { 
 			{"masterskill", masterskill }
 		}
@@ -17,6 +18,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreenstart = ConvoScreen:new {
 		id = "convoscreenstart",
 		leftDialog = "@skill_teacher:" .. trainer, -- Building, crafting, creating.  It's all in your hands.  How can I help move you along in this profession?
+		stopConversation = "false",
 		options = { 
 			{"@skill_teacher:opt1_1", "convoscreentrainableskills"}, -- I'm interested in learning a skill.
 			{"@skill_teacher:opt1_2", "convoscreennextskills"} -- What skills will I be able to learn next?
@@ -28,6 +30,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreentrainableskills = ConvoScreen:new {
 		id = "convoscreentrainableskills",
 		leftDialog = "@skill_teacher:msg2_1", -- You may learn the following skills right now...
+		stopConversation = "false",
 		options = {
 			{ "--skillholder--", "convoscreencanlearnskill" }, -- Place holder for a skill.
 			{ "--skillholder--", "convoscreencanlearnskill" }, -- Place holder for a skill.
@@ -42,6 +45,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreennextskills = ConvoScreen:new {
 		id = "convoscreennextskills",
 		leftDialog = "@skill_teacher:msg2_2", -- Here are the skills I can teach you next, if you have gained enough experience...
+		stopConversation = "false",
 		options = {
 			{ "--skillholder--", "convoscreenskillinfo" }, -- Place holder for a skill.
 			{ "--skillholder--", "convoscreenskillinfo" }, -- Place holder for a skill.
@@ -56,6 +60,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreencanlearnskill = ConvoScreen:new {
 		id = "convoscreencanlearnskill",
 		leftDialog = "@skill_teacher:prose_cost", --It will cost %DI credits to train in %TO. Would you like to continue?
+		stopConversation = "false",
 		options = {
 			{"@skill_teacher:yes", "convoscreentrainskill"},
 			{"@skill_teacher:no", "convoscreendonttrain"}
@@ -67,6 +72,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreendonttrain = ConvoScreen:new {
 		id = "convoscreendonttrain",
 		leftDialog = "@skill_teacher:msg_no", --Too rich for ya? Well, maybe I can help you with something else?
+		stopConversation = "false",
 		options = {
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -77,6 +83,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreentrainskill = ConvoScreen:new {
 		id = "convoscreentrainskill",
 		leftDialog = "@skill_teacher:msg3_2", -- You're an exceptionally bright student! Perhaps we shall work together again soon.
+		stopConversation = "false",
 		options = {
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -87,6 +94,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreentrainedmaster = ConvoScreen:new {
 		id = "convoscreentrainedmaster",
 		leftDialog = "@skill_teacher:surpass_trainer", --WOW! You have learned everything I have to teach... I suppose that now it's time for you to find your own path. Farewell %TT.
+		stopConversation = "true",
 		options = { }
 	}
 	trainer_convotemplate:addScreen(trainer_convoscreentrainedmaster);
@@ -95,6 +103,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreenskillinfo = ConvoScreen:new {
 		id = "convoscreenskillinfo",
 		leftDialog = "@skill_teacher:msg3_3", -- Let me give you some information about this skill...
+		stopConversation = "false",
 		options = { 
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -105,6 +114,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreennotenoughxp = ConvoScreen:new {
 		id = "convoscreennotenoughxp",
 		leftDialog = "@skill_teacher:error_empty_category", -- Sorry, you aren't quite up to the point where I can teach you anything else.
+		stopConversation = "false",
 		options = { 
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -114,6 +124,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreennotenoughskillpoints = ConvoScreen:new {
 		id = "convoscreennotenoughskillpoints",
 		leftDialog = "@skill_teacher:nsf_skill_pts", -- You must first make %DI skill points available before I can teach you %TO.
+		stopConversation = "false",
 		options = { 
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -123,6 +134,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreennotenoughcredits = ConvoScreen:new {
 		id = "convoscreennotenoughcredits",
 		leftDialog = "@skill_teacher:prose_nfs", -- You lack the %DI credits required for training in %TO.
+		stopConversation = "false",
 		options = { 
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -132,6 +144,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreennotenoughskillpoints = ConvoScreen:new {
 		id = "convoscreennotenoughskillpoints",
 		leftDialog = "@skill_teacher:no_skill_pts", -- How can I teach you when you do not have any available skill points.
+		stopConversation = "false",
 		options = { 
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -141,6 +154,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreenerror = ConvoScreen:new {
 		id = "convoscreenerror",
 		leftDialog = "@skill_teacher:error_grant_skill", -- Hrmm... seems that I cant teach you that skill due to an internal error. TestTrac?
+		stopConversation = "true",
 		options = { 
 			{"@skill_teacher:back", "convoscreenstart" }
 		}
@@ -151,6 +165,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 	trainer_convoscreenismaster = ConvoScreen:new {
 		id = "convoscreenismaster",
 		leftDialog = "@skill_teacher:topped_out", -- I'm sorry, but I cannot teach you anymore. You have already learned everything I have to teach.
+		stopConversation = "true",
 		options = { }
 	}
 	trainer_convotemplate:addScreen(trainer_convoscreenismaster);

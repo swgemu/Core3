@@ -25,7 +25,7 @@ class ConversationSession : public Facade {
 public:
 	ConversationSession();
 
-	void setLastConversationScreenName(String& screenName);
+	void setLastConversationScreenName(const String& screenName);
 
 	String getLastConversationScreenName();
 
@@ -65,7 +65,7 @@ public:
 
 	ConversationSessionImplementation(DummyConstructorParameter* param);
 
-	void setLastConversationScreenName(String& screenName);
+	void setLastConversationScreenName(const String& screenName);
 
 	String getLastConversationScreenName();
 
@@ -112,7 +112,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setLastConversationScreenName(String& screenName);
+	void setLastConversationScreenName(const String& screenName);
 
 	String getLastConversationScreenName();
 

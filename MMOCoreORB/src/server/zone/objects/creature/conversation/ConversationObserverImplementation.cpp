@@ -105,7 +105,7 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		}
 
 		//Send the conversation screen to the player.
-		sendConversationScreenToPlayer(player, conversationScreen);
+		sendConversationScreenToPlayer(player, npc, conversationScreen);
 	}
 
 	//Keep the observer.
@@ -174,19 +174,15 @@ ConversationScreen* ConversationObserverImplementation::runScreenHandlers(Creatu
 	return modifiedScreen;
 }
 
-void ConversationObserverImplementation::sendConversationScreenToPlayer(CreatureObject* conversingPlayer, ConversationScreen* conversationScreen) {
-	//Get player object.
-	ManagedReference<PlayerObject* > ghost = conversingPlayer->getPlayerObject();
-	if (ghost == NULL) {
-		return ;
-	}
-
-	//Save the conversation screen id on the player.
+void ConversationObserverImplementation::sendConversationScreenToPlayer(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, ConversationScreen* conversationScreen) {
 	if (conversationScreen != NULL) {
-		ghost->setLastNpcConvMessStr(conversationScreen->getScreenID());
 		//Send the screen to the player.
-		conversationScreen->sendTo(conversingPlayer);
+		conversationScreen->sendTo(conversingPlayer, conversingNPC);
 	} else {
-		ghost->setLastNpcConvMessStr("");
+		//Clear screen ID from last conversation screen.
+		ConversationSession* session = cast<ConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+		if (session != NULL) {
+			session->setLastConversationScreenName("");
+		}
 	}
 }

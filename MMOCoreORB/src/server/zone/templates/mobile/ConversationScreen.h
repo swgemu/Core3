@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/NpcConversationMessage.h"
+#include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/packets/object/StringList.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 
@@ -93,6 +94,7 @@ class ConversationScreen : public Object {
 
 	Vector<Reference<ConversationOption*> > options;
 
+	bool stopConversation;
 
 public:
 	ConversationScreen() {
@@ -105,6 +107,7 @@ public:
 		screenID = objectToCopy.screenID;
 		dialogText = objectToCopy.dialogText;
 		options = objectToCopy.options;
+		stopConversation = objectToCopy.stopConversation;
 	}
 
 	inline void setDialogText(const String& fullPath) {
@@ -117,6 +120,10 @@ public:
 
 	inline void setDialogText(const StringIdChatParameter& param) {
 		dialogText = param;
+	}
+
+	inline void setStopConversation(bool stopConversation) {
+		this->stopConversation = stopConversation;
 	}
 
 	inline StringIdChatParameter* getDialogText() {
@@ -168,13 +175,14 @@ public:
 
 	/**
 	 * Sends this ConversationScreen to the creature passed in.
-	 * @param creature The creature receiving the message.
+	 * @param player The player receiving the message.
+	 * @param npc The npc the player is talking to.
 	 */
-	void sendTo(CreatureObject* creature) {
-		NpcConversationMessage* message = new NpcConversationMessage(creature, dialogText);
+	void sendTo(CreatureObject* player, CreatureObject* npc) {
+		NpcConversationMessage* message = new NpcConversationMessage(player, dialogText);
 
 		//Encapsulate this logic better?
-		StringList* optionsList = new StringList(creature);
+		StringList* optionsList = new StringList(player);
 
 		for (int i = 0; i < options.size(); ++i) {
 			Reference<ConversationOption*> option = options.get(i);
@@ -185,12 +193,20 @@ public:
 			optionsList->insertOption(option->getOptionText());
 		}
 
-		creature->sendMessage(message);
-		creature->sendMessage(optionsList);
+		player->sendMessage(message);
+		player->sendMessage(optionsList);
 
-		ConversationSession* session = cast<ConversationSession* >(creature->getActiveSession(SessionFacadeType::CONVERSATION));
+		String screenIdToSave = screenID;
+
+		//Check if the conversation should be stopped.
+		if (stopConversation) {
+			player->sendMessage(new StopNpcConversation(player, npc->getObjectID()));
+			screenIdToSave = "";
+		}
+
+		ConversationSession* session = cast<ConversationSession* >(player->getActiveSession(SessionFacadeType::CONVERSATION));
 		if (session != NULL) {
-			session->setLastConversationScreenName(screenID);
+			session->setLastConversationScreenName(screenIdToSave);
 		}
 	}
 
@@ -201,6 +217,12 @@ public:
 	void readObject(LuaObject* luaObject) {
 		screenID = luaObject->getStringField("id");
 		dialogText.setStringId(luaObject->getStringField("leftDialog"));
+
+		if (luaObject->getStringField("stopConversation").toLowerCase() == "true") {
+			stopConversation = true;
+		} else {
+			stopConversation = false;
+		}
 
 		LuaObject optionsTable = luaObject->getObjectField("options");
 

@@ -24,7 +24,7 @@ ConversationSession::~ConversationSession() {
 
 
 
-void ConversationSession::setLastConversationScreenName(String& screenName) {
+void ConversationSession::setLastConversationScreenName(const String& screenName) {
 	ConversationSessionImplementation* _implementation = static_cast<ConversationSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -195,7 +195,7 @@ ConversationSessionImplementation::ConversationSessionImplementation() {
 	lastConversationScreenName = "";
 }
 
-void ConversationSessionImplementation::setLastConversationScreenName(String& screenName) {
+void ConversationSessionImplementation::setLastConversationScreenName(const String& screenName) {
 	// server/zone/objects/player/sessions/ConversationSession.idl():  		lastConversationScreenName = screenName;
 	lastConversationScreenName = screenName;
 }
@@ -229,7 +229,7 @@ Packet* ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 	return resp;
 }
 
-void ConversationSessionAdapter::setLastConversationScreenName(String& screenName) {
+void ConversationSessionAdapter::setLastConversationScreenName(const String& screenName) {
 	(static_cast<ConversationSession*>(stub))->setLastConversationScreenName(screenName);
 }
 

@@ -92,7 +92,7 @@ private:
 
 	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
-	void sendConversationScreenToPlayer(CreatureObject* conversingPlayer, ConversationScreen* conversationScreen);
+	void sendConversationScreenToPlayer(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, ConversationScreen* conversationScreen);
 
 public:
 	WeakReference<ConversationObserver*> _this;

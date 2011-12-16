@@ -6,6 +6,7 @@ trainer_fs_convotemplate = ConvoTemplate:new {
 trainer_fs_convoscreen1 = ConvoScreen:new {
 	id = "convoscreen1",
 	leftDialog = "@skill_teacher:trainer_fs", -- The secrets of the Force will reveal themselves to those who seek them.
+	stopConversation = "false",
 	options = { 
 		{"@skill_teacher:opt1_1", "convoscreen2"}, -- I'm interested in learning a skill.
 		{"@skill_teacher:opt1_2", "convoscreen3"} -- What skills will I be able to learn next?
@@ -17,6 +18,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen1);
 trainer_fs_convoscreen2 = ConvoScreen:new {
 	id = "convoscreen2",
 	leftDialog = "@skill_teacher:msg2_1", -- You may learn the following skills right now...
+	stopConversation = "false",
 	options = { 
 		{"@skill_teacher:back", "convoscreen1" } -- Can we start again?
 	}
@@ -27,6 +29,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen2);
 trainer_fs_convoscreen3 = ConvoScreen:new {
 	id = "convoscreen3",
 	leftDialog = "@skill_teacher:msg2_2", -- Here are the skills I can teach you next, if you have gained enough experience...
+	stopConversation = "false",
 	options = {
 		{"@skill_teacher:back", "convoscreen1" }
 	}
@@ -37,6 +40,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen3);
 trainer_fs_convoscreen4 = ConvoScreen:new {
 	id = "convoscreen4",
 	leftDialog = "@skill_teacher:no_qualify", --You do not qualify for any of my teachings. Come back and speak with me later if you acquire the following skills...
+	stopConversation = "false",
 	options = { }
 }
 trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen4);
@@ -45,6 +49,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen4);
 trainer_fs_convoscreen5 = ConvoScreen:new {
 	id = "convoscreen5",
 	leftDialog = "@skill_teacher:confirm", --Are you sure you wish to purchase this skill?
+	stopConversation = "false",
 	options = {
 		{"@skill_teacher:yes", "convoscreen6"},
 		{"@skill_teacher:no", "convoscreen7"}
@@ -56,6 +61,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen5);
 trainer_fs_convoscreen6 = ConvoScreen:new {
 	id = "convoscreen6",
 	leftDialog = "@skill_teacher:msg_yes", --Excellent! Let's get started then...
+	stopConversation = "false",
 	options = { }
 }
 trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen6);
@@ -64,6 +70,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen6);
 trainer_fs_convoscreen7 = ConvoScreen:new {
 	id = "convoscreen7",
 	leftDialog = "@skill_teacher:msg_no", --Too rich for ya? Well, maybe I can help you with something else?
+	stopConversation = "false",
 	options = {
 		{"@skill_teacher:back", "convoscreen1" }
 	}
@@ -74,6 +81,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen7);
 trainer_fs_convoscreen8 = ConvoScreen:new {
 	id = "convoscreen8",
 	leftDialog = "@skill_teacher:msg3_2", -- You're an exceptionally bright student! Perhaps we shall work together again soon.
+	stopConversation = "false",
 	options = {
 		{"@skill_teacher:back", "convoscreen1" }
 	}
@@ -84,6 +92,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen8);
 trainer_fs_convoscreen9 = ConvoScreen:new {
 	id = "convoscreen9",
 	leftDialog = "@skill_teacher:surpass_trainer", --WOW! You have learned everything I have to teach... I suppose that now it's time for you to find your own path. Farewell %TT.
+	stopConversation = "false",
 	options = { }
 }
 trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen9);
@@ -92,6 +101,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen9);
 trainer_fs_convoscreen10 = ConvoScreen:new {
 	id = "convoscreen10",
 	leftDialog = "@skill_teacher:msg3_3", -- Let me give you some information about this skill...
+	stopConversation = "false",
 	options = { 
 		{"@skill_teacher:back", "convoscreen1" }
 	}
@@ -102,6 +112,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen10);
 trainer_fs_convoscreen11 = ConvoScreen:new {
 	id = "convoscreen11",
 	leftDialog = "@skill_teacher:error_empty_category", -- Sorry, you aren't quite up to the point where I can teach you anything else.
+	stopConversation = "false",
 	options = { 
 		{"@skill_teacher:back", "convoscreen1" }
 	}
@@ -111,6 +122,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen11);
 trainer_fs_convoscreen12 = ConvoScreen:new {
 	id = "convoscreen12",
 	leftDialog = "@skill_teacher:no_skill_pts", -- How can I teach you when you do not have any available skill points.
+	stopConversation = "false",
 	options = { 
 		{"@skill_teacher:back", "convoscreen1" }
 	}
@@ -121,6 +133,7 @@ trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen12);
 trainer_fs_convoscreen13 = ConvoScreen:new {
 	id = "convoscreen13",
 	leftDialog = "@skill_teacher:topped_out", -- I'm sorry, but I cannot teach you anymore. You have already learned everything I have to teach.
+	stopConversation = "false",
 	options = { }
 }
 trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen13);
