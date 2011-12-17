@@ -601,13 +601,15 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 }
 
 AppearanceTemplate* TemplateManager::getAppearanceTemplate(const String& fileName) {
-	//appearanceMapLock.rlock();
+	AppearanceTemplate* meshAppearance = NULL;
 
-	//return NULL;
+	Locker locker(&appearanceMapLock);
 
-	AppearanceTemplate* meshAppearance = appearanceMap->get(fileName);
-
-	//appearanceMapLock.runlock();
+	try {
+		meshAppearance = appearanceMap->get(fileName);
+	} catch (...) {
+		error("unreported exception caught in AppearanceTemplate* TemplateManager::getAppearanceTemplate(const String& fileName)");
+	}
 
 	if (meshAppearance == NULL) {
 		IffStream* iffStream = openIffFile(fileName);

@@ -1430,8 +1430,6 @@ AiAgentImplementation::AiAgentImplementation() {
 }
 
 void AiAgentImplementation::finalize() {
-	// server/zone/objects/creature/AiAgent.idl():  		Logger.info("deleting from ram", true);
-	Logger::info("deleting from ram", true);
 }
 
 void AiAgentImplementation::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
