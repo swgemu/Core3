@@ -85,9 +85,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	String deliverNpc = "deliver_npc";
 	float z = terrainManager->getHeight(targetPosition->getX(), targetPosition->getY());
 	target = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, targetPosition->getX(), z, targetPosition->getY(), 0));
-	StringId targetName = mission->getCreatorName();
-	target->setObjectName(targetName);
-
+	target->setCustomObjectName(mission->getCreatorName(), true);
 
 	//Destination NPC.
 	//Find a free spawn point.
@@ -101,8 +99,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	}
 	z = terrainManager->getHeight(destinationPosition->getX(), destinationPosition->getY());
 	destination = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, destinationPosition->getX(), z, destinationPosition->getY(), 0));
-	StringId destinationName = mission->getTargetName();
-	destination->setObjectName(destinationName);
+	destination->setCustomObjectName(mission->getTargetName(), true);
 
 	//Create waypoint and activate it.
 	if (objectiveStatus == 0) {
