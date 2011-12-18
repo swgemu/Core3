@@ -30,7 +30,7 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 
 	}*/
 
-	if (sceneObject->isPlayerCreature()) {
+	if (sceneObject->isPlayerCreature() && newZone != NULL) {
 		PlayerObject* ghost = cast<CreatureObject*>(sceneObject)->getPlayerObject();
 
 		ghost->setSavedTerrainName(newZone->getZoneName());
