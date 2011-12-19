@@ -106,22 +106,6 @@ public:
 		cityCenter.setX(x);
 		cityCenter.setY(y);
 		cityCenter.setZ(0);
-
-		LuaObject npcSpawns = luaObject->getObjectField("npcs");
-
-		for (int numberOfSpawns = 1; numberOfSpawns <= npcSpawns.getTableSize(); ++numberOfSpawns) {
-			lua_rawgeti(luaObject->getLuaState(), -1, numberOfSpawns);
-
-			LuaObject luaSpawnObj(luaObject->getLuaState());
-
-			Reference<NpcSpawnPoint*> npc = new NpcSpawnPoint();
-			npc->readObject(&npcSpawns);
-
-			npcSpawnMap.add(npc);
-
-			luaSpawnObj.pop();
-		}
-		npcSpawns.pop();
 	}
 
 	/**
@@ -168,6 +152,14 @@ public:
 
 		//No npc matches the requirements.
 		return NULL;
+	}
+
+	/**
+	 * Add a NPC to the spawn map for the city.
+	 * @param npc the NPC to add.
+	 */
+	void addNpc(Reference<NpcSpawnPoint* > npc) {
+		npcSpawnMap.add(npc);
 	}
 
 	/**

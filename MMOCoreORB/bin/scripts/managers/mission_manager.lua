@@ -4,12 +4,12 @@ UniverseSpawnMap = {
 
 PlanetSpawnMap = {
 	name = "",
-	cities = {}
+	cities = {},
+	npcs = {}
 }
 
 CitySpawnMap = {
-	citycenter = {0, 0},
-	npcs = {}
+	citycenter = {0, 0}
 }
 
 function UniverseSpawnMap:new (o)
@@ -56,24 +56,16 @@ universe = UniverseSpawnMap:new {
 
 planet_tatooine = PlanetSpawnMap:new {
 	name = "tatooine",
-	cities = { }
-}
-
-planet_corellia = PlanetSpawnMap:new {
-	name = "corellia",
-	cities = { }
-}
-
-city_mos_eisley = CitySpawnMap:new {
-	citycenter = {0, 0},
+	cities = { },
 	npcs = {
 		{ 3511.0, -4859.0, 0.0, 2},
 		{ 3501.0, -4856.0, 0.0, 2}
 	}
 }
 
-city_coronet = CitySpawnMap:new {
-	citycenter = {0, -4500},
+planet_corellia = PlanetSpawnMap:new {
+	name = "corellia",
+	cities = { },
 	npcs = {
 		{ -498.0, -4667.0, 0.0, 2},
 		{ -498.0, -4657.0, 0.0, 2},
@@ -85,13 +77,7 @@ city_coronet = CitySpawnMap:new {
 		{  -93.0, -4413.0, 0.0, 2},
 		{    4.0, -4425.0, 0.0, 2},
 		{    4.0, -4435.0, 2.0, 2},
-		{    4.0, -4445.0, 1.0, 2}
-	}
-}
-
-city_kor_vella = CitySpawnMap:new {
-	citycenter = {-3500, 3150},
-	npcs = {
+		{    4.0, -4445.0, 1.0, 2},
 		{ -3774.0, 3214.0, 0.0, 2},
 		{ -3779.0, 3189.0, 0.0, 2},
 		{ -3669.0, 3138.0, 0.0, 2},
@@ -100,6 +86,18 @@ city_kor_vella = CitySpawnMap:new {
 		{ -3369.0, 3144.0, 0.0, 2},
 		{ -3285.0, 3085.0, 0.0, 2}
 	}
+}
+
+city_mos_eisley = CitySpawnMap:new {
+	citycenter = {0, 0}
+}
+
+city_coronet = CitySpawnMap:new {
+	citycenter = {0, -4500}
+}
+
+city_kor_vella = CitySpawnMap:new {
+	citycenter = {-3500, 3150}
 }
 
 planet_tatooine:addCity(city_mos_eisley);

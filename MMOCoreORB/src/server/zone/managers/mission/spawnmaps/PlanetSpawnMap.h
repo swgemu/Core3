@@ -88,6 +88,17 @@ protected:
 		return city;
 	}
 
+	/**
+	 * Add a NPC to the closest city.
+	 * @param npc the NPC to add.
+	 */
+	void addToClosestCity(Reference<NpcSpawnPoint* > npc) {
+		int closestCityNumber = getClosestCityNumber(npc->getPosition());
+		if (closestCityNumber >= 0) {
+			citySpawnMaps.get(closestCityNumber)->addNpc(npc);
+		}
+	}
+
 public:
 	/**
 	 * Loads the object from a LuaObject.
@@ -96,6 +107,7 @@ public:
 	void readObject(LuaObject* luaObject) {
 		planetName = luaObject->getStringField("name");
 
+		//Load cities.
 		LuaObject cities = luaObject->getObjectField("cities");
 		for (int numberOfCities = 1; numberOfCities <= cities.getTableSize(); ++numberOfCities) {
 			lua_rawgeti(luaObject->getLuaState(), -1, numberOfCities);
@@ -110,6 +122,23 @@ public:
 			luaCityObj.pop();
 		}
 		cities.pop();
+
+		//Load npc's.
+		LuaObject npcSpawns = luaObject->getObjectField("npcs");
+
+		for (int numberOfSpawns = 1; numberOfSpawns <= npcSpawns.getTableSize(); ++numberOfSpawns) {
+			lua_rawgeti(luaObject->getLuaState(), -1, numberOfSpawns);
+
+			LuaObject luaSpawnObj(luaObject->getLuaState());
+
+			Reference<NpcSpawnPoint*> npc = new NpcSpawnPoint();
+			npc->readObject(&npcSpawns);
+
+			addToClosestCity(npc);
+
+			luaSpawnObj.pop();
+		}
+		npcSpawns.pop();
 	}
 
 	/**
