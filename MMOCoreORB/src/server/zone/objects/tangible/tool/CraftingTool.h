@@ -384,10 +384,6 @@ private:
 public:
 	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
 
-private:
-	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure);
-
-public:
 	void customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization);
 
 private:

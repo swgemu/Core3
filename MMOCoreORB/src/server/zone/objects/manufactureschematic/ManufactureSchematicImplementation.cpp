@@ -201,6 +201,9 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 	Reference<IngredientSlot* > ingredientSlot = NULL;
 	Reference<DraftSlot* > draftSlot = NULL;
 
+	if (tool == NULL)
+		return;
+
 	for (int i = 0; i < draftSchematic->getDraftSlotCount(); ++i) {
 
 		draftSlot = draftSchematic->getDraftSlot(i);

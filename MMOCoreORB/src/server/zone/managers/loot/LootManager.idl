@@ -51,21 +51,27 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.managers.object.ObjectManager;
 import engine.lua.Lua;
-
+import server.zone.ZoneServer;
+import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.loot.LootGroupMap;
+include server.zone.templates.LootItemTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class LootManager extends ManagedService implements Logger {
 	private transient CraftingManager craftingManager;
-	private transient ObjectManager objectManager;
 	private transient Lua lua;
+	private transient ZoneServer zoneServer;
+	private transient ObjectManager objectManager;
 	
-	@dereferenced
 	private transient LootGroupMap lootGroupMap;
-
-	public LootManager(CraftingManager craftman, ObjectManager objMan) {
+	
+	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		
 		craftingManager = craftman;
 		objectManager = objMan;
+		zoneServer = server;
+		
+		lootGroupMap = null;
 		
 		Logger.setLoggingName("LootManager");
 		
@@ -78,9 +84,17 @@ class LootManager extends ManagedService implements Logger {
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
+	
+	@local
+	private native void setInitialObjectStats(LootItemTemplate templateObject, CraftingValues craftingValues, TangibleObject prototype);
+	
+	@local
+	public native SceneObject createLootObject(LootItemTemplate templateObject);
 
 	public native void createLoot(SceneObject container, CreatureObject creature);
 	
 	public native void createLoot(SceneObject container, final string lootGroup);
+	
+	//public native void generateStats(final string lootTemplate, CraftingValues)
 
 }

@@ -68,7 +68,7 @@ private:
 	void parseIrngTable(IffStream* iffStream);
 	void parseNameTable(IffStream* iffStream);
 	void parsePnofTable(IffStream* iffStream);
-	void parseVnofTable(IffStream* iffStream) ;
+	void parseVnofTable(IffStream* iffStream);
 	void parseDefvTable(IffStream* iffStream);
 
 

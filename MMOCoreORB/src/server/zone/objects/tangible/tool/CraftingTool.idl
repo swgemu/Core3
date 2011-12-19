@@ -196,10 +196,6 @@ class CraftingTool extends ToolTangibleObject {
 	private native void finishAssembly(CreatureObject player, int clientCounter);
 
 	public native void experiment(CreatureObject player, int numRowsAttempted, string expString, int clientCounter);
-
-	@local
-	private native void experimentRow(CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
-			float failure);
 	
 	public native void customization(CreatureObject player, string name, byte templateChoice, int schematicCount, string customization);
 

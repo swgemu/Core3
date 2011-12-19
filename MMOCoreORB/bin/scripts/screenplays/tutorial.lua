@@ -1094,7 +1094,6 @@ function TutorialScreenPlay:debrisDestroyedObserver(debrisObject, playerObject)
 	local debris = LuaSceneObject(debrisObject)
 	
 	player:sendNewbieTutorialEnableHudElement("all", 1)
-	--player:sendSystemMessage("good job retard")
 	
 	debris:destroyObjectFromWorld()
 	

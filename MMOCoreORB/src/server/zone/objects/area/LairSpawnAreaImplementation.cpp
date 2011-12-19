@@ -127,7 +127,7 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	if (currentlySpawnedLairs >= spawnGroup->getMaxSpawnLimit())
 		return;
 
-	if (object->inRangeObjectCount() > 300)
+	if (object->inRangeObjectCount() > 20)
 		return;
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();

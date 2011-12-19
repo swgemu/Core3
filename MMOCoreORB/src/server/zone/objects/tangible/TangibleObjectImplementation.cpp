@@ -599,13 +599,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	crate->setOptionsBitmask(0x2100);
 
 	if (insertSelf) {
-
-		if (parent != NULL) {
-			getParent()->removeObject(_this, true);
-		}
-
-		crate->transferObject(_this, -1, false);
-
+		crate->transferObject(_this, -1, true);
 	} else {
 
 		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(_this));

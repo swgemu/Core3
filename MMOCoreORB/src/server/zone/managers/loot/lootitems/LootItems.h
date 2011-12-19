@@ -8,7 +8,9 @@
 #ifndef LOOTITEMS_H_
 #define LOOTITEMS_H_
 
-class LootItems {
+#include "server/zone/templates/LootItemTemplate.h"
+
+class LootItems : public HashTable<String, Reference<LootItemTemplate*> > {
 public:
 	LootItems();
 	virtual ~LootItems();

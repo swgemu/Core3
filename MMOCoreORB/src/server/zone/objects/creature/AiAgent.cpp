@@ -1436,8 +1436,12 @@ void AiAgentImplementation::doAwarenessCheck(Coordinate& start, unsigned long lo
 }
 
 void AiAgentImplementation::clearPatrolPoints() {
-	// server/zone/objects/creature/AiAgent.idl():  		patrolPoints.removeAll();
+	// server/zone/objects/creature/AiAgent.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/AiAgent.idl():  			patrolPoints.removeAll();
 	(&patrolPoints)->removeAll();
+}
 }
 
 void AiAgentImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
@@ -1453,8 +1457,12 @@ void AiAgentImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 }
 
 void AiAgentImplementation::addPatrolPoint(PatrolPoint& point) {
-	// server/zone/objects/creature/AiAgent.idl():  		patrolPoints.add(point);
+	// server/zone/objects/creature/AiAgent.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/AiAgent.idl():  			patrolPoints.add(point);
 	(&patrolPoints)->add(point);
+}
 }
 
 void AiAgentImplementation::setHomeLocation(float x, float z, float y, SceneObject* cell) {
@@ -1509,48 +1517,64 @@ void AiAgentImplementation::setOblivious() {
 }
 
 void AiAgentImplementation::setWatchObject(SceneObject* obj) {
-	// server/zone/objects/creature/AiAgent.idl():  		followState 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return;
+	// server/zone/objects/creature/AiAgent.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/AiAgent.idl():  			followState 
+	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
 	return;
-	// server/zone/objects/creature/AiAgent.idl():  		followState = WATCHING;
+	// server/zone/objects/creature/AiAgent.idl():  			followState = WATCHING;
 	followState = WATCHING;
-	// server/zone/objects/creature/AiAgent.idl():  		setTargetObject(obj);
+	// server/zone/objects/creature/AiAgent.idl():  			setTargetObject(obj);
 	setTargetObject(obj);
-	// server/zone/objects/creature/AiAgent.idl():  		activateMovementEvent();
+	// server/zone/objects/creature/AiAgent.idl():  			activateMovementEvent();
 	activateMovementEvent();
+}
 }
 
 void AiAgentImplementation::setStalkObject(SceneObject* obj) {
-	// server/zone/objects/creature/AiAgent.idl():  		followState 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return;
+	// server/zone/objects/creature/AiAgent.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/AiAgent.idl():  			followState 
+	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
 	return;
-	// server/zone/objects/creature/AiAgent.idl():  		followState = STALKING;
+	// server/zone/objects/creature/AiAgent.idl():  			followState = STALKING;
 	followState = STALKING;
-	// server/zone/objects/creature/AiAgent.idl():  		setTargetObject(obj);
+	// server/zone/objects/creature/AiAgent.idl():  			setTargetObject(obj);
 	setTargetObject(obj);
-	// server/zone/objects/creature/AiAgent.idl():  		activateMovementEvent();
+	// server/zone/objects/creature/AiAgent.idl():  			activateMovementEvent();
 	activateMovementEvent();
+}
 }
 
 void AiAgentImplementation::setFollowObject(SceneObject* obj) {
-	// server/zone/objects/creature/AiAgent.idl():  		followState 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return;
+	// server/zone/objects/creature/AiAgent.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/AiAgent.idl():  			followState 
+	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
 	return;
-	// server/zone/objects/creature/AiAgent.idl():  		followState = FOLLOWING;
+	// server/zone/objects/creature/AiAgent.idl():  			followState = FOLLOWING;
 	followState = FOLLOWING;
-	// server/zone/objects/creature/AiAgent.idl():  		setTargetObject(obj);
+	// server/zone/objects/creature/AiAgent.idl():  			setTargetObject(obj);
 	setTargetObject(obj);
-	// server/zone/objects/creature/AiAgent.idl():  		activateMovementEvent();
+	// server/zone/objects/creature/AiAgent.idl():  			activateMovementEvent();
 	activateMovementEvent();
+}
 }
 
 void AiAgentImplementation::setTargetObject(SceneObject* obj) {
-	// server/zone/objects/creature/AiAgent.idl():  	}
+	// server/zone/objects/creature/AiAgent.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/AiAgent.idl():  		}
 	if (followObject != obj){
-	// server/zone/objects/creature/AiAgent.idl():  			clearPatrolPoints();
+	// server/zone/objects/creature/AiAgent.idl():  				clearPatrolPoints();
 	clearPatrolPoints();
-	// server/zone/objects/creature/AiAgent.idl():  			followObject = obj;
+	// server/zone/objects/creature/AiAgent.idl():  				followObject = obj;
 	followObject = obj;
+}
 }
 }
 

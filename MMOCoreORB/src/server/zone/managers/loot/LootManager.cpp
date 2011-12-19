@@ -12,14 +12,18 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 /*
  *	LootManagerStub
  */
 
 enum {RPC_INITIALIZE__ = 6,RPC_CREATELOOT__SCENEOBJECT_CREATUREOBJECT_,RPC_CREATELOOT__SCENEOBJECT_STRING_};
 
-LootManager::LootManager(CraftingManager* craftman, ObjectManager* objMan) : ManagedService(DummyConstructorParameter::instance()) {
-	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman, objMan);
+LootManager::LootManager(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
+	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman, objMan, server);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -43,6 +47,15 @@ void LootManager::initialize() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initialize();
+}
+
+SceneObject* LootManager::createLootObject(LootItemTemplate* templateObject) {
+	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->createLootObject(templateObject);
 }
 
 void LootManager::createLoot(SceneObject* container, CreatureObject* creature) {
@@ -199,12 +212,16 @@ int LootManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
-LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan) {
+LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server) {
 	_initializeImplementation();
 	// server/zone/managers/loot/LootManager.idl():  		craftingManager = craftman;
 	craftingManager = craftman;
 	// server/zone/managers/loot/LootManager.idl():  		objectManager = objMan;
 	objectManager = objMan;
+	// server/zone/managers/loot/LootManager.idl():  		zoneServer = server;
+	zoneServer = server;
+	// server/zone/managers/loot/LootManager.idl():  		lootGroupMap = null;
+	lootGroupMap = NULL;
 	// server/zone/managers/loot/LootManager.idl():  		Logger.setLoggingName("LootManager");
 	Logger::setLoggingName("LootManager");
 	// server/zone/managers/loot/LootManager.idl():  		Logger.setLogging(true);

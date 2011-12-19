@@ -8,7 +8,9 @@
 #ifndef LOOTGROUP_H_
 #define LOOTGROUP_H_
 
-class LootGroup {
+#include "../lootitems/LootItems.h"
+
+class LootGroup : public Vector<String> {
 public:
 	LootGroup();
 	virtual ~LootGroup();

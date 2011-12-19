@@ -133,6 +133,15 @@ float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
 		return _implementation->calculateAssemblyValueModifier(assemblyResult);
 }
 
+void CraftingManager::experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->experimentRow(craftingValues, rowEffected, pointsAttempted, failure, experimentationResult);
+}
+
 float CraftingManager::getAssemblyPercentage(float value) {
 	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

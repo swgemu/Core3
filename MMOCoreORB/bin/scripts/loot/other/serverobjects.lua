@@ -8,5 +8,4 @@ includeFile("other/naboo/serverobjects.lua")
 includeFile("other/rori/serverobjects.lua") 
 includeFile("other/talus/serverobjects.lua") 
 includeFile("other/tatooine/serverobjects.lua") 
-includeFile("other/yavin4/serverobjects.lua") 
-
+includeFile("other/yavin4/serverobjects.lua")

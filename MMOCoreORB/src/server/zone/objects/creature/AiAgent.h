@@ -225,6 +225,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 
+#include "system/thread/Mutex.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
@@ -488,6 +490,8 @@ protected:
 	ManagedReference<SceneObject* > followObject;
 
 	unsigned int followState;
+
+	Mutex targetMutex;
 
 	bool fleeing;
 

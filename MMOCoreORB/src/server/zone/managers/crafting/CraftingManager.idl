@@ -55,6 +55,7 @@ import server.zone.objects.draftschematic.DraftSchematic;
 import system.util.Vector;
 import server.zone.managers.ZoneManager;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class CraftingManager extends ZoneManager {
 	private transient SchematicMap schematicMap;
@@ -109,6 +110,10 @@ class CraftingManager extends ZoneManager {
 	public native int calculateAssemblySuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness);
 	
 	public native float calculateAssemblyValueModifier(int assemblyResult);
+	
+	@local
+	public native void experimentRow(CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
+			float failure, int experimentationResult);
 	
 	public native float getAssemblyPercentage(float value);
 	

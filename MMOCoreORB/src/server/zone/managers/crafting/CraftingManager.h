@@ -69,6 +69,8 @@ using namespace server::zone::objects::draftschematic;
 
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "system/util/VectorMap.h"
 
 #include "engine/lua/Lua.h"
@@ -145,6 +147,8 @@ public:
 	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateAssemblyValueModifier(int assemblyResult);
+
+	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult);
 
 	float getAssemblyPercentage(float value);
 
@@ -251,6 +255,8 @@ public:
 	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateAssemblyValueModifier(int assemblyResult);
+
+	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult);
 
 	float getAssemblyPercentage(float value);
 

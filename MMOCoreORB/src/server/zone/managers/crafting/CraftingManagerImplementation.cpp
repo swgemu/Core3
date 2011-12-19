@@ -237,31 +237,31 @@ float CraftingManagerImplementation::calculateExperimentationValueModifier(
 
 	switch (experimentationResult) {
 
-	case 0:
+	case AMAZINGSUCCESS:
 		results = 0.08f;
 		break;
-	case 1:
+	case GREATSUCCESS:
 		results = 0.07f;
 		break;
-	case 2:
+	case GOODSUCCESS:
 		results = 0.055f;
 		break;
-	case 3:
+	case MODERATESUCCESS:
 		results = 0.015f;
 		break;
-	case 4:
+	case SUCCESS:
 		results = 0.01f;
 		break;
-	case 5:
+	case MARGINALSUCCESS:
 		results = 0.00f;
 		break;
-	case 6:
+	case OK:
 		results = -0.04f;
 		break;
-	case 7:
+	case BARELYSUCCESSFUL:
 		results = -0.07f;
 		break;
-	case 8:
+	case CRITICALFAILURE:
 		results = -0.08f;
 		break;
 	default:
@@ -352,4 +352,35 @@ String CraftingManagerImplementation::generateSerial() {
 
 
 	return ss.toString();
+}
+
+void CraftingManagerImplementation::experimentRow(CraftingValues* craftingValues,
+		int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
+
+	float modifier, newValue;
+
+	String title, subtitle, subtitlesTitle;
+
+	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
+
+	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
+
+		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
+
+		if (subtitlesTitle == title) {
+
+			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+
+			modifier = calculateExperimentationValueModifier(experimentationResult,
+					pointsAttempted);
+
+			newValue = craftingValues->getCurrentPercentage(subtitle)
+					+ modifier;
+
+			if (newValue > craftingValues->getMaxPercentage(subtitle))
+				newValue = craftingValues->getMaxPercentage(subtitle);
+
+			craftingValues->setCurrentPercentage(subtitle, newValue);
+		}
+	}
 }

@@ -28,7 +28,7 @@ public:
 		if (zone == NULL)
 			return;
 
-		creature->destroyObjectFromWorld(true);
+		creature->destroyObjectFromWorld(false);
 		creature->notifyDespawn(zone);
 
 		//creature->printReferenceHolders();

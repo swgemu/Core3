@@ -291,6 +291,8 @@ bool AiAgentImplementation::tryRetreat() {
 		} else if (homeLocation.isInRange(_this, 100))
 			return false;
 
+		Locker locker(&targetMutex);
+
 		setOblivious();
 
 		showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
@@ -555,6 +557,8 @@ void AiAgentImplementation::checkNewAngle() {
 }
 
 bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates* nextPosition) {
+	Locker locker(&targetMutex);
+
 	Vector3 thisWorldPos = getWorldPosition();
 
 	float newSpeed = runSpeed;
@@ -715,6 +719,8 @@ void AiAgentImplementation::doMovement() {
 		// drop everything and go after the target, this will also chase the target without having to reach them to change direction
 		//patrolPoints.removeAll();
 
+		Locker locker(&targetMutex);
+
 		switch (followState) {
 		case AiAgent::OBLIVIOUS:
 			break;
@@ -822,6 +828,8 @@ void AiAgentImplementation::activateWaitEvent() {
 }
 
 void AiAgentImplementation::setNextPosition(float x, float z, float y, SceneObject* cell) {
+	Locker locker(&targetMutex);
+
 	PatrolPoint point(x, z, y, cell);
 
 	if (patrolPoints.size() == 0)

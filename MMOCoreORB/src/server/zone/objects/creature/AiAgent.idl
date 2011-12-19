@@ -72,6 +72,7 @@ import engine.util.u3d.Coordinate;
 import server.zone.objects.creature.commands.QueueCommand;
 import engine.util.Observable;
 import server.zone.objects.creature.AiObserver;
+include system.thread.Mutex;
 
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
@@ -112,6 +113,8 @@ class AiAgent extends CreatureObject {
 	//@weakReference
 	protected SceneObject followObject;
 	protected unsigned int followState;
+	@dereferenced
+	protected transient Mutex targetMutex;
 	
 	protected boolean fleeing;
 	
@@ -191,7 +194,9 @@ class AiAgent extends CreatureObject {
 	public native void broadcastNextPositionUpdate(PatrolPoint point);
 	
 	public void clearPatrolPoints() {
-		patrolPoints.removeAll();
+		synchronized (targetMutex) {
+			patrolPoints.removeAll();
+		}
 	}
 	
 	@local
@@ -317,7 +322,9 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public void addPatrolPoint(@dereferenced PatrolPoint point) {
-		patrolPoints.add(point);
+		synchronized (targetMutex) {
+			patrolPoints.add(point);
+		}
 	}
 	
 	public void setHomeLocation(float x, float z, float y, SceneObject cell = null) {
@@ -375,40 +382,48 @@ class AiAgent extends CreatureObject {
 	}
 	
 	public void setWatchObject(SceneObject obj) {
-		if (this.isRetreating())
-			return;
-		
-		followState = WATCHING;
-		
-		setTargetObject(obj);
-		activateMovementEvent();
+		synchronized (targetMutex) {
+			if (this.isRetreating())
+				return;
+
+			followState = WATCHING;
+
+			setTargetObject(obj);
+			activateMovementEvent();
+		}
 	}
 	
 	public void setStalkObject(SceneObject obj) {
-		if (this.isRetreating())
-			return;
-		
-		followState = STALKING;
-		
-		setTargetObject(obj);
-		activateMovementEvent();
+		synchronized (targetMutex) {
+			if (this.isRetreating())
+				return;
+
+			followState = STALKING;
+
+			setTargetObject(obj);
+			activateMovementEvent();
+		}
 	}
 	
 	public void setFollowObject(SceneObject obj) {
-		if (this.isRetreating())
-			return;
-		
-		followState = FOLLOWING;
-		
-		setTargetObject(obj);
-		activateMovementEvent();
+		synchronized (targetMutex) {
+			if (this.isRetreating())
+				return;
+
+			followState = FOLLOWING;
+
+			setTargetObject(obj);
+			activateMovementEvent();
+		}
 	}
 	
 	public void setTargetObject(SceneObject obj) {
-		if (followObject != obj) {
-			clearPatrolPoints();
+		synchronized (targetMutex) {
+			if (followObject != obj) {
+				clearPatrolPoints();
 
-			followObject = obj;
+				followObject = obj;
+			}
 		}
 	}
 	

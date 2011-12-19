@@ -1061,7 +1061,7 @@ void CraftingToolImplementation::experiment(CreatureObject* player, int numRowsA
 		manufactureSchematic->increaseComplexity();
 
 		// Do the experimenting - sets new percentages
-		experimentRow(craftingValues, rowEffected, pointsAttempted, failure);
+		craftingManager->experimentRow(craftingValues, rowEffected, pointsAttempted, failure, experimentationResult);
 
 	}
 
@@ -1117,38 +1117,6 @@ void CraftingToolImplementation::experiment(CreatureObject* player, int numRowsA
 
 	player->sendMessage(objMsg);
 }
-
-void CraftingToolImplementation::experimentRow(CraftingValues* craftingValues,
-		int rowEffected, int pointsAttempted, float failure) {
-
-	float modifier, newValue;
-
-	String title, subtitle, subtitlesTitle;
-
-	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
-
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-
-		if (subtitlesTitle == title) {
-
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
-
-			modifier = craftingManager->calculateExperimentationValueModifier(experimentationResult,
-					pointsAttempted);
-
-			newValue = craftingValues->getCurrentPercentage(subtitle)
-					+ modifier;
-
-			if (newValue > craftingValues->getMaxPercentage(subtitle))
-				newValue = craftingValues->getMaxPercentage(subtitle);
-
-			craftingValues->setCurrentPercentage(subtitle, newValue);
-		}
-	}
-}
-
 
 void CraftingToolImplementation::customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization) {
 

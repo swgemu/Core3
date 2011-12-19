@@ -67,7 +67,35 @@ class ObjectManager;
 
 using namespace server::zone::managers::object;
 
+namespace server {
+namespace zone {
+
+class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
 #include "server/zone/managers/loot/LootGroupMap.h"
+
+#include "server/zone/templates/LootItemTemplate.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "system/util/VectorMap.h"
 
@@ -82,9 +110,11 @@ namespace loot {
 
 class LootManager : public ManagedService {
 public:
-	LootManager(CraftingManager* craftman, ObjectManager* objMan);
+	LootManager(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server);
 
 	void initialize();
+
+	SceneObject* createLootObject(LootItemTemplate* templateObject);
 
 	void createLoot(SceneObject* container, CreatureObject* creature);
 
@@ -117,14 +147,16 @@ namespace loot {
 class LootManagerImplementation : public ManagedServiceImplementation, public Logger {
 	ManagedReference<CraftingManager* > craftingManager;
 
-	Reference<ObjectManager* > objectManager;
-
 	Reference<Lua* > lua;
 
-	LootGroupMap lootGroupMap;
+	ManagedReference<ZoneServer* > zoneServer;
+
+	Reference<ObjectManager* > objectManager;
+
+	Reference<LootGroupMap* > lootGroupMap;
 
 public:
-	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan);
+	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server);
 
 	LootManagerImplementation(DummyConstructorParameter* param);
 
@@ -137,7 +169,11 @@ private:
 
 	void loadDefaultConfig();
 
+	void setInitialObjectStats(LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype);
+
 public:
+	SceneObject* createLootObject(LootItemTemplate* templateObject);
+
 	void createLoot(SceneObject* container, CreatureObject* creature);
 
 	void createLoot(SceneObject* container, const String& lootGroup);
