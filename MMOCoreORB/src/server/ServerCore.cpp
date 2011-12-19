@@ -63,6 +63,7 @@ which carries forward this exception.
 #include "zone/ZoneServer.h"
 
 #include "zone/managers/object/ObjectManager.h"
+#include "zone/managers/templates/TemplateManager.h"
 
 #include "zone/objects/creature/CreatureObject.h"
 
@@ -282,7 +283,7 @@ void ServerCore::handleCommands() {
 #endif
 
 		try {
-			String command;
+			String fullCommand;
 
 			Thread::sleep(500);
 
@@ -291,8 +292,18 @@ void ServerCore::handleCommands() {
 			char line[256];
 			fgets(line, sizeof(line), stdin);
 
-			command = line;
-			command = command.replaceFirst("\n", "");
+			fullCommand = line;
+			fullCommand = fullCommand.replaceFirst("\n", "");
+
+			StringTokenizer tokenizer(fullCommand);
+
+			String command, arguments;
+
+			if (tokenizer.hasMoreTokens())
+				tokenizer.getStringToken(command);
+
+			if (tokenizer.hasMoreTokens())
+				tokenizer.finalToken(arguments);
 
 			ZoneServer* zoneServer = zoneServerRef.getForUpdate();
 
@@ -347,6 +358,20 @@ void ServerCore::handleCommands() {
 				System::out << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
 			} else if (command == "about") {
 				System::out << "Core3 Uber Edition. Ultyma pwns you.\n";
+			} else if (command == "lookupcrc") {
+				uint32 crc = 0;
+				try {
+					crc = UnsignedInteger::valueOf(arguments);
+				} catch (Exception& e) {
+					System::out << "invalid crc number expected dec";
+				}
+
+				if (crc != 0) {
+					String file = TemplateManager::instance()->getTemplateFile(crc);
+
+					System::out << "result: " << file << endl;
+				}
+
 			} else
 				System::out << "unknown command (" << command << ")\n";
 		} catch (SocketException& e) {

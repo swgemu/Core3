@@ -2,6 +2,7 @@ test_loot_item = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	chance = 100.0, -- min 0.00001
+	customObjectName = "",
 	directObjectTemplate = "", -- if this value is set all the below values are ignored
 	
 	draftSchematic = "object/draft_schematic/clothing/clothing_armor_composite_bicep_l.iff",

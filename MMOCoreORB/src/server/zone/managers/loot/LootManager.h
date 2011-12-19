@@ -171,6 +171,8 @@ private:
 
 	void setInitialObjectStats(LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype);
 
+	void setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject);
+
 public:
 	SceneObject* createLootObject(LootItemTemplate* templateObject);
 

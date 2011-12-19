@@ -72,7 +72,9 @@ int LootGroupMap::addLootGroupTemplate(lua_State* L) {
 
 	luaItems.pop();
 
-	instance()->put(ascii, group);
+	if (instance()->put(ascii, group) != NULL) {
+		Logger::console.warning("duplicate loot group template with name " + ascii);
+	}
 
 	//printf("added loot group template\n");
 
@@ -86,7 +88,8 @@ int LootGroupMap::addLootItemTemplate(lua_State* L) {
 	Reference<LootItemTemplate*> item = new LootItemTemplate(ascii);
 	item->readObject(&obj);
 
-	instance()->lootItemMap.put(ascii, item);
+	if (instance()->lootItemMap.put(ascii, item) != NULL)
+		Logger::console.warning("duplicate loot item template with name " + ascii);
 
 	//printf("added loot item template\n");
 

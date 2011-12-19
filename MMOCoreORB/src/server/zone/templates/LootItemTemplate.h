@@ -17,6 +17,7 @@ class LootItemTemplate: public LuaTemplate {
 protected:
 	String name;
 	String draftSchematic;
+	String customObjectName;
 	Vector<String> experimentalSubGroupTitles;
 	Vector<int> experimentalMin;
 	Vector<int> experimentalMax;
@@ -42,6 +43,7 @@ public:
 		minimumLevel = templateData->getIntField("minimumLevel");
 		maximumLevel = templateData->getIntField("maximumLevel");
 		chance = templateData->getFloatField("chance");
+		customObjectName = templateData->getStringField("customObjectName");
 
 		if (!directObjectTemplate.isEmpty())
 			return;
@@ -111,6 +113,10 @@ public:
 
 	String& getDirectObjectTemplate() {
 		return directObjectTemplate;
+	}
+
+	String& getCustomObjectName() {
+		return customObjectName;
 	}
 
 	String getDraftSchematic() const {

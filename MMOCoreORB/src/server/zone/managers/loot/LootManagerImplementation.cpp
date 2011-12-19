@@ -89,11 +89,30 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 	}
 }
 
+void LootManagerImplementation::setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject) {
+	String customName = templateObject->getCustomObjectName();
+
+	if (!customName.isEmpty()) {
+		if (customName.charAt(0) == '@') {
+			StringId stringId(customName);
+
+			object->setObjectName(stringId);
+		} else {
+			object->setCustomObjectName(customName, false);
+		}
+	}
+
+}
+
 SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject) {
 	String directTemplateObject = templateObject->getDirectObjectTemplate();
 
 	if (!directTemplateObject.isEmpty()) {
 		SceneObject* newObject = zoneServer->createObject(directTemplateObject.hashCode(), 2);
+		newObject->createChildObjects();
+
+		if (newObject != NULL && newObject->isTangibleObject())
+			setCustomObjectName(cast<TangibleObject*>(newObject), templateObject);
 
 		return newObject;
 	}
@@ -126,7 +145,7 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 
 	int qualityResult = System::random(templateObject->getQualityRangeMin() - templateObject->getQualityRangeMax()) + templateObject->getQualityRangeMax();
 
-	info("qualityResult = " + String::valueOf(qualityResult), true);
+	//info("qualityResult = " + String::valueOf(qualityResult), true);
 
 	float modifier, newValue;
 
@@ -149,6 +168,8 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 
 	// Update the Tano with new values
 	prototype->updateCraftingValues(manufactureSchematic);
+
+	setCustomObjectName(prototype, templateObject);
 
 	return prototype;
 }
@@ -177,12 +198,13 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 		if (itemTemplate != NULL) {
 			float chance = itemTemplate->getChance() * 100000;
 
-			if (chance >= System::random(10000000)) {
+			if (chance >= System::random(10000000 - 1) + 1) {
 				SceneObject* obj = createLootObject(itemTemplate);
 
 				if (container->transferObject(obj, -1, false))
 					obj->broadcastObject(obj->getRootParent(), true);
 			}
-		}
+		} else
+			error(item + " loot item template not found");
 	}
 }
