@@ -46,6 +46,7 @@ which carries forward this exception.
 #define NPCSPAWNPOINT_H_
 
 #include "engine/util/u3d/Vector3.h"
+#include "engine/util/u3d/Quaternion.h"
 #include "engine/log/Logger.h"
 #include "engine/lua/Lua.h"
 #include "engine/orb/object/DistributedObject.h"
@@ -65,6 +66,11 @@ protected:
 	 * The position on the planet.
 	 */
 	Vector3 position;
+
+	/**
+	 * The direction the npc faces.
+	 */
+	Quaternion direction;
 
 	/**
 	 * Spawn type mask.
@@ -101,10 +107,12 @@ public:
 	void readObject(LuaObject* luaObject) {
 		float x = luaObject->getFloatAt(1);
 		float y = luaObject->getFloatAt(2);
-		spawnType = luaObject->getIntAt(3);
+		float radians = luaObject->getFloatAt(3);
+		spawnType = luaObject->getIntAt(4);
 		position.setX(x);
 		position.setY(y);
 		position.setZ(0);
+		direction.setHeadingDirection(radians);
 		inUse = false;
 	}
 
@@ -141,6 +149,14 @@ public:
 	}
 
 	/**
+	 * Get the direction the spawn point npc should face.
+	 * @return the direction the spawn point npc should face.
+	 */
+	inline Quaternion* getDirection() {
+		return &direction;
+	}
+
+	/**
 	 * Load the object from a stream.
 	 * @param stream stream to load from.
 	 * @return true if successful.
@@ -148,7 +164,8 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
 		spawnType = stream->readInt();
 		inUse = stream->readBoolean();
-		return position.parseFromBinaryStream(stream);
+		bool result = position.parseFromBinaryStream(stream);
+		return result & direction.parseFromBinaryStream(stream);
 	}
 
 	/**
@@ -159,7 +176,8 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		stream->writeInt(spawnType);
 		stream->writeBoolean(inUse);
-		return position.toBinaryStream(stream);
+		bool result = position.toBinaryStream(stream);
+		return result & direction.toBinaryStream(stream);
 	}
 };
 

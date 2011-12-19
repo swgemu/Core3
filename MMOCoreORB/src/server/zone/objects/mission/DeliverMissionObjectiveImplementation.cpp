@@ -72,6 +72,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	}
 
 	//Spawn target and destination NPC's.
+
 	//Target NPC
 	//Find a free spawn point.
 	targetSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), NpcSpawnPoint::NEUTRALSPAWN);
@@ -83,8 +84,14 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 		return false;
 	}
 	String deliverNpc = "deliver_npc";
+	//Get the terrain height at the spawn point.
 	float z = terrainManager->getHeight(targetPosition->getX(), targetPosition->getY());
+	//Spawn the NPC.
 	target = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, targetPosition->getX(), z, targetPosition->getY(), 0));
+	//Update the heading direction of the NPC.
+	Quaternion* direction = targetSpawnPoint->getDirection();
+	target->updateDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
+	//Set the name of the NPC.
 	target->setCustomObjectName(mission->getCreatorName(), true);
 
 	//Destination NPC.
@@ -97,8 +104,14 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	if (destinationPosition == NULL) {
 		return false;
 	}
+	//Get the terrain height at the spawn point.
 	z = terrainManager->getHeight(destinationPosition->getX(), destinationPosition->getY());
+	//Spawn the NPC.
 	destination = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, destinationPosition->getX(), z, destinationPosition->getY(), 0));
+	//Update the heading direction of the NPC.
+	direction = destinationSpawnPoint->getDirection();
+	destination->updateDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
+	//Set the name of the NPC.
 	destination->setCustomObjectName(mission->getTargetName(), true);
 
 	//Create waypoint and activate it.
