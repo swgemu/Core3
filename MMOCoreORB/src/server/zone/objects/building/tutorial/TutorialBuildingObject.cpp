@@ -245,12 +245,14 @@ void TutorialBuildingObjectImplementation::initializeTransientMembers() {
 }
 
 void TutorialBuildingObjectImplementation::onEnter(CreatureObject* player) {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		dequeueUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  	}
+	if (player->isPlayerCreature())	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  			dequeueUnloadEvent();
 	dequeueUnloadEvent();
 }
 
 void TutorialBuildingObjectImplementation::onExit(CreatureObject* player) {
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		enqueueUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  	}
+	if (player->isPlayerCreature())	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  			enqueueUnloadEvent();
 	enqueueUnloadEvent();
 }
 

@@ -74,11 +74,13 @@ class TutorialBuildingObject extends BuildingObject {
 	}
 	
 	public void onEnter(CreatureObject player) {
-		dequeueUnloadEvent();
+		if (player.isPlayerCreature())
+			dequeueUnloadEvent();
 	}
 	
 	public void onExit(CreatureObject player) {
-		enqueueUnloadEvent();
+		if (player.isPlayerCreature())
+			enqueueUnloadEvent();
 	}
 	
 	public void clearUnloadEvent() {
