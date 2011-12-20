@@ -163,6 +163,27 @@ public:
 	}
 
 	/**
+	 * Finds the nearest NPC spawn point.
+	 * @param position the position to search from.
+	 * @return the nearest NPC spawn point.
+	 */
+	NpcSpawnPoint* getNearestNpcSpawnPoint(Vector3* position) {
+		float minimumSquaredDistance = 100000.0f * 100000.0f;
+		NpcSpawnPoint* nearestNpcSpawnPoint = NULL;
+		//Iterate over all spawn points.
+		for (int i = 0; i < npcSpawnMap.size(); i++) {
+			//Calculate distance between spawn point and supplied position and store the smallest distance.
+			float squaredDistance = npcSpawnMap.get(i)->getPosition()->squaredDistanceTo(*position);
+			if (minimumSquaredDistance > squaredDistance) {
+				minimumSquaredDistance = squaredDistance;
+				nearestNpcSpawnPoint = npcSpawnMap.get(i);
+			}
+		}
+
+		return nearestNpcSpawnPoint;
+	}
+
+	/**
 	 * Load the object from a stream.
 	 * @param stream the stream to load the object from.
 	 * @return true if successful.

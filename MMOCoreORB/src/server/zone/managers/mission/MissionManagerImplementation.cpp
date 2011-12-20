@@ -865,8 +865,17 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 
 	Reference<NpcSpawnPoint* > npc = new NpcSpawnPoint(player, spawnTypes);
 	if (npc != NULL && npc->getSpawnType() != 0) {
-		missionNpcSpawnMap.addSpawnPoint(player->getPlanetCRC(), npc);
-		String message = "NPC spawn point created at coordinates " + npc->getPosition()->toString() + " of spawntype " + String::valueOf(npc->getSpawnType());
+		//Lock mission spawn points.
+		Locker missionSpawnLocker(&missionNpcSpawnMap);
+		NpcSpawnPoint* returnedNpc = missionNpcSpawnMap.addSpawnPoint(player->getPlanetCRC(), npc);
+		String message;
+		if (returnedNpc == NULL) {
+			message = "Could not create spawn point here since the planet does not exist.";
+		} else if (*returnedNpc->getPosition() == *npc->getPosition()) {
+			message = "NPC spawn point created at coordinates " + npc->getPosition()->toString() + " of spawn type " + String::valueOf(npc->getSpawnType());
+		} else {
+			message = "NPC spawn point to close to existing spawn point at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
+		}
 		player->sendSystemMessage(message);
 	} else {
 		player->sendSystemMessage("Incorrect parameters. /createMissionElement [spawn type(s)] - (spawn types supported: neutral, imperial, rebel, bhtarget, nospawn)");

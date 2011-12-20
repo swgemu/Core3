@@ -107,8 +107,9 @@ public:
 	 * Add a spawn point to the specified planet.
 	 * @param planetCRC the CRC of the planet name.
 	 * @param npc the NPC to add.
+	 * @return the added NPC spawn point or the nearest existing spawn point if the new is within minimum distance.
 	 */
-	void addSpawnPoint(uint32 planetCRC, Reference<NpcSpawnPoint* > npc);
+	NpcSpawnPoint* addSpawnPoint(uint32 planetCRC, Reference<NpcSpawnPoint* > npc);
 
 	/**
 	 * Read the object from a stream.

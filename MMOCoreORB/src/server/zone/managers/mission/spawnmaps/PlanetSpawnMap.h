@@ -123,7 +123,7 @@ public:
 			Reference<NpcSpawnPoint*> npc = new NpcSpawnPoint();
 			npc->readObject(&npcSpawns);
 
-			addToClosestCity(npc);
+			addToClosestCity(npc, false);
 
 			luaSpawnObj.pop();
 		}
@@ -178,12 +178,24 @@ public:
 	/**
 	 * Add a NPC to the closest city.
 	 * @param npc the NPC to add.
+	 * @param checkDistanceToOtherSpawnPoints if true the distance to all other spawn points in the city
+	 * is checked and the new spawn point is only added if it is at least a certain distance from all
+	 * other spawn points.
+	 * @return the added npc spawn point or the nearest existing spawn point if the supplied spawn point is to close.
 	 */
-	void addToClosestCity(Reference<NpcSpawnPoint* > npc) {
+	NpcSpawnPoint* addToClosestCity(Reference<NpcSpawnPoint* > npc, bool checkDistanceToOtherSpawnPoints) {
 		int closestCityNumber = getClosestCityNumber(npc->getPosition());
 		if (closestCityNumber >= 0) {
-			citySpawnMaps.get(closestCityNumber)->addNpc(npc);
+			NpcSpawnPoint* closestNpc = citySpawnMaps.get(closestCityNumber)->getNearestNpcSpawnPoint(npc->getPosition());
+			if (!checkDistanceToOtherSpawnPoints || closestNpc == NULL || (closestNpc->getPosition()->distanceTo(*npc->getPosition()) > 5.0f)) {
+				citySpawnMaps.get(closestCityNumber)->addNpc(npc);
+				return npc;
+			} else {
+				return closestNpc;
+			}
 		}
+
+		return NULL;
 	}
 
 	/**
