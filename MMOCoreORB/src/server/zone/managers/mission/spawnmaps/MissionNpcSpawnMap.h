@@ -104,6 +104,13 @@ public:
 	Vector3* getRandomCityCoordinates(const uint32 planetCRC, const Vector3* notCloseToPosition);
 
 	/**
+	 * Add a spawn point to the specified planet.
+	 * @param planetCRC the CRC of the planet name.
+	 * @param npc the NPC to add.
+	 */
+	void addSpawnPoint(uint32 planetCRC, Reference<NpcSpawnPoint* > npc);
+
+	/**
 	 * Read the object from a stream.
 	 * @param stream stream to read from.
 	 * @return true if successful.

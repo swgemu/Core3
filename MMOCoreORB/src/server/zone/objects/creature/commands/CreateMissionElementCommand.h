@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CREATEMISSIONELEMENTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 class CreateMissionElementCommand : public QueueCommand {
 public:
@@ -56,12 +57,14 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		//Try to create a mission NPC spawn point.
+		creature->getZoneServer()->getMissionManager()->createSpawnPoint(creature, arguments.toString());
 
 		return SUCCESS;
 	}

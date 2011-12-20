@@ -857,3 +857,18 @@ void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* 
 	// TODO: add faction-specific targets
 	randomizeDeliverMission(player, mission);
 }
+
+void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, const String& spawnTypes) {
+	if (player == NULL) {
+		return;
+	}
+
+	Reference<NpcSpawnPoint* > npc = new NpcSpawnPoint(player, spawnTypes);
+	if (npc != NULL && npc->getSpawnType() != 0) {
+		missionNpcSpawnMap.addSpawnPoint(player->getPlanetCRC(), npc);
+		String message = "NPC spawn point created at coordinates " + npc->getPosition()->toString() + " of spawntype " + String::valueOf(npc->getSpawnType());
+		player->sendSystemMessage(message);
+	} else {
+		player->sendSystemMessage("Incorrect parameters. /createMissionElement [spawn type(s)] - (spawn types supported: neutral, imperial, rebel, bhtarget, nospawn)");
+	}
+}

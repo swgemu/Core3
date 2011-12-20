@@ -88,17 +88,6 @@ protected:
 		return city;
 	}
 
-	/**
-	 * Add a NPC to the closest city.
-	 * @param npc the NPC to add.
-	 */
-	void addToClosestCity(Reference<NpcSpawnPoint* > npc) {
-		int closestCityNumber = getClosestCityNumber(npc->getPosition());
-		if (closestCityNumber >= 0) {
-			citySpawnMaps.get(closestCityNumber)->addNpc(npc);
-		}
-	}
-
 public:
 	/**
 	 * Loads the object from a LuaObject.
@@ -183,6 +172,17 @@ public:
 		} else {
 			//No cities.
 			return NULL;
+		}
+	}
+
+	/**
+	 * Add a NPC to the closest city.
+	 * @param npc the NPC to add.
+	 */
+	void addToClosestCity(Reference<NpcSpawnPoint* > npc) {
+		int closestCityNumber = getClosestCityNumber(npc->getPosition());
+		if (closestCityNumber >= 0) {
+			citySpawnMaps.get(closestCityNumber)->addNpc(npc);
 		}
 	}
 

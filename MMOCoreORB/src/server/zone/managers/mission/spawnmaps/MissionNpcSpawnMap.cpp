@@ -91,3 +91,11 @@ Vector3* MissionNpcSpawnMap::getRandomCityCoordinates(const uint32 planetCRC, co
 	//Planet not found.
 	return NULL;
 }
+
+void MissionNpcSpawnMap::addSpawnPoint(uint32 planetCRC, Reference<NpcSpawnPoint* > npc) {
+	Reference<PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
+
+	if (planet != NULL) {
+		planet->addToClosestCity(npc);
+	}
+}

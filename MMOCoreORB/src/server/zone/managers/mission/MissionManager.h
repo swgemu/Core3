@@ -184,6 +184,8 @@ public:
 
 	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
+	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
+
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
@@ -291,6 +293,8 @@ public:
 
 	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
+	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
+
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
@@ -396,6 +400,8 @@ public:
 
 	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
+	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
+
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
@@ -415,6 +421,7 @@ public:
 	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 
 protected:
+	String _param1_createSpawnPoint__CreatureObject_String_;
 	String _param1_hasSurveyMission__CreatureObject_String_;
 };
 

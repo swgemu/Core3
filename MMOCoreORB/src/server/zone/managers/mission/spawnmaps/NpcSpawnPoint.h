@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "engine/log/Logger.h"
 #include "engine/lua/Lua.h"
 #include "engine/orb/object/DistributedObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -99,6 +100,46 @@ public:
 	 * Spawn type rebel spawn.
 	 */
 	static const int REBELSPAWN = 8;
+	/**
+	 * Spawn type bh target.
+	 */
+	static const int BHTARGETSPAWN = 16;
+
+	/**
+	 * Default constructor.
+	 */
+	NpcSpawnPoint() {
+		spawnType = 0;
+	}
+
+	/**
+	 * Constructor for dynamic NPC spawn point creation.
+	 * @param player Player creature object to get position and direction from.
+	 * @param spawnTypes string containing the spawn types for the spawn point.
+	 */
+	NpcSpawnPoint(CreatureObject* player, const String& spawnTypes) {
+		//Parse spawn types.
+		String st = spawnTypes.toLowerCase();
+		spawnType = 0;
+		if (st.contains("neutral")) {
+			spawnType |= NEUTRALSPAWN;
+		}
+		if (st.contains("imperial")) {
+			spawnType |= IMPERIALSPAWN;
+		}
+		if (st.contains("rebel")) {
+			spawnType |= REBELSPAWN;
+		}
+		if (st.contains("bhtarget")) {
+			spawnType |= BHTARGETSPAWN;
+		}
+		if (st.contains("nospawn")) {
+			//No spawn overrides all other spawn types.
+			spawnType = NOSPAWN;
+		}
+		position = player->getPosition();
+		direction.setHeadingDirection(player->getDirection()->getRadians());
+	}
 
 	/**
 	 * Loads the object from a lua script file.
