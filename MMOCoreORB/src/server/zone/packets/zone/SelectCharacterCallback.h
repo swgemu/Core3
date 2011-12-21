@@ -78,9 +78,9 @@ public:
 				player->setMovementCounter(0);
 				ghost->setClientLastMovementStamp(0);
 
-				//if (currentParent != playerParent) {
-					playerParent->transferObject(player, -1, false);
-				//}
+				playerParent = playerParent == NULL ? currentParent : playerParent;
+
+				playerParent->transferObject(player, -1, false);
 
 				ghost->updateLastValidatedPosition();
 
