@@ -488,7 +488,7 @@ void AiAgentImplementation::scheduleDespawn() {
 		return;
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
-	addPendingTask("despawn", despawn, 10000); // 45 seconds
+	addPendingTask("despawn", despawn, 45000); // 45 seconds
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
@@ -1044,24 +1044,31 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 
 	broadcastNextPositionUpdate(&current);
 
-	//Create conversation observer.
-	if (getObserverCount(ObserverEventType::STARTCONVERSATION) <= 0) {
-		ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
-
-		if (conversationObserver != NULL) {
-			//Register observers.
-			registerObserver(ObserverEventType::CONVERSE, conversationObserver);
-			registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
-			registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
-			registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
-		} else {
-			error("Could not create conversation observer.");
-		}
-	}
-
 	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 	player->sendMessage(conv);
+
+	SortedVector<ManagedReference<Observer*> >* observers = getObservers(ObserverEventType::STARTCONVERSATION);
+
+	if (observers != NULL) {
+		for (int i = 0;  i < observers->size(); ++i) {
+			if (dynamic_cast<ConversationObserver*>(observers->get(i).get()) != NULL)
+				return;
+		}
+	}
+
+	//Create conversation observer.
+	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
+
+	if (conversationObserver != NULL) {
+		//Register observers.
+		registerObserver(ObserverEventType::CONVERSE, conversationObserver);
+		registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
+	} else {
+		error("Could not create conversation observer.");
+	}
 }
 
 void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
