@@ -61,6 +61,7 @@ which carries forward this exception.
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/object/PostureMessage.h"
+#include "server/zone/packets/object/SitOnObject.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
@@ -235,6 +236,13 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 void CreatureObjectImplementation::finalize() {
 
+}
+
+void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	TangibleObjectImplementation::sendTo(player, doClose);
+
+	if (hasState(CreatureState::SITTINGONCHAIR))
+		player->sendMessage(new SitOnObject(_this, getPositionX(), getPositionZ(), getPositionY()));
 }
 
 void CreatureObjectImplementation::sendToOwner(bool doClose) {

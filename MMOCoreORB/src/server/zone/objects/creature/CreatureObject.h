@@ -300,6 +300,8 @@ public:
 
 	void sendToOwner(bool doClose = true);
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	void sendSystemMessage(const String& message);
 
 	void playMusicMessage(const String& file);
@@ -1011,6 +1013,8 @@ public:
 
 	void sendToOwner(bool doClose = true);
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	void sendSystemMessage(const String& message);
 
 	void playMusicMessage(const String& file);
@@ -1575,6 +1579,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose);
+
+	void sendTo(SceneObject* player, bool doClose);
 
 	void sendSystemMessage(const String& message);
 

@@ -270,6 +270,16 @@ class CreatureObject extends TangibleObject {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	public native void sendToOwner(boolean doClose = true);
+	
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	@read
+	public native void sendTo(SceneObject player, boolean doClose);
 
 	/**
 	 * Sends a system message to the client of this object
