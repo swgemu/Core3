@@ -49,11 +49,11 @@ which carries forward this exception.
 #include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
-class LootAllCommand : public CombatQueueCommand {
+class LootAllCommand : public QueueCommand {
 public:
 
 	LootAllCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+		: QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -64,7 +64,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+
+		return SUCCESS;
 	}
 
 };

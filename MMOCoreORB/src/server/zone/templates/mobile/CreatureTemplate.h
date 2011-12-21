@@ -390,8 +390,8 @@ public:
 		return templates;
 	}
 
-	inline Vector<String> getLootgroups() {
-		return lootgroups;
+	inline Vector<String>* getLootGroups() {
+		return &lootgroups;
 	}
 
 	inline Vector<String> getWeapons() {

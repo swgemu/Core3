@@ -156,9 +156,11 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 
 	if (selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236) {
 		getZone()->getCreatureManager()->harvest(_this, player, selectedID);
+
+		return 0;
 	}
 
-	return 0;
+	return AiAgentImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {

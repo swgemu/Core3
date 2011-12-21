@@ -10,6 +10,7 @@
 #include "LootManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/LootItemTemplate.h"
@@ -174,11 +175,18 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 	return prototype;
 }
 
-void LootManagerImplementation::createLoot(SceneObject* container, CreatureObject* creature) {
+void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* creature) {
+	Vector<String>* lootGroups = creature->getLootGroups();
 
+	if (lootGroups == NULL)
+		return;
+
+	for (int i = 0; i < lootGroups->size(); ++i) {
+		createLoot(container, lootGroups->get(i), creature->getLevel());
+	}
 }
 
-void LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup) {
+void LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level) {
 	if (container->hasFullContainerObjects())
 		return;
 
@@ -197,6 +205,16 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 
 		if (itemTemplate != NULL) {
 			float chance = itemTemplate->getChance() * 100000;
+			int minLevel = itemTemplate->getMinimumLevel();
+			int maxLevel = itemTemplate->getMaximumLevel();
+
+			if (level != -1) {
+				if (minLevel != -1 && level < minLevel)
+					continue;
+
+				if (maxLevel != -1 && level > maxLevel)
+					continue;
+			}
 
 			if (chance >= System::random(10000000 - 1) + 1) {
 				SceneObject* obj = createLootObject(itemTemplate);
@@ -204,6 +222,7 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 				if (container->transferObject(obj, -1, false))
 					obj->broadcastObject(obj->getRootParent(), true);
 			}
+
 		} else
 			error(item + " loot item template not found");
 	}

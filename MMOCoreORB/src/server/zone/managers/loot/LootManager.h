@@ -41,6 +41,20 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class AiAgent;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace crafting {
 
@@ -116,9 +130,9 @@ public:
 
 	SceneObject* createLootObject(LootItemTemplate* templateObject);
 
-	void createLoot(SceneObject* container, CreatureObject* creature);
+	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup);
+	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -176,9 +190,9 @@ private:
 public:
 	SceneObject* createLootObject(LootItemTemplate* templateObject);
 
-	void createLoot(SceneObject* container, CreatureObject* creature);
+	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup);
+	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 
 	WeakReference<LootManager*> _this;
 
@@ -225,12 +239,12 @@ public:
 
 	void initialize();
 
-	void createLoot(SceneObject* container, CreatureObject* creature);
+	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup);
+	void createLoot(SceneObject* container, const String& lootGroup, int level);
 
 protected:
-	String _param1_createLoot__SceneObject_String_;
+	String _param1_createLoot__SceneObject_String_int_;
 };
 
 class LootManagerHelper : public DistributedObjectClassHelper, public Singleton<LootManagerHelper> {

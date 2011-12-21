@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/templates/tangible/ContainerTemplate.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -154,6 +155,21 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			errorDescription = "@container_error_message:container12";
 
 			return TransferErrorCode::CANTNESTOBJECT;
+		}
+
+		SceneObject* myParent = getParent();
+		SceneObject* otherParent = object->getParent();
+
+		if (myParent != NULL && otherParent != NULL) {
+			if (otherParent->isCreatureObject()) {
+				AiAgent* ai = dynamic_cast<AiAgent*>(otherParent);
+
+				if (ai != NULL && ai->getLootOwner() != myParent) {
+					errorDescription = "@group:no_loot_permission";
+
+					return TransferErrorCode::NOLOOTPERMISSION;
+				}
+			}
 		}
 	}
 

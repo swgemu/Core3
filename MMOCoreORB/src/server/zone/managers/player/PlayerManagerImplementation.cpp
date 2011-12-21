@@ -2489,6 +2489,35 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	//return 0;
 }
 
+void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
+	Locker locker(ai, player);
+
+	if (!ai->isDead())
+		return;
+
+	SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+
+	if (creatureInventory == NULL)
+		return;
+
+	SceneObject* playerInventory = player->getSlottedObject("inventory");
+
+	if (playerInventory == NULL)
+		return;
+
+	StringBuffer args;
+	args << playerInventory->getObjectID() << " -1 0 0 0";
+
+	String stringArgs = args.toString();
+
+	for (int i = 0; i < creatureInventory->getContainerObjectsSize(); ++i) {
+		SceneObject* object = creatureInventory->getContainerObject(i);
+
+		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), object->getObjectID(), stringArgs);
+	}
+
+}
+
 void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 

@@ -63,6 +63,23 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<AiAgent*> ai = dynamic_cast<AiAgent*>(server->getZoneServer()->getObject(target));
+
+		if (ai == NULL)
+			return INVALIDTARGET;
+
+		Locker locker(ai, creature);
+
+		if (!ai->isDead())
+			return GENERALERROR;
+
+		SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+
+		if (creatureInventory == NULL)
+			return GENERALERROR;
+
+		creatureInventory->openContainerTo(creature);
+
 		return SUCCESS;
 	}
 

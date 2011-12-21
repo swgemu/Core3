@@ -180,6 +180,16 @@ class AiAgent extends CreatureObject {
 	public abstract void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target) {
 		
 	}
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 		
 	public native void checkNewAngle();
 	
@@ -594,6 +604,14 @@ class AiAgent extends CreatureObject {
 			return null;
 		
 		return npcTemplate.getAttacks();
+	}
+	
+	@local 
+	public Vector<string> getLootGroups() {
+		if (npcTemplate == null)
+			return null;
+		
+		return npcTemplate.getLootGroups();
 	}
 	
 	public float getRespawnTimer() {

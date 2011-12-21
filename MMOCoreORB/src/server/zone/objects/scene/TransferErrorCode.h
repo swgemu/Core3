@@ -21,6 +21,7 @@ public:
 	const static int CANTADDTOITSELF = 8;
 	const static int UNKNOWNCONTAIMENTTYPE = 9;
 	const static int CONTAINERFULL = 10;
+	const static int NOLOOTPERMISSION = 11;
 };
 
 

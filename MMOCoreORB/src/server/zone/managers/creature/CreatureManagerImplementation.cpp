@@ -16,6 +16,7 @@
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/objects/creature/Creature.h"
@@ -288,6 +289,20 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 		creature->transferObject(defaultWeapon, 4);
 	}
 
+	if (creature->hasSlotDescriptor("inventory")) {
+		//object/tangible/inventory/shared_creature_inventory.iff
+
+		SceneObject* creatureInventory = zoneServer->createObject(String("object/tangible/inventory/creature_inventory.iff").hashCode(), 0);
+
+		if (creatureInventory == NULL) {
+			error("could not create creature inventory");
+
+			return false;
+		}
+
+		creature->transferObject(creatureInventory, 4);
+	}
+
 	return true;
 }
 
@@ -328,19 +343,28 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	try {
 		ManagedReference<CreatureObject*> player = copyDamageMap.getHighestDamagePlayer();
 
-		if (player != NULL)
+		if (player != NULL) {
+			Locker locker(player, destructedObject);
+
 			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+
+			if (player != NULL) {
+				FactionManager* factionManager = FactionManager::instance();
+				factionManager->awardFactionStanding(player, destructedObject->getFactionString());
+				factionManager->awardFactionPoints(player, destructedObject);
+			}
+
+			if (player != NULL && playerManager != NULL)
+				playerManager->disseminateExperience(destructedObject, &copyDamageMap);
+		}
 
 		destructedObject->setLootOwner(player);
 
-		if (player != NULL) {
-			FactionManager* factionManager = FactionManager::instance();
-			factionManager->awardFactionStanding(player, destructedObject->getFactionString());
-			factionManager->awardFactionPoints(player, destructedObject);
-		}
+		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
-		if (player != NULL && playerManager != NULL)
-			playerManager->disseminateExperience(destructedObject, &copyDamageMap);
+		if (creatureInventory != NULL) {
+			zoneServer->getLootManager()->createLoot(creatureInventory, destructedObject);
+		}
 
 		CombatManager::instance()->attemptPeace(destructedObject);
 

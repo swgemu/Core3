@@ -162,6 +162,20 @@ using namespace server::zone::objects::structure;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class AiAgent;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace tangible {
 
 class DamageMap;
@@ -275,6 +289,8 @@ public:
 	void startWatch(CreatureObject* creature, unsigned long long entid);
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
+
+	void lootAll(CreatureObject* player, AiAgent* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
@@ -448,6 +464,8 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
+	void lootAll(CreatureObject* player, AiAgent* creature);
+
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
@@ -594,6 +612,8 @@ public:
 	void startWatch(CreatureObject* creature, unsigned long long entid);
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
+
+	void lootAll(CreatureObject* player, AiAgent* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 

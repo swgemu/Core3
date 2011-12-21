@@ -24,6 +24,7 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
@@ -221,6 +222,23 @@ int AiAgentImplementation::notifyAttack(Observable* observable) {
 int AiAgentImplementation::notifyCallForHelp(Observable* observable, ManagedObject* arg1) {
 	// TODO: add aggroing
 	return 0;
+}
+
+int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (isDead()) {
+		switch (selectedID) {
+		case 35:
+			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");
+
+			return 0;
+		case 36:
+			getZoneServer()->getPlayerManager()->lootAll(player, _this);
+
+			return 0;
+		}
+	}
+
+	return CreatureObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void AiAgentImplementation::selectWeapon() {

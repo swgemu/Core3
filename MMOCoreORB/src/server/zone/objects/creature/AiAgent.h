@@ -284,6 +284,8 @@ public:
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
 	void checkNewAngle();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
@@ -416,6 +418,8 @@ public:
 
 	CreatureAttackMap* getAttackMap();
 
+	Vector<String>* getLootGroups();
+
 	float getRespawnTimer();
 
 	PatrolPoint* getHomeLocation();
@@ -539,6 +543,8 @@ protected:
 
 public:
 	virtual void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void checkNewAngle();
 
@@ -672,6 +678,8 @@ public:
 
 	CreatureAttackMap* getAttackMap();
 
+	Vector<String>* getLootGroups();
+
 	float getRespawnTimer();
 
 	PatrolPoint* getHomeLocation();
@@ -742,6 +750,8 @@ public:
 	void doRecovery();
 
 	void doMovement();
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void checkNewAngle();
 

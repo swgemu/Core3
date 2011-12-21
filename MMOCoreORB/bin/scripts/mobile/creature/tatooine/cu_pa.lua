@@ -26,7 +26,7 @@ cu_pa = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/cu_pa.iff"},
-	lootgroups = {},
+	lootgroups = { "test_loot_group" },
 	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"stunattack","stunChance=50"}
