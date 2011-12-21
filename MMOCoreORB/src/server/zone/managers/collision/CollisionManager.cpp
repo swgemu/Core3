@@ -394,8 +394,6 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 
 PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMesh* floor, const Vector3& finalTarget) {
 	// this is overkill TODO: find something faster
-
-
 	PathGraph* graph = floor->getPathGraph();
 	Vector<PathNode*>* pathNodes = graph->getPathNodes();
 	PathNode* returnNode = NULL;
@@ -425,4 +423,64 @@ PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMes
 	}
 
 	return returnNode;
+}
+
+bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3& endPoint) {
+	ManagedReference<SceneObject*> parent = object->getParent();
+
+	if (parent == NULL || !parent->isCellObject())
+		return true;
+
+	CellObject* cell = cast<CellObject*>( parent.get());
+
+	SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
+	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+	MeshAppearanceTemplate* appearanceMesh = NULL;
+
+	if (portalLayout == NULL)
+		return true;
+
+	try {
+		appearanceMesh = portalLayout->getMeshAppearanceTemplate(cell->getCellNumber());
+	} catch (Exception& e) {
+		return true;
+	}
+
+	if (appearanceMesh == NULL) {
+		//info("null appearance mesh ");
+		return true;
+	}
+
+	AABBTree* aabbTree = appearanceMesh->getAABBTree();
+
+	if (aabbTree == NULL)
+		return true;
+
+	//switching Y<->Z, adding 0.1 to account floor
+	Vector3 startPoint = object->getPosition();
+	startPoint.set(startPoint.getX(), startPoint.getY(), startPoint.getZ() + 0.1f);
+
+	endPoint.set(endPoint.getX(), endPoint.getY(), endPoint.getZ() + 0.1f);
+
+	Vector3 dir = endPoint - startPoint;
+	dir.normalize();
+
+	float distance = endPoint.distanceTo(startPoint);
+	float intersectionDistance;
+
+	Ray ray(startPoint, dir);
+
+	Triangle* triangle = NULL;
+
+	//nothing in the middle
+	if (aabbTree->intersects(ray, distance, intersectionDistance, triangle, true))
+		return false;
+
+	Ray ray2(endPoint, Vector3(0, -1, 0));
+
+	//check if we are in the cell with dir (0, -1, 0)
+	if (!aabbTree->intersects(ray2, 64000.f, intersectionDistance, triangle, true))
+		return false;
+
+	return true;
 }

@@ -61,6 +61,8 @@ public:
 
 	static bool checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone);
 
+	static bool checkLineOfSightInParentCell(SceneObject* object, Vector3& endPoint);
+
 };
 
 #endif /* COLLISIONMANAGER_H_ */
