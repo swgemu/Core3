@@ -353,10 +353,10 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 				factionManager->awardFactionStanding(player, destructedObject->getFactionString());
 				factionManager->awardFactionPoints(player, destructedObject);
 			}
-
-			if (player != NULL && playerManager != NULL)
-				playerManager->disseminateExperience(destructedObject, &copyDamageMap);
 		}
+
+		if (playerManager != NULL)
+			playerManager->disseminateExperience(destructedObject, &copyDamageMap);
 
 		destructedObject->setLootOwner(player);
 

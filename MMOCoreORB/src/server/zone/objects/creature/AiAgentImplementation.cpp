@@ -898,6 +898,8 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
+			damageMap->addDamage(player, damage);
+
 			if (System::random(5) == 1) {
 				setDefender(player);
 			}

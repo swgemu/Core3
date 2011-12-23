@@ -1420,14 +1420,29 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 	PlayerObject* playerObject = player->getPlayerObject();
 	int xp = playerObject->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
 
-	if (xp <= 0)
-		return;
 	//You receive 30 points of Surveying experience.
 	if (sendSystemMessage) {
-		StringIdChatParameter message("base_player","prose_grant_xp");
-		message.setDI(xp);
-		message.setTO("exp_n", xpType);
-		player->sendSystemMessage(message);
+		if (xp <= 0) {
+			if (amount > 0) {
+				VectorMap<String, int>* xpTypeCapList = playerObject->getXpTypeCapList();
+
+				int maxXp = xpTypeCapList->get(xpType);
+
+				if (maxXp > 0) {
+					StringIdChatParameter message("error_message","prose_at_xp_limit");
+					message.setDI(maxXp);
+					message.setTO("exp_n", xpType);
+					player->sendSystemMessage(message);
+				}
+
+			}
+
+		} else {
+			StringIdChatParameter message("base_player","prose_grant_xp");
+			message.setDI(xp);
+			message.setTO("exp_n", xpType);
+			player->sendSystemMessage(message);
+		}
 	}
 }
 
