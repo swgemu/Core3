@@ -16,6 +16,8 @@
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/objects/creature/CreatureState.h"
+#include "server/zone/objects/creature/CreaturePosture.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -70,6 +72,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OBJECTRADIALUSED", ObserverEventType::OBJECTRADIALUSED);
 	luaEngine->setGlobalInt("DAMAGERECEIVED", ObserverEventType::DAMAGERECEIVED);
 	luaEngine->setGlobalInt("SURVEY", ObserverEventType::SURVEY);
+	luaEngine->setGlobalInt("GETATTRIBUTESBATCHCOMMAND", ObserverEventType::GETATTRIBUTESBATCHCOMMAND);
+	luaEngine->setGlobalInt("POSTURESITTING", CreaturePosture::SITTING);
+	luaEngine->setGlobalInt("STATESITTINGONCHAIR", CreatureState::SITTINGONCHAIR);
 
 
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());

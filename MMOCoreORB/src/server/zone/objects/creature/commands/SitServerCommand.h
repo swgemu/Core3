@@ -89,7 +89,9 @@ public:
 			if (z < -8192 || z > 8192)
 				z = 0;
 
-			Vector3 position(x, y, z);
+			//creature->sendSystemMessage(arguments.toString());
+
+			Vector3 position(x, z, y);
 			Vector3 playerPosition = creature->getPosition();
 
 			/*if (position.squaredDistanceTo(playerPosition) > 9.f) {
@@ -97,11 +99,19 @@ public:
 				return GENERALERROR;
 			}*/
 
-			creature->setState(CreatureState::SITTINGONCHAIR);
-			SitOnObject* soo = new SitOnObject(creature, x, y, z);
-			creature->broadcastMessage(soo, true);
+/*			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-			creature->setPosture(CreaturePosture::SITTING);
+			if (object != NULL && !object->isCreatureObject())*/
+			//creature->sendSystemMessage("Pos: " + String::valueOf(position.getX()) + " " + String::valueOf(position.getY()) + " " + String::valueOf(position.getZ()));
+			//creature->sendSystemMessage("PPos: " + String::valueOf(playerPosition.getX()) + " " + String::valueOf(playerPosition.getY()) + " " + String::valueOf(playerPosition.getZ()));
+
+			if (position.squaredDistanceTo(playerPosition) > 5.f)
+				return GENERALERROR;
+
+			creature->teleport(x,y,z, creature->getParentID());
+			//creature->setDirection()
+			creature->setState(CreatureState::SITTINGONCHAIR);
+			//no longer needed: creature->setPosture(CreaturePosture::SITTING);
 		}
 
 		return SUCCESS;

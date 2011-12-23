@@ -31,7 +31,8 @@ tutorial_commoner = Creature:new {
 				"object/mobile/dressed_commoner_naboo_bothan_male_02.iff",
 				"object/mobile/dressed_commoner_naboo_moncal_male_02.iff",
 				"object/mobile/dressed_commoner_old_human_female_02.iff",
-				"object/mobile/dressed_commoner_old_zabrak_male_02.iff"
+				"object/mobile/dressed_commoner_old_zabrak_male_02.iff",
+				"object/mobile/dressed_commoner_tatooine_nikto_male_05.iff",
 				},
 	lootgroups = {},
 	weapons = {},

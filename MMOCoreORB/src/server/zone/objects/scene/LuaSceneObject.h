@@ -51,6 +51,7 @@ namespace scene {
 		int destroyObjectFromWorld(lua_State* L);
 		int updateDirection(lua_State* L);
 		int isCreatureObject(lua_State* L);
+		int updateCellPermission(lua_State* L);
 
 
 	private:

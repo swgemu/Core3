@@ -89,6 +89,8 @@ which carries forward this exception.
 #include "events/DizzyFallDownEvent.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 
+#include "server/zone/packets/object/SitOnObject.h"
+
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
@@ -240,9 +242,6 @@ void CreatureObjectImplementation::finalize() {
 
 void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	TangibleObjectImplementation::sendTo(player, doClose);
-
-	if (hasState(CreatureState::SITTINGONCHAIR))
-		player->sendMessage(new SitOnObject(_this, getPositionX(), getPositionZ(), getPositionY()));
 }
 
 void CreatureObjectImplementation::sendToOwner(bool doClose) {
@@ -540,11 +539,41 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 		stateBitmask |= state;
 
 		if (notifyClient) {
-			CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
-			dcreo3->updateState();
-			dcreo3->close();
+			if (state == CreatureState::SITTINGONCHAIR) {
+				//this is fucking wrong
 
-			broadcastMessage(dcreo3, true);
+				Zone* thisZone = getZone();
+
+				setPosture(CreaturePosture::SITTING, false);
+
+				if (thisZone != NULL) {
+					Locker locker(thisZone);
+
+					for (int i = 0; i < closeobjects.size(); ++i) {
+						SceneObject* object = cast<SceneObject*>(closeobjects.get(i).get());
+
+						if (object->getParent() == getParent()) {
+							SitOnObject* soo = new SitOnObject(_this, getPositionX(), getPositionZ(), getPositionY());
+							object->sendMessage(soo);
+							CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+							dcreo3->updatePosture();
+							dcreo3->updateState();
+							dcreo3->close();
+							object->sendMessage(dcreo3);
+						} else {
+							sendDestroyTo(object);
+							sendTo(object, true);
+						}
+					}
+				}
+			} else {
+				CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+				dcreo3->updateState();
+				dcreo3->close();
+
+				broadcastMessage(dcreo3, true);
+			}
+
 		}
 
 		return true;
@@ -1010,7 +1039,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 		dcreo3->updatePosture();
-		dcreo3->updateState();
+		//dcreo3->updateState();
 		dcreo3->close();
 
 		messages.add(dcreo3);

@@ -75,6 +75,8 @@ public:
 		if (zone == NULL)
 			return GENERALERROR;
 
+		int incr = 0;
+
 		while (ids.hasMoreTokens()) {
 			uint64 objid = 0;
 
@@ -92,10 +94,13 @@ public:
 
 			if (object != NULL) {
 				object->sendAttributeListTo(cast<CreatureObject*>(creature));
+				creature->notifyObservers(ObserverEventType::GETATTRIBUTESBATCHCOMMAND, object, (incr == 0 && !ids.hasMoreTokens())?0:incr);
+
 			} else {
 				AttributeListMessage* msg = new AttributeListMessage(objid);
 				creature->sendMessage(msg);
 			}
+			incr++;
 		}
 
 		return SUCCESS;

@@ -38,6 +38,7 @@ public:
 	const static int DAMAGERECEIVED = 26; //ManagedObject arg1 = object that is doing the damage, long arg2 = damage did
 	const static int OBJECTNAMECHANGED = 27; //ManagedObject arg1 = object whose name changed, long arg2 = 0
 	const static int SURVEY = 28; //ManagedObject arg1 = ResourceSpawn, long arg2 = density
+	const static int GETATTRIBUTESBATCHCOMMAND = 29; //ManagedObject arg1 = target object arg2 = batch or single
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

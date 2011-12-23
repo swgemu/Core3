@@ -7,7 +7,9 @@
 
 #include "LuaSceneObject.h"
 #include "SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -33,6 +35,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "faceObject", &LuaSceneObject::faceObject },
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
+		{ "updateCellPermission", &LuaSceneObject::updateCellPermission },
 
 		{ 0, 0 }
 };
@@ -238,6 +241,35 @@ int LuaSceneObject::isCreatureObject(lua_State* L) {
 	lua_pushboolean(L, val);
 
 	return 1;
+}
+
+int LuaSceneObject::updateCellPermission(lua_State* L) {
+	//realObject->info("getting values",true);
+	int allowEntry = lua_tonumber(L, -2);
+	CreatureObject* obj = (CreatureObject*)lua_touserdata(L, -1);
+	//realObject->info("allowentry:" + String::valueOf(allowEntry), true);
+	if (obj == NULL)
+		return 0;
+
+	//realObject->info("values not NULL", true);
+
+	if (!realObject->isCellObject()) {
+		realObject->info("Unknown entity error: Cell", true);
+		return 0;
+	}
+
+	if (!obj->isCreatureObject()) {
+		//realObject->info("Unknown entity error: Creature", true);
+		obj->info("Unknown entity error: Creature", true);
+		return 0;
+	}
+
+	//realObject->info("checks are fine", true);
+
+	BaseMessage* perm = new UpdateCellPermissionsMessage(realObject->getObjectID(), allowEntry);
+	obj->sendMessage(perm);
+
+	return 0;
 }
 
 int LuaSceneObject::wlock(lua_State* L) {

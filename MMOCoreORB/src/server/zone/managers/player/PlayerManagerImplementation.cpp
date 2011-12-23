@@ -728,7 +728,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 
 	//addPermission
 
-	tutorial->togglePermission("ADMIN", player->getFirstName());
+	//tutorial->togglePermission("ADMIN", player->getFirstName());
 
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	//travelTutorialTerminal->insertToZone(zone);

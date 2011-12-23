@@ -38,6 +38,7 @@ namespace creature {
 		int sendNewbieTutorialRequest(lua_State *L);
 		int hasScreenPlayState(lua_State *L);
 		int setScreenPlayState(lua_State *L);
+		int getScreenPlayState(lua_State *L);
 		int sendNewbieTutorialEnableHudElement(lua_State* L);
 		int getInCellNumber(lua_State* L);
 		int sendOpenHolocronToPageMessage(lua_State* L);
@@ -47,6 +48,11 @@ namespace creature {
 		int getMaxHAM(lua_State* L);
 		int inflictDamage(lua_State* L);
 		int playEffect(lua_State* L);
+		int setState(lua_State* L);
+		int setPosture(lua_State* L);
+		int setCustomObjectName(lua_State* L);
+		int hasSkill(lua_State* L);
+		int removeSkill(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

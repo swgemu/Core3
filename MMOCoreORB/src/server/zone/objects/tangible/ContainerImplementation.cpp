@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/templates/tangible/ContainerTemplate.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/creature/AiAgent.h"
 
 void ContainerImplementation::initializeTransientMembers() {
@@ -82,6 +83,8 @@ bool ContainerImplementation::checkPermission(CreatureObject* player) {
 		else {
 
 			BuildingObject* building = cast<BuildingObject*>( parent->getParent());
+
+
 
 			if (!building->isOnAdminList(player->getFirstName()))
 				return false;
@@ -156,7 +159,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 			return TransferErrorCode::CANTNESTOBJECT;
 		}
-
+		
 		SceneObject* myParent = getParent();
 		SceneObject* otherParent = object->getParent();
 

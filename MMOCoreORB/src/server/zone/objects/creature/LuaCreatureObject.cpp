@@ -20,6 +20,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "sendNewbieTutorialRequest", &LuaCreatureObject::sendNewbieTutorialRequest },
 		{ "hasScreenPlayState", &LuaCreatureObject::hasScreenPlayState },
 		{ "setScreenPlayState", &LuaCreatureObject::setScreenPlayState },
+		{ "getScreenPlayState", &LuaCreatureObject::getScreenPlayState },
 		{ "playEffect", &LuaCreatureObject::playEffect },
 		{ "sendNewbieTutorialEnableHudElement", &LuaCreatureObject::sendNewbieTutorialEnableHudElement },
 		{ "getInCellNumber", &LuaCreatureObject::getInCellNumber },
@@ -39,7 +40,11 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
-
+		{ "setState", &LuaCreatureObject::setState},
+		{ "setPosture", &LuaCreatureObject::setPosture},
+		{ "setCustomObjectName", &LuaCreatureObject::setCustomObjectName},
+		{ "hasSkill", &LuaCreatureObject::hasSkill},
+		{ "removeSkill", &LuaCreatureObject::removeSkill},
 		{ 0, 0 }
 };
 
@@ -52,6 +57,29 @@ LuaCreatureObject::~LuaCreatureObject(){
 
 int LuaCreatureObject::_setObject(lua_State* L) {
 	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+	return 0;
+}
+
+int LuaCreatureObject::setCustomObjectName(lua_State* L) {
+	String value = lua_tostring(L, -1);
+	realObject->setCustomObjectName(value, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::setState(lua_State* L) {
+	uint32 state = (uint32) lua_tonumber(L, -1);
+
+	realObject->setState(state, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::setPosture(lua_State* L) {
+	uint32 posture = (uint32) lua_tonumber(L, -1);
+
+	realObject->setPosture(posture, true);
 
 	return 0;
 }
@@ -114,12 +142,36 @@ int LuaCreatureObject::hasScreenPlayState(lua_State *L) {
 	return 1;
 }
 
+int LuaCreatureObject::getScreenPlayState(lua_State *L) {
+	String play = lua_tostring(L, -1);
+	uint64 state = realObject->getScreenPlayState(play);
+
+	lua_pushnumber(L, state);
+
+	return 1;
+}
+
 int LuaCreatureObject::sendNewbieTutorialEnableHudElement(lua_State* L) {
 	String ui = lua_tostring(L, -2);
 	int enable = lua_tonumber(L, -1);
 
 	realObject->sendNewbieTutorialEnableHudElement(ui, enable);
 
+	return 0;
+}
+
+int LuaCreatureObject::hasSkill(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	bool check = realObject->hasSkill(value);
+	lua_pushnumber(L, check);
+	return 1;
+}
+
+int LuaCreatureObject::removeSkill(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	realObject->removeSkill(value, true);
 	return 0;
 }
 

@@ -90,7 +90,7 @@ public:
 				return SUCCESS;
 			}
 		}
-
+/*
 		ManagedReference<SceneObject*> objectsParent = objectToOpen->getParent();
 
 		if (objectsParent != NULL && objectsParent->isCellObject()) {
@@ -102,6 +102,13 @@ public:
 			}
 		} else if (!objectToOpen->isASubChildOf(creature)) {
 			return GENERALERROR;
+		}*/
+
+		if (objectToOpen->isContainerObject()) {
+			ManagedReference<Container*> container = cast<Container*>(objectToOpen.get());
+			Zone* zone = creature->getZone();
+			if (zone->getZoneName() != "tutorial" && !container->checkPermission(creature))
+				return GENERALERROR;
 		}
 
 		objectToOpen->openContainerTo(creature);

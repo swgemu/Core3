@@ -7,6 +7,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	local targetCellObject = LuaSceneObject(creature:getParent())
 	local buildingObject = LuaBuildingObject(targetCellObject:getParent())
 	local spawnedSceneObject = LuaSceneObject(nil)
+	local spawnedCreatureObject = LuaCreatureObject(nil)
 	
 	if buildingObject:getServerObjectCRC() ~= 3369536646 then
 		return 0
@@ -28,14 +29,17 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(2))
 	
 	--spawn commoners
+	--shared_dressed_commoner_fat_zabrak_male_02.iff
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 30.2, 0, -43.1, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.9945, -0.103, 0, 0)
 	
+	--shared_dressed_commoner_naboo_human_female_04.iff
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 28.6, 0, -42.9, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.835, 0, 0.549, 0)
 	
+	--shared_dressed_commoner_naboo_human_male_01.iff
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 25, 0, -43.5, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.97, 0, 0.249, 0)
@@ -76,13 +80,14 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(3))
 	
 	--spawn second officer banker
-	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_2", 44, 0, 2, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_2", 44, 0, 2.2, targetCellObject:getObjectID())
 	--create observer to catch when the player stops talking
 	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "bankerStopConversation", spawnedPointer)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.418, 0, 0.908, 0)
 	
 	--spawn commoner
+	--shared_dressed_commoner_naboo_bothan_male_02.iff
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 51.1, 0, -16, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.718, 0, -0.696, 0)
@@ -93,33 +98,40 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	writeData(creature:getObjectID() .. ":tutorial:bank", spawnedSceneObject:getObjectID())
 	-- create use observer
-	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bankUseObserver", spawnedPointer)
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "bankUseObserver", spawnedPointer) --move observer
+	--createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bankUseObserver", spawnedPointer)
 	
 	--spawn bazaar
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_bazaar.iff", 38.4, 0, -17.7, targetCellObject:getObjectID(), 0.97, 0, 0.241, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
-	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bazaarUseObserver", spawnedPointer)
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "bazaarUseObserver", spawnedPointer) --move observer
+	--createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bazaarUseObserver", spawnedPointer)
 	
 	writeData(creature:getObjectID() .. ":tutorial:bazaar", spawnedSceneObject:getObjectID())
 	
 	--spawn more commoners
 	targetCellObject:_setObject(buildingObject:getCell(4))
+	--shared_dressed_commoner_hold_human_female_02.iff
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 51.1, -7, -51, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.589, 0, -0.807, 0)
 	
+	--shared_dressed_commoner_old_zabrak_male_02.iff
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 51.5, -7, -53, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.903, 0, -0.428, 0)
 	
+	--shared_dressed_commoner_naboo_moncal_male_02.iff
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 47.4, -7, -58.7, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.813, 0, -0.582, 0)
 	
-	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 26.2, -7, -51.49, targetCellObject:getObjectID())
+	--shared_dressed_stormtrooper_m.iff (-51.49?)
+	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 26.2, -7, -51.9, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0, 0, 1, 0)
 	
+	--shared_dressed_stormtrooper_m.iff
 	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 26.2, -7, -61.3, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(1, 0, 0, 0)
@@ -154,10 +166,16 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	--spawn npc panic 1
 	--targetCellObject:_setObject(buildingObject:getCell(6))
+	--shared_dressed_commoner_tatooine_bith_male_05.iff
 	spawnedPointer = spawnMobile("tutorial", "panic_npc_1", -3.3, -7, -75.6, targetCellObject:getObjectID())
 	
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "panic1MoveObserver", spawnedPointer) --move observer
-	
+
+	--spawn nervous guy in hallway
+	targetCellObject:_setObject(buildingObject:getCell(6))
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 20.1, -4, -81.5, targetCellObject:getObjectID())
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.4005, 0, -0.916, 0)
 	
 	--spawn officer3
 	targetCellObject:_setObject(buildingObject:getCell(7))
@@ -166,6 +184,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "officer3StopConversation", spawnedPointer)
 	--createObserver(SELECTCONVERSATION, "TutorialScreenPlay", "officer3SelectConversation", spawnedPointer) -- select convo observer
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "converseWithOfficer3Observer", spawnedPointer) --move observer
+	
 	
 	--spawn debris
 	targetCellObject:_setObject(buildingObject:getCell(14))
@@ -185,6 +204,112 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	--
 	createObserver(POSITIONCHANGED, "TutorialScreenPlay", "part4StartObserver", creatureObject) --move observer
 	createObserver(POSITIONCHANGED, "TutorialScreenPlay", "part5StartObserver", creatureObject) --move observer
+
+	
+	targetCellObject:_setObject(buildingObject:getCell(9))	
+	
+	--spawn another commoner
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", -1, -4.2, -118.2, targetCellObject:getObjectID())
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.838, 0.545, 0, 0)	
+	
+	--spawn another commoner
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 1.4, -4.2, -132, targetCellObject:getObjectID())
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.97, 0.241, 0, 0)
+	
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 13.1, -4.2, -119.8, targetCellObject:getObjectID())
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.927, 0, -0.373, 0)	
+	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
+	--spawnedCreatureObject:setCustomObjectName("Sit down")
+	spawnedCreatureObject:setState(STATESITTINGONCHAIR)
+	--spawnedCreatureObject:setPosture(POSTURESITTING)
+	
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 13.145, -4.2, -106.292, targetCellObject:getObjectID())
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.436, 0, -0.899, 0)
+	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
+	--spawnedCreatureObject:setCustomObjectName("and shut up")
+	spawnedCreatureObject:setState(STATESITTINGONCHAIR)
+	--spawnedCreatureObject:setPosture(POSTURESITTING)
+	
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", -0.8, -4.2, -108.2, targetCellObject:getObjectID())
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.476, 0, 0.879, 0)
+	
+	--imperial officer 4
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_4", 2.1, -4.2, -123.8, targetCellObject:getObjectID())
+	--not yet: createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer4", spawnedPointer) --move observer
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.97, 0, 0.241, 0)
+	
+
+	local player = LuaCreatureObject(creatureObject)
+	
+	--trainer
+	--starting skills:
+	  -- social_entertainer_novice
+	  -- outdoors_scout_novice
+	  -- science_medic_novice
+	  -- crafting_artisan_novice
+	  -- combat_brawler_novice
+	  -- combat_marksman_novice
+	printf("Checking profession\n")
+	if (player:hasSkill("social_entertainer_novice") == 1) then
+		printf("Entertainer\n")
+		trainerTemplate = "trainer_entertainer"
+		player:removeSkill("social_entertainer_novice")
+	elseif (player:hasSkill("outdoors_scout_novice") == 1) then
+		printf("Scout\n")
+		trainerTemplate = "trainer_scout"
+		player:removeSkill("outdoors_scout_novice")
+	elseif (player:hasSkill("science_medic_novice") == 1) then
+		printf("Medic\n")
+		trainerTemplate = "trainer_medic"
+		player:removeSkill("science_medic_novice")
+	elseif (player:hasSkill("crafting_artisan_novice") == 1) then
+		printf("Artisan\n")
+		trainerTemplate = "trainer_artisan"
+		player:removeSkill("crafting_artisan_novice")
+	elseif (player:hasSkill("combat_marksman_novice") == 1) then
+		printf("Marksman\n")
+		trainerTemplate = "trainer_marksman"
+		player:removeSkill("combat_marksman_novice")
+	else
+	    printf("Brawler\n")
+		trainerTemplate = "trainer_brawler"
+		player:removeSkill("combat_brawler_novice")
+	end
+	
+	printf("Checked profession\n")	
+	spawnedPointer = spawnMobile("tutorial", trainerTemplate, 7.1, -4.2, -128.2, targetCellObject:getObjectID())
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.975, 0, -0.220, 0)
+	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
+	spawnedCreatureObject:setCustomObjectName("Trainer")
+	printf("Carry on\n")
+
+
+	targetCellObject:_setObject(buildingObject:getCell(10))
+	--what are these guys for?
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_5", 19.5, -4.2, -146, targetCellObject:getObjectID())
+	--not yet: createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer5", spawnedPointer) --move observer
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	
+	--mission terminal
+	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_mission_newbie.iff", 19.2, -4.2, -134.2, targetCellObject:getObjectID(), 0, 0, 1, 0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	
+	
+	targetCellObject:_setObject(buildingObject:getCell(11))
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_6", 31.3, -4.2, -164, targetCellObject:getObjectID())
+	--not yet: createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer6", spawnedPointer) --move observer
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(0.994, 0.103, 0, 0)
+	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
+	spawnedCreatureObject:setCustomObjectName("The Quartermaster")
 	
 	return 1
 end
@@ -196,6 +321,8 @@ function TutorialScreenPlay:start(creatureObject)
 	
 	-- check if the tutorial already started
 	id = readData(creature:getObjectID() .. ":tutorial:drum")
+	
+	--state = creature:hasScreenPlayState(262144, "tutorial")
 	
 	if id ~= 0 then
 		return
@@ -210,6 +337,16 @@ function TutorialScreenPlay:start(creatureObject)
 	if res == 0 then
 		return
 	end
+	
+	--lock cell door
+	local targetCellObject = LuaSceneObject(creature:getParent())
+	local buildingObject = LuaBuildingObject(targetCellObject:getParent())
+	--printf("Set local vars\n")
+	targetCellObject:_setObject(buildingObject:getCell(9))
+	--printf("Set cell to 9\n")
+	targetCellObject:updateCellPermission(0, creatureObject)
+	
+	--printf("updated permission\n")
 	
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:part_1")
 	creature:sendNewbieTutorialEnableHudElement("all", 0)
@@ -237,7 +374,7 @@ function TutorialScreenPlay:secondAct(creatureObject)
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:movement_mouse")
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:lookaround")
 	
-	createEvent(15000, "TutorialScreenPlay", "thirdAct", creatureObject)
+	createEvent(10000, "TutorialScreenPlay", "thirdAct", creatureObject)
 end
 
 function TutorialScreenPlay:thirdAct(creatureObject)
@@ -308,7 +445,7 @@ function TutorialScreenPlay:helpChat(creatureObject)
 		creature:sendNewbieTutorialRequest("chatbox")
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:repeatchatprompt")
 		creature:playMusicMessage("sound/tut_05_remind_chat.snd")
-		createEvent(5000, "TutorialScreenPlay", "helpChat", creatureObject)
+		createEvent(10000, "TutorialScreenPlay", "helpChat", creatureObject)
 	end
 end
 
@@ -317,7 +454,7 @@ function TutorialScreenPlay:holocronEvent(creatureObject)
 	
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:move_to_item_room")
 	creature:playMusicMessage("sound/tut_06_excellent.snd")
-	createEvent(5000, "TutorialScreenPlay", "itemRoomCheck", creatureObject)
+	createEvent(7000, "TutorialScreenPlay", "itemRoomCheck", creatureObject)
 	
 	return 1
 end
@@ -330,12 +467,12 @@ function TutorialScreenPlay:itemRoomCheck(creatureObject)
 	if cellNumber < 2 then
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:repeat_item_room_prompt")
 		creature:playMusicMessage("sound/tut_07_comeon.snd")
-		createEvent(7000, "TutorialScreenPlay", "itemRoomCheck", creatureObject)
+		createEvent(10000, "TutorialScreenPlay", "itemRoomCheck", creatureObject)
 	else
 		creature:sendNewbieTutorialRequest("changeLookAtTarget")
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:part_2")
 		
-		createEvent(1000, "TutorialScreenPlay", "part2Start", creatureObject)
+		createEvent(2000, "TutorialScreenPlay", "part2Start", creatureObject)
 		createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "officerTargetEvent", creatureObject)
 	end
 end
@@ -424,7 +561,7 @@ function TutorialScreenPlay:officerTargetEvent(creatureObject, targetCreature)
 	else
 		--printf("not equal IDS\n")
 		
-		player:sendSystemMessage("@newbie_tutorial/newbie_convo:explain_lookat")
+		player:sendSystemMessage("@newbie_tutorial/newbie_convo:explain_lookat")-- he is now your look-at target
 		return 0
 	end
 	
@@ -549,7 +686,7 @@ function TutorialScreenPlay:openInventory(creatureObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_inventory")
 	
 	player:sendNewbieTutorialRequest("openInventory")
-	
+	createObserver(NEWBIEOPENINVENTORY, "TutorialScreenPlay", "openInventoryObserver", creatureObject)
 	createEvent(11000, "TutorialScreenPlay", "openInventory2", creatureObject)
 end
 
@@ -558,8 +695,6 @@ function TutorialScreenPlay:openInventory2(creatureObject)
 	
 	player:sendSystemMessage("@newbie_tutorial/system_messages:repeat_open_inventory")
 	player:playMusicMessage("sound/tut_25_openinventory.snd")
-	
-	createObserver(NEWBIEOPENINVENTORY, "TutorialScreenPlay", "openInventoryObserver", creatureObject)
 end
 
 function TutorialScreenPlay:openInventoryObserver(creatureObject)
@@ -567,16 +702,50 @@ function TutorialScreenPlay:openInventoryObserver(creatureObject)
 	
 	player:sendSystemMessage("@newbie_tutorial/system_messages:prompt_find_food")
 	player:playMusicMessage("sound/tut_20_selectfooditem.snd")
-	player:sendNewbieTutorialRequest("closeInventory")
-	createObserver(NEWBIECLOSEINVENTORY, "TutorialScreenPlay", "closeInventoryObserver", creatureObject)
-		
+	
+	createObserver(GETATTRIBUTESBATCHCOMMAND, "TutorialScreenPlay", "foodTargetEvent", creatureObject)
+	
 	return 1
+
+end
+
+function TutorialScreenPlay:foodTargetEvent(creatureObject, targetObject, batch)
+
+	--printf("foodTarget fired\n")
+	
+	local player = LuaCreatureObject(creatureObject)
+	local food = LuaSceneObject(targetObject)
+	
+	
+	state = player:hasScreenPlayState(64, "tutorial")
+	
+	if state ~= 1 then
+		--printf("Checking: " .. batch .. "\n")
+		--check if its maroj melon, register use now
+		
+		
+		
+		if (food:getGameObjectType() ~= 8202) or (batch > 0) then -- food
+			return 0
+		end
+		
+		--createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "foodUsed", item)
+		player:sendSystemMessage("@newbie_tutorial/system_messages:prompt_use_item")
+		player:playMusicMessage("sound/tut_21_usefood.snd")
+		
+		player:setScreenPlayState(64, "tutorial")
+		--printf("Set state\n")
+	end
+	return 1
+	
 end
 
 function TutorialScreenPlay:closeInventoryObserver(creatureObject)
 	local player = LuaCreatureObject(creatureObject)
 	
 	player:setScreenPlayState(256, "tutorial")
+	
+	createEvent(5000, "TutorialScreenPlay", "activateToolbar", creatureObject)
 	
 	return 1
 end
@@ -591,7 +760,10 @@ function TutorialScreenPlay:foodUsed(foodObject, creatureObject, selectedID)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_item_used")
 	player:playMusicMessage("sound/tut_22_attributes.snd")
 	
-	createEvent(10000, "TutorialScreenPlay", "activateToolbar", creatureObject)
+	player:sendSystemMessage("@newbie_tutorial/system_messages:close_inventory")
+	
+	player:sendNewbieTutorialRequest("closeInventory")
+	createObserver(NEWBIECLOSEINVENTORY, "TutorialScreenPlay", "closeInventoryObserver", creatureObject)
 	
 	return 1
 end
@@ -603,7 +775,7 @@ function TutorialScreenPlay:activateToolbar(creatureObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:show_toolbar")
 	player:playMusicMessage("sound/tut_23_toolbar.snd")
 
-	createEvent(8000, "TutorialScreenPlay", "explainToolbar", creatureObject)
+	createEvent(2000, "TutorialScreenPlay", "explainToolbar", creatureObject)
 end
 
 function TutorialScreenPlay:explainToolbar(creatureObject)
@@ -611,6 +783,10 @@ function TutorialScreenPlay:explainToolbar(creatureObject)
 	
 	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_00_toolbardrag")
 	player:playMusicMessage("sound/tut_00_toolbardrag.snd")
+
+	--player:sendSystemMessage("@newbie_tutorial/system_messages:use_toolbar")
+	--player:playMusicMessage("sound/tut_24_toolbarslots.snd")
+	
 
 	createEvent(5000, "TutorialScreenPlay", "checkInventoryClosed", creatureObject)
 end
@@ -635,20 +811,27 @@ function TutorialScreenPlay:checkInventoryClosed(creatureObject)
 	player:sendNewbieTutorialEnableHudElement("toolbar", 1)
 	player:sendNewbieTutorialEnableHudElement("chatbox", 1)
 	
-	player:sendSystemMessage("@newbie_tutorial/system_messages:visit_commerce_room")
-	player:playMusicMessage("sound/tut_27_proceed.snd")
-	
-	createEvent(3000, "TutorialScreenPlay", "checkCommerceRoom", creatureObject) 
+	createEvent(5000, "TutorialScreenPlay", "checkCommerceRoom", creatureObject) 
 end
 
 function TutorialScreenPlay:checkCommerceRoom(creatureObject)
 	local player = LuaCreatureObject(creatureObject)
 	
 	if player:getInCellNumber() ~= 3 then
-		player:sendSystemMessage("@newbie_tutorial/system_messages:visit_commerce_room")
+		state = player:hasScreenPlayState(512, "tutorial")
+		if state ~= 1 then
+			player:sendSystemMessage("@newbie_tutorial/system_messages:visit_commerce_room")
+			player:playMusicMessage("sound/tut_27_proceed.snd")
+			player:setScreenPlayState(512, "tutorial")
+			createEvent(5000, "TutorialScreenPlay", "checkCommerceRoom", creatureObject)
+			return
+		end
+		
+		
+		player:sendSystemMessage("@newbie_tutorial/system_messages:repeat_visit_commerce")
 		player:playMusicMessage("sound/tut_27_proceed.snd")
 	
-		createEvent(3000, "TutorialScreenPlay", "checkCommerceRoom", creatureObject)
+		createEvent(5000, "TutorialScreenPlay", "checkCommerceRoom", creatureObject)
 		
 		return
 	end
@@ -754,6 +937,7 @@ function TutorialScreenPlay:activateBankTargetCheck(creatureObject, targetObject
 		player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_1")
 		player:playMusicMessage("sound/tut_32_bank.snd")
 		
+		
 		createEvent(6000, "TutorialScreenPlay", "displayBankInfo", creatureObject)
 		
 		return 1
@@ -801,6 +985,9 @@ function TutorialScreenPlay:displayBankInfo4(creatureObject)
 	--createEvent(7000, "TutorialScreenPlay", "displayBankInfo", creatureObject)
 	
 	--player:sendSystemMessage("and this is how it ends")
+	
+	--player:playMusicMessage("sound/tut_33_cash.snd")
+	--player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_5")
 end
 
 function TutorialScreenPlay:bankUseObserver(bankObject, playerObject, selectedID)
@@ -1130,7 +1317,7 @@ function TutorialScreenPlay:banditDamageObserver(banditObject, playerObject, dam
 	maxAction = bandit:getMaxHAM(1)
 	maxMind = bandit:getMaxHAM(2)
 	
-	if health <= (maxHealth / 2) or action <= (maxAction / 2) or mind <= (maxAction / 2) then
+	if health <= (maxHealth / 1.5) or action <= (maxAction / 1.5) or mind <= (maxMind / 1.5) then
 		spatialChat(banditObject, "@newbie_tutorial/newbie_convo:pirate_taunt3")
 		spatialChat(banditObject, "@newbie_tutorial/newbie_convo:pirate_taunt4")
 		
@@ -1155,4 +1342,12 @@ function TutorialScreenPlay:lootBanditEvent(creatureObject)
 	
 	player:sendSystemMessage("@newbie_tutorial/system_messages:loot_pirate")
 	player:playMusicMessage("sound/tut_00_congratulations.snd")
+	
+	--unlock cell door
+	local targetCellObject = LuaSceneObject(player:getParent())
+	local buildingObject = LuaBuildingObject(targetCellObject:getParent())
+	targetCellObject:_setObject(buildingObject:getCell(9))
+	targetCellObject:updateCellPermission(1, creatureObject)
+	
+	player:setScreenPlayState(262144, "tutorial")
 end
