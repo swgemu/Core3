@@ -51,6 +51,8 @@ which carries forward this exception.
 #include "engine/lua/Lua.h"
 #include "engine/orb/object/DistributedObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include <iostream>
+#include <fstream>
 
 namespace server {
 namespace zone {
@@ -137,7 +139,8 @@ public:
 			//No spawn overrides all other spawn types.
 			spawnType = NOSPAWN;
 		}
-		position = player->getPosition();
+		position.setX(player->getPosition().getX());
+		position.setY(player->getPosition().getY());
 		direction.setHeadingDirection(player->getDirection()->getRadians());
 	}
 
@@ -219,6 +222,15 @@ public:
 		stream->writeBoolean(inUse);
 		bool result = position.toBinaryStream(stream);
 		return result & direction.toBinaryStream(stream);
+	}
+
+	/**
+	 * Saves the spawn points to a file.
+	 * @param file the file stream to save the spawn points to.
+	 */
+	void saveSpawnPoint(std::ofstream& file) {
+		file << "\t\t{ " << position.getX() << ", " << position.getY();
+		file << ", " << direction.getRadians() << ", " << spawnType << " }";
 	}
 };
 

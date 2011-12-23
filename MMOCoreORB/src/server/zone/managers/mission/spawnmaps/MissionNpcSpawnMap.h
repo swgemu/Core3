@@ -112,6 +112,14 @@ public:
 	NpcSpawnPoint* addSpawnPoint(uint32 planetCRC, Reference<NpcSpawnPoint* > npc);
 
 	/**
+	 * Finds a spawn point on a certain location.
+	 * @param planetCRC the CRC of the planet name.
+	 * @param position the position to search.
+	 * @return the spawn point on the position or NULL if none exist.
+	 */
+	NpcSpawnPoint* findSpawnAt(uint32 planetCRC, Vector3* position);
+
+	/**
 	 * Read the object from a stream.
 	 * @param stream stream to read from.
 	 * @return true if successful.
@@ -128,6 +136,11 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		return spawnMap.toBinaryStream(stream);
 	}
+
+	/**
+	 * Save all spawn points to lua script.
+	 */
+	void saveSpawnPoints();
 };
 
 } // namespace spawnmaps

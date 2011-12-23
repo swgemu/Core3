@@ -648,10 +648,9 @@ bool MissionManagerImplementation::randomDeliverMission(CreatureObject* player, 
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode()));
 
 	int baseCredits = 50;
-	int startDistanceCredits = startNpc->getPosition()->distanceTo(playerPosition) / 10;
 	int deliverDistanceCredits = startNpc->getPosition()->distanceTo(*(endNpc->getPosition())) / 10;
 
-	mission->setRewardCredits(baseCredits + startDistanceCredits + deliverDistanceCredits);
+	mission->setRewardCredits(baseCredits + deliverDistanceCredits);
 
 	mission->setMissionDifficulty(5);
 	mission->setMissionTitle("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randomTexts) + "t");
@@ -863,18 +862,30 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 		return;
 	}
 
+	if (player->getParentID() != 0) {
+		player->sendSystemMessage("Mission NPC spawns cannot be placed inside buildings.");
+		return;
+	}
+
 	Reference<NpcSpawnPoint* > npc = new NpcSpawnPoint(player, spawnTypes);
 	if (npc != NULL && npc->getSpawnType() != 0) {
 		//Lock mission spawn points.
 		Locker missionSpawnLocker(&missionNpcSpawnMap);
-		NpcSpawnPoint* returnedNpc = missionNpcSpawnMap.addSpawnPoint(player->getPlanetCRC(), npc);
+
 		String message;
-		if (returnedNpc == NULL) {
-			message = "Could not create spawn point here since the planet does not exist.";
-		} else if (*returnedNpc->getPosition() == *npc->getPosition()) {
-			message = "NPC spawn point created at coordinates " + npc->getPosition()->toString() + " of spawn type " + String::valueOf(npc->getSpawnType());
-		} else {
+		NpcSpawnPoint* returnedNpc = missionNpcSpawnMap.findSpawnAt(player->getPlanetCRC(), npc->getPosition());
+		if (returnedNpc != NULL) {
 			message = "NPC spawn point to close to existing spawn point at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
+		} else {
+			returnedNpc = missionNpcSpawnMap.addSpawnPoint(player->getPlanetCRC(), npc);
+			if (returnedNpc == NULL) {
+				message = "Could not create spawn point here since the planet does not exist.";
+			} else if (*returnedNpc->getPosition() == *npc->getPosition()) {
+				message = "NPC spawn point created at coordinates " + npc->getPosition()->toString() + " of spawn type " + String::valueOf(npc->getSpawnType());
+				missionNpcSpawnMap.saveSpawnPoints();
+			} else {
+				message = "NPC spawn point to close to existing spawn point at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
+			}
 		}
 		player->sendSystemMessage(message);
 	} else {

@@ -56,12 +56,22 @@ namespace spawnmaps {
 /**
  * Container for all spawn points in a city and function to find a suitable spawn point.
  */
-class CitySpawnMap : public Object {
+class CitySpawnMap : public Object, Logger {
 protected:
 	/**
 	 * The coordinates of the city center.
 	 */
 	Vector3 cityCenter;
+
+	/**
+	 * The city radius.
+	 */
+	float radius;
+
+	/**
+	 * The city name.
+	 */
+	String cityName;
 
 	/**
 	 * Vector with all spawn points in the city.
@@ -95,17 +105,14 @@ protected:
 
 public:
 	/**
-	 * Loads the object from a lua script file.
-	 * @param luaObject the object to load the spawn point from.
+	 * Read the object from a LuaObject.
+	 * @param luaObject the object to load from.
 	 */
 	void readObject(LuaObject* luaObject) {
-		LuaObject cityCenterObject = luaObject->getObjectField("citycenter");
-		float x = cityCenterObject.getFloatAt(1);
-		float y = cityCenterObject.getFloatAt(2);
-		cityCenterObject.pop();
-		cityCenter.setX(x);
-		cityCenter.setY(y);
-		cityCenter.setZ(0);
+		cityName = luaObject->getStringAt(2);
+		cityCenter.setX(luaObject->getFloatAt(3));
+		cityCenter.setY(luaObject->getFloatAt(4));
+		radius = luaObject->getFloatAt(5);
 	}
 
 	/**
@@ -184,6 +191,21 @@ public:
 	}
 
 	/**
+	 * Finds a spawn point on a certain location.
+	 * @param position the position to search.
+	 * @return the spawn point on the position or NULL if none exist.
+	 */
+	NpcSpawnPoint* findSpawnAt(Vector3* position) {
+		for (int i = 0; i < npcSpawnMap.size(); i++) {
+			if (npcSpawnMap.get(i)->getPosition()->squaredDistanceTo(*position) < 25.0f) {
+				return npcSpawnMap.get(i);
+			}
+		}
+
+		return NULL;
+	}
+
+	/**
 	 * Load the object from a stream.
 	 * @param stream the stream to load the object from.
 	 * @return true if successful.
@@ -201,6 +223,23 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		bool result = cityCenter.toBinaryStream(stream);
 		return result & npcSpawnMap.toBinaryStream(stream);
+	}
+
+	/**
+	 * Saves the spawn points to a file.
+	 * @param file the file stream to save the spawn points to.
+	 * @param itemsBefore indicates if items has been added before from another city.
+	 * @return number of npc spawns written.
+	 */
+	int saveSpawnPoints(std::ofstream& file, bool itemsBefore) {
+		for (int i = 0; i < npcSpawnMap.size(); i++) {
+			if (i > 0 || itemsBefore) {
+				file << "," << std::endl;
+			}
+			npcSpawnMap.get(i)->saveSpawnPoint(file);
+		}
+
+		return npcSpawnMap.size();
 	}
 };
 

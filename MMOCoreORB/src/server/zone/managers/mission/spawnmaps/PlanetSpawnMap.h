@@ -57,7 +57,7 @@ namespace spawnmaps {
 /**
  * Container for all cities on a planet and their mission NPC spawn points.
  */
-class PlanetSpawnMap : public Object {
+class PlanetSpawnMap : public Object, Logger {
 protected:
 	/**
 	 * Vector of cities.
@@ -90,27 +90,24 @@ protected:
 
 public:
 	/**
+	 * Default constructor.
+	 */
+	PlanetSpawnMap() {}
+
+	/**
+	 * Constructor.
+	 * @param planetName the name of the planet.
+	 */
+	PlanetSpawnMap(const String& planetName) {
+		this->planetName = planetName;
+	}
+
+	/**
 	 * Loads the object from a LuaObject.
 	 * @param luaObject object to load from.
 	 */
 	void readObject(LuaObject* luaObject) {
 		planetName = luaObject->getStringField("name");
-
-		//Load cities.
-		LuaObject cities = luaObject->getObjectField("cities");
-		for (int numberOfCities = 1; numberOfCities <= cities.getTableSize(); ++numberOfCities) {
-			lua_rawgeti(luaObject->getLuaState(), -1, numberOfCities);
-
-			LuaObject luaCityObj(luaObject->getLuaState());
-
-			Reference<CitySpawnMap*> city = new CitySpawnMap();
-			city->readObject(&luaCityObj);
-
-			citySpawnMaps.add(city);
-
-			luaCityObj.pop();
-		}
-		cities.pop();
 
 		//Load npc's.
 		LuaObject npcSpawns = luaObject->getObjectField("npcs");
@@ -128,6 +125,14 @@ public:
 			luaSpawnObj.pop();
 		}
 		npcSpawns.pop();
+	}
+
+	/**
+	 * Adds a city on the planet.
+	 * @param city the city to add.
+	 */
+	void addCity(Reference<CitySpawnMap*> city) {
+		citySpawnMaps.add(city);
 	}
 
 	/**
@@ -185,6 +190,7 @@ public:
 	 */
 	NpcSpawnPoint* addToClosestCity(Reference<NpcSpawnPoint* > npc, bool checkDistanceToOtherSpawnPoints) {
 		int closestCityNumber = getClosestCityNumber(npc->getPosition());
+
 		if (closestCityNumber >= 0) {
 			NpcSpawnPoint* closestNpc = citySpawnMaps.get(closestCityNumber)->getNearestNpcSpawnPoint(npc->getPosition());
 			if (!checkDistanceToOtherSpawnPoints || closestNpc == NULL || (closestNpc->getPosition()->distanceTo(*npc->getPosition()) > 5.0f)) {
@@ -193,6 +199,20 @@ public:
 			} else {
 				return closestNpc;
 			}
+		}
+
+		return NULL;
+	}
+
+	/**
+	 * Finds a spawn point on a certain location.
+	 * @param position the position to search.
+	 * @return the spawn point on the position or NULL if none exist.
+	 */
+	NpcSpawnPoint* findSpawnAt(Vector3* position) {
+		int closestCityNumber = getClosestCityNumber(position);
+		if (closestCityNumber >= 0) {
+			return citySpawnMaps.get(closestCityNumber)->findSpawnAt(position);
 		}
 
 		return NULL;
@@ -216,6 +236,30 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		bool result = planetName.toBinaryStream(stream);
 		return result & citySpawnMaps.toBinaryStream(stream);
+	}
+
+	/**
+	 * Saves the spawn points to a file.
+	 * @param file the file stream to save the spawn points to.
+	 */
+	void saveSpawnPoints(std::ofstream& file) {
+		file << "planet_" << planetName << " = PlanetSpawnMap:new {" << std::endl;
+		file << "\tname = \"" << planetName << "\"," << std::endl;
+		file << "\tnpcs = {" << std::endl;
+
+		int numberOfNpcSpawnPointsInCity = 0;
+		bool itemsBefore = false;
+
+		for (int i = 0; i < citySpawnMaps.size(); i++) {
+			if (numberOfNpcSpawnPointsInCity > 0) {
+				itemsBefore = true;
+			}
+			numberOfNpcSpawnPointsInCity = citySpawnMaps.get(i)->saveSpawnPoints(file, itemsBefore);
+		}
+
+		file << std::endl << "\t}" << std::endl;
+		file << "}" << std::endl << std::endl;
+		file << "universe:addPlanet(planet_" + planetName + ");" << std::endl << std::endl;
 	}
 };
 

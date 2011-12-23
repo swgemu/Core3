@@ -56,7 +56,7 @@ namespace spawnmaps {
 /**
  * Container for all planets in the universe and their spawn points.
  */
-class UniverseSpawnMap : public Object {
+class UniverseSpawnMap : public Object, Logger {
 protected:
 	/**
 	 * Map for all planets and their spawn points.
@@ -76,7 +76,14 @@ public:
 
 			LuaObject luaPlanetObj(luaObject->getLuaState());
 
+			String planetName = luaPlanetObj.getStringField("name");
+
 			Reference<PlanetSpawnMap*> planet = new PlanetSpawnMap();
+
+			if (planetSpawnMaps.contains(planetName.hashCode())) {
+				planet = planetSpawnMaps.get(planetName.hashCode());
+			}
+
 			planet->readObject(&luaPlanetObj);
 
 			planetSpawnMaps.put(planet->getPlanetName().hashCode(), planet);
@@ -84,6 +91,33 @@ public:
 			luaPlanetObj.pop();
 		}
 		planets.pop();
+	}
+
+	/**
+	 * Add cities from lua object.
+	 * @param cities the cities to add.
+	 */
+	void addCities(LuaObject* cities) {
+		for (int numberOfCities = 1; numberOfCities <= cities->getTableSize(); numberOfCities++) {
+			lua_rawgeti(cities->getLuaState(), -1, numberOfCities);
+
+			LuaObject luaCityObj(cities->getLuaState());
+
+			String planet = luaCityObj.getStringAt(1);
+
+			Reference<CitySpawnMap* > city = new CitySpawnMap();
+			city->readObject(&luaCityObj);
+
+			luaCityObj.pop();
+
+			if (!planetSpawnMaps.contains(planet.hashCode())) {
+				Reference<PlanetSpawnMap*> p = new PlanetSpawnMap(planet);
+				planetSpawnMaps.put(planet.hashCode(), p);
+			}
+
+			planetSpawnMaps.get(planet.hashCode())->addCity(city);
+		}
+		cities->pop();
 	}
 
 	/**
@@ -111,6 +145,16 @@ public:
 	 */
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		return planetSpawnMaps.toBinaryStream(stream);
+	}
+
+	/**
+	 * Saves the spawn points to a file.
+	 * @param file the file stream to save the spawn points to.
+	 */
+	void saveSpawnPoints(std::ofstream& file) {
+		for (int i = 0; i < planetSpawnMaps.size(); i++) {
+			planetSpawnMaps.get(i)->saveSpawnPoints(file);
+		}
 	}
 };
 
