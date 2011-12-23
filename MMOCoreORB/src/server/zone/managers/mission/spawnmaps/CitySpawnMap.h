@@ -134,6 +134,10 @@ public:
 	 * @return random spawn point matching the requirements or NULL if none can be found.
 	 */
 	NpcSpawnPoint* getRandomNpcSpawnPoint(const Vector3* position, const int spawnType, const bool mustBeFree, const float minDistance = 0.0, const float maxDistance = 100000.0) {
+		if (npcSpawnMap.size() == 0) {
+			return NULL;
+		}
+
 		//Try 100 random npc spawn points, return the first that fulfills the requirements.
 		int maximumNumberOfTries = (npcSpawnMap.size() / 4) + 1;
 		while (maximumNumberOfTries > 0) {
