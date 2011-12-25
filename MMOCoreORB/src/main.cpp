@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
 		bool truncateData = arguments.contains("clean");
 
-		ServerCore core(truncateData);
+		ServerCore core(truncateData, arguments);
 
 		core.start();
 
