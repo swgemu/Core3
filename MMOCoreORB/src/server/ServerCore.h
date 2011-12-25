@@ -92,12 +92,14 @@ class ServerCore : public Core, public Logger {
 
 	WebServer* webServer;
 
+	static SortedVector<String> arguments;
+
 	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
 
 	static bool truncateAllData;
 
 public:
-	ServerCore(bool truncateDatabases);
+	ServerCore(bool truncateDatabases, SortedVector<String>& args);
 
 	void initialize();
 
@@ -116,6 +118,10 @@ public:
 
 	static bool truncateDatabases() {
 		return truncateAllData;
+	}
+
+	static bool hasArgument(const String& arg) {
+		return arguments.contains(arg);
 	}
 
 };

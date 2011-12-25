@@ -90,7 +90,7 @@ StringIdManager::StringIdManager() : Logger("StringIdManager") {
 
 	stringsDatabase = databaseManager->loadLocalDatabase("strings", true);
 
-	if (fill || ServerCore::truncateDatabases())
+	if (fill || ServerCore::truncateDatabases() || ServerCore::hasArgument("reloadstrings"))
 		populateDatabase();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();

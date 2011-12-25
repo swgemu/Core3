@@ -68,9 +68,10 @@ which carries forward this exception.
 #include "zone/objects/creature/CreatureObject.h"
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
+SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
 
-ServerCore::ServerCore(bool truncateDatabases) : Core("log/core3.log"), Logger("Core") {
+ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;
@@ -81,6 +82,7 @@ ServerCore::ServerCore(bool truncateDatabases) : Core("log/core3.log"), Logger("
 	database = NULL;
 
 	truncateAllData = truncateDatabases;
+	arguments = args;
 
 	configManager = ConfigManager::instance();
 
