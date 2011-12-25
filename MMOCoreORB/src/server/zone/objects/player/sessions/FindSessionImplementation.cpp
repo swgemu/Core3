@@ -126,8 +126,8 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 
 	StringIdManager* stringManager = StringIdManager::instance();
 
-	String regClientString = stringManager->getStringId(regFullName.hashCode());
-	String objClientString = stringManager->getStringId(objFullName.hashCode());
+	String regClientString = stringManager->getStringId(regFullName.hashCode()).toString();
+	String objClientString = stringManager->getStringId(objFullName.hashCode()).toString();
 
 	if (regClientString.isEmpty()) {
 		regClientString = object->getZone()->getZoneName();

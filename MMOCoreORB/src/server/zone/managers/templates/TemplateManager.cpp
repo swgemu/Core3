@@ -533,6 +533,28 @@ String TemplateManager::getTemplateFile(uint32 key) {
 	return templateData->getFullTemplateString();
 }
 
+ObjectInputStream* TemplateManager::openTreFile(const String& fileName) {
+	if (fileName.isEmpty())
+		return NULL;
+
+	IffStream* iffStream = NULL;
+
+	if (treeDirectory == NULL)
+		return NULL;
+
+	int size = 0;
+	byte* data = treeDirectory->getBytes(fileName, size);
+
+	if (size == 0)
+		return NULL;
+
+	ObjectInputStream* stream = new ObjectInputStream((char*)data, size);
+
+	delete [] data;
+
+	return stream;
+}
+
 IffStream* TemplateManager::openIffFile(const String& fileName) {
 	if (fileName.isEmpty())
 		return NULL;

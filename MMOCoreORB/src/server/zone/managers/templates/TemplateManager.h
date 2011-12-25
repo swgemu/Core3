@@ -99,6 +99,12 @@ public:
 		return treeDirectory->getDirectory(path);
 	}
 
+	TreeArchive* getTreeArchive() {
+		return treeDirectory;
+	}
+
+	ObjectInputStream* openTreFile(const String& filePath);
+
 	inline bool containsTemplateType(uint32 type) {
 		return templateFactory.containsObject(type);
 	}

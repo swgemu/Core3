@@ -63,10 +63,7 @@ class MissionManager extends Observer implements Logger {
 	@weakReference
 	protected ZoneServer server;
 	transient ZoneProcessServer processor;
-	
-	@dereferenced
-	protected LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
-	
+		
 	@dereferenced
 	protected MissionNpcSpawnMap missionNpcSpawnMap;
 	
@@ -80,15 +77,11 @@ class MissionManager extends Observer implements Logger {
 		processor = impl;
 		Logger.setLoggingName("MissionManager");		
 
-		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
-		
-		loadLairObjectsToSpawn();
 		loadNpcObjectsToSpawn();
 		
 		missionNpcSpawnMap.loadSpawnPointsFromLua();
 	}
 	
-	public native void loadLairObjectsToSpawn();
 	public native void loadNpcObjectsToSpawn();
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, CreatureObject player, int counter);

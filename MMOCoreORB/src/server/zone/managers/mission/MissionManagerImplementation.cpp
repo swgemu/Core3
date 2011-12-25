@@ -33,32 +33,6 @@
 #include "server/zone/Zone.h"
 #include "server/db/ServerDatabase.h"
 
-void MissionManagerImplementation::loadLairObjectsToSpawn() {
-	info("loading lair objects to spawn...", true);
-
-	String query = "SELECT * FROM mission_manager_spawn_lairs";
-
-	Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
-
-	while (res->next()) {
-		String templateObject = res->getString(1);
-		String planets = res->getString(2);
-
-		StringTokenizer tokenizer(planets);
-		tokenizer.setDelimeter((","));
-
-		while (tokenizer.hasMoreTokens()) {
-			int planetID = tokenizer.getIntToken();
-
-			lairObjectTemplatesToSpawn.addTemplate(planetID, templateObject.hashCode());
-		}
-	}
-
-	/*StringBuffer msg;
-	msg << "loaded " << lairObjectTemplatesToSpawn.size() << " lairs to spawn";
-	info(msg.toString(), true);*/
-}
-
 void MissionManagerImplementation::loadNpcObjectsToSpawn() {
 	info("loading npc objects to spawn...", true);
 

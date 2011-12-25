@@ -44,8 +44,8 @@ AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DD
 
 ENGINE3_PATH=../../../../MMOEngine
 
-#CXX = clang++
 #CC = clang
+#CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
@@ -340,6 +340,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/skill/PerformanceManager.cpp \
 		server/zone/managers/skill/imagedesign/ImageDesignManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
+		server/zone/managers/stringid/StringIdManager.cpp \
 		server/zone/managers/auction/AuctionManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
 		server/zone/managers/minigames/GamblingManagerImplementation.cpp \
@@ -526,6 +527,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/HuntingMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
+		server/zone/templates/string/StringFile.cpp \
 		server/zone/templates/datatables/DataTableIff.cpp \
 		server/zone/templates/datatables/DataTableCell.cpp \
 		server/zone/templates/snapshot/WorldSnapshotIff.cpp \

@@ -85,12 +85,33 @@ public:
 		return record->getBytes();
 	}
 
-
 	TreeDirectory* getDirectory(const String& path) {
-		/*if (!nodeMap.containsKey(path))
-			return NULL;*/
-
 		return nodeMap.get(path);
+	}
+
+	Vector<String>* getFilesAndSubDirectoryFiles(const String& directory) {
+		HashTableIterator<String, Reference<TreeDirectory*> > iterator = nodeMap.iterator();
+		Vector<String>* files = NULL;
+
+		while (iterator.hasNext()) {
+			//String directoryName = iterator.getNextKey();
+			String directoryName;
+			Reference<TreeDirectory*> directoryEntry;
+			iterator.getNextKeyAndValue(directoryName, directoryEntry);
+
+			if (directoryName.contains(directory)) {
+				if (files == NULL)
+					files = new Vector<String>();
+
+				for (int i = 0; i < directoryEntry->size(); ++i) {
+					TreeFileRecord* fileRecord = directoryEntry->get(i);
+
+					files->add(directoryName + "/" + fileRecord->getRecordName());
+				}
+			}
+		}
+
+		return files;
 	}
 };
 

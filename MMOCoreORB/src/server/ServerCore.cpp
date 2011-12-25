@@ -106,6 +106,8 @@ void ServerCore::initialize() {
 	processConfig();
 
 	try {
+		ObjectManager* objectManager = ObjectManager::instance();
+
 		database = new ServerDatabase(configManager);
 
 		mantisDatabase = new MantisDatabase(configManager);
@@ -113,7 +115,7 @@ void ServerCore::initialize() {
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr, 44496);
 
-		orb->setCustomObjectManager(ObjectManager::instance());
+		orb->setCustomObjectManager(objectManager);
 
 		if (configManager->getMakeLogin()) {
 			loginServer = new LoginServer(configManager);

@@ -140,8 +140,6 @@ public:
 
 	MissionManager(ZoneServer* srv, ZoneProcessServer* impl);
 
-	void loadLairObjectsToSpawn();
-
 	void loadNpcObjectsToSpawn();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
@@ -236,8 +234,6 @@ private:
 	ManagedReference<ZoneProcessServer* > processor;
 
 protected:
-	LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
-
 	MissionNpcSpawnMap missionNpcSpawnMap;
 
 	SortedVector<unsigned int> npcObjectTemplatesToSpawn;
@@ -248,8 +244,6 @@ public:
 	MissionManagerImplementation(ZoneServer* srv, ZoneProcessServer* impl);
 
 	MissionManagerImplementation(DummyConstructorParameter* param);
-
-	void loadLairObjectsToSpawn();
 
 	void loadNpcObjectsToSpawn();
 
@@ -355,8 +349,6 @@ public:
 	MissionManagerAdapter(MissionManager* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void loadLairObjectsToSpawn();
 
 	void loadNpcObjectsToSpawn();
 

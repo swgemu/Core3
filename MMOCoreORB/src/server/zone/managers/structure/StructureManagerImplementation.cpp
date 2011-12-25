@@ -811,7 +811,7 @@ void StructureManagerImplementation::promptPayUncondemnMaintenance(CreatureObjec
 
 		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
 		String textStringId = "@player_structure:structure_condemned_owner_has_credits";
-		text = StringIdManager::instance()->getStringId(textStringId.hashCode());
+		text = StringIdManager::instance()->getStringId(textStringId.hashCode()).toString();
 		text = text.replaceFirst("%DI", String::valueOf(uncondemnCost));
 
 		sui->setCancelButton(true, "@cancel");
@@ -826,7 +826,7 @@ void StructureManagerImplementation::promptPayUncondemnMaintenance(CreatureObjec
 
 		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
 		String textStringId = "@player_structure:structure_condemned_owner_no_credits";
-		text = StringIdManager::instance()->getStringId(textStringId.hashCode());
+		text = StringIdManager::instance()->getStringId(textStringId.hashCode()).toString();
 		text = text.replaceFirst("%DI", String::valueOf(uncondemnCost));
 
 		sui->setCancelButton(false, "@cancel");
