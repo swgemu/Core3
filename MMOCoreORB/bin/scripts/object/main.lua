@@ -44,18 +44,17 @@
 ObjectTemplates = { }
 
 function ObjectTemplates:addTemplate(obj, file)
-	--crc = crcString(file)
 	if (obj == nil) then
 		print("null template object specified for " .. file)
 	else
-		addTemplateCRC(file, obj)
-	end
+		crc = crcString(file)
 	
-	--if self[crc] == nil then
-	--	self[crc] = obj 
-	--else
-	--	print("error conflicting server template crc " .. crc .. " file " .. file)
-	--end
+		if self[crc] == nil then
+			self[crc] = obj 
+		end
+	
+		addTemplateCRC(file, obj)
+	end	
 end
 
 function ObjectTemplates:addClientTemplate(obj, file)
@@ -66,8 +65,8 @@ function ObjectTemplates:addClientTemplate(obj, file)
 	end
 end
 
-function getTemplate(crc)
-	return ObjectTemplates[crc]
+function getTemplate(file)
+	return ObjectTemplates[file]
 end
 
 includeFile("allobjects.lua")

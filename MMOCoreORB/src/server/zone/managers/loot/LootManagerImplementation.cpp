@@ -220,7 +220,7 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 				SceneObject* obj = createLootObject(itemTemplate);
 
 				if (container->transferObject(obj, -1, false))
-					obj->broadcastObject(obj->getRootParent(), true);
+					container->broadcastObject(obj, true);
 			}
 
 		} else

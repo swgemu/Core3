@@ -305,7 +305,7 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 	//info("loaded " + fullName);
 
 	if (templateCRCMap->put(key, templateObject) != NULL) {
-		error("duplicate template for " + fullName);
+		//error("duplicate template for " + fullName);
 	}
 }
 
@@ -738,6 +738,33 @@ int TemplateManager::includeFile(lua_State* L) {
 	Lua::runFile("scripts/object/" + filename, L);
 
 	return 0;
+}
+
+LuaObject* TemplateManager::getLuaObject(const String& iffTemplate) {
+	if (templateCRCMap->get(iffTemplate.hashCode()) == NULL) {
+		String luaFileName = iffTemplate.replaceAll(".iff", ".lua");
+
+		luaTemplatesInstance->runFile("scripts/" + luaFileName);
+	}
+
+	if (templateCRCMap->get(iffTemplate.hashCode()) == NULL)
+		return NULL;
+
+	LuaFunction getObject(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
+	getObject << iffTemplate.hashCode(); // push first argument
+	luaTemplatesInstance->callFunction(&getObject);
+
+	LuaObject* result = new LuaObject(luaTemplatesInstance->getLuaState());
+
+	if (!result->isValidTable()) {
+		System::out << "Unknown lua object template " << iffTemplate << endl;
+
+		delete result;
+
+		return NULL;
+	}
+
+	return result;
 }
 
 int TemplateManager::crcString(lua_State* L) {

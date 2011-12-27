@@ -296,6 +296,22 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 		Logger::console.warning("could not open derv: " + file);
 	}
 
+	// now server lua
+
+	String serverTemplate = file.replaceAll("shared_", "");
+
+	LuaObject* luaObject = TemplateManager::instance()->getLuaObject(serverTemplate);
+
+	if (luaObject != NULL) {
+		readObject(luaObject);
+
+		luaObject->pop();
+
+		delete luaObject;
+	} else {
+		Logger::console.warning("could not open lua derv: " + serverTemplate);
+	}
+
 	stream->closeChunk();
 
 	stream->closeForm('DERV');

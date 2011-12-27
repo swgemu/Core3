@@ -64,6 +64,10 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 public:
 	static Lua* luaTemplatesInstance;
 
+protected:
+	//this is only to be used when loading client dervs
+	LuaObject* getLuaObject(const String& iffTemplateName);
+
 public:
 	TemplateManager();
 	~TemplateManager();
@@ -163,6 +167,8 @@ public:
 	SlotId* getSlotId(const String& slotName) {
 		return slotDefinitions.get(slotName);
 	}
+
+	friend class server::zone::templates::SharedObjectTemplate;
 };
 
 
