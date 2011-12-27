@@ -42,6 +42,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("STALKER", CreatureFlag::STALKER);
 	lua->setGlobalInt("BABY", CreatureFlag::BABY);
 	lua->setGlobalInt("LAIR", CreatureFlag::LAIR);
+	lua->setGlobalInt("HEALER", CreatureFlag::HEALER);
 
 	lua->setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
 	lua->setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);

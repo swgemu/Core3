@@ -65,6 +65,7 @@ public:
 	static const int STALKER = 0x08;
 	static const int BABY = 0x10;
 	static const int LAIR = 0x20;
+	static const int HEALER = 0x40;
 
 	static const int CARNIVORE = 0x01;
 	static const int HERBIVORE = 0x02;
