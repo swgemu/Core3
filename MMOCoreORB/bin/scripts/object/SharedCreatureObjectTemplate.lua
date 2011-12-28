@@ -74,6 +74,7 @@ SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 ]]
 	
+	--default value data moved to object/creature/base/base_creature.lua
 	clientCRC = 0, 
 	
 	level = 10,

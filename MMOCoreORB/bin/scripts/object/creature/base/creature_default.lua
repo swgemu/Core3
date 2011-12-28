@@ -42,7 +42,15 @@
 
 
 object_creature_base_creature_default = object_creature_base_shared_creature_default:new {
-
+	clientCRC = 0, 
+	
+	level = 10,
+	
+	lootGroup = { },
+	
+	baseHAM = { 300, 300, 300, 300, 300, 300, 300, 300, 300 },
+	optionsBitmask = 0, --Set it back to 0 for creatures
+	skillMods = { }
 }
 
 ObjectTemplates:addTemplate(object_creature_base_creature_default, "object/creature/base/creature_default.iff")

@@ -42,7 +42,14 @@
 
 
 object_object_base_object_default = object_object_base_shared_object_default:new {
-
+clientTemplateFileName = "", 
+	 planetMapCategory = "",
+	 planetMapSubCategory = "",
+	 autoRegisterWithPlanetMap = 1,
+	 
+	 zoneComponent = "ZoneComponent",
+	 objectMenuComponent = "ObjectMenuComponent",
+	 containerComponent = "ContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_object_base_object_default, "object/object/base/object_default.iff")

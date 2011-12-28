@@ -42,7 +42,15 @@
 
 
 object_creature_base_base_creature = object_creature_base_shared_base_creature:new {
-
+	clientCRC = 0, 
+	
+	level = 10,
+	
+	lootGroup = { },
+	
+	baseHAM = { 300, 300, 300, 300, 300, 300, 300, 300, 300 },
+	optionsBitmask = 0, --Set it back to 0 for creatures
+	skillMods = { }
 }
 
 ObjectTemplates:addTemplate(object_creature_base_base_creature, "object/creature/base/base_creature.iff")

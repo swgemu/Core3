@@ -79,6 +79,8 @@ SharedObjectTemplate = Object:new {
 	 clientObjectCRC = 0,
 
 ]]
+
+-- the default values moved to object/base/base_object.lua
 	
 	 clientTemplateFileName = "", 
 	 planetMapCategory = "",

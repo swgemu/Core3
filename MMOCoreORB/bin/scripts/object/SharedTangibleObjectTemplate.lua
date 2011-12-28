@@ -76,6 +76,8 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	customizationVariableMapping = { },
 	
 ]]
+
+-- the default values moved to object/tangible/base/tangible_base.lua
 	
 	playerUseMask = ALL,
 	

@@ -48,16 +48,20 @@ function Object:new (o)
 	o = o or { }
 	
 	for k,v in pairs(self) do 
-		if o[k] == nil then 
+		if o[k] == nil and k == "templateType" then 
 			o[k] = v 
 		end 
 	end
 	
 	setmetatable(o, self)
     self.__index = self
-    --return o
-    
-    
     
     return o
+    
+    
+    
+    --o = o or { }
+	--setmetatable(o, self)
+    --self.__index = self
+    --return o
 end

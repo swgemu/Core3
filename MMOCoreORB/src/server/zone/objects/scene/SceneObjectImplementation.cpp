@@ -195,7 +195,7 @@ void SceneObjectImplementation::createComponents() {
 		//zoneComponent->initialize(_this);
 
 		if (zoneComponent == NULL) {
-			error("zone component null " + zoneComponentClassName);
+			info("zone component null " + zoneComponentClassName + " in " + templateObject->getFullTemplateString());
 		}
 
 		String objectMenuComponentName = templateObject->getObjectMenuComponent();

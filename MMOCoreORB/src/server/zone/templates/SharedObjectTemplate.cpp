@@ -303,6 +303,8 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 	LuaObject* luaObject = TemplateManager::instance()->getLuaObject(serverTemplate);
 
 	if (luaObject != NULL) {
+		//Logger::console.info("loading derv from " + serverTemplate, true);
+
 		readObject(luaObject);
 
 		luaObject->pop();

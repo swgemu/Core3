@@ -42,7 +42,19 @@
 
 
 object_tangible_base_tangible_default = object_tangible_base_shared_tangible_default:new {
+	playerUseMask = ALL,
+	
+	level = 10,
+	
+	maxCondition = 1000,
+	
+	useCount = 1,
+	
+	optionsBitmask = 256, --Default all objects to not display ham bars.
+	pvpStatusBitmask = 0,
+	objectMenuComponent = "TangibleObjectMenuComponent",
 
+	sliceable = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_base_tangible_default, "object/tangible/base/tangible_default.iff")
