@@ -137,16 +137,21 @@ ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* co
 				//Destination NPC.
 				if (objective->getObjectiveStatus() == DeliverMissionObjective::PICKEDUPSTATUS) {
 					objective->updateMissionStatus(conversingPlayer);
-					switch (mission->getFaction()) {
-					case MissionObject::FACTIONIMPERIAL:
-						conversationScreen->setDialogText("@mission/mission_deliver_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
-						break;
-					case MissionObject::FACTIONREBEL:
-						conversationScreen->setDialogText("@mission/mission_deliver_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
-						break;
-					default:
-						conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
-						break;
+					if (objective->getObjectiveStatus() == DeliverMissionObjective::DELIVEREDSTATUS) {
+						switch (mission->getFaction()) {
+						case MissionObject::FACTIONIMPERIAL:
+							conversationScreen->setDialogText("@mission/mission_deliver_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+							break;
+						case MissionObject::FACTIONREBEL:
+							conversationScreen->setDialogText("@mission/mission_deliver_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+							break;
+						default:
+							conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+							break;
+						}
+					} else {
+						text = "@mission/mission_generic:give_item";
+						conversationScreen->setDialogText(text);
 					}
 				} else if (objective->getObjectiveStatus() == DeliverMissionObjective::INITSTATUS) {
 					text = "@mission/mission_generic:give_item";
