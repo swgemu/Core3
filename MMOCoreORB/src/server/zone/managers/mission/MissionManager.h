@@ -160,7 +160,9 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	bool randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission);
+	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
@@ -202,6 +204,12 @@ public:
 
 	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 
+	String getDeliveryMissionFileName(const int faction);
+
+	int getDeliverMissionNumberOfMissions(const int faction);
+
+	int getDeliverMissionSpawnType(const int faction);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -210,6 +218,8 @@ protected:
 	MissionManager(DummyConstructorParameter* param);
 
 	virtual ~MissionManager();
+
+	String _return_getDeliveryMissionFileName;
 
 	friend class MissionManagerHelper;
 };
@@ -265,7 +275,9 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	bool randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission);
+	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
@@ -306,6 +318,12 @@ public:
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	bool hasSurveyMission(CreatureObject* player, const String& spawn);
+
+	String getDeliveryMissionFileName(const int faction);
+
+	int getDeliverMissionNumberOfMissions(const int faction);
+
+	int getDeliverMissionSpawnType(const int faction);
 
 	WeakReference<MissionManager*> _this;
 
@@ -370,7 +388,9 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	bool randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission);
+	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
@@ -411,6 +431,12 @@ public:
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	bool hasSurveyMission(CreatureObject* player, const String& spawn);
+
+	String getDeliveryMissionFileName(const int faction);
+
+	int getDeliverMissionNumberOfMissions(const int faction);
+
+	int getDeliverMissionSpawnType(const int faction);
 
 protected:
 	String _param1_createSpawnPoint__CreatureObject_String_;

@@ -553,24 +553,61 @@ void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player
 }
 
 void MissionManagerImplementation::randomizeDeliverMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericDeliverMission(player, mission, MissionObject::FACTIONNEUTRAL);
+}
+
+void MissionManagerImplementation::randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	//Randomize in city or between city missions.
 	bool inTownMission = true;
 	if (System::random(1) == 1) {
 		inTownMission = false;
 	}
 
-	if (!randomDeliverMission(player, mission, inTownMission)) {
+	if (!randomGenericDeliverMission(player, mission, inTownMission, faction)) {
 		//In town or out of town mission failed try the other sort of mission instead.
 		inTownMission = !inTownMission;
-		randomDeliverMission(player, mission, inTownMission);
+		randomGenericDeliverMission(player, mission, inTownMission, faction);
 	}
 }
 
-bool MissionManagerImplementation::randomDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission) {
+String MissionManagerImplementation::getDeliveryMissionFileName(const int faction) {
+	switch (faction) {
+	case MissionObject::FACTIONIMPERIAL:
+		return "mission/mission_deliver_imperial_easy";
+	case MissionObject::FACTIONREBEL:
+		return "mission/mission_deliver_rebel_easy";
+	default:
+		return "mission/mission_deliver_neutral_easy";
+	}
+}
+
+int MissionManagerImplementation::getDeliverMissionNumberOfMissions(const int faction) {
+	switch (faction) {
+	case MissionObject::FACTIONIMPERIAL:
+		return 24;
+	case MissionObject::FACTIONREBEL:
+		return 24;
+	default:
+		return 29;
+	}
+}
+
+int MissionManagerImplementation::getDeliverMissionSpawnType(const int faction) {
+	switch (faction) {
+	case MissionObject::FACTIONIMPERIAL:
+		return NpcSpawnPoint::IMPERIALSPAWN;
+	case MissionObject::FACTIONREBEL:
+		return NpcSpawnPoint::REBELSPAWN;
+	default:
+		return NpcSpawnPoint::NEUTRALSPAWN;
+	}
+}
+
+bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction) {
 	//Get the current planet and position of the player.
 	String planetName = player->getZone()->getZoneName();
 
-	Vector3 playerPosition = player->getPosition();
+	Vector3 playerPosition = player->getWorldPosition();
 	Vector3* startPosition = &playerPosition;
 
 	//Lock spawn point map for the search.
@@ -579,7 +616,7 @@ bool MissionManagerImplementation::randomDeliverMission(CreatureObject* player, 
 	//Find a spawn point in current city.
 	float minDistance = 0.0f;
 	float maxDistance = 300.0f;
-	Reference<NpcSpawnPoint*> startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, NpcSpawnPoint::NEUTRALSPAWN, minDistance, maxDistance, false);
+	Reference<NpcSpawnPoint*> startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance, false);
 
 	if (startNpc == NULL) {
 		//Couldn't find a suitable spawn point.
@@ -594,8 +631,9 @@ bool MissionManagerImplementation::randomDeliverMission(CreatureObject* player, 
 
 	}
 	//Search in all parts of the city for the end spawn.
+	minDistance = 5.0f;
 	maxDistance = 1500.0f;
-	Reference<NpcSpawnPoint*> endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, NpcSpawnPoint::NEUTRALSPAWN, minDistance, maxDistance, false);
+	Reference<NpcSpawnPoint*> endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance, false);
 
 	if (endNpc == NULL) {
 		//Couldn't find a suitable spawn point.
@@ -603,7 +641,7 @@ bool MissionManagerImplementation::randomDeliverMission(CreatureObject* player, 
 	}
 
 	//Randomize mission description strings/delivery object.
-	int randomTexts = System::random(29) + 1;
+	int randomTexts = System::random(getDeliverMissionNumberOfMissions(faction)) + 1;
 
 	//Setup mission object.
 	mission->setMissionNumber(randomTexts);
@@ -627,10 +665,11 @@ bool MissionManagerImplementation::randomDeliverMission(CreatureObject* player, 
 	mission->setRewardCredits(baseCredits + deliverDistanceCredits);
 
 	mission->setMissionDifficulty(5);
-	mission->setMissionTitle("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randomTexts) + "t");
-	mission->setMissionDescription("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randomTexts) + "d");
+	mission->setMissionTitle(getDeliveryMissionFileName(faction), "m" + String::valueOf(randomTexts) + "t");
+	mission->setMissionDescription(getDeliveryMissionFileName(faction), "m" + String::valueOf(randomTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::DELIVER);
+	mission->setFaction(faction);
 
 	return true;
 }
@@ -817,8 +856,7 @@ void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObjec
 }
 
 void MissionManagerImplementation::randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission) {
-	// TODO: add faction-specific targets
-	randomizeDeliverMission(player, mission);
+	randomizeGenericDeliverMission(player, mission, MissionObject::FACTIONIMPERIAL);
 }
 
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
@@ -827,8 +865,7 @@ void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* 
 }
 
 void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
-	// TODO: add faction-specific targets
-	randomizeDeliverMission(player, mission);
+	randomizeGenericDeliverMission(player, mission, MissionObject::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, const String& spawnTypes) {

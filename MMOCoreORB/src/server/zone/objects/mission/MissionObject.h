@@ -146,6 +146,12 @@ public:
 
 	static const int SURVEY = 0x19C9FAC1;
 
+	static const int FACTIONNEUTRAL = 0;
+
+	static const int FACTIONIMPERIAL = 1;
+
+	static const int FACTIONREBEL = 2;
+
 	MissionObject();
 
 	WaypointObject* createWaypoint();
@@ -186,6 +192,8 @@ public:
 
 	void abort();
 
+	void setFaction(const int missionFaction);
+
 	void setMissionObjective(MissionObjective* obj);
 
 	void setStartPlanet(const String& planet);
@@ -203,6 +211,8 @@ public:
 	void setTemplateStrings(const String& temp1, const String& temp2);
 
 	MissionObjective* getMissionObjective();
+
+	int getFaction();
 
 	float getStartPositionX();
 
@@ -302,6 +312,8 @@ protected:
 
 	int missionNumber;
 
+	int faction;
+
 	float startPositionX;
 
 	float startPositionY;
@@ -359,6 +371,12 @@ public:
 
 	static const int SURVEY = 0x19C9FAC1;
 
+	static const int FACTIONNEUTRAL = 0;
+
+	static const int FACTIONIMPERIAL = 1;
+
+	static const int FACTIONREBEL = 2;
+
 	MissionObjectImplementation();
 
 	MissionObjectImplementation(DummyConstructorParameter* param);
@@ -401,6 +419,8 @@ public:
 
 	void abort();
 
+	void setFaction(const int missionFaction);
+
 	void setMissionObjective(MissionObjective* obj);
 
 	void setStartPlanet(const String& planet);
@@ -418,6 +438,8 @@ public:
 	void setTemplateStrings(const String& temp1, const String& temp2);
 
 	MissionObjective* getMissionObjective();
+
+	int getFaction();
 
 	float getStartPositionX();
 
@@ -548,6 +570,8 @@ public:
 
 	void abort();
 
+	void setFaction(const int missionFaction);
+
 	void setMissionObjective(MissionObjective* obj);
 
 	void setStartPlanet(const String& planet);
@@ -565,6 +589,8 @@ public:
 	void setTemplateStrings(const String& temp1, const String& temp2);
 
 	MissionObjective* getMissionObjective();
+
+	int getFaction();
 
 	float getStartPositionX();
 

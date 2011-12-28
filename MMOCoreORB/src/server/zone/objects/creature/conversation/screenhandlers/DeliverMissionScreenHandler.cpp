@@ -118,7 +118,17 @@ ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* co
 				//Target NPC.
 				if (objective->getObjectiveStatus() == DeliverMissionObjective::INITSTATUS) {
 					objective->updateMissionStatus(conversingPlayer);
-					conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
+					switch (mission->getFaction()) {
+					case MissionObject::FACTIONIMPERIAL:
+						conversationScreen->setDialogText("@mission/mission_deliver_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
+						break;
+					case MissionObject::FACTIONREBEL:
+						conversationScreen->setDialogText("@mission/mission_deliver_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
+						break;
+					default:
+						conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
+						break;
+					}
 				} else {
 					text = "@mission/mission_generic:deliver_already_picked_up";
 					conversationScreen->setDialogText(text);
@@ -127,7 +137,17 @@ ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* co
 				//Destination NPC.
 				if (objective->getObjectiveStatus() == DeliverMissionObjective::PICKEDUPSTATUS) {
 					objective->updateMissionStatus(conversingPlayer);
-					conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+					switch (mission->getFaction()) {
+					case MissionObject::FACTIONIMPERIAL:
+						conversationScreen->setDialogText("@mission/mission_deliver_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+						break;
+					case MissionObject::FACTIONREBEL:
+						conversationScreen->setDialogText("@mission/mission_deliver_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+						break;
+					default:
+						conversationScreen->setDialogText("@mission/mission_deliver_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
+						break;
+					}
 				} else if (objective->getObjectiveStatus() == DeliverMissionObjective::INITSTATUS) {
 					text = "@mission/mission_generic:give_item";
 					conversationScreen->setDialogText(text);

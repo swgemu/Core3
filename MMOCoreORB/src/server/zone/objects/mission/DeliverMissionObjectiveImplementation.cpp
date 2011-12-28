@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -71,11 +72,25 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 		return false;
 	}
 
+	//Select spawn type.
+	int spawnType = NpcSpawnPoint::NEUTRALSPAWN;
+	switch (mission->getFaction()) {
+	case MissionObject::FACTIONIMPERIAL:
+		spawnType = NpcSpawnPoint::IMPERIALSPAWN;
+		break;
+	case MissionObject::FACTIONREBEL:
+		spawnType = NpcSpawnPoint::REBELSPAWN;
+		break;
+	default:
+		spawnType = NpcSpawnPoint::NEUTRALSPAWN;
+		break;
+	}
+
 	//Spawn target and destination NPC's.
 
 	//Target NPC
 	//Find a free spawn point.
-	targetSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), NpcSpawnPoint::NEUTRALSPAWN);
+	targetSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), spawnType);
 	if (targetSpawnPoint == NULL) {
 		return false;
 	}
@@ -96,7 +111,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 	//Destination NPC.
 	//Find a free spawn point.
-	destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanetCRC(), mission->getEndPositionX(), mission->getEndPositionY(), NpcSpawnPoint::NEUTRALSPAWN);
+	destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanetCRC(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
 	if (destinationSpawnPoint == NULL) {
 		return false;
 	}
@@ -161,6 +176,23 @@ void DeliverMissionObjectiveImplementation::complete() {
 	player->sendSystemMessage(stringId);
 
 	player->addBankCredits(missionReward, true);
+
+	//Award faction points for faction delivery missions.
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+	if (ghost != NULL) {
+		Locker ghostLocker(ghost);
+
+		switch (mission->getFaction()) {
+		case MissionObject::FACTIONIMPERIAL:
+			ghost->increaseFactionStanding("imperial", 5);
+			ghost->decreaseFactionStanding("rebel", 5);
+			break;
+		case MissionObject::FACTIONREBEL:
+			ghost->increaseFactionStanding("rebel", 5);
+			ghost->decreaseFactionStanding("imperial", 5);
+			break;
+		}
+	}
 
 	ZoneServer* zoneServer = player->getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();

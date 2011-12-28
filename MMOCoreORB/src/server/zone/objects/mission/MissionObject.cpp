@@ -22,7 +22,7 @@
  *	MissionObjectStub
  */
 
-enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_CLEARTARGETANDDESTINATION__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETFACTION__INT_,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETFACTION__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_CLEARTARGETANDDESTINATION__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
@@ -310,6 +310,20 @@ void MissionObject::abort() {
 		_implementation->abort();
 }
 
+void MissionObject::setFaction(const int missionFaction) {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETFACTION__INT_);
+		method.addSignedIntParameter(missionFaction);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setFaction(missionFaction);
+}
+
 void MissionObject::setMissionObjective(MissionObjective* obj) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -434,6 +448,19 @@ MissionObjective* MissionObject::getMissionObjective() {
 		return static_cast<MissionObjective*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getMissionObjective();
+}
+
+int MissionObject::getFaction() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFACTION__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getFaction();
 }
 
 float MissionObject::getStartPositionX() {
@@ -895,6 +922,11 @@ bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "faction") {
+		TypeInfo<int >::parseFromBinaryStream(&faction, stream);
+		return true;
+	}
+
 	if (_name == "startPositionX") {
 		TypeInfo<float >::parseFromBinaryStream(&startPositionX, stream);
 		return true;
@@ -1046,6 +1078,14 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "faction";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&faction, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "startPositionX";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1175,7 +1215,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 23 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 24 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 MissionObjectImplementation::MissionObjectImplementation() {
@@ -1202,6 +1242,8 @@ MissionObjectImplementation::MissionObjectImplementation() {
 	missionTarget = NULL;
 	// server/zone/objects/mission/MissionObject.idl():  		missionTargetDest = null;
 	missionTargetDest = NULL;
+	// server/zone/objects/mission/MissionObject.idl():  		faction = FACTIONNEUTRAL;
+	faction = FACTIONNEUTRAL;
 	// server/zone/objects/mission/MissionObject.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
@@ -1210,6 +1252,11 @@ void MissionObjectImplementation::abort() {
 	// server/zone/objects/mission/MissionObject.idl():  	}
 	if (missionObjective != NULL)	// server/zone/objects/mission/MissionObject.idl():  			missionObjective.abort();
 	missionObjective->abort();
+}
+
+void MissionObjectImplementation::setFaction(const int missionFaction) {
+	// server/zone/objects/mission/MissionObject.idl():  		faction = missionFaction;
+	faction = missionFaction;
 }
 
 void MissionObjectImplementation::setMissionObjective(MissionObjective* obj) {
@@ -1257,6 +1304,11 @@ void MissionObjectImplementation::setTemplateStrings(const String& temp1, const 
 MissionObjective* MissionObjectImplementation::getMissionObjective() {
 	// server/zone/objects/mission/MissionObject.idl():  		return missionObjective;
 	return missionObjective;
+}
+
+int MissionObjectImplementation::getFaction() {
+	// server/zone/objects/mission/MissionObject.idl():  		return faction;
+	return faction;
 }
 
 float MissionObjectImplementation::getStartPositionX() {
@@ -1456,6 +1508,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_ABORT__:
 		abort();
 		break;
+	case RPC_SETFACTION__INT_:
+		setFaction(inv->getSignedIntParameter());
+		break;
 	case RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_:
 		setMissionObjective(static_cast<MissionObjective*>(inv->getObjectParameter()));
 		break;
@@ -1482,6 +1537,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_GETMISSIONOBJECTIVE__:
 		resp->insertLong(getMissionObjective()->_getObjectID());
+		break;
+	case RPC_GETFACTION__:
+		resp->insertSignedInt(getFaction());
 		break;
 	case RPC_GETSTARTPOSITIONX__:
 		resp->insertFloat(getStartPositionX());
@@ -1628,6 +1686,10 @@ void MissionObjectAdapter::abort() {
 	(static_cast<MissionObject*>(stub))->abort();
 }
 
+void MissionObjectAdapter::setFaction(const int missionFaction) {
+	(static_cast<MissionObject*>(stub))->setFaction(missionFaction);
+}
+
 void MissionObjectAdapter::setMissionObjective(MissionObjective* obj) {
 	(static_cast<MissionObject*>(stub))->setMissionObjective(obj);
 }
@@ -1662,6 +1724,10 @@ void MissionObjectAdapter::setTemplateStrings(const String& temp1, const String&
 
 MissionObjective* MissionObjectAdapter::getMissionObjective() {
 	return (static_cast<MissionObject*>(stub))->getMissionObjective();
+}
+
+int MissionObjectAdapter::getFaction() {
+	return (static_cast<MissionObject*>(stub))->getFaction();
 }
 
 float MissionObjectAdapter::getStartPositionX() {

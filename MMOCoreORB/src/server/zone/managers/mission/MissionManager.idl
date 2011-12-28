@@ -96,7 +96,8 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeBountyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeDeliverMission(CreatureObject player, MissionObject mission);
-	public native boolean randomDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission);
+	public native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final int faction);
+	public native boolean randomGenericDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission, final int faction);
 	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
 	public native void randomizeEntertainerMission(CreatureObject player, MissionObject mission);
 	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
@@ -120,4 +121,8 @@ class MissionManager extends Observer implements Logger {
 	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	
 	public native boolean hasSurveyMission(CreatureObject player, final string spawn);
+	
+	public native string getDeliveryMissionFileName(final int faction);
+	public native int getDeliverMissionNumberOfMissions(final int faction);
+	public native int getDeliverMissionSpawnType(final int faction);
 }
