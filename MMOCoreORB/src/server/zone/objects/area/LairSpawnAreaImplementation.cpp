@@ -127,7 +127,11 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	if (currentlySpawnedLairs >= spawnGroup->getMaxSpawnLimit())
 		return;
 
-	if (object->inRangeObjectCount() > 20)
+	//object->get
+
+	int inRangeTanos = object->inRangeObjects(SceneObjectType::GENERALTANGIBLEOBJECT, 128.f);
+
+	if (inRangeTanos > 4)
 		return;
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
@@ -228,7 +232,7 @@ void LairSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	if (parent != NULL && parent->isCellObject())
 		return;
 
-	if (System::random(50) == 1)
+	if (System::random(25) == 1)
 		spawnLair(creature);
 }
 

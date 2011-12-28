@@ -699,12 +699,12 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 }
 
 int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return 0;
 
 	int numberOfObjects = 0;
 
-	Locker zoneLocker(zone);
+	Locker zoneLocker(getZone());
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));

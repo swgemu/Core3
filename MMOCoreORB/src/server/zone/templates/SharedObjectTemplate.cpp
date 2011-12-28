@@ -315,7 +315,6 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 	stream->closeChunk();
 
 	stream->closeForm('DERV');
-
 }
 
 String SharedObjectTemplate::getType(int type) {
