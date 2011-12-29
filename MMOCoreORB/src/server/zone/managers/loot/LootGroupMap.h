@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "lootgroup/LootGroup.h"
+#include "lootitems/LootItems.h"
 
 class LootGroupMap : public HashTable<String, Reference<LootGroup*> >, public Singleton<LootGroupMap>, public Object {
 public:

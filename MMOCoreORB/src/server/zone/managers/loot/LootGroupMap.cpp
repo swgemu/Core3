@@ -6,6 +6,7 @@
  */
 
 #include "LootGroupMap.h"
+//#include "lootgroup/LootGroup.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/templates/LootItemTemplate.h"
 
@@ -60,17 +61,9 @@ int LootGroupMap::includeFile(lua_State* L) {
 
 int LootGroupMap::addLootGroupTemplate(lua_State* L) {
 	String ascii = lua_tostring(L, -2);
-	LuaObject obj(L);
-
-	LuaObject luaItems = obj.getObjectField("lootItems");
 
 	Reference<LootGroup*> group = new LootGroup();
-
-	for (int i = 1; i <= luaItems.getTableSize(); ++i) {
-		group->add(luaItems.getStringAt(i));
-	}
-
-	luaItems.pop();
+	group->parseLua(L);
 
 	if (instance()->put(ascii, group) != NULL) {
 		Logger::console.warning("duplicate loot group template with name " + ascii);

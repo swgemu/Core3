@@ -1,6 +1,4 @@
 includeFile("other/all/test_loot_item.lua") 
-includeFile("other/all/test_loot_group.lua") 
-includeFile("other/all/forage.lua")
 includeFile("other/all/alever_tweth_pek.lua")
 includeFile("other/all/etost_ew_zann.lua")
 includeFile("other/all/flurr_clie_onion.lua")

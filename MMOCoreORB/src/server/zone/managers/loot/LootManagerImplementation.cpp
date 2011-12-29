@@ -190,7 +190,7 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 	if (container->hasFullContainerObjects())
 		return;
 
-	LootGroup* group = lootGroupMap->get(lootGroup);
+	Reference<LootGroup*> group = lootGroupMap->get(lootGroup);
 
 	if (group == NULL)
 		return;
@@ -198,6 +198,8 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 	for (int i = 0; i < group->size(); ++i) {
 		if (container->hasFullContainerObjects())
 			return;
+
+		/*
 
 		String item = group->get(i);
 
@@ -224,6 +226,6 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 			}
 
 		} else
-			error(item + " loot item template not found");
+			error(item + " loot item template not found");*/
 	}
 }
