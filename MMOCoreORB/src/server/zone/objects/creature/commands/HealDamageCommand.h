@@ -354,8 +354,10 @@ public:
 		try {
 			zone->rlock();
 
-			for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
-				SceneObject* object = cast<SceneObject*>( areaCenter->getInRangeObject(i));
+			SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = areaCenter->getCloseObjects();
+
+			for (int i = 0; i < closeObjects->size(); i++) {
+				SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
 
 				if (!object->isPlayerCreature())
 					continue;

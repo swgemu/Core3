@@ -1285,8 +1285,10 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 	try {
 		zone->rlock();
 
-		for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
-			ManagedReference<SceneObject*> object = cast<SceneObject*>( attacker->getInRangeObject(i));
+		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			ManagedReference<SceneObject*> object = cast<SceneObject*>( closeObjects->get(i).get());
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
@@ -1345,8 +1347,10 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 
 	Locker _locker(zone);
 
-	for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
-		SceneObject* object = cast<SceneObject*>( attacker->getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
 			CreatureObject* player = cast<CreatureObject*>( object);

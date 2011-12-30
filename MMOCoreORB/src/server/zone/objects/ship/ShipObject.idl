@@ -45,6 +45,8 @@ package server.zone.objects.ship;
 
 import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
+import engine.util.u3d.QuadTreeEntry;
+import system.util.SortedVector;
 
 class ShipObject extends TangibleObject {
 	protected float totalMass;
@@ -55,6 +57,9 @@ class ShipObject extends TangibleObject {
 		super.unknownByte = 1;
 		
 		totalMass = 500.0;
+		
+		super.closeobjects = new SortedVector<QuadTreeEntry>();
+		super.closeobjects.setNoDuplicateInsertPlan();
 	}
 	
 	public native unsigned short getUniqueID();

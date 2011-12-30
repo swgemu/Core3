@@ -194,7 +194,7 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 
 	if (obj != NULL) {
 		StringBuffer msg;
-		msg << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY() << " with player in range object count " << object->inRangeObjectCount();
+		msg << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
 		obj->info(msg.toString());
 	} else {
 		error("could not spawn lair" + lairTemplate);

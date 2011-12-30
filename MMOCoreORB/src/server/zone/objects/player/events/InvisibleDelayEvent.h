@@ -80,8 +80,10 @@ public:
 
 				if (!targetGhost->isInvisible()) {
 
-					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-						SceneObject* scno = cast<SceneObject*>( player->getInRangeObject(i));
+					SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
+
+					for (int i = 0; i < closeObjects->size(); ++i) {
+						SceneObject* scno = cast<SceneObject*>( closeObjects->get(i).get());
 
 						if (scno != player && scno->isPlayerCreature())
 								scno->notifyDissapear(player);
@@ -97,8 +99,10 @@ public:
 				} else {
 					targetGhost->setInvisible(false);
 
-					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-						SceneObject* scno = cast<SceneObject*>( player->getInRangeObject(i));
+					SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
+
+					for (int i = 0; i < closeObjects->size(); ++i) {
+						SceneObject* scno = cast<SceneObject*>( closeObjects->get(i).get());
 
 						if (scno != player && scno->isPlayerCreature())
 								scno->notifyInsert(player);

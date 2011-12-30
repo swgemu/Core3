@@ -168,6 +168,9 @@ void CreatureObjectImplementation::initializeMembers() {
 	cooldownTimerMap = new CooldownTimerMap();
 	commandQueue = new CommandQueueActionVector();
 	immediateQueue = new CommandQueueActionVector();
+
+	closeobjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+	closeobjects->setNoDuplicateInsertPlan();
 }
 
 void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -271,8 +274,10 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	} else
 		sendTo(_this, doClose);
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* obj = cast<SceneObject*>(getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects->get(i).get());
 
 		if (obj != _this) {
 			if (obj != grandParent) {
@@ -549,8 +554,8 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				if (thisZone != NULL) {
 					Locker locker(thisZone);
 
-					for (int i = 0; i < closeobjects.size(); ++i) {
-						SceneObject* object = cast<SceneObject*>(closeobjects.get(i).get());
+					for (int i = 0; i < closeobjects->size(); ++i) {
+						SceneObject* object = cast<SceneObject*>(closeobjects->get(i).get());
 
 						if (object->getParent() == getParent()) {
 							SitOnObject* soo = new SitOnObject(_this, getPositionX(), getPositionZ(), getPositionY());

@@ -106,7 +106,7 @@ QuadTree* Zone::getRegionTree() {
 		return _implementation->getRegionTree();
 }
 
-int Zone::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects) {
+int Zone::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry* > >* objects) {
 	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

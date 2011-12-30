@@ -2242,8 +2242,10 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	//We need to search nearby for an installation that belongs to the player.
 	Locker _locker(creature->getZone());
 
-	for (int i = 0; i < creature->inRangeObjectCount(); ++i) {
-		ManagedReference<SceneObject*> tObj = cast<SceneObject*>( creature->getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = creature->getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		ManagedReference<SceneObject*> tObj = cast<SceneObject*>( closeObjects->get(i).get());
 
 		if (tObj != NULL) {
 			if (tObj->isStructureObject()) {

@@ -184,7 +184,7 @@ public:
 
 	QuadTree* getRegionTree();
 
-	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
+	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry* > >* objects);
 
 	void createContainerComponent();
 
@@ -314,7 +314,7 @@ public:
 
 	QuadTree* getRegionTree();
 
-	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
+	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry* > >* objects);
 
 	void createContainerComponent();
 

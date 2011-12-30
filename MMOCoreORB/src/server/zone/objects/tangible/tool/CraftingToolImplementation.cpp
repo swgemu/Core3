@@ -394,8 +394,10 @@ void CraftingToolImplementation::locateCraftingStation(CreatureObject* player,
 	Locker zoneLocker(zone);
 	ManagedReference<CraftingStation*> station = NULL;
 
-	for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-		SceneObject* scno = cast<SceneObject*>( player->getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* scno = cast<SceneObject*>( closeObjects->get(i).get());
 
 		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
 

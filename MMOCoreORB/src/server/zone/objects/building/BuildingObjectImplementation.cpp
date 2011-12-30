@@ -59,6 +59,9 @@ void BuildingObjectImplementation::loadTemplateData(
 	optionsBitmask = 0x00000100;
 
 	publicStructure = buildingData->isPublicStructure();
+
+	closeobjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+	closeobjects->setNoDuplicateInsertPlan();
 }
 
 void BuildingObjectImplementation::createContainerComponent() {
@@ -128,6 +131,8 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		SceneObjectImplementation::sendTo(player, doClose);
 	} //else { // just send the objects that are in the building, without the cells because they are static in the client
 
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
+
 
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
@@ -136,7 +141,8 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* containerObject = cell->getContainerObject(j);
 
-			if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject || player->containsInRangeObject(containerObject))
+			if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
+					|| (closeObjects != NULL && closeObjects->contains(containerObject)))
 				containerObject->sendTo(player, true);
 		}
 	}
@@ -244,16 +250,21 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	//info("BuildingObjectImplementation::notifyInsertToZone", true);
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* obj = cast<SceneObject*>(getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects->get(i).get());
 
 		if ((obj->isCreatureObject() && isPublicStructure()) || isStaticBuilding()) {
 
 			if (obj->getRootParent() != _this) {
-				object->addInRangeObject(obj, false);
+
+				if (object->getCloseObjects() != NULL)
+					object->addInRangeObject(obj, false);
 				//object->sendTo(obj, true);
 
-				obj->addInRangeObject(object, false);
+				if (obj->getCloseObjects() != NULL)
+					obj->addInRangeObject(object, false);
 				//obj->sendTo(object, true);
 			}
 		}
@@ -261,7 +272,9 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 	notifyInsert(object);
 
-	object->addInRangeObject(_this, false);
+	if (object->getCloseObjects() != NULL)
+		object->addInRangeObject(_this, false);
+
 	addInRangeObject(object, false);
 
 	object->notifyInsertToZone(getZone());
@@ -286,10 +299,14 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 			if (child != obj) {
 				if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
 					//if (is)
-					child->addInRangeObject(obj, false);
+
+					if (child->getCloseObjects() != NULL)
+						child->addInRangeObject(obj, false);
+
 					child->sendTo(scno, true);//sendTo because notifyInsert doesnt send objects with parent
 
-					scno->addInRangeObject(child, false);
+					if (scno->getCloseObjects() != NULL)
+						scno->addInRangeObject(child, false);
 
 					if (scno->getParent() != NULL)
 						scno->sendTo(child, true);
@@ -313,8 +330,11 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* child = cell->getContainerObject(j);
 
-			child->removeInRangeObject(obj);
-			obj->removeInRangeObject(child);
+			if (child->getCloseObjects() != NULL)
+				child->removeInRangeObject(obj);
+
+			if (obj->getCloseObjects() != NULL)
+				obj->removeInRangeObject(child);
 		}
 	}
 }
@@ -377,8 +397,10 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 void BuildingObjectImplementation::broadcastCellPermissions() {
 	Locker _lock(zone);
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		ManagedReference<SceneObject*> obj = cast<SceneObject*>( getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects->get(i).get());
 
 		if (obj->isPlayerCreature())
 			updateCellPermissionsTo(cast<CreatureObject*>(obj.get()));
@@ -482,7 +504,8 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 		_locker = new Locker(zone);
 
 	try {
-		object->addInRangeObject(object, false);
+		if (object->getCloseObjects() != NULL)
+			object->addInRangeObject(object, false);
 		//info("SceneObjectImplementation::insertToBuilding");
 
 		//parent->transferObject(_this, 0xFFFFFFFF);
@@ -518,16 +541,17 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 
 						if (child != object) {
 							//if (is)
-							if (!child->containsInRangeObject(object)) {
+
+							if (child->getCloseObjects() != NULL && !child->getCloseObjects()->contains(object)) {
 								child->addInRangeObject(object, false);
+								object->sendTo(child, true);
+							}
+
+							if (object->getCloseObjects() != NULL && !object->getCloseObjects()->contains(child)) {
+								object->addInRangeObject(child, false);
 								child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
 							}
 
-							if (!object->containsInRangeObject(child)) {
-								object->addInRangeObject(child, false);
-								object->sendTo(child, true);
-							}
-							//scno->sendTo(child, true);
 						}
 					}
 				}

@@ -283,8 +283,10 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	if (sender->isPlayerCreature())
 		firstName = (cast<CreatureObject*>(sender))->getFirstName();
 
-	for (int i = 0; i < sender->inRangeObjectCount(); ++i) {
-		SceneObject* object = cast<SceneObject*>(sender->getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sender->getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
 
 		if (object->isPlayerCreature()) {
 			CreatureObject* creature = cast<CreatureObject*>(object);
@@ -420,8 +422,10 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	try {
 
-		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject* object = cast<SceneObject*>(player->getInRangeObject(i));
+		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
+
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
 
 			if (object->isPlayerCreature()) {
 				CreatureObject* creature = cast<CreatureObject*>(object);

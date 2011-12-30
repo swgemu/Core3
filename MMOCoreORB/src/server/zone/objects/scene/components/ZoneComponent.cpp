@@ -144,8 +144,12 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 				float oldDeltaY = oldy - o->getPositionY();
 
 				if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
-					sceneObject->removeInRangeObject(objectToRemove);
-					objectToRemove->removeInRangeObject(sceneObject);
+
+					if (sceneObject->getCloseObjects() != NULL)
+						sceneObject->removeInRangeObject(objectToRemove);
+
+					if (objectToRemove->getCloseObjects() != NULL)
+						objectToRemove->removeInRangeObject(sceneObject);
 				}
 			}
 		}
@@ -155,8 +159,11 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	for (int i = 0; i < parentCloseObjects->size(); ++i) {
 		QuadTreeEntry* o = parentCloseObjects->get(i);
 
-		sceneObject->addInRangeObject(o, false);
-		o->addInRangeObject(sceneObject, true);
+		if (sceneObject->getCloseObjects() != NULL)
+			sceneObject->addInRangeObject(o, false);
+
+		if (o->getCloseObjects() != NULL)
+			o->addInRangeObject(sceneObject, true);
 	}
 }
 
@@ -240,10 +247,14 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		//notify in range objects that i moved
 	}
 
-	for (int i = 0; i < sceneObject->inRangeObjectCount(); ++i) {
-		SceneObject* object = cast<SceneObject*>(sceneObject->getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sceneObject->getCloseObjects();
 
-		object->notifyPositionUpdate(sceneObject);
+	if (closeObjects != NULL) {
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+
+			object->notifyPositionUpdate(sceneObject);
+		}
 	}
 
 

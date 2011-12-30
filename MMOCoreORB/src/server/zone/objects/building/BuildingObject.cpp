@@ -932,11 +932,15 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
-	Reference<QuadTree*> _ref0;
+	Reference<SortedVector<ManagedReference<QuadTreeEntry* > >*> _ref0;
 	// server/zone/objects/building/BuildingObject.idl():  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl():  		quadTree = new QuadTree(-1024, -1024, 1024, 1024);
-	quadTree = _ref0 = new QuadTree(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl():  		quadTree = null;
+	quadTree = NULL;
+	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects = new SortedVector<QuadTreeEntry>();
+	StructureObjectImplementation::closeobjects = _ref0 = new SortedVector<ManagedReference<QuadTreeEntry* > >();
+	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects.setNoDuplicateInsertPlan();
+	StructureObjectImplementation::closeobjects->setNoDuplicateInsertPlan();
 	// server/zone/objects/building/BuildingObject.idl():  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
 	// server/zone/objects/building/BuildingObject.idl():  		totalCellNumber = 0;

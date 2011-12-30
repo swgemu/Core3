@@ -86,8 +86,11 @@ class BuildingObject extends StructureObject {
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 
-		quadTree = new QuadTree(-1024, -1024, 1024, 1024);
+		quadTree = null;//new QuadTree(-1024, -1024, 1024, 1024);
 		//QuadTree.setSize(-1024, -1024, 1024, 1024);
+		
+		super.closeobjects = new SortedVector<QuadTreeEntry>();
+		super.closeobjects.setNoDuplicateInsertPlan();
 
 		super.staticObject = false;
 						

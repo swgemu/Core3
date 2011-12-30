@@ -39,12 +39,12 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	regionTree->inRange(activeArea, 512);
 
 	// lets update area to the in range players
-	SortedVector<ManagedReference<SceneObject*> > objects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
 
 	newZone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		SceneObject* object = objects.get(i);
+		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
 
 		Vector3 worldPos = object->getWorldPosition();
 
@@ -73,22 +73,26 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	regionTree->remove(activeArea);
 
-	while (activeArea->inRangeObjectCount() > 0) {
-		QuadTreeEntry* obj = activeArea->getInRangeObject(0);
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = activeArea->getCloseObjects();
 
-		if (obj != activeArea)
-			obj->removeInRangeObject(activeArea);
+	if (closeObjects != NULL) {
+		while (closeObjects->size() > 0) {
+			QuadTreeEntry* obj = closeObjects->get(0);
 
-		activeArea->removeInRangeObject((int)0);
+			if (obj != activeArea && obj->getCloseObjects() != NULL)
+				obj->removeInRangeObject(activeArea);
+
+			activeArea->removeInRangeObject((int)0);
+		}
 	}
 
 	// lets remove the in range active areas of players
-	SortedVector<ManagedReference<SceneObject*> > objects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
 
 	zone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		SceneObject* object = objects.get(i);
+		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
 
 		if (object->hasActiveArea(activeArea)) {
 			object->dropActiveArea(activeArea);
@@ -193,13 +197,28 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		} else
 			zone->remove(object);
 
-		while (object->inRangeObjectCount() > 0) {
-			ManagedReference<QuadTreeEntry*> obj = object->getInRangeObject(0);
+		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = object->getCloseObjects();
 
-			if (obj != object)
-				obj->removeInRangeObject(object);
+		if (closeObjects != NULL) {
+			while (closeObjects->size() > 0) {
+				ManagedReference<QuadTreeEntry*> obj = closeObjects->get(0);
 
-			object->removeInRangeObject((int) 0);
+				if (obj != object && obj->getCloseObjects() != NULL)
+					obj->removeInRangeObject(object);
+
+				object->removeInRangeObject((int) 0);
+			}
+		} else {
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+
+			zone->getInRangeObjects(object->getPositionX(), object->getPositionY(), 512, &closeSceneObjects);
+
+			for (int i = 0; i < closeSceneObjects.size(); ++i) {
+				QuadTreeEntry* obj = closeSceneObjects.get(i);
+
+				if (obj != object && obj->getCloseObjects() != NULL)
+					obj->removeInRangeObject(object);
+			}
 		}
 
 		while (activeAreas->size() > 0) {

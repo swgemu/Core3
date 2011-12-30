@@ -15,6 +15,10 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+#include "engine/util/u3d/QuadTreeEntry.h"
+
+#include "system/util/SortedVector.h"
+
 namespace server {
 namespace zone {
 namespace objects {

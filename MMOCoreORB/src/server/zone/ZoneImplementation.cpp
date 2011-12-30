@@ -212,17 +212,10 @@ void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 	quadTree->inRange(entry, range);
 }
 
-int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject*> >* objects) {
+int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects) {
 	Locker locker(_this);
 
-	SortedVector<QuadTreeEntry*> entryObjects;
-
-	quadTree->inRange(x, y, range, entryObjects);
-
-	for (int i = 0; i < entryObjects.size(); ++i) {
-		SceneObject* obj = dynamic_cast<SceneObject*>(entryObjects.get(i));
-		objects->put(obj);
-	}
+	quadTree->inRange(x, y, range, *objects);
 
 	return objects->size();
 }
@@ -230,12 +223,12 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea*> >* objects) {
 	Locker locker(_this);
 
-	SortedVector<QuadTreeEntry*> entryObjects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
 
 	regionTree->inRange(x, y, range, entryObjects);
 
 	for (int i = 0; i < entryObjects.size(); ++i) {
-		ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i));
+		ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 		objects->put(obj);
 	}
 
@@ -247,7 +240,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	Vector3 worldPos = object->getWorldPosition();
 
-	SortedVector<QuadTreeEntry*> entryObjects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
 
 	regionTree->inRange(worldPos.getX(), worldPos.getY(), 512, entryObjects);
 
@@ -266,7 +259,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 	// we update the ones in quadtree.
 	for (int i = 0; i < entryObjects.size(); ++i) {
 		//update in new ones
-		ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i));
+		ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 
 		if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
 			object->addActiveArea(activeArea);

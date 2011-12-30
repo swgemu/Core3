@@ -127,7 +127,7 @@ class Zone extends SceneObject {
 	}
 	
 	@local
-	public native int getInRangeObjects(float x, float y, float range, SortedVector<SceneObject> objects);
+	public native int getInRangeObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects);
 	
 	public native void createContainerComponent();
 	

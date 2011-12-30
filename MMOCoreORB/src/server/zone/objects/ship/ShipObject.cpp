@@ -244,12 +244,17 @@ int ShipObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ShipObjectImplementation::ShipObjectImplementation() {
 	_initializeImplementation();
+	Reference<SortedVector<ManagedReference<QuadTreeEntry* > >*> _ref0;
 	// server/zone/objects/ship/ShipObject.idl():  		Logger.setLoggingName("ShipObject");
 	Logger::setLoggingName("ShipObject");
 	// server/zone/objects/ship/ShipObject.idl():  		super.unknownByte = 1;
 	TangibleObjectImplementation::unknownByte = 1;
 	// server/zone/objects/ship/ShipObject.idl():  		totalMass = 500.0;
 	totalMass = 500.0;
+	// server/zone/objects/ship/ShipObject.idl():  		super.closeobjects = new SortedVector<QuadTreeEntry>();
+	TangibleObjectImplementation::closeobjects = _ref0 = new SortedVector<ManagedReference<QuadTreeEntry* > >();
+	// server/zone/objects/ship/ShipObject.idl():  		super.closeobjects.setNoDuplicateInsertPlan();
+	TangibleObjectImplementation::closeobjects->setNoDuplicateInsertPlan();
 }
 
 float ShipObjectImplementation::getTotalMass() {

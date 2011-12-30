@@ -100,13 +100,13 @@ AABBTree* CollisionManager::getAABBTree(SceneObject* scno, int collisionBlockFla
 }
 
 bool CollisionManager::checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone) {
-	SortedVector<ManagedReference<SceneObject*> > objects(512, 512);
+	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
 	zone->getInRangeObjects(sphereOrigin.getX(), sphereOrigin.getY(), 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = objects.get(i);
+		SceneObject* scno = cast<SceneObject*>(objects.get(i).get());
 
 		try {
 			aabbTree = getAABBTree(scno, -1);
@@ -166,6 +166,15 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float heightOrigin = 1.f;
 	float heightEnd = 1.f;
 
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = object1->getCloseObjects();
+
+	int maxInRangeObjectCount = 0;
+
+	if (closeObjects == NULL) {
+		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+		zone->getInRangeObjects(object1->getPositionX(), object1->getPositionY(), 512, closeObjects.get());
+	}
+
 	if (object1->isCreatureObject())
 		heightOrigin = getRayOriginPoint(cast<CreatureObject*>(object1));
 
@@ -183,10 +192,10 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 	zone->rlock();
 
-	for (int i = 0; i < object1->inRangeObjectCount(); ++i) {
+	for (int i = 0; i < closeObjects->size(); ++i) {
 		AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = cast<SceneObject*>(object1->getInRangeObject(i));
+		SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
 
 		try {
 			aabbTree = getAABBTree(scno, 255);
@@ -339,13 +348,13 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	float intersectionDistance;
 	Triangle* triangle = NULL;
 
-	SortedVector<ManagedReference<SceneObject*> > objects(512, 512);
+	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
 	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = objects.get(i);
+		SceneObject* scno = cast<SceneObject*>(objects.get(i).get());
 
 		try {
 			aabbTree = getAABBTree(scno, -1);

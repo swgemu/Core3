@@ -512,22 +512,33 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 
 		rootZone->remove(_this);
 
-		if (inRangeObjectCount() > 0 || activeAreas.size() > 0) {
-			while (inRangeObjectCount() > 0) {
-				ManagedReference<QuadTreeEntry*> obj = getInRangeObject(0);
+		if (closeobjects != NULL) {
+			while (closeobjects->size() > 0) {
+				ManagedReference<QuadTreeEntry*> obj = closeobjects->get(0);
 
-				if (obj != _this)
+				if (obj != _this && obj->getCloseObjects() != NULL)
 					obj->removeInRangeObject(_this);
 
 				removeInRangeObject((int) 0);
 			}
+		} else {
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
-			while (activeAreas.size() > 0) {
-				ManagedReference<ActiveArea*> area = activeAreas.get(0);
-				area->enqueueExitEvent(_this);
+			rootZone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects);
 
-				activeAreas.remove(0);
+			for (int i = 0; i < closeSceneObjects.size(); ++i) {
+				QuadTreeEntry* obj = closeSceneObjects.get(i);
+
+				if (obj != _this && obj->getCloseObjects() != NULL)
+					obj->removeInRangeObject(_this);
 			}
+		}
+
+		while (activeAreas.size() > 0) {
+			ManagedReference<ActiveArea*> area = activeAreas.get(0);
+			area->enqueueExitEvent(_this);
+
+			activeAreas.remove(0);
 		}
 
 		rootZone->dropSceneObject(_this);
@@ -552,8 +563,24 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 
 	Locker zoneLocker(zone);
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+
+	int maxInRangeObjectCount = 0;
+
+	if (closeobjects == NULL) {
+		zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects);
+
+		maxInRangeObjectCount = closeSceneObjects.size();
+	} else
+		maxInRangeObjectCount = closeobjects->size();
+
+	for (int i = 0; i < maxInRangeObjectCount; ++i) {
+		SceneObject* scno;
+
+		if (closeobjects != NULL)
+			scno = cast<SceneObject*>( closeobjects->get(i).get());
+		else
+			scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
 		if (!sendSelf && scno == _this)
 			continue;
@@ -583,8 +610,23 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 
 	Locker zoneLocker(zone);
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	int maxInRangeObjectCount = 0;
+
+	if (closeobjects == NULL) {
+		zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects);
+
+		maxInRangeObjectCount = closeSceneObjects.size();
+	} else
+		maxInRangeObjectCount = closeobjects->size();
+
+	for (int i = 0; i < maxInRangeObjectCount; ++i) {
+		SceneObject* scno;
+
+		if (closeobjects != NULL)
+			scno = cast<SceneObject*>( closeobjects->get(i).get());
+		else
+			scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
 		if (!sendSelf && scno == _this)
 			continue;
@@ -593,6 +635,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 			object->sendDestroyTo(scno);
 		}
 	}
+
 
 }
 
@@ -622,25 +665,35 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 	//getZone()->rlock(lockZone);
 
 	try {
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+		int maxInRangeObjectCount = 0;
+
+		if (closeobjects == NULL) {
+			zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects);
+
+			maxInRangeObjectCount = closeSceneObjects.size();
+		} else
+			maxInRangeObjectCount = closeobjects->size();
+
+		for (int i = 0; i < maxInRangeObjectCount; ++i) {
+			SceneObject* scno;
+
+			if (closeobjects != NULL)
+				scno = cast<SceneObject*>( closeobjects->get(i).get());
+			else
+				scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
 			if (!sendSelf && scno == _this)
 				continue;
 
-			//if (scno->isPlayerCreature()) {
-				scno->sendMessage(message->clone());
-			//}
+			scno->sendMessage(message->clone());
 		}
-	} catch (...) {
-		//getZone()->runlock(lockZone);
 
+	} catch (...) {
 		delete message;
 
 		throw;
 	}
-
-	//getZone()->runlock(lockZone);
 
 	delete message;
 }
@@ -675,19 +728,32 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 	Locker zoneLocker(zone);
 
 	try {
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+		int maxInRangeObjectCount = 0;
 
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
+		if (closeobjects == NULL) {
+			zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects);
+
+			maxInRangeObjectCount = closeSceneObjects.size();
+		} else
+			maxInRangeObjectCount = closeobjects->size();
+
+		for (int i = 0; i < maxInRangeObjectCount; ++i) {
+			SceneObject* scno;
+
+			if (closeobjects != NULL)
+				scno = cast<SceneObject*>( closeobjects->get(i).get());
+			else
+				scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
 			if (!sendSelf && scno == _this)
 				continue;
 
 			//if (scno->isPlayerCreature()) {
-				for (int j = 0; j < messages->size(); ++j) {
-					BasePacket* msg = messages->get(j);
-					scno->sendMessage(msg->clone());
-				}
-			//}
+			for (int j = 0; j < messages->size(); ++j) {
+				BasePacket* msg = messages->get(j);
+				scno->sendMessage(msg->clone());
+			}
 		}
 
 	} catch (Exception& e) {
@@ -710,8 +776,23 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 
 	Locker zoneLocker(getZone());
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* scno = cast<SceneObject*>( getInRangeObject(i));
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	int maxInRangeObjectCount = 0;
+
+	if (closeobjects == NULL) {
+		zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects);
+
+		maxInRangeObjectCount = closeSceneObjects.size();
+	} else
+		maxInRangeObjectCount = closeobjects->size();
+
+	for (int i = 0; i < maxInRangeObjectCount; ++i) {
+		SceneObject* scno;
+
+		if (closeobjects != NULL)
+			scno = cast<SceneObject*>( closeobjects->get(i).get());
+		else
+			scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
 		if (scno->isInRange(_this, range) && scno->getGameObjectType() == gameObjectType)
 			++numberOfObjects;
