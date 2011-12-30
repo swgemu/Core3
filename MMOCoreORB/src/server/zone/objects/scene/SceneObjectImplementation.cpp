@@ -104,6 +104,10 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		String zoneComponentClassName = templateObject->getZoneComponent();
 		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
 
+		if (zoneComponent == NULL) {
+			zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>("ZoneComponent");
+		}
+
 		String objectMenuComponentName = templateObject->getObjectMenuComponent();
 		objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
 	}
