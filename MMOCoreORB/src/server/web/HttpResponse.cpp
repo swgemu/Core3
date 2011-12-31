@@ -7,9 +7,10 @@
 
 #include "HttpResponse.h"
 
-HttpResponse::HttpResponse() {
+HttpResponse::HttpResponse(HttpSession* session) {
 	// TODO Auto-generated constructor stub
 	docType = "html";
+	this->session = session;
 }
 
 HttpResponse::~HttpResponse() {

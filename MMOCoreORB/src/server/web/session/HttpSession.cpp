@@ -7,13 +7,15 @@
 
 #include "HttpSession.h"
 #include "../WebServer.h"
+///#include "../HttpRequest.h"
+//#include "../HttpResponse.h"
 
 HttpSession::HttpSession() {
 	// TODO Auto-generated constructor stub
 	authenticated = false;
 
-	request = new HttpRequest();
-	response = new HttpResponse();
+	request = new HttpRequest(this);
+	response = new HttpResponse(this);
 }
 
 HttpSession::~HttpSession() {

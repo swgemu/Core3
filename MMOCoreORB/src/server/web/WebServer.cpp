@@ -46,8 +46,8 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "session/HttpSession.h"
 #include "servlets/login/LoginServlet.h"
+#include "servlets/main/MainServlet.h"
 
 mg_context *WebServer::ctx;
 int WebServer::sessionTimeout;
@@ -110,7 +110,7 @@ void WebServer::init() {
 void WebServer::registerBaseContexts() {
 
 	LoginServlet* loginServlet = new LoginServlet("login");
-
+	MainServlet* mainServlet = new MainServlet("main");
 }
 
 void WebServer::whitelistInit() {
@@ -258,6 +258,15 @@ void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_reque
 	return (void*)1;
 }
 
+void WebServer::dispatch(String location, HttpRequest* request, HttpResponse* response) {
+
+	Servlet* servlet = contexts.get(location);
+
+	if(servlet != NULL) {
+		servlet->handleGet(request, response);
+		return;
+	}
+}
 
 /**
  * Find existing session, or create new one if one doesn't exist
@@ -290,19 +299,21 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 	int length = Integer::valueOf(session->getRequest()->getHeader("Content-Length")) + 1;
 
 	/// Ensure no stack corruption
-	if(length < 1000) {
+	if(length > 0 && length < 1000) {
 
 		char* postData = new char[length];
 
 		mg_read(conn, &postData, length);
 
-		postData[length - 1] = 0;
+		//postData[length - 1] = '\0';
+
+		System::out << postData << endl;
 
 		session->getRequest()->updatePostData(String(postData));
 
 		delete [] postData;
 
-	} else {
+	} else if(length >= 1000) {
 		error("Post data length was too long" + length);
 	}
 	info("Updated session for " + ipLongToString(request_info->remote_ip));
@@ -356,9 +367,9 @@ void WebServer::displayLogin(StringBuffer* out) {
 	out->append("Please login");
 }
 
-bool WebServer::authorize(String username, String password, uint64 ipaddress) {
+bool WebServer::authorize(HttpSession* session) {
 
-	Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL, username, password);
+	/*Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL, username, password);
 
 	if(account == NULL) {
 		info("Attemped login by " + username +", account doesn't exist");
@@ -367,17 +378,18 @@ bool WebServer::authorize(String username, String password, uint64 ipaddress) {
 
 	if(account->getAdminLevel() == PlayerObject::NORMALPLAYER ||
 			!authorizedUsers.contains(username)) {
-
+-
 		error("User is not authorized for web access: " + username);
 		return false;
 	}
 
 	WebCredentials* credentials = authorizedUsers.get(username);
 
-	if(credentials->contains(ipLongToString((long)ipaddress)))
+	if(credentials->contains(ipLongToString((long)session->getRemoteIp()))) {
 		return true;
+	}
 	else
-		return false;
+		return false;*/
 }
 
 bool WebServer::isLocalHost(String address) {

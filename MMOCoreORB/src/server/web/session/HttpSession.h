@@ -10,9 +10,16 @@
 
 #include "engine/engine.h"
 #include "../mongoose/mongoose.h"
-#include "../HttpRequest.h"
-#include "../HttpResponse.h"
 
+namespace server {
+namespace web {
+
+class HttpRequest;
+class HttpResponse;
+
+}
+}
+using namespace server::web;
 
 class HttpSession {
 private:

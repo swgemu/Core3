@@ -42,7 +42,17 @@ void LoginServlet::handleGet(HttpRequest* request, HttpResponse* response) {
 
 void LoginServlet::handlePost(HttpRequest* request, HttpResponse* response) {
 
-	bool authorized = WebServer::instance()->authorize(request->getParameter("username"), request->getParameter("password"), request->getRemoteIp());
+	HttpSession* session = request->getSession();
+	/*session->setUserName(request->getParameter("username"));
+	session->setPassword(request->getParameter("password"));
+	session->setRemoteIp(request->getRemoteIp());
+
+	bool authorized = WebServer::instance()->authorize(session);
+
+	if(authorized) {
+		WebServer::instance()->dispatch("main", session);
+		return;
+	}*/
 
 	response->println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
 	response->println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
@@ -53,10 +63,7 @@ void LoginServlet::handlePost(HttpRequest* request, HttpResponse* response) {
 	response->println("	</head>");
 	response->println("	<body>");
 	response->println("		<div class=\"login_box\">");
-	if(authorized)
-		response->println("			<h1>You are authorized</h1>");
-	else
-		response->println("			<h1>You are not authorized</h1>");
+	response->println("			<h1>You are not authorized</h1>");
 	response->println("		</div>");
 	response->println("	</body>");
 	response->println("</html>");

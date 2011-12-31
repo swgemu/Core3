@@ -54,7 +54,14 @@
 #include "mongoose/mongoose.h"
 #include "servlets/Servlet.h"
 #include "WebCredentials.h"
-#include "session/HttpSession.h"
+
+namespace server {
+namespace web {
+namespace session {
+class HttpSession;
+}
+}
+}
 
 class WebServer : public Singleton<WebServer>, public Logger, public Object {
 private:
@@ -88,7 +95,9 @@ public:
 		    struct mg_connection *conn,
 		    const struct mg_request_info *request_info);
 
-	bool authorize(String username, String password, uint64 ipaddress);
+	bool authorize(HttpSession* session);
+
+	void dispatch(String location, HttpRequest* request, HttpResponse* response);
 
 private:
 

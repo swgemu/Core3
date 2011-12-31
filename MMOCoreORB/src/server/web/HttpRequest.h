@@ -10,11 +10,10 @@
 
 #include "engine/engine.h"
 #include "mongoose/mongoose.h"
+#include "session/HttpSession.h"
 
-struct HttpHeader {
-	String name;
-	String value;
-};
+namespace server {
+namespace web {
 
 class HttpRequest {
 private:
@@ -34,8 +33,10 @@ private:
 
 	VectorMap<String, String> parameters;
 
+	HttpSession* session;
+
 public:
-	HttpRequest();
+	HttpRequest(HttpSession* session);
 	virtual ~HttpRequest();
 
 	void update(const struct mg_request_info *request_info);
@@ -68,10 +69,17 @@ public:
 		return remoteIp;
 	}
 
+	HttpSession* getSession() {
+		return session;
+	}
+
 	void updatePostData(String data);
 
 private:
 
 };
+
+} // End namespace web
+} // End Namespace server
 
 #endif /* HTTPREQUEST_H_ */

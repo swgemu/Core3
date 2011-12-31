@@ -9,13 +9,19 @@
 #define HTTPRESPONSE_H_
 
 #include "engine/engine.h"
+#include "session/HttpSession.h"
+
+namespace server {
+namespace web {
 
 class HttpResponse {
 private:
 	StringBuffer out;
 	String docType;
+
+	HttpSession* session;
 public:
-	HttpResponse();
+	HttpResponse(HttpSession* session);
 	virtual ~HttpResponse();
 
 	void update();
@@ -28,6 +34,13 @@ public:
 	void setDocType(String value) {
 		docType = value;
 	}
+
+	HttpSession* getSession() {
+		return session;
+	}
 };
+
+} // End namespace web
+} // End Namespace server
 
 #endif /* HTTPRESPONSE_H_ */

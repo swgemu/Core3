@@ -8,9 +8,10 @@
 #include "HttpRequest.h"
 #include "mongoose/mongoose.h"
 
-HttpRequest::HttpRequest() {
+HttpRequest::HttpRequest(HttpSession* session) {
 	// TODO Auto-generated constructor stub
 
+	this->session = session;
 }
 
 HttpRequest::~HttpRequest() {
