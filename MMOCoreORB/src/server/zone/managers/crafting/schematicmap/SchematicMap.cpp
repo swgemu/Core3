@@ -196,6 +196,7 @@ void SchematicMap::buildSchematicGroups() {
 		if(schematic != NULL) {
 
 			schematic->setGroupName(groupName);
+			schematic->setUseCount(-1);
 
 			DraftSchematicGroup* group = groupMap.get(groupName);
 
@@ -210,7 +211,7 @@ void SchematicMap::buildSchematicGroups() {
 	}
 }
 
-void SchematicMap::addSchematics(PlayerObject* playerObject,
+bool SchematicMap::addSchematics(PlayerObject* playerObject,
 		Vector<String> schematicgroups, bool updateClient) {
 
 	Vector<ManagedReference<DraftSchematic* > > schematics;
@@ -229,7 +230,9 @@ void SchematicMap::addSchematics(PlayerObject* playerObject,
 	}
 
 	if (schematics.size() > 0)
-		playerObject->addSchematics(schematics, updateClient);
+		return playerObject->addSchematics(schematics, updateClient);
+
+	return false;
 }
 
 void SchematicMap::removeSchematics(PlayerObject* playerObject,
@@ -254,25 +257,25 @@ void SchematicMap::removeSchematics(PlayerObject* playerObject,
 		playerObject->removeSchematics(schematics, updateClient);
 }
 
-void SchematicMap::addSchematic(PlayerObject* playerObject,
-		DraftSchematic* schematic, bool updateClient) {
-
-	Vector<ManagedReference<DraftSchematic*> > schematics;
-
-	schematics.add(schematic);
-
-	playerObject->addSchematics(schematics, updateClient);
-}
-
-void SchematicMap::removeSchematic(PlayerObject* playerObject,
-		DraftSchematic* schematic, bool updateClient) {
-
-	Vector<ManagedReference<DraftSchematic*> > schematics;
-
-	schematics.add(schematic);
-
-	playerObject->removeSchematics(schematics, updateClient);
-}
+//bool SchematicMap::addSchematic(PlayerObject* playerObject,
+//		DraftSchematic* schematic, bool updateClient) {
+//
+//	Vector<ManagedReference<DraftSchematic*> > schematics;
+//
+//	schematics.add(schematic);
+//
+//	return playerObject->addSchematics(schematics, updateClient);
+//}
+//
+//void SchematicMap::removeSchematic(PlayerObject* playerObject,
+//		DraftSchematic* schematic, bool updateClient) {
+//
+//	Vector<ManagedReference<DraftSchematic*> > schematics;
+//
+//	schematics.add(schematic);
+//
+//	playerObject->removeSchematics(schematics, updateClient);
+//}
 
 void SchematicMap::sendDraftSlotsTo(CreatureObject* player, uint32 schematicID) {
 	ManagedReference<DraftSchematic*> schematic = schematicCrcMap.get(schematicID);

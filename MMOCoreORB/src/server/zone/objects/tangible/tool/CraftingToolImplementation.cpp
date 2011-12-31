@@ -976,6 +976,18 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player, int cli
 		dtano3->close();
 		player->sendMessage(dtano3);
 		// End Dtano3 *****************************************************
+	} else {
+		if(draftSchematic->isRewarded()) {
+			draftSchematic->decreaseUseCount();
+
+			if(draftSchematic->getUseCount() == 0) {
+				PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+				if(ghost == NULL)
+					return;
+
+				ghost->removeRewardedSchematic(draftSchematic, true);
+			}
+		}
 	}
 
 }
@@ -1140,11 +1152,13 @@ void CraftingToolImplementation::customization(CreatureObject* player, String& n
 		DraftSchematic* draftSchematic = manufactureSchematic->getDraftSchematic();
 
 		if(draftSchematic != NULL) {
-			uint32 clientCRC = draftSchematic->getTemplate((int)templateChoice).hashCode();
-			prototype->setClientObjectCRC(clientCRC);
+			if(draftSchematic->getTemplateListSize() >= (int)templateChoice) {
+				uint32 clientCRC = draftSchematic->getTemplate((int)templateChoice).hashCode();
+				prototype->setClientObjectCRC(clientCRC);
 
-			prototype->sendDestroyTo(player);
-			prototype->sendTo(player, true);
+				prototype->sendDestroyTo(player);
+				prototype->sendTo(player, true);
+			}
 		}
 	}
 

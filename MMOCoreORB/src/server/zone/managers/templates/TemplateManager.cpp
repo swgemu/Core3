@@ -42,6 +42,7 @@
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/templates/tangible/LootkitObjectTemplate.h"
+#include "server/zone/templates/tangible/LootSchematicTemplate.h"
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/templates/tangible/FireworkObjectTemplate.h"
 #include "server/zone/templates/tangible/CampKitTemplate.h"
@@ -339,6 +340,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<SharedUniverseObjectTemplate>(SharedObjectTemplate::SUNI);
 	templateFactory.registerObject<CharacterBuilderTerminalTemplate>(SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
 	templateFactory.registerObject<LootkitObjectTemplate>(SharedObjectTemplate::LOOTKIT);
+	templateFactory.registerObject<LootSchematicTemplate>(SharedObjectTemplate::LOOTSCHEMATIC);
 	templateFactory.registerObject<GamblingTerminalTemplate>(SharedObjectTemplate::GAMBLINGTERMINAL);
 	templateFactory.registerObject<FireworkObjectTemplate>(SharedObjectTemplate::FIREWORK);
 	templateFactory.registerObject<SurveyToolTemplate>(SharedObjectTemplate::SURVEYTOOL);
@@ -486,6 +488,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("SCOT", SharedObjectTemplate::SCOT);
 	luaTemplatesInstance->setGlobalInt("CHARACTERBUILDERTERMINAL", SharedObjectTemplate::CHARACTERBUILDERTERMINAL);
 	luaTemplatesInstance->setGlobalInt("LOOTKIT", SharedObjectTemplate::LOOTKIT);
+	luaTemplatesInstance->setGlobalInt("LOOTSCHEMATIC", SharedObjectTemplate::LOOTSCHEMATIC);
 	luaTemplatesInstance->setGlobalInt("GAMBLINGTERMINAL", SharedObjectTemplate::GAMBLINGTERMINAL);
 	luaTemplatesInstance->setGlobalInt("FIREWORK", SharedObjectTemplate::FIREWORK);
 	luaTemplatesInstance->setGlobalInt("SURVEYTOOL", SharedObjectTemplate::SURVEYTOOL);

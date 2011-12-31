@@ -281,6 +281,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/LootSchematicMenuComponent.cpp \
 		server/zone/objects/scene/components/ObjectMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerZoneComponent.cpp \
 		server/zone/objects/building/components/ShuttleZoneComponent.cpp \
@@ -306,6 +307,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/web/servlets/Servlet.cpp \
 		server/web/servlets/resource/ResourceServlet.cpp \
 		server/web/servlets/login/LoginServlet.cpp \
+		server/web/servlets/main/MainServlet.cpp \
 		server/web/mongoose/mongoose.c \
 		server/zone/ZoneReference.cpp \
 		server/zone/ZoneServerImplementation.cpp \

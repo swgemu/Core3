@@ -18,7 +18,7 @@
  *	DraftSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_,RPC_ISREWARDED__};
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
@@ -408,18 +408,18 @@ int DraftSchematic::getUseCount() {
 		return _implementation->getUseCount();
 }
 
-void DraftSchematic::setUseCount(int count) {
+void DraftSchematic::setUseCount(int newUseCount) {
 	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_SETUSECOUNT__INT_);
-		method.addSignedIntParameter(count);
+		method.addSignedIntParameter(newUseCount);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setUseCount(count);
+		_implementation->setUseCount(newUseCount);
 }
 
 void DraftSchematic::decreaseUseCount(int count) {
@@ -476,6 +476,19 @@ String DraftSchematic::getTemplate(int i) {
 		return _return_getTemplate;
 	} else
 		return _implementation->getTemplate(i);
+}
+
+bool DraftSchematic::isRewarded() {
+	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISREWARDED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRewarded();
 }
 
 DistributedObjectServant* DraftSchematic::_getImplementation() {
@@ -632,8 +645,8 @@ DraftSchematicImplementation::DraftSchematicImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/draftschematic/DraftSchematic.idl():  		schematicTemplate = null;
 	schematicTemplate = NULL;
-	// server/zone/objects/draftschematic/DraftSchematic.idl():  		useCount = 0;
-	useCount = 0;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		useCount = 1;
+	useCount = 1;
 	// server/zone/objects/draftschematic/DraftSchematic.idl():  		schematicID = 0;
 	schematicID = 0;
 	// server/zone/objects/draftschematic/DraftSchematic.idl():  		groupName = "";
@@ -672,13 +685,9 @@ int DraftSchematicImplementation::getUseCount() {
 	return useCount;
 }
 
-void DraftSchematicImplementation::setUseCount(int count) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl():  		useCount = count;
-	useCount = count;
-}
-
 void DraftSchematicImplementation::decreaseUseCount(int count) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl():  		setUseCount(useCount - 1);
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  	}
+	if (useCount != -1)	// server/zone/objects/draftschematic/DraftSchematic.idl():  			setUseCount(useCount - 1);
 	setUseCount(useCount - 1);
 }
 
@@ -792,6 +801,9 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETTEMPLATE__INT_:
 		resp->insertAscii(getTemplate(inv->getSignedIntParameter()));
 		break;
+	case RPC_ISREWARDED__:
+		resp->insertBoolean(isRewarded());
+		break;
 	default:
 		return NULL;
 	}
@@ -891,8 +903,8 @@ int DraftSchematicAdapter::getUseCount() {
 	return (static_cast<DraftSchematic*>(stub))->getUseCount();
 }
 
-void DraftSchematicAdapter::setUseCount(int count) {
-	(static_cast<DraftSchematic*>(stub))->setUseCount(count);
+void DraftSchematicAdapter::setUseCount(int newUseCount) {
+	(static_cast<DraftSchematic*>(stub))->setUseCount(newUseCount);
 }
 
 void DraftSchematicAdapter::decreaseUseCount(int count) {
@@ -909,6 +921,10 @@ int DraftSchematicAdapter::getTemplateListSize() {
 
 String DraftSchematicAdapter::getTemplate(int i) {
 	return (static_cast<DraftSchematic*>(stub))->getTemplate(i);
+}
+
+bool DraftSchematicAdapter::isRewarded() {
+	return (static_cast<DraftSchematic*>(stub))->isRewarded();
 }
 
 /*

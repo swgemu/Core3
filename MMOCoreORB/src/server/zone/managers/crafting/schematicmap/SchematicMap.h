@@ -78,10 +78,10 @@ public:
 
 	void loadDraftSchematicDatabase();
 
-	void addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
+	bool addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
 	void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
-	void addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
-	void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
+//	bool addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
+//	void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 
 	void sendDraftSlotsTo(CreatureObject* player, uint32 schematicID);
 	void sendResourceWeightsTo(CreatureObject* player, uint32 schematicID);

@@ -373,13 +373,13 @@ void PlayerObject::removeAbility(Ability* ability, bool notifyClient) {
 		_implementation->removeAbility(ability, notifyClient);
 }
 
-void PlayerObject::addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
+bool PlayerObject::addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->addSchematics(schematics, notifyClient);
+		return _implementation->addSchematics(schematics, notifyClient);
 }
 
 void PlayerObject::removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
@@ -391,22 +391,22 @@ void PlayerObject::removeSchematics(Vector<ManagedReference<DraftSchematic* > >&
 		_implementation->removeSchematics(schematics, notifyClient);
 }
 
-void PlayerObject::addSchematic(DraftSchematic* schematic, bool notifyClient) {
+bool PlayerObject::addRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->addSchematic(schematic, notifyClient);
+		return _implementation->addRewardedSchematic(schematic, notifyClient);
 }
 
-void PlayerObject::removeSchematic(DraftSchematic* schematic, bool notifyClient) {
+void PlayerObject::removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->removeSchematic(schematic, notifyClient);
+		_implementation->removeRewardedSchematic(schematic, notifyClient);
 }
 
 void PlayerObject::setLanguageID(byte language, bool notifyClient) {

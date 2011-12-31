@@ -162,7 +162,7 @@ public:
 
 	int getUseCount();
 
-	void setUseCount(int count);
+	void setUseCount(int newUseCount);
 
 	void decreaseUseCount(int count = 1);
 
@@ -171,6 +171,8 @@ public:
 	int getTemplateListSize();
 
 	String getTemplate(int i);
+
+	bool isRewarded();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -282,7 +284,7 @@ public:
 
 	int getUseCount();
 
-	void setUseCount(int count);
+	void setUseCount(int newUseCount);
 
 	void decreaseUseCount(int count = 1);
 
@@ -291,6 +293,8 @@ public:
 	int getTemplateListSize();
 
 	String getTemplate(int i);
+
+	bool isRewarded();
 
 	WeakReference<DraftSchematic*> _this;
 
@@ -381,7 +385,7 @@ public:
 
 	int getUseCount();
 
-	void setUseCount(int count);
+	void setUseCount(int newUseCount);
 
 	void decreaseUseCount(int count);
 
@@ -390,6 +394,8 @@ public:
 	int getTemplateListSize();
 
 	String getTemplate(int i);
+
+	bool isRewarded();
 
 protected:
 	String _param0_setGroupName__String_;

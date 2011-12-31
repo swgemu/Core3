@@ -30,8 +30,10 @@ public:
 
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
 
+	bool addRewardedSchematic(DraftSchematic* schematic);
 
-	void awardLimitedUseSchematics();
+	void addRewardedSchematics(SceneObject* player);
+	void removeRewardedSchematic(DraftSchematic* schematic);
 	bool updateUseCount(DraftSchematic* schematic);
 
 	bool contains(DraftSchematic* schematic);
@@ -44,12 +46,14 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	void getLimitedUseSchematicList(Vector<ManagedReference<DraftSchematic*> >& schematics);
-	void loadLimitedUseSchematics(Vector<ManagedReference<DraftSchematic*> >& schematics);
+	void getRewardedSchematicList(Vector<ManagedReference<DraftSchematic*> >& schematics);
+	void populateRewardedSchematics(Vector<ManagedReference<DraftSchematic*> >& schematics);
 
 	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(CreatureObject* player, Vector<uint32>* enabledTabs, int complexityLevel);
 
 	void insertToMessage(BaseMessage* msg);
+
+	void removeAll(DeltaMessage* message = NULL);
 };
 
 

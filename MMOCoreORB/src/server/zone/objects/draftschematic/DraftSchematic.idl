@@ -60,7 +60,7 @@ import system.util.Vector;
 class DraftSchematic extends IntangibleObject {
 
 	/// Arbitrary ID for the schematic
-	private unsigned int schematicID; 
+	private unsigned int schematicID;  
 	
 	/// Name of schematic group this belongs to
 	private transient string groupName;
@@ -72,7 +72,7 @@ class DraftSchematic extends IntangibleObject {
 	
 	public DraftSchematic() {
 		schematicTemplate = null;
-		useCount = 0;
+		useCount = 1;
 		schematicID = 0;
 		groupName = "";
 		
@@ -229,12 +229,11 @@ class DraftSchematic extends IntangibleObject {
 		return useCount;
 	}
 	
-	public void setUseCount(int count) {
-		useCount = count;
-	}
+	public native void setUseCount(int newUseCount);
 	
 	public void decreaseUseCount(int count = 1) {
-		setUseCount(useCount - 1);
+		if(useCount != -1)
+			setUseCount(useCount - 1);
 	}
 	
 	public void increaseUseCount(int count) {
@@ -248,4 +247,6 @@ class DraftSchematic extends IntangibleObject {
 	public string getTemplate(int i) {
 		return schematicTemplate.getTemplate(i);
 	}
+	
+	public native boolean isRewarded();
 }

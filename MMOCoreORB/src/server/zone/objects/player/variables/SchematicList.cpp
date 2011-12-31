@@ -10,20 +10,11 @@
 #include "server/zone/ZoneServer.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
-
-/*bool SchematicList::toString(String& str) {
-	Vector<ManagedReference<DraftSchematic*> > schematics;
-	getLimitedUseSchematicList(schematics);
-
-	TypeInfo<DraftSchematic*>::toString(&updateCounter, str);
-	schematics.toString(str);
-
-	return true;
-}*/
+#include "server/zone/objects/player/PlayerObject.h"
 
 bool SchematicList::toBinaryStream(ObjectOutputStream* stream) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
-	getLimitedUseSchematicList(schematics);
+	getRewardedSchematicList(schematics);
 
 	TypeInfo<DraftSchematic*>::toBinaryStream(&updateCounter, stream);
 	schematics.toBinaryStream(stream);
@@ -31,62 +22,74 @@ bool SchematicList::toBinaryStream(ObjectOutputStream* stream) {
 	return true;
 }
 
-
-/*bool SchematicList::parseFromString(const String& str, int version) {
-	Vector<ManagedReference<DraftSchematic*> > schematics;
-
-	TypeInfo<DraftSchematic*>::parseFromString(&updateCounter, str, version);
-	schematics.parseFromString(str, version);
-
-	loadLimitedUseSchematics(schematics);
-
-	return true;
-}*/
-
 bool SchematicList::parseFromBinaryStream(ObjectInputStream* stream) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
 	TypeInfo<DraftSchematic*>::parseFromBinaryStream(&updateCounter, stream);
 	schematics.parseFromBinaryStream(stream);
 
-	loadLimitedUseSchematics(schematics);
+	populateRewardedSchematics(schematics);
 
 	return true;
 }
 
-void SchematicList::getLimitedUseSchematicList(Vector<ManagedReference<DraftSchematic*> >& schematics) {
-	for (int i = 0; i < vector.size(); ++i) {
-		DraftSchematic* schematic = vector.get(i);
-
-		if(schematic->getGroupName().isEmpty()) {
-			schematics.add(schematic);
-		}
+void SchematicList::getRewardedSchematicList(Vector<ManagedReference<DraftSchematic*> >& schematics) {
+	for (int i = 0; i < rewardedSchematics.size(); ++i) {
+		DraftSchematic* schematic = rewardedSchematics.get(i);
+		schematics.add(schematic);
 	}
 }
 
-void SchematicList::loadLimitedUseSchematics(Vector<ManagedReference<DraftSchematic*> >& schematics) {
+void SchematicList::populateRewardedSchematics(Vector<ManagedReference<DraftSchematic*> >& schematics) {
 
 	for (int i = 0; i < schematics.size(); ++i) {
-		ManagedReference<DraftSchematic*>  schematic = schematics.get(i);
+		DraftSchematic*  schematic = schematics.get(i);
+		System::out << schematic->getCustomName() << endl;
 		rewardedSchematics.add(schematic);
 	}
-	awardLimitedUseSchematics();
 }
 
-void SchematicList::awardLimitedUseSchematics() {
-
-	for (int i = 0; i < rewardedSchematics.size(); ++i) {
-		ManagedReference<DraftSchematic*>  schematic = rewardedSchematics.get(i);
-		add(schematic);
+void SchematicList::addRewardedSchematics(SceneObject* player) {
+	if(player->isPlayerObject()) {
+		PlayerObject* ghost = cast<PlayerObject*>(player);
+		if(ghost != NULL)
+			ghost->addSchematics(rewardedSchematics, true);
 	}
+
+}
+
+bool SchematicList::addRewardedSchematic(DraftSchematic* schematic) {
+	if(schematic->isRewarded()){
+
+		if(contains(schematic)) {
+			// Increase Use Count
+			for(int i = 0; i < rewardedSchematics.size(); ++i) {
+
+				if(rewardedSchematics.get(i)->getServerObjectCRC() ==
+						schematic->getServerObjectCRC()) {
+
+					rewardedSchematics.get(i)->increaseUseCount(schematic->getUseCount());
+					return true;
+				}
+			}
+
+		} else {
+			rewardedSchematics.add(schematic);
+		}
+	}
+
+	return false;
+}
+
+void SchematicList::removeRewardedSchematic(DraftSchematic* schematic) {
+	if(rewardedSchematics.contains(schematic))
+		rewardedSchematics.removeElement(schematic);
+
 }
 
 bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int updates) {
 
 	bool val = vector.add(schematic);
-
-	if(schematic->getGroupName().isEmpty())
-		rewardedSchematics.add(schematic);
 
 	if (val && message != NULL) {
 		if (updates != 0)
@@ -202,4 +205,9 @@ void SchematicList::insertToMessage(BaseMessage* msg) {
 		msg->insertInt(schematic->getSchematicID());
 		msg->insertInt(schematic->getClientObjectCRC());  /// Must be client CRC
 	}
+}
+
+void SchematicList::removeAll(DeltaMessage* message) {
+	rewardedSchematics.removeAll();
+	DeltaVector<ManagedReference<DraftSchematic* > >::removeAll(message);
 }

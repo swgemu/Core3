@@ -149,6 +149,7 @@ public:
 	const static int SLICINGTOOL = 0x400001F;
 	const static int CONTAINER = 0x4000020;
 	const static int VENDORCREATURE = 0x4000021;
+	const static int LOOTSCHEMATIC = 0x4000022;
 
 public:
 	SharedObjectTemplate();

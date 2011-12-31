@@ -427,16 +427,22 @@ class PlayerObject extends IntangibleObject {
 	
 	
 	@local
-	public native void addSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
+	public native boolean addSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
 	
 	@local
 	public native void removeSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
 	
 	@local
-	public native void addSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	public native boolean addRewardedSchematic(DraftSchematic schematic, boolean notifyClient = true);
 	
 	@local
-	public native void removeSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	public native void removeRewardedSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	
+	//@local
+	//public native void addSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	
+	//@local
+	//public native void removeSchematic(DraftSchematic schematic, boolean notifyClient = true);
 
 	/**
 	 * Sets the specified language id
