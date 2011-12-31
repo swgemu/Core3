@@ -192,3 +192,6 @@ rori_static_spawns = {
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,4635775},
 	{"trainer_weaponsmith",0,3681,0,-6420,180,0},
 }
+
+rori_badges = {
+}

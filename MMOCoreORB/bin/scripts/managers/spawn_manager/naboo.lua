@@ -234,3 +234,6 @@ naboo_static_spawns = {
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1717556},
 	{"trainer_weaponsmith",0,-3.1,1.1,-8.2,91,1692094},
 }
+
+naboo_badges = {
+}

@@ -137,8 +137,6 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/terrain/TerrainManager.h"
 
-#include "server/zone/managers/planet/NoBuildAreaMap.h"
-
 #include "server/zone/managers/planet/MissionTargetMap.h"
 
 #include "server/zone/managers/planet/HuntingTargetMap.h"
@@ -192,8 +190,6 @@ public:
 
 	void loadPlayerRegions();
 
-	void loadNoBuildAreas();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -204,9 +200,7 @@ public:
 
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
-	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
-
-	bool isBuildingPermittedAt(float x, float y);
+	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
 
 	int getTravelFare(const String& destinationPlanet);
 
@@ -316,8 +310,6 @@ protected:
 
 	Reference<TerrainManager* > terrainManager;
 
-	Reference<NoBuildAreaMap* > noBuildAreaMap;
-
 	Reference<MissionTargetMap* > missionNpcs;
 
 	Reference<MissionTargetMap* > performanceLocations;
@@ -355,8 +347,6 @@ public:
 
 	void loadPlayerRegions();
 
-	void loadNoBuildAreas();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -371,9 +361,7 @@ protected:
 public:
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
-	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
-
-	bool isBuildingPermittedAt(float x, float y);
+	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
 
 	int getTravelFare(const String& destinationPlanet);
 
@@ -486,8 +474,6 @@ public:
 
 	void loadPlayerRegions();
 
-	void loadNoBuildAreas();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -496,7 +482,7 @@ public:
 
 	void loadReconLocations();
 
-	bool isBuildingPermittedAt(float x, float y);
+	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
 
 	int getTravelFare(const String& destinationPlanet);
 

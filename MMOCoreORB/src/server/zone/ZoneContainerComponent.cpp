@@ -36,7 +36,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	regionTree->insert(activeArea);
 
-	regionTree->inRange(activeArea, 512);
+	//regionTree->inRange(activeArea, 512);
 
 	// lets update area to the in range players
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects;

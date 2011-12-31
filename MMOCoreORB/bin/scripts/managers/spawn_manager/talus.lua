@@ -143,3 +143,6 @@ talus_static_spawns = {
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,3175562},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,4265416},
 }
+
+talus_badges = {
+}

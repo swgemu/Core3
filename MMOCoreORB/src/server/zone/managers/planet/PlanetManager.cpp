@@ -26,7 +26,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -94,19 +94,6 @@ void PlanetManager::loadPlayerRegions() {
 		_implementation->loadPlayerRegions();
 }
 
-void PlanetManager::loadNoBuildAreas() {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_LOADNOBUILDAREAS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->loadNoBuildAreas();
-}
-
 void PlanetManager::loadBadgeAreas() {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -168,28 +155,20 @@ PlanetTravelPoint* PlanetManager::getNearestPlanetTravelPoint(SceneObject* objec
 		return _implementation->getNearestPlanetTravelPoint(object, range);
 }
 
-bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->isNoBuildArea(x, y, fullAreaName);
-}
-
-bool PlanetManager::isBuildingPermittedAt(float x, float y) {
+bool PlanetManager::isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_);
+		DistributedMethod method(this, RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
+		method.addObjectParameter(objectTryingToBuild);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isBuildingPermittedAt(x, y);
+		return _implementation->isBuildingPermittedAt(x, y, objectTryingToBuild);
 }
 
 int PlanetManager::getTravelFare(const String& destinationPlanet) {
@@ -1004,9 +983,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_LOADPLAYERREGIONS__:
 		loadPlayerRegions();
 		break;
-	case RPC_LOADNOBUILDAREAS__:
-		loadNoBuildAreas();
-		break;
 	case RPC_LOADBADGEAREAS__:
 		loadBadgeAreas();
 		break;
@@ -1019,8 +995,8 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_LOADRECONLOCATIONS__:
 		loadReconLocations();
 		break;
-	case RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_:
-		resp->insertBoolean(isBuildingPermittedAt(inv->getFloatParameter(), inv->getFloatParameter()));
+	case RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_:
+		resp->insertBoolean(isBuildingPermittedAt(inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_GETTRAVELFARE__STRING_:
 		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
@@ -1115,10 +1091,6 @@ void PlanetManagerAdapter::loadPlayerRegions() {
 	(static_cast<PlanetManager*>(stub))->loadPlayerRegions();
 }
 
-void PlanetManagerAdapter::loadNoBuildAreas() {
-	(static_cast<PlanetManager*>(stub))->loadNoBuildAreas();
-}
-
 void PlanetManagerAdapter::loadBadgeAreas() {
 	(static_cast<PlanetManager*>(stub))->loadBadgeAreas();
 }
@@ -1135,8 +1107,8 @@ void PlanetManagerAdapter::loadReconLocations() {
 	(static_cast<PlanetManager*>(stub))->loadReconLocations();
 }
 
-bool PlanetManagerAdapter::isBuildingPermittedAt(float x, float y) {
-	return (static_cast<PlanetManager*>(stub))->isBuildingPermittedAt(x, y);
+bool PlanetManagerAdapter::isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild) {
+	return (static_cast<PlanetManager*>(stub))->isBuildingPermittedAt(x, y, objectTryingToBuild);
 }
 
 int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {

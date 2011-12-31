@@ -4,3 +4,6 @@
 space_corellia_regions = {}
 
 space_corellia_static_spawns = { }
+
+space_corellia_badges = {
+}

@@ -36,8 +36,6 @@
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
-	noBuildAreaMap = new NoBuildAreaMap();
-
 	missionNpcs = new MissionTargetMap();
 
 	performanceLocations = new MissionTargetMap();
@@ -63,7 +61,6 @@ void PlanetManagerImplementation::initialize() {
 	loadTravelFares();
 
 	loadBadgeAreas();
-	loadNoBuildAreas();
 	loadPerformanceLocations();
 	loadHuntingTargets();
 	loadReconLocations();
@@ -112,6 +109,37 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	luaObject.pop();
 
+	lua->runFile("scripts/managers/spawn_manager/" + zone->getZoneName() + ".lua");
+
+	LuaObject badges = lua->getGlobalObject(zone->getZoneName() + "_badges");
+
+	if (badges.isValidTable()) {
+		uint32 hashCode = String("object/badge_area.iff").hashCode();
+
+		for (int i = 1; i <= badges.getTableSize(); ++i) {
+			lua_rawgeti(lua->getLuaState(), -1, i);
+
+			LuaObject badge(lua->getLuaState());
+
+			String badgeName = badge.getStringAt(1);
+			float x = badge.getFloatAt(2);
+			float y = badge.getFloatAt(3);
+			float radius = badge.getFloatAt(4);
+			int badgeID = badge.getIntAt(5);
+
+			ManagedReference<BadgeActiveArea*> obj = cast<BadgeActiveArea*>(server->getZoneServer()->createObject(hashCode, 0));
+			obj->setRadius(radius);
+			obj->setBadge(badgeID);
+			obj->initializePosition(x, 0, y);
+
+			zone->transferObject(obj, -1, false);
+
+			badge.pop();
+		}
+	}
+
+	badges.pop();
+
 	delete lua;
 	lua = NULL;
 }
@@ -142,9 +170,13 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 			obj->initializePosition(x, z, y);
 			obj->setDirection(ow, ox, oy, oz);
-			//TODO: Parent
-			//obj->insertToZone(zone);
-			zone->transferObject(obj, -1, true);
+
+			SceneObject* parent = zone->getZoneServer()->getObject(parentID);
+
+			if (parent != NULL)
+				parent->transferObject(obj, -1, true);
+			else
+				zone->transferObject(obj, -1, true);
 		}
 
 		planetObject.pop();
@@ -351,14 +383,6 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	//TODO: Deprecate this to load from lua files.
 }
 
-void PlanetManagerImplementation::loadNoBuildAreas() {
-	//TODO: Deprecate. These should be loaded by their objects upon creation.
-}
-
-bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& fullAreaName) {
-	return noBuildAreaMap->isNoBuildArea(x, y, fullAreaName);
-}
-
 void PlanetManagerImplementation::loadClientRegions() {
 	TemplateManager* templateManager = TemplateManager::instance();
 
@@ -505,11 +529,41 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 void PlanetManagerImplementation::loadHuntingTargets() {
 }
 
-bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y) {
-	if (cityRegionMap->getCityRegionAt(x, y) == NULL)
-		return true;
+bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
+	/*if (cityRegionMap->getCityRegionAt(x, y) == NULL)  //city regionsn create active areas that are no build
+		return true;*/
 
-	return false;
+	Vector<ManagedReference<ActiveArea* > >* activeAreas = object->getActiveAreas();
+
+	Vector3 targetPos(x, y, 0);
+
+	for (int i = 0; i < activeAreas->size(); ++i)
+		if (activeAreas->get(i)->isNoBuildArea())
+			return false;
+
+	//now lets check surrounding objects
+	SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects = object->getCloseObjects();
+
+	if (closeObjects != NULL) {
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			SceneObject* obj = cast<SceneObject*>(closeObjects->get(i).get());
+
+			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+
+			if (objectTemplate != NULL) {
+				float radius = objectTemplate->getNoBuildRadius();
+
+				if (radius > 0) {
+					Vector3 objWorldPos = obj->getWorldPosition();
+
+					if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius)
+						return false;
+				}
+			}
+		}
+	}
+
+	return true;
 }
 
 

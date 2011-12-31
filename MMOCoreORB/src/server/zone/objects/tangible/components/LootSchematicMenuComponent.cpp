@@ -53,7 +53,7 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		ManagedReference<DraftSchematic* > schematic = (DraftSchematic*) ghost->getZoneServer()->createObject(schematicData->getTargetDraftSchematic().hashCode(), 1);
+		ManagedReference<DraftSchematic* > schematic = cast<DraftSchematic*>(ghost->getZoneServer()->createObject(schematicData->getTargetDraftSchematic().hashCode(), 1));
 
 		if (schematic == NULL) {
 			error("Unable to create schematic: " + schematicData->getTargetDraftSchematic());

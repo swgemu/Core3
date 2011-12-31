@@ -84,3 +84,6 @@ lok_static_spawns = {
 	{"trainer_doctor",0,-25.366,0.26,-4.25289,84,2745870},
 	{"trainer_medic",0,-16.0068,0.26,-2.42861,117,2745870},
 }
+
+lok_badges = {
+}

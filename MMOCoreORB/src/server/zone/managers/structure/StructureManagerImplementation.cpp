@@ -144,7 +144,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, uint64 deedID, float x, float y, int angle) {
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-	if (!planetManager->isBuildingPermittedAt(x, y)) {
+	if (!planetManager->isBuildingPermittedAt(x, y, creature)) {
 		creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 		return 1;
 	}

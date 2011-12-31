@@ -733,23 +733,25 @@ void AiAgentImplementation::doMovement() {
 
 	float maxDistance = 5;
 
-	if (followObject != NULL) {
+	ManagedReference<SceneObject*> follow = followObject.get();
+
+	if (follow != NULL) {
 		// drop everything and go after the target, this will also chase the target without having to reach them to change direction
 		//patrolPoints.removeAll();
 
-		Locker locker(&targetMutex);
+		//Locker locker(&targetMutex);
 
 		switch (followState) {
 		case AiAgent::OBLIVIOUS:
 			break;
 		case AiAgent::WATCHING:
 			setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent());
-			setDirection(atan2(followObject->getPositionX() - getPositionX(), followObject->getPositionX() - getPositionX()));
+			setDirection(atan2(follow->getPositionX() - getPositionX(), follow->getPositionX() - getPositionX()));
 			checkNewAngle();
 			updateCurrentPosition(&patrolPoints.get(0));
 			break;
 		case AiAgent::STALKING:
-			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent());
 			maxDistance = 25;
 			break;
 		case AiAgent::FOLLOWING: {
@@ -758,7 +760,7 @@ void AiAgentImplementation::doMovement() {
 			/*float newX = followObject->getPositionX() + (-3 + System::random(6));
 			float newY = followObject->getPositionY() + (-3 + System::random(6));*/
 
-			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent());
 			// stop in weapons range
 			if (weapon != NULL )
 				maxDistance = weapon->getIdealRange();

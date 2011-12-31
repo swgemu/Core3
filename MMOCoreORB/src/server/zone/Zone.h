@@ -188,7 +188,7 @@ public:
 
 	void createContainerComponent();
 
-	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
+	int getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea* > >* objects);
 
 	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(const String& mapObjectLocationType);
 
@@ -318,7 +318,7 @@ public:
 
 	void createContainerComponent();
 
-	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
+	int getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea* > >* objects);
 
 	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(const String& mapObjectLocationType);
 

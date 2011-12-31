@@ -12,7 +12,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_SETRADIUS__FLOAT_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETRADIUS__FLOAT_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -125,6 +125,19 @@ bool ActiveArea::isRegion() {
 		return _implementation->isRegion();
 }
 
+bool ActiveArea::isNoBuildArea() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISNOBUILDAREA__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isNoBuildArea();
+}
+
 bool ActiveArea::containsPoint(float x, float y) {
 	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -140,19 +153,6 @@ bool ActiveArea::containsPoint(float x, float y) {
 		return _implementation->containsPoint(x, y);
 }
 
-float ActiveArea::getRadius() {
-	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETRADIUS__);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->getRadius();
-}
-
 float ActiveArea::getRadius2() {
 	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -164,6 +164,20 @@ float ActiveArea::getRadius2() {
 		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getRadius2();
+}
+
+void ActiveArea::setNoBuildArea(bool val) {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETNOBUILDAREA__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setNoBuildArea(val);
 }
 
 void ActiveArea::setRadius(float r) {
@@ -285,13 +299,13 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "radius") {
-		TypeInfo<float >::parseFromBinaryStream(&radius, stream);
+	if (_name == "radius2") {
+		TypeInfo<float >::parseFromBinaryStream(&radius2, stream);
 		return true;
 	}
 
-	if (_name == "radius2") {
-		TypeInfo<float >::parseFromBinaryStream(&radius2, stream);
+	if (_name == "noBuildArea") {
+		TypeInfo<bool >::parseFromBinaryStream(&noBuildArea, stream);
 		return true;
 	}
 
@@ -310,19 +324,19 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "radius";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<float >::toBinaryStream(&radius, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "radius2";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<float >::toBinaryStream(&radius2, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "noBuildArea";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&noBuildArea, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -332,10 +346,10 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/ActiveArea.idl():  		radius = 0;
-	radius = 0;
 	// server/zone/objects/area/ActiveArea.idl():  		radius2 = 0;
 	radius2 = 0;
+	// server/zone/objects/area/ActiveArea.idl():  		noBuildArea = false;
+	noBuildArea = false;
 	// server/zone/objects/area/ActiveArea.idl():  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }
@@ -353,9 +367,9 @@ bool ActiveAreaImplementation::isRegion() {
 	return false;
 }
 
-float ActiveAreaImplementation::getRadius() {
-	// server/zone/objects/area/ActiveArea.idl():  		return radius;
-	return radius;
+bool ActiveAreaImplementation::isNoBuildArea() {
+	// server/zone/objects/area/ActiveArea.idl():  		return noBuildArea;
+	return noBuildArea;
 }
 
 float ActiveAreaImplementation::getRadius2() {
@@ -363,9 +377,14 @@ float ActiveAreaImplementation::getRadius2() {
 	return radius2;
 }
 
+void ActiveAreaImplementation::setNoBuildArea(bool val) {
+	// server/zone/objects/area/ActiveArea.idl():  		noBuildArea = val;
+	noBuildArea = val;
+}
+
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl():  		radius = r;
-	radius = r;
+	// server/zone/objects/area/ActiveArea.idl():  		super.setRadius(r);
+	SceneObjectImplementation::setRadius(r);
 	// server/zone/objects/area/ActiveArea.idl():  		radius2 = r * r;
 	radius2 = r * r;
 }
@@ -402,14 +421,17 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISREGION__:
 		resp->insertBoolean(isRegion());
 		break;
+	case RPC_ISNOBUILDAREA__:
+		resp->insertBoolean(isNoBuildArea());
+		break;
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
-	case RPC_GETRADIUS__:
-		resp->insertFloat(getRadius());
-		break;
 	case RPC_GETRADIUS2__:
 		resp->insertFloat(getRadius2());
+		break;
+	case RPC_SETNOBUILDAREA__BOOL_:
+		setNoBuildArea(inv->getBooleanParameter());
 		break;
 	case RPC_SETRADIUS__FLOAT_:
 		setRadius(inv->getFloatParameter());
@@ -449,16 +471,20 @@ bool ActiveAreaAdapter::isRegion() {
 	return (static_cast<ActiveArea*>(stub))->isRegion();
 }
 
+bool ActiveAreaAdapter::isNoBuildArea() {
+	return (static_cast<ActiveArea*>(stub))->isNoBuildArea();
+}
+
 bool ActiveAreaAdapter::containsPoint(float x, float y) {
 	return (static_cast<ActiveArea*>(stub))->containsPoint(x, y);
 }
 
-float ActiveAreaAdapter::getRadius() {
-	return (static_cast<ActiveArea*>(stub))->getRadius();
-}
-
 float ActiveAreaAdapter::getRadius2() {
 	return (static_cast<ActiveArea*>(stub))->getRadius2();
+}
+
+void ActiveAreaAdapter::setNoBuildArea(bool val) {
+	(static_cast<ActiveArea*>(stub))->setNoBuildArea(val);
 }
 
 void ActiveAreaAdapter::setRadius(float r) {

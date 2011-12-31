@@ -63,7 +63,6 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.objects.region.CityRegion;
 include server.zone.managers.planet.RegionMap;
 include server.zone.managers.terrain.TerrainManager;
-include server.zone.managers.planet.NoBuildAreaMap;
 include server.zone.managers.planet.MissionTargetMap;
 include server.zone.managers.planet.HuntingTargetMap;
 include server.zone.managers.planet.HuntingTargetEntry;
@@ -101,9 +100,7 @@ class PlanetManager extends ManagedService implements Logger {
 	protected transient ZoneProcessServer server;
 
 	protected transient TerrainManager terrainManager;
-	
-	protected transient NoBuildAreaMap noBuildAreaMap;
-	
+		
 	protected transient MissionTargetMap missionNpcs;
 	
 	protected transient MissionTargetMap performanceLocations;
@@ -156,7 +153,6 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void initialize();
 	public native void loadClientRegions();
 	public native void loadPlayerRegions();
-	public native void loadNoBuildAreas();
 	public native void loadBadgeAreas();
 	public native void loadPerformanceLocations();
 	public native void loadHuntingTargets();
@@ -171,11 +167,8 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);
-
-	@local
-	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);
 	
-	public native boolean isBuildingPermittedAt(float x, float y);
+	public native boolean isBuildingPermittedAt(float x, float y, SceneObject objectTryingToBuild);
 	
 	/**
 	 * Gets the cost to travel via shuttleport/starport to the destination planet.

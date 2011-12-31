@@ -81,3 +81,6 @@ dathomir_regions = {
 
 dathomir_static_spawns = {
 }
+
+dathomir_badges = {
+}

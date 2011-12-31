@@ -78,6 +78,7 @@ which carries forward this exception.
 #include "events/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/templates/ChildObject.h"

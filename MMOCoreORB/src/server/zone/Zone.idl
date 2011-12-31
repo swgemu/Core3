@@ -132,7 +132,7 @@ class Zone extends SceneObject {
 	public native void createContainerComponent();
 	
 	@local
-	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects);
+	public native int getInRangeActiveAreas(float x, float y, SortedVector<ActiveArea> objects);
 	
 	@local
 	@dereferenced

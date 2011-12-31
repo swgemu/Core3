@@ -25,18 +25,18 @@ AssetCustomizationManagerTemplate::AssetCustomizationManagerTemplate() {
 }
 
 AssetCustomizationManagerTemplate::~AssetCustomizationManagerTemplate() {
-	delete ulstTable;
-	delete ucmpTable;
-	delete vnofTable;
-	delete nameTable;
-	delete pnofTable;
-	delete defvTable;
-	delete irngTable;
-	delete rtypTable;
-	delete uidxTable;
-	delete llstTable;
-	delete lidxTable;
-	delete cidxTable;
+	delete [] ulstTable;
+	delete [] ucmpTable;
+	delete [] vnofTable;
+	delete [] nameTable;
+	delete [] pnofTable;
+	delete [] defvTable;
+	delete [] irngTable;
+	delete [] rtypTable;
+	delete [] uidxTable;
+	delete [] llstTable;
+	delete [] lidxTable;
+	delete [] cidxTable;
 }
 
 void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16 key, uint64 a2, bool skipSharedOwner, VectorMap<String, Reference<CustomizationVariable*> >& result) {

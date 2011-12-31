@@ -78,3 +78,6 @@ yavin4_regions = {
 yavin4_static_spawns = {
 	{"corellian_butterfly_defender",0,0,0,0,0,0},
 }
+
+yavin4_badges = {
+}

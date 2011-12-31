@@ -4,3 +4,6 @@
 tutorial_regions = {} 
 
 tutorial_static_spawns = { }
+
+tutorial_badges = {
+}

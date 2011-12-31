@@ -51,12 +51,14 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 
 class ActiveArea extends SceneObject {
-	protected float radius;
 	protected float radius2;
 	
+	protected boolean noBuildArea; 
+	
 	public ActiveArea() {
-		radius = 0;
 		radius2 = 0;
+		
+		noBuildArea = false;
 		
 		Logger.setLoggingName("ActiveArea");
 	}
@@ -86,18 +88,23 @@ class ActiveArea extends SceneObject {
 		return false;
 	}
 	
-	public native boolean containsPoint(float x, float y);
-	
-	public float getRadius() {
-		return radius;
+	public boolean isNoBuildArea() {
+		return noBuildArea;
 	}
 	
+	public native boolean containsPoint(float x, float y);
+		
 	public float getRadius2() {
 		return radius2;
 	}
 	
+	public void setNoBuildArea(boolean val) {
+		noBuildArea = val;
+	}
+	
 	public void setRadius(float r) {
-		radius = r;
+		super.setRadius(r);
+		
 		radius2 = r * r;
 	}
 }

@@ -128,13 +128,13 @@ void Zone::createContainerComponent() {
 		_implementation->createContainerComponent();
 }
 
-int Zone::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects) {
+int Zone::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea* > >* objects) {
 	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getInRangeActiveAreas(x, y, range, objects);
+		return _implementation->getInRangeActiveAreas(x, y, objects);
 }
 
 SortedVector<ManagedReference<SceneObject* > > Zone::getPlanetaryObjectList(const String& mapObjectLocationType) {

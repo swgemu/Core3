@@ -139,7 +139,7 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	Vector3 randomPosition = getRandomPosition(object);
 
 	//dont spawn in cities
-	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY())) {
+	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object)) {
 		return;
 	}
 

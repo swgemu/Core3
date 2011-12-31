@@ -103,3 +103,6 @@ endor_regions = {
 
 endor_static_spawns = {
 }
+
+endor_badges = {
+}

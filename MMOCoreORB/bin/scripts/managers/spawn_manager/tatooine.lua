@@ -340,3 +340,6 @@ tatooine_static_spawns = {
 	{"trainer_weaponsmith",0,-2.87328,1.13306,-8.72939,122,1189579},
 	{"trainer_weaponsmith",0,-3,1.13306,-8.3,91,1028582},
 }
+
+tatooine_badges = {
+}

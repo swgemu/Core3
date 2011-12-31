@@ -56,6 +56,7 @@ void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float
 	area->initializePosition(x, 0, y);
 	area->setRadius(radius);
 	area->setClientObject(true);
+	area->setNoBuildArea(true);
 
 	if (activeAreas.size() == 0) { //If this is the first active area, set it's planet map category to city.
 		area->setPlanetMapCategory(TemplateManager::instance()->getPlanetMapCategoryByName("city"));

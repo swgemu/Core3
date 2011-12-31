@@ -123,3 +123,6 @@ dantooine_regions = {
 
 dantooine_static_spawns = {
 }
+
+dantooine_badges = {
+}

@@ -62,11 +62,13 @@ public:
 
 	bool isRegion();
 
+	bool isNoBuildArea();
+
 	bool containsPoint(float x, float y);
 
-	float getRadius();
-
 	float getRadius2();
+
+	void setNoBuildArea(bool val);
 
 	void setRadius(float r);
 
@@ -96,9 +98,9 @@ namespace area {
 
 class ActiveAreaImplementation : public SceneObjectImplementation {
 protected:
-	float radius;
-
 	float radius2;
+
+	bool noBuildArea;
 
 public:
 	ActiveAreaImplementation();
@@ -119,11 +121,13 @@ public:
 
 	virtual bool isRegion();
 
+	bool isNoBuildArea();
+
 	bool containsPoint(float x, float y);
 
-	float getRadius();
-
 	float getRadius2();
+
+	void setNoBuildArea(bool val);
 
 	void setRadius(float r);
 
@@ -184,11 +188,13 @@ public:
 
 	bool isRegion();
 
+	bool isNoBuildArea();
+
 	bool containsPoint(float x, float y);
 
-	float getRadius();
-
 	float getRadius2();
+
+	void setNoBuildArea(bool val);
 
 	void setRadius(float r);
 
