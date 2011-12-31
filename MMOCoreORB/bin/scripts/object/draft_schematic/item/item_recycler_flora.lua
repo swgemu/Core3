@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_item_recycler_flora = object_draft_schematic_item_shared_item_recycler_flora:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Flora Recycler Schematic",
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 28, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"agitator_motor", "feed_tubes", "chemical_tubing", "processor_attachments", "spinning_blades", "end_result_bowl"},
+   ingredientSlotType = {2, 2, 0, 2, 2, 0},
+   resourceTypes = {"object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff", "object/tangible/loot/simple_kit/shared_feed_tubes.iff", "fiberplast", "object/tangible/loot/simple_kit/shared_processor_attachments.iff", "object/tangible/loot/simple_kit/shared_spinning_blade.iff", "metal"},
+   resourceQuantities = {1, 1, 50, 1, 4, 50},
+   combineTypes = {1, 1, 0, 1, 1, 0},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/recycler/flora_recycler.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_recycler_flora, "object/draft_schematic/item/item_recycler_flora.iff")

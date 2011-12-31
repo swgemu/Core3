@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_throwpillow = object_draft_schematic_furniture_shared_furniture_throwpillow:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Throw Pillow",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 2, 
+
+   xpType = "crafting_general", 
+   xp = 0, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"envelope", "filling"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"hide", "hide"},
+   resourceQuantities = {50, 40},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/all/frn_all_throwpillow_med_s01.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_throwpillow, "object/draft_schematic/furniture/furniture_throwpillow.iff")

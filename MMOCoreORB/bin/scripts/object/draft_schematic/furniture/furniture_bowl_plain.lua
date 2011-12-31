@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_bowl_plain = object_draft_schematic_furniture_shared_furniture_bowl_plain:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bowl, Plain",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 9, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 140, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"bowl"},
+   ingredientSlotType = {0},
+   resourceTypes = {"wood"},
+   resourceQuantities = {50},
+   combineTypes = {0},
+   contribution = {100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/plain_bowl.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bowl_plain, "object/draft_schematic/furniture/furniture_bowl_plain.iff")

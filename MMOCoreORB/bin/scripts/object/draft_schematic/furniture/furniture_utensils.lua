@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_utensils = object_draft_schematic_furniture_shared_furniture_utensils:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Kitchen Utensils",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 250, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"utensil_base", "forks_spoons_knives", "utensil_handles"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal_nonferrous", "metal_nonferrous", "petrochem_inert_polymer"},
+   resourceQuantities = {45, 150, 50},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/kitchen_utensils.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_utensils, "object/draft_schematic/furniture/furniture_utensils.iff")

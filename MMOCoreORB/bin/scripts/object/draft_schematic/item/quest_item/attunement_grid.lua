@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_quest_item_attunement_grid = object_draft_schematic_item_quest_item_shared_attunement_grid:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Attunement Grid",
+
+   craftingToolTab = 2148007936, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "artisan_clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"particle_sensor", "spin_alignment_inducer", "momentum_compensator"},
+   ingredientSlotType = {1, 1, 1},
+   resourceTypes = {"object/tangible/component/item/quest_item/shared_particle_sensor.iff", "object/tangible/component/item/quest_item/shared_spin_alignment_inducer.iff", "object/tangible/component/item/quest_item/shared_momentum_compensator.iff"},
+   resourceQuantities = {1, 1, 1},
+   combineTypes = {1, 1, 1},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/mission/quest_item/attunement_grid.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_attunement_grid, "object/draft_schematic/item/quest_item/attunement_grid.iff")

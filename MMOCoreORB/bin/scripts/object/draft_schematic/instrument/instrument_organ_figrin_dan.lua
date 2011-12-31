@@ -43,6 +43,38 @@
 
 object_draft_schematic_instrument_instrument_organ_figrin_dan = object_draft_schematic_instrument_shared_instrument_organ_figrin_dan:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "a musical instrument",
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "music", 
+   xp = 0, 
+
+   assemblySkill = "instrument_assembly", 
+   experimentingSkill = "instrument_experiementation", 
+   customizationSkill = "instrument_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"valving", "frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal", "wood"},
+   resourceQuantities = {15, 30},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/instrument/instrument_organ_figrin_dan.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_instrument_organ_figrin_dan, "object/draft_schematic/instrument/instrument_organ_figrin_dan.iff")

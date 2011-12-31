@@ -43,6 +43,38 @@
 
 object_draft_schematic_instrument_instrument_organ_max_rebo = object_draft_schematic_instrument_shared_instrument_organ_max_rebo:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "a Nalargon",
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "", 
+   xp = 0, 
+
+   assemblySkill = "instrument_assembly", 
+   experimentingSkill = "instrument_experiementation", 
+   customizationSkill = "instrument_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "valving"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal_ferrous", "aluminum"},
+   resourceQuantities = {150, 75},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/instrument/instrument_organ_max_rebo.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_instrument_organ_max_rebo, "object/draft_schematic/instrument/instrument_organ_max_rebo.iff")

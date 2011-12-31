@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_radar_table = object_draft_schematic_furniture_shared_furniture_radar_table:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Data Terminal",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 9, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 140, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"table_top", "frame", "display", "electronics"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"mineral", "metal", "gemstone_crystalline", "aluminum"},
+   resourceQuantities = {60, 50, 45, 50},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/all/frn_all_desk_radar_topology_screen.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_radar_table, "object/draft_schematic/furniture/furniture_radar_table.iff")

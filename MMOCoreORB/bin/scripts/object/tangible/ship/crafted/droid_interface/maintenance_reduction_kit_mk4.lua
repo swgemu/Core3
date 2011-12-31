@@ -51,7 +51,7 @@ object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk4 = obj
 	experimentalSubGroupTitles = {"null", "null", "droid_command_speed", "energy_maintenance"},
 	experimentalMin = {0, 0, 1, -116},
 	experimentalMax = {0, 0, 2, -74},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 2, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk4, "object/tangible/ship/crafted/droid_interface/maintenance_reduction_kit_mk4.iff")

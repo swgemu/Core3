@@ -51,7 +51,7 @@ object_tangible_ship_crafted_droid_interface_ddi_mk2 = object_tangible_ship_craf
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "droid_command_speed"},
 	experimentalMin = {0, 0, 293, 1, 850, 147, 1, 446, 22},
 	experimentalMax = {0, 0, 397, 1, 1150, 198, 1, 604, 30},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 2},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_ddi_mk2, "object/tangible/ship/crafted/droid_interface/ddi_mk2.iff")

@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_item_recycler_ore = object_draft_schematic_item_shared_item_recycler_ore:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ore Recycler Schematic",
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 28, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"tumble_blender", "pulverizer", "chemical_tubing", "smashing_plates", "sifting_plates"},
+   ingredientSlotType = {2, 2, 0, 0, 0},
+   resourceTypes = {"object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff", "object/tangible/loot/simple_kit/shared_pulverizer.iff", "fiberplast", "steel", "iron"},
+   resourceQuantities = {1, 8, 50, 40, 15},
+   combineTypes = {1, 1, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/recycler/ore_recycler.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_recycler_ore, "object/draft_schematic/item/item_recycler_ore.iff")

@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_bottle_tall = object_draft_schematic_furniture_shared_furniture_bottle_tall:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Tall Bottle Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 9, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 140, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"glass"},
+   ingredientSlotType = {0},
+   resourceTypes = {"gemstone_crystalline"},
+   resourceQuantities = {60},
+   combineTypes = {0},
+   contribution = {100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/bottle_tall.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bottle_tall, "object/draft_schematic/furniture/furniture_bottle_tall.iff")

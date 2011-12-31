@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_droid_body = object_draft_schematic_furniture_shared_furniture_droid_body:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "A Droid Body",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "", 
+   xp = 340, 
+
+   assemblySkill = "droid_assembly", 
+   experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"droid_trunk", "droid_arms", "droid_legs", "droid_body_interior"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"metal", "metal", "metal", "aluminum_titanium"},
+   resourceQuantities = {250, 140, 200, 150},
+   combineTypes = {0, 0, 0, 0},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/poi/object/droid_body.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_droid_body, "object/draft_schematic/furniture/furniture_droid_body.iff")

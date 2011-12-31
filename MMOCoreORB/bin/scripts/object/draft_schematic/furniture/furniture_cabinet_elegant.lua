@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_cabinet_elegant = object_draft_schematic_furniture_shared_furniture_cabinet_elegant:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Cabinet",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 700, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "doors", "shelves"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal_nonferrous", "metal", "metal"},
+   resourceQuantities = {200, 25, 150},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/elegant/cabinet_s01.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_cabinet_elegant, "object/draft_schematic/furniture/furniture_cabinet_elegant.iff")

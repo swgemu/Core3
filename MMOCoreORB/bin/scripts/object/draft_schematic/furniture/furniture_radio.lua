@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_radio = object_draft_schematic_furniture_shared_furniture_radio:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Radio Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 230, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"speakers", "frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal", "metal"},
+   resourceQuantities = {10, 25},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/radio.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_radio, "object/draft_schematic/furniture/furniture_radio.iff")

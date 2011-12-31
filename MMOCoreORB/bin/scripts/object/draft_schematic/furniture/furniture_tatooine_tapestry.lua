@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_tatooine_tapestry = object_draft_schematic_furniture_shared_furniture_tatooine_tapestry:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Tapestry (Tatooine) Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 340, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"flag_base", "flag", "paints"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "fiberplast", "petrochem_inert_polymer"},
+   resourceQuantities = {30, 80, 25},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/tatooine_tapestry.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_tatooine_tapestry, "object/draft_schematic/furniture/furniture_tatooine_tapestry.iff")

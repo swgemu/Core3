@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_slave_brazier = object_draft_schematic_furniture_shared_furniture_slave_brazier:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Slave Brazier Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 340, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"base", "frame", "fuel"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"iron", "metal", "fuel_petrochem_solid"},
+   resourceQuantities = {80, 90, 25},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/slave_brazier.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_slave_brazier, "object/draft_schematic/furniture/furniture_slave_brazier.iff")

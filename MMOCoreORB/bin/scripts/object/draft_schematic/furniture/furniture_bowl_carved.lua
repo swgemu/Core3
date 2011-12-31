@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_bowl_carved = object_draft_schematic_furniture_shared_furniture_bowl_carved:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Carved Bowl Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 9, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 140, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"bowl"},
+   ingredientSlotType = {0},
+   resourceTypes = {"wood"},
+   resourceQuantities = {50},
+   combineTypes = {0},
+   contribution = {100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/carved_bowl.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bowl_carved, "object/draft_schematic/furniture/furniture_bowl_carved.iff")

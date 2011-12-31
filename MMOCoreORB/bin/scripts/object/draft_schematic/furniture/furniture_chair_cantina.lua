@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_chair_cantina = object_draft_schematic_furniture_shared_furniture_chair_cantina:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Small Cantina Seat",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 230, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "seat"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal", "metal"},
+   resourceQuantities = {80, 35},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/tatooine/frn_tatt_chair_cantina_seat.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_chair_cantina, "object/draft_schematic/furniture/furniture_chair_cantina.iff")

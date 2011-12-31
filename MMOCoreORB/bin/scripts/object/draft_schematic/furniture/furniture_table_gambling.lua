@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_table_gambling = object_draft_schematic_furniture_shared_furniture_table_gambling:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Gaming Table Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_spice", 
+   xp = 140, 
+
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
+   customizationSkill = "spice_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"frame", "table_top"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"metal", "mineral"},
+   resourceQuantities = {50, 20},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/gambling/table/table_base.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_table_gambling, "object/draft_schematic/furniture/furniture_table_gambling.iff")

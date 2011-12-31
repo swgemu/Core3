@@ -51,7 +51,7 @@ object_tangible_ship_crafted_droid_interface_droid_brain_upgrade_mk5 = object_ta
 	experimentalSubGroupTitles = {"null", "null", "droid_command_speed", "energy_maintenance"},
 	experimentalMin = {0, 0, -2, 81},
 	experimentalMax = {0, 0, -1, 129},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 2, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_droid_brain_upgrade_mk5, "object/tangible/ship/crafted/droid_interface/droid_brain_upgrade_mk5.iff")

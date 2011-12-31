@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_stove = object_draft_schematic_furniture_shared_furniture_stove:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Portable Stove",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 230, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"base", "heating_element", "grill"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"iron", "fuel_petrochem_liquid", "aluminum"},
+   resourceQuantities = {35, 10, 20},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/portable_stove.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_stove, "object/draft_schematic/furniture/furniture_stove.iff")

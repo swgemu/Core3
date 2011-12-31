@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_spear_stand = object_draft_schematic_furniture_shared_furniture_spear_stand:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Spear Display Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 700, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"spears", "frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"iron", "wood"},
+   resourceQuantities = {20, 250},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/spear_rack.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_spear_stand, "object/draft_schematic/furniture/furniture_spear_stand.iff")

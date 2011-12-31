@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_item_recycler_metal = object_draft_schematic_item_shared_item_recycler_metal:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Metal Recycler Schematic",
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 28, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"power_motor", "heating_element", "chemical_tubing", "liquid_metal_housing", "casing"},
+   ingredientSlotType = {2, 2, 0, 0, 0},
+   resourceTypes = {"object/tangible/loot/simple_kit/shared_motor_small_blue.iff", "object/tangible/loot/simple_kit/shared_heating_element.iff", "fiberplast", "steel", "iron"},
+   resourceQuantities = {1, 4, 50, 40, 25},
+   combineTypes = {1, 1, 0, 0, 0},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/recycler/metal_recycler.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_recycler_metal, "object/draft_schematic/item/item_recycler_metal.iff")
