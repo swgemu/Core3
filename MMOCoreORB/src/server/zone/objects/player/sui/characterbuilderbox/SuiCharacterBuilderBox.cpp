@@ -196,7 +196,7 @@ int SuiCharacterBuilderBoxImplementation::writeObjectMembers(ObjectOutputStream*
 	return 0 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(CreatureObject* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTER_BUILDER_LIST, 0) {
+SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(CreatureObject* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTER_BUILDER_LIST, SuiListBox::HANDLETHREEBUTTON) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		Logger.setLoggingName("SuiCharacterBuilderBox");
 	Logger::setLoggingName("SuiCharacterBuilderBox");

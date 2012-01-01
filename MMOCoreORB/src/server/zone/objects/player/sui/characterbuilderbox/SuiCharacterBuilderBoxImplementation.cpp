@@ -11,20 +11,36 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
 
 BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
+
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.listBox");
+
+	addHeader("this", "otherPressed");
 
 	//Declare Headers:
 	addHeader("List.lstList", "SelectedRow");
 	addHeader("bg.caption.lblTitle", "Text");
 
+	addHeader("this", "otherPressed");
+
 	//Set Body Options:
 	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
 	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
 
-	if (currentNode->hasParentNode())
-		addSetting("3", "btnCancel", "Text", "@back");
-	else
-		addSetting("3", "btnCancel", "Text", "@cancel");
+	addSetting("3", "btnOther", "visible", "true");
+	addSetting("3", "btnOther", "visible", "@refresh");
+
+    addSetting("3","btnOther","Location","102,262");
+    addSetting("3","btnOther","Size","81,19");
+    addSetting("3","btnOther","ScrollExtent","81,19");
+
+    addSetting("3","btnOk","Location","188,262");
+    addSetting("3","btnOk","Size","81,19");
+    addSetting("3","btnOk","ScrollExtent","81,19");
+
+    addSetting("3","btnCancel","Size","81,19");
+    addSetting("3","btnCancel","ScrollExtent","81,19");
+
+	addSetting("3", "btnCancel", "Text", "@cancel");
 
 	addSetting("3", "btnOk", "Text", "@ok");
 
@@ -41,6 +57,13 @@ BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 		addSetting("4", "List.dataList", "Name", String::valueOf(i));
 		addSetting("3", "List.dataList." + String::valueOf(i), "Text", node->getDisplayName());
 	}
+
+	addSetting("3", "btnOther", "visible", "true");
+	addSetting("3", "btnOther", "Text", otherButtonText);
+
+	addSetting("3", "btnCancel", "Text", cancelButtonText);
+
+	addSetting("3", "btnOk", "Text", okButtonText);
 
 	setHandlerText("msgSelected");
 	generateHeader(message);

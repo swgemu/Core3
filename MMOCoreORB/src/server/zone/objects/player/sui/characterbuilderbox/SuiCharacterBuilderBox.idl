@@ -55,7 +55,7 @@ class SuiCharacterBuilderBox extends SuiListBox {
 	protected transient CharacterBuilderMenuNode currentNode;
 	
 	public SuiCharacterBuilderBox(CreatureObject player, CharacterBuilderMenuNode root) {
-		super(player, SuiWindowType.CHARACTER_BUILDER_LIST, 0);
+		super(player, SuiWindowType.CHARACTER_BUILDER_LIST, SuiListBox.HANDLETHREEBUTTON);
 		
 		Logger.setLoggingName("SuiCharacterBuilderBox");
 		

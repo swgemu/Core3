@@ -578,7 +578,15 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 	if (args->size() < 1)
 		return;
 
-	int index = Integer::valueOf(args->get(0).toString());
+	bool otherPressed = false;
+	int index = 0;
+
+	if(args->size() > 1) {
+		otherPressed = Bool::valueOf(args->get(0).toString());
+		index = Integer::valueOf(args->get(1).toString());
+	} else {
+		index = Integer::valueOf(args->get(0).toString());
+	}
 
 	if (!suiBox->isCharacterBuilderBox())
 		return;
@@ -589,13 +597,17 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	//If cancel was pressed and there is no parent node to backup too, then we kill the box/menu.
-	if (currentNode == NULL || (cancel != 0 && !currentNode->hasParentNode()))
+	//If cancel was pressed then we kill the box/menu.
+	if (cancel != 0)
 		return;
 
 	//Back was pressed. Send the node above it.
-	if (cancel != 0) {
+	if (otherPressed) {
 		CharacterBuilderMenuNode* parentNode = currentNode->getParentNode();
+
+		if(parentNode == NULL)
+			return;
+
 		cbSui->setCurrentNode(parentNode);
 
 		ghost->addSuiBox(cbSui);
