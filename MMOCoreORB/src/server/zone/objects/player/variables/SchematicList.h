@@ -52,8 +52,6 @@ public:
 	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(CreatureObject* player, Vector<uint32>* enabledTabs, int complexityLevel);
 
 	void insertToMessage(BaseMessage* msg);
-
-	void removeAll(DeltaMessage* message = NULL);
 };
 
 

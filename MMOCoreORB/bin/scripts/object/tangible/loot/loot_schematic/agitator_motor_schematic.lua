@@ -44,8 +44,8 @@
 object_tangible_loot_loot_schematic_agitator_motor_schematic = object_tangible_loot_loot_schematic_shared_agitator_motor_schematic:new {
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = "LootSchematicMenuComponent",
-	targetDraftSchematic = "object/draft_schematic/scout/item_camp_basic.iff",
-	targetUseCount = 2,
+	targetDraftSchematic = "object/draft_schematic/item/item_agitator_motor.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_agitator_motor_schematic, "object/tangible/loot/loot_schematic/agitator_motor_schematic.iff")

@@ -42,7 +42,10 @@
 
 
 object_tangible_loot_loot_schematic_assorted_fruit_schematic = object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = "LootSchematicMenuComponent",
+	targetDraftSchematic = "object/draft_schematic/scout/item_camp_basic.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_assorted_fruit_schematic, "object/tangible/loot/loot_schematic/assorted_fruit_schematic.iff")

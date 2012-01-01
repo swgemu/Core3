@@ -44,7 +44,6 @@ void SchematicList::populateRewardedSchematics(Vector<ManagedReference<DraftSche
 
 	for (int i = 0; i < schematics.size(); ++i) {
 		DraftSchematic*  schematic = schematics.get(i);
-		System::out << schematic->getCustomName() << endl;
 		rewardedSchematics.add(schematic);
 	}
 }
@@ -205,9 +204,4 @@ void SchematicList::insertToMessage(BaseMessage* msg) {
 		msg->insertInt(schematic->getSchematicID());
 		msg->insertInt(schematic->getClientObjectCRC());  /// Must be client CRC
 	}
-}
-
-void SchematicList::removeAll(DeltaMessage* message) {
-	rewardedSchematics.removeAll();
-	DeltaVector<ManagedReference<DraftSchematic* > >::removeAll(message);
 }

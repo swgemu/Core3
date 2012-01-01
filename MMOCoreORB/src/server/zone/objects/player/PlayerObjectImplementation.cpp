@@ -659,7 +659,16 @@ bool PlayerObjectImplementation::addRewardedSchematic(DraftSchematic* schematic,
 	if(schematicList.addRewardedSchematic(schematic))
 		return true;
 
-	return addSchematics(schematics, true);
+	if(addSchematics(schematics, true)) {
+		CreatureObject* parent = cast<CreatureObject*>(_this->getParent());
+
+		if(parent != NULL) {
+			schematic->sendDraftSlotsTo(parent);
+			schematic->sendResourceWeightsTo(parent);
+		}
+		return true;
+	}
+	return false;
 }
 
 void PlayerObjectImplementation::removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {
@@ -708,12 +717,6 @@ void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftS
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
 		Skill* skillBox = playerSkillBoxList->get(i);
 		skillManager->awardDraftSchematics(skillBox, _this, true);
-	}
-
-	for(int i = 0; i < schematics.size(); ++i) {
-		DraftSchematic* schematic = schematics.get(i);
-		if(schematic->isRewarded())
-			schematicList.removeRewardedSchematic(schematic);
 	}
 
 	schematicList.addRewardedSchematics(_this);

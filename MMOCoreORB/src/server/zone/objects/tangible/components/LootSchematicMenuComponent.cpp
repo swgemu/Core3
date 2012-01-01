@@ -60,6 +60,8 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
+		schematic->setSchematicID(schematicData->getTargetDraftSchematic().hashCode());
+
 		schematic->setUseCount(schematicData->getTargetUseCount());
 		if(ghost->addRewardedSchematic(schematic, true)) {
 

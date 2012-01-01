@@ -101,7 +101,7 @@ class ManufactureSchematic extends IntangibleObject {
 		prototype = null;
 		firstCraftingUpdate = true;
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
