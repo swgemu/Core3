@@ -52,6 +52,7 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 	sui->setPromptTitle("@veteran:resource_title"); //Resources
 	sui->setPromptText("@veteran:choose_class"); //Choose resource class
 	sui->setOtherButton(true, "@back");
+	sui->setCancelButton(true, "@cancel");
 	sui->setOkButton(true, "@ok");
 
 	resourceManager->addNodeToListBox(sui, "resource");

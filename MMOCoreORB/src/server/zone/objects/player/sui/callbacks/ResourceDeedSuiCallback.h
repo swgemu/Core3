@@ -55,31 +55,38 @@ public:
 
 		ManagedReference<ResourceManager*> resourceManager = creature->getZoneServer()->getResourceManager();
 
-		ManagedReference<ResourceSpawn*> spawn = resourceManager->getResourceSpawn(nodeName);
-
-		//They chose the resource, eat the deed and give them what they want...fuck it.
-		if (!backPressed && spawn != NULL) {
-			resourceManager->givePlayerResource(creature, nodeName, ResourceManager::RESOURCE_DEED_QUANTITY);
-			/*deed->broadcastDestroy(deed, false);
-			inventory->removeObject(deed, true);*/
-			deed->destroyObjectFromWorld(true);
-			return;
-		}
-
-		if (!backPressed && index >= 0 && index < listBox->getMenuSize())
-			nodeName = listBox->getMenuItemName(index);
-
-		listBox->removeAllMenuItems();
-
-		spawn = resourceManager->getResourceSpawn(nodeName); //Check again, this means they are looking at stats.
-
 		if (backPressed) {
+			if(nodeName == "Resources" || nodeName == "Resource")
+				return;
+
+			listBox->removeAllMenuItems();
+
 			nodeName = resourceManager->addParentNodeToListBox(listBox, nodeName);
-		} else {
+
+		} else if(cancelPressed)
+			return;
+		else {
+
+			ManagedReference<ResourceSpawn*> spawn = resourceManager->getResourceSpawn(nodeName);
+
+			//They chose the resource, eat the deed and give them what they want...fuck it.
 			if (spawn != NULL) {
-				spawn->addStatsToDeedListBox(listBox);
-			} else {
-				resourceManager->addNodeToListBox(listBox, nodeName);
+				resourceManager->givePlayerResource(creature, nodeName, ResourceManager::RESOURCE_DEED_QUANTITY);
+				deed->destroyObjectFromWorld(true);
+				return;
+			}
+
+			if(index >= 0 && index < listBox->getMenuSize()) {
+				nodeName = listBox->getMenuItemName(index);
+
+				listBox->removeAllMenuItems();
+
+				spawn = resourceManager->getResourceSpawn(nodeName); //Check again, this means they are looking at stats.
+				if (spawn != NULL) {
+					spawn->addStatsToDeedListBox(listBox);
+				} else {
+					resourceManager->addNodeToListBox(listBox, nodeName);
+				}
 			}
 		}
 
