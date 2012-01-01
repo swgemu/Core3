@@ -292,7 +292,7 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	Zone* newZone = sceneObject->getZoneServer()->getZone(newTerrainName);
 
 	if (newZone == NULL) {
-		error("attempting to switch to unkown/disabled zone " + newTerrainName);
+		sceneObject->error("attempting to switch to unkown/disabled zone " + newTerrainName);
 		return;
 	}
 

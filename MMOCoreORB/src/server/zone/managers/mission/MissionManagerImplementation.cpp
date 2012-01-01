@@ -343,9 +343,6 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 }
 
 void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* player, MissionObject* mission) {
-	 //TODO: Redo this section to use zoneName
-	//String mission = "mission/mission_destroy_neutral_easy_creature_naboo";
-	//int zoneID = player->getZone()->getZoneID();
 	Zone* zone = player->getZone();
 
 	mission->setTypeCRC(0);
@@ -370,7 +367,6 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 	}
 
 	LairSpawnArea* lairSpawnArea = cast<LairSpawnArea*>(spawnArea.get());
-
 	LairSpawnGroup* lairSpawnGroup = lairSpawnArea->getSpawnGroup();
 
 	if (lairSpawnGroup == NULL) {
@@ -384,9 +380,7 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 	}
 
 	LairSpawn* randomLairSpawn = availableLairList->get(System::random(availableLairList->size() - 1));
-
 	String lairTemplate = randomLairSpawn->getLairTemplateName();
-
 	LairTemplate* lairTemplateObject = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
 
 	if (lairTemplateObject == NULL) {
@@ -394,7 +388,6 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 	}
 
 	int difficulty = server->getPlayerManager()->calculatePlayerLevel(player);
-
 	String building = lairTemplateObject->getBuilding(difficulty);
 
 	if (building.isEmpty()) {

@@ -348,11 +348,9 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 
-			if (player != NULL) {
-				FactionManager* factionManager = FactionManager::instance();
-				factionManager->awardFactionStanding(player, destructedObject->getFactionString());
-				factionManager->awardFactionPoints(player, destructedObject);
-			}
+			FactionManager* factionManager = FactionManager::instance();
+			factionManager->awardFactionStanding(player, destructedObject->getFactionString());
+			factionManager->awardFactionPoints(player, destructedObject);
 		}
 
 		if (playerManager != NULL)
@@ -441,14 +439,10 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	if (selectedID == 234) {
 		restype = creature->getMeatType();
 		quantity = creature->getMeatMax();
-	}
-
-	if (selectedID == 235) {
+	} else if (selectedID == 235) {
 		restype = creature->getHideType();
 		quantity = creature->getHideMax();
-	}
-
-	if (selectedID == 236) {
+	} else if (selectedID == 236) {
 		restype = creature->getBoneType();
 		quantity = creature->getBoneMax();
 	}

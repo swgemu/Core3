@@ -129,13 +129,13 @@ public:
 	}
 
 	void readObject(LuaObject* templateData) {
-		conversationTemplate = String(templateData->getStringField("conversationTemplate")).hashCode();
-		meatType = templateData->getStringField("meatType");
-		boneType = templateData->getStringField("boneType");
-		hideType = templateData->getStringField("hideType");
-		objectName = templateData->getStringField("objectName");
-		socialGroup = templateData->getStringField("socialGroup");
-		faction = templateData->getStringField("faction");
+		conversationTemplate = String(templateData->getStringField("conversationTemplate").trim()).hashCode();
+		meatType = templateData->getStringField("meatType").trim();
+		boneType = templateData->getStringField("boneType").trim();
+		hideType = templateData->getStringField("hideType").trim();
+		objectName = templateData->getStringField("objectName").trim();
+		socialGroup = templateData->getStringField("socialGroup").trim();
+		faction = templateData->getStringField("faction").trim();
 		level = templateData->getIntField("level");
 		chanceHit = templateData->getFloatField("chanceHit");
 		damageMin = templateData->getIntField("damageMin");
@@ -145,11 +145,11 @@ public:
 		baseHAM = templateData->getIntField("baseHAM");
 		baseHAMmax = templateData->getIntField("baseHAMmax");
 		armor = templateData->getIntField("armor");
-		meatType = templateData->getStringField("meatType");
+		meatType = templateData->getStringField("meatType").trim();
 		meatAmount = templateData->getIntField("meatAmount");
-		hideType = templateData->getStringField("hideType");
+		hideType = templateData->getStringField("hideType").trim();
 		hideAmount = templateData->getIntField("hideAmount");
-		boneType = templateData->getStringField("boneType");
+		boneType = templateData->getStringField("boneType").trim();
 		boneAmount = templateData->getIntField("boneAmount");
 		milk = templateData->getIntField("milk");
 		tamingChance = templateData->getFloatField("tamingChance");
@@ -177,7 +177,7 @@ public:
 		LuaObject temps = templateData->getObjectField("templates");
 		if (temps.isValidTable()) {
 			for (int i = 1; i <= temps.getTableSize(); ++i) {
-				templates.add(temps.getStringAt(i));
+				templates.add(temps.getStringAt(i).trim());
 			}
 		}
 
@@ -186,7 +186,7 @@ public:
 		LuaObject loots = templateData->getObjectField("lootgroups");
 		if (loots.isValidTable()) {
 			for (int i = 1; i <= loots.getTableSize(); ++i) {
-				lootgroups.add(loots.getStringAt(i));
+				lootgroups.add(loots.getStringAt(i).trim());
 			}
 		}
 
@@ -195,7 +195,7 @@ public:
 		LuaObject weps = templateData->getObjectField("weapons");
 		if (weps.isValidTable()) {
 			for (int i = 1; i <= weps.getTableSize(); ++i) {
-				weapons.add(weps.getStringAt(i));
+				weapons.add(weps.getStringAt(i).trim());
 			}
 		}
 
@@ -212,8 +212,8 @@ public:
 				if (atk.isValidTable()) {
 					int atkSize = atk.getTableSize();
 					if (atkSize == 2) {
-						String com = atk.getStringAt(1);
-						String arg = atk.getStringAt(2);
+						String com = atk.getStringAt(1).trim();
+						String arg = atk.getStringAt(2).trim();
 
 						attacks->addAttack(com, arg);
 					}

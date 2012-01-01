@@ -184,6 +184,9 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID);
 
+	if (creature == NULL)
+		instance()->error("coult not spawn mobile " + mobile);
+
 	lua_pushlightuserdata(L, creature);
 
 	return 1;

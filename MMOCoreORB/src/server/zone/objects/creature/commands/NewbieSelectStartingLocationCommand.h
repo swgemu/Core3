@@ -90,6 +90,13 @@ public:
 			return GENERALERROR;
 		}
 
+		zone = server->getZoneServer()->getZone(startingLocation->getZoneName());
+
+		if (zone == NULL) {
+			player->sendSystemMessage("This starting location is disabled, please select a different one");
+			return GENERALERROR;
+		}
+
 		player->switchZone(startingLocation->getZoneName(), startingLocation->getX(), startingLocation->getZ(), startingLocation->getY(), startingLocation->getCell());
 		player->setDirection(startingLocation->getHeading());
 
