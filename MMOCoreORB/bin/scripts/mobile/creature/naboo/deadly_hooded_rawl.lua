@@ -1,15 +1,15 @@
 deadly_hooded_rawl = Creature:new {
-	objectName = "@mob/creature_names:rawl_deadly_hooded",
+	objectName = "@mob/creature_names:deadly_hooded_rawl",
 	socialGroup = "Fanned Rawl",
 	pvpFaction = "",
 	faction = "",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 609,
-	baseHAM = 1300,
-	baseHAMmax = 1300,
+	baseHAM = 1200,
+	baseHAMmax = 1400,
 	armor = 0,
 	resists = {0,0,0,20,-1,0,0,0,-1},
 	meatType = "",
@@ -19,18 +19,20 @@ deadly_hooded_rawl = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 7,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fanned_rawl.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"mildpoison",""}
+		{"mildpoison",""},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

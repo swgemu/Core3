@@ -4,7 +4,7 @@ daktar_bloodmoon = Creature:new {
 	pvpFaction = "Sith Shadow",
 	faction = "",
 	level = 115,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 820,
 	damageMax = 1350,
 	baseXp = 10921,
@@ -19,16 +19,19 @@ daktar_bloodmoon = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(daktar_bloodmoon, "daktar_bloodmoon")

@@ -1,15 +1,15 @@
 meek_avenging_squall = Creature:new {
-	objectName = "@mob/creature_names:frail_squall_meek_avenger",
+	objectName = "@mob/creature_names:meek_avenging_squall",
 	socialGroup = "Squall",
 	pvpFaction = "",
 	faction = "",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 113,
-	baseHAM = 200,
-	baseHAMmax = 200,
+	baseHAM = 180,
+	baseHAMmax = 220,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -19,16 +19,19 @@ meek_avenging_squall = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 9,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/squall.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(meek_avenging_squall, "meek_avenging_squall")

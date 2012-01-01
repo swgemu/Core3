@@ -4,7 +4,7 @@ imperial_army_captain = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 2006,
@@ -19,16 +19,19 @@ imperial_army_captain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_captain_m.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_army_captain, "imperial_army_captain")

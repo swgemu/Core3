@@ -1,10 +1,10 @@
 spice_collective_heavy_guard = Creature:new {
-	objectName = "Spice Collective heavy guard",
+	objectName = "@mob/creature_names:Spice_Collective_heavy_guard",
 	socialGroup = "Spice Collect.",
 	pvpFaction = "Spice Collect.",
 	faction = "",
 	level = 22,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 2219,
@@ -19,16 +19,19 @@ spice_collective_heavy_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_heavy_guard, "spice_collective_heavy_guard")

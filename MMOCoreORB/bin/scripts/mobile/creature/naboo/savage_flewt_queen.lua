@@ -4,12 +4,12 @@ savage_flewt_queen = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
-	baseHAM = 900,
-	baseHAMmax = 900,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -19,18 +19,20 @@ savage_flewt_queen = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 6,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/savage_flewt_queen.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"mildpoison",""}
+		{"mildpoison",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

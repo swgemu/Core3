@@ -4,33 +4,35 @@ bordok_foal = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2543,
-	baseHAM = 9000,
-	baseHAMmax = 9000,
+	baseHAM = 8100,
+	baseHAMmax = 9900,
 	armor = 0,
-	resists = {0,0,-1,70,70,-1,-1,-1,-1},
+	resists = {20,20,20,70,70,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
 	hideAmount = 0,
 	boneType = "bone_mammal",
 	boneAmount = 0,
-	milk = 0,
-	tamingChance = 0.000000,
+	milk = 1,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bordok_foal.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

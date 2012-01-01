@@ -4,12 +4,12 @@ huurton_reaper = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 84,
-	chanceHit = 0.900000,
+	chanceHit = 0.9,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 8038,
-	baseHAM = 13500,
-	baseHAMmax = 13500,
+	baseHAM = 12000,
+	baseHAMmax = 15000,
 	armor = 0,
 	resists = {35,35,0,40,100,-1,-1,-1,-1},
 	meatType = "meat_wild",
@@ -19,18 +19,20 @@ huurton_reaper = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 25,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

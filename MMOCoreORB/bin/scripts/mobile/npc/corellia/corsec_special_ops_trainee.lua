@@ -1,10 +1,10 @@
 corsec_special_ops_trainee = Creature:new {
-	objectName = "CorSec Special Ops Trainee",
+	objectName = "@mob/creature_names:CorSec_Special_Ops_Trainee",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",
 	level = 71,
-	chanceHit = 0.700000,
+	chanceHit = 0.7,
 	damageMin = 495,
 	damageMax = 700,
 	baseXp = 6839,
@@ -19,16 +19,19 @@ corsec_special_ops_trainee = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_trainee, "corsec_special_ops_trainee")

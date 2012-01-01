@@ -4,7 +4,7 @@ stranded_imperial_soldier = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 24,
-	chanceHit = 3.050000,
+	chanceHit = 3.05,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2543,
@@ -19,16 +19,19 @@ stranded_imperial_soldier = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stranded_imperial_soldier.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(stranded_imperial_soldier, "stranded_imperial_soldier")

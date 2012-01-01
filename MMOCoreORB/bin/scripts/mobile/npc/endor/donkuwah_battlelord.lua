@@ -1,10 +1,10 @@
 donkuwah_battlelord = Creature:new {
-	objectName = "@mob/creature_names:donkuwah_battlelord",
+	objectName = "@mob/creature_names:Donkuwah_battlelord",
 	socialGroup = "Donkuwah Tr.",
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
@@ -19,16 +19,19 @@ donkuwah_battlelord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(donkuwah_battlelord, "donkuwah_battlelord")

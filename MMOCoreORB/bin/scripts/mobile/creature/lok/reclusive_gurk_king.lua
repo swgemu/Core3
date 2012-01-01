@@ -1,17 +1,17 @@
 reclusive_gurk_king = Creature:new {
-	objectName = "@mob/creature_names:recluse_gurk_king",
+	objectName = "@mob/creature_names:reclusive_gurk_king",
 	socialGroup = "Gurk",
 	pvpFaction = "",
 	faction = "",
 	level = 45,
-	chanceHit = 0.470000,
+	chanceHit = 0.47,
 	damageMin = 370,
 	damageMax = 450,
 	baseXp = 4461,
-	baseHAM = 10800,
-	baseHAMmax = 10800,
+	baseHAM = 9700,
+	baseHAMmax = 11900,
 	armor = 0,
-	resists = {35,35,0,-1,0,0,-1,-1,-1},
+	resists = {40,20,40,-1,40,40,-1,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ reclusive_gurk_king = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 300,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/recluse_gurk_king.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

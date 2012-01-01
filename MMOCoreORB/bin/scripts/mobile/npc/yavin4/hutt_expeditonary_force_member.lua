@@ -1,10 +1,10 @@
 hutt_expeditonary_force_member = Creature:new {
-	objectName = "Hutt Expeditonary Force member",
+	objectName = "@mob/creature_names:Hutt Expeditonary Force member",
 	socialGroup = "Hutt",
 	pvpFaction = "Hutt",
 	faction = "",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ hutt_expeditonary_force_member = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hutt_expeditonary_force_member, "hutt_expeditonary_force_member")

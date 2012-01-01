@@ -1,10 +1,10 @@
 bewitdiing_korga_dark_shaman = Creature:new {
-	objectName = "bewitdiing Korga dark shaman",
+	objectName = "@mob/creature_names:bewitdiing_Korga_dark_shaman",
 	socialGroup = "Korga Tribe",
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 38,
-	chanceHit = 0.430000,
+	chanceHit = 0.43,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 3824,
@@ -19,16 +19,19 @@ bewitdiing_korga_dark_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(bewitdiing_korga_dark_shaman, "bewitdiing_korga_dark_shaman")

@@ -1,10 +1,10 @@
 beldonnas_league_scout = Creature:new {
-	objectName = "Beldonna's League scout",
+	objectName = "@mob/creature_names:Beldonna's_League_scout",
 	socialGroup = "Bel. League",
 	pvpFaction = "Bel. League",
 	faction = "",
 	level = 19,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1426,
@@ -19,16 +19,19 @@ beldonnas_league_scout = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(beldonnas_league_scout, "beldonnas_league_scout")

@@ -1,10 +1,10 @@
 kahmurra_be = Creature:new {
-	objectName = "kahmurra be",
+	objectName = "@mob/creature_names:kahmurra_be",
 	socialGroup = "Murra",
 	pvpFaction = "",
 	faction = "",
 	level = 1,
-	chanceHit = 0.200000,
+	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 30,
@@ -19,16 +19,19 @@ kahmurra_be = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kahmurra.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kahmurra_be, "kahmurra_be")

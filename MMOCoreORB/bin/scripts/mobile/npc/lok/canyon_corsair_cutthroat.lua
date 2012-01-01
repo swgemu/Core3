@@ -4,7 +4,7 @@ canyon_corsair_cutthroat = Creature:new {
 	pvpFaction = "Corsair",
 	faction = "",
 	level = 35,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3551,
@@ -19,16 +19,19 @@ canyon_corsair_cutthroat = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsair_cutthroat_zab_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(canyon_corsair_cutthroat, "canyon_corsair_cutthroat")

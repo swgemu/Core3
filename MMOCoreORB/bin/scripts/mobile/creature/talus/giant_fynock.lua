@@ -4,14 +4,14 @@ giant_fynock = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 42,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4188,
-	baseHAM = 11000,
-	baseHAMmax = 11000,
+	baseHAM = 10000,
+	baseHAMmax = 12000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {30,30,30,30,30,30,30,30,-1},
 	meatType = "meat_avian",
 	meatAmount = 70,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ giant_fynock = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 55,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 9,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fynock.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_red"},
+	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown","knockdownChance=30"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

@@ -4,12 +4,12 @@ nightspider_aggressor = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
-	baseHAM = 750,
-	baseHAMmax = 750,
+	baseHAM = 675,
+	baseHAMmax = 825,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,18 +19,20 @@ nightspider_aggressor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nightspider_aggressor.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"mildpoison",""}
+		{"mildpoison",""},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

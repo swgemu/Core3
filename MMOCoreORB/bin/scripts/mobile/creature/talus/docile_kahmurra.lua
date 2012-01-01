@@ -4,12 +4,12 @@ docile_kahmurra = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
-	baseHAM = 1100,
-	baseHAMmax = 1100,
+	baseHAM = 1000,
+	baseHAMmax = 1200,
 	armor = 0,
 	resists = {0,0,10,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -18,17 +18,20 @@ docile_kahmurra = Creature:new {
 	hideAmount = 27,
 	boneType = "bone_mammal",
 	boneAmount = 32,
-	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	milk = 1,
+	tamingChance = 0,
+	ferocity = 1,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kahmurra.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(docile_kahmurra, "docile_kahmurra")

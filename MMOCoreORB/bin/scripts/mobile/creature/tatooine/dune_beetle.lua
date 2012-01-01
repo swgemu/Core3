@@ -4,12 +4,12 @@ dune_beetle = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 13,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 714,
-	baseHAM = 1300,
-	baseHAMmax = 1300,
+	baseHAM = 1200,
+	baseHAMmax = 1400,
 	armor = 0,
 	resists = {15,15,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,16 +19,19 @@ dune_beetle = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/giant_sand_beetle.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dune_beetle, "dune_beetle")

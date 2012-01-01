@@ -1,10 +1,10 @@
 kimogila_be = Creature:new {
-	objectName = "kimogila be",
+	objectName = "@mob/creature_names:kimogila_be",
 	socialGroup = "Kimogila",
 	pvpFaction = "",
 	faction = "",
 	level = 1,
-	chanceHit = 0.200000,
+	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 45,
@@ -19,16 +19,19 @@ kimogila_be = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kimogila_hue.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kimogila_be, "kimogila_be")

@@ -1,17 +1,17 @@
 bone_angler = Creature:new {
-	objectName = "@mob/creature_names:angler_bone",
+	objectName = "@mob/creature_names:bone_angler",
 	socialGroup = "Angler",
 	pvpFaction = "",
 	faction = "",
 	level = 27,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2730,
-	baseHAM = 8550,
-	baseHAMmax = 8550,
+	baseHAM = 7700,
+	baseHAMmax = 9400,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {15,15,15,15,15,15,15,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 4,
 	hideType = "",
@@ -19,18 +19,20 @@ bone_angler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = STALKER + PACK,
+	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"strongpoison",""}
 	}
 }
 

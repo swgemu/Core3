@@ -4,14 +4,14 @@ lowland_salt_mynock = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2730,
-	baseHAM = 7550,
-	baseHAMmax = 7550,
+	baseHAM = 6800,
+	baseHAMmax = 8300,
 	armor = 0,
-	resists = {20,35,0,50,50,-1,-1,-1,-1},
+	resists = {20,35,10,50,50,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 55,
 	hideType = "hide_leathery",
@@ -19,16 +19,19 @@ lowland_salt_mynock = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 25,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/salt_mynock.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lowland_salt_mynock, "lowland_salt_mynock")

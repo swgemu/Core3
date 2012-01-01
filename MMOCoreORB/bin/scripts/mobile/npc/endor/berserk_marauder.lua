@@ -4,7 +4,7 @@ berserk_marauder = Creature:new {
 	pvpFaction = "Marauder",
 	faction = "",
 	level = 55,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 495,
 	damageMax = 700,
 	baseXp = 5373,
@@ -19,16 +19,19 @@ berserk_marauder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_feral_marauder.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(berserk_marauder, "berserk_marauder")

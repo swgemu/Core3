@@ -4,7 +4,7 @@ blood_razor_destroyer = Creature:new {
 	pvpFaction = "Bloodrazor",
 	faction = "",
 	level = 38,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 385,
 	damageMax = 480,
 	baseXp = 3824,
@@ -19,16 +19,19 @@ blood_razor_destroyer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_blood_razor_pirate_destroyer_hum_f.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_destroyer, "blood_razor_destroyer")

@@ -1,10 +1,10 @@
 tusk_cat = Creature:new {
-	objectName = "@mob/creature_names:warren_tuskcat",
+	objectName = "@mob/creature_names:tusk_cat",
 	socialGroup = "Tusk Cat",
 	pvpFaction = "",
 	faction = "",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1102,
@@ -19,15 +19,17 @@ tusk_cat = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 40,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tusk_cat.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
 		{"blindattack","blindChance=50"}
 	}

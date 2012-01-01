@@ -4,14 +4,14 @@ quenker_ravager = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 38,
-	chanceHit = 0.430000,
+	chanceHit = 0.43,
 	damageMin = 365,
 	damageMax = 440,
 	baseXp = 3824,
-	baseHAM = 10100,
-	baseHAMmax = 10100,
+	baseHAM = 9100,
+	baseHAMmax = 11100,
 	armor = 0,
-	resists = {0,0,0,0,-1,-1,0,0,-1},
+	resists = {25,25,25,25,-1,-1,25,25,-1},
 	meatType = "meat_wild",
 	meatAmount = 0,
 	hideType = "hide_scaley",
@@ -19,18 +19,20 @@ quenker_ravager = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/quenker.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"creatureareapoison",""}
+		{"creatureareapoison",""},
+		{"dizzyattack","dizzyChance=50"}
 	}
 }
 

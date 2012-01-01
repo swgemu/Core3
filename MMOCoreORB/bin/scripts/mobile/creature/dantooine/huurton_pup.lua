@@ -4,12 +4,12 @@ huurton_pup = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 2,
-	chanceHit = 0.210000,
+	chanceHit = 0.21,
 	damageMin = 35,
 	damageMax = 40,
 	baseXp = 45,
-	baseHAM = 75,
-	baseHAMmax = 75,
+	baseHAM = 68,
+	baseHAMmax = 83,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -19,16 +19,19 @@ huurton_pup = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 5,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton_pup.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(huurton_pup, "huurton_pup")

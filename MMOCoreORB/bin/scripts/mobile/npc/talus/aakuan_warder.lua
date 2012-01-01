@@ -4,7 +4,7 @@ aakuan_warder = Creature:new {
 	pvpFaction = "Aa'kuan",
 	faction = "",
 	level = 29,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ aakuan_warder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_aakuan_warder_zabrak_male_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(aakuan_warder, "aakuan_warder")

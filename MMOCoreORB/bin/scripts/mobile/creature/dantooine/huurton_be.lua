@@ -1,10 +1,10 @@
 huurton_be = Creature:new {
-	objectName = "huurton be",
+	objectName = "@mob/creature_names:huurton_be",
 	socialGroup = "Huurton",
 	pvpFaction = "",
 	faction = "",
 	level = 1,
-	chanceHit = 0.200000,
+	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 40,
@@ -19,16 +19,19 @@ huurton_be = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton_hue.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(huurton_be, "huurton_be")

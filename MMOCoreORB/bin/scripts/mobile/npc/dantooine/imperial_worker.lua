@@ -1,10 +1,10 @@
 imperial_worker = Creature:new {
-	objectName = "Imperial worker",
+	objectName = "@mob/creature_names:Imperial_worker",
 	socialGroup = "Warren Imp.",
 	pvpFaction = "Warren Imp.",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 514,
@@ -19,16 +19,19 @@ imperial_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/warren_imperial_worker_s01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_worker, "imperial_worker")

@@ -1,10 +1,10 @@
 sith_shadow_commander = Creature:new {
-	objectName = "Sith Shadow commander",
+	objectName = "@mob/creature_names:Sith_Shadow_commander",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "Sith Shadow",
 	faction = "",
 	level = 69,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 495,
 	damageMax = 700,
 	baseXp = 6655,
@@ -19,16 +19,19 @@ sith_shadow_commander = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sith_shadow_hum_m_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(sith_shadow_commander, "sith_shadow_commander")

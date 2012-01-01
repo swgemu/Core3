@@ -4,7 +4,7 @@ imperial_exterminator = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 28,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 270,
 	damageMax = 280,
 	baseXp = 2914,
@@ -19,16 +19,19 @@ imperial_exterminator = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_exterminator.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_exterminator, "imperial_exterminator")

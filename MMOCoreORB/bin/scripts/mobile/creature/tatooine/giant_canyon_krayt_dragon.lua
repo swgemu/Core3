@@ -4,13 +4,13 @@ giant_canyon_krayt_dragon = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 300,
-	chanceHit = 30.000000,
+	chanceHit = 30,
 	damageMin = 1645,
 	damageMax = 3000,
 	baseXp = 28549,
-	baseHAM = 100000,
-	baseHAMmax = 100000,
-	armor = 0,
+	baseHAM = 385000,
+	baseHAMmax = 471000,
+	armor = 3,
 	resists = {70,70,70,70,30,70,70,70,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
@@ -19,18 +19,20 @@ giant_canyon_krayt_dragon = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 805,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 20,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/canyon_krayt_dragon.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
 		{"creatureareaattack",""},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown","knockdownChance=50"}
 	}
 }
 

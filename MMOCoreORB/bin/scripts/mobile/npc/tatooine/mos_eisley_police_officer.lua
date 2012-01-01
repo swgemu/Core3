@@ -4,7 +4,7 @@ mos_eisley_police_officer = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,
@@ -19,16 +19,19 @@ mos_eisley_police_officer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_mos_eisley_police_officer.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mos_eisley_police_officer, "mos_eisley_police_officer")

@@ -4,12 +4,12 @@ hanadak_drifter = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 28,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2914,
-	baseHAM = 9000,
-	baseHAMmax = 9000,
+	baseHAM = 8100,
+	baseHAMmax = 9900,
 	armor = 0,
 	resists = {20,20,-1,60,60,60,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -19,16 +19,19 @@ hanadak_drifter = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 35,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hanadak.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
+		{"dizzyattack","dizzyChance=50"},
 		{"stunattack","stunChance=50"}
 	}
 }

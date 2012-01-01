@@ -4,12 +4,12 @@ kai_tok_prowler = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2637,
-	baseHAM = 9000,
-	baseHAMmax = 9000,
+	baseHAM = 8100,
+	baseHAMmax = 9900,
 	armor = 0,
 	resists = {30,20,0,0,-1,0,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -19,18 +19,20 @@ kai_tok_prowler = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 46,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kai_tok.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_red"},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"mediumpoison",""}
+		{"mediumpoison",""},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

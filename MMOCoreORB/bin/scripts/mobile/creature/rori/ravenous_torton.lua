@@ -4,14 +4,14 @@ ravenous_torton = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 34,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3370,
-	baseHAM = 9550,
-	baseHAMmax = 9550,
+	baseHAM = 8600,
+	baseHAMmax = 10500,
 	armor = 0,
-	resists = {0,0,0,-1,-1,45,45,80,-1},
+	resists = {20,20,20,-1,-1,45,45,80,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_wooly",
@@ -19,18 +19,20 @@ ravenous_torton = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1000,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 9,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

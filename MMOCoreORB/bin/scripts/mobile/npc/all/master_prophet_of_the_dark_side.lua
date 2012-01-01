@@ -4,7 +4,7 @@ master_prophet_of_the_dark_side = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 168,
-	chanceHit = 8.500000,
+	chanceHit = 8.5,
 	damageMin = 1120,
 	damageMax = 1950,
 	baseXp = 15933,
@@ -19,16 +19,19 @@ master_prophet_of_the_dark_side = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(master_prophet_of_the_dark_side, "master_prophet_of_the_dark_side")

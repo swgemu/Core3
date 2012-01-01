@@ -4,14 +4,14 @@ bolle_bol_male = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 30,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 3005,
-	baseHAM = 9300,
-	baseHAMmax = 9300,
+	baseHAM = 8400,
+	baseHAMmax = 10200,
 	armor = 0,
-	resists = {0,0,0,0,50,0,50,-1,-1},
+	resists = {20,20,20,20,50,20,50,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ bolle_bol_male = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 180,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolle_bol.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

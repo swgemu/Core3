@@ -1,10 +1,10 @@
 novice_creature_handler = Creature:new {
-	objectName = "novice creature handler",
+	objectName = "@mob/creature_names:novice_creature_handler",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 235,
@@ -19,16 +19,19 @@ novice_creature_handler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(novice_creature_handler, "novice_creature_handler")

@@ -1,10 +1,10 @@
 corsec_special_ops_master_sergeant = Creature:new {
-	objectName = "CorSec Special Ops Master Sergeant",
+	objectName = "@mob/creature_names:CorSec_Special_Ops_Master_Sergeant",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",
 	level = 140,
-	chanceHit = 7.000000,
+	chanceHit = 7,
 	damageMin = 845,
 	damageMax = 1400,
 	baseXp = 13273,
@@ -19,16 +19,19 @@ corsec_special_ops_master_sergeant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_master_sergeant, "corsec_special_ops_master_sergeant")

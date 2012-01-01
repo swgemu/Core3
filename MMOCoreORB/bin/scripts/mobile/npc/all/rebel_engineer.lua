@@ -4,7 +4,7 @@ rebel_engineer = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 106,
-	chanceHit = 1.750000,
+	chanceHit = 1.75,
 	damageMin = 670,
 	damageMax = 1050,
 	baseXp = 10081,
@@ -19,16 +19,19 @@ rebel_engineer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_engineer, "rebel_engineer")

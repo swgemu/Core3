@@ -1,10 +1,10 @@
 feral_force_wielder = Creature:new {
-	objectName = "Feral force wielder",
+	objectName = "@mob/creature_names:Feral_force_wielder",
 	socialGroup = "Force Reneg.",
 	pvpFaction = "",
 	faction = "",
 	level = 115,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 820,
 	damageMax = 1350,
 	baseXp = 10921,
@@ -19,16 +19,19 @@ feral_force_wielder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(feral_force_wielder, "feral_force_wielder")

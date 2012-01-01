@@ -4,14 +4,14 @@ large_rock_beetle = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 21,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 2006,
-	baseHAM = 5000,
-	baseHAMmax = 5000,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
-	resists = {20,20,0,15,0,-1,0,-1,-1},
+	resists = {20,20,5,15,5,-1,5,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 10,
 	hideType = "hide_scaley",
@@ -19,16 +19,19 @@ large_rock_beetle = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 4,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rock_beetle.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(large_rock_beetle, "large_rock_beetle")

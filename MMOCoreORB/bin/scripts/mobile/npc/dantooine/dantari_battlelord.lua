@@ -1,10 +1,10 @@
 dantari_battlelord = Creature:new {
-	objectName = "Dantari battlelord",
+	objectName = "@mob/creature_names:Dantari_battlelord",
 	socialGroup = "Dantari Raider",
 	pvpFaction = "Dantari Raider",
 	faction = "",
 	level = 36,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3642,
@@ -19,16 +19,19 @@ dantari_battlelord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dantari_battlelord, "dantari_battlelord")

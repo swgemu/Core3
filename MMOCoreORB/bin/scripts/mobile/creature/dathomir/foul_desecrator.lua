@@ -1,17 +1,17 @@
 foul_desecrator = Creature:new {
-	objectName = "@mob/creature_names:kamurith_foul_desecrator",
+	objectName = "@mob/creature_names:foul_desecrator",
 	socialGroup = "Kamurith",
 	pvpFaction = "",
 	faction = "",
 	level = 60,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 470,
 	damageMax = 650,
 	baseXp = 5830,
-	baseHAM = 12500,
-	baseHAMmax = 12500,
-	armor = 0,
-	resists = {25,0,0,0,0,0,20,20,-1},
+	baseHAM = 11000,
+	baseHAMmax = 14000,
+	armor = 1,
+	resists = {25,15,15,15,15,15,20,20,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 90,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ foul_desecrator = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 50,
 	milk = 0,
-	tamingChance = 0.050000,
-	ferocity = 0,
+	tamingChance = 0.05,
+	ferocity = 10,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/voritor_lizard.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"strongdisease",""},
-		{"creatureareadisease",""}
+		{"creatureareadisease",""},
+		{"strongdisease",""}
 	}
 }
 

@@ -1,10 +1,10 @@
 captain_sarguillo = Creature:new {
-	objectName = "Captain Sarguillo",
+	objectName = "@mob/creature_names:Captain_Sarguillo",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",
 	level = 69,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 495,
 	damageMax = 700,
 	baseXp = 6655,
@@ -19,16 +19,19 @@ captain_sarguillo = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(captain_sarguillo, "captain_sarguillo")

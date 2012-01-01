@@ -1,10 +1,10 @@
 valarians_swooper_leader = Creature:new {
-	objectName = "Valarian's swooper leader",
+	objectName = "@mob/creature_names:Valarian's_swooper_leader",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,
@@ -19,16 +19,19 @@ valarians_swooper_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(valarians_swooper_leader, "valarians_swooper_leader")

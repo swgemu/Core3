@@ -4,14 +4,14 @@ deadly_forest_mite_guardian = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1102,
-	baseHAM = 3200,
-	baseHAMmax = 3200,
+	baseHAM = 2900,
+	baseHAMmax = 3500,
 	armor = 0,
-	resists = {0,15,0,-1,-1,-1,-1,-1,-1},
+	resists = {5,15,5,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 12,
 	hideType = "",
@@ -19,18 +19,20 @@ deadly_forest_mite_guardian = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/forest_mite.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

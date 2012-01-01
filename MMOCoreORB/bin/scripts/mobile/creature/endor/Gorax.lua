@@ -1,17 +1,17 @@
 Gorax = Creature:new {
-	objectName = "Gorax",
+	objectName = "@mob/creature_names:Gorax",
 	socialGroup = "Gorax",
 	pvpFaction = "",
 	faction = "",
 	level = 300,
-	chanceHit = 30.000000,
+	chanceHit = 30,
 	damageMin = 1645,
 	damageMax = 3000,
 	baseXp = 28549,
-	baseHAM = 100000,
-	baseHAMmax = 100000,
-	armor = 0,
-	resists = {65,45,0,0,0,0,0,0,-1},
+	baseHAM = 385000,
+	baseHAMmax = 471000,
+	armor = 3,
+	resists = {65,65,65,65,65,65,65,65,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,18 +19,20 @@ Gorax = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 20,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gorax.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
 		{"creatureareaattack",""},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown","knockdownChance=50"}
 	}
 }
 

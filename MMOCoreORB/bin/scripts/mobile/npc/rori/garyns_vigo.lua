@@ -1,10 +1,10 @@
 garyns_vigo = Creature:new {
-	objectName = "Garyn's vigo",
+	objectName = "@mob/creature_names:Garyn's vigo",
 	socialGroup = "Garyn",
 	pvpFaction = "Garyn",
 	faction = "",
 	level = 32,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 3279,
@@ -19,16 +19,19 @@ garyns_vigo = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(garyns_vigo, "garyns_vigo")

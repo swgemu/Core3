@@ -1,17 +1,17 @@
 mature_pygmy_torton = Creature:new {
-	objectName = "@mob/creature_names:torton_pygmy_mature",
+	objectName = "@mob/creature_names:mature_pygmy_torton",
 	socialGroup = "Torton",
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
-	baseHAM = 5550,
-	baseHAMmax = 5550,
+	baseHAM = 5000,
+	baseHAMmax = 6100,
 	armor = 0,
-	resists = {35,35,0,0,-1,-1,-1,60,-1},
+	resists = {35,35,10,10,-1,-1,-1,60,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 700,
 	hideType = "hide_wooly",
@@ -19,18 +19,20 @@ mature_pygmy_torton = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 700,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 9,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

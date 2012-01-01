@@ -4,12 +4,12 @@ noxious_vrelt_scavenger = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
-	baseHAM = 900,
-	baseHAMmax = 900,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -19,18 +19,20 @@ noxious_vrelt_scavenger = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 10,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/noxious_vrelt_scavenger.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"milddisease",""}
+		{"milddisease",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

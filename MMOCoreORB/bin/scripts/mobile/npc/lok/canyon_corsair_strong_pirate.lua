@@ -1,10 +1,10 @@
 canyon_corsair_strong_pirate = Creature:new {
-	objectName = "Canyon Corsair strong pirate",
+	objectName = "@mob/creature_names:Canyon_Corsair_strong_pirate",
 	socialGroup = "Corsair",
 	pvpFaction = "Corsair",
 	faction = "",
 	level = 36,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3642,
@@ -19,16 +19,19 @@ canyon_corsair_strong_pirate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsair_pirate_strong_hum_f.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(canyon_corsair_strong_pirate, "canyon_corsair_strong_pirate")

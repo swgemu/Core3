@@ -1,10 +1,10 @@
 rebel_commandant = Creature:new {
-	objectName = "Rebel Commandant",
+	objectName = "@mob/creature_names:Rebel_Commandant",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 151,
-	chanceHit = 8.500000,
+	chanceHit = 8.5,
 	damageMin = 895,
 	damageMax = 1500,
 	baseXp = 14314,
@@ -19,16 +19,19 @@ rebel_commandant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_commandant, "rebel_commandant")

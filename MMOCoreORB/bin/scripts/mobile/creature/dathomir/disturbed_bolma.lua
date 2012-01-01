@@ -4,12 +4,12 @@ disturbed_bolma = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 270,
 	damageMax = 280,
 	baseXp = 2443,
-	baseHAM = 6000,
-	baseHAMmax = 6000,
+	baseHAM = 5400,
+	baseHAMmax = 6600,
 	armor = 0,
 	resists = {0,30,0,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_wild",
@@ -19,18 +19,20 @@ disturbed_bolma = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 150,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack","knockdownChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

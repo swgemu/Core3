@@ -1,15 +1,15 @@
 fanned_rawl = Creature:new {
-	objectName = "@monster_name:fanned_rawl",
+	objectName = "@mob/creature_names:fanned_rawl",
 	socialGroup = "Fanned Rawl",
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
-	baseHAM = 900,
-	baseHAMmax = 900,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_reptilian",
@@ -19,18 +19,20 @@ fanned_rawl = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 7,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 3,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fanned_rawl.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"mildpoison",""}
+		{"mildpoison",""},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

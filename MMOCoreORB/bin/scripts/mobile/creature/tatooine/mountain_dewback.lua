@@ -4,14 +4,14 @@ mountain_dewback = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 20,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1609,
-	baseHAM = 5550,
-	baseHAMmax = 5550,
+	baseHAM = 5000,
+	baseHAMmax = 6100,
 	armor = 0,
-	resists = {20,0,0,40,40,-1,-1,-1,-1},
+	resists = {20,10,10,40,40,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
 	meatAmount = 330,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ mountain_dewback = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 170,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 5,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_dewback.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

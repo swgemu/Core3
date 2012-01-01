@@ -4,14 +4,14 @@ bile_drenched_quenker = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 34,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 315,
 	damageMax = 340,
 	baseXp = 3370,
-	baseHAM = 9700,
-	baseHAMmax = 9700,
+	baseHAM = 8700,
+	baseHAMmax = 10700,
 	armor = 0,
-	resists = {0,0,0,0,-1,0,0,-1,-1},
+	resists = {30,30,30,30,-1,30,30,-1,-1},
 	meatType = "meat_wild",
 	meatAmount = 0,
 	hideType = "",
@@ -19,18 +19,20 @@ bile_drenched_quenker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bile_drenched_quenker.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_green"},
+	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"defaultattack",""}
+		{"defaultattack",""},
+		{"dizzyattack","dizzyChance=50"}
 	}
 }
 

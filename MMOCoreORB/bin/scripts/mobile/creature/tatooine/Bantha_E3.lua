@@ -1,10 +1,10 @@
 Bantha_E3 = Creature:new {
-	objectName = "Bantha E3",
+	objectName = "@mob/creature_names:Bantha_E3",
 	socialGroup = "Bantha",
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 292,
@@ -19,15 +19,17 @@ Bantha_E3 = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 250,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bantha.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}
 	}

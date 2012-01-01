@@ -1,17 +1,17 @@
 salt_mynock = Creature:new {
-	objectName = "@monster_name:salt_mynock",
+	objectName = "@mob/creature_names:salt_mynock",
 	socialGroup = "Mynock",
 	pvpFaction = "",
 	faction = "",
 	level = 23,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2219,
-	baseHAM = 6550,
-	baseHAMmax = 6550,
+	baseHAM = 5900,
+	baseHAMmax = 7200,
 	armor = 0,
-	resists = {0,20,0,40,40,-1,-1,-1,-1},
+	resists = {10,20,10,40,40,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 50,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ salt_mynock = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 20,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/salt_mynock.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

@@ -4,14 +4,14 @@ graul_mauler = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 315,
 	damageMax = 340,
 	baseXp = 3551,
-	baseHAM = 9700,
-	baseHAMmax = 9700,
+	baseHAM = 8700,
+	baseHAMmax = 10700,
 	armor = 0,
-	resists = {45,0,60,60,60,-1,-1,-1,-1},
+	resists = {45,20,60,60,60,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 950,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ graul_mauler = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 775,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 10,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/graul.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

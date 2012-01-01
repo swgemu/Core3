@@ -4,14 +4,14 @@ gackle_bat_hunter = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 831,
-	baseHAM = 2700,
-	baseHAMmax = 2700,
+	baseHAM = 2400,
+	baseHAMmax = 3000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 4,
 	hideType = "hide_bristley",
@@ -19,16 +19,19 @@ gackle_bat_hunter = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 3,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gackle_bat.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gackle_bat_hunter, "gackle_bat_hunter")

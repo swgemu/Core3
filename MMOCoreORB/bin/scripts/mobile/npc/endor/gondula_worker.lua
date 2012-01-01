@@ -1,10 +1,10 @@
 gondula_worker = Creature:new {
-	objectName = "Gondula worker",
+	objectName = "@mob/creature_names:Gondula worker",
 	socialGroup = "Gondula Tribe",
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 18,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ gondula_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_worker, "gondula_worker")

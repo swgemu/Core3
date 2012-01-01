@@ -4,12 +4,12 @@ gnarled_bark_mite_queen = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1257,
-	baseHAM = 5000,
-	baseHAMmax = 5000,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
 	resists = {0,15,-1,0,-1,-1,-1,-1,-1},
 	meatType = "meat_insect",
@@ -19,18 +19,20 @@ gnarled_bark_mite_queen = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gnarled_bark_mite_queen.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"milddisease",""}
+		{"milddisease",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

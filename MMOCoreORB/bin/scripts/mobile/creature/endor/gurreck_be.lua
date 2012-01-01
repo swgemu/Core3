@@ -1,10 +1,10 @@
 gurreck_be = Creature:new {
-	objectName = "gurreck be",
+	objectName = "@mob/creature_names:gurreck_be",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
 	faction = "",
 	level = 1,
-	chanceHit = 0.200000,
+	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 40,
@@ -19,16 +19,19 @@ gurreck_be = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck_hue.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gurreck_be, "gurreck_be")

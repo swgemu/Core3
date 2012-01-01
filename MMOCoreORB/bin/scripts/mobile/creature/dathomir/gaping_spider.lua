@@ -1,17 +1,17 @@
 gaping_spider = Creature:new {
-	objectName = "@monster_name:gaping_spider",
+	objectName = "@mob/creature_names:gaping_spider",
 	socialGroup = "Gaping",
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
-	baseHAM = 8550,
-	baseHAMmax = 8550,
+	baseHAM = 7700,
+	baseHAMmax = 9400,
 	armor = 0,
-	resists = {30,25,-1,0,-1,0,-1,-1,-1},
+	resists = {30,25,-1,15,-1,15,-1,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 8,
 	hideType = "",
@@ -19,18 +19,20 @@ gaping_spider = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 4,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"mildpoison",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"mildpoison",""}
 	}
 }
 

@@ -1,15 +1,15 @@
 kaadu = Creature:new {
-	objectName = "@monster_name:kaadu",
+	objectName = "@mob/creature_names:kaadu",
 	socialGroup = "Kaadu",
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 292,
-	baseHAM = 900,
-	baseHAMmax = 900,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -19,16 +19,19 @@ kaadu = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 70,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kaadu.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kaadu, "kaadu")

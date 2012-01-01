@@ -1,5 +1,5 @@
 acicular_defender = Creature:new {
-	objectName = "@mob/creature_names:paralope_acicular_defender",
+	objectName = "@mob/creature_names:acicular_defender",
 	socialGroup = "Paralope",
 	pvpFaction = "",
 	faction = "",
@@ -8,8 +8,8 @@ acicular_defender = Creature:new {
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 235,
-	baseHAM = 450,
-	baseHAMmax = 450,
+	baseHAM = 405,
+	baseHAMmax = 495,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_herbivore",

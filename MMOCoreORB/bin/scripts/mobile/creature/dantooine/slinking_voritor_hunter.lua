@@ -4,14 +4,14 @@ slinking_voritor_hunter = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 57,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 420,
 	damageMax = 550,
 	baseXp = 5555,
-	baseHAM = 12000,
-	baseHAMmax = 12000,
+	baseHAM = 11000,
+	baseHAMmax = 13000,
 	armor = 0,
-	resists = {45,45,0,0,0,-1,0,0,-1},
+	resists = {45,45,10,10,10,-1,10,10,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 90,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ slinking_voritor_hunter = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 50,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/slinking_voritor_hunter.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

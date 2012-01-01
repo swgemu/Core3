@@ -4,12 +4,12 @@ nightspider_poison_spitter = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 430,
-	baseHAM = 900,
-	baseHAMmax = 900,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
 	resists = {0,0,0,0,0,0,15,-1,-1},
 	meatType = "meat_insect",
@@ -19,18 +19,20 @@ nightspider_poison_spitter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nightspider_poison_spitter.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"mildpoison",""}
+		{"mildpoison",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

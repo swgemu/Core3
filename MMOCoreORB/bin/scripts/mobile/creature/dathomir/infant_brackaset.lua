@@ -4,11 +4,11 @@ infant_brackaset = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 55,
 	damageMax = 65,
-	baseXp = 113,
-	baseHAM = 150,
+	baseXp = 135,
+	baseHAM = 165,
 	baseHAMmax = 150,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
@@ -19,16 +19,19 @@ infant_brackaset = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 60,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/infant_brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(infant_brackaset, "infant_brackaset")

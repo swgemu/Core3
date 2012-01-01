@@ -1,10 +1,10 @@
 first_brigade_infiltrator = Creature:new {
-	objectName = "First Brigade infiltrator",
+	objectName = "@mob/creature_names:First_Brigade_infiltrator",
 	socialGroup = "Restuss",
 	pvpFaction = "Restuss",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,
@@ -19,16 +19,19 @@ first_brigade_infiltrator = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + STALKER + HERD,
+	creatureBitmask = PACK + HERD + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(first_brigade_infiltrator, "first_brigade_infiltrator")

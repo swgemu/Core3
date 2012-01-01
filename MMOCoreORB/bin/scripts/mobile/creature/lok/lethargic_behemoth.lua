@@ -1,15 +1,15 @@
 lethargic_behemoth = Creature:new {
-	objectName = "@mob/creature_names:flit_lethargic_behemoth",
+	objectName = "@mob/creature_names:lethargic_behemoth",
 	socialGroup = "Flit",
 	pvpFaction = "",
 	faction = "",
 	level = 23,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2219,
-	baseHAM = 7000,
-	baseHAMmax = 7000,
+	baseHAM = 6300,
+	baseHAMmax = 7700,
 	armor = 0,
 	resists = {10,10,-1,-1,0,-1,0,0,-1},
 	meatType = "meat_avian",
@@ -19,16 +19,19 @@ lethargic_behemoth = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 13,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_flit.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lethargic_behemoth, "lethargic_behemoth")

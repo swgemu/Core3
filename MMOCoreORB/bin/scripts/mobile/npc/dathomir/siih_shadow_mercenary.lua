@@ -1,10 +1,10 @@
 siih_shadow_mercenary = Creature:new {
-	objectName = "Siih Shadow mercenary",
+	objectName = "@mob/creature_names:Sith_Shadow_mercenary",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "Sith Shadow",
 	faction = "",
 	level = 69,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 495,
 	damageMax = 700,
 	baseXp = 6655,
@@ -19,16 +19,19 @@ siih_shadow_mercenary = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sith_shadow_hum_m_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(siih_shadow_mercenary, "siih_shadow_mercenary")

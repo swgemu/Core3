@@ -1,10 +1,10 @@
 grecks_assassin = Creature:new {
-	objectName = "Greck's assassin",
+	objectName = "@mob/creature_names:Greck's assassin",
 	socialGroup = "Olag Greck",
 	pvpFaction = "Olag Greck",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 514,
@@ -19,16 +19,19 @@ grecks_assassin = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(grecks_assassin, "grecks_assassin")

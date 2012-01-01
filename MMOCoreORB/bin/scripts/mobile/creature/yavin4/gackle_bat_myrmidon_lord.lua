@@ -4,12 +4,12 @@ gackle_bat_myrmidon_lord = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 1803,
-	baseHAM = 4550,
-	baseHAMmax = 4550,
+	baseHAM = 4100,
+	baseHAMmax = 5000,
 	armor = 0,
 	resists = {15,20,-1,25,-1,-1,-1,-1,-1},
 	meatType = "meat_avian",
@@ -19,18 +19,20 @@ gackle_bat_myrmidon_lord = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 10,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gackle_bat.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

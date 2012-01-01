@@ -4,12 +4,12 @@ eopie_herdmaster = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 292,
-	baseHAM = 900,
-	baseHAMmax = 900,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
 	resists = {0,0,0,10,10,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -19,16 +19,19 @@ eopie_herdmaster = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 150,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/eopie.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(eopie_herdmaster, "eopie_herdmaster")

@@ -4,12 +4,12 @@ hermit_spider_queen = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 11,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 514,
-	baseHAM = 750,
-	baseHAMmax = 750,
+	baseHAM = 675,
+	baseHAMmax = 825,
 	armor = 0,
 	resists = {20,20,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,18 +19,20 @@ hermit_spider_queen = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hermit_spider_queen.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"mildpoison",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"mildpoison",""}
 	}
 }
 

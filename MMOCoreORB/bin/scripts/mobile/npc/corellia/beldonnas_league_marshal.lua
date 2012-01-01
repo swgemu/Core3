@@ -1,10 +1,10 @@
 beldonnas_league_marshal = Creature:new {
-	objectName = "Beldonna's League marshal",
+	objectName = "@mob/creature_names:Beldonna's_League_marshal",
 	socialGroup = "Bel. League",
 	pvpFaction = "Bel. League",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
@@ -19,16 +19,19 @@ beldonnas_league_marshal = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(beldonnas_league_marshal, "beldonnas_league_marshal")

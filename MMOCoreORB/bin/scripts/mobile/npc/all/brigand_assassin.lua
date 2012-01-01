@@ -1,10 +1,10 @@
 brigand_assassin = Creature:new {
-	objectName = "Brigand assassin",
+	objectName = "@mob/creature_names:Brigand_assassin",
 	socialGroup = "Brigand",
 	pvpFaction = "",
 	faction = "",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ brigand_assassin = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(brigand_assassin, "brigand_assassin")

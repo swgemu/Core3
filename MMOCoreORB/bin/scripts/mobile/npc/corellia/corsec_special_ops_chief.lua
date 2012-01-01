@@ -1,10 +1,10 @@
 corsec_special_ops_chief = Creature:new {
-	objectName = "CorSec Special Ops Chief",
+	objectName = "@mob/creature_names:CorSec_Special_Ops_Chief",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",
 	level = 200,
-	chanceHit = 16.000000,
+	chanceHit = 16,
 	damageMin = 1145,
 	damageMax = 2000,
 	baseXp = 19008,
@@ -19,16 +19,19 @@ corsec_special_ops_chief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_chief, "corsec_special_ops_chief")

@@ -1,10 +1,10 @@
 aakuan_follower = Creature:new {
-	objectName = "@mob/creature_names:aakuan_follower",
+	objectName = "@mob/creature_names:Aa'kuan_follower",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 430,
@@ -19,16 +19,19 @@ aakuan_follower = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(aakuan_follower, "aakuan_follower")

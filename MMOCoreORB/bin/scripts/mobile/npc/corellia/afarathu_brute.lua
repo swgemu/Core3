@@ -1,10 +1,10 @@
 afarathu_brute = Creature:new {
-	objectName = "Afarathu brute",
+	objectName = "@mob/creature_names:Afarathu_brute",
 	socialGroup = "Afarathu",
 	pvpFaction = "Afarathu",
 	faction = "",
 	level = 11,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 514,
@@ -19,16 +19,19 @@ afarathu_brute = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_selonian_m_02.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(afarathu_brute, "afarathu_brute")

@@ -1,10 +1,10 @@
 grecks_smuggler = Creature:new {
-	objectName = "Greck's smuggler",
+	objectName = "@mob/creature_names:Greck's smuggler",
 	socialGroup = "Olag Greck",
 	pvpFaction = "Olag Greck",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 187,
@@ -19,16 +19,19 @@ grecks_smuggler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(grecks_smuggler, "grecks_smuggler")

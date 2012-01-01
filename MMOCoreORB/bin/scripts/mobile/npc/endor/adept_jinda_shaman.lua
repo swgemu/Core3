@@ -4,7 +4,7 @@ adept_jinda_shaman = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 32,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3188,
@@ -19,16 +19,19 @@ adept_jinda_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_m_11.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(adept_jinda_shaman, "adept_jinda_shaman")

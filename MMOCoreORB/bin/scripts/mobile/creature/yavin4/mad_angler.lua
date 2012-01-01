@@ -4,14 +4,14 @@ mad_angler = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 95,
-	chanceHit = 0.850000,
+	chanceHit = 0.85,
 	damageMin = 820,
 	damageMax = 1350,
 	baseXp = 9057,
-	baseHAM = 14500,
-	baseHAMmax = 14500,
+	baseHAM = 13000,
+	baseHAMmax = 16000,
 	armor = 0,
-	resists = {50,50,0,-1,0,-1,-1,0,-1},
+	resists = {50,50,20,-1,20,-1,-1,20,-1},
 	meatType = "meat_insect",
 	meatAmount = 3,
 	hideType = "",
@@ -19,18 +19,20 @@ mad_angler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"strongpoison",""}
 	}
 }
 

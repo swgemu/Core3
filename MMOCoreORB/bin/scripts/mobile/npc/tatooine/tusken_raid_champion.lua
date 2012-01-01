@@ -1,10 +1,10 @@
 tusken_raid_champion = Creature:new {
-	objectName = "Tusken raid champion",
+	objectName = "@mob/creature_names:Tusken_raid_champion",
 	socialGroup = "Tusken Raider",
 	pvpFaction = "Tusken Raider",
 	faction = "",
 	level = 62,
-	chanceHit = 0.620000,
+	chanceHit = 0.62,
 	damageMin = 455,
 	damageMax = 620,
 	baseXp = 6013,
@@ -19,16 +19,19 @@ tusken_raid_champion = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_raid_champion, "tusken_raid_champion")

@@ -4,14 +4,14 @@ bol_pack_runner = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2637,
-	baseHAM = 9100,
-	baseHAMmax = 9100,
+	baseHAM = 8200,
+	baseHAMmax = 10000,
 	armor = 0,
-	resists = {25,25,0,0,-1,-1,0,-1,-1},
+	resists = {25,25,15,15,-1,-1,15,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ bol_pack_runner = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 180,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bol_pack_runner.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

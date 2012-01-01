@@ -1,10 +1,10 @@
 naboo_police_officer = Creature:new {
-	objectName = "Naboo police officer",
+	objectName = "@mob/creature_names:Naboo_police_officer",
 	socialGroup = "RSF",
 	pvpFaction = "RSF",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 235,
@@ -19,16 +19,19 @@ naboo_police_officer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_police.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_police_officer, "naboo_police_officer")

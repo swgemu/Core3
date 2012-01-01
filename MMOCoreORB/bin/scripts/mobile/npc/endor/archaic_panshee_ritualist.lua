@@ -4,7 +4,7 @@ archaic_panshee_ritualist = Creature:new {
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 60,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 445,
 	damageMax = 600,
 	baseXp = 5738,
@@ -19,16 +19,19 @@ archaic_panshee_ritualist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(archaic_panshee_ritualist, "archaic_panshee_ritualist")

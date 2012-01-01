@@ -4,14 +4,14 @@ nightsister_sentry = Creature:new {
 	pvpFaction = "Nightsister",
 	faction = "",
 	level = 27,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2730,
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
-	resists = {0,0,0,60,60,60,60,-1,-1},
+	resists = {15,15,15,60,60,60,60,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ nightsister_sentry = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_nightsister_stalker.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_sentry, "nightsister_sentry")

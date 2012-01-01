@@ -1,10 +1,10 @@
 elite_novatrooper_commander = Creature:new {
-	objectName = "Elite Novatrooper Commander",
+	objectName = "@mob/creature_names:Elite_Novatrooper_Commander",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 201,
-	chanceHit = 16.000000,
+	chanceHit = 16,
 	damageMin = 1145,
 	damageMax = 2000,
 	baseXp = 19104,
@@ -19,16 +19,19 @@ elite_novatrooper_commander = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(elite_novatrooper_commander, "elite_novatrooper_commander")

@@ -4,7 +4,7 @@ jinda_chief = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 51,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 420,
 	damageMax = 550,
 	baseXp = 5007,
@@ -19,16 +19,19 @@ jinda_chief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male_01.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(jinda_chief, "jinda_chief")

@@ -1,10 +1,10 @@
 eopie_be = Creature:new {
-	objectName = "eopie be",
+	objectName = "@mob/creature_names:eopie_be",
 	socialGroup = "Eopie",
 	pvpFaction = "",
 	faction = "",
 	level = 1,
-	chanceHit = 0.200000,
+	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 30,
@@ -18,17 +18,20 @@ eopie_be = Creature:new {
 	hideAmount = 0,
 	boneType = "",
 	boneAmount = 0,
-	milk = 0,
-	tamingChance = 0.000000,
+	milk = 1,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/eopie_hue.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(eopie_be, "eopie_be")

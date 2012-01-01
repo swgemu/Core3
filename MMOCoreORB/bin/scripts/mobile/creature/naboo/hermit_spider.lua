@@ -1,15 +1,15 @@
 hermit_spider = Creature:new {
-	objectName = "@monster_name:hermit_spider",
+	objectName = "@mob/creature_names:hermit_spider",
 	socialGroup = "Hermit Spider",
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 147,
-	baseHAM = 300,
-	baseHAMmax = 300,
+	baseHAM = 270,
+	baseHAMmax = 330,
 	armor = 0,
 	resists = {0,0,10,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,16 +19,19 @@ hermit_spider = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hermit_spider.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hermit_spider, "hermit_spider")

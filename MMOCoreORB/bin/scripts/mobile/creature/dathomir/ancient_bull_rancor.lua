@@ -4,13 +4,13 @@ ancient_bull_rancor = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 98,
-	chanceHit = 0.950000,
+	chanceHit = 0.95,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 9336,
-	baseHAM = 22500,
-	baseHAMmax = 22500,
-	armor = 0,
+	baseHAM = 20000,
+	baseHAMmax = 25000,
+	armor = 2,
 	resists = {50,65,0,100,100,100,0,0,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
@@ -19,16 +19,21 @@ ancient_bull_rancor = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 950,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER,
+	tamingChance = 0,
+	ferocity = 20,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bull_rancor.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+		{"creatureareableeding",""},
+		{"creatureareacombo",""}
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(ancient_bull_rancor, "ancient_bull_rancor")

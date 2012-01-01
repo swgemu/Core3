@@ -1,10 +1,10 @@
 nyms_brawler = Creature:new {
-	objectName = "Nym's brawler",
+	objectName = "@mob/creature_names:Nym's_brawler",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ nyms_brawler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_nym_brawler_hum_f.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nyms_brawler, "nyms_brawler")

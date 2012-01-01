@@ -1,10 +1,10 @@
 bodyguard_zabrak_female = Creature:new {
-	objectName = "Bodyguard Zabrak Female",
+	objectName = "@mob/creature_names:Bodyguard_Zabrak_Female",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ bodyguard_zabrak_female = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_garyn_theif_zabrak_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(bodyguard_zabrak_female, "bodyguard_zabrak_female")

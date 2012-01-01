@@ -1,10 +1,10 @@
 bors_teraud = Creature:new {
-	objectName = "Bors Teraud",
+	objectName = "@mob/creature_names:Bors_Teraud",
 	socialGroup = "Warren Teraud",
 	pvpFaction = "Warren Teraud",
 	faction = "",
 	level = 75,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 520,
 	damageMax = 750,
 	baseXp = 7207,
@@ -19,16 +19,19 @@ bors_teraud = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/warren_bors_teraud.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(bors_teraud, "bors_teraud")

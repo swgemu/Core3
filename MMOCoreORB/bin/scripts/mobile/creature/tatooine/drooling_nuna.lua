@@ -1,15 +1,15 @@
 drooling_nuna = Creature:new {
-	objectName = "@mob/creature_names:dwarf_nuna_drooling",
+	objectName = "@mob/creature_names:drooling_nuna",
 	socialGroup = "Dwarf Nuna",
 	pvpFaction = "",
 	faction = "",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 147,
-	baseHAM = 150,
-	baseHAMmax = 150,
+	baseHAM = 135,
+	baseHAMmax = 165,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -19,16 +19,19 @@ drooling_nuna = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 1,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/nuna.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(drooling_nuna, "drooling_nuna")

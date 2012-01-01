@@ -4,14 +4,14 @@ skreeg_warrior_elite = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 30,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 3005,
-	baseHAM = 9300,
-	baseHAMmax = 9300,
+	baseHAM = 8400,
+	baseHAMmax = 10200,
 	armor = 0,
-	resists = {-1,75,0,-1,100,-1,-1,-1,-1},
+	resists = {-1,75,20,-1,100,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 5,
 	hideType = "hide_bristley",
@@ -19,18 +19,20 @@ skreeg_warrior_elite = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 7,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/skreeg.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

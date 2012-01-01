@@ -1,15 +1,15 @@
 stout_ikopi_buck = Creature:new {
-	objectName = "@mob/creature_names:ikopi_stout_stallion",
+	objectName = "@mob/creature_names:stout_ikopi_buck",
 	socialGroup = "Ikopi",
 	pvpFaction = "",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
-	baseHAM = 750,
-	baseHAMmax = 750,
+	baseHAM = 675,
+	baseHAMmax = 825,
 	armor = 0,
 	resists = {10,0,-1,0,0,0,0,0,-1},
 	meatType = "meat_wild",
@@ -19,18 +19,20 @@ stout_ikopi_buck = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 45,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ikopi.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

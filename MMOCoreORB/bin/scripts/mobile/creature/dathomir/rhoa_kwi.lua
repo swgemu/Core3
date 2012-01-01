@@ -1,17 +1,17 @@
 rhoa_kwi = Creature:new {
-	objectName = "rhoa kwi",
+	objectName = "@mob/creature_names:rhoa_kwi",
 	socialGroup = "Rhoa Kwi",
 	pvpFaction = "",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 355,
 	damageMax = 420,
 	baseXp = 3551,
-	baseHAM = 9300,
-	baseHAMmax = 9300,
+	baseHAM = 8400,
+	baseHAMmax = 10200,
 	armor = 0,
-	resists = {0,0,0,80,0,0,-1,-1,-1},
+	resists = {25,25,25,80,25,25,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 120,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ rhoa_kwi = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 76,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 6,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kwi.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_red"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

@@ -1,10 +1,10 @@
 narmle_militia_major = Creature:new {
-	objectName = "Narmle Militia Major",
+	objectName = "@mob/creature_names:narmle_militia_major",
 	socialGroup = "Narmle",
 	pvpFaction = "Narmle",
 	faction = "",
 	level = 19,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1426,
@@ -19,16 +19,19 @@ narmle_militia_major = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_narmle_major_twk_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_major, "narmle_militia_major")

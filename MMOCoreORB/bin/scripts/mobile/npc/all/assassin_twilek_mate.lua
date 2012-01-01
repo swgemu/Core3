@@ -1,10 +1,10 @@
 assassin_twilek_mate = Creature:new {
-	objectName = "Assassin Twilek Mate",
+	objectName = "@mob/creature_names:Assassin_Twilek_Mate",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ assassin_twilek_mate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_cobral_assassin_twk_male_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(assassin_twilek_mate, "assassin_twilek_mate")

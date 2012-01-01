@@ -4,7 +4,7 @@ stormtrooper_major = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 32,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 3279,
@@ -19,16 +19,19 @@ stormtrooper_major = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_major_m.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_major, "stormtrooper_major")

@@ -1,10 +1,10 @@
 aakuan_spice_guard = Creature:new {
-	objectName = "Aa'kuan spice guard",
+	objectName = "@mob/creature_names:Aa'kuan spice guard",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
 	level = 27,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2822,
@@ -19,16 +19,19 @@ aakuan_spice_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(aakuan_spice_guard, "aakuan_spice_guard")

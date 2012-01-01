@@ -4,13 +4,13 @@ craggy_bolma = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 47,
-	chanceHit = 0.470000,
+	chanceHit = 0.47,
 	damageMin = 375,
 	damageMax = 460,
 	baseXp = 4643,
-	baseHAM = 11500,
-	baseHAMmax = 11500,
-	armor = 0,
+	baseHAM = 10000,
+	baseHAMmax = 13000,
+	armor = 1,
 	resists = {25,40,0,0,-1,0,0,-1,-1},
 	meatType = "meat_wild",
 	meatAmount = 500,
@@ -19,16 +19,19 @@ craggy_bolma = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 500,
 	milk = 0,
-	tamingChance = 0.150000,
-	ferocity = 0,
+	tamingChance = 0.15,
+	ferocity = 5,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(craggy_bolma, "craggy_bolma")

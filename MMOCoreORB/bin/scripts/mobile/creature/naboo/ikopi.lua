@@ -1,15 +1,15 @@
 ikopi = Creature:new {
-	objectName = "@monster_name:ikopi",
+	objectName = "@mob/creature_names:ikopi",
 	socialGroup = "Ikopi",
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 147,
-	baseHAM = 450,
-	baseHAMmax = 450,
+	baseHAM = 405,
+	baseHAMmax = 495,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -19,16 +19,19 @@ ikopi = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 45,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ikopi.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(ikopi, "ikopi")

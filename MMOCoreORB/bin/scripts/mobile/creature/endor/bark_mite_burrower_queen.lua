@@ -4,14 +4,14 @@ bark_mite_burrower_queen = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 60,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 440,
 	damageMax = 590,
 	baseXp = 5830,
-	baseHAM = 12000,
-	baseHAMmax = 12000,
-	armor = 0,
-	resists = {60,50,-1,80,-1,80,80,0,-1},
+	baseHAM = 11000,
+	baseHAMmax = 13000,
+	armor = 1,
+	resists = {60,50,-1,80,-1,80,80,10,-1},
 	meatType = "meat_insect",
 	meatAmount = 0,
 	hideType = "",
@@ -19,18 +19,20 @@ bark_mite_burrower_queen = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_burrower_queen.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"strongdisease",""}
+		{"strongdisease",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

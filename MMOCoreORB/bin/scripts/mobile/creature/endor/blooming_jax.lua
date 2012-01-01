@@ -4,12 +4,12 @@ blooming_jax = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 27,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2730,
-	baseHAM = 8000,
-	baseHAMmax = 8000,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
 	resists = {35,35,50,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -19,18 +19,20 @@ blooming_jax = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 25,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blooming_jax.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

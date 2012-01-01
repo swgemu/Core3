@@ -1,10 +1,10 @@
 giant_gaping_spider_recluse = Creature:new {
-	objectName = "@mob/creature_names:gaping_spider_recluse_giant",
+	objectName = "@mob/creature_names:giant_gaping_spider_recluse",
 	socialGroup = "Gaping Recluse",
 	pvpFaction = "",
 	faction = "",
 	level = 115,
-	chanceHit = 3.100000,
+	chanceHit = 3.1,
 	damageMin = 775,
 	damageMax = 1260,
 	baseXp = 10921,
@@ -19,15 +19,17 @@ giant_gaping_spider_recluse = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
 		{"creatureareapoison",""},
 		{"strongpoison",""}

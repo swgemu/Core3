@@ -4,14 +4,14 @@ droideka = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 45,
-	chanceHit = 0.470000,
+	chanceHit = 0.47,
 	damageMin = 395,
 	damageMax = 500,
 	baseXp = 4461,
 	baseHAM = 9700,
 	baseHAMmax = 11900,
 	armor = 0,
-	resists = {25,30,0,0,0,-1,0,-1,-1},
+	resists = {25,30,30,0,30,-1,30,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ droideka = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/droideka.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(droideka, "droideka")

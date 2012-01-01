@@ -4,7 +4,7 @@ storm_commando = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 29,
-	chanceHit = 0.380000,
+	chanceHit = 0.38,
 	damageMin = 300,
 	damageMax = 310,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ storm_commando = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_commando1_m.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(storm_commando, "storm_commando")

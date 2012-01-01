@@ -4,14 +4,14 @@ kliknik_dark_warrior = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 40,
-	chanceHit = 0.430000,
+	chanceHit = 0.43,
 	damageMin = 340,
 	damageMax = 390,
 	baseXp = 4006,
-	baseHAM = 10200,
-	baseHAMmax = 10200,
+	baseHAM = 9200,
+	baseHAMmax = 11200,
 	armor = 0,
-	resists = {60,40,0,0,0,-1,-1,-1,-1},
+	resists = {60,40,25,25,25,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 6,
 	hideType = "hide_scaley",
@@ -19,18 +19,20 @@ kliknik_dark_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.150000,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

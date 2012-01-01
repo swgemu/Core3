@@ -4,14 +4,14 @@ huurton_stalker = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 33,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 310,
 	damageMax = 330,
 	baseXp = 3370,
-	baseHAM = 9600,
-	baseHAMmax = 9600,
+	baseHAM = 8600,
+	baseHAMmax = 10600,
 	armor = 0,
-	resists = {0,0,0,40,100,-1,-1,-1,-1},
+	resists = {20,20,20,40,100,-1,-1,-1,-1},
 	meatType = "meat_wild",
 	meatAmount = 15,
 	hideType = "hide_wooly",
@@ -19,18 +19,20 @@ huurton_stalker = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 15,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

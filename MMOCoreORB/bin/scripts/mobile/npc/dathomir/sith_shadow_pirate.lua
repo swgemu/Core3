@@ -1,10 +1,10 @@
 sith_shadow_pirate = Creature:new {
-	objectName = "Sith Shadow pirate",
+	objectName = "@mob/creature_names:Sith_Shadow_pirate",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "s.s. non-aggro",
 	faction = "",
 	level = 90,
-	chanceHit = 0.850000,
+	chanceHit = 0.85,
 	damageMin = 570,
 	damageMax = 850,
 	baseXp = 1864,
@@ -19,16 +19,19 @@ sith_shadow_pirate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sith_shadow_hum_m_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(sith_shadow_pirate, "sith_shadow_pirate")

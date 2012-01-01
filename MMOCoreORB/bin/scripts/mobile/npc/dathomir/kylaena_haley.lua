@@ -4,7 +4,7 @@ kylaena_haley = Creature:new {
 	pvpFaction = "Sith Shadow",
 	faction = "",
 	level = 103,
-	chanceHit = 0.900000,
+	chanceHit = 0.9,
 	damageMin = 720,
 	damageMax = 1150,
 	baseXp = 9801,
@@ -19,16 +19,19 @@ kylaena_haley = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER,
+	creatureBitmask = KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kylaena_haley, "kylaena_haley")

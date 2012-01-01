@@ -4,12 +4,12 @@ langlatch_destroyer = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 20,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 1803,
-	baseHAM = 2700,
-	baseHAMmax = 2700,
+	baseHAM = 2400,
+	baseHAMmax = 3000,
 	armor = 0,
 	resists = {20,0,0,15,15,45,45,-1,-1},
 	meatType = "meat_carnivore",
@@ -19,16 +19,19 @@ langlatch_destroyer = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 10,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/langlatch.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(langlatch_destroyer, "langlatch_destroyer")

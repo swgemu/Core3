@@ -1,10 +1,10 @@
 blood_razor_elite_pirate = Creature:new {
-	objectName = "Blood Razor elite pirate",
+	objectName = "@mob/creature_names:Blood_Razor_elite_pirate",
 	socialGroup = "Bloodrazor",
 	pvpFaction = "Bloodrazor",
 	faction = "",
 	level = 33,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3370,
@@ -19,16 +19,19 @@ blood_razor_elite_pirate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_blood_razor_pirate_elite_hum_f.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_elite_pirate, "blood_razor_elite_pirate")

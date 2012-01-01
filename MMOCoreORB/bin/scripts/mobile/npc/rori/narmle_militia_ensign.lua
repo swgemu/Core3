@@ -1,10 +1,10 @@
 narmle_militia_ensign = Creature:new {
-	objectName = "Narmle Militia Ensign",
+	objectName = "@mob/creature_names:narmle_militia_ensign",
 	socialGroup = "Narmle",
 	pvpFaction = "Narmle",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 113,
@@ -19,16 +19,19 @@ narmle_militia_ensign = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_narmle_ensign_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_ensign, "narmle_militia_ensign")

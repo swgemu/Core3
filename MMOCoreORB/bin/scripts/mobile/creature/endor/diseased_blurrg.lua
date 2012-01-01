@@ -4,14 +4,14 @@ diseased_blurrg = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 37,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3551,
-	baseHAM = 9800,
-	baseHAMmax = 9800,
+	baseHAM = 8800,
+	baseHAMmax = 10800,
 	armor = 0,
-	resists = {40,40,-1,50,50,0,50,-1,-1},
+	resists = {40,40,-1,50,50,25,50,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ diseased_blurrg = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"mediumdisease",""},
-		{"creatureareableeding",""}
+		{"creatureareableeding",""},
+		{"mediumdisease",""}
 	}
 }
 

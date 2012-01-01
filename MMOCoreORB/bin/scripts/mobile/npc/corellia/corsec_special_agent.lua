@@ -1,10 +1,10 @@
 corsec_special_agent = Creature:new {
-	objectName = "CorSec Special Agent",
+	objectName = "@mob/creature_names:CorSec_Special_Agent",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",
 	level = 105,
-	chanceHit = 1.750000,
+	chanceHit = 1.75,
 	damageMin = 670,
 	damageMax = 1050,
 	baseXp = 9987,
@@ -19,16 +19,19 @@ corsec_special_agent = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_agent, "corsec_special_agent")

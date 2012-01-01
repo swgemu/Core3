@@ -4,7 +4,7 @@ gifted_gondula_shaman = Creature:new {
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 46,
-	chanceHit = 0.460000,
+	chanceHit = 0.46,
 	damageMin = 365,
 	damageMax = 440,
 	baseXp = 4461,
@@ -19,16 +19,19 @@ gifted_gondula_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = PACK + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gifted_gondula_shaman, "gifted_gondula_shaman")

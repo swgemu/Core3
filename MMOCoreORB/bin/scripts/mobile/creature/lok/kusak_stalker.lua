@@ -4,14 +4,14 @@ kusak_stalker = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2543,
-	baseHAM = 7550,
-	baseHAMmax = 7550,
+	baseHAM = 6800,
+	baseHAMmax = 8300,
 	armor = 0,
-	resists = {30,15,0,-1,0,0,-1,-1,-1},
+	resists = {30,15,10,-1,10,10,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 20,
 	hideType = "hide_bristley",
@@ -19,16 +19,19 @@ kusak_stalker = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 10,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kusak.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kusak_stalker, "kusak_stalker")

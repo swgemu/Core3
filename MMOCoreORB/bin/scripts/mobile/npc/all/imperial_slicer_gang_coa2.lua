@@ -1,10 +1,10 @@
 imperial_slicer_gang_coa2 = Creature:new {
-	objectName = "Imperial slicer gang (COA2)",
+	objectName = "@mob/creature_names:Imperial_slicer_gang_(COA2)",
 	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 514,
@@ -19,16 +19,19 @@ imperial_slicer_gang_coa2 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_slicer_gang_coa2, "imperial_slicer_gang_coa2")

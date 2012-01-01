@@ -4,14 +4,14 @@ mature_hanadak_rock_smasher = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 330,
 	damageMax = 370,
 	baseXp = 3460,
-	baseHAM = 9700,
-	baseHAMmax = 9700,
+	baseHAM = 8700,
+	baseHAMmax = 10700,
 	armor = 0,
-	resists = {0,60,0,-1,-1,-1,-1,-1,-1},
+	resists = {20,60,20,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_bristley",
@@ -19,18 +19,20 @@ mature_hanadak_rock_smasher = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 35,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hanadak.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

@@ -1,10 +1,10 @@
 hutt_expeditionary_force_surveyor = Creature:new {
-	objectName = "Hutt Expeditionary Force surveyor",
+	objectName = "@mob/creature_names:Hutt Expeditionary Force surveyor",
 	socialGroup = "Hutt",
 	pvpFaction = "Hutt",
 	faction = "",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 960,
@@ -19,16 +19,19 @@ hutt_expeditionary_force_surveyor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hutt_expeditionary_force_surveyor, "hutt_expeditionary_force_surveyor")

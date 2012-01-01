@@ -1,10 +1,10 @@
 competent_gondula_ritualist = Creature:new {
-	objectName = "Competent Gondula ritualist",
+	objectName = "@mob/creature_names:Competent_Gondula_ritualist",
 	socialGroup = "Condula Tribe",
 	pvpFaction = "Condula Tribe",
 	faction = "",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 150,
 	damageMax = 170,
 	baseXp = 1102,
@@ -19,16 +19,19 @@ competent_gondula_ritualist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(competent_gondula_ritualist, "competent_gondula_ritualist")

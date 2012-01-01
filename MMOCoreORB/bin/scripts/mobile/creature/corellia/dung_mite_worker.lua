@@ -1,17 +1,17 @@
 dung_mite_worker = Creature:new {
-	objectName = "@mob/creature_names:sickening_dung_mite_worker",
+	objectName = "@mob/creature_names:dung_mite_worker",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 831,
-	baseHAM = 2700,
-	baseHAMmax = 2700,
+	baseHAM = 2400,
+	baseHAMmax = 3000,
 	armor = 0,
-	resists = {0,10,-1,0,-1,-1,0,-1,-1},
+	resists = {5,10,-1,5,-1,-1,5,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 11,
 	hideType = "",
@@ -19,18 +19,20 @@ dung_mite_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dung_mite.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"mediumdisease",""}
+		{"mediumdisease",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

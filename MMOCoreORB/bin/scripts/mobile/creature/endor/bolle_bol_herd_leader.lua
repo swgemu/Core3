@@ -4,14 +4,14 @@ bolle_bol_herd_leader = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3460,
-	baseHAM = 9800,
-	baseHAMmax = 9800,
+	baseHAM = 8800,
+	baseHAMmax = 10800,
 	armor = 0,
-	resists = {35,0,0,-1,50,0,50,-1,-1},
+	resists = {35,25,25,-1,50,25,50,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ bolle_bol_herd_leader = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 180,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolle_bol.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

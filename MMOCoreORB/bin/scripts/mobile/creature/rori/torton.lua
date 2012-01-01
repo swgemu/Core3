@@ -1,17 +1,17 @@
 torton = Creature:new {
-	objectName = "@monster_name:torton",
+	objectName = "@mob/creature_names:torton",
 	socialGroup = "Torton",
 	pvpFaction = "",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 270,
 	damageMax = 280,
 	baseXp = 2443,
-	baseHAM = 6550,
-	baseHAMmax = 6550,
+	baseHAM = 5900,
+	baseHAMmax = 7200,
 	armor = 0,
-	resists = {0,0,0,-1,-1,-1,-1,45,-1},
+	resists = {10,10,10,-1,-1,-1,-1,45,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_wooly",
@@ -19,18 +19,20 @@ torton = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1000,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

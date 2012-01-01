@@ -4,12 +4,12 @@ howling_plumed_rasp = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 85,
-	baseHAM = 125,
-	baseHAMmax = 125,
+	baseHAM = 113,
+	baseHAMmax = 135,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -19,16 +19,19 @@ howling_plumed_rasp = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 2,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/plumed_rasp.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(howling_plumed_rasp, "howling_plumed_rasp")

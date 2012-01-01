@@ -1,10 +1,10 @@
 first_brigade_general = Creature:new {
-	objectName = "First Brigade general",
+	objectName = "@mob/creature_names:First_Brigade_general",
 	socialGroup = "Restuss",
 	pvpFaction = "Restuss",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ first_brigade_general = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(first_brigade_general, "first_brigade_general")

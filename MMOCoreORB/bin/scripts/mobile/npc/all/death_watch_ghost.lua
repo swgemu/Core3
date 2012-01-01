@@ -1,16 +1,16 @@
 death_watch_ghost = Creature:new {
-	objectName = "Death Watch Ghost",
+	objectName = "@mob/creature_names:Death_Watch_Ghost",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
 	level = 152,
-	chanceHit = 8.500000,
+	chanceHit = 8.5,
 	damageMin = 895,
 	damageMax = 1500,
 	baseXp = 14314,
 	baseHAM = 81000,
 	baseHAMmax = 99000,
-	armor = 0,
+	armor = 2,
 	resists = {65,65,70,60,35,35,100,50,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ death_watch_ghost = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_death_watch_grey.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_ghost, "death_watch_ghost")

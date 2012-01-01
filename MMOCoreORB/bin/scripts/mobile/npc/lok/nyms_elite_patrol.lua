@@ -1,10 +1,10 @@
 nyms_elite_patrol = Creature:new {
-	objectName = "Nym's elite patrol",
+	objectName = "@mob/creature_names:Nym's_elite_patrol",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
 	level = 41,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4097,
@@ -19,16 +19,19 @@ nyms_elite_patrol = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_nym_guard_elite_rod_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nyms_elite_patrol, "nyms_elite_patrol")

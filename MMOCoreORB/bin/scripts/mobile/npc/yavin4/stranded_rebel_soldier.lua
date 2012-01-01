@@ -4,7 +4,7 @@ stranded_rebel_soldier = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 24,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2543,
@@ -19,16 +19,19 @@ stranded_rebel_soldier = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stranded_rebel_soldier.iff","object/mobile/dressed_stranded_rebel_soldier.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(stranded_rebel_soldier, "stranded_rebel_soldier")

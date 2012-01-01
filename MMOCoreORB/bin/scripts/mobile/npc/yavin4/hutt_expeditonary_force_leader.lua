@@ -1,10 +1,10 @@
 hutt_expeditonary_force_leader = Creature:new {
-	objectName = "Hutt Expeditonary Force leader",
+	objectName = "@mob/creature_names:Hutt Expeditonary Force leader",
 	socialGroup = "Hutt",
 	pvpFaction = "Hutt",
 	faction = "",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 2006,
@@ -19,16 +19,19 @@ hutt_expeditonary_force_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hutt_expeditonary_force_leader, "hutt_expeditonary_force_leader")

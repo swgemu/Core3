@@ -4,14 +4,14 @@ bordok_mare = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 34,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 340,
 	damageMax = 390,
 	baseXp = 3460,
-	baseHAM = 9700,
-	baseHAMmax = 9700,
+	baseHAM = 8700,
+	baseHAMmax = 10700,
 	armor = 0,
-	resists = {30,-1,0,100,100,0,-1,-1,-1},
+	resists = {30,-1,20,100,100,20,-1,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ bordok_mare = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bordok.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown","knockdownChance=30"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

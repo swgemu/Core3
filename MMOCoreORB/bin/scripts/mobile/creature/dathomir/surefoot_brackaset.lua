@@ -4,14 +4,14 @@ surefoot_brackaset = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 46,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 340,
 	damageMax = 390,
 	baseXp = 4461,
-	baseHAM = 11100,
-	baseHAMmax = 11100,
+	baseHAM = 10000,
+	baseHAMmax = 12200,
 	armor = 0,
-	resists = {60,55,60,0,0,-1,-1,80,-1},
+	resists = {60,55,60,30,30,-1,-1,80,-1},
 	meatType = "meat_wild",
 	meatAmount = 100,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ surefoot_brackaset = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 81,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

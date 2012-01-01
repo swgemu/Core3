@@ -1,10 +1,10 @@
 force_crystal_hunter = Creature:new {
-	objectName = "force crystal hunter",
+	objectName = "@mob/creature_names:force crystal hunter",
 	socialGroup = "Remn. Of Kun",
 	pvpFaction = "",
 	faction = "",
 	level = 115,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 820,
 	damageMax = 1350,
 	baseXp = 10921,
@@ -19,16 +19,19 @@ force_crystal_hunter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(force_crystal_hunter, "force_crystal_hunter")

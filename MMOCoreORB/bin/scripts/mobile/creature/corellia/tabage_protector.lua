@@ -4,12 +4,12 @@ tabage_protector = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1257,
-	baseHAM = 3900,
-	baseHAMmax = 3900,
+	baseHAM = 3500,
+	baseHAMmax = 4300,
 	armor = 0,
 	resists = {0,15,0,0,0,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -19,18 +19,20 @@ tabage_protector = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 14,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tabage.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"mildpoison",""}
+		{"mildpoison",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

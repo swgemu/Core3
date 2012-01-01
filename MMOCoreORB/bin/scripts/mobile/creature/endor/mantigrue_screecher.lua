@@ -4,14 +4,14 @@ mantigrue_screecher = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 55,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 420,
 	damageMax = 550,
 	baseXp = 5281,
-	baseHAM = 12000,
-	baseHAMmax = 12000,
-	armor = 0,
-	resists = {35,35,0,0,0,-1,0,0,-1},
+	baseHAM = 11000,
+	baseHAMmax = 13000,
+	armor = 1,
+	resists = {35,35,10,10,10,-1,10,10,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_wooly",
@@ -19,18 +19,20 @@ mantigrue_screecher = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.010000,
+	tamingChance = 0.01,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mantigrue_night_stalker.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"creatureareadisease",""}
+		{"creatureareadisease",""},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

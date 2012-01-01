@@ -1,10 +1,10 @@
 nyms_droideka = Creature:new {
-	objectName = "Nym's droideka",
+	objectName = "@mob/creature_names:Nym's_droideka",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
 	level = 45,
-	chanceHit = 0.470000,
+	chanceHit = 0.47,
 	damageMin = 360,
 	damageMax = 430,
 	baseXp = 4461,
@@ -19,16 +19,19 @@ nyms_droideka = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/droideka.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nyms_droideka, "nyms_droideka")

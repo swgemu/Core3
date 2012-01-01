@@ -4,14 +4,14 @@ nightsister_elder = Creature:new {
 	pvpFaction = "Nightsister",
 	faction = "",
 	level = 278,
-	chanceHit = 27.250000,
+	chanceHit = 27.25,
 	damageMin = 1520,
 	damageMax = 2750,
 	baseXp = 26654,
 	baseHAM = 321000,
 	baseHAMmax = 392000,
-	armor = 0,
-	resists = {100,0,0,100,100,100,100,100,-1},
+	armor = 3,
+	resists = {100,35,35,100,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ nightsister_elder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_nightsister_elder.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_elder, "nightsister_elder")

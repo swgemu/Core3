@@ -1,10 +1,10 @@
 nyms_bodyguard = Creature:new {
-	objectName = "Nym's bodyguard",
+	objectName = "@mob/creature_names:Nym's_bodyguard",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
 	level = 28,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2914,
@@ -19,16 +19,19 @@ nyms_bodyguard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_nym_bodyguard_rod_m.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nyms_bodyguard, "nyms_bodyguard")

@@ -1,15 +1,15 @@
 gnort = Creature:new {
-	objectName = "@monster_name:gnort",
+	objectName = "@mob/creature_names:gnort",
 	socialGroup = "Gnort",
 	pvpFaction = "",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 62,
-	baseHAM = 125,
-	baseHAMmax = 125,
+	baseHAM = 113,
+	baseHAMmax = 138,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -19,16 +19,19 @@ gnort = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 3,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gnort.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gnort, "gnort")

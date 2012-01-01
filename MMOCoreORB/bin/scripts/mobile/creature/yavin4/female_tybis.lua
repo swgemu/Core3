@@ -1,34 +1,37 @@
 female_tybis = Creature:new {
-	objectName = "@mob/creature_names:tybis_female",
+	objectName = "@mob/creature_names:female_tybis",
 	socialGroup = "Tybis",
 	pvpFaction = "",
 	faction = "",
 	level = 22,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2006,
-	baseHAM = 6550,
-	baseHAMmax = 6550,
+	baseHAM = 5900,
+	baseHAMmax = 7200,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {10,10,10,10,10,10,10,10,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 220,
 	hideType = "hide_bristley",
 	hideAmount = 160,
 	boneType = "bone_mammal",
 	boneAmount = 105,
-	milk = 0,
-	tamingChance = 0.000000,
+	milk = 1,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tybis.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(female_tybis, "female_tybis")

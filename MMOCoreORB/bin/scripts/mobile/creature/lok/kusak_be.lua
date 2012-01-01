@@ -1,10 +1,10 @@
 kusak_be = Creature:new {
-	objectName = "kusak be",
+	objectName = "@mob/creature_names:kusak_be",
 	socialGroup = "Kusak",
 	pvpFaction = "",
 	faction = "",
 	level = 1,
-	chanceHit = 0.200000,
+	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 40,
@@ -19,16 +19,19 @@ kusak_be = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = STALKER + PACK,
+	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kusak_hue.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kusak_be, "kusak_be")

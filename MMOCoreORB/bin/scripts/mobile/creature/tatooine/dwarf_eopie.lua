@@ -4,12 +4,12 @@ dwarf_eopie = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 3,
-	chanceHit = 0.230000,
+	chanceHit = 0.23,
 	damageMin = 35,
 	damageMax = 45,
 	baseXp = 62,
-	baseHAM = 100,
-	baseHAMmax = 100,
+	baseHAM = 90,
+	baseHAMmax = 110,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -18,17 +18,20 @@ dwarf_eopie = Creature:new {
 	hideAmount = 180,
 	boneType = "bone_mammal",
 	boneAmount = 110,
-	milk = 0,
-	tamingChance = 0.000000,
+	milk = 1,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dwarf_eopie.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dwarf_eopie, "dwarf_eopie")

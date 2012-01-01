@@ -4,7 +4,7 @@ bothan_information_broker = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 3,
-	chanceHit = 0.230000,
+	chanceHit = 0.23,
 	damageMin = 35,
 	damageMax = 45,
 	baseXp = 45,
@@ -19,16 +19,19 @@ bothan_information_broker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(bothan_information_broker, "bothan_information_broker")

@@ -4,7 +4,7 @@ gifted_panshee_shaman = Creature:new {
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 38,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 330,
 	damageMax = 370,
 	baseXp = 3733,
@@ -19,16 +19,19 @@ gifted_panshee_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = PACK + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gifted_panshee_shaman, "gifted_panshee_shaman")

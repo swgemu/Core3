@@ -1,10 +1,10 @@
 vetran_explorer = Creature:new {
-	objectName = "Vetran Explorer",
+	objectName = "@mob/creature_names:Vetran_Explorer",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 235,
@@ -19,16 +19,19 @@ vetran_explorer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(vetran_explorer, "vetran_explorer")

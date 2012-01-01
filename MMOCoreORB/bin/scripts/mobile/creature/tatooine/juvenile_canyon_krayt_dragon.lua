@@ -1,17 +1,17 @@
 juvenile_canyon_krayt_dragon = Creature:new {
-	objectName = "@mob/creature_names:juvenile_canyon_krayt",
+	objectName = "@mob/creature_names:juvenile_canyon_krayt_dragon",
 	socialGroup = "Krayt Dragon",
 	pvpFaction = "",
 	faction = "",
 	level = 122,
-	chanceHit = 4.000000,
+	chanceHit = 4,
 	damageMin = 745,
 	damageMax = 1200,
 	baseXp = 11577,
-	baseHAM = 49000,
-	baseHAMmax = 49000,
-	armor = 0,
-	resists = {70,70,0,0,10,0,0,0,-1},
+	baseHAM = 44000,
+	baseHAMmax = 54000,
+	armor = 2,
+	resists = {70,70,15,15,10,15,15,15,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 750,
 	hideType = "hide_bristley",
@@ -19,18 +19,20 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 410,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 20,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/juvenile_canyon_krayt.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"creatureareaattack",""}
+		{"creatureareaattack",""},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

@@ -4,7 +4,7 @@ jinda_outcast = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 30,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 310,
 	damageMax = 330,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ jinda_outcast = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male_01.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(jinda_outcast, "jinda_outcast")

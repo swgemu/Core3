@@ -4,7 +4,7 @@ janta_shaman = Creature:new {
 	pvpFaction = "Janta Tribe",
 	faction = "",
 	level = 60,
-	chanceHit = 0.650000,
+	chanceHit = 0.65,
 	damageMin = 470,
 	damageMax = 650,
 	baseXp = 5830,
@@ -19,16 +19,19 @@ janta_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(janta_shaman, "janta_shaman")

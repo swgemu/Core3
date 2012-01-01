@@ -1,10 +1,10 @@
 gerrik_lond = Creature:new {
-	objectName = "Gerrik Lond",
+	objectName = "@mob/creature_names:Gerrik Lond",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",
 	level = 21,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ gerrik_lond = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gerrik_lond, "gerrik_lond")

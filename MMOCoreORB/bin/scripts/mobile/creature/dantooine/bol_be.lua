@@ -1,15 +1,15 @@
 bol_be = Creature:new {
-	objectName = "bol be",
+	objectName = "@mob/creature_names:bol_be",
 	socialGroup = "Bol",
 	pvpFaction = "",
 	faction = "",
 	level = 29,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2914,
-	baseHAM = 9300,
-	baseHAMmax = 9300,
+	baseHAM = 8300,
+	baseHAMmax = 10300,
 	armor = 0,
 	resists = {35,0,-1,0,0,-1,0,-1,-1},
 	meatType = "",
@@ -19,16 +19,19 @@ bol_be = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bol_hue.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(bol_be, "bol_be")

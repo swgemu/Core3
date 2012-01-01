@@ -4,12 +4,12 @@ sandy_spined_snake = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 714,
-	baseHAM = 1300,
-	baseHAMmax = 1300,
+	baseHAM = 1200,
+	baseHAMmax = 1400,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_reptilian",
@@ -19,18 +19,20 @@ sandy_spined_snake = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/spined_snake.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"mediumpoison",""}
+		{"mediumpoison",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

@@ -1,10 +1,10 @@
 donkuwah_chieftain = Creature:new {
-	objectName = "Donkuwah chieftain",
+	objectName = "@mob/creature_names:Donkuwah_chieftain",
 	socialGroup = "Donkuwah Tr.",
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 58,
-	chanceHit = 0.570000,
+	chanceHit = 0.57,
 	damageMin = 430,
 	damageMax = 570,
 	baseXp = 5647,
@@ -19,16 +19,19 @@ donkuwah_chieftain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(donkuwah_chieftain, "donkuwah_chieftain")

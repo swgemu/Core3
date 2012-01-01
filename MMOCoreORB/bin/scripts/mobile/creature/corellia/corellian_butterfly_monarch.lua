@@ -1,17 +1,17 @@
 corellian_butterfly_monarch = Creature:new {
-	objectName = "corellian butterfly monarch",
+	objectName = "@mob/creature_names:corellian_butterfly_monarch",
 	socialGroup = "Cor. Butterfly",
 	pvpFaction = "",
 	faction = "",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1803,
-	baseHAM = 5000,
-	baseHAMmax = 5000,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
-	resists = {-1,25,-1,0,0,-1,-1,-1,-1},
+	resists = {-1,25,-1,5,5,-1,-1,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 27,
 	hideType = "",
@@ -19,18 +19,20 @@ corellian_butterfly_monarch = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly_monarch.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

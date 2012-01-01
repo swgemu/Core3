@@ -1,10 +1,10 @@
 caravan_leader_coa3 = Creature:new {
-	objectName = "Caravan leader (COA3)",
+	objectName = "@mob/creature_names:Caravan_leader_(COA3)",
 	socialGroup = "Caravan",
 	pvpFaction = "Jabba",
 	faction = "",
 	level = 19,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ caravan_leader_coa3 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(caravan_leader_coa3, "caravan_leader_coa3")

@@ -1,16 +1,16 @@
 gurreck = Creature:new {
-	objectName = "@monster_name:gurreck",
+	objectName = "@mob/creature_names:gurreck",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
 	faction = "",
 	level = 50,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 395,
 	damageMax = 500,
 	baseXp = 4825,
-	baseHAM = 12000,
-	baseHAMmax = 12000,
-	armor = 0,
+	baseHAM = 11000,
+	baseHAMmax = 13000,
+	armor = 1,
 	resists = {30,30,-1,50,50,-1,50,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
@@ -19,18 +19,20 @@ gurreck = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

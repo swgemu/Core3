@@ -1,10 +1,10 @@
 geonosian_technical_assistant = Creature:new {
-	objectName = "Geonosian technical assistant",
+	objectName = "@mob/creature_names:Geonosian technical assistant",
 	socialGroup = "Geonosian",
 	pvpFaction = "Geonosian",
 	faction = "",
 	level = 48,
-	chanceHit = 0.490000,
+	chanceHit = 0.49,
 	damageMin = 385,
 	damageMax = 480,
 	baseXp = 4643,
@@ -19,16 +19,19 @@ geonosian_technical_assistant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"geonosian_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(geonosian_technical_assistant, "geonosian_technical_assistant")

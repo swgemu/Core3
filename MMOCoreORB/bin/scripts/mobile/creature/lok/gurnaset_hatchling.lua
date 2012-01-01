@@ -4,12 +4,12 @@ gurnaset_hatchling = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 85,
-	baseHAM = 150,
-	baseHAMmax = 150,
+	baseHAM = 135,
+	baseHAMmax = 165,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -19,16 +19,19 @@ gurnaset_hatchling = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 303,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurnaset_hatchling.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gurnaset_hatchling, "gurnaset_hatchling")

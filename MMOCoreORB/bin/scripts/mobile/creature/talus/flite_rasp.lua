@@ -1,15 +1,15 @@
 flite_rasp = Creature:new {
-	objectName = "@monster_name:flite_rasp",
+	objectName = "@mob/creature_names:flite_rasp",
 	socialGroup = "Rasp",
 	pvpFaction = "",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 235,
-	baseHAM = 450,
-	baseHAMmax = 450,
+	baseHAM = 405,
+	baseHAMmax = 495,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -19,16 +19,19 @@ flite_rasp = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 9,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flite_rasp.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(flite_rasp, "flite_rasp")

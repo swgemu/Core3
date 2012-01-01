@@ -1,17 +1,17 @@
 cavern_spider_broodline = Creature:new {
-	objectName = "cavern spider broodline",
+	objectName = "@mob/creature_names:cavern_spider_broodline",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 292,
-	baseHAM = 450,
-	baseHAMmax = 450,
+	baseHAM = 405,
+	baseHAMmax = 495,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {0,0,10,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 15,
 	hideType = "",
@@ -19,16 +19,19 @@ cavern_spider_broodline = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_broodling.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(cavern_spider_broodline, "cavern_spider_broodline")

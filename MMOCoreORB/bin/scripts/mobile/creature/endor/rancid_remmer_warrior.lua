@@ -4,12 +4,12 @@ rancid_remmer_warrior = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 33,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 3279,
-	baseHAM = 9300,
-	baseHAMmax = 9300,
+	baseHAM = 8400,
+	baseHAMmax = 10200,
 	armor = 0,
 	resists = {60,0,70,0,0,-1,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -19,18 +19,20 @@ rancid_remmer_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/remmer.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_red"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

@@ -1,10 +1,10 @@
 giant_cavern_spider_recluse = Creature:new {
-	objectName = "@mob/creature_names:cave_gaping_spider_recluse_giant",
+	objectName = "@mob/creature_names:giant_cavern_spider_recluse",
 	socialGroup = "Spider Nightsister",
 	pvpFaction = "",
 	faction = "",
 	level = 116,
-	chanceHit = 3.100000,
+	chanceHit = 3.1,
 	damageMin = 775,
 	damageMax = 1260,
 	baseXp = 11015,
@@ -19,15 +19,17 @@ giant_cavern_spider_recluse = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
 		{"creatureareacombo",""},
 		{"strongpoison",""}

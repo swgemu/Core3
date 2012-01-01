@@ -1,10 +1,10 @@
 narmle_militia_lieutenant = Creature:new {
-	objectName = "Narmle Militia Lieutenant",
+	objectName = "@mob/creature_names:narmle_militia_lieutenant",
 	socialGroup = "Narmle",
 	pvpFaction = "Narmle",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
@@ -19,16 +19,19 @@ narmle_militia_lieutenant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_narmle_lieutenant_twk_female_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_lieutenant, "narmle_militia_lieutenant")

@@ -1,16 +1,16 @@
 dark_jedi_sentinel = Creature:new {
-	objectName = "@mob/creature_names:dark_jedi_sentinel",
+	objectName = "@mob/creature_names:Dark_jedi_sentinel",
 	socialGroup = "self",
 	pvpFaction = "self",
 	faction = "",
-	level = 1,
-	chanceHit = 30.000000,
+	level = 300,
+	chanceHit = 30,
 	damageMin = 2645,
 	damageMax = 5000,
-	baseXp = 45,
+	baseXp = 28532,
 	baseHAM = 1106000,
 	baseHAMmax = 1352000,
-	armor = 0,
+	armor = 3,
 	resists = {95,95,95,95,95,95,95,95,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ dark_jedi_sentinel = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"dark_jedi_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dark_jedi_sentinel, "dark_jedi_sentinel")

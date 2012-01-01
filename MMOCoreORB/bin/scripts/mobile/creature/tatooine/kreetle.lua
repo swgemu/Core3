@@ -4,12 +4,12 @@ kreetle = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 3,
-	chanceHit = 0.230000,
+	chanceHit = 0.23,
 	damageMin = 35,
 	damageMax = 45,
 	baseXp = 45,
-	baseHAM = 100,
-	baseHAMmax = 100,
+	baseHAM = 90,
+	baseHAMmax = 110,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,16 +19,19 @@ kreetle = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 3,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kreetle.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kreetle, "kreetle")

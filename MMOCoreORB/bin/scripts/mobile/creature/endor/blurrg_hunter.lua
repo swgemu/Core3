@@ -4,14 +4,14 @@ blurrg_hunter = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 20,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1609,
-	baseHAM = 3900,
-	baseHAMmax = 3900,
+	baseHAM = 3500,
+	baseHAMmax = 4300,
 	armor = 0,
-	resists = {15,20,0,35,35,-1,-1,-1,-1},
+	resists = {15,20,5,35,35,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ blurrg_hunter = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack","knockdownChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

@@ -4,14 +4,14 @@ tortur_bull = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 2543,
-	baseHAM = 5550,
-	baseHAMmax = 5550,
+	baseHAM = 5000,
+	baseHAMmax = 6100,
 	armor = 0,
-	resists = {0,0,0,-1,-1,-1,-1,100,-1},
+	resists = {15,15,15,-1,-1,-1,-1,100,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ tortur_bull = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1000,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 10,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/meager_tortur.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

@@ -1,10 +1,10 @@
 corsec_special_ops_comissioner = Creature:new {
-	objectName = "CorSec Special Ops Comissioner",
+	objectName = "@mob/creature_names:CorSec_Special Ops_Comissioner",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",
 	level = 226,
-	chanceHit = 19.750000,
+	chanceHit = 19.75,
 	damageMin = 1270,
 	damageMax = 2250,
 	baseXp = 21533,
@@ -19,16 +19,19 @@ corsec_special_ops_comissioner = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_comissioner, "corsec_special_ops_comissioner")

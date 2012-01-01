@@ -4,14 +4,14 @@ grizzled_dewback = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 27,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 270,
 	damageMax = 280,
 	baseXp = 2730,
-	baseHAM = 8550,
-	baseHAMmax = 8550,
+	baseHAM = 7700,
+	baseHAMmax = 9400,
 	armor = 0,
-	resists = {35,20,0,40,-1,-1,-1,-1,-1},
+	resists = {35,20,10,40,-1,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
 	meatAmount = 365,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ grizzled_dewback = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 210,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dewback.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

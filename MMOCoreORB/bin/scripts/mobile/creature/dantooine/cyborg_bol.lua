@@ -1,15 +1,15 @@
 cyborg_bol = Creature:new {
-	objectName = "@mob/creature_names:warren_cyborg_bol",
+	objectName = "@mob/creature_names:cyborg_bol",
 	socialGroup = "Warren Cyborg",
 	pvpFaction = "",
 	faction = "",
 	level = 36,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3551,
-	baseHAM = 9900,
-	baseHAMmax = 9900,
+	baseHAM = 8900,
+	baseHAMmax = 10900,
 	armor = 0,
 	resists = {45,0,-1,0,0,-1,0,-1,-1},
 	meatType = "meat_wild",
@@ -19,18 +19,20 @@ cyborg_bol = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/warren_cyborg_bol.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

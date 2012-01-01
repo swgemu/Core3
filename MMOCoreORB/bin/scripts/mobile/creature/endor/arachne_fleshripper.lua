@@ -4,14 +4,14 @@ arachne_fleshripper = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 30,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 310,
 	damageMax = 330,
 	baseXp = 3097,
-	baseHAM = 8550,
-	baseHAMmax = 8550,
+	baseHAM = 7700,
+	baseHAMmax = 9400,
 	armor = 0,
-	resists = {10,40,-1,20,20,0,20,0,-1},
+	resists = {10,40,-1,20,20,15,20,15,-1},
 	meatType = "meat_insect",
 	meatAmount = 0,
 	hideType = "",
@@ -19,18 +19,20 @@ arachne_fleshripper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.050000,
-	ferocity = 0,
+	tamingChance = 0.05,
+	ferocity = 10,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"strongpoison",""}
 	}
 }
 

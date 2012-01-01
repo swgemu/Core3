@@ -1,15 +1,15 @@
 reptilian_life_stealer = Creature:new {
-	objectName = "reptilian life stealer",
+	objectName = "@mob/creature_names:reptilian_life_stealer",
 	socialGroup = "Reptilian Flier",
 	pvpFaction = "",
 	faction = "",
 	level = 125,
-	chanceHit = 3.250000,
+	chanceHit = 3.25,
 	damageMin = 945,
 	damageMax = 1600,
 	baseXp = 11859,
-	baseHAM = 38000,
-	baseHAMmax = 38000,
+	baseHAM = 34000,
+	baseHAMmax = 42000,
 	armor = 0,
 	resists = {0,25,5,100,100,-1,0,0,-1},
 	meatType = "meat_avian",
@@ -19,18 +19,20 @@ reptilian_life_stealer = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 85,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/reptilian_flier.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"strongpoison",""}
 	}
 }
 

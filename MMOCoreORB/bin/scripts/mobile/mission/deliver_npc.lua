@@ -1,9 +1,10 @@
 deliver_npc = Creature:new {
-	objectName = "Deliver NPC",
+	objectName = "@mob/creature_names:Deliver_NPC",
+	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
 	level = 100,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 2914,
@@ -18,39 +19,19 @@ deliver_npc = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
-	--TODO: Fill with more commoners.
-	templates = {"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
-				"object/mobile/dressed_commoner_fat_zabrak_male_02.iff", 
-				"object/mobile/dressed_commoner_fat_zabrak_female_01.iff", 
-				"object/mobile/dressed_commoner_fat_zabrak_female_02.iff", 
-				"object/mobile/dressed_commoner_fat_human_male_01.iff",
-				"object/mobile/dressed_commoner_fat_human_male_02.iff", 
-				"object/mobile/dressed_commoner_fat_human_female_01.iff", 
-				"object/mobile/dressed_commoner_fat_human_female_02.iff", 
-				"object/mobile/dressed_commoner_fat_twilek_male_01.iff",
-				"object/mobile/dressed_commoner_fat_twilek_male_02.iff", 
-				"object/mobile/dressed_commoner_fat_twilek_female_01.iff", 
-				"object/mobile/dressed_commoner_fat_twilek_female_02.iff", 
-				"object/mobile/dressed_commoner_old_zabrak_male_01.iff",
-				"object/mobile/dressed_commoner_old_zabrak_male_02.iff", 
-				"object/mobile/dressed_commoner_old_zabrak_female_01.iff", 
-				"object/mobile/dressed_commoner_old_zabrak_female_02.iff", 
-				"object/mobile/dressed_commoner_old_human_male_01.iff",
-				"object/mobile/dressed_commoner_old_human_male_02.iff", 
-				"object/mobile/dressed_commoner_old_human_female_01.iff", 
-				"object/mobile/dressed_commoner_old_human_female_02.iff", 
-				"object/mobile/dressed_commoner_old_twilek_male_01.iff",
-				"object/mobile/dressed_commoner_old_twilek_male_02.iff", 
-				"object/mobile/dressed_commoner_old_twilek_female_01.iff", 
-				"object/mobile/dressed_commoner_old_twilek_female_02.iff"
-				},
-	
+
+	templates = {"object/mobile/dressed_commoner_fat_zabrak_male_01.iff","object/mobile/dressed_commoner_fat_zabrak_male_02.iff","object/mobile/dressed_commoner_fat_zabrak_female_01.iff","object/mobile/dressed_commoner_fat_zabrak_female_02.iff","object/mobile/dressed_commoner_fat_human_male_01.iff","object/mobile/dressed_commoner_fat_human_male_02.iff","object/mobile/dressed_commoner_fat_human_female_01.iff","object/mobile/dressed_commoner_fat_human_female_02.iff","object/mobile/dressed_commoner_fat_twilek_male_01.iff","object/mobile/dressed_commoner_fat_twilek_male_02.iff","object/mobile/dressed_commoner_fat_twilek_female_01.iff","object/mobile/dressed_commoner_fat_twilek_female_02.iff","object/mobile/dressed_commoner_old_zabrak_male_01.iff","object/mobile/dressed_commoner_old_zabrak_male_02.iff","object/mobile/dressed_commoner_old_zabrak_female_01.iff","object/mobile/dressed_commoner_old_zabrak_female_02.iff","object/mobile/dressed_commoner_old_human_male_01.iff","object/mobile/dressed_commoner_old_human_male_02.iff","object/mobile/dressed_commoner_old_human_female_01.iff","object/mobile/dressed_commoner_old_human_female_02.iff","object/mobile/dressed_commoner_old_twilek_male_01.iff","object/mobile/dressed_commoner_old_twilek_male_02.iff","object/mobile/dressed_commoner_old_twilek_female_01.iff","object/mobile/dressed_commoner_old_twilek_female_02.iff"},
+	lootgroups = {},
+	weapons = {},
 	conversationTemplate = "deliver_npc",
-	optionsBitmask = 264
+	attacks = {
+	}
 }
+
 CreatureTemplates:addCreatureTemplate(deliver_npc, "deliver_npc")

@@ -1,10 +1,10 @@
 weak_mercenary = Creature:new {
-	objectName = "weak mercenary",
+	objectName = "@mob/creature_names:weak_mercenary",
 	socialGroup = "Lok Merc",
 	pvpFaction = "Lok Merc",
 	faction = "",
 	level = 34,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 315,
 	damageMax = 340,
 	baseXp = 3460,
@@ -19,16 +19,19 @@ weak_mercenary = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(weak_mercenary, "weak_mercenary")

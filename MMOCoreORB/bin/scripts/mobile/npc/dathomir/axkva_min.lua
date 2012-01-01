@@ -4,14 +4,14 @@ axkva_min = Creature:new {
 	pvpFaction = "Nightsister",
 	faction = "",
 	level = 302,
-	chanceHit = 30.000000,
+	chanceHit = 30,
 	damageMin = 1645,
 	damageMax = 3000,
 	baseXp = 28549,
 	baseHAM = 385000,
 	baseHAMmax = 471000,
-	armor = 0,
-	resists = {100,0,0,100,100,100,100,100,-1},
+	armor = 3,
+	resists = {100,95,95,100,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ axkva_min = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_nightsister_axkva.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(axkva_min, "axkva_min")

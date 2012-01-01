@@ -4,14 +4,14 @@ boar_wolf_ravager = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 34,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 3460,
-	baseHAM = 9550,
-	baseHAMmax = 9550,
+	baseHAM = 8600,
+	baseHAMmax = 10500,
 	armor = 0,
-	resists = {50,0,50,0,0,0,-1,-1,-1},
+	resists = {50,20,50,20,20,20,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ boar_wolf_ravager = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/boar_wolf.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

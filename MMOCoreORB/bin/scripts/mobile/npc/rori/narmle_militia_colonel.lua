@@ -1,10 +1,10 @@
 narmle_militia_colonel = Creature:new {
-	objectName = "Narmle Militia Colonel",
+	objectName = "@mob/creature_names:narmle_militia_colonel",
 	socialGroup = "Narmle",
 	pvpFaction = "Narmle",
 	faction = "",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1803,
@@ -19,16 +19,19 @@ narmle_militia_colonel = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_narmle_colonel_rodian_male_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_colonel, "narmle_militia_colonel")

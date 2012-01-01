@@ -4,14 +4,14 @@ blurrg_raptor = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 141,
-	chanceHit = 6.250000,
+	chanceHit = 6.25,
 	damageMin = 945,
 	damageMax = 1600,
 	baseXp = 13367,
-	baseHAM = 68500,
-	baseHAMmax = 68500,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	baseHAM = 62000,
+	baseHAMmax = 75000,
+	armor = 2,
+	resists = {20,20,20,20,20,20,20,20,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ blurrg_raptor = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

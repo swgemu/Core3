@@ -1,10 +1,10 @@
 sith_shadow_taskmaster = Creature:new {
-	objectName = "Sith Shadow taskmaster",
+	objectName = "@mob/creature_names:Sith_Shadow_taskmaster",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "Sith Shadow",
 	faction = "",
 	level = 87,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 8315,
@@ -19,16 +19,19 @@ sith_shadow_taskmaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER,
+	creatureBitmask = KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sith_shadow_hum_m_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(sith_shadow_taskmaster, "sith_shadow_taskmaster")

@@ -1,17 +1,17 @@
 dune_kimogila = Creature:new {
-	objectName = "dune kimogila",
+	objectName = "@mob/creature_names:dune_kimogila",
 	socialGroup = "Kimogila",
 	pvpFaction = "",
 	faction = "",
 	level = 123,
-	chanceHit = 4.000000,
+	chanceHit = 4,
 	damageMin = 785,
 	damageMax = 1280,
 	baseXp = 11671,
-	baseHAM = 59000,
-	baseHAMmax = 59000,
-	armor = 0,
-	resists = {40,65,0,100,-1,0,100,-1,-1},
+	baseHAM = 53000,
+	baseHAMmax = 65000,
+	armor = 2,
+	resists = {40,65,15,100,-1,15,100,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ dune_kimogila = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kimogila.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"creatureareacombo",""}
+		{"creatureareacombo",""},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

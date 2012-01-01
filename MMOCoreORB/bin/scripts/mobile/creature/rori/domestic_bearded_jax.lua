@@ -4,12 +4,12 @@ domestic_bearded_jax = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 85,
-	baseHAM = 150,
-	baseHAMmax = 150,
+	baseHAM = 135,
+	baseHAMmax = 165,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -19,16 +19,19 @@ domestic_bearded_jax = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 11,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = STALKER + HERD,
+	creatureBitmask = HERD + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bearded_jax.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(domestic_bearded_jax, "domestic_bearded_jax")

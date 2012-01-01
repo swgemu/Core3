@@ -4,7 +4,7 @@ novatrooper_medic = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 107,
-	chanceHit = 1.750000,
+	chanceHit = 1.75,
 	damageMin = 670,
 	damageMax = 1050,
 	baseXp = 10174,
@@ -19,16 +19,19 @@ novatrooper_medic = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = PACK + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(novatrooper_medic, "novatrooper_medic")

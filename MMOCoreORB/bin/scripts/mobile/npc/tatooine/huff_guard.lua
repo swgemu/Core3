@@ -1,10 +1,10 @@
 huff_guard = Creature:new {
-	objectName = "Huff guard",
+	objectName = "@mob/creature_names:Huff guard",
 	socialGroup = "Darklighter",
 	pvpFaction = "",
 	faction = "",
 	level = 99,
-	chanceHit = 0.990000,
+	chanceHit = 0.99,
 	damageMin = 640,
 	damageMax = 990,
 	baseXp = 9243,
@@ -19,16 +19,19 @@ huff_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(huff_guard, "huff_guard")

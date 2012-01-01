@@ -1,17 +1,17 @@
 male_tybis = Creature:new {
-	objectName = "@mob/creature_names:tybis_male",
+	objectName = "@mob/creature_names:male_tybis",
 	socialGroup = "Tybis",
 	pvpFaction = "",
 	faction = "",
 	level = 23,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 2219,
-	baseHAM = 7000,
-	baseHAMmax = 7000,
+	baseHAM = 6300,
+	baseHAMmax = 7700,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {10,10,10,10,10,10,10,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 275,
 	hideType = "hide_bristley",
@@ -19,16 +19,19 @@ male_tybis = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 125,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tybis.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(male_tybis, "male_tybis")

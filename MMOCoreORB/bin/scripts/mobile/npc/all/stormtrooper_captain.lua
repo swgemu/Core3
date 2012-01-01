@@ -4,7 +4,7 @@ stormtrooper_captain = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 29,
-	chanceHit = 3.080000,
+	chanceHit = 3.08,
 	damageMin = 280,
 	damageMax = 290,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ stormtrooper_captain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_captain_black_black.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_captain, "stormtrooper_captain")

@@ -4,14 +4,14 @@ razor_cat_eviscerator = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2543,
-	baseHAM = 8000,
-	baseHAMmax = 8000,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
-	resists = {10,10,0,15,0,0,-1,0,-1},
+	resists = {10,10,5,15,5,5,-1,5,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 65,
 	hideType = "hide_bristley",
@@ -19,18 +19,20 @@ razor_cat_eviscerator = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 30,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_sand_panther.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

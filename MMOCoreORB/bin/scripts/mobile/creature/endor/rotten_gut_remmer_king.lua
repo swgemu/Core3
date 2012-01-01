@@ -4,14 +4,14 @@ rotten_gut_remmer_king = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 37,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3733,
-	baseHAM = 9800,
-	baseHAMmax = 9800,
+	baseHAM = 8800,
+	baseHAMmax = 10800,
 	armor = 0,
-	resists = {55,35,60,0,0,0,-1,-1,-1},
+	resists = {55,35,60,20,20,20,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_bristley",
@@ -19,18 +19,20 @@ rotten_gut_remmer_king = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rotten_gut_remmer_king.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

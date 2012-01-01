@@ -1,10 +1,10 @@
 govenor = Creature:new {
-	objectName = "govenor",
+	objectName = "@mob/creature_names:govenor",
 	socialGroup = "Naboo",
 	pvpFaction = "Naboo",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 675,
 	damageMax = 825,
 	baseXp = 235,
@@ -19,16 +19,19 @@ govenor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(govenor, "govenor")

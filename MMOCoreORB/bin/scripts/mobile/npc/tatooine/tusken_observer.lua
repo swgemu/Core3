@@ -4,7 +4,7 @@ tusken_observer = Creature:new {
 	pvpFaction = "Tusken Raider",
 	faction = "",
 	level = 227,
-	chanceHit = 19.750000,
+	chanceHit = 19.75,
 	damageMin = 1270,
 	damageMax = 2250,
 	baseXp = 21630,
@@ -19,16 +19,21 @@ tusken_observer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+		{"posturedownattack","postureDownChance=50"},
+		{"stunattack","stunChance=50"}
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_observer, "tusken_observer")

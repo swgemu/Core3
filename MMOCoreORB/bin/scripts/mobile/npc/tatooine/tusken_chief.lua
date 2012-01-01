@@ -4,7 +4,7 @@ tusken_chief = Creature:new {
 	pvpFaction = "Tusken Raider",
 	faction = "",
 	level = 43,
-	chanceHit = 0.460000,
+	chanceHit = 0.46,
 	damageMin = 365,
 	damageMax = 440,
 	baseXp = 4279,
@@ -19,16 +19,19 @@ tusken_chief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_chief, "tusken_chief")

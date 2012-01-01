@@ -4,14 +4,14 @@ bark_mite_burrower_worker = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 45,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 370,
 	damageMax = 450,
 	baseXp = 4370,
-	baseHAM = 10300,
-	baseHAMmax = 10300,
+	baseHAM = 9300,
+	baseHAMmax = 11300,
 	armor = 0,
-	resists = {45,60,-1,80,-1,80,80,0,-1},
+	resists = {45,60,-1,80,-1,80,80,30,-1},
 	meatType = "meat_insect",
 	meatAmount = 0,
 	hideType = "",
@@ -19,18 +19,20 @@ bark_mite_burrower_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"mediumdisease",""}
+		{"mediumdisease",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

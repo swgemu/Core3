@@ -1,10 +1,10 @@
 corsec_commissioner = Creature:new {
-	objectName = "CorSec Commissioner",
+	objectName = "@mob/creature_names:CorSec_Commissioner",
 	socialGroup = "Corsec",
 	pvpFaction = "Corsec",
 	faction = "",
 	level = 30,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 3097,
@@ -19,16 +19,19 @@ corsec_commissioner = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_commissioner, "corsec_commissioner")

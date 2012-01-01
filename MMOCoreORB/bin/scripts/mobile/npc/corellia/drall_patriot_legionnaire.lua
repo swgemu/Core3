@@ -1,10 +1,10 @@
 drall_patriot_legionnaire = Creature:new {
-	objectName = "Drall patriot legionnaire",
+	objectName = "@mob/creature_names:Drall_patriot_legionnaire",
 	socialGroup = "Drall",
 	pvpFaction = "Drall",
 	faction = "",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 831,
@@ -19,16 +19,19 @@ drall_patriot_legionnaire = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/drall_male.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(drall_patriot_legionnaire, "drall_patriot_legionnaire")

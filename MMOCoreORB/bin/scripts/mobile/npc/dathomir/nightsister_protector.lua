@@ -4,14 +4,14 @@ nightsister_protector = Creature:new {
 	pvpFaction = "Nightsister",
 	faction = "",
 	level = 131,
-	chanceHit = 4.750000,
+	chanceHit = 4.75,
 	damageMin = 770,
 	damageMax = 1250,
 	baseXp = 12424,
 	baseHAM = 50000,
 	baseHAMmax = 61000,
-	armor = 0,
-	resists = {0,100,0,100,100,100,100,100,-1},
+	armor = 2,
+	resists = {15,100,15,100,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ nightsister_protector = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_nightsister_protector.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_protector, "nightsister_protector")

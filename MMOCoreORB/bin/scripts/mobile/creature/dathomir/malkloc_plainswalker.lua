@@ -4,14 +4,14 @@ malkloc_plainswalker = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 84,
-	chanceHit = 0.700000,
+	chanceHit = 0.7,
 	damageMin = 535,
 	damageMax = 780,
 	baseXp = 7945,
-	baseHAM = 32500,
-	baseHAMmax = 32500,
-	armor = 0,
-	resists = {100,50,0,-1,-1,-1,0,100,-1},
+	baseHAM = 29000,
+	baseHAMmax = 36000,
+	armor = 1,
+	resists = {100,50,25,-1,-1,-1,25,100,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 1000,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ malkloc_plainswalker = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1000,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/malkloc.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown","knockdownChance=30"},
+		{"dizzyattack","dizzyChance=50"}
 	}
 }
 

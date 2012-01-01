@@ -1,10 +1,10 @@
 stormtrooper_black_hole_squad_leader = Creature:new {
-	objectName = "Stormtrooper Black Hole Squad Leader",
+	objectName = "@mob/creature_names:Stormtrooper_Black_Hole_Squad_Leader",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 29,
-	chanceHit = 3.080000,
+	chanceHit = 3.08,
 	damageMin = 280,
 	damageMax = 290,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ stormtrooper_black_hole_squad_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_squad_leader_black_black.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_black_hole_squad_leader, "stormtrooper_black_hole_squad_leader")

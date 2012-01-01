@@ -4,7 +4,7 @@ stranded_rebel_scout = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 22,
-	chanceHit = 3.030000,
+	chanceHit = 3.03,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 2219,
@@ -19,16 +19,19 @@ stranded_rebel_scout = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_scout_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(stranded_rebel_scout, "stranded_rebel_scout")

@@ -1,16 +1,16 @@
 dark_jedi_knight = Creature:new {
-	objectName = "@mob/creature_names:dark_jedi_knight",
+	objectName = "@mob/creature_names:Dark_jedi_knight",
 	socialGroup = "Dark Jedi",
 	pvpFaction = "",
 	faction = "",
 	level = 265,
-	chanceHit = 23.500000,
+	chanceHit = 23.5,
 	damageMin = 1645,
 	damageMax = 3000,
 	baseXp = 25266,
 	baseHAM = 261000,
 	baseHAMmax = 320000,
-	armor = 0,
+	armor = 3,
 	resists = {90,90,90,90,90,90,90,90,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ dark_jedi_knight = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"dark_jedi_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dark_jedi_knight, "dark_jedi_knight")

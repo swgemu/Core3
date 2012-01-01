@@ -4,14 +4,14 @@ lurking_angler = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 30,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 3005,
-	baseHAM = 9300,
-	baseHAMmax = 9300,
+	baseHAM = 8400,
+	baseHAMmax = 10200,
 	armor = 0,
-	resists = {0,0,0,-1,0,-1,0,-1,-1},
+	resists = {25,25,25,-1,25,-1,25,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 4,
 	hideType = "hide_scaley",
@@ -19,18 +19,20 @@ lurking_angler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = STALKER + PACK,
+	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"mediumpoison",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"mediumpoison",""}
 	}
 }
 

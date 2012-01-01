@@ -4,14 +4,14 @@ blood_drenched_merek_king = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 56,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 420,
 	damageMax = 550,
 	baseXp = 5464,
-	baseHAM = 12000,
-	baseHAMmax = 12000,
-	armor = 0,
-	resists = {0,35,0,0,0,0,0,0,-1},
+	baseHAM = 11000,
+	baseHAMmax = 13000,
+	armor = 1,
+	resists = {10,35,10,10,10,10,10,10,-1},
 	meatType = "meat_wild",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ blood_drenched_merek_king = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blood_drenched_merek_king.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

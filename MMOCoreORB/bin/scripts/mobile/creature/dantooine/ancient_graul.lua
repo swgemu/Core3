@@ -4,13 +4,13 @@ ancient_graul = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 50,
-	chanceHit = 0.470000,
+	chanceHit = 0.47,
 	damageMin = 370,
 	damageMax = 450,
 	baseXp = 4825,
-	baseHAM = 10800,
-	baseHAMmax = 10800,
-	armor = 0,
+	baseHAM = 9700,
+	baseHAMmax = 11900,
+	armor = 1,
 	resists = {60,45,70,70,70,-1,0,0,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 950,
@@ -19,18 +19,20 @@ ancient_graul = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 775,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 10,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/graul.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"dizzyattack","dizzyChance=50"}
 	}
 }
 

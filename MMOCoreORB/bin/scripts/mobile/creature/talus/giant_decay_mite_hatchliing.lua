@@ -1,15 +1,15 @@
 giant_decay_mite_hatchliing = Creature:new {
-	objectName = "giant decay mite hatchliing",
+	objectName = "@mob/creature_names:giant_decay_mite_hatchliing",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 187,
-	baseHAM = 125,
-	baseHAMmax = 125,
+	baseHAM = 113,
+	baseHAMmax = 138,
 	armor = 0,
 	resists = {10,10,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,15 +19,17 @@ giant_decay_mite_hatchliing = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/decay_mite.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
 		{"milddisease",""}
 	}

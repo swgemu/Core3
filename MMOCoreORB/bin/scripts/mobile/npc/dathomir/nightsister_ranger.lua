@@ -4,14 +4,14 @@ nightsister_ranger = Creature:new {
 	pvpFaction = "Nightsister",
 	faction = "",
 	level = 81,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 555,
 	damageMax = 820,
 	baseXp = 7761,
 	baseHAM = 12000,
 	baseHAMmax = 15000,
-	armor = 0,
-	resists = {0,0,0,100,100,100,100,100,-1},
+	armor = 1,
+	resists = {30,30,30,100,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ nightsister_ranger = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_nightsister_ranger.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_ranger, "nightsister_ranger")

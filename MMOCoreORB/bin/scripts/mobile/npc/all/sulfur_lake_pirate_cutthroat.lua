@@ -1,10 +1,10 @@
 sulfur_lake_pirate_cutthroat = Creature:new {
-	objectName = "Sulfur Lake Pirate Cutthroat",
+	objectName = "@mob/creature_names:Sulfur_Lake_Pirate_Cutthroat",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 292,
@@ -19,16 +19,19 @@ sulfur_lake_pirate_cutthroat = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(sulfur_lake_pirate_cutthroat, "sulfur_lake_pirate_cutthroat")

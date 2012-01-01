@@ -4,14 +4,14 @@ mawgax_youth = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1803,
-	baseHAM = 6000,
-	baseHAMmax = 6000,
+	baseHAM = 5400,
+	baseHAMmax = 6600,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {10,10,10,10,10,10,10,-1,-1},
 	meatType = "",
 	meatAmount = 650,
 	hideType = "hide_leathery",
@@ -19,16 +19,19 @@ mawgax_youth = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 45,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mawgax_youth.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mawgax_youth, "mawgax_youth")

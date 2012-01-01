@@ -1,17 +1,17 @@
 bol = Creature:new {
-	objectName = "@monster_name:bol",
+	objectName = "@mob/creature_names:bol",
 	socialGroup = "Bol",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
-	chanceHit = 0.200000,
-	damageMin = 30,
-	damageMax = 40,
-	baseXp = 40,
-	baseHAM = 50,
-	baseHAMmax = 50,
+	level = 29,
+	chanceHit = 0.39,
+	damageMin = 260,
+	damageMax = 270,
+	baseXp = 2914,
+	baseHAM = 8400,
+	baseHAMmax = 10200,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {35,20,0,20,20,0,20,0,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ bol = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 180,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bol.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

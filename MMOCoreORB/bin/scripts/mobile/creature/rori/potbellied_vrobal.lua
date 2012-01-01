@@ -4,12 +4,12 @@ potbellied_vrobal = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 430,
-	baseHAM = 1300,
-	baseHAMmax = 1300,
+	baseHAM = 1200,
+	baseHAMmax = 1400,
 	armor = 0,
 	resists = {0,0,0,10,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -19,16 +19,19 @@ potbellied_vrobal = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 10,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vrobal.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(potbellied_vrobal, "potbellied_vrobal")

@@ -1,17 +1,17 @@
 enhanced_kwi = Creature:new {
-	objectName = "@mob/creature_names:geonosian_enhanced_kwi",
+	objectName = "@mob/creature_names:enhanced_kwi",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
 	faction = "",
 	level = 106,
-	chanceHit = 1.750000,
+	chanceHit = 1.75,
 	damageMin = 690,
 	damageMax = 1090,
 	baseXp = 10081,
 	baseHAM = 30000,
 	baseHAMmax = 30000,
-	armor = 0,
-	resists = {40,40,0,40,0,0,0,0,-1},
+	armor = 2,
+	resists = {40,40,5,40,5,5,5,5,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 100,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ enhanced_kwi = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 75,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 16,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kwi.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

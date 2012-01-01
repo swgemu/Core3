@@ -1,15 +1,15 @@
 corellian_butterfly = Creature:new {
-	objectName = "corellian butterfly",
+	objectName = "@mob/creature_names:corellian_butterfly",
 	socialGroup = "Cor. Butterfly",
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 147,
-	baseHAM = 300,
-	baseHAMmax = 300,
+	baseHAM = 270,
+	baseHAMmax = 330,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,16 +19,19 @@ corellian_butterfly = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corellian_butterfly, "corellian_butterfly")

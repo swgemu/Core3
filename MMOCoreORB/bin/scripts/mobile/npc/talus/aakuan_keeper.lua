@@ -1,10 +1,10 @@
 aakuan_keeper = Creature:new {
-	objectName = "@mob/creature_names:aakuan_keeper",
+	objectName = "@mob/creature_names:Aa'kuan_keeper",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 714,
@@ -19,16 +19,19 @@ aakuan_keeper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_aakuan_keeper_zabrak_female_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(aakuan_keeper, "aakuan_keeper")

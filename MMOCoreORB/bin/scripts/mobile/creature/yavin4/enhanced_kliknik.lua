@@ -1,17 +1,17 @@
 enhanced_kliknik = Creature:new {
-	objectName = "@mob/creature_names:geonosian_kliknik_force_strong",
+	objectName = "@mob/creature_names:enhanced_kliknik",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
 	faction = "",
 	level = 109,
-	chanceHit = 2.200000,
+	chanceHit = 2.2,
 	damageMin = 675,
 	damageMax = 1060,
 	baseXp = 10360,
-	baseHAM = 38000,
-	baseHAMmax = 38000,
-	armor = 0,
-	resists = {40,40,0,95,-1,0,0,0,-1},
+	baseHAM = 22000,
+	baseHAMmax = 27000,
+	armor = 2,
+	resists = {40,40,10,95,-1,10,10,10,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 45,
 	hideType = "",
@@ -19,18 +19,20 @@ enhanced_kliknik = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 15,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"creatureareaattack",""}
+		{"creatureareaattack",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

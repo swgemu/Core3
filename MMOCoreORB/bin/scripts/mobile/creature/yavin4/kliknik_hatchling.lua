@@ -4,12 +4,12 @@ kliknik_hatchling = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 22,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2006,
-	baseHAM = 6550,
-	baseHAMmax = 6550,
+	baseHAM = 5900,
+	baseHAMmax = 7200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_carnivore",
@@ -19,16 +19,19 @@ kliknik_hatchling = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hatchling.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kliknik_hatchling, "kliknik_hatchling")

@@ -1,10 +1,10 @@
 first_brigade_trooper = Creature:new {
-	objectName = "First Brigade trooper",
+	objectName = "@mob/creature_names:First Brigade trooper",
 	socialGroup = "Restuss",
 	pvpFaction = "Restuss",
 	faction = "",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 147,
@@ -19,16 +19,19 @@ first_brigade_trooper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(first_brigade_trooper, "first_brigade_trooper")

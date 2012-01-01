@@ -1,17 +1,17 @@
 Nightsister_enraged_rancor = Creature:new {
-	objectName = "Nightsister enraged rancor",
+	objectName = "@mob/creature_names:Nightsister_enraged_rancor",
 	socialGroup = "Nightsister",
 	pvpFaction = "",
 	faction = "",
 	level = 80,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 570,
 	damageMax = 850,
 	baseXp = 7668,
-	baseHAM = 13500,
-	baseHAMmax = 13500,
-	armor = 0,
-	resists = {0,60,0,100,100,100,0,0,-1},
+	baseHAM = 13000,
+	baseHAMmax = 16000,
+	armor = 1,
+	resists = {30,60,30,100,100,100,30,30,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 950,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ Nightsister_enraged_rancor = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 778,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 15,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rancor.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"creatureareaattack",""}
+		{"creatureareaattack",""},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

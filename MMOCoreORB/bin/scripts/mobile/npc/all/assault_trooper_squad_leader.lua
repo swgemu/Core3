@@ -1,10 +1,10 @@
 assault_trooper_squad_leader = Creature:new {
-	objectName = "Assault Trooper Squad Leader",
+	objectName = "@mob/creature_names:Assault_Trooper_Squad_Leader",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 27,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2822,
@@ -19,16 +19,19 @@ assault_trooper_squad_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_squad_leader_white_white.iff"},
 	lootgroups = {},
 	weapons = {"st_assault_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(assault_trooper_squad_leader, "assault_trooper_squad_leader")

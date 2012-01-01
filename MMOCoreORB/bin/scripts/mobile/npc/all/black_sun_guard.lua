@@ -1,16 +1,16 @@
 black_sun_guard = Creature:new {
-	objectName = "Black Sun Guard",
+	objectName = "@mob/creature_names:Black_Sun_Guard",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
 	level = 96,
-	chanceHit = 0.950000,
+	chanceHit = 0.95,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 9057,
 	baseHAM = 20000,
 	baseHAMmax = 25000,
-	armor = 0,
+	armor = 2,
 	resists = {40,40,60,35,55,70,35,40,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ black_sun_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_black_sun_guard.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(black_sun_guard, "black_sun_guard")

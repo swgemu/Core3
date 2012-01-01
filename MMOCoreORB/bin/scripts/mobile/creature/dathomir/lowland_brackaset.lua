@@ -1,15 +1,15 @@
 lowland_brackaset = Creature:new {
-	objectName = "@mob/creature_names:brackaset_lowlands",
+	objectName = "@mob/creature_names:lowland_brackaset",
 	socialGroup = "Brackaset",
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 292,
-	baseHAM = 750,
-	baseHAMmax = 750,
+	baseHAM = 675,
+	baseHAMmax = 825,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_wild",
@@ -19,16 +19,19 @@ lowland_brackaset = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 60,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lowland_brackaset, "lowland_brackaset")

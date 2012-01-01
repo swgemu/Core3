@@ -1,17 +1,17 @@
 female_malkloc_plainswalker = Creature:new {
-	objectName = "@mob/creature_names:malkloc_plainswalker_female",
+	objectName = "@mob/creature_names:female_malkloc_plainswalker",
 	socialGroup = "Malkloc Plainswalker",
 	pvpFaction = "",
 	faction = "",
 	level = 81,
-	chanceHit = 0.650000,
+	chanceHit = 0.65,
 	damageMin = 570,
 	damageMax = 850,
 	baseXp = 7761,
-	baseHAM = 17500,
-	baseHAMmax = 17500,
-	armor = 0,
-	resists = {100,50,0,-1,-1,0,0,100,-1},
+	baseHAM = 16000,
+	baseHAMmax = 19000,
+	armor = 1,
+	resists = {100,50,20,-1,-1,20,20,100,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 1000,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ female_malkloc_plainswalker = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1000,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/malkloc.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown","knockdownChance=30"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

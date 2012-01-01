@@ -4,14 +4,14 @@ bloodseeker_mite_guardian = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 38,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 330,
 	damageMax = 370,
 	baseXp = 3733,
-	baseHAM = 9300,
-	baseHAMmax = 9300,
+	baseHAM = 8400,
+	baseHAMmax = 10200,
 	armor = 0,
-	resists = {60,40,-1,70,-1,70,70,-1,-1},
+	resists = {60,40,-1,70,-1,70,70,20,-1},
 	meatType = "meat_insect",
 	meatAmount = 0,
 	hideType = "",
@@ -19,18 +19,20 @@ bloodseeker_mite_guardian = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bloodseeker_mite.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_red"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"strongdisease",""}
+		{"strongdisease",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

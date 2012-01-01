@@ -4,7 +4,7 @@ blood_razor_guard = Creature:new {
 	pvpFaction = "Bloodrazor",
 	faction = "",
 	level = 39,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 3915,
@@ -19,16 +19,19 @@ blood_razor_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_blood_razor_pirate_guard_rod_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_guard, "blood_razor_guard")

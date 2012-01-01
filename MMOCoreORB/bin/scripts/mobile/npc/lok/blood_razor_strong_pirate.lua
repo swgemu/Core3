@@ -1,10 +1,10 @@
 blood_razor_strong_pirate = Creature:new {
-	objectName = "Blood Razor strong pirate",
+	objectName = "@mob/creature_names:Blood_Razor_strong_pirate",
 	socialGroup = "Bloodrazor",
 	pvpFaction = "Bloodrazor",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 2730,
@@ -19,16 +19,19 @@ blood_razor_strong_pirate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_blood_razor_pirate_strong_hum_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_strong_pirate, "blood_razor_strong_pirate")

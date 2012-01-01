@@ -4,12 +4,12 @@ spined_snake_recluse = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 609,
-	baseHAM = 1100,
-	baseHAMmax = 1100,
+	baseHAM = 1000,
+	baseHAMmax = 1200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_reptilian",
@@ -19,18 +19,20 @@ spined_snake_recluse = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/spined_snake.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"mediumpoison",""}
+		{"mediumpoison",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

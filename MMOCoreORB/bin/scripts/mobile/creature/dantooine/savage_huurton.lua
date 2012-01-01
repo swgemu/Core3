@@ -1,15 +1,15 @@
 savage_huurton = Creature:new {
-	objectName = "@mob/creature_names:warren_huurton_savage",
+	objectName = "@mob/creature_names:savage_huurton",
 	socialGroup = "Warren Huurton",
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2637,
-	baseHAM = 7550,
-	baseHAMmax = 7550,
+	baseHAM = 6800,
+	baseHAMmax = 8300,
 	armor = 0,
 	resists = {35,35,0,-1,0,0,-1,-1,-1},
 	meatType = "",
@@ -19,18 +19,20 @@ savage_huurton = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 35,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

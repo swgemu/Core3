@@ -1,10 +1,10 @@
 corsec_soldier = Creature:new {
-	objectName = "CorSec Soldier",
+	objectName = "@mob/creature_names:CorSec_Soldier",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",
 	level = 86,
-	chanceHit = 0.850000,
+	chanceHit = 0.85,
 	damageMin = 570,
 	damageMax = 850,
 	baseXp = 8223,
@@ -19,16 +19,19 @@ corsec_soldier = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_soldier, "corsec_soldier")

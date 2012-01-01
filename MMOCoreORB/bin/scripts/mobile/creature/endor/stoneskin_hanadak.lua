@@ -4,14 +4,14 @@ stoneskin_hanadak = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 139,
-	chanceHit = 4.750000,
+	chanceHit = 4.75,
 	damageMin = 720,
 	damageMax = 1150,
 	baseXp = 13178,
-	baseHAM = 97500,
-	baseHAMmax = 97500,
+	baseHAM = 88000,
+	baseHAMmax = 107000,
 	armor = 0,
-	resists = {90,100,65,100,100,100,75,80,-1},
+	resists = {90,100,65,100,100,100,100,80,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 40,
 	hideType = "hide_bristley",
@@ -19,18 +19,20 @@ stoneskin_hanadak = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 40,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 9,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hanadak.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

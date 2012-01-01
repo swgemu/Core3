@@ -4,7 +4,7 @@ blood_razor_cutthroat = Creature:new {
 	pvpFaction = "Bloodrazor",
 	faction = "",
 	level = 34,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 335,
 	damageMax = 380,
 	baseXp = 3460,
@@ -19,16 +19,19 @@ blood_razor_cutthroat = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_blood_razor_pirate_cutthroat_hum_f.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_cutthroat, "blood_razor_cutthroat")

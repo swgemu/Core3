@@ -4,14 +4,14 @@ enraged_bull_rancor = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 89,
-	chanceHit = 0.850000,
+	chanceHit = 0.85,
 	damageMin = 570,
 	damageMax = 850,
 	baseXp = 8500,
-	baseHAM = 14500,
-	baseHAMmax = 14500,
-	armor = 0,
-	resists = {0,70,0,100,100,100,0,0,-1},
+	baseHAM = 13000,
+	baseHAMmax = 16000,
+	armor = 1,
+	resists = {40,70,40,100,100,100,40,40,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 880,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ enraged_bull_rancor = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 670,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 15,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bull_rancor.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown","knockdownChance=30"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

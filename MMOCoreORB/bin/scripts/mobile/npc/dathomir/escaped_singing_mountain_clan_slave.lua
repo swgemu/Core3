@@ -1,10 +1,10 @@
 escaped_singing_mountain_clan_slave = Creature:new {
-	objectName = "escaped Singing Mountain clan slave",
+	objectName = "@mob/creature_names:escaped_Singing_Mountain_clan_slave",
 	socialGroup = "Escaped Slave",
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2543,
@@ -19,16 +19,19 @@ escaped_singing_mountain_clan_slave = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(escaped_singing_mountain_clan_slave, "escaped_singing_mountain_clan_slave")

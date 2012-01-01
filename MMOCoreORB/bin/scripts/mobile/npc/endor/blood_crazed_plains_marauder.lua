@@ -4,7 +4,7 @@ blood_crazed_plains_marauder = Creature:new {
 	pvpFaction = "Marauder",
 	faction = "",
 	level = 56,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 445,
 	damageMax = 600,
 	baseXp = 5464,
@@ -19,16 +19,19 @@ blood_crazed_plains_marauder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_blood_crazed_plains_marauder.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blood_crazed_plains_marauder, "blood_crazed_plains_marauder")

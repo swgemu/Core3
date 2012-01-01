@@ -1,10 +1,10 @@
 strong_mercenary = Creature:new {
-	objectName = "strong mercenary",
+	objectName = "@mob/creature_names:strong_mercenary",
 	socialGroup = "Lok Merc",
 	pvpFaction = "Lok Merc",
 	faction = "",
 	level = 36,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3642,
@@ -19,16 +19,19 @@ strong_mercenary = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(strong_mercenary, "strong_mercenary")

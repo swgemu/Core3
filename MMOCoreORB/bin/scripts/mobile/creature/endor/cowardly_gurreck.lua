@@ -4,14 +4,14 @@ cowardly_gurreck = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 831,
-	baseHAM = 3200,
-	baseHAMmax = 3200,
+	baseHAM = 2900,
+	baseHAMmax = 3500,
 	armor = 0,
-	resists = {10,10,0,-1,-1,0,-1,-1,-1},
+	resists = {10,10,5,-1,-1,5,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_wooly",
@@ -19,16 +19,19 @@ cowardly_gurreck = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(cowardly_gurreck, "cowardly_gurreck")

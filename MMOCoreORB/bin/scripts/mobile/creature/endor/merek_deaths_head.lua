@@ -4,14 +4,14 @@ merek_deaths_head = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 56,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 480,
 	damageMax = 670,
 	baseXp = 5464,
-	baseHAM = 11000,
-	baseHAMmax = 11000,
+	baseHAM = 9900,
+	baseHAMmax = 12100,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {10,10,10,10,10,10,10,10,-1},
 	meatType = "meat_wild",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ merek_deaths_head = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/merek.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"strongdisease",""}
+		{"strongdisease",""},
+		{"strongpoison",""}
 	}
 }
 

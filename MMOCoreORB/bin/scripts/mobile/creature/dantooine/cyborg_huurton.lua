@@ -1,15 +1,15 @@
 cyborg_huurton = Creature:new {
-	objectName = "@mob/creature_names:warren_cyborg_huurton",
+	objectName = "@mob/creature_names:cyborg_huurton",
 	socialGroup = "Warren Cyborg",
 	pvpFaction = "",
 	faction = "",
 	level = 32,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 3188,
-	baseHAM = 9550,
-	baseHAMmax = 9550,
+	baseHAM = 8600,
+	baseHAMmax = 10500,
 	armor = 0,
 	resists = {30,45,0,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_wild",
@@ -19,18 +19,20 @@ cyborg_huurton = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/warren_cyborg_huurton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

@@ -1,17 +1,17 @@
 trandosian_slaver = Creature:new {
-	objectName = "Trandosian slaver",
+	objectName = "@mob/creature_names:Trandosian_slaver",
 	socialGroup = "Slaver",
 	pvpFaction = "",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 113,
 	baseHAM = 135,
 	baseHAMmax = 165,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {20,20,10,25,35,10,10,10,0},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ trandosian_slaver = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(trandosian_slaver, "trandosian_slaver")

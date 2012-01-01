@@ -1,16 +1,16 @@
 death_watch_wraith = Creature:new {
-	objectName = "Death Watch Wraith",
+	objectName = "@mob/creature_names:Death_Watch_Wraith",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
 	level = 178,
-	chanceHit = 12.250000,
+	chanceHit = 12.25,
 	damageMin = 1020,
 	damageMax = 1750,
 	baseXp = 16794,
 	baseHAM = 118000,
 	baseHAMmax = 144000,
-	armor = 0,
+	armor = 2,
 	resists = {75,75,90,80,45,45,100,70,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ death_watch_wraith = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_death_watch_silver.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_wraith, "death_watch_wraith")

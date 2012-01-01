@@ -4,13 +4,13 @@ arachne_webmaster = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 50,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 405,
 	damageMax = 520,
 	baseXp = 4916,
-	baseHAM = 11000,
-	baseHAMmax = 11000,
-	armor = 0,
+	baseHAM = 9900,
+	baseHAMmax = 12100,
+	armor = 1,
 	resists = {35,35,-1,60,60,-1,60,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 30,
@@ -19,18 +19,20 @@ arachne_webmaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"defaultattack",""}
+		{"strongpoison",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

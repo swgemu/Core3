@@ -4,14 +4,14 @@ crazed_gurk_destroyer = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 43,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 385,
 	damageMax = 480,
 	baseXp = 4279,
-	baseHAM = 10700,
-	baseHAMmax = 10700,
+	baseHAM = 9600,
+	baseHAMmax = 11800,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {30,30,30,30,30,30,30,30,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ crazed_gurk_destroyer = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 300,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurk.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

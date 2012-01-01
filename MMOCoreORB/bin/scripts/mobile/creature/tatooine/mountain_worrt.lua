@@ -4,14 +4,14 @@ mountain_worrt = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 22,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1803,
-	baseHAM = 5000,
-	baseHAMmax = 5000,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
-	resists = {0,30,0,35,35,-1,-1,-1,-1},
+	resists = {10,30,10,35,35,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
 	meatAmount = 4,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ mountain_worrt = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 2,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_worrt.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_red"},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

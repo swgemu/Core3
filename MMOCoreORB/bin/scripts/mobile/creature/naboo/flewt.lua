@@ -1,15 +1,15 @@
 flewt = Creature:new {
-	objectName = "@monster_name:flewt",
+	objectName = "@mob/creature_names:flewt",
 	socialGroup = "Flewt",
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 147,
-	baseHAM = 300,
-	baseHAMmax = 300,
+	baseHAM = 270,
+	baseHAMmax = 330,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -19,16 +19,19 @@ flewt = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 3,
 	milk = 0,
-	tamingChance = 0.250000,
-	ferocity = 0,
+	tamingChance = 0.25,
+	ferocity = 2,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flewt.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(flewt, "flewt")

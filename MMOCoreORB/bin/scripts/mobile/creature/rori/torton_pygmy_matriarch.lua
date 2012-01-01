@@ -4,14 +4,14 @@ torton_pygmy_matriarch = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 280,
 	damageMax = 290,
 	baseXp = 2730,
-	baseHAM = 7000,
-	baseHAMmax = 7000,
+	baseHAM = 6300,
+	baseHAMmax = 7700,
 	armor = 0,
-	resists = {20,20,0,0,-1,-1,-1,100,-1},
+	resists = {20,20,15,15,-1,-1,-1,100,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 700,
 	hideType = "hide_wooly",
@@ -19,18 +19,20 @@ torton_pygmy_matriarch = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 700,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 9,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

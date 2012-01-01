@@ -4,14 +4,14 @@ blurrg_sand_crawler = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 43,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4188,
-	baseHAM = 10300,
-	baseHAMmax = 10300,
+	baseHAM = 9300,
+	baseHAMmax = 11300,
 	armor = 0,
-	resists = {45,45,0,100,20,100,-1,-1,-1},
+	resists = {45,45,30,100,20,100,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ blurrg_sand_crawler = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_yellow"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"stunattack","stunChance=50"}
 	}
 }
 

@@ -1,10 +1,10 @@
 blood_razor_captain = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_captain",
-	socialGroup = "Btoodrazor",
-	pvpFaction = "Btoodrazor",
+	socialGroup = "Bloodrazor",
+	pvpFaction = "Bloodrazor",
 	faction = "",
 	level = 42,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4188,
@@ -19,16 +19,19 @@ blood_razor_captain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_blood_razor_pirate_captain_hum_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_captain, "blood_razor_captain")

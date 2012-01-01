@@ -1,10 +1,10 @@
 corsec_special_ops_inspector = Creature:new {
-	objectName = "CorSec Special Ops Inspector",
+	objectName = "@mob/creature_names:CorSec_Special_Ops_Inspector",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",
 	level = 150,
-	chanceHit = 8.500000,
+	chanceHit = 8.5,
 	damageMin = 895,
 	damageMax = 1500,
 	baseXp = 14219,
@@ -19,16 +19,19 @@ corsec_special_ops_inspector = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_inspector, "corsec_special_ops_inspector")

@@ -4,7 +4,7 @@ gadsle_distombe = Creature:new {
 	pvpFaction = "Sith Shadow",
 	faction = "",
 	level = 87,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 8315,
@@ -19,16 +19,19 @@ gadsle_distombe = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gadsle_distombe, "gadsle_distombe")

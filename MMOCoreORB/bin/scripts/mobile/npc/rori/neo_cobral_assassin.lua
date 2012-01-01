@@ -1,10 +1,10 @@
 neo_cobral_assassin = Creature:new {
-	objectName = "Neo-Cobral assassin",
+	objectName = "@mob/creature_names:Neo_Cobral_assassin",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 300,
 	damageMax = 310,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ neo_cobral_assassin = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_assassin, "neo_cobral_assassin")

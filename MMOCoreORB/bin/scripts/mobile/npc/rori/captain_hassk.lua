@@ -4,7 +4,7 @@ captain_hassk = Creature:new {
 	pvpFaction = "Rorgungan",
 	faction = "",
 	level = 73,
-	chanceHit = 0.700000,
+	chanceHit = 0.7,
 	damageMin = 495,
 	damageMax = 700,
 	baseXp = 7023,
@@ -19,16 +19,19 @@ captain_hassk = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/captain_hassk.iff"},
 	lootgroups = {},
 	weapons = {"captain_hassk's_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(captain_hassk, "captain_hassk")

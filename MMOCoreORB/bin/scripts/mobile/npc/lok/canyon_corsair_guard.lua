@@ -4,7 +4,7 @@ canyon_corsair_guard = Creature:new {
 	pvpFaction = "Corsair",
 	faction = "",
 	level = 36,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3642,
@@ -19,16 +19,19 @@ canyon_corsair_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsair_guard_rod_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(canyon_corsair_guard, "canyon_corsair_guard")

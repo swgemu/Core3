@@ -4,14 +4,14 @@ arachne_widow = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 58,
-	chanceHit = 0.530000,
+	chanceHit = 0.53,
 	damageMin = 400,
 	damageMax = 510,
 	baseXp = 5647,
-	baseHAM = 12500,
-	baseHAMmax = 12500,
-	armor = 0,
-	resists = {40,40,0,70,80,0,80,-1,-1},
+	baseHAM = 11000,
+	baseHAMmax = 14000,
+	armor = 1,
+	resists = {40,40,5,70,80,5,80,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 30,
 	hideType = "",
@@ -19,18 +19,20 @@ arachne_widow = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.010000,
+	tamingChance = 0.01,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"defaultattack",""}
+		{"strongpoison",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

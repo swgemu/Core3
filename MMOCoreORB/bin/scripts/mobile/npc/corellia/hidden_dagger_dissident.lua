@@ -1,10 +1,10 @@
 hidden_dagger_dissident = Creature:new {
-	objectName = "Hidden Dagger dissident",
+	objectName = "@mob/creature_names:Hidden Dagger dissident",
 	socialGroup = "Hidden Dagger",
 	pvpFaction = "Hidden Dagger",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 430,
@@ -19,16 +19,19 @@ hidden_dagger_dissident = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_dagger_dissident, "hidden_dagger_dissident")

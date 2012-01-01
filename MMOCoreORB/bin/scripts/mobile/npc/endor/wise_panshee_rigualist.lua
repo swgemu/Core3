@@ -1,10 +1,10 @@
 wise_panshee_rigualist = Creature:new {
-	objectName = "wise Panshee rigualist",
+	objectName = "@mob/creature_names:wise_Panshee_rigualist",
 	socialGroup = "Panshee Tribe",
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 51,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 410,
 	damageMax = 530,
 	baseXp = 4916,
@@ -19,16 +19,19 @@ wise_panshee_rigualist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(wise_panshee_rigualist, "wise_panshee_rigualist")

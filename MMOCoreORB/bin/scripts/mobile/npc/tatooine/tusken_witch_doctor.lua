@@ -4,7 +4,7 @@ tusken_witch_doctor = Creature:new {
 	pvpFaction = "Tusken Raider",
 	faction = "",
 	level = 202,
-	chanceHit = 16.000000,
+	chanceHit = 16,
 	damageMin = 1145,
 	damageMax = 2000,
 	baseXp = 19201,
@@ -19,16 +19,21 @@ tusken_witch_doctor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+		{"strongpoison",""},
+		{"stunattack","stunChance=50"}
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_witch_doctor, "tusken_witch_doctor")

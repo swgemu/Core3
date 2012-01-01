@@ -4,13 +4,13 @@ toxic_merek_battlelord = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 45,
-	chanceHit = 0.470000,
+	chanceHit = 0.47,
 	damageMin = 370,
 	damageMax = 450,
 	baseXp = 4461,
-	baseHAM = 10800,
-	baseHAMmax = 10800,
-	armor = 0,
+	baseHAM = 9700,
+	baseHAMmax = 11900,
+	armor = 1,
 	resists = {40,-1,60,60,50,60,80,50,-1},
 	meatType = "meat_wild",
 	meatAmount = 0,
@@ -19,18 +19,20 @@ toxic_merek_battlelord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/merek.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"strongpoison",""}
 	}
 }
 

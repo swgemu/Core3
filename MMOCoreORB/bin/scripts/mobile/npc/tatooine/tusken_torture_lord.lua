@@ -4,7 +4,7 @@ tusken_torture_lord = Creature:new {
 	pvpFaction = "Tusken Raider",
 	faction = "",
 	level = 57,
-	chanceHit = 0.570000,
+	chanceHit = 0.57,
 	damageMin = 430,
 	damageMax = 570,
 	baseXp = 5555,
@@ -19,16 +19,19 @@ tusken_torture_lord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_torture_lord, "tusken_torture_lord")

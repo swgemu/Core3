@@ -1,17 +1,17 @@
 hostile_huurton = Creature:new {
-	objectName = "@mob/creature_names:warren_huurton_hostile",
+	objectName = "@mob/creature_names:hostile_huurton",
 	socialGroup = "Warren Huurton",
 	pvpFaction = "",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1257,
-	baseHAM = 4550,
-	baseHAMmax = 4550,
+	baseHAM = 4100,
+	baseHAMmax = 5000,
 	armor = 0,
-	resists = {0,0,0,0,-1,0,0,-1,-1},
+	resists = {5,5,5,5,5,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "hide_wooly",
@@ -19,16 +19,19 @@ hostile_huurton = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 15,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hostile_huurton, "hostile_huurton")

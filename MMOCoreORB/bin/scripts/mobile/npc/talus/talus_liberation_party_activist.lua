@@ -1,10 +1,10 @@
 talus_liberation_party_activist = Creature:new {
-	objectName = "Talus Liberation Party activist",
+	objectName = "@mob/creature_names:Talus_Liberation_Party_activist",
 	socialGroup = "Liberat. Party",
 	pvpFaction = "Liberat. Party",
 	faction = "",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1803,
@@ -19,16 +19,19 @@ talus_liberation_party_activist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(talus_liberation_party_activist, "talus_liberation_party_activist")

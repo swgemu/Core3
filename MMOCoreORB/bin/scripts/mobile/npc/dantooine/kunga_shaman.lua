@@ -4,7 +4,7 @@ kunga_shaman = Creature:new {
 	pvpFaction = "Kunga Tribe",
 	faction = "",
 	level = 57,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 450,
 	damageMax = 610,
 	baseXp = 5555,
@@ -19,16 +19,19 @@ kunga_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER + HEALER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kunga_shaman, "kunga_shaman")

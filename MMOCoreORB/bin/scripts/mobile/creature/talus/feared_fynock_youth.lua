@@ -4,12 +4,12 @@ feared_fynock_youth = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 147,
-	baseHAM = 300,
-	baseHAMmax = 300,
+	baseHAM = 270,
+	baseHAMmax = 330,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -19,16 +19,19 @@ feared_fynock_youth = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 3,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fearful_fynock_youth.iff"},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(feared_fynock_youth, "feared_fynock_youth")

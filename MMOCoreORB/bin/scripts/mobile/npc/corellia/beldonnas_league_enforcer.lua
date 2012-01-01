@@ -1,10 +1,10 @@
 beldonnas_league_enforcer = Creature:new {
-	objectName = "Beldonna's League enforcer",
+	objectName = "@mob/creature_names:Beldonna's_League_enforcer",
 	socialGroup = "Bel. League",
 	pvpFaction = "Bel. League",
 	faction = "",
 	level = 23,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 2443,
@@ -19,16 +19,19 @@ beldonnas_league_enforcer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(beldonnas_league_enforcer, "beldonnas_league_enforcer")

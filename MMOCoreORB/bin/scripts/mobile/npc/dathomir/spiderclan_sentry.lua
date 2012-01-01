@@ -1,17 +1,17 @@
 spiderclan_sentry = Creature:new {
-	objectName = "Spiderclan sentry",
+	objectName = "@mob/creature_names:Spiderclan_sentry",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
 	level = 27,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 2730,
 	baseHAM = 5000,
 	baseHAMmax = 6100,
-	armor = 0,
-	resists = {60,50,0,0,0,0,0,-1,-1},
+	armor = 1,
+	resists = {60,50,50,50,50,50,50,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ spiderclan_sentry = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_spider_nightsister_guardian.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(spiderclan_sentry, "spiderclan_sentry")

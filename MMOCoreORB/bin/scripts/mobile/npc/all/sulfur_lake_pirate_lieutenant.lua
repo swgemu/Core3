@@ -1,10 +1,10 @@
 sulfur_lake_pirate_lieutenant = Creature:new {
-	objectName = "Sulfur Lake Pirate Lieutenant",
+	objectName = "@mob/creature_names:Sulfur_Lake_Pirate_Lieutenant",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 430,
@@ -19,16 +19,19 @@ sulfur_lake_pirate_lieutenant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(sulfur_lake_pirate_lieutenant, "sulfur_lake_pirate_lieutenant")

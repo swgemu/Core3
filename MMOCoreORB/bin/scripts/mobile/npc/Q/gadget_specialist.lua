@@ -1,10 +1,10 @@
 gadget_specialist = Creature:new {
-	objectName = "gadget specialist",
+	objectName = "@mob/creature_names:gadget specialist",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ gadget_specialist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gadget_specialist, "gadget_specialist")

@@ -1,17 +1,17 @@
 gronda_juggernaut = Creature:new {
-	objectName = "gronda juggernaut",
+	objectName = "@mob/creature_names:gronda_juggernaut",
 	socialGroup = "Gronda",
 	pvpFaction = "",
 	faction = "",
 	level = 70,
-	chanceHit = 0.650000,
+	chanceHit = 0.65,
 	damageMin = 430,
 	damageMax = 570,
 	baseXp = 6747,
-	baseHAM = 13500,
-	baseHAMmax = 13500,
-	armor = 0,
-	resists = {65,65,75,-1,100,0,0,-1,-1},
+	baseHAM = 12000,
+	baseHAMmax = 15000,
+	armor = 1,
+	resists = {65,65,75,-1,100,20,20,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 500,
 	hideType = "hide_leathery",
@@ -19,18 +19,20 @@ gronda_juggernaut = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 375,
 	milk = 0,
-	tamingChance = 0.000000,
-	ferocity = 0,
+	tamingChance = 0,
+	ferocity = 14,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gronda.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

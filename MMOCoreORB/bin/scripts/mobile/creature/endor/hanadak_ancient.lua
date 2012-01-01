@@ -4,14 +4,14 @@ hanadak_ancient = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 41,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4097,
-	baseHAM = 10300,
-	baseHAMmax = 10300,
+	baseHAM = 9300,
+	baseHAMmax = 11300,
 	armor = 0,
-	resists = {0,0,-1,100,100,100,-1,-1,-1},
+	resists = {30,30,-1,100,100,100,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 40,
 	hideType = "hide_bristley",
@@ -19,18 +19,20 @@ hanadak_ancient = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 40,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + PACK + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hanadak.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"blindattack","blindChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

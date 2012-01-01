@@ -4,7 +4,7 @@ battle_droid = Creature:new {
 	pvpFaction = "Death Watch",
 	faction = "",
 	level = 134,
-	chanceHit = 5.500000,
+	chanceHit = 5.5,
 	damageMin = 795,
 	damageMax = 1300,
 	baseXp = 12612,
@@ -19,16 +19,19 @@ battle_droid = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/battle_droid.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(battle_droid, "battle_droid")

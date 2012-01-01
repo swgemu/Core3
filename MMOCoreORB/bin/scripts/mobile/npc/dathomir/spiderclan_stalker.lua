@@ -1,17 +1,17 @@
 spiderclan_stalker = Creature:new {
-	objectName = "Spiderclan stalker",
+	objectName = "@mob/creature_names:Spiderclan_stalker",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
 	level = 100,
-	chanceHit = 0.850000,
+	chanceHit = 0.85,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 9522,
 	baseHAM = 20000,
 	baseHAMmax = 25000,
-	armor = 0,
-	resists = {90,100,100,0,100,100,0,0,-1},
+	armor = 1,
+	resists = {90,100,100,80,100,100,80,80,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ spiderclan_stalker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_spider_nightsister_stalker.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(spiderclan_stalker, "spiderclan_stalker")

@@ -1,10 +1,10 @@
 aakuan_guardian = Creature:new {
-	objectName = "@mob/creature_names:aakuan_guardian",
+	objectName = "@mob/creature_names:Aa'kuan_guardian",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
 	level = 25,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ aakuan_guardian = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_aakuan_guardian_trandoshan_male_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(aakuan_guardian, "aakuan_guardian")

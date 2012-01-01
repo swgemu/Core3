@@ -1,17 +1,17 @@
 mamien_jungle_lord = Creature:new {
-	objectName = "@mob/creature_names:mamien_junglelord",
+	objectName = "@mob/creature_names:mamien_jungle_lord",
 	socialGroup = "Mamien",
 	pvpFaction = "",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 2443,
-	baseHAM = 7000,
-	baseHAMmax = 7000,
+	baseHAM = 6300,
+	baseHAMmax = 7700,
 	armor = 0,
-	resists = {0,20,0,0,0,0,0,-1,-1},
+	resists = {10,20,10,10,10,10,10,-1,-1},
 	meatType = "meat_wild",
 	meatAmount = 18,
 	hideType = "hide_wooly",
@@ -19,18 +19,20 @@ mamien_jungle_lord = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 18,
 	milk = 0,
-	tamingChance = 0.050000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mamien.iff"},
 	lootgroups = {},
 	weapons = {},
+	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

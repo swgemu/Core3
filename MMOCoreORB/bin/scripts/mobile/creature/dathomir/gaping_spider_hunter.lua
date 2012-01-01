@@ -4,13 +4,13 @@ gaping_spider_hunter = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 44,
-	chanceHit = 0.460000,
+	chanceHit = 0.46,
 	damageMin = 390,
 	damageMax = 490,
 	baseXp = 4370,
-	baseHAM = 10550,
-	baseHAMmax = 10550,
-	armor = 0,
+	baseHAM = 9500,
+	baseHAMmax = 11600,
+	armor = 1,
 	resists = {30,30,60,15,-1,-1,0,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 9,
@@ -19,18 +19,20 @@ gaping_spider_hunter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.250000,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider.iff"},
 	lootgroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
+	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"strongdisease",""}
+		{"strongdisease",""},
+		{"stunattack","stunChance=50"}
 	}
 }
 

@@ -1,0 +1,39 @@
+venom_filled_arachne = Creature:new {
+	objectName = "@mob/creature_names:venom_filled_arachne",
+	socialGroup = "",
+	pvpFaction = "",
+	faction = "",
+	level = 36,
+	chanceHit = 0.4,
+	damageMin = 300,
+	damageMax = 310,
+	baseXp = 3642,
+	baseHAM = 8500,
+	baseHAMmax = 10300,
+	armor = 0,
+	resists = {45,45,20,65,65,20,65,-1,-1},
+	meatType = "meat_insect",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 4,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 0,
+	diet = CARNIVORE,
+
+	templates = {"object/mobile/queen_arachne.iff"},
+	lootgroups = {},
+	weapons = {},
+	conversationTemplate = "",
+	attacks = {
+		{"strongpoison",""},
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(venom_filled_arachne, "venom_filled_arachne")
