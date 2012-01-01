@@ -25,7 +25,7 @@ void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
-	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)->getFirstName()))
+	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)->getFirstName()) || getZone() == NULL)
 		return;
 
 	addOperator(cast<CreatureObject*>(player));
