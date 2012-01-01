@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_quest_item_feedback_controller = object_draft_schematic_item_quest_item_shared_feedback_controller:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Feedback Controller",
+
+   craftingToolTab = 2148007936, -- (See DraftSchemticImplementation.h)
+   complexity = 8, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "artisan_clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"loop_auditor", "variance_throttle", "corrective_inducer"},
+   ingredientSlotType = {1, 1, 1},
+   resourceTypes = {"object/tangible/component/item/quest_item/shared_loop_auditor.iff", "object/tangible/component/item/quest_item/shared_variance_throttle.iff", "object/tangible/component/item/quest_item/shared_corrective_inducer.iff"},
+   resourceQuantities = {1, 1, 1},
+   combineTypes = {1, 1, 1},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/mission/quest_item/feedback_controller.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_feedback_controller, "object/draft_schematic/item/quest_item/feedback_controller.iff")

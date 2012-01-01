@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_quest_item_output_governor = object_draft_schematic_item_quest_item_shared_output_governor:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Output Governor",
+
+   craftingToolTab = 2148007936, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "artisan_clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"decoherence_sensor", "signal_cleanup_unit", "signal_rerouter"},
+   ingredientSlotType = {1, 1, 1},
+   resourceTypes = {"object/tangible/component/item/quest_item/shared_decoherence_sensor.iff", "object/tangible/component/item/quest_item/shared_signal_cleanup_unit.iff", "object/tangible/component/item/quest_item/shared_signal_rerouter.iff"},
+   resourceQuantities = {1, 1, 1},
+   combineTypes = {1, 1, 1},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/mission/quest_item/output_governor.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_output_governor, "object/draft_schematic/item/quest_item/output_governor.iff")
