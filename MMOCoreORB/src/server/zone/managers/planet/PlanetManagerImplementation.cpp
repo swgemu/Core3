@@ -411,6 +411,8 @@ void PlanetManagerImplementation::loadClientRegions() {
 		//If the cityRegion hasn't already been created, then create it.
 		if (cityRegion == NULL) {
 			cityRegion = new CityRegion(regionName);
+			cityRegion->deploy();
+
 			cityRegionMap->addRegion(cityRegion);
 		}
 

@@ -104,6 +104,8 @@ public:
 
 	bool containsPoint(float x, float y);
 
+	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
+
 	String getRegionName();
 
 	DistributedObjectServant* _getImplementation();
@@ -160,6 +162,8 @@ public:
 	SortedVector<ManagedReference<SceneObject* > > getRegionObjectsByPlanetMapCategory(const String& catname);
 
 	bool containsPoint(float x, float y);
+
+	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
 
 	String getRegionName();
 

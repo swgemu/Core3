@@ -71,13 +71,42 @@ void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	object->setCityRegion(_this);
+
+	if (object->isVendor()) {
+		Locker locker(_this);
+
+		regionObjects.put(object->getObjectID(), object);
+	}
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 	object->setCityRegion(NULL);
+
+	if (object->isVendor()) {
+		Locker locker(_this);
+
+		regionObjects.drop(object->getObjectID());
+	}
+}
+
+Vector<ManagedReference<SceneObject* > >* CityRegionImplementation::getVendorsInCity() {
+	Locker locker(_this);
+
+	Vector<ManagedReference<SceneObject* > >* vendors = new Vector<ManagedReference<SceneObject*> >();
+
+	for (int i = 0; i < regionObjects.size(); ++i) {
+		SceneObject* object = regionObjects.get(i);
+
+		if (object->isVendor())
+			vendors->add(object);
+	}
+
+	return vendors;
 }
 
 SortedVector<ManagedReference<SceneObject*> > CityRegionImplementation::getRegionObjectsByPlanetMapCategory(const String& catname) {
+	Locker locker(_this);
+
 	SortedVector<ManagedReference<SceneObject*> > objects;
 
 	for (int i = 0; i < regionObjects.size(); ++i) {

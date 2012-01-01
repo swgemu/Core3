@@ -120,6 +120,15 @@ bool CityRegion::containsPoint(float x, float y) {
 		return _implementation->containsPoint(x, y);
 }
 
+Vector<ManagedReference<SceneObject* > >* CityRegion::getVendorsInCity() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getVendorsInCity();
+}
+
 String CityRegion::getRegionName() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

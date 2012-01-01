@@ -187,9 +187,9 @@ public:
 
 	Vendor* getVendor();
 
-	virtual bool isVendor();
+	bool isVendor();
 
-	virtual bool isVendorTerminal();
+	bool isVendorTerminal();
 
 	WeakReference<VendorTerminal*> _this;
 

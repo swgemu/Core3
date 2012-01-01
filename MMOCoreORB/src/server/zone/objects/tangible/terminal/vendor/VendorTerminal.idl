@@ -110,11 +110,11 @@ class VendorTerminal extends Terminal {
 		return vendor;
 	}
 
-	public abstract boolean isVendor() {
+	public boolean isVendor() {
 		return true;
 	}
 
-	public abstract boolean isVendorTerminal() {
+	public boolean isVendorTerminal() {
 		return true;
 	}
 }

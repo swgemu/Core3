@@ -136,6 +136,9 @@ class CityRegion extends Observer implements Logger {
 		return false;
 	}
 	
+	@local
+	public native Vector<SceneObject> getVendorsInCity();
+	
 	//public native void sendGreetingMessage(CreatureObject player);
 	//public native void sendDepartingMessage(CreatureObject player);
 	

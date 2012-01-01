@@ -1123,21 +1123,26 @@ void AuctionManagerImplementation::getPlanetData(CreatureObject* player, Vendor*
 	for (int u = 0; u < planetManager->getRegionCount(); ++u) {
 		ManagedReference<CityRegion*> regionObject = planetManager->getRegion(u);
 
-		/*
-		for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
-			BazaarTerminal* term = regionObject->getBazaar(i);
-			Vendor* vendorObj = term->getVendor();
+		Vector<ManagedReference<SceneObject* > >* vendors = regionObject->getVendorsInCity();
 
-			if (vendorObj == NULL)
-				continue;
+		for (int i = 0; i < vendors->size(); ++i) {
+			VendorTerminal* obj = dynamic_cast<VendorTerminal*>(vendors->get(i).get());
 
-			VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = vendorObj->getVendorItems();
+			if (obj != NULL) {
+				Vendor* vendorObj = obj->getVendor();
 
-			for (int j = 0; j < regionItems->size(); ++j) {
-				items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
+				if (vendorObj == NULL)
+					continue;
+
+				VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = vendorObj->getVendorItems();
+
+				for (int j = 0; j < regionItems->size(); ++j) {
+					items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
+				}
 			}
 		}
-		*/
+
+		delete vendors;
 	}
 
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);
@@ -1157,11 +1162,6 @@ void AuctionManagerImplementation::getRegionData(CreatureObject* player, Vendor*
 		return;
 	}
 
-	//TODO: Vendors dont' have regions yet.
-	if (!vendor->isBazaarTerminal())
-		return;
-
-
 	ManagedReference<CityRegion*> cityRegion = vendorRef->getCityRegion();
 
 	if (cityRegion == NULL) {
@@ -1171,21 +1171,15 @@ void AuctionManagerImplementation::getRegionData(CreatureObject* player, Vendor*
 
 	String region = cityRegion->getRegionName();
 
-	/* TODO: This needs to be refactored with the new city region code.
-	StringId* name = area->getObjectName();
-
-	PlanetManager* planetManager = zone->getPlanetManager();
-
-	Vector<ManagedReference<Region*> > regions = planetManager->getRegions(*name);
-
 	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
 
-	for (int i = 0; i < regions.size(); ++i) {
-		Region* regionObject = regions.get(i);
+	Vector<ManagedReference<SceneObject* > >* vendors = cityRegion->getVendorsInCity();
 
-		for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
-			BazaarTerminal* term = regionObject->getBazaar(i);
-			Vendor* vendorObj = term->getVendor();
+	for (int i = 0; i < vendors->size(); ++i) {
+		VendorTerminal* obj = dynamic_cast<VendorTerminal*>(vendors->get(i).get());
+
+		if (obj != NULL) {
+			Vendor* vendorObj = obj->getVendor();
 
 			if (vendorObj == NULL)
 				continue;
@@ -1198,9 +1192,10 @@ void AuctionManagerImplementation::getRegionData(CreatureObject* player, Vendor*
 		}
 	}
 
+	delete vendors;
+
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);
 	player->sendMessage(msg);
-	*/
 }
 
 void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uint64 objectid) {
