@@ -89,6 +89,9 @@ void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse
 }
 
 int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (getZone() == NULL)
+		return 1;
+
 	if (!isOnAdminList(player->getFirstName()))
 		return 1;
 
