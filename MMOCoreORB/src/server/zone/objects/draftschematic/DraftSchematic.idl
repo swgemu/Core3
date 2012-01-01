@@ -59,21 +59,14 @@ import system.util.Vector;
 
 class DraftSchematic extends IntangibleObject {
 
-	/// Arbitrary ID for the schematic
-	private unsigned int schematicID;  
-	
 	/// Name of schematic group this belongs to
 	private transient string groupName;
 	
 	/// SharedDraftSchematicTemplate
 	private transient DraftSchematicObjectTemplate schematicTemplate;
-	
-	private int useCount;
-	
+
 	public DraftSchematic() {
 		schematicTemplate = null;
-		useCount = 1;
-		schematicID = 0;
 		groupName = "";
 		
 		Logger.setLoggingName("DraftSchematic");
@@ -128,22 +121,6 @@ class DraftSchematic extends IntangibleObject {
 	public native void sendResourceWeightsTo(CreatureObject player);
 
 	public native SceneObject createManufactureSchematic(SceneObject craftingTool = null);
-	
-	/**
-	 * Setter for the schematic ID
-	 * \param id incoming ID
-	 */
-	public void setSchematicID(unsigned int id) {
-		schematicID = id;
-	}
-	
-	/**
-	 * Setter for the crafting tool tab mask
-	 * \return schematicID
-	 */
-	public unsigned int getSchematicID() {
-		return schematicID;
-	}
 	
 	public void setGroupName(string name) {
 		groupName = name;
@@ -224,21 +201,6 @@ class DraftSchematic extends IntangibleObject {
 	public native string getCustomName();
 	
 	public native unsigned int getTanoCRC();
-
-	public int getUseCount() {
-		return useCount;
-	}
-	
-	public native void setUseCount(int newUseCount);
-	
-	public void decreaseUseCount(int count = 1) {
-		if(useCount != -1)
-			setUseCount(useCount - 1);
-	}
-	
-	public void increaseUseCount(int count) {
-		setUseCount(useCount + count);
-	}
 	
 	public int getTemplateListSize() {
 		return schematicTemplate.getTemplateListSize();
@@ -247,6 +209,4 @@ class DraftSchematic extends IntangibleObject {
 	public string getTemplate(int i) {
 		return schematicTemplate.getTemplate(i);
 	}
-	
-	public native boolean isRewarded();
 }

@@ -53,17 +53,14 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		ManagedReference<DraftSchematic* > schematic = cast<DraftSchematic*>(ghost->getZoneServer()->createObject(schematicData->getTargetDraftSchematic().hashCode(), 1));
+		ManagedReference<DraftSchematic* > schematic = SchematicMap::instance()->get(schematicData->getTargetDraftSchematic().hashCode());
 
 		if (schematic == NULL) {
 			error("Unable to create schematic: " + schematicData->getTargetDraftSchematic());
 			return 0;
 		}
 
-		schematic->setSchematicID(schematicData->getTargetDraftSchematic().hashCode());
-
-		schematic->setUseCount(schematicData->getTargetUseCount());
-		if(ghost->addRewardedSchematic(schematic, true)) {
+		if(ghost->addRewardedSchematic(schematic, schematicData->getTargetUseCount(), true)) {
 
 			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
 			if(tano != NULL)

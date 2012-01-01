@@ -116,10 +116,6 @@ public:
 
 	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
 
-	void setSchematicID(unsigned int id);
-
-	unsigned int getSchematicID();
-
 	void setGroupName(String& name);
 
 	String getGroupName();
@@ -160,19 +156,9 @@ public:
 
 	unsigned int getTanoCRC();
 
-	int getUseCount();
-
-	void setUseCount(int newUseCount);
-
-	void decreaseUseCount(int count = 1);
-
-	void increaseUseCount(int count);
-
 	int getTemplateListSize();
 
 	String getTemplate(int i);
-
-	bool isRewarded();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -207,13 +193,9 @@ namespace objects {
 namespace draftschematic {
 
 class DraftSchematicImplementation : public IntangibleObjectImplementation {
-	unsigned int schematicID;
-
 	String groupName;
 
 	Reference<DraftSchematicObjectTemplate* > schematicTemplate;
-
-	int useCount;
 
 public:
 	DraftSchematicImplementation();
@@ -237,10 +219,6 @@ public:
 	void sendResourceWeightsTo(CreatureObject* player);
 
 	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
-
-	void setSchematicID(unsigned int id);
-
-	unsigned int getSchematicID();
 
 	void setGroupName(String& name);
 
@@ -282,19 +260,9 @@ public:
 
 	unsigned int getTanoCRC();
 
-	int getUseCount();
-
-	void setUseCount(int newUseCount);
-
-	void decreaseUseCount(int count = 1);
-
-	void increaseUseCount(int count);
-
 	int getTemplateListSize();
 
 	String getTemplate(int i);
-
-	bool isRewarded();
 
 	WeakReference<DraftSchematic*> _this;
 
@@ -349,10 +317,6 @@ public:
 
 	SceneObject* createManufactureSchematic(SceneObject* craftingTool);
 
-	void setSchematicID(unsigned int id);
-
-	unsigned int getSchematicID();
-
 	void setGroupName(String& name);
 
 	String getGroupName();
@@ -383,19 +347,9 @@ public:
 
 	unsigned int getTanoCRC();
 
-	int getUseCount();
-
-	void setUseCount(int newUseCount);
-
-	void decreaseUseCount(int count);
-
-	void increaseUseCount(int count);
-
 	int getTemplateListSize();
 
 	String getTemplate(int i);
-
-	bool isRewarded();
 
 protected:
 	String _param0_setGroupName__String_;

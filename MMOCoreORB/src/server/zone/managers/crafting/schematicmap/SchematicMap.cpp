@@ -124,8 +124,8 @@ void SchematicMap::loadDraftSchematicDatabase() {
 
 		if(draftSchematic != NULL) {
 
-			if(!schematicCrcMap.contains(draftSchematic->getSchematicID()))
-				schematicCrcMap.put(draftSchematic->getSchematicID(), draftSchematic);
+			if(!schematicCrcMap.contains(draftSchematic->getClientObjectCRC()))
+				schematicCrcMap.put(draftSchematic->getClientObjectCRC(), draftSchematic);
 
 			count++;
 		}
@@ -172,11 +172,12 @@ void SchematicMap::loadDraftSchematicFile() {
 				error("Could not create schematic with template: " + path);
 				continue;
 			}
+			if(!schematicCrcMap.contains(schematic->getServerObjectCRC()))
+				schematicCrcMap.put(schematic->getServerObjectCRC(), schematic);
 
-			schematic->setSchematicID(servercrc);
+			if(!schematicCrcMap.contains(schematic->getClientObjectCRC()))
+				schematicCrcMap.put(schematic->getClientObjectCRC(), schematic);
 
-			if(!schematicCrcMap.contains(schematic->getSchematicID()))
-				schematicCrcMap.put(schematic->getSchematicID(), schematic);
 		}
 	}
 
@@ -196,7 +197,6 @@ void SchematicMap::buildSchematicGroups() {
 		if(schematic != NULL) {
 
 			schematic->setGroupName(groupName);
-			schematic->setUseCount(-1);
 
 			DraftSchematicGroup* group = groupMap.get(groupName);
 

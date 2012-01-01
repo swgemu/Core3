@@ -391,13 +391,13 @@ void PlayerObject::removeSchematics(Vector<ManagedReference<DraftSchematic* > >&
 		_implementation->removeSchematics(schematics, notifyClient);
 }
 
-bool PlayerObject::addRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {
+bool PlayerObject::addRewardedSchematic(DraftSchematic* schematic, int quantity, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->addRewardedSchematic(schematic, notifyClient);
+		return _implementation->addRewardedSchematic(schematic, quantity, notifyClient);
 }
 
 void PlayerObject::removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {
@@ -407,6 +407,15 @@ void PlayerObject::removeRewardedSchematic(DraftSchematic* schematic, bool notif
 
 	} else
 		_implementation->removeRewardedSchematic(schematic, notifyClient);
+}
+
+void PlayerObject::decreaseSchematicUseCount(DraftSchematic* schematic) {
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->decreaseSchematicUseCount(schematic);
 }
 
 void PlayerObject::setLanguageID(byte language, bool notifyClient) {

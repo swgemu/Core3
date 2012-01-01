@@ -17,37 +17,32 @@ protected:
 
 	/// This vector is for schematics without skills when we need to reload them
 	/// when skills are dropped
-	Vector<ManagedReference<DraftSchematic* > > rewardedSchematics;
+	VectorMap<ManagedReference<DraftSchematic* >, int > rewardedSchematics;
 
 public:
 	SchematicList() {
-
+		rewardedSchematics.setNoDuplicateInsertPlan();
 	}
 
 	SchematicList(const SchematicList& list) : Object(), DeltaVector<ManagedReference<DraftSchematic* > >(list) {
+		rewardedSchematics.setNoDuplicateInsertPlan();
 		rewardedSchematics = list.rewardedSchematics;
 	}
 
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
 
-	bool addRewardedSchematic(DraftSchematic* schematic);
+	bool addRewardedSchematic(DraftSchematic* schematic, int quantity);
 
 	void addRewardedSchematics(SceneObject* player);
 	void removeRewardedSchematic(DraftSchematic* schematic);
-	bool updateUseCount(DraftSchematic* schematic);
+	bool decreaseSchematicUseCount(DraftSchematic* schematic);
 
 	bool contains(DraftSchematic* schematic);
 	bool contains(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic);
 	DraftSchematic* searchForDuplicate(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic);
 
-	/*bool toString(String& str);
-	bool parseFromString(const String& str, int version = 0);*/
-
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
-
-	void getRewardedSchematicList(Vector<ManagedReference<DraftSchematic*> >& schematics);
-	void populateRewardedSchematics(Vector<ManagedReference<DraftSchematic*> >& schematics);
 
 	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(CreatureObject* player, Vector<uint32>* enabledTabs, int complexityLevel);
 

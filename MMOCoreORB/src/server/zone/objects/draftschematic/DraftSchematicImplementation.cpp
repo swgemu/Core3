@@ -65,9 +65,6 @@ void DraftSchematicImplementation::initializeTransientMembers() {
 	setLogging(false);
 
 	setLoggingName("DraftSchematic");
-
-	if(isRewarded() && !groupName.isEmpty())
-		error(schematicTemplate->getCustomObjectName() + " is a rewarded schematic with a group");
 }
 
 void DraftSchematicImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -94,7 +91,7 @@ void DraftSchematicImplementation::sendDraftSlotsTo(CreatureObject* player) {
 
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
 
-	msg->insertInt(schematicID);
+	msg->insertInt(clientObjectCRC);
 	msg->insertInt(clientObjectCRC);
 
 	msg->insertInt(schematicTemplate->getComplexity()); // ex: 3
@@ -126,7 +123,7 @@ void DraftSchematicImplementation::sendResourceWeightsTo(CreatureObject* player)
 
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
 
-	msg->insertInt(schematicID);
+	msg->insertInt(clientObjectCRC);
 	msg->insertInt(clientObjectCRC);
 
 	msg->insertByte(resourceWeights->size());
@@ -227,18 +224,4 @@ String DraftSchematicImplementation::getCustomName() {
 
 uint32 DraftSchematicImplementation::getTanoCRC() {
 	return schematicTemplate->getTanoCRC();
-}
-
-void DraftSchematicImplementation::setUseCount(int newUseCount) {
-	if (useCount == newUseCount)
-		return;
-
-	useCount = newUseCount;
-}
-
-bool DraftSchematicImplementation::isRewarded() {
-	if (useCount > 0 || groupName.isEmpty())
-		return true;
-
-	return false;
 }

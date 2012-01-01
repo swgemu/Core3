@@ -171,7 +171,7 @@ public:
 				/*if (incomingTano->getParent() != NULL)
 					incomingTano->getParent()->removeObject(incomingTano, true);*/
 
-				craftingTool->transferObject(incomingTano, -1, false);
+				craftingTool->transferObject(incomingTano, -1, true);
 
 				incomingTano->sendTo(player, true);
 				incomingTano->sendAttributeListTo(player);

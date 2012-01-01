@@ -386,9 +386,11 @@ public:
 
 	void removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
 
-	bool addRewardedSchematic(DraftSchematic* schematic, bool notifyClient = true);
+	bool addRewardedSchematic(DraftSchematic* schematic, int quantity = 1, bool notifyClient = true);
 
 	void removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient = true);
+
+	void decreaseSchematicUseCount(DraftSchematic* schematic);
 
 	void setLanguageID(byte language, bool notifyClient = true);
 
@@ -982,9 +984,11 @@ public:
 
 	void removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
 
-	bool addRewardedSchematic(DraftSchematic* schematic, bool notifyClient = true);
+	bool addRewardedSchematic(DraftSchematic* schematic, int quantity = 1, bool notifyClient = true);
 
 	void removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient = true);
+
+	void decreaseSchematicUseCount(DraftSchematic* schematic);
 
 	void setLanguageID(byte language, bool notifyClient = true);
 

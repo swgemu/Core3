@@ -263,7 +263,7 @@ void CraftingToolImplementation::sendStart(CreatureObject* player) {
 
 		DraftSchematic* draftSchematic = currentSchematicList.get(i).get();
 
-		ocm->insertInt(draftSchematic->getSchematicID());
+		ocm->insertInt(draftSchematic->getClientObjectCRC());
 		ocm->insertInt(draftSchematic->getClientObjectCRC());
 		ocm->insertInt(draftSchematic->getToolTab()); // this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
 	}
@@ -977,17 +977,13 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player, int cli
 		player->sendMessage(dtano3);
 		// End Dtano3 *****************************************************
 	} else {
-		if(draftSchematic->isRewarded()) {
-			draftSchematic->decreaseUseCount();
 
-			if(draftSchematic->getUseCount() == 0) {
-				PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
-				if(ghost == NULL)
-					return;
+		PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+		if(ghost == NULL)
+			return;
 
-				ghost->removeRewardedSchematic(draftSchematic, true);
-			}
-		}
+		ghost->decreaseSchematicUseCount(draftSchematic);
+
 	}
 
 }

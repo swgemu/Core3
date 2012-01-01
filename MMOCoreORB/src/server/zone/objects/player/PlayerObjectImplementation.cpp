@@ -652,17 +652,17 @@ bool PlayerObjectImplementation::addSchematics(Vector<ManagedReference<DraftSche
 	return true;
 }
 
-bool PlayerObjectImplementation::addRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {
+bool PlayerObjectImplementation::addRewardedSchematic(DraftSchematic* schematic, int quantity, bool notifyClient) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
 	schematics.add(schematic);
-	if(schematicList.addRewardedSchematic(schematic))
+	if(!schematicList.addRewardedSchematic(schematic, quantity))
 		return true;
 
-	if(addSchematics(schematics, true)) {
+	if(addSchematics(schematics, notifyClient)) {
 		CreatureObject* parent = cast<CreatureObject*>(_this->getParent());
 
-		if(parent != NULL) {
+		if(notifyClient && parent != NULL) {
 			schematic->sendDraftSlotsTo(parent);
 			schematic->sendResourceWeightsTo(parent);
 		}
@@ -671,6 +671,10 @@ bool PlayerObjectImplementation::addRewardedSchematic(DraftSchematic* schematic,
 	return false;
 }
 
+/**
+ * For use when manually removing a schematic, like if a quest termination removed a schematic
+ * from a player, not needed when schematics are automatically removed by usecount decreasing
+ */
 void PlayerObjectImplementation::removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
@@ -678,6 +682,16 @@ void PlayerObjectImplementation::removeRewardedSchematic(DraftSchematic* schemat
 	schematicList.removeRewardedSchematic(schematic);
 
 	return removeSchematics(schematics, true);
+}
+
+void PlayerObjectImplementation::decreaseSchematicUseCount(DraftSchematic* schematic) {
+
+	if(schematicList.decreaseSchematicUseCount(schematic)) {
+		Vector<ManagedReference<DraftSchematic*> > schematics;
+
+		schematics.add(schematic);
+		return removeSchematics(schematics, true);
+	}
 }
 
 void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {

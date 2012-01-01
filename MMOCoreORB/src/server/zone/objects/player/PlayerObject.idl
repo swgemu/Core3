@@ -433,10 +433,13 @@ class PlayerObject extends IntangibleObject {
 	public native void removeSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
 	
 	@local
-	public native boolean addRewardedSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	public native boolean addRewardedSchematic(DraftSchematic schematic, int quantity = 1, boolean notifyClient = true);
 	
 	@local
 	public native void removeRewardedSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	
+	@local
+	public native void decreaseSchematicUseCount(DraftSchematic schematic); 
 	
 	//@local
 	//public native void addSchematic(DraftSchematic schematic, boolean notifyClient = true);

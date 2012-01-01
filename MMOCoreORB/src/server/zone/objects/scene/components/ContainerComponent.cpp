@@ -93,7 +93,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	if (objParent != NULL || objZone != NULL) {
 		if (objParent != NULL)
-			objParent->removeObject(object, false);
+			objParent->removeObject(object, notifyClient);
 
 		if (object->getParent() != NULL) {
 			object->error("error removing from from parent");

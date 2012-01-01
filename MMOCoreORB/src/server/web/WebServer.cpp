@@ -390,6 +390,7 @@ bool WebServer::authorize(HttpSession* session) {
 	}
 	else
 		return false;*/
+	return false;
 }
 
 bool WebServer::isLocalHost(String address) {
