@@ -213,6 +213,8 @@ class Zone extends SceneObject {
 	@dirty
 	public native float getMaxY();
 	
+	public native float getBoundingRadius();
+	
 	/**
 	 * Registers the object to the planetary map. This also makes the object visible to the find command.
 	 * @param object The object to register to the planetary map.

@@ -60,7 +60,7 @@ import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.region.CityRegion;
+import server.zone.objects.region.CityRegion;
 include server.zone.managers.planet.RegionMap;
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.MissionTargetMap;
@@ -110,6 +110,8 @@ class PlanetManager extends ManagedService implements Logger {
 	protected transient MissionTargetMap reconLocs;
 	
 	protected transient MissionTargetMap informants;
+	
+	protected CityRegion mainRegion;
 	
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
@@ -272,6 +274,10 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public MissionTargetMap getReconLocs() {
 		return reconLocs;
+	}
+	
+	protected CityRegion getMainRegion() {
+		return mainRegion;
 	}
 	
 	public void addInformant(SceneObject obj) {

@@ -176,7 +176,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	if (radius != -1)
 		zone->transferObject(area, -1, true);
 	else {
-		area->setRadius(zone->getMaxX());
+		area->setRadius(zone->getBoundingRadius());
 
 		worldSpawnAreas.add(area);
 

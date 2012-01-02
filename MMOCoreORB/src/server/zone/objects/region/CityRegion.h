@@ -90,7 +90,7 @@ namespace region {
 
 class CityRegion : public Observer {
 public:
-	CityRegion(const String& name);
+	CityRegion(const String& name, CityRegion* par);
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -107,6 +107,8 @@ public:
 	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
 
 	String getRegionName();
+
+	CityRegion* getParentRegion();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -146,8 +148,10 @@ protected:
 
 	String regionName;
 
+	ManagedWeakReference<CityRegion* > parent;
+
 public:
-	CityRegionImplementation(const String& name);
+	CityRegionImplementation(const String& name, CityRegion* par);
 
 	CityRegionImplementation(DummyConstructorParameter* param);
 
@@ -166,6 +170,8 @@ public:
 	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
 
 	String getRegionName();
+
+	CityRegion* getParentRegion();
 
 	WeakReference<CityRegion*> _this;
 
@@ -221,6 +227,8 @@ public:
 	bool containsPoint(float x, float y);
 
 	String getRegionName();
+
+	CityRegion* getParentRegion();
 
 };
 

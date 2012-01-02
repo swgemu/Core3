@@ -18,10 +18,10 @@
  *	CityRegionStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETREGIONNAME__};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETREGIONNAME__,RPC_GETPARENTREGION__};
 
-CityRegion::CityRegion(const String& name) : Observer(DummyConstructorParameter::instance()) {
-	CityRegionImplementation* _implementation = new CityRegionImplementation(name);
+CityRegion::CityRegion(const String& name, CityRegion* par) : Observer(DummyConstructorParameter::instance()) {
+	CityRegionImplementation* _implementation = new CityRegionImplementation(name, par);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -141,6 +141,19 @@ String CityRegion::getRegionName() {
 		return _return_getRegionName;
 	} else
 		return _implementation->getRegionName();
+}
+
+CityRegion* CityRegion::getParentRegion() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPARENTREGION__);
+
+		return static_cast<CityRegion*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getParentRegion();
 }
 
 DistributedObjectServant* CityRegion::_getImplementation() {
@@ -268,6 +281,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "parent") {
+		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&parent, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -315,16 +333,26 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "parent";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CityRegion* > >::toBinaryStream(&parent, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 4 + ObserverImplementation::writeObjectMembers(stream);
+
+	return 5 + ObserverImplementation::writeObjectMembers(stream);
 }
 
-CityRegionImplementation::CityRegionImplementation(const String& name) {
+CityRegionImplementation::CityRegionImplementation(const String& name, CityRegion* par) {
 	_initializeImplementation();
 	// server/zone/objects/region/CityRegion.idl():  		Logger.setLoggingName("CityRegion " + name);
 	Logger::setLoggingName("CityRegion " + name);
 	// server/zone/objects/region/CityRegion.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
+	// server/zone/objects/region/CityRegion.idl():  		parent = par;
+	parent = par;
 	// server/zone/objects/region/CityRegion.idl():  		regionName = name;
 	regionName = name;
 	// server/zone/objects/region/CityRegion.idl():  		regionObjects.setNoDuplicateInsertPlan();
@@ -371,6 +399,11 @@ String CityRegionImplementation::getRegionName() {
 	return regionName;
 }
 
+CityRegion* CityRegionImplementation::getParentRegion() {
+	// server/zone/objects/region/CityRegion.idl():  		return parent;
+	return parent;
+}
+
 /*
  *	CityRegionAdapter
  */
@@ -399,6 +432,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETREGIONNAME__:
 		resp->insertAscii(getRegionName());
+		break;
+	case RPC_GETPARENTREGION__:
+		resp->insertLong(getParentRegion()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -429,6 +465,10 @@ bool CityRegionAdapter::containsPoint(float x, float y) {
 
 String CityRegionAdapter::getRegionName() {
 	return (static_cast<CityRegion*>(stub))->getRegionName();
+}
+
+CityRegion* CityRegionAdapter::getParentRegion() {
+	return (static_cast<CityRegion*>(stub))->getParentRegion();
 }
 
 /*

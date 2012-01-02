@@ -236,6 +236,8 @@ public:
 
 	float getMaxY();
 
+	float getBoundingRadius();
+
 	void registerObjectWithPlanetaryMap(SceneObject* object);
 
 	void unregisterObjectWithPlanetaryMap(SceneObject* object);
@@ -366,6 +368,8 @@ public:
 
 	float getMaxY();
 
+	float getBoundingRadius();
+
 	void registerObjectWithPlanetaryMap(SceneObject* object);
 
 	void unregisterObjectWithPlanetaryMap(SceneObject* object);
@@ -462,6 +466,8 @@ public:
 	float getMinY();
 
 	float getMaxY();
+
+	float getBoundingRadius();
 
 	void registerObjectWithPlanetaryMap(SceneObject* object);
 

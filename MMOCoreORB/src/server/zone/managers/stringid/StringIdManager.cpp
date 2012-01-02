@@ -81,7 +81,7 @@ void StringIdManager::populateDatabase() {
 
 	delete files;
 
-	info("writing to the db " + String::valueOf(count) + " string files", true);
+	info("writing to the db " + String::valueOf(count) + " strings", true);
 }
 
 StringIdManager::StringIdManager() : Logger("StringIdManager") {

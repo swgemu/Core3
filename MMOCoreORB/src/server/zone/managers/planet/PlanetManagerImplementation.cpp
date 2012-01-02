@@ -45,6 +45,9 @@ void PlanetManagerImplementation::initialize() {
 	reconLocs = new MissionTargetMap();
 	informants = new MissionTargetMap();
 
+	mainRegion = new CityRegion("main", NULL);
+	mainRegion->addActiveArea(zone, 0, 0, zone->getBoundingRadius());
+
 	numberOfCities = 0;
 
 	info("Loading planet.");
@@ -410,7 +413,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 		//If the cityRegion hasn't already been created, then create it.
 		if (cityRegion == NULL) {
-			cityRegion = new CityRegion(regionName);
+			cityRegion = new CityRegion(regionName, mainRegion);
 			cityRegion->deploy();
 
 			cityRegionMap->addRegion(cityRegion);

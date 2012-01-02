@@ -26,6 +26,8 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 /*

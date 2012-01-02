@@ -131,7 +131,19 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
-#include "server/zone/objects/region/CityRegion.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace region {
+
+class CityRegion;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
 
 #include "server/zone/managers/planet/RegionMap.h"
 
@@ -320,6 +332,8 @@ protected:
 
 	Reference<MissionTargetMap* > informants;
 
+	ManagedReference<CityRegion* > mainRegion;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);
 
@@ -407,6 +421,10 @@ public:
 
 	MissionTargetMap* getReconLocs();
 
+protected:
+	CityRegion* getMainRegion();
+
+public:
 	void addInformant(SceneObject* obj);
 
 	MissionTargetMap* getInformants();

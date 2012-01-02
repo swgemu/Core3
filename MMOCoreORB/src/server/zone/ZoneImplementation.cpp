@@ -442,3 +442,7 @@ float ZoneImplementation::getMinY() {
 float ZoneImplementation::getMaxY() {
 	return planetManager->getTerrainManager()->getMax();
 }
+
+float ZoneImplementation::getBoundingRadius() {
+	return planetManager->getTerrainManager()->getMax();
+}

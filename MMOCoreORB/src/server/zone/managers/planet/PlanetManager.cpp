@@ -22,6 +22,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
 /*
  *	PlanetManagerStub
  */
@@ -698,6 +700,11 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "mainRegion") {
+		TypeInfo<ManagedReference<CityRegion* > >::parseFromBinaryStream(&mainRegion, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -777,8 +784,16 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "mainRegion";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CityRegion* > >::toBinaryStream(&mainRegion, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 8 + ManagedServiceImplementation::writeObjectMembers(stream);
+
+	return 9 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
@@ -913,6 +928,11 @@ void PlanetManagerImplementation::addReconLoc(SceneObject* obj) {
 MissionTargetMap* PlanetManagerImplementation::getReconLocs() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return reconLocs;
 	return reconLocs;
+}
+
+CityRegion* PlanetManagerImplementation::getMainRegion() {
+	// server/zone/managers/planet/PlanetManager.idl():  		return mainRegion;
+	return mainRegion;
 }
 
 void PlanetManagerImplementation::addInformant(SceneObject* obj) {

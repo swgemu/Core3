@@ -705,6 +705,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 
 	BuildingObject* tutorial = cast<BuildingObject*>( server->createObject(tut.hashCode(), 1));
 	tutorial->createCellObjects();
+	tutorial->setPublicStructure(true);
 
 	/*int totalCellNumber = tutorial->getTotalCellNumber();
 

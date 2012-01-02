@@ -14,7 +14,7 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	float rad = radius;
 	bool playerOrigin = false;
 
-	if (getZone() != NULL && radius >= getZone()->getMaxX()) {
+	if (getZone() != NULL && radius >= getZone()->getBoundingRadius()) {
 		rad = 64.f;
 
 		playerOrigin = true;

@@ -62,6 +62,10 @@ public:
 	float getMax() {
 		return terrainData.getSize() / 2;
 	}
+
+	float getSize() {
+		return terrainData.getSize();
+	}
 };
 
 

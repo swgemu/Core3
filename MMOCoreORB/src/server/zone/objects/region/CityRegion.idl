@@ -67,10 +67,15 @@ class CityRegion extends Observer implements Logger {
 	protected VectorMap<unsigned long, SceneObject> regionObjects;
 	
 	protected string regionName;
+	
+	@weakReference
+	protected CityRegion parent;
 
-	public CityRegion(final string name) {
+	public CityRegion(final string name, CityRegion par) {
 		Logger.setLoggingName("CityRegion " + name);
 		Logger.setLogging(true);
+		
+		parent = par;
 		
 		regionName = name;
 		
@@ -145,5 +150,9 @@ class CityRegion extends Observer implements Logger {
 	
 	public string getRegionName() {
 		return regionName;
+	}
+	
+	public CityRegion getParentRegion() {
+		return parent;
 	}
 }

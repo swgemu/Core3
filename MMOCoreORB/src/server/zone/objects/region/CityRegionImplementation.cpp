@@ -70,16 +70,29 @@ void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
-	object->setCityRegion(_this);
+	if (parent == NULL && !object->isVendor()) //main region only tracks down vendors for now
+		return;
 
-	if (object->isVendor()) {
-		Locker locker(_this);
+	CityRegion* oldRegion = object->getCityRegion();
 
-		regionObjects.put(object->getObjectID(), object);
+	if ((oldRegion != NULL && oldRegion->getParentRegion() == NULL) || oldRegion == NULL) {
+		if (oldRegion != NULL)
+			oldRegion->notifyExit(object);
+
+		object->setCityRegion(_this);
+
+		if (object->isVendor()) {
+			Locker locker(_this);
+
+			regionObjects.put(object->getObjectID(), object);
+		}
 	}
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
+	if (parent == NULL && !object->isVendor()) //main region only tracks down vendors for now
+		return;
+
 	object->setCityRegion(NULL);
 
 	if (object->isVendor()) {

@@ -89,7 +89,7 @@ import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
-include server.zone.objects.region.CityRegion;
+import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 
 class SceneObject extends QuadTreeEntry implements Logger {
