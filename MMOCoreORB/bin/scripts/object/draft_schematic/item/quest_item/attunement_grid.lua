@@ -64,7 +64,7 @@ object_draft_schematic_item_quest_item_attunement_grid = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"particle_sensor", "spin_alignment_inducer", "momentum_compensator"},
-   ingredientSlotType = {1, 1, 1},
+   ingredientSlotType = {2, 2, 2},
    resourceTypes = {"object/tangible/component/item/quest_item/shared_particle_sensor.iff", "object/tangible/component/item/quest_item/shared_spin_alignment_inducer.iff", "object/tangible/component/item/quest_item/shared_momentum_compensator.iff"},
    resourceQuantities = {1, 1, 1},
    combineTypes = {1, 1, 1},
