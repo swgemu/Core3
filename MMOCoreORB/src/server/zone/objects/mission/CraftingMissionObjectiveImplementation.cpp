@@ -6,63 +6,80 @@
  */
 
 #include "CraftingMissionObjective.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/objects/mission/MissionObject.h"
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/packets/player/PlayMusicMessage.h"
-#include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/managers/mission/MissionManager.h"
-#include "MissionObject.h"
-#include "MissionObserver.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/DamageMap.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	if (inventory == NULL) {
+		return;
+	}
 
-void CraftingMissionObjectiveImplementation::activate() {
-	WaypointObject* waypoint = mission->getWaypointToMission();
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (waypoint == NULL)
-		waypoint = mission->createWaypoint();
+	if (ghost == NULL) {
+		return;
+	}
 
-	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
-	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
-	waypoint->setActive(true);
+	DraftSchematic* schematic = SchematicMap::instance()->get(mission->getTemplateString1().hashCode());
+	if (schematic == NULL) {
+		return;
+	}
 
-	mission->updateMissionLocation();
+	Locker playerLock(player);
+
+	switch (objectiveStatus) {
+	case 0:
+		//Award schematic and resources needed for it.
+		ghost->addRewardedSchematic(schematic, 1, true);
+
+		//Create components for schematic and give them to the player.
+		for (int i = 0; i < schematic->getDraftSlotCount(); i++) {
+			ManagedReference<TangibleObject*> item = cast<TangibleObject*>( player->getZoneServer()->createObject(schematic->getDraftSlot(i)->getResourceType().replaceFirst("/shared_", "/").hashCode(), 2));
+			if (item != NULL) {
+				item->sendTo(player, true);
+				inventory->transferObject(item, -1, true);
+			}
+		}
+
+		updateMissionTarget(player);
+
+		objectiveStatus = PICKEDUPSTATUS;
+		break;
+	case 1:
+		//Check if player has the item.
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+			if (inventory->getContainerObject(i)->getObjectTemplate()->getFullTemplateString() == mission->getTemplateString2()) {
+				//Delete the item.
+				inventory->getContainerObject(i)->destroyObjectFromWorld(true);
+
+				complete();
+
+				objectiveStatus = DELIVEREDSTATUS;
+			}
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void CraftingMissionObjectiveImplementation::abort() {
-}
+	//Remove the schematic.
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-void CraftingMissionObjectiveImplementation::complete() {
-	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
+	if (player != NULL) {
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (player == NULL)
-		return;
+		if (ghost != NULL) {
+			DraftSchematic* schematic = SchematicMap::instance()->get(mission->getTemplateString1().hashCode());
 
-	Locker locker(player);
-
-	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
-	player->sendMessage(pmm);
-
-	int missionReward = mission->getRewardCredits();
-
-	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
-	stringId.setDI(missionReward);
-	player->sendSystemMessage(stringId);
-
-	player->addBankCredits(missionReward, true);
-
-	ZoneServer* zoneServer = player->getZoneServer();
-	MissionManager* missionManager = zoneServer->getMissionManager();
-
-	missionManager->removeMission(mission, player);
-}
-
-int CraftingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType == ObserverEventType::CONVERSE) {
+			if (schematic != NULL) {
+				ghost->removeRewardedSchematic(schematic, true);
+			}
+		}
 	}
 
-	return 1;
+	//Run normal abort for deliver missions.
+	DeliverMissionObjectiveImplementation::abort();
 }

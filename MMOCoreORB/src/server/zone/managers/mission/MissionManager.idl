@@ -70,6 +70,9 @@ class MissionManager extends Observer implements Logger {
 	@dereferenced
 	protected SortedVector<unsigned int> npcObjectTemplatesToSpawn;
 	
+	@dereferenced
+	protected Vector<string> craftingMissionItems;
+	
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
 	
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
@@ -80,9 +83,12 @@ class MissionManager extends Observer implements Logger {
 		loadNpcObjectsToSpawn();
 		
 		missionNpcSpawnMap.loadSpawnPointsFromLua();
+		
+		loadCraftingMissionItems();
 	}
 	
 	public native void loadNpcObjectsToSpawn();
+	public native void loadCraftingMissionItems();
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, CreatureObject player, int counter);
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, CreatureObject player);
@@ -99,13 +105,16 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final int faction);
 	public native boolean randomGenericDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission, final int faction);
 	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeEntertainerMission(CreatureObject player, MissionObject mission);
 	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
 	public native void randomizeReconMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialDeliverMission(CreatureObject player, MissionObject mission);
+	public native void randomizeImperialCraftingMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelDeliverMission(CreatureObject player, MissionObject mission);
+	public native void randomizeRebelCraftingMission(CreatureObject player, MissionObject mission);
 
 	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
 	public native void returnSpawnPoint(NpcSpawnPoint spawnPoint);
@@ -119,6 +128,7 @@ class MissionManager extends Observer implements Logger {
 	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	
 	public native boolean hasSurveyMission(CreatureObject player, final string spawn);
 	

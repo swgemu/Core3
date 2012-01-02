@@ -142,6 +142,8 @@ public:
 
 	void loadNpcObjectsToSpawn();
 
+	void loadCraftingMissionItems();
+
 	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player);
@@ -166,6 +168,8 @@ public:
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
@@ -176,9 +180,13 @@ public:
 
 	void randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission);
+
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
+
+	void randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission);
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
@@ -201,6 +209,8 @@ public:
 	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
+
+	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 
@@ -248,6 +258,8 @@ protected:
 
 	SortedVector<unsigned int> npcObjectTemplatesToSpawn;
 
+	Vector<String> craftingMissionItems;
+
 public:
 	unsigned static const int UNKNOWN_TARGET = 0xB911DA26;
 
@@ -256,6 +268,8 @@ public:
 	MissionManagerImplementation(DummyConstructorParameter* param);
 
 	void loadNpcObjectsToSpawn();
+
+	void loadCraftingMissionItems();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
@@ -281,6 +295,8 @@ public:
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
@@ -291,9 +307,13 @@ public:
 
 	void randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission);
+
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
+
+	void randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission);
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
@@ -316,6 +336,8 @@ public:
 	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
+
+	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 
@@ -370,6 +392,8 @@ public:
 
 	void loadNpcObjectsToSpawn();
 
+	void loadCraftingMissionItems();
+
 	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player);
@@ -394,6 +418,8 @@ public:
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
@@ -404,9 +430,13 @@ public:
 
 	void randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission);
+
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
+
+	void randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission);
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
@@ -429,6 +459,8 @@ public:
 	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
+
+	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 

@@ -227,19 +227,19 @@ public:
 
 	int getObjectiveStatus();
 
-	void activate();
+	virtual void activate();
 
 	bool activateWithResult();
 
-	void abort();
+	virtual void abort();
 
-	void complete();
+	virtual void complete();
 
 	void despawnNpcs();
 
-	void updateMissionStatus(CreatureObject* player);
+	virtual void updateMissionStatus(CreatureObject* player);
 
-	bool updateMissionTarget(CreatureObject* player);
+	virtual bool updateMissionTarget(CreatureObject* player);
 
 	NpcSpawnPoint* getTargetSpawnPoint();
 

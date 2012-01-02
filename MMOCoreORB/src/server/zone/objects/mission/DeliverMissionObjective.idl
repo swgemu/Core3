@@ -98,10 +98,10 @@ class DeliverMissionObjective extends MissionObjective {
 		return objectiveStatus;
 	}
 	
-	public native void activate();
+	public abstract native void activate();
 	public native boolean activateWithResult();
-	public native void abort();
-	public native void complete();
+	public abstract native void abort();
+	public abstract native void complete();
 	
 	public void despawnNpcs() {
 		if (target != null) {
@@ -112,9 +112,9 @@ class DeliverMissionObjective extends MissionObjective {
 		}
 	}
 	
-	public native void updateMissionStatus(CreatureObject player);
+	public abstract native void updateMissionStatus(CreatureObject player);
 	
-	public native boolean updateMissionTarget(CreatureObject player);
+	public abstract native boolean updateMissionTarget(CreatureObject player);
 	
 	public NpcSpawnPoint getTargetSpawnPoint() {
 		return targetSpawnPoint;

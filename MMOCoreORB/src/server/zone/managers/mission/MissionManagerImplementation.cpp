@@ -12,6 +12,7 @@
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "server/zone/objects/mission/CraftingMissionObjective.h"
 #include "server/zone/objects/mission/EntertainerMissionObjective.h"
 #include "server/zone/objects/mission/HuntingMissionObjective.h"
 #include "server/zone/objects/mission/ReconMissionObjective.h"
@@ -53,6 +54,24 @@ void MissionManagerImplementation::loadNpcObjectsToSpawn() {
 	}
 }
 
+void MissionManagerImplementation::loadCraftingMissionItems() {
+	try {
+		Lua* lua = new Lua();
+		lua->init();
+
+		lua->runFile("scripts/managers/mission_manager.lua");
+
+		LuaObject items = lua->getGlobalObject("crafting_mission_items");
+
+		for (int i = 1; i <= items.getTableSize(); i++) {
+			craftingMissionItems.add(items.getStringAt(i));
+		}
+	}
+	catch (Exception& e) {
+		info(e.getMessage(), true);
+	}
+}
+
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
 	// newbie and statue terminals don't exist, but their templates do
 	if (missionTerminal->isStatueTerminal() || missionTerminal->isNewbieTerminal()) {
@@ -65,7 +84,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	if (missionBag == NULL)
 		return;
 
-	while (missionBag->getContainerObjectsSize() < 12) {
+	while (missionBag->getContainerObjectsSize() < 18) {
 		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission
 		missionBag->transferObject(mission, -1, false);
 		mission->sendTo(player, true);
@@ -164,6 +183,46 @@ void MissionManagerImplementation::createDeliverMissionObjectives(MissionObject*
 	objective->activate();
 }
 
+void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
+	//Check if player already got an crafting mission and what item it uses.
+	SceneObject* datapad = player->getSlottedObject("datapad");
+
+	if (datapad == NULL) {
+		return;
+	}
+
+	int datapadSize = datapad->getContainerObjectsSize();
+	String missionItem = "";
+
+	for (int i = 0; i < datapadSize; ++i) {
+		if (datapad->getContainerObject(i)->isMissionObject()) {
+			MissionObject* datapadMission = cast<MissionObject*>(datapad->getContainerObject(i));
+
+			if (datapadMission != NULL && datapadMission->getTypeCRC() == MissionObject::CRAFTING && datapadMission != mission) {
+				//Crafting mission found, store the item.
+				missionItem = datapadMission->getTemplateString1();
+			}
+		}
+	}
+
+	//Pick a random item for the new mission.
+	int itemNumber = System::random(craftingMissionItems.size() - 1);
+
+	//Get next item in line if the player already got a mission with the random generated item.
+	if (craftingMissionItems.get(itemNumber) == missionItem) {
+		itemNumber = (itemNumber + 1) % craftingMissionItems.size();
+	}
+
+	mission->setTemplateStrings(craftingMissionItems.get(itemNumber), craftingMissionItems.get(itemNumber).replaceFirst("draft_schematic/item/", "tangible/mission/"));
+
+	ManagedReference<CraftingMissionObjective*> objective = new CraftingMissionObjective(mission);
+
+	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
+
+	mission->setMissionObjective(objective);
+	objective->activate();
+}
+
 void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<SurveyMissionObjective*> objective = new SurveyMissionObjective(mission);
 	objective->setEfficiency(mission->getDifficultyLevel());
@@ -248,6 +307,9 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 	case MissionObject::BOUNTY:
 		createBountyMissionObjectives(mission, missionTerminal, player);
 		break;
+	case MissionObject::CRAFTING:
+		createCraftingMissionObjectives(mission, missionTerminal, player);
+		break;
 	default:
 		break;
 	}
@@ -285,24 +347,28 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 
 		// TODO: make mission distribution function more like live
 		if (missionTerminal->isGeneralTerminal()) {
-			if (i < bagSize / 2) {
+			if (i < bagSize / 3) {
 				randomizeDestroyMission(player, mission);
 				if (missionTerminal->isSlicer(player))
 					mission->setRewardCredits(mission->getRewardCredits() * 2);
-			} else {
+			} else if (i < (bagSize * 2 / 3)) {
 				randomizeDeliverMission(player, mission);
 				if (missionTerminal->isSlicer(player))
 					mission->setRewardCredits(mission->getRewardCredits() * 2);
+			} else {
+				mission->setTypeCRC(0);
 			}
 		} else if (missionTerminal->isArtisanTerminal()) {
-			if (i < bagSize / 2) {
+			if (i < bagSize / 3) {
 				randomizeSurveyMission(player, mission);
 				if (missionTerminal->isSlicer(player))
 					mission->setRewardCredits(mission->getRewardCredits() * 2);
-			} else {
+			} else  if (i < (bagSize * 2 / 3)) {
 				randomizeCraftingMission(player, mission);
 				if (missionTerminal->isSlicer(player))
 					mission->setRewardCredits(mission->getRewardCredits() * 2);
+			} else {
+				mission->setTypeCRC(0);
 			}
 		} else if (missionTerminal->isEntertainerTerminal()) {
 			// TODO: implement entertainer missions after entertainer is implemented
@@ -313,30 +379,41 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				mission->setTypeCRC(MissionObject::DANCER);*/
 			mission->setTypeCRC(0); // missions won't show on terminals
 		} else if (missionTerminal->isImperialTerminal()) {
-			if (i < bagSize / 2)
+			if (i < bagSize / 3) {
 				randomizeImperialDestroyMission(player, mission);
-			else
+			} else if (i < (bagSize * 2 / 3)) {
 				randomizeImperialDeliverMission(player, mission);
+			} else {
+				randomizeImperialCraftingMission(player, mission);
+			}
 		} else if (missionTerminal->isRebelTerminal()) {
-			if (i < bagSize / 2)
+			if (i < bagSize / 3) {
 				randomizeRebelDestroyMission(player, mission);
-			else
+			} else if (i < (bagSize * 2 / 3)) {
 				randomizeRebelDeliverMission(player, mission);
+			} else {
+				randomizeRebelCraftingMission(player, mission);
+			}
 		} else if (missionTerminal->isScoutTerminal()) {
-			if (i < bagSize / 2)
+			if (i < bagSize / 3) {
 				randomizeReconMission(player, mission);
-			else
+			} else if (i < (bagSize * 2 / 3)) {
 				randomizeHuntingMission(player, mission);
+			} else {
+				mission->setTypeCRC(0);
+			}
 		} else if (missionTerminal->isBountyTerminal()) {
-			if (i < bagSize / 2) {
+			if (i < bagSize / 3) {
 				randomizeBountyMission(player, mission);
+			} else {
+				mission->setTypeCRC(0);
 			}
 		}
 
 		mission->setRefreshCounter(counter, true);
 	}
 
-	// Remove the Slicer from the List. They have recived their one time mission reward increase.
+	// Remove the Slicer from the List. They have received their one time mission reward increase.
 	if (missionTerminal->isSlicer(player))
 		missionTerminal->removeSlicer(player);
 
@@ -694,22 +771,42 @@ void MissionManagerImplementation::returnSpawnPoint(NpcSpawnPoint* spawnPoint) {
 	if (spawnPoint != NULL) {
 		//Lock spawn map before changing the spawn point parameters.
 		Locker missionSpawnLocker(&missionNpcSpawnMap);
-		spawnPoint->setInUse(true);
+		spawnPoint->setInUse(false);
 	}
 }
 
 void MissionManagerImplementation::randomizeCraftingMission(CreatureObject* player, MissionObject* mission) {
-	// TODO: add crafting logic (don't just overload destroy)
-	/*
-	 * get random low level trash schematic
-	 * give player components and schematic
-	 * get random NPC like deliver mission
-	 * add waypoint
-	 * onConversation() --
-	 *   check for completed item, success if there
-	 */
-	//mission->setTypeCRC(MissionObject::CRAFTING);
-	mission->setTypeCRC(0);
+	randomizeGenericCraftingMission(player, mission, MissionObject::FACTIONNEUTRAL);
+}
+
+void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction) {
+	//Create a random neutral delivery mission that can be modified.
+	randomizeGenericDeliverMission(player, mission, faction);
+
+	//Modify the delivery mission to be a crafting mission.
+	int maximumMissionNumber;
+	String fileName = "";
+
+	switch (faction) {
+	case MissionObject::FACTIONIMPERIAL:
+		maximumMissionNumber = 34;
+		fileName = "mission/mission_npc_crafting_imperial_easy";
+		break;
+	case MissionObject::FACTIONREBEL:
+		maximumMissionNumber = 34;
+		fileName = "mission/mission_npc_crafting_rebel_easy";
+		break;
+	default:
+		maximumMissionNumber = 49;
+		fileName = "mission/mission_npc_crafting_neutral_easy";
+		break;
+	}
+
+	int missionNumber = System::random(maximumMissionNumber) + 1;
+	mission->setMissionTitle(fileName, "m" + String::valueOf(missionNumber) + "t");
+	mission->setMissionDescription(fileName, "m" + String::valueOf(missionNumber) + "d");
+
+	mission->setTypeCRC(MissionObject::CRAFTING);
 }
 
 void MissionManagerImplementation::randomizeEntertainerMission(CreatureObject* player, MissionObject* mission) {
@@ -852,6 +949,10 @@ void MissionManagerImplementation::randomizeImperialDeliverMission(CreatureObjec
 	randomizeGenericDeliverMission(player, mission, MissionObject::FACTIONIMPERIAL);
 }
 
+void MissionManagerImplementation::randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericCraftingMission(player, mission, MissionObject::FACTIONIMPERIAL);
+}
+
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
 	randomizeDestroyMission(player, mission);
@@ -859,6 +960,10 @@ void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* 
 
 void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
 	randomizeGenericDeliverMission(player, mission, MissionObject::FACTIONREBEL);
+}
+
+void MissionManagerImplementation::randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericCraftingMission(player, mission, MissionObject::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, const String& spawnTypes) {

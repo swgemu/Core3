@@ -211,6 +211,8 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	StringId itemName;
 
+	Locker lock(player);
+
 	switch (objectiveStatus) {
 	case 0:
 		itemEntry << "l";

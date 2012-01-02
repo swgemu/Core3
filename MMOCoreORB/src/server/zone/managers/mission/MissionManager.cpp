@@ -24,7 +24,7 @@
  *	MissionManagerStub
  */
 
-enum {RPC_LOADNPCOBJECTSTOSPAWN__ = 6,RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_HANDLEMISSIONACCEPT__MISSIONTERMINAL_MISSIONOBJECT_CREATUREOBJECT_,RPC_HANDLEMISSIONABORT__MISSIONOBJECT_CREATUREOBJECT_,RPC_REMOVEMISSION__MISSIONOBJECT_CREATUREOBJECT_,RPC_POPULATEMISSIONLIST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_RANDOMIZESURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_BOOL_INT_,RPC_RANDOMIZECRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEENTERTAINERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZERECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_GETRANDOMFREENPCSPAWNPOINT__INT_FLOAT_FLOAT_INT_,RPC_RETURNSPAWNPOINT__NPCSPAWNPOINT_,RPC_CREATESPAWNPOINT__CREATUREOBJECT_STRING_,RPC_CREATEMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATESURVEYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDESTROYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDELIVERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEENTERTAINERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEHUNTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATERECONMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_HASSURVEYMISSION__CREATUREOBJECT_STRING_,RPC_GETDELIVERYMISSIONFILENAME__INT_,RPC_GETDELIVERMISSIONNUMBEROFMISSIONS__INT_,RPC_GETDELIVERMISSIONSPAWNTYPE__INT_};
+enum {RPC_LOADNPCOBJECTSTOSPAWN__ = 6,RPC_LOADCRAFTINGMISSIONITEMS__,RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_HANDLEMISSIONACCEPT__MISSIONTERMINAL_MISSIONOBJECT_CREATUREOBJECT_,RPC_HANDLEMISSIONABORT__MISSIONOBJECT_CREATUREOBJECT_,RPC_REMOVEMISSION__MISSIONOBJECT_CREATUREOBJECT_,RPC_POPULATEMISSIONLIST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_RANDOMIZESURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_BOOL_INT_,RPC_RANDOMIZECRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEGENERICCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEENTERTAINERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZERECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_GETRANDOMFREENPCSPAWNPOINT__INT_FLOAT_FLOAT_INT_,RPC_RETURNSPAWNPOINT__NPCSPAWNPOINT_,RPC_CREATESPAWNPOINT__CREATUREOBJECT_STRING_,RPC_CREATEMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATESURVEYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDESTROYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDELIVERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEENTERTAINERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEHUNTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATERECONMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATECRAFTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_HASSURVEYMISSION__CREATUREOBJECT_STRING_,RPC_GETDELIVERYMISSIONFILENAME__INT_,RPC_GETDELIVERMISSIONNUMBEROFMISSIONS__INT_,RPC_GETDELIVERMISSIONSPAWNTYPE__INT_};
 
 MissionManager::MissionManager(ZoneServer* srv, ZoneProcessServer* impl) : Observer(DummyConstructorParameter::instance()) {
 	MissionManagerImplementation* _implementation = new MissionManagerImplementation(srv, impl);
@@ -51,6 +51,19 @@ void MissionManager::loadNpcObjectsToSpawn() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->loadNpcObjectsToSpawn();
+}
+
+void MissionManager::loadCraftingMissionItems() {
+	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LOADCRAFTINGMISSIONITEMS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->loadCraftingMissionItems();
 }
 
 void MissionManager::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
@@ -239,6 +252,22 @@ void MissionManager::randomizeCraftingMission(CreatureObject* player, MissionObj
 		_implementation->randomizeCraftingMission(player, mission);
 }
 
+void MissionManager::randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction) {
+	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RANDOMIZEGENERICCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+		method.addSignedIntParameter(faction);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->randomizeGenericCraftingMission(player, mission, faction);
+}
+
 void MissionManager::randomizeEntertainerMission(CreatureObject* player, MissionObject* mission) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -314,6 +343,21 @@ void MissionManager::randomizeImperialDeliverMission(CreatureObject* player, Mis
 		_implementation->randomizeImperialDeliverMission(player, mission);
 }
 
+void MissionManager::randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission) {
+	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RANDOMIZEIMPERIALCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->randomizeImperialCraftingMission(player, mission);
+}
+
 void MissionManager::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -342,6 +386,21 @@ void MissionManager::randomizeRebelDeliverMission(CreatureObject* player, Missio
 		method.executeWithVoidReturn();
 	} else
 		_implementation->randomizeRebelDeliverMission(player, mission);
+}
+
+void MissionManager::randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission) {
+	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RANDOMIZEREBELCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->randomizeRebelCraftingMission(player, mission);
 }
 
 NpcSpawnPoint* MissionManager::getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
@@ -516,6 +575,22 @@ void MissionManager::createBountyMissionObjectives(MissionObject* mission, Missi
 		method.executeWithVoidReturn();
 	} else
 		_implementation->createBountyMissionObjectives(mission, missionTerminal, player);
+}
+
+void MissionManager::createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
+	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECRAFTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_);
+		method.addObjectParameter(mission);
+		method.addObjectParameter(missionTerminal);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createCraftingMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManager::hasSurveyMission(CreatureObject* player, const String& spawn) {
@@ -696,6 +771,11 @@ bool MissionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "craftingMissionItems") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&craftingMissionItems, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -735,8 +815,16 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "craftingMissionItems";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&craftingMissionItems, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 3 + ObserverImplementation::writeObjectMembers(stream);
+
+	return 4 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServer* impl) {
@@ -751,6 +839,8 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, Zone
 	loadNpcObjectsToSpawn();
 	// server/zone/managers/mission/MissionManager.idl():  		missionNpcSpawnMap.loadSpawnPointsFromLua();
 	(&missionNpcSpawnMap)->loadSpawnPointsFromLua();
+	// server/zone/managers/mission/MissionManager.idl():  		loadCraftingMissionItems();
+	loadCraftingMissionItems();
 }
 
 /*
@@ -766,6 +856,9 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	switch (methid) {
 	case RPC_LOADNPCOBJECTSTOSPAWN__:
 		loadNpcObjectsToSpawn();
+		break;
+	case RPC_LOADCRAFTINGMISSIONITEMS__:
+		loadCraftingMissionItems();
 		break;
 	case RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_CREATUREOBJECT_INT_:
 		handleMissionListRequest(static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
@@ -803,6 +896,9 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_RANDOMIZECRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_:
 		randomizeCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_RANDOMIZEGENERICCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
+		randomizeGenericCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		break;
 	case RPC_RANDOMIZEENTERTAINERMISSION__CREATUREOBJECT_MISSIONOBJECT_:
 		randomizeEntertainerMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
 		break;
@@ -818,11 +914,17 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_RANDOMIZEIMPERIALDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_:
 		randomizeImperialDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_RANDOMIZEIMPERIALCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_:
+		randomizeImperialCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_RANDOMIZEREBELDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_:
 		randomizeRebelDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_RANDOMIZEREBELDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_:
 		randomizeRebelDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_RANDOMIZEREBELCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_:
+		randomizeRebelCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETRANDOMFREENPCSPAWNPOINT__INT_FLOAT_FLOAT_INT_:
 		resp->insertLong(getRandomFreeNpcSpawnPoint(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
@@ -857,6 +959,9 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
 		createBountyMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_CREATECRAFTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
+		createCraftingMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_HASSURVEYMISSION__CREATUREOBJECT_STRING_:
 		resp->insertBoolean(hasSurveyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_hasSurveyMission__CreatureObject_String_)));
 		break;
@@ -878,6 +983,10 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void MissionManagerAdapter::loadNpcObjectsToSpawn() {
 	(static_cast<MissionManager*>(stub))->loadNpcObjectsToSpawn();
+}
+
+void MissionManagerAdapter::loadCraftingMissionItems() {
+	(static_cast<MissionManager*>(stub))->loadCraftingMissionItems();
 }
 
 void MissionManagerAdapter::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
@@ -928,6 +1037,10 @@ void MissionManagerAdapter::randomizeCraftingMission(CreatureObject* player, Mis
 	(static_cast<MissionManager*>(stub))->randomizeCraftingMission(player, mission);
 }
 
+void MissionManagerAdapter::randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction) {
+	(static_cast<MissionManager*>(stub))->randomizeGenericCraftingMission(player, mission, faction);
+}
+
 void MissionManagerAdapter::randomizeEntertainerMission(CreatureObject* player, MissionObject* mission) {
 	(static_cast<MissionManager*>(stub))->randomizeEntertainerMission(player, mission);
 }
@@ -948,12 +1061,20 @@ void MissionManagerAdapter::randomizeImperialDeliverMission(CreatureObject* play
 	(static_cast<MissionManager*>(stub))->randomizeImperialDeliverMission(player, mission);
 }
 
+void MissionManagerAdapter::randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission) {
+	(static_cast<MissionManager*>(stub))->randomizeImperialCraftingMission(player, mission);
+}
+
 void MissionManagerAdapter::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	(static_cast<MissionManager*>(stub))->randomizeRebelDestroyMission(player, mission);
 }
 
 void MissionManagerAdapter::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
 	(static_cast<MissionManager*>(stub))->randomizeRebelDeliverMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission) {
+	(static_cast<MissionManager*>(stub))->randomizeRebelCraftingMission(player, mission);
 }
 
 NpcSpawnPoint* MissionManagerAdapter::getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
@@ -998,6 +1119,10 @@ void MissionManagerAdapter::createReconMissionObjectives(MissionObject* mission,
 
 void MissionManagerAdapter::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	(static_cast<MissionManager*>(stub))->createBountyMissionObjectives(mission, missionTerminal, player);
+}
+
+void MissionManagerAdapter::createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
+	(static_cast<MissionManager*>(stub))->createCraftingMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManagerAdapter::hasSurveyMission(CreatureObject* player, const String& spawn) {

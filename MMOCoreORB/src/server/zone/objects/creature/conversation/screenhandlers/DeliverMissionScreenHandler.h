@@ -67,6 +67,10 @@ protected:
 
 	bool isSameSpawnPoint(const float& positionX, const float& positionY, const Vector3& comparisonPosition);
 
+	void performPickupConversation(ConversationScreen* conversationScreen, MissionObject* mission);
+
+	void performDeliverConversation(ConversationScreen* conversationScreen, MissionObject* mission);
+
 public:
 	static const String STARTSCREENHANDLERID;
 

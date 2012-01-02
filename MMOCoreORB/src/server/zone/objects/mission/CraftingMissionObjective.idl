@@ -44,17 +44,9 @@ which carries forward this exception.
 
 package server.zone.objects.mission;
 
-import engine.util.Observer;
-import engine.util.Observable;
-import server.zone.objects.mission.MissionObject;
-import server.zone.objects.mission.MissionObjective;
-import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.area.MissionSpawnActiveArea;
-import server.zone.objects.scene.SceneObject;
-include server.zone.templates.TemplateReference;
-import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.mission.DeliverMissionObjective;
 
-class CraftingMissionObjective extends MissionObjective {
+class CraftingMissionObjective extends DeliverMissionObjective {
 	public CraftingMissionObjective(MissionObject mission) {
 		super(mission);
 		
@@ -71,9 +63,6 @@ class CraftingMissionObjective extends MissionObjective {
 		Logger.setLoggingName("MissionObject");
 	}
 	
-	public native void activate();
-	public native void abort();
-	public native void complete();
-	
-	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	public abstract native void updateMissionStatus(CreatureObject player);
+	public abstract native void abort();
 }

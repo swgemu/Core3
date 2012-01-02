@@ -11,100 +11,22 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace mission {
-
-class MissionObject;
-
-} // namespace mission
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::mission;
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace mission {
 
-class MissionObserver;
-
-} // namespace mission
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::mission;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace area {
-
-class MissionSpawnActiveArea;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace templates {
-
-class SharedObjectTemplate;
-
-} // namespace templates
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::templates;
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "engine/util/Observer.h"
-
-#include "engine/util/Observable.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace mission {
-
-class CraftingMissionObjective : public MissionObjective {
+class CraftingMissionObjective : public DeliverMissionObjective {
 public:
 	CraftingMissionObjective(MissionObject* mission);
 
 	void initializeTransientMembers();
 
-	void activate();
+	void updateMissionStatus(CreatureObject* player);
 
 	void abort();
-
-	void complete();
-
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -130,7 +52,7 @@ namespace zone {
 namespace objects {
 namespace mission {
 
-class CraftingMissionObjectiveImplementation : public MissionObjectiveImplementation {
+class CraftingMissionObjectiveImplementation : public DeliverMissionObjectiveImplementation {
 
 public:
 	CraftingMissionObjectiveImplementation(MissionObject* mission);
@@ -141,13 +63,9 @@ public:
 
 	void initializeTransientMembers();
 
-	void activate();
+	virtual void updateMissionStatus(CreatureObject* player);
 
-	void abort();
-
-	void complete();
-
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+	virtual void abort();
 
 	WeakReference<CraftingMissionObjective*> _this;
 
@@ -184,7 +102,7 @@ protected:
 	friend class CraftingMissionObjective;
 };
 
-class CraftingMissionObjectiveAdapter : public MissionObjectiveAdapter {
+class CraftingMissionObjectiveAdapter : public DeliverMissionObjectiveAdapter {
 public:
 	CraftingMissionObjectiveAdapter(CraftingMissionObjective* impl);
 
@@ -194,13 +112,9 @@ public:
 
 	void initializeTransientMembers();
 
-	void activate();
+	void updateMissionStatus(CreatureObject* player);
 
 	void abort();
-
-	void complete();
-
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 };
 
