@@ -4,6 +4,10 @@
 
 #include "CraftingMissionObjective.h"
 
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	CraftingMissionObjectiveStub
  */

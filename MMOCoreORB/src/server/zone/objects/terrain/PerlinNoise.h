@@ -29,7 +29,7 @@ class PerlinNoise {
 
 	int start;
 
-	Random* rand;
+	trn::ptat::Random* rand;
 
 #define s_curve(t) ( t * t * (3. - 2. * t) )
 
@@ -43,7 +43,7 @@ class PerlinNoise {
 		r1 = r0 - 1.;
 
 public:
-	PerlinNoise(Random* r) {
+	PerlinNoise(trn::ptat::Random* r) {
 		start = 1;
 		rand = r;
 	}

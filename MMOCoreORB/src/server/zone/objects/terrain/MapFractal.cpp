@@ -10,9 +10,13 @@
 
 double MapFractal::log05 = log(0.5);
 
+using namespace trn::ptat;
+
 MapFractal::MapFractal() {
 	noise = NULL;
 	rand = NULL;
+
+	unkown = false;
 }
 
 float MapFractal::getNoise(float x, float y, int i, int j) {
@@ -142,7 +146,7 @@ double MapFractal::calculateCombination1(float v39, float v41) {
 		v47 = v47 * amplitude; // + 28 amplitude
 	}
 
-	if (false) // v6 + 52 initialized to 0
+	if (unkown) // v6 + 52 initialized to 0
 		v33 = sin(v33 + v39);
 
 	result = (v33 * offset32 + 1.0) * 0.5; //  v6 + 32 initialized to 1.0
@@ -168,7 +172,7 @@ double MapFractal::calculateCombination2(float v39, float v41) {
 		v47 = v47 * amplitude; // + 28 amplitude
 	}
 
-	if (false) //v6 + 52 initialized to 0
+	if (unkown) //v6 + 52 initialized to 0
 		v34 = sin(v34 + v39);
 
 	result = v34 * offset32; //
@@ -195,7 +199,7 @@ double MapFractal::calculateCombination3(float v39, float v41) {
 		v47 = v47 * amplitude;  // + 28 amplitude
 	}
 
-	if (false) //v6 + 52 initialized to 0
+	if (unkown) //v6 + 52 initialized to 0
 		v34 = sin(v34 + v39);
 
 	result = v34 * offset32; //
@@ -231,7 +235,7 @@ double MapFractal::calculateCombination4(float v39, float v41) {
 		v47 = v47 * amplitude; // + 28 amplitude
 	}
 
-	if (false) //v6 + 52 initialized to 0
+	if (unkown) //v6 + 52 initialized to 0
 		v34 = sin(v34 + v39);
 
 	result = v34 * offset32; //
@@ -268,7 +272,7 @@ double MapFractal::calculateCombination5(float v39, float v41) {
 		v47 = v47 * amplitude; // v6 + 28 amplitude
 	}
 
-	if (false) //v6 + 52 initialized to 0
+	if (unkown) //v6 + 52 initialized to 0
 		v34 = sin(v34 + v39);
 
 	result = v34 * offset32; //

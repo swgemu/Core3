@@ -14,7 +14,7 @@
 
 class MapFractal : public TemplateVariable<'MFRC'> {
 	PerlinNoise* noise;
-	Random* rand;
+	trn::ptat::Random* rand;
 
 	int bias;
 	float biasValue;
@@ -28,6 +28,8 @@ class MapFractal : public TemplateVariable<'MFRC'> {
 	float xOffset;
 	float zOffset;
 	int combination;
+
+	bool unkown;
 
 	static double log05;
 

@@ -45,6 +45,8 @@ which carries forward this exception.
 package server.zone.objects.mission;
 
 import server.zone.objects.mission.DeliverMissionObjective;
+import server.zone.objects.mission.MissionObject;
+import server.zone.objects.creature.CreatureObject;
 
 class CraftingMissionObjective extends DeliverMissionObjective {
 	public CraftingMissionObjective(MissionObject mission) {

@@ -66,9 +66,13 @@ void MissionManagerImplementation::loadCraftingMissionItems() {
 		for (int i = 1; i <= items.getTableSize(); i++) {
 			craftingMissionItems.add(items.getStringAt(i));
 		}
+
+		items.pop();
+
+		delete lua;
 	}
 	catch (Exception& e) {
-		info(e.getMessage(), true);
+		error(e.getMessage());
 	}
 }
 

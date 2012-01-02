@@ -8,6 +8,9 @@
 #ifndef RANDOM_H_
 #define RANDOM_H_
 
+namespace trn {
+namespace ptat {
+
 class Random {
 	int seed;
 	int unknown;
@@ -71,5 +74,8 @@ public:
 		return unknown;
 	}
 };
+
+}
+}
 
 #endif /* RANDOM_H_ */
