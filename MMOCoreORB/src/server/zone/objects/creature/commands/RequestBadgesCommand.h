@@ -71,9 +71,6 @@ public:
 		if (!object->isPlayerCreature())
 			return GENERALERROR;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
 		CreatureObject* playerCreature = cast<CreatureObject*>( object.get());
 
 		PlayerObject* playerObject = dynamic_cast<PlayerObject*>(playerCreature->getSlottedObject("ghost"));

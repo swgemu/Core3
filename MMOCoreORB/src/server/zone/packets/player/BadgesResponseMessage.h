@@ -59,7 +59,9 @@ public:
 		insertLong(player->getObjectID()); //Player ID
 
 		//TODO: Ensure that number of bitmasks doesn't exceed the highest idx settable in the badgeMap.
-		insertInt(0x05); //Number of bitmasks to send
+		//insertInt(0x05); //Number of bitmasks to send
+
+		insertInt(0x0F); // from docs seems like if its not 0x0F badges dont show in the client
 
 		setCompression(true);
 
@@ -68,7 +70,6 @@ public:
 			insertInt(badges->getBitmask(i));
 		}
 
-		/*insertInt(0);
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
@@ -78,7 +79,8 @@ public:
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
-		insertInt(0);*/
+		insertInt(0);
+		insertInt(0);
 	}
 
 };
