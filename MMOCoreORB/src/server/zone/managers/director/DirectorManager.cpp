@@ -20,6 +20,7 @@
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"
 #include "server/zone/templates/mobile/LuaConversationScreen.h"
+#include "server/zone/templates/mobile/LuaConversationTemplate.h"
 #include "server/zone/objects/player/sessions/LuaConversationSession.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
@@ -85,6 +86,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSceneObject>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationScreen>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationSession>::Register(luaEngine->getLuaState());
+	Luna<LuaConversationTemplate>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");

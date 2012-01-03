@@ -533,6 +533,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/string/StringFile.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
+		server/zone/templates/mobile/LuaConversationTemplate.cpp \
 		server/zone/templates/datatables/DataTableIff.cpp \
 		server/zone/templates/datatables/DataTableCell.cpp \
 		server/zone/templates/snapshot/WorldSnapshotIff.cpp \

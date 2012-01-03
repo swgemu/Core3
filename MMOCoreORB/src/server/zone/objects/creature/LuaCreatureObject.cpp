@@ -8,6 +8,7 @@
 #include "LuaCreatureObject.h"
 #include "CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/player/sessions/ConversationSession.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -45,6 +46,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setCustomObjectName", &LuaCreatureObject::setCustomObjectName},
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
 		{ "removeSkill", &LuaCreatureObject::removeSkill},
+		{ "getConversationSession", &LuaCreatureObject::getConversationSession},
 		{ 0, 0 }
 };
 
@@ -261,4 +263,12 @@ int LuaCreatureObject::getBankCredits(lua_State *L) {
 	lua_pushnumber(L, realObject->getBankCredits());
 
 	return 1; // we return the number of vars pushed to the L stack
+}
+
+int LuaCreatureObject::getConversationSession(lua_State* L) {
+	ConversationSession* session = cast<ConversationSession*>(realObject->getActiveSession(SessionFacadeType::CONVERSATION));
+
+	lua_pushlightuserdata(L, session);
+
+	return 1;
 }
