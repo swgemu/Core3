@@ -1,5 +1,5 @@
 giant_gubber = Creature:new {
-	objectName = "@mob/creature_names:giant_gubber",
+	objectName = "@mob/creature_names:giant_gubbur",
 	socialGroup = "Gubber",
 	pvpFaction = "",
 	faction = "",

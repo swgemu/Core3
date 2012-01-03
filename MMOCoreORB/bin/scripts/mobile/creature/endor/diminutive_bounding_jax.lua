@@ -1,5 +1,5 @@
 diminutive_bounding_jax = Creature:new {
-	objectName = "@mob/creature_names:diminutive_bounding_jax",
+	objectName = "@mob/creature_names:jax_bounding_dwarf",
 	socialGroup = "Jax",
 	pvpFaction = "",
 	faction = "",

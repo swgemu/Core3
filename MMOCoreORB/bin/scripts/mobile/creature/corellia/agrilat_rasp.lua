@@ -1,5 +1,5 @@
 agrilat_rasp = Creature:new {
-	objectName = "@mob/creature_names:agrilat_rasp",
+	objectName = "@mob/creature_names:agrilat_plumed_rasp",
 	socialGroup = "Rasp",
 	pvpFaction = "",
 	faction = "",

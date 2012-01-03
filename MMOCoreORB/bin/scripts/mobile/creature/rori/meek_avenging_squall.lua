@@ -1,5 +1,5 @@
 meek_avenging_squall = Creature:new {
-	objectName = "@mob/creature_names:meek_avenging_squall",
+	objectName = "@mob/creature_names:frail_squall_meek_avenger",
 	socialGroup = "Squall",
 	pvpFaction = "",
 	faction = "",

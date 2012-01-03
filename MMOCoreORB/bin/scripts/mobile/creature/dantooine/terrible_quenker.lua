@@ -1,5 +1,5 @@
 terrible_quenker = Creature:new {
-	objectName = "@mob/creature_names:terrible_quenker",
+	objectName = "@mob/creature_names:quenker_terrible",
 	socialGroup = "Quenker",
 	pvpFaction = "",
 	faction = "",

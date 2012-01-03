@@ -1,5 +1,5 @@
 loathsome_mangler = Creature:new {
-	objectName = "@mob/creature_names:loathsome_mangler",
+	objectName = "@mob/creature_names:gurk_loathsome_mangler",
 	socialGroup = "Gurk",
 	pvpFaction = "",
 	faction = "",

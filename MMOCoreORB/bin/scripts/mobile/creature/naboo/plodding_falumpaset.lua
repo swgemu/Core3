@@ -1,5 +1,5 @@
 plodding_falumpaset = Creature:new {
-	objectName = "@mob/creature_names:plodding_falumpaset",
+	objectName = "@mob/creature_names:domestic_falumpaset",
 	socialGroup = "Naboo",
 	pvpFaction = "",
 	faction = "",

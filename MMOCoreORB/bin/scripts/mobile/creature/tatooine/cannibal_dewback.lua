@@ -1,5 +1,5 @@
 cannibal_dewback = Creature:new {
-	objectName = "@mob/creature_names:cannibal_dewback",
+	objectName = "@mob/creature_names:dewback_cannibal",
 	socialGroup = "Dewback",
 	pvpFaction = "",
 	faction = "",

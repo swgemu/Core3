@@ -1,5 +1,5 @@
 bone_angler = Creature:new {
-	objectName = "@mob/creature_names:bone_angler",
+	objectName = "@mob/creature_names:angler_bone",
 	socialGroup = "Angler",
 	pvpFaction = "",
 	faction = "",

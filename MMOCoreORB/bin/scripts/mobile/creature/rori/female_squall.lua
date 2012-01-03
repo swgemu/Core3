@@ -1,5 +1,5 @@
 female_squall = Creature:new {
-	objectName = "@mob/creature_names:female_squall",
+	objectName = "@mob/creature_names:squall_female",
 	socialGroup = "Squall",
 	pvpFaction = "",
 	faction = "",

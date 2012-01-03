@@ -1,5 +1,5 @@
 wooded_paralope = Creature:new {
-	objectName = "@mob/creature_names:wooded_parapole",
+	objectName = "@mob/creature_names:wooded_paralope",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",

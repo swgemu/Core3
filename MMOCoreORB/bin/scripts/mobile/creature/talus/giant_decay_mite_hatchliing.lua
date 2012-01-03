@@ -1,5 +1,5 @@
 giant_decay_mite_hatchliing = Creature:new {
-	objectName = "@mob/creature_names:giant_decay_mite_hatchliing",
+	objectName = "@mob/creature_names:giant_decay_mite_hatchling",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",

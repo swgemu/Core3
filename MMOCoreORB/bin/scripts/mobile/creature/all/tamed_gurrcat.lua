@@ -1,5 +1,5 @@
 tamed_gurrcat = Creature:new {
-	objectName = "@mob/creature_names:tamed_gurrcat",
+	objectName = "@mob/creature_names:rebel_tamed_gurrcat",
 	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",

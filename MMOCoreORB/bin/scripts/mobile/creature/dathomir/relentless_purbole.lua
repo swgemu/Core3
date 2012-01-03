@@ -1,5 +1,5 @@
 relentless_purbole = Creature:new {
-	objectName = "@mob/creature_names:relentless_purbole",
+	objectName = "@mob/creature_names:purbole_relentless",
 	socialGroup = "Purbole",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 hostile_huurton = Creature:new {
-	objectName = "@mob/creature_names:hostile_huurton",
+	objectName = "@mob/creature_names:warren_huurton_hostile",
 	socialGroup = "Warren Huurton",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 reclusive_gurk_king = Creature:new {
-	objectName = "@mob/creature_names:reclusive_gurk_king",
+	objectName = "@mob/creature_names:recluse_gurk_king",
 	socialGroup = "Gurk",
 	pvpFaction = "",
 	faction = "",

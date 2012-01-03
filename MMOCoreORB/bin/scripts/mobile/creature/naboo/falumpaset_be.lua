@@ -1,5 +1,5 @@
 falumpaset_be = Creature:new {
-	objectName = "@mob/creature_names:falumpaset_be",
+	objectName = "@mob/creature_names:bio_engineered_falumpaset",
 	socialGroup = "Falumpaset",
 	pvpFaction = "",
 	faction = "",
@@ -8,8 +8,8 @@ falumpaset_be = Creature:new {
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 30,
-	baseHAM = 50,
-	baseHAMmax = 50,
+	baseHAM = 45,
+	baseHAMmax = 55,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",

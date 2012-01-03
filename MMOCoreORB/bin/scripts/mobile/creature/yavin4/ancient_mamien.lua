@@ -1,5 +1,5 @@
 ancient_mamien = Creature:new {
-	objectName = "@mob/creature_names:ancient_mamien",
+	objectName = "@mob/creature_names:mamien_ancient",
 	socialGroup = "Mamien",
 	pvpFaction = "",
 	faction = "",

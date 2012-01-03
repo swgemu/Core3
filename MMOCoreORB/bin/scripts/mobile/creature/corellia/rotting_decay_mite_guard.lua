@@ -1,5 +1,5 @@
 rotting_decay_mite_guard = Creature:new {
-	objectName = "@mob/creature_names:rotting_decay_mite_guard",
+	objectName = "@mob/creature_names:rotting_pustule_guard",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",

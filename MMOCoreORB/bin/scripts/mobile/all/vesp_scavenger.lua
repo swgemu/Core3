@@ -1,5 +1,5 @@
 vesp_scavenger = Creature:new {
-	objectName = "@mob/creature_names:vesp_scavenger",
+	objectName = "@mob/creature_names:vesp_scavanger",
 	socialGroup = "Vesp",
 	pvpFaction = "",
 	faction = "",
@@ -11,7 +11,7 @@ vesp_scavenger = Creature:new {
 	baseHAM = 8100,
 	baseHAMmax = 9900,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,0},
+	resists = {30,30,15,-1,-1,80,-1,80,0},
 	meatType = "meat_reptilian",
 	meatAmount = 9,
 	hideType = "hide_leathery",

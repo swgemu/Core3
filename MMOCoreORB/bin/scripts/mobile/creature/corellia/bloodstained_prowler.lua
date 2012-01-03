@@ -1,5 +1,5 @@
 bloodstained_prowler = Creature:new {
-	objectName = "@mob/creature_names:bloodstained_prowler",
+	objectName = "@mob/creature_names:wrix_bloodstained_prowler",
 	socialGroup = "Wrix",
 	pvpFaction = "",
 	faction = "",

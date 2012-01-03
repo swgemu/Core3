@@ -1,5 +1,5 @@
 hooded_crystal_snake = Creature:new {
-	objectName = "@mob/creature_names:hooded_crystal_snake",
+	objectName = "@mob/creature_names:crystal_snake_hooded",
 	socialGroup = "Crystal Snake",
 	pvpFaction = "",
 	faction = "",

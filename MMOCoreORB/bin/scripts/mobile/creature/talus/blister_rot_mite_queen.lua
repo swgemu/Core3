@@ -1,5 +1,5 @@
 blister_rot_mite_queen = Creature:new {
-	objectName = "@mob/creature_names:blister_rot_mite_queen",
+	objectName = "@mob/creature_names:blister_rot_queen",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",

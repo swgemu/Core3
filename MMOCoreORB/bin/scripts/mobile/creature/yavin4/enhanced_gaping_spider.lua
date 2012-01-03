@@ -1,5 +1,5 @@
 enhanced_gaping_spider = Creature:new {
-	objectName = "@mob/creature_names:enhanced_gaping_spider",
+	objectName = "@mob/creature_names:geonosian_gaping_spider_fire",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
 	faction = "",

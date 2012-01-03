@@ -1,5 +1,5 @@
 tormented_bocatt = Creature:new {
-	objectName = "@mob/creature_names:tormented_boccat",
+	objectName = "@mob/creature_names:bocatt_tormented",
 	socialGroup = "Bocatt",
 	pvpFaction = "",
 	faction = "",

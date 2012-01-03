@@ -1,5 +1,5 @@
 greater_desert_womp_rat = Creature:new {
-	objectName = "@mob/creature_names:great_desert_womp_rat",
+	objectName = "@mob/creature_names:greater_desert_womprat",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",

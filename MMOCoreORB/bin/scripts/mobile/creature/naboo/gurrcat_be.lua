@@ -1,5 +1,5 @@
 gurrcat_be = Creature:new {
-	objectName = "@mob/creature_names:gurrcat_be",
+	objectName = "@mob/creature_names:bio_engineered_tusk_cat",
 	socialGroup = "Tusk Cat",
 	pvpFaction = "",
 	faction = "",
@@ -8,8 +8,8 @@ gurrcat_be = Creature:new {
 	damageMin = 30,
 	damageMax = 40,
 	baseXp = 40,
-	baseHAM = 50,
-	baseHAMmax = 50,
+	baseHAM = 45,
+	baseHAMmax = 55,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",

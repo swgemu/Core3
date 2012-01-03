@@ -1,5 +1,5 @@
 slum_rat = Creature:new {
-	objectName = "@mob/creature_names:slum_rat",
+	objectName = "@mob/creature_names:womprat_city",
 	socialGroup = "Lesser Desert W'rat",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 kima_be = Creature:new {
-	objectName = "@mob/creature_names:kima_be",
+	objectName = "@mob/creature_names:bio_engineered_kima",
 	socialGroup = "Kima",
 	pvpFaction = "",
 	faction = "",

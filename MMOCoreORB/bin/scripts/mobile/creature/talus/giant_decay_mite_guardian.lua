@@ -1,5 +1,5 @@
 giant_decay_mite_guardian = Creature:new {
-	objectName = "@mob/creature_names:giant_decay_mite_guardian",
+	objectName = "@mob/creature_names:giant_decay_mite_royal_guardian",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 swift_charging_bol = Creature:new {
-	objectName = "@mob/creature_names:swift_charging_bol",
+	objectName = "@mob/creature_names:bol_swift_charger",
 	socialGroup = "Bol",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 swamp_humbab = Creature:new {
-	objectName = "@mob/creature_names:swamp_humbab",
+	objectName = "@mob/creature_names:swamp_humbaba",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 vrelt_mother = Creature:new {
-	objectName = "@mob/creature_names:vrelt_mother",
+	objectName = "@mob/creature_names:startled_vrelt_mother",
 	socialGroup = "Vrelt",
 	pvpFaction = "",
 	faction = "",
@@ -21,7 +21,7 @@ vrelt_mother = Creature:new {
 	milk = 0,
 	tamingChance = 0.25,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = CARNIVORE,

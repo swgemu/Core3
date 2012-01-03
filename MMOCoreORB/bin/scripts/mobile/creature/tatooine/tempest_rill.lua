@@ -1,5 +1,5 @@
 tempest_rill = Creature:new {
-	objectName = "@mob/creature_names:tempest_rill",
+	objectName = "@mob/creature_names:rill_tempest",
 	socialGroup = "Rill",
 	pvpFaction = "",
 	faction = "",

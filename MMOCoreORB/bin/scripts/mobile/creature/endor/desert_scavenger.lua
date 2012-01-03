@@ -1,5 +1,5 @@
 desert_scavenger = Creature:new {
-	objectName = "@mob/creature_names:desert_scavenger",
+	objectName = "@mob/creature_names:borgle_desert_runner",
 	socialGroup = "Borgle",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 tamed_huurton = Creature:new {
-	objectName = "@mob/creature_names:tamed_huurton",
+	objectName = "@mob/creature_names:rebel_tamed_huurton",
 	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",

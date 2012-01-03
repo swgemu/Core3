@@ -1,5 +1,5 @@
 furious_ronto = Creature:new {
-	objectName = "@mob/creature_names:furious_ronto",
+	objectName = "@mob/creature_names:ronto_furious",
 	socialGroup = "Ronto",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 mine_rat = Creature:new {
-	objectName = "@mob/creature_names:mine_rat",
+	objectName = "@mob/creature_names:death_watch_quenker",
 	socialGroup = "Death Watch",
 	pvpFaction = "",
 	faction = "",

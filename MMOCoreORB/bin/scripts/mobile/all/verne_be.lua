@@ -1,5 +1,5 @@
 verne_be = Creature:new {
-	objectName = "@mob/creature_names:verne_be",
+	objectName = "@mob/creature_names:bio_engineered_verne",
 	socialGroup = "Verne",
 	pvpFaction = "",
 	faction = "",

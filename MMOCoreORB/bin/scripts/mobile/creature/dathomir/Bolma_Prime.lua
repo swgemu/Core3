@@ -1,5 +1,5 @@
 Bolma_Prime = Creature:new {
-	objectName = "@mob/creature_names:Bolma_Prime",
+	objectName = "@mob/creature_names:bolma_prime",
 	socialGroup = "Bolma",
 	pvpFaction = "",
 	faction = "",

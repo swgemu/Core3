@@ -1,5 +1,5 @@
 aggrivated_kaadu_trampler = Creature:new {
-	objectName = "@mob/creature_names:agrrivated_kaadu_trampler",
+	objectName = "@mob/creature_names:kaadu_aggrivated_trampler",
 	socialGroup = "Kaadu",
 	pvpFaction = "",
 	faction = "",

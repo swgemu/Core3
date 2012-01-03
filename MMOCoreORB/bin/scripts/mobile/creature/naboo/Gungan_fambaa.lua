@@ -1,5 +1,5 @@
 Gungan_fambaa = Creature:new {
-	objectName = "@mob/creature_names:Gungan_fambaa",
+	objectName = "@mob/creature_names:gungan_fambaa",
 	socialGroup = "Gungan",
 	pvpFaction = "",
 	faction = "",

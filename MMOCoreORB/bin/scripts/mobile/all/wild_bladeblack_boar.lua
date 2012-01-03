@@ -1,5 +1,5 @@
 wild_bladeblack_boar = Creature:new {
-	objectName = "@mob/creature_names:wild_bladeblack_boar",
+	objectName = "@mob/creature_names:quest_hero_of_tatooine_ferocious_beast",
 	socialGroup = "Zuuca Boar",
 	pvpFaction = "",
 	faction = "",

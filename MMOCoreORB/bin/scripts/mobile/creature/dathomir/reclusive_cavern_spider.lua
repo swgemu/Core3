@@ -1,5 +1,5 @@
 reclusive_cavern_spider = Creature:new {
-	objectName = "@mob/creature_names:reclusive_cavern_spider",
+	objectName = "@mob/creature_names:cave_gaping_spider_recluse",
 	socialGroup = "Spider Nightsister",
 	pvpFaction = "",
 	faction = "",

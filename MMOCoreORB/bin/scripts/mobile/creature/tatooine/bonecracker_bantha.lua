@@ -1,5 +1,5 @@
 bonecracker_bantha = Creature:new {
-	objectName = "@mob/creature_names:bonecracker_bantha",
+	objectName = "@mob/creature_names:bantha_bonecracker",
 	socialGroup = "Bantha",
 	pvpFaction = "",
 	faction = "",

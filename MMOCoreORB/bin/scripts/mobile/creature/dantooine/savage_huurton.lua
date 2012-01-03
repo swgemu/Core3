@@ -1,5 +1,5 @@
 savage_huurton = Creature:new {
-	objectName = "@mob/creature_names:savage_huurton",
+	objectName = "@mob/creature_names:warren_huurton_savage",
 	socialGroup = "Warren Huurton",
 	pvpFaction = "",
 	faction = "",

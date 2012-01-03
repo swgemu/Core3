@@ -1,5 +1,5 @@
 nocuous_kamurith = Creature:new {
-	objectName = "@mob/creature_names:nocuous_kamurith",
+	objectName = "@mob/creature_names:kamurith_nocuous",
 	socialGroup = "Kamurith",
 	pvpFaction = "",
 	faction = "",

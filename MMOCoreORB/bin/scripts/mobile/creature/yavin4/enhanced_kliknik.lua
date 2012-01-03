@@ -1,5 +1,5 @@
 enhanced_kliknik = Creature:new {
-	objectName = "@mob/creature_names:enhanced_kliknik",
+	objectName = "@mob/creature_names:geonosian_kliknik_force_strong",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
 	faction = "",

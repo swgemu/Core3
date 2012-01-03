@@ -1,5 +1,5 @@
 Mauler_veermok = Creature:new {
-	objectName = "@mob/creature_names:Mauler_veermok",
+	objectName = "@mob/creature_names:mauler_veermok",
 	socialGroup = "Mauler",
 	pvpFaction = "",
 	faction = "",

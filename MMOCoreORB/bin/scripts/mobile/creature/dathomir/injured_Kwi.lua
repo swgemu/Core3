@@ -1,5 +1,5 @@
 injured_Kwi = Creature:new {
-	objectName = "@mob/creature_names:injured_Kwi",
+	objectName = "@mob/creature_names:injured_kwi",
 	socialGroup = "Kwi",
 	pvpFaction = "",
 	faction = "",

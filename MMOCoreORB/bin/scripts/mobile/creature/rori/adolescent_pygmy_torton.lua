@@ -1,5 +1,5 @@
 adolescent_pygmy_torton = Creature:new {
-	objectName = "@mob/creature_names:adolescent_pygmy_torton",
+	objectName = "@mob/creature_names:torton_pygmy_adolescent",
 	socialGroup = "Torton",
 	pvpFaction = "",
 	faction = "",

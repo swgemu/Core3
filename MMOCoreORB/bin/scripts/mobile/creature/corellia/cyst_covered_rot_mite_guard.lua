@@ -1,5 +1,5 @@
 cyst_covered_rot_mite_guard = Creature:new {
-	objectName = "@mob/creature_names:cyst_covered_rot_mite_guard",
+	objectName = "@mob/creature_names:cyst_covered_rot_guard",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",

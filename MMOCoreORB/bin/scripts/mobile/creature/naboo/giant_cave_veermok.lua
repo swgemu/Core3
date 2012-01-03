@@ -1,5 +1,5 @@
 giant_cave_veermok = Creature:new {
-	objectName = "@mob/creature_names:giant_cave_veermok",
+	objectName = "@mob/creature_names:veermok_giant_cave",
 	socialGroup = "Veermok",
 	pvpFaction = "",
 	faction = "",

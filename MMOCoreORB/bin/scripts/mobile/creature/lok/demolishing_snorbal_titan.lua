@@ -1,5 +1,5 @@
 demolishing_snorbal_titan = Creature:new {
-	objectName = "@mob/creature_names:demolishing_snorbal_titan",
+	objectName = "@mob/creature_names:norbal_titanic_demolisher",
 	socialGroup = "Snorbal",
 	pvpFaction = "",
 	faction = "",

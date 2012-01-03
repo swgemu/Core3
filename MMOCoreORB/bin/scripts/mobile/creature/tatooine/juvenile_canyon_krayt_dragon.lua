@@ -1,5 +1,5 @@
 juvenile_canyon_krayt_dragon = Creature:new {
-	objectName = "@mob/creature_names:juvenile_canyon_krayt_dragon",
+	objectName = "@mob/creature_names:juvenile_canyon_krayt",
 	socialGroup = "Krayt Dragon",
 	pvpFaction = "",
 	faction = "",

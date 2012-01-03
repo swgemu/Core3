@@ -1,5 +1,5 @@
 mamien_jungle_lord = Creature:new {
-	objectName = "@mob/creature_names:mamien_jungle_lord",
+	objectName = "@mob/creature_names:mamien_junglelord",
 	socialGroup = "Mamien",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 cyborg_dune_lizard = Creature:new {
-	objectName = "@mob/creature_names:cyborg_dune_lizard",
+	objectName = "@mob/creature_names:warren_cyborg_dunelizard",
 	socialGroup = "Warren Cyborg",
 	pvpFaction = "",
 	faction = "",

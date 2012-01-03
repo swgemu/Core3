@@ -1,5 +1,5 @@
 razor_cat_cub = Creature:new {
-	objectName = "@mob/creature_names:razor_cat_sub",
+	objectName = "@mob/creature_names:sand_panther_cub",
 	socialGroup = "Sand Panther",
 	pvpFaction = "",
 	faction = "",

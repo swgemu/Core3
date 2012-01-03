@@ -1,5 +1,5 @@
 tamed_razor_cat = Creature:new {
-	objectName = "@mob/creature_names:tamed_razor_cat",
+	objectName = "@mob/creature_names:rebel_tamed_razor_cat",
 	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",

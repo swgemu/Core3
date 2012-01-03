@@ -1,5 +1,5 @@
 toxic_slasher = Creature:new {
-	objectName = "@mob/creature_names:toxic_slasher",
+	objectName = "@mob/creature_names:vir_vur_toxic_slasher",
 	socialGroup = "Vir Vur",
 	pvpFaction = "",
 	faction = "",

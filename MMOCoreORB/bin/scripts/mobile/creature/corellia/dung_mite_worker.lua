@@ -1,5 +1,5 @@
 dung_mite_worker = Creature:new {
-	objectName = "@mob/creature_names:dung_mite_worker",
+	objectName = "@mob/creature_names:sickening_dung_mite_worker",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 wonderous_cu_pa = Creature:new {
-	objectName = "@mob/creature_names:wonderous_cu_pa",
+	objectName = "@mob/creature_names:cu_pa_wonderous",
 	socialGroup = "Cu Pa",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 repugnant_dung_mite_crawler = Creature:new {
-	objectName = "@mob/creature_names:repugnant_dung_mite_crawler",
+	objectName = "@mob/creature_names:dung_mite_repugnant_crawler",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
 	faction = "",

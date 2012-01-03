@@ -1,5 +1,5 @@
 bageraset_be = Creature:new {
-	objectName = "@mob/creature_names:bageraset_be",
+	objectName = "@mob/creature_names:bio_engineered_bageraset",
 	socialGroup = "Bageraset",
 	pvpFaction = "",
 	faction = "",

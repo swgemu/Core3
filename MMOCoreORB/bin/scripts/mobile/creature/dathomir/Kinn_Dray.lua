@@ -1,5 +1,5 @@
 Kinn_Dray = Creature:new {
-	objectName = "@mob/creature_names:Kinn_Dray",
+	objectName = "@mob/creature_names:gaping_spider_recluse_giant_kiin_dray",
 	socialGroup = "Gap. Recluse",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 bloated_gubber = Creature:new {
-	objectName = "@mob/creature_names:bloated_gubber",
+	objectName = "@mob/creature_names:gubbur_bloated",
 	socialGroup = "Gubbur",
 	pvpFaction = "",
 	faction = "",

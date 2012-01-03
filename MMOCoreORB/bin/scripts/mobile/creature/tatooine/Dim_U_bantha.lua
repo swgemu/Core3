@@ -1,5 +1,5 @@
 Dim_U_bantha = Creature:new {
-	objectName = "@mob/creature_names:Dim_U_bantha",
+	objectName = "@mob/creature_names:dim_u_bantha",
 	socialGroup = "Dim-U",
 	pvpFaction = "",
 	faction = "",

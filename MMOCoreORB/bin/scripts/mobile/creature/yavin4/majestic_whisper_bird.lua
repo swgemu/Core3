@@ -1,5 +1,5 @@
 majestic_whisper_bird = Creature:new {
-	objectName = "@mob/creature_names:majestic_whisper_bird",
+	objectName = "@mob/creature_names:whisper_bird_majestic",
 	socialGroup = "Whisperbird",
 	pvpFaction = "",
 	faction = "",

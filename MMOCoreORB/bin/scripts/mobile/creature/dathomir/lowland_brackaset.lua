@@ -1,5 +1,5 @@
 lowland_brackaset = Creature:new {
-	objectName = "@mob/creature_names:lowland_brackaset",
+	objectName = "@mob/creature_names:brackaset_lowlands",
 	socialGroup = "Brackaset",
 	pvpFaction = "",
 	faction = "",

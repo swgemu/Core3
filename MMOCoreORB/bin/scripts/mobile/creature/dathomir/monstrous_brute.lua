@@ -1,5 +1,5 @@
 monstrous_brute = Creature:new {
-	objectName = "@mob/creature_names:monstrous_brute",
+	objectName = "@mob/creature_names:rancor_monstrous_brute",
 	socialGroup = "Rancor",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 drooling_nuna = Creature:new {
-	objectName = "@mob/creature_names:drooling_nuna",
+	objectName = "@mob/creature_names:dwarf_nuna_drooling",
 	socialGroup = "Dwarf Nuna",
 	pvpFaction = "",
 	faction = "",

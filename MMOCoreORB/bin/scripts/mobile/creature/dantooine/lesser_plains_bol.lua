@@ -1,5 +1,5 @@
 lesser_plains_bol = Creature:new {
-	objectName = "@mob/creature_names:lesser_plains_bol",
+	objectName = "@mob/creature_names:bol_lesser_plains",
 	socialGroup = "Bol",
 	pvpFaction = "",
 	faction = "",

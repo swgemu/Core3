@@ -1,5 +1,5 @@
 blood_thirsty_monarch = Creature:new {
-	objectName = "@mob/creature_names:blood_thirsty_monarch",
+	objectName = "@mob/creature_names:corellian_butterfly_monarch_bloodthirsty",
 	socialGroup = "Cor. Butterfly",
 	pvpFaction = "",
 	faction = "",

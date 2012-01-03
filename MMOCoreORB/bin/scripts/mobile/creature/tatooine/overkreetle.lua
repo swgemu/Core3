@@ -1,5 +1,5 @@
 overkreetle = Creature:new {
-	objectName = "@mob/creature_names:overkreetle",
+	objectName = "@mob/creature_names:kreetle_over",
 	socialGroup = "Uber Kreetle",
 	pvpFaction = "",
 	faction = "",

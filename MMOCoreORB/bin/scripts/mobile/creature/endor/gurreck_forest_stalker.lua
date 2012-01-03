@@ -1,5 +1,5 @@
 gurreck_forest_stalker = Creature:new {
-	objectName = "@mob/creature_names:gurreck_forest_stalker",
+	objectName = "@mob/creature_names:woodland_gurreck",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
 	faction = "",

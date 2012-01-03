@@ -1,5 +1,5 @@
 giant_mutant_bark_mite = Creature:new {
-	objectName = "@mob/creature_names:giant_mutant_bark_mite",
+	objectName = "@mob/creature_names:mutant_bark_mite_giant",
 	socialGroup = "Mutant Bark Mite",
 	pvpFaction = "",
 	faction = "",

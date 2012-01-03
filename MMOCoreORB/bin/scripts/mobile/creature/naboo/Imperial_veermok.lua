@@ -1,5 +1,5 @@
 Imperial_veermok = Creature:new {
-	objectName = "@mob/creature_names:Imperial_veermok",
+	objectName = "@mob/creature_names:imperial_veermok",
 	socialGroup = "Imperial",
 	pvpFaction = "",
 	faction = "",

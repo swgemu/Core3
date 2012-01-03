@@ -1,5 +1,5 @@
 Grovo = Creature:new {
-	objectName = "@mob/creature_names:Grovo",
+	objectName = "@monster_name:grovo",
 	socialGroup = "Nightsister",
 	pvpFaction = "",
 	faction = "",

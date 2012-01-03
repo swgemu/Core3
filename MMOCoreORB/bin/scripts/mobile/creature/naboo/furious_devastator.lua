@@ -1,5 +1,5 @@
 furious_devastator = Creature:new {
-	objectName = "@mob/creature_names:furious_devastator",
+	objectName = "@mob/creature_names:fambaa_furious_devastator",
 	socialGroup = "Fambaa",
 	pvpFaction = "",
 	faction = "",

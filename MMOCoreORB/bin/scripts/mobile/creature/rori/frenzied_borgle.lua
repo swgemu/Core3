@@ -1,5 +1,5 @@
 frenzied_borgle = Creature:new {
-	objectName = "@mob/creature_names:frenzied_borgle",
+	objectName = "@mob/creature_names:fierce_borgle",
 	socialGroup = "Borgle",
 	pvpFaction = "",
 	faction = "",

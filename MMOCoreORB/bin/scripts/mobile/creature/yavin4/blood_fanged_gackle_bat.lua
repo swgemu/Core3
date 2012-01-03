@@ -1,5 +1,5 @@
 blood_fanged_gackle_bat = Creature:new {
-	objectName = "@mob/creature_names:blood_fanged_gackle_bat",
+	objectName = "@mob/creature_names:bloodfanged_gackle_bat",
 	socialGroup = "Gacklebat",
 	pvpFaction = "",
 	faction = "",

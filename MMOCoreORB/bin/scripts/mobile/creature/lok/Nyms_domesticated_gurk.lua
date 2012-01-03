@@ -1,5 +1,5 @@
 Nyms_domesticated_gurk = Creature:new {
-	objectName = "@mob/creature_names:Nym's_domesticated_gurk",
+	objectName = "@mob/creature_names:nym_domesticated_gurk",
 	socialGroup = "Nym",
 	pvpFaction = "",
 	faction = "",

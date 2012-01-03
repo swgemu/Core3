@@ -1,5 +1,5 @@
 genetically_enchanced_kahmurra = Creature:new {
-	objectName = "@mob/creature_names:genetically_enchanced_kahmurra",
+	objectName = "@mob/creature_names:genetically_enhanced_kahmurra",
 	socialGroup = "Kahmurra",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 ferine_razorfang = Creature:new {
-	objectName = "@mob/creature_names:ferine_razorfang",
+	objectName = "@mob/creature_names:kima_ferine_razorfang",
 	socialGroup = "Kima",
 	pvpFaction = "",
 	faction = "",

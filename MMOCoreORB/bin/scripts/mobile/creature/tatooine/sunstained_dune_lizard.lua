@@ -1,5 +1,5 @@
 sunstained_dune_lizard = Creature:new {
-	objectName = "@mob/creature_names:sunstained_dune_lizard",
+	objectName = "@mob/creature_names:dune_lizard_sunstained",
 	socialGroup = "Dune Lizard",
 	pvpFaction = "",
 	faction = "",

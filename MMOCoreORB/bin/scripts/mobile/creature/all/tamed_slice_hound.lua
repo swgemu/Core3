@@ -1,5 +1,5 @@
 tamed_slice_hound = Creature:new {
-	objectName = "@mob/creature_names:tamed_slice_hound",
+	objectName = "@mob/creature_names:rebel_tamed_slice_hound",
 	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",

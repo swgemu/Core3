@@ -1,5 +1,5 @@
 woolamander_be = Creature:new {
-	objectName = "@mob/creature_names:woolamander_be",
+	objectName = "@mob/creature_names:bio_engineered_woolamander",
 	socialGroup = "Woolamander",
 	pvpFaction = "",
 	faction = "",

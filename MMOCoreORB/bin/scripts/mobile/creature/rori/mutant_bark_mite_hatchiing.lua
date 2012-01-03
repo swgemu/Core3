@@ -1,5 +1,5 @@
 mutant_bark_mite_hatchiing = Creature:new {
-	objectName = "@mob/creature_names:mutant_bark_mite_hatchiing",
+	objectName = "@mob/creature_names:mutant_bark_mite_hatchling",
 	socialGroup = "Mut. Bark Mite",
 	pvpFaction = "",
 	faction = "",
