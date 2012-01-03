@@ -67,7 +67,8 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3 #odb3
 
-core3_IDLS =	server/zone/objects/area/LairSpawnArea.cpp \
+core3_IDLS =	server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
+				server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/managers/creature/LairObserver.cpp \
 				server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/region/CityRegion.cpp \
@@ -146,7 +147,6 @@ core3_IDLS =	server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
 				server/zone/objects/player/sessions/ConversationSession.cpp \
 				server/zone/objects/player/sessions/TrainerConversationSession.cpp \
-				server/zone/objects/player/sessions/TrainerConversationSessionImplementation.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
@@ -465,6 +465,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/ValidatedPosition.cpp \
+		server/zone/objects/player/sessions/TrainerConversationSessionImplementation.cpp \
+		server/zone/objects/player/sessions/LuaConversationSession.cpp \
 		server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp \
 		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
@@ -530,6 +532,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/string/StringFile.cpp \
+		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/datatables/DataTableIff.cpp \
 		server/zone/templates/datatables/DataTableCell.cpp \
 		server/zone/templates/snapshot/WorldSnapshotIff.cpp \

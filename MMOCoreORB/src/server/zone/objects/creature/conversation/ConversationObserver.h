@@ -35,6 +35,10 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
+
+	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -62,8 +66,10 @@ namespace creature {
 namespace conversation {
 
 class ConversationObserverImplementation : public ObserverImplementation, public Logger {
+protected:
 	Reference<ConversationTemplate* > conversationTemplate;
 
+private:
 	VectorMap<String, ScreenHandler*> screenHandlers;
 
 public:
@@ -88,10 +94,12 @@ protected:
 private:
 	void cancelConversationSession(CreatureObject* conversingPlayer);
 
-	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
+public:
+	virtual ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
 
-	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+	virtual ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
+private:
 	void sendConversationScreenToPlayer(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, ConversationScreen* conversationScreen);
 
 public:

@@ -61,13 +61,15 @@ public:
 	enum ConversationTemplateType {
 		ConversationTemplateTypeNormal,
 		ConversationTemplateTypeTrainer,
-		ConversationTemplateTypeDeliverMission
+		ConversationTemplateTypeDeliverMission,
+		ConversationTemplateTypeLua
 	};
 protected:
 	String initialScreenID;
 	VectorMap<String, Reference<ConversationScreen*> > screens;
 	ConversationTemplateType conversationTemplateType;
 	uint32 crc;
+	String luaClassHandler;
 
 public:
 
@@ -97,9 +99,13 @@ public:
 			conversationTemplateType = ConversationTemplateTypeTrainer;
 		} else if (templateType == "DeliverNPC") {
 			conversationTemplateType = ConversationTemplateTypeDeliverMission;
+		} else if (templateType == "Lua") {
+			conversationTemplateType = ConversationTemplateTypeLua;
 		} else {
 			conversationTemplateType = ConversationTemplateTypeNormal;
 		}
+
+		luaClassHandler = templateData->getStringField("luaClassHandler");
 
 		LuaObject screensTable = templateData->getObjectField("screens");
 
@@ -119,6 +125,10 @@ public:
 		screensTable.pop();
 
 		ConversationManager::instance()->getConversationObserver(crc);
+	}
+
+	String getLuaClassHandler() {
+		return luaClassHandler;
 	}
 
 	ConversationScreen* getInitialScreen() {

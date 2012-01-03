@@ -14,6 +14,19 @@
 class ScreenPlayTask;
 
 namespace server {
+namespace zone {
+namespace templates {
+namespace mobile {
+
+	class ConversationScreen;
+}
+}
+}
+}
+
+using namespace server::zone::templates::mobile;
+
+namespace server {
  namespace zone {
   namespace objects {
    namespace creature {
@@ -43,6 +56,8 @@ namespace server {
 
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
 		void activateEvent(ScreenPlayTask* task);
+		ConversationScreen* getNextConversationScreen(const String& luaClass, CreatureObject* conversingPlayer, int selectedOption);
+		ConversationScreen* runScreenHandlers(const String& luaClass, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 		Lua* getLuaInstance();
 

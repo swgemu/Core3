@@ -41,6 +41,24 @@ int ConversationObserver::notifyObserverEvent(unsigned int eventType, Observable
 		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
+ConversationScreen* ConversationObserver::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption) {
+	ConversationObserverImplementation* _implementation = static_cast<ConversationObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getNextConversationScreen(conversingPlayer, selectedOption);
+}
+
+ConversationScreen* ConversationObserver::runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
+	ConversationObserverImplementation* _implementation = static_cast<ConversationObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->runScreenHandlers(conversingPlayer, conversingNPC, selectedOption, conversationScreen);
+}
+
 DistributedObjectServant* ConversationObserver::_getImplementation() {
 
 	_updated = true;

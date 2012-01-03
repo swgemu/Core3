@@ -18,6 +18,9 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
+#include "server/zone/templates/mobile/ConversationScreen.h"
+#include "server/zone/templates/mobile/LuaConversationScreen.h"
+#include "server/zone/objects/player/sessions/LuaConversationSession.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -80,6 +83,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());
 	Luna<LuaSceneObject>::Register(luaEngine->getLuaState());
+	Luna<LuaConversationScreen>::Register(luaEngine->getLuaState());
+	Luna<LuaConversationSession>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
@@ -273,6 +278,40 @@ void DirectorManager::startScreenPlay(CreatureObject* creatureObject, const Stri
 	startScreenPlay << creatureObject;
 
 	lua->callFunction(&startScreenPlay);
+}
+
+ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, CreatureObject* conversingPlayer, int selectedOption) {
+	Lua* lua = getLuaInstance();
+
+	LuaFunction runMethod(lua->getLuaState(), luaClass, "getNextConversationScreen", 1);
+	runMethod << conversingPlayer;
+	runMethod << selectedOption;
+
+	lua->callFunction(&runMethod);
+
+	ConversationScreen* result = (ConversationScreen*) lua_touserdata(lua->getLuaState(), -1);
+
+	lua_pop(lua->getLuaState(), 1);
+
+	return result;
+}
+
+ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
+	Lua* lua = getLuaInstance();
+
+	LuaFunction runMethod(lua->getLuaState(), luaClass, "runScreenHandlers", 1);
+	runMethod << conversingPlayer;
+	runMethod << conversingNPC;
+	runMethod << selectedOption;
+	runMethod << conversationScreen;
+
+	lua->callFunction(&runMethod);
+
+	ConversationScreen* result = (ConversationScreen*) lua_touserdata(lua->getLuaState(), -1);
+
+	lua_pop(lua->getLuaState(), 1);
+
+	return result;
 }
 
 void DirectorManager::activateEvent(ScreenPlayTask* task) {

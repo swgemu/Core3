@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/conversation/DeliverMissionConversationObserver.h"
 #include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "server/zone/objects/creature/conversation/LuaConversationObserver.h"
 
 ConversationManager::ConversationManager()
 	: Logger("ConversationManager") {
@@ -74,6 +75,9 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 				break;
 			case ConversationTemplate::ConversationTemplateTypeDeliverMission:
 				conversationObserver = new DeliverMissionConversationObserver(conversationTemplate);
+				break;
+			case ConversationTemplate::ConversationTemplateTypeLua:
+				conversationObserver = new LuaConversationObserver(conversationTemplate);
 				break;
 			default:
 				conversationObserver = new ConversationObserver(conversationTemplate);
