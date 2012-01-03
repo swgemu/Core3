@@ -69,6 +69,12 @@ void MissionManagerImplementation::loadCraftingMissionItems() {
 
 		items.pop();
 
+		String value = lua->getGlobalString("enable_factional_crafting_missions");
+
+		if (value.toLowerCase() == "true") {
+			enableFactionalCraftingMissions = true;
+		}
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -192,6 +198,11 @@ void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject
 	SceneObject* datapad = player->getSlottedObject("datapad");
 
 	if (datapad == NULL) {
+		return;
+	}
+
+	if (mission->getFaction() != MissionObject::FACTIONNEUTRAL && !enableFactionalCraftingMissions) {
+		//Faction mission, but faction missions are disabled.
 		return;
 	}
 
@@ -387,16 +398,20 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				randomizeImperialDestroyMission(player, mission);
 			} else if (i < (bagSize * 2 / 3)) {
 				randomizeImperialDeliverMission(player, mission);
-			} else {
+			} else if (enableFactionalCraftingMissions) {
 				randomizeImperialCraftingMission(player, mission);
+			} else {
+				mission->setTypeCRC(0, true);
 			}
 		} else if (missionTerminal->isRebelTerminal()) {
 			if (i < bagSize / 3) {
 				randomizeRebelDestroyMission(player, mission);
 			} else if (i < (bagSize * 2 / 3)) {
 				randomizeRebelDeliverMission(player, mission);
-			} else {
+			} else if (enableFactionalCraftingMissions) {
 				randomizeRebelCraftingMission(player, mission);
+			} else {
+				mission->setTypeCRC(0, true);
 			}
 		} else if (missionTerminal->isScoutTerminal()) {
 			if (i < bagSize / 3) {

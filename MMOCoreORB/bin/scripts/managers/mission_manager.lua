@@ -6,4 +6,6 @@ crafting_mission_items = {
 	"object/draft_schematic/item/quest_item/feedback_controller.iff",
 	"object/draft_schematic/item/quest_item/output_govenor.iff",
 	"object/draft_schematic/item/quest_item/power_regulator.iff"
-}
+};
+
+enable_factional_crafting_missions = "true";

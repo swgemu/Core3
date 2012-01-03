@@ -260,6 +260,8 @@ protected:
 
 	Vector<String> craftingMissionItems;
 
+	bool enableFactionalCraftingMissions;
+
 public:
 	unsigned static const int UNKNOWN_TARGET = 0xB911DA26;
 

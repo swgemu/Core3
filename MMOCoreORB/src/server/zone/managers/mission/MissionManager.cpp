@@ -776,6 +776,11 @@ bool MissionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "enableFactionalCraftingMissions") {
+		TypeInfo<bool >::parseFromBinaryStream(&enableFactionalCraftingMissions, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -823,8 +828,16 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "enableFactionalCraftingMissions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&enableFactionalCraftingMissions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 4 + ObserverImplementation::writeObjectMembers(stream);
+
+	return 5 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServer* impl) {
@@ -833,6 +846,8 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, Zone
 	server = srv;
 	// server/zone/managers/mission/MissionManager.idl():  		processor = impl;
 	processor = impl;
+	// server/zone/managers/mission/MissionManager.idl():  		enableFactionalCraftingMissions = false;
+	enableFactionalCraftingMissions = false;
 	// server/zone/managers/mission/MissionManager.idl():  		Logger.setLoggingName("MissionManager");
 	Logger::setLoggingName("MissionManager");
 	// server/zone/managers/mission/MissionManager.idl():  		loadNpcObjectsToSpawn();
