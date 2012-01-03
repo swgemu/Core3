@@ -274,17 +274,6 @@ class MissionObject extends IntangibleObject {
 		return missionTargetDest;
 	}
 	
-	public void clearTargetAndDestination() {
-		if (missionTarget != null) {
-			missionTarget.setInUse(false);
-			missionTarget = null;
-		}
-		if (missionTargetDest != null) {
-			missionTargetDest.setInUse(false);
-			missionTargetDest = null;
-		}
-	}
-	
 	public unsigned int getTypeCRC() {
 		return typeCRC;
 	}

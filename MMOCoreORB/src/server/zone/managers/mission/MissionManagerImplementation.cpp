@@ -358,7 +358,6 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 
 	for (int i = 0; i < bagSize; ++i) {
 		MissionObject* mission = cast<MissionObject*>( missionBag->getContainerObject(i));
-		mission->clearTargetAndDestination();
 
 		// TODO: make mission distribution function more like live
 		if (missionTerminal->isGeneralTerminal()) {
@@ -773,8 +772,6 @@ NpcSpawnPoint* MissionManagerImplementation::getRandomFreeNpcSpawnPoint(unsigned
 	while (max <= 1600.0f) {
 		Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, new Vector3(x, y, 0), spawnType, min, max, true);
 		if (npc != NULL) {
-			//Found NPC spawn point, allocate it and return it.
-			npc->setInUse(true);
 			return npc;
 		} else {
 			//No NPC spawn point found, double the search area radius.

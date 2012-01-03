@@ -234,8 +234,6 @@ public:
 
 	NpcSpawnPoint* getMissionTargetDest();
 
-	void clearTargetAndDestination();
-
 	unsigned int getTypeCRC();
 
 	int getRewardCredits();
@@ -461,8 +459,6 @@ public:
 
 	NpcSpawnPoint* getMissionTargetDest();
 
-	void clearTargetAndDestination();
-
 	unsigned int getTypeCRC();
 
 	int getRewardCredits();
@@ -611,8 +607,6 @@ public:
 	NpcSpawnPoint* getMissionTarget();
 
 	NpcSpawnPoint* getMissionTargetDest();
-
-	void clearTargetAndDestination();
 
 	unsigned int getTypeCRC();
 

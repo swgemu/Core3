@@ -63,7 +63,7 @@ namespace spawnmaps {
 /**
  * Container for a NPC spawn point usable in missions.
  */
-class NpcSpawnPoint : public DistributedObject {
+class NpcSpawnPoint : public DistributedObject, public Logger {
 protected:
 	/**
 	 * The position on the planet.
@@ -142,6 +142,7 @@ public:
 		position.setX(player->getPosition().getX());
 		position.setY(player->getPosition().getY());
 		direction.setHeadingDirection(player->getDirection()->getRadians());
+		inUse = false;
 	}
 
 	/**
@@ -231,6 +232,10 @@ public:
 	void saveSpawnPoint(std::ofstream& file) {
 		file << "\t\t{ " << position.getX() << ", " << position.getY();
 		file << ", " << direction.getRadians() << ", " << spawnType << " }";
+	}
+
+	String toString() {
+		return "NpcSpawnPoint at " + position.toString() + " of spawntype " + String::valueOf(spawnType) + " is " + (inUse ? " in use." : "free.");
 	}
 };
 
