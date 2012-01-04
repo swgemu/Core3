@@ -236,6 +236,8 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 }
 
 void ZoneImplementation::updateActiveAreas(SceneObject* object) {
+	Locker locker(_this);
+
 	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
 
 	Vector3 worldPos = object->getWorldPosition();
@@ -244,43 +246,53 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	regionTree->inRange(worldPos.getX(), worldPos.getY(), entryObjects);
 
-	// update old ones
-	for (int i = 0; i < areas.size(); ++i) {
-		ManagedReference<ActiveArea*> area = areas.get(i);
+	_this->unlock();
 
-		if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
-			object->dropActiveArea(area);
-			area->enqueueExitEvent(object);
-		} else {
-			area->notifyPositionUpdate(object);
+	try {
+
+		// update old ones
+		for (int i = 0; i < areas.size(); ++i) {
+			ManagedReference<ActiveArea*> area = areas.get(i);
+
+			if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
+				object->dropActiveArea(area);
+				area->enqueueExitEvent(object);
+			} else {
+				area->notifyPositionUpdate(object);
+			}
 		}
+
+		// we update the ones in quadtree.
+		for (int i = 0; i < entryObjects.size(); ++i) {
+			//update in new ones
+			ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
+
+			if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+				object->addActiveArea(activeArea);
+				activeArea->enqueueEnterEvent(object);
+			}
+		}
+
+		// update world areas
+		Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
+
+		for (int i = 0; i < worldAreas->size(); ++i) {
+			ActiveArea* activeArea = worldAreas->get(i);
+
+			if (!object->hasActiveArea(activeArea)) {
+				object->addActiveArea(activeArea);
+				activeArea->enqueueEnterEvent(object);
+			} else {
+				activeArea->notifyPositionUpdate(object);
+			}
+		}
+	} catch (...) {
+		_this->wlock();
+
+		throw;
 	}
 
-	// we update the ones in quadtree.
-	for (int i = 0; i < entryObjects.size(); ++i) {
-		//update in new ones
-		ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
-
-		if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
-			object->addActiveArea(activeArea);
-			activeArea->enqueueEnterEvent(object);
-		}
-	}
-
-	// update world areas
-	Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
-
-	for (int i = 0; i < worldAreas->size(); ++i) {
-		ActiveArea* activeArea = worldAreas->get(i);
-
-		if (!object->hasActiveArea(activeArea)) {
-			object->addActiveArea(activeArea);
-			activeArea->enqueueEnterEvent(object);
-		} else {
-			activeArea->notifyPositionUpdate(object);
-		}
-	}
-
+	_this->wlock();
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
