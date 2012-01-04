@@ -8,8 +8,6 @@
 #ifndef TERRAINGENERATOR_H_
 #define TERRAINGENERATOR_H_
 
-#include "engine/engine.h"
-
 #include "TemplateVariable.h"
 #include "ShadersGroup.h"
 #include "RadialGroup.h"

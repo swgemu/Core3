@@ -5,7 +5,6 @@
  *      Author: victor
  */
 
-#include "engine/engine.h"
 #include "MapFractal.h"
 
 double MapFractal::log05 = log(0.5);

@@ -8,7 +8,7 @@
 #ifndef TEMPLATEVARIABLE_H_
 #define TEMPLATEVARIABLE_H_
 
-#include "engine/engine.h"
+#include "engine/util/iffstream/IffStream.h"
 
 template <int version> struct Version {
    enum { value = version };

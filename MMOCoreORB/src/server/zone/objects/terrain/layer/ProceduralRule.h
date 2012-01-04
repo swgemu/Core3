@@ -8,8 +8,6 @@
 #ifndef PROCEDURALRULE_H_
 #define PROCEDURALRULE_H_
 
-#include "engine/engine.h"
-
 #include "../TemplateVariable.h"
 #include "InformationHeader.h"
 

@@ -7,7 +7,6 @@
 
 #include "TerrainGenerator.h"
 
-#include "engine/engine.h"
 #include "ProceduralTerrainAppearance.h"
 
 void TerrainGenerator::processLayers() {
