@@ -323,7 +323,16 @@ class AiAgent extends CreatureObject {
 	 */
 	public native void notifyDespawn(Zone zone);
 	
-	public abstract native void scheduleDespawn(); 
+	public abstract void scheduleDespawn() {
+		//Despawn in 45 seconds.
+		scheduleDespawn(45);
+	}
+	
+	/**
+	 * Schedules despawn of the AiAgent.
+	 * @param timeToDespawn the time to despawn the AiAgent in seconds.
+	 */
+	public abstract native void scheduleDespawn(int timeToDespawn); 
 	
 	/**
 	 * Respawns creature to specified zone with home location position

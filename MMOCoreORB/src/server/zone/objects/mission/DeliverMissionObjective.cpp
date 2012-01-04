@@ -426,19 +426,6 @@ int DeliverMissionObjectiveImplementation::getObjectiveStatus() {
 	return objectiveStatus;
 }
 
-void DeliverMissionObjectiveImplementation::despawnNpcs() {
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  		if 
-	if (target != NULL){
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  			target.scheduleDespawn();
-	target->scheduleDespawn();
-}
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  	}
-	if (destination != NULL){
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  			destination.scheduleDespawn();
-	destination->scheduleDespawn();
-}
-}
-
 NpcSpawnPoint* DeliverMissionObjectiveImplementation::getTargetSpawnPoint() {
 	// server/zone/objects/mission/DeliverMissionObjective.idl():  		return targetSpawnPoint;
 	return targetSpawnPoint;

@@ -340,6 +340,8 @@ public:
 
 	void scheduleDespawn();
 
+	void scheduleDespawn(int timeToDespawn);
+
 	void respawn(Zone* zone, int level);
 
 	void addPatrolPoint(PatrolPoint& point);
@@ -600,6 +602,8 @@ public:
 
 	virtual void scheduleDespawn();
 
+	virtual void scheduleDespawn(int timeToDespawn);
+
 	void respawn(Zone* zone, int level);
 
 	void addPatrolPoint(PatrolPoint& point);
@@ -794,6 +798,8 @@ public:
 	void notifyDespawn(Zone* zone);
 
 	void scheduleDespawn();
+
+	void scheduleDespawn(int timeToDespawn);
 
 	void respawn(Zone* zone, int level);
 

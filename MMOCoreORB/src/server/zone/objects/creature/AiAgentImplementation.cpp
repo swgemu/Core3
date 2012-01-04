@@ -483,12 +483,12 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	task->schedule(respawnTimer * 1000);
 }
 
-void AiAgentImplementation::scheduleDespawn() {
+void AiAgentImplementation::scheduleDespawn(int timeToDespawn) {
 	if (getPendingTask("despawn") != NULL)
 		return;
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
-	addPendingTask("despawn", despawn, 45000); // 45 seconds
+	addPendingTask("despawn", despawn, timeToDespawn * 1000);
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {

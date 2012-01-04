@@ -150,10 +150,6 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 }
 
 void DeliverMissionObjectiveImplementation::abort() {
-	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
-	MissionManager* missionManager = zoneServer->getMissionManager();
-	missionManager->returnSpawnPoint(targetSpawnPoint);
-	missionManager->returnSpawnPoint(destinationSpawnPoint);
 	despawnNpcs();
 }
 
@@ -194,14 +190,28 @@ void DeliverMissionObjectiveImplementation::complete() {
 		}
 	}
 
+	despawnNpcs();
+
 	ZoneServer* zoneServer = player->getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
 	missionManager->removeMission(mission, player);
+}
 
-	missionManager->returnSpawnPoint(targetSpawnPoint);
-	missionManager->returnSpawnPoint(destinationSpawnPoint);
-	despawnNpcs();
+void DeliverMissionObjectiveImplementation::despawnNpcs() {
+	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+	MissionManager* missionManager = zoneServer->getMissionManager();
+
+	if (despawnMissionNpcsTask == NULL) {
+		despawnMissionNpcsTask = new DespawnMissionNpcsTask(target, destination, targetSpawnPoint, destinationSpawnPoint, missionManager);
+	}
+
+	if (despawnMissionNpcsTask->isScheduled()) {
+		return;
+	} else {
+		//Despawn after 1 minute.
+		despawnMissionNpcsTask->schedule(60 * 1000);
+	}
 }
 
 void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
