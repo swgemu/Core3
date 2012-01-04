@@ -19,6 +19,7 @@ namespace templates {
 namespace mobile {
 
 	class ConversationScreen;
+	class ConversationTemplate;
 }
 }
 }
@@ -56,8 +57,8 @@ namespace server {
 
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
 		void activateEvent(ScreenPlayTask* task);
-		ConversationScreen* getNextConversationScreen(const String& luaClass, CreatureObject* conversingPlayer, int selectedOption);
-		ConversationScreen* runScreenHandlers(const String& luaClass, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption);
+		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 		Lua* getLuaInstance();
 

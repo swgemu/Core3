@@ -173,13 +173,13 @@ LuaConversationObserverImplementation::LuaConversationObserverImplementation(Con
 }
 
 ConversationScreen* LuaConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption) {
-	// server/zone/objects/creature/conversation/LuaConversationObserver.idl():  		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), conversingPlayer, selectedOption);
-	return DirectorManager::instance()->getNextConversationScreen(ConversationObserverImplementation::conversationTemplate->getLuaClassHandler(), conversingPlayer, selectedOption);
+	// server/zone/objects/creature/conversation/LuaConversationObserver.idl():  		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, selectedOption);
+	return DirectorManager::instance()->getNextConversationScreen(ConversationObserverImplementation::conversationTemplate->getLuaClassHandler(), ConversationObserverImplementation::conversationTemplate, conversingPlayer, selectedOption);
 }
 
 ConversationScreen* LuaConversationObserverImplementation::runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
-	// server/zone/objects/creature/conversation/LuaConversationObserver.idl():  		return DirectorManager.instance().runScreenHandlers(super.conversationTemplate.getLuaClassHandler(), conversingPlayer, conversingNPC, selectedOption, conversationScreen);
-	return DirectorManager::instance()->runScreenHandlers(ConversationObserverImplementation::conversationTemplate->getLuaClassHandler(), conversingPlayer, conversingNPC, selectedOption, conversationScreen);
+	// server/zone/objects/creature/conversation/LuaConversationObserver.idl():  		return DirectorManager.instance().runScreenHandlers(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen);
+	return DirectorManager::instance()->runScreenHandlers(ConversationObserverImplementation::conversationTemplate->getLuaClassHandler(), ConversationObserverImplementation::conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen);
 }
 
 /*

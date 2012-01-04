@@ -19,6 +19,7 @@
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"
+#include "server/zone/templates/mobile/ConversationTemplate.h"
 #include "server/zone/templates/mobile/LuaConversationScreen.h"
 #include "server/zone/templates/mobile/LuaConversationTemplate.h"
 #include "server/zone/objects/player/sessions/LuaConversationSession.h"
@@ -282,10 +283,11 @@ void DirectorManager::startScreenPlay(CreatureObject* creatureObject, const Stri
 	lua->callFunction(&startScreenPlay);
 }
 
-ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, CreatureObject* conversingPlayer, int selectedOption) {
+ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption) {
 	Lua* lua = getLuaInstance();
 
 	LuaFunction runMethod(lua->getLuaState(), luaClass, "getNextConversationScreen", 1);
+	runMethod << conversationTemplate;
 	runMethod << conversingPlayer;
 	runMethod << selectedOption;
 
@@ -298,10 +300,11 @@ ConversationScreen* DirectorManager::getNextConversationScreen(const String& lua
 	return result;
 }
 
-ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	Lua* lua = getLuaInstance();
 
 	LuaFunction runMethod(lua->getLuaState(), luaClass, "runScreenHandlers", 1);
+	runMethod << conversationTemplate;
 	runMethod << conversingPlayer;
 	runMethod << conversingNPC;
 	runMethod << selectedOption;

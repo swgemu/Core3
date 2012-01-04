@@ -59,11 +59,11 @@ class LuaConversationObserver extends ConversationObserver {
 	
 	@local
 	public ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption) {
-		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), conversingPlayer, selectedOption);
+		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, selectedOption);
 	}
 	
 	@local
 	public ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, CreatureObject conversingNPC, int selectedOption, ConversationScreen conversationScreen) {
-		return DirectorManager.instance().runScreenHandlers(super.conversationTemplate.getLuaClassHandler(), conversingPlayer, conversingNPC, selectedOption, conversationScreen);
+		return DirectorManager.instance().runScreenHandlers(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen);
 	}
 }
