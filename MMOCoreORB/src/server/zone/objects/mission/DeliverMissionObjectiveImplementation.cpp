@@ -173,22 +173,7 @@ void DeliverMissionObjectiveImplementation::complete() {
 
 	player->addBankCredits(missionReward, true);
 
-	//Award faction points for faction delivery missions.
-	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-	if (ghost != NULL) {
-		Locker ghostLocker(ghost);
-
-		switch (mission->getFaction()) {
-		case MissionObject::FACTIONIMPERIAL:
-			ghost->increaseFactionStanding("imperial", 5);
-			ghost->decreaseFactionStanding("rebel", 5);
-			break;
-		case MissionObject::FACTIONREBEL:
-			ghost->increaseFactionStanding("rebel", 5);
-			ghost->decreaseFactionStanding("imperial", 5);
-			break;
-		}
-	}
+	awardFactionPoints(5);
 
 	despawnNpcs();
 

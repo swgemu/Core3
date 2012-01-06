@@ -76,6 +76,12 @@ void MissionManagerImplementation::loadCraftingMissionItems() {
 			enableFactionalCraftingMissions = true;
 		}
 
+		value = lua->getGlobalString("enable_factional_recon_missions");
+
+		if (value.toLowerCase() == "true") {
+			enableFactionalReconMissions = true;
+		}
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -95,7 +101,15 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	if (missionBag == NULL)
 		return;
 
-	while (missionBag->getContainerObjectsSize() < 18) {
+	int maximumNumberOfItemsInMissionBag = 12;
+	if (enableFactionalCraftingMissions) {
+		maximumNumberOfItemsInMissionBag += 6;
+	}
+	if (enableFactionalReconMissions) {
+		maximumNumberOfItemsInMissionBag += 6;
+	}
+
+	while (missionBag->getContainerObjectsSize() < maximumNumberOfItemsInMissionBag) {
 		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission
 		missionBag->transferObject(mission, -1, false);
 		mission->sendTo(player, true);
@@ -328,31 +342,33 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	SceneObject* missionBag = player->getSlottedObject("mission_bag");
 	int bagSize = missionBag->getContainerObjectsSize();
 
+	int numberOfCraftingMissions = 0;
+	int numberOfReconMissions = 0;
+
+	int maximumNumberOfMissionTypesInOneTerminal = 2;
+	if (enableFactionalCraftingMissions) {
+		maximumNumberOfMissionTypesInOneTerminal++;
+	}
+	if (enableFactionalReconMissions) {
+		maximumNumberOfMissionTypesInOneTerminal++;
+	}
+
 	for (int i = 0; i < bagSize; ++i) {
 		MissionObject* mission = cast<MissionObject*>( missionBag->getContainerObject(i));
 
-		// TODO: make mission distribution function more like live
 		if (missionTerminal->isGeneralTerminal()) {
-			if (i < bagSize / 3) {
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeDestroyMission(player, mission);
-				if (missionTerminal->isSlicer(player))
-					mission->setRewardCredits(mission->getRewardCredits() * 2);
-			} else if (i < (bagSize * 2 / 3)) {
+			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
 				randomizeDeliverMission(player, mission);
-				if (missionTerminal->isSlicer(player))
-					mission->setRewardCredits(mission->getRewardCredits() * 2);
 			} else {
 				mission->setTypeCRC(0);
 			}
 		} else if (missionTerminal->isArtisanTerminal()) {
-			if (i < bagSize / 3) {
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeSurveyMission(player, mission);
-				if (missionTerminal->isSlicer(player))
-					mission->setRewardCredits(mission->getRewardCredits() * 2);
-			} else  if (i < (bagSize * 2 / 3)) {
+			} else  if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
 				randomizeCraftingMission(player, mission);
-				if (missionTerminal->isSlicer(player))
-					mission->setRewardCredits(mission->getRewardCredits() * 2);
 			} else {
 				mission->setTypeCRC(0);
 			}
@@ -365,39 +381,55 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				mission->setTypeCRC(MissionObject::DANCER);*/
 			mission->setTypeCRC(0); // missions won't show on terminals
 		} else if (missionTerminal->isImperialTerminal()) {
-			if (i < bagSize / 3) {
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeImperialDestroyMission(player, mission);
-			} else if (i < (bagSize * 2 / 3)) {
+			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
 				randomizeImperialDeliverMission(player, mission);
-			} else if (enableFactionalCraftingMissions) {
-				randomizeImperialCraftingMission(player, mission);
 			} else {
-				mission->setTypeCRC(0, true);
+				if (enableFactionalCraftingMissions && numberOfCraftingMissions < 6) {
+					randomizeImperialCraftingMission(player, mission);
+					numberOfCraftingMissions++;
+				} else if (enableFactionalReconMissions && numberOfReconMissions < 6) {
+					randomizeImperialReconMission(player, mission);
+					numberOfReconMissions++;
+				} else {
+					mission->setTypeCRC(0, true);
+				}
 			}
 		} else if (missionTerminal->isRebelTerminal()) {
-			if (i < bagSize / 3) {
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeRebelDestroyMission(player, mission);
-			} else if (i < (bagSize * 2 / 3)) {
+			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
 				randomizeRebelDeliverMission(player, mission);
-			} else if (enableFactionalCraftingMissions) {
-				randomizeRebelCraftingMission(player, mission);
 			} else {
-				mission->setTypeCRC(0, true);
+				if (enableFactionalCraftingMissions && numberOfCraftingMissions < 6) {
+					randomizeRebelCraftingMission(player, mission);
+					numberOfCraftingMissions++;
+				} else if (enableFactionalReconMissions && numberOfReconMissions < 6) {
+					randomizeRebelReconMission(player, mission);
+					numberOfReconMissions++;
+				} else {
+					mission->setTypeCRC(0, true);
+				}
 			}
 		} else if (missionTerminal->isScoutTerminal()) {
-			if (i < bagSize / 3) {
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeReconMission(player, mission);
-			} else if (i < (bagSize * 2 / 3)) {
+			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
 				randomizeHuntingMission(player, mission);
 			} else {
 				mission->setTypeCRC(0);
 			}
 		} else if (missionTerminal->isBountyTerminal()) {
-			if (i < bagSize / 3) {
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeBountyMission(player, mission);
 			} else {
 				mission->setTypeCRC(0);
 			}
+		}
+
+		if (missionTerminal->isSlicer(player)) {
+			mission->setRewardCredits(mission->getRewardCredits() * 2);
 		}
 
 		mission->setRefreshCounter(counter, true);
@@ -886,12 +918,12 @@ void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* playe
 	*/
 }
 
-void MissionManagerImplementation::randomizeReconMission(CreatureObject* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	bool foundPosition = false;
 	Vector3 position;
 
 	while (!foundPosition) {
-		position = player->getPosition();
+		position = player->getWorldPosition();
 
 		position.setX(position.getX() + System::random(5000) - 2500);
 		position.setY(position.getY() + System::random(5000) - 2500);
@@ -932,14 +964,33 @@ void MissionManagerImplementation::randomizeReconMission(CreatureObject* player,
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(position.getX(), position.getY(), player->getZone()->getZoneName());
 
-	int reward = position.distanceTo(player->getPosition()) / 5;
+	int reward = position.distanceTo(player->getWorldPosition()) / 5;
 
 	mission->setRewardCredits(50 + reward);
 	mission->setMissionDifficulty(1);
-	mission->setMissionTitle("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "t");
-	mission->setMissionDescription("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "o");
+
+	mission->setFaction(faction);
+
+	switch (faction) {
+	case MissionObject::FACTIONIMPERIAL:
+		mission->setMissionTitle("mission/mission_npc_recon_imperial_easy", "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_npc_recon_imperial_easy", "m" + String::valueOf(randTexts) + "o");
+		break;
+	case MissionObject::FACTIONREBEL:
+		mission->setMissionTitle("mission/mission_npc_recon_rebel_easy", "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_npc_recon_rebel_easy", "m" + String::valueOf(randTexts) + "o");
+		break;
+	default:
+		mission->setMissionTitle("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "o");
+		break;
+	}
 
 	mission->setTypeCRC(MissionObject::RECON);
+}
+
+void MissionManagerImplementation::randomizeReconMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericReconMission(player, mission, MissionObject::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
@@ -955,6 +1006,10 @@ void MissionManagerImplementation::randomizeImperialCraftingMission(CreatureObje
 	randomizeGenericCraftingMission(player, mission, MissionObject::FACTIONIMPERIAL);
 }
 
+void MissionManagerImplementation::randomizeImperialReconMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericReconMission(player, mission, MissionObject::FACTIONIMPERIAL);
+}
+
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
 	randomizeDestroyMission(player, mission);
@@ -966,6 +1021,10 @@ void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* 
 
 void MissionManagerImplementation::randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission) {
 	randomizeGenericCraftingMission(player, mission, MissionObject::FACTIONREBEL);
+}
+
+void MissionManagerImplementation::randomizeRebelReconMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericReconMission(player, mission, MissionObject::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, const String& spawnTypes) {

@@ -16,7 +16,7 @@
  *	MissionObjectiveStub
  */
 
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__};
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__INT_};
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
@@ -139,6 +139,20 @@ CreatureObject* MissionObjective::getPlayerOwner() {
 		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getPlayerOwner();
+}
+
+void MissionObjective::awardFactionPoints(int points) {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_AWARDFACTIONPOINTS__INT_);
+		method.addSignedIntParameter(points);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->awardFactionPoints(points);
 }
 
 DistributedObjectServant* MissionObjective::_getImplementation() {
@@ -371,6 +385,9 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_GETPLAYEROWNER__:
 		resp->insertLong(getPlayerOwner()->_getObjectID());
 		break;
+	case RPC_AWARDFACTIONPOINTS__INT_:
+		awardFactionPoints(inv->getSignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -408,6 +425,10 @@ unsigned int MissionObjectiveAdapter::getObjectiveType() {
 
 CreatureObject* MissionObjectiveAdapter::getPlayerOwner() {
 	return (static_cast<MissionObjective*>(stub))->getPlayerOwner();
+}
+
+void MissionObjectiveAdapter::awardFactionPoints(int points) {
+	(static_cast<MissionObjective*>(stub))->awardFactionPoints(points);
 }
 
 /*

@@ -75,6 +75,8 @@ class MissionManager extends Observer implements Logger {
 	
 	protected boolean enableFactionalCraftingMissions;
 	
+	protected boolean enableFactionalReconMissions;
+	
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
 	
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
@@ -113,13 +115,16 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeEntertainerMission(CreatureObject player, MissionObject mission);
 	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeGenericReconMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeReconMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialDeliverMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialCraftingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeImperialReconMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelDeliverMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelCraftingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeRebelReconMission(CreatureObject player, MissionObject mission);
 
 	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
 	public native void returnSpawnPoint(NpcSpawnPoint spawnPoint);

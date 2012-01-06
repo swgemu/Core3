@@ -102,6 +102,8 @@ public:
 
 	CreatureObject* getPlayerOwner();
 
+	void awardFactionPoints(int points);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -154,6 +156,8 @@ public:
 	unsigned int getObjectiveType();
 
 	CreatureObject* getPlayerOwner();
+
+	void awardFactionPoints(int points);
 
 	WeakReference<MissionObjective*> _this;
 
@@ -213,6 +217,8 @@ public:
 	unsigned int getObjectiveType();
 
 	CreatureObject* getPlayerOwner();
+
+	void awardFactionPoints(int points);
 
 };
 

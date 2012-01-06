@@ -85,6 +85,8 @@ void ReconMissionObjectiveImplementation::complete() {
 
 	player->addBankCredits(missionReward, true);
 
+	awardFactionPoints(10);
+
 	ZoneServer* zoneServer = player->getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();
 

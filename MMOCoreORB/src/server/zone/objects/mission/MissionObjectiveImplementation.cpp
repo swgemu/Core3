@@ -11,6 +11,7 @@
 #include "MissionObserver.h"
 #include "MissionObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
@@ -27,4 +28,23 @@ CreatureObject* MissionObjectiveImplementation::getPlayerOwner() {
 		return cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 	else
 		return NULL;
+}
+
+void MissionObjectiveImplementation::awardFactionPoints(int points) {
+	//Award faction points for faction delivery missions.
+	ManagedReference<PlayerObject*> ghost = getPlayerOwner()->getPlayerObject();
+	if (ghost != NULL) {
+		Locker ghostLocker(ghost);
+
+		switch (mission->getFaction()) {
+		case MissionObject::FACTIONIMPERIAL:
+			ghost->increaseFactionStanding("imperial", points);
+			ghost->decreaseFactionStanding("rebel", points);
+			break;
+		case MissionObject::FACTIONREBEL:
+			ghost->increaseFactionStanding("rebel", points);
+			ghost->decreaseFactionStanding("imperial", points);
+			break;
+		}
+	}
 }

@@ -174,6 +174,8 @@ public:
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission);
@@ -182,11 +184,15 @@ public:
 
 	void randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeImperialReconMission(CreatureObject* player, MissionObject* mission);
+
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission);
+
+	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
@@ -260,6 +266,8 @@ protected:
 
 	bool enableFactionalCraftingMissions;
 
+	bool enableFactionalReconMissions;
+
 public:
 	unsigned static const int UNKNOWN_TARGET = 0xB911DA26;
 
@@ -301,6 +309,8 @@ public:
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission);
@@ -309,11 +319,15 @@ public:
 
 	void randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeImperialReconMission(CreatureObject* player, MissionObject* mission);
+
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission);
+
+	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
@@ -422,6 +436,8 @@ public:
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission);
@@ -430,11 +446,15 @@ public:
 
 	void randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission);
 
+	void randomizeImperialReconMission(CreatureObject* player, MissionObject* mission);
+
 	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission);
+
+	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
