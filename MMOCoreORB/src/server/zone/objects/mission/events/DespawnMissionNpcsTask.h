@@ -74,8 +74,18 @@ public:
 	void run() {
 		missionManager->returnSpawnPoint(startNpcSpawnPoint);
 		missionManager->returnSpawnPoint(endNpcSpawnPoint);
-		startNpc->scheduleDespawn(0);
-		endNpc->scheduleDespawn(0);
+
+		if (startNpc != NULL) {
+			Locker locker(startNpc);
+
+			startNpc->scheduleDespawn(0);
+		}
+
+		if (endNpc != NULL) {
+			Locker locker(endNpc);
+
+			endNpc->scheduleDespawn(0);
+		}
 	}
 };
 
