@@ -16,7 +16,7 @@
  *	MissionReconActiveAreaStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_};
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_};
 
 MissionReconActiveArea::MissionReconActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	MissionReconActiveAreaImplementation* _implementation = new MissionReconActiveAreaImplementation();
@@ -44,6 +44,20 @@ void MissionReconActiveArea::notifyEnter(SceneObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyEnter(player);
+}
+
+void MissionReconActiveArea::notifyExit(SceneObject* player) {
+	MissionReconActiveAreaImplementation* _implementation = static_cast<MissionReconActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYEXIT__SCENEOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyExit(player);
 }
 
 void MissionReconActiveArea::setMissionObjective(ReconMissionObjective* mission) {
@@ -170,6 +184,11 @@ bool MissionReconActiveAreaImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
+	if (_name == "completeTask") {
+		TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&completeTask, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -193,14 +212,24 @@ int MissionReconActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "completeTask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::toBinaryStream(&completeTask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 1 + ActiveAreaImplementation::writeObjectMembers(stream);
+
+	return 2 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 MissionReconActiveAreaImplementation::MissionReconActiveAreaImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/area/MissionReconActiveArea.idl():  		missionObjective = null;
 	missionObjective = NULL;
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		completeTask = null;
+	completeTask = NULL;
 	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.setLoggingName("MissionReconActiveArea");
 	Logger::setLoggingName("MissionReconActiveArea");
 }
@@ -221,8 +250,52 @@ void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
 	CreatureObject* missionOwner = missionObjective->getPlayerOwner();
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if ((CreatureObject*) player == missionOwner){
-	// server/zone/objects/area/MissionReconActiveArea.idl():  					missionObjective.complete();
-	missionObjective->complete();
+	// server/zone/objects/area/MissionReconActiveArea.idl():  					if 
+	if (completeTask == NULL){
+	Reference<CompleteMissionAfterCertainTimeTask*> _ref0;
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						completeTask = new CompleteMissionAfterCertainTimeTask(missionObjective);
+	completeTask = _ref0 = new CompleteMissionAfterCertainTimeTask(missionObjective);
+}
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				}
+	if (!completeTask->isScheduled()){
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						missionOwner.sendSystemMessage("Reconnaisance target reached. Stay at the target to do a full inspection.");
+	missionOwner->sendSystemMessage("Reconnaisance target reached. Stay at the target to do a full inspection.");
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						completeTask.schedule(30 * 1000);
+	completeTask->schedule(30 * 1000);
+}
+}
+}
+
+	else {
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				super.destroyObjectFromWorld(false);
+	ActiveAreaImplementation::destroyObjectFromWorld(false);
+}
+}
+}
+
+void MissionReconActiveAreaImplementation::notifyExit(SceneObject* player) {
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.info("notifyExit mission recon", true);
+	Logger::info("notifyExit mission recon", true);
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		}
+	if (!player->isPlayerCreature()){
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			return;
+	return;
+}
+
+	else {
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
+	if (missionObjective != NULL){
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = missionObjective.getPlayerOwner();
+	CreatureObject* missionOwner = missionObjective->getPlayerOwner();
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
+	if ((CreatureObject*) player == missionOwner){
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				}
+	if (completeTask != NULL){
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						missionOwner.sendSystemMessage("Reconnaisance aborted.");
+	missionOwner->sendSystemMessage("Reconnaisance aborted.");
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						completeTask.cancel();
+	completeTask->cancel();
+}
 }
 }
 
@@ -252,6 +325,9 @@ Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_NOTIFYEXIT__SCENEOBJECT_:
+		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_:
 		setMissionObjective(static_cast<ReconMissionObjective*>(inv->getObjectParameter()));
 		break;
@@ -264,6 +340,10 @@ Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMe
 
 void MissionReconActiveAreaAdapter::notifyEnter(SceneObject* player) {
 	(static_cast<MissionReconActiveArea*>(stub))->notifyEnter(player);
+}
+
+void MissionReconActiveAreaAdapter::notifyExit(SceneObject* player) {
+	(static_cast<MissionReconActiveArea*>(stub))->notifyExit(player);
 }
 
 void MissionReconActiveAreaAdapter::setMissionObjective(ReconMissionObjective* mission) {

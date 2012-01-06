@@ -212,8 +212,6 @@ public:
 
 	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	bool hasSurveyMission(CreatureObject* player, const String& spawn);
-
 	String getDeliveryMissionFileName(const int faction);
 
 	int getDeliverMissionNumberOfMissions(const int faction);
@@ -341,8 +339,6 @@ public:
 
 	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	bool hasSurveyMission(CreatureObject* player, const String& spawn);
-
 	String getDeliveryMissionFileName(const int faction);
 
 	int getDeliverMissionNumberOfMissions(const int faction);
@@ -464,8 +460,6 @@ public:
 
 	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	bool hasSurveyMission(CreatureObject* player, const String& spawn);
-
 	String getDeliveryMissionFileName(const int faction);
 
 	int getDeliverMissionNumberOfMissions(const int faction);
@@ -474,7 +468,6 @@ public:
 
 protected:
 	String _param1_createSpawnPoint__CreatureObject_String_;
-	String _param1_hasSurveyMission__CreatureObject_String_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

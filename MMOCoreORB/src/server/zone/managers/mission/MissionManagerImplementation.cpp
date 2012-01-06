@@ -31,6 +31,7 @@
 #include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/area/MissionReconActiveArea.h"
 #include "server/zone/Zone.h"
 #include "server/db/ServerDatabase.h"
 
@@ -137,40 +138,11 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 		return;
 	}
 
-	// why are we limiting to one survey mission?
-	/*if (mission->isSurveyMission()) {
-		if (hasSurveyMission(player, mission->getTargetName())) {
-			StringIdChatParameter stringId("mission/mission_generic", "npc_job_request_already_have");
-			player->sendSystemMessage(stringId);
-
-			return;
-		}
-	}*/
-
 	datapad->transferObject(mission, -1, true);
 
 	createMissionObjectives(mission, missionTerminal, player);
 
 	player->updateToDatabaseAllObjects(false);
-}
-
-bool MissionManagerImplementation::hasSurveyMission(CreatureObject* player, const String& spawn) {
-	SceneObject* datapad = player->getSlottedObject("datapad");
-
-	int missionCount = 0;
-
-	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-		SceneObject* obj = datapad->getContainerObject(i);
-
-		if (obj->isMissionObject()) {
-			MissionObject* mission = cast<MissionObject*>( obj);
-
-			if (mission->getTargetName() == spawn)
-				return true;
-		}
-	}
-
-	return false;
 }
 
 void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
@@ -915,24 +887,40 @@ void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* playe
 }
 
 void MissionManagerImplementation::randomizeReconMission(CreatureObject* player, MissionObject* mission) {
-	/*
-	PlanetManager* pmng = player->getZone()->getPlanetManager();
+	bool foundPosition = false;
+	Vector3 position;
 
-	MissionTargetMap* reconlocs = pmng->getReconLocs();
-	if (reconlocs->size() <= 0) {
-		//System::out << "No recon locations!" << endl;
-		mission->setTypeCRC(0);
-		return;
+	while (!foundPosition) {
+		position = player->getPosition();
+
+		position.setX(position.getX() + System::random(5000) - 2500);
+		position.setY(position.getY() + System::random(5000) - 2500);
+
+		if (position.getX() > player->getZone()->getMaxX() - 100) {
+			position.setX(player->getZone()->getMaxX());
+		} else if (position.getX() < player->getZone()->getMinX() + 100) {
+			position.setX(player->getZone()->getMinX());
+		}
+		if (position.getY() > player->getZone()->getMaxY() - 100) {
+			position.setY(player->getZone()->getMaxY());
+		} else if (position.getY() < player->getZone()->getMinY() + 100) {
+			position.setY(player->getZone()->getMinY());
+		}
+
+		ManagedReference<MissionReconActiveArea*> target = cast<MissionReconActiveArea*>(player->getZoneServer()->createObject(String("object/mission_recon_area.iff").hashCode(), 1));
+		target->setPosition(position.getX(), 0, position.getY());
+		player->getZone()->transferObject(target, -1, false);
+
+		//Check if it is a position where you can build and away from any travel points.
+		if (player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), target)) {
+			ManagedReference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(target, 16000.f);
+
+			if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
+				foundPosition = true;
+			}
+		}
+		target->destroyObjectFromWorld(true);
 	}
-
-	ManagedReference<SceneObject*> target = reconlocs->getRandomTarget(player, 2);
-	if (target == NULL || target->getZone() == NULL) {
-		System::out << "Failed to get recon target!" << endl;
-		mission->setTypeCRC(0);
-		return;
-	}
-
-	mission->setMissionTarget(target);
 
 	NameManager* nm = processor->getNameManager();
 
@@ -941,19 +929,17 @@ void MissionManagerImplementation::randomizeReconMission(CreatureObject* player,
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setStartPlanetCRC(target->getZone()->getPlanetName().hashCode());
-	mission->setStartPosition(target->getPositionX(), target->getPositionY(), target->getPlanetCRC());
+	mission->setStartPlanet(player->getZone()->getZoneName());
+	mission->setStartPosition(position.getX(), position.getY(), player->getZone()->getZoneName());
 
-	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(target->getServerObjectCRC())->getObjectName());
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(target->getServerObjectCRC()));
+	int reward = position.distanceTo(player->getPosition()) / 5;
 
-	mission->setRewardCredits(100 + System::random(100));
+	mission->setRewardCredits(50 + reward);
 	mission->setMissionDifficulty(1);
 	mission->setMissionTitle("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "t");
 	mission->setMissionDescription("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "o");
 
 	mission->setTypeCRC(MissionObject::RECON);
-	*/
 }
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {

@@ -21,7 +21,6 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void ReconMissionObjectiveImplementation::activate() {
-	/*
 	if (mission == NULL)
 		return;
 
@@ -33,16 +32,19 @@ void ReconMissionObjectiveImplementation::activate() {
 	}
 
 	if (!locationActiveArea->isInQuadTree()) {
-		uint32 startPlanetCRC = mission->getStartPlanetCRC();
-
-		String planetName = Planet::getPlanetNameByCrc(startPlanetCRC);
+		String planetName = mission->getStartPlanet();
 
 		Zone* zone = zoneServer->getZone(planetName);
+
 		locationActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		locationActiveArea->setRadius(32.f);
-		locationActiveArea->insertToZone(zone);
 
-		info("inserting to zone " + zone->getZoneName(), true);
+		if (zone != NULL) {
+			zone->transferObject(locationActiveArea, -1, true);
+		} else {
+			error("Failed to insert recon location to zone.");
+			return;
+		}
 	}
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
@@ -55,7 +57,6 @@ void ReconMissionObjectiveImplementation::activate() {
 	waypoint->setActive(true);
 
 	mission->updateMissionLocation();
-	*/
 }
 
 void ReconMissionObjectiveImplementation::abort() {

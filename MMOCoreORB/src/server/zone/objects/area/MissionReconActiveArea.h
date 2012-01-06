@@ -63,6 +63,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/objects/mission/events/CompleteMissionAfterCertainTimeTask.h"
+
 #include "server/zone/objects/area/ActiveArea.h"
 
 namespace server {
@@ -75,6 +77,8 @@ public:
 	MissionReconActiveArea();
 
 	void notifyEnter(SceneObject* player);
+
+	void notifyExit(SceneObject* player);
 
 	void setMissionObjective(ReconMissionObjective* mission);
 
@@ -106,12 +110,16 @@ class MissionReconActiveAreaImplementation : public ActiveAreaImplementation {
 protected:
 	ManagedWeakReference<ReconMissionObjective* > missionObjective;
 
+	Reference<CompleteMissionAfterCertainTimeTask* > completeTask;
+
 public:
 	MissionReconActiveAreaImplementation();
 
 	MissionReconActiveAreaImplementation(DummyConstructorParameter* param);
 
 	void notifyEnter(SceneObject* player);
+
+	void notifyExit(SceneObject* player);
 
 	void setMissionObjective(ReconMissionObjective* mission);
 
@@ -159,6 +167,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void notifyEnter(SceneObject* player);
+
+	void notifyExit(SceneObject* player);
 
 	void setMissionObjective(ReconMissionObjective* mission);
 

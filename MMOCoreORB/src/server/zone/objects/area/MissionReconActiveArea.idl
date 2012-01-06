@@ -49,13 +49,17 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.ReconMissionObjective;
 import server.zone.Zone;
+include server.zone.objects.mission.events.CompleteMissionAfterCertainTimeTask;
 
 class MissionReconActiveArea extends ActiveArea {
 	@weakReference
 	protected ReconMissionObjective missionObjective;
 	
+	protected CompleteMissionAfterCertainTimeTask completeTask;
+	
 	public MissionReconActiveArea() {
 		missionObjective = null;
+		completeTask = null;
 		
 		Logger.setLoggingName("MissionReconActiveArea");
 	}
@@ -70,7 +74,37 @@ class MissionReconActiveArea extends ActiveArea {
 				CreatureObject missionOwner = missionObjective.getPlayerOwner();
 				
 				if ((CreatureObject)player == missionOwner) {
-					missionObjective.complete();
+					if (completeTask == null) {
+						completeTask = new CompleteMissionAfterCertainTimeTask(missionObjective);
+					}
+					
+					if (!completeTask.isScheduled()) {
+						missionOwner.sendSystemMessage("Reconnaisance target reached. Stay at the target to do a full inspection.");
+						completeTask.schedule(30 * 1000);
+					}
+				}
+			} else {
+				super.destroyObjectFromWorld(false);
+				//getZone().removeObject(this, true);
+				//super.removeFromZone();
+			}
+		}
+	}
+
+	public void notifyExit(SceneObject player) {
+		Logger.info("notifyExit mission recon", true);
+		
+		if (!player.isPlayerCreature()) {
+			return;
+		} else {
+			if (missionObjective != null) {
+				CreatureObject missionOwner = missionObjective.getPlayerOwner();
+				
+				if ((CreatureObject)player == missionOwner) {
+					if (completeTask != null) {
+						missionOwner.sendSystemMessage("Reconnaisance aborted.");
+						completeTask.cancel();
+					}
 				}
 			} else {
 				super.destroyObjectFromWorld(false);
