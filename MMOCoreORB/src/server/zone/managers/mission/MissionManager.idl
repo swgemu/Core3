@@ -104,31 +104,36 @@ class MissionManager extends Observer implements Logger {
 	public native void removeMission(MissionObject mission, CreatureObject player);
 	
 	public native void populateMissionList(MissionTerminal missionTerminal, CreatureObject player, int counter);
+
+	public native boolean randomGenericDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission, final int faction);
+
+	public native void randomizeGenericBountyMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericDestroyMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericEntertainerMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericHuntingMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericReconMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericSurveyMission(CreatureObject player, MissionObject mission, final int faction);
 	
 	public native void randomizeSurveyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeBountyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeDeliverMission(CreatureObject player, MissionObject mission);
-	public native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final int faction);
-	public native boolean randomGenericDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission, final int faction);
 	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
-	public native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeEntertainerMission(CreatureObject player, MissionObject mission);
 	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
-	public native void randomizeGenericReconMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeReconMission(CreatureObject player, MissionObject mission);
+	
 	public native void randomizeImperialDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialDeliverMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialCraftingMission(CreatureObject player, MissionObject mission);
 	public native void randomizeImperialReconMission(CreatureObject player, MissionObject mission);
+	
 	public native void randomizeRebelDestroyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelDeliverMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelCraftingMission(CreatureObject player, MissionObject mission);
 	public native void randomizeRebelReconMission(CreatureObject player, MissionObject mission);
-
-	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
-	public native void returnSpawnPoint(NpcSpawnPoint spawnPoint);
-	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
 	
 	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
@@ -139,6 +144,10 @@ class MissionManager extends Observer implements Logger {
 	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	public native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+
+	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
+	public native void returnSpawnPoint(NpcSpawnPoint spawnPoint);
+	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
 	
 	public native string getDeliveryMissionFileName(final int faction);
 	public native int getDeliverMissionNumberOfMissions(final int faction);

@@ -442,6 +442,10 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 }
 
 void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONNEUTRAL);
+}
+
+void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	Zone* zone = player->getZone();
 
 	mission->setTypeCRC(0);
@@ -519,6 +523,8 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 	mission->setRewardCredits(System::random(difficulty * 100) + (difficulty * 200));
 	mission->setMissionDifficulty(difficulty);
 
+	mission->setFaction(faction);
+
 	String messageDifficulty;
 
 	if (difficulty <= 10)
@@ -536,6 +542,10 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 }
 
 void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericSurveyMission(player, mission, MissionObject::FACTIONNEUTRAL);
+}
+
+void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	int maxLevel = 50;
 	int minLevel = 50;
 	long long surveySkill = player->getSkillMod("surveying");
@@ -594,6 +604,8 @@ void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player
 	//Reward depending on mission level.
 	mission->setRewardCredits(400 + (randLevel - minLevel) * 20 + System::random(100));
 
+	mission->setFaction(faction);
+
 	mission->setMissionDifficulty(randLevel);
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 	mission->setMissionTitle("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "t");
@@ -604,6 +616,10 @@ void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player
 }
 
 void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericBountyMission(player, mission, MissionObject::FACTIONNEUTRAL);
+}
+
+void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	/*
 	int zoneID = player->getZone()->getZoneID();
 
@@ -634,6 +650,8 @@ void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player
 
 	mission->setMissionTargetName("???");
 	mission->setTargetTemplate(templateObject);
+
+	mission->setFaction(faction);
 
 	mission->setRewardCredits(500 + System::random(500));
 	mission->setMissionDifficulty(1);
@@ -831,6 +849,10 @@ void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObjec
 }
 
 void MissionManagerImplementation::randomizeEntertainerMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONNEUTRAL);
+}
+
+void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 	MissionTargetMap* performanceLocations = pmng->getPerformanceLocations();
@@ -882,6 +904,10 @@ void MissionManagerImplementation::randomizeEntertainerMission(CreatureObject* p
 }
 
 void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* player, MissionObject* mission) {
+	randomizeGenericHuntingMission(player, mission, MissionObject::FACTIONNEUTRAL);
+}
+
+void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 
@@ -998,7 +1024,7 @@ void MissionManagerImplementation::randomizeReconMission(CreatureObject* player,
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
-	randomizeDestroyMission(player, mission);
+	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONIMPERIAL);
 }
 
 void MissionManagerImplementation::randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission) {
@@ -1015,7 +1041,7 @@ void MissionManagerImplementation::randomizeImperialReconMission(CreatureObject*
 
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
-	randomizeDestroyMission(player, mission);
+	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {

@@ -154,6 +154,24 @@ public:
 
 	void populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
+	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
+
+	void randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericSurveyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeSurveyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeDestroyMission(CreatureObject* player, MissionObject* mission);
@@ -162,19 +180,11 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
-
-	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
-
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
 
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
 
 	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
@@ -194,12 +204,6 @@ public:
 
 	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
-	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
-
-	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
-
-	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
-
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
@@ -217,6 +221,12 @@ public:
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
+
+	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
+
+	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
+
+	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	String getDeliveryMissionFileName(const int faction);
 
@@ -289,6 +299,24 @@ public:
 
 	void populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
+	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
+
+	void randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericSurveyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeSurveyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeDestroyMission(CreatureObject* player, MissionObject* mission);
@@ -297,19 +325,11 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
-
-	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
-
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
 
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
 
 	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
@@ -329,12 +349,6 @@ public:
 
 	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
-	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
-
-	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
-
-	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
-
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
@@ -352,6 +366,12 @@ public:
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
+
+	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
+
+	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
+
+	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	String getDeliveryMissionFileName(const int faction);
 
@@ -416,6 +436,24 @@ public:
 
 	void populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
+	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
+
+	void randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
+
+	void randomizeGenericSurveyMission(CreatureObject* player, MissionObject* mission, const int faction);
+
 	void randomizeSurveyMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeDestroyMission(CreatureObject* player, MissionObject* mission);
@@ -424,19 +462,11 @@ public:
 
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const int faction);
-
-	bool randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction);
-
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const int faction);
 
 	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction);
 
 	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
@@ -456,12 +486,6 @@ public:
 
 	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
-	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
-
-	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
-
-	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
-
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
@@ -479,6 +503,12 @@ public:
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createCraftingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
+
+	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
+
+	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
+
+	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	String getDeliveryMissionFileName(const int faction);
 
