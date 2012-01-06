@@ -77,6 +77,9 @@ public:
 
 		InstallationObject* inso = cast<InstallationObject*>( object.get());
 
+		if (inso->getZone() == NULL)
+			return GENERALERROR;
+
 		/*if (!inso->isHarvesterObject())
 			return GENERALERROR;*/
 
