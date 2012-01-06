@@ -67,6 +67,7 @@ class MissionObject extends IntangibleObject {
 	protected int difficultyLevel;
 	protected unicode creatorName;
 	protected int rewardCredits;
+	protected int rewardFactionPoints;
 	protected int missionNumber;
 	protected int faction;
 	
@@ -133,6 +134,7 @@ class MissionObject extends IntangibleObject {
 		difficultyLevel = 50;
 		
 		rewardCredits = 100;
+		rewardFactionPoints = 0;
 		
 		startPositionX = 0;
 		startPositionY = 0;
@@ -201,6 +203,10 @@ class MissionObject extends IntangibleObject {
 		startPlanet = planet;
 	}
 	
+	public void setRewardFactionPoints(int points) {
+		rewardFactionPoints = points;
+	}
+	
 	public void setEndPlanetCRC(unsigned int crc) {
 		endPlanetCRC = crc;
 	}
@@ -232,6 +238,10 @@ class MissionObject extends IntangibleObject {
 	
 	public int getFaction() {
 		return faction;
+	}
+	
+	public int getRewardFactionPoints() {
+		return rewardFactionPoints;
 	}
 	
 	public float getStartPositionX() {

@@ -11,7 +11,6 @@
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -176,28 +175,8 @@ void DestroyMissionObjectiveImplementation::abort() {
 }
 
 void DestroyMissionObjectiveImplementation::complete() {
-	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
 
-	if (player == NULL)
-		return;
-
-	Locker locker(player);
-
-	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
-	player->sendMessage(pmm);
-
-	int missionReward = mission->getRewardCredits();
-
-	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
-	stringId.setDI(missionReward);
-	player->sendSystemMessage(stringId);
-
-	player->addBankCredits(missionReward, true);
-
-	ZoneServer* zoneServer = player->getZoneServer();
-	MissionManager* missionManager = zoneServer->getMissionManager();
-
-	missionManager->removeMission(mission, player);
+	MissionObjectiveImplementation::complete();
 }
 
 int DestroyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {

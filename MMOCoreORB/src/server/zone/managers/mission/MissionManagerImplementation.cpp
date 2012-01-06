@@ -755,6 +755,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	int deliverDistanceCredits = startNpc->getPosition()->distanceTo(*(endNpc->getPosition())) / 10;
 
 	mission->setRewardCredits(baseCredits + deliverDistanceCredits);
+	mission->setRewardFactionPoints(5);
 
 	mission->setMissionDifficulty(5);
 	mission->setMissionTitle(getDeliveryMissionFileName(faction), "m" + String::valueOf(randomTexts) + "t");
@@ -967,6 +968,8 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	int reward = position.distanceTo(player->getWorldPosition()) / 5;
 
 	mission->setRewardCredits(50 + reward);
+	mission->setRewardFactionPoints(10);
+
 	mission->setMissionDifficulty(1);
 
 	mission->setFaction(faction);

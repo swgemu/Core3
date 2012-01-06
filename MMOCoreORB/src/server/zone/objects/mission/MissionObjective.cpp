@@ -16,7 +16,7 @@
  *	MissionObjectiveStub
  */
 
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__INT_};
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__};
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
@@ -141,18 +141,17 @@ CreatureObject* MissionObjective::getPlayerOwner() {
 		return _implementation->getPlayerOwner();
 }
 
-void MissionObjective::awardFactionPoints(int points) {
+void MissionObjective::awardFactionPoints() {
 	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_AWARDFACTIONPOINTS__INT_);
-		method.addSignedIntParameter(points);
+		DistributedMethod method(this, RPC_AWARDFACTIONPOINTS__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->awardFactionPoints(points);
+		_implementation->awardFactionPoints();
 }
 
 DistributedObjectServant* MissionObjective::_getImplementation() {
@@ -337,9 +336,6 @@ void MissionObjectiveImplementation::activate() {
 void MissionObjectiveImplementation::abort() {
 }
 
-void MissionObjectiveImplementation::complete() {
-}
-
 MissionObject* MissionObjectiveImplementation::getMissionObject() {
 	// server/zone/objects/mission/MissionObjective.idl():  		return mission;
 	return mission;
@@ -385,8 +381,8 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_GETPLAYEROWNER__:
 		resp->insertLong(getPlayerOwner()->_getObjectID());
 		break;
-	case RPC_AWARDFACTIONPOINTS__INT_:
-		awardFactionPoints(inv->getSignedIntParameter());
+	case RPC_AWARDFACTIONPOINTS__:
+		awardFactionPoints();
 		break;
 	default:
 		return NULL;
@@ -427,8 +423,8 @@ CreatureObject* MissionObjectiveAdapter::getPlayerOwner() {
 	return (static_cast<MissionObjective*>(stub))->getPlayerOwner();
 }
 
-void MissionObjectiveAdapter::awardFactionPoints(int points) {
-	(static_cast<MissionObjective*>(stub))->awardFactionPoints(points);
+void MissionObjectiveAdapter::awardFactionPoints() {
+	(static_cast<MissionObjective*>(stub))->awardFactionPoints();
 }
 
 /*

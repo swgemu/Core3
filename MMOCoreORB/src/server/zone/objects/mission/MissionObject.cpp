@@ -22,7 +22,7 @@
  *	MissionObjectStub
  */
 
-enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETFACTION__INT_,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETFACTION__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETFACTION__INT_,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETREWARDFACTIONPOINTS__INT_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETFACTION__,RPC_GETREWARDFACTIONPOINTS__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
@@ -352,6 +352,20 @@ void MissionObject::setStartPlanet(const String& planet) {
 		_implementation->setStartPlanet(planet);
 }
 
+void MissionObject::setRewardFactionPoints(int points) {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETREWARDFACTIONPOINTS__INT_);
+		method.addSignedIntParameter(points);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setRewardFactionPoints(points);
+}
+
 void MissionObject::setEndPlanetCRC(unsigned int crc) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -461,6 +475,19 @@ int MissionObject::getFaction() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getFaction();
+}
+
+int MissionObject::getRewardFactionPoints() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREWARDFACTIONPOINTS__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getRewardFactionPoints();
 }
 
 float MissionObject::getStartPositionX() {
@@ -904,6 +931,11 @@ bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "rewardFactionPoints") {
+		TypeInfo<int >::parseFromBinaryStream(&rewardFactionPoints, stream);
+		return true;
+	}
+
 	if (_name == "missionNumber") {
 		TypeInfo<int >::parseFromBinaryStream(&missionNumber, stream);
 		return true;
@@ -1057,6 +1089,14 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "rewardFactionPoints";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&rewardFactionPoints, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "missionNumber";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1202,7 +1242,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 24 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 25 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 MissionObjectImplementation::MissionObjectImplementation() {
@@ -1221,6 +1261,8 @@ MissionObjectImplementation::MissionObjectImplementation() {
 	difficultyLevel = 50;
 	// server/zone/objects/mission/MissionObject.idl():  		rewardCredits = 100;
 	rewardCredits = 100;
+	// server/zone/objects/mission/MissionObject.idl():  		rewardFactionPoints = 0;
+	rewardFactionPoints = 0;
 	// server/zone/objects/mission/MissionObject.idl():  		startPositionX = 0;
 	startPositionX = 0;
 	// server/zone/objects/mission/MissionObject.idl():  		startPositionY = 0;
@@ -1254,6 +1296,11 @@ void MissionObjectImplementation::setMissionObjective(MissionObjective* obj) {
 void MissionObjectImplementation::setStartPlanet(const String& planet) {
 	// server/zone/objects/mission/MissionObject.idl():  		startPlanet = planet;
 	startPlanet = planet;
+}
+
+void MissionObjectImplementation::setRewardFactionPoints(int points) {
+	// server/zone/objects/mission/MissionObject.idl():  		rewardFactionPoints = points;
+	rewardFactionPoints = points;
 }
 
 void MissionObjectImplementation::setEndPlanetCRC(unsigned int crc) {
@@ -1296,6 +1343,11 @@ MissionObjective* MissionObjectImplementation::getMissionObjective() {
 int MissionObjectImplementation::getFaction() {
 	// server/zone/objects/mission/MissionObject.idl():  		return faction;
 	return faction;
+}
+
+int MissionObjectImplementation::getRewardFactionPoints() {
+	// server/zone/objects/mission/MissionObject.idl():  		return rewardFactionPoints;
+	return rewardFactionPoints;
 }
 
 float MissionObjectImplementation::getStartPositionX() {
@@ -1487,6 +1539,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SETSTARTPLANET__STRING_:
 		setStartPlanet(inv->getAsciiParameter(_param0_setStartPlanet__String_));
 		break;
+	case RPC_SETREWARDFACTIONPOINTS__INT_:
+		setRewardFactionPoints(inv->getSignedIntParameter());
+		break;
 	case RPC_SETENDPLANETCRC__INT_:
 		setEndPlanetCRC(inv->getUnsignedIntParameter());
 		break;
@@ -1510,6 +1565,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_GETFACTION__:
 		resp->insertSignedInt(getFaction());
+		break;
+	case RPC_GETREWARDFACTIONPOINTS__:
+		resp->insertSignedInt(getRewardFactionPoints());
 		break;
 	case RPC_GETSTARTPOSITIONX__:
 		resp->insertFloat(getStartPositionX());
@@ -1665,6 +1723,10 @@ void MissionObjectAdapter::setStartPlanet(const String& planet) {
 	(static_cast<MissionObject*>(stub))->setStartPlanet(planet);
 }
 
+void MissionObjectAdapter::setRewardFactionPoints(int points) {
+	(static_cast<MissionObject*>(stub))->setRewardFactionPoints(points);
+}
+
 void MissionObjectAdapter::setEndPlanetCRC(unsigned int crc) {
 	(static_cast<MissionObject*>(stub))->setEndPlanetCRC(crc);
 }
@@ -1695,6 +1757,10 @@ MissionObjective* MissionObjectAdapter::getMissionObjective() {
 
 int MissionObjectAdapter::getFaction() {
 	return (static_cast<MissionObject*>(stub))->getFaction();
+}
+
+int MissionObjectAdapter::getRewardFactionPoints() {
+	return (static_cast<MissionObject*>(stub))->getRewardFactionPoints();
 }
 
 float MissionObjectAdapter::getStartPositionX() {

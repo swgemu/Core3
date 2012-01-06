@@ -12,6 +12,8 @@
 #include "MissionObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/packets/player/PlayMusicMessage.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
@@ -30,7 +32,40 @@ CreatureObject* MissionObjectiveImplementation::getPlayerOwner() {
 		return NULL;
 }
 
-void MissionObjectiveImplementation::awardFactionPoints(int points) {
+void MissionObjectiveImplementation::complete() {
+	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
+
+	if (player == NULL)
+		return;
+
+	Locker locker(player);
+
+	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
+	player->sendMessage(pmm);
+
+	int missionReward = mission->getRewardCredits();
+
+	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
+	stringId.setDI(missionReward);
+	player->sendSystemMessage(stringId);
+
+	player->addBankCredits(missionReward, true);
+
+	awardFactionPoints();
+
+	ZoneServer* zoneServer = player->getZoneServer();
+	MissionManager* missionManager = zoneServer->getMissionManager();
+
+	missionManager->removeMission(mission, player);
+}
+
+void MissionObjectiveImplementation::awardFactionPoints() {
+	int factionPoints = mission->getRewardFactionPoints();
+
+	if (factionPoints <= 0 || mission->getFaction() == MissionObject::FACTIONNEUTRAL) {
+		return;
+	}
+
 	//Award faction points for faction delivery missions.
 	ManagedReference<PlayerObject*> ghost = getPlayerOwner()->getPlayerObject();
 	if (ghost != NULL) {
@@ -38,12 +73,12 @@ void MissionObjectiveImplementation::awardFactionPoints(int points) {
 
 		switch (mission->getFaction()) {
 		case MissionObject::FACTIONIMPERIAL:
-			ghost->increaseFactionStanding("imperial", points);
-			ghost->decreaseFactionStanding("rebel", points);
+			ghost->increaseFactionStanding("imperial", factionPoints);
+			ghost->decreaseFactionStanding("rebel", factionPoints);
 			break;
 		case MissionObject::FACTIONREBEL:
-			ghost->increaseFactionStanding("rebel", points);
-			ghost->decreaseFactionStanding("imperial", points);
+			ghost->increaseFactionStanding("rebel", factionPoints);
+			ghost->decreaseFactionStanding("imperial", factionPoints);
 			break;
 		}
 	}

@@ -198,6 +198,8 @@ public:
 
 	void setStartPlanet(const String& planet);
 
+	void setRewardFactionPoints(int points);
+
 	void setEndPlanetCRC(unsigned int crc);
 
 	void setMissionTarget(NpcSpawnPoint* target);
@@ -213,6 +215,8 @@ public:
 	MissionObjective* getMissionObjective();
 
 	int getFaction();
+
+	int getRewardFactionPoints();
 
 	float getStartPositionX();
 
@@ -307,6 +311,8 @@ protected:
 	UnicodeString creatorName;
 
 	int rewardCredits;
+
+	int rewardFactionPoints;
 
 	int missionNumber;
 
@@ -423,6 +429,8 @@ public:
 
 	void setStartPlanet(const String& planet);
 
+	void setRewardFactionPoints(int points);
+
 	void setEndPlanetCRC(unsigned int crc);
 
 	void setMissionTarget(NpcSpawnPoint* target);
@@ -438,6 +446,8 @@ public:
 	MissionObjective* getMissionObjective();
 
 	int getFaction();
+
+	int getRewardFactionPoints();
 
 	float getStartPositionX();
 
@@ -572,6 +582,8 @@ public:
 
 	void setStartPlanet(const String& planet);
 
+	void setRewardFactionPoints(int points);
+
 	void setEndPlanetCRC(unsigned int crc);
 
 	void setMissionTarget(NpcSpawnPoint* target);
@@ -587,6 +599,8 @@ public:
 	MissionObjective* getMissionObjective();
 
 	int getFaction();
+
+	int getRewardFactionPoints();
 
 	float getStartPositionX();
 
