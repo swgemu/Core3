@@ -103,6 +103,8 @@ class PlayerObject extends IntangibleObject {
 	protected int drinkFilling;
 	protected int drinkFillingMax;
 	
+	protected string starterProfession;
+	
 	protected boolean teleporting;
 	
 	@dereferenced
@@ -1196,5 +1198,13 @@ class PlayerObject extends IntangibleObject {
 	
 	public byte getMaximumLots() {
 		return maximumLots;
+	}
+	
+	public string getStarterProfession() {
+		return starterProfession;
+	}
+	
+	public void setStarterProfession(string profession) {
+		starterProfession = profession;
 	}
 }

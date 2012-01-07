@@ -54,6 +54,8 @@ namespace creature {
 		int hasSkill(lua_State* L);
 		int removeSkill(lua_State* L);
 		int getConversationSession(lua_State* L);
+		int doAnimation(lua_State* L);
+		int engageCombat(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

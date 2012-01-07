@@ -107,6 +107,11 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	loadNameMap();
 }
 
+bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
+	PlayerCreationManager* pcm = PlayerCreationManager::instance();
+	return pcm->createCharacter(data);
+}
+
 void PlayerManagerImplementation::loadStartingItems() {
 	try {
 		startingItemList = StartingItemList::instance();
@@ -349,212 +354,6 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 	return true;
 }
 
-bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
-	PlayerCreationManager* pcm = PlayerCreationManager::instance();
-	return pcm->createCharacter(data);
-
-	Locker _locker(_this);
-
-	ClientCreateCharacterCallback* callback = cast<ClientCreateCharacterCallback*>( data);
-	ZoneClientSession* client = data->getClient();
-
-	/*ManagedReference<Account*> account = client->getAccount();
-
-	if (account == NULL)
-		return false;*/
-
-	String race;
-	callback->getRaceFile(race);
-	info("trying to create " + race);
-
-	uint32 serverObjectCRC = race.hashCode();
-
-	int raceID = Races::getRaceID(race);
-	/*uint32 playerCRC = Races::getRaceCRC(raceID);*/
-
-	UnicodeString name;
-	callback->getCharacterName(name);
-
-	if (!checkPlayerName(callback)) {
-		info("invalid name " + name.toString());
-		return false;
-	}
-
-	SkillManager* professionManager = server->getSkillManager();
-	String profession;
-	callback->getSkill(profession);
-
-	//TODO: Handled in PlayerCreationManager instead.
-	//if (!professionManager->isValidStartingSkill(profession)) {
-		//info("invalid starting profession: " + profession);
-		//return false;
-	//}
-
-	ManagedReference<SceneObject*> player = server->createObject(serverObjectCRC, 2); // player
-
-	if (player == NULL) {
-		error("could not create player... could not create player object");
-		return false;
-	}
-
-	if (player->getGameObjectType() != SceneObjectType::PLAYERCREATURE) {
-		error("could not create player... wrong object type");
-		return false;
-	}
-
-	CreatureObject* playerCreature = cast<CreatureObject*>( player.get());
-
-	playerCreature->setCustomObjectName(name, false);
-
-	if (!createAllPlayerObjects(playerCreature)) {
-		error("error creating all player objects");
-		return false;
-	}
-
-	PlayerObject* ghost = playerCreature->getPlayerObject();
-	ghost->setAccountID(client->getAccountID()); // TODO: Could this be a weak or managed rereference?
-
-	ghost->setAdminLevel(2);
-
-	//Accounts with an admin level of > 0 are automatically given admin at character creation
-	//if (account->getAdminLevel() > 0) {
-//		ghost->setAdminLevel(account->getAdminLevel());
-
-	/*	Vector<String> skills;
-		skills.add("admin");
-
-		ghost->addSkills(skills, false);*/
-	//}
-
-	/*try {
-		uint32 accID = client->getAccountID();
-
-		String query = "SELECT username FROM accounts WHERE account_id = " + String::valueOf(accID);
-
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
-
-		if (res->next()) {
-			String accountName = res->getString(0);
-
-			query = "SELECT access_level from mantis_user_table where username = '" + accountName;
-			query += "'";
-
-			res = MantisDatabase::instance()->executeQuery(query);
-
-			if (res->next()) {
-				uint32 level = res->getUnsignedInt(0);
-
-				if (level > 25) {
-					//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
-					ghost->setAdminLevel(2);
-					//ghost->addAbility("admin", false);
-					//STOP UNCOMMENTING
-					//}
-				}
-			}
-		}
-
-	} catch (Exception& e) {
-		error(e.getMessage());
-	}*/
-
-
-
-	createDefaultPlayerItems(playerCreature, profession, race);
-
-	ghost->setRaceID((byte)raceID);
-
-	playerCreature->setCashCredits(10000000); // TODO: fix when not in testing / consider loading this from scripts
-	playerCreature->setBankCredits(10000000);
-
-	generateHologrindSkills(playerCreature);
-
-	String playerCustomization;
-	callback->getCustomizationString(playerCustomization);
-	playerCreature->setCustomizationString(playerCustomization);
-
-	String firstName = playerCreature->getFirstName();
-	String lastName = playerCreature->getLastName();
-
-	/*firstName.escapeString();
-	lastName.escapeString();
-	race.escapeString();*/
-
-	try {
-		StringBuffer query;
-		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
-				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << server->getGalaxyID() << ","
-				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << race.escapeString() << "')";
-
-		ServerDatabase::instance()->executeStatement(query);
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	}
-
-	nameMap->put(playerCreature);
-
-	//hair
-	String hairObjectFile;
-	callback->getHairObject(hairObjectFile);
-
-	String hairCustomization;
-	callback->getHairCustomization(hairCustomization);
-
-	TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
-
-	if (hair != NULL) {
-		player->transferObject(hair, 4);
-
-		info("created hair object");
-	}
-
-	float minHeight = playerCreature->getObjectTemplate()->getMinScale();
-	float maxHeight = playerCreature->getObjectTemplate()->getMaxScale();
-	float height = callback->getHeight();
-
-	if (height < minHeight)
-		height = minHeight;
-	else if (height > maxHeight)
-		height = maxHeight;
-
-	playerCreature->setHeight(callback->getHeight());
-
-	UnicodeString biography;
-	callback->getBiography(biography);
-	ghost->setBiography(biography);
-
-	//info("profession:" + profession, true);
-	//professionManager->setStartingSkill(profession, raceID, playerCreature);
-
-	playerCreature->setClient(client);
-	client->setPlayer(player);
-
-	ghost->setAccountID(client->getAccountID());
-
-	if (callback->getTutorialFlag()) {
-		createTutorialBuilding(playerCreature);
-	} else {
-		createSkippedTutorialBuilding(playerCreature);
-	}
-
-	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
-	lastValidatedPosition->update(playerCreature);
-
-	player->updateToDatabase();
-
-	StringBuffer infoMsg;
-	infoMsg << "player " << name.toString() << " successfully created";
-	info(infoMsg);
-
-	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
-	playerCreature->sendMessage(msg);
-
-	ChatManager* chatManager = server->getChatManager();
-
-	chatManager->addPlayer(playerCreature);
-
-	return true;
-}
 
 TangibleObject* PlayerManagerImplementation::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
 	TangibleObject* hairObject = NULL;
@@ -714,13 +513,13 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 	zone->transferObject(tutorial, -1, true);
 
-	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
+	//SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
 /*	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
 	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);*/
 
 	SceneObject* cellTut = tutorial->getCell(11);
-	cellTut->transferObject(travelTutorialTerminal, -1);
+	//cellTut->transferObject(travelTutorialTerminal, -1);
 
 	SceneObject* cellTutPlayer = tutorial->getCell(1);
 //	cellTut->transferObject(blueFrogTemplate, -1);
@@ -731,7 +530,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 
 	//tutorial->togglePermission("ADMIN", player->getFirstName());
 
-	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
+	//travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	//travelTutorialTerminal->insertToZone(zone);
 	//zone->transferObject(travelTutorialTerminal, -1, true);
 //	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);

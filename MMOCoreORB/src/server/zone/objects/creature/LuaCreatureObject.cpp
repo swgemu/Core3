@@ -9,6 +9,7 @@
 #include "CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
+#include "server/zone/ZoneServer.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -47,6 +48,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
 		{ "removeSkill", &LuaCreatureObject::removeSkill},
 		{ "getConversationSession", &LuaCreatureObject::getConversationSession},
+		{ "doAnimation", &LuaCreatureObject::doAnimation},
+		{ "engageCombat", &LuaCreatureObject::engageCombat},
 		{ 0, 0 }
 };
 
@@ -132,7 +135,7 @@ int LuaCreatureObject::sendNewbieTutorialRequest(lua_State *L) {
 
 int LuaCreatureObject::hasScreenPlayState(lua_State *L) {
 	String play = lua_tostring(L, -1);
-	uint64 stateToCheck = lua_tonumber(L, -2);
+	uint64 stateToCheck = lua_tointeger(L, -2);
 
 	uint64 state = realObject->getScreenPlayState(play);
 
@@ -148,7 +151,7 @@ int LuaCreatureObject::getScreenPlayState(lua_State *L) {
 	String play = lua_tostring(L, -1);
 	uint64 state = realObject->getScreenPlayState(play);
 
-	lua_pushnumber(L, state);
+	lua_pushinteger(L, state);
 
 	return 1;
 }
@@ -193,7 +196,7 @@ int LuaCreatureObject::getInCellNumber(lua_State* L) {
 
 int LuaCreatureObject::setScreenPlayState(lua_State *L) {
 	String play = lua_tostring(L, -1);
-	uint64 stateToSet = lua_tonumber(L, -2);
+	uint64 stateToSet = lua_tointeger(L, -2);
 
 	realObject->setScreenPlayState(play, stateToSet | realObject->getScreenPlayState(play));
 
@@ -203,7 +206,7 @@ int LuaCreatureObject::setScreenPlayState(lua_State *L) {
 int LuaCreatureObject::getTargetID(lua_State* L) {
 	uint64 targetID = realObject->getTargetID();
 
-	lua_pushnumber(L, targetID);
+	lua_pushinteger(L, targetID);
 
 	return 1;
 }
@@ -271,4 +274,24 @@ int LuaCreatureObject::getConversationSession(lua_State* L) {
 	lua_pushlightuserdata(L, session);
 
 	return 1;
+}
+
+int LuaCreatureObject::doAnimation(lua_State* L) {
+	String animString = lua_tostring(L, -1);
+
+	if (realObject != NULL)
+		realObject->doAnimation(animString);
+
+	return 0;
+}
+
+
+
+int LuaCreatureObject::engageCombat(lua_State* L) {
+	CreatureObject* enemy = (CreatureObject*)lua_touserdata(L, -1);
+
+	if (enemy != NULL)
+		realObject->setDefender(enemy);
+
+	return 0;
 }

@@ -71,6 +71,11 @@ namespace server {
 		static int readSharedMemory(lua_State* L);
 		static int writeSharedMemory(lua_State* L);
 		static int getSceneObject(lua_State* L);
+		static int getCreatureObject(lua_State* L);
+		static int addStartingItemsInto(lua_State* L);
+		static int addStartingWeaponsInto(lua_State* L);
+		static int setAuthorizationState(lua_State* L);
+		static int giveItem(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

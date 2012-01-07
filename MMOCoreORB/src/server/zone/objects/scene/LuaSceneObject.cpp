@@ -72,13 +72,13 @@ int LuaSceneObject::getPositionY(lua_State* L) {
 }
 
 int LuaSceneObject::getObjectID(lua_State* L) {
-	lua_pushnumber(L, realObject->getObjectID());
+	lua_pushinteger(L, realObject->getObjectID());
 
 	return 1;
 }
 
 int LuaSceneObject::getParentID(lua_State* L) {
-	lua_pushnumber(L, realObject->getParentID());
+	lua_pushinteger(L, realObject->getParentID());
 
 	return 1;
 }

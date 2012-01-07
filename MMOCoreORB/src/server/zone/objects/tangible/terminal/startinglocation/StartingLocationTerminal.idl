@@ -53,8 +53,11 @@ import server.zone.Zone;
 
 class StartingLocationTerminal extends Terminal {
 	
+	protected boolean authorizationState;
+	
 	public StartingLocationTerminal() {		
 		Logger.setLoggingName("StartingLocationTerminal");
+		authorizationState = true;
 	}
 	
 	public native void initializeTransientMembers();
@@ -66,4 +69,8 @@ class StartingLocationTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	public void setAuthorizationState(boolean state) {
+		authorizationState = state;
+	}
 }

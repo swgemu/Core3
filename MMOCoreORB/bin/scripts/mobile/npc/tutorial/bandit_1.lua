@@ -2,7 +2,7 @@ bandit_tutorial_1 = Creature:new {
 	objectName = "@mob/creature_names:bandit",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "imperial",
+	faction = "",
 	level = 10,
 	chanceHit = 0.390000,
 	damageMin = 5,
@@ -28,7 +28,7 @@ bandit_tutorial_1 = Creature:new {
 	templates = {"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {},
+	attacks = {"attack", ""},
 	conversationTemplate = "",
 	optionsBitmask = 0
 }

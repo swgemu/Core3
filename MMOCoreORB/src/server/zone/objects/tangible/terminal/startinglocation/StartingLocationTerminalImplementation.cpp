@@ -17,9 +17,12 @@ void StartingLocationTerminalImplementation::initializeTransientMembers() {
 
 int StartingLocationTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	//System::out << "entering start terminal radial call" << endl;
+	if (selectedID != 20 || !authorizationState) { // not use object or not authorized
+		if (!authorizationState)
+			info("handleObjectMenuSelect: not authorized");
 
-	if (selectedID != 20) // not use object
 		return 1;
+	}
 
 	server->getPlayerManager()->sendStartingLocationsTo(player);
 

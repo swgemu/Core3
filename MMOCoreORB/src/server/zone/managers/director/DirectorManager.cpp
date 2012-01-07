@@ -13,6 +13,7 @@
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
@@ -23,6 +24,7 @@
 #include "server/zone/templates/mobile/LuaConversationScreen.h"
 #include "server/zone/templates/mobile/LuaConversationTemplate.h"
 #include "server/zone/objects/player/sessions/LuaConversationSession.h"
+#include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -50,6 +52,11 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
+	lua_register(luaEngine->getLuaState(), "getCreatureObject", getCreatureObject);
+	lua_register(luaEngine->getLuaState(), "addStartingItemsInto", addStartingItemsInto);
+	lua_register(luaEngine->getLuaState(), "addStartingWeaponsInto", addStartingWeaponsInto);
+	lua_register(luaEngine->getLuaState(), "setAuthorizationState", setAuthorizationState);
+	lua_register(luaEngine->getLuaState(), "giveItem", giveItem);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -114,14 +121,14 @@ int DirectorManager::readSharedMemory(lua_State* L) {
 	DirectorManager::instance()->runlock();
 #endif
 
-	lua_pushnumber(L, data);
+	lua_pushinteger(L, data);
 
 	return 1;
 }
 
 int DirectorManager::writeSharedMemory(lua_State* L) {
 	String key = lua_tostring(L, -2);
-	uint64 data = lua_tonumber(L, -1);
+	uint64 data = lua_tointeger(L, -1);
 
 #ifndef WITH_STM
 	DirectorManager::instance()->wlock();
@@ -157,13 +164,14 @@ int DirectorManager::spatialChat(lua_State* L) {
 	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
 	String message = lua_tostring(L, -1);
 
-	chatManager->broadcastMessage(creature, message, 0, 0, 0);
+	if (creature != NULL)
+		chatManager->broadcastMessage(creature, message, 0, 0, 0);
 
 	return 0;
 }
 
 int DirectorManager::getSceneObject(lua_State* L) {
-	uint64 objectID = lua_tonumber(L, -1);
+	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	SceneObject* object = zoneServer->getObject(objectID);
 
@@ -172,9 +180,90 @@ int DirectorManager::getSceneObject(lua_State* L) {
 	return 1;
 }
 
+int DirectorManager::getCreatureObject(lua_State* L) {
+	uint64 objectID = lua_tointeger(L, -1);
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	SceneObject* object = zoneServer->getObject(objectID);
+
+	CreatureObject* creature = NULL;
+
+	if (object != NULL)
+		if (object->isCreatureObject())
+			creature = (CreatureObject*)object;
+
+	lua_pushlightuserdata(L, creature);
+
+	return 1;
+}
+
+int DirectorManager::addStartingItemsInto(lua_State* L) {
+	CreatureObject* creatureObject = (CreatureObject*)lua_touserdata(L, -2);
+	SceneObject* sceneObject = (SceneObject*)lua_touserdata(L, -1);
+
+	if (creatureObject != NULL && sceneObject != NULL) {
+		PlayerCreationManager* pcm = PlayerCreationManager::instance();
+		pcm->addStartingItemsInto(creatureObject, sceneObject);
+	}
+
+	return 0;
+}
+
+int DirectorManager::addStartingWeaponsInto(lua_State* L) {
+	CreatureObject* creatureObject = (CreatureObject*)lua_touserdata(L, -2);
+	SceneObject* sceneObject = (SceneObject*)lua_touserdata(L, -1);
+
+	//SceneObject* sceneObject = creatureObject->getSlottedObject("inventory");
+
+	if (creatureObject != NULL && sceneObject != NULL) {
+		PlayerCreationManager* pcm = PlayerCreationManager::instance();
+		pcm->addStartingWeaponsInto(creatureObject, sceneObject);
+	}
+
+	return 0;
+}
+
+int DirectorManager::giveItem(lua_State* L) {
+	int slot = lua_tonumber(L, -1);
+	String objectString = lua_tostring(L, -2);
+	SceneObject* obj = (SceneObject*)lua_touserdata(L, -3);
+
+	if (obj == NULL)
+		return 0;
+
+	ZoneServer* zoneServer = obj->getZoneServer();
+
+	ManagedReference<SceneObject*> item = zoneServer->createObject(objectString.hashCode(), 1);
+	if (item != NULL && obj != NULL)
+		obj->transferObject(item, slot, true);
+
+	return 0;
+}
+
+int DirectorManager::setAuthorizationState(lua_State* L) {
+	SceneObject* terminal = (SceneObject*)lua_touserdata(L, -2);
+	bool state = lua_toboolean(L, -1);
+
+	//SceneObject* sceneObject = creatureObject->getSlottedObject("inventory");
+
+	if (terminal == NULL) {
+		instance()->info("setAuthorizationState: Terminal is NULL", true);
+		return 0;
+	}
+
+	if (terminal->getGameObjectType() != SceneObjectType::NEWBIETUTORIALTERMINAL) {
+		instance()->info("setAuthorizationState: Wrong SceneObjectType:" + String::valueOf(terminal->getGameObjectType()), true);
+		return 0;
+	}
+
+	ManagedReference<StartingLocationTerminal*> item = (StartingLocationTerminal*)terminal;
+	item->setAuthorizationState(state);
+
+	return 0;
+}
+
 int DirectorManager::spawnMobile(lua_State* L) {
 	//int zoneid = lua_tonumber(L, -4);
-	uint64 parentID = lua_tonumber(L, -1);
+	uint64 parentID = lua_tointeger(L, -1);
 	float y = lua_tonumber(L, -2);
 	float z = lua_tonumber(L, -3);
 	float x = lua_tonumber(L, -4);
@@ -206,7 +295,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 	float dy = lua_tonumber(L, -2);
 	float dx = lua_tonumber(L, -3);
 	float dw = lua_tonumber(L, -4);
-	uint64 parentID = lua_tonumber(L, -5);
+	uint64 parentID = lua_tointeger(L, -5);
 	float y = lua_tonumber(L, -6);
 	float z = lua_tonumber(L, -7);
 	float x = lua_tonumber(L, -8);

@@ -80,6 +80,18 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+	class SceneObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace player {
 namespace creation {
@@ -120,9 +132,9 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 
 	void addCustomization(CreatureObject* creature, const String& customizationString);
 	void addHair(CreatureObject* creature, const String& hairTemplate, const String& hairCustomization);
-	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingSkills, Vector<String>* startingItems);
-	void addStartingItems(CreatureObject* creature, const String& clientTemplate);
-	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate);
+	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingSkills, Vector<String>* startingItems, bool equipmentOnly);
+	void addStartingItems(CreatureObject* creature, const String& clientTemplate, bool equipmentOnly);
+	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate, bool equipmentOnly);
 	//void generateHologrindProfessions(CreatureObject* creature);
 
 public:
@@ -161,6 +173,20 @@ public:
 	 * @return total attribute limit.
 	 */
 	int getTotalAttributeLimit(const String& race);
+
+	/**
+	 * Adds starting Weapons into the target container
+	 * @param creature the player creature
+	 * @param container the target container
+	 */
+	void addStartingWeaponsInto(CreatureObject* creature, SceneObject* container);
+
+	/**
+	 * Adds starting Items except Weapons into the target container
+	 * @param creature the player creature
+	 * @param container the target container
+	 */
+	void addStartingItemsInto(CreatureObject* creature, SceneObject* container);
 };
 
 }

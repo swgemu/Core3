@@ -2,6 +2,225 @@ TutorialScreenPlay = ScreenPlay:new {
 	numberOfActs = 1
 }
 
+imperial_officer_3_handler = {  }
+ 
+-- imperial officer 3
+function imperial_officer_3_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
+
+	local creature = LuaCreatureObject(conversingPlayer)
+	local session = LuaConversationSession(creature:getConversationSession())
+	local lastScreenId = ""
+	if (session ~= nil) then
+		lastScreenId = session:getLastConversationScreenName()
+	end
+	local conversation = LuaConversationTemplate(conversationTemplate)
+	
+	local lastConversationScreen = conversation:getScreen(lastScreenId)
+	
+	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+	local nextConversationScreen
+	
+	if (string.len(lastScreenId) > 0) then
+		
+		--Get the linked screen for the selected option.
+		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
+		
+		nextConversationScreen = conversation:getScreen(optionLink)
+		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+
+		if (nextLuaConversationScreen:getScreenID() == "convoscreen5") then
+			
+			--give player weapons
+			local creatureSceneObject = LuaSceneObject(conversingPlayer)
+			inventory = creatureSceneObject:getSlottedObject("inventory")
+			local inventoryObj = LuaSceneObject(inventory)
+			
+			addStartingWeaponsInto(conversingPlayer, inventory)
+			
+			--testing datapad
+			--addTestItem(conversingPlayer, inventory)
+			
+			creature:sendSystemMessage("@newbie_tutorial/system_messages:receive_weapon")
+			
+		end
+		
+		if (nextLuaConversationScreen:getScreenID() == "convoscreen6") then
+			writeData(creature:getObjectID() .. ":tutorial:officer3flag", 1)
+		end
+	else
+		
+		--Get the initial screen.
+		officer3flag = readData(creature:getObjectID() .. ":tutorial:officer3flag")
+		
+		if (officer3flag == 0) then
+			nextConversationScreen = conversation:getInitialScreen()
+			
+		elseif (officer3flag == 1) then
+			nextConversationScreen = conversation:getScreen("altscreen1")		
+		else
+			nextConversationScreen = conversation:getScreen("altscreen2")
+		end
+	end
+	return nextConversationScreen
+
+end
+
+function imperial_officer_3_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	return conversationScreen
+end
+
+-- imperial officer 5
+imperial_officer_5_handler = {  }
+ 
+function imperial_officer_5_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
+
+	local creature = LuaCreatureObject(conversingPlayer)
+	local session = LuaConversationSession(creature:getConversationSession())
+	local lastScreenId = ""
+	if (session ~= nil) then
+		lastScreenId = session:getLastConversationScreenName()
+	end
+	local conversation = LuaConversationTemplate(conversationTemplate)
+	
+	local lastConversationScreen = conversation:getScreen(lastScreenId)
+	
+	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+	local nextConversationScreen
+	
+	if (string.len(lastScreenId) > 0) then
+		
+		--Get the linked screen for the selected option.
+		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
+		
+		nextConversationScreen = conversation:getScreen(optionLink)
+		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+		
+		if (nextLuaConversationScreen:getScreenID() == "convoscreen2") then
+			writeData(creature:getObjectID() .. ":tutorial:officer5flag", 1)
+			createEvent(1000, "TutorialScreenPlay", "stopOfficer5", conversingPlayer)
+		end
+	else
+		
+		--Get the initial screen.
+		officer5flag = readData(creature:getObjectID() .. ":tutorial:officer5flag")
+		if (officer5flag == 0) then
+			nextConversationScreen = conversation:getInitialScreen()
+		else
+			nextConversationScreen = conversation:getScreen("convoscreen3")
+		end
+	end
+	return nextConversationScreen
+
+end
+
+function imperial_officer_5_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	return conversationScreen
+end
+
+-- imperial officer 6
+imperial_officer_6_handler = {  }
+ 
+function imperial_officer_6_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
+
+	local creature = LuaCreatureObject(conversingPlayer)
+	local session = LuaConversationSession(creature:getConversationSession())
+	local lastScreenId = ""
+	if (session ~= nil) then
+		lastScreenId = session:getLastConversationScreenName()
+	end
+	local conversation = LuaConversationTemplate(conversationTemplate)
+	
+	local lastConversationScreen = conversation:getScreen(lastScreenId)
+	
+	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+	local nextConversationScreen
+	
+	if (string.len(lastScreenId) > 0) then
+		
+		--Get the linked screen for the selected option.
+		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
+		
+		nextConversationScreen = conversation:getScreen(optionLink)
+		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+		
+		if (nextLuaConversationScreen:getScreenID() == "convoscreen2") then
+			writeData(creature:getObjectID() .. ":tutorial:officer6flag", 1)
+		end
+	else
+		
+		--Get the initial screen.
+		officer5flag = readData(creature:getObjectID() .. ":tutorial:officer5flag")
+		
+		if (officer5flag == 0) then
+			nextConversationScreen = conversation:getScreen("convoscreen3")
+		else
+			nextConversationScreen = conversation:getInitialScreen()
+			
+			terminal = readData(creature:getObjectID() .. ":tutorial:travelTerminal")
+			local travelTerminal = getSceneObject(terminal)
+			setAuthorizationState(travelTerminal, true)		
+		end
+	end
+	return nextConversationScreen
+
+end
+
+function imperial_officer_6_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	return conversationScreen
+end
+
+-- imperial officer 6
+commoner_handler = {  }
+ 
+function commoner_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
+
+	local creature = LuaCreatureObject(conversingPlayer)
+	local session = LuaConversationSession(creature:getConversationSession())
+	local lastScreenId = ""
+	if (session ~= nil) then
+		lastScreenId = session:getLastConversationScreenName()
+	end
+	local conversation = LuaConversationTemplate(conversationTemplate)
+	
+	local lastConversationScreen = conversation:getScreen(lastScreenId)
+	
+	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+	local nextConversationScreen
+	
+	if (string.len(lastScreenId) > 0) then
+		
+		--Get the linked screen for the selected option.
+		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
+		
+		nextConversationScreen = conversation:getScreen(optionLink)
+		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+		
+		if (nextLuaConversationScreen:getScreenID() == "convoscreen2") then
+			writeData(creature:getObjectID() .. ":tutorial:officer6flag", 1)
+		end
+	else
+		
+		--Get the initial screen.
+		officer5flag = readData(creature:getObjectID() .. ":tutorial:officer5flag")
+		
+		if (officer5flag == 0) then
+			nextConversationScreen = conversation:getScreen("convoscreen3")
+		else
+			nextConversationScreen = conversation:getInitialScreen()
+			
+			terminal = readData(creature:getObjectID() .. ":tutorial:travelTerminal")
+			local travelTerminal = getSceneObject(terminal)
+			setAuthorizationState(travelTerminal, true)		
+		end
+	end
+	return nextConversationScreen
+
+end
+
+function commoner_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	return conversationScreen
+end
+
 function TutorialScreenPlay:spawnObjects(creatureObject)
 	local creature = LuaSceneObject(creatureObject)
 	local targetCellObject = LuaSceneObject(creature:getParent())
@@ -12,20 +231,22 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	if buildingObject:getServerObjectCRC() ~= 3369536646 then
 		return 0
 	end
-	
+
+	-- ** ROOM 1 **	
 	--spawn stormtroopers
 	targetCellObject:_setObject(buildingObject:getCell(1))
 	
 	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", -2.4, 0, -17.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	--createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "animTest", spawnedPointer) --move observer
 	
 	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 2.5, 0, -17.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	--createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "animTest2", spawnedPointer) --move observer
 	
-	
-	-- 
+	-- ** ROOM 2 **
 	targetCellObject:_setObject(buildingObject:getCell(2))
 	
 	--spawn commoners
@@ -58,31 +279,30 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
 	writeData(creature:getObjectID() .. ":tutorial:drum", spawnedSceneObject:getObjectID())
-	--lets move all the objects from inventory there
-	inventory = creature:getSlottedObject("inventory")
 	
-	local inventoryObj = LuaSceneObject(inventory)
+	-- add the starting items (except weapons) to the drum	
+	addStartingItemsInto(creatureObject, spawnedPointer)
 	
-	while (inventoryObj:getContainerObjectsSize() > 0) do
-		local item = inventoryObj:getContainerObject(0)
+	local i = 0
+	
+	while (spawnedSceneObject:getContainerObjectsSize() > i) do
+		local item = spawnedSceneObject:getContainerObject(i)
 		local itemObj = LuaSceneObject(item)
 		
-		--check if its maroj melon, register use now
-		
+		--check if its maroj melon, register use now		
 		if itemObj:getGameObjectType() == 8202 then -- food
 			createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "foodUsed", item)
 		end 
-		
-		--inventoryObj:removeObject(item, 1)
-		spawnedSceneObject:transferObject(item, -1, 1)
+		i = i + 1
 	end
+	
+	-- ** ROOM 3 **
 	
 	targetCellObject:_setObject(buildingObject:getCell(3))
 	
 	--spawn second officer banker
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_2", 44, 0, 2.2, targetCellObject:getObjectID())
-	--create observer to catch when the player stops talking
-	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "bankerStopConversation", spawnedPointer)
+	createObserver(STARTCONVERSATION, "TutorialScreenPlay", "bankerStartConversation", spawnedPointer)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.418, 0, 0.908, 0)
 	
@@ -97,34 +317,49 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
 	writeData(creature:getObjectID() .. ":tutorial:bank", spawnedSceneObject:getObjectID())
-	-- create use observer
-	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "bankUseObserver", spawnedPointer) --move observer
-	--createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bankUseObserver", spawnedPointer)
+	writeData(creature:getObjectID() .. ":tutorial:bankflag", 0)
+	writeData(creature:getObjectID() .. ":tutorial:bankfly", 0)
 	
 	--spawn bazaar
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_bazaar.iff", 38.4, 0, -17.7, targetCellObject:getObjectID(), 0.97, 0, 0.241, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
-	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "bazaarUseObserver", spawnedPointer) --move observer
-	--createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bazaarUseObserver", spawnedPointer)
 	
 	writeData(creature:getObjectID() .. ":tutorial:bazaar", spawnedSceneObject:getObjectID())
+	writeData(creature:getObjectID() .. ":tutorial:bazaarflag", 0)
+	writeData(creature:getObjectID() .. ":tutorial:bazaarfly", 0)
 	
-	--spawn more commoners
+	-- ** ROOM 4 **
+	
 	targetCellObject:_setObject(buildingObject:getCell(4))
-	--shared_dressed_commoner_hold_human_female_02.iff
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 51.1, -7, -51, targetCellObject:getObjectID())
+	--shared_dressed_commoner_old_human_female_02.iff
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_1", 51.1, -7, -51, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
+	
+	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 1)
+	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cdistance", 5)
+	
 	spawnedSceneObject:updateDirection(0.589, 0, -0.807, 0)
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "commoner_spatial", spawnedPointer)
 	
 	--shared_dressed_commoner_old_zabrak_male_02.iff
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 51.5, -7, -53, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_2", 51.5, -7, -53, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.903, 0, -0.428, 0)
 	
+	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 2)
+	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cdistance", 5)
+	
+	spawnedSceneObject:updateDirection(0.903, 0, -0.428, 0)
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "commoner_spatial", spawnedPointer)
+
 	--shared_dressed_commoner_naboo_moncal_male_02.iff
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 47.4, -7, -58.7, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_3", 47.4, -7, -58.7, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
+	
+	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 3)
+	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cdistance", 4)
+	
 	spawnedSceneObject:updateDirection(0.813, 0, -0.582, 0)
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "commoner_spatial", spawnedPointer)
 	
 	--shared_dressed_stormtrooper_m.iff (-51.49?)
 	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 26.2, -7, -51.9, targetCellObject:getObjectID())
@@ -135,13 +370,14 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 26.2, -7, -61.3, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(1, 0, 0, 0)
-	
-	
+		
+	--** ROOM 5 **
+	targetCellObject:_setObject(buildingObject:getCell(5))
 	
 	--spawn q-3p0
-	targetCellObject:_setObject(buildingObject:getCell(5))
 	spawnedPointer = spawnMobile("tutorial", "protocol_droid_3po_silver", 11.9, -7, -56.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
+
 	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "cloningDroidStopConversation", spawnedPointer)
 	writeData(creature:getObjectID() .. ":tutorial:protocol", spawnedSceneObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
@@ -156,7 +392,6 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	writeData(creature:getObjectID() .. ":tutorial:clone", spawnedSceneObject:getObjectID())
 	
 	--spawn insurance terminal
-	
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_insurance.iff", 8.4, -7, -64, targetCellObject:getObjectID(), 1, 0, 0, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
@@ -165,47 +400,63 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	writeData(creature:getObjectID() .. ":tutorial:insurance", spawnedSceneObject:getObjectID())
 	
 	--spawn npc panic 1
-	--targetCellObject:_setObject(buildingObject:getCell(6))
 	--shared_dressed_commoner_tatooine_bith_male_05.iff
 	spawnedPointer = spawnMobile("tutorial", "panic_npc_1", -3.3, -7, -75.6, targetCellObject:getObjectID())
 	
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "panic1MoveObserver", spawnedPointer) --move observer
 
+	--** ROOM 6 **
 	--spawn nervous guy in hallway
 	targetCellObject:_setObject(buildingObject:getCell(6))
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 20.1, -4, -81.5, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.4005, 0, -0.916, 0)
 	
-	--spawn officer3
+	--** ROOM 7 **
 	targetCellObject:_setObject(buildingObject:getCell(7))
+
+	--spawn officer3
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_3", 38.1, -7, -79.7, targetCellObject:getObjectID())
-	--create observer to catch when the player stops talking
+	spawnedSceneObject:_setObject(spawnedPointer)
+	writeData(creature:getObjectID() .. ":tutorial:officer3flag", 0)
+	writeData(creature:getObjectID() .. ":tutorial:officer3", spawnedSceneObject:getObjectID())
+	createObserver(STARTCONVERSATION, "TutorialScreenPlay", "officer3StartConversation", spawnedPointer)
+	
+	--testing (annoying to walk over there every time):
+	--targetCellObject:_setObject(buildingObject:getCell(1))
+	--spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_3", 0, 0, -17.4, targetCellObject:getObjectID())
+	
 	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "officer3StopConversation", spawnedPointer)
-	--createObserver(SELECTCONVERSATION, "TutorialScreenPlay", "officer3SelectConversation", spawnedPointer) -- select convo observer
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "converseWithOfficer3Observer", spawnedPointer) --move observer
 	
-	
-	--spawn debris
+	-- ** ROOM 14(don't ask) **
 	targetCellObject:_setObject(buildingObject:getCell(14))
-	
+
+	--spawn debris	
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/newbie_tutorial/debris.iff", 76.9, -4, -94.3, targetCellObject:getObjectID(), 1, 0, 0, 0)
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "nearDebrisObserver", spawnedPointer) --move observer
 	createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyedObserver", spawnedPointer) --destroy observer
 	
-	--spawn retard to kill
+	-- ** ROOM 8 **
 	targetCellObject:_setObject(buildingObject:getCell(8))
+
+	--spawn retard to kill
 	spawnedPointer = spawnMobile("tutorial", "bandit_tutorial_1", 38.1, -5.9, -113.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
+	
+	giveItem(spawnedPointer, "object/weapon/ranged/carbine/carbine_cdef.iff", 4)
+	
+	writeData(creature:getObjectID() .. ":tutorial:banditflag", 0)
+	
 	--register damage observer
 	createObserver(DAMAGERECEIVED, "TutorialScreenPlay", "banditDamageObserver", spawnedPointer) --damage observer
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "banditMoveObserver", spawnedPointer)
 	
-	--
 	createObserver(POSITIONCHANGED, "TutorialScreenPlay", "part4StartObserver", creatureObject) --move observer
 	createObserver(POSITIONCHANGED, "TutorialScreenPlay", "part5StartObserver", creatureObject) --move observer
 
-	
+	--** ROOM 9 **
 	targetCellObject:_setObject(buildingObject:getCell(9))	
 	
 	--spawn another commoner
@@ -222,17 +473,13 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.927, 0, -0.373, 0)	
 	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
-	--spawnedCreatureObject:setCustomObjectName("Sit down")
 	spawnedCreatureObject:setState(STATESITTINGONCHAIR)
-	--spawnedCreatureObject:setPosture(POSTURESITTING)
 	
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 13.145, -4.2, -106.292, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.436, 0, -0.899, 0)
 	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
-	--spawnedCreatureObject:setCustomObjectName("and shut up")
 	spawnedCreatureObject:setState(STATESITTINGONCHAIR)
-	--spawnedCreatureObject:setPosture(POSTURESITTING)
 	
 	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", -0.8, -4.2, -108.2, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
@@ -240,14 +487,16 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	--imperial officer 4
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_4", 2.1, -4.2, -123.8, targetCellObject:getObjectID())
-	--not yet: createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer4", spawnedPointer) --move observer
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.97, 0, 0.241, 0)
+	writeData(creature:getObjectID() .. ":tutorial:officer4", spawnedSceneObject:getObjectID())
 	
+	spawnedSceneObject:updateDirection(0.97, 0, 0.241, 0)
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer4", spawnedPointer) --move observer
+	createObserver(SELECTCONVERSATION, "TutorialScreenPlay", "officer4select", spawnedPointer)
 
+	-- trainer
 	local player = LuaCreatureObject(creatureObject)
 	
-	--trainer
 	--starting skills:
 	  -- social_entertainer_novice
 	  -- outdoors_scout_novice
@@ -255,64 +504,75 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	  -- crafting_artisan_novice
 	  -- combat_brawler_novice
 	  -- combat_marksman_novice
-	printf("Checking profession\n")
 	if (player:hasSkill("social_entertainer_novice") == 1) then
-		printf("Entertainer\n")
 		trainerTemplate = "trainer_entertainer"
 		player:removeSkill("social_entertainer_novice")
 	elseif (player:hasSkill("outdoors_scout_novice") == 1) then
-		printf("Scout\n")
 		trainerTemplate = "trainer_scout"
 		player:removeSkill("outdoors_scout_novice")
 	elseif (player:hasSkill("science_medic_novice") == 1) then
-		printf("Medic\n")
 		trainerTemplate = "trainer_medic"
 		player:removeSkill("science_medic_novice")
 	elseif (player:hasSkill("crafting_artisan_novice") == 1) then
-		printf("Artisan\n")
 		trainerTemplate = "trainer_artisan"
 		player:removeSkill("crafting_artisan_novice")
 	elseif (player:hasSkill("combat_marksman_novice") == 1) then
-		printf("Marksman\n")
 		trainerTemplate = "trainer_marksman"
 		player:removeSkill("combat_marksman_novice")
 	else
-	    printf("Brawler\n")
 		trainerTemplate = "trainer_brawler"
 		player:removeSkill("combat_brawler_novice")
 	end
 	
-	printf("Checked profession\n")	
 	spawnedPointer = spawnMobile("tutorial", trainerTemplate, 7.1, -4.2, -128.2, targetCellObject:getObjectID())
+	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "stopSkillTrainer", spawnedPointer)
 	spawnedSceneObject:_setObject(spawnedPointer)
+	writeData(creature:getObjectID() .. ":tutorial:skillTrainer", spawnedSceneObject:getObjectID())
 	spawnedSceneObject:updateDirection(0.975, 0, -0.220, 0)
-	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
-	spawnedCreatureObject:setCustomObjectName("Trainer")
-	printf("Carry on\n")
+	--spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
 
-
+	--** ROOM 10 **
 	targetCellObject:_setObject(buildingObject:getCell(10))
-	--what are these guys for?
+	-- officer 5: mission
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_5", 19.5, -4.2, -146, targetCellObject:getObjectID())
-	--not yet: createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer5", spawnedPointer) --move observer
 	spawnedSceneObject:_setObject(spawnedPointer)
+	writeData(creature:getObjectID() .. ":tutorial:officer5", spawnedSceneObject:getObjectID())
 	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	writeData(creature:getObjectID() .. ":tutorial:officer5flag", 0)
 	
 	--mission terminal
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_mission_newbie.iff", 19.2, -4.2, -134.2, targetCellObject:getObjectID(), 0, 0, 1, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "missionTerminalMove", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "missionTerminalUse", spawnedPointer)
 	
-	
+	--** ROOM 11 **
 	targetCellObject:_setObject(buildingObject:getCell(11))
+	
+	-- officer 6: quartermaster
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_6", 31.3, -4.2, -164, targetCellObject:getObjectID())
-	--not yet: createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer6", spawnedPointer) --move observer
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer6", spawnedPointer) --move observer
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.994, 0.103, 0, 0)
 	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
 	spawnedCreatureObject:setCustomObjectName("The Quartermaster")
+	writeData(creature:getObjectID() .. ":tutorial:officer6", spawnedSceneObject:getObjectID())
+	writeData(creature:getObjectID() .. ":tutorial:officer6flag", 0)
+	
+	-- travel terminal
+	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/beta/beta_terminal_warp.iff", 27.0, -3.5, -168.0, targetCellObject:getObjectID(), 0, 0, 1, 0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "travelTerminalUse", spawnedPointer)
+	writeData(creature:getObjectID() .. ":tutorial:travelTerminal", spawnedSceneObject:getObjectID())
+	
+	terminal = readData(creature:getObjectID() .. ":tutorial:travelTerminal")
+	local travelTerminal = getSceneObject(terminal)
+	setAuthorizationState(travelTerminal, false)
 	
 	return 1
 end
+
 
 function TutorialScreenPlay:start(creatureObject)	
 	--printf("Running introduction\n")
@@ -843,186 +1103,210 @@ function TutorialScreenPlay:checkCommerceRoom(creatureObject)
 	--register move observer to check if we skipped this part
 end
 
-function TutorialScreenPlay:bankerStopConversation(creatureObject, playerObject)
+function TutorialScreenPlay:bankerStartConversation(creatureObject, playerObject)
 	local player = LuaCreatureObject(playerObject)
 	
-	createEvent(1000, "TutorialScreenPlay", "activateBankUseCheck", playerObject)
-	createEvent(1000, "TutorialScreenPlay", "activateBazaarUseCheck", playerObject)
+	--createEvent(1000, "TutorialScreenPlay", "activateBankUseCheck", playerObject)
+	--createEvent(1000, "TutorialScreenPlay", "activateBazaarUseCheck", playerObject)
 	
-	createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "activateBankTargetCheck", playerObject)
-	createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "activateBazaarTargetCheck", playerObject)
+	--createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "activateBankTargetCheck", playerObject)
+	--createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "activateBazaarTargetCheck", playerObject)
+	
+	createEvent(1000, "TutorialScreenPlay", "bankMoveCheck", playerObject)
+	createEvent(1000, "TutorialScreenPlay", "bazaarMoveCheck", playerObject)
+	createEvent(1000, "TutorialScreenPlay", "commerceDoneCheck", playerObject)
 	
 	return 1
 end
 
-function TutorialScreenPlay:activateBankUseCheck(creatureObject)
-	local player = LuaCreatureObject(creatureObject)
+function TutorialScreenPlay:bankMoveCheck(playerObject)
+	local player = LuaCreatureObject(playerObject)
 	
-	bankObjectID = readData(player:getObjectID() .. ":tutorial:bank")
-	local bankObject = LuaSceneObject(getSceneObject(bankObjectID))
+	local bankPointer = readData(player:getObjectID() .. ":tutorial:bank")
+	local bank = LuaSceneObject(getSceneObject(bankPointer))
 	
-	bankObject:showFlyText("newbie_tutorial/system_messages", "bank_flytext", 0, 255, 0)
-	
-	state = player:hasScreenPlayState(1024, "tutorial")
-	
-	if state == 0 then
-		createEvent(2000, "TutorialScreenPlay", "activateBankUseCheck", creatureObject)
-		return
-	end
+	distance = bank:getDistanceTo(playerObject)
 
-end
-
-function TutorialScreenPlay:activateBazaarUseCheck(creatureObject)
-	local player = LuaCreatureObject(creatureObject)
+	bazaarflag = readData(player:getObjectID() .. ":tutorial:bazaarflag")
 	
-	bazaarObjectID = readData(player:getObjectID() .. ":tutorial:bazaar")
-	local bazaarObject = LuaSceneObject(getSceneObject(bazaarObjectID))
+	if distance == 0 or distance > 6 or bazaarflag == 2 then
 	
-	bazaarObject:showFlyText("newbie_tutorial/system_messages", "bazaar_flytext", 0, 255, 0)
-	
-	state = player:hasScreenPlayState(4096, "tutorial")
-	
-	if state == 0 then
-		createEvent(2000, "TutorialScreenPlay", "activateBazaarUseCheck", creatureObject)
-		return
-	end
-
-end
-
-function TutorialScreenPlay:activateBazaarTargetCheck(creatureObject, targetObject)
-	local player = LuaCreatureObject(creatureObject)
-	local target = LuaSceneObject(targetObject)
-	
-	bazaarObjectID = readData(player:getObjectID() .. ":tutorial:bazaar")
-	
-	state = player:hasScreenPlayState(4096, "tutorial")
-	state2 = player:hasScreenPlayState(8192, "tutorial")
-	
-	if state == 1 or state2 == 1 then
-		return 1
-	end
-	
-	if bazaarObjectID == target:getObjectID() then
-		player:setScreenPlayState(8192, "tutorial")
-		player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_1")
-		player:playMusicMessage("sound/tut_29_itemdispenser.snd")
+		-- only show every other second
+		showFly = readData(player:getObjectID() .. ":tutorial:bankfly")
 		
-		createEvent(6000, "TutorialScreenPlay", "displayBazaarInfo", creatureObject)
-		
-		return 1
-	else
-		if state == 0 then
-			return 0
+		if (showFly == 0) then
+			bank:showFlyText("newbie_tutorial/system_messages", "bank_flytext", 0, 255, 0)
+			writeData(player:getObjectID() .. ":tutorial:bankfly", 1)
+		else
+			writeData(player:getObjectID() .. ":tutorial:bankfly", 0)
 		end
-	end
-
-	return 1
-end
-
-function TutorialScreenPlay:activateBankTargetCheck(creatureObject, targetObject)
-	local player = LuaCreatureObject(creatureObject)
-	local target = LuaSceneObject(targetObject)
 	
-	bankObjectID = readData(player:getObjectID() .. ":tutorial:bank")
-	
-	state = player:hasScreenPlayState(1024, "tutorial")
-	state2 = player:hasScreenPlayState(2048, "tutorial")
-	
-	if state == 1 or state2 == 1 then
-		return 1
-	end
-	
-	if bankObjectID == target:getObjectID() then
-		player:setScreenPlayState(2048, "tutorial")
-		player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_1")
-		player:playMusicMessage("sound/tut_32_bank.snd")
-		
-		
-		createEvent(6000, "TutorialScreenPlay", "displayBankInfo", creatureObject)
-		
-		return 1
+		createEvent(1000, "TutorialScreenPlay", "bankMoveCheck", playerObject)
 	else
-		if state == 0 then
-			return 0
-		end
+		writeData(player:getObjectID() .. ":tutorial:bankflag", 2)
+		createEvent(1000, "TutorialScreenPlay", "explainBank_1", playerObject)
 	end
-
-	return 1
 end
 
-function TutorialScreenPlay:displayBazaarInfo(creatureObject)
-	local player = LuaCreatureObject(creatureObject)
+function TutorialScreenPlay:bazaarMoveCheck(playerObject)
+	local player = LuaCreatureObject(playerObject)
 	
-	player:playMusicMessage("sound/tut_00_bazaar_tease.snd")
-	player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_2")
-	createEvent(7000, "TutorialScreenPlay", "displayBazaarInfo2", creatureObject)
+	local bazaarPointer = readData(player:getObjectID() .. ":tutorial:bazaar")
+	local bazaar = LuaSceneObject(getSceneObject(bazaarPointer))
+	
+	distance = bazaar:getDistanceTo(playerObject)
+
+	bankflag = readData(player:getObjectID() .. ":tutorial:bankflag")
+	
+	if distance == 0 or distance > 7 or bankflag == 2 then
+		
+		-- only show every other second
+		showFly = readData(player:getObjectID() .. ":tutorial:bazaarfly")
+		
+		if (showFly == 0) then
+			bazaar:showFlyText("newbie_tutorial/system_messages", "bazaar_flytext", 0, 255, 0)
+			writeData(player:getObjectID() .. ":tutorial:bazaarfly", 1)
+		else
+			writeData(player:getObjectID() .. ":tutorial:bazaarfly", 0)
+		end
+		
+		createEvent(1000, "TutorialScreenPlay", "bazaarMoveCheck", playerObject)
+	else
+		writeData(player:getObjectID() .. ":tutorial:bazaarflag", 2)
+		createEvent(1000, "TutorialScreenPlay", "explainBazaar_1", playerObject)
+	end
 end
 
-function TutorialScreenPlay:displayBazaarInfo2(creatureObject)
-	local player = LuaCreatureObject(creatureObject)
-	
-	player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_3")
+function TutorialScreenPlay:explainBank_1(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_1")
+	player:playMusicMessage("sound/tut_32_bank.snd")
+	createEvent(7000, "TutorialScreenPlay", "explainBank_2", playerObject)
 end
 
-function TutorialScreenPlay:displayBankInfo(creatureObject)
-	local player = LuaCreatureObject(creatureObject)
-	
+function TutorialScreenPlay:explainBank_2(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
 	player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_2")
-	createEvent(7000, "TutorialScreenPlay", "displayBankInfo3", creatureObject)
+	createEvent(8000, "TutorialScreenPlay", "explainBank_3", playerObject)
 end
 
-function TutorialScreenPlay:displayBankInfo3(creatureObject)
-	local player = LuaCreatureObject(creatureObject)
-	
+function TutorialScreenPlay:explainBank_3(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
 	player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_3")
-	createEvent(7000, "TutorialScreenPlay", "displayBankInfo4", creatureObject)
+	createEvent(6000, "TutorialScreenPlay", "explainBank_4", playerObject)
 end
 
-function TutorialScreenPlay:displayBankInfo4(creatureObject)
-	local player = LuaCreatureObject(creatureObject)
-	
+function TutorialScreenPlay:explainBank_4(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
 	player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_4")
-	--createEvent(7000, "TutorialScreenPlay", "displayBankInfo", creatureObject)
-	
-	--player:sendSystemMessage("and this is how it ends")
-	
-	--player:playMusicMessage("sound/tut_33_cash.snd")
-	--player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_5")
+	createEvent(4000, "TutorialScreenPlay", "explainBank_5", playerObject)
 end
 
-function TutorialScreenPlay:bankUseObserver(bankObject, playerObject, selectedID)
-	if selectedID ~= 20 then
+function TutorialScreenPlay:explainBank_5(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_5")
+	player:playMusicMessage("sound/tut_33_cash.snd")
+	createEvent(6000, "TutorialScreenPlay", "explainBank_finished", playerObject)
+end
+
+function TutorialScreenPlay:explainBank_finished(playerObject)
+	local player = LuaCreatureObject(playerObject)
+	
+	writeData(player:getObjectID() .. ":tutorial:bankflag", 1)
+end
+
+function TutorialScreenPlay:explainBazaar_1(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_1")
+	player:playMusicMessage("sound/tut_29_itemdispenser.snd")
+	createEvent(5000, "TutorialScreenPlay", "explainBazaar_2", playerObject)
+end
+
+function TutorialScreenPlay:explainBazaar_2(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_2")
+	player:playMusicMessage("sound/tut_00_bazaar_tease.snd")
+	createEvent(7000, "TutorialScreenPlay", "explainBazaar_3", playerObject)
+end
+
+function TutorialScreenPlay:explainBazaar_3(playerObject)
+	local player = LuaCreatureObject(playerObject)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_3")
+	createEvent(7000, "TutorialScreenPlay", "explainBazaar_finished", playerObject)
+end
+
+function TutorialScreenPlay:explainBazaar_finished(playerObject)
+	local player = LuaCreatureObject(playerObject)
+	
+	writeData(player:getObjectID() .. ":tutorial:bazaarflag", 1)
+end
+
+function TutorialScreenPlay:commerceDoneCheck(playerObject)
+	local player = LuaCreatureObject(playerObject)
+	
+	local bankCheck = readData(player:getObjectID() .. ":tutorial:bankflag")
+	local bazaarCheck = readData(player:getObjectID() .. ":tutorial:bazaarflag")
+	
+	if bankCheck == 1 and bazaarCheck == 1 then
+		createEvent(2000, "TutorialScreenPlay", "moveToCloning", playerObject)
+	else
+		createEvent(1000, "TutorialScreenPlay", "commerceDoneCheck", playerObject)
+	end		 
+end
+
+function TutorialScreenPlay:moveToCloning(playerObject)
+	local player = LuaCreatureObject(playerObject)
+	
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_36")
+	player:playMusicMessage("sound/tut_36_movedownhall.snd")
+end
+
+function TutorialScreenPlay:commoner_spatial(creatureObject, movingCreature)
+	local commoner = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false or commoner:isCreatureObject() == false then
 		return 0
 	end
 	
-	local player = LuaCreatureObject(playerObject)
+	local player = LuaCreatureObject(movingCreature)
+	local commonerCreature = LuaCreatureObject(creatureObject)
 	
-	player:setScreenPlayState(1024, "tutorial")
+	distance = commoner:getDistanceTo(movingCreature)
 	
-	state = player:hasScreenPlayState(4096, "tutorial")
-	
-	if state == 1 then
-		player:sendSystemMessage("@newbie_tutorial/system_messages:tut_36")
-	end
-	return 1
-end
-
-function TutorialScreenPlay:bazaarUseObserver(bankObject, playerObject, selectedID)
-	if selectedID ~= 45 then
+	if distance == 0 then
 		return 0
 	end
 	
-	local player = LuaCreatureObject(playerObject)
+	cdistance = readData(commoner:getObjectID() .. ":tutorial:cdistance")
+	cid = readData(commoner:getObjectID() .. ":tutorial:cid")
 	
-	player:setScreenPlayState(4096, "tutorial")
-	
-	state = player:hasScreenPlayState(1024, "tutorial")
-	
-	if state == 1 then
-		player:sendSystemMessage("@newbie_tutorial/system_messages:tut_36")
+	if (cdistance == 0) then
+		cdistance = 8
 	end
 	
-	return 1
+	if distance < cdistance then
+		--commoner speaks
+		if cid == 1 then
+			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:ins_user_bark_1")
+		elseif cid == 2 then
+			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:ins_user_bark_2")
+		else -- only 3 for now
+			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:ins_user_bark_3")
+		end
+		
+		return 1
+	else
+		return 0
+	end
 end
 
 function TutorialScreenPlay:part4StartObserver(creatureObject)
@@ -1038,7 +1322,7 @@ function TutorialScreenPlay:part4StartObserver(creatureObject)
 			protocolDroidOid = readData(player:getObjectID() .. ":tutorial:protocol")
 			local droidPointer = getSceneObject(protocolDroidOid)	
 			
-			spatialChat(droidPointer, "@newbie_tutorial/newbie_convo:greeter1_bark2")
+			spatialChat(droidPointer, "@newbie_tutorial/newbie_convo:clone_greeting")
 			
 			--player:sendNewbieTutorialEnableHudElement("all", 1)
 			
@@ -1239,8 +1523,19 @@ function TutorialScreenPlay:converseWithOfficer3Observer(creatureObject, movingC
 	end
 end
 
+function TutorialScreenPlay:officer3StartConversation(creatureObject, playerObject)
+	local player = LuaCreatureObject(playerObject)
+	local officer = LuaCreatureObject(creatureObject)
+	
+	officer:doAnimation("embarrassed")
+
+	return 1
+end
+
 function TutorialScreenPlay:officer3StopConversation(creatureObject, playerObject)
 	local player = LuaCreatureObject(playerObject)
+	local officer = LuaCreatureObject(creatureObject)
+	
 		
 	
 	return 1
@@ -1285,11 +1580,21 @@ function TutorialScreenPlay:debrisDestroyedObserver(debrisObject, playerObject)
 	debris:destroyObjectFromWorld()
 	
 	player:clearCombatState(1)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:part_6")
+	
+	createEvent(1000, "TutorialScreenPlay", "startExplainCombat", playerObject)
+	
+	return 1
+end
+
+function TutorialScreenPlay:startExplainCombat(playerObject)
+	local player = LuaCreatureObject(playerObject)
 	
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_combat_1")
 	player:playMusicMessage("sound/tut_47_defaultattack.snd")
 	
-	createEvent(15000, "TutorialScreenPlay", "explainCombat", playerObject)
+	createEvent(5000, "TutorialScreenPlay", "explainCombat", playerObject)
 	
 	return 1
 end
@@ -1299,10 +1604,75 @@ function TutorialScreenPlay:explainCombat(creatureObject)
 	
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_combat_2")
 	
-	player:sendSystemMessage("@newbie_tutorial/system_messages:part_6")
+	createEvent(7000, "TutorialScreenPlay", "explainCombatNext", creatureObject)
+end
+
+function TutorialScreenPlay:explainCombatNext(creatureObject)
+	local player = LuaCreatureObject(creatureObject)
 	
 	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_44_attacking")
 	player:playMusicMessage("sound/tut_44_attacking.snd")
+end
+
+function TutorialScreenPlay:banditMoveObserver(creatureObject, movingCreature)
+	local bandit = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+	
+	if bandit:isCreatureObject() == false then
+		return 0
+	end
+	
+	local banditCreature = LuaCreatureObject(creatureObject)
+	
+	distance = bandit:getDistanceTo(movingCreature)
+	
+	if distance == 0 or distance > 30 then
+		return 0
+	end
+	
+	banditflag = readData(player:getObjectID() .. ":tutorial:banditflag")
+	
+	if distance < 15 then
+		
+		if (banditflag >= 2) then
+			--bandit speaks
+			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:pirate_attack")
+		
+			--attack
+			banditCreature:engageCombat(movingCreature)
+			
+			return 1
+		end
+		
+		return 0
+	elseif distance < 20 then
+		if (banditflag < 2) then
+			--bandit speaks
+			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:pirate_taunt2")
+			writeData(player:getObjectID() .. ":tutorial:banditflag", 2)
+		end
+		
+		return 0
+	elseif distance < 25 then
+		if (banditflag < 1) then
+	
+			--bandit speaks
+			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:pirate_taunt1")
+		
+			banditCreature:doAnimation("slit_throat")
+			writeData(player:getObjectID() .. ":tutorial:banditflag", 1)
+		end
+		
+		return 0 
+	else
+		return 0
+	end
 end
 
 function TutorialScreenPlay:banditDamageObserver(banditObject, playerObject, damage)
@@ -1310,24 +1680,31 @@ function TutorialScreenPlay:banditDamageObserver(banditObject, playerObject, dam
 	local bandit = LuaCreatureObject(banditObject)
 	
 	health = bandit:getHAM(0)
-	action = bandit:getHAM(1)
-	mind = bandit:getHAM(2)
+	action = bandit:getHAM(3)
+	mind = bandit:getHAM(6)
 	
 	maxHealth = bandit:getMaxHAM(0)
-	maxAction = bandit:getMaxHAM(1)
-	maxMind = bandit:getMaxHAM(2)
+	maxAction = bandit:getMaxHAM(3)
+	maxMind = bandit:getMaxHAM(6)
 	
-	if health <= (maxHealth / 1.5) or action <= (maxAction / 1.5) or mind <= (maxMind / 1.5) then
+	--printf("Health: " .. health .. " Action: " .. action .. " Mind: " .. mind .. "\n")
+	
+	if ((health <= (maxHealth * 0.6)) or (action <= (maxAction * 0.6)) or (mind <= (maxMind * 0.6))) then
 		spatialChat(banditObject, "@newbie_tutorial/newbie_convo:pirate_taunt3")
-		spatialChat(banditObject, "@newbie_tutorial/newbie_convo:pirate_taunt4")
 		
-		createEvent(2000, "TutorialScreenPlay", "killBandit", banditObject) 
-		createEvent(3000, "TutorialScreenPlay", "lootBanditEvent", playerObject)
+		createEvent(2000, "TutorialScreenPlay", "tauntBandit", banditObject)
+		
+		createEvent(4000, "TutorialScreenPlay", "killBandit", banditObject) 
+		createEvent(6000, "TutorialScreenPlay", "lootBanditEvent", playerObject)
 				
-		return 1
+		return 1		
 	end
 	
 	return 0
+end
+
+function TutorialScreenPlay:tauntBandit(banditObject)
+	spatialChat(banditObject, "@newbie_tutorial/newbie_convo:pirate_taunt4")
 end
 
 function TutorialScreenPlay:killBandit(banditObject)
@@ -1348,6 +1725,320 @@ function TutorialScreenPlay:lootBanditEvent(creatureObject)
 	local buildingObject = LuaBuildingObject(targetCellObject:getParent())
 	targetCellObject:_setObject(buildingObject:getCell(9))
 	targetCellObject:updateCellPermission(1, creatureObject)
+	writeData(player:getObjectID() .. ":tutorial:officer3flag", 2)
 	
 	player:setScreenPlayState(262144, "tutorial")
 end
+
+function TutorialScreenPlay:officer4(creatureObject, movingCreature)
+	local officer = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+	
+	distance = officer:getDistanceTo(movingCreature)
+	
+	if distance == 0 then
+		return 0
+	end
+	
+	if distance < 8 then
+		--part nine
+		player:sendSystemMessage("@newbie_tutorial/system_messages:part_7")
+		
+		createEvent(1000, "TutorialScreenPlay", "part7_1", movingCreature)
+		--player:sendSystemMessage("@newbie_tutorial/system_messages:tut_57")
+	
+		--officer speaks
+		rawOfficer = readData(player:getObjectID() .. ":tutorial:officer4")
+	
+		local officerObject = getSceneObject(rawOfficer)
+		spatialChat(officerObject, "@newbie_tutorial/newbie_convo:off_1_greeting")
+		
+		return 1
+	else
+		return 0
+	end
+end
+
+function TutorialScreenPlay:part7_1(movingCreature)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_28")
+	player:playMusicMessage("sound/tut_28_converse.snd")
+end
+
+function TutorialScreenPlay:officer4select(creatureObject, playerObject)
+	createEvent(1000, "TutorialScreenPlay", "part7_2", playerObject)
+end
+
+function TutorialScreenPlay:part7_2(movingCreature)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+		
+	local player = LuaCreatureObject(movingCreature)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_49")
+	player:playMusicMessage("sound/tut_49_skilltrainer.snd")
+	
+	--make officer4 point to the right
+	local a = readData(player:getObjectID() .. ":tutorial:officer4")
+	local b = getCreatureObject(a)
+	local c = LuaCreatureObject(b)
+	
+	c:doAnimation("point_right")
+end
+
+function TutorialScreenPlay:stopSkillTrainer(creatureObject, playerObject)
+	createEvent(1000, "TutorialScreenPlay", "part7_3", playerObject)
+end
+
+function TutorialScreenPlay:part7_3(movingCreature)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_50")
+	player:playMusicMessage("sound/tut_50_skillbrowser.snd")
+	
+	createEvent(22000, "TutorialScreenPlay", "part7_4", movingCreature)
+end
+
+function TutorialScreenPlay:part7_4(movingCreature)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_51")
+	player:playMusicMessage("sound/tut_51_charactersheet.snd")
+	
+	createEvent(9000, "TutorialScreenPlay", "part7_5", movingCreature)
+end
+
+function TutorialScreenPlay:part7_5(movingCreature)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:stat_open")
+	player:playMusicMessage("sound/tut_00_stat_open.snd")
+	
+	createEvent(30000, "TutorialScreenPlay", "part7_6", movingCreature)
+end
+
+function TutorialScreenPlay:part7_6(movingCreature)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:visit_commerce_room")
+	player:playMusicMessage("sound/tut_27_proceed.snd")
+end
+
+function TutorialScreenPlay:travelTerminalUse(travelTerminal, playerObject, selectedID)
+
+	if selectedID ~= 20 then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(playerObject)
+	
+	officer6flag = readData(player:getObjectID() .. ":tutorial:officer6flag")
+
+	if (officer6flag == 1) then
+		return 1
+	else 	
+		rawOfficer = readData(player:getObjectID() .. ":tutorial:officer6")
+	
+		local officer = getSceneObject(rawOfficer)
+		spatialChat(officer, "@newbie_tutorial/newbie_convo:quarter_wait")
+		return 0
+	end
+end	
+	
+function TutorialScreenPlay:missionTerminalUse(missionTerminal, playerObject, selectedID)
+	if selectedID ~= 20 then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(playerObject)
+	
+	--player:setScreenPlayState(65536, "tutorial")
+	player:sendSystemMessage("@newbie_tutorial/system_messages:mission_terminal")
+	player:playMusicMessage("sound/tut_00_mission_terminal.snd")
+	
+	createEvent(8000, "TutorialScreenPlay", "part8_2", playerObject)
+	return 1
+end
+
+function TutorialScreenPlay:part8_2(playerObject)
+	local player = LuaCreatureObject(playerObject)
+	
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_54")
+	player:playMusicMessage("sound/tut_54_npcmission.snd")	
+
+	--officer speaks
+	rawOfficer = readData(player:getObjectID() .. ":tutorial:officer5")
+	local officer = getSceneObject(rawOfficer)		
+	spatialChat(officer, "@newbie_tutorial/newbie_convo:mission_hail")
+end
+
+function TutorialScreenPlay:missionTerminalMove(creatureObject, movingCreature)
+	local terminal = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+	
+	distance = terminal:getDistanceTo(movingCreature)
+	
+	if distance == 0 then
+		return 0
+	end
+	
+	if player:getInCellNumber() == 10 then
+		if distance < 10 then
+			--part nine
+			player:sendSystemMessage("@newbie_tutorial/system_messages:part_8")
+			
+			createEvent(1000, "TutorialScreenPlay", "part8_1", movingCreature)
+		
+			return 1
+		else
+			return 0
+		end
+	end
+end
+
+function TutorialScreenPlay:part8_1(movingCreature)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_53")
+	player:playMusicMessage("sound/tut_53_missions.snd")
+end
+
+function TutorialScreenPlay:stopOfficer5(playerObject)
+	local player = LuaCreatureObject(playerObject)
+	
+	local off4 = LuaCreatureObject(getCreatureObject(readData(player:getObjectID() .. ":tutorial:officer5")))
+	
+	off4:doAnimation("point_right")
+	-- found in data_animation_00.tre/appearance/animation as all_b_emt_point_right.ans
+	
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_56")
+	player:playMusicMessage("sound/tut_56_quartermaster.snd")
+end
+
+function TutorialScreenPlay:officer6(creatureObject, movingCreature)
+	local officer = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+	
+	distance = officer:getDistanceTo(movingCreature)
+	
+	if distance == 0 then
+		return 0
+	end
+	
+	if distance < 8 then
+		--part nine
+		player:sendSystemMessage("@newbie_tutorial/system_messages:part_9")
+		
+		createEvent(1000, "TutorialScreenPlay", "part9_1", movingCreature)
+	
+		--officer speaks
+		rawOfficer = readData(player:getObjectID() .. ":tutorial:officer6")
+	
+		local officerObject = getSceneObject(rawOfficer)
+		spatialChat(officerObject, "@newbie_tutorial/newbie_convo:quarter_greeting")
+		
+		return 1
+	else
+		return 0
+	end
+end
+
+function TutorialScreenPlay:part9_1(movingCreature)
+	local player = LuaCreatureObject(movingCreature)
+	
+	player:sendSystemMessage("@newbie_tutorial/system_messages:tut_57")
+	player:playMusicMessage("sound/tut_57_quartermaster.snd")
+end
+	
+--animation tests
+--[[function TutorialScreenPlay:animTest(creatureObject, movingCreature)
+	local officer = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(movingCreature)
+	
+	distance = officer:getDistanceTo(movingCreature)
+	
+	if officer:isCreatureObject() == false then
+		return 0
+	end
+	
+	local officerCreature = LuaCreatureObject(creatureObject)
+	
+	if distance == 0 then
+		return 0
+	end
+	
+	if distance < 5 then
+		
+		
+		
+		officerCreature:doAnimation("force_choke")
+		
+		return 1
+	else
+		return 0
+	end
+end]]

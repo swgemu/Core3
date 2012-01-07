@@ -29,7 +29,7 @@ protocol_droid_3po_silver = Creature:new {
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
-	conversationTemplate = "",
+	conversationTemplate = "protocol_droid_tutorial_convotemplate",
 	optionsBitmask = 264
 }
 

@@ -10,7 +10,6 @@ imperial_officer_1_convoscreen1 = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@newbie_tutorial/newbie_convo:convo_1_reply_1", "convoscreen2"},
-		{"@newbie_tutorial/newbie_convo:convo_1_reply_2", "convoscreen4"},
 	}
 }
 
@@ -32,6 +31,7 @@ imperial_officer_1_convoscreen3 = ConvoScreen:new {
 	leftDialog = "@newbie_tutorial/newbie_convo:convo_1_explain",
 	stopConversation = "false",
 	options = {
+			{"@newbie_tutorial/newbie_convo:convo_1_reply_2", "convoscreen4"},
 	}
 }
 
