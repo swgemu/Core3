@@ -1832,12 +1832,12 @@ bool CreatureObjectImplementation::isResuscitable() {
 }
 
 bool CreatureObjectImplementation::isDancing() {
-	Facade* facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
+	ManagedReference<Facade*> facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
 
 	if (facade == NULL)
 		return false;
 
-	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade);
+	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade.get());
 
 	if (session == NULL)
 		return false;
@@ -1846,12 +1846,12 @@ bool CreatureObjectImplementation::isDancing() {
 }
 
 bool CreatureObjectImplementation::isPlayingMusic() {
-	Facade* facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
+	ManagedReference<Facade*> facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
 
 	if (facade == NULL)
 		return false;
 
-	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade);
+	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade.get());
 
 	if (session == NULL)
 		return false;
@@ -1860,12 +1860,12 @@ bool CreatureObjectImplementation::isPlayingMusic() {
 }
 
 void CreatureObjectImplementation::stopEntertaining() {
-	Facade* facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
+	ManagedReference<Facade*> facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
 
 	if (facade == NULL)
 		return;
 
-	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade);
+	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade.get());
 
 	if (session == NULL)
 		return;

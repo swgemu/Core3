@@ -68,6 +68,8 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	void setAuthorizationState(bool state);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -97,6 +99,8 @@ namespace terminal {
 namespace startinglocation {
 
 class StartingLocationTerminalImplementation : public TerminalImplementation {
+protected:
+	bool authorizationState;
 
 public:
 	StartingLocationTerminalImplementation();
@@ -106,6 +110,8 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void setAuthorizationState(bool state);
 
 	WeakReference<StartingLocationTerminal*> _this;
 
@@ -153,6 +159,8 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void setAuthorizationState(bool state);
 
 };
 

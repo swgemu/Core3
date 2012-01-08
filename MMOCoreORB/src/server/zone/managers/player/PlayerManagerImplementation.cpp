@@ -83,7 +83,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	globalExpMultiplier = 1.0f;
 
-	DirectorManager::instance();
+	DirectorManager::instance()->getLuaInstance()->runFile("scripts/screenplays/checklnum.lua");
 
 	loadStartingItems();
 	loadStartingLocations();

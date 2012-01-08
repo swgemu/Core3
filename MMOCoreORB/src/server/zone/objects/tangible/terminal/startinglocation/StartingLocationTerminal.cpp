@@ -14,7 +14,7 @@
  *	StartingLocationTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETAUTHORIZATIONSTATE__BOOL_};
 
 StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	StartingLocationTerminalImplementation* _implementation = new StartingLocationTerminalImplementation();
@@ -56,6 +56,20 @@ int StartingLocationTerminal::handleObjectMenuSelect(CreatureObject* player, byt
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+void StartingLocationTerminal::setAuthorizationState(bool state) {
+	StartingLocationTerminalImplementation* _implementation = static_cast<StartingLocationTerminalImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETAUTHORIZATIONSTATE__BOOL_);
+		method.addBooleanParameter(state);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAuthorizationState(state);
 }
 
 DistributedObjectServant* StartingLocationTerminal::_getImplementation() {
@@ -163,6 +177,11 @@ bool StartingLocationTerminalImplementation::readObjectMember(ObjectInputStream*
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "authorizationState") {
+		TypeInfo<bool >::parseFromBinaryStream(&authorizationState, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -178,14 +197,29 @@ int StartingLocationTerminalImplementation::writeObjectMembers(ObjectOutputStrea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "authorizationState";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&authorizationState, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + TerminalImplementation::writeObjectMembers(stream);
+
+	return 1 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl():  		Logger.setLoggingName("StartingLocationTerminal");
 	Logger::setLoggingName("StartingLocationTerminal");
+	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl():  		authorizationState = true;
+	authorizationState = true;
+}
+
+void StartingLocationTerminalImplementation::setAuthorizationState(bool state) {
+	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl():  		authorizationState = state;
+	authorizationState = state;
 }
 
 /*
@@ -205,6 +239,9 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
+	case RPC_SETAUTHORIZATIONSTATE__BOOL_:
+		setAuthorizationState(inv->getBooleanParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -218,6 +255,10 @@ void StartingLocationTerminalAdapter::initializeTransientMembers() {
 
 int StartingLocationTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<StartingLocationTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
+}
+
+void StartingLocationTerminalAdapter::setAuthorizationState(bool state) {
+	(static_cast<StartingLocationTerminal*>(stub))->setAuthorizationState(state);
 }
 
 /*

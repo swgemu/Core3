@@ -57,6 +57,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "addStartingWeaponsInto", addStartingWeaponsInto);
 	lua_register(luaEngine->getLuaState(), "setAuthorizationState", setAuthorizationState);
 	lua_register(luaEngine->getLuaState(), "giveItem", giveItem);
+	lua_register(luaEngine->getLuaState(), "checkInt64Lua", checkInt64Lua);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -98,6 +99,23 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
+}
+
+int DirectorManager::checkInt64Lua(lua_State* L) {
+	uint64 data = lua_tointeger(L, -1);
+
+	uint64 bigNumber = 0x01000000;
+	bigNumber += bigNumber << 32;
+
+	if (data < bigNumber) {
+		instance()->error("Lua not using lnum patch with 64 bit integers, please patch lua!!");
+	} else {
+		instance()->info("Lua reads int64", true);
+	}
+
+	lua_pop(L, 1);
+
+	return 0;
 }
 
 int DirectorManager::includeFile(lua_State* L) {
