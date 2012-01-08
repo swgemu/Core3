@@ -511,7 +511,8 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	if (rootZone != NULL) {
 		Locker locker(rootZone);
 
-		rootZone->remove(_this);
+		if (!isActiveArea())
+			rootZone->remove(_this);
 
 		if (closeobjects != NULL) {
 			while (closeobjects->size() > 0) {
