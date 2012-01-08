@@ -14,6 +14,30 @@
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace mission {
 
 class MissionObject;
@@ -79,7 +103,11 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "server/zone/objects/mission/events/CompleteMissionAfterCertainTimeTask.h"
+
 #include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
 
 #include "engine/util/Observer.h"
 
@@ -103,6 +131,10 @@ public:
 	void abort();
 
 	void complete();
+
+	void setIsEntertaining(bool value);
+
+	void clearLocationActiveAreaAndObservers();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -131,6 +163,14 @@ namespace objects {
 namespace mission {
 
 class EntertainerMissionObjectiveImplementation : public MissionObjectiveImplementation {
+protected:
+	bool inMissionArea;
+
+	bool isEntertaining;
+
+	ManagedReference<ActiveArea* > locationActiveArea;
+
+	Reference<CompleteMissionAfterCertainTimeTask* > completeTask;
 
 public:
 	EntertainerMissionObjectiveImplementation(MissionObject* mission);
@@ -146,6 +186,10 @@ public:
 	void abort();
 
 	void complete();
+
+	void setIsEntertaining(bool value);
+
+	void clearLocationActiveAreaAndObservers();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -199,6 +243,10 @@ public:
 	void abort();
 
 	void complete();
+
+	void setIsEntertaining(bool value);
+
+	void clearLocationActiveAreaAndObservers();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 

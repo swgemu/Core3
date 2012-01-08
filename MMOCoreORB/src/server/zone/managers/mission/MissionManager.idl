@@ -77,13 +77,17 @@ class MissionManager extends Observer implements Logger {
 	
 	protected boolean enableFactionalReconMissions;
 	
+	protected boolean enableFactionalEntertainerMissions;
+	
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
 	
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
 		processor = impl;
-		
+
 		enableFactionalCraftingMissions = false;
+		enableFactionalReconMissions = false;
+		enableFactionalEntertainerMissions = false;
 		
 		Logger.setLoggingName("MissionManager");		
 
@@ -111,7 +115,7 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeGenericDestroyMission(CreatureObject player, MissionObject mission, final int faction);
-	public native void randomizeGenericEntertainerMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericEntertainerMission(CreatureObject player, MissionObject mission, final int faction, final int missionType);
 	public native void randomizeGenericHuntingMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeGenericReconMission(CreatureObject player, MissionObject mission, final int faction);
 	public native void randomizeGenericSurveyMission(CreatureObject player, MissionObject mission, final int faction);
@@ -121,7 +125,6 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeBountyMission(CreatureObject player, MissionObject mission);
 	public native void randomizeDeliverMission(CreatureObject player, MissionObject mission);
 	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
-	public native void randomizeEntertainerMission(CreatureObject player, MissionObject mission);
 	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
 	public native void randomizeReconMission(CreatureObject player, MissionObject mission);
 	

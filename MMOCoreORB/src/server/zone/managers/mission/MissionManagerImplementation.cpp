@@ -82,6 +82,12 @@ void MissionManagerImplementation::loadCraftingMissionItems() {
 			enableFactionalReconMissions = true;
 		}
 
+		value = lua->getGlobalString("enable_factional_entertainer_missions");
+
+		if (value.toLowerCase() == "true") {
+			enableFactionalEntertainerMissions = true;
+		}
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -107,6 +113,9 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	}
 	if (enableFactionalReconMissions) {
 		maximumNumberOfItemsInMissionBag += 6;
+	}
+	if (enableFactionalEntertainerMissions) {
+		maximumNumberOfItemsInMissionBag += 12; //Both musician and dancer.
 	}
 
 	while (missionBag->getContainerObjectsSize() < maximumNumberOfItemsInMissionBag) {
@@ -290,7 +299,7 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 	uint32 missionType = mission->getTypeCRC();
 
 	switch (missionType) {
-	case MissionObject::SURVEY: // survey
+	case MissionObject::SURVEY:
 		createSurveyMissionObjectives(mission, missionTerminal, player);
 		break;
 	case MissionObject::DESTROY:
@@ -310,6 +319,10 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 		break;
 	case MissionObject::CRAFTING:
 		createCraftingMissionObjectives(mission, missionTerminal, player);
+		break;
+	case MissionObject::DANCER:
+	case MissionObject::MUSICIAN:
+		createEntertainerMissionObjectives(mission, missionTerminal, player);
 		break;
 	default:
 		break;
@@ -344,6 +357,8 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 
 	int numberOfCraftingMissions = 0;
 	int numberOfReconMissions = 0;
+	int numberOfDancerMissions = 0;
+	int numberOfMusicianMissions = 0;
 
 	int maximumNumberOfMissionTypesInOneTerminal = 2;
 	if (enableFactionalCraftingMissions) {
@@ -351,6 +366,9 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	}
 	if (enableFactionalReconMissions) {
 		maximumNumberOfMissionTypesInOneTerminal++;
+	}
+	if (enableFactionalEntertainerMissions) {
+		maximumNumberOfMissionTypesInOneTerminal +=2;
 	}
 
 	for (int i = 0; i < bagSize; ++i) {
@@ -373,13 +391,13 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				mission->setTypeCRC(0);
 			}
 		} else if (missionTerminal->isEntertainerTerminal()) {
-			// TODO: implement entertainer missions after entertainer is implemented
-			/*randomizeEntertainerMission(player, mission);if (!dancing)
-			if (i < bagSize / 2)
-				mission->setTypeCRC(MissionObject::MUSICIAN);
-			else
-				mission->setTypeCRC(MissionObject::DANCER);*/
-			mission->setTypeCRC(0); // missions won't show on terminals
+			if (i < (bagSize / maximumNumberOfMissionTypesInOneTerminal)) {
+				randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONNEUTRAL, MissionObject::DANCER);
+			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
+				randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONNEUTRAL, MissionObject::MUSICIAN);
+			} else {
+				mission->setTypeCRC(0);
+			}
 		} else if (missionTerminal->isImperialTerminal()) {
 			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeImperialDestroyMission(player, mission);
@@ -392,6 +410,12 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				} else if (enableFactionalReconMissions && numberOfReconMissions < 6) {
 					randomizeImperialReconMission(player, mission);
 					numberOfReconMissions++;
+				} else if (enableFactionalEntertainerMissions && numberOfDancerMissions < 6) {
+					randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONIMPERIAL, MissionObject::DANCER);
+					numberOfDancerMissions++;
+				} else if (enableFactionalEntertainerMissions && numberOfMusicianMissions < 6) {
+					randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONIMPERIAL, MissionObject::MUSICIAN);
+					numberOfMusicianMissions++;
 				} else {
 					mission->setTypeCRC(0, true);
 				}
@@ -408,6 +432,12 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				} else if (enableFactionalReconMissions && numberOfReconMissions < 6) {
 					randomizeRebelReconMission(player, mission);
 					numberOfReconMissions++;
+				} else if (enableFactionalEntertainerMissions && numberOfDancerMissions < 6) {
+					randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONREBEL, MissionObject::DANCER);
+					numberOfDancerMissions++;
+				} else if (enableFactionalEntertainerMissions && numberOfMusicianMissions < 6) {
+					randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONREBEL, MissionObject::MUSICIAN);
+					numberOfMusicianMissions++;
 				} else {
 					mission->setTypeCRC(0, true);
 				}
@@ -848,12 +878,18 @@ void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObjec
 	mission->setTypeCRC(MissionObject::CRAFTING);
 }
 
-void MissionManagerImplementation::randomizeEntertainerMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericEntertainerMission(player, mission, MissionObject::FACTIONNEUTRAL);
-}
+void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction, const int missionType) {
+	//Generate difficulty for mission. How far away missions can be.
+	int difficulty = 1;
 
-void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction) {
-	/*
+	if (missionType == MissionObject::DANCER && player->hasSkill("social_dancer_novice")) {
+		difficulty = 2;
+	} else if (missionType == MissionObject::MUSICIAN && player->hasSkill("social_musician_novice")) {
+		difficulty = 2;
+	}
+
+	int randomRange = System::random(difficulty - 1) + 1;
+
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 	MissionTargetMap* performanceLocations = pmng->getPerformanceLocations();
 	if (performanceLocations->size() <= 0) {
@@ -862,7 +898,7 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 	}
 
 	// TODO: filter by distance (get closer locations for lower difficulties)
-	SceneObject* target = performanceLocations->getRandomTarget(player, 1);
+	SceneObject* target = performanceLocations->getRandomTarget(player, randomRange);
 	if (target == NULL || !target->isStructureObject()) {
 		mission->setTypeCRC(0);
 		return;
@@ -870,37 +906,51 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 
 	NameManager* nm = processor->getNameManager();
 
-	bool dancing = false;
-	if (System::random(1) == 0)
-		dancing = true;
+	String missionString = "musician";
+	if (missionType == MissionObject::DANCER) {
+		missionString = "dancer";
+	}
 
-	String missionType = "musician";
-	if (dancing)
-		missionType = "dancer";
-
-	int randTexts = System::random(49) + 1;
+	int numberOfMissions = 49;
+	if (faction != MissionObject::FACTIONNEUTRAL) {
+		numberOfMissions = 34;
+	}
+	int randTexts = System::random(numberOfMissions) + 1;
 
 	mission->setMissionNumber(randTexts);
-	mission->setMissionTarget(target);
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
-	mission->setStartPosition(target->getPositionX(), target->getPositionY(), target->getPlanetCRC());
+	mission->setStartPlanet(player->getZone()->getZoneName());
+	mission->setStartPosition(target->getPositionX(), target->getPositionY(), player->getZone()->getZoneName());
 
-	// TODO: this all needs to change to be less static and use distance
 	mission->setMissionTargetName("Theater");
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/building/general/mun_all_guild_theater_s01.iff").hashCode()));
 
-	mission->setRewardCredits(100 + System::random(100));
-	mission->setMissionDifficulty(5);
-	mission->setMissionTitle("mission/mission_npc_" + missionType + "_neutral_easy", "m" + String::valueOf(randTexts) + "t");
-	mission->setMissionDescription("mission/mission_npc_" + missionType + "_neutral_easy", "m" + String::valueOf(randTexts) + "o");
+	int distanceReward = player->getWorldPosition().distanceTo(target->getPosition()) / 10;
 
-	if (!dancing)
-		mission->setTypeCRC(MissionObject::MUSICIAN);
-	else
-		mission->setTypeCRC(MissionObject::DANCER);
-	*/
+	mission->setRewardCredits(100 + distanceReward + System::random(100));
+
+	mission->setFaction(faction);
+	mission->setRewardFactionPoints(5);
+
+	mission->setMissionDifficulty(5 * randomRange);
+
+	switch (faction) {
+	case MissionObject::FACTIONIMPERIAL:
+		mission->setMissionTitle("mission/mission_npc_" + missionString + "_imperial_easy", "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_npc_" + missionString + "_imperial_easy", "m" + String::valueOf(randTexts) + "o");
+		break;
+	case MissionObject::FACTIONREBEL:
+		mission->setMissionTitle("mission/mission_npc_" + missionString + "_rebel_easy", "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_npc_" + missionString + "_rebel_easy", "m" + String::valueOf(randTexts) + "o");
+		break;
+	default:
+		mission->setMissionTitle("mission/mission_npc_" + missionString + "_neutral_easy", "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_npc_" + missionString + "_neutral_easy", "m" + String::valueOf(randTexts) + "o");
+		break;
+	}
+
+	mission->setTypeCRC(missionType);
 }
 
 void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* player, MissionObject* mission) {

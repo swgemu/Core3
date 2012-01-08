@@ -18,6 +18,8 @@
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/packets/object/Flourish.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/EntertainerMissionObjective.h"
 
 void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	ManagedReference<CreatureObject*> creo = entertainer.get();
@@ -364,13 +366,13 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 		tickTask->cancel();
 
 	targetInstrument = false;
+	updateEntertainerMissionStatus(false, MissionObject::MUSICIAN);
 
 	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
 	if (!dancing && !playingMusic) {
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
-
 }
 
 void EntertainingSessionImplementation::startDancing(const String& dance, const String& animation) {
@@ -381,6 +383,8 @@ void EntertainingSessionImplementation::startDancing(const String& dance, const 
 	dancing = true;
 
 	entertainer->sendSystemMessage("performance", "dance_start_self");
+
+	updateEntertainerMissionStatus(true, MissionObject::DANCER);
 
 	startEntertaining();
 }
@@ -400,6 +404,8 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 
 	if (externalInstrument != NULL)
 		externalInstrument->setBeingUsed(true);
+
+	updateEntertainerMissionStatus(true, MissionObject::MUSICIAN);
 
 	startEntertaining();
 }
@@ -461,12 +467,13 @@ void EntertainingSessionImplementation::stopDancing() {
 	if (tickTask != NULL && tickTask->isScheduled())
 		tickTask->cancel();
 
+	updateEntertainerMissionStatus(false, MissionObject::DANCER);
+
 	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
 	if (!dancing && !playingMusic) {
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
-
 }
 
 bool EntertainingSessionImplementation::canGiveEntertainBuff() {
@@ -858,4 +865,34 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 	}
 	}
 
+}
+
+void EntertainingSessionImplementation::updateEntertainerMissionStatus(bool entertaining, const int missionType) {
+	if (entertainer == NULL) {
+		return;
+	}
+
+	SceneObject* datapad = entertainer->getSlottedObject("datapad");
+
+	if (datapad == NULL) {
+		return;
+	}
+
+	//Notify all missions of correct type.
+	int datapadSize = datapad->getContainerObjectsSize();
+	for (int i = 0; i < datapadSize; ++i) {
+		if (datapad->getContainerObject(i)->isMissionObject()) {
+			MissionObject* datapadMission = cast<MissionObject*>(datapad->getContainerObject(i));
+
+			if (datapadMission != NULL) {
+				EntertainerMissionObjective* objective = cast<EntertainerMissionObjective*>(datapadMission->getMissionObjective());
+
+				if (objective != NULL && datapadMission->getTypeCRC() == MissionObject::DANCER && missionType == MissionObject::DANCER) {
+					objective->setIsEntertaining(entertaining);
+				} else if (objective != NULL && datapadMission->getTypeCRC() == MissionObject::MUSICIAN && missionType == MissionObject::MUSICIAN) {
+					objective->setIsEntertaining(entertaining);
+				}
+			}
+		}
+	}
 }

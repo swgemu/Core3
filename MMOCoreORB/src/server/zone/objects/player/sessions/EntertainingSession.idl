@@ -228,4 +228,5 @@ class EntertainingSession extends Facade {
 		targetInstrument = var;
 	}
 
+	public native void updateEntertainerMissionStatus(boolean entertaining, final int missionType);
 }

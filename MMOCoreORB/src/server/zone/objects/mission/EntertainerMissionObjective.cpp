@@ -4,6 +4,10 @@
 
 #include "EntertainerMissionObjective.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/Zone.h"
+
 #include "server/zone/objects/mission/MissionObject.h"
 
 #include "server/zone/objects/mission/MissionObserver.h"
@@ -18,7 +22,7 @@
  *	EntertainerMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SETISENTERTAINING__BOOL_,RPC_CLEARLOCATIONACTIVEAREAANDOBSERVERS__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
 
 EntertainerMissionObjective::EntertainerMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	EntertainerMissionObjectiveImplementation* _implementation = new EntertainerMissionObjectiveImplementation(mission);
@@ -84,6 +88,33 @@ void EntertainerMissionObjective::complete() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->complete();
+}
+
+void EntertainerMissionObjective::setIsEntertaining(bool value) {
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETISENTERTAINING__BOOL_);
+		method.addBooleanParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setIsEntertaining(value);
+}
+
+void EntertainerMissionObjective::clearLocationActiveAreaAndObservers() {
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEARLOCATIONACTIVEAREAANDOBSERVERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->clearLocationActiveAreaAndObservers();
 }
 
 int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -207,6 +238,26 @@ bool EntertainerMissionObjectiveImplementation::readObjectMember(ObjectInputStre
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "inMissionArea") {
+		TypeInfo<bool >::parseFromBinaryStream(&inMissionArea, stream);
+		return true;
+	}
+
+	if (_name == "isEntertaining") {
+		TypeInfo<bool >::parseFromBinaryStream(&isEntertaining, stream);
+		return true;
+	}
+
+	if (_name == "locationActiveArea") {
+		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&locationActiveArea, stream);
+		return true;
+	}
+
+	if (_name == "completeTask") {
+		TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&completeTask, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -222,12 +273,52 @@ int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputSt
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "inMissionArea";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&inMissionArea, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	_name = "isEntertaining";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&isEntertaining, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "locationActiveArea";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ActiveArea* > >::toBinaryStream(&locationActiveArea, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "completeTask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::toBinaryStream(&completeTask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 EntertainerMissionObjectiveImplementation::EntertainerMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		inMissionArea = false;
+	inMissionArea = false;
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		isEntertaining = false;
+	isEntertaining = false;
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		locationActiveArea = null;
+	locationActiveArea = NULL;
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		completeTask = null;
+	completeTask = NULL;
 	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		Logger.setLoggingName("EntertainerMissionObjective");
 	Logger::setLoggingName("EntertainerMissionObjective");
 }
@@ -268,6 +359,12 @@ Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, Distribu
 	case RPC_COMPLETE__:
 		complete();
 		break;
+	case RPC_SETISENTERTAINING__BOOL_:
+		setIsEntertaining(inv->getBooleanParameter());
+		break;
+	case RPC_CLEARLOCATIONACTIVEAREAANDOBSERVERS__:
+		clearLocationActiveAreaAndObservers();
+		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
@@ -296,6 +393,14 @@ void EntertainerMissionObjectiveAdapter::abort() {
 
 void EntertainerMissionObjectiveAdapter::complete() {
 	(static_cast<EntertainerMissionObjective*>(stub))->complete();
+}
+
+void EntertainerMissionObjectiveAdapter::setIsEntertaining(bool value) {
+	(static_cast<EntertainerMissionObjective*>(stub))->setIsEntertaining(value);
+}
+
+void EntertainerMissionObjectiveAdapter::clearLocationActiveAreaAndObservers() {
+	(static_cast<EntertainerMissionObjective*>(stub))->clearLocationActiveAreaAndObservers();
 }
 
 int EntertainerMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

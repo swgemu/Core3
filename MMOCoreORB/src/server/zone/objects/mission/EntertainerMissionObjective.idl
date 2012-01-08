@@ -45,6 +45,9 @@ which carries forward this exception.
 package server.zone.objects.mission;
 
 import engine.util.Observer;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.Zone;
+include server.zone.objects.mission.events.CompleteMissionAfterCertainTimeTask;
 import engine.util.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
@@ -53,10 +56,23 @@ import server.zone.objects.area.MissionSpawnActiveArea;
 import server.zone.objects.scene.SceneObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.area.ActiveArea;
 
 class EntertainerMissionObjective extends MissionObjective {
+	protected boolean inMissionArea;
+	protected boolean isEntertaining;
+	
+	protected ActiveArea locationActiveArea;
+	
+	protected CompleteMissionAfterCertainTimeTask completeTask;
+	
 	public EntertainerMissionObjective(MissionObject mission) {
 		super(mission);
+		
+		inMissionArea = false;
+		isEntertaining = false;
+		locationActiveArea = null;
+		completeTask = null;
 		
 		Logger.setLoggingName("EntertainerMissionObjective");
 	}
@@ -75,5 +91,9 @@ class EntertainerMissionObjective extends MissionObjective {
 	public native void abort();
 	public native void complete();
 	
+	public native void setIsEntertaining(boolean value); 
+	
+	public native void clearLocationActiveAreaAndObservers();
+
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 }

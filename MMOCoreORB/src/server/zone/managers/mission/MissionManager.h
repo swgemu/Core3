@@ -164,7 +164,7 @@ public:
 
 	void randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction);
 
-	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction);
+	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction, const int missionType);
 
 	void randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction);
 
@@ -181,8 +181,6 @@ public:
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
@@ -278,6 +276,8 @@ protected:
 
 	bool enableFactionalReconMissions;
 
+	bool enableFactionalEntertainerMissions;
+
 public:
 	unsigned static const int UNKNOWN_TARGET = 0xB911DA26;
 
@@ -309,7 +309,7 @@ public:
 
 	void randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction);
 
-	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction);
+	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction, const int missionType);
 
 	void randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction);
 
@@ -326,8 +326,6 @@ public:
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
@@ -446,7 +444,7 @@ public:
 
 	void randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction);
 
-	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction);
+	void randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction, const int missionType);
 
 	void randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction);
 
@@ -463,8 +461,6 @@ public:
 	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
-
-	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
 	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 

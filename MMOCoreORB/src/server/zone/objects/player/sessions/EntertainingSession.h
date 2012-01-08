@@ -203,6 +203,8 @@ public:
 
 	void setTargetInstrument(bool var);
 
+	void updateEntertainerMissionStatus(bool entertaining, const int missionType);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -348,6 +350,8 @@ public:
 
 	void setTargetInstrument(bool var);
 
+	void updateEntertainerMissionStatus(bool entertaining, const int missionType);
+
 	WeakReference<EntertainingSession*> _this;
 
 	operator const EntertainingSession*();
@@ -462,6 +466,8 @@ public:
 	void setDancing(bool val);
 
 	void setTargetInstrument(bool var);
+
+	void updateEntertainerMissionStatus(bool entertaining, const int missionType);
 
 protected:
 	String _param0_startDancing__String_String_;
