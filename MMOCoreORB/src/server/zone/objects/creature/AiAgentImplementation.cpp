@@ -259,7 +259,17 @@ void AiAgentImplementation::selectWeapon() {
 		}
 	}
 
-	setWeapon(finalWeap, true);
+	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
+
+	if (currentWeapon != finalWeap) {
+		if (currentWeapon != NULL)
+			currentWeapon->destroyObjectFromWorld(false);
+
+		transferObject(finalWeap, 4, false);
+		broadcastObject(finalWeap, false);
+	}
+
+	//setWeapon(finalWeap, true);
 }
 
 bool AiAgentImplementation::validateStateAttack(CreatureObject* target, String& args) {

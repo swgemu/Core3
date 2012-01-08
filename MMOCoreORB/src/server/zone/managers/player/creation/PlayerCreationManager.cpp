@@ -710,8 +710,13 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature, Scene
 
 	String profession = player->getStarterProfession();
 
-	for (int itemNumber = 0; itemNumber < professionDefaultsInfo.get(profession)->getStartingItems()->size(); itemNumber++) {
-		ManagedReference<SceneObject*> item = zoneServer->createObject(professionDefaultsInfo.get(profession)->getStartingItems()->get(itemNumber).hashCode(), 1);
+	ProfessionDefaultsInfo* professionData = professionDefaultsInfo.get(profession);
+
+	if (professionData == NULL)
+		professionData = professionDefaultsInfo.get(0);
+
+	for (int itemNumber = 0; itemNumber < professionData->getStartingItems()->size(); itemNumber++) {
+		ManagedReference<SceneObject*> item = zoneServer->createObject(professionData->getStartingItems()->get(itemNumber).hashCode(), 1);
 		if (item != NULL && container != NULL && !item->isWeaponObject()) {
 			container->transferObject(item, -1, true);
 		}
@@ -753,6 +758,12 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature, Sce
 
 	String profession = player->getStarterProfession();
 
+	ProfessionDefaultsInfo* professionData = professionDefaultsInfo.get(profession);
+
+	if (professionData == NULL)
+		professionData = professionDefaultsInfo.get(0);
+
+
 	//Add common starting items.
 	for (int itemNumber = 0; itemNumber < commonStartingItems.size(); itemNumber++) {
 		ManagedReference<SceneObject*> item = zoneServer->createObject(commonStartingItems.get(itemNumber).hashCode(), 1);
@@ -764,8 +775,8 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature, Sce
 
 
 	//Add profession specific items.
-	for (int itemNumber = 0; itemNumber < professionDefaultsInfo.get(profession)->getStartingItems()->size(); itemNumber++) {
-		ManagedReference<SceneObject*> item = zoneServer->createObject(professionDefaultsInfo.get(profession)->getStartingItems()->get(itemNumber).hashCode(), 1);
+	for (int itemNumber = 0; itemNumber < professionData->getStartingItems()->size(); itemNumber++) {
+		ManagedReference<SceneObject*> item = zoneServer->createObject(professionData->getStartingItems()->get(itemNumber).hashCode(), 1);
 		if (item != NULL && container != NULL && item->isWeaponObject()) {
 			item->sendTo(creature, true);
 			container->transferObject(item, -1, true);
