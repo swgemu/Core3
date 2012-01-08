@@ -736,6 +736,10 @@ public:
 
 	byte getMaximumLots();
 
+	String getStarterProfession();
+
+	void setStarterProfession(String& profession);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -752,6 +756,7 @@ protected:
 	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
 	String _return_getSavedTerrainName;
+	String _return_getStarterProfession;
 	String _return_getTitle;
 
 	UnicodeString _return_getBiography;
@@ -794,6 +799,8 @@ protected:
 	int drinkFilling;
 
 	int drinkFillingMax;
+
+	String starterProfession;
 
 	bool teleporting;
 
@@ -1334,6 +1341,10 @@ public:
 
 	byte getMaximumLots();
 
+	String getStarterProfession();
+
+	void setStarterProfession(String& profession);
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1725,6 +1736,10 @@ public:
 
 	byte getMaximumLots();
 
+	String getStarterProfession();
+
+	void setStarterProfession(String& profession);
+
 protected:
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_bool_;
@@ -1751,6 +1766,7 @@ protected:
 	String _param0_removeReverseFriend__String_;
 	UnicodeString _param0_setBiography__UnicodeString_;
 	String _param0_getExperience__String_;
+	String _param0_setStarterProfession__String_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

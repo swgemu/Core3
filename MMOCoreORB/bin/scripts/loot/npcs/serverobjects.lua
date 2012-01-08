@@ -9,4 +9,4 @@ includeFile("npcs/rori/serverobjects.lua")
 includeFile("npcs/talus/serverobjects.lua") 
 includeFile("npcs/tatooine/serverobjects.lua") 
 includeFile("npcs/yavin4/serverobjects.lua") 
-
+includeFile("npcs/tutorial/serverobjects.lua")

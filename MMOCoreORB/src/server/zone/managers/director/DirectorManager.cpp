@@ -48,6 +48,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
+	lua_register(luaEngine->getLuaState(), "spatialShout", spatialShout);
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
@@ -110,7 +111,7 @@ int DirectorManager::checkInt64Lua(lua_State* L) {
 	if (data < bigNumber) {
 		instance()->error("Lua not using lnum patch with 64 bit integers, please patch lua!!");
 	} else {
-		instance()->info("Lua reads int64", true);
+		instance()->info("Lua reads int64");
 	}
 
 	lua_pop(L, 1);
@@ -184,6 +185,19 @@ int DirectorManager::spatialChat(lua_State* L) {
 
 	if (creature != NULL)
 		chatManager->broadcastMessage(creature, message, 0, 0, 0);
+
+	return 0;
+}
+
+int DirectorManager::spatialShout(lua_State* L) {
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
+	String message = lua_tostring(L, -1);
+
+	if (creature != NULL)
+		chatManager->broadcastMessage(creature, message, 0, 0, 80);
 
 	return 0;
 }
@@ -264,12 +278,12 @@ int DirectorManager::setAuthorizationState(lua_State* L) {
 	//SceneObject* sceneObject = creatureObject->getSlottedObject("inventory");
 
 	if (terminal == NULL) {
-		instance()->info("setAuthorizationState: Terminal is NULL", true);
+		instance()->info("setAuthorizationState: Terminal is NULL");
 		return 0;
 	}
 
 	if (terminal->getGameObjectType() != SceneObjectType::NEWBIETUTORIALTERMINAL) {
-		instance()->info("setAuthorizationState: Wrong SceneObjectType:" + String::valueOf(terminal->getGameObjectType()), true);
+		instance()->info("setAuthorizationState: Wrong SceneObjectType:" + String::valueOf(terminal->getGameObjectType()));
 		return 0;
 	}
 

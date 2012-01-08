@@ -29,9 +29,9 @@ public:
 		int index = Integer::valueOf(args->get(1).toString());
 
 		if (otherPressed)
-			player->info("Sell All",true);
+			player->info("Sell All");
 		else if (cancel == 0)
-			player->info("Sell",true);
+			player->info("Sell");
 
 		//player->sendSystemMessage("Index: " + String::valueOf(index) + " Cancel: " + String::valueOf(cancel) + " Other: " + String::valueOf(otherPressed));
 		/*try {

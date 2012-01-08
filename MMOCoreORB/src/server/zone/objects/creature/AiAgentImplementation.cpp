@@ -73,8 +73,10 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			}
 		}
 
-		// add the default weapon
-		weapons.add(getWeapon());
+		// add the default weapon for creatures
+		if (isCreature()) {
+			weapons.add(getWeapon());
+		}
 	}
 
 	// set the damage of the default weapon
