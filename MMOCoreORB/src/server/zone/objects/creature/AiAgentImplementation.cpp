@@ -262,13 +262,16 @@ void AiAgentImplementation::selectWeapon() {
 	}
 
 	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
+	ManagedReference<WeaponObject*> defaultWeapon = dynamic_cast<WeaponObject*>(getSlottedObject("default_weapon"));
 
 	if (currentWeapon != finalWeap) {
-		if (currentWeapon != NULL)
+		if (currentWeapon != NULL && currentWeapon != defaultWeapon)
 			currentWeapon->destroyObjectFromWorld(false);
 
-		transferObject(finalWeap, 4, false);
-		broadcastObject(finalWeap, false);
+		if (finalWeap != defaultWeapon) {
+			transferObject(finalWeap, 4, false);
+			broadcastObject(finalWeap, false);
+		}
 	}
 
 	//setWeapon(finalWeap, true);
