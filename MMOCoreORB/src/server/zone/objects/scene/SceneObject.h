@@ -960,7 +960,7 @@ public:
 
 	ActiveArea* getActiveRegion();
 
-	CityRegion* getCityRegion();
+	virtual CityRegion* getCityRegion();
 
 	void setCityRegion(CityRegion* region);
 

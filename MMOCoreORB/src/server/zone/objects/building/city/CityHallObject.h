@@ -197,13 +197,13 @@ public:
 
 	CityVoteTerminal* getCityVoteTerminal();
 
-	Region* getCityRegion();
-
-	void setCityRegion(Region* region);
-
 	int getCivicStructureCap();
 
 	bool isZoningEnabled();
+
+	Region* getRegion();
+
+	void setRegion(Region* reg);
 
 	void toggleZoningEnabled(CreatureObject* player);
 
@@ -273,8 +273,6 @@ protected:
 
 	bool zoningEnabled;
 
-	ManagedReference<Region* > cityRegion;
-
 	String cityName;
 
 	byte cityRank;
@@ -294,6 +292,8 @@ protected:
 	ManagedReference<CityTerminal* > cityTerminal;
 
 	ManagedReference<CityVoteTerminal* > cityVoteTerminal;
+
+	ManagedReference<Region* > townRegion;
 
 public:
 	CityHallObjectImplementation();
@@ -378,13 +378,13 @@ public:
 
 	CityVoteTerminal* getCityVoteTerminal();
 
-	Region* getCityRegion();
-
-	void setCityRegion(Region* region);
-
 	int getCivicStructureCap();
 
 	bool isZoningEnabled();
+
+	Region* getRegion();
+
+	void setRegion(Region* reg);
 
 	void toggleZoningEnabled(CreatureObject* player);
 
@@ -533,13 +533,13 @@ public:
 
 	CityVoteTerminal* getCityVoteTerminal();
 
-	Region* getCityRegion();
-
-	void setCityRegion(Region* region);
-
 	int getCivicStructureCap();
 
 	bool isZoningEnabled();
+
+	Region* getRegion();
+
+	void setRegion(Region* reg);
 
 	void toggleZoningEnabled(CreatureObject* player);
 

@@ -258,6 +258,8 @@ public:
 
 	MissionTargetMap* getReconLocs();
 
+	CityRegion* getMainRegion();
+
 	void addInformant(SceneObject* obj);
 
 	MissionTargetMap* getInformants();
@@ -421,10 +423,8 @@ public:
 
 	MissionTargetMap* getReconLocs();
 
-protected:
 	CityRegion* getMainRegion();
 
-public:
 	void addInformant(SceneObject* obj);
 
 	MissionTargetMap* getInformants();
@@ -533,6 +533,8 @@ public:
 	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
 
 	void addReconLoc(SceneObject* obj);
+
+	CityRegion* getMainRegion();
 
 	void addInformant(SceneObject* obj);
 

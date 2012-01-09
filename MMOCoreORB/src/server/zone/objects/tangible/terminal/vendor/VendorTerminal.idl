@@ -56,6 +56,8 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.managers.planet.PlanetManager;
+import server.zone.objects.region.CityRegion;
 
 class VendorTerminal extends Terminal {
 
@@ -116,5 +118,16 @@ class VendorTerminal extends Terminal {
 
 	public boolean isVendorTerminal() {
 		return true;
+	}
+	
+	@read
+	public CityRegion getCityRegion() {
+		if (super.cityRegion == null) {
+			if (super.getZone() == null)
+				return null;
+				
+			return super.getZone().getPlanetManager().getMainRegion();
+		} else
+			return super.cityRegion;
 	}
 }

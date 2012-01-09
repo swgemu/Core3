@@ -50,15 +50,15 @@ which carries forward this exception.
 class PlayMusicMessage : public BaseMessage {
 public:
 
-    PlayMusicMessage(const String& soundFile) : BaseMessage() {
+    PlayMusicMessage(const String& soundFile, uint64 target = 0, int unkInt = 1, bool unkBool = false) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x04270D8A);  // CRC
         insertAscii(soundFile);
         
         //?
-        insertLong(0);
-        insertInt(0x01);
-        insertByte(0);
+        insertLong(target);
+        insertInt(unkInt);
+        insertByte(unkBool);
         
 	}
 	

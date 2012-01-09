@@ -46,7 +46,7 @@ void PlanetManagerImplementation::initialize() {
 	informants = new MissionTargetMap();
 
 	mainRegion = new CityRegion("main", NULL);
-	mainRegion->addActiveArea(zone, 0, 0, zone->getBoundingRadius());
+	//mainRegion->addActiveArea(zone, 0, 0, zone->getBoundingRadius());
 
 	numberOfCities = 0;
 

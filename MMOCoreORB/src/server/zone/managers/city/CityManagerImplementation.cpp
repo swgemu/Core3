@@ -90,7 +90,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObje
 	uint32 crc = String("object/region_area.iff").hashCode();
 
 	Region* cityRegion = cast<Region*>(ObjectManager::instance()->createObject(crc, 2, "cityregions"));
-	city->setCityRegion(cityRegion);
+	city->setRegion(cityRegion);
 	cityRegion->initializePosition(city->getPositionX(), 0, city->getPositionY());
 	cityRegion->setRadius(radiusPerRank.get(NEWCITY));
 	cityRegion->setCityHall(city);
@@ -123,7 +123,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObje
 void CityManagerImplementation::changeCityName(CityHallObject* city, CreatureObject* player, const String& name) {
 	city->setCityName(name);
 
-	ManagedReference<Region*> cityRegion = city->getCityRegion();
+	ManagedReference<Region*> cityRegion = city->getRegion();
 
 	if (cityRegion != NULL) {
 		StringId* objectName = cityRegion->getObjectName();
@@ -240,7 +240,7 @@ void CityManagerImplementation::contractCity(CityHallObject* city) {
 
 	//TODO: Zoning Permits Invalid if below 10 citizens (but itll still be an outpost?)
 
-	ManagedReference<Region*> region = city->getCityRegion();
+	ManagedReference<Region*> region = city->getRegion();
 
 	if (region == NULL)
 		return;
@@ -283,7 +283,7 @@ void CityManagerImplementation::expandCity(CityHallObject* city) {
 		return;
 	}
 
-	ManagedReference<Region*> region = city->getCityRegion();
+	ManagedReference<Region*> region = city->getRegion();
 
 	if (region == NULL)
 		return;

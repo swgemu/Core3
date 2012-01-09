@@ -8,6 +8,7 @@
 #include "CityHallObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -37,21 +38,21 @@ void CityHallObjectImplementation::spawnCityHallObjects() {
 
 	//TODO: Deprecate this as well.
 
-	//if (cityRegion == NULL)
+	//if (townRegion == NULL)
 		//return;
 
-	//cityRegion->insertToZone(getZone());
-	//getZone()->getPlanetManager()->addRegion(cityRegion);
+	//townRegion->insertToZone(getZone());
+	//getZone()->getPlanetManager()->addRegion(townRegion);
 }
 
 void CityHallObjectImplementation::despawnCityHallObjects() {
 	if (getZone() == NULL)
 		return;
 
-	if (cityRegion != NULL) {
-		//cityRegion->removeFromZone();
+	if (townRegion != NULL) {
+		//townRegion->removeFromZone();
 
-		//getZone()->getPlanetManager()->dropRegion(cityRegion);
+		//getZone()->getPlanetManager()->dropRegion(townRegion);
 	}
 }
 
@@ -146,13 +147,13 @@ void CityHallObjectImplementation::sendStatusTo(CreatureObject* player) {
 	//Lists basic information about the city.
 	listBox->addMenuItem("@city/city:name_prompt " + cityName);
 	listBox->addMenuItem("@city/city:mayor_prompt " + mayorName);
-	listBox->addMenuItem("@city/city:location_prompt " + location.toString() + " @city/city:radius_prompt " + String::valueOf(cityRegion->getRadius()));
+	listBox->addMenuItem("@city/city:location_prompt " + location.toString() + " @city/city:radius_prompt " + String::valueOf(townRegion->getRadius()));
 	listBox->addMenuItem("@city/city:citizen_prompt " + String::valueOf(declaredCitizens.size()) + " @city/city:structures_prompt " + String::valueOf(cityStructures.size()));
 	listBox->addMenuItem("@city/city:specialization_prompt "); //TODO: Specialization
 	listBox->addMenuItem("@city/city:income_tax_prompt " + String::valueOf(incomeTax) + " @city/city:promperty_tax_prompt " + String::valueOf(propertyTax) + " @city/city:sales_tax_prompt " + String::valueOf(salesTax));
 
 	/**
-	if (cityRegion->getShuttle() == NULL)
+	if (townRegion->getShuttle() == NULL)
 		listBox->addMenuItem("@city/city:travel_cost_prompt_none");
 	else
 		listBox->addMenuItem("@city/city:travel_cost_prompt "); //TODO: Shuttle costs

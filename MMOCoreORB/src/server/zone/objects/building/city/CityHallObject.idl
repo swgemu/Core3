@@ -74,7 +74,6 @@ class CityHallObject extends BuildingObject {
 	
 	protected boolean zoningEnabled;
 	
-	protected Region cityRegion;
 	protected string cityName;
 	protected byte cityRank;
 	protected byte citySpecialization;
@@ -91,15 +90,15 @@ class CityHallObject extends BuildingObject {
 	protected CityTerminal cityTerminal;
 	protected CityVoteTerminal cityVoteTerminal;
 	
+	protected Region townRegion;
+	
 	public CityHallObject() {
 		setLoggingName("CityHallObject");
 		
 		cityName = "test city";
 		
 		cityRank = CityManager.NEWCITY;
-	
-		cityRegion = null;
-		
+			
 		citySpecialization = 0;
 		
 		mayorObjectID = 0;
@@ -253,20 +252,20 @@ class CityHallObject extends BuildingObject {
 		return cityVoteTerminal;
 	}
 	
-	public Region getCityRegion() {
-		return cityRegion;
-	}
-	
-	public void setCityRegion(Region region) {
-		cityRegion = region;
-	}
-	
 	public int getCivicStructureCap() {
 		return cityRank * 6 + 1;
 	}
 	
 	public boolean isZoningEnabled() {
 		return zoningEnabled;
+	}
+	
+	public Region getRegion() {
+		return townRegion;
+	}
+	
+	public void setRegion(Region reg) {
+		townRegion = reg;
 	}
 	
 	public void toggleZoningEnabled(CreatureObject player) {

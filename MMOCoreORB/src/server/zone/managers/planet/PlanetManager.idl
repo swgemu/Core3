@@ -276,7 +276,7 @@ class PlanetManager extends ManagedService implements Logger {
 		return reconLocs;
 	}
 	
-	protected CityRegion getMainRegion() {
+	public CityRegion getMainRegion() {
 		return mainRegion;
 	}
 	

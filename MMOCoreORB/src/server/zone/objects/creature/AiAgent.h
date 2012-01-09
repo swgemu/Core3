@@ -254,7 +254,7 @@ namespace creature {
 
 class AiAgent : public CreatureObject {
 public:
-	static const int UPDATEMOVEMENTINTERVAL = 1000;
+	static const int UPDATEMOVEMENTINTERVAL = 500;
 
 	unsigned static const int OBLIVIOUS = 0;
 
@@ -508,7 +508,7 @@ protected:
 	Reference<DespawnCreatureOnPlayerDissappear* > despawnEvent;
 
 public:
-	static const int UPDATEMOVEMENTINTERVAL = 1000;
+	static const int UPDATEMOVEMENTINTERVAL = 500;
 
 	unsigned static const int OBLIVIOUS = 0;
 

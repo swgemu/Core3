@@ -89,6 +89,34 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace planet {
+
+class PlanetManager;
+
+} // namespace planet
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::planet;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace region {
+
+class CityRegion;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
+
 #include "server/zone/objects/auction/Vendor.h"
 
 #include "engine/core/ManagedObject.h"
@@ -131,6 +159,8 @@ public:
 	bool isVendor();
 
 	bool isVendorTerminal();
+
+	CityRegion* getCityRegion();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -191,6 +221,8 @@ public:
 
 	bool isVendorTerminal();
 
+	CityRegion* getCityRegion();
+
 	WeakReference<VendorTerminal*> _this;
 
 	operator const VendorTerminal*();
@@ -247,6 +279,8 @@ public:
 	bool isVendor();
 
 	bool isVendorTerminal();
+
+	CityRegion* getCityRegion();
 
 };
 

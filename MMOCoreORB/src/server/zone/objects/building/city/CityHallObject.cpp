@@ -20,7 +20,7 @@
  *	CityHallObjectStub
  */
 
-enum {RPC_NOTIFYINSERTTOZONE__ZONE_ = 6,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__CREATUREOBJECT_BOOL_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDCITIZENSHIPREPORTTO__CREATUREOBJECT_,RPC_SENDSTRUCTUREREPORTTO__CREATUREOBJECT_,RPC_SENDTREASURYREPORTTO__CREATUREOBJECT_,RPC_SENDCITYADVANCEMENTTO__CREATUREOBJECT_,RPC_SENDMAINTENANCEREPORTTO__CREATUREOBJECT_,RPC_SENDCHANGECITYNAMETO__CREATUREOBJECT_,RPC_SENDENABLEZONINGTO__CREATUREOBJECT_,RPC_SENDMANAGEMILITIATO__CREATUREOBJECT_,RPC_SENDADDMILITIAMEMBERTO__CREATUREOBJECT_,RPC_SENDADJUSTTAXESTO__CREATUREOBJECT_,RPC_SENDTREASURYDEPOSITTO__CREATUREOBJECT_,RPC_SENDTREASURYWITHDRAWALTO__CREATUREOBJECT_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__CREATUREOBJECT_,RPC_TOGGLECITYREGISTRATION__CREATUREOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
+enum {RPC_NOTIFYINSERTTOZONE__ZONE_ = 6,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__CREATUREOBJECT_BOOL_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDCITIZENSHIPREPORTTO__CREATUREOBJECT_,RPC_SENDSTRUCTUREREPORTTO__CREATUREOBJECT_,RPC_SENDTREASURYREPORTTO__CREATUREOBJECT_,RPC_SENDCITYADVANCEMENTTO__CREATUREOBJECT_,RPC_SENDMAINTENANCEREPORTTO__CREATUREOBJECT_,RPC_SENDCHANGECITYNAMETO__CREATUREOBJECT_,RPC_SENDENABLEZONINGTO__CREATUREOBJECT_,RPC_SENDMANAGEMILITIATO__CREATUREOBJECT_,RPC_SENDADDMILITIAMEMBERTO__CREATUREOBJECT_,RPC_SENDADJUSTTAXESTO__CREATUREOBJECT_,RPC_SENDTREASURYDEPOSITTO__CREATUREOBJECT_,RPC_SENDTREASURYWITHDRAWALTO__CREATUREOBJECT_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__CREATUREOBJECT_,RPC_TOGGLECITYREGISTRATION__CREATUREOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_GETREGION__,RPC_SETREGION__REGION_,RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
 
 CityHallObject::CityHallObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	CityHallObjectImplementation* _implementation = new CityHallObjectImplementation();
@@ -575,33 +575,6 @@ CityVoteTerminal* CityHallObject::getCityVoteTerminal() {
 		return _implementation->getCityVoteTerminal();
 }
 
-Region* CityHallObject::getCityRegion() {
-	CityHallObjectImplementation* _implementation = static_cast<CityHallObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCITYREGION__);
-
-		return static_cast<Region*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getCityRegion();
-}
-
-void CityHallObject::setCityRegion(Region* region) {
-	CityHallObjectImplementation* _implementation = static_cast<CityHallObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETCITYREGION__REGION_);
-		method.addObjectParameter(region);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setCityRegion(region);
-}
-
 int CityHallObject::getCivicStructureCap() {
 	CityHallObjectImplementation* _implementation = static_cast<CityHallObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -626,6 +599,33 @@ bool CityHallObject::isZoningEnabled() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isZoningEnabled();
+}
+
+Region* CityHallObject::getRegion() {
+	CityHallObjectImplementation* _implementation = static_cast<CityHallObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREGION__);
+
+		return static_cast<Region*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getRegion();
+}
+
+void CityHallObject::setRegion(Region* reg) {
+	CityHallObjectImplementation* _implementation = static_cast<CityHallObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETREGION__REGION_);
+		method.addObjectParameter(reg);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setRegion(reg);
 }
 
 void CityHallObject::toggleZoningEnabled(CreatureObject* player) {
@@ -943,11 +943,6 @@ bool CityHallObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "cityRegion") {
-		TypeInfo<ManagedReference<Region* > >::parseFromBinaryStream(&cityRegion, stream);
-		return true;
-	}
-
 	if (_name == "cityName") {
 		TypeInfo<String >::parseFromBinaryStream(&cityName, stream);
 		return true;
@@ -995,6 +990,11 @@ bool CityHallObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 
 	if (_name == "cityVoteTerminal") {
 		TypeInfo<ManagedReference<CityVoteTerminal* > >::parseFromBinaryStream(&cityVoteTerminal, stream);
+		return true;
+	}
+
+	if (_name == "townRegion") {
+		TypeInfo<ManagedReference<Region* > >::parseFromBinaryStream(&townRegion, stream);
 		return true;
 	}
 
@@ -1058,14 +1058,6 @@ int CityHallObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<bool >::toBinaryStream(&zoningEnabled, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "cityRegion";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<Region* > >::toBinaryStream(&cityRegion, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1149,6 +1141,14 @@ int CityHallObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "townRegion";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<Region* > >::toBinaryStream(&townRegion, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 
 	return 17 + BuildingObjectImplementation::writeObjectMembers(stream);
 }
@@ -1161,8 +1161,6 @@ CityHallObjectImplementation::CityHallObjectImplementation() {
 	cityName = "test city";
 	// server/zone/objects/building/city/CityHallObject.idl():  		cityRank = CityManager.NEWCITY;
 	cityRank = CityManager::NEWCITY;
-	// server/zone/objects/building/city/CityHallObject.idl():  		cityRegion = null;
-	cityRegion = NULL;
 	// server/zone/objects/building/city/CityHallObject.idl():  		citySpecialization = 0;
 	citySpecialization = 0;
 	// server/zone/objects/building/city/CityHallObject.idl():  		mayorObjectID = 0;
@@ -1282,16 +1280,6 @@ CityVoteTerminal* CityHallObjectImplementation::getCityVoteTerminal() {
 	return cityVoteTerminal;
 }
 
-Region* CityHallObjectImplementation::getCityRegion() {
-	// server/zone/objects/building/city/CityHallObject.idl():  		return cityRegion;
-	return cityRegion;
-}
-
-void CityHallObjectImplementation::setCityRegion(Region* region) {
-	// server/zone/objects/building/city/CityHallObject.idl():  		cityRegion = region;
-	cityRegion = region;
-}
-
 int CityHallObjectImplementation::getCivicStructureCap() {
 	// server/zone/objects/building/city/CityHallObject.idl():  		return cityRank * 6 + 1;
 	return cityRank * 6 + 1;
@@ -1300,6 +1288,16 @@ int CityHallObjectImplementation::getCivicStructureCap() {
 bool CityHallObjectImplementation::isZoningEnabled() {
 	// server/zone/objects/building/city/CityHallObject.idl():  		return zoningEnabled;
 	return zoningEnabled;
+}
+
+Region* CityHallObjectImplementation::getRegion() {
+	// server/zone/objects/building/city/CityHallObject.idl():  		return townRegion;
+	return townRegion;
+}
+
+void CityHallObjectImplementation::setRegion(Region* reg) {
+	// server/zone/objects/building/city/CityHallObject.idl():  		townRegion = reg;
+	townRegion = reg;
 }
 
 void CityHallObjectImplementation::toggleZoningEnabled(CreatureObject* player) {
@@ -1496,17 +1494,17 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETCITYVOTETERMINAL__:
 		resp->insertLong(getCityVoteTerminal()->_getObjectID());
 		break;
-	case RPC_GETCITYREGION__:
-		resp->insertLong(getCityRegion()->_getObjectID());
-		break;
-	case RPC_SETCITYREGION__REGION_:
-		setCityRegion(static_cast<Region*>(inv->getObjectParameter()));
-		break;
 	case RPC_GETCIVICSTRUCTURECAP__:
 		resp->insertSignedInt(getCivicStructureCap());
 		break;
 	case RPC_ISZONINGENABLED__:
 		resp->insertBoolean(isZoningEnabled());
+		break;
+	case RPC_GETREGION__:
+		resp->insertLong(getRegion()->_getObjectID());
+		break;
+	case RPC_SETREGION__REGION_:
+		setRegion(static_cast<Region*>(inv->getObjectParameter()));
 		break;
 	case RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_:
 		toggleZoningEnabled(static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -1710,20 +1708,20 @@ CityVoteTerminal* CityHallObjectAdapter::getCityVoteTerminal() {
 	return (static_cast<CityHallObject*>(stub))->getCityVoteTerminal();
 }
 
-Region* CityHallObjectAdapter::getCityRegion() {
-	return (static_cast<CityHallObject*>(stub))->getCityRegion();
-}
-
-void CityHallObjectAdapter::setCityRegion(Region* region) {
-	(static_cast<CityHallObject*>(stub))->setCityRegion(region);
-}
-
 int CityHallObjectAdapter::getCivicStructureCap() {
 	return (static_cast<CityHallObject*>(stub))->getCivicStructureCap();
 }
 
 bool CityHallObjectAdapter::isZoningEnabled() {
 	return (static_cast<CityHallObject*>(stub))->isZoningEnabled();
+}
+
+Region* CityHallObjectAdapter::getRegion() {
+	return (static_cast<CityHallObject*>(stub))->getRegion();
+}
+
+void CityHallObjectAdapter::setRegion(Region* reg) {
+	(static_cast<CityHallObject*>(stub))->setRegion(reg);
 }
 
 void CityHallObjectAdapter::toggleZoningEnabled(CreatureObject* player) {
