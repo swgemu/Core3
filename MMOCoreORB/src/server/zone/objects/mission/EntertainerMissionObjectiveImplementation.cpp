@@ -118,9 +118,9 @@ void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
 		}
 
 		if (completeTask->isScheduled()) {
-			completeTask->reschedule(1 * 60 * 1000);
+			completeTask->reschedule(10 * 60 * 1000);
 		} else {
-			completeTask->schedule(1 * 60 * 1000);
+			completeTask->schedule(10 * 60 * 1000);
 		}
 	} else {
 		if (completeTask != NULL && completeTask->isScheduled()) {
