@@ -127,11 +127,14 @@ void SchematicMap::loadDraftSchematicDatabase() {
 			if(!schematicCrcMap.contains(draftSchematic->getClientObjectCRC()))
 				schematicCrcMap.put(draftSchematic->getClientObjectCRC(), draftSchematic);
 
+			if(!schematicCrcMap.contains(draftSchematic->getServerObjectCRC()))
+				schematicCrcMap.put(draftSchematic->getServerObjectCRC(), draftSchematic);
+
 			count++;
 		}
 	}
 
-	info("Loaded " + String::valueOf(count) + " schematics from database");
+	info("Loaded " + String::valueOf(count) + " schematics from database", true);
 }
 
 void SchematicMap::loadDraftSchematicFile() {
@@ -143,6 +146,7 @@ void SchematicMap::loadDraftSchematicFile() {
 	LuaObject serverScriptCRCList = getGlobalObject("schematics");
 
 	int size = serverScriptCRCList.getTableSize();
+	int count = 0;
 
 	lua_State* L = serverScriptCRCList.getLuaState();
 
@@ -178,10 +182,12 @@ void SchematicMap::loadDraftSchematicFile() {
 			if(!schematicCrcMap.contains(schematic->getClientObjectCRC()))
 				schematicCrcMap.put(schematic->getClientObjectCRC(), schematic);
 
+			count++;
+
 		}
 	}
 
-	info("Loaded " + String::valueOf(size) + " schematics from scripts");
+	info("Loaded " + String::valueOf(count) + " schematics from scripts", true);
 
 	serverScriptCRCList.pop();
 }
