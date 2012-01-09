@@ -149,7 +149,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	object->setParent(sceneObject);
 	object->setContainmentType(containmentType);
 
-	if (containmentType == 4 || containmentType == 5)
+	if ((containmentType == 4 || containmentType == 5) && objZone == NULL)
 		sceneObject->broadcastObject(object, true);
 	else if (notifyClient)
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
