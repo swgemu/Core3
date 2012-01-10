@@ -278,6 +278,7 @@ Vector3 CollisionManager::convertToModelSpace(const Vector3& point, SceneObject*
 }
 
 Matrix4 CollisionManager::getTransformMatrix(SceneObject* model) {
+	//this can be optimized by storing the matrix on the model and update it when needed
 	Matrix4 translationMatrix;
 	translationMatrix.setTranslation(-model->getPositionX(), -model->getPositionZ(), -model->getPositionY());
 

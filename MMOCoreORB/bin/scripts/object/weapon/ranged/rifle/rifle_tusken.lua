@@ -87,7 +87,7 @@ object_weapon_ranged_rifle_rifle_tusken = object_weapon_ranged_rifle_shared_rifl
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
 
-	idealRange = 0,
+	idealRange = 35,
 	idealAccuracy = 0,
 
 	maxRange = 65,

@@ -26,6 +26,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/PathFinderManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
@@ -64,8 +65,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		for (int i = 0; i < wepgroups.size(); ++i) {
 			Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
 
-			if (weptemps.size() > 0) {
-				uint32 crc = weptemps.get(System::random(weptemps.size() - 1)).hashCode();
+			for (int i = 0; i < weptemps.size(); ++i) {
+				uint32 crc = weptemps.get(i).hashCode();
+
 				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
 				weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
 				weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
@@ -265,10 +267,16 @@ void AiAgentImplementation::selectWeapon() {
 	ManagedReference<WeaponObject*> defaultWeapon = dynamic_cast<WeaponObject*>(getSlottedObject("default_weapon"));
 
 	if (currentWeapon != finalWeap) {
-		if (currentWeapon != NULL && currentWeapon != defaultWeapon)
+		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
 			currentWeapon->destroyObjectFromWorld(false);
 
+			info("removed weapon " + currentWeapon->getObjectName()->getDisplayedName(), true);
+		}
+
 		if (finalWeap != defaultWeapon) {
+
+			info("selected weapon " + finalWeap->getObjectName()->getDisplayedName(), true);
+
 			transferObject(finalWeap, 4, false);
 			broadcastObject(finalWeap, false);
 		}
@@ -594,6 +602,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	Vector3 thisWorldPos = getWorldPosition();
 
+	ManagedReference<SceneObject*> strongFollow = followObject.get();
+
 	float newSpeed = runSpeed;
 	if (followObject == NULL && !isFleeing() && !isRetreating()) // TODO: think about implementing a more generic "walk, don't run" criterion
 		newSpeed = walkSpeed;
@@ -606,6 +616,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	float newSpeedSquared = newSpeed * newSpeed;
 	float newPositionX = 0, newPositionZ = 0, newPositionY = 0;
 	PathFinderManager* pathFinder = PathFinderManager::instance();
+	float maxDist = MIN(maxDistance * maxDistance, newSpeedSquared);
 
 	bool found = false;
 	float dist = 0;
@@ -641,7 +652,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 				pathDistance += oldCoord->getWorldPosition().squaredDistanceTo(nextWorldPos);
 			}
 
-			if (i == path->size() - 1 || pathDistance >= newSpeedSquared || coord->getCell() != parent) { //last waypoint
+			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent) { //last waypoint
 				cellObject = coord->getCell();
 
 				//TODO: calculate height
@@ -652,7 +663,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 				*nextPosition = *coord;
 				found = true;
 
-				if (dist <= maxDistance * maxDistance && cellObject == parent) {
+				if ((dist <= maxDistance * maxDistance && cellObject == parent)) {
 					if (i == path->size() - 1) {
 						patrolPoints.remove(0);
 						remove = false;
@@ -661,7 +672,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 					found = false;
 				} else {
 					//lets convert source and target coordinates to model or world space
-
 					Vector3 oldCoordinates = oldCoord->getPoint();
 
 					if (coord->getCell() != NULL) { //target coord in cell
@@ -672,12 +682,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						oldCoordinates = oldCoord->getWorldPosition();
 					}
 
-					if (pathDistance > newSpeedSquared) {
+					if (pathDistance > maxDist) {
 						Vector3 oldWorldCoord = oldCoord->getWorldPosition();
 
 						dist = oldWorldCoord.squaredDistanceTo(nextWorldPos);
 
-						float distanceToTravel = dist - (pathDistance - newSpeedSquared);
+						float distanceToTravel = dist - (pathDistance - maxDist);
 
 						if (distanceToTravel <= 0) {
 							newPositionX = nextPosition->getX();
@@ -810,6 +820,13 @@ void AiAgentImplementation::doMovement() {
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
 		return;
+	} else {
+	/*	if (getLoggingName().contains("bandit")) {
+			StringBuffer msg;
+			msg << "finding next position with maxDistance " << maxDistance << " next pos:x" << nextPosition.getX() << " y:" << nextPosition.getY();
+			//info( + String::valueOf(maxDistance), true);
+			info(msg.toString(), true);
+		}*/
 	}
 
 	if (!isStanding()) {

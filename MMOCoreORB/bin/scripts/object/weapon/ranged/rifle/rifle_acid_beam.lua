@@ -87,7 +87,7 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 	pointBlankAccuracy = 9,
 	pointBlankRange = 15,
 
-	idealRange = 0,
+	idealRange = 35,
 	idealAccuracy = 0,
 
 	maxRange = 65,

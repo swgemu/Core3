@@ -88,10 +88,10 @@ object_weapon_melee_axe_axe_heavy_duty = object_weapon_melee_axe_shared_axe_heav
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
 
-	idealRange = 0,
+	idealRange = 4,
 	idealAccuracy = 3,
 
-	maxRange = 0,
+	maxRange = 5,
 	maxRangeAccuracy = 4,
 
 	minDamage = 25,
