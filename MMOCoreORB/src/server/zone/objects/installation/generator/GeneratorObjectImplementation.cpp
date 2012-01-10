@@ -26,7 +26,7 @@ void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
-	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)->getFirstName()))
+	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)->getFirstName()) || getZone() == NULL)
 		return;
 
 	addOperator(cast<CreatureObject*>(player));
