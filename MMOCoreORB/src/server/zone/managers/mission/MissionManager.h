@@ -119,6 +119,20 @@ class StringIdManager;
 
 using namespace server::zone::managers::stringid;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class LairSpawn;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
 
 #include "server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.h"
@@ -225,6 +239,8 @@ public:
 	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
+
+	LairSpawn* getRandomLairSpawn(CreatureObject* player);
 
 	String getDeliveryMissionFileName(const int faction);
 
@@ -370,6 +386,8 @@ public:
 	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
+
+	LairSpawn* getRandomLairSpawn(CreatureObject* player);
 
 	String getDeliveryMissionFileName(const int faction);
 

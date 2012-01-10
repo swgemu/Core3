@@ -20,6 +20,8 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+#include "server/zone/managers/creature/LairSpawn.h"
+
 /*
  *	MissionManagerStub
  */
@@ -703,6 +705,15 @@ void MissionManager::createSpawnPoint(CreatureObject* player, const String& spaw
 		method.executeWithVoidReturn();
 	} else
 		_implementation->createSpawnPoint(player, spawnTypes);
+}
+
+LairSpawn* MissionManager::getRandomLairSpawn(CreatureObject* player) {
+	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRandomLairSpawn(player);
 }
 
 String MissionManager::getDeliveryMissionFileName(const int faction) {

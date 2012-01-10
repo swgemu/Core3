@@ -115,7 +115,7 @@ coro_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "slace_hound_lair",
+			lairTemplateName = "slice_hound_lair",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
