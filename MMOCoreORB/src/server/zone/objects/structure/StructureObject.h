@@ -111,8 +111,6 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/structure/StructurePermissionList.h"
 
-#include "server/zone/packets/ui/CreateClientPathMessage.h"
-
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/util/u3d/AABBTree.h"

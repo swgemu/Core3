@@ -127,6 +127,9 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	if (currentlySpawnedLairs >= spawnGroup->getMaxSpawnLimit())
 		return;
 
+	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
+		return;
+
 	//object->get
 
 	int inRangeTanos = object->inRangeObjects(SceneObjectType::GENERALTANGIBLEOBJECT, 128.f);
@@ -177,6 +180,8 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	int spawnLimit = finalSpawn->getSpawnLimit();
 
 	Locker _locker(_this);
+
+	lastSpawn.updateToCurrentTime();
 
 	String lairTemplate = finalSpawn->getLairTemplateName();
 	uint32 lairHashCode = lairTemplate.hashCode();

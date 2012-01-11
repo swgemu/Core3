@@ -52,6 +52,7 @@ import engine.util.Observable;
 import server.zone.managers.creature.LairSpawnGroup;
 import server.zone.objects.area.SpawnObserver;
 import system.util.HashTable;
+import system.lang.Time;
 
 class LairSpawnArea extends SpawnArea {
 	
@@ -65,6 +66,11 @@ class LairSpawnArea extends SpawnArea {
 	
 	@dereferenced
 	protected HashTable<unsigned long, unsigned int> lairTypes;
+	
+	@dereferenced
+	protected Time lastSpawn;
+	
+	public final static int MINSPAWNINTERVAL = 2000; //msec
 
 	public LairSpawnArea() {
 		super();

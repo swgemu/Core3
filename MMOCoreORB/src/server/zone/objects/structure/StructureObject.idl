@@ -60,8 +60,6 @@ import engine.util.u3d.AABBNode;
 import engine.util.u3d.Vector3;
 import system.lang.Time;
 
-include server.zone.packets.ui.CreateClientPathMessage;
-
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 	//protected transient StructurePowerTask structurePowerTask;

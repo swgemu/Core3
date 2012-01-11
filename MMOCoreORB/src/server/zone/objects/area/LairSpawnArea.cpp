@@ -261,6 +261,11 @@ bool LairSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "lastSpawn") {
+		TypeInfo<Time >::parseFromBinaryStream(&lastSpawn, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -308,8 +313,16 @@ int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "lastSpawn";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&lastSpawn, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 4 + SpawnAreaImplementation::writeObjectMembers(stream);
+
+	return 5 + SpawnAreaImplementation::writeObjectMembers(stream);
 }
 
 LairSpawnAreaImplementation::LairSpawnAreaImplementation() : SpawnAreaImplementation() {

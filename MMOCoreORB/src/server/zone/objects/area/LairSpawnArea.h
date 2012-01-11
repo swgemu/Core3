@@ -81,6 +81,8 @@ using namespace server::zone::objects::area;
 
 #include "system/util/HashTable.h"
 
+#include "system/lang/Time.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -88,6 +90,8 @@ namespace area {
 
 class LairSpawnArea : public SpawnArea {
 public:
+	static const int MINSPAWNINTERVAL = 2000;
+
 	LairSpawnArea();
 
 	void notifyEnter(SceneObject* object);
@@ -142,7 +146,11 @@ protected:
 
 	HashTable<unsigned long long, unsigned int> lairTypes;
 
+	Time lastSpawn;
+
 public:
+	static const int MINSPAWNINTERVAL = 2000;
+
 	LairSpawnAreaImplementation();
 
 	LairSpawnAreaImplementation(DummyConstructorParameter* param);

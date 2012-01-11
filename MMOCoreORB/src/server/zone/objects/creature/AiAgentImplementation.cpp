@@ -44,7 +44,9 @@
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
 
+//#define SHOW_WALK_PATH
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -72,6 +74,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
 				weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
 				weapons.add(weao);
+
+				if (i == 0)
+					transferObject(weao, 4, false);
 			}
 		}
 
@@ -623,6 +628,14 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	float dx = 0, dy = 0;
 	ManagedReference<SceneObject*> cellObject;
 
+#ifdef SHOW_WALK_PATH
+	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
+	if (getParent() == NULL) {
+		pathMessage->addCoordinate(getPositionX(), getZone()->getHeight(getPositionX(), getPositionY()), getPositionY());
+	} else {
+		pathMessage->addCoordinate(getPositionX(), getPositionZ(), getPositionY());
+	}
+#endif
 
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
@@ -644,6 +657,13 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 			WorldCoordinates* coord = &path->get(i);
 
 			Vector3 nextWorldPos = coord->getWorldPosition();
+
+#ifdef SHOW_WALK_PATH
+			if (coord->getCell() == NULL)
+				pathMessage->addCoordinate(nextWorldPos.getX(), getZone()->getHeight(nextWorldPos.getX(), nextWorldPos.getY()), nextWorldPos.getY());
+			else
+				pathMessage->addCoordinate(nextWorldPos.getX(), nextWorldPos.getZ(), nextWorldPos.getY());
+#endif
 
 			if (oldCoord == NULL) {
 				pathDistance += nextWorldPos.squaredDistanceTo(thisWorldPos);
@@ -734,6 +754,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		delete path;
 	}
 
+#ifdef SHOW_WALK_PATH
+	broadcastMessage(pathMessage, false);
+#endif
+
 	nextPosition->setX(newPositionX);
 	nextPosition->setY(newPositionY);
 	nextPosition->setZ(newPositionZ);
@@ -789,6 +813,11 @@ void AiAgentImplementation::doMovement() {
 			// stop in weapons range
 			if (weapon != NULL )
 				maxDistance = weapon->getIdealRange();
+
+			if (follow != NULL && !CollisionManager::checkLineOfSight(_this, follow)) {
+				maxDistance = 0.5;
+			}
+
 			break;
 		}
 		default:

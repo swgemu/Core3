@@ -32,7 +32,7 @@ public:
 	}
 
 	void updateCount() {
-		insertInt(6, ++coordinateCount);
+		insertInt(10, ++coordinateCount);
 	}
 
 
