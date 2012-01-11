@@ -22,6 +22,8 @@
 
 #include "server/zone/managers/creature/LairSpawn.h"
 
+#include "server/zone/templates/mobile/CreatureTemplate.h"
+
 /*
  *	MissionManagerStub
  */

@@ -59,6 +59,7 @@ include server.zone.managers.mission.LairObjectsToSpawnMap;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 import server.zone.managers.creature.LairSpawn;
+import server.zone.templates.mobile.CreatureTemplate;
 
 class MissionManager extends Observer implements Logger {
 	@weakReference
@@ -155,7 +156,7 @@ class MissionManager extends Observer implements Logger {
 	
 	@local
 	public native LairSpawn getRandomLairSpawn(CreatureObject player);
-	
+		
 	public native string getDeliveryMissionFileName(final int faction);
 	public native int getDeliverMissionNumberOfMissions(final int faction);
 	public native int getDeliverMissionSpawnType(final int faction);

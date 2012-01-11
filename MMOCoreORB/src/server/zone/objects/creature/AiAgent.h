@@ -432,6 +432,8 @@ public:
 
 	CreatureObject* getLootOwner();
 
+	CreatureTemplate* getCreatureTemplate();
+
 	bool hasLoot();
 
 	DistributedObjectServant* _getImplementation();
@@ -484,8 +486,6 @@ protected:
 	Vector<ManagedReference<WeaponObject* > > weapons;
 
 	Reference<CreatureTemplate* > npcTemplate;
-
-	Reference<SharedObjectTemplate* > objectTemplate;
 
 	ManagedReference<CreatureObject* > lootOwner;
 
@@ -693,6 +693,8 @@ public:
 	void setLootOwner(CreatureObject* owner);
 
 	CreatureObject* getLootOwner();
+
+	CreatureTemplate* getCreatureTemplate();
 
 	bool hasLoot();
 

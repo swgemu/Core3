@@ -1137,6 +1137,15 @@ CreatureObject* AiAgent::getLootOwner() {
 		return _implementation->getLootOwner();
 }
 
+CreatureTemplate* AiAgent::getCreatureTemplate() {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCreatureTemplate();
+}
+
 bool AiAgent::hasLoot() {
 	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1453,8 +1462,6 @@ AiAgentImplementation::AiAgentImplementation() {
 	despawnOnNoPlayerInRange = true;
 	// server/zone/objects/creature/AiAgent.idl():  		numberOfPlayersInRange = 0;
 	numberOfPlayersInRange = 0;
-	// server/zone/objects/creature/AiAgent.idl():  		objectTemplate = null;
-	objectTemplate = NULL;
 	// server/zone/objects/creature/AiAgent.idl():  		npcTemplate = null;
 	npcTemplate = NULL;
 	// server/zone/objects/creature/AiAgent.idl():  		lootOwner = null;
@@ -1840,6 +1847,11 @@ void AiAgentImplementation::setLootOwner(CreatureObject* owner) {
 CreatureObject* AiAgentImplementation::getLootOwner() {
 	// server/zone/objects/creature/AiAgent.idl():  		return lootOwner;
 	return lootOwner;
+}
+
+CreatureTemplate* AiAgentImplementation::getCreatureTemplate() {
+	// server/zone/objects/creature/AiAgent.idl():  		return npcTemplate;
+	return npcTemplate;
 }
 
 bool AiAgentImplementation::hasLoot() {

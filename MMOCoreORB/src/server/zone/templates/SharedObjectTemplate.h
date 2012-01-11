@@ -69,7 +69,8 @@ protected:
 	FloatParam noBuildRadius;
 	BoolParam onlyVisibleInTools;
 	FloatParam locationReservationRadius;
-	uint32 clientObjectCRC;
+	//uint32 clientObjectCRC;
+	String clientTemplateFileName;
 
 	Reference<PlanetMapCategory*> planetMapCategory;
 	Reference<PlanetMapCategory*> planetMapSubCategory;
@@ -309,8 +310,12 @@ public:
 	}
 
     inline uint32 getClientObjectCRC() const {
-		return clientObjectCRC;
+		return clientTemplateFileName.hashCode();
 	}
+
+    inline String getClientTemplateFileName() {
+    	return clientTemplateFileName;
+    }
 
     inline uint32 getServerObjectCRC() {
     	return fullTemplateString.hashCode();

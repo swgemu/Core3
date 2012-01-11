@@ -40,7 +40,6 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	noBuildRadius = 0;
 	onlyVisibleInTools = 0;
 	locationReservationRadius = 0;
-	clientObjectCRC = 0;
 
 	templateType = 0;
 }
@@ -128,8 +127,6 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		onlyVisibleInTools = Lua::getByteParameter(state);
 	} else if (varName == "locationReservationRadius") {
 		locationReservationRadius = Lua::getFloatParameter(state);
-	} else if (varName == "clientObjectCRC") {
-		clientObjectCRC = Lua::getUnsignedIntParameter(state);
 	} else if (varName == "templateType") {
 		templateType = Lua::getIntParameter(state);
 	} else if (varName == "planetMapCategory") {
@@ -402,7 +399,7 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 		++i;
 	}
 
-	clientObjectCRC = templateData->getStringField("clientTemplateFileName").hashCode();
+	clientTemplateFileName = templateData->getStringField("clientTemplateFileName");
 	
 	return;
 

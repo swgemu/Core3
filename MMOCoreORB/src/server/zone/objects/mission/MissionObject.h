@@ -122,29 +122,29 @@ namespace mission {
 
 class MissionObject : public IntangibleObject {
 public:
-	static const int DESTROY = 0x74EF9BE3;
+	unsigned static const int DESTROY = 0x74EF9BE3;
 
-	static const int BOUNTY = 0x2904F372;
+	unsigned static const int BOUNTY = 0x2904F372;
 
-	static const int DELIVER = 0xE5C27EC6;
+	unsigned static const int DELIVER = 0xE5C27EC6;
 
-	static const int CRAFTING = 0xE5F6DC59;
+	unsigned static const int CRAFTING = 0xE5F6DC59;
 
-	static const int ESCORT = 0x682B871E;
+	unsigned static const int ESCORT = 0x682B871E;
 
-	static const int ESCORT2ME = 0x58F59884;
+	unsigned static const int ESCORT2ME = 0x58F59884;
 
-	static const int ESCORTTOCREATOR = 0x5E4C7163;
+	unsigned static const int ESCORTTOCREATOR = 0x5E4C7163;
 
-	static const int HUNTING = 0x906999A2;
+	unsigned static const int HUNTING = 0x906999A2;
 
-	static const int MUSICIAN = 0x4AD93196;
+	unsigned static const int MUSICIAN = 0x4AD93196;
 
-	static const int DANCER = 0xF067B37;
+	unsigned static const int DANCER = 0xF067B37;
 
-	static const int RECON = 0x34F4C2E4;
+	unsigned static const int RECON = 0x34F4C2E4;
 
-	static const int SURVEY = 0x19C9FAC1;
+	unsigned static const int SURVEY = 0x19C9FAC1;
 
 	static const int FACTIONNEUTRAL = 0;
 
@@ -351,29 +351,29 @@ protected:
 	String targetOptionalTemplate;
 
 public:
-	static const int DESTROY = 0x74EF9BE3;
+	unsigned static const int DESTROY = 0x74EF9BE3;
 
-	static const int BOUNTY = 0x2904F372;
+	unsigned static const int BOUNTY = 0x2904F372;
 
-	static const int DELIVER = 0xE5C27EC6;
+	unsigned static const int DELIVER = 0xE5C27EC6;
 
-	static const int CRAFTING = 0xE5F6DC59;
+	unsigned static const int CRAFTING = 0xE5F6DC59;
 
-	static const int ESCORT = 0x682B871E;
+	unsigned static const int ESCORT = 0x682B871E;
 
-	static const int ESCORT2ME = 0x58F59884;
+	unsigned static const int ESCORT2ME = 0x58F59884;
 
-	static const int ESCORTTOCREATOR = 0x5E4C7163;
+	unsigned static const int ESCORTTOCREATOR = 0x5E4C7163;
 
-	static const int HUNTING = 0x906999A2;
+	unsigned static const int HUNTING = 0x906999A2;
 
-	static const int MUSICIAN = 0x4AD93196;
+	unsigned static const int MUSICIAN = 0x4AD93196;
 
-	static const int DANCER = 0xF067B37;
+	unsigned static const int DANCER = 0xF067B37;
 
-	static const int RECON = 0x34F4C2E4;
+	unsigned static const int RECON = 0x34F4C2E4;
 
-	static const int SURVEY = 0x19C9FAC1;
+	unsigned static const int SURVEY = 0x19C9FAC1;
 
 	static const int FACTIONNEUTRAL = 0;
 

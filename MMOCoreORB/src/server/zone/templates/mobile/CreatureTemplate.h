@@ -386,7 +386,7 @@ public:
 		return diet;
 	}
 
-	inline Vector<String> getTemplates() {
+	inline Vector<String>& getTemplates() {
 		return templates;
 	}
 
@@ -394,7 +394,7 @@ public:
 		return &lootgroups;
 	}
 
-	inline Vector<String> getWeapons() {
+	inline Vector<String>& getWeapons() {
 		return weapons;
 	}
 
@@ -402,7 +402,7 @@ public:
 		return attacks;
 	}
 
-	void setTemplateName(String t) {
+	void setTemplateName(const String& t) {
 		templateName = t;
 	}
 

@@ -50,7 +50,6 @@
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
-	objectTemplate = templateData;
 }
 
 void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
@@ -126,9 +125,6 @@ void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
 	npcTemplate = NULL;
-
-	SharedObjectTemplate* templ = TemplateManager::instance()->getTemplate(serverObjectCRC);
-	objectTemplate = templ;
 }
 
 void AiAgentImplementation::doRecovery() {
@@ -485,10 +481,10 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		moveEvent = NULL;
 	}
 
-	if (objectTemplate == NULL || npcTemplate == NULL)
+	if (npcTemplate == NULL)
 		return;
 
-	loadTemplateData(objectTemplate);
+	loadTemplateData(templateObject);
 	loadTemplateData(npcTemplate);
 	stateBitmask = 0;
 	posture = CreaturePosture::UPRIGHT;

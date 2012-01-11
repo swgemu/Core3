@@ -102,7 +102,6 @@ class AiAgent extends CreatureObject {
 	protected Vector<WeaponObject> weapons;
 	
 	protected transient CreatureTemplate npcTemplate;
-	protected transient SharedObjectTemplate objectTemplate;
 	
 	protected transient CreatureObject lootOwner;
 	
@@ -140,7 +139,6 @@ class AiAgent extends CreatureObject {
 		despawnOnNoPlayerInRange = true;
 		numberOfPlayersInRange = 0;
 
-		objectTemplate = null;
 		npcTemplate = null;
 		lootOwner = null;
 		
@@ -642,6 +640,11 @@ class AiAgent extends CreatureObject {
 	
 	public CreatureObject getLootOwner() {
 		return lootOwner;
+	}
+	
+	@local
+	public CreatureTemplate getCreatureTemplate() {
+		return npcTemplate;
 	}
 	
 	/*

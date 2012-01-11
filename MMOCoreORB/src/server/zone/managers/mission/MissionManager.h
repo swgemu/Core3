@@ -133,6 +133,20 @@ class LairSpawn;
 
 using namespace server::zone::managers::creature;
 
+namespace server {
+namespace zone {
+namespace templates {
+namespace mobile {
+
+class CreatureTemplate;
+
+} // namespace mobile
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates::mobile;
+
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
 
 #include "server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.h"

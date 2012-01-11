@@ -108,12 +108,16 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 		return;
 
 	int maximumNumberOfItemsInMissionBag = 12;
+
+
 	if (enableFactionalCraftingMissions) {
 		maximumNumberOfItemsInMissionBag += 6;
 	}
+
 	if (enableFactionalReconMissions) {
 		maximumNumberOfItemsInMissionBag += 6;
 	}
+
 	if (enableFactionalEntertainerMissions) {
 		maximumNumberOfItemsInMissionBag += 12; //Both musician and dancer.
 	}
@@ -355,6 +359,8 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	SceneObject* missionBag = player->getSlottedObject("mission_bag");
 	int bagSize = missionBag->getContainerObjectsSize();
 
+	info("bagSize = " + String::valueOf(bagSize), true);
+
 	int numberOfCraftingMissions = 0;
 	int numberOfReconMissions = 0;
 	int numberOfDancerMissions = 0;
@@ -443,13 +449,18 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				}
 			}
 		} else if (missionTerminal->isScoutTerminal()) {
-			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
+		/*	if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeReconMission(player, mission);
 			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
 				randomizeHuntingMission(player, mission);
 			} else {
 				mission->setTypeCRC(0);
-			}
+			} */
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal)
+				randomizeHuntingMission(player, mission);
+			else
+				mission->setTypeCRC(0);
+
 		} else if (missionTerminal->isBountyTerminal()) {
 			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeBountyMission(player, mission);
@@ -462,6 +473,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 			mission->setRewardCredits(mission->getRewardCredits() * 2);
 		}
 
+	//	randomizeHuntingMission(player, mission);
 		mission->setRefreshCounter(counter, true);
 	}
 
@@ -487,6 +499,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	LairTemplate* lairTemplateObject = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
 
 	if (lairTemplateObject == NULL) {
+		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -494,6 +507,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	String building = lairTemplateObject->getBuilding(difficulty);
 
 	if (building.isEmpty()) {
+		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -501,6 +515,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	if (templateObject == NULL || !templateObject->isSharedTangibleObjectTemplate()) {
 		error("incorrect template object in randomizeDestroyMission " + building);
+		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -935,24 +950,65 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 		return;
 	}
 
-	String creatureName = "object/mobile/" + randomLairSpawn->getLairTemplateName().replaceAll("_lair", "") + ".iff";
+	LairTemplate* lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(randomLairSpawn->getLairTemplateName().hashCode());
 
-	mission->setTemplateStrings(creatureName, creatureName);
-	String targetTemp = creatureName;
+	if (lairTemplate == NULL) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	VectorMap<String, uint32>* mobiles = lairTemplate->getMobiles();
+
+	if (mobiles->size() == 0) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	String mobileName = mobiles->elementAt(0).getKey();
+
+	CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(mobileName);
+
+	if (creatureTemplate == NULL) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	Vector<String>& templatesNames = creatureTemplate->getTemplates();
+
+	if (templatesNames.size() == 0) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	String serverTemplate = templatesNames.get(0);
+
+	SharedObjectTemplate* sharedTemplate = TemplateManager::instance()->getTemplate(serverTemplate.hashCode());
+
+	if (sharedTemplate == NULL) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	mission->setTemplateStrings(mobileName, mobileName);
 
 	NameManager* nm = processor->getNameManager();
 
 	int randTexts = System::random(7) + 1;
 
+	String creatorName = nm->makeCreatureName();
+
+	info("creator name " + creatorName, true);
+
 	mission->setMissionNumber(randTexts);
-	mission->setCreatorName(nm->makeCreatureName());
+	mission->setCreatorName(creatorName);
 
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 
+	info("setting target name to " + creatureTemplate->getObjectName(), true);
 	// TODO: this all needs to change to be less static and use distance
-	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(targetTemp.hashCode())->getObjectName());
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(targetTemp.hashCode()));
+	mission->setMissionTargetName(creatureTemplate->getObjectName());
+	mission->setTargetTemplate(sharedTemplate);
 
 	//50% easy missions, 33% medium missions, 17% hard missions.
 	int difficulty = System::random(5) + 1;
@@ -975,6 +1031,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	mission->setMissionDescription("mission/mission_npc_hunting_neutral_" + diffString, "m" + String::valueOf(randTexts) + "o");
 
 	mission->setTypeCRC(MissionObject::HUNTING);
+	mission->setFaction(faction);
 }
 
 void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* player, MissionObject* mission, const int faction) {
@@ -1175,6 +1232,8 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 				foundLair = true;
 			}
 		}
+
+		--counter;
 	}
 
 	if (!foundLair) {

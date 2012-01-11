@@ -14,8 +14,10 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
 
 void HuntingMissionObjectiveImplementation::activate() {
 	if (observers.size() != 0)
@@ -63,10 +65,20 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 			return 0;
 
 		CreatureObject* creature = cast<CreatureObject*>(arg1);
+		AiAgent* agent = cast<AiAgent*>(creature);
+
+		if (agent == NULL)
+			return 0;
+
+		CreatureTemplate* creatureTemplate = agent->getCreatureTemplate();
+
+		if (creatureTemplate == NULL)
+			return 0;
+
 		String temp1 = mission->getTemplateString1();
 		String temp2 = mission->getTemplateString2();
 
-		if (creature->getServerObjectCRC() == temp1.hashCode() || creature->getServerObjectCRC() == temp2.hashCode()) {
+		if (creatureTemplate->getTemplateName() == temp1 || creatureTemplate->getTemplateName() == temp2) {
 			targetsKilled--;
 
 			if (targetsKilled <= 0) {
