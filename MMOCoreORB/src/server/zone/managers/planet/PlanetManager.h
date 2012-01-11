@@ -212,7 +212,7 @@ public:
 
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
-	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
+	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
 	int getTravelFare(const String& destinationPlanet);
 
@@ -377,7 +377,7 @@ protected:
 public:
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
-	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
+	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
 	int getTravelFare(const String& destinationPlanet);
 

@@ -170,7 +170,7 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);
 	
-	public native boolean isBuildingPermittedAt(float x, float y, SceneObject objectTryingToBuild);
+	public native boolean isBuildingPermittedAt(float x, float y, SceneObject objectTryingToBuild = null);
 	
 	/**
 	 * Gets the cost to travel via shuttleport/starport to the destination planet.

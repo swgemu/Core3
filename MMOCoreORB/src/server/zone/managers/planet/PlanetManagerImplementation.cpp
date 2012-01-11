@@ -538,16 +538,34 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 	/*if (cityRegionMap->getCityRegionAt(x, y) == NULL)  //city regionsn create active areas that are no build
 		return true;*/
 
-	Vector<ManagedReference<ActiveArea* > >* activeAreas = object->getActiveAreas();
+	Vector<ManagedReference<ActiveArea* > >* activeAreas = NULL;
+	SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects = NULL;
+	bool deleteVector = false;
 
-	Vector3 targetPos(x, y, 0);
+	Vector3 targetPos(x, y, zone->getHeight(x, y));
+
+	if (object != NULL && object->getWorldPosition().distanceTo(targetPos) < 64) {
+		activeAreas = object->getActiveAreas();
+		closeObjects = object->getCloseObjects();
+	} else {
+		activeAreas = new SortedVector<ManagedReference<ActiveArea*> >();
+		zone->getInRangeActiveAreas(x, y, cast<SortedVector<ManagedReference<ActiveArea*> >*>(activeAreas));
+
+		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+		zone->getInRangeObjects(x, y, 512, closeObjects);
+
+		deleteVector = true;
+	}
 
 	for (int i = 0; i < activeAreas->size(); ++i)
-		if (activeAreas->get(i)->isNoBuildArea())
-			return false;
+		if (activeAreas->get(i)->isNoBuildArea()) {
+			if (deleteVector) {
+				delete closeObjects;
+				delete activeAreas;
+			}
 
-	//now lets check surrounding objects
-	SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects = object->getCloseObjects();
+			return false;
+		}
 
 	if (closeObjects != NULL) {
 		for (int i = 0; i < closeObjects->size(); ++i) {
@@ -561,12 +579,25 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 				if (radius > 0) {
 					Vector3 objWorldPos = obj->getWorldPosition();
 
-					if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius)
+					if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius) {
+						if (deleteVector) {
+							delete closeObjects;
+							delete activeAreas;
+						}
+
+
 						return false;
+					}
 				}
 			}
 		}
 	}
+
+	if (deleteVector) {
+		delete closeObjects;
+		delete activeAreas;
+	}
+
 
 	return true;
 }
