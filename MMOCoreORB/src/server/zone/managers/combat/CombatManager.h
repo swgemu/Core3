@@ -20,6 +20,7 @@ class CombatQueueCommand;
 class CombatManager : public Singleton<CombatManager>, public Logger, public Object {
 
 public:
+	const static int HIT = 0;
 	const static int BLOCK = 1;
 	const static int DODGE = 2;
 	const static int COUNTER = 3;
@@ -147,14 +148,9 @@ protected:
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 	/**
-	 * @returns % to hit
+	 * @returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack, 4 - miss
 	 */
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int accuracyBonus);
-
-	/**
-	 * returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack
-	 */
-	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon);
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
 	int calculatePostureModifier(CreatureObject* creature);
@@ -162,7 +158,7 @@ protected:
 
 	int getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
-	int getDefenderSecondaryDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
+	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	float calculateDamage(CreatureObject* attacker, CreatureObject* defender, int poolToDamage);

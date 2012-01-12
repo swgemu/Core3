@@ -250,44 +250,41 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	int rand = System::random(100);
 
-	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
+	// TODO: accuracy modifiers from specials go in the last slot
+	int hitVal = getHitChance(attacker, defender, attacker->getWeapon(), 0);
+	float damageMultiplier = data.getDamageMultiplier();
+	String combatSpam = data.getCommand()->getCombatSpam();
 
-	// TODO: accuracy modifiers from the special go in the last slot
-	if (poolsToDamage != 0 && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
+	if (hitVal != HIT) {
 		//better luck next time
-		doMiss(attacker, defender, 0, data.getCommand()->getCombatSpam() + "_miss");
+		switch (hitVal) {
+		case BLOCK:
+			damageMultiplier /= 2.f;
+			doBlock(attacker, defender, 0, combatSpam + "_block");
+			break;
+		case DODGE:
+			doDodge(attacker, defender, 0, combatSpam + "_evade");
+			return 0;
+			break;
+		case COUNTER:
+			doCounterAttack(attacker, defender, 0, combatSpam + "_counter");
+			return 0;
+			break;
+		case MISS:
+			doMiss(attacker, defender, 0, combatSpam + "_miss");
+			return 0;
+			break;
+		default:
+			break;
+		}
 		return 0;
 	}
 
 	int damage = 0;
+	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
-	String combatSpam = data.getCommand()->getCombatSpam();
-	float damageMultiplier = data.getDamageMultiplier();
-
-	if (damageMultiplier != 0 && poolsToDamage != 0) {
-		int secondaryDefense = checkSecondaryDefenses(attacker, defender, attacker->getWeapon());
-
-		if (secondaryDefense != 0) {
-			switch (secondaryDefense) {
-			case BLOCK:
-				damageMultiplier /= 2.f;
-				doBlock(attacker, defender, damage, combatSpam + "_block");
-				break;
-			case DODGE:
-				doDodge(attacker, defender, damage, combatSpam + "_evade");
-				return 0;
-				break;
-			case COUNTER:
-				doCounterAttack(attacker, defender, damage, combatSpam + "_counter");
-				return 0;
-				break;
-			default:
-				break;
-			}
-		}
-
+	if (damageMultiplier != 0 && poolsToDamage != 0)
 		damage = applyDamage(attacker, defender, damageMultiplier, poolsToDamage);
-	}
 
 	applyStates(attacker, defender, data);
 	attemptApplyDot(attacker, defender, data, damage);
@@ -433,11 +430,8 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 
 	Vector<String>* defenseAccMods = weapon->getDefenderDefenseModifiers();
 
-	// this should only be ranged_defense or melee_defense, never both. Other types of defense are checked in applyStates()
-	for (int i = 0; i < defenseAccMods->size(); ++i) {
-		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
-		buffDefense += defender->getSkillModFromBuffs(defenseAccMods->get(i));
-	}
+	targetDefense += defender->getSkillMod(defenseAccMods->get(0));
+	buffDefense += defender->getSkillModFromBuffs(defenseAccMods->get(0));
 
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
@@ -456,14 +450,19 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 	return targetDefense;
 }
 
-int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender, WeaponObject* weapon) {
+int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
 	int targetDefense = 0;
+	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
+
+	if (weapon == NULL) // still use defensive acuity with no weapon
+		return defender->getSkillMod("unarmed_passive_defense");
 
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
 
-	for (int i = 0; i < defenseAccMods->size(); ++i) {
-		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
-	}
+	targetDefense += defender->getSkillMod(defenseAccMods->get(0));
+
+	if (targetDefense > 125)
+		targetDefense = 125;
 
 	return targetDefense;
 }
@@ -803,7 +802,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	//info("Calculating hit chance", true);
 
-	float weaponAccuracy = 0;
+	float weaponAccuracy = 0.0f;
+	float aimMod = 0.0f;
 	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
 		// Get the weapon mods for range and add the mods for stance
 		weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
@@ -812,7 +812,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 		if ((creature->isAiming()) || (creature->hasBuff(steadyAim))) {
 			if (attackType == WeaponObject::RANGEDATTACK)
-				weaponAccuracy += (float) creature->getSkillMod("aim");
+				aimMod = (float) creature->getSkillMod("aim");
 
 			if (creature->isAiming())
 				creature->clearState(CreatureState::AIMING);
@@ -820,6 +820,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 			if (creature->hasBuff(steadyAim))
 				creature->removeBuff(steadyAim);
 		}
+
+		weaponAccuracy += aimMod;
 	}
 
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
@@ -854,83 +856,48 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	else if (accTotal < 0)
 		accTotal = 0;
 
-	hitChance = (int) accTotal;
+	if (System::random(100) > accTotal) // miss, just return MISS
+		return MISS;
 
-	return hitChance;
-}
-
-int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon) {
-	int hitChance = 0;
-	int attackType = weapon->getAttackType();
-
-	//info("Calculating secondary hit chance");
-
-	float weaponAccuracy = 0;
-	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
-		// Get the weapon mods for range and add the mods for stance
-		weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
-		//weaponAccuracy += calculatePostureModifier(creature, targetCreature);
-	}
-
-	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
-
-	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
-
-	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
-
-	int targetDefense = getDefenderSecondaryDefenseModifier(targetCreature, weapon);
-
-	if (targetCreature->isPlayerCreature()) {
-		PlayerObject* ghost = targetCreature->getPlayerObject();
-
-		targetDefense += ghost->getCenteredBonus();
-	}
-
-	//info("Base target secondary defense is " + String::valueOf(targetDefense));
-
-	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);
-
-	attackerAccuracy = applyAccuracyPenalties(creature, attackType, attackerAccuracy);
-
-	if (targetDefense > 125)
-		targetDefense = 125;
-
-	//info("Target secondary defense after state affects and cap is " +  String::valueOf(targetDefense));
+	// now we have a successful hit, so calculate secondary defenses
+	targetDefense = getDefenderSecondaryDefenseModifier(targetCreature);
 
 	if (targetDefense <= 0)
-		return 0;
+		return HIT; // no secondary defenses
 
-	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy, targetDefense);
+	// and now aiming doesn't matter, so discount that
+	weaponAccuracy -= aimMod;
 
-	int rand = System::random(100);
+	accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
 
-	if (rand <= (int) accTotal) // Hit, not defended
-		return 0;
+	if (accTotal > 100)
+		accTotal = 100.0;
+	else if (accTotal < 0)
+		accTotal = 0;
 
-	ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
+	if (System::random(100) > accTotal) { // successful secondary defense, return type of defense
+		ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
 
-	if (targetWeapon == NULL)
-		return 0;
+		// this means use defensive acuity, which mean random 1, 2, or 3
+		if (targetWeapon == NULL)
+			return System::random(2) + 1;
 
-	Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
+		Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
+		String def = defenseAccMods->get(0);
 
-	int selectOption = defenseAccMods->size();
+		if (def == "block")
+			return BLOCK;
+		else if (def == "dodge")
+			return DODGE;
+		else if (def == "counterattack")
+			return COUNTER;
+		else if (def == "unarmed_passive_defense")
+			return System::random(2) + 1;
+		else // shouldn't get here
+			return HIT; // no secondary defenses available on this weapon
+	}
 
-	if (selectOption > 1)
-		selectOption = System::random(selectOption - 1);
-	else
-		selectOption = 0;
-
-	String def = defenseAccMods->get(selectOption);
-
-	if (def == "block") {
-		return BLOCK;
-	} else if (def == "dodge") {
-		return DODGE;
-	} else if (def == "counterattack") {
-		return COUNTER;
-	} else
-		return COUNTER;
+	return HIT;
 }
 
 float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio) {

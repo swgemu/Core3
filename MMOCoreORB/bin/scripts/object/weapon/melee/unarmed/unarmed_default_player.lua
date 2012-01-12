@@ -68,11 +68,11 @@ object_weapon_melee_unarmed_unarmed_default_player = object_weapon_melee_unarmed
 	creatureAccuracyModifiers = { "unarmed_accuracy" },
 	
 	-- See http://www.ocdsoft.com/files/defense.xls
-	defenderDefenseModifiers = { "unarmed_passive_defense", "melee_defense" },
+	defenderDefenseModifiers = { "melee_defense" },
 	
 	-- can be dodge, counterattack, or block or a combination
 	-- Secondary defense when equipped
-	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
+	defenderSecondaryDefenseModifiers = { "unarmed_passive_defense" },
 	
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "unarmed_speed" },
