@@ -449,17 +449,17 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				}
 			}
 		} else if (missionTerminal->isScoutTerminal()) {
-		/*	if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
+			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeReconMission(player, mission);
 			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
 				randomizeHuntingMission(player, mission);
 			} else {
 				mission->setTypeCRC(0);
-			} */
+			} /*
 			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal)
 				randomizeHuntingMission(player, mission);
 			else
-				mission->setTypeCRC(0);
+				mission->setTypeCRC(0);*/
 
 		} else if (missionTerminal->isBountyTerminal()) {
 			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
@@ -1039,10 +1039,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	Vector3 position;
 
 	while (!foundPosition) {
-		position = player->getWorldPosition();
-
-		position.setX(position.getX() + System::random(5000) - 2500);
-		position.setY(position.getY() + System::random(5000) - 2500);
+		position = player->getCoordinate(System::random(3000) + 1000, (float)System::random(360));
 
 		if (position.getX() > player->getZone()->getMaxX() - 100) {
 			position.setX(player->getZone()->getMaxX());
@@ -1055,19 +1052,14 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 			position.setY(player->getZone()->getMinY());
 		}
 
-		ManagedReference<MissionReconActiveArea*> target = cast<MissionReconActiveArea*>(player->getZoneServer()->createObject(String("object/mission_recon_area.iff").hashCode(), 1));
-		target->setPosition(position.getX(), 0, position.getY());
-		player->getZone()->transferObject(target, -1, false);
-
 		//Check if it is a position where you can build and away from any travel points.
-		if (player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), target)) {
-			ManagedReference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(target, 16000.f);
+		if (player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
+			ManagedReference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(position);
 
 			if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
 				foundPosition = true;
 			}
 		}
-		target->destroyObjectFromWorld(true);
 	}
 
 	NameManager* nm = processor->getNameManager();

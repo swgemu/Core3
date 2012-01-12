@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_GETMAINREGION__,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_GETMAINREGION__,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -122,32 +122,6 @@ void PlanetManager::loadPerformanceLocations() {
 		_implementation->loadPerformanceLocations();
 }
 
-void PlanetManager::loadHuntingTargets() {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_LOADHUNTINGTARGETS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->loadHuntingTargets();
-}
-
-void PlanetManager::loadReconLocations() {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_LOADRECONLOCATIONS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->loadReconLocations();
-}
-
 PlanetTravelPoint* PlanetManager::getNearestPlanetTravelPoint(SceneObject* object, float range) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -155,6 +129,15 @@ PlanetTravelPoint* PlanetManager::getNearestPlanetTravelPoint(SceneObject* objec
 
 	} else
 		return _implementation->getNearestPlanetTravelPoint(object, range);
+}
+
+PlanetTravelPoint* PlanetManager::getNearestPlanetTravelPoint(const Vector3& position, float range) {
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getNearestPlanetTravelPoint(position, range);
 }
 
 bool PlanetManager::isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild) {
@@ -381,77 +364,6 @@ MissionTargetMap* PlanetManager::getPerformanceLocations() {
 		return _implementation->getPerformanceLocations();
 }
 
-void PlanetManager::addMissionNpc(SceneObject* npc) {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDMISSIONNPC__SCENEOBJECT_);
-		method.addObjectParameter(npc);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addMissionNpc(npc);
-}
-
-MissionTargetMap* PlanetManager::getMissionNpcs() {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getMissionNpcs();
-}
-
-void PlanetManager::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_);
-		method.addAsciiParameter(temp1);
-		method.addAsciiParameter(temp2);
-		method.addSignedIntParameter(level);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addHuntingTargetTemplate(temp1, temp2, level);
-}
-
-HuntingTargetEntry* PlanetManager::getHuntingTargetTemplate(int level) {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getHuntingTargetTemplate(level);
-}
-
-void PlanetManager::addReconLoc(SceneObject* obj) {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDRECONLOC__SCENEOBJECT_);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addReconLoc(obj);
-}
-
-MissionTargetMap* PlanetManager::getReconLocs() {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getReconLocs();
-}
-
 CityRegion* PlanetManager::getMainRegion() {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -463,29 +375,6 @@ CityRegion* PlanetManager::getMainRegion() {
 		return static_cast<CityRegion*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getMainRegion();
-}
-
-void PlanetManager::addInformant(SceneObject* obj) {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDINFORMANT__SCENEOBJECT_);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addInformant(obj);
-}
-
-MissionTargetMap* PlanetManager::getInformants() {
-	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getInformants();
 }
 
 bool PlanetManager::isExistingPlanetTravelPoint(const String& pointName) {
@@ -913,49 +802,9 @@ MissionTargetMap* PlanetManagerImplementation::getPerformanceLocations() {
 	return performanceLocations;
 }
 
-void PlanetManagerImplementation::addMissionNpc(SceneObject* npc) {
-	// server/zone/managers/planet/PlanetManager.idl():  		missionNpcs.add(npc);
-	missionNpcs->add(npc);
-}
-
-MissionTargetMap* PlanetManagerImplementation::getMissionNpcs() {
-	// server/zone/managers/planet/PlanetManager.idl():  		return missionNpcs;
-	return missionNpcs;
-}
-
-void PlanetManagerImplementation::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
-	// server/zone/managers/planet/PlanetManager.idl():  		huntingTargets.addTarget(temp1, temp2, level);
-	huntingTargets->addTarget(temp1, temp2, level);
-}
-
-HuntingTargetEntry* PlanetManagerImplementation::getHuntingTargetTemplate(int level) {
-	// server/zone/managers/planet/PlanetManager.idl():  		return huntingTargets.getRandomTarget(level);
-	return huntingTargets->getRandomTarget(level);
-}
-
-void PlanetManagerImplementation::addReconLoc(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl():  		reconLocs.add(obj);
-	reconLocs->add(obj);
-}
-
-MissionTargetMap* PlanetManagerImplementation::getReconLocs() {
-	// server/zone/managers/planet/PlanetManager.idl():  		return reconLocs;
-	return reconLocs;
-}
-
 CityRegion* PlanetManagerImplementation::getMainRegion() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return mainRegion;
 	return mainRegion;
-}
-
-void PlanetManagerImplementation::addInformant(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl():  		informants.add(obj);
-	informants->add(obj);
-}
-
-MissionTargetMap* PlanetManagerImplementation::getInformants() {
-	// server/zone/managers/planet/PlanetManager.idl():  		return informants;
-	return informants;
 }
 
 bool PlanetManagerImplementation::isExistingPlanetTravelPoint(const String& pointName) {
@@ -1022,12 +871,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_LOADPERFORMANCELOCATIONS__:
 		loadPerformanceLocations();
 		break;
-	case RPC_LOADHUNTINGTARGETS__:
-		loadHuntingTargets();
-		break;
-	case RPC_LOADRECONLOCATIONS__:
-		loadReconLocations();
-		break;
 	case RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_:
 		resp->insertBoolean(isBuildingPermittedAt(inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
@@ -1070,20 +913,8 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_:
 		addPerformanceLocation(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
-	case RPC_ADDMISSIONNPC__SCENEOBJECT_:
-		addMissionNpc(static_cast<SceneObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_:
-		addHuntingTargetTemplate(inv->getAsciiParameter(_param0_addHuntingTargetTemplate__String_String_int_), inv->getAsciiParameter(_param1_addHuntingTargetTemplate__String_String_int_), inv->getSignedIntParameter());
-		break;
-	case RPC_ADDRECONLOC__SCENEOBJECT_:
-		addReconLoc(static_cast<SceneObject*>(inv->getObjectParameter()));
-		break;
 	case RPC_GETMAINREGION__:
 		resp->insertLong(getMainRegion()->_getObjectID());
-		break;
-	case RPC_ADDINFORMANT__SCENEOBJECT_:
-		addInformant(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_:
 		resp->insertBoolean(isExistingPlanetTravelPoint(inv->getAsciiParameter(_param0_isExistingPlanetTravelPoint__String_)));
@@ -1133,14 +964,6 @@ void PlanetManagerAdapter::loadBadgeAreas() {
 
 void PlanetManagerAdapter::loadPerformanceLocations() {
 	(static_cast<PlanetManager*>(stub))->loadPerformanceLocations();
-}
-
-void PlanetManagerAdapter::loadHuntingTargets() {
-	(static_cast<PlanetManager*>(stub))->loadHuntingTargets();
-}
-
-void PlanetManagerAdapter::loadReconLocations() {
-	(static_cast<PlanetManager*>(stub))->loadReconLocations();
 }
 
 bool PlanetManagerAdapter::isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild) {
@@ -1199,24 +1022,8 @@ void PlanetManagerAdapter::addPerformanceLocation(SceneObject* obj) {
 	(static_cast<PlanetManager*>(stub))->addPerformanceLocation(obj);
 }
 
-void PlanetManagerAdapter::addMissionNpc(SceneObject* npc) {
-	(static_cast<PlanetManager*>(stub))->addMissionNpc(npc);
-}
-
-void PlanetManagerAdapter::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
-	(static_cast<PlanetManager*>(stub))->addHuntingTargetTemplate(temp1, temp2, level);
-}
-
-void PlanetManagerAdapter::addReconLoc(SceneObject* obj) {
-	(static_cast<PlanetManager*>(stub))->addReconLoc(obj);
-}
-
 CityRegion* PlanetManagerAdapter::getMainRegion() {
 	return (static_cast<PlanetManager*>(stub))->getMainRegion();
-}
-
-void PlanetManagerAdapter::addInformant(SceneObject* obj) {
-	(static_cast<PlanetManager*>(stub))->addInformant(obj);
 }
 
 bool PlanetManagerAdapter::isExistingPlanetTravelPoint(const String& pointName) {

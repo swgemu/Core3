@@ -64,8 +64,6 @@ import server.zone.objects.region.CityRegion;
 include server.zone.managers.planet.RegionMap;
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.MissionTargetMap;
-include server.zone.managers.planet.HuntingTargetMap;
-include server.zone.managers.planet.HuntingTargetEntry;
 include server.zone.templates.snapshot.WorldSnapshotNode;
 include server.zone.templates.snapshot.WorldSnapshotIff;
 include server.zone.managers.planet.PlanetTravelPointList;
@@ -100,16 +98,8 @@ class PlanetManager extends ManagedService implements Logger {
 	protected transient ZoneProcessServer server;
 
 	protected transient TerrainManager terrainManager;
-		
-	protected transient MissionTargetMap missionNpcs;
 	
 	protected transient MissionTargetMap performanceLocations;
-	
-	protected transient HuntingTargetMap huntingTargets;
-	
-	protected transient MissionTargetMap reconLocs;
-	
-	protected transient MissionTargetMap informants;
 	
 	protected CityRegion mainRegion;
 	
@@ -157,8 +147,6 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void loadPlayerRegions();
 	public native void loadBadgeAreas();
 	public native void loadPerformanceLocations();
-	public native void loadHuntingTargets();
-	public native void loadReconLocations();
 	protected native void loadStaticTangibleObjects();
 	
 	/**
@@ -169,6 +157,15 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);
+	
+	/**
+	 * Returns the closest PlanetTravelPoint within the given range.
+	 * @param position The position to use as reference.
+	 * @param range The maximum range to search within.
+	 * @return Returns a PlanetTravelPoint or NULL if not found in range
+	 */
+	@local
+	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
 	
 	public native boolean isBuildingPermittedAt(float x, float y, SceneObject objectTryingToBuild = null);
 	
@@ -249,44 +246,8 @@ class PlanetManager extends ManagedService implements Logger {
 		return performanceLocations;
 	}
 	
-	public void addMissionNpc(SceneObject npc) {
-		missionNpcs.add(npc);
-	}
-	
-	@local
-	public MissionTargetMap getMissionNpcs() {
-		return missionNpcs;
-	}
-	
-	public void addHuntingTargetTemplate(final string temp1, final string temp2, int level) {
-		huntingTargets.addTarget(temp1, temp2, level);
-	}
-	
-	@local
-	public HuntingTargetEntry getHuntingTargetTemplate(int level) {
-		return huntingTargets.getRandomTarget(level);
-	}
-	
-	public void addReconLoc(SceneObject obj) {
-		reconLocs.add(obj);
-	}
-	
-	@local
-	public MissionTargetMap getReconLocs() {
-		return reconLocs;
-	}
-	
 	public CityRegion getMainRegion() {
 		return mainRegion;
-	}
-	
-	public void addInformant(SceneObject obj) {
-		informants.add(obj);
-	}
-	
-	@local
-	public MissionTargetMap getInformants() {
-		return informants;
 	}
 	
 	/**

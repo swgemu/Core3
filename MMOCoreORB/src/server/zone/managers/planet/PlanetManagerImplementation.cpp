@@ -36,14 +36,7 @@
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
-	missionNpcs = new MissionTargetMap();
-
 	performanceLocations = new MissionTargetMap();
-
-	huntingTargets = new HuntingTargetMap();
-
-	reconLocs = new MissionTargetMap();
-	informants = new MissionTargetMap();
 
 	mainRegion = new CityRegion("main", NULL);
 	//mainRegion->addActiveArea(zone, 0, 0, zone->getBoundingRadius());
@@ -65,8 +58,6 @@ void PlanetManagerImplementation::initialize() {
 
 	loadBadgeAreas();
 	loadPerformanceLocations();
-	loadHuntingTargets();
-	loadReconLocations();
 	loadPlayerRegions();
 
 	loadStaticTangibleObjects();
@@ -356,20 +347,9 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 			 << ", " << searchrange
 			 << ") @ " << object->getWorldPosition().toString();
 #endif
-	Reference<PlanetTravelPoint*> planetTravelPoint = NULL;
-	float range = searchrange;
-	Vector3 originvector = object->getWorldPosition();
 
-	for (int i = 0; i < planetTravelPointList->size(); ++i) {
-		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
+	Reference<PlanetTravelPoint*> planetTravelPoint = getNearestPlanetTravelPoint(object->getWorldPosition(), searchrange);
 
-		float dist = originvector.distanceTo(ptp->getDeparturePosition());
-
-		if (dist < range) {
-			range = dist;
-			planetTravelPoint = ptp;
-		}
-	}
 #if DEBUG_TRAVEL
 
 	if(planetTravelPoint == NULL)
@@ -379,6 +359,23 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 
 	info(callDesc, true);
 #endif
+	return planetTravelPoint;
+}
+
+PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(const Vector3& position, float range) {
+	Reference<PlanetTravelPoint*> planetTravelPoint = NULL;
+
+	for (int i = 0; i < planetTravelPointList->size(); ++i) {
+		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
+
+		float dist = position.distanceTo(ptp->getDeparturePosition());
+
+		if (dist < range) {
+			range = dist;
+			planetTravelPoint = ptp;
+		}
+	}
+
 	return planetTravelPoint;
 }
 
@@ -531,9 +528,6 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 	}
 }
 
-void PlanetManagerImplementation::loadHuntingTargets() {
-}
-
 bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
 	/*if (cityRegionMap->getCityRegionAt(x, y) == NULL)  //city regionsn create active areas that are no build
 		return true;*/
@@ -600,11 +594,6 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 
 
 	return true;
-}
-
-
-void PlanetManagerImplementation::loadReconLocations() {
-	info("loading recon locations ...", true);
 }
 
 SceneObject* PlanetManagerImplementation::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {

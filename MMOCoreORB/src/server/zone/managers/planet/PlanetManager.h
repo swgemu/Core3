@@ -151,10 +151,6 @@ using namespace server::zone::objects::region;
 
 #include "server/zone/managers/planet/MissionTargetMap.h"
 
-#include "server/zone/managers/planet/HuntingTargetMap.h"
-
-#include "server/zone/managers/planet/HuntingTargetEntry.h"
-
 #include "server/zone/templates/snapshot/WorldSnapshotNode.h"
 
 #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
@@ -206,11 +202,9 @@ public:
 
 	void loadPerformanceLocations();
 
-	void loadHuntingTargets();
-
-	void loadReconLocations();
-
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
+
+	PlanetTravelPoint* getNearestPlanetTravelPoint(const Vector3& position, float range = 16000.0);
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
@@ -246,23 +240,7 @@ public:
 
 	MissionTargetMap* getPerformanceLocations();
 
-	void addMissionNpc(SceneObject* npc);
-
-	MissionTargetMap* getMissionNpcs();
-
-	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
-
-	HuntingTargetEntry* getHuntingTargetTemplate(int level);
-
-	void addReconLoc(SceneObject* obj);
-
-	MissionTargetMap* getReconLocs();
-
 	CityRegion* getMainRegion();
-
-	void addInformant(SceneObject* obj);
-
-	MissionTargetMap* getInformants();
 
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
@@ -324,15 +302,7 @@ protected:
 
 	Reference<TerrainManager* > terrainManager;
 
-	Reference<MissionTargetMap* > missionNpcs;
-
 	Reference<MissionTargetMap* > performanceLocations;
-
-	Reference<HuntingTargetMap* > huntingTargets;
-
-	Reference<MissionTargetMap* > reconLocs;
-
-	Reference<MissionTargetMap* > informants;
 
 	ManagedReference<CityRegion* > mainRegion;
 
@@ -367,15 +337,13 @@ public:
 
 	void loadPerformanceLocations();
 
-	void loadHuntingTargets();
-
-	void loadReconLocations();
-
 protected:
 	void loadStaticTangibleObjects();
 
 public:
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
+
+	PlanetTravelPoint* getNearestPlanetTravelPoint(const Vector3& position, float range = 16000.0);
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
@@ -411,23 +379,7 @@ public:
 
 	MissionTargetMap* getPerformanceLocations();
 
-	void addMissionNpc(SceneObject* npc);
-
-	MissionTargetMap* getMissionNpcs();
-
-	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
-
-	HuntingTargetEntry* getHuntingTargetTemplate(int level);
-
-	void addReconLoc(SceneObject* obj);
-
-	MissionTargetMap* getReconLocs();
-
 	CityRegion* getMainRegion();
-
-	void addInformant(SceneObject* obj);
-
-	MissionTargetMap* getInformants();
 
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
@@ -496,10 +448,6 @@ public:
 
 	void loadPerformanceLocations();
 
-	void loadHuntingTargets();
-
-	void loadReconLocations();
-
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
 
 	int getTravelFare(const String& destinationPlanet);
@@ -528,15 +476,7 @@ public:
 
 	void addPerformanceLocation(SceneObject* obj);
 
-	void addMissionNpc(SceneObject* npc);
-
-	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
-
-	void addReconLoc(SceneObject* obj);
-
 	CityRegion* getMainRegion();
-
-	void addInformant(SceneObject* obj);
 
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
@@ -555,8 +495,6 @@ protected:
 	String _param2_createTicket__String_String_String_;
 	String _param0_dropRegion__String_;
 	String _param0_hasRegion__String_;
-	String _param0_addHuntingTargetTemplate__String_String_int_;
-	String _param1_addHuntingTargetTemplate__String_String_int_;
 	String _param0_isExistingPlanetTravelPoint__String_;
 	String _param0_isInterplanetaryTravelAllowed__String_;
 	String _param0_isTravelToLocationPermitted__String_String_String_;
