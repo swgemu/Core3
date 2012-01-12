@@ -300,11 +300,11 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 		//Withdraw money from player.
 		int skillCost = skill->getMoneyRequired();
 		if (skillCost <= conversingPlayer->getCashCredits()) {
-			conversingPlayer->substractCashCredits(skillCost);
+			conversingPlayer->subtractCashCredits(skillCost);
 		} else {
 			skillCost -= conversingPlayer->getCashCredits();
-			conversingPlayer->substractCashCredits(conversingPlayer->getCashCredits());
-			conversingPlayer->substractBankCredits(skillCost);
+			conversingPlayer->subtractCashCredits(conversingPlayer->getCashCredits());
+			conversingPlayer->subtractBankCredits(skillCost);
 		}
 
 		//Award skill.

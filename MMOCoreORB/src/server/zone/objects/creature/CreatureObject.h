@@ -420,9 +420,9 @@ public:
 
 	void addCashCredits(int credits, bool notifyClient = true);
 
-	void substractBankCredits(int credits);
+	void subtractBankCredits(int credits);
 
-	void substractCashCredits(int credits);
+	void subtractCashCredits(int credits);
 
 	bool verifyCashCredits(int credits);
 
@@ -1137,9 +1137,9 @@ public:
 
 	void addCashCredits(int credits, bool notifyClient = true);
 
-	void substractBankCredits(int credits);
+	void subtractBankCredits(int credits);
 
-	void substractCashCredits(int credits);
+	void subtractCashCredits(int credits);
 
 	bool verifyCashCredits(int credits);
 
@@ -1704,9 +1704,9 @@ public:
 
 	void addCashCredits(int credits, bool notifyClient);
 
-	void substractBankCredits(int credits);
+	void subtractBankCredits(int credits);
 
-	void substractCashCredits(int credits);
+	void subtractCashCredits(int credits);
 
 	bool verifyCashCredits(int credits);
 

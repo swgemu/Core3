@@ -260,6 +260,8 @@ public:
 
 	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
 
+	Vector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
+
 	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
 
 	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
@@ -433,6 +435,8 @@ public:
 	void setExperienceMultiplier(float globalMultiplier);
 
 	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
+
+	Vector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
 	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
 

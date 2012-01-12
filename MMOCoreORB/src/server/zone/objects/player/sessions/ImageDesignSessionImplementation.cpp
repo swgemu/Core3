@@ -143,7 +143,7 @@ int ImageDesignSessionImplementation::doPayment() {
 		return 0;
 	}
 
-	targetCreature->substractCashCredits(requiredPayment);
+	targetCreature->subtractCashCredits(requiredPayment);
 	designerCreature->addCashCredits(requiredPayment);
 
 	return 1;

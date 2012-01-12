@@ -124,7 +124,6 @@ namespace server {
 
 	  	void handleDenyTrainingList(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleInsuranceMenu(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleInsureAllConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	void handleBankTipConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);

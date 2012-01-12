@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LootSchematicMenuComponent.h"
+#include "server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 
 ComponentManager::ComponentManager() {
@@ -31,6 +32,7 @@ ComponentManager::ComponentManager() {
 	components.put("PlayerObjectMenuComponent", new PlayerObjectMenuComponent());
 
 	components.put("LootSchematicMenuComponent", new LootSchematicMenuComponent());
+	components.put("InsuranceTerminalMenuComponent", new InsuranceTerminalMenuComponent());
 
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 }

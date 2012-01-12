@@ -16,6 +16,7 @@
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
+#include "server/chat/ChatMessage.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -59,6 +60,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "setAuthorizationState", setAuthorizationState);
 	lua_register(luaEngine->getLuaState(), "giveItem", giveItem);
 	lua_register(luaEngine->getLuaState(), "checkInt64Lua", checkInt64Lua);
+	lua_register(luaEngine->getLuaState(), "getChatMessage", getChatMessage);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -174,6 +176,21 @@ int DirectorManager::createEvent(lua_State* L) {
 	task->schedule(mili);
 
 	return 0;
+}
+
+int DirectorManager::getChatMessage(lua_State* L) {
+	ChatMessage* cm = (ChatMessage*)lua_touserdata(L, -1);
+
+	String text = "";
+
+	if (cm != NULL)
+		text = cm->toString();
+
+	text = text.toLowerCase();
+
+	lua_pushstring(L, text.toCharArray());
+
+	return 1;
 }
 
 int DirectorManager::spatialChat(lua_State* L) {

@@ -658,12 +658,12 @@ class CreatureObject extends TangibleObject {
 		setCashCredits(newCredits);
 	}
 	
-	public void substractBankCredits(int credits) {
+	public void subtractBankCredits(int credits) {
 		int newCredits = bankCredits - credits;
 		setBankCredits(newCredits);
 	}
 	
-	public void substractCashCredits(int credits) {
+	public void subtractCashCredits(int credits) {
 		int newCredits = cashCredits - credits;
 		setCashCredits(newCredits);
 	}
@@ -754,11 +754,11 @@ class CreatureObject extends TangibleObject {
 	public native void removeSkill(final string skill, boolean notifyClient = true);
 	
 	/**
-	 * Adds new value to the specified skillmod (add a negative number to substract)
+	 * Adds new value to the specified skillmod (add a negative number to subtract)
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param skillMod skill mod to change
-	 * @param value value to add/substract
+	 * @param value value to add/subtract
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void addSkillMod(final string skillMod, long value, boolean notifyClient = true);

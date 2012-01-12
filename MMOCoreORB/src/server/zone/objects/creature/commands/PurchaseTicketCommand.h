@@ -142,10 +142,10 @@ public:
 				return GENERALERROR;
 			}
 
-			creature->substractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
-			creature->substractCashCredits(diff); //Take the rest from the cash.
+			creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
+			creature->subtractCashCredits(diff); //Take the rest from the cash.
 		} else {
-			creature->substractBankCredits(fare); //Take all of the fare from the bank.
+			creature->subtractBankCredits(fare); //Take all of the fare from the bank.
 		}
 
 		StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.

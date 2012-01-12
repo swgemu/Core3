@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_insurance = object_tangible_terminal_shared_terminal_insurance:new {
-
+	objectMenuComponent = "InsuranceTerminalMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_insurance, "object/tangible/terminal/terminal_insurance.iff")

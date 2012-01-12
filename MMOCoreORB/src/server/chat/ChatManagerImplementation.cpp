@@ -25,6 +25,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "PersistentMessage.h"
+#include "ChatMessage.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "room/ChatRoom.h"
@@ -300,6 +301,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 				Emote* emsg = new Emote(creature, sender, targetid,
 						emoteid, showtext);
 				creature->sendMessage(emsg);
+
 			}
 		}
 	}
@@ -496,7 +498,9 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 		}*/
 		broadcastMessage(player, msg, targetid, moodid, mood2);
 
-		player->notifyObservers(ObserverEventType::CHAT, NULL, 0);
+		ManagedReference<ChatMessage*> cm = new ChatMessage();
+		cm->setString(msg.toString());
+		player->notifyObservers(ObserverEventType::CHAT, cm, 0);
 
 	} catch (Exception& e) {
 		StringBuffer msg;

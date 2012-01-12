@@ -1,16 +1,16 @@
 /*
- * LootSchematicMenuComponent.h
+ * InsuranceTerminalMenuComponent.h
  *
- *  Created on: 10/30/2011
- *      Author: kyle
+ *  Created on: 01/11/2012
+ *      Author: Elvaron
  */
 
-#ifndef LOOTSCHEMATICMENUCOMPONENT_H_
-#define LOOTSCHEMATICMENUCOMPONENT_H_
+#ifndef INSURANCETERMINALMENUCOMPONENT_H_
+#define INSURANCETERMINALMENUCOMPONENT_H_
 
 #include "TangibleObjectMenuComponent.h"
 
-class LootSchematicMenuComponent : public TangibleObjectMenuComponent {
+class InsuranceTerminalMenuComponent : public TangibleObjectMenuComponent {
 public:
 
 	/**
@@ -34,4 +34,4 @@ public:
 };
 
 
-#endif /* LOOTSCHEMATICMENUCOMPONENT_H_ */
+#endif /* INSURANCETERMINALMENUCOMPONENT_H_ */

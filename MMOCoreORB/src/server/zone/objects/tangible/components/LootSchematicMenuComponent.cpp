@@ -1,5 +1,5 @@
 /*
- * TangibleObjectMenuComponent.cpp
+ * LootSchematicMenuComponent.cpp
  *
  *  Created on: 10/30/2011
  *      Author: kyle

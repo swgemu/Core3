@@ -297,6 +297,15 @@ void PlayerManager::awardExperience(CreatureObject* player, const String& xpType
 		_implementation->awardExperience(player, xpType, amount, sendSystemMessage, localMultiplier);
 }
 
+Vector<ManagedReference<SceneObject* > > PlayerManager::getInsurableItems(CreatureObject* player, bool onlyInsurable) {
+	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getInsurableItems(player, onlyInsurable);
+}
+
 void PlayerManager::handleAbortTradeMessage(CreatureObject* player, bool doLock) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

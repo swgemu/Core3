@@ -43,7 +43,7 @@ public:
 
 		// Perform the bank tip
 		Locker clocker(targetPlayer, player);
-		player->substractBankCredits(amount + surcharge);
+		player->subtractBankCredits(amount + surcharge);
 		targetPlayer->addBankCredits(amount, false); // FIXME: param notifyClient does nothing atm. in CreatureObject.idl:637
 
 		// Duly notify parties involved

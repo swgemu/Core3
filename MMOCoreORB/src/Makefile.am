@@ -169,6 +169,7 @@ core3_IDLS =	server/zone/objects/creature/conversation/LuaConversationObserver.c
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
 				server/chat/PersistentMessage.cpp \
+				server/chat/ChatMessage.cpp \
 				server/zone/managers/ZoneManager.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
@@ -282,6 +283,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/LootSchematicMenuComponent.cpp \
+		server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.cpp \
 		server/zone/objects/scene/components/ObjectMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerZoneComponent.cpp \
 		server/zone/objects/building/components/ShuttleZoneComponent.cpp \

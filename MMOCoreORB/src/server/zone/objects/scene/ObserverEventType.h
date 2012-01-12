@@ -24,7 +24,7 @@ public:
 	const static int SPECIALATTACK = 12; // never notified?
 	const static int CALLFORHELP = 13;
 	const static int NEWBIETUTORIALZOOMCAMERA = 14; //ManagedObject arg1 = null, long arg2 = 0
-	const static int CHAT = 15; //ManagedObject arg1 = null, long arg2 = 0
+	const static int CHAT = 15; //ManagedObject arg1 = ChatMessage, long arg2 = 0
 	const static int NEWBIETUTORIALHOLOCRON = 16; //ManagedObject arg1 = null, long arg2 = 0
 	const static int OBJECTINRANGEMOVED = 17; //ManagedObject arg1 = MovedObject, long arg2 = 0
 	const static int PLAYERCHANGEDTARGET = 18; //ManagedObject arg1 = newTarget, long arg2 = 0

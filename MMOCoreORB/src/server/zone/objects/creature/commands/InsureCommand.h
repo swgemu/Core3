@@ -46,6 +46,7 @@ which carries forward this exception.
 #define INSURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/callbacks/InsuranceMenuSuiCallback.h"
 
 class InsureCommand : public QueueCommand {
 public:
@@ -62,6 +63,71 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		SceneObject* term = NULL;
+
+		SortedVector<ManagedReference<QuadTreeEntry*> >* closeSceneObjects = creature->getCloseObjects();
+
+		info(String::valueOf(closeSceneObjects->size()), true);
+
+		for (int i=0; i < closeSceneObjects->size(); i++) {
+			SceneObject* scno = cast<SceneObject*>(closeSceneObjects->get(i).get());
+
+			if (scno == NULL)
+				continue;
+
+			if (scno->getGameObjectType() == SceneObjectType::INSURANCE) {
+				term = scno;
+				break;
+			}
+		}
+
+		if (term == NULL) {
+			return GENERALERROR;
+		}
+
+
+		if (creature->isInRange(term, 15.0f)) {
+			ManagedReference<SuiListBox*> suiInsuranceMenuBox = new SuiListBox(creature, SuiWindowType::INSURANCE_MENU, SuiListBox::HANDLETHREEBUTTON);
+
+			suiInsuranceMenuBox->setPromptTitle("@sui:mnu_insure");
+			suiInsuranceMenuBox->setPromptText("Select which items you would like to buy insurance for from the list below.");
+
+			PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+
+			Vector<ManagedReference<SceneObject*> > insurableItems = playerManager->getInsurableItems(creature);
+
+			if (insurableItems.size() == 0) {
+				creature->sendSystemMessage("@terminal_ui:no_insurable_items");
+				return GENERALERROR;
+			}
+
+			suiInsuranceMenuBox->setCallback(new InsuranceMenuSuiCallback(creature->getZoneServer()));
+
+			for (int i = 0; i < insurableItems.size(); i++) {
+				SceneObject* item = insurableItems.get(i);
+
+				if (item != NULL)
+					suiInsuranceMenuBox->addMenuItem(item->getObjectName()->getDisplayedName(), item->getObjectID());
+			}
+
+			suiInsuranceMenuBox->setCancelButton(true, "Cancel");
+			suiInsuranceMenuBox->setOtherButton(true, "@sui:mnu_insure_all");
+			suiInsuranceMenuBox->setUsingObject(term);
+
+			suiInsuranceMenuBox->setForceCloseDistance(32.f);
+
+			creature->getPlayerObject()->addSuiBox(suiInsuranceMenuBox);
+			creature->sendMessage(suiInsuranceMenuBox->generateMessage());
+		} else {
+			StringIdChatParameter params;
+			params.setStringId("@container_error_message:container09_prose");
+			params.setTT("@terminal_name:terminal_insurance");
+			creature->sendSystemMessage(params);
+			return GENERALERROR;
+		}
+
+
 
 		return SUCCESS;
 	}

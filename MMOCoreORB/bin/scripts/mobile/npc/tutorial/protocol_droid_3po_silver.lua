@@ -1,5 +1,5 @@
 protocol_droid_3po_silver = Creature:new {
-	objectName = "@mob/creature_names:protocol_droid_3po_silver",
+	objectName = "@newbie_tutorial/system_messages:droid_name",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "imperial",

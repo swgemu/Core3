@@ -116,8 +116,10 @@ public:
 					return SUCCESS;
 				}
 			}*/
-
 			creature->setPosture(CreaturePosture::PRONE);
+
+			creature->playMusicMessage("sound/tut_01_welcome.snd");
+			creature->playMusicMessage("sound/music_main_title.snd");
 
 			if (creature->isDizzied())
 				creature->queueDizzyFallEvent();

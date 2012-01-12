@@ -32,6 +32,8 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/login/packets/ErrorMessage.h"
 
+#include "server/zone/objects/tangible/OptionBitmask.h"
+
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
@@ -1551,14 +1553,14 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 			uint32 giveMoney = tradeContainer->getMoneyToTrade();
 
 			if (giveMoney > 0) {
-				player->substractCashCredits(giveMoney);
+				player->subtractCashCredits(giveMoney);
 				receiver->addCashCredits(giveMoney);
 			}
 
 			giveMoney = receiverTradeContainer->getMoneyToTrade();
 
 			if (giveMoney > 0) {
-				receiver->substractCashCredits(giveMoney);
+				receiver->subtractCashCredits(giveMoney);
 				player->addCashCredits(giveMoney);
 			}
 
@@ -2366,6 +2368,50 @@ StartingLocation* PlayerManagerImplementation::getStartingLocation(const String&
 	}
 
 	return NULL;
+}
+
+Vector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurableItems(CreatureObject* player, bool onlyInsurable) {
+	Vector<ManagedReference<SceneObject*> > insurableItems;
+
+	if (player == NULL)
+		return insurableItems;
+
+	SceneObject* datapad = player->getSlottedObject("datapad");
+	SceneObject* defweapon = player->getSlottedObject("default_weapon");
+
+	for (int i = 0; i < player->getSlottedObjectsSize(); ++i) {
+		SceneObject* container = player->getSlottedObject(i);
+
+		if (container == datapad || container == NULL || container == defweapon)
+			continue;
+
+		if (container->isTangibleObject()) {
+			TangibleObject* item = cast<TangibleObject*>( container);
+
+			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
+				insurableItems.add(item);
+			} else if (item->getOptionsBitmask() & OptionBitmask::INSURED && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+				insurableItems.add(item);
+			}
+		}
+
+		for (int j = 0; j < container->getContainerObjectsSize(); j++) {
+			SceneObject* object = container->getContainerObject(j);
+
+			if (!object->isTangibleObject())
+				continue;
+
+			TangibleObject* item = cast<TangibleObject*>( object);
+
+			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
+				insurableItems.add(item);
+			} else if (item->getOptionsBitmask() & OptionBitmask::INSURED && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+				insurableItems.add(item);
+			}
+		}
+	}
+
+	return insurableItems;
 }
 
 int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {

@@ -78,6 +78,7 @@ namespace server {
 		static int setAuthorizationState(lua_State* L);
 		static int giveItem(lua_State* L);
 		static int checkInt64Lua(lua_State* L);
+		static int getChatMessage(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

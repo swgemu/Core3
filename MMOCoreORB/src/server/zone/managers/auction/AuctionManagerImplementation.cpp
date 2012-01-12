@@ -377,11 +377,11 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		StringIdChatParameter str("@base_player:sale_fee");
 
 		if (item->isPremiumAuction()) {
-			player->substractBankCredits(SALESFEE * 5);
+			player->subtractBankCredits(SALESFEE * 5);
 			str.setDI(SALESFEE);
 
 		} else {
-			player->substractBankCredits(SALESFEE);
+			player->subtractBankCredits(SALESFEE);
 			str.setDI(SALESFEE);
 		}
 
@@ -446,7 +446,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	item->setBuyerID(player->getObjectID());
 	item->setBidderName(playername);
 
-	player->substractBankCredits(price1);
+	player->subtractBankCredits(price1);
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
 	player->sendMessage(msg);
@@ -565,7 +565,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		item->setBidderName(playername);
 
 		// take money from high bidder
-		player->substractBankCredits(price1);
+		player->subtractBankCredits(price1);
 
 		// no prior bidder, just take the money
 	} else {
@@ -573,7 +573,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
 
-		player->substractBankCredits(price1);
+		player->subtractBankCredits(price1);
 	}
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);

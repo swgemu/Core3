@@ -160,6 +160,9 @@ class PlayerManager extends Observer implements Logger {
 	public native void setExperienceMultiplier(float globalMultiplier);
 	public native void awardExperience(CreatureObject player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
 	
+	@local @dereferenced
+	public native Vector<SceneObject> getInsurableItems(CreatureObject player, boolean onlyInsurable = true);
+	
 	public native void handleAbortTradeMessage(CreatureObject player, boolean doLock = true);
 	public native void handleAddItemToTradeWindow(CreatureObject player, unsigned long itemID);
 	public native void handleGiveMoneyMessage(CreatureObject player, unsigned int value);

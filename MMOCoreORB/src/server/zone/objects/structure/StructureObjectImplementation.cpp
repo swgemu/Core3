@@ -256,19 +256,19 @@ void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObje
 	int payedSoFar;
 	if (cashFirst) {
 		if (payer->getCashCredits() >= maintenance) {
-			payer->substractCashCredits(maintenance);
+			payer->subtractCashCredits(maintenance);
 		} else {
 			payedSoFar = payer->getCashCredits();
-			payer->substractCashCredits(payedSoFar);
-			payer->substractBankCredits(maintenance - payedSoFar);
+			payer->subtractCashCredits(payedSoFar);
+			payer->subtractBankCredits(maintenance - payedSoFar);
 		}
 	} else {
 		if (payer->getBankCredits() >= maintenance) {
-			payer->substractBankCredits(maintenance);
+			payer->subtractBankCredits(maintenance);
 		} else {
 			payedSoFar = payer->getBankCredits();
-			payer->substractBankCredits(payedSoFar);
-			payer->substractCashCredits(maintenance - payedSoFar);
+			payer->subtractBankCredits(payedSoFar);
+			payer->subtractCashCredits(maintenance - payedSoFar);
 		}
 	}
 	addMaintenance(maintenance);

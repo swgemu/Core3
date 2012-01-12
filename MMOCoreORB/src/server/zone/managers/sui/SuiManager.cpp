@@ -279,7 +279,7 @@ void SuiManager::handleManageMaintenance(CreatureObject* player, SuiBox* suiBox,
 	//structureManager->depositMaintenance(player, structureObject, transferTotal);
 
 	structureObject->addMaintenance(transferTotal);
-	player->substractCashCredits(transferTotal);
+	player->subtractCashCredits(transferTotal);
 
 	StringIdChatParameter stringId("base_player", "prose_pay_success");
 	stringId.setTT(structureObject->getObjectID());
@@ -1001,3 +1001,5 @@ void SuiManager::handleAddMilitia(CreatureObject* player, SuiBox* suiBox, uint32
 	ManagedReference<CityManager*> cityManager = zone->getCityManager();
 	cityManager->addMilitiaMember(city, player, playerName);
 }
+
+
