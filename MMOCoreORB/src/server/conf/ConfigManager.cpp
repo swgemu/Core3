@@ -44,8 +44,57 @@ which carries forward this exception.
 
 #include "ConfigManager.h"
 
+ConfigManager::ConfigManager() {
+	makeLogin = true;
+	makeZone = true;
+	makePing = true;
+	makeStatus = true;
+	makeWeb = true;
+
+	orbNamingDirectoryAddress = "";
+
+	dBHost = "127.0.0.1";
+	dBPort = 3306;
+	dBName = "swgemu";
+	dBUser = "root";
+	dBPass = "Gemeni1";
+
+	mantisHost = "127.0.0.1";
+	mantisPort = 3306;
+	mantisName = "swgemu";
+	mantisUser = "root";
+	mantisPass = "Gemeni1";
+
+	statusPort = 44455;
+
+	pingPort = 44462;
+
+	webPorts = "44460";
+	webErrorLog = "log/web_error.log";
+	webAccessLog = "log/web_access.log";
+	webSessionTimeout = 600;
+
+	loginProcessingThreads = 1;
+	loginRequiredVersion = "20050408-18:00";
+	loginPort = 44453;
+	loginAllowedConnections = 30;
+	autoReg = true;
+
+	zoneProcessingThreads = 10;
+	zoneAllowedConnections = 300;
+	zoneGalaxyID = 2;
+	zoneOnlineCharactersPerAccount = 1;
+
+	statusAllowedConnections = 100;
+	statusInterval = 60;
+
+	pingAllowedConnections = 3000;
+	enabledZones.setNoDuplicateInsertPlan();
+}
+
 bool ConfigManager::loadConfigData() {
 	loadMOTD();
+	loadRevision();
 
 	if (!loadConfigFile())
 		return false;
@@ -141,6 +190,31 @@ void ConfigManager::loadMOTD() {
 		file = NULL;
 		reader = NULL;
 	}
+
+	delete reader;
+	delete file;
+}
+
+void ConfigManager::loadRevision() {
+	File* file;
+	FileReader* reader;
+
+	try {
+		file = new File("conf/rev.txt");
+		reader = new FileReader(file);
+
+		reader->readLine(revision);
+
+		reader->close();
+	} catch (FileNotFoundException& e) {
+		file = NULL;
+		reader = NULL;
+	} catch (Exception& e) {
+		file = NULL;
+		reader = NULL;
+	}
+
+	revision = revision.replaceAll("\n", "");
 
 	delete reader;
 	delete file;

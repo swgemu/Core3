@@ -91,7 +91,7 @@ public:
 		return NULL;
 	}
 
-	inline long long getModifierByName(String skillMod) {
+	inline long long getModifierByName(const String& skillMod) {
 		int mod = 0;
 
 		for (int i = 0; i < buffList.size(); i++) {

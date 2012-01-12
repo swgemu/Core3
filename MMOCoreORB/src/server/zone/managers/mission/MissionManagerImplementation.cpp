@@ -359,7 +359,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	SceneObject* missionBag = player->getSlottedObject("mission_bag");
 	int bagSize = missionBag->getContainerObjectsSize();
 
-	info("bagSize = " + String::valueOf(bagSize), true);
+	//info("bagSize = " + String::valueOf(bagSize), true);
 
 	int numberOfCraftingMissions = 0;
 	int numberOfReconMissions = 0;
@@ -997,7 +997,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 
 	String creatorName = nm->makeCreatureName();
 
-	info("creator name " + creatorName, true);
+	//info("creator name " + creatorName, true);
 
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(creatorName);
@@ -1005,7 +1005,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 
-	info("setting target name to " + creatureTemplate->getObjectName(), true);
+	//info("setting target name to " + creatureTemplate->getObjectName(), true);
 	// TODO: this all needs to change to be less static and use distance
 	mission->setMissionTargetName(creatureTemplate->getObjectName());
 	mission->setTargetTemplate(sharedTemplate);

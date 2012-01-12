@@ -376,6 +376,8 @@ void ServerCore::handleCommands() {
 					System::out << "result: " << file << endl;
 				}
 
+			} else if (command == "rev") {
+				System::out << ConfigManager::instance()->getRevision() << endl;
 			} else
 				System::out << "unknown command (" << command << ")\n";
 		} catch (SocketException& e) {

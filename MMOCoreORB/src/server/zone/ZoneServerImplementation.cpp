@@ -638,6 +638,9 @@ void ZoneServerImplementation::loadLoginMessage() {
 		file = NULL;
 		reader = NULL;
 	}
+
+	loginMessage += "\nRevision=";
+	loginMessage += ConfigManager::instance()->getRevision();
 }
 
 void ZoneServerImplementation::changeLoginMessage(const String& motd) {
