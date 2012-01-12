@@ -394,6 +394,8 @@ public:
 
 	Buff* getBuff(unsigned int buffcrc);
 
+	long long getSkillModFromBuffs(const String& skillMod);
+
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
 	bool healDot(unsigned long long dotType, int reduction);
@@ -800,6 +802,8 @@ public:
 
 	bool isInCover();
 
+	bool isRunning();
+
 	bool isNonPlayerCreatureObject();
 
 	bool isCreature();
@@ -1106,6 +1110,8 @@ public:
 	void sendBuffsTo(CreatureObject* creature);
 
 	Buff* getBuff(unsigned int buffcrc);
+
+	long long getSkillModFromBuffs(const String& skillMod);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
@@ -1513,6 +1519,8 @@ public:
 
 	bool isInCover();
 
+	bool isRunning();
+
 	virtual bool isNonPlayerCreatureObject();
 
 	virtual bool isCreature();
@@ -1671,6 +1679,8 @@ public:
 	void sendBuffsTo(CreatureObject* creature);
 
 	Buff* getBuff(unsigned int buffcrc);
+
+	long long getSkillModFromBuffs(const String& skillMod);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
@@ -2050,6 +2060,8 @@ public:
 
 	bool isInCover();
 
+	bool isRunning();
+
 	bool isNonPlayerCreatureObject();
 
 	bool isCreature();
@@ -2071,6 +2083,7 @@ protected:
 	String _param0_sendSystemMessage__String_String_;
 	String _param1_sendSystemMessage__String_String_;
 	String _param0_setPerformanceAnimation__String_bool_;
+	String _param0_getSkillModFromBuffs__String_;
 	String _param0_addSkill__String_bool_;
 	String _param0_removeSkill__String_bool_;
 	String _param0_addSkillMod__String_long_bool_;

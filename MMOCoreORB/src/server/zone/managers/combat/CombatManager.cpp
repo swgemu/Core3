@@ -84,12 +84,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 				if (defender->isCreatureObject()) {
 					CreatureObject* creature = cast<CreatureObject*>( defender);
 
-					if (creature->getMainDefender() != attacker) {
-						attacker->removeDefender(defender);
-						defender->removeDefender(attacker);
-
-						--i;
-					} else if (creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead()) {
+					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead()) {
 						attacker->removeDefender(defender);
 						defender->removeDefender(attacker);
 
@@ -196,6 +191,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	if (animationCRC == 0)
 		animationCRC = getDefaultAttackAnimation(attacker);
 
+	// TODO: this needs to change as per the different attacks
 	if (attacker->isCreature())
 		animationCRC = String("creature_attack_light").hashCode();
 
@@ -256,6 +252,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
+	// TODO: accuracy modifiers from the special go in the last slot
 	if (poolsToDamage != 0 && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
 		//better luck next time
 		doMiss(attacker, defender, 0, data.getCommand()->getCombatSpam() + "_miss");
@@ -351,9 +348,7 @@ bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* de
 }
 
 float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* weapon) {
-	float accuracy;
-
-	float smallRange = 0;
+	float minRange = 0;
 	float idealRange = 2;
 	float maxRange = 5;
 
@@ -361,7 +356,7 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 	float bigMod = 7;
 
 	if (weapon != NULL) {
-		smallRange = (float) weapon->getPointBlankRange();
+		minRange = (float) weapon->getPointBlankRange();
 		idealRange = (float) weapon->getIdealRange();
 		maxRange = (float) weapon->getMaxRange();
 
@@ -369,21 +364,39 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 		bigMod = (float) weapon->getIdealAccuracy();
 	}
 
+	// this assumes that we are attacking somewhere between point blank and ideal range
+	float smallRange = minRange;
+	float bigRange = idealRange;
+
+	// check that assumption and correct if it's not true
 	if (currentRange > idealRange) {
 		if (weapon != NULL) {
 			smallMod = (float) weapon->getIdealAccuracy();
 			bigMod = (float) weapon->getMaxRangeAccuracy();
-		}
+		} // else retain mod values = 7
 
-		idealRange = maxRange;
-	}
+		smallRange = idealRange;
+		bigRange = maxRange;
+	} else if (currentRange <= minRange)
+		return smallMod;
 
-	accuracy = smallMod + ((currentRange - smallRange) / (idealRange != smallRange ? idealRange - smallRange : 1) * (bigMod - smallMod));
+	return smallMod + ((currentRange - smallRange) / (bigRange - smallRange) * (bigMod - smallMod));
+}
+
+int CombatManager::calculatePostureModifier(CreatureObject* creature) {
+	int accuracy = 0;
+
+	if (creature->isKneeling())
+		accuracy += 16;
+	else if (creature->isProne())
+		accuracy += 50;
+	else if (creature->isRunning())
+		accuracy -= 50;
 
 	return accuracy;
 }
 
-int CombatManager::calculatePostureModifier(CreatureObject* creature, CreatureObject* targetCreature) {
+int CombatManager::calculateTargetPostureModifier(CreatureObject* creature, CreatureObject* targetCreature) {
 	int accuracy = 0;
 	WeaponObject* weapon = creature->getWeapon();
 
@@ -399,18 +412,6 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature, CreatureOb
 			accuracy -= 25;
 	}
 
-	if (creature->isKneeling()) {
-		if (weapon->isMeleeWeapon())
-			accuracy -= 16;
-		else
-			accuracy += 16;
-	} else if (creature->isProne()) {
-		if (weapon->isMeleeWeapon())
-			accuracy -= 50;
-		else
-			accuracy += 50;
-	}
-
 	return accuracy;
 }
 
@@ -423,22 +424,34 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 		attackerAccuracy += attacker->getSkillMod(creatureAccMods->get(i));
 	}
 
-	if (attacker->isAiAgent()) {
-		ManagedReference<AiAgent*> creoAttacker = dynamic_cast<AiAgent*>(attacker);
-		attackerAccuracy += creoAttacker->getChanceHit() * 100;
-	}
-
 	return attackerAccuracy;
 }
 
-int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon) {
+int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
 	int targetDefense = 0;
+	int buffDefense = 0;
 
 	Vector<String>* defenseAccMods = weapon->getDefenderDefenseModifiers();
 
+	// this should only be ranged_defense or melee_defense, never both. Other types of defense are checked in applyStates()
 	for (int i = 0; i < defenseAccMods->size(); ++i) {
 		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
+		buffDefense += defender->getSkillModFromBuffs(defenseAccMods->get(i));
 	}
+
+	//info("Base target defense is " + String::valueOf(targetDefense), true);
+
+	targetDefense = applyDefensePenalties(defender, weapon->getAttackType(), targetDefense);
+	targetDefense += calculateTargetPostureModifier(attacker, defender);
+
+	// defense hardcap, make sure not to count defense from buffs (food), add it back in later
+	targetDefense -= buffDefense;
+	if (targetDefense > 125)
+		targetDefense = 125;
+
+	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense), true);
+
+	targetDefense += buffDefense;
 
 	return targetDefense;
 }
@@ -455,9 +468,8 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender,
 	return targetDefense;
 }
 
-float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus) {
-
-	float accTotal = 66.0 + (attackerAccuracy + accuracyBonus - targetDefense - defenseBonus) / 2.0;
+float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense) {
+	float accTotal = 66.0 + accuracyBonus + (attackerAccuracy - targetDefense) / 2.0;
 
 	/*StringBuffer msg;
 	msg << "HitChance\n";
@@ -764,6 +776,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 }
 
 int CombatManager::applyAccuracyPenalties(CreatureObject* creature, int attackType, int accuracy) {
+	// TODO: check these modifiers with QA
 	if (creature->isBerserked() && attackType == WeaponObject::MELEEATTACK)
 		accuracy -= 10;
 
@@ -774,6 +787,7 @@ int CombatManager::applyAccuracyPenalties(CreatureObject* creature, int attackTy
 }
 
 int CombatManager::applyDefensePenalties(CreatureObject* defender, int attackType, int defense) {
+	// TODO: check these modifiers with QA
 	if (defender->isInCover())
 		defense += 10;
 
@@ -793,57 +807,45 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
 		// Get the weapon mods for range and add the mods for stance
 		weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
-		weaponAccuracy += calculatePostureModifier(creature, targetCreature);
+
+		uint32 steadyAim = String("steadyaim").hashCode();
+
+		if ((creature->isAiming()) || (creature->hasBuff(steadyAim))) {
+			if (attackType == WeaponObject::RANGEDATTACK)
+				weaponAccuracy += (float) creature->getSkillMod("aim");
+
+			if (creature->isAiming())
+				creature->clearState(CreatureState::AIMING);
+
+			if (creature->hasBuff(steadyAim))
+				creature->removeBuff(steadyAim);
+		}
 	}
 
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
-	float aimMod = 0.0;
 	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
 
-	if (creature->isBerserked() && attackType == WeaponObject::MELEEATTACK) {
-		attackerAccuracy -= 10;
+	// need to also add in general attack_accuracy (mostly gotten from foods)
+	accuracyBonus += creature->getSkillMod("attack_accuracy");
+
+	if (creature->isAiAgent()) {
+		ManagedReference<AiAgent*> creoAttacker = dynamic_cast<AiAgent*>(creature);
+		accuracyBonus += creoAttacker->getChanceHit() * 100;
 	}
 
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
-	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
+	accuracyBonus = applyAccuracyPenalties(creature, attackType, accuracyBonus);
+	accuracyBonus += calculatePostureModifier(creature);
 
-	//info("Base target defense is " + String::valueOf(targetDefense), true);
+	int targetDefense = getDefenderDefenseModifier(creature, targetCreature, weapon);
 
-	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);
+	// first (and third) argument is divided by 2, second isn't
+	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
 
-	attackerAccuracy = applyAccuracyPenalties(creature, attackType, attackerAccuracy);
-
-	uint32 steadyAim = String("steadyaim").hashCode();
-
-	if ((creature->isAiming()) || (creature->hasBuff(steadyAim))) {
-		if (attackType == WeaponObject::RANGEDATTACK)
-			aimMod = (float) creature->getSkillMod("aim");
-
-		if (creature->isAiming())
-			creature->clearState(CreatureState::AIMING);
-
-		if (creature->hasBuff(steadyAim))
-			creature->removeBuff(steadyAim);
-	}
-
-	if (targetDefense > 125)
-		targetDefense = 125;
-
-	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense), true);
-
-	float defenseBonus = 0.0f; // TODO: Food/drink defense bonuses go here
-
-	//Food dodge bonus.
-	if (targetCreature->hasBuff(BuffCRC::FOOD_DODGE_ATTACK)) {
-		Buff* buff = targetCreature->getBuff(BuffCRC::FOOD_DODGE_ATTACK);
-
-		if (buff != NULL)
-			defenseBonus += buff->getSkillModifierValue("dodge_attack");
-	}
-
-	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy + accuracyBonus + aimMod, targetDefense, defenseBonus);
+	// TODO: is this for against NPC's as well? need verification (from gralinyn juice)
+	accTotal += creature->getSkillMod("creature_hit_bonus");
 
 	//info("Final hit chance is " + String::valueOf(accTotal), true);
 
@@ -867,7 +869,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
 		// Get the weapon mods for range and add the mods for stance
 		weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
-		weaponAccuracy += calculatePostureModifier(creature, targetCreature);
+		//weaponAccuracy += calculatePostureModifier(creature, targetCreature);
 	}
 
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
@@ -898,7 +900,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	if (targetDefense <= 0)
 		return 0;
 
-	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy, targetDefense, 0);
+	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy, targetDefense);
 
 	int rand = System::random(100);
 
@@ -1133,7 +1135,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(data.getDizzyStateChance(), 0.0f, targetDefense, defenseBonus))
+		if (System::random(100) <= hitChanceEquation(data.getDizzyStateChance(), 0.0f, targetDefense))
 			targetCreature->setDizziedState(data.getDurationStateTime());
 	}
 
@@ -1151,7 +1153,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(data.getBlindStateChance(), 0.0f, targetDefense, defenseBonus))
+		if (System::random(100) <= hitChanceEquation(data.getBlindStateChance(), 0.0f, targetDefense))
 			targetCreature->setBlindedState(data.getDurationStateTime());
 	}
 
@@ -1169,7 +1171,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(data.getStunStateChance(), 0.0f, targetDefense, defenseBonus))
+		if (System::random(100) <= hitChanceEquation(data.getStunStateChance(), 0.0f, targetDefense))
 			targetCreature->setStunnedState(data.getDurationStateTime());
 	}
 
@@ -1182,7 +1184,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense, defenseBonus)) {
+		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense)) {
 			targetCreature->setIntimidatedState(data.getDurationStateTime());
 		} else
 			targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0);
@@ -1197,7 +1199,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense, defenseBonus)) {
+		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense)) {
 			targetCreature->setNextAttackDelay(data.getDurationStateTime());
 		} else
 			targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0);

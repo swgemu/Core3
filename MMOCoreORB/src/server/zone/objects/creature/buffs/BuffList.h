@@ -91,6 +91,17 @@ public:
 		return NULL;
 	}
 
+	inline long long getModifierByName(String skillMod) {
+		int mod = 0;
+
+		for (int i = 0; i < buffList.size(); i++) {
+			Buff* temp = buffList.get(i);
+			mod += temp->getSkillModifierValue(skillMod);
+		}
+
+		return mod;
+	}
+
 	inline bool hasBuff(uint32 buffcrc) {
 		return buffList.contains(buffcrc);
 	}

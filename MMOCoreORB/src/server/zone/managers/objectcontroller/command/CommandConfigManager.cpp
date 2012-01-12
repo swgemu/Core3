@@ -111,7 +111,7 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 			bool disabled; // check disabled first and don't load it
 
 			String name;
-			bool combat = true;
+			bool combat = false;
 			int targetType;
 			float maxRangeToTarget;
 			String characterAbility;

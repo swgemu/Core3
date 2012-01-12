@@ -156,11 +156,12 @@ protected:
 	 */
 	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon);
 
-	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus);
-	int calculatePostureModifier(CreatureObject* creature, CreatureObject* targetCreature);
+	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
+	int calculatePostureModifier(CreatureObject* creature);
+	int calculateTargetPostureModifier(CreatureObject* creature, CreatureObject* targetCreature);
 
 	int getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon);
-	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
+	int getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);

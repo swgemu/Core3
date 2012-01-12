@@ -609,6 +609,10 @@ class CreatureObject extends TangibleObject {
 		return null;
 	}
 	
+	public long getSkillModFromBuffs(final string skillMod) {
+		return creatureBuffs.getModifierByName(skillMod);
+	}
+	
 	public int addDotState(unsigned long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense) {
 		return damageOverTimeList.addDot(this, duration, dotType, type, strength, potency, defense);
 	}
@@ -1540,6 +1544,10 @@ class CreatureObject extends TangibleObject {
 
 	public boolean isInCover() {
 		return stateBitmask & CreatureState.COVER;
+	}
+	
+	public boolean isRunning() {
+		return currentSpeed >= runSpeed;
 	}
 	
 	public abstract boolean isNonPlayerCreatureObject() {
