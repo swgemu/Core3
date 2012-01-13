@@ -63,9 +63,9 @@ public:
 					}
 
 					query << "(" << charactersSaved->getUnsignedLong(0) << ", " << charactersSaved->getInt(1) << ", "
-							<< charactersSaved->getInt(2) << ", " << "\'" << charactersSaved->getString(3) << "\', "
-							<< "\'" << charactersSaved->getString(4) << "\', " << charactersSaved->getInt(5) << ", "
-							<< charactersSaved->getInt(6) << ", \'" << charactersSaved->getString(7) << "')";
+							<< charactersSaved->getInt(2) << ", " << "\'" << String(charactersSaved->getString(3)).escapeString() << "\', "
+							<< "\'" << String(charactersSaved->getString(4)).escapeString() << "\', " << charactersSaved->getInt(5) << ", "
+							<< charactersSaved->getInt(6) << ", \'" << String(charactersSaved->getString(7)).escapeString() << "')";
 
 					deleteQuery << "character_oid = " << charactersSaved->getUnsignedLong(0) << " AND galaxy_id = " << galaxyId;
 

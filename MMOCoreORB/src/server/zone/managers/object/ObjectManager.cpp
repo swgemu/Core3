@@ -1162,7 +1162,11 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 		galaxyId = server->getZoneServer()->getGalaxyID();
 
 		//characters_dirty chars
-		resultSet = ServerDatabase::instance()->executeQuery("SELECT * FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyId));
+		try {
+			resultSet = ServerDatabase::instance()->executeQuery("SELECT * FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyId));
+		} catch (Exception& e) {
+			error(e.getMessage());
+		}
 	}
 
 //#ifndef WITH_STM
