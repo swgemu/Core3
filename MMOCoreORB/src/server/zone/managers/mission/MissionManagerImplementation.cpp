@@ -775,7 +775,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 
 	NameManager* nm = processor->getNameManager();
 	mission->setCreatorName(nm->makeCreatureName());
-	mission->setMissionTargetName(nm->makeCreatureName());
+	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode())->getObjectName());
 
 	String planet = player->getZone()->getZoneName();
 	mission->setStartPlanet(planet);
@@ -1005,8 +1005,6 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 
-	//info("setting target name to " + creatureTemplate->getObjectName(), true);
-	// TODO: this all needs to change to be less static and use distance
 	mission->setMissionTargetName(creatureTemplate->getObjectName());
 	mission->setTargetTemplate(sharedTemplate);
 
@@ -1039,7 +1037,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	Vector3 position;
 
 	while (!foundPosition) {
-		position = player->getCoordinate(System::random(3000) + 1000, (float)System::random(360));
+		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360));
 
 		if (position.getX() > player->getZone()->getMaxX() - 100) {
 			position.setX(player->getZone()->getMaxX());
@@ -1068,6 +1066,9 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(nm->makeCreatureName());
+
+	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_recon_target.iff").hashCode())->getObjectName());
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_recon_target.iff").hashCode()));
 
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(position.getX(), position.getY(), player->getZone()->getZoneName());

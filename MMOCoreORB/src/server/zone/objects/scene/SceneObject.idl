@@ -864,6 +864,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	public native Vector3 getCoordinate(float distance, float angleDegrees);
 	
+	@local
+	@dereferenced
+	public native Vector3 getWorldCoordinate(float distance, float angleDegrees);
+	
 	@read
 	public native float getWorldPositionX();
 	@read

@@ -1236,6 +1236,15 @@ Vector3 SceneObject::getCoordinate(float distance, float angleDegrees) {
 		return _implementation->getCoordinate(distance, angleDegrees);
 }
 
+Vector3 SceneObject::getWorldCoordinate(float distance, float angleDegrees) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getWorldCoordinate(distance, angleDegrees);
+}
+
 float SceneObject::getWorldPositionX() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

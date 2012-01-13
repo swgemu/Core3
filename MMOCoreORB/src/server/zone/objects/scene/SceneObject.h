@@ -426,6 +426,8 @@ public:
 
 	Vector3 getCoordinate(float distance, float angleDegrees);
 
+	Vector3 getWorldCoordinate(float distance, float angleDegrees);
+
 	float getWorldPositionX();
 
 	float getWorldPositionY();
@@ -971,6 +973,8 @@ public:
 	unsigned long long getObjectID();
 
 	Vector3 getCoordinate(float distance, float angleDegrees);
+
+	Vector3 getWorldCoordinate(float distance, float angleDegrees);
 
 	float getWorldPositionX();
 

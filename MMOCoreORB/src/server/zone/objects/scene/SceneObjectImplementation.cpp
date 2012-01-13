@@ -1065,6 +1065,17 @@ Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegr
 	return Vector3(newX, newY, newZ);
 }
 
+Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angleDegrees) {
+	float angleRads = angleDegrees * (M_PI / 180.0f);
+	float newAngle = angleRads + direction.getRadians();
+
+	float newX = getWorldPositionX() + (cos(newAngle) * distance); // client has x/y inverted
+	float newY = getWorldPositionY() + (sin(newAngle) * distance);
+	float newZ = getZone()->getHeight(newX, newY);
+
+	return Vector3(newX, newY, newZ);
+}
+
 float SceneObjectImplementation::getWorldPositionX() {
 	if (parent == NULL)
 		return getPositionX();
