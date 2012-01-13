@@ -123,7 +123,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* crea
 		creature->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
 		break;
 	case 50:
-		structureManager->promptNameStructure(creature, structureObject);
+		structureManager->promptNameStructure(creature, structureObject, _this);
 		break;
 	case 130:
 		structureObject->createVendor(creature);

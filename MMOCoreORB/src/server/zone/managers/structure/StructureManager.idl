@@ -54,6 +54,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.structure.StructureObject;
+import server.zone.objects.tangible.TangibleObject;
 import system.thread.Thread;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.util.SortedVector;
@@ -141,8 +142,9 @@ class StructureManager extends ManagedService implements Logger {
 	 * Sends a Sui prompt to the player asking them to enter a name for the structure.
 	 * @param creature The player receiving the prompt.
 	 * @param structure The structure that will be named.
+	 * @param object Optional terminal to be used for sui
 	 */
-	public native void promptNameStructure(CreatureObject creature, StructureObject structure);
+	public native void promptNameStructure(CreatureObject creature, StructureObject structure, TangibleObject object);
 	
 	/**
 	 * Sends a Sui prompt to the player asking them to withdraw/deposit maintenance for the structure.

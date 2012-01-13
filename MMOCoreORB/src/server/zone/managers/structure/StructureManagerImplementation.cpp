@@ -744,19 +744,23 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 	creature->sendMessage(status->generateMessage());
 }
 
-void StructureManagerImplementation::promptNameStructure(CreatureObject* creature, StructureObject* structure) {
+void StructureManagerImplementation::promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL)
 		return;
 
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(creature, SuiWindowType::OBJECT_NAME);
-	inputBox->setUsingObject(structure);
+	if (object == NULL) {
+		inputBox->setUsingObject(structure);
+	} else {
+		inputBox->setUsingObject(object);
+	}
 	inputBox->setPromptTitle("@base_player:set_name"); //Set Name
 	inputBox->setPromptText("@player_structure:structure_name_prompt"); //Structure Name:
 	inputBox->setMaxInputSize(128);
 	inputBox->setCallback(new NameStructureSuiCallback(server->getZoneServer()));
-	inputBox->setForceCloseDistance(32.f);
+	inputBox->setForceCloseDistance(32);
 
 	ghost->addSuiBox(inputBox);
 	creature->sendMessage(inputBox->generateMessage());

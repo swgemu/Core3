@@ -103,6 +103,20 @@ using namespace server::zone::objects::structure;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace objectcontroller {
 
@@ -176,7 +190,7 @@ public:
 
 	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
 
-	void promptNameStructure(CreatureObject* creature, StructureObject* structure);
+	void promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object);
 
 	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal = true);
 
@@ -248,7 +262,7 @@ public:
 
 	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
 
-	void promptNameStructure(CreatureObject* creature, StructureObject* structure);
+	void promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object);
 
 	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal = true);
 
@@ -321,7 +335,7 @@ public:
 
 	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
 
-	void promptNameStructure(CreatureObject* creature, StructureObject* structure);
+	void promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object);
 
 	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal);
 

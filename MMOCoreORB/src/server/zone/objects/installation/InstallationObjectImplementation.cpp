@@ -114,7 +114,7 @@ int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* pla
 		break;
 
 	case 50:
-		structureManager->promptNameStructure(player, _this);
+		structureManager->promptNameStructure(player, _this, NULL);
 		break;
 
 	case 51:

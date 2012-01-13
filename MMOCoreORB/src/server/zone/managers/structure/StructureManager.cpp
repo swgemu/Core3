@@ -18,6 +18,8 @@
 
 #include "server/zone/objects/structure/StructureObject.h"
 
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "server/zone/objects/tangible/deed/Deed.h"
@@ -26,7 +28,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_,RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -179,19 +181,20 @@ void StructureManager::reportStructureStatus(CreatureObject* creature, Structure
 		_implementation->reportStructureStatus(creature, structure);
 }
 
-void StructureManager::promptNameStructure(CreatureObject* creature, StructureObject* structure) {
+void StructureManager::promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object) {
 	StructureManagerImplementation* _implementation = static_cast<StructureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_);
+		DistributedMethod method(this, RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(structure);
+		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->promptNameStructure(creature, structure);
+		_implementation->promptNameStructure(creature, structure, object);
 }
 
 void StructureManager::promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal) {
@@ -468,8 +471,8 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_:
 		reportStructureStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
 		break;
-	case RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_:
-		promptNameStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+	case RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_:
+		promptNameStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_:
 		promptManageMaintenance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
@@ -529,8 +532,8 @@ void StructureManagerAdapter::reportStructureStatus(CreatureObject* creature, St
 	(static_cast<StructureManager*>(stub))->reportStructureStatus(creature, structure);
 }
 
-void StructureManagerAdapter::promptNameStructure(CreatureObject* creature, StructureObject* structure) {
-	(static_cast<StructureManager*>(stub))->promptNameStructure(creature, structure);
+void StructureManagerAdapter::promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object) {
+	(static_cast<StructureManager*>(stub))->promptNameStructure(creature, structure, object);
 }
 
 void StructureManagerAdapter::promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal) {

@@ -12,6 +12,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 
+
 class NameStructureSuiCallback : public SuiCallback {
 public:
 	NameStructureSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
@@ -25,6 +26,12 @@ public:
 
 		if (obj == NULL)
 			return;
+
+		if (obj->getGameObjectType() == SceneObjectType::PLAYERTERMINALSTRUCTURE) {
+			ManagedReference<SceneObject*> root = obj->getRootParent();
+			if (root != NULL)
+				obj = root;
+		}
 
 		UnicodeString name = args->get(0);
 
