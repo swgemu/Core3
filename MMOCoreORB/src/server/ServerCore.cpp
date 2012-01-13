@@ -154,16 +154,22 @@ void ServerCore::initialize() {
 
 			int galaxyID = configManager->getZoneGalaxyID();
 
-			String query = "SELECT port FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
-			Reference<ResultSet*> result = database->instance()->executeQuery(query);
+			try {
+				String query = "SELECT port FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
+				Reference<ResultSet*> result = database->instance()->executeQuery(query);
 
-			if (result != NULL && result->next()) {
-				zonePort = result->getInt(0);
+				if (result != NULL && result->next()) {
+					zonePort = result->getInt(0);
+				}
+
+				database->instance()->executeStatement("TRUNCATE TABLE sessions");
+
+				database->instance()->executeStatement("DELETE FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyID));
+			} catch (DatabaseException& e) {
+				error(e.getMessage());
+
+				exit(1);
 			}
-
-			database->instance()->executeStatement("TRUNCATE TABLE sessions");
-
-			database->instance()->executeStatement("DELETE FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyID));
 
 			zoneServer->start(zonePort, zoneAllowedConnections);
 		}
