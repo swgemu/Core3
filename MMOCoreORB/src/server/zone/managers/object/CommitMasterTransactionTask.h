@@ -44,40 +44,42 @@ public:
 		ObjectDatabaseManager::instance()->commitTransaction(transaction);
 		ObjectDatabaseManager::instance()->checkpoint();
 
-		try {
-			StringBuffer query;
-			query << "INSERT INTO characters (character_oid, account_id, galaxy_id, firstname, surname, race, gender, template) VALUES";
+		if (charactersSaved != NULL) {
+			try {
+				StringBuffer query;
+				query << "INSERT INTO characters (character_oid, account_id, galaxy_id, firstname, surname, race, gender, template) VALUES";
 
-			StringBuffer deleteQuery;
-			deleteQuery << "DELETE FROM characters_dirty WHERE ";
+				StringBuffer deleteQuery;
+				deleteQuery << "DELETE FROM characters_dirty WHERE ";
 
-			bool first = true;
+				bool first = true;
 
-			int count = 0;
+				int count = 0;
 
-			while (charactersSaved->next()) {
-				if (!first) {
-					query << ",";
-					deleteQuery << " OR ";
+				while (charactersSaved->next()) {
+					if (!first) {
+						query << ",";
+						deleteQuery << " OR ";
+					}
+
+					query << "(" << charactersSaved->getUnsignedLong(0) << ", " << charactersSaved->getInt(1) << ", "
+							<< charactersSaved->getInt(2) << ", " << "\'" << charactersSaved->getString(3) << "\', "
+							<< "\'" << charactersSaved->getString(4) << "\', " << charactersSaved->getInt(5) << ", "
+							<< charactersSaved->getInt(6) << ", \'" << charactersSaved->getString(7) << "')";
+
+					deleteQuery << "character_oid = " << charactersSaved->getUnsignedLong(0) << " AND galaxy_id = " << galaxyId;
+
+					first = false;
+					++count;
 				}
 
-				query << "(" << charactersSaved->getUnsignedLong(0) << ", " << charactersSaved->getInt(1) << ", "
-						<< charactersSaved->getInt(2) << ", " << "\'" << charactersSaved->getString(3) << "\', "
-						<< "\'" << charactersSaved->getString(4) << "\', " << charactersSaved->getInt(5) << ", "
-						<< charactersSaved->getInt(6) << ", \'" << charactersSaved->getString(7) << "')";
-
-				deleteQuery << "character_oid = " << charactersSaved->getUnsignedLong(0) << " AND galaxy_id = " << galaxyId;
-
-				first = false;
-				++count;
+				if (count > 0) {
+					ServerDatabase::instance()->executeStatement(query.toString());
+					ServerDatabase::instance()->executeStatement(deleteQuery.toString());
+				}
+			} catch (Exception& e) {
+				System::out << e.getMessage();
 			}
-
-			if (count > 0) {
-				ServerDatabase::instance()->executeStatement(query.toString());
-				ServerDatabase::instance()->executeStatement(deleteQuery.toString());
-			}
-		} catch (Exception& e) {
-			System::out << e.getMessage();
 		}
 
 		ObjectManager::instance()->info("master transaction commited", true);

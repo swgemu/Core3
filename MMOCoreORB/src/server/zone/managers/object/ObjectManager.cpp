@@ -1155,14 +1155,21 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 	TransactionalMemoryManager::instance()->unblockTransactions();
 #endif
 
-	//characters_dirty chars
-	Reference<ResultSet*> resultSet = ServerDatabase::instance()->executeQuery("SELECT * FROM characters_dirty WHERE galaxy_id = " + String::valueOf(server->getZoneServer()->getGalaxyID()));
+	int galaxyId = -1;
+	Reference<ResultSet*> resultSet;
+
+	if (server->getZoneServer() != NULL) {
+		galaxyId = server->getZoneServer()->getGalaxyID();
+
+		//characters_dirty chars
+		resultSet = ServerDatabase::instance()->executeQuery("SELECT * FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyId));
+	}
 
 //#ifndef WITH_STM
 	Core::getTaskManager()->unblockTaskManager(lockers);
 	delete lockers;
 //#endif
-	Reference<CommitMasterTransactionTask*> watchDog = new CommitMasterTransactionTask(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask, server->getZoneServer()->getGalaxyID(), resultSet);
+	Reference<CommitMasterTransactionTask*> watchDog = new CommitMasterTransactionTask(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask, galaxyId, resultSet);
 	watchDog->schedule(500);
 
 
