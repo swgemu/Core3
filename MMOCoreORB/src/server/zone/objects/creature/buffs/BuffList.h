@@ -63,7 +63,7 @@ public:
 	void updateBuffsToDatabase();
 
 	void addBuff(CreatureObject* creature, Buff* buff);
-	void removeBuff(CreatureObject* creature, uint32 buffcrc);
+	bool removeBuff(CreatureObject* creature, uint32 buffcrc);
 	void removeBuff(CreatureObject* creature, Buff* buff);
 
 	void clearBuffs(CreatureObject* creature, bool updateclient);

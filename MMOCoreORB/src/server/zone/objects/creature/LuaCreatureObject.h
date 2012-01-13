@@ -56,6 +56,11 @@ namespace creature {
 		int getConversationSession(lua_State* L);
 		int doAnimation(lua_State* L);
 		int engageCombat(lua_State* L);
+		int getPlayerObject(lua_State* L);
+		int getFaction(lua_State* L);
+		int isImperial(lua_State* L);
+		int isRebel(lua_State* L);
+		int isNeutral(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

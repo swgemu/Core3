@@ -50,6 +50,11 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getConversationSession", &LuaCreatureObject::getConversationSession},
 		{ "doAnimation", &LuaCreatureObject::doAnimation},
 		{ "engageCombat", &LuaCreatureObject::engageCombat},
+		{ "getPlayerObject", &LuaCreatureObject::getPlayerObject},
+		{ "getFaction", &LuaCreatureObject::getFaction},
+		{ "isRebel", &LuaCreatureObject::isRebel},
+		{ "isImperial", &LuaCreatureObject::isImperial},
+		{ "isNeutral", &LuaCreatureObject::isNeutral},
 		{ 0, 0 }
 };
 
@@ -285,8 +290,6 @@ int LuaCreatureObject::doAnimation(lua_State* L) {
 	return 0;
 }
 
-
-
 int LuaCreatureObject::engageCombat(lua_State* L) {
 	CreatureObject* enemy = (CreatureObject*)lua_touserdata(L, -1);
 
@@ -295,3 +298,36 @@ int LuaCreatureObject::engageCombat(lua_State* L) {
 
 	return 0;
 }
+
+int LuaCreatureObject::getPlayerObject(lua_State* L) {
+	lua_pushlightuserdata(L, realObject->getPlayerObject());
+
+	return 1;
+}
+
+int LuaCreatureObject::getFaction(lua_State* L) {
+	int faction = realObject->getFaction();
+
+	lua_pushinteger(L, faction);
+
+	return 1;
+}
+
+int LuaCreatureObject::isRebel(lua_State* L) {
+	lua_pushboolean(L, realObject->isRebel());
+
+	return 1;
+}
+
+int LuaCreatureObject::isNeutral(lua_State* L) {
+	lua_pushboolean(L, realObject->isNeutral());
+
+	return 1;
+}
+
+int LuaCreatureObject::isImperial(lua_State* L) {
+	lua_pushboolean(L, realObject->isImperial());
+
+	return 1;
+}
+

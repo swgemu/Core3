@@ -117,13 +117,15 @@ void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
 		buff->activate();
 }
 
-void BuffList::removeBuff(CreatureObject* creature, uint32 buffcrc) {
+bool BuffList::removeBuff(CreatureObject* creature, uint32 buffcrc) {
 	ManagedReference<Buff*> buff = buffList.get(buffcrc);
 
 	if (buff == NULL)
-		return;
+		return false;
 
 	removeBuff(creature, buff);
+
+	return true;
 }
 
 void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {

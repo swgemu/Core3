@@ -251,6 +251,8 @@ using namespace server::zone;
 
 #include "system/util/SortedVector.h"
 
+#include "system/lang/Long.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -384,9 +386,11 @@ public:
 
 	void addBuff(Buff* buff);
 
-	void removeBuff(unsigned int buffcrc);
+	bool removeBuff(unsigned int buffcrc);
 
 	void removeBuff(Buff* buff);
+
+	bool removeStateBuff(unsigned long long state);
 
 	void clearBuffs(bool updateclient);
 
@@ -1101,9 +1105,11 @@ public:
 
 	void addBuff(Buff* buff);
 
-	void removeBuff(unsigned int buffcrc);
+	bool removeBuff(unsigned int buffcrc);
 
 	void removeBuff(Buff* buff);
+
+	bool removeStateBuff(unsigned long long state);
 
 	void clearBuffs(bool updateclient);
 
@@ -1670,9 +1676,11 @@ public:
 
 	void addBuff(Buff* buff);
 
-	void removeBuff(unsigned int buffcrc);
+	bool removeBuff(unsigned int buffcrc);
 
 	void removeBuff(Buff* buff);
+
+	bool removeStateBuff(unsigned long long state);
 
 	void clearBuffs(bool updateclient);
 

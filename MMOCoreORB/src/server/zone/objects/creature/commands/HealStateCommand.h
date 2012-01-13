@@ -293,7 +293,7 @@ public:
 		}
 
 
-		if (!creatureTarget->clearState(state)) {
+		if (!creatureTarget->removeStateBuff(state)) {
 			if (creature == creatureTarget)
 				creature->sendSystemMessage("healing_response", "healing_response_72"); //You have no state of that type to heal.
 			else {

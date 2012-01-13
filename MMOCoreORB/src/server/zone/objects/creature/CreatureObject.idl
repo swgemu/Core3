@@ -78,6 +78,7 @@ include server.zone.objects.creature.CreaturePosture;
 include server.zone.objects.creature.CreatureState;
 include server.zone.objects.creature.SpeedMultiplierModChanges;
 include server.zone.objects.creature.variables.Skill;
+import system.lang.Long;
 
 class CreatureObject extends TangibleObject {
 	protected transient ZoneClientSession owner;
@@ -585,13 +586,18 @@ class CreatureObject extends TangibleObject {
 	 * Buffs should never be removed from the list without sending of packets.
 	 * @param buffcrc The buff crc to remove from the buff list.
 	 */
-	public native void removeBuff(unsigned int buffcrc);
+	public native boolean removeBuff(unsigned int buffcrc);
 	/**
 	 * Removes the buff from the creature, activating it and sending packets if it is a player.
 	 * Buffs should never be removed from the list without sending of packets.
 	 * @param buffcrc The buff object to remove from the list.
 	 */
 	public native void removeBuff(Buff buff);
+	
+	public boolean removeStateBuff(unsigned long state) {
+		return removeBuff(Long.hashCode(state));
+	}
+	
 	/**
 	 * Removes all buffs from the creature, deactivating any currently active buffs.
 	 * @param updateclient Should packets be sent to the player?

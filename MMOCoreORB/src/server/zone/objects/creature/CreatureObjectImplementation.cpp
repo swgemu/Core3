@@ -1706,9 +1706,9 @@ void CreatureObjectImplementation::addBuff(Buff* buff) {
 	creatureBuffs.addBuff(_this, buff);
 }
 
-void CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
+bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
 	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
-	creatureBuffs.removeBuff(_this, buffcrc);
+	return creatureBuffs.removeBuff(_this, buffcrc);
 }
 
 void CreatureObjectImplementation::removeBuff(Buff* buff) {
