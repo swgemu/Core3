@@ -1158,7 +1158,7 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 	int galaxyId = -1;
 	Reference<ResultSet*> resultSet;
 
-	if (server->getZoneServer() != NULL) {
+	if (server != NULL && server->getZoneServer() != NULL) {
 		galaxyId = server->getZoneServer()->getGalaxyID();
 
 		//characters_dirty chars
