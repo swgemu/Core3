@@ -67,7 +67,8 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3 #odb3
 
-core3_IDLS =	server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
+core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
+				server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
 				server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/managers/creature/LairObserver.cpp \
 				server/zone/managers/director/ScreenPlayObserver.cpp \

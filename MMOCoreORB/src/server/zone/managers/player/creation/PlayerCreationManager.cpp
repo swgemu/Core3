@@ -512,7 +512,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	try {
 		StringBuffer query;
-		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
+		query << "INSERT INTO `characters_dirty` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
 				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << zoneServer->getGalaxyID() << ","
 				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << raceFile.escapeString() << "')";
 

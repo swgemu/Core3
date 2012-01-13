@@ -56,10 +56,13 @@ class CharacterList {
 public:
 	CharacterList(uint32 accountid) {
 		StringBuffer query;
-		query << "SELECT * FROM characters WHERE account_id = " << accountid << " order by character_oid desc";
+		query << "SELECT * FROM characters WHERE characters.account_id = " << accountid << " UNION SELECT * FROM characters_dirty WHERE characters_dirty.account_id = " << accountid;
 
 		try {
 			characters = ServerDatabase::instance()->executeQuery(query);
+		} catch (DatabaseException& e) {
+			System::out << "exception caught in ChracterList query" << endl;
+			System::out << e.getMessage();
 		} catch (...) {
 			System::out << "unknown exception caught in ChracterList query" << endl;
 		}

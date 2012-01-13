@@ -793,7 +793,8 @@ void AiAgentImplementation::doMovement() {
 			setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent());
 			setDirection(atan2(follow->getPositionX() - getPositionX(), follow->getPositionX() - getPositionX()));
 			checkNewAngle();
-			updateCurrentPosition(&patrolPoints.get(0));
+			if (patrolPoints.size() > 0)
+				updateCurrentPosition(&patrolPoints.get(0));
 			break;
 		case AiAgent::STALKING:
 			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent());

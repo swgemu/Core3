@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "CreatureObject.h"
 #include "CreatureState.h"
@@ -88,7 +88,7 @@ which carries forward this exception.
 #include "server/zone/objects/guild/GuildObject.h"
 #include "events/DizzyFallDownEvent.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
-
+#include "server/zone/objects/creature/buffs/StateBuff.h"
 #include "server/zone/packets/object/SitOnObject.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -579,6 +579,62 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				broadcastMessage(dcreo3, true);
 			}
 
+			switch (state) {
+			case CreatureState::STUNNED:
+				playEffect("clienteffect/combat_special_defender_stun.cef");
+				showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "go_stunned_single");
+				break;
+			case CreatureState::BLINDED:
+				playEffect("clienteffect/combat_special_defender_blind.cef");
+				showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "go_blind_single");
+				break;
+			case CreatureState::DIZZY:
+				playEffect("clienteffect/combat_special_defender_dizzy.cef");
+				showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "go_dizzy_single");
+				break;
+			case CreatureState::POISONED:
+				break;
+			case CreatureState::DISEASED:
+				break;
+			case CreatureState::ONFIRE:
+				break;
+			case CreatureState::BLEEDING:
+				break;
+			case CreatureState::INTIMIDATED:
+				playEffect("clienteffect/combat_special_defender_intimidate.cef");
+				showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
+				break;
+			case CreatureState::IMMOBILIZED:
+				//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+				showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
+				break;
+			case CreatureState::FROZEN:
+				//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+				showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
+				break;
+			case CreatureState::RALLIED:
+				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
+				break;
+			case CreatureState::BERSERK:
+				playEffect("clienteffect/combat_special_attacker_berserk.cef");
+				showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
+				break;
+			case CreatureState::AIMING:
+				playEffect("clienteffect/combat_special_attacker_aim.cef");
+				break;
+			case CreatureState::COVER: {
+				playEffect("clienteffect/combat_special_attacker_cover.cef");
+				showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "cover_success_single");
+			}
+			break;
+			default:
+				break;
+			}
+
 		}
 
 		return true;
@@ -643,7 +699,6 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		case CreatureState::AIMING:
 			break;
 		case CreatureState::COVER: {
-
 			showFlyText("combat_effects", "no_cover", 0xFF, 0, 0);
 
 			uint32 undercover = String("undercover").hashCode();
@@ -652,9 +707,8 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			}
 
 			setSpeedMultiplierMod(1.f);
-
-			}
-			break;
+		}
+		break;
 		default:
 			break;
 		}
@@ -1523,101 +1577,72 @@ float CreatureObjectImplementation::calculateBFRatio() {
 }
 
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
-	if (setState(CreatureState::DIZZY)) {
-		playEffect("clienteffect/combat_special_defender_dizzy.cef");
-		showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
-		sendSystemMessage("cbt_spam", "go_dizzy_single");
-
-		cooldownTimerMap->updateToCurrentAndAddMili("dizzyRecoveryTime", durationSeconds * 1000);
+	if (!hasState(CreatureState::DIZZY)) {
+		addBuff(new StateBuff(_this, CreatureState::DIZZY, durationSeconds));
 	}
 }
 
 void CreatureObjectImplementation::setAimingState(int durationSeconds) {
-	if (setState(CreatureState::AIMING)) {
-		playEffect("clienteffect/combat_special_attacker_aim.cef");
-
-		cooldownTimerMap->updateToCurrentAndAddMili("aimRecoveryTime", durationSeconds * 1000);
+	if (!hasState(CreatureState::AIMING)) {
+		addBuff(new StateBuff(_this, CreatureState::AIMING, durationSeconds));
 	}
 }
 
 void CreatureObjectImplementation::setRalliedState(int durationSeconds) {
-	if (setState(CreatureState::RALLIED)) {
-		showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
-
-		cooldownTimerMap->updateToCurrentAndAddMili("ralliedRecoveryTime", durationSeconds * 1000);
+	if (!hasState(CreatureState::RALLIED)) {
+		addBuff(new StateBuff(_this, CreatureState::RALLIED, durationSeconds));
 	}
 }
 
 void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 	setPosture(CreaturePosture::PRONE);
 
-	if (setState(CreatureState::COVER)) {
-		playEffect("clienteffect/combat_special_attacker_cover.cef");
-		showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
-		sendSystemMessage("cbt_spam", "cover_success_single");
+	if (!hasState(CreatureState::COVER)) {
+		Reference<Buff*> buff = new StateBuff(_this, CreatureState::COVER, durationSeconds);
 
-		if(hasSkill("combat_rifleman_speed_03")) {
-			setSpeedMultiplierMod(0.5f);
+		if (hasSkill("combat_rifleman_speed_03")) {
+			buff->setSpeedMultiplierMod(0.5f);
 		} else {
-			setSpeedMultiplierMod(0.f);
+			buff->setSpeedMultiplierMod(0.f);
 		}
 
-		cooldownTimerMap->updateToCurrentAndAddMili("coverRecoveryTime", durationSeconds * 1000);
+		addBuff(buff);
 	}
 }
 
 void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
-	if (setState(CreatureState::BERSERK)) {
-		playEffect("clienteffect/combat_special_attacker_berserk.cef");
-		showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
-
-		cooldownTimerMap->updateToCurrentAndAddMili("berserkRecoveryTime", duration * 1000);
+	if (!hasState(CreatureState::BERSERK)) {
+		addBuff(new StateBuff(_this, CreatureState::BERSERK, duration));
 	}
 }
-void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
-	if (setState(CreatureState::STUNNED)) {
-		playEffect("clienteffect/combat_special_defender_stun.cef");
-		showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
-		sendSystemMessage("cbt_spam", "go_stunned_single");
 
-		cooldownTimerMap->updateToCurrentAndAddMili("stunRecoveryTime", durationSeconds * 1000);
+void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
+	if (!hasState(CreatureState::STUNNED)) {
+		addBuff(new StateBuff(_this, CreatureState::STUNNED, durationSeconds));
 	}
 }
 
 void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
-	if (setState(CreatureState::BLINDED)) {
-		playEffect("clienteffect/combat_special_defender_blind.cef");
-		showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
-		sendSystemMessage("cbt_spam", "go_blind_single");
-
-		cooldownTimerMap->updateToCurrentAndAddMili("blindRecoveryTime", durationSeconds * 1000);
+	if (!hasState(CreatureState::BLINDED)) {
+		addBuff(new StateBuff(_this, CreatureState::BLINDED, durationSeconds));
 	}
 }
 
 void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
-	if (setState(CreatureState::INTIMIDATED)) {
-		playEffect("clienteffect/combat_special_defender_intimidate.cef");
-		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
-
-		cooldownTimerMap->updateToCurrentAndAddMili("intimidateRecoveryTime", durationSeconds * 1000);
+	if (!hasState(CreatureState::INTIMIDATED)) {
+		addBuff(new StateBuff(_this, CreatureState::INTIMIDATED, durationSeconds));
 	}
 }
 
 void CreatureObjectImplementation::setSnaredState(int durationSeconds) {
-	if (setState(CreatureState::IMMOBILIZED)) {
-		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
-		showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
-
-		cooldownTimerMap->updateToCurrentAndAddMili("snareRecoveryTime", durationSeconds * 1000);
+	if (!hasState(CreatureState::IMMOBILIZED)) {
+		addBuff(new StateBuff(_this, CreatureState::IMMOBILIZED, durationSeconds));
 	}
 }
 
 void CreatureObjectImplementation::setRootedState(int durationSeconds) {
-	if (setState(CreatureState::FROZEN)) {
-		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
-		showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
-
-		cooldownTimerMap->updateToCurrentAndAddMili("rootRecoveryTime", durationSeconds * 1000);
+	if (!hasState(CreatureState::FROZEN)) {
+		addBuff(new StateBuff(_this, CreatureState::FROZEN, durationSeconds));
 	}
 }
 
@@ -1657,34 +1682,6 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {
-	if (isDizzied() && cooldownTimerMap->isPast("dizzyRecoveryTime"))
-		clearState(CreatureState::DIZZY);
-
-	if (isBlinded() && cooldownTimerMap->isPast("blindRecoveryTime"))
-		clearState(CreatureState::BLINDED);
-
-	if (isStunned() && cooldownTimerMap->isPast("stunRecoveryTime"))
-		clearState(CreatureState::STUNNED);
-
-	if (isIntimidated() && cooldownTimerMap->isPast("intimidateRecoveryTime"))
-		clearState(CreatureState::INTIMIDATED);
-
-	if (isBerserked() && cooldownTimerMap->isPast("berserkRecoveryTime")) {
-		clearState(CreatureState::BERSERK);
-		//setBerserkDamage(0);
-	}
-
-	if (isAiming() && cooldownTimerMap->isPast("aimRecoveryTime")) {
-		clearState(CreatureState::AIMING);
-	}
-
-	if (isRallied() && cooldownTimerMap->isPast("ralliedRecoveryTime")) {
-		clearState(CreatureState::RALLIED);
-	}
-
-	if (isInCover() && cooldownTimerMap->isPast("coverRecoveryTime")) {
-		clearState(CreatureState::COVER);
-	}
 
 	//applyDots();
 
@@ -1885,13 +1882,13 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 String CreatureObjectImplementation::getFirstName() {
 	UnicodeString fullName = objectName.getCustomString();
 
-    int idx = fullName.indexOf(' ');
+	int idx = fullName.indexOf(' ');
 
-    if (idx != -1) {
-    	return fullName.subString(0, idx).toString();
-    } else {
-    	return fullName.toString();
-    }
+	if (idx != -1) {
+		return fullName.subString(0, idx).toString();
+	} else {
+		return fullName.toString();
+	}
 }
 
 String CreatureObjectImplementation::getLastName() {
