@@ -64,6 +64,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		damageMultiplier = 1.5;
+
 		return doCombatAction(creature, target);
 	}
 

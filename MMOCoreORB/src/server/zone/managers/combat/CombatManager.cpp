@@ -477,6 +477,50 @@ float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBon
 	return accTotal;
 }
 
+int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
+	int attackType = weapon->getAttackType();
+	int damageMitigation = 0;
+	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
+
+	//info("attacker base damage is " + String::valueOf(minDamage) + "-"+ String::valueOf(maxDamage), true);
+
+	PlayerObject* defenderGhost = defender->getPlayerObject();
+
+	// this is for damage mitigation
+	if (defenderGhost != NULL) {
+		StringBuffer mitString;
+		switch (attackType){
+		case WeaponObject::MELEEATTACK:
+			mitString << "melee_damage_mitigation_";
+			break;
+		case WeaponObject::RANGEDATTACK:
+			mitString << "ranged_damage_mitigation_";
+			break;
+		default:
+			break;
+		}
+
+		for (int i = 3; i > 0; i--) {
+			mitString << i;
+			if (defenderGhost->hasAbility(mitString.toString())) {
+				damageMitigation = i;
+				break;
+			}
+		}
+
+		if (damageMitigation > 0) {
+			maxDamage = minDamage + (maxDamage - minDamage) * (1 - (0.2 * damageMitigation));
+		}
+	}
+
+	maxDamage *= attacker->getSkillMod("private_max_damage_multiplier");
+	maxDamage /= attacker->getSkillMod("private_max_damage_divisor");
+
+	//info("attacker weapon damage mod is " + String::valueOf(maxDamage), true);
+
+	return (int)(maxDamage - minDamage);
+}
+
 int CombatManager::getDamageModifier(CreatureObject* attacker, WeaponObject* weapon) {
 	int damageMods = 0;
 
@@ -485,6 +529,9 @@ int CombatManager::getDamageModifier(CreatureObject* attacker, WeaponObject* wea
 	for (int i = 0; i < weaponDamageMods->size(); ++i) {
 		damageMods += attacker->getSkillMod(weaponDamageMods->get(i));
 	}
+
+	damageMods *= attacker->getSkillMod("private_damage_multiplier");
+	damageMods /= attacker->getSkillMod("private_damage_divisor");
 
 	return damageMods;
 }
@@ -653,6 +700,8 @@ int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defen
 		break;
 	}
 
+	resist *= getArmorPiercing(defender, weapon);
+
 	return (int)resist;
 }
 
@@ -674,76 +723,45 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		return 0;
 }
 
+float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) {
+	int armorPiercing = weapon->getArmorPiercing();
+	int armorReduction = 0;
+
+	if (armor != NULL)
+		armorReduction = armor->getRating();
+
+	if (armorPiercing > armorReduction)
+		return pow(1.25, armorPiercing - armorReduction);
+	else
+		return pow(0.50, armorReduction - armorPiercing);
+}
+
+float CombatManager::getArmorPiercing(AiAgent* defender, WeaponObject* weapon) {
+	int armorPiercing = weapon->getArmorPiercing();
+	int armorReduction = defender->getArmor();
+
+	if (armorPiercing > armorReduction)
+		return pow(1.25, armorPiercing - armorReduction);
+	else
+		return pow(0.50, armorReduction - armorPiercing);
+}
+
 float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender, int poolToDamage) {
-	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
-	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
-
-	//info("attacker base damage is " + String::valueOf(minDamage) + "-"+ String::valueOf(maxDamage), true);
-
-	int damageType = weapon->getDamageType();
-	int attackType = weapon->getAttackType();
-	int armorPiercing = weapon->getArmorPiercing(); // None
-
-	// damage mitigation first, which only affects maxDamage, but uses range (mitigation is an ability)
-	int damageMitigation = 0;
-	PlayerObject* defenderGhost = defender->getPlayerObject();
-
-	if (defenderGhost != NULL) {
-		StringBuffer mitString;
-		switch (attackType){
-		case WeaponObject::MELEEATTACK:
-			mitString << "melee_damage_mitigation_";
-			break;
-		case WeaponObject::RANGEDATTACK:
-			mitString << "ranged_damage_mitigation_";
-			break;
-		default:
-			break;
-		}
-
-		for (int i = 3; i > 0; i--) {
-			mitString << i;
-			if (defenderGhost->hasAbility(mitString.toString())) {
-				damageMitigation = i;
-				break;
-			}
-		}
-
-		if (damageMitigation > 0) {
-			maxDamage = minDamage + (maxDamage - minDamage) * (1 - (0.2 * damageMitigation));
-		}
-	}
-
-	if (attacker->isIntimidated()) maxDamage /= 2;
-
-	//info("attacker weapon damage mod is " + String::valueOf(damageMod), true);
-
 	float damage = 0;
 
-	int diff = (int) maxDamage - (int) minDamage;
+	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+	int diff = calculateDamageRange(attacker, defender, weapon);
+	float minDamage = weapon->getMinDamage();
 
 	if (diff >= 0)
-		damage = System::random(diff) + (int) minDamage;
+		damage = System::random(diff) + (int)minDamage;
 
 	damage += getDamageModifier(attacker, weapon);
 
 	if (attacker->isPlayerCreature()) {
 		if (!weapon->isCertifiedFor(attacker))
 			damage /= 5;
-
-		// TODO: look at this when jedi are implemented
-		int FR = attacker->getSkillMod("force_run");
-		if (FR > 1)
-			damage /= 4;
 	}
-
-	// moved to mitigation section (it seems to half max damage, and not affect min)
-	//if (attacker->isIntimidated())
-		//damage *= 0.66;
-
-	// TODO: need more testing of this, because there is a lot of different information about the actual amount out there
-	if (attacker->isStunned())
-		damage *= 0.9f;
 
 	if (defender->isKneeling())
 		damage *= 1.5f;

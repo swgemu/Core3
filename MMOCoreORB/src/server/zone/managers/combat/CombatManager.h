@@ -159,6 +159,7 @@ protected:
 	int getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
+	int calculateDamageRange(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	float calculateDamage(CreatureObject* attacker, CreatureObject* defender, int poolToDamage);
@@ -179,6 +180,8 @@ protected:
 
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
 	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolsToDamage);
+	float getArmorPiercing(ArmorObject* armor, WeaponObject* weapon);
+	float getArmorPiercing(AiAgent* defender, WeaponObject* weapon);
 	int getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon);
 	int getHealthArmorReduction(CreatureObject* attacker, CreatureObject* defender);
 	int getActionArmorReduction(CreatureObject* attacker, CreatureObject* defender);

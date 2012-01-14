@@ -63,6 +63,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		// TODO: make sure force run commands modify the "private_damage_divider" skillmod when the buff is applied!
+
 		return SUCCESS;
 	}
 

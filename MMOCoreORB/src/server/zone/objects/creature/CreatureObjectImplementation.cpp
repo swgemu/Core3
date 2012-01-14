@@ -1632,7 +1632,21 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 	if (!hasState(CreatureState::STUNNED)) {
-		addBuff(new StateBuff(_this, CreatureState::STUNNED, durationSeconds));
+		StateBuff* state = new StateBuff(_this, CreatureState::STUNNED, durationSeconds);
+
+		// FIXME: QA test this damage multiplier, is 9/10 correct?
+		int div = getSkillMod("private_damage_divisor") * 10;
+		if (div == 0) div = 10;
+
+		state->setSkillModifier("private_damage_divisor", div);
+
+		int mul = getSkillMod("private_damage_multiplier") * 9;
+		if (mul == 0) mul = 9;
+
+		state->setSkillModifier("private_damage_multiplier", mul);
+		state->setSkillModifier("private_defense", -50);
+
+		addBuff(state);
 	}
 }
 
@@ -1644,7 +1658,14 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 
 void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 	if (!hasState(CreatureState::INTIMIDATED)) {
-		addBuff(new StateBuff(_this, CreatureState::INTIMIDATED, durationSeconds));
+		StateBuff* state = new StateBuff(_this, CreatureState::INTIMIDATED, durationSeconds);
+
+		int div = getSkillMod("private_max_damage_divisor") * 2;
+		if (div == 0) div = 2;
+
+		state->setSkillModifier("private_max_damage_divisor", div);
+
+		addBuff(state);
 	}
 }
 
