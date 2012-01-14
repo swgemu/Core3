@@ -763,7 +763,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	// start with PSG reduction
 	ManagedReference<ArmorObject*> psg = getPSGArmor(attacker, defender);
 
-	if (!psg->isVulnerable(weapon->getDamageType())) {
+	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
 		damage *= getArmorPiercing(psg, weapon);
 
 		float armorReduction =  getArmorObjectReduction(attacker, psg);
@@ -780,7 +780,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	else if (poolToDamage & CombatManager::MIND)
 		armor = getMindArmor(attacker, defender);
 
-	if (!armor->isVulnerable(weapon->getDamageType())) {
+	if (armor != NULL && !armor->isVulnerable(weapon->getDamageType())) {
 		// use only the damage applied to the armor for piercing (after the PSG takes some off)
 		damage *= getArmorPiercing(armor, weapon);
 
