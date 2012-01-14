@@ -432,7 +432,9 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 
 	Vector<String>* defenseAccMods = weapon->getDefenderDefenseModifiers();
 
-	targetDefense += defender->getSkillMod(defenseAccMods->get(0));
+	for (int i = 0; i < defenseAccMods->size(); ++i) {
+		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
+	}
 
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
@@ -456,13 +458,29 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
 
-	targetDefense += defender->getSkillMod(defenseAccMods->get(0));
+	for (int i = 0; i < defenseAccMods->size(); ++i) {
+		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
+	}
 
 	if (targetDefense > 125)
 		targetDefense = 125;
 
 	return targetDefense;
 }
+
+int CombatManager::getDefenderToughnessModifier(CreatureObject* defender) {
+	int toughness = 0;
+	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
+
+	Vector<String>* defenseToughMods = weapon->getDefenderToughnessModifiers();
+
+	for (int i = 0; i < defenseToughMods->size(); ++i) {
+		toughness += defender->getSkillMod(defenseToughMods->get(i));
+	}
+
+	return toughness;
+}
+
 
 float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense) {
 	float accTotal = 66.0 + accuracyBonus + (attackerAccuracy - targetDefense) / 2.0;
@@ -732,21 +750,24 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	if (poolToDamage == 0)
 		return 0;
 
-	int armorReduction = 0;
-
 	// the easy calculation
 	if (defender->isAiAgent()) {
-		armorReduction = damage * getArmorPiercing(cast<AiAgent*>(defender), weapon);
-		armorReduction += getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
-		return armorReduction;
+		damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
+
+		float armorReduction = getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
+		if (armorReduction > 0) damage *= (1.f - (armorReduction /= 100.f));
+
+		return damage;
 	}
 
 	// start with PSG reduction
 	ManagedReference<ArmorObject*> psg = getPSGArmor(attacker, defender);
 
 	if (!psg->isVulnerable(weapon->getDamageType())) {
-		armorReduction = damage * getArmorPiercing(psg, weapon);
-		armorReduction += getArmorObjectReduction(attacker, psg);
+		damage *= getArmorPiercing(psg, weapon);
+
+		float armorReduction =  getArmorObjectReduction(attacker, psg);
+		if (armorReduction > 0) damage *= (1.f - (armorReduction /= 100.f));
 	}
 
 	// now apply the rest of the damage to the regular armor
@@ -761,12 +782,13 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 	if (!armor->isVulnerable(weapon->getDamageType())) {
 		// use only the damage applied to the armor for piercing (after the PSG takes some off)
-		damage -= armorReduction;
-		armorReduction += damage * getArmorPiercing(armor, weapon);
-		armorReduction += getArmorObjectReduction(attacker, armor);
+		damage *= getArmorPiercing(armor, weapon);
+
+		float armorReduction =  getArmorObjectReduction(attacker, armor);
+		if (armorReduction > 0) damage *= (1.f - (armorReduction /= 100.f));
 	}
 
-	return armorReduction;
+	return damage;
 }
 
 float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) {
@@ -815,53 +837,19 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	if (defender->isKnockedDown() || defender->isProne())
 		damage *= 2.5f;
 
-	float armorReduction = getArmorReduction(attacker, defender, weapon, damage, poolToDamage);
+	damage = getArmorReduction(attacker, defender, weapon, damage, poolToDamage);
 
-	//info("defender armor reduction is " + String::valueOf(armorReduction), true);
-
-	if (armorReduction > 0)
-		damage *= (1.f - (armorReduction /= 100.f));
+	//info("damage after defender armor reduction is " + String::valueOf(damage), true);
 
 	damage += attacker->getSkillMod("private_damage_bonus");
 	damage += defender->getSkillMod("private_damage_susceptibility");
 
 	//Toughness
-	ManagedReference<WeaponObject*> weaponDefender = defender->getWeapon();
+	int toughness = getDefenderToughnessModifier(defender);
 
-	if (weaponDefender != NULL) {
-		// Weapon related toughness.
-		int toughness = 0;
-		int jediToughness = 0;
+	damage *= (1.f - (toughness /= 100.f));
 
-		if (weaponDefender->isUnarmedWeapon())
-			toughness = defender->getSkillMod("unarmed_toughness");
-		else if (weaponDefender->isOneHandMeleeWeapon())
-			toughness = defender->getSkillMod("onehandmelee_toughness");
-		else if (weaponDefender->isTwoHandMeleeWeapon())
-			toughness = defender->getSkillMod("twohandmelee_toughness");
-		else if (weaponDefender->isPolearmWeaponObject())
-			toughness = defender->getSkillMod("polearm_toughness");
-		/*else if (weaponDefender->isOneHandLightsaber()){
-		toughness = defender->getSkillMod("lightsaber_toughness");
-
-		if (weapon->getDamageType() == WeaponObject::LIGHTSABER)
-			jediToughness = defender->getSkillMod("jedi_toughness");
-	} else if	(weaponDefender->isTwoHandLightsaber()){
-		toughness = defender->getSkillMod("lightsaber_toughness");
-
-		if (weapon->getDamageType() == WeaponObject::LIGHTSABER)
-			jediToughness = defender->getSkillMod("jedi_toughness");
-	} else if	(weaponDefender->isPolearmLightsaber()){
-		toughness = defender->getSkillMod("lightsaber_toughness");
-
-		if (weapon->getDamageType() == WeaponObject::LIGHTSABER)
-			jediToughness = defender->getSkillMod("jedi_toughness");
-	}*/
-
-		if (!defender->isAiAgent()) { // NPCs/Creatures do not have toughness.
-			damage -= damage * (toughness + jediToughness / 1.02f) / 100.0f;
-		}
-	}
+	if (weapon->getDamageType() != WeaponObject::LIGHTSABER) damage *= (1.f - (defender->getSkillMod("jedi_toughness") / 100.f));
 
 	//info("damage to be dealt is " + String::valueOf(damage), true);
 

@@ -72,6 +72,8 @@ object_weapon_melee_sword_sword_lightsaber_ben = object_weapon_melee_sword_share
 	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
+	defenderToughnessModifiers = { "onehandmelee_toughness" },
+
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "onehandlightsaber_speed" },
 

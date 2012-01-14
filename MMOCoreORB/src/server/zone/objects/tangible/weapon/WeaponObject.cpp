@@ -180,6 +180,15 @@ Vector<String>* WeaponObject::getDefenderSecondaryDefenseModifiers() {
 		return _implementation->getDefenderSecondaryDefenseModifiers();
 }
 
+Vector<String>* WeaponObject::getDefenderToughnessModifiers() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getDefenderToughnessModifiers();
+}
+
 void WeaponObject::setCertified(bool cert) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1261,6 +1270,11 @@ Vector<String>* WeaponObjectImplementation::getDefenderDefenseModifiers() {
 Vector<String>* WeaponObjectImplementation::getDefenderSecondaryDefenseModifiers() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.getDefenderSecondaryDefenseModifiers();
 	return weaponTemplate->getDefenderSecondaryDefenseModifiers();
+}
+
+Vector<String>* WeaponObjectImplementation::getDefenderToughnessModifiers() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.getDefenderToughnessModifiers();
+	return weaponTemplate->getDefenderToughnessModifiers();
 }
 
 void WeaponObjectImplementation::setCertified(bool cert) {

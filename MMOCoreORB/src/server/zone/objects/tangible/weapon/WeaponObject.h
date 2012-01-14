@@ -197,6 +197,8 @@ public:
 
 	Vector<String>* getDefenderSecondaryDefenseModifiers();
 
+	Vector<String>* getDefenderToughnessModifiers();
+
 	void setCertified(bool cert);
 
 	int getAttackType();
@@ -441,6 +443,8 @@ public:
 	Vector<String>* getDefenderDefenseModifiers();
 
 	Vector<String>* getDefenderSecondaryDefenseModifiers();
+
+	Vector<String>* getDefenderToughnessModifiers();
 
 	void setCertified(bool cert);
 

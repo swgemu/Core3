@@ -72,6 +72,8 @@ object_weapon_melee_polearm_lance_vibrolance = object_weapon_melee_polearm_share
 	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
+	defenderToughnessModifiers = { "polearm_toughness" },
+
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "polearm_speed" },
 

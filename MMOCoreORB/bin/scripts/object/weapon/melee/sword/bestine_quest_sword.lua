@@ -72,6 +72,8 @@ object_weapon_melee_sword_bestine_quest_sword = object_weapon_melee_sword_shared
 	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
+	defenderToughnessModifiers = { "onehandmelee_toughness" },
+
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "onehandmelee_speed" },
 

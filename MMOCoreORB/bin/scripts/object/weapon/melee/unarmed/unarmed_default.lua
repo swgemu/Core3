@@ -73,6 +73,8 @@ object_weapon_melee_unarmed_unarmed_default = object_weapon_melee_unarmed_shared
 	-- can be dodge, counterattack, or block or a combination
 	-- Secondary defense when equipped
 	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
+
+	defenderToughnessModifiers = { "unarmed_toughness" },
 	
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "unarmed_speed" },

@@ -72,6 +72,8 @@ object_weapon_melee_polearm_lance_staff_metal = object_weapon_melee_polearm_shar
 	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
+	defenderToughnessModifiers = { "polearm_toughness" },
+
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "polearm_speed" },
 

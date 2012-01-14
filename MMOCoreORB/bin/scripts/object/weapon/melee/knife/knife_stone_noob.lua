@@ -71,6 +71,8 @@ object_weapon_melee_knife_knife_stone_noob = object_weapon_melee_knife_shared_kn
 	
 	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
+
+	defenderToughnessModifiers = { "onehandmelee_toughness" },
 	
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "onehandmelee_speed" },

@@ -221,6 +221,11 @@ class WeaponObject extends TangibleObject {
 		return weaponTemplate.getDefenderSecondaryDefenseModifiers();
 	}
 	
+	@local
+	public Vector<string> getDefenderToughnessModifiers() {
+		return weaponTemplate.getDefenderToughnessModifiers();
+	}
+	
 	public void setCertified(boolean cert) {
 		certified = cert;
 	}

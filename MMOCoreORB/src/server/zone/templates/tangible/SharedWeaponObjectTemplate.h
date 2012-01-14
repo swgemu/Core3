@@ -50,6 +50,7 @@ protected:
 	Vector<String> defenderDefenseModifiers;
 	Vector<String> certificationsRequired;
 	Vector<String> defenderSecondaryDefenseModifiers;
+	Vector<String> defenderToughnessModifiers;
 
 	String xpType;
 
@@ -230,6 +231,10 @@ public:
 		return &defenderSecondaryDefenseModifiers;
 	}
 
+	Vector<String>* getDefenderToughnessModifiers() {
+		return &defenderToughnessModifiers;
+	}
+
 	Vector<String>* getSpeedModifiers() {
 		return &speedModifiers;
 	}
@@ -258,10 +263,12 @@ public:
 		this->defenderDefenseModifiers = defenderDefenseModifiers;
 	}
 
-	void setDefenderSecondaryDefenseModifiers(
-			Vector<String> defenderSecondaryDefenseModifiers) {
-		this->defenderSecondaryDefenseModifiers
-				= defenderSecondaryDefenseModifiers;
+	void setDefenderSecondaryDefenseModifiers(Vector<String> defenderSecondaryDefenseModifiers) {
+		this->defenderSecondaryDefenseModifiers	= defenderSecondaryDefenseModifiers;
+	}
+
+	void setDefenderToughnessModifiers(Vector<String> defenderToughnessModifiers) {
+		this->defenderToughnessModifiers = defenderToughnessModifiers;
 	}
 
 	void setSpeedModifiers(Vector<String> speedModifiers) {

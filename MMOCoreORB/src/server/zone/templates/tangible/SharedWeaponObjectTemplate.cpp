@@ -186,6 +186,13 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 
 	secMods.pop();
 
+	LuaObject toughMods = templateData->getObjectField("defenderToughnessModifiers");
+
+	for (int i = 1; i <= toughMods.getTableSize(); ++i)
+		defenderToughnessModifiers.add(toughMods.getStringAt(i));
+
+	toughMods.pop();
+
 	armorPiercing = templateData->getIntField("armorPiercing");
 
 	healthAttackCost = templateData->getIntField("healthAttackCost");
