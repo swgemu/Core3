@@ -1626,7 +1626,11 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 
 void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 	if (!hasState(CreatureState::BERSERK)) {
-		addBuff(new StateBuff(_this, CreatureState::BERSERK, duration));
+		StateBuff* state = new StateBuff(_this, CreatureState::BERSERK, duration);
+
+		state->setSkillModifier("private_damage_susceptibility", 50);
+
+		addBuff(state);
 	}
 }
 

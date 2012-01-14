@@ -592,74 +592,86 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 
 }
 
-int CombatManager::getHealthArmorReduction(CreatureObject* attacker, CreatureObject* defender) {
-	int reduction = 0;
-
+ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObject* defender) {
 	SceneObject* chest = defender->getSlottedObject("chest2");
-	/*SceneObject* bicepr = defender->getSlottedObject("bicep_r");
+	SceneObject* bicepr = defender->getSlottedObject("bicep_r");
 	SceneObject* bicepl = defender->getSlottedObject("bicep_l");
 	SceneObject* bracerr = defender->getSlottedObject("bracer_upper_r");
-	SceneObject* bracerl = defender->getSlottedObject("bracer_upper_l");*/
+	SceneObject* bracerl = defender->getSlottedObject("bracer_upper_l");
 
-	ArmorObject* armorToHit = NULL;
+	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	if (chest != NULL && chest->isArmorObject())
-		armorToHit = cast<ArmorObject*>( chest);
-
-	/*int rand = System::random(100);
-
-	if (rand < 20) { // chest
-		if (chest != NULL && chest->isArmorObject())
-			armorToHit = cast<ArmorObject*>( chest);
-	} else if (rand < 40) { // bicepr
+	int rand = System::random(10);
+	switch (rand) {
+	case 0:
+	case 1: // hit right bicep
 		if (bicepr != NULL && bicepr->isArmorObject())
-			armorToHit = cast<ArmorObject*>( bicepr);
-	} else if (rand < 60) { // bicepl
+			armorToHit = cast<ArmorObject*>(bicepr);
+		break;
+	case 2:
+	case 3: // hit left bicep
 		if (bicepl != NULL && bicepl->isArmorObject())
-			armorToHit = cast<ArmorObject*>( bicepl);
-	} else if (rand < 80) { // bracerr
+			armorToHit = cast<ArmorObject*>(bicepl);
+		break;
+	case 4: // hit right bracer
 		if (bracerr != NULL && bracerr->isArmorObject())
-			armorToHit = cast<ArmorObject*>( bracerr);
-	} else { //bracerl
+			armorToHit = cast<ArmorObject*>(bracerr);
+		break;
+	case 5: // hit left bracer
 		if (bracerl != NULL && bracerl->isArmorObject())
-			armorToHit = cast<ArmorObject*>( bracerl);
-	}*/
-
-	if (armorToHit == NULL)
-		return 0;
-
-	return getArmorObjectReduction(attacker, armorToHit);
-}
-
-int CombatManager::getActionArmorReduction(CreatureObject* attacker, CreatureObject* defender) {
-	SceneObject* gloves = defender->getSlottedObject("gloves");
-	SceneObject* boots = defender->getSlottedObject("shoes");
-
-	ArmorObject* armorToHit = NULL;
-
-	int rand = System::random(1);
-
-	if (rand == 1) {
-		if (gloves != NULL && gloves->isArmorObject())
-			armorToHit = cast<ArmorObject*>( gloves);
-	} else {
-		if (boots != NULL && boots->isArmorObject())
-			armorToHit = cast<ArmorObject*>( boots);
+			armorToHit = cast<ArmorObject*>(bracerl);
+		break;
+	default: // hit chest
+		if (chest != NULL && chest->isArmorObject())
+			armorToHit = cast<ArmorObject*>(chest);
+		break;
 	}
 
-	if (armorToHit == NULL)
-		return 0;
-
-	return getArmorObjectReduction(attacker, armorToHit);
+	return armorToHit;
 }
 
-int CombatManager::getMindArmorReduction(CreatureObject* attacker, CreatureObject* defender) {
+ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
+	SceneObject* gloves = defender->getSlottedObject("gloves");
+	SceneObject* boots = defender->getSlottedObject("shoes");
+	SceneObject* pants = defender->getSlottedObject("pants1");
+
+	ManagedReference<ArmorObject*> armorToHit = NULL;
+
+	int rand = System::random(3);
+	switch (rand) {
+	case 0: // hit gloves
+		if (gloves != NULL && gloves->isArmorObject())
+			armorToHit = cast<ArmorObject*>(gloves);
+		break;
+	case 1: // hit shoes
+		if (boots != NULL && boots->isArmorObject())
+			armorToHit = cast<ArmorObject*>(boots);
+		break;
+	default: // hit pants
+		if (pants != NULL && pants->isArmorObject())
+			armorToHit = cast<ArmorObject*>(pants);
+		break;
+	}
+
+	return armorToHit;
+}
+
+ArmorObject* CombatManager::getMindArmor(CreatureObject* attacker, CreatureObject* defender) {
 	SceneObject* helmet = defender->getSlottedObject("hat");
 
 	if (helmet != NULL && helmet->isArmorObject())
-		return getArmorObjectReduction(attacker, cast<ArmorObject*>(helmet));
+		return cast<ArmorObject*>(helmet);
 
-	return 0;
+	return NULL;
+}
+
+ArmorObject* CombatManager::getPSGArmor(CreatureObject* attacker, CreatureObject* defender) {
+	SceneObject* psg = defender->getSlottedObject("utility_belt");
+
+	if (psg != NULL && psg->isArmorObject())
+		return cast<ArmorObject*>(psg);
+
+	return NULL;
 }
 
 int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon) {
@@ -700,8 +712,6 @@ int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defen
 		break;
 	}
 
-	resist *= getArmorPiercing(defender, weapon);
-
 	return (int)resist;
 }
 
@@ -709,18 +719,41 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	if (poolToDamage == 0)
 		return 0;
 
+	int armorReduction = 0;
+
+	// the easy calculation
 	if (defender->isAiAgent()) {
-		return getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
+		armorReduction = damage * getArmorPiercing(cast<AiAgent*>(defender), weapon);
+		armorReduction += getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
+		return armorReduction;
 	}
 
-	if (poolToDamage & CombatManager::HEALTH) {
-		return getHealthArmorReduction(attacker, defender);
-	} else if (poolToDamage & CombatManager::ACTION) {
-		return getActionArmorReduction(attacker, defender);
-	} else if (poolToDamage & CombatManager::MIND) {
-		return getMindArmorReduction(attacker, defender);
-	} else
-		return 0;
+	// start with PSG reduction
+	ManagedReference<ArmorObject*> psg = getPSGArmor(attacker, defender);
+
+	if (!psg->isVulnerable(weapon->getDamageType())) {
+		armorReduction = damage * getArmorPiercing(psg, weapon);
+		armorReduction += getArmorObjectReduction(attacker, psg);
+	}
+
+	// now apply the rest of the damage to the regular armor
+	ManagedReference<ArmorObject*> armor = NULL;
+
+	if (poolToDamage & CombatManager::HEALTH)
+		armor = getHealthArmor(attacker, defender);
+	else if (poolToDamage & CombatManager::ACTION)
+		armor = getActionArmor(attacker, defender);
+	else if (poolToDamage & CombatManager::MIND)
+		armor = getMindArmor(attacker, defender);
+
+	if (!armor->isVulnerable(weapon->getDamageType())) {
+		// use only the damage applied to the armor for piercing (after the PSG takes some off)
+		damage -= armorReduction;
+		armorReduction += damage * getArmorPiercing(armor, weapon);
+		armorReduction += getArmorObjectReduction(attacker, armor);
+	}
+
+	return armorReduction;
 }
 
 float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) {
@@ -776,9 +809,8 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	if (armorReduction > 0)
 		damage *= (1.f - (armorReduction /= 100.f));
 
-	if (defender->isBerserked()) {
-		damage += 50;
-	}
+	damage += attacker->getSkillMod("private_damage_bonus");
+	damage += defender->getSkillMod("private_damage_susceptibility");
 
 	//Toughness
 	ManagedReference<WeaponObject*> weaponDefender = defender->getWeapon();

@@ -183,9 +183,10 @@ protected:
 	float getArmorPiercing(ArmorObject* armor, WeaponObject* weapon);
 	float getArmorPiercing(AiAgent* defender, WeaponObject* weapon);
 	int getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon);
-	int getHealthArmorReduction(CreatureObject* attacker, CreatureObject* defender);
-	int getActionArmorReduction(CreatureObject* attacker, CreatureObject* defender);
-	int getMindArmorReduction(CreatureObject* attacker, CreatureObject* defender);
+	ArmorObject* getHealthArmor(CreatureObject* attacker, CreatureObject* defender);
+	ArmorObject* getActionArmor(CreatureObject* attacker, CreatureObject* defender);
+	ArmorObject* getMindArmor(CreatureObject* attacker, CreatureObject* defender);
+	ArmorObject* getPSGArmor(CreatureObject* attacker, CreatureObject* defender);
 
 	/**
 	 * returns bitmask with what pools to damage
