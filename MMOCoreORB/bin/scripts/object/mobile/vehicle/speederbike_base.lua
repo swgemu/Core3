@@ -42,7 +42,6 @@
 
 
 object_mobile_vehicle_speederbike_base = object_mobile_vehicle_shared_speederbike_base:new {
-
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_speederbike_base, "object/mobile/vehicle/speederbike_base.iff")

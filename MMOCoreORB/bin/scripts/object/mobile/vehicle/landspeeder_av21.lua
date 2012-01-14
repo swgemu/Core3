@@ -42,7 +42,6 @@
 
 
 object_mobile_vehicle_landspeeder_av21 = object_mobile_vehicle_shared_landspeeder_av21:new {
-
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_landspeeder_av21, "object/mobile/vehicle/landspeeder_av21.iff")

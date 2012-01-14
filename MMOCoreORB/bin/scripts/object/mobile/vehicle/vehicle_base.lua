@@ -42,7 +42,9 @@
 
 
 object_mobile_vehicle_vehicle_base = object_mobile_vehicle_shared_vehicle_base:new {
-
+	childObjects = {
+		{templateFile = "object/weapon/melee/unarmed/unarmed_default_player.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
+	}
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_vehicle_base, "object/mobile/vehicle/vehicle_base.iff")

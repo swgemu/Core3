@@ -42,7 +42,6 @@
 
 
 object_mobile_vehicle_landspeeder_base = object_mobile_vehicle_shared_landspeeder_base:new {
-
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_landspeeder_base, "object/mobile/vehicle/landspeeder_base.iff")
