@@ -713,6 +713,9 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			break;
 		}
 
+		// remove the buff associated with the state
+		removeStateBuff(state);
+
 		return true;
 	} else {
 		return false;
@@ -1584,7 +1587,18 @@ void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
 
 void CreatureObjectImplementation::setAimingState(int durationSeconds) {
 	if (!hasState(CreatureState::AIMING)) {
-		addBuff(new StateBuff(_this, CreatureState::AIMING, durationSeconds));
+		StateBuff* aiming = new StateBuff(_this, CreatureState::AIMING, durationSeconds);
+
+		int aimMods = 0;
+		Vector<String>* creatureAimMods = weapon->getCreatureAimModifiers();
+
+		for (int i = 0; i < creatureAimMods->size(); ++i) {
+			aimMods += getSkillMod(creatureAimMods->get(i));
+		}
+
+		aiming->setSkillModifier("private_aim", aimMods);
+
+		addBuff(aiming);
 	}
 }
 

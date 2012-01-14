@@ -65,6 +65,8 @@ object_weapon_ranged_carbine_carbine_dh17 = object_weapon_ranged_carbine_shared_
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "carbine_accuracy" },
 
+	creatureAimModifiers = { "carbine_aim", "aim" },
+
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 

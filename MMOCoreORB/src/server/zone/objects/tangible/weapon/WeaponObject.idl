@@ -207,6 +207,11 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	@local
+	public Vector<string> getCreatureAimModifiers() {
+		return weaponTemplate.getCreatureAimModifiers();
+	}
+	
+	@local
 	public Vector<string> getDefenderDefenseModifiers() {
 		return weaponTemplate.getDefenderDefenseModifiers();
 	}

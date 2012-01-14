@@ -65,6 +65,8 @@ object_weapon_ranged_carbine_carbine_dh17_snubnose = object_weapon_ranged_carbin
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "carbine_accuracy" },
 
+	creatureAimModifiers = { "carbine_aim", "aim" },
+
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 

@@ -235,7 +235,7 @@ void BuffImplementation::applyAttributeModifiers() {
 
 		creature->setMaxHAM(attribute, attributemax);
 
-		if (fillAttirbutesOnBuff) {
+		if (fillAttributesOnBuff) {
 			//creature->setHAM(attribute, attributeval - creature->getWounds(attribute));
 			creature->healDamage(creature, attribute, attributeval, true);
 		} else

@@ -20,6 +20,7 @@
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/objects/creature/buffs/StateBuff.h"
 
 const uint32 CombatManager::defaultAttacks[9] = {
 		0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
@@ -254,6 +255,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	int hitVal = getHitChance(attacker, defender, attacker->getWeapon(), 0);
 	float damageMultiplier = data.getDamageMultiplier();
 	String combatSpam = data.getCommand()->getCombatSpam();
+	// FIXME: probably need to add combatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
 
 	if (hitVal != HIT) {
 		//better luck next time
@@ -431,31 +433,26 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 	Vector<String>* defenseAccMods = weapon->getDefenderDefenseModifiers();
 
 	targetDefense += defender->getSkillMod(defenseAccMods->get(0));
-	buffDefense += defender->getSkillModFromBuffs(defenseAccMods->get(0));
 
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
 	targetDefense = applyDefensePenalties(defender, weapon->getAttackType(), targetDefense);
 	targetDefense += calculateTargetPostureModifier(attacker, defender);
 
-	// defense hardcap, make sure not to count defense from buffs (food), add it back in later
-	targetDefense -= buffDefense;
+	// defense hardcap
 	if (targetDefense > 125)
 		targetDefense = 125;
 
 	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense), true);
 
-	targetDefense += buffDefense;
-
 	return targetDefense;
 }
 
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
+	if (defender->isIntimidated()) return 0;
+
 	int targetDefense = 0;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
-
-	if (weapon == NULL) // still use defensive acuity with no weapon
-		return defender->getSkillMod("unarmed_passive_defense");
 
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
 
@@ -687,12 +684,39 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	int attackType = weapon->getAttackType();
 	int armorPiercing = weapon->getArmorPiercing(); // None
 
-	int damageMod = getDamageModifier(attacker, weapon);
+	// damage mitigation first, which only affects maxDamage, but uses range (mitigation is an ability)
+	int damageMitigation = 0;
+	PlayerObject* defenderGhost = defender->getPlayerObject();
+
+	if (defenderGhost != NULL) {
+		StringBuffer mitString;
+		switch (attackType){
+		case WeaponObject::MELEEATTACK:
+			mitString << "melee_damage_mitigation_";
+			break;
+		case WeaponObject::RANGEDATTACK:
+			mitString << "ranged_damage_mitigation_";
+			break;
+		default:
+			break;
+		}
+
+		for (int i = 3; i > 0; i--) {
+			mitString << i;
+			if (defenderGhost->hasAbility(mitString.toString())) {
+				damageMitigation = i;
+				break;
+			}
+		}
+
+		if (damageMitigation > 0) {
+			maxDamage = minDamage + (maxDamage - minDamage) * (1 - (0.2 * damageMitigation));
+		}
+	}
+
+	if (attacker->isIntimidated()) maxDamage /= 2;
 
 	//info("attacker weapon damage mod is " + String::valueOf(damageMod), true);
-
-	minDamage += damageMod;
-	maxDamage += damageMod;
 
 	float damage = 0;
 
@@ -701,24 +725,31 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	if (diff >= 0)
 		damage = System::random(diff) + (int) minDamage;
 
+	damage += getDamageModifier(attacker, weapon);
+
 	if (attacker->isPlayerCreature()) {
-		if (!weapon->isCertifiedFor(cast<CreatureObject*>(attacker)))
+		if (!weapon->isCertifiedFor(attacker))
 			damage /= 5;
 
+		// TODO: look at this when jedi are implemented
 		int FR = attacker->getSkillMod("force_run");
-
 		if (FR > 1)
 			damage /= 4;
 	}
 
-	if (attacker->isIntimidated())
-		damage *= 0.66f;// damage /= 2;
+	// moved to mitigation section (it seems to half max damage, and not affect min)
+	//if (attacker->isIntimidated())
+		//damage *= 0.66;
 
+	// TODO: need more testing of this, because there is a lot of different information about the actual amount out there
 	if (attacker->isStunned())
-		damage *= 0.9f;// damage /= 2;
+		damage *= 0.9f;
 
-	if (defender->isKnockedDown())
-		damage *= 1.333f;
+	if (defender->isKneeling())
+		damage *= 1.5f;
+
+	if (defender->isKnockedDown() || defender->isProne())
+		damage *= 2.5f;
 
 	float armorReduction = getArmorReduction(attacker, defender, weapon, damage, poolToDamage);
 
@@ -803,26 +834,10 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	//info("Calculating hit chance", true);
 
 	float weaponAccuracy = 0.0f;
-	float aimMod = 0.0f;
-	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
-		// Get the weapon mods for range and add the mods for stance
-		weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
-
-		uint32 steadyAim = String("steadyaim").hashCode();
-
-		if ((creature->isAiming()) || (creature->hasBuff(steadyAim))) {
-			if (attackType == WeaponObject::RANGEDATTACK)
-				aimMod = (float) creature->getSkillMod("aim");
-
-			if (creature->isAiming())
-				creature->clearState(CreatureState::AIMING);
-
-			if (creature->hasBuff(steadyAim))
-				creature->removeBuff(steadyAim);
-		}
-
-		weaponAccuracy += aimMod;
-	}
+	// Get the weapon mods for range and add the mods for stance
+	weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
+	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
+	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creature->getSkillMod("private_aim");
 
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
@@ -833,7 +848,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	if (creature->isAiAgent()) {
 		ManagedReference<AiAgent*> creoAttacker = dynamic_cast<AiAgent*>(creature);
-		accuracyBonus += creoAttacker->getChanceHit() * 100;
+		accuracyBonus += creoAttacker->getChanceHit() * 100; // FIXME: should this just be = and not +=?
 	}
 
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
@@ -846,8 +861,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	// first (and third) argument is divided by 2, second isn't
 	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
 
-	// TODO: is this for against NPC's as well? need verification (from gralinyn juice)
-	accTotal += creature->getSkillMod("creature_hit_bonus");
+	// this is the scout/ranger creature hit bonus that only works against creatures (not NPCS)
+	if (targetCreature->isCreature())
+		accTotal += creature->getSkillMod("creature_hit_bonus");
 
 	//info("Final hit chance is " + String::valueOf(accTotal), true);
 
@@ -864,9 +880,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	if (targetDefense <= 0)
 		return HIT; // no secondary defenses
-
-	// and now aiming doesn't matter, so discount that
-	weaponAccuracy -= aimMod;
 
 	accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
 

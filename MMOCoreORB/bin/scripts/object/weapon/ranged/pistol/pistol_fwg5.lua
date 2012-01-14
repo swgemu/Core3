@@ -66,6 +66,8 @@ object_weapon_ranged_pistol_pistol_fwg5 = object_weapon_ranged_pistol_shared_pis
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 
+	creatureAimModifiers = { "pistol_aim", "aim" },
+
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 

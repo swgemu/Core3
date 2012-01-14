@@ -129,7 +129,7 @@ public:
 
 	void setAccelerationMultiplierMod(float multiplier);
 
-	void setFillAttirbutesOnBuff(bool val);
+	void setFillAttributesOnBuff(bool val);
 
 	String getBuffName();
 
@@ -205,7 +205,7 @@ protected:
 
 	float accelerationMultiplierMod;
 
-	bool fillAttirbutesOnBuff;
+	bool fillAttributesOnBuff;
 
 	StringIdChatParameter startMessage;
 
@@ -266,7 +266,7 @@ public:
 
 	void setAccelerationMultiplierMod(float multiplier);
 
-	void setFillAttirbutesOnBuff(bool val);
+	void setFillAttributesOnBuff(bool val);
 
 	String getBuffName();
 
@@ -381,7 +381,7 @@ public:
 
 	void setAccelerationMultiplierMod(float multiplier);
 
-	void setFillAttirbutesOnBuff(bool val);
+	void setFillAttributesOnBuff(bool val);
 
 	String getBuffName();
 

@@ -151,6 +151,14 @@ public:
 			error("unreported exception caught in CombatQueueCommand::doCombatAction");
 		}
 
+		// only clear aiming states if command was successful
+		if (creature->isAiming())
+			creature->removeStateBuff(CreatureState::AIMING);
+
+		uint32 steadyAim = String("steadyaim").hashCode();
+		if (creature->hasBuff(steadyAim))
+			creature->removeBuff(steadyAim);
+
 		return SUCCESS;
 	}
 

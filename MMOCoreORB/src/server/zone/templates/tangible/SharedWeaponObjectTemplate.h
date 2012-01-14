@@ -46,6 +46,7 @@ protected:
 	Vector<String> damageModifiers;
 	Vector<String> speedModifiers;
 	Vector<String> creatureAccuracyModifiers;
+	Vector<String> creatureAimModifiers;
 	Vector<String> defenderDefenseModifiers;
 	Vector<String> certificationsRequired;
 	Vector<String> defenderSecondaryDefenseModifiers;
@@ -209,6 +210,10 @@ public:
 		return &creatureAccuracyModifiers;
 	}
 
+	Vector<String>* getCreatureAimModifiers() {
+		return &creatureAimModifiers;
+	}
+
 	Vector<String>* getDamageModifiers() {
 		return &damageModifiers;
 	}
@@ -235,6 +240,10 @@ public:
 
 	void setCreatureAccuracyModifiers(Vector<String> creatureAccuracyModifiers) {
 		this->creatureAccuracyModifiers = creatureAccuracyModifiers;
+	}
+
+	void setCreatureAimModifiers(Vector<String> creatureAimModifiers) {
+		this->creatureAimModifiers = creatureAimModifiers;
 	}
 
 	void setDamageModifiers(Vector<String> damageModifiers) {

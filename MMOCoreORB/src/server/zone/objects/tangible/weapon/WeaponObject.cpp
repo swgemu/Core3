@@ -153,6 +153,15 @@ Vector<String>* WeaponObject::getCreatureAccuracyModifiers() {
 		return _implementation->getCreatureAccuracyModifiers();
 }
 
+Vector<String>* WeaponObject::getCreatureAimModifiers() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCreatureAimModifiers();
+}
+
 Vector<String>* WeaponObject::getDefenderDefenseModifiers() {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1237,6 +1246,11 @@ Vector<String>* WeaponObjectImplementation::getSpeedModifiers() {
 Vector<String>* WeaponObjectImplementation::getCreatureAccuracyModifiers() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.getCreatureAccuracyModifiers();
 	return weaponTemplate->getCreatureAccuracyModifiers();
+}
+
+Vector<String>* WeaponObjectImplementation::getCreatureAimModifiers() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.getCreatureAimModifiers();
+	return weaponTemplate->getCreatureAimModifiers();
 }
 
 Vector<String>* WeaponObjectImplementation::getDefenderDefenseModifiers() {

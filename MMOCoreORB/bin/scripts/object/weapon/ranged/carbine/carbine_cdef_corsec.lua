@@ -64,6 +64,8 @@ object_weapon_ranged_carbine_carbine_cdef_corsec = object_weapon_ranged_carbine_
 	certificationsRequired = { "cert_carbine_cdef" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "carbine_accuracy" },
+	
+	creatureAimModifiers = { "carbine_aim", "aim" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },

@@ -191,6 +191,8 @@ public:
 
 	Vector<String>* getCreatureAccuracyModifiers();
 
+	Vector<String>* getCreatureAimModifiers();
+
 	Vector<String>* getDefenderDefenseModifiers();
 
 	Vector<String>* getDefenderSecondaryDefenseModifiers();
@@ -433,6 +435,8 @@ public:
 	Vector<String>* getSpeedModifiers();
 
 	Vector<String>* getCreatureAccuracyModifiers();
+
+	Vector<String>* getCreatureAimModifiers();
 
 	Vector<String>* getDefenderDefenseModifiers();
 

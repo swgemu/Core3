@@ -66,6 +66,8 @@ object_weapon_ranged_pistol_pistol_republic_blaster = object_weapon_ranged_pisto
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 
+	creatureAimModifiers = { "pistol_aim", "aim" },
+
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 

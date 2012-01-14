@@ -66,6 +66,8 @@ object_weapon_ranged_pistol_pistol_striker_noob = object_weapon_ranged_pistol_sh
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 
+	creatureAimModifiers = { "pistol_aim", "aim" },
+
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 

@@ -147,6 +147,14 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 
 	accMods.pop();
 
+	LuaObject aimMods = templateData->getObjectField("creatureAimModifiers");
+
+	for (int i = 1; i <= aimMods.getTableSize(); ++i) {
+		creatureAccuracyModifiers.add(aimMods.getStringAt(i));
+	}
+
+	aimMods.pop();
+
 	LuaObject defMods = templateData->getObjectField("defenderDefenseModifiers");
 
 	for (int i = 1; i <= defMods.getTableSize(); ++i) {

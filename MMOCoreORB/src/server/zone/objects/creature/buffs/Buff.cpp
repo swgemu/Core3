@@ -14,7 +14,7 @@
  *	BuffStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTIRBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTRIBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,};
 
 Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) : ManagedObject(DummyConstructorParameter::instance()) {
 	BuffImplementation* _implementation = new BuffImplementation(creo, buffcrc, duration, bufftype);
@@ -356,18 +356,18 @@ void Buff::setAccelerationMultiplierMod(float multiplier) {
 		_implementation->setAccelerationMultiplierMod(multiplier);
 }
 
-void Buff::setFillAttirbutesOnBuff(bool val) {
+void Buff::setFillAttributesOnBuff(bool val) {
 	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETFILLATTIRBUTESONBUFF__BOOL_);
+		DistributedMethod method(this, RPC_SETFILLATTRIBUTESONBUFF__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setFillAttirbutesOnBuff(val);
+		_implementation->setFillAttributesOnBuff(val);
 }
 
 String Buff::getBuffName() {
@@ -658,8 +658,8 @@ bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 		return true;
 	}
 
-	if (_name == "fillAttirbutesOnBuff") {
-		TypeInfo<bool >::parseFromBinaryStream(&fillAttirbutesOnBuff, stream);
+	if (_name == "fillAttributesOnBuff") {
+		TypeInfo<bool >::parseFromBinaryStream(&fillAttributesOnBuff, stream);
 		return true;
 	}
 
@@ -765,11 +765,11 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fillAttirbutesOnBuff";
+	_name = "fillAttributesOnBuff";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<bool >::toBinaryStream(&fillAttirbutesOnBuff, stream);
+	TypeInfo<bool >::toBinaryStream(&fillAttributesOnBuff, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -815,8 +815,8 @@ BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcr
 	speedMultiplierMod = -1.f;
 	// server/zone/objects/creature/buffs/Buff.idl():  		accelerationMultiplierMod = -1.f;
 	accelerationMultiplierMod = -1.f;
-	// server/zone/objects/creature/buffs/Buff.idl():  		fillAttirbutesOnBuff = false;
-	fillAttirbutesOnBuff = false;
+	// server/zone/objects/creature/buffs/Buff.idl():  		fillAttributesOnBuff = false;
+	fillAttributesOnBuff = false;
 	// server/zone/objects/creature/buffs/Buff.idl():  		Logger.setLoggingName("Buff");
 	Logger::setLoggingName("Buff");
 	// server/zone/objects/creature/buffs/Buff.idl():  		init();
@@ -872,9 +872,9 @@ void BuffImplementation::setAccelerationMultiplierMod(float multiplier) {
 	accelerationMultiplierMod = multiplier;
 }
 
-void BuffImplementation::setFillAttirbutesOnBuff(bool val) {
-	// server/zone/objects/creature/buffs/Buff.idl():  		fillAttirbutesOnBuff = val;
-	fillAttirbutesOnBuff = val;
+void BuffImplementation::setFillAttributesOnBuff(bool val) {
+	// server/zone/objects/creature/buffs/Buff.idl():  		fillAttributesOnBuff = val;
+	fillAttributesOnBuff = val;
 }
 
 String BuffImplementation::getBuffName() {
@@ -1006,8 +1006,8 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_:
 		setAccelerationMultiplierMod(inv->getFloatParameter());
 		break;
-	case RPC_SETFILLATTIRBUTESONBUFF__BOOL_:
-		setFillAttirbutesOnBuff(inv->getBooleanParameter());
+	case RPC_SETFILLATTRIBUTESONBUFF__BOOL_:
+		setFillAttributesOnBuff(inv->getBooleanParameter());
 		break;
 	case RPC_GETBUFFNAME__:
 		resp->insertAscii(getBuffName());
@@ -1139,8 +1139,8 @@ void BuffAdapter::setAccelerationMultiplierMod(float multiplier) {
 	(static_cast<Buff*>(stub))->setAccelerationMultiplierMod(multiplier);
 }
 
-void BuffAdapter::setFillAttirbutesOnBuff(bool val) {
-	(static_cast<Buff*>(stub))->setFillAttirbutesOnBuff(val);
+void BuffAdapter::setFillAttributesOnBuff(bool val) {
+	(static_cast<Buff*>(stub))->setFillAttributesOnBuff(val);
 }
 
 String BuffAdapter::getBuffName() {

@@ -112,7 +112,7 @@ public:
 			int duration = 300;
 
 			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);
-			buff->setSkillModifier("aim", amount);
+			buff->setSkillModifier("private_aim", amount);
 
 			memberPlayer->addBuff(buff);
 		}

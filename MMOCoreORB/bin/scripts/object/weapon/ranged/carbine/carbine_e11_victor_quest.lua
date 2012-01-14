@@ -65,6 +65,8 @@ object_weapon_ranged_carbine_carbine_e11_victor_quest = object_weapon_ranged_car
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "carbine_accuracy" },
 
+	creatureAimModifiers = { "carbine_aim", "aim" },
+
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 

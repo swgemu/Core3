@@ -65,6 +65,8 @@ object_weapon_ranged_rifle_rifle_berserker = object_weapon_ranged_rifle_shared_r
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 
+	creatureAimModifiers = { "rifle_aim", "aim" },
+
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 
