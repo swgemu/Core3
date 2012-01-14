@@ -513,8 +513,14 @@ int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject
 		}
 	}
 
-	maxDamage *= attacker->getSkillMod("private_max_damage_multiplier");
-	maxDamage /= attacker->getSkillMod("private_max_damage_divisor");
+	int maxDamageMuliplier = attacker->getSkillMod("private_max_damage_multiplier");
+	int maxDamageDivisor = attacker->getSkillMod("private_max_damage_divisor");
+
+	if (maxDamageMuliplier != 0)
+		maxDamage *= maxDamageMuliplier;
+
+	if (maxDamageDivisor != 0)
+		maxDamage /= maxDamageDivisor;
 
 	//info("attacker weapon damage mod is " + String::valueOf(maxDamage), true);
 
@@ -530,8 +536,15 @@ int CombatManager::getDamageModifier(CreatureObject* attacker, WeaponObject* wea
 		damageMods += attacker->getSkillMod(weaponDamageMods->get(i));
 	}
 
-	damageMods *= attacker->getSkillMod("private_damage_multiplier");
-	damageMods /= attacker->getSkillMod("private_damage_divisor");
+	int damageMultiplier = attacker->getSkillMod("private_damage_multiplier");
+
+	if (damageMultiplier != 0)
+		damageMods *= damageMultiplier;
+
+	int damageDivisor = attacker->getSkillMod("private_damage_divisor");
+
+	if (damageDivisor != 0)
+		damageMods /= damageDivisor;
 
 	return damageMods;
 }
