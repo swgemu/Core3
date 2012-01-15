@@ -4,7 +4,7 @@ geo_tenloss_dxr6_schematic = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/loot/loot_schematic/shared_geonosian_tenloss_dxr6_schematic.iff",
+	directObjectTemplate = "object/tangible/loot/loot_schematic/geonosian_tenloss_dxr6_schematic.iff",
 	draftSchematic = ""
 }
 

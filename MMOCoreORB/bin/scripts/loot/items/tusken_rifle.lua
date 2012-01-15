@@ -4,8 +4,8 @@ rifle_tusken = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/weapon/ranged/rifle/shared_rifle_tusken.iff",
-	draftSchematic = "object/weapon/ranged/rifle/shared_rifle_tusken.iff"
+	directObjectTemplate = "object/weapon/ranged/rifle/rifle_tusken.iff",
+	draftSchematic = ""
 }
 
 addLootItemTemplate("rifle_tusken", rifle_tusken)

@@ -43,7 +43,6 @@ protected:
 	FloatParam cameraHeight;
 
 	Vector<int> baseHAM;
-	Vector<uint32> lootGroup;
 
 public:
 	SharedCreatureObjectTemplate() {
@@ -72,10 +71,6 @@ public:
 
 	inline Vector<int> getBaseHAM() const {
 		return baseHAM;
-	}
-
-	inline Vector<uint32> getLootGroup() const {
-		return lootGroup;
 	}
 
 	inline float getCameraHeight() const {
@@ -168,10 +163,6 @@ public:
 
 	void setBaseHAM(Vector<int> baseHAM) {
 		this->baseHAM = baseHAM;
-	}
-
-	void setLootGroup(Vector<uint32> lootGroup) {
-		this->lootGroup = lootGroup;
 	}
 
 	void setCameraHeight(float cameraHeight) {

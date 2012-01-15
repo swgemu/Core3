@@ -73,6 +73,7 @@ import server.zone.objects.creature.commands.QueueCommand;
 import engine.util.Observable;
 import server.zone.objects.creature.AiObserver;
 include system.thread.Mutex;
+include server.zone.managers.loot.lootgroup.LootGroupCollection;
 
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
@@ -605,12 +606,20 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.getAttacks();
 	}
 	
-	@local 
-	public Vector<string> getLootGroups() {
+	@local
+	public LootGroupCollection getLootGroups() {
 		if (npcTemplate == null)
 			return null;
 		
 		return npcTemplate.getLootGroups();
+	}
+	
+	@local
+	public int getLootChance() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getLootChance();
 	}
 	
 	public float getRespawnTimer() {

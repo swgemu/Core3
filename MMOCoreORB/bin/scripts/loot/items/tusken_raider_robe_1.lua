@@ -4,7 +4,7 @@ tusken_raider_robe_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/wearables/robe/shared_robe_tusken_raider_s01.iff",
+	directObjectTemplate = "object/tangible/wearables/robe/robe_tusken_raider_s01.iff",
 	draftSchematic = ""
 }
 

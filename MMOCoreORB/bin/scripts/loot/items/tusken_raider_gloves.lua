@@ -4,7 +4,7 @@ tusken_raider_gloves = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/wearables/gloves/shared_gloves_tusken_raider.iff",
+	directObjectTemplate = "object/tangible/wearables/gloves/gloves_tusken_raider.iff",
 	draftSchematic = ""
 }
 

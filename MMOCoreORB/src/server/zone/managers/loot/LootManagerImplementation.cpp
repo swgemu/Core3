@@ -22,7 +22,8 @@ void LootManagerImplementation::initialize() {
 	lua = new Lua();
 	lua->init();
 
-	info("loading configuration");
+	info("Loading configuration.");
+
 	if(!loadConfigData()) {
 
 		loadDefaultConfig();
@@ -33,7 +34,10 @@ void LootManagerImplementation::initialize() {
 	lootGroupMap = LootGroupMap::instance();
 	lootGroupMap->initialize();
 
-	info("initialized");
+	info("Loaded " + String::valueOf(lootGroupMap->getTotalItems()) + " loot items.", true);
+	info("Loaded " + String::valueOf(lootGroupMap->getTotalGroups()) + " loot groups.", true);
+
+	info("Initialized.");
 }
 
 bool LootManagerImplementation::loadConfigFile() {
@@ -176,13 +180,35 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 }
 
 void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* creature) {
-	Vector<String>* lootGroups = creature->getLootGroups();
+	LootGroupCollection* lootGroups = creature->getLootGroups();
+	int lootChance = creature->getLootChance();
 
-	if (lootGroups == NULL)
+	if (lootGroups == NULL || lootChance <= 0)
 		return;
 
+	//First roll is on what loot group, if any, to use.
+	int roll = System::random(10000000); //100.00000% with 5 decimal precision
+
+	if (roll > lootChance) {
+		//The creature isn't dropping loot because the roll was in the "no drop" zone of the percentage.
+		return;
+	}
+
+	int tempChance = 0; //Start at 0.
+
+	//Now loop through the lootgroups to figure out which lootgroup to use.
 	for (int i = 0; i < lootGroups->size(); ++i) {
-		createLoot(container, lootGroups->get(i), creature->getLevel());
+		LootGroupEntry entry = lootGroups->get(i);
+
+		tempChance += entry.getWeight();
+
+		//Is this entry lower than the roll? If yes, then we want to try the next entry.
+		if (tempChance < roll)
+			continue;
+
+		createLoot(container, entry.getItemTemplate(), creature->getLevel());
+
+		return; //If we got here, then we found the entry we were looking for.
 	}
 }
 
@@ -195,37 +221,47 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 	if (group == NULL)
 		return;
 
+	//Now we do the second roll for the item out of the group.
+	int roll = System::random(10000000);
+
+	int tempChance = 0;
+
 	for (int i = 0; i < group->size(); ++i) {
 		if (container->hasFullContainerObjects())
 			return;
 
-		/*
+		LootGroupEntry entry = group->get(i);
 
-		String item = group->get(i);
+		tempChance += entry.getWeight();
+
+		if (tempChance < roll)
+			continue; //If the roll is greater than this item, move on to the next one.
+
+		String item = entry.getItemTemplate();
 
 		LootItemTemplate* itemTemplate = lootGroupMap->getLootItem(item);
 
 		if (itemTemplate != NULL) {
-			float chance = itemTemplate->getChance() * 100000;
-			int minLevel = itemTemplate->getMinimumLevel();
-			int maxLevel = itemTemplate->getMaximumLevel();
+			//int minLevel = itemTemplate->getMinimumLevel();
+			//int maxLevel = itemTemplate->getMaximumLevel();
 
-			if (level != -1) {
-				if (minLevel != -1 && level < minLevel)
-					continue;
+			//if (level != -1) {
+				//if (minLevel != -1 && level < minLevel)
+					//continue;
 
-				if (maxLevel != -1 && level > maxLevel)
-					continue;
-			}
+				//if (maxLevel != -1 && level > maxLevel)
+					//continue;
+			//}
 
-			if (chance >= System::random(10000000 - 1) + 1) {
-				SceneObject* obj = createLootObject(itemTemplate);
+			SceneObject* obj = createLootObject(itemTemplate);
 
-				if (container->transferObject(obj, -1, false))
-					container->broadcastObject(obj, true);
-			}
+			if (container->transferObject(obj, -1, false))
+				container->broadcastObject(obj, true);
 
-		} else
-			error(item + " loot item template not found");*/
+		} else {
+			error(item + " loot item template not found");
+		}
+
+		return;
 	}
 }

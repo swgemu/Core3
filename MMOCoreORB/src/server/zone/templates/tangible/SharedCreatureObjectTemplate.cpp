@@ -133,14 +133,6 @@ void SharedCreatureObjectTemplate::parseVariableData(const String& varName, LuaO
 		}
 
 		speedTempl.pop();
-	} else if (varName == "lootGroup") {
-		LuaObject lootGroups(state);
-
-		for (int i = 1; i <= lootGroups.getTableSize(); ++i) {
-			lootGroup.add(lootGroups.getIntAt(i));
-		}
-
-		lootGroups.pop();
 	} else {
 		templateData->pop();
 	}
@@ -303,15 +295,7 @@ void SharedCreatureObjectTemplate::readObject(LuaObject* templateData) {
 		speed.add(speedTempl.getFloatAt(i));
 	}
 
-	speedTempl.pop();
-
-	LuaObject lootGroups = templateData->getObjectField("lootGroup");
-
-	for (int i = 1; i <= lootGroups.getTableSize(); ++i) {
-		lootGroup.add(lootGroups.getIntAt(i));
-	}
-
-	lootGroups.pop();*/
+	speedTempl.pop();*/
 
 }
 

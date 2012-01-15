@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
+#include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
 
 namespace server {
 namespace zone {
@@ -64,9 +65,14 @@ protected:
 	unsigned int creatureBitmask;
 	unsigned int diet;
 
+	unsigned int lootChance;
+
 	Vector<String> templates;
-	Vector<String> lootgroups;
+
+	LootGroupCollection lootgroups;
+
 	Vector<String> weapons;
+
 	CreatureAttackMap* attacks;
 	uint32 conversationTemplate;
 	uint32 optionsBitmask;
@@ -112,10 +118,14 @@ public:
 		creatureBitmask = 0;
 		diet = 0;
 		optionsBitmask = 0;
+		lootChance = 0;
 
 		templates.removeAll();
+
 		lootgroups.removeAll();
+
 		weapons.removeAll();
+
 		attacks = new CreatureAttackMap();
 	}
 
@@ -158,6 +168,7 @@ public:
 		creatureBitmask = templateData->getIntField("creatureBitmask");
 		diet = templateData->getIntField("diet");
 		optionsBitmask = templateData->getIntField("optionsBitmask");
+		lootChance = templateData->getIntField("lootChance");
 
 		LuaObject res = templateData->getObjectField("resists");
 		if (res.getTableSize() == 9) {
@@ -185,8 +196,30 @@ public:
 
 		LuaObject loots = templateData->getObjectField("lootgroups");
 		if (loots.isValidTable()) {
+			lua_State* L = loots.getLuaState();
 			for (int i = 1; i <= loots.getTableSize(); ++i) {
-				lootgroups.add(loots.getStringAt(i).trim());
+				lua_rawgeti(L, -1, i);
+				LuaObject lootEntry(L);
+
+				String lootGroup = lootEntry.getStringField("group");
+				int chance = lootEntry.getIntField("chance");
+
+				//We need to adjust the drop chance of each group to account for the overall drop chance of the creature.
+				//Based on the following logic.
+				//Group 1 = 70%
+				//Group 2 = 30%
+				//LootChance = 70% - We add a 30% no loot chance group
+				//LootChance * Group1 / 100 = 49%
+				//LootChance * Group2 / 100 = 21%
+				//Group1 + Group2 + (100 - LootChance) = 100
+				if (lootChance != 10000000)
+					chance = round(lootChance * chance / 100.f);
+
+				Logger::console.warning("group: " + lootGroup + " chance: " + String::valueOf(chance));
+
+				LootGroupEntry entry(lootGroup.trim(), chance);
+				lootgroups.put(entry);
+				lootEntry.pop();
 			}
 		}
 
@@ -260,6 +293,10 @@ public:
 
 	inline float getLightSaber() {
 		return lightSaber;
+	}
+
+	inline int getLootChance() {
+		return lootChance;
 	}
 
 	inline bool isStalker() {
@@ -390,7 +427,7 @@ public:
 		return templates;
 	}
 
-	inline Vector<String>* getLootGroups() {
+	inline LootGroupCollection* getLootGroups() {
 		return &lootgroups;
 	}
 

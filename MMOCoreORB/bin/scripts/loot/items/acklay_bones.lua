@@ -4,7 +4,7 @@ acklay_bones = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/component/weapon/shared_acklay_bone_reinforcement_core.iff",
+	directObjectTemplate = "object/tangible/component/weapon/acklay_bone_reinforcement_core.iff",
 	draftSchematic = ""
 }
 

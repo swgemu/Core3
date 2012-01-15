@@ -40,7 +40,7 @@ void LootGroup::parseLua(lua_State* L) {
 
 	luaItems.pop();
 
-	normalizeWeights();
+	//normalizeWeights();
 }
 
 void LootGroup::normalizeWeights() {
@@ -48,7 +48,4 @@ void LootGroup::normalizeWeights() {
 
 	for (int i = 0; i < size(); ++i)
 		sum += (&get(i))->getWeight();
-
-	if (sum != EXPECTED_SUM)
-		warning("Loot group's sum weight is not equal to the expected amount.");
 }

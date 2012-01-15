@@ -4018,11 +4018,6 @@ bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "lootGroup") {
-		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&lootGroup, stream);
-		return true;
-	}
-
 	if (_name == "frozen") {
 		TypeInfo<byte >::parseFromBinaryStream(&frozen, stream);
 		return true;
@@ -4445,14 +4440,6 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lootGroup";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Vector<unsigned int> >::toBinaryStream(&lootGroup, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "frozen";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -4542,7 +4529,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 56 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return 55 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 CreatureObjectImplementation::CreatureObjectImplementation() {

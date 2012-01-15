@@ -4,7 +4,7 @@ tusken_raider_belt = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/wearables/utility/shared_utility_belt_tusken_raider.iff",
+	directObjectTemplate = "object/tangible/wearables/utility/utility_belt_tusken_raider.iff",
 	draftSchematic = ""
 }
 

@@ -4,7 +4,7 @@ geo_sword_core_schematic = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/loot/loot_schematic/shared_geonosian_sword_core_schematic.iff",
+	directObjectTemplate = "object/tangible/loot/loot_schematic/geonosian_sword_core_schematic.iff",
 	draftSchematic = ""
 }
 

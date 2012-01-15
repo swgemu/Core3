@@ -4,7 +4,7 @@ geo_relic_tech_kit = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_tech_kit.iff",
+	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_tech_kit.iff",
 	draftSchematic = ""
 }
 

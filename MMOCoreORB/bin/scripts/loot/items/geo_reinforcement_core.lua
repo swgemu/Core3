@@ -4,7 +4,7 @@ geo_reinforcement_core = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/component/weapon/shared_geonosian_reinforcement_core.iff",
+	directObjectTemplate = "object/tangible/component/weapon/geonosian_reinforcement_core.iff",
 	draftSchematic = ""
 }
 

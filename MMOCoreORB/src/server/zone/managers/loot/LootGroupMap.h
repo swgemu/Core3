@@ -27,6 +27,14 @@ public:
 		return lootItemMap.get(name);
 	}
 
+	inline int getTotalGroups() {
+		return size();
+	}
+
+	inline int getTotalItems() {
+		return lootItemMap.size();
+	}
+
 private:
 	//LUA
 	void registerFunctions();

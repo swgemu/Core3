@@ -1066,13 +1066,22 @@ CreatureAttackMap* AiAgent::getAttackMap() {
 		return _implementation->getAttackMap();
 }
 
-Vector<String>* AiAgent::getLootGroups() {
+LootGroupCollection* AiAgent::getLootGroups() {
 	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
 		return _implementation->getLootGroups();
+}
+
+int AiAgent::getLootChance() {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getLootChance();
 }
 
 float AiAgent::getRespawnTimer() {
@@ -1805,12 +1814,20 @@ CreatureAttackMap* AiAgentImplementation::getAttackMap() {
 	return npcTemplate->getAttacks();
 }
 
-Vector<String>* AiAgentImplementation::getLootGroups() {
+LootGroupCollection* AiAgentImplementation::getLootGroups() {
 	// server/zone/objects/creature/AiAgent.idl():  		return 
 	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return null;
 	return NULL;
 	// server/zone/objects/creature/AiAgent.idl():  		return npcTemplate.getLootGroups();
 	return npcTemplate->getLootGroups();
+}
+
+int AiAgentImplementation::getLootChance() {
+	// server/zone/objects/creature/AiAgent.idl():  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/AiAgent.idl():  		return npcTemplate.getLootChance();
+	return npcTemplate->getLootChance();
 }
 
 float AiAgentImplementation::getRespawnTimer() {

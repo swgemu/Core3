@@ -227,6 +227,8 @@ using namespace server::zone::objects::creature;
 
 #include "system/thread/Mutex.h"
 
+#include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
@@ -420,7 +422,9 @@ public:
 
 	CreatureAttackMap* getAttackMap();
 
-	Vector<String>* getLootGroups();
+	LootGroupCollection* getLootGroups();
+
+	int getLootChance();
 
 	float getRespawnTimer();
 
@@ -682,7 +686,9 @@ public:
 
 	CreatureAttackMap* getAttackMap();
 
-	Vector<String>* getLootGroups();
+	LootGroupCollection* getLootGroups();
+
+	int getLootChance();
 
 	float getRespawnTimer();
 

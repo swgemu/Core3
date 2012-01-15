@@ -245,8 +245,6 @@ void CreatureObjectImplementation::loadTemplateData(
 		runSpeed = 0;
 		walkSpeed = 0;
 	}
-
-	lootGroup = creoData->getLootGroup();
 }
 
 void CreatureObjectImplementation::finalize() {

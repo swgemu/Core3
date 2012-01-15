@@ -4,7 +4,7 @@ geo_sonic_blaster_schematic = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/loot/loot_schematic/shared_geonosian_sonic_blaster_schematic.iff",
+	directObjectTemplate = "object/tangible/loot/loot_schematic/geonosian_sonic_blaster_schematic.iff",
 	draftSchematic = ""
 }
 

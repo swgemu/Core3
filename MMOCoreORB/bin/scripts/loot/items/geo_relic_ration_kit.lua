@@ -4,7 +4,7 @@ geo_relic_ration_kit = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_ration_kit.iff",
+	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_ration_kit.iff",
 	draftSchematic = ""
 }
 
