@@ -612,6 +612,62 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				broadcastMessage(dcreo3, true);
 			}
 
+			switch (state) {
+			case CreatureState::STUNNED:
+				playEffect("clienteffect/combat_special_defender_stun.cef");
+				showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "go_stunned_single");
+				break;
+			case CreatureState::BLINDED:
+				playEffect("clienteffect/combat_special_defender_blind.cef");
+				showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "go_blind_single");
+				break;
+			case CreatureState::DIZZY:
+				playEffect("clienteffect/combat_special_defender_dizzy.cef");
+				showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "go_dizzy_single");
+				break;
+			case CreatureState::POISONED:
+				break;
+			case CreatureState::DISEASED:
+				break;
+			case CreatureState::ONFIRE:
+				break;
+			case CreatureState::BLEEDING:
+				break;
+			case CreatureState::INTIMIDATED:
+				playEffect("clienteffect/combat_special_defender_intimidate.cef");
+				showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
+				break;
+			case CreatureState::IMMOBILIZED:
+				//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+				showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
+				break;
+			case CreatureState::FROZEN:
+				//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+				showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
+				break;
+			case CreatureState::RALLIED:
+				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
+				break;
+			case CreatureState::BERSERK:
+				playEffect("clienteffect/combat_special_attacker_berserk.cef");
+				showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
+				break;
+			case CreatureState::AIMING:
+				playEffect("clienteffect/combat_special_attacker_aim.cef");
+				break;
+			case CreatureState::COVER: {
+				playEffect("clienteffect/combat_special_attacker_cover.cef");
+				showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
+				sendSystemMessage("cbt_spam", "cover_success_single");
+			}
+			break;
+			default:
+				break;
+			}
+
 		}
 
 		return true;
