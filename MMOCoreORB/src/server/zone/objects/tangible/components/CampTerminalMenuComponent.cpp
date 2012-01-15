@@ -114,6 +114,9 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 		return;
 	}
 
+	if (camp->getZone() == NULL)
+		return;
+
 	// Find Camp Area
 	Vector<ManagedReference<ActiveArea* > >* areas = camp->getActiveAreas();
 	ManagedReference<ActiveArea*> area = NULL;
@@ -128,7 +131,6 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 	CampSiteActiveArea* campArea = cast<CampSiteActiveArea*>(area.get());
 	if(campArea != NULL && campArea->despawnCamp())
 		return;
-
 
 	// For some reason if the area is gone, clean up camp anyways
 	ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
