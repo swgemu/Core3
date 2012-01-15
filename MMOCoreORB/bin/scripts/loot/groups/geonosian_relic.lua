@@ -5,13 +5,13 @@ geonosian_relic = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "geo_relic_chemical_tablet", weight = 100000},
-		{itemTemplate = "geo_relic_data_tablet", weight = 100000},
-		{itemTemplate = "geo_relic_honey_carafe", weight = 200000},
-		{itemTemplate = "geo_relic_ration_kit", weight = 200000},
-		{itemTemplate = "geo_relic_small_ball", weight = 100000},
-		{itemTemplate = "geo_relic_spice_container", weight = 200000},
-		{itemTemplate = "geo_relic_tech_kit", weight = 100000}
+		{itemTemplate = "geo_relic_chemical_tablet", weight = 1000000},
+		{itemTemplate = "geo_relic_data_tablet", weight = 1000000},
+		{itemTemplate = "geo_relic_honey_carafe", weight = 2000000},
+		{itemTemplate = "geo_relic_ration_kit", weight = 2000000},
+		{itemTemplate = "geo_relic_small_ball", weight = 1000000},
+		{itemTemplate = "geo_relic_spice_container", weight = 2000000},
+		{itemTemplate = "geo_relic_tech_kit", weight = 1000000}
 	}
 }
 

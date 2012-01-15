@@ -5,7 +5,7 @@ bandit_1 = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "maroj_melon", weight = 1000000}
+		{itemTemplate = "maroj_melon", weight = 10000000}
 	}
 }
 

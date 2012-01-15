@@ -5,10 +5,10 @@ geonosian_hard = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "geo_sonic_blaster", weight = 150000},
-		{itemTemplate = "geo_sonic_blaster_schematic", weight = 350000},
-		{itemTemplate = "geo_tenloss_dxr6_schematic", weight = 350000},
-		{itemTemplate = "rifle_tenloss_dxr6_disruptor", weight = 150000}
+		{itemTemplate = "geo_sonic_blaster", weight = 1500000},
+		{itemTemplate = "geo_sonic_blaster_schematic", weight = 3500000},
+		{itemTemplate = "geo_tenloss_dxr6_schematic", weight = 3500000},
+		{itemTemplate = "rifle_tenloss_dxr6_disruptor", weight = 1500000}
 	}
 }
 
