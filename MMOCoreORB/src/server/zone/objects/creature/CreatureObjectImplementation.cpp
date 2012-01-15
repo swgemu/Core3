@@ -2165,12 +2165,11 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(
 		TangibleObject* attacker, int condition) {
 	PlayerObject* ghost = getPlayerObject();
 
-	if (ghost == NULL)
-		return 0;
+	if (ghost != NULL) {
+		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 
-	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
-
-	playerManager->notifyDestruction(attacker, _this, condition);
+		playerManager->notifyDestruction(attacker, _this, condition);
+	}
 
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(
 			attacker, condition);
