@@ -254,6 +254,8 @@ public:
 
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
+	bool isInWater(float x, float y);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -393,6 +395,8 @@ public:
 
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
+	bool isInWater(float x, float y);
+
 	WeakReference<PlanetManager*> _this;
 
 	operator const PlanetManager*();
@@ -487,6 +491,8 @@ public:
 	void scheduleShuttle(CreatureObject* shuttle);
 
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
+
+	bool isInWater(float x, float y);
 
 protected:
 	String _param0_getTravelFare__String_;

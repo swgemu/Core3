@@ -303,4 +303,6 @@ class PlanetManager extends ManagedService implements Logger {
 	}
 	
 	public native boolean checkShuttleStatus(CreatureObject creature, CreatureObject shuttle);
+
+	public native boolean isInWater(float x, float y);
 }

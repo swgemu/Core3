@@ -93,6 +93,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<MissionReconActiveArea>(SceneObjectType::MISSIONRECONAREA);
 	objectFactory.registerObject<DynamicSpawnArea>(SceneObjectType::DYNAMICSPAWNAREA);
 	objectFactory.registerObject<StaticSpawnArea>(SceneObjectType::STATICSPAWNAREA);
+	objectFactory.registerObject<CampSiteActiveArea>(SceneObjectType::CAMPAREA);
 	objectFactory.registerObject<Region>(SceneObjectType::REGIONAREA);
 	objectFactory.registerObject<StaticObject>(SceneObjectType::STATICOBJECT);
 	objectFactory.registerObject<Creature>(SceneObjectType::CREATURE);
@@ -137,7 +138,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::GENERICITEM);
 	objectFactory.registerObject<Container>(SceneObjectType::WEARABLECONTAINER);
 	objectFactory.registerObject<LootkitObject>(SceneObjectType::LOOTKIT);
-	objectFactory.registerObject<CampKit>(SceneObjectType::CAMPKIT);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::CAMPKIT);
 	objectFactory.registerObject<Container>(SceneObjectType::STATICLOOTCONTAINER);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::PLAYERLOOTCRATE);
 
@@ -166,7 +167,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::CAPITOLBUILDING);
 	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectType::TUTORIALBUILDING);
 	objectFactory.registerObject<CloningBuildingObject>(SceneObjectType::CLONINGBUILDING);
-	objectFactory.registerObject<MedicalBuildingObject>(SceneObjectType::MEDICALBUILDING);
+	objectFactory.registerObject<HospitalBuildingObject>(SceneObjectType::HOSPITALBUILDING);
 	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::TRAVELBUILDING);
 	objectFactory.registerObject<RecreationBuildingObject>(SceneObjectType::RECREATIONBUILDING);
 	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::STARPORTBUILDING);

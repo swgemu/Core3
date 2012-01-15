@@ -434,7 +434,7 @@ class TangibleObject extends SceneObject {
 	public boolean isTangibleObject() {
 		return true;
 	}
-	
+
 	public void getCustomizationString(string variables) {
 		customizationVariables.getData(variables);
 	}

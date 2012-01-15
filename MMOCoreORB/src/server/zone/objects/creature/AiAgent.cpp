@@ -1546,17 +1546,6 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	return true;
 }
 
-bool AiAgentImplementation::isAggressiveTo(CreatureObject* object) {
-	// server/zone/objects/creature/AiAgent.idl():  		if 
-	if (!isAttackableBy(object))	// server/zone/objects/creature/AiAgent.idl():  			return false;
-	return false;
-	// server/zone/objects/creature/AiAgent.idl():  		return 
-	if (CreatureObjectImplementation::pvpStatusBitmask & CreatureFlag::AGGRESSIVE)	// server/zone/objects/creature/AiAgent.idl():  			return true;
-	return true;
-	// server/zone/objects/creature/AiAgent.idl():  		return false;
-	return false;
-}
-
 void AiAgentImplementation::setOblivious() {
 	// server/zone/objects/creature/AiAgent.idl():  		followState = OBLIVIOUS;
 	followState = OBLIVIOUS;

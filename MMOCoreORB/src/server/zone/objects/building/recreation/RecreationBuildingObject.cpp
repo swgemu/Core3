@@ -12,6 +12,8 @@
  *	RecreationBuildingObjectStub
  */
 
+enum {RPC_ISRECREATIONALBUILDINGOBJECT__ = 6,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_};
+
 RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	RecreationBuildingObjectImplementation* _implementation = new RecreationBuildingObjectImplementation();
 	_impl = _implementation;
@@ -25,6 +27,47 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 }
 
 
+
+bool RecreationBuildingObject::isRecreationalBuildingObject() {
+	RecreationBuildingObjectImplementation* _implementation = static_cast<RecreationBuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISRECREATIONALBUILDINGOBJECT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRecreationalBuildingObject();
+}
+
+void RecreationBuildingObject::onEnter(CreatureObject* player) {
+	RecreationBuildingObjectImplementation* _implementation = static_cast<RecreationBuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ONENTER__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->onEnter(player);
+}
+
+void RecreationBuildingObject::onExit(CreatureObject* player) {
+	RecreationBuildingObjectImplementation* _implementation = static_cast<RecreationBuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ONEXIT__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->onExit(player);
+}
 
 DistributedObjectServant* RecreationBuildingObject::_getImplementation() {
 
@@ -156,6 +199,43 @@ RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation()
 	Logger::setLoggingName("RecreationBuildingObject");
 }
 
+bool RecreationBuildingObjectImplementation::isRecreationalBuildingObject() {
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  		return true;
+	return true;
+}
+
+void RecreationBuildingObjectImplementation::onEnter(CreatureObject* player) {
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  		RecreationBuildingObjectTemplate recreationTemplate = null;
+	RecreationBuildingObjectTemplate* recreationTemplate = NULL;
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  	}
+	if (BuildingObjectImplementation::templateObject->isRecreationBuildingObjectTemplate()){
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
+	recreationTemplate = (RecreationBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_health", recreationTemplate.getHealthWoundRegenRate(), false);
+	player->addSkillMod("private_med_wound_health", recreationTemplate->getHealthWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_action", recreationTemplate.getActionWoundRegenRate(), false);
+	player->addSkillMod("private_med_wound_action", recreationTemplate->getActionWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_mind", recreationTemplate.getMindWoundRegenRate(), false);
+	player->addSkillMod("private_med_wound_mind", recreationTemplate->getMindWoundRegenRate(), false);
+}
+}
+
+void RecreationBuildingObjectImplementation::onExit(CreatureObject* player) {
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  		RecreationBuildingObjectTemplate recreationTemplate = null;
+	RecreationBuildingObjectTemplate* recreationTemplate = NULL;
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  	}
+	if (BuildingObjectImplementation::templateObject->isRecreationBuildingObjectTemplate()){
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
+	recreationTemplate = (RecreationBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_health", -1 * recreationTemplate.getHealthWoundRegenRate(), false);
+	player->addSkillMod("private_med_wound_health", -1 * recreationTemplate->getHealthWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_action", -1 * recreationTemplate.getActionWoundRegenRate(), false);
+	player->addSkillMod("private_med_wound_action", -1 * recreationTemplate->getActionWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_mind", -1 * recreationTemplate.getMindWoundRegenRate(), false);
+	player->addSkillMod("private_med_wound_mind", -1 * recreationTemplate->getMindWoundRegenRate(), false);
+}
+}
+
 /*
  *	RecreationBuildingObjectAdapter
  */
@@ -167,11 +247,32 @@ Packet* RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, Distributed
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_ISRECREATIONALBUILDINGOBJECT__:
+		resp->insertBoolean(isRecreationalBuildingObject());
+		break;
+	case RPC_ONENTER__CREATUREOBJECT_:
+		onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_ONEXIT__CREATUREOBJECT_:
+		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+bool RecreationBuildingObjectAdapter::isRecreationalBuildingObject() {
+	return (static_cast<RecreationBuildingObject*>(stub))->isRecreationalBuildingObject();
+}
+
+void RecreationBuildingObjectAdapter::onEnter(CreatureObject* player) {
+	(static_cast<RecreationBuildingObject*>(stub))->onEnter(player);
+}
+
+void RecreationBuildingObjectAdapter::onExit(CreatureObject* player) {
+	(static_cast<RecreationBuildingObject*>(stub))->onExit(player);
 }
 
 /*

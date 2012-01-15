@@ -42,44 +42,40 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.camp;
+#ifndef CAMPABANDONTASK_H_
+#define CAMPABANDONTASK_H_
 
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
-import server.zone.templates.SharedObjectTemplate;
-include server.zone.templates.tangible.CampKitTemplate;
+#include "server/zone/objects/area/CampSiteActiveArea.h"
 
-class CampKit extends TangibleObject {
-	protected unsigned short exp;
-	protected unsigned short duration;
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+namespace events {
 
-	protected unsigned short campType;
+class CampAbandonTask: public Task {
+	ManagedReference<CampSiteActiveArea*> campSite;
 
-	public CampKit() {
-		exp = 0;
-		duration = 0;
-		campType = 0;
-		
-		Logger.setLoggingName("CampKit");
+
+public:
+	CampAbandonTask(CampSiteActiveArea* camp) {
+		campSite = camp;
 	}
-	
-	@local
-	public void loadTemplateData(SharedObjectTemplate templateData) {
-		super.loadTemplateData(templateData);
-		
-		if (!templateData.isCampKitTemplate())
+
+	void run() {
+		if (campSite == NULL)
 			return;
-		
-		CampKitTemplate campTemplate = (CampKitTemplate) templateData;
-		//usesRemaining = campTemplate.getUsesRemaining();
-		exp = campTemplate.getExp();
-		duration = campTemplate.getDuration();
-		campType = campTemplate.getCampType();	
+
+		Locker locker(campSite);
+		campSite->abandonCamp();
 	}
-	
-	public boolean isCampKitOject() {
-		return true;
-	}
+};
+
+
 }
+}
+}
+}
+}
+
+#endif /* CAMPABANDONTASK_H_ */

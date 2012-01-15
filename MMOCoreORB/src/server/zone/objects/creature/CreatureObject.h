@@ -151,6 +151,20 @@ using namespace server::zone::objects::area;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace area {
+
+class CampSiteActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -347,6 +361,8 @@ public:
 	bool hasDamage(int attribute);
 
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+
+	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -547,6 +563,8 @@ public:
 	void setMeditateState();
 
 	void activateHAMRegeneration();
+
+	void activatePassiveWoundRegeneration();
 
 	void activateStateRecovery();
 
@@ -820,6 +838,8 @@ public:
 
 	bool isVendorCreature();
 
+	CampSiteActiveArea* getCurrentCamp();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -972,6 +992,12 @@ protected:
 
 	VectorMap<String, unsigned long long> screenPlayStates;
 
+	byte healthWoundHeal;
+
+	byte actionWoundHeal;
+
+	byte mindWoundHeal;
+
 public:
 	static const int HUMAN = 0;
 
@@ -1066,6 +1092,8 @@ public:
 	bool hasDamage(int attribute);
 
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+
+	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -1266,6 +1294,8 @@ public:
 	void setMeditateState();
 
 	virtual void activateHAMRegeneration();
+
+	virtual void activatePassiveWoundRegeneration();
 
 	virtual void activateStateRecovery();
 
@@ -1539,6 +1569,8 @@ public:
 
 	virtual bool isVendorCreature();
 
+	CampSiteActiveArea* getCurrentCamp();
+
 	WeakReference<CreatureObject*> _this;
 
 	operator const CreatureObject*();
@@ -1637,6 +1669,8 @@ public:
 	bool hasDamage(int attribute);
 
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient);
+
+	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient);
 
 	void setBaseHAM(int type, int value, bool notifyClient);
 
@@ -1831,6 +1865,8 @@ public:
 	void setMeditateState();
 
 	void activateHAMRegeneration();
+
+	void activatePassiveWoundRegeneration();
 
 	void activateStateRecovery();
 
@@ -2081,6 +2117,8 @@ public:
 	bool isInformantCreature();
 
 	bool isVendorCreature();
+
+	CampSiteActiveArea* getCurrentCamp();
 
 protected:
 	String _param0_sendSystemMessage__String_;

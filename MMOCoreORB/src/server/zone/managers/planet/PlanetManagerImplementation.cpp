@@ -587,6 +587,9 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		}
 	}
 
+	if(isInWater(targetPos.getX(), targetPos.getY()))
+		return false;
+
 	if (deleteVector) {
 		delete closeObjects;
 		delete activeAreas;
@@ -653,4 +656,14 @@ bool PlanetManagerImplementation::checkShuttleStatus(CreatureObject* creature, C
 	}
 
 	return true;
+}
+
+bool PlanetManagerImplementation::isInWater(float x, float y) {
+	float z = zone->getHeight(x, y);
+	float waterHeight = z;
+	if(getTerrainManager()->getWaterHeight(x, y, waterHeight))
+		if(waterHeight >= z)
+			return true;
+
+	return false;
 }

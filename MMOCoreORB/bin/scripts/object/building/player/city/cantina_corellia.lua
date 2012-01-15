@@ -42,6 +42,13 @@
 
 
 object_building_player_city_cantina_corellia = object_building_player_city_shared_cantina_corellia:new {
+	templateType = RECREATIONBUILDING,	
+	medicalRating = 100,
+
+	healthWoundRegenRate = 0,
+	actionWoundRegenRate = 0,
+	mindWoundRegenRate = 100,
+	
 	lotSize = 5,
 	baseMaintenanceRate = 0,
 	gameObjectType = 518,

@@ -88,12 +88,14 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/GarageArea.cpp \
+				server/zone/objects/area/CampSiteActiveArea.cpp \
 				server/zone/objects/area/MissionSpawnActiveArea.cpp \
 				server/zone/objects/area/MissionReconActiveArea.cpp \
 				server/zone/objects/area/SpawnArea.cpp \
 				server/zone/objects/area/DynamicSpawnArea.cpp \
 				server/zone/objects/area/StaticSpawnArea.cpp \
 				server/zone/objects/area/SpawnObserver.cpp \
+				server/zone/objects/area/CampSiteObserver.cpp \
 				server/zone/objects/factorycrate/FactoryCrate.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
@@ -106,7 +108,6 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/tangible/consumable/Food.cpp \
 				server/zone/objects/tangible/consumable/Drink.cpp \
 				server/zone/objects/tangible/loot/LootkitObject.cpp \
-				server/zone/objects/tangible/camp/CampKit.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/vendor/VendorCreature.cpp \
 				server/zone/objects/creature/informant/InformantCreature.cpp \
@@ -162,7 +163,7 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
 				server/zone/objects/building/city/CityHallObject.cpp \
-				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
+				server/zone/objects/building/hospital/HospitalBuildingObject.cpp \
 				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
 				server/zone/objects/building/travel/TravelBuildingObject.cpp \
 				server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
@@ -284,6 +285,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/LootSchematicMenuComponent.cpp \
+		server/zone/objects/tangible/components/CampKitMenuComponent.cpp \
+		server/zone/objects/tangible/components/CampTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.cpp \
 		server/zone/objects/scene/components/ObjectMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerZoneComponent.cpp \
@@ -366,6 +369,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/scene/WorldCoordinates.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
+		server/zone/objects/area/CampSiteActiveAreaImplementation.cpp \
 		server/zone/objects/area/SpawnAreaImplementation.cpp \
 		server/zone/objects/area/DynamicSpawnAreaImplementation.cpp \
 		server/zone/objects/area/StaticSpawnAreaImplementation.cpp \
@@ -552,6 +556,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/params/RangedIntCustomizationVariables.cpp \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \
+		server/zone/templates/tangible/CampStructureTemplate.cpp \
 		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
 		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \

@@ -43,10 +43,7 @@
 
 object_tangible_scout_camp_camp_luxury = object_tangible_scout_camp_shared_camp_luxury:new {
 	templateType = CAMPKIT,
-	campType = 5,
-	duration = 3600,
-	radius = 24,
-	experience = 1250,
+	objectMenuComponent = "CampKitMenuComponent",
 	spawnObjectTemplate = "object/building/poi/scout_camp_s5.iff",
 
 	numberExperimentalProperties = {1, 1, 1, 1},

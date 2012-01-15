@@ -46,6 +46,7 @@
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/templates/tangible/FireworkObjectTemplate.h"
 #include "server/zone/templates/tangible/CampKitTemplate.h"
+#include "server/zone/templates/tangible/CampStructureTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
 #include "server/zone/templates/universe/SharedJediManagerTemplate.h"
@@ -59,6 +60,8 @@
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/templates/tangible/tool/SlicingToolTemplate.h"
 #include "server/zone/templates/tangible/CloningBuildingObjectTemplate.h"
+#include "server/zone/templates/tangible/HospitalBuildingObjectTemplate.h"
+#include "server/zone/templates/tangible/RecreationBuildingObjectTemplate.h"
 #include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
 #include "server/zone/templates/tangible/DeedTemplate.h"
 #include "server/zone/templates/tangible/VehicleDeedTemplate.h"
@@ -352,6 +355,8 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<VehicleDeedTemplate>(SharedObjectTemplate::VEHICLEDEED);
 	templateFactory.registerObject<MissionTerminalTemplate>(SharedObjectTemplate::MISSIONTERMINAL);
 	templateFactory.registerObject<CloningBuildingObjectTemplate>(SharedObjectTemplate::CLONINGBUILDING);
+	templateFactory.registerObject<HospitalBuildingObjectTemplate>(SharedObjectTemplate::HOSPITALBUILDING);
+	templateFactory.registerObject<RecreationBuildingObjectTemplate>(SharedObjectTemplate::RECREATIONBUILDING);
 	templateFactory.registerObject<DraftSchematicObjectTemplate>(SharedObjectTemplate::DRAFTSCHEMATIC);
 	templateFactory.registerObject<NonPlayerCreatureObjectTemplate>(SharedObjectTemplate::NPCCREATURE);
 	templateFactory.registerObject<FactoryObjectTemplate>(SharedObjectTemplate::FACTORY);
@@ -370,8 +375,8 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<ContainerTemplate>(SharedObjectTemplate::CONTAINER);
 	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
 	templateFactory.registerObject<VendorCreatureTemplate>(SharedObjectTemplate::VENDORCREATURE);
+	templateFactory.registerObject<CampStructureTemplate>(SharedObjectTemplate::CAMPSTRUCTURE);
 }
-
 
 void TemplateManager::registerFunctions() {
 	//lua generic
@@ -519,6 +524,9 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CONTAINER", SharedObjectTemplate::CONTAINER);
 	luaTemplatesInstance->setGlobalInt("ELEVATORTERMINAL", SharedObjectTemplate::ELEVATORTERMINAL);
 	luaTemplatesInstance->setGlobalInt("VENDORCREATURE", SharedObjectTemplate::VENDORCREATURE);
+	luaTemplatesInstance->setGlobalInt("CAMPSTRUCTURE", SharedObjectTemplate::CAMPSTRUCTURE);
+	luaTemplatesInstance->setGlobalInt("HOSPITALBUILDING", SharedObjectTemplate::HOSPITALBUILDING);
+	luaTemplatesInstance->setGlobalInt("RECREATIONBUILDING", SharedObjectTemplate::RECREATIONBUILDING);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

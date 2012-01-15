@@ -151,6 +151,9 @@ public:
 	const static int CONTAINER = 0x4000020;
 	const static int VENDORCREATURE = 0x4000021;
 	const static int LOOTSCHEMATIC = 0x4000022;
+	const static int CAMPSTRUCTURE = 0x4000023;
+	const static int HOSPITALBUILDING = 0x4000024;
+	const static int RECREATIONBUILDING = 0x4000025;
 
 public:
 	SharedObjectTemplate();
@@ -511,6 +514,14 @@ public:
 		return false;
 	}
 
+	virtual bool isHospitalBuildingObjectTemplate() {
+		return false;
+	}
+
+	virtual bool isRecreationBuildingObjectTemplate() {
+		return false;
+	}
+
 	virtual bool isNonPlayerCreatureObjectTemplate() {
 		return false;
 	}
@@ -556,6 +567,10 @@ public:
 	}
 
 	virtual bool isCampKitTemplate() {
+		return false;
+	}
+
+	virtual bool isCampStructureTemplate() {
 		return false;
 	}
 

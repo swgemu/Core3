@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISHOSPITALBUILDINGOBJECT__,RPC_ISRECREATIONALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -543,17 +543,30 @@ bool BuildingObject::isBuildingObject() {
 		return _implementation->isBuildingObject();
 }
 
-bool BuildingObject::isMedicalBuildingObject() {
+bool BuildingObject::isHospitalBuildingObject() {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISMEDICALBUILDINGOBJECT__);
+		DistributedMethod method(this, RPC_ISHOSPITALBUILDINGOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isMedicalBuildingObject();
+		return _implementation->isHospitalBuildingObject();
+}
+
+bool BuildingObject::isRecreationalBuildingObject() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISRECREATIONALBUILDINGOBJECT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRecreationalBuildingObject();
 }
 
 void BuildingObject::setSignObject(SignObject* sign) {
@@ -1008,7 +1021,12 @@ bool BuildingObjectImplementation::isBuildingObject() {
 	return true;
 }
 
-bool BuildingObjectImplementation::isMedicalBuildingObject() {
+bool BuildingObjectImplementation::isHospitalBuildingObject() {
+	// server/zone/objects/building/BuildingObject.idl():  		return false;
+	return false;
+}
+
+bool BuildingObjectImplementation::isRecreationalBuildingObject() {
 	// server/zone/objects/building/BuildingObject.idl():  		return false;
 	return false;
 }
@@ -1172,8 +1190,11 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISBUILDINGOBJECT__:
 		resp->insertBoolean(isBuildingObject());
 		break;
-	case RPC_ISMEDICALBUILDINGOBJECT__:
-		resp->insertBoolean(isMedicalBuildingObject());
+	case RPC_ISHOSPITALBUILDINGOBJECT__:
+		resp->insertBoolean(isHospitalBuildingObject());
+		break;
+	case RPC_ISRECREATIONALBUILDINGOBJECT__:
+		resp->insertBoolean(isRecreationalBuildingObject());
 		break;
 	case RPC_SETSIGNOBJECT__SIGNOBJECT_:
 		setSignObject(static_cast<SignObject*>(inv->getObjectParameter()));
@@ -1342,8 +1363,12 @@ bool BuildingObjectAdapter::isBuildingObject() {
 	return (static_cast<BuildingObject*>(stub))->isBuildingObject();
 }
 
-bool BuildingObjectAdapter::isMedicalBuildingObject() {
-	return (static_cast<BuildingObject*>(stub))->isMedicalBuildingObject();
+bool BuildingObjectAdapter::isHospitalBuildingObject() {
+	return (static_cast<BuildingObject*>(stub))->isHospitalBuildingObject();
+}
+
+bool BuildingObjectAdapter::isRecreationalBuildingObject() {
+	return (static_cast<BuildingObject*>(stub))->isRecreationalBuildingObject();
 }
 
 void BuildingObjectAdapter::setSignObject(SignObject* sign) {

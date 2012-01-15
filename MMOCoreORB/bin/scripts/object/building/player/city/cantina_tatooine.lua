@@ -42,6 +42,13 @@
 
 
 object_building_player_city_cantina_tatooine = object_building_player_city_shared_cantina_tatooine:new {
+	templateType = RECREATIONBUILDING,	
+	medicalRating = 100,	
+
+	healthWoundRegenRate = 0,
+	actionWoundRegenRate = 0,
+	mindWoundRegenRate = 100,
+
 	lotSize = 5,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "lok", "tatooine"},

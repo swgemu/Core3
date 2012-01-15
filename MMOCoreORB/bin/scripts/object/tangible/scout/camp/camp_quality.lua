@@ -43,10 +43,7 @@
 
 object_tangible_scout_camp_camp_quality = object_tangible_scout_camp_shared_camp_quality:new {
 	templateType = CAMPKIT,
-	campType = 3,
-	duration = 3600,
-	radius = 12,
-	experience = 1000,
+	objectMenuComponent = "CampKitMenuComponent",
 	spawnObjectTemplate = "object/building/poi/scout_camp_s3.iff",
 
 	numberExperimentalProperties = {1, 1, 1, 1},

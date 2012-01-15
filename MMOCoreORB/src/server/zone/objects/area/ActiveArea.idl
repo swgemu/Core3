@@ -87,7 +87,7 @@ class ActiveArea extends SceneObject {
 	public abstract boolean isRegion() {
 		return false;
 	}
-	
+
 	public boolean isNoBuildArea() {
 		return noBuildArea;
 	}
@@ -106,5 +106,9 @@ class ActiveArea extends SceneObject {
 		super.setRadius(r);
 		
 		radius2 = r * r;
+	}
+	
+	public abstract boolean isCampArea() {
+		return false;
 	}
 }

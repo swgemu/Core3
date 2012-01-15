@@ -35,6 +35,8 @@ class CellObject;
 
 using namespace server::zone::objects::cell;
 
+#include "server/zone/templates/tangible/RecreationBuildingObjectTemplate.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -48,6 +50,12 @@ namespace recreation {
 class RecreationBuildingObject : public BuildingObject {
 public:
 	RecreationBuildingObject();
+
+	bool isRecreationalBuildingObject();
+
+	void onEnter(CreatureObject* player);
+
+	void onExit(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -81,6 +89,12 @@ public:
 	RecreationBuildingObjectImplementation();
 
 	RecreationBuildingObjectImplementation(DummyConstructorParameter* param);
+
+	bool isRecreationalBuildingObject();
+
+	void onEnter(CreatureObject* player);
+
+	void onExit(CreatureObject* player);
 
 	WeakReference<RecreationBuildingObject*> _this;
 
@@ -124,6 +138,12 @@ public:
 	RecreationBuildingObjectAdapter(RecreationBuildingObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	bool isRecreationalBuildingObject();
+
+	void onEnter(CreatureObject* player);
+
+	void onExit(CreatureObject* player);
 
 };
 

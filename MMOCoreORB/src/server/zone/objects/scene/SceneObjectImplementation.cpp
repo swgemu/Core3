@@ -1236,3 +1236,17 @@ SceneObject* SceneObjectImplementation::getParent() {
 SortedVector<ManagedReference<Observer* > >* SceneObjectImplementation::getObservers(unsigned int eventType) {
 	return observerEventMap.getObservers(eventType);
 }
+
+bool SceneObjectImplementation::isInWater() {
+	if (getZone() == NULL) {
+		error("Zone is NULL SceneObjectImplementation::isInWater");
+		return false;
+	}
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+	if (planetManager == NULL) {
+		error("Unable to get PlanetManager SceneObjectImplementation::isInWater");
+		return false;
+	}
+
+	return planetManager->isInWater(getPositionX(), getPositionY());
+}

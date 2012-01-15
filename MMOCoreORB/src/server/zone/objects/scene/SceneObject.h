@@ -193,6 +193,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
+#include "server/zone/objects/scene/ObserverType.h"
+
 #include "server/zone/managers/templates/PlanetMapCategory.h"
 
 #include "server/zone/managers/templates/TemplateManager.h"
@@ -586,6 +588,8 @@ public:
 
 	bool isPsgArmorObject();
 
+	bool isLairObject();
+
 	bool isCellObject();
 
 	bool isTangibleObject();
@@ -633,6 +637,10 @@ public:
 	bool isFishingBait();
 
 	bool isAttachment();
+
+	bool isCampKit();
+
+	bool isCampStructure();
 
 	void setGameObjectType(unsigned int type);
 
@@ -703,6 +711,8 @@ public:
 	void createChildObjects();
 
 	void initializeChildObject(SceneObject* controllerObject);
+
+	bool isInWater();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -1134,6 +1144,8 @@ public:
 
 	virtual bool isPsgArmorObject();
 
+	virtual bool isLairObject();
+
 	virtual bool isCellObject();
 
 	virtual bool isTangibleObject();
@@ -1181,6 +1193,10 @@ public:
 	bool isFishingBait();
 
 	virtual bool isAttachment();
+
+	virtual bool isCampKit();
+
+	virtual bool isCampStructure();
 
 	void setGameObjectType(unsigned int type);
 
@@ -1251,6 +1267,8 @@ public:
 	virtual void createChildObjects();
 
 	virtual void initializeChildObject(SceneObject* controllerObject);
+
+	bool isInWater();
 
 	WeakReference<SceneObject*> _this;
 
@@ -1585,6 +1603,8 @@ public:
 
 	bool isPsgArmorObject();
 
+	bool isLairObject();
+
 	bool isCellObject();
 
 	bool isTangibleObject();
@@ -1632,6 +1652,10 @@ public:
 	bool isFishingBait();
 
 	bool isAttachment();
+
+	bool isCampKit();
+
+	bool isCampStructure();
 
 	void setGameObjectType(unsigned int type);
 
@@ -1682,6 +1706,8 @@ public:
 	void createChildObjects();
 
 	void initializeChildObject(SceneObject* controllerObject);
+
+	bool isInWater();
 
 protected:
 	String _param0_info__String_bool_;

@@ -46,58 +46,123 @@ package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.structure.StructureObject;
+import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.area.ActiveArea;
-include server.zone.objects.area.CampVisitorList;
-import server.zone.objects.area.events.CampDespawnEvent;
+import server.zone.objects.area.CampSiteObserver;
+import server.zone.objects.area.events.CampDespawnTask;
+import server.zone.objects.area.events.CampAbandonTask;
+include server.zone.templates.tangible.CampStructureTemplate;
 import system.lang.ref.Reference;
+import system.lang.Time;
 
 class CampSiteActiveArea extends ActiveArea {
-	protected SceneObject spawnedObject;
-	
-	protected float currentXP;
-	protected byte campType;
-	protected byte aggroMod;
 
-	protected float areaRange;
+	protected StructureObject camp;
+	protected Terminal terminal;
 
 	@dereferenced
-	protected Vector<SceneObject> campObjects;
+	transient protected Vector<unsigned long> visitors;
 	
-	@dereferenced
-	protected CampVisitorList visitors;
+	protected CampSiteObserver campObserver;
 
-	protected boolean abandoned;
-
-	protected CampDespawnEvent despawnEvent;
-	/*CampDespawnEvent* despawnEvent;
-	CampAbandonEvent* abandonEvent;*/
-
-	protected int maxXP;
-	protected byte campModifier;
-	protected int duration;
+	protected CampAbandonTask abandonTask;
+	protected CampDespawnTask despawnTask;
 	
-	CreatureObject campOwner;
+	protected CreatureObject campOwner;
+	
+	protected transient unsigned int timeCreated;
+	protected transient boolean abandoned;
 
-	@dereferenced
-	protected Time placementTime;
+	protected transient int currentXp;
+	
+	protected CampStructureTemplate campStructureData;
+	
+	// 1 Hour Minutes
+	public final static int DESPAWNTIME = 6000000;
+	
+	// 1 minute
+	public final static int ABANDONTIME = 60000;
 	
 	public CampSiteActiveArea() {
-		currentXP = 0;
-		campType = 0;
-		aggroMod = 0;
-		areaRange = 0;
-		
-		abandoned = false;
-		maxXP = 0;
-		campModifier = 0;
-		duration = 0;
 		Logger.setLoggingName("CampsiteActiveArea");
-	}
-
-	public void notifyEnter(SceneObject player) {
-		if (!player.isPlayerCreature())
-			return;
-		
+		timeCreated = System.getTime();
+		abandoned = false;
+		currentXp = 0;
+		campOwner = null;
+		camp = null;
+		terminal = null;
+		abandonTask = null;
+		despawnTask = null;
 	}
 	
+	public native void initializeTransientMembers();
+	
+	@local
+	public native void init(CampStructureTemplate campData);
+
+	private native void startTasks();
+	
+	public native void notifyEnter(SceneObject player);
+	
+	public native void notifyExit(SceneObject player);
+
+	public void setTerminal(Terminal term) {
+		terminal = term;
+	}
+	
+	public void setOwner(CreatureObject player) {
+		campOwner = player;
+	}
+	
+	public void setCamp(StructureObject c) {
+		camp = c;
+	}
+
+	public int getMedicalRating() {
+		return campStructureData.getMedicalRating();
+	}
+	
+	public int getHealthWoundRegenRate() {
+		return campStructureData.getHealthWoundRegenRate();
+	}
+	
+	public int getActionWoundRegenRate() {
+		return campStructureData.getActionWoundRegenRate();
+	}
+	
+	public int getMindWoundRegenRate() {
+		return campStructureData.getMindWoundRegenRate();
+	}
+
+	public float getAggroMod() {
+		return campStructureData.getAggroMod();
+	}
+	
+	public abstract boolean isCampArea() {
+		return true;
+	}
+	
+	public int getVisitorCount() {
+		return visitors.size();
+	}
+	
+	@dereferenced
+	public unsigned int getUptime() {
+		return System.getTime() - timeCreated;
+	}
+	
+	public boolean isAbandoned() {
+		return abandoned;
+	}
+	
+	public native int notifyHealEvent(long quantity);
+	
+	public native int notifyCombatEvent();
+	
+	public native void abandonCamp();
+	
+	public native boolean despawnCamp();
+	
+	public native void assumeOwnership(CreatureObject player);
 }

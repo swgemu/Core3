@@ -42,7 +42,102 @@
 
 
 object_building_poi_scout_camp_s4 = object_building_poi_shared_scout_camp_s4:new {
+templateType = CAMPSTRUCTURE,
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	basePowerRate = 0,
 
+	medicalRating = 90,	
+
+	healthWoundRegenRate = 80,
+	actionWoundRegenRate = 80,
+	mindWoundRegenRate = 0,
+	
+	aggroMod = 75,
+	duration = 3600,
+	radius = 20,
+	experience = 0,
+	skillRequired = 95,
+
+	childObjects = {
+		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
+			x = -4.5, z = 0, y = 12.3, 
+			ox = 0, oy = .95, oz = 0, ow = 0.1, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/campfire_logs_fresh.iff", 
+			x = 1, z = 0, y = 0, 
+			ox = 0, oy = 0, oz = 0, ow = 0, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/static/particle/particle_campfire_style_1.iff", 
+			x = 1, z = 0, y = 0, 
+			ox = 0, oy = 0, oz = 0, ow = 0, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/crafting/station/public_food_station.iff", 
+			x = 10.5, z = 0, y = -2, 
+			ox = 0, oy = .72, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/crafting/station/public_weapon_station.iff", 
+			x = 4.5, z = 0, y = 13.5, 
+			ox = 0, oy = .72, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
+			x = -3.1, z = 0, y = 1.7, 
+			ox = 0, oy = 0, oz = .0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
+			x = -4.7, z = 0, y = 3.6, 
+			ox = 0, oy = .7, oz = 0, ow = .75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
+			x = -2.5, z = 0, y = -.3, 
+			ox = 0, oy = .7, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
+			x = -4.1, z = 0, y = -1.7, 
+			ox = 0, oy = 0, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
+			x = -5.7, z = 0, y = -0.2, 
+			ox = 0, oy = -.7, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
+			x = -7.7, z = 0, y = 1.7, 
+			ox = 0, oy = 0, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
+			x = -7.7, z = 0, y = 4.0, 
+			ox = 0, oy = 1, oz = 0, ow = 0, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/furniture/all/frn_all_gaming_kiosk_s01.iff", 
+			x = -7.7, z = 0, y = 4.0, 
+			ox = 0, oy = 1, oz = 0, ow = 0, 
+			cellid = -1, 
+			containmentType = -1},
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_poi_scout_camp_s4, "object/building/poi/scout_camp_s4.iff")

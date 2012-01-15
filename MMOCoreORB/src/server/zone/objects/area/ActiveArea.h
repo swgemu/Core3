@@ -72,6 +72,8 @@ public:
 
 	void setRadius(float r);
 
+	bool isCampArea();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -130,6 +132,8 @@ public:
 	void setNoBuildArea(bool val);
 
 	void setRadius(float r);
+
+	virtual bool isCampArea();
 
 	WeakReference<ActiveArea*> _this;
 
@@ -197,6 +201,8 @@ public:
 	void setNoBuildArea(bool val);
 
 	void setRadius(float r);
+
+	bool isCampArea();
 
 };
 

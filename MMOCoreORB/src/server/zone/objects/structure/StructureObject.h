@@ -242,6 +242,8 @@ public:
 
 	bool isStructureObject();
 
+	bool isCampStructure();
+
 	bool isRedeedable();
 
 	AABBTree* getAABBTree();
@@ -418,6 +420,8 @@ public:
 
 	bool isStructureObject();
 
+	bool isCampStructure();
+
 	bool isRedeedable();
 
 	AABBTree* getAABBTree();
@@ -574,6 +578,8 @@ public:
 	void setPublicStructure(bool privacy);
 
 	bool isStructureObject();
+
+	bool isCampStructure();
 
 	bool isRedeedable();
 

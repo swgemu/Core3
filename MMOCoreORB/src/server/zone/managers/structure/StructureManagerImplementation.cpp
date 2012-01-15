@@ -386,7 +386,8 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 		l = (angle & 1) ? structureFootprint->getWidth() : structureFootprint->getLength();
 		w = (angle & 1) ? structureFootprint->getLength() : structureFootprint->getWidth();
 	} else {
-		error("Structure with template '" + structureTemplatePath + "' has no structure footprint.");
+		if(!serverTemplate->isCampStructureTemplate())
+			warning("Structure with template '" + structureTemplatePath + "' has no structure footprint.");
 		zIncreaseWhenNoAvailableFootprint = 5.f;
 	}
 
@@ -469,6 +470,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 
 	structureObject->destroyObjectFromWorld(true);
 	structureObject->destroyObjectFromDatabase(true);
+
 
 	return 0;
 }

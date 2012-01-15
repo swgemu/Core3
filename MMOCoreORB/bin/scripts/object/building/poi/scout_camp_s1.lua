@@ -42,7 +42,60 @@
 
 
 object_building_poi_scout_camp_s1 = object_building_poi_shared_scout_camp_s1:new {
+templateType = CAMPSTRUCTURE,
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	basePowerRate = 0,
+	
+	medicalRating = 65,	
 
+	healthWoundRegenRate = 20,
+	actionWoundRegenRate = 20,
+	mindWoundRegenRate = 0,
+
+	aggroMod = 0,
+	duration = 3600,
+	radius = 20,
+	experience = 640,
+	skillRequired = 5,
+
+	childObjects = {
+		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
+			x = 2.6, z = 0, y = -1.3, 
+			ox = 0, oy = .5, oz = 0, ow = -1.7, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/campfire_logs_ash.iff", 
+			x = -.5, z = 0, y = -.15, 
+			ox = 0, oy = 0, oz = 0, ow = 0, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/static/particle/particle_campfire_style_1.iff", 
+			x = -.5, z = 0, y = -.15,  
+			ox = 0, oy = 0, oz = 0, ow = 0, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s1.iff", 
+			x = -0.7, z = 0, y = 1.5, 
+			ox = 0, oy = .997055, oz = .0, ow = .0766933, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s1.iff", 
+			x = .6, z = 0, y = -1.3, 
+			ox = 0, oy = -.44, oz = 0, ow = .89, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s1.iff", 
+			x = -2, z = 0, y = -1, 
+			ox = 0, oy = .5, oz = 0, ow = .87, 
+			cellid = -1, 
+			containmentType = -1},
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_poi_scout_camp_s1, "object/building/poi/scout_camp_s1.iff")

@@ -137,9 +137,7 @@ public:
 			return false;
 		}
 
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-
-		if (playerManager->getMedicalFacilityRating(enhancer) <= 0) {
+		if (enhancer->getSkillMod("private_med_modifier") <= 0) {
 			enhancer->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		}

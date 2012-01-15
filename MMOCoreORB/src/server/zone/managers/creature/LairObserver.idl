@@ -90,4 +90,8 @@ class LairObserver extends Observer implements Logger {
 		minDifficulty = min;
 		maxDifficulty = max;
 	}
+	
+	public boolean isLairObserver() {
+		return true;
+	}
 }

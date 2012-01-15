@@ -42,6 +42,13 @@
 
 
 object_building_corellia_hospital_corellia = object_building_corellia_shared_hospital_corellia:new {
+	templateType = HOSPITALBUILDING,	
+	medicalRating = 100,	
+
+	healthWoundRegenRate = 100,
+	actionWoundRegenRate = 100,
+	mindWoundRegenRate = 0,
+
 	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 	childObjects = {

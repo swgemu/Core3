@@ -259,7 +259,7 @@ void CraftingToolImplementation::sendStart(CreatureObject* player) {
 
 	/// Object Controller Message 102 - Schematic List
 	ObjectControllerMessage* ocm = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x102);
+			player->getObjectID(), 0x1B, 0x102);
 	ocm->insertLong(getObjectID());
 
 	if (craftingStation != NULL)
@@ -305,7 +305,7 @@ void CraftingToolImplementation::sendToolStartFailure(CreatureObject* player) {
 
 	// Start Object Controller **(Failed to start crafting Session************
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x010C);
+			player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x10F);
 	objMsg->insertInt(0);
 	objMsg->insertByte(0);
@@ -370,21 +370,21 @@ void CraftingToolImplementation::closeCraftingWindow(CreatureObject* player,
 		int clientCounter) {
 
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x010C);
+			player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x10A);
 	objMsg->insertInt(1);
 	objMsg->insertByte(clientCounter);
 
 	player->sendMessage(objMsg);
 
-	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x10A);
 	objMsg->insertInt(0);
 	objMsg->insertByte(clientCounter);
 
 	player->sendMessage(objMsg);
 
-	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
+	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x01C2);
 	objMsg->insertByte(clientCounter);
 
 	player->sendMessage(objMsg);
@@ -587,7 +587,7 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(
 
 	// Object Controller w/ Ingredients ***************************
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x0103);
+			player->getObjectID(), 0x1B, 0x0103);
 	objMsg->insertLong(getObjectID()); // Crafting Tool Object ID
 	objMsg->insertLong(manufactureSchematic->getObjectID());// Manufacture Schematic Object ID
 	objMsg->insertLong(prototype->getObjectID()); // Crafting Tangible Object ID
@@ -797,7 +797,7 @@ void CraftingToolImplementation::sendIngredientRemoveSuccess(
 	// Object Controller ********************************************
 	// Updates the screen with the resource removal
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x010C);
+			player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x108);
 	objMsg->insertInt(0);
 	objMsg->insertByte(clientCounter);
@@ -823,7 +823,7 @@ void CraftingToolImplementation::sendSlotMessage(CreatureObject* player,
 	// Object Controller ********************************************
 	// Send Bad Slot message
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x010C);
+			player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x107);
 	objMsg->insertInt(message);
 	objMsg->insertByte(counter);
@@ -998,7 +998,7 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player,
 	// Start Object Controller *******************************************
 	// Send the results
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x01BE);
+			player->getObjectID(), 0x1B, 0x01BE);
 	objMsg->insertInt(0x109);
 
 	objMsg->insertInt(assemblyResult); // Assembly Results
@@ -1076,7 +1076,7 @@ void CraftingToolImplementation::finishAssembly(CreatureObject* player,
 
 	// Start Object Controller **************************************
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x01BE);
+			player->getObjectID(), 0x1B, 0x01BE);
 	objMsg->insertInt(0x109);
 	objMsg->insertInt(4);
 
@@ -1199,7 +1199,7 @@ void CraftingToolImplementation::experiment(CreatureObject* player,
 	player->sendMessage(dtano3);
 
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x0113);
+			player->getObjectID(), 0x1B, 0x0113);
 	objMsg->insertInt(0x105);
 
 	objMsg->insertInt(experimentationResult); // Experimentation Result
@@ -1295,7 +1295,7 @@ void CraftingToolImplementation::customization(CreatureObject* player,
 
 	//Object Controller
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x010C);
+			player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x15A);
 	objMsg->insertInt(0);
 	objMsg->insertByte(0);
@@ -1319,7 +1319,7 @@ void CraftingToolImplementation::finishStage1(CreatureObject* player,
 
 	//Object Controller
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x01BE);
+			player->getObjectID(), 0x1B, 0x01BE);
 	objMsg->insertInt(0x109);
 	objMsg->insertInt(4);
 	objMsg->insertByte(clientCounter);
@@ -1347,7 +1347,7 @@ void CraftingToolImplementation::finishStage2(CreatureObject* player,
 
 	//Object Controller
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x0B, 0x010C);
+			player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x10A);
 	objMsg->insertInt(1);
 	objMsg->insertByte(clientCounter); //?!?!
@@ -1428,7 +1428,7 @@ void CraftingToolImplementation::createManfSchematic(CreatureObject* player,
 
 		//Object Controller
 		ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-				player->getObjectID(), 0x0B, 0x010C);
+				player->getObjectID(), 0x1B, 0x010C);
 		objMsg->insertInt(0x10B);
 		objMsg->insertInt(1);
 		objMsg->insertByte(clientCounter);

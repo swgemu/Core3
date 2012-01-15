@@ -33,7 +33,11 @@ void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* 
 }
 
 void NonPlayerCreatureObjectImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
-	if (isDead() || getZone() == NULL || time == 0 || !isAggressiveTo(target))
+
+	if (isDead() || getZone() == NULL || time == 0)
+		return;
+
+	if(!isAggressiveTo(target))
 		return;
 
 	// TODO: another formula that needs tweaking (after player levels get looked at)

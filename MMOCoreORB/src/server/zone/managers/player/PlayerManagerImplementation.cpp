@@ -1634,39 +1634,6 @@ void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* playe
 		player->sendSystemMessage(msgPlayer.toString());
 }
 
-int PlayerManagerImplementation::getMedicalFacilityRating(CreatureObject* creature) {
-	/*if (!isInBuilding() && !isInCamp()) //TODO: Add in search for nearby surgical droid
-		return 0;
-
-	int buildingType = getBuildingType();
-
-	if (buildingType == BuildingObjectImplementation::MEDICAL_CENTER || buildingType == BuildingObjectImplementation::CLONING_FACILITY)
-		return 100;
-
-	if (isInCamp())
-		return getCampModifier();*/
-
-	SceneObject* rootParent = creature->getRootParent();
-
-	if (rootParent == NULL)
-		return 0;
-
-	if (rootParent->isBuildingObject()) {
-		BuildingObject* building = cast<BuildingObject*>( rootParent);
-
-		if (building->isCloningBuildingObject() || building->isMedicalBuildingObject())
-			return 100;
-		else
-			return 0;
-
-	} else
-		return 0;
-
-	// check for camps
-
-	return 65;
-}
-
 int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
 	String buffname = "medical_enhance_" + BuffAttribute::getName(attribute);
 	uint32 buffcrc = buffname.hashCode();

@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CAMPDESPAWNEVENT_H_
-#define CAMPDESPAWNEVENT_H_
+#ifndef CAMPDESPAWNTASK_H_
+#define CAMPDESPAWNTASK_H_
 
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 
@@ -53,16 +53,12 @@ namespace objects {
 namespace area {
 namespace events {
 
-class CampDespawnEvent: public Task {
+class CampDespawnTask: public Task {
 	ManagedReference<CampSiteActiveArea*> campSite;
-	bool ended;
-	bool abandoned;
 
 public:
-	CampDespawnEvent(CampSiteActiveArea* camp, bool abandon) {
+	CampDespawnTask(CampSiteActiveArea* camp) {
 		campSite = camp;
-		ended = false;
-		abandoned = abandon;
 	}
 
 	void run() {
@@ -70,18 +66,8 @@ public:
 			return;
 
 		Locker locker(campSite);
-
-		if (abandoned)
-			campSite->abandonCamp();
-		else
-			campSite->despawnCamp();
+		campSite->despawnCamp();
 	}
-
-	void clearCampSite() {
-		campSite = NULL;
-	}
-
-
 };
 
 
@@ -91,4 +77,4 @@ public:
 }
 }
 
-#endif /* CAMPDESPAWNEVENT_H_ */
+#endif /* CAMPDESPAWNTASK_H_ */

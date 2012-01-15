@@ -84,6 +84,8 @@ public:
 
 	void setDifficulty(int min, int max);
 
+	bool isLairObserver();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -139,6 +141,8 @@ public:
 
 	void setDifficulty(int min, int max);
 
+	bool isLairObserver();
+
 	WeakReference<LairObserver*> _this;
 
 	operator const LairObserver*();
@@ -193,6 +197,8 @@ public:
 	void checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate);
 
 	void setDifficulty(int min, int max);
+
+	bool isLairObserver();
 
 };
 

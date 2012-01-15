@@ -42,6 +42,13 @@
 
 
 object_building_corellia_cantina_corellia = object_building_corellia_shared_cantina_corellia:new {
+	templateType = RECREATIONBUILDING,	
+	medicalRating = 100,	
+
+	healthWoundRegenRate = 0,
+	actionWoundRegenRate = 0,
+	mindWoundRegenRate = 100,
+
 	gameObjectType = 518,
 	planetMapCategory = "cantina"
 }

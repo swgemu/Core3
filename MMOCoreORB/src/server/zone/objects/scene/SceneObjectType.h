@@ -33,7 +33,7 @@ public:
 	const static int MUNICIPALBUILDING = 0x201;
 	const static int FACTIONPERKBUILDING = 0x203;
 	const static int TUTORIALBUILDING = 0x204;
-	const static int MEDICALBUILDING = 0x205;
+	const static int HOSPITALBUILDING = 0x205;
 	const static int RECREATIONBUILDING = 0x206;
 	const static int CLONINGBUILDING = 0x207;
 	const static int TRAVELBUILDING = 0x208;
@@ -266,6 +266,7 @@ public:
 	const static int GARAGEAREA = 0x2000006;
 	const static int ACTIVEAREA = 0x2000007;
 	const static int LAIRSPAWNAREA = 0x2000008;
+	const static int CAMPAREA = 0x2000009;
 
 	const static int AIGROUP = 0x4000000;
 	const static int HERDGROUP = 0x4000001;

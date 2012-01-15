@@ -42,6 +42,13 @@
 
 
 object_building_naboo_hospital_naboo = object_building_naboo_shared_hospital_naboo:new {
+	templateType = HOSPITALBUILDING,	
+	medicalRating = 100,
+
+	healthWoundRegenRate = 100,
+	actionWoundRegenRate = 100,
+	mindWoundRegenRate = 0,
+	
 	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 

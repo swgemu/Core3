@@ -14,7 +14,7 @@
  *	LairObserverStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_SETDIFFICULTY__INT_INT_};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_SETDIFFICULTY__INT_INT_,RPC_ISLAIROBSERVER__};
 
 LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
@@ -131,6 +131,19 @@ void LairObserver::setDifficulty(int min, int max) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setDifficulty(min, max);
+}
+
+bool LairObserver::isLairObserver() {
+	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISLAIROBSERVER__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isLairObserver();
 }
 
 DistributedObjectServant* LairObserver::_getImplementation() {
@@ -322,6 +335,11 @@ void LairObserverImplementation::setDifficulty(int min, int max) {
 	maxDifficulty = max;
 }
 
+bool LairObserverImplementation::isLairObserver() {
+	// server/zone/managers/creature/LairObserver.idl():  		return true;
+	return true;
+}
+
 /*
  *	LairObserverAdapter
  */
@@ -350,6 +368,9 @@ Packet* LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case RPC_SETDIFFICULTY__INT_INT_:
 		setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case RPC_ISLAIROBSERVER__:
+		resp->insertBoolean(isLairObserver());
 		break;
 	default:
 		return NULL;
@@ -380,6 +401,10 @@ void LairObserverAdapter::checkForHeal(TangibleObject* lair, TangibleObject* att
 
 void LairObserverAdapter::setDifficulty(int min, int max) {
 	(static_cast<LairObserver*>(stub))->setDifficulty(min, max);
+}
+
+bool LairObserverAdapter::isLairObserver() {
+	return (static_cast<LairObserver*>(stub))->isLairObserver();
 }
 
 /*

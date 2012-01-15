@@ -382,15 +382,7 @@ class AiAgent extends CreatureObject {
 	 * @post { }
 	 * @return returns true if its aggressive
 	 */
-	public boolean isAggressiveTo(CreatureObject object) {
-		if (!isAttackableBy(object))
-			return false;
-		
-		if (super.pvpStatusBitmask & CreatureFlag.AGGRESSIVE)
-			return true;
-		
-		return false;
-	}
+	public native boolean isAggressiveTo(CreatureObject object);
 	
 	public void setOblivious() {
 		followState = OBLIVIOUS;

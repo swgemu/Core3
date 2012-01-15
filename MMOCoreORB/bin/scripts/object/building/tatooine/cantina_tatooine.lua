@@ -42,6 +42,13 @@
 
 
 object_building_tatooine_cantina_tatooine = object_building_tatooine_shared_cantina_tatooine:new {
+	templateType = RECREATIONBUILDING,	
+	medicalRating = 100,	
+
+	healthWoundRegenRate = 0,
+	actionWoundRegenRate = 0,
+	mindWoundRegenRate = 100,
+
 	gameObjectType = 518,
 	planetMapCategory = "cantina"
 }

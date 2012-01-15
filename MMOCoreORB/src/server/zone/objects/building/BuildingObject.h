@@ -226,7 +226,9 @@ public:
 
 	bool isBuildingObject();
 
-	bool isMedicalBuildingObject();
+	bool isHospitalBuildingObject();
+
+	bool isRecreationalBuildingObject();
 
 	void setSignObject(SignObject* sign);
 
@@ -381,7 +383,9 @@ public:
 
 	bool isBuildingObject();
 
-	virtual bool isMedicalBuildingObject();
+	virtual bool isHospitalBuildingObject();
+
+	virtual bool isRecreationalBuildingObject();
 
 	void setSignObject(SignObject* sign);
 
@@ -512,7 +516,9 @@ public:
 
 	bool isBuildingObject();
 
-	bool isMedicalBuildingObject();
+	bool isHospitalBuildingObject();
+
+	bool isRecreationalBuildingObject();
 
 	void setSignObject(SignObject* sign);
 

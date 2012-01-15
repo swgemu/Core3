@@ -185,8 +185,6 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native void sendBattleFatigueMessage(CreatureObject player, CreatureObject target);
 	
-	public native int getMedicalFacilityRating(CreatureObject creature);
-	
 	public native void stopWatch(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 	public native void stopListen(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 	public native void startWatch(CreatureObject creature, unsigned long entid);

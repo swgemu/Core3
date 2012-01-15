@@ -48,10 +48,57 @@ import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 import server.zone.objects.cell.CellObject;
+include server.zone.templates.tangible.RecreationBuildingObjectTemplate;
+
 
 class RecreationBuildingObject extends BuildingObject {
 
 	public RecreationBuildingObject() {		
 		Logger.setLoggingName("RecreationBuildingObject");
+	}
+	
+	public boolean isRecreationalBuildingObject() {
+		return true;
+	}
+	
+	/**
+	 * Abstract function that is triggered when a player enters a building.
+	 * This function should only be called from CreatureObject::insertToBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that entered the building
+	 */
+	public void onEnter(CreatureObject player) {
+		
+		RecreationBuildingObjectTemplate recreationTemplate = null;
+		
+		if (super.templateObject.isRecreationBuildingObjectTemplate()) {
+			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
+			
+			player.addSkillMod("private_med_wound_health", recreationTemplate.getHealthWoundRegenRate(), false);			
+			player.addSkillMod("private_med_wound_action", recreationTemplate.getActionWoundRegenRate(), false);			
+			player.addSkillMod("private_med_wound_mind", recreationTemplate.getMindWoundRegenRate(), false);			
+		}
+	}
+	
+	/**
+	 * Abstract function that is triggered when a player exits a building.
+	 * This function should only be called from CreatureObject::removeFromBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that exited the building
+	 */
+	public void onExit(CreatureObject player) {
+		RecreationBuildingObjectTemplate recreationTemplate = null;
+		
+		if (super.templateObject.isRecreationBuildingObjectTemplate()) {
+			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
+			
+			player.addSkillMod("private_med_wound_health", -1 * recreationTemplate.getHealthWoundRegenRate(), false);			
+			player.addSkillMod("private_med_wound_action", -1 * recreationTemplate.getActionWoundRegenRate(), false);			
+			player.addSkillMod("private_med_wound_mind", -1 * recreationTemplate.getMindWoundRegenRate(), false);			
+		}
 	}
 }

@@ -82,6 +82,7 @@ include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.objects.scene.SessionFacadeType;
+include server.zone.objects.scene.ObserverType;
 include server.zone.managers.templates.PlanetMapCategory;
 include server.zone.managers.templates.TemplateManager;
 import server.zone.templates.SharedObjectTemplate;
@@ -1287,6 +1288,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@dirty
+	public abstract boolean isLairObject() {
+		return false;
+	}
+	
+	@dirty
 	public abstract boolean isCellObject() {
 		return false;
 	}
@@ -1403,6 +1409,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dirty
 	public abstract boolean isAttachment() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isCampKit() {
+		return gameObjectType == SceneObjectType.CAMPKIT;
+	}
+	
+	@dirty
+	public abstract boolean isCampStructure() {
 		return false;
 	}
 
@@ -1572,5 +1588,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param controllerObject The object that has this object specified as a "childObject".
 	 */
 	public native abstract void initializeChildObject(SceneObject controllerObject);
+	
+	public native boolean isInWater();
 }
 

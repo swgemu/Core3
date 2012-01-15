@@ -42,6 +42,13 @@
 
 
 object_building_naboo_cantina_naboo = object_building_naboo_shared_cantina_naboo:new {
+	templateType = RECREATIONBUILDING,	
+	medicalRating = 100,	
+
+	healthWoundRegenRate = 0,
+	actionWoundRegenRate = 0,
+	mindWoundRegenRate = 100,
+
 	gameObjectType = 518,
 	planetMapCategory = "cantina"
 }

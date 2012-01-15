@@ -42,10 +42,54 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace terminal {
+
+class Terminal;
+
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class CampSiteObserver;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace area {
 namespace events {
 
-class CampDespawnEvent;
+class CampDespawnTask;
 
 } // namespace events
 } // namespace area
@@ -55,11 +99,29 @@ class CampDespawnEvent;
 
 using namespace server::zone::objects::area::events;
 
-#include "server/zone/objects/area/CampVisitorList.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+namespace events {
+
+class CampAbandonTask;
+
+} // namespace events
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area::events;
+
+#include "server/zone/templates/tangible/CampStructureTemplate.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "system/lang/ref/Reference.h"
+
+#include "system/lang/Time.h"
 
 namespace server {
 namespace zone {
@@ -68,9 +130,53 @@ namespace area {
 
 class CampSiteActiveArea : public ActiveArea {
 public:
+	static const int DESPAWNTIME = 6000000;
+
+	static const int ABANDONTIME = 60000;
+
 	CampSiteActiveArea();
 
+	void initializeTransientMembers();
+
+	void init(CampStructureTemplate* campData);
+
 	void notifyEnter(SceneObject* player);
+
+	void notifyExit(SceneObject* player);
+
+	void setTerminal(Terminal* term);
+
+	void setOwner(CreatureObject* player);
+
+	void setCamp(StructureObject* c);
+
+	int getMedicalRating();
+
+	int getHealthWoundRegenRate();
+
+	int getActionWoundRegenRate();
+
+	int getMindWoundRegenRate();
+
+	float getAggroMod();
+
+	bool isCampArea();
+
+	int getVisitorCount();
+
+	unsigned int getUptime();
+
+	bool isAbandoned();
+
+	int notifyHealEvent(long long quantity);
+
+	int notifyCombatEvent();
+
+	void abandonCamp();
+
+	bool despawnCamp();
+
+	void assumeOwnership(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -98,42 +204,82 @@ namespace area {
 
 class CampSiteActiveAreaImplementation : public ActiveAreaImplementation {
 protected:
-	ManagedReference<SceneObject* > spawnedObject;
+	ManagedReference<StructureObject* > camp;
 
-	float currentXP;
+	ManagedReference<Terminal* > terminal;
 
-	byte campType;
+	Vector<unsigned long long> visitors;
 
-	byte aggroMod;
+	ManagedReference<CampSiteObserver* > campObserver;
 
-	float areaRange;
+	Reference<CampAbandonTask* > abandonTask;
 
-	Vector<ManagedReference<SceneObject* > > campObjects;
+	Reference<CampDespawnTask* > despawnTask;
 
-	CampVisitorList visitors;
+	ManagedReference<CreatureObject* > campOwner;
+
+	unsigned int timeCreated;
 
 	bool abandoned;
 
-	Reference<CampDespawnEvent* > despawnEvent;
+	int currentXp;
 
-	int maxXP;
-
-	byte campModifier;
-
-	int duration;
-
-private:
-	ManagedReference<CreatureObject* > campOwner;
-
-protected:
-	Time placementTime;
+	Reference<CampStructureTemplate* > campStructureData;
 
 public:
+	static const int DESPAWNTIME = 6000000;
+
+	static const int ABANDONTIME = 60000;
+
 	CampSiteActiveAreaImplementation();
 
 	CampSiteActiveAreaImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
+	void init(CampStructureTemplate* campData);
+
+private:
+	void startTasks();
+
+public:
 	void notifyEnter(SceneObject* player);
+
+	void notifyExit(SceneObject* player);
+
+	void setTerminal(Terminal* term);
+
+	void setOwner(CreatureObject* player);
+
+	void setCamp(StructureObject* c);
+
+	int getMedicalRating();
+
+	int getHealthWoundRegenRate();
+
+	int getActionWoundRegenRate();
+
+	int getMindWoundRegenRate();
+
+	float getAggroMod();
+
+	virtual bool isCampArea();
+
+	int getVisitorCount();
+
+	unsigned int getUptime();
+
+	bool isAbandoned();
+
+	int notifyHealEvent(long long quantity);
+
+	int notifyCombatEvent();
+
+	void abandonCamp();
+
+	bool despawnCamp();
+
+	void assumeOwnership(CreatureObject* player);
 
 	WeakReference<CampSiteActiveArea*> _this;
 
@@ -178,7 +324,45 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	void notifyEnter(SceneObject* player);
+
+	void notifyExit(SceneObject* player);
+
+	void setTerminal(Terminal* term);
+
+	void setOwner(CreatureObject* player);
+
+	void setCamp(StructureObject* c);
+
+	int getMedicalRating();
+
+	int getHealthWoundRegenRate();
+
+	int getActionWoundRegenRate();
+
+	int getMindWoundRegenRate();
+
+	float getAggroMod();
+
+	bool isCampArea();
+
+	int getVisitorCount();
+
+	unsigned int getUptime();
+
+	bool isAbandoned();
+
+	int notifyHealEvent(long long quantity);
+
+	int notifyCombatEvent();
+
+	void abandonCamp();
+
+	bool despawnCamp();
+
+	void assumeOwnership(CreatureObject* player);
 
 };
 

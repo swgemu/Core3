@@ -63,6 +63,9 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	attacker->setDefender(defender);
 	defender->addDefender(attacker);
 
+	attacker->notifyObservers(ObserverEventType::STARTCOMBAT, defender, 0);
+	defender->notifyObservers(ObserverEventType::STARTCOMBAT, attacker, 0);
+
 	return success;
 }
 

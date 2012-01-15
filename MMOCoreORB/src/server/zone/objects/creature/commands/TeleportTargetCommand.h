@@ -88,6 +88,10 @@ public:
 				tokenizer.getStringToken(targetName); //If the target wasn't passed in as the target parameter.
 
 			if (tokenizer.hasMoreTokens()) {
+
+				x = tokenizer.getFloatToken();
+				y = tokenizer.getFloatToken();
+
 				tokenizer.getStringToken(planetName);
 				planetName = planetName.toLowerCase();
 				targetZone = targetZone->getZoneServer()->getZone(planetName);
@@ -95,19 +99,17 @@ public:
 				if (targetZone == NULL)
 					throw Exception();
 
-				x = tokenizer.getFloatToken();
-				y = tokenizer.getFloatToken();
-
 				z = targetZone->getHeight(x, y);
 			}
 
-			if (tokenizer.hasMoreTokens()) {
+			if (tokenizer.hasMoreTokens())
 				z = tokenizer.getFloatToken();
+
+			if (tokenizer.hasMoreTokens())
 				parentID = tokenizer.getLongToken();
-			}
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /teleportTarget <targetName> [<planet> <x> <y>] [<z> <parentid>]");
+			creature->sendSystemMessage("SYNTAX: /teleportTarget <x> <y> [<planet>] [<z> <parentID>]");
 			return INVALIDPARAMETERS;
 		}
 

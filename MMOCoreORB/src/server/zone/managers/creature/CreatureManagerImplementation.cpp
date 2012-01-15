@@ -102,9 +102,11 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  	lairObserver->deploy();
  	lairObserver->setLairTemplate(lairTmpl);
  	lairObserver->setDifficulty(minDifficulty, maxDifficulty);
+ 	lairObserver->setObserverType(ObserverType::LAIR);
 
  	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
  	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
+
 
  	zone->transferObject(building, -1, false);
 

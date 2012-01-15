@@ -55,6 +55,7 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.area.ActiveArea;
+import server.zone.objects.area.CampSiteActiveArea;
 import engine.core.ManagedObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
@@ -192,6 +193,10 @@ class CreatureObject extends TangibleObject {
 	
 	@dereferenced
 	protected VectorMap<string, unsigned long> screenPlayStates; 
+	
+	protected transient byte healthWoundHeal;
+	protected transient byte actionWoundHeal;
+	protected transient byte mindWoundHeal;
 	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
@@ -445,6 +450,15 @@ class CreatureObject extends TangibleObject {
 	 * @return unused for now
 	 */
 	public native int healDamage(TangibleObject healer, int damageType, int damage, boolean notifyClient = true);
+	
+	
+	/**
+	 * Heals wound
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
+	public native int healWound(TangibleObject healer, int damageType, int damage, boolean notifyClient = true);
 	
 	/**
 	 * Updates a specific type of the Base HAM
@@ -1000,6 +1014,7 @@ class CreatureObject extends TangibleObject {
 	public native void setMeditateState();
 	
 	public abstract native void activateHAMRegeneration();
+	public abstract native void activatePassiveWoundRegeneration();
 	public abstract native void activateStateRecovery();
 	
 	public void updateTimeOfDeath() {
@@ -1580,5 +1595,6 @@ class CreatureObject extends TangibleObject {
 	public abstract boolean isVendorCreature() {
 		return false;
 	}
-
+	
+	public native CampSiteActiveArea getCurrentCamp();
 }

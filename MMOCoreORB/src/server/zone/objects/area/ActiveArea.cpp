@@ -12,7 +12,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETRADIUS__FLOAT_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -192,6 +192,19 @@ void ActiveArea::setRadius(float r) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setRadius(r);
+}
+
+bool ActiveArea::isCampArea() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCAMPAREA__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCampArea();
 }
 
 DistributedObjectServant* ActiveArea::_getImplementation() {
@@ -389,6 +402,11 @@ void ActiveAreaImplementation::setRadius(float r) {
 	radius2 = r * r;
 }
 
+bool ActiveAreaImplementation::isCampArea() {
+	// server/zone/objects/area/ActiveArea.idl():  		return false;
+	return false;
+}
+
 /*
  *	ActiveAreaAdapter
  */
@@ -435,6 +453,9 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETRADIUS__FLOAT_:
 		setRadius(inv->getFloatParameter());
+		break;
+	case RPC_ISCAMPAREA__:
+		resp->insertBoolean(isCampArea());
 		break;
 	default:
 		return NULL;
@@ -489,6 +510,10 @@ void ActiveAreaAdapter::setNoBuildArea(bool val) {
 
 void ActiveAreaAdapter::setRadius(float r) {
 	(static_cast<ActiveArea*>(stub))->setRadius(r);
+}
+
+bool ActiveAreaAdapter::isCampArea() {
+	return (static_cast<ActiveArea*>(stub))->isCampArea();
 }
 
 /*

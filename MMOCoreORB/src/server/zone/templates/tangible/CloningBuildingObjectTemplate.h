@@ -45,7 +45,6 @@ public:
 		}
 
 		luaItemList.pop();
-
 	}
 
 	CloneSpawnPoint* getRandomSpawnPoint() {

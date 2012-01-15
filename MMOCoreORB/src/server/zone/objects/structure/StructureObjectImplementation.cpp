@@ -143,6 +143,11 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 }
 
 void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
+
+	if(getBaseMaintenanceRate() == 0 && getBasePowerRate() == 0) {
+		return;
+	}
+
 	if (structureMaintenanceTask == NULL) {
 		structureMaintenanceTask = new StructureMaintenanceTask(_this);
 	}
@@ -280,4 +285,8 @@ void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObje
 	} else {
 		setMaintenanceReduced(false);
 	}
+}
+
+bool StructureObjectImplementation::isCampStructure() {
+	return templateObject->isCampStructureTemplate();
 }

@@ -153,12 +153,10 @@ class WoundPack extends PharmaceuticalObject {
 		ZoneServer zoneServer = super.getZoneServer();
 		PlayerManager playerManager = zoneServer.getPlayerManager();
 		
-		float modEnvironment = playerManager.getMedicalFacilityRating(healer);
-		
+		float modEnvironment = 1 + (healer.getSkillMod("private_med_modifier") / 100.0f);	
 		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
-		float modCityBonus = 1; //TODO: Add in medical city bonus
 
-		return (power * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
+		return (power * modEnvironment * (100.0f + modSkill) / 10000.0f);
 	}
 	
 	public float getEffectiveness() {

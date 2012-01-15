@@ -275,7 +275,11 @@ class BuildingObject extends StructureObject {
 		return true;
 	}
 	
-	public abstract boolean isMedicalBuildingObject() {
+	public abstract boolean isHospitalBuildingObject() {
+		return false;
+	}
+	
+	public abstract boolean isRecreationalBuildingObject() {
 		return false;
 	}
 	

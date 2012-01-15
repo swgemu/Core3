@@ -282,8 +282,6 @@ public:
 
 	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 
-	int getMedicalFacilityRating(CreatureObject* creature);
-
 	void stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 
 	void stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
@@ -458,8 +456,6 @@ public:
 
 	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 
-	int getMedicalFacilityRating(CreatureObject* creature);
-
 	void stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 
 	void stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
@@ -606,8 +602,6 @@ public:
 	StructureObject* getInRangeOwnedStructure(CreatureObject* creature, float range);
 
 	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
-
-	int getMedicalFacilityRating(CreatureObject* creature);
 
 	void stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange);
 

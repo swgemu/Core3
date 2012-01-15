@@ -42,20 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.building.medical;
+package server.zone.objects.area;
 
-import server.zone.objects.building.BuildingObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
-import server.zone.objects.cell.CellObject;
+import engine.util.Observer;
+import engine.util.Observable;
+include server.zone.objects.area.CampSiteActiveArea;
+include server.zone.objects.scene.ObserverEventType;
 
-class MedicalBuildingObject extends BuildingObject {
-
-	public MedicalBuildingObject() {
-		Logger.setLoggingName("MedicalBuildingObject");
+class CampSiteObserver extends Observer implements Logger {
+	@weakReference
+	protected CampSiteActiveArea campArea;
+	
+	public CampSiteObserver(CampSiteActiveArea area) {
+		campArea = area;
+		
+		Logger.setLoggingName("CampSiteObserver");
 	}
 	
-	public boolean isMedicalBuildingObject() {
-		return true;
+	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+
+		if(campArea != null && eventType == ObserverEventType.HEALINGPERFORMED)
+			return campArea.notifyHealEvent(arg2);
+		
+		if(campArea != null && eventType == ObserverEventType.STARTCOMBAT)
+			return campArea.notifyCombatEvent();
+		
+		return 1;
 	}
 }

@@ -417,14 +417,12 @@ unsigned int EnhancePackImplementation::calculatePower(CreatureObject* healer, C
 	ZoneServer* zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = playerManager.getMedicalFacilityRating(healer);
-	float modEnvironment = playerManager->getMedicalFacilityRating(healer);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = 1 + (healer.getSkillMod("private_med_modifier") / 100.0f);
+	float modEnvironment = 1 + (healer->getSkillMod("private_med_modifier") / 100.0f);
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modCityBonus = 1.0f;
-	float modCityBonus = 1.0f;
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modCityBonus * modEnvironment * (100 + modSkill) / 10000;
-	return power * modCityBonus * modEnvironment * (100 + modSkill) / 10000;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modEnvironment * (100 + modSkill) / 10000;
+	return power * modEnvironment * (100 + modSkill) / 10000;
 }
 
 float EnhancePackImplementation::getEffectiveness() {

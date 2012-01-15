@@ -284,15 +284,14 @@ public:
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
 			//if (playerManager->getMedicalFacilityRating(enhancer) <= 0) {
-			float modEnvironment = (float) playerManager->getMedicalFacilityRating(creature);
+			float modEnvironment = 1 + (creature->getSkillMod("private_med_modifier") / 100.0f);
 			float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
-			float modCityBonus = 1.0f;
 			float effectiveness = 150.0f;
 
 			//Since this skill can be used anywhere, we need to check that modEnvironment is not 0.
 			modEnvironment = modEnvironment > 0.0f ? modEnvironment : 1.0f;
 
-			int healPower = (int) round(effectiveness * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
+			int healPower = (int) round(effectiveness  * modEnvironment * (100.0f + modSkill) / 10000.0f);
 
 			//TODO: Battle Fatigue
 

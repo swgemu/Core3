@@ -8,13 +8,21 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/area/events/CampDespawnEvent.h"
+#include "server/zone/objects/structure/StructureObject.h"
+
+#include "server/zone/objects/tangible/terminal/Terminal.h"
+
+#include "server/zone/objects/area/CampSiteObserver.h"
+
+#include "server/zone/objects/area/events/CampDespawnTask.h"
+
+#include "server/zone/objects/area/events/CampAbandonTask.h"
 
 /*
  *	CampSiteActiveAreaStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_SETTERMINAL__TERMINAL_,RPC_SETOWNER__CREATUREOBJECT_,RPC_SETCAMP__STRUCTUREOBJECT_,RPC_GETMEDICALRATING__,RPC_GETHEALTHWOUNDREGENRATE__,RPC_GETACTIONWOUNDREGENRATE__,RPC_GETMINDWOUNDREGENRATE__,RPC_GETAGGROMOD__,RPC_ISCAMPAREA__,RPC_GETVISITORCOUNT__,RPC_GETUPTIME__,RPC_ISABANDONED__,RPC_NOTIFYHEALEVENT__LONG_,RPC_NOTIFYCOMBATEVENT__,RPC_ABANDONCAMP__,RPC_DESPAWNCAMP__,RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_};
 
 CampSiteActiveArea::CampSiteActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	CampSiteActiveAreaImplementation* _implementation = new CampSiteActiveAreaImplementation();
@@ -30,6 +38,28 @@ CampSiteActiveArea::~CampSiteActiveArea() {
 
 
 
+void CampSiteActiveArea::initializeTransientMembers() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
+
+void CampSiteActiveArea::init(CampStructureTemplate* campData) {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->init(campData);
+}
+
 void CampSiteActiveArea::notifyEnter(SceneObject* player) {
 	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -42,6 +72,246 @@ void CampSiteActiveArea::notifyEnter(SceneObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyEnter(player);
+}
+
+void CampSiteActiveArea::notifyExit(SceneObject* player) {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYEXIT__SCENEOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyExit(player);
+}
+
+void CampSiteActiveArea::setTerminal(Terminal* term) {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETTERMINAL__TERMINAL_);
+		method.addObjectParameter(term);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTerminal(term);
+}
+
+void CampSiteActiveArea::setOwner(CreatureObject* player) {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETOWNER__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setOwner(player);
+}
+
+void CampSiteActiveArea::setCamp(StructureObject* c) {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCAMP__STRUCTUREOBJECT_);
+		method.addObjectParameter(c);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCamp(c);
+}
+
+int CampSiteActiveArea::getMedicalRating() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMEDICALRATING__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getMedicalRating();
+}
+
+int CampSiteActiveArea::getHealthWoundRegenRate() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETHEALTHWOUNDREGENRATE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getHealthWoundRegenRate();
+}
+
+int CampSiteActiveArea::getActionWoundRegenRate() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETACTIONWOUNDREGENRATE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getActionWoundRegenRate();
+}
+
+int CampSiteActiveArea::getMindWoundRegenRate() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMINDWOUNDREGENRATE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getMindWoundRegenRate();
+}
+
+float CampSiteActiveArea::getAggroMod() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETAGGROMOD__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getAggroMod();
+}
+
+bool CampSiteActiveArea::isCampArea() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCAMPAREA__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCampArea();
+}
+
+int CampSiteActiveArea::getVisitorCount() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETVISITORCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getVisitorCount();
+}
+
+unsigned int CampSiteActiveArea::getUptime() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETUPTIME__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getUptime();
+}
+
+bool CampSiteActiveArea::isAbandoned() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISABANDONED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAbandoned();
+}
+
+int CampSiteActiveArea::notifyHealEvent(long long quantity) {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYHEALEVENT__LONG_);
+		method.addSignedLongParameter(quantity);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyHealEvent(quantity);
+}
+
+int CampSiteActiveArea::notifyCombatEvent() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYCOMBATEVENT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyCombatEvent();
+}
+
+void CampSiteActiveArea::abandonCamp() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ABANDONCAMP__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->abandonCamp();
+}
+
+bool CampSiteActiveArea::despawnCamp() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESPAWNCAMP__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->despawnCamp();
+}
+
+void CampSiteActiveArea::assumeOwnership(CreatureObject* player) {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->assumeOwnership(player);
 }
 
 DistributedObjectServant* CampSiteActiveArea::_getImplementation() {
@@ -149,63 +419,28 @@ bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* strea
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnedObject") {
-		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&spawnedObject, stream);
+	if (_name == "camp") {
+		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&camp, stream);
 		return true;
 	}
 
-	if (_name == "currentXP") {
-		TypeInfo<float >::parseFromBinaryStream(&currentXP, stream);
+	if (_name == "terminal") {
+		TypeInfo<ManagedReference<Terminal* > >::parseFromBinaryStream(&terminal, stream);
 		return true;
 	}
 
-	if (_name == "campType") {
-		TypeInfo<byte >::parseFromBinaryStream(&campType, stream);
+	if (_name == "campObserver") {
+		TypeInfo<ManagedReference<CampSiteObserver* > >::parseFromBinaryStream(&campObserver, stream);
 		return true;
 	}
 
-	if (_name == "aggroMod") {
-		TypeInfo<byte >::parseFromBinaryStream(&aggroMod, stream);
+	if (_name == "abandonTask") {
+		TypeInfo<Reference<CampAbandonTask* > >::parseFromBinaryStream(&abandonTask, stream);
 		return true;
 	}
 
-	if (_name == "areaRange") {
-		TypeInfo<float >::parseFromBinaryStream(&areaRange, stream);
-		return true;
-	}
-
-	if (_name == "campObjects") {
-		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&campObjects, stream);
-		return true;
-	}
-
-	if (_name == "visitors") {
-		TypeInfo<CampVisitorList >::parseFromBinaryStream(&visitors, stream);
-		return true;
-	}
-
-	if (_name == "abandoned") {
-		TypeInfo<bool >::parseFromBinaryStream(&abandoned, stream);
-		return true;
-	}
-
-	if (_name == "despawnEvent") {
-		TypeInfo<Reference<CampDespawnEvent* > >::parseFromBinaryStream(&despawnEvent, stream);
-		return true;
-	}
-
-	if (_name == "maxXP") {
-		TypeInfo<int >::parseFromBinaryStream(&maxXP, stream);
-		return true;
-	}
-
-	if (_name == "campModifier") {
-		TypeInfo<byte >::parseFromBinaryStream(&campModifier, stream);
-		return true;
-	}
-
-	if (_name == "duration") {
-		TypeInfo<int >::parseFromBinaryStream(&duration, stream);
+	if (_name == "despawnTask") {
+		TypeInfo<Reference<CampDespawnTask* > >::parseFromBinaryStream(&despawnTask, stream);
 		return true;
 	}
 
@@ -214,8 +449,8 @@ bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
-	if (_name == "placementTime") {
-		TypeInfo<Time >::parseFromBinaryStream(&placementTime, stream);
+	if (_name == "campStructureData") {
+		TypeInfo<Reference<CampStructureTemplate* > >::parseFromBinaryStream(&campStructureData, stream);
 		return true;
 	}
 
@@ -234,99 +469,43 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnedObject";
+	_name = "camp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&spawnedObject, stream);
+	TypeInfo<ManagedReference<StructureObject* > >::toBinaryStream(&camp, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentXP";
+	_name = "terminal";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<float >::toBinaryStream(&currentXP, stream);
+	TypeInfo<ManagedReference<Terminal* > >::toBinaryStream(&terminal, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "campType";
+	_name = "campObserver";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<byte >::toBinaryStream(&campType, stream);
+	TypeInfo<ManagedReference<CampSiteObserver* > >::toBinaryStream(&campObserver, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "aggroMod";
+	_name = "abandonTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<byte >::toBinaryStream(&aggroMod, stream);
+	TypeInfo<Reference<CampAbandonTask* > >::toBinaryStream(&abandonTask, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "areaRange";
+	_name = "despawnTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<float >::toBinaryStream(&areaRange, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "campObjects";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&campObjects, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "visitors";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<CampVisitorList >::toBinaryStream(&visitors, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "abandoned";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<bool >::toBinaryStream(&abandoned, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "despawnEvent";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Reference<CampDespawnEvent* > >::toBinaryStream(&despawnEvent, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "maxXP";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&maxXP, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "campModifier";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<byte >::toBinaryStream(&campModifier, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "duration";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&duration, stream);
+	TypeInfo<Reference<CampDespawnTask* > >::toBinaryStream(&despawnTask, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -338,44 +517,98 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "placementTime";
+	_name = "campStructureData";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Time >::toBinaryStream(&placementTime, stream);
+	TypeInfo<Reference<CampStructureTemplate* > >::toBinaryStream(&campStructureData, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 14 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return 7 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 CampSiteActiveAreaImplementation::CampSiteActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		currentXP = 0;
-	currentXP = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		campType = 0;
-	campType = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		aggroMod = 0;
-	aggroMod = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		areaRange = 0;
-	areaRange = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		abandoned = false;
-	abandoned = false;
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		maxXP = 0;
-	maxXP = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		campModifier = 0;
-	campModifier = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		duration = 0;
-	duration = 0;
 	// server/zone/objects/area/CampSiteActiveArea.idl():  		Logger.setLoggingName("CampsiteActiveArea");
 	Logger::setLoggingName("CampsiteActiveArea");
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		timeCreated = System.getTime();
+	timeCreated = System::getTime();
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		abandoned = false;
+	abandoned = false;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		currentXp = 0;
+	currentXp = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		campOwner = null;
+	campOwner = NULL;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		camp = null;
+	camp = NULL;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		terminal = null;
+	terminal = NULL;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		abandonTask = null;
+	abandonTask = NULL;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		despawnTask = null;
+	despawnTask = NULL;
 }
 
-void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/CampSiteActiveArea.idl():  	}
-	if (!player->isPlayerCreature())	// server/zone/objects/area/CampSiteActiveArea.idl():  			return;
-	return;
+void CampSiteActiveAreaImplementation::setTerminal(Terminal* term) {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		terminal = term;
+	terminal = term;
+}
+
+void CampSiteActiveAreaImplementation::setOwner(CreatureObject* player) {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		campOwner = player;
+	campOwner = player;
+}
+
+void CampSiteActiveAreaImplementation::setCamp(StructureObject* c) {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		camp = c;
+	camp = c;
+}
+
+int CampSiteActiveAreaImplementation::getMedicalRating() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getMedicalRating();
+	return campStructureData->getMedicalRating();
+}
+
+int CampSiteActiveAreaImplementation::getHealthWoundRegenRate() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getHealthWoundRegenRate();
+	return campStructureData->getHealthWoundRegenRate();
+}
+
+int CampSiteActiveAreaImplementation::getActionWoundRegenRate() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getActionWoundRegenRate();
+	return campStructureData->getActionWoundRegenRate();
+}
+
+int CampSiteActiveAreaImplementation::getMindWoundRegenRate() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getMindWoundRegenRate();
+	return campStructureData->getMindWoundRegenRate();
+}
+
+float CampSiteActiveAreaImplementation::getAggroMod() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getAggroMod();
+	return campStructureData->getAggroMod();
+}
+
+bool CampSiteActiveAreaImplementation::isCampArea() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return true;
+	return true;
+}
+
+int CampSiteActiveAreaImplementation::getVisitorCount() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return visitors.size();
+	return (&visitors)->size();
+}
+
+unsigned int CampSiteActiveAreaImplementation::getUptime() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return System.getTime() - timeCreated;
+	return System::getTime() - timeCreated;
+}
+
+bool CampSiteActiveAreaImplementation::isAbandoned() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return abandoned;
+	return abandoned;
 }
 
 /*
@@ -389,8 +622,65 @@ Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
+		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_NOTIFYEXIT__SCENEOBJECT_:
+		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_SETTERMINAL__TERMINAL_:
+		setTerminal(static_cast<Terminal*>(inv->getObjectParameter()));
+		break;
+	case RPC_SETOWNER__CREATUREOBJECT_:
+		setOwner(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_SETCAMP__STRUCTUREOBJECT_:
+		setCamp(static_cast<StructureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_GETMEDICALRATING__:
+		resp->insertSignedInt(getMedicalRating());
+		break;
+	case RPC_GETHEALTHWOUNDREGENRATE__:
+		resp->insertSignedInt(getHealthWoundRegenRate());
+		break;
+	case RPC_GETACTIONWOUNDREGENRATE__:
+		resp->insertSignedInt(getActionWoundRegenRate());
+		break;
+	case RPC_GETMINDWOUNDREGENRATE__:
+		resp->insertSignedInt(getMindWoundRegenRate());
+		break;
+	case RPC_GETAGGROMOD__:
+		resp->insertFloat(getAggroMod());
+		break;
+	case RPC_ISCAMPAREA__:
+		resp->insertBoolean(isCampArea());
+		break;
+	case RPC_GETVISITORCOUNT__:
+		resp->insertSignedInt(getVisitorCount());
+		break;
+	case RPC_GETUPTIME__:
+		resp->insertInt(getUptime());
+		break;
+	case RPC_ISABANDONED__:
+		resp->insertBoolean(isAbandoned());
+		break;
+	case RPC_NOTIFYHEALEVENT__LONG_:
+		resp->insertSignedInt(notifyHealEvent(inv->getSignedLongParameter()));
+		break;
+	case RPC_NOTIFYCOMBATEVENT__:
+		resp->insertSignedInt(notifyCombatEvent());
+		break;
+	case RPC_ABANDONCAMP__:
+		abandonCamp();
+		break;
+	case RPC_DESPAWNCAMP__:
+		resp->insertBoolean(despawnCamp());
+		break;
+	case RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_:
+		assumeOwnership(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -399,8 +689,84 @@ Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod
 	return resp;
 }
 
+void CampSiteActiveAreaAdapter::initializeTransientMembers() {
+	(static_cast<CampSiteActiveArea*>(stub))->initializeTransientMembers();
+}
+
 void CampSiteActiveAreaAdapter::notifyEnter(SceneObject* player) {
 	(static_cast<CampSiteActiveArea*>(stub))->notifyEnter(player);
+}
+
+void CampSiteActiveAreaAdapter::notifyExit(SceneObject* player) {
+	(static_cast<CampSiteActiveArea*>(stub))->notifyExit(player);
+}
+
+void CampSiteActiveAreaAdapter::setTerminal(Terminal* term) {
+	(static_cast<CampSiteActiveArea*>(stub))->setTerminal(term);
+}
+
+void CampSiteActiveAreaAdapter::setOwner(CreatureObject* player) {
+	(static_cast<CampSiteActiveArea*>(stub))->setOwner(player);
+}
+
+void CampSiteActiveAreaAdapter::setCamp(StructureObject* c) {
+	(static_cast<CampSiteActiveArea*>(stub))->setCamp(c);
+}
+
+int CampSiteActiveAreaAdapter::getMedicalRating() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getMedicalRating();
+}
+
+int CampSiteActiveAreaAdapter::getHealthWoundRegenRate() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getHealthWoundRegenRate();
+}
+
+int CampSiteActiveAreaAdapter::getActionWoundRegenRate() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getActionWoundRegenRate();
+}
+
+int CampSiteActiveAreaAdapter::getMindWoundRegenRate() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getMindWoundRegenRate();
+}
+
+float CampSiteActiveAreaAdapter::getAggroMod() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getAggroMod();
+}
+
+bool CampSiteActiveAreaAdapter::isCampArea() {
+	return (static_cast<CampSiteActiveArea*>(stub))->isCampArea();
+}
+
+int CampSiteActiveAreaAdapter::getVisitorCount() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getVisitorCount();
+}
+
+unsigned int CampSiteActiveAreaAdapter::getUptime() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getUptime();
+}
+
+bool CampSiteActiveAreaAdapter::isAbandoned() {
+	return (static_cast<CampSiteActiveArea*>(stub))->isAbandoned();
+}
+
+int CampSiteActiveAreaAdapter::notifyHealEvent(long long quantity) {
+	return (static_cast<CampSiteActiveArea*>(stub))->notifyHealEvent(quantity);
+}
+
+int CampSiteActiveAreaAdapter::notifyCombatEvent() {
+	return (static_cast<CampSiteActiveArea*>(stub))->notifyCombatEvent();
+}
+
+void CampSiteActiveAreaAdapter::abandonCamp() {
+	(static_cast<CampSiteActiveArea*>(stub))->abandonCamp();
+}
+
+bool CampSiteActiveAreaAdapter::despawnCamp() {
+	return (static_cast<CampSiteActiveArea*>(stub))->despawnCamp();
+}
+
+void CampSiteActiveAreaAdapter::assumeOwnership(CreatureObject* player) {
+	(static_cast<CampSiteActiveArea*>(stub))->assumeOwnership(player);
 }
 
 /*

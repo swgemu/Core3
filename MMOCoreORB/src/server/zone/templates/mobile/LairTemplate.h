@@ -173,6 +173,10 @@ public:
 		return &mobiles;
 	}
 
+	bool isLairTemplate() {
+		return true;
+	}
+
 };
 
 }
