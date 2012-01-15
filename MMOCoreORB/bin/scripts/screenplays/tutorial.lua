@@ -8,11 +8,15 @@ imperial_officer_3_handler = {  }
 function imperial_officer_3_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
-	local session = LuaConversationSession(creature:getConversationSession())
+	local convosession = creature:getConversationSession()
+	
 	local lastScreenId = ""
-	if (session ~= nil) then
+	
+	if (convosession ~= nil) then
+		local session = LuaConversationSession(convosession)
 		lastScreenId = session:getLastConversationScreenName()
 	end
+	
 	local conversation = LuaConversationTemplate(conversationTemplate)
 	
 	local lastConversationScreen = conversation:getScreen(lastScreenId)
@@ -76,11 +80,15 @@ imperial_officer_5_handler = {  }
 function imperial_officer_5_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
-	local session = LuaConversationSession(creature:getConversationSession())
+	local convosession = creature:getConversationSession()
+	
 	local lastScreenId = ""
-	if (session ~= nil) then
+	
+	if (convosession ~= nil) then
+		local session = LuaConversationSession(convosession)
 		lastScreenId = session:getLastConversationScreenName()
 	end
+	
 	local conversation = LuaConversationTemplate(conversationTemplate)
 	
 	local lastConversationScreen = conversation:getScreen(lastScreenId)
@@ -124,11 +132,15 @@ imperial_officer_6_handler = {  }
 function imperial_officer_6_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
-	local session = LuaConversationSession(creature:getConversationSession())
+	local convosession = creature:getConversationSession()
+	
 	local lastScreenId = ""
-	if (session ~= nil) then
+	
+	if (convosession ~= nil) then
+		local session = LuaConversationSession(convosession)
 		lastScreenId = session:getLastConversationScreenName()
 	end
+	
 	local conversation = LuaConversationTemplate(conversationTemplate)
 	
 	local lastConversationScreen = conversation:getScreen(lastScreenId)
@@ -176,11 +188,15 @@ commoner_handler = {  }
 function commoner_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
-	local session = LuaConversationSession(creature:getConversationSession())
+	local convosession = creature:getConversationSession()
+	
 	local lastScreenId = ""
-	if (session ~= nil) then
+	
+	if (convosession ~= nil) then
+		local session = LuaConversationSession(convosession)
 		lastScreenId = session:getLastConversationScreenName()
 	end
+	
 	local conversation = LuaConversationTemplate(conversationTemplate)
 	
 	local lastConversationScreen = conversation:getScreen(lastScreenId)
