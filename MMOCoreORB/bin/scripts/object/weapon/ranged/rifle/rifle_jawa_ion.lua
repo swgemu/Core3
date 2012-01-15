@@ -71,7 +71,7 @@ object_weapon_ranged_rifle_rifle_jawa_ion = object_weapon_ranged_rifle_shared_ri
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "rifle_speed" },

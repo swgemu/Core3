@@ -71,7 +71,7 @@ object_weapon_ranged_carbine_carbine_dxr6 = object_weapon_ranged_carbine_shared_
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { "counterattack" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "carbine_speed" },

@@ -72,7 +72,7 @@ object_weapon_ranged_rifle_rifle_tenloss_dxr6_disruptor_loot = object_weapon_ran
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "rifle_speed" },

@@ -70,7 +70,7 @@ object_weapon_melee_polearm_polearm_vibro_axe = object_weapon_melee_polearm_shar
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	defenderToughnessModifiers = { "polearm_toughness" },
 

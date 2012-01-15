@@ -70,7 +70,7 @@ object_weapon_melee_polearm_lance_controllerfp_nightsister = object_weapon_melee
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	defenderToughnessModifiers = { "polearm_toughness" },
 

@@ -70,7 +70,7 @@ object_weapon_melee_2h_sword_2h_sword_cleaver = object_weapon_melee_2h_sword_sha
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "counterattack" },
 
 	defenderToughnessModifiers = { "twohandmelee_toughness" },
 

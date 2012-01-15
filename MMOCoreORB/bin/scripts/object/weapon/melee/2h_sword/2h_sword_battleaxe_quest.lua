@@ -70,7 +70,7 @@ object_weapon_melee_2h_sword_2h_sword_battleaxe_quest = object_weapon_melee_2h_s
 	defenderDefenseModifiers = { "melee_defense" },
 	
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { "counterattack" },
 
 	defenderToughnessModifiers = { "twohandmelee_toughness" },
 	

@@ -70,7 +70,7 @@ object_weapon_melee_polearm_lance_staff_wood_s1 = object_weapon_melee_polearm_sh
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	defenderToughnessModifiers = { "polearm_toughness" },
 

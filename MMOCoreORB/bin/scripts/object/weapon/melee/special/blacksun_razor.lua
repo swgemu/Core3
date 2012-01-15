@@ -70,7 +70,7 @@ object_weapon_melee_special_blacksun_razor = object_weapon_melee_special_shared_
 	defenderDefenseModifiers = { "melee_defense" },
 	
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "unarmed_passive_defense" },
 	
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "unarmed_speed" },

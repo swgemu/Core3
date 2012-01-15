@@ -70,7 +70,7 @@ object_weapon_melee_polearm_lance_nightsister_npc_version = object_weapon_melee_
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	defenderToughnessModifiers = { "polearm_toughness" },
 

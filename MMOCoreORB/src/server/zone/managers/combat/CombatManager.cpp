@@ -265,12 +265,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 			doBlock(attacker, defender, 0, combatSpam + "_block");
 			break;
 		case DODGE:
+			damageMultiplier = 0.f;
 			doDodge(attacker, defender, 0, combatSpam + "_evade");
-			return 0;
 			break;
 		case COUNTER:
+			damageMultiplier = 0.f;
 			doCounterAttack(attacker, defender, 0, combatSpam + "_counter");
-			return 0;
 			break;
 		case MISS:
 			doMiss(attacker, defender, 0, combatSpam + "_miss");

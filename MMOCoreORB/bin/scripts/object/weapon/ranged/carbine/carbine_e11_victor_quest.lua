@@ -71,7 +71,7 @@ object_weapon_ranged_carbine_carbine_e11_victor_quest = object_weapon_ranged_car
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "counterattack" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "carbine_speed" },
