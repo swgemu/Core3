@@ -5,7 +5,7 @@ geo_relic_spice_container = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_spice_container.iff",
-	draftSchematic = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_spice_container.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("geo_relic_spice_container", geo_relic_spice_container)

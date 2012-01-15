@@ -5,7 +5,7 @@ acklay_venom = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/munition/shared_acklay_venom.iff",
-	draftSchematic = "object/tangible/component/munition/shared_acklay_venom.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("acklay_venom", acklay_venom)

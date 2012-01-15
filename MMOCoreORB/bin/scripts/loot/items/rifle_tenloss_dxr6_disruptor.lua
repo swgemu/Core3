@@ -5,7 +5,7 @@ rifle_tenloss_dxr6_disruptor = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff",
-	draftSchematic = "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("rifle_tenloss_dxr6_disruptor", rifle_tenloss_dxr6_disruptor)

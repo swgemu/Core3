@@ -5,7 +5,7 @@ foraged_livers = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/edible_jar_livers.iff",
-	draftSchematic = "object/tangible/food/foraged/edible_jar_livers.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("foraged_livers", foraged_livers)

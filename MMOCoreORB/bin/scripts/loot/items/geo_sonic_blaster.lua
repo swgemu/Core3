@@ -5,7 +5,7 @@ geo_sonic_blaster = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/shared_pistol_geonosian_sonic_blaster_loot.iff",
-	draftSchematic = "object/weapon/ranged/pistol/shared_pistol_geonosian_sonic_blaster_loot.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("geo_sonic_blaster", geo_sonic_blaster)

@@ -5,7 +5,7 @@ tusken_raider_boots = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/boots/shared_boots_tusken_raider.iff",
-	draftSchematic = "object/tangible/wearables/boots/shared_boots_tusken_raider.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("tusken_raider_boots", tusken_raider_boots)

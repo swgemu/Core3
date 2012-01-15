@@ -5,7 +5,7 @@ geo_relic_honey_carafe = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_honey_carafe.iff",
-	draftSchematic = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_honey_carafe.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("geo_relic_honey_carafe", geo_relic_honey_carafe)

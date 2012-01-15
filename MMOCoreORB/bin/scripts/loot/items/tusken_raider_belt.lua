@@ -5,7 +5,7 @@ tusken_raider_belt = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/utility/shared_utility_belt_tusken_raider.iff",
-	draftSchematic = "object/tangible/wearables/utility/shared_utility_belt_tusken_raider.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("tusken_raider_belt", tusken_raider_belt)

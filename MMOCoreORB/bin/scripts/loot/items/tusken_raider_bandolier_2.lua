@@ -5,7 +5,7 @@ tusken_raider_bandolier_2 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s02.iff",
-	draftSchematic = "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s02.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("tusken_raider_bandolier_2", tusken_raider_bandolier_2)

@@ -5,7 +5,7 @@ wild_snaff = {
 	maximumLevel = -1,
 	customObjectName = "Wild Snaff",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s2.iff",
-	draftSchematic = "object/tangible/food/foraged/foraged_fruit_s2.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("wild_snaff", wild_snaff)

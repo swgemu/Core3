@@ -5,7 +5,7 @@ foraged_grubs = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/edible_jar_funk.iff",
-	draftSchematic = "object/tangible/food/foraged/edible_jar_funk.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("foraged_grubs", foraged_grubs)

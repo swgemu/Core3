@@ -5,7 +5,7 @@ maroj_melon = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s1.iff",
-	draftSchematic = "object/tangible/food/foraged/foraged_fruit_s1.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("maroj_melon", maroj_melon)

@@ -5,7 +5,7 @@ geo_solidifying_agent = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/shared_geonosian_solidifying_agent.iff",
-	draftSchematic = "object/tangible/component/weapon/shared_geonosian_solidifying_agent.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("geo_solidifying_agent", geo_solidifying_agent)

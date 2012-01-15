@@ -5,7 +5,7 @@ tusken_raider_helmet_2 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff",
-	draftSchematic = "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("tusken_raider_helmet_2", tusken_raider_helmet_2)

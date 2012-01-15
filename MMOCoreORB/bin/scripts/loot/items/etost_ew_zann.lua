@@ -5,7 +5,7 @@ etost_ew_zann = {
 	maximumLevel = -1,
 	customObjectName = "Etost Ew Zann",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s4.iff",
-	draftSchematic = "object/tangible/food/foraged/foraged_vegetable_s4.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("etost_ew_zann", etost_ew_zann)

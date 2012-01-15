@@ -5,7 +5,7 @@ geo_reinforcement_core_schematic = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff",
-	draftSchematic = "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("geo_reinforcement_core_schematic", geo_reinforcement_core_schematic)

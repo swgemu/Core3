@@ -5,7 +5,7 @@ schule_nef = {
 	maximumLevel = -1,
 	customObjectName = "Schule Nef",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s2.iff",
-	draftSchematic = "object/tangible/food/foraged/foraged_vegetable_s2.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("schule_nef", schule_nef)

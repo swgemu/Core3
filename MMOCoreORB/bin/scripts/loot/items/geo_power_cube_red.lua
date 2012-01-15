@@ -5,7 +5,7 @@ geo_power_cube_red = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/shared_geonosian_power_cube_red.iff",
-	draftSchematic = "object/tangible/component/weapon/shared_geonosian_power_cube_red.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("geo_power_cube_red", geo_power_cube_red)

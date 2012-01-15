@@ -5,7 +5,7 @@ geo_sword_core = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/shared_geonosian_sword_core.iff",
-	draftSchematic = "object/tangible/component/weapon/shared_geonosian_sword_core.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("geo_sword_core", geo_sword_core)

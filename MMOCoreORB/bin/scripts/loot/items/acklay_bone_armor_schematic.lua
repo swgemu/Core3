@@ -5,7 +5,7 @@ acklay_bone_armor_schematic = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff",
-	draftSchematic = "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff"
+	draftSchematic = ""
 }
 
 addLootItemTemplate("acklay_bone_armor_schematic", acklay_bone_armor_schematic)
