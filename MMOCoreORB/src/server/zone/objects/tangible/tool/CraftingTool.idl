@@ -106,6 +106,10 @@ class CraftingTool extends ToolTangibleObject {
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		lastExperimentationTimestamp = 0;
+		if(getContainerObjectsSize() == 0) {
+			state = 1;
+			status = "@crafting:tool_status_ready";
+		}
 	}
 	
 	@local

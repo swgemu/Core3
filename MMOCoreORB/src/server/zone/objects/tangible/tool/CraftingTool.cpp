@@ -731,6 +731,13 @@ void CraftingToolImplementation::initializeTransientMembers() {
 	ToolTangibleObjectImplementation::initializeTransientMembers();
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		lastExperimentationTimestamp = 0;
 	lastExperimentationTimestamp = 0;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  	}
+	if (getContainerObjectsSize() == 0){
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  			state = 1;
+	state = 1;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  			status = "@crafting:tool_status_ready";
+	status = "@crafting:tool_status_ready";
+}
 }
 
 bool CraftingToolImplementation::isCraftingTool() {

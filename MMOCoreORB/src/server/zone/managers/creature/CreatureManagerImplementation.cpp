@@ -450,6 +450,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	}
 
 	int quantityExtracted = int(quantity * float(player->getSkillMod("creature_harvesting") / 100.0f));
+	quantityExtracted = MAX(quantityExtracted, 3);
 
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getZoneName());
 
