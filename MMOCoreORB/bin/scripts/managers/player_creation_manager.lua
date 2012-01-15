@@ -41,7 +41,7 @@ professionSpecificItems = {
 	combat_marksman = { cdefPistol, cdefCarbine, cdefRifle },
 	crafting_artisan = { cdefPistol, survivalKnife, generic_tool, mineral_tool, chemical_tool },
 	jedi = { },
-	outdoors_scout = { cdefPistol },
+	outdoors_scout = { cdefPistol, generic_tool},
 	science_medic = { cdefPistol, generic_tool, survivalKnife },
 	social_entertainer = { cdefPistol, survivalKnife, slitherhorn }
 }
