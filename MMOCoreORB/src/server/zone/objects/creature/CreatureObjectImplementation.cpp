@@ -1858,35 +1858,6 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {
-	if (isDizzied() && cooldownTimerMap->isPast("dizzyRecoveryTime"))
-		clearState(CreatureState::DIZZY);
-
-	if (isBlinded() && cooldownTimerMap->isPast("blindRecoveryTime"))
-		clearState(CreatureState::BLINDED);
-
-	if (isStunned() && cooldownTimerMap->isPast("stunRecoveryTime"))
-		clearState(CreatureState::STUNNED);
-
-	if (isIntimidated() && cooldownTimerMap->isPast("intimidateRecoveryTime"))
-		clearState(CreatureState::INTIMIDATED);
-
-	if (isBerserked() && cooldownTimerMap->isPast("berserkRecoveryTime")) {
-		clearState(CreatureState::BERSERK);
-		//setBerserkDamage(0);
-	}
-
-	if (isAiming() && cooldownTimerMap->isPast("aimRecoveryTime")) {
-		clearState(CreatureState::AIMING);
-	}
-
-	if (isRallied() && cooldownTimerMap->isPast("ralliedRecoveryTime")) {
-		clearState(CreatureState::RALLIED);
-	}
-
-	if (isInCover() && cooldownTimerMap->isPast("coverRecoveryTime")) {
-		clearState(CreatureState::COVER);
-	}
-
 	//applyDots();
 
 	//updateStates();
