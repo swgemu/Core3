@@ -81,6 +81,7 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		return 1;
 	}
 
+	vehicle->createChildObjects();
 	vehicle->setMaxCondition(hitPoints);
 	vehicle->setConditionDamage(0);
 	vehicleControlDevice->setControlledObject(vehicle);
