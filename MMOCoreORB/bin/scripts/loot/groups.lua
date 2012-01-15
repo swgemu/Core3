@@ -1,0 +1,8 @@
+includeFile("groups/acklay.lua")
+includeFile("groups/bandit_1.lua")
+includeFile("groups/forage.lua")
+includeFile("groups/geonosian_common.lua")
+includeFile("groups/geonosian_hard.lua")
+includeFile("groups/geonosian_relic.lua")
+includeFile("groups/test_loot_group.lua")
+includeFile("groups/tusken.lua")

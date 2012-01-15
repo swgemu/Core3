@@ -1,1 +1,0 @@
-includeFile("npcs/tutorial/bandit_1.lua")
