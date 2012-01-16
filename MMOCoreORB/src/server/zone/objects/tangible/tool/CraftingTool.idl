@@ -109,6 +109,8 @@ class CraftingTool extends ToolTangibleObject {
 		if(getContainerObjectsSize() == 0) {
 			state = 1;
 			status = "@crafting:tool_status_ready";
+		} else {
+			status = "@crafting:tool_status_finished";
 		}
 	}
 	

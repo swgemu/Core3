@@ -149,6 +149,8 @@ using namespace server::zone::objects::tangible::weapon;
 
 #include "server/zone/objects/creature/CreatureFlag.h"
 
+#include "server/zone/objects/tangible/OptionBitmask.h"
+
 #include "server/zone/objects/scene/SceneObjectType.h"
 
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"

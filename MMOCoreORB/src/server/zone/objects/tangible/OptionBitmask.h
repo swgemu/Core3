@@ -56,6 +56,8 @@ public:
 
 	static const uint32 YELLOW = 0x20;
 
+	static const uint32 FROMFACTORY = 0x2100;
+
 };
 
 #endif /*OptionBitmask_H_*/

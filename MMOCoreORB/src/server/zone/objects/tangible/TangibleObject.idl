@@ -54,6 +54,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.CreatureFlag;
+include server.zone.objects.tangible.OptionBitmask;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.factorycrate.FactoryCrate;
 include server.zone.objects.scene.SceneObjectType;
@@ -538,7 +539,7 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public boolean isFromFactoryCrate() {
-		return optionsBitmask & 0x2100;
+		return optionsBitmask & OptionBitmask.FROMFACTORY;
 	}
 	
 	@local

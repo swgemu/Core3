@@ -1606,8 +1606,8 @@ String TangibleObjectImplementation::getCraftersSerial() {
 }
 
 bool TangibleObjectImplementation::isFromFactoryCrate() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return optionsBitmask & 0x2100;
-	return optionsBitmask & 0x2100;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return optionsBitmask & OptionBitmask.FROMFACTORY;
+	return optionsBitmask & OptionBitmask::FROMFACTORY;
 }
 
 DamageMap* TangibleObjectImplementation::getDamageMap() {

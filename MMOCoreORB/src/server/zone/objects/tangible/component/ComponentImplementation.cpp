@@ -54,7 +54,7 @@ void ComponentImplementation::initializeTransientMembers() {
 	titleMap.setAllowOverwriteInsertPlan();
 	hiddenMap.setAllowOverwriteInsertPlan();
 
-	setOptionsBitmask(0x2100);
+	setOptionsBitmask(OptionBitmask::FROMFACTORY);
 }
 
 void ComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

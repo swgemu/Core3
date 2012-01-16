@@ -596,7 +596,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	if (crate == NULL)
 		return NULL;
 
-	crate->setOptionsBitmask(0x2100);
+	crate->setOptionsBitmask(OptionBitmask::FROMFACTORY);
 
 	if (insertSelf) {
 		crate->transferObject(_this, -1, true);
@@ -608,7 +608,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 			return NULL;
 
 		protoclone->setParent(NULL);
-		protoclone->setOptionsBitmask(0x2100);
+		protoclone->setOptionsBitmask(OptionBitmask::FROMFACTORY);
 		crate->transferObject(protoclone, -1, false);
 	}
 
