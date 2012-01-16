@@ -405,3 +405,7 @@ void ResourceManagerImplementation::addNodeToListBox(SuiListBox* sui, const Stri
 String ResourceManagerImplementation::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
 	return resourceSpawner->addParentNodeToListBox(sui, currentNode);
 }
+
+void ResourceManagerImplementation::listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet) {
+	resourceSpawner->listResourcesForPlanetOnScreen(creature, planet);
+}

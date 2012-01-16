@@ -63,7 +63,42 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		StringTokenizer args(arguments.toString());
+
+		try {
+			String command;
+
+			if(args.hasMoreTokens())
+				args.getStringToken(command);
+
+			if(command == "list")
+				listResources(creature, &args);
+			else
+				throw Exception();
+
+		} catch (Exception& e){
+			creature->sendSystemMessage("invalid arguments for resources command:  /resource [option] [params]");
+			creature->sendSystemMessage("		list [planet] : Lists resources on specified planet");
+			//creature->sendSystemMessage("		info [spawn] : Lists Info about specific resource");
+
+		}
+
 		return SUCCESS;
+	}
+
+	void listResources(CreatureObject* creature, StringTokenizer* args) {
+		if(creature->getZoneServer() == NULL)
+			return;
+
+		String planet = "";
+		if(args->hasMoreTokens())
+			args->getStringToken(planet);
+
+		if(planet.isEmpty())
+			throw Exception();
+
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+		resMan->listResourcesForPlanetOnScreen(creature, planet);
 	}
 
 };

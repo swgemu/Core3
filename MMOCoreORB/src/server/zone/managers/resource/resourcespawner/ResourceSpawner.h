@@ -160,6 +160,9 @@ public:
 		return resourceMap;
 	}
 
+	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
+
+
 private:
 
 	void loadResourceSpawns();

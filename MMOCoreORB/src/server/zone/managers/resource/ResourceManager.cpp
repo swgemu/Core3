@@ -22,7 +22,7 @@
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -302,6 +302,21 @@ String ResourceManager::addParentNodeToListBox(SuiListBox* sui, const String& cu
 		return _implementation->addParentNodeToListBox(sui, currentNode);
 }
 
+void ResourceManager::listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet) {
+	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_);
+		method.addObjectParameter(creature);
+		method.addAsciiParameter(planet);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->listResourcesForPlanetOnScreen(creature, planet);
+}
+
 DistributedObjectServant* ResourceManager::_getImplementation() {
 
 	_updated = true;
@@ -517,6 +532,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_:
 		resp->insertAscii(addParentNodeToListBox(static_cast<SuiListBox*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_addParentNodeToListBox__SuiListBox_String_)));
 		break;
+	case RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_:
+		listResourcesForPlanetOnScreen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_listResourcesForPlanetOnScreen__CreatureObject_String_));
+		break;
 	default:
 		return NULL;
 	}
@@ -590,6 +608,10 @@ void ResourceManagerAdapter::addNodeToListBox(SuiListBox* sui, const String& nod
 
 String ResourceManagerAdapter::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
 	return (static_cast<ResourceManager*>(stub))->addParentNodeToListBox(sui, currentNode);
+}
+
+void ResourceManagerAdapter::listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet) {
+	(static_cast<ResourceManager*>(stub))->listResourcesForPlanetOnScreen(creature, planet);
 }
 
 /*

@@ -659,7 +659,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 	addResourceToPlayerInventory(player, resourceSpawn, unitsExtracted);
 
 	if (resourceSpawn->isType("radioactive")) {
-		int wound = int((sampleRate / 70) - System::random(9));
+		int wound = int((sampleRate / 30) - System::random(7));
 
 		if (wound > 0) {
 			player->addWounds(CreatureAttribute::HEALTH, wound, true);
@@ -823,4 +823,30 @@ String ResourceSpawner::addParentNodeToListBox(SuiListBox* sui, const String& cu
 	node->addToSuiListBox(sui);
 
 	return node->getName();
+}
+
+void ResourceSpawner::listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet) {
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(planet);
+
+	if (zoneMap == NULL) {
+		creature->sendSystemMessage("Invalid planet specified");
+		return;
+	}
+
+	creature->sendSystemMessage("Resource spawns for " + planet);
+	ManagedReference<ResourceSpawn*> resourceSpawn;
+
+	for (int i = 0; i < zoneMap->size(); ++i) {
+		resourceSpawn = zoneMap->get(i);
+
+		if(resourceSpawn == NULL)
+			continue;
+
+		StringBuffer info;
+		int hours = (((resourceSpawn->getDespawned() - System::getTime()) / 60) /60);
+		int minutes = ((resourceSpawn->getDespawned() - System::getTime()) % 60);
+		info << resourceSpawn->getFinalClass() << "   |   " << resourceSpawn->getName()
+			 << "   |   " << "Despawns in: " << hours << " hours " << minutes << " minutes.";
+		creature->sendSystemMessage(info.toString());
+	}
 }

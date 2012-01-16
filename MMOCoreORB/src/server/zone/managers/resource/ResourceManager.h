@@ -170,6 +170,8 @@ public:
 
 	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
 
+	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -262,6 +264,8 @@ public:
 
 	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
 
+	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
+
 	WeakReference<ResourceManager*> _this;
 
 	operator const ResourceManager*();
@@ -339,6 +343,8 @@ public:
 
 	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
 
+	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
+
 protected:
 	String _param2_sendResourceListForSurvey__CreatureObject_int_String_;
 	String _param1_sendSurvey__CreatureObject_String_;
@@ -352,6 +358,7 @@ protected:
 	String _param0_getResourceSpawn__String_;
 	String _param1_addNodeToListBox__SuiListBox_String_;
 	String _param1_addParentNodeToListBox__SuiListBox_String_;
+	String _param1_listResourcesForPlanetOnScreen__CreatureObject_String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

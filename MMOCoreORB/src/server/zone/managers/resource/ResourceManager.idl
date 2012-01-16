@@ -124,5 +124,8 @@ class ResourceManager extends Observer implements Logger {
 	/// Resource Deed Methods
 	public native void addNodeToListBox(SuiListBox sui, final string nodeName);
 	public native string addParentNodeToListBox(SuiListBox sui, final string currentNode);
+
+	public native void listResourcesForPlanetOnScreen(CreatureObject creature, final string planet);
+
 }
 
