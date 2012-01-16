@@ -845,8 +845,10 @@ void ResourceSpawner::listResourcesForPlanetOnScreen(CreatureObject* creature, c
 		StringBuffer info;
 		int hours = (((resourceSpawn->getDespawned() - System::getTime()) / 60) /60);
 		int minutes = ((resourceSpawn->getDespawned() - System::getTime()) % 60);
+
 		info << resourceSpawn->getFinalClass() << "   |   " << resourceSpawn->getName()
 			 << "   |   " << "Despawns in: " << hours << " hours " << minutes << " minutes.";
+
 		creature->sendSystemMessage(info.toString());
 	}
 }
