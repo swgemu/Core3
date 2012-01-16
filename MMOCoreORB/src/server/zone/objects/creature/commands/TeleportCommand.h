@@ -63,7 +63,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		float x, y;
-		float z = creature->getPositionZ();
+		float z = 0;
 		String zoneName = creature->getZone()->getZoneName();
 		uint64 parentID = 0;
 

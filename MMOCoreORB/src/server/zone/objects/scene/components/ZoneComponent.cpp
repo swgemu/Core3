@@ -302,6 +302,10 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 
 	SceneObject* newParent = sceneObject->getZoneServer()->getObject(parentID);
 
+	if(newPositionZ == 0) {
+		newPositionZ = newZone->getHeight(newPostionX, newPostionY);
+	}
+
 	Locker locker(newZone);
 
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
