@@ -161,10 +161,6 @@ public:
         return experimentalPrecision;
     }
 
-    void addResourceWeight(ResourceWeight* weight) {
-		resourceWeights->add(weight);
-	}
-
     Vector<Reference<ResourceWeight* > >* getResourceWeights() {
     	return resourceWeights;
     }

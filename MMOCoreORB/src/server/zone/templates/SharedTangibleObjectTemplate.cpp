@@ -71,7 +71,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 
 	if (varName == "certificationsRequired") {
 		LuaObject certifications(state);
-
+		certificationsRequired.removeAll();
 		for (int i = 1; i <= certifications.getTableSize(); ++i) {
 			certificationsRequired.add(certifications.getStringAt(i));
 		}
@@ -97,7 +97,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		sliceable = Lua::getIntParameter(state);
 	} else if (varName == "numberExperimentalProperties") {
 		LuaObject numberExperimentalPropertiesList(state);
-
+		numberExperimentalProperties->removeAll();
 		for (int i = 1; i <= numberExperimentalPropertiesList.getTableSize(); ++i) {
 			numberExperimentalProperties->add(numberExperimentalPropertiesList.getIntAt(i));
 		}
@@ -105,7 +105,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		numberExperimentalPropertiesList.pop();
 	} else if (varName == "experimentalProperties") {
 		LuaObject experimentalPropertiesList(state);
-
+		experimentalProperties->removeAll();
 		for (int i = 1; i <= experimentalPropertiesList.getTableSize(); ++i) {
 			experimentalProperties->add(experimentalPropertiesList.getStringAt(i));
 		}
@@ -113,7 +113,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		experimentalPropertiesList.pop();
 	} else if (varName == "experimentalWeights") {
 		LuaObject experimentalWeightsList(state);
-		
+		experimentalWeights->removeAll();
 		for (int i = 1; i <= experimentalWeightsList.getTableSize(); ++i) {
 			experimentalWeights->add(experimentalWeightsList.getIntAt(i));
 		}
@@ -121,7 +121,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		experimentalWeightsList.pop();
 	} else if (varName == "experimentalGroupTitles") {
 		LuaObject experimentalGroupTitlesList(state);
-
+		experimentalGroupTitles->removeAll();
 		for (int i = 1; i <= experimentalGroupTitlesList.getTableSize(); ++i) {
 			experimentalGroupTitles->add(experimentalGroupTitlesList.getStringAt(i));
 		}
@@ -129,7 +129,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		experimentalGroupTitlesList.pop();
 	} else if (varName == "experimentalSubGroupTitles") {
 		LuaObject experimentalSubGroupTitlesList(state);
-		
+		experimentalSubGroupTitles->removeAll();
 		for (int i = 1; i <= experimentalSubGroupTitlesList.getTableSize(); ++i) {
 			experimentalSubGroupTitles->add(experimentalSubGroupTitlesList.getStringAt(i));
 		}
@@ -137,7 +137,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		experimentalSubGroupTitlesList.pop();
 	} else if (varName == "experimentalMin") {
 		LuaObject experimentalMinList(state);
-
+		experimentalMin->removeAll();
 		for (int i = 1; i <= experimentalMinList.getTableSize(); ++i) {
 			experimentalMin->add(experimentalMinList.getIntAt(i));
 		}
@@ -145,7 +145,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		experimentalMinList.pop();
 	} else if (varName == "experimentalMax") {
 		LuaObject experimentalMaxList(state);
-
+		experimentalMax->removeAll();
 		for (int i = 1; i <= experimentalMaxList.getTableSize(); ++i) {
 			experimentalMax->add(experimentalMaxList.getIntAt(i));
 		}
@@ -153,7 +153,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		experimentalMaxList.pop();
 	} else if (varName == "experimentalPrecision") {
 		LuaObject experimentalPrecisionList(state);
-
+		experimentalPrecision->removeAll();
 		for (int i = 1; i <= experimentalPrecisionList.getTableSize(); ++i) {
 			experimentalPrecision->add(experimentalPrecisionList.getIntAt(i));
 		}
@@ -362,6 +362,7 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 	// Add experimental properties groups to the draft schematic
 	uint32 weightIterator = 0;
 	String subtitle = "";
+	resourceWeights->removeAll();
 	for (uint32 i = 0; i < numberExperimentalProperties->size(); i++) {
 
 		ResourceWeight* newWeight = new ResourceWeight();
@@ -378,6 +379,6 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 			weightIterator++;
 		}
 
-		addResourceWeight(newWeight);
+		resourceWeights->add(newWeight);
 	}
 }
