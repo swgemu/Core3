@@ -25,7 +25,7 @@ geonosian_scientist = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/shared_dressed_geonosian_scientist_01.iff","object/mobile/shared_dressed_geonosian_scientist_02.iff"},
+	templates = {"object/mobile/dressed_geonosian_scientist_01.iff","object/mobile/dressed_geonosian_scientist_02.iff"},
 	lootgroups = {},
 	weapons = {"geonosian_weapons"},
 	attacks = {}

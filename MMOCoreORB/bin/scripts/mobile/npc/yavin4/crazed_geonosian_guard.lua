@@ -28,9 +28,9 @@ crazed_geonosian_guard = Creature:new {
 	lootChance = 7500000,
 
 	templates = {
-		"object/mobile/shared_dressed_geonosian_warrior_01.iff",
-		"object/mobile/shared_dressed_geonosian_warrior_02.iff",
-		"object/mobile/shared_dressed_geonosian_warrior_03.iff"
+		"object/mobile/dressed_geonosian_warrior_01.iff",
+		"object/mobile/dressed_geonosian_warrior_02.iff",
+		"object/mobile/dressed_geonosian_warrior_03.iff"
 	},
 	lootgroups = {
 		{group = "geonosian_common", chance = 6000000},

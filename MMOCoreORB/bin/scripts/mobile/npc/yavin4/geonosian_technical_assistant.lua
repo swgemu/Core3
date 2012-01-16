@@ -26,7 +26,7 @@ geonosian_technical_assistant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/shared_dressed_geonosian_noble_01.iff", "object/mobile/shared_dressed_geonosian_noble_02.iff"},
+	templates = {"object/mobile/dressed_geonosian_noble_01.iff", "object/mobile/dressed_geonosian_noble_02.iff"},
 	lootgroups = {},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
