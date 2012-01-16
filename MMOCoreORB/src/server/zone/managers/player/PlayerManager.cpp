@@ -34,7 +34,7 @@
  *	PlayerManagerStub
  */
 
-enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_,RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_,RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_AWARDBADGE__PLAYEROBJECT_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_,RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_GETINRANGEOWNEDSTRUCTURE__CREATUREOBJECT_FLOAT_,RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_LOOTALL__CREATUREOBJECT_AIAGENT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_,RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDLOGINMESSAGE__CREATUREOBJECT_,RPC_RESENDLOGINMESSAGETOALL__,RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_,RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_,RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_,RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_,RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_,RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__CREATUREOBJECT_STRING_INT_,RPC_GENERATEHOLOGRINDSKILLS__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_};
+enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_,RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_,RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_AWARDBADGE__PLAYEROBJECT_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_,RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_GETINRANGEOWNEDSTRUCTURE__CREATUREOBJECT_FLOAT_,RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_LOOTALL__CREATUREOBJECT_AIAGENT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_,RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDLOGINMESSAGE__CREATUREOBJECT_,RPC_RESENDLOGINMESSAGETOALL__,RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_,RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_,RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_,RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_,RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_,RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__CREATUREOBJECT_STRING_INT_,RPC_GENERATEHOLOGRINDSKILLS__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_};
 
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl) : Observer(DummyConstructorParameter::instance()) {
 	PlayerManagerImplementation* _implementation = new PlayerManagerImplementation(zoneServer, impl);
@@ -175,19 +175,20 @@ int PlayerManager::notifyDefendersOfIncapacitation(TangibleObject* destructor, T
 		return _implementation->notifyDefendersOfIncapacitation(destructor, destructedObject);
 }
 
-void PlayerManager::killPlayer(TangibleObject* attacker, CreatureObject* player) {
+void PlayerManager::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_);
+		DistributedMethod method(this, RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_);
 		method.addObjectParameter(attacker);
 		method.addObjectParameter(player);
+		method.addSignedIntParameter(typeofdeath);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->killPlayer(attacker, player);
+		_implementation->killPlayer(attacker, player, typeofdeath);
 }
 
 byte PlayerManager::calculateIncapacitationTimer(CreatureObject* player, int condition) {
@@ -635,33 +636,35 @@ void PlayerManager::resendLoginMessageToAll() {
 		_implementation->resendLoginMessageToAll();
 }
 
-void PlayerManager::sendActivateCloneRequest(CreatureObject* player) {
+void PlayerManager::sendActivateCloneRequest(CreatureObject* player, int typeofdeath) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_);
+		DistributedMethod method(this, RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
+		method.addSignedIntParameter(typeofdeath);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->sendActivateCloneRequest(player);
+		_implementation->sendActivateCloneRequest(player, typeofdeath);
 }
 
-void PlayerManager::sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID) {
+void PlayerManager::sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_);
+		DistributedMethod method(this, RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(clonerID);
+		method.addSignedIntParameter(typeofdeath);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->sendPlayerToCloner(player, clonerID);
+		_implementation->sendPlayerToCloner(player, clonerID, typeofdeath);
 }
 
 bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
@@ -1068,8 +1071,8 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_:
 		resp->insertSignedInt(notifyDefendersOfIncapacitation(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter())));
 		break;
-	case RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_:
-		killPlayer(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+	case RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_:
+		killPlayer(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_:
 		resp->insertByte(calculateIncapacitationTimer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
@@ -1155,11 +1158,11 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_RESENDLOGINMESSAGETOALL__:
 		resendLoginMessageToAll();
 		break;
-	case RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_:
-		sendActivateCloneRequest(static_cast<CreatureObject*>(inv->getObjectParameter()));
+	case RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_:
+		sendActivateCloneRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
-	case RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_:
-		sendPlayerToCloner(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+	case RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_:
+		sendPlayerToCloner(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_CHECKEXISTENTNAMEINDATABASE__STRING_:
 		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
@@ -1235,8 +1238,8 @@ int PlayerManagerAdapter::notifyDefendersOfIncapacitation(TangibleObject* destru
 	return (static_cast<PlayerManager*>(stub))->notifyDefendersOfIncapacitation(destructor, destructedObject);
 }
 
-void PlayerManagerAdapter::killPlayer(TangibleObject* attacker, CreatureObject* player) {
-	(static_cast<PlayerManager*>(stub))->killPlayer(attacker, player);
+void PlayerManagerAdapter::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath) {
+	(static_cast<PlayerManager*>(stub))->killPlayer(attacker, player, typeofdeath);
 }
 
 byte PlayerManagerAdapter::calculateIncapacitationTimer(CreatureObject* player, int condition) {
@@ -1351,12 +1354,12 @@ void PlayerManagerAdapter::resendLoginMessageToAll() {
 	(static_cast<PlayerManager*>(stub))->resendLoginMessageToAll();
 }
 
-void PlayerManagerAdapter::sendActivateCloneRequest(CreatureObject* player) {
-	(static_cast<PlayerManager*>(stub))->sendActivateCloneRequest(player);
+void PlayerManagerAdapter::sendActivateCloneRequest(CreatureObject* player, int typeofdeath) {
+	(static_cast<PlayerManager*>(stub))->sendActivateCloneRequest(player, typeofdeath);
 }
 
-void PlayerManagerAdapter::sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID) {
-	(static_cast<PlayerManager*>(stub))->sendPlayerToCloner(player, clonerID);
+void PlayerManagerAdapter::sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath) {
+	(static_cast<PlayerManager*>(stub))->sendPlayerToCloner(player, clonerID, typeofdeath);
 }
 
 bool PlayerManagerAdapter::checkExistentNameInDatabase(const String& firstName) {

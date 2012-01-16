@@ -141,9 +141,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	case SuiWindowType::MEDIC_CONSENT:
 		handleConsentBox(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::CLONE_REQUEST:
-		handleCloneRequest(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::DANCING_START:
 		handleStartDancing(player, suiBox, cancel, args);
 		break;
@@ -731,33 +728,6 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			ghost->addSuiBox(cbSui);
 			player->sendMessage(cbSui->generateMessage());
 		}
-	}
-}
-
-void SuiManager::handleCloneRequest(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	info("activating sui cloner option");
-
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int index = Integer::valueOf(args->get(0).toString());
-
-	ZoneServer* zoneServer = server->getZoneServer();
-	PlayerManager* playerManager = zoneServer->getPlayerManager();
-
-	if (index >= 0) {
-		if (!player->isDead()) {
-			player->sendSystemMessage("You must be dead to activate your clone.");
-		} else {
-			SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
-			playerManager->sendPlayerToCloner(player, suiListBox->getMenuObjectID(index));
-		}
-	} else {
-		if (player->isDead())
-			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
 	}
 }
 

@@ -141,7 +141,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @pre { attacker and player locked }
 	 * @post { attacker and player locked }
 	 */
-	public native void killPlayer(TangibleObject attacker, CreatureObject player);
+	public native void killPlayer(TangibleObject attacker, CreatureObject player, int typeofdeath = 0);
 	
 	/**
 	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
@@ -214,8 +214,8 @@ class PlayerManager extends Observer implements Logger {
 	public native void sendLoginMessage(CreatureObject player);
 	public native void resendLoginMessageToAll();
 	
-	public native void sendActivateCloneRequest(CreatureObject player);
-	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID);
+	public native void sendActivateCloneRequest(CreatureObject player, int typeofdeath = 0);
+	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID, int typeofdeath = 0);
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	

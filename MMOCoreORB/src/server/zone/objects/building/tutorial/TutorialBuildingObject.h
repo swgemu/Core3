@@ -14,6 +14,20 @@
 namespace server {
 namespace zone {
 namespace objects {
+namespace building {
+
+class BuildingObject;
+
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -99,7 +113,7 @@ class DirectorManager;
 
 using namespace server::zone::managers::director;
 
-#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -109,7 +123,7 @@ namespace objects {
 namespace building {
 namespace tutorial {
 
-class TutorialBuildingObject : public BuildingObject {
+class TutorialBuildingObject : public CloningBuildingObject {
 public:
 	TutorialBuildingObject();
 
@@ -149,7 +163,7 @@ namespace objects {
 namespace building {
 namespace tutorial {
 
-class TutorialBuildingObjectImplementation : public BuildingObjectImplementation {
+class TutorialBuildingObjectImplementation : public CloningBuildingObjectImplementation {
 protected:
 	Reference<UnloadBuildingTask* > unloadTask;
 
@@ -211,7 +225,7 @@ protected:
 	friend class TutorialBuildingObject;
 };
 
-class TutorialBuildingObjectAdapter : public BuildingObjectAdapter {
+class TutorialBuildingObjectAdapter : public CloningBuildingObjectAdapter {
 public:
 	TutorialBuildingObjectAdapter(TutorialBuildingObject* impl);
 

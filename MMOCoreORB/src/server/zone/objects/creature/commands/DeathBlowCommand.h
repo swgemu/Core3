@@ -90,7 +90,7 @@ public:
 		}
 
 		if (player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
-			playerManager->killPlayer(creature, player);
+			playerManager->killPlayer(creature, player, 1);
 		}
 
 		return SUCCESS;

@@ -61,15 +61,24 @@ public:
 		insertInt(0); //??
 		insertInt(0); //??
 
-		insertFloat(0); //Bind Location X
-		insertFloat(0); //Bind Location Z
-		insertFloat(0); //Bind Location Y
-		insertAscii(""); //Bind Planet
+		ManagedReference<BuildingObject*> cloningFacility = ghost->getCloningFacility();
 
-		insertFloat(-4253.09f); //Bank Location X
-		insertFloat(3); //Bank Location Z
-		insertFloat(-2403.3); //Bank Location Y
-		insertAscii("dantooine"); //Bank Planet
+		if (cloningFacility != NULL && cloningFacility->getZone() != NULL) {
+			insertFloat(cloningFacility->getPositionX());
+			insertFloat(cloningFacility->getPositionZ());
+			insertFloat(cloningFacility->getPositionY());
+			insertAscii(cloningFacility->getZone()->getZoneName()); //note: the client ignores the tutorial zone
+		} else {
+			insertFloat(0); //Bind Location X
+			insertFloat(0); //Bind Location Z
+			insertFloat(0); //Bind Location Y
+			insertAscii(""); //Bind Planet
+		}
+
+		insertFloat(0); //Bank Location X
+		insertFloat(0); //Bank Location Z
+		insertFloat(0); //Bank Location Y
+		insertAscii(ghost->getBankLocation()); //Bank Planet
 
 		ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 

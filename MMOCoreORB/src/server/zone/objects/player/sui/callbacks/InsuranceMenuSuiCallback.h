@@ -71,6 +71,7 @@ public:
 			insureAll->setForceCloseDistance(32.f);
 			insureAll->setCallback(new InsuranceAllConfirmSuiCallback(server));
 
+
 			player->getPlayerObject()->addSuiBox(insureAll);
 			player->sendMessage(insureAll->generateMessage());
 

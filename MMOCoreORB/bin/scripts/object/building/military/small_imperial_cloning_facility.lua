@@ -44,7 +44,10 @@
 object_building_military_small_imperial_cloning_facility = object_building_military_shared_small_imperial_cloning_facility:new {
 	gameObjectType = 519,
 	planetMapCategory = "cloningfacility",
-
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -5.5, z = -0.05, y = -3, ox = 0, oy = 0.707106, oz = 0, ow = 0.707106, cellid = 6, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_insurance.iff", x = 0, z = -0.05, y = -5.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1}
+	},
 
 	spawningPoints = {
 		{ x = 3.82471, z = 0.125266, y = -3.7097, ow = -0.70527, ox = 0, oz = 0, oy = 0.708939, cellid = 5 }

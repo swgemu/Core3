@@ -115,7 +115,7 @@ public:
 			suiInsuranceMenuBox->setOtherButton(true, "@sui:mnu_insure_all");
 			suiInsuranceMenuBox->setUsingObject(term);
 
-			suiInsuranceMenuBox->setForceCloseDistance(32.f);
+			suiInsuranceMenuBox->setForceCloseDistance(32);
 
 			creature->getPlayerObject()->addSuiBox(suiInsuranceMenuBox);
 			creature->sendMessage(suiInsuranceMenuBox->generateMessage());

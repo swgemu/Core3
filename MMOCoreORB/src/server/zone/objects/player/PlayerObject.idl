@@ -105,6 +105,8 @@ class PlayerObject extends IntangibleObject {
 	
 	protected string starterProfession;
 	
+	protected string bankLocation;
+	
 	protected boolean teleporting;
 	
 	@dereferenced
@@ -250,6 +252,8 @@ class PlayerObject extends IntangibleObject {
 	
 	public PlayerObject() {
 		commandMessageStrings.setNoDuplicateInsertPlan();
+		
+		bankLocation = "";
 		
 		teleporting = false;
 		
@@ -1028,6 +1032,14 @@ class PlayerObject extends IntangibleObject {
 
 	public void removeChatRoom(ChatRoom room) {
 		chatRooms.drop(room);
+	}
+	
+	public void setBankLocation(final string location) {
+		bankLocation = location;
+	}
+	
+	public string getBankLocation() {
+		return bankLocation;
 	}
 	
 	@local

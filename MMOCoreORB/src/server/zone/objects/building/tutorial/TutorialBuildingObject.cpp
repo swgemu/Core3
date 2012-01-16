@@ -4,6 +4,8 @@
 
 #include "TutorialBuildingObject.h"
 
+#include "server/zone/objects/building/BuildingObject.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/building/tutorial/events/UnloadBuildingTask.h"
@@ -22,13 +24,13 @@
 
 enum {RPC_NOTIFYREMOVEFROMZONE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_CLEARUNLOADEVENT__,};
 
-TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
+TutorialBuildingObject::TutorialBuildingObject() : CloningBuildingObject(DummyConstructorParameter::instance()) {
 	TutorialBuildingObjectImplementation* _implementation = new TutorialBuildingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
 
-TutorialBuildingObject::TutorialBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
+TutorialBuildingObject::TutorialBuildingObject(DummyConstructorParameter* param) : CloningBuildingObject(param) {
 }
 
 TutorialBuildingObject::~TutorialBuildingObject() {
@@ -117,7 +119,7 @@ void TutorialBuildingObject::_setImplementation(DistributedObjectServant* servan
  *	TutorialBuildingObjectImplementation
  */
 
-TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
+TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(DummyConstructorParameter* param) : CloningBuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -139,7 +141,7 @@ void TutorialBuildingObjectImplementation::_initializeImplementation() {
 
 void TutorialBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = static_cast<TutorialBuildingObject*>(stub);
-	BuildingObjectImplementation::_setStub(stub);
+	CloningBuildingObjectImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* TutorialBuildingObjectImplementation::_getStub() {
@@ -179,7 +181,7 @@ void TutorialBuildingObjectImplementation::runlock(bool doLock) {
 }
 
 void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
-	BuildingObjectImplementation::_serializationHelperMethod();
+	CloningBuildingObjectImplementation::_serializationHelperMethod();
 
 	_setClassName("TutorialBuildingObject");
 
@@ -205,7 +207,7 @@ void TutorialBuildingObjectImplementation::readObject(ObjectInputStream* stream)
 }
 
 bool TutorialBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuildingObjectImplementation::readObjectMember(stream, _name))
+	if (CloningBuildingObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
 
@@ -224,7 +226,7 @@ int TutorialBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream*
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + BuildingObjectImplementation::writeObjectMembers(stream);
+	return 0 + CloningBuildingObjectImplementation::writeObjectMembers(stream);
 }
 
 TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation() {
@@ -237,7 +239,7 @@ TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation() {
 
 void TutorialBuildingObjectImplementation::initializeTransientMembers() {
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		super.initializeTransientMembers();
-	BuildingObjectImplementation::initializeTransientMembers();
+	CloningBuildingObjectImplementation::initializeTransientMembers();
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		unloadTask = null;
 	unloadTask = NULL;
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		Logger.setLoggingName("TutorialBuildingObject");
@@ -275,7 +277,7 @@ void TutorialBuildingObjectImplementation::dequeueUnloadEvent() {
  *	TutorialBuildingObjectAdapter
  */
 
-TutorialBuildingObjectAdapter::TutorialBuildingObjectAdapter(TutorialBuildingObject* obj) : BuildingObjectAdapter(obj) {
+TutorialBuildingObjectAdapter::TutorialBuildingObjectAdapter(TutorialBuildingObject* obj) : CloningBuildingObjectAdapter(obj) {
 }
 
 Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {

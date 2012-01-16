@@ -82,7 +82,7 @@ public:
 
 		Locker clocker(targetToKill, creature);
 
-		playerManager->killPlayer(creature, targetToKill);
+		playerManager->killPlayer(creature, targetToKill, 1);
 
 		return SUCCESS;
 	}

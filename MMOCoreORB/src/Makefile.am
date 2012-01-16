@@ -239,7 +239,6 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/tangible/deed/resource/ResourceDeed.cpp \
 				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
-				server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
 				server/zone/objects/tangible/terminal/city/CityTerminal.cpp \
 				server/zone/objects/tangible/terminal/city/CityVoteTerminal.cpp \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
@@ -253,7 +252,6 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
-				server/zone/objects/tangible/terminal/cloning/CloningTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/mission/MissionObjective.cpp \
 				server/zone/objects/mission/SurveyMissionObjective.cpp \
@@ -288,6 +286,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/CampKitMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/components/BankTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
 		server/zone/objects/scene/components/ObjectMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerZoneComponent.cpp \
 		server/zone/objects/building/components/ShuttleZoneComponent.cpp \
@@ -401,7 +401,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
-		server/zone/objects/tangible/terminal/cloning/CloningTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \

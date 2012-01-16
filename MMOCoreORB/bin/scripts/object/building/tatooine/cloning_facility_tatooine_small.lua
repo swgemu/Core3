@@ -47,6 +47,7 @@ object_building_tatooine_cloning_facility_tatooine_small = object_building_tatoo
 
 
 	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_insurance.iff", x = 5, z = -0.05, y = 5, ox = 0, oy = -0.707106, oz = 0, ow = 0.707106, cellid = 1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -0.42, z = -0.38, y = -0.4, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 10, containmentType = -1}
 	},
 	spawningPoints = { 

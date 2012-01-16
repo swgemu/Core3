@@ -34,7 +34,6 @@
 
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
-#include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 #include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"

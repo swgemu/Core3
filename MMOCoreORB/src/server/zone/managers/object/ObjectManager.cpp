@@ -209,7 +209,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Terminal>(SceneObjectType::INTERACTIVETERMINAL);
 	objectFactory.registerObject<MissionTerminal>(SceneObjectType::MISSIONTERMINAL);
 	objectFactory.registerObject<BazaarTerminal>(SceneObjectType::BAZAAR);
-	objectFactory.registerObject<BankTerminal>(SceneObjectType::BANK);
+	objectFactory.registerObject<Terminal>(SceneObjectType::BANK);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectType::NEWBIETUTORIALTERMINAL);
 	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObjectType::CHARACTERBUILDERTERMINAL);
 	objectFactory.registerObject<StructureTerminal>(SceneObjectType::PLAYERTERMINALSTRUCTURE);
@@ -221,7 +221,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CityTerminal>(SceneObjectType::CITYTERMINAL);
 	objectFactory.registerObject<CityVoteTerminal>(SceneObjectType::CITYVOTETERMINAL);
 	objectFactory.registerObject<GamblingTerminal>(SceneObjectType::GAMBLINGTERMINAL);
-	objectFactory.registerObject<CloningTerminal>(SceneObjectType::CLONING);
+	objectFactory.registerObject<Terminal>(SceneObjectType::CLONING);
 	objectFactory.registerObject<VendorTerminal>(SceneObjectType::VENDORTERMINAL);
 
 	objectFactory.registerObject<Deed>(SceneObjectType::DEED);

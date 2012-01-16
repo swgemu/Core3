@@ -51,8 +51,10 @@ public:
 	static const uint16 NONE = 0;
 
 	//Cloning 1 - 10
-	static const uint16 CLONE_REQUEST = 1;
-	static const uint16 CLONE_CONFIRM = 2;
+	static const uint16 CLONE_REQUEST_DECAY = 1;
+	static const uint16 CLONE_REQUEST = 2;
+	static const uint16 CLONE_REQUEST_FACTIONAL = 3;
+	static const uint16 CLONE_CONFIRM = 10;
 
 	//Entertaining 11 - 20
 	static const uint16 MUSIC_START = 11;

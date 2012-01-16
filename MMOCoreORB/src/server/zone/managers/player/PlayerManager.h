@@ -244,7 +244,7 @@ public:
 
 	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
-	void killPlayer(TangibleObject* attacker, CreatureObject* player);
+	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
@@ -306,9 +306,9 @@ public:
 
 	void resendLoginMessageToAll();
 
-	void sendActivateCloneRequest(CreatureObject* player);
+	void sendActivateCloneRequest(CreatureObject* player, int typeofdeath = 0);
 
-	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID);
+	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath = 0);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
@@ -418,7 +418,7 @@ public:
 
 	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
-	void killPlayer(TangibleObject* attacker, CreatureObject* player);
+	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
@@ -480,9 +480,9 @@ public:
 
 	void resendLoginMessageToAll();
 
-	void sendActivateCloneRequest(CreatureObject* player);
+	void sendActivateCloneRequest(CreatureObject* player, int typeofdeath = 0);
 
-	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID);
+	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath = 0);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
@@ -567,7 +567,7 @@ public:
 
 	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
-	void killPlayer(TangibleObject* attacker, CreatureObject* player);
+	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath);
 
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
@@ -625,9 +625,9 @@ public:
 
 	void resendLoginMessageToAll();
 
-	void sendActivateCloneRequest(CreatureObject* player);
+	void sendActivateCloneRequest(CreatureObject* player, int typeofdeath);
 
-	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID);
+	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 

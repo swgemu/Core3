@@ -654,6 +654,10 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+	void setBankLocation(const String& location);
+
+	String getBankLocation();
+
 	void clearTradeContainer();
 
 	TradeContainer* getTradeContainer();
@@ -749,6 +753,7 @@ protected:
 
 	virtual ~PlayerObject();
 
+	String _return_getBankLocation;
 	String _return_getCommandMessageString;
 	String _return_getConsentName;
 	String _return_getFactionRank;
@@ -801,6 +806,8 @@ protected:
 	int drinkFillingMax;
 
 	String starterProfession;
+
+	String bankLocation;
 
 	bool teleporting;
 
@@ -1259,6 +1266,10 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+	void setBankLocation(const String& location);
+
+	String getBankLocation();
+
 	void clearTradeContainer();
 
 	TradeContainer* getTradeContainer();
@@ -1664,6 +1675,10 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+	void setBankLocation(const String& location);
+
+	String getBankLocation();
+
 	int getExperience(const String& xp);
 
 	void maximizeExperience();
@@ -1765,6 +1780,7 @@ protected:
 	String _param0_addReverseFriend__String_;
 	String _param0_removeReverseFriend__String_;
 	UnicodeString _param0_setBiography__UnicodeString_;
+	String _param0_setBankLocation__String_;
 	String _param0_getExperience__String_;
 	String _param0_setStarterProfession__String_;
 };

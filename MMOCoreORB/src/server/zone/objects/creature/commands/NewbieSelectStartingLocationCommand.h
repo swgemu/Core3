@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/StartingLocation.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class NewbieSelectStartingLocationCommand : public QueueCommand {
 public:
@@ -99,6 +100,15 @@ public:
 
 		player->switchZone(startingLocation->getZoneName(), startingLocation->getX(), startingLocation->getZ(), startingLocation->getY(), startingLocation->getCell());
 		player->setDirection(startingLocation->getHeading());
+
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost != NULL) {
+			ghost->setCloningFacility(NULL);
+			if (ghost->getBankLocation() != "")
+				ghost->setBankLocation(startingLocation->getZoneName());
+		}
+
 
 		if (tutorial != NULL)
 			tutorial->destroyObjectFromDatabase(true);

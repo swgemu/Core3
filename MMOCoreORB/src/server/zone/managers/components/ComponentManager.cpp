@@ -19,6 +19,8 @@
 #include "server/zone/objects/tangible/components/CampKitMenuComponent.h"
 #include "server/zone/objects/tangible/components/CampTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/components/BankTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 
 ComponentManager::ComponentManager() {
@@ -39,6 +41,8 @@ ComponentManager::ComponentManager() {
 	components.put("CampTerminalMenuComponent", new CampTerminalMenuComponent());
 
 	components.put("InsuranceTerminalMenuComponent", new InsuranceTerminalMenuComponent());
+	components.put("BankTerminalMenuComponent", new BankTerminalMenuComponent());
+	components.put("CloningTerminalMenuComponent", new CloningTerminalMenuComponent());
 
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 }
