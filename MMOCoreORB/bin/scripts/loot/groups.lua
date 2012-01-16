@@ -1,5 +1,6 @@
 includeFile("groups/acklay.lua")
 includeFile("groups/bandit_1.lua")
+includeFile("groups/enhanced_kwi.lua")
 includeFile("groups/forage.lua")
 includeFile("groups/geonosian_common.lua")
 includeFile("groups/geonosian_hard.lua")

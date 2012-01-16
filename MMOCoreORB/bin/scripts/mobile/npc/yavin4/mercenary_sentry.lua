@@ -24,9 +24,14 @@ mercenary_sentry = Creature:new {
 	pvpBitmask = ATTACKABLE + AGGRESSIVE,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
+	lootChance = 7500000,
 
-	templates = {},
-	lootgroups = {},
+	templates = {"object/mobile/shared_dressed_mercenary_strong_hum_f.iff","object/mobile/shared_dressed_mercenary_strong_hum_m.iff","object/mobile/shared_dressed_mercenary_strong_rod_m.iff","object/mobile/shared_dressed_mercenary_strong_tran_m.iff"},
+	lootgroups = {
+		{group = "geonosian_common", chance = 5000000},
+		{group = "geonosian_hard", chance = 2000000},
+		{group = "geonosian_relic", chance = 3000000}
+	},
 	weapons = {"geonosian_weapons"},
 	attacks = {}
 }
