@@ -587,14 +587,14 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		}
 	}
 
-	if(isInWater(targetPos.getX(), targetPos.getY()))
-		return false;
-
 	if (deleteVector) {
 		delete closeObjects;
 		delete activeAreas;
 	}
 
+	if (isInWater(targetPos.getX(), targetPos.getY())) {
+		return false;
+	}
 
 	return true;
 }
