@@ -25,9 +25,12 @@ tusken_commoner = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 3500000, --35%
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootgroups = {},
+	lootgroups = {
+		{group = "tusken", chance = 10000000}
+	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
 	attacks = {
