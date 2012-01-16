@@ -121,7 +121,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		if(player->getCityRegion() != NULL) {
+		if(planetManager->getRegion(player->getPositionX(), player->getPositionY()) != NULL) {
 			player->sendSystemMessage("camp", "error_muni_true");
 			return 0;
 		}
