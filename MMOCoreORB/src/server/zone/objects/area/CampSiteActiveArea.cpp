@@ -450,7 +450,7 @@ bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* strea
 	}
 
 	if (_name == "campStructureData") {
-		TypeInfo<Reference<CampStructureTemplate* > >::parseFromBinaryStream(&campStructureData, stream);
+		TypeInfo<TemplateReference<CampStructureTemplate*> >::parseFromBinaryStream(&campStructureData, stream);
 		return true;
 	}
 
@@ -521,7 +521,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Reference<CampStructureTemplate* > >::toBinaryStream(&campStructureData, stream);
+	TypeInfo<TemplateReference<CampStructureTemplate*> >::toBinaryStream(&campStructureData, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -567,28 +567,28 @@ void CampSiteActiveAreaImplementation::setCamp(StructureObject* c) {
 }
 
 int CampSiteActiveAreaImplementation::getMedicalRating() {
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getMedicalRating();
-	return campStructureData->getMedicalRating();
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.get().getMedicalRating();
+	return (&campStructureData)->get()->getMedicalRating();
 }
 
 int CampSiteActiveAreaImplementation::getHealthWoundRegenRate() {
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getHealthWoundRegenRate();
-	return campStructureData->getHealthWoundRegenRate();
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.get().getHealthWoundRegenRate();
+	return (&campStructureData)->get()->getHealthWoundRegenRate();
 }
 
 int CampSiteActiveAreaImplementation::getActionWoundRegenRate() {
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getActionWoundRegenRate();
-	return campStructureData->getActionWoundRegenRate();
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.get().getActionWoundRegenRate();
+	return (&campStructureData)->get()->getActionWoundRegenRate();
 }
 
 int CampSiteActiveAreaImplementation::getMindWoundRegenRate() {
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getMindWoundRegenRate();
-	return campStructureData->getMindWoundRegenRate();
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.get().getMindWoundRegenRate();
+	return (&campStructureData)->get()->getMindWoundRegenRate();
 }
 
 float CampSiteActiveAreaImplementation::getAggroMod() {
-	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.getAggroMod();
-	return campStructureData->getAggroMod();
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.get().getAggroMod();
+	return (&campStructureData)->get()->getAggroMod();
 }
 
 bool CampSiteActiveAreaImplementation::isCampArea() {

@@ -117,6 +117,8 @@ using namespace server::zone::objects::area::events;
 
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
 
+#include "server/zone/templates/TemplateReference.h"
+
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "system/lang/ref/Reference.h"
@@ -224,7 +226,7 @@ protected:
 
 	int currentXp;
 
-	Reference<CampStructureTemplate* > campStructureData;
+	TemplateReference<CampStructureTemplate*> campStructureData;
 
 public:
 	static const int DESPAWNTIME = 6000000;

@@ -55,6 +55,7 @@ import server.zone.objects.area.events.CampAbandonTask;
 include server.zone.templates.tangible.CampStructureTemplate;
 import system.lang.ref.Reference;
 import system.lang.Time;
+include server.zone.templates.TemplateReference;
 
 class CampSiteActiveArea extends ActiveArea {
 
@@ -76,7 +77,8 @@ class CampSiteActiveArea extends ActiveArea {
 
 	protected transient int currentXp;
 	
-	protected CampStructureTemplate campStructureData;
+	@dereferenced
+	protected TemplateReference<CampStructureTemplate> campStructureData;
 	
 	// 1 Hour Minutes
 	public final static int DESPAWNTIME = 6000000;
@@ -120,23 +122,23 @@ class CampSiteActiveArea extends ActiveArea {
 	}
 
 	public int getMedicalRating() {
-		return campStructureData.getMedicalRating();
+		return campStructureData.get().getMedicalRating();
 	}
 	
 	public int getHealthWoundRegenRate() {
-		return campStructureData.getHealthWoundRegenRate();
+		return campStructureData.get().getHealthWoundRegenRate();
 	}
 	
 	public int getActionWoundRegenRate() {
-		return campStructureData.getActionWoundRegenRate();
+		return campStructureData.get().getActionWoundRegenRate();
 	}
 	
 	public int getMindWoundRegenRate() {
-		return campStructureData.getMindWoundRegenRate();
+		return campStructureData.get().getMindWoundRegenRate();
 	}
 
 	public float getAggroMod() {
-		return campStructureData.getAggroMod();
+		return campStructureData.get().getAggroMod();
 	}
 	
 	public abstract boolean isCampArea() {

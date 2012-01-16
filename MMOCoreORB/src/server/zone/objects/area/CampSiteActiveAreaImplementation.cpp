@@ -77,7 +77,6 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 }
 
 void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
-
 	object->dropObserver(ObserverEventType::HEALINGPERFORMED, campObserver);
 
 	if (!object->isPlayerCreature())
