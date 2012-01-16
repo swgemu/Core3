@@ -1,10 +1,10 @@
 slicer_m = Creature:new {
-	objectName = "slicer (M)",
+	objectName = "@mob/creature_names:slicer (M)",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 113,
@@ -19,16 +19,19 @@ slicer_m = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(slicer_m, "slicer_m")

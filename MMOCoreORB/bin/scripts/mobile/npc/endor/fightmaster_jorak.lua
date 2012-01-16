@@ -4,7 +4,7 @@ fightmaster_jorak = Creature:new {
 	pvpFaction = "Marauder",
 	faction = "",
 	level = 22,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1803,
@@ -19,16 +19,19 @@ fightmaster_jorak = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fightmaster_jorak.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(fightmaster_jorak, "fightmaster_jorak")

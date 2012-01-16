@@ -11,7 +11,7 @@ chiss_male = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {15,15,15,15,15,15,15,15,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ chiss_male = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_patron_chiss_m_01.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -4,14 +4,14 @@ hardened_gondula_warrior = Creature:new {
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 53,
-	chanceHit = 0.530000,
+	chanceHit = 0.53,
 	damageMin = 410,
 	damageMax = 530,
 	baseXp = 5190,
 	baseHAM = 10000,
 	baseHAMmax = 13000,
-	armor = 0,
-	resists = {30,30,0,0,0,0,-1,0,-1},
+	armor = 1,
+	resists = {30,30,5,5,5,5,-1,5,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ hardened_gondula_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ewok_male.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hardened_gondula_warrior, "hardened_gondula_warrior")

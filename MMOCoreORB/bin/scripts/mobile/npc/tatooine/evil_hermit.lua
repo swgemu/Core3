@@ -4,7 +4,7 @@ evil_hermit = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 147,
@@ -19,16 +19,19 @@ evil_hermit = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_evil_hermit.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(evil_hermit, "evil_hermit")

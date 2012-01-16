@@ -26,7 +26,7 @@ crackdown_imperial_warrant_officer_li = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_officer_m_5.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",

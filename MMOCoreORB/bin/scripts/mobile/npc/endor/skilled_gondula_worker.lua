@@ -4,7 +4,7 @@ skilled_gondula_worker = Creature:new {
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 37,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 330,
 	damageMax = 370,
 	baseXp = 3642,
@@ -19,16 +19,19 @@ skilled_gondula_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(skilled_gondula_worker, "skilled_gondula_worker")

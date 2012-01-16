@@ -1,5 +1,5 @@
 spiderclan_elder = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_elder",
+	objectName = "@mob/creature_names:spider_nightsister_elder",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
@@ -11,7 +11,7 @@ spiderclan_elder = Creature:new {
 	baseHAM = 321000,
 	baseHAMmax = 392000,
 	armor = 3,
-	resists = {95,100,95,95,100,100,95,100,-1},
+	resists = {80,100,85,80,100,100,90,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

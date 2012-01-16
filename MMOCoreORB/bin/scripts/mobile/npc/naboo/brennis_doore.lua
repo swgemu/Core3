@@ -1,5 +1,5 @@
 brennis_doore = Creature:new {
-	objectName = "@mob/creature_names:Brennis_Doore",
+	objectName = "@mob/creature_names:brennis_doore",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +26,7 @@ brennis_doore = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_brennis_doore.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

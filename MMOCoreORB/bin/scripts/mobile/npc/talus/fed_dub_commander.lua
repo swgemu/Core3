@@ -4,7 +4,7 @@ fed_dub_commander = Creature:new {
 	pvpFaction = "Fed Dub",
 	faction = "",
 	level = 23,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 2219,
@@ -19,16 +19,19 @@ fed_dub_commander = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fed_dub_commander_bith_female_01.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(fed_dub_commander, "fed_dub_commander")

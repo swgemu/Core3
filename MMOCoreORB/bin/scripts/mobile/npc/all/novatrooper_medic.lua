@@ -1,5 +1,5 @@
 novatrooper_medic = Creature:new {
-	objectName = "Novatrooper Medic",
+	objectName = "@mob/creature_names:Novatrooper Medic",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
@@ -10,8 +10,8 @@ novatrooper_medic = Creature:new {
 	baseXp = 10174,
 	baseHAM = 29000,
 	baseHAMmax = 36000,
-	armor = 0,
-	resists = {40,35,80,30,0,0,30,45,-1},
+	armor = 2,
+	resists = {40,35,80,30,10,10,30,45,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ novatrooper_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_captain_black_gold.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",

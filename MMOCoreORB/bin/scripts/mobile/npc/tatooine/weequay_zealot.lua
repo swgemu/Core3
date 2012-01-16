@@ -4,7 +4,7 @@ weequay_zealot = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 514,
@@ -19,16 +19,19 @@ weequay_zealot = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_weequay_zealot.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(weequay_zealot, "weequay_zealot")

@@ -4,7 +4,7 @@ kobola_underboss = Creature:new {
 	pvpFaction = "Kobola",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ kobola_underboss = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_kobola_underboss_bith_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_underboss, "kobola_underboss")

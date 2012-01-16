@@ -26,7 +26,7 @@ donkuwah_laborer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

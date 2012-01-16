@@ -1,5 +1,5 @@
 architect_trainer = Creature:new {
-	objectName = "@mob/creature_names:Architect trainer",
+	objectName = "@mob/creature_names:trainer_architect",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -11,7 +11,7 @@ architect_trainer = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {75,75,75,75,75,75,75,75,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

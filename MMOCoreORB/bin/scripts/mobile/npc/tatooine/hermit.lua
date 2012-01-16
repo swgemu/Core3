@@ -4,7 +4,7 @@ hermit = Creature:new {
 	pvpFaction = "Townperson",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9429,
@@ -19,16 +19,19 @@ hermit = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hermit_of_tatooine.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hermit, "hermit")

@@ -26,7 +26,7 @@ durgur_pyne = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_durgur_pyne.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

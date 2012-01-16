@@ -26,7 +26,7 @@ dantari_chief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",

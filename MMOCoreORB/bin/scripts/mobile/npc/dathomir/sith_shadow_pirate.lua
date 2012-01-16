@@ -1,5 +1,5 @@
 sith_shadow_pirate = Creature:new {
-	objectName = "@mob/creature_names:Sith_Shadow_pirate",
+	objectName = "@mob/creature_names:shadow_pirate",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "s.s. non-aggro",
 	faction = "",

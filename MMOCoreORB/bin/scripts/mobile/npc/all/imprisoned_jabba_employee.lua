@@ -4,7 +4,7 @@ imprisoned_jabba_employee = Creature:new {
 	pvpFaction = "Jabba",
 	faction = "",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 430,
@@ -19,16 +19,19 @@ imprisoned_jabba_employee = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_jabba_thief.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imprisoned_jabba_employee, "imprisoned_jabba_employee")

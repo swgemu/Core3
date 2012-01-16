@@ -1,5 +1,5 @@
 aakuan_defender = Creature:new {
-	objectName = "@mob/creature_names:Aa'kuan_defender",
+	objectName = "@mob/creature_names:aakuan_defender",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
@@ -11,7 +11,7 @@ aakuan_defender = Creature:new {
 	baseHAM = 5000,
 	baseHAMmax = 6100,
 	armor = 0,
-	resists = {35,35,-1,0,0,-1,0,-1,-1},
+	resists = {35,35,-1,10,10,-1,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ aakuan_defender = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff"},
+	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff","object/mobile/dressed_aakuan_defender_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",

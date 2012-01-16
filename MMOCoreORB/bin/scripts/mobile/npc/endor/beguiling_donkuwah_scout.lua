@@ -4,7 +4,7 @@ beguiling_donkuwah_scout = Creature:new {
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1426,
@@ -19,16 +19,19 @@ beguiling_donkuwah_scout = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(beguiling_donkuwah_scout, "beguiling_donkuwah_scout")

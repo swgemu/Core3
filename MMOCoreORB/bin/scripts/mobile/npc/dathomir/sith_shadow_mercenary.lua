@@ -1,5 +1,5 @@
 sith_shadow_mercenary = Creature:new {
-	objectName = "@mob/creature_names:Sith_Shadow_mercenary",
+	objectName = "@mob/creature_names:shadow_mercenary_nonaggro",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "s.s. non-aggro",
 	faction = "",
@@ -10,7 +10,7 @@ sith_shadow_mercenary = Creature:new {
 	baseXp = 3327,
 	baseHAM = 679000,
 	baseHAMmax = 83000,
-	armor = 0,
+	armor = 1,
 	resists = {80,90,85,85,70,85,85,85,-1},
 	meatType = "",
 	meatAmount = 0,

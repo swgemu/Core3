@@ -4,14 +4,14 @@ gundark_raider = Creature:new {
 	pvpFaction = "thug",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 675,
 	baseHAMmax = 825,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {5,5,5,-1,20,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ gundark_raider = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gundark_raider, "gundark_raider")

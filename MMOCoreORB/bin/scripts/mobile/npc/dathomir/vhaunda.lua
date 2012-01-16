@@ -26,7 +26,7 @@ vhaunda = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_vhaunda.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

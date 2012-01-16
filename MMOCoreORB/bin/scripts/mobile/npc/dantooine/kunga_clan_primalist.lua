@@ -4,14 +4,14 @@ kunga_clan_primalist = Creature:new {
 	pvpFaction = "Kunga Tribe",
 	faction = "",
 	level = 40,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 360,
 	damageMax = 430,
 	baseXp = 3915,
 	baseHAM = 9000,
 	baseHAMmax = 11000,
 	armor = 0,
-	resists = {0,60,0,-1,-1,60,50,-1,-1},
+	resists = {25,60,25,-1,-1,60,50,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ kunga_clan_primalist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kunga_clan_primalist, "kunga_clan_primalist")

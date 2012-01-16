@@ -1,10 +1,10 @@
 talus_liberation_party_partisan = Creature:new {
-	objectName = "Talus Liberation Party partisan",
+	objectName = "@mob/creature_names:liberation_partisan",
 	socialGroup = "Liberat. Party",
 	pvpFaction = "Liberat. Party",
 	faction = "",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 514,
@@ -19,16 +19,19 @@ talus_liberation_party_partisan = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(talus_liberation_party_partisan, "talus_liberation_party_partisan")

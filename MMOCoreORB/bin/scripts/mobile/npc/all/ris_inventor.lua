@@ -1,10 +1,10 @@
 ris_inventor = Creature:new {
-	objectName = "Ris Inventor",
+	objectName = "@mob/creature_names:Ris Inventor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 62,
@@ -19,16 +19,19 @@ ris_inventor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(ris_inventor, "ris_inventor")

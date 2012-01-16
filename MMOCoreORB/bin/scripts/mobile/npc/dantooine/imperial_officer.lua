@@ -1,10 +1,10 @@
 imperial_officer = Creature:new {
-	objectName = "Imperial officer",
+	objectName = "@mob/creature_names:Imperial officer",
 	socialGroup = "Warren imp.",
 	pvpFaction = "Warren imp.",
 	faction = "",
 	level = 27,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2730,
@@ -19,16 +19,19 @@ imperial_officer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_officer, "imperial_officer")

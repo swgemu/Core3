@@ -4,14 +4,14 @@ dune_stalker_leader = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 23,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 2219,
 	baseHAM = 6300,
 	baseHAMmax = 7700,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {10,10,10,10,10,10,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ dune_stalker_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_dune_stalker_leader.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dune_stalker_leader, "dune_stalker_leader")

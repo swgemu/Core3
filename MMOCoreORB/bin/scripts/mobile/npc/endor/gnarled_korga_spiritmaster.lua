@@ -4,7 +4,7 @@ gnarled_korga_spiritmaster = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 33,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3370,
@@ -19,16 +19,19 @@ gnarled_korga_spiritmaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gnarled_korga_spiritmaster, "gnarled_korga_spiritmaster")

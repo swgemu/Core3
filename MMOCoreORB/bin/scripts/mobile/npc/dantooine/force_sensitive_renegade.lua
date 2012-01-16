@@ -4,7 +4,7 @@ force_sensitive_renegade = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 80,
-	chanceHit = 0.800000,
+	chanceHit = 0.8,
 	damageMin = 585,
 	damageMax = 880,
 	baseXp = 7668,
@@ -19,16 +19,19 @@ force_sensitive_renegade = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_force_sensitive_renegade.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(force_sensitive_renegade, "force_sensitive_renegade")

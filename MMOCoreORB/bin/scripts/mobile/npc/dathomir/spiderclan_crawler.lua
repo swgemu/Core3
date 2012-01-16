@@ -1,5 +1,5 @@
 spiderclan_crawler = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_crawler",
+	objectName = "@mob/creature_names:spider_nightsister_crawler",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
@@ -11,7 +11,7 @@ spiderclan_crawler = Creature:new {
 	baseHAM = 12000,
 	baseHAMmax = 15000,
 	armor = 1,
-	resists = {75,100,100,75,100,100,100,100,-1},
+	resists = {30,100,100,30,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

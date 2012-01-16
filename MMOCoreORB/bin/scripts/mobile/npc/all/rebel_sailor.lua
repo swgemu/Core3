@@ -1,10 +1,10 @@
 rebel_sailor = Creature:new {
-	objectName = "Rebel Sailor",
+	objectName = "@mob/creature_names:Rebel Sailor",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 96,
-	chanceHit = 0.950000,
+	chanceHit = 0.95,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 9150,
@@ -19,16 +19,19 @@ rebel_sailor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_sailor, "rebel_sailor")

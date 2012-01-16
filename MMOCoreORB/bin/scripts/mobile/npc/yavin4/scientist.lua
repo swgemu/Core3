@@ -4,7 +4,7 @@ scientist = Creature:new {
 	pvpFaction = "Geonosian",
 	faction = "",
 	level = 50,
-	chanceHit = 0.510000,
+	chanceHit = 0.51,
 	damageMin = 400,
 	damageMax = 510,
 	baseXp = 4825,
@@ -19,16 +19,19 @@ scientist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_geonosian_scientist_02.iff","object/mobile/dressed_geonosian_scientist_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(scientist, "scientist")

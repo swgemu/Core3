@@ -1,5 +1,5 @@
 carbineer_trainer = Creature:new {
-	objectName = "@mob/creature_names:Carbineer_trainer",
+	objectName = "@mob/creature_names:carbineer_trainer",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +26,7 @@ carbineer_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_carbine_trainer_01.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

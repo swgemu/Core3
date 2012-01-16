@@ -4,7 +4,7 @@ hardened_panshee_warrior = Creature:new {
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 17,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ hardened_panshee_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ewok_male.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hardened_panshee_warrior, "hardened_panshee_warrior")

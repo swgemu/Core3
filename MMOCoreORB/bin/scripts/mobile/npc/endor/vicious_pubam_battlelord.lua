@@ -4,14 +4,14 @@ vicious_pubam_battlelord = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3551,
 	baseHAM = 8800,
 	baseHAMmax = 10800,
 	armor = 0,
-	resists = {0,45,0,0,0,-1,-1,-1,-1},
+	resists = {25,45,25,25,25,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ vicious_pubam_battlelord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(vicious_pubam_battlelord, "vicious_pubam_battlelord")

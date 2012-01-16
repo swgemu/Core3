@@ -1,10 +1,10 @@
 imperial_informant_coa2 = Creature:new {
-	objectName = "Imperial informant (COA2)",
+	objectName = "@mob/creature_names:Imperial informant (COA2)",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1803,
@@ -19,16 +19,19 @@ imperial_informant_coa2 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_informant_coa2, "imperial_informant_coa2")

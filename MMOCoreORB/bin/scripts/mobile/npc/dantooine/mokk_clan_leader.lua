@@ -4,7 +4,7 @@ mokk_clan_leader = Creature:new {
 	pvpFaction = "Mokk Tribe",
 	faction = "",
 	level = 75,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 520,
 	damageMax = 750,
 	baseXp = 7207,
@@ -19,16 +19,19 @@ mokk_clan_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mokk_clan_leader, "mokk_clan_leader")

@@ -4,14 +4,14 @@ rebel_specforce_captain = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2637,
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
-	resists = {0,0,40,0,0,0,0,-1,-1},
+	resists = {15,15,40,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ rebel_specforce_captain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_specforce_captain_zabrak_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_specforce_captain, "rebel_specforce_captain")

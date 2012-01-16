@@ -4,7 +4,7 @@ gondula_loremaster = Creature:new {
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ gondula_loremaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_m_12.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_loremaster, "gondula_loremaster")

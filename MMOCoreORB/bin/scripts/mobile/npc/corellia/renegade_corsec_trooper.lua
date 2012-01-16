@@ -1,10 +1,10 @@
 renegade_corsec_trooper = Creature:new {
-	objectName = "renegade CorSec trooper",
+	objectName = "@mob/creature_names:renegade CorSec trooper",
 	socialGroup = "Rogue Corsec",
 	pvpFaction = "Rogue Corsec",
 	faction = "",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 609,
@@ -19,16 +19,19 @@ renegade_corsec_trooper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(renegade_corsec_trooper, "renegade_corsec_trooper")

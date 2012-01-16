@@ -26,7 +26,7 @@ vurlene = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_vurlene.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

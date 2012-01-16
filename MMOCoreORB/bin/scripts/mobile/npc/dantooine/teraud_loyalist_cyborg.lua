@@ -1,10 +1,10 @@
 teraud_loyalist_cyborg = Creature:new {
-	objectName = "Teraud loyalist cyborg",
+	objectName = "@mob/creature_names:warren_teraud_loyalist_cyborg",
 	socialGroup = "Warren Teraud",
 	pvpFaction = "Warren Teraud",
 	faction = "",
 	level = 38,
-	chanceHit = 0.430000,
+	chanceHit = 0.43,
 	damageMin = 335,
 	damageMax = 380,
 	baseXp = 3824,
@@ -19,16 +19,19 @@ teraud_loyalist_cyborg = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/warren_teraud_loyalist_cyborg_s03.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(teraud_loyalist_cyborg, "teraud_loyalist_cyborg")

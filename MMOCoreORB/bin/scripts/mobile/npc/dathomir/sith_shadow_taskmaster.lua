@@ -1,5 +1,5 @@
 sith_shadow_taskmaster = Creature:new {
-	objectName = "@mob/creature_names:Sith_Shadow_taskmaster",
+	objectName = "@mob/creature_names:shadow_nco",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "Sith Shadow",
 	faction = "",
@@ -10,7 +10,7 @@ sith_shadow_taskmaster = Creature:new {
 	baseXp = 8315,
 	baseHAM = 12400,
 	baseHAMmax = 15200,
-	armor = 0,
+	armor = 1,
 	resists = {70,70,70,70,70,70,70,70,-1},
 	meatType = "",
 	meatAmount = 0,

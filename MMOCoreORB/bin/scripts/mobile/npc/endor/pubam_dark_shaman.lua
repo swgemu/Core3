@@ -10,7 +10,7 @@ pubam_dark_shaman = Creature:new {
 	baseXp = 4734,
 	baseHAM = 9400,
 	baseHAMmax = 11400,
-	armor = 0,
+	armor = 1,
 	resists = {35,35,0,60,60,60,-1,80,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -26,7 +26,7 @@ pubam_dark_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

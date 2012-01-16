@@ -4,14 +4,14 @@ mercenary_commander = Creature:new {
 	pvpFaction = "Lok Merc",
 	faction = "",
 	level = 42,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4188,
 	baseHAM = 9300,
 	baseHAMmax = 11300,
 	armor = 0,
-	resists = {45,55,0,0,0,0,-1,-1,-1},
+	resists = {45,55,30,30,30,30,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ mercenary_commander = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mercenary_commander, "mercenary_commander")

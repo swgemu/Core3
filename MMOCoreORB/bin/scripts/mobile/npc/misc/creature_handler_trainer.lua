@@ -26,7 +26,7 @@ creature_handler_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_creaturehandler_trainer_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

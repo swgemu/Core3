@@ -4,7 +4,7 @@ corsec_inspector_sergeant = Creature:new {
 	pvpFaction = "Corsec",
 	faction = "",
 	level = 19,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ corsec_inspector_sergeant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsec_captain_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_inspector_sergeant, "corsec_inspector_sergeant")

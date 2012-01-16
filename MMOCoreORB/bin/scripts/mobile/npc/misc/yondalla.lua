@@ -26,7 +26,7 @@ yondalla = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

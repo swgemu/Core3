@@ -26,7 +26,7 @@ doctor_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_doctor_trainer_moncal_female_01.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

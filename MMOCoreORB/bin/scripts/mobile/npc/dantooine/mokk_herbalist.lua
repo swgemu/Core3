@@ -11,7 +11,7 @@ mokk_herbalist = Creature:new {
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
-	resists = {0,30,0,-1,-1,40,40,-1,-1},
+	resists = {15,30,15,-1,-1,40,40,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ mokk_herbalist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_female.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",

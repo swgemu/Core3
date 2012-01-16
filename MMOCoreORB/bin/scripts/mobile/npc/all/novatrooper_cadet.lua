@@ -1,17 +1,17 @@
 novatrooper_cadet = Creature:new {
-	objectName = "Novatrooper Cadet",
+	objectName = "@mob/creature_names:novatrooper_cadet",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 72,
-	chanceHit = 0.700000,
+	chanceHit = 0.7,
 	damageMin = 495,
 	damageMax = 700,
 	baseXp = 6931,
 	baseHAM = 12000,
 	baseHAMmax = 15000,
-	armor = 0,
-	resists = {40,35,80,30,0,0,30,45,-1},
+	armor = 2,
+	resists = {40,35,80,30,5,5,30,45,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ novatrooper_cadet = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_black_gold.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(novatrooper_cadet, "novatrooper_cadet")

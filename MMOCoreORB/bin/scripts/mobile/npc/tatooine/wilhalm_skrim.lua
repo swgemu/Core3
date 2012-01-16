@@ -1,5 +1,5 @@
 wilhalm_skrim = Creature:new {
-	objectName = "@mob/creature_names:Wilhalm_Skrim",
+	objectName = "@mob/creature_names:wilhalm_skrim",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ wilhalm_skrim = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_wilhalm_skrim.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

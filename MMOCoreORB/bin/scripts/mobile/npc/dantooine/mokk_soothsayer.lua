@@ -4,14 +4,14 @@ mokk_soothsayer = Creature:new {
 	pvpFaction = "Mokk Tribe",
 	faction = "",
 	level = 43,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 365,
 	damageMax = 440,
 	baseXp = 4188,
 	baseHAM = 93000,
 	baseHAMmax = 113000,
 	armor = 0,
-	resists = {40,60,0,-1,-1,60,60,-1,-1},
+	resists = {40,60,30,-1,-1,60,60,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ mokk_soothsayer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mokk_soothsayer, "mokk_soothsayer")

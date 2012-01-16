@@ -1,5 +1,5 @@
 venthan_chassu = Creature:new {
-	objectName = "@mob/creature_names:Venthan_Chassu",
+	objectName = "@mob/creature_names:venthan_chassu",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ venthan_chassu = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_venthan_chassu.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

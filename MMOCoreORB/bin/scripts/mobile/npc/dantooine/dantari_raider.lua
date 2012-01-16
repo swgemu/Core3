@@ -11,7 +11,7 @@ dantari_raider = Creature:new {
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
-	resists = {25,0,0,0,-1,0,-1,0,-1},
+	resists = {25,15,15,15,-1,15,-1,15,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ dantari_raider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",

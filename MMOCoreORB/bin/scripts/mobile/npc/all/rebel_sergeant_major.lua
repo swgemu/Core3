@@ -4,7 +4,7 @@ rebel_sergeant_major = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1102,
@@ -19,16 +19,19 @@ rebel_sergeant_major = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_sergeant_major_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_sergeant_major, "rebel_sergeant_major")

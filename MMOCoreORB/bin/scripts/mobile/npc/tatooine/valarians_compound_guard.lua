@@ -1,5 +1,5 @@
 valarians_compound_guard = Creature:new {
-	objectName = "@mob/creature_names:Valarian's_compound_guard",
+	objectName = "@mob/creature_names:valarian_compound_guard",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",

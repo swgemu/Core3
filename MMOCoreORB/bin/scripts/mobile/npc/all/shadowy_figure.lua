@@ -1,10 +1,10 @@
 shadowy_figure = Creature:new {
-	objectName = "shadowy figure",
+	objectName = "@mob/creature_names:shadowy figure",
 	socialGroup = "Hutt",
 	pvpFaction = "",
 	faction = "",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 831,
@@ -19,16 +19,19 @@ shadowy_figure = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(shadowy_figure, "shadowy_figure")

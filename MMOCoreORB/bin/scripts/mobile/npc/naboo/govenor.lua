@@ -26,7 +26,7 @@ govenor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_governor.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",

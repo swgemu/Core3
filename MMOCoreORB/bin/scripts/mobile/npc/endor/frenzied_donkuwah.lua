@@ -4,7 +4,7 @@ frenzied_donkuwah = Creature:new {
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 39,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 365,
 	damageMax = 440,
 	baseXp = 3915,
@@ -19,16 +19,19 @@ frenzied_donkuwah = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(frenzied_donkuwah, "frenzied_donkuwah")

@@ -4,7 +4,7 @@ dim_u_cleric = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
@@ -19,16 +19,19 @@ dim_u_cleric = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_dim_u_cleric.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dim_u_cleric, "dim_u_cleric")

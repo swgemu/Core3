@@ -1,5 +1,5 @@
 bardo_klinj = Creature:new {
-	objectName = "@mob/creature_names:Bardo Klinj",
+	objectName = "@mob/creature_names:bardo_klinj",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

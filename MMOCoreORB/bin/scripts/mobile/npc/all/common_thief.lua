@@ -4,7 +4,7 @@ common_thief = Creature:new {
 	pvpFaction = "Thug",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 356,
@@ -19,16 +19,19 @@ common_thief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_plasma_thief.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(common_thief, "common_thief")

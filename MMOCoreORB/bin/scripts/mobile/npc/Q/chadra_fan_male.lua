@@ -4,7 +4,7 @@ chadra_fan_male = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 113,
@@ -19,16 +19,19 @@ chadra_fan_male = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/chadra_fan_female.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(chadra_fan_male, "chadra_fan_male")

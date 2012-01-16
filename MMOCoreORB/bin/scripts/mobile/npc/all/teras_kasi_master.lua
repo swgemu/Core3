@@ -4,14 +4,14 @@ teras_kasi_master = Creature:new {
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 21,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 1609,
 	baseHAM = 2900,
 	baseHAMmax = 3500,
 	armor = 0,
-	resists = {40,0,0,0,0,0,-1,-1,-1},
+	resists = {40,10,10,10,10,10,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ teras_kasi_master = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(teras_kasi_master, "teras_kasi_master")

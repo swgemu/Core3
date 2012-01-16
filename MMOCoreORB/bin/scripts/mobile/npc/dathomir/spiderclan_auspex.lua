@@ -1,5 +1,5 @@
 spiderclan_auspex = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_auspex",
+	objectName = "@mob/creature_names:spider_nightsister_spell_weaver",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
@@ -10,8 +10,8 @@ spiderclan_auspex = Creature:new {
 	baseXp = 10174,
 	baseHAM = 24000,
 	baseHAMmax = 30000,
-	armor = 1,
-	resists = {95,100,100,95,100,100,90,75,-1},
+	armor = 2,
+	resists = {55,100,100,75,100,100,90,55,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

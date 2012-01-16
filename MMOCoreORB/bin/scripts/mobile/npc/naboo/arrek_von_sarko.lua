@@ -1,5 +1,5 @@
 arrek_von_sarko = Creature:new {
-	objectName = "@mob/creature_names:Arrek_Von_Sarko",
+	objectName = "@mob/creature_names:arrek_von_sarko",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +26,7 @@ arrek_von_sarko = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

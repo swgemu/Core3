@@ -1,10 +1,10 @@
 neo_cobral_overlord = Creature:new {
-	objectName = "Neo-Cobral overlord",
+	objectName = "@mob/creature_names:Neo-Cobral overlord",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",
 	level = 33,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 310,
 	damageMax = 330,
 	baseXp = 3370,
@@ -19,16 +19,19 @@ neo_cobral_overlord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_overlord, "neo_cobral_overlord")

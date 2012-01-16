@@ -1,10 +1,10 @@
 korga_chieftain = Creature:new {
-	objectName = "Korga chieftain",
+	objectName = "@mob/creature_names:Korga chieftain",
 	socialGroup = "Korga Tribe",
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 60,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 445,
 	damageMax = 600,
 	baseXp = 5830,
@@ -19,16 +19,19 @@ korga_chieftain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(korga_chieftain, "korga_chieftain")

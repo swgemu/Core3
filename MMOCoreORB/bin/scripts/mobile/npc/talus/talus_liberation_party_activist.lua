@@ -1,5 +1,5 @@
 talus_liberation_party_activist = Creature:new {
-	objectName = "@mob/creature_names:Talus_Liberation_Party_activist",
+	objectName = "@mob/creature_names:liberation_activist",
 	socialGroup = "Liberat. Party",
 	pvpFaction = "Liberat. Party",
 	faction = "",
@@ -11,7 +11,7 @@ talus_liberation_party_activist = Creature:new {
 	baseHAM = 5400,
 	baseHAMmax = 6600,
 	armor = 0,
-	resists = {0,25,0,-1,0,-1,-1,-1,-1},
+	resists = {10,25,10,-1,10,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ talus_liberation_party_activist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

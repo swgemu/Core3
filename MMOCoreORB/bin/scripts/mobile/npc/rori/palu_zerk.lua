@@ -1,10 +1,10 @@
 palu_zerk = Creature:new {
-	objectName = "Palu Zerk",
+	objectName = "@mob/creature_names:Palu Zerk",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9429,
@@ -19,16 +19,19 @@ palu_zerk = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(palu_zerk, "palu_zerk")

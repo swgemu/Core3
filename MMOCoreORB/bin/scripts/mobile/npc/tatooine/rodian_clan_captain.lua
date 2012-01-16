@@ -4,7 +4,7 @@ rodian_clan_captain = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 514,
@@ -19,16 +19,19 @@ rodian_clan_captain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_rodian_clan_captain.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rodian_clan_captain, "rodian_clan_captain")

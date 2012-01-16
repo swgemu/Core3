@@ -4,7 +4,7 @@ kobola_foreman = Creature:new {
 	pvpFaction = "Kobola",
 	faction = "",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 960,
@@ -19,16 +19,19 @@ kobola_foreman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_kobola_guard_trandoshan_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_foreman, "kobola_foreman")

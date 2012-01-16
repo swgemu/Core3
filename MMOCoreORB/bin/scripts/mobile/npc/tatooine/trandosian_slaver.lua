@@ -1,5 +1,5 @@
 trandosian_slaver = Creature:new {
-	objectName = "@mob/creature_names:Trandosian_slaver",
+	objectName = "@mob/creature_names:trandoshan_slaver",
 	socialGroup = "Slaver",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ trandosian_slaver = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_trandoshan_slaver.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",

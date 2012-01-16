@@ -4,14 +4,14 @@ kunga_hunter = Creature:new {
 	pvpFaction = "Kunga Tribe",
 	faction = "",
 	level = 37,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 340,
 	damageMax = 390,
 	baseXp = 3733,
 	baseHAM = 9200,
 	baseHAMmax = 11200,
 	armor = 0,
-	resists = {0,40,0,-1,-1,80,50,-1,-1},
+	resists = {25,40,25,-1,-1,80,50,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ kunga_hunter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff","object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kunga_hunter, "kunga_hunter")

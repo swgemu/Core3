@@ -4,7 +4,7 @@ vicious_korga_battlelord = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 48,
-	chanceHit = 0.490000,
+	chanceHit = 0.49,
 	damageMin = 410,
 	damageMax = 530,
 	baseXp = 4734,
@@ -19,16 +19,19 @@ vicious_korga_battlelord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(vicious_korga_battlelord, "vicious_korga_battlelord")

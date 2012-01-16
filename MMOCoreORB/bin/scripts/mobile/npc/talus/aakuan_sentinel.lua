@@ -1,5 +1,5 @@
 aakuan_sentinel = Creature:new {
-	objectName = "@mob/creature_names:Aa'kuan sentinel",
+	objectName = "@mob/creature_names:aakuan_sentinal",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
@@ -26,7 +26,7 @@ aakuan_sentinel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_sentinal_rodian_female_01.iff"},
+	templates = {"object/mobile/dressed_aakuan_sentinal_rodian_female_01.iff","object/mobile/dressed_aakuan_sentinal_rodian_male_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",

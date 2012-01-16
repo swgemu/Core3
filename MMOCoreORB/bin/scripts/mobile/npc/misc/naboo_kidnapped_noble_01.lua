@@ -1,10 +1,10 @@
 naboo_kidnapped_noble_01 = Creature:new {
-	objectName = "Naboo Kidnapped Noble 01",
+	objectName = "@mob/creature_names:Naboo Kidnapped Noble 01",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ naboo_kidnapped_noble_01 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_kidnapped_noble_01, "naboo_kidnapped_noble_01")

@@ -1,10 +1,10 @@
 ithorian_male = Creature:new {
-	objectName = "Ithorian male",
+	objectName = "@mob/creature_names:Ithorian male",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9429,
@@ -19,16 +19,19 @@ ithorian_male = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(ithorian_male, "ithorian_male")

@@ -4,14 +4,14 @@ swamp_villager = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 187,
 	baseHAM = 270,
 	baseHAMmax = 330,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {5,5,5,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ swamp_villager = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_swamp_villager.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(swamp_villager, "swamp_villager")

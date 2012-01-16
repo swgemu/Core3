@@ -4,14 +4,14 @@ twisted_pubam_scavenger = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 34,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 335,
 	damageMax = 380,
 	baseXp = 3460,
 	baseHAM = 8800,
 	baseHAMmax = 10800,
 	armor = 0,
-	resists = {0,0,0,0,0,-1,-1,-1,-1},
+	resists = {0,20,20,20,20,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ twisted_pubam_scavenger = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(twisted_pubam_scavenger, "twisted_pubam_scavenger")

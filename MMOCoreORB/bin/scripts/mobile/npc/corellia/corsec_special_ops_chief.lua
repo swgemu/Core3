@@ -10,7 +10,7 @@ corsec_special_ops_chief = Creature:new {
 	baseXp = 19008,
 	baseHAM = 160000,
 	baseHAMmax = 195000,
-	armor = 0,
+	armor = 3,
 	resists = {75,75,30,0,80,30,0,35,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -26,7 +26,7 @@ corsec_special_ops_chief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

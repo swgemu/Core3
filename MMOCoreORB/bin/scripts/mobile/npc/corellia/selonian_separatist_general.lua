@@ -4,7 +4,7 @@ selonian_separatist_general = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1102,
@@ -19,16 +19,19 @@ selonian_separatist_general = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_selonian_m_04.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(selonian_separatist_general, "selonian_separatist_general")

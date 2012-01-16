@@ -1,10 +1,10 @@
 poacher = Creature:new {
-	objectName = "poacher",
+	objectName = "@mob/creature_names:poacher",
 	socialGroup = "talus Poacher",
 	pvpFaction = "",
 	faction = "",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ poacher = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(poacher, "poacher")

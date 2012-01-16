@@ -26,7 +26,7 @@ imperial_coordinator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_major_m.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

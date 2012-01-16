@@ -4,14 +4,14 @@ compforce_trooper = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 2006,
 	baseHAM = 5400,
 	baseHAMmax = 6600,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {10,10,10,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ compforce_trooper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(compforce_trooper, "compforce_trooper")

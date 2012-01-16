@@ -11,7 +11,7 @@ tusken_raider = Creature:new {
 	baseHAM = 4500,
 	baseHAMmax = 5500,
 	armor = 0,
-	resists = {0,0,0,30,-1,30,-1,-1,-1},
+	resists = {5,5,5,30,-1,30,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -25,12 +25,9 @@ tusken_raider = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 6500000,
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootgroups = {
-		{group = "tusken", chance = 10000000}
-	},
+	lootgroups = {},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
 	attacks = {

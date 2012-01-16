@@ -4,7 +4,7 @@ swooper = Creature:new {
 	pvpFaction = "Swoop",
 	faction = "",
 	level = 2,
-	chanceHit = 0.210000,
+	chanceHit = 0.21,
 	damageMin = 35,
 	damageMax = 40,
 	baseXp = 45,
@@ -19,16 +19,19 @@ swooper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_valarian_swooper.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(swooper, "swooper")

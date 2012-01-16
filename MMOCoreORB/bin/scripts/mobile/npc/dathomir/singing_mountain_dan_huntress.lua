@@ -1,5 +1,5 @@
 singing_mountain_dan_huntress = Creature:new {
-	objectName = "@mob/creature_names:Singing_Mountain_clan_huntress",
+	objectName = "@mob/creature_names:singing_mtn_clan_huntress",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",
@@ -11,7 +11,7 @@ singing_mountain_dan_huntress = Creature:new {
 	baseHAM = 12000,
 	baseHAMmax = 15000,
 	armor = 1,
-	resists = {30,30,75,-1,75,30,30,30,-1},
+	resists = {35,35,75,-1,75,35,35,35,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

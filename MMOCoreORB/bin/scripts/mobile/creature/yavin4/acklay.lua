@@ -25,12 +25,9 @@ acklay = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	lootChance = 8000000,
 
 	templates = {"object/mobile/acklay_hue.iff"},
-	lootgroups = {
-		{group = "acklay", chance = 10000000}
-	},
+	lootgroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

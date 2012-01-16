@@ -11,7 +11,7 @@ wise_jinda_rigualist = Creature:new {
 	baseHAM = 8800,
 	baseHAMmax = 10800,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {25,25,25,25,25,25,25,25,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ wise_jinda_rigualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

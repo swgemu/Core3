@@ -1,10 +1,10 @@
 rodian_sif = Creature:new {
-	objectName = "Rodian Sif",
+	objectName = "@mob/creature_names:Rodian Sif",
 	socialGroup = "Sif",
 	pvpFaction = "Sif",
 	faction = "",
 	level = 37,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 330,
 	damageMax = 370,
 	baseXp = 3733,
@@ -19,16 +19,19 @@ rodian_sif = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_02.iff"},
 	lootgroups = {},
 	weapons = {"sif_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rodian_sif, "rodian_sif")

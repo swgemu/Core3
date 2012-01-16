@@ -1,5 +1,5 @@
 armorsmith_trainer = Creature:new {
-	objectName = "@mob/creature_names:Armorsmith_trainer",
+	objectName = "@mob/creature_names:trainer_armorsmith",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -10,8 +10,8 @@ armorsmith_trainer = Creature:new {
 	baseXp = 9429,
 	baseHAM = 24000,
 	baseHAMmax = 30000,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	armor = 2,
+	resists = {5,5,5,5,5,5,5,5,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

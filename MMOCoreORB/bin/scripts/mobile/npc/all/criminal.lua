@@ -4,7 +4,7 @@ criminal = Creature:new {
 	pvpFaction = "Thug",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 187,
@@ -19,16 +19,19 @@ criminal = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(criminal, "criminal")

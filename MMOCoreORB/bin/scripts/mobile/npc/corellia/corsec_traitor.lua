@@ -4,7 +4,7 @@ corsec_traitor = Creature:new {
 	pvpFaction = "Rogue Corsec",
 	faction = "",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1102,
@@ -19,16 +19,19 @@ corsec_traitor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_traitor, "corsec_traitor")

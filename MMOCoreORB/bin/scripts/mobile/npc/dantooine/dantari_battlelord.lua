@@ -11,7 +11,7 @@ dantari_battlelord = Creature:new {
 	baseHAM = 8800,
 	baseHAMmax = 10800,
 	armor = 0,
-	resists = {0,40,40,-1,60,60,-1,0,-1},
+	resists = {25,40,40,-1,60,60,-1,25,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ dantari_battlelord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",

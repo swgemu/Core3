@@ -26,7 +26,7 @@ bronell = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

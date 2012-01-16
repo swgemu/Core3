@@ -4,7 +4,7 @@ trade_federation_pirate = Creature:new {
 	pvpFaction = "Trade Federat.",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
@@ -19,16 +19,19 @@ trade_federation_pirate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_trade_federation_zealot.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(trade_federation_pirate, "trade_federation_pirate")

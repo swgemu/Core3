@@ -4,7 +4,7 @@ corellia_times_investigator = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
@@ -19,16 +19,19 @@ corellia_times_investigator = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fed_dub_investigator_twk_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corellia_times_investigator, "corellia_times_investigator")

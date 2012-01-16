@@ -4,7 +4,7 @@ corsec_deserter = Creature:new {
 	pvpFaction = "Rogue Corsec",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
@@ -19,16 +19,19 @@ corsec_deserter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_deserter, "corsec_deserter")

@@ -1,5 +1,5 @@
 brawler_trainer = Creature:new {
-	objectName = "@mob/creature_names:Brawler_trainer",
+	objectName = "@mob/creature_names:trainer_brawler",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +26,7 @@ brawler_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_brawler_trainer_02.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

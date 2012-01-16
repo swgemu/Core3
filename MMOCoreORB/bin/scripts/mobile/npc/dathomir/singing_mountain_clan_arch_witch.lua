@@ -1,5 +1,5 @@
 singing_mountain_clan_arch_witch = Creature:new {
-	objectName = "@mob/creature_names:Singing_Mountain_clan_arch_witch",
+	objectName = "@mob/creature_names:singing_mtn_clan_arch_witch",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",
@@ -11,7 +11,7 @@ singing_mountain_clan_arch_witch = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 2,
-	resists = {100,45,45,100,100,100,100,100,-1},
+	resists = {100,15,15,100,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

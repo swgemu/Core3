@@ -26,7 +26,7 @@ victor_questn_cantina = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_victor_questn_cantina.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 alliance_intelligence_case = Creature:new {
-	objectName = "@mob/creature_names:Alliance_intelligence_case",
+	objectName = "@mob/creature_names:mission_alliance_intelligence_case_officer",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
@@ -26,7 +26,7 @@ alliance_intelligence_case = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_army_captain_zabrak_female.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

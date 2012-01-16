@@ -26,7 +26,7 @@ goru_rainstealer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_goru_rainstealer.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

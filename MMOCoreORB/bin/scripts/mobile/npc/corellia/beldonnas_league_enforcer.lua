@@ -1,5 +1,5 @@
 beldonnas_league_enforcer = Creature:new {
-	objectName = "@mob/creature_names:Beldonna's_League_enforcer",
+	objectName = "@mob/creature_names:beldonnas_enforcer",
 	socialGroup = "Bel. League",
 	pvpFaction = "Bel. League",
 	faction = "",

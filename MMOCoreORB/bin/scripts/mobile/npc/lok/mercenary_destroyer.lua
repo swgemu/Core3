@@ -4,14 +4,14 @@ mercenary_destroyer = Creature:new {
 	pvpFaction = "Lok Merc",
 	faction = "",
 	level = 40,
-	chanceHit = 0.430000,
+	chanceHit = 0.43,
 	damageMin = 355,
 	damageMax = 420,
 	baseXp = 4006,
 	baseHAM = 8700,
 	baseHAMmax = 10700,
 	armor = 0,
-	resists = {60,40,0,0,0,0,-1,-1,-1},
+	resists = {60,40,25,25,25,25,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ mercenary_destroyer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mercenary_destroyer, "mercenary_destroyer")

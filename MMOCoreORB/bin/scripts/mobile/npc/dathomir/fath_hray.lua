@@ -4,7 +4,7 @@ fath_hray = Creature:new {
 	pvpFaction = "Nightsister",
 	faction = "",
 	level = 21,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ fath_hray = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fath_hray.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(fath_hray, "fath_hray")

@@ -26,7 +26,7 @@ captain_sarguillo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_force_trained_archaist.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

@@ -1,10 +1,10 @@
 rebel_gungan_war_chief = Creature:new {
-	objectName = "Rebel Gungan War Chief",
+	objectName = "@mob/creature_names:Rebel Gungan War Chief",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1803,
@@ -19,16 +19,19 @@ rebel_gungan_war_chief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gungan_male.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_gungan_war_chief, "rebel_gungan_war_chief")

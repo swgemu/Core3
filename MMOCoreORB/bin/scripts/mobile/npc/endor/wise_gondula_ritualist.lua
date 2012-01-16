@@ -4,7 +4,7 @@ wise_gondula_ritualist = Creature:new {
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 41,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4006,
@@ -19,16 +19,19 @@ wise_gondula_ritualist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_f_07.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(wise_gondula_ritualist, "wise_gondula_ritualist")

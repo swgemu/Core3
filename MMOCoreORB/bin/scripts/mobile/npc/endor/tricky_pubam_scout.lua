@@ -4,7 +4,7 @@ tricky_pubam_scout = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 50,
-	chanceHit = 0.550000,
+	chanceHit = 0.55,
 	damageMin = 420,
 	damageMax = 550,
 	baseXp = 4916,
@@ -19,16 +19,19 @@ tricky_pubam_scout = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tricky_pubam_scout, "tricky_pubam_scout")

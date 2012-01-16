@@ -1,5 +1,5 @@
 computer_scientist = Creature:new {
-	objectName = "@mob/creature_names:computer:scientist",
+	objectName = "@mob/creature_names:computer_scientist",
 	socialGroup = "Warren Teraud",
 	pvpFaction = "Warren Teraud",
 	faction = "",
@@ -26,7 +26,7 @@ computer_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/warren_scientist_s02.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

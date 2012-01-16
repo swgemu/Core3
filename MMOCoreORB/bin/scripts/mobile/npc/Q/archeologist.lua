@@ -1,5 +1,5 @@
 archeologist = Creature:new {
-	objectName = "@mob/creature_names:archeologist",
+	objectName = "@mob/creature_names:quest_archeologist",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

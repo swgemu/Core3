@@ -4,7 +4,7 @@ grungy_korga_laborer = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2730,
@@ -19,16 +19,19 @@ grungy_korga_laborer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(grungy_korga_laborer, "grungy_korga_laborer")

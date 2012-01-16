@@ -1,10 +1,10 @@
 talus_liberation_party_loyalist = Creature:new {
-	objectName = "Talus Liberation Party loyalist",
+	objectName = "@mob/creature_names:liberation_loyalist",
 	socialGroup = "Liberat. Party",
 	pvpFaction = "Liberat. Party",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
@@ -19,16 +19,19 @@ talus_liberation_party_loyalist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(talus_liberation_party_loyalist, "talus_liberation_party_loyalist")

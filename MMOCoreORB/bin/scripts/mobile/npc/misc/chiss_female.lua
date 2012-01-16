@@ -26,7 +26,7 @@ chiss_female = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_patron_chiss_f_01.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

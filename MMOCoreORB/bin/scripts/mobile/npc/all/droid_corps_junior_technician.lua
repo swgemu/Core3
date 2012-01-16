@@ -26,7 +26,7 @@ droid_corps_junior_technician = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_brigade_technician_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",

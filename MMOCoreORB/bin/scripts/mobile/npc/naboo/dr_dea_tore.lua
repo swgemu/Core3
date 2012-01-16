@@ -4,7 +4,7 @@ dr_dea_tore = Creature:new {
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9429,
@@ -19,16 +19,19 @@ dr_dea_tore = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dr_dea_tore.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dr_dea_tore, "dr_dea_tore")

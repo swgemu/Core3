@@ -26,7 +26,7 @@ rebel_admiral = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_major_zabrak_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

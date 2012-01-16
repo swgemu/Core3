@@ -1,10 +1,10 @@
 mand_bunker_crazed_miner = Creature:new {
-	objectName = "Mand Bunker Crazed Miner",
+	objectName = "@mob/creature_names:Mand Bunker Crazed Miner",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9336,
@@ -19,16 +19,19 @@ mand_bunker_crazed_miner = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mand_bunker_crazed_miner.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mand_bunker_crazed_miner, "mand_bunker_crazed_miner")

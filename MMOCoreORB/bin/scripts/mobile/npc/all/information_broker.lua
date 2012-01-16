@@ -1,10 +1,10 @@
 information_broker = Creature:new {
-	objectName = "information broker",
+	objectName = "@mob/creature_names:information broker",
 	socialGroup = "Mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 85,
@@ -19,16 +19,19 @@ information_broker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(information_broker, "information_broker")

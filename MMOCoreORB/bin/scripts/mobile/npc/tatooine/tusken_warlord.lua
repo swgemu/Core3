@@ -10,8 +10,8 @@ tusken_warlord = Creature:new {
 	baseXp = 6013,
 	baseHAM = 11000,
 	baseHAMmax = 14000,
-	armor = 0,
-	resists = {45,25,0,80,-1,40,-1,0,-1},
+	armor = 1,
+	resists = {45,25,15,80,-1,40,-1,15,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -25,12 +25,9 @@ tusken_warlord = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 7800000,
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootgroups = {
-		{group = "tusken", chance = 10000000}
-	},
+	lootgroups = {},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -4,7 +4,7 @@ crackdown_imperial_exterminator = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 1,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 45,
@@ -19,16 +19,19 @@ crackdown_imperial_exterminator = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_officer_m_5.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_exterminator, "crackdown_imperial_exterminator")

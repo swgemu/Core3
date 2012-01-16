@@ -4,7 +4,7 @@ marauder = Creature:new {
 	pvpFaction = "Marauder",
 	faction = "",
 	level = 44,
-	chanceHit = 0.470000,
+	chanceHit = 0.47,
 	damageMin = 370,
 	damageMax = 450,
 	baseXp = 4370,
@@ -19,16 +19,19 @@ marauder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_marauder.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(marauder, "marauder")

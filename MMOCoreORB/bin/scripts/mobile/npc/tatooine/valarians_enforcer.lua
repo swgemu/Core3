@@ -1,5 +1,5 @@
 valarians_enforcer = Creature:new {
-	objectName = "@mob/creature_names:Valarian's_enforcer",
+	objectName = "@mob/creature_names:valarian_enforcer",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",

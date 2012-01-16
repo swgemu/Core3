@@ -26,7 +26,7 @@ gerrik_lond = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gerrick_lond.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

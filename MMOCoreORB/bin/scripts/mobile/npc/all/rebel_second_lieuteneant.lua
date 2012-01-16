@@ -1,10 +1,10 @@
 rebel_second_lieuteneant = Creature:new {
-	objectName = "Rebel Second Lieuteneant",
+	objectName = "@mob/creature_names:Rebel Second Lieuteneant",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 19,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ rebel_second_lieuteneant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_second_lieutenant_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_second_lieuteneant, "rebel_second_lieuteneant")

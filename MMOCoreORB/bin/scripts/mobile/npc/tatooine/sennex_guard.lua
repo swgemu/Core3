@@ -4,7 +4,7 @@ sennex_guard = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 32,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 310,
 	damageMax = 330,
 	baseXp = 3279,
@@ -19,16 +19,19 @@ sennex_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sennex_pirate_05.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(sennex_guard, "sennex_guard")

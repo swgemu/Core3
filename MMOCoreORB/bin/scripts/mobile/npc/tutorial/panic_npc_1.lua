@@ -29,8 +29,8 @@ panic_npc_1 = Creature:new {
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
-	conversationTemplate = "panic_npc_1_convotemplate",
-	optionsBitmask = 264
+	conversationTemplate = "",
+	optionsBitmask = 0
 }
 
 CreatureTemplates:addCreatureTemplate(panic_npc_1, "panic_npc_1")

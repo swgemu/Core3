@@ -4,7 +4,7 @@ emperors_hand = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 252,
-	chanceHit = 23.500000,
+	chanceHit = 23.5,
 	damageMin = 1395,
 	damageMax = 2500,
 	baseXp = 24081,
@@ -19,16 +19,19 @@ emperors_hand = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_emperors_hand_zabrak_male_01.iff","object/mobile/dressed_emperors_hand_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(emperors_hand, "emperors_hand")

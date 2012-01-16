@@ -26,7 +26,7 @@ crackdown_stormtrooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_commando1_m.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",

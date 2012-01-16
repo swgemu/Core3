@@ -29,8 +29,8 @@ stormtrooper_filler_tutorial = Creature:new {
 	lootgroups = {},
 	weapons = {},
 	attacks = {},
-	conversationTemplate = "stormtrooper_filler_convotemplate",
-	optionsBitmask = 264
+	conversationTemplate = "",
+	optionsBitmask = 0
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_filler_tutorial, "stormtrooper_filler_tutorial")

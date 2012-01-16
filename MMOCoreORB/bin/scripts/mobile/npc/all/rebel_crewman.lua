@@ -4,7 +4,7 @@ rebel_crewman = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 22,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2219,
@@ -19,16 +19,19 @@ rebel_crewman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_crewman_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_crewman, "rebel_crewman")

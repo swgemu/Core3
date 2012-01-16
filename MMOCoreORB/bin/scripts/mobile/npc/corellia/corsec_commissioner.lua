@@ -1,5 +1,5 @@
 corsec_commissioner = Creature:new {
-	objectName = "@mob/creature_names:CorSec_Commissioner",
+	objectName = "@mob/creature_names:corSec_commissioner",
 	socialGroup = "Corsec",
 	pvpFaction = "Corsec",
 	faction = "",
@@ -26,7 +26,7 @@ corsec_commissioner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

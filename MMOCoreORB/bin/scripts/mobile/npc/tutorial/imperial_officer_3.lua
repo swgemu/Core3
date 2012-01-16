@@ -29,7 +29,7 @@ imperial_officer_tutorial_3 = Creature:new {
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
-	conversationTemplate = "imperial_officer_3_convotemplate",
+	conversationTemplate = "",
 	optionsBitmask = 264
 }
 

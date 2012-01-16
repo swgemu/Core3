@@ -4,7 +4,7 @@ skilled_panshee_worker = Creature:new {
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 36,
-	chanceHit = 0.420000,
+	chanceHit = 0.42,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3551,
@@ -19,16 +19,19 @@ skilled_panshee_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(skilled_panshee_worker, "skilled_panshee_worker")

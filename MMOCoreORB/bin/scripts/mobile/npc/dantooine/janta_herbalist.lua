@@ -4,14 +4,14 @@ janta_herbalist = Creature:new {
 	pvpFaction = "Janta Tribe",
 	faction = "",
 	level = 27,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 2730,
 	baseHAM = 8200,
 	baseHAMmax = 10000,
 	armor = 0,
-	resists = {-1,0,-1,0,0,0,0,-1,-1},
+	resists = {-1,25,-1,25,25,25,25,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ janta_herbalist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(janta_herbalist, "janta_herbalist")

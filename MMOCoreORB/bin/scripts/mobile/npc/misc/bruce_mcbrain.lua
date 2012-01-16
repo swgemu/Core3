@@ -26,7 +26,7 @@ bruce_mcbrain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

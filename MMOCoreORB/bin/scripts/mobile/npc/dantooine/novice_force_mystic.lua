@@ -4,14 +4,14 @@ novice_force_mystic = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 60,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 475,
 	damageMax = 660,
 	baseXp = 5830,
 	baseHAM = 1100,
 	baseHAMmax = 1300,
-	armor = 0,
-	resists = {30,30,0,0,0,0,0,0,-1},
+	armor = 1,
+	resists = {30,30,15,15,5,15,15,15,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ novice_force_mystic = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(novice_force_mystic, "novice_force_mystic")

@@ -4,14 +4,14 @@ gungan_general = Creature:new {
 	pvpFaction = "Gungan",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
 	baseHAM = 7700,
 	baseHAMmax = 9400,
 	armor = 0,
-	resists = {0,25,0,-1,30,-1,0,-1,-1},
+	resists = {15,25,15,-1,30,-1,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ gungan_general = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gungan_male.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gungan_general, "gungan_general")

@@ -1,5 +1,5 @@
 bewitdiing_korga_dark_shaman = Creature:new {
-	objectName = "@mob/creature_names:bewitdiing_Korga_dark_shaman",
+	objectName = "@mob/creature_names:bewitching_korga_dark_shaman",
 	socialGroup = "Korga Tribe",
 	pvpFaction = "Korga Tribe",
 	faction = "",
@@ -26,7 +26,7 @@ bewitdiing_korga_dark_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

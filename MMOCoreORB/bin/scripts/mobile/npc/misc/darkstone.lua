@@ -26,7 +26,7 @@ darkstone = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

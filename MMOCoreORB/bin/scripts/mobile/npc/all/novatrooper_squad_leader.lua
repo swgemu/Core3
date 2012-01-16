@@ -1,10 +1,10 @@
 novatrooper_squad_leader = Creature:new {
-	objectName = "Novatrooper Squad Leader",
+	objectName = "@mob/creature_names:Novatrooper Squad Leader",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 122,
-	chanceHit = 4.000000,
+	chanceHit = 4,
 	damageMin = 745,
 	damageMax = 1200,
 	baseXp = 11577,
@@ -19,16 +19,19 @@ novatrooper_squad_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_squad_leader_black_gold.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(novatrooper_squad_leader, "novatrooper_squad_leader")

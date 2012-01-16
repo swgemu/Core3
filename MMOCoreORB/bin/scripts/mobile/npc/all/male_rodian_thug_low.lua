@@ -1,10 +1,10 @@
 male_rodian_thug_low = Creature:new {
-	objectName = "Male Rodian Thug Low",
+	objectName = "@mob/creature_names:Male Rodian Thug Low",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 187,
@@ -19,16 +19,19 @@ male_rodian_thug_low = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_cobral_thug_rodian_male_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(male_rodian_thug_low, "male_rodian_thug_low")

@@ -4,7 +4,7 @@ dune_stalker_brawler = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1102,
@@ -19,16 +19,19 @@ dune_stalker_brawler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_dune_stalker_brawler.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dune_stalker_brawler, "dune_stalker_brawler")

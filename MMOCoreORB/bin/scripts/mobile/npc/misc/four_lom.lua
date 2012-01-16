@@ -1,5 +1,5 @@
 four_lom = Creature:new {
-	objectName = "@mob/creature_names:4-LOM",
+	objectName = "@mob/creature_names:droid_4lom",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",

@@ -11,7 +11,7 @@ disciple_of_lord_nyax = Creature:new {
 	baseHAM = 2400,
 	baseHAMmax = 3000,
 	armor = 0,
-	resists = {0,15,0,0,-1,-1,0,-1,-1},
+	resists = {5,15,5,5,-1,-1,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ disciple_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/huma_male.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

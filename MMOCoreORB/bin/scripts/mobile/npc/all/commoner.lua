@@ -4,14 +4,14 @@ commoner = Creature:new {
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 62,
 	baseHAM = 113,
 	baseHAMmax = 138,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {15,15,15,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ commoner = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_commoner_naboo_human_female_05.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(commoner, "commoner")

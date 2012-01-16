@@ -1,5 +1,5 @@
 bren_kingal = Creature:new {
-	objectName = "@mob/creature_names:Bren_Kingal",
+	objectName = "@mob/creature_names:bren_kingal",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +26,7 @@ bren_kingal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

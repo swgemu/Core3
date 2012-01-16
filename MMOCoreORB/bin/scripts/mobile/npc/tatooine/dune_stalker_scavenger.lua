@@ -26,7 +26,7 @@ dune_stalker_scavenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_dune_stalker.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",

@@ -4,7 +4,7 @@ imperial_lance_corporal = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 831,
@@ -19,16 +19,19 @@ imperial_lance_corporal = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_major_m.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_lance_corporal, "imperial_lance_corporal")

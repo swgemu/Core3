@@ -1,5 +1,5 @@
 sith_shadow_commander = Creature:new {
-	objectName = "@mob/creature_names:Sith_Shadow_commander",
+	objectName = "@mob/creature_names:shadow_mercenary_nofaction",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "Sith Shadow",
 	faction = "",

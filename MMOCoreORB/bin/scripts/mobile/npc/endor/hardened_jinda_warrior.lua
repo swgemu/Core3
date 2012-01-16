@@ -4,7 +4,7 @@ hardened_jinda_warrior = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 50,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 395,
 	damageMax = 500,
 	baseXp = 4916,
@@ -19,16 +19,19 @@ hardened_jinda_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hardened_jinda_warrior, "hardened_jinda_warrior")

@@ -4,7 +4,7 @@ corellia_times_reporter = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 187,
@@ -19,16 +19,19 @@ corellia_times_reporter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fed_dub_investigator_twk_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(corellia_times_reporter, "corellia_times_reporter")

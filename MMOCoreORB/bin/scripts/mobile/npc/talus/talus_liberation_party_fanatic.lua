@@ -1,5 +1,5 @@
 talus_liberation_party_fanatic = Creature:new {
-	objectName = "@mob/creature_names:Talus_Liberation_Party_fanatic",
+	objectName = "@mob/creature_names:liberation_fanatic",
 	socialGroup = "Liberal Party",
 	pvpFaction = "Liberal Party",
 	faction = "",
@@ -26,7 +26,7 @@ talus_liberation_party_fanatic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

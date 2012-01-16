@@ -1,5 +1,5 @@
 valarians_assassin = Creature:new {
-	objectName = "@mob/creature_names:Valarian's_assassin",
+	objectName = "@mob/creature_names:valarian_assassin",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",
@@ -11,7 +11,7 @@ valarians_assassin = Creature:new {
 	baseHAM = 2900,
 	baseHAMmax = 3500,
 	armor = 0,
-	resists = {0,0,0,-1,0,0,0,-1,-1},
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

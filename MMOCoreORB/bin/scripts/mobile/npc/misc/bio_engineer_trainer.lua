@@ -1,5 +1,5 @@
 bio_engineer_trainer = Creature:new {
-	objectName = "@mob/creature_names:Bio-engineer_trainer",
+	objectName = "@mob/creature_names:trainer_bioengineer",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

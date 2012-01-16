@@ -26,7 +26,7 @@ crackdown_imperial_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

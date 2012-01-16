@@ -4,7 +4,7 @@ lost_aqualish_warrior = Creature:new {
 	pvpFaction = "Lost Aql. Reg.",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,
@@ -19,16 +19,19 @@ lost_aqualish_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lost_aqualish_warrior_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lost_aqualish_warrior, "lost_aqualish_warrior")

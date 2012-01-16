@@ -4,7 +4,7 @@ janta_soothsayer = Creature:new {
 	pvpFaction = "Janta Tribe",
 	faction = "",
 	level = 60,
-	chanceHit = 0.650000,
+	chanceHit = 0.65,
 	damageMin = 500,
 	damageMax = 710,
 	baseXp = 5738,
@@ -19,16 +19,19 @@ janta_soothsayer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(janta_soothsayer, "janta_soothsayer")

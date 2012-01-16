@@ -26,7 +26,7 @@ fixer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_fixer.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

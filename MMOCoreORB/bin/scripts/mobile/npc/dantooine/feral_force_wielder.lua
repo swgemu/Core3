@@ -26,7 +26,7 @@ feral_force_wielder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_feral_force_wielder.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

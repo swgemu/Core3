@@ -1,5 +1,5 @@
 ayn_eckener = Creature:new {
-	objectName = "@mob/creature_names:Ayn_Eckener",
+	objectName = "@mob/creature_names:ayn_eckener",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

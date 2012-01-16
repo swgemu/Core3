@@ -26,7 +26,7 @@ darth_vader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/darth_vader.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

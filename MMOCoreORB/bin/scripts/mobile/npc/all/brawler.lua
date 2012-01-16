@@ -1,5 +1,5 @@
 brawler = Creature:new {
-	objectName = "@mob/creature_names:Brawler",
+	objectName = "@mob/creature_names:brawler",
 	socialGroup = "Mercenary",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ brawler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_brawler_trainer_02.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",

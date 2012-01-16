@@ -26,7 +26,7 @@ young_mos_taike_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mos_taike_guard_young.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

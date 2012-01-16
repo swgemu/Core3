@@ -1,5 +1,5 @@
 sulfur_lake_pirate_armsman = Creature:new {
-	objectName = "@mob/creature_names:Sulfur_Lake_Pirate_Armsman",
+	objectName = "@mob/creature_names:slp_armsman",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",

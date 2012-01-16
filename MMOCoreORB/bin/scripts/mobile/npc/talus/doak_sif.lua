@@ -4,7 +4,7 @@ doak_sif = Creature:new {
 	pvpFaction = "Sif",
 	faction = "",
 	level = 48,
-	chanceHit = 0.490000,
+	chanceHit = 0.49,
 	damageMin = 385,
 	damageMax = 480,
 	baseXp = 4734,
@@ -19,16 +19,19 @@ doak_sif = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_doak_sif.iff"},
 	lootgroups = {},
 	weapons = {"sif_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(doak_sif, "doak_sif")

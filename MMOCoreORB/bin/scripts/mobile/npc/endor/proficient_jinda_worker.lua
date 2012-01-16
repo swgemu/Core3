@@ -4,7 +4,7 @@ proficient_jinda_worker = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 28,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2822,
@@ -19,16 +19,19 @@ proficient_jinda_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(proficient_jinda_worker, "proficient_jinda_worker")

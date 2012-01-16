@@ -1,10 +1,10 @@
 lilas_dinhint = Creature:new {
-	objectName = "Lilas Dinhint",
+	objectName = "@mob/creature_names:Lilas Dinhint",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
@@ -19,16 +19,19 @@ lilas_dinhint = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_lilas_dinhint.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lilas_dinhint, "lilas_dinhint")

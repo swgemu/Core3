@@ -1,5 +1,5 @@
 spiderclan_sentinel = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_sentinel",
+	objectName = "@mob/creature_names:spider_nightsister_sentinel",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
@@ -11,7 +11,7 @@ spiderclan_sentinel = Creature:new {
 	baseHAM = 21000,
 	baseHAMmax = 26000,
 	armor = 1,
-	resists = {75,100,75,70,100,100,75,100,-1},
+	resists = {55,100,45,60,100,100,35,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

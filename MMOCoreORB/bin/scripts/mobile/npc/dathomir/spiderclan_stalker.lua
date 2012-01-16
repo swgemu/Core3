@@ -1,5 +1,5 @@
 spiderclan_stalker = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_stalker",
+	objectName = "@mob/creature_names:spider_nightsister_stalker",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
@@ -11,7 +11,7 @@ spiderclan_stalker = Creature:new {
 	baseHAM = 20000,
 	baseHAMmax = 25000,
 	armor = 1,
-	resists = {90,100,100,80,100,100,80,80,-1},
+	resists = {90,100,100,40,100,100,40,40,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

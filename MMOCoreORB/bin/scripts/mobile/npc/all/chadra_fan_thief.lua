@@ -4,7 +4,7 @@ chadra_fan_thief = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 187,
@@ -19,16 +19,19 @@ chadra_fan_thief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/chadra_fan_female.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(chadra_fan_thief, "chadra_fan_thief")

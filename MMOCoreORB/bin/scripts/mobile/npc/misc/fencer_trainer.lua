@@ -26,7 +26,7 @@ fencer_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_1handsword_trainer_03.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

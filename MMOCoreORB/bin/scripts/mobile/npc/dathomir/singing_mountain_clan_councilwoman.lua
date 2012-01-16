@@ -1,5 +1,5 @@
 singing_mountain_clan_councilwoman = Creature:new {
-	objectName = "@mob/creature_names:Singing_Mountain_clan_councilwoman",
+	objectName = "@mob/creature_names:singing_mtn_clan_councilwoman",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",
@@ -11,7 +11,7 @@ singing_mountain_clan_councilwoman = Creature:new {
 	baseHAM = 261000,
 	baseHAMmax = 320000,
 	armor = 3,
-	resists = {100,65,65,100,100,100,100,100,-1},
+	resists = {100,35,35,100,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

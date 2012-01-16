@@ -4,7 +4,7 @@ mokk_hunter = Creature:new {
 	pvpFaction = "Mokk Tribe",
 	faction = "",
 	level = 42,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 345,
 	damageMax = 400,
 	baseXp = 4188,
@@ -19,16 +19,19 @@ mokk_hunter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mokk_hunter, "mokk_hunter")

@@ -1,5 +1,5 @@
 combat_medic_trainer = Creature:new {
-	objectName = "Combat Medic trainer",
+	objectName = "@mob/creature_names:Combat_Medic_trainer",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +26,7 @@ combat_medic_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_medic_trainer_02.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

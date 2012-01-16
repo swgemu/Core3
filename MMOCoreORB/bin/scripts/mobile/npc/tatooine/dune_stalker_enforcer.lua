@@ -4,14 +4,14 @@ dune_stalker_enforcer = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 22,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 2006,
 	baseHAM = 5400,
 	baseHAMmax = 6600,
 	armor = 0,
-	resists = {20,25,0,0,-1,-1,0,-1,-1},
+	resists = {20,25,10,10,-1,-1,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ dune_stalker_enforcer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_dune_stalker_brawler.iff"},
 	lootgroups = {},
 	weapons = {"tusken_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dune_stalker_enforcer, "dune_stalker_enforcer")

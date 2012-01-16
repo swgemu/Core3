@@ -1,10 +1,10 @@
 tough_thug_aqualish_male = Creature:new {
-	objectName = "Tough Thug Aqualish Male",
+	objectName = "@mob/creature_names:Tough Thug Aqualish Male",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 960,
@@ -19,16 +19,19 @@ tough_thug_aqualish_male = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tough_thug_aqualish_male, "tough_thug_aqualish_male")

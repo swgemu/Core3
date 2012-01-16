@@ -1,10 +1,10 @@
 ranchers_wife = Creature:new {
-	objectName = "rancher's wife",
+	objectName = "@mob/creature_names:rancher's wife",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 62,
@@ -19,16 +19,19 @@ ranchers_wife = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(ranchers_wife, "ranchers_wife")

@@ -1,5 +1,5 @@
 smuggler_trainer = Creature:new {
-	objectName = "@mob/creature_names:Smuggler_trainer",
+	objectName = "@mob/creature_names:trainer_smuggler",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -4,7 +4,7 @@ tainted_korga_dark_shaman = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 2543,
@@ -19,16 +19,19 @@ tainted_korga_dark_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tainted_korga_dark_shaman, "tainted_korga_dark_shaman")

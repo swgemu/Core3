@@ -26,7 +26,7 @@ victor_questp_slums = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_victor_questp_slums.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

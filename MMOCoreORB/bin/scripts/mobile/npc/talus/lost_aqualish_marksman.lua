@@ -4,14 +4,14 @@ lost_aqualish_marksman = Creature:new {
 	pvpFaction = "Lost Aql. Reg.",
 	faction = "",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 831,
 	baseHAM = 2000,
 	baseHAMmax = 2400,
 	armor = 0,
-	resists = {0,0,0,0,30,-1,-1,-1,-1},
+	resists = {5,5,5,5,30,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ lost_aqualish_marksman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lost_aqualish_marksman_female_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lost_aqualish_marksman, "lost_aqualish_marksman")

@@ -4,7 +4,7 @@ grassland_blood_marauder = Creature:new {
 	pvpFaction = "Marauder",
 	faction = "",
 	level = 50,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 420,
 	damageMax = 550,
 	baseXp = 4916,
@@ -19,16 +19,19 @@ grassland_blood_marauder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_grassland_blood_marauder.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(grassland_blood_marauder, "grassland_blood_marauder")

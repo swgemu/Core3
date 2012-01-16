@@ -26,7 +26,7 @@ hedon_istee = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_hedon_istee.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

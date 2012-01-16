@@ -26,7 +26,7 @@ victor_questp_hospital = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_victor_questp_hospital.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

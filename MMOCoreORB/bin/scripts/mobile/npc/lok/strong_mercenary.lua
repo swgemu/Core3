@@ -1,5 +1,5 @@
 strong_mercenary = Creature:new {
-	objectName = "@mob/creature_names:strong_mercenary",
+	objectName = "@mob/creature_names:mercenary_strong",
 	socialGroup = "Lok Merc",
 	pvpFaction = "Lok Merc",
 	faction = "",
@@ -11,7 +11,7 @@ strong_mercenary = Creature:new {
 	baseHAM = 8900,
 	baseHAMmax = 10900,
 	armor = 0,
-	resists = {40,35,0,-1,0,0,-1,-1,-1},
+	resists = {40,35,25,-1,25,25,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

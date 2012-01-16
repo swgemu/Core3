@@ -4,7 +4,7 @@ lieutenant_ori = Creature:new {
 	pvpFaction = "Rorgungan",
 	faction = "",
 	level = 33,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 3370,
@@ -19,16 +19,19 @@ lieutenant_ori = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lieutenant_ori.iff"},
 	lootgroups = {},
 	weapons = {"lt._ori's_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lieutenant_ori, "lieutenant_ori")

@@ -26,7 +26,7 @@ farmers_child = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_quest_farmer_child.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

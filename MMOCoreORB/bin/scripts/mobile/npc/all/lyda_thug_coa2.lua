@@ -1,10 +1,10 @@
 lyda_thug_coa2 = Creature:new {
-	objectName = "Lyda thug (COA2)",
+	objectName = "@mob/creature_names:Lyda thug (COA2)",
 	socialGroup = "Thug",
 	pvpFaction = "",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 514,
@@ -19,16 +19,19 @@ lyda_thug_coa2 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lyda_skims.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lyda_thug_coa2, "lyda_thug_coa2")

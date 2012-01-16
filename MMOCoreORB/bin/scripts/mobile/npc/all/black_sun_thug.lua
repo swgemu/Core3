@@ -1,5 +1,5 @@
 black_sun_thug = Creature:new {
-	objectName = "@mob/creature_names:Black_Sun_Thug",
+	objectName = "@mob/creature_names:mand_bunker_blksun_thug",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",

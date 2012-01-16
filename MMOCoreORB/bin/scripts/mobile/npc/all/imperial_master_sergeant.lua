@@ -4,7 +4,7 @@ imperial_master_sergeant = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1426,
@@ -19,16 +19,19 @@ imperial_master_sergeant = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_major_m.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_master_sergeant, "imperial_master_sergeant")

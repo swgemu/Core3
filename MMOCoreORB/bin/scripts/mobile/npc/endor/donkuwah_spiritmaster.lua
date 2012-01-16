@@ -4,7 +4,7 @@ donkuwah_spiritmaster = Creature:new {
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 29,
-	chanceHit = 0.380000,
+	chanceHit = 0.38,
 	damageMin = 280,
 	damageMax = 290,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ donkuwah_spiritmaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(donkuwah_spiritmaster, "donkuwah_spiritmaster")

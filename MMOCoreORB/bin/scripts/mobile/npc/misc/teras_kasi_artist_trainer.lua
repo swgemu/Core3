@@ -1,10 +1,10 @@
 teras_kasi_artist_trainer = Creature:new {
-	objectName = "Teras Kasi Artist trainer",
+	objectName = "@mob/creature_names:trainer_unarmed",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9429,
@@ -19,16 +19,19 @@ teras_kasi_artist_trainer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(teras_kasi_artist_trainer, "teras_kasi_artist_trainer")

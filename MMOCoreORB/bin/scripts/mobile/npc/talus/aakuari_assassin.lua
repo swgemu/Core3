@@ -1,5 +1,5 @@
 aakuari_assassin = Creature:new {
-	objectName = "@mob/creature_names:Aa'kuari_assassin",
+	objectName = "@mob/creature_names:aakuari_assassin",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
@@ -26,7 +26,7 @@ aakuari_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",

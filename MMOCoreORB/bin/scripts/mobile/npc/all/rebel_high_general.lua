@@ -4,7 +4,7 @@ rebel_high_general = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 29,
-	chanceHit = 0.380000,
+	chanceHit = 0.38,
 	damageMin = 280,
 	damageMax = 290,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ rebel_high_general = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_high_general_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_high_general, "rebel_high_general")

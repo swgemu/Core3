@@ -26,7 +26,7 @@ zogor_storm = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_supervisor_zogor_sturm.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

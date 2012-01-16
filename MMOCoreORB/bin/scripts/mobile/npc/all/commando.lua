@@ -4,14 +4,14 @@ commando = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 19,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1609,
 	baseHAM = 4500,
 	baseHAMmax = 5500,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {15,15,15,15,-1,5,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ commando = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mercenary_commander_zab_m.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(commando, "commando")

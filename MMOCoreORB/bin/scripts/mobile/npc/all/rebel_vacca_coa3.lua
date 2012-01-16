@@ -1,10 +1,10 @@
 rebel_vacca_coa3 = Creature:new {
-	objectName = "Rebel Vacca (COA3)",
+	objectName = "@mob/creature_names:Rebel Vacca (COA3)",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3370,
@@ -19,16 +19,19 @@ rebel_vacca_coa3 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_vacca_coa3, "rebel_vacca_coa3")

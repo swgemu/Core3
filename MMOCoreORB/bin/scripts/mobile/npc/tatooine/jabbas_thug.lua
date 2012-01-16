@@ -1,10 +1,10 @@
 jabbas_thug = Creature:new {
-	objectName = "Jabba's thug",
+	objectName = "@mob/creature_names:jabba_thug",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 292,
@@ -19,16 +19,19 @@ jabbas_thug = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_jabba_thug.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(jabbas_thug, "jabbas_thug")

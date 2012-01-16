@@ -1,5 +1,5 @@
 specforce_infiltator = Creature:new {
-	objectName = "@mob/creature_names:SpecForce_infiltator",
+	objectName = "@mob/creature_names:specforce_infiltrator",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

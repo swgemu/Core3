@@ -4,7 +4,7 @@ janta_loreweaver = Creature:new {
 	pvpFaction = "Janta Tribe",
 	faction = "",
 	level = 55,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 445,
 	damageMax = 600,
 	baseXp = 5373,
@@ -19,16 +19,19 @@ janta_loreweaver = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(janta_loreweaver, "janta_loreweaver")

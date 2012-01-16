@@ -1,10 +1,10 @@
 information_officer = Creature:new {
-	objectName = "Information Officer",
+	objectName = "@mob/creature_names:Information Officer",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2443,
@@ -19,16 +19,19 @@ information_officer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(information_officer, "information_officer")

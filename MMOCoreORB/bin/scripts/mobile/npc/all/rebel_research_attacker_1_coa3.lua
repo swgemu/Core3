@@ -1,10 +1,10 @@
 rebel_research_attacker_1_coa3 = Creature:new {
-	objectName = "Rebel Research Attacker (1) (COA3)",
+	objectName = "@mob/creature_names:Rebel Research Attacker (1) (COA3)",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3551,
@@ -19,16 +19,19 @@ rebel_research_attacker_1_coa3 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_research_attacker_1_coa3, "rebel_research_attacker_1_coa3")

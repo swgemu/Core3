@@ -1,5 +1,5 @@
 blood_razor_weak_pirate = Creature:new {
-	objectName = "@mob/creature_names:Blood_Razor_weak_pirate",
+	objectName = "@mob/creature_names:blood_razor_pirate_weak",
 	socialGroup = "Bloodrazor",
 	pvpFaction = "Bloodrazor",
 	faction = "",
@@ -11,7 +11,7 @@ blood_razor_weak_pirate = Creature:new {
 	baseHAM = 2900,
 	baseHAMmax = 3500,
 	armor = 0,
-	resists = {0,25,0,0,-1,-1,0,-1,-1},
+	resists = {10,25,10,10,-1,-1,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

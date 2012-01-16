@@ -1,5 +1,5 @@
 brea_tonnika = Creature:new {
-	objectName = "@mob/creature_names:Brea_Tonnika",
+	objectName = "@mob/creature_names:brea_tonnika",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ brea_tonnika = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_brea_tonnika.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

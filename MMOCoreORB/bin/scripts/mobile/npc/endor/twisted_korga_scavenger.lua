@@ -4,7 +4,7 @@ twisted_korga_scavenger = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 26,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
@@ -19,16 +19,19 @@ twisted_korga_scavenger = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(twisted_korga_scavenger, "twisted_korga_scavenger")

@@ -4,7 +4,7 @@ lieutenant_heb_nee = Creature:new {
 	pvpFaction = "Rorgungan",
 	faction = "",
 	level = 50,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 395,
 	damageMax = 500,
 	baseXp = 4916,
@@ -19,16 +19,19 @@ lieutenant_heb_nee = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lieutenant_heb_nee.iff"},
 	lootgroups = {},
 	weapons = {"lt._heb_nee's_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lieutenant_heb_nee, "lieutenant_heb_nee")

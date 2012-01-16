@@ -1,5 +1,5 @@
 spiderclan_acolyte = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_acolyte",
+	objectName = "@mob/creature_names:spider_nightsister_initiate",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
@@ -11,7 +11,7 @@ spiderclan_acolyte = Creature:new {
 	baseHAM = 11000,
 	baseHAMmax = 14000,
 	armor = 1,
-	resists = {75,85,100,75,100,100,75,100,-1},
+	resists = {35,85,100,50,100,100,50,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

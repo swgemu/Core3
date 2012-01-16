@@ -1,5 +1,5 @@
 bors_teraud = Creature:new {
-	objectName = "@mob/creature_names:Bors_Teraud",
+	objectName = "@mob/creature_names:bors_teraud",
 	socialGroup = "Warren Teraud",
 	pvpFaction = "Warren Teraud",
 	faction = "",

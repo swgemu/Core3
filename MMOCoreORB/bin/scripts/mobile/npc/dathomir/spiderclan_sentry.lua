@@ -1,5 +1,5 @@
 spiderclan_sentry = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_sentry",
+	objectName = "@mob/creature_names:spider_nightsister_sentry",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",
@@ -10,8 +10,8 @@ spiderclan_sentry = Creature:new {
 	baseXp = 2730,
 	baseHAM = 5000,
 	baseHAMmax = 6100,
-	armor = 1,
-	resists = {60,50,50,50,50,50,50,-1,-1},
+	armor = 0,
+	resists = {60,50,10,10,10,10,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

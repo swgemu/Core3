@@ -1,10 +1,10 @@
 plasma_thieving_swamp_trooper = Creature:new {
-	objectName = "plasma-thieving Swamp Trooper",
+	objectName = "@mob/creature_names:plasma-thieving Swamp Trooper",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ plasma_thieving_swamp_trooper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(plasma_thieving_swamp_trooper, "plasma_thieving_swamp_trooper")

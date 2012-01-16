@@ -4,14 +4,14 @@ marooned_pirate_captain = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2543,
 	baseHAM = 5900,
 	baseHAMmax = 7200,
 	armor = 0,
-	resists = {20,20,0,40,-1,40,0,-1,-1},
+	resists = {20,20,10,40,-1,40,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ marooned_pirate_captain = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_marooned_pirate_captain_tran_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(marooned_pirate_captain, "marooned_pirate_captain")

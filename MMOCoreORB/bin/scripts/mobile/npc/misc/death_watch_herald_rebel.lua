@@ -26,7 +26,7 @@ death_watch_herald_rebel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/huma_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

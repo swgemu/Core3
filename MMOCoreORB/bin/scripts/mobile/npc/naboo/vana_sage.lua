@@ -26,7 +26,7 @@ vana_sage = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lt_vana_sage.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

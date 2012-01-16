@@ -4,14 +4,14 @@ revered_panshee_matriarch = Creature:new {
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 39,
-	chanceHit = 0.430000,
+	chanceHit = 0.43,
 	damageMin = 335,
 	damageMax = 380,
 	baseXp = 3824,
 	baseHAM = 9100,
 	baseHAMmax = 11100,
 	armor = 0,
-	resists = {45,45,0,-1,0,-1,-1,0,-1},
+	resists = {45,45,25,-1,25,-1,-1,25,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ revered_panshee_matriarch = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(revered_panshee_matriarch, "revered_panshee_matriarch")

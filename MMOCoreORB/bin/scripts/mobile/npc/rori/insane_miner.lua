@@ -1,10 +1,10 @@
 insane_miner = Creature:new {
-	objectName = "Insane Miner",
+	objectName = "@mob/creature_names:Insane Miner",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 80,
 	damageMax = 90,
 	baseXp = 356,
@@ -19,16 +19,19 @@ insane_miner = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(insane_miner, "insane_miner")

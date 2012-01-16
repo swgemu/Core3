@@ -1,10 +1,10 @@
 tough_wookiee_brawler = Creature:new {
-	objectName = "Tough Wookiee Brawler",
+	objectName = "@mob/creature_names:tough_wookiee_brawler",
 	socialGroup = "Mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 609,
@@ -19,16 +19,19 @@ tough_wookiee_brawler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tough_wookiee_brawler, "tough_wookiee_brawler")

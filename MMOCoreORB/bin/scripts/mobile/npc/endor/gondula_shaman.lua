@@ -26,7 +26,7 @@ gondula_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_m_12.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

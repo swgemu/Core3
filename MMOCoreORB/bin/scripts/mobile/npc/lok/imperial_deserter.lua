@@ -4,14 +4,14 @@ imperial_deserter = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2637,
 	baseHAM = 7700,
 	baseHAMmax = 9400,
 	armor = 0,
-	resists = {20,20,0,-1,40,-1,40,-1,-1},
+	resists = {20,20,20,-1,40,-1,40,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ imperial_deserter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_deserter, "imperial_deserter")

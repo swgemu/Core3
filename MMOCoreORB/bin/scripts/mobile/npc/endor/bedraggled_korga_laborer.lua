@@ -4,7 +4,7 @@ bedraggled_korga_laborer = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 27,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
@@ -19,16 +19,19 @@ bedraggled_korga_laborer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(bedraggled_korga_laborer, "bedraggled_korga_laborer")

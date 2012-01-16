@@ -4,7 +4,7 @@ rodian_thug = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 3,
-	chanceHit = 0.230000,
+	chanceHit = 0.23,
 	damageMin = 35,
 	damageMax = 45,
 	baseXp = 62,
@@ -19,16 +19,19 @@ rodian_thug = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_rodian_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rodian_thug, "rodian_thug")

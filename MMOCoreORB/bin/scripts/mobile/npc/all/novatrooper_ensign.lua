@@ -1,10 +1,10 @@
 novatrooper_ensign = Creature:new {
-	objectName = "Novatrooper Ensign",
+	objectName = "@mob/creature_names:Novatrooper Ensign",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 87,
-	chanceHit = 0.850000,
+	chanceHit = 0.85,
 	damageMin = 570,
 	damageMax = 850,
 	baseXp = 8315,
@@ -19,16 +19,19 @@ novatrooper_ensign = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_captain_black_gold.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(novatrooper_ensign, "novatrooper_ensign")

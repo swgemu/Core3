@@ -11,7 +11,7 @@ garyns_lieutenant = Creature:new {
 	baseHAM = 8400,
 	baseHAMmax = 10200,
 	armor = 0,
-	resists = {0,30,0,-1,0,-1,0,-1,-1},
+	resists = {20,30,20,-1,20,-1,20,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ garyns_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_garyn_lieutenant_zabrak_male_01.iff","object/mobile/dressed_garyn_lieutenant_zabrak_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

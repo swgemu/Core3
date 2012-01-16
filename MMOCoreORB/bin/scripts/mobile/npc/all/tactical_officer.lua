@@ -1,5 +1,5 @@
 tactical_officer = Creature:new {
-	objectName = "@mob/creature_names:Tactical_Officer",
+	objectName = "@mob/creature_names:tactical_officer",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

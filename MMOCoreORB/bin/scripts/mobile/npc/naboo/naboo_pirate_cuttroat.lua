@@ -1,10 +1,10 @@
 naboo_pirate_cuttroat = Creature:new {
-	objectName = "Naboo pirate cuttroat",
+	objectName = "@mob/creature_names:Naboo pirate cuttroat",
 	socialGroup = "Naboo Pirate",
 	pvpFaction = "Naboo Pirate",
 	faction = "",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 430,
@@ -19,16 +19,19 @@ naboo_pirate_cuttroat = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_pirate_cuttroat, "naboo_pirate_cuttroat")

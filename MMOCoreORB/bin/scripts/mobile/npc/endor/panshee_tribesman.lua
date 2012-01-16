@@ -4,14 +4,14 @@ panshee_tribesman = Creature:new {
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2443,
 	baseHAM = 5900,
 	baseHAMmax = 7200,
 	armor = 0,
-	resists = {30,30,-1,0,0,-1,-1,0,-1},
+	resists = {30,30,-1,10,10,-1,-1,10,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ panshee_tribesman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_m_10.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(panshee_tribesman, "panshee_tribesman")

@@ -4,7 +4,7 @@ beguiling_korga_scout = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 32,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 3279,
@@ -19,16 +19,19 @@ beguiling_korga_scout = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(beguiling_korga_scout, "beguiling_korga_scout")

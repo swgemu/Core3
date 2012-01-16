@@ -26,7 +26,7 @@ crider_trant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_crider_trant.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

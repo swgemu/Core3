@@ -4,14 +4,14 @@ janta_clan_leader = Creature:new {
 	pvpFaction = "Janta Tribe",
 	faction = "",
 	level = 75,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 520,
 	damageMax = 750,
 	baseXp = 7207,
 	baseHAM = 12000,
 	baseHAMmax = 15000,
-	armor = 0,
-	resists = {0,60,-1,0,0,100,0,-1,-1},
+	armor = 1,
+	resists = {30,60,-1,30,30,100,30,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ janta_clan_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(janta_clan_leader, "janta_clan_leader")

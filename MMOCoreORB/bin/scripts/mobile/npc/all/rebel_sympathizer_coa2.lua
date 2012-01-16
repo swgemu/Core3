@@ -1,10 +1,10 @@
 rebel_sympathizer_coa2 = Creature:new {
-	objectName = "Rebel sympathizer (COA2)",
+	objectName = "@mob/creature_names:Rebel sympathizer (COA2)",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 831,
@@ -19,16 +19,19 @@ rebel_sympathizer_coa2 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_sympathizer_coa2, "rebel_sympathizer_coa2")

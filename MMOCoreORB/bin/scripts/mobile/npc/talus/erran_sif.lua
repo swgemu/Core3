@@ -4,14 +4,14 @@ erran_sif = Creature:new {
 	pvpFaction = "Sif",
 	faction = "",
 	level = 67,
-	chanceHit = 0.670000,
+	chanceHit = 0.67,
 	damageMin = 480,
 	damageMax = 670,
 	baseXp = 6472,
 	baseHAM = 12000,
 	baseHAMmax = 14000,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	armor = 1,
+	resists = {20,20,20,20,20,20,20,20,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ erran_sif = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_erran_sif.iff"},
 	lootgroups = {},
 	weapons = {"sif_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(erran_sif, "erran_sif")

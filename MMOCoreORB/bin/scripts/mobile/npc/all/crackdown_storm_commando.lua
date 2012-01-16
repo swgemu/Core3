@@ -4,7 +4,7 @@ crackdown_storm_commando = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 1,
-	chanceHit = 0.380000,
+	chanceHit = 0.38,
 	damageMin = 280,
 	damageMax = 290,
 	baseXp = 45,
@@ -19,16 +19,19 @@ crackdown_storm_commando = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_commando1_m.iff"},
 	lootgroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_storm_commando, "crackdown_storm_commando")

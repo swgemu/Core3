@@ -1,5 +1,5 @@
 vetran_explorer = Creature:new {
-	objectName = "@mob/creature_names:Vetran_Explorer",
+	objectName = "@mob/creature_names:vetran_explorer",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ vetran_explorer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ veers = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/veers.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 agriculturalist = Creature:new {
-	objectName = "@mob/creature_names:agriculturalist",
+	objectName = "@mob/creature_names:farmer_agriculturalist",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

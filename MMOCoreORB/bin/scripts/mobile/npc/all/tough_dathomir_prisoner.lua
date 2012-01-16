@@ -1,10 +1,10 @@
 tough_dathomir_prisoner = Creature:new {
-	objectName = "tough Dathomir prisoner",
+	objectName = "@mob/creature_names:tough Dathomir prisoner",
 	socialGroup = "Prisoner",
 	pvpFaction = "",
 	faction = "",
 	level = 27,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ tough_dathomir_prisoner = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tough_dathomir_prisoner, "tough_dathomir_prisoner")

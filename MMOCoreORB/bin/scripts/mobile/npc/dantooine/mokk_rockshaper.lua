@@ -4,7 +4,7 @@ mokk_rockshaper = Creature:new {
 	pvpFaction = "Mokk Tribe",
 	faction = "",
 	level = 71,
-	chanceHit = 0.650000,
+	chanceHit = 0.65,
 	damageMin = 470,
 	damageMax = 650,
 	baseXp = 6747,
@@ -19,16 +19,19 @@ mokk_rockshaper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mokk_rockshaper, "mokk_rockshaper")

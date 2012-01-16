@@ -1,5 +1,5 @@
 squad_leader_trainer = Creature:new {
-	objectName = "@mob/creature_names:Squad_Leader_trainer",
+	objectName = "@mob/creature_names:trainer_squadleader",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

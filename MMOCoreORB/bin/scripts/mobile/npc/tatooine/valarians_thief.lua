@@ -1,5 +1,5 @@
 valarians_thief = Creature:new {
-	objectName = "@mob/creature_names:Valarian's_thief",
+	objectName = "@mob/creature_names:valarian_thief",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",

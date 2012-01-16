@@ -4,14 +4,14 @@ rebel_lieutenant_general = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 27,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2822,
 	baseHAM = 8100,
 	baseHAMmax = 9900,
 	armor = 0,
-	resists = {0,0,0,30,-1,30,-1,-1,-1},
+	resists = {20,20,20,30,-1,30,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ rebel_lieutenant_general = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_lieutenant_general_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_lieutenant_general, "rebel_lieutenant_general")

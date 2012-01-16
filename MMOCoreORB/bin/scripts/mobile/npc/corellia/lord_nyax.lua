@@ -4,7 +4,7 @@ lord_nyax = Creature:new {
 	pvpFaction = "Lord Nyax",
 	faction = "",
 	level = 129,
-	chanceHit = 4.900000,
+	chanceHit = 4.9,
 	damageMin = 775,
 	damageMax = 1260,
 	baseXp = 12235,
@@ -19,16 +19,19 @@ lord_nyax = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lord_nyax.iff"},
 	lootgroups = {},
 	weapons = {"nyax's_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lord_nyax, "lord_nyax")

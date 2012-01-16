@@ -4,7 +4,7 @@ brigand = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 85,
@@ -19,16 +19,19 @@ brigand = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(brigand, "brigand")

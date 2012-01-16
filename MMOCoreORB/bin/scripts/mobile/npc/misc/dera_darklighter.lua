@@ -26,7 +26,7 @@ dera_darklighter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dera_darklighter.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

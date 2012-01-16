@@ -1,5 +1,5 @@
 blood_razor_elite_pirate = Creature:new {
-	objectName = "@mob/creature_names:Blood_Razor_elite_pirate",
+	objectName = "@mob/creature_names:blood_razor_pirate_elite",
 	socialGroup = "Bloodrazor",
 	pvpFaction = "Bloodrazor",
 	faction = "",
@@ -11,7 +11,7 @@ blood_razor_elite_pirate = Creature:new {
 	baseHAM = 8100,
 	baseHAMmax = 9900,
 	armor = 0,
-	resists = {0,60,0,0,-1,0,0,-1,-1},
+	resists = {20,60,20,20,-1,20,20,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ blood_razor_elite_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_blood_razor_pirate_elite_hum_f.iff"},
+	templates = {"object/mobile/dressed_blood_razor_pirate_elite_hum_f.iff","object/mobile/dressed_blood_razor_pirate_elite_hum_m.iff","object/mobile/dressed_blood_razor_pirate_elite_nikto_m.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

@@ -1,10 +1,10 @@
 lost_aqualish_marshall = Creature:new {
-	objectName = "Lost Aqualish Marshall",
+	objectName = "@mob/creature_names:Lost Aqualish Marshall",
 	socialGroup = "Lost Aql. Reg.",
 	pvpFaction = "Lost Aql. Reg.",
 	faction = "",
 	level = 25,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2637,
@@ -19,16 +19,19 @@ lost_aqualish_marshall = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lost_aqualish_marshal_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lost_aqualish_marshall, "lost_aqualish_marshall")

@@ -4,14 +4,14 @@ pubam_chieftan = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 51,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 445,
 	damageMax = 600,
 	baseXp = 5007,
 	baseHAM = 11000,
 	baseHAMmax = 14000,
-	armor = 0,
-	resists = {-1,-1,0,0,0,0,0,100,-1},
+	armor = 1,
+	resists = {-1,-1,70,70,70,70,70,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ pubam_chieftan = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(pubam_chieftan, "pubam_chieftan")

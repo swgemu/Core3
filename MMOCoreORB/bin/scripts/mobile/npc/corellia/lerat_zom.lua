@@ -4,7 +4,7 @@ lerat_zom = Creature:new {
 	pvpFaction = "Thug",
 	faction = "",
 	level = 23,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2006,
@@ -19,16 +19,19 @@ lerat_zom = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lerat_zom.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lerat_zom, "lerat_zom")

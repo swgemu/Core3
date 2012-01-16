@@ -4,14 +4,14 @@ naive_jinda_workling = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
 	baseHAM = 810,
 	baseHAMmax = 990,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {15,15,15,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ naive_jinda_workling = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(naive_jinda_workling, "naive_jinda_workling")

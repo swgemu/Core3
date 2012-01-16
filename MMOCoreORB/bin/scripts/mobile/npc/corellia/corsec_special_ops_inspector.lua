@@ -26,7 +26,7 @@ corsec_special_ops_inspector = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

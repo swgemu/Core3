@@ -4,14 +4,14 @@ eerie_pubam_spiritmaster = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 430,
 	baseHAM = 675,
 	baseHAMmax = 825,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {0,0,0,20,20,20,20,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ eerie_pubam_spiritmaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(eerie_pubam_spiritmaster, "eerie_pubam_spiritmaster")

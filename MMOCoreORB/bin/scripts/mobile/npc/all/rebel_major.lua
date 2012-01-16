@@ -4,7 +4,7 @@ rebel_major = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 22,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 2219,
@@ -19,16 +19,19 @@ rebel_major = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_major_zabrak_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_major, "rebel_major")

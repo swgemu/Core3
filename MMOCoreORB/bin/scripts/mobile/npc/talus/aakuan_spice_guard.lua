@@ -1,5 +1,5 @@
 aakuan_spice_guard = Creature:new {
-	objectName = "@mob/creature_names:Aa'kuan spice guard",
+	objectName = "@mob/creature_names:aakuan_spice_guard",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",

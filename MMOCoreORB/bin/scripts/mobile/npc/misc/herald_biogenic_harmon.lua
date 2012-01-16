@@ -26,7 +26,7 @@ herald_biogenic_harmon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_biogenic_03.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -4,14 +4,14 @@ rebel_specforce_general = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 28,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 270,
 	damageMax = 280,
 	baseXp = 2914,
 	baseHAM = 8200,
 	baseHAMmax = 10000,
 	armor = 0,
-	resists = {0,0,0,35,-1,35,-1,-1,-1},
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ rebel_specforce_general = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_specforce_general, "rebel_specforce_general")

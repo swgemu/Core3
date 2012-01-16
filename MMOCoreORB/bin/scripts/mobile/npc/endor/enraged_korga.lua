@@ -4,7 +4,7 @@ enraged_korga = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 32,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 325,
 	damageMax = 360,
 	baseXp = 3279,
@@ -19,16 +19,19 @@ enraged_korga = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(enraged_korga, "enraged_korga")

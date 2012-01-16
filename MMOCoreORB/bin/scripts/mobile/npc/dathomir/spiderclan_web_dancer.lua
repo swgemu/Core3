@@ -1,5 +1,5 @@
 spiderclan_web_dancer = Creature:new {
-	objectName = "@mob/creature_names:Spiderclan_web_dancer",
+	objectName = "@mob/creature_names:spider_nightsister_web_dancer",
 	socialGroup = "Sp. Nightsister",
 	pvpFaction = "Sp. Nightsister",
 	faction = "",

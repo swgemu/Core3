@@ -1,10 +1,10 @@
 mand_bunker_technician = Creature:new {
-	objectName = "Mand Bunker Technician",
+	objectName = "@mob/creature_names:Mand Bunker Technician",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9336,
@@ -19,16 +19,19 @@ mand_bunker_technician = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mand_bunker_technician.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mand_bunker_technician, "mand_bunker_technician")

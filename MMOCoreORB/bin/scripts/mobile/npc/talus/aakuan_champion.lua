@@ -1,5 +1,5 @@
 aakuan_champion = Creature:new {
-	objectName = "@mob/creature_names:Aa'kuan_champion",
+	objectName = "@mob/creature_names:aakuan_champion",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",
@@ -26,7 +26,7 @@ aakuan_champion = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_champion_zabrak_female_01.iff"},
+	templates = {"object/mobile/dressed_aakuan_champion_zabrak_female_01.iff","object/mobile/dressed_aakuan_champion_zabrak_female_01.iff"},
 	lootgroups = {},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",

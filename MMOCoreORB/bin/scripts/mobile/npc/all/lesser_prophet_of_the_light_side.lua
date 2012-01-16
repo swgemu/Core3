@@ -1,17 +1,17 @@
 lesser_prophet_of_the_light_side = Creature:new {
-	objectName = "Lesser Prophet of the Light Side",
+	objectName = "@mob/creature_names:Lesser Prophet of the Light Side",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 85,
-	chanceHit = 0.850000,
+	chanceHit = 0.85,
 	damageMin = 570,
 	damageMax = 850,
 	baseXp = 8130,
 	baseHAM = 13000,
 	baseHAMmax = 16000,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	armor = 1,
+	resists = {40,40,40,40,40,40,40,40,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ lesser_prophet_of_the_light_side = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_jedi_trainer_old_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"light_jedi_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lesser_prophet_of_the_light_side, "lesser_prophet_of_the_light_side")

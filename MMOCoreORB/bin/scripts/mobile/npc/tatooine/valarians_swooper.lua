@@ -1,5 +1,5 @@
 valarians_swooper = Creature:new {
-	objectName = "@mob/creature_names:Valarian's_swooper",
+	objectName = "@mob/creature_names:valarian_swooper",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",

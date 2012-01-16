@@ -4,7 +4,7 @@ grungy_donkuwah_laborer = Creature:new {
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 28,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 270,
 	damageMax = 280,
 	baseXp = 2914,
@@ -19,16 +19,19 @@ grungy_donkuwah_laborer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(grungy_donkuwah_laborer, "grungy_donkuwah_laborer")

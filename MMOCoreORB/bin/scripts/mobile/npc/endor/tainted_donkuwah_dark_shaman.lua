@@ -4,7 +4,7 @@ tainted_donkuwah_dark_shaman = Creature:new {
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 45,
-	chanceHit = 0.480000,
+	chanceHit = 0.48,
 	damageMin = 375,
 	damageMax = 460,
 	baseXp = 4461,
@@ -19,16 +19,19 @@ tainted_donkuwah_dark_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tainted_donkuwah_dark_shaman, "tainted_donkuwah_dark_shaman")

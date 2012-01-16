@@ -1,5 +1,5 @@
 beldonnas_league_marshal = Creature:new {
-	objectName = "@mob/creature_names:Beldonna's_League_marshal",
+	objectName = "@mob/creature_names:beldonnas_marshal",
 	socialGroup = "Bel. League",
 	pvpFaction = "Bel. League",
 	faction = "",

@@ -1,10 +1,10 @@
 rebel_midshipman = Creature:new {
-	objectName = "Rebel Midshipman",
+	objectName = "@mob/creature_names:Rebel Midshipman",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 136,
-	chanceHit = 6.250000,
+	chanceHit = 6.25,
 	damageMin = 820,
 	damageMax = 1350,
 	baseXp = 12895,
@@ -19,16 +19,19 @@ rebel_midshipman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_midshipman, "rebel_midshipman")

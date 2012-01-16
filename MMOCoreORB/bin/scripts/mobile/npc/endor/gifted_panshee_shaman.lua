@@ -11,7 +11,7 @@ gifted_panshee_shaman = Creature:new {
 	baseHAM = 9200,
 	baseHAMmax = 11200,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {25,25,25,25,25,25,25,25,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ gifted_panshee_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ewok_male.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

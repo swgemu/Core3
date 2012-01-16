@@ -26,7 +26,7 @@ dr_bledsoe = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/huma_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

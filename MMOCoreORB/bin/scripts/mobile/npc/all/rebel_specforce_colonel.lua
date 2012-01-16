@@ -4,14 +4,14 @@ rebel_specforce_colonel = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 27,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2822,
 	baseHAM = 8100,
 	baseHAMmax = 9900,
 	armor = 0,
-	resists = {0,0,0,0,-1,0,-1,-1,-1},
+	resists = {20,20,20,20,-1,20,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ rebel_specforce_colonel = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_specforce_captain_zabrak_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_specforce_colonel, "rebel_specforce_colonel")

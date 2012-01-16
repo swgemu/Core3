@@ -1,10 +1,10 @@
 rebel_research_guard_coa3 = Creature:new {
-	objectName = "Rebel research guard (COA3)",
+	objectName = "@mob/creature_names:Rebel research guard (COA3)",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1257,
@@ -19,16 +19,19 @@ rebel_research_guard_coa3 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_research_guard_coa3, "rebel_research_guard_coa3")

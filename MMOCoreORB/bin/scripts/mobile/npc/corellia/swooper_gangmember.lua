@@ -26,7 +26,7 @@ swooper_gangmember = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 afarathu_savage = Creature:new {
-	objectName = "@mob/creature_names:Afarathu_savage",
+	objectName = "@mob/creature_names:afarathu_cult_savage",
 	socialGroup = "Afarathu",
 	pvpFaction = "Afarathu",
 	faction = "",

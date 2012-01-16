@@ -1,5 +1,5 @@
 booto_lubble = Creature:new {
-	objectName = "@mob/creature_names:Booto_Lubble",
+	objectName = "@mob/creature_names:booto_lubble",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ booto_lubble = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

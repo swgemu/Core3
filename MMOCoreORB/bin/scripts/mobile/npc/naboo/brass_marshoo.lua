@@ -1,5 +1,5 @@
 brass_marshoo = Creature:new {
-	objectName = "@mob/creature_names:Brass_Marshoo",
+	objectName = "@mob/creature_names:brass_marshoo",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +26,7 @@ brass_marshoo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

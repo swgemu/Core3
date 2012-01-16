@@ -4,7 +4,7 @@ farmer = Creature:new {
 	pvpFaction = "Townperson",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 62,
@@ -19,16 +19,19 @@ farmer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_quest_farmer.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(farmer, "farmer")

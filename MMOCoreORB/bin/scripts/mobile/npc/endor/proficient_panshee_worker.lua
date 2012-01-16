@@ -4,7 +4,7 @@ proficient_panshee_worker = Creature:new {
 	pvpFaction = "Panshee Tribe",
 	faction = "",
 	level = 33,
-	chanceHit = 0.400000,
+	chanceHit = 0.4,
 	damageMin = 310,
 	damageMax = 330,
 	baseXp = 3279,
@@ -19,16 +19,19 @@ proficient_panshee_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_m_10.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(proficient_panshee_worker, "proficient_panshee_worker")

@@ -4,7 +4,7 @@ vicious_donkuwah_battlelord = Creature:new {
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 51,
-	chanceHit = 0.510000,
+	chanceHit = 0.51,
 	damageMin = 425,
 	damageMax = 560,
 	baseXp = 5007,
@@ -19,16 +19,19 @@ vicious_donkuwah_battlelord = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(vicious_donkuwah_battlelord, "vicious_donkuwah_battlelord")

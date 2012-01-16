@@ -1,10 +1,10 @@
 thale_dustrunner = Creature:new {
-	objectName = "Thale dustrunner",
+	objectName = "@mob/creature_names:Thale dustrunner",
 	socialGroup = "Corsec",
 	pvpFaction = "",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9336,
@@ -19,16 +19,19 @@ thale_dustrunner = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(thale_dustrunner, "thale_dustrunner")

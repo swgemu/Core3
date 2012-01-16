@@ -1,10 +1,10 @@
 naive_condula_workling = Creature:new {
-	objectName = "naive Condula workling",
+	objectName = "@mob/creature_names:naive Condula workling",
 	socialGroup = "Gondula Tribe",
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 9,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 292,
@@ -19,16 +19,19 @@ naive_condula_workling = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(naive_condula_workling, "naive_condula_workling")

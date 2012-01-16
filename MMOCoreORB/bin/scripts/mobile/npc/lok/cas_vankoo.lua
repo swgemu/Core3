@@ -4,7 +4,7 @@ cas_vankoo = Creature:new {
 	pvpFaction = "Bandit",
 	faction = "",
 	level = 117,
-	chanceHit = 3.400000,
+	chanceHit = 3.4,
 	damageMin = 725,
 	damageMax = 1160,
 	baseXp = 11109,
@@ -19,16 +19,19 @@ cas_vankoo = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lok_cas_vankoo.iff"},
 	lootgroups = {},
 	weapons = {"cas_vankoo's_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(cas_vankoo, "cas_vankoo")

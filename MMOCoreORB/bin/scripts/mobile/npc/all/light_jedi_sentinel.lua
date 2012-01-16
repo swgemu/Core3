@@ -3,14 +3,14 @@ light_jedi_sentinel = Creature:new {
 	socialGroup = "self",
 	pvpFaction = "self",
 	faction = "",
-	level = 1,
-	chanceHit = 30.000000,
+	level = 301,
+	chanceHit = 30,
 	damageMin = 2645,
 	damageMax = 5000,
-	baseXp = 45,
+	baseXp = 26845,
 	baseHAM = 1106000,
 	baseHAMmax = 1352000,
-	armor = 0,
+	armor = 3,
 	resists = {95,95,95,95,95,95,95,95,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ light_jedi_sentinel = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = PACK + KILLER + HERD,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_jedi_trainer_old_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"dark_jedi_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(light_jedi_sentinel, "light_jedi_sentinel")

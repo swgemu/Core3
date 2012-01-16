@@ -1,10 +1,10 @@
 neo_cobral_thug = Creature:new {
-	objectName = "Neo-Cobral thug",
+	objectName = "@mob/creature_names:Neo-Cobral thug",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 514,
@@ -19,16 +19,19 @@ neo_cobral_thug = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_thug, "neo_cobral_thug")

@@ -4,7 +4,7 @@ area_coordinator = Creature:new {
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,
@@ -19,16 +19,19 @@ area_coordinator = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_scout_human_female_02.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(area_coordinator, "area_coordinator")

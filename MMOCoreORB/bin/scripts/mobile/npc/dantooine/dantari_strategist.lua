@@ -11,7 +11,7 @@ dantari_strategist = Creature:new {
 	baseHAM = 8400,
 	baseHAMmax = 10200,
 	armor = 0,
-	resists = {0,20,40,-1,50,50,-1,20,-1},
+	resists = {10,20,40,-1,50,50,-1,20,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ dantari_strategist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",

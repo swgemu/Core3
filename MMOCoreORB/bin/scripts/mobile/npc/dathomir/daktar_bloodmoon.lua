@@ -26,7 +26,7 @@ daktar_bloodmoon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fs_village_enemies_daktar.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

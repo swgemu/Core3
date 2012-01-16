@@ -1,5 +1,5 @@
 tailor_trainer = Creature:new {
-	objectName = "@mob/creature_names:Tailor_trainer",
+	objectName = "@mob/creature_names:trainer_tailor",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

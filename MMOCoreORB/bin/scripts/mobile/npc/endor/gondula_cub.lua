@@ -4,7 +4,7 @@ gondula_cub = Creature:new {
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 113,
@@ -19,16 +19,19 @@ gondula_cub = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_m_12.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_cub, "gondula_cub")

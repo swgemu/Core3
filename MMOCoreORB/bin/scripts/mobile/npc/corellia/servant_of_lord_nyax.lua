@@ -1,10 +1,10 @@
 servant_of_lord_nyax = Creature:new {
-	objectName = "servant of Lord Nyax",
+	objectName = "@mob/creature_names:servant of Lord Nyax",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
 	faction = "",
 	level = 8,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 70,
 	damageMax = 75,
 	baseXp = 235,
@@ -19,16 +19,19 @@ servant_of_lord_nyax = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(servant_of_lord_nyax, "servant_of_lord_nyax")

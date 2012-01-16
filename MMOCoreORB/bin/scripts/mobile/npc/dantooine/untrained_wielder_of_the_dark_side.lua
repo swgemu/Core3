@@ -4,14 +4,14 @@ untrained_wielder_of_the_dark_side = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 65,
-	chanceHit = 0.600000,
+	chanceHit = 0.6,
 	damageMin = 545,
 	damageMax = 800,
 	baseXp = 6288,
 	baseHAM = 11000,
 	baseHAMmax = 14000,
-	armor = 0,
-	resists = {30,30,0,0,0,0,0,0,-1},
+	armor = 1,
+	resists = {30,30,15,15,15,15,15,15,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ untrained_wielder_of_the_dark_side = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_untrained_wielder_of_the_darkside.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(untrained_wielder_of_the_dark_side, "untrained_wielder_of_the_dark_side")

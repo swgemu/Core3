@@ -4,14 +4,14 @@ tainted_pubam_dark_shaman = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 355,
 	damageMax = 420,
 	baseXp = 3551,
 	baseHAM = 8200,
 	baseHAMmax = 10000,
 	armor = 0,
-	resists = {0,0,0,40,40,40,40,-1,-1},
+	resists = {15,15,15,40,40,40,40,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ tainted_pubam_dark_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tainted_pubam_dark_shaman, "tainted_pubam_dark_shaman")

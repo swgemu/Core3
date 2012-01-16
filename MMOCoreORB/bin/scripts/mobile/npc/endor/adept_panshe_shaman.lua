@@ -1,5 +1,5 @@
 adept_panshe_shaman = Creature:new {
-	objectName = "@mob/creature_names:adept_Panshe_shaman",
+	objectName = "@mob/creature_names:adept_panshee_shaman",
 	socialGroup = "Panshee Tribe",
 	pvpFaction = "Panshee Tribe",
 	faction = "",

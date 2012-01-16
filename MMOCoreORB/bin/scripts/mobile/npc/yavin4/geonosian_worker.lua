@@ -4,7 +4,7 @@ geonosian_worker = Creature:new {
 	pvpFaction = "Geonosian",
 	faction = "",
 	level = 44,
-	chanceHit = 0.460000,
+	chanceHit = 0.46,
 	damageMin = 360,
 	damageMax = 430,
 	baseXp = 4279,
@@ -19,16 +19,19 @@ geonosian_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_geonosian_commoner_01.iff"},
 	lootgroups = {},
 	weapons = {"geonosian_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(geonosian_worker, "geonosian_worker")

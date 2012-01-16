@@ -1,5 +1,5 @@
 assault_trooper_squad_leader = Creature:new {
-	objectName = "@mob/creature_names:Assault_Trooper_Squad_Leader",
+	objectName = "@mob/creature_names:fbase_stormtrooper_squad_leader",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

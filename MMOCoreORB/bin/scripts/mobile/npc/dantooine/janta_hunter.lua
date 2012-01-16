@@ -4,14 +4,14 @@ janta_hunter = Creature:new {
 	pvpFaction = "Janta Tribe",
 	faction = "",
 	level = 50,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 415,
 	damageMax = 540,
 	baseXp = 4916,
 	baseHAM = 11000,
 	baseHAMmax = 13000,
-	armor = 0,
-	resists = {0,0,-1,-1,0,60,-1,-1,-1},
+	armor = 1,
+	resists = {5,5,-1,-1,5,60,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ janta_hunter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(janta_hunter, "janta_hunter")

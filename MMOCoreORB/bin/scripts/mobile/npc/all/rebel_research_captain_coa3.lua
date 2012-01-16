@@ -1,10 +1,10 @@
 rebel_research_captain_coa3 = Creature:new {
-	objectName = "Rebel research captain (COA3)",
+	objectName = "@mob/creature_names:Rebel research captain (COA3)",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
 	level = 23,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 2443,
@@ -19,16 +19,19 @@ rebel_research_captain_coa3 = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HERD,
+	creatureBitmask = PACK + HERD + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_research_captain_coa3, "rebel_research_captain_coa3")

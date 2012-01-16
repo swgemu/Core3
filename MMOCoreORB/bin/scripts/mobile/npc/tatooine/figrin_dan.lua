@@ -26,7 +26,7 @@ figrin_dan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_figrin_dan.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

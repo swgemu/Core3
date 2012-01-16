@@ -11,7 +11,7 @@ wise_panshee_rigualist = Creature:new {
 	baseHAM = 9900,
 	baseHAMmax = 12100,
 	armor = 0,
-	resists = {20,20,0,60,60,60,60,-1,-1},
+	resists = {15,15,15,60,60,60,60,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ wise_panshee_rigualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ewok_male.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

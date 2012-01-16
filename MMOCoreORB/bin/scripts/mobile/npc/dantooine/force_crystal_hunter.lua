@@ -1,5 +1,5 @@
 force_crystal_hunter = Creature:new {
-	objectName = "@mob/creature_names:force crystal hunter",
+	objectName = "@mob/creature_names:force_crystal_hunter",
 	socialGroup = "Remn. Of Kun",
 	pvpFaction = "",
 	faction = "",
@@ -10,7 +10,7 @@ force_crystal_hunter = Creature:new {
 	baseXp = 10921,
 	baseHAM = 24000,
 	baseHAMmax = 30000,
-	armor = 0,
+	armor = 2,
 	resists = {80,80,80,80,80,80,80,80,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -26,7 +26,7 @@ force_crystal_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dark_force_crystal_hunter.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 twilek_slave = Creature:new {
-	objectName = "@mob/creature_names:Twi'lek_slave",
+	objectName = "@mob/creature_names:slave_twilek_female",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

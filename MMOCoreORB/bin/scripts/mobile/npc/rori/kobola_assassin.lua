@@ -4,7 +4,7 @@ kobola_assassin = Creature:new {
 	pvpFaction = "Kobola",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1426,
@@ -19,16 +19,19 @@ kobola_assassin = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_kobola_assassin_zabrak_male_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_assassin, "kobola_assassin")

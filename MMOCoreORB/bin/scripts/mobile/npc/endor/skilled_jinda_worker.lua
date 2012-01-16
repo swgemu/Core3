@@ -4,14 +4,14 @@ skilled_jinda_worker = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 29,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 2914,
 	baseHAM = 8400,
 	baseHAMmax = 10200,
 	armor = 0,
-	resists = {-1,50,-1,0,0,70,0,-1,-1},
+	resists = {-1,50,-1,20,20,70,20,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ skilled_jinda_worker = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(skilled_jinda_worker, "skilled_jinda_worker")

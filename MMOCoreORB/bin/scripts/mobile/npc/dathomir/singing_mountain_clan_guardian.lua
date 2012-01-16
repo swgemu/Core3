@@ -1,5 +1,5 @@
 singing_mountain_clan_guardian = Creature:new {
-	objectName = "@mob/creature_names:Singing_Mountain_clan_guardian",
+	objectName = "@mob/creature_names:singing_mtn_clan_guardian",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",
@@ -10,8 +10,8 @@ singing_mountain_clan_guardian = Creature:new {
 	baseXp = 14789,
 	baseHAM = 81000,
 	baseHAMmax = 99000,
-	armor = 2,
-	resists = {100,30,30,100,100,100,100,100,-1},
+	armor = 1,
+	resists = {100,20,20,100,100,100,100,100,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

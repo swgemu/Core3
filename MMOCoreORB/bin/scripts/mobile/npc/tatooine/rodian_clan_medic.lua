@@ -26,7 +26,7 @@ rodian_clan_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_rodian_clan_medic.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

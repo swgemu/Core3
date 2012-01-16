@@ -1,5 +1,5 @@
 aaph_koden = Creature:new {
-	objectName = "@mob/creature_names:Aaph Koden",
+	objectName = "@mob/creature_names:aaph_koden",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

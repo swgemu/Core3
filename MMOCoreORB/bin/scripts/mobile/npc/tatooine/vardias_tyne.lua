@@ -26,7 +26,7 @@ vardias_tyne = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/vardias_tyne.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

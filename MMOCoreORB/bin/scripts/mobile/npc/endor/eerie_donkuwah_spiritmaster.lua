@@ -4,7 +4,7 @@ eerie_donkuwah_spiritmaster = Creature:new {
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",
 	level = 39,
-	chanceHit = 0.440000,
+	chanceHit = 0.44,
 	damageMin = 350,
 	damageMax = 410,
 	baseXp = 3915,
@@ -19,16 +19,19 @@ eerie_donkuwah_spiritmaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(eerie_donkuwah_spiritmaster, "eerie_donkuwah_spiritmaster")

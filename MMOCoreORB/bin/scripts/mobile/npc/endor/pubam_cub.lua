@@ -4,7 +4,7 @@ pubam_cub = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 113,
@@ -19,16 +19,19 @@ pubam_cub = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(pubam_cub, "pubam_cub")

@@ -11,7 +11,7 @@ garyns_dragoon = Creature:new {
 	baseHAM = 7700,
 	baseHAMmax = 9400,
 	armor = 0,
-	resists = {25,20,0,-1,0,0,-1,-1,-1},
+	resists = {25,20,15,-1,15,15,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ garyns_dragoon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_garyn_dragoon_bith_male_01.iff","object/mobile/dressed_garyn_dragoon_bith_female_01.iff"},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

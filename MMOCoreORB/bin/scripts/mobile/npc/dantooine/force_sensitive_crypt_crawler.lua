@@ -4,13 +4,13 @@ force_sensitive_crypt_crawler = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 95,
-	chanceHit = 0.900000,
+	chanceHit = 0.9,
 	damageMin = 685,
 	damageMax = 1080,
 	baseXp = 9057,
 	baseHAM = 16000,
 	baseHAMmax = 19000,
-	armor = 0,
+	armor = 2,
 	resists = {45,45,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ force_sensitive_crypt_crawler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_force_sensitive_crypt_crawler.iff"},
 	lootgroups = {},
 	weapons = {"mixed_force_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(force_sensitive_crypt_crawler, "force_sensitive_crypt_crawler")

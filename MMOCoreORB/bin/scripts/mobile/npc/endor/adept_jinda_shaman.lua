@@ -11,7 +11,7 @@ adept_jinda_shaman = Creature:new {
 	baseHAM = 8400,
 	baseHAMmax = 10200,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {20,20,20,20,20,20,20,20,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ adept_jinda_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_11.iff"},
+	templates = {"object/mobile/jinda_male_01.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

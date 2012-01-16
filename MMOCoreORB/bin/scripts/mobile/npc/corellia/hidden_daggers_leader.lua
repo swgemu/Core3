@@ -4,14 +4,14 @@ hidden_daggers_leader = Creature:new {
 	pvpFaction = "Hidden Dagger",
 	faction = "",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 1426,
 	baseHAM = 2900,
 	baseHAMmax = 3500,
 	armor = 0,
-	resists = {0,15,0,-1,-1,-1,40,-1,-1},
+	resists = {5,15,5,-1,-1,-1,40,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ hidden_daggers_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_leader, "hidden_daggers_leader")

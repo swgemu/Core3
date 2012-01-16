@@ -4,7 +4,7 @@ crafty_korga_scout = Creature:new {
 	pvpFaction = "Korga Tribe",
 	faction = "",
 	level = 45,
-	chanceHit = 0.480000,
+	chanceHit = 0.48,
 	damageMin = 380,
 	damageMax = 470,
 	baseXp = 4461,
@@ -19,16 +19,19 @@ crafty_korga_scout = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/object/mobile/object/mobile/dulok_male.iff.iff.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(crafty_korga_scout, "crafty_korga_scout")

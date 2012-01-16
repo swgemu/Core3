@@ -1,5 +1,5 @@
 singing_mountain_dan_outcast = Creature:new {
-	objectName = "@mob/creature_names:Singing_Mountain_clan_outcast",
+	objectName = "@mob/creature_names:singing_mtn_clan_outcast",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",

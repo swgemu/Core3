@@ -26,7 +26,7 @@ escaped_singing_mountain_clan_slave = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_escaped_slave.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -11,7 +11,7 @@ tusken_commoner = Creature:new {
 	baseHAM = 2900,
 	baseHAMmax = 3500,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {5,5,5,5,5,5,5,5,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -25,12 +25,9 @@ tusken_commoner = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 3500000, --35%
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootgroups = {
-		{group = "tusken", chance = 10000000}
-	},
+	lootgroups = {},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
 	attacks = {

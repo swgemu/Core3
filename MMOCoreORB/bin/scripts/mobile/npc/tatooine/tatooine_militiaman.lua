@@ -4,7 +4,7 @@ tatooine_militiaman = Creature:new {
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 113,
@@ -19,16 +19,19 @@ tatooine_militiaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_militiaman.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(tatooine_militiaman, "tatooine_militiaman")

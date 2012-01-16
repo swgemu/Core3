@@ -1,5 +1,5 @@
 singing_mountain_clan_dragoon = Creature:new {
-	objectName = "@mob/creature_names:Singing_Mountain_clan_dragoon",
+	objectName = "@mob/creature_names:singing_mtn_clan_dragoon",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",
@@ -11,7 +11,7 @@ singing_mountain_clan_dragoon = Creature:new {
 	baseHAM = 20000,
 	baseHAMmax = 25000,
 	armor = 2,
-	resists = {45,45,75,-1,75,0,0,0,-1},
+	resists = {45,45,75,35,75,35,35,35,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

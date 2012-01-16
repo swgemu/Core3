@@ -4,7 +4,7 @@ imperial_high_general = Creature:new {
 	pvpFaction = "Imperial",
 	faction = "",
 	level = 29,
-	chanceHit = 0.380000,
+	chanceHit = 0.38,
 	damageMin = 280,
 	damageMax = 290,
 	baseXp = 3005,
@@ -19,16 +19,19 @@ imperial_high_general = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_major_m.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_high_general, "imperial_high_general")

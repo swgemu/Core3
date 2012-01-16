@@ -1,5 +1,5 @@
 sith_shadow_outlaw = Creature:new {
-	objectName = "@mob/creature_names:Sith_Shadow_outlaw",
+	objectName = "@mob/creature_names:shadow_punk",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "s.s. non-aggro",
 	faction = "",
@@ -10,7 +10,7 @@ sith_shadow_outlaw = Creature:new {
 	baseXp = 628,
 	baseHAM = 11000,
 	baseHAMmax = 13500,
-	armor = 0,
+	armor = 1,
 	resists = {65,65,55,60,60,80,80,80,-1},
 	meatType = "",
 	meatAmount = 0,

@@ -4,14 +4,14 @@ weathered_jinda_shaman = Creature:new {
 	pvpFaction = "Jinda Tribe",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 335,
 	damageMax = 380,
 	baseXp = 3460,
 	baseHAM = 8600,
 	baseHAMmax = 10500,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {25,25,25,25,25,25,25,25,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ weathered_jinda_shaman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinda_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(weathered_jinda_shaman, "weathered_jinda_shaman")

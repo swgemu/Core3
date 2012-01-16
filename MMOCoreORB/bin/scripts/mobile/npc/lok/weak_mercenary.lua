@@ -11,7 +11,7 @@ weak_mercenary = Creature:new {
 	baseHAM = 8700,
 	baseHAMmax = 10700,
 	armor = 0,
-	resists = {30,0,0,0,0,0,-1,-1,-1},
+	resists = {30,20,20,20,20,20,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ weak_mercenary = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mercenary_weak_hum_f.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

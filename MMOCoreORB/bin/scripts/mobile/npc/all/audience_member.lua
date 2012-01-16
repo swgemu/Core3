@@ -26,7 +26,7 @@ audience_member = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ gerrio_coronis = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_gerrio_coronis.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

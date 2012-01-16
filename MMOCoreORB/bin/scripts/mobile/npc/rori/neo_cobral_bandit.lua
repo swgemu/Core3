@@ -1,10 +1,10 @@
 neo_cobral_bandit = Creature:new {
-	objectName = "Neo-Cobral bandit",
+	objectName = "@mob/creature_names:Neo-Cobral bandit",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1609,
@@ -19,16 +19,19 @@ neo_cobral_bandit = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_bandit, "neo_cobral_bandit")

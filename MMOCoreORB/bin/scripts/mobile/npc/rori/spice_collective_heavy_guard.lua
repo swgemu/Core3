@@ -1,5 +1,5 @@
 spice_collective_heavy_guard = Creature:new {
-	objectName = "@mob/creature_names:Spice_Collective_heavy_guard",
+	objectName = "@mob/creature_names:spice_collective_heavyguard",
 	socialGroup = "Spice Collect.",
 	pvpFaction = "Spice Collect.",
 	faction = "",

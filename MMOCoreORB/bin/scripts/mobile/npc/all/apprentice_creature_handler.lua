@@ -1,5 +1,5 @@
 apprentice_creature_handler = Creature:new {
-	objectName = "@mob/creature_names:apprentice_creature_handler",
+	objectName = "@mob/creature_names:rebel_creature_handler_apprentice",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",
@@ -26,7 +26,7 @@ apprentice_creature_handler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_creaturehandler_trainer_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

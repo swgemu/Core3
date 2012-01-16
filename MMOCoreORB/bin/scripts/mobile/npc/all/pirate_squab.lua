@@ -1,10 +1,10 @@
 pirate_squab = Creature:new {
-	objectName = "Pirate Squab",
+	objectName = "@mob/creature_names:Pirate Squab",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 85,
@@ -19,16 +19,19 @@ pirate_squab = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(pirate_squab, "pirate_squab")

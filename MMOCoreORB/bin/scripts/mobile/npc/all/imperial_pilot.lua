@@ -1,5 +1,5 @@
 imperial_pilot = Creature:new {
-	objectName = "Imperial Pilot",
+	objectName = "@mob/creature_names:Imperial Pilot",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

@@ -1,5 +1,5 @@
 sith_shadow_thug = Creature:new {
-	objectName = "@mob/creature_names:Sith_Shadow_thug",
+	objectName = "@mob/creature_names:shadow_thug",
 	socialGroup = "Sith Shadow",
 	pvpFaction = "s.s. non-aggro",
 	faction = "",
@@ -10,7 +10,7 @@ sith_shadow_thug = Creature:new {
 	baseXp = 2503,
 	baseHAM = 44300,
 	baseHAMmax = 54300,
-	armor = 0,
+	armor = 2,
 	resists = {75,85,80,65,80,80,80,80,-1},
 	meatType = "",
 	meatAmount = 0,

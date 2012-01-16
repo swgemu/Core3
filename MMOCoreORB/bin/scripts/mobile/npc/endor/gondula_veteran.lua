@@ -4,14 +4,14 @@ gondula_veteran = Creature:new {
 	pvpFaction = "Gondula Tribe",
 	faction = "",
 	level = 35,
-	chanceHit = 0.410000,
+	chanceHit = 0.41,
 	damageMin = 320,
 	damageMax = 350,
 	baseXp = 3460,
 	baseHAM = 8800,
 	baseHAMmax = 10800,
 	armor = 0,
-	resists = {40,30,0,50,50,-1,-1,-1,-1},
+	resists = {40,30,25,50,50,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ gondula_veteran = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ewok_m_12.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_veteran, "gondula_veteran")

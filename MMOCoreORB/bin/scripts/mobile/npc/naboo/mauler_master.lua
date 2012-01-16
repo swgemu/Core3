@@ -4,13 +4,13 @@ mauler_master = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 54,
-	chanceHit = 0.500000,
+	chanceHit = 0.5,
 	damageMin = 395,
 	damageMax = 500,
 	baseXp = 5190,
 	baseHAM = 10000,
 	baseHAMmax = 12000,
-	armor = 0,
+	armor = 1,
 	resists = {65,35,90,90,90,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -19,16 +19,19 @@ mauler_master = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mauler_master, "mauler_master")

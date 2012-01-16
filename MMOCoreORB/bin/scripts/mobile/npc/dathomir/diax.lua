@@ -4,7 +4,7 @@ diax = Creature:new {
 	pvpFaction = "Nightsister",
 	faction = "",
 	level = 22,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 1803,
@@ -19,16 +19,19 @@ diax = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_diax.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(diax, "diax")

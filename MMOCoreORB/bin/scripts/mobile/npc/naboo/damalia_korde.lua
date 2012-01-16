@@ -26,7 +26,7 @@ damalia_korde = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_damalia_korde.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

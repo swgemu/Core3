@@ -26,7 +26,7 @@ competent_gondula_ritualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

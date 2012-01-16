@@ -1,12 +1,12 @@
 ric_olie = Creature:new {
-	objectName = "Ric Olie",
+	objectName = "@mob/creature_names:Ric Olie",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
-	damageMax = J000,
+	damageMax = 0,
 	baseXp = 9429,
 	baseHAM = 24000,
 	baseHAMmax = 30000,
@@ -19,16 +19,19 @@ ric_olie = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(ric_olie, "ric_olie")

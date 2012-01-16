@@ -4,14 +4,14 @@ kunga_harvester = Creature:new {
 	pvpFaction = "Kunga Tribe",
 	faction = "",
 	level = 28,
-	chanceHit = 0.370000,
+	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
 	baseXp = 2822,
 	baseHAM = 8100,
 	baseHAMmax = 9900,
 	armor = 0,
-	resists = {0,40,0,-1,-1,60,40,-1,-1},
+	resists = {15,40,15,-1,-1,60,40,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ kunga_harvester = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dantari_male.iff"},
 	lootgroups = {},
 	weapons = {"primitive_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(kunga_harvester, "kunga_harvester")

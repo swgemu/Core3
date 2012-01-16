@@ -4,7 +4,7 @@ gnarled_pubam_spiritmaster = Creature:new {
 	pvpFaction = "Pubam",
 	faction = "",
 	level = 31,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 3188,
@@ -19,16 +19,19 @@ gnarled_pubam_spiritmaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dulok_male.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gnarled_pubam_spiritmaster, "gnarled_pubam_spiritmaster")

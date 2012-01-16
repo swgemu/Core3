@@ -1,5 +1,5 @@
 borvos_bruiser = Creature:new {
-	objectName = "@mob/creature_names:Borvo's_bruiser",
+	objectName = "@mob/creature_names:borvos_bruiser",
 	socialGroup = "Borvo",
 	pvpFaction = "Borvo",
 	faction = "",

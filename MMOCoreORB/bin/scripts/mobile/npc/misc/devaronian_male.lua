@@ -26,7 +26,7 @@ devaronian_male = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/devaronian_male.iff"},
 	lootgroups = {},
 	weapons = {""},
 	conversationTemplate = "",

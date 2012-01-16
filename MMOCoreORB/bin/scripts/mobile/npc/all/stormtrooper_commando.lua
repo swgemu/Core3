@@ -1,5 +1,5 @@
 stormtrooper_commando = Creature:new {
-	objectName = "@mob/creature_names:Stormtrooper_Commando",
+	objectName = "@mob/creature_names:storm_commando",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

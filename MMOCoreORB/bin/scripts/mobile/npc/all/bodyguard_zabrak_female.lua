@@ -1,5 +1,5 @@
 bodyguard_zabrak_female = Creature:new {
-	objectName = "@mob/creature_names:Bodyguard_Zabrak_Female",
+	objectName = "@mob/creature_names:bodyguard_zabrak_female",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",

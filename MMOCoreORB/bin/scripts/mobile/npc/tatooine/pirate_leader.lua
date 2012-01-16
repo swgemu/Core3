@@ -4,14 +4,14 @@ pirate_leader = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 43,
-	chanceHit = 0.460000,
+	chanceHit = 0.46,
 	damageMin = 365,
 	damageMax = 440,
 	baseXp = 4279,
 	baseHAM = 8600,
 	baseHAMmax = 11800,
 	armor = 0,
-	resists = {10,15,0,40,-1,40,0,-1,-1},
+	resists = {10,15,30,40,-1,40,30,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,16 +19,19 @@ pirate_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(pirate_leader, "pirate_leader")

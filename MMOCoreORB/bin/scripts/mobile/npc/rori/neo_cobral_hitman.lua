@@ -1,10 +1,10 @@
 neo_cobral_hitman = Creature:new {
-	objectName = "Neo-Cobral hitman",
+	objectName = "@mob/creature_names:Neo-Cobral hitman",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 1803,
@@ -19,16 +19,19 @@ neo_cobral_hitman = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootgroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_hitman, "neo_cobral_hitman")
