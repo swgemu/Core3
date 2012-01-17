@@ -1333,8 +1333,9 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 				int maxXp = xpTypeCapList->get(xpType);
 
 				if (maxXp > 0) {
-					StringIdChatParameter message("error_message","prose_at_xp_limit");
-					message.setDI(maxXp);
+					//StringIdChatParameter message("error_message","prose_at_xp_limit");
+					StringIdChatParameter message("error_message", "prose_hit_xp_limit"); //You have achieved your current limit for %TO experience.
+					//message.setDI(maxXp);
 					message.setTO("exp_n", xpType);
 					player->sendSystemMessage(message);
 				}
