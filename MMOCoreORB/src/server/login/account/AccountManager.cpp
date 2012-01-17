@@ -74,6 +74,8 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	Message* lct = new LoginClientToken(account, sessionID);
 	client->sendMessage(lct);
 
+	client->setAccount(account);
+
 	uint32 accountID = account->getAccountID();
 
 	StringBuffer sessionQuery;

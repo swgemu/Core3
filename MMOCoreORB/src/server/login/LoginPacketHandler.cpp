@@ -108,6 +108,12 @@ void LoginPacketHandler::handleLoginClientID(LoginClient* client, Message* pack)
 }
 
 void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Message* pack) {
+
+	if(!client->hasAccount())
+		return;
+
+	uint32 accountId = client->getAccount()->getAccountID();
+
 	uint32 ServerId = pack->parseInt();
 
 	//pack->shiftOffset(4);
@@ -115,14 +121,13 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
     StringBuffer moveStatement;
     moveStatement << "INSERT INTO deleted_characters SELECT * FROM characters WHERE character_oid = " << charId;
-
+    moveStatement << " AND account_id = " << accountId;
 
     StringBuffer deleteStatement;
     deleteStatement << "DELETE FROM characters WHERE character_oid = " << charId;
+    deleteStatement << " AND account_id = " << accountId;
 
     int dbDelete;
-
-    String firstName;
 
     try {
 

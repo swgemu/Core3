@@ -54,10 +54,12 @@ namespace login {
 
 	class LoginClient : public Object {
 		Reference<BaseClientProxy*> session;
+		Account* account;
 
 	public:
 		LoginClient(BaseClientProxy* session) {
 			LoginClient::session = session;
+			account = NULL;
 		}
 
 		virtual ~LoginClient() {
@@ -78,6 +80,7 @@ namespace login {
 			Logger::console.log(msg);
 
 			session->disconnect(doLock);
+			account = NULL;
 		}
 
 		void sendMessage(Message* msg) {
@@ -96,6 +99,18 @@ namespace login {
 
 		ServiceClient* getSession() {
 			return session;
+		}
+
+		Account* getAccount() {
+			return account;
+		}
+
+		void setAccount(Account* account) {
+			LoginClient::account = account;
+		}
+
+		bool hasAccount() {
+			return (account != NULL);
 		}
 	};
 
