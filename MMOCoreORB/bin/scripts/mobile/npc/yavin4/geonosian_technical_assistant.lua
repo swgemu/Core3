@@ -27,7 +27,7 @@ geonosian_technical_assistant = Creature:new {
 	diet = HERBIVORE,
 	lootChance = 7500000,
 
-	templates = {},
+	templates = {"object/mobile/shared_dressed_geonosian_noble_01.iff","object/mobile/shared_dressed_geonosian_noble_02.iff"},
 	lootgroups = {},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
