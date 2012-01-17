@@ -30,9 +30,9 @@ public:
 	 * @param lge The loot group entry to compare.
 	 */
 	int compareTo(const LootGroupEntry& lge) const {
-		if (lge.itemWeight < itemWeight)
+		if (lge.itemWeight > itemWeight)
 			return 1;
-		else if (lge.itemWeight > itemWeight)
+		else if (lge.itemWeight < itemWeight)
 			return -1;
 		else
 			return 0;

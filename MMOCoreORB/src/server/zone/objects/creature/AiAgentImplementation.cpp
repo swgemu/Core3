@@ -491,6 +491,18 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	shockWounds = 0;
 	damageMap->removeAll();
 
+	//Delete all loot out of inventory
+	ManagedReference<SceneObject*> inventory = getSlottedObject("inventory");
+
+	if (inventory != NULL) {
+		while (inventory->getContainerObjectsSize() > 0) {
+			ManagedReference<SceneObject*> obj = inventory->getContainerObject(0);
+			inventory->removeFromContainerObjects(0);
+			obj->destroyObjectFromWorld(false);
+			obj->destroyObjectFromDatabase(true);
+		}
+	}
+
 	setTargetObject(NULL);
 	setFollowObject(NULL);
 

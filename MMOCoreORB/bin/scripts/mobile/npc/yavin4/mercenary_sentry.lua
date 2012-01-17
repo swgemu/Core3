@@ -1,5 +1,5 @@
 mercenary_sentry = Creature:new {
-	objectName = "@mob/creature_names:mercenary sentry",
+	objectName = "@mob/creature_names:geonosian_human_security_force",
 	socialGroup = "Geonosian",
 	pvpFaction = "Geonosian",
 	faction = "",

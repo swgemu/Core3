@@ -212,10 +212,10 @@ public:
 				//LootChance * Group1 / 100 = 49%
 				//LootChance * Group2 / 100 = 21%
 				//Group1 + Group2 + (100 - LootChance) = 100
-				if (lootChance != 10000000)
-					chance = round(lootChance * chance / 100.f);
+				if (lootChance != 10000000.f)
+					chance = round(((double) lootChance) * ((double) chance) / 10000000.f);
 
-				Logger::console.warning("group: " + lootGroup + " chance: " + String::valueOf(chance));
+				Logger::console.warning(String::valueOf(chance));
 
 				LootGroupEntry entry(lootGroup.trim(), chance);
 				lootgroups.put(entry);

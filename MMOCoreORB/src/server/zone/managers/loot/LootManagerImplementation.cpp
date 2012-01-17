@@ -202,6 +202,8 @@ void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 
 		tempChance += entry.getWeight();
 
+		warning("Loot group is " + entry.getItemTemplate());
+
 		//Is this entry lower than the roll? If yes, then we want to try the next entry.
 		if (tempChance < roll)
 			continue;

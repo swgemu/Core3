@@ -1,5 +1,5 @@
 geonosian_technical_assistant = Creature:new {
-	objectName = "@mob/creature_names:Geonosian technical assistant",
+	objectName = "@mob/creature_names:geonosian_tech_assistant",
 	socialGroup = "Geonosian",
 	pvpFaction = "Geonosian",
 	faction = "",
