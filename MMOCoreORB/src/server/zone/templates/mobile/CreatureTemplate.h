@@ -215,8 +215,6 @@ public:
 				if (lootChance != 10000000.f)
 					chance = round(((double) lootChance) * ((double) chance) / 10000000.f);
 
-				Logger::console.warning(String::valueOf(chance));
-
 				LootGroupEntry entry(lootGroup.trim(), chance);
 				lootgroups.put(entry);
 				lootEntry.pop();
