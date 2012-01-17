@@ -151,15 +151,22 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	SceneObject* datapad = player->getSlottedObject("datapad");
 
 	int missionCount = 0;
+	bool hasBountyMission = false;
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		SceneObject* obj = datapad->getContainerObject(i);
 
-		if (obj->isMissionObject())
+		if (obj->isMissionObject()) {
 			++missionCount;
+			MissionObject* datapadMission = cast<MissionObject*>(obj);
+			if (datapadMission->getTypeCRC() == MissionObject::BOUNTY) {
+				hasBountyMission = true;
+			}
+		}
 	}
 
-	if (missionCount >= 2) {
+	//Limit to two missions (only one of them can be a bounty mission)
+	if (missionCount >= 2 || (hasBountyMission && mission->getTypeCRC() == MissionObject::BOUNTY)) {
 		StringIdChatParameter stringId("mission/mission_generic", "too_many_missions");
 		player->sendSystemMessage(stringId);
 		return;

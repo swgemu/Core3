@@ -83,8 +83,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		//npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getPositionX(), zone->getHeight(mission->getPositionX(), mission->getPositionY()), mission->getPositionY(), 0));
-		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, -340, zone->getHeight(-340, -4435), -4435, 0));
+		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getPositionX(), zone->getHeight(mission->getPositionX(), mission->getPositionY()), mission->getPositionY(), 0));
 
 		ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
