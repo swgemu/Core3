@@ -36,8 +36,6 @@
 #include "server/db/ServerDatabase.h"
 
 void MissionManagerImplementation::loadNpcObjectsToSpawn() {
-	info("loading npc objects to spawn...", true);
-
 	String query = "SELECT * FROM mission_manager_spawn_bounty";
 
 	Reference<ResultSet*> res = NULL;
@@ -53,6 +51,8 @@ void MissionManagerImplementation::loadNpcObjectsToSpawn() {
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	}
+
+	info("loaded " + String::valueOf(npcObjectTemplatesToSpawn.size()) + " npc objects to spawn.", true);
 }
 
 void MissionManagerImplementation::loadCraftingMissionItems() {
@@ -380,6 +380,9 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	for (int i = 0; i < bagSize; ++i) {
 		MissionObject* mission = cast<MissionObject*>( missionBag->getContainerObject(i));
 
+		//Clear mission type before calling mission generators.
+		mission->setTypeCRC(0);
+
 		if (missionTerminal->isGeneralTerminal()) {
 			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeDestroyMission(player, mission);
@@ -525,7 +528,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	mission->setMissionNumber(randTexts);
 
-	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
+	Vector3 startPos = player->getWorldCoordinate(System::random(1000) + 1000, (float)System::random(360));
 	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getZone()->getZoneName());
@@ -635,20 +638,10 @@ void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player
 }
 
 void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const int faction) {
-	/*
-	int zoneID = player->getZone()->getZoneID();
-
 	// TODO: switch difficulties in here
-	if (!player->hasSkillBox("combat_bountyhunter_novice")) {
+	if (!player->hasSkill("combat_bountyhunter_novice")) {
+		player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
 		mission->setTypeCRC(0);
-		return;
-	}
-
-	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(MissionManager::UNKNOWN_TARGET);
-
-	if (templateObject == NULL) {
-		mission->setTypeCRC(0);
-		error("incorrect template object in randomizeBountyMission UNKNOWN_TARGET");
 		return;
 	}
 
@@ -658,13 +651,14 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 	mission->setMissionNumber(randTexts);
 
-	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
-	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
-	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getPositionZ());
+	Vector3 startPos = getRandomBountyTargetPosition(player);
+
+	mission->setStartPlanet(player->getZone()->getZoneName());
+	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
 
 	mission->setMissionTargetName("???");
-	mission->setTargetTemplate(templateObject);
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_bounty_target.iff").hashCode()));
 
 	mission->setFaction(faction);
 
@@ -674,7 +668,6 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	mission->setMissionDescription("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::BOUNTY);
-	*/
 }
 
 void MissionManagerImplementation::randomizeDeliverMission(CreatureObject* player, MissionObject* mission) {
@@ -1242,4 +1235,23 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	}
 
 	return lairSpawn;
+}
+
+Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObject* player) {
+	Vector3 position;
+	bool found = false;
+	float radiusX = player->getZone()->getMaxX() - player->getZone()->getMinX();
+	float radiusY = player->getZone()->getMaxY() - player->getZone()->getMinY();
+	float radius = radiusX > radiusY ? radiusX : radiusY;
+
+	while (!found) {
+		position = player->getCoordinate(System::random(radius), System::random(360));
+
+		if (position.getX() > player->getZone()->getMinX() && position.getX() < player->getZone()->getMaxX() &&
+				position.getY() > player->getZone()->getMinY() && position.getY() < player->getZone()->getMaxY()) {
+			found = player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
+		}
+	}
+
+	return position;
 }

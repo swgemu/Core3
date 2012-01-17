@@ -718,6 +718,15 @@ LairSpawn* MissionManager::getRandomLairSpawn(CreatureObject* player) {
 		return _implementation->getRandomLairSpawn(player);
 }
 
+Vector3 MissionManager::getRandomBountyTargetPosition(CreatureObject* player) {
+	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRandomBountyTargetPosition(player);
+}
+
 String MissionManager::getDeliveryMissionFileName(const int faction) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

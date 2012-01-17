@@ -256,6 +256,8 @@ public:
 
 	LairSpawn* getRandomLairSpawn(CreatureObject* player);
 
+	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
+
 	String getDeliveryMissionFileName(const int faction);
 
 	int getDeliverMissionNumberOfMissions(const int faction);
@@ -402,6 +404,8 @@ public:
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	LairSpawn* getRandomLairSpawn(CreatureObject* player);
+
+	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
 
 	String getDeliveryMissionFileName(const int faction);
 

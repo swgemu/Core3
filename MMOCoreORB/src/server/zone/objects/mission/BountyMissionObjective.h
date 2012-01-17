@@ -94,6 +94,14 @@ namespace mission {
 
 class BountyMissionObjective : public MissionObjective {
 public:
+	static const int INITSTATUS = 0;
+
+	static const int HASBIOSIGNATURESTATUS = 1;
+
+	static const int HASTALKED = 2;
+
+	static const int TARGETELIMINATEDSTATUS = 3;
+
 	BountyMissionObjective(MissionObject* mission);
 
 	void initializeTransientMembers();
@@ -109,6 +117,10 @@ public:
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setNpcTemplateToSpawn(SharedObjectTemplate* sp);
+
+	void updateMissionStatus(int informantLevel);
+
+	int getObjectiveStatus();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -140,7 +152,17 @@ protected:
 
 	ManagedReference<AiAgent* > npcTarget;
 
+	int objectiveStatus;
+
 public:
+	static const int INITSTATUS = 0;
+
+	static const int HASBIOSIGNATURESTATUS = 1;
+
+	static const int HASTALKED = 2;
+
+	static const int TARGETELIMINATEDSTATUS = 3;
+
 	BountyMissionObjectiveImplementation(MissionObject* mission);
 
 	BountyMissionObjectiveImplementation(DummyConstructorParameter* param);
@@ -160,6 +182,10 @@ public:
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setNpcTemplateToSpawn(SharedObjectTemplate* sp);
+
+	void updateMissionStatus(int informantLevel);
+
+	int getObjectiveStatus();
 
 	WeakReference<BountyMissionObjective*> _this;
 
@@ -215,6 +241,10 @@ public:
 	void spawnTarget(const String& zoneName);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void updateMissionStatus(int informantLevel);
+
+	int getObjectiveStatus();
 
 protected:
 	String _param0_spawnTarget__String_;

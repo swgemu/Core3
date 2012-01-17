@@ -156,6 +156,9 @@ class MissionManager extends Observer implements Logger {
 	
 	@local
 	public native LairSpawn getRandomLairSpawn(CreatureObject player);
+	@local
+	@dereferenced
+	public native Vector3 getRandomBountyTargetPosition(CreatureObject player);
 		
 	public native string getDeliveryMissionFileName(final int faction);
 	public native int getDeliverMissionNumberOfMissions(final int faction);

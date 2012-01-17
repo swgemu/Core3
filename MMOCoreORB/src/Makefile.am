@@ -452,8 +452,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/TrainerConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserver.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \
+		server/zone/objects/creature/conversation/InformantMissionConversationObserver.cpp \
+		server/zone/objects/creature/conversation/InformantMissionConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/DeliverMissionScreenHandler.cpp \
+		server/zone/objects/creature/conversation/screenhandlers/InformantMissionScreenHandler.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/AbilityList.cpp \
 		server/zone/objects/player/variables/SchematicList.cpp \

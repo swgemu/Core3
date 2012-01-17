@@ -18,7 +18,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -125,6 +125,33 @@ void BountyMissionObjective::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 
 	} else
 		_implementation->setNpcTemplateToSpawn(sp);
+}
+
+void BountyMissionObjective::updateMissionStatus(int informantLevel) {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEMISSIONSTATUS__INT_);
+		method.addSignedIntParameter(informantLevel);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateMissionStatus(informantLevel);
+}
+
+int BountyMissionObjective::getObjectiveStatus() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETOBJECTIVESTATUS__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getObjectiveStatus();
 }
 
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
@@ -240,6 +267,11 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
+	if (_name == "objectiveStatus") {
+		TypeInfo<int >::parseFromBinaryStream(&objectiveStatus, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -271,12 +303,22 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "objectiveStatus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&objectiveStatus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 2 + MissionObjectiveImplementation::writeObjectMembers(stream);
+
+	return 3 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		objectiveStatus = INITSTATUS;
+	objectiveStatus = INITSTATUS;
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("BountyMissionObjective");
 	Logger::setLoggingName("BountyMissionObjective");
 }
@@ -289,6 +331,11 @@ void BountyMissionObjectiveImplementation::initializeTransientMembers() {
 	MissionObjectiveImplementation::initializeTransientMembers();
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
+}
+
+int BountyMissionObjectiveImplementation::getObjectiveStatus() {
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		return objectiveStatus;
+	return objectiveStatus;
 }
 
 /*
@@ -323,6 +370,12 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
+	case RPC_UPDATEMISSIONSTATUS__INT_:
+		updateMissionStatus(inv->getSignedIntParameter());
+		break;
+	case RPC_GETOBJECTIVESTATUS__:
+		resp->insertSignedInt(getObjectiveStatus());
+		break;
 	default:
 		return NULL;
 	}
@@ -356,6 +409,14 @@ void BountyMissionObjectiveAdapter::spawnTarget(const String& zoneName) {
 
 int BountyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	return (static_cast<BountyMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+}
+
+void BountyMissionObjectiveAdapter::updateMissionStatus(int informantLevel) {
+	(static_cast<BountyMissionObjective*>(stub))->updateMissionStatus(informantLevel);
+}
+
+int BountyMissionObjectiveAdapter::getObjectiveStatus() {
+	return (static_cast<BountyMissionObjective*>(stub))->getObjectiveStatus();
 }
 
 /*

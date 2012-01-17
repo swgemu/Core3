@@ -16,7 +16,7 @@
  *	MissionObjectiveStub
  */
 
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__};
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__};
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
@@ -152,6 +152,19 @@ void MissionObjective::awardFactionPoints() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->awardFactionPoints();
+}
+
+void MissionObjective::removeMissionFromPlayer() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEMISSIONFROMPLAYER__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeMissionFromPlayer();
 }
 
 DistributedObjectServant* MissionObjective::_getImplementation() {
@@ -384,6 +397,9 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_AWARDFACTIONPOINTS__:
 		awardFactionPoints();
 		break;
+	case RPC_REMOVEMISSIONFROMPLAYER__:
+		removeMissionFromPlayer();
+		break;
 	default:
 		return NULL;
 	}
@@ -425,6 +441,10 @@ CreatureObject* MissionObjectiveAdapter::getPlayerOwner() {
 
 void MissionObjectiveAdapter::awardFactionPoints() {
 	(static_cast<MissionObjective*>(stub))->awardFactionPoints();
+}
+
+void MissionObjectiveAdapter::removeMissionFromPlayer() {
+	(static_cast<MissionObjective*>(stub))->removeMissionFromPlayer();
 }
 
 /*

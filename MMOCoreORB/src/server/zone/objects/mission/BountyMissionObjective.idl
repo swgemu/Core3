@@ -60,8 +60,17 @@ class BountyMissionObjective extends MissionObjective {
 	
 	protected AiAgent npcTarget;
 	
+	protected int objectiveStatus;
+	
+	public static final int INITSTATUS = 0;
+	public static final int HASBIOSIGNATURESTATUS = 1;
+	public static final int HASTALKED = 2;
+	public static final int TARGETELIMINATEDSTATUS = 3;
+	
 	public BountyMissionObjective(MissionObject mission) {
 		super(mission);
+		
+		objectiveStatus = INITSTATUS;
 		
 		Logger.setLoggingName("BountyMissionObjective");
 	}
@@ -86,4 +95,10 @@ class BountyMissionObjective extends MissionObjective {
 	
 	@local
 	public native void setNpcTemplateToSpawn(SharedObjectTemplate sp);
+	
+	public native void updateMissionStatus(int informantLevel);
+	
+	public int getObjectiveStatus() {
+		return objectiveStatus;
+	}
 }

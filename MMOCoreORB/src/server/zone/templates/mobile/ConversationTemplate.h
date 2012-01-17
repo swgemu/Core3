@@ -62,6 +62,7 @@ public:
 		ConversationTemplateTypeNormal,
 		ConversationTemplateTypeTrainer,
 		ConversationTemplateTypeDeliverMission,
+		ConversationTemplateTypeInformantMission,
 		ConversationTemplateTypeLua
 	};
 protected:
@@ -99,6 +100,8 @@ public:
 			conversationTemplateType = ConversationTemplateTypeTrainer;
 		} else if (templateType == "DeliverNPC") {
 			conversationTemplateType = ConversationTemplateTypeDeliverMission;
+		} else if (templateType == "InformantNPC") {
+			conversationTemplateType = ConversationTemplateTypeInformantMission;
 		} else if (templateType == "Lua") {
 			conversationTemplateType = ConversationTemplateTypeLua;
 		} else {

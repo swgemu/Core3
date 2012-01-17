@@ -14,63 +14,60 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/templates/mobile/ConversationScreen.h"
 
 void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 	npcTemplateToSpawn = sp;
 }
 
 void BountyMissionObjectiveImplementation::activate() {
-	if (observers.size() != 0)
-		return;
+	if (objectiveStatus != INITSTATUS) {
+		getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
 
-	// register observer with self
-	ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-	ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+		abort();
 
-	CreatureObject* player = getPlayerOwner();
-	player->registerObserver(ObserverEventType::CONVERSE, observer);
-
-	observers.put(observer);
+		removeMissionFromPlayer();
+	}
 }
 
 void BountyMissionObjectiveImplementation::abort() {
-	// remove observers
-	if (observers.size() != 0) {
-		ManagedReference<MissionObserver*> observer = observers.get(0);
+	WaypointObject* waypoint = mission->getWaypointToMission();
+	if (waypoint != NULL) {
+		waypoint->setActive(false);
+	}
 
-		CreatureObject* player = getPlayerOwner();
+	//Remove observers
+	if (observers.size() != 0) {
+		ManagedReference<MissionObserver*> observer1 = observers.get(0);
+		ManagedReference<MissionObserver*> observer2 = observers.get(1);
 
 		if (npcTarget != NULL) {
 			ManagedReference<SceneObject*> npcHolder = npcTarget.get();
 			Locker locker(npcTarget);
 
-			npcTarget->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+			npcTarget->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer1);
+			npcTarget->dropObserver(ObserverEventType::DAMAGERECEIVED, observer2);
 			npcTarget->destroyObjectFromDatabase();
 			npcTarget->destroyObjectFromWorld(true);
 
 			npcTarget = NULL;
 
-			observers.drop(observer);
-		}
-
-		if (player != NULL && observers.size() != 0) {
-			observer = observers.get(0);
-			Locker locker(player);
-
-			player->dropObserver(ObserverEventType::CONVERSE, observer);
-			observer->destroyObjectFromDatabase();
-
-			observers.drop(observer);
+			observers.drop(observer1);
+			observers.drop(observer2);
 		}
 	}
 }
 
 void BountyMissionObjectiveImplementation::complete() {
+	//Award bountyhunter xp.
+	getPlayerOwner()->getZoneServer()->getPlayerManager()->awardExperience(getPlayerOwner(), "bountyhunter", mission->getRewardCredits() / 100, true, 1);
 
 	MissionObjectiveImplementation::complete();
 }
@@ -86,56 +83,85 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		npcTarget = cast<AiAgent*>( zoneServer->createObject(npcTemplateToSpawn->getServerObjectCRC(), 0));
-	}
+		//npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getPositionX(), zone->getHeight(mission->getPositionX(), mission->getPositionY()), mission->getPositionY(), 0));
+		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, -340, zone->getHeight(-340, -4435), -4435, 0));
 
-	if (npcTarget == NULL || (npcTarget != NULL && !npcTarget->isInQuadTree())) {
-		int x = System::random(15000) - 7500;
-		int y = System::random(15000) - 7500;
-		npcTarget->initializePosition(x, zone->getHeight(x, y), y);
-		//npcTarget->insertToZone(zone);
-		zone->transferObject(npcTarget, -1, true);
+		ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
+		ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
 
-		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+		npcTarget->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer1);
 
-		npcTarget->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+		observers.put(observer1);
 
-		observers.put(observer);
+		ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this);
+		ObjectManager::instance()->persistObject(observer2, 1, "missionobservers");
+
+		npcTarget->registerObserver(ObserverEventType::DAMAGERECEIVED, observer2);
+
+		observers.put(observer2);
 	}
 }
 
 int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType == ObserverEventType::CONVERSE) {
-		CreatureObject* player = cast<CreatureObject*>(observable);
-		InformantCreature* informant = cast<InformantCreature*>(arg1);
-		int level = informant->getLevel();
+	if (eventType == ObserverEventType::OBJECTDESTRUCTION) {
+		CreatureObject* attacker = NULL;
+		try {
+			attacker = cast<CreatureObject*>(arg1);
+		}
+		catch (Exception) {
+			//Killed in a strange way.
+			int randomNumber = System::random(4) + 1;
+			getPlayerOwner()->sendSystemMessage("@mission/mission_generic:mission_incomplete_0" + String::valueOf(randomNumber));
+			abort();
+			return 1;
+		}
 
-		player->sendMessage(new StartNpcConversation(player, informant->getObjectID(), ""));
+		if (attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
+				attacker->isPlayerCreature()) {
+			//Target killed by player, complete mission.
+			complete();
+		} else {
+			//Target killed by other player, fail mission.
+			attacker->sendSystemMessage("@mission/mission_generic:failed");
+			abort();
+		}
 
-		if (level < mission->getDifficultyLevel() - 1) {
-			StringIdChatParameter params("mission/mission_bounty_informant", "informant_find_harder");
-			player->sendMessage(new NpcConversationMessage(player, params));
-			player->sendMessage(new StopNpcConversation(player, informant->getObjectID()));
+		return 1;
+	} else if (eventType == ObserverEventType::DAMAGERECEIVED) {
+		CreatureObject* attacker = NULL;
+		try {
+			attacker = cast<CreatureObject*>(arg1);
+		}
+		catch (Exception) {
 			return 0;
 		}
 
-		if (level > mission->getDifficultyLevel() - 1) {
-			StringIdChatParameter params("mission/mission_bounty_informant", "informant_find_easier");
-			player->sendMessage(new NpcConversationMessage(player, params));
-			player->sendMessage(new StopNpcConversation(player, informant->getObjectID()));
-			return 0;
+		if (attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
+				attacker->isPlayerCreature() && objectiveStatus == HASBIOSIGNATURESTATUS) {
+			updateMissionStatus(mission->getDifficultyLevel());
+			attacker->sendMessage(new StartNpcConversation(attacker, npcTarget->getObjectID(), ""));
+			ConversationScreen screen;
+			screen.setDialogText("@mission/mission_bounty_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "v");
+			screen.sendTo(attacker, npcTarget);
+			attacker->sendMessage(new StopNpcConversation(attacker, npcTarget->getObjectID()));
+			return 1;
 		}
+	}
 
-		// switch mission level to determine how the waypoint is given
-		// level 0: give straight waypoint (target on planet)
-		if (level == 0) {
-			spawnTarget(player->getZone()->getZoneName());
+	return 0;
+}
+
+void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLevel) {
+	switch (objectiveStatus) {
+	case INITSTATUS:
+		if (informantLevel == 1) {
+			spawnTarget(getPlayerOwner()->getZone()->getZoneName());
 
 			WaypointObject* waypoint = mission->getWaypointToMission();
 
-			if (waypoint == NULL)
+			if (waypoint == NULL) {
 				waypoint = mission->createWaypoint();
+			}
 
 			mission->setEndPosition(npcTarget->getPositionX(), npcTarget->getPositionY(), npcTarget->getPlanetCRC(), true);
 			waypoint->setPlanetCRC(npcTarget->getPlanetCRC());
@@ -144,16 +170,17 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 
 			mission->updateMissionLocation();
 
-			player->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
-
-			StringIdChatParameter params("mission/mission_bounty_informant", "target_easy_" + String::valueOf(System::random(4) + 1));
-			player->sendMessage(new NpcConversationMessage(player, params));
-			player->sendMessage(new StopNpcConversation(player, informant->getObjectID()));
+			getPlayerOwner()->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
 		}
-		// higher level, give biosignature
-	} else if (eventType == ObserverEventType::OBJECTDESTRUCTION) {
-		complete();
-	}
 
-	return 1;
+		objectiveStatus = HASBIOSIGNATURESTATUS;
+		break;
+	case HASBIOSIGNATURESTATUS:
+		objectiveStatus = HASTALKED;
+		break;
+	case HASTALKED:
+		break;
+	default:
+		break;
+	}
 }

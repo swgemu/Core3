@@ -33,7 +33,7 @@ CreatureObject* MissionObjectiveImplementation::getPlayerOwner() {
 }
 
 void MissionObjectiveImplementation::complete() {
-	CreatureObject* player = cast<CreatureObject*>( getPlayerOwner());
+	CreatureObject* player = getPlayerOwner();
 
 	if (player == NULL)
 		return;
@@ -53,10 +53,7 @@ void MissionObjectiveImplementation::complete() {
 
 	awardFactionPoints();
 
-	ZoneServer* zoneServer = player->getZoneServer();
-	MissionManager* missionManager = zoneServer->getMissionManager();
-
-	missionManager->removeMission(mission, player);
+	removeMissionFromPlayer();
 }
 
 void MissionObjectiveImplementation::awardFactionPoints() {
@@ -82,4 +79,13 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 			break;
 		}
 	}
+}
+
+void MissionObjectiveImplementation::removeMissionFromPlayer() {
+	CreatureObject* player = getPlayerOwner();
+
+	ZoneServer* zoneServer = player->getZoneServer();
+	MissionManager* missionManager = zoneServer->getMissionManager();
+
+	missionManager->removeMission(mission, player);
 }

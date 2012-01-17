@@ -101,4 +101,6 @@ class MissionObjective extends ManagedObject implements Logger {
 	public native CreatureObject getPlayerOwner();
 	
 	public native void awardFactionPoints();
+	
+	public native void removeMissionFromPlayer();
 }

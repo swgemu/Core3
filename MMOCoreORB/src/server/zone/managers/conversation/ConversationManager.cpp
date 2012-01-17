@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "ConversationManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/conversation/DeliverMissionConversationObserver.h"
+#include "server/zone/objects/creature/conversation/InformantMissionConversationObserver.h"
 #include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/creature/conversation/LuaConversationObserver.h"
@@ -75,6 +76,9 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 				break;
 			case ConversationTemplate::ConversationTemplateTypeDeliverMission:
 				conversationObserver = new DeliverMissionConversationObserver(conversationTemplate);
+				break;
+			case ConversationTemplate::ConversationTemplateTypeInformantMission:
+				conversationObserver = new InformantMissionConversationObserver(conversationTemplate);
 				break;
 			case ConversationTemplate::ConversationTemplateTypeLua:
 				conversationObserver = new LuaConversationObserver(conversationTemplate);

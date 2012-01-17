@@ -37,6 +37,8 @@ void DeliverMissionObjectiveImplementation::activate() {
 		StringIdChatParameter message("@mission/mission_generic:mission_incomplete_0" + String::valueOf(randomNumber));
 
 		owner->sendSystemMessage(message);
+
+		removeMissionFromPlayer();
 	}
 }
 

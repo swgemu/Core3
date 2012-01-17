@@ -252,6 +252,7 @@ corellia_static_spawns = {
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2955401},
 	{"trainer_weaponsmith",0,-5106,0,-2324,180,0},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1935464},
+	{"informant_npc",0,-345,0,-4439,0,0}, 
 }
 
 corellia_badges = {

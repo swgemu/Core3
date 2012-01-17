@@ -104,6 +104,8 @@ public:
 
 	void awardFactionPoints();
 
+	void removeMissionFromPlayer();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -158,6 +160,8 @@ public:
 	CreatureObject* getPlayerOwner();
 
 	void awardFactionPoints();
+
+	void removeMissionFromPlayer();
 
 	WeakReference<MissionObjective*> _this;
 
@@ -219,6 +223,8 @@ public:
 	CreatureObject* getPlayerOwner();
 
 	void awardFactionPoints();
+
+	void removeMissionFromPlayer();
 
 };
 
