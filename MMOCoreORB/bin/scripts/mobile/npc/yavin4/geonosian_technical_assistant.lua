@@ -25,7 +25,7 @@ geonosian_technical_assistant = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 7500000,
+	lootChance = 8000000,
 
 	templates = {"object/mobile/dressed_geonosian_noble_01.iff","object/mobile/dressed_geonosian_noble_02.iff"},
 	lootgroups = {},

@@ -42,7 +42,10 @@
 
 
 object_tangible_loot_loot_schematic_geonosian_reinforcement_core_schematic = object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = "LootSchematicMenuComponent",
+	targetDraftSchematic = "object/draft_schematic/weapon/component/reinforcement_core_geo.iff",
+	targetUseCount = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_geonosian_reinforcement_core_schematic, "object/tangible/loot/loot_schematic/geonosian_reinforcement_core_schematic.iff")

@@ -42,7 +42,10 @@
 
 
 object_tangible_loot_loot_schematic_geonosian_tenloss_dxr6_schematic = object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = "LootSchematicMenuComponent",
+	targetDraftSchematic = "object/draft_schematic/weapon/rifle_tenloss_disrupter.iff",
+	targetUseCount = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_geonosian_tenloss_dxr6_schematic, "object/tangible/loot/loot_schematic/geonosian_tenloss_dxr6_schematic.iff")
