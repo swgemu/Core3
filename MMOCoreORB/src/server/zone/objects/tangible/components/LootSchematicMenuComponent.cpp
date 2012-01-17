@@ -24,7 +24,7 @@ void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	uint32 gameObjectType = sceneObject->getGameObjectType();
 
-	menuResponse->addRadialMenuItem(50, 3, "@ui_radial:item_use_deed");
+	menuResponse->addRadialMenuItem(50, 3, "@loot_schematic:use_schematic"); //Learn Schematic
 
 }
 
