@@ -30,7 +30,8 @@ tusken_warlord = Creature:new {
 	templates = {"object/mobile/tusken_raider.iff"},
 	lootgroups = {
 		{group = "tusken", chance = 6500000},
-		{group = "rifles", chance = 3500000}
+		{group = "rifles", chance = 1750000},
+		{group = "pistols", chance = 1750000}
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",

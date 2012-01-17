@@ -30,7 +30,8 @@ tusken_raider = Creature:new {
 	templates = {"object/mobile/tusken_raider.iff"},
 	lootgroups = {
 		{group = "tusken", chance = 5500000},
-		{group = "rifles", chance = 4500000}
+		{group = "rifles", chance = 2250000},
+		{group = "pistols", chance = 2250000}
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
