@@ -124,6 +124,11 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 
 	ManagedReference<DraftSchematic*> draftSchematic = craftingManager->getSchematic(templateObject->getDraftSchematic().hashCode());
 
+	if (draftSchematic == NULL) {
+		error("could not create draftSchematic " + templateObject->getDraftSchematic());
+		return NULL;
+	}
+
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = dynamic_cast<ManufactureSchematic* >(draftSchematic->createManufactureSchematic(NULL));
 	manufactureSchematic->setDraftSchematic(NULL, draftSchematic);
 
@@ -257,8 +262,10 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 
 			SceneObject* obj = createLootObject(itemTemplate);
 
-			if (container->transferObject(obj, -1, false))
-				container->broadcastObject(obj, true);
+			if (obj != NULL) {
+				if (container->transferObject(obj, -1, false))
+					container->broadcastObject(obj, true);
+			}
 
 		} else {
 			error(item + " loot item template not found");
