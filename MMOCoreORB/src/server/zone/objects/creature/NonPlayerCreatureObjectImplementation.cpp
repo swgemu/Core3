@@ -37,7 +37,9 @@ void NonPlayerCreatureObjectImplementation::doAwarenessCheck(Coordinate& start, 
 	if (isDead() || getZone() == NULL || time == 0)
 		return;
 
-	if(!isAggressiveTo(target))
+	int awarenessRadius = getFerocity() + 32;
+
+	if(getDistanceTo(target) > awarenessRadius || !isAggressiveTo(target))
 		return;
 
 	// TODO: another formula that needs tweaking (after player levels get looked at)

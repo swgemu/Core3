@@ -167,4 +167,8 @@ class CampSiteActiveArea extends ActiveArea {
 	public native boolean despawnCamp();
 	
 	public native void assumeOwnership(CreatureObject player);
+	
+	public CreatureObject getOwner() {
+		return campOwner;
+	}
 }

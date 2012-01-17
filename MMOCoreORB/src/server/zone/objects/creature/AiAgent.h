@@ -489,6 +489,8 @@ protected:
 
 	Vector<ManagedReference<WeaponObject* > > weapons;
 
+	Vector<ManagedReference<SceneObject* > > camouflagedObjects;
+
 	Reference<CreatureTemplate* > npcTemplate;
 
 	ManagedReference<CreatureObject* > lootOwner;

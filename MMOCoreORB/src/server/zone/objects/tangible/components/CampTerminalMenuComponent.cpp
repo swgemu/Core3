@@ -117,6 +117,10 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 	if (camp->getZone() == NULL)
 		return;
 
+	if(player->isSitting()) {
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+	}
+
 	// Find Camp Area
 	Vector<ManagedReference<ActiveArea* > >* areas = camp->getActiveAreas();
 	ManagedReference<ActiveArea*> area = NULL;
@@ -225,7 +229,7 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 	suiBox->setPromptText(terminal->getObjectName()->getDisplayedName());
 
 	StringBuffer owner, time, visitors;
-	owner << "Owner: " << camp->getOwnerCreatureObject()->getFirstName() << " " <<
+	owner << "Owner: " << campArea->getOwner()->getFirstName() << " " <<
 			camp->getOwnerCreatureObject()->getLastName() << endl;
 	suiBox->addMenuItem(owner.toString());
 

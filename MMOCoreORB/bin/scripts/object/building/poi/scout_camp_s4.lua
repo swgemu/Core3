@@ -56,7 +56,7 @@ templateType = CAMPSTRUCTURE,
 	aggroMod = 75,
 	duration = 3600,
 	radius = 20,
-	experience = 0,
+	experience = 1500,
 	skillRequired = 95,
 
 	childObjects = {

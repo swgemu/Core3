@@ -11,7 +11,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
@@ -48,6 +48,11 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
 	if (isDead() || getZone() == NULL || time == 0 || target->isDead())
+		return;
+
+	int awarenessRadius = getFerocity() + 32;
+
+	if( getDistanceTo(target) > awarenessRadius || isCamouflaged(target))
 		return;
 
 	// calculate average speed
@@ -93,6 +98,46 @@ void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, Cr
 
 	activateRecovery();
 	activateMovementEvent();
+}
+
+bool CreatureImplementation::isCamouflaged(CreatureObject* target) {
+	/// Check masked scent
+	if (!target->hasState(CreatureState::MASKSCENT)) {
+		if(camouflagedObjects.contains(target)) {
+			camouflagedObjects.removeElement(target);
+		}
+		return false;
+	}
+
+	/// Don't do anything if object is ignored (Camo / Masked Scent)
+	if (camouflagedObjects.contains(target))
+		return true;
+
+	int camoSkill = target->getSkillMod("mask_scent");
+	int creatureLevel = getLevel();
+	int chance = (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100;
+	int roll = System::random(100);
+
+	if (roll > chance) {
+		uint32 crc = String("skill_buff_mask_scent").hashCode();
+		target->sendSystemMessage("skl_use", "sys_scentmask_break");
+		target->removeBuff(crc);
+	} else {
+		StringIdChatParameter success("skl_use", "sys_scentmask_success");
+		success.setTT(getObjectName()->getDisplayedName());
+
+		target->sendSystemMessage(success);
+
+		camouflagedObjects.add(target);
+
+		PlayerObject* ghost = cast<PlayerObject*> (target->getSlottedObject(
+				"ghost"));
+		if (ghost != NULL)
+			ghost->addExperience("scout", (creatureLevel * 2), true);
+		return true;
+	}
+
+	return false;
 }
 
 void CreatureImplementation::runAway(CreatureObject* target) {

@@ -180,6 +180,8 @@ public:
 
 	void assumeOwnership(CreatureObject* player);
 
+	CreatureObject* getOwner();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -283,6 +285,8 @@ public:
 
 	void assumeOwnership(CreatureObject* player);
 
+	CreatureObject* getOwner();
+
 	WeakReference<CampSiteActiveArea*> _this;
 
 	operator const CampSiteActiveArea*();
@@ -365,6 +369,8 @@ public:
 	bool despawnCamp();
 
 	void assumeOwnership(CreatureObject* player);
+
+	CreatureObject* getOwner();
 
 };
 

@@ -216,6 +216,8 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 		ghost->addOwnedStructure(camp);
 	}
 
+	player->registerObserver(ObserverEventType::STARTCOMBAT, campObserver);
+
 	if(abandonTask != NULL && abandonTask->isScheduled())
 		abandonTask->cancel();
 

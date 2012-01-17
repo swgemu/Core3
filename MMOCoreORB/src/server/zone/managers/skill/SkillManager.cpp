@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/templates/datatables/DataTableIff.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 
 SkillManager::SkillManager()
 		: Logger("SkillManager") {
@@ -255,6 +256,16 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		updateXpLimits(ghost);
 
 	}
+
+	/// Update client with new values for things like Terrain Negotiation
+	CreatureObjectDeltaMessage4* msg4 = new CreatureObjectDeltaMessage4(creature);
+	msg4->updateAccelerationMultiplierBase();
+	msg4->updateAccelerationMultiplierMod();
+	msg4->updateSpeedMultiplierBase();
+	msg4->updateSpeedMultiplierMod();
+	msg4->updateRunSpeed();
+	msg4->updateTerrainNegotiation();
+	creature->sendMessage(msg4);
 
 	return true;
 }

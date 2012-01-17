@@ -102,6 +102,9 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected Vector<WeaponObject> weapons;
 	
+	@dereferenced 
+	protected Vector<SceneObject> camouflagedObjects;
+	
 	protected transient CreatureTemplate npcTemplate;
 	
 	protected transient CreatureObject lootOwner;

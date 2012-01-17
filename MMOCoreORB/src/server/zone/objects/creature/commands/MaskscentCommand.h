@@ -63,7 +63,67 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!checkMaskScent(creature))
+			return GENERALERROR;
+
+
+		uint32 crc = String("skill_buff_mask_scent").hashCode();
+
+		if (creature->hasBuff(crc)) {
+			creature->sendSystemMessage("skl_use", "sys_scentmask_fail");
+			return GENERALERROR;
+		}
+
+		StringIdChatParameter startStringId("skl_use", "sys_scentmask_start");
+		StringIdChatParameter endStringId("skl_use", "sys_scentmask_stop");
+
+
+		int maskScentMod = creature->getSkillMod("mask_scent");
+		int cdReduction = ((float)(maskScentMod / 100.0f)) * 45;
+		int duration = 60 + (((float)(maskScentMod / 100.0f)) * 200);
+
+		ManagedReference<Buff*> buff = new Buff(creature, crc, duration, BuffType::SKILL);
+		buff->addOptionBit(CreatureState::MASKSCENT);
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
+
+		creature->addBuff(buff);
+
+		creature->updateCooldownTimer("skill_buff_mask_scent", (60 - cdReduction) * 1000);
+
 		return SUCCESS;
+	}
+
+	bool checkMaskScent(CreatureObject* creature) {
+
+		if(creature->getSkillMod("mask_scent") <= 0) {
+			creature->sendSystemMessage("skl_use", "sys_scentmask_noskill");
+			return false;
+		}
+
+		if(creature->hasBuff(String("skill_buff_mask_scent").hashCode())) {
+			creature->sendSystemMessage("skl_use", "sys_scentmask_already");
+			return false;
+		}
+
+		if (!creature->checkCooldownRecovery("skill_buff_mask_scent")) {
+			StringIdChatParameter waitTime("skl_use", "sys_scentmask_delay");
+			int timeLeft = (creature->getCooldownTime("skill_buff_mask_scent")->getMiliTime() / 1000) - System::getTime();
+			waitTime.setDI(timeLeft);
+
+			creature->sendSystemMessage(waitTime);
+
+			return false;
+		}
+
+		Zone* zone = creature->getZone();
+		if (creature->getZone() == NULL || creature->isInCombat()) {
+			creature->sendSystemMessage("skl_use", "sys_scentmask_fail");
+			return false;
+		}
+
+		return true;
+
 	}
 
 };

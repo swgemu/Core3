@@ -118,6 +118,8 @@ public:
 
 	bool canHarvestMe(CreatureObject* player);
 
+	bool isCamouflaged(CreatureObject* target);
+
 	bool isBaby();
 
 	float getTame();
@@ -190,6 +192,8 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
+
+	bool isCamouflaged(CreatureObject* target);
 
 	bool isBaby();
 
@@ -265,6 +269,8 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
+
+	bool isCamouflaged(CreatureObject* target);
 
 	bool isBaby();
 

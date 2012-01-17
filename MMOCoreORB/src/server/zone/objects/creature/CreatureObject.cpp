@@ -4981,11 +4981,6 @@ float CreatureObjectImplementation::getWalkSpeed() {
 	return walkSpeed;
 }
 
-float CreatureObjectImplementation::getTerrainNegotiation() {
-	// server/zone/objects/creature/CreatureObject.idl():  		return terrainNegotiation;
-	return terrainNegotiation;
-}
-
 float CreatureObjectImplementation::getRunAcceleration() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return runAcceleration;
 	return runAcceleration;

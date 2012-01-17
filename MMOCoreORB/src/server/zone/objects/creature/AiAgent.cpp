@@ -1301,6 +1301,11 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
+	if (_name == "camouflagedObjects") {
+		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&camouflagedObjects, stream);
+		return true;
+	}
+
 	if (_name == "baby") {
 		TypeInfo<bool >::parseFromBinaryStream(&baby, stream);
 		return true;
@@ -1399,6 +1404,14 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "camouflagedObjects";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&camouflagedObjects, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "baby";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1456,7 +1469,7 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 13 + CreatureObjectImplementation::writeObjectMembers(stream);
+	return 14 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 AiAgentImplementation::AiAgentImplementation() {

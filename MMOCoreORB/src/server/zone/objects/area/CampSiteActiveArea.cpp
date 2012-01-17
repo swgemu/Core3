@@ -22,7 +22,7 @@
  *	CampSiteActiveAreaStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_SETTERMINAL__TERMINAL_,RPC_SETOWNER__CREATUREOBJECT_,RPC_SETCAMP__STRUCTUREOBJECT_,RPC_GETMEDICALRATING__,RPC_GETHEALTHWOUNDREGENRATE__,RPC_GETACTIONWOUNDREGENRATE__,RPC_GETMINDWOUNDREGENRATE__,RPC_GETAGGROMOD__,RPC_ISCAMPAREA__,RPC_GETVISITORCOUNT__,RPC_GETUPTIME__,RPC_ISABANDONED__,RPC_NOTIFYHEALEVENT__LONG_,RPC_NOTIFYCOMBATEVENT__,RPC_ABANDONCAMP__,RPC_DESPAWNCAMP__,RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_SETTERMINAL__TERMINAL_,RPC_SETOWNER__CREATUREOBJECT_,RPC_SETCAMP__STRUCTUREOBJECT_,RPC_GETMEDICALRATING__,RPC_GETHEALTHWOUNDREGENRATE__,RPC_GETACTIONWOUNDREGENRATE__,RPC_GETMINDWOUNDREGENRATE__,RPC_GETAGGROMOD__,RPC_ISCAMPAREA__,RPC_GETVISITORCOUNT__,RPC_GETUPTIME__,RPC_ISABANDONED__,RPC_NOTIFYHEALEVENT__LONG_,RPC_NOTIFYCOMBATEVENT__,RPC_ABANDONCAMP__,RPC_DESPAWNCAMP__,RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_,RPC_GETOWNER__};
 
 CampSiteActiveArea::CampSiteActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	CampSiteActiveAreaImplementation* _implementation = new CampSiteActiveAreaImplementation();
@@ -312,6 +312,19 @@ void CampSiteActiveArea::assumeOwnership(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->assumeOwnership(player);
+}
+
+CreatureObject* CampSiteActiveArea::getOwner() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETOWNER__);
+
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getOwner();
 }
 
 DistributedObjectServant* CampSiteActiveArea::_getImplementation() {
@@ -611,6 +624,11 @@ bool CampSiteActiveAreaImplementation::isAbandoned() {
 	return abandoned;
 }
 
+CreatureObject* CampSiteActiveAreaImplementation::getOwner() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campOwner;
+	return campOwner;
+}
+
 /*
  *	CampSiteActiveAreaAdapter
  */
@@ -681,6 +699,9 @@ Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod
 		break;
 	case RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_:
 		assumeOwnership(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_GETOWNER__:
+		resp->insertLong(getOwner()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -767,6 +788,10 @@ bool CampSiteActiveAreaAdapter::despawnCamp() {
 
 void CampSiteActiveAreaAdapter::assumeOwnership(CreatureObject* player) {
 	(static_cast<CampSiteActiveArea*>(stub))->assumeOwnership(player);
+}
+
+CreatureObject* CampSiteActiveAreaAdapter::getOwner() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getOwner();
 }
 
 /*

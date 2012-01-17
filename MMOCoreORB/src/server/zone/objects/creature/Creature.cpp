@@ -18,7 +18,7 @@
  *	CreatureStub
  */
 
-enum {RPC_ISCREATURE__ = 6,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_ISCREATURE__ = 6,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -156,6 +156,20 @@ bool Creature::canHarvestMe(CreatureObject* player) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->canHarvestMe(player);
+}
+
+bool Creature::isCamouflaged(CreatureObject* target) {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCAMOUFLAGED__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCamouflaged(target);
 }
 
 bool Creature::isBaby() {
@@ -518,6 +532,9 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CANHARVESTME__CREATUREOBJECT_:
 		resp->insertBoolean(canHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
+	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
+		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
 	case RPC_ISBABY__:
 		resp->insertBoolean(isBaby());
 		break;
@@ -578,6 +595,10 @@ bool CreatureAdapter::hasOrganics() {
 
 bool CreatureAdapter::canHarvestMe(CreatureObject* player) {
 	return (static_cast<Creature*>(stub))->canHarvestMe(player);
+}
+
+bool CreatureAdapter::isCamouflaged(CreatureObject* target) {
+	return (static_cast<Creature*>(stub))->isCamouflaged(target);
 }
 
 bool CreatureAdapter::isBaby() {

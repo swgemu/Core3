@@ -1149,17 +1149,6 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 	if (!isAttackableBy(target))
 		return false;
 
-	/// Check masked scent
-	if (target->getStateBitmask() & CreatureState::MASKSCENT) {
-		int camoSkill = target->getSkillMod("mask_scent");
-		int myLevel = getLevel();
-
-		if(myLevel > camoSkill) {
-
-		}
-
-	}
-
 	if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
 		return true;
 

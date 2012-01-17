@@ -56,7 +56,7 @@ object_building_poi_scout_camp_s3 = object_building_poi_shared_scout_camp_s3:new
 	aggroMod = 50,
 	duration = 3600,
 	radius = 20,
-	experience = 0,
+	experience = 1200,
 	skillRequired = 95,
 
 	childObjects = {

@@ -101,9 +101,13 @@ public:
 
 	void applySkillModifiers();
 
+	void applyOptionBits();
+
 	void removeAttributeModifiers();
 
 	void removeSkillModifiers();
+
+	void removeOptionBits();
 
 	void clearBuffEvent();
 
@@ -124,6 +128,8 @@ public:
 	void setAttributeModifier(byte attribute, int value);
 
 	void setSkillModifier(const String& modname, int value);
+
+	void addOptionBit(unsigned long long option);
 
 	void setSpeedMultiplierMod(float multiplier);
 
@@ -193,6 +199,8 @@ protected:
 
 	VectorMap<String, int> skillModifiers;
 
+	Vector<unsigned long long> optionBits;
+
 	String buffName;
 
 	float buffDuration;
@@ -238,9 +246,13 @@ public:
 
 	virtual void applySkillModifiers();
 
+	virtual void applyOptionBits();
+
 	virtual void removeAttributeModifiers();
 
 	virtual void removeSkillModifiers();
+
+	virtual void removeOptionBits();
 
 	void clearBuffEvent();
 
@@ -261,6 +273,8 @@ public:
 	void setAttributeModifier(byte attribute, int value);
 
 	void setSkillModifier(const String& modname, int value);
+
+	void addOptionBit(unsigned long long option);
 
 	void setSpeedMultiplierMod(float multiplier);
 
@@ -353,9 +367,13 @@ public:
 
 	void applySkillModifiers();
 
+	void applyOptionBits();
+
 	void removeAttributeModifiers();
 
 	void removeSkillModifiers();
+
+	void removeOptionBits();
 
 	void clearBuffEvent();
 
@@ -376,6 +394,8 @@ public:
 	void setAttributeModifier(byte attribute, int value);
 
 	void setSkillModifier(const String& modname, int value);
+
+	void addOptionBit(unsigned long long option);
 
 	void setSpeedMultiplierMod(float multiplier);
 

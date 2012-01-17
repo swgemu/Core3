@@ -315,7 +315,7 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (player == _this) {
 		//info("sending baselines to myself", true);
 
-		CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
+		CreatureObjectMessage1* msg = new CreatureObjectMessage1(_this);
 		player->sendMessage(msg);
 	}
 
@@ -323,7 +323,7 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(msg3);
 
 	if (player == _this) {
-		CreatureObjectMessage4* msg4 = new CreatureObjectMessage4(this);
+		CreatureObjectMessage4* msg4 = new CreatureObjectMessage4(_this);
 		player->sendMessage(msg4);
 	}
 
@@ -739,9 +739,8 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			}
 
 			setSpeedMultiplierMod(1.f);
-
-		}
 			break;
+		}
 		default:
 			break;
 		}
@@ -986,7 +985,7 @@ void CreatureObjectImplementation::setEncumbrance(int type, int value,
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* msg =
-				new CreatureObjectDeltaMessage4(this);
+				new CreatureObjectDeltaMessage4(_this);
 		msg->startUpdate(0x02);
 		encumbrances.set(type, value, msg);
 		msg->close();
@@ -1112,7 +1111,7 @@ void CreatureObjectImplementation::removeSkillMod(const String& skillMod,
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* msg =
-				new CreatureObjectDeltaMessage4(this);
+				new CreatureObjectDeltaMessage4(_this);
 		msg->startUpdate(0x03);
 		skillModList.drop(skillMod, msg, 1);
 		msg->close();
@@ -1136,7 +1135,7 @@ void CreatureObjectImplementation::addSkillMod(const String& skillMod,
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* msg =
-				new CreatureObjectDeltaMessage4(this);
+				new CreatureObjectDeltaMessage4(_this);
 		msg->startUpdate(0x03);
 		skillModList.set(skillMod, value, msg, 1);
 		msg->close();
@@ -1270,7 +1269,7 @@ void CreatureObjectImplementation::setAccelerationMultiplierBase(
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
-				this);
+				_this);
 		dcreo4->updateAccelerationMultiplierBase();
 		dcreo4->close();
 
@@ -1287,7 +1286,7 @@ void CreatureObjectImplementation::setAccelerationMultiplierMod(
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
-				this);
+				_this);
 		dcreo4->updateAccelerationMultiplierMod();
 		dcreo4->close();
 
@@ -1304,7 +1303,7 @@ void CreatureObjectImplementation::setSpeedMultiplierBase(
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
-				this);
+				_this);
 		dcreo4->updateSpeedMultiplierBase();
 		dcreo4->close();
 
@@ -1329,7 +1328,7 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
-				this);
+				_this);
 		dcreo4->updateSpeedMultiplierMod();
 		dcreo4->close();
 
@@ -1346,7 +1345,7 @@ void CreatureObjectImplementation::setRunSpeed(float newSpeed,
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
-				this);
+				_this);
 		dcreo4->updateRunSpeed();
 		dcreo4->close();
 
@@ -1393,7 +1392,7 @@ void CreatureObjectImplementation::setListenToID(uint64 id, bool notifyClient) {
 	if (!notifyClient)
 		return;
 
-	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(this);
+	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(_this);
 	codm4->updateListenToID(id);
 	codm4->close();
 	sendMessage(codm4);
@@ -1425,10 +1424,15 @@ void CreatureObjectImplementation::setTerrainNegotiation(float value,
 	if (!notifyClient)
 		return;
 
-	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(this);
+	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(_this);
 	codm4->updateTerrainNegotiation();
 	codm4->close();
 	sendMessage(codm4);
+}
+
+float CreatureObjectImplementation::getTerrainNegotiation() {
+	float slopeMod = ((float)getSkillMod("slope_move") / 100.0f);
+	return terrainNegotiation + slopeMod;
 }
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,

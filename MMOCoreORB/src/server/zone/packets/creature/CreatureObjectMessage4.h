@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class CreatureObjectMessage4 : public BaseLineMessage {
 public:
-	CreatureObjectMessage4(CreatureObjectImplementation* creo)
+	CreatureObjectMessage4(CreatureObject* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 4, 0x0E) {
 		//
 		insertFloat(creo->getAccelerationMultiplierBase());

@@ -95,6 +95,9 @@ class Creature extends AiAgent {
 	
 	public native boolean canHarvestMe(CreatureObject player);
 	
+	public native boolean isCamouflaged(CreatureObject target);
+
+	
 	public boolean isBaby() {
 		return super.baby;
 	}

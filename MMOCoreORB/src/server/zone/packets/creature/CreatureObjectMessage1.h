@@ -53,7 +53,7 @@ which carries forward this exception.
 
 class CreatureObjectMessage1 : public BaseLineMessage {
 public:
-	CreatureObjectMessage1(CreatureObjectImplementation* creo)
+	CreatureObjectMessage1(CreatureObject* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 1, 0x04) {
 		insertInt(creo->getBankCredits());
 		insertInt(creo->getCashCredits());

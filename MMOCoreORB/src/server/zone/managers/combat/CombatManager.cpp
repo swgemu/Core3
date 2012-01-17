@@ -49,6 +49,10 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	attacker->clearState(CreatureState::PEACE);
 
+	// Clear Mask Scent
+	uint32 crc = String("skill_buff_mask_scent").hashCode();
+	attacker->removeBuff(crc);
+
 	if (attacker->isEntertaining())
 		attacker->stopEntertaining();
 

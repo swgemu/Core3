@@ -55,14 +55,14 @@ templateType = CAMPSTRUCTURE,
 
 	aggroMod = 20,
 	duration = 3600,
-	radius = 20,
-	experience = 0,
+	radius = 18,
+	experience = 640,
 	skillRequired = 20,
 
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
 			x = -1, z = 0, y = 3.73, 
-			ox = 0, oy = .5, oz = 0, ow = -1.7, 
+			ox = 0, oy = 1.47, oz = 0, ow = 1.34, 
 			cellid = -1, 
 			containmentType = -1},
 
