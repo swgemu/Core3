@@ -5,7 +5,14 @@ etost_ew_zann = {
 	maximumLevel = -1,
 	customObjectName = "Etost Ew Zann",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s4.iff",
-	draftSchematic = ""
+	draftSchematic = "",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("etost_ew_zann", etost_ew_zann)

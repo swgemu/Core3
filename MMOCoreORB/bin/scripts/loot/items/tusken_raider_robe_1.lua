@@ -5,7 +5,14 @@ tusken_raider_robe_1 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/robe/robe_tusken_raider_s01.iff",
-	draftSchematic = ""
+	draftSchematic = "",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("tusken_raider_robe_1", tusken_raider_robe_1)

@@ -5,7 +5,14 @@ carbine_dh17_snubnose = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine_snubnose.iff"
+	draftSchematic = "object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine_snubnose.iff",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("carbine_dh17_snubnose", carbine_dh17_snubnose)

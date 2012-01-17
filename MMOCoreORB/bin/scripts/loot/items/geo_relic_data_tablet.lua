@@ -5,7 +5,14 @@ geo_relic_data_tablet = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_data_tab.iff",
-	draftSchematic = ""
+	draftSchematic = "",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("geo_relic_data_tablet", geo_relic_data_tablet)

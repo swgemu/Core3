@@ -5,7 +5,14 @@ carbine_laser = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/rifle_light_blaster_laser_carbine.iff"
+	draftSchematic = "object/draft_schematic/weapon/rifle_light_blaster_laser_carbine.iff",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("carbine_laser", carbine_laser)

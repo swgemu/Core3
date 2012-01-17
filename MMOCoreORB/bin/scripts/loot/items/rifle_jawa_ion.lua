@@ -5,7 +5,14 @@ rifle_jawa_ion = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/rifle_jawa_ion.iff"
+	draftSchematic = "object/draft_schematic/weapon/rifle_jawa_ion.iff",
+	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
+	experimentalMin = {47,100,9.1,2.4,750,23,47,61},
+	experimentalMax = {96,188,6.3,4.2,750,14,28,37},
+	qualityRangeMin = 0,
+	qualityRangeMax = 8,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("rifle_jawa_ion", rifle_jawa_ion)

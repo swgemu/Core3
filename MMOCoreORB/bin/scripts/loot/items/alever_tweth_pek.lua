@@ -5,7 +5,14 @@ alever_tweth_pek = {
 	maximumLevel = -1,
 	customObjectName = "Alever Tweth Pek",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s3.iff",
-	draftSchematic = ""
+	draftSchematic = "",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("alever_tweth_pek", alever_tweth_pek)

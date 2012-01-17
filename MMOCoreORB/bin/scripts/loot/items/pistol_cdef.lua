@@ -5,7 +5,14 @@ pistol_cdef = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/pistol_blaster_cdef.iff"
+	draftSchematic = "object/draft_schematic/weapon/pistol_blaster_cdef.iff",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("pistol_cdef", pistol_cdef)

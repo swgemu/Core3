@@ -5,7 +5,14 @@ rifle_dlt20a = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/rifle_dlt20a.iff"
+	draftSchematic = "object/draft_schematic/weapon/rifle_dlt20a.iff",
+	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
+	experimentalMin = {56,94,8.1,4.8,750,26,41,36},
+	experimentalMax = {89,153,5.9,11.3,750,13,29,23},
+	qualityRangeMin = 0,
+	qualityRangeMax = 8,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("rifle_dlt20a", rifle_dlt20a)

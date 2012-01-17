@@ -5,7 +5,14 @@ ko_do_fruit = {
 	maximumLevel = -1,
 	customObjectName = "Ko-Do Fruit",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s4.iff",
-	draftSchematic = ""
+	draftSchematic = "",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("ko_do_fruit", ko_do_fruit)

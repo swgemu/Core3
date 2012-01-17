@@ -5,7 +5,14 @@ carbine_cdef = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/carbine_blaster_cdef.iff"
+	draftSchematic = "object/draft_schematic/weapon/carbine_blaster_cdef.iff",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("carbine_cdef", carbine_cdef)

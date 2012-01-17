@@ -5,7 +5,14 @@ pistol_power5 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/pistol_blaster_power5.iff"
+	draftSchematic = "object/draft_schematic/weapon/pistol_blaster_power5.iff",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("pistol_power5", pistol_power5)

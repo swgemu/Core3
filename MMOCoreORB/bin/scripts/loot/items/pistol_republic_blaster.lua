@@ -5,7 +5,14 @@ pistol_republic_blaster = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/pistol_republic_blaster.iff"
+	draftSchematic = "object/draft_schematic/weapon/pistol_republic_blaster.iff",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("pistol_republic_blaster", pistol_republic_blaster)

@@ -5,7 +5,14 @@ sijjo_sewi = {
 	maximumLevel = -1,
 	customObjectName = "Sijjo Sewi",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s5.iff",
-	draftSchematic = ""
+	draftSchematic = "",
+	experimentalSubGroupTitles = {},
+	experimentalMin = {},
+	experimentalMax = {},
+	qualityRangeMin = 0,
+	qualityRangeMax = 0,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("sijjo_sewi", sijjo_sewi)

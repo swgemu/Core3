@@ -5,7 +5,14 @@ rifle_spraystick = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/rifle_spraystick.iff"
+	draftSchematic = "object/draft_schematic/weapon/rifle_spraystick.iff",
+	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
+	experimentalMin = {6,73,3.6,9,750,18,52,52},
+	experimentalMax = {12,138,2.4,19,750,7,28,28},
+	qualityRangeMin = 0,
+	qualityRangeMax = 8,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("rifle_spraystick", rifle_spraystick)

@@ -5,7 +5,14 @@ rifle_laser = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	draftSchematic = "object/draft_schematic/weapon/rifle_laser.iff"
+	draftSchematic = "object/draft_schematic/weapon/rifle_laser.iff",
+	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
+	experimentalMin = {4,186,9.4,4.8,750,21,32,77},
+	experimentalMax = {15,356,6.7,12.3,750,12,19,42},
+	qualityRangeMin = 0,
+	qualityRangeMax = 8,
+	customizationStringNames = {},
+	customizationValues = {}
 }
 
 addLootItemTemplate("rifle_laser", rifle_laser)
