@@ -1,5 +1,5 @@
 crazed_geonosian_guard = Creature:new {
-	objectName = "@mob/creature_names:crazed_Geonosian_guard",
+	objectName = "@mob/creature_names:crazed_geonosian_guard",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -25,9 +25,13 @@ crazed_geonosian_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 6500000,
 
-	templates = {"object/mobile/dressed_geonosian_warrior_03.iff"},
-	lootgroups = {},
+	templates = {"object/mobile/dressed_geonosian_warrior_01.iff","object/mobile/dressed_geonosian_warrior_02.iff","object/mobile/dressed_geonosian_warrior_03.iff"},
+	lootgroups = {
+		{group = "geonosian_common", chance = 6000000},
+		{group = "geonosian_relic", chance = 4000000}
+	},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
 	attacks = {

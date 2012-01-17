@@ -25,9 +25,12 @@ enhanced_kwi = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 3000000,
 
 	templates = {"object/mobile/kwi.iff"},
-	lootgroups = {},
+	lootgroups = {
+		{group = "enhanced_kwi", chance = 10000000}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
