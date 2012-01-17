@@ -198,7 +198,9 @@ public:
 
 	void setStartPlanet(const String& planet);
 
-	void setRewardFactionPoints(int points);
+	void setRewardFactionPointsRebel(int points);
+
+	void setRewardFactionPointsImperial(int points);
 
 	void setEndPlanetCRC(unsigned int crc);
 
@@ -216,7 +218,9 @@ public:
 
 	int getFaction();
 
-	int getRewardFactionPoints();
+	int getRewardFactionPointsRebel();
+
+	int getRewardFactionPointsImperial();
 
 	float getStartPositionX();
 
@@ -312,7 +316,9 @@ protected:
 
 	int rewardCredits;
 
-	int rewardFactionPoints;
+	int rewardFactionPointsRebel;
+
+	int rewardFactionPointsImperial;
 
 	int missionNumber;
 
@@ -429,7 +435,9 @@ public:
 
 	void setStartPlanet(const String& planet);
 
-	void setRewardFactionPoints(int points);
+	void setRewardFactionPointsRebel(int points);
+
+	void setRewardFactionPointsImperial(int points);
 
 	void setEndPlanetCRC(unsigned int crc);
 
@@ -447,7 +455,9 @@ public:
 
 	int getFaction();
 
-	int getRewardFactionPoints();
+	int getRewardFactionPointsRebel();
+
+	int getRewardFactionPointsImperial();
 
 	float getStartPositionX();
 
@@ -582,7 +592,9 @@ public:
 
 	void setStartPlanet(const String& planet);
 
-	void setRewardFactionPoints(int points);
+	void setRewardFactionPointsRebel(int points);
+
+	void setRewardFactionPointsImperial(int points);
 
 	void setEndPlanetCRC(unsigned int crc);
 
@@ -600,7 +612,9 @@ public:
 
 	int getFaction();
 
-	int getRewardFactionPoints();
+	int getRewardFactionPointsRebel();
+
+	int getRewardFactionPointsImperial();
 
 	float getStartPositionX();
 

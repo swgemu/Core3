@@ -8,7 +8,6 @@
 #include "BountyMissionObjective.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/object/ObjectManager.h"

@@ -27,7 +27,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
-#include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 #include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/cell/CellObject.h"

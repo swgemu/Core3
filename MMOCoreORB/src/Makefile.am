@@ -110,7 +110,6 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/tangible/loot/LootkitObject.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/vendor/VendorCreature.cpp \
-				server/zone/objects/creature/informant/InformantCreature.cpp \
 				server/zone/objects/creature/junkdealer/JunkdealerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
 				server/zone/objects/creature/NonPlayerCreatureObject.cpp \
@@ -434,7 +433,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/vendor/VendorCreatureImplementation.cpp \
-		server/zone/objects/creature/informant/InformantCreatureImplementation.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
