@@ -265,6 +265,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	msg4->updateSpeedMultiplierMod();
 	msg4->updateRunSpeed();
 	msg4->updateTerrainNegotiation();
+	msg4->close();
 	creature->sendMessage(msg4);
 
 	return true;
