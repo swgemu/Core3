@@ -56,11 +56,3 @@ void NonPlayerCreatureObjectImplementation::doAwarenessCheck(Coordinate& start, 
 	activateRecovery();
 	activateMovementEvent();
 }
-
-void NonPlayerCreatureObjectImplementation::sendChatBubbleToPlayer(CreatureObject* player, const String& whatToSay) {
-	player->sendMessage(new StartNpcConversation(player, getObjectID(), ""));
-	ConversationScreen screen;
-	screen.setDialogText(whatToSay);
-	screen.sendTo(player, _this);
-	player->sendMessage(new StopNpcConversation(player, getObjectID()));
-}

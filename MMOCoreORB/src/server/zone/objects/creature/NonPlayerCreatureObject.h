@@ -60,8 +60,6 @@ public:
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
-	void sendChatBubbleToPlayer(CreatureObject* player, const String& whatToSay);
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -98,8 +96,6 @@ public:
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
-
-	void sendChatBubbleToPlayer(CreatureObject* player, const String& whatToSay);
 
 	WeakReference<NonPlayerCreatureObject*> _this;
 
@@ -146,10 +142,6 @@ public:
 
 	bool isNonPlayerCreatureObject();
 
-	void sendChatBubbleToPlayer(CreatureObject* player, const String& whatToSay);
-
-protected:
-	String _param1_sendChatBubbleToPlayer__CreatureObject_String_;
 };
 
 class NonPlayerCreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<NonPlayerCreatureObjectHelper> {

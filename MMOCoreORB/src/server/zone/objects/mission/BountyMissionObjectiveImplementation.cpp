@@ -14,10 +14,11 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/packets/object/NpcConversationMessage.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
+#include "server/chat/ChatManager.h"
 
 void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 	npcTemplateToSpawn = sp;
@@ -79,7 +80,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		npcTarget = cast<NonPlayerCreatureObject*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getPositionX(), zone->getHeight(mission->getPositionX(), mission->getPositionY()), mission->getPositionY(), 0));
+		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getPositionX(), zone->getHeight(mission->getPositionX(), mission->getPositionY()), mission->getPositionY(), 0));
 
 		ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
@@ -134,7 +135,7 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		if (attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
 				attacker->isPlayerCreature() && objectiveStatus == HASBIOSIGNATURESTATUS) {
 			updateMissionStatus(mission->getDifficultyLevel());
-			npcTarget->sendChatBubbleToPlayer(attacker, "@mission/mission_bounty_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "v");
+			attacker->getZoneServer()->getChatManager()->broadcastMessage(npcTarget, "@mission/mission_bounty_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "v", 0, 0, 0);
 			return 1;
 		}
 	}

@@ -55,6 +55,20 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class AiAgent;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -64,8 +78,6 @@ class SharedObjectTemplate;
 } // namespace server
 
 using namespace server::zone::templates;
-
-#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 
 #include "server/zone/templates/TemplateReference.h"
 
@@ -138,7 +150,7 @@ class BountyMissionObjectiveImplementation : public MissionObjectiveImplementati
 protected:
 	TemplateReference<SharedObjectTemplate*> npcTemplateToSpawn;
 
-	ManagedReference<NonPlayerCreatureObject* > npcTarget;
+	ManagedReference<AiAgent* > npcTarget;
 
 	int objectiveStatus;
 

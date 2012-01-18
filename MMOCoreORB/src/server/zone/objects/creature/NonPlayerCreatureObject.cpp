@@ -12,7 +12,7 @@
  *	NonPlayerCreatureObjectStub
  */
 
-enum {RPC_ISNONPLAYERCREATUREOBJECT__ = 6,RPC_SENDCHATBUBBLETOPLAYER__CREATUREOBJECT_STRING_};
+enum {RPC_ISNONPLAYERCREATUREOBJECT__ = 6,};
 
 NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorParameter::instance()) {
 	NonPlayerCreatureObjectImplementation* _implementation = new NonPlayerCreatureObjectImplementation();
@@ -57,21 +57,6 @@ void NonPlayerCreatureObject::doAwarenessCheck(Coordinate& start, unsigned long 
 
 	} else
 		_implementation->doAwarenessCheck(start, time, target);
-}
-
-void NonPlayerCreatureObject::sendChatBubbleToPlayer(CreatureObject* player, const String& whatToSay) {
-	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDCHATBUBBLETOPLAYER__CREATUREOBJECT_STRING_);
-		method.addObjectParameter(player);
-		method.addAsciiParameter(whatToSay);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendChatBubbleToPlayer(player, whatToSay);
 }
 
 DistributedObjectServant* NonPlayerCreatureObject::_getImplementation() {
@@ -227,9 +212,6 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_ISNONPLAYERCREATUREOBJECT__:
 		resp->insertBoolean(isNonPlayerCreatureObject());
 		break;
-	case RPC_SENDCHATBUBBLETOPLAYER__CREATUREOBJECT_STRING_:
-		sendChatBubbleToPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendChatBubbleToPlayer__CreatureObject_String_));
-		break;
 	default:
 		return NULL;
 	}
@@ -239,10 +221,6 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 
 bool NonPlayerCreatureObjectAdapter::isNonPlayerCreatureObject() {
 	return (static_cast<NonPlayerCreatureObject*>(stub))->isNonPlayerCreatureObject();
-}
-
-void NonPlayerCreatureObjectAdapter::sendChatBubbleToPlayer(CreatureObject* player, const String& whatToSay) {
-	(static_cast<NonPlayerCreatureObject*>(stub))->sendChatBubbleToPlayer(player, whatToSay);
 }
 
 /*
