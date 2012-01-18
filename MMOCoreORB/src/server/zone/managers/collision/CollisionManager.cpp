@@ -192,44 +192,48 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 	zone->rlock();
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		AABBTree* aabbTree = NULL;
+	try {
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
-
-		try {
-			aabbTree = getAABBTree(scno, 255);
-
-			if (aabbTree == NULL)
-				continue;
-
-		} catch (Exception& e) {
-			aabbTree = NULL;
-		} catch (...) {
-			zone->runlock();
-
-			throw;
-		}
-
-		if (aabbTree != NULL) {
-			//moving ray to model space
-			zone->runlock();
+			SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
 
 			try {
-				Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
+				aabbTree = getAABBTree(scno, 255);
 
-				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+				if (aabbTree == NULL)
+					continue;
 
-				if (aabbTree->intersects(ray, dist, intersectionDistance, triangle, true)) {
-					return false;
-				}
+			} catch (Exception& e) {
+				aabbTree = NULL;
 			} catch (...) {
+				zone->runlock();
+
 				throw;
 			}
 
-			zone->rlock();
+			if (aabbTree != NULL) {
+				//moving ray to model space
+				zone->runlock();
 
+				try {
+					Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
+
+					//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+
+					if (aabbTree->intersects(ray, dist, intersectionDistance, triangle, true)) {
+						return false;
+					}
+				} catch (...) {
+					throw;
+				}
+
+				zone->rlock();
+
+			}
 		}
+	} catch (Exception& e) {
+		error(e.getMessage());
 	}
 
 	zone->runlock();
