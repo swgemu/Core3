@@ -922,7 +922,12 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(target->getPositionX(), target->getPositionY(), player->getZone()->getZoneName());
 
-	mission->setMissionTargetName("Theater");
+	if (missionType == MissionObject::DANCER) {
+		mission->setMissionTargetName("@ui_mission:dancer_tab");
+	} else {
+		mission->setMissionTargetName("@ui_mission:musician_tab");
+	}
+
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/building/general/mun_all_guild_theater_s01.iff").hashCode()));
 
 	int distanceReward = player->getWorldPosition().distanceTo(target->getPosition()) / 10;
