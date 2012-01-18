@@ -25,9 +25,14 @@ rancor_youth = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	lootChance = 2700000,
 
 	templates = {"object/mobile/rancor_youth.iff"},
-	lootgroups = {},
+	lootgroups = {
+		{group = "rancor_common", chance = 3300000},
+		{group = "pistols", chance = 3300000},
+		{group = "rifles", chance = 3400000}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

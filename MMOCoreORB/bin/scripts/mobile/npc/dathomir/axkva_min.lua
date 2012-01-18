@@ -25,9 +25,16 @@ axkva_min = Creature:new {
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 8000000,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_axkva.iff"},
-	lootgroups = {},
+	lootgroups = {
+		{group = "axkva_min", chance = 500000},
+		{group = "nightsister_crystals_4", chance = 1400000},
+		{group = "nightsister_common", chance = 5500000},
+		{group = "pistols", chance = 1000000},
+		{group = "rifles", chance = 1600000}
+	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {

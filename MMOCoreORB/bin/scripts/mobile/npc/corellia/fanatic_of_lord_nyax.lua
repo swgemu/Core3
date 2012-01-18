@@ -25,9 +25,14 @@ fanatic_of_lord_nyax = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 4200000,
 
 	templates = {},
-	lootgroups = {},
+	lootgroups = {
+		{group = "nyax", chance = 2000000},
+		{group = "pistols", chance = 4000000},
+		{group = "rifles", chance = 4000000},
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

@@ -25,9 +25,14 @@ minion_of_lord_nyax = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 3500000,
 
 	templates = {},
-	lootgroups = {},
+	lootgroups = {
+		{group = "nyax", chance = 2000000},
+		{group = "pistols", chance = 4000000},
+		{group = "rifles", chance = 4000000},
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

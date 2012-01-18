@@ -25,9 +25,12 @@ sharnaff = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	lootChance = 2900000,
 
 	templates = {"object/mobile/sharnaff.iff"},
-	lootgroups = {},
+	lootgroups = {
+		{group = "sharnaff", chance = 10000000}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

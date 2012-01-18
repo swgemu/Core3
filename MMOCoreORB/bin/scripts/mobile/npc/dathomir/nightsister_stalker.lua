@@ -25,9 +25,15 @@ nightsister_stalker = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 5500000,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_stalker.iff"},
-	lootgroups = {},
+	lootgroups = {
+		{group = "nightsister_crystals_2", chance = 1000000},
+		{group = "nightsister_common", chance = 7500000},
+		{group = "pistols", chance = 750000},
+		{group = "rifles", chance = 750000}
+	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {
