@@ -1698,6 +1698,11 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					}
 				}
 			},
+			"Droids",
+			{
+				"Arakyd Probe Droid", "object/tangible/mission/mission_bounty_droid_probot.iff",
+				"Seeker Droid", "object/tangible/mission/mission_bounty_droid_seeker.iff"
+			},
 			"Fireworks",
 			{
 				"Firework 1", "object/tangible/firework/firework_s01.iff",
