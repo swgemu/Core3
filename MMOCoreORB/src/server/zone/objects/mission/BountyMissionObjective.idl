@@ -50,7 +50,7 @@ import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.creature.AiAgent;
+include server.zone.objects.creature.NonPlayerCreatureObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 
@@ -58,7 +58,7 @@ class BountyMissionObjective extends MissionObjective {
 	@dereferenced
 	protected TemplateReference<SharedObjectTemplate> npcTemplateToSpawn;
 	
-	protected AiAgent npcTarget;
+	protected NonPlayerCreatureObject npcTarget;
 	
 	protected int objectiveStatus;
 	

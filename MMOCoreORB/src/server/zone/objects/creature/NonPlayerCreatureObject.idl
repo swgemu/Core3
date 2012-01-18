@@ -67,4 +67,6 @@ class NonPlayerCreatureObject extends AiAgent {
 	
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
+	
+	public native void sendChatBubbleToPlayer(CreatureObject player, final string whatToSay);
 }

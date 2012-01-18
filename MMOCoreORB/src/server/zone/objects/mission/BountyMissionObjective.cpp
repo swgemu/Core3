@@ -261,7 +261,7 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 	}
 
 	if (_name == "npcTarget") {
-		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&npcTarget, stream);
+		TypeInfo<ManagedReference<NonPlayerCreatureObject* > >::parseFromBinaryStream(&npcTarget, stream);
 		return true;
 	}
 
@@ -297,7 +297,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&npcTarget, stream);
+	TypeInfo<ManagedReference<NonPlayerCreatureObject* > >::toBinaryStream(&npcTarget, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

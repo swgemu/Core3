@@ -65,7 +65,7 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 
 #include "server/zone/templates/TemplateReference.h"
 
@@ -138,7 +138,7 @@ class BountyMissionObjectiveImplementation : public MissionObjectiveImplementati
 protected:
 	TemplateReference<SharedObjectTemplate*> npcTemplateToSpawn;
 
-	ManagedReference<AiAgent* > npcTarget;
+	ManagedReference<NonPlayerCreatureObject* > npcTarget;
 
 	int objectiveStatus;
 

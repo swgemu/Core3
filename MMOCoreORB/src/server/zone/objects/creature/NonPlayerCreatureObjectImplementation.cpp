@@ -6,6 +6,9 @@
  */
 
 #include "NonPlayerCreatureObject.h"
+#include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/zone/packets/object/StopNpcConversation.h"
+#include "server/zone/templates/mobile/ConversationScreen.h"
 
 void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	AiAgentImplementation::notifyPositionUpdate(entry);
@@ -52,4 +55,12 @@ void NonPlayerCreatureObjectImplementation::doAwarenessCheck(Coordinate& start, 
 
 	activateRecovery();
 	activateMovementEvent();
+}
+
+void NonPlayerCreatureObjectImplementation::sendChatBubbleToPlayer(CreatureObject* player, const String& whatToSay) {
+	player->sendMessage(new StartNpcConversation(player, getObjectID(), ""));
+	ConversationScreen screen;
+	screen.setDialogText(whatToSay);
+	screen.sendTo(player, _this);
+	player->sendMessage(new StopNpcConversation(player, getObjectID()));
 }
