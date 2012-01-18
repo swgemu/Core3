@@ -41,6 +41,9 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!player->isPlayerCreature())
 		return 0;
 
+	if (player->getZone() == NULL)
+		return 0;
+
 	if (selectedID == 20) {
 
 		/// Get Camp Kit Template
