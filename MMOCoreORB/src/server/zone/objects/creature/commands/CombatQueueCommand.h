@@ -149,6 +149,8 @@ public:
 
 		} catch (Exception& e) {
 			error("unreported exception caught in CombatQueueCommand::doCombatAction");
+			error(e.getMessage());
+			e.printStackTrace();
 		}
 
 		// only clear aiming states if command was successful

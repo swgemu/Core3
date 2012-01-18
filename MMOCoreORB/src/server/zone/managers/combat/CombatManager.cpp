@@ -1365,8 +1365,16 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 			zone->runlock();
 
-			if (CollisionManager::checkLineOfSight(object, attacker)) {
-				damage += doTargetCombatAction(attacker, tano, data);
+			try {
+				if (CollisionManager::checkLineOfSight(object, attacker)) {
+					damage += doTargetCombatAction(attacker, tano, data);
+				}
+			} catch (Exception& e) {
+				error(e.getMessage());
+			} catch (...) {
+				zone->rlock();
+
+				throw;
 			}
 
 			zone->rlock();
