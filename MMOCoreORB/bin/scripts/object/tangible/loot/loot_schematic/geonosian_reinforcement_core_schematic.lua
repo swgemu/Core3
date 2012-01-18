@@ -45,7 +45,7 @@ object_tangible_loot_loot_schematic_geonosian_reinforcement_core_schematic = obj
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = "LootSchematicMenuComponent",
 	targetDraftSchematic = "object/draft_schematic/weapon/component/reinforcement_core_geo.iff",
-	targetUseCount = 1
+	targetUseCount = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_geonosian_reinforcement_core_schematic, "object/tangible/loot/loot_schematic/geonosian_reinforcement_core_schematic.iff")

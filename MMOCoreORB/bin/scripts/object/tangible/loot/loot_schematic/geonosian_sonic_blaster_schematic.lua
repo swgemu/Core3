@@ -45,7 +45,7 @@ object_tangible_loot_loot_schematic_geonosian_sonic_blaster_schematic = object_t
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = "LootSchematicMenuComponent",
 	targetDraftSchematic = "object/draft_schematic/weapon/pistol_geo_sonic_blaster.iff",
-	targetUseCount = 1
+	targetUseCount = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_geonosian_sonic_blaster_schematic, "object/tangible/loot/loot_schematic/geonosian_sonic_blaster_schematic.iff")

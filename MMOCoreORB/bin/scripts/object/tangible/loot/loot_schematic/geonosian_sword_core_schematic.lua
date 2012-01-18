@@ -45,7 +45,7 @@ object_tangible_loot_loot_schematic_geonosian_sword_core_schematic = object_tang
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = "LootSchematicMenuComponent",
 	targetDraftSchematic = "object/draft_schematic/weapon/component/sword_core_geo.iff",
-	targetUseCount = 1
+	targetUseCount = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_geonosian_sword_core_schematic, "object/tangible/loot/loot_schematic/geonosian_sword_core_schematic.iff")
