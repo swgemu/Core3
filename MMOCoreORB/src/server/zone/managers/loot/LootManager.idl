@@ -66,6 +66,9 @@ class LootManager extends ManagedService implements Logger {
 	
 	private transient LootGroupMap lootGroupMap;
 	
+	@dereferenced
+	private transient SortedVector<string> lootableMods; 
+	
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		
 		craftingManager = craftman;
@@ -73,6 +76,8 @@ class LootManager extends ManagedService implements Logger {
 		zoneServer = server;
 		
 		lootGroupMap = null;
+		
+		lootableMods.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("LootManager");
 		
@@ -86,6 +91,10 @@ class LootManager extends ManagedService implements Logger {
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
 	
+	public string getRandomLootableMod() {
+		return lootableMods.get(System.random(lootableMods.size() - 1));
+	}
+	
 	@local
 	private native void setInitialObjectStats(LootItemTemplate templateObject, CraftingValues craftingValues, TangibleObject prototype);
 	
@@ -93,7 +102,7 @@ class LootManager extends ManagedService implements Logger {
 	private native void setCustomObjectName(TangibleObject object, LootItemTemplate templateObject);
 	
 	@local
-	public native SceneObject createLootObject(LootItemTemplate templateObject);
+	public native SceneObject createLootObject(LootItemTemplate templateObject, int level);
 	
 	public native int calculateLootCredits(int level);
 

@@ -4,6 +4,8 @@
 
 #include "Attachment.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -22,7 +24,7 @@
  *	AttachmentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEMEMBERS__,RPC_SETSKILLMODCOUNT__INT_,RPC_GETSKILLMODCOUNT__,RPC_GETSKILLMODNAME__INT_,RPC_GETSKILLMODVALUE__INT_,RPC_GETSKILLMODVALUE__STRING_,RPC_PARSESKILLMODATTRIBUTESTRING__STRING_,RPC_ADDSKILLMOD__STRING_INT_,RPC_REMOVEATTACHMENT__CREATUREOBJECT_,RPC_GENERATESKILLMODS__,RPC_GETRANDOMMODVALUE__INT_INT_,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_INITIALIZEMEMBERS__,RPC_SETSKILLMODCOUNT__INT_,RPC_GETSKILLMODCOUNT__,RPC_GETSKILLMODNAME__INT_,RPC_GETSKILLMODVALUE__INT_,RPC_GETSKILLMODVALUE__STRING_,RPC_PARSESKILLMODATTRIBUTESTRING__STRING_,RPC_ADDSKILLMOD__STRING_INT_,RPC_REMOVEATTACHMENT__CREATUREOBJECT_,RPC_GENERATESKILLMODS__,RPC_GETRANDOMMODVALUE__INT_INT_,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__};
 
 Attachment::Attachment() : TangibleObject(DummyConstructorParameter::instance()) {
 	AttachmentImplementation* _implementation = new AttachmentImplementation();
@@ -49,6 +51,20 @@ void Attachment::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initializeTransientMembers();
+}
+
+void Attachment::updateCraftingValues(ManufactureSchematic* schematic) {
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
+		method.addObjectParameter(schematic);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateCraftingValues(schematic);
 }
 
 void Attachment::initializeMembers() {
@@ -488,6 +504,9 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
+		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
+		break;
 	case RPC_INITIALIZEMEMBERS__:
 		initializeMembers();
 		break;
@@ -539,6 +558,10 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void AttachmentAdapter::initializeTransientMembers() {
 	(static_cast<Attachment*>(stub))->initializeTransientMembers();
+}
+
+void AttachmentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
+	(static_cast<Attachment*>(stub))->updateCraftingValues(schematic);
 }
 
 void AttachmentAdapter::initializeMembers() {

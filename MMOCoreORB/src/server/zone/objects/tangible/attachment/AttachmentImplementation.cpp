@@ -10,12 +10,32 @@
 #include "server/zone/objects/tangible/wearables/WearableSkillMods.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/managers/loot/LootManager.h"
 
 void AttachmentImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("AttachmentObject");
 
+}
+
+void AttachmentImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	TangibleObjectImplementation::updateCraftingValues(schematic);
+
+	int level = schematic->getCraftingValues()->getMaxValue("creatureLevel");
+
+	//TODO: Implement multiple mods.
+
+	//Mods can't be lower than -1 or greater than 25
+	int max = MAX(-1, MIN(25, round(0.1f * level + 3)));
+	int min = MAX(-1, MIN(25, round(0.075f * level - 1)));
+
+	int mod = System::random(max - min) + min;
+
+	String modName = server->getZoneServer()->getLootManager()->getRandomLootableMod();
+
+	skillModMap.put(modName, mod);
 }
 
 void AttachmentImplementation::initializeMembers() {

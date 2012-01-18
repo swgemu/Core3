@@ -128,7 +128,9 @@ public:
 
 	void initialize();
 
-	SceneObject* createLootObject(LootItemTemplate* templateObject);
+	String getRandomLootableMod();
+
+	SceneObject* createLootObject(LootItemTemplate* templateObject, int level);
 
 	int calculateLootCredits(int level);
 
@@ -144,6 +146,8 @@ protected:
 	LootManager(DummyConstructorParameter* param);
 
 	virtual ~LootManager();
+
+	String _return_getRandomLootableMod;
 
 	friend class LootManagerHelper;
 };
@@ -171,6 +175,8 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	Reference<LootGroupMap* > lootGroupMap;
 
+	SortedVector<String> lootableMods;
+
 public:
 	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server);
 
@@ -185,12 +191,16 @@ private:
 
 	void loadDefaultConfig();
 
+public:
+	String getRandomLootableMod();
+
+private:
 	void setInitialObjectStats(LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype);
 
 	void setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject);
 
 public:
-	SceneObject* createLootObject(LootItemTemplate* templateObject);
+	SceneObject* createLootObject(LootItemTemplate* templateObject, int level);
 
 	int calculateLootCredits(int level);
 
@@ -242,6 +252,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initialize();
+
+	String getRandomLootableMod();
 
 	int calculateLootCredits(int level);
 

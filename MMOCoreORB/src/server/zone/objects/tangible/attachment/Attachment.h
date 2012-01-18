@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace object {
 
@@ -129,6 +143,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	void initializeMembers();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -208,6 +224,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	void initializeMembers();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -284,6 +302,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void initializeMembers();
 

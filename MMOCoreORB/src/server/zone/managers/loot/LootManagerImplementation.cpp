@@ -48,6 +48,18 @@ bool LootManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
 
+	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
+
+	if (!lootableModsTable.isValidTable())
+		return false;
+
+	for (int i = 1; i <= lootableModsTable.getTableSize(); ++i) {
+		String mod = lootableModsTable.getStringAt(i);
+		lootableMods.put(mod);
+	}
+
+	info("Loaded " + String::valueOf(lootableMods.size()) + " lootable stat mods.", true);
+
 	return true;
 }
 
@@ -118,7 +130,7 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 	return credits;
 }
 
-SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject) {
+SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level) {
 	String directTemplateObject = templateObject->getDirectObjectTemplate();
 
 	if (!directTemplateObject.isEmpty()) {
@@ -145,6 +157,7 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 	prototype->createChildObjects();
 
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+	craftingValues->addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
 
 	prototype->setInitialCraftingValues(manufactureSchematic);
 	prototype->updateCraftingValues(manufactureSchematic);
@@ -267,7 +280,7 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 					//continue;
 			//}
 
-			SceneObject* obj = createLootObject(itemTemplate);
+			SceneObject* obj = createLootObject(itemTemplate, level);
 
 			if (obj != NULL) {
 				if (container->transferObject(obj, -1, false))
