@@ -130,6 +130,8 @@ public:
 
 	SceneObject* createLootObject(LootItemTemplate* templateObject);
 
+	int calculateLootCredits(int level);
+
 	void createLoot(SceneObject* container, AiAgent* creature);
 
 	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
@@ -190,6 +192,8 @@ private:
 public:
 	SceneObject* createLootObject(LootItemTemplate* templateObject);
 
+	int calculateLootCredits(int level);
+
 	void createLoot(SceneObject* container, AiAgent* creature);
 
 	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
@@ -238,6 +242,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initialize();
+
+	int calculateLootCredits(int level);
 
 	void createLoot(SceneObject* container, AiAgent* creature);
 

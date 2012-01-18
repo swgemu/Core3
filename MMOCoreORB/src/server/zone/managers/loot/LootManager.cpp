@@ -22,7 +22,7 @@
  *	LootManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_CREATELOOT__SCENEOBJECT_AIAGENT_,RPC_CREATELOOT__SCENEOBJECT_STRING_INT_};
+enum {RPC_INITIALIZE__ = 6,RPC_CALCULATELOOTCREDITS__INT_,RPC_CREATELOOT__SCENEOBJECT_AIAGENT_,RPC_CREATELOOT__SCENEOBJECT_STRING_INT_};
 
 LootManager::LootManager(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman, objMan, server);
@@ -58,6 +58,20 @@ SceneObject* LootManager::createLootObject(LootItemTemplate* templateObject) {
 
 	} else
 		return _implementation->createLootObject(templateObject);
+}
+
+int LootManager::calculateLootCredits(int level) {
+	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCULATELOOTCREDITS__INT_);
+		method.addSignedIntParameter(level);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->calculateLootCredits(level);
 }
 
 void LootManager::createLoot(SceneObject* container, AiAgent* creature) {
@@ -247,6 +261,9 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_INITIALIZE__:
 		initialize();
 		break;
+	case RPC_CALCULATELOOTCREDITS__INT_:
+		resp->insertSignedInt(calculateLootCredits(inv->getSignedIntParameter()));
+		break;
 	case RPC_CREATELOOT__SCENEOBJECT_AIAGENT_:
 		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter()));
 		break;
@@ -262,6 +279,10 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 void LootManagerAdapter::initialize() {
 	(static_cast<LootManager*>(stub))->initialize();
+}
+
+int LootManagerAdapter::calculateLootCredits(int level) {
+	return (static_cast<LootManager*>(stub))->calculateLootCredits(level);
 }
 
 void LootManagerAdapter::createLoot(SceneObject* container, AiAgent* creature) {

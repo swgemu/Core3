@@ -1334,7 +1334,7 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 
 				if (maxXp > 0) {
 					//StringIdChatParameter message("error_message","prose_at_xp_limit");
-					StringIdChatParameter message("error_message", "prose_hit_xp_limit"); //You have achieved your current limit for %TO experience.
+					StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
 					//message.setDI(maxXp);
 					message.setTO("exp_n", xpType);
 					player->sendSystemMessage(message);
@@ -1837,7 +1837,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 			//params->addTT(entid);
 			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
 		} else {
-			player->sendSystemMessage("performance", "music_listen_stop_self"); //"You stop watching."
+			player->sendSystemMessage("@performance:music_listen_stop_self"); //"You stop watching."
 		}
 	}
 
@@ -1924,7 +1924,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 			//params->addTT(entid);
 			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
 		} else {
-			player->sendSystemMessage("performance", "dance_watch_stop_self"); //"You stop watching."
+			player->sendSystemMessage("@performance:dance_watch_stop_self"); //"You stop watching."
 		}
 	}
 
@@ -2379,10 +2379,24 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 }
 
 void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
+
 	Locker locker(ai, player);
 
 	if (!ai->isDead())
 		return;
+
+	int cashCredits = ai->getCashCredits();
+
+	if (cashCredits > 0) {
+		player->addCashCredits(cashCredits, true);
+		ai->setCashCredits(0);
+
+		StringIdChatParameter param("base_player", "prose_coin_loot"); //You loot %DI credits from %TT.
+		param.setDI(cashCredits);
+		param.setTT(ai);
+
+		player->sendSystemMessage(param);
+	}
 
 	SceneObject* creatureInventory = ai->getSlottedObject("inventory");
 
@@ -2394,16 +2408,23 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
 	if (playerInventory == NULL)
 		return;
 
+	int totalItems = creatureInventory->getContainerObjectsSize();
+
+	if (totalItems < 1)
+		return;
+
 	StringBuffer args;
 	args << playerInventory->getObjectID() << " -1 0 0 0";
 
 	String stringArgs = args.toString();
 
-	for (int i = 0; i < creatureInventory->getContainerObjectsSize(); ++i) {
+	for (int i = 0; i < totalItems; ++i) {
 		SceneObject* object = creatureInventory->getContainerObject(i);
 
 		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), object->getObjectID(), stringArgs);
 	}
+
+	player->sendSystemMessage("@base_player:corpse_looted"); //You have completely looted the corpse of all items.
 
 }
 

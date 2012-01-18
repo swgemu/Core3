@@ -109,6 +109,15 @@ void LootManagerImplementation::setCustomObjectName(TangibleObject* object, Loot
 
 }
 
+int LootManagerImplementation::calculateLootCredits(int level) {
+	int maxcredits = (int) round((.03f * level * level) + (3 * level) + 50);
+	int mincredits = (int) round((((float) maxcredits) * .5f) + (2.0f * level));
+
+	int credits = mincredits + System::random(maxcredits - mincredits);
+
+	return credits;
+}
+
 SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject) {
 	String directTemplateObject = templateObject->getDirectObjectTemplate();
 
@@ -206,8 +215,6 @@ void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 		LootGroupEntry entry = lootGroups->get(i);
 
 		tempChance += entry.getWeight();
-
-		warning("Loot group is " + entry.getItemTemplate());
 
 		//Is this entry lower than the roll? If yes, then we want to try the next entry.
 		if (tempChance < roll)

@@ -25,6 +25,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
@@ -464,6 +465,10 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	setLevel(level);
 
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
+
+	//Generate loot credits on insert?
+	if (isNonPlayerCreatureObject())
+		setCashCredits(zone->getZoneServer()->getLootManager()->calculateLootCredits(level));
 
 	SceneObject* cell = homeLocation.getCell();
 
