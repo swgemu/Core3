@@ -30,9 +30,11 @@ nightsister_elder = Creature:new {
 	templates = {"object/mobile/dressed_dathomir_nightsister_elder.iff"},
 	lootgroups = {
 		{group = "nightsister_crystals_4", chance = 1000000},
-		{group = "nightsister_common", chance = 5500000},
-		{group = "pistols", chance = 1500000},
-		{group = "rifles", chance = 2000000}
+		{group = "nightsister_common", chance = 5900000},
+		{group = "armor_attachments", chance = 550000},
+		{group = "clothing_attachments", chance = 550000},
+		{group = "pistols", chance = 1000000},
+		{group = "rifles", chance = 1000000}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

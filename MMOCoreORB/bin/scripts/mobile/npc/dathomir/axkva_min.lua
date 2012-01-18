@@ -31,9 +31,11 @@ axkva_min = Creature:new {
 	lootgroups = {
 		{group = "axkva_min", chance = 500000},
 		{group = "nightsister_crystals_4", chance = 1400000},
-		{group = "nightsister_common", chance = 5500000},
+		{group = "nightsister_common", chance = 5000000},
 		{group = "pistols", chance = 1000000},
-		{group = "rifles", chance = 1600000}
+		{group = "rifles", chance = 1000000},
+		{group = "armor_attachments", chance = 550000},
+		{group = "clothing_attachments", chance = 550000}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

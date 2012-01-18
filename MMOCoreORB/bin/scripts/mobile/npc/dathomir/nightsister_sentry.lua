@@ -30,7 +30,9 @@ nightsister_sentry = Creature:new {
 	templates = {"object/mobile/dressed_dathomir_nightsister_stalker.iff"},
 	lootgroups = {
 		{group = "nightsister_crystals_1", chance = 1000000},
-		{group = "nightsister_common", chance = 7500000},
+		{group = "nightsister_common", chance = 6500000},
+		{group = "armor_attachments", chance = 550000},
+		{group = "clothing_attachments", chance = 550000},
 		{group = "pistols", chance = 750000},
 		{group = "rifles", chance = 750000}
 	},
