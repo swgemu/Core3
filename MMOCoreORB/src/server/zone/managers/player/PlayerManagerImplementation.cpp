@@ -2424,7 +2424,8 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
 		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), object->getObjectID(), stringArgs);
 	}
 
-	player->sendSystemMessage("@base_player:corpse_looted"); //You have completely looted the corpse of all items.
+	if (creatureInventory->getContainerObjectsSize() <= 0)
+		player->sendSystemMessage("@base_player:corpse_looted"); //You have completely looted the corpse of all items.
 
 }
 

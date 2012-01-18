@@ -362,7 +362,12 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
 		if (creatureInventory != NULL) {
-			zoneServer->getLootManager()->createLoot(creatureInventory, destructedObject);
+			LootManager* lootManager = zoneServer->getLootManager();
+
+			if (destructedObject->isNonPlayerCreatureObject())
+				destructedObject->setCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
+
+			lootManager->createLoot(creatureInventory, destructedObject);
 		}
 
 		CombatManager::instance()->attemptPeace(destructedObject);

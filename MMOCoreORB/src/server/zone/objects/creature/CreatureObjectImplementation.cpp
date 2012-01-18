@@ -130,8 +130,8 @@ void CreatureObjectImplementation::initializeMembers() {
 
 	skillModList.setNullValue(0);
 
-	bankCredits = 1000;
-	cashCredits = 100;
+	bankCredits = 0;
+	cashCredits = 0;
 
 	pvpStatusBitmask = 0;
 

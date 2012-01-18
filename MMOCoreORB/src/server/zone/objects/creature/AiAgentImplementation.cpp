@@ -466,10 +466,6 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
 
-	//Generate loot credits on insert?
-	if (isNonPlayerCreatureObject())
-		setCashCredits(zone->getZoneServer()->getLootManager()->calculateLootCredits(level));
-
 	SceneObject* cell = homeLocation.getCell();
 
 	Locker zoneLocker(zone);
