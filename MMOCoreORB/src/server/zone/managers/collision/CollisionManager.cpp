@@ -233,7 +233,8 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 			}
 		}
 	} catch (Exception& e) {
-		error(e.getMessage());
+		Logger::console.error("unreported exception caught in bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) ");
+		Logger::console.error(e.getMessage());
 	}
 
 	zone->runlock();
