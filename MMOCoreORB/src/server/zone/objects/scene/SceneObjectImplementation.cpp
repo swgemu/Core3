@@ -1242,7 +1242,9 @@ bool SceneObjectImplementation::isInWater() {
 		error("Zone is NULL SceneObjectImplementation::isInWater");
 		return false;
 	}
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	ManagedReference<PlanetManager*> planetManager = getZone()->getPlanetManager();
+
 	if (planetManager == NULL) {
 		error("Unable to get PlanetManager SceneObjectImplementation::isInWater");
 		return false;
