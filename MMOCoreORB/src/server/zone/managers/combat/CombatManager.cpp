@@ -1079,9 +1079,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				targetDefense = 125;
 
 			// now roll to see if it gets applied
-			if (targetDefense > 0 && System::random(100) <= hitChanceEquation(effect.getStateStrength(), 0.0f, targetDefense))
-				data.getCommand()->applyEffect(targetCreature, effectType);
-			else
+			if (System::random(100) > hitChanceEquation(effect.getStateStrength(), 0.0f, targetDefense))
 				failed = true;
 
 			// no reason to apply jedi defenses if primary defense was successful
@@ -1096,12 +1094,13 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 					targetDefense = 125;
 
 				// now roll again to see if it gets applied
-				if (targetDefense > 0 && System::random(100) <= hitChanceEquation(effect.getStateStrength(), 0.0f, targetDefense))
-					data.getCommand()->applyEffect(targetCreature, effectType);
-				else
+				if (System::random(100) > hitChanceEquation(effect.getStateStrength(), 0.0f, targetDefense))
 					failed = true;
 			}
 		}
+
+		if (!failed)
+			data.getCommand()->applyEffect(targetCreature, effectType);
 
 		// can move this to scripts, but only these three states have fail messages
 		if (failed) {
