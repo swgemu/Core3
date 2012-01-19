@@ -57,7 +57,17 @@ ChargeShot2Command = {
 	coneAngle = 30,
 	coneAction = true,
 
-	knockdownStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		40, 
+		100, 
+		0 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

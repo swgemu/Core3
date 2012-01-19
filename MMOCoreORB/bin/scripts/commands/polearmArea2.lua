@@ -49,8 +49,26 @@ PolearmArea2Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	dizzyStateChance = 30,
-	stunStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("lower_posture_2hmelee_6"),
 

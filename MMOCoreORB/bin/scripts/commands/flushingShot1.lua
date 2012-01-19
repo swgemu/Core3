@@ -50,8 +50,26 @@ FlushingShot1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	postureUpStateChance = 20,
-	stunStateChance = 20,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		20, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		POSTUREUP_EFFECT, 
+		{ "postureUpRecovery" }, 
+		{ "posture_change_up_defense" }, 
+		{}, 
+		20, 
+		100, 
+		0 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

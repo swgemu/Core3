@@ -50,9 +50,35 @@ SprayShotCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	stunStateChance = 30,
-	dizzyStateChance = 30,
-	blindStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("fire_7_single_medium"),
 

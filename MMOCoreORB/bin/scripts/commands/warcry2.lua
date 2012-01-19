@@ -50,8 +50,17 @@ Warcry2Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 
-	nextAttackDelayChance = 1,
-	durationStateTime = 30,
+	stateEffects = {
+	  StateEffect( 
+		NEXTATTACKDELAY_EFFECT, 
+		{}, 
+		{ "warcry_defense" }, 
+		{}, 
+		100, 
+		100, 
+		120 
+	  )
+	},
 
 	combatSpam = "warcry",
 	animationCRC = hashCode("warcry"),

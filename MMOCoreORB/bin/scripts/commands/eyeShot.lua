@@ -52,7 +52,17 @@ EyeShotCommand = {
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
-	blindStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("fire_3_special_single_light_face"),
 

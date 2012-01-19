@@ -51,8 +51,26 @@ UnarmedKnockdown2Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
-	knockdownStateChance = 15,
-	dizzyStateChance = 1,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		15, 
+		100, 
+		0 
+	  )
+	},
 
 	animationCRC = hashCode("attack_special_hammerfist_light"),
 

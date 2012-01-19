@@ -43,8 +43,17 @@
 
 IntimidationAttackCommand = {
         name = "intimidationattack",
-	intimidateStateChance = 50,
-	durationStateTime = 10
+	stateEffects = {
+	  StateEffect( 
+		INTIMIDATE_EFFECT, 
+		{}, 
+		{ "intimidate_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		50, 
+		100, 
+		10 
+	  )
+	}
 }
 
 AddCommand(IntimidationAttackCommand)

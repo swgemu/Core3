@@ -42,9 +42,19 @@
 --true = 1, false = 0
 
 CreatureAreaKnockdownCommand = {
-        name = "creatureareaknockdown",
-	knockdownStateChance = 30,
-	durationStateTime = 10,
+	name = "creatureareaknockdown",
+
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		30, 
+		100, 
+		0 
+	  )
+	},
 
 	areaRange = 25,
 	areaAction = true

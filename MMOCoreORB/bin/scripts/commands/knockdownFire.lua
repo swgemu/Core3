@@ -50,8 +50,26 @@ KnockdownFireCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	knockdownStateChance = 30,
-	dizzyStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		30, 
+		100, 
+		0 
+	  )
+	},
 
 	animationCRC = hashCode("fire_1_special_single_medium"),
 

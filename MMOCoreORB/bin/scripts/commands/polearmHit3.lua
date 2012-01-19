@@ -46,8 +46,26 @@ PolearmHit3Command = {
 	damageMultiplier = 4,
 	speedMultiplier = 3,
 
-	stunStateChance = 20,
-	postureDownStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		20, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		30, 
+		100, 
+		0 
+	  )
+	},
 
 	animationCRC = hashCode("combo_5a_medium"),
 

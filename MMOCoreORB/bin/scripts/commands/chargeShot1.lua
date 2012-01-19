@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 ChargeShot1Command = {
-        name = "chargeshot1",
+	name = "chargeshot1",
 
 	damageMultiplier = 2.0,
 	speedMultiplier = 2.3,
@@ -53,8 +53,18 @@ ChargeShot1Command = {
 	animationCRC = hashCode("charge"),
 
 	combatSpam = "chargeshot",
-
-	knockdownStateChance = 40,
+	
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		40, 
+		100, 
+		0 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

@@ -55,7 +55,17 @@ UnarmedHit3Command = {
 
 	combatSpam = "unarmed_dam2",
 
-	blindStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  )
+	},
 
 	range = -1
 }

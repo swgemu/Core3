@@ -50,7 +50,17 @@ FlurryShot1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	dizzyStateChance = 10,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		10, 
+		100, 
+		10 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

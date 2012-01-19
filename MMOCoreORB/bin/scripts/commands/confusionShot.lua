@@ -50,8 +50,26 @@ ConfusionShotCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	stunStateChance = 40,
-	dizzyStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("fire_5_special_single_medium_face"),
 

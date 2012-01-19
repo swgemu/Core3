@@ -46,8 +46,26 @@ Melee2hArea2Command = {
 	damageMultiplier = 3,
 	speedMultiplier = 2.4,
 
-	postureDownStateChance = 15,
-	blindStateChance = 20,
+	stateEffects = {
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		20, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		15, 
+		100, 
+		0 
+	  )
+	},
 
 	areaRange = 7,
 	areaAction = true,

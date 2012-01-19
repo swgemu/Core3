@@ -1,3 +1,17 @@
+-- define an object to carry state data for combat commands
+function StateEffect(t, et, dm, jm, c, s, l) 
+  return {
+	effectType = t,
+	defenderExclusionTimers = et,
+	defenderStateDefenseModifiers = dm,
+	defenderJediStateDefenseModifiers = jm,
+	stateChance = c,
+	stateStrength = s,
+	stateLength = l
+  }
+end
+
+-- run command scripts
 RunSlashCommandsFile("actionShot1.lua")
 RunSlashCommandsFile("actionShot2.lua")
 RunSlashCommandsFile("activateClone.lua")

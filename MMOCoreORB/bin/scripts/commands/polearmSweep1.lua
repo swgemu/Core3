@@ -47,7 +47,17 @@ PolearmSweep1Command = {
 	damageMultiplier = 2,
 	speedMultiplier = 1.5,
 
-	knockdownStateChance = 10,
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		10, 
+		100, 
+		0 
+	  )
+	},
 
 	animationCRC = hashCode("attack_low_right_medium_0"),
 

@@ -49,7 +49,17 @@ Melee1hBlindHit1Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	blindStateChance = 10,
+	stateEffects = {
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		10, 
+		100, 
+		10 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

@@ -9,6 +9,7 @@
 #define CREATUREATTACKDATA_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/creature/commands/effect/StateEffect.h"
 
 class CombatQueueCommand;
 
@@ -25,14 +26,6 @@ protected:
 	float mindCostMultiplier;
 	float forceCostMultiplier;
 
-	int knockdownStateChance;
-	int postureDownStateChance;
-	int postureUpStateChance;
-
-	int dizzyStateChance;
-	int blindStateChance;
-	int stunStateChance;
-	int intimidateStateChance;
 	int nextAttackDelayChance;
 	int durationStateTime;
 
@@ -47,6 +40,8 @@ protected:
     int areaRange;
 
     uint32 animationCRC;
+
+    VectorMap<uint64, StateEffect>* stateEffects;
 
 public:
     CreatureAttackData(const UnicodeString & dataString, CombatQueueCommand *base);
@@ -75,20 +70,12 @@ public:
 		return areaRange;
 	}
 
-	int getBlindStateChance() const {
-		return blindStateChance;
-	}
-
 	int getConeAngle() const {
 		return coneAngle;
 	}
 
 	float getDamageMultiplier() const {
 		return damageMultiplier;
-	}
-
-	int getDizzyStateChance() const {
-		return dizzyStateChance;
 	}
 
 	uint32 getDotDuration() const {
@@ -123,14 +110,6 @@ public:
 		return healthCostMultiplier;
 	}
 
-	int getIntimidateStateChance() const {
-		return intimidateStateChance;
-	}
-
-	int getKnockdownStateChance() const {
-		return knockdownStateChance;
-	}
-
 	float getMindCostMultiplier() const {
 		return mindCostMultiplier;
 	}
@@ -143,14 +122,6 @@ public:
 		return poolsToDamage;
 	}
 
-	int getPostureDownStateChance() const {
-		return postureDownStateChance;
-	}
-
-	int getPostureUpStateChance() const {
-		return postureUpStateChance;
-	}
-
 	int getRange() const {
 		return range;
 	}
@@ -159,8 +130,8 @@ public:
 		return speedMultiplier;
 	}
 
-	int getStunStateChance() const {
-		return stunStateChance;
+	VectorMap<uint64, StateEffect>* getstateEffects() const {
+		return stateEffects;
 	}
 
 	void setAnimationCRC(uint32 animationCRC) {

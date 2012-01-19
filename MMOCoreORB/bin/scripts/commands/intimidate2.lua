@@ -50,9 +50,17 @@ Intimidate2Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 
-	intimidateStateChance = 1,
-
-	durationStateTime = 120,
+	stateEffects = {
+	  StateEffect( 
+		INTIMIDATE_EFFECT, 
+		{}, 
+		{ "intimidate_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		100, 
+		100, 
+		120 
+	  )
+	},
 
 	combatSpam = "intim",
 	animationCRC = hashCode("intimidate"),

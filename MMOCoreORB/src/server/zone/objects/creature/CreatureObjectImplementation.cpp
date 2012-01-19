@@ -581,16 +581,12 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 					Locker locker(thisZone);
 
 					for (int i = 0; i < closeobjects->size(); ++i) {
-						SceneObject* object = cast<SceneObject*> (
-								closeobjects->get(i).get());
+						SceneObject* object = cast<SceneObject*> (closeobjects->get(i).get());
 
 						if (object->getParent() == getParent()) {
-							SitOnObject* soo = new SitOnObject(_this,
-									getPositionX(), getPositionZ(),
-									getPositionY());
+							SitOnObject* soo = new SitOnObject(_this, getPositionX(), getPositionZ(), getPositionY());
 							object->sendMessage(soo);
-							CreatureObjectDeltaMessage3* dcreo3 =
-									new CreatureObjectDeltaMessage3(_this);
+							CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 							dcreo3->updatePosture();
 							dcreo3->updateState();
 							dcreo3->close();
@@ -656,12 +652,11 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			case CreatureState::AIMING:
 				playEffect("clienteffect/combat_special_attacker_aim.cef");
 				break;
-			case CreatureState::COVER: {
+			case CreatureState::COVER:
 				playEffect("clienteffect/combat_special_attacker_cover.cef");
 				showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
 				sendSystemMessage("cbt_spam", "cover_success_single");
-			}
-			break;
+				break;
 			default:
 				break;
 			}
@@ -1823,15 +1818,12 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 
 bool CreatureObjectImplementation::setNextAttackDelay(int del) {
 	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
-		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del
-				* 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
 
-		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery",
-				30000 + (del * 1000));
+		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
 
 		if (isPlayerCreature()) {
-			StringIdChatParameter stringId("combat_effects",
-					"delay_applied_self");
+			StringIdChatParameter stringId("combat_effects", "delay_applied_self");
 			stringId.setDI(del);
 			sendSystemMessage(stringId);
 		}

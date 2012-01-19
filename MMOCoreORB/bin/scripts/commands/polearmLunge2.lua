@@ -53,7 +53,17 @@ PolearmLunge2Command = {
 
 	range = 20,
 
-	knockdownStateChance = 1
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		100, 
+		100, 
+		0 
+	  )
+	}
 
 }
 

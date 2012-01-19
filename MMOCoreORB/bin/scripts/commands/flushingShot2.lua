@@ -52,8 +52,26 @@ FlushingShot2Command = {
 	coneAngle = 60,
 	coneAction = true,
 
-	postureUpStateChance = 20,
-	stunStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		POSTUREUP_EFFECT, 
+		{ "postureUpRecovery" }, 
+		{ "posture_change_up_defense" }, 
+		{}, 
+		20, 
+		100, 
+		0 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

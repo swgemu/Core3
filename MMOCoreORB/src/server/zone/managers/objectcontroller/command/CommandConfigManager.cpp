@@ -45,6 +45,8 @@ which carries forward this exception.
 #include "CommandConfigManager.h"
 
 #include "server/zone/objects/creature/commands/commands.h"
+#include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/CreatureLocomotion.h"
@@ -393,6 +395,17 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("RIFLE_WEAPON", CombatManager::RIFLE);
 	setGlobalInt("GRENADE_WEAPON", CombatManager::GRENADE);
 	setGlobalInt("LIGHTNINGRIFLE_WEAPON", CombatManager::LIGHTNINGRIFLE);
+
+	// effects
+	setGlobalInt("INVALID_EFFECT", CommandEffect::INVALID);
+	setGlobalInt("BLIND_EFFECT", CommandEffect::BLIND);
+	setGlobalInt("DIZZY_EFFECT", CommandEffect::DIZZY);
+	setGlobalInt("INTIMIDATE_EFFECT", CommandEffect::INTIMIDATE);
+	setGlobalInt("STUN_EFFECT", CommandEffect::STUN);
+	setGlobalInt("KNOCKDOWN_EFFECT", CommandEffect::KNOCKDOWN);
+	setGlobalInt("POSTUREUP_EFFECT", CommandEffect::POSTUREUP);
+	setGlobalInt("POSTUREDOWN_EFFECT", CommandEffect::POSTUREDOWN);
+	setGlobalInt("NEXTATTACKDELAY_EFFECT", CommandEffect::NEXTATTACKDELAY);
 }
 
 int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
@@ -513,7 +526,18 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
 		else if (varName == "effectString")
 			combatCommand->setEffectString(Lua::getStringParameter(L));
-		else if (combatCommand->isSquadLeaderCommand()) {
+		else if (varName == "stateEffects") {
+			LuaObject states(L);
+
+			for (int i = 1; i <= states.getTableSize(); ++i) {
+				lua_rawgeti(L, -1, i);
+				LuaObject state(L);
+				combatCommand->addStateEffect(StateEffect(state));
+				state.pop();
+			}
+
+			states.pop();
+		} else if (combatCommand->isSquadLeaderCommand()) {
 			SquadLeaderCommand* slCommand = cast<SquadLeaderCommand*>(combatCommand);
 			if (varName == "action")
 				slCommand->setAction(Lua::getStringParameter(L));

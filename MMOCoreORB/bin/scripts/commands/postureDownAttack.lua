@@ -43,8 +43,17 @@
 
 PostureDownAttackCommand = {
         name = "posturedownattack",
-	postureDownStateChance = 50,
-	durationStateTime = 10
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		50, 
+		100, 
+		0 
+	  )
+	}
 }
 
 AddCommand(PostureDownAttackCommand)

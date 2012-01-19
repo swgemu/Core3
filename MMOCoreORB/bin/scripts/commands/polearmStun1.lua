@@ -51,7 +51,17 @@ PolearmStun1Command = {
 
 	combatSpam = "breathstealer",
 
-	stunStateChance = 1,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		100, 
+		100, 
+		10 
+	  )
+	},
 
 	range = -1
 

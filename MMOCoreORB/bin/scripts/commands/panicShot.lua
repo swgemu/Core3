@@ -50,8 +50,17 @@ PanicShotCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	nextAttackDelayChance = 1,
-	durationStateTime = 30,
+	stateEffects = {
+	  StateEffect( 
+		NEXTATTACKDELAY_EFFECT, 
+		{}, 
+		{ "warcry_defense" }, 
+		{}, 
+		100, 
+		100, 
+		30 
+	  )
+	},
 
 	animationCRC = hashCode("fire_1_special_single_light"),
 

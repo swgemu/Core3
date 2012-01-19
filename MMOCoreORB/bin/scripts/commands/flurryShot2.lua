@@ -52,7 +52,17 @@ FlurryShot2Command = {
 	coneAngle = 60,
 	coneAction = true,
 
-	dizzyStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

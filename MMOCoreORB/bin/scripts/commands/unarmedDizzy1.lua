@@ -51,7 +51,17 @@ UnarmedDizzy1Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
-	dizzyStateChance = 1,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		100, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("attack_special_wookiee_slap_light"),
 

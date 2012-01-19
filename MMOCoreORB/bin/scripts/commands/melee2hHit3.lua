@@ -46,7 +46,18 @@ Melee2hHit3Command = {
 	damageMultiplier = 4,
 	speedMultiplier = 3.3,
 
-	dizzyStateChance = 25,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		25, 
+		100, 
+		10 
+	  )
+	},
+
 	animationCRC = hashCode("combo_4a_medium"),
 
 	combatSpam = "sword2_dam1",

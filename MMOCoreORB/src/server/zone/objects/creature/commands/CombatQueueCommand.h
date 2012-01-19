@@ -16,6 +16,8 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
+#include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "QueueCommand.h"
 
 class CombatQueueCommand : public QueueCommand {
@@ -57,6 +59,9 @@ protected:
 	String combatSpam;
 	uint32 animationCRC;
 	String effectString;
+
+	VectorMap<uint64, StateEffect> stateEffects;
+
 public:
 
 	CombatQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
@@ -392,6 +397,10 @@ public:
 		return poolsToDamage;
 	}
 
+	inline VectorMap<uint64, StateEffect>* getStateEffects() {
+		return &stateEffects;
+	}
+
 	void setAnimationCRC(uint32 animationCRC) {
 		this->animationCRC = animationCRC;
 	}
@@ -404,6 +413,18 @@ public:
 		this->poolsToDamage = poolsToDamage;
 	}
 
+	void setStateEffects(VectorMap<uint64, StateEffect> stateEffects) {
+		this->stateEffects = stateEffects;
+	}
+
+	void addStateEffect(StateEffect stateEffect) {
+		stateEffects.put(stateEffect.getEffectType(), stateEffect);
+	}
+
+	StateEffect getStateEffect(uint64 type) {
+		return stateEffects.get(type);
+	}
+
 	void setRange(int i) {
 		this->range = i;
 	}
@@ -411,8 +432,82 @@ public:
 	bool isCombatCommand() {
 		return true;
 	}
+
 	virtual bool isSquadLeaderCommand() {
 		return false;
+	}
+
+	// this goes in command in order to allow for overriding for special commands
+	virtual void applyEffect(CreatureObject* creature, uint8 effectType) {
+		CombatManager* combatManager = CombatManager::instance();
+		StateEffect effect = getStateEffect(effectType);
+
+		switch (effectType) {
+		case CommandEffect::BLIND:
+			creature->setBlindedState(effect.getStateLength());
+			break;
+		case CommandEffect::DIZZY:
+			creature->setDizziedState(effect.getStateLength());
+			break;
+		case CommandEffect::INTIMIDATE:
+			creature->setIntimidatedState(effect.getStateLength());
+			break;
+		case CommandEffect::STUN:
+			creature->setStunnedState(effect.getStateLength());
+			break;
+		case CommandEffect::KNOCKDOWN:
+			if (creature->isKnockedDown() || creature->isProne()) {
+				if (80 > System::random(100))
+					creature->setPosture(CreaturePosture::UPRIGHT, true);
+				break;
+			}
+
+			if (creature->isMounted())
+				creature->dismount();
+
+			creature->setPosture(CreaturePosture::KNOCKEDDOWN);
+			creature->updateKnockdownRecovery();
+			creature->updateLastKnockdown();
+			creature->sendSystemMessage("cbt_spam", "posture_knocked_down");
+
+			break;
+		case CommandEffect::POSTUREUP:
+			if (creature->isMounted())
+				creature->dismount();
+
+			if (creature->getPosture() == CreaturePosture::PRONE) {
+				creature->setPosture(CreaturePosture::CROUCHED);
+				creature->sendSystemMessage("cbt_spam", "force_posture_change_1");
+				creature->updatePostureUpRecovery();
+			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
+				creature->setPosture(CreaturePosture::UPRIGHT);
+				creature->sendSystemMessage("cbt_spam", "force_posture_change_0");
+				creature->updatePostureUpRecovery();
+			}
+
+			break;
+		case CommandEffect::POSTUREDOWN:
+			if (creature->isMounted())
+				creature->dismount();
+
+			if (creature->getPosture() == CreaturePosture::UPRIGHT) {
+				creature->setPosture(CreaturePosture::CROUCHED);
+				creature->sendSystemMessage("cbt_spam", "force_posture_change_1");
+				creature->updatePostureDownRecovery();
+			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
+				creature->setPosture(CreaturePosture::PRONE);
+				creature->sendSystemMessage("cbt_spam", "force_posture_change_2");
+				creature->updatePostureDownRecovery();
+			}
+
+			break;
+		case CommandEffect::NEXTATTACKDELAY:
+			creature->setNextAttackDelay(effect.getStateLength());
+			break;
+		default:
+			break;
+		}
+		return;
 	}
 
 };

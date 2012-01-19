@@ -54,9 +54,35 @@ FullAutoSingle2Command = {
 
 	combatSpam = "s_auto",
 
-	dizzyStateChance = 25,
-	blindStateChance = 25,
-	stunStateChance = 25,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		25, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		25, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		25, 
+		100, 
+		10 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

@@ -50,7 +50,17 @@ PistolMeleeDefense2Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	knockdownStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		30, 
+		100, 
+		0 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

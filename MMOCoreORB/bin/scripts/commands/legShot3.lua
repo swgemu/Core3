@@ -50,7 +50,17 @@ LegShot3Command = {
 	actionCostMultiplier = 1.3,
 	mindCostMultiplier = 1.2,
 
-	stunStateChance = 25,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		25, 
+		100, 
+		10 
+	  )
+	},
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 

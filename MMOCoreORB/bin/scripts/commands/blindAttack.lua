@@ -42,9 +42,18 @@
 --true = 1, false = 0
 
 BlindAttackCommand = {
-        name = "blindattack",
-	blindStateChance = 50,
-	durationStateTime = 10
+	name = "blindattack",
+	stateEffects = {
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		50, 
+		100, 
+		10 
+	  )
+	}
 }
 
 AddCommand(BlindAttackCommand)

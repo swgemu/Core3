@@ -47,7 +47,17 @@ PolearmHit2Command = {
 	damageMultiplier = 2.5,
 	speedMultiplier = 2,
 
-	stunStateChance = 20,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		20, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("combo_3a_medium"),
 

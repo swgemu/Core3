@@ -165,9 +165,6 @@ protected:
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	float calculateDamage(CreatureObject* attacker, CreatureObject* defender, int poolToDamage);
 	float calculateDamage(CreatureObject* attacker, TangibleObject* defender);
-	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
-	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
-	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 
 	void doMiss(CreatureObject* attacker, CreatureObject* defender, int damage, const String& cbtSpam);

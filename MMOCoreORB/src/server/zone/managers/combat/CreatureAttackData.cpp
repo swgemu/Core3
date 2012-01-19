@@ -43,14 +43,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	mindCostMultiplier = data.mindCostMultiplier;
 	forceCostMultiplier = data.forceCostMultiplier;
 
-	knockdownStateChance = data.knockdownStateChance;
-	postureDownStateChance = data.postureDownStateChance;
-	postureUpStateChance = data.postureUpStateChance;
-
-	dizzyStateChance = data.dizzyStateChance;
-	blindStateChance = data.blindStateChance;
-	stunStateChance = data.stunStateChance;
-	intimidateStateChance = data.intimidateStateChance;
+	stateEffects = data.stateEffects;
 	nextAttackDelayChance = data.nextAttackDelayChance;
 	durationStateTime = data.durationStateTime;
 
@@ -75,13 +68,7 @@ void CreatureAttackData::fillFromBase() {
 	mindCostMultiplier = baseCommand->getMindCostMultiplier();
 	forceCostMultiplier = baseCommand->getForceCostMultiplier();
 	poolsToDamage = baseCommand->getPoolsToDamage();
-	knockdownStateChance = baseCommand->getKnockdownChance();
-	postureDownStateChance = baseCommand->getPostureDownChance();
-	postureUpStateChance = baseCommand->getPostureUpChance();
-	dizzyStateChance = baseCommand->getDizzyChance();
-	blindStateChance = baseCommand->getBlindChance();
-	stunStateChance = baseCommand->getStunChance();
-	intimidateStateChance = baseCommand->getIntimidateChance();
+	stateEffects = baseCommand->getStateEffects();
 	nextAttackDelayChance = baseCommand->getNextAttackDelayChance();
 	durationStateTime = baseCommand->getDurationStateTime();
 	dotDuration = baseCommand->getDotDuration();
@@ -118,27 +105,6 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 		break;
 	case 0xBF4C6ADB: // String("poolsToDamage").hashCode()
 		poolsToDamage = Integer::valueOf(val);
-		break;
-	case 0x86F5204F: // String("knockdownChance").hashCode()
-		knockdownStateChance = Integer::valueOf(val);
-		break;
-	case 0x32D82404: // String("postureDownChance").hashCode()
-		postureDownStateChance = Integer::valueOf(val);
-		break;
-	case 0x63EC0BD7: // String("postureUpChance").hashCode()
-		postureUpStateChance = Integer::valueOf(val);
-		break;
-	case 0x5434D0A0: // String("dizzyChance").hashCode()
-		dizzyStateChance = Integer::valueOf(val);
-		break;
-	case 0xED968963: // String("blindChance").hashCode()
-		blindStateChance = Integer::valueOf(val);
-		break;
-	case 0xEE92d66E: // String("stunChance").hashCode()
-		stunStateChance = Integer::valueOf(val);
-		break;
-	case 0x8CC100F4: // String("intimidateChance").hashCode()
-		intimidateStateChance = Integer::valueOf(val);
 		break;
 	case 0xB8BC4726: // String("nextAttackDelayChance").hashCode()
 		nextAttackDelayChance = Integer::valueOf(val);

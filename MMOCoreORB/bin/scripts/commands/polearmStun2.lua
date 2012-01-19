@@ -49,7 +49,17 @@ PolearmStun2Command = {
 	areaRange = 7,
 	areaAction = true,
 
-	stunStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("lower_posture_2hmelee_5"),
 

@@ -50,7 +50,17 @@ LastDitchCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	stunStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("fire_1_special_single_light"),
 

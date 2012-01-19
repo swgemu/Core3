@@ -54,7 +54,17 @@ UnarmedBlind1Command = {
 
 	combatSpam = "aryxslash",
 
-	blindStateChance = 1,
+	stateEffects = {
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		100, 
+		100, 
+		10 
+	  )
+	},
 
 	range = -1
 }

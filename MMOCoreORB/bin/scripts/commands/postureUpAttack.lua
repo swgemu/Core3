@@ -43,8 +43,17 @@
 
 PostureUpAttackCommand = {
         name = "postureupattack",
-	postureUpStateChance = 50,
-	durationStateTime = 10
+	stateEffects = {
+	  StateEffect( 
+		POSTUREUP_EFFECT, 
+		{ "postureUpRecovery" }, 
+		{ "posture_change_up_defense" }, 
+		{}, 
+		50, 
+		100, 
+		0 
+	  )
+	}
 }
 
 AddCommand(PostureUpAttackCommand)

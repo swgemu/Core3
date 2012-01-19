@@ -50,7 +50,17 @@ PolearmSpinAttack2Command = {
 	areaAction = true,
 	areaRange = 7,
 
-	dizzyStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  )
+	},
 
 	animationCRC = hashCode("combo_2c_medium"),
 

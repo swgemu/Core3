@@ -50,7 +50,17 @@ LowBlowCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	knockdownStateChance = 30,
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		30, 
+		100, 
+		0 
+	  )
+	},
 
 	animationCRC = hashCode("fire_5_single_light"),
 

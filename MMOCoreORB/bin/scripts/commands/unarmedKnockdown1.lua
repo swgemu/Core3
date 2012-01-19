@@ -51,7 +51,17 @@ UnarmedKnockdown1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	knockdownStateChance = 15,
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		15, 
+		100, 
+		0 
+	  )
+	},
 
 	animationCRC = hashCode("attack_special_shoulder_bash_medium"),
 

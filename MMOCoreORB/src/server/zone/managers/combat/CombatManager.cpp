@@ -1048,27 +1048,78 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	return true;
 }
 
-void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
-	if (creature->isPlayerCreature() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
-		if (80 > System::random(100))
-			targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
-		return;
-	}
+void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data) {
+	VectorMap<uint64, StateEffect>* stateEffects = data.getstateEffects();
 
-	if (targetCreature->checkKnockdownRecovery() && targetCreature->checkLastKnockdown()) {
-		int targetDefense = targetCreature->getSkillMod("knockdown_defense");
-		targetDefense -= (int) (targetDefense * targetCreature->calculateBFRatio());
-		int rand = System::random(100);
+	// loop through all the states in the command
+	for (int i = 0; i < stateEffects->size(); i++) {
+		StateEffect effect = stateEffects->get(i);
+		bool failed = false;
+		uint8 effectType = effect.getEffectType();
 
-		if ((5 > rand) || (rand > targetDefense)) {
-			if (targetCreature->isMounted())
-				targetCreature->dismount();
+		if (System::random(100) > effect.getStateChance()) continue; // effect didn't trigger this attack and don't send a message
 
-			targetCreature->setPosture(CreaturePosture::KNOCKEDDOWN);
-			targetCreature->updateKnockdownRecovery();
-			targetCreature->updateLastKnockdown();
-			targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
+		Vector<String> exclusionTimers = effect.getDefenderExclusionTimers();
+		// loop through any exclusion timers
+		for (int j = 0; j < exclusionTimers.size(); j++)
+			if (!targetCreature->checkCooldownRecovery(exclusionTimers.get(j))) failed = true;
 
+		float targetDefense = 0.f;
+
+		// if recovery timer conditions aren't satisfied, it won't matter
+		if (!failed) {
+			Vector<String> defenseMods = effect.getDefenderStateDefenseModifiers();
+			// add up all defenses against the state the target has
+			for (int j = 0; j < defenseMods.size(); j++)
+				targetDefense += targetCreature->getSkillMod(defenseMods.get(j));
+
+			targetDefense -= targetCreature->calculateBFRatio();
+
+			if (targetDefense > 125)
+				targetDefense = 125;
+
+			// now roll to see if it gets applied
+			if (targetDefense > 0 && System::random(100) <= hitChanceEquation(effect.getStateStrength(), 0.0f, targetDefense))
+				data.getCommand()->applyEffect(targetCreature, effectType);
+			else
+				failed = true;
+
+			// no reason to apply jedi defenses if primary defense was successful
+			if (!failed) {
+				targetDefense = 0.f;
+				Vector<String> jediMods = effect.getDefenderJediStateDefenseModifiers();
+				// second chance for jedi, roll against their special defense "jedi_state_defense"
+				for (int j = 0; j < jediMods.size(); j++)
+					targetDefense += targetCreature->getSkillMod(jediMods.get(j));
+
+				if (targetDefense > 125)
+					targetDefense = 125;
+
+				// now roll again to see if it gets applied
+				if (targetDefense > 0 && System::random(100) <= hitChanceEquation(effect.getStateStrength(), 0.0f, targetDefense))
+					data.getCommand()->applyEffect(targetCreature, effectType);
+				else
+					failed = true;
+			}
+		}
+
+		// can move this to scripts, but only these three states have fail messages
+		if (failed) {
+			switch (effectType) {
+			case CommandEffect::KNOCKDOWN:
+				creature->sendSystemMessage("cbt_spam", "knockdown_fail");
+				break;
+			case CommandEffect::POSTUREDOWN:
+			case CommandEffect::POSTUREUP:
+				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
+				break;
+			default:
+				break;
+			}
+		}
+
+		// now check combat equilibrium
+		if (!failed && (effectType == CommandEffect::KNOCKDOWN || effectType == CommandEffect::POSTUREDOWN || effectType == CommandEffect::POSTUREUP)) {
 			int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
 
 			if (combatEquil > 100)
@@ -1077,170 +1128,6 @@ void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* tar
 			if ((combatEquil >> 1) > (int) System::random(100))
 				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 		}
-	} else
-		creature->sendSystemMessage("cbt_spam", "knockdown_fail");
-}
-
-
-void CombatManager::checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
-	if (creature->isPlayerCreature() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
-		if (80 > System::random(100))
-			targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
-
-		return;
-	}
-
-	if (targetCreature->checkPostureDownRecovery()) {
-		int targetDefense = targetCreature->getSkillMod(
-				"posture_change_down_defense");
-		targetDefense -= (int) (targetDefense
-				* targetCreature->calculateBFRatio());
-
-		int rand = System::random(100);
-
-		if ((5 > rand) || (rand > targetDefense)) {
-			if (targetCreature->isMounted())
-				targetCreature->dismount();
-
-			if (targetCreature->getPosture() == CreaturePosture::UPRIGHT)
-				targetCreature->setPosture(CreaturePosture::CROUCHED);
-			else
-				targetCreature->setPosture(CreaturePosture::PRONE);
-
-			targetCreature->updatePostureDownRecovery();
-			targetCreature->sendSystemMessage("cbt_spam", "posture_down");
-
-			int combatEquil =
-					targetCreature->getSkillMod("combat_equillibrium");
-
-			if (combatEquil > 100)
-				combatEquil = 100;
-
-			if ((combatEquil >> 1) > (int) System::random(100))
-				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
-		}
-	} else
-		creature->sendSystemMessage("cbt_spam", "posture_change_fail");
-}
-
-void CombatManager::checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
-	if (targetCreature->checkPostureUpRecovery()) {
-		int targetDefense = targetCreature->getSkillMod(
-				"posture_change_up_defense");
-		targetDefense -= (int) (targetDefense
-				* targetCreature->calculateBFRatio());
-
-		int rand = System::random(100);
-
-		if ((5 > rand) || (rand > targetDefense)) {
-			if (targetCreature->isMounted())
-				targetCreature->dismount();
-
-			if (targetCreature->getPosture() == CreaturePosture::PRONE) {
-				targetCreature->setPosture(CreaturePosture::CROUCHED);
-				targetCreature->updatePostureUpRecovery();
-			} else if (targetCreature->getPosture()
-					== CreaturePosture::CROUCHED) {
-				targetCreature->setPosture(CreaturePosture::UPRIGHT);
-				targetCreature->updatePostureUpRecovery();
-			}
-		}
-	} else if (!targetCreature->checkPostureUpRecovery())
-		creature->sendSystemMessage("cbt_spam", "posture_change_fail");
-}
-
-void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data) {
-	// TODO: None of these equations seem correct except intimidate
-	int chance = 0;
-	if ((chance = data.getKnockdownStateChance()) > 0)
-		checkKnockDown(creature, targetCreature, chance);
-	if ((chance = data.getPostureDownStateChance()) > 0)
-		checkPostureDown(creature, targetCreature, chance);
-	if ((chance = data.getPostureUpStateChance()) > 0)
-		checkPostureUp(creature, targetCreature, chance);
-
-	if (data.getDizzyStateChance() != 0) {
-		float targetDefense = targetCreature->getSkillMod("dizzy_defense");
-		// Force Enhancement "Force Resist States" skill.
-		float stateResist = targetCreature->getSkillMod("resistance_states");
-		// Force Defense Jedi State Defense skill mod.
-		float stateDefense = targetCreature->getSkillMod("jedi_state_defense");
-		targetDefense = (targetDefense + stateResist + stateDefense);
-		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
-
-		if (targetDefense > 125)
-			targetDefense = 125;
-
-		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-
-		if (System::random(100) <= hitChanceEquation(data.getDizzyStateChance(), 0.0f, targetDefense))
-			targetCreature->setDizziedState(data.getDurationStateTime());
-	}
-
-	if (data.getBlindStateChance() != 0) {
-		float targetDefense = targetCreature->getSkillMod("blind_defense");
-		// Force Enhancement "Force Resist States" skill.
-		float stateResist = targetCreature->getSkillMod("resistance_states");
-		// Force Defense Jedi State Defense skill mod.
-		float stateDefense = targetCreature->getSkillMod("jedi_state_defense");
-		targetDefense = (targetDefense + stateResist + stateDefense);
-		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
-
-		if (targetDefense > 125)
-			targetDefense = 125;
-
-		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-
-		if (System::random(100) <= hitChanceEquation(data.getBlindStateChance(), 0.0f, targetDefense))
-			targetCreature->setBlindedState(data.getDurationStateTime());
-	}
-
-	if (data.getStunStateChance() != 0) {
-		float targetDefense = targetCreature->getSkillMod("stun_defense");
-		// Force Enhancement "Force Resist States" skill.
-		float stateResist = targetCreature->getSkillMod("resistance_states");
-		// Force Defense Jedi State Defense skill mod.
-		float stateDefense = targetCreature->getSkillMod("jedi_state_defense");
-		targetDefense = (targetDefense + stateResist + stateDefense);
-		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
-
-		if (targetDefense > 125)
-			targetDefense = 125;
-
-		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-
-		if (System::random(100) <= hitChanceEquation(data.getStunStateChance(), 0.0f, targetDefense))
-			targetCreature->setStunnedState(data.getDurationStateTime());
-	}
-
-	if ((chance = data.getIntimidateStateChance()) > 0) {
-		int targetDefense = targetCreature->getSkillMod("intimidate_defense");
-		targetDefense -= (int) (targetDefense * targetCreature->calculateBFRatio());
-
-		if (targetDefense > 125)
-			targetDefense = 125;
-
-		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-
-		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense)) {
-			targetCreature->setIntimidatedState(data.getDurationStateTime());
-		} else
-			targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0);
-	}
-
-	if ((chance = data.getNextAttackDelayChance()) > 0) {
-		int targetDefense = targetCreature->getSkillMod("warcry_defense");
-		targetDefense -= (int) (targetDefense * targetCreature->calculateBFRatio());
-
-		if (targetDefense > 125)
-			targetDefense = 125;
-
-		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-
-		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense)) {
-			targetCreature->setNextAttackDelay(data.getDurationStateTime());
-		} else
-			targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0);
 	}
 }
 
@@ -1267,17 +1154,17 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	float damage = 0;
 
 	if (poolsToDamage & HEALTH) {
-		damage += calculateDamage(attacker, defender, HEALTH) * damageMultiplier;
+		damage = calculateDamage(attacker, defender, HEALTH) * damageMultiplier;
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)damage, true);
 	}
 
 	if (poolsToDamage & ACTION) {
-		damage += calculateDamage(attacker, defender, ACTION) * damageMultiplier;
+		damage = calculateDamage(attacker, defender, ACTION) * damageMultiplier;
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)damage, true);
 	}
 
 	if (poolsToDamage & MIND) {
-		damage += calculateDamage(attacker, defender, MIND) * damageMultiplier;
+		damage = calculateDamage(attacker, defender, MIND) * damageMultiplier;
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)damage, true);
 	}
 

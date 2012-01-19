@@ -56,7 +56,17 @@ WildShot2Command = {
 
 	combatSpam = "wildshot",
 
-	stunStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

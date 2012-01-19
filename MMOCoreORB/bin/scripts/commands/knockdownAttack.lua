@@ -43,8 +43,18 @@
 
 KnockdownAttackCommand = {
         name = "knockdownattack",
-	knockdownStateChance = 50,
-	durationStateTime = 10
+
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		100, 
+		100, 
+		0 
+	  )
+	}
 }
 
 AddCommand(KnockdownAttackCommand)

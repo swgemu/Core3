@@ -50,7 +50,17 @@ SuppressionFire2Command = {
 	actionCostMultiplier = 1.4,
 	mindCostMultiplier = 0.6,
 
-	postureDownStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		40, 
+		100, 
+		0 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

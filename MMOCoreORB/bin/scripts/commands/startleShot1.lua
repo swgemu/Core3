@@ -50,7 +50,17 @@ StartleShot1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	postureUpStateChance = 25,
+	stateEffects = {
+	  StateEffect( 
+		POSTUREUP_EFFECT, 
+		{ "postureUpRecovery" }, 
+		{ "posture_change_up_defense" }, 
+		{}, 
+		25, 
+		100, 
+		0 
+	  )
+	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

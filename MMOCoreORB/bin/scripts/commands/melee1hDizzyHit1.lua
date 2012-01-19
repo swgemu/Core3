@@ -51,7 +51,17 @@ Melee1hDizzyHit1Command = {
 
 	combatSpam = "sword1_dizzy",
 
-	dizzyStateChance = 1,
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		100, 
+		100, 
+		10 
+	  )
+	},
 
 	range = -1
 

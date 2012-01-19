@@ -42,9 +42,18 @@
 --true = 1, false = 0
 
 DizzyAttackCommand = {
-        name = "dizzyattack",
-	dizzyStateChance = 50,
-	durationStateTime = 10
+	name = "dizzyattack",
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		50, 
+		100, 
+		10 
+	  )
+	}
 }
 
 AddCommand(DizzyAttackCommand)

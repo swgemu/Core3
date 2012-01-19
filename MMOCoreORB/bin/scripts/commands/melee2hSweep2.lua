@@ -52,7 +52,17 @@ Melee2hSweep2Command = {
 
 	combatSpam = "melee2hsweep1",
 
-	postureDownStateChance = 40,
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		40, 
+		100, 
+		0 
+	  )
+	},
 
 	range = -1
 }
