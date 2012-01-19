@@ -64,6 +64,12 @@ class LootManager extends ManagedService implements Logger {
 	private transient ZoneServer zoneServer;
 	private transient ObjectManager objectManager;
 	
+	private transient float exceptionalChance;
+	private transient float exceptionalModifier;
+	
+	private transient float legendaryChance;
+	private transient float legendaryModifier;
+	
 	private transient LootGroupMap lootGroupMap;
 	
 	@dereferenced
@@ -78,6 +84,12 @@ class LootManager extends ManagedService implements Logger {
 		lootGroupMap = null;
 		
 		lootableMods.setNoDuplicateInsertPlan();
+		
+		exceptionalChance = 0.0;
+		exceptionalModifier = 0.0;
+		
+		legendaryChance = 0.0;
+		legendaryModifier = 0.0;
 		
 		Logger.setLoggingName("LootManager");
 		

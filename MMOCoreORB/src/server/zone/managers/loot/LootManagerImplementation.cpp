@@ -48,6 +48,11 @@ bool LootManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
 
+	exceptionalChance = lua->getGlobalFloat("exceptionalChance");
+	exceptionalModifier = lua->getGlobalFloat("exceptionalModifier");
+	legendaryChance = lua->getGlobalFloat("legendaryChance");
+	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
+
 	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
 
 	if (!lootableModsTable.isValidTable())
@@ -57,6 +62,8 @@ bool LootManagerImplementation::loadConfigData() {
 		String mod = lootableModsTable.getStringAt(i);
 		lootableMods.put(mod);
 	}
+
+	lootableModsTable.pop();
 
 	info("Loaded " + String::valueOf(lootableMods.size()) + " lootable stat mods.", true);
 
