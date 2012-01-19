@@ -8,8 +8,8 @@ rifle_t21 = {
 	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
 	experimentalMin = {60,170,12.7,11,750,62,53,115},
 	experimentalMax = {110,360,7.4,25,750,31,26,57},
-	qualityRangeMin = 0,
-	qualityRangeMax = 8,
+	qualityRangeMin = 8,
+	qualityRangeMax = 0,
 	customizationStringNames = {},
 	customizationValues = {}
 }

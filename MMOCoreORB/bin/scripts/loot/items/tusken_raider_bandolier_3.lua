@@ -5,7 +5,6 @@ tusken_raider_bandolier_3 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/bandolier/bandolier_tusken_raider_s03.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

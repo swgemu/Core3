@@ -5,7 +5,6 @@ sharnaff_plating_segment = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_chitin_sharnaff.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

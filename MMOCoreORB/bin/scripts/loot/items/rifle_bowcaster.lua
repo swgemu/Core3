@@ -8,8 +8,8 @@ rifle_bowcaster = {
 	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
 	experimentalMin = {61,124,9.6,6.4,750,46,46,57},
 	experimentalMax = {122,217,6.2,15.6,750,23,23,35},
-	qualityRangeMin = 0,
-	qualityRangeMax = 8,
+	qualityRangeMin = 8,
+	qualityRangeMax = 0,
 	customizationStringNames = {},
 	customizationValues = {}
 }

@@ -8,8 +8,8 @@ rifle_cdef = {
 	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
 	experimentalMin = {12,29,5.1,3,750,14,25,14},
 	experimentalMax = {27,61,3.6,4.8,750,9,19,9},
-	qualityRangeMin = 0,
-	qualityRangeMax = 8,
+	qualityRangeMin = 8,
+	qualityRangeMax = 0,
 	customizationStringNames = {},
 	customizationValues = {}
 }

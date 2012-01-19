@@ -8,8 +8,8 @@ rifle_dlt20 = {
 	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
 	experimentalMin = {61,94,8.4,4.3,750,22,43,47},
 	experimentalMax = {87,149,6.1,11.2,750,14,23,21},
-	qualityRangeMin = 0,
-	qualityRangeMax = 8,
+	qualityRangeMin = 8,
+	qualityRangeMax = 0,
 	customizationStringNames = {},
 	customizationValues = {}
 }

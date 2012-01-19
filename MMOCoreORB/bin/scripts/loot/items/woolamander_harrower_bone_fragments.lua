@@ -5,7 +5,6 @@ woolamander_harrower_bone_fragments = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/bone_fragment_woolamander_harrower.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

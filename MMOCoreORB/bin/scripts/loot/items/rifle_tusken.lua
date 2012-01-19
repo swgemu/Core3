@@ -8,8 +8,8 @@ rifle_tusken = {
 	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
 	experimentalMin = {64,124,9.6,5.4,750,17,27,61},
 	experimentalMax = {123,188,6.7,11.7,750,9,16,36},
-	qualityRangeMin = 0,
-	qualityRangeMax = 8,
+	qualityRangeMin = 8,
+	qualityRangeMax = 0,
 	customizationStringNames = {},
 	customizationValues = {}
 }

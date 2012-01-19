@@ -3,13 +3,13 @@
 rifle_tenloss_dxr6_disruptor = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
-	draftSchematic = "",
+	customObjectName = "",
+	directObjectTemplate = "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 8,
+	qualityRangeMin = 8,
+	qualityRangeMax = 0,
 	customizationStringNames = {},
 	customizationValues = {}
 }

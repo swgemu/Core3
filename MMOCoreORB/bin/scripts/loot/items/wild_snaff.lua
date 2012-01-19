@@ -5,7 +5,6 @@ wild_snaff = {
 	maximumLevel = -1,
 	customObjectName = "Wild Snaff",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s2.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

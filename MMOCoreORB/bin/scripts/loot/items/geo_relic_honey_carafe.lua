@@ -5,7 +5,6 @@ geo_relic_honey_carafe = {
 	maximumLevel = -1,
 	customObjectName = "Royal Jelly Carafe",
 	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_honey_carafe.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

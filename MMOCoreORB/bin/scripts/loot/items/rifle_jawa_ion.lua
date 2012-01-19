@@ -8,8 +8,8 @@ rifle_jawa_ion = {
 	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
 	experimentalMin = {47,100,9.1,2.4,750,23,47,61},
 	experimentalMax = {96,188,6.3,4.2,750,14,28,37},
-	qualityRangeMin = 0,
-	qualityRangeMax = 8,
+	qualityRangeMin = 8,
+	qualityRangeMax = 0,
 	customizationStringNames = {},
 	customizationValues = {}
 }
