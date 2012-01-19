@@ -26,7 +26,7 @@ imperial_first_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff","object/mobile/dressed_imperial_officer_m_3.iff"},
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
