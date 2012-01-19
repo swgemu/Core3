@@ -49,7 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
@@ -96,7 +96,8 @@ class CraftingStation extends ToolTangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	public boolean isCraftingStation() {
 		return true;

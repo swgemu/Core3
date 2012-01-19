@@ -24,16 +24,18 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace manufactureschematic {
+namespace creature {
 
-class ManufactureSchematic;
+class CreatureObject;
 
-} // namespace manufactureschematic
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::manufactureschematic;
+using namespace server::zone::objects::creature;
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 
@@ -65,7 +67,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isSpecial(int type);
 
@@ -204,12 +206,12 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 private:
-	void calculateSpecialProtection(ManufactureSchematic* schematic);
+	void calculateSpecialProtection(CraftingValues* values);
 
-	void setProtection(ManufactureSchematic* schematic, int type, float base);
+	void setProtection(CraftingValues* values, bool firstUpdate, int type, float base);
 
 	String getStringType(int type);
 
@@ -320,8 +322,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isSpecial(int type);
 

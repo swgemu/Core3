@@ -7,7 +7,7 @@
 
 #include "SlicingTool.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
@@ -65,10 +65,8 @@ void SlicingToolImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 	}
 }
 
-void SlicingToolImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// useModifier is effectiveness
-	effectiveness = craftingValues->getCurrentValue("usemodifier");
+void SlicingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	effectiveness = values->getCurrentValue("usemodifier");
 
 }
 

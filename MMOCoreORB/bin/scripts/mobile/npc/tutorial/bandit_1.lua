@@ -24,7 +24,7 @@ bandit_tutorial_1 = Creature:new {
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	diet = NONE,
-	lootchance = 10000000,
+	lootChance = 10000000,
 
 	templates = {"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
 	lootgroups = {

@@ -48,7 +48,7 @@ import server.zone.objects.tangible.component.Component;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
  
 class ArmorComponent extends Component {
 	
@@ -67,5 +67,6 @@ class ArmorComponent extends Component {
 	 */
 	public native void initializeTransientMembers();
 
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 }

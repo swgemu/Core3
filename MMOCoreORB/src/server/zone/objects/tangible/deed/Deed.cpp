@@ -12,8 +12,6 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 /*
  *	DeedStub
  */
@@ -65,13 +63,13 @@ void Deed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) 
 		_implementation->fillAttributeList(alm, object);
 }
 
-void Deed::updateCraftingValues(ManufactureSchematic* schematic) {
+void Deed::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	DeedImplementation* _implementation = static_cast<DeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void Deed::setGeneratedObjectTemplate(const String& templ) {
@@ -273,7 +271,7 @@ DeedImplementation::DeedImplementation() {
 	generated = false;
 }
 
-void DeedImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void DeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	// server/zone/objects/tangible/deed/Deed.idl():  		error("Unhandled updateCraftingValues for this object type");
 	error("Unhandled updateCraftingValues for this object type");
 }

@@ -12,7 +12,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "server/zone/objects/player/sessions/SlicingSession.h"
@@ -270,7 +270,7 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	//generatePowerup(alm);
 }
 
-void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/*
 	 * Incoming Values:					Ranges:
 	 * mindamage						Differs between weapons
@@ -289,18 +289,16 @@ void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* sche
 	 * attackactioncost
 	 * attackmindcost
 	 */
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
 	float value = 0.f;
-	setMinDamage(craftingValues->getCurrentValue("mindamage"));
-	setMaxDamage(craftingValues->getCurrentValue("maxdamage"));
+	setMinDamage(values->getCurrentValue("mindamage"));
+	setMaxDamage(values->getCurrentValue("maxdamage"));
 
-	setAttackSpeed(craftingValues->getCurrentValue("attackspeed"));
-	setHealthAttackCost((int)craftingValues->getCurrentValue("attackhealthcost"));
-	setActionAttackCost((int)craftingValues->getCurrentValue("attackactioncost"));
-	setMindAttackCost((int)craftingValues->getCurrentValue("attackmindcost"));
+	setAttackSpeed(values->getCurrentValue("attackspeed"));
+	setHealthAttackCost((int)values->getCurrentValue("attackhealthcost"));
+	setActionAttackCost((int)values->getCurrentValue("attackactioncost"));
+	setMindAttackCost((int)values->getCurrentValue("attackmindcost"));
 
-	value = craftingValues->getCurrentValue("woundchance");
+	value = values->getCurrentValue("woundchance");
 	if(value != CraftingValues::VALUENOTFOUND)
 		setWoundsRatio(value);
 
@@ -308,23 +306,23 @@ void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* sche
 	//if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
 		//_this->set_______(value);
 
-	value = craftingValues->getCurrentValue("zerorangemod");
+	value = values->getCurrentValue("zerorangemod");
 	if(value != CraftingValues::VALUENOTFOUND)
 		setPointBlankAccuracy((int)value);
 
-	value = craftingValues->getCurrentValue("maxrange");
+	value = values->getCurrentValue("maxrange");
 	if(value != CraftingValues::VALUENOTFOUND)
 		setMaxRange((int)value);
 
-	value = craftingValues->getCurrentValue("maxrangemod");
+	value = values->getCurrentValue("maxrangemod");
 	if(value != CraftingValues::VALUENOTFOUND)
 		setMaxRangeAccuracy((int)value);
 
-	value = craftingValues->getCurrentValue("midrange");
+	value = values->getCurrentValue("midrange");
 	if(value != CraftingValues::VALUENOTFOUND)
 		setIdealRange((int)value);
 
-	value = craftingValues->getCurrentValue("midrangemod");
+	value = values->getCurrentValue("midrangemod");
 	if(value != CraftingValues::VALUENOTFOUND)
 		setIdealAccuracy((int)value);
 
@@ -332,7 +330,7 @@ void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* sche
 	//if(value != CraftingValues::VALUENOTFOUND)
 	//	setUsesRemaining((int)value);
 
-	value = craftingValues->getCurrentValue("hitpoints");
+	value = values->getCurrentValue("hitpoints");
 	if(value != CraftingValues::VALUENOTFOUND)
 		setMaxCondition((int)value);
 

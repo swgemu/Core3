@@ -133,10 +133,7 @@ void ComponentImplementation::setPropertyToHidden(const String& property) {
 	}
 }
 
-void ComponentImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
+void ComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	String attribute;
 	float value;
 	int precision;
@@ -148,13 +145,13 @@ void ComponentImplementation::updateCraftingValues(ManufactureSchematic* schemat
 	titleMap.removeAll();
 	keyList.removeAll();
 
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		attribute = craftingValues->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
+		attribute = values->getExperimentalPropertySubtitle(i);
 
-		value = craftingValues->getCurrentValue(attribute);
-		precision = craftingValues->getPrecision(attribute);
-		title = craftingValues->getExperimentalPropertyTitle(attribute);
-		hidden = craftingValues->isHidden(attribute);
+		value = values->getCurrentValue(attribute);
+		precision = values->getPrecision(attribute);
+		title = values->getExperimentalPropertyTitle(attribute);
+		hidden = values->isHidden(attribute);
 
 		if (!hasKey(attribute))
 			keyList.add(attribute);
@@ -163,7 +160,7 @@ void ComponentImplementation::updateCraftingValues(ManufactureSchematic* schemat
 		precisionMap.put(attribute, precision);
 		titleMap.put(attribute, title);
 
-		if(schematic->isFirstCraftingUpdate())
+		if(firstUpdate)
 			hiddenMap.put(attribute, hidden);
 	}
 }

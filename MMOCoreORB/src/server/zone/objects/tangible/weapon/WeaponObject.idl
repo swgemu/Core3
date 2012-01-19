@@ -50,7 +50,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.scene.SceneObjectType;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.SharedWeaponObjectTemplate;
@@ -181,7 +181,8 @@ class WeaponObject extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	/**
 	 * Returns true if the player has the required certifications for this weapon

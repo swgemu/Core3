@@ -411,13 +411,13 @@ void TangibleObject::setOptionsBitmask(unsigned int bitmask, bool notifyClient) 
 		_implementation->setOptionsBitmask(bitmask, notifyClient);
 }
 
-void TangibleObject::updateCraftingValues(ManufactureSchematic* schematic) {
+void TangibleObject::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 int TangibleObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
@@ -1397,7 +1397,7 @@ bool TangibleObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	return false;
 }
 
-void TangibleObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	// server/zone/objects/tangible/TangibleObject.idl():  		error("Unhandled updateCraftingValues for this object type");
 	error("Unhandled updateCraftingValues for this object type");
 }

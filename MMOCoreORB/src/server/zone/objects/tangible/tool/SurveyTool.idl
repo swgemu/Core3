@@ -50,7 +50,7 @@ import engine.lua.LuaObject;
 import engine.util.u3d.Coordinate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.Zone;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 
 class SurveyTool extends ToolTangibleObject {
@@ -111,7 +111,7 @@ class SurveyTool extends ToolTangibleObject {
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	@local
-	public void updateCraftingValues(ManufactureSchematic schematic) {
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		
 	}
 	

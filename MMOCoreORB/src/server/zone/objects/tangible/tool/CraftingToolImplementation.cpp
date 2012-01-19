@@ -50,7 +50,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -171,14 +171,10 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 	}
 }
 
-void CraftingToolImplementation::updateCraftingValues(
-		ManufactureSchematic* schematic) {
+void CraftingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/// useModifer is the effectiveness
 
-
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
-	effectiveness = craftingValues->getCurrentValue("usemodifier");
+	effectiveness = values->getCurrentValue("usemodifier");
 
 	//craftingValues->toString();
 }
@@ -891,17 +887,14 @@ void CraftingToolImplementation::nextCraftingStage(CreatureObject* player,
 
 }
 
-void CraftingToolImplementation::initialAssembly(CreatureObject* player,
-		int clientCounter) {
+void CraftingToolImplementation::initialAssembly(CreatureObject* player, int clientCounter) {
 
 	/// pre: _this locked
-	ManagedReference<ManufactureSchematic*> manufactureSchematic =
-			getManufactureSchematic();
+	ManagedReference<ManufactureSchematic*> manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	// Get the appropriate number of Experimentation points from Skill
-	ManagedReference<DraftSchematic*> draftSchematic =
-			manufactureSchematic->getDraftSchematic();
+	ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
 
 	// Set crafter
 	manufactureSchematic->setCrafter(player);
@@ -911,9 +904,7 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player,
 	experimentationPointsUsed = 0;
 
 	// Calculate exp failure for red bars
-	int experimentalFailureRate =
-			craftingManager->calculateExperimentationFailureRate(player,
-					manufactureSchematic, 0);
+	int experimentalFailureRate = craftingManager->calculateExperimentationFailureRate(player, manufactureSchematic, 0);
 
 	// Get the level of customization
 	String custskill = draftSchematic->getCustomizationSkill();
@@ -921,8 +912,7 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player,
 
 	// Start DPLAY9 ***********************************************************
 	// Updates the stage of crafting, sets the number of experimentation points
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
-			player->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(state); // 3 If Experimenting is active, 4 if already experimented/ No experimenting
 	dplay9->setExperimentationPoints(experimentationPointsTotal);
 	dplay9->close();
@@ -945,7 +935,7 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player,
 	prototype->setCraftersSerial(serial);
 
 	// Update the prototype with new values
-	prototype->updateCraftingValues(manufactureSchematic);
+	prototype->updateCraftingValues(manufactureSchematic->getCraftingValues(), manufactureSchematic->isFirstCraftingUpdate());
 
 	// Set default customization
 	Vector < byte > *customizationOptions
@@ -1158,7 +1148,7 @@ void CraftingToolImplementation::experiment(CreatureObject* player,
 	craftingValues->recalculateValues(false);
 
 	// Update the Tano with new values
-	prototype->updateCraftingValues(manufactureSchematic);
+	prototype->updateCraftingValues(manufactureSchematic->getCraftingValues(), manufactureSchematic->isFirstCraftingUpdate());
 
 	// Sets the result for display
 	experimentationResult = lowestExpSuccess;

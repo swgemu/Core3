@@ -7,7 +7,7 @@
 
 #include "WearableObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 
@@ -36,21 +36,21 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 }
 
-void WearableObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/*
 	 * Values available:	Range:
 	 * sockets				0-0(novice artisan) (Don't use)
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
 
-	if(schematic->isFirstCraftingUpdate()) {
-		generateSockets(schematic);
+	if(firstUpdate) {
+		//generateSockets(schematic);
 	}
 
 }
 
 void WearableObjectImplementation::generateSockets(ManufactureSchematic* schematic) {
-
+/*
 	ManagedReference<DraftSchematic* > draftSchematic = schematic->getDraftSchematic();
 	ManagedReference<CreatureObject* > player = schematic->getCrafter();
 
@@ -79,7 +79,7 @@ void WearableObjectImplementation::generateSockets(ManufactureSchematic* schemat
 		setMaxSockets(generatedCount);
 	}
 
-	socketsGenerated = true;
+	socketsGenerated = true;*/
 }
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attachment* attachment) {

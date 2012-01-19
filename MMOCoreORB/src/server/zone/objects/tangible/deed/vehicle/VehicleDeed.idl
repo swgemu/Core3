@@ -49,7 +49,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.deed.Deed;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 
@@ -89,7 +89,8 @@ class VehicleDeed extends Deed {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	public boolean isVehicleDeedObject() {
 		return true;

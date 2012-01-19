@@ -131,7 +131,7 @@ class RevivePack : public PharmaceuticalObject {
 public:
 	RevivePack();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
@@ -196,7 +196,7 @@ public:
 
 	RevivePackImplementation(DummyConstructorParameter* param);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 

@@ -27,20 +27,6 @@ using namespace server::zone::packets::scene;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
-
-namespace server {
-namespace zone {
 
 class Zone;
 
@@ -77,6 +63,8 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 
 #include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
@@ -101,7 +89,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
@@ -166,7 +154,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
@@ -232,8 +220,6 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 

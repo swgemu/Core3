@@ -22,7 +22,7 @@
  *	SlicingToolStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_CALCULATESUCCESSRATE__,RPC_GETEFFECTIVENESS__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6,RPC_CALCULATESUCCESSRATE__,RPC_GETEFFECTIVENESS__};
 
 SlicingTool::SlicingTool() : TangibleObject(DummyConstructorParameter::instance()) {
 	SlicingToolImplementation* _implementation = new SlicingToolImplementation();
@@ -71,18 +71,13 @@ void SlicingTool::fillAttributeList(AttributeListMessage* msg, CreatureObject* o
 		_implementation->fillAttributeList(msg, object);
 }
 
-void SlicingTool::updateCraftingValues(ManufactureSchematic* schematic) {
+void SlicingTool::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	SlicingToolImplementation* _implementation = static_cast<SlicingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 bool SlicingTool::calculateSuccessRate() {
@@ -275,9 +270,6 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	case RPC_CALCULATESUCCESSRATE__:
 		resp->insertBoolean(calculateSuccessRate());
 		break;
@@ -293,10 +285,6 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 int SlicingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<SlicingTool*>(stub))->handleObjectMenuSelect(player, selectedID);
-}
-
-void SlicingToolAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<SlicingTool*>(stub))->updateCraftingValues(schematic);
 }
 
 bool SlicingToolAdapter::calculateSuccessRate() {

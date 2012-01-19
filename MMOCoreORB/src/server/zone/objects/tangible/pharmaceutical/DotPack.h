@@ -137,7 +137,7 @@ class DotPack : public PharmaceuticalObject {
 public:
 	DotPack();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -220,7 +220,7 @@ public:
 
 	DotPackImplementation(DummyConstructorParameter* param);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

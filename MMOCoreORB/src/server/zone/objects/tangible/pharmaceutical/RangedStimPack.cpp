@@ -42,13 +42,13 @@ RangedStimPack::~RangedStimPack() {
 
 
 
-void RangedStimPack::updateCraftingValues(ManufactureSchematic* schematic) {
+void RangedStimPack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	RangedStimPackImplementation* _implementation = static_cast<RangedStimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void RangedStimPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
@@ -354,21 +354,19 @@ RangedStimPackImplementation::RangedStimPackImplementation() {
 	rangeMod = 0;
 }
 
-void RangedStimPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		super.effectiveness = craftingValues.getCurrentValue("power");
-	StimPackImplementation::effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	StimPackImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		range = craftingValues.getCurrentValue("range");
-	range = craftingValues->getCurrentValue("range");
+void RangedStimPackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		super.effectiveness = values.getCurrentValue("power");
+	StimPackImplementation::effectiveness = values->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	StimPackImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		range = values.getCurrentValue("range");
+	range = values->getCurrentValue("range");
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  	}
-	if (craftingValues->hasProperty("area")){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			area = craftingValues.getCurrentValue("area");
-	area = craftingValues->getCurrentValue("area");
+	if (values->hasProperty("area")){
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			area = values.getCurrentValue("area");
+	area = values->getCurrentValue("area");
 }
 }
 

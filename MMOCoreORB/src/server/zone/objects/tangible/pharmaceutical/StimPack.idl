@@ -69,12 +69,10 @@ class StimPack extends PharmaceuticalObject {
 	}
 	
 	@local
-	public void updateCraftingValues(ManufactureSchematic schematic) {
-		CraftingValues craftingValues = schematic.getCraftingValues();
-		
-		effectiveness = craftingValues.getCurrentValue("power");
-		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-		setUseCount(craftingValues.getCurrentValue("charges"));
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		effectiveness = values.getCurrentValue("power");
+		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+		setUseCount(values.getCurrentValue("charges"));
 	}
 	
 	/**

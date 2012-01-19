@@ -40,13 +40,13 @@ StatePack::~StatePack() {
 
 
 
-void StatePack::updateCraftingValues(ManufactureSchematic* schematic) {
+void StatePack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	StatePackImplementation* _implementation = static_cast<StatePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void StatePack::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -253,17 +253,15 @@ StatePackImplementation::StatePackImplementation() {
 	state = 0;
 }
 
-void StatePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		craftingValues.setHidden("power");
-	craftingValues->setHidden("power");
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		craftingValues.setHidden("range");
-	craftingValues->setHidden("range");
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
+void StatePackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		values.setHidden("power");
+	values->setHidden("power");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		values.setHidden("range");
+	values->setHidden("range");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
 }
 
 void StatePackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

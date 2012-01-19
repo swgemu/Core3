@@ -68,14 +68,12 @@ class StatePack extends PharmaceuticalObject {
 	}
 	
 	@local
-	public void updateCraftingValues(ManufactureSchematic schematic) {
-		CraftingValues craftingValues = schematic.getCraftingValues();
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {		
+		values.setHidden("power");
+		values.setHidden("range");
 		
-		craftingValues.setHidden("power");
-		craftingValues.setHidden("range");
-		
-		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-		setUseCount(craftingValues.getCurrentValue("charges"));
+		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+		setUseCount(values.getCurrentValue("charges"));
 	}
 	
 	/**

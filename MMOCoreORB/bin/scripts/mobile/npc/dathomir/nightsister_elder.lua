@@ -25,16 +25,17 @@ nightsister_elder = Creature:new {
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 7200000,
+	lootChance = 10000000,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_elder.iff"},
 	lootgroups = {
-		{group = "nightsister_crystals_4", chance = 1000000},
-		{group = "nightsister_common", chance = 5900000},
-		{group = "armor_attachments", chance = 550000},
-		{group = "clothing_attachments", chance = 550000},
-		{group = "pistols", chance = 1000000},
-		{group = "rifles", chance = 1000000}
+		--{group = "nightsister_crystals_4", chance = 1000000},
+		--{group = "nightsister_common", chance = 5900000},
+		--{group = "armor_attachments", chance = 550000},
+		--{group = "clothing_attachments", chance = 550000},
+		--{group = "pistols", chance = 1000000},
+		--{group = "rifles", chance = 1000000}
+		{group = "rifles", chance = 10000000}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

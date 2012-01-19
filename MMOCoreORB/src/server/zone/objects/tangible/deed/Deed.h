@@ -61,19 +61,7 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -95,7 +83,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void setGeneratedObjectTemplate(const String& templ);
 
@@ -148,7 +136,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
-	virtual void updateCraftingValues(ManufactureSchematic* schematic);
+	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void setGeneratedObjectTemplate(const String& templ);
 

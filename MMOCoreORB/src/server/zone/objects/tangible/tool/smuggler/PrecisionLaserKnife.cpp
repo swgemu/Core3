@@ -24,7 +24,7 @@
  *	PrecisionLaserKnifeStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_UPDATECHARGES__INT_,RPC_USECHARGE__CREATUREOBJECT_,RPC_GETCHARGES__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6,RPC_UPDATECHARGES__INT_,RPC_USECHARGE__CREATUREOBJECT_,RPC_GETCHARGES__};
 
 PrecisionLaserKnife::PrecisionLaserKnife() : SlicingTool(DummyConstructorParameter::instance()) {
 	PrecisionLaserKnifeImplementation* _implementation = new PrecisionLaserKnifeImplementation();
@@ -64,18 +64,13 @@ void PrecisionLaserKnife::fillAttributeList(AttributeListMessage* msg, CreatureO
 		_implementation->fillAttributeList(msg, object);
 }
 
-void PrecisionLaserKnife::updateCraftingValues(ManufactureSchematic* schematic) {
+void PrecisionLaserKnife::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	PrecisionLaserKnifeImplementation* _implementation = static_cast<PrecisionLaserKnifeImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void PrecisionLaserKnife::updateCharges(int val) {
@@ -264,7 +259,7 @@ PrecisionLaserKnifeImplementation::PrecisionLaserKnifeImplementation() {
 	charges = 10;
 }
 
-void PrecisionLaserKnifeImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void PrecisionLaserKnifeImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	// server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.idl():  		super.setUseCount(charges);
 	SlicingToolImplementation::setUseCount(charges);
 }
@@ -304,9 +299,6 @@ Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMetho
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	case RPC_UPDATECHARGES__INT_:
 		updateCharges(inv->getSignedIntParameter());
 		break;
@@ -325,10 +317,6 @@ Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 int PrecisionLaserKnifeAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<PrecisionLaserKnife*>(stub))->handleObjectMenuSelect(player, selectedID);
-}
-
-void PrecisionLaserKnifeAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<PrecisionLaserKnife*>(stub))->updateCraftingValues(schematic);
 }
 
 void PrecisionLaserKnifeAdapter::updateCharges(int val) {

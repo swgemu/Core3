@@ -54,7 +54,6 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.buffs.Buff;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import system.util.VectorMap;
 import server.zone.templates.SharedObjectTemplate;
@@ -133,24 +132,22 @@ class Consumable extends TangibleObject {
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	@local
-	public void updateCraftingValues(ManufactureSchematic schematic) {
-		CraftingValues craftingValues = schematic.getCraftingValues();
-
-		int cond = craftingValues.getCurrentValue("hitpoints");
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		int cond = values.getCurrentValue("hitpoints");
 		super.maxCondition = cond;
 
 		if (!isSpice()) {
-			if(craftingValues.hasProperty("filling"))
-				filling = (fillingMax - fillingMin) * craftingValues.getCurrentPercentage("filling") + fillingMin;
+			if(values.hasProperty("filling"))
+				filling = (fillingMax - fillingMin) * values.getCurrentPercentage("filling") + fillingMin;
 			
-			if(craftingValues.hasProperty("quantity"))
-				super.setUseCount((quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin);
+			if(values.hasProperty("quantity"))
+				super.setUseCount((quantityMax - quantityMin) * values.getCurrentPercentage("quantity") + quantityMin);
 			
-			if(craftingValues.hasProperty("flavor"))
-				duration = (flavorMax - flavorMin) * craftingValues.getCurrentPercentage("flavor") + flavorMin;
+			if(values.hasProperty("flavor"))
+				duration = (flavorMax - flavorMin) * values.getCurrentPercentage("flavor") + flavorMin;
 			
-			if(craftingValues.hasProperty("nutrition"))
-				nutrition = (nutritionMax - nutritionMin) * craftingValues.getCurrentPercentage("nutrition") + nutritionMin;
+			if(values.hasProperty("nutrition"))
+				nutrition = (nutritionMax - nutritionMin) * values.getCurrentPercentage("nutrition") + nutritionMin;
 		}
 	}
 	

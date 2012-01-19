@@ -46,13 +46,13 @@ EnhancePack::~EnhancePack() {
 
 
 
-void EnhancePack::updateCraftingValues(ManufactureSchematic* schematic) {
+void EnhancePack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	EnhancePackImplementation* _implementation = static_cast<EnhancePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void EnhancePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
@@ -331,17 +331,15 @@ EnhancePackImplementation::EnhancePackImplementation() {
 	attribute = 0;
 }
 
-void EnhancePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
-	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		duration = craftingValues.getCurrentValue("duration");
-	duration = craftingValues->getCurrentValue("duration");
+void EnhancePackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		effectiveness = values.getCurrentValue("power");
+	effectiveness = values->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		duration = values.getCurrentValue("duration");
+	duration = values->getCurrentValue("duration");
 }
 
 void EnhancePackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {

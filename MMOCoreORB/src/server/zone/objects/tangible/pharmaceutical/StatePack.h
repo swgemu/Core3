@@ -135,7 +135,7 @@ class StatePack : public PharmaceuticalObject {
 public:
 	StatePack();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -182,7 +182,7 @@ public:
 
 	StatePackImplementation(DummyConstructorParameter* param);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

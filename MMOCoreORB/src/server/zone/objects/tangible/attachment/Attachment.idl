@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.tangible.attachement;
 
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import engine.lua.LuaObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
@@ -78,13 +78,13 @@ class Attachment extends TangibleObject {
 		skillModMap.setNullValue(null);
 		skillModMap.setNoDuplicateInsertPlan();
 				
-		generateSkillMods();
-
+		//generateSkillMods();
 	}
 
 	public native void initializeTransientMembers();
 	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	public native void initializeMembers();
 

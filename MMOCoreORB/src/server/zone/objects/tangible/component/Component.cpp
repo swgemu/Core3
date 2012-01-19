@@ -10,8 +10,6 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -20,7 +18,7 @@
  *	ComponentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCOMPONENT__,RPC_GENERATELOOTSTATS__STRING_INT_,RPC_COMPARE__COMPONENT_,RPC_HASKEY__STRING_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_,RPC_GETATTRIBUTEVALUE__STRING_,RPC_GETATTRIBUTEPRECISION__STRING_,RPC_GETATTRIBUTETITLE__STRING_,RPC_GETATTRIBUTEHIDDEN__STRING_,RPC_SETPROPERTYTOHIDDEN__STRING_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_,RPC_GETPROPERTYCOUNT__,RPC_GETPROPERTY__INT_,RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCOMPONENT__,RPC_GENERATELOOTSTATS__STRING_INT_,RPC_COMPARE__COMPONENT_,RPC_HASKEY__STRING_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_,RPC_GETATTRIBUTEVALUE__STRING_,RPC_GETATTRIBUTEPRECISION__STRING_,RPC_GETATTRIBUTETITLE__STRING_,RPC_GETATTRIBUTEHIDDEN__STRING_,RPC_SETPROPERTYTOHIDDEN__STRING_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_,RPC_GETPROPERTYCOUNT__,RPC_GETPROPERTY__INT_,RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_};
 
 Component::Component() : TangibleObject(DummyConstructorParameter::instance()) {
 	ComponentImplementation* _implementation = new ComponentImplementation();
@@ -123,18 +121,13 @@ bool Component::hasKey(const String& key) {
 		return _implementation->hasKey(key);
 }
 
-void Component::updateCraftingValues(ManufactureSchematic* schematic) {
+void Component::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void Component::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {
@@ -524,9 +517,6 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_HASKEY__STRING_:
 		resp->insertBoolean(hasKey(inv->getAsciiParameter(_param0_hasKey__String_)));
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	case RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_:
 		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_bool_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_bool_), inv->getBooleanParameter());
 		break;
@@ -582,10 +572,6 @@ bool ComponentAdapter::compare(Component* inCmpo) {
 
 bool ComponentAdapter::hasKey(const String& key) {
 	return (static_cast<Component*>(stub))->hasKey(key);
-}
-
-void ComponentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<Component*>(stub))->updateCraftingValues(schematic);
 }
 
 void ComponentAdapter::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {

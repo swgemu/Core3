@@ -126,7 +126,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool calculateSuccessRate();
 
@@ -175,7 +175,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool calculateSuccessRate();
 
@@ -225,8 +225,6 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool calculateSuccessRate();
 

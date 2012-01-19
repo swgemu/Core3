@@ -52,20 +52,6 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -90,6 +76,8 @@ class ObjectMenuResponse;
 } // namespace server
 
 using namespace server::zone::packets::object;
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -125,7 +113,7 @@ public:
 
 	bool hasKey(const String& key);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
@@ -207,7 +195,7 @@ public:
 
 	bool hasKey(const String& key);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
@@ -281,8 +269,6 @@ public:
 	bool compare(Component* inCmpo);
 
 	bool hasKey(const String& key);
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 

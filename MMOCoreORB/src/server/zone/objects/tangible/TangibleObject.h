@@ -298,7 +298,7 @@ public:
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
@@ -574,7 +574,7 @@ public:
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
-	virtual void updateCraftingValues(ManufactureSchematic* schematic);
+	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	virtual int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 

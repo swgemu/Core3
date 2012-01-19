@@ -10,8 +10,6 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -22,7 +20,7 @@
  *	CraftingStationStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__};
 
 CraftingStation::CraftingStation() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingStationImplementation* _implementation = new CraftingStationImplementation();
@@ -93,18 +91,13 @@ void CraftingStation::fillAttributeList(AttributeListMessage* msg, CreatureObjec
 		_implementation->fillAttributeList(msg, object);
 }
 
-void CraftingStation::updateCraftingValues(ManufactureSchematic* schematic) {
+void CraftingStation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 bool CraftingStation::isCraftingStation() {
@@ -404,9 +397,6 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	case RPC_ISCRAFTINGSTATION__:
 		resp->insertBoolean(isCraftingStation());
 		break;
@@ -438,10 +428,6 @@ void CraftingStationAdapter::initializeTransientMembers() {
 
 int CraftingStationAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<CraftingStation*>(stub))->handleObjectMenuSelect(player, selectedID);
-}
-
-void CraftingStationAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<CraftingStation*>(stub))->updateCraftingValues(schematic);
 }
 
 bool CraftingStationAdapter::isCraftingStation() {

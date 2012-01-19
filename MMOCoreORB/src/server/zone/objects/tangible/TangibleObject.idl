@@ -373,7 +373,7 @@ class TangibleObject extends SceneObject {
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
 	@local
-	public abstract void updateCraftingValues(ManufactureSchematic schematic) {
+	public abstract void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		error("Unhandled updateCraftingValues for this object type");
 	}
 	

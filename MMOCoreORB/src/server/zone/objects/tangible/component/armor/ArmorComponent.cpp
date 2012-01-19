@@ -8,13 +8,11 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 /*
  *	ArmorComponentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,};
 
 ArmorComponent::ArmorComponent() : Component(DummyConstructorParameter::instance()) {
 	ArmorComponentImplementation* _implementation = new ArmorComponentImplementation();
@@ -43,18 +41,13 @@ void ArmorComponent::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void ArmorComponent::updateCraftingValues(ManufactureSchematic* schematic) {
+void ArmorComponent::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ArmorComponentImplementation* _implementation = static_cast<ArmorComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 DistributedObjectServant* ArmorComponent::_getImplementation() {
@@ -216,9 +209,6 @@ Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	default:
 		return NULL;
 	}
@@ -228,10 +218,6 @@ Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void ArmorComponentAdapter::initializeTransientMembers() {
 	(static_cast<ArmorComponent*>(stub))->initializeTransientMembers();
-}
-
-void ArmorComponentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<ArmorComponent*>(stub))->updateCraftingValues(schematic);
 }
 
 /*

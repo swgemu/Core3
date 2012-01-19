@@ -51,7 +51,6 @@ import server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.managers.crafting.CraftingManager;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.packets.scene.AttributeListMessage;
@@ -138,7 +137,8 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	public boolean isCraftingTool() {
 		return true;

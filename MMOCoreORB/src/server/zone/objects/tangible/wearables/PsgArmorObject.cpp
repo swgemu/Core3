@@ -6,13 +6,11 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 /*
  *	PsgArmorObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISPSGARMOROBJECT__,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISPSGARMOROBJECT__,};
 
 PsgArmorObject::PsgArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
 	PsgArmorObjectImplementation* _implementation = new PsgArmorObjectImplementation();
@@ -63,18 +61,13 @@ void PsgArmorObject::fillAttributeList(AttributeListMessage* msg, CreatureObject
 		_implementation->fillAttributeList(msg, object);
 }
 
-void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
+void PsgArmorObject::updateCraftingValues(CraftingValues* schematic, bool firstUpdate) {
 	PsgArmorObjectImplementation* _implementation = static_cast<PsgArmorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic, firstUpdate);
 }
 
 DistributedObjectServant* PsgArmorObject::_getImplementation() {
@@ -229,9 +222,6 @@ Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISPSGARMOROBJECT__:
 		resp->insertBoolean(isPsgArmorObject());
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	default:
 		return NULL;
 	}
@@ -245,10 +235,6 @@ void PsgArmorObjectAdapter::initializeTransientMembers() {
 
 bool PsgArmorObjectAdapter::isPsgArmorObject() {
 	return (static_cast<PsgArmorObject*>(stub))->isPsgArmorObject();
-}
-
-void PsgArmorObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<PsgArmorObject*>(stub))->updateCraftingValues(schematic);
 }
 
 /*

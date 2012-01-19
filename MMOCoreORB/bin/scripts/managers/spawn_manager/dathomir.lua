@@ -91,7 +91,7 @@ dathomir_static_spawns = {
 	{"nightsister_sentinel",90,-4068.3,126.4,-84.5,135,0},
 	{"nightsister_sentry",90,-3971.1,132.6,-138.7,-77,0},
 	{"nightsister_sentry",90,-4072.7,126.7,-85.8,107,0},
-	{"nightsister_spellweaver",90,-4035.4,121.2,-194.3,-17,0},
+	{"nightsister_spell_weaver",90,-4035.4,121.2,-194.3,-17,0},
 }
 
 dathomir_badges = {

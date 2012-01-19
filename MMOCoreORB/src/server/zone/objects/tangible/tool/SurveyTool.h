@@ -49,19 +49,7 @@ class Zone;
 
 using namespace server::zone;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 
@@ -105,7 +93,7 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void setRange(int r);
 
@@ -232,7 +220,7 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void setRange(int r);
 

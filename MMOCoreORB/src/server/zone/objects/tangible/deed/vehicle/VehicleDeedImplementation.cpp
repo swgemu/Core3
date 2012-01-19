@@ -36,16 +36,14 @@ void VehicleDeedImplementation::initializeTransientMembers() {
 	setLoggingName("VehicleDeed");
 }
 
-void VehicleDeedImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void VehicleDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/*
 	 * Values available:	Range:
 	 *
 	 * hitpoints			varies, integrity of vehicle
 	 */
 
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
-	hitPoints = (int)craftingValues->getCurrentValue("hit_points");
+	hitPoints = (int) values->getCurrentValue("hit_points");
 }
 
 void VehicleDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

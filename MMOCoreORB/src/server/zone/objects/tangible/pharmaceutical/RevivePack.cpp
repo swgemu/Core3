@@ -40,13 +40,13 @@ RevivePack::~RevivePack() {
 
 
 
-void RevivePack::updateCraftingValues(ManufactureSchematic* schematic) {
+void RevivePack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	RevivePackImplementation* _implementation = static_cast<RevivePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void RevivePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
@@ -384,17 +384,15 @@ RevivePackImplementation::RevivePackImplementation() {
 	mindHealed = 100;
 }
 
-void RevivePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		float effectiveness = craftingValues.getCurrentValue("power");
-	float effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		craftingValues.setHidden("power");
-	craftingValues->setHidden("power");
+void RevivePackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		float effectiveness = values.getCurrentValue("power");
+	float effectiveness = values->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		values.setHidden("power");
+	values->setHidden("power");
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		float health = 2 * effectiveness;
 	float health = 2 * effectiveness;
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		healthWoundHealed = health;

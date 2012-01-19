@@ -7,7 +7,7 @@
 
 #include "PsgArmorObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 
@@ -21,15 +21,15 @@ void PsgArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 }
 
-void PsgArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void PsgArmorObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/*
 	 * Values available:	Range:
 	 * sockets				0-0(novice artisan) (Don't use)
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
 
-	if(schematic->isFirstCraftingUpdate()) {
+	//if(firstUpdate) {
 
-	}
+//	}
 
 }

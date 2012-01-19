@@ -40,13 +40,13 @@ DotPack::~DotPack() {
 
 
 
-void DotPack::updateCraftingValues(ManufactureSchematic* schematic) {
+void DotPack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	DotPackImplementation* _implementation = static_cast<DotPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void DotPack::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -502,23 +502,21 @@ DotPackImplementation::DotPackImplementation() {
 	setLoggingName("DotPack");
 }
 
-void DotPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
-	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		range = craftingValues.getCurrentValue("range");
-	range = craftingValues->getCurrentValue("range");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		area = craftingValues.getCurrentValue("area");
-	area = craftingValues->getCurrentValue("area");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		potency = craftingValues.getCurrentValue("potency");
-	potency = craftingValues->getCurrentValue("potency");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		duration = craftingValues.getCurrentValue("duration");
-	duration = craftingValues->getCurrentValue("duration");
+void DotPackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		effectiveness = values.getCurrentValue("power");
+	effectiveness = values->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		range = values.getCurrentValue("range");
+	range = values->getCurrentValue("range");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		area = values.getCurrentValue("area");
+	area = values->getCurrentValue("area");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		potency = values.getCurrentValue("potency");
+	potency = values->getCurrentValue("potency");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		duration = values.getCurrentValue("duration");
+	duration = values->getCurrentValue("duration");
 }
 
 void DotPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

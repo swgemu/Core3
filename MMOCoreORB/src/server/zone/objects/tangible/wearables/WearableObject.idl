@@ -47,7 +47,7 @@ package server.zone.objects.tangible.wearables;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import engine.lua.LuaObject;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.tangible.attachment.Attachment;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
 import server.zone.Zone;
@@ -82,8 +82,8 @@ class WearableObject extends TangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
-	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	public native void applyAttachment(CreatureObject player, Attachment attachment);
 

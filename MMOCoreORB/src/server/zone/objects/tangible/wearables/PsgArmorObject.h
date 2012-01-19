@@ -21,19 +21,7 @@ class Zone;
 
 using namespace server::zone;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 
@@ -55,7 +43,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* schematic, bool firstUpdate);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -96,7 +84,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* schematic, bool firstUpdate);
 
 	WeakReference<PsgArmorObject*> _this;
 
@@ -144,8 +132,6 @@ public:
 	void initializeTransientMembers();
 
 	bool isPsgArmorObject();
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 };
 

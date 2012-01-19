@@ -72,17 +72,15 @@ class RangedStimPack extends StimPack {
 	}
 	
 	@local
-	public void updateCraftingValues(ManufactureSchematic schematic) {
-		CraftingValues craftingValues = schematic.getCraftingValues();
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		super.effectiveness = values.getCurrentValue("power");
+		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+		setUseCount(values.getCurrentValue("charges"));
 		
-		super.effectiveness = craftingValues.getCurrentValue("power");
-		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-		setUseCount(craftingValues.getCurrentValue("charges"));
+		range = values.getCurrentValue("range");
 		
-		range = craftingValues.getCurrentValue("range");
-		
-		if (craftingValues.hasProperty("area")) {
-			area = craftingValues.getCurrentValue("area");
+		if (values.hasProperty("area")) {
+			area = values.getCurrentValue("area");
 		}
 	}
 	

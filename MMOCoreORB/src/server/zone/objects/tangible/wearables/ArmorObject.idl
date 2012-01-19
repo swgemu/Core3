@@ -48,7 +48,8 @@ import server.zone.objects.tangible.wearables.WearableObject;
 import engine.lua.LuaObject;
 import system.util.SortedVector;
 import server.zone.Zone;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class ArmorObject extends WearableObject {
 	protected int healthEncumbrance;
@@ -133,11 +134,12 @@ class ArmorObject extends WearableObject {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
-	private native void calculateSpecialProtection(ManufactureSchematic schematic);
+	private native void calculateSpecialProtection(CraftingValues values);
 	
-	private native void setProtection(ManufactureSchematic schematic, int type, float base);
+	private native void setProtection(CraftingValues values, boolean firstUpdate, int type, float base);
 	
 	native string getStringType(int type);
 

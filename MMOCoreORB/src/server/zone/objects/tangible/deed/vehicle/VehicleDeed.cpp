@@ -10,8 +10,6 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
@@ -20,7 +18,7 @@
  *	VehicleDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISVEHICLEDEEDOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISVEHICLEDEEDOBJECT__};
 
 VehicleDeed::VehicleDeed() : Deed(DummyConstructorParameter::instance()) {
 	VehicleDeedImplementation* _implementation = new VehicleDeedImplementation();
@@ -91,18 +89,13 @@ int VehicleDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID)
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void VehicleDeed::updateCraftingValues(ManufactureSchematic* schematic) {
+void VehicleDeed::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	VehicleDeedImplementation* _implementation = static_cast<VehicleDeedImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 bool VehicleDeed::isVehicleDeedObject() {
@@ -298,9 +291,6 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	case RPC_ISVEHICLEDEEDOBJECT__:
 		resp->insertBoolean(isVehicleDeedObject());
 		break;
@@ -317,10 +307,6 @@ void VehicleDeedAdapter::initializeTransientMembers() {
 
 int VehicleDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<VehicleDeed*>(stub))->handleObjectMenuSelect(player, selectedID);
-}
-
-void VehicleDeedAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<VehicleDeed*>(stub))->updateCraftingValues(schematic);
 }
 
 bool VehicleDeedAdapter::isVehicleDeedObject() {

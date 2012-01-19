@@ -52,20 +52,6 @@ using namespace server::zone::packets::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -88,6 +74,8 @@ class SharedObjectTemplate;
 } // namespace server
 
 using namespace server::zone::templates;
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -116,7 +104,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isVehicleDeedObject();
 
@@ -169,7 +157,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isVehicleDeedObject();
 
@@ -219,8 +207,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isVehicleDeedObject();
 

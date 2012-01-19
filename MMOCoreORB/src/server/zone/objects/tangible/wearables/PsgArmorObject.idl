@@ -47,7 +47,7 @@ package server.zone.objects.tangible.wearables;
 import server.zone.objects.tangible.wearables.WearableObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class PsgArmorObject extends WearableObject {
 	public PsgArmorObject() {		
@@ -70,8 +70,8 @@ class PsgArmorObject extends WearableObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
-	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues schematic, boolean firstUpdate);
 	
 
 }

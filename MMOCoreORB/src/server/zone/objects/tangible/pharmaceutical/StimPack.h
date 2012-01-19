@@ -137,7 +137,7 @@ class StimPack : public PharmaceuticalObject {
 public:
 	StimPack();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -186,7 +186,7 @@ public:
 
 	StimPackImplementation(DummyConstructorParameter* param);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

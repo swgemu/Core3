@@ -42,13 +42,13 @@ WoundPack::~WoundPack() {
 
 
 
-void WoundPack::updateCraftingValues(ManufactureSchematic* schematic) {
+void WoundPack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	WoundPackImplementation* _implementation = static_cast<WoundPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void WoundPack::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -299,15 +299,13 @@ WoundPackImplementation::WoundPackImplementation() {
 	attribute = 0;
 }
 
-void WoundPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
-	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
+void WoundPackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		effectiveness = values.getCurrentValue("power");
+	effectiveness = values->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
 }
 
 void WoundPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

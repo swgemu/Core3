@@ -87,7 +87,8 @@ class PrecisionLaserKnife extends SlicingTool {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-	public void updateCraftingValues(ManufactureSchematic schematic) {
+	@local
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		super.setUseCount(charges);
 	}
 

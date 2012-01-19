@@ -138,7 +138,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void updateCharges(int val);
 
@@ -187,7 +187,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void updateCharges(int val);
 
@@ -239,8 +239,6 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void updateCharges(int val);
 

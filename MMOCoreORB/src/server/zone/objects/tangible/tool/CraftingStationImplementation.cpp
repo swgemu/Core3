@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -137,12 +137,9 @@ void CraftingStationImplementation::createChildObjects() {
 	transferObject(ingredientHopper, 4);
 }
 
-void CraftingStationImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void CraftingStationImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/// useModifer is the effectiveness
 
-
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
-	effectiveness = craftingValues->getCurrentValue("usemodifier");
+	effectiveness = values->getCurrentValue("usemodifier");
 	//craftingValues->toString();
 }

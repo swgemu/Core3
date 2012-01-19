@@ -18,8 +18,6 @@
 
 #include "server/zone/ZoneServer.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 /*
  *	CurePackStub
  */
@@ -40,13 +38,13 @@ CurePack::~CurePack() {
 
 
 
-void CurePack::updateCraftingValues(ManufactureSchematic* schematic) {
+void CurePack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	CurePackImplementation* _implementation = static_cast<CurePackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void CurePack::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -349,19 +347,17 @@ CurePackImplementation::CurePackImplementation() {
 	state = 0;
 }
 
-void CurePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
-	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
+void CurePackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		effectiveness = values.getCurrentValue("power");
+	effectiveness = values->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  	}
-	if (craftingValues->hasProperty("area")){
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			area = craftingValues.getCurrentValue("area");
-	area = craftingValues->getCurrentValue("area");
+	if (values->hasProperty("area")){
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			area = values.getCurrentValue("area");
+	area = values->getCurrentValue("area");
 }
 }
 

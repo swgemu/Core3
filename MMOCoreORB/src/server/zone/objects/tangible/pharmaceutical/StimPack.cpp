@@ -40,13 +40,13 @@ StimPack::~StimPack() {
 
 
 
-void StimPack::updateCraftingValues(ManufactureSchematic* schematic) {
+void StimPack::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	StimPackImplementation* _implementation = static_cast<StimPackImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void StimPack::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -269,15 +269,13 @@ StimPackImplementation::StimPackImplementation() {
 	effectiveness = 0;
 }
 
-void StimPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
-	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
-	setUseCount(craftingValues->getCurrentValue("charges"));
+void StimPackImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		effectiveness = values.getCurrentValue("power");
+	effectiveness = values->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = values->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		setUseCount(values.getCurrentValue("charges"));
+	setUseCount(values->getCurrentValue("charges"));
 }
 
 void StimPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

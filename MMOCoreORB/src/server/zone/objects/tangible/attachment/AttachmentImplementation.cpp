@@ -20,10 +20,8 @@ void AttachmentImplementation::initializeTransientMembers() {
 
 }
 
-void AttachmentImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	TangibleObjectImplementation::updateCraftingValues(schematic);
-
-	int level = schematic->getCraftingValues()->getMaxValue("creatureLevel");
+void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	int level = values->getMaxValue("creatureLevel");
 
 	//TODO: Implement multiple mods.
 

@@ -6,13 +6,11 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 /*
  *	ClothingObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,};
 
 ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::instance()) {
 	ClothingObjectImplementation* _implementation = new ClothingObjectImplementation();
@@ -41,18 +39,13 @@ void ClothingObject::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
+void ClothingObject::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ClothingObjectImplementation* _implementation = static_cast<ClothingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 DistributedObjectServant* ClothingObject::_getImplementation() {
@@ -192,9 +185,9 @@ void ClothingObjectImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("ClothingObject");
 }
 
-void ClothingObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/wearables/ClothingObject.idl():  		super.updateCraftingValues(schematic);
-	WearableObjectImplementation::updateCraftingValues(schematic);
+void ClothingObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	// server/zone/objects/tangible/wearables/ClothingObject.idl():  		super.updateCraftingValues(values, firstUpdate);
+	WearableObjectImplementation::updateCraftingValues(values, firstUpdate);
 }
 
 /*
@@ -211,9 +204,6 @@ Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	default:
 		return NULL;
 	}
@@ -223,10 +213,6 @@ Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void ClothingObjectAdapter::initializeTransientMembers() {
 	(static_cast<ClothingObject*>(stub))->initializeTransientMembers();
-}
-
-void ClothingObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<ClothingObject*>(stub))->updateCraftingValues(schematic);
 }
 
 /*

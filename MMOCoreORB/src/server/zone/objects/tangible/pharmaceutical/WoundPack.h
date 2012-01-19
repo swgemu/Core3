@@ -149,7 +149,7 @@ class WoundPack : public PharmaceuticalObject {
 public:
 	WoundPack();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -202,7 +202,7 @@ public:
 
 	WoundPackImplementation(DummyConstructorParameter* param);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

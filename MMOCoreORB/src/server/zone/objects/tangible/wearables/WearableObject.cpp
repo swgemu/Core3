@@ -6,8 +6,6 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 #include "server/zone/Zone.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -18,7 +16,7 @@
  *	WearableObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
@@ -56,18 +54,13 @@ void WearableObject::fillAttributeList(AttributeListMessage* msg, CreatureObject
 		_implementation->fillAttributeList(msg, object);
 }
 
-void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
+void WearableObject::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void WearableObject::applyAttachment(CreatureObject* player, Attachment* attachment) {
@@ -391,9 +384,6 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	case RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_:
 		applyAttachment(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Attachment*>(inv->getObjectParameter()));
 		break;
@@ -427,10 +417,6 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void WearableObjectAdapter::initializeTransientMembers() {
 	(static_cast<WearableObject*>(stub))->initializeTransientMembers();
-}
-
-void WearableObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<WearableObject*>(stub))->updateCraftingValues(schematic);
 }
 
 void WearableObjectAdapter::applyAttachment(CreatureObject* player, Attachment* attachment) {

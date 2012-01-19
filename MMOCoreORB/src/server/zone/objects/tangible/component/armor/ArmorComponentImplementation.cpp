@@ -51,23 +51,20 @@ void ArmorComponentImplementation::initializeTransientMembers() {
 
 }
 
-void ArmorComponentImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void ArmorComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
-	ComponentImplementation::updateCraftingValues(schematic);
-
-	if(schematic->isFirstCraftingUpdate()) {
+	if(firstUpdate) {
 
 		setPropertyToHidden("armor_special_effectiveness");
 
-		int special = craftingValues->getCurrentValue("armor_special_type");
+		int special = values->getCurrentValue("armor_special_type");
 		specialResists = specialResists | special;
-		craftingValues->setCurrentValue("armor_special_type", specialResists);
+		values->setCurrentValue("armor_special_type", specialResists);
 	}
 
 	String expProp = "exp_resistance";
-	float specialbase = craftingValues->getCurrentValue("armor_special_effectiveness");
+	float specialbase = values->getCurrentValue("armor_special_effectiveness");
 
 	if (specialResists & WeaponObject::KINETIC)
 		addProperty("kineticeffectiveness", specialbase, 10, expProp);

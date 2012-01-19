@@ -63,6 +63,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();

@@ -119,20 +119,6 @@ using namespace server::zone::objects::creature::buffs;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
-
-namespace server {
-namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -181,7 +167,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -290,7 +276,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

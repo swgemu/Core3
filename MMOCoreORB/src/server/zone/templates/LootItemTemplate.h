@@ -45,13 +45,7 @@ public:
 		chance = templateData->getFloatField("chance");
 		customObjectName = templateData->getStringField("customObjectName");
 
-		if (!directObjectTemplate.isEmpty())
-			return;
-
-		draftSchematic = templateData->getStringField("draftSchematic");
-
-		LuaObject experimentalSubGroupTitlesList =
-				templateData->getObjectField("experimentalSubGroupTitles");
+		LuaObject experimentalSubGroupTitlesList = templateData->getObjectField("experimentalSubGroupTitles");
 
 		for (int i = 1; i <= experimentalSubGroupTitlesList.getTableSize(); ++i) {
 			experimentalSubGroupTitles.add(experimentalSubGroupTitlesList.getStringAt(i));

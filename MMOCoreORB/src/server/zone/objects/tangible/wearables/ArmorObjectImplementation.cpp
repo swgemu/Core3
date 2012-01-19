@@ -258,9 +258,9 @@ int ArmorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
-void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 
-	WearableObjectImplementation::updateCraftingValues(schematic);
+	WearableObjectImplementation::updateCraftingValues(values, firstUpdate);
 
 	/*
 	 * Incoming Values:					Ranges:
@@ -276,44 +276,38 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 	 * armor_special_effectiveness
 	 * armor_special_integrity
 	 */
-	CraftingValues* craftingValues = schematic->getCraftingValues();
 	//craftingValues->toString();
 
-	if(schematic->isFirstCraftingUpdate()) {
+	if(firstUpdate) {
+		calculateSpecialProtection(values);
 
-		calculateSpecialProtection(schematic);
+		setRating((int) values->getCurrentValue("armor_rating"));
 
-		setRating((int) craftingValues->getCurrentValue("armor_rating"));
-
-		setMaxCondition((int) craftingValues->getCurrentValue("armor_integrity"));
+		setMaxCondition((int) values->getCurrentValue("armor_integrity"));
 		setConditionDamage(0);
 	}
 
-	setHealthEncumbrance((int) craftingValues->getCurrentValue(
+	setHealthEncumbrance((int) values->getCurrentValue(
 			"armor_health_encumbrance"));
-	setActionEncumbrance((int) craftingValues->getCurrentValue(
+	setActionEncumbrance((int) values->getCurrentValue(
 			"armor_action_encumbrance"));
-	setMindEncumbrance((int) craftingValues->getCurrentValue(
+	setMindEncumbrance((int) values->getCurrentValue(
 			"armor_mind_encumbrance"));
 
-	float base = craftingValues->getCurrentValue("armor_effectiveness");
+	float base = values->getCurrentValue("armor_effectiveness");
 
-	setProtection(schematic, WeaponObject::KINETIC, base);
-	setProtection(schematic, WeaponObject::ENERGY, base);
-	setProtection(schematic, WeaponObject::ELECTRICITY, base);
-	setProtection(schematic, WeaponObject::STUN, base);
-	setProtection(schematic, WeaponObject::BLAST, base);
-	setProtection(schematic, WeaponObject::HEAT, base);
-	setProtection(schematic, WeaponObject::COLD, base);
-	setProtection(schematic, WeaponObject::ACID, base);
-	setProtection(schematic, WeaponObject::LIGHTSABER, base);
+	setProtection(values, firstUpdate, WeaponObject::KINETIC, base);
+	setProtection(values, firstUpdate, WeaponObject::ENERGY, base);
+	setProtection(values, firstUpdate, WeaponObject::ELECTRICITY, base);
+	setProtection(values, firstUpdate, WeaponObject::STUN, base);
+	setProtection(values, firstUpdate, WeaponObject::BLAST, base);
+	setProtection(values, firstUpdate, WeaponObject::HEAT, base);
+	setProtection(values, firstUpdate, WeaponObject::COLD, base);
+	setProtection(values, firstUpdate, WeaponObject::ACID, base);
+	setProtection(values, firstUpdate, WeaponObject::LIGHTSABER, base);
 }
 
-void ArmorObjectImplementation::calculateSpecialProtection(
-		ManufactureSchematic* schematic) {
-
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
+void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craftingValues) {
 	float base = craftingValues->getCurrentValue("armor_effectiveness");
 	float value, min, max, currentValue;
 	String title = "exp_resistance";
@@ -348,15 +342,11 @@ void ArmorObjectImplementation::calculateSpecialProtection(
 	}
 }
 
-void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
-		int type, float base) {
-
-	CraftingValues* craftingValues = schematic->getCraftingValues();
-
+void ArmorObjectImplementation::setProtection(CraftingValues* craftingValues, bool firstUpdate, int type, float base) {
 	float value = craftingValues->getCurrentValue(getStringType(type));
 
 	if (value == CraftingValues::VALUENOTFOUND
-			&& schematic->isFirstCraftingUpdate()) {
+			&& firstUpdate) {
 		craftingValues->lockValue(getStringType(type));
 	}
 

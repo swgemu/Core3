@@ -51,20 +51,6 @@ using namespace server::zone::packets::object;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
-
-namespace server {
-namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -103,6 +89,8 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -127,7 +115,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCraftingStation();
 
@@ -189,7 +177,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCraftingStation();
 
@@ -249,8 +237,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCraftingStation();
 

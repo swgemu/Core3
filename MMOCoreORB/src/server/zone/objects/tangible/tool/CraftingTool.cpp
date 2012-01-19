@@ -12,8 +12,6 @@
 
 #include "server/zone/managers/crafting/CraftingManager.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -26,7 +24,7 @@
  *	CraftingToolStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_,RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_,RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_,RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_,RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_,RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_,RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_,RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_,RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_,RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_,RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
@@ -97,18 +95,13 @@ void CraftingTool::fillAttributeList(AttributeListMessage* msg, CreatureObject* 
 		_implementation->fillAttributeList(msg, object);
 }
 
-void CraftingTool::updateCraftingValues(ManufactureSchematic* schematic) {
+void CraftingTool::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(schematic);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 bool CraftingTool::isCraftingTool() {
@@ -792,9 +785,6 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
-	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
-		updateCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
-		break;
 	case RPC_ISCRAFTINGTOOL__:
 		resp->insertBoolean(isCraftingTool());
 		break;
@@ -880,10 +870,6 @@ void CraftingToolAdapter::initializeTransientMembers() {
 
 int CraftingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<CraftingTool*>(stub))->handleObjectMenuSelect(player, selectedID);
-}
-
-void CraftingToolAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
-	(static_cast<CraftingTool*>(stub))->updateCraftingValues(schematic);
 }
 
 bool CraftingToolAdapter::isCraftingTool() {

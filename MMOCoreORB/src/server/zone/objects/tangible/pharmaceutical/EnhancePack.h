@@ -177,7 +177,7 @@ class EnhancePack : public PharmaceuticalObject {
 public:
 	EnhancePack();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
@@ -234,7 +234,7 @@ public:
 
 	EnhancePackImplementation(DummyConstructorParameter* param);
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 

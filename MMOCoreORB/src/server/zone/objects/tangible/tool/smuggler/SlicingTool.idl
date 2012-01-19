@@ -95,7 +95,8 @@ class SlicingTool extends TangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
-	public native void updateCraftingValues(ManufactureSchematic schematic);
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	public native boolean calculateSuccessRate();
 	

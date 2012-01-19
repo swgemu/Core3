@@ -10,8 +10,6 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
 /*
  *	SurveyToolStub
  */
@@ -63,13 +61,13 @@ void SurveyTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Creatu
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-void SurveyTool::updateCraftingValues(ManufactureSchematic* schematic) {
+void SurveyTool::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	SurveyToolImplementation* _implementation = static_cast<SurveyToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
 void SurveyTool::setRange(int r) {
@@ -658,7 +656,7 @@ void SurveyToolImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("SurveyTool");
 }
 
-void SurveyToolImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+void SurveyToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 }
 
 int SurveyToolImplementation::getPoints() {

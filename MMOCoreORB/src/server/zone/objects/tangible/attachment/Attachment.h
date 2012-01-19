@@ -13,20 +13,6 @@
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace manufactureschematic {
-
-class ManufactureSchematic;
-
-} // namespace manufactureschematic
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::manufactureschematic;
-
-namespace server {
-namespace zone {
 namespace packets {
 namespace object {
 
@@ -117,6 +103,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
 
 #include "server/zone/objects/tangible/wearables/WearableSkillMods.h"
@@ -143,7 +131,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void initializeMembers();
 
@@ -224,7 +212,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void updateCraftingValues(ManufactureSchematic* schematic);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void initializeMembers();
 
@@ -302,8 +290,6 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
-
-	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void initializeMembers();
 

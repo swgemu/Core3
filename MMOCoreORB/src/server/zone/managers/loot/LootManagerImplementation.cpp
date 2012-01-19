@@ -68,9 +68,21 @@ void LootManagerImplementation::loadDefaultConfig() {
 }
 
 void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype) {
-	int size = craftingValues->getExperimentalPropertyTitleSize();
+	SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
 
-	craftingValues->clear();
+	if (tanoTemplate != NULL) {
+		Vector<String>* props = tanoTemplate->getExperimentalSubGroupTitles();
+		Vector<int>* mins = tanoTemplate->getExperimentalMin();
+		Vector<int>* maxs = tanoTemplate->getExperimentalMax();
+		Vector<short>* prec = tanoTemplate->getExperimentalPrecision();
+
+		for (int i = 0; i < props->size(); ++i) {
+			String property = props->get(i);
+
+			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false);
+			craftingValues->setMaxPercentage(property, 1.0f);
+		}
+	}
 
 	Vector<String>* properties = templateObject->getExperimentalSubGroupTitles();
 	Vector<int>* minValues = templateObject->getExperimentalMin();
@@ -133,73 +145,40 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level) {
 	String directTemplateObject = templateObject->getDirectObjectTemplate();
 
-	if (!directTemplateObject.isEmpty()) {
-		SceneObject* newObject = zoneServer->createObject(directTemplateObject.hashCode(), 2);
-		newObject->createChildObjects();
+	ManagedReference<TangibleObject*> prototype = dynamic_cast<TangibleObject*> (zoneServer->createObject(directTemplateObject.hashCode(), 2));
 
-		if (newObject != NULL && newObject->isTangibleObject())
-			setCustomObjectName(cast<TangibleObject*>(newObject), templateObject);
-
-		return newObject;
-	}
-
-	ManagedReference<DraftSchematic*> draftSchematic = craftingManager->getSchematic(templateObject->getDraftSchematic().hashCode());
-
-	if (draftSchematic == NULL) {
-		error("could not create draftSchematic " + templateObject->getDraftSchematic());
+	if (prototype == NULL)
 		return NULL;
-	}
 
-	ManagedReference<ManufactureSchematic*> manufactureSchematic = dynamic_cast<ManufactureSchematic* >(draftSchematic->createManufactureSchematic(NULL));
-	manufactureSchematic->setDraftSchematic(NULL, draftSchematic);
-
-	ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (zoneServer->createObject(draftSchematic->getTanoCRC(), 2));
 	prototype->createChildObjects();
 
-	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
-	craftingValues->addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
+	CraftingValues craftingValues;
+	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
 
-	prototype->setInitialCraftingValues(manufactureSchematic);
-	prototype->updateCraftingValues(manufactureSchematic);
-
-	Vector<byte>* customizationOptions = draftSchematic->getCustomizationOptions();
-	Vector<byte>* customizationDefaultValues = draftSchematic->getCustomizationDefaultValues();
-
-	for (int i = 0; i < customizationOptions->size(); ++i) {
-		prototype->setCustomizationVariable(customizationOptions->get(i), customizationDefaultValues->get(i));
-	}
-
-	manufactureSchematic->setAssembled();
-
-	manufactureSchematic->setFirstCraftingUpdateComplete();
-
-	setInitialObjectStats(templateObject, craftingValues, prototype);
+	setInitialObjectStats(templateObject, &craftingValues, prototype);
 
 	int qualityResult = System::random(templateObject->getQualityRangeMin() - templateObject->getQualityRangeMax()) + templateObject->getQualityRangeMax();
 
-	//info("qualityResult = " + String::valueOf(qualityResult), true);
-
 	float modifier, newValue;
-
 	String title, subtitle, subtitlesTitle;
 
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-		subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
+		subtitlesTitle = craftingValues.getExperimentalPropertySubtitlesTitle(i);
+		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
 		modifier = craftingManager->calculateExperimentationValueModifier(qualityResult, 5);
-		newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
+		newValue = craftingValues.getCurrentPercentage(subtitle) + modifier;
 
-		if (newValue > craftingValues->getMaxPercentage(subtitle))
-			newValue = craftingValues->getMaxPercentage(subtitle);
+		if (newValue > craftingValues.getMaxPercentage(subtitle))
+			newValue = craftingValues.getMaxPercentage(subtitle);
 
-		craftingValues->setCurrentPercentage(subtitle, newValue);
+		craftingValues.setCurrentPercentage(subtitle, newValue);
 	}
 
 	// Use percentages to recalculate the values
-	craftingValues->recalculateValues(false);
+	craftingValues.recalculateValues(false);
 
 	// Update the Tano with new values
-	prototype->updateCraftingValues(manufactureSchematic);
+	prototype->updateCraftingValues(&craftingValues, false);
 
 	setCustomObjectName(prototype, templateObject);
 
