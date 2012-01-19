@@ -5,7 +5,6 @@ flurr_clie_onion = {
 	maximumLevel = -1,
 	customObjectName = "Flurr-Cle Onion",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s3.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

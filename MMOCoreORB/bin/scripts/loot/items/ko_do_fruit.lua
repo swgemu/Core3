@@ -5,7 +5,6 @@ ko_do_fruit = {
 	maximumLevel = -1,
 	customObjectName = "Ko-Do Fruit",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s4.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

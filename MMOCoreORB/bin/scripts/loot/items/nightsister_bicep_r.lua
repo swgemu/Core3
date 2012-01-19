@@ -5,7 +5,6 @@ nightsister_bicep_r = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/armor/nightsister/armor_nightsister_bicep_r_s01.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},

@@ -5,7 +5,6 @@ geo_kwi_adrenal_boost = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/creature_bio_effects/bio_kwi_adrenal_boost.iff",
-	draftSchematic = "",
 	experimentalSubGroupTitles = {},
 	experimentalMin = {},
 	experimentalMax = {},
