@@ -41,12 +41,12 @@
 --which carries forward this exception.
 
 --Determines how often exceptional and legendary items can drop.
-exceptionalChance = 0.001
-legendaryChance = 0.0001
+exceptionalChance = 0.00001 --1 in 100,000
+legendaryChance = .000001 --1 in 1,000,000
 
 --Determines how much of an increase in the base stats will be applied to the object.
-exceptionalModifier = 0.20
-legendaryModifier = 0.40
+exceptionalModifier = 2.5
+legendaryModifier = 5.0
 
 lootableStatMods = {
 	"aim",
