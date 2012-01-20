@@ -75,12 +75,12 @@ public:
 	}
 
 	/*void updateIncapacitationRecoveryTime(uint32 dur) {
-		addIntUpdate(0x07, dur);
+		addIntUpdate(0x07, dur);*/
 
 
 	void updateFactionRank() {
 		addByteUpdate(0x0C, creo->getFactionRank());
-	}*/
+	}
 
 	void updateState() {
 		addLongUpdate(0x10, creo->getStateBitmask());

@@ -45,8 +45,8 @@ void MissionObjectImplementation::setRefreshCounter(int ctr, bool notifyClient) 
 }
 
 void MissionObjectImplementation::setTypeCRC(uint32 crc, bool notifyClient) {
-	if (typeCRC == crc)
-		return;
+	/*if (typeCRC == crc)
+		return;*/
 
 	typeCRC = crc;
 

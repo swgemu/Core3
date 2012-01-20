@@ -10,21 +10,19 @@ function imperial_officer_3_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	local lastScreenId = ""
+	lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
-		lastScreenId = session:getLastConversationScreenName()
+		lastConversationScreen = session:getLastConversationScreen()
 	end
 	
 	local conversation = LuaConversationTemplate(conversationTemplate)
-	
-	local lastConversationScreen = conversation:getScreen(lastScreenId)
-	
-	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+		
 	local nextConversationScreen
 	
-	if (string.len(lastScreenId) > 0) then
+	if (lastConversationScreen ~= nil) then
+		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
@@ -82,21 +80,19 @@ function imperial_officer_5_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	local lastScreenId = ""
+	lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
-		lastScreenId = session:getLastConversationScreenName()
+		lastConversationScreen = session:getLastConversationScreen()
 	end
 	
 	local conversation = LuaConversationTemplate(conversationTemplate)
 	
-	local lastConversationScreen = conversation:getScreen(lastScreenId)
-	
-	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 	local nextConversationScreen
 	
-	if (string.len(lastScreenId) > 0) then
+	if (lastConversationScreen ~= nil) then
+		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)	
 		
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
@@ -134,21 +130,19 @@ function imperial_officer_6_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	local lastScreenId = ""
+	lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
-		lastScreenId = session:getLastConversationScreenName()
+		lastConversationScreen = session:getLastConversationScreen()
 	end
 	
 	local conversation = LuaConversationTemplate(conversationTemplate)
 	
-	local lastConversationScreen = conversation:getScreen(lastScreenId)
-	
-	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 	local nextConversationScreen
 	
-	if (string.len(lastScreenId) > 0) then
+	if (lastConversationScreen ~= nil) then
+		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
@@ -190,22 +184,19 @@ function commoner_handler:getNextConversationScreen(conversationTemplate, conver
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	local lastScreenId = ""
+	lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
-		lastScreenId = session:getLastConversationScreenName()
+		lastConversationScreen = session:getLastConversationScreen()
 	end
 	
 	local conversation = LuaConversationTemplate(conversationTemplate)
 	
-	local lastConversationScreen = conversation:getScreen(lastScreenId)
-	
-	local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 	local nextConversationScreen
 	
-	if (string.len(lastScreenId) > 0) then
-		
+	if (lastConversationScreen ~= nil) then
+		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		

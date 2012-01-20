@@ -73,7 +73,7 @@ class TangibleObject extends SceneObject {
 	protected float complexity;
 	protected int volume;
 	
-	protected int faction;
+	protected unsigned int faction;
 	
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
@@ -461,7 +461,7 @@ class TangibleObject extends SceneObject {
 		faction = crc;
 	}
 	
-	public int getFaction() {
+	public unsigned int getFaction() {
 		return faction;
 	}
 	
@@ -514,9 +514,7 @@ class TangibleObject extends SceneObject {
 		customizationVariables.parseFromClientString(vars);
 	}
 	
-	public void setPvpStatusBitmask(int bitmask) {
-		pvpStatusBitmask = bitmask;
-	}
+	public native void setPvpStatusBitmask(int bitmask, boolean notifyClient = true);
 	
 	public void setCraftersName(string name) {
 		craftersName = name;

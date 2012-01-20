@@ -462,6 +462,11 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	} catch (...) {
 		//zone->runlock();
 
+		if (param != NULL) {
+			delete param;
+			param = NULL;
+		}
+
 		throw;
 	}
 

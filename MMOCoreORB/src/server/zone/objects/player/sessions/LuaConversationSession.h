@@ -25,8 +25,8 @@ public:
 
 	int _setObject(lua_State* L);
 	// Methods we will need to use
-	int setLastConversationScreenName(lua_State* L);
-	int getLastConversationScreenName(lua_State* L);
+	int setLastConversationScreen(lua_State* L);
+	int getLastConversationScreen(lua_State* L);
 
 
 private:

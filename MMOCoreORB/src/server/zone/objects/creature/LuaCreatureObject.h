@@ -29,6 +29,7 @@ namespace creature {
 		~LuaCreatureObject();
 
 		int _setObject(lua_State* L);
+		int _getObject(lua_State* L);
 		// Methods we will need to use
 		int getBankCredits(lua_State *L);
 		int setBankCredits(lua_State* L);
@@ -58,9 +59,14 @@ namespace creature {
 		int engageCombat(lua_State* L);
 		int getPlayerObject(lua_State* L);
 		int getFaction(lua_State* L);
+		int setFaction(lua_State* L);
 		int isImperial(lua_State* L);
 		int isRebel(lua_State* L);
 		int isNeutral(lua_State* L);
+		int setFactionRank(lua_State* L);
+		int getFactionRank(lua_State* L);
+		int getCashCredits(lua_State* L);
+		int subtractCashCredits(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

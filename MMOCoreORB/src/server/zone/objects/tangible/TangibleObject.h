@@ -342,7 +342,7 @@ public:
 
 	void setFaction(unsigned int crc);
 
-	int getFaction();
+	unsigned int getFaction();
 
 	bool isRebel();
 
@@ -362,7 +362,7 @@ public:
 
 	void setCustomizationString(const String& vars);
 
-	void setPvpStatusBitmask(int bitmask);
+	void setPvpStatusBitmask(int bitmask, bool notifyClient = true);
 
 	void setCraftersName(String& name);
 
@@ -419,7 +419,7 @@ protected:
 
 	int volume;
 
-	int faction;
+	unsigned int faction;
 
 	CustomizationVariables customizationVariables;
 
@@ -618,7 +618,7 @@ public:
 
 	void setFaction(unsigned int crc);
 
-	int getFaction();
+	unsigned int getFaction();
 
 	bool isRebel();
 
@@ -638,7 +638,7 @@ public:
 
 	void setCustomizationString(const String& vars);
 
-	void setPvpStatusBitmask(int bitmask);
+	void setPvpStatusBitmask(int bitmask, bool notifyClient = true);
 
 	void setCraftersName(String& name);
 
@@ -789,7 +789,7 @@ public:
 
 	void setFaction(unsigned int crc);
 
-	int getFaction();
+	unsigned int getFaction();
 
 	bool isRebel();
 
@@ -809,7 +809,7 @@ public:
 
 	void setCustomizationString(const String& vars);
 
-	void setPvpStatusBitmask(int bitmask);
+	void setPvpStatusBitmask(int bitmask, bool notifyClient);
 
 	void setCraftersName(String& name);
 

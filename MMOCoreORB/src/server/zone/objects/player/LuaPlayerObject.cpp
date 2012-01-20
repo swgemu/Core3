@@ -19,6 +19,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "isOvert", &LuaPlayerObject::isOvert },
 		{ "isCovert", &LuaPlayerObject::isCovert },
 		{ "isChangingFactionStatus", &LuaPlayerObject::isChangingFactionStatus },
+		{ "increaseFactionStanding", &LuaPlayerObject::increaseFactionStanding },
+		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ 0, 0 }
 };
 
@@ -43,9 +45,9 @@ int LuaPlayerObject::getFactionStanding(lua_State* L) {
 
 	String faction(str);
 
-	int standing = realObject->getFactionStanding(faction);
+	float standing = realObject->getFactionStanding(faction);
 
-	lua_pushinteger(L, standing);
+	lua_pushnumber(L, standing);
 
 	return 1;
 }
@@ -78,6 +80,24 @@ int LuaPlayerObject::setFactionStatus(lua_State* L) {
 	int status = lua_tointeger(L, -1);
 
 	realObject->setFactionStatus(status);
+
+	return 0;
+}
+
+int LuaPlayerObject::increaseFactionStanding(lua_State* L) {
+	float val = lua_tonumber(L, -1);
+	const char* str = lua_tostring(L, -2);
+
+	realObject->increaseFactionStanding(str, val);
+
+	return 0;
+}
+
+int LuaPlayerObject::decreaseFactionStanding(lua_State* L) {
+	float val = lua_tonumber(L, -1);
+	const char* str = lua_tostring(L, -2);
+
+	realObject->decreaseFactionStanding(str, val);
 
 	return 0;
 }

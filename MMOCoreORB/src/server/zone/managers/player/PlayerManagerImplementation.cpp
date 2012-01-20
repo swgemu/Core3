@@ -18,6 +18,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/faction/FactionManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/db/MantisDatabase.h"
 #include "server/chat/ChatManager.h"
@@ -850,8 +851,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	player->setPosture(CreaturePosture::DEAD, true);
 
-	CombatManager::instance()->freeDuelList(player, false);
-
 	sendActivateCloneRequest(player, typeofdeath);
 
 	stringId.setStringId("base_player", "prose_victim_dead");
@@ -860,6 +859,25 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	player->updateTimeOfDeath();
 	player->clearBuffs(true);
+
+	if (attacker->getFaction() != 0) {
+		if (attacker->isPlayerCreature()) {
+			CreatureObject* attackerCreature = cast<CreatureObject*>(attacker);
+			//FactionManager::instance()->awardPvpFactionPoints()
+			PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
+			PlayerObject* ghost = player->getPlayerObject();
+
+			bool areInDuel = (ghost->requestedDuelTo(attackerCreature) && attackerGhost->requestedDuelTo(player));
+
+			if (!areInDuel) {
+				FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
+			}
+		} else {
+			FactionManager::instance()->awardPvpFactionPoints(attacker, player);
+		}
+	}
+
+	CombatManager::instance()->freeDuelList(player, false);
 
 	/*Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(10 * 1000);*/
@@ -893,8 +911,6 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 	if (closestCloning == NULL)//TODO: Add default location so people don't get stuck
 		return;
-
-
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
@@ -994,6 +1010,10 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		return;
 	}
 
+	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE) {
+		ghost->setFactionStatus(FactionStatus::ONLEAVE); // TODO: setting this to onleave untill we have factional cloners
+	}
+
 	Coordinate* coordinate = clonePoint->getCoordinate();
 	Quaternion* direction = clonePoint->getDirection();
 	int cellID = clonePoint->getCellID();
@@ -1029,7 +1049,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 			SceneObject* item = insurableItems.get(i);
 
 			if (item != NULL && item->isTangibleObject()) {
-				ManagedReference<TangibleObject*> obj = (TangibleObject*)item;
+				ManagedReference<TangibleObject*> obj = cast<TangibleObject*>(item);
 
 				if (obj->getOptionsBitmask() & OptionBitmask::INSURED) {
 					//1% Decay for insured items
@@ -2418,7 +2438,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
 
 	String stringArgs = args.toString();
 
-	for (int i = 0; i < totalItems; ++i) {
+	for (int i = totalItems - 1; i >= 0; --i) {
 		SceneObject* object = creatureInventory->getContainerObject(i);
 
 		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), object->getObjectID(), stringArgs);

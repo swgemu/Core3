@@ -57,7 +57,7 @@ namespace server {
 
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
 		void activateEvent(ScreenPlayTask* task);
-		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption);
+		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
 		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 		Lua* getLuaInstance();
@@ -79,6 +79,13 @@ namespace server {
 		static int giveItem(lua_State* L);
 		static int checkInt64Lua(lua_State* L);
 		static int getChatMessage(lua_State* L);
+		static int createConversationScreen(lua_State* L);
+		static int getRankName(lua_State* L);
+		static int getRankCost(lua_State* L);
+		static int getRankDelegateRatioFrom(lua_State* L);
+		static int getRankDelegateRatioTo(lua_State* L);
+		static int isHighestRank(lua_State* L);
+		static int getFactionPointsCap(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

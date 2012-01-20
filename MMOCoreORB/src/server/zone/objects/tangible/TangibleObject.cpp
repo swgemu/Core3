@@ -28,7 +28,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETUNKNOWNBYTE__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETCRAFTERSSERIAL__STRING_,RPC_SETLEVEL__INT_,RPC_GETCRAFTERSSERIAL__,RPC_ISFROMFACTORYCRATE__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETUNKNOWNBYTE__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETCRAFTERSSERIAL__STRING_,RPC_SETLEVEL__INT_,RPC_GETCRAFTERSSERIAL__,RPC_ISFROMFACTORYCRATE__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -690,7 +690,7 @@ void TangibleObject::setFaction(unsigned int crc) {
 		_implementation->setFaction(crc);
 }
 
-int TangibleObject::getFaction() {
+unsigned int TangibleObject::getFaction() {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -698,7 +698,7 @@ int TangibleObject::getFaction() {
 
 		DistributedMethod method(this, RPC_GETFACTION__);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getFaction();
 }
@@ -823,18 +823,19 @@ void TangibleObject::setCustomizationString(const String& vars) {
 		_implementation->setCustomizationString(vars);
 }
 
-void TangibleObject::setPvpStatusBitmask(int bitmask) {
+void TangibleObject::setPvpStatusBitmask(int bitmask, bool notifyClient) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETPVPSTATUSBITMASK__INT_);
+		DistributedMethod method(this, RPC_SETPVPSTATUSBITMASK__INT_BOOL_);
 		method.addSignedIntParameter(bitmask);
+		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setPvpStatusBitmask(bitmask);
+		_implementation->setPvpStatusBitmask(bitmask, notifyClient);
 }
 
 void TangibleObject::setCraftersName(String& name) {
@@ -1093,7 +1094,7 @@ bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "faction") {
-		TypeInfo<int >::parseFromBinaryStream(&faction, stream);
+		TypeInfo<unsigned int >::parseFromBinaryStream(&faction, stream);
 		return true;
 	}
 
@@ -1210,7 +1211,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&faction, stream);
+	TypeInfo<unsigned int >::toBinaryStream(&faction, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1502,7 +1503,7 @@ void TangibleObjectImplementation::setFaction(unsigned int crc) {
 	faction = crc;
 }
 
-int TangibleObjectImplementation::getFaction() {
+unsigned int TangibleObjectImplementation::getFaction() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return faction;
 	return faction;
 }
@@ -1573,11 +1574,6 @@ bool TangibleObjectImplementation::isPharmaceuticalObject() {
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
 	// server/zone/objects/tangible/TangibleObject.idl():  		customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
-}
-
-void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		pvpStatusBitmask = bitmask;
-	pvpStatusBitmask = bitmask;
 }
 
 void TangibleObjectImplementation::setCraftersName(String& name) {
@@ -1756,7 +1752,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setFaction(inv->getUnsignedIntParameter());
 		break;
 	case RPC_GETFACTION__:
-		resp->insertSignedInt(getFaction());
+		resp->insertInt(getFaction());
 		break;
 	case RPC_ISREBEL__:
 		resp->insertBoolean(isRebel());
@@ -1785,8 +1781,8 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETCUSTOMIZATIONSTRING__STRING_:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
-	case RPC_SETPVPSTATUSBITMASK__INT_:
-		setPvpStatusBitmask(inv->getSignedIntParameter());
+	case RPC_SETPVPSTATUSBITMASK__INT_BOOL_:
+		setPvpStatusBitmask(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETCRAFTERSNAME__STRING_:
 		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
@@ -1994,7 +1990,7 @@ void TangibleObjectAdapter::setFaction(unsigned int crc) {
 	(static_cast<TangibleObject*>(stub))->setFaction(crc);
 }
 
-int TangibleObjectAdapter::getFaction() {
+unsigned int TangibleObjectAdapter::getFaction() {
 	return (static_cast<TangibleObject*>(stub))->getFaction();
 }
 
@@ -2034,8 +2030,8 @@ void TangibleObjectAdapter::setCustomizationString(const String& vars) {
 	(static_cast<TangibleObject*>(stub))->setCustomizationString(vars);
 }
 
-void TangibleObjectAdapter::setPvpStatusBitmask(int bitmask) {
-	(static_cast<TangibleObject*>(stub))->setPvpStatusBitmask(bitmask);
+void TangibleObjectAdapter::setPvpStatusBitmask(int bitmask, bool notifyClient) {
+	(static_cast<TangibleObject*>(stub))->setPvpStatusBitmask(bitmask, notifyClient);
 }
 
 void TangibleObjectAdapter::setCraftersName(String& name) {

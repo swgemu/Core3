@@ -349,6 +349,9 @@ void SuiManager::handleStartDancing(CreatureObject* player, SuiBox* suiBox, uint
 
 	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
+	if (index == -1)
+		return;
+
 	String dance = listBox->getMenuItemName(index);
 
 	if (!change)
@@ -371,6 +374,9 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 	bool change = (uint16)id == SuiWindowType::MUSIC_CHANGE;
 
 	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+
+	if (index == -1)
+		return;
 
 	String dance = listBox->getMenuItemName(index);
 

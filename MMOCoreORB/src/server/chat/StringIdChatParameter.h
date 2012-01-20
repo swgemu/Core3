@@ -227,6 +227,18 @@ public:
 	inline void setUnknownByte(uint16 val) {
 		unknownByte = val;
 	}
+
+	StringIdParameter* getTT() {
+		return &TT;
+	}
+
+	StringIdParameter* getTU() {
+		return &TU;
+	}
+
+	StringIdParameter* getTO() {
+		return &TO;
+	}
 };
 
 }

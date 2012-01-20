@@ -32,6 +32,8 @@
 
 #include "server/zone/objects/creature/AiObserver.h"
 
+#include "server/zone/objects/player/PlayerObject.h"
+
 /*
  *	AiAgentStub
  */
@@ -1561,9 +1563,23 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl():  		return 
+	// server/zone/objects/creature/AiAgent.idl():  		unsigned 
 	if (_this->isDead())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
+	// server/zone/objects/creature/AiAgent.idl():  		unsigned int targetFaction = object.getFaction();
+	unsigned int targetFaction = object->getFaction();
+	// server/zone/objects/creature/AiAgent.idl():  		return 
+	if (targetFaction != 0 && CreatureObjectImplementation::getFaction() != 0){
+	// server/zone/objects/creature/AiAgent.idl():  			PlayerObject ghost = object.getPlayerObject();
+	PlayerObject* ghost = object->getPlayerObject();
+	// server/zone/objects/creature/AiAgent.idl():  		}
+	if (ghost == NULL && (targetFaction != CreatureObjectImplementation::getFaction()))	// server/zone/objects/creature/AiAgent.idl():  				return true;
+	return true;
+
+	else 	// server/zone/objects/creature/AiAgent.idl():  		}
+	if (ghost != NULL && (targetFaction != CreatureObjectImplementation::getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)	// server/zone/objects/creature/AiAgent.idl():  				return true;
+	return true;
+}
 	// server/zone/objects/creature/AiAgent.idl():  		return true;
 	return true;
 }

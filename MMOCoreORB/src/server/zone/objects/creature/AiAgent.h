@@ -217,6 +217,20 @@ class AiObserver;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerObject;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 
 #include "server/zone/objects/creature/PatrolPoint.h"
@@ -224,6 +238,8 @@ using namespace server::zone::objects::creature;
 #include "server/zone/objects/scene/WorldCoordinates.h"
 
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
+
+#include "server/zone/objects/player/FactionStatus.h"
 
 #include "system/thread/Mutex.h"
 
@@ -493,7 +509,7 @@ protected:
 
 	Reference<CreatureTemplate* > npcTemplate;
 
-	ManagedReference<CreatureObject* > lootOwner;
+	ManagedWeakReference<CreatureObject* > lootOwner;
 
 	bool baby;
 

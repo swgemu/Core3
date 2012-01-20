@@ -940,6 +940,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
+	public native void setFactionRank(int rank, boolean notifyClient = true);
 	
 	public native string getFirstName();
 	public native string getLastName();

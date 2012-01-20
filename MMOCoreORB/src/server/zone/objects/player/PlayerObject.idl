@@ -1168,6 +1168,8 @@ class PlayerObject extends IntangibleObject {
 		return factionStatus;
 	}
 	
+	public native void setFactionStatus(int status);
+	
 	public unsigned int getClientLastMovementStamp() {
 		return clientLastMovementStamp;
 	}

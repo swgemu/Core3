@@ -15,6 +15,7 @@ const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
 Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "_setObject", &LuaCreatureObject::_setObject },
+		{ "_getObject", &LuaCreatureObject::_getObject },
 		{ "getBankCredits", &LuaCreatureObject::getBankCredits },
 		{ "setBankCredits", &LuaCreatureObject::setBankCredits },
 		{ "sendSystemMessage", &LuaCreatureObject::sendSystemMessage },
@@ -52,9 +53,14 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "engageCombat", &LuaCreatureObject::engageCombat},
 		{ "getPlayerObject", &LuaCreatureObject::getPlayerObject},
 		{ "getFaction", &LuaCreatureObject::getFaction},
+		{ "setFaction", &LuaCreatureObject::setFaction},
 		{ "isRebel", &LuaCreatureObject::isRebel},
 		{ "isImperial", &LuaCreatureObject::isImperial},
 		{ "isNeutral", &LuaCreatureObject::isNeutral},
+		{ "setFactionRank", &LuaCreatureObject::setFactionRank},
+		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
+		{ "getCashCredits", &LuaCreatureObject::getCashCredits},
+		{ "subtractCashCredits", &LuaCreatureObject::subtractCashCredits},
 		{ 0, 0 }
 };
 
@@ -67,6 +73,12 @@ LuaCreatureObject::~LuaCreatureObject(){
 
 int LuaCreatureObject::_setObject(lua_State* L) {
 	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+	return 0;
+}
+
+int LuaCreatureObject::_getObject(lua_State* L) {
+	lua_pushlightuserdata(L, realObject.get());
 
 	return 0;
 }
@@ -174,7 +186,9 @@ int LuaCreatureObject::hasSkill(lua_State* L) {
 	String value = lua_tostring(L, -1);
 
 	bool check = realObject->hasSkill(value);
-	lua_pushnumber(L, check);
+
+	lua_pushboolean(L, check);
+
 	return 1;
 }
 
@@ -306,7 +320,7 @@ int LuaCreatureObject::getPlayerObject(lua_State* L) {
 }
 
 int LuaCreatureObject::getFaction(lua_State* L) {
-	int faction = realObject->getFaction();
+	uint32 faction = realObject->getFaction();
 
 	lua_pushinteger(L, faction);
 
@@ -331,3 +345,36 @@ int LuaCreatureObject::isImperial(lua_State* L) {
 	return 1;
 }
 
+int LuaCreatureObject::setFaction(lua_State* L) {
+	uint32 faction = lua_tointeger(L, -1);
+
+	realObject->setFaction(faction);
+
+	return 0;
+}
+
+int LuaCreatureObject::setFactionRank(lua_State* L) {
+	int rank = lua_tointeger(L, -1);
+
+	realObject->setFactionRank(rank);
+
+	return 0;
+}
+
+int LuaCreatureObject::getFactionRank(lua_State* L) {
+	lua_pushinteger(L, realObject->getFactionRank());
+
+	return 1;
+}
+
+int LuaCreatureObject::getCashCredits(lua_State* L) {
+	lua_pushinteger(L, realObject->getCashCredits());
+
+	return 1;
+}
+
+int LuaCreatureObject::subtractCashCredits(lua_State* L) {
+	realObject->subtractCashCredits(lua_tointeger(L, -1));
+
+	return 0;
+}

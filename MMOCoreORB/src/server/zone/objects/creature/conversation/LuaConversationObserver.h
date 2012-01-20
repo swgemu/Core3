@@ -49,7 +49,7 @@ class LuaConversationObserver : public ConversationObserver {
 public:
 	LuaConversationObserver(ConversationTemplate* conversationTemplate);
 
-	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
+	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
 
 	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
@@ -86,7 +86,7 @@ public:
 
 	LuaConversationObserverImplementation(DummyConstructorParameter* param);
 
-	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
+	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
 
 	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 

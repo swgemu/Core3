@@ -63,7 +63,9 @@ which carries forward this exception.
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -122,6 +124,35 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 
 	BaseMessage* pvp = new UpdatePVPStatusMessage(_this, newPvpStatusBitmask);
 	player->sendMessage(pvp);
+}
+
+void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyClient) {
+	pvpStatusBitmask = bitmask;
+
+	if (getZone() == NULL)
+		return;
+
+	if (closeobjects != NULL) {
+		Zone* zone = getZone();
+
+		Locker locker(zone);
+
+		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get());
+
+		for (int i = 0; i < closeobjects->size(); ++i) {
+			SceneObject* obj = cast<SceneObject*>(closeobjects->get(i).get());
+
+			if (obj != NULL && obj->isPlayerCreature()) {
+				CreatureObject* creo = cast<CreatureObject*>(obj);
+
+				sendPvpStatusTo(creo);
+
+				if (thisCreo != NULL)
+					creo->sendPvpStatusTo(thisCreo);
+			}
+
+		}
+	}
 }
 
 void TangibleObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {

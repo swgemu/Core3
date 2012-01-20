@@ -97,7 +97,7 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 			createConversationSession(player);
 		}
 		//Select next conversation screen.
-		ConversationScreen* conversationScreen = getNextConversationScreen(player, selectedOption);
+		Reference<ConversationScreen*> conversationScreen = getNextConversationScreen(player, selectedOption, npc);
 
 		if (conversationScreen != NULL) {
 			//Modify the conversation screen.
@@ -106,6 +106,9 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 
 		//Send the conversation screen to the player.
 		sendConversationScreenToPlayer(player, npc, conversationScreen);
+
+		if (conversationScreen == NULL)
+			cancelConversationSession(player);
 	}
 
 	//Keep the observer.
@@ -117,24 +120,27 @@ void ConversationObserverImplementation::createConversationSession(CreatureObjec
 }
 
 void ConversationObserverImplementation::cancelConversationSession(CreatureObject* conversingPlayer) {
-	Facade* session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION);
+	ManagedReference<Facade*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION);
+
 	if (session != NULL) {
 		session->cancelSession();
 	}
+
 	conversingPlayer->dropActiveSession(SessionFacadeType::CONVERSATION);
 }
 
-ConversationScreen* ConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption) {
+ConversationScreen* ConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
 	//Get screen ID from last conversation screen.
-	ConversationSession* session = cast<ConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
-	String lastScreenId = "";
+	Reference<ConversationSession*> session = cast<ConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	/*String lastScreenId = "";
 	if (session != NULL) {
 		lastScreenId = session->getLastConversationScreenName();
-	}
+	}*/
 
 	//Get last conversation screen.
-	Reference<ConversationScreen* > lastConversationScreen = conversationTemplate->getScreen(lastScreenId);
+	Reference<ConversationScreen* > lastConversationScreen = session->getLastConversationScreen();
 	Reference<ConversationScreen* > nextConversationScreen;
+
 	if (lastConversationScreen != NULL) {
 		//Get the linked screen for the selected option.
 		nextConversationScreen = conversationTemplate->getScreen(lastConversationScreen->getOptionLink(selectedOption));
@@ -182,7 +188,9 @@ void ConversationObserverImplementation::sendConversationScreenToPlayer(Creature
 		//Clear screen ID from last conversation screen.
 		ConversationSession* session = cast<ConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 		if (session != NULL) {
-			session->setLastConversationScreenName("");
+			session->setLastConversationScreen(NULL);
 		}
+
+		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, conversingNPC->getObjectID()));
 	}
 }

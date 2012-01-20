@@ -10,27 +10,102 @@
 
 #include "engine/engine.h"
 
-class FactionStandingList : public VectorMap<String, float> {
+class FactionStandingList : public Serializable {
 	String factionRank;
 	int rebelPoints;
 	int imperialPoints;
+	VectorMap<String, float> factions;
 	//int huttPoints; //Disabled
 
 public:
-	FactionStandingList() : VectorMap<String, float>() {
-		setNoDuplicateInsertPlan();
-		setNullValue(0.f);
+	FactionStandingList() {
+		factions.setAllowOverwriteInsertPlan();
+		factions.setNullValue(0.f);
 
 		rebelPoints = 0;
 		imperialPoints = 0;
+
+		addSerializableVariables();
+	}
+
+	FactionStandingList(const FactionStandingList& f) : Serializable() {
+		factions.setAllowOverwriteInsertPlan();
+		factions.setNullValue(0.f);
+
+		factionRank = f.factionRank;
+		rebelPoints = f.rebelPoints;
+		imperialPoints = f.imperialPoints;
+		factions = f.factions;
+
+		addSerializableVariables();
+	}
+
+	FactionStandingList& operator=(const FactionStandingList& f) {
+		if (this == &f)
+			return *this;
+
+		factionRank = f.factionRank;
+		rebelPoints = f.rebelPoints;
+		imperialPoints = f.imperialPoints;
+		factions = f.factions;
+
+		return *this;
+	}
+
+	void addSerializableVariables() {
+		addSerializableVariable("factionRank", &factionRank);
+		addSerializableVariable("rebelPoints", &rebelPoints);
+		addSerializableVariable("imperialPoints", &imperialPoints);
+		addSerializableVariable("factions", &factions);
+	}
+
+	float get(const String& faction) {
+		return getFactionStanding(faction);
+	}
+
+	int size() {
+		return factions.size();
+	}
+
+	void put(const String& faction, float amount) {
+		if (faction == "imperial")
+			setImperialPoints(amount);
+		else if (faction == "rebel")
+			setRebelPoints(amount);
+		else
+			factions.put(faction, amount);
 	}
 
 	float getFactionStanding(const String& faction) {
-		return get(faction);
+		if (faction == "imperial")
+			return getImperialPoints();
+		else if (faction == "rebel")
+			return getRebelPoints();
+		else
+			return factions.get(faction);
+	}
+
+	bool contains(const String& faction) {
+		if (faction == "imperial" || faction == "rebel")
+			return true;
+		else
+			return factions.contains(faction);
+	}
+
+	bool isPvpFaction(const String& faction) {
+		return faction == "imperial" || faction == "rebel";
 	}
 
 	String& getFactionRank() {
 		return factionRank;
+	}
+
+	void setRebelPoints(int amount) {
+		rebelPoints = amount;
+	}
+
+	void setImperialPoints(int amount) {
+		imperialPoints = amount;
 	}
 
 	void increaseRebelPoints(int amount) {
@@ -71,12 +146,12 @@ public:
 		message->insertInt(imperialPoints);
 		message->insertInt(0); //Hutt Points;
 
-		int listSize = size();
+		int listSize = factions.size();
 
 		message->insertInt(listSize);
 
 		for (int i = 0; i < listSize; ++i) {
-			VectorMapEntry<String, float>* entry = &elementAt(i);
+			VectorMapEntry<String, float>* entry = &factions.elementAt(i);
 
 			message->insertAscii(entry->getKey());
 		}
@@ -84,7 +159,7 @@ public:
 		message->insertInt(listSize);
 
 		for (int i = 0; i < listSize; ++i)
-			message->insertFloat(get(i));
+			message->insertFloat(factions.get(i));
 	}
 };
 

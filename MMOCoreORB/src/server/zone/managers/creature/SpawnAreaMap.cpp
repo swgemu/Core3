@@ -135,10 +135,12 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	int tier = areaObj.getIntAt(5);
 	int constant = areaObj.getIntAt(6);
 
+	if (radius == 0)
+		return;
+
 	uint32 crc = 0;
 	switch (tier) {
 	case 0:
-		return;
 	case 1:
 		crc = String("object/static_spawn_area.iff").hashCode();
 		break;

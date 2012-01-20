@@ -9,7 +9,10 @@
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/building/LuaBuildingObject.h"
+#include "server/zone/objects/intangible/LuaIntangibleObject.h"
+#include "server/zone/objects/player/LuaPlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/faction/FactionManager.h"
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -61,6 +64,12 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "giveItem", giveItem);
 	lua_register(luaEngine->getLuaState(), "checkInt64Lua", checkInt64Lua);
 	lua_register(luaEngine->getLuaState(), "getChatMessage", getChatMessage);
+	lua_register(luaEngine->getLuaState(), "getRankName", getRankName);
+	lua_register(luaEngine->getLuaState(), "getRankCost", getRankCost);
+	lua_register(luaEngine->getLuaState(), "getRankDelegateRatioFrom", getRankDelegateRatioFrom);
+	lua_register(luaEngine->getLuaState(), "getRankDelegateRatioTo", getRankDelegateRatioTo);
+	lua_register(luaEngine->getLuaState(), "isHighestRank", isHighestRank);
+	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -99,6 +108,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaConversationScreen>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationSession>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationTemplate>::Register(luaEngine->getLuaState());
+	Luna<LuaIntangibleObject>::Register(luaEngine->getLuaState());
+	Luna<LuaPlayerObject>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
@@ -421,13 +432,14 @@ void DirectorManager::startScreenPlay(CreatureObject* creatureObject, const Stri
 	lua->callFunction(&startScreenPlay);
 }
 
-ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption) {
+ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
 	Lua* lua = getLuaInstance();
 
 	LuaFunction runMethod(lua->getLuaState(), luaClass, "getNextConversationScreen", 1);
 	runMethod << conversationTemplate;
 	runMethod << conversingPlayer;
 	runMethod << selectedOption;
+	runMethod << conversingNPC;
 
 	lua->callFunction(&runMethod);
 
@@ -468,4 +480,64 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 	startScreenPlay << creo;
 
 	lua->callFunction(&startScreenPlay);
+}
+
+int DirectorManager::createConversationScreen(lua_State* L) {
+	ConversationScreen* screen = new ConversationScreen();
+
+	lua_pushlightuserdata(L, screen);
+
+	return 1;
+}
+
+int DirectorManager::getRankName(lua_State* L) {
+	int rank = lua_tointeger(L, -1);
+
+	String rankName = FactionManager::instance()->getRankName(rank);
+
+	lua_pushstring(L, rankName.toCharArray());
+
+	return 1;
+}
+
+int DirectorManager::getRankCost(lua_State* L) {
+	int rank = lua_tointeger(L, -1);
+
+	lua_pushinteger(L, FactionManager::instance()->getRankCost(rank));
+
+	return 1;
+}
+
+int DirectorManager::getRankDelegateRatioFrom(lua_State* L) {
+	int rank = lua_tointeger(L, -1);
+
+	lua_pushinteger(L, FactionManager::instance()->getRankDelegateRatioFrom(rank));
+
+	return 1;
+}
+
+int DirectorManager::getRankDelegateRatioTo(lua_State* L) {
+	int rank = lua_tointeger(L, -1);
+
+	lua_pushinteger(L, FactionManager::instance()->getRankDelegateRatioTo(rank));
+
+	return 1;
+}
+
+int DirectorManager::isHighestRank(lua_State* L) {
+	int rank = lua_tointeger(L, -1);
+
+	bool result = FactionManager::instance()->isHighestRank(rank);
+
+	lua_pushboolean(L, result);
+
+	return 1;
+}
+
+int DirectorManager::getFactionPointsCap(lua_State* L) {
+	int rank = lua_tointeger(L, -1);
+
+	lua_pushinteger(L, FactionManager::instance()->getFactionPointsCap(rank));
+
+	return 1;
 }

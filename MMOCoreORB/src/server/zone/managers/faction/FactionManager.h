@@ -11,24 +11,23 @@
 #include "engine/engine.h"
 #include "FactionMap.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/templates/faction/FactionRanks.h"
 
 class FactionMap;
 
 class FactionManager : public Singleton<FactionManager>, public Logger, public Object {
 	FactionMap factionMap;
+	FactionRanks factionRanks;
 
 public:
-	FactionManager() {
-		setLoggingName("FactionManager");
-		setGlobalLogging(false);
-		setLogging(false);
-	}
+	FactionManager();
 
 	/**
 	 * Loads faction configuration information from the faction manager lua file: managers/faction_manager.lua
+	 * Loads faction ranks from datatable
 	 * Sets up faction relationships
 	 */
-	void loadLuaConfig();
+	void loadData();
 
 	/**
 	 * Lua Interface function that adds a faction relationship to the FactionMap.
@@ -45,7 +44,7 @@ public:
 	 */
 	void awardFactionStanding(CreatureObject* player, const String& factionName);
 
-	void awardFactionPoints(TangibleObject* killer, TangibleObject* destructedObject);
+	void awardPvpFactionPoints(TangibleObject* killer, CreatureObject* destructedObject);
 
 	/**
 	 * Gets a list of enemy factions to the faction passed to the method.
@@ -60,6 +59,20 @@ public:
 	SortedVector<String> getAllyFactions(const String& faction);
 
 	FactionMap* getFactionMap();
+
+	String getRankName(int idx);
+	int getRankCost(int rank);
+	int getRankDelegateRatioFrom(int rank);
+	int getRankDelegateRatioTo(int rank);
+	int getFactionPointsCap(int rank);
+
+	bool isHighestRank(int rank) {
+		return rank >= factionRanks.getCount() - 1 || rank >= 15;
+	}
+
+protected:
+	void loadFactionRanks();
+	void loadLuaConfig();
 };
 
 #endif /* FACTIONMANAGER_H_ */

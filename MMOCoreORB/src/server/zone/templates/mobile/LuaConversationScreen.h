@@ -29,10 +29,19 @@ public:
 	int getOptionCount(lua_State* L);
 	int sendTo(lua_State* L);
 	int getScreenID(lua_State* L);
+	int cloneScreen(lua_State* L);
+	int addOption(lua_State* L);
+	int setDialogTextTT(lua_State* L);
+	int setDialogTextTO(lua_State* L);
+	int setDialogTextTU(lua_State* L);
+	int setDialogTextDF(lua_State* L);
+	int setDialogTextDI(lua_State* L);
 
 private:
-	// The pointer to the 'real object' defined in object.cc
-	Reference<ConversationScreen*> realObject;
+	//removed Reference<> because we are cloning in lua and returning
+	ConversationScreen* realObject;
+
+	static void setDialogText(StringIdParameter* param, lua_State* L);
 };
 
 

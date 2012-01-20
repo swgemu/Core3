@@ -512,6 +512,8 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	void setFactionRank(int rank, bool notifyClient = true);
+
 	String getFirstName();
 
 	String getLastName();
@@ -1241,6 +1243,8 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	void setFactionRank(int rank, bool notifyClient = true);
+
 	String getFirstName();
 
 	String getLastName();
@@ -1811,6 +1815,8 @@ public:
 	bool isAggressiveTo(CreatureObject* object);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void setFactionRank(int rank, bool notifyClient);
 
 	String getFirstName();
 

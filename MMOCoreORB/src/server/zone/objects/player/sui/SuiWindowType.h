@@ -173,6 +173,8 @@ public:
 	//Character Builder 311 - 320
 	static const uint16 CHARACTER_BUILDER_LIST = 311;
 
+	//
+	static const uint16 DELEGATE_TRANSFER = 321;
 
 	//Miscellaneous 1000+
 	static const uint16 OBJECT_NAME = 1000;

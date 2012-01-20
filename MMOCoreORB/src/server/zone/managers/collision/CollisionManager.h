@@ -57,6 +57,8 @@ public:
 	static bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
 	static float getRayOriginPoint(CreatureObject* creature);
 
+	//static bool
+
 	static bool checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint);
 
 	static bool checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone);

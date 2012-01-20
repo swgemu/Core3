@@ -103,31 +103,15 @@ public:
 	/**
 	 * Copy constructor.
 	 */
-	ConversationScreen(const ConversationScreen& objectToCopy) : Object(objectToCopy) {
+	ConversationScreen(const ConversationScreen& objectToCopy) : Object() {
 		screenID = objectToCopy.screenID;
 		dialogText = objectToCopy.dialogText;
 		options = objectToCopy.options;
 		stopConversation = objectToCopy.stopConversation;
 	}
 
-	inline void setDialogText(const String& fullPath) {
-		dialogText.setStringId(fullPath);
-	}
-
-	inline void setCustomDialogText(const UnicodeString& customText) {
-		dialogText.setCustomString(customText);
-	}
-
-	inline void setDialogText(const StringIdChatParameter& param) {
-		dialogText = param;
-	}
-
-	inline void setStopConversation(bool stopConversation) {
-		this->stopConversation = stopConversation;
-	}
-
-	inline StringIdChatParameter* getDialogText() {
-		return &dialogText;
+	ConversationScreen* cloneScreen() {
+		return new ConversationScreen(*this);
 	}
 
 	/**
@@ -196,17 +180,17 @@ public:
 		player->sendMessage(message);
 		player->sendMessage(optionsList);
 
-		String screenIdToSave = screenID;
+		ConversationScreen* screenToSave = this;
 
 		//Check if the conversation should be stopped.
 		if (stopConversation) {
 			player->sendMessage(new StopNpcConversation(player, npc->getObjectID()));
-			screenIdToSave = "";
+			screenToSave = NULL;
 		}
 
 		ConversationSession* session = cast<ConversationSession* >(player->getActiveSession(SessionFacadeType::CONVERSATION));
 		if (session != NULL) {
-			session->setLastConversationScreenName(screenIdToSave);
+			session->setLastConversationScreen(screenToSave);
 		}
 	}
 
@@ -242,6 +226,61 @@ public:
 		}
 
 		optionsTable.pop();
+	}
+
+	template<class T>
+	inline void setDialogTextTT(const T& obj) {
+		dialogText.setTT(obj);
+	}
+
+	inline void setDialogTextTT(const String& file, const String& id) {
+		dialogText.setTT(file, id);
+	}
+
+	template<class T>
+	inline void setDialogTextTO(const T& obj) {
+		dialogText.setTO(obj);
+	}
+
+	inline void setDialogTextTO(const String& file, const String& id) {
+		dialogText.setTO(file, id);
+	}
+
+	template<class T>
+	inline void setDialogTextTU(const T& obj) {
+		dialogText.setTO(obj);
+	}
+
+	inline void setDialogTextTU(const String& file, const String& id) {
+		dialogText.setTU(file, id);
+	}
+
+	inline void setDialogTextDI(uint32 val) {
+		dialogText.setDI(val);
+	}
+
+	inline void setDialogTextDF(float val) {
+		dialogText.setDF(val);
+	}
+
+	inline void setDialogText(const String& fullPath) {
+		dialogText.setStringId(fullPath);
+	}
+
+	inline void setCustomDialogText(const UnicodeString& customText) {
+		dialogText.setCustomString(customText);
+	}
+
+	inline void setDialogText(const StringIdChatParameter& param) {
+		dialogText = param;
+	}
+
+	inline void setStopConversation(bool stopConversation) {
+		this->stopConversation = stopConversation;
+	}
+
+	inline StringIdChatParameter* getDialogText() {
+		return &dialogText;
 	}
 };
 

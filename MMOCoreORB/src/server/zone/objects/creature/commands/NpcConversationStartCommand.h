@@ -85,8 +85,8 @@ public:
 				}
 
 			} catch (Exception& e) {
+				e.printStackTrace();
 				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
-
 			}
 		} else
 			return INVALIDTARGET;

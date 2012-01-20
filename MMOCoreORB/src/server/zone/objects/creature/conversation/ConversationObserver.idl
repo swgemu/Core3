@@ -88,7 +88,7 @@ class ConversationObserver extends Observer implements Logger {
 	private native void cancelConversationSession(CreatureObject conversingPlayer);
 
 	@local
-	public abstract native ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption);
+	public abstract native ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, CreatureObject conversingNPC);
 
 	@local
 	public abstract native ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, CreatureObject conversingNPC, int selectedOption, ConversationScreen conversationScreen);

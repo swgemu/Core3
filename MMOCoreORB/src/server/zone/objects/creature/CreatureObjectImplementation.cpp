@@ -1306,6 +1306,21 @@ void CreatureObjectImplementation::setSpeedMultiplierBase(
 	}
 }
 
+void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
+	if (factionRank == rank)
+		return;
+
+	factionRank = rank;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage3* msg = new CreatureObjectDeltaMessage3(_this);
+	msg->updateFactionRank();
+	msg->close();
+	broadcastMessage(msg, true);
+}
+
 void CreatureObjectImplementation::setSpeedMultiplierMod(
 		float newMultiplierMod, bool notifyClient) {
 	if (speedMultiplierMod == newMultiplierMod)
@@ -2131,8 +2146,15 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost == NULL || targetGhost == NULL)
 		return false;
 
-	return (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(
-			_this));
+	bool areInDuel = (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(_this));
+
+	if (areInDuel)
+		return true;
+
+	if (pvpStatusBitmask & CreatureFlag::OVERT && object->getPvpStatusBitmask() & CreatureFlag::OVERT && object->getFaction() != getFaction())
+		return true;
+
+	return false;
 }
 
 bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
@@ -2151,8 +2173,15 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (ghost == NULL || targetGhost == NULL)
 		return false;
 
-	return (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(
-			_this));
+	bool areInDuel = (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(_this));
+
+	if (areInDuel)
+		return true;
+
+	if (pvpStatusBitmask & CreatureFlag::OVERT && object->getPvpStatusBitmask() & CreatureFlag::OVERT && object->getFaction() != getFaction())
+		return true;
+
+	return false;
 }
 
 int CreatureObjectImplementation::notifyObjectDestructionObservers(

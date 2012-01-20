@@ -104,6 +104,8 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "FactionStatus.h"
+#include "server/zone/managers/faction/FactionManager.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -409,6 +411,57 @@ void PlayerObjectImplementation::sendBadgesResponseTo(CreatureObject* player) {
 void PlayerObjectImplementation::awardBadge(uint32 badge) {
 	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 	playerManager->awardBadge(_this, badge);
+}
+
+void PlayerObjectImplementation::setFactionStatus(int status) {
+	factionStatus = status;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent());
+	uint32 pvpStatusBitmask = creature->getPvpStatusBitmask();
+
+	if (factionStatus == FactionStatus::COVERT) {
+		creature->sendSystemMessage("faction_recruiter", "covert_complete");
+
+		if (pvpStatusBitmask & CreatureFlag::OVERT)
+			pvpStatusBitmask -= CreatureFlag::OVERT;
+
+		if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
+			pvpStatusBitmask -= CreatureFlag::CHANGEFACTIONSTATUS;
+
+		/*if (pvpStatusBitmask & CreatureFlag::BLINK_GREEN)
+			pvpStatusBitmask -= CreatureFlag::BLINK_GREEN;*/
+
+		creature->setPvpStatusBitmask(pvpStatusBitmask);
+	} else if (factionStatus == FactionStatus::CHANGINGSTATUS) {
+		creature->setPvpStatusBitmask(pvpStatusBitmask | CreatureFlag::CHANGEFACTIONSTATUS);
+	} else if (factionStatus == FactionStatus::OVERT) {
+		if (!(pvpStatusBitmask & CreatureFlag::OVERT))
+			pvpStatusBitmask |= CreatureFlag::OVERT;
+
+		if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
+			pvpStatusBitmask -= CreatureFlag::CHANGEFACTIONSTATUS;
+
+		/*if (pvpStatusBitmask & CreatureFlag::BLINK_GREEN)
+			pvpStatusBitmask -= CreatureFlag::BLINK_GREEN;*/
+
+		creature->sendSystemMessage("faction_recruiter", "overt_complete");
+
+		creature->setPvpStatusBitmask(pvpStatusBitmask);
+	} else if (factionStatus == FactionStatus::ONLEAVE) {
+		if (pvpStatusBitmask & CreatureFlag::OVERT)
+			pvpStatusBitmask -= CreatureFlag::OVERT;
+
+		if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
+			pvpStatusBitmask -= CreatureFlag::CHANGEFACTIONSTATUS;
+
+		/*if (pvpStatusBitmask & CreatureFlag::BLINK_GREEN)
+			pvpStatusBitmask -= CreatureFlag::BLINK_GREEN;*/
+
+		if (creature->getFaction() != 0)
+			creature->sendSystemMessage("faction_recruiter", "on_leave_complete");
+
+		creature->setPvpStatusBitmask(pvpStatusBitmask);
+	}
 }
 
 int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
@@ -1051,16 +1104,20 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 	if (amount < 0)
 		return; //Don't allow negative values to be sent to this method.
 
+	CreatureObject* player = cast<CreatureObject*>( parent.get());
+
 	//Get the current amount of faction standing
-	float currentAmount = factionStandingList.get(factionName);
+	float currentAmount = factionStandingList.getFactionStanding(factionName);
 
 	//Ensure that the new amount is not greater than 5000.
-	float newAmount = MIN(5000.f, currentAmount + amount);
+	float newAmount = currentAmount + amount;
 
-	if (factionStandingList.contains(factionName))
-		factionStandingList.get(factionName) = newAmount;
+	if (!factionStandingList.isPvpFaction(factionName))
+		newAmount = MIN(5000, newAmount);
 	else
-		factionStandingList.put(factionName, newAmount);
+		newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+
+	factionStandingList.put(factionName, newAmount);
 
 	int change = floor(newAmount - currentAmount);
 
@@ -1069,10 +1126,10 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 	msg.setTO("@faction/faction_names:" + factionName);
 	msg.setDI(change);
 
-	if (newAmount == 0)
+	if (change == 0)
 		msg.setStringId("@base_player:prose_max_faction");
 
-	CreatureObject* player = cast<CreatureObject*>( parent.get());
+
 	player->sendSystemMessage(msg);
 }
 
@@ -1107,13 +1164,17 @@ void PlayerObjectImplementation::decreaseFactionStanding(const String& factionNa
 	//Get the current amount of faction standing
 	float currentAmount = factionStandingList.get(factionName);
 
-	//Ensure that the new amount is not less than -5000.
-	float newAmount = MAX(-5000.f, currentAmount - amount);
+	CreatureObject* player = cast<CreatureObject*>( parent.get());
 
-	if (factionStandingList.contains(factionName))
-		factionStandingList.get(factionName) = newAmount;
+	//Ensure that the new amount is not less than -5000.
+	//float newAmount = MAX(-5000.f, currentAmount - amount);
+	float newAmount = currentAmount - amount;
+	if (!factionStandingList.isPvpFaction(factionName))
+		newAmount = MAX(-5000, newAmount);
 	else
-		factionStandingList.put(factionName, newAmount);
+		newAmount = MAX(-FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+
+	factionStandingList.put(factionName, newAmount);
 
 	int change = floor(currentAmount - newAmount);
 
@@ -1122,15 +1183,14 @@ void PlayerObjectImplementation::decreaseFactionStanding(const String& factionNa
 	msg.setTO("@faction/faction_names:" + factionName);
 	msg.setDI(change);
 
-	if (newAmount == 0)
+	if (change == 0)
 		msg.setStringId("@base_player:prose_min_faction");
 
-	CreatureObject* player = cast<CreatureObject*>( parent.get());
 	player->sendSystemMessage(msg);
 }
 
 float PlayerObjectImplementation::getFactionStanding(const String& factionName) {
-	return factionStandingList.get(factionName);
+	return factionStandingList.getFactionStanding(factionName);
 }
 
 bool PlayerObjectImplementation::isFirstIncapacitationExpired() {
@@ -1375,7 +1435,7 @@ void PlayerObjectImplementation::activateMissions() {
 
 	int datapadSize = datapad->getContainerObjectsSize();
 
-	for (int i = 0; i < datapadSize; ++i) {
+	for (int i = datapadSize - 1; i >= 0; --i) {
 		if (datapad->getContainerObject(i)->isMissionObject()) {
 			MissionObject* mission = cast<MissionObject*>(datapad->getContainerObject(i));
 

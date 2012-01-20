@@ -11,6 +11,20 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+namespace templates {
+namespace mobile {
+
+class ConversationScreen;
+
+} // namespace mobile
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates::mobile;
+
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
 #include "engine/util/Facade.h"
@@ -25,9 +39,9 @@ class ConversationSession : public Facade {
 public:
 	ConversationSession();
 
-	void setLastConversationScreenName(const String& screenName);
+	void setLastConversationScreen(ConversationScreen* screen);
 
-	String getLastConversationScreenName();
+	ConversationScreen* getLastConversationScreen();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -37,8 +51,6 @@ protected:
 	ConversationSession(DummyConstructorParameter* param);
 
 	virtual ~ConversationSession();
-
-	String _return_getLastConversationScreenName;
 
 	friend class ConversationSessionHelper;
 };
@@ -58,16 +70,16 @@ namespace player {
 namespace sessions {
 
 class ConversationSessionImplementation : public FacadeImplementation {
-	String lastConversationScreenName;
+	Reference<ConversationScreen* > lastConversationScreen;
 
 public:
 	ConversationSessionImplementation();
 
 	ConversationSessionImplementation(DummyConstructorParameter* param);
 
-	void setLastConversationScreenName(const String& screenName);
+	void setLastConversationScreen(ConversationScreen* screen);
 
-	String getLastConversationScreenName();
+	ConversationScreen* getLastConversationScreen();
 
 	WeakReference<ConversationSession*> _this;
 
@@ -112,12 +124,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setLastConversationScreenName(const String& screenName);
-
-	String getLastConversationScreenName();
-
-protected:
-	String _param0_setLastConversationScreenName__String_;
 };
 
 class ConversationSessionHelper : public DistributedObjectClassHelper, public Singleton<ConversationSessionHelper> {

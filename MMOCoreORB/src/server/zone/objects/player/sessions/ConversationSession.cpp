@@ -4,11 +4,13 @@
 
 #include "ConversationSession.h"
 
+#include "server/zone/templates/mobile/ConversationScreen.h"
+
 /*
  *	ConversationSessionStub
  */
 
-enum {RPC_SETLASTCONVERSATIONSCREENNAME__STRING_ = 6,RPC_GETLASTCONVERSATIONSCREENNAME__};
+enum {};
 
 ConversationSession::ConversationSession() : Facade(DummyConstructorParameter::instance()) {
 	ConversationSessionImplementation* _implementation = new ConversationSessionImplementation();
@@ -24,32 +26,22 @@ ConversationSession::~ConversationSession() {
 
 
 
-void ConversationSession::setLastConversationScreenName(const String& screenName) {
+void ConversationSession::setLastConversationScreen(ConversationScreen* screen) {
 	ConversationSessionImplementation* _implementation = static_cast<ConversationSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_SETLASTCONVERSATIONSCREENNAME__STRING_);
-		method.addAsciiParameter(screenName);
-
-		method.executeWithVoidReturn();
 	} else
-		_implementation->setLastConversationScreenName(screenName);
+		_implementation->setLastConversationScreen(screen);
 }
 
-String ConversationSession::getLastConversationScreenName() {
+ConversationScreen* ConversationSession::getLastConversationScreen() {
 	ConversationSessionImplementation* _implementation = static_cast<ConversationSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETLASTCONVERSATIONSCREENNAME__);
-
-		method.executeWithAsciiReturn(_return_getLastConversationScreenName);
-		return _return_getLastConversationScreenName;
 	} else
-		return _implementation->getLastConversationScreenName();
+		return _implementation->getLastConversationScreen();
 }
 
 DistributedObjectServant* ConversationSession::_getImplementation() {
@@ -157,8 +149,8 @@ bool ConversationSessionImplementation::readObjectMember(ObjectInputStream* stre
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lastConversationScreenName") {
-		TypeInfo<String >::parseFromBinaryStream(&lastConversationScreenName, stream);
+	if (_name == "lastConversationScreen") {
+		TypeInfo<Reference<ConversationScreen* > >::parseFromBinaryStream(&lastConversationScreen, stream);
 		return true;
 	}
 
@@ -177,11 +169,11 @@ int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lastConversationScreenName";
+	_name = "lastConversationScreen";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&lastConversationScreenName, stream);
+	TypeInfo<Reference<ConversationScreen* > >::toBinaryStream(&lastConversationScreen, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -191,18 +183,18 @@ int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 
 ConversationSessionImplementation::ConversationSessionImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/player/sessions/ConversationSession.idl():  		lastConversationScreenName = "";
-	lastConversationScreenName = "";
+	// server/zone/objects/player/sessions/ConversationSession.idl():  		lastConversationScreen = null;
+	lastConversationScreen = NULL;
 }
 
-void ConversationSessionImplementation::setLastConversationScreenName(const String& screenName) {
-	// server/zone/objects/player/sessions/ConversationSession.idl():  		lastConversationScreenName = screenName;
-	lastConversationScreenName = screenName;
+void ConversationSessionImplementation::setLastConversationScreen(ConversationScreen* screen) {
+	// server/zone/objects/player/sessions/ConversationSession.idl():  		lastConversationScreen = screen;
+	lastConversationScreen = screen;
 }
 
-String ConversationSessionImplementation::getLastConversationScreenName() {
-	// server/zone/objects/player/sessions/ConversationSession.idl():  		return lastConversationScreenName;
-	return lastConversationScreenName;
+ConversationScreen* ConversationSessionImplementation::getLastConversationScreen() {
+	// server/zone/objects/player/sessions/ConversationSession.idl():  		return lastConversationScreen;
+	return lastConversationScreen;
 }
 
 /*
@@ -216,25 +208,11 @@ Packet* ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_SETLASTCONVERSATIONSCREENNAME__STRING_:
-		setLastConversationScreenName(inv->getAsciiParameter(_param0_setLastConversationScreenName__String_));
-		break;
-	case RPC_GETLASTCONVERSATIONSCREENNAME__:
-		resp->insertAscii(getLastConversationScreenName());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void ConversationSessionAdapter::setLastConversationScreenName(const String& screenName) {
-	(static_cast<ConversationSession*>(stub))->setLastConversationScreenName(screenName);
-}
-
-String ConversationSessionAdapter::getLastConversationScreenName() {
-	return (static_cast<ConversationSession*>(stub))->getLastConversationScreenName();
 }
 
 /*

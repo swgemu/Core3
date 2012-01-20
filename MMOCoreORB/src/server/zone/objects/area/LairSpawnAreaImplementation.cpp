@@ -148,15 +148,6 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 
 	float spawnZ = getZone()->getHeight(randomPosition.getX(), randomPosition.getY());
 
-	TerrainManager* terrainManager = planetManager->getTerrainManager();
-
-	float waterHeight;
-
-	//dont spawn in water..
-	if (terrainManager->getWaterHeight(randomPosition.getX(), randomPosition.getY(), waterHeight)) {
-		if (waterHeight > spawnZ)
-			return;
-	}
 	//Lets choose 3 random spawns;
 
 	LairSpawn* firstSpawn = lairs->get(System::random(totalSize - 1));

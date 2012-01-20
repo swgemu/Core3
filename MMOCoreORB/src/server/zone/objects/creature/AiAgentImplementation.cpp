@@ -120,6 +120,12 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 		setLoggingName(logName.toString());
 	}
+
+	String pvpFaction = npcTemplate->getPvpFaction();
+
+	if (!pvpFaction.isEmpty()) {
+		setFaction(pvpFaction.hashCode());
+	}
 }
 
 void AiAgentImplementation::initializeTransientMembers() {
@@ -1152,6 +1158,17 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 
 	if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
 		return true;
+
+	uint32 targetFaction = target->getFaction();
+
+	if (getFaction() != 0 && targetFaction != 0) {
+		PlayerObject* ghost = target->getPlayerObject();
+
+		if (ghost == NULL && (targetFaction != getFaction()))
+			return true;
+		else if (ghost != NULL && (targetFaction != getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
+			return true;
+	}
 
 	return false;
 }

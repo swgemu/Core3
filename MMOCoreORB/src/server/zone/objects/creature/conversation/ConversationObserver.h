@@ -35,7 +35,7 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
+	ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
 
 	ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
@@ -95,7 +95,7 @@ private:
 	void cancelConversationSession(CreatureObject* conversingPlayer);
 
 public:
-	virtual ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption);
+	virtual ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
 
 	virtual ConversationScreen* runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 

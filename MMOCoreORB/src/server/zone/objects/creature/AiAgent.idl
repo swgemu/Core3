@@ -72,6 +72,8 @@ import engine.util.u3d.Coordinate;
 import server.zone.objects.creature.commands.QueueCommand;
 import engine.util.Observable;
 import server.zone.objects.creature.AiObserver;
+import server.zone.objects.player.PlayerObject;
+include server.zone.objects.player.FactionStatus;
 include system.thread.Mutex;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
 
@@ -107,6 +109,7 @@ class AiAgent extends CreatureObject {
 	
 	protected transient CreatureTemplate npcTemplate;
 	
+	@weakReference
 	protected transient CreatureObject lootOwner;
 	
 	protected boolean baby;
@@ -376,6 +379,17 @@ class AiAgent extends CreatureObject {
 		
 		if (this.isDead())
 			return false;
+		
+		unsigned int targetFaction = object.getFaction();
+		
+		if (targetFaction != 0 && super.getFaction() != 0) {
+			PlayerObject ghost = object.getPlayerObject();
+			
+			if (ghost == null && (targetFaction != super.getFaction()))
+				return true;
+			else if (ghost != null && (targetFaction != super.getFaction()) && ghost.getFactionStatus() != FactionStatus.ONLEAVE)
+				return true;
+		}
 		
 		return true;
 	}

@@ -718,6 +718,8 @@ public:
 
 	int getFactionStatus();
 
+	void setFactionStatus(int status);
+
 	unsigned int getClientLastMovementStamp();
 
 	int getCenteredBonus();
@@ -1330,6 +1332,8 @@ public:
 
 	int getFactionStatus();
 
+	void setFactionStatus(int status);
+
 	unsigned int getClientLastMovementStamp();
 
 	int getCenteredBonus();
@@ -1728,6 +1732,8 @@ public:
 	void setAccountID(unsigned int id);
 
 	int getFactionStatus();
+
+	void setFactionStatus(int status);
 
 	unsigned int getClientLastMovementStamp();
 

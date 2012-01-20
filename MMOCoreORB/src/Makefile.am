@@ -380,6 +380,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/terrain/layer/affectors/AffectorHeightFractal.cpp \
 		server/zone/objects/terrain/layer/filters/FilterFractal.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
+		server/zone/objects/intangible/LuaIntangibleObject.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
@@ -456,6 +457,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/screenhandlers/DeliverMissionScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/InformantMissionScreenHandler.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/sui/callbacks/DelegateSuiCallback.cpp \
+		server/zone/objects/player/LuaPlayerObject.cpp \
 		server/zone/objects/player/variables/AbilityList.cpp \
 		server/zone/objects/player/variables/SchematicList.cpp \
 		server/zone/objects/resource/ResourceSpawnImplementation.cpp \
@@ -539,6 +542,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/string/StringFile.cpp \
+		server/zone/templates/faction/FactionRanks.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \
 		server/zone/templates/datatables/DataTableIff.cpp \

@@ -49,6 +49,7 @@ protected:
 	String objectName;
 	String socialGroup;
 	String faction;
+	String pvpFaction;
 
 	int level;
 
@@ -145,7 +146,8 @@ public:
 		hideType = templateData->getStringField("hideType").trim();
 		objectName = templateData->getStringField("objectName").trim();
 		socialGroup = templateData->getStringField("socialGroup").trim();
-		faction = templateData->getStringField("faction").trim();
+		faction = templateData->getStringField("faction").trim().toLowerCase();
+		pvpFaction = templateData->getStringField("pvpFaction").trim().toLowerCase();
 		level = templateData->getIntField("level");
 		chanceHit = templateData->getFloatField("chanceHit");
 		damageMin = templateData->getIntField("damageMin");
@@ -435,6 +437,10 @@ public:
 
 	inline CreatureAttackMap* getAttacks() {
 		return attacks;
+	}
+
+	inline String getPvpFaction() {
+		return pvpFaction;
 	}
 
 	void setTemplateName(const String& t) {

@@ -26,13 +26,13 @@ LuaConversationObserver::~LuaConversationObserver() {
 
 
 
-ConversationScreen* LuaConversationObserver::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption) {
+ConversationScreen* LuaConversationObserver::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
 	LuaConversationObserverImplementation* _implementation = static_cast<LuaConversationObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getNextConversationScreen(conversingPlayer, selectedOption);
+		return _implementation->getNextConversationScreen(conversingPlayer, selectedOption, conversingNPC);
 }
 
 ConversationScreen* LuaConversationObserver::runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
@@ -172,9 +172,9 @@ LuaConversationObserverImplementation::LuaConversationObserverImplementation(Con
 	_initializeImplementation();
 }
 
-ConversationScreen* LuaConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption) {
-	// server/zone/objects/creature/conversation/LuaConversationObserver.idl():  		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, selectedOption);
-	return DirectorManager::instance()->getNextConversationScreen(ConversationObserverImplementation::conversationTemplate->getLuaClassHandler(), ConversationObserverImplementation::conversationTemplate, conversingPlayer, selectedOption);
+ConversationScreen* LuaConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
+	// server/zone/objects/creature/conversation/LuaConversationObserver.idl():  		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, selectedOption, conversingNPC);
+	return DirectorManager::instance()->getNextConversationScreen(ConversationObserverImplementation::conversationTemplate->getLuaClassHandler(), ConversationObserverImplementation::conversationTemplate, conversingPlayer, selectedOption, conversingNPC);
 }
 
 ConversationScreen* LuaConversationObserverImplementation::runScreenHandlers(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {

@@ -351,7 +351,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			FactionManager* factionManager = FactionManager::instance();
 			factionManager->awardFactionStanding(player, destructedObject->getFactionString());
-			factionManager->awardFactionPoints(player, destructedObject);
 		}
 
 		if (playerManager != NULL)

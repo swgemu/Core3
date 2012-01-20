@@ -262,7 +262,7 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->loadGuilds();
 
 	//Loads the FactionManager LUA Config.
-	FactionManager::instance()->loadLuaConfig();
+	FactionManager::instance()->loadData();
 
 }
 

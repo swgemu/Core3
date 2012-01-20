@@ -178,6 +178,11 @@ public:
 
 		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent());
 
+		if (objectsParent == NULL)
+			return GENERALERROR;
+
+		Locker clocker(objectsParent, creature);
+
 		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
 			return GENERALERROR;
 

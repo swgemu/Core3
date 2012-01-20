@@ -46,19 +46,22 @@ package server.zone.objects.player.sessions;
 
 import engine.util.Facade;
 include server.zone.objects.scene.SessionFacadeType;
+import server.zone.templates.mobile.ConversationScreen;
 
 class ConversationSession extends Facade {
-	private string lastConversationScreenName;
+	private ConversationScreen lastConversationScreen;
 
 	public ConversationSession() {
-		lastConversationScreenName = "";
+		lastConversationScreen = null;
 	}
 
-	public void setLastConversationScreenName(final string screenName) {
-		lastConversationScreenName = screenName;
+	@local
+	public void setLastConversationScreen(ConversationScreen screen) {
+		lastConversationScreen = screen;
 	}
 
-	public string getLastConversationScreenName() {
-		return lastConversationScreenName;
+	@local
+	public ConversationScreen getLastConversationScreen() {
+		return lastConversationScreen;
 	}
 }
