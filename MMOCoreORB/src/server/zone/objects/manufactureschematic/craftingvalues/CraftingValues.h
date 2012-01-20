@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "ValuesClasses.h"
 
 class CraftingValues : public Serializable, public Logger {
-	VectorMap<String, TransactionalReference<Subclasses*> > experimentalValuesMap;
+	VectorMap<String, Reference<Subclasses*> > experimentalValuesMap;
 
 	Vector<String> valuesToSend;
 

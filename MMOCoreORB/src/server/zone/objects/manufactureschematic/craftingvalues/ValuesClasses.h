@@ -231,7 +231,7 @@ public:
 };
 
 class Subclasses : public Object {
-	VectorMap<String, TransactionalReference<Values*> > valueList;
+	VectorMap<String, Reference<Values*> > valueList;
 	float avePercentage;
 	String name, classTitle;
 
@@ -263,7 +263,7 @@ public:
 		avePercentage = sub.avePercentage;
 
 		for (int i = 0; i < sub.valueList.size(); ++i) {
-			VectorMapEntry<String, TransactionalReference<Values*> > entry = sub.valueList.elementAt(i);
+			VectorMapEntry<String, Reference<Values*> > entry = sub.valueList.elementAt(i);
 
 			Values* values = entry.getValue();
 
@@ -282,8 +282,6 @@ public:
 			Values* value = valueList.get(s);
 
 			valueList.drop(s);
-
-			delete value;
 		}
 
 		Values* values = new Values(s, min, max, precision, filler);

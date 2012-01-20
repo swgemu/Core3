@@ -61,7 +61,7 @@ CraftingValues::CraftingValues(const CraftingValues& values) : Object(), Seriali
 	doHide = values.doHide;
 
 	for (int i = 0; i < values.experimentalValuesMap.size(); ++i) {
-		VectorMapEntry<String, TransactionalReference<Subclasses*> > entry = values.experimentalValuesMap.elementAt(i);
+		VectorMapEntry<String, Reference<Subclasses*> > entry = values.experimentalValuesMap.elementAt(i);
 
 		Subclasses* subclass = entry.getValue();
 
