@@ -56,12 +56,19 @@ CraftingValues::CraftingValues() {
 
 
 CraftingValues::CraftingValues(const CraftingValues& values) : Object(), Serializable(), Logger() {
-	EMPTY = values.EMPTY;
-
-	experimentalValuesMap.setNullValue(NULL);
-	experimentalValuesMap = values.experimentalValuesMap;
-	doHide = values.doHide;
 	valuesToSend = values.valuesToSend;
+	EMPTY = values.EMPTY;
+	doHide = values.doHide;
+
+	for (int i = 0; i < values.experimentalValuesMap.size(); ++i) {
+		VectorMapEntry<String, TransactionalReference<Subclasses*> > entry = values.experimentalValuesMap.elementAt(i);
+
+		Subclasses* subclass = entry.getValue();
+
+		Subclasses* subclasses = new Subclasses(*subclass);
+
+		experimentalValuesMap.put(entry.getKey(), subclasses);
+	}
 
 	setLoggingName("CraftingValues");
 	setLogging(false);
@@ -69,13 +76,7 @@ CraftingValues::CraftingValues(const CraftingValues& values) : Object(), Seriali
 
 
 CraftingValues::~CraftingValues() {
-	for (int i = 0; i < experimentalValuesMap.size(); ++i) {
-		delete experimentalValuesMap.get(i);
-	}
-
-	experimentalValuesMap.removeAll();
-
-	valuesToSend.removeAll();
+	//valuesToSend.removeAll();
 	//info("Deleting CraftingValues");
 }
 
@@ -402,6 +403,25 @@ void CraftingValues::lockValue(const String& attribute) {
 
 			if (values->getName() == attribute) {
 				values->lockValue();
+				return;
+			}
+		}
+	}
+}
+
+void CraftingValues::unlockValue(const String& attribute) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				values->unlockValue();
 				return;
 			}
 		}

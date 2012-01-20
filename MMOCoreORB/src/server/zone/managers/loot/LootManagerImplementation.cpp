@@ -15,6 +15,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/LootItemTemplate.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "LootGroupMap.h"
 
 void LootManagerImplementation::initialize() {
@@ -86,23 +87,11 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 		for (int i = 0; i < props->size(); ++i) {
 			String property = props->get(i);
 
+			if (craftingValues->hasProperty(property))
+				continue;
+
 			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false);
-			craftingValues->setMaxPercentage(property, 1.0f);
 		}
-	}
-
-	Vector<String>* properties = templateObject->getExperimentalSubGroupTitles();
-	Vector<int>* minValues = templateObject->getExperimentalMin();
-	Vector<int>* maxValues = templateObject->getExperimentalMax();
-
-	for (int i = 0; i < properties->size(); ++i) {
-		String property = properties->get(i);
-
-		craftingValues->setMinValue(property, minValues->get(i));
-		craftingValues->setMaxValue(property, maxValues->get(i));
-
-		craftingValues->setMaxPercentage(property, 1.0f);
-		craftingValues->setCurrentPercentage(property, .5f);
 	}
 
 	Vector<String>* customizationData = templateObject->getCustomizationStringNames();
@@ -137,7 +126,6 @@ void LootManagerImplementation::setCustomObjectName(TangibleObject* object, Loot
 			object->setCustomObjectName(customName, false);
 		}
 	}
-
 }
 
 int LootManagerImplementation::calculateLootCredits(int level) {
@@ -159,35 +147,84 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 
 	prototype->createChildObjects();
 
-	CraftingValues craftingValues;
-	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
+	CraftingValues craftingValues = templateObject->getCraftingValuesCopy();
 
 	setInitialObjectStats(templateObject, &craftingValues, prototype);
 
-	int qualityResult = System::random(templateObject->getQualityRangeMin() - templateObject->getQualityRangeMax()) + templateObject->getQualityRangeMax();
+	setCustomObjectName(prototype, templateObject);
 
-	float modifier, newValue;
-	String title, subtitle, subtitlesTitle;
+	float excMod = 1.0;
+
+	if (System::random(exceptionalChance) == exceptionalChance) {
+		UnicodeString objectName = prototype->getCustomObjectName();
+		uint32 bitmask = prototype->getOptionsBitmask() | 0x20;
+
+		if (objectName.isEmpty())
+			objectName = StringIdManager::instance()->getStringId(prototype->getObjectName()->getFullPath().hashCode());
+
+		UnicodeString newName = objectName + " (Exceptional)";
+		prototype->setCustomObjectName(newName, false);
+
+		excMod = exceptionalModifier;
+
+		prototype->setOptionsBitmask(bitmask, false);
+	} else if (System::random(legendaryChance) == legendaryChance) {
+		UnicodeString objectName = prototype->getCustomObjectName();
+		uint32 bitmask = prototype->getOptionsBitmask() | 0x20;
+
+		if (objectName.isEmpty())
+			objectName = StringIdManager::instance()->getStringId(prototype->getObjectName()->getFullPath().hashCode());
+
+		UnicodeString newName = objectName + " (Legendary)";
+		prototype->setCustomObjectName(newName, false);
+
+		excMod = legendaryModifier;
+
+		prototype->setOptionsBitmask(bitmask, false);
+	}
+
+	String subtitle;
+
+	float percentage = System::random(10000) / 10000.f; //Generate a base percentage. We will deviate slightly from this on each stat.
 
 	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
-		subtitlesTitle = craftingValues.getExperimentalPropertySubtitlesTitle(i);
 		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
-		modifier = craftingManager->calculateExperimentationValueModifier(qualityResult, 5);
-		newValue = craftingValues.getCurrentPercentage(subtitle) + modifier;
 
-		if (newValue > craftingValues.getMaxPercentage(subtitle))
-			newValue = craftingValues.getMaxPercentage(subtitle);
+		if (subtitle == "hitpoints")
+			continue;
 
-		craftingValues.setCurrentPercentage(subtitle, newValue);
+		float min = craftingValues.getMinValue(subtitle);
+		float max = craftingValues.getMaxValue(subtitle);
+
+		float minMod = (max >= min) ? 2000.f : -2000.f;
+		float maxMod = (max >= min) ? 500.f : -500.f;
+
+		min = (min * level / minMod) + min;
+		max = (max * level / maxMod) + max;
+
+		if (max >= min) {
+			min *= excMod;
+			max *= excMod;
+		} else {
+			min /= excMod;
+			max /= excMod;
+		}
+
+		craftingValues.setMinValue(subtitle, min);
+		craftingValues.setMaxValue(subtitle, max);
+
+		float deviation = (((float) System::random(400)) - 200) / 1000.f; //Deviate up to 2%
+
+		craftingValues.setCurrentPercentage(subtitle, percentage + deviation);
 	}
 
 	// Use percentages to recalculate the values
 	craftingValues.recalculateValues(false);
 
+	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
+
 	// Update the Tano with new values
 	prototype->updateCraftingValues(&craftingValues, false);
-
-	setCustomObjectName(prototype, templateObject);
 
 	return prototype;
 }

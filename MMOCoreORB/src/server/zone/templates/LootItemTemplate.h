@@ -11,27 +11,21 @@
 #include "engine/engine.h"
 #include "LuaTemplate.h"
 
-//class Customization
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 class LootItemTemplate: public LuaTemplate {
 protected:
-	String name;
-	String draftSchematic;
-	String customObjectName;
-	Vector<String> experimentalSubGroupTitles;
-	Vector<int> experimentalMin;
-	Vector<int> experimentalMax;
-	Vector<String> customizationStringNames;
+	CraftingValues craftingValues;
 
+	String name;
+	String customObjectName;
+	Vector<String> customizationStringNames;
 	Vector<Vector<int> > customizationValues;
 
 	String directObjectTemplate;
 
-	int qualityRangeMin;
-	int qualityRangeMax;
 	int minimumLevel;
 	int maximumLevel;
-	float chance;
 
 public:
 	LootItemTemplate(const String& name) {
@@ -42,32 +36,32 @@ public:
 		directObjectTemplate = templateData->getStringField("directObjectTemplate");
 		minimumLevel = templateData->getIntField("minimumLevel");
 		maximumLevel = templateData->getIntField("maximumLevel");
-		chance = templateData->getFloatField("chance");
 		customObjectName = templateData->getStringField("customObjectName");
 
-		LuaObject experimentalSubGroupTitlesList = templateData->getObjectField("experimentalSubGroupTitles");
+		LuaObject craftvals = templateData->getObjectField("craftingValues");
 
-		for (int i = 1; i <= experimentalSubGroupTitlesList.getTableSize(); ++i) {
-			experimentalSubGroupTitles.add(experimentalSubGroupTitlesList.getStringAt(i));
+		lua_State* L = craftvals.getLuaState();
+
+		if (craftvals.isValidTable()) {
+			for (int i = 1; i <= craftvals.getTableSize(); ++i) {
+				lua_rawgeti(L, -1, i);
+
+				LuaObject row(L);
+
+				if (row.isValidTable()) {
+					String property = row.getStringAt(1);
+					float min = row.getFloatAt(2);
+					float max = row.getFloatAt(3);
+
+					craftingValues.addExperimentalProperty(property, property, min, max, 0, false);
+					craftingValues.setMaxPercentage(property, 1.0f);
+				}
+
+				row.pop();
+			}
 		}
 
-		experimentalSubGroupTitlesList.pop();
-
-		LuaObject experimentalMinList = templateData->getObjectField("experimentalMin");
-
-		for (int i = 1; i <= experimentalMinList.getTableSize(); ++i) {
-			experimentalMin.add(experimentalMinList.getIntAt(i));
-		}
-
-		experimentalMinList.pop();
-
-		LuaObject experimentalMaxList = templateData->getObjectField("experimentalMax");
-
-		for (int i = 1; i <= experimentalMaxList.getTableSize(); ++i) {
-			experimentalMax.add(experimentalMaxList.getIntAt(i));
-		}
-
-		experimentalMaxList.pop();
+		craftvals.pop();
 
 		LuaObject customizationStringNamesList = templateData->getObjectField("customizationStringNames");
 
@@ -100,9 +94,6 @@ public:
 		}
 
 		custValues.pop();
-
-		qualityRangeMin = templateData->getIntField("qualityRangeMin");
-		qualityRangeMax = templateData->getIntField("qualityRangeMax");
 	}
 
 	String& getDirectObjectTemplate() {
@@ -113,22 +104,6 @@ public:
 		return customObjectName;
 	}
 
-	String getDraftSchematic() const {
-		return draftSchematic;
-	}
-
-	Vector<int>* getExperimentalMax() {
-		return &experimentalMax;
-	}
-
-	Vector<int>* getExperimentalMin() {
-		return &experimentalMin;
-	}
-
-	Vector<String>* getExperimentalSubGroupTitles() {
-		return &experimentalSubGroupTitles;
-	}
-
 	Vector<String>* getCustomizationStringNames() {
 		return &customizationStringNames;
 	}
@@ -137,16 +112,8 @@ public:
 		return &customizationValues;
 	}
 
-	int getQualityRangeMax() const {
-		return qualityRangeMax;
-	}
-
-	int getQualityRangeMin() const {
-		return qualityRangeMin;
-	}
-
-    float getChance() const {
-		return chance;
+	CraftingValues getCraftingValuesCopy() {
+		return craftingValues;
 	}
 
 	int getMaximumLevel() const {

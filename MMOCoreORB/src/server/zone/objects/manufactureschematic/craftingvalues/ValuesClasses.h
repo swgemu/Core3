@@ -53,7 +53,7 @@ which carries forward this exception.
  * These values coupled with the traits minValue and maxValue allow a generic holder for
  * whatever value the crafting process needs on any range
  */
-class Values {
+class Values : public Object {
 	VectorMap<String, float> values;
 	String name;
 	float minValue, maxValue;
@@ -78,7 +78,7 @@ public:
 		experimentalProperties = filler;
 	}
 
-	Values(const Values& val) {
+	Values(const Values& val) : Object() {
 		values = val.values;
 		name = val.name;
 		minValue = val.minValue;
@@ -132,6 +132,12 @@ public:
 		minValue = getValue();
 		maxValue = getValue();
 		locked = true;
+	}
+
+	inline void unlockValue() {
+		minValue = getValue();
+		maxValue = getValue();
+		locked = false;
 	}
 
 	inline void setValue(const float& value) {
@@ -224,8 +230,8 @@ public:
 
 };
 
-class Subclasses {
-	VectorMap<String, Values*> valueList;
+class Subclasses : public Object {
+	VectorMap<String, TransactionalReference<Values*> > valueList;
 	float avePercentage;
 	String name, classTitle;
 
@@ -250,21 +256,24 @@ public:
 			hidden = false;
 	}
 
-	Subclasses(const Subclasses& sub) {
-		valueList = sub.valueList;
-		valueList.setNullValue(NULL);
-		avePercentage = sub.avePercentage;
+	Subclasses(const Subclasses& sub) : Object() {
+		hidden = sub.hidden;
 		name = sub.name;
 		classTitle = sub.classTitle;
+		avePercentage = sub.avePercentage;
 
-		hidden = sub.hidden;
+		for (int i = 0; i < sub.valueList.size(); ++i) {
+			VectorMapEntry<String, TransactionalReference<Values*> > entry = sub.valueList.elementAt(i);
+
+			Values* values = entry.getValue();
+
+			Values* newvalues = new Values(*values);
+
+			valueList.put(entry.getKey(), newvalues);
+		}
 	}
 
 	~Subclasses(){
-		for (int i = 0; i < valueList.size(); ++i)
-			delete valueList.get(i);
-
-		valueList.removeAll();
 	}
 
 	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler) {

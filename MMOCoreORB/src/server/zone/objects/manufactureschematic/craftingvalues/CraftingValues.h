@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "ValuesClasses.h"
 
 class CraftingValues : public Serializable, public Logger {
-	VectorMap<String, Subclasses*> experimentalValuesMap;
+	VectorMap<String, TransactionalReference<Subclasses*> > experimentalValuesMap;
 
 	Vector<String> valuesToSend;
 
@@ -99,6 +99,7 @@ public:
 
 	float getCurrentValue(const int i);
 
+	void unlockValue(const String& attribute);
 	void lockValue(const String& attribute);
 	void resetValue(const String& attribute);
 

@@ -41,8 +41,10 @@
 --which carries forward this exception.
 
 --Determines how often exceptional and legendary items can drop.
-exceptionalChance = 0.00001 --1 in 100,000
-legendaryChance = .000001 --1 in 1,000,000
+--exceptionalChance = 100000 --1 in 100,000
+--legendaryChance = 1000000 --1 in 1,000,000
+exceptionalChance = 100 --1 in 100 for testing
+legendaryChance = 1000 --1 in 1000 for testing
 
 --Determines how much of an increase in the base stats will be applied to the object.
 exceptionalModifier = 2.5
