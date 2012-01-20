@@ -120,7 +120,7 @@ int LuaConversationScreen::addOption(lua_State* L) {
 }
 
 void LuaConversationScreen::setDialogText(StringIdParameter* param, lua_State* L) {
-	if (lua_isinteger(L, -1)) {
+	if (lua_isnumber(L, -1)) {
 		uint64 integer = lua_tointeger(L, -1);
 
 		param->set(integer);

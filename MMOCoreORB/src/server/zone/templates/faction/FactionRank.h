@@ -26,7 +26,7 @@ public:
 		delegateRatioTo = 0;
 	}
 
-	FactionRank(const FactionRank& f) {
+	FactionRank(const FactionRank& f) : Object() {
 		name = f.name;
 		cost = f.cost;
 		delegateRatioFrom = f.delegateRatioFrom;
