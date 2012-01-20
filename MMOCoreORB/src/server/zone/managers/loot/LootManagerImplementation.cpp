@@ -157,7 +157,7 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 
 	if (System::random(exceptionalChance) == exceptionalChance) {
 		UnicodeString objectName = prototype->getCustomObjectName();
-		uint32 bitmask = prototype->getOptionsBitmask() | 0x20;
+		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
 
 		if (objectName.isEmpty())
 			objectName = StringIdManager::instance()->getStringId(prototype->getObjectName()->getFullPath().hashCode());
@@ -170,7 +170,7 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 		prototype->setOptionsBitmask(bitmask, false);
 	} else if (System::random(legendaryChance) == legendaryChance) {
 		UnicodeString objectName = prototype->getCustomObjectName();
-		uint32 bitmask = prototype->getOptionsBitmask() | 0x20;
+		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
 
 		if (objectName.isEmpty())
 			objectName = StringIdManager::instance()->getStringId(prototype->getObjectName()->getFullPath().hashCode());
