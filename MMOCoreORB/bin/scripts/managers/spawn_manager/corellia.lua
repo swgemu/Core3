@@ -295,9 +295,9 @@ corellia_static_spawns = {
 	{"stormtrooper", 90, -0.805658, 0.125265, -3.68196, 226.036, 2715909}, --@mob/creature_names:stormtrooper
 	{"imperial_first_lieutenant", 90, -0.197962, 0.125265, -1.71454, 0, 2715881}, --@mob/creature_names:imperial_sergeant
 	{"stormtrooper", 90, 4497.73, 28.5915, -5829.8, 277.53, 0}, --@mob/creature_names:stormtrooper
-	{"shared_dressed_imperial_major_cold_m", 90, 4531.47, 30.7809, -5823.83, 217.385, 0}, --@mob/creature_names:imperial_surface_marshal
+	--{"shared_dressed_imperial_major_cold_m", 90, 4531.47, 30.7809, -5823.83, 217.385, 0}, --@mob/creature_names:imperial_surface_marshal
 	{"imperial_first_lieutenant", 90, 4635.64, 25, -5802.22, 92.4328, 0}, --@mob/creature_names:imperial_lieutenant_colonel
-	{"shared_atst", 90, 4581.38, 25.0012, -5772.48, 33.3617, 0}, --@mob/creature_names:at_st
+	--{"shared_atst", 90, 4581.38, 25.0012, -5772.48, 33.3617, 0}, --@mob/creature_names:at_st
 	{"imperial_major", 90, 4629.71, 25, -5770.51, 238.638, 0}, --@mob/creature_names:imperial_major
 	{"assault_trooper", 90, -0.197758, 0.125265, 1.53801, 239.449, 2715902}, --@mob/creature_names:assault_trooper
 	{"imperial_surface_marshall", 90, 4.99108, 0.125266, -4.24489, 64.1228, 2715904} --@mob/creature_names:imperial_surface_marshal
