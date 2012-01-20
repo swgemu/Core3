@@ -34,6 +34,8 @@ void FactionManager::loadFactionRanks() {
 
 	factionRanks.readObject(&dtiff);
 
+	delete iffStream;
+
 	info("loaded " + String::valueOf(factionRanks.getCount()) + " ranks", true);
 }
 

@@ -46,6 +46,8 @@ namespace server {
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
+		VectorMap<String, bool> screenPlays;
+
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;
 #else
@@ -55,6 +57,7 @@ namespace server {
 	public:
 		DirectorManager();
 
+		void startGlobalScreenPlays();
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
 		void activateEvent(ScreenPlayTask* task);
 		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
@@ -62,6 +65,7 @@ namespace server {
 
 		Lua* getLuaInstance();
 
+		static int registerScreenPlay(lua_State* L);
 		static int includeFile(lua_State* L);
 		static int createEvent(lua_State* L);
 		static int createObserver(lua_State* L);

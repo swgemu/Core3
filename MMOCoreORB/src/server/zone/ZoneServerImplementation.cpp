@@ -73,6 +73,7 @@ which carries forward this exception.
 #include "managers/guild/GuildManager.h"
 #include "managers/creature/CreatureManager.h"
 #include "managers/faction/FactionManager.h"
+#include "managers/director/DirectorManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -264,6 +265,8 @@ void ZoneServerImplementation::startManagers() {
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();
 
+	//start global screne plays
+	DirectorManager::instance()->startGlobalScreenPlays();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {

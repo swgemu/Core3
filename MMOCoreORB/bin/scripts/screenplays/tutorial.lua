@@ -2,6 +2,8 @@ TutorialScreenPlay = ScreenPlay:new {
 	numberOfActs = 1
 }
 
+registerScreenPlay("TutorialScreenPlay", false);
+
 imperial_officer_3_handler = {  }
  
 -- imperial officer 3

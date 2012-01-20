@@ -33,10 +33,21 @@
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
 
-	getLuaInstance();
-
 	sharedMemory = new DirectorSharedMemory();
 	sharedMemory->setNullValue(0);
+
+	screenPlays.setNullValue(false);
+	screenPlays.setNoDuplicateInsertPlan();
+}
+
+void DirectorManager::startGlobalScreenPlays() {
+	for (int i = 0; i < screenPlays.size(); ++i) {
+		String screenPlay = screenPlays.elementAt(i).getKey();
+		bool start = screenPlays.elementAt(i).getValue();
+
+		if (start)
+			startScreenPlay(NULL, screenPlay);
+	}
 }
 
 void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
@@ -70,6 +81,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getRankDelegateRatioTo", getRankDelegateRatioTo);
 	lua_register(luaEngine->getLuaState(), "isHighestRank", isHighestRank);
 	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
+	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -113,6 +125,19 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
+}
+
+int DirectorManager::registerScreenPlay(lua_State* L) {
+	String name = lua_tostring(L, -2);
+	bool start = lua_toboolean(L, -1);
+
+	instance()->wlock();
+
+	instance()->screenPlays.put(name, start);
+
+	instance()->unlock();
+
+	return 0;
 }
 
 int DirectorManager::checkInt64Lua(lua_State* L) {
