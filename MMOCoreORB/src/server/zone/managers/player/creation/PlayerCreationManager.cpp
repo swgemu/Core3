@@ -624,10 +624,18 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 	for (int i = 0; i < itemTemplates->size(); ++i) {
 		String itemTemplate = itemTemplates->get(i);
 
-		ManagedReference<SceneObject*> item = zoneServer->createObject(itemTemplate.hashCode(), 1);
+		ManagedReference<SceneObject*> item;
+
+		try {
+			item = zoneServer->createObject(itemTemplate.hashCode(), 1);
+		} catch (Exception& e) {
+
+		}
 
 		if (item != NULL)
 			creature->transferObject(item, 4, false);
+		else
+			error("could not create profession item " + itemTemplate);
 	}
 
 	// Get inventory.
@@ -635,10 +643,15 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		//Add profession specific items.
-		for (int itemNumber = 0; itemNumber < professionDefaultsInfo.get(profession)->getStartingItems()->size(); itemNumber++) {
-			ManagedReference<SceneObject*> item = zoneServer->createObject(professionDefaultsInfo.get(profession)->getStartingItems()->get(itemNumber).hashCode(), 1);
+		for (int itemNumber = 0; itemNumber < professionData->getStartingItems()->size(); itemNumber++) {
+			String itemTemplate = professionData->getStartingItems()->get(itemNumber);
+
+			ManagedReference<SceneObject*> item = zoneServer->createObject(itemTemplate.hashCode(), 1);
+
 			if (item != NULL && inventory != NULL) {
 				inventory->transferObject(item, -1, false);
+			} else if (item == NULL) {
+				error("could not create profession item " + itemTemplate);
 			}
 		}
 	}
