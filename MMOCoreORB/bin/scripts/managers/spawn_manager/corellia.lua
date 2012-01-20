@@ -265,11 +265,11 @@ corellia_static_spawns = {
 	{"imperial_trooper", 90, 1.49, 0.125264, -2.03378, 0, 2715959}, --@mob/creature_names:imperial_trooper
 	{"imperial_trooper", 90, 1.73977, 0.125264, -2.76, 0, 2715959}, --@mob/creature_names:imperial_trooper
 	{"storm_commando", 90, -3.02245, 0.125266, -3.36259, 360.011, 2716035}, --@mob/creature_names:storm_commando
-	--{"dark_trooper", 90, 4696.72, 25, -5797.99, 198.662, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4694.46, 25, -5803.03, 351.991, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4689.06, 25, -5796.24, 257.913, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4694.47, 25, -5806.45, 224.026, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4696.33, 25, -5804.4, 253.399, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4696.72, 25, -5797.99, 198.662, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4694.46, 25, -5803.03, 351.991, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4689.06, 25, -5796.24, 257.913, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4694.47, 25, -5806.45, 224.026, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4696.33, 25, -5804.4, 253.399, 0}, --@mob/creature_names:dark_trooper
 	{"stormtrooper_squad_leader", 90, 4675.99, 25, -5809.56, 216.285, 0}, --@mob/creature_names:stormtrooper_squad_leader
 	{"stormtrooper_medic", 90, 0.673475, 0.125265, -0.651415, 0, 2716032}, --@mob/creature_names:stormtrooper_medic
 	--{"shared_dressed_tie_fighter_m", 90, 4654.52, 25, -5812.03, 139.183, 0}, --@npc_name:human_base_male
@@ -280,11 +280,11 @@ corellia_static_spawns = {
 	{"stormtrooper", 90, 4695.82, 25, -5761.96, 325.144, 0}, --@mob/creature_names:stormtrooper
 	{"stormtrooper", 90, 4691.89, 25, -5774.64, 209.751, 0}, --@mob/creature_names:stormtrooper
 	{"stormtrooper", 90, 4691.92, 25, -5763.05, 240.515, 0}, --@mob/creature_names:stormtrooper
-	--{"dark_trooper", 90, 4683.96, 25, -5743.68, 348.127, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4675.06, 25, -5746.75, 279.993, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4687.68, 25, -5754, 128.516, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4675.8, 25, -5752.56, 288.664, 0}, --@mob/creature_names:dark_trooper
-	--{"dark_trooper", 90, 4679.01, 25, -5742.91, 9.6652, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4683.96, 25, -5743.68, 348.127, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4675.06, 25, -5746.75, 279.993, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4687.68, 25, -5754, 128.516, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4675.8, 25, -5752.56, 288.664, 0}, --@mob/creature_names:dark_trooper
+	{"dark_trooper", 90, 4679.01, 25, -5742.91, 9.6652, 0}, --@mob/creature_names:dark_trooper
 	{"imperial_first_lieutenant", 90, 0.50699, 0.125265, -1.08195, 0, 2716039}, --@mob/creature_names:imperial_first_lieutenant
 	{"stormtrooper", 90, -0.207822, 0.125265, -1.57078, 0, 2715952}, --@mob/creature_names:stormtrooper
 	{"stormtrooper", 90, 1.4556, 0.125264, -3.53267, 0, 2715952}, --@mob/creature_names:stormtrooper
@@ -295,7 +295,7 @@ corellia_static_spawns = {
 	{"stormtrooper", 90, -0.805658, 0.125265, -3.68196, 226.036, 2715909}, --@mob/creature_names:stormtrooper
 	{"imperial_first_lieutenant", 90, -0.197962, 0.125265, -1.71454, 0, 2715881}, --@mob/creature_names:imperial_sergeant
 	{"stormtrooper", 90, 4497.73, 28.5915, -5829.8, 277.53, 0}, --@mob/creature_names:stormtrooper
-	--{"shared_dressed_imperial_major_cold_m", 90, 4531.47, 30.7809, -5823.83, 217.385, 0}, --@mob/creature_names:imperial_surface_marshal
+	{"imperial_surface_marshall", 90, 4531.47, 30.7809, -5823.83, 217.385, 0}, --@mob/creature_names:imperial_surface_marshal
 	{"imperial_first_lieutenant", 90, 4635.64, 25, -5802.22, 92.4328, 0}, --@mob/creature_names:imperial_lieutenant_colonel
 	--{"shared_atst", 90, 4581.38, 25.0012, -5772.48, 33.3617, 0}, --@mob/creature_names:at_st
 	{"imperial_major", 90, 4629.71, 25, -5770.51, 238.638, 0}, --@mob/creature_names:imperial_major

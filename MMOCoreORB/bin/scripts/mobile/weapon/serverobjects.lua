@@ -20,5 +20,8 @@ includeFile("weapon/creature_spit_spray_red.lua")
 includeFile("weapon/creature_spit_spray_toxicgreen.lua")
 includeFile("weapon/creature_spit_spray_yellow.lua")
 
+-- npc weapons
+includeFile("weapon/groups/dark_trooper_weapons.lua")
+
 -- tutorial
 includeFile("weapon/groups/tutorial_bandit.lua")

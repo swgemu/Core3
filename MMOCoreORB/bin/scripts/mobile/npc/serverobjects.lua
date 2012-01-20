@@ -1654,7 +1654,7 @@ includeFile("npc/corellia/zekka_thyne.lua")
 includeFile("npc/dathomir/zideera.lua")
 includeFile("npc/naboo/zogor_storm.lua")
 includeFile("npc/yavin4/alert_droideka.lua")
-
+includeFile("npc/all/dark_trooper.lua")
 includeFile("npc/tutorial/bandit_1.lua")
 includeFile("npc/tutorial/imperial_officer_1.lua")
 includeFile("npc/tutorial/imperial_officer_2.lua")
