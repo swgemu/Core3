@@ -191,6 +191,8 @@ rori_static_spawns = {
 	{"trainer_weaponsmith",0,-5274,0,-2424,180,0},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,4635775},
 	{"trainer_weaponsmith",0,3681,0,-6420,180,0},
+	{"rebel_recruiter", 0, 3683, 0, -6460, -101, 0},
+	{"imperial_recruiter", 0, 5348, 0, 5616, -76, 0},
 }
 
 rori_badges = {

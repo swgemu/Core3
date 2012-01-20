@@ -351,6 +351,13 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			FactionManager* factionManager = FactionManager::instance();
 			factionManager->awardFactionStanding(player, destructedObject->getFactionString());
+
+			if (destructedObject->getFaction() != 0) {
+				if (destructedObject->isImperial())
+					factionManager->awardFactionStanding(player, "imperial");
+				else
+					factionManager->awardFactionStanding(player, "rebel");
+			}
 		}
 
 		if (playerManager != NULL)

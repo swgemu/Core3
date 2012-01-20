@@ -233,6 +233,11 @@ naboo_static_spawns = {
 	{"trainer_weaponsmith",0,1905,0,2767,180,0},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1717556},
 	{"trainer_weaponsmith",0,-3.1,1.1,-8.2,91,1692094},
+	{"imperial_recruiter",0,-4928,0,4231,174,0},
+	{"imperial_recruiter",0,-4936,0,4231,174,0},
+	{"imperial_recruiter",0,5307,0,-1584,74,0},
+	{"rebel_recruiter",0,-29,-0.89,-1.2,74,119},
+	{"rebel_recruiter",0,4826,0,-4696,-93,0},
 }
 
 naboo_badges = {

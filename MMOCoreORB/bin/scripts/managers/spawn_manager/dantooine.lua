@@ -122,6 +122,7 @@ dantooine_regions = {
 }
 
 dantooine_static_spawns = {
+	{"imperial_recruiter", 0, -4196.99, 0, -2411.57, -81, 0},
 }
 
 dantooine_badges = {

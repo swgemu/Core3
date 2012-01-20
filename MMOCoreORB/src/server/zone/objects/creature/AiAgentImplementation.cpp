@@ -1156,9 +1156,6 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 	if (!isAttackableBy(target))
 		return false;
 
-	if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
-		return true;
-
 	uint32 targetFaction = target->getFaction();
 
 	if (getFaction() != 0 && targetFaction != 0) {
@@ -1169,6 +1166,9 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 		else if (ghost != NULL && (targetFaction != getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 			return true;
 	}
+
+	if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+		return true;
 
 	return false;
 }

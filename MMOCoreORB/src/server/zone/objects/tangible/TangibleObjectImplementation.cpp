@@ -115,12 +115,14 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	if (!(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
 		if (isAttackableBy(player))
 			newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
-	}
+	} else if (!isAttackableBy(player))
+		newPvpStatusBitmask -= CreatureFlag::ATTACKABLE;
 
 	if (!(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
 		if (isAggressiveTo(player))
 			newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
-	}
+	} else if (!isAggressiveTo(player))
+		newPvpStatusBitmask -= CreatureFlag::AGGRESSIVE;
 
 	BaseMessage* pvp = new UpdatePVPStatusMessage(_this, newPvpStatusBitmask);
 	player->sendMessage(pvp);

@@ -416,6 +416,12 @@ public:
 
 	WaypointObject* getSurveyWaypoint();
 
+	void setScreenPlayData(const String& screenPlay, const String& variable, const String& data);
+
+	String getScreenPlayData(const String& screenPlay, const String& variable);
+
+	void clearScreenPlayData(const String& screenPlay);
+
 	void activateRecovery();
 
 	void doRecovery();
@@ -763,6 +769,7 @@ protected:
 	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
 	String _return_getSavedTerrainName;
+	String _return_getScreenPlayData;
 	String _return_getStarterProfession;
 	String _return_getTitle;
 
@@ -909,6 +916,8 @@ protected:
 
 	byte raceID;
 
+	VectorMap<String, String> screenPlayData;
+
 public:
 	static const int LFG = 1;
 
@@ -1029,6 +1038,12 @@ public:
 	float getFactionStanding(const String& factionName);
 
 	WaypointObject* getSurveyWaypoint();
+
+	void setScreenPlayData(const String& screenPlay, const String& variable, const String& data);
+
+	String getScreenPlayData(const String& screenPlay, const String& variable);
+
+	void clearScreenPlayData(const String& screenPlay);
 
 	void activateRecovery();
 
@@ -1465,6 +1480,12 @@ public:
 
 	WaypointObject* getSurveyWaypoint();
 
+	void setScreenPlayData(const String& screenPlay, const String& variable, const String& data);
+
+	String getScreenPlayData(const String& screenPlay, const String& variable);
+
+	void clearScreenPlayData(const String& screenPlay);
+
 	void activateRecovery();
 
 	void doRecovery();
@@ -1773,6 +1794,12 @@ protected:
 	String _param0_increaseFactionStanding__String_float_;
 	String _param0_decreaseFactionStanding__String_float_;
 	String _param0_getFactionStanding__String_;
+	String _param0_setScreenPlayData__String_String_String_;
+	String _param1_setScreenPlayData__String_String_String_;
+	String _param2_setScreenPlayData__String_String_String_;
+	String _param0_getScreenPlayData__String_String_;
+	String _param1_getScreenPlayData__String_String_;
+	String _param0_clearScreenPlayData__String_;
 	String _param0_setLastNpcConvStr__String_;
 	String _param0_setLastNpcConvMessStr__String_;
 	String _param0_addLastNpcConvOptions__String_;

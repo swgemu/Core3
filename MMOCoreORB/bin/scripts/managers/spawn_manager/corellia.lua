@@ -300,7 +300,10 @@ corellia_static_spawns = {
 	--{"shared_atst", 90, 4581.38, 25.0012, -5772.48, 33.3617, 0}, --@mob/creature_names:at_st
 	{"imperial_major", 90, 4629.71, 25, -5770.51, 238.638, 0}, --@mob/creature_names:imperial_major
 	{"assault_trooper", 90, -0.197758, 0.125265, 1.53801, 239.449, 2715902}, --@mob/creature_names:assault_trooper
-	{"imperial_surface_marshall", 90, 4.99108, 0.125266, -4.24489, 64.1228, 2715904} --@mob/creature_names:imperial_surface_marshal
+	{"imperial_surface_marshall", 90, 4.99108, 0.125266, -4.24489, 64.1228, 2715904}, --@mob/creature_names:imperial_surface_marshal
+	{"imperial_recruiter",0,-6719,0,-5804,176,0},
+	{"rebel_recruiter",0,-29,0.5,-0.89,74,8105504},
+	{"rebel_recruiter",0,-29,0.5,-0.89,74,2625363}
 }
 
 corellia_badges = {

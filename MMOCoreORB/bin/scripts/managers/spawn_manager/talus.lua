@@ -142,6 +142,8 @@ talus_static_spawns = {
 	{"trainer_weaponsmith",0,516,0,-2912,180,0},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,3175562},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,4265416},
+	{"imperial_recruiter", 0, -2192, 0, 2269, -50, 0},
+	{"rebel_recruiter", 0, -28.4145, -0.89, -1.7825, 82, 0},
 }
 
 talus_badges = {

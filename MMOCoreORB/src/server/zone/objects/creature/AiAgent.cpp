@@ -1572,14 +1572,17 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	if (targetFaction != 0 && CreatureObjectImplementation::getFaction() != 0){
 	// server/zone/objects/creature/AiAgent.idl():  			PlayerObject ghost = object.getPlayerObject();
 	PlayerObject* ghost = object->getPlayerObject();
+	// server/zone/objects/creature/AiAgent.idl():  			if 
+	if (targetFaction == getFaction())	// server/zone/objects/creature/AiAgent.idl():  				return false;
+	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		}
-	if (ghost == NULL && (targetFaction != CreatureObjectImplementation::getFaction()))	// server/zone/objects/creature/AiAgent.idl():  				return true;
-	return true;
-
-	else 	// server/zone/objects/creature/AiAgent.idl():  		}
-	if (ghost != NULL && (targetFaction != CreatureObjectImplementation::getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)	// server/zone/objects/creature/AiAgent.idl():  				return true;
-	return true;
+	if (ghost != NULL && (targetFaction != CreatureObjectImplementation::getFaction()) && ghost->getFactionStatus() == FactionStatus::ONLEAVE)	// server/zone/objects/creature/AiAgent.idl():  				return false;
+	return false;
 }
+
+	else 	// server/zone/objects/creature/AiAgent.idl():  		return 
+	if (targetFaction == 0 && CreatureObjectImplementation::getFaction() != 0)	// server/zone/objects/creature/AiAgent.idl():  			return false;
+	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		return true;
 	return true;
 }

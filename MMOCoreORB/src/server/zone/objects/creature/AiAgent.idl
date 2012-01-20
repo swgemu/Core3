@@ -385,11 +385,13 @@ class AiAgent extends CreatureObject {
 		if (targetFaction != 0 && super.getFaction() != 0) {
 			PlayerObject ghost = object.getPlayerObject();
 			
-			if (ghost == null && (targetFaction != super.getFaction()))
-				return true;
-			else if (ghost != null && (targetFaction != super.getFaction()) && ghost.getFactionStatus() != FactionStatus.ONLEAVE)
-				return true;
-		}
+			if (targetFaction == getFaction())
+				return false;
+			
+			if (ghost != null && (targetFaction != super.getFaction()) && ghost.getFactionStatus() == FactionStatus.ONLEAVE)
+				return false;
+		} else if (targetFaction == 0 && super.getFaction() != 0)
+			return false;
 		
 		return true;
 	}
