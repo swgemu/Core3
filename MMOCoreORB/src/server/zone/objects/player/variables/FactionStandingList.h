@@ -28,7 +28,7 @@ public:
 		addSerializableVariables();
 	}
 
-	FactionStandingList(const FactionStandingList& f) : Serializable() {
+	FactionStandingList(const FactionStandingList& f) : Object(), Serializable() {
 		factions.setAllowOverwriteInsertPlan();
 		factions.setNullValue(0.f);
 
