@@ -5,11 +5,16 @@ pistol_d18 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_d18.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {7,36,4.7,3.4,750,19,43,20},
-	experimentalMax = {17,72,3.2,7.2,750,11,23,12},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",7,17},
+		{"maxdamage",36,72},
+		{"attackspeed",4.7,3.2},
+		{"woundchance",3.4,7.2},
+		{"hitpoints",750,750},
+		{"attackhealthcost",19,11},
+		{"attackactioncost",43,23},
+		{"attackmindcost",20,12},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

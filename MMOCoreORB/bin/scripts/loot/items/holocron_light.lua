@@ -5,11 +5,8 @@ holocron_light = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/jedi/jedi_holocron_light.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

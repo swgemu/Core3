@@ -5,11 +5,8 @@ sosi_hodor = {
 	maximumLevel = -1,
 	customObjectName = "Sosi Hodor",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s5.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

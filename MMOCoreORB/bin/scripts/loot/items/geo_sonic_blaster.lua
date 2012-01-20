@@ -5,11 +5,8 @@ geo_sonic_blaster = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

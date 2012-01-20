@@ -5,11 +5,8 @@ geo_reinforcement_core = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/geonosian_reinforcement_core.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

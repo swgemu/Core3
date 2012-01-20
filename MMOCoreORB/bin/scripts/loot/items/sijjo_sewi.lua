@@ -5,11 +5,8 @@ sijjo_sewi = {
 	maximumLevel = -1,
 	customObjectName = "Sijjo Sewi",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s5.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

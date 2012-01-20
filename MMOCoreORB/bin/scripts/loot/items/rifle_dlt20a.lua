@@ -5,11 +5,16 @@ rifle_dlt20a = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_dlt20a.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {56,94,8.1,4.8,750,26,41,36},
-	experimentalMax = {89,153,5.9,11.3,750,13,29,23},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",56,89},
+		{"maxdamage",94,153},
+		{"attackspeed",8.1,5.9},
+		{"woundchance",4.8,11.3},
+		{"hitpoints",750,750},
+		{"attackhealthcost",26,13},
+		{"attackactioncost",41,29},
+		{"attackmindcost",36,23},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

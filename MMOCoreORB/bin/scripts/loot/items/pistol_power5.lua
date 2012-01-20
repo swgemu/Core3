@@ -5,11 +5,16 @@ pistol_power5 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_power5.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {15,67,5.2,6.2,750,23,53,21},
-	experimentalMax = {29,154,3.4,12.4,750,11,26,12},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",15,29},
+		{"maxdamage",67,154},
+		{"attackspeed",5.2,3.4},
+		{"woundchance",6.2,12.4},
+		{"hitpoints",750,750},
+		{"attackhealthcost",23,11},
+		{"attackactioncost",53,26},
+		{"attackmindcost",21,12},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

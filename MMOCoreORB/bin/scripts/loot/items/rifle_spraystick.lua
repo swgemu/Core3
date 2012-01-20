@@ -5,11 +5,16 @@ rifle_spraystick = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_spraystick.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {6,73,3.6,9,750,18,52,52},
-	experimentalMax = {12,138,2.4,19,750,7,28,28},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",6,12},
+		{"maxdamage",73,138},
+		{"attackspeed",3.6,2.4},
+		{"woundchance",9,19},
+		{"hitpoints",750,750},
+		{"attackhealthcost",18,7},
+		{"attackactioncost",52,28},
+		{"attackmindcost",52,28},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

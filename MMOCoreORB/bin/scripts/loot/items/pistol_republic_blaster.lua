@@ -5,11 +5,16 @@ pistol_republic_blaster = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_republic_blaster.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {17,79,5.1,8,750,23,57,23},
-	experimentalMax = {37,170,3.7,18,750,11,32,11},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",17,37},
+		{"maxdamage",79,170},
+		{"attackspeed",5.1,3.7},
+		{"woundchance",8,18},
+		{"hitpoints",750,750},
+		{"attackhealthcost",23,11},
+		{"attackactioncost",57,32},
+		{"attackmindcost",23,11},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

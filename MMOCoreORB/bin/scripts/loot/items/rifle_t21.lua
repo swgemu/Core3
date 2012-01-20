@@ -5,11 +5,16 @@ rifle_t21 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_t21.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {60,170,12.7,11,750,62,53,115},
-	experimentalMax = {110,360,7.4,25,750,31,26,57},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",60,110},
+		{"maxdamage",170,360},
+		{"attackspeed",12.7,7.4},
+		{"woundchance",11,25},
+		{"hitpoints",750,750},
+		{"attackhealthcost",62,31},
+		{"attackactioncost",53,26},
+		{"attackmindcost",115,57},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

@@ -5,11 +5,16 @@ pistol_cdef = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_cdef.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {15,32,5.6,2,750,17,28,15},
-	experimentalMax = {30,61,3.8,4,750,11,19,10},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",15,30},
+		{"maxdamage",32,61},
+		{"attackspeed",5.6,3.8},
+		{"woundchance",2,4},
+		{"hitpoints",750,750},
+		{"attackhealthcost",17,11},
+		{"attackactioncost",28,19},
+		{"attackmindcost",15,10},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

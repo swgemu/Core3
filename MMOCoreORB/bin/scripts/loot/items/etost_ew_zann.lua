@@ -5,11 +5,8 @@ etost_ew_zann = {
 	maximumLevel = -1,
 	customObjectName = "Etost Ew Zann",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s4.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

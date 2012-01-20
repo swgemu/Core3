@@ -5,11 +5,8 @@ wild_snaff = {
 	maximumLevel = -1,
 	customObjectName = "Wild Snaff",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s2.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

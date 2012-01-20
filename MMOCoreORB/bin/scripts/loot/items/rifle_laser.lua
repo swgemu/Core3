@@ -5,11 +5,16 @@ rifle_laser = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_laser.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {4,186,9.4,4.8,750,21,32,77},
-	experimentalMax = {15,356,6.7,12.3,750,12,19,42},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",4,15},
+		{"maxdamage",186,356},
+		{"attackspeed",9.4,6.7},
+		{"woundchance",4.8,12.3},
+		{"hitpoints",750,750},
+		{"attackhealthcost",21,12},
+		{"attackactioncost",32,19},
+		{"attackmindcost",77,42},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

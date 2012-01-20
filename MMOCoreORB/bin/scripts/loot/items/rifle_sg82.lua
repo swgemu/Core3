@@ -5,11 +5,16 @@ rifle_sg82 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_sg82.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {64,101,8.1,8,750,33,29,56},
-	experimentalMax = {97,157,5.7,16,750,17,15,29},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",64,97},
+		{"maxdamage",101,157},
+		{"attackspeed",8.1,5.7},
+		{"woundchance",8,16},
+		{"hitpoints",750,750},
+		{"attackhealthcost",33,17},
+		{"attackactioncost",29,15},
+		{"attackmindcost",56,29},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

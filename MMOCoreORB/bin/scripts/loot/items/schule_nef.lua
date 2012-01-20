@@ -5,11 +5,8 @@ schule_nef = {
 	maximumLevel = -1,
 	customObjectName = "Schule Nef",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s2.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

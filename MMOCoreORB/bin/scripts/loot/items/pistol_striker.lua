@@ -5,11 +5,16 @@ pistol_striker = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_striker.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {23,44,4.9,4,750,18,39,26},
-	experimentalMax = {41,73,3.5,11,750,11,23,17},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",23,41},
+		{"maxdamage",44,73},
+		{"attackspeed",4.9,3.5},
+		{"woundchance",4,11},
+		{"hitpoints",750,750},
+		{"attackhealthcost",18,11},
+		{"attackactioncost",39,23},
+		{"attackmindcost",26,17},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

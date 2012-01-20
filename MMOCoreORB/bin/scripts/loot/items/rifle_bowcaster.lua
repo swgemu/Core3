@@ -5,11 +5,16 @@ rifle_bowcaster = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_bowcaster.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {61,124,9.6,6.4,750,46,46,57},
-	experimentalMax = {122,217,6.2,15.6,750,23,23,35},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",61,122},
+		{"maxdamage",124,217},
+		{"attackspeed",9.6,6.2},
+		{"woundchance",6.4,15.6},
+		{"hitpoints",750,750},
+		{"attackhealthcost",46,23},
+		{"attackactioncost",46,23},
+		{"attackmindcost",57,35},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

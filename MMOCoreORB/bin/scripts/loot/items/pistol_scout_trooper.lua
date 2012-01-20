@@ -5,11 +5,16 @@ pistol_scout_trooper = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_scout_blaster.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {20,46,5.6,3.6,750,20,31,20},
-	experimentalMax = {41,98,3,8.7,750,11,19,11},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",20,41},
+		{"maxdamage",46,98},
+		{"attackspeed",5.6,3},
+		{"woundchance",3.6,8.7},
+		{"hitpoints",750,750},
+		{"attackhealthcost",20,11},
+		{"attackactioncost",31,19},
+		{"attackmindcost",20,11},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

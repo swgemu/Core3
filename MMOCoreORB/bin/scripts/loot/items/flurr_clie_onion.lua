@@ -5,11 +5,8 @@ flurr_clie_onion = {
 	maximumLevel = -1,
 	customObjectName = "Flurr-Cle Onion",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s3.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

@@ -5,11 +5,16 @@ pistol_dh17 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_dh17.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {23,55,4.8,6.2,750,31,53,21},
-	experimentalMax = {54,89,3.3,12.4,750,17,25,12},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",23,54},
+		{"maxdamage",55,89},
+		{"attackspeed",4.8,3.3},
+		{"woundchance",6.2,12.4},
+		{"hitpoints",750,750},
+		{"attackhealthcost",31,17},
+		{"attackactioncost",53,25},
+		{"attackmindcost",21,12},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

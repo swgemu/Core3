@@ -5,11 +5,16 @@ pistol_scatter = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_scatter.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {43,59,5.4,10,750,24,63,24},
-	experimentalMax = {87,102,3.9,24,750,12,35,12},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",43,87},
+		{"maxdamage",59,102},
+		{"attackspeed",5.4,3.9},
+		{"woundchance",10,24},
+		{"hitpoints",750,750},
+		{"attackhealthcost",24,12},
+		{"attackactioncost",63,35},
+		{"attackmindcost",24,12},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

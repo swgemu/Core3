@@ -5,11 +5,8 @@ test_loot_item = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

@@ -5,11 +5,8 @@ ko_do_fruit = {
 	maximumLevel = -1,
 	customObjectName = "Ko-Do Fruit",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s4.iff",
-	experimentalSubGroupTitles = {},
-	experimentalMin = {},
-	experimentalMax = {},
-	qualityRangeMin = 0,
-	qualityRangeMax = 0,
+	craftingValues = {
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

@@ -5,11 +5,16 @@ pistol_sr_combat = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_srcombat.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {28,63,5.7,6,750,36,54,23},
-	experimentalMax = {55,122,4.3,13,750,20,29,12},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",28,55},
+		{"maxdamage",63,122},
+		{"attackspeed",5.7,4.3},
+		{"woundchance",6,13},
+		{"hitpoints",750,750},
+		{"attackhealthcost",36,20},
+		{"attackactioncost",54,29},
+		{"attackmindcost",23,12},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

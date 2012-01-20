@@ -5,11 +5,16 @@ rifle_e11 = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_e11.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {36,76,7.4,14,750,19,31,47},
-	experimentalMax = {73,144,5.1,36,750,12,23,28},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",36,73},
+		{"maxdamage",76,144},
+		{"attackspeed",7.4,5.1},
+		{"woundchance",14,36},
+		{"hitpoints",750,750},
+		{"attackhealthcost",19,12},
+		{"attackactioncost",31,23},
+		{"attackmindcost",47,28},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

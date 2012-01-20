@@ -5,11 +5,16 @@ rifle_tusken = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_tusken.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {64,124,9.6,5.4,750,17,27,61},
-	experimentalMax = {123,188,6.7,11.7,750,9,16,36},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",64,123},
+		{"maxdamage",124,188},
+		{"attackspeed",9.6,6.7},
+		{"woundchance",5.4,11.7},
+		{"hitpoints",750,750},
+		{"attackhealthcost",17,9},
+		{"attackactioncost",27,16},
+		{"attackmindcost",61,36},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }

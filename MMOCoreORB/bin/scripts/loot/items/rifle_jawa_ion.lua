@@ -5,11 +5,16 @@ rifle_jawa_ion = {
 	maximumLevel = -1,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_jawa_ion.iff",
-	experimentalSubGroupTitles = {"mindamage","maxdamage","attackspeed","woundchance","hitpoints","attackhealthcost","attackactioncost","attackmindcost"},
-	experimentalMin = {47,100,9.1,2.4,750,23,47,61},
-	experimentalMax = {96,188,6.3,4.2,750,14,28,37},
-	qualityRangeMin = 8,
-	qualityRangeMax = 0,
+	craftingValues = {
+		{"mindamage",47,96},
+		{"maxdamage",100,188},
+		{"attackspeed",9.1,6.3},
+		{"woundchance",2.4,4.2},
+		{"hitpoints",750,750},
+		{"attackhealthcost",23,14},
+		{"attackactioncost",47,28},
+		{"attackmindcost",61,37},
+	},
 	customizationStringNames = {},
 	customizationValues = {}
 }
