@@ -270,11 +270,11 @@ corellia_static_spawns = {
 	--{"dark_trooper", 90, 4689.06, 25, -5796.24, 257.913, 0}, --@mob/creature_names:dark_trooper
 	--{"dark_trooper", 90, 4694.47, 25, -5806.45, 224.026, 0}, --@mob/creature_names:dark_trooper
 	--{"dark_trooper", 90, 4696.33, 25, -5804.4, 253.399, 0}, --@mob/creature_names:dark_trooper
-	{"stormtrooper_squadleader", 90, 4675.99, 25, -5809.56, 216.285, 0}, --@mob/creature_names:stormtrooper_squad_leader
+	{"stormtrooper_squad_leader", 90, 4675.99, 25, -5809.56, 216.285, 0}, --@mob/creature_names:stormtrooper_squad_leader
 	{"stormtrooper_medic", 90, 0.673475, 0.125265, -0.651415, 0, 2716032}, --@mob/creature_names:stormtrooper_medic
 	--{"shared_dressed_tie_fighter_m", 90, 4654.52, 25, -5812.03, 139.183, 0}, --@npc_name:human_base_male
 	--{"shared_dressed_tie_fighter_m", 90, 4697.7, 25, -5768.54, 297.321, 0}, --@npc_name:human_base_male
-	{"stormtrooper_squadleader", 90, 4678.77, 25, -5757.9, 226.393, 0}, --@mob/creature_names:stormtrooper_squad_leader
+	{"stormtrooper_squad_leader", 90, 4678.77, 25, -5757.9, 226.393, 0}, --@mob/creature_names:stormtrooper_squad_leader
 	{"stormtrooper", 90, 4688.47, 25, -5766.6, 272.17, 0}, --@mob/creature_names:stormtrooper
 	{"stormtrooper", 90, 4693.39, 25, -5762.66, 34.5588, 0}, --@mob/creature_names:stormtrooper
 	{"stormtrooper", 90, 4695.82, 25, -5761.96, 325.144, 0}, --@mob/creature_names:stormtrooper
