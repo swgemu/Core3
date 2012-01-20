@@ -92,6 +92,8 @@ dathomir_static_spawns = {
 	{"nightsister_sentry",90,-3971.1,132.6,-138.7,-77,0},
 	{"nightsister_sentry",90,-4072.7,126.7,-85.8,107,0},
 	{"nightsister_spell_weaver",90,-4035.4,121.2,-194.3,-17,0},
+	
+	{"dolac_legasi", 1, 2.3, 0.1, -3.6, -96, 5335776},
 }
 
 dathomir_badges = {
