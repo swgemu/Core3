@@ -123,7 +123,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	String pvpFaction = npcTemplate->getPvpFaction();
 
-	if (!pvpFaction.isEmpty()) {
+	if (!pvpFaction.isEmpty() && (pvpFaction == "imperial" || pvpFaction == "rebel")) {
 		setFaction(pvpFaction.hashCode());
 	}
 }
@@ -278,12 +278,12 @@ void AiAgentImplementation::selectWeapon() {
 		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
 			currentWeapon->destroyObjectFromWorld(false);
 
-			info("removed weapon " + currentWeapon->getObjectName()->getDisplayedName(), true);
+			//info("removed weapon " + currentWeapon->getObjectName()->getDisplayedName(), true);
 		}
 
 		if (finalWeap != defaultWeapon) {
 
-			info("selected weapon " + finalWeap->getObjectName()->getDisplayedName(), true);
+			//info("selected weapon " + finalWeap->getObjectName()->getDisplayedName(), true);
 
 			transferObject(finalWeap, 4, false);
 			broadcastObject(finalWeap, false);
@@ -840,7 +840,13 @@ void AiAgentImplementation::doMovement() {
 			setOblivious();
 			break;
 		}
-	}
+	} /*else {
+		switch (followState) {
+		case AiAgent::PATROLING:
+
+			break;
+		}
+	}*/
 
 	if (isRetreating() || isFleeing())
 		maxDistance = 0.5;
@@ -866,12 +872,12 @@ void AiAgentImplementation::doMovement() {
 
 		return;
 	} else {
-	/*	if (getLoggingName().contains("bandit")) {
+		if (getLoggingName().contains("bandit")) {
 			StringBuffer msg;
 			msg << "finding next position with maxDistance " << maxDistance << " next pos:x" << nextPosition.getX() << " y:" << nextPosition.getY();
 			//info( + String::valueOf(maxDistance), true);
 			info(msg.toString(), true);
-		}*/
+		}
 	}
 
 	if (!isStanding()) {
