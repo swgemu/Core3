@@ -230,6 +230,9 @@ class PlayerObject extends IntangibleObject {
 	protected unsigned int accountID;
 	
 	protected byte raceID; //TODO: Deprecate. This should be referenced from the ObjectTemplate instead.
+	
+	@dereferenced
+	protected VectorMap<string, string> screenPlayData;
 
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -519,6 +522,15 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native WaypointObject getSurveyWaypoint();
 	
+	public void setScreenPlayData(final string screenPlay, final string variable, final string data) {
+		screenPlayData.put(screenPlay + "_" + variable, data);
+	}
+	
+	public string getScreenPlayData(final string screenPlay, final string variable) {
+		return screenPlayData.get(screenPlay + "_" + variable);
+	}
+	
+	public native void clearScreenPlayData(final string screenPlay);
 	
 	public native void activateRecovery();
 	

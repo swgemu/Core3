@@ -65,6 +65,9 @@ namespace server {
 
 		Lua* getLuaInstance();
 
+		static int writeScreenPlayData(lua_State* L);
+		static int readScreenPlayData(lua_State* L);
+		static int clearScreenPlayData(lua_State* L);
 		static int registerScreenPlay(lua_State* L);
 		static int includeFile(lua_State* L);
 		static int createEvent(lua_State* L);

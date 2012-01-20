@@ -1503,3 +1503,10 @@ void PlayerObjectImplementation::activateForceRegen() {
 
 	setForcePower(getForcePower() + forceTick);
 }
+
+void PlayerObjectImplementation::clearScreenPlayData(const String& screenPlay) {
+	for (int i = screenPlayData.size() - 1; i >= 0; --i) {
+		if (screenPlayData.elementAt(i).getKey().contains(screenPlay + "_"))
+			screenPlayData.drop(screenPlayData.elementAt(i).getKey());
+	}
+}

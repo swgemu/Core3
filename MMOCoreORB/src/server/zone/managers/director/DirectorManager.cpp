@@ -82,6 +82,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "isHighestRank", isHighestRank);
 	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
 	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
+	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
+	lua_register(luaEngine->getLuaState(), "readScreenPlayData", readScreenPlayData);
+	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -125,6 +128,43 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
+}
+
+int DirectorManager::writeScreenPlayData(lua_State* L) {
+	String data = lua_tostring(L, -1);
+	String variable = lua_tostring(L, -2);
+	String screenPlay = lua_tostring(L, -3);
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -4);
+
+	//writeScreenPlayData(player, screenPlay, variable, data)
+
+	PlayerObject* ghost = player->getPlayerObject();
+	ghost->setScreenPlayData(screenPlay, variable, data);
+
+	return 0;
+}
+
+int DirectorManager::readScreenPlayData(lua_State* L) {
+	String variable = lua_tostring(L, -1);
+	String screenPlay = lua_tostring(L, -2);
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -3);
+	PlayerObject* ghost = player->getPlayerObject();
+
+	//readScreenPlayData(player, screenPlay, variable)
+
+	lua_pushstring(L, ghost->getScreenPlayData(screenPlay, variable));
+
+	return 1;
+}
+
+int DirectorManager::clearScreenPlayData(lua_State* L) {
+	String screenPlay = lua_tostring(L, -1);
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -2);
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ghost->clearScreenPlayData(screenPlay);
+
+	return 0;
 }
 
 int DirectorManager::registerScreenPlay(lua_State* L) {
