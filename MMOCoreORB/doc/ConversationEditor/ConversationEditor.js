@@ -42,7 +42,7 @@ function ConversationEditor() {
 		}
 
 		var script = parentObject.scriptName.value + "_convotemplate = ConvoTemplate:new {\r\n";
-		script += "\tinitialScreen = \"\",\r\n\tscreens = {}\r\n}\r\n\r\n";
+		script += "\tinitialScreen = \"\",\r\n\ttemplateType=\"Normal\",\r\n\tscreens = {}\r\n}\r\n\r\n";
 
 		for (key in parentObject.conversationScreenList.conversationScreens) {
 			if (key == "ui")
@@ -236,7 +236,7 @@ function ConversationWindow(conversationScreen) {
 		var parentObject = (this.parentObject != null) ? this.parentObject : this;
 
 		script += "\tleftDialog = \"" + parentObject.leftDialog.stringPath + "\",\r\n";
-
+		script += "\tstopConversation = \"" + parentObject.leftDialog.stopConvoFlag + "\",\r\n";
 		script += "\toptions = {\r\n";
 
 		for (var i = 0; i < parentObject.conversationOptions.options.length; ++i) {
@@ -269,6 +269,7 @@ function ConversationDialog(conversationWindow) {
 	this.ui = document.createElement("div");
 	this.ui.parentObject = this;
 	this.stringPath = "undefined";
+	this.stopConvoFlag = "false";
 
 	this.onclick = function(event) {
 		var parentObject = (this.parentObject != null) ? this.parentObject : this;
@@ -278,7 +279,7 @@ function ConversationDialog(conversationWindow) {
 		if (dialog == null)
 			return;
 
-		dialog.show(event, parentObject, false);
+		dialog.show(event, parentObject, false, true);
 	}
 
 	this.setText = function(stringId, text, link) {
@@ -287,6 +288,12 @@ function ConversationDialog(conversationWindow) {
 		parentObject.stringPath = stringId;
 
 		parentObject.ui.innerHTML = text;
+	}
+
+	this.setStopFlag = function(flag) {
+		var parentObject = (this.parentObject != null) ? this.parentObject : this;
+		parentObject.stopConvoFlag = flag;
+	
 	}
 
 	//initialize
@@ -349,6 +356,10 @@ function ConversationOption(stringPath, link, idx) {
 		parentObject.ui.innerHTML = text;
 	}
 
+	this.setStopFlag = function(flag) {
+		// DO NOTHING
+	}
+
 	this.onclick = function(event) {
 		var parentObject = (this.parentObject != null) ? this.parentObject : this;
 
@@ -357,7 +368,7 @@ function ConversationOption(stringPath, link, idx) {
 		if (dialog == null)
 			return;
 
-		dialog.show(event, parentObject, true);
+		dialog.show(event, parentObject, true, false);
 	}
 
 	this.writeToScript = function(script) {
@@ -385,6 +396,7 @@ function ConversationStringSelectionDialog(conversationEditor) {
 	this.cancelButton = document.createElement("input");
 	this.removeButton = document.createElement("input");
 	this.editingObject = null;
+	this.stopConvoFlag = document.createElement("select");
 
 	this.fillFiles = function() {
 		var parentObject = (this.parentObject != null) ? this.parentObject : this;
@@ -457,7 +469,7 @@ function ConversationStringSelectionDialog(conversationEditor) {
 		parentObject.stringPreview.innerHTML = stringFiles[parentObject.fileSelect.selectedIndex].entries[parentObject.keySelect.options[parentObject.keySelect.selectedIndex].value];
 	}
 
-	this.show = function(event, object, showRemove) {
+	this.show = function(event, object, showRemove, showStopConvo) {
 		if (!event) { event = window.event; }
 
 		var pos = [0,0];
@@ -476,6 +488,7 @@ function ConversationStringSelectionDialog(conversationEditor) {
 		parentObject.ui.style.left = pos[0];
 
 		parentObject.removeButton.style.visibility = (showRemove ? "visible" : "hidden");
+		parentObject.stopConvoDiv.style.visibility = (showStopConvo ? "visible" : "hidden");
 	}
 
 	this.hide = function() {
@@ -493,6 +506,8 @@ function ConversationStringSelectionDialog(conversationEditor) {
 			stringId += ":" + parentObject.keySelect.options[parentObject.keySelect.selectedIndex].value;
 			var link = parentObject.screenLink.options[parentObject.screenLink.selectedIndex].value;
 			parentObject.editingObject.setText(stringId, parentObject.stringPreview.innerHTML, link);
+			var stopFlag = parentObject.stopConvoFlag.options[parentObject.stopConvoFlag.selectedIndex].value;
+			parentObject.editingObject.setStopFlag(stopFlag);
 		}
 
 		parentObject.hide();	
@@ -554,6 +569,23 @@ function ConversationStringSelectionDialog(conversationEditor) {
 	this.stringPreview.innerHTML = "undefined";
 	this.ui.appendChild(this.stringPreview);
 	this.setPreviewString();
+
+	this.stopConvoDiv = document.createElement("div");
+	label = document.createElement("label");
+	label.innerHTML = "Stop Converstation?";
+	this.stopConvoFlag.setAttribute("id","stopConvoFlag");
+	this.stopConvoFlag.parentObject = this;
+	label.appendChild(this.stopConvoFlag);
+	this.stopConvoDiv.appendChild(label);
+	this.ui.appendChild(this.stopConvoDiv);
+	option = document.createElement("option");
+	option.text = "false";
+	option.value = "false";
+	this.stopConvoFlag.options.add(option);
+	option = document.createElement("option");
+	option.text = "true";
+	option.value = "true";
+	this.stopConvoFlag.options.add(option);
 
 	//initialize buttons
 	element = document.createElement("div");
