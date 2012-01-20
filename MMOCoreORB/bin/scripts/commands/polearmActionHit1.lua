@@ -50,10 +50,18 @@ PolearmActionHit1Command = {
 
 	combatSpam = "melee",
 
-	dotType = BLEEDING_STATE,
-	dotDamageOfHit = true,
-	dotDuration = 30,
-	dotPool = ACTION_ATTRIBUTE,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		ACTION_ATTRIBUTE,
+		true,
+		100,
+		100,
+		30, 
+		30
+	  )
+	},
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 

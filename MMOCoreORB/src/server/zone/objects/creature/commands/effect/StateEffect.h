@@ -66,7 +66,7 @@ public:
 	virtual ~StateEffect() {}
 
 	void loadState(LuaObject state) {
-		effectType = state.getLongField("effectType");
+		effectType = state.getByteField("effectType");
 		stateChance = state.getIntField("stateChance");
 		stateStrength = state.getIntField("stateStrength");
 		stateLength = state.getIntField("stateLength");

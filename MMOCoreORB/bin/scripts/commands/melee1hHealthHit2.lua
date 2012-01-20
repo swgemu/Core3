@@ -53,10 +53,18 @@ Melee1hHealthHit2Command = {
 
 	combatSpam = "shiimshiak",
 
-	dotDuration = 60,
-	dotType = BLEEDING_STATE,
-	dotPool = HEALTH_ATTRIBUTE,
-	dotDamageOfHit = true,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		HEALTH_ATTRIBUTE,
+		true,
+		100,
+		100,
+		60, 
+		60
+	  )
+	},
 
 	range = -1
 }

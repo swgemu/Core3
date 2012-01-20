@@ -17,6 +17,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "QueueCommand.h"
 
@@ -61,6 +62,7 @@ protected:
 	String effectString;
 
 	VectorMap<uint64, StateEffect> stateEffects;
+	VectorMap<uint64, DotEffect> dotEffects;
 
 public:
 
@@ -401,6 +403,10 @@ public:
 		return &stateEffects;
 	}
 
+	inline VectorMap<uint64, DotEffect>* getDotEffects() {
+		return &dotEffects;
+	}
+
 	void setAnimationCRC(uint32 animationCRC) {
 		this->animationCRC = animationCRC;
 	}
@@ -423,6 +429,18 @@ public:
 
 	StateEffect getStateEffect(uint64 type) {
 		return stateEffects.get(type);
+	}
+
+	void setDotEffects(VectorMap<uint64, DotEffect> dotEffects) {
+		this->dotEffects = dotEffects;
+	}
+
+	void addDotEffect(DotEffect dotEffect) {
+		dotEffects.put(dotEffect.getDotType(), dotEffect);
+	}
+
+	DotEffect getDotEffect(uint64 type) {
+		return dotEffects.get(type);
 	}
 
 	void setRange(int i) {

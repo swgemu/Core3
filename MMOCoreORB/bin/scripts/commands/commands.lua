@@ -11,6 +11,20 @@ function StateEffect(t, et, dm, jm, c, s, l)
   }
 end
 
+-- carries dot data for combat commands
+function DotEffect(t, dm, pl, h, p, c, s, d)
+  return {
+	dotType = t,
+	defenderStateDefenseModifers = dm,
+	dotPool = pl,
+	dotDamageofHit = h,
+	dotPotency = p,
+	dotChance = c,
+	dotStrength = s,
+	dotDuration = d
+  }
+end
+
 -- run command scripts
 RunSlashCommandsFile("actionShot1.lua")
 RunSlashCommandsFile("actionShot2.lua")

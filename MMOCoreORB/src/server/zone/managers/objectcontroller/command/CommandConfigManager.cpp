@@ -46,6 +46,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/commands/commands.h"
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -406,6 +407,10 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("POSTUREUP_EFFECT", CommandEffect::POSTUREUP);
 	setGlobalInt("POSTUREDOWN_EFFECT", CommandEffect::POSTUREDOWN);
 	setGlobalInt("NEXTATTACKDELAY_EFFECT", CommandEffect::NEXTATTACKDELAY);
+	setGlobalInt("POISONED_EFFECT", CommandEffect::POISONED);
+	setGlobalInt("BLEEDING_EFFECT", CommandEffect::BLEEDING);
+	setGlobalInt("DISEASED_EFFECT", CommandEffect::DISEASED);
+	setGlobalInt("ONFIRE_EFFECT", CommandEffect::ONFIRE);
 }
 
 int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
@@ -537,6 +542,17 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			}
 
 			states.pop();
+		} else if (varName == "dotEffects") {
+			LuaObject dots(L);
+
+			for (int i = 1; i <= dots.getTableSize(); ++i) {
+				lua_rawgeti(L, -1, i);
+				LuaObject dot(L);
+				combatCommand->addDotEffect(DotEffect(dot));
+				dot.pop();
+			}
+
+			dots.pop();
 		} else if (combatCommand->isSquadLeaderCommand()) {
 			SquadLeaderCommand* slCommand = cast<SquadLeaderCommand*>(combatCommand);
 			if (varName == "action")

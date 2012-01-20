@@ -19,6 +19,10 @@ public:
 	static const uint8 POSTUREUP = 6;
 	static const uint8 POSTUREDOWN = 7;
 	static const uint8 NEXTATTACKDELAY = 8;
+	static const uint8 POISONED = 9;
+	static const uint8 BLEEDING = 10;
+	static const uint8 DISEASED = 11;
+	static const uint8 ONFIRE = 12;
 };
 
 

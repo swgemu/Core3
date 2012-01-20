@@ -296,7 +296,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 		damage = applyDamage(attacker, defender, damageMultiplier, poolsToDamage);
 
 	applyStates(attacker, defender, data);
-	attemptApplyDot(attacker, defender, data, damage);
+	applyDots(attacker, defender, data, damage);
 
 	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
 
@@ -306,51 +306,24 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	return damage;
 }
 
-bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage) {
-	uint32 duration = data.getDotDuration();
+void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage) {
+	VectorMap<uint64, DotEffect>* dotEffects = data.getDotEffects();
 
-	if (duration == 0) {
-		//info("dot duration 0", true);
-		return false;
+	for (int i = 0; i < dotEffects->size(); i++) {
+		DotEffect effect = dotEffects->get(i);
+
+		if (effect.getDotDuration() == 0 || System::random(100) > effect.getDotChance()) continue;
+
+		Vector<String> defenseMods = effect.getDefenderStateDefenseModifers();
+		int resist = 0;
+
+		for (int j = 0; j < defenseMods.size(); j++)
+			resist += defender->getSkillMod(defenseMods.get(j));
+
+		//info("entering addDotState", true);
+
+		defender->addDotState(effect.getDotType(), effect.isDotDamageofHit() ? appliedDamage : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist);
 	}
-
-	uint64 type = data.getDotType();
-	uint8 dotPool = data.getDotPool();
-	uint32 strength = data.getDotStrength();
-	float potency = data.getDotPotency();
-	bool dotDamageOfHit = data.getCommand()->isDotDamageOfHit();
-
-	if (dotDamageOfHit) {
-		if (appliedDamage < 1) {
-			//info("applieddamage < 1", true);
-			return false;
-		}
-
-		strength = appliedDamage;
-	}
-
-	int resist = 0;
-
-	switch (type) {
-	case CreatureState::BLEEDING:
-		resist = defender->getSkillMod("resistance_bleeding");
-		break;
-	case CreatureState::POISONED:
-		resist = defender->getSkillMod("resistance_poison");
-		break;
-	case CreatureState::DISEASED:
-		resist = defender->getSkillMod("resistance_disease");
-		break;
-	case CreatureState::ONFIRE:
-		resist = defender->getSkillMod("resistance_fire");
-		break;
-	}
-
-	//info("entering addDotState", true);
-
-	int applied = defender->addDotState(type, strength, dotPool, duration, potency, resist);
-
-	return applied != 0;
 }
 
 float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* weapon) {
@@ -1049,7 +1022,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 }
 
 void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data) {
-	VectorMap<uint64, StateEffect>* stateEffects = data.getstateEffects();
+	VectorMap<uint64, StateEffect>* stateEffects = data.getStateEffects();
 
 	// loop through all the states in the command
 	for (int i = 0; i < stateEffects->size(); i++) {

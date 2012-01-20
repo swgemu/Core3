@@ -44,6 +44,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	forceCostMultiplier = data.forceCostMultiplier;
 
 	stateEffects = data.stateEffects;
+	dotEffects = data.dotEffects;
 	nextAttackDelayChance = data.nextAttackDelayChance;
 	durationStateTime = data.durationStateTime;
 
@@ -69,6 +70,7 @@ void CreatureAttackData::fillFromBase() {
 	forceCostMultiplier = baseCommand->getForceCostMultiplier();
 	poolsToDamage = baseCommand->getPoolsToDamage();
 	stateEffects = baseCommand->getStateEffects();
+	dotEffects = baseCommand->getDotEffects();
 	nextAttackDelayChance = baseCommand->getNextAttackDelayChance();
 	durationStateTime = baseCommand->getDurationStateTime();
 	dotDuration = baseCommand->getDotDuration();

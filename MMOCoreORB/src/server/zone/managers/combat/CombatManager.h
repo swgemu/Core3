@@ -138,7 +138,7 @@ protected:
 	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, const CreatureAttackData& data);
 	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
 	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
-	bool attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage);
+	void applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage);
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 

@@ -56,10 +56,18 @@ ActionShot1Command = {
 
 	combatSpam = "kneecapshot",
 
-	dotType = BLEEDING_STATE,
-	dotPool = ACTION_ATTRIBUTE,
-	dotDamageOfHit = true,
-	dotDuration = 30,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		ACTION_ATTRIBUTE,
+		true,
+		100,
+		100,
+		30, 
+		30
+	  )
+	},
 
 	range = -1
 }

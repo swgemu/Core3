@@ -43,11 +43,18 @@
 
 CreatureAreaBleedingCommand = {
         name = "creatureareableeding",
-	dotDuration = 10,
-	dotType = BLEEDING_STATE,
-	dotPool = HEALTH_ATTRIBUTE,
-	dotStrength = 50,
-	dotPotency = 50,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		HEALTH_ATTRIBUTE,
+		true,
+		100,
+		100,
+		50, 
+		10
+	  )
+	},
 
 	areaRange = 25,
 	areaAction = true

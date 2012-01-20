@@ -56,10 +56,18 @@ MindShot2Command = {
 
 	combatSpam = "headshot",
 
-	dotType = BLEEDING_STATE,
-	dotPool = MIND_ATTRIBUTE,
-	dotDamageOfHit = true,
-	dotDuration = 60,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		MIND_ATTRIBUTE,
+		true,
+		100,
+		100,
+		60, 
+		60
+	  )
+	},
 
 	range = -1
 }

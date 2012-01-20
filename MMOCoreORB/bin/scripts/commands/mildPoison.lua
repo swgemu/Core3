@@ -43,11 +43,18 @@
 
 MildPoisonCommand = {
         name = "mildpoison",
-	dotDuration = 10,
-	dotType = POISONED_STATE,
-	dotPool = HEALTH_ATTRIBUTE,
-	dotStrength = 30,
-	dotPotency = 30
+	dotEffects = {
+	  DotEffect( 
+		POISONED_EFFECT, 
+		{ "resistance_poison" },
+		HEALTH_ATTRIBUTE,
+		true,
+		30,
+		100,
+		30, 
+		10
+	  )
+	}
 }
 
 AddCommand(MildPoisonCommand)

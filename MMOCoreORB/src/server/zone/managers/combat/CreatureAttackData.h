@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
+#include "server/zone/objects/creature/commands/effect/DotEffect.h"
 
 class CombatQueueCommand;
 
@@ -42,6 +43,7 @@ protected:
     uint32 animationCRC;
 
     VectorMap<uint64, StateEffect>* stateEffects;
+    VectorMap<uint64, DotEffect>* dotEffects;
 
 public:
     CreatureAttackData(const UnicodeString & dataString, CombatQueueCommand *base);
@@ -130,8 +132,12 @@ public:
 		return speedMultiplier;
 	}
 
-	VectorMap<uint64, StateEffect>* getstateEffects() const {
+	VectorMap<uint64, StateEffect>* getStateEffects() const {
 		return stateEffects;
+	}
+
+	VectorMap<uint64, DotEffect>* getDotEffects() const {
+		return dotEffects;
 	}
 
 	void setAnimationCRC(uint32 animationCRC) {

@@ -55,10 +55,18 @@ HealthShot2Command = {
 
 	combatSpam = "sapblast",
 
-	dotType = BLEEDING_STATE,
-	dotPool = HEALTH_ATTRIBUTE,
-	dotDamageOfHit = true,
-	dotDuration = 60,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		ACTION_ATTRIBUTE,
+		true,
+		100,
+		100,
+		60, 
+		60
+	  )
+	},
 
 	range = -1
 }

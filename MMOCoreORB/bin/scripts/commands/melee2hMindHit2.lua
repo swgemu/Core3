@@ -48,10 +48,18 @@ Melee2hMindHit2Command = {
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
-	dotType = BLEEDING_STATE,
-	dotDamageOfHit = true,
-	dotDuration = 60,
-	dotPool = MIND_ATTRIBUTE,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		MIND_ATTRIBUTE,
+		true,
+		100,
+		100,
+		60, 
+		60
+	  )
+	},
 
 	animationCRC = hashCode("combo_3c_light"),
 

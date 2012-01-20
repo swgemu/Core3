@@ -59,10 +59,18 @@ ActionShot2Command = {
 
 	combatSpam = "legshot",
 
-	dotType = BLEEDING_STATE,
-	dotPool = ACTION_ATTRIBUTE,
-	dotDamageOfHit = true,
-	dotDuration = 60,
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING_EFFECT, 
+		{ "resistance_bleeding" },
+		ACTION_ATTRIBUTE,
+		true,
+		100,
+		100,
+		60, 
+		60
+	  )
+	},
 
 	range = -1
 }
