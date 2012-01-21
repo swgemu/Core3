@@ -268,6 +268,7 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/area/LuaActiveArea.cpp \
 		server/zone/objects/area/LairSpawnAreaImplementation.cpp \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \

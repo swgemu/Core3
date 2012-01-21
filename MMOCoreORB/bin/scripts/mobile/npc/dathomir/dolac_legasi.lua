@@ -1,5 +1,5 @@
 dolac_legasi = Creature:new {
-	objectName = "@mob/creature_names:Dolac_Legasi",
+	objectName = "@mob/creature_names:dolac_legasi",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
@@ -23,13 +23,13 @@ dolac_legasi = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dolac_legasi.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "dolac_legasi_conv",
+	conversationTemplate = "dolac_legasi_convotemplate",
 	attacks = {
 	}
 }

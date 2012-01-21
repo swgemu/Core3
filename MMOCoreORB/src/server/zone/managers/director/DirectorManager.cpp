@@ -24,6 +24,7 @@
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/LuaAiAgent.h"
+#include "server/zone/objects/area/LuaActiveArea.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"
 #include "server/zone/templates/mobile/ConversationTemplate.h"
 #include "server/zone/templates/mobile/LuaConversationScreen.h"
@@ -127,6 +128,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaIntangibleObject>::Register(luaEngine->getLuaState());
 	Luna<LuaPlayerObject>::Register(luaEngine->getLuaState());
 	Luna<LuaAiAgent>::Register(luaEngine->getLuaState());
+	Luna<LuaActiveArea>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
@@ -461,7 +463,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 }
 
 int DirectorManager::createObserver(lua_State* L) {
-	CreatureObject* creatureObject = (CreatureObject*)lua_touserdata(L, -1);
+	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
 	String key = lua_tostring(L, -2);
 	String play = lua_tostring(L, -3);
 	uint32 eventType = lua_tonumber(L, -4);
@@ -470,7 +472,7 @@ int DirectorManager::createObserver(lua_State* L) {
 	observer->setScreenPlay(play);
 	observer->setScreenKey(key);
 
-	creatureObject->registerObserver(eventType, observer);
+	sceneObject->registerObserver(eventType, observer);
 
 	return 0;
 }

@@ -1,5 +1,5 @@
 darth_vader = Creature:new {
-	objectName = "@mob/creature_names:Darth_Vader",
+	objectName = "@mob/creature_names:darth_vader",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
@@ -21,7 +21,7 @@ darth_vader = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

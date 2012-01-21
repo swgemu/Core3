@@ -1,4 +1,4 @@
-Gorax = Creature:new {
+gorax = Creature:new {
 	objectName = "@mob/creature_names:gorax",
 	socialGroup = "Gorax",
 	pvpFaction = "",
@@ -36,4 +36,4 @@ Gorax = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(Gorax, "Gorax")
+CreatureTemplates:addCreatureTemplate(gorax, "gorax")

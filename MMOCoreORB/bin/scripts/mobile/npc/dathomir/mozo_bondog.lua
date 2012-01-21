@@ -21,15 +21,15 @@ mozo_bondog = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mozo_bondog.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "",
+	conversationTemplate = "mozo_bondog_convotemplate",
 	attacks = {
 	}
 }

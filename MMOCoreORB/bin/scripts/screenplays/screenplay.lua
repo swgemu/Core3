@@ -33,5 +33,7 @@ Act = Object:new {
 
 includeFile("tutorial.lua")
 includeFile("recruiters/recruiters.lua")
+includeFile("tasks/mozo_bondog.lua")
+includeFile("tasks/dolac_legasi.lua")
 includeFile("recruiters/imperialrecruiter.lua")
 includeFile("recruiters/rebelrecruiter.lua")
