@@ -872,12 +872,12 @@ void AiAgentImplementation::doMovement() {
 
 		return;
 	} else {
-		if (getLoggingName().contains("bandit")) {
+		/*if (getLoggingName().contains("bandit")) {
 			StringBuffer msg;
 			msg << "finding next position with maxDistance " << maxDistance << " next pos:x" << nextPosition.getX() << " y:" << nextPosition.getY();
 			//info( + String::valueOf(maxDistance), true);
 			info(msg.toString(), true);
-		}
+		}*/
 	}
 
 	if (!isStanding()) {
