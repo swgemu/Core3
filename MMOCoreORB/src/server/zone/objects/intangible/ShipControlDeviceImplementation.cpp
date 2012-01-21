@@ -49,6 +49,8 @@ which carries forward this exception.
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 	//info("generating ship", true);
+	return;
+
 	ZoneServer* zoneServer = getZoneServer();
 
 	Locker clocker(controlledObject, player);
@@ -97,9 +99,9 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
 void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	//ControlDeviceImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if (!controlledObject->isInQuadTree())
-		menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
-	else
+	if (!controlledObject->isInQuadTree()) {
+		//menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
+	} else
 		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Launch
 	//menuResponse->addRadialMenuItem(61, 3, "Launch Ship"); //Launch
 }
