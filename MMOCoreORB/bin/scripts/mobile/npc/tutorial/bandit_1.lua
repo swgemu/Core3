@@ -1,7 +1,7 @@
 bandit_tutorial_1 = Creature:new {
 	objectName = "@mob/creature_names:bandit",
 	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	pvpFaction = "",
 	faction = "",--dont change this
 	level = 10,
 	chanceHit = 0.390000,

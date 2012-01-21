@@ -43,6 +43,7 @@ public:
 	const static int STARTCOMBAT = 31; //ManagedObject arg1 = null, long arg2 = 0
 	const static int DEFENDERADDED = 32; //ManagedObject arg1 = defender, long arg2 = 0
 	const static int DEFENDERDROPPED = 33; //ManagedObject arg1 = defender, long arg2 = 0
+	const static int OBJECTRADIALOPENED = 32; // ManagedObject arg1 = player that opened the radial
 
 };
 

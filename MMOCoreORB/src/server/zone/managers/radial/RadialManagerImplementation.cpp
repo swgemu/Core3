@@ -35,6 +35,7 @@ void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player
 	defaultMenuResponse->finish();
 
 	player->sendMessage(defaultMenuResponse->clone());
+	menuObject->notifyObservers(ObserverEventType::OBJECTRADIALOPENED, player, 0);
 }
 
 void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectID, uint64 objectID) {

@@ -101,6 +101,16 @@ void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, Cr
 }
 
 bool CreatureImplementation::isCamouflaged(CreatureObject* target) {
+	/// check invisible
+	if (target->isPlayerCreature()) {
+		PlayerObject* ghost = cast<PlayerObject*> (target->getSlottedObject(
+				"ghost"));
+		if (ghost != NULL) {
+			if (ghost->isInvisible())
+				return true;
+		}
+	}
+
 	/// Check masked scent
 	if (!target->hasState(CreatureState::MASKSCENT)) {
 		if(camouflagedObjects.contains(target)) {

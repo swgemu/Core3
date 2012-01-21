@@ -1108,6 +1108,10 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 
 	float damage = 0;
 
+	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+		return 0;
+	}
+
 	if (poolsToDamage & HEALTH) {
 		damage = calculateDamage(attacker, defender, HEALTH) * damageMultiplier;
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)damage, true);
@@ -1129,6 +1133,10 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage) {
 	if (poolsToDamage == 0)
 		return 0;
+
+	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+		return 0;
+	}
 
 	int damage = System::random(1000);
 
