@@ -2508,7 +2508,7 @@ Vector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurabl
 
 			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
 				insurableItems.add(item);
-			} else if (item->getOptionsBitmask() & OptionBitmask::INSURED && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 				insurableItems.add(item);
 			}
 		}
@@ -2523,7 +2523,7 @@ Vector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurabl
 
 			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
 				insurableItems.add(item);
-			} else if (item->getOptionsBitmask() & OptionBitmask::INSURED && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 				insurableItems.add(item);
 			}
 		}

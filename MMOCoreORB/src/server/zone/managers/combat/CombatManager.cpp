@@ -73,7 +73,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 			if (defender->hasDefender(attacker)) {
 
 				if (defender->isCreatureObject()) {
-					CreatureObject* creature = cast<CreatureObject*>( defender);
+					CreatureObject* creature = cast<CreatureObject*>(defender);
 
 					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead()) {
 						attacker->removeDefender(defender);
@@ -109,6 +109,9 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 	} else {
 		attacker->clearCombatState(false);
 
+		// clearCombatState() (rightfully) does not automatically set peace, so set it
+		attacker->setState(CreatureState::PEACE);
+
 		return true;
 	}
 }
@@ -139,6 +142,7 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 	}
 
 	attacker->clearCombatState(false);
+	attacker->setState(CreatureState::PEACE);
 }
 
 int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command) {
@@ -179,11 +183,11 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	uint32 animationCRC = data.getAnimationCRC();
 
-	if (animationCRC == 0)
+	if (!attacker->isCreature() && animationCRC == 0)
 		animationCRC = getDefaultAttackAnimation(attacker);
 
-	// TODO: this needs to change as per the different attacks
-	if (attacker->isCreature())
+	// TODO: this might need a randomize like player CRCs
+	if (attacker->isCreature() && animationCRC == 0)
 		animationCRC = String("creature_attack_light").hashCode();
 
 	uint8 hit = damage != 0 ? 1 : 0;
@@ -191,7 +195,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	if (defenderObject->isCreatureObject()) {
 		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit);
 	} else {
-		combatAction = new CombatAction(attacker, defenderObject, data.getAnimationCRC(), hit);
+		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit);
 	}
 
 	attacker->broadcastMessage(combatAction, true);
@@ -239,13 +243,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	if (defender->isEntertaining())
 		defender->stopEntertaining();
 
-	int rand = System::random(100);
-
 	// TODO: accuracy modifiers from specials go in the last slot
 	int hitVal = getHitChance(attacker, defender, attacker->getWeapon(), 0);
 	float damageMultiplier = data.getDamageMultiplier();
 	String combatSpam = data.getCommand()->getCombatSpam();
-	// FIXME: probably need to add combatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
+	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
 
 	if (hitVal != HIT) {
 		//better luck next time
@@ -389,6 +391,23 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 	return attackerAccuracy;
 }
 
+int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon) {
+	int bonus = 0;
+
+	bonus += attacker->getSkillMod("attack_accuracy");
+	bonus += attacker->getSkillMod("private_attack_accuracy");
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK) bonus += attacker->getSkillMod("private_melee_accuracy");
+	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) bonus += attacker->getSkillMod("private_ranged_accuracy");
+	bonus += calculatePostureModifier(attacker);
+
+	if (attacker->isAiAgent()) {
+		ManagedReference<AiAgent*> agent = dynamic_cast<AiAgent*>(attacker);
+		bonus += agent->getChanceHit() * 100;
+	}
+
+	return bonus;
+}
+
 int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
 	int targetDefense = 0;
 	int buffDefense = 0;
@@ -401,7 +420,7 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
-	targetDefense = applyDefensePenalties(defender, weapon->getAttackType(), targetDefense);
+	targetDefense += defender->getSkillMod("private_defense");
 	targetDefense += calculateTargetPostureModifier(attacker, defender);
 
 	// defense hardcap
@@ -814,31 +833,12 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	if (weapon->getDamageType() != WeaponObject::LIGHTSABER) damage *= (1.f - (defender->getSkillMod("jedi_toughness") / 100.f));
 
+	if (attacker->isPlayerCreature() && defender->isPlayerCreature())
+		damage *= 0.25;
+
 	//info("damage to be dealt is " + String::valueOf(damage), true);
 
 	return damage;
-}
-
-int CombatManager::applyAccuracyPenalties(CreatureObject* creature, int attackType, int accuracy) {
-	// TODO: check these modifiers with QA
-	if (creature->isBerserked() && attackType == WeaponObject::MELEEATTACK)
-		accuracy -= 10;
-
-	if (creature->isBlinded())
-		accuracy -= 50;
-
-	return accuracy;
-}
-
-int CombatManager::applyDefensePenalties(CreatureObject* defender, int attackType, int defense) {
-	// TODO: check these modifiers with QA
-	if (defender->isInCover())
-		defense += 10;
-
-	if (defender->isStunned())
-		defense -= 50;
-
-	return defense;
 }
 
 int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int accuracyBonus) {
@@ -857,18 +857,12 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
 
-	// need to also add in general attack_accuracy (mostly gotten from foods)
-	accuracyBonus += creature->getSkillMod("attack_accuracy");
-
-	if (creature->isAiAgent()) {
-		ManagedReference<AiAgent*> creoAttacker = dynamic_cast<AiAgent*>(creature);
-		accuracyBonus += creoAttacker->getChanceHit() * 100; // FIXME: should this just be = and not +=?
-	}
-
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
-	accuracyBonus = applyAccuracyPenalties(creature, attackType, accuracyBonus);
-	accuracyBonus += calculatePostureModifier(creature);
+	// need to also add in general attack accuracy (mostly gotten from foods and states)
+	accuracyBonus += getAttackerAccuracyBonus(creature, weapon);
+
+	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 
 	int targetDefense = getDefenderDefenseModifier(creature, targetCreature, weapon);
 
@@ -1106,28 +1100,45 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	if (poolsToDamage == 0 || damageMultiplier == 0)
 		return 0;
 
-	float damage = 0;
+	float ratio = attacker->getWeapon()->getWoundsRatio();
+	float healthDamage = 0.f, actionDamage = 0.f, mindDamage = 0.f;
+	bool wounded = false;
 
 	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
 		return 0;
 	}
 
 	if (poolsToDamage & HEALTH) {
-		damage = calculateDamage(attacker, defender, HEALTH) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)damage, true);
+		healthDamage = calculateDamage(attacker, defender, HEALTH) * damageMultiplier;
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true);
+		if (!wounded && System::random(100) < ratio) {
+			defender->addWounds(CreatureAttribute::HEALTH + System::random(2), 1, true);
+			wounded = true;
+		}
 	}
 
 	if (poolsToDamage & ACTION) {
-		damage = calculateDamage(attacker, defender, ACTION) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)damage, true);
+		actionDamage = calculateDamage(attacker, defender, ACTION) * damageMultiplier;
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true);
+		if (!wounded && System::random(100) < ratio) {
+			defender->addWounds(CreatureAttribute::ACTION + System::random(2), 1, true);
+			wounded = true;
+		}
 	}
 
 	if (poolsToDamage & MIND) {
-		damage = calculateDamage(attacker, defender, MIND) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)damage, true);
+		mindDamage = calculateDamage(attacker, defender, MIND) * damageMultiplier;
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true);
+		if (!wounded && System::random(100) < ratio) {
+			defender->addWounds(CreatureAttribute::MIND + System::random(2), 1, true);
+			wounded = true;
+		}
 	}
 
-	return (int) damage;
+	if (wounded)
+		defender->addShockWounds(1, true);
+
+	return (int) (healthDamage + actionDamage + mindDamage);
 }
 
 int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage) {
@@ -1178,14 +1189,14 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
 
 		for (int i = 0; i < closeObjects->size(); ++i) {
-			ManagedReference<SceneObject*> object = cast<SceneObject*>( closeObjects->get(i).get());
+			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects->get(i).get());
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
 				continue;
 			}
 
-			TangibleObject* tano = cast<TangibleObject*>( object.get());
+			TangibleObject* tano = cast<TangibleObject*>(object.get());
 
 			if (object == attacker) {
 				//error("object is attacker");
@@ -1198,7 +1209,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 			}
 
 			if (!tano->isAttackableBy(attacker)) {
-				//error("object is not attackeble");
+				//error("object is not attackable");
 				continue;
 			}
 
@@ -1207,8 +1218,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				continue;
 			}
 
-			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX,
-					directionVectorY)) {
+			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
 				//error("object is not in cone angle");
 				continue;
 			}
@@ -1453,8 +1463,6 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 
 	if (weapon->isRangedWeapon())
 		return 0x506E9D4C;
-	else {
-		int choice = System::random(8);
-		return defaultAttacks[choice];
-	}
+	else
+		return defaultAttacks[System::random(8)];
 }

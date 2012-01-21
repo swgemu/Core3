@@ -142,9 +142,6 @@ protected:
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 
-	int applyDefensePenalties(CreatureObject* defender, int attackType, int defense);
-	int applyAccuracyPenalties(CreatureObject* creature, int attackType, int accuracy);
-
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 	/**
@@ -157,6 +154,7 @@ protected:
 	int calculateTargetPostureModifier(CreatureObject* creature, CreatureObject* targetCreature);
 
 	int getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon);
+	int getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon);
 	int getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
 	int getDefenderToughnessModifier(CreatureObject* defender);

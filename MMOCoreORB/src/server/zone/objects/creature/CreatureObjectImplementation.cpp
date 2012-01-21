@@ -1782,6 +1782,8 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 			buff->setSpeedMultiplierMod(0.f);
 		}
 
+		buff->setSkillModifier("private_defense", 10);
+
 		addBuff(buff);
 	}
 }
@@ -1791,6 +1793,7 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 		StateBuff* state = new StateBuff(_this, CreatureState::BERSERK, duration);
 
 		state->setSkillModifier("private_damage_susceptibility", 50);
+		state->setSkillModifier("private_melee_accuracy", -10);
 
 		addBuff(state);
 	}
@@ -1817,7 +1820,11 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 
 void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 	if (!hasState(CreatureState::BLINDED)) {
-		addBuff(new StateBuff(_this, CreatureState::BLINDED, durationSeconds));
+		StateBuff* state = new StateBuff(_this, CreatureState::BLINDED, durationSeconds);
+
+		state->setSkillModifier("private_attack_accuracy", -50);
+
+		addBuff(state);
 	}
 }
 
@@ -2166,7 +2173,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (areInDuel)
 		return true;
 
-	if (pvpStatusBitmask & CreatureFlag::OVERT && object->getPvpStatusBitmask() & CreatureFlag::OVERT && object->getFaction() != getFaction())
+	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
 	return false;
@@ -2193,7 +2200,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (areInDuel)
 		return true;
 
-	if (pvpStatusBitmask & CreatureFlag::OVERT && object->getPvpStatusBitmask() & CreatureFlag::OVERT && object->getFaction() != getFaction())
+	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
 	return false;
