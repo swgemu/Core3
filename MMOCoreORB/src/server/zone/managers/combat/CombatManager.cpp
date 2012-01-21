@@ -36,8 +36,6 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (attacker->getZone() == NULL || defender->getZone() == NULL)
 		return false;
 
-	bool success = true;
-
 	if (attacker->isRidingMount())
 		return false;
 
@@ -47,30 +45,15 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (defender->isCreatureObject() && (cast<CreatureObject*>(defender))->isIncapacitated())
 		return false;
 
-	attacker->clearState(CreatureState::PEACE);
-
-	// Clear Mask Scent
-	uint32 crc = String("skill_buff_mask_scent").hashCode();
-	attacker->removeBuff(crc);
-
-	if (attacker->isEntertaining())
-		attacker->stopEntertaining();
-
-	Reference<LogoutTask*> logoutTask = cast<LogoutTask*>(attacker->getPendingTask("logout"));
-
-	if (logoutTask != NULL) {
-		logoutTask->cancelLogout();
-	}
+	// this is redundant (happens again in set/addDefender)
+	//attacker->clearState(CreatureState::PEACE);
 
 	Locker clocker(defender, attacker);
 
 	attacker->setDefender(defender);
 	defender->addDefender(attacker);
 
-	attacker->notifyObservers(ObserverEventType::STARTCOMBAT, defender, 0);
-	defender->notifyObservers(ObserverEventType::STARTCOMBAT, attacker, 0);
-
-	return success;
+	return true;
 }
 
 bool CombatManager::attemptPeace(CreatureObject* attacker) {
@@ -170,11 +153,6 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	//info("past start combat", true);
 
-	if (!applySpecialAttackCost(attacker, data))
-		return -2;
-
-	//info("past special attack cost", true);
-
 	if (attacker->hasAttackDelay())
 		return -3;
 
@@ -184,6 +162,11 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 		return -3;
 
 	//info("past berserk", true);
+
+	if (!applySpecialAttackCost(attacker, data))
+		return -2;
+
+	//info("past special attack cost", true);
 
 	int damage = 0;
 

@@ -7,6 +7,7 @@
 
 #include "QueueCommand.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Logger() {
 	server = serv;
@@ -95,6 +96,7 @@ void QueueCommand::onLocomotionFail(CreatureObject* creature, uint32 actioncntr)
  * Unsuccessful command completion alerts the player of the invalid state
  */
 void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 errorNumber) {
+	StringIdChatParameter prm;
 	switch (errorNumber) {
 	case INVALIDSTATE:
 		onStateFail(creature, actioncntr);
@@ -106,9 +108,18 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 3, 0);
 		break;
-
-	case INVALIDWEAPON:
-		creature->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
+	case INVALIDWEAPON: // this only gets returned from combat commands
+		switch (creature->getWeapon()->getAttackType()) {
+		case WeaponObject::RANGEDATTACK:
+			creature->sendSystemMessage("cbt_spam", "no_attack_ranged_single");
+			break;
+		case WeaponObject::MELEEATTACK:
+			creature->sendSystemMessage("cbt_spam", "no_attack_melee_single");
+			break;
+		default:
+			creature->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
+			break;
+		}
 
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
@@ -135,6 +146,7 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
+		break;
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);

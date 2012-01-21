@@ -110,6 +110,8 @@
 #include "server/zone/packets/zone/ParametersMessage.h"
 
 #include "server/zone/managers/guild/GuildManager.h"
+#include "system/lang/ref/Reference.h"
+#include "server/zone/objects/player/events/LogoutTask.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
@@ -529,8 +531,7 @@ void CreatureObjectImplementation::setCombatState() {
 		if (stateBitmask & CreatureState::PEACE)
 			stateBitmask &= ~CreatureState::PEACE;
 
-		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
-				_this);
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 		dcreo3->updateCreatureBitmask(0x80);
 		dcreo3->updateState();
 		dcreo3->close();
@@ -539,6 +540,20 @@ void CreatureObjectImplementation::setCombatState() {
 
 		if (posture == CreaturePosture::SITTING)
 			setPosture(CreaturePosture::UPRIGHT);
+
+		Reference<LogoutTask*> logoutTask = cast<LogoutTask*>(getPendingTask("logout"));
+
+		if (logoutTask != NULL)
+			logoutTask->cancelLogout();
+
+		if (isEntertaining())
+			stopEntertaining();
+
+		// Clear Mask Scent
+		uint32 crc = String("skill_buff_mask_scent").hashCode();
+		removeBuff(crc);
+
+		notifyObservers(ObserverEventType::STARTCOMBAT);
 	}
 }
 

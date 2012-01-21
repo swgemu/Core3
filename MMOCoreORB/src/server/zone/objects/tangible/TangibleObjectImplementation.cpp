@@ -227,6 +227,8 @@ void TangibleObjectImplementation::addDefender(SceneObject* defender) {
 	broadcastMessage(dtano6, true);
 
 	setCombatState();
+
+	notifyObservers(ObserverEventType::DEFENDERADDED, defender);
 }
 
 void TangibleObjectImplementation::removeDefenders() {
@@ -235,6 +237,9 @@ void TangibleObjectImplementation::removeDefenders() {
 		//info("no defenders in list");
 		return;
 	}
+
+	for (int i = 0; i < defenderList.size(); i++)
+		notifyObservers(ObserverEventType::DEFENDERDROPPED, defenderList.get(i));
 
 	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
 	dtano6->startUpdate(0x01);
@@ -266,6 +271,8 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 			dtano6->close();
 
 			broadcastMessage(dtano6, true);
+
+			notifyObservers(ObserverEventType::DEFENDERDROPPED, defender);
 
 			//info("defender found and removed");
 			break;

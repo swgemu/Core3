@@ -40,7 +40,9 @@ public:
 	const static int SURVEY = 28; //ManagedObject arg1 = ResourceSpawn, long arg2 = density
 	const static int GETATTRIBUTESBATCHCOMMAND = 29; //ManagedObject arg1 = target object arg2 = batch or single
 	const static int HEALINGPERFORMED = 30; //ManagedObject arg1 = object doing healing, long arg2 = 0
-	const static int STARTCOMBAT = 31; //ManagedObject arg1 = object doing healing, long arg2 = 0
+	const static int STARTCOMBAT = 31; //ManagedObject arg1 = null, long arg2 = 0
+	const static int DEFENDERADDED = 32; //ManagedObject arg1 = defender, long arg2 = 0
+	const static int DEFENDERDROPPED = 33; //ManagedObject arg1 = defender, long arg2 = 0
 
 };
 
