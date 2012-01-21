@@ -1039,7 +1039,12 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		ghost->setCloningFacility(NULL);
 	} else {
 		// TODO: add wounds
+		player->addWounds(CreatureAttribute::HEALTH, 100, true);
+		player->addWounds(CreatureAttribute::ACTION, 100, true);
+		player->addWounds(CreatureAttribute::MIND, 100, true);
 	}
+
+	player->addShockWounds(100, true);
 
 	// Decay
 	if (typeofdeath == 0 /*|| (typeofdeath == 2 && cloningBuilding-> ADD FACTION CHECK FOR CLONING HERE )*/) {
