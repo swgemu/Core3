@@ -161,7 +161,10 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		//object->updateToDatabaseWithoutChildren()();
 	}
 
-	object->getRootParent()->notifyObjectInsertedToChild(object, sceneObject, objParent);
+	SceneObject* rootParent = object->getRootParent();
+
+	if (rootParent != NULL)
+		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
 
 	return true;
 }
