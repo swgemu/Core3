@@ -1,7 +1,7 @@
 darth_vader = Creature:new {
 	objectName = "@mob/creature_names:darth_vader",
 	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	pvpFaction = "",
 	faction = "",
 	level = 300,
 	chanceHit = 30,
@@ -10,7 +10,7 @@ darth_vader = Creature:new {
 	baseXp = 28549,
 	baseHAM = 385000,
 	baseHAMmax = 471000,
-	armor = 0,
+	armor = 1,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -21,14 +21,17 @@ darth_vader = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 10000000,
 
 	templates = {"object/mobile/darth_vader.iff"},
-	lootgroups = {},
-	weapons = {""},
+	lootgroups = {
+		{group = "darth_vader", chance = 10000000}
+	},
+	weapons = {"darth_vader_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

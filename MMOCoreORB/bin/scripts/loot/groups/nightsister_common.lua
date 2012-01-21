@@ -7,7 +7,7 @@ nightsister_common = {
 	lootItems = {
 		{itemTemplate = "heavy_duty_clasp", weight = 1300000},
 		{itemTemplate = "heavy_duty_leather", weight = 1500000},
-		{itemTemplate = "nightsister_lance", weight = 2000000},
+		{itemTemplate = "nightsister_controllerfp_lance", weight = 2000000},
 		{itemTemplate = "nightsister_layer", weight = 1395000},
 		{itemTemplate = "nightsister_shards", weight = 1000000},
 		{itemTemplate = "nightsister_vibro_unit", weight = 5000},
