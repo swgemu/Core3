@@ -61,6 +61,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
 		{ "getCashCredits", &LuaCreatureObject::getCashCredits},
 		{ "subtractCashCredits", &LuaCreatureObject::subtractCashCredits},
+		{ "removeScreenPlayState", &LuaCreatureObject::removeScreenPlayState},
 		{ 0, 0 }
 };
 
@@ -218,6 +219,18 @@ int LuaCreatureObject::setScreenPlayState(lua_State *L) {
 	uint64 stateToSet = lua_tointeger(L, -2);
 
 	realObject->setScreenPlayState(play, stateToSet | realObject->getScreenPlayState(play));
+
+	return 0;
+}
+
+int LuaCreatureObject::removeScreenPlayState(lua_State* L) {
+	String play = lua_tostring(L, -1);
+	uint64 stateToClear = lua_tointeger(L, -2);
+
+	uint64 stateMask = realObject->getScreenPlayState(play);
+
+	if (stateMask & stateToClear)
+		realObject->setScreenPlayState(play, stateMask - stateToClear);
 
 	return 0;
 }

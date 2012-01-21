@@ -67,6 +67,7 @@ namespace creature {
 		int getFactionRank(lua_State* L);
 		int getCashCredits(lua_State* L);
 		int subtractCashCredits(lua_State* L);
+		int removeScreenPlayState(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

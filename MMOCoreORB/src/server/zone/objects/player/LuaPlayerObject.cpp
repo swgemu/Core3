@@ -21,6 +21,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "isChangingFactionStatus", &LuaPlayerObject::isChangingFactionStatus },
 		{ "increaseFactionStanding", &LuaPlayerObject::increaseFactionStanding },
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
+		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
 		{ 0, 0 }
 };
 
@@ -98,6 +99,19 @@ int LuaPlayerObject::decreaseFactionStanding(lua_State* L) {
 	const char* str = lua_tostring(L, -2);
 
 	realObject->decreaseFactionStanding(str, val);
+
+	return 0;
+}
+
+int LuaPlayerObject::addWaypoint(lua_State* L) {
+	String planet = lua_tostring(L, -4);
+	float x = lua_tonumber(L, -3);
+	float y = lua_tonumber(L, -2);
+	bool notifyClient = lua_toboolean(L, -1);
+
+	ManagedReference<WaypointObject*> waypoint = realObject->addWaypoint(planet, x, y, notifyClient);
+
+	realObject->setWaypoint(waypoint, true);
 
 	return 0;
 }

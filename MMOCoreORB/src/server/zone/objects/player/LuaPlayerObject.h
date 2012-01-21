@@ -32,6 +32,7 @@ public:
 	int isChangingFactionStatus(lua_State* L);
 	int increaseFactionStanding(lua_State* L);
 	int decreaseFactionStanding(lua_State* L);
+	int addWaypoint(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc

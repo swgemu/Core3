@@ -370,7 +370,7 @@ public:
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
-	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
+	WaypointObject* addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
@@ -993,7 +993,7 @@ public:
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
-	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
+	WaypointObject* addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
@@ -1452,8 +1452,6 @@ public:
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient);
 
-	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient);
-
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient);
 
 	void setLanguageID(byte language, bool notifyClient);
@@ -1785,7 +1783,6 @@ public:
 protected:
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_bool_;
-	String _param0_addWaypoint__String_float_float_bool_;
 	String _param0_addFriend__String_bool_;
 	String _param0_removeFriend__String_bool_;
 	String _param0_addIgnore__String_bool_;
