@@ -144,7 +144,7 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 		for (int i = 0; i < closeobjects->size(); ++i) {
 			SceneObject* obj = cast<SceneObject*>(closeobjects->get(i).get());
 
-			if (obj != NULL && obj->isPlayerCreature()) {
+			if (obj != NULL && obj->isCreatureObject()) {
 				CreatureObject* creo = cast<CreatureObject*>(obj);
 
 				sendPvpStatusTo(creo);
