@@ -200,6 +200,8 @@ public:
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
 
+	SpawnArea* getSpawnArea(const String& areaname);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -287,6 +289,8 @@ public:
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
 
+	SpawnArea* getSpawnArea(const String& areaname);
+
 	WeakReference<CreatureManager*> _this;
 
 	operator const CreatureManager*();
@@ -364,6 +368,10 @@ public:
 
 	int getSpawnedRandomCreatures();
 
+	SpawnArea* getSpawnArea(const String& areaname);
+
+protected:
+	String _param0_getSpawnArea__String_;
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {

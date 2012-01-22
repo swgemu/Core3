@@ -63,6 +63,8 @@ namespace creature {
 		int isImperial(lua_State* L);
 		int isRebel(lua_State* L);
 		int isNeutral(lua_State* L);
+		int teleport(lua_State* L);
+		int getName(lua_State* L);
 		int isAiAgent(lua_State* L);
 		int setFactionRank(lua_State* L);
 		int getFactionRank(lua_State* L);

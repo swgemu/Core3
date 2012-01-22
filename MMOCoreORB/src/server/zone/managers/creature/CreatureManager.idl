@@ -117,4 +117,6 @@ class CreatureManager extends ZoneManager {
 	public Vector<SpawnArea> getWorldSpawnAreas() {
 		return spawnAreaMap.getWorldSpawnAreas();
 	}
+	
+	public native SpawnArea getSpawnArea(final string areaname);
 }

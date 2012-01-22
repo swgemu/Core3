@@ -32,6 +32,7 @@
 #include "server/zone/templates/mobile/LuaConversationTemplate.h"
 #include "server/zone/objects/player/sessions/LuaConversationSession.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
+#include "server/zone/objects/area/SpawnArea.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -86,6 +87,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "isHighestRank", isHighestRank);
 	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
 	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
+
+	lua_register(luaEngine->getLuaState(), "getRegion", getRegion);
 	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "readScreenPlayData", readScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
@@ -120,6 +123,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("GETATTRIBUTESBATCHCOMMAND", ObserverEventType::GETATTRIBUTESBATCHCOMMAND);
 	luaEngine->setGlobalInt("POSTURESITTING", CreaturePosture::SITTING);
 	luaEngine->setGlobalInt("STATESITTINGONCHAIR", CreatureState::SITTINGONCHAIR);
+	luaEngine->setGlobalInt("OBJECTRADIALOPENED", ObserverEventType::OBJECTRADIALOPENED);
 
 	//Waypoint Colors
 	luaEngine->setGlobalInt("WAYPOINTBLUE", WaypointObject::COLOR_BLUE);
@@ -340,6 +344,23 @@ int DirectorManager::getSceneObject(lua_State* L) {
 	return 1;
 }
 
+int DirectorManager::getRegion(lua_State* L) {
+	String regionName = lua_tostring(L, -1);
+	String zoneName = lua_tostring(L, -2);
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	Zone* zone = zoneServer->getZone(zoneName);
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	SceneObject* spawnArea = creatureManager->getSpawnArea(regionName);
+
+	if (spawnArea == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, spawnArea);
+
+	return 1;
+}
+
 int DirectorManager::getCreatureObject(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
@@ -473,6 +494,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		lua_pushnil(L);
 		return 0;
 	}
+
 
 	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
 

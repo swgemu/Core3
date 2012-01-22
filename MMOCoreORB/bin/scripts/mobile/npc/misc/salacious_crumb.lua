@@ -25,7 +25,7 @@ salacious_crumb = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/salacious_crumb.iff"},
 	lootgroups = {},
 	weapons = {""},
 	attacks = {}

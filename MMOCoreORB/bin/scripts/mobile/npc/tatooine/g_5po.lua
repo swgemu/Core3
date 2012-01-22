@@ -1,10 +1,11 @@
-sy_snootles = Creature:new {
-	objectName = "@mob/creature_names:sy_snootles",
+g_5po = Creature:new {
+	objectName = "",
+	customName = "G-5PO",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9429,
@@ -19,16 +20,19 @@ sy_snootles = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/sy_snootles.iff"},
+	templates = {"object/mobile/3po_protocol_droid_red.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	conversationTemplate = "",
+	attacks = {
+	}
 }
 
-CreatureTemplates:addCreatureTemplate(sy_snootles, "sy_snootles")
+CreatureTemplates:addCreatureTemplate(g_5po, "g_5po")

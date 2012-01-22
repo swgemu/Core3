@@ -1,5 +1,5 @@
-rancor = Creature:new {
-	objectName = "@monster_name:rancor",
+jabba_rancor = Creature:new {
+	objectName = "@mob/creature_names:jabbas_palace_rancor",
 	socialGroup = "Jabba ",
 	pvpFaction = "",
 	faction = "",
@@ -21,11 +21,11 @@ rancor = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
-	creatureBitmask = KILLER + STALKER + PACK,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/rancor.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {
@@ -34,4 +34,4 @@ rancor = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(rancor, "rancor")
+CreatureTemplates:addCreatureTemplate(jabba_rancor, "jabba_rancor")

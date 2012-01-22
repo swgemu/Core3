@@ -1,7 +1,8 @@
 bruce_mcbrain = Creature:new {
-	objectName = "@mob/creature_names:Bruce_Mcbrain",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	objectName = "",
+	customName = "Bruce Mcbrain",
+	socialGroup = "Jabba",
+	pvpFaction = "Jabba",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

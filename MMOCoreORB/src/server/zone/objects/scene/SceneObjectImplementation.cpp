@@ -504,6 +504,7 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 					build->onExit(creature);
 			}
 		}
+		notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE,_this.get(),0);
 	} else if (zone != NULL) {
 		zone->removeObject(_this, false);
 	}

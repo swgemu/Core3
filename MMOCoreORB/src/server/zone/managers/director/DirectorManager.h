@@ -94,6 +94,7 @@ namespace server {
 		static int getRankDelegateRatioTo(lua_State* L);
 		static int isHighestRank(lua_State* L);
 		static int getFactionPointsCap(lua_State* L);
+		static int getRegion(lua_State* L);
 		static int getObjectTemplatePathByCRC(lua_State* L);
 
 	private:

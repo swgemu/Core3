@@ -28,7 +28,7 @@
  *	CreatureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_CREATECREATURE__INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,};
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_CREATECREATURE__INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_};
 
 CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
@@ -322,6 +322,20 @@ Vector<ManagedReference<SpawnArea* > >* CreatureManager::getWorldSpawnAreas() {
 		return _implementation->getWorldSpawnAreas();
 }
 
+SpawnArea* CreatureManager::getSpawnArea(const String& areaname) {
+	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSPAWNAREA__STRING_);
+		method.addAsciiParameter(areaname);
+
+		return static_cast<SpawnArea*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getSpawnArea(areaname);
+}
+
 DistributedObjectServant* CreatureManager::_getImplementation() {
 
 	_updated = true;
@@ -607,6 +621,9 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GETSPAWNEDRANDOMCREATURES__:
 		resp->insertSignedInt(getSpawnedRandomCreatures());
 		break;
+	case RPC_GETSPAWNAREA__STRING_:
+		resp->insertLong(getSpawnArea(inv->getAsciiParameter(_param0_getSpawnArea__String_))->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -680,6 +697,10 @@ void CreatureManagerAdapter::addToReservePool(AiAgent* agent) {
 
 int CreatureManagerAdapter::getSpawnedRandomCreatures() {
 	return (static_cast<CreatureManager*>(stub))->getSpawnedRandomCreatures();
+}
+
+SpawnArea* CreatureManagerAdapter::getSpawnArea(const String& areaname) {
+	return (static_cast<CreatureManager*>(stub))->getSpawnArea(areaname);
 }
 
 /*

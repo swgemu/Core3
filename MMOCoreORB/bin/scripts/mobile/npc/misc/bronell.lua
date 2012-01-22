@@ -1,7 +1,8 @@
 bronell = Creature:new {
-	objectName = "@mob/creature_names:Bronell",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	objectName = "",
+	customName = "Bronell",
+	socialGroup = "Jabba",
+	pvpFaction = "Jabba",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

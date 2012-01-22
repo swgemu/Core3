@@ -275,6 +275,10 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 		zone->transferObject(creature, -1, true);
 }
 
+SpawnArea* CreatureManagerImplementation::getSpawnArea(const String& areaname) {
+	return spawnAreaMap.get(areaname.hashCode());
+}
+
 bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature) {
 	if (creature->hasSlotDescriptor("default_weapon")) {
 		uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();

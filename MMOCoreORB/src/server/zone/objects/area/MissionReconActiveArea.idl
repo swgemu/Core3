@@ -65,7 +65,7 @@ class MissionReconActiveArea extends ActiveArea {
 	}
 
 	public void notifyEnter(SceneObject player) {
-		Logger.info("notifyEnter mission recon", true);
+		Logger.info("notifyEnter mission recon");
 		
 		if (!player.isPlayerCreature()) {
 			return;
@@ -92,7 +92,7 @@ class MissionReconActiveArea extends ActiveArea {
 	}
 
 	public void notifyExit(SceneObject player) {
-		Logger.info("notifyExit mission recon", true);
+		Logger.info("notifyExit mission recon");
 		
 		if (!player.isPlayerCreature()) {
 			return;
@@ -102,7 +102,7 @@ class MissionReconActiveArea extends ActiveArea {
 				
 				if ((CreatureObject)player == missionOwner) {
 					if (completeTask != null) {
-						missionOwner.sendSystemMessage("Reconnaisance aborted.");
+						missionOwner.sendSystemMessage("Reconnaissance aborted.");
 						completeTask.cancel();
 					}
 				}

@@ -1,7 +1,7 @@
-ree_yees = Creature:new {
-	objectName = "@mob/creature_names:ree_yees",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
+ra7_bug_droid = Creature:new {
+	objectName = "@mob/creature_names:ra7_bug_droid",
+	socialGroup = "",
+	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.330000,
@@ -25,10 +25,10 @@ ree_yees = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gran_male.iff"},
+	templates = {"object/mobile/ra7_bug_droid.iff"},
 	lootgroups = {},
 	weapons = {""},
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(ree_yees, "ree_yees")
+CreatureTemplates:addCreatureTemplate(ra7_bug_droid, "ra7_bug_droid")

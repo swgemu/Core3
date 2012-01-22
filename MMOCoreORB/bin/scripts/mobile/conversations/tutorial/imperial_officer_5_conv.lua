@@ -37,4 +37,14 @@ imperial_officer_5_convoscreen3 = ConvoScreen:new {
 
 imperial_officer_5_convotemplate:addScreen(imperial_officer_5_convoscreen3);
 
+imperial_officer_5_convoscreen4 = ConvoScreen:new {
+	id = "convoscreen4",
+	leftDialog = "@newbie_tutorial/newbie_convo:trainer_grunt",
+	stopConversation = "true",
+	options = {
+	}
+}
+
+imperial_officer_5_convotemplate:addScreen(imperial_officer_5_convoscreen4);
+
 addConversationTemplate("imperial_officer_5_convotemplate", imperial_officer_5_convotemplate);

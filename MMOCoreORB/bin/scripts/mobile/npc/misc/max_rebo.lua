@@ -25,7 +25,7 @@ max_rebo = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/max_rebo.iff"},
 	lootgroups = {},
 	weapons = {""},
 	attacks = {}

@@ -235,8 +235,8 @@ MissionReconActiveAreaImplementation::MissionReconActiveAreaImplementation() {
 }
 
 void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.info("notifyEnter mission recon", true);
-	Logger::info("notifyEnter mission recon", true);
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.info("notifyEnter mission recon");
+	Logger::info("notifyEnter mission recon");
 	// server/zone/objects/area/MissionReconActiveArea.idl():  		}
 	if (!player->isPlayerCreature()){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			return;
@@ -274,8 +274,8 @@ void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 
 void MissionReconActiveAreaImplementation::notifyExit(SceneObject* player) {
-	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.info("notifyExit mission recon", true);
-	Logger::info("notifyExit mission recon", true);
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.info("notifyExit mission recon");
+	Logger::info("notifyExit mission recon");
 	// server/zone/objects/area/MissionReconActiveArea.idl():  		}
 	if (!player->isPlayerCreature()){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			return;
@@ -291,8 +291,8 @@ void MissionReconActiveAreaImplementation::notifyExit(SceneObject* player) {
 	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  				}
 	if (completeTask != NULL){
-	// server/zone/objects/area/MissionReconActiveArea.idl():  						missionOwner.sendSystemMessage("Reconnaisance aborted.");
-	missionOwner->sendSystemMessage("Reconnaisance aborted.");
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						missionOwner.sendSystemMessage("Reconnaissance aborted.");
+	missionOwner->sendSystemMessage("Reconnaissance aborted.");
 	// server/zone/objects/area/MissionReconActiveArea.idl():  						completeTask.cancel();
 	completeTask->cancel();
 }
