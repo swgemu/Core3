@@ -60,7 +60,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
-	-lmysqlclient -lz -lengine3 -llua -ldb-5.0 -lssl
+	-lmysqlclient -lz -lengine3 -llua -ldb-5.0 -lssl -lcrypto
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
