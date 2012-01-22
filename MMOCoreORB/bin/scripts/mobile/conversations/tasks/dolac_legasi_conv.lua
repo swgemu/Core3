@@ -139,6 +139,19 @@ npc_reset = ConvoScreen:new {
 
 dolac_legasi_convotemplate:addScreen(npc_reset);
 
+---------
+--Reward Messages
+---------
+npc_reward_1 = ConvoScreen:new {
+	id = "npc_reward_1",
+	leftDialog = "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:npc_reward_1", --More questions? How could this be? That is the nature of clues. They answer old questions and create new ones. There will always be questions. Claim the reward Mozo has provided for you.
+	stopConversation = "true",
+	options = {
+	}
+}
+
+dolac_legasi_convotemplate:addScreen(npc_reward_1);
+
 ----------
 --Failure Messages
 ----------

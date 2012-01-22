@@ -103,15 +103,26 @@ int LuaPlayerObject::decreaseFactionStanding(lua_State* L) {
 	return 0;
 }
 
+//addWaypoint(planet, name, desc, x, y, color, active, notifyClient)
 int LuaPlayerObject::addWaypoint(lua_State* L) {
-	String planet = lua_tostring(L, -4);
-	float x = lua_tonumber(L, -3);
-	float y = lua_tonumber(L, -2);
+	String planet = lua_tostring(L, -8);
+	String customName = lua_tostring(L, -7);
+	String desc = lua_tostring(L, -6);
+	float x = lua_tonumber(L, -5);
+	float y = lua_tonumber(L, -4);
+	int color = lua_tointeger(L, -3);
+	bool active = lua_toboolean(L, -2);
 	bool notifyClient = lua_toboolean(L, -1);
 
-	ManagedReference<WaypointObject*> waypoint = realObject->addWaypoint(planet, x, y, notifyClient);
+	ManagedReference<WaypointObject*> waypoint = realObject->addWaypoint(planet, x, y, false);
+	waypoint->setCustomName(customName);
+	waypoint->setColor(color);
+	waypoint->setActive(active);
 
-	realObject->setWaypoint(waypoint, true);
+	if (!desc.isEmpty())
+		waypoint->setDetailedDescription(desc);
+
+	realObject->setWaypoint(waypoint, notifyClient);
 
 	return 0;
 }

@@ -1226,13 +1226,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Bone Left Bicep", "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_l.iff",
 					"Bone Right Bicep", "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_r.iff",
 					"Bone Boots", "object/tangible/wearables/armor/bone/armor_bone_s01_boots.iff",
-					"Bone Left Bracer", "object/tangible/wearables/armor/composite/armor_composite_bracer_l.iff",
+					"Bone Left Bracer", "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff",
 					"Bone Right Bracer", "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_r.iff",
 					"Bone Chest Plate", "object/tangible/wearables/armor/bone/armor_bone_s01_chest_plate.iff",
 					"Bone Gloves", "object/tangible/wearables/armor/bone/armor_bone_s01_gloves.iff",
 					"Bone Helmet", "object/tangible/wearables/armor/bone/armor_bone_s01_helmet.iff",
-					"Bone Leggings", "object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff",
-					"Singing Mountain Clan Bicep", "object/tangible/wearables/armor/bone/armor_smc_s01_bicep_l.iff"
+					"Bone Leggings", "object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff"
 				},
 				"Bounty Hunter Armor",
 				{
@@ -1270,6 +1269,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Composite Gloves", "object/tangible/wearables/armor/composite/armor_composite_gloves.iff",
 					"Composite Helmet", "object/tangible/wearables/armor/composite/armor_composite_helmet.iff",
 					"Composite Leggings", "object/tangible/wearables/armor/composite/armor_composite_leggings.iff"
+				},
+				"Singing Mountain Clan Armor",
+				{
+					"Singing Mountain Clan Bicep", "object/tangible/wearables/armor/bone/armor_smc_s01_bicep_l.iff"
 				}
 			},
 			"Clothes",

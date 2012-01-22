@@ -12,7 +12,7 @@
  *	WaypointObjectStub
  */
 
-enum {RPC_SETCELLID__INT_,RPC_SETPLANETCRC__INT_,RPC_GETPLANETCRC__,RPC_SETCUSTOMNAME__UNICODESTRING_,RPC_GETCUSTOMNAME__,RPC_SETCOLOR__BYTE_,RPC_SETACTIVE__BYTE_,RPC_SETUNKNOWN__LONG_,RPC_SETSPECIALTYPEID__INT_,RPC_GETSPECIALTYPEID__,RPC_TOGGLESTATUS__,RPC_ISACTIVE__,RPC_GETCOLOR__};
+enum {RPC_SETCELLID__INT_,RPC_SETPLANETCRC__INT_,RPC_GETPLANETCRC__,RPC_SETCUSTOMNAME__UNICODESTRING_,RPC_GETCUSTOMNAME__,RPC_SETCOLOR__BYTE_,RPC_SETACTIVE__BYTE_,RPC_SETUNKNOWN__LONG_,RPC_SETSPECIALTYPEID__INT_,RPC_GETSPECIALTYPEID__,RPC_TOGGLESTATUS__,RPC_ISACTIVE__,RPC_GETCOLOR__,RPC_GETDETAILEDDESCRIPTION__,RPC_SETDETAILEDDESCRIPTION__STRING_};
 
 WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	WaypointObjectImplementation* _implementation = new WaypointObjectImplementation();
@@ -223,6 +223,34 @@ byte WaypointObject::getColor() {
 		return _implementation->getColor();
 }
 
+String WaypointObject::getDetailedDescription() {
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDETAILEDDESCRIPTION__);
+
+		method.executeWithAsciiReturn(_return_getDetailedDescription);
+		return _return_getDetailedDescription;
+	} else
+		return _implementation->getDetailedDescription();
+}
+
+void WaypointObject::setDetailedDescription(const String& desc) {
+	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDETAILEDDESCRIPTION__STRING_);
+		method.addAsciiParameter(desc);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDetailedDescription(desc);
+}
+
 DistributedObjectServant* WaypointObject::_getImplementation() {
 
 	_updated = true;
@@ -348,6 +376,11 @@ bool WaypointObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "detailedDescription") {
+		TypeInfo<String >::parseFromBinaryStream(&detailedDescription, stream);
+		return true;
+	}
+
 	if (_name == "color") {
 		TypeInfo<byte >::parseFromBinaryStream(&color, stream);
 		return true;
@@ -410,6 +443,14 @@ int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "detailedDescription";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&detailedDescription, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "color";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -435,7 +476,7 @@ int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 8 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 WaypointObjectImplementation::WaypointObjectImplementation() {
@@ -509,6 +550,11 @@ byte WaypointObjectImplementation::getColor() {
 	return color;
 }
 
+void WaypointObjectImplementation::setDetailedDescription(const String& desc) {
+	// server/zone/objects/waypoint/WaypointObject.idl():  		detailedDescription = desc;
+	detailedDescription = desc;
+}
+
 /*
  *	WaypointObjectAdapter
  */
@@ -558,6 +604,12 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_GETCOLOR__:
 		resp->insertByte(getColor());
+		break;
+	case RPC_GETDETAILEDDESCRIPTION__:
+		resp->insertAscii(getDetailedDescription());
+		break;
+	case RPC_SETDETAILEDDESCRIPTION__STRING_:
+		setDetailedDescription(inv->getAsciiParameter(_param0_setDetailedDescription__String_));
 		break;
 	default:
 		return NULL;
@@ -616,6 +668,14 @@ bool WaypointObjectAdapter::isActive() {
 
 byte WaypointObjectAdapter::getColor() {
 	return (static_cast<WaypointObject*>(stub))->getColor();
+}
+
+String WaypointObjectAdapter::getDetailedDescription() {
+	return (static_cast<WaypointObject*>(stub))->getDetailedDescription();
+}
+
+void WaypointObjectAdapter::setDetailedDescription(const String& desc) {
+	(static_cast<WaypointObject*>(stub))->setDetailedDescription(desc);
 }
 
 /*

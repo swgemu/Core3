@@ -1,5 +1,5 @@
-outlaw = Creature:new {
-	objectName = "@mob/creature_names:outlaw",
+dolac_escaped_prisoner = Creature:new {
+	objectName = "@mob/creature_names:mission_outlaw",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",
@@ -21,14 +21,16 @@ outlaw = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + STALKER,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_light"},
+	conversationTemplate = "dolac_legasi_escaped_prisoner_convotemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(outlaw, "outlaw")
+CreatureTemplates:addCreatureTemplate(dolac_escaped_prisoner, "dolac_escaped_prisoner")

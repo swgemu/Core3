@@ -6,6 +6,10 @@ function writeData(key, data)
 	writeSharedMemory(keyUnpacked, data)
 end
 
+function deleteData(key)
+	deleteSharedMemory(string.format(key))
+end
+
 function readData(key)
 	return readSharedMemory(string.format(key))
 end

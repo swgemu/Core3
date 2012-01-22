@@ -938,8 +938,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@local
 	@read
-	public string getDetailedDescription() {
+	public abstract string getDetailedDescription() {
 		return templateObject.getDetailedDescription();
+	}
+	
+	public abstract void setDetailedDescription(final string detail) {
+		return;
 	}
 
 	@read

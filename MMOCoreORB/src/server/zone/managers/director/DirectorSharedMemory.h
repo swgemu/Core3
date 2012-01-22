@@ -12,6 +12,7 @@
 
 class DirectorSharedMemory : public Object {
 	HashTable<String, uint64> hashTable;
+
 public:
 	uint64 get(const String& k) {
 		return hashTable.get(k);
@@ -19,6 +20,10 @@ public:
 
 	void put(const String& k, uint64 v) {
 		hashTable.put(k, v);
+	}
+
+	void remove(const String& k) {
+		hashTable.remove(k);
 	}
 
 	void setNullValue(uint64 o) {

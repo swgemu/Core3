@@ -21,6 +21,13 @@ void WaypointObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	specialTypeID = 0;
 }
 
+String WaypointObjectImplementation::getDetailedDescription() {
+	if (detailedDescription.isEmpty())
+		return SceneObjectImplementation::getDetailedDescription();
+
+	return detailedDescription;
+}
+
 void WaypointObjectImplementation::insertToMessage(BaseMessage* msg) {
 	msg->writeInt(cellID); // cellID
 	msg->writeFloat(getPositionX());

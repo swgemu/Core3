@@ -462,6 +462,8 @@ public:
 
 	String getDetailedDescription();
 
+	void setDetailedDescription(const String& detail);
+
 	int getArrangementDescriptorSize();
 
 	String getArrangementDescriptor(int idx);
@@ -1016,7 +1018,9 @@ public:
 
 	String getObjectNameStringIdName();
 
-	String getDetailedDescription();
+	virtual String getDetailedDescription();
+
+	virtual void setDetailedDescription(const String& detail);
 
 	int getArrangementDescriptorSize();
 
@@ -1485,6 +1489,8 @@ public:
 
 	String getObjectNameStringIdName();
 
+	void setDetailedDescription(const String& detail);
+
 	int getArrangementDescriptorSize();
 
 	String getArrangementDescriptor(int idx);
@@ -1718,6 +1724,7 @@ protected:
 	String _param0_containsPendingTask__String_;
 	String _param0_showFlyText__String_String_byte_byte_byte_;
 	String _param1_showFlyText__String_String_byte_byte_byte_;
+	String _param0_setDetailedDescription__String_;
 	String _param0_hasSlotDescriptor__String_;
 	String _param0_getSlottedObject__String_;
 	String _param0_dropSlottedObject__String_;

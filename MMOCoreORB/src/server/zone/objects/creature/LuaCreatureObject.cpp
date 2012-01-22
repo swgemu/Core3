@@ -57,6 +57,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isRebel", &LuaCreatureObject::isRebel},
 		{ "isImperial", &LuaCreatureObject::isImperial},
 		{ "isNeutral", &LuaCreatureObject::isNeutral},
+		{ "isAiAgent", &LuaCreatureObject::isAiAgent},
 		{ "setFactionRank", &LuaCreatureObject::setFactionRank},
 		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
 		{ "getCashCredits", &LuaCreatureObject::getCashCredits},
@@ -390,4 +391,20 @@ int LuaCreatureObject::subtractCashCredits(lua_State* L) {
 	realObject->subtractCashCredits(lua_tointeger(L, -1));
 
 	return 0;
+}
+
+int LuaCreatureObject::addCashCredits(lua_State* L) {
+	bool notifyClient = lua_toboolean(L, -1);
+	int credits = lua_toboolean(L, -2);
+	realObject->addCashCredits(credits, notifyClient);
+
+	return 0;
+}
+
+int LuaCreatureObject::isAiAgent(lua_State* L) {
+	bool val = realObject->isAiAgent();
+
+	lua_pushboolean(L, val);
+
+	return 1;
 }

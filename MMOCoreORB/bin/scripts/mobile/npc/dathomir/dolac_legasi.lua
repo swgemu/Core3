@@ -1,5 +1,6 @@
 dolac_legasi = Creature:new {
-	objectName = "@mob/creature_names:dolac_legasi",
+	objectName = "",
+	customName = "Dolac Legasi",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

@@ -78,6 +78,7 @@ namespace server {
 		static int spatialShout(lua_State* L);
 		static int readSharedMemory(lua_State* L);
 		static int writeSharedMemory(lua_State* L);
+		static int deleteSharedMemory(lua_State* L);
 		static int getSceneObject(lua_State* L);
 		static int getCreatureObject(lua_State* L);
 		static int addStartingItemsInto(lua_State* L);
@@ -93,6 +94,7 @@ namespace server {
 		static int getRankDelegateRatioTo(lua_State* L);
 		static int isHighestRank(lua_State* L);
 		static int getFactionPointsCap(lua_State* L);
+		static int getObjectTemplatePathByCRC(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

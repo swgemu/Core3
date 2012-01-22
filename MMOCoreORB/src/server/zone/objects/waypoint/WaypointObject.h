@@ -33,6 +33,8 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "system/lang/String.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "engine/core/ManagedReference.h"
@@ -104,6 +106,10 @@ public:
 
 	byte getColor();
 
+	String getDetailedDescription();
+
+	void setDetailedDescription(const String& desc);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -112,6 +118,8 @@ protected:
 	WaypointObject(DummyConstructorParameter* param);
 
 	virtual ~WaypointObject();
+
+	String _return_getDetailedDescription;
 
 	UnicodeString _return_getCustomName;
 
@@ -139,6 +147,8 @@ protected:
 	unsigned int planetCRC;
 
 	UnicodeString customName;
+
+	String detailedDescription;
 
 	byte color;
 
@@ -204,6 +214,10 @@ public:
 	bool isActive();
 
 	byte getColor();
+
+	String getDetailedDescription();
+
+	void setDetailedDescription(const String& desc);
 
 	WeakReference<WaypointObject*> _this;
 
@@ -274,8 +288,13 @@ public:
 
 	byte getColor();
 
+	String getDetailedDescription();
+
+	void setDetailedDescription(const String& desc);
+
 protected:
 	UnicodeString _param0_setCustomName__UnicodeString_;
+	String _param0_setDetailedDescription__String_;
 };
 
 class WaypointObjectHelper : public DistributedObjectClassHelper, public Singleton<WaypointObjectHelper> {

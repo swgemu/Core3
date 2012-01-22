@@ -21,6 +21,7 @@ namespace mobile {
 class CreatureTemplate : public Object {
 protected:
 	String templateName;
+	String customName;
 
 	unsigned int armor;
 
@@ -145,6 +146,7 @@ public:
 		boneType = templateData->getStringField("boneType").trim();
 		hideType = templateData->getStringField("hideType").trim();
 		objectName = templateData->getStringField("objectName").trim();
+		customName = templateData->getStringField("customName").trim();
 		socialGroup = templateData->getStringField("socialGroup").trim();
 		faction = templateData->getStringField("faction").trim().toLowerCase();
 		pvpFaction = templateData->getStringField("pvpFaction").trim().toLowerCase();
@@ -333,6 +335,10 @@ public:
 
 	inline String& getHideType() {
 		return hideType;
+	}
+
+	inline String& getCustomName() {
+		return customName;
 	}
 
 	inline float getMilk() {

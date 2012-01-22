@@ -537,8 +537,6 @@ void PlayerObjectImplementation::setWaypoint(WaypointObject* waypoint, bool noti
 	} else {
 		waypointList.set(waypointID, waypoint);
 	}
-
-	waypoint->updateToDatabase();
 }
 
 void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient) {

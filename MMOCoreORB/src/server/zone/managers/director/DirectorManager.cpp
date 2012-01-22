@@ -13,6 +13,7 @@
 #include "server/zone/objects/player/LuaPlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -87,6 +88,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "readScreenPlayData", readScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
+	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -117,6 +119,14 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("GETATTRIBUTESBATCHCOMMAND", ObserverEventType::GETATTRIBUTESBATCHCOMMAND);
 	luaEngine->setGlobalInt("POSTURESITTING", CreaturePosture::SITTING);
 	luaEngine->setGlobalInt("STATESITTINGONCHAIR", CreatureState::SITTINGONCHAIR);
+
+	//Waypoint Colors
+	luaEngine->setGlobalInt("WAYPOINTBLUE", WaypointObject::COLOR_BLUE);
+	luaEngine->setGlobalInt("WAYPOINTGREEN", WaypointObject::COLOR_GREEN);
+	luaEngine->setGlobalInt("WAYPOINTYELLOW", WaypointObject::COLOR_YELLOW);
+	luaEngine->setGlobalInt("WAYPOINTPURPLE", WaypointObject::COLOR_PURPLE);
+	luaEngine->setGlobalInt("WAYPOINTWHITE", WaypointObject::COLOR_WHITE);
+	luaEngine->setGlobalInt("WAYPOINTORANGE", WaypointObject::COLOR_ORANGE);
 
 
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
@@ -223,6 +233,22 @@ int DirectorManager::readSharedMemory(lua_State* L) {
 #endif
 
 	lua_pushinteger(L, data);
+
+	return 1;
+}
+
+int DirectorManager::deleteSharedMemory(lua_State* L) {
+	String key = Lua::getStringParameter(L);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->remove(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
 
 	return 1;
 }
@@ -402,6 +428,12 @@ int DirectorManager::spawnMobile(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 
 	Zone* zone = zoneServer->getZone(zoneid);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 0;
+	}
+
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
 	/*StringBuffer msg;
@@ -433,6 +465,11 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	Zone* zone = zoneServer->getZone(zoneid);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 0;
+	}
 
 	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
 
@@ -607,6 +644,14 @@ int DirectorManager::getFactionPointsCap(lua_State* L) {
 	int rank = lua_tointeger(L, -1);
 
 	lua_pushinteger(L, FactionManager::instance()->getFactionPointsCap(rank));
+
+	return 1;
+}
+
+int DirectorManager::getObjectTemplatePathByCRC(lua_State* L) {
+	uint32 crc = lua_tointeger(L, -1);
+
+	lua_pushstring(L, TemplateManager::instance()->getTemplateFile(crc));
 
 	return 1;
 }
