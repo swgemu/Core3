@@ -2,7 +2,7 @@ DWB = ScreenPlay:new {
 	numberOfActs = 1
 }
 
-registerScreenPlay("DWB", true);
+registerScreenPlay("DWB", false);
 
 -- Lutin Nightstalker: Rebel Sidequest
 lutin_nightstalker_handler = {  }
@@ -146,7 +146,7 @@ function DWB:start(creatureObject)
 
 	local bunkerObject = LuaBuildingObject(bunker)
 	
-	--createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
+	createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
 end
 
 function DWB:onEnterDWB(sceneObject, creatureObject)

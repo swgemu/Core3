@@ -2,7 +2,7 @@ ThemeparkJabba = ScreenPlay:new {
 	numberOfActs = 1
 }
 
-registerScreenPlay("ThemeparkJabba", true);
+registerScreenPlay("ThemeparkJabba", false);
 
 function ThemeparkJabba:start(creatureObject)	
 	printf("Initiating Jabba's Themepark\n")
