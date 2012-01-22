@@ -31,7 +31,10 @@ function dolac_legasi_screenplay:spawnEscapedPrisoner(pActiveArea, pMovingObject
 	
 	local player = LuaCreatureObject(pMovingObject)
 	
-	if (player:hasScreenPlayState(1, "dolac_legasi") == 1) then
+	local state1 = player:hasScreenPlayState(1, "dolac_legasi")
+	local state2 = player:hasScreenPlayState(2, "dolac_legasi")
+	
+	if (state1 == 1) and (state2 ~= 1) then
 		local isSpawned = readData(player:getObjectID() .. ":dolac_legasi:escapedprisoner_spawned")
 		
 		if (isSpawned ~= 1) then
@@ -81,8 +84,11 @@ function dolac_legasi_screenplay:barkEscapedPrisoner(pPrisoner, pMovingObject)
 	
 	local creatureObject = LuaCreatureObject(pMovingObject)
 	
+	local state1 = creatureObject:hasScreenPlayState(1, "dolac_legasi")
+	local state2 = creatureObject:hasScreenPlayState(2, "dolac_legasi")
+
 	--if they are on this part of the quest, and not progressed, or before it.
-	if (creatureObject:hasScreenPlayState(1, "dolac_legasi") == 1 and not creatureObject:hasScreenPlayState(2, "dolac_legasi")) then
+	if (state1 == 1) and (state2 ~= 1) then
 		local isSpawned = readData(creatureObject:getObjectID() .. ":dolac_legasi:escapedprisoner_spawned")
 		
 		if (isSpawned == 1) then
