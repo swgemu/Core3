@@ -176,3 +176,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 		break;
 	}
 }
+
+void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {
+	info("Performing droid action " + String::valueOf(action), true);
+}

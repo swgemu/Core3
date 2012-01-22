@@ -18,7 +18,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -154,6 +154,35 @@ int BountyMissionObjective::getObjectiveStatus() {
 		return _implementation->getObjectiveStatus();
 }
 
+SceneObject* BountyMissionObjective::getProbotDroid() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPROBOTDROID__);
+
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getProbotDroid();
+}
+
+void BountyMissionObjective::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_);
+		method.addSignedIntParameter(action);
+		method.addObjectParameter(sceneObject);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->performDroidAction(action, sceneObject, player);
+}
+
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
 
 	_updated = true;
@@ -272,6 +301,11 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
+	if (_name == "activeDroid") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&activeDroid, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -311,8 +345,16 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "activeDroid";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&activeDroid, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 3 + MissionObjectiveImplementation::writeObjectMembers(stream);
+
+	return 4 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
@@ -336,6 +378,11 @@ void BountyMissionObjectiveImplementation::initializeTransientMembers() {
 int BountyMissionObjectiveImplementation::getObjectiveStatus() {
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		return objectiveStatus;
 	return objectiveStatus;
+}
+
+SceneObject* BountyMissionObjectiveImplementation::getProbotDroid() {
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		return activeDroid;
+	return activeDroid;
 }
 
 /*
@@ -375,6 +422,12 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 		break;
 	case RPC_GETOBJECTIVESTATUS__:
 		resp->insertSignedInt(getObjectiveStatus());
+		break;
+	case RPC_GETPROBOTDROID__:
+		resp->insertLong(getProbotDroid()->_getObjectID());
+		break;
+	case RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_:
+		performDroidAction(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -417,6 +470,14 @@ void BountyMissionObjectiveAdapter::updateMissionStatus(int informantLevel) {
 
 int BountyMissionObjectiveAdapter::getObjectiveStatus() {
 	return (static_cast<BountyMissionObjective*>(stub))->getObjectiveStatus();
+}
+
+SceneObject* BountyMissionObjectiveAdapter::getProbotDroid() {
+	return (static_cast<BountyMissionObjective*>(stub))->getProbotDroid();
+}
+
+void BountyMissionObjectiveAdapter::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {
+	(static_cast<BountyMissionObjective*>(stub))->performDroidAction(action, sceneObject, player);
 }
 
 /*

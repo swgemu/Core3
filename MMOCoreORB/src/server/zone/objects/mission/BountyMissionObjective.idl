@@ -62,6 +62,8 @@ class BountyMissionObjective extends MissionObjective {
 	
 	protected int objectiveStatus;
 	
+	protected SceneObject activeDroid; 
+	
 	public static final int INITSTATUS = 0;
 	public static final int HASBIOSIGNATURESTATUS = 1;
 	public static final int HASTALKED = 2;
@@ -101,4 +103,10 @@ class BountyMissionObjective extends MissionObjective {
 	public int getObjectiveStatus() {
 		return objectiveStatus;
 	}
+	
+	public SceneObject getProbotDroid() {
+		return activeDroid;
+	}
+	
+	public native void performDroidAction(int action, SceneObject sceneObject, CreatureObject player);
 }

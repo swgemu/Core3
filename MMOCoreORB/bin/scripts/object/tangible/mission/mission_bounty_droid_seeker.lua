@@ -43,7 +43,8 @@
 
 object_tangible_mission_mission_bounty_droid_seeker = object_tangible_mission_shared_mission_bounty_droid_seeker:new {
 
-
+	objectMenuComponent = "BountyHunterDroidMenuComponent",
+	
 	numberExperimentalProperties = {1, 1, 3, 3},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

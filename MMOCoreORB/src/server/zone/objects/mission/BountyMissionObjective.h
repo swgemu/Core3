@@ -122,6 +122,10 @@ public:
 
 	int getObjectiveStatus();
 
+	SceneObject* getProbotDroid();
+
+	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -153,6 +157,8 @@ protected:
 	ManagedReference<AiAgent* > npcTarget;
 
 	int objectiveStatus;
+
+	ManagedReference<SceneObject* > activeDroid;
 
 public:
 	static const int INITSTATUS = 0;
@@ -186,6 +192,10 @@ public:
 	void updateMissionStatus(int informantLevel);
 
 	int getObjectiveStatus();
+
+	SceneObject* getProbotDroid();
+
+	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 
 	WeakReference<BountyMissionObjective*> _this;
 
@@ -245,6 +255,10 @@ public:
 	void updateMissionStatus(int informantLevel);
 
 	int getObjectiveStatus();
+
+	SceneObject* getProbotDroid();
+
+	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 
 protected:
 	String _param0_spawnTarget__String_;

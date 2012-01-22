@@ -283,6 +283,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/LootSchematicMenuComponent.cpp \
+		server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampKitMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.cpp \

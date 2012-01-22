@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LootSchematicMenuComponent.h"
+#include "server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.h"
 #include "server/zone/objects/tangible/components/CampKitMenuComponent.h"
 #include "server/zone/objects/tangible/components/CampTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.h"
@@ -36,6 +37,8 @@ ComponentManager::ComponentManager() {
 	components.put("PlayerObjectMenuComponent", new PlayerObjectMenuComponent());
 
 	components.put("LootSchematicMenuComponent", new LootSchematicMenuComponent());
+
+	components.put("BountyHunterDroidMenuComponent", new BountyHunterDroidMenuComponent());
 
 	components.put("CampKitMenuComponent", new CampKitMenuComponent());
 	components.put("CampTerminalMenuComponent", new CampTerminalMenuComponent());
