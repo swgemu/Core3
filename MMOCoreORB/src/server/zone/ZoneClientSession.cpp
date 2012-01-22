@@ -14,7 +14,7 @@
  *	ZoneClientSessionStub
  */
 
-enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__};
+enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__,RPC_HASCHARACTER__LONG_,RPC_ADDCHARACTER__LONG_,RPC_RESETCHARACTERS__};
 
 ZoneClientSession::ZoneClientSession(BaseClientProxy* session) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneClientSessionImplementation* _implementation = new ZoneClientSessionImplementation(session);
@@ -272,6 +272,47 @@ Account* ZoneClientSession::getAccount() {
 		return _implementation->getAccount();
 }
 
+bool ZoneClientSession::hasCharacter(unsigned long long cid) {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASCHARACTER__LONG_);
+		method.addUnsignedLongParameter(cid);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasCharacter(cid);
+}
+
+void ZoneClientSession::addCharacter(unsigned long long cid) {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDCHARACTER__LONG_);
+		method.addUnsignedLongParameter(cid);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addCharacter(cid);
+}
+
+void ZoneClientSession::resetCharacters() {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RESETCHARACTERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->resetCharacters();
+}
+
 DistributedObjectServant* ZoneClientSession::_getImplementation() {
 
 	_updated = true;
@@ -377,6 +418,11 @@ bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "characters") {
+		TypeInfo<HashSet<unsigned long long> >::parseFromBinaryStream(&characters, stream);
+		return true;
+	}
+
 	if (_name == "player") {
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
@@ -417,6 +463,14 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "characters";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<HashSet<unsigned long long> >::toBinaryStream(&characters, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "player";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -458,7 +512,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 6 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
@@ -522,6 +576,21 @@ Account* ZoneClientSessionImplementation::getAccount() {
 	return account;
 }
 
+bool ZoneClientSessionImplementation::hasCharacter(unsigned long long cid) {
+	// server/zone/ZoneClientSession.idl():  		return characters.contains(cid);
+	return (&characters)->contains(cid);
+}
+
+void ZoneClientSessionImplementation::addCharacter(unsigned long long cid) {
+	// server/zone/ZoneClientSession.idl():  		characters.add(cid);
+	(&characters)->add(cid);
+}
+
+void ZoneClientSessionImplementation::resetCharacters() {
+	// server/zone/ZoneClientSession.idl():  		characters.removeAll();
+	(&characters)->removeAll();
+}
+
 /*
  *	ZoneClientSessionAdapter
  */
@@ -583,6 +652,15 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		break;
 	case RPC_GETACCOUNT__:
 		resp->insertLong(getAccount()->_getObjectID());
+		break;
+	case RPC_HASCHARACTER__LONG_:
+		resp->insertBoolean(hasCharacter(inv->getUnsignedLongParameter()));
+		break;
+	case RPC_ADDCHARACTER__LONG_:
+		addCharacter(inv->getUnsignedLongParameter());
+		break;
+	case RPC_RESETCHARACTERS__:
+		resetCharacters();
 		break;
 	default:
 		return NULL;
@@ -657,6 +735,18 @@ unsigned int ZoneClientSessionAdapter::getAccountID() {
 
 Account* ZoneClientSessionAdapter::getAccount() {
 	return (static_cast<ZoneClientSession*>(stub))->getAccount();
+}
+
+bool ZoneClientSessionAdapter::hasCharacter(unsigned long long cid) {
+	return (static_cast<ZoneClientSession*>(stub))->hasCharacter(cid);
+}
+
+void ZoneClientSessionAdapter::addCharacter(unsigned long long cid) {
+	(static_cast<ZoneClientSession*>(stub))->addCharacter(cid);
+}
+
+void ZoneClientSessionAdapter::resetCharacters() {
+	(static_cast<ZoneClientSession*>(stub))->resetCharacters();
 }
 
 /*

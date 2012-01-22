@@ -67,6 +67,8 @@ using namespace server::zone;
 
 #include "engine/service/proto/events/BaseClientEvent.h"
 
+#include "system/util/HashSet.h"
+
 #include "engine/log/Logger.h"
 
 namespace server {
@@ -112,6 +114,12 @@ public:
 
 	Account* getAccount();
 
+	bool hasCharacter(unsigned long long cid);
+
+	void addCharacter(unsigned long long cid);
+
+	void resetCharacters();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -137,6 +145,8 @@ namespace zone {
 class ZoneClientSessionImplementation : public ManagedObjectImplementation {
 protected:
 	Reference<BaseClientProxy* > session;
+
+	HashSet<unsigned long long> characters;
 
 	ManagedWeakReference<SceneObject* > player;
 
@@ -189,6 +199,12 @@ public:
 	unsigned int getAccountID();
 
 	Account* getAccount();
+
+	bool hasCharacter(unsigned long long cid);
+
+	void addCharacter(unsigned long long cid);
+
+	void resetCharacters();
 
 	WeakReference<ZoneClientSession*> _this;
 
@@ -266,6 +282,12 @@ public:
 	unsigned int getAccountID();
 
 	Account* getAccount();
+
+	bool hasCharacter(unsigned long long cid);
+
+	void addCharacter(unsigned long long cid);
+
+	void resetCharacters();
 
 protected:
 	String _param0_info__String_bool_;

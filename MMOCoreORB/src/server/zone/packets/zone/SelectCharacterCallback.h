@@ -18,6 +18,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/chat/ChatManager.h"
+#include "server/login/account/Account.h"
 
 class SelectCharacterCallback : public MessageCallback {
 	uint64 characterID;
@@ -32,6 +33,13 @@ public:
 	}
 
 	void run() {
+
+		if(!client->hasCharacter(characterID)) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Invalid Character ID", 0x0);
+			client->sendMessage(errMsg);
+			return;
+		}
+
 		ZoneServer* zoneServer = server->getZoneServer();
 		//ObjectManager* objectManager = zoneServer->getObjectManager();
 

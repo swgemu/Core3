@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "HairStyleInfo.h"
 #include "../PlayerManager.h"
 #include "server/chat/ChatManager.h"
+#include "server/login/account/Account.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
@@ -522,6 +523,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	}
 
 	playerManager->addPlayer(playerCreature);
+
+	client->addCharacter(playerCreature->getObjectID());
 
 	return true;
 }

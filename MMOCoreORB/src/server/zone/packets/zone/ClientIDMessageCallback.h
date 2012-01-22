@@ -12,6 +12,7 @@
 #include "../../../db/ServerDatabase.h"
 #include "../../../login/packets/ErrorMessage.h"
 #include "server/login/account/Account.h"
+#include "server/login/objects/CharacterList.h"
 
 #include "ClientPermissionsMessage.h"
 
@@ -68,6 +69,14 @@ public:
 				//if (!account->hasMaxOnlineCharacters()) {
 					//client->setAccount(account);
 					//account->addZoneSession(client);
+
+					CharacterList characters(accountID);
+
+					client->resetCharacters();
+
+					while(characters.next()) {
+						client->addCharacter(characters.getObjectID());
+					}
 
 					BaseMessage* cpm = new ClientPermissionsMessage();
 					client->sendMessage(cpm);

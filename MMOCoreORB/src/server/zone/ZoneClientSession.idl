@@ -60,11 +60,16 @@ import engine.service.proto.events.BaseClientCleanupEvent;
 import engine.service.proto.events.BaseClientNetStatusRequestEvent;
 import engine.service.proto.events.BaseClientEvent;
 
+import system.util.HashSet;
+
 import engine.log.Logger;
 
 //@nonTransactional
 class ZoneClientSession extends ManagedObject {
 	transient protected BaseClientProxy session;
+	
+	@dereferenced
+	protected HashSet<unsigned long> characters; //TODO: Move to account when ZoneServer get's it own account management
 	
 	@weakReference
 	protected SceneObject player;
@@ -148,5 +153,17 @@ class ZoneClientSession extends ManagedObject {
 	
 	public native Account getAccount() {
 		return account;
+	}
+
+	public boolean hasCharacter(unsigned long cid) {
+		return characters.contains(cid);
+	}
+
+	public void addCharacter(unsigned long cid) {
+		characters.add(cid);	
+	}
+
+	public void resetCharacters() {
+		characters.removeAll();
 	}
 }
