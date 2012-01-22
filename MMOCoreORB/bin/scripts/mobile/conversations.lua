@@ -21,6 +21,7 @@ includeFile("conversations/themepark/jabba/reelo_baruk_conv.lua")
 
 -- Death Watch Bunker
 includeFile("conversations/dungeon/death_watch_bunker/boba_fett_conv.lua")
+includeFile("conversations/dungeon/death_watch_bunker/lutin_nightstalker_conv.lua")
 
 -- ** OTHER **
 

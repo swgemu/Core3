@@ -357,6 +357,12 @@ int DirectorManager::getRegion(lua_State* L) {
 	String zoneName = lua_tostring(L, -2);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	Zone* zone = zoneServer->getZone(zoneName);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
 	SceneObject* spawnArea = creatureManager->getSpawnArea(regionName);

@@ -1,5 +1,6 @@
 luthin_dlunar = Creature:new {
-	objectName = "@mob/creature_names:Luthin Dlunar",
+	objectName = "",
+	customName = "Luthin Dlunar",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

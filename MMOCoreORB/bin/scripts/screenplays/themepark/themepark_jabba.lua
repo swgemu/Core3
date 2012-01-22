@@ -5,12 +5,12 @@ ThemeparkJabba = ScreenPlay:new {
 registerScreenPlay("ThemeparkJabba", true);
 
 function ThemeparkJabba:start(creatureObject)	
-	--printf("Initiating Jabba's Themepark\n")
+	printf("Initiating Jabba's Themepark\n")
 	
 	local regionPointer = getRegion("tatooine","jabbas_palace") 
 	if regionPointer == nil then
-		printf("null\n")
-		return
+		printf("[Jabba's Themepark] Region zero. Zone not loaded?\n")
+		return 0
 	else
 		createObserver(ENTEREDAREA, "ThemeparkJabba", "setCellPermissions", regionPointer)
 	end
