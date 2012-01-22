@@ -14,7 +14,7 @@
  *	ZoneClientSessionStub
  */
 
-enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__,RPC_HASCHARACTER__LONG_,RPC_ADDCHARACTER__LONG_,RPC_RESETCHARACTERS__};
+enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETCOMMANDCOUNT__,RPC_INCREASECOMMANDCOUNT__,RPC_RESETCOMMANDCOUNT__,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__,RPC_HASCHARACTER__LONG_,RPC_ADDCHARACTER__LONG_,RPC_RESETCHARACTERS__};
 
 ZoneClientSession::ZoneClientSession(BaseClientProxy* session) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneClientSessionImplementation* _implementation = new ZoneClientSessionImplementation(session);
@@ -209,6 +209,54 @@ void ZoneClientSession::setAccountID(unsigned int acc) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setAccountID(acc);
+}
+
+int ZoneClientSession::getCommandCount() {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOMMANDCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCommandCount();
+}
+
+void ZoneClientSession::increaseCommandCount() {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INCREASECOMMANDCOUNT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->increaseCommandCount();
+}
+
+void ZoneClientSession::resetCommandCount() {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RESETCOMMANDCOUNT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->resetCommandCount();
+}
+
+Time* ZoneClientSession::getCommandSpamCooldown() {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCommandSpamCooldown();
 }
 
 BaseClientProxy* ZoneClientSession::getSession() {
@@ -448,6 +496,16 @@ bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream
 		return true;
 	}
 
+	if (_name == "commandSpamCooldown") {
+		TypeInfo<Time >::parseFromBinaryStream(&commandSpamCooldown, stream);
+		return true;
+	}
+
+	if (_name == "commandCount") {
+		TypeInfo<int >::parseFromBinaryStream(&commandCount, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -511,8 +569,24 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "commandSpamCooldown";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&commandSpamCooldown, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 6 + ManagedObjectImplementation::writeObjectMembers(stream);
+	_name = "commandCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&commandCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 8 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
@@ -553,6 +627,26 @@ void ZoneClientSessionImplementation::setAccount(Account* acc) {
 void ZoneClientSessionImplementation::setAccountID(unsigned int acc) {
 	// server/zone/ZoneClientSession.idl():  		accountID = acc;
 	accountID = acc;
+}
+
+int ZoneClientSessionImplementation::getCommandCount() {
+	// server/zone/ZoneClientSession.idl():  		return commandCount;
+	return commandCount;
+}
+
+void ZoneClientSessionImplementation::increaseCommandCount() {
+	// server/zone/ZoneClientSession.idl():  		commandCount = commandCount + 1;
+	commandCount = commandCount + 1;
+}
+
+void ZoneClientSessionImplementation::resetCommandCount() {
+	// server/zone/ZoneClientSession.idl():  		commandCount = 0;
+	commandCount = 0;
+}
+
+Time* ZoneClientSessionImplementation::getCommandSpamCooldown() {
+	// server/zone/ZoneClientSession.idl():  		return commandSpamCooldown;
+	return (&commandSpamCooldown);
 }
 
 SceneObject* ZoneClientSessionImplementation::getPlayer() {
@@ -641,6 +735,15 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_SETACCOUNTID__INT_:
 		setAccountID(inv->getUnsignedIntParameter());
 		break;
+	case RPC_GETCOMMANDCOUNT__:
+		resp->insertSignedInt(getCommandCount());
+		break;
+	case RPC_INCREASECOMMANDCOUNT__:
+		increaseCommandCount();
+		break;
+	case RPC_RESETCOMMANDCOUNT__:
+		resetCommandCount();
+		break;
 	case RPC_GETPLAYER__:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
@@ -719,6 +822,18 @@ void ZoneClientSessionAdapter::setAccount(Account* acc) {
 
 void ZoneClientSessionAdapter::setAccountID(unsigned int acc) {
 	(static_cast<ZoneClientSession*>(stub))->setAccountID(acc);
+}
+
+int ZoneClientSessionAdapter::getCommandCount() {
+	return (static_cast<ZoneClientSession*>(stub))->getCommandCount();
+}
+
+void ZoneClientSessionAdapter::increaseCommandCount() {
+	(static_cast<ZoneClientSession*>(stub))->increaseCommandCount();
+}
+
+void ZoneClientSessionAdapter::resetCommandCount() {
+	(static_cast<ZoneClientSession*>(stub))->resetCommandCount();
 }
 
 SceneObject* ZoneClientSessionAdapter::getPlayer() {

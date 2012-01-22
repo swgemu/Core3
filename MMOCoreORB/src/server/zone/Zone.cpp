@@ -106,13 +106,13 @@ QuadTree* Zone::getRegionTree() {
 		return _implementation->getRegionTree();
 }
 
-int Zone::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry* > >* objects) {
+int Zone::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry* > >* objects, bool readLockZone) {
 	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getInRangeObjects(x, y, range, objects);
+		return _implementation->getInRangeObjects(x, y, range, objects, readLockZone);
 }
 
 void Zone::createContainerComponent() {
@@ -128,13 +128,13 @@ void Zone::createContainerComponent() {
 		_implementation->createContainerComponent();
 }
 
-int Zone::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea* > >* objects) {
+int Zone::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea* > >* objects, bool readLockZone) {
 	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getInRangeActiveAreas(x, y, objects);
+		return _implementation->getInRangeActiveAreas(x, y, objects, readLockZone);
 }
 
 SortedVector<ManagedReference<SceneObject* > > Zone::getPlanetaryObjectList(const String& mapObjectLocationType) {

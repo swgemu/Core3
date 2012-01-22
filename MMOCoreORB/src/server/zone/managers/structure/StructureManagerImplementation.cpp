@@ -561,11 +561,11 @@ SceneObject* StructureManagerImplementation::getInRangeParkingGarage(SceneObject
 	if (obj->getZone() != zone)
 		return NULL;
 
-	Locker _locker(zone);
+	//Locker _locker(zone);
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
-	zone->getInRangeObjects(obj->getPositionX(), obj->getPositionY(), 128, &closeSceneObjects);
+	zone->getInRangeObjects(obj->getPositionX(), obj->getPositionY(), 128, &closeSceneObjects, true);
 
 	for (int i = 0; i < closeSceneObjects.size(); ++i) {
 		SceneObject* scno = cast<SceneObject*>( closeSceneObjects.get(i).get());

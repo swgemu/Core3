@@ -25,6 +25,8 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua_register(lua->getLuaState(), "addConversationTemplate", addConversationTemplate);
 	lua_register(lua->getLuaState(), "addLairTemplate", addLairTemplate);
 	lua_register(lua->getLuaState(), "addLairGroup", addLairGroup);
+	lua_register(lua->getLuaState(), "addPatrolPathTemplate", addPatrolPathTemplate);
+	lua_register(lua->getLuaState(), "addOutfitGroup", addOutfitGroup);
 
 	lua->setGlobalInt("NONE", CreatureFlag::NONE);
 	lua->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
@@ -155,6 +157,32 @@ int CreatureTemplateManager::addLairTemplate(lua_State* L) {
 	templ->readObject(&obj);
 
 	CreatureTemplateManager::instance()->lairTemplates.put(crc, templ);
+
+	return 0;
+}
+
+int CreatureTemplateManager::addPatrolPathTemplate(lua_State* L) {
+	String ascii = lua_tostring(L, -2);
+
+	LuaObject obj(L);
+
+	Reference<PatrolPathTemplate*> templ = new PatrolPathTemplate();
+	templ->readObject(&obj);
+
+	instance()->patrolPaths.put(ascii, templ);
+
+	return 0;
+}
+
+int CreatureTemplateManager::addOutfitGroup(lua_State* L) {
+	String ascii = lua_tostring(L, -2);
+
+	LuaObject obj(L);
+
+	Reference<MobileOutfitGroup*> templ = new MobileOutfitGroup();
+	templ->readObject(&obj);
+
+	instance()->outfits.put(ascii, templ);
 
 	return 0;
 }

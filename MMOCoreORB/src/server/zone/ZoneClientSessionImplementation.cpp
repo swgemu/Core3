@@ -67,6 +67,8 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 
 	disconnecting = false;
 
+	commandCount = 0;
+
 	//session->setDebugLogLevel();
 }
 

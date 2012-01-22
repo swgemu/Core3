@@ -67,6 +67,8 @@ using namespace server::zone;
 
 #include "engine/service/proto/events/BaseClientEvent.h"
 
+#include "system/lang/Time.h"
+
 #include "system/util/HashSet.h"
 
 #include "engine/log/Logger.h"
@@ -103,6 +105,14 @@ public:
 	void setAccount(Account* acc);
 
 	void setAccountID(unsigned int acc);
+
+	int getCommandCount();
+
+	void increaseCommandCount();
+
+	void resetCommandCount();
+
+	Time* getCommandSpamCooldown();
 
 	BaseClientProxy* getSession();
 
@@ -159,6 +169,11 @@ protected:
 private:
 	bool disconnecting;
 
+protected:
+	Time commandSpamCooldown;
+
+	int commandCount;
+
 public:
 	ZoneClientSessionImplementation(BaseClientProxy* session);
 
@@ -189,6 +204,14 @@ public:
 	void setAccount(Account* acc);
 
 	void setAccountID(unsigned int acc);
+
+	int getCommandCount();
+
+	void increaseCommandCount();
+
+	void resetCommandCount();
+
+	Time* getCommandSpamCooldown();
 
 	BaseClientProxy* getSession();
 
@@ -274,6 +297,12 @@ public:
 	void setAccount(Account* acc);
 
 	void setAccountID(unsigned int acc);
+
+	int getCommandCount();
+
+	void increaseCommandCount();
+
+	void resetCommandCount();
 
 	SceneObject* getPlayer();
 

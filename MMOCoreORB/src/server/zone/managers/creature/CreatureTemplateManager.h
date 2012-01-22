@@ -12,6 +12,8 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/mobile/ConversationTemplate.h"
 #include "server/zone/templates/mobile/LairTemplate.h"
+#include "server/zone/templates/mobile/PatrolPathTemplate.h"
+#include "server/zone/templates/mobile/MobileOutfitGroup.h"
 #include "SpawnGroup.h"
 #include "StaticSpawnGroup.h"
 #include "DynamicSpawnGroup.h"
@@ -34,6 +36,8 @@ protected:
 
 	HashTable<uint32, Reference<LairTemplate*> > lairTemplates;
 	HashTable<uint32, Reference<LairSpawnGroup*> > lairSpawnGroupMap;
+	HashTable<String, Reference<PatrolPathTemplate*> > patrolPaths;
+	HashTable<String, Reference<MobileOutfitGroup*> > outfits;
 
 public:
 	CreatureTemplateManager();
@@ -48,6 +52,8 @@ public:
 	static int addConversationTemplate(lua_State* L);
 	static int addLairTemplate(lua_State* L);
 	static int addLairGroup(lua_State* L);
+	static int addPatrolPathTemplate(lua_State* L);
+	static int addOutfitGroup(lua_State* L);
 
 	int size() {
 		return hashTable.size();
@@ -61,8 +67,16 @@ public:
 		return hashTable.get(crc);
 	}
 
+	PatrolPathTemplate* getPatrolPathTemplate(const String& name) {
+		return patrolPaths.get(name);
+	}
+
 	CreatureTemplate* getTemplate(const String& ascii) {
 		return hashTable.get(ascii.hashCode());
+	}
+
+	MobileOutfitGroup* getMobileOutfitGroup(const String& name) {
+		return outfits.get(name);
 	}
 
 	ConversationTemplate* getConversationTemplate(const String& name) {

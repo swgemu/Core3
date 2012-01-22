@@ -101,7 +101,7 @@ AABBTree* CollisionManager::getAABBTree(SceneObject* scno, int collisionBlockFla
 
 bool CollisionManager::checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone) {
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
-	zone->getInRangeObjects(sphereOrigin.getX(), sphereOrigin.getY(), 512, &objects);
+	zone->getInRangeObjects(sphereOrigin.getX(), sphereOrigin.getY(), 512, &objects, true);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;
@@ -172,7 +172,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 	if (closeObjects == NULL) {
 		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-		zone->getInRangeObjects(object1->getPositionX(), object1->getPositionY(), 512, closeObjects.get());
+		zone->getInRangeObjects(object1->getPositionX(), object1->getPositionY(), 512, closeObjects.get(), true);
 	}
 
 	if (object1->isCreatureObject())
@@ -355,7 +355,7 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	Triangle* triangle = NULL;
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
-	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects);
+	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects, true);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;

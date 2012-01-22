@@ -506,7 +506,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 
 	if (zone == NULL) {
 		lua_pushnil(L);
-		return 0;
+		return 1;
 	}
 
 

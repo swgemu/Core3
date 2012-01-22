@@ -127,6 +127,8 @@ class AiAgent extends CreatureObject {
 	protected float respawnTimer;
 	protected int numberOfPlayersInRange;
 	
+	protected boolean loadedOutfit;
+	
 	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
 	
 	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
@@ -135,6 +137,7 @@ class AiAgent extends CreatureObject {
 	public static final unsigned int WATCHING = 1;
 	public static final unsigned int STALKING = 2;
 	public static final unsigned int FOLLOWING = 3;
+	public static final unsigned int PATROLING = 4;
 	
 	public AiAgent() {
 		baby = false;
@@ -148,6 +151,8 @@ class AiAgent extends CreatureObject {
 
 		npcTemplate = null;
 		lootOwner = null;
+		
+		loadedOutfit = false;
 		
 		Logger.setLoggingName("AiAgent");
 		Logger.setLogging(false);

@@ -128,6 +128,48 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	if (!pvpFaction.isEmpty() && (pvpFaction == "imperial" || pvpFaction == "rebel")) {
 		setFaction(pvpFaction.hashCode());
 	}
+
+	if (!loadedOutfit) {
+		loadedOutfit = true;
+		String outfit = npcTemplate->getOutfit();
+
+		if (!outfit.isEmpty()) {
+			MobileOutfitGroup* group = CreatureTemplateManager::instance()->getMobileOutfitGroup(outfit);
+
+			if (group != NULL) {
+				Vector<MobileOutfit>* outfits = group->getOutfits();
+
+				int num = System::random(outfits->size() - 1);
+
+				if (num > -1) {
+					MobileOutfit* clothes = &outfits->get(num);
+
+					Vector<OutfitTangibleObject>* objects = clothes->getObjects();
+
+					for (int i = 0; i < objects->size(); ++i) {
+						OutfitTangibleObject* obj = &objects->get(i);
+
+						String templ = obj->getObjectTemplate();
+
+						ManagedReference<TangibleObject*> tano = dynamic_cast<TangibleObject*>(server->getZoneServer()->createObject(templ.hashCode(), 0));
+
+						if (tano != NULL) {
+							VectorMap<String, uint8>* cust = obj->getCustomizationVariables();
+
+							for (int j = 0; j < cust->size(); ++j) {
+								tano->setCustomizationVariable(cust->elementAt(j).getKey(), cust->elementAt(j).getValue());
+							}
+
+							transferObject(tano, 4);
+						}
+
+					}
+				}
+			} else {
+				error("null outfit group " + outfit);
+			}
+		}
+	}
 }
 
 void AiAgentImplementation::initializeTransientMembers() {

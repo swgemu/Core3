@@ -146,7 +146,7 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 	Locker zoneLocker(getZone());
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
-	getZone()->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects);
+	getZone()->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
 
 	for (int i = 0; i < closeSceneObjects.size(); ++i) {
 		ManagedReference<SceneObject*> scno = cast<SceneObject*>( closeSceneObjects.get(i).get());

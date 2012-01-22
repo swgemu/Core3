@@ -1343,6 +1343,11 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
+	if (_name == "loadedOutfit") {
+		TypeInfo<bool >::parseFromBinaryStream(&loadedOutfit, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -1470,8 +1475,16 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "loadedOutfit";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&loadedOutfit, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 14 + CreatureObjectImplementation::writeObjectMembers(stream);
+
+	return 15 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 AiAgentImplementation::AiAgentImplementation() {
@@ -1490,6 +1503,8 @@ AiAgentImplementation::AiAgentImplementation() {
 	npcTemplate = NULL;
 	// server/zone/objects/creature/AiAgent.idl():  		lootOwner = null;
 	lootOwner = NULL;
+	// server/zone/objects/creature/AiAgent.idl():  		loadedOutfit = false;
+	loadedOutfit = false;
 	// server/zone/objects/creature/AiAgent.idl():  		Logger.setLoggingName("AiAgent");
 	Logger::setLoggingName("AiAgent");
 	// server/zone/objects/creature/AiAgent.idl():  		Logger.setLogging(false);

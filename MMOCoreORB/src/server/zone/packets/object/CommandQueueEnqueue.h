@@ -98,7 +98,24 @@ public:
 			return;
 
 		//ObjectController* objectController = server->getZoneServer()->getObjectController();
-		player->enqueueCommand(actionCRC, actionCount, targetID, arguments);
+		Time* commandCooldown = client->getCommandSpamCooldown();
+		int commandCount = client->getCommandCount();
+		uint64 miliDifference = commandCooldown->miliDifference();
+
+		if (commandCount >= 5 && miliDifference < 1000) {
+			//creature->clearQueueAction(actioncntr);
+			player->clearQueueAction(actionCount);
+			player->sendSystemMessage("Please stop spamming commands");
+		} else {
+			if (miliDifference < 1000)
+				client->increaseCommandCount();
+			else {
+				client->resetCommandCount();
+				commandCooldown->updateToCurrentTime();
+			}
+
+			player->enqueueCommand(actionCRC, actionCount, targetID, arguments);
+		}
 	}
 };
 

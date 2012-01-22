@@ -212,25 +212,49 @@ void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 	quadTree->inRange(entry, range);
 }
 
-int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects) {
-	Locker locker(_this);
+int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
+	//Locker locker(_this);
 
-	quadTree->inRange(x, y, range, *objects);
+	bool readlock = readLockZone && !_this->isLockedByCurrentThread();
+
+	_this->rlock(readlock);
+
+	try {
+		quadTree->inRange(x, y, range, *objects);
+	}catch (...) {
+		_this->runlock(readlock);
+
+		throw;
+	}
+
+	_this->runlock(readlock);
 
 	return objects->size();
 }
 
-int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea*> >* objects) {
-	Locker locker(_this);
+int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
+	//Locker locker(_this);
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
+	bool readlock = readLockZone && !_this->isLockedByCurrentThread();
 
-	regionTree->inRange(x, y, entryObjects);
+	_this->rlock(readlock);
 
-	for (int i = 0; i < entryObjects.size(); ++i) {
-		ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
-		objects->put(obj);
+	try {
+		SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
+
+		regionTree->inRange(x, y, entryObjects);
+
+		for (int i = 0; i < entryObjects.size(); ++i) {
+			ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
+			objects->put(obj);
+		}
+	}catch (...) {
+		_this->runlock(readlock);
+
+		throw;
 	}
+
+	_this->runlock(readlock);
 
 	return objects->size();
 }

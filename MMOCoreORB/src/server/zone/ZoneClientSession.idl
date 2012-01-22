@@ -60,8 +60,8 @@ import engine.service.proto.events.BaseClientCleanupEvent;
 import engine.service.proto.events.BaseClientNetStatusRequestEvent;
 import engine.service.proto.events.BaseClientEvent;
 
+import system.lang.Time;
 import system.util.HashSet;
-
 import engine.log.Logger;
 
 //@nonTransactional
@@ -81,6 +81,11 @@ class ZoneClientSession extends ManagedObject {
 	protected unsigned int accountID;
 	
 	boolean disconnecting;
+	
+	@dereferenced
+	protected Time commandSpamCooldown;
+	
+	protected int commandCount;
 	
 	public native ZoneClientSession(BaseClientProxy session);
 			
@@ -134,7 +139,23 @@ class ZoneClientSession extends ManagedObject {
 	public void setAccountID(unsigned int acc) {
 		accountID = acc;
 	}
+	
+	public int getCommandCount() {
+		return commandCount;
+	}
 	 
+	public void increaseCommandCount() {
+		commandCount = commandCount + 1;
+	}
+	
+	public void resetCommandCount() {
+		commandCount = 0;
+	}
+	
+	@local
+	public Time getCommandSpamCooldown() {
+		return commandSpamCooldown;
+	}
 
 	@local
 	public native BaseClientProxy getSession();
@@ -154,7 +175,7 @@ class ZoneClientSession extends ManagedObject {
 	public native Account getAccount() {
 		return account;
 	}
-
+	
 	public boolean hasCharacter(unsigned long cid) {
 		return characters.contains(cid);
 	}
@@ -162,7 +183,7 @@ class ZoneClientSession extends ManagedObject {
 	public void addCharacter(unsigned long cid) {
 		characters.add(cid);	
 	}
-
+	
 	public void resetCharacters() {
 		characters.removeAll();
 	}

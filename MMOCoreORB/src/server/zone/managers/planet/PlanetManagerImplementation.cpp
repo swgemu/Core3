@@ -543,10 +543,10 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		closeObjects = object->getCloseObjects();
 	} else {
 		activeAreas = new SortedVector<ManagedReference<ActiveArea*> >();
-		zone->getInRangeActiveAreas(x, y, cast<SortedVector<ManagedReference<ActiveArea*> >*>(activeAreas));
+		zone->getInRangeActiveAreas(x, y, cast<SortedVector<ManagedReference<ActiveArea*> >*>(activeAreas), true);
 
 		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-		zone->getInRangeObjects(x, y, 512, closeObjects);
+		zone->getInRangeObjects(x, y, 512, closeObjects, true);
 
 		deleteVector = true;
 	}

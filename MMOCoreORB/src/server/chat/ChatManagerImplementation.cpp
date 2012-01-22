@@ -419,8 +419,12 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		param = new StringIdChatParameter(message.toString());
 	}
 
-	Locker zoneLocker(zone);
+	//Locker zoneLocker(zone);
 	//zone->rlock();
+
+	bool readlock = !zone->isLockedByCurrentThread();
+
+	zone->rlock(readlock);
 
 	try {
 
@@ -462,6 +466,8 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	} catch (...) {
 		//zone->runlock();
 
+		zone->runlock(readlock);
+
 		if (param != NULL) {
 			delete param;
 			param = NULL;
@@ -469,6 +475,8 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 		throw;
 	}
+
+	zone->runlock(readlock);
 
 	//zone->runlock();
 

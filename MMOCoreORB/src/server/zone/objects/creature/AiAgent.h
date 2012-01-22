@@ -282,6 +282,8 @@ public:
 
 	unsigned static const int FOLLOWING = 3;
 
+	unsigned static const int PATROLING = 4;
+
 	AiAgent();
 
 	void initializeTransientMembers();
@@ -527,6 +529,8 @@ protected:
 
 	int numberOfPlayersInRange;
 
+	bool loadedOutfit;
+
 	Reference<DespawnCreatureOnPlayerDissappear* > despawnEvent;
 
 public:
@@ -539,6 +543,8 @@ public:
 	unsigned static const int STALKING = 2;
 
 	unsigned static const int FOLLOWING = 3;
+
+	unsigned static const int PATROLING = 4;
 
 	AiAgentImplementation();
 

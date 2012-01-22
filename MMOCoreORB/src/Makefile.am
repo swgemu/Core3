@@ -547,6 +547,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/string/StringFile.cpp \
 		server/zone/templates/faction/FactionRanks.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
+		server/zone/templates/mobile/CreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \
 		server/zone/templates/datatables/DataTableIff.cpp \
 		server/zone/templates/datatables/DataTableCell.cpp \
