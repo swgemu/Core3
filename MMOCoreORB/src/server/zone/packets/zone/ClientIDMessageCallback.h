@@ -47,7 +47,10 @@ public:
 		client->setAccountID(accountID);
 
 		StringBuffer query;
-		query << "SELECT session_id FROM sessions WHERE account_id = " << accountID << ";";
+		query << "SELECT session_id FROM sessions WHERE account_id = " << accountID;
+		query << " AND  ip = '"<< client->getSession()->getIPAddress() <<"' AND expires > NOW();";
+
+		System::out << query.toString() << endl;
 
 		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
@@ -57,6 +60,15 @@ public:
 			result = NULL;
 
 			if (sesskey == sessionID) {
+
+				StringBuffer delQuery;
+				delQuery << "DELETE FROM sessions WHERE account_id = " << accountID << ";";
+
+				try {
+					ServerDatabase::instance()->executeStatement(delQuery);
+				} catch (DatabaseException& e) {
+					client->info(e.getMessage(), true);
+				}
 				//Session was found
 				//We need to check how many characters this account has online already.
 				//We also need to store a reference to the Account object on the zoneSessionClient.
@@ -92,8 +104,9 @@ public:
 			}
 		}
 
-		ErrorMessage* errMsg = new ErrorMessage("Login Error", "Your session key is invalid, or has expired. Please restart your client.", 0x0);
+		ErrorMessage* errMsg = new ErrorMessage("Login Error", "Your session key is invalid, or has expired. Please re-login", 0x0);
 		client->sendMessage(errMsg);
+
 	}
 
 	inline uint32 getDataLen() {

@@ -78,11 +78,14 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 
 	uint32 accountID = account->getAccountID();
 
+	String ip = client->getSession()->getAddress().getIPAddress();
+
 	StringBuffer sessionQuery;
-	sessionQuery << "REPLACE INTO sessions (account_id, session_id) VALUES (" << accountID << ", " << sessionID << ");";
+	sessionQuery << "REPLACE INTO sessions (account_id, session_id, ip, expires) VALUES (";
+	sessionQuery << accountID << ", " << sessionID << ", '" << ip << "' , ADDTIME(NOW(), '00:15'));";
 
 	StringBuffer logQuery;
-	logQuery << "INSERT INTO account_log (account_id, ip_address) VALUES (" << accountID << ", '" << client->getSession()->getAddress().getIPAddress() << "');";
+	logQuery << "INSERT INTO account_log (account_id, ip_address, timestamp) VALUES (" << accountID << ", '" << ip << "', NOW());";
 
 	try {
 		ServerDatabase::instance()->executeStatement(sessionQuery);

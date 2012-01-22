@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS `swgemu`.`account_log`;
 CREATE TABLE  `swgemu`.`account_log` (
   `acclog_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `account_id` int(10) unsigned NOT NULL,
-  `timestamp` int(10) unsigned NOT NULL,
+  `timestamp` datetime NOT NULL,
   `ip_address` varchar(15) NOT NULL,
   PRIMARY KEY (`acclog_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -2066,6 +2066,8 @@ DROP TABLE IF EXISTS `swgemu`.`sessions`;
 CREATE TABLE  `swgemu`.`sessions` (
   `account_id` int(10) unsigned NOT NULL DEFAULT '0',
   `session_id` int(10) unsigned NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `expires` datetime NOT NULL,
   PRIMARY KEY (`account_id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
