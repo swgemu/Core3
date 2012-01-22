@@ -146,11 +146,13 @@ function DWB:start(creatureObject)
 
 	local bunkerObject = LuaBuildingObject(bunker)
 	
-	createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
+	--createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
 end
 
 function DWB:onEnterDWB(sceneObject, creatureObject)
 	local creature = LuaCreatureObject(creatureObject)
 	
 	printf("entered dwb\n")
+	
+	return 1
 end
