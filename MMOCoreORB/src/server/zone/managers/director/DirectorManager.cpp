@@ -69,6 +69,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "spatialShout", spatialShout);
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
+	lua_register(luaEngine->getLuaState(), "deleteSharedMemory", deleteSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
 	lua_register(luaEngine->getLuaState(), "getCreatureObject", getCreatureObject);
@@ -330,7 +331,11 @@ int DirectorManager::getSceneObject(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	SceneObject* object = zoneServer->getObject(objectID);
 
-	lua_pushlightuserdata(L, object);
+	if (object == NULL) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, object);
+	}
 
 	return 1;
 }
@@ -340,13 +345,11 @@ int DirectorManager::getCreatureObject(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	SceneObject* object = zoneServer->getObject(objectID);
 
-	CreatureObject* creature = NULL;
-
-	if (object != NULL)
-		if (object->isCreatureObject())
-			creature = (CreatureObject*)object;
-
-	lua_pushlightuserdata(L, creature);
+	if (object != NULL && object->isCreatureObject()) {
+		lua_pushlightuserdata(L, object);
+	} else {
+		lua_pushnil(L);
+	}
 
 	return 1;
 }

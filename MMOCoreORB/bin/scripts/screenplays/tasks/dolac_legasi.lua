@@ -127,14 +127,16 @@ function dolac_legasi_screenplay:despawnEscortCreatures(player)
 	local prisonerID = readData(player:getObjectID() .. ":dolac_legasi:prisonerID")
 	local tamerID = readData(player:getObjectID() .. ":dolac_legasi:tamerID")
 	
-	local prisoner = LuaCreatureObject(getCreatureObject(prisonerID))
-	local tamer = LuaCreatureObject(getCreatureObject(tamerID))
+	local pPrisoner = getCreatureObject(prisonerID)
+	local pTamer = getCreatureObject(tamerID)
 	
-	if (prisoner ~= nil) then
+	if (pPrisoner ~= nil) then
+		local prisoner = LuaSceneObject(pPrisoner)
 		prisoner:destroyObjectFromWorld()
 	end
 	
-	if (tamer ~= nil) then
+	if (pTamer ~= nil) then
+		local tamer = LuaSceneObject(pTamer)
 		tamer:destroyObjectFromWorld()
 	end
 	
@@ -148,6 +150,8 @@ end
 function dolac_legasi_screenplay:rewardQuest1(player, playerObject)
 	player:addCashCredits(350, true)
 	playerObject:increaseFactionStanding("imperial", 10)
+	
+	player:setScreenPlayState(4, "dolac_legasi")
 end
 
 dolac_legasi_handler = Object:new {
@@ -231,7 +235,12 @@ function dolac_legasi_handler:getInitialScreen(pPlayer, npc, conversationTemplat
 		return nil
 	end
 	
-	local playerObject = LuaPlayerObject(playerObjectPointer)
+	local playerObject = LuaPlayerObject(pPlayerObject)
+	
+	if (conversingPlayer:hasScreenPlayState(4, "dolac_legasi") == 1) then
+		--Time for quest #2
+		return nil
+	end
 	
 	if (conversingPlayer:hasScreenPlayState(2, "dolac_legasi") == 1) then
 		dolac_legasi_screenplay:despawnEscortCreatures(conversingPlayer)

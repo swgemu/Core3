@@ -62,6 +62,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
 		{ "getCashCredits", &LuaCreatureObject::getCashCredits},
 		{ "subtractCashCredits", &LuaCreatureObject::subtractCashCredits},
+		{ "addCashCredits", &LuaCreatureObject::addCashCredits},
 		{ "removeScreenPlayState", &LuaCreatureObject::removeScreenPlayState},
 		{ 0, 0 }
 };
