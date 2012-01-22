@@ -10,6 +10,7 @@ function ThemeparkJabba:start(creatureObject)
 	local regionPointer = getRegion("tatooine","jabbas_palace") 
 	if regionPointer == nil then
 		printf("null\n")
+		return
 	else
 		createObserver(ENTEREDAREA, "ThemeparkJabba", "setCellPermissions", regionPointer)
 	end
