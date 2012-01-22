@@ -645,11 +645,17 @@ void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player
 }
 
 void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const int faction) {
-	// TODO: switch difficulties in here
 	if (!player->hasSkill("combat_bountyhunter_novice")) {
 		player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
 		mission->setTypeCRC(0);
 		return;
+	}
+
+	int difficulty = 1;
+	if (player->hasSkill("combat_bountyhunter_investigation_03")) {
+		difficulty = 3;
+	} else if (player->hasSkill("combat_bountyhunter_investigation_01")) {
+		difficulty = 2;
 	}
 
 	NameManager* nm = processor->getNameManager();
@@ -670,7 +676,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	mission->setFaction(faction);
 
 	mission->setRewardCredits(500 + System::random(500));
-	mission->setMissionDifficulty(1);
+	mission->setMissionDifficulty(difficulty);
 	mission->setMissionTitle("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "t");
 	mission->setMissionDescription("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "d");
 
@@ -1063,14 +1069,14 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	while (!foundPosition) {
 		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360));
 
-		if (position.getX() > player->getZone()->getMaxX() - 100) {
+		if (position.getX() > player->getZone()->getMaxX() - 500) {
 			position.setX(player->getZone()->getMaxX());
-		} else if (position.getX() < player->getZone()->getMinX() + 100) {
+		} else if (position.getX() < player->getZone()->getMinX() + 500) {
 			position.setX(player->getZone()->getMinX());
 		}
-		if (position.getY() > player->getZone()->getMaxY() - 100) {
+		if (position.getY() > player->getZone()->getMaxY() - 500) {
 			position.setY(player->getZone()->getMaxY());
-		} else if (position.getY() < player->getZone()->getMinY() + 100) {
+		} else if (position.getY() < player->getZone()->getMinY() + 500) {
 			position.setY(player->getZone()->getMinY());
 		}
 
