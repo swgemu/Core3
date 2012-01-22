@@ -50,7 +50,7 @@ public:
 		query << "SELECT session_id FROM sessions WHERE account_id = " << accountID;
 		query << " AND  ip = '"<< client->getSession()->getIPAddress() <<"' AND expires > NOW();";
 
-		System::out << query.toString() << endl;
+		//System::out << query.toString() << endl;
 
 		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
