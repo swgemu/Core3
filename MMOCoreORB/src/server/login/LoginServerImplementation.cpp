@@ -113,6 +113,7 @@ void LoginServerImplementation::startManagers() {
 	accountManager->setAutoRegistrationEnabled(configManager->getAutoReg());
 	accountManager->setRequiredVersion(configManager->getLoginRequiredVersion());
 	accountManager->setMaxOnlineCharacters(configManager->getZoneOnlineCharactersPerAccount());
+	accountManager->setDBSecret(configManager->getDBSecret());
 }
 
 void LoginServerImplementation::start(int p, int mconn) {

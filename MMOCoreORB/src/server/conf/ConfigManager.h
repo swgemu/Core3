@@ -65,6 +65,7 @@ namespace server {
 			String dBName;
 			String dBUser;
 			String dBPass;
+			String dBSecret;
 
 			String mantisHost;
 			uint16 mantisPort;
@@ -166,6 +167,10 @@ namespace server {
 
 			inline String& getDBPass() {
 				return dBPass;
+			}
+
+			inline String& getDBSecret() {
+				return dBSecret;
 			}
 
 			inline String& getMantisHost() {

@@ -105,7 +105,7 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 	Account* account = NULL;
 
 	StringBuffer query;
-	query << "SELECT a.active, a.password, SHA1('" << password << "'), IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, a.created, a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
+	query << "SELECT a.active, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, a.created, a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
@@ -116,9 +116,21 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 		if (active) {
 			//Check the password
 			String passwordStored = result->getString(1);
-			String passwordHashed = result->getString(2);
+			String salt = result->getString(2);
+
+			//Check hash version
+			String passwordHashed;
+			if(salt == "") {
+				passwordHashed = Crypto::SHA1Hash(password);
+			} else {
+				passwordHashed = Crypto::SHA256Hash(dbSecret + password + salt);
+			}
 
 			if (passwordStored == passwordHashed) {
+				//update hash if unsalted
+				if(salt == "")
+					updateHash(username, password);
+
 				//Check if they are banned
 				Time banExpires(result->getUnsignedInt(3));
 
@@ -180,14 +192,34 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 	return account;
 }
 
+void AccountManager::updateHash(const String& username, const String& password) {
+	String salt = Crypto::randomSalt();
+	String hash = Crypto::SHA256Hash(dbSecret + password + salt);
+
+	StringBuffer query;
+	query << "UPDATE accounts SET password = '" << hash << "', ";
+	query << "salt = '" << salt << "' ";
+	query << "WHERE username = '" << username << "';";
+
+	try {
+		ServerDatabase::instance()->executeStatement(query);
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	}
+}
+
 Account* AccountManager::createAccount(const String& username, const String& password) {
 	uint32 stationID = System::random();
 
+	String salt = Crypto::randomSalt();
+	String hash = Crypto::SHA256Hash(dbSecret + password + salt);
+
 	StringBuffer query;
-	query << "INSERT INTO accounts (username, password, station_id) VALUES (";
+	query << "INSERT INTO accounts (username, password, station_id, salt) VALUES (";
 	query << "'" << username << "',";
-	query << "SHA1('" << password << "'),";
-	query << stationID << ");";
+	query << "'" << hash << "',";
+	query << stationID << ",";
+	query << "'" << salt << "');";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
 

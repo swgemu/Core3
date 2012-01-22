@@ -55,6 +55,7 @@ DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
 DBPass = "123456"
+DBSecret = "swgemus3cr37!" -- Change this! This value should be unique and of reasonable length.
 
 LoginPort = 44453
 LoginProcessingThreads = 1
@@ -131,7 +132,7 @@ ZonesEnabled = {
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/kyle/workspace/cpp/SWGEmu"
+TrePath = "/home/swgemu/tre"
 
 TreFiles = {
 	"default_patch.tre",

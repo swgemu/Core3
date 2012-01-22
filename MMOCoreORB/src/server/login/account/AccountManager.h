@@ -35,6 +35,8 @@ namespace server {
 
 				uint32 maxOnlineCharacters;
 
+				String dbSecret;
+
 			public:
 				AccountManager(LoginServer* loginserv);
 				~AccountManager();
@@ -44,6 +46,8 @@ namespace server {
 				Account* validateAccountCredentials(LoginClient* client, const String& username, const String& password);
 
 				Account* createAccount(const String& username, const String& password);
+
+				void updateHash(const String& username, const String& password);
 
 				//These lookup an account on the mysql database...
 				//Account* lookupAccount(uint32 accountID);
@@ -64,6 +68,10 @@ namespace server {
 
 				inline void setAutoRegistrationEnabled(bool enabled) {
 					autoRegistration = enabled;
+				}
+
+				inline void setDBSecret(const String& secret) {
+					dbSecret = secret;
 				}
 
 				inline bool isRequiredVersion(const String& version) {

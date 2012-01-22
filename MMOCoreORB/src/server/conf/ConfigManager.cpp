@@ -58,6 +58,7 @@ ConfigManager::ConfigManager() {
 	dBName = "swgemu";
 	dBUser = "root";
 	dBPass = "Gemeni1";
+	dBSecret = "swgemusecret";
 
 	mantisHost = "127.0.0.1";
 	mantisPort = 3306;
@@ -112,6 +113,7 @@ bool ConfigManager::loadConfigData() {
 	dBName = getGlobalString("DBName");
 	dBUser = getGlobalString("DBUser");
 	dBPass = getGlobalString("DBPass");
+	dBSecret = getGlobalString("DBSecret");
 
 	mantisHost = getGlobalString("MantisHost");
 	mantisPort = getGlobalShort("MantisPort");
