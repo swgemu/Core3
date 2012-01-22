@@ -43,7 +43,9 @@ public:
 	const static int STARTCOMBAT = 31; //ManagedObject arg1 = null, long arg2 = 0
 	const static int DEFENDERADDED = 32; //ManagedObject arg1 = defender, long arg2 = 0
 	const static int DEFENDERDROPPED = 33; //ManagedObject arg1 = defender, long arg2 = 0
-	const static int OBJECTRADIALOPENED = 32; // ManagedObject arg1 = player that opened the radial
+	const static int OBJECTRADIALOPENED = 34; // ManagedObject arg1 = player who opened the radial
+	const static int ENTEREDBUILDING = 35; // ManagedObject arg1 = player who entered the building, long arg2 = 1 if condemned or not allowed in
+	const static int EXITEDBUILDING = 36; // ManagedObject arg1 = player who left building
 
 };
 

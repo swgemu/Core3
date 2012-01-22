@@ -449,8 +449,11 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (isStaticObject())
 		return;
 
+	int i = 0;
+
 	//If they are inside, and aren't allowed to be, then kick them out!
 	if (!isAllowedEntry(player->getFirstName()) || isCondemned()) {
+		i = 1;
 		ejectObject(player);
 
 		if (isCondemned()) {
@@ -472,6 +475,21 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 			}
 		}
 	}
+
+	notifyObservers(ObserverEventType::ENTEREDBUILDING, player, i);
+}
+
+void BuildingObjectImplementation::onExit(CreatureObject* player) {
+	if (player == NULL)
+		return;
+
+	if (getZone() == NULL)
+		return;
+
+	if (isStaticObject())
+		return;
+
+	notifyObservers(ObserverEventType::EXITEDBUILDING, player, 0);
 }
 
 uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {

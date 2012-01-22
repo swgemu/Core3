@@ -1013,9 +1013,6 @@ int BuildingObjectImplementation::getTotalCellNumber() {
 	return totalCellNumber;
 }
 
-void BuildingObjectImplementation::onExit(CreatureObject* player) {
-}
-
 bool BuildingObjectImplementation::isBuildingObject() {
 	// server/zone/objects/building/BuildingObject.idl():  		return true;
 	return true;

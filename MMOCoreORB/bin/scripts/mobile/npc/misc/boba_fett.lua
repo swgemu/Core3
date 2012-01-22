@@ -23,13 +23,13 @@ boba_fett = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/boba_fett.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	conversationTemplate = "",
+	conversationTemplate = "boba_fett_conv",
 	attacks = {
 	}
 }

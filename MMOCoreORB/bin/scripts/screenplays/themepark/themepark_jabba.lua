@@ -19,7 +19,7 @@ function ThemeparkJabba:setCellPermissions(regionObject, creatureObject)
 	--printf("entered area\n")
 	local cellObject = LuaSceneObject(getSceneObject(1177466))
 	local creature = LuaCreatureObject(creatureObject)
-	state = creature:hasScreenPlayState(2)
+	state = creature:hasScreenPlayState(2, "themepark_jabba")
 	if state == 0 then 
 		cellObject:updateCellPermission(0, creatureObject)
 	end

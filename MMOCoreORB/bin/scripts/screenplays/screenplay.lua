@@ -36,10 +36,11 @@ Act = Object:new {
 
 
 
-includeFile("tutorial.lua")
-includeFile("themepark_jabba.lua")
+includeFile("themepark/tutorial.lua")
+includeFile("themepark/themepark_jabba.lua")
 includeFile("recruiters/recruiters.lua")
 includeFile("tasks/mozo_bondog.lua")
 includeFile("tasks/dolac_legasi.lua")
 includeFile("recruiters/imperialrecruiter.lua")
 includeFile("recruiters/rebelrecruiter.lua")
+includeFile("dungeon/death_watch_bunker.lua")
