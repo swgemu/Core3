@@ -715,7 +715,7 @@ end
 function deleteWorld(creatureObject)
 	--printf("deleting world\n")
 	
-	local creature = LuaCreatureObject(creatureObject)
+	--local creature = LuaCreatureObject(creatureObject)
 	
 	--set screenplaystate to 0
 	--remove all inventory items
@@ -723,7 +723,7 @@ function deleteWorld(creatureObject)
 	--remove events
 	--remove spawned objects
 	
-	printf("deleting for " .. creature:getName() .. "\n")
+	--printf("deleting for " .. creature:getName() .. "\n")
 end
 
 function TutorialScreenPlay:start(creatureObject)	
@@ -1007,8 +1007,13 @@ function TutorialScreenPlay:itemRoomCheck(creatureObject)
 		end
 		
 		writeData(creature:getObjectID() .. ":tutorial:moveitemroom", moveitemroom + 1)
-		
-		createEvent(1000, "TutorialScreenPlay", "itemRoomCheck", creatureObject)
+		if moveitemroom < 15 then
+			createEvent(1000, "TutorialScreenPlay", "itemRoomCheck", creatureObject)
+		else
+			creature:sendSystemMessage("@newbie_tutorial/system_messages:part_2")
+			createEvent(1000, "TutorialScreenPlay", "room2", creatureObject)
+			creature:setScreenPlayState(4, "tutorial")
+		end			
 	else	
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:part_2")
 		createEvent(1000, "TutorialScreenPlay", "room2", creatureObject)
@@ -1566,7 +1571,7 @@ function TutorialScreenPlay:closeInventoryObserver(creatureObject)
 	local player = LuaCreatureObject(creatureObject)
 	
 	finished = readData(player:getObjectID() .. ":tutorial:drummessage")
-	printf(finished .. "\n")
+	--printf(finished .. "\n")
 	if finished < 16 then
 		createEvent(1000, "TutorialScreenPlay", "closeInventoryObserver", creatureObject)
 	elseif finished == 16 then
@@ -2453,7 +2458,7 @@ function TutorialScreenPlay:banditDestroyObserver(banditObject, playerObject)
 	local player = LuaCreatureObject(playerObject)
 	local bandit = LuaCreatureObject(playerObject)
 	
-	printf("bandit destroy\n")
+	--printf("bandit destroy\n")
 	
 	banditdead = readData(player:getObjectID() .. ":tutorial:banditdead")
 		
