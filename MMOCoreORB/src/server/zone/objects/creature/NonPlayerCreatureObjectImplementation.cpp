@@ -42,16 +42,11 @@ void NonPlayerCreatureObjectImplementation::doAwarenessCheck(Coordinate& start, 
 
 	int awarenessRadius = getFerocity() + 32;
 
-	if(getDistanceTo(target) > awarenessRadius || !isAggressiveTo(target))
+	if(!target->isInRange(_this, awarenessRadius) || !isAggressiveTo(target))
 		return;
 
 	// TODO: another formula that needs tweaking (after player levels get looked at)
-	float range = getLevel() / target->getLevel();
-	if (target->isPlayerCreature())
-		range /= 10;
-
-	if (target->isInRange(_this, range))
-		addDefender(target);
+	addDefender(target);
 
 	activateRecovery();
 	activateMovementEvent();
