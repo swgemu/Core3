@@ -80,6 +80,9 @@ public:
 
 		Zone* zone = vehicle->getZone();
 
+		if (zone == NULL)
+			return GENERALERROR;
+
 		zone->transferObject(creature, -1, false);
 
 		if (creature->hasBuff(String("burstrun").hashCode())
