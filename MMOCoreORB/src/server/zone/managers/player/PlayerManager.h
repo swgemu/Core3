@@ -242,8 +242,6 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
-	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
-
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
@@ -416,8 +414,6 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
-	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
-
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
@@ -564,8 +560,6 @@ public:
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
-
-	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath);
 

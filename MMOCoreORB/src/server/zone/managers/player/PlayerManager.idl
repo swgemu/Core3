@@ -129,13 +129,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @pre { destructor and destructedObject locked }
 	 * @post { destructor and destructedObject locked }
 	 */
-	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition);
-	
-	/**
-	 * @pre { destructor and destructedObject locked }
-	 * @post { destructor and destructedObject locked }
-	 */
-	public native int notifyDefendersOfIncapacitation(TangibleObject destructor, TangibleObject destructedObject); 
+	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition); 
 	
 	/**
 	 * @pre { attacker and player locked }

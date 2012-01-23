@@ -742,38 +742,6 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 	return recoveryTime;
 }
 
-int PlayerManagerImplementation::notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject) {
-	if (destructor != destructedObject)
-		destructor->unlock();
-
-	try {
-		DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructedObject->getDefenderList();
-
-		for (int i = 0; i < defenderList->size(); ++i) {
-			SceneObject* defender = defenderList->get(i);
-
-			if (!defender->isTangibleObject())
-				continue;
-
-			Locker clocker(defender, destructedObject);
-
-			(cast<TangibleObject*>(defender))->removeDefender(destructedObject);
-		}
-
-		destructedObject->clearCombatState(true);
-	} catch (...) {
-		if (destructor != destructedObject)
-			destructor->wlock(destructedObject);
-
-		throw;
-	}
-
-	if (destructor != destructedObject)
-		destructor->wlock(destructedObject);
-
-	return 0;
-}
-
 int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
 	if (!destructedObject->isPlayerCreature())
 		return 1;
@@ -830,8 +798,6 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 			killPlayer(destructor, playerCreature, 0);
 		}
 	}
-
-	notifyDefendersOfIncapacitation(destructor, destructedObject);
 
 	return 0;
 }

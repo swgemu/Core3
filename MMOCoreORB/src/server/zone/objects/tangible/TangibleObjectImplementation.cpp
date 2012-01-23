@@ -393,9 +393,39 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
+	dropFromDefenderLists(attacker);
+
 	damageMap->removeAll();
 
 	return 1;
+}
+
+void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destructor) {
+	if (destructor != _this)
+		destructor->unlock();
+
+	try {
+		for (int i = 0; i < defenderList.size(); ++i) {
+			SceneObject* defender = defenderList.get(i);
+
+			if (!defender->isTangibleObject())
+				continue;
+
+			Locker clocker(defender, _this);
+
+			(cast<TangibleObject*>(defender))->removeDefender(_this);
+		}
+
+		clearCombatState(true);
+	} catch (...) {
+		if (destructor != _this)
+			destructor->wlock(_this);
+
+		throw;
+	}
+
+	if (destructor != _this)
+		destructor->wlock(_this);
 }
 
 int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {

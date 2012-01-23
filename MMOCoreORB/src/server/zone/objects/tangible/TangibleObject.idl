@@ -379,6 +379,8 @@ class TangibleObject extends SceneObject {
 	
 	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
+	public native void dropFromDefenderLists(TangibleObject destructor);
+	
 	public byte getUnknownByte() {
 		return unknownByte;
 	}

@@ -302,6 +302,8 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	void dropFromDefenderLists(TangibleObject* destructor);
+
 	byte getUnknownByte();
 
 	bool isTicketCollector();
@@ -578,6 +580,8 @@ public:
 
 	virtual int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	void dropFromDefenderLists(TangibleObject* destructor);
+
 	byte getUnknownByte();
 
 	virtual bool isTicketCollector();
@@ -752,6 +756,8 @@ public:
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void dropFromDefenderLists(TangibleObject* destructor);
 
 	byte getUnknownByte();
 

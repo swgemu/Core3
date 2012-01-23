@@ -2206,8 +2206,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	return false;
 }
 
-int CreatureObjectImplementation::notifyObjectDestructionObservers(
-		TangibleObject* attacker, int condition) {
+int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	PlayerObject* ghost = getPlayerObject();
 
 	if (ghost != NULL) {
@@ -2216,8 +2215,7 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(
 		playerManager->notifyDestruction(attacker, _this, condition);
 	}
 
-	return TangibleObjectImplementation::notifyObjectDestructionObservers(
-			attacker, condition);
+	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
 void CreatureObjectImplementation::createChildObjects() {
