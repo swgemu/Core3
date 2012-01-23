@@ -36,7 +36,10 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
 		{ "updateCellPermission", &LuaSceneObject::updateCellPermission },
-
+		{ "sendTo", &LuaSceneObject::sendTo },
+		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
+		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
+		{ "setDirectionalHeading", &LuaSceneObject::setDirectionalHeading },
 		{ 0, 0 }
 };
 
@@ -153,6 +156,16 @@ int LuaSceneObject::getContainerObject(lua_State* L) {
 	int idx = lua_tonumber(L, -1);
 
 	SceneObject* obj = realObject->getContainerObject(idx);
+
+	lua_pushlightuserdata(L, obj);
+
+	return 1;
+}
+
+int LuaSceneObject::getContainerObjectById(lua_State* L) {
+	uint64 objectID = lua_tointeger(L, -1);
+
+	SceneObject* obj = realObject->getContainerObject(objectID);
 
 	lua_pushlightuserdata(L, obj);
 
@@ -277,5 +290,30 @@ int LuaSceneObject::wlock(lua_State* L) {
 }
 
 int LuaSceneObject::unlock(lua_State* L) {
+	return 0;
+}
+
+int LuaSceneObject::sendTo(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	realObject->sendTo(obj, true);
+
+	return 0;
+}
+
+int LuaSceneObject::getCustomObjectName(lua_State* L) {
+	String objname = realObject->getCustomObjectName().toString();
+
+	lua_pushstring(L, objname);
+
+	return 1;
+}
+
+int LuaSceneObject::setDirectionalHeading(lua_State* L) {
+	int heading = lua_tointeger(L, -1);
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -2);
+
+	realObject->setDirection(heading);
+
 	return 0;
 }

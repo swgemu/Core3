@@ -52,6 +52,10 @@ namespace scene {
 		int updateDirection(lua_State* L);
 		int isCreatureObject(lua_State* L);
 		int updateCellPermission(lua_State* L);
+		int sendTo(lua_State* L);
+		int getCustomObjectName(lua_State* L);
+		int getContainerObjectById(lua_State* L);
+		int setDirectionalHeading(lua_State* L);
 
 
 	private:

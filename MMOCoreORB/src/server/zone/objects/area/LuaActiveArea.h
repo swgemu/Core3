@@ -31,6 +31,9 @@ namespace area {
 
 		int setRadius(lua_State *L);
 		int getRadius(lua_State *L);
+
+		int setNoBuildArea(lua_State* L);
+		int isNoBuildArea(lua_State* L);
 	private:
 		Reference<ActiveArea*> realObject;
 	};

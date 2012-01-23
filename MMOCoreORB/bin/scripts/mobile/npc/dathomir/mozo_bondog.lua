@@ -1,5 +1,6 @@
 mozo_bondog = Creature:new {
-	objectName = "@mob/creature_names:Mozo Bondog",
+	objectName = "",
+	customName = "Mozo Bondog",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

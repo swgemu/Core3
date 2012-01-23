@@ -15,6 +15,8 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "_getObject", &LuaActiveArea::_getObject },
 		{ "setRadius", &LuaActiveArea::setRadius },
 		{ "getRadius", &LuaActiveArea::getRadius },
+		{ "setNoBuildArea", &LuaActiveArea::setNoBuildArea },
+		{ "isNoBuildArea", &LuaActiveArea::isNoBuildArea },
 		{ 0, 0 }
 };
 
@@ -47,6 +49,22 @@ int LuaActiveArea::setRadius(lua_State* L) {
 	int radius = lua_tonumber(L, -1);
 
 	realObject->setRadius(radius);
+
+	return 0;
+}
+
+int LuaActiveArea::setNoBuildArea(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+
+	realObject->setNoBuildArea(val);
+
+	return 0;
+}
+
+int LuaActiveArea::isNoBuildArea(lua_State* L) {
+	bool val = realObject->isNoBuildArea();
+
+	lua_pushboolean(L, val);
 
 	return 1;
 }

@@ -416,9 +416,9 @@ int DirectorManager::addStartingWeaponsInto(lua_State* L) {
 }
 
 int DirectorManager::giveItem(lua_State* L) {
-	int slot = lua_tonumber(L, -1);
+	int slot = lua_tointeger(L, -1);
 	String objectString = lua_tostring(L, -2);
-	SceneObject* obj = (SceneObject*)lua_touserdata(L, -3);
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -3);
 
 	if (obj == NULL)
 		return 0;
@@ -426,10 +426,16 @@ int DirectorManager::giveItem(lua_State* L) {
 	ZoneServer* zoneServer = obj->getZoneServer();
 
 	ManagedReference<SceneObject*> item = zoneServer->createObject(objectString.hashCode(), 1);
-	if (item != NULL && obj != NULL)
+
+	if (item != NULL && obj != NULL) {
 		obj->transferObject(item, slot, true);
 
-	return 0;
+		lua_pushlightuserdata(L, item.get());
+	} else {
+		lua_pushnil(L);
+	}
+
+	return 1;
 }
 
 int DirectorManager::setAuthorizationState(lua_State* L) {
@@ -469,7 +475,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 	if (zone == NULL) {
 		lua_pushnil(L);
-		return 0;
+		return 1;
 	}
 
 	CreatureManager* creatureManager = zone->getCreatureManager();

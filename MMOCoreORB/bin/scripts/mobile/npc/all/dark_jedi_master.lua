@@ -1,5 +1,5 @@
 dark_jedi_master = Creature:new {
-	objectName = "@mob/creature_names:Dark_jedi_master",
+	objectName = "@mob/creature_names:dark_jedi_master",
 	socialGroup = "Dark Jedi",
 	pvpFaction = "",
 	faction = "",
