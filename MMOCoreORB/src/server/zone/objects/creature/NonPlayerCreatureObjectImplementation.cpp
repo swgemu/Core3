@@ -9,6 +9,7 @@
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	AiAgentImplementation::notifyPositionUpdate(entry);
@@ -40,9 +41,17 @@ void NonPlayerCreatureObjectImplementation::doAwarenessCheck(Coordinate& start, 
 	if (isDead() || getZone() == NULL || time == 0)
 		return;
 
-	int awarenessRadius = getFerocity() + 32;
+	int radius = 32;
+
+	if(getParent() != NULL && getParent()->isCellObject())
+		radius = 12;
+
+	int awarenessRadius = getFerocity() + radius;
 
 	if(!target->isInRange(_this, awarenessRadius) || !isAggressiveTo(target))
+		return;
+
+	if(!CollisionManager::checkLineOfSight(target, _this))
 		return;
 
 	// TODO: another formula that needs tweaking (after player levels get looked at)

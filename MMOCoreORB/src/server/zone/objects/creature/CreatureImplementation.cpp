@@ -19,6 +19,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 
 void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
@@ -50,9 +51,17 @@ void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, Cr
 	if (isDead() || getZone() == NULL || time == 0 || target->isDead())
 		return;
 
-	int awarenessRadius = getFerocity() + 32;
+	int radius = 32;
 
-	if( getDistanceTo(target) > awarenessRadius || isCamouflaged(target))
+	if(getParent() != NULL && getParent()->isCellObject())
+		radius = 12;
+
+	int awarenessRadius = getFerocity() + radius;
+
+	if(!target->isInRange(_this, awarenessRadius) || !isAggressiveTo(target))
+		return;
+
+	if(!CollisionManager::checkLineOfSight(target, _this))
 		return;
 
 	// calculate average speed
