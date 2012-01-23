@@ -712,20 +712,6 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	return 1
 end
 
-function deleteWorld(creatureObject)
-	--printf("deleting world\n")
-	
-	--local creature = LuaCreatureObject(creatureObject)
-	
-	--set screenplaystate to 0
-	--remove all inventory items
-	--remove observers
-	--remove events
-	--remove spawned objects
-	
-	--printf("deleting for " .. creature:getName() .. "\n")
-end
-
 function TutorialScreenPlay:start(creatureObject)	
 	--printf("Running introduction\n")
 	
@@ -752,7 +738,7 @@ function TutorialScreenPlay:start(creatureObject)
 		return
 	end
 	
-	createObserver(OBJECTREMOVEDFROMZONE, "TutorialScreenPlay", "deleteWorld", creatureObject)
+	--createObserver(OBJECTREMOVEDFROMZONE, "TutorialScreenPlay", "deleteWorld", creatureObject)
 	
 	--lock cell door
 	targetCellObject:_setObject(buildingObject:getCell(9))
