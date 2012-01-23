@@ -6,11 +6,14 @@
  */
 
 #include "VehicleControlDevice.h"
+#include "VehicleControlObserver.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "tasks/CallMountTask.h"
+
 
 void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) {
 	if (player->getParent() != NULL)
@@ -21,6 +24,17 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated())
 		return;
+
+	if(player->getPendingTask("call_mount") != NULL) {
+		StringIdChatParameter waitTime("pet/pet_menu", "call_delay_finish_vehicle");
+		Time nextExecution;
+		Core::getTaskManager()->getNextExecutionTime(player->getPendingTask("call_mount"), nextExecution);
+		int timeLeft = (nextExecution.getMiliTime() / 1000) - System::getTime();
+		waitTime.setDI(timeLeft);
+
+		player->sendSystemMessage(waitTime);
+		return;
+	}
 
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
@@ -46,9 +60,34 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 		}
 	}
 
-	ZoneServer* zoneServer = getZoneServer();
+	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
-	Locker clocker(controlledObject, player);
+		CallMountTask* callMount = new CallMountTask(_this, player, "call_mount");
+
+		StringIdChatParameter message("pet/pet_menu", "call_vehicle_delay");
+		message.setDI(15);
+		player->sendSystemMessage(message);
+
+		player->addPendingTask("call_mount", callMount, 15 * 1000);
+
+		if (vehicleControlObserver == NULL) {
+			vehicleControlObserver = new VehicleControlObserver(_this);
+			vehicleControlObserver->deploy();
+		}
+
+		player->registerObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
+
+	} else {
+
+		Locker clocker(controlledObject, player);
+		spawnObject(player);
+	}
+
+}
+
+void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
+
+	ZoneServer* zoneServer = getZoneServer();
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 
@@ -63,6 +102,18 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	controlledObject->inflictDamage(player, 0, System::random(50), true);
 
 	updateStatus(1);
+
+	player->dropObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
+}
+
+void VehicleControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
+
+	if(player->getPendingTask("call_mount")) {
+		player->getPendingTask("call_mount")->cancel();
+		player->removePendingTask("call_mount");
+	}
+
+	player->dropObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
 }
 
 void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {

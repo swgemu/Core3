@@ -112,6 +112,8 @@ public:
 
 	void generateObject(CreatureObject* player);
 
+	void callObject(CreatureObject* player);
+
 	void setControlledObject(TangibleObject* object);
 
 	TangibleObject* getControlledObject();
@@ -156,6 +158,8 @@ public:
 	virtual void storeObject(CreatureObject* player);
 
 	virtual void generateObject(CreatureObject* player);
+
+	virtual void callObject(CreatureObject* player);
 
 	void setControlledObject(TangibleObject* object);
 
@@ -211,6 +215,8 @@ public:
 	void storeObject(CreatureObject* player);
 
 	void generateObject(CreatureObject* player);
+
+	void callObject(CreatureObject* player);
 
 	void setControlledObject(TangibleObject* object);
 

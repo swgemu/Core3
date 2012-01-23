@@ -852,8 +852,9 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 
 	setHAM(damageType, newValue, notifyClient);
 
-	if(healer != NULL && healer != _this)
+	if(healer != NULL && healer != _this) {
 		notifyObservers(ObserverEventType::HEALINGPERFORMED, healer, returnValue);
+	}
 
 	return returnValue;
 }

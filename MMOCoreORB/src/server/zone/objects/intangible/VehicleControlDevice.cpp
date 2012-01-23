@@ -18,11 +18,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/intangible/VehicleControlObserver.h"
+
 /*
  *	VehicleControlDeviceStub
  */
 
-enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_};
+enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_SPAWNOBJECT__CREATUREOBJECT_,RPC_CANCELSPAWNOBJECT__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_};
 
 VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
 	VehicleControlDeviceImplementation* _implementation = new VehicleControlDeviceImplementation();
@@ -64,6 +66,34 @@ void VehicleControlDevice::generateObject(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->generateObject(player);
+}
+
+void VehicleControlDevice::spawnObject(CreatureObject* player) {
+	VehicleControlDeviceImplementation* _implementation = static_cast<VehicleControlDeviceImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SPAWNOBJECT__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->spawnObject(player);
+}
+
+void VehicleControlDevice::cancelSpawnObject(CreatureObject* player) {
+	VehicleControlDeviceImplementation* _implementation = static_cast<VehicleControlDeviceImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANCELSPAWNOBJECT__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->cancelSpawnObject(player);
 }
 
 int VehicleControlDevice::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -214,6 +244,11 @@ bool VehicleControlDeviceImplementation::readObjectMember(ObjectInputStream* str
 	if (ControlDeviceImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "vehicleControlObserver") {
+		TypeInfo<ManagedReference<VehicleControlObserver* > >::parseFromBinaryStream(&vehicleControlObserver, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -229,8 +264,16 @@ int VehicleControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* s
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "vehicleControlObserver";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<VehicleControlObserver* > >::toBinaryStream(&vehicleControlObserver, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + ControlDeviceImplementation::writeObjectMembers(stream);
+
+	return 1 + ControlDeviceImplementation::writeObjectMembers(stream);
 }
 
 VehicleControlDeviceImplementation::VehicleControlDeviceImplementation() {
@@ -306,6 +349,12 @@ Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
 		generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_SPAWNOBJECT__CREATUREOBJECT_:
+		spawnObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_CANCELSPAWNOBJECT__CREATUREOBJECT_:
+		cancelSpawnObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
@@ -328,6 +377,14 @@ void VehicleControlDeviceAdapter::storeObject(CreatureObject* player) {
 
 void VehicleControlDeviceAdapter::generateObject(CreatureObject* player) {
 	(static_cast<VehicleControlDevice*>(stub))->generateObject(player);
+}
+
+void VehicleControlDeviceAdapter::spawnObject(CreatureObject* player) {
+	(static_cast<VehicleControlDevice*>(stub))->spawnObject(player);
+}
+
+void VehicleControlDeviceAdapter::cancelSpawnObject(CreatureObject* player) {
+	(static_cast<VehicleControlDevice*>(stub))->cancelSpawnObject(player);
 }
 
 int VehicleControlDeviceAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

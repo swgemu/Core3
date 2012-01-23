@@ -42,7 +42,8 @@
 
 
 object_building_poi_scout_camp_s4 = object_building_poi_shared_scout_camp_s4:new {
-templateType = CAMPSTRUCTURE,
+	-- Field Base Kit / Elite
+	templateType = CAMPSTRUCTURE,
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
@@ -62,7 +63,7 @@ templateType = CAMPSTRUCTURE,
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
 			x = -8, z = 0, y = 2, 
-			ox = 0, oy = .7, oz = 0, ow = -.7, 
+			ox = 0, oy = .7, oz = 0, ow = .717, 
 			cellid = -1, 
 			containmentType = -1},
 
@@ -80,7 +81,7 @@ templateType = CAMPSTRUCTURE,
 
 		{templateFile = "object/tangible/crafting/station/public_food_station.iff", 
 			x = .65, z = 0, y = -7, 
-			ox = 0, oy = 0, oz = 0, ow = 0, 
+			ox = 0, oy = 0, oz = 0, ow = .1, 
 			cellid = -1, 
 			containmentType = -1},
 

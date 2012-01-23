@@ -266,6 +266,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FishObject>(SceneObjectType::FISH);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::TANGIBLE);
 
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::TRAP);
+
 	objectFactory.registerObject<VehicleControlDevice>(SceneObjectType::VEHICLECONTROLDEVICE);
 	objectFactory.registerObject<ShipControlDevice>(SceneObjectType::SHIPCONTROLDEVICE);
 

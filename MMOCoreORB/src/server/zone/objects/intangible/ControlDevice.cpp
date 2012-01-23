@@ -20,7 +20,7 @@
  *	ControlDeviceStub
  */
 
-enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__CREATUREOBJECT_,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
+enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__CREATUREOBJECT_,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_CALLOBJECT__CREATUREOBJECT_,RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
 
 ControlDevice::ControlDevice() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ControlDeviceImplementation* _implementation = new ControlDeviceImplementation();
@@ -76,6 +76,20 @@ void ControlDevice::generateObject(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->generateObject(player);
+}
+
+void ControlDevice::callObject(CreatureObject* player) {
+	ControlDeviceImplementation* _implementation = static_cast<ControlDeviceImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALLOBJECT__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->callObject(player);
 }
 
 void ControlDevice::setControlledObject(TangibleObject* object) {
@@ -292,6 +306,11 @@ void ControlDeviceImplementation::generateObject(CreatureObject* player) {
 	Logger::error("called generateObject on an abstract method");
 }
 
+void ControlDeviceImplementation::callObject(CreatureObject* player) {
+	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.error("called callObject on an abstract method");
+	Logger::error("called callObject on an abstract method");
+}
+
 void ControlDeviceImplementation::setControlledObject(TangibleObject* object) {
 	// server/zone/objects/intangible/ControlDevice.idl():  		controlledObject = object;
 	controlledObject = object;
@@ -327,6 +346,9 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
 		generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_CALLOBJECT__CREATUREOBJECT_:
+		callObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_:
 		setControlledObject(static_cast<TangibleObject*>(inv->getObjectParameter()));
 		break;
@@ -353,6 +375,10 @@ void ControlDeviceAdapter::storeObject(CreatureObject* player) {
 
 void ControlDeviceAdapter::generateObject(CreatureObject* player) {
 	(static_cast<ControlDevice*>(stub))->generateObject(player);
+}
+
+void ControlDeviceAdapter::callObject(CreatureObject* player) {
+	(static_cast<ControlDevice*>(stub))->callObject(player);
 }
 
 void ControlDeviceAdapter::setControlledObject(TangibleObject* object) {

@@ -51,13 +51,13 @@ void Attachment::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void Attachment::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+void Attachment::updateCraftingValues(CraftingValues* values) {
 	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(values, firstUpdate);
+		_implementation->updateCraftingValues(values);
 }
 
 void Attachment::initializeMembers() {

@@ -62,13 +62,15 @@ which carries forward this exception.
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
+
+	threatMap = new ThreatMap(_this);
 
 	setLoggingName("TangibleObject");
 }
@@ -94,6 +96,7 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	sliceable = tanoData->getSliceable();
 
+	threatMap = new ThreatMap(_this);
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -381,7 +384,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0 && attacker != _this)
-			damageMap->addDamage(player, damage);
+			threatMap->addDamage(player, damage);
 	}
 
 	if (newConditionDamage >= maxCondition)
@@ -393,9 +396,8 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
+	threatMap->removeAll();
 	dropFromDefenderLists(attacker);
-
-	damageMap->removeAll();
 
 	return 1;
 }

@@ -927,6 +927,10 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player, int cli
 	//Set initial crafting percentages
 	prototype->setInitialCraftingValues(manufactureSchematic);
 
+	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+	craftingValues->setManufactureSchematic(manufactureSchematic);
+	craftingValues->setPlayer(player);
+
 	// Set Crafter name and generate serial number
 	String name = player->getFirstName();
 	prototype->setCraftersName(name);
@@ -935,7 +939,7 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player, int cli
 	prototype->setCraftersSerial(serial);
 
 	// Update the prototype with new values
-	prototype->updateCraftingValues(manufactureSchematic->getCraftingValues(), manufactureSchematic->isFirstCraftingUpdate());
+	prototype->updateCraftingValues(craftingValues, manufactureSchematic->isFirstCraftingUpdate());
 
 	// Set default customization
 	Vector < byte > *customizationOptions

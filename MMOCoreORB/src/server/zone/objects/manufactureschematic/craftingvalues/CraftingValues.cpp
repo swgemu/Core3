@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 #include "CraftingValues.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 float CraftingValues::VALUENOTFOUND = -999999;
 
@@ -78,6 +79,22 @@ CraftingValues::CraftingValues(const CraftingValues& values) : Object(), Seriali
 CraftingValues::~CraftingValues() {
 	//valuesToSend.removeAll();
 	//info("Deleting CraftingValues");
+}
+
+void CraftingValues::setManufactureSchematic(ManufactureSchematic* manu) {
+	schematic = manu;
+}
+
+ManufactureSchematic* CraftingValues::getManufactureSchematic() {
+	return schematic;
+}
+
+void CraftingValues::setPlayer(CreatureObject* play) {
+	player = play;
+}
+
+CreatureObject* CraftingValues::getPlayer() {
+	return player;
 }
 
 void CraftingValues::addExperimentalProperty(const String& title, const String& subtitle,
@@ -849,6 +866,14 @@ void CraftingValues::recalculateValues(bool initial) {
 	}
 
 	//toString();
+}
+
+void CraftingValues::clearAll() {
+	doHide = true;
+	experimentalValuesMap.removeAll();
+	valuesToSend.removeAll();
+	schematic = NULL;
+	player = NULL;
 }
 
 String CraftingValues::toString() {

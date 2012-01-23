@@ -42,6 +42,7 @@
 
 
 object_building_poi_scout_camp_s0 = object_building_poi_shared_scout_camp_s0:new {
+	-- Basic Camp
 	templateType = CAMPSTRUCTURE,
 	lotSize = 0,
 	baseMaintenanceRate = 0,

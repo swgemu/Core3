@@ -54,13 +54,13 @@ void WearableObject::fillAttributeList(AttributeListMessage* msg, CreatureObject
 		_implementation->fillAttributeList(msg, object);
 }
 
-void WearableObject::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+void WearableObject::updateCraftingValues(CraftingValues* values, bool initialUpdate) {
 	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateCraftingValues(values, firstUpdate);
+		_implementation->updateCraftingValues(values, initialUpdate);
 }
 
 void WearableObject::applyAttachment(CreatureObject* player, Attachment* attachment) {

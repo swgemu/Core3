@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/Zone.h"
 #include "HealLairObserverEvent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -72,10 +72,10 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 }
 
 void LairObserverImplementation::notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition) {
-	DamageMap* damageMap = lair->getDamageMap();
+	ThreatMap* threatMap = lair->getThreatMap();
 
-	DamageMap copyDamageMap(*damageMap);
-	damageMap->removeAll(); // we can clear the original one
+	ThreatMap copyThreatMap(*threatMap);
+	threatMap->removeAll(); // we can clear the original one
 
 	if (lair->getZone() == NULL) {
 		spawnedCreatures.removeAll();
@@ -101,7 +101,7 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	spawnedCreatures.removeAll();
 
 	PlayerManager* playerManager = lair->getZoneServer()->getPlayerManager();
-	playerManager->disseminateExperience(lair, &copyDamageMap);
+	playerManager->disseminateExperience(lair, &copyThreatMap);
 }
 
 void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {

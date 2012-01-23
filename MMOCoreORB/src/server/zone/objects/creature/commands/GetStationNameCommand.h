@@ -63,6 +63,22 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if(!creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		PlayerObject* admin = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		if(admin == NULL || !admin->isPrivileged())
+			return INVALIDTARGET;
+
+		ManagedReference<CreatureObject* > targetCreature =
+				cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+
+		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		/// Insert would be Account name lookup here
+
 		return SUCCESS;
 	}
 

@@ -67,7 +67,7 @@ include server.zone.managers.player.StartingLocationList;
 include server.zone.managers.player.StartingLocation;
 include server.zone.objects.player.ValidatedPosition;
 include server.zone.managers.player.StartingItemList;
-import server.zone.objects.tangible.DamageMap;
+import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
@@ -197,7 +197,7 @@ class PlayerManager extends Observer implements Logger {
 	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
 	
 	@local
-	public native void disseminateExperience(TangibleObject destructedObject, DamageMap damageMap);
+	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap);
 	
 	public native boolean squadLeaderCheck(CreatureObject player, GroupObject group);
 	

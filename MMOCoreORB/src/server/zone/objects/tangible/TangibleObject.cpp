@@ -20,7 +20,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
@@ -935,13 +935,13 @@ bool TangibleObject::isFromFactoryCrate() {
 		return _implementation->isFromFactoryCrate();
 }
 
-DamageMap* TangibleObject::getDamageMap() {
+ThreatMap* TangibleObject::getThreatMap() {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getDamageMap();
+		return _implementation->getThreatMap();
 }
 
 void TangibleObject::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
@@ -1354,7 +1354,6 @@ TangibleObjectImplementation::TangibleObjectImplementation() {
 }
 
 void TangibleObjectImplementation::initializeMembers() {
-	Reference<DamageMap*> _ref0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		faction = 0;
 	faction = 0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		level = 1;
@@ -1375,8 +1374,6 @@ void TangibleObjectImplementation::initializeMembers() {
 	sliceable = false;
 	// server/zone/objects/tangible/TangibleObject.idl():  		sliced = false;
 	sliced = false;
-	// server/zone/objects/tangible/TangibleObject.idl():  		damageMap = new DamageMap();
-	damageMap = _ref0 = new DamageMap();
 }
 
 void TangibleObjectImplementation::setCombatState() {
@@ -1498,8 +1495,11 @@ DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::get
 }
 
 SceneObject* TangibleObjectImplementation::getMainDefender() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return defenderList.get(0);
+	// server/zone/objects/tangible/TangibleObject.idl():  		return 
+	if ((&defenderList)->size() > 0)	// server/zone/objects/tangible/TangibleObject.idl():  			return defenderList.get(0);
 	return (&defenderList)->get(0);
+	// server/zone/objects/tangible/TangibleObject.idl():  		return null;
+	return NULL;
 }
 
 bool TangibleObjectImplementation::isDestroyed() {
@@ -1620,9 +1620,9 @@ bool TangibleObjectImplementation::isFromFactoryCrate() {
 	return optionsBitmask & OptionBitmask::FROMFACTORY;
 }
 
-DamageMap* TangibleObjectImplementation::getDamageMap() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return damageMap;
-	return damageMap;
+ThreatMap* TangibleObjectImplementation::getThreatMap() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return threatMap;
+	return threatMap;
 }
 
 /*

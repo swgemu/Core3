@@ -47,6 +47,42 @@ which carries forward this exception.
 
 #include "ValuesClasses.h"
 
+
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace manufactureschematic {
+
+   class ManufactureSchematic;
+}
+}
+}
+}
+
+using namespace server::zone::objects::manufactureschematic;
+
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace creature {
+
+   class CreatureObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::creature;
+
+
+
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace manufactureschematic {
+   	 namespace craftingvalues {
+
+
 class CraftingValues : public Serializable, public Logger {
 	VectorMap<String, Reference<Subclasses*> > experimentalValuesMap;
 
@@ -55,6 +91,9 @@ class CraftingValues : public Serializable, public Logger {
 	String EMPTY;
 
 	bool doHide;
+
+	ManagedReference<ManufactureSchematic*> schematic;
+	ManagedReference<CreatureObject*> player;
 
 public:
 
@@ -68,6 +107,12 @@ public:
 	CraftingValues(const CraftingValues& values);
 
 	~CraftingValues();
+
+	void setManufactureSchematic(ManufactureSchematic* manu);
+	ManufactureSchematic* getManufactureSchematic();
+	void setPlayer(CreatureObject* play);
+	CreatureObject* getPlayer();
+
 	// Experimental Titles
 	void addExperimentalProperty(const String& title, const String& subtitle,
 			const float min, const float max, const int precision, const bool filler);
@@ -202,16 +247,20 @@ public:
 	}
 
 	// Clear
-	inline void clear(){
+	inline void clear() {
 		valuesToSend.removeAll();
 	}
 
-	inline void clearAll() {
-		doHide = true;
-		experimentalValuesMap.removeAll();
-		valuesToSend.removeAll();
-	}
+	void clearAll();
 
 };
+
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::manufactureschematic::craftingvalues;
 
 #endif /*CRAFTINGVALUES_H_*/

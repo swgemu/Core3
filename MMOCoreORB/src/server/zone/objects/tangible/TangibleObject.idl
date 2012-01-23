@@ -64,7 +64,7 @@ import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.tangible.DamageMap;
+import server.zone.objects.tangible.threat.ThreatMap;
 import server.zone.objects.tangible.weapon.WeaponObject;
 
 class TangibleObject extends SceneObject {
@@ -92,7 +92,7 @@ class TangibleObject extends SceneObject {
 	protected string craftersSerial;
 	
 	@transactional
-	protected transient DamageMap damageMap;
+	protected transient ThreatMap threatMap;
 	
 	@dereferenced
 	protected DeltaVector<SceneObject> defenderList;
@@ -169,8 +169,6 @@ class TangibleObject extends SceneObject {
 		
 		sliceable = false;
 		sliced = false;
-		
-		damageMap = new DamageMap();
 	}
 	
 	/**
@@ -448,7 +446,10 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public SceneObject getMainDefender() {
-		return defenderList.get(0);
+		if(defenderList.size() > 0)
+			return defenderList.get(0);
+		
+		return null;
 	}
 	
 	public boolean isDestroyed() {
@@ -543,15 +544,15 @@ class TangibleObject extends SceneObject {
 	}
 	
 	@local
-	public DamageMap getDamageMap() {
-		return damageMap;
+	public ThreatMap getThreatMap() {
+		return threatMap;
 	}
 	
 	/*
 	 * Set the initial values for this object based on the schematic
 	 */
 	public native void setInitialCraftingValues(ManufactureSchematic manufactureSchematic, int assemblySuccess = 1);
-	
+
 	/*
 	 * Add the subcomponent stats to this based on the items in the schematic
 	 */

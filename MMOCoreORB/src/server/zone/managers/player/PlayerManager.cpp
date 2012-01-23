@@ -28,7 +28,7 @@
 
 #include "server/zone/objects/creature/AiAgent.h"
 
-#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 /*
  *	PlayerManagerStub
@@ -540,13 +540,13 @@ int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient
 		return _implementation->healEnhance(enhancer, patient, attribute, buffvalue, duration);
 }
 
-void PlayerManager::disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap) {
+void PlayerManager::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->disseminateExperience(destructedObject, damageMap);
+		_implementation->disseminateExperience(destructedObject, threatMap);
 }
 
 bool PlayerManager::squadLeaderCheck(CreatureObject* player, GroupObject* group) {

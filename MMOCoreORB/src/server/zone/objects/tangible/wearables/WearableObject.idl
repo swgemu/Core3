@@ -83,7 +83,7 @@ class WearableObject extends TangibleObject {
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	@local
-	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+	public native void updateCraftingValues(CraftingValues values, boolean initialUpdate);
 
 	public native void applyAttachment(CreatureObject player, Attachment attachment);
 
@@ -111,6 +111,6 @@ class WearableObject extends TangibleObject {
 		socketCount = sockets;
 	}
 	
-	private native void generateSockets(ManufactureSchematic schematic);
+	private native void generateSockets(CraftingValues craftingValues);
 
 }

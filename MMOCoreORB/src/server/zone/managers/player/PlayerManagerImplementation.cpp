@@ -28,7 +28,7 @@
 #include "server/zone/managers/skill/Performance.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
-#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/login/packets/ErrorMessage.h"
@@ -1041,8 +1041,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	task->schedule(3 * 1000);
 }
 
-void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap) {
-	uint32 totalDamage = damageMap->getTotalDamage();
+void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
+	uint32 totalDamage = threatMap->getTotalDamage();
 
 	int level = destructedObject->getLevel();
 
@@ -1051,14 +1051,14 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	VectorMap<GroupObject*, int> groups;
 	groups.setNullValue(0);
 
-	for (int i = 0; i < damageMap->size(); ++i) {
-		CreatureObject* creature = damageMap->elementAt(i).getKey();
+	for (int i = 0; i < threatMap->size(); ++i) {
+		CreatureObject* creature = threatMap->elementAt(i).getKey();
 		if (!creature->isPlayerCreature())
 			continue;
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
-		DamageMapEntry* entry = &damageMap->elementAt(i).getValue();
+		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
 
 		Locker crossLocker(player, destructedObject);
 
@@ -1109,7 +1109,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		for (int x = 0; x < groups.size(); x++)
 			awardSquadLeaderExperience(groups.elementAt(x).getKey(), groups.get(x), destructedObject);
 
-	damageMap->removeAll();
+	threatMap->removeAll();
 }
 
 void PlayerManagerImplementation::awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source) {

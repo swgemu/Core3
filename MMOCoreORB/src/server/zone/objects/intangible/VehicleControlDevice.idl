@@ -55,18 +55,26 @@ import server.zone.Zone;
 import system.lang.System;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.creature.CreatureObject;
-
+import server.zone.objects.intangible.VehicleControlObserver;
 
 class VehicleControlDevice extends ControlDevice {
+	
+	VehicleControlObserver vehicleControlObserver;
+	
 	public VehicleControlDevice() {
 		Logger.setLoggingName("VehicleControlDevice");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
+		
 	}
 	
 	public native void storeObject(CreatureObject player);
 	
 	public native void generateObject(CreatureObject player);
+	
+	public native void spawnObject(CreatureObject player);
+	
+	public native void cancelSpawnObject(CreatureObject player);
 	
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");

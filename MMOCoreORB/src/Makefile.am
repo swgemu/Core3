@@ -67,7 +67,8 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3 #odb3
 
-core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
+core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
+				server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
 				server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/managers/creature/LairObserver.cpp \
@@ -268,6 +269,7 @@ core3_IDLS =	server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \
 		server/zone/objects/area/LairSpawnAreaImplementation.cpp \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
@@ -429,7 +431,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
 		server/zone/objects/creature/AiAgentImplementation.cpp \
-		server/zone/objects/tangible/DamageMap.cpp \
+		server/zone/objects/tangible/threat/ThreatMap.cpp \
+		server/zone/objects/tangible/threat/ThreatMapObserver.cpp \
+		server/zone/objects/tangible/threat/ThreatMatrix.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \

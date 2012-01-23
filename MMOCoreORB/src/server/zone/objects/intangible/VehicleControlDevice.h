@@ -105,6 +105,20 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace intangible {
+
+class VehicleControlObserver;
+
+} // namespace intangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::intangible;
+
 #include "server/zone/managers/radial/RadialOptions.h"
 
 #include "engine/lua/LuaObject.h"
@@ -125,6 +139,10 @@ public:
 	void storeObject(CreatureObject* player);
 
 	void generateObject(CreatureObject* player);
+
+	void spawnObject(CreatureObject* player);
+
+	void cancelSpawnObject(CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
@@ -157,6 +175,7 @@ namespace objects {
 namespace intangible {
 
 class VehicleControlDeviceImplementation : public ControlDeviceImplementation {
+	ManagedReference<VehicleControlObserver* > vehicleControlObserver;
 
 public:
 	VehicleControlDeviceImplementation();
@@ -166,6 +185,10 @@ public:
 	void storeObject(CreatureObject* player);
 
 	void generateObject(CreatureObject* player);
+
+	void spawnObject(CreatureObject* player);
+
+	void cancelSpawnObject(CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
@@ -219,6 +242,10 @@ public:
 	void storeObject(CreatureObject* player);
 
 	void generateObject(CreatureObject* player);
+
+	void spawnObject(CreatureObject* player);
+
+	void cancelSpawnObject(CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 

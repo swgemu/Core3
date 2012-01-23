@@ -19,7 +19,6 @@
 #include "MissionObject.h"
 #include "MissionObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/DamageMap.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 

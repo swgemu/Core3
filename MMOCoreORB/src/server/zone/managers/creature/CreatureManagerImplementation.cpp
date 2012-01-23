@@ -31,7 +31,7 @@
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "LairObserver.h"
 
 void CreatureManagerImplementation::setCreatureTemplateManager() {
@@ -338,15 +338,15 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	// lets unlock destructor so we dont get into complicated deadlocks
 
 	// lets copy the damage map before we remove it all
-	DamageMap* damageMap = destructedObject->getDamageMap();
-	DamageMap copyDamageMap(*damageMap);
-	damageMap->removeAll(); // we can clear the original one
+	ThreatMap* threatMap = destructedObject->getThreatMap();
+	ThreatMap copyThreatMap(*threatMap);
+	threatMap->removeAll(); // we can clear the original one
 
 	if (destructedObject != destructor)
 		destructor->unlock();
 
 	try {
-		ManagedReference<CreatureObject*> player = copyDamageMap.getHighestDamagePlayer();
+		ManagedReference<CreatureObject*> player = copyThreatMap.getHighestDamagePlayer();
 
 		if (player != NULL) {
 			Locker locker(player, destructedObject);
@@ -365,7 +365,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		}
 
 		if (playerManager != NULL)
-			playerManager->disseminateExperience(destructedObject, &copyDamageMap);
+			playerManager->disseminateExperience(destructedObject, &copyThreatMap);
 
 		destructedObject->setLootOwner(player);
 

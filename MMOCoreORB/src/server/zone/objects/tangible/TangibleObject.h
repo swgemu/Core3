@@ -121,15 +121,17 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace tangible {
+namespace threat {
 
-class DamageMap;
+class ThreatMap;
 
+} // namespace threat
 } // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::tangible;
+using namespace server::zone::objects::tangible::threat;
 
 namespace server {
 namespace zone {
@@ -378,7 +380,7 @@ public:
 
 	bool isFromFactoryCrate();
 
-	DamageMap* getDamageMap();
+	ThreatMap* getThreatMap();
 
 	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
 
@@ -443,7 +445,7 @@ protected:
 
 	String craftersSerial;
 
-	Reference<DamageMap* > damageMap;
+	Reference<ThreatMap* > threatMap;
 
 	DeltaVector<ManagedReference<SceneObject* > > defenderList;
 
@@ -656,7 +658,7 @@ public:
 
 	bool isFromFactoryCrate();
 
-	DamageMap* getDamageMap();
+	ThreatMap* getThreatMap();
 
 	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
 

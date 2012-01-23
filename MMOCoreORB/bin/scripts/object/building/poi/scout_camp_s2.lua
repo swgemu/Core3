@@ -42,7 +42,8 @@
 
 
 object_building_poi_scout_camp_s2 = object_building_poi_shared_scout_camp_s2:new {
-templateType = CAMPSTRUCTURE,
+	-- Improved Camp	
+	templateType = CAMPSTRUCTURE,
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
@@ -56,13 +57,13 @@ templateType = CAMPSTRUCTURE,
 	aggroMod = 20,
 	duration = 3600,
 	radius = 18,
-	experience = 640,
+	experience = 920,
 	skillRequired = 20,
 
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
 			x = -1, z = 0, y = 3.73, 
-			ox = 0, oy = 1.47, oz = 0, ow = 1.34, 
+			ox = 0, oy = 1, oz = 0, ow = 0, 
 			cellid = -1, 
 			containmentType = -1},
 

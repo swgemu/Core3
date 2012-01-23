@@ -40,57 +40,29 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
-#ifndef TELEPORTCOMMAND_H_
-#define TELEPORTCOMMAND_H_
+package server.zone.objects.tangible.threat;
 
-#include "server/zone/objects/scene/SceneObject.h"
+include engine.core.ManagedObject;
 
-class TeleportCommand : public QueueCommand {
-public:
+import engine.log.Logger;
+import engine.core.ManagedReference;
+import system.lang.ref.Reference;
+import engine.core.Task;
+import engine.util.Observer;
+import engine.util.Observable;
+import server.zone.objects.tangible.TangibleObject;
+include server.zone.objects.scene.ObserverEventType;
 
-	TeleportCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+class ThreatMapObserver extends Observer {
+	
+	protected TangibleObject self;
+	
+	public ThreatMapObserver(TangibleObject me) {
+		self = me;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		float x, y;
-		float z = 0;
-		String zoneName = creature->getZone()->getZoneName();
-		uint64 parentID = 0;
-
-		try {
-			UnicodeTokenizer tokenizer(arguments);
-
-			x = tokenizer.getFloatToken();
-			y = tokenizer.getFloatToken();
-
-			if (tokenizer.hasMoreTokens())
-				tokenizer.getStringToken(zoneName);
-
-			if (tokenizer.hasMoreTokens()) {
-				z = tokenizer.getFloatToken();
-				parentID = tokenizer.getLongToken();
-			}
-
-			creature->setDirection(0);
-
-			creature->switchZone(zoneName, x, z, y, parentID);
-		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /teleport <x> <y> [<planet>] [<z> <parentID>]");
-		}
-
-		return SUCCESS;
-	}
-
-};
-
-#endif //TELEPORTCOMMAND_H_
+}

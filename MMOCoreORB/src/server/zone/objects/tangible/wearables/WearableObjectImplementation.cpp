@@ -8,9 +8,9 @@
 #include "WearableObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/tangible/attachment/Attachment.h"
-
 
 void WearableObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -18,7 +18,8 @@ void WearableObjectImplementation::initializeTransientMembers() {
 	setLoggingName("WearableObject");
 }
 
-void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm,
+		CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	if (socketsLeft() > 0)
@@ -36,53 +37,54 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 }
 
-void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, bool initialUpdate) {
 	/*
 	 * Values available:	Range:
 	 * sockets				0-0(novice artisan) (Don't use)
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
-
-	if(firstUpdate) {
-		//generateSockets(schematic);
-	}
-
+	if(initialUpdate)
+		generateSockets(values);
 }
 
-void WearableObjectImplementation::generateSockets(ManufactureSchematic* schematic) {
-/*
-	ManagedReference<DraftSchematic* > draftSchematic = schematic->getDraftSchematic();
-	ManagedReference<CreatureObject* > player = schematic->getCrafter();
+void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
 
-	String assemblySkill = draftSchematic->getAssemblySkill();
-	// Get assembly points from skill
+	int skill = 0;
+	int luck = 0;
 
-	if (player == NULL) {
+	if (craftingValues != NULL) {
+		ManagedReference<ManufactureSchematic*> manuSchematic = craftingValues->getManufactureSchematic();
+		if(manuSchematic != NULL) {
+			ManagedReference<DraftSchematic*> draftSchematic = manuSchematic->getDraftSchematic();
+			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter();
 
-		setMaxSockets(0);
-
-	} else {
-
-		int skill = player->getSkillMod(assemblySkill) * 2; // 0 to 250 max
-		int luck = System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck")); //0 to 250
-		int random = (System::random(750)) - 250; // -250 to 500
-
-		float roll = System::random(skill + luck + random);
-
-		int generatedCount = int(float(MAXSOCKETS * roll) / float(MAXSOCKETS * 100));
-
-		if (generatedCount > MAXSOCKETS)
-			generatedCount = MAXSOCKETS;
-		if (generatedCount < 0)
-			generatedCount = 0;
-
-		setMaxSockets(generatedCount);
+			if (player != NULL || draftSchematic != NULL) {
+				String assemblySkill = draftSchematic->getAssemblySkill();
+				skill = player->getSkillMod(assemblySkill) * 2; // 0 to 250 max
+				luck = System::random(player->getSkillMod("luck")
+						+ player->getSkillMod("force_luck"));
+			}
+		}
 	}
 
-	socketsGenerated = true;*/
+	int random = (System::random(750)) - 250; // -250 to 500
+
+	float roll = System::random(skill + luck + random);
+
+	int generatedCount = int(float(MAXSOCKETS * roll) / float(MAXSOCKETS * 100));
+
+	if (generatedCount > MAXSOCKETS)
+		generatedCount = MAXSOCKETS;
+	if (generatedCount < 0)
+		generatedCount = 0;
+
+	setMaxSockets(generatedCount);
+
+	socketsGenerated = true;
 }
 
-void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attachment* attachment) {
+void WearableObjectImplementation::applyAttachment(CreatureObject* player,
+		Attachment* attachment) {
 	if (socketsLeft() > 0) {
 		AttachmentEntry entry;
 
@@ -107,7 +109,8 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attac
 
 }
 
-void WearableObjectImplementation::setAttachmentMods(CreatureObject* player, bool remove) {
+void WearableObjectImplementation::setAttachmentMods(CreatureObject* player,
+		bool remove) {
 	if (player == NULL)
 		return;
 

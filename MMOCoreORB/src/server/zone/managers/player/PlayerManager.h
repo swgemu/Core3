@@ -177,15 +177,17 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace tangible {
+namespace threat {
 
-class DamageMap;
+class ThreatMap;
 
+} // namespace threat
 } // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::tangible;
+using namespace server::zone::objects::tangible::threat;
 
 #include "server/zone/managers/player/StartingLocationList.h"
 
@@ -292,7 +294,7 @@ public:
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
-	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
+	void disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap);
 
 	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
 
@@ -468,7 +470,7 @@ public:
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
-	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
+	void disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap);
 
 	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
 

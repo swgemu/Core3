@@ -42,6 +42,7 @@
 
 
 object_building_poi_scout_camp_s3 = object_building_poi_shared_scout_camp_s3:new {
+	-- High Quality Camp	
 	templateType = CAMPSTRUCTURE,
 	lotSize = 0,
 	baseMaintenanceRate = 0,

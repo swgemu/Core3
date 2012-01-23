@@ -89,7 +89,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+	void updateCraftingValues(CraftingValues* values, bool initialUpdate);
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
@@ -154,7 +154,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+	void updateCraftingValues(CraftingValues* values, bool initialUpdate);
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
@@ -173,7 +173,7 @@ public:
 	void setMaxSockets(int sockets);
 
 private:
-	void generateSockets(ManufactureSchematic* schematic);
+	void generateSockets(CraftingValues* craftingValues);
 
 public:
 	WeakReference<WearableObject*> _this;

@@ -47,6 +47,7 @@
 #include "server/zone/templates/tangible/FireworkObjectTemplate.h"
 #include "server/zone/templates/tangible/CampKitTemplate.h"
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
+#include "server/zone/templates/tangible/TrapTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
 #include "server/zone/templates/universe/SharedJediManagerTemplate.h"
@@ -376,6 +377,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
 	templateFactory.registerObject<VendorCreatureTemplate>(SharedObjectTemplate::VENDORCREATURE);
 	templateFactory.registerObject<CampStructureTemplate>(SharedObjectTemplate::CAMPSTRUCTURE);
+	templateFactory.registerObject<TrapTemplate>(SharedObjectTemplate::TRAP);
 }
 
 void TemplateManager::registerFunctions() {
@@ -527,6 +529,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CAMPSTRUCTURE", SharedObjectTemplate::CAMPSTRUCTURE);
 	luaTemplatesInstance->setGlobalInt("HOSPITALBUILDING", SharedObjectTemplate::HOSPITALBUILDING);
 	luaTemplatesInstance->setGlobalInt("RECREATIONBUILDING", SharedObjectTemplate::RECREATIONBUILDING);
+	luaTemplatesInstance->setGlobalInt("TRAP", SharedObjectTemplate::TRAP);
+
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

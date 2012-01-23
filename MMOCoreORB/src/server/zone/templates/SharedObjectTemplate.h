@@ -154,6 +154,7 @@ public:
 	const static int CAMPSTRUCTURE = 0x4000023;
 	const static int HOSPITALBUILDING = 0x4000024;
 	const static int RECREATIONBUILDING = 0x4000025;
+	const static int TRAP = 0x4000026;
 
 public:
 	SharedObjectTemplate();

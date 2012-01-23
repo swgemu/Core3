@@ -44,7 +44,7 @@
 #include "CreatureSetDefenderTask.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
-#include "server/zone/objects/tangible/DamageMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
 
 //#define SHOW_WALK_PATH
@@ -190,7 +190,7 @@ void AiAgentImplementation::doRecovery() {
 		damageOverTimeList.activateDots(_this);
 	}
 
-	CreatureObject* target = damageMap->getHighestThreatCreature();
+	CreatureObject* target = threatMap->getHighestThreatCreature();
 
 	if (target != NULL && !defenderList.contains(target) && !target->isDead())
 		addDefender(target);
@@ -392,7 +392,7 @@ bool AiAgentImplementation::tryRetreat() {
 
 		homeLocation.setReached(false);
 
-		damageMap->removeAll();
+		threatMap->removeAll();
 
 		patrolPoints.removeAll();
 		patrolPoints.add(homeLocation);
@@ -455,14 +455,14 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 
 	if (defender != NULL) {
 		if (defender->isCreatureObject())
-			damageMap->dropDamage(cast<CreatureObject*>(defender));
+			threatMap->dropDamage(cast<CreatureObject*>(defender));
 
 		if (aiObserverMap.size() > 0)
 			defender->dropObserver(ObserverEventType::SPECIALATTACK, aiObserverMap.get(0));
 	}
 
 	if (followObject == defender) {
-		CreatureObject* target = damageMap->getHighestThreatCreature();
+		CreatureObject* target = threatMap->getHighestThreatCreature();
 
 		if (target == NULL && defenderList.size() > 0) {
 			SceneObject* tarObj = defenderList.get(0);
@@ -489,7 +489,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 	CreatureObjectImplementation::clearCombatState(clearDefenders);
 
-	damageMap->removeAll();
+	threatMap->removeAll();
 
 	setOblivious();
 }
@@ -540,7 +540,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	stateBitmask = 0;
 	posture = CreaturePosture::UPRIGHT;
 	shockWounds = 0;
-	damageMap->removeAll();
+	threatMap->removeAll();
 
 	//Delete all loot out of inventory
 	ManagedReference<SceneObject*> inventory = getSlottedObject("inventory");
@@ -1027,7 +1027,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
-			damageMap->addDamage(player, damage);
+			threatMap->addDamage(player, damage);
 
 			if (System::random(5) == 1) {
 				setDefender(player);
