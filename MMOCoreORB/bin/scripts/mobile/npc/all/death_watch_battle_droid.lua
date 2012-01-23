@@ -30,10 +30,9 @@ death_watch_battle_droid = Creature:new {
 	"object/mobile/death_watch_battle_droid_02.iff",
 	"object/mobile/death_watch_battle_droid_03.iff"},
 	lootgroups = {},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"battle_droid_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {"defaultattack", ""}
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_battle_droid, "death_watch_battle_droid")

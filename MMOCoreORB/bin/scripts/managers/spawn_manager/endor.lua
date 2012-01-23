@@ -7,6 +7,7 @@ endor_regions = {
 	{"central_desert",0,0,0,0,1},
 	{"central_forest",0,0,0,0,1},
 	{"central_peak",0,0,0,0,1},
+	{"death_watch_bunker",-4655,4330,60,1,1},
 	{"desert_one",0,0,0,0,1},
 	{"desert_two",0,0,0,0,1},
 	{"dulok_village_1",0,0,0,0,1},
@@ -102,6 +103,79 @@ endor_regions = {
 }
 
 endor_static_spawns = {
+	{"death_watch_rescue_scientist", 1, 113.9,-68,-187,1,5996351},
+	{"death_watch_overlord", 240, 118, -64, -94, -135, 5996349},
+	{"death_watch_s_battle_droid", 240, 110, -64, -92, 150, 5996349},
+	{"death_watch_ghost", 240, 116, -64, -101, -156, 5996349},
+	{"death_watch_wraith", 240, 113, -64, -100.7, -36, 5996349},
+	{"blastromech", 240, 98, -64, -132, -90, 5996348},
+	{"death_watch_s_battle_droid", 240, 22.1, -64, -97, 110, 5996347},
+	{"death_watch_wraith", 240, 22.6, -64, -111.1, 128, 5996347},
+	{"death_watch_battle_droid", 240, 40.2, -64, -154.6, -71, 5996347},
+	{"death_watch_battle_droid", 240, 39.5, -64, -147.9, -116, 5996347},
+	{"death_watch_s_battle_droid", 240, 57, -64, -138.4, 50, 5996347},
+	{"black_sun_assassin", 240, 50.2, -64, -123.7, -73, 5996347},
+	--{"fenri_dalso", 240, 26.3, -60, -176.9, -9, 5996346},
+	{"death_watch_s_battle_droid", 240, 13.7, -54.8, -158.5, 169, 5996345},
+	{"death_watch_s_battle_droid", 240, 51.7, -52.0, -130.2, -42, 5996338},
+	{"death_watch_bloodguard", 240, 30.2, -52.0, -116.9, 171, 5996338},
+	{"death_watch_wraith", 240, 30.1, -42, -103.1, -77, 5996338},
+	{"death_watch_bloodguard", 240, 32.5, -42.0, -111.6, 65, 5996338},
+	{"death_watch_bloodguard", 240, 36.3, -32.0, -107.3, -56, 5996338},
+	{"death_watch_battle_droid", 240, 40.2, -32, -112.6, 2, 5996338},
+	{"death_watch_battle_droid", 240, 46.6, -32, -111.8, 74, 5996338},
+	{"death_watch_wraith", 240, 54.2, -32, -103.9, -82, 5996338},
+	{"death_watch_battle_droid", 240, 71.4, -32, -101.3, -86, 5996339},
+	{"death_watch_s_battle_droid", 240, 70.3, -32.0, -87.5, -116, 5996340},
+	{"death_watch_wraith", 240, 45.5, -32, -89.5, -100, 5996340},
+	{"death_watch_s_battle_droid", 240, 46.1, -32.0, -65.0, 53, 5996340},
+	{"death_watch_wraith", 240, 71.3, -32, -64.5, -126, 5996340},
+	{"death_watch_battle_droid", 240, 46.2, -32, -52.1, -107, 5996341},
+	{"death_watch_battle_droid", 240, 42.0, -32, -51.0, 114, 5996341},
+	{"death_watch_bloodguard", 240, 92.9, -32.0, -96, -127, 5996342},
+	{"death_watch_battle_droid", 240, 95.5, -32, -88.9, 13, 5996342},
+	{"death_watch_wraith", 240, 88.2, -32, -85.2, -55, 5996342},
+	{"death_watch_bloodguard", 240, 89.4, -32.0, -60.1, 71, 5996343},
+	{"black_sun_henchman", 240, 89.6, -32, -64.7, 43, 5996343},
+	{"black_sun_guard", 240, 93.5, -32, -59, -119, 5996343},
+	{"death_watch_s_battle_droid", 240, 112, -32.0, -70.2, 178, 5996344},
+	{"death_watch_ghost", 240, 109.9, -32, -83.3, 134, 5996344},
+	{"death_watch_wraith", 240, 113.5, -32, -83.9, -146, 5996344},
+	{"death_watch_s_battle_droid", 240, 6.4, -31.9, -89, -9, 5996337},
+	{"death_watch_s_battle_droid", 240, 5.9, -29.8, -66.6, -1, 5996336},
+	{"death_watch_wraith", 240, 36.5, -28, -56.7, -154, 5996336},
+	{"death_watch_wraith", 240, 36.0, -20, -92.2, -121, 5996336},
+	{"death_watch_battle_droid", 240, 24.6, -20, -91.5, -39, 5996336},
+	{"death_watch_battle_droid", 240, 20.7, -20, -80.4, -65, 5996332},
+	{"death_watch_s_battle_droid", 240, 24.2, -20, -32.3, -175, 5996333},
+	{"death_watch_ghost", 240, 25.9, -20, -37.7, -158, 5996333},
+	{"death_watch_wraith", 240, 21.5, -20, -38.3, 95, 5996333},
+	{"death_watch_battle_droid", 240, -2.5, -20, -58.9, 178, 5996332},
+	{"death_watch_bloodguard", 240, -4.0, -20.0, -46.5, -7, 5996330},
+	{"death_watch_battle_droid", 240, -26.5, -20, -41.2, -90, 5996330},
+	{"death_watch_battle_droid", 240, -57.4, -20, -40.8, -89, 5996330},
+	{"death_watch_s_battle_droid", 240, -77.8, -20, -41.1, 103, 5996330},
+	{"death_watch_wraith", 240, -4.3, -24, -113.5, -15, 5996334},
+	{"death_watch_wraith", 240, -38.3, -32, -113, -92, 5996334},
+	{"death_watch_s_battle_droid", 240, -58.5, -32, -118.7, 10, 5996334},
+	--{"klin_nif", 240, -53.1, -32, -100.9, -176, 5996334},
+	{"death_watch_s_battle_droid", 240, -44.7, -32, -99.6, 41, 5996331},
+	{"death_watch_s_battle_droid", 240, -11.4, -32, -99.0, -23, 5996331},--maybe spawned with keypad use
+	{"death_watch_s_battle_droid", 240, -12.7, -32, -56.7, -166, 5996331},
+	{"death_watch_wraith", 240, 4.3, -32, -32.1, -31, 5996335},
+	{"death_watch_bloodguard", 240, -1.4, -32.0, -34.5, 83, 5996335},
+	
+	--the 2 near entrance only spawn on not_spoken_to_boba
+	--first terminal opposite of door, direkt unter 2. querstreben der sprosse, "door control terminal"
+	--1. raum henchman und thug
+	--loot raum nach 1. raum assassin, chest ist die imperiale metallkiste an der wand links neben sofa, wurde mit /open geöffnet, andernfalls spawnt SBD
+	--großer raum nach 1. loot raum: henchman, assassin
+	--a raum: guard, thug, assassin am anfang. henchman diagonal. terminal aktivieren: bloodguard, 30-40sec, bloodguard, 30-40sec, rageon vart
+	--nebenraum von a: guard
+	--a terminal: direkt neben der tür in einer linie mit vertikalem mauersplit
+	--auf weg von A nach B zwischen den ersten 2 battle droids black sun guard
+	--im rundraum nach A zu B 1 scientist
+	--lootkiste bei klin nif mind. 2 ghost spawn durch kiste öffnen 
 }
 
 endor_badges = {
