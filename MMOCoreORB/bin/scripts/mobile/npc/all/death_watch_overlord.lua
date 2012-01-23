@@ -1,5 +1,5 @@
 death_watch_overlord = Creature:new {
-	objectName = "@mob/creature_names:Death_Watch_Overlord",
+	objectName = "@mob/creature_names:mand_bunker_dthwatch_gold",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
@@ -28,10 +28,9 @@ death_watch_overlord = Creature:new {
 
 	templates = {"object/mobile/dressed_death_watch_gold.iff"},
 	lootgroups = {},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"dark_trooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {"defaultattack", ""},
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_overlord, "death_watch_overlord")

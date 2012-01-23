@@ -1,5 +1,5 @@
 death_watch_ghost = Creature:new {
-	objectName = "@mob/creature_names:Death_Watch_Ghost",
+	objectName = "@mob/creature_names:mand_bunker_dthwatch_grey",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",

@@ -1,5 +1,5 @@
 death_watch_rescue_scientist = Creature:new {
-	objectName = "@mob/creature_names:Death_Watch_Rescue_Scientist",
+	objectName = "@mob/creature_names:death_watch_scientist",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -23,13 +23,13 @@ death_watch_rescue_scientist = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/warren_research_scientist.iff"},
 	lootgroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "death_watch_rescue_scientist_conv",
 	attacks = {
 	}
 }

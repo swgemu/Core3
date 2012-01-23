@@ -26,7 +26,9 @@ death_watch_battle_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/death_watch_battle_droid.iff"},
+	templates = {"object/mobile/death_watch_battle_droid.iff",
+	"object/mobile/death_watch_battle_droid_02.iff",
+	"object/mobile/death_watch_battle_droid_03.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

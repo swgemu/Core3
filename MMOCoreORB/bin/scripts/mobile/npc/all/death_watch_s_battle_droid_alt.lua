@@ -1,4 +1,4 @@
-death_watch_s_battle_droid = Creature:new {
+death_watch_s_battle_droid_alt = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_super_battle_droid",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
@@ -26,10 +26,7 @@ death_watch_s_battle_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = NONE,
 
-	templates = {"object/mobile/super_battle_droid.iff",
-	"object/mobile/death_watch_super_battle_droid.iff",
-	"object/mobile/death_watch_super_battle_droid_02.iff",
-	"object/mobile/death_watch_super_battle_droid_03.iff"},
+	templates = {"object/mobile/death_watch_s_battle_droid.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
@@ -37,4 +34,4 @@ death_watch_s_battle_droid = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(death_watch_s_battle_droid, "death_watch_s_battle_droid")
+CreatureTemplates:addCreatureTemplate(death_watch_s_battle_droid_alt, "death_watch_s_battle_droid_alt")
