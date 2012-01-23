@@ -336,6 +336,8 @@ public:
 
 	void addPlayer(CreatureObject* player);
 
+	String getBadgeKey(int idx);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -344,6 +346,8 @@ protected:
 	PlayerManager(DummyConstructorParameter* param);
 
 	virtual ~PlayerManager();
+
+	String _return_getBadgeKey;
 
 	friend class PlayerManagerHelper;
 };
@@ -508,6 +512,8 @@ public:
 
 	void addPlayer(CreatureObject* player);
 
+	String getBadgeKey(int idx);
+
 	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
@@ -648,6 +654,8 @@ public:
 	void generateHologrindSkills(CreatureObject* player);
 
 	void addPlayer(CreatureObject* player);
+
+	String getBadgeKey(int idx);
 
 protected:
 	String _param0_kickUser__String_String_;

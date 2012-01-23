@@ -288,6 +288,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/CampTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/BankTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/components/HologrindHolocronMenuComponent.cpp \
 		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
 		server/zone/objects/scene/components/ObjectMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerZoneComponent.cpp \

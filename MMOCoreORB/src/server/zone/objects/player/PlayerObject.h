@@ -279,6 +279,8 @@ using namespace server::zone::objects::player::sui;
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+#include "system/util/Vector.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -736,9 +738,9 @@ public:
 
 	void setInvisible(bool invis);
 
-	void setHologrindMask(unsigned int mask);
+	void addHologrindProfession(byte prof);
 
-	unsigned int getHologrindMask();
+	Vector<byte>* getHologrindProfessions();
 
 	byte getRaceID();
 
@@ -904,7 +906,7 @@ protected:
 
 	bool invisible;
 
-	unsigned int holoMask;
+	Vector<byte> hologrindProfessions;
 
 	unsigned int clientLastMovementStamp;
 
@@ -1359,9 +1361,9 @@ public:
 
 	void setInvisible(bool invis);
 
-	void setHologrindMask(unsigned int mask);
+	void addHologrindProfession(byte prof);
 
-	unsigned int getHologrindMask();
+	Vector<byte>* getHologrindProfessions();
 
 	byte getRaceID();
 
@@ -1764,9 +1766,7 @@ public:
 
 	void setInvisible(bool invis);
 
-	void setHologrindMask(unsigned int mask);
-
-	unsigned int getHologrindMask();
+	void addHologrindProfession(byte prof);
 
 	byte getRaceID();
 

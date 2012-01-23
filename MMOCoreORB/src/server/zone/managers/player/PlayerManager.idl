@@ -239,4 +239,6 @@ class PlayerManager extends Observer implements Logger {
 	public void addPlayer(CreatureObject player) {
 		nameMap.put(player);
 	}
+	
+	public native string getBadgeKey(int idx);
 }

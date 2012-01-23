@@ -483,8 +483,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 		playerManager->generateHologrindSkills(playerCreature);
 
-		//generateHologrindProfessions(playerCreature);
-
 		ghost->setBiography(bio);
 		ghost->setRaceID(raceID);
 	}

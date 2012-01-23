@@ -83,6 +83,7 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
+include system.util.Vector;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -217,7 +218,8 @@ class PlayerObject extends IntangibleObject {
 	
 	protected boolean invisible; //TODO: Could we add this to the states mask as an unused state?
 	
-	protected unsigned int holoMask;
+	@dereferenced
+	protected Vector<byte> hologrindProfessions;
 	
 	protected unsigned int clientLastMovementStamp;
 	
@@ -272,8 +274,6 @@ class PlayerObject extends IntangibleObject {
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
-		
-		holoMask = 0;
 
 		accountID = 0;		
 		
@@ -1203,12 +1203,13 @@ class PlayerObject extends IntangibleObject {
 		invisible = invis;
 	}
 	
-	public void setHologrindMask(unsigned int mask) {
-		holoMask = mask;
+	public void addHologrindProfession(byte prof) {
+		hologrindProfessions.add(prof);
 	}
 	
-	public unsigned int getHologrindMask() {
-		return holoMask;
+	@local
+	public Vector<byte> getHologrindProfessions() {
+		return hologrindProfessions;
 	}
 	
 	public byte getRaceID() {

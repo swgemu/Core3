@@ -2423,13 +2423,19 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
 void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	uint32 holomask = 1 << (System::random(4) + 1);
-	holomask |= (1 << (System::random(4) + 1));
-	holomask |= (1 << (System::random(4) + 1));
-	holomask |= (1 << (System::random(4) + 1));
-	holomask |= (1 << (System::random(4) + 1));
+	SortedVector<uint8> profs;
+	//Fill the total profs array.
+	for (int i = 0; i < 32; ++i)
+		profs.put(i + 1);
 
-	ghost->setHologrindMask(holomask);
+	uint32 holomask = 0;
+
+	uint8 totalProfsNeeded = System::random(7) + 5; //5-12 professions according to insider info.
+
+	for (int i = 0; i < totalProfsNeeded; ++i) {
+		uint8 prof = profs.remove(System::random(profs.size() - 1));
+		ghost->addHologrindProfession(prof);
+	}
 }
 
 void PlayerManagerImplementation::sendStartingLocationsTo(CreatureObject* player) {
@@ -2536,4 +2542,10 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 		finalLevel = 25;
 
 	return finalLevel;
+}
+
+String PlayerManagerImplementation::getBadgeKey(int idx) {
+	VectorMapEntry<int, String> entry = badgeMap.elementAt(idx);
+
+	return entry.getValue();
 }

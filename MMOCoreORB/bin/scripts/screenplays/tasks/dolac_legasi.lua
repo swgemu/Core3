@@ -56,8 +56,11 @@ end
 
 function dolac_legasi_screenplay:spawnMobiles()
 	local pDolacLegasi = spawnMobile("dathomir", "dolac_legasi", 2.3, 0.1, -3.6, 5335776)
-	local dolacLegasi = LuaSceneObject(pDolacLegasi)
-	dolacLegasi:setDirectionalHeading(-96)
+	
+	if (pDolacLegasi ~= nil) then
+		local dolacLegasi = LuaSceneObject(pDolacLegasi)
+		dolacLegasi:setDirectionalHeading(-96)
+	end
 end
 
 --------------------------------------
