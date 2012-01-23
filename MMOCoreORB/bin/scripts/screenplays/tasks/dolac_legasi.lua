@@ -28,9 +28,9 @@ function dolac_legasi_screenplay:start()
 end
 
 function dolac_legasi_screenplay:spawnActiveAreas()
-	local pActiveArea1 = spawnSceneObject("dathomir", "object/active_area.iff", self:loc.prisoner.x, self:loc.prisoner.z, self:loc.prisoner.y, 0, 0, 0, 0, 0)
-	local pActiveArea2 = spawnSceneObject("dathomir", "object/active_area.iff", self:loc.djk.x, self:loc.djk.z, self:loc.djk.y, 0, 0, 0, 0, 0)
-	local pActiveArea3 = spawnSceneObject("dathomir", "object/active_area.iff", self:loc.djm.x, self:loc.djm.z, self:loc.djm.y, 0, 0, 0, 0, 0)
+	local pActiveArea1 = spawnSceneObject("dathomir", "object/active_area.iff", self.loc.prisoner.x, self.loc.prisoner.z, self.loc.prisoner.y, 0, 0, 0, 0, 0)
+	local pActiveArea2 = spawnSceneObject("dathomir", "object/active_area.iff", self.loc.djk.x, self.loc.djk.z, self.loc.djk.y, 0, 0, 0, 0, 0)
+	local pActiveArea3 = spawnSceneObject("dathomir", "object/active_area.iff", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0, 0, 0, 0, 0)
 	
 	if (pActiveArea1 ~= nil) then
 		local activeArea = LuaActiveArea(pActiveArea1)
@@ -133,14 +133,14 @@ function dolac_legasi_screenplay:notifyEnteredArea1(pActiveArea, pMovingObject)
 		local player = LuaCreatureObject(pMovingObject)
 		local objectID = player:getObjectID()
 		
-		if (self:hasState(player, states.quest1.started)) and (not self:hasState(player, states.quest1.escorting)) then
+		if (self:hasState(player, self.states.quest1.started)) and (not self:hasState(player, self.states.quest1.escorting)) then
 			if (not self:hasSpawned(objectID, "prisoner")) then
 				self:setSpawned(objectID, "prisoner")
 				
-				local pPrisoner = spawnMobile("dathomir", "dolac_escaped_prisoner", self:loc.prisoner.x, self:loc.prisoner.z, self:loc.prisoner.y, 0)
+				local pPrisoner = spawnMobile("dathomir", "dolac_escaped_prisoner", self.loc.prisoner.x, self.loc.prisoner.z, self.loc.prisoner.y, 0)
 				local prisoner = LuaSceneObject(pPrisoner)
 				
-				local pTamer = spawnMobile("dathomir", "nightsister_rancor_tamer", self:loc.prisoner.x - 10, self:loc.prisoner.z, self:loc.prisoner.y + 3, 0)
+				local pTamer = spawnMobile("dathomir", "nightsister_rancor_tamer", self.loc.prisoner.x - 10, self.loc.prisoner.z, self.loc.prisoner.y + 3, 0)
 				local tamer = LuaSceneObject(pTamer)
 				
 				self:writeObjectData(objectID, "prisoner", prisoner:getObjectID())
@@ -164,11 +164,11 @@ function dolac_legasi_screenplay:notifyEnteredArea2(pActiveArea, pMovingObject)
 		local player = LuaCreatureObject(pMovingObject)
 		local objectID = player:getObjectID()
 	
-		if (self:hasState(player, states.quest2.started)) and (not self:hasState(player, states.quest2.defeated)) then
+		if (self:hasState(player, self.states.quest2.started)) and (not self:hasState(player, self.states.quest2.defeated)) then
 			if (not self:hasSpawned(objectID, "shadowstone")) then
 				self:setSpawned(objectID, "shadowstone")
 				
-				local pDjk = spawnMobile("dathomir", "dark_jedi_knight", self:loc.djk.x, self:loc.djk.z, self:loc.djk.y, 0)
+				local pDjk = spawnMobile("dathomir", "dark_jedi_knight", self.loc.djk.x, self.loc.djk.z, self.loc.djk.y, 0)
 				local djk = LuaSceneObject(pDjk)
 				
 				self:writeObjectData(objectID, "djk", djk:getObjectID())
@@ -189,12 +189,12 @@ function dolac_legasi_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
 		local player = LuaCreatureObject(pMovingObject)
 		local objectID = player:getObjectID()
 		
-		if (self:hasState(player, states.quest3.started)) and (not self:hasState(player, states.quest3.completed)) then
-			if (not self:hasState(player, states.quest3.defeated1)) then
+		if (self:hasState(player, self.states.quest3.started)) and (not self:hasState(player, self.states.quest3.completed)) then
+			if (not self:hasState(player, self.states.quest3.defeated1)) then
 				if (not self:hasSpawned(objectID, "spellweaver")) then
 					self:setSpawned(objectID, "spellweaver")
 					
-					local pSpellweaver = spawnMobile("dathomir", "nightsister_spell_weaver", self:loc.djm.x, self:loc.djm.z, self:loc.djm.y, 0)
+					local pSpellweaver = spawnMobile("dathomir", "nightsister_spell_weaver", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
 					local spellweaver = LuaSceneObject(pSpellweaver)
 					
 					if (pSpellweaver ~= nil) then
@@ -204,12 +204,12 @@ function dolac_legasi_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
 					end
 				end
 				
-			elseif (not self:hasState(player, states.quest3.defeated2)) then
+			elseif (not self:hasState(player, self.states.quest3.defeated2)) then
 				if (not self:hasSpawned(objectID, "protectors")) then
 					self:setSpawned(objectID, "protectors")
 					
-					local pProtector1 = spawnMobile("dathomir", "nightsister_protector", self:loc.djm.x, self:loc.djm.z, self:loc.djm.y, 0)
-					local pProtector2 = spawnMobile("dathomir", "nightsister_protector", self:loc.djm.x, self:loc.djm.z, self:loc.djm.y, 0)
+					local pProtector1 = spawnMobile("dathomir", "nightsister_protector", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
+					local pProtector2 = spawnMobile("dathomir", "nightsister_protector", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
 					local protector1 = LuaSceneObject(pProtector1)
 					local protector2 = LuaSceneObject(pProtector2)
 					
@@ -223,11 +223,11 @@ function dolac_legasi_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
 					createObserver(OBJECTDESTRUCTION, "dolac_legasi_screenplay", "notifyDefeatedProtector", pProtector1)
 					createObserver(OBJECTDESTRUCTION, "dolac_legasi_screenplay", "notifyDefeatedProtector", pProtector2)
 				end
-			elseif (not self:hasState(player, states.quest3.defeated3)) then
+			elseif (not self:hasState(player, self.states.quest3.defeated3)) then
 				if (not self:hasSpawned(objectID, "djm")) then
 					self:setSpawned(objectID, "djm")
 					
-					local pDjm = spawnMobile("dathomir", "dark_jedi_master", self:loc.djm.x, self:loc.djm.z, self:loc.djm.y, 0)
+					local pDjm = spawnMobile("dathomir", "dark_jedi_master", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
 					local djm = LuaSceneObject(pDjm)
 					
 					self:writeObjectData(objectID, "djm", djm:getObjectID())
@@ -289,7 +289,7 @@ function dolac_legasi_screenplay:notifyDefeatedKnight(pVictim, pAttacker)
 	--Incase the server resets, we need to keep the object id of the sith altar persistent, to avoid having to loop through inventory later.
 	writeScreenPlayData(pOwner, "dolac_legasi", "sithAltarID", sithAltar:getObjectID())
 	
-	self:setState(ownerCreature, states.quest2.defeated)
+	self:setState(ownerCreature, self.states.quest2.defeated)
 	
 	return 1
 end
@@ -305,7 +305,7 @@ function dolac_legasi_screenplay:notifyDefeatedSpellweaver(pVictim, pAttacker)
 	
 	local ownerCreature = LuaCreatureObject(pOwner)
 	
-	self:setState(ownerCreature, states.quest3.defeated1)
+	self:setState(ownerCreature, self.states.quest3.defeated1)
 	
 	self:deleteObjectData(objectID, "spellweaver")
 	self:deleteObjectData(victim:getObjectID(), "questOwnerID")
@@ -324,7 +324,7 @@ function dolac_legasi_screenplay:notifyDefeatedProtector(pVictim, pAttacker)
 	
 	local ownerCreature = LuaCreatureObject(pOwner)
 	
-	self:setState(ownerCreature, states.quest3.defeated2)
+	self:setState(ownerCreature, self.states.quest3.defeated2)
 	
 	local internalID = self:readObjectData(victim:getObjectID(), "internalID")
 	self:deleteObjectData(objectID, internalID)
@@ -345,7 +345,7 @@ function dolac_legasi_screenplay:notifyDefeatedMaster(pVictim, pAttacker)
 	
 	local ownerCreature = LuaCreatureObject(pOwner)
 	
-	self:setState(ownerCreature, states.quest3.defeated3)
+	self:setState(ownerCreature, self.states.quest3.defeated3)
 	
 	self:deleteObjectData(objectID, "djm")
 	self:deleteObjectData(victim:getObjectID(), "questOwnerID")
@@ -371,7 +371,7 @@ function dolac_legasi_screenplay:notifyPrisonerBark(pPrisoner, pMovingObject)
 		local player = LuaCreatureObject(pMovingObject)
 		local objectID = player:getObjectID()
 			
-		if (self:hasState(player, states.quest1.started)) and (not self:hasState(player, states.quest1.escorted)) then
+		if (self:hasState(player, self.states.quest1.started)) and (not self:hasState(player, self.states.quest1.escorted)) then
 			if (self:hasSpawned(objectID, "prisoner")) then
 				if (self:readObjectData(objectID, "prisoner_spoken") ~= 1) then
 					spatialChat(pPrisoner, "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:npc_takeme_1") --Can you see them? The wraiths? There is no escaping them! They will always be there!
@@ -399,7 +399,7 @@ function dolac_legasi_screenplay:notifyEscortStarted(pPrisoner, pPlayer)
 	
 	prisonerAi:setFollowObject(pPlayer)
 	
-	self:setState(player, states.quest1.escorting)
+	self:setState(player, self.states.quest1.escorting)
 	
 	return 1
 end
@@ -508,7 +508,7 @@ function dolac_legasi_screenplay:rewardQuest1(player, playerObject)
 	player:addCashCredits(350, true)
 	playerObject:increaseFactionStanding("imperial", 10)
 	
-	self:setState(player, states.quest1.completed)
+	self:setState(player, self.states.quest1.completed)
 end
 
 function dolac_legasi_screenplay:rewardQuest2(player, playerObject, pSithAltar)
@@ -517,7 +517,7 @@ function dolac_legasi_screenplay:rewardQuest2(player, playerObject, pSithAltar)
 	player:addCashCredits(450, true)
 	playerObject:increaseFactionStanding("imperial", 10)
 	
-	self:setState(player, states.quest2.completed)
+	self:setState(player, self.states.quest2.completed)
 end
 
 function dolac_legasi_screenplay:rewardQuest3(player, playerObject)
@@ -528,7 +528,7 @@ function dolac_legasi_screenplay:rewardQuest3(player, playerObject)
 	
 	clearScreenPlayData(player, "dolac_legasi")
 	
-	self:setState(player, states.quest3.completed)
+	self:setState(player, self.states.quest3.completed)
 end
 
 
@@ -567,25 +567,25 @@ function dolac_legasi_handler:beginQuest1(player)
 	local pPlayerObject = player:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 
-	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_1", "@@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_1", dolac_legasi_screenplay:loc.prisoner.x, dolac_legasi_screenplay:loc.prisoner.y, WAYPOINTBLUE, true, true)
+	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_1", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_1", dolac_legasi_screenplay.loc.prisoner.x, dolac_legasi_screenplay.loc.prisoner.y, WAYPOINTBLUE, true, true)
 
-	dolac_legasi_screenplay:setState(player, states.quest1.started)
+	dolac_legasi_screenplay:setState(player, dolac_legasi_screenplay.states.quest1.started)
 end
 
 function dolac_legasi_handler:beginQuest2(player)
 	local pPlayerObject = player:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 
-	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_2", "@@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_2", dolac_legasi_screenplay:loc.djk.x, dolac_legasi_screenplay:loc.djk.y, WAYPOINTBLUE, true, true)
-	dolac_legasi_screenplay:setState(player, states.quest2.started)
+	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_2", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_2", dolac_legasi_screenplay.loc.djk.x, dolac_legasi_screenplay.loc.djk.y, WAYPOINTBLUE, true, true)
+	dolac_legasi_screenplay:setState(player, dolac_legasi_screenplay.states.quest2.started)
 end
 
 function dolac_legasi_handler:beginQuest3(player)
 	local pPlayerObject = player:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 
-	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_3", "@@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_3", dolac_legasi_screenplay:loc.djm.x, dolac_legasi_screenplay:loc.djm.y, WAYPOINTBLUE, true, true)
-	dolac_legasi_screenplay:setState(player, states.quest3.started)
+	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_3", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_3", dolac_legasi_screenplay.loc.djm.x, dolac_legasi_screenplay.loc.djm.y, WAYPOINTBLUE, true, true)
+	dolac_legasi_screenplay:setState(player, dolac_legasi_screenplay.states.quest3.started)
 end
 
 function dolac_legasi_handler:resetQuest(player)
@@ -606,23 +606,23 @@ function dolac_legasi_handler:getInitialScreen(pPlayer, npc, pConversationTempla
 	
 	local playerObject = LuaPlayerObject(pPlayerObject)
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest3.completed), "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest3.completed, "dolac_legasi") == 1) then
 		return convoTemplate:getScreen("nextQuest")
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest3.defeated3), "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest3.defeated3, "dolac_legasi") == 1) then
 		return convoTemplate:getScreen("npc_reward_3")
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest3.started), "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest3.started, "dolac_legasi") == 1) then
 		return convoTemplate:getScreen("npc_work_3") --Already working for me.
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest2.completed, "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest2.completed, "dolac_legasi") == 1) then
 		return convoTemplate:getScreen("npc_1_3")
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest2.defeated, "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest2.defeated, "dolac_legasi") == 1) then
 		--At this point, he should have the Sith Altar. Check his inventory.
 		local sithAltarID = readScreenPlayData(pPlayer, "dolac_legasi", "sithAltarID")
 		local pSithAltar = inventory:getContainerObjectById(sithAltarID)
@@ -634,21 +634,21 @@ function dolac_legasi_handler:getInitialScreen(pPlayer, npc, pConversationTempla
 		end
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest2.started, "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest2.started, "dolac_legasi") == 1) then
 		return convoTemplate:getScreen("npc_work_2") --Already working for me.
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest1.completed, "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest1.completed, "dolac_legasi") == 1) then
 		return convoTemplate:getScreen("npc_1_2")
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest1.escorting, "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest1.escorting, "dolac_legasi") == 1) then
 		dolac_legasi_screenplay:rewardQuest1(conversingPlayer, playerObject)
 	
 		return convoTemplate:getScreen("npc_reward_1")
 	end
 	
-	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay:states.quest1.started, "dolac_legasi") == 1) then
+	if (conversingPlayer:hasScreenPlayState(dolac_legasi_screenplay.states.quest1.started, "dolac_legasi") == 1) then
 		return convoTemplate:getScreen("npc_work_1") --Already working for me.
 	end
 	
