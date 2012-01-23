@@ -259,13 +259,13 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	--spawn stormtroopers
 	targetCellObject:_setObject(buildingObject:getCell(1))
 	
-	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", -2.4, 0, -17.4, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 0, -2.4, 0, -17.4, 0, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	--spawnedSceneObject:updateDirection(1, 0, 0, 0)
 	
-	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 2.5, 0, -17.4, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 0, 2.5, 0, -17.4, 0, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	--spawnedSceneObject:updateDirection(1, 0, 0, 0)
 	
 	
 	-- ** ROOM 2: Conversations & Items **
@@ -279,9 +279,9 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	--spawn commoners
 	--shared_dressed_commoner_fat_zabrak_male_02.iff says refugee1 darn_empire
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 30.2, 0, -43.1, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, 30.2, 0, -43.1, -11.81, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.9945, -0.103, 0, 0)
+	--spawnedSceneObject:updateDirection(0.9945, -0.103, 0, 0)
 	
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "refugees", spawnedPointer)	
@@ -291,28 +291,28 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	writeData(creature:getObjectID() .. ":tutorial:refugee1", spawnedSceneObject:getObjectID())
 	
 	--shared_dressed_commoner_naboo_human_female_04.iff says leave_me_alone
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 28.6, 0, -42.9, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, 28.6, 0, -42.9, -66.58, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.835, 0, 0.549, 0)
+	--spawnedSceneObject:updateDirection(0.835, 0, 0.549, 0)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 1)
 	writeData(creature:getObjectID() .. ":tutorial:refugee2", spawnedSceneObject:getObjectID())
 	
 	--shared_dressed_commoner_naboo_human_male_01.iff says 
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 25, 0, -43.5, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, 25, 0, -43.5, -28.87, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.97, 0, 0.249, 0)
+	--spawnedSceneObject:updateDirection(0.97, 0, 0.249, 0)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 1)
 	writeData(creature:getObjectID() .. ":tutorial:refugee3", spawnedSceneObject:getObjectID())
 
 	--spawn officer
-	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_1", 26.7, 0, -31.9, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_1", 0, 26.7, 0, -31.9, -90.47, targetCellObject:getObjectID())
 	
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer1", spawnedPointer) --move observer
 	--end
 	
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(-0.71, 0, 0.71, 0)
+	--spawnedSceneObject:updateDirection(-0.71, 0, 0.71, 0)
 	
 	writeData(creature:getObjectID() .. ":tutorial:officer1", spawnedSceneObject:getObjectID())
 	
@@ -349,19 +349,19 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(3))
 	
 	--spawn second officer banker
-	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_2", 44, 0, 2.2, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_2", 0, 44, 0, 2.2, 130.53, targetCellObject:getObjectID())
 	
 	createObserver(STARTCONVERSATION, "TutorialScreenPlay", "bankerStartConversation", spawnedPointer)
 	
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.418, 0, 0.908, 0)
+	--spawnedSceneObject:updateDirection(0.418, 0, 0.908, 0)
 	writeData(creature:getObjectID() .. ":tutorial:officer2", spawnedSceneObject:getObjectID())
 	
 	--spawn commoner
 	--shared_dressed_commoner_naboo_bothan_male_02.iff
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 51.1, 0, -16, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, 51.1, 0, -16, -88.21, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.718, 0, -0.696, 0)
+	--spawnedSceneObject:updateDirection(0.718, 0, -0.696, 0)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 7)
 	
 	--spawn bank
@@ -385,52 +385,52 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	-- ROOM5 State
 	targetCellObject:_setObject(buildingObject:getCell(4))
 	--shared_dressed_commoner_old_human_female_02.iff
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_1", 51.1, -7, -51, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_1", 0, 51.1, -7, -51, -107.65, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cdistance", 7)
 	
-	spawnedSceneObject:updateDirection(0.589, 0, -0.807, 0)
+	--spawnedSceneObject:updateDirection(0.589, 0, -0.807, 0)
 	
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "commoner_spatial", spawnedPointer)
 	--end
 	
 	--shared_dressed_commoner_old_zabrak_male_02.iff
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_2", 51.5, -7, -53, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_2", 0, 51.5, -7, -53, -50.66, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 2)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cdistance", 7)
 	
-	spawnedSceneObject:updateDirection(0.903, 0, -0.428, 0)
+	--spawnedSceneObject:updateDirection(0.903, 0, -0.428, 0)
 	
 	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "commoner_spatial", spawnedPointer)
 
 
 	--shared_dressed_commoner_naboo_moncal_male_02.iff
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_3", 47.4, -7, -58.7, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_3", 0, 47.4, -7, -58.7, -71.18, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 3)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cdistance", 6)
 	
-	spawnedSceneObject:updateDirection(0.813, 0, -0.582, 0)
+	--spawnedSceneObject:updateDirection(0.813, 0, -0.582, 0)
 	
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "commoner_spatial", spawnedPointer)
 	--end
 	
 	--shared_dressed_stormtrooper_m.iff (-51.49?)
-	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 26.2, -7, -51.9, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 0, 26.2, -7, -51.9, 180, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0, 0, 1, 0)
+	--spawnedSceneObject:updateDirection(0, 0, 1, 0)
 	
 	--shared_dressed_stormtrooper_m.iff
-	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 26.2, -7, -61.3, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "stormtrooper_filler_tutorial", 0, 26.2, -7, -61.3, 0, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	--spawnedSceneObject:updateDirection(1, 0, 0, 0)
 		
 	--** ROOM 5: Cloning & Insurance **
 	-- ROOM6 STATE
@@ -439,7 +439,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(5))
 	
 	--spawn q-3p0
-	spawnedPointer = spawnMobile("tutorial", "protocol_droid_3po_silver", 11.9, -7, -56.4, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "protocol_droid_3po_silver", 0, 11.9, -7, -56.4, 90, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 
 	--if state == 0 then
@@ -447,7 +447,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	--end
 	
 	writeData(creature:getObjectID() .. ":tutorial:protocol", spawnedSceneObject:getObjectID())
-	spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
+	--spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
 	
 	--spawn clone terminal
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_cloning.iff", 3, -7, -56.5, targetCellObject:getObjectID(), 0.707, 0, 0.707, 0)
@@ -471,7 +471,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	--spawn npc panic 1
 	--shared_dressed_commoner_tatooine_bith_male_05.iff
-	spawnedPointer = spawnMobile("tutorial", "panic_npc_1", -3.3, -7, -75.6, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "panic_npc_1", 0, -3.3, -7, -75.6, 0, targetCellObject:getObjectID())
 	
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "panic1MoveObserver", spawnedPointer) --move observer
@@ -483,10 +483,10 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	--state = creature:hasScreenPlayState(262144, "tutorial")
 	
 	targetCellObject:_setObject(buildingObject:getCell(6))
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 20.1, -4, -81.5, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner", 0, 20.1, -4, -81.5, -132.74, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	writeData(creature:getObjectID() .. ":tutorial:nervous1npc", spawnedSceneObject:getObjectID())
-	spawnedSceneObject:updateDirection(0.4005, 0, -0.916, 0)
+	--spawnedSceneObject:updateDirection(0.4005, 0, -0.916, 0)
 
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "nervous1MoveObserver", spawnedPointer) 
@@ -499,7 +499,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(7))
 
 	--spawn officer3
-	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_3", 38.1, -7, -79.7, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_3", 0, 38.1, -7, -79.7, 0, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	writeData(creature:getObjectID() .. ":tutorial:officer3flag", 0)
 	writeData(creature:getObjectID() .. ":tutorial:officer3", spawnedSceneObject:getObjectID())
@@ -531,9 +531,9 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(8))
 
 	--spawn retard to kill
-	spawnedPointer = spawnMobile("tutorial", "bandit_tutorial_1", 38.1, -5.9, -113.4, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "bandit_tutorial_1", 0, 38.1, -5.9, -113.4, 90, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
+	--spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
 	
 	writeData(creature:getObjectID() .. ":tutorial:banditflag", 0)
 	writeData(creature:getObjectID() .. ":tutorial:banditdead", 0)
@@ -554,49 +554,49 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(9))	
 	
 	--spawn another commoner: celeb_guy1
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", -1, -4.2, -118.2, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, -1, -4.2, -118.2, 47.08, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.838, 0.545, 0, 0)
+	--spawnedSceneObject:updateDirection(0.838, 0.545, 0, 0)
 	writeData(creature:getObjectID() .. ":tutorial:commoner91", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 2)
 	
 	--spawn another commoner: celeb_guy4
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 1.4, -4.2, -132, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, 1.4, -4.2, -132, 27.88, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.97, 0.241, 0, 0)
+	--spawnedSceneObject:updateDirection(0.97, 0.241, 0, 0)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 3)
 
 	--spawn another commoner: celeb_guy3	
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 13.1, -4.2, -119.8, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, 13.1, -4.2, -119.8, -43.78, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.927, 0, -0.373, 0)	
+	--spawnedSceneObject:updateDirection(0.927, 0, -0.373, 0)	
 	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
 	spawnedCreatureObject:setState(STATESITTINGONCHAIR)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 4)
 	
 	--spawn another commoner: celeb_guy2
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 13.145, -4.2, -106.292, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, 13.145, -4.2, -106.292, -128.18, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.436, 0, -0.899, 0)
+	--spawnedSceneObject:updateDirection(0.436, 0, -0.899, 0)
 	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
 	spawnedCreatureObject:setState(STATESITTINGONCHAIR)
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 5)
 	
 	--spawn another commoner: celeb_guy5
-	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", -0.8, -4.2, -108.2, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "tutorial_commoner_talking", 0, -0.8, -4.2, -108.2, 123.09, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.476, 0, 0.879, 0)
+	--spawnedSceneObject:updateDirection(0.476, 0, 0.879, 0)
 	writeData(creature:getObjectID() .. ":tutorial:commoner92", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":tutorial:cid", 6)
 	
 	--imperial officer 4
-	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_4", 2.1, -4.2, -123.8, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_4", 0, 2.1, -4.2, -123.8, 27.88, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	writeData(creature:getObjectID() .. ":tutorial:officer4", spawnedSceneObject:getObjectID())
 	
 	writeData(creature:getObjectID() .. ":tutorial:officer4flag", 0)
 	
-	spawnedSceneObject:updateDirection(0.97, 0, 0.241, 0)
+	--spawnedSceneObject:updateDirection(0.97, 0, 0.241, 0)
 	
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer4", spawnedPointer) --move observer
@@ -639,7 +639,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 		writeData(creature:getObjectID() .. ":tutorial:skill", 5)
 	end
 	
-	spawnedPointer = spawnMobile("tutorial", trainerTemplate, 7.1, -4.2, -128.2, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", trainerTemplate, 0, 7.1, -4.2, -128.2, -25.41, targetCellObject:getObjectID())
 	
 	--if state == 0 then
 		createObserver(STOPCONVERSATION, "TutorialScreenPlay", "stopSkillTrainer", spawnedPointer)
@@ -647,7 +647,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	spawnedSceneObject:_setObject(spawnedPointer)
 	writeData(creature:getObjectID() .. ":tutorial:skillTrainer", spawnedSceneObject:getObjectID())
-	spawnedSceneObject:updateDirection(0.975, 0, -0.220, 0)
+	--spawnedSceneObject:updateDirection(0.975, 0, -0.220, 0)
 
 	--** ROOM 10: Missions **
 	-- ROOM11 STATE
@@ -655,10 +655,10 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	targetCellObject:_setObject(buildingObject:getCell(10))
 	-- officer 5: mission
-	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_5", 19.5, -4.2, -146, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_5", 0, 19.5, -4.2, -146, 0, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	writeData(creature:getObjectID() .. ":tutorial:officer5", spawnedSceneObject:getObjectID())
-	spawnedSceneObject:updateDirection(1, 0, 0, 0)
+	--spawnedSceneObject:updateDirection(1, 0, 0, 0)
 	writeData(creature:getObjectID() .. ":tutorial:officer5flag", 0)
 	writeData(player:getObjectID() .. ":tutorial:off5ready", 0)
 	
@@ -678,14 +678,14 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(11))
 	
 	-- officer 6: quartermaster
-	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_6", 31.3, -4.2, -164, targetCellObject:getObjectID())
+	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_6", 0, 31.3, -4.2, -164, 11.82, targetCellObject:getObjectID())
 	
 	--if state == 0 then
 		createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer6", spawnedPointer) --move observer
 	--end
 	
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:updateDirection(0.994, 0.103, 0, 0)
+	--spawnedSceneObject:updateDirection(0.994, 0.103, 0, 0)
 	spawnedCreatureObject = LuaCreatureObject(spawnedPointer)
 	spawnedCreatureObject:setCustomObjectName("The Quartermaster")
 	writeData(creature:getObjectID() .. ":tutorial:officer6", spawnedSceneObject:getObjectID())

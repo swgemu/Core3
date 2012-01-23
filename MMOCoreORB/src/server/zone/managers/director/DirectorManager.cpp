@@ -461,13 +461,14 @@ int DirectorManager::setAuthorizationState(lua_State* L) {
 }
 
 int DirectorManager::spawnMobile(lua_State* L) {
-	//int zoneid = lua_tonumber(L, -4);
 	uint64 parentID = lua_tointeger(L, -1);
-	float y = lua_tonumber(L, -2);
-	float z = lua_tonumber(L, -3);
-	float x = lua_tonumber(L, -4);
-	String mobile = lua_tostring(L, -5);
-	String zoneid = lua_tostring(L, -6);
+	float heading = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -3);
+	float z = lua_tonumber(L, -4);
+	float x = lua_tonumber(L, -5);
+	int respawnTimer = lua_tointeger(L, -6);
+	String mobile = lua_tostring(L, -7);
+	String zoneid = lua_tostring(L, -8);
 
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 
@@ -486,8 +487,16 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID);
 
-	if (creature == NULL)
+	if (creature == NULL) {
 		instance()->error("coult not spawn mobile " + mobile);
+	} else {
+		creature->setDirection(Math::deg2rad(heading));
+		
+		if (creature->isAiAgent()) {
+			AiAgent* ai = cast<AiAgent*>(creature);
+			ai->setRespawnTimer(respawnTimer);
+		}
+	}
 
 	lua_pushlightuserdata(L, creature);
 

@@ -55,12 +55,7 @@ function dolac_legasi_screenplay:spawnActiveAreas()
 end
 
 function dolac_legasi_screenplay:spawnMobiles()
-	local pDolacLegasi = spawnMobile("dathomir", "dolac_legasi", 2.3, 0.1, -3.6, 5335776)
-	
-	if (pDolacLegasi ~= nil) then
-		local dolacLegasi = LuaSceneObject(pDolacLegasi)
-		dolacLegasi:setDirectionalHeading(-96)
-	end
+	spawnMobile("dathomir", "dolac_legasi", 1, 2.3, 0.1, -3.6, -96, 5335776)
 end
 
 --------------------------------------
@@ -140,10 +135,10 @@ function dolac_legasi_screenplay:notifyEnteredArea1(pActiveArea, pMovingObject)
 			if (not self:hasSpawned(objectID, "prisoner")) then
 				self:setSpawned(objectID, "prisoner")
 				
-				local pPrisoner = spawnMobile("dathomir", "dolac_escaped_prisoner", self.loc.prisoner.x, self.loc.prisoner.z, self.loc.prisoner.y, 0)
+				local pPrisoner = spawnMobile("dathomir", "dolac_escaped_prisoner", 0, self.loc.prisoner.x, self.loc.prisoner.z, self.loc.prisoner.y, 0, 0)
 				local prisoner = LuaSceneObject(pPrisoner)
 				
-				local pTamer = spawnMobile("dathomir", "nightsister_rancor_tamer", self.loc.prisoner.x - 10, self.loc.prisoner.z, self.loc.prisoner.y + 3, 0)
+				local pTamer = spawnMobile("dathomir", "nightsister_rancor_tamer", 0, self.loc.prisoner.x - 10, self.loc.prisoner.z, self.loc.prisoner.y + 3, 0, 0)
 				local tamer = LuaSceneObject(pTamer)
 				
 				self:writeObjectData(objectID, "prisoner", prisoner:getObjectID())
@@ -171,7 +166,7 @@ function dolac_legasi_screenplay:notifyEnteredArea2(pActiveArea, pMovingObject)
 			if (not self:hasSpawned(objectID, "shadowstone")) then
 				self:setSpawned(objectID, "shadowstone")
 				
-				local pDjk = spawnMobile("dathomir", "dark_jedi_knight", self.loc.djk.x, self.loc.djk.z, self.loc.djk.y, 0)
+				local pDjk = spawnMobile("dathomir", 0, "dark_jedi_knight", self.loc.djk.x, self.loc.djk.z, self.loc.djk.y, 0, 0)
 				local djk = LuaSceneObject(pDjk)
 				
 				self:writeObjectData(objectID, "djk", djk:getObjectID())
@@ -197,7 +192,7 @@ function dolac_legasi_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
 				if (not self:hasSpawned(objectID, "spellweaver")) then
 					self:setSpawned(objectID, "spellweaver")
 					
-					local pSpellweaver = spawnMobile("dathomir", "nightsister_spell_weaver", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
+					local pSpellweaver = spawnMobile("dathomir", "nightsister_spell_weaver", 0, self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0, 0)
 					local spellweaver = LuaSceneObject(pSpellweaver)
 					
 					if (pSpellweaver ~= nil) then
@@ -211,8 +206,8 @@ function dolac_legasi_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
 				if (not self:hasSpawned(objectID, "protectors")) then
 					self:setSpawned(objectID, "protectors")
 					
-					local pProtector1 = spawnMobile("dathomir", "nightsister_protector", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
-					local pProtector2 = spawnMobile("dathomir", "nightsister_protector", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
+					local pProtector1 = spawnMobile("dathomir", "nightsister_protector", 0, self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0, 0)
+					local pProtector2 = spawnMobile("dathomir", "nightsister_protector", 0, self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0, 0)
 					local protector1 = LuaSceneObject(pProtector1)
 					local protector2 = LuaSceneObject(pProtector2)
 					
@@ -230,7 +225,7 @@ function dolac_legasi_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
 				if (not self:hasSpawned(objectID, "djm")) then
 					self:setSpawned(objectID, "djm")
 					
-					local pDjm = spawnMobile("dathomir", "dark_jedi_master", self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0)
+					local pDjm = spawnMobile("dathomir", "dark_jedi_master", 0, self.loc.djm.x, self.loc.djm.z, self.loc.djm.y, 0, 0)
 					local djm = LuaSceneObject(pDjm)
 					
 					self:writeObjectData(objectID, "djm", djm:getObjectID())
