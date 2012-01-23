@@ -43,6 +43,10 @@
 
 MultiTargetShotCommand = {
         name = "multitargetshot",
+
+	combatSpam = "multishot",
+
+	range = -1
 }
 
 AddCommand(MultiTargetShotCommand)
