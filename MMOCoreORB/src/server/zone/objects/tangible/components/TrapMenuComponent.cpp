@@ -20,10 +20,6 @@ void TrapMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	uint32 gameObjectType = sceneObject->getGameObjectType();
-
-	menuResponse->addRadialMenuItem(50, 3, "@ui_radial:item_use_deed");
-
 }
 
 int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
@@ -33,42 +29,6 @@ int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 	if (!player->isPlayerCreature())
 		return 0;
 
-	if(selectedID == 50) {
-		PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
-
-		SharedObjectTemplate* templateData =
-				TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
-
-		if(templateData == NULL) {
-			error("No template for: " + sceneObject->getServerObjectCRC());
-			return 0;
-		}
-
-		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(templateData);
-
-		if (schematicData == NULL) {
-			error("No LootSchematicTemplate for: " + sceneObject->getServerObjectCRC());
-			return 0;
-		}
-
-		ManagedReference<DraftSchematic* > schematic = SchematicMap::instance()->get(schematicData->getTargetDraftSchematic().hashCode());
-
-		if (schematic == NULL) {
-			error("Unable to create schematic: " + schematicData->getTargetDraftSchematic());
-			return 0;
-		}
-
-		if(ghost->addRewardedSchematic(schematic, schematicData->getTargetUseCount(), true)) {
-
-			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-			if(tano != NULL)
-				tano->decreaseUseCount(player);
-		}
-
-		return 0;
-	} else
-		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
-
-	return 0;
+	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
 
