@@ -102,6 +102,12 @@ public:
 			} else if (currentParent == NULL) {
 				zone->transferObject(player, -1, true);
 			} else {
+				if (player->getZone() == NULL) {
+					SceneObject* objectToInsert = currentParent != NULL ? player->getRootParent() : player;
+
+					zone->transferObject(objectToInsert, -1, false);
+				}
+
 				player->sendToOwner(true);
 			}
 
