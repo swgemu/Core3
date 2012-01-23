@@ -50,7 +50,6 @@ MediumPoisonCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		50,
-		100,
 		50, 
 		10
 	  )

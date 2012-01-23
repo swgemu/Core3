@@ -57,7 +57,6 @@ PolearmActionHit2Command = {
 		ACTION_ATTRIBUTE,
 		true,
 		100,
-		100,
 		60, 
 		60
 	  )

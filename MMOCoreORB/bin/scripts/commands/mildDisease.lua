@@ -50,7 +50,6 @@ MildDiseaseCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		50,
-		100,
 		30, 
 		10
 	  )

@@ -50,7 +50,6 @@ MildPoisonCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		30,
-		100,
 		30, 
 		10
 	  )

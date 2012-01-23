@@ -50,7 +50,6 @@ StrongDiseaseCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		100,
-		100,
 		80, 
 		50
 	  )

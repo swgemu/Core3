@@ -50,7 +50,6 @@ CreatureAreaBleedingCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		100,
-		100,
 		50, 
 		10
 	  )

@@ -50,7 +50,6 @@ StrongPoisonCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		80,
-		100,
 		80, 
 		20
 	  )

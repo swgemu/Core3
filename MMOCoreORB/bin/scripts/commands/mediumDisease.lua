@@ -50,7 +50,6 @@ MediumDiseaseCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		80,
-		100,
 		50, 
 		30
 	  )

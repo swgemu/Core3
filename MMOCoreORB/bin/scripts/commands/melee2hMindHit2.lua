@@ -55,7 +55,6 @@ Melee2hMindHit2Command = {
 		MIND_ATTRIBUTE,
 		true,
 		100,
-		100,
 		60, 
 		60
 	  )

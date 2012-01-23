@@ -63,7 +63,6 @@ RollShotCommand = {
 		HEALTH_ATTRIBUTE,
 		true,
 		100,
-		100,
 		30, 
 		30
 	  )

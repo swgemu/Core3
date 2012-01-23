@@ -60,7 +60,6 @@ Melee1hHealthHit2Command = {
 		HEALTH_ATTRIBUTE,
 		true,
 		100,
-		100,
 		60, 
 		60
 	  )

@@ -49,7 +49,7 @@ HealthShot2Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	poolsToDamage = HEALTH_ATRIBUTE,
+	poolsToDamage = HEALTH_ATTRIBUTE,
 
 	animationCRC = hashCode("fire_1_special_single_light"),
 
@@ -61,7 +61,6 @@ HealthShot2Command = {
 		{ "resistance_bleeding" },
 		ACTION_ATTRIBUTE,
 		true,
-		100,
 		100,
 		60, 
 		60
