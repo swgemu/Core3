@@ -166,7 +166,7 @@ function dolac_legasi_screenplay:notifyEnteredArea2(pActiveArea, pMovingObject)
 			if (not self:hasSpawned(objectID, "shadowstone")) then
 				self:setSpawned(objectID, "shadowstone")
 				
-				local pDjk = spawnMobile("dathomir", 0, "dark_jedi_knight", self.loc.djk.x, self.loc.djk.z, self.loc.djk.y, 0, 0)
+				local pDjk = spawnMobile("dathomir", "dark_jedi_knight", 0, self.loc.djk.x, self.loc.djk.z, self.loc.djk.y, 0, 0)
 				local djk = LuaSceneObject(pDjk)
 				
 				self:writeObjectData(objectID, "djk", djk:getObjectID())
