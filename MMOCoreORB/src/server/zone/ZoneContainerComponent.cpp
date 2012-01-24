@@ -135,7 +135,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 	ManagedReference<SceneObject*> parent = object->getParent();
 
 	if (parent != NULL/* && parent->isCellObject()*/) {
-		parent->removeObject(object, true);
+		parent->removeObject(object, sceneObject, true);
 
 		if (parent->isCellObject()) {
 			BuildingObject* build = cast<BuildingObject*>(parent->getParent());
@@ -172,7 +172,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 }
 
 
-bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, bool notifyClient) {
+bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) {
 	Zone* zone = dynamic_cast<Zone*>(sceneObject);
 
 	if (object->isActiveArea())

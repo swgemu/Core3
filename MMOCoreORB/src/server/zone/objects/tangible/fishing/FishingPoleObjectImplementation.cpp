@@ -73,7 +73,7 @@ String FishingPoleObjectImplementation::getText(CreatureObject* player) {
 	return text;
 }
 
-bool FishingPoleObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
+bool FishingPoleObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
 	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
 	if ((parent.get() != NULL) && (getParent()->isPlayerCreature())) {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(parent.get());
@@ -84,7 +84,7 @@ bool FishingPoleObjectImplementation::removeObject(SceneObject* object, bool not
 				return false;
 			}
 
-			return TangibleObjectImplementation::removeObject(object, notifyClient);
+			return TangibleObjectImplementation::removeObject(object, destination, notifyClient);
 		}
 	}
 	return false;

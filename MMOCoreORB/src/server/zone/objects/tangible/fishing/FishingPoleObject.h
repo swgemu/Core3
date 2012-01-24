@@ -119,7 +119,7 @@ public:
 
 	String getText(CreatureObject* player);
 
-	bool removeObject(SceneObject* object, bool notifyClient = false);
+	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -176,7 +176,7 @@ public:
 
 	String getText(CreatureObject* player);
 
-	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
+	virtual bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
 	WeakReference<FishingPoleObject*> _this;
 
@@ -239,7 +239,7 @@ public:
 
 	String getText(CreatureObject* player);
 
-	bool removeObject(SceneObject* object, bool notifyClient);
+	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient);
 
 protected:
 	String _param2_canAddObject__SceneObject_int_String_;

@@ -250,10 +250,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
 	 * @param object SceneObject that will be removed from the current object
+	 * @param destination SceneObject that will be the new destination of the object.
 	 * @param notifyClient not used currently
 	 * @return returns true if the object has been successfully removed
 	 */
-	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
+	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);
 	
 	/**
 	 * Destroys the object from the world

@@ -14,7 +14,7 @@
  *	GroupObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
@@ -72,6 +72,29 @@ void GroupObject::broadcastMessage(CreatureObject* player, BaseMessage* msg, boo
 		method.executeWithVoidReturn();
 	} else
 		_implementation->broadcastMessage(player, msg, sendSelf);
+}
+
+void GroupObject::sendSystemMessage(StringIdChatParameter& param) {
+	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->sendSystemMessage(param);
+}
+
+void GroupObject::sendSystemMessage(const String& fullPath) {
+	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDSYSTEMMESSAGE__STRING_);
+		method.addAsciiParameter(fullPath);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendSystemMessage(fullPath);
 }
 
 void GroupObject::addMember(SceneObject* player) {
@@ -585,6 +608,9 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_:
 		broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BaseMessage*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
+	case RPC_SENDSYSTEMMESSAGE__STRING_:
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_));
+		break;
 	case RPC_ADDMEMBER__SCENEOBJECT_:
 		addMember(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
@@ -662,6 +688,10 @@ void GroupObjectAdapter::broadcastMessage(BaseMessage* msg) {
 
 void GroupObjectAdapter::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	(static_cast<GroupObject*>(stub))->broadcastMessage(player, msg, sendSelf);
+}
+
+void GroupObjectAdapter::sendSystemMessage(const String& fullPath) {
+	(static_cast<GroupObject*>(stub))->sendSystemMessage(fullPath);
 }
 
 void GroupObjectAdapter::addMember(SceneObject* player) {

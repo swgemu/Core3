@@ -46,7 +46,7 @@ public:
 	 * @param notifyClient not used currently
 	 * @return returns true if the object has been successfully removed
 	 */
-	virtual bool removeObject(SceneObject* sceneObject, SceneObject* object, bool notifyClient);
+	virtual bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient);
 
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
@@ -68,7 +68,7 @@ public:
 	 * Is called when an object was removed
 	 * @param object object that has been inserted
 	 */
-	virtual int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object);
+	virtual int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination);
 
 };
 

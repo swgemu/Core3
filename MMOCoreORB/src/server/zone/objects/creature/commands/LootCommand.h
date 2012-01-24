@@ -46,6 +46,7 @@ which carries forward this exception.
 #define LOOTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class LootCommand : public QueueCommand {
 public:
@@ -63,22 +64,29 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<AiAgent*> ai = dynamic_cast<AiAgent*>(server->getZoneServer()->getObject(target));
 
-		if (ai == NULL)
-			return INVALIDTARGET;
+			ManagedReference<AiAgent*> ai = dynamic_cast<AiAgent*>(server->getZoneServer()->getObject(target));
 
-		Locker locker(ai, creature);
+			if (ai == NULL)
+				return INVALIDTARGET;
 
-		if (!ai->isDead())
-			return GENERALERROR;
+			Locker locker(ai, creature);
 
-		SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+			if (!ai->isDead())
+				return GENERALERROR;
 
-		if (creatureInventory == NULL)
-			return GENERALERROR;
+			if (arguments.toString().beginsWith("all")) {
+				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		creatureInventory->openContainerTo(creature);
+				playerManager->lootAll(creature, ai);
+			} else {
+				SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+
+				if (creatureInventory == NULL)
+					return GENERALERROR;
+
+				creatureInventory->openContainerTo(creature);
+			}
 
 		return SUCCESS;
 	}

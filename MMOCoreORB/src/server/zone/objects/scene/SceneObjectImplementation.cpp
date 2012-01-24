@@ -943,8 +943,8 @@ bool SceneObjectImplementation::transferObject(SceneObject* object, int containm
 	return containerComponent->transferObject(_this, object, containmentType, notifyClient);
 }
 
-bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
-	return containerComponent->removeObject(_this, object, notifyClient);
+bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
+	return containerComponent->removeObject(_this, object, destination, notifyClient);
 }
 
 void SceneObjectImplementation::openContainerTo(CreatureObject* player) {

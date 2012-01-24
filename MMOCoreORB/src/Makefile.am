@@ -281,6 +281,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/ShipControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminalImplementation.cpp \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
+		server/zone/objects/tangible/components/LootContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \

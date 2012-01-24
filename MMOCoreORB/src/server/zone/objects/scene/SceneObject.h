@@ -274,7 +274,7 @@ public:
 
 	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
-	bool removeObject(SceneObject* object, bool notifyClient = false);
+	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
 
@@ -832,7 +832,7 @@ public:
 
 	virtual bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
-	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
+	virtual bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
 	virtual void destroyObjectFromWorld(bool sendSelfDestroy);
 
@@ -1337,7 +1337,7 @@ public:
 
 	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
 
-	bool removeObject(SceneObject* object, bool notifyClient);
+	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient);
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
 

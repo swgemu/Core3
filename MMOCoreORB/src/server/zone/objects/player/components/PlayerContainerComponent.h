@@ -30,6 +30,6 @@ public:
 	 * Is called when an object was removed
 	 * @param object object that has been inserted
 	 */
-	int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object);
+	int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination);
 
 };

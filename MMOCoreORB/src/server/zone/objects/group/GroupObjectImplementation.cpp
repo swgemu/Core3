@@ -346,3 +346,35 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 	}
 	return modifier;
 }
+
+void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param) {
+	Locker lock(_this);
+
+	for (int i = 0; i < groupMembers.size(); ++i) {
+		GroupMember* member = &groupMembers.get(i);
+
+		ManagedReference<SceneObject*> obj = member->get();
+
+		if (obj == NULL || !obj->isCreatureObject())
+			continue;
+
+		CreatureObject* creature = cast<CreatureObject*>(obj.get());
+		creature->sendSystemMessage(param);
+	}
+}
+
+void GroupObjectImplementation::sendSystemMessage(const String& fullPath) {
+	Locker lock(_this);
+
+	for (int i = 0; i < groupMembers.size(); ++i) {
+		GroupMember* member = &groupMembers.get(i);
+
+		ManagedReference<SceneObject*> obj = member->get();
+
+		if (obj == NULL || !obj->isCreatureObject())
+			continue;
+
+		CreatureObject* creature = cast<CreatureObject*>(obj.get());
+		creature->sendSystemMessage(fullPath);
+	}
+}

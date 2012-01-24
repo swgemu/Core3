@@ -49,6 +49,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/group/GroupList.h"
 
+#include "server/chat/StringIdChatParameter.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "system/util/Vector.h"
@@ -71,6 +73,10 @@ public:
 	void broadcastMessage(BaseMessage* msg);
 
 	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
+
+	void sendSystemMessage(StringIdChatParameter& param);
+
+	void sendSystemMessage(const String& fullPath);
 
 	void addMember(SceneObject* player);
 
@@ -155,6 +161,10 @@ public:
 	void broadcastMessage(BaseMessage* msg);
 
 	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
+
+	void sendSystemMessage(StringIdChatParameter& param);
+
+	void sendSystemMessage(const String& fullPath);
 
 	void addMember(SceneObject* player);
 
@@ -247,6 +257,8 @@ public:
 
 	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf);
 
+	void sendSystemMessage(const String& fullPath);
+
 	void addMember(SceneObject* player);
 
 	void removeMember(SceneObject* player);
@@ -287,6 +299,8 @@ public:
 
 	void removeGroupModifiers(CreatureObject* player);
 
+protected:
+	String _param0_sendSystemMessage__String_;
 };
 
 class GroupObjectHelper : public DistributedObjectClassHelper, public Singleton<GroupObjectHelper> {

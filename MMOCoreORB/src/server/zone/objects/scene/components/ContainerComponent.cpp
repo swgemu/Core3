@@ -93,7 +93,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	if (objParent != NULL || objZone != NULL) {
 		if (objParent != NULL)
-			objParent->removeObject(object, notifyClient);
+			objParent->removeObject(object, sceneObject, notifyClient);
 
 		if (object->getParent() != NULL) {
 			object->error("error removing from from parent");
@@ -169,7 +169,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	return true;
 }
 
-bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, bool notifyClient) {
+bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) {
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
@@ -226,7 +226,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	if (notifyClient)
 		sceneObject->broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);
 
-	notifyObjectRemoved(sceneObject, object);
+	notifyObjectRemoved(sceneObject, object, destination);
 
 	sceneObject->updateToDatabase();
 	object->updateToDatabase();
@@ -252,7 +252,7 @@ int ContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObje
  * Is called when an object was removed
  * @param object object that has been inserted
  */
-int ContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object) {
+int ContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
 	return sceneObject->notifyObjectRemoved(object);
 }
 

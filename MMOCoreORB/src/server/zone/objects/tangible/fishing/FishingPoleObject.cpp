@@ -20,7 +20,7 @@
  *	FishingPoleObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_DOFISHING__CREATUREOBJECT_,RPC_GETTEXT__CREATUREOBJECT_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_DOFISHING__CREATUREOBJECT_,RPC_GETTEXT__CREATUREOBJECT_,RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_};
 
 FishingPoleObject::FishingPoleObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishingPoleObjectImplementation* _implementation = new FishingPoleObjectImplementation();
@@ -166,19 +166,20 @@ String FishingPoleObject::getText(CreatureObject* player) {
 		return _implementation->getText(player);
 }
 
-bool FishingPoleObject::removeObject(SceneObject* object, bool notifyClient) {
+bool FishingPoleObject::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
 	FishingPoleObjectImplementation* _implementation = static_cast<FishingPoleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_);
+		DistributedMethod method(this, RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_);
 		method.addObjectParameter(object);
+		method.addObjectParameter(destination);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->removeObject(object, notifyClient);
+		return _implementation->removeObject(object, destination, notifyClient);
 }
 
 DistributedObjectServant* FishingPoleObject::_getImplementation() {
@@ -382,8 +383,8 @@ Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_GETTEXT__CREATUREOBJECT_:
 		resp->insertAscii(getText(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
-	case RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_:
-		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+	case RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_:
+		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
 	default:
 		return NULL;
@@ -428,8 +429,8 @@ String FishingPoleObjectAdapter::getText(CreatureObject* player) {
 	return (static_cast<FishingPoleObject*>(stub))->getText(player);
 }
 
-bool FishingPoleObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
-	return (static_cast<FishingPoleObject*>(stub))->removeObject(object, notifyClient);
+bool FishingPoleObjectAdapter::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
+	return (static_cast<FishingPoleObject*>(stub))->removeObject(object, destination, notifyClient);
 }
 
 /*

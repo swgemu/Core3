@@ -53,6 +53,7 @@ import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 include server.zone.objects.group.GroupList;
 import server.zone.Zone;
+include server.chat.StringIdChatParameter;
 
 class GroupObject extends SceneObject {	
 	@dereferenced
@@ -79,6 +80,10 @@ class GroupObject extends SceneObject {
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, unsigned long targetid = 0, boolean sendToSelf = false);
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, StfParameter param, boolean sendToSelf = false);
 */
+	@local
+	public native void sendSystemMessage(@dereferenced StringIdChatParameter param);
+	public native void sendSystemMessage(final string fullPath);
+	
 	public native void addMember(SceneObject player);
 	public native void removeMember(SceneObject player);
 

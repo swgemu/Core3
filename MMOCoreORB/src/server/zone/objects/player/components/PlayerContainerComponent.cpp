@@ -74,7 +74,7 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
  * Is called when an object was removed
  * @param object object that has been inserted
  */
-int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object) {
+int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
 
 	if (object->isArmorObject()) {
@@ -95,5 +95,5 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 			creo->stopEntertaining();
 	}
 
-	return ContainerComponent::notifyObjectRemoved(sceneObject, object);
+	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
 }
