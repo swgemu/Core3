@@ -2102,21 +2102,26 @@ function TutorialScreenPlay:panic1MoveObserver(creatureObject, movingCreature)
 	end
 	
 	if distance < 9 then
-		player:sendSystemMessage("@newbie_tutorial/system_messages:part_5")
-		return 0
-	elseif distance < 8 then
-		spatialShout(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic1")
+		bla = readData(player:getObjectID() .. ":tutorial:panic1part")
 		
-		player:sendSystemMessage("@newbie_tutorial/system_messages:radar")
-		playSound = readData(player:getObjectID() .. ":tutorial:sound")
-		if playSound == 1 then
-			player:playMusicMessage("sound/tut_41_advancewarning.snd")
+		if bla == 0 then
+			player:sendSystemMessage("@newbie_tutorial/system_messages:part_5")
+			writeData(player:getObjectID() .. ":tutorial:panic1part")
+			return 0
+		else 
+			spatialShout(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic1")
+		
+			player:sendSystemMessage("@newbie_tutorial/system_messages:radar")
+			playSound = readData(player:getObjectID() .. ":tutorial:sound")
+			if playSound == 1 then
+				player:playMusicMessage("sound/tut_41_advancewarning.snd")
+			end
+			player:sendNewbieTutorialEnableHudElement("radar", 1)
+			writeData(player:getObjectID() .. ":tutorial:radartalk", 0)
+			createEvent(1000, "TutorialScreenPlay", "continuePanic1", creatureObject)
+			
+			return 1
 		end
-		player:sendNewbieTutorialEnableHudElement("radar", 1)
-		writeData(player:getObjectID() .. ":tutorial:radartalk", 0)
-		createEvent(1000, "TutorialScreenPlay", "continuePanic1", creatureObject)
-		
-		return 1
 	else
 		return 0
 	end
