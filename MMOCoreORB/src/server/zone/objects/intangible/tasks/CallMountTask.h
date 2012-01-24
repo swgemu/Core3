@@ -25,12 +25,12 @@ public:
 
 	void run() {
 
+		Locker locker(player);
+
 		player->removePendingTask("call_mount");
 
 		if(player->isInCombat())
 			return;
-
-		Locker locker(player);
 
 		Locker clocker(device->getControlledObject(), player);
 		device->spawnObject(player);
