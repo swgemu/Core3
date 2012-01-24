@@ -53,7 +53,7 @@ public:
 	static const uint32 INSURED   = 0x00000004;
 	static const uint32 CONVERSE  = 0x00000008; //Converse flag in creatures
 	static const uint32 UNKNOWN3  = 0x00000010;
-	static const uint32 UNKNOWN4  = 0x00000020; //Yellow items in tangibles
+	static const uint32 YELLOW  = 0x00000020; //Yellow items in tangibles
 	static const uint32 UNKNOWN5  = 0x00000040;
 	static const uint32 UNKNOWN6  = 0x00000080;
 	static const uint32 NOHEALTH  = 0x00000100; //Shows no information about condition or HAM
