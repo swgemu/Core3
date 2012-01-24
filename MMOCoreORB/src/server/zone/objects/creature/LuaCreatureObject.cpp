@@ -74,6 +74,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getContainerObjectByTemplate", &LuaSceneObject::getContainerObjectByTemplate },
 		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
 		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
+		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
 		{ 0, 0 }
 };
 
@@ -474,6 +475,14 @@ int LuaCreatureObject::getGroupSize(lua_State* L) {
 	}
 
 	return 1;
+}
+
+int LuaCreatureObject::setOptionsBitmask(lua_State* L) {
+	uint32 bitmask = lua_tointeger(L, -1);
+	
+	realObject->setOptionsBitmask(bitmask, true);
+	
+	return 0;
 }
 
 int LuaCreatureObject::getGroupMember(lua_State* L) {

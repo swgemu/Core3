@@ -87,6 +87,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "isHighestRank", isHighestRank);
 	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
 	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
+	lua_register(luaEngine->getLuaState(), "isZoneEnabled", isZoneEnabled);
 
 	lua_register(luaEngine->getLuaState(), "getRegion", getRegion);
 	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
@@ -707,5 +708,15 @@ int DirectorManager::getObjectTemplatePathByCRC(lua_State* L) {
 
 	lua_pushstring(L, TemplateManager::instance()->getTemplateFile(crc));
 
+	return 1;
+}
+
+int DirectorManager::isZoneEnabled(lua_State* L) {
+	String zoneid = lua_tostring(L, -1);
+	
+	Zone* zone = ServerCore::getZoneServer()->getZone();
+	
+	lua_pushboolean(L, (zone != NULL));
+	
 	return 1;
 }
