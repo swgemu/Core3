@@ -101,7 +101,8 @@ CreatureObject* ThreatMatrix::getLargestThreat() {
 			targetSelection.add(healMap.elementAt(healMap.size() -1).getValue());
 		}
 
-		returnThreat = targetSelection.get(System::random(targetSelection.size()- 1));
+		if (targetSelection.size() > 0)
+			returnThreat = targetSelection.get(System::random(targetSelection.size()- 1));
 	}
 
 
