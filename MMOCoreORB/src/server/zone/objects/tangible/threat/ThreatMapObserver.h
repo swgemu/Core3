@@ -81,7 +81,7 @@ namespace threat {
 
 class ThreatMapObserverImplementation : public ObserverImplementation {
 protected:
-	ManagedReference<TangibleObject* > self;
+	ManagedWeakReference<TangibleObject* > self;
 
 public:
 	ThreatMapObserverImplementation(TangibleObject* me);

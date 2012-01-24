@@ -82,7 +82,9 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage) {
 
 void ThreatMap::dropDamage(CreatureObject* target) {
 	drop(target);
-	target->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
+
+	if (threatMapObserver != NULL)
+		target->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 }
 
 bool ThreatMap::setThreatState(CreatureObject* target, uint64 state, uint64 duration, uint64 cooldown) {

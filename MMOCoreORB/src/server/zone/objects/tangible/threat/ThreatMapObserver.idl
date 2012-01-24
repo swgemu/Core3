@@ -57,6 +57,7 @@ include server.zone.objects.scene.ObserverEventType;
 
 class ThreatMapObserver extends Observer {
 	
+	@weakReference
 	protected TangibleObject self;
 	
 	public ThreatMapObserver(TangibleObject me) {

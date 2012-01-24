@@ -37,12 +37,12 @@ namespace server {
 class ThreatMatrix {
 protected:
 
-	   CreatureObject* tauntThreat;
-	   CreatureObject* focusedThreat;
+	   ManagedReference<CreatureObject*> tauntThreat;
+	   ManagedReference<CreatureObject*> focusedThreat;
 
-	   VectorMap<uint32, CreatureObject*> damageMap;
-	   VectorMap<int, CreatureObject*> aggroMap;
-	   VectorMap<int, CreatureObject*> healMap;
+	   VectorMap<uint32, ManagedReference<CreatureObject*> > damageMap;
+	   VectorMap<int, ManagedReference<CreatureObject*> > aggroMap;
+	   VectorMap<int, ManagedReference<CreatureObject*> > healMap;
 
 public:
 	ThreatMatrix();

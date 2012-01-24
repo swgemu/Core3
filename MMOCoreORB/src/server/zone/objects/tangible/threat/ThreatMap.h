@@ -122,6 +122,9 @@ public:
 		setNoDuplicateInsertPlan();
 		self = map.self;
 		currentThreat = map.currentThreat;
+		threatMapObserver = map.threatMapObserver;
+		threatMatrix = map.threatMatrix;
+		cooldownTimerMap = map.cooldownTimerMap;
 	}
 
 	~ThreatMap() {
