@@ -11,7 +11,7 @@
 
 int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
 	if (destination != NULL) {
-		ManagedReference<SceneObject*> rootParent = destination->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> rootParent = destination->getParent();
 
 		if (rootParent != NULL && rootParent->isCreatureObject()) {
 			CreatureObject* creature = cast<CreatureObject*>(rootParent.get());
@@ -23,7 +23,7 @@ int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneO
 					StringIdChatParameter params("group", "notify_single_loot"); //[GROUP] %TU looted %TO from %TT.
 					params.setTO(object);
 					params.setTU(creature);
-					params.setTT(sceneObject->getParentRecursively(SceneObjectType::CREATURE));
+					params.setTT(sceneObject->getParent());
 
 					group->sendSystemMessage(params);
 				} else {

@@ -47,16 +47,41 @@ which carries forward this exception.
 
 class OptionBitmask {
 public:
-	static const uint32 NONE = 0x00;
+	static const uint32 NONE      = 0x00000000;
+	static const uint32 UNKNOWN1  = 0x00000001;
+	static const uint32 UNKNOWN2  = 0x00000002; //Vendor flag in creatures
+	static const uint32 INSURED   = 0x00000004;
+	static const uint32 CONVERSE  = 0x00000008; //Converse flag in creatures
+	static const uint32 UNKNOWN3  = 0x00000010;
+	static const uint32 UNKNOWN4  = 0x00000020; //Yellow items in tangibles
+	static const uint32 UNKNOWN5  = 0x00000040;
+	static const uint32 UNKNOWN6  = 0x00000080;
+	static const uint32 NOHEALTH  = 0x00000100; //Shows no information about condition or HAM
+	static const uint32 UNKNOWN8  = 0x00000200;
+	static const uint32 UNKNOWN9  = 0x00000400;
+	static const uint32 INFO1     = 0x00000800; //Info Icon 1 in creatures
+	static const uint32 UNKNOWN11 = 0x00001000;
+	static const uint32 UNKNOWN12 = 0x00002000;
+	static const uint32 UNKNOWN13 = 0x00004000;
+	static const uint32 INFO2     = 0x00008000; //Info Icon 2 in creatures
+	static const uint32 UNKNOWN14 = 0x00010000;
+	static const uint32 UNKNOWN15 = 0x00020000;
+	static const uint32 UNKNOWN16 = 0x00040000;
+	static const uint32 UNKNOWN17 = 0x00080000;
+	static const uint32 UNKNOWN18 = 0x00100000;
+	static const uint32 UNKNOWN19 = 0x00200000;
+	static const uint32 UNKNOWN20 = 0x00400000;
+	static const uint32 UNKNOWN21 = 0x00800000;
+	static const uint32 UNKNOWN22 = 0x01000000;
+	static const uint32 UNKNOWN23 = 0x02000000;
+	static const uint32 UNKNOWN24 = 0x04000000;
+	static const uint32 UNKNOWN25 = 0x08000000;
+	static const uint32 UNKNOWN26 = 0x10000000;
+	static const uint32 UNKNOWN27 = 0x20000000;
+	static const uint32 UNKNOWN28 = 0x40000000;
+	static const uint32 UNKNOWN29 = 0x80000000;
 
-	static const uint32 UNKNOWN1 = 0x01;
-	static const uint32 UNKNOWN2 = 0x02;
-
-	static const uint32 INSURED = 0x04;
-
-	static const uint32 YELLOW = 0x20;
-
-	static const uint32 FROMFACTORY = 0x2100;
+	static const uint32 FROMFACTORY = UNKNOWN12 | NOHEALTH; //0x00002100;
 
 };
 
