@@ -2102,11 +2102,11 @@ function TutorialScreenPlay:panic1MoveObserver(creatureObject, movingCreature)
 	end
 	
 	if distance < 9 then
-		bla = readData(player:getObjectID() .. ":tutorial:panic1part")
+		panic1part = readData(player:getObjectID() .. ":tutorial:panic1part")
 		
-		if bla == 0 then
+		if panic1part == 0 then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:part_5")
-			writeData(player:getObjectID() .. ":tutorial:panic1part")
+			writeData(player:getObjectID() .. ":tutorial:panic1part", 1 )
 			return 0
 		else 
 			spatialShout(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic1")
