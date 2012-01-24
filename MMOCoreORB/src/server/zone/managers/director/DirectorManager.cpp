@@ -714,7 +714,7 @@ int DirectorManager::getObjectTemplatePathByCRC(lua_State* L) {
 int DirectorManager::isZoneEnabled(lua_State* L) {
 	String zoneid = lua_tostring(L, -1);
 	
-	Zone* zone = ServerCore::getZoneServer()->getZone();
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
 	
 	lua_pushboolean(L, (zone != NULL));
 	
