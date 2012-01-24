@@ -51,10 +51,14 @@ namespace scene {
 		int destroyObjectFromWorld(lua_State* L);
 		int updateDirection(lua_State* L);
 		int isCreatureObject(lua_State* L);
+		int getZoneName(lua_State* L);
 		int updateCellPermission(lua_State* L);
+		int updateCellPermissionGroup(lua_State* L);
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);
+		int setCustomObjectName(lua_State* L);
 		int getContainerObjectById(lua_State* L);
+		int getContainerObjectByTemplate(lua_State* L);
 		int setDirectionalHeading(lua_State* L);
 
 

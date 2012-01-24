@@ -10,6 +10,8 @@
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -19,6 +21,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getBankCredits", &LuaCreatureObject::getBankCredits },
 		{ "setBankCredits", &LuaCreatureObject::setBankCredits },
 		{ "sendSystemMessage", &LuaCreatureObject::sendSystemMessage },
+		{ "sendGroupMessage", &LuaCreatureObject::sendGroupMessage },
 		{ "playMusicMessage", &LuaCreatureObject::playMusicMessage },
 		{ "sendNewbieTutorialRequest", &LuaCreatureObject::sendNewbieTutorialRequest },
 		{ "hasScreenPlayState", &LuaCreatureObject::hasScreenPlayState },
@@ -35,6 +38,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getTargetID", &LuaCreatureObject::getTargetID },
 		{ "clearCombatState", &LuaCreatureObject::clearCombatState },
 		{ "getParent", &LuaSceneObject::getParent },
+		{ "getZoneName", &LuaSceneObject::getZoneName },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getPositionX", &LuaSceneObject::getPositionX },
 		{ "getPositionY", &LuaSceneObject::getPositionY },
@@ -45,13 +49,13 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "setState", &LuaCreatureObject::setState},
 		{ "setPosture", &LuaCreatureObject::setPosture},
-		{ "setCustomObjectName", &LuaCreatureObject::setCustomObjectName},
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
 		{ "removeSkill", &LuaCreatureObject::removeSkill},
 		{ "getConversationSession", &LuaCreatureObject::getConversationSession},
 		{ "doAnimation", &LuaCreatureObject::doAnimation},
 		{ "engageCombat", &LuaCreatureObject::engageCombat},
 		{ "getPlayerObject", &LuaCreatureObject::getPlayerObject},
+		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
 		{ "getFaction", &LuaCreatureObject::getFaction},
 		{ "setFaction", &LuaCreatureObject::setFaction},
 		{ "isRebel", &LuaCreatureObject::isRebel},
@@ -66,6 +70,10 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "subtractCashCredits", &LuaCreatureObject::subtractCashCredits},
 		{ "addCashCredits", &LuaCreatureObject::addCashCredits},
 		{ "removeScreenPlayState", &LuaCreatureObject::removeScreenPlayState},
+		{ "isGrouped", &LuaCreatureObject::isGrouped},
+		{ "getContainerObjectByTemplate", &LuaSceneObject::getContainerObjectByTemplate },
+		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
+		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
 		{ 0, 0 }
 };
 
@@ -90,13 +98,6 @@ int LuaCreatureObject::getName(lua_State* L) {
 
 int LuaCreatureObject::_getObject(lua_State* L) {
 	lua_pushlightuserdata(L, realObject.get());
-
-	return 0;
-}
-
-int LuaCreatureObject::setCustomObjectName(lua_State* L) {
-	String value = lua_tostring(L, -1);
-	realObject->setCustomObjectName(value, true);
 
 	return 0;
 }
@@ -126,6 +127,26 @@ int LuaCreatureObject::sendOpenHolocronToPageMessage(lua_State* L) {
 int LuaCreatureObject::sendSystemMessage(lua_State* L) {
 	String value = lua_tostring(L, -1);
 	realObject->sendSystemMessage(value);
+
+	return 0;
+}
+
+int LuaCreatureObject::sendGroupMessage(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	if (realObject == NULL)
+		return 0;
+
+	if (!realObject->isGrouped()) {
+		realObject->sendSystemMessage(value);
+	} else {
+		GroupObject* group = realObject->getGroup();
+
+		if (group != NULL) {
+			UnicodeString msg(value);
+			group->broadcastMessage(new ChatSystemMessage(msg));
+		}
+	}
 
 	return 0;
 }
@@ -417,7 +438,7 @@ int LuaCreatureObject::subtractCashCredits(lua_State* L) {
 
 int LuaCreatureObject::addCashCredits(lua_State* L) {
 	bool notifyClient = lua_toboolean(L, -1);
-	int credits = lua_toboolean(L, -2);
+	int credits = lua_tonumber(L, -2);
 	realObject->addCashCredits(credits, notifyClient);
 
 	return 0;
@@ -427,6 +448,63 @@ int LuaCreatureObject::isAiAgent(lua_State* L) {
 	bool val = realObject->isAiAgent();
 
 	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaCreatureObject::isGrouped(lua_State* L) {
+	bool val = realObject->isGrouped();
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaCreatureObject::getGroupSize(lua_State* L) {
+	if (!realObject->isGrouped()) {
+		lua_pushnumber(L, 0);
+	} else {
+		GroupObject* group = realObject->getGroup();
+
+		if (group != NULL) {
+			lua_pushnumber(L, group->getGroupSize());
+		} else {
+			lua_pushnumber(L, 0);
+		}
+
+	}
+
+	return 1;
+}
+
+int LuaCreatureObject::getGroupMember(lua_State* L) {
+	int i = lua_tonumber(L, -1);
+
+	if (i < 0)
+		i = 0;
+
+	if (!realObject->isGrouped()) {
+		realObject->info("LuaCreatureObject::getGroupMember Creature is not grouped.");
+		lua_pushnil(L);
+	} else {
+		GroupObject* group = realObject->getGroup();
+		if (group == NULL) {
+			realObject->info("LuaCreatureObject::getGroupMember Group is NULL.");
+			lua_pushnil(L);
+		} else {
+			if (group->getGroupSize() < i) {
+				realObject->info("LuaCreatureObject::getGroupMember Index out of Bounds apprehended.");
+				lua_pushnil(L);
+			} else {
+				SceneObject* creo = group->getGroupMember(i);
+				if (creo == NULL) {
+					realObject->info("LuaCreatureObject::getGroupMember GroupMember is NULL.");
+					lua_pushnil(L);
+				} else {
+					lua_pushlightuserdata(L, creo);
+				}
+			}
+		}
+	}
 
 	return 1;
 }

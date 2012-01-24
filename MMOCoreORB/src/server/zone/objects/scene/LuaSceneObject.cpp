@@ -9,7 +9,9 @@
 #include "SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
+#include "server/zone/Zone.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -22,6 +24,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
+		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "updateDirection", &LuaSceneObject::updateDirection },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
@@ -36,10 +39,13 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
 		{ "updateCellPermission", &LuaSceneObject::updateCellPermission },
+		{ "updateCellPermissionGroup", &LuaSceneObject::updateCellPermissionGroup },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
+		{ "getContainerObjectByTemplate", &LuaSceneObject::getContainerObjectByTemplate },
 		{ "setDirectionalHeading", &LuaSceneObject::setDirectionalHeading },
+		{ "getZoneName", &LuaSceneObject::getZoneName },
 		{ 0, 0 }
 };
 
@@ -54,6 +60,27 @@ int LuaSceneObject::_setObject(lua_State* L) {
 	realObject = (SceneObject*)lua_touserdata(L, -1);
 
 	return 0;
+}
+
+int LuaSceneObject::setCustomObjectName(lua_State* L) {
+	String value = lua_tostring(L, -1);
+	realObject->setCustomObjectName(value, true);
+
+	return 0;
+}
+
+int LuaSceneObject::getZoneName(lua_State* L) {
+	Zone* zone = realObject->getZone();
+
+	String name = "";
+
+	if (zone != NULL) {
+		name = zone->getZoneName();
+	}
+
+	lua_pushstring(L, name);
+
+	return 1;
 }
 
 int LuaSceneObject::getPositionX(lua_State* L) {
@@ -162,6 +189,44 @@ int LuaSceneObject::getContainerObject(lua_State* L) {
 	return 1;
 }
 
+int LuaSceneObject::getContainerObjectByTemplate(lua_State* L) {
+	String objectTemplate = lua_tostring(L, -1);
+
+	uint32 objectCRC = objectTemplate.hashCode();
+
+	SceneObject* sco = NULL;
+
+	for (int i=0; i< realObject->getContainerObjectsSize(); i++) {
+		sco = realObject->getContainerObject(i);
+
+		if (sco == NULL)
+			continue;
+
+		if (sco->getContainerObjectsSize() > 0) {
+			for (int j=0; j < sco->getContainerObjectsSize(); j++) {
+				SceneObject* child = sco->getContainerObject(j);
+
+				if (child == NULL)
+					continue;
+
+				if (child->getServerObjectCRC() == objectCRC) {
+					lua_pushlightuserdata(L, child);
+					return 1;
+				}
+			}
+		}
+
+		if (sco->getServerObjectCRC() == objectCRC) {
+			lua_pushlightuserdata(L, sco);
+			return 1;
+		}
+	}
+
+	lua_pushnil(L);
+
+	return 1;
+}
+
 int LuaSceneObject::getContainerObjectById(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 
@@ -173,7 +238,7 @@ int LuaSceneObject::getContainerObjectById(lua_State* L) {
 		lua_pushnil(L);
 	}
 
-	return 1;
+    return 1;
 }
 
 int LuaSceneObject::getSlottedObject(lua_State* L) {
@@ -285,6 +350,44 @@ int LuaSceneObject::updateCellPermission(lua_State* L) {
 
 	BaseMessage* perm = new UpdateCellPermissionsMessage(realObject->getObjectID(), allowEntry);
 	obj->sendMessage(perm);
+
+	return 0;
+}
+
+int LuaSceneObject::updateCellPermissionGroup(lua_State* L) {
+	//realObject->info("getting values",true);
+	int allowEntry = lua_tonumber(L, -2);
+	CreatureObject* obj = (CreatureObject*)lua_touserdata(L, -1);
+	//realObject->info("allowentry:" + String::valueOf(allowEntry), true);
+	if (obj == NULL)
+		return 0;
+
+	//realObject->info("values not NULL", true);
+
+	if (!realObject->isCellObject()) {
+		realObject->info("Unknown entity error: Cell", true);
+		return 0;
+	}
+
+	if (!obj->isCreatureObject()) {
+		//realObject->info("Unknown entity error: Creature", true);
+		obj->info("Unknown entity error: Creature", true);
+		return 0;
+	}
+
+	BaseMessage* perm = new UpdateCellPermissionsMessage(realObject->getObjectID(), allowEntry);
+
+	//realObject->info("checks are fine", true);
+	if (obj->isGrouped()) {
+		// do group
+		GroupObject* group = obj->getGroup();
+		if (group != NULL) {
+			group->broadcastMessage(perm);
+		}
+	} else {
+		// do single creature
+		obj->sendMessage(perm);
+	}
 
 	return 0;
 }

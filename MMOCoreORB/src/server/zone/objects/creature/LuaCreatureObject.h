@@ -35,6 +35,7 @@ namespace creature {
 		int setBankCredits(lua_State* L);
 		int setHAM(lua_State* L);
 		int sendSystemMessage(lua_State* L);
+		int sendGroupMessage(lua_State* L);
 		int playMusicMessage(lua_State *L);
 		int sendNewbieTutorialRequest(lua_State *L);
 		int hasScreenPlayState(lua_State *L);
@@ -51,7 +52,6 @@ namespace creature {
 		int playEffect(lua_State* L);
 		int setState(lua_State* L);
 		int setPosture(lua_State* L);
-		int setCustomObjectName(lua_State* L);
 		int hasSkill(lua_State* L);
 		int removeSkill(lua_State* L);
 		int getConversationSession(lua_State* L);
@@ -72,6 +72,9 @@ namespace creature {
 		int subtractCashCredits(lua_State* L);
 		int addCashCredits(lua_State* L);
 		int removeScreenPlayState(lua_State* L);
+		int isGrouped(lua_State* L);
+		int getGroupSize(lua_State* L);
+		int getGroupMember(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc
