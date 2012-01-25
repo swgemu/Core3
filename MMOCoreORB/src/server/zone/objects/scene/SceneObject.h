@@ -344,6 +344,8 @@ public:
 
 	void updateDirection(float fw, float fx, float fy, float fz);
 
+	void updateDirection(float angleHeadingRadians);
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -902,6 +904,8 @@ public:
 
 	void updateDirection(float fw, float fx, float fy, float fz);
 
+	void updateDirection(float angleHeadingRadians);
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -1402,6 +1406,8 @@ public:
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID);
 
 	void updateDirection(float fw, float fx, float fy, float fz);
+
+	void updateDirection(float angleHeadingRadians);
 
 	void notifyRemoveFromZone();
 

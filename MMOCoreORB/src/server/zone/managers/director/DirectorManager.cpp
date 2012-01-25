@@ -11,6 +11,7 @@
 #include "server/zone/objects/building/LuaBuildingObject.h"
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
 #include "server/zone/objects/player/LuaPlayerObject.h"
+#include "server/zone/objects/tangible/LuaTangibleObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
@@ -153,6 +154,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaPlayerObject>::Register(luaEngine->getLuaState());
 	Luna<LuaAiAgent>::Register(luaEngine->getLuaState());
 	Luna<LuaActiveArea>::Register(luaEngine->getLuaState());
+	Luna<LuaTangibleObject>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
@@ -491,7 +493,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 	if (creature == NULL) {
 		instance()->error("coult not spawn mobile " + mobile);
 	} else {
-		creature->setDirection(Math::deg2rad(heading));
+		creature->updateDirection(Math::deg2rad(heading));
 		
 		if (creature->isAiAgent()) {
 			AiAgent* ai = cast<AiAgent*>(creature);

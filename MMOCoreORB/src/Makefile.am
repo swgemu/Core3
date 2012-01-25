@@ -271,6 +271,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \
+		server/zone/objects/tangible/LuaTangibleObject.cpp \
 		server/zone/objects/area/LairSpawnAreaImplementation.cpp \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \

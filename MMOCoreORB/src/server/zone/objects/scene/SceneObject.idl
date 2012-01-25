@@ -551,6 +551,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	public native void updateDirection(float fw, float fx, float fy, float fz);
 	
+	public native void updateDirection(float angleHeadingRadians);
+	
 	@dirty
 	@local
 	public void notifyInsert(QuadTreeEntry entry) {

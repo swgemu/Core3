@@ -44,4 +44,6 @@ includeFile("tasks/dolac_legasi.lua")
 includeFile("recruiters/imperialrecruiter.lua")
 includeFile("recruiters/rebelrecruiter.lua")
 includeFile("dungeon/death_watch_bunker.lua")
-includeFile("tests/options_bitmask_test.lua")
+
+--Tests
+--includeFile("tests/options_bitmask_test.lua")

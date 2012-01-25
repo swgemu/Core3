@@ -931,6 +931,20 @@ void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, fl
 	}
 }
 
+void SceneObjectImplementation::updateDirection(float angleHeadingRadians) {
+	setDirection(angleHeadingRadians);
+
+	++movementCounter;
+
+	if (parent != NULL) {
+		DataTransformWithParent* pack = new DataTransformWithParent(_this);
+		broadcastMessage(pack, true, true);
+	} else {
+		DataTransform* pack = new DataTransform(_this);
+		broadcastMessage(pack, true, true);
+	}
+}
+
 void SceneObjectImplementation::notifyRemoveFromZone() {
 	zoneComponent->notifyRemoveFromZone(_this);
 }
