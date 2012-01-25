@@ -43,7 +43,9 @@ includeFile("tasks/mozo_bondog.lua")
 includeFile("tasks/dolac_legasi.lua")
 includeFile("recruiters/imperialrecruiter.lua")
 includeFile("recruiters/rebelrecruiter.lua")
+includeFile("recruiters/rebelrecruiter.lua")
 includeFile("dungeon/death_watch_bunker.lua")
+includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")

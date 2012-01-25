@@ -1,5 +1,5 @@
-kaje_orzee = Creature:new {
-	objectName = "@mob/creature_names:Kaje Orzee",
+kaja_orzee = Creature:new {
+	objectName = "@mob/creature_names:kaja_orzee",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
@@ -23,15 +23,15 @@ kaje_orzee = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kaja_orzee.iff"},
 	lootgroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "imperial_retreat_kaja_orzee_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(kaje_orzee, "kaje_orzee")
+CreatureTemplates:addCreatureTemplate(kaja_orzee, "kaja_orzee")

@@ -17,6 +17,10 @@ includeFile("conversations/themepark/tutorial/protocol_droid_3po_silver_conv.lua
 -- Jabba's Themepark
 includeFile("conversations/themepark/jabba/reelo_baruk_conv.lua")
 
+-- Imperial Retreat Themepark
+includeFile("conversations/themepark/imperial/imperial_retreat_kaja_orzee_conv.lua")
+includeFile("conversations/themepark/imperial/imperial_retreat_governor_grayed_wintozzen_conv.lua")
+
 -- ** DUNGEONS **
 
 -- Death Watch Bunker
@@ -35,6 +39,9 @@ includeFile("conversations/mission/informant_npc.lua")
 -- Recruiters
 includeFile("conversations/recruiter/rebel_recruiter_conv.lua")
 includeFile("conversations/recruiter/imperial_recruiter_conv.lua")
+includeFile("conversations/mission/informant_npc.lua")
+includeFile("conversations/tasks/dolac_legasi_conv.lua")
+includeFile("conversations/mission/informant_npc.lua")
 
 -- Tasks
 includeFile("conversations/tasks/mozo_bondog_conv.lua")
