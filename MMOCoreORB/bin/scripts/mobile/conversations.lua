@@ -39,9 +39,6 @@ includeFile("conversations/mission/informant_npc.lua")
 -- Recruiters
 includeFile("conversations/recruiter/rebel_recruiter_conv.lua")
 includeFile("conversations/recruiter/imperial_recruiter_conv.lua")
-includeFile("conversations/mission/informant_npc.lua")
-includeFile("conversations/tasks/dolac_legasi_conv.lua")
-includeFile("conversations/mission/informant_npc.lua")
 
 -- Tasks
 includeFile("conversations/tasks/mozo_bondog_conv.lua")

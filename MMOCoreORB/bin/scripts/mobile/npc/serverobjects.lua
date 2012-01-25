@@ -1662,7 +1662,6 @@ includeFile("npc/yavin4/alert_droideka.lua")
 includeFile("npc/all/blastromech.lua")
 includeFile("npc/misc/death_watch_rescue_scientist.lua")
 includeFile("npc/all/dark_trooper.lua")
-includeFile("npc/misc/darth_vader_retreat.lua")
 includeFile("npc/misc/governor_grayed_wintozzen.lua")
 
 includeFile("npc/tutorial/bandit_1.lua")
