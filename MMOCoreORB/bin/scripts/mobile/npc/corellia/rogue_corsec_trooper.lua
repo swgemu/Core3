@@ -1,5 +1,5 @@
 rogue_corsec_trooper = Creature:new {
-	objectName = "@mob/creature_names:rogue CorSec trooper",
+	objectName = "@mob/creature_names:corsec_rogue",
 	socialGroup = "Rogue Corsec",
 	pvpFaction = "Rogue Corsec",
 	faction = "",

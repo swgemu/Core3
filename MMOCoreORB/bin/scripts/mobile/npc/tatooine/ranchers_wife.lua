@@ -1,5 +1,5 @@
 ranchers_wife = Creature:new {
-	objectName = "@mob/creature_names:rancher's wife",
+	objectName = "@mob/creature_names:quest_hero_of_tatooine_wife",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

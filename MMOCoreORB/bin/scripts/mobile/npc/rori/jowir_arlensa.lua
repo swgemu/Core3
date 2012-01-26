@@ -1,5 +1,6 @@
 jowir_arlensa = Creature:new {
-	objectName = "@mob/creature_names:Jowir Arlensa",
+	objectName = "",
+	costumName = "Jowir Arlensa",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

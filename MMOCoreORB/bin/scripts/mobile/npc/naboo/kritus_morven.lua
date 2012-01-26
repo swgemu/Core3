@@ -1,5 +1,6 @@
 kritus_morven = Creature:new {
-	objectName = "@mob/creature_names:Kritus Morven",
+	objectName = "",
+	customName = "Kritus Morven",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

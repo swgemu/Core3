@@ -1,5 +1,6 @@
 figrin_dan = Creature:new {
-	objectName = "@mob/creature_names:Figrin_Dan",
+	objectName = "",
+	customName = "Figrin Dan",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

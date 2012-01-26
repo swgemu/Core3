@@ -1,5 +1,6 @@
 kirkin_liawoon = Creature:new {
-	objectName = "@mob/creature_names:Kirkin Liawoon",
+	objectName = "",
+	customName = "Kirkin Lianwoon",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 bors_teraud = Creature:new {
-	objectName = "@mob/creature_names:bors_teraud",
+	objectName = "@mob/creature_names:warren_bors_teraud",
 	socialGroup = "Warren Teraud",
 	pvpFaction = "Warren Teraud",
 	faction = "",
@@ -10,8 +10,8 @@ bors_teraud = Creature:new {
 	baseXp = 7207,
 	baseHAM = 12000,
 	baseHAMmax = 15000,
-	armor = 0,
-	resists = {45,45,0,0,0,0,-1,0,-1},
+	armor = 1,
+	resists = {45,45,30,30,30,30,-1,30,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

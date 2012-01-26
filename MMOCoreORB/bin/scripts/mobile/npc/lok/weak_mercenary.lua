@@ -1,5 +1,5 @@
 weak_mercenary = Creature:new {
-	objectName = "@mob/creature_names:weak_mercenary",
+	objectName = "@mob/creature_names:mercenary_weak",
 	socialGroup = "Lok Merc",
 	pvpFaction = "Lok Merc",
 	faction = "",

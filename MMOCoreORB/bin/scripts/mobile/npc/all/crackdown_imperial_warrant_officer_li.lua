@@ -1,5 +1,5 @@
 crackdown_imperial_warrant_officer_li = Creature:new {
-	objectName = "@mob/creature_names:Crackdown_Imperial_Warrant_Officer_li",
+	objectName = "@mob/creature_names:crackdown_imperial_warrant_officer_ii",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

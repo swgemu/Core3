@@ -21,13 +21,13 @@ death_watch_black_sun_assassin = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_black_sun_assassin.iff"},
-	lootgroups = {},
+	lootgroups = {},--slim chance for bh armor drop
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

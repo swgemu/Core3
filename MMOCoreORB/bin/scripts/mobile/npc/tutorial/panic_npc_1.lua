@@ -1,8 +1,8 @@
 panic_npc_1 = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "imperial",
+	pvpFaction = "",
+	faction = "",
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,

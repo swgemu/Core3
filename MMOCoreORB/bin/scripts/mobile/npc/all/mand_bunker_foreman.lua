@@ -1,5 +1,6 @@
 mand_bunker_foreman = Creature:new {
-	objectName = "@mob/creature_names:Mand Bunker Foreman",
+	objectName = "",
+	customName = "Japer Witter",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",

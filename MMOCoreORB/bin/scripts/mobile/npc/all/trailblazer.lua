@@ -1,5 +1,6 @@
 trailblazer = Creature:new {
-	objectName = "@mob/creature_names:Trailblazer",
+	objectName = "",
+	customName = "a Trailblazer",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",

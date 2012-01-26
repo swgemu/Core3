@@ -1,5 +1,6 @@
 stoos_olko = Creature:new {
-	objectName = "@mob/creature_names:Stoos_Olko",
+	objectName = "",
+	customName = "Stoos Olko",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

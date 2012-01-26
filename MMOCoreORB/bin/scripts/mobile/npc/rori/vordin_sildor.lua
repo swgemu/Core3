@@ -1,5 +1,6 @@
 vordin_sildor = Creature:new {
-	objectName = "@mob/creature_names:Vordin_Sildor",
+	objectName = "",
+	costumName = "Vordin Sildor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 narmle_militia_commando = Creature:new {
-	objectName = "@mob/creature_names:narmle_militia_commando",
+	objectName = "@mob/creature_names:narmle_commando",
 	socialGroup = "Narmle",
 	pvpFaction = "Narmle",
 	faction = "",

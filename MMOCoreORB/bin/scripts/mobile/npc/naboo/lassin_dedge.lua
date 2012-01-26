@@ -1,5 +1,6 @@
 lassin_dedge = Creature:new {
-	objectName = "@mob/creature_names:Lassin Dedge",
+	objectName = "",
+	customName = "Lassin Dedge",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

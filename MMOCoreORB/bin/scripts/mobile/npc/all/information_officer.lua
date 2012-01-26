@@ -1,5 +1,5 @@
 information_officer = Creature:new {
-	objectName = "@mob/creature_names:Information Officer",
+	objectName = "@mob/creature_names:coa3_information_rebel",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

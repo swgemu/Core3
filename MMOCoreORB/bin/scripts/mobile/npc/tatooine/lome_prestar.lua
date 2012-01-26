@@ -1,5 +1,6 @@
 lome_prestar = Creature:new {
-	objectName = "@mob/creature_names:Lome Prestar",
+	objectName = "",
+	customName = "Lome Prestar",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,6 @@
 dalla_solo = Creature:new {
-	objectName = "@mob/creature_names:Dalla_Solo",
+	objectName = "",
+	customName = "Dalla Solo",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

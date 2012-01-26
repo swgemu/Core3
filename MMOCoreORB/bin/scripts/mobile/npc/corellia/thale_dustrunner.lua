@@ -1,5 +1,6 @@
 thale_dustrunner = Creature:new {
-	objectName = "@mob/creature_names:Thale dustrunner",
+	objectName = "",
+	customName = "Thale Dustrunner",
 	socialGroup = "Corsec",
 	pvpFaction = "",
 	faction = "",

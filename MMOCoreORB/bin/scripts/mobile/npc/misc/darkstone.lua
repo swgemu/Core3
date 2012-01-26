@@ -1,5 +1,6 @@
 darkstone = Creature:new {
-	objectName = "@mob/creature_names:Darkstone",
+	objectName = "",
+	customName = "Colonel Darkstone",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

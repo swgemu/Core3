@@ -1,5 +1,6 @@
 phinea_shantee = Creature:new {
-	objectName = "@mob/creature_names:Phinea Shantee",
+	objectName = "",
+	customName = "Phinea Shantee",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

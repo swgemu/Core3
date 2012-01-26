@@ -1,5 +1,5 @@
 computer_scientist = Creature:new {
-	objectName = "@mob/creature_names:computer_scientist",
+	objectName = "@mob/creature_names:warren_insane_comp_sci",
 	socialGroup = "Warren Teraud",
 	pvpFaction = "Warren Teraud",
 	faction = "",

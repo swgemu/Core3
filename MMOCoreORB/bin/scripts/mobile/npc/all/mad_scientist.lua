@@ -1,5 +1,6 @@
 mad_scientist = Creature:new {
-	objectName = "@mob/creature_names:mad scientist",
+	objectName = "",
+	customName = "a Mad Scientist",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

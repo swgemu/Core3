@@ -1,5 +1,5 @@
 pistoleer_trainer = Creature:new {
-	objectName = "@mob/creature_names:Pistoleer trainer",
+	objectName = "@mob/creature_names:trainer_pistol",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

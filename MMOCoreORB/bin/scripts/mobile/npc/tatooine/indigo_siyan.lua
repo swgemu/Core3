@@ -1,5 +1,6 @@
 indigo_siyan = Creature:new {
-	objectName = "@mob/creature_names:Indigo Siyan",
+	objectName = "",
+	customName = "Indigo Siyan",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

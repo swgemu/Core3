@@ -1,5 +1,6 @@
 stella = Creature:new {
-	objectName = "@mob/creature_names:Stella",
+	objectName = "",
+	customName = "Stella",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

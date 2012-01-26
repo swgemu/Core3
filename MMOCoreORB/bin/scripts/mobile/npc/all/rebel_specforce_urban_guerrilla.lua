@@ -1,5 +1,5 @@
 rebel_specforce_urban_guerrilla = Creature:new {
-	objectName = "@mob/creature_names:Rebel SpecForce urban guerrilla",
+	objectName = "@mob/creature_names:rebel_specforce_guerrilla",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

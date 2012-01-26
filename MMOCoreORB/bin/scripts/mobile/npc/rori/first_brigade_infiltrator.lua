@@ -1,5 +1,5 @@
 first_brigade_infiltrator = Creature:new {
-	objectName = "@mob/creature_names:First_Brigade_infiltrator",
+	objectName = "@mob/creature_names:brigade_infiltrator",
 	socialGroup = "Restuss",
 	pvpFaction = "Restuss",
 	faction = "",

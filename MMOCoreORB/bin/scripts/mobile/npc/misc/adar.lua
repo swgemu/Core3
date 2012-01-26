@@ -1,5 +1,6 @@
 adar = Creature:new {
-	objectName = "@mob/creature_names:adar",
+	objectName = "",
+	customName = "Adar Tallon",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

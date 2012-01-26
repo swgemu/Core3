@@ -1,5 +1,6 @@
 thrown = Creature:new {
-	objectName = "@mob/creature_names:Thrown",
+	objectName = "",
+	customName = "Captain Thrawn",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

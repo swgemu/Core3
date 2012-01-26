@@ -1,5 +1,5 @@
 rebel_coordinator = Creature:new {
-	objectName = "@mob/creature_names:Rebel coordinator",
+	objectName = "@mob/creature_names:coa2_rebel_coordinator",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

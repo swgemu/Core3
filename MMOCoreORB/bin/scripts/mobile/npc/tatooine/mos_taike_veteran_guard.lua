@@ -1,5 +1,5 @@
 mos_taike_veteran_guard = Creature:new {
-	objectName = "@mob/creature_names:Mos_Taike_veteran_guard",
+	objectName = "@mob/creature_names:mos_taike_guard_old",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

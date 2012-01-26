@@ -1,5 +1,5 @@
 captain_sarguillo = Creature:new {
-	objectName = "@mob/creature_names:Captain_Sarguillo",
+	objectName = "@mob/creature_names:fs_villager_captain",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

@@ -1,5 +1,6 @@
 jazeen_thurmm = Creature:new {
-	objectName = "@mob/creature_names:Jazeen Thurmm",
+	objectName = "",
+	customName = "Jazzen Thurmm",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

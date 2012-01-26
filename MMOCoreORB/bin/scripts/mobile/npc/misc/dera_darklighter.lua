@@ -1,5 +1,5 @@
 dera_darklighter = Creature:new {
-	objectName = "@mob/creature_names:Dera_darklighter",
+	objectName = "@mob/creature_names:dera_darklighter",
 	socialGroup = "Darklighter",
 	pvpFaction = "",
 	faction = "",

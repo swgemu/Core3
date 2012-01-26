@@ -1,5 +1,6 @@
 tiem_rutnar = Creature:new {
-	objectName = "@mob/creature_names:Tiem Rutnar",
+	objectName = "",
+	customName = "Tiem Rutnar",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

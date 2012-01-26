@@ -1,5 +1,5 @@
 imperial_slicer_gang_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Imperial_slicer_gang_(COA2)",
+	objectName = "@mob/creature_names:slicer",
 	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 romo_vax = Creature:new {
-	objectName = "@mob/creature_names:Romo Vax",
+	objectName = "",
+	customName = "Romo Vax",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",

@@ -1,5 +1,6 @@
 bith_musician = Creature:new {
-	objectName = "@mob/creature_names:bith_musician",
+	objectName = "",
+	customName = "Bith Musician",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 gabriel_lan = Creature:new {
-	objectName = "@mob/creature_names:Gabriel lan",
+	objectName = "",
+	customName = "Gabriel Ian",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

@@ -1,5 +1,6 @@
 kwin_moonraiser = Creature:new {
-	objectName = "@mob/creature_names:Kwin Moonraiser",
+	objectName = "",
+	customName = "Kwin Moonraiser",
 	socialGroup = "Darklighter",
 	pvpFaction = "",
 	faction = "",

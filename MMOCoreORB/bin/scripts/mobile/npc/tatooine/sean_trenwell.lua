@@ -1,5 +1,6 @@
 sean_trenwell = Creature:new {
-	objectName = "@mob/creature_names:Sean Trenwell",
+	objectName = "",
+	customName = "Sean Trenwell",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

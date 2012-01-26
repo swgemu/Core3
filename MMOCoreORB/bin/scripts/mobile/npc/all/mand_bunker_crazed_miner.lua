@@ -1,5 +1,5 @@
 mand_bunker_crazed_miner = Creature:new {
-	objectName = "@mob/creature_names:Mand Bunker Crazed Miner",
+	objectName = "@mob/creature_names:death_watch_miner",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",

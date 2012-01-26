@@ -1,5 +1,6 @@
 wilhalm_skrim = Creature:new {
-	objectName = "@mob/creature_names:wilhalm_skrim",
+	objectName = "",
+	customName = "Wilhalm Skrim",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 kormund_thrylle = Creature:new {
-	objectName = "@mob/creature_names:Kormund Thrylle",
+	objectName = "",
+	customName = "Kormund Thrylle",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

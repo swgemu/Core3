@@ -1,5 +1,6 @@
 fixer = Creature:new {
-	objectName = "@mob/creature_names:Fixer",
+	objectName = "",
+	customName = "Fixer",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

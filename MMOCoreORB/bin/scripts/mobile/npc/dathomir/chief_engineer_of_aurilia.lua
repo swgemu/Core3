@@ -1,5 +1,5 @@
 chief_engineer_of_aurilia = Creature:new {
-	objectName = "@mob/creature_names:chief_engineer_of_Aurilia",
+	objectName = "@mob/creature_names:fs_villager_engineer",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

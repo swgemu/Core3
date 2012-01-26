@@ -1,5 +1,5 @@
 imperial_stealth_operative = Creature:new {
-	objectName = "@mob/creature_names:Imperial_stealth_operative",
+	objectName = "@mob/creature_names:assassin_mission_recruiter_imperial",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

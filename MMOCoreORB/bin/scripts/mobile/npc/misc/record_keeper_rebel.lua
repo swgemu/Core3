@@ -1,5 +1,6 @@
 record_keeper_rebel = Creature:new {
-	objectName = "@mob/creature_names:Record Keeper Rebel",
+	objectName = "",
+	costumName = "Lt. Ogo (Planetary Record Keeper)",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

@@ -1,5 +1,5 @@
 librarian = Creature:new {
-	objectName = "@mob/creature_names:Librarian",
+	objectName = "@mob/creature_names:trivia_librarian",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

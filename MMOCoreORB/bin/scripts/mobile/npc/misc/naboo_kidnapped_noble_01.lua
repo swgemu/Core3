@@ -1,5 +1,6 @@
 naboo_kidnapped_noble_01 = Creature:new {
-	objectName = "@mob/creature_names:Naboo Kidnapped Noble 01",
+	objectName = "",
+	customName = "a Kidnapped Noble",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,5 @@
 vanvi_hotne = Creature:new {
-	objectName = "@mob/creature_names:Vanvi_Hotne",
+	objectName = "@mob/creature_names:bestine_artist01",
 	socialGroup = "Artist",
 	pvpFaction = "",
 	faction = "",

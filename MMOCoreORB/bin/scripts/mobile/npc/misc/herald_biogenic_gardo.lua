@@ -1,5 +1,6 @@
 herald_biogenic_gardo = Creature:new {
-	objectName = "@mob/creature_names:Herald Biogenic Gardo",
+	objectName = "",
+	customName = "Gardo",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

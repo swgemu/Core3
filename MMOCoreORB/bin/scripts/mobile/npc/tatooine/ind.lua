@@ -1,5 +1,6 @@
 ind = Creature:new {
-	objectName = "@mob/creature_names:Ind",
+	objectName = "",
+	customName = "Ind",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",

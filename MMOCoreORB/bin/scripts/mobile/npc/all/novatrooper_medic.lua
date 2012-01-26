@@ -1,5 +1,5 @@
 novatrooper_medic = Creature:new {
-	objectName = "@mob/creature_names:Novatrooper Medic",
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_medic",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

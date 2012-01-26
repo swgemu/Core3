@@ -1,5 +1,6 @@
 palejo_reshad = Creature:new {
-	objectName = "@mob/creature_names:Palejo Reshad",
+	objectName = "",
+	customName = "Palejo Reshad",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

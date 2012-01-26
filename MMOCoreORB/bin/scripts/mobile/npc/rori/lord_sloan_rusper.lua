@@ -1,5 +1,6 @@
 lord_sloan_rusper = Creature:new {
-	objectName = "@mob/creature_names:Lord Sloan Rusper",
+	objectName = "",
+	customName = "Lord Sloan Rusper",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

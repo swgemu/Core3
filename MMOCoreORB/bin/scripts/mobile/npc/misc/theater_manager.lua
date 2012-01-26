@@ -1,5 +1,5 @@
 theater_manager = Creature:new {
-	objectName = "@mob/creature_names:theater manager",
+	objectName = "@mob/creature_names:quest_crowd_pleaser_theater_manager",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

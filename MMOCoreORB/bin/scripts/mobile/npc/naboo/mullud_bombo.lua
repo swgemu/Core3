@@ -1,5 +1,6 @@
 mullud_bombo = Creature:new {
-	objectName = "@mob/creature_names:Mullud Bombo",
+	objectName = "",
+	customName = "Mullud Bombo",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,6 @@
 raglith = Creature:new {
-	objectName = "@mob/creature_names:Raglith",
+	objectName = "",
+	customName = "Raglith",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

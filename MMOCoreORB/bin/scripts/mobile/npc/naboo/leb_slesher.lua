@@ -1,5 +1,6 @@
 leb_slesher = Creature:new {
-	objectName = "@mob/creature_names:Leb Slesher",
+	objectName = "",
+	customName = "Leb Slesher",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,4 +1,4 @@
-scientist = Creature:new {
+death_watch_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
@@ -21,14 +21,14 @@ scientist = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_combatmedic_trainer_human_male_01.iff", "object/mobile/dressed_brigade_captain_human_male_01.iff"},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(scientist, "scientist")
+CreatureTemplates:addCreatureTemplate(death_watch_scientist, "death_watch_scientist")

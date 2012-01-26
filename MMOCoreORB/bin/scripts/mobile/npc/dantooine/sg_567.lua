@@ -1,5 +1,6 @@
 sg_567 = Creature:new {
-	objectName = "@mob/creature_names:Sg 567",
+	objectName = "",
+	customName = "SG 567",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

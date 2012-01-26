@@ -1,5 +1,5 @@
 imperial_officer = Creature:new {
-	objectName = "@mob/creature_names:Imperial officer",
+	objectName = "@mob/creature_names:warren_imperial_officer",
 	socialGroup = "Warren imp.",
 	pvpFaction = "Warren imp.",
 	faction = "",

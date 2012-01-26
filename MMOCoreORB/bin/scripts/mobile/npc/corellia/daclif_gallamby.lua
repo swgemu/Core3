@@ -1,5 +1,6 @@
 daclif_gallamby = Creature:new {
-	objectName = "@mob/creature_names:Daclif_Gallamby",
+	objectName = "",
+	customName = "Daclif Gallamby",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

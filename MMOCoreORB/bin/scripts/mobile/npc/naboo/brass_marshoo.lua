@@ -1,5 +1,6 @@
 brass_marshoo = Creature:new {
-	objectName = "@mob/creature_names:brass_marshoo",
+	objectName = "",
+	customName = "Brass Marshoo",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

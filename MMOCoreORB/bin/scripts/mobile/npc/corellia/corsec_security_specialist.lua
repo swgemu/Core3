@@ -1,5 +1,5 @@
 corsec_security_specialist = Creature:new {
-	objectName = "@mob/creature_names:CorSec_Security_Specialist",
+	objectName = "@mob/creature_names:corsec_detective_aggro",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",

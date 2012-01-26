@@ -1,5 +1,6 @@
 junk_lila = Creature:new {
-	objectName = "@mob/creature_names:Junk_Lila",
+	objectName = "",
+	customName = "Lila",
 	socialGroup = "Borvo",
 	pvpFaction = "Borvo",
 	faction = "",

@@ -1,5 +1,5 @@
 lesser_prophet_of_the_light_side = Creature:new {
-	objectName = "@mob/creature_names:Lesser Prophet of the Light Side",
+	objectName = "@mob/creature_names:lesser_prophet_of_the_dark_side",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

@@ -1,5 +1,6 @@
 binna_jode = Creature:new {
-	objectName = "@mob/creature_names:binna_jode",
+	objectName = "",
+	customName = "Binna Jode",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

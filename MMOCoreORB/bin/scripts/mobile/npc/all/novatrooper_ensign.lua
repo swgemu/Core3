@@ -1,5 +1,5 @@
 novatrooper_ensign = Creature:new {
-	objectName = "@mob/creature_names:Novatrooper Ensign",
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_ensign",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

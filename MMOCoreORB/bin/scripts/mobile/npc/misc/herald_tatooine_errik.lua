@@ -1,5 +1,6 @@
 herald_tatooine_errik = Creature:new {
-	objectName = "@mob/creature_names:Herald Tatooine Errik",
+	objectName = "",
+	customName = "Errik",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

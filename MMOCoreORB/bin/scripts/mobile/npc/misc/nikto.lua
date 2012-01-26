@@ -1,5 +1,5 @@
 nikto = Creature:new {
-	objectName = "@mob/creature_names:Nikto",
+	objectName = "@mob/creature_names:patron_nikto",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 shalera_the_hutt = Creature:new {
-	objectName = "@mob/creature_names:Shalera The Hutt",
+	objectName = "",
+	customName = "Shalera the Hutt",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 dannik_malaan = Creature:new {
-	objectName = "@mob/creature_names:Dannik_Malaan",
+	objectName = "",
+	customName = "Dannik Malaan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

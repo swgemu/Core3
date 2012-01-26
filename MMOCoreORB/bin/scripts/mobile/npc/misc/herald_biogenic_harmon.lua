@@ -1,5 +1,6 @@
 herald_biogenic_harmon = Creature:new {
-	objectName = "@mob/creature_names:Herald Biogenic Harmon",
+	objectName = "",
+	customName = "Harmon",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

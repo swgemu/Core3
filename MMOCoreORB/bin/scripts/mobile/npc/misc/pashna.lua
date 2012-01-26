@@ -1,5 +1,6 @@
 pashna = Creature:new {
-	objectName = "@mob/creature_names:Pashna",
+	objectName = "",
+	customName = "Pashna Starkiller",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

@@ -1,5 +1,6 @@
 singular_nak = Creature:new {
-	objectName = "@mob/creature_names:Singular Nak",
+	objectName = "",
+	customName = "Singular Nak",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 irenez = Creature:new {
-	objectName = "@mob/creature_names:Irenez",
+	objectName = "",
+	customName = "Irenez",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

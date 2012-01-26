@@ -1,5 +1,5 @@
 boulo_siesi = Creature:new {
-	objectName = "@mob/creature_names:boulo_siesi",
+	objectName = "@mob/creature_names:bestine_artist06",
 	socialGroup = "Artist",
 	pvpFaction = "",
 	faction = "",

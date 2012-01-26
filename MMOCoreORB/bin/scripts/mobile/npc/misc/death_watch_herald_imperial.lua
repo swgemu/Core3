@@ -1,8 +1,9 @@
 death_watch_herald_imperial = Creature:new {
-	objectName = "@mob/creature_names:Death_Watch_Herald_Imperial",
+	objectName = "",
+	customName = "Commander D'krn",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "Imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,13 +24,13 @@ death_watch_herald_imperial = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/huma_male.iff"},
+	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
 	lootgroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "commander_dkrn_convotemplate",
 	attacks = {
 	}
 }

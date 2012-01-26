@@ -1,5 +1,6 @@
 melios_purl = Creature:new {
-	objectName = "@mob/creature_names:Melios Purl",
+	objectName = "",
+	customName = "Melios Purl",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

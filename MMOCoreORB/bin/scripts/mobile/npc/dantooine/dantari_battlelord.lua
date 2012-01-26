@@ -1,5 +1,5 @@
 dantari_battlelord = Creature:new {
-	objectName = "@mob/creature_names:Dantari_battlelord",
+	objectName = "@mob/creature_names:dantari_raider_battlelord",
 	socialGroup = "Dantari Raider",
 	pvpFaction = "Dantari Raider",
 	faction = "",

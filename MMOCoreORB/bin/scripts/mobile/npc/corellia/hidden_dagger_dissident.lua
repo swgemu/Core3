@@ -1,5 +1,5 @@
 hidden_dagger_dissident = Creature:new {
-	objectName = "@mob/creature_names:Hidden Dagger dissident",
+	objectName = "@mob/creature_names:hidden_daggers_dissident",
 	socialGroup = "Hidden Dagger",
 	pvpFaction = "Hidden Dagger",
 	faction = "",

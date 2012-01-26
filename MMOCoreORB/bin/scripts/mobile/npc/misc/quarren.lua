@@ -1,5 +1,5 @@
 quarren = Creature:new {
-	objectName = "@mob/creature_names:Quarren",
+	objectName = "@mob/creature_names:patron_quarren",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

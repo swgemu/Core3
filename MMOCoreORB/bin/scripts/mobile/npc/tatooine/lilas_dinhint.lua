@@ -1,5 +1,6 @@
 lilas_dinhint = Creature:new {
-	objectName = "@mob/creature_names:Lilas Dinhint",
+	objectName = "",
+	customName = "Lilas Dinhint",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

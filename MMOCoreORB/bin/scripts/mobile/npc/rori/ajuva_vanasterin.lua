@@ -1,5 +1,6 @@
 ajuva_vanasterin = Creature:new {
-	objectName = "@mob/creature_names:ajuva_vanasterin",
+	objectName = "",
+	costumName = "Ajuva Vanasterin",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

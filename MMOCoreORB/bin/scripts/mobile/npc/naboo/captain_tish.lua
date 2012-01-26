@@ -1,5 +1,6 @@
 captain_tish = Creature:new {
-	objectName = "@mob/creature_names:Captain_Tish",
+	objectName = "",
+	customName = "Captain Tish",
 	socialGroup = "RSF",
 	pvpFaction = "RSF",
 	faction = "",

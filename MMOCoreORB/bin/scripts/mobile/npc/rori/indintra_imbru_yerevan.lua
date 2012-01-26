@@ -1,5 +1,6 @@
 indintra_imbru_yerevan = Creature:new {
-	objectName = "@mob/creature_names:Indintra Imbru Yerevan",
+	objectName = "",
+	costumName = "Indintra Imbru Yerevan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

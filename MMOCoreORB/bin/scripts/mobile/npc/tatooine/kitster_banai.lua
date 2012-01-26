@@ -1,5 +1,6 @@
 kitster_banai = Creature:new {
-	objectName = "@mob/creature_names:Kitster Banai",
+	objectName = "",
+	customName = "Kitster Banai",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

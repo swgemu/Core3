@@ -24,6 +24,7 @@ includeFile("weapon/creature_spit_spray_yellow.lua")
 includeFile("weapon/groups/dark_trooper_weapons.lua")
 includeFile("weapon/groups/darth_vader_weapons.lua")
 includeFile("weapon/groups/battle_droid.lua")
+includeFile("weapon/groups/death_watch_commander.lua")
 
 -- tutorial
 includeFile("weapon/groups/tutorial_bandit.lua")

@@ -1,5 +1,6 @@
 cx_425 = Creature:new {
-	objectName = "@mob/creature_names:Cx_425",
+	objectName = "",
+	customName = "CX 425",
 	socialGroup = "Imperial",
 	pvpFaction = "",
 	faction = "",

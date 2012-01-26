@@ -1,5 +1,6 @@
 sigrix_slix = Creature:new {
-	objectName = "@mob/creature_names:Sigrix Slix",
+	objectName = "",
+	customName = "Sigrix Slix",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

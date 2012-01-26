@@ -1,5 +1,5 @@
 combat_medic_trainer = Creature:new {
-	objectName = "@mob/creature_names:Combat_Medic_trainer",
+	objectName = "@mob/creature_names:trainer_combatmedic",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

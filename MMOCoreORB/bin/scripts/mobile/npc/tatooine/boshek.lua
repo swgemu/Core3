@@ -1,5 +1,6 @@
 boshek = Creature:new {
-	objectName = "@mob/creature_names:boshek",
+	objectName = "",
+	customName = "Boshek",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

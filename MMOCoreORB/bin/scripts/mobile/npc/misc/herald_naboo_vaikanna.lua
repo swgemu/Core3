@@ -1,5 +1,6 @@
 herald_naboo_vaikanna = Creature:new {
-	objectName = "@mob/creature_names:Herald Naboo Vaikanna",
+	objectName = "",
+	customName = "Vaikanna",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

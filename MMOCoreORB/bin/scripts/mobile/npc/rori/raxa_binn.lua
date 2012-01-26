@@ -1,5 +1,6 @@
 raxa_binn = Creature:new {
-	objectName = "@mob/creature_names:Raxa Binn",
+	objectName = "",
+	costumName = "Raxa Binn",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

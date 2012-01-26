@@ -1,5 +1,6 @@
 skinkner = Creature:new {
-	objectName = "@mob/creature_names:Skinkner",
+	objectName = "",
+	customName = "Skinkner",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

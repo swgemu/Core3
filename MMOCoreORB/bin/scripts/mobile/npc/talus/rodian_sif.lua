@@ -1,5 +1,6 @@
 rodian_sif = Creature:new {
-	objectName = "@mob/creature_names:Rodian Sif",
+	objectName = "",
+	customName = "a rodian Sif",
 	socialGroup = "Sif",
 	pvpFaction = "Sif",
 	faction = "",

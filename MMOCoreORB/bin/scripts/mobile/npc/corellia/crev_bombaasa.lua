@@ -1,5 +1,6 @@
 crev_bombaasa = Creature:new {
-	objectName = "@mob/creature_names:Crev_Bombaasa",
+	objectName = "",
+	customName = "Crev Bombaasa",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

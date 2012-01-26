@@ -1,5 +1,6 @@
 ikka_gesul = Creature:new {
-	objectName = "@mob/creature_names:Ikka Gesul",
+	objectName = "",
+	customName = "Ikka Gesul",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

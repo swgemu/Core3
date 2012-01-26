@@ -1,5 +1,6 @@
 serji_x_arrogantus = Creature:new {
-	objectName = "@mob/creature_names:Serji X Arrogantus",
+	objectName = "",
+	customName = "Serji X Arrogantus",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 bestine = Creature:new {
-	objectName = "@mob/creature_names:bestine",
+	objectName = "",
+	customName = "Bestine",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

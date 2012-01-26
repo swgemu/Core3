@@ -1,5 +1,6 @@
 lt_oron_wintree = Creature:new {
-	objectName = "@mob/creature_names:Lt. Oron Wintree",
+	objectName = "",
+	customName = "Lt. Oron Wintree",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,5 @@
 fencer_trainer = Creature:new {
-	objectName = "@mob/creature_names:Fencer_trainer",
+	objectName = "@mob/creature_names:trainer_1hsword",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

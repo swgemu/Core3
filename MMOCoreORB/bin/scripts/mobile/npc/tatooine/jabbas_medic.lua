@@ -1,5 +1,6 @@
 jabbas_medic = Creature:new {
-	objectName = "@mob/creature_names:jabba_medic",
+	objectName = "",
+	customName = "Jabba's Medic",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",

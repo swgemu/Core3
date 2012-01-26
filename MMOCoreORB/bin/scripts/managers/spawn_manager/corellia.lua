@@ -254,7 +254,7 @@ corellia_static_spawns = {
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1935464},
 	{"informant_npc",0,-345,0,-4439,0,0},
 	--Rebel DWB Quest NPC
-	{"lutin_nightstalker",1,-213.642, 28, -4445.46, 28.5501,0},
+	{"death_watch_herald_rebel",1,-213.642, 28, -4445.46, 28.5501,0},
 	
 	
 	--Corellia Imperial Stronghold

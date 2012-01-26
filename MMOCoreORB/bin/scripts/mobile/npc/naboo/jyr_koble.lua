@@ -1,5 +1,6 @@
 jyr_koble = Creature:new {
-	objectName = "@mob/creature_names:Jyr_Koble",
+	objectName = "",
+	customName = "Jyr Koble",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,6 @@
 radlee_mathiss = Creature:new {
-	objectName = "@mob/creature_names:Radlee Mathiss",
+	objectName = "",
+	customName = "Radlee Mathiss",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 hefsen_zindalai = Creature:new {
-	objectName = "@mob/creature_names:Hefsen Zindalai",
+	objectName = "",
+	costumName = "Hefsen Zindalai",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

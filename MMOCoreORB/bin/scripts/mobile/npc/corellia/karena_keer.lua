@@ -1,5 +1,6 @@
 karena_keer = Creature:new {
-	objectName = "@mob/creature_names:Karena Keer",
+	objectName = "",
+	customName = "Karena Keer",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

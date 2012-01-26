@@ -1,5 +1,5 @@
 hutt_expeditionary_force_surveyor = Creature:new {
-	objectName = "@mob/creature_names:Hutt Expeditionary Force surveyor",
+	objectName = "@mob/creature_names:hutt_expedition_force_surveyer",
 	socialGroup = "Hutt",
 	pvpFaction = "Hutt",
 	faction = "",

@@ -1,5 +1,6 @@
 imperial_informant_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Imperial informant (COA2)",
+	objectName = "",
+	customName = "Imperial Informant",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

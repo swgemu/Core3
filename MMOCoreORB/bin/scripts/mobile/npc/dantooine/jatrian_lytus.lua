@@ -1,5 +1,6 @@
 jatrian_lytus = Creature:new {
-	objectName = "@mob/creature_names:Jatrian Lytus",
+	objectName = "",
+	customName = "Jatrian Lytus",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

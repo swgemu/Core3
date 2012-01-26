@@ -1,5 +1,6 @@
 sindra_lintikoor = Creature:new {
-	objectName = "@mob/creature_names:Sindra Lintikoor",
+	objectName = "",
+	costumName = "Sindra Lintikoor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

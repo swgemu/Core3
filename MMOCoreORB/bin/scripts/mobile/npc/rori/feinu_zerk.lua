@@ -1,5 +1,6 @@
 feinu_zerk = Creature:new {
-	objectName = "@mob/creature_names:Feinu_Zerk",
+	objectName = "",
+	costumName = "Feinu Zerk",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

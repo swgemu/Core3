@@ -1,5 +1,6 @@
 jadam_questrel = Creature:new {
-	objectName = "@mob/creature_names:Jadam Questrel",
+	objectName = "",
+	customName = "Jadam Questrel",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

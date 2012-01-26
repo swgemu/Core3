@@ -1,5 +1,6 @@
 oxil_sarban = Creature:new {
-	objectName = "@mob/creature_names:Oxil Sarban",
+	objectName = "",
+	costumName = "Oxil Sarban",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

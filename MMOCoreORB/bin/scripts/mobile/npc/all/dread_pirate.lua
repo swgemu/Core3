@@ -1,5 +1,5 @@
 dread_pirate = Creature:new {
-	objectName = "@mob/creature_names:dread_pirate",
+	objectName = "@mob/creature_names:naboo_dread_pirate",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",

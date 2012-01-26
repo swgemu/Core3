@@ -1,5 +1,6 @@
 jaleela_bindoo = Creature:new {
-	objectName = "@mob/creature_names:Jaleela Bindoo",
+	objectName = "",
+	customName = "Jaleela Bindoo",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

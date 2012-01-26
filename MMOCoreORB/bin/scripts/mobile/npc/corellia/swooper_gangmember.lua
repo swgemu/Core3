@@ -1,5 +1,5 @@
 swooper_gangmember = Creature:new {
-	objectName = "@mob/creature_names:swooper_gangmember",
+	objectName = "@mob/creature_names:swooper",
 	socialGroup = "Swoop",
 	pvpFaction = "Cor. Sw.",
 	faction = "",

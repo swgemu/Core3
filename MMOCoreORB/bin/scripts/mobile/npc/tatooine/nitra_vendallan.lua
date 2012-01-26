@@ -1,5 +1,6 @@
 nitra_vendallan = Creature:new {
-	objectName = "@mob/creature_names:Nitra Vendallan",
+	objectName = "",
+	customName = "Nitra Vendallan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

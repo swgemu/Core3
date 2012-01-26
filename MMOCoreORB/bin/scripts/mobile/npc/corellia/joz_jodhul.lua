@@ -1,5 +1,6 @@
 joz_jodhul = Creature:new {
-	objectName = "@mob/creature_names:Joz Jodhul",
+	objectName = "",
+	customName = "Joz Jodhul",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

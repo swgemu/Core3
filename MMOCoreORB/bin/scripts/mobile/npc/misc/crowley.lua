@@ -1,5 +1,6 @@
 crowley = Creature:new {
-	objectName = "@mob/creature_names:Crowley",
+	objectName = "",
+	customName = "Master Sergeant Crowley",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

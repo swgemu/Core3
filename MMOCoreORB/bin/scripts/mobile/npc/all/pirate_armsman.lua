@@ -1,5 +1,5 @@
 pirate_armsman = Creature:new {
-	objectName = "@mob/creature_names:pirate armsman",
+	objectName = "@mob/creature_names:naboo_pirate_armsman",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",

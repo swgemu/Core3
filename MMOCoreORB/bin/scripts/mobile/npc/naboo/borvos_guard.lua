@@ -1,5 +1,6 @@
 borvos_guard = Creature:new {
-	objectName = "@mob/creature_names:borvos_guard",
+	objectName = "",
+	customName = "Borvo's Guard",
 	socialGroup = "Borvo",
 	pvpFaction = "Borvo",
 	faction = "",

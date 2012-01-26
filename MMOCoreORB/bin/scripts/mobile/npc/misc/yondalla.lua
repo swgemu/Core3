@@ -1,5 +1,6 @@
 yondalla = Creature:new {
-	objectName = "@mob/creature_names:Yondalla",
+	objectName = "",
+	customName = "Yondalla",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

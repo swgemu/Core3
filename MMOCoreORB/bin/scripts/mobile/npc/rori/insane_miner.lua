@@ -1,5 +1,6 @@
 insane_miner = Creature:new {
-	objectName = "@mob/creature_names:Insane Miner",
+	objectName = "",
+	costumName = "an Insane Miner",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",

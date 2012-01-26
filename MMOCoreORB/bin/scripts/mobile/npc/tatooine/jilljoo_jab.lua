@@ -1,5 +1,6 @@
 jilljoo_jab = Creature:new {
-	objectName = "@mob/creature_names:Jilljoo Jab",
+	objectName = "",
+	customName = "Jilljoo Jab",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

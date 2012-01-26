@@ -1,5 +1,5 @@
 tough_dathomir_prisoner = Creature:new {
-	objectName = "@mob/creature_names:tough Dathomir prisoner",
+	objectName = "@mob/creature_names:prisoner",
 	socialGroup = "Prisoner",
 	pvpFaction = "",
 	faction = "",

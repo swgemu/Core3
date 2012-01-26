@@ -1,5 +1,6 @@
 crider_trant = Creature:new {
-	objectName = "@mob/creature_names:Crider_Trant",
+	objectName = "",
+	customName = "Crider Trant",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

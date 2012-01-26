@@ -1,5 +1,6 @@
 palo = Creature:new {
-	objectName = "@mob/creature_names:Palo",
+	objectName = "",
+	customName = "Palo",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

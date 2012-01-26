@@ -1,5 +1,6 @@
 chertyl_ruluwoor = Creature:new {
-	objectName = "@mob/creature_names:Chertyl_Ruluwoor",
+	objectName = "",
+	customName = "Chertyl Ruluwoor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

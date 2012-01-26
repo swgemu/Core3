@@ -1,5 +1,6 @@
 farious_gletch = Creature:new {
-	objectName = "@mob/creature_names:Farious_Gletch",
+	objectName = "",
+	customName = "Farious Gletch",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

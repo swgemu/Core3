@@ -1,5 +1,5 @@
 image_designer_trainer = Creature:new {
-	objectName = "@mob/creature_names:Image Designer trainer",
+	objectName = "@mob/creature_names:trainer_imagedesigner",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

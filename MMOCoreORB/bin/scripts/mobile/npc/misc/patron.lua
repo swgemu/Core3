@@ -1,5 +1,5 @@
 patron = Creature:new {
-	objectName = "@mob/creature_names:patron",
+	objectName = "@mob/creature_names:patron_human_male_01",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

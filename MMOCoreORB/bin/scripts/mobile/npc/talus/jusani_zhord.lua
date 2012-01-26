@@ -1,5 +1,6 @@
 jusani_zhord = Creature:new {
-	objectName = "@mob/creature_names:Jusani_Zhord",
+	objectName = "",
+	customName = "Jusani Zhord",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

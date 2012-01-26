@@ -1,5 +1,5 @@
 competent_gondula_ritualist = Creature:new {
-	objectName = "@mob/creature_names:Competent_Gondula_ritualist",
+	objectName = "@mob/creature_names:competent_gundula_ritualist",
 	socialGroup = "Condula Tribe",
 	pvpFaction = "Condula Tribe",
 	faction = "",

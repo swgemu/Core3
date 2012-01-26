@@ -1,5 +1,5 @@
 imperial_surface_marshall = Creature:new {
-	objectName = "@mob/creature_names:Imperial_surface_Marshall",
+	objectName = "@mob/creature_names:mission_imperial_surface_marshal",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

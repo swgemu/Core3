@@ -1,5 +1,6 @@
 vraker_orde = Creature:new {
-	objectName = "@mob/creature_names:Vraker_Orde",
+	objectName = "",
+	customName = "Vraker Orde",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

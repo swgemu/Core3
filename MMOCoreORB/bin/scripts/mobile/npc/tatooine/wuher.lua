@@ -1,5 +1,6 @@
 wuher = Creature:new {
-	objectName = "@mob/creature_names:Wuher",
+	objectName = "",
+	customName = "Wuher",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 isshala_daprovan = Creature:new {
-	objectName = "@mob/creature_names:Isshala Daprovan",
+	objectName = "",
+	customName = "Isshala Daprovan",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

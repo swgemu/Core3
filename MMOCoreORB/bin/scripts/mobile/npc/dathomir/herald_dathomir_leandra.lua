@@ -1,5 +1,6 @@
 herald_dathomir_leandra = Creature:new {
-	objectName = "@mob/creature_names:Herald Dathomir Leandra",
+	objectName = "",
+	customName = "Spell Weaver Leandra",
 	socialGroup = "Nightsister",
 	pvpFaction = "Nightsister",
 	faction = "",

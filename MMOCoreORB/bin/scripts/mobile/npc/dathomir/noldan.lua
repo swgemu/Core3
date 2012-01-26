@@ -1,5 +1,5 @@
 noldan = Creature:new {
-	objectName = "@mob/creature_names:Noldan",
+	objectName = "@mob/creature_names:trainer_fs",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

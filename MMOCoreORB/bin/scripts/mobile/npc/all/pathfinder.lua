@@ -1,5 +1,6 @@
 pathfinder = Creature:new {
-	objectName = "@mob/creature_names:Pathfinder",
+	objectName = "",
+	costumName = "Pathfinder",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 ris_inventor = Creature:new {
-	objectName = "@mob/creature_names:Ris Inventor",
+	objectName = "",
+	customName = "an R.I.S. Inventor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

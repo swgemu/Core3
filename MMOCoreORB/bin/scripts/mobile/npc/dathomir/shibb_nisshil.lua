@@ -1,5 +1,6 @@
 shibb_nisshil = Creature:new {
-	objectName = "@mob/creature_names:Shibb Nisshil",
+	objectName = "",
+	customName = "Shibb Nisshil",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

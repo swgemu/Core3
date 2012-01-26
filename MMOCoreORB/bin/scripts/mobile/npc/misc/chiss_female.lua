@@ -1,5 +1,5 @@
 chiss_female = Creature:new {
-	objectName = "@mob/creature_names:Chiss_female",
+	objectName = "@mob/creature_names:patron_chiss_female",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

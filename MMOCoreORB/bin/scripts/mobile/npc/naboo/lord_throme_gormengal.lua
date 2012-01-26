@@ -1,5 +1,6 @@
 lord_throme_gormengal = Creature:new {
-	objectName = "@mob/creature_names:Lord Throme Gormengal",
+	objectName = "",
+	customName = "Lord Throme Gormengal",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

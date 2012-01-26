@@ -1,5 +1,5 @@
 nyms_brawler = Creature:new {
-	objectName = "@mob/creature_names:Nym's_brawler",
+	objectName = "@mob/creature_names:nym_brawler",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",

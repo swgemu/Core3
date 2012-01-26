@@ -1,5 +1,6 @@
 herald_biogenic_teraeza = Creature:new {
-	objectName = "@mob/creature_names:Herald Biogenic Teraeza",
+	objectName = "",
+	customName = "Teraeza",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

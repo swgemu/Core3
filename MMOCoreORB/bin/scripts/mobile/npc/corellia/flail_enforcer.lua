@@ -1,5 +1,6 @@
 flail_enforcer = Creature:new {
-	objectName = "@mob/creature_names:Flail enforcer",
+	objectName = "",
+	customName = "a Flail enforcer",
 	socialGroup = "Flail",
 	pvpFaction = "Flail",
 	faction = "",

@@ -1,5 +1,6 @@
 junk_nado = Creature:new {
-	objectName = "@mob/creature_names:Junk_Nado",
+	objectName = "",
+	customName = "Nado",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

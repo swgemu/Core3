@@ -1,5 +1,6 @@
 vetran_explorer = Creature:new {
-	objectName = "@mob/creature_names:vetran_explorer",
+	objectName = "",
+	customName = "a Veteran Explorer",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",

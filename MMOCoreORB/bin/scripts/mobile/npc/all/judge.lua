@@ -1,5 +1,5 @@
 judge = Creature:new {
-	objectName = "@mob/creature_names:judge",
+	objectName = "@mob/creature_names:quest_crowd_pleaser_judge",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

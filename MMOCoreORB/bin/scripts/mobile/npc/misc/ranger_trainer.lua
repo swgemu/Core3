@@ -1,5 +1,5 @@
 ranger_trainer = Creature:new {
-	objectName = "@mob/creature_names:Ranger trainer",
+	objectName = "@mob/creature_names:trainer_ranger",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

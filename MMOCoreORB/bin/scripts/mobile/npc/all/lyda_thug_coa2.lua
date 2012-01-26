@@ -1,5 +1,5 @@
 lyda_thug_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Lyda thug (COA2)",
+	objectName = "@mob/creature_names:thug",
 	socialGroup = "Thug",
 	pvpFaction = "",
 	faction = "",

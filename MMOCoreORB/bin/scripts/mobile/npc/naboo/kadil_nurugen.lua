@@ -1,5 +1,6 @@
 kadil_nurugen = Creature:new {
-	objectName = "@mob/creature_names:Kadil_Nurugen",
+	objectName = "",
+	customName = "Kadil Nurugen",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

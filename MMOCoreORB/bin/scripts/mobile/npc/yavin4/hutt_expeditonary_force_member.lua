@@ -1,5 +1,5 @@
 hutt_expeditonary_force_member = Creature:new {
-	objectName = "@mob/creature_names:Hutt Expeditonary Force member",
+	objectName = "@mob/creature_names:hutt_expedition_force_member",
 	socialGroup = "Hutt",
 	pvpFaction = "Hutt",
 	faction = "",

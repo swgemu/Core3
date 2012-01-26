@@ -1,5 +1,6 @@
 lt_lance = Creature:new {
-	objectName = "@mob/creature_names:Lt. Lance",
+	objectName = "",
+	costumName = "Lt. Lance",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

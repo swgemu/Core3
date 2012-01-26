@@ -1,5 +1,6 @@
 caravan_leader_coa3 = Creature:new {
-	objectName = "@mob/creature_names:Caravan_leader_(COA3)",
+	objectName = "",
+	customName = "Caravan Leader",
 	socialGroup = "Caravan",
 	pvpFaction = "Jabba",
 	faction = "",

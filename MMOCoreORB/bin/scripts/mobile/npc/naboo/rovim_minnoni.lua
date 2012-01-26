@@ -1,5 +1,6 @@
 rovim_minnoni = Creature:new {
-	objectName = "@mob/creature_names:Rovim Minnoni",
+	objectName = "",
+	customName = "Rovim Minnoni",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

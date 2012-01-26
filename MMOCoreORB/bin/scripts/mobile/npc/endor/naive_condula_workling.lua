@@ -1,5 +1,5 @@
 naive_condula_workling = Creature:new {
-	objectName = "@mob/creature_names:naive Condula workling",
+	objectName = "@mob/creature_names:naive_gondula_workling",
 	socialGroup = "Gondula Tribe",
 	pvpFaction = "Gondula Tribe",
 	faction = "",

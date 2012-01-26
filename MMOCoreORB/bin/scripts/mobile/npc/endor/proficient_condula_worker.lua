@@ -1,5 +1,5 @@
 proficient_condula_worker = Creature:new {
-	objectName = "@mob/creature_names:proficient Condula worker",
+	objectName = "@mob/creature_names:proficient_gondula_worker",
 	socialGroup = "Gondula Tribe",
 	pvpFaction = "Gondula Tribe",
 	faction = "",

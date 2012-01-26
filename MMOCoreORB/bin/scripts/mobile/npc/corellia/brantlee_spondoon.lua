@@ -1,5 +1,6 @@
 brantlee_spondoon = Creature:new {
-	objectName = "@mob/creature_names:brantlee_spondoon",
+	objectName = "",
+	customName = "Brantlee Spondoon",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

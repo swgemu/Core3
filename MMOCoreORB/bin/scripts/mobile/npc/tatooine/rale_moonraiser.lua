@@ -1,5 +1,6 @@
 rale_moonraiser = Creature:new {
-	objectName = "@mob/creature_names:Rale Moonraiser",
+	objectName = "",
+	customName = "Rale Moonraiser",
 	socialGroup = "Darklighter",
 	pvpFaction = "",
 	faction = "",

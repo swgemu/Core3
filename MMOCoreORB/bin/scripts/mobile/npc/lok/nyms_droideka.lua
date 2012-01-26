@@ -1,5 +1,5 @@
 nyms_droideka = Creature:new {
-	objectName = "@mob/creature_names:Nym's_droideka",
+	objectName = "@mob/creature_names:nym_droideka_strong",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",

@@ -1,5 +1,6 @@
 kavas_urdano = Creature:new {
-	objectName = "@mob/creature_names:Kavas Urdano",
+	objectName = "",
+	customName = "Kavas Urdano",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",

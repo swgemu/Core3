@@ -1,5 +1,5 @@
 dark_adept = Creature:new {
-	objectName = "@mob/creature_names:Dark_adept",
+	objectName = "@mob/creature_names:dark_adept",
 	socialGroup = "Dark Jedi",
 	pvpFaction = "",
 	faction = "",
@@ -10,7 +10,7 @@ dark_adept = Creature:new {
 	baseXp = 13178,
 	baseHAM = 50000,
 	baseHAMmax = 61000,
-	armor = 3,
+	armor = 2,
 	resists = {80,80,80,80,80,80,80,80,-1},
 	meatType = "",
 	meatAmount = 0,

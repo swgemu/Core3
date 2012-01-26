@@ -1,5 +1,5 @@
 feral_force_wielder = Creature:new {
-	objectName = "@mob/creature_names:Feral_force_wielder",
+	objectName = "@mob/creature_names:feral_force_wilder",
 	socialGroup = "Force Reneg.",
 	pvpFaction = "",
 	faction = "",

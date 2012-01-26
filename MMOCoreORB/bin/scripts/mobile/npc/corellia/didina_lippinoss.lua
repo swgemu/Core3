@@ -1,5 +1,6 @@
 didina_lippinoss = Creature:new {
-	objectName = "@mob/creature_names:Didina_Lippinoss",
+	objectName = "",
+	customName = "Didina Lippinoss",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

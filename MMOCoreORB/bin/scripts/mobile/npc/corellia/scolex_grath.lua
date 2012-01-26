@@ -1,5 +1,6 @@
 scolex_grath = Creature:new {
-	objectName = "@mob/creature_names:Scolex Grath",
+	objectName = "",
+	customName = "Scolex Grath",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

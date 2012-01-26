@@ -1,5 +1,5 @@
 rebel_commodore = Creature:new {
-	objectName = "@mob/creature_names:Rebel Commodore",
+	objectName = "@mob/creature_names:corvette_rebel_commodore",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

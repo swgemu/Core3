@@ -1,5 +1,6 @@
 senni_tonnika = Creature:new {
-	objectName = "@mob/creature_names:Senni Tonnika",
+	objectName = "",
+	customName = "Senni Tonnika",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

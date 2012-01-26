@@ -29,7 +29,7 @@ boba_fett = Creature:new {
 	templates = {"object/mobile/boba_fett.iff"},
 	lootgroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	conversationTemplate = "boba_fett_conv",
+	conversationTemplate = "boba_fett_convotemplate",
 	attacks = {
 	}
 }

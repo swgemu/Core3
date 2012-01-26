@@ -1,5 +1,5 @@
 imprisoned_imperial_officer = Creature:new {
-	objectName = "@mob/creature_names:imprisoned_Imperial_officer",
+	objectName = "@mob/creature_names:imprisoned_imperial",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

@@ -1,5 +1,5 @@
 lost_aqualish_marshall = Creature:new {
-	objectName = "@mob/creature_names:Lost Aqualish Marshall",
+	objectName = "@mob/creature_names:lost_aqualish_marshal",
 	socialGroup = "Lost Aql. Reg.",
 	pvpFaction = "Lost Aql. Reg.",
 	faction = "",

@@ -1,5 +1,6 @@
 relay_captain_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Relay Captain (COA2)",
+	objectName = "",
+	customName = "a Relay Captain",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

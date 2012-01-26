@@ -1,5 +1,6 @@
 warehouse_thug_coa3 = Creature:new {
-	objectName = "@mob/creature_names:Warehouse_thug (COA3)",
+	objectName = "",
+	customName = "a Warehouse Thug",
 	socialGroup = "Warehouse",
 	pvpFaction = "Jabba",
 	faction = "",

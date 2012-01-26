@@ -1,5 +1,5 @@
 dathomir_prisoner = Creature:new {
-	objectName = "@mob/creature_names:Dathomir_prisoner",
+	objectName = "@mob/creature_names:prisoner",
 	socialGroup = "Prisoner",
 	pvpFaction = "",
 	faction = "",

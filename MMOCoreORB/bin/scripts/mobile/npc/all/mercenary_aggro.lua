@@ -1,5 +1,5 @@
 mercenary_aggro = Creature:new {
-	objectName = "@mob/creature_names:Mercenary Aggro",
+	objectName = "@mob/creature_names:mercenary",
 	socialGroup = "Mercenary",
 	pvpFaction = "",
 	faction = "",

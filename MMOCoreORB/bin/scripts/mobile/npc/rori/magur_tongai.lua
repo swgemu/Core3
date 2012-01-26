@@ -1,5 +1,6 @@
 magur_tongai = Creature:new {
-	objectName = "@mob/creature_names:Magur Tongai",
+	objectName = "",
+	costumName = "Magur Tongai",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

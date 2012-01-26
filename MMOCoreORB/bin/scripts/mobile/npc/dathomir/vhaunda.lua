@@ -1,5 +1,6 @@
 vhaunda = Creature:new {
-	objectName = "@mob/creature_names:Vhaunda",
+	objectName = "",
+	customName = "Vhaunda",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

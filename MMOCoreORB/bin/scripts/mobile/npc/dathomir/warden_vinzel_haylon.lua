@@ -1,5 +1,6 @@
 warden_vinzel_haylon = Creature:new {
-	objectName = "@mob/creature_names:Warden_Vinzel_Haylon",
+	objectName = "",
+	customName = "Warden Vinzel Hayon",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

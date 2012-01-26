@@ -1,5 +1,5 @@
 dune_stalker_scavenger = Creature:new {
-	objectName = "@mob/creature_names:Dune_Stalker_scavenger",
+	objectName = "@mob/creature_names:dune_stalker_avenger",
 	socialGroup = "Dune Stalker",
 	pvpFaction = "",
 	faction = "",

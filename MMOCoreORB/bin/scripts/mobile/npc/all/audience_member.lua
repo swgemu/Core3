@@ -1,5 +1,6 @@
 audience_member = Creature:new {
-	objectName = "@mob/creature_names:audience_member",
+	objectName = "",
+	customName = "audience_member",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

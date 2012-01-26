@@ -1,5 +1,6 @@
 junk_reggi = Creature:new {
-	objectName = "@mob/creature_names:Junk_Reggi",
+	objectName = "",
+	customName = "Reggi",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",

@@ -1,5 +1,6 @@
 windom_starkiller = Creature:new {
-	objectName = "@mob/creature_names:Windom_Starkiller",
+	objectName = "",
+	customName = "Windom Starkiller",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

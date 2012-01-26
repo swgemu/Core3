@@ -1,5 +1,5 @@
 giaal_itotr = Creature:new {
-	objectName = "@mob/creature_names:Giaal Itotr",
+	objectName = "@mob/creature_names:bestine_artist03",
 	socialGroup = "Artist",
 	pvpFaction = "",
 	faction = "",

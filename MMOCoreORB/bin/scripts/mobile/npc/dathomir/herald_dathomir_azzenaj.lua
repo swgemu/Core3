@@ -1,5 +1,6 @@
 herald_dathomir_azzenaj = Creature:new {
-	objectName = "@mob/creature_names:Herald Dathomir Azzenaj",
+	objectName = "",
+	customName = "Arch Witch Azzenaj",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",

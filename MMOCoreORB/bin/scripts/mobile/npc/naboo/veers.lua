@@ -1,5 +1,6 @@
 veers = Creature:new {
-	objectName = "@mob/creature_names:Veers",
+	objectName = "",
+	customName = "Veers",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

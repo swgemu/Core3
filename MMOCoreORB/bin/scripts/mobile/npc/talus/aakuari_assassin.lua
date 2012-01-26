@@ -1,5 +1,6 @@
 aakuari_assassin = Creature:new {
-	objectName = "@mob/creature_names:aakuari_assassin",
+	objectName = "",
+	customName = "Aa'kuan Assassin",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",

@@ -1,5 +1,6 @@
 vinya_maysor = Creature:new {
-	objectName = "@mob/creature_names:Vinya_Maysor",
+	objectName = "",
+	customName = "Vinya Maysor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

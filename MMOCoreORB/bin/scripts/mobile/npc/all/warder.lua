@@ -1,5 +1,6 @@
 warder = Creature:new {
-	objectName = "@mob/creature_names:Warder",
+	objectName = "",
+	customName = "a Warder",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 junk_sheani = Creature:new {
-	objectName = "@mob/creature_names:Junk_Sheani",
+	objectName = "",
+	customName = "Sheani",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

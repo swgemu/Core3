@@ -1,5 +1,5 @@
 force_crystal_hunter = Creature:new {
-	objectName = "@mob/creature_names:force_crystal_hunter",
+	objectName = "@mob/creature_names:dark_force_crystal_hunter",
 	socialGroup = "Remn. Of Kun",
 	pvpFaction = "",
 	faction = "",

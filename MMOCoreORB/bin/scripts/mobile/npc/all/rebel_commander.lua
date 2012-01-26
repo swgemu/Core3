@@ -1,5 +1,5 @@
 rebel_commander = Creature:new {
-	objectName = "@mob/creature_names:Rebel_commander",
+	objectName = "@mob/creature_names:coa2_rebel_commander",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

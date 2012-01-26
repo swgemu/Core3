@@ -1,5 +1,6 @@
 herald_dathomir_olof = Creature:new {
-	objectName = "@mob/creature_names:Herald Dathomir Olof",
+	objectName = "",
+	customName = "Olof",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

@@ -1,5 +1,6 @@
 karrek_flim = Creature:new {
-	objectName = "@mob/creature_names:Karrek Flim",
+	objectName = "",
+	customName = "Karrek Flim",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

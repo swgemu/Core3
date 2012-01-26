@@ -1,5 +1,6 @@
 victor_visalis = Creature:new {
-	objectName = "@mob/creature_names:Victor_Visalis",
+	objectName = "",
+	customName = "Victor Visalis",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

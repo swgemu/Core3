@@ -1,5 +1,6 @@
 loam_hedge = Creature:new {
-	objectName = "@mob/creature_names:Loam Hedge",
+	objectName = "",
+	customName = "Inquisitor Loam Redge",--according to ZAM that's the name
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

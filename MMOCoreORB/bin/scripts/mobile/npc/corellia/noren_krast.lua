@@ -1,5 +1,6 @@
 noren_krast = Creature:new {
-	objectName = "@mob/creature_names:Noren Krast",
+	objectName = "",
+	customName = "Noren Krast",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 ric_olie = Creature:new {
-	objectName = "@mob/creature_names:Ric Olie",
+	objectName = "",
+	customName = "Ric Olie",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

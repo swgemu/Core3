@@ -1,5 +1,6 @@
 venthan_chassu = Creature:new {
-	objectName = "@mob/creature_names:venthan_chassu",
+	objectName = "",
+	customName = "Venthan Chassu",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

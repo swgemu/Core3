@@ -1,5 +1,5 @@
 fiend_of_lord_nyax = Creature:new {
-	objectName = "@mob/creature_names:fiend_of_Lord_Nyax",
+	objectName = "@mob/creature_names:lord_nyax_fiend",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
 	faction = "",

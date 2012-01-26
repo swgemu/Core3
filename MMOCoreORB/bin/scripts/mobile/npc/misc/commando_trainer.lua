@@ -1,5 +1,5 @@
 commando_trainer = Creature:new {
-	objectName = "@mob/creature_names:Commando_trainer",
+	objectName = "@mob/creature_names:trainer_commando",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

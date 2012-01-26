@@ -1,5 +1,5 @@
 rebel_surface_marshall = Creature:new {
-	objectName = "@mob/creature_names:Rebel surface Marshall",
+	objectName = "@mob/creature_names:rebel_surface_marshal",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

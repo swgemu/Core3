@@ -1,5 +1,5 @@
 wise_panshee_rigualist = Creature:new {
-	objectName = "@mob/creature_names:wise_Panshee_rigualist",
+	objectName = "@mob/creature_names:wise_panshee_ritualist",
 	socialGroup = "Panshee Tribe",
 	pvpFaction = "Panshee Tribe",
 	faction = "",

@@ -1,5 +1,6 @@
 booto_lubble = Creature:new {
-	objectName = "@mob/creature_names:booto_lubble",
+	objectName = "",
+	costumName = "Booto Luble",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

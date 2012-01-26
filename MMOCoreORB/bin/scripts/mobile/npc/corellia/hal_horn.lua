@@ -1,5 +1,6 @@
 hal_horn = Creature:new {
-	objectName = "@mob/creature_names:Hal Horn",
+	objectName = "",
+	costumName = "Hal Horn",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

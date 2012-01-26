@@ -1,5 +1,5 @@
 brigand_assassin = Creature:new {
-	objectName = "@mob/creature_names:Brigand_assassin",
+	objectName = "@mob/creature_names:assassin",
 	socialGroup = "Brigand",
 	pvpFaction = "",
 	faction = "",

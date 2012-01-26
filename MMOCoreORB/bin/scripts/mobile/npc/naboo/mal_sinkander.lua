@@ -1,5 +1,6 @@
 mal_sinkander = Creature:new {
-	objectName = "@mob/creature_names:Mal Sinkander",
+	objectName = "",
+	customName = "Mal Sinkander",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

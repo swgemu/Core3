@@ -1,5 +1,6 @@
 sergeant_tarl = Creature:new {
-	objectName = "@mob/creature_names:Sergeant Tarl",
+	objectName = "",
+	customName = "Seargeant Tarl",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

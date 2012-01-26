@@ -1,5 +1,6 @@
 queen_kylantha_throne = Creature:new {
-	objectName = "@mob/creature_names:Queen Kylantha Throne",
+	objectName = "",
+	customName = "Queen Kylantha Gazebo",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

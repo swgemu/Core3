@@ -1,5 +1,6 @@
 vurlene = Creature:new {
-	objectName = "@mob/creature_names:Vurlene",
+	objectName = "",
+	customName = "Vurlene",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

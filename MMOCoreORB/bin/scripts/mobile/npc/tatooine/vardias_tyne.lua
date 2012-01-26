@@ -1,5 +1,6 @@
 vardias_tyne = Creature:new {
-	objectName = "@mob/creature_names:Vardias_Tyne",
+	objectName = "",
+	customName = "Vardias Tyne",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

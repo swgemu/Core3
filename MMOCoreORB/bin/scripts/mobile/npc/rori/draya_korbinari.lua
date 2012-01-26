@@ -1,5 +1,6 @@
 draya_korbinari = Creature:new {
-	objectName = "@mob/creature_names:Draya_Korbinari",
+	objectName = "",
+	costumName = "Draya Korbinari",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

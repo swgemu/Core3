@@ -1,5 +1,6 @@
 blerx_tango = Creature:new {
-	objectName = "@mob/creature_names:blerx_tango",
+	objectName = "",
+	customName = "Blerx Tango",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

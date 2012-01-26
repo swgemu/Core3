@@ -1,5 +1,6 @@
 dilvin_lormurojo = Creature:new {
-	objectName = "@mob/creature_names:Dilvin_Lormurojo",
+	objectName = "",
+	customName = "Dilvin Lormurojo",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

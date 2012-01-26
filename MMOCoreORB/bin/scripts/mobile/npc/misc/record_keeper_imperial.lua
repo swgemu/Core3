@@ -1,5 +1,6 @@
 record_keeper_imperial = Creature:new {
-	objectName = "@mob/creature_names:Record Keeper Imperial",
+	objectName = "",
+	customName = "Lt. Nilsson (Planetary Record Keeper)",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

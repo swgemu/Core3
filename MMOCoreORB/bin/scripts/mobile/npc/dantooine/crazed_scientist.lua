@@ -1,5 +1,5 @@
 crazed_scientist = Creature:new {
-	objectName = "@mob/creature_names:crazed_scientist",
+	objectName = "@mob/creature_names:warren_irradiated_worker",
 	socialGroup = "Warren Imp.",
 	pvpFaction = "",
 	faction = "",

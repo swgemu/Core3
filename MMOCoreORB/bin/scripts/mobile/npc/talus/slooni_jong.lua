@@ -1,5 +1,6 @@
 slooni_jong = Creature:new {
-	objectName = "@mob/creature_names:Slooni Jong",
+	objectName = "",
+	customName = "Slooni Jong",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

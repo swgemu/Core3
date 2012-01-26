@@ -1,5 +1,5 @@
 rohak_village_elder = Creature:new {
-	objectName = "@mob/creature_names:Rohak (Village Elder)",
+	objectName = "@mob/creature_names:fs_villager_elder",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

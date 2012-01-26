@@ -1,5 +1,5 @@
 villager_force_sensitive_village = Creature:new {
-	objectName = "@mob/creature_names:villager (Force Sensitive village)",
+	objectName = "@mob/creature_names:fs_villager_male",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

@@ -1,5 +1,6 @@
 lt_porro_dolphe = Creature:new {
-	objectName = "@mob/creature_names:Lt. Porro Dolphe",
+	objectName = "",
+	customName = "Lt. Porro Dolphe",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

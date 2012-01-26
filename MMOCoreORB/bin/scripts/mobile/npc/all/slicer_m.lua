@@ -1,5 +1,5 @@
 slicer_m = Creature:new {
-	objectName = "@mob/creature_names:slicer (M)",
+	objectName = "@mob/creature_names:slicer",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",

@@ -1,5 +1,5 @@
 mand_bunker_technician = Creature:new {
-	objectName = "@mob/creature_names:Mand Bunker Technician",
+	objectName = "@mob/creature_names:death_watch_technician",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",

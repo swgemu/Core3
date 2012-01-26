@@ -1,5 +1,6 @@
 stormtrooper_black_hole_squad_leader = Creature:new {
-	objectName = "@mob/creature_names:Stormtrooper_Black_Hole_Squad_Leader",
+	objectName = "",
+	customName = "a Black Hole Stormtrooper Squad Leader",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

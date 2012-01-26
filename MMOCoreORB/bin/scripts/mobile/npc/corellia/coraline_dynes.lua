@@ -1,5 +1,6 @@
 coraline_dynes = Creature:new {
-	objectName = "@mob/creature_names:Coraline_Dynes",
+	objectName = "",
+	customName = "Coralline Dynes",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 exiled_gungan = Creature:new {
-	objectName = "@mob/creature_names:exiled_gungan",
+	objectName = "@mob/creature_names:mordran_gungan_exile",
 	socialGroup = "Borvo",
 	pvpFaction = "Borvo",
 	faction = "",

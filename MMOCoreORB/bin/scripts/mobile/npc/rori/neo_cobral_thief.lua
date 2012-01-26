@@ -1,5 +1,5 @@
 neo_cobral_thief = Creature:new {
-	objectName = "@mob/creature_names:Neo-Cobral thief",
+	objectName = "@mob/creature_names:cobral_thief",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",

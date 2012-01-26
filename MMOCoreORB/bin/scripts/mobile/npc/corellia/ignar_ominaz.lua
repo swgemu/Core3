@@ -1,5 +1,6 @@
 ignar_ominaz = Creature:new {
-	objectName = "@mob/creature_names:Ignar Ominaz",
+	objectName = "",
+	customName = "Ignar Ominaz",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

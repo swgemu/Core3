@@ -1,5 +1,5 @@
 merchant_trainer = Creature:new {
-	objectName = "@mob/creature_names:Merchant trainer",
+	objectName = "@mob/creature_names:trainer_merchant",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,5 @@
 droid_engineer_trainer = Creature:new {
-	objectName = "@mob/creature_names:Droid_Engineer_trainer",
+	objectName = "@mob/creature_names:trainer_droidengineer",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

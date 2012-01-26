@@ -1,5 +1,5 @@
 drall_patriot_legionnaire = Creature:new {
-	objectName = "@mob/creature_names:Drall_patriot_legionnaire",
+	objectName = "@mob/creature_names:drall_patriot_legionnare",
 	socialGroup = "Drall",
 	pvpFaction = "Drall",
 	faction = "",

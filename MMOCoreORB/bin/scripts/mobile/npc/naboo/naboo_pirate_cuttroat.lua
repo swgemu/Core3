@@ -1,5 +1,5 @@
 naboo_pirate_cuttroat = Creature:new {
-	objectName = "@mob/creature_names:Naboo pirate cuttroat",
+	objectName = "@mob/creature_names:naboo_pirate_cutthroat",
 	socialGroup = "Naboo Pirate",
 	pvpFaction = "Naboo Pirate",
 	faction = "",

@@ -1,5 +1,6 @@
 palu_zerk = Creature:new {
-	objectName = "@mob/creature_names:Palu Zerk",
+	objectName = "",
+	costumName = "Palu Zerk",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

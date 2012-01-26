@@ -1,5 +1,5 @@
 tough_thug_male_rodian = Creature:new {
-	objectName = "@mob/creature_names:Tough Thug Male Rodian",
+	objectName = "@mob/creature_names:thug",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",

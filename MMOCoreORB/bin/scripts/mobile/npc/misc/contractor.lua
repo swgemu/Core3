@@ -1,5 +1,5 @@
 contractor = Creature:new {
-	objectName = "@mob/creature_names:contractor",
+	objectName = "@mob/creature_names:crafting_contractor",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

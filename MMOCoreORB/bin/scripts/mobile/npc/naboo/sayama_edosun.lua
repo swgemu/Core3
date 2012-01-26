@@ -1,5 +1,6 @@
 sayama_edosun = Creature:new {
-	objectName = "@mob/creature_names:Sayama Edosun",
+	objectName = "",
+	customName = "Sayama Edosun",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

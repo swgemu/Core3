@@ -1,5 +1,6 @@
 sango_rond = Creature:new {
-	objectName = "@mob/creature_names:Sango Rond",
+	objectName = "",
+	customName = "Sango Rond",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

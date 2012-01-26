@@ -1,5 +1,6 @@
 lergo_brazee = Creature:new {
-	objectName = "@mob/creature_names:Lergo Brazee",
+	objectName = "",
+	customName = "Lergo Brazee",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

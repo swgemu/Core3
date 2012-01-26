@@ -1,5 +1,5 @@
 elite_novatrooper_commander = Creature:new {
-	objectName = "@mob/creature_names:Elite_Novatrooper_Commander",
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_elite_commander",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

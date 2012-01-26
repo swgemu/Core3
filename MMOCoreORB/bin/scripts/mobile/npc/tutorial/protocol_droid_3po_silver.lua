@@ -1,8 +1,8 @@
 protocol_droid_3po_silver = Creature:new {
 	objectName = "@newbie_tutorial/system_messages:droid_name",
 	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "imperial",
+	pvpFaction = "",
+	faction = "",
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,

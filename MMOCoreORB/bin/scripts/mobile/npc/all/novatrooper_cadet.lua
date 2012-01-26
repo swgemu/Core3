@@ -1,5 +1,5 @@
 novatrooper_cadet = Creature:new {
-	objectName = "@mob/creature_names:novatrooper_cadet",
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_cadet",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",
@@ -10,8 +10,8 @@ novatrooper_cadet = Creature:new {
 	baseXp = 6931,
 	baseHAM = 12000,
 	baseHAMmax = 15000,
-	armor = 2,
-	resists = {40,35,80,30,5,5,30,45,-1},
+	armor = 1,
+	resists = {40,35,80,30,30,20,30,45,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",

@@ -1,5 +1,6 @@
 sleemo_vandal = Creature:new {
-	objectName = "@mob/creature_names:Sleemo vandal",
+	objectName = "",
+	customName = "Sleemo Vandal",
 	socialGroup = "Sleemo Gang",
 	pvpFaction = "",
 	faction = "",

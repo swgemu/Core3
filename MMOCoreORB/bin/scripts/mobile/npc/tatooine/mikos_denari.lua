@@ -1,5 +1,6 @@
 mikos_denari = Creature:new {
-	objectName = "@mob/creature_names:Mikos Denari",
+	objectName = "",
+	customName = "Mikos Denari",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

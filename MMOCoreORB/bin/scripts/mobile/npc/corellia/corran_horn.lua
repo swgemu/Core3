@@ -1,5 +1,6 @@
 corran_horn = Creature:new {
-	objectName = "@mob/creature_names:Corran_Horn",
+	objectName = "",
+	customName = "Corran Horn",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

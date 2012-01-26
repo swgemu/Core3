@@ -1,5 +1,5 @@
 chef_trainer = Creature:new {
-	objectName = "@mob/creature_names:Chef_trainer",
+	objectName = "@mob/creature_names:trainer_chef",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

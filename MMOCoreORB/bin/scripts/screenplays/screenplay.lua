@@ -44,6 +44,7 @@ includeFile("tasks/dolac_legasi.lua")
 includeFile("recruiters/imperialrecruiter.lua")
 includeFile("recruiters/rebelrecruiter.lua")
 includeFile("dungeon/death_watch_bunker.lua")
+includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
 --Tests

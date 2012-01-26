@@ -1,5 +1,6 @@
 lt_velso = Creature:new {
-	objectName = "@mob/creature_names:Lt. Velso",
+	objectName = "",
+	customName = "Lt. Velso",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

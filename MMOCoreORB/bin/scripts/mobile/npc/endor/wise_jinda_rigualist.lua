@@ -1,5 +1,5 @@
 wise_jinda_rigualist = Creature:new {
-	objectName = "@mob/creature_names:wise_Jinda_rigualist",
+	objectName = "@mob/creature_names:wise_jinda_ritualist",
 	socialGroup = "Jinda Tribe",
 	pvpFaction = "Jinda Tribe",
 	faction = "",

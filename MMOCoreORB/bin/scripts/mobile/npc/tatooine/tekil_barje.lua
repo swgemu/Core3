@@ -1,5 +1,6 @@
 tekil_barje = Creature:new {
-	objectName = "@mob/creature_names:Tekil Barje",
+	objectName = "",
+	customName = "Tekil Barje",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

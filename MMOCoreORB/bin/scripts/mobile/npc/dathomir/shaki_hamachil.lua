@@ -1,5 +1,6 @@
 shaki_hamachil = Creature:new {
-	objectName = "@mob/creature_names:Shaki Hamachil",
+	objectName = "",
+	customName = "Shaki Hamachil",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

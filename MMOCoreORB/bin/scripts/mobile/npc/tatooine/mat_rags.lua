@@ -1,5 +1,6 @@
 mat_rags = Creature:new {
-	objectName = "@mob/creature_names:Mat Rags",
+	objectName = "",
+	customName = "Mat Rags",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

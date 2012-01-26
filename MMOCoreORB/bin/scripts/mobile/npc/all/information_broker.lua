@@ -1,5 +1,5 @@
 information_broker = Creature:new {
-	objectName = "@mob/creature_names:information broker",
+	objectName = "@mob/creature_names:bothan_information_broker",
 	socialGroup = "Mercenary",
 	pvpFaction = "",
 	faction = "",

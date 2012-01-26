@@ -1,5 +1,6 @@
 nurla_slinthiss = Creature:new {
-	objectName = "@mob/creature_names:Nurla_Slinthiss",
+	objectName = "",
+	customName = "Nurla Slinthiss",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

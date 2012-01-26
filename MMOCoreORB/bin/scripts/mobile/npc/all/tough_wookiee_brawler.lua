@@ -1,5 +1,5 @@
 tough_wookiee_brawler = Creature:new {
-	objectName = "@mob/creature_names:tough_wookiee_brawler",
+	objectName = "@mob/creature_names:brawler",
 	socialGroup = "Mercenary",
 	pvpFaction = "",
 	faction = "",

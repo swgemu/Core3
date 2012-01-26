@@ -1,5 +1,5 @@
 plasma_thieving_swamp_trooper_captain = Creature:new {
-	objectName = "@mob/creature_names:plasma-thieving Swamp Trooper Captain",
+	objectName = "@mob/creature_names:swamp_trooper_captain_anti_gungan",
 	socialGroup = "Plasma Thief",
 	pvpFaction = "Plasma Thief",
 	faction = "",

@@ -1,5 +1,6 @@
 wallow_loowobbli = Creature:new {
-	objectName = "@mob/creature_names:Wallow_Loowobbli",
+	objectName = "",
+	customName = "Wallow Loowobbli",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 scrib_leras = Creature:new {
-	objectName = "@mob/creature_names:Scrib Leras",
+	objectName = "",
+	customName = "Scrib Leras",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,5 @@
 dageerin = Creature:new {
-	objectName = "@mob/creature_names:Dageerin",
+	objectName = "@mob/creature_names:fs_villager_sad1",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

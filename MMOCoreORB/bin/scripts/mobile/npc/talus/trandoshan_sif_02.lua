@@ -1,5 +1,5 @@
 trandoshan_sif_02 = Creature:new {
-	objectName = "@mob/creature_names:Trandoshan_Sif_02",
+	objectName = "@mob/creature_names:trandoshan_sif",
 	socialGroup = "Sif",
 	pvpFaction = "Sif",
 	faction = "",

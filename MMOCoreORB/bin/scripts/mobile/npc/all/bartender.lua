@@ -1,5 +1,6 @@
 bartender = Creature:new {
-	objectName = "@mob/creature_names:bartender",
+	objectName = "",
+	customName = "Bartender",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

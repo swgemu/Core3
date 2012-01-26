@@ -1,5 +1,6 @@
 coa2_drall_scientist = Creature:new {
-	objectName = "@mob/creature_names:Coa2_Drall_Scientist",
+	objectName = "",
+	customName = "a Drall Scientist",
 	socialGroup = "Drall",
 	pvpFaction = "Rebel",
 	faction = "",

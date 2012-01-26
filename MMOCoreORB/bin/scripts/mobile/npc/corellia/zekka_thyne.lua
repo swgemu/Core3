@@ -1,5 +1,6 @@
 zekka_thyne = Creature:new {
-	objectName = "@mob/creature_names:Zekka_Thyne",
+	objectName = "",
+	customName = "Zekka Thyne",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

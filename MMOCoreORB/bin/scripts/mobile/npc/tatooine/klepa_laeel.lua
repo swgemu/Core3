@@ -1,5 +1,5 @@
 klepa_laeel = Creature:new {
-	objectName = "@mob/creature_names:Klepa Laeel",
+	objectName = "@mob/creature_names:bestine_artist05",
 	socialGroup = "Artist",
 	pvpFaction = "",
 	faction = "",

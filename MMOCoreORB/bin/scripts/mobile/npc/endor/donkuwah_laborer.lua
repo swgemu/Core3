@@ -1,5 +1,5 @@
 donkuwah_laborer = Creature:new {
-	objectName = "@mob/creature_names:Donkuwah_laborer",
+	objectName = "@mob/creature_names:donkuwah_laborer",
 	socialGroup = "Donkuwah Tr.",
 	pvpFaction = "Donkuwah Tr.",
 	faction = "",

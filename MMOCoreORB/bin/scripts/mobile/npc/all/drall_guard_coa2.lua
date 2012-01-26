@@ -1,5 +1,5 @@
 drall_guard_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Drall_guard_(COA2)",
+	objectName = "@mob/creature_names:drall_guard",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

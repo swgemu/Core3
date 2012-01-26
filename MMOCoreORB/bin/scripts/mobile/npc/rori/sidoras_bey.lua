@@ -1,5 +1,6 @@
 sidoras_bey = Creature:new {
-	objectName = "@mob/creature_names:Sidoras Bey",
+	objectName = "",
+	costumName = "Sidoras Bey",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

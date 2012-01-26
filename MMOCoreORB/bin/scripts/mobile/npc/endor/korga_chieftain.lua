@@ -1,5 +1,5 @@
 korga_chieftain = Creature:new {
-	objectName = "@mob/creature_names:Korga chieftain",
+	objectName = "@mob/creature_names:korga_chieftan",
 	socialGroup = "Korga Tribe",
 	pvpFaction = "Korga Tribe",
 	faction = "",

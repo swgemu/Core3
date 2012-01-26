@@ -1,5 +1,6 @@
 cobral_hooligan = Creature:new {
-	objectName = "@mob/creature_names:Cobral_hooligan",
+	objectName = "",
+	costumName = "a Cobral Hooligan",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",

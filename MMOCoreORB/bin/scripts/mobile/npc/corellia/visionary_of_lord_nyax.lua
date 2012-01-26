@@ -1,5 +1,5 @@
 visionary_of_lord_nyax = Creature:new {
-	objectName = "@mob/creature_names:visionary_of_Lord_Nyax",
+	objectName = "@mob/creature_names:lord_nyax_visionary",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
 	faction = "",

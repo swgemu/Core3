@@ -1,5 +1,6 @@
 brennis_doore = Creature:new {
-	objectName = "@mob/creature_names:brennis_doore",
+	objectName = "",
+	customName = "Brennis Doore",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,5 @@
 naboo_police_officer = Creature:new {
-	objectName = "@mob/creature_names:Naboo_police_officer",
+	objectName = "@mob/creature_names:naboo_police",
 	socialGroup = "RSF",
 	pvpFaction = "RSF",
 	faction = "",

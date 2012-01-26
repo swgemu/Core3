@@ -1,5 +1,6 @@
 highwayman = Creature:new {
-	objectName = "@mob/creature_names:Highwayman",
+	objectName = "",
+	customName = "Highwayman",
 	socialGroup = "Brigand",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 lareen_dantara = Creature:new {
-	objectName = "@mob/creature_names:Lareen Dantara",
+	objectName = "",
+	customName = "Lareen Dantara",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

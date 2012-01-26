@@ -1,5 +1,6 @@
 herald_lok_andria = Creature:new {
-	objectName = "@mob/creature_names:Herald Lok Andria",
+	objectName = "",
+	customName = "Andria",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

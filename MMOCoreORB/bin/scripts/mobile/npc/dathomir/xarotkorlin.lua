@@ -1,5 +1,6 @@
 xarotkorlin = Creature:new {
-	objectName = "@mob/creature_names:XarotKorlin",
+	objectName = "",
+	customName = "Xarot Korlin",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

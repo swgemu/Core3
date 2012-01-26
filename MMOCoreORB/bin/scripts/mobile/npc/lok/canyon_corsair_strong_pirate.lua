@@ -1,5 +1,5 @@
 canyon_corsair_strong_pirate = Creature:new {
-	objectName = "@mob/creature_names:Canyon_Corsair_strong_pirate",
+	objectName = "@mob/creature_names:canyon_corsair_pirate_strong",
 	socialGroup = "Corsair",
 	pvpFaction = "Corsair",
 	faction = "",

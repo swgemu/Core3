@@ -1,5 +1,6 @@
 lethin_bludder = Creature:new {
-	objectName = "@mob/creature_names:Lethin Bludder",
+	objectName = "",
+	customName = "Lethin Bludder",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

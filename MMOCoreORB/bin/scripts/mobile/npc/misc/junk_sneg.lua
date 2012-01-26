@@ -1,5 +1,6 @@
 junk_sneg = Creature:new {
-	objectName = "@mob/creature_names:Junk_Sneg",
+	objectName = "",
+	customName = "Sneg",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
 	faction = "",

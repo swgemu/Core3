@@ -1,5 +1,5 @@
 first_brigade_sergeant = Creature:new {
-	objectName = "@mob/creature_names:First Brigade sergeant",
+	objectName = "@mob/creature_names:brigade_sergeant",
 	socialGroup = "Restuss",
 	pvpFaction = "Restuss",
 	faction = "",

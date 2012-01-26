@@ -1,5 +1,5 @@
 civil_patrol_captain = Creature:new {
-	objectName = "@mob/creature_names:civil_patrol_captain",
+	objectName = "@mob/creature_names:imperial_civil_patrol_captain",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

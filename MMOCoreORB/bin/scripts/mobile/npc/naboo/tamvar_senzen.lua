@@ -1,5 +1,6 @@
 tamvar_senzen = Creature:new {
-	objectName = "@mob/creature_names:Tamvar Senzen",
+	objectName = "",
+	customName = "Tamvar Senzen",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

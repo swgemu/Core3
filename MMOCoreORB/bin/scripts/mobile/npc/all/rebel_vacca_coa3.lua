@@ -1,5 +1,6 @@
 rebel_vacca_coa3 = Creature:new {
-	objectName = "@mob/creature_names:Rebel Vacca (COA3)",
+	objectName = "",
+	customName = "Vacca",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

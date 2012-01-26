@@ -1,5 +1,5 @@
 jamilla_tabadi = Creature:new {
-	objectName = "@mob/creature_names:Jamilla Tabadi",
+	objectName = "@mob/creature_names:fs_intro_female",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

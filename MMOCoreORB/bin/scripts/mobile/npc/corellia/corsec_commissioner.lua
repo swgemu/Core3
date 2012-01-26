@@ -1,5 +1,5 @@
 corsec_commissioner = Creature:new {
-	objectName = "@mob/creature_names:corSec_commissioner",
+	objectName = "@mob/creature_names:corsec_comissioner",
 	socialGroup = "Corsec",
 	pvpFaction = "Corsec",
 	faction = "",

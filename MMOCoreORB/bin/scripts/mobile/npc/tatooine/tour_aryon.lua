@@ -1,5 +1,6 @@
 tour_aryon = Creature:new {
-	objectName = "@mob/creature_names:Tour Aryon",
+	objectName = "",
+	customName = "Tour Aryon",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 herald_naboo_hanna = Creature:new {
-	objectName = "@mob/creature_names:Herald Naboo Hanna",
+	objectName = "",
+	customName = "Hanna",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

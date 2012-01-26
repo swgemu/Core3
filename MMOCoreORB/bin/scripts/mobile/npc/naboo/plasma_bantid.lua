@@ -1,5 +1,6 @@
 plasma_bantid = Creature:new {
-	objectName = "@mob/creature_names:plasma bantid",
+	objectName = "",
+	customName = "a Plasma Bandit",
 	socialGroup = "Plasma Thief",
 	pvpFaction = "Bandit",
 	faction = "",

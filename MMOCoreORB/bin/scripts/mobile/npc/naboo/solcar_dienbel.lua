@@ -1,5 +1,6 @@
 solcar_dienbel = Creature:new {
-	objectName = "@mob/creature_names:Solcar_Dienbel",
+	objectName = "",
+	customName = "Solcar Dienbel",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

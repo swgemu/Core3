@@ -1,5 +1,6 @@
 drenn_zebber = Creature:new {
-	objectName = "@mob/creature_names:Drenn_Zebber",
+	objectName = "",
+	customName = "Drenn Zebber",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

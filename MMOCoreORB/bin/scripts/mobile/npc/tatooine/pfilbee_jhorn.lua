@@ -1,5 +1,6 @@
 pfilbee_jhorn = Creature:new {
-	objectName = "@mob/creature_names:Pfilbee Jhorn",
+	objectName = "",
+	customName = "Pfilbee Jhorn",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 kahfr_oladi = Creature:new {
-	objectName = "@mob/creature_names:Kahfr Oladi",
+	objectName = "@mob/creature_names:bestine_artist04",
 	socialGroup = "Artist",
 	pvpFaction = "",
 	faction = "",

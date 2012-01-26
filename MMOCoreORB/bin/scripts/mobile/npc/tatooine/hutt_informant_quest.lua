@@ -1,5 +1,6 @@
 hutt_informant_quest = Creature:new {
-	objectName = "@mob/creature_names:Hutt Informant Quest",
+	objectName = "",
+	customName = "Hutt Informant",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

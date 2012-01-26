@@ -1,5 +1,6 @@
 athok_dinvar = Creature:new {
-	objectName = "@mob/creature_names:athok_dinvar",
+	objectName = "",
+	customName = "Athok Dinvar",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

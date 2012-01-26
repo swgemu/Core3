@@ -1,5 +1,6 @@
 thracken_sal_solo = Creature:new {
-	objectName = "@mob/creature_names:Thracken Sal Solo",
+	objectName = "",
+	customName = "Thracken Sal Solo",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

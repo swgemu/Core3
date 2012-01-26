@@ -1,5 +1,6 @@
 frontiersman = Creature:new {
-	objectName = "@mob/creature_names:Frontiersman",
+	objectName = "",
+	customName = "Frontiersman",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",

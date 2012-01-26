@@ -1,5 +1,6 @@
 huff_zinga = Creature:new {
-	objectName = "@mob/creature_names:Huff Zinga",
+	objectName = "",
+	costumName = "Huff Zinga",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

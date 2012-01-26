@@ -1,5 +1,5 @@
 mercenary_messenger = Creature:new {
-	objectName = "@mob/creature_names:mercenary messenger",
+	objectName = "@mob/creature_names:mercenary_messanger",
 	socialGroup = "Lok Merc",
 	pvpFaction = "Lok Merc",
 	faction = "",

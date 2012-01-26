@@ -1,5 +1,5 @@
 neo_cobral_boss = Creature:new {
-	objectName = "@mob/creature_names:Neo-Cobral boss",
+	objectName = "@mob/creature_names:cobral_boss",
 	socialGroup = "Cobral",
 	pvpFaction = "Cobral",
 	faction = "",

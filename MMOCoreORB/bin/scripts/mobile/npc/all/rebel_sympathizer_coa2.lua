@@ -1,5 +1,6 @@
 rebel_sympathizer_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Rebel sympathizer (COA2)",
+	objectName = "",
+	customName = "a Rebel Sympathizer",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

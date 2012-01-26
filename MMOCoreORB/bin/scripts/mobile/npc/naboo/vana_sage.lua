@@ -1,5 +1,6 @@
 vana_sage = Creature:new {
-	objectName = "@mob/creature_names:Vana_Sage",
+	objectName = "",
+	customName = "Vana Sage",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,5 @@
 rebel_network_leader = Creature:new {
-	objectName = "@mob/creature_names:Rebel network leader",
+	objectName = "@mob/creature_names:network_leader",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

@@ -1,5 +1,6 @@
 huff_darklighter = Creature:new {
-	objectName = "@mob/creature_names:Huff darklighter",
+	objectName = "",
+	customName = "Hutt Darklighter",
 	socialGroup = "Darklighter",
 	pvpFaction = "",
 	faction = "",

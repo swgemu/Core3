@@ -1,5 +1,6 @@
 imperial_moff = Creature:new {
-	objectName = "@mob/creature_names:Imperial_Moff",
+	objectName = "",
+	costumName = "Imperial Moff",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

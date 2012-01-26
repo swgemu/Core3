@@ -1,5 +1,5 @@
 old_man = Creature:new {
-	objectName = "@mob/creature_names:old_man",
+	objectName = "@mob/creature_names:fs_intro_oldman",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

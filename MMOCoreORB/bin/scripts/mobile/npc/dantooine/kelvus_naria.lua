@@ -1,5 +1,6 @@
 kelvus_naria = Creature:new {
-	objectName = "@mob/creature_names:Kelvus Naria",
+	objectName = "",
+	customName = "Kelvus Naria",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

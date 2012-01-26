@@ -1,5 +1,6 @@
 baritha = Creature:new {
-	objectName = "@mob/creature_names:baritha",
+	objectName = "",
+	customName = "Baritha",
 	socialGroup = "Nightsister",
 	pvpFaction = "",
 	faction = "",

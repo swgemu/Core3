@@ -1,5 +1,5 @@
 imperial_commander = Creature:new {
-	objectName = "@mob/creature_names:Imperial_commander",
+	objectName = "@mob/creature_names:coa2_imperial_commander",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

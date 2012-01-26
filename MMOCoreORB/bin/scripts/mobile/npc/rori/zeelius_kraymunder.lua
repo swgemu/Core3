@@ -1,5 +1,6 @@
 zeelius_kraymunder = Creature:new {
-	objectName = "@mob/creature_names:Zeelius_Kraymunder",
+	objectName = "",
+	costumName = "Zeelius Kraymunder",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

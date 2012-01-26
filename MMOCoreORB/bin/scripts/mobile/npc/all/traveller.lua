@@ -1,5 +1,6 @@
 traveller = Creature:new {
-	objectName = "@mob/creature_names:Traveller",
+	objectName = "",
+	customName = "a Traveller",
 	socialGroup = "Wilder",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 rep_been = Creature:new {
-	objectName = "@mob/creature_names:Rep Been",
+	objectName = "",
+	customName = "Rep Been",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

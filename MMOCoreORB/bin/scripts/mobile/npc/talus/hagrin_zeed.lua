@@ -1,5 +1,6 @@
 hagrin_zeed = Creature:new {
-	objectName = "@mob/creature_names:Hagrin Zeed",
+	objectName = "",
+	customName = "Hagrin Zeed",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

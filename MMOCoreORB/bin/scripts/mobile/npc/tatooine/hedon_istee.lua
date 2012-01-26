@@ -1,5 +1,6 @@
 hedon_istee = Creature:new {
-	objectName = "@mob/creature_names:Hedon Istee",
+	objectName = "",
+	customName = "Hedon Istee",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 novice_creature_handler = Creature:new {
-	objectName = "@mob/creature_names:novice_creature_handler",
+	objectName = "@mob/creature_names:rebel_creature_handler_novice",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

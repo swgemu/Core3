@@ -1,5 +1,5 @@
 kunga_tribe_member = Creature:new {
-	objectName = "@mob/creature_names:Kunga tribe member",
+	objectName = "@mob/creature_names:kunga_tribesman",
 	socialGroup = "Kunga Tribe",
 	pvpFaction = "Kunga Tribe",
 	faction = "",

@@ -1,5 +1,6 @@
 relay_guard_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Relay guard (COA2)",
+	objectName = "",
+	customName = "a Relay Guard",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

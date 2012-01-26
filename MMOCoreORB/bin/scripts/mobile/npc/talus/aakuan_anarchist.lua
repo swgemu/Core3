@@ -1,5 +1,6 @@
 aakuan_anarchist = Creature:new {
-	objectName = "@mob/creature_names:aakuari_anarchist",
+	objectName = "",
+	customName = "Aa'kuan Anarchist",
 	socialGroup = "Aa'kuan",
 	pvpFaction = "Aa'kuan",
 	faction = "",

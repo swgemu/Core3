@@ -1,5 +1,6 @@
 junelle_astor = Creature:new {
-	objectName = "@mob/creature_names:Junelle Astor",
+	objectName = "",
+	customName = "Junelle Astor",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,6 @@
 pirate_privateer = Creature:new {
-	objectName = "@mob/creature_names:pirate privateer",
+	objectName = "",
+	customName = "a Pirate Privateer",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",

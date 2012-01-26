@@ -1,5 +1,6 @@
 herald_tatooine_viconya = Creature:new {
-	objectName = "@mob/creature_names:Herald Tatooine Viconya",
+	objectName = "",
+	customName = "Viconya",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

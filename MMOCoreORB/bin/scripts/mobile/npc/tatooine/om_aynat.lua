@@ -1,5 +1,6 @@
 om_aynat = Creature:new {
-	objectName = "@mob/creature_names:Om_Aynat",
+	objectName = "",
+	customName = "Om Aynat",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

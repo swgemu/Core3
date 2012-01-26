@@ -1,5 +1,6 @@
 vrir_unglan = Creature:new {
-	objectName = "@mob/creature_names:Vrir_Unglan",
+	objectName = "",
+	customName = "Vrir Unglan",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,6 @@
 radanthus_mandelatara = Creature:new {
-	objectName = "@mob/creature_names:Radanthus Mandelatara",
+	objectName = "",
+	customName = "Radanthus Mandelatara",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

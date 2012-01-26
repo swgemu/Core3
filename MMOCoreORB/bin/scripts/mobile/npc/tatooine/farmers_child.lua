@@ -1,5 +1,5 @@
 farmers_child = Creature:new {
-	objectName = "@mob/creature_names:farmer's_child",
+	objectName = "@mob/creature_names:quest_hero_of_tatooine_farmer_daughter",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

@@ -1,5 +1,6 @@
 lob_dizz = Creature:new {
-	objectName = "@mob/creature_names:Lob Dizz",
+	objectName = "",
+	customName = "Lob Dizz",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

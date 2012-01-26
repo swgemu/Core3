@@ -1,5 +1,6 @@
 imo_vledmo = Creature:new {
-	objectName = "@mob/creature_names:Imo Vledmo",
+	objectName = "",
+	customName = "Imo Vledmo",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

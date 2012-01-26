@@ -1,5 +1,6 @@
 surlin_rolei = Creature:new {
-	objectName = "@mob/creature_names:Surlin_Rolei",
+	objectName = "",
+	customName = "Surlin Rolei",
 	socialGroup = "RSF",
 	pvpFaction = "RSF",
 	faction = "",

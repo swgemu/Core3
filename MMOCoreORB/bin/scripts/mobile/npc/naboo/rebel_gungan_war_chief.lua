@@ -1,5 +1,5 @@
 rebel_gungan_war_chief = Creature:new {
-	objectName = "@mob/creature_names:Rebel Gungan War Chief",
+	objectName = "@mob/creature_names:gungan_war_chief",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

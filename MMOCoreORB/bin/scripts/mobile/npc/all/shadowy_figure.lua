@@ -1,5 +1,5 @@
 shadowy_figure = Creature:new {
-	objectName = "@mob/creature_names:shadowy figure",
+	objectName = "@mob/creature_names:assassin_mission_recruiter_neutral",
 	socialGroup = "Hutt",
 	pvpFaction = "",
 	faction = "",

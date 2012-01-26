@@ -1,5 +1,6 @@
 igbi_freemo = Creature:new {
-	objectName = "@mob/creature_names:Igbi Freemo",
+	objectName = "",
+	customName = "Igbi Freemo",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

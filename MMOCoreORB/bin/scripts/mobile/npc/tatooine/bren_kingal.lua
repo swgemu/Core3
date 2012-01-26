@@ -1,5 +1,6 @@
 bren_kingal = Creature:new {
-	objectName = "@mob/creature_names:bren_kingal",
+	objectName = "",
+	customName = "Bren Kingal",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

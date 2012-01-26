@@ -1,5 +1,5 @@
 rifleman_trainer = Creature:new {
-	objectName = "@mob/creature_names:Rifleman trainer",
+	objectName = "@mob/creature_names:trainer_rifleman",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

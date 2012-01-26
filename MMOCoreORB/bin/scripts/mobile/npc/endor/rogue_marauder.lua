@@ -1,5 +1,6 @@
 rogue_marauder = Creature:new {
-	objectName = "@mob/creature_names:Rogue Marauder",
+	objectName = "",
+	customName = "a Rogue Marauder",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 mourno_draver = Creature:new {
-	objectName = "@mob/creature_names:Mourno Draver",
+	objectName = "",
+	customName = "Mourno Draver",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 damalia_korde = Creature:new {
-	objectName = "@mob/creature_names:Damalia_Korde",
+	objectName = "",
+	customName = "Damalia Korde",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

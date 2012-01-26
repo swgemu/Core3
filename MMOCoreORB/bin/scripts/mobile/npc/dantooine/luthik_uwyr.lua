@@ -1,5 +1,6 @@
 luthik_uwyr = Creature:new {
-	objectName = "@mob/creature_names:Luthik Uwyr",
+	objectName = "",
+	customName = "Luthik Uwyr",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

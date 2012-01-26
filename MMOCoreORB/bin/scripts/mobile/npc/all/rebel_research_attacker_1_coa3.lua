@@ -1,5 +1,6 @@
 rebel_research_attacker_1_coa3 = Creature:new {
-	objectName = "@mob/creature_names:Rebel Research Attacker (1) (COA3)",
+	objectName = "",
+	customName = "a Rebel Research Attacker",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

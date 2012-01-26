@@ -1,5 +1,5 @@
 devaronian_male = Creature:new {
-	objectName = "@mob/creature_names:Devaronian_male",
+	objectName = "@mob/creature_names:patron_devaronian_male",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

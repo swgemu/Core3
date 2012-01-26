@@ -1,5 +1,6 @@
 kaeline_ungasan = Creature:new {
-	objectName = "@mob/creature_names:Kaeline_Ungasan",
+	objectName = "",
+	customName = "Kaeline Ungasan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

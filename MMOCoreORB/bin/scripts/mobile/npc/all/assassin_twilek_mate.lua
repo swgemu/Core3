@@ -1,5 +1,5 @@
 assassin_twilek_mate = Creature:new {
-	objectName = "@mob/creature_names:assassin_twilek_mate",
+	objectName = "@mob/creature_names:assassin",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",

@@ -1,5 +1,6 @@
 junk_malik = Creature:new {
-	objectName = "@mob/creature_names:Junk_Malik",
+	objectName = "",
+	customName = "Malik",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,6 @@
 lookout_coa3 = Creature:new {
-	objectName = "@mob/creature_names:Lookout (COA3)",
+	objectName = "",
+	customName = "a Lookout",
 	socialGroup = "self",
 	pvpFaction = "Jabba",
 	faction = "",

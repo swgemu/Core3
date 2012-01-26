@@ -1,5 +1,6 @@
 durgur_pyne = Creature:new {
-	objectName = "@mob/creature_names:Durgur_Pyne",
+	objectName = "",
+	customName = "Durgur Pyne",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

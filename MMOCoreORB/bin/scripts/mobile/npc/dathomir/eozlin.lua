@@ -1,5 +1,5 @@
 eozlin = Creature:new {
-	objectName = "@mob/creature_names:Eozlin",
+	objectName = "@mob/creature_names:fs_villager_surveyor",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

@@ -1,5 +1,5 @@
 wounded_villager = Creature:new {
-	objectName = "@mob/creature_names:wounded_villager",
+	objectName = "@mob/creature_names:fs_villager_wounded",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

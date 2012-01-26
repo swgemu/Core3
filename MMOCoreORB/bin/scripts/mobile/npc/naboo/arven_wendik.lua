@@ -1,5 +1,6 @@
 arven_wendik = Creature:new {
-	objectName = "@mob/creature_names:arven_wendik",
+	objectName = "",
+	customName = "Arven Wendik",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

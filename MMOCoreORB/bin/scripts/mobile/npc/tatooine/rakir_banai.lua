@@ -1,5 +1,6 @@
 rakir_banai = Creature:new {
-	objectName = "@mob/creature_names:Rakir Banai",
+	objectName = "",
+	customName = "Rakir Banai",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

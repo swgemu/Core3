@@ -1,5 +1,5 @@
 pikeman_trainer = Creature:new {
-	objectName = "@mob/creature_names:Pikeman trainer",
+	objectName = "@mob/creature_names:trainer_polearm",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

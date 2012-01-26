@@ -1,5 +1,6 @@
 dr_bledsoe = Creature:new {
-	objectName = "@mob/creature_names:Dr_Bledsoe",
+	objectName = "",
+	customName = "Dr Bledsoe",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

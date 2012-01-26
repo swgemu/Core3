@@ -1,5 +1,5 @@
 sullustan_male = Creature:new {
-	objectName = "@mob/creature_names:Sullustan_male",
+	objectName = "@mob/creature_names:patron_sullustan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,6 @@
 herald_dathomir_denbar = Creature:new {
-	objectName = "@mob/creature_names:Herald Dathomir Denbar",
+	objectName = "",
+	customName = "Denbar",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

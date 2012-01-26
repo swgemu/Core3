@@ -1,5 +1,6 @@
 zideera = Creature:new {
-	objectName = "@mob/creature_names:Zideera",
+	objectName = "",
+	customName = "Zideera",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

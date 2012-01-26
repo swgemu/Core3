@@ -1,5 +1,5 @@
 pannaqa_a_farmer = Creature:new {
-	objectName = "@mob/creature_names:Pannaqa (a farmer)",
+	objectName = "@mob/creature_names:fs_villager_farmer",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

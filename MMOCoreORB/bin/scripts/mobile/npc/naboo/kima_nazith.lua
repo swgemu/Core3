@@ -1,5 +1,6 @@
 kima_nazith = Creature:new {
-	objectName = "@mob/creature_names:Kima Nazith",
+	objectName = "",
+	customName = "Kima Nazith",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

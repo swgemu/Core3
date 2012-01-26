@@ -1,5 +1,6 @@
 senator_pooja_naberrie = Creature:new {
-	objectName = "@mob/creature_names:Senator Pooja Naberrie",
+	objectName = "",
+	customName = "Senator Pooja Naberrie",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

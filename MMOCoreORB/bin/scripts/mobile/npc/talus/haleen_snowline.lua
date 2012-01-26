@@ -1,5 +1,6 @@
 haleen_snowline = Creature:new {
-	objectName = "@mob/creature_names:Haleen Snowline",
+	objectName = "",
+	customName = "Haleen Snowline",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

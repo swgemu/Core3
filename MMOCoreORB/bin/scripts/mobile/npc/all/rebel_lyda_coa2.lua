@@ -1,5 +1,6 @@
 rebel_lyda_coa2 = Creature:new {
-	objectName = "@mob/creature_names:Rebel Lyda (COA2)",
+	objectName = "",
+	costumName = "Lyda",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

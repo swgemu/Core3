@@ -1,5 +1,6 @@
 lasha_bindari = Creature:new {
-	objectName = "@mob/creature_names:Lasha Bindari",
+	objectName = "",
+	customName = "Lasha Bindari",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

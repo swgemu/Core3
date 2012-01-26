@@ -1,5 +1,6 @@
 rhys_dallows = Creature:new {
-	objectName = "@mob/creature_names:Rhys Dallows",
+	objectName = "",
+	customName = "Rhys Dallows",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

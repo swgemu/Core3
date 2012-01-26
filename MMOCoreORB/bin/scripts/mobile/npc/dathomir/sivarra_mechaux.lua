@@ -1,5 +1,5 @@
 sivarra_mechaux = Creature:new {
-	objectName = "@mob/creature_names:Sivarra_Mechaux",
+	objectName = "@mob/creature_names:fs_villager_medic",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

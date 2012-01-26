@@ -1,5 +1,6 @@
 drakka_judarrl = Creature:new {
-	objectName = "@mob/creature_names:Drakka_Judarrl",
+	objectName = "",
+	customName = "Drakka_Judarrl",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

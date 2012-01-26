@@ -1,5 +1,6 @@
 keanna_likyna = Creature:new {
-	objectName = "@mob/creature_names:Keanna Likyna",
+	objectName = "",
+	customName = "Keanna Likyna",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

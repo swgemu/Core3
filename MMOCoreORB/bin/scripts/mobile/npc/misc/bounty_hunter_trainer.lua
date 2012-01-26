@@ -1,5 +1,5 @@
 bounty_hunter_trainer = Creature:new {
-	objectName = "@mob/creature_names:bounty_hunter_trainer",
+	objectName = "@mob/creature_names:trainer_bountyhunter",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

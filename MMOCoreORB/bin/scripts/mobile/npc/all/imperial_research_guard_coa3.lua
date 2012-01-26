@@ -1,5 +1,6 @@
 imperial_research_guard_coa3 = Creature:new {
-	objectName = "@mob/creature_names:Imperial research guard (COA3)",
+	objectName = "",
+	customName = "Imperial Research Guard",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

@@ -1,5 +1,6 @@
 biribas_tarun = Creature:new {
-	objectName = "@mob/creature_names:biribas_tarun",
+	objectName = "",
+	costumName = "Biribas Tarun",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

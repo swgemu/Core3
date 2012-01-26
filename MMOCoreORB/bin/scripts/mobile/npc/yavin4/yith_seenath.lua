@@ -1,5 +1,6 @@
 yith_seenath = Creature:new {
-	objectName = "@mob/creature_names:Yith Seenath",
+	objectName = "",
+	customName = "Yith Seenath",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

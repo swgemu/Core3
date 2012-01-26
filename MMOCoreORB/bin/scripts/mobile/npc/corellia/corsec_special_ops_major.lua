@@ -1,5 +1,5 @@
 corsec_special_ops_major = Creature:new {
-	objectName = "@mob/creature_names:CorSec_Special_Ops_Major",
+	objectName = "@mob/creature_names:corsec_major_aggro",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
 	faction = "",

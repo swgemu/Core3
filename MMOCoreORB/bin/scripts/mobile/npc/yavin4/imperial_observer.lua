@@ -1,5 +1,5 @@
 imperial_observer = Creature:new {
-	objectName = "@mob/creature_names:Imperial observer",
+	objectName = "@mob/creature_names:geonosian_imperial_observer",
 	socialGroup = "self",
 	pvpFaction = "self",
 	faction = "",

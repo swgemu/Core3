@@ -1,5 +1,5 @@
 imperial_research_captain_coa3 = Creature:new {
-	objectName = "@mob/creature_names:Imperial research captain (COA3)",
+	objectName = "@mob/creature_names:crackdown_imperial_army_captain",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
 	faction = "",

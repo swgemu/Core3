@@ -1,5 +1,5 @@
 male_zabrak_thug_low = Creature:new {
-	objectName = "@mob/creature_names:Male Zabrak Thug Low",
+	objectName = "@mob/creature_names:thug",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",

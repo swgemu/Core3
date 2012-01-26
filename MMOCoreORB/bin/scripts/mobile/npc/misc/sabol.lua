@@ -1,5 +1,6 @@
 sabol = Creature:new {
-	objectName = "@mob/creature_names:Sabol",
+	objectName = "",
+	customName = "Lt. Sabol",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

@@ -1,5 +1,6 @@
 captain_gilad_pellaeon = Creature:new {
-	objectName = "@mob/creature_names:Captain_Gilad_Pellaeon",
+	objectName = "",
+	customName = "Captain Gilad Pellaeon",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

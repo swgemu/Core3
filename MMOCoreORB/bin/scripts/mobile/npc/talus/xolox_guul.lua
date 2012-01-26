@@ -1,5 +1,6 @@
 xolox_guul = Creature:new {
-	objectName = "@mob/creature_names:Xolox_Guul",
+	objectName = "",
+	customName = "Xolox Guul",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

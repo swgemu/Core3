@@ -1,5 +1,6 @@
 arrek_von_sarko = Creature:new {
-	objectName = "@mob/creature_names:arrek_von_sarko",
+	objectName = "",
+	customName = "Arrek Von Sarko",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

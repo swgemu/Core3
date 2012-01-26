@@ -1,5 +1,6 @@
 pooja_naberrie = Creature:new {
-	objectName = "@mob/creature_names:Pooja Naberrie",
+	objectName = "",
+	customName = "Pooja Naberrie",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

@@ -1,5 +1,6 @@
 lx_466 = Creature:new {
-	objectName = "@mob/creature_names:Lx 466",
+	objectName = "",
+	customName = "LX 466",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

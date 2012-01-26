@@ -1,5 +1,5 @@
 nyms_guard = Creature:new {
-	objectName = "@mob/creature_names:Nym's_guard",
+	objectName = "@mob/creature_names:nym_guard",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",

@@ -1,5 +1,6 @@
 liane = Creature:new {
-	objectName = "@mob/creature_names:Liane",
+	objectName = "",
+	customName = "Liane",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

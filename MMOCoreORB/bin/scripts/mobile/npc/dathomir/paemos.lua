@@ -1,5 +1,5 @@
 paemos = Creature:new {
-	objectName = "@mob/creature_names:Paemos",
+	objectName = "@mob/creature_names:fs_villager_convert",
 	socialGroup = "Force Sensitive villager",
 	pvpFaction = "Force Sensitive villager",
 	faction = "",

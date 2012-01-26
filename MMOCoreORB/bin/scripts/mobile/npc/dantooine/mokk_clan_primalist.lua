@@ -1,5 +1,5 @@
 mokk_clan_primalist = Creature:new {
-	objectName = "@mob/creature_names:Mokk clan primalist",
+	objectName = "@mob/creature_names:mokk_primalist",
 	socialGroup = "Mokk Tribe",
 	pvpFaction = "Mokk Tribe",
 	faction = "",

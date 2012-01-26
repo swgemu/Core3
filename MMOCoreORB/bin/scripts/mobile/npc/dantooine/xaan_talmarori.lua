@@ -1,5 +1,6 @@
 xaan_talmarori = Creature:new {
-	objectName = "@mob/creature_names:Xaan_Talmarori",
+	objectName = "",
+	costumName = "Xaan Talmarori",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

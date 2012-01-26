@@ -1,5 +1,6 @@
 bab_esrus = Creature:new {
-	objectName = "@mob/creature_names:bab_esrus",
+	objectName = "",
+	customName = "Bab Esrus",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

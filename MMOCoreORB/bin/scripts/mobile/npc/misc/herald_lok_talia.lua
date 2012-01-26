@@ -1,5 +1,6 @@
 herald_lok_talia = Creature:new {
-	objectName = "@mob/creature_names:Herald Lok Talia",
+	objectName = "",
+	customName = "Talia",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",
