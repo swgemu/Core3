@@ -160,8 +160,8 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 	elseif (screenID == "accepted_bribe_20k") then
 		local playerObject = LuaPlayerObject(playerObjectPointer)
 		
-		if (creatureObject:hasSkill("combat_smuggler_underworld_04") and (creatureObject:getCashCredits() >= 20000)
-				and (getFactionPointsCap(creatureObject:getFactionRank()) >= playerObject:getFactionStanding(self:getRecruiterFactionString()) + 250)) then
+		if (player:hasSkill("combat_smuggler_underworld_04") and (player:getCashCredits() >= 20000)
+				and (getFactionPointsCap(player:getFactionRank()) >= playerObject:getFactionStanding(self:getRecruiterFactionString()) + 250)) then
 				
 			self:grantBribe(conversingPlayer, 20000, 250)
 		end
