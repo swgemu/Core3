@@ -35,9 +35,11 @@ void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
 }
 
 void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
-	notifyObservers(ObserverEventType::ENTEREDAREA, obj);
+	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
+		notifyObservers(ObserverEventType::ENTEREDAREA, obj);
 }
 
 void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
-	notifyObservers(ObserverEventType::EXITEDAREA, obj);
+	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
+		notifyObservers(ObserverEventType::EXITEDAREA, obj);
 }

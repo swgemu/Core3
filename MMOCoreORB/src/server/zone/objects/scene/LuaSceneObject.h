@@ -60,6 +60,7 @@ namespace scene {
 		int getContainerObjectById(lua_State* L);
 		int getContainerObjectByTemplate(lua_State* L);
 		int setDirectionalHeading(lua_State* L);
+		int getTemplateObjectPath(lua_State* L);
 
 
 	private:

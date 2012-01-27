@@ -75,6 +75,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
 		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
 		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
+		{ "addDotState", &LuaCreatureObject::addDotState},
 		{ 0, 0 }
 };
 
@@ -99,6 +100,20 @@ int LuaCreatureObject::getName(lua_State* L) {
 
 int LuaCreatureObject::_getObject(lua_State* L) {
 	lua_pushlightuserdata(L, realObject.get());
+
+	return 0;
+}
+
+int LuaCreatureObject::addDotState(lua_State* L) {
+	//addDotState(unsigned long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense)
+	uint32 defense = lua_tointeger(L, -1);
+	float potency = lua_tonumber(L, -2);
+	uint32 duration = lua_tointeger(L, -3);
+	byte type = lua_tointeger(L, -4);
+	uint32 strength = lua_tointeger(L, -5);
+	uint64 dotType = lua_tointeger(L, -6);
+
+	realObject->addDotState(dotType, strength, type, duration, potency, defense);
 
 	return 0;
 }

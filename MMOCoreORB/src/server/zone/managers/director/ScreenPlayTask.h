@@ -11,28 +11,28 @@
 #include "engine/engine.h"
 #include "DirectorManager.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ScreenPlayTask : public Task {
-	ManagedReference<CreatureObject*> creature;
+	ManagedReference<SceneObject*> obj;
 	String taskKey;
 	String screenPlay;
 public:
 
-	ScreenPlayTask(CreatureObject* creo, const String& key, const String& playName) {
-		creature = creo;
+	ScreenPlayTask(SceneObject* scno, const String& key, const String& playName) {
+		obj = scno;
 		taskKey = key;
 		screenPlay = playName;
 	}
 
 	void run() {
-		Locker locker(creature.get());
+		Locker locker(obj.get());
 
 		DirectorManager::instance()->activateEvent(this);
 	}
 
-	inline CreatureObject* getCreatureObject() {
-		return creature;
+	inline SceneObject* getSceneObject() {
+		return obj;
 	}
 
 	String getTaskKey() {

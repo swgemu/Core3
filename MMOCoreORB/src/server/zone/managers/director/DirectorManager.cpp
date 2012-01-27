@@ -23,6 +23,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/chat/ChatMessage.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/LuaAiAgent.h"
@@ -142,6 +143,20 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("WAYPOINTPURPLE", WaypointObject::COLOR_PURPLE);
 	luaEngine->setGlobalInt("WAYPOINTWHITE", WaypointObject::COLOR_WHITE);
 	luaEngine->setGlobalInt("WAYPOINTORANGE", WaypointObject::COLOR_ORANGE);
+
+	luaEngine->setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
+	luaEngine->setGlobalInt("CONSTITUTION", CreatureAttribute::CONSTITUTION);
+	luaEngine->setGlobalInt("STAMINA", CreatureAttribute::STAMINA);
+	luaEngine->setGlobalInt("ACTION", CreatureAttribute::ACTION);
+	luaEngine->setGlobalInt("STRENGTH", CreatureAttribute::STRENGTH);
+	luaEngine->setGlobalInt("QUICKNESS", CreatureAttribute::QUICKNESS);
+	luaEngine->setGlobalInt("MIND", CreatureAttribute::MIND);
+	luaEngine->setGlobalInt("FOCUS", CreatureAttribute::FOCUS);
+	luaEngine->setGlobalInt("WILLPOWER", CreatureAttribute::WILLPOWER);
+
+	luaEngine->setGlobalInt("POISONED", CreatureState::POISONED);
+	luaEngine->setGlobalInt("DISEASED", CreatureState::DISEASED);
+	luaEngine->setGlobalInt("ONFIRE", CreatureState::ONFIRE);
 
 
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
@@ -287,14 +302,14 @@ int DirectorManager::writeSharedMemory(lua_State* L) {
 }
 
 int DirectorManager::createEvent(lua_State* L) {
-	CreatureObject* creatureObject = (CreatureObject*)lua_touserdata(L, -1);
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 	String key = lua_tostring(L, -2);
 	String play = lua_tostring(L, -3);
 	uint32 mili = lua_tonumber(L, -4);
 
 	//System::out << "scheduling task with mili:" << mili << endl;
 
-	Reference<Task*> task = new ScreenPlayTask(creatureObject, key, play);
+	Reference<Task*> task = new ScreenPlayTask(obj, key, play);
 	task->schedule(mili);
 
 	return 0;
@@ -633,14 +648,14 @@ ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, C
 }
 
 void DirectorManager::activateEvent(ScreenPlayTask* task) {
-	CreatureObject* creo = task->getCreatureObject();
+	SceneObject* obj = task->getSceneObject();
 	String play = task->getScreenPlay();
 	String key = task->getTaskKey();
 
 	Lua* lua = getLuaInstance();
 
 	LuaFunction startScreenPlay(lua->getLuaState(), play, key, 0);
-	startScreenPlay << creo;
+	startScreenPlay << obj;
 
 	lua->callFunction(&startScreenPlay);
 }

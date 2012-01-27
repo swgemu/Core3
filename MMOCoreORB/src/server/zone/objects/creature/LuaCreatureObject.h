@@ -76,6 +76,7 @@ namespace creature {
 		int getGroupSize(lua_State* L);
 		int getGroupMember(lua_State* L);
 		int setOptionsBitmask(lua_State* L);
+		int addDotState(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

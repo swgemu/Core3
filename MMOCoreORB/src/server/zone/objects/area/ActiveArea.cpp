@@ -12,7 +12,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -207,6 +207,33 @@ bool ActiveArea::isCampArea() {
 		return _implementation->isCampArea();
 }
 
+unsigned long long ActiveArea::getCellObjectID() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCELLOBJECTID__);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return _implementation->getCellObjectID();
+}
+
+void ActiveArea::setCellObjectID(unsigned long long celloid) {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCELLOBJECTID__LONG_);
+		method.addUnsignedLongParameter(celloid);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCellObjectID(celloid);
+}
+
 DistributedObjectServant* ActiveArea::_getImplementation() {
 
 	_updated = true;
@@ -322,6 +349,11 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "cellObjectID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&cellObjectID, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -353,14 +385,24 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "cellObjectID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&cellObjectID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 2 + SceneObjectImplementation::writeObjectMembers(stream);
+
+	return 3 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/area/ActiveArea.idl():  		radius2 = 0;
 	radius2 = 0;
+	// server/zone/objects/area/ActiveArea.idl():  		cellObjectID = 0;
+	cellObjectID = 0;
 	// server/zone/objects/area/ActiveArea.idl():  		noBuildArea = false;
 	noBuildArea = false;
 	// server/zone/objects/area/ActiveArea.idl():  		Logger.setLoggingName("ActiveArea");
@@ -405,6 +447,16 @@ void ActiveAreaImplementation::setRadius(float r) {
 bool ActiveAreaImplementation::isCampArea() {
 	// server/zone/objects/area/ActiveArea.idl():  		return false;
 	return false;
+}
+
+unsigned long long ActiveAreaImplementation::getCellObjectID() {
+	// server/zone/objects/area/ActiveArea.idl():  		return cellObjectID;
+	return cellObjectID;
+}
+
+void ActiveAreaImplementation::setCellObjectID(unsigned long long celloid) {
+	// server/zone/objects/area/ActiveArea.idl():  		cellObjectID = celloid;
+	cellObjectID = celloid;
 }
 
 /*
@@ -456,6 +508,12 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ISCAMPAREA__:
 		resp->insertBoolean(isCampArea());
+		break;
+	case RPC_GETCELLOBJECTID__:
+		resp->insertLong(getCellObjectID());
+		break;
+	case RPC_SETCELLOBJECTID__LONG_:
+		setCellObjectID(inv->getUnsignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -514,6 +572,14 @@ void ActiveAreaAdapter::setRadius(float r) {
 
 bool ActiveAreaAdapter::isCampArea() {
 	return (static_cast<ActiveArea*>(stub))->isCampArea();
+}
+
+unsigned long long ActiveAreaAdapter::getCellObjectID() {
+	return (static_cast<ActiveArea*>(stub))->getCellObjectID();
+}
+
+void ActiveAreaAdapter::setCellObjectID(unsigned long long celloid) {
+	(static_cast<ActiveArea*>(stub))->setCellObjectID(celloid);
 }
 
 /*

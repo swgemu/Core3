@@ -55,8 +55,12 @@ class ActiveArea extends SceneObject {
 	
 	protected boolean noBuildArea; 
 	
+	protected unsigned long cellObjectID;
+	
 	public ActiveArea() {
 		radius2 = 0;
+		
+		cellObjectID = 0;
 		
 		noBuildArea = false;
 		
@@ -110,5 +114,13 @@ class ActiveArea extends SceneObject {
 	
 	public abstract boolean isCampArea() {
 		return false;
+	}
+	
+	public unsigned long getCellObjectID() {
+		return cellObjectID;
+	}
+	
+	public void setCellObjectID(unsigned long celloid) {
+		cellObjectID = celloid;
 	}
 }

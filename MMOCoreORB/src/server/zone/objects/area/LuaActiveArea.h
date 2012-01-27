@@ -34,6 +34,9 @@ namespace area {
 
 		int setNoBuildArea(lua_State* L);
 		int isNoBuildArea(lua_State* L);
+
+		int setCellObjectID(lua_State* L);
+		int getCellObjectID(lua_State* L);
 	private:
 		Reference<ActiveArea*> realObject;
 	};

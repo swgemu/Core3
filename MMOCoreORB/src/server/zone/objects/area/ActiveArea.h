@@ -74,6 +74,10 @@ public:
 
 	bool isCampArea();
 
+	unsigned long long getCellObjectID();
+
+	void setCellObjectID(unsigned long long celloid);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -103,6 +107,8 @@ protected:
 	float radius2;
 
 	bool noBuildArea;
+
+	unsigned long long cellObjectID;
 
 public:
 	ActiveAreaImplementation();
@@ -134,6 +140,10 @@ public:
 	void setRadius(float r);
 
 	virtual bool isCampArea();
+
+	unsigned long long getCellObjectID();
+
+	void setCellObjectID(unsigned long long celloid);
 
 	WeakReference<ActiveArea*> _this;
 
@@ -203,6 +213,10 @@ public:
 	void setRadius(float r);
 
 	bool isCampArea();
+
+	unsigned long long getCellObjectID();
+
+	void setCellObjectID(unsigned long long celloid);
 
 };
 

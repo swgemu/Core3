@@ -46,6 +46,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getContainerObjectByTemplate", &LuaSceneObject::getContainerObjectByTemplate },
 		{ "setDirectionalHeading", &LuaSceneObject::setDirectionalHeading },
 		{ "getZoneName", &LuaSceneObject::getZoneName },
+		{ "getTemplateObjectPath", &LuaSceneObject::getTemplateObjectPath },
 		{ 0, 0 }
 };
 
@@ -64,9 +65,24 @@ int LuaSceneObject::_setObject(lua_State* L) {
 
 int LuaSceneObject::setCustomObjectName(lua_State* L) {
 	String value = lua_tostring(L, -1);
+
 	realObject->setCustomObjectName(value, true);
 
 	return 0;
+}
+
+int LuaSceneObject::getTemplateObjectPath(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	if (obj != NULL) {
+		String tempPath = obj->getObjectTemplate()->getFullTemplateString();
+
+		lua_pushstring(L, tempPath);
+	} else {
+		lua_pushnil(L);
+	}
+
+	return 1;
 }
 
 int LuaSceneObject::getZoneName(lua_State* L) {
