@@ -9,4 +9,4 @@ fenri_dalso = {
 	}
 }
 
-addLootGroupTemplate("fenri_dalso", fenri_dalso)
+addLootGroupTemplate("fenri_dalso_drop", fenri_dalso)

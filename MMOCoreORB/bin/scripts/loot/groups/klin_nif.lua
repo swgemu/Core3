@@ -9,4 +9,4 @@ klin_nif = {
 	}
 }
 
-addLootGroupTemplate("klin_nif", klin_nif)
+addLootGroupTemplate("klin_nif_drop", klin_nif)

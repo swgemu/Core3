@@ -30,7 +30,7 @@ klin_nif = Creature:new {
 
 	templates = {"object/mobile/dressed_death_watch_silver.iff"},
 	lootgroups = {
-		{group = "klin_nif", chance = 10000000}
+		{group = "klin_nif_drop", chance = 10000000}
 	},
 	weapons = {"death_watch_commander_weapons"},
 	conversationTemplate = "",

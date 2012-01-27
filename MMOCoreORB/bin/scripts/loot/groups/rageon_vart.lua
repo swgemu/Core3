@@ -9,4 +9,4 @@ rageon_vart = {
 	}
 }
 
-addLootGroupTemplate("rageon_vart", rageon_vart)
+addLootGroupTemplate("rageon_vart_drop", rageon_vart)

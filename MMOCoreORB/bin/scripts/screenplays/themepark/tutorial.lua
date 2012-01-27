@@ -747,7 +747,6 @@ function TutorialScreenPlay:start(creatureObject)
 	creature:sendNewbieTutorialEnableHudElement("all", 0)
 	
 	creature:sendNewbieTutorialEnableHudElement("buttonbar", 1)
-	creature:teleport(2.5, 0, -3, targetCellObject:getObjectID())
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:welcome")
 	creature:playMusicMessage("sound/tut_01_welcome.snd")
 	writeData(creature:getObjectID() .. ":tutorial:message1",0)
