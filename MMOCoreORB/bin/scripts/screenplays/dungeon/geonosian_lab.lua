@@ -13,9 +13,11 @@ registerScreenPlay("geonosian_lab_screenplay", true)
 --   Initialize screenplay           -
 --------------------------------------
 function geonosian_lab_screenplay:start()
-	self:spawnActiveAreas()
-	self:spawnSceneObjects()
-	self:spawnMobiles()
+	if (isZoneEnabled("yavin4")) then
+		self:spawnActiveAreas()
+		self:spawnSceneObjects()
+		self:spawnMobiles()
+	end
 end
 
 function geonosian_lab_screenplay:spawnActiveAreas()
