@@ -64,5 +64,7 @@ void BountyHunterDroid::findTarget() {
 		findTargetTask->schedule(2000);
 	}
 
+	Locker locker(droidObject);
+
 	droidObject->destroyObjectFromWorld(true);
 }

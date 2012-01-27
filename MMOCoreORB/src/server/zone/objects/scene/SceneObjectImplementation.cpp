@@ -492,7 +492,7 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	ManagedReference<Zone*> rootZone = getZone();
 
 	if (par != NULL) {
-		par->removeObject(_this, false);
+		par->removeObject(_this, NULL, false);
 
 		if (par->isCellObject()) {
 			BuildingObject* build = cast<BuildingObject*>(par->getParent());
@@ -506,7 +506,7 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 		}
 		notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE,_this.get(),0);
 	} else if (zone != NULL) {
-		zone->removeObject(_this, false);
+		zone->removeObject(_this, NULL, false);
 	}
 
 	if (rootZone != NULL) {

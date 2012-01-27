@@ -39,6 +39,8 @@ public:
 			MobileOutfit outfit;
 			outfit.readObject(&obj);
 
+			outfits.add(outfit);
+
 			obj.pop();
 		}
 	}

@@ -56,9 +56,9 @@ namespace bountyhunterdroid {
 namespace events {
 
 class FindTargetTask : public Task, public Logger {
-	ManagedReference<CreatureObject*> droid;
-	ManagedReference<CreatureObject*> player;
-	ManagedReference<BountyMissionObjective*> objective;
+	ManagedWeakReference<CreatureObject*> droid;
+	ManagedWeakReference<CreatureObject*> player;
+	ManagedWeakReference<BountyMissionObjective*> objective;
 	int timeLeft;
 	bool success;
 	bool track;
@@ -88,21 +88,34 @@ public:
 	}
 
 	void run() {
+		ManagedReference<CreatureObject*> strongDroidRef = droid.get();
+		ManagedReference<CreatureObject*> playerRef = player.get();
+
+		if (strongDroidRef == NULL || playerRef == NULL)
+			return;
+
 		switch(state) {
-		case Init:
+		case Init: {
+			Locker locker(player);
+			Locker clocker(droid, player);
+
 			droid->setPosture(CreaturePosture::SITTING, true);
 			player->sendSystemMessage("@mission/mission_generic:seeker_droid_launched");
 			reschedule(10 * 1000);
 			timeLeft -= 10;
 			state = DroidSent;
 			break;
-		case DroidSent:
+		} case DroidSent: {
+			Locker locker(droid);
+
 			droid->destroyObjectFromWorld(true);
 			state = Searching;
 			reschedule(timeLeft * 1000);
 			break;
-		case Searching:
+		} case Searching: {
 			if (success) {
+				Locker locker(player);
+
 				if (objective != NULL) {
 					objective->updateMissionStatus(3);
 				}
@@ -122,11 +135,11 @@ public:
 				state = Completed;
 			}
 			break;
-		case Tracking:
+		} case Tracking: {
 			player->sendSystemMessage("@mission/mission_generic:assassin_target_location");
 			reschedule(60 * 1000);
 			break;
-		case Completed:
+		} case Completed:
 			break;
 		default:
 			error("Incorrect state.");

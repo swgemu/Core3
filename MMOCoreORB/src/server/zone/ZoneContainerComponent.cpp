@@ -193,7 +193,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		Locker zoneLocker(zone);
 
 		if (parent != NULL) {
-			parent->removeObject(object, false);
+			parent->removeObject(object, NULL, false);
 		} else
 			zone->remove(object);
 

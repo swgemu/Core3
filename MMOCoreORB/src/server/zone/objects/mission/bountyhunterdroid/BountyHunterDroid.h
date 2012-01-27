@@ -32,11 +32,11 @@ public:
 	static const int FINDTARGET = 2;
 	static const int FINDANDTRACKTARGET = 3;
 
-	ManagedReference<SceneObject*> droidObject;
-	ManagedReference<CreatureObject*> droid;
-	ManagedReference<CreatureObject*> player;
-	ManagedReference<MissionObject*> mission;
-	FindTargetTask* findTargetTask;
+	ManagedWeakReference<SceneObject*> droidObject;
+	ManagedWeakReference<CreatureObject*> droid;
+	ManagedWeakReference<CreatureObject*> player;
+	ManagedWeakReference<MissionObject*> mission;
+	Reference<FindTargetTask*> findTargetTask;
 
 	BountyHunterDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) :
 		Logger("BountyHunterDroid") {

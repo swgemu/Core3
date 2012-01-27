@@ -85,8 +85,10 @@ public:
 		for (int i = 1; i < luaObject->getTableSize(); ++i) {
 			LuaObject obj = luaObject->getObjectAt(i);
 
-			MobileOutfit outfit;
+			OutfitTangibleObject outfit;
 			outfit.readObject(&obj);
+
+			objects.add(outfit);
 
 			obj.pop();
 		}

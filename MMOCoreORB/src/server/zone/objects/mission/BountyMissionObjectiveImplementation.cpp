@@ -149,7 +149,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	switch (objectiveStatus) {
 	case INITSTATUS:
 		if (informantLevel == 1) {
-			if (getPlayerOwner()->getZone()->getZoneName() = mission->getEndPlanet()) {
+			if (getPlayerOwner()->getZone()->getZoneName() == mission->getEndPlanet()) {
 				spawnTargetAndUpdateWaypoint();
 			}
 		}
@@ -157,7 +157,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 		break;
 	case HASBIOSIGNATURESTATUS:
 		if (informantLevel > 1) {
-			if (getPlayerOwner()->getZone()->getZoneName() = mission->getEndPlanet()) {
+			if (getPlayerOwner()->getZone()->getZoneName() == mission->getEndPlanet()) {
 				spawnTargetAndUpdateWaypoint();
 			}
 		}
