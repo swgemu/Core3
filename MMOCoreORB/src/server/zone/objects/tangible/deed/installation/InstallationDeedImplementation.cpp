@@ -26,7 +26,6 @@ int InstallationDeedImplementation::handleObjectMenuSelect(CreatureObject* playe
 
 	String actionName = "placestructuremode";
 	player->executeObjectControllerAction(actionName.hashCode(), getObjectID(), "");
-
 	return 0;
 }
 
@@ -54,4 +53,37 @@ void InstallationDeedImplementation::fillAttributeList(AttributeListMessage* alm
 
 	if (surplusPower > 0)
 		alm->insertAttribute("examine_power", String::valueOf(surplusPower)); //Surplus Power
+
+	if (hopperSizeMax > 0)
+		alm->insertAttribute("examine_hoppersize", String::valueOf((int)hopperSizeMax));
+
+	if (extractionRate > 0)
+			alm->insertAttribute("examine_extractionrate", String::valueOf((int) extractionRate));
+}
+
+void InstallationDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate){
+
+	/*
+		 * Incoming Values:					Ranges:
+		 * extractrate						Differs between installations
+		 * hoppersize
+		 */
+		setExtractionRate(values->getCurrentValue("extractrate"));
+		setHopperSizeMax(values->getCurrentValue("hoppersize"));
+}
+
+void InstallationDeedImplementation::setExtractionRate(float rate){
+	extractionRate = rate;
+}
+
+void InstallationDeedImplementation::setHopperSizeMax(float size){
+	hopperSizeMax = size;
+}
+
+float InstallationDeedImplementation::getExtractionRate(){
+	return extractionRate;
+}
+
+float InstallationDeedImplementation::getHopperSizeMax(){
+	return hopperSizeMax;
 }

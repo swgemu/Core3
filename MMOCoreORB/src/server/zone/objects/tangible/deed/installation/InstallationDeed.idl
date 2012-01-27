@@ -53,6 +53,8 @@ import server.zone.objects.area.ActiveArea;
 class InstallationDeed extends Deed {
 	protected unsigned int surplusMaintenance;
 	protected unsigned int surplusPower;
+	protected float extractionRate;
+	protected float hopperSizeMax;
 	
 	public InstallationDeed() {		
 		Logger.setLoggingName("InstallationDeed");
@@ -93,4 +95,21 @@ class InstallationDeed extends Deed {
 	public boolean isInstallationDeed() {
 		return true;
 	}
+	
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstupdate);
+	
+	@local
+	public native void setExtractionRate(float rate);
+	
+	@local
+	public native void setHopperSizeMax(float size);
+	
+	@local
+	public native float getExtractionRate();
+	
+	@local
+	public native float getHopperSizeMax();
+	
+	
 }

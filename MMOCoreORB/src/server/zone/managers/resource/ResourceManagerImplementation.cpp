@@ -286,7 +286,12 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 			for (int i = 0; i < zoneMap->size(); ++i) {
 				resourceSpawn = zoneMap->get(i);
 
-				if (resourceSpawn->getSurveyToolType() == type) {
+				if (type == 9){
+					if (resourceSpawn->isType("radioactive"))
+						list.add(resourceSpawn);
+				}
+
+				else if (resourceSpawn->getSurveyToolType() == type) {
 					list.add(resourceSpawn);
 				}
 			}

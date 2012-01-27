@@ -677,9 +677,14 @@ void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, S
 		for (int j = 0; j < size; ++j) {
 			ManagedReference<SceneObject*> childObject = cell->getContainerObject(j);
 
-			if (!building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
-				childObject->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
-				creature->sendSystemMessage("@player_structure:moved_first_item"); //The first item in your house has been moved to your location.
+			//if (!building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
+			if (creature->getParent() != NULL && !building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
+				if (creature->getParent()->getParent() == childObject->getParent()->getParent()){
+
+					childObject->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+					creature->sendSystemMessage("@player_structure:moved_first_item"); //The first item in your house has been moved to your location.
+				}
+
 				return;
 			}
 		}

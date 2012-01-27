@@ -163,6 +163,36 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "server/zone/objects/installation/HopperList.h"
 
 #include "system/lang/String.h"
@@ -260,11 +290,17 @@ public:
 
 	float getHopperSizeMax();
 
+	void updateStructureStatus();
+
 	HopperList* getHopperList();
 
 	bool isHarvesterObject();
 
 	bool isGeneratorObject();
+
+	void setHopperSizeMax(float size);
+
+	void setExtractionRate(float rate);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -385,11 +421,17 @@ public:
 
 	float getHopperSizeMax();
 
+	void updateStructureStatus();
+
 	HopperList* getHopperList();
 
 	virtual bool isHarvesterObject();
 
 	virtual bool isGeneratorObject();
+
+	void setHopperSizeMax(float size);
+
+	void setExtractionRate(float rate);
 
 	WeakReference<InstallationObject*> _this;
 
@@ -493,6 +535,8 @@ public:
 	float getExtractionRate();
 
 	float getHopperSizeMax();
+
+	void updateStructureStatus();
 
 	bool isHarvesterObject();
 

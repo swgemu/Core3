@@ -16,6 +16,7 @@
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
@@ -85,6 +86,11 @@ int PlaceStructureSessionImplementation::completeSession() {
 		InstallationDeed* installationDeed = cast<InstallationDeed*>( deedObject.get());
 		structureObject->setSurplusMaintenance(installationDeed->getSurplusMaintenance());
 		structureObject->setSurplusPower(installationDeed->getSurplusPower());
+		ManagedReference<InstallationObject*> installationObject = cast<InstallationObject*>(structureObject.get());
+		installationObject->setExtractionRate(installationDeed->getExtractionRate());
+		installationObject->setHopperSizeMax(installationDeed->getHopperSizeMax());
+
+
 	}
 
 	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();

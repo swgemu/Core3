@@ -14,7 +14,7 @@
  *	InstallationDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__,};
 
 InstallationDeed::InstallationDeed() : Deed(DummyConstructorParameter::instance()) {
 	InstallationDeedImplementation* _implementation = new InstallationDeedImplementation();
@@ -134,6 +134,51 @@ bool InstallationDeed::isInstallationDeed() {
 		return _implementation->isInstallationDeed();
 }
 
+void InstallationDeed::updateCraftingValues(CraftingValues* values, bool firstupdate) {
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->updateCraftingValues(values, firstupdate);
+}
+
+void InstallationDeed::setExtractionRate(float rate) {
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setExtractionRate(rate);
+}
+
+void InstallationDeed::setHopperSizeMax(float size) {
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setHopperSizeMax(size);
+}
+
+float InstallationDeed::getExtractionRate() {
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getExtractionRate();
+}
+
+float InstallationDeed::getHopperSizeMax() {
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getHopperSizeMax();
+}
+
 DistributedObjectServant* InstallationDeed::_getImplementation() {
 
 	_updated = true;
@@ -249,6 +294,16 @@ bool InstallationDeedImplementation::readObjectMember(ObjectInputStream* stream,
 		return true;
 	}
 
+	if (_name == "extractionRate") {
+		TypeInfo<float >::parseFromBinaryStream(&extractionRate, stream);
+		return true;
+	}
+
+	if (_name == "hopperSizeMax") {
+		TypeInfo<float >::parseFromBinaryStream(&hopperSizeMax, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -280,8 +335,24 @@ int InstallationDeedImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "extractionRate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&extractionRate, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 2 + DeedImplementation::writeObjectMembers(stream);
+	_name = "hopperSizeMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&hopperSizeMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + DeedImplementation::writeObjectMembers(stream);
 }
 
 InstallationDeedImplementation::InstallationDeedImplementation() {

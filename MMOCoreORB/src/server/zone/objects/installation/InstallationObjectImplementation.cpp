@@ -668,3 +668,42 @@ float InstallationObjectImplementation::getActualRate() {
 	return extractionRate * (spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY()));
 }
 
+void InstallationObjectImplementation::setExtractionRate(float rate){
+	extractionRate = rate;
+}
+
+void InstallationObjectImplementation::setHopperSizeMax(float size){
+	hopperSizeMax = size;
+}
+
+void InstallationObjectImplementation::updateStructureStatus() {
+	/** Points when updateStructureStatus should occur:
+	 * Prior to inserting or withdrawing maintenance or power, and after the deposit/withdrawal.
+	 * When requesting a Structure Status report.
+	 * When correct maintenance/power values are needed.
+	 * Any time the maintenance or power surplus is changed by a hand other than this method.
+	 */
+	float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
+
+	float maintenanceDue = (getMaintenanceRate() / 3600.f) * timeDiff;
+	float powerDue = ((float) basePowerRate / 3600.f) * timeDiff;
+
+	if (maintenanceDue > 0 || powerDue > 0) {
+		//Only update last time if we actually progressed to get correct consumption.
+		lastUpdateTimestamp.updateToCurrentTime();
+	}
+
+	//Maintenance is used as decay as well so let it go below 0.
+	surplusMaintenance -= maintenanceDue;
+
+	//Update structure condition.
+	if (surplusMaintenance < 0) {
+		setConditionDamage(-surplusMaintenance, true);
+	} else {
+		setConditionDamage(0, true);
+	}
+
+	if (surplusPower > 0.f && operating)
+		surplusPower -= powerDue;
+	//else if installation, shutdown.
+}

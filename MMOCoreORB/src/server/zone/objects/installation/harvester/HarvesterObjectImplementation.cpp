@@ -70,6 +70,3 @@ int HarvesterObjectImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	return 0;
 }
-
-
-

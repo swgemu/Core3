@@ -83,6 +83,16 @@ public:
 
 	bool isInstallationDeed();
 
+	void updateCraftingValues(CraftingValues* values, bool firstupdate);
+
+	void setExtractionRate(float rate);
+
+	void setHopperSizeMax(float size);
+
+	float getExtractionRate();
+
+	float getHopperSizeMax();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -115,6 +125,10 @@ protected:
 
 	unsigned int surplusPower;
 
+	float extractionRate;
+
+	float hopperSizeMax;
+
 public:
 	InstallationDeedImplementation();
 
@@ -135,6 +149,16 @@ public:
 	void setSurplusPower(unsigned int power);
 
 	bool isInstallationDeed();
+
+	void updateCraftingValues(CraftingValues* values, bool firstupdate);
+
+	void setExtractionRate(float rate);
+
+	void setHopperSizeMax(float size);
+
+	float getExtractionRate();
+
+	float getHopperSizeMax();
 
 	WeakReference<InstallationDeed*> _this;
 

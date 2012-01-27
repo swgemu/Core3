@@ -109,4 +109,5 @@ class HarvesterObject extends InstallationObject {
 	public boolean isHarvesterObject() {
 		return true;
 	}
+	
 }

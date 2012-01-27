@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.installation;
 
 import system.lang.String;
+
 import system.lang.ref.Reference;
 import system.util.SortedVector;
 import system.util.VectorMap;
@@ -62,11 +63,12 @@ import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
 import server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.resource.ResourceContainer;
 import server.zone.objects.area.ActiveArea;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.installation.HopperList;
 import system.lang.Time;
 import server.zone.objects.scene.SceneObject;
-
-
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.TangibleObject;
 class InstallationObject extends StructureObject {
 	protected transient SyncrhonizedUiListenInstallationTask syncUiTask;
 
@@ -247,6 +249,8 @@ class InstallationObject extends StructureObject {
 		return hopperSizeMax;
 	}
 	
+	public native void updateStructureStatus();
+	
 	@local
 	public HopperList getHopperList() {
 		return resourceHopper;
@@ -259,4 +263,13 @@ class InstallationObject extends StructureObject {
 	public abstract boolean isGeneratorObject() {
 		return false;
 	}
-}
+	
+	@local
+	public native void setHopperSizeMax(float size);
+	
+	@local
+	public native void setExtractionRate(float rate);
+	
+	
+}	
+	
