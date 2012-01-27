@@ -8,6 +8,13 @@
 #ifndef BOUNTYHUNTERDROID_H_
 #define BOUNTYHUNTERDROID_H_
 
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
+#include "engine/log/Logger.h"
+#include "server/zone/objects/mission/bountyhunterdroid/events/FindTargetTask.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -17,7 +24,7 @@ namespace bountyhunterdroid {
 /**
  * Class implementing the functionality of the bounty hunter droids.
  */
-class BountyHunterDroid {
+class BountyHunterDroid : public Logger, public Object {
 public:
 
 	static const int CALLDROID = 0;
@@ -25,6 +32,27 @@ public:
 	static const int FINDTARGET = 2;
 	static const int FINDANDTRACKTARGET = 3;
 
+	ManagedReference<SceneObject*> droidObject;
+	ManagedReference<CreatureObject*> droid;
+	ManagedReference<CreatureObject*> player;
+	ManagedReference<MissionObject*> mission;
+	FindTargetTask* findTargetTask;
+
+	BountyHunterDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) :
+		Logger("BountyHunterDroid") {
+		this->droidObject = droidObject;
+		this->player = player;
+		this->mission = mission;
+		findTargetTask = NULL;
+	}
+
+	SceneObject* getDroidSceneObject() {
+		return droidObject;
+	}
+
+	void performAction(int action, SceneObject* sceneObject, CreatureObject* player);
+
+	void findTarget();
 };
 
 } // namespace bountyhunterdroid

@@ -9,7 +9,9 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
+#include "server/zone/ZoneServer.h"
 
 void BountyHunterDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!droidObject->isTangibleObject()) {
@@ -99,7 +101,7 @@ bool BountyHunterDroidMenuComponent::droidIsInZone(SceneObject* droidObject) {
 }
 
 bool BountyHunterDroidMenuComponent::playerOwnsTheDroid(SceneObject* droidObject, CreatureObject* player) {
-	ManagedReference<MissionObject*> mission = getBountyHunterMission(player);
+	ManagedReference<MissionObject*> mission = player->getZoneServer()->getMissionManager()->getBountyHunterMission(player);
 
 	if (mission != NULL) {
 		ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
@@ -115,49 +117,44 @@ bool BountyHunterDroidMenuComponent::playerOwnsTheDroid(SceneObject* droidObject
 }
 
 void BountyHunterDroidMenuComponent::performDroidAction(int action, SceneObject* droidObject, CreatureObject* player) {
+	ManagedReference<MissionObject*> mission = getBountyHunterMission(player);
+	ManagedReference<BountyMissionObjective*> objective = NULL;
+
+	if (mission != NULL) {
+		objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
+	}
+
 	if (action == BountyHunterDroid::CALLDROID || action == BountyHunterDroid::TRANSMITBIOLOGICALSIGNATURE) {
 		if (playerCanUseProbot(player)) {
-			sendActionToMissionObjective(action, droidObject, player);
+			if (objective != NULL) {
+				objective->performDroidAction(action, droidObject, player);
+			} else {
+				player->sendSystemMessage("@mission/mission_generic:bounty_no_mission");
+			}
 		} else {
 			player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		}
 	} else {
 		if (playerCanUseSeeker(player)) {
-			sendActionToMissionObjective(action, droidObject, player);
+			if (objective != NULL) {
+				objective->performDroidAction(action, droidObject, player);
+			} else {
+				player->sendSystemMessage("@mission/mission_generic:bounty_no_mission");
+			}
 		} else {
 			player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		}
 	}
 }
 
-void BountyHunterDroidMenuComponent::sendActionToMissionObjective(int action, SceneObject* droidObject, CreatureObject* player) {
-	ManagedReference<MissionObject*> mission = getBountyHunterMission(player);
-
-	if (mission != NULL) {
-		ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
-
-		if (objective != NULL) {
-			objective->performDroidAction(action, droidObject, player);
-			return;
-		}
-	}
-
-	player->sendSystemMessage("@mission/mission_generic:bounty_no_mission");
-}
-
-//TODO: Move to mission manager.
 MissionObject* BountyHunterDroidMenuComponent::getBountyHunterMission(CreatureObject* player) {
-	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+	ZoneServer* zoneServer = player->getZoneServer();
 
-	if (datapad != NULL) {
-		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
-			if (datapad->getContainerObject(i)->isMissionObject()) {
-				ManagedReference<MissionObject*> mission = cast<MissionObject*>(datapad->getContainerObject(i));
+	if (zoneServer != NULL) {
+		MissionManager* missionManager = zoneServer->getMissionManager();
 
-				if (mission != NULL && mission->getTypeCRC() == MissionObject::BOUNTY) {
-					return mission;
-				}
-			}
+		if (missionManager != NULL) {
+			return missionManager->getBountyHunterMission(player);
 		}
 	}
 

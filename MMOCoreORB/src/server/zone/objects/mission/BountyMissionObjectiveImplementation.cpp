@@ -19,6 +19,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.h"
 
 void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 	npcTemplateToSpawn = sp;
@@ -80,7 +81,8 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getPositionX(), zone->getHeight(mission->getPositionX(), mission->getPositionY()), mission->getPositionY(), 0));
+		//TODO use end position.
+		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getEndPositionX(), zone->getHeight(mission->getEndPositionX(), mission->getEndPositionY()), mission->getEndPositionY(), 0));
 
 		ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
@@ -147,27 +149,18 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	switch (objectiveStatus) {
 	case INITSTATUS:
 		if (informantLevel == 1) {
-			spawnTarget(getPlayerOwner()->getZone()->getZoneName());
-
-			WaypointObject* waypoint = mission->getWaypointToMission();
-
-			if (waypoint == NULL) {
-				waypoint = mission->createWaypoint();
+			if (getPlayerOwner()->getZone()->getZoneName() = mission->getEndPlanet()) {
+				spawnTargetAndUpdateWaypoint();
 			}
-
-			mission->setEndPosition(npcTarget->getPositionX(), npcTarget->getPositionY(), npcTarget->getPlanetCRC(), true);
-			waypoint->setPlanetCRC(npcTarget->getPlanetCRC());
-			waypoint->setPosition(npcTarget->getPositionX(), 0, npcTarget->getPositionY());
-			waypoint->setActive(true);
-
-			mission->updateMissionLocation();
-
-			getPlayerOwner()->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
 		}
-
 		objectiveStatus = HASBIOSIGNATURESTATUS;
 		break;
 	case HASBIOSIGNATURESTATUS:
+		if (informantLevel > 1) {
+			if (getPlayerOwner()->getZone()->getZoneName() = mission->getEndPlanet()) {
+				spawnTargetAndUpdateWaypoint();
+			}
+		}
 		objectiveStatus = HASTALKED;
 		break;
 	case HASTALKED:
@@ -177,6 +170,98 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	}
 }
 
+void BountyMissionObjectiveImplementation::spawnTargetAndUpdateWaypoint() {
+	spawnTarget(getPlayerOwner()->getZone()->getZoneName());
+
+	WaypointObject* waypoint = mission->getWaypointToMission();
+
+	if (waypoint == NULL) {
+		waypoint = mission->createWaypoint();
+	}
+
+	waypoint->setPlanetCRC(npcTarget->getPlanetCRC());
+	waypoint->setPosition(npcTarget->getPositionX(), 0, npcTarget->getPositionY());
+	waypoint->setActive(true);
+
+	mission->updateMissionLocation();
+
+	getPlayerOwner()->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
+}
+
 void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {
-	info("Performing droid action " + String::valueOf(action), true);
+	if (!playerHasMissionOfCorrectLevel(action)) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		return;
+	}
+
+	activeDroid = sceneObject;
+
+	if (droid == NULL) {
+		droid = new BountyHunterDroid(activeDroid, player, getMissionObject());
+		droid->performAction(action, sceneObject, player);
+	} else {
+		player->sendSystemMessage("@mission/mission_generic:bounty_already_tracking");
+	}
+}
+//TODO update to use current position (calculation needed).
+int BountyMissionObjectiveImplementation::getDistanceToTarget() {
+	Vector3 playerCoordinate;
+	playerCoordinate.setX(getPlayerOwner()->getPositionX());
+	playerCoordinate.setY(getPlayerOwner()->getPositionY());
+	Vector3 targetCoordinate;
+	targetCoordinate.setX(mission->getEndPositionX());
+	targetCoordinate.setY(mission->getEndPositionY());
+	return playerCoordinate.distanceTo(targetCoordinate);
+}
+
+String BountyMissionObjectiveImplementation::getDirectionToTarget() {
+	float dx = mission->getEndPositionX() - getPlayerOwner()->getPositionX();
+	float dy = mission->getEndPositionY() - getPlayerOwner()->getPositionY();
+
+	if (dx > 0) {
+		if (dy > 0) {
+			if (dx < dy * 0.5) {
+				return "north";
+			} else if (dx > dy * 2) {
+				return "east";
+			} else {
+				return "northeast";
+			}
+		} else {
+			if (dx < -dy * 0.5) {
+				return "south";
+			} else if (dx > -dy * 2) {
+				return "east";
+			} else {
+				return "southeast";
+			}
+		}
+	} else {
+		if (dy > 0) {
+			if (-dx < dy * 0.5) {
+				return "north";
+			} else if (-dx > dy * 2) {
+				return "west";
+			} else {
+				return "northwest";
+			}
+		} else {
+			if (-dx < -dy * 0.5) {
+				return "south";
+			} else if (-dx > -dy * 2) {
+				return "west";
+			} else {
+				return "southwest";
+			}
+		}
+	}
+}
+
+bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int action) {
+	int levelNeeded = 2;
+	if (action == BountyHunterDroid::CALLDROID || action == BountyHunterDroid::TRANSMITBIOLOGICALSIGNATURE) {
+		levelNeeded = 3;
+	}
+
+	return mission->getDifficultyLevel() >= levelNeeded;
 }

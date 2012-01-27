@@ -551,6 +551,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/HuntingMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
+		server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.cpp \
 		server/zone/templates/string/StringFile.cpp \
 		server/zone/templates/faction/FactionRanks.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \

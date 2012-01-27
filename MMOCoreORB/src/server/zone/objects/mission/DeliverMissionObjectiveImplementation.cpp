@@ -112,7 +112,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 	//Destination NPC.
 	//Find a free spawn point.
-	destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanetCRC(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
+	destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanet().hashCode(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
 	if (destinationSpawnPoint == NULL) {
 		return false;
 	}
@@ -230,7 +230,7 @@ bool DeliverMissionObjectiveImplementation::updateMissionTarget(CreatureObject* 
 		waypoint = mission->createWaypoint();
 	}
 
-	waypoint->setPlanetCRC(mission->getEndPlanetCRC());
+	waypoint->setPlanetCRC(mission->getEndPlanet().hashCode());
 	waypoint->setPosition(destinationSpawnPoint->getPosition()->getX(), 0, destinationSpawnPoint->getPosition()->getY());
 	waypoint->setActive(true);
 

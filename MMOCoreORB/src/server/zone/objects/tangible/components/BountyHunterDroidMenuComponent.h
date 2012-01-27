@@ -94,14 +94,6 @@ private:
 	void performDroidAction(int action, SceneObject* droidObject, CreatureObject* player);
 
 	/**
-	 * Send the droid action selected in the radial menu to the mission objective.
-	 * @param action the action to perform.
-	 * @param droidObject the droid.
-	 * @param player the player that performs the action on the droid.
-	 */
-	void sendActionToMissionObjective(int action, SceneObject* droidObject, CreatureObject* player);
-
-	/**
 	 * Returns a bounty hunter mission object if the player has one.
 	 * @param player the player.
 	 * @return bounty hunter mission object if the player has one otherwise NULL.

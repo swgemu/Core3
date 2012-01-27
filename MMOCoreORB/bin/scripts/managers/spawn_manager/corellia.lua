@@ -252,7 +252,10 @@ corellia_static_spawns = {
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2955401},
 	{"trainer_weaponsmith",0,-5106,0,-2324,180,0},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1935464},
-	{"informant_npc",0,-345,0,-4439,0,0},
+	-- Informants (Temporary so far)
+	{"informant_npc_lvl_1",0,-345,0,-4439,0,0},
+	{"informant_npc_lvl_2",0,-340,0,-4439,0,0},
+	{"informant_npc_lvl_3",0,-335,0,-4439,0,0},
 	--Rebel DWB Quest NPC
 	{"death_watch_herald_rebel",1,-213.642, 28, -4445.46, 28.5501,0},
 	

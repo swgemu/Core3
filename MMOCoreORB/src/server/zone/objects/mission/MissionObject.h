@@ -182,7 +182,7 @@ public:
 
 	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
-	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+	void setEndPosition(float posX, float posY, String& planetName, bool notifyClient = true);
 
 	void setCreatorName(const String& name, bool notifyClient = true);
 
@@ -202,7 +202,7 @@ public:
 
 	void setRewardFactionPointsImperial(int points);
 
-	void setEndPlanetCRC(unsigned int crc);
+	void setEndPlanet(String& planetName);
 
 	void setMissionTarget(NpcSpawnPoint* target);
 
@@ -234,7 +234,7 @@ public:
 
 	float getEndPositionY();
 
-	unsigned int getEndPlanetCRC();
+	String getEndPlanet();
 
 	WaypointObject* getWaypointToMission();
 
@@ -279,6 +279,7 @@ protected:
 
 	virtual ~MissionObject();
 
+	String _return_getEndPlanet;
 	String _return_getStartPlanet;
 	String _return_getTargetName;
 	String _return_getTargetOptionalTemplate;
@@ -334,7 +335,7 @@ protected:
 
 	float endPositionY;
 
-	unsigned int endPlanetCRC;
+	String endPlanet;
 
 	StringId missionDescription;
 
@@ -419,7 +420,7 @@ public:
 
 	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
-	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+	void setEndPosition(float posX, float posY, String& planetName, bool notifyClient = true);
 
 	void setCreatorName(const String& name, bool notifyClient = true);
 
@@ -439,7 +440,7 @@ public:
 
 	void setRewardFactionPointsImperial(int points);
 
-	void setEndPlanetCRC(unsigned int crc);
+	void setEndPlanet(String& planetName);
 
 	void setMissionTarget(NpcSpawnPoint* target);
 
@@ -471,7 +472,7 @@ public:
 
 	float getEndPositionY();
 
-	unsigned int getEndPlanetCRC();
+	String getEndPlanet();
 
 	WaypointObject* getWaypointToMission();
 
@@ -576,7 +577,7 @@ public:
 
 	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient);
 
-	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient);
+	void setEndPosition(float posX, float posY, String& planetName, bool notifyClient);
 
 	void setCreatorName(const String& name, bool notifyClient);
 
@@ -596,7 +597,7 @@ public:
 
 	void setRewardFactionPointsImperial(int points);
 
-	void setEndPlanetCRC(unsigned int crc);
+	void setEndPlanet(String& planetName);
 
 	void setMissionTarget(NpcSpawnPoint* target);
 
@@ -628,7 +629,7 @@ public:
 
 	float getEndPositionY();
 
-	unsigned int getEndPlanetCRC();
+	String getEndPlanet();
 
 	WaypointObject* getWaypointToMission();
 
@@ -665,8 +666,10 @@ protected:
 	String _param1_setMissionTitle__String_String_bool_;
 	String _param0_setMissionTargetName__String_bool_;
 	String _param2_setStartPosition__float_float_String_bool_;
+	String _param2_setEndPosition__float_float_String_bool_;
 	String _param0_setCreatorName__String_bool_;
 	String _param0_setStartPlanet__String_;
+	String _param0_setEndPlanet__String_;
 	String _param0_setTargetOptionalTemplate__String_;
 	String _param0_setTemplateStrings__String_String_;
 	String _param1_setTemplateStrings__String_String_;

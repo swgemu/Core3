@@ -664,8 +664,6 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 	mission->setMissionNumber(randTexts);
 
-	Vector3 startPos = getRandomBountyTargetPosition(player);
-
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
@@ -674,6 +672,10 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_bounty_target.iff").hashCode()));
 
 	mission->setFaction(faction);
+
+	Vector3 endPos = getRandomBountyTargetPosition(player);
+	String planet = player->getZone()->getZoneName();
+	mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
 
 	mission->setRewardCredits(500 + System::random(500));
 	mission->setMissionDifficulty(difficulty);
@@ -786,7 +788,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	String planet = player->getZone()->getZoneName();
 	mission->setStartPlanet(planet);
 	mission->setStartPosition(startNpc->getPosition()->getX(), startNpc->getPosition()->getY(), planet, true);
-	mission->setEndPosition(endNpc->getPosition()->getX(), endNpc->getPosition()->getY(), planet.hashCode());
+	mission->setEndPosition(endNpc->getPosition()->getX(), endNpc->getPosition()->getY(), planet);
 
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode()));
 
@@ -1287,7 +1289,7 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	float radius = radiusX > radiusY ? radiusX : radiusY;
 
 	while (!found) {
-		position = player->getCoordinate(System::random(radius), System::random(360));
+		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
 		if (position.getX() > player->getZone()->getMinX() && position.getX() < player->getZone()->getMaxX() &&
 				position.getY() > player->getZone()->getMinY() && position.getY() < player->getZone()->getMaxY()) {
@@ -1296,4 +1298,22 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	}
 
 	return position;
+}
+
+MissionObject* MissionManagerImplementation::getBountyHunterMission(CreatureObject* player) {
+	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+	if (datapad != NULL) {
+		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+			if (datapad->getContainerObject(i)->isMissionObject()) {
+				ManagedReference<MissionObject*> mission = cast<MissionObject*>(datapad->getContainerObject(i));
+
+				if (mission != NULL && mission->getTypeCRC() == MissionObject::BOUNTY) {
+					return mission;
+				}
+			}
+		}
+	}
+
+	return NULL;
 }

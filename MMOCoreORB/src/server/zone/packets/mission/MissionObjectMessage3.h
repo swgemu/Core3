@@ -96,7 +96,7 @@ public:
 		insertFloat(0); //z
 		insertFloat(mi->getEndPositionY());//insertFloat(mi->getTargetY()); //y
 		insertLong(0); //Start obj id
-		insertInt(mi->getEndPlanetCRC());//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
+		insertInt(mi->getEndPlanet().hashCode());//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
 
 		//Target Object IFF crc
 		SharedObjectTemplate* templateObject = mi->getTargetTemplate();

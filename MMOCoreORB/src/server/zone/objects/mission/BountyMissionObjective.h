@@ -79,6 +79,22 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace mission {
+namespace bountyhunterdroid {
+
+class BountyHunterDroid;
+
+} // namespace bountyhunterdroid
+} // namespace mission
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::mission::bountyhunterdroid;
+
 #include "server/zone/templates/TemplateReference.h"
 
 #include "engine/util/Observer.h"
@@ -126,6 +142,14 @@ public:
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 
+	int getDistanceToTarget();
+
+	String getDirectionToTarget();
+
+	bool playerHasMissionOfCorrectLevel(int action);
+
+	void spawnTargetAndUpdateWaypoint();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -134,6 +158,8 @@ protected:
 	BountyMissionObjective(DummyConstructorParameter* param);
 
 	virtual ~BountyMissionObjective();
+
+	String _return_getDirectionToTarget;
 
 	friend class BountyMissionObjectiveHelper;
 };
@@ -159,6 +185,8 @@ protected:
 	int objectiveStatus;
 
 	ManagedReference<SceneObject* > activeDroid;
+
+	Reference<BountyHunterDroid* > droid;
 
 public:
 	static const int INITSTATUS = 0;
@@ -196,6 +224,14 @@ public:
 	SceneObject* getProbotDroid();
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
+
+	int getDistanceToTarget();
+
+	String getDirectionToTarget();
+
+	bool playerHasMissionOfCorrectLevel(int action);
+
+	void spawnTargetAndUpdateWaypoint();
 
 	WeakReference<BountyMissionObjective*> _this;
 
@@ -259,6 +295,14 @@ public:
 	SceneObject* getProbotDroid();
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
+
+	int getDistanceToTarget();
+
+	String getDirectionToTarget();
+
+	bool playerHasMissionOfCorrectLevel(int action);
+
+	void spawnTargetAndUpdateWaypoint();
 
 protected:
 	String _param0_spawnTarget__String_;

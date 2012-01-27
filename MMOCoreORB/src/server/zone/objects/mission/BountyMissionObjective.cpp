@@ -14,11 +14,13 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.h"
+
 /*
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_GETDISTANCETOTARGET__,RPC_GETDIRECTIONTOTARGET__,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_SPAWNTARGETANDUPDATEWAYPOINT__};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -183,6 +185,60 @@ void BountyMissionObjective::performDroidAction(int action, SceneObject* sceneOb
 		_implementation->performDroidAction(action, sceneObject, player);
 }
 
+int BountyMissionObjective::getDistanceToTarget() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDISTANCETOTARGET__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDistanceToTarget();
+}
+
+String BountyMissionObjective::getDirectionToTarget() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDIRECTIONTOTARGET__);
+
+		method.executeWithAsciiReturn(_return_getDirectionToTarget);
+		return _return_getDirectionToTarget;
+	} else
+		return _implementation->getDirectionToTarget();
+}
+
+bool BountyMissionObjective::playerHasMissionOfCorrectLevel(int action) {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_);
+		method.addSignedIntParameter(action);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->playerHasMissionOfCorrectLevel(action);
+}
+
+void BountyMissionObjective::spawnTargetAndUpdateWaypoint() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SPAWNTARGETANDUPDATEWAYPOINT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->spawnTargetAndUpdateWaypoint();
+}
+
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
 
 	_updated = true;
@@ -306,6 +362,11 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
+	if (_name == "droid") {
+		TypeInfo<Reference<BountyHunterDroid* > >::parseFromBinaryStream(&droid, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -353,8 +414,16 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "droid";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<BountyHunterDroid* > >::toBinaryStream(&droid, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 4 + MissionObjectiveImplementation::writeObjectMembers(stream);
+
+	return 5 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
@@ -429,6 +498,18 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_:
 		performDroidAction(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_GETDISTANCETOTARGET__:
+		resp->insertSignedInt(getDistanceToTarget());
+		break;
+	case RPC_GETDIRECTIONTOTARGET__:
+		resp->insertAscii(getDirectionToTarget());
+		break;
+	case RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_:
+		resp->insertBoolean(playerHasMissionOfCorrectLevel(inv->getSignedIntParameter()));
+		break;
+	case RPC_SPAWNTARGETANDUPDATEWAYPOINT__:
+		spawnTargetAndUpdateWaypoint();
+		break;
 	default:
 		return NULL;
 	}
@@ -478,6 +559,22 @@ SceneObject* BountyMissionObjectiveAdapter::getProbotDroid() {
 
 void BountyMissionObjectiveAdapter::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {
 	(static_cast<BountyMissionObjective*>(stub))->performDroidAction(action, sceneObject, player);
+}
+
+int BountyMissionObjectiveAdapter::getDistanceToTarget() {
+	return (static_cast<BountyMissionObjective*>(stub))->getDistanceToTarget();
+}
+
+String BountyMissionObjectiveAdapter::getDirectionToTarget() {
+	return (static_cast<BountyMissionObjective*>(stub))->getDirectionToTarget();
+}
+
+bool BountyMissionObjectiveAdapter::playerHasMissionOfCorrectLevel(int action) {
+	return (static_cast<BountyMissionObjective*>(stub))->playerHasMissionOfCorrectLevel(action);
+}
+
+void BountyMissionObjectiveAdapter::spawnTargetAndUpdateWaypoint() {
+	(static_cast<BountyMissionObjective*>(stub))->spawnTargetAndUpdateWaypoint();
 }
 
 /*

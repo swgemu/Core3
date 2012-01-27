@@ -258,6 +258,8 @@ public:
 
 	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
 
+	MissionObject* getBountyHunterMission(CreatureObject* player);
+
 	String getDeliveryMissionFileName(const int faction);
 
 	int getDeliverMissionNumberOfMissions(const int faction);
@@ -407,6 +409,8 @@ public:
 
 	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
 
+	MissionObject* getBountyHunterMission(CreatureObject* player);
+
 	String getDeliveryMissionFileName(const int faction);
 
 	int getDeliverMissionNumberOfMissions(const int faction);
@@ -541,6 +545,8 @@ public:
 	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
 
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
+
+	MissionObject* getBountyHunterMission(CreatureObject* player);
 
 	String getDeliveryMissionFileName(const int faction);
 

@@ -245,10 +245,10 @@ uint32 MissionObjectImplementation::getStartPlanetCRC() {
 	return startPlanet.hashCode();
 }
 
-void MissionObjectImplementation::setEndPosition(float posX, float posY, uint32 planetCRC, bool notifyClient) {
+void MissionObjectImplementation::setEndPosition(float posX, float posY, String& planetName, bool notifyClient) {
 	endPositionX = posX;
 	endPositionY = posY;
-	endPlanetCRC = planetCRC;
+	endPlanet = planetName;
 
 	if (!notifyClient)
 		return;
@@ -257,7 +257,7 @@ void MissionObjectImplementation::setEndPosition(float posX, float posY, uint32 
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
-		delta->updateDestination(posX, posY, planetCRC);
+		delta->updateDestination(posX, posY, endPlanet.hashCode());
 		delta->close();
 
 		player->sendMessage(delta);

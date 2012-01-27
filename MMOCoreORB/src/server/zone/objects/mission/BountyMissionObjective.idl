@@ -53,6 +53,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.AiAgent;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.mission.bountyhunterdroid.BountyHunterDroid;
 
 class BountyMissionObjective extends MissionObjective {
 	@dereferenced
@@ -62,7 +63,9 @@ class BountyMissionObjective extends MissionObjective {
 	
 	protected int objectiveStatus;
 	
-	protected SceneObject activeDroid; 
+	protected SceneObject activeDroid;
+	
+	protected BountyHunterDroid droid;
 	
 	public static final int INITSTATUS = 0;
 	public static final int HASBIOSIGNATURESTATUS = 1;
@@ -109,4 +112,11 @@ class BountyMissionObjective extends MissionObjective {
 	}
 	
 	public native void performDroidAction(int action, SceneObject sceneObject, CreatureObject player);
+	
+	public native int getDistanceToTarget();	
+	public native string getDirectionToTarget();
+	
+	public native boolean playerHasMissionOfCorrectLevel(int action);
+	
+	public native void spawnTargetAndUpdateWaypoint();
 }
