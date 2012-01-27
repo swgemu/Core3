@@ -71,12 +71,17 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				uint32 crc = weptemps.get(i).hashCode();
 
 				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
-				weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
-				weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
-				weapons.add(weao);
 
-				if (i == 0)
-					transferObject(weao, 4, false);
+				if (weao != NULL) {
+					weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
+					weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
+					weapons.add(weao);
+
+					if (i == 0)
+						transferObject(weao, 4, false);
+				} else {
+					error("could not create weapon " + weptemps.get(i));
+				}
 			}
 		}
 
