@@ -82,6 +82,7 @@ lootableStatMods = {
 	"droid_find_chance",
 	"droid_find_speed",
 	"droid_track_chance",
+	"droid_track_speed",
 	"droid_tracks",
 	"food_assembly",
 	"food_experimentation",
