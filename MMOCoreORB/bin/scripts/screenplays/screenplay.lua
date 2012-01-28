@@ -50,3 +50,4 @@ includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
+includeFile("event/stresstest_20120128.lua")

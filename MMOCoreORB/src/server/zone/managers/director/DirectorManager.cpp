@@ -139,6 +139,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("ENTEREDBUILDING", ObserverEventType::ENTEREDBUILDING);
 	luaEngine->setGlobalInt("EXITEDBUILDING", ObserverEventType::EXITEDBUILDING);
 
+	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
+	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
 	luaEngine->setGlobalInt("POSTURESITTING", CreaturePosture::SITTING);
 	luaEngine->setGlobalInt("STATESITTINGONCHAIR", CreatureState::SITTINGONCHAIR);
 

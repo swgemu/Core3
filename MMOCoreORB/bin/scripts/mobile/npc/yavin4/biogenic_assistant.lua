@@ -1,6 +1,5 @@
-biogenic_crazyguy = Creature:new {
-	objectName = "",
-	customName = "Ebotia Dived (a scientist)",
+biogenic_assistant = Creature:new {
+	objectName = "@mob/creature_names:geonosian_scientist",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -27,12 +26,12 @@ biogenic_crazyguy = Creature:new {
 	optionsBitmask = 392,
 	diet = HERBIVORE,
 	lootChance = 0,
-
-	templates = {"object/mobile/dressed_doctor_trainer_human_female_01.iff", "object/mobile/dressed_combatmedic_trainer_human_female_01.iff"},
+	
+	templates = {"object/mobile/dressed_geonosian_scientist_01.iff","object/mobile/dressed_geonosian_scientist_02.iff"},
 	lootgroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(biogenic_crazyguy, "biogenic_crazyguy")
+CreatureTemplates:addCreatureTemplate(biogenic_assistant, "biogenic_assistant")

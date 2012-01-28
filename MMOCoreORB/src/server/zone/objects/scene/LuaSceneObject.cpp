@@ -50,6 +50,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getZoneName", &LuaSceneObject::getZoneName },
 		{ "getTemplateObjectPath", &LuaSceneObject::getTemplateObjectPath },
 		{ "teleport", &LuaSceneObject::teleport },
+		{ "switchZone", &LuaSceneObject::switchZone },
 		{ 0, 0 }
 };
 
@@ -68,8 +69,13 @@ int LuaSceneObject::_setObject(lua_State* L) {
 
 int LuaSceneObject::doAnimation(lua_State* L) {
 	String anim = lua_tostring(L, -1);
-	if (realObject != NULL && anim != "") {
-		Animation* msg = new Animation(realObject, anim);
+
+
+
+	if (realObject != NULL && realObject->isCreatureObject() && anim != "") {
+		CreatureObject* creature = cast<CreatureObject*>(realObject.get());
+
+		Animation* msg = new Animation(creature, anim);
 
 		realObject->broadcastMessage(msg, true);
 	}
@@ -81,6 +87,18 @@ int LuaSceneObject::setCustomObjectName(lua_State* L) {
 	String value = lua_tostring(L, -1);
 
 	realObject->setCustomObjectName(value, true);
+
+	return 0;
+}
+
+int LuaSceneObject::switchZone(lua_State* L) {
+	uint64 parentid = lua_tointeger(L, -1);
+	float y = lua_tonumber(L, -2);
+	float z = lua_tonumber(L, -3);
+	float x = lua_tonumber(L, -4);
+	String planet = lua_tostring(L, -5);
+
+	realObject->switchZone(planet, x, z, y, parentid);
 
 	return 0;
 }

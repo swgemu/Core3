@@ -1,5 +1,6 @@
-enhanced_kliknik = Creature:new {
-	objectName = "@mob/creature_names:geonosian_kliknik_force_strong",
+enhanced_force_kliknik = Creature:new {
+	objectName = "",
+	customName = "Force Kliknik",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
 	faction = "",
@@ -8,10 +9,10 @@ enhanced_kliknik = Creature:new {
 	damageMin = 675,
 	damageMax = 1060,
 	baseXp = 10360,
-	baseHAM = 22000,
-	baseHAMmax = 27000,
+	baseHAM = 27000,
+	baseHAMmax = 33000,
 	armor = 2,
-	resists = {40,40,10,95,-1,10,10,10,-1},
+	resists = {35,35,-1,95,-1,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 45,
 	hideType = "hide_scaley",
@@ -36,4 +37,4 @@ enhanced_kliknik = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(enhanced_kliknik, "enhanced_kliknik")
+CreatureTemplates:addCreatureTemplate(enhanced_force_kliknik, "enhanced_force_kliknik")

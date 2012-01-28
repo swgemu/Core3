@@ -1,6 +1,6 @@
-biogenic_crazyguy = Creature:new {
+biogenic_scientist_human = Creature:new {
 	objectName = "",
-	customName = "Ebotia Dived (a scientist)",
+	customName = "a scientist",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -35,4 +35,4 @@ biogenic_crazyguy = Creature:new {
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(biogenic_crazyguy, "biogenic_crazyguy")
+CreatureTemplates:addCreatureTemplate(biogenic_scientist_human, "biogenic_scientist_human")

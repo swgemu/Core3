@@ -63,6 +63,7 @@ namespace scene {
 		int setDirectionalHeading(lua_State* L);
 		int getTemplateObjectPath(lua_State* L);
 		int teleport(lua_State* L);
+		int switchZone(lua_State* L);
 
 
 	private:
