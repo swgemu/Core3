@@ -258,7 +258,7 @@ int DirectorManager::checkInt64Lua(lua_State* L) {
 	if (data < bigNumber) {
 		instance()->error("Lua not using lnum patch with 64 bit integers, please patch lua!!");
 	} else {
-		instance()->info("Lua reads int64");
+		instance()->info("Lua reads int64", true);
 	}
 
 	lua_pop(L, 1);
@@ -679,10 +679,14 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 
 	Lua* lua = getLuaInstance();
 
-	LuaFunction startScreenPlay(lua->getLuaState(), play, key, 0);
-	startScreenPlay << obj;
+	try {
+		LuaFunction startScreenPlay(lua->getLuaState(), play, key, 0);
+		startScreenPlay << obj;
 
-	lua->callFunction(&startScreenPlay);
+		lua->callFunction(&startScreenPlay);
+	} catch (Exception& e) {
+		error("exception while running lua task " + play + ":" + key);
+	}
 }
 
 int DirectorManager::createConversationScreen(lua_State* L) {
