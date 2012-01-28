@@ -1289,8 +1289,8 @@ function TutorialScreenPlay:stopOfficer1ConversationMessage(creatureObject)
 	local drumRawPointer = getSceneObject(drumObjectID)
 	createObserver(OPENCONTAINER, "TutorialScreenPlay", "openDrumEvent", drumRawPointer)
 	createObserver(OBJECTRADIALOPENED, "TutorialScreenPlay", "drumRadial", drumRawPointer)
-	writeData(creature:getObjectID() .. ":tutorial:converse3", 3)
-	createEvent(5000, "TutorialScreenPlay", "stopOfficer1ConversationMessage", creatureObject)
+--	writeData(creature:getObjectID() .. ":tutorial:converse3", 3)
+--	createEvent(5000, "TutorialScreenPlay", "stopOfficer1ConversationMessage", creatureObject)
 	
 --[[
 	finished = readData(creature:getObjectID() .. ":tutorial:converse3")
