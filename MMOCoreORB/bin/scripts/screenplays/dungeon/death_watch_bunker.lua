@@ -852,9 +852,7 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 	
 	enabled = readData(sceneObject:getObjectID() .. ":dwb:accessEnabled")
 	number = readData(sceneObject:getObjectID() .. ":dwb:terminal")
-	
-	
-	
+		
 	if (enabled == 0) then
 		creature:sendSystemMessage("@dungeon/death_watch:room_in_use")
 		return 0
@@ -889,7 +887,7 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 		
 		local groupMember = LuaCreatureObject(nil)
 		
-		for index = i, i < size do
+		for i = 0, i < size do
 			pMember = creature:getGroupMember(i)
 			if pMember ~= nil then
 				groupMember:_setObject(pMember)
@@ -918,7 +916,7 @@ function DWB:removeFromDWB(creatureObject)
 		
 		local groupMember = LuaCreatureObject(nil)
 		
-		for index = i, i < size do
+		for i = 0, i < size do
 			pMember = creature:getGroupMember(i)
 			if pMember ~= nil then
 				groupMember:_setObject(pMember)
@@ -980,10 +978,10 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				
 				local groupMember = LuaCreatureObject(nil)
 				
-				for index = i, i < size do
+				for i = 0, i < size do
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
-						groupMember:_setObject(pMember)
+						local groupMember = LuaCreatureObject(pMember)
 						if groupMember:getZoneName() == "endor" then
 							targetCellObject:updateCellPermission(1, pMember)
 							groupMember:sendSystemMessage("@dungeon/death_watch:access_granted")
@@ -1029,13 +1027,15 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				
 				local groupMember = LuaCreatureObject(nil)
 				
-				for index = i, i < size do
+				for i=0, i < size do
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
-						groupMember:_setObject(pMember)
+						local groupMember = LuaCreatureObject(pMember)
+					
 						if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
 							groupMember:setScreenPlayState(4, "death_watch_bunker")
 						end
+						
 					end
 				end 
 			else
@@ -1076,13 +1076,15 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				
 				local groupMember = LuaCreatureObject(nil)
 				
-				for index = i, i < size do
+				for i = 0, i < size do
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
-						groupMember:_setObject(pMember)
+						local groupMember = LuaCreatureObject(pMember)
+					
 						if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
 							groupMember:setScreenPlayState(8, "death_watch_bunker")
 						end
+					
 					end
 				end 
 			else
@@ -1123,13 +1125,15 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				
 				local groupMember = LuaCreatureObject(nil)
 				
-				for index = i, i < size do
+				for i = 0, i < size do
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
-						groupMember:_setObject(pMember)
+						local groupMember = LuaCreatureObject(pMember)
+					
 						if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
 							groupMember:setScreenPlayState(16, "death_watch_bunker")
 						end
+					
 					end
 				end 
 			else
