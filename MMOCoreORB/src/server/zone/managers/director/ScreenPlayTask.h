@@ -28,9 +28,10 @@ public:
 	void run() {
 		if (obj != NULL) {
 			Locker locker(obj.get());
-		}
 
-		DirectorManager::instance()->activateEvent(this);
+
+			DirectorManager::instance()->activateEvent(this);
+		}
 	}
 
 	inline SceneObject* getSceneObject() {
