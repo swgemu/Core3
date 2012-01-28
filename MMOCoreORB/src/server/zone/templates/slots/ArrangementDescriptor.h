@@ -26,15 +26,16 @@ public:
 		switch (version) {
 		case '0000':
 		{
-			for (int i = 0; i < versionForm->getChunksSize(); ++i) {
+			//for (int i = 0; i < versionForm->getChunksSize(); ++i) {
+			for (int i = 0; i < MIN(versionForm->getChunksSize(), 1); ++i) { // TODO:figure out different arrangement groups
 				Chunk* arg = iffStream->openChunk('ARG ');
 
-				if (!arg->hasData())
-					continue;
+				while (arg->hasData()) {
+					String slotName;
+					arg->readString(slotName);
+					arrangementSlots.add(slotName);
+				}
 
-				String slotName;
-				arg->readString(slotName);
-				arrangementSlots.add(slotName);
 				iffStream->closeChunk('ARG ');
 			}
 		}
