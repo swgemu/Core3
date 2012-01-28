@@ -451,6 +451,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/LuaAiAgent.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/managers/sui/LuaSuiManager.cpp \
+		server/zone/objects/player/sui/LuaSuiBox.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
@@ -470,6 +471,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/screenhandlers/InformantMissionScreenHandler.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/DelegateSuiCallback.cpp \
+		server/zone/objects/player/sui/callbacks/LuaSuiCallback.cpp \
 		server/zone/objects/player/LuaPlayerObject.cpp \
 		server/zone/objects/player/variables/AbilityList.cpp \
 		server/zone/objects/player/variables/SchematicList.cpp \

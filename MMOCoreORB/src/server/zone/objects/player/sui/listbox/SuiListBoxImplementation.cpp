@@ -25,9 +25,9 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 
 	/// This crashes the client, but is what makes the third button
 	/// Report info
-	if(otherButton) {
-		addHeader("this", "otherPressed");
-	}
+	//if(otherButton) {
+		//addHeader("this", "otherPressed");
+	//}
 
 	//Set Body Options:
 	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
@@ -35,7 +35,7 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 
 	if(otherButton) {
 		addSetting("3", "btnOther", "visible", "true");
-		addSetting("3", "btnOther", "visible", "@refresh");
+		//addSetting("3", "btnOther", "visible", "@refresh");
 
         addSetting("3","btnOther","Location","102,262");
         addSetting("3","btnOther","Size","81,19");

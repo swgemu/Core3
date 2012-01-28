@@ -92,11 +92,38 @@ end
 function geonosian_lab_screenplay:notifyKeypadUsed(pKeypad, pPlayer, radialSelected)
 	if (radialSelected == 20) then
 		--We need to show to the user the keypad sui.
+		local suiManager = LuaSuiManager()
+		suiManager:sendKeypadSui(pKeypad, pPlayer, "geonosian_lab_screenplay", "keypadSuiCallback")
 	end
 end
 
 function geonosian_lab_screenplay:restartGasLeak(pGasLeak)
 	writeData("geonosian_lab:gasleak", 1)
+end
+
+function geonosian_lab_screenplay:keypadSuiCallback(pCreature, pSui, cancelPressed, enteredCode)
+	if (pCreature ~= nil) then
+	end
+	
+	local suiBox = LuaSuiBox(pSui)
+	
+	local pUsingObject = suiBox:getUsingObject()
+	
+	if (pUsingObject == nil) then
+		return 0
+	end
+	
+	local usingObject = LuaSceneObject(pUsingObject)
+	
+	local objectID = usingObject:getObjectID()
+	
+	local keypadCode = readData(objectID .. ":geonosian_lab:keypad_code");
+	
+	if (tonumber(enteredCode) == keypadCode) then
+		printf("Keypad codes matched!\n")
+	else
+		printf("Keypad codes didn't match\n")
+	end
 end
 
 --------------------------------------
