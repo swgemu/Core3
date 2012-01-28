@@ -138,7 +138,11 @@ ConversationScreen* ConversationObserverImplementation::getNextConversationScree
 	}*/
 
 	//Get last conversation screen.
-	Reference<ConversationScreen* > lastConversationScreen = session->getLastConversationScreen();
+	Reference<ConversationScreen* > lastConversationScreen;
+
+	if (session != NULL)
+		lastConversationScreen = session->getLastConversationScreen();
+
 	Reference<ConversationScreen* > nextConversationScreen;
 
 	if (lastConversationScreen != NULL) {
