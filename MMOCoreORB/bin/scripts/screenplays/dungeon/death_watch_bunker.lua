@@ -862,7 +862,7 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 	
 	creature:sendSystemMessage("@dungeon/death_watch:not_enough_ingredients")
 	return 0
-	
+	--[[
 	if (DWB.hasCraftingItem(number, number, creatureObject) == false) then
 		creature:sendSystemMessage("@dungeon/death_watch:not_enough_ingredients")
 		return 0
@@ -903,6 +903,7 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 	end
 	
 	return 0
+]]
 end
 
 function DWB:removeFromDWB(creatureObject)
