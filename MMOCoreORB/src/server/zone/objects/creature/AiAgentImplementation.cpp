@@ -1193,6 +1193,8 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		}
 	}
 
+	if (npcTemplate == NULL)
+		return;
 	//Create conversation observer.
 	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
 
