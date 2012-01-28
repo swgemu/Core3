@@ -40,7 +40,7 @@ int LuaSuiManager::sendKeypadSui(lua_State* L) {
 	if (creatureSceneObject == NULL || !creatureSceneObject->isCreatureObject())
 		return 0;
 
-	CreatureObject* creature = (CreatureObject*) creatureSceneObject;
+	CreatureObject* creature = cast<CreatureObject*>(creatureSceneObject);
 
 	PlayerObject* playerObject = creature->getPlayerObject();
 

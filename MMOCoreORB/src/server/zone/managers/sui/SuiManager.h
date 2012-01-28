@@ -76,11 +76,10 @@ namespace server {
    namespace sui {
 
 	  class SuiManager : public Singleton<SuiManager>, public Logger, public Object {
-	  	ZoneProcessServer* server;
+	  	ManagedWeakReference<ZoneProcessServer*> server;
 
 	  public:
 	  	SuiManager();
-	  	SuiManager(ZoneProcessServer* serv);
 
 	  	void handleSuiEventNotification(uint32 boxID, CreatureObject* player, uint32 cancel, Vector<UnicodeString>* args);
 
@@ -150,6 +149,10 @@ namespace server {
 	  	void handleGamblingSlotPayout(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleGamblingSlot(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleGamblingRoulette(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
+
+	  	void setZoneProcessServer(ZoneProcessServer* srv) {
+	  		server = srv;
+	  	}
 	  };
    }
   }

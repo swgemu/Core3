@@ -102,6 +102,7 @@ void ZoneProcessServerImplementation::initialize() {
 	//nameManager->test();
 	holocronManager = new HolocronManager(_this);
 	suiManager = SuiManager::instance();
+	suiManager->setZoneProcessServer(_this);
 
 	objectController = new ObjectController(_this);
 

@@ -99,13 +99,6 @@ which carries forward this exception.
 SuiManager::SuiManager() : Logger("SuiManager") {
 	server = NULL;
 	setGlobalLogging(true);
-	setLogging(true);
-}
-
-SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
-	server = serv;
-
-	setGlobalLogging(true);
 	setLogging(false);
 }
 
