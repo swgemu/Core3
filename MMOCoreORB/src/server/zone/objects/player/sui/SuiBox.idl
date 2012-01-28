@@ -108,6 +108,7 @@ class SuiBox extends ManagedObject implements Logger {
 	public static final int BANKTIPCONFIRMBOX = 10;
 
 	public static final int SLICINGBOX = 20;
+	public static final int KEYPAD = 21;
 	
 	public SuiBox(CreatureObject play, unsigned int windowtype, unsigned int boxtype) {
 		player = play;

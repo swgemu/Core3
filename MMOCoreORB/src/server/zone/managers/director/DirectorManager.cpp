@@ -35,6 +35,7 @@
 #include "server/zone/objects/player/sessions/LuaConversationSession.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/managers/sui/LuaSuiManager.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -170,6 +171,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaAiAgent>::Register(luaEngine->getLuaState());
 	Luna<LuaActiveArea>::Register(luaEngine->getLuaState());
 	Luna<LuaTangibleObject>::Register(luaEngine->getLuaState());
+	Luna<LuaSuiManager>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");

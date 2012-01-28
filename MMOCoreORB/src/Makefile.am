@@ -130,6 +130,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/creature/buffs/SpiceDownerBuff.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
+				server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBox.cpp \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
@@ -449,6 +450,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/LuaAiAgent.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
+		server/zone/managers/sui/LuaSuiManager.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
@@ -495,6 +497,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/PlaceStructureSessionImplementation.cpp \
 		server/zone/objects/player/sessions/DestroyStructureSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
+		server/zone/objects/player/sui/keypadbox/SuiKeypadBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \

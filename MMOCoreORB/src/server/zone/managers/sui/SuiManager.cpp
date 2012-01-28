@@ -96,6 +96,11 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 
+SuiManager::SuiManager() : Logger("SuiManager") {
+	server = NULL;
+	setGlobalLogging(true);
+	setLogging(true);
+}
 
 SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
 	server = serv;

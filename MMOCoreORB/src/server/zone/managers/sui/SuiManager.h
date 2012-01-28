@@ -75,10 +75,11 @@ namespace server {
   namespace managers {
    namespace sui {
 
-	  class SuiManager : public Logger, public Object {
+	  class SuiManager : public Singleton<SuiManager>, public Logger, public Object {
 	  	ZoneProcessServer* server;
 
 	  public:
+	  	SuiManager();
 	  	SuiManager(ZoneProcessServer* serv);
 
 	  	void handleSuiEventNotification(uint32 boxID, CreatureObject* player, uint32 cancel, Vector<UnicodeString>* args);

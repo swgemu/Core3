@@ -103,6 +103,8 @@ public:
 
 	static const int SLICINGBOX = 20;
 
+	static const int KEYPAD = 21;
+
 	SuiBox(CreatureObject* play, unsigned int windowtype, unsigned int boxtype);
 
 	void initialize();
@@ -267,6 +269,8 @@ public:
 	static const int BANKTIPCONFIRMBOX = 10;
 
 	static const int SLICINGBOX = 20;
+
+	static const int KEYPAD = 21;
 
 	SuiBoxImplementation(CreatureObject* play, unsigned int windowtype, unsigned int boxtype);
 
