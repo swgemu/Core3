@@ -98,4 +98,10 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 	return message;
 }
 
+void SuiListBoxImplementation::addMenuItem(const String& name, unsigned long long objectID) {
+	ManagedReference<SuiListBoxMenuItem*> item = new SuiListBoxMenuItem(name, objectID);
+	item->deploy();
+	menuItems.add(item);
+}
+
 

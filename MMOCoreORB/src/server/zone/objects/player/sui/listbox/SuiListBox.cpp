@@ -384,14 +384,6 @@ void SuiListBoxImplementation::init() {
 	previous = 0;
 }
 
-void SuiListBoxImplementation::addMenuItem(const String& name, unsigned long long objectID) {
-	ManagedReference<SuiListBoxMenuItem*> _ref0;
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		SuiListBoxMenuItem item = new SuiListBoxMenuItem(name, objectID);
-	SuiListBoxMenuItem* item = _ref0 = new SuiListBoxMenuItem(name, objectID);
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		menuItems.add(item);
-	(&menuItems)->add(item);
-}
-
 String SuiListBoxImplementation::getMenuItemName(int index) {
 	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		SuiListBoxMenuItem menuItem = menuItems.get(index);
 	SuiListBoxMenuItem* menuItem = (&menuItems)->get(index);
