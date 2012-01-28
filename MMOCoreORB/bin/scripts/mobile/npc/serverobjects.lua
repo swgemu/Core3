@@ -1663,7 +1663,6 @@ includeFile("npc/all/blastromech.lua")
 includeFile("npc/misc/death_watch_rescue_scientist.lua")
 includeFile("npc/all/dark_trooper.lua")
 includeFile("npc/misc/governor_grayed_wintozzen.lua")
-
 includeFile("npc/tutorial/bandit_1.lua")
 includeFile("npc/tutorial/imperial_officer_1.lua")
 includeFile("npc/tutorial/imperial_officer_2.lua")

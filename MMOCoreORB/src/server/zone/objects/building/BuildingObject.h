@@ -222,7 +222,7 @@ public:
 
 	void onEnter(CreatureObject* player);
 
-	void onExit(CreatureObject* player);
+	void onExit(CreatureObject* player, unsigned long long parentid);
 
 	bool isBuildingObject();
 
@@ -379,7 +379,7 @@ public:
 
 	virtual void onEnter(CreatureObject* player);
 
-	virtual void onExit(CreatureObject* player);
+	virtual void onExit(CreatureObject* player, unsigned long long parentid);
 
 	bool isBuildingObject();
 
@@ -512,7 +512,7 @@ public:
 
 	void onEnter(CreatureObject* player);
 
-	void onExit(CreatureObject* player);
+	void onExit(CreatureObject* player, unsigned long long parentid);
 
 	bool isBuildingObject();
 

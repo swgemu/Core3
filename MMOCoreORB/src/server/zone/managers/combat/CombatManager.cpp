@@ -187,8 +187,14 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 		animationCRC = getDefaultAttackAnimation(attacker);
 
 	// TODO: this might need a randomize like player CRCs
-	if (attacker->isCreature() && animationCRC == 0)
-		animationCRC = String("creature_attack_light").hashCode();
+	if (attacker->isCreature() && animationCRC == 0) {
+		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE) {
+			animationCRC = String("fire_3_single_light").hashCode();
+		} else {
+			animationCRC = String("creature_attack_light").hashCode();
+		}
+
+	}
 
 	uint8 hit = damage != 0 ? 1 : 0;
 

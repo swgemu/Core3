@@ -25,9 +25,13 @@ death_watch_overlord = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 5000000,
 
 	templates = {"object/mobile/dressed_death_watch_gold.iff"},
-	lootgroups = {},
+	lootgroups = { 
+		{group = "death_watch_bunker_overlord_shared", chance =  500000},
+		{group = "death_watch_bunker_overlord_quest", chance  = 9500000},
+	},
 	weapons = {"dark_trooper_weapons"},
 	conversationTemplate = "",
 	attacks = {"defaultattack", ""},

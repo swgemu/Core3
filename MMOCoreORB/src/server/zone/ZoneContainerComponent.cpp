@@ -135,6 +135,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 	ManagedReference<SceneObject*> parent = object->getParent();
 
 	if (parent != NULL/* && parent->isCellObject()*/) {
+		uint64 parentID = object->getParentID();
 		parent->removeObject(object, sceneObject, true);
 
 		if (parent->isCellObject()) {
@@ -144,7 +145,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 				CreatureObject* creature = cast<CreatureObject*>(object);
 
 				if (creature != NULL)
-					build->onExit(creature);
+					build->onExit(creature, parentID);
 			}
 		}
 	}

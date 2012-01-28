@@ -492,6 +492,7 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	ManagedReference<Zone*> rootZone = getZone();
 
 	if (par != NULL) {
+		uint64 parentID = getParentID();
 		par->removeObject(_this, NULL, false);
 
 		if (par->isCellObject()) {
@@ -501,7 +502,7 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 				CreatureObject* creature = cast<CreatureObject*>(_this.get());
 
 				if (creature != NULL)
-					build->onExit(creature);
+					build->onExit(creature, parentID);
 			}
 		}
 		notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE,_this.get(),0);

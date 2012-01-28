@@ -372,7 +372,7 @@ class TangibleObject extends SceneObject {
 	
 	@local
 	public abstract void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		error("Unhandled updateCraftingValues for this object type");
+		Logger.info("Unhandled updateCraftingValues for this object type");
 	}
 	
 	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);

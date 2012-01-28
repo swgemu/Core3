@@ -13,6 +13,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
+
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
 Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
@@ -48,6 +49,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "setState", &LuaCreatureObject::setState},
+		{ "getPosture", &LuaCreatureObject::getPosture},
 		{ "setPosture", &LuaCreatureObject::setPosture},
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
 		{ "removeSkill", &LuaCreatureObject::removeSkill},
@@ -61,7 +63,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isRebel", &LuaCreatureObject::isRebel},
 		{ "isImperial", &LuaCreatureObject::isImperial},
 		{ "isNeutral", &LuaCreatureObject::isNeutral},
-		{ "teleport", &LuaCreatureObject::teleport},
+		{ "teleport", &LuaSceneObject::teleport},
 		{ "getName", &LuaCreatureObject::getName},
 		{ "isAiAgent", &LuaCreatureObject::isAiAgent},
 		{ "setFactionRank", &LuaCreatureObject::setFactionRank},
@@ -124,6 +126,12 @@ int LuaCreatureObject::setState(lua_State* L) {
 	realObject->setState(state, true);
 
 	return 0;
+}
+
+int LuaCreatureObject::getPosture(lua_State* L) {
+	lua_pushnumber(L, realObject->getPosture());
+
+	return 1;
 }
 
 int LuaCreatureObject::setPosture(lua_State* L) {
@@ -326,19 +334,6 @@ int LuaCreatureObject::inflictDamage(lua_State* L) {
 	TangibleObject* attacker = (TangibleObject*) lua_touserdata(L, -4);
 
 	realObject->inflictDamage(attacker, damageType, damage, destroy);
-
-	return 0;
-}
-
-int LuaCreatureObject::teleport(lua_State* L) {
-	int cellObjID = lua_tonumber(L, -1);
-	int y = lua_tonumber(L, -2);
-	int z = lua_tonumber(L, -3);
-	int x = lua_tonumber(L, -4);
-
-
-
-	realObject->teleport(x, z, y, cellObjID);
 
 	return 0;
 }

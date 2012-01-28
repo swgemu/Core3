@@ -23,6 +23,7 @@ CreatureTemplate::CreatureTemplate() {
 	boneType = "";
 	hideType = "";
 	objectName = "";
+	customName = "";
 	socialGroup = "";
 	faction = "";
 	level = 0;

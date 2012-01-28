@@ -21,7 +21,7 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
-
+		{ "grantPermission", &LuaBuildingObject::grantPermission },
 		{ 0, 0 }
 };
 
@@ -42,6 +42,22 @@ int LuaBuildingObject::getCell(lua_State* L) {
 	int number = lua_tonumber(L, -1);
 
 	lua_pushlightuserdata(L, realObject->getCell(number));
+
+	return 1;
+}
+
+int LuaBuildingObject::grantPermission(lua_State* L) {
+	String list = lua_tostring(L, -2);
+	String name = lua_tostring(L, -1);
+
+	int i = 0;
+
+	if (list == "ADMIN" || list == "BAN" || list == "ENTRY") {
+		realObject->grantPermission(list, name);
+		i = 1;
+	}
+
+	lua_pushnumber(L, i);
 
 	return 1;
 }

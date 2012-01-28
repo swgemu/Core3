@@ -84,7 +84,9 @@ bool ContainerImplementation::checkPermission(CreatureObject* player) {
 
 			BuildingObject* building = cast<BuildingObject*>( parent->getParent());
 
-
+			// TODO: Do this properly!
+			if (building->isPublicStructure())
+				return true;
 
 			if (!building->isOnAdminList(player->getFirstName()))
 				return false;

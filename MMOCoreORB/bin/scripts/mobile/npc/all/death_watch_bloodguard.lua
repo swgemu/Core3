@@ -25,9 +25,13 @@ death_watch_bloodguard = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	lootChance = 1000000,
 
 	templates = {"object/mobile/dressed_death_watch_red.iff"},
-	lootgroups = {},
+	lootgroups = {
+		{group = "death_watch_bunker_commoners", chance = 6000000},
+		{group = "death_watch_bunker_lieutenants", chance = 4000000}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

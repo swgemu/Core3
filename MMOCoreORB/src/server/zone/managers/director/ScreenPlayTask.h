@@ -26,7 +26,9 @@ public:
 	}
 
 	void run() {
-		Locker locker(obj.get());
+		if (obj != NULL) {
+			Locker locker(obj.get());
+		}
 
 		DirectorManager::instance()->activateEvent(this);
 	}

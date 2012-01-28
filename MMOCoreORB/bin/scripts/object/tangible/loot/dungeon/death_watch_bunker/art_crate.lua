@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_dungeon_death_watch_bunker_art_crate = object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate:new {
-
+	objectMenuComponent = "ArtCrateMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_art_crate, "object/tangible/loot/dungeon/death_watch_bunker/art_crate.iff")

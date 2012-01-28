@@ -24,6 +24,8 @@
 #include "server/zone/objects/tangible/components/BankTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
+#include "server/zone/objects/tangible/components/DoorControlTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/components/ArtCrateMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 
 ComponentManager::ComponentManager() {
@@ -49,6 +51,9 @@ ComponentManager::ComponentManager() {
 	components.put("InsuranceTerminalMenuComponent", new InsuranceTerminalMenuComponent());
 	components.put("BankTerminalMenuComponent", new BankTerminalMenuComponent());
 	components.put("CloningTerminalMenuComponent", new CloningTerminalMenuComponent());
+
+	components.put("DoorControlTerminalMenuComponent", new DoorControlTerminalMenuComponent());
+	components.put("ArtCrateMenuComponent", new ArtCrateMenuComponent());
 
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 

@@ -58,6 +58,7 @@ namespace scene {
 		int getCustomObjectName(lua_State* L);
 		int setCustomObjectName(lua_State* L);
 		int getContainerObjectById(lua_State* L);
+		int doAnimation(lua_State* L);
 		int getContainerObjectByTemplate(lua_State* L);
 		int setDirectionalHeading(lua_State* L);
 		int getTemplateObjectPath(lua_State* L);

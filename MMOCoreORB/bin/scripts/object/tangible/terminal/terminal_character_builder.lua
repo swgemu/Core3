@@ -1233,19 +1233,6 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Bone Helmet", "object/tangible/wearables/armor/bone/armor_bone_s01_helmet.iff",
 					"Bone Leggings", "object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff"
 				},
-				"Bounty Hunter Armor",
-				{
-					"Bounty Hunter Belt", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_belt.iff",
-					"Bounty Hunter Left Bicep", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bicep_l.iff",
-					"Bounty Hunter Right Bicep", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bicep_r.iff",
-					"Bounty Hunter Boots", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_boots.iff",
-					"Bounty Hunter Left Bracer", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_l.iff",
-					"Bounty Hunter Right Bracer", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_r.iff",
-					"Bounty Hunter Chest Plate", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_chest_plate.iff",
-					"Bounty Hunter Gloves", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_gloves.iff",
-					"Bounty Hunter Helmet", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff",
-					"Bounty Hunter Leggings", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_leggings.iff"
-				},
 				"Chitin Armor",
 				{
 					"Chitin Left Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_l.iff",

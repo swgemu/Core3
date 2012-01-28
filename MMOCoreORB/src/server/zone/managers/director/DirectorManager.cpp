@@ -22,6 +22,7 @@
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/ChatMessage.h"
+#include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
@@ -71,7 +72,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
-	lua_register(luaEngine->getLuaState(), "spatialShout", spatialShout);
+	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
 	lua_register(luaEngine->getLuaState(), "deleteSharedMemory", deleteSharedMemory);
@@ -92,6 +93,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
 	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
 	lua_register(luaEngine->getLuaState(), "isZoneEnabled", isZoneEnabled);
+
+	// call for createLoot(SceneObject* container, const String& lootGroup, int level)
+	lua_register(luaEngine->getLuaState(), "createLoot", createLoot);
 
 	lua_register(luaEngine->getLuaState(), "getRegion", getRegion);
 	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
@@ -189,6 +193,20 @@ int DirectorManager::writeScreenPlayData(lua_State* L) {
 
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->setScreenPlayData(screenPlay, variable, data);
+
+	return 0;
+}
+
+int DirectorManager::createLoot(lua_State* L) {
+	SceneObject* container = (SceneObject*)lua_touserdata(L, -3);
+	String lootGroup = lua_tostring(L, -2);
+	int level = lua_tonumber(L, -1);
+
+	if (container == NULL || lootGroup == "")
+		return 0;
+
+	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
+	lootManager->createLoot(container, lootGroup, level);
 
 	return 0;
 }
@@ -347,15 +365,16 @@ int DirectorManager::spatialChat(lua_State* L) {
 	return 0;
 }
 
-int DirectorManager::spatialShout(lua_State* L) {
+int DirectorManager::spatialMoodChat(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
-	String message = lua_tostring(L, -1);
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -3);
+	String message = lua_tostring(L, -2);
+	int mood = lua_tonumber(L, -1);
 
 	if (creature != NULL)
-		chatManager->broadcastMessage(creature, message, 0, 0, 80);
+		chatManager->broadcastMessage(creature, message, 0, 0, mood);
 
 	return 0;
 }

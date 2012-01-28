@@ -74,8 +74,9 @@ namespace server {
 		static int createObserver(lua_State* L);
 		static int spawnMobile(lua_State* L);
 		static int spawnSceneObject(lua_State* L);
+		static int createLoot(lua_State* L);
 		static int spatialChat(lua_State* L);
-		static int spatialShout(lua_State* L);
+		static int spatialMoodChat(lua_State* L);
 		static int readSharedMemory(lua_State* L);
 		static int writeSharedMemory(lua_State* L);
 		static int deleteSharedMemory(lua_State* L);

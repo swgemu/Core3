@@ -1,6 +1,6 @@
 g12_4j = Creature:new {
 	objectName = "",
-	customName = "G12-4J (a medical droid",
+	customName = "G12-4J (a medical droid)",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

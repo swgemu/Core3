@@ -52,6 +52,7 @@ namespace creature {
 		int playEffect(lua_State* L);
 		int setState(lua_State* L);
 		int setPosture(lua_State* L);
+		int getPosture(lua_State* L);
 		int hasSkill(lua_State* L);
 		int removeSkill(lua_State* L);
 		int getConversationSession(lua_State* L);
@@ -63,7 +64,6 @@ namespace creature {
 		int isImperial(lua_State* L);
 		int isRebel(lua_State* L);
 		int isNeutral(lua_State* L);
-		int teleport(lua_State* L);
 		int getName(lua_State* L);
 		int isAiAgent(lua_State* L);
 		int setFactionRank(lua_State* L);

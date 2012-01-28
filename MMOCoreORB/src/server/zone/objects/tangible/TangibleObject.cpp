@@ -1410,8 +1410,8 @@ bool TangibleObjectImplementation::isAggressiveTo(CreatureObject* object) {
 }
 
 void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		error("Unhandled updateCraftingValues for this object type");
-	error("Unhandled updateCraftingValues for this object type");
+	// server/zone/objects/tangible/TangibleObject.idl():  		Logger.info("Unhandled updateCraftingValues for this object type");
+	Logger::info("Unhandled updateCraftingValues for this object type");
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {

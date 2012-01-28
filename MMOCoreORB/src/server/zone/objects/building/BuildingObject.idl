@@ -267,7 +267,7 @@ class BuildingObject extends StructureObject {
 	 * @post { player is locked, zone is locked }
 	 * @param player CreatureObject that exited the building
 	 */
-	public native abstract void onExit(CreatureObject player);
+	public native abstract void onExit(CreatureObject player, unsigned long parentid);
 	
 	public boolean isBuildingObject() {
 		return true;

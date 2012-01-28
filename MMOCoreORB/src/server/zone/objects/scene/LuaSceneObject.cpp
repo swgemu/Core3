@@ -12,6 +12,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/Zone.h"
+#include "server/zone/packets/object/Animation.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -24,6 +25,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
+		{ "doAnimation", &LuaSceneObject::doAnimation },
 		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "updateDirection", &LuaSceneObject::updateDirection },
@@ -60,6 +62,17 @@ LuaSceneObject::~LuaSceneObject(){
 
 int LuaSceneObject::_setObject(lua_State* L) {
 	realObject = (SceneObject*)lua_touserdata(L, -1);
+
+	return 0;
+}
+
+int LuaSceneObject::doAnimation(lua_State* L) {
+	String anim = lua_tostring(L, -1);
+	if (realObject != NULL && anim != "") {
+		Animation* msg = new Animation(realObject, anim);
+
+		realObject->broadcastMessage(msg, true);
+	}
 
 	return 0;
 }
@@ -202,7 +215,11 @@ int LuaSceneObject::isInRangeWithObject(lua_State* L) {
 int LuaSceneObject::getParent(lua_State* L) {
 	SceneObject* obj = realObject->getParent();
 
-	lua_pushlightuserdata(L, obj);
+	if (obj == NULL) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, obj);
+	}
 
 	return 1;
 }
@@ -223,9 +240,23 @@ int LuaSceneObject::getContainerObjectByTemplate(lua_State* L) {
 	uint32 objectCRC = objectTemplate.hashCode();
 
 	SceneObject* sco = NULL;
+	SceneObject* inventory = NULL;
 
-	for (int i=0; i< realObject->getContainerObjectsSize(); i++) {
-		sco = realObject->getContainerObject(i);
+	if (realObject->isPlayerCreature()) {
+		inventory = realObject->getSlottedObject("inventory");
+	} else {
+		inventory = realObject;
+	}
+
+	if (inventory == NULL) {
+		realObject->info("Inventory NULL", true);
+		lua_pushnil(L);
+
+		return 1;
+	}
+
+	for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
+		sco = inventory->getContainerObject(i);
 
 		if (sco == NULL)
 			continue;
@@ -362,6 +393,12 @@ int LuaSceneObject::updateCellPermission(lua_State* L) {
 		return 0;
 
 	//realObject->info("values not NULL", true);
+
+	if (realObject == NULL) {
+		obj->info("Cell NULL", true);
+		return 0;
+	}
+
 
 	if (!realObject->isCellObject()) {
 		realObject->info("Unknown entity error: Cell", true);

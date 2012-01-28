@@ -19,7 +19,7 @@ public:
 	const static int KILLEDCREATURE = 7; //ManagedObject arg1 = destructedObject, long arg2 = 0 used when a player kills any creature
 	const static int OBJECTREMOVEDFROMZONE = 8; //ManagedObject arg1 = null, long arg2 = 0
 	const static int ENTEREDAREA = 9; //ManagedObject arg1 = obj that entered, long arg2 = 0
-	const static int EXITEDAREA = 10; //ManagedObject arg1 = obj that quit, long arg2 = 0
+	const static int EXITEDAREA = 10; //ManagedObject arg1 = obj that quit, long arg2 = parentid from which player was removed
 	const static int DESTINATIONREACHED = 11; //ManagedObject arg1 = null, long arg2 = 0
 	const static int SPECIALATTACK = 12; // never notified?
 	const static int CALLFORHELP = 13;

@@ -42,7 +42,8 @@
 
 
 object_tangible_dungeon_death_watch_bunker_door_control_terminal = object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal:new {
-
+	objectMenuComponent = "DoorControlTerminalMenuComponent",
+	maxCondition = 0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_door_control_terminal, "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff")
