@@ -72,6 +72,28 @@ function geonosian_lab_screenplay:spawnSceneObjects()
 end
 
 function geonosian_lab_screenplay:spawnMobiles()
+	spawnMobile("yavin4", "biogenic_crazyguy", 0, -2.8, 10.8, 10.2, 69, 1627781)
+	spawnMobile("yavin4", "acklay",1800,117.9,-34,-329.2,-91,1627823)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,1.2,9.1,-8.1,63,1627781)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,0.6,9.5,-3.5,99,1627781)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,26.6,10.3,-13.3,-8,1627782)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,32.3,9.5,-8.1,-105,1627782)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,34.7,10.3,-14.4,-70,1627782)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,37.4,9.8,-8.2,-109,1627782)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,-55.9,-18,-33.9,95,1627785)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,-55.6,-18,-43.2,72,1627785)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,-38.7,-18,-47.5,-75,1627785)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,-66.7,-19,-41.2,-77,1627788)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,-70.5,-18.9,-34.5,-161,1627788)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,-83.9,-18.5,-42.3,85,1627788)
+	spawnMobile("yavin4", "crazed_geonosian_guard",90,-116.5,-20,-38.4,88,1627790)
+	spawnMobile("yavin4", "enhanced_kwi",120,23.4,4,-30.6,67,1627783)
+	spawnMobile("yavin4", "enhanced_kwi",120,19.9,-13.2,-22.5,-3,1627824)
+	spawnMobile("yavin4", "geonosian_technical_assistant",150,-107.7,-18,-33.8,176,1627790)
+	spawnMobile("yavin4", "mercenary_sentry",90,-74.9,-22,-153.7,-119,1627805)
+	spawnMobile("yavin4", "mercenary_sentry",90,-74,-22,-160.1,-75,1627805)
+	spawnMobile("yavin4", "mercenary_sentry",90,-82.3,-22,-161.7,74,1627805)
+	spawnMobile("yavin4", "mercenary_sentry",90,-82.2,-22,-155.1,106,1627805)
 end
 
 function geonosian_lab_screenplay:notifyGasValveUsed(pGasValve, pPlayer, radialSelected)
@@ -120,9 +142,9 @@ function geonosian_lab_screenplay:keypadSuiCallback(pCreature, pSui, cancelPress
 	local keypadCode = readData(objectID .. ":geonosian_lab:keypad_code");
 	
 	if (tonumber(enteredCode) == keypadCode) then
-		printf("Keypad codes matched!\n")
+		--printf("Keypad codes matched!\n")
 	else
-		printf("Keypad codes didn't match\n")
+		--printf("Keypad codes didn't match\n")
 	end
 end
 
