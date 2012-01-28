@@ -715,6 +715,9 @@ end
 function TutorialScreenPlay:start(creatureObject)	
 	--printf("Running introduction\n")
 	
+	
+	--[[
+	
 	local creature = LuaCreatureObject(creatureObject)
 	local targetCellObject = LuaSceneObject(creature:getParent())
 	local buildingObject = LuaBuildingObject(targetCellObject:getParent())
@@ -751,6 +754,7 @@ function TutorialScreenPlay:start(creatureObject)
 	creature:playMusicMessage("sound/tut_01_welcome.snd")
 	writeData(creature:getObjectID() .. ":tutorial:message1",0)
 	createEvent(4000, "TutorialScreenPlay", "firstMessage", creatureObject)	
+	]]
 end
 
 
