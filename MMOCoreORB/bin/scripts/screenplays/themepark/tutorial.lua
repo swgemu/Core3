@@ -1276,6 +1276,23 @@ end
 function TutorialScreenPlay:stopOfficer1ConversationMessage(creatureObject)
 	local creature = LuaCreatureObject(creatureObject)
 	
+	creature:sendNewbieTutorialRequest("changeLookAtTarget")
+	creature:sendNewbieTutorialEnableHudElement("chatbox", 1)
+	
+	creature:sendSystemMessage("@newbie_tutorial/system_messages:prompt_open_box")
+	
+	playSound = readData(creature:getObjectID() .. ":tutorial:sound")
+	if playSound == 1 then
+	creature:playMusicMessage("sound/tut_14_openbox.snd")
+	end
+	drumObjectID = readData(creature:getObjectID() .. ":tutorial:drum")
+	local drumRawPointer = getSceneObject(drumObjectID)
+	createObserver(OPENCONTAINER, "TutorialScreenPlay", "openDrumEvent", drumRawPointer)
+	createObserver(OBJECTRADIALOPENED, "TutorialScreenPlay", "drumRadial", drumRawPointer)
+	writeData(creature:getObjectID() .. ":tutorial:converse3", 3)
+	createEvent(5000, "TutorialScreenPlay", "stopOfficer1ConversationMessage", creatureObject)
+	
+--[[
 	finished = readData(creature:getObjectID() .. ":tutorial:converse3")
 	
 	if finished == 0 then
@@ -1317,6 +1334,7 @@ function TutorialScreenPlay:stopOfficer1ConversationMessage(creatureObject)
 			createEvent(10000, "TutorialScreenplay", "stopOfficer1ConversationMessage", creatureObject)
 		end
 	end
+	]]
 end
 
 function TutorialScreenPlay:drumFly(creatureObject)
