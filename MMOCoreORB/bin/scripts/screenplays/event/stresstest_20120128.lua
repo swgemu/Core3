@@ -17,24 +17,24 @@ function stresstest_20120128:start()
 end
 
 function stresstest_20120128:spawnSceneObjects()
-	local pShuttle = spawnSceneObject("corellia", "object/creature/npc/theme_park/lambda_shuttle.iff", -147.3, 28, -4781.8, 0, 1, 0, 0, 0)
+	local pShuttle = spawnMobile("corellia", "lambda_shuttle", 1, -147.3, 28, -4781.8, 0, 0)
 	local shuttle = LuaCreatureObject(pShuttle)
 	shuttle:setPosture(PRONE)
 	
-	local pShuttle2 = spawnSceneObject("corellia", "object/creature/npc/theme_park/lambda_shuttle.iff", -169.3, 28, -4781.8, 0, 1, 0, 0, 0)
+	local pShuttle2 = spawnMobile("corellia", "lambda_shuttle", 1, -169.3, 28, -4781.8, 0, 0)
 	local shuttle2 = LuaCreatureObject(pShuttle2)
 	shuttle2:setPosture(PRONE)
 end
 
 function stresstest_20120128:spawnMobiles()
-	local pCollector = spawnSceneObject("corellia", "object/mobile/space_comm_civilian_05.iff", -148, 28, -4783 , 0, 1, 0, 0, 0)
+	local pCollector = spawnSceneObject("corellia", "object/tangible/furniture/imperial/data_terminal_s1.iff", -149, 28, -4783 , 0, 1, 0, 0, 0)
 	local collector = LuaSceneObject(pCollector)
 	local col2creo = LuaCreatureObject(pCollector)
 	col2creo:setOptionsBitmask(136)
 	collector:setCustomObjectName("\\#ee3377Travel to the Death Watch Bunker")
 	createObserver(OBJECTRADIALUSED, "stresstest_20120128", "teleportDWB", pCollector)
 	
-	local pCollector2 = spawnSceneObject("corellia", "object/mobile/space_comm_aynat_ace_03.iff", -170, 28, -4783 , 0, 1, 0, 0, 0)
+	local pCollector2 = spawnSceneObject("corellia", "object/tangible/furniture/imperial/data_terminal_s1.iff", -171, 28, -4783 , 0, 1, 0, 0, 0)
 	local collector2 = LuaSceneObject(pCollector2)
 	local col2creo = LuaCreatureObject(pCollector2)
 	col2creo:setOptionsBitmask(136)
