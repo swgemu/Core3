@@ -2108,7 +2108,7 @@ function TutorialScreenPlay:panic1MoveObserver(creatureObject, movingCreature)
 			writeData(player:getObjectID() .. ":tutorial:panic1part", 1 )
 			return 0
 		else 
-			spatialShout(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic1")
+			spatialMoodChat(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic1", 80)
 		
 			player:sendSystemMessage("@newbie_tutorial/system_messages:radar")
 			playSound = readData(player:getObjectID() .. ":tutorial:sound")
@@ -2127,13 +2127,13 @@ function TutorialScreenPlay:panic1MoveObserver(creatureObject, movingCreature)
 end
 
 function TutorialScreenPlay:continuePanic1(creatureObject)
-	spatialShout(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic2")
+	spatialMoodChat(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic2", 80)
 	
 	createEvent(1000, "TutorialScreenPlay", "continuePanic2", creatureObject)
 end
 
 function TutorialScreenPlay:continuePanic2(creatureObject)
-	spatialShout(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic3")
+	spatialMoodChat(creatureObject, "@newbie_tutorial/newbie_convo:shout_panic3", 80)
 	createEvent(2000, "TutorialScreenPlay", "continuePanic3", creatureObject)
 end
 
