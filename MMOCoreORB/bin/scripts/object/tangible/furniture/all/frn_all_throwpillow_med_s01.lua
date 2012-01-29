@@ -43,6 +43,14 @@
 
 object_tangible_furniture_all_frn_all_throwpillow_med_s01 = object_tangible_furniture_all_shared_frn_all_throwpillow_med_s01:new {
 
+	numberExperimentalProperties = {1, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "UT", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDurability", "exp_quality"},
+	experimentalSubGroupTitles = {"null", "null", "hitPoints", "quality"},
+	experimentalMin = {0, 0, 100, 1},
+	experimentalMax = {0, 0, 150, 100},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_throwpillow_med_s01, "object/tangible/furniture/all/frn_all_throwpillow_med_s01.iff")

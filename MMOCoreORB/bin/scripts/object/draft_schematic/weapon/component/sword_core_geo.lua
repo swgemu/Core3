@@ -43,6 +43,38 @@
 
 object_draft_schematic_weapon_component_sword_core_geo = object_draft_schematic_weapon_component_shared_sword_core_geo:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Geonosian Sword Core",
+
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 75, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"sword_core", "power_supply", "core_enhancement"},
+   ingredientSlotType = {0, 1, 3},
+   resourceTypes = {"steel_neutronium", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff", "object/tangible/component/weapon/shared_geonosian_solidifying_agent.iff"},
+   resourceQuantities = {50, 1, 1},
+   combineTypes = {0, 1, 1},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/component/weapon/geonosian_sword_core.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_sword_core_geo, "object/draft_schematic/weapon/component/sword_core_geo.iff")

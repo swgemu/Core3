@@ -51,11 +51,11 @@ object_draft_schematic_item_item_food_tool = object_draft_schematic_item_shared_
    complexity = 10, 
    size = 2, 
 
-   xpType = "crafting_medicine_general", 
+   xpType = "crafting_general", 
    xp = 65, 
 
-   assemblySkill = "medicine_assembly", 
-   experimentingSkill = "medicine_experimentation", 
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},

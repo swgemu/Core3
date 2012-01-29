@@ -43,6 +43,14 @@
 
 object_tangible_component_weapon_geonosian_sword_core = object_tangible_component_weapon_shared_geonosian_sword_core:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expDurability", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRangeMod", "attackHealthCost", "attackActionCost", "attackMindCost"},
+	experimentalMin = {0, 0, 1, 1, -7, 0, 10, 0, 0, 0, -3, -3, -3},
+	experimentalMax = {0, 0, 50, 50, 0, 15, 100, 40, 40, 40, 10, 10, 10},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_geonosian_sword_core, "object/tangible/component/weapon/geonosian_sword_core.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_loot_simple_kit_motor_small_red = object_tangible_loot_simple_kit_shared_motor_small_red:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "expEffectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitPoints", "useModifier"},
+	experimentalMin = {0, 0, 1000, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_motor_small_red, "object/tangible/loot/simple_kit/motor_small_red.iff")

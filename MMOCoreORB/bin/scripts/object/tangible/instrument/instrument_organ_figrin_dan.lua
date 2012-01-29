@@ -43,6 +43,14 @@
 
 object_tangible_instrument_instrument_organ_figrin_dan = object_tangible_instrument_shared_instrument_organ_figrin_dan:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDurability", "exp_quality"},
+	experimentalSubGroupTitles = {"null", "null", "hitPoints", "quality"},
+	experimentalMin = {0, 0, 100, 1},
+	experimentalMax = {0, 0, 150, 100},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_instrument_organ_figrin_dan, "object/tangible/instrument/instrument_organ_figrin_dan.iff")

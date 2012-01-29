@@ -43,6 +43,14 @@
 
 object_tangible_recycler_creature_recycler = object_tangible_recycler_shared_creature_recycler:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "expEffectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitPoints", "charges"},
+	experimentalMin = {0, 0, 1000, 2},
+	experimentalMax = {0, 0, 1000, 10},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_recycler_creature_recycler, "object/tangible/recycler/creature_recycler.iff")
