@@ -32,27 +32,14 @@ public:
 	static const int FINDTARGET = 2;
 	static const int FINDANDTRACKTARGET = 3;
 
-	ManagedWeakReference<SceneObject*> droidObject;
-	ManagedWeakReference<CreatureObject*> droid;
-	ManagedWeakReference<CreatureObject*> player;
-	ManagedWeakReference<MissionObject*> mission;
-	Reference<FindTargetTask*> findTargetTask;
-
-	BountyHunterDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) :
+	BountyHunterDroid() :
 		Logger("BountyHunterDroid") {
-		this->droidObject = droidObject;
-		this->player = player;
-		this->mission = mission;
-		findTargetTask = NULL;
 	}
 
-	SceneObject* getDroidSceneObject() {
-		return droidObject;
-	}
+	Task* performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
 
-	void performAction(int action, SceneObject* sceneObject, CreatureObject* player);
-
-	void findTarget();
+private:
+	FindTargetTask* findTarget(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission, bool track);
 };
 
 } // namespace bountyhunterdroid

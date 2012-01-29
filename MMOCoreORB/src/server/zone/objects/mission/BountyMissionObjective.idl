@@ -46,6 +46,7 @@ package server.zone.objects.mission;
 
 import engine.util.Observer;
 import engine.util.Observable;
+import engine.core.Task;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
@@ -67,6 +68,8 @@ class BountyMissionObjective extends MissionObjective {
 	
 	protected BountyHunterDroid droid;
 	
+	protected Task droidTask;
+	
 	public static final int INITSTATUS = 0;
 	public static final int HASBIOSIGNATURESTATUS = 1;
 	public static final int HASTALKED = 2;
@@ -76,6 +79,10 @@ class BountyMissionObjective extends MissionObjective {
 		super(mission);
 		
 		objectiveStatus = INITSTATUS;
+		
+		activeDroid = null;
+		droid = null;
+		droidTask = null;
 		
 		Logger.setLoggingName("BountyMissionObjective");
 	}

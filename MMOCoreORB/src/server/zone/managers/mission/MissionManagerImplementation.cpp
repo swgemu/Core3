@@ -676,8 +676,17 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	Vector3 endPos = getRandomBountyTargetPosition(player);
 	String planet = player->getZone()->getZoneName();
 	mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
+	mission->setTargetOptionalTemplate("bodyguard");
 
-	mission->setRewardCredits(500 + System::random(500));
+	CreatureTemplate* creoTemplate = CreatureTemplateManager::instance()->getTemplate(mission->getTargetOptionalTemplate());
+
+	int reward = 1000;
+
+	if (creoTemplate != NULL) {
+		reward = creoTemplate->getLevel() * (200 + System::random(200));
+	}
+
+	mission->setRewardCredits(reward);
 	mission->setMissionDifficulty(difficulty);
 	mission->setMissionTitle("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "t");
 	mission->setMissionDescription("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "d");

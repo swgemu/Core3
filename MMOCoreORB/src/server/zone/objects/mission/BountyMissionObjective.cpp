@@ -367,6 +367,11 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
+	if (_name == "droidTask") {
+		TypeInfo<Reference<Task* > >::parseFromBinaryStream(&droidTask, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -422,14 +427,28 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "droidTask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<Task* > >::toBinaryStream(&droidTask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 5 + MissionObjectiveImplementation::writeObjectMembers(stream);
+
+	return 6 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		objectiveStatus = INITSTATUS;
 	objectiveStatus = INITSTATUS;
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		activeDroid = null;
+	activeDroid = NULL;
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		droid = null;
+	droid = NULL;
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		droidTask = null;
+	droidTask = NULL;
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("BountyMissionObjective");
 	Logger::setLoggingName("BountyMissionObjective");
 }

@@ -101,6 +101,8 @@ using namespace server::zone::objects::mission::bountyhunterdroid;
 
 #include "engine/util/Observable.h"
 
+#include "engine/core/Task.h"
+
 #include "server/zone/objects/mission/MissionObjective.h"
 
 namespace server {
@@ -187,6 +189,8 @@ protected:
 	ManagedReference<SceneObject* > activeDroid;
 
 	Reference<BountyHunterDroid* > droid;
+
+	Reference<Task* > droidTask;
 
 public:
 	static const int INITSTATUS = 0;

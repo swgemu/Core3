@@ -81,8 +81,8 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		//TODO use end position.
-		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(String("bodyguard").hashCode(), 0, mission->getEndPositionX(), zone->getHeight(mission->getEndPositionX(), mission->getEndPositionY()), mission->getEndPositionY(), 0));
+		//Todo: spawn at current coordinates.
+		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(mission->getTargetOptionalTemplate().hashCode(), 0, mission->getEndPositionX(), zone->getHeight(mission->getEndPositionX(), mission->getEndPositionY()), mission->getEndPositionY(), 0));
 
 		ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
@@ -197,12 +197,12 @@ void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneO
 	activeDroid = sceneObject;
 
 	if (droid == NULL) {
-		droid = new BountyHunterDroid(activeDroid, player, getMissionObject());
-		droid->performAction(action, sceneObject, player);
-	} else {
-		player->sendSystemMessage("@mission/mission_generic:bounty_already_tracking");
+		droid = new BountyHunterDroid();
 	}
+
+	droidTask = droid->performAction(action, sceneObject, player, getMissionObject());
 }
+
 //TODO update to use current position (calculation needed).
 int BountyMissionObjectiveImplementation::getDistanceToTarget() {
 	Vector3 playerCoordinate;
