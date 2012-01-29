@@ -391,7 +391,9 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 	Vector<String>* creatureAccMods = weapon->getCreatureAccuracyModifiers();
 
 	for (int i = 0; i < creatureAccMods->size(); ++i) {
-		attackerAccuracy += attacker->getSkillMod(creatureAccMods->get(i));
+		String mod = creatureAccMods->get(i);
+		attackerAccuracy += attacker->getSkillMod(mod);
+		attackerAccuracy += attacker->getSkillMod("private_" + mod);
 	}
 
 	return attackerAccuracy;
@@ -421,7 +423,9 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 	Vector<String>* defenseAccMods = weapon->getDefenderDefenseModifiers();
 
 	for (int i = 0; i < defenseAccMods->size(); ++i) {
-		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
+		String mod = defenseAccMods->get(i);
+		targetDefense += defender->getSkillMod(mod);
+		targetDefense += defender->getSkillMod("private_" + mod);
 	}
 
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
@@ -447,7 +451,9 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
 
 	for (int i = 0; i < defenseAccMods->size(); ++i) {
-		targetDefense += defender->getSkillMod(defenseAccMods->get(i));
+		String mod = defenseAccMods->get(i);
+		targetDefense += defender->getSkillMod(mod);
+		targetDefense += defender->getSkillMod("private_" + mod);
 	}
 
 	if (targetDefense > 125)
@@ -522,15 +528,17 @@ int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject
 	int maxDamageMuliplier = attacker->getSkillMod("private_max_damage_multiplier");
 	int maxDamageDivisor = attacker->getSkillMod("private_max_damage_divisor");
 
+	float range = maxDamage - minDamage;
+
 	if (maxDamageMuliplier != 0)
-		maxDamage *= maxDamageMuliplier;
+		range *= maxDamageMuliplier;
 
 	if (maxDamageDivisor != 0)
-		maxDamage /= maxDamageDivisor;
+		range /= maxDamageDivisor;
 
 	//info("attacker weapon damage mod is " + String::valueOf(maxDamage), true);
 
-	return (int)(maxDamage - minDamage);
+	return (int)range;
 }
 
 int CombatManager::getDamageModifier(CreatureObject* attacker, WeaponObject* weapon) {
