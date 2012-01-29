@@ -186,8 +186,12 @@ public:
 		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
 			return GENERALERROR;
 
-		if (clearWeapon)
+		if (clearWeapon) {
 			creature->setWeapon(NULL, true);
+
+			if (creature->hasBuff(String("centerofbeing").hashCode()))
+				creature->removeBuff(String("centerofbeing").hashCode());
+		}
 
 		return SUCCESS;
 	}
