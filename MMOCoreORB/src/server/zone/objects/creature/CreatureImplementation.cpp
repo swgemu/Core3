@@ -34,6 +34,9 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	if (followObject == NULL || followObject == scno) {
 		CreatureObject* creo = cast<CreatureObject*>( scno);
 
+		if(creo->getPvpStatusBitmask() == CreatureFlag::NONE)
+			return;
+
 		// TODO: determine if creature can be seen by this (mask scent, et. al.)
 
 		// determine if creature can be a threat
