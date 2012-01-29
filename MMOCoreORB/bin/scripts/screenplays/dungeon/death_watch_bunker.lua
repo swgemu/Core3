@@ -2,7 +2,7 @@ DWB = ScreenPlay:new {
 	numberOfActs = 1
 }
 
-TEST = 1
+TEST = 0
 
 specialSpawnMapDWB = {
 	rageon_vart = {"rageon_vart", 0, -84.8, -20, -25.7, -114, 5996323},
