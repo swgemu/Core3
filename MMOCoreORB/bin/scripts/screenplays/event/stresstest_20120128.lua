@@ -40,6 +40,16 @@ function stresstest_20120128:spawnMobiles()
 	col2creo:setOptionsBitmask(136)
 	collector2:setCustomObjectName("\\#33ee7700Travel to Geonosian Bio Lab")
 	createObserver(OBJECTRADIALUSED, "stresstest_20120128", "teleportGEO", pCollector2)
+	
+	local pBarker = spawnMobile("corellia", "stresstest_shuttleloc_barker", 1, -149, 28, -4706, 140, 0)
+	self:barkShuttleLocation(pBarker)
+end
+
+function stresstest_20120128:barkShuttleLocation(pBarker)
+	if (pBarker ~= nil) then
+		spatialChat(pBarker, "\\#0088ffGreetings Testers!\n\nPlease proceed to the shuttles near South Coronet (-154 -4767). Double click the terminals at these locations to arrive at the focus destination. Character Builder Terminals will be available at your destination.\n\nThanks for testing!")
+		createEvent(15000, "stresstest_20120128", "barkShuttleLocation", pBarker)
+	end
 end
 
 function stresstest_20120128:teleportDWB(pCollector, pPlayer)
