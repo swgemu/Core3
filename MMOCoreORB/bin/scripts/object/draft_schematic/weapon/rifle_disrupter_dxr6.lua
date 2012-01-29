@@ -45,7 +45,7 @@ object_draft_schematic_weapon_rifle_disrupter_dxr6 = object_draft_schematic_weap
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Tenloss DXR-6 Disruptor Rifle",
+   customObjectName = "DXR-6 Carbine",
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
@@ -71,7 +71,7 @@ object_draft_schematic_weapon_rifle_disrupter_dxr6 = object_draft_schematic_weap
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 
-   targetTemplate = "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
+   targetTemplate = "object/weapon/ranged/carbine/carbine_dxr6.iff",
 
    additionalTemplates = {
              }

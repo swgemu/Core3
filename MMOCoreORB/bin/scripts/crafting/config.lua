@@ -1724,7 +1724,6 @@ schematics = {
 {path="object/draft_schematic/item/quest_item/feedback_controller.iff"},
 {path="object/draft_schematic/item/quest_item/output_governor.iff"},
 {path="object/draft_schematic/weapon/pistol_geo_sonic_blaster.iff"},
-{path="object/draft_schematic/weapon/rifle_tenloss_disrupter.iff"},
 {path="object/draft_schematic/weapon/component/reinforcement_core_geo.iff"},
 {path="object/draft_schematic/weapon/component/sword_core_geo.iff"},
 };
