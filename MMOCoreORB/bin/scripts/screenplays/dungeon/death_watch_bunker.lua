@@ -974,15 +974,15 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				
 				local groupMember = LuaCreatureObject(nil)
 				
-				for i = 0, i < size do
+				for i=0, i < size do
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
 						local groupMember = LuaCreatureObject(pMember)
-						if groupMember:getZoneName() == "endor" then
-							targetCellObject:updateCellPermission(1, pMember)
-							groupMember:sendSystemMessage("@dungeon/death_watch:access_granted")
+					
+						if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
 							groupMember:setScreenPlayState(2, "death_watch_bunker")
 						end
+						
 					end
 				end 
 			else
