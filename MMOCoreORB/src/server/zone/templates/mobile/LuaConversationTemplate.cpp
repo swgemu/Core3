@@ -40,7 +40,10 @@ int LuaConversationTemplate::getScreen(lua_State* L) {
 		screen = realObject->getScreen(text);
 	}
 
-	lua_pushlightuserdata(L, screen);
+	if (screen != NULL)
+		lua_pushlightuserdata(L, screen);
+	else
+		lua_pushnil(L);
 
 	return 1;
 }
@@ -49,7 +52,10 @@ int LuaConversationTemplate::getScreen(lua_State* L) {
 int LuaConversationTemplate::getInitialScreen(lua_State* L) {
 	ConversationScreen* screen = realObject->getInitialScreen();
 
-	lua_pushlightuserdata(L, screen);
+	if (screen != NULL)
+		lua_pushlightuserdata(L, screen);
+	else
+		lua_pushnil(L);
 
 	return 1;
 }

@@ -205,12 +205,15 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		
 		nextConversationScreen = conversation:getScreen(optionLink)
-		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
 		
-		if (nextLuaConversationScreen:getScreenID() == "rightaway" or nextLuaConversationScreen:getScreenID() == "location") then
-			creature:setScreenPlayState(1, "death_watch_bunker_imperial_sidequest")--gain entry permission
-		elseif (nextLuaConversationScreen:getScreenID() == "quit") then
-			creature:removeScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
+		if nextConversationScreen ~= nil then
+			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+		
+			if (nextLuaConversationScreen:getScreenID() == "rightaway" or nextLuaConversationScreen:getScreenID() == "location") then
+				creature:setScreenPlayState(1, "death_watch_bunker_imperial_sidequest")--gain entry permission
+			elseif (nextLuaConversationScreen:getScreenID() == "quit") then
+				creature:removeScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
+			end
 		end
 		
 	else
