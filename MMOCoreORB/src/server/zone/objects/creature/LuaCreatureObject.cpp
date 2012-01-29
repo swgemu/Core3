@@ -358,7 +358,10 @@ int LuaCreatureObject::getBankCredits(lua_State *L) {
 int LuaCreatureObject::getConversationSession(lua_State* L) {
 	ConversationSession* session = cast<ConversationSession*>(realObject->getActiveSession(SessionFacadeType::CONVERSATION));
 
-	lua_pushlightuserdata(L, session);
+	if (session != NULL)
+		lua_pushlightuserdata(L, session);
+	else
+		lua_pushnil(L);
 
 	return 1;
 }
@@ -382,7 +385,12 @@ int LuaCreatureObject::engageCombat(lua_State* L) {
 }
 
 int LuaCreatureObject::getPlayerObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject->getPlayerObject());
+	PlayerObject* obj = realObject->getPlayerObject();
+
+	if (obj != NULL)
+		lua_pushlightuserdata(L, obj);
+	else
+		lua_pushnil(L);
 
 	return 1;
 }
