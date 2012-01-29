@@ -8,9 +8,9 @@ registerScreenPlay("stresstest_20120128", true)
 --   Initialize screenplay           -
 --------------------------------------
 function stresstest_20120128:start()
-	--if (not isZoneEnabled("corellia")) or (not isZoneEnabled("naboo")) or (not isZoneEnabled("tatooine")) then
-		--return 0
-	--end
+	if (not isZoneEnabled("corellia")) or (not isZoneEnabled("yavin4")) or (not isZoneEnabled("endor")) then
+		return 0
+	end
 	
 	self:spawnSceneObjects()
 	self:spawnMobiles()

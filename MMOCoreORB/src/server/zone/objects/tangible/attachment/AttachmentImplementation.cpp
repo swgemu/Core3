@@ -20,7 +20,7 @@ void AttachmentImplementation::initializeTransientMembers() {
 
 }
 
-void AttachmentImplementation::updateCraftingValues(CraftingValues* values) {
+void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	int level = values->getMaxValue("creatureLevel");
 
 	//TODO: Implement multiple mods.

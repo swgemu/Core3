@@ -131,7 +131,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void updateCraftingValues(CraftingValues* values);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void initializeMembers();
 
@@ -212,7 +212,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void updateCraftingValues(CraftingValues* values);
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void initializeMembers();
 
