@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_crafted_stimpack_sm_s1_b = object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_b:new {
 	gameObjectType = 8236,
 	templateType = STIMPACK,
+	useCount = 10,
 	medicineUse = 10,
 	effectiveness = 150,
 

@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_cure_disease_b = object_tangible_medicine_crafted_shared_medpack_cure_disease_b:new {
 	gameObjectType = 8239,
 	templateType = CUREPACK,
+	useCount = 10,
 	medicineUse = 5,
 	effectiveness = 100,
 	state = DISEASED,

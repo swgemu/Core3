@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_grenade_damage_c = object_tangible_medicine_crafted_shared_medpack_grenade_damage_c:new {
 	gameObjectType = 8237,
 	templateType = RANGEDSTIMPACK,
+	useCount = 10,
 	medicineUse = 20,
 	rangeMod = 0.6,
 	area = 0,

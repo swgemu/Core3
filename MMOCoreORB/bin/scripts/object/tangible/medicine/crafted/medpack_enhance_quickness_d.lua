@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_enhance_quickness_d = object_tangible_medicine_crafted_shared_medpack_enhance_quickness_d:new {
 	gameObjectType = 8238,
 	templateType = ENHANCEPACK,
+	useCount = 21,
 	medicineUse = 5,
 	effectiveness = 100,
 	duration = 1800,

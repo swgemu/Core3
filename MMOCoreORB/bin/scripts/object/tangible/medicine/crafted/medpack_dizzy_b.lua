@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_dizzy_b = object_tangible_medicine_crafted_shared_medpack_dizzy_b:new {
 	gameObjectType = 8242,
 	templateType = STATEPACK,
+	useCount = 10,
 	medicineUse = 5,
 	state = DIZZY
 }

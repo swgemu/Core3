@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_wound_quickness_d = object_tangible_medicine_crafted_shared_medpack_wound_quickness_d:new {
 	gameObjectType = 8241,
 	templateType = WOUNDPACK,
+	useCount = 10,
 	medicineUse = 5,
 	effectiveness = 100,
 	attribute = 4,

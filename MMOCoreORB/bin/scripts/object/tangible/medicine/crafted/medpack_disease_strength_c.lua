@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_disease_strength_c = object_tangible_medicine_crafted_shared_medpack_disease_strength_c:new {
 	gameObjectType = 8240,
 	templateType = DOTPACK,
+	useCount = 10,
 	medicineUse = 5,
 	effectiveness = 100,
 	duration = 300,

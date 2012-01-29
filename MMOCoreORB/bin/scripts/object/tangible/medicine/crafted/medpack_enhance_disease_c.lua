@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_enhance_disease_c = object_tangible_medicine_crafted_shared_medpack_enhance_disease_c:new {
 	gameObjectType = 8238,
 	templateType = ENHANCEPACK,
+	useCount = 10,
 	medicineUse = 5,
 	effectiveness = 100,
 	duration = 1800,

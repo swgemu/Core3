@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_stunned_b = object_tangible_medicine_crafted_shared_medpack_stunned_b:new {
 	gameObjectType = 8242,
 	templateType = STATEPACK,
+	useCount = 10,
 	medicineUse = 5,
 	state = STUNNED
 }

@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_disease_area_quickness_a = object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_a:new {
 	gameObjectType = 8240,
 	templateType = DOTPACK,
+	useCount = 10,
 	medicineUse = 5,
 	effectiveness = 100,
 	duration = 300,

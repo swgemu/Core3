@@ -288,16 +288,18 @@ function geonosian_lab_screenplay:notifyEnteredPoisonGas(pActiveArea, pMovingObj
 		local player = LuaCreatureObject(pMovingObject)
 		local objectID = player:getObjectID()
 		
-		--Check if gas is currently leaking
-		local isGasLeaking = readData("geonosian_lab:gasleak")
-		
-		if (isGasLeaking == 1) then
-			--Check for rebreathing mod
-			if (self:hasRebreather(movingObject) == 1) then
-				player:sendSystemMessage("@dungeon/geonosian_madbio:gasmask") --Your gasmask diffuses the poison gas and you are able to breathe with no difficulty.
-			else
-				player:addDotState(POISONED, math.random(20) + 80, HEALTH, 10000, 40.0, 0)
-				player:sendSystemMessage("@dungeon/geonosian_madbio:toxic_fumes") --You breathe in toxic fumes!
+		if (not player:isAiAgent()) then
+			--Check if gas is currently leaking
+			local isGasLeaking = readData("geonosian_lab:gasleak")
+			
+			if (isGasLeaking == 1) then
+				--Check for rebreathing mod
+				if (self:hasRebreather(movingObject) == 1) then
+					player:sendSystemMessage("@dungeon/geonosian_madbio:gasmask") --Your gasmask diffuses the poison gas and you are able to breathe with no difficulty.
+				else
+					player:addDotState(POISONED, math.random(20) + 80, HEALTH, 10000, 40.0, 0)
+					player:sendSystemMessage("@dungeon/geonosian_madbio:toxic_fumes") --You breathe in toxic fumes!
+				end
 			end
 		end
 	end

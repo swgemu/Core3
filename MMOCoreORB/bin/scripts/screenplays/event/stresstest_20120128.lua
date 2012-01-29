@@ -32,6 +32,11 @@ function stresstest_20120128:spawnMobiles()
 	shuttle3:setOptionsBitmask(256)
 	shuttle3:setPosture(PRONE)
 	
+	local pShuttle4 = spawnMobile("endor", "lambda_shuttle", 1, 3220, 24, -3464, -90, 0)
+	local shuttle4 = LuaCreatureObject(pShuttle4)
+	shuttle4:setOptionsBitmask(256)
+	shuttle4:setPosture(PRONE)
+	
 	local pBarker = spawnMobile("corellia", "stresstest_shuttleloc_barker", 1, -149, 28, -4706, 140, 0)
 	local barker = LuaCreatureObject(pBarker)
 	barker:setOptionsBitmask(256)
@@ -74,6 +79,14 @@ function stresstest_20120128:spawnSceneObjects()
 	col4creo:setOptionsBitmask(264)
 	collector4:setCustomObjectName("\\#33ee77Travel to Coronet, Corellia")
 	createObserver(OBJECTRADIALUSED, "stresstest_20120128", "teleportCnet", pCollector4)
+	
+	
+	local pCollector5 = spawnSceneObject("endor", "object/tangible/furniture/imperial/data_terminal_s1.iff", 3220, 24, -3464 , 0, 0.707107, 0, -0.707107, 0)
+	local collector5 = LuaSceneObject(pCollector5)
+	local col5creo = LuaCreatureObject(pCollector5)
+	col5creo:setOptionsBitmask(264)
+	collector5:setCustomObjectName("\\#ee3377Travel to the Death Watch Bunker")
+	createObserver(OBJECTRADIALUSED, "stresstest_20120128", "teleportDWB", pCollector5)
 end
 
 function stresstest_20120128:barkShuttleLocation(pBarker)

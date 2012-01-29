@@ -44,6 +44,7 @@
 object_tangible_medicine_crafted_medpack_poison_area_health_a = object_tangible_medicine_crafted_shared_medpack_poison_area_health_a:new {
 	gameObjectType = 8240,
 	templateType = DOTPACK,
+	useCount = 10,
 	medicineUse = 5,
 	effectiveness = 100,
 	duration = 300,
