@@ -104,10 +104,8 @@ int LuaSceneObject::switchZone(lua_State* L) {
 }
 
 int LuaSceneObject::getTemplateObjectPath(lua_State* L) {
-	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
-
-	if (obj != NULL) {
-		String tempPath = obj->getObjectTemplate()->getFullTemplateString();
+	if (realObject != NULL) {
+		String tempPath = realObject->getObjectTemplate()->getFullTemplateString();
 
 		lua_pushstring(L, tempPath);
 	} else {
@@ -247,7 +245,11 @@ int LuaSceneObject::getContainerObject(lua_State* L) {
 
 	SceneObject* obj = realObject->getContainerObject(idx);
 
-	lua_pushlightuserdata(L, obj);
+	if (obj == NULL) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, obj);
+	}
 
 	return 1;
 }
@@ -322,11 +324,11 @@ int LuaSceneObject::getSlottedObject(lua_State* L) {
 	String slot = lua_tostring(L, -1);
 
 	SceneObject* obj = realObject->getSlottedObject(slot);
-
-	if (obj != NULL)
-		lua_pushlightuserdata(L, obj);
-	else
+	if (obj == NULL) {
 		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, obj);
+	}
 
 	return 1;
 }
