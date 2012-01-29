@@ -794,7 +794,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						}
 
 						if (nextPosition->getCell() == NULL) {
-							newPositionZ = getZone()->getHeight(newPositionX, newPositionY);
+							Zone* zone = getZone();
+
+							if (zone != NULL)
+								newPositionZ = zone->getHeight(newPositionX, newPositionY);
 							//newPositionZ = nextPosition.getZ();
 						} else {
 							newPositionZ = nextPosition->getZ();
