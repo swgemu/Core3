@@ -54,9 +54,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			
 	maxCondition = 0,
 	
-	performanceBuff = 600,
+	performanceBuff = 1000,
 	
-	medicalBuff = 1200,
+	medicalBuff = 1900,
 	
 	-- Duration in seconds
 	performanceDuration = 7200,
