@@ -92,6 +92,7 @@ include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
+import engine.util.u3d.Matrix4;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -99,6 +100,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneComponent zoneComponent;
 	protected transient ObjectMenuComponent objectMenuComponent;
 	protected transient ContainerComponent containerComponent;
+	
+	protected transient Matrix4 transformForCollisionMatrix;
 	
 	@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
@@ -1586,6 +1589,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native SortedVector<Observer> getObservers(unsigned int eventType);
 	
 	public native abstract void createChildObjects();
+	
+	@local
+	public Matrix4 getTransformForCollisionMatrix() {
+		return transformForCollisionMatrix;
+	}
+	
+	@local
+	public void setTransformForCollisionMatrix(Matrix4 mat) {
+		transformForCollisionMatrix = mat;
+	}
 	
 	/**
 	 * This method initializes "this" object as if it were a "childObject" of the controller object that is passed

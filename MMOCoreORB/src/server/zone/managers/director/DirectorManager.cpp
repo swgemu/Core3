@@ -686,6 +686,7 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 		lua->callFunction(&startScreenPlay);
 	} catch (Exception& e) {
 		error("exception while running lua task " + play + ":" + key);
+		e.printStackTrace();
 	}
 }
 

@@ -275,43 +275,53 @@ TriangleNode* CollisionManager::getTriangle(const Vector3& point, FloorMesh* flo
 }
 
 Vector3 CollisionManager::convertToModelSpace(const Vector3& point, SceneObject* model) {
-	Matrix4 modelMatrix = getTransformMatrix(model);
+	Reference<Matrix4*> modelMatrix = getTransformMatrix(model);
 
-	Vector3 transformedPoint = point * modelMatrix;
+	Vector3 transformedPoint = point * *modelMatrix;
 
 	return transformedPoint;
 }
 
-Matrix4 CollisionManager::getTransformMatrix(SceneObject* model) {
+Reference<Matrix4*> CollisionManager::getTransformMatrix(SceneObject* model) {
 	//this can be optimized by storing the matrix on the model and update it when needed
-	Matrix4 translationMatrix;
-	translationMatrix.setTranslation(-model->getPositionX(), -model->getPositionZ(), -model->getPositionY());
+	//Reference
 
-	float rad = -model->getDirection()->getRadians();
-	float cosRad = cos(rad);
-	float sinRad = sin(rad);
+	Reference<Matrix4*> modelMatrix = model->getTransformForCollisionMatrix();
 
-	Matrix3 rot;
-	rot[0][0] = cosRad;
-	rot[0][2] = -sinRad;
-	rot[1][1] = 1;
-	rot[2][0] = sinRad;
-	rot[2][2] = cosRad;
+	if (modelMatrix == NULL) {
+		//modelMatrix = new Matrix4();
 
-	Matrix4 rotateMatrix;
-	rotateMatrix.setRotationMatrix(rot);
+		Matrix4 translationMatrix;
+		translationMatrix.setTranslation(-model->getPositionX(), -model->getPositionZ(), -model->getPositionY());
 
-	Matrix4 modelMatrix;
-	modelMatrix = translationMatrix * rotateMatrix;
+		float rad = -model->getDirection()->getRadians();
+		float cosRad = cos(rad);
+		float sinRad = sin(rad);
+
+		Matrix3 rot;
+		rot[0][0] = cosRad;
+		rot[0][2] = -sinRad;
+		rot[1][1] = 1;
+		rot[2][0] = sinRad;
+		rot[2][2] = cosRad;
+
+		Matrix4 rotateMatrix;
+		rotateMatrix.setRotationMatrix(rot);
+
+		//Matrix4 modelMatrix;
+		modelMatrix = new Matrix4(translationMatrix * rotateMatrix);
+
+		model->setTransformForCollisionMatrix(modelMatrix);
+	}
 
 	return modelMatrix;
 }
 
 Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model) {
-	Matrix4 modelMatrix = getTransformMatrix(model);
+	Reference<Matrix4*> modelMatrix = getTransformMatrix(model);
 
-	Vector3 transformedOrigin = rayOrigin * modelMatrix;
-	Vector3 transformedEnd = rayEnd * modelMatrix;
+	Vector3 transformedOrigin = rayOrigin * *modelMatrix;
+	Vector3 transformedEnd = rayEnd * *modelMatrix;
 
 	Vector3 norm = transformedEnd - transformedOrigin;
 	norm.normalize();

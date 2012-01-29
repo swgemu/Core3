@@ -163,7 +163,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	zone->insert(object);
 
-	zone->inRange(object, 512);
+	zone->inRange(object, 192);
 
 	zone->updateActiveAreas(object);
 

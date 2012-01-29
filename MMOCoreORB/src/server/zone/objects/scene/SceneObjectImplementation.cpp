@@ -577,7 +577,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 		int maxInRangeObjectCount = 0;
 
 		if (closeobjects == NULL) {
-			zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, &closeSceneObjects, false);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
 		} else
@@ -699,7 +699,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		int maxInRangeObjectCount = 0;
 
 		if (closeobjects == NULL) {
-			zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, &closeSceneObjects, false);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
 		} else
@@ -771,7 +771,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 		int maxInRangeObjectCount = 0;
 
 		if (closeobjects == NULL) {
-			zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, &closeSceneObjects, false);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
 		} else
@@ -821,7 +821,7 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 	int maxInRangeObjectCount = 0;
 
 	if (closeobjects == NULL) {
-		zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
+		zone->getInRangeObjects(getPositionX(), getPositionY(), range, &closeSceneObjects, false);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else

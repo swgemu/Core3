@@ -243,6 +243,8 @@ using namespace server::zone::objects::creature;
 
 #include "engine/util/Observer.h"
 
+#include "engine/util/u3d/Matrix4.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -714,6 +716,10 @@ public:
 
 	void createChildObjects();
 
+	Matrix4* getTransformForCollisionMatrix();
+
+	void setTransformForCollisionMatrix(Matrix4* mat);
+
 	void initializeChildObject(SceneObject* controllerObject);
 
 	bool isInWater();
@@ -760,6 +766,8 @@ protected:
 	Reference<ObjectMenuComponent* > objectMenuComponent;
 
 	Reference<ContainerComponent* > containerComponent;
+
+	Reference<Matrix4* > transformForCollisionMatrix;
 
 	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
 
@@ -1273,6 +1281,10 @@ public:
 	SortedVector<ManagedReference<Observer* > >* getObservers(unsigned int eventType);
 
 	virtual void createChildObjects();
+
+	Matrix4* getTransformForCollisionMatrix();
+
+	void setTransformForCollisionMatrix(Matrix4* mat);
 
 	virtual void initializeChildObject(SceneObject* controllerObject);
 

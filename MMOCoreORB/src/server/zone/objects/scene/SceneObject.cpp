@@ -3064,6 +3064,24 @@ void SceneObject::createChildObjects() {
 		_implementation->createChildObjects();
 }
 
+Matrix4* SceneObject::getTransformForCollisionMatrix() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getTransformForCollisionMatrix();
+}
+
+void SceneObject::setTransformForCollisionMatrix(Matrix4* mat) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setTransformForCollisionMatrix(mat);
+}
+
 void SceneObject::initializeChildObject(SceneObject* controllerObject) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -3194,6 +3212,11 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (QuadTreeEntryImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "transformForCollisionMatrix") {
+		TypeInfo<Reference<Matrix4* > >::parseFromBinaryStream(&transformForCollisionMatrix, stream);
+		return true;
+	}
+
 	if (_name == "slottedObjects") {
 		TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&slottedObjects, stream);
 		return true;
@@ -3304,6 +3327,14 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "transformForCollisionMatrix";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<Matrix4* > >::toBinaryStream(&transformForCollisionMatrix, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "slottedObjects";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -3457,7 +3488,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 19 + QuadTreeEntryImplementation::writeObjectMembers(stream);
+	return 20 + QuadTreeEntryImplementation::writeObjectMembers(stream);
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {
@@ -4330,6 +4361,16 @@ bool SceneObjectImplementation::containsChildObject(SceneObject* obj) {
 SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {
 	// server/zone/objects/scene/SceneObject.idl():  		return templateObject;
 	return templateObject;
+}
+
+Matrix4* SceneObjectImplementation::getTransformForCollisionMatrix() {
+	// server/zone/objects/scene/SceneObject.idl():  		return transformForCollisionMatrix;
+	return transformForCollisionMatrix;
+}
+
+void SceneObjectImplementation::setTransformForCollisionMatrix(Matrix4* mat) {
+	// server/zone/objects/scene/SceneObject.idl():  		transformForCollisionMatrix = mat;
+	transformForCollisionMatrix = mat;
 }
 
 /*

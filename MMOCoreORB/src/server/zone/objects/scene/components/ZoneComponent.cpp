@@ -120,7 +120,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	SortedVector<ManagedReference<QuadTreeEntry*> >* parentCloseObjects = sceneObject->getRootParent()->getCloseObjects();
 
 	//remove old ones
-	float rangesq = 512.f * 512.f;
+	float rangesq = 192.f * 192.f;
 
 	float x = sceneObject->getPositionX();
 	float y = sceneObject->getPositionY();
@@ -190,7 +190,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		if (sceneObject->getLocalZone() != NULL) {
 			zone->update(sceneObject);
 
-			zone->inRange(sceneObject, 512);
+			zone->inRange(sceneObject, 192);
 		} else if (parent != NULL) {
 			updateInRangeObjectsOnMount(sceneObject);
 		}
