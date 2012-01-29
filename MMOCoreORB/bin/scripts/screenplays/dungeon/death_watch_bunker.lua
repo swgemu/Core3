@@ -321,6 +321,10 @@ DOORS = {
 	{	"object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_leggings.iff",
 		"object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_gloves.iff",
 		"object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_belt.iff"} }
+
+MINECELLS = {
+	5996352,
+}
 		
 registerScreenPlay("DWB", true);
 
@@ -391,7 +395,6 @@ end
 
 function DWB:spawnObjects(creatureObject)
 	local spawnedSceneObject = LuaSceneObject(nil)
-
 
 	-- Door Acces Terminal Outside
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -18.016,-12,-8.55806, 5996315, 1, 0, 0, 0)
@@ -679,10 +682,22 @@ function DWB:start(creatureObject)
 	zero = DWB.spawnMobiles(bunker, bunker)
 
 	local bunkerObject = LuaBuildingObject(bunker)
-	
+
+	--createEvent(1000 * 30, "DWB", "poison", bunker) 	
 	createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
 	createObserver(EXITEDBUILDING, "DWB", "onExitDWB", bunker)
 	return 0
+end
+
+function DWB:poison(sceneObject)
+	--[[for i,v in ipairs(MINECELLS) do
+		local pCell = getSceneObject(v)
+		local cell = LuaSceneObject(pCell)
+		
+	end]]
+	if TEST == 1 then
+		printf("Poison Trigger\n")
+	end
 end
 
 function DWB:onEnterDWB(sceneObject, creatureObject)
@@ -1022,7 +1037,7 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				creature:setScreenPlayState(2, "death_watch_bunker")
 			end
 			
-			printf(os.time() .. "\n")
+			--printf(os.time() .. "\n")
 		end
 	elseif number == 2 then
 		--Terminal A: passkey_hall
