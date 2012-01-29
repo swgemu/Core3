@@ -761,14 +761,62 @@ end
 function DWB:hasRebreather(sceneObject)
 	--TODO: Change this to be a skill mod check for private_poison_rebreather
 	local scno = LuaSceneObject(sceneObject)
-	local pRebreather = scno:getSlottedObject("eyes")
+	local pRebreather = scno:getSlottedObject("hat")
+	local pSecond = scno:getSlottedObject("head")
+	local pThird = scno:getSlottedObject("mouth")
+	local pFourth = scno:getSlottedObject("eyes")
 	
 	if (pRebreather ~= nil) then
 		local rebreather = LuaSceneObject(pRebreather)
-		local headSlot = rebreather:getTemplateObjectPath()
+		headSlot = rebreather:getTemplateObjectPath()
 		
 		if TEST == 1 then
-			printf(headSlot .. "\n")
+			printf("hat: " .. headSlot .. "\n")
+		end
+		
+		if (headSlot == MANDOREBREATHER) then
+			return 1
+		elseif (headSlot == MANDOHELMET) then
+			return 1
+		end
+	end
+
+	if (pSecond ~= nil) then
+		local rebreather = LuaSceneObject(pSecond)
+		headSlot = rebreather:getTemplateObjectPath()
+		
+		if TEST == 1 then
+			printf("head: " .. headSlot .. "\n")
+		end
+		
+		if (headSlot == MANDOREBREATHER) then
+			return 1
+		elseif (headSlot == MANDOHELMET) then
+			return 1
+		end
+	end
+	
+	if (pThird ~= nil) then
+		local rebreather = LuaSceneObject(pThird)
+		headSlot = rebreather:getTemplateObjectPath()
+		
+		if TEST == 1 then
+			printf("mouth: " .. headSlot .. "\n")
+		end
+		
+		if (headSlot == MANDOREBREATHER) then
+			return 1
+		elseif (headSlot == MANDOHELMET) then
+			return 1
+		end
+	end
+	
+	if (pFourth ~= nil) then
+		local rebreather = LuaSceneObject(pFourth)
+		headSlot = rebreather:getTemplateObjectPath()
+		
+		if TEST == 1 then
+			printf("eyes: " .. headSlot .. "\n")
 		end
 		
 		if (headSlot == MANDOREBREATHER) then

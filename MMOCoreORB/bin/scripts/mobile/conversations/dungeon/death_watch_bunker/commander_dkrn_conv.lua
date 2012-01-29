@@ -70,7 +70,7 @@ commander_dkrn_repeat_information = ConvoScreen:new {
 	}
 }
 
-commander_dkrn_convotemplate:addScreen(commander_dkrn_return_unsuccessful);
+commander_dkrn_convotemplate:addScreen(commander_dkrn_repeat_information);
 
 commander_dkrn_repeat_location = ConvoScreen:new {
 	id = "repeat_location",

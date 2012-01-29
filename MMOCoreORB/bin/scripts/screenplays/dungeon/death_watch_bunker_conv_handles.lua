@@ -24,8 +24,10 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		
 		nextConversationScreen = conversation:getScreen(optionLink)
-		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
 		
+		if nextConversationScreen ~= nil then
+			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+		end
 	else
 		
 		--finished_quest = creature:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
@@ -127,14 +129,16 @@ function lutin_nightstalker_handler:getNextConversationScreen(conversationTempla
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		
 		nextConversationScreen = conversation:getScreen(optionLink)
-		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
 		
-		if (nextLuaConversationScreen:getScreenID() == "excellent" or nextLuaConversationScreen:getScreenID() == "location" or (nextLuaConversationScreen:getScreenID() == "maytheforce" and luaLastConversationScreen:getScreenID() == "convoscreen4")) then
-			creature:setScreenPlayState(1, "death_watch_bunker_rebel_sidequest")--gain entry permission
-		elseif (nextLuaConversationScreen:getScreenID() == "quit") then
-			creature:removeScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
-		end
-		
+		if nextConversationScreen ~= nil then
+			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+			
+			if (nextLuaConversationScreen:getScreenID() == "excellent" or nextLuaConversationScreen:getScreenID() == "location" or (nextLuaConversationScreen:getScreenID() == "maytheforce" and luaLastConversationScreen:getScreenID() == "convoscreen4")) then
+				creature:setScreenPlayState(1, "death_watch_bunker_rebel_sidequest")--gain entry permission
+			elseif (nextLuaConversationScreen:getScreenID() == "quit") then
+				creature:removeScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
+			end
+		end		
 	else
 		
 		finished_quest = creature:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
@@ -251,6 +255,7 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 				
 		if (finished_quest == true and finished_quest_before == 0) then
 			nextConversationScreen = conversation:getScreen("return_successful")
+			
 			local sample = LuaSceneObject(pSample)
 			sample:destroyObjectFromWorld()
 			creature:setScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
@@ -300,10 +305,13 @@ function boba_fett_handler:getNextConversationScreen(conversationTemplate, conve
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		
 		nextConversationScreen = conversation:getScreen(optionLink)
-		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
 		
-		if (nextLuaConversationScreen:getScreenID() == "convoscreen4" or nextLuaConversationScreen:getScreenID() == "convoscreen5") then
-			creature:setScreenPlayState(1, "death_watch_bunker")--gain entry permission
+		if nextConversationScreen ~= nil then
+			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+			
+			if (nextLuaConversationScreen:getScreenID() == "convoscreen4" or nextLuaConversationScreen:getScreenID() == "convoscreen5") then
+				creature:setScreenPlayState(1, "death_watch_bunker")--gain entry permission
+			end
 		end
 	else
 		
