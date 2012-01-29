@@ -323,7 +323,10 @@ int LuaSceneObject::getSlottedObject(lua_State* L) {
 
 	SceneObject* obj = realObject->getSlottedObject(slot);
 
-	lua_pushlightuserdata(L, obj);
+	if (obj != NULL)
+		lua_pushlightuserdata(L, obj);
+	else
+		lua_pushnil(L);
 
 	return 1;
 }

@@ -1315,7 +1315,7 @@ public:
 
 	void updateKnockdownRecovery();
 
-	void queueDizzyFallEvent();
+	virtual void queueDizzyFallEvent();
 
 	void updateLastKnockdown();
 

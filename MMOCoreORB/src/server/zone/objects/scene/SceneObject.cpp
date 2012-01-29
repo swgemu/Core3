@@ -3212,11 +3212,6 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (QuadTreeEntryImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "transformForCollisionMatrix") {
-		TypeInfo<Reference<Matrix4* > >::parseFromBinaryStream(&transformForCollisionMatrix, stream);
-		return true;
-	}
-
 	if (_name == "slottedObjects") {
 		TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&slottedObjects, stream);
 		return true;
@@ -3327,14 +3322,6 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "transformForCollisionMatrix";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Reference<Matrix4* > >::toBinaryStream(&transformForCollisionMatrix, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "slottedObjects";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -3488,7 +3475,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 20 + QuadTreeEntryImplementation::writeObjectMembers(stream);
+	return 19 + QuadTreeEntryImplementation::writeObjectMembers(stream);
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {

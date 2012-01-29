@@ -446,6 +446,11 @@ void AiAgentImplementation::setDefender(SceneObject* defender) {
 	activateRecovery();
 }
 
+void AiAgentImplementation::queueDizzyFallEvent() {
+	if (System::random(10) == 1)
+		CreatureObjectImplementation::queueDizzyFallEvent();
+}
+
 void AiAgentImplementation::addDefender(SceneObject* defender) {
 	if (defenderList.size() == 0)
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);

@@ -346,6 +346,8 @@ public:
 
 	void activatePostureRecovery();
 
+	void queueDizzyFallEvent();
+
 	void clearCombatState(bool clearDefenders = true);
 
 	void setDefender(SceneObject* defender);
@@ -616,6 +618,8 @@ public:
 
 	void activatePostureRecovery();
 
+	void queueDizzyFallEvent();
+
 	void clearCombatState(bool clearDefenders = true);
 
 	void setDefender(SceneObject* defender);
@@ -816,6 +820,8 @@ public:
 	void destroyObjectFromWorld(bool sendSelfDestroy);
 
 	void activatePostureRecovery();
+
+	void queueDizzyFallEvent();
 
 	void clearCombatState(bool clearDefenders);
 

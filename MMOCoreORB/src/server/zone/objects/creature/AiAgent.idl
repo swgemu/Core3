@@ -294,6 +294,8 @@ class AiAgent extends CreatureObject {
 	
 	public native void activatePostureRecovery();
 	
+	public native void queueDizzyFallEvent();
+	
 	/**
 	 * Cleares the combat state
 	 * @pre { this object is locked }

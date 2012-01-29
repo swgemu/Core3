@@ -141,6 +141,39 @@ bool CollisionManager::checkSphereCollision(const Vector3& sphereOrigin, float r
 	return false;
 }
 
+bool CollisionManager::checkLindOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cellObject) {
+	SceneObject* building = cellObject->getParent();
+
+	if (building == NULL)
+		return true;
+
+	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
+	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+
+	if (portalLayout == NULL)
+		return true;
+
+	Ray ray = convertToModelSpace(rayOrigin, rayEnd, building);
+
+	if (cellObject->getCellNumber() >= portalLayout->getAppearanceTemplatesSize())
+		return true;
+
+	MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(cellObject->getCellNumber());
+
+	AABBTree* aabbTree = app->getAABBTree();
+
+	if (aabbTree == NULL)
+		return true;
+
+	float intersectionDistance;
+	Triangle* triangle = NULL;
+
+	if (aabbTree->intersects(ray, distance, intersectionDistance, triangle, true))
+		return false;
+
+	return true;
+}
+
 bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 
@@ -238,6 +271,23 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	}
 
 	zone->runlock();
+
+	SceneObject* parent1 = object1->getParent();
+	SceneObject* parent2 = object2->getParent();
+
+	if (parent1 != NULL || parent2 != NULL) {
+		CellObject* cell = NULL;
+
+		if (parent1 != NULL && parent1->isCellObject()) {
+			cell = cast<CellObject*>(parent1);
+		} else if (parent2 != NULL && parent2->isCellObject()) {
+			cell = cast<CellObject*>(parent2);
+		}
+
+		if (cell != NULL) {
+			return checkLindOfSightWorldToCell(rayOrigin, rayEnd, dist, cell);
+		}
+	}
 
 	return true;
 

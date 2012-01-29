@@ -17,6 +17,9 @@ class FloorMesh;
 namespace server {
 namespace zone {
 namespace objects {
+namespace cell {
+	class CellObject;
+}
 namespace scene {
 	class SceneObject;
 }
@@ -34,6 +37,7 @@ namespace ship {
 }
 }
 
+using namespace server::zone::objects::cell;
 using namespace server::zone::objects::scene;
 using namespace server::zone::objects::creature;
 using namespace server::zone::objects::ship;
@@ -55,6 +59,7 @@ public:
 
 	static bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
 	static bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
+	static bool checkLindOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cell);
 	static float getRayOriginPoint(CreatureObject* creature);
 
 	//static bool
