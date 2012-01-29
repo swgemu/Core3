@@ -433,7 +433,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Armorsmith Crafting Terminal (Biceps, Chest, Boots)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-246.097,-60,-245.163,5996374,1,0,0,0)
@@ -447,7 +447,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Droid Engineer Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Master Droid Engineer Crafting Terminal (Bracer, Helmet)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-234.536,-40,-84.8062,5996370,1,0,0,0)
@@ -473,7 +473,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Tailor Crafting Terminal (Pants, Gloves, Belt)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-141.981,-60,-74.3199,5996368,1,0,0,0)
@@ -858,9 +858,6 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 		return 0
 	end
 	
-	creature:sendSystemMessage("@dungeon/death_watch:not_enough_ingredients")
-	return 0
-	--[[
 	if (DWB.hasCraftingItem(number, number, creatureObject) == false) then
 		creature:sendSystemMessage("@dungeon/death_watch:not_enough_ingredients")
 		return 0
@@ -901,7 +898,6 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 	end
 	
 	return 0
-]]
 end
 
 function DWB:removeFromDWB(creatureObject)
