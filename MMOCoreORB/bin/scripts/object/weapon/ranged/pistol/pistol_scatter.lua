@@ -96,10 +96,10 @@ object_weapon_ranged_pistol_pistol_scatter = object_weapon_ranged_pistol_shared_
 	maxRange = 45,
 	maxRangeAccuracy = 5,
 
-	minDamage = 100,
-	maxDamage = 200,
+	minDamage = 120,
+	maxDamage = 250,
 
-	attackSpeed = 4.8,
+	attackSpeed = 3.5,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

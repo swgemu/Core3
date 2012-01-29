@@ -29,13 +29,16 @@ death_watch_wraith = Creature:new {
 
 	templates = {"object/mobile/dressed_death_watch_silver.iff"},
 	lootgroups = {
-		{group = "death_watch_bunker_commoners", chance =   6000000},
+		{group = "death_watch_bunker_commoners", chance =   5500000},
 		{group = "death_watch_bunker_lieutenants", chance = 3500000},
-		{group = "death_watch_bunker_ingredient", chance =   500000},
+		{group = "death_watch_bunker_ingredient", chance =  1000000},
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {
+		{"defaultattack", ""},
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

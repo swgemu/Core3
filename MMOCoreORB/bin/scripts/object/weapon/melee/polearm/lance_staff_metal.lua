@@ -97,12 +97,12 @@ object_weapon_melee_polearm_lance_staff_metal = object_weapon_melee_polearm_shar
 	maxRangeAccuracy = 5,
 
 
-	minDamage = 56,
+	minDamage = 60,
 
-	maxDamage = 95,
+	maxDamage = 120,
 
 
-	attackSpeed = 6,
+	attackSpeed = 4,
 
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

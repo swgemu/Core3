@@ -1,3 +1,54 @@
+-- Foreman Quest
+death_watch_foreman_handler = {  }
+ 
+function death_watch_foreman_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
+
+	local creature = LuaCreatureObject(conversingPlayer)
+	local convosession = creature:getConversationSession()
+	
+	lastConversationScreen = nil
+	
+	if (convosession ~= nil) then
+		local session = LuaConversationSession(convosession)
+		lastConversationScreen = session:getLastConversationScreen()
+	end
+	
+	local conversation = LuaConversationTemplate(conversationTemplate)
+		
+	local nextConversationScreen
+	
+	if (lastConversationScreen ~= nil) then
+		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+		
+		--Get the linked screen for the selected option.
+		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
+		
+		nextConversationScreen = conversation:getScreen(optionLink)
+		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+		
+	else
+		
+		--finished_quest = creature:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
+		--spoken_to_lutin = creature:hasScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
+				
+		--if (finished_quest == 1) then
+		--	nextConversationScreen = conversation:getScreen("convoscreen2")
+		--elseif (spoken_to_lutin == 1) then
+			nextConversationScreen = conversation:getInitialScreen()
+		--	creature:setScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
+		--	creature:addCashCredits(487, true)
+		--else
+		--	nextConversationScreen = conversation:getScreen("convoscreen3")
+		--end
+	end
+	return nextConversationScreen
+
+end
+
+function death_watch_foreman_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	return conversationScreen
+end
+
 
 -- Rescue Scientist: Rebel Sidequest
 death_watch_rescue_scientist_handler = {  }
@@ -109,9 +160,9 @@ function lutin_nightstalker_handler:getNextConversationScreen(conversationTempla
 		end  
 				
 		if (finished_quest == 1) then
-			nextConversationScreen = conversation:getScreen("return_sucessful")
+			nextConversationScreen = conversation:getScreen("return_successful")
 		elseif (spoken_to_lutin == 1) then
-			nextConversationScreen = conversation:getScreen("return_unsucessful")
+			nextConversationScreen = conversation:getScreen("return_unsuccessful")
 		--elseif (busy == 1) then
 		--	nextConversationScreen = conversation:getScreen("busy")
 		elseif (factionmatch == 0) then
@@ -196,14 +247,14 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 		
 				
 		if (finished_quest == true and finished_quest_before == 0) then
-			nextConversationScreen = conversation:getScreen("return_sucessful")
+			nextConversationScreen = conversation:getScreen("return_successful")
 			local sample = LuaSceneObject(pSample)
 			sample:destroyObjectFromWorld()
 			creature:setScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
 		elseif (finished_quest == true and finished_quest_before == 1) then
 			nextConversationScreen = conversation:getScreen("more_samples")
 		elseif (spoken_to_dkrn == 1) then
-			nextConversationScreen = conversation:getScreen("return_unsucessful")
+			nextConversationScreen = conversation:getScreen("return_unsuccessful")
 		--elseif (busy == 1) then
 		--	nextConversationScreen = conversation:getScreen("busy")
 		elseif (factionmatch == 0) then

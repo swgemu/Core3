@@ -35,6 +35,9 @@ death_watch_bloodguard = Creature:new {
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {
+		{"defaultattack", ""},
+		{"intimidationattack","intimidationChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

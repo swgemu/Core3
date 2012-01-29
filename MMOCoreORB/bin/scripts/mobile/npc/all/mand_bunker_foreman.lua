@@ -24,13 +24,13 @@ mand_bunker_foreman = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mand_bunker_foreman.iff"},
 	lootgroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "foreman_convotemplate",
 	attacks = {
 	}
 }

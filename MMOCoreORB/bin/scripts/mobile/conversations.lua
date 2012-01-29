@@ -29,6 +29,7 @@ includeFile("conversations/dungeon/death_watch_bunker/lutin_nightstalker_conv.lu
 includeFile("conversations/dungeon/death_watch_bunker/commander_dkrn_conv.lua")
 includeFile("conversations/dungeon/death_watch_bunker/death_watch_rescue_scientist_conv.lua")
 includeFile("conversations/dungeon/death_watch_bunker/g12_4j_conv.lua")
+includeFile("conversations/dungeon/death_watch_bunker/foreman_conv.lua")
 
 -- ** OTHER **
 

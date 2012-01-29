@@ -26,7 +26,11 @@ miner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_vigo_bith_male_01.iff", "object/mobile/dressed_smuggler_trainer_01.iff"},--these need to be replaced by custom outfitted humans/bith
+	templates = {"object/mobile/dressed_mand_miner_bith.iff", 
+	"object/mobile/dressed_mand_miner_aqualish.iff",
+	"object/mobile/dressed_mand_miner_hum_01.iff",
+	"object/mobile/dressed_mand_miner_hum_02.iff",
+	"object/mobile/dressed_mand_miner_hum_03.iff",},
 	lootgroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

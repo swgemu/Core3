@@ -1,5 +1,6 @@
 mand_bunker_crazed_miner = Creature:new {
-	objectName = "@mob/creature_names:death_watch_miner",
+	objectName = "",
+	customName = "Haldo",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
