@@ -17,6 +17,9 @@ specialSpawnMapDWB = {
 	fenri_dalso_add3 = {"death_watch_s_battle_droid", 0, 27.3, -60, -173.7, -9, 5996346},
 	fenri_dalso_assist1 = {"death_watch_ghost", 0, 25.8, -60, -172.1, -9, 5996346},
 	fenri_dalso_assist2 = {"death_watch_ghost", 0, 25.8, -60, -172.1, -9, 5996346},
+	haldo1 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
+	haldo2 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
+	haldo3 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
 	lootbox1mob1 = {"death_watch_s_battle_droid", 0, 2.8, -12, 31.8, -120, 5996318},
 	lootbox2mob1 = {"death_watch_s_battle_droid", 0, 7.2, -31.9, -94.5, -8, 5996337},
 	lootbox3mob1 = 	{"death_watch_ghost", 0, -0.6, -32, -39.9, 54, 5996335},
@@ -25,7 +28,6 @@ specialSpawnMapDWB = {
 }
 
 spawnMapDWB = 	{
-	{"death_watch_rescue_scientist", 1, 113.9,-68,-187,1,5996351},
 	{"death_watch_overlord", 0, 118, -64, -94, -135, 5996349},
 	{"death_watch_s_battle_droid", 240, 110, -64, -92, 150, 5996349},
 	{"death_watch_ghost", 240, 116, -64, -101, -156, 5996349},
@@ -80,7 +82,7 @@ spawnMapDWB = 	{
 	{"death_watch_wraith", 240, -38.3, -32, -113, -92, 5996334},
 	{"death_watch_s_battle_droid", 240, -58.5, -32, -118.7, 10, 5996334},
 	{"death_watch_s_battle_droid", 240, -44.7, -32, -99.6, 41, 5996331},
-	{"death_watch_s_battle_droid", 240, -11.4, -32, -99.0, -23, 5996331},--maybe spawned with keypad use
+	{"death_watch_s_battle_droid", 240, -11.4, -32, -99.0, -23, 5996331},
 	{"death_watch_s_battle_droid", 240, -12.7, -32, -56.7, -166, 5996331},
 	{"death_watch_wraith", 240, 4.3, -32, -32.1, -31, 5996335},
 	{"death_watch_bloodguard", 240, -1.4, -32.0, -34.5, 83, 5996335},
@@ -121,13 +123,8 @@ spawnMapDWB = 	{
 	{"death_watch_s_battle_droid", 240, -114.3, -20, -95.3, -77, 5996328},
 	{"death_watch_black_sun_henchman", 240, -110.2, -20, -91.9, 56, 5996328},
 	
-	--{"workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328},
-	--{"ventilation_quest_npc", 1, -23.9, -52, -163.8, 45, 5996378},
-	--{"ventilation_quest_droid", 1, -6.2, -52.0, -119.6, 62, 5996379},
-	
 	{"death_watch_black_sun_thug", 240, -93.5, -20, -114.7, 21, 5996329},
 	{"death_watch_bloodguard", 240, -82.3, -20, -112.1, -50, 5996329},
-	{"g12-4j", 1, -80.3, -20, -121, -34, 5996329},
 	{"death_watch_black_sun_guard", 240, -38, -20, -46.3, 12, 5996330},
 	{"death_watch_scientist", 240, 20.9, -20, -55.8, 121, 5996332},
 	{"death_watch_scientist", 240, 5, -22, -74.2, 65, 5996332},
@@ -140,8 +137,6 @@ spawnMapDWB = 	{
 	{"death_watch_battle_droid", 240, -16.7, -52, -168.4, -5, 5996378},
 	{"death_watch_battle_droid", 240, -9.6, -52, -153.4, -25, 5996378},
 	
-	--mines: positions from here on checked
-	--{"foreman", 1, 29.5, -51.7, -297.6, -165, 5996355},
 	{"death_watch_wraith", 240, -11.5, -60.3, -293.4, -6, 5996354},
 	{"death_watch_s_battle_droid", 240, -8.2, -60, -229.9, -42, 5996354},
 	{"death_watch_s_battle_droid", 240, -43.8, -59.8, -296.8, 86, 5996356},
@@ -238,7 +233,7 @@ spawnMapDWB = 	{
 	{"death_watch_mine_rat", 240, -50.1, -59.5, -123.4, 128, 5996362},
 	{"death_watch_mine_rat", 240, -39.1, -60.1, -136.6, -116, 5996362},
 	{"death_watch_battle_droid", 240, -39.2, -59.7, -147.8, -80, 5996362},
-	--haldo pos 1: -47.6,-59.8,-123.2,-26,5996362
+	
 	
 	{"death_watch_battle_droid", 240, -151.2, -59.5, -162.2, 21, 5996364},
 	{"death_watch_mine_rat", 240, -142.1, -60.1, -164.2, -86, 5996364},
@@ -266,7 +261,13 @@ spawnMapDWB = 	{
 	{"miner", 240, -210.3, -60.1, -203.2, 169, 5996372},
 	{"miner", 240, -207.2, -60.1, -203, 5, 5996372},
 	
-	
+	-- Quest NPCs:
+	{"mand_bunker_foreman", 1, 27.6, -61.5, -297.6, -112, 5996355},
+	--{"workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328},
+	{"mand_bunker_technician", 1, -23.9, -52, -163.8, 45, 5996378},
+	--{"ventilation_quest_droid", 1, -6.2, -52.0, -119.6, 62, 5996379},
+	{"g12-4j", 1, -80.3, -20, -121, -34, 5996329},
+	{"death_watch_rescue_scientist", 1, 113.9,-68,-187,1,5996351},
 }
 
 PASSKEYHALL = "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff"
@@ -339,8 +340,8 @@ function DWB:hasCraftingSkill(room, creatureObject)
 	end
 	
 	local creature = LuaCreatureObject(creatureObject)
-	
-	if creature:hasSkill(TERMINALSKILLS[room]) == 1 then
+	printf(TERMINALSKILLS[room] .. "\n")
+	if creature:hasSkill(TERMINALSKILLS[room]) then
 		return true
 	end
 	
@@ -363,8 +364,9 @@ function DWB:hasCraftingItem(room, creatureObject)
 	end
 	
 	local creature = LuaCreatureObject(creatureObject)
-	
+	printf(room .. " " .. creature:getObjectID() .. "\n")	
 	if (creature:getContainerObjectByTemplate(ALUMMINERAL) == nil) then
+		printf("no alum\n")
 		return false
 	end
 	
@@ -375,7 +377,7 @@ function DWB:hasCraftingItem(room, creatureObject)
 			return true
 		end
 	end
-
+	printf("no bh armor\n")
 	return false
 end
 
@@ -433,7 +435,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Armorsmith Crafting Terminal (Biceps, Chest, Boots)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-246.097,-60,-245.163,5996374,1,0,0,0)
@@ -447,7 +449,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Droid Engineer Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Master Droid Engineer Crafting Terminal (Bracer, Helmet)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-234.536,-40,-84.8062,5996370,1,0,0,0)
@@ -470,20 +472,21 @@ function DWB:spawnObjects(creatureObject)
 	-- Tailor Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -151.045,-60,-98.8703,5996365,0,0,1,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
+	spawnedSceneObject:setCustomObjectName("Tailor Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Tailor Crafting Terminal (Pants, Gloves, Belt)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-141.981,-60,-74.3199,5996368,1,0,0,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
+	
 	--Crafting Droid
 	
 	-- Debris
-	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff",66.8122,-64,-113.893,5996348,1,0,0,0)
+	--[[spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff",66.8122,-64,-113.893,5996348,1,0,0,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	writeData(5996314 .. ":dwb:debrisEntrance", spawnedSceneObject:getObjectID())
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff",112.524,-64,-113.886,5996348,1,0,0,0)
@@ -491,7 +494,12 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:debrisOverlord", spawnedSceneObject:getObjectID())
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff",113.21,-64,-151.844,5996348,1,0,0,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
-	writeData(5996314 .. ":dwb:debrisRescue", spawnedSceneObject:getObjectID())
+	writeData(5996314 .. ":dwb:debrisRescue", spawnedSceneObject:getObjectID())]]
+	
+	--Write Data for Foreman
+	writeData(5996314 .. ":dwb:haldo_busy", 0)
+	writeData(5996314 .. ":dwb:battery_busy", 0)
+	writeData(5996314 .. ":dwb:pumps_busy", 0)
 	
 	-- Water Pressure Valve Control A
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
@@ -543,7 +551,7 @@ function DWB:testSpatial(pDroid, pPlayer)
 	elseif distance < 20 then
 		spatialChat(pDroid, "Welcome to the Death Watch Bunker! To ease with testing, these guys behind me can give you Quests.")
 		createEvent(15 * 1000, "DWB", "testSecond", pDroid)
-		createEvent(120 * 1000, "DWB", "testRepeat", pDroid) 
+		createEvent(200 * 1000, "DWB", "testRepeat", pDroid) 
 		return 1
 	else
 		return 0
@@ -551,10 +559,19 @@ function DWB:testSpatial(pDroid, pPlayer)
 end
 
 function DWB:testSecond(pDroid)
-	spatialChat(pDroid, "Missing Features: Poison, Foreman Quest, Rebreather Quest, Ventilation Quest and Blastromech Control. Known Bugs: Wrong animations for Battle Droids. Looted Schematics not working. Please report any other bugs you may find to Elvaron or via Mantis.")
+	spatialChat(pDroid, "Missing Features: Foreman Quest, Poison, Rebreather Quest, Ventilation Quest and Blastromech Control. Known Bugs: Wrong animations for Battle Droids. Looted Schematics not working.")
+	createEvent(15 * 1000, "DWB", "testThird", pDroid)
 end
 
- 
+function DWB:testThird(pDroid)
+	spatialChat(pDroid, "DWB Info: Finish Boba Fett's conversation to gain entry. Use the passkeys dropped from named NPCs to get past the three doors. They are spawned by using the Door Control Terminals.")
+	createEvent(15 * 1000, "DWB", "testFourth", pDroid)
+end 
+
+function DWB:testFourth(pDroid)
+	spatialChat(pDroid, "If you manage to get 1 Binary Liquid, 1 Protective Liquid Coating and 1 Bounty Hunter Armor part, please check if Elvaron is online, he will help you with the crafting process since DWB isn't fully working yet. Good luck on the loot!")
+end 
+
 
 function DWB:testRepeat(pDroid)
 	createObserver(OBJECTINRANGEMOVED, "DWB", "testSpatial", pDroid)
@@ -589,6 +606,8 @@ function DWB:test(sceneObject)
 	createObserver(OBJECTINRANGEMOVED, "DWB", "testSpatial", spawnedPointer)
 	
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/event_perk/lambda_shuttle.iff", -4668,12.9,4291.4,0,0,0,1,0)
+	
+	spawnedPointer = spawnSceneObject("endor", "object/tangible/terminal/terminal_character_builder.iff", -4655,12.5,4293.1,0,0,0,1,0)
 	
 	spawnedPointer = spawnMobile("endor", "imperial_recruiter", 1, -4655.8, 14.4, 4328.3, 179, 0)
 	spawnedPointer = spawnMobile("endor", "rebel_recruiter", 1, -4653.8, 14.4, 4328.3, 179, 0)
@@ -837,6 +856,13 @@ function DWB:lockAll(creatureObject)
 	targetCellObject:updateCellPermission(0, creatureObject)
 end
 
+function DWB:timeWarning(creatureObject)
+	if creatureObject ~= nil then
+		local creature = LuaCreatureObject(creatureObject)
+		creature:sendGroupMessage("@dungeon/death_watch:thirty_seconds")
+	end
+end
+
 function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 	if selectedID ~= 20 then
 		return 0
@@ -874,6 +900,8 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 	creature:sendGroupMessage("@dungeon/death_watch:unlock_door")
 	
 	createEvent(1000 * 60 * 5, "DWB", "removeFromDWB", creatureObject)
+	createEvent(1000 * 60 * 4.5, "DWB", "timeWarning", creatureObject)
+	
 	
 	writeData(sceneObject:getObjectID() .. ":dwb:accessEnabled", 0)
 	createEvent(1000 * 60 * 6, "DWB", "enableAccess", terminal)
@@ -882,13 +910,14 @@ function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
 	if (creature:isGrouped()) then
 		size = creature:getGroupSize()
 		
-		local groupMember = LuaCreatureObject(nil)
-		
 		for i = 0, size - 1, 1 do
 			pMember = creature:getGroupMember(i)
 			if pMember ~= nil then
-				groupMember:_setObject(pMember)
-				if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
+				local groupMember = LuaCreatureObject(pMember)
+				
+				local parentID = groupMember:getParentID()
+				
+				if parentID > 5996313 and parentID < 5996380 then
 					groupMember:setScreenPlayState(math.pow(2,number + 4), "death_watch_bunker")
 				end
 			end
@@ -951,7 +980,7 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 			end
 		
 			-- spawn 2 battle droids
-			creature:sendGroupMessage("@dungeon/death_watch:denied_access")
+			creature:sendGroupMessage("@dungeon/death_watch:airlock_backup")
 			
 			local spawnedCreature = LuaCreatureObject(nil)
 			
@@ -971,16 +1000,16 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 			
 			if (creature:isGrouped()) then
 				local size = creature:getGroupSize()
-	
+		
 				for i = 0, size - 1, 1 do
 					local pMember = creature:getGroupMember(i)
-					
+				
 					if pMember ~= nil then
 						local groupMember = LuaCreatureObject(pMember)
 						
-						local parentID = groupMember:getParentID()
-					
-						if parentID > 5996313 and parentID < 5996380 then
+						local planet = groupMember:getZoneName()
+						
+						if planet == "endor" then
 							targetCellObject:updateCellPermission(1, pMember)
 							groupMember:sendSystemMessage("@dungeon/death_watch:access_granted")
 							groupMember:setScreenPlayState(2, "death_watch_bunker")
@@ -992,6 +1021,8 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				creature:sendSystemMessage("@dungeon/death_watch:access_granted")
 				creature:setScreenPlayState(2, "death_watch_bunker")
 			end
+			
+			printf(os.time() .. "\n")
 		end
 	elseif number == 2 then
 		--Terminal A: passkey_hall
@@ -1017,6 +1048,11 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 			targetCellObject:updateCellPermissionGroup(1, creatureObject)
 			creature:sendGroupMessage("@dungeon/death_watch:access_granted")
 			
+			
+			-- remove passkey
+			local passkeyHall = LuaSceneObject(pPasskeyHall)
+			passkeyHall:destroyObjectFromWorld() 
+			
 			-- screenplaystates for login/logout
 			if (creature:isGrouped()) then
 				size = creature:getGroupSize()
@@ -1024,11 +1060,14 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				local groupMember = LuaCreatureObject(nil)
 				
 				for i=0, size - 1, 1 do
+				
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
 						local groupMember = LuaCreatureObject(pMember)
+						
+						local parentID = groupMember:getParentID()
 					
-						if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
+						if parentID > 5996313 and parentID < 5996380 then
 							groupMember:setScreenPlayState(4, "death_watch_bunker")
 						end
 						
@@ -1038,9 +1077,6 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				creature:setScreenPlayState(4, "death_watch_bunker")
 			end
 			
-			-- remove passkey
-			local passkeyHall = LuaSceneObject(pPasskeyHall)
-			passkeyHall:destroyObjectFromWorld() 
 		end
 	elseif number == 3 then
 		--Terminal B: passkey_storage
@@ -1073,11 +1109,14 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				local groupMember = LuaCreatureObject(nil)
 				
 				for i = 0, size - 1, 1 do
+				
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
 						local groupMember = LuaCreatureObject(pMember)
-					
-						if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
+						
+						local parentID = groupMember:getParentID()
+						
+						if parentID > 5996313 and parentID < 5996380 then
 							groupMember:setScreenPlayState(8, "death_watch_bunker")
 						end
 					
@@ -1120,13 +1159,15 @@ function DWB:accessDoor(terminal, creatureObject, selectedID)
 				size = creature:getGroupSize()
 				
 				local groupMember = LuaCreatureObject(nil)
-				
 				for i = 0, size - 1, 1 do
+				
 					pMember = creature:getGroupMember(i)
 					if pMember ~= nil then
 						local groupMember = LuaCreatureObject(pMember)
 					
-						if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
+						local parentID = groupMember:getParentID()
+					
+						if parentID > 5996313 and parentID < 5996380 then
 							groupMember:setScreenPlayState(16, "death_watch_bunker")
 						end
 					
