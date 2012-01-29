@@ -388,8 +388,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	UnicodeString bio;
 	callback->getBiography(bio);
 
-	//bool doTutorial = callback->getTutorialFlag();
-	bool doTutorial = false;
+	bool doTutorial = callback->getTutorialFlag();
+	//bool doTutorial = false;
 
 	ManagedReference<CreatureObject*> playerCreature = dynamic_cast<CreatureObject*>(zoneServer->createObject(serverObjectCRC, 2));
 
