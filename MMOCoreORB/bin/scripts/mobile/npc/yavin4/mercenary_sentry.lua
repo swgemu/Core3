@@ -29,8 +29,8 @@ mercenary_sentry = Creature:new {
 
 	templates = {"object/mobile/dressed_mercenary_strong_hum_f.iff","object/mobile/dressed_mercenary_strong_hum_m.iff","object/mobile/dressed_mercenary_strong_rod_m.iff","object/mobile/dressed_mercenary_strong_tran_m.iff"},
 	lootgroups = {
-		{group = "geonosian_hard", chance = 2500000},
-		{group = "geonosian_common", chance = 4500000},
+		{group = "geonosian_hard", chance = 1000000},
+		{group = "geonosian_common", chance = 6000000},
 		{group = "geonosian_relic", chance = 3000000}
 	},
 	weapons = {"geonosian_weapons"},
