@@ -111,7 +111,7 @@ int LuaSceneObject::getTemplateObjectPath(lua_State* L) {
 
 		lua_pushstring(L, tempPath);
 	} else {
-		lua_pushnil(L);
+		lua_pushstring(L, "");
 	}
 
 	return 1;

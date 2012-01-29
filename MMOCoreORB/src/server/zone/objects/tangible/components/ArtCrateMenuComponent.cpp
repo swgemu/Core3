@@ -43,7 +43,5 @@ int ArtCrateMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		return 0;
 	}
 
-	sceneObject->info(String::valueOf(selectedID), true);
-
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }

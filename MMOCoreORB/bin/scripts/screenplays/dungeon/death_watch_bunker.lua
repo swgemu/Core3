@@ -2,7 +2,7 @@ DWB = ScreenPlay:new {
 	numberOfActs = 1
 }
 
-TEST = 0
+TEST = 1
 
 specialSpawnMapDWB = {
 	rageon_vart = {"rageon_vart", 0, -84.8, -20, -25.7, -114, 5996323},
@@ -286,6 +286,9 @@ TAILOR = 5996368
 
 ALUMMINERAL = "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff"
 
+MANDOHELMET = "object/tangible/wearables/armor/mandalorian/armor_mandalorian_helmet.iff"
+MANDOREBREATHER = "object/tangible/wearables/goggles/rebreather.iff"
+
 CRAFTINGCELL = {
 	ARMOR,
 	DROIDENGINEER,
@@ -324,6 +327,24 @@ DOORS = {
 
 MINECELLS = {
 	5996352,
+	5996353,
+	5996354,
+	5996356,
+	5996357,
+	5996358,
+	5996359,
+	5996360,
+	5996361,
+	5996362,
+	5996363,
+	5996364,
+	5996365,
+	5996366,
+	5996369,
+	5996372,
+	5996375,
+	5996376,
+	5996377,	
 }
 		
 registerScreenPlay("DWB", true);
@@ -344,7 +365,9 @@ function DWB:hasCraftingSkill(room, creatureObject)
 	end
 	
 	local creature = LuaCreatureObject(creatureObject)
-	printf(TERMINALSKILLS[room] .. "\n")
+	if TEST == 1 then
+		printf(TERMINALSKILLS[room] .. "\n")
+	end
 	if creature:hasSkill(TERMINALSKILLS[room]) then
 		return true
 	end
@@ -368,9 +391,11 @@ function DWB:hasCraftingItem(room, creatureObject)
 	end
 	
 	local creature = LuaCreatureObject(creatureObject)
-	printf(room .. " " .. creature:getObjectID() .. "\n")	
+	
 	if (creature:getContainerObjectByTemplate(ALUMMINERAL) == nil) then
-		printf("no alum\n")
+		if TEST == 1 then
+			printf("no alum\n")
+		end
 		return false
 	end
 	
@@ -381,7 +406,9 @@ function DWB:hasCraftingItem(room, creatureObject)
 			return true
 		end
 	end
-	printf("no bh armor\n")
+	if TEST == 1 then
+		printf("no bh armor\n")
+	end
 	return false
 end
 
@@ -552,7 +579,7 @@ function DWB:testSpatial(pDroid, pPlayer)
 	if distance == 0 then
 		return 0
 	elseif distance < 20 then
-		spatialChat(pDroid, "Welcome to the Death Watch Bunker! To ease with testing, these guys behind me can give you Quests.")
+		spatialChat(pDroid, "Welcome to the Death Watch Bunker! To ease with testing, these guys behind me can give you Quests. Clone at this Cloning Terminal in case you die.")
 		createEvent(15 * 1000, "DWB", "testSecond", pDroid)
 		createEvent(200 * 1000, "DWB", "testRepeat", pDroid) 
 		return 1
@@ -562,7 +589,7 @@ function DWB:testSpatial(pDroid, pPlayer)
 end
 
 function DWB:testSecond(pDroid)
-	spatialChat(pDroid, "Missing Features: Foreman Quest, Poison, Rebreather Quest, Ventilation Quest and Blastromech Control. Known Bugs: Wrong animations for Battle Droids. Looted Schematics not working.")
+	spatialChat(pDroid, "Missing Features: Foreman Quest, Rebreather Quest, Ventilation Quest and Blastromech Control. Known Bugs: Wrong animations for Battle Droids. Looted Schematics not working.")
 	createEvent(15 * 1000, "DWB", "testThird", pDroid)
 end
 
@@ -611,6 +638,7 @@ function DWB:test(sceneObject)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/event_perk/lambda_shuttle.iff", -4668,12.9,4291.4,0,0,0,1,0)
 	
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/terminal/terminal_character_builder.iff", -4655,12.5,4293.1,0,0,0,1,0)
+	--doesnt work spawnedPointer = spawnSceneObject("endor", "object/tangible/terminal/terminal_cloning.iff", -4663,14.4,4324.3,0,0,0,1,0)
 	
 	spawnedPointer = spawnMobile("endor", "imperial_recruiter", 1, -4655.8, 14.4, 4328.3, 179, 0)
 	spawnedPointer = spawnMobile("endor", "rebel_recruiter", 1, -4653.8, 14.4, 4328.3, 179, 0)
@@ -683,21 +711,89 @@ function DWB:start(creatureObject)
 
 	local bunkerObject = LuaBuildingObject(bunker)
 
-	--createEvent(1000 * 30, "DWB", "poison", bunker) 	
+	createEvent(1000 * 30, "DWB", "poison", bunker) 	
 	createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
 	createObserver(EXITEDBUILDING, "DWB", "onExitDWB", bunker)
 	return 0
 end
 
 function DWB:poison(sceneObject)
-	--[[for i,v in ipairs(MINECELLS) do
-		local pCell = getSceneObject(v)
-		local cell = LuaSceneObject(pCell)
-		
-	end]]
 	if TEST == 1 then
 		printf("Poison Trigger\n")
 	end
+
+	for i,v in ipairs(MINECELLS) do
+		local pCell = getSceneObject(v)
+		if pCell ~= nil then
+			local cell = LuaSceneObject(pCell)
+			size = cell:getContainerObjectsSize()
+			
+			for j=0, size - 1, 1 do
+				local pointer = cell:getContainerObject(j)
+				
+				if pointer ~= nil then
+									
+					local sco = LuaSceneObject(pointer)
+						
+					if (sco:isCreatureObject()) then
+						local creo = LuaCreatureObject(pointer)
+						
+						if (not creo:isAiAgent()) then
+									
+							if (DWB.hasRebreather(pointer, pointer) == 1) then
+								if TEST == 1 then
+									printf("Poison averted\n")
+								end
+							else
+								DWB.doPoison(pointer, pointer)
+							end 
+
+						end
+					end
+				end
+			end
+		end		
+	end
+	createEvent(1000 * 30, "DWB", "poison", sceneObject)
+end
+
+
+function DWB:hasRebreather(sceneObject)
+	--TODO: Change this to be a skill mod check for private_poison_rebreather
+	local scno = LuaSceneObject(sceneObject)
+	local pRebreather = scno:getSlottedObject("eyes")
+	
+	if (pRebreather ~= nil) then
+		local rebreather = LuaSceneObject(pRebreather)
+		local headSlot = rebreather:getTemplateObjectPath()
+		
+		if TEST == 1 then
+			printf(headSlot .. "\n")
+		end
+		
+		if (headSlot == MANDOREBREATHER) then
+			return 1
+		elseif (headSlot == MANDOHELMET) then
+			return 1
+		end
+	end
+	
+	return 0
+end
+
+function DWB:doPoison(creatureObject)
+	if creatureObject == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if TEST == 1 then
+		printf("poisoned\n")
+	end
+	
+	creature:inflictDamage(creatureObject, 0, 100, 0)
+	creature:sendSystemMessage("@dungeon/death_watch:bad_air")
 end
 
 function DWB:onEnterDWB(sceneObject, creatureObject)
@@ -954,21 +1050,30 @@ function DWB:removeFromDWB(creatureObject)
 	if (creature:isGrouped()) then
 		size = creature:getGroupSize()
 		
-		local groupMember = LuaCreatureObject(nil)
-		
 		for i = 0, size - 1, 1 do
 			pMember = creature:getGroupMember(i)
 			if pMember ~= nil then
-				groupMember:_setObject(pMember)
+				local groupMember = LuaCreatureObject(pMember)
 				if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
-					groupMember:teleport(-4657, 14.4, 4322.3,0)
+					createEvent(500, "DWB", "teleportPlayer", pMember)
 				end
 			end
 		end 
 	else
-		creature:teleport(-4657, 14.4, 4322.3, 0)
+		createEvent(500, "DWB", "teleportPlayer", creatureObject)
 	end
 	
+end
+
+function DWB:teleportPlayer(creatureObject)
+	if (creatureObject == nil) then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	creature:teleport(-4657, 14.4, 4322.3, 0)
+	
+	DWB.lockAll(creatureObject, creatureObject)
 end
 
 function DWB:accessDoor(terminal, creatureObject, selectedID)
