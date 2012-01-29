@@ -159,13 +159,8 @@ public:
 
 						PlayerObject* ghost = playerCreature->getPlayerObject();
 
-						if (ghost->getCenteredBonus() != 0) {
-							Reference<Task*> task = playerCreature->getPendingTask("centerofbeing");
-							if (task != NULL) {
-								task->cancel();
-								task->run();
-							}
-						}
+						if (creature->hasBuff(String("centerofbeing").hashCode()))
+							creature->removeBuff(String("centerofbeing").hashCode());
 					}
 
 				}

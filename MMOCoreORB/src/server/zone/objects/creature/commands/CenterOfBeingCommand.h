@@ -71,9 +71,7 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 		PlayerObject* ghost = player->getPlayerObject();
 
-		Task* task = player->getPendingTask("centerofbeing");
-
-		if (task != NULL) {
+		if (creature->hasBuff(String("centerofbeing").hashCode())) {
 			player->sendSystemMessage("combat_effects", "already_centered");
 			return GENERALERROR;
 		}
@@ -82,32 +80,36 @@ public:
 
 		int duration = 0;
 		int efficacy = 0;
+		String efficacyMod = "";
 
 		if (weapon->isUnarmedWeapon()) {
 			duration = player->getSkillMod("center_of_being_duration_unarmed");
 			efficacy = player->getSkillMod("unarmed_center_of_being_efficacy");
+			efficacyMod = "private_unarmed_passive_defense";
 		} else if (weapon->isOneHandMeleeWeapon()) {
 			duration = player->getSkillMod("center_of_being_duration_onehandmelee");
 			efficacy = player->getSkillMod("onehandmelee_center_of_being_efficacy");
+			efficacyMod = "private_dodge";
 		} else if (weapon->isTwoHandMeleeWeapon()) {
 			duration = player->getSkillMod("center_of_being_duration_twohandmelee");
 			efficacy = player->getSkillMod("twohandmelee_center_of_being_efficacy");
+			efficacyMod = "private_counterattack";
 		} else if (weapon->isPolearmWeaponObject()) {
 			duration = player->getSkillMod("center_of_being_duration_polearm");
 			efficacy = player->getSkillMod("polearm_center_of_being_efficacy");
+			efficacyMod = "private_block";
 		} else
 			return GENERALERROR;
 
-		if (duration == 0 || efficacy == 0)
+		if (duration == 0 || efficacy == 0 || efficacyMod == "")
 			return GENERALERROR;
 
-		ghost->setCenteredBonus(efficacy);
+		Buff* centered = new Buff(player, String("centerofbeing").hashCode(), duration * 1000, BuffType::SKILL);
+		centered->setSkillModifier(efficacyMod, efficacy);
+		player->addBuff(centered);
 
 		player->sendSystemMessage("combat_effects", "center_start");
 		player->showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
-
-		Reference<CenterOfBeingEvent*> centerOfBeingEvent = new CenterOfBeingEvent(player);
-		player->addPendingTask("centerofbeing", centerOfBeingEvent, duration * 1000);
 
 		return SUCCESS;
 	}
