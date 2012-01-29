@@ -465,23 +465,21 @@ int LuaCreatureObject::isAiAgent(lua_State* L) {
 
 int LuaCreatureObject::isGrouped(lua_State* L) {
 	bool val = realObject->isGrouped();
+
 	lua_pushboolean(L, val);
 
 	return 1;
 }
 
 int LuaCreatureObject::getGroupSize(lua_State* L) {
-	if (!realObject->isGrouped()) {
-		lua_pushnumber(L, 0);
+	GroupObject* group = realObject->getGroup();
+
+	Locker lock(group, realObject);
+
+	if (group != NULL) {
+		lua_pushnumber(L, group->getGroupSize());
 	} else {
-		GroupObject* group = realObject->getGroup();
-
-		if (group != NULL) {
-			lua_pushnumber(L, group->getGroupSize());
-		} else {
-			lua_pushnumber(L, 0);
-		}
-
+		lua_pushnumber(L, 0);
 	}
 
 	return 1;
@@ -501,28 +499,27 @@ int LuaCreatureObject::getGroupMember(lua_State* L) {
 	if (i < 0)
 		i = 0;
 
-	if (!realObject->isGrouped()) {
-		realObject->info("LuaCreatureObject::getGroupMember Creature is not grouped.");
+	GroupObject* group = realObject->getGroup();
+
+	if (group == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	Locker lock(group, realObject);
+
+	if (group->getGroupSize() < i) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	SceneObject* creo = group->getGroupMember(i);
+
+	if (creo == NULL) {
+		realObject->info("LuaCreatureObject::getGroupMember GroupMember is NULL.");
 		lua_pushnil(L);
 	} else {
-		GroupObject* group = realObject->getGroup();
-		if (group == NULL) {
-			realObject->info("LuaCreatureObject::getGroupMember Group is NULL.");
-			lua_pushnil(L);
-		} else {
-			if (group->getGroupSize() < i) {
-				realObject->info("LuaCreatureObject::getGroupMember Index out of Bounds apprehended.");
-				lua_pushnil(L);
-			} else {
-				SceneObject* creo = group->getGroupMember(i);
-				if (creo == NULL) {
-					realObject->info("LuaCreatureObject::getGroupMember GroupMember is NULL.");
-					lua_pushnil(L);
-				} else {
-					lua_pushlightuserdata(L, creo);
-				}
-			}
-		}
+		lua_pushlightuserdata(L, creo);
 	}
 
 	return 1;

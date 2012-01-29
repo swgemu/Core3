@@ -23,6 +23,4 @@ void LuaSuiCallback::run(CreatureObject* creature, SuiBox* sui, bool cancelPress
 		}
 
 		lua->callFunction(&startScreenPlay);
-
-		int ret = lua->getIntParameter(lua->getLuaState());
 }

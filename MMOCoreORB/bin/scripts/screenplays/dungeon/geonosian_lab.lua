@@ -112,7 +112,7 @@ function geonosian_lab_screenplay:spawnSceneObjects()
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", 38, -34, -333, 1627822, 0.707107, 0, -0.707107, 0)
 	sceneObject:_setObject(pSceneObject)
-	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 7)
+	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 8)
 	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
 end
 
