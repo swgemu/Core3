@@ -2,20 +2,24 @@
  * LootGroupMap.h
  *
  *  Created on: Jun 24, 2011
- *      Author: kyle
+ *      Author: xyborn
  */
 
 #ifndef LOOTGROUPMAP_H_
 #define LOOTGROUPMAP_H_
 
 #include "engine/engine.h"
-#include "lootgroup/LootGroup.h"
-#include "lootitems/LootItems.h"
 
-class LootGroupMap : public HashTable<String, Reference<LootGroup*> >, public Singleton<LootGroupMap>, public Object {
+class LootItemTemplate;
+//class LootGroupTemplate;
+#include "server/zone/templates/LootGroupTemplate.h"
+
+class LootGroupMap : public Singleton<LootGroupMap>, public Object {
 public:
 	static Lua* lua;
-	LootItems lootItemMap;
+
+	HashTable<String, Reference<LootItemTemplate*> > itemTemplates;
+	HashTable<String, Reference<LootGroupTemplate*> > groupTemplates;
 
 public:
 	LootGroupMap();
@@ -23,23 +27,36 @@ public:
 
 	void initialize();
 
-	LootItemTemplate* getLootItem(const String& name) {
-		return lootItemMap.get(name);
+	inline void putLootItemTemplate(const String& name, LootItemTemplate* item) {
+		itemTemplates.put(name, item);
 	}
 
-	inline int getTotalGroups() {
-		return size();
+	inline void putLootGroupTemplate(const String& name, LootGroupTemplate* group) {
+		groupTemplates.put(name, group);
 	}
 
-	inline int getTotalItems() {
-		return lootItemMap.size();
+	LootGroupTemplate* getLootGroupTemplate(const String& name) {
+		return groupTemplates.get(name);
+	}
+
+	LootItemTemplate* getLootItemTemplate(const String& name) {
+		return itemTemplates.get(name);
+	}
+
+	inline int countLootItemTemplates() {
+		return itemTemplates.size();
+	}
+
+	inline int countLootGroupTemplates() {
+		return groupTemplates.size();
 	}
 
 private:
-	//LUA
 	void registerFunctions();
 	void registerGlobals();
+
 	static int includeFile(lua_State* L);
+
 	static int addLootGroupTemplate(lua_State* L);
 	static int addLootItemTemplate(lua_State* L);
 };

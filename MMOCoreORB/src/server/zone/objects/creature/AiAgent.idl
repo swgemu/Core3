@@ -640,14 +640,6 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.getLootGroups();
 	}
 	
-	@local
-	public int getLootChance() {
-		if (npcTemplate == null)
-			return 0;
-		
-		return npcTemplate.getLootChance();
-	}
-	
 	public float getRespawnTimer() {
 		return respawnTimer;
 	}

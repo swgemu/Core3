@@ -68,8 +68,6 @@ protected:
 	unsigned int creatureBitmask;
 	unsigned int diet;
 
-	unsigned int lootChance;
-
 	Vector<String> templates;
 
 	LootGroupCollection lootgroups;
@@ -126,10 +124,6 @@ public:
 
 	inline float getLightSaber() {
 		return lightSaber;
-	}
-
-	inline int getLootChance() {
-		return lootChance;
 	}
 
 	inline bool isStalker() {

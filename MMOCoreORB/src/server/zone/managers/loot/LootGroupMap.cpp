@@ -6,19 +6,20 @@
  */
 
 #include "LootGroupMap.h"
-//#include "lootgroup/LootGroup.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/templates/LootItemTemplate.h"
+#include "server/zone/templates/LootGroupTemplate.h"
 
 Lua* LootGroupMap::lua = NULL;
 
 LootGroupMap::LootGroupMap() {
 	lua = NULL;
+
+	itemTemplates.setNullValue(NULL);
+	groupTemplates.setNullValue(NULL);
 }
 
 LootGroupMap::~LootGroupMap() {
-	// TODO Auto-generated destructor stub
-
 	delete lua;
 	lua = NULL;
 }
@@ -35,20 +36,12 @@ void LootGroupMap::initialize() {
 }
 
 void LootGroupMap::registerFunctions() {
-	//lua generic
 	lua_register(lua->getLuaState(), "addLootGroupTemplate", addLootGroupTemplate);
 	lua_register(lua->getLuaState(), "addLootItemTemplate", addLootItemTemplate);
 	lua_register(lua->getLuaState(), "includeFile", includeFile);
 }
 
 void LootGroupMap::registerGlobals() {
-	//AMAZINGSUCCESS = 0 GREATSUCCESS = 1 GOODSUCCESS = 2 MODERATESUCCESS = 3 SUCCESS = 4 MARGINALSUCCESS = 5 OK = 6 BARELYSUCCESSFUL = 7 CRITICALFAILURE = 8
-
-	lua->setGlobalInt("AMAZINGSUCCESS", CraftingManager::AMAZINGSUCCESS);
-	lua->setGlobalInt("GOODSUCCESS", CraftingManager::GOODSUCCESS);
-	lua->setGlobalInt("MODERATESUCCESS", CraftingManager::MODERATESUCCESS);
-	lua->setGlobalInt("OK", CraftingManager::OK);
-	lua->setGlobalInt("CRITICALFAILURE", CraftingManager::CRITICALFAILURE);
 }
 
 int LootGroupMap::includeFile(lua_State* L) {
@@ -60,31 +53,27 @@ int LootGroupMap::includeFile(lua_State* L) {
 }
 
 int LootGroupMap::addLootGroupTemplate(lua_State* L) {
-	String ascii = lua_tostring(L, -2);
+	String name = lua_tostring(L, -2);
 
-	Reference<LootGroup*> group = new LootGroup();
-	group->parseLua(L);
+	LuaObject obj(L);
 
-	if (instance()->put(ascii, group) != NULL) {
-		Logger::console.warning("duplicate loot group template with name " + ascii);
-	}
+	Reference<LootGroupTemplate*> group = new LootGroupTemplate(name);
+	group->readObject(&obj);
 
-	//printf("added loot group template\n");
+	instance()->putLootGroupTemplate(name, group);
 
 	return 0;
 }
 
 int LootGroupMap::addLootItemTemplate(lua_State* L) {
-	String ascii = lua_tostring(L, -2);
+	String name = lua_tostring(L, -2);
+
 	LuaObject obj(L);
 
-	Reference<LootItemTemplate*> item = new LootItemTemplate(ascii);
+	Reference<LootItemTemplate*> item = new LootItemTemplate(name);
 	item->readObject(&obj);
 
-	if (instance()->lootItemMap.put(ascii, item) != NULL)
-		Logger::console.warning("duplicate loot item template with name " + ascii);
-
-	//printf("added loot item template\n");
+	instance()->putLootItemTemplate(name, item);
 
 	return 0;
 }

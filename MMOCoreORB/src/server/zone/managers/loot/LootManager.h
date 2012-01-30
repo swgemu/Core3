@@ -173,6 +173,8 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	Reference<ObjectManager* > objectManager;
 
+	Reference<LootGroupMap* > lootGroupMap;
+
 	float exceptionalChance;
 
 	float exceptionalModifier;
@@ -180,8 +182,6 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 	float legendaryChance;
 
 	float legendaryModifier;
-
-	Reference<LootGroupMap* > lootGroupMap;
 
 	SortedVector<String> lootableMods;
 

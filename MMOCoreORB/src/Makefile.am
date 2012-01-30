@@ -205,8 +205,6 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
 				server/zone/managers/loot/LootGroupMap.cpp \
-				server/zone/managers/loot/lootgroup/LootGroup.cpp \
-				server/zone/managers/loot/lootitems/LootItems.cpp \
 				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/weather/WeatherManager.cpp \

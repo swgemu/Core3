@@ -15,28 +15,25 @@
 
 class LootItemTemplate: public LuaTemplate {
 protected:
+	String templateName;
+	String customObjectName;
+	String directObjectTemplate;
+
 	CraftingValues craftingValues;
 
-	String name;
-	String customObjectName;
 	Vector<String> customizationStringNames;
 	Vector<Vector<int> > customizationValues;
 
-	String directObjectTemplate;
-
-	int minimumLevel;
-	int maximumLevel;
-
 public:
 	LootItemTemplate(const String& name) {
-		this->name = name;
+		templateName = name;
 	}
 
 	void readObject(LuaObject* templateData) {
-		directObjectTemplate = templateData->getStringField("directObjectTemplate");
-		minimumLevel = templateData->getIntField("minimumLevel");
-		maximumLevel = templateData->getIntField("maximumLevel");
 		customObjectName = templateData->getStringField("customObjectName");
+		directObjectTemplate = templateData->getStringField("directObjectTemplate");
+
+		//TODO: At this point, we should go ahead and pull in the tangible objects stats
 
 		LuaObject craftvals = templateData->getObjectField("craftingValues");
 
@@ -67,8 +64,6 @@ public:
 
 		for (int i = 1; i <= customizationStringNamesList.getTableSize(); ++i) {
 			customizationStringNames.add(customizationStringNamesList.getStringAt(i));
-
-			//printf("adding customizationStringName\n");
 		}
 
 		customizationStringNamesList.pop();
@@ -84,8 +79,6 @@ public:
 
 			for (int j = 1; j <= values.getTableSize(); ++j) {
 				valuesVector.add(values.getIntAt(j));
-
-				//printf("adding value to valuesVector\n");
 			}
 
 			customizationValues.add(valuesVector);
@@ -114,14 +107,6 @@ public:
 
 	CraftingValues getCraftingValuesCopy() {
 		return craftingValues;
-	}
-
-	int getMaximumLevel() const {
-		return maximumLevel;
-	}
-
-	int getMinimumLevel() const {
-		return minimumLevel;
 	}
 };
 

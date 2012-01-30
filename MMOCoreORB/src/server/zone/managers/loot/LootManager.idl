@@ -64,19 +64,18 @@ class LootManager extends ManagedService implements Logger {
 	private transient ZoneServer zoneServer;
 	private transient ObjectManager objectManager;
 	
+	private transient LootGroupMap lootGroupMap;
+	
 	private transient float exceptionalChance;
 	private transient float exceptionalModifier;
 	
 	private transient float legendaryChance;
 	private transient float legendaryModifier;
 	
-	private transient LootGroupMap lootGroupMap;
-	
 	@dereferenced
-	private transient SortedVector<string> lootableMods; 
+	private transient SortedVector<string> lootableMods;
 	
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
-		
 		craftingManager = craftman;
 		objectManager = objMan;
 		zoneServer = server;

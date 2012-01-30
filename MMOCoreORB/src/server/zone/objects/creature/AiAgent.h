@@ -444,8 +444,6 @@ public:
 
 	LootGroupCollection* getLootGroups();
 
-	int getLootChance();
-
 	float getRespawnTimer();
 
 	PatrolPoint* getHomeLocation();
@@ -715,8 +713,6 @@ public:
 	CreatureAttackMap* getAttackMap();
 
 	LootGroupCollection* getLootGroups();
-
-	int getLootChance();
 
 	float getRespawnTimer();
 

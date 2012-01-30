@@ -25,11 +25,15 @@ sharnaff_bull = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	lootChance = 3300000,
 
 	templates = {"object/mobile/sharnaff_bull.iff"},
 	lootgroups = {
-		{group = "sharnaff", chance = 10000000}
+		{
+			groups = {
+				{group = "sharnaff", chance = 10000000}
+			},
+			lootChance = 3300000
+		}
 	},
 	weapons = {},
 	conversationTemplate = "",

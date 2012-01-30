@@ -10,19 +10,23 @@
 
 #include "engine/engine.h"
 
-class LootGroupEntry : public Object
-{
-	String itemTemplate;
-	int itemWeight;
+class LootGroupEntry : public Object {
+	String templateName;
+	int lootChance;
 
 public:
 	LootGroupEntry() {
-		itemWeight = 0;
+		lootChance = 0;
 	}
 
-	LootGroupEntry(const String& temp, int weight) {
-		itemTemplate = temp;
-		itemWeight = weight;
+	LootGroupEntry(const String& name, int chance) {
+		templateName = name;
+		lootChance = chance;
+	}
+
+	void readObject(LuaObject* lua) {
+		templateName = lua->getStringField("group");
+		lootChance = lua->getIntField("chance");
 	}
 
 	/**
@@ -30,9 +34,9 @@ public:
 	 * @param lge The loot group entry to compare.
 	 */
 	int compareTo(const LootGroupEntry& lge) const {
-		if (lge.itemWeight > itemWeight)
+		if (lootChance < lge.lootChance)
 			return 1;
-		else if (lge.itemWeight < itemWeight)
+		else if (lootChance > lge.lootChance)
 			return -1;
 		else
 			return 0;
@@ -42,23 +46,19 @@ public:
 		if (this == &lge)
 			return *this;
 
-		itemTemplate = lge.itemTemplate;
-		itemWeight = lge.itemWeight;
+		templateName = lge.templateName;
+		lootChance = lge.lootChance;
 
 		return *this;
 
 	}
 
-	inline String& getItemTemplate() {
-		return itemTemplate;
+	inline String& getLootGroupName() {
+		return templateName;
 	}
 
-	inline int getWeight() {
-		return itemWeight;
-	}
-
-	inline void setWeight(int weight) {
-		itemWeight = weight;
+	inline int getLootChance() {
+		return lootChance;
 	}
 };
 

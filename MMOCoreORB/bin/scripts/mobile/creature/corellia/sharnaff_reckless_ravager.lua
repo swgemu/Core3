@@ -25,11 +25,15 @@ sharnaff_reckless_ravager = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	lootChance = 4500000,
 
 	templates = {"object/mobile/sharnaff.iff"},
 	lootgroups = {
-		{group = "sharnaff", chance = 10000000}
+		{
+			groups = {
+				{group = "sharnaff", chance = 10000000}
+			},
+			lootChance = 4500000
+		}
 	},
 	weapons = {},
 	conversationTemplate = "",

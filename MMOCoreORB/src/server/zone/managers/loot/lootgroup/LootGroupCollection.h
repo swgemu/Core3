@@ -9,11 +9,44 @@
 #define LOOTGROUPCOLLECTION_H_
 
 #include "engine/engine.h"
-#include "LootGroupEntry.h"
+#include "LootGroupCollectionEntry.h"
 
-class LootGroupCollection : public SortedVector<LootGroupEntry> {
+class LootGroupCollection {
+	Vector<LootGroupCollectionEntry> entries;
+
 public:
 	LootGroupCollection() {
+	}
+
+	void readObject(LuaObject* obj) {
+		if (!obj->isValidTable())
+			return;
+
+		lua_State* L = obj->getLuaState();
+
+		for (int i = 0; i < obj->getTableSize(); ++i) {
+			lua_rawgeti(L, -1, i);
+
+			LuaObject luacollection(L);
+
+			LootGroupCollectionEntry entry;
+			entry.readObject(&luacollection);
+
+			entries.add(entry);
+
+			luacollection.pop();
+		}
+	}
+
+	inline int count() {
+		return entries.size();
+	}
+
+	LootGroupCollectionEntry* get(int i) {
+		if (i < 0 || i >= entries.size())
+			return NULL;
+
+		return &entries.get(i);
 	}
 };
 
