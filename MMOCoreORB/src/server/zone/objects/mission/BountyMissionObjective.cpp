@@ -16,11 +16,13 @@
 
 #include "server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.h"
 
+#include "server/zone/objects/mission/bountyhunterdroid/events/BountyHunterTargetTask.h"
+
 /*
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_GETDISTANCETOTARGET__,RPC_GETDIRECTIONTOTARGET__,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_SPAWNTARGETANDUPDATEWAYPOINT__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_SPAWNTARGETANDUPDATEWAYPOINT__,};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -185,33 +187,6 @@ void BountyMissionObjective::performDroidAction(int action, SceneObject* sceneOb
 		_implementation->performDroidAction(action, sceneObject, player);
 }
 
-int BountyMissionObjective::getDistanceToTarget() {
-	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETDISTANCETOTARGET__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getDistanceToTarget();
-}
-
-String BountyMissionObjective::getDirectionToTarget() {
-	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETDIRECTIONTOTARGET__);
-
-		method.executeWithAsciiReturn(_return_getDirectionToTarget);
-		return _return_getDirectionToTarget;
-	} else
-		return _implementation->getDirectionToTarget();
-}
-
 bool BountyMissionObjective::playerHasMissionOfCorrectLevel(int action) {
 	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -237,6 +212,15 @@ void BountyMissionObjective::spawnTargetAndUpdateWaypoint() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->spawnTargetAndUpdateWaypoint();
+}
+
+Vector3 BountyMissionObjective::getTargetPosition() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getTargetPosition();
 }
 
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
@@ -372,6 +356,11 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
+	if (_name == "targetTask") {
+		TypeInfo<Reference<BountyHunterTargetTask* > >::parseFromBinaryStream(&targetTask, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -435,8 +424,16 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "targetTask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<BountyHunterTargetTask* > >::toBinaryStream(&targetTask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 6 + MissionObjectiveImplementation::writeObjectMembers(stream);
+
+	return 7 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
@@ -454,6 +451,16 @@ BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(Missi
 }
 
 void BountyMissionObjectiveImplementation::finalize() {
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		if 
+	if (droidTask != NULL){
+	// server/zone/objects/mission/BountyMissionObjective.idl():  			droidTask.cancel();
+	droidTask->cancel();
+}
+	// server/zone/objects/mission/BountyMissionObjective.idl():  	}
+	if (targetTask != NULL){
+	// server/zone/objects/mission/BountyMissionObjective.idl():  			targetTask.cancel();
+	targetTask->cancel();
+}
 }
 
 void BountyMissionObjectiveImplementation::initializeTransientMembers() {
@@ -517,12 +524,6 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_:
 		performDroidAction(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
-	case RPC_GETDISTANCETOTARGET__:
-		resp->insertSignedInt(getDistanceToTarget());
-		break;
-	case RPC_GETDIRECTIONTOTARGET__:
-		resp->insertAscii(getDirectionToTarget());
-		break;
 	case RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_:
 		resp->insertBoolean(playerHasMissionOfCorrectLevel(inv->getSignedIntParameter()));
 		break;
@@ -578,14 +579,6 @@ SceneObject* BountyMissionObjectiveAdapter::getProbotDroid() {
 
 void BountyMissionObjectiveAdapter::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {
 	(static_cast<BountyMissionObjective*>(stub))->performDroidAction(action, sceneObject, player);
-}
-
-int BountyMissionObjectiveAdapter::getDistanceToTarget() {
-	return (static_cast<BountyMissionObjective*>(stub))->getDistanceToTarget();
-}
-
-String BountyMissionObjectiveAdapter::getDirectionToTarget() {
-	return (static_cast<BountyMissionObjective*>(stub))->getDirectionToTarget();
 }
 
 bool BountyMissionObjectiveAdapter::playerHasMissionOfCorrectLevel(int action) {

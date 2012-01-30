@@ -92,6 +92,10 @@ public:
 		}
 	}
 
+	~FindTargetTask() {
+		cancel();
+	}
+
 	void run() {
 		ManagedReference<CreatureObject*> strongDroidRef = droid.get();
 		ManagedReference<CreatureObject*> playerRef = player.get();
@@ -138,6 +142,18 @@ public:
 	}
 
 	void findAndTrackSuccess() {
+		ManagedReference<CreatureObject*> playerRef = player.get();
+
+		if (playerRef == NULL) {
+			return;
+		}
+
+		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
+
+		if (objectiveRef == NULL) {
+			return;
+		}
+
 		Locker locker(player);
 
 		if (objective != NULL) {
@@ -148,8 +164,8 @@ public:
 		}
 
 		StringIdChatParameter message("@mission/mission_generic:assassin_target_location");
-		message.setDI(objective->getDistanceToTarget());
-		message.setTO("mission/mission_generic", objective->getDirectionToTarget());
+		message.setDI(getDistanceToTarget());
+		message.setTO("mission/mission_generic", getDirectionToTarget());
 		player->sendSystemMessage(message);
 		if (track) {
 			if (trackingsLeft > 0) {
@@ -229,7 +245,13 @@ public:
 	}
 
 	int getTargetLevel() {
-		String targetTemplateName = objective->getMissionObject()->getTargetOptionalTemplate();
+		ManagedReference<MissionObjective*> objectiveRef = objective.get();
+
+		if (objectiveRef == NULL) {
+			return 0;
+		}
+
+		String targetTemplateName = objectiveRef->getMissionObject()->getTargetOptionalTemplate();
 
 		CreatureTemplate* creoTempl = CreatureTemplateManager::instance()->getTemplate(targetTemplateName.hashCode());
 
@@ -238,6 +260,84 @@ public:
 		} else {
 			error("Could not find template for target.");
 			return 0;
+		}
+	}
+
+	int getDistanceToTarget() {
+		ManagedReference<CreatureObject*> playerRef = player.get();
+
+		if (playerRef == NULL) {
+			return 0;
+		}
+
+		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
+
+		if (objectiveRef != NULL) {
+			Vector3 playerCoordinate;
+			playerCoordinate.setX(playerRef->getPositionX());
+			playerCoordinate.setY(playerRef->getPositionY());
+
+			Vector3 targetCoordinate = objectiveRef->getTargetPosition();
+
+			return playerCoordinate.distanceTo(targetCoordinate);
+		} else {
+			return 0;
+		}
+	}
+
+	String getDirectionToTarget() {
+		ManagedReference<CreatureObject*> playerRef = player.get();
+
+		if (playerRef == NULL) {
+			return "unknown_direction";
+		}
+
+		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
+
+		if (objectiveRef != NULL) {
+			Vector3 targetCoordinate = objectiveRef->getTargetPosition();
+			float dx = targetCoordinate.getX() - playerRef->getPositionX();
+			float dy = targetCoordinate.getY() - playerRef->getPositionY();
+
+			if (dx > 0) {
+				if (dy > 0) {
+					if (dx < dy * 0.5) {
+						return "north";
+					} else if (dx > dy * 2) {
+						return "east";
+					} else {
+						return "northeast";
+					}
+				} else {
+					if (dx < -dy * 0.5) {
+						return "south";
+					} else if (dx > -dy * 2) {
+						return "east";
+					} else {
+						return "southeast";
+					}
+				}
+			} else {
+				if (dy > 0) {
+					if (-dx < dy * 0.5) {
+						return "north";
+					} else if (-dx > dy * 2) {
+						return "west";
+					} else {
+						return "northwest";
+					}
+				} else {
+					if (-dx < -dy * 0.5) {
+						return "south";
+					} else if (-dx > -dy * 2) {
+						return "west";
+					} else {
+						return "southwest";
+					}
+				}
+			}
+		} else {
+			return "unknown_direction";
 		}
 	}
 };

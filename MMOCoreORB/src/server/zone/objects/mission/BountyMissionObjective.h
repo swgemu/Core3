@@ -95,6 +95,24 @@ class BountyHunterDroid;
 
 using namespace server::zone::objects::mission::bountyhunterdroid;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace mission {
+namespace bountyhunterdroid {
+namespace events {
+
+class BountyHunterTargetTask;
+
+} // namespace events
+} // namespace bountyhunterdroid
+} // namespace mission
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::mission::bountyhunterdroid::events;
+
 #include "server/zone/templates/TemplateReference.h"
 
 #include "engine/util/Observer.h"
@@ -144,13 +162,11 @@ public:
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 
-	int getDistanceToTarget();
-
-	String getDirectionToTarget();
-
 	bool playerHasMissionOfCorrectLevel(int action);
 
 	void spawnTargetAndUpdateWaypoint();
+
+	Vector3 getTargetPosition();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -160,8 +176,6 @@ protected:
 	BountyMissionObjective(DummyConstructorParameter* param);
 
 	virtual ~BountyMissionObjective();
-
-	String _return_getDirectionToTarget;
 
 	friend class BountyMissionObjectiveHelper;
 };
@@ -191,6 +205,8 @@ protected:
 	Reference<BountyHunterDroid* > droid;
 
 	Reference<Task* > droidTask;
+
+	Reference<BountyHunterTargetTask* > targetTask;
 
 public:
 	static const int INITSTATUS = 0;
@@ -229,13 +245,11 @@ public:
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 
-	int getDistanceToTarget();
-
-	String getDirectionToTarget();
-
 	bool playerHasMissionOfCorrectLevel(int action);
 
 	void spawnTargetAndUpdateWaypoint();
+
+	Vector3 getTargetPosition();
 
 	WeakReference<BountyMissionObjective*> _this;
 
@@ -299,10 +313,6 @@ public:
 	SceneObject* getProbotDroid();
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
-
-	int getDistanceToTarget();
-
-	String getDirectionToTarget();
 
 	bool playerHasMissionOfCorrectLevel(int action);
 

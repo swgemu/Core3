@@ -20,6 +20,7 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.h"
+#include "server/zone/objects/mission/bountyhunterdroid/events/BountyHunterTargetTask.h"
 
 void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 	npcTemplateToSpawn = sp;
@@ -146,24 +147,43 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 }
 
 void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLevel) {
+	if (getPlayerOwner() == NULL) {
+		return;
+	}
+
+	Zone* zone = getPlayerOwner()->getZone();
+
+	if (zone == NULL) {
+		return;
+	}
+
 	switch (objectiveStatus) {
 	case INITSTATUS:
 		if (informantLevel == 1) {
-			if (getPlayerOwner()->getZone()->getZoneName() == mission->getEndPlanet()) {
+			if (zone->getZoneName() == mission->getEndPlanet()) {
 				spawnTargetAndUpdateWaypoint();
 			}
+		}
+		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner());
+		if (targetTask != NULL && !targetTask->isScheduled()) {
+			targetTask->schedule(10 * 1000);
 		}
 		objectiveStatus = HASBIOSIGNATURESTATUS;
 		break;
 	case HASBIOSIGNATURESTATUS:
 		if (informantLevel > 1) {
-			if (getPlayerOwner()->getZone()->getZoneName() == mission->getEndPlanet()) {
+			if (zone->getZoneName() == mission->getEndPlanet()) {
 				spawnTargetAndUpdateWaypoint();
 			}
 		}
 		objectiveStatus = HASTALKED;
 		break;
 	case HASTALKED:
+		if (informantLevel > 1) {
+			if (zone->getZoneName() == mission->getEndPlanet()) {
+				spawnTargetAndUpdateWaypoint();
+			}
+		}
 		break;
 	default:
 		break;
@@ -171,7 +191,17 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 }
 
 void BountyMissionObjectiveImplementation::spawnTargetAndUpdateWaypoint() {
-	spawnTarget(getPlayerOwner()->getZone()->getZoneName());
+	if (getPlayerOwner() == NULL) {
+		return;
+	}
+
+	Zone* zone = getPlayerOwner()->getZone();
+
+	if (zone == NULL) {
+		return;
+	}
+
+	spawnTarget(zone->getZoneName());
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
@@ -203,60 +233,6 @@ void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneO
 	droidTask = droid->performAction(action, sceneObject, player, getMissionObject());
 }
 
-//TODO update to use current position (calculation needed).
-int BountyMissionObjectiveImplementation::getDistanceToTarget() {
-	Vector3 playerCoordinate;
-	playerCoordinate.setX(getPlayerOwner()->getPositionX());
-	playerCoordinate.setY(getPlayerOwner()->getPositionY());
-	Vector3 targetCoordinate;
-	targetCoordinate.setX(mission->getEndPositionX());
-	targetCoordinate.setY(mission->getEndPositionY());
-	return playerCoordinate.distanceTo(targetCoordinate);
-}
-
-String BountyMissionObjectiveImplementation::getDirectionToTarget() {
-	float dx = mission->getEndPositionX() - getPlayerOwner()->getPositionX();
-	float dy = mission->getEndPositionY() - getPlayerOwner()->getPositionY();
-
-	if (dx > 0) {
-		if (dy > 0) {
-			if (dx < dy * 0.5) {
-				return "north";
-			} else if (dx > dy * 2) {
-				return "east";
-			} else {
-				return "northeast";
-			}
-		} else {
-			if (dx < -dy * 0.5) {
-				return "south";
-			} else if (dx > -dy * 2) {
-				return "east";
-			} else {
-				return "southeast";
-			}
-		}
-	} else {
-		if (dy > 0) {
-			if (-dx < dy * 0.5) {
-				return "north";
-			} else if (-dx > dy * 2) {
-				return "west";
-			} else {
-				return "northwest";
-			}
-		} else {
-			if (-dx < -dy * 0.5) {
-				return "south";
-			} else if (-dx > -dy * 2) {
-				return "west";
-			} else {
-				return "southwest";
-			}
-		}
-	}
-}
-
 bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int action) {
 	int levelNeeded = 2;
 	if (action == BountyHunterDroid::CALLDROID || action == BountyHunterDroid::TRANSMITBIOLOGICALSIGNATURE) {
@@ -264,4 +240,13 @@ bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int ac
 	}
 
 	return mission->getDifficultyLevel() >= levelNeeded;
+}
+
+Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {
+	if (targetTask != NULL) {
+		return targetTask->getTargetPosition();
+	}
+
+	Vector3 empty;
+	return empty;
 }
