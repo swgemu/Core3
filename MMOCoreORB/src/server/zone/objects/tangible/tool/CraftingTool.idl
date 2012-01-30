@@ -165,7 +165,7 @@ class CraftingTool extends ToolTangibleObject {
 	
 	private native void sendStart(CreatureObject player);
 	
-	private native void sendToolStartFailure(CreatureObject player);
+	public native void sendToolStartFailure(CreatureObject player);
 	
 	public native void cancelCraftingSession(CreatureObject player);
 	

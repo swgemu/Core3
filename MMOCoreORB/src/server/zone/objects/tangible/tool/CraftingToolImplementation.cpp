@@ -334,9 +334,9 @@ void CraftingToolImplementation::clearCraftingSession() {
 
 		if (manufactureSchematic->getParent() == _this) {
 			//removeObject(manufactureSchematic);
-			manufactureSchematic->destroyObjectFromWorld(true);
 			manufactureSchematic->setDraftSchematic(NULL, NULL);
 			manufactureSchematic->cleanupIngredientSlots();
+			manufactureSchematic->destroyObjectFromWorld(true);
 		}
 
 		manufactureSchematic = NULL;

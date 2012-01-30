@@ -59,11 +59,34 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
+		ManagedReference<SceneObject* > object = creature->getZoneServer()->getObject(target);
+
+		if(object == NULL || !creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		ManagedReference<CraftingTool*> craftingTool = NULL;
+
+		/// Logic for if target oid is crafting tool
+		if(object->isCraftingTool()) {
+			craftingTool = cast<CraftingTool*>( object.get());
+		}
+
+		if (!checkStateMask(creature)) {
+			if(craftingTool != NULL && creature->isPlayerCreature()) {
+				creature->sendSystemMessage("ui_craft", "err_start");
+				craftingTool->sendToolStartFailure(creature);
+			}
+			return INVALIDSTATE;
+		}
+
+		if (!checkInvalidLocomotions(creature)) {
+			if(craftingTool != NULL && creature->isPlayerCreature()) {
+				creature->sendSystemMessage("ui_craft", "err_start");
+				craftingTool->sendToolStartFailure(creature);
+			}
 			return INVALIDLOCOMOTION;
+		}
 
 		/**
 		 * This command seems to have no arguments
@@ -71,15 +94,8 @@ public:
 		 * or station clicked on
 		 */
 
-		ManagedReference<SceneObject* > object = creature->getZoneServer()->getObject(target);
-
-		if(object == NULL || !creature->isPlayerCreature())
-			return INVALIDTARGET;
-
 		/// Logic for if target oid is crafting tool
-		if(object->isCraftingTool()) {
-
-			CraftingTool* craftingTool = cast<CraftingTool*>( object.get());
+		if(craftingTool != NULL) {
 
 			Locker locker(craftingTool);
 

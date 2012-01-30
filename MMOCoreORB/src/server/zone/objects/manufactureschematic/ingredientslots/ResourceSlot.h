@@ -142,7 +142,7 @@ public:
 
 				/*if(contents->getParent() != NULL)
 					contents->getParent()->removeObject(contents, true);*/
-				craftingTool->transferObject(contents, -1, false);
+				craftingTool->transferObject(contents, -1, true);
 
 				if(previousParent != NULL) {
 					//previousParent->removeObject(incomingResource, true);
@@ -202,9 +202,15 @@ public:
 				if (resource->getSpawnName() == contents->getSpawnName()) {
 					int newStackSize = resource->getQuantity() + contents->getQuantity();
 
-					resource->setQuantity(newStackSize);
-					contents = NULL;
-					return true;
+					if(newStackSize <= ResourceContainer::MAXSIZE) {
+						resource->setQuantity(newStackSize);
+						contents = NULL;
+						return true;
+					} else {
+						resource->setQuantity(ResourceContainer::MAXSIZE);
+						contents->setQuantity(newStackSize - ResourceContainer::MAXSIZE);
+					}
+
 				}
 			}
 		}

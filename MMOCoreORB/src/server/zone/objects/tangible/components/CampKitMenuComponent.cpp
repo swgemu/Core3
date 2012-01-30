@@ -98,11 +98,11 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-//		int playerSkill = player->getSkillMod("camp");
-//		if(playerSkill < campStructureData->getSkillRequired()) {
-//			player->sendSystemMessage("camp", "sys_nsf_skill");
-//			return 0;
-//		}
+		int playerSkill = player->getSkillMod("camp");
+		if(playerSkill < campStructureData->getSkillRequired()) {
+			player->sendSystemMessage("camp", "sys_nsf_skill");
+			return 0;
+		}
 
 		if(player->isInCombat()) {
 			player->sendSystemMessage("camp", "sys_not_in_combat");
@@ -119,7 +119,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		if(!player->isStanding()) {
+		if(!player->isStanding() || player->isMounted()) {
 			player->sendSystemMessage("camp", "error_cmd_fail");
 			return 0;
 		}

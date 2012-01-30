@@ -181,6 +181,8 @@ public:
 
 	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation = NULL);
 
+	void sendToolStartFailure(CreatureObject* player);
+
 	void cancelCraftingSession(CreatureObject* player);
 
 	void clearCraftingSession();
@@ -323,9 +325,9 @@ public:
 private:
 	void sendStart(CreatureObject* player);
 
+public:
 	void sendToolStartFailure(CreatureObject* player);
 
-public:
 	void cancelCraftingSession(CreatureObject* player);
 
 	void clearCraftingSession();
@@ -448,6 +450,8 @@ public:
 	ManufactureSchematic* getManufactureSchematic();
 
 	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation);
+
+	void sendToolStartFailure(CreatureObject* player);
 
 	void cancelCraftingSession(CreatureObject* player);
 
