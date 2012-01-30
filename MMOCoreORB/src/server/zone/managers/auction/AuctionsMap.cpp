@@ -636,8 +636,12 @@ AuctionItem* AuctionsMapImplementation::getBazaarItem(int index) {
 bool AuctionsMapImplementation::checkInStockroom(unsigned long long objectID) {
 	// server/zone/managers/auction/AuctionsMap.idl():  		AuctionItem item = vendorItems.get(objectID);
 	AuctionItem* item = (&vendorItems)->get(objectID);
-	// server/zone/managers/auction/AuctionsMap.idl():  		return item.isInStockroom();
+	// server/zone/managers/auction/AuctionsMap.idl():  			return false;
+	if (item != NULL)	// server/zone/managers/auction/AuctionsMap.idl():  			return item.isInStockroom();
 	return item->isInStockroom();
+
+	else 	// server/zone/managers/auction/AuctionsMap.idl():  			return false;
+	return false;
 }
 
 VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMapImplementation::getBazaarItems() {

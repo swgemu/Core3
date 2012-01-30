@@ -66,52 +66,45 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->isPlayerCreature())
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isCreatureObject()) {
-			creature->sendSystemMessage("You can only diagnose a player or a creature.");
+		//TODO: Can diagnose pets too.
+		if (object == NULL || !object->isPlayerCreature()) {
+			creature->sendSystemMessage("@healing_response:healing_response_b6"); //You cannot diagnose that.
 			return GENERALERROR;
 		}
 
-		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
+		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
 
 		Locker clocker(creatureTarget, creature);
 
 		if (!creatureTarget->isInRange(creature, range))
 			return TOOFAR;
 
+		/* TODO: Couldn't find documentation stating this, but it seems a bit pointless.
 		if (creatureTarget == creature) {
 			creature->sendSystemMessage("You can't diagnose yourself.");
 			return GENERALERROR;
-		}
+		}*/
 
-		/*TODO: Close an already opened Diagnose box before sending a new one??
-				if (player->hasSuiBox(SuiWindowType::DIAGNOSE))
-					player->removeSuiBox(SuiWindowType::DIAGNOSE);
-		 */
+		//TODO: Close already opened Sui Box.
+		ghost->closeSuiWindowType(SuiWindowType::MEDIC_DIAGNOSE);
 
-		/*UnicodeString UnicodeStringName = UnicodeString("");
-		UnicodeStringName = creatureTarget->getFirstName();*/
-		StringId* objectName = creatureTarget->getObjectName();
+		ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::MEDIC_DIAGNOSE);
 
-		String targetName = objectName->getCustomString().toString();
+		String patient = creatureTarget->getObjectName()->getDisplayedName();
 
-		if (targetName.isEmpty()) {
-			 objectName->getFullPath(targetName);
-		}
-
-		CreatureObject* player = cast<CreatureObject*>(creature);
-
-		ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::MEDIC_DIAGNOSE);
 		StringBuffer title;
-		title << "Patient " << targetName.toCharArray();
+		title << "Patient " << patient;
 		sui->setPromptTitle(title.toString());
 
 		StringBuffer text;
-		text << "Below is a listing of the wound and Battle Fatigue levels of " << targetName.toCharArray() << ". Wounds are healed through /tendwound or use of wound Medpacks. High levels of Battle Fatigue can inhibit the healing process, and Battle Fatigue can only be healed by the patient choosing to watch performing entertainers.";
+		text << "Below is a listing of the wound and Battle Fatigue levels of " << patient << ". Wounds are healed through /tendwound or use of wound Medpacks. High levels of Battle Fatigue can inhibit the healing process, and Battle Fatigue can only be healed by the patient choosing to watch performing entertainers.";
 		sui->setPromptText(text.toString());
 		sui->setCancelButton(false, "");
 
@@ -155,8 +148,8 @@ public:
 		battlefatigue << "Battle Fatigue -- " << creatureTarget->getShockWounds();
 		sui->addMenuItem(battlefatigue.toString());
 
-		player->getPlayerObject()->addSuiBox(sui);
-		player->sendMessage(sui->generateMessage());
+		ghost->addSuiBox(sui);
+		creature->sendMessage(sui->generateMessage());
 
 		return SUCCESS;
 	}
