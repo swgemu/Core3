@@ -53,6 +53,7 @@ object_tangible_base_tangible_base = object_tangible_base_shared_tangible_base:n
 	optionsBitmask = 256, --Default all objects to not display ham bars.
 	pvpStatusBitmask = 0,
 	objectMenuComponent = "TangibleObjectMenuComponent",
+	attributeListComponent = "AttributeListComponent",
 
 	sliceable = 0
 }
