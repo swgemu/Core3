@@ -211,7 +211,7 @@ void SceneObjectImplementation::createComponents() {
 		attributeListComponent = ComponentManager::instance()->getComponent<AttributeListComponent*>(attributeListComponentName);
 
 		if (attributeListComponent == NULL) {
-			error("attributeList component null for " + templateObject->getFullTemplateString());
+			info("attributeList component null for " + templateObject->getFullTemplateString());
 		}
 
 		createContainerComponent();
