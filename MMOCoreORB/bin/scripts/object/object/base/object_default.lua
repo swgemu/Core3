@@ -49,6 +49,7 @@ clientTemplateFileName = "",
 	 
 	 zoneComponent = "ZoneComponent",
 	 objectMenuComponent = "ObjectMenuComponent",
+	 attributeListComponent = "AttributeListComponent",
 	 containerComponent = "ContainerComponent"
 }
 

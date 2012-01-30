@@ -85,7 +85,7 @@ protected:
 	PortalLayout* portalLayout;
 	AppearanceTemplate* appearanceTemplate;
 	bool loadedPortalLayout, loadedAppearanceTemplate;
-	String containerComponent, zoneComponent, objectMenuComponent;
+	String containerComponent, zoneComponent, objectMenuComponent, attributeListComponent;
 
 	SortedVector<String> loadedDerivedFiles;
 
@@ -343,6 +343,10 @@ public:
 
     inline String getObjectMenuComponent() {
     	return objectMenuComponent;
+    }
+
+    inline String getAttributeListComponent() {
+    	return attributeListComponent;
     }
 
 	inline PlanetMapCategory* getPlanetMapCategory() const {

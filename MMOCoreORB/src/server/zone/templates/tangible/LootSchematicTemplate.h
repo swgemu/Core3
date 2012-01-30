@@ -15,12 +15,14 @@ protected:
 
 	String targetDraftSchematic;
 	int targetUseCount;
+	String requiredSkill;
 
 
 public:
 	LootSchematicTemplate() {
 		targetDraftSchematic = "";
 		targetUseCount = 1;
+		requiredSkill = "";
 	}
 
 	~LootSchematicTemplate() {
@@ -32,10 +34,16 @@ public:
 
 		targetDraftSchematic = templateData->getStringField("targetDraftSchematic");
 		targetUseCount = templateData->getIntField("targetUseCount");
+		requiredSkill = templateData->getStringField("requiredSkill");
+
 	}
 
 	const String& getTargetDraftSchematic() {
 		return targetDraftSchematic;
+	}
+
+	const String& getRequiredSkill() {
+		return requiredSkill;
 	}
 
 	int getTargetUseCount() {

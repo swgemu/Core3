@@ -44,6 +44,7 @@
 object_tangible_loot_loot_schematic_geonosian_acklay_bone_armor_schematic = object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic:new {
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = "LootSchematicMenuComponent",
+	attributeListComponent = "LootSchematicAttributeListComponent",
 	targetDraftSchematic = "object/draft_schematic/armor/armor_segment_bone_acklay.iff",
 	targetUseCount = 1
 }

@@ -49,6 +49,7 @@ object_object_base_base_object = object_object_base_shared_base_object:new {
 	 
 	 zoneComponent = "ZoneComponent",
 	 objectMenuComponent = "ObjectMenuComponent",
+	 attributeListComponent = "AttributeListComponent",
 	 containerComponent = "ContainerComponent"
 }
 

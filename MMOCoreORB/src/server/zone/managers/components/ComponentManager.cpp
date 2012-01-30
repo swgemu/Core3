@@ -12,6 +12,7 @@
 #include "server/zone/objects/tangible/components/LootContainerComponent.h"
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
+#include "server/zone/objects/scene/components/AttributeListComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
@@ -26,6 +27,7 @@
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
 #include "server/zone/objects/tangible/components/DoorControlTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/ArtCrateMenuComponent.h"
+#include "server/zone/objects/tangible/components/LootSchematicAttributeListComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 
 ComponentManager::ComponentManager() {
@@ -58,4 +60,7 @@ ComponentManager::ComponentManager() {
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 
 	components.put("HologrindHolocronMenuComponent", new HologrindHolocronMenuComponent());
+
+	components.put("AttributeListComponent", new AttributeListComponent());
+	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());
 }

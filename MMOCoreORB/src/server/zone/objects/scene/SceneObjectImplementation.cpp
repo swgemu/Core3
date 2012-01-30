@@ -207,6 +207,9 @@ void SceneObjectImplementation::createComponents() {
 		objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
 		//objectMenuComponent->initialize(_this);
 
+		String attributeListComponentName = templateObject->getAttributeListComponent();
+		attributeListComponent = ComponentManager::instance()->getComponent<AttributeListComponent*>(attributeListComponentName);
+
 		createContainerComponent();
 	} else
 		error("NULL TEMPLATE OBJECT");
@@ -451,12 +454,13 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
-	info("sending attribute list");
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 
 	try {
-		fillAttributeList(alm, object);
+
+		attributeListComponent->fillAttributeList(alm, object, _this);
+
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();

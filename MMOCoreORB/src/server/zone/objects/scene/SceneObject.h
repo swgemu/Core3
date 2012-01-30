@@ -205,6 +205,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 
+#include "server/zone/objects/scene/components/AttributeListComponent.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -764,6 +766,8 @@ protected:
 	Reference<ZoneComponent* > zoneComponent;
 
 	Reference<ObjectMenuComponent* > objectMenuComponent;
+
+	Reference<AttributeListComponent* > attributeListComponent;
 
 	Reference<ContainerComponent* > containerComponent;
 

@@ -24,7 +24,28 @@ void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	uint32 gameObjectType = sceneObject->getGameObjectType();
 
-	menuResponse->addRadialMenuItem(50, 3, "@loot_schematic:use_schematic"); //Learn Schematic
+	SharedObjectTemplate* templateData =
+			TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
+
+	if(templateData == NULL) {
+		error("No template for: " + sceneObject->getServerObjectCRC());
+		return;
+	}
+
+	LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(templateData);
+
+	if (schematicData == NULL) {
+		error("No LootSchematicTemplate for: " + sceneObject->getServerObjectCRC());
+		return;
+	}
+
+	String skillNeeded = schematicData->getRequiredSkill();
+
+	if((skillNeeded.isEmpty() || player->hasSkill(skillNeeded))) {
+		menuResponse->addRadialMenuItem(50, 3, "@loot_schematic:use_schematic"); //Learn Schematic
+	}
+
+
 
 }
 
@@ -50,6 +71,12 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		if (schematicData == NULL) {
 			error("No LootSchematicTemplate for: " + sceneObject->getServerObjectCRC());
+			return 0;
+		}
+
+		String skillNeeded = schematicData->getRequiredSkill();
+
+		if((!skillNeeded.isEmpty() && !player->hasSkill(skillNeeded))) {
 			return 0;
 		}
 

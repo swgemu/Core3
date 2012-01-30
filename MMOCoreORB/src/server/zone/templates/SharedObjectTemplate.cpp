@@ -157,6 +157,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		zoneComponent = Lua::getStringParameter(state);
 	} else if (varName == "objectMenuComponent") {
 		objectMenuComponent = Lua::getStringParameter(state);
+	} else if (varName == "attributeListComponent") {
+		attributeListComponent = Lua::getStringParameter(state);
 	} else if (varName == "containerComponent") {
 		containerComponent = Lua::getStringParameter(state);
 	} else if (varName == "totalCellNumber") {
