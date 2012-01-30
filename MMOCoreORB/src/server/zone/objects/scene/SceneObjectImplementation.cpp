@@ -210,6 +210,10 @@ void SceneObjectImplementation::createComponents() {
 		String attributeListComponentName = templateObject->getAttributeListComponent();
 		attributeListComponent = ComponentManager::instance()->getComponent<AttributeListComponent*>(attributeListComponentName);
 
+		if (attributeListComponent == NULL) {
+			error("attributeList component null for " + templateObject->getFullTemplateString());
+		}
+
 		createContainerComponent();
 	} else
 		error("NULL TEMPLATE OBJECT");
