@@ -24,7 +24,7 @@ public:
 
 		lua_State* L = obj->getLuaState();
 
-		for (int i = 0; i < obj->getTableSize(); ++i) {
+		for (int i = 1; i <= obj->getTableSize(); ++i) {
 			lua_rawgeti(L, -1, i);
 
 			LuaObject luacollection(L);

@@ -21,7 +21,7 @@ axkva_min = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -30,8 +30,7 @@ axkva_min = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "axkva_min", chance = 500000},
-				{group = "nightsister_crystals_4", chance = 1400000},
+				{group = "nightsister_crystals_4", chance = 1900000},
 				{group = "nightsister_common", chance = 5000000},
 				{group = "pistols", chance = 1000000},
 				{group = "rifles", chance = 1000000},
@@ -39,6 +38,12 @@ axkva_min = Creature:new {
 				{group = "clothing_attachments", chance = 550000}
 			},
 			lootChance = 8000000
+		},
+		{
+			groups = {
+				{group = "axkva_min", chance = 10000000},
+			},
+			lootChance = 7500000
 		}
 	},
 	weapons = {"mixed_force_weapons"},

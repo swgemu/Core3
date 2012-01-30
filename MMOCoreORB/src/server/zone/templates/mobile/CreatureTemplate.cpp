@@ -123,7 +123,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	temps.pop();
 
-	LuaObject lootCollections = templateData->getObjectField("lootCollections");
+	LuaObject lootCollections = templateData->getObjectField("lootGroups");
 	lootgroups.readObject(&lootCollections);
 	lootCollections.pop();
 
