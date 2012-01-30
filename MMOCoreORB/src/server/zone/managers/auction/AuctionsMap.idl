@@ -188,7 +188,11 @@ class AuctionsMap extends ManagedObject {
 
 	public boolean checkInStockroom(unsigned long objectID) {
 		AuctionItem item = vendorItems.get(objectID);
-		return item.isInStockroom();
+		
+		if (item != null)
+			return item.isInStockroom();
+		else
+			return false;
 	}
 	
 	@local
