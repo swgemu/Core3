@@ -141,8 +141,12 @@ public:
 		Locker locker(player);
 
 		if (objective != NULL) {
+			if (objective->getPlayerOwner() == NULL)
+				return;
+
 			objective->updateMissionStatus(3);
 		}
+
 		StringIdChatParameter message("@mission/mission_generic:assassin_target_location");
 		message.setDI(objective->getDistanceToTarget());
 		message.setTO("mission/mission_generic", objective->getDirectionToTarget());
