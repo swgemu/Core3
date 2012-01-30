@@ -27,7 +27,7 @@ bodyguard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_desert_demon_bodyguard.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

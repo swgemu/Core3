@@ -27,7 +27,7 @@ grungy_donkuwah_laborer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dulok_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

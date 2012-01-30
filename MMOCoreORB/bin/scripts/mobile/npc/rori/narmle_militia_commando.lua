@@ -27,7 +27,7 @@ narmle_militia_commando = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_narmle_commando_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

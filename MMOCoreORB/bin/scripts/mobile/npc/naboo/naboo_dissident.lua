@@ -26,7 +26,7 @@ naboo_dissident = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	attacks = {}
 }

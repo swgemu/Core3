@@ -27,7 +27,7 @@ garyns_marauder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_garyn_marauder_zabrak_male_01.iff","object/mobile/dressed_garyn_marauder_zabrak_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

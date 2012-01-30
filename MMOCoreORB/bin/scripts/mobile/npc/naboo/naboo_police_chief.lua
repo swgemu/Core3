@@ -27,7 +27,7 @@ naboo_police_chief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_naboo_police_chief.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ greater_shaupaut = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/greater_shaupaut.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

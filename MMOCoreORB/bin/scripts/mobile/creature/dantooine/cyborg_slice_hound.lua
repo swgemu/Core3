@@ -27,7 +27,7 @@ cyborg_slice_hound = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/warren_cyborg_slicehound.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

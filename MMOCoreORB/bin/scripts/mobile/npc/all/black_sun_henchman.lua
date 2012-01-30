@@ -27,7 +27,7 @@ black_sun_henchman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_black_sun_henchman.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

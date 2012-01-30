@@ -27,7 +27,7 @@ giant_decay_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/decay_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ swarming_kliknik = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

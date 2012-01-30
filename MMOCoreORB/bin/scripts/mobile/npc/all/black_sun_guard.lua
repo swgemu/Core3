@@ -27,7 +27,7 @@ black_sun_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_black_sun_guard.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

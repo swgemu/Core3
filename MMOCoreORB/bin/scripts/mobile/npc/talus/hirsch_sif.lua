@@ -26,7 +26,7 @@ hirsch_sif = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"sif_weapons"},
 	attacks = {}
 }

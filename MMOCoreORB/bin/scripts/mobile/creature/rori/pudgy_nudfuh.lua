@@ -27,7 +27,7 @@ pudgy_nudfuh = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nudfuh.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

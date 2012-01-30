@@ -27,7 +27,7 @@ oozing_dung_mite_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dung_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

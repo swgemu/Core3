@@ -23,13 +23,11 @@ darth_vader = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 0,
 	diet = HERBIVORE,
-	lootChance = 10000000,
 
 	templates = {"object/mobile/darth_vader.iff"},
-	lootgroups = {
-		{group = "darth_vader", chance = 10000000}
+	lootGroups = {
 	},
 	weapons = {"darth_vader_weapons"},
 	conversationTemplate = "",

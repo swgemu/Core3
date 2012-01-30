@@ -27,7 +27,7 @@ malkloc = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/malkloc.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

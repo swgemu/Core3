@@ -27,7 +27,7 @@ lost_aqualish_outrider = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lost_aqualish_outrider_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

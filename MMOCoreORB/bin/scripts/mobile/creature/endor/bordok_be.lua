@@ -27,7 +27,7 @@ bordok_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bordok_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

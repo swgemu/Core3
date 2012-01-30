@@ -27,7 +27,7 @@ talus_liberation_party_volunteer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_talus_sif_mercenary_trand_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

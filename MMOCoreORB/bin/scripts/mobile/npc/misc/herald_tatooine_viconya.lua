@@ -28,7 +28,7 @@ herald_tatooine_viconya = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ ankura_gungan = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/ankura_gungan.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ liane = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_naboo_liane.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

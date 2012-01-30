@@ -25,13 +25,17 @@ bull_rancor = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	lootChance = 3950000,
 
 	templates = {"object/mobile/bull_rancor.iff"},
-	lootgroups = {
-		{group = "rancor_common", chance = 3300000},
-		{group = "pistols", chance = 3300000},
-		{group = "rifles", chance = 3400000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "rancor_common", chance = 3300000},
+				{group = "pistols", chance = 3300000},
+				{group = "rifles", chance = 3400000}
+			},
+			lootChance = 3950000
+		}
 	},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,7 +27,7 @@ crafty_korga_scout = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/object/mobile/object/mobile/dulok_male.iff.iff.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

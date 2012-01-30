@@ -27,7 +27,7 @@ gorr_ebelt = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gorr_ebelt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

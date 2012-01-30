@@ -27,7 +27,7 @@ crimson_blurrg = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {

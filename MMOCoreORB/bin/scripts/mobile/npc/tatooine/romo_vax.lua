@@ -28,7 +28,7 @@ romo_vax = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ borvos_soldier = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_borvos_soldier.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

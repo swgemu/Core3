@@ -26,7 +26,7 @@ jan_dodonna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

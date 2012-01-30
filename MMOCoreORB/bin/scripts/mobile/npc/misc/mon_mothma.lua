@@ -27,7 +27,7 @@ mon_mothma = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dantari_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

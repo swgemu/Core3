@@ -27,7 +27,7 @@ drall_guard_coa2 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/drall_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

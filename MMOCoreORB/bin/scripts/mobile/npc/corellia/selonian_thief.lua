@@ -27,7 +27,7 @@ selonian_thief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_selonian_m_04.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

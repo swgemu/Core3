@@ -27,7 +27,7 @@ kunga_harvester = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dantari_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = {

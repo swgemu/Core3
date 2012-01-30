@@ -34,7 +34,7 @@ tutorial_commoner = Creature:new {
 				"object/mobile/dressed_commoner_old_zabrak_male_02.iff",
 				"object/mobile/dressed_commoner_tatooine_nikto_male_05.iff",
 				},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
@@ -73,7 +73,7 @@ tutorial_commoner_1 = Creature:new {
 	templates = {
 				"object/mobile/dressed_commoner_old_human_female_02.iff",
 				},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
@@ -112,7 +112,7 @@ tutorial_commoner_2 = Creature:new {
 	templates = {
 				"object/mobile/dressed_commoner_old_zabrak_male_02.iff",
 				},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
@@ -151,7 +151,7 @@ tutorial_commoner_3 = Creature:new {
 	templates = {
 				"object/mobile/dressed_commoner_naboo_moncal_male_02.iff",
 				},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
@@ -196,7 +196,7 @@ tutorial_commoner_talking = Creature:new {
 				"object/mobile/dressed_commoner_old_zabrak_male_02.iff",
 				"object/mobile/dressed_commoner_tatooine_nikto_male_05.iff",
 				},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "commoner_convotemplate",--dont change this

@@ -27,7 +27,7 @@ ephant_mon = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/ephant_mon.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

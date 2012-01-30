@@ -27,7 +27,7 @@ governor_ian_lago = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_naboo_govenor_ian_lago.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

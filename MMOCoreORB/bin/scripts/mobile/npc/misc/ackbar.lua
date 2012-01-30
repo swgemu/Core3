@@ -27,7 +27,7 @@ ackbar = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ackbar.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ aakuan_steward = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aakuan_steward_human_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
 	attacks = {

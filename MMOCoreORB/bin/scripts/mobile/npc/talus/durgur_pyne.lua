@@ -28,7 +28,7 @@ durgur_pyne = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_durgur_pyne.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ fed_dub_commander = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fed_dub_commander_bith_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ chertyl_ruluwoor = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/human_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

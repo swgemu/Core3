@@ -27,7 +27,7 @@ falumpaset_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/falumpaset_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -26,7 +26,7 @@ panic_npc_1 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
 	conversationTemplate = "panic_npc_1_convotemplate",--dont change this

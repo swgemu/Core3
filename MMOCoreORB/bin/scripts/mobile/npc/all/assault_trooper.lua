@@ -27,7 +27,7 @@ assault_trooper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_assault_trooper_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"st_assault_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ greeata = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/greeata.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

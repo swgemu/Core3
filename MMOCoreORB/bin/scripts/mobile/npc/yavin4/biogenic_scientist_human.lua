@@ -26,10 +26,9 @@ biogenic_scientist_human = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 392,
 	diet = HERBIVORE,
-	lootChance = 0,
 
 	templates = {"object/mobile/dressed_doctor_trainer_human_female_01.iff", "object/mobile/dressed_combatmedic_trainer_human_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {}

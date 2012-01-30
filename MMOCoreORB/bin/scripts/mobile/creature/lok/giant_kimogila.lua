@@ -27,7 +27,7 @@ giant_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_kimogila.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

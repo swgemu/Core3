@@ -27,7 +27,7 @@ lost_aqualish_marshall = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lost_aqualish_marshal_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

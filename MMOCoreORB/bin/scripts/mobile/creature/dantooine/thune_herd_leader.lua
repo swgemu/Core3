@@ -27,7 +27,7 @@ thune_herd_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/thune_herd_leader.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

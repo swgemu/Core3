@@ -27,7 +27,7 @@ champhra_biahin = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_champhra_biahin.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

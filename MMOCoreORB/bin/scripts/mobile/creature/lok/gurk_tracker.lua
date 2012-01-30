@@ -27,7 +27,7 @@ gurk_tracker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurk.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

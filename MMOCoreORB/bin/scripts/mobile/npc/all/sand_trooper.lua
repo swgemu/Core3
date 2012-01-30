@@ -27,7 +27,7 @@ sand_trooper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_sand_trooper_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	attacks = {

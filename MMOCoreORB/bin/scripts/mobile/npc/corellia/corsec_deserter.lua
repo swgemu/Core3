@@ -27,7 +27,7 @@ corsec_deserter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsec_detective_human_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ lost_aqualish_warrior = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lost_aqualish_warrior_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

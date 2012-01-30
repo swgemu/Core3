@@ -27,7 +27,7 @@ stormtrooper_major = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_major_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	attacks = {

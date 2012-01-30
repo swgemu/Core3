@@ -27,7 +27,7 @@ binayre_pirate = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_binayre_pirate_zabrak_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

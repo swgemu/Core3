@@ -27,7 +27,7 @@ crackdown_imperial_army_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_captain_white_white.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

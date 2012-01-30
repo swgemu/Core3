@@ -26,7 +26,7 @@ scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

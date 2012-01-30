@@ -27,7 +27,7 @@ kobola_assassin = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_kobola_assassin_zabrak_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

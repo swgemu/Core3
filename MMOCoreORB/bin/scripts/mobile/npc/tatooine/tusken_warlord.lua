@@ -25,13 +25,17 @@ tusken_warlord = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 6000000,
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootgroups = {
-		{group = "tusken", chance = 6500000},
-		{group = "rifles", chance = 1750000},
-		{group = "pistols", chance = 1750000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "tusken", chance = 6500000},
+				{group = "rifles", chance = 1750000},
+				{group = "pistols", chance = 1750000}
+			},
+			lootChance = 6000000
+		}
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",

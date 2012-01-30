@@ -27,7 +27,7 @@ nyms_pirate = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_pirate_weak_hum_f.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ singing_mountain_dan_scout = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_scout.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {

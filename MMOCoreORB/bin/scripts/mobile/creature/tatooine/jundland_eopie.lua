@@ -27,7 +27,7 @@ jundland_eopie = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/eopie.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

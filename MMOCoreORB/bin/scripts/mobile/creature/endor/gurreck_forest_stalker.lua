@@ -27,7 +27,7 @@ gurreck_forest_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

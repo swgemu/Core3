@@ -27,7 +27,7 @@ narglatch_cub = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/narglatch_cub.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

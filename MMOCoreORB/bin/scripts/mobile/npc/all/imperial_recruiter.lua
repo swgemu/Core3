@@ -26,7 +26,7 @@ imperial_recruiter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_officer_m_2.iff","object/mobile/dressed_imperial_officer_m_3.iff","object/mobile/dressed_imperial_officer_m_4.iff","object/mobile/dressed_imperial_officer_m_5.iff","object/mobile/dressed_imperial_officer_m_6.iff","object/mobile/dressed_imperial_officer_f.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
 	conversationTemplate = "imperial_recruiter_convotemplate",

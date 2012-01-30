@@ -26,7 +26,7 @@ seasoned_panshee_warrior = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	attacks = {}
 }

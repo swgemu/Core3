@@ -27,7 +27,7 @@ narmle_militia_commander = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_narmle_commander_rodian_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

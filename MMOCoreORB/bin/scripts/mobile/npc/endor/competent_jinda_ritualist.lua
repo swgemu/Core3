@@ -27,7 +27,7 @@ competent_jinda_ritualist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jinda_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

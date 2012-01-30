@@ -27,7 +27,7 @@ vicious_squall = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/squall.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

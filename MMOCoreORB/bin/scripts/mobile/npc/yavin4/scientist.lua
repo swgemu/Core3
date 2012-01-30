@@ -27,7 +27,7 @@ scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_geonosian_scientist_02.iff","object/mobile/dressed_geonosian_scientist_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

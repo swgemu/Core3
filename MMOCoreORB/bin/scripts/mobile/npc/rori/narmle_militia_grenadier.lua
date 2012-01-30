@@ -27,7 +27,7 @@ narmle_militia_grenadier = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_narmle_grenadier_zabrak_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

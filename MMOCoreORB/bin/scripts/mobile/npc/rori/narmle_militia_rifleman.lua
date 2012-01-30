@@ -27,7 +27,7 @@ narmle_militia_rifleman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_narmle_rifleman_rodian_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

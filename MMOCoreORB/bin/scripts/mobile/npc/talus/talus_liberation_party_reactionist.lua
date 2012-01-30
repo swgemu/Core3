@@ -27,7 +27,7 @@ talus_liberation_party_reactionist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_talus_sif_mercenary_trand_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ reclusive_cavern_spider_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {

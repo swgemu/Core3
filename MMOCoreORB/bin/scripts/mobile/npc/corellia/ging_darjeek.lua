@@ -27,7 +27,7 @@ ging_darjeek = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ging_darjeek.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -26,7 +26,7 @@ veteran_compforce_trooper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	attacks = {}
 }

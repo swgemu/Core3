@@ -27,7 +27,7 @@ kobola_smuggler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_kobola_smuggler_trandoshan_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

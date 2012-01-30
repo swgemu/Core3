@@ -27,7 +27,7 @@ wounded_villager = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fs_village_sad.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

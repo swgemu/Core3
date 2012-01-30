@@ -28,7 +28,7 @@ lx_466 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lx_466.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ kobola_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_kobola_guard_trandoshan_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

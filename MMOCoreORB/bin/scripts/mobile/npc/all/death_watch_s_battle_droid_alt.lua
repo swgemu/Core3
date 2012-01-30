@@ -27,7 +27,7 @@ death_watch_s_battle_droid_alt = Creature:new {
 	diet = NONE,
 
 	templates = {"object/mobile/death_watch_s_battle_droid.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

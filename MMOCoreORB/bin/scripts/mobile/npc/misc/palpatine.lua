@@ -27,7 +27,7 @@ palpatine = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/palpatine.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

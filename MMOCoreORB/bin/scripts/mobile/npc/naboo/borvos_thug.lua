@@ -27,7 +27,7 @@ borvos_thug = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_borvos_thug.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

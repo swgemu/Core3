@@ -28,7 +28,7 @@ coa2_drall_scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/drall_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

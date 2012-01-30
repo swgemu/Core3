@@ -27,7 +27,7 @@ imperial_exterminator = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_exterminator.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

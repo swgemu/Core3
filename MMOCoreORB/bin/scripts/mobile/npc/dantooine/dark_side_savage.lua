@@ -27,7 +27,7 @@ dark_side_savage = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dark_side_savage.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

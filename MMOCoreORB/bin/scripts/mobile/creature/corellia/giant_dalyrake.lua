@@ -27,7 +27,7 @@ giant_dalyrake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_dalyrake.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

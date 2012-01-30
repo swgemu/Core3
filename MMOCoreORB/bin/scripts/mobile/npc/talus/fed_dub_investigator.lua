@@ -27,7 +27,7 @@ fed_dub_investigator = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fed_dub_investigator_twk_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

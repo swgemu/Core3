@@ -27,7 +27,7 @@ giant_carrion_spat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_carrion_spat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

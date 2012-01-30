@@ -27,7 +27,7 @@ langlatch_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/langlatch.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

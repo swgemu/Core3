@@ -27,7 +27,7 @@ nyms_brawler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_brawler_hum_f.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ corsec_traitor = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

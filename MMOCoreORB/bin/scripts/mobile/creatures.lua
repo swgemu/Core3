@@ -26,7 +26,7 @@ Creature = {
 	diet = 0,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "",

@@ -27,7 +27,7 @@ blastromech = Creature:new {
 	diet = NONE,
 
 	templates = {"object/mobile/blastromech.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

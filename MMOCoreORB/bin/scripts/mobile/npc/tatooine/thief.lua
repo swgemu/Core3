@@ -27,7 +27,7 @@ thief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_binayre_thief_twk_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -26,7 +26,7 @@ imperial_senior_cadet = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	attacks = {}
 }

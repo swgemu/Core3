@@ -27,7 +27,7 @@ rebel_specforce_sergeant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_specforce_general_twk_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

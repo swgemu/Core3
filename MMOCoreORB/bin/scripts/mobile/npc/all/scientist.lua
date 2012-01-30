@@ -26,7 +26,7 @@ death_watch_scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_combatmedic_trainer_human_male_01.iff", "object/mobile/dressed_brigade_captain_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}
 }

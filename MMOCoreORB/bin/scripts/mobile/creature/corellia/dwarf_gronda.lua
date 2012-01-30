@@ -27,7 +27,7 @@ dwarf_gronda = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dwarf_gronda.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -25,13 +25,17 @@ death_watch_battle_droid = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 500000,
 
 	templates = {"object/mobile/death_watch_battle_droid.iff",
 	"object/mobile/death_watch_battle_droid_02.iff",
 	"object/mobile/death_watch_battle_droid_03.iff"},
-	lootgroups = {
-		{group = "death_watch_bunker_commoners", chance = 10000000},
+	lootGroups = {
+		{
+			groups = {
+				{group = "death_watch_bunker_commoners", chance = 10000000}
+			},
+			lootChance = 500000
+		}
 	},
 	weapons = {"battle_droid_weapons"},
 	conversationTemplate = "",

@@ -27,7 +27,7 @@ stintaril_prowler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/stintaril.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {

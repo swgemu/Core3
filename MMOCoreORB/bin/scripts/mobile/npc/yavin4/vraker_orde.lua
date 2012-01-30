@@ -28,7 +28,7 @@ vraker_orde = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_vraker_orde.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

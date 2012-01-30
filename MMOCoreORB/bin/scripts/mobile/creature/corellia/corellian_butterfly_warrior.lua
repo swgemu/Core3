@@ -27,7 +27,7 @@ corellian_butterfly_warrior = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

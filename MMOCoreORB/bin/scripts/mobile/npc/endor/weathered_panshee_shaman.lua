@@ -27,7 +27,7 @@ weathered_panshee_shaman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ewok_m_03.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = {

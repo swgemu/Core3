@@ -27,7 +27,7 @@ nyms_droideka = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/droideka.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

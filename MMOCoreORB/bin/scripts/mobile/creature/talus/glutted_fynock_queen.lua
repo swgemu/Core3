@@ -27,7 +27,7 @@ glutted_fynock_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/glutted_fynock_queen.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

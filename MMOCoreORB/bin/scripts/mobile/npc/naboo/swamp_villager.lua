@@ -27,7 +27,7 @@ swamp_villager = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_swamp_villager.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

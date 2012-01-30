@@ -27,7 +27,7 @@ eopie = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/eopie.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

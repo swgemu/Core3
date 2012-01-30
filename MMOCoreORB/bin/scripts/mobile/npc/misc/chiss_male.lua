@@ -27,7 +27,7 @@ chiss_male = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_patron_chiss_m_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

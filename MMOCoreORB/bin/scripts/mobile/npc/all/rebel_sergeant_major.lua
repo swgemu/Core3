@@ -27,7 +27,7 @@ rebel_sergeant_major = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_sergeant_major_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

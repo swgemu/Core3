@@ -27,7 +27,7 @@ forsaken_force_drifter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_forsaken_force_drifter.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

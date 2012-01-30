@@ -28,7 +28,7 @@ death_watch_herald_rebel = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_general_moncal_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "lutin_nightstalker_convotemplate",
 	attacks = {

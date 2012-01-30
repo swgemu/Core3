@@ -28,7 +28,7 @@ hefsen_zindalai = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hefsen_zindalai.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

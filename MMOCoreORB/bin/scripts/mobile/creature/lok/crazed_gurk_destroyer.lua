@@ -27,7 +27,7 @@ crazed_gurk_destroyer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurk.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

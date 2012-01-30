@@ -27,7 +27,7 @@ proficient_condula_worker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = {

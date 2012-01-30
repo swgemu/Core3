@@ -28,7 +28,7 @@ bren_kingal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/human_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

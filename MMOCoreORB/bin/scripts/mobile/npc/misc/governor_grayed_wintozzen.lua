@@ -28,7 +28,7 @@ governor_grayed_wintozzen = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_moff_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "imperial_retreat_governor_grayed_wintozzen_convotemplate",
 	attacks = {

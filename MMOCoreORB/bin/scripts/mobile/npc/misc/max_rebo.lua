@@ -26,7 +26,7 @@ max_rebo = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/max_rebo.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

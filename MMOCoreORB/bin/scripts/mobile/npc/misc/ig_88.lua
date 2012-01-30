@@ -27,7 +27,7 @@ ig_88 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/ig_88.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

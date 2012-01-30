@@ -27,7 +27,7 @@ brigand = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/human_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

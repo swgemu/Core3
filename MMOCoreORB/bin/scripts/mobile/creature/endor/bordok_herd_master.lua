@@ -27,7 +27,7 @@ bordok_herd_master = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bordok.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

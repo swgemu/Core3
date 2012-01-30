@@ -27,7 +27,7 @@ bolle_bol_bark_biter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolle_bol.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

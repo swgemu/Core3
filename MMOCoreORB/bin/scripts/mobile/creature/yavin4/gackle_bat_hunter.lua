@@ -27,7 +27,7 @@ gackle_bat_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gackle_bat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

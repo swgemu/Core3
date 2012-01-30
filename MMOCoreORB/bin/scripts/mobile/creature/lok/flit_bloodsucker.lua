@@ -27,7 +27,7 @@ flit_bloodsucker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flit.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

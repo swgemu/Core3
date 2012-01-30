@@ -27,7 +27,7 @@ peko_peko_albatross = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/peko_peko.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

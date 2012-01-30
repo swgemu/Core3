@@ -27,7 +27,7 @@ tusken_flesh_hunter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
 	attacks = {

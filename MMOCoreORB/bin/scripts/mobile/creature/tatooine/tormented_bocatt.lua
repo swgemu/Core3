@@ -27,7 +27,7 @@ tormented_bocatt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bocatt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

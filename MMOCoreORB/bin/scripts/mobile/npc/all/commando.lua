@@ -27,7 +27,7 @@ commando = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mercenary_commander_zab_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

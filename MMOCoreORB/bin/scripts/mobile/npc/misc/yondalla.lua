@@ -28,7 +28,7 @@ yondalla = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

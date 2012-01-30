@@ -27,7 +27,7 @@ garm_bel_iblis = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_garm_bel_iblis.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

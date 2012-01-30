@@ -27,7 +27,7 @@ rockmite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rock_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

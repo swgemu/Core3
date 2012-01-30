@@ -27,7 +27,7 @@ wise_jinda_rigualist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jinda_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

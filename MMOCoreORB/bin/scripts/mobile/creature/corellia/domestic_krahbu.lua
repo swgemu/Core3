@@ -27,7 +27,7 @@ domestic_krahbu = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/krahbu.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

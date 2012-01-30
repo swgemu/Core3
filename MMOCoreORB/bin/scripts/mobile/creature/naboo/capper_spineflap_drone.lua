@@ -27,7 +27,7 @@ capper_spineflap_drone = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/capper_spineflap.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

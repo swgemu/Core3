@@ -27,7 +27,7 @@ gungan_mercenary = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

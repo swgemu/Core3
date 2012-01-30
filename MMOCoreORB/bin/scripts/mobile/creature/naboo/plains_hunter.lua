@@ -27,7 +27,7 @@ plains_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ rebel_trooper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff","object/mobile/dressed_rebel_trooper_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

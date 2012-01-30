@@ -27,7 +27,7 @@ stranded_imperial_soldier = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stranded_imperial_soldier.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

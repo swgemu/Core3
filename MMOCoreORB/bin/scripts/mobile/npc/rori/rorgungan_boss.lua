@@ -26,7 +26,7 @@ rorgungan_boss = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

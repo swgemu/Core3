@@ -27,7 +27,7 @@ borvo_the_hutt = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/borvo.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

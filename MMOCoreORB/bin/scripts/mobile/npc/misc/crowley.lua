@@ -28,7 +28,7 @@ crowley = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_rebel_crowley.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

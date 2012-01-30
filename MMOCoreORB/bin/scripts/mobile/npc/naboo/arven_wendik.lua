@@ -28,7 +28,7 @@ arven_wendik = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_arven_wendik.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

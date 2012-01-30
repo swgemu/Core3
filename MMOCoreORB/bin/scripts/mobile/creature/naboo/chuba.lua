@@ -27,7 +27,7 @@ chuba = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/chuba.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

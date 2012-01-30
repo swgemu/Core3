@@ -27,7 +27,7 @@ venom_filled_arachne = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/queen_arachne.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

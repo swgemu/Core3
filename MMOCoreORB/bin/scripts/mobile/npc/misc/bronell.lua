@@ -28,7 +28,7 @@ bronell = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

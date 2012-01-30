@@ -26,7 +26,7 @@ stormtrooper_filler_tutorial = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "stormtrooper_filler_convotemplate",--dont change this

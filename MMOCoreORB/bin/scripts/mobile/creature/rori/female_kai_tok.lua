@@ -27,7 +27,7 @@ female_kai_tok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kai_tok.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_green"},
 	conversationTemplate = "",
 	attacks = {

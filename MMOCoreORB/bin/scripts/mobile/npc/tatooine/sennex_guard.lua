@@ -27,7 +27,7 @@ sennex_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sennex_pirate_05.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

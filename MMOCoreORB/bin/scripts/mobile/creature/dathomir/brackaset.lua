@@ -27,7 +27,7 @@ brackaset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/brackaset.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

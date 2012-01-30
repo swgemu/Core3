@@ -26,7 +26,7 @@ reelo_baruk = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/reelo_baruk.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "reelo_baruk_convotemplate",
 	attacks = {},

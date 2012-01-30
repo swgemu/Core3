@@ -26,7 +26,7 @@ nien_nunb = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

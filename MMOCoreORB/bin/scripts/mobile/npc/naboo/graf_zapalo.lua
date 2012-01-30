@@ -27,7 +27,7 @@ graf_zapalo = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_graf_zapalo.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ giant_angler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_angler.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {

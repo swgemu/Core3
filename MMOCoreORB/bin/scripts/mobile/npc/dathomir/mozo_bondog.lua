@@ -28,7 +28,7 @@ mozo_bondog = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mozo_bondog.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "mozo_bondog_convotemplate",
 	attacks = {

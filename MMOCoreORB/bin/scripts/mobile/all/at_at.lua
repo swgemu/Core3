@@ -27,7 +27,7 @@ at_at = Creature:new {
 	diet = NONE,
 
 	templates = {"object/mobile/atat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

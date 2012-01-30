@@ -27,7 +27,7 @@ doak_sif = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_doak_sif.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
 	attacks = {

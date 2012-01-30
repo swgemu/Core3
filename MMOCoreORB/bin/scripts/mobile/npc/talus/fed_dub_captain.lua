@@ -27,7 +27,7 @@ fed_dub_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fed_dub_captain_twk_female_01.iff","object/mobile/dressed_fed_dub_captain_twk_male_01r.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

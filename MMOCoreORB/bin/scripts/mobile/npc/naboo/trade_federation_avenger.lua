@@ -27,7 +27,7 @@ trade_federation_avenger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_trade_federation_avenger.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

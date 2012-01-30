@@ -27,7 +27,7 @@ imperial_surface_marshall = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lost_aqualish_marshal_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

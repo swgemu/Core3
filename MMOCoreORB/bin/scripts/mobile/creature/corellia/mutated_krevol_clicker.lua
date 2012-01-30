@@ -27,7 +27,7 @@ mutated_krevol_clicker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mutated_krevol_clicker.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

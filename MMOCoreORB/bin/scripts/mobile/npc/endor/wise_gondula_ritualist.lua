@@ -27,7 +27,7 @@ wise_gondula_ritualist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ewok_f_07.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = {

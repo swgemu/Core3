@@ -27,7 +27,7 @@ brackaset_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/brackaset_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

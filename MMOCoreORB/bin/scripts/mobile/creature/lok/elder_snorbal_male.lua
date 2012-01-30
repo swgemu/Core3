@@ -27,7 +27,7 @@ elder_snorbal_male = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/elder_snorbal_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

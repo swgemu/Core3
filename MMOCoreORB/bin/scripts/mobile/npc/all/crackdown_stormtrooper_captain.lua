@@ -27,7 +27,7 @@ crackdown_stormtrooper_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_captain_white_white.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	attacks = {

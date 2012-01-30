@@ -27,7 +27,7 @@ fanned_rawl = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fanned_rawl.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

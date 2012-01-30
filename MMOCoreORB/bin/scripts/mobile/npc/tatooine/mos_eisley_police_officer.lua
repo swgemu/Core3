@@ -27,7 +27,7 @@ mos_eisley_police_officer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_mos_eisley_police_officer.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

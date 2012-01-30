@@ -25,12 +25,16 @@ death_watch_black_sun_assassin = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 1000000,
 
 	templates = {"object/mobile/dressed_black_sun_assassin.iff"},
-	lootgroups = {
-		{group = "death_watch_bunker_commoners", chance = 9000000},
-		{group = "bounty_hunter_armor_looted", chance =   1000000},--reduce to minimal chance once testing is done/normal blacksuns are in
+	lootGroups = {
+		{
+			groups = {
+				{group = "death_watch_bunker_commoners", chance = 9000000},
+				{group = "bounty_hunter_armor_looted", chance =   1000000},--reduce to minimal chance once testing is done/normal blacksuns are in
+			},
+			lootChance = 1000000
+		}
 	},
 	weapons = {"battle_droid_weapons"},
 	conversationTemplate = "",

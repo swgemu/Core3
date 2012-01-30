@@ -27,7 +27,7 @@ infant_graul = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/infant_graul.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

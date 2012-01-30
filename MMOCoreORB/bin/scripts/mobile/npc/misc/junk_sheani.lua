@@ -28,7 +28,7 @@ junk_sheani = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_sheani.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ mountain_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_krevol.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

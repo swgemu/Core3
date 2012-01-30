@@ -28,7 +28,7 @@ kritus_morven = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_kritus_morven.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

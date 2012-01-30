@@ -27,7 +27,7 @@ alert_droideka = Creature:new {
 	diet = NONE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

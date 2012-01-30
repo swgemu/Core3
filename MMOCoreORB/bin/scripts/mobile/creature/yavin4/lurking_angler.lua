@@ -27,7 +27,7 @@ lurking_angler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ four_lom = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/4lom.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

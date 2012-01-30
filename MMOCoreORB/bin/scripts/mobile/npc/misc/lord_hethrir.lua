@@ -27,7 +27,7 @@ lord_hethrir = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/lord_hethrir.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

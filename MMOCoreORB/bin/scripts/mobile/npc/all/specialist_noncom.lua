@@ -26,7 +26,7 @@ specialist_noncom = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	attacks = {}
 }

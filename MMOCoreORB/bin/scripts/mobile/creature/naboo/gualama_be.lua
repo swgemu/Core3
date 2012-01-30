@@ -27,7 +27,7 @@ gualama_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gualama_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ r3 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/r3.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

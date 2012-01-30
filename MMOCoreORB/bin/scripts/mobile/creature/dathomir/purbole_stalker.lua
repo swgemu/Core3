@@ -27,7 +27,7 @@ purbole_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/purbole.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

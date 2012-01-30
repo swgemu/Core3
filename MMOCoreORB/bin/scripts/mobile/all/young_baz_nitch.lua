@@ -27,7 +27,7 @@ young_baz_nitch = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/young_baz_nitch.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

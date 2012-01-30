@@ -27,7 +27,7 @@ gaping_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

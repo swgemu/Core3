@@ -28,7 +28,7 @@ junk_ollobo = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_ollobo.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

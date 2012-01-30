@@ -27,7 +27,7 @@ forest_murra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/forest_murra.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

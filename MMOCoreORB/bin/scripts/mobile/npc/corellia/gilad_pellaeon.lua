@@ -27,7 +27,7 @@ gilad_pellaeon = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_captain_gilad_pellaeon.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

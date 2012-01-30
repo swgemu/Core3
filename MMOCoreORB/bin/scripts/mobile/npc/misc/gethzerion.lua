@@ -27,7 +27,7 @@ gethzerion = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gethzerion.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

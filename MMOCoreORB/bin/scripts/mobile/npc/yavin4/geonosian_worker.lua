@@ -25,10 +25,9 @@ geonosian_worker = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 6500000,
 
 	templates = {"object/mobile/dressed_geonosian_commoner_01.iff"},
-	lootgroups = {
+	lootGroups = {
 	},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",

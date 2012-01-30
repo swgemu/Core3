@@ -25,14 +25,18 @@ dark_adept = Creature:new {
 	creatureBitmask = KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 4500000,
 
 	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
-	lootgroups = {
-		{group = "holocron_light", chance = 3500000},
-		{group = "holocron_dark", chance = 3500000},
-		{group = "rifles", chance = 1500000},
-		{group = "pistols", chance = 1500000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "holocron_light", chance = 3500000},
+				{group = "holocron_dark", chance = 3500000},
+				{group = "rifles", chance = 1500000},
+				{group = "pistols", chance = 1500000}
+			},
+			lootChance = 4500000
+		}
 	},
 	weapons = {""},
 	conversationTemplate = "",

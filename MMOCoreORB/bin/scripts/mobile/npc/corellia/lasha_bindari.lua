@@ -28,7 +28,7 @@ lasha_bindari = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lasha_bindari.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

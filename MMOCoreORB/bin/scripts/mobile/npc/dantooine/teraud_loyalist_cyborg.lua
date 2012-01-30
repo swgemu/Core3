@@ -27,7 +27,7 @@ teraud_loyalist_cyborg = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_teraud_loyalist_cyborg_s03.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ elder_squall = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/squall.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

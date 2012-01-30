@@ -28,7 +28,7 @@ captain_tish = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_captain_tish.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

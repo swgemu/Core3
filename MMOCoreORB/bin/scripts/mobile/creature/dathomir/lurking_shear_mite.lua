@@ -27,7 +27,7 @@ lurking_shear_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

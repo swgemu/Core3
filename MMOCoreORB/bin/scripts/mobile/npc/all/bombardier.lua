@@ -27,7 +27,7 @@ bombardier = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_bombardier_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

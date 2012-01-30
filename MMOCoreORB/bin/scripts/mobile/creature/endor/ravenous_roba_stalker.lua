@@ -27,7 +27,7 @@ ravenous_roba_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/roba.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

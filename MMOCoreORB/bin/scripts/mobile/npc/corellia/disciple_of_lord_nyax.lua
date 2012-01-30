@@ -25,13 +25,17 @@ disciple_of_lord_nyax = Creature:new {
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 3800000,
 
 	templates = {"object/mobile/huma_male.iff"},
-	lootgroups = {
-		{group = "nyax", chance = 2000000},
-		{group = "pistols", chance = 4000000},
-		{group = "rifles", chance = 4000000},
+	lootGroups = {
+		{
+			groups = {
+				{group = "nyax", chance = 2000000},
+				{group = "pistols", chance = 4000000},
+				{group = "rifles", chance = 4000000}
+			},
+			lootChance = 3800000
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

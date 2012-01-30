@@ -26,7 +26,7 @@ giant_gackle_bat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_gackle_bat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

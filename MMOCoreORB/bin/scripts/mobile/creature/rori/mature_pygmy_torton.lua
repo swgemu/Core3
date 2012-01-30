@@ -27,7 +27,7 @@ mature_pygmy_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

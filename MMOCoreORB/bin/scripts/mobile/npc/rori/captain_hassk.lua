@@ -27,7 +27,7 @@ captain_hassk = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/captain_hassk.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"captain_hassk's_weapons"},
 	conversationTemplate = "",
 	attacks = {

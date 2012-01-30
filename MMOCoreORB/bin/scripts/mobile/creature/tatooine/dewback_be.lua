@@ -27,7 +27,7 @@ dewback_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dewback_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ hagrin_zeed = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hagrin_zeed.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

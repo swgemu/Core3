@@ -28,7 +28,7 @@ seeker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/creature/npc/droid/crafted/probe_droid.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

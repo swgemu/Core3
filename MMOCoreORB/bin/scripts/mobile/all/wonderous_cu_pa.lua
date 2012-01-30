@@ -27,7 +27,7 @@ wonderous_cu_pa = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/cu_pa.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

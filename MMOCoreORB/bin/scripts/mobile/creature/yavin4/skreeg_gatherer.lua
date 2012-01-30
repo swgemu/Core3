@@ -27,7 +27,7 @@ skreeg_gatherer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/skreeg.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

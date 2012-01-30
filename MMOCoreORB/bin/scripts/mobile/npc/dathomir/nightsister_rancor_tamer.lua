@@ -25,16 +25,20 @@ nightsister_rancor_tamer = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 4900000,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_rancor_tamer.iff"},
-	lootgroups = {
-		{group = "nightsister_crystals_1", chance = 1000000},
-		{group = "nightsister_common", chance = 6500000},
-		{group = "armor_attachments", chance = 550000},
-		{group = "clothing_attachments", chance = 550000},
-		{group = "pistols", chance = 750000},
-		{group = "rifles", chance = 750000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "nightsister_crystals_1", chance = 1000000},
+				{group = "nightsister_common", chance = 6500000},
+				{group = "armor_attachments", chance = 550000},
+				{group = "clothing_attachments", chance = 550000},
+				{group = "pistols", chance = 750000},
+				{group = "rifles", chance = 750000}
+			},
+			lootChance = 4900000
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

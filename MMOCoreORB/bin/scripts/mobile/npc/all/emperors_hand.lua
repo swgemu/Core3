@@ -27,7 +27,7 @@ emperors_hand = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_emperors_hand_zabrak_male_01.iff","object/mobile/dressed_emperors_hand_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

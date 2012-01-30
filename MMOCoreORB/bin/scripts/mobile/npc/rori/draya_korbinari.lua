@@ -28,7 +28,7 @@ draya_korbinari = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_draya_korbinari.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

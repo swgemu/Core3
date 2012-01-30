@@ -26,7 +26,7 @@ stormtrooper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	attacks = {}
 }

@@ -27,7 +27,7 @@ carrion_spat_corpsereaver = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/carrion_spat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

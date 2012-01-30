@@ -28,7 +28,7 @@ brantlee_spondoon = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_brantlee_spondoon.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

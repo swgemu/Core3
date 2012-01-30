@@ -27,7 +27,7 @@ putrid_decay_mite_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/putrid_decay_mite_hatchling.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

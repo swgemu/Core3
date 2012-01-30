@@ -27,7 +27,7 @@ kahmurra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kahmurra.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ swirl_prong_pack_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/swirl_prong.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

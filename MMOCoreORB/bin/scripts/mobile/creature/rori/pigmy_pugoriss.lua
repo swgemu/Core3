@@ -27,7 +27,7 @@ pigmy_pugoriss = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/pigmy_pugoriss.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ bors_teraud = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_bors_teraud.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

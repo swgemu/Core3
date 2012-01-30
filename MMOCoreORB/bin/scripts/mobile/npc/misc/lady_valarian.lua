@@ -27,7 +27,7 @@ lady_valarian = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/lady_valarian.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

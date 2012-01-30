@@ -27,7 +27,7 @@ gurnaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurnaset.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

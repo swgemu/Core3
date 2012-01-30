@@ -27,7 +27,7 @@ swirl_prong_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/swirl_prong_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

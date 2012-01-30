@@ -27,7 +27,7 @@ spiderclan_sentinel = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dathomir_spider_nightsister_sentinel.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {

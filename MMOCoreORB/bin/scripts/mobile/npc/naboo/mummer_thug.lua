@@ -26,7 +26,7 @@ mummer_thug = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

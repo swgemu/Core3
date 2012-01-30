@@ -28,7 +28,7 @@ zideera = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_zideera.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

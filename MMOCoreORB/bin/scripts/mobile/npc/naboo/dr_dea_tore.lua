@@ -27,7 +27,7 @@ dr_dea_tore = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dr_dea_tore.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

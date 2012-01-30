@@ -26,7 +26,7 @@ rebel_resistance_leader = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}
 }

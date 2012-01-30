@@ -27,7 +27,7 @@ aujante_klee = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aujante_klee.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

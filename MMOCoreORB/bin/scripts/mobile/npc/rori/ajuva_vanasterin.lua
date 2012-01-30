@@ -28,7 +28,7 @@ ajuva_vanasterin = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ajuva_vanasterin.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

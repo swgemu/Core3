@@ -27,7 +27,7 @@ agrilat_rasp = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/flite_rasp.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

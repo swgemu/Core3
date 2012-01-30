@@ -27,7 +27,7 @@ hardened_panshee_warrior = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/ewok_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = {

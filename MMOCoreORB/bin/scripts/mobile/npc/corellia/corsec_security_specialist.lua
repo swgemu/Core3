@@ -27,7 +27,7 @@ corsec_security_specialist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/object/mobile/shared_dressed_corellia_local_corsec_chief.iff.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

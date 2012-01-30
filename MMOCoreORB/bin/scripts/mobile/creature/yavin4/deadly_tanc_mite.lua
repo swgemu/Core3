@@ -27,7 +27,7 @@ deadly_tanc_mite = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/tanc_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

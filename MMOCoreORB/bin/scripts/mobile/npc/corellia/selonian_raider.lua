@@ -27,7 +27,7 @@ selonian_raider = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_selonian_m_04.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

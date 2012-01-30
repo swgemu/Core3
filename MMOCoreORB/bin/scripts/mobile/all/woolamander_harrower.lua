@@ -27,7 +27,7 @@ woolamander_harrower = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/woolamander.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

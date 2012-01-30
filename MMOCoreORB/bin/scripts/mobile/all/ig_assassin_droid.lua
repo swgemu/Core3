@@ -27,7 +27,7 @@ ig_assassin_droid = Creature:new {
 	diet = NONE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

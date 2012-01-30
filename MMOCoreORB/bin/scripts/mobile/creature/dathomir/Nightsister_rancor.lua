@@ -25,13 +25,17 @@ Nightsister_rancor = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	lootChance = 4400000,
 
 	templates = {"object/mobile/rancor.iff"},
-	lootgroups = {
-		{group = "rancor_common", chance = 3300000},
-		{group = "pistols", chance = 3300000},
-		{group = "rifles", chance = 3400000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "rancor_common", chance = 3300000},
+				{group = "pistols", chance = 3300000},
+				{group = "rifles", chance = 3400000}
+			},
+			lootChance = 4400000
+		}
 	},
 	weapons = {},
 	conversationTemplate = "",

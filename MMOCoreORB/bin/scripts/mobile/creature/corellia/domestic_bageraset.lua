@@ -27,7 +27,7 @@ domestic_bageraset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bageraset.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

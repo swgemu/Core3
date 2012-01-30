@@ -24,11 +24,15 @@ bandit_tutorial_1 = Creature:new {
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	diet = NONE,
-	lootChance = 10000000,
 
 	templates = {"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
-	lootgroups = {
-		{group = "bandit_1", chance = 10000000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "bandit_1", chance = 10000000}
+			},
+			lootChance = 10000000
+		}
 	},
 	weapons = {"tutorial_bandit_weapons"},--dont change this
 	attacks = {"defaultattack", ""},

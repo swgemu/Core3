@@ -27,7 +27,7 @@ domesticated_snorbal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/snorbal.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

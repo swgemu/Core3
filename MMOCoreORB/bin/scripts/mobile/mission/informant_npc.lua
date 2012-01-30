@@ -28,7 +28,7 @@ function createInformantNPC(lvl)
 		diet = HERBIVORE,
 	
 		templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
-		lootgroups = {},
+		lootGroups = {},
 		weapons = {},
 		conversationTemplate = "informant_npc_lvl_" .. lvl,
 		attacks = {

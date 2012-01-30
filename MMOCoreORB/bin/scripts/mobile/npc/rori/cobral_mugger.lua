@@ -28,7 +28,7 @@ cobral_mugger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_cobral_mugger_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

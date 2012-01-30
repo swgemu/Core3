@@ -27,7 +27,7 @@ lumbering_bolma = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bolma.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

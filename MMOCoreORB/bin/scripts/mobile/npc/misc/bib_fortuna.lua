@@ -27,7 +27,7 @@ bib_fortuna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bib_fortuna.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

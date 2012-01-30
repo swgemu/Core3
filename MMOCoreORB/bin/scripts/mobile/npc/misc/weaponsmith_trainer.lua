@@ -27,7 +27,7 @@ weaponsmith_trainer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_weaponsmith_trainer_03.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

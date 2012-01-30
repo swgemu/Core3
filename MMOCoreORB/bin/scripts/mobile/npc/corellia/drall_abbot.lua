@@ -27,7 +27,7 @@ drall_abbot = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/drall_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

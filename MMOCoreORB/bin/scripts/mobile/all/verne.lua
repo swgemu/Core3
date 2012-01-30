@@ -27,7 +27,7 @@ verne = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/verne.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

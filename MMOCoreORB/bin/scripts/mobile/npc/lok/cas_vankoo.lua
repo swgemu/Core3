@@ -27,7 +27,7 @@ cas_vankoo = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lok_cas_vankoo.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"cas_vankoo's_weapons"},
 	conversationTemplate = "",
 	attacks = {

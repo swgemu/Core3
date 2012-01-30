@@ -27,7 +27,7 @@ agriculturalist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_quest_farmer.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ malakili = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/malakili.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

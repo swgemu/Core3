@@ -27,7 +27,7 @@ frenzied_korga = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dulok_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ trade_federation_loyalist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_trade_federation_loyalist.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

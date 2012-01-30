@@ -27,7 +27,7 @@ stintaril_ravager = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/stintaril.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

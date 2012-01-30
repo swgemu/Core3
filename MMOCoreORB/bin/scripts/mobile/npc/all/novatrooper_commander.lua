@@ -27,7 +27,7 @@ novatrooper_commander = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	attacks = {

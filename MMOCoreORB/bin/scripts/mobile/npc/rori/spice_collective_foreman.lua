@@ -26,7 +26,7 @@ spice_collective_foreman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	attacks = {}
 }

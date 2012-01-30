@@ -27,7 +27,7 @@ weak_mercenary = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mercenary_weak_hum_f.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

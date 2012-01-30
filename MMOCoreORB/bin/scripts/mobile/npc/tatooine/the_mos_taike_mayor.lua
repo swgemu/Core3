@@ -27,7 +27,7 @@ the_mos_taike_mayor = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mayor.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

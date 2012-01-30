@@ -27,7 +27,7 @@ afarathu_cult_bodyguard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_selonian_m_02.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

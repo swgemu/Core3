@@ -27,7 +27,7 @@ leia_organa = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/leia_organa.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

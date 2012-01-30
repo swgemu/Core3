@@ -27,7 +27,7 @@ bewitching_pubam_dark_shaman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ewok_m_11.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

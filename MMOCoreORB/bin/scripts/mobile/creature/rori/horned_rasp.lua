@@ -27,7 +27,7 @@ horned_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_rasp.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

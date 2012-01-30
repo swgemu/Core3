@@ -27,7 +27,7 @@ sharnaff_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/sharnaff_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

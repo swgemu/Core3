@@ -27,7 +27,7 @@ purbole_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/purbole_youth.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

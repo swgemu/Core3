@@ -27,7 +27,7 @@ wooded_paralope = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/paralope.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

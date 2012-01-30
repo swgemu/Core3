@@ -27,7 +27,7 @@ helper_r2_unit = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/r2.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

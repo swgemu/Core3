@@ -27,7 +27,7 @@ stranded_rebel_officer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stranded_rebel_officer.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

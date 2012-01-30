@@ -27,7 +27,7 @@ alert_droideka = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/droideka.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ lieutenant_heb_nee = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/lieutenant_heb_nee.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"lt._heb_nee's_weapons"},
 	conversationTemplate = "",
 	attacks = {

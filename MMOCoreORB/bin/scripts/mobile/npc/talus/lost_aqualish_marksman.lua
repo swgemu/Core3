@@ -27,7 +27,7 @@ lost_aqualish_marksman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lost_aqualish_marksman_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

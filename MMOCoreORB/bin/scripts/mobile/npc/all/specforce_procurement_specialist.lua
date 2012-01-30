@@ -26,7 +26,7 @@ specforce_procurement_specialist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	attacks = {}
 }

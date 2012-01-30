@@ -27,7 +27,7 @@ swift_charging_bol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bol.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

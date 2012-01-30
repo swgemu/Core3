@@ -27,7 +27,7 @@ kliknik_dark_worker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

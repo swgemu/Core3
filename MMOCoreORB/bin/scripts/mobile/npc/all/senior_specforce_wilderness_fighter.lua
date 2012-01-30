@@ -27,7 +27,7 @@ senior_specforce_wilderness_fighter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

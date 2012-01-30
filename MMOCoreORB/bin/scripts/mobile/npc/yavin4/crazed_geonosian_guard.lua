@@ -25,12 +25,16 @@ crazed_geonosian_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 4500000,
 
 	templates = {"object/mobile/dressed_geonosian_warrior_01.iff","object/mobile/dressed_geonosian_warrior_02.iff","object/mobile/dressed_geonosian_warrior_03.iff"},
-	lootgroups = {
-		{group = "geonosian_common", chance = 6000000},
-		{group = "geonosian_relic", chance = 4000000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "geonosian_common", chance = 6000000},
+				{group = "geonosian_relic", chance = 4000000}
+			},
+			lootChance = 4500000
+		}
 	},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",

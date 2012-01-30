@@ -27,7 +27,7 @@ snorbal_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/snorbal_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

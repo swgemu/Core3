@@ -26,7 +26,7 @@ jabba_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rancor.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

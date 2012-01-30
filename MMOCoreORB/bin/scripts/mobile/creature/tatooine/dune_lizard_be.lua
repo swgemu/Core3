@@ -27,7 +27,7 @@ dune_lizard_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dune_lizard_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

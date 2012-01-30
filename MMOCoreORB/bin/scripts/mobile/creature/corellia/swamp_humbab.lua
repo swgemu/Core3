@@ -27,7 +27,7 @@ swamp_humbab = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/savage_humbaba.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

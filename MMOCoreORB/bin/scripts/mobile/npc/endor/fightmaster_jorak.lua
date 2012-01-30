@@ -27,7 +27,7 @@ fightmaster_jorak = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fightmaster_jorak.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

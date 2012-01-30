@@ -27,7 +27,7 @@ shimmering_lantern_bird = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/lantern_bird.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

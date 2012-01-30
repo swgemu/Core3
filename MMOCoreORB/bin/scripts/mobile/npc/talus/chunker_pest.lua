@@ -26,7 +26,7 @@ chunker_pest = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

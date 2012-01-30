@@ -27,7 +27,7 @@ gondula_outcast = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ewok_m_12.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ ronto = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ronto.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ corporal_sova = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ grassland_voritor_tracker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/grassland_voritor_tracker.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

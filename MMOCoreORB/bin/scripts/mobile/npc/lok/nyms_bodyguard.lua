@@ -27,7 +27,7 @@ nyms_bodyguard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_bodyguard_rod_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

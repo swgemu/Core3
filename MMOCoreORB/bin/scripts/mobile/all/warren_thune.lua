@@ -27,7 +27,7 @@ warren_thune = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/thune.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

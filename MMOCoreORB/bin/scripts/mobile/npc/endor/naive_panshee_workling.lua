@@ -26,7 +26,7 @@ naive_panshee_workling = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	attacks = {}
 }

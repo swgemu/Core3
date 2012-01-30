@@ -27,7 +27,7 @@ twilight_vir_vur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vir_vur.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

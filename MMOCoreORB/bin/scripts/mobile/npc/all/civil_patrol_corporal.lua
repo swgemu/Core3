@@ -27,7 +27,7 @@ civil_patrol_corporal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

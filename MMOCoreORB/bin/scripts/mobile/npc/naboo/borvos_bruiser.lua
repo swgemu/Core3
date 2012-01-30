@@ -28,7 +28,7 @@ borvos_bruiser = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_borvos_bruiser.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

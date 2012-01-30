@@ -27,7 +27,7 @@ stunted_woolamander = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/woolamander.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

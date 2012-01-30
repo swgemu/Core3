@@ -27,7 +27,7 @@ grand_wrix = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/grand_wrix.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

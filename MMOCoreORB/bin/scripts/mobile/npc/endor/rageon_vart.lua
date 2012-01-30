@@ -26,11 +26,15 @@ rageon_vart = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 10000000, 
 	
 	templates = {"object/mobile/dressed_death_watch_grey.iff"},
-	lootgroups = { 
-		{group = "rageon_vart_drop", chance = 10000000} 
+	lootGroups = {
+		{
+			groups = {
+				{group = "rageon_vart_drop", chance = 10000000}
+			},
+			lootChance = 10000000
+		} 
 	},
 	weapons = {"death_watch_commander_weapons"},
 	conversationTemplate = "",

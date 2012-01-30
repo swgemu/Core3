@@ -27,7 +27,7 @@ blood_razor_strong_pirate = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_blood_razor_pirate_strong_hum_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

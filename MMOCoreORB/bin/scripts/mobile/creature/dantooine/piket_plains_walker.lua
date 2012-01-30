@@ -27,7 +27,7 @@ piket_plains_walker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/piket_plains_walker.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

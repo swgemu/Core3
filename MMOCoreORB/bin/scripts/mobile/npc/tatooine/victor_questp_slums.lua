@@ -27,7 +27,7 @@ victor_questp_slums = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_questp_slums.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

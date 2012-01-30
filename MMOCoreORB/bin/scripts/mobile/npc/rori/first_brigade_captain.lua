@@ -27,7 +27,7 @@ first_brigade_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_marooned_pirate_first_mate_hum_f.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

@@ -26,7 +26,7 @@ rebel_resistance_dissident = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}
 }

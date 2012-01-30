@@ -27,7 +27,7 @@ specforce_wilderness_operative = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

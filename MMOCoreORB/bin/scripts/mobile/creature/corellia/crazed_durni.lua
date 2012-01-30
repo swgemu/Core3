@@ -27,7 +27,7 @@ crazed_durni = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/crazed_durni.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

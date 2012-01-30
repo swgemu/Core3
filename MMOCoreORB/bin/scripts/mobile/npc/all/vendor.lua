@@ -27,7 +27,7 @@ vendor = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/twilek_female.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

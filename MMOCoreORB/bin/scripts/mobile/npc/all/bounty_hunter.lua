@@ -26,7 +26,7 @@ bounty_hunter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	attacks = {}
 }

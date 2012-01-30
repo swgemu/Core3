@@ -27,7 +27,7 @@ giant_worrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_worrt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

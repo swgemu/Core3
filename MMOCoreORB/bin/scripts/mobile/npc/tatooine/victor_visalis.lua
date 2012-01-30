@@ -28,7 +28,7 @@ victor_visalis = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_visalis.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

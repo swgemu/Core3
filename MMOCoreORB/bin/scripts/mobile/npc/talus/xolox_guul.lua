@@ -28,7 +28,7 @@ xolox_guul = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commander_xalox_guul.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

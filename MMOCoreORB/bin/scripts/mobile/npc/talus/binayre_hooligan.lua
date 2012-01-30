@@ -27,7 +27,7 @@ binayre_hooligan = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_binayre_hooligan_zabrak_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

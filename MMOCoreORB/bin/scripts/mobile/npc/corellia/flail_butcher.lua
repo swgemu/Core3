@@ -26,7 +26,7 @@ flail_butcher = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}
 }

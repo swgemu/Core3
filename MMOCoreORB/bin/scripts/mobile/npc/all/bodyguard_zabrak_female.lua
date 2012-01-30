@@ -27,7 +27,7 @@ bodyguard_zabrak_female = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_garyn_theif_zabrak_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

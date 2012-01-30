@@ -28,7 +28,7 @@ junk_nado = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_nado.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

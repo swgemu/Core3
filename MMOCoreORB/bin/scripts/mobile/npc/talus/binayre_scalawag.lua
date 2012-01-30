@@ -27,7 +27,7 @@ binayre_scalawag = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_binayre_scalawag_twk_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

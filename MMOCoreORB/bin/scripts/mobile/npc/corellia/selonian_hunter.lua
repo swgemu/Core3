@@ -27,7 +27,7 @@ selonian_hunter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_selonian_m_04.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

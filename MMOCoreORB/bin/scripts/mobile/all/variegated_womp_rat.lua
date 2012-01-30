@@ -27,7 +27,7 @@ variegated_womp_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/womp_rat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

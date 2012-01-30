@@ -28,7 +28,7 @@ stresstest_shuttleloc_barker = Creature:new {
 	diet = HERBIVORE,
 	
 	templates = {"object/mobile/dressed_ajuva_vanasterin.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ crackdown_stormtrooper_bombardier = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_bombardier_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"st_bombardier_weapons"},
 	conversationTemplate = "",
 	attacks = {

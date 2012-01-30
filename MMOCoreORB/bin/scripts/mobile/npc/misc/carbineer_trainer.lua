@@ -27,7 +27,7 @@ carbineer_trainer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_carbine_trainer_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

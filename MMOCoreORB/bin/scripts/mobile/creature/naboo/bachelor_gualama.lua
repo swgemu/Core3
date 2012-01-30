@@ -27,7 +27,7 @@ bachelor_gualama = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gualama.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

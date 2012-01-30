@@ -27,7 +27,7 @@ hilltop_kima = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kima.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

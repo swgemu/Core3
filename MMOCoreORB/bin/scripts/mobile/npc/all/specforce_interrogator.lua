@@ -26,7 +26,7 @@ specforce_interrogator = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	attacks = {}
 }

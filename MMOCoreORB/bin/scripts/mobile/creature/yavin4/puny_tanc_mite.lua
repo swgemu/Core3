@@ -27,7 +27,7 @@ puny_tanc_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/puny_tanc_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

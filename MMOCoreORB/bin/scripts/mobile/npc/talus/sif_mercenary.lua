@@ -27,7 +27,7 @@ sif_mercenary = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
 	attacks = {

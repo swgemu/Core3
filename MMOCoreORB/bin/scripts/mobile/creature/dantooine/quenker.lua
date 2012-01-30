@@ -27,7 +27,7 @@ quenker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/quenker.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

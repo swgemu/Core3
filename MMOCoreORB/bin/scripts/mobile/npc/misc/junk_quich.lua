@@ -28,7 +28,7 @@ junk_quich = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_quich.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

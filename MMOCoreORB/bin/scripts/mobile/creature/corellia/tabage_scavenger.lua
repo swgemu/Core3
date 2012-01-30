@@ -27,7 +27,7 @@ tabage_scavenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tabage.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -25,10 +25,9 @@ imperial_trooper = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 0,
 
 	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
-	lootgroups = {
+	lootGroups = {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",

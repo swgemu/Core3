@@ -27,7 +27,7 @@ garyns_mugger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_garyn_mugger_twk_female_01.iff","object/mobile/dressed_garyn_mugger_twk_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

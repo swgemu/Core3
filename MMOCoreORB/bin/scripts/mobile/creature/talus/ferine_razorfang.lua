@@ -27,7 +27,7 @@ ferine_razorfang = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kima.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

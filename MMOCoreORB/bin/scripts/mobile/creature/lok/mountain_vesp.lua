@@ -26,7 +26,7 @@ mountain_vesp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vesp.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"blindattack","blindChance=50"},

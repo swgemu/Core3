@@ -27,7 +27,7 @@ dalyrake_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dalyrake_matriarch.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {

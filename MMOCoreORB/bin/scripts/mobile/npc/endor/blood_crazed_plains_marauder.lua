@@ -27,7 +27,7 @@ blood_crazed_plains_marauder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_blood_crazed_plains_marauder.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

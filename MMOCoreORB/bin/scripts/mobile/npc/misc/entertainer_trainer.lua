@@ -27,7 +27,7 @@ entertainer_trainer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_entertainer_trainer_human_female_01.iff","object/mobile/dressed_entertainer_trainer_twk_male_01.iff","object/mobile/dressed_entertainer_trainer_twk_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

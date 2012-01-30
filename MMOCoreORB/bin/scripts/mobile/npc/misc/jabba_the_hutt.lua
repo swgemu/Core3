@@ -27,7 +27,7 @@ jabba_the_hutt = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jabba_the_hutt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

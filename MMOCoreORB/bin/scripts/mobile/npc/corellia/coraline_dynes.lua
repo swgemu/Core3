@@ -28,7 +28,7 @@ coraline_dynes = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_coraline_dynes.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

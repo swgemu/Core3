@@ -27,7 +27,7 @@ afarathu_brute = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_selonian_m_02.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

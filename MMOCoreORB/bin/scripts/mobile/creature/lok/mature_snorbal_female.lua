@@ -27,7 +27,7 @@ mature_snorbal_female = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/elder_snorbal_female.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

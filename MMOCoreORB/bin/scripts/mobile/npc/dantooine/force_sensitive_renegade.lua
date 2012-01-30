@@ -27,7 +27,7 @@ force_sensitive_renegade = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_force_sensitive_renegade.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

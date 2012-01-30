@@ -27,7 +27,7 @@ angler_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler_hatchling.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_green", "creature_spit_small_green"},
 	conversationTemplate = "",
 	attacks = {

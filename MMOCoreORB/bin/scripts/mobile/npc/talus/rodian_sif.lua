@@ -28,7 +28,7 @@ rodian_sif = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_02.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ dancer_trainer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dancer_trainer_twk_female_01.iff","object/mobile/dressed_dancer_trainer_human_female_02.iff","object/mobile/dressed_dancer_trainer_human_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

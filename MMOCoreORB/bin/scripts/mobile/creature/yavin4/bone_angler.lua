@@ -27,7 +27,7 @@ bone_angler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

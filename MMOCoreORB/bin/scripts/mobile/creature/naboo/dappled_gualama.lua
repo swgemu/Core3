@@ -27,7 +27,7 @@ dappled_gualama = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dappled_gualama.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

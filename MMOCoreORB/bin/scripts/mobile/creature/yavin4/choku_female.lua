@@ -27,7 +27,7 @@ choku_female = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/choku.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

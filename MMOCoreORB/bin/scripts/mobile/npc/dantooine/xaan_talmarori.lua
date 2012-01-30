@@ -28,7 +28,7 @@ xaan_talmarori = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_xaan_talmaron.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

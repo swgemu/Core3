@@ -27,7 +27,7 @@ Kinn_Dray = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_recluse_giant_kiin_dray.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {

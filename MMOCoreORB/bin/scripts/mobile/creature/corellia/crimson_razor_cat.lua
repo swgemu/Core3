@@ -27,7 +27,7 @@ crimson_razor_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/crimson_sand_panther.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

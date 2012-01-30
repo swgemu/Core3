@@ -27,7 +27,7 @@ song_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flite_rasp.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

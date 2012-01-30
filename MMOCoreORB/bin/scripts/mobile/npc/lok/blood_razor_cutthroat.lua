@@ -27,7 +27,7 @@ blood_razor_cutthroat = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_blood_razor_pirate_cutthroat_hum_f.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

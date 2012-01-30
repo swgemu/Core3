@@ -27,7 +27,7 @@ aakuan_follower = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
 	attacks = {

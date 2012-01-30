@@ -27,7 +27,7 @@ victor_questn_capitol = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_questn_capitol.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

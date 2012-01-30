@@ -27,7 +27,7 @@ lyda_thug_coa2 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lyda_skims.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

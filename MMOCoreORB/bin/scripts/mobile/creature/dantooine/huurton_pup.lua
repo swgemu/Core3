@@ -27,7 +27,7 @@ huurton_pup = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton_pup.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

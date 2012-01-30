@@ -27,7 +27,7 @@ Grovo = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nsister_rancor_grovo.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

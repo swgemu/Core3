@@ -27,7 +27,7 @@ frenzied_young_flewt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flewt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -26,7 +26,7 @@ imperial_officer_tutorial_3 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_officer_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
 	conversationTemplate = "imperial_officer_3_convotemplate",--dont change this

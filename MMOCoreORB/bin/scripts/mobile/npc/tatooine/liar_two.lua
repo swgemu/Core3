@@ -27,7 +27,7 @@ liar_two = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_quest_liar_02.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

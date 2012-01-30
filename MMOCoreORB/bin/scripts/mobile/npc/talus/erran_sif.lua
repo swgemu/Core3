@@ -27,7 +27,7 @@ erran_sif = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_erran_sif.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
 	attacks = {

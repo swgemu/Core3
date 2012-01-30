@@ -27,7 +27,7 @@ angler_recluse = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_green","creature_spit_small_green"},
 	conversationTemplate = "",
 	attacks = {

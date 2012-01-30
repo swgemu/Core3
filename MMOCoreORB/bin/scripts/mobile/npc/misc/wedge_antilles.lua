@@ -27,7 +27,7 @@ wedge_antilles = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/wedge_antilles.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

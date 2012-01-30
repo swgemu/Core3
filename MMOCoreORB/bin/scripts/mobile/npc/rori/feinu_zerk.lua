@@ -28,7 +28,7 @@ feinu_zerk = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_feinu_zerk.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

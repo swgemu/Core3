@@ -28,7 +28,7 @@ loam_hedge = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/loam_redge.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

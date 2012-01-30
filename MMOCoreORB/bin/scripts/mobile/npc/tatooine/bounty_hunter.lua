@@ -27,7 +27,7 @@ bounty_hunter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

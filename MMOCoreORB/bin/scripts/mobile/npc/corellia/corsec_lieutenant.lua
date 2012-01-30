@@ -27,7 +27,7 @@ corsec_lieutenant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corellia_local_corsec_chief.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

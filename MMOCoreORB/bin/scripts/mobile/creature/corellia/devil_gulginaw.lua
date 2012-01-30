@@ -27,7 +27,7 @@ devil_gulginaw = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/devil_gulginaw.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {

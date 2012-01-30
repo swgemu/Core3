@@ -27,7 +27,7 @@ krayt_dragon_ancient = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/krayt_dragon.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

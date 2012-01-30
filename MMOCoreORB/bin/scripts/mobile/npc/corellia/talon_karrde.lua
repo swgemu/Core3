@@ -27,7 +27,7 @@ talon_karrde = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_talon_karrde.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

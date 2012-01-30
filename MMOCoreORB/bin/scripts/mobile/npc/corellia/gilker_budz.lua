@@ -27,7 +27,7 @@ gilker_budz = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_giker_budz.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

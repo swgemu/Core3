@@ -27,7 +27,7 @@ gungan_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

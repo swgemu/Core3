@@ -27,7 +27,7 @@ bull_ronto = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/ronto.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

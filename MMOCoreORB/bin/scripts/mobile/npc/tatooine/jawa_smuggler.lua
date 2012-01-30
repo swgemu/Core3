@@ -27,7 +27,7 @@ jawa_smuggler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jawa_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

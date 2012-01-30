@@ -27,7 +27,7 @@ langlatch_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/langlatch_hatchling.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

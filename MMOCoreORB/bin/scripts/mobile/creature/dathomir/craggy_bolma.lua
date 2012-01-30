@@ -27,7 +27,7 @@ craggy_bolma = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

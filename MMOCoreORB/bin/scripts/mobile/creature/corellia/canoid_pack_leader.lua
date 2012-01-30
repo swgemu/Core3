@@ -27,7 +27,7 @@ canoid_pack_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/canoid_pack_leader.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

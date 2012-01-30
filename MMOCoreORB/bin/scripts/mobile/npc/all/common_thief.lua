@@ -27,7 +27,7 @@ common_thief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_plasma_thief.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

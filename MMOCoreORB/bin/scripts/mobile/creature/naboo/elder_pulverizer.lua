@@ -27,7 +27,7 @@ elder_pulverizer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolle_bol.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

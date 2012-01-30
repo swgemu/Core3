@@ -27,7 +27,7 @@ gungan_reject = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

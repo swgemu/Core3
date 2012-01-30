@@ -27,7 +27,7 @@ Mauler_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/veermok.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

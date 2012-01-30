@@ -27,7 +27,7 @@ stout_ikopi_buck = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ikopi.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

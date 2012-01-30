@@ -28,7 +28,7 @@ junk_reggi = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_reggi.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

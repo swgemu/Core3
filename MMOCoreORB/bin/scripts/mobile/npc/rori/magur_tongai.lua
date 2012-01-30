@@ -28,7 +28,7 @@ magur_tongai = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_magur_torigai.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

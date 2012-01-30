@@ -27,7 +27,7 @@ mara_jade = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mara_jade.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

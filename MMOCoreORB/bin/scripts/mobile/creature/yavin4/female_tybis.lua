@@ -27,7 +27,7 @@ female_tybis = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tybis.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

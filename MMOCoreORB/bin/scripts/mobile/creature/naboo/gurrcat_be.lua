@@ -27,7 +27,7 @@ gurrcat_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurrcat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ luke_skywalker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_luke_skywalker.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

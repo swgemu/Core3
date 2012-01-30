@@ -27,7 +27,7 @@ durni_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/durni_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

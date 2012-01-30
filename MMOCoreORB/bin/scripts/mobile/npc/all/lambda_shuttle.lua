@@ -27,7 +27,7 @@ optionsBitmask = 128,
 diet = HERBIVORE,
 
 templates = {"object/creature/npc/theme_park/lambda_shuttle.iff"},
-lootgroups = {},
+lootGroups = {},
 weapons = {""},
 conversationTemplate = "",
 attacks = {

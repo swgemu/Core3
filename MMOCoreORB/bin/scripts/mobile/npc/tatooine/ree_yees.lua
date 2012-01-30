@@ -26,7 +26,7 @@ ree_yees = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gran_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

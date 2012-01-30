@@ -27,7 +27,7 @@ force_trained_archaist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_force_trained_archaist.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {

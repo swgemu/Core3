@@ -27,7 +27,7 @@ seething_bol_crusher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/seething_bol_crusher.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

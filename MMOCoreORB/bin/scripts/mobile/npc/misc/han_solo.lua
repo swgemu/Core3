@@ -27,7 +27,7 @@ han_solo = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/han_solo.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

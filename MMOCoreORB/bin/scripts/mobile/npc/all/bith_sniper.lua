@@ -27,7 +27,7 @@ bith_sniper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_brigade_gunner_bith_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ apprentice_creature_handler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_creaturehandler_trainer_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

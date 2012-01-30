@@ -27,7 +27,7 @@ computer_scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_scientist_s02.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

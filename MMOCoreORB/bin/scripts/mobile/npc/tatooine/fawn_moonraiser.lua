@@ -27,7 +27,7 @@ fawn_moonraiser = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fawn_moonraiser.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

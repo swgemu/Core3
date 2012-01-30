@@ -27,7 +27,7 @@ festering_dung_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dung_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

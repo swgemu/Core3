@@ -28,7 +28,7 @@ bardo_klinj = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bardo_klinj.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

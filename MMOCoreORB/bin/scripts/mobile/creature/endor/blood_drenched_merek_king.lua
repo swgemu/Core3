@@ -27,7 +27,7 @@ blood_drenched_merek_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blood_drenched_merek_king.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

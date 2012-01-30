@@ -27,7 +27,7 @@ tempest_rill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rill.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

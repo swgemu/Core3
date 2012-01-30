@@ -27,7 +27,7 @@ bossk = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bossk.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

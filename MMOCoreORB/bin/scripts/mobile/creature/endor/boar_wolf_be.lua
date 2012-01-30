@@ -27,7 +27,7 @@ boar_wolf_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/boar_wolf_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

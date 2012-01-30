@@ -27,7 +27,7 @@ artisan = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_artisan_trainer_03.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

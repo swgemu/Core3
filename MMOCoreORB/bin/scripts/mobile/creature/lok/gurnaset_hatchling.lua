@@ -27,7 +27,7 @@ gurnaset_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurnaset_hatchling.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

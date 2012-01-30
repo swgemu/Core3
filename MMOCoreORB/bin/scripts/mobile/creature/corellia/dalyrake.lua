@@ -27,7 +27,7 @@ dalyrake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dalyrake.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

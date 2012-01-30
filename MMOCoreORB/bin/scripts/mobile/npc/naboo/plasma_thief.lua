@@ -26,7 +26,7 @@ plasma_thief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

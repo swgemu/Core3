@@ -26,7 +26,7 @@ chunker_bully = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	attacks = {}
 }

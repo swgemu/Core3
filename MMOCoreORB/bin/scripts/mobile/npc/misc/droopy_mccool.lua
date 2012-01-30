@@ -27,7 +27,7 @@ droopy_mccool = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/droopy_mccool.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

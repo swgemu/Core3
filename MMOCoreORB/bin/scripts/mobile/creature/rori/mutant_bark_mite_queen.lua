@@ -27,7 +27,7 @@ mutant_bark_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_burrower_queen.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ imperial_cadet = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_soldier_m.iff","object/mobile/dressed_imperial_soldier_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

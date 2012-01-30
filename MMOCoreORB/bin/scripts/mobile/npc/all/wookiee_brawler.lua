@@ -27,7 +27,7 @@ wookiee_brawler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/wookiee_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

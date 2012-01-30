@@ -27,7 +27,7 @@ dageerin = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_force_sensitive_renegade.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

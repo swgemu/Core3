@@ -28,7 +28,7 @@ dolac_legasi = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dolac_legasi.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "dolac_legasi_convotemplate",
 	attacks = {

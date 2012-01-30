@@ -27,7 +27,7 @@ trainer_1hsword = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_1handsword_trainer_01.iff","object/mobile/dressed_1handsword_trainer_02.iff","object/mobile/dressed_1handsword_trainer_03.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "trainer_1hsword_convotemplate",
 	attacks = {

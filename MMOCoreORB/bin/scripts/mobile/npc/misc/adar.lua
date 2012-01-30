@@ -28,7 +28,7 @@ adar = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

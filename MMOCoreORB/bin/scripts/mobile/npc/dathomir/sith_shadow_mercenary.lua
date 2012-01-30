@@ -27,7 +27,7 @@ sith_shadow_mercenary = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sith_shadow_hum_m_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

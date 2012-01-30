@@ -27,7 +27,7 @@ giant_spined_puc = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_spined_puc.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

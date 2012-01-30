@@ -27,7 +27,7 @@ kimogila_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kimogila_hatchling.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

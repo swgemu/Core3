@@ -27,7 +27,7 @@ assault_trooper_squad_leader = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_squad_leader_white_white.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"st_assault_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ canyon_corsair_scout = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsair_scout_hum_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

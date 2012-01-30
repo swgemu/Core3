@@ -27,7 +27,7 @@ hilltop_gurreck_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

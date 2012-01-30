@@ -27,7 +27,7 @@ male_rodian_thug_low = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_cobral_thug_rodian_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

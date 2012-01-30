@@ -27,7 +27,7 @@ bith_assassin = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_cobral_hooligan_bith_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

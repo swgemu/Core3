@@ -27,7 +27,7 @@ deadly_forest_mite_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/forest_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

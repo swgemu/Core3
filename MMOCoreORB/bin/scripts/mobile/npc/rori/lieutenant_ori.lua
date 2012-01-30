@@ -27,7 +27,7 @@ lieutenant_ori = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/lieutenant_ori.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"lt._ori's_weapons"},
 	conversationTemplate = "",
 	attacks = {

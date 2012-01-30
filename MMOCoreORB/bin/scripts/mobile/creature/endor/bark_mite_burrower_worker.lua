@@ -27,7 +27,7 @@ bark_mite_burrower_worker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

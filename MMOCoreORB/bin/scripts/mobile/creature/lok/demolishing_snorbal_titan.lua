@@ -27,7 +27,7 @@ demolishing_snorbal_titan = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/snorbal.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ g12_4j = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/21b_surgical_droid.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "g12_4j_convotemplate",

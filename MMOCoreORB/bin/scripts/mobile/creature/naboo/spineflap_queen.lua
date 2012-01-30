@@ -27,7 +27,7 @@ spineflap_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/spineflap_queen.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

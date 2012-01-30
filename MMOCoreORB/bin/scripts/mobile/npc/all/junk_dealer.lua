@@ -27,7 +27,7 @@ junk_dealer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_nathan.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

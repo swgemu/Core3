@@ -27,7 +27,7 @@ domestic_humbaba = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/savage_humbaba.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

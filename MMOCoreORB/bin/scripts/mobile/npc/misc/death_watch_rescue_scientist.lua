@@ -27,7 +27,7 @@ death_watch_rescue_scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_research_scientist.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "death_watch_rescue_scientist_convotemplate",
 	attacks = {

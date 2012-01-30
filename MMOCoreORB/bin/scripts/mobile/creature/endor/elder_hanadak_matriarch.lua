@@ -27,7 +27,7 @@ elder_hanadak_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/elder_hanadak_matriarch.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

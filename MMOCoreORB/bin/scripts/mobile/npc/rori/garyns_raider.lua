@@ -27,7 +27,7 @@ garyns_raider = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_garyn_raider_twk_female_01.iff","object/mobile/dressed_garyn_raider_twk_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

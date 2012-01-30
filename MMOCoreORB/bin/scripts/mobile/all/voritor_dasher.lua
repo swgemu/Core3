@@ -27,7 +27,7 @@ voritor_dasher = Creature:new {
 	diet = NONE,
 
 	templates = {"object/mobile/voritor_dasher.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

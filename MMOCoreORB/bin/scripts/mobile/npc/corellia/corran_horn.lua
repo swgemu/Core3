@@ -28,7 +28,7 @@ corran_horn = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corran_horn.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

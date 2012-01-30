@@ -28,7 +28,7 @@ lergo_brazee = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lergo_brazee.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

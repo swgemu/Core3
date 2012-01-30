@@ -27,7 +27,7 @@ bageraset_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bageraset_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

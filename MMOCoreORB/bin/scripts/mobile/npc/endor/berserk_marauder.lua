@@ -27,7 +27,7 @@ berserk_marauder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_feral_marauder.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

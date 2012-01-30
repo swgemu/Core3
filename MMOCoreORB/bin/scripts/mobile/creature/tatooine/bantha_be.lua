@@ -27,7 +27,7 @@ bantha_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bantha_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

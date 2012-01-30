@@ -27,7 +27,7 @@ mawgax_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mawgax_youth.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ wasteland_marauder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_wandering_desert_marauder.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

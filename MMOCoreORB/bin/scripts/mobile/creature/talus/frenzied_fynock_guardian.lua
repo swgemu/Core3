@@ -27,7 +27,7 @@ frenzied_fynock_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fynock.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

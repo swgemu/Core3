@@ -26,7 +26,7 @@ hand_of_solitude = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}
 }

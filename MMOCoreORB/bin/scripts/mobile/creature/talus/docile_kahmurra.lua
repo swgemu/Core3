@@ -27,7 +27,7 @@ docile_kahmurra = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kahmurra.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

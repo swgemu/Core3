@@ -27,7 +27,7 @@ mand_bunker_technician = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mand_bunker_technician.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

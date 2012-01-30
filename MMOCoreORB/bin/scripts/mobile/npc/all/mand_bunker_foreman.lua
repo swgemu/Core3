@@ -28,7 +28,7 @@ mand_bunker_foreman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mand_bunker_foreman.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "foreman_convotemplate",
 	attacks = {

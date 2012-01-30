@@ -28,7 +28,7 @@ crider_trant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_crider_trant.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

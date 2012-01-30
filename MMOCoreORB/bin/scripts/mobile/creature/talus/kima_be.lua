@@ -27,7 +27,7 @@ kima_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kima_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

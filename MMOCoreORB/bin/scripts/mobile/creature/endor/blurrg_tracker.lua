@@ -27,7 +27,7 @@ blurrg_tracker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

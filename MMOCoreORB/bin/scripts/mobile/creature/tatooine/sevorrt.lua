@@ -27,7 +27,7 @@ sevorrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/sevorrt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

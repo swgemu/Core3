@@ -28,7 +28,7 @@ luthik_uwyr = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_luthik_uwyr.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

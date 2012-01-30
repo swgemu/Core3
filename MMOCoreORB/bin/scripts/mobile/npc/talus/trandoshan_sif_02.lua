@@ -27,7 +27,7 @@ trandoshan_sif_02 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
 	attacks = {

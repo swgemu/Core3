@@ -28,7 +28,7 @@ lethin_bludder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lethin_bludder.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

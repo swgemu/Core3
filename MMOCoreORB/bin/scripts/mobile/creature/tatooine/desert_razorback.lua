@@ -27,7 +27,7 @@ desert_razorback = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/zucca_boar.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -25,13 +25,17 @@ lord_nyax = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 7500000,
 
 	templates = {"object/mobile/dressed_lord_nyax.iff"},
-	lootgroups = {
-		{group = "nyax", chance = 2000000},
-		{group = "pistols", chance = 4000000},
-		{group = "rifles", chance = 4000000},
+	lootGroups = {
+		{
+			groups = {
+				{group = "nyax", chance = 2000000},
+				{group = "pistols", chance = 4000000},
+				{group = "rifles", chance = 4000000}
+			},
+			lootChance = 7500000
+		}
 	},
 	weapons = {"nyax's_weapons"},
 	conversationTemplate = "",

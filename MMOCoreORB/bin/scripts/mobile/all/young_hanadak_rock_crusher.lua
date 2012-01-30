@@ -27,7 +27,7 @@ young_hanadak_rock_crusher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/young_hanadak_rock_crusher.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ feared_fynock_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fearful_fynock_youth.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

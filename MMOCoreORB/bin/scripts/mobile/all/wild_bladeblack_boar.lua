@@ -27,7 +27,7 @@ wild_bladeblack_boar = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/zucca_boar.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

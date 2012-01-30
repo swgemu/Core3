@@ -27,7 +27,7 @@ diseased_vrelt_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vrelt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {

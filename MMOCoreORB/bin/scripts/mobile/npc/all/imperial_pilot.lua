@@ -27,7 +27,7 @@ imperial_pilot = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stranded_imperial_pilot.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ drakka_judarrl = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

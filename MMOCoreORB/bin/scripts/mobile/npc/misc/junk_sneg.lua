@@ -28,7 +28,7 @@ junk_sneg = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_sneg.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

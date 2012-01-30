@@ -27,7 +27,7 @@ guf_drolg_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/guf_drolg_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

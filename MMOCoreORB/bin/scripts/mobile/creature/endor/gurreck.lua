@@ -27,7 +27,7 @@ gurreck = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

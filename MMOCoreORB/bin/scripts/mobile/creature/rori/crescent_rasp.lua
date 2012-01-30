@@ -27,7 +27,7 @@ crescent_rasp = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/crowned_rasp.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

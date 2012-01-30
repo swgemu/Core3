@@ -27,7 +27,7 @@ vesp_scavenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vesp.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

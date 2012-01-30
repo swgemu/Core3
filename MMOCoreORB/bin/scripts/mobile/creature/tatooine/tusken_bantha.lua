@@ -27,7 +27,7 @@ tusken_bantha = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bantha.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

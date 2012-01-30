@@ -27,7 +27,7 @@ bothan_information_broker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

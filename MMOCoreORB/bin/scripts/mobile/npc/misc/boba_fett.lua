@@ -27,7 +27,7 @@ boba_fett = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/boba_fett.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "boba_fett_convotemplate",
 	attacks = {

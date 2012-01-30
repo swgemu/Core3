@@ -27,7 +27,7 @@ rsf_palace_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rsf_palace_guard.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

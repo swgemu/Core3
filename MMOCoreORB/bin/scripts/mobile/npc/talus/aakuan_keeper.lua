@@ -27,7 +27,7 @@ aakuan_keeper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aakuan_keeper_zabrak_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
 	attacks = {

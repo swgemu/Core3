@@ -27,7 +27,7 @@ drooling_nuna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/nuna.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ vrelt = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/vrelt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

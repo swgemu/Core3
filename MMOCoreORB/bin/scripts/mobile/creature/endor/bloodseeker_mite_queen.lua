@@ -27,7 +27,7 @@ bloodseeker_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bloodseeker_mite_queen.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

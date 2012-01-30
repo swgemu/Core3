@@ -28,7 +28,7 @@ mad_scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_research_scientist.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

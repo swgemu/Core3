@@ -27,7 +27,7 @@ ev_9d9 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/ev_9d9.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ chewbacca = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/chewbacca.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ lowland_salt_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/salt_mynock.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

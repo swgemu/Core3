@@ -27,7 +27,7 @@ rsf_security_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rsf_security_guard.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

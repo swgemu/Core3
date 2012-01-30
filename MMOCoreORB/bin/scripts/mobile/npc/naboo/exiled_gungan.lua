@@ -27,7 +27,7 @@ exiled_gungan = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_outcast.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ darklighter_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/darklight_guard.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

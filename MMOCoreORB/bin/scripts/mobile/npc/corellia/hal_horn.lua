@@ -28,7 +28,7 @@ hal_horn = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corellia_hal_horn.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

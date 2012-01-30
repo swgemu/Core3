@@ -27,7 +27,7 @@ putrid_borgle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/borgle.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

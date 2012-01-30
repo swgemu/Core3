@@ -25,10 +25,9 @@ biogenic_assistant = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 392,
 	diet = HERBIVORE,
-	lootChance = 0,
 	
 	templates = {"object/mobile/dressed_geonosian_scientist_01.iff","object/mobile/dressed_geonosian_scientist_02.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {}

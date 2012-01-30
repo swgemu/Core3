@@ -27,7 +27,7 @@ goru_rainstealer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_goru_rainstealer.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

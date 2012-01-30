@@ -27,7 +27,7 @@ aggrivated_kaadu_trampler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kaadu.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ whip = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fs_village_whip.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

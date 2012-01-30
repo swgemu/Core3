@@ -27,7 +27,7 @@ adept_panshe_shaman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ewok_m_11.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = {

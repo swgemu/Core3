@@ -25,11 +25,15 @@ death_watch_black_sun_thug = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 1000000,
 
 	templates = {"object/mobile/dressed_black_sun_thug.iff"},
-	lootgroups = {
-		{group = "death_watch_bunker_commoners", chance = 9000000},
+	lootGroups = {
+		{
+			groups = {
+				{group = "death_watch_bunker_commoners", chance = 9000000}
+			},
+			lootChance = 1000000
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ mellichae = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"dark_jedi_weapons"},
 	attacks = {}
 }

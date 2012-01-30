@@ -27,7 +27,7 @@ ebenn_q3_baobab = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/huma_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

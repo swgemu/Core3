@@ -27,7 +27,7 @@ stunted_huf_dun = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/stunted_huf_dun.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

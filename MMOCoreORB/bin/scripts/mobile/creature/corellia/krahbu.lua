@@ -27,7 +27,7 @@ krahbu = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/krahbu.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

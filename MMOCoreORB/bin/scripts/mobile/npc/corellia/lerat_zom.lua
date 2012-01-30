@@ -27,7 +27,7 @@ lerat_zom = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/lerat_zom.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

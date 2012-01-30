@@ -27,7 +27,7 @@ nyms_surveyor = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_surveyer_rod_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

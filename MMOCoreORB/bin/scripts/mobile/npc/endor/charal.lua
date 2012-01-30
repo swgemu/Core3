@@ -27,7 +27,7 @@ charal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/charal.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

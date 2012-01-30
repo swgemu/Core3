@@ -27,7 +27,7 @@ blurrg_pup = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg_pup.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

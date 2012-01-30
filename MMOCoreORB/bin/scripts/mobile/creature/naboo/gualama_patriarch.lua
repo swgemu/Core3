@@ -27,7 +27,7 @@ gualama_patriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gualama_patriarch.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

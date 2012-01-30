@@ -27,7 +27,7 @@ hanadak_ancient = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hanadak.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

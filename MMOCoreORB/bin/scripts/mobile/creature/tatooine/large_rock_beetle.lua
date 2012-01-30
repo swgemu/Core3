@@ -27,7 +27,7 @@ large_rock_beetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rock_beetle.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

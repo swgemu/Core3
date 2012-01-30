@@ -27,7 +27,7 @@ enraged_defender = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/piket.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

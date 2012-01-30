@@ -27,7 +27,7 @@ mountain_worrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_worrt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {

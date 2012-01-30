@@ -27,7 +27,7 @@ dune_stalker_brawler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_dune_stalker_brawler.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
 	attacks = {

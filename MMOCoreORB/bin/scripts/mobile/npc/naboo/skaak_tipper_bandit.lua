@@ -26,7 +26,7 @@ skaak_tipper_bandit = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

@@ -27,7 +27,7 @@ desert_scavenger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/borgle.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

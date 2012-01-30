@@ -28,7 +28,7 @@ haleen_snowline = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_haline_snowline.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ lt_oron_wintree = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lt_oron_wintree.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

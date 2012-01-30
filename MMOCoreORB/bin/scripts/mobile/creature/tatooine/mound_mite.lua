@@ -27,7 +27,7 @@ mound_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mound_mite.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

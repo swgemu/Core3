@@ -27,7 +27,7 @@ veneral_devourer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/pugoriss.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ vana_sage = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lt_vana_sage.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

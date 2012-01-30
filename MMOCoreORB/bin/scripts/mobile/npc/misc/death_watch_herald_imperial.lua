@@ -28,7 +28,7 @@ death_watch_herald_imperial = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "commander_dkrn_convotemplate",
 	attacks = {

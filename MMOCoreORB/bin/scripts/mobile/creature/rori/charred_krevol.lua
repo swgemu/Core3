@@ -27,7 +27,7 @@ charred_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_krevol.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

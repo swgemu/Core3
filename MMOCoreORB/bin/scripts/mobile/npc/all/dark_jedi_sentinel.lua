@@ -25,11 +25,15 @@ dark_jedi_sentinel = Creature:new {
 	creatureBitmask = PACK + HERD + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 500000,
 
 	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
-	lootgroups = {
-		{group = "holocron_dark", chance = 10000000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "holocron_dark", chance = 10000000}
+			},
+			lootChance = 500000
+		}
 	},
 	weapons = {"dark_jedi_weapons"},
 	conversationTemplate = "",

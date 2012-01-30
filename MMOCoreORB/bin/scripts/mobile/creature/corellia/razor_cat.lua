@@ -27,7 +27,7 @@ razor_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_sand_panther.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

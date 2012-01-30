@@ -27,7 +27,7 @@ marooned_pirate_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_marooned_pirate_captain_tran_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

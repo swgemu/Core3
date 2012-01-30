@@ -27,7 +27,7 @@ lesser_prophet_of_the_dark_side = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"dark_jedi_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ untrained_wielder_of_the_dark_side = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_untrained_wielder_of_the_darkside.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {

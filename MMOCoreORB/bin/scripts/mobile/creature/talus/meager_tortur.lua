@@ -27,7 +27,7 @@ meager_tortur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/meager_tortur.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

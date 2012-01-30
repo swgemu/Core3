@@ -27,7 +27,7 @@ cu_pa_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/cu_pa_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ kimogila_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kimogila_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

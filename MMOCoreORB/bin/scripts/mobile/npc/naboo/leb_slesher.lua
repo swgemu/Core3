@@ -28,7 +28,7 @@ leb_slesher = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_leb_slesher.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

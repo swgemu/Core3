@@ -27,7 +27,7 @@ male_snorbal_calf = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/male_snorbal_calf.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -25,16 +25,20 @@ dark_trooper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 4000000,
 
 	templates = {"object/mobile/dark_trooper.iff"},
-	lootgroups = {
-		{group = "holocron_light", chance = 1000000},
-		{group = "holocron_dark", chance = 800000},
-		{group = "rifles", chance = 2800000},
-		{group = "pistols", chance = 3200000},
-		{group = "clothing_attachments", chance = 1100000},
-		{group = "armor_attachments", chance = 1100000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "holocron_light", chance = 1000000},
+				{group = "holocron_dark", chance = 800000},
+				{group = "rifles", chance = 2800000},
+				{group = "pistols", chance = 3200000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}
 	},
 	weapons = {"dark_trooper_weapons"},
 	conversationTemplate = "",

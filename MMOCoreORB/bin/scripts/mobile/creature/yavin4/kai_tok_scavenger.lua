@@ -27,7 +27,7 @@ kai_tok_scavenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kai_tok.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

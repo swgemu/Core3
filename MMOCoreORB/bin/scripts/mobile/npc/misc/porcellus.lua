@@ -26,7 +26,7 @@ porcellus = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_porcellus.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

@@ -27,7 +27,7 @@ chadra_fan_assassin = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/chadra_fan_female.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

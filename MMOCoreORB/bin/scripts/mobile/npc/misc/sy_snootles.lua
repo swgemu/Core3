@@ -26,7 +26,7 @@ sy_snootles = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/sy_snootles.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

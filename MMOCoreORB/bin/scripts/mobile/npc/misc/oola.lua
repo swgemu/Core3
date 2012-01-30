@@ -26,7 +26,7 @@ oola = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/oola.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

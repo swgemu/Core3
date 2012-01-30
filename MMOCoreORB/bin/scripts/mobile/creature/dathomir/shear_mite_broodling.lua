@@ -27,7 +27,7 @@ shear_mite_broodling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite_broodling.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

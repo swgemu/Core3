@@ -27,7 +27,7 @@ nym = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/nym.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

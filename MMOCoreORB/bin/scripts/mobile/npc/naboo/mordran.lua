@@ -26,7 +26,7 @@ mordran = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"mordran's_weapons"},
 	attacks = {}
 }

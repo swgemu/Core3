@@ -27,7 +27,7 @@ flesh_eating_chuba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/chuba.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

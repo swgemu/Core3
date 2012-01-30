@@ -27,7 +27,7 @@ kusak_pup = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kusak_pup.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

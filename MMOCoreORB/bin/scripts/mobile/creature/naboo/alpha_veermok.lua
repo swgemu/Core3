@@ -27,7 +27,7 @@ alpha_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/alpha_veermok.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

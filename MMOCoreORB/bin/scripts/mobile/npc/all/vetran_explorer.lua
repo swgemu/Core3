@@ -28,7 +28,7 @@ vetran_explorer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

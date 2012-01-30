@@ -27,7 +27,7 @@ captain_eso = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_captain_eso.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

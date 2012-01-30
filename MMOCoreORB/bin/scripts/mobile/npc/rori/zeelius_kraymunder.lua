@@ -28,7 +28,7 @@ zeelius_kraymunder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_zeelius_kraymunder.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

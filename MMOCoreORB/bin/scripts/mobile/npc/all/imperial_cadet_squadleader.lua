@@ -27,7 +27,7 @@ imperial_cadet_squadleader = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_squad_leader_trainer_03.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

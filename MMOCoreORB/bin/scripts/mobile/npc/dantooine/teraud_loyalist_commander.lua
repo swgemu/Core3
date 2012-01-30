@@ -27,7 +27,7 @@ teraud_loyalist_commander = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_teraud_loyalist_s04.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

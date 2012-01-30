@@ -27,7 +27,7 @@ rsf_security_officer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rsf_security_officer.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

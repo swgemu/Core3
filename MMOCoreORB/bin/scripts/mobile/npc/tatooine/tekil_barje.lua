@@ -28,7 +28,7 @@ tekil_barje = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/tekil_barje.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ daclif_gallamby = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_daclif_gallamby.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

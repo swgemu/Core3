@@ -27,7 +27,7 @@ merek_deaths_head = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/merek.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

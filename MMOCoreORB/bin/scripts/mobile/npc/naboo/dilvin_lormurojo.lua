@@ -28,7 +28,7 @@ dilvin_lormurojo = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/huma_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

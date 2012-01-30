@@ -27,7 +27,7 @@ canoid = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/canoid.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

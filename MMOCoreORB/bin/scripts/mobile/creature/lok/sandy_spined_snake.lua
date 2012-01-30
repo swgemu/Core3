@@ -27,7 +27,7 @@ sandy_spined_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/spined_snake.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {

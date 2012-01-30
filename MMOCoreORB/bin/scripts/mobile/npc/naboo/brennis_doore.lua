@@ -28,7 +28,7 @@ brennis_doore = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_brennis_doore.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

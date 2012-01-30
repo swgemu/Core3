@@ -26,11 +26,15 @@ klin_nif = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 10000000,
 
 	templates = {"object/mobile/dressed_death_watch_silver.iff"},
-	lootgroups = {
-		{group = "klin_nif_drop", chance = 10000000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "klin_nif_drop", chance = 10000000}
+			},
+			lootChance = 10000000
+		}
 	},
 	weapons = {"death_watch_commander_weapons"},
 	conversationTemplate = "",

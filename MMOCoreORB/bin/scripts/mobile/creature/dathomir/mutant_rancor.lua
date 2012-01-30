@@ -25,13 +25,17 @@ mutant_rancor = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	lootChance = 4000000,
 
 	templates = {"object/mobile/mutant_rancor.iff"},
-	lootgroups = {
-		{group = "rancor_common", chance = 3300000},
-		{group = "pistols", chance = 3300000},
-		{group = "rifles", chance = 3400000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "rancor_common", chance = 3300000},
+				{group = "pistols", chance = 3300000},
+				{group = "rifles", chance = 3400000}
+			},
+			lootChance = 4000000
+		}
 	},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,7 +27,7 @@ fath_hray = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fath_hray.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

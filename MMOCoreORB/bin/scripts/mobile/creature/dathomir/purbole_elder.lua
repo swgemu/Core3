@@ -27,7 +27,7 @@ purbole_elder = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/purbole_elder.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ lesser_prophet_of_the_light_side = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_jedi_trainer_old_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
 	attacks = {

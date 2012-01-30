@@ -27,7 +27,7 @@ piket = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/piket.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -25,11 +25,15 @@ light_jedi_sentinel = Creature:new {
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 500000,
 
 	templates = {"object/mobile/dressed_jedi_trainer_old_human_male_01.iff"},
-	lootgroups = {
-		{group = "holocron_light", chance = 10000000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "holocron_light", chance = 10000000}
+			},
+			lootChance = 500000
+		}
 	},
 	weapons = {"dark_jedi_weapons"},
 	conversationTemplate = "",

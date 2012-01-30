@@ -27,7 +27,7 @@ giant_cave_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_veermok.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

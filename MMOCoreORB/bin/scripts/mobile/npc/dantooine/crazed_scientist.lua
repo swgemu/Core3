@@ -27,7 +27,7 @@ crazed_scientist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_crazed_imperial.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

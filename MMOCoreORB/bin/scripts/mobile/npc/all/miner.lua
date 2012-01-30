@@ -31,7 +31,7 @@ miner = Creature:new {
 	"object/mobile/dressed_mand_miner_hum_01.iff",
 	"object/mobile/dressed_mand_miner_hum_02.iff",
 	"object/mobile/dressed_mand_miner_hum_03.iff",},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

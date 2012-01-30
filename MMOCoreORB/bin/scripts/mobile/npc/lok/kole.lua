@@ -27,7 +27,7 @@ kole = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kole.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

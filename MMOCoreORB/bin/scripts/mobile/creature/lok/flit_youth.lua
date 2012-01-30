@@ -27,7 +27,7 @@ flit_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flit_youth.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

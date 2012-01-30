@@ -27,7 +27,7 @@ slum_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/lesser_desert_womp_rat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

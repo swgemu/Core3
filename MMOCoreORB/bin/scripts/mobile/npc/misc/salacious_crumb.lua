@@ -26,7 +26,7 @@ salacious_crumb = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/salacious_crumb.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	attacks = {}
 }

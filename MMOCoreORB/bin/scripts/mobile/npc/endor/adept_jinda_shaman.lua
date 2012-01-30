@@ -27,7 +27,7 @@ adept_jinda_shaman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jinda_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

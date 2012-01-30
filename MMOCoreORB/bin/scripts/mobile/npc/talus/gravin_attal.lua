@@ -27,7 +27,7 @@ gravin_attal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_gravin_attal.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

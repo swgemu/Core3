@@ -27,7 +27,7 @@ force_sensitive_crypt_crawler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_force_sensitive_crypt_crawler.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {

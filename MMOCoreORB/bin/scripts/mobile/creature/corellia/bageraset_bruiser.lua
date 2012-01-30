@@ -27,7 +27,7 @@ bageraset_bruiser = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bageraset.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

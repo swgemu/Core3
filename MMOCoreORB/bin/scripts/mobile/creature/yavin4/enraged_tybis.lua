@@ -26,7 +26,7 @@ enraged_tybis = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/tybis.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	attacks = {}
 }

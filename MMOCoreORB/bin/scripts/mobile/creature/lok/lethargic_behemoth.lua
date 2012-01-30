@@ -27,7 +27,7 @@ lethargic_behemoth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_flit.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ nyms_elite_patrol = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_guard_elite_rod_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

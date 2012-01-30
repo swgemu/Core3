@@ -27,7 +27,7 @@ feral_orphan = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dire_cat.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

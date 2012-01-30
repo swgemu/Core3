@@ -27,7 +27,7 @@ kobola_miner = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_kobola_miner_human_male_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

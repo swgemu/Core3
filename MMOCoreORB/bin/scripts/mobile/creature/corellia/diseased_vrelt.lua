@@ -27,7 +27,7 @@ diseased_vrelt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vrelt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ binayre_swindler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_binayre_swindler_zabrak_female_01.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

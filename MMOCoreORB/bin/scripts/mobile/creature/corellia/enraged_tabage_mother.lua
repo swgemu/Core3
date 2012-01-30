@@ -27,7 +27,7 @@ enraged_tabage_mother = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tabage.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ boss_nass = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/boss_nass.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ dwarf_nuna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dwarf_nuna.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ marauder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_marauder.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

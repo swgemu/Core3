@@ -27,7 +27,7 @@ skilled_jinda_worker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jinda_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

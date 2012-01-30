@@ -27,7 +27,7 @@ garyn_sykes = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_gavyn_sykes.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

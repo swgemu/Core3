@@ -28,7 +28,7 @@ luthin_dlunar = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_luthin_dlunar.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

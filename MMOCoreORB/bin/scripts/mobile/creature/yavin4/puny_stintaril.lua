@@ -27,7 +27,7 @@ puny_stintaril = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/puny_stintaril.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

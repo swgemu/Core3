@@ -27,7 +27,7 @@ tatooine_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mynock.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

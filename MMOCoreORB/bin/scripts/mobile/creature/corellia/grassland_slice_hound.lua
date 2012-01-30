@@ -27,7 +27,7 @@ grassland_slice_hound = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/female_grassland_slice_hound.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

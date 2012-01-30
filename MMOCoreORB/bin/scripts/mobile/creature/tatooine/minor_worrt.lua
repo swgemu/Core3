@@ -27,7 +27,7 @@ minor_worrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/minor_worrt.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

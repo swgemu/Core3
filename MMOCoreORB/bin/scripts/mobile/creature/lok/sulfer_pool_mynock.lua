@@ -27,7 +27,7 @@ sulfer_pool_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/riverside_sulfur_mynock.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

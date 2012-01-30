@@ -28,7 +28,7 @@ capt_loftus = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/capt_loftus.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

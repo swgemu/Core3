@@ -25,13 +25,17 @@ death_watch_wraith = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 1000000,
 
 	templates = {"object/mobile/dressed_death_watch_silver.iff"},
-	lootgroups = {
-		{group = "death_watch_bunker_commoners", chance =   5500000},
-		{group = "death_watch_bunker_lieutenants", chance = 3500000},
-		{group = "death_watch_bunker_ingredient", chance =  1000000},
+	lootGroups = {
+		{
+			groups = {
+				{group = "death_watch_bunker_commoners", chance =   5500000},
+				{group = "death_watch_bunker_lieutenants", chance = 3500000},
+				{group = "death_watch_bunker_ingredient", chance =  1000000}
+			},
+			lootChance = 1000000
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

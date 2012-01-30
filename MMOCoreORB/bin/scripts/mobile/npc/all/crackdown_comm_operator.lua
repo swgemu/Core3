@@ -27,7 +27,7 @@ crackdown_comm_operator = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_officer_m.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,7 @@ foaming_vynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vynock.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

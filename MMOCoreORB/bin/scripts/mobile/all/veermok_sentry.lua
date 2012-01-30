@@ -27,7 +27,7 @@ veermok_sentry = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/alpha_veermok.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

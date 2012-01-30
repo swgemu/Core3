@@ -27,7 +27,7 @@ bestine_merchant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bestine_rumor08.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

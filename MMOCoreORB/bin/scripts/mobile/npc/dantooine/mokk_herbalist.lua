@@ -27,7 +27,7 @@ mokk_herbalist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dantari_female.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = {

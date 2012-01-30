@@ -27,7 +27,7 @@ villager_force_sensitive_village = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_force_trained_archaist.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

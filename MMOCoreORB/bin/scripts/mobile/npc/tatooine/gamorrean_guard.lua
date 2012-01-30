@@ -27,7 +27,7 @@ gamorrean_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gamorrean.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

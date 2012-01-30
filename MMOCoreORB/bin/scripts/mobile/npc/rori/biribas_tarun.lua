@@ -28,7 +28,7 @@ biribas_tarun = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_biribas_tarun.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

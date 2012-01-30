@@ -27,7 +27,7 @@ archaic_gondula_ritualist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jinda_male.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -28,7 +28,7 @@ tamvar_senzen = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tamvar_senzen.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

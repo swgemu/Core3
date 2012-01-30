@@ -27,7 +27,7 @@ rancor_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rancor_hue.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

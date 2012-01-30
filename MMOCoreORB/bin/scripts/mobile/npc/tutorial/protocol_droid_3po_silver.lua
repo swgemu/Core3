@@ -26,7 +26,7 @@ protocol_droid_3po_silver = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
 	conversationTemplate = "protocol_droid_tutorial_convotemplate",--dont change this

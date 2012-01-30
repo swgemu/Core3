@@ -27,7 +27,7 @@ clipped_fynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/clipped_fynock.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

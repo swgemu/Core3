@@ -26,7 +26,7 @@ naboo_dread_pirate = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	attacks = {}
 }

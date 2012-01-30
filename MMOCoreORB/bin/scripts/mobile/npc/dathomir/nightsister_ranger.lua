@@ -25,16 +25,20 @@ nightsister_ranger = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 5300000,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_ranger.iff"},
-	lootgroups = {
-		{group = "nightsister_crystals_1", chance = 1000000},
-		{group = "nightsister_common", chance = 6500000},
-		{group = "armor_attachments", chance = 550000},
-		{group = "clothing_attachments", chance = 550000},
-		{group = "pistols", chance = 750000},
-		{group = "rifles", chance = 750000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "nightsister_crystals_1", chance = 1000000},
+				{group = "nightsister_common", chance = 6500000},
+				{group = "armor_attachments", chance = 550000},
+				{group = "clothing_attachments", chance = 550000},
+				{group = "pistols", chance = 750000},
+				{group = "rifles", chance = 750000}
+			},
+			lootChance = 5300000
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

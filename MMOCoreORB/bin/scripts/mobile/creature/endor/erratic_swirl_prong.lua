@@ -27,7 +27,7 @@ erratic_swirl_prong = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/swirl_prong.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

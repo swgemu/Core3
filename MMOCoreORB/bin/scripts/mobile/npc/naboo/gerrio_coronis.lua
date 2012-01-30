@@ -27,7 +27,7 @@ gerrio_coronis = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_gerrio_coronis.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

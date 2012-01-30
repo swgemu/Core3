@@ -26,7 +26,7 @@ spice_collective_workchief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	attacks = {}
 }

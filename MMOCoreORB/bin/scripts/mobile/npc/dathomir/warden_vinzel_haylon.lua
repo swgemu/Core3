@@ -28,7 +28,7 @@ warden_vinzel_haylon = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_vinzel_haylon.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

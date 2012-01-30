@@ -27,7 +27,7 @@ diax = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_diax.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

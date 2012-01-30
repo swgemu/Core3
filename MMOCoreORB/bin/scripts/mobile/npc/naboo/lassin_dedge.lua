@@ -28,7 +28,7 @@ lassin_dedge = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lassin_dedge.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

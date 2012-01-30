@@ -26,7 +26,7 @@ senior_specforce_heavy_weapons_specialist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {}
 }

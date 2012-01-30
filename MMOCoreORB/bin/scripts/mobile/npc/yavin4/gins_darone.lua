@@ -27,7 +27,7 @@ gins_darone = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_gins_darone.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

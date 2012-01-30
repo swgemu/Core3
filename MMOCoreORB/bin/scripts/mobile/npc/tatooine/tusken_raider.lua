@@ -25,13 +25,17 @@ tusken_raider = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	lootChance = 4500000,
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootgroups = {
-		{group = "tusken", chance = 5500000},
-		{group = "rifles", chance = 2250000},
-		{group = "pistols", chance = 2250000}
+	lootGroups = {
+		{
+			groups = {
+				{group = "tusken", chance = 5500000},
+				{group = "rifles", chance = 2250000},
+				{group = "pistols", chance = 2250000}
+			},
+			lootChance = 4500000
+		}
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",

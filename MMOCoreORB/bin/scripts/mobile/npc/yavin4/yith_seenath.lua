@@ -28,7 +28,7 @@ yith_seenath = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_yith_seenath.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

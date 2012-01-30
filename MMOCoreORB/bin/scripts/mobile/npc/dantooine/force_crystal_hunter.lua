@@ -27,7 +27,7 @@ force_crystal_hunter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dark_force_crystal_hunter.iff"},
-	lootgroups = {},
+	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {
