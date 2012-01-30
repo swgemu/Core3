@@ -84,6 +84,18 @@ class Buff extends ManagedObject implements Logger {
 	@dereferenced
 	protected StringIdChatParameter endMessage;
 	
+	protected string startFlyFile;
+	protected string startFlyAux;
+	protected byte startFlyRed;
+	protected byte startFlyGreen;
+	protected byte startFlyBlue;
+	
+	protected string endFlyFile;
+	protected string endFlyAux;
+	protected byte endFlyRed;
+	protected byte endFlyGreen;
+	protected byte endFlyBlue;
+	
 	@dereferenced
 	protected Time nextExecutionTime; 
 
@@ -95,6 +107,9 @@ class Buff extends ManagedObject implements Logger {
 		speedMultiplierMod = -1.f;
 		accelerationMultiplierMod = -1.f;
 		fillAttributesOnBuff = false;
+		
+		startFlyFile = "";
+		endFlyFile = "";
 
 		Logger.setLoggingName("Buff");
 		
@@ -220,5 +235,9 @@ class Buff extends ManagedObject implements Logger {
 	@local
 	public native void setStartMessage(@dereferenced StringIdChatParameter start);
 	@local
-	public native void setEndMessage(@dereferenced StringIdChatParameter start);
+	public native void setEndMessage(@dereferenced StringIdChatParameter end);
+	
+	public native void setStartFlyText(final string file, final string aux, byte red, byte green, byte blue);
+	
+	public native void setEndFlyText(final string file, final string aux, byte red, byte green, byte blue);
 }

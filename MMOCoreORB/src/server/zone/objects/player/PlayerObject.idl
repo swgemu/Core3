@@ -214,8 +214,6 @@ class PlayerObject extends IntangibleObject {
 	
 	protected transient boolean spawnedBlueFrog; //TODO: Remove when admin permissions are implemented.
 	
-	protected int centeredBonus;
-	
 	protected boolean invisible; //TODO: Could we add this to the states mask as an unused state?
 	
 	@dereferenced
@@ -282,8 +280,6 @@ class PlayerObject extends IntangibleObject {
 		invisible = false;
 		
 		factionStatus = 0;
-		
-		centeredBonus = 0;
 		
 		raceID = 0;
 		
@@ -1185,14 +1181,6 @@ class PlayerObject extends IntangibleObject {
 	
 	public unsigned int getClientLastMovementStamp() {
 		return clientLastMovementStamp;
-	}
-	
-	public int getCenteredBonus() {
-		return centeredBonus;
-	}
-	
-	public void setCenteredBonus(int bonus) {
-		centeredBonus = bonus;
 	}
 
 	public boolean isInvisible() {

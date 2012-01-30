@@ -730,10 +730,6 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
-	int getCenteredBonus();
-
-	void setCenteredBonus(int bonus);
-
 	bool isInvisible();
 
 	void setInvisible(bool invis);
@@ -901,8 +897,6 @@ protected:
 	int factionStatus;
 
 	bool spawnedBlueFrog;
-
-	int centeredBonus;
 
 	bool invisible;
 
@@ -1353,10 +1347,6 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
-	int getCenteredBonus();
-
-	void setCenteredBonus(int bonus);
-
 	bool isInvisible();
 
 	void setInvisible(bool invis);
@@ -1757,10 +1747,6 @@ public:
 	void setFactionStatus(int status);
 
 	unsigned int getClientLastMovementStamp();
-
-	int getCenteredBonus();
-
-	void setCenteredBonus(int bonus);
 
 	bool isInvisible();
 

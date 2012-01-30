@@ -14,7 +14,7 @@
  *	BuffStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_APPLYOPTIONBITS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_REMOVEOPTIONBITS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_ADDOPTIONBIT__LONG_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTRIBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_APPLYOPTIONBITS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_REMOVEOPTIONBITS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_ADDOPTIONBIT__LONG_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTRIBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_};
 
 Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) : ManagedObject(DummyConstructorParameter::instance()) {
 	BuffImplementation* _implementation = new BuffImplementation(creo, buffcrc, duration, bufftype);
@@ -539,13 +539,49 @@ void Buff::setStartMessage(StringIdChatParameter& start) {
 		_implementation->setStartMessage(start);
 }
 
-void Buff::setEndMessage(StringIdChatParameter& start) {
+void Buff::setEndMessage(StringIdChatParameter& end) {
 	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->setEndMessage(start);
+		_implementation->setEndMessage(end);
+}
+
+void Buff::setStartFlyText(const String& file, const String& aux, byte red, byte green, byte blue) {
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_);
+		method.addAsciiParameter(file);
+		method.addAsciiParameter(aux);
+		method.addByteParameter(red);
+		method.addByteParameter(green);
+		method.addByteParameter(blue);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setStartFlyText(file, aux, red, green, blue);
+}
+
+void Buff::setEndFlyText(const String& file, const String& aux, byte red, byte green, byte blue) {
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_);
+		method.addAsciiParameter(file);
+		method.addAsciiParameter(aux);
+		method.addByteParameter(red);
+		method.addByteParameter(green);
+		method.addByteParameter(blue);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setEndFlyText(file, aux, red, green, blue);
 }
 
 DistributedObjectServant* Buff::_getImplementation() {
@@ -718,6 +754,56 @@ bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 		return true;
 	}
 
+	if (_name == "startFlyFile") {
+		TypeInfo<String >::parseFromBinaryStream(&startFlyFile, stream);
+		return true;
+	}
+
+	if (_name == "startFlyAux") {
+		TypeInfo<String >::parseFromBinaryStream(&startFlyAux, stream);
+		return true;
+	}
+
+	if (_name == "startFlyRed") {
+		TypeInfo<byte >::parseFromBinaryStream(&startFlyRed, stream);
+		return true;
+	}
+
+	if (_name == "startFlyGreen") {
+		TypeInfo<byte >::parseFromBinaryStream(&startFlyGreen, stream);
+		return true;
+	}
+
+	if (_name == "startFlyBlue") {
+		TypeInfo<byte >::parseFromBinaryStream(&startFlyBlue, stream);
+		return true;
+	}
+
+	if (_name == "endFlyFile") {
+		TypeInfo<String >::parseFromBinaryStream(&endFlyFile, stream);
+		return true;
+	}
+
+	if (_name == "endFlyAux") {
+		TypeInfo<String >::parseFromBinaryStream(&endFlyAux, stream);
+		return true;
+	}
+
+	if (_name == "endFlyRed") {
+		TypeInfo<byte >::parseFromBinaryStream(&endFlyRed, stream);
+		return true;
+	}
+
+	if (_name == "endFlyGreen") {
+		TypeInfo<byte >::parseFromBinaryStream(&endFlyGreen, stream);
+		return true;
+	}
+
+	if (_name == "endFlyBlue") {
+		TypeInfo<byte >::parseFromBinaryStream(&endFlyBlue, stream);
+		return true;
+	}
+
 	if (_name == "nextExecutionTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextExecutionTime, stream);
 		return true;
@@ -842,6 +928,86 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "startFlyFile";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&startFlyFile, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startFlyAux";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&startFlyAux, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startFlyRed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&startFlyRed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startFlyGreen";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&startFlyGreen, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startFlyBlue";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&startFlyBlue, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "endFlyFile";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&endFlyFile, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "endFlyAux";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&endFlyAux, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "endFlyRed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&endFlyRed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "endFlyGreen";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&endFlyGreen, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "endFlyBlue";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&endFlyBlue, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "nextExecutionTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -851,7 +1017,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 14 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 24 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) {
@@ -870,6 +1036,10 @@ BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcr
 	accelerationMultiplierMod = -1.f;
 	// server/zone/objects/creature/buffs/Buff.idl():  		fillAttributesOnBuff = false;
 	fillAttributesOnBuff = false;
+	// server/zone/objects/creature/buffs/Buff.idl():  		startFlyFile = "";
+	startFlyFile = "";
+	// server/zone/objects/creature/buffs/Buff.idl():  		endFlyFile = "";
+	endFlyFile = "";
 	// server/zone/objects/creature/buffs/Buff.idl():  		Logger.setLoggingName("Buff");
 	Logger::setLoggingName("Buff");
 	// server/zone/objects/creature/buffs/Buff.idl():  		init();
@@ -1103,6 +1273,12 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISATTRIBUTEBUFF__:
 		resp->insertBoolean(isAttributeBuff());
 		break;
+	case RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_:
+		setStartFlyText(inv->getAsciiParameter(_param0_setStartFlyText__String_String_byte_byte_byte_), inv->getAsciiParameter(_param1_setStartFlyText__String_String_byte_byte_byte_), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		break;
+	case RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_:
+		setEndFlyText(inv->getAsciiParameter(_param0_setEndFlyText__String_String_byte_byte_byte_), inv->getAsciiParameter(_param1_setEndFlyText__String_String_byte_byte_byte_), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -1256,6 +1432,14 @@ bool BuffAdapter::isSpiceBuff() {
 
 bool BuffAdapter::isAttributeBuff() {
 	return (static_cast<Buff*>(stub))->isAttributeBuff();
+}
+
+void BuffAdapter::setStartFlyText(const String& file, const String& aux, byte red, byte green, byte blue) {
+	(static_cast<Buff*>(stub))->setStartFlyText(file, aux, red, green, blue);
+}
+
+void BuffAdapter::setEndFlyText(const String& file, const String& aux, byte red, byte green, byte blue) {
+	(static_cast<Buff*>(stub))->setEndFlyText(file, aux, red, green, blue);
 }
 
 /*

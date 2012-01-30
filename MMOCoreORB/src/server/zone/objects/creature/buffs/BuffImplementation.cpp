@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/Buffs.h"
+#include "server/zone/packets/object/ShowFlyText.h"
 
 void BuffImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -107,6 +108,10 @@ void BuffImplementation::activate(bool applyModifiers) {
 
 		if (!startMessage.isEmpty())
 			creature->sendSystemMessage(startMessage);
+
+		if (!startFlyFile.isEmpty())
+			creature->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
+
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
@@ -131,6 +136,9 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 
 		if (!endMessage.isEmpty())
 			creature->sendSystemMessage(endMessage);
+
+		if (!endFlyFile.isEmpty())
+			creature->showFlyText(endFlyFile, endFlyAux, endFlyRed, endFlyGreen, endFlyBlue);
 
 		clearBuffEvent();
 
@@ -372,3 +380,20 @@ void BuffImplementation::setStartMessage(StringIdChatParameter& start) {
 void BuffImplementation::setEndMessage(StringIdChatParameter& end) {
 	endMessage = end;
 }
+
+void BuffImplementation::setStartFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {
+	startFlyFile = file;
+	startFlyAux = aux;
+	startFlyRed = red;
+	startFlyGreen = green;
+	startFlyBlue = blue;
+}
+
+void BuffImplementation::setEndFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {
+	endFlyFile = file;
+	endFlyAux = aux;
+	endFlyRed = red;
+	endFlyGreen = green;
+	endFlyBlue = blue;
+}
+

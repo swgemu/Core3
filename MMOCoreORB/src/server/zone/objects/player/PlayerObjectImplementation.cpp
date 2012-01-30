@@ -173,8 +173,6 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 
 	surveyTool = NULL;
 
-	centeredBonus = 0;
-
 	serverLastMovementStamp.updateToCurrentTime();
 
 	lastValidatedPosition.update(getParent());

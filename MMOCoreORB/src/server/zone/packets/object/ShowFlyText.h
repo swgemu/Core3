@@ -46,6 +46,13 @@ which carries forward this exception.
 #define SHOWFLYTEXT_H_
 
 #include "ObjectControllerMessage.h"
+#include "server/zone/objects/scene/SceneObject.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
 
 class ShowFlyText : public ObjectControllerMessage {
 public:
@@ -64,5 +71,10 @@ public:
 	}
 
 };
+
+}
+}
+}
+}
 
 #endif /*SHOWFLYTEXT_H_*/

@@ -46,7 +46,9 @@ which carries forward this exception.
 #define CENTEROFBEINGCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/events/CenterOfBeingEvent.h"
+#include "server/zone/packets/object/ShowFlyText.h"
+
+using server::zone::packets::object::ShowFlyText;
 
 
 class CenterOfBeingCommand : public QueueCommand {
@@ -68,35 +70,34 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
-		PlayerObject* ghost = player->getPlayerObject();
+		PlayerObject* ghost = creature->getPlayerObject();
 
 		if (creature->hasBuff(String("centerofbeing").hashCode())) {
-			player->sendSystemMessage("combat_effects", "already_centered");
+			creature->sendSystemMessage("combat_effects", "already_centered");
 			return GENERALERROR;
 		}
 
-		WeaponObject* weapon = player->getWeapon();
+		WeaponObject* weapon = creature->getWeapon();
 
 		int duration = 0;
 		int efficacy = 0;
 		String efficacyMod = "";
 
 		if (weapon->isUnarmedWeapon()) {
-			duration = player->getSkillMod("center_of_being_duration_unarmed");
-			efficacy = player->getSkillMod("unarmed_center_of_being_efficacy");
+			duration = creature->getSkillMod("center_of_being_duration_unarmed");
+			efficacy = creature->getSkillMod("unarmed_center_of_being_efficacy");
 			efficacyMod = "private_unarmed_passive_defense";
 		} else if (weapon->isOneHandMeleeWeapon()) {
-			duration = player->getSkillMod("center_of_being_duration_onehandmelee");
-			efficacy = player->getSkillMod("onehandmelee_center_of_being_efficacy");
+			duration = creature->getSkillMod("center_of_being_duration_onehandmelee");
+			efficacy = creature->getSkillMod("onehandmelee_center_of_being_efficacy");
 			efficacyMod = "private_dodge";
 		} else if (weapon->isTwoHandMeleeWeapon()) {
-			duration = player->getSkillMod("center_of_being_duration_twohandmelee");
-			efficacy = player->getSkillMod("twohandmelee_center_of_being_efficacy");
+			duration = creature->getSkillMod("center_of_being_duration_twohandmelee");
+			efficacy = creature->getSkillMod("twohandmelee_center_of_being_efficacy");
 			efficacyMod = "private_counterattack";
 		} else if (weapon->isPolearmWeaponObject()) {
-			duration = player->getSkillMod("center_of_being_duration_polearm");
-			efficacy = player->getSkillMod("polearm_center_of_being_efficacy");
+			duration = creature->getSkillMod("center_of_being_duration_polearm");
+			efficacy = creature->getSkillMod("polearm_center_of_being_efficacy");
 			efficacyMod = "private_block";
 		} else
 			return GENERALERROR;
@@ -104,12 +105,18 @@ public:
 		if (duration == 0 || efficacy == 0 || efficacyMod == "")
 			return GENERALERROR;
 
-		Buff* centered = new Buff(player, String("centerofbeing").hashCode(), duration * 1000, BuffType::SKILL);
+		Buff* centered = new Buff(creature, String("centerofbeing").hashCode(), duration, BuffType::SKILL);
 		centered->setSkillModifier(efficacyMod, efficacy);
-		player->addBuff(centered);
 
-		player->sendSystemMessage("combat_effects", "center_start");
-		player->showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
+		StringIdChatParameter startMsg("combat_effects", "center_start");
+		StringIdChatParameter endMsg("combat_effects", "center_stop");
+		centered->setStartMessage(startMsg);
+		centered->setEndMessage(endMsg);
+
+		centered->setStartFlyText("combat_effects", "center_start_fly", 0, 255, 0);
+		centered->setEndFlyText("combat_effects", "center_stop_fly", 255, 0, 0);
+
+		creature->addBuff(centered);
 
 		return SUCCESS;
 	}
