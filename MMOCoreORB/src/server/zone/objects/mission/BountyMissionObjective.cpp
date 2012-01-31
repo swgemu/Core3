@@ -22,7 +22,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_SPAWNTARGETANDUPDATEWAYPOINT__,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_SPAWNTARGETANDUPDATEWAYPOINT__,RPC_CANCELALLTASKS__};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -223,6 +223,19 @@ Vector3 BountyMissionObjective::getTargetPosition() {
 		return _implementation->getTargetPosition();
 }
 
+void BountyMissionObjective::cancelAllTasks() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANCELALLTASKS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->cancelAllTasks();
+}
+
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
 
 	_updated = true;
@@ -351,8 +364,8 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
-	if (_name == "droidTask") {
-		TypeInfo<Reference<Task* > >::parseFromBinaryStream(&droidTask, stream);
+	if (_name == "droidTasks") {
+		TypeInfo<Vector<Task*> >::parseFromBinaryStream(&droidTasks, stream);
 		return true;
 	}
 
@@ -416,11 +429,11 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "droidTask";
+	_name = "droidTasks";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Reference<Task* > >::toBinaryStream(&droidTask, stream);
+	TypeInfo<Vector<Task*> >::toBinaryStream(&droidTasks, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -444,23 +457,13 @@ BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(Missi
 	activeDroid = NULL;
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		droid = null;
 	droid = NULL;
-	// server/zone/objects/mission/BountyMissionObjective.idl():  		droidTask = null;
-	droidTask = NULL;
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("BountyMissionObjective");
 	Logger::setLoggingName("BountyMissionObjective");
 }
 
 void BountyMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/BountyMissionObjective.idl():  		if 
-	if (droidTask != NULL){
-	// server/zone/objects/mission/BountyMissionObjective.idl():  			droidTask.cancel();
-	droidTask->cancel();
-}
-	// server/zone/objects/mission/BountyMissionObjective.idl():  	}
-	if (targetTask != NULL){
-	// server/zone/objects/mission/BountyMissionObjective.idl():  			targetTask.cancel();
-	targetTask->cancel();
-}
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		cancelAllTasks();
+	cancelAllTasks();
 }
 
 void BountyMissionObjectiveImplementation::initializeTransientMembers() {
@@ -530,6 +533,9 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_SPAWNTARGETANDUPDATEWAYPOINT__:
 		spawnTargetAndUpdateWaypoint();
 		break;
+	case RPC_CANCELALLTASKS__:
+		cancelAllTasks();
+		break;
 	default:
 		return NULL;
 	}
@@ -587,6 +593,10 @@ bool BountyMissionObjectiveAdapter::playerHasMissionOfCorrectLevel(int action) {
 
 void BountyMissionObjectiveAdapter::spawnTargetAndUpdateWaypoint() {
 	(static_cast<BountyMissionObjective*>(stub))->spawnTargetAndUpdateWaypoint();
+}
+
+void BountyMissionObjectiveAdapter::cancelAllTasks() {
+	(static_cast<BountyMissionObjective*>(stub))->cancelAllTasks();
 }
 
 /*

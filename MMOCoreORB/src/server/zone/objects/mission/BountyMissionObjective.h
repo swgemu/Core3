@@ -168,6 +168,8 @@ public:
 
 	Vector3 getTargetPosition();
 
+	void cancelAllTasks();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -204,7 +206,7 @@ protected:
 
 	Reference<BountyHunterDroid* > droid;
 
-	Reference<Task* > droidTask;
+	Vector<Task*> droidTasks;
 
 	Reference<BountyHunterTargetTask* > targetTask;
 
@@ -250,6 +252,8 @@ public:
 	void spawnTargetAndUpdateWaypoint();
 
 	Vector3 getTargetPosition();
+
+	void cancelAllTasks();
 
 	WeakReference<BountyMissionObjective*> _this;
 
@@ -317,6 +321,8 @@ public:
 	bool playerHasMissionOfCorrectLevel(int action);
 
 	void spawnTargetAndUpdateWaypoint();
+
+	void cancelAllTasks();
 
 protected:
 	String _param0_spawnTarget__String_;

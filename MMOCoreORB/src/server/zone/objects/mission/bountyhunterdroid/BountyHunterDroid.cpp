@@ -49,7 +49,7 @@ FindTargetTask* BountyHunterDroid::findTarget(SceneObject* droidObject, Creature
 
 	ManagedReference<CreatureObject*> droid = player->getZone()->getCreatureManager()->spawnCreature(String("seeker").hashCode(), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), 0);
 
-	ManagedReference<FindTargetTask*> findTargetTask = new FindTargetTask(droid, player, objective, track);
+	Reference<FindTargetTask*> findTargetTask = new FindTargetTask(droid, player, objective, track);
 	findTargetTask->schedule(2000);
 
 	Locker locker(droidObject);

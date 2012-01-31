@@ -37,6 +37,8 @@ void BountyMissionObjectiveImplementation::activate() {
 }
 
 void BountyMissionObjectiveImplementation::abort() {
+	cancelAllTasks();
+
 	WaypointObject* waypoint = mission->getWaypointToMission();
 	if (waypoint != NULL) {
 		waypoint->setActive(false);
@@ -65,6 +67,8 @@ void BountyMissionObjectiveImplementation::abort() {
 }
 
 void BountyMissionObjectiveImplementation::complete() {
+	cancelAllTasks();
+
 	//Award bountyhunter xp.
 	getPlayerOwner()->getZoneServer()->getPlayerManager()->awardExperience(getPlayerOwner(), "bountyhunter", mission->getRewardCredits() / 100, true, 1);
 
@@ -230,7 +234,7 @@ void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneO
 		droid = new BountyHunterDroid();
 	}
 
-	droidTask = droid->performAction(action, sceneObject, player, getMissionObject());
+	droidTasks.add(droid->performAction(action, sceneObject, player, getMissionObject()));
 }
 
 bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int action) {
@@ -249,4 +253,21 @@ Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {
 
 	Vector3 empty;
 	return empty;
+}
+
+void BountyMissionObjectiveImplementation::cancelAllTasks() {
+	if (targetTask != NULL && targetTask->isScheduled()) {
+		targetTask->cancel();
+		targetTask = NULL;
+	}
+
+	for (int i = 0; i < droidTasks.size(); i++) {
+		Task* droidTask = droidTasks.get(i);
+
+		if (droidTask != NULL && droidTask->isScheduled()) {
+			droidTask->cancel();
+		}
+	}
+
+	droidTasks.removeAll();
 }

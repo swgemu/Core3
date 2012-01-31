@@ -69,7 +69,8 @@ class BountyMissionObjective extends MissionObjective {
 	
 	protected BountyHunterDroid droid;
 	
-	protected Task droidTask;
+	@dereferenced
+	protected Vector<Task> droidTasks;
 	
 	protected BountyHunterTargetTask targetTask;
 	
@@ -85,18 +86,12 @@ class BountyMissionObjective extends MissionObjective {
 		
 		activeDroid = null;
 		droid = null;
-		droidTask = null;
 		
 		Logger.setLoggingName("BountyMissionObjective");
 	}
 	
 	public native void finalize() {
-		if (droidTask != null) {
-			droidTask.cancel();
-		}
-		if (targetTask != null) {
-			targetTask.cancel();
-		}
+		cancelAllTasks();
 	}
 	
 	public void initializeTransientMembers() {
@@ -135,4 +130,6 @@ class BountyMissionObjective extends MissionObjective {
 	@dereferenced
 	@local
 	public native Vector3 getTargetPosition();
+	
+	public native void cancelAllTasks();
 }
