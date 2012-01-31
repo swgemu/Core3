@@ -115,6 +115,8 @@ using namespace server::zone::objects::mission::bountyhunterdroid::events;
 
 #include "server/zone/templates/TemplateReference.h"
 
+#include "server/zone/objects/mission/bountyhunterdroid/events/FindTargetTaskList.h"
+
 #include "engine/util/Observer.h"
 
 #include "engine/util/Observable.h"
@@ -164,7 +166,7 @@ public:
 
 	bool playerHasMissionOfCorrectLevel(int action);
 
-	void spawnTargetAndUpdateWaypoint();
+	void updateWaypoint();
 
 	Vector3 getTargetPosition();
 
@@ -206,7 +208,7 @@ protected:
 
 	Reference<BountyHunterDroid* > droid;
 
-	Vector<Task*> droidTasks;
+	FindTargetTaskList droidTasks;
 
 	Reference<BountyHunterTargetTask* > targetTask;
 
@@ -249,7 +251,7 @@ public:
 
 	bool playerHasMissionOfCorrectLevel(int action);
 
-	void spawnTargetAndUpdateWaypoint();
+	void updateWaypoint();
 
 	Vector3 getTargetPosition();
 
@@ -320,7 +322,7 @@ public:
 
 	bool playerHasMissionOfCorrectLevel(int action);
 
-	void spawnTargetAndUpdateWaypoint();
+	void updateWaypoint();
 
 	void cancelAllTasks();
 

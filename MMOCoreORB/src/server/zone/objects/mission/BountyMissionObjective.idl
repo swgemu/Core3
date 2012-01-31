@@ -56,6 +56,7 @@ include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.mission.bountyhunterdroid.BountyHunterDroid;
 import server.zone.objects.mission.bountyhunterdroid.events.BountyHunterTargetTask;
+include server.zone.objects.mission.bountyhunterdroid.events.FindTargetTaskList;
 
 class BountyMissionObjective extends MissionObjective {
 	@dereferenced
@@ -70,7 +71,7 @@ class BountyMissionObjective extends MissionObjective {
 	protected BountyHunterDroid droid;
 	
 	@dereferenced
-	protected Vector<Task> droidTasks;
+	protected FindTargetTaskList droidTasks;
 	
 	protected BountyHunterTargetTask targetTask;
 	
@@ -125,7 +126,7 @@ class BountyMissionObjective extends MissionObjective {
 	
 	public native boolean playerHasMissionOfCorrectLevel(int action);
 	
-	public native void spawnTargetAndUpdateWaypoint();
+	public native void updateWaypoint();
 	
 	@dereferenced
 	@local

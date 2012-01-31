@@ -36,7 +36,7 @@ public:
 		Logger("BountyHunterDroid") {
 	}
 
-	Task* performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
+	FindTargetTask* performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
 
 private:
 	FindTargetTask* findTarget(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission, bool track);

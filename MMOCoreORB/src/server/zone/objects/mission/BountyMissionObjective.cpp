@@ -22,7 +22,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_SPAWNTARGETANDUPDATEWAYPOINT__,RPC_CANCELALLTASKS__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETPROBOTDROID__,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -201,17 +201,17 @@ bool BountyMissionObjective::playerHasMissionOfCorrectLevel(int action) {
 		return _implementation->playerHasMissionOfCorrectLevel(action);
 }
 
-void BountyMissionObjective::spawnTargetAndUpdateWaypoint() {
+void BountyMissionObjective::updateWaypoint() {
 	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNTARGETANDUPDATEWAYPOINT__);
+		DistributedMethod method(this, RPC_UPDATEWAYPOINT__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->spawnTargetAndUpdateWaypoint();
+		_implementation->updateWaypoint();
 }
 
 Vector3 BountyMissionObjective::getTargetPosition() {
@@ -365,7 +365,7 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 	}
 
 	if (_name == "droidTasks") {
-		TypeInfo<Vector<Task*> >::parseFromBinaryStream(&droidTasks, stream);
+		TypeInfo<FindTargetTaskList >::parseFromBinaryStream(&droidTasks, stream);
 		return true;
 	}
 
@@ -433,7 +433,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Vector<Task*> >::toBinaryStream(&droidTasks, stream);
+	TypeInfo<FindTargetTaskList >::toBinaryStream(&droidTasks, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -530,8 +530,8 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_:
 		resp->insertBoolean(playerHasMissionOfCorrectLevel(inv->getSignedIntParameter()));
 		break;
-	case RPC_SPAWNTARGETANDUPDATEWAYPOINT__:
-		spawnTargetAndUpdateWaypoint();
+	case RPC_UPDATEWAYPOINT__:
+		updateWaypoint();
 		break;
 	case RPC_CANCELALLTASKS__:
 		cancelAllTasks();
@@ -591,8 +591,8 @@ bool BountyMissionObjectiveAdapter::playerHasMissionOfCorrectLevel(int action) {
 	return (static_cast<BountyMissionObjective*>(stub))->playerHasMissionOfCorrectLevel(action);
 }
 
-void BountyMissionObjectiveAdapter::spawnTargetAndUpdateWaypoint() {
-	(static_cast<BountyMissionObjective*>(stub))->spawnTargetAndUpdateWaypoint();
+void BountyMissionObjectiveAdapter::updateWaypoint() {
+	(static_cast<BountyMissionObjective*>(stub))->updateWaypoint();
 }
 
 void BountyMissionObjectiveAdapter::cancelAllTasks() {

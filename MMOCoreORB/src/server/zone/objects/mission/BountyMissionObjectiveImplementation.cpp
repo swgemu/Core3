@@ -86,8 +86,9 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		//Todo: spawn at current coordinates.
-		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(mission->getTargetOptionalTemplate().hashCode(), 0, mission->getEndPositionX(), zone->getHeight(mission->getEndPositionX(), mission->getEndPositionY()), mission->getEndPositionY(), 0));
+		Vector3 position = getTargetPosition();
+		//TODO: verify that it is a good position to spawn the target at i.e. not in water, not in a house etc. generate a random coordinate within 100 m if so and try that instead.
+		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(mission->getTargetOptionalTemplate().hashCode(), 0, position.getX(), zone->getHeight(position.getX(), position.getY()), position.getY(), 0));
 
 		ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
@@ -165,7 +166,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	case INITSTATUS:
 		if (informantLevel == 1) {
 			if (zone->getZoneName() == mission->getEndPlanet()) {
-				spawnTargetAndUpdateWaypoint();
+				updateWaypoint();
 			}
 		}
 		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner());
@@ -177,7 +178,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	case HASBIOSIGNATURESTATUS:
 		if (informantLevel > 1) {
 			if (zone->getZoneName() == mission->getEndPlanet()) {
-				spawnTargetAndUpdateWaypoint();
+				updateWaypoint();
 			}
 		}
 		objectiveStatus = HASTALKED;
@@ -185,7 +186,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	case HASTALKED:
 		if (informantLevel > 1) {
 			if (zone->getZoneName() == mission->getEndPlanet()) {
-				spawnTargetAndUpdateWaypoint();
+				updateWaypoint();
 			}
 		}
 		break;
@@ -194,27 +195,16 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	}
 }
 
-void BountyMissionObjectiveImplementation::spawnTargetAndUpdateWaypoint() {
-	if (getPlayerOwner() == NULL) {
-		return;
-	}
-
-	Zone* zone = getPlayerOwner()->getZone();
-
-	if (zone == NULL) {
-		return;
-	}
-
-	spawnTarget(zone->getZoneName());
-
+void BountyMissionObjectiveImplementation::updateWaypoint() {
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
 	if (waypoint == NULL) {
 		waypoint = mission->createWaypoint();
 	}
 
-	waypoint->setPlanetCRC(npcTarget->getPlanetCRC());
-	waypoint->setPosition(npcTarget->getPositionX(), 0, npcTarget->getPositionY());
+	waypoint->setPlanetCRC(getPlayerOwner()->getPlanetCRC());
+	Vector3 position = getTargetPosition();
+	waypoint->setPosition(position.getX(), 0, position.getY());
 	waypoint->setActive(true);
 
 	mission->updateMissionLocation();

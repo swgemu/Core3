@@ -11,7 +11,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/packets/scene/PlayClientEventObjectMessage.h"
 
-Task* BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
+FindTargetTask* BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (droidObject == NULL || player == NULL || mission == NULL) {
 		//TODO: error message.
 		return NULL;

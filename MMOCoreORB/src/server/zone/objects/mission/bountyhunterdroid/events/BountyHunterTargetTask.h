@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/Zone.h"
 
 namespace server {
 namespace zone {
@@ -59,6 +61,11 @@ class BountyHunterTargetTask : public Task, public Logger {
 	ManagedWeakReference<MissionObject*> mission;
 	ManagedWeakReference<BountyMissionObjective*> objective;
 	ManagedWeakReference<CreatureObject*> player;
+
+	Vector3 nextPosition;
+	Vector3 currentPosition;
+	bool move;
+
 public:
 	BountyHunterTargetTask(MissionObject* mission, CreatureObject* player) :
 		Logger("BountyHunterTargetTask") {
@@ -66,33 +73,65 @@ public:
 		this->player = player;
 
 		objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
+
+		currentPosition.setX(mission->getEndPositionX());
+		currentPosition.setY(mission->getEndPositionX());
+		currentPosition.setZ(0);
+		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
+		nextPosition.setZ(0);
+
+		if (mission->getDifficultyLevel() > 1) {
+			move = true;
+		} else {
+			move = false;
+		}
 	}
 
 	~BountyHunterTargetTask() {
 		cancel();
 	}
 
+	//TODO: refactor this.
 	void run() {
 		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
 
-		if (objectiveRef == NULL || objectiveRef->getPlayerOwner() == NULL || objectiveRef->getPlayerOwner()->getZone() == NULL) {
+		if (objectiveRef == NULL) {
 			return;
 		}
 
-		reschedule(10 * 1000);
+		ManagedReference<CreatureObject*> playerRef = player.get();
+
+		if (playerRef == NULL || playerRef->getZoneServer() == NULL) {
+			return;
+		}
+
+		if (move) {
+			//Update position.
+			Vector3 direction = nextPosition - currentPosition;
+			Vector3 movementUpdate = direction;
+			movementUpdate.normalize();
+
+			if (direction.length() > 10.0) {
+				currentPosition = currentPosition + (10 * movementUpdate);
+			} else {
+				currentPosition = nextPosition;
+				nextPosition = playerRef->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(playerRef);
+				nextPosition.setZ(0);
+			}
+
+			String zoneName = objectiveRef->getMissionObject()->getEndPlanet();
+
+			if (player->getZone()->getZoneName() == zoneName && playerRef->getPosition().distanceTo(currentPosition) < 500.0) {
+				move = false;
+				objectiveRef->spawnTarget(zoneName);
+			}
+
+			reschedule(10 * 1000);
+		}
 	}
 
 	Vector3 getTargetPosition() {
-		Vector3 position;
-
-		ManagedReference<MissionObject*> missionRef = mission.get();
-
-		if (missionRef != NULL) {
-			position.setX(missionRef->getEndPositionX());
-			position.setY(missionRef->getEndPositionY());
-		}
-
-		return position;
+		return currentPosition;
 	}
 };
 
