@@ -94,14 +94,33 @@ public:
 		harvesttype = harvesttype.toLowerCase();
 		byte type = 0;
 
-		if(harvesttype == "meat")
+		if(harvesttype == "meat" && !cr->getMeatType().isEmpty())
 			type = 234;
-		else if(harvesttype == "hide")
+		else if(harvesttype == "hide" && !cr->getHideType().isEmpty())
 			type = 235;
-		else if(harvesttype == "bone")
+		else if(harvesttype == "bone" && !cr->getBoneType().isEmpty())
 			type = 236;
-		else
-			type = System::random(2) + 234;
+		else {
+			Vector<int> types;
+			if(!cr->getMeatType().isEmpty()) {
+				types.add(234);
+			}
+
+			if(!cr->getHideType().isEmpty()) {
+				types.add(235);
+			}
+
+			if(!cr->getBoneType().isEmpty()) {
+				types.add(236);
+			}
+			if(types.size() > 0)
+				type = types.get(System::random(types.size() -1));
+		}
+
+		if(type == 0) {
+			player->sendSystemMessage("This creature has no resources");
+			return GENERALERROR;
+		}
 
 		if (cr->canHarvestMe(player)) {
 			if (cr->getZone() == NULL)

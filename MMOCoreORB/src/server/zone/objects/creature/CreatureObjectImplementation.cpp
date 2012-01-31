@@ -142,7 +142,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	faction = 0;
 
 	stateBitmask = 0;
-	terrainNegotiation = 0.f;
+	terrainNegotiation = 0.0f;
 
 	listenToID = 0;
 	watchToID = 0;
@@ -1175,8 +1175,15 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	if (posture == newPosture)
 		return;
 
+	float speedboost = 0;
+
+	if(newPosture == CreaturePosture::PRONE) {
+		speedboost = getSkillMod("slope_move") >= 50
+				? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
+	}
+
 	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale(
-			(uint8) newPosture), true);
+			(uint8) newPosture) + speedboost, true);
 	setAccelerationMultiplierMod(
 			CreaturePosture::instance()->getAccelerationScale(
 					(uint8) newPosture), true);
@@ -1339,6 +1346,7 @@ void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 
 void CreatureObjectImplementation::setSpeedMultiplierMod(
 		float newMultiplierMod, bool notifyClient) {
+
 	if (speedMultiplierMod == newMultiplierMod)
 		return;
 
@@ -1457,8 +1465,10 @@ void CreatureObjectImplementation::setTerrainNegotiation(float value,
 }
 
 float CreatureObjectImplementation::getTerrainNegotiation() {
-	float slopeMod = ((float)getSkillMod("slope_move") / 100.0f);
-	return terrainNegotiation + slopeMod;
+	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
+	if(slopeMod > 1)
+		slopeMod = 1;
+	return slopeMod;
 }
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,

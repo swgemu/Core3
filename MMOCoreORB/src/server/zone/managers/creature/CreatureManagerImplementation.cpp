@@ -531,6 +531,14 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 		player->getGroup()->broadcastMessage(player, sysMessage, false);
 	}
 
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	int xp = creature->getLevel() * 5 + 19;
+
+	if(playerManager != NULL)
+		playerManager->awardExperience(player, "scout", xp, true);
+
+
 	if (!creature->hasLoot()) {
 		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(creature->getPendingTask("despawn"));
 

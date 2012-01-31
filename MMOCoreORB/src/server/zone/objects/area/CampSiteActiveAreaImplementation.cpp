@@ -101,7 +101,6 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 
 	if(!abandoned && abandonTask != NULL) {
 		abandonTask->schedule(CampSiteActiveArea::ABANDONTIME);
-		player->sendSystemMessage("camp", "sys_abandoned_camp");
 	}
 }
 
@@ -140,8 +139,10 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 	if(terminal != NULL)
 		terminal->setCustomObjectName("Abandoned Camp", true);
 
-	if(campOwner != NULL)
+	if(campOwner != NULL) {
 		campOwner->dropObserver(ObserverEventType::STARTCOMBAT, campObserver);
+		campOwner->sendSystemMessage("camp", "sys_abandoned_camp");
+	}
 }
 
 bool CampSiteActiveAreaImplementation::despawnCamp() {
