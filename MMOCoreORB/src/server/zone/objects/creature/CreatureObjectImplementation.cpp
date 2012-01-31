@@ -170,6 +170,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	speedMultiplierBase = 1.f;
 	speedMultiplierMod = 1.f;
 	currentSpeed = 0.f;
+	turnScale = 1.f;
 
 	cooldownTimerMap = new CooldownTimerMap();
 	commandQueue = new CommandQueueActionVector();
@@ -1184,9 +1185,14 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale(
 			(uint8) newPosture) + speedboost, true);
+
 	setAccelerationMultiplierMod(
 			CreaturePosture::instance()->getAccelerationScale(
 					(uint8) newPosture), true);
+
+	setTurnScale(CreaturePosture::instance()->getTurnScale(
+					(uint8) newPosture), true);
+
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
@@ -1323,6 +1329,23 @@ void CreatureObjectImplementation::setSpeedMultiplierBase(
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
 				_this);
 		dcreo4->updateSpeedMultiplierBase();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::setTurnScale(
+		float newMultiplierBase, bool notifyClient) {
+	if (turnScale == newMultiplierBase)
+		return;
+
+	turnScale = newMultiplierBase;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
+				_this);
+		dcreo4->updateTurnScale();
 		dcreo4->close();
 
 		sendMessage(dcreo4);

@@ -79,7 +79,7 @@ public:
 		insertFloat(creo->getTerrainNegotiation());  // Terrain Negotiation
 
 		// turn radius
-		insertFloat(1);
+		insertFloat(creo->getTurnScale());
 
 		insertFloat(creo->getWalkSpeed());
 		insertFloat(creo->getSlopeModPercent());

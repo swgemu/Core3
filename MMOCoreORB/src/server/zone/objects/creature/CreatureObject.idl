@@ -119,6 +119,7 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected SpeedMultiplierModChanges speedMultiplierModChanges;
 	protected float speedMultiplierMod;
+	protected float turnScale;
 	protected float runSpeed;
 	protected float walkSpeed;
 	protected float currentSpeed;
@@ -409,6 +410,15 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native abstract void setSpeedMultiplierMod(float newMultiplierMod, boolean notifyClient = true);
+
+	/**
+	 * Updates the turn scale mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native abstract void setTurnScale(float newMultiplierMod, boolean notifyClient = true);
 
 	/**
 	 * Updates the run speed
@@ -1251,6 +1261,10 @@ class CreatureObject extends TangibleObject {
 	
 	public float getWalkSpeed() {
 		return walkSpeed;
+	}
+	
+	public float getTurnScale() {
+		return turnScale;
 	}
 	
 	public native float getTerrainNegotiation();

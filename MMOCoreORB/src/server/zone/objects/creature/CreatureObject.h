@@ -352,6 +352,8 @@ public:
 
 	void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
 
+	void setTurnScale(float newMultiplierMod, bool notifyClient = true);
+
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
 	void setHAM(int type, int value, bool notifyClient = true);
@@ -688,6 +690,8 @@ public:
 
 	float getWalkSpeed();
 
+	float getTurnScale();
+
 	float getTerrainNegotiation();
 
 	float getRunAcceleration();
@@ -916,6 +920,8 @@ protected:
 
 	float speedMultiplierMod;
 
+	float turnScale;
+
 	float runSpeed;
 
 	float walkSpeed;
@@ -1082,6 +1088,8 @@ public:
 	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
 	virtual void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
+
+	virtual void setTurnScale(float newMultiplierMod, bool notifyClient = true);
 
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
@@ -1419,6 +1427,8 @@ public:
 
 	float getWalkSpeed();
 
+	float getTurnScale();
+
 	float getTerrainNegotiation();
 
 	float getRunAcceleration();
@@ -1661,6 +1671,8 @@ public:
 	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient);
 
 	void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient);
+
+	void setTurnScale(float newMultiplierMod, bool notifyClient);
 
 	void setRunSpeed(float newSpeed, bool notifyClient);
 
@@ -1975,6 +1987,8 @@ public:
 	float getRunSpeed();
 
 	float getWalkSpeed();
+
+	float getTurnScale();
 
 	float getTerrainNegotiation();
 
