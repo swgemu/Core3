@@ -86,12 +86,13 @@ public:
 		insertLong(objectid);
 	}
 
-	void updateTurnScale() {
-		addFloatUpdate(0x08, creo->getTurnScale());
-	}
 
 	void updateTerrainNegotiation() {
 		addFloatUpdate(0x09, creo->getTerrainNegotiation());
+	}
+
+	void updateTurnScale() {
+		addFloatUpdate(0x0A, creo->getTurnScale());
 	}
 
 	/*void updateAcceleration() {
