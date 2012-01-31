@@ -231,6 +231,9 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* creature) {
 	LootGroupCollection* lootCollection = creature->getLootGroups();
 
+	if (lootCollection == NULL)
+		return;
+
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		LootGroupCollectionEntry* entry = lootCollection->get(i);
 		int lootChance = entry->getLootChance();
