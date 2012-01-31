@@ -290,8 +290,8 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 	 * attackmindcost
 	 */
 	float value = 0.f;
-	setMinDamage(MIN(values->getCurrentValue("mindamage"), 0));
-	setMaxDamage(MIN(values->getCurrentValue("maxdamage"), 0));
+	setMinDamage(MAX(values->getCurrentValue("mindamage"), 0));
+	setMaxDamage(MAX(values->getCurrentValue("maxdamage"), 0));
 
 	setAttackSpeed(values->getCurrentValue("attackspeed"));
 	setHealthAttackCost((int)values->getCurrentValue("attackhealthcost"));
