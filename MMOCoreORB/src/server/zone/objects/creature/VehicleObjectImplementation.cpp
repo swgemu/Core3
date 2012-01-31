@@ -178,7 +178,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 }
 
 void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
-	if (linkedCreature != NULL && !linkedCreature->isMounted())
+	if (linkedCreature != NULL && linkedCreature->isMounted())
 		linkedCreature->sendMessage(msg);
 	else
 		delete msg;
