@@ -52,7 +52,7 @@ object_tangible_crafting_station_generic_tool = object_tangible_crafting_station
 
 	toolType = 3,
 	complexityLevel = 15,
-	enabledTabs = {1,2,4,8,1024,4096,524288,2148007936},
+	enabledTabs = {1,2,4,8,64,1024,4096,524288,2148007936},
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
