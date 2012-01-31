@@ -57,7 +57,15 @@ int VehicleObjectImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	if (selectedID == 61 && linkedCreature == player) {
 		unlock();
 
-		controlDevice->storeObject(player);
+		try {
+			controlDevice->storeObject(player);
+		} catch (Exception& e) {
+
+		} catch (...) {
+			wlock(player);
+
+			throw;
+		}
 
 		wlock(player);
 	} else if (selectedID == 62) {
@@ -167,5 +175,12 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 		wlock();
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
+}
+
+void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
+	if (linkedCreature != NULL && !linkedCreature->isMounted())
+		linkedCreature->sendMessage(msg);
+	else
+		delete msg;
 }
 

@@ -118,6 +118,13 @@ class Buff extends ManagedObject implements Logger {
 	
 	public native void initializeTransientMembers();
 	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
 	public void init() {
 		attributeModifiers.setNoDuplicateInsertPlan();
 		attributeModifiers.setNullValue(0);

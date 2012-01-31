@@ -195,7 +195,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @pre { this locked }
 	 * @post { this locked }
 	 */
-	public abstract native void notifyLoadFromDatabase();
+	public native void notifyLoadFromDatabase();
 
 	/**
 	 * Logs an info message

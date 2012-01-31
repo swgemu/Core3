@@ -83,6 +83,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void init();
 
 	void sendTo(CreatureObject* player);
@@ -252,6 +254,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void init();
 
 	virtual void sendTo(CreatureObject* player);
@@ -376,6 +380,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void notifyLoadFromDatabase();
 
 	void init();
 

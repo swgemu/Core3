@@ -602,7 +602,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 			if (!sendSelf && scno == _this)
 				continue;
 
-			if (scno->isPlayerCreature()) {
+			if (scno->isPlayerCreature() || scno->isVehicleObject()) {
 				object->sendTo(scno, true);
 			}
 		}
@@ -659,7 +659,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 			if (!sendSelf && scno == _this)
 				continue;
 
-			if (scno->isPlayerCreature()) {
+			if (scno->isPlayerCreature() || scno->isVehicleObject()) {
 				object->sendDestroyTo(scno);
 			}
 		}
@@ -724,7 +724,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 			if (!sendSelf && scno == _this)
 				continue;
 
-			if (scno->isPlayerCreature())
+			if (scno->isPlayerCreature() || scno->isVehicleObject())
 				scno->sendMessage(message->clone());
 		}
 
@@ -796,7 +796,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 			if (!sendSelf && scno == _this)
 				continue;
 
-			if (scno->isPlayerCreature()) {
+			if (scno->isPlayerCreature() || scno->isVehicleObject()) {
 				for (int j = 0; j < messages->size(); ++j) {
 					BasePacket* msg = messages->get(j);
 					scno->sendMessage(msg->clone());

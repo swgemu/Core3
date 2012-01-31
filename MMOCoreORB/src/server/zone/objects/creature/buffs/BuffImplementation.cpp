@@ -57,17 +57,25 @@ which carries forward this exception.
 void BuffImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
-	init();
+	attributeModifiers.setNullValue(0);
+	skillModifiers.setNullValue(0);
+}
 
+void BuffImplementation::notifyLoadFromDatabase() {
 	if (buffEvent != NULL)
 		return;
 
+	info("initializeTransientMembers() nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
+
 	if (nextExecutionTime.isPast()) {
 		buffEvent = new BuffDurationEvent(creature, _this);
-		buffEvent->schedule(50);
+		buffEvent->schedule(1000);
+		info("nextExeutionTime.isPast()", true);
 	} else {
 		buffEvent = new BuffDurationEvent(creature, _this);
 		buffEvent->schedule(nextExecutionTime);
+
+		info("scheduling buffEvent with nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
 	}
 }
 
@@ -102,6 +110,8 @@ void BuffImplementation::activate(bool applyModifiers) {
 		buffEvent->schedule((int) (buffDuration * 1000));
 		//nextExecutionTime = buffEvent->getNextExecutionTime();
 		Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
+
+		info("nextExecutionTime miliDifference:" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
 		if (creature->isPlayerCreature())
 			sendTo((cast<CreatureObject*>(creature.get())));
@@ -201,14 +211,18 @@ void BuffImplementation::scheduleBuffEvent() {
 }
 
 float BuffImplementation::getTimeLeft() {
-	if (buffEvent == NULL || !buffEvent->isScheduled())
+	if (buffEvent == NULL || !buffEvent->isScheduled()) {
+		info("buffEvent == NULL || !buffEvent->isScheduled()", true);
 		return 0.0f;
+	}
 
 	Time next;
 
 	Core::getTaskManager()->getNextExecutionTime(buffEvent, next);
 
 	float timeleft = round(Time().miliDifference(next) / 1000.0f);
+
+	info("timeLeft = " + String::valueOf(timeleft), true);
 
 	return MAX(0.0f, timeleft);
 }

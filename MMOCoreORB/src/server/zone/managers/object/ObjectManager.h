@@ -102,7 +102,6 @@ namespace zone {
 
 		void registerObjectTypes();
 		SceneObject* loadObjectFromTemplate(uint32 objectCRC);
-		void deSerializeObject(SceneObject* object, ObjectInputStream* data);
 		void deSerializeObject(ManagedObject* object, ObjectInputStream* data);
 
 		SceneObject* instantiateSceneObject(uint32 objectCRC, uint64 oid, bool createComponents);
@@ -127,7 +126,7 @@ namespace zone {
 		// object methods
 		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0);
 
-		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0);
+		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0, bool initializeTransientMembers = true);
 
 		void createObjectID(const String& name, DistributedObjectStub* object);
 

@@ -834,7 +834,7 @@ public:
 
 	void initializeTransientMembers();
 
-	virtual void notifyLoadFromDatabase();
+	void notifyLoadFromDatabase();
 
 	void info(const String& msg, bool forced = false);
 

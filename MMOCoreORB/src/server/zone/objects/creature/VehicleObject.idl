@@ -102,6 +102,15 @@ class VehicleObject extends CreatureObject {
 	}
 	
 	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
+	@dirty
+	public native void sendMessage(BasePacket msg);
+	
+	/**
 	 * Inflicts damage into the object
 	 * @pre { this object is locked }
 	 * @post { this object is locked }

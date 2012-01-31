@@ -120,6 +120,8 @@ public:
 
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	void sendMessage(BasePacket* msg);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
@@ -186,6 +188,8 @@ public:
 	void notifyInsertToZone(Zone* zone);
 
 	void setPosture(int newPosture, bool notifyClient = true);
+
+	void sendMessage(BasePacket* msg);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
@@ -259,6 +263,8 @@ public:
 	void notifyInsertToZone(Zone* zone);
 
 	void setPosture(int newPosture, bool notifyClient);
+
+	void sendMessage(BasePacket* msg);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 

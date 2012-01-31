@@ -422,7 +422,12 @@ void ObjectManager::loadStaticObjects() {
 			}
 
 			_locker.release();
+
+			String logName = object->getLoggingName();
+
 			deSerializeObject(object, &objectData);
+
+			object->setLoggingName(logName);
 
 			objectData.reset();
 		}
@@ -698,12 +703,19 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			}
 
 			_locker.release();
-			deSerializeObject(cast<SceneObject*>(object), &objectData);
+
+			SceneObject* scene = cast<SceneObject*>(object);
+
+			String loggingName = scene->getLoggingName();
+
+			deSerializeObject(scene, &objectData);
+
+			scene->setLoggingName(loggingName);
 
 			(cast<SceneObject*>(object))->info("loaded from db");
 
 		} else if (Serializable::getVariable<String>("_className", &className, &objectData)) {
-			object = createObject(className, false, "", objectID);
+			object = createObject(className, false, "", objectID, false);
 
 			if (object == NULL) {
 				error("could not load object from database");
@@ -736,33 +748,6 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 			object->queueUpdateToDatabaseTask();
 
 	//	uint32 lastSaveCRC = managedObject->getLastCRCSave();
-
-		uint32 currentCRC = BaseProtocol::generateCRC(data);
-
-		object->setLastCRCSave(currentCRC);
-
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-		error("could not deserialize object from DB");
-	} catch (...) {
-		error("could not deserialize object from DB");
-
-		throw;
-	}
-}
-
-void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* data) {
-	Locker locker(object);
-	String logName = object->getLoggingName();
-
-	try {
-		object->readObject(data);
-
-		object->setLoggingName(logName);
-
-		if (object->isPersistent())
-			object->queueUpdateToDatabaseTask();
 
 		uint32 currentCRC = BaseProtocol::generateCRC(data);
 
@@ -831,6 +816,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 
 	if (persistenceLevel > 0) {
 		object->setPersistent(persistenceLevel);
+		object->initializeTransientMembers();
 
 		updatePersistentObject(object);
 
@@ -841,7 +827,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 }
 
 
-ManagedObject* ObjectManager::createObject(const String& className, int persistenceLevel, const String& database, uint64 oid) {
+ManagedObject* ObjectManager::createObject(const String& className, int persistenceLevel, const String& database, uint64 oid, bool initializeTransientMembers) {
 	ManagedObject* object = NULL;
 
 	Locker _locker(this);
@@ -866,7 +852,9 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 		servant->_setStub(object);
 		servant->_setClassHelper(helper);
 		servant->_serializationHelperMethod();
-		object->initializeTransientMembers();
+
+		if (initializeTransientMembers)
+			object->initializeTransientMembers();
 
 		object->setPersistent(persistenceLevel);
 
