@@ -65,17 +65,17 @@ void BuffImplementation::notifyLoadFromDatabase() {
 	if (buffEvent != NULL)
 		return;
 
-	info("initializeTransientMembers() nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
+	//info("initializeTransientMembers() nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
 	if (nextExecutionTime.isPast()) {
 		buffEvent = new BuffDurationEvent(creature, _this);
 		buffEvent->schedule(1000);
-		info("nextExeutionTime.isPast()", true);
+		//info("nextExeutionTime.isPast()", true);
 	} else {
 		buffEvent = new BuffDurationEvent(creature, _this);
 		buffEvent->schedule(nextExecutionTime);
 
-		info("scheduling buffEvent with nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
+		//info("scheduling buffEvent with nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
 	}
 }
 
@@ -111,7 +111,7 @@ void BuffImplementation::activate(bool applyModifiers) {
 		//nextExecutionTime = buffEvent->getNextExecutionTime();
 		Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
 
-		info("nextExecutionTime miliDifference:" + String::valueOf(nextExecutionTime.miliDifference()), true);
+		//info("nextExecutionTime miliDifference:" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
 		if (creature->isPlayerCreature())
 			sendTo((cast<CreatureObject*>(creature.get())));
@@ -212,7 +212,7 @@ void BuffImplementation::scheduleBuffEvent() {
 
 float BuffImplementation::getTimeLeft() {
 	if (buffEvent == NULL || !buffEvent->isScheduled()) {
-		info("buffEvent == NULL || !buffEvent->isScheduled()", true);
+		//info("buffEvent == NULL || !buffEvent->isScheduled()", true);
 		return 0.0f;
 	}
 
@@ -222,7 +222,7 @@ float BuffImplementation::getTimeLeft() {
 
 	float timeleft = round(Time().miliDifference(next) / 1000.0f);
 
-	info("timeLeft = " + String::valueOf(timeleft), true);
+	//info("timeLeft = " + String::valueOf(timeleft), true);
 
 	return MAX(0.0f, timeleft);
 }
