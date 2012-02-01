@@ -64,7 +64,13 @@ public:
 
 		float x, y;
 		float z = 0;
-		String zoneName = creature->getZone()->getZoneName();
+
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return GENERALERROR;
+
+		String zoneName = zone->getZoneName();
 		uint64 parentID = 0;
 
 		try {
