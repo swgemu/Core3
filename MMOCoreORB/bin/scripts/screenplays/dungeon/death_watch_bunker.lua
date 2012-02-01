@@ -497,7 +497,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access1", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 
 	-- Door Access Terminal A
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -84.4526,-20,-50.504,5996323,-0.707107,0,0.707107,0)
@@ -505,7 +505,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access2", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	-- Door Access Terminal B
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -8.3714,-32,-95.3985,5996331,-0.707107,0,0.707107,0)
@@ -513,7 +513,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access3", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	-- Door Access Terminal Mines
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", 26.1493,-64,-95.4288,5996347,0,0,1,0)
@@ -521,7 +521,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access4", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	
 	-- Voice Recognition Terminal
@@ -533,7 +533,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 5)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Armorsmith Crafting Terminal (Biceps, Chest, Boots)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-246.097,-60,-245.163,5996374,1,0,0,0)
@@ -547,7 +547,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Droid Engineer Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 6)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Master Droid Engineer Crafting Terminal (Bracer, Helmet)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-234.536,-40,-84.8062,5996370,1,0,0,0)
@@ -573,7 +573,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Tailor Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 7)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
+	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Tailor Crafting Terminal (Pants, Gloves, Belt)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-141.981,-60,-74.3199,5996368,1,0,0,0)
