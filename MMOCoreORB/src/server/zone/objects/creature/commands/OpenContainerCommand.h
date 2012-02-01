@@ -107,7 +107,7 @@ public:
 		if (objectToOpen->isContainerObject()) {
 			ManagedReference<Container*> container = cast<Container*>(objectToOpen.get());
 			Zone* zone = creature->getZone();
-			if (zone->getZoneName() != "tutorial" && !container->checkPermission(creature))
+			if (zone->getZoneName() != "tutorial" && (container->checkPermission(creature) == 0))
 				return GENERALERROR;
 		}
 

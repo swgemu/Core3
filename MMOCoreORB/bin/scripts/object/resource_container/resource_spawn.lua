@@ -9,7 +9,7 @@ object_resource_container_resource_spawn = object_resource_container_shared_simp
 	
 	optionsBitmask = 256, --Default all objects to not display ham bars.
 	pvpStatusBitmask = 0,
-	objectMenuComponent = "TangibleObjectMenuComponent",
+	objectMenuComponent = {"cpp", "TangibleObjectMenuComponent"},
 	attributeListComponent = "AttributeListComponent",
 
 	sliceable = 0,

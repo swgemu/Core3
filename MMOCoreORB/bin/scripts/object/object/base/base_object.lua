@@ -48,7 +48,7 @@ object_object_base_base_object = object_object_base_shared_base_object:new {
 	 autoRegisterWithPlanetMap = 1,
 	 
 	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = "ObjectMenuComponent",
+	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
 	 attributeListComponent = "AttributeListComponent",
 	 containerComponent = "ContainerComponent"
 }

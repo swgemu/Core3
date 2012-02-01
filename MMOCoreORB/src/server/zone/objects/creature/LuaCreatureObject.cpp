@@ -73,7 +73,6 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "addCashCredits", &LuaCreatureObject::addCashCredits},
 		{ "removeScreenPlayState", &LuaCreatureObject::removeScreenPlayState},
 		{ "isGrouped", &LuaCreatureObject::isGrouped},
-		{ "getContainerObjectByTemplate", &LuaSceneObject::getContainerObjectByTemplate },
 		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
 		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
 		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
@@ -103,7 +102,7 @@ int LuaCreatureObject::getName(lua_State* L) {
 int LuaCreatureObject::_getObject(lua_State* L) {
 	lua_pushlightuserdata(L, realObject.get());
 
-	return 0;
+	return 1;
 }
 
 int LuaCreatureObject::addDotState(lua_State* L) {
@@ -166,10 +165,7 @@ int LuaCreatureObject::sendGroupMessage(lua_State* L) {
 	} else {
 		GroupObject* group = realObject->getGroup();
 
-		if (group != NULL) {
-			UnicodeString msg(value);
-			group->broadcastMessage(new ChatSystemMessage(msg));
-		}
+		group->sendSystemMessage(value);
 	}
 
 	return 0;

@@ -76,33 +76,33 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 		SceneObjectImplementation::sendContainerObjectsTo(player);
 }*/
 
-bool ContainerImplementation::checkPermission(CreatureObject* player) {
+uint8 ContainerImplementation::checkPermission(CreatureObject* player) {
 	if (!isASubChildOf(player)) {
 		if (parent == NULL || !getParent()->isCellObject())
-			return false;
+			return 0;
 		else {
 
 			BuildingObject* building = cast<BuildingObject*>( parent->getParent());
 
 			// TODO: Do this properly!
 			if (building->isPublicStructure())
-				return true;
+				return 1;
 
 			if (!building->isOnAdminList(player->getFirstName()))
-				return false;
+				return 0;
 		}
 	}
 
 	if (locked)
-		return false;
+		return 0;
 
-	return true;
+	return 2;
 }
 
 void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if (checkPermission(player))
+	if (checkPermission(player)==2)
 		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
 
 	if (isSliceable() && isContainerLocked() && player->hasSkill("combat_smuggler_novice"))
@@ -110,7 +110,7 @@ void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 }
 
 int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 50 && checkPermission(player)) {
+	if (selectedID == 50 && checkPermission(player) == 2) {
 		ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
 
 		inputBox->setPromptTitle("@sui:set_name_title");

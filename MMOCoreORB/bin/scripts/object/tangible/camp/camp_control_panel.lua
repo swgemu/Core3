@@ -43,7 +43,7 @@
 
 object_tangible_camp_camp_control_panel = object_tangible_camp_shared_camp_control_panel:new {
 	gameObjectType = 16384,   -- Terminal
-	objectMenuComponent = "CampTerminalMenuComponent",
+	objectMenuComponent = {"cpp", "CampTerminalMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_camp_control_panel, "object/tangible/camp/camp_control_panel.iff")

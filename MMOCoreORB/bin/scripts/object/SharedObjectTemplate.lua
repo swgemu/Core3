@@ -88,7 +88,7 @@ SharedObjectTemplate = Object:new {
 	 autoRegisterWithPlanetMap = 1,
 	 
 	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = "ObjectMenuComponent",
+	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
 	 containerComponent = "ContainerComponent",
 	 attributeListComponent = "AttributeListComponent",
 	 

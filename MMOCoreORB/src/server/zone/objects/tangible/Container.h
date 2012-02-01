@@ -96,7 +96,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	bool checkPermission(CreatureObject* player);
+	byte checkPermission(CreatureObject* player);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
@@ -147,7 +147,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	bool checkPermission(CreatureObject* player);
+	byte checkPermission(CreatureObject* player);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
@@ -204,7 +204,7 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	bool checkPermission(CreatureObject* player);
+	byte checkPermission(CreatureObject* player);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 

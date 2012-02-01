@@ -8,7 +8,8 @@
 #include "SharedObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-
+#include "server/zone/managers/components/ComponentManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/templates/slots/SlotDescriptor.h"
 #include "server/zone/templates/slots/ArrangementDescriptor.h"
 
@@ -17,6 +18,7 @@
 SharedObjectTemplate::SharedObjectTemplate() {
 	portalLayout = NULL;
 	appearanceTemplate = NULL;
+	objectMenuComponent = NULL;
 	loadedPortalLayout = false, loadedAppearanceTemplate = false;
 
 	snapToTerrain = false;
@@ -156,7 +158,39 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 	} else if (varName == "zoneComponent") {
 		zoneComponent = Lua::getStringParameter(state);
 	} else if (varName == "objectMenuComponent") {
-		objectMenuComponent = Lua::getStringParameter(state);
+		LuaObject componentObject(state);// = templateData->getObjectField("scale");
+		String componentName = "";
+		String componentType = "";
+		if (componentObject.isValidTable()) {
+			if (componentObject.getTableSize() > 1) {
+				componentType = componentObject.getStringAt(1);
+				componentName = componentObject.getStringAt(2);
+			} else {
+				componentType = "unknown";
+				componentName = componentObject.getStringAt(1);
+			}
+
+			componentObject.pop();
+		} else {
+			componentType = "unknown";
+			componentName = Lua::getStringParameter(state);
+		}
+
+		objectMenuComponent = ComponentManager::instance()->getComponent<SceneObjectComponent*>(componentName);
+
+		if (objectMenuComponent == NULL) {
+			Lua* lua = DirectorManager::instance()->getLuaInstance();
+			LuaObject test = lua->getGlobalObject(componentName);
+
+			if (test.isValidTable()) {
+				objectMenuComponent = new LuaObjectMenuComponent(componentName);
+				TemplateManager::instance()->info("New " + componentType + " ObjectMenuComponent created: '" + componentName + "' for " + getFullTemplateString());
+				ComponentManager::instance()->putComponent(componentName, objectMenuComponent);
+			} else {
+				TemplateManager::instance()->error("ObjectMenuComponent of type " + componentType + " not found: '" + componentName + "' for " + getFullTemplateString());
+			}
+		}
+
 	} else if (varName == "attributeListComponent") {
 		attributeListComponent = Lua::getStringParameter(state);
 	} else if (varName == "containerComponent") {

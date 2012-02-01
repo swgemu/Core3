@@ -10,10 +10,14 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
 
 void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	//All objects in a cell can be picked up, if the player is on the structures permission list.
 	//This opens the door to allow admins to be able to drop/pickup items in public structures
+	if (sceneObject == NULL)
+		return;
+
 	SceneObject* parent = sceneObject->getParent();
 
 	if (parent == NULL || !parent->isCellObject())

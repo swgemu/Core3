@@ -75,6 +75,8 @@ which carries forward this exception.
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
+#include "server/zone/objects/player/sui/keypadbox/SuiKeypadBox.h"
+#include "server/zone/objects/player/sui/callbacks/LuaSuiCallback.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
 #include "server/zone/managers/planet/MapLocationType.h"
@@ -942,6 +944,29 @@ void SuiManager::handleManageMilitia(CreatureObject* player, SuiBox* suiBox, uin
 			cityManager->removeMilitiaMember(city, player, playerID);
 		}
 	}
+}
+
+void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback) {
+
+	if (keypad == NULL)
+		return;
+
+	if (creatureSceneObject == NULL || !creatureSceneObject->isCreatureObject())
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(creatureSceneObject);
+
+	PlayerObject* playerObject = creature->getPlayerObject();
+
+	if (playerObject != NULL) {
+		ManagedReference<SuiKeypadBox*> keypadSui = new SuiKeypadBox(creature, 0x00);
+		keypadSui->setCallback(new LuaSuiCallback(creature->getZoneServer(), play, callback));
+		keypadSui->setUsingObject(keypad);
+		keypadSui->setForceCloseDisabled();
+		creature->sendMessage(keypadSui->generateMessage());
+		playerObject->addSuiBox(keypadSui);
+	}
+
 }
 
 void SuiManager::handleAddMilitia(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

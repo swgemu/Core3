@@ -215,6 +215,24 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 		
 			if (nextLuaConversationScreen:getScreenID() == "rightaway" or nextLuaConversationScreen:getScreenID() == "location") then
 				creature:setScreenPlayState(1, "death_watch_bunker_imperial_sidequest")--gain entry permission
+			elseif (nextLuaConversationScreen:getScreenID() == "finish") then
+				local creo = LuaSceneObject(conversingPlayer)
+				inventory = creo:getSlottedObject("inventory")
+				pSample = getContainerObjectByTemplate(inventory, "object/tangible/loot/dungeon/death_watch_bunker/blood_vial.iff", true)
+		
+				if pSample ~= nil then	
+					local sample = LuaSceneObject(pSample)
+					sample:destroyObjectFromWorld()
+				
+					local playerObjectPointer = creature:getPlayerObject()
+				
+					if (playerObjectPointer ~= nil) then
+						local playerObject = LuaPlayerObject(playerObjectPointer)
+						playerObject:increaseFactionStanding("imperial", 500)
+					end
+			
+					creature:setScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
+				end
 			elseif (nextLuaConversationScreen:getScreenID() == "quit") then
 				creature:removeScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
 			end
@@ -224,8 +242,9 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 		
 		finished_quest_before = creature:hasScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
 		spoken_to_dkrn = creature:hasScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
-
-		pSample = creature:getContainerObjectByTemplate("object/tangible/loot/dungeon/death_watch_bunker/blood_vial.iff")
+		local creo = LuaSceneObject(conversingPlayer)
+		inventory = creo:getSlottedObject("inventory")
+		pSample = getContainerObjectByTemplate(inventory, "object/tangible/loot/dungeon/death_watch_bunker/blood_vial.iff", true)
 
 		if (pSample ~= nil) then
 			finished_quest = true
@@ -255,10 +274,6 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 				
 		if (finished_quest == true and finished_quest_before == 0) then
 			nextConversationScreen = conversation:getScreen("return_successful")
-			
-			local sample = LuaSceneObject(pSample)
-			sample:destroyObjectFromWorld()
-			creature:setScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
 		elseif (finished_quest == true and finished_quest_before == 1) then
 			nextConversationScreen = conversation:getScreen("more_samples")
 		elseif (spoken_to_dkrn == 1) then

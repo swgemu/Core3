@@ -2102,6 +2102,15 @@ ObjectMenuComponent* SceneObject::getObjectMenuComponent() {
 		return _implementation->getObjectMenuComponent();
 }
 
+void SceneObject::setObjectMenuComponent(const String& name) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setObjectMenuComponent(name);
+}
+
 bool SceneObject::isContainerFull() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

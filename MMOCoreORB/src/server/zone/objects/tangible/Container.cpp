@@ -80,7 +80,7 @@ int Container::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-bool Container::checkPermission(CreatureObject* player) {
+byte Container::checkPermission(CreatureObject* player) {
 	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -89,7 +89,7 @@ bool Container::checkPermission(CreatureObject* player) {
 		DistributedMethod method(this, RPC_CHECKPERMISSION__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
-		return method.executeWithBooleanReturn();
+		return method.executeWithByteReturn();
 	} else
 		return _implementation->checkPermission(player);
 }
@@ -328,7 +328,7 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	case RPC_CHECKPERMISSION__CREATUREOBJECT_:
-		resp->insertBoolean(checkPermission(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		resp->insertByte(checkPermission(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
@@ -357,7 +357,7 @@ int ContainerAdapter::handleObjectMenuSelect(CreatureObject* player, byte select
 	return (static_cast<Container*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
-bool ContainerAdapter::checkPermission(CreatureObject* player) {
+byte ContainerAdapter::checkPermission(CreatureObject* player) {
 	return (static_cast<Container*>(stub))->checkPermission(player);
 }
 

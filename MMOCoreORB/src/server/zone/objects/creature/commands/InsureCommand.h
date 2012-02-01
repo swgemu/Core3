@@ -68,7 +68,7 @@ public:
 
 		SortedVector<ManagedReference<QuadTreeEntry*> >* closeSceneObjects = creature->getCloseObjects();
 
-		info(String::valueOf(closeSceneObjects->size()), true);
+		info(String::valueOf(closeSceneObjects->size()));
 
 		for (int i=0; i < closeSceneObjects->size(); i++) {
 			SceneObject* scno = cast<SceneObject*>(closeSceneObjects->get(i).get());

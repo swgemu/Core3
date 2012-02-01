@@ -98,6 +98,9 @@ namespace server {
 		static int getFactionPointsCap(lua_State* L);
 		static int getRegion(lua_State* L);
 		static int getObjectTemplatePathByCRC(lua_State* L);
+		static int getContainerObjectByTemplate(lua_State* L);
+		static int updateCellPermission(lua_State* L);
+		static int updateCellPermissionGroup(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

@@ -16,7 +16,7 @@
 #include "server/zone/managers/templates/PlanetMapCategory.h"
 #include "server/zone/templates/slots/SlotDescriptor.h"
 #include "server/zone/templates/slots/ArrangementDescriptor.h"
-
+#include "server/zone/objects/scene/components/SceneObjectComponent.h"
 #include "params/primitives/IntegerParam.h"
 #include "params/StringIdParam.h"
 #include "params/primitives/StringParam.h"
@@ -85,7 +85,8 @@ protected:
 	PortalLayout* portalLayout;
 	AppearanceTemplate* appearanceTemplate;
 	bool loadedPortalLayout, loadedAppearanceTemplate;
-	String containerComponent, zoneComponent, objectMenuComponent, attributeListComponent;
+	String containerComponent, zoneComponent, attributeListComponent;
+	SceneObjectComponent* objectMenuComponent;
 
 	SortedVector<String> loadedDerivedFiles;
 
@@ -341,7 +342,7 @@ public:
     	return zoneComponent;
     }
 
-    inline String getObjectMenuComponent() {
+    inline SceneObjectComponent* getObjectMenuComponent() {
     	return objectMenuComponent;
     }
 

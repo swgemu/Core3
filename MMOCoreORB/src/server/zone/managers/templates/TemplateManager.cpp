@@ -90,6 +90,9 @@
 
 #include "tre3/TreeArchive.h"
 
+#include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/components/ComponentManager.h"
+
 #include "server/conf/ConfigManager.h"
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
@@ -98,6 +101,9 @@ TemplateManager::TemplateManager() {
 	setLogging(false);
 	setGlobalLogging(true);
 	setLoggingName("TemplateManager");
+
+	// preload lua files for component checks
+	DirectorManager::instance()->getLuaInstance();
 
 	registerTemplateObjects();
 
@@ -231,6 +237,8 @@ void TemplateManager::loadPlanetMapCategories() {
 void TemplateManager::loadLuaTemplates() {
 	info("Loading object templates", true);
 
+	int count = ComponentManager::instance()->size();
+
 	try {
 		luaTemplatesInstance->runFile("scripts/object/main.lua");
 	} catch (Exception& e) {
@@ -239,6 +247,7 @@ void TemplateManager::loadLuaTemplates() {
 	}
 
 	info("Finished loading object templates", true);
+	info(String::valueOf(ComponentManager::instance()->size() - count) + " ObjectMenuComponents loaded", true);
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
 	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
 	info(String::valueOf(structureFootprints.size()) + " structure footprints.", true);

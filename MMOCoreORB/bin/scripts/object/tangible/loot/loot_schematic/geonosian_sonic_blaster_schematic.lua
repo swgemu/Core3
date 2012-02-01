@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_geonosian_sonic_blaster_schematic = object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = "LootSchematicMenuComponent",
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	targetDraftSchematic = "object/draft_schematic/weapon/pistol_geo_sonic_blaster.iff",
 	targetUseCount = 5

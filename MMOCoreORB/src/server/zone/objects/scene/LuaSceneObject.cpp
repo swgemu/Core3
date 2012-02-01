@@ -9,10 +9,7 @@
 #include "SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/Zone.h"
-#include "server/zone/packets/object/Animation.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -25,7 +22,6 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
-		{ "doAnimation", &LuaSceneObject::doAnimation },
 		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "updateDirection", &LuaSceneObject::updateDirection },
@@ -40,16 +36,14 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "faceObject", &LuaSceneObject::faceObject },
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
-		{ "updateCellPermission", &LuaSceneObject::updateCellPermission },
-		{ "updateCellPermissionGroup", &LuaSceneObject::updateCellPermissionGroup },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
-		{ "getContainerObjectByTemplate", &LuaSceneObject::getContainerObjectByTemplate },
 		{ "setDirectionalHeading", &LuaSceneObject::setDirectionalHeading },
 		{ "getZoneName", &LuaSceneObject::getZoneName },
 		{ "getTemplateObjectPath", &LuaSceneObject::getTemplateObjectPath },
 		{ "teleport", &LuaSceneObject::teleport },
+		{ "setObjectMenuComponent", &LuaSceneObject::setObjectMenuComponent },
 		{ "switchZone", &LuaSceneObject::switchZone },
 		{ 0, 0 }
 };
@@ -67,18 +61,10 @@ int LuaSceneObject::_setObject(lua_State* L) {
 	return 0;
 }
 
-int LuaSceneObject::doAnimation(lua_State* L) {
-	String anim = lua_tostring(L, -1);
+int LuaSceneObject::setObjectMenuComponent(lua_State* L) {
+	String value = lua_tostring(L, -1);
 
-
-
-	if (realObject != NULL && realObject->isCreatureObject() && anim != "") {
-		CreatureObject* creature = cast<CreatureObject*>(realObject.get());
-
-		Animation* msg = new Animation(creature, anim);
-
-		realObject->broadcastMessage(msg, true);
-	}
+	realObject->setObjectMenuComponent(value);
 
 	return 0;
 }
@@ -254,58 +240,6 @@ int LuaSceneObject::getContainerObject(lua_State* L) {
 	return 1;
 }
 
-int LuaSceneObject::getContainerObjectByTemplate(lua_State* L) {
-	String objectTemplate = lua_tostring(L, -1);
-
-	uint32 objectCRC = objectTemplate.hashCode();
-
-	SceneObject* sco = NULL;
-	SceneObject* inventory = NULL;
-
-	if (realObject->isPlayerCreature()) {
-		inventory = realObject->getSlottedObject("inventory");
-	} else {
-		inventory = realObject;
-	}
-
-	if (inventory == NULL) {
-		realObject->info("Inventory NULL", true);
-		lua_pushnil(L);
-
-		return 1;
-	}
-
-	for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
-		sco = inventory->getContainerObject(i);
-
-		if (sco == NULL)
-			continue;
-
-		if (sco->getContainerObjectsSize() > 0) {
-			for (int j=0; j < sco->getContainerObjectsSize(); j++) {
-				SceneObject* child = sco->getContainerObject(j);
-
-				if (child == NULL)
-					continue;
-
-				if (child->getServerObjectCRC() == objectCRC) {
-					lua_pushlightuserdata(L, child);
-					return 1;
-				}
-			}
-		}
-
-		if (sco->getServerObjectCRC() == objectCRC) {
-			lua_pushlightuserdata(L, sco);
-			return 1;
-		}
-	}
-
-	lua_pushnil(L);
-
-	return 1;
-}
-
 int LuaSceneObject::getContainerObjectById(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 
@@ -405,79 +339,6 @@ int LuaSceneObject::isCreatureObject(lua_State* L) {
 	lua_pushboolean(L, val);
 
 	return 1;
-}
-
-int LuaSceneObject::updateCellPermission(lua_State* L) {
-	//realObject->info("getting values",true);
-	int allowEntry = lua_tonumber(L, -2);
-	CreatureObject* obj = (CreatureObject*)lua_touserdata(L, -1);
-	//realObject->info("allowentry:" + String::valueOf(allowEntry), true);
-	if (obj == NULL)
-		return 0;
-
-	//realObject->info("values not NULL", true);
-
-	if (realObject == NULL) {
-		obj->info("Cell NULL", true);
-		return 0;
-	}
-
-
-	if (!realObject->isCellObject()) {
-		realObject->info("Unknown entity error: Cell", true);
-		return 0;
-	}
-
-	if (!obj->isCreatureObject()) {
-		//realObject->info("Unknown entity error: Creature", true);
-		obj->info("Unknown entity error: Creature", true);
-		return 0;
-	}
-
-	//realObject->info("checks are fine", true);
-
-	BaseMessage* perm = new UpdateCellPermissionsMessage(realObject->getObjectID(), allowEntry);
-	obj->sendMessage(perm);
-
-	return 0;
-}
-
-int LuaSceneObject::updateCellPermissionGroup(lua_State* L) {
-	//realObject->info("getting values",true);
-	int allowEntry = lua_tonumber(L, -2);
-	CreatureObject* obj = (CreatureObject*)lua_touserdata(L, -1);
-	//realObject->info("allowentry:" + String::valueOf(allowEntry), true);
-	if (obj == NULL)
-		return 0;
-
-	//realObject->info("values not NULL", true);
-
-	if (!realObject->isCellObject()) {
-		realObject->info("Unknown entity error: Cell", true);
-		return 0;
-	}
-
-	if (!obj->isCreatureObject()) {
-		//realObject->info("Unknown entity error: Creature", true);
-		obj->info("Unknown entity error: Creature", true);
-		return 0;
-	}
-
-	BaseMessage* perm = new UpdateCellPermissionsMessage(realObject->getObjectID(), allowEntry);
-
-	//realObject->info("checks are fine", true);
-	if (obj->isGrouped()) {
-		// do group
-		GroupObject* group = obj->getGroup();
-		if (group != NULL) {
-			group->broadcastMessage(perm);
-		}
-	} else {
-		// do single creature
-		obj->sendMessage(perm);
-	}
-
-	return 0;
 }
 
 int LuaSceneObject::wlock(lua_State* L) {

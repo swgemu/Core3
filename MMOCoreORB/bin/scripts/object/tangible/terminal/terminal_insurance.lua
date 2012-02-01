@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_insurance = object_tangible_terminal_shared_terminal_insurance:new {
-	objectMenuComponent = "InsuranceTerminalMenuComponent",
+	objectMenuComponent = {"cpp", "InsuranceTerminalMenuComponent"},
 	maxCondition = 0,
 }
 

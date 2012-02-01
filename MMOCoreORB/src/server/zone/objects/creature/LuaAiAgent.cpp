@@ -34,7 +34,7 @@ int LuaAiAgent::_setObject(lua_State* L) {
 int LuaAiAgent::_getObject(lua_State* L) {
 	lua_pushlightuserdata(L, realObject.get());
 
-	return 0;
+	return 1;
 }
 
 int LuaAiAgent::setFollowObject(lua_State* L) {

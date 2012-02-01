@@ -48,7 +48,7 @@ clientTemplateFileName = "",
 	 autoRegisterWithPlanetMap = 1,
 	 
 	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = "ObjectMenuComponent",
+	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
 	 attributeListComponent = "AttributeListComponent",
 	 containerComponent = "ContainerComponent"
 }

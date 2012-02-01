@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_bank = object_tangible_terminal_shared_terminal_bank:new {
-	objectMenuComponent = "BankTerminalMenuComponent",
+	objectMenuComponent = {"cpp", "BankTerminalMenuComponent"},
 	planetMapCategory = "terminal",
 	maxCondition = 0,
 	planetMapSubCategory = "terminal_bank"

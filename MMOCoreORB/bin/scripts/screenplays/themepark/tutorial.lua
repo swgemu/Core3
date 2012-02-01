@@ -744,8 +744,7 @@ function TutorialScreenPlay:start(creatureObject)
 	--createObserver(OBJECTREMOVEDFROMZONE, "TutorialScreenPlay", "deleteWorld", creatureObject)
 	
 	--lock cell door
-	targetCellObject:_setObject(buildingObject:getCell(9))
-	targetCellObject:updateCellPermission(0, creatureObject)
+	updateCellPermission(buildingObject:getCell(9), 0, creatureObject)
 		
 	creature:sendNewbieTutorialEnableHudElement("all", 0)
 	
@@ -2491,8 +2490,8 @@ function TutorialScreenPlay:lootBanditEvent(creatureObject)
 	--unlock cell door
 	local targetCellObject = LuaSceneObject(player:getParent())
 	local buildingObject = LuaBuildingObject(targetCellObject:getParent())
-	targetCellObject:_setObject(buildingObject:getCell(9))
-	targetCellObject:updateCellPermission(1, creatureObject)
+	
+	updateCellPermission(buildingObject:getCell(9), 1, creatureObject)
 	writeData(player:getObjectID() .. ":tutorial:officer3flag", 2)
 	
 	player:setScreenPlayState(524288, "tutorial")

@@ -2,21 +2,34 @@ DWB = ScreenPlay:new {
 	numberOfActs = 1
 }
 
+--   Set to 1 for debug messages  -
 TEST = 0
 
+--------------------------------------------------------------
+--   Spawn Map for conditionally spawned Creatures           -
+--------------------------------------------------------------
 specialSpawnMapDWB = {
+	--[[according to a bug report these spawned at the other door pre-cu
 	rageon_vart = {"rageon_vart", 0, -84.8, -20, -25.7, -114, 5996323},
 	rageon_vart_assist1 = {"death_watch_bloodguard", 0, -84.8, -20, -25.7, -114, 5996323},
-	rageon_vart_assist2 = {"death_watch_bloodguard", 0, -84.8, -20, -25.7, -114, 5996323},
+	rageon_vart_assist2 = {"death_watch_bloodguard", 0, -84.8, -20, -25.7, -114, 5996323},]]
+	rageon_vart = {"rageon_vart", 0, -114.3, -20, -25.7, 108, 5996323},
+	rageon_vart_assist1 = {"death_watch_bloodguard", 0, -114.3, -20, -25.7, 108, 5996323},
+	rageon_vart_assist2 = {"death_watch_bloodguard", 0, -114.3, -20, -25.7, 108, 5996323},
+	--[[according to a bug report these spawned at the other door pre-cu
 	klin_nif = {"klin_nif", 0, -44.9, -32, -99.4, 56, 5996331},
 	klin_nif_assist1 = {"death_watch_bloodguard", 0, -44.9, -32, -99.4, 56, 5996331},
-	klin_nif_assist2 = {"death_watch_bloodguard", 0, -44.9, -32, -99.4, 56, 5996331},--verify
+	klin_nif_assist2 = {"death_watch_bloodguard", 0, -44.9, -32, -99.4, 56, 5996331},]]
+	klin_nif = {"klin_nif", 0, -9.9, -32, -100.5, -47, 5996331},
+	klin_nif_assist1 = {"death_watch_bloodguard", 0, -9.9, -32, -100.5, -47, 5996331},
+	klin_nif_assist2 = {"death_watch_bloodguard", 0, -9.9, -32, -100.5, -47, 5996331},
 	fenri_dalso = {"fenri_dalso", 0, 25.8, -60, -172.1, -9, 5996346},
-	fenri_dalso_add1 = {"death_watch_ghost", 0, 26.0, -60, -171.1, 0, 5996346},
+	fenri_dalso_add1 = {"death_watch_wraith", 0, 26.0, -60, -171.1, 0, 5996346},
 	fenri_dalso_add2 = {"death_watch_s_battle_droid", 0, 24.9, -60, -174.0, -5, 5996346},
 	fenri_dalso_add3 = {"death_watch_s_battle_droid", 0, 27.3, -60, -173.7, -9, 5996346},
-	fenri_dalso_assist1 = {"death_watch_ghost", 0, 25.8, -60, -172.1, -9, 5996346},
-	fenri_dalso_assist2 = {"death_watch_ghost", 0, 25.8, -60, -172.1, -9, 5996346},
+	fenri_dalso_add4 = {"death_watch_wraith", 0, 25.8, -60, -173.7, 0, 5996346},
+	fenri_dalso_assist1 = {"death_watch_wraith", 0, 25.8, -60, -172.1, -9, 5996346},
+	fenri_dalso_assist2 = {"death_watch_wraith", 0, 25.8, -60, -172.1, -9, 5996346},
 	haldo1 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
 	haldo2 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
 	haldo3 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
@@ -25,8 +38,13 @@ specialSpawnMapDWB = {
 	lootbox3mob1 = 	{"death_watch_ghost", 0, -0.6, -32, -39.9, 54, 5996335},
 	lootbox3mob2 = {"death_watch_ghost", 0, 5.2, -32, -40.6, -29, 5996335},
 	jetpackdroid = {"r3", 1, -266.7, -50.0, -85.0, 101, 5996370},
+	entrance1 = {"death_watch_battle_droid", 0, -31.9, -12.0, -3.7, 121, 5996315},
+	entrance2 = {"death_watch_battle_droid", 0, -32.5, -12.0, -8.1, 76, 5996315},
 }
 
+--------------------------------------------------------------
+--   Spawn Map for respawning static Creatures               -
+--------------------------------------------------------------
 spawnMapDWB = 	{
 	{"death_watch_overlord", 0, 118, -64, -94, -135, 5996349},
 	{"death_watch_s_battle_droid", 240, 110, -64, -92, 150, 5996349},
@@ -270,6 +288,10 @@ spawnMapDWB = 	{
 	{"death_watch_rescue_scientist", 1, 113.9,-68,-187,1,5996351},
 }
 
+--------------------------------------------------------------------------------
+--   Constants used to reference items, cells, rooms and skills                -
+--------------------------------------------------------------------------------
+
 PASSKEYHALL = "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff"
 PASSKEYSTORAGE = "object/tangible/dungeon/death_watch_bunker/passkey_storage.iff"
 PASSKEYMINE = "object/tangible/dungeon/death_watch_bunker/passkey_mine.iff"
@@ -286,26 +308,93 @@ TAILOR = 5996368
 
 ALUMMINERAL = "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff"
 
+ADVANCEDREBREATHER = "Advanced Rebreather"
 MANDOHELMET = "object/tangible/wearables/armor/mandalorian/armor_mandalorian_helmet.iff"
 MANDOREBREATHER = "object/tangible/wearables/goggles/rebreather.iff"
+FILTER = "object/tangible/dungeon/death_watch_bunker/filter.iff"
+ENHANCEDFILTER = "object/tangible/dungeon/death_watch_bunker/enhanced_filter.iff"
+ALUMGEL = "object/tangible/dungeon/death_watch_bunker/gel_packet.iff"
+MEDICINE = "object/tangible/dungeon/death_watch_bunker/crazed_miner_medicine.iff"
+DRILLBATTERY = "object/tangible/dungeon/death_watch_bunker/drill_battery.iff"
+DRILLBATTERYCLEAN = "object/tangible/dungeon/death_watch_bunker/drill_battery_clean.iff"
 
-CRAFTINGCELL = {
+SPAWNGROUP = {
+	"",
+	"terminalAnextSpawn",
+	"terminalBnextSpawn",
+	"terminalCnextSpawn" }
+
+SPAWNEVENT = {
+	"",
+	"spawnNextA",
+	"spawnNextB",
+	"spawnNextC" }
+
+STATES = {
+	2,--entrance unlocked
+	4,--terminal a unlocked
+	8,--terminal b unlocked
+	16,--terminal mines unlocked
+	32,--armorsmith door unlocked
+	64,--droidengineer door unlocked
+	128,--tailor door unlocked
+}
+
+ACCESSCELL = {
+	ENTRANCE,
+	AREAA,
+	AREAB,
+	MINES,
 	ARMOR,
 	DROIDENGINEER,
 	TAILOR	}
 
+UNLOCKMESSAGE = {
+	"@dungeon/death_watch:access_granted",
+	"@dungeon/death_watch:access_granted",
+	"@dungeon/death_watch:access_granted",
+	"@dungeon/death_watch:access_granted",
+	"@dungeon/death_watch:unlock_door",
+	"@dungeon/death_watch:unlock_door",
+	"@dungeon/death_watch:unlock_door" }
+	
+LOCKMESSAGE = {
+	"@dungeon/death_watch:terminal_locked",
+	"@dungeon/death_watch:terminal_locked",
+	"@dungeon/death_watch:terminal_locked",
+	"@dungeon/death_watch:terminal_locked",
+	"@dungeon/death_watch:room_in_use",
+	"@dungeon/death_watch:room_in_use",
+	"@dungeon/death_watch:room_in_use"}
+
 TERMINALSKILLS = {
+	"",
+	"",
+	"",
+	"",
 	"crafting_armorsmith_master",
 	"crafting_droidengineer_master",
 	"crafting_tailor_master",
 	"crafting_artisan_master"}
 
+LOCKTIME = {10,10,10,10,6,6,6}
+
 MISSINGSKILL = {
+	"",
+	"",
+	"",
+	"",
 	"@dungeon/death_watch:not_enough_armorsmith_skill",
 	"@dungeon/death_watch:not_enough_droidengineer_skill",
 	"@dungeon/death_watch:not_enough_tailor_skill"}
 
+DOORTYPE = {1,2,2,2,3,3,3}
+
 DOORS = {
+	{ },
+	{ PASSKEYHALL },
+	{ PASSKEYSTORAGE },
+	{ PASSKEYMINE },
 
 	--ARMORSMITHDOOR
 	{	"object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_chest_plate.iff",
@@ -349,69 +438,47 @@ MINECELLS = {
 		
 registerScreenPlay("DWB", true);
 
-function DWB:hasCraftingSkill(room, creatureObject)
-	if (creatureObject == nil) then
+--------------------------------------------------------------
+--   *** START SCREENPLAY ***                                -
+--------------------------------------------------------------
+function DWB:start(creatureObject)
+	if (not isZoneEnabled("endor")) then	
 		if TEST == 1 then
-			printf("creature nil\n")
+			printf("[Death Watch Bunker] Zone not loaded.\n")
 		end
-		return false
+		return 0
 	end
-	
-	if (room < 1 or room > 3) then
-		if TEST == 1 then
-			printf("room invalid\n")
-		end
-		return false
-	end
-	
-	local creature = LuaCreatureObject(creatureObject)
+		
 	if TEST == 1 then
-		printf(TERMINALSKILLS[room] .. "\n")
+		printf("[Death Watch Bunker] Initiating spawns and observers\n")
 	end
-	if creature:hasSkill(TERMINALSKILLS[room]) then
-		return true
-	end
+	math.randomseed( os.time() )
+	local bunker = getSceneObject(5996314)
 	
-	return false
+	if bunker == nil then
+		if TEST == 1 then
+			printf("[Death Watch Bunker] Could not initialize. Zone not loaded?\n")
+		end
+		return 0
+	end
+
+	zero = self:spawnObjects(bunker)
+	zero = self:test(bunker)
+	zero = self:spawnMobiles(bunker)
+
+	local bunkerObject = LuaBuildingObject(bunker)
+
+	createEvent(1000 * 30, "DWB", "poison", bunker) 	
+	createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
+	createObserver(EXITEDBUILDING, "DWB", "onExitDWB", bunker)
+	return 0
 end
 
-function DWB:hasCraftingItem(room, creatureObject)
-	if (creatureObject == nil) then
-		if TEST == 1 then
-			printf("creature nil\n")
-		end
-		return false
-	end
-	
-	if (room < 1 or room > 3) then
-		if TEST == 1 then
-			printf("room invalid\n")
-		end
-		return false
-	end
-	
-	local creature = LuaCreatureObject(creatureObject)
-	
-	if (creature:getContainerObjectByTemplate(ALUMMINERAL) == nil) then
-		if TEST == 1 then
-			printf("no alum\n")
-		end
-		return false
-	end
-	
-	local table = DOORS[room]
-	
-	for i,v in ipairs(table) do
-		if (creature:getContainerObjectByTemplate(v) ~= nil) then
-			return true
-		end
-	end
-	if TEST == 1 then
-		printf("no bh armor\n")
-	end
-	return false
-end
+--------------------------------------------------------------
+--   Spawning Logic                                          -
+--------------------------------------------------------------
 
+--   Spawns all static respawning mobiles  -
 function DWB:spawnMobiles(sceneObject)
 	for i,v in ipairs(spawnMapDWB) do
 		spawnedPoint = spawnMobile("endor", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
@@ -420,6 +487,7 @@ function DWB:spawnMobiles(sceneObject)
 	return 0
 end
 
+-- Spawns all static objects and assigns Observers -
 function DWB:spawnObjects(creatureObject)
 	local spawnedSceneObject = LuaSceneObject(nil)
 
@@ -429,7 +497,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access1", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessDoor", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 
 	-- Door Access Terminal A
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -84.4526,-20,-50.504,5996323,-0.707107,0,0.707107,0)
@@ -437,7 +505,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access2", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessDoor", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	-- Door Access Terminal B
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -8.3714,-32,-95.3985,5996331,-0.707107,0,0.707107,0)
@@ -445,7 +513,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access3", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessDoor", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	-- Door Access Terminal Mines
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", 26.1493,-64,-95.4288,5996347,0,0,1,0)
@@ -453,7 +521,7 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access4", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
-	createObserver(OBJECTRADIALUSED, "DWB", "accessDoor", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	
 	-- Voice Recognition Terminal
@@ -464,7 +532,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 5)
 	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Armorsmith Crafting Terminal (Biceps, Chest, Boots)
@@ -478,7 +546,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Droid Engineer Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 6)
 	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Master Droid Engineer Crafting Terminal (Bracer, Helmet)
@@ -504,7 +572,7 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Tailor Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 7)
 	createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
 	-- Tailor Crafting Terminal (Pants, Gloves, Belt)
@@ -571,6 +639,823 @@ function DWB:spawnObjects(creatureObject)
 	return 1
 end
 
+
+--------------------------------------------------------------
+--   Observer Callbacks                                      -
+--------------------------------------------------------------
+function DWB:onEnterDWB(sceneObject, creatureObject)
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if (creature:isAiAgent() == true) then
+		return 0
+	end
+	
+	state = creature:hasScreenPlayState(2, "death_watch_bunker")
+	
+	if state == 0 then
+		local targetCellObject = LuaSceneObject(creature:getParent())
+		local buildingObject = LuaSceneObject(targetCellObject:getParent())
+		if TEST == 1 then
+			printf("locking from " .. targetCellObject:getObjectID() .. " in " .. buildingObject:getObjectID() .. "\n")
+		end
+		self:lockAll(creatureObject)
+	else
+		if TEST == 1 then
+			printf("already has access\n")
+		end
+		
+		createEvent(10 * 1000, "DWB", "lockCellsOnly", creatureObject)
+	end
+	
+	return 0
+end
+
+function DWB:onExitDWB(sceneObject, creatureObject, long)
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if (creature:isAiAgent() == true) then
+		return 0
+	end	
+	
+	if long == OUTSIDE or long == 0 then
+		creature:sendSystemMessage("@dungeon/death_watch:relock")
+	
+		if TEST == 1 then
+			printf("removing permissions\n")
+		end
+	
+		creature:removeScreenPlayState(2, "death_watch_bunker")
+		creature:removeScreenPlayState(4, "death_watch_bunker")
+		creature:removeScreenPlayState(8, "death_watch_bunker")
+		creature:removeScreenPlayState(16, "death_watch_bunker")
+		creature:removeScreenPlayState(32, "death_watch_bunker")
+		creature:removeScreenPlayState(64, "death_watch_bunker")
+		creature:removeScreenPlayState(128, "death_watch_bunker")
+	
+		self:lockAll(creatureObject)
+	end
+	
+	return 0
+end
+
+function DWB:lootBox(sceneObject, creatureObject, selectedID)
+	if selectedID ~= 16 then
+		return 0
+	end
+	
+	if TEST == 1 then
+		printf("opening box\n")
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	local container = LuaSceneObject(sceneObject)
+
+   	state = readData(container:getObjectID() .. ":dwb:spawned")
+   	
+   	if state == 1 then
+    	return 0
+	else
+		box = readData(container:getObjectID() .. ":dwb:lootbox")
+    	writeData(container:getObjectID() .. ":dwb:spawned", 1)
+     	
+     	--spawn enemies
+		if box == 1 then
+			local spawn = specialSpawnMapDWB["lootbox1mob1"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7]) 
+		elseif box == 2 then
+			local spawn = specialSpawnMapDWB["lootbox2mob1"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7]) 
+		elseif box == 3 then
+			local spawn = specialSpawnMapDWB["lootbox3mob1"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local spawn = specialSpawnMapDWB["lootbox3mob2"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])  					
+		end
+		
+     	createEvent(240 * 1000, "DWB", "refill", sceneObject)
+     	return 1
+   	end
+end
+
+--------------------------------------------------------------
+--   General Events                                          -
+--------------------------------------------------------------
+function DWB:enableAccess(sceneObject)
+	local terminal = LuaSceneObject(sceneObject)
+	writeData(terminal:getObjectID() .. ":dwb:accessEnabled", 1)
+end
+
+function DWB:lockCellsOnly(creatureObject)
+	if creatureObject == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if TEST == 1 then
+		printf("lock on reentry\n")
+	end
+	
+	state = creature:hasScreenPlayState(2, "death_watch_bunker")
+	
+	if state == 0 then
+		updateCellPermission(getSceneObject(ENTRANCE), 0, creatureObject)
+	end
+	
+	state = creature:hasScreenPlayState(4, "death_watch_bunker")
+	
+	if state == 0 then
+		updateCellPermission(getSceneObject(AREAA), 0, creatureObject)
+	end
+
+	
+	state = creature:hasScreenPlayState(8, "death_watch_bunker")
+	
+	if state == 0 then
+		updateCellPermission(getSceneObject(AREAB), 0, creatureObject)
+	end		
+	
+	state = creature:hasScreenPlayState(16, "death_watch_bunker")
+	
+	if state == 0 then
+		updateCellPermission(getSceneObject(MINES), 0, creatureObject)
+	end
+	
+	state = creature:hasScreenPlayState(32, "death_watch_bunker")
+	
+	if state == 0 then
+		updateCellPermission(getSceneObject(ARMOR), 0, creatureObject)
+	end
+	
+	state = creature:hasScreenPlayState(64, "death_watch_bunker")
+	
+	if state == 0 then
+		updateCellPermission(getSceneObject(DROIDENGINEER), 0, creatureObject)
+	end
+	
+	state = creature:hasScreenPlayState(128, "death_watch_bunker")
+	
+	if state == 0 then
+		updateCellPermission(getSceneObject(TAILOR), 0, creatureObject)
+	end
+end
+
+function DWB:refill(sceneObject)
+	if (sceneObject == nil) then
+		return
+	end
+	
+	createObserver(OBJECTRADIALUSED, "DWB", "lootBox", sceneObject)
+	
+	local container = LuaSceneObject(sceneObject)
+		
+	writeData(container:getObjectID() .. ":dwb:spawned", 0)
+	
+	if (container:getContainerObjectsSize() == 0) then
+		
+		if TEST == 1 then
+			printf("refilling\n")
+		end
+		
+		-- add items
+		chance = math.random(100)
+		createLoot(sceneObject, "death_watch_bunker_lootbox", 1) 
+	
+		-- second item
+		if chance > 95 then
+   			createLoot(sceneObject, "death_watch_bunker_lootbox", 1)
+ 		end
+	else
+		if TEST == 1 then
+			printf("refilling\n")
+		end
+	end
+end
+
+function DWB:poison(sceneObject)
+	if TEST == 1 then
+		printf("Poison Trigger\n")
+	end
+
+	for i,v in ipairs(MINECELLS) do
+		local pCell = getSceneObject(v)
+		if pCell ~= nil then
+			local cell = LuaSceneObject(pCell)
+			size = cell:getContainerObjectsSize()
+			
+			for j=0, size - 1, 1 do
+				local pointer = cell:getContainerObject(j)
+				
+				if pointer ~= nil then
+									
+					local sco = LuaSceneObject(pointer)
+						
+					if (sco:isCreatureObject()) then
+						local creo = LuaCreatureObject(pointer)
+						
+						if (not creo:isAiAgent()) then
+									
+							if (self:hasRebreather(pointer) == 1) then
+								if TEST == 1 then
+									printf("Poison averted\n")
+								end
+							else
+								self:doPoison(pointer)
+							end 
+
+						end
+					end
+				end
+			end
+		end		
+	end
+	createEvent(1000 * (50 + math.random(0,20)) , "DWB", "poison", sceneObject)
+end
+
+function DWB:timeWarning(creatureObject)
+	if creatureObject ~= nil then
+		local creature = LuaCreatureObject(creatureObject)
+		creature:sendGroupMessage("@dungeon/death_watch:thirty_seconds")
+	end
+end
+
+function DWB:removeFromDWB(creatureObject)
+	if (creatureObject == nil) then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if (creature:isGrouped()) then
+		size = creature:getGroupSize()
+		
+		for i = 0, size - 1, 1 do
+			pMember = creature:getGroupMember(i)
+			if pMember ~= nil then
+				local groupMember = LuaCreatureObject(pMember)
+				if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
+					createEvent(500, "DWB", "teleportPlayer", pMember)
+				end
+			end
+		end 
+	else
+		createEvent(500, "DWB", "teleportPlayer", creatureObject)
+	end
+	
+end
+
+function DWB:teleportPlayer(creatureObject)
+	if (creatureObject == nil) then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	creature:teleport(-4657, 14.4, 4322.3, 0)
+	
+	self:lockAll(creatureObject)
+end
+
+--------------------------------------------------------------
+--   Key Spawn Events                                        -
+--------------------------------------------------------------
+function DWB:spawnNextA(creatureObject)
+	nextSpawn = readData(5996314 .. ":dwb:terminalAnextSpawn")
+	
+	if nextSpawn == 0 then
+		return
+	elseif nextSpawn == 1 then
+		writeData(5996314 .. ":dwb:terminalAnextSpawn", 2)
+		local spawn = specialSpawnMapDWB["rageon_vart_assist1"] 
+		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextA", creatureObject)
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 102)
+	elseif nextSpawn == 2 then
+		writeData(5996314 .. ":dwb:terminalAnextSpawn", 3)
+		local spawn = specialSpawnMapDWB["rageon_vart_assist2"]
+		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextA", creatureObject)
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 40)
+	else
+		writeData(5996314 .. ":dwb:terminalAnextSpawn", 0)
+		local spawn = specialSpawnMapDWB["rageon_vart"]
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+	end
+	
+end
+
+function DWB:spawnNextB(creatureObject)
+	nextSpawn = readData(5996314 .. ":dwb:terminalBnextSpawn")
+	
+	if nextSpawn == 0 then
+		return
+	elseif nextSpawn == 1 then
+		writeData(5996314 .. ":dwb:terminalBnextSpawn", 2)
+		local spawn = specialSpawnMapDWB["klin_nif_assist1"] 
+		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextB", creatureObject)
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 31)
+	elseif nextSpawn == 2 then
+		writeData(5996314 .. ":dwb:terminalBnextSpawn", 3)
+		local spawn = specialSpawnMapDWB["klin_nif_assist2"]
+		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextB", creatureObject)
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 67)
+	else
+		writeData(5996314 .. ":dwb:terminalBnextSpawn", 0)
+		local spawn = specialSpawnMapDWB["klin_nif"]
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+	end
+	
+end
+
+function DWB:spawnNextC(creatureObject)
+	nextSpawn = readData(5996314 .. ":dwb:terminalCnextSpawn")
+	
+	if nextSpawn == 0 then
+		return
+	elseif nextSpawn == 1 then
+		writeData(5996314 .. ":dwb:terminalCnextSpawn", 2)
+		local spawn = specialSpawnMapDWB["fenri_dalso_assist1"] 
+		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextC", creatureObject)
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 37)
+	elseif nextSpawn == 2 then
+		writeData(5996314 .. ":dwb:terminalCnextSpawn", 3)
+		local spawn = specialSpawnMapDWB["fenri_dalso_assist2"]
+		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextC", creatureObject)
+		
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 21)
+	else
+		writeData(5996314 .. ":dwb:terminalCnextSpawn", 0)
+		local spawn = specialSpawnMapDWB["fenri_dalso_add1"]
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = specialSpawnMapDWB["fenri_dalso_add2"]
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = specialSpawnMapDWB["fenri_dalso_add3"]
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = specialSpawnMapDWB["fenri_dalso_add4"]
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = specialSpawnMapDWB["fenri_dalso"]
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+	end
+	
+end
+
+--------------------------------------------------------------
+--   Helper Functions                                        -
+--------------------------------------------------------------
+
+--   Checks whether a creature has sufficient skill to access a particular crafting room  -
+function DWB:hasRequiredSkill(room, creatureObject)
+	if (creatureObject == nil) then
+		if TEST == 1 then
+			printf("creature nil\n")
+		end
+		return false
+	end
+	
+	if (room < 1 or room > 8) then
+		if TEST == 1 then
+			printf("room invalid\n")
+		end
+		return false
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if creature:hasSkill(TERMINALSKILLS[room]) then
+		return true
+	end
+	
+	return false
+end
+
+--   Checks whether a creature has an Alum Mineral  -
+function DWB:hasAlumMineral(creatureObject)
+	if creatureObject == nil then
+		return false
+	end
+	
+	local creature = LuaSceneObject(creatureObject)
+	inventory = creature:getSlottedObject("inventory")
+	
+	if (getContainerObjectByTemplate(inventory, ALUMMINERAL, true) == nil) then
+		if TEST == 1 then
+			printf("no alum\n")
+		end
+		return false
+	end
+
+	return true
+end
+
+--   Checks whether a creature has all necessary items to access a particular crafting room  -
+function DWB:findRequiredItem(room, creatureObject)
+	if (creatureObject == nil) then
+		if TEST == 1 then
+			printf("creature nil\n")
+		end
+		return nil
+	end
+	
+	if (room < 1 or room > 7) then
+		if TEST == 1 then
+			printf("room invalid\n")
+		end
+		return nil
+	end
+	
+	local creature = LuaSceneObject(creatureObject)
+	inventory = creature:getSlottedObject("inventory")
+	
+	local table = DOORS[room]
+	
+	for i,v in ipairs(table) do
+		obj = getContainerObjectByTemplate(inventory, v, true) 
+		if (obj ~= nil) then
+			return obj
+		end
+	end
+	if TEST == 1 then
+		printf("required item not found\n")
+	end
+	return nil
+end
+
+--   Checks whether a creature has sufficient protection against alum mine poison  -
+function DWB:hasRebreather(sceneObject)
+	--TODO: Change this to be a skill mod check for private_poison_rebreather
+	local scno = LuaSceneObject(sceneObject)
+	local pRebreather = scno:getSlottedObject("eyes")
+	
+	if (pRebreather ~= nil) then
+		local rebreather = LuaSceneObject(pRebreather)
+		headSlot = rebreather:getTemplateObjectPath()
+		
+		if TEST == 1 then
+			printf("hat: " .. headSlot .. "\n")
+		end
+		
+		if (headSlot == MANDOREBREATHER) then
+			if (rebreather:getCustomObjectName() == ADVANCEDREBREATHER) then
+				return 1
+			else
+				return 0
+			end
+		elseif (headSlot == MANDOHELMET) then
+			return 1
+		end
+	end
+	
+	return 0
+end
+
+--   Inflict poison damage on a creature  -
+function DWB:doPoison(creatureObject)
+	if creatureObject == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if TEST == 1 then
+		printf("poisoned\n")
+	end
+	
+	creature:inflictDamage(creatureObject, 0, 100, 0)
+	creature:sendSystemMessage("@dungeon/death_watch:bad_air")
+end
+
+--   Lock all restricted cells to a creature  -
+-- NOTE: Once proper permissions are in, might have to revisit and set all cells of a restricted area 
+-- rather than just the first accessible one
+function DWB:lockAll(creatureObject)
+	if creatureObject == nil then
+		if TEST == 1 then
+			printf("creature is nil\n")
+		end
+		return
+	end
+	
+	--first terminal
+	updateCellPermission(getSceneObject(ENTRANCE), 0, creatureObject)
+	
+	--terminal a
+	updateCellPermission(getSceneObject(AREAA), 0, creatureObject)
+	
+	--terminal b
+	updateCellPermission(getSceneObject(AREAB), 0, creatureObject)
+
+	--mines
+	updateCellPermission(getSceneObject(MINES), 0, creatureObject)
+	
+	--Armorsmith Crafting Room
+	updateCellPermission(getSceneObject(ARMOR), 0, creatureObject)
+	
+	--Tailor Crafting Room
+	updateCellPermission(getSceneObject(TAILOR), 0, creatureObject)
+	
+	--Droid Engineer Crafting Room
+	updateCellPermission(getSceneObject(DROIDENGINEER), 0, creatureObject)
+end
+
+function DWB:spawnDefenders(number, creatureObject)
+	if number < 1 or number > 4 then
+		return
+	end
+	
+	if number == 1 then
+		local spawn = specialSpawnMapDWB["entrance1"]
+		spawnPointer1 = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawn = specialSpawnMapDWB["entrance2"]
+		spawnPointer2 = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		
+		if creatureObject ~= nil then
+			local spawnedCreature = LuaCreatureObject(spawnPointer1)
+			spawnedCreature:engageCombat(creatureObject)
+			spawnedCreature:_setObject(spawnPointer2)
+			spawnedCreature:engageCombat(creatureObject)
+		end
+	else
+		writeData(5996314 .. ":dwb:" .. SPAWNGROUP[number], 1)
+		createEvent(2 * 1000, "DWB", SPAWNEVENT[number], creatureObject)
+	end
+end
+
+function DWB:unlockForGroup(number, creatureObject, cells)
+	if creatureObject == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	-- screenplaystates for login/logout
+	if (creature:isGrouped()) then
+		size = creature:getGroupSize()
+		
+		for i = 0, size - 1, 1 do
+			pMember = creature:getGroupMember(i)
+			if pMember ~= nil then
+				local groupMember = LuaCreatureObject(pMember)
+				
+				local parentID = groupMember:getParentID()
+				
+				if (cells and parentID > 5996313 and parentID < 5996380) then
+					groupMember:setScreenPlayState(STATES[number], "death_watch_bunker")
+					updateCellPermission(getSceneObject(ACCESSCELL[number]), 1, pMember)
+					groupMember:sendSystemMessage(UNLOCKMESSAGE[number])
+				elseif ((not cells) and groupMember:getZoneName() == "endor") then
+					groupMember:setScreenPlayState(STATES[number], "death_watch_bunker")
+					updateCellPermission(getSceneObject(ACCESSCELL[number]), 1, pMember)
+					groupMember:sendSystemMessage(UNLOCKMESSAGE[number])
+				end
+			end
+		end 
+	else
+		creature:setScreenPlayState(STATES[number], "death_watch_bunker")
+		updateCellPermission(getSceneObject(ACCESSCELL[number]), 1, creatureObject)
+		creature:sendSystemMessage(UNLOCKMESSAGE[number])
+	end
+end
+
+function DWB:checkDoor(sceneObject, creatureObject)
+	if creatureObject == nil or sceneObject == nil then
+		return 
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	local terminal = LuaSceneObject(sceneObject)
+	enabled = readData(terminal:getObjectID() .. ":dwb:accessEnabled")
+	number = readData(terminal:getObjectID() .. ":dwb:terminal")
+	
+	if TEST == 1 then
+		printf(creature:getName() .. " trying to open door number " .. number .. "\n")
+	end
+	
+	type = DOORTYPE[number]
+	
+	if type == 1 then
+		local state = creature:hasScreenPlayState(1, "death_watch_bunker")
+		if state == 0 then
+			if (enabled == 0) then
+				creature:sendSystemMessage(LOCKMESSAGE[number])
+				return
+			end
+			
+			creature:sendGroupMessage("@dungeon/death_watch:airlock_backup")
+			self:spawnDefenders(number, creatureObject)
+		else
+			self:unlockForGroup(number, creatureObject, false)
+			return
+		end
+	elseif type == 2 then
+		if (self:findRequiredItem(number, creatureObject) == nil) then
+			if (enabled == 0) then
+				creature:sendSystemMessage(LOCKMESSAGE[number])
+				return
+			end
+			
+			creature:sendGroupMessage("@dungeon/death_watch:denied_access")
+			self:spawnDefenders(number, creatureObject)
+		else
+			requiredItem = self:findRequiredItem(number, creatureObject)
+			local item = LuaSceneObject(requiredItem)
+			self:unlockForGroup(number, creatureObject, true)
+			item:destroyObjectFromWorld()
+			return
+		end
+	elseif type == 3 then
+		if (enabled == 0) then
+			creature:sendSystemMessage(LOCKMESSAGE[number])
+			return
+		end
+		
+		if (self:findRequiredItem(number, creatureObject) == nil or self:hasAlumMineral(creatureObject) == false) then
+			creature:sendSystemMessage("@dungeon/death_watch:not_enough_ingredients")
+			return
+		end
+		
+		if (self:hasRequiredSkill(number, creatureObject) == false) then
+			creature:sendSystemMessage(MISSINGSKILL[number])
+			return
+		end
+		
+		self:unlockForGroup(number, creatureObject, true)
+		
+		createEvent(1000 * 60 * 5, "DWB", "removeFromDWB", creatureObject)
+		createEvent(1000 * 60 * 4.5, "DWB", "timeWarning", creatureObject)
+	end
+	
+	writeData(terminal:getObjectID() .. ":dwb:accessEnabled", 0)
+	createEvent(1000 * 60 * LOCKTIME[number], "DWB", "enableAccess", sceneObject)
+end
+
+--------------------------------------------------------------
+--   LuaMenuComponents                                       -
+--------------------------------------------------------------
+
+door_control_terminal = {  }
+
+function door_control_terminal:fillObjectMenuResponse(sceneObject, menuResponse, player)
+	local response = LuaObjectMenuResponse(menuResponse)
+	response:addRadialMenuItem(20, 3, "@dungeon/death_watch:mnu_open_door") 
+end
+
+function door_control_terminal:handleObjectMenuSelect(sceneObject, player, selectedID)
+	if (selectedID == 20) then
+		DWB:checkDoor(sceneObject, player)
+	end
+		
+	return 0
+end
+
+death_watch_bunker_filter_dispenser = { }
+
+function death_watch_bunker_filter_dispenser:fillObjectMenuResponse(sceneObject, menuResponse, player)
+	local response = LuaObjectMenuResponse(menuResponse)
+	response:addRadialMenuItem(117, 3, "@dungeon/death_watch:mnu_issue_filter")
+end
+
+function death_watch_bunker_filter_dispenser:handleObjectMenuSelect(sceneObject, player, selectedID)
+	if (player == nil) then
+		return 0
+	end
+	
+	if (selectedID == 117) then
+		local creature = LuaCreatureObject(player)
+		local owner = LuaSceneObject(player)
+		inventory = owner:getSlottedObject("inventory")
+		oldfilter = getContainerObjectByTemplate(inventory, FILTER, true)
+		if oldfilter ~= nil then
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_filter")
+		else
+			local pfilter = giveItem(inventory,FILTER, -1)
+			creature:sendSystemMessage("@dungeon/death_watch:issue_filter")
+			
+			if (pfilter == nil) then
+				return 0
+			end
+			
+			local ofilter = LuaSceneObject(pfilter)
+			ofilter:sendTo(player)
+		end
+		
+		return 0
+	end
+	
+	return 0
+end
+	
+death_watch_bunker_workbench = { }
+
+function death_watch_bunker_workbench:fillObjectMenuResponse(sceneObject, menuResponse, player)
+	local response = LuaObjectMenuResponse(menuResponse)
+	response:addRadialMenuItem(117, 3, "@dungeon/death_watch:mnu_workbench")
+end
+
+function death_watch_bunker_workbench:handleObjectMenuSelect(sceneObject, player, selectedID)
+	if (player == nil) then
+		return 0
+	end
+	
+	if (selectedID ~= 117) then
+		printf("Wrong selectedID " .. selectedID .. "\n")
+		return 0
+	end
+	
+	local creature = LuaCreatureObject(player)
+	local owner = LuaSceneObject(player)
+	inventory = owner:getSlottedObject("inventory")
+	pRebreather = getContainerObjectByTemplate(inventory, MANDOREBREATHER, true)
+	pEnhancedfilter = getContainerObjectByTemplate(inventory, ENHANCEDFILTER, true)
+	
+	
+	if (pRebreather == nil or pEnhancedfilter == nil) then
+		creature:sendSystemMessage("@dungeon/death_watch:missing_component")
+		return 0
+	else
+		local rebreather = LuaSceneObject(pRebreather)
+		local enhancedfilter = LuaSceneObject(pEnhancedfilter)
+		rebreather:destroyObjectFromWorld()
+		enhancedfilter:destroyObjectFromWorld()
+		local pAdvrebreather = giveItem(inventory, MANDOREBREATHER, -1)
+		creature:sendSystemMessage("@dungeon/death_watch:agumented_rebreather")
+		
+		if (pAdvrebreather == nil) then
+			return 0
+		end
+	
+		local advrebreather = LuaSceneObject(pAdvrebreather)
+		advrebreather:setCustomObjectName("Advanced Rebreather")
+		advrebreather:sendTo(player)
+		
+		
+				
+	end
+
+	return 0
+end
+
+death_watch_bunker_filter = { }
+
+function death_watch_bunker_filter:fillObjectMenuResponse(sceneObject, menuResponse, player)
+	local response = LuaObjectMenuResponse(menuResponse)
+	response:addRadialMenuItem(117, 3, "@dungeon/death_watch:mnu_filter")
+end
+
+function death_watch_bunker_filter:handleObjectMenuSelect(sceneObject, player, selectedID)
+	if (player == nil) then
+		return 0
+	end
+	
+	if (selectedID ~= 117) then
+		printf("Wrong selectedID " .. selectedID .. "\n")
+		return 0
+	end
+	
+	local creature = LuaCreatureObject(player)
+	local owner = LuaSceneObject(player)
+	inventory = owner:getSlottedObject("inventory")
+	palumgel = getContainerObjectByTemplate(inventory, ALUMGEL, true)
+	
+	
+	if (palumgel == nil or sceneObject == nil) then
+		creature:sendSystemMessage("@dungeon/death_watch:missing_component2")
+		return 0
+	elseif (not creature:hasSkill("crafting_artisan_engineering_02")) then
+		creature:sendSystemMessage("@dungeon/death_watch:not_skilled")
+		return 0
+	else
+		local alumgel = LuaSceneObject(palumgel)
+		local oldfilter = LuaSceneObject(sceneObject)
+		alumgel:destroyObjectFromWorld()
+		oldfilter:destroyObjectFromWorld()
+		local penhfilter = giveItem(inventory, ENHANCEDFILTER, -1)
+		creature:sendSystemMessage("@dungeon/death_watch:agumented_filter")
+		
+		if (penhfilter == nil) then
+			return 0
+		end
+	
+		local enhfilter = LuaSceneObject(penhfilter)
+		enhfilter:sendTo(player)
+				
+	end
+
+	return 0
+end
+
+--------------------------------------------------------------
+--   Provide Testing Assistance to Players                   -
+--------------------------------------------------------------
 function DWB:testSpatial(pDroid, pPlayer)
 	local droid = LuaSceneObject(pDroid)
 	local player = LuaCreatureObject(pPlayer)
@@ -595,13 +1480,7 @@ end
 
 function DWB:testThird(pDroid)
 	spatialChat(pDroid, "DWB Info: Finish Boba Fett's conversation to gain entry. Use the passkeys dropped from named NPCs to get past the three doors. They are spawned by using the Door Control Terminals.")
-	createEvent(15 * 1000, "DWB", "testFourth", pDroid)
 end 
-
-function DWB:testFourth(pDroid)
-	spatialChat(pDroid, "If you manage to get 1 Binary Liquid, 1 Protective Liquid Coating and 1 Bounty Hunter Armor part, please check if Elvaron is online, he will help you with the crafting process since DWB isn't fully working yet. Good luck on the loot!")
-end 
-
 
 function DWB:testRepeat(pDroid)
 	createObserver(OBJECTINRANGEMOVED, "DWB", "testSpatial", pDroid)
@@ -682,840 +1561,4 @@ function DWB:test(sceneObject)
 	end
 	
 	return 1
-end
-
-function DWB:start(creatureObject)
-	if (not isZoneEnabled("endor")) then	
-		if TEST == 1 then
-			printf("[Death Watch Bunker] Zone not loaded.\n")
-		end
-		return 0
-	end
-		
-	if TEST == 1 then
-		printf("[Death Watch Bunker] Initiating spawns and observers\n")
-	end
-	math.randomseed( os.time() )
-	local bunker = getSceneObject(5996314)
-	
-	if bunker == nil then
-		if TEST == 1 then
-			printf("[Death Watch Bunker] Could not initialize. Zone not loaded?\n")
-		end
-		return 0
-	end
-
-	zero = DWB.spawnObjects(bunker, bunker)
-	zero = DWB.test(bunker, bunker)
-	zero = DWB.spawnMobiles(bunker, bunker)
-
-	local bunkerObject = LuaBuildingObject(bunker)
-
-	createEvent(1000 * 30, "DWB", "poison", bunker) 	
-	createObserver(ENTEREDBUILDING, "DWB", "onEnterDWB", bunker)
-	createObserver(EXITEDBUILDING, "DWB", "onExitDWB", bunker)
-	return 0
-end
-
-function DWB:poison(sceneObject)
-	if TEST == 1 then
-		printf("Poison Trigger\n")
-	end
-
-	for i,v in ipairs(MINECELLS) do
-		local pCell = getSceneObject(v)
-		if pCell ~= nil then
-			local cell = LuaSceneObject(pCell)
-			size = cell:getContainerObjectsSize()
-			
-			for j=0, size - 1, 1 do
-				local pointer = cell:getContainerObject(j)
-				
-				if pointer ~= nil then
-									
-					local sco = LuaSceneObject(pointer)
-						
-					if (sco:isCreatureObject()) then
-						local creo = LuaCreatureObject(pointer)
-						
-						if (not creo:isAiAgent()) then
-									
-							if (DWB.hasRebreather(pointer, pointer) == 1) then
-								if TEST == 1 then
-									printf("Poison averted\n")
-								end
-							else
-								DWB.doPoison(pointer, pointer)
-							end 
-
-						end
-					end
-				end
-			end
-		end		
-	end
-	createEvent(1000 * 30, "DWB", "poison", sceneObject)
-end
-
-
-function DWB:hasRebreather(sceneObject)
-	--TODO: Change this to be a skill mod check for private_poison_rebreather
-	local scno = LuaSceneObject(sceneObject)
-	local pRebreather = scno:getSlottedObject("hat")
-	local pSecond = scno:getSlottedObject("head")
-	local pThird = scno:getSlottedObject("mouth")
-	local pFourth = scno:getSlottedObject("eyes")
-	
-	if (pRebreather ~= nil) then
-		local rebreather = LuaSceneObject(pRebreather)
-		headSlot = rebreather:getTemplateObjectPath()
-		
-		if TEST == 1 then
-			printf("hat: " .. headSlot .. "\n")
-		end
-		
-		if (headSlot == MANDOREBREATHER) then
-			return 1
-		elseif (headSlot == MANDOHELMET) then
-			return 1
-		end
-	end
-
-	if (pSecond ~= nil) then
-		local rebreather = LuaSceneObject(pSecond)
-		headSlot = rebreather:getTemplateObjectPath()
-		
-		if TEST == 1 then
-			printf("head: " .. headSlot .. "\n")
-		end
-		
-		if (headSlot == MANDOREBREATHER) then
-			return 1
-		elseif (headSlot == MANDOHELMET) then
-			return 1
-		end
-	end
-	
-	if (pThird ~= nil) then
-		local rebreather = LuaSceneObject(pThird)
-		headSlot = rebreather:getTemplateObjectPath()
-		
-		if TEST == 1 then
-			printf("mouth: " .. headSlot .. "\n")
-		end
-		
-		if (headSlot == MANDOREBREATHER) then
-			return 1
-		elseif (headSlot == MANDOHELMET) then
-			return 1
-		end
-	end
-	
-	if (pFourth ~= nil) then
-		local rebreather = LuaSceneObject(pFourth)
-		headSlot = rebreather:getTemplateObjectPath()
-		
-		if TEST == 1 then
-			printf("eyes: " .. headSlot .. "\n")
-		end
-		
-		if (headSlot == MANDOREBREATHER) then
-			return 1
-		elseif (headSlot == MANDOHELMET) then
-			return 1
-		end
-	end
-	
-	return 0
-end
-
-function DWB:doPoison(creatureObject)
-	if creatureObject == nil then
-		return
-	end
-	
-	local creature = LuaCreatureObject(creatureObject)
-	
-	if TEST == 1 then
-		printf("poisoned\n")
-	end
-	
-	creature:inflictDamage(creatureObject, 0, 100, 0)
-	creature:sendSystemMessage("@dungeon/death_watch:bad_air")
-end
-
-function DWB:onEnterDWB(sceneObject, creatureObject)
-	local creature = LuaCreatureObject(creatureObject)
-	
-	if (creature:isAiAgent() == true) then
-		return 0
-	end
-	
-	state = creature:hasScreenPlayState(2, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(creature:getParent())
-		local buildingObject = LuaSceneObject(targetCellObject:getParent())
-		if TEST == 1 then
-			printf("locking from " .. targetCellObject:getObjectID() .. " in " .. buildingObject:getObjectID() .. "\n")
-		end
-		DWB.lockAll(creatureObject, creatureObject)
-	else
-		if TEST == 1 then
-			printf("already has access\n")
-		end
-		
-		createEvent(10 * 1000, "DWB", "lockCellsOnly", creatureObject)
-	end
-	
-	return 0
-end
-
-function DWB:onExitDWB(sceneObject, creatureObject, long)
-	local creature = LuaCreatureObject(creatureObject)
-	
-	if (creature:isAiAgent() == true) then
-		return 0
-	end	
-	
-	if long == OUTSIDE then
-		creature:sendSystemMessage("@dungeon/death_watch:relock")
-	
-		if TEST == 1 then
-			printf("removing permissions\n")
-		end
-	
-		creature:removeScreenPlayState(2, "death_watch_bunker")
-		creature:removeScreenPlayState(4, "death_watch_bunker")
-		creature:removeScreenPlayState(8, "death_watch_bunker")
-		creature:removeScreenPlayState(16, "death_watch_bunker")
-		creature:removeScreenPlayState(32, "death_watch_bunker")
-		creature:removeScreenPlayState(64, "death_watch_bunker")
-		creature:removeScreenPlayState(128, "death_watch_bunker")
-	
-		DWB.lockAll(creatureObject, creatureObject)
-	end
-	
-	return 0
-end
-
-function DWB:lockCellsOnly(creatureObject)
-	if creatureObject == nil then
-		if TEST == 1 then
-			printf("creature is nil\n")
-		end
-		return
-	end
-	
-	local creature = LuaCreatureObject(creatureObject)
-	
-	if TEST == 1 then
-		printf("lock on reentry\n")
-	end
-	
-	state = creature:hasScreenPlayState(2, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(getSceneObject(ENTRANCE))
-		targetCellObject:updateCellPermission(0, creatureObject)
-		if TEST == 1 then
-			printf("entrance locked\n")
-		end
-	else
-		if TEST == 1 then
-			printf("entrance not locked\n")
-		end
-	end
-	
-	state = creature:hasScreenPlayState(4, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(getSceneObject(AREAA))
-		targetCellObject:updateCellPermission(0, creatureObject)
-		if TEST == 1 then
-			printf("areaa locked\n")
-		end
-	else
-		if TEST == 1 then
-			printf("areaa not locked\n")
-		end
-	end
-
-	
-	state = creature:hasScreenPlayState(8, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(getSceneObject(AREAB))
-		targetCellObject:updateCellPermission(0, creatureObject)
-	end		
-	
-	state = creature:hasScreenPlayState(16, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(getSceneObject(MINES))
-		targetCellObject:updateCellPermission(0, creatureObject)
-	end
-	
-	state = creature:hasScreenPlayState(32, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(getSceneObject(ARMOR))
-		targetCellObject:updateCellPermission(0, creatureObject)
-	end
-	
-	state = creature:hasScreenPlayState(64, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(getSceneObject(DROIDENGINEER))
-		targetCellObject:updateCellPermission(0, creatureObject)
-	end
-	
-	state = creature:hasScreenPlayState(128, "death_watch_bunker")
-	
-	if state == 0 then
-		local targetCellObject = LuaSceneObject(getSceneObject(TAILOR))
-		targetCellObject:updateCellPermission(0, creatureObject)
-	end
-end
-
-function DWB:lockAll(creatureObject)
-	if creatureObject == nil then
-		if TEST == 1 then
-			printf("creature is nil\n")
-		end
-		return
-	end
-	
-	--first terminal
-	local targetCellObject = LuaSceneObject(getSceneObject(ENTRANCE))
-	targetCellObject:updateCellPermission(0, creatureObject)
-	
-	--terminal a
-	targetCellObject:_setObject(getSceneObject(AREAA))
-	targetCellObject:updateCellPermission(0, creatureObject)
-	
-	--terminal b
-	targetCellObject:_setObject(getSceneObject(AREAB))
-	targetCellObject:updateCellPermission(0, creatureObject)
-
-	--mines
-	targetCellObject:_setObject(getSceneObject(MINES))
-	targetCellObject:updateCellPermission(0, creatureObject)
-	
-	--Armorsmith Crafting Room
-	targetCellObject:_setObject(getSceneObject(ARMOR))
-	targetCellObject:updateCellPermission(0, creatureObject)
-	
-	--Tailor Crafting Room
-	targetCellObject:_setObject(getSceneObject(TAILOR))
-	targetCellObject:updateCellPermission(0, creatureObject)
-	
-	--Droid Engineer Crafting Room
-	targetCellObject:_setObject(getSceneObject(DROIDENGINEER))
-	targetCellObject:updateCellPermission(0, creatureObject)
-end
-
-function DWB:timeWarning(creatureObject)
-	if creatureObject ~= nil then
-		local creature = LuaCreatureObject(creatureObject)
-		creature:sendGroupMessage("@dungeon/death_watch:thirty_seconds")
-	end
-end
-
-function DWB:accessCraftingDoor(terminal, creatureObject, selectedID)
-	if selectedID ~= 20 then
-		return 0
-	end
-	
-	if TEST == 1 then
-		printf("accessing crafting door\n")
-	end
-	
-	local sceneObject = LuaSceneObject(terminal)
-	local creature = LuaCreatureObject(creatureObject)
-	local targetCellObject = LuaSceneObject(creature:getParent())
-	
-	enabled = readData(sceneObject:getObjectID() .. ":dwb:accessEnabled")
-	number = readData(sceneObject:getObjectID() .. ":dwb:terminal")
-		
-	if (enabled == 0) then
-		creature:sendSystemMessage("@dungeon/death_watch:room_in_use")
-		return 0
-	end
-	
-	if (DWB.hasCraftingItem(number, number, creatureObject) == false) then
-		creature:sendSystemMessage("@dungeon/death_watch:not_enough_ingredients")
-		return 0
-	end
-	
-	if (DWB.hasCraftingSkill(number, number, creatureObject) == false) then
-		creature:sendSystemMessage(MISSINGSKILL[number])
-		return 0
-	end
-	
-	targetCellObject:_setObject(getSceneObject(CRAFTINGCELL[number]))
-			
-	targetCellObject:updateCellPermissionGroup(1, creatureObject)
-	creature:sendGroupMessage("@dungeon/death_watch:unlock_door")
-	
-	createEvent(1000 * 60 * 5, "DWB", "removeFromDWB", creatureObject)
-	createEvent(1000 * 60 * 4.5, "DWB", "timeWarning", creatureObject)
-	
-	
-	writeData(sceneObject:getObjectID() .. ":dwb:accessEnabled", 0)
-	createEvent(1000 * 60 * 6, "DWB", "enableAccess", terminal)
-	
-	-- screenplaystates for login/logout
-	if (creature:isGrouped()) then
-		size = creature:getGroupSize()
-		
-		for i = 0, size - 1, 1 do
-			pMember = creature:getGroupMember(i)
-			if pMember ~= nil then
-				local groupMember = LuaCreatureObject(pMember)
-				
-				local parentID = groupMember:getParentID()
-				
-				if parentID > 5996313 and parentID < 5996380 then
-					groupMember:setScreenPlayState(math.pow(2,number + 4), "death_watch_bunker")
-				end
-			end
-		end 
-	else
-		creature:setScreenPlayState(math.pow(2,number + 4), "death_watch_bunker")
-	end
-	
-	return 0
-end
-
-function DWB:removeFromDWB(creatureObject)
-	if (creatureObject == nil) then
-		return
-	end
-	
-	local creature = LuaCreatureObject(creatureObject)
-	
-	if (creature:isGrouped()) then
-		size = creature:getGroupSize()
-		
-		for i = 0, size - 1, 1 do
-			pMember = creature:getGroupMember(i)
-			if pMember ~= nil then
-				local groupMember = LuaCreatureObject(pMember)
-				if groupMember:getParentID() > 5996313 and groupMember:getParentID() < 5996380 then
-					createEvent(500, "DWB", "teleportPlayer", pMember)
-				end
-			end
-		end 
-	else
-		createEvent(500, "DWB", "teleportPlayer", creatureObject)
-	end
-	
-end
-
-function DWB:teleportPlayer(creatureObject)
-	if (creatureObject == nil) then
-		return
-	end
-	
-	local creature = LuaCreatureObject(creatureObject)
-	creature:teleport(-4657, 14.4, 4322.3, 0)
-	
-	DWB.lockAll(creatureObject, creatureObject)
-end
-
-function DWB:accessDoor(terminal, creatureObject, selectedID)
-	if selectedID ~= 20 then
-		return 0
-	end
-	
-	local sceneObject = LuaSceneObject(terminal)
-	local creature = LuaCreatureObject(creatureObject)
-	local targetCellObject = LuaSceneObject(creature:getParent())
-	
-	local enabled = readData(sceneObject:getObjectID() .. ":dwb:accessEnabled")
-	
-	local number = readData(sceneObject:getObjectID() .. ":dwb:terminal")
-	
-	if number == 1 then
-		--Outer Terminal
-		local state = creature:hasScreenPlayState(1, "death_watch_bunker")
-		
-		if state == 0 then
-			if (enabled == 0) then
-				creature:sendSystemMessage("@dungeon/death_watch:terminal_locked")
-				return 0
-			end
-		
-			-- spawn 2 battle droids
-			creature:sendGroupMessage("@dungeon/death_watch:airlock_backup")
-			
-			local spawnedCreature = LuaCreatureObject(nil)
-			
-			spawnedPointer = spawnMobile("endor", "death_watch_battle_droid", 0, -31.9, -12.0, -3.7, 121, 5996315)
-			spawnedCreature:_setObject(spawnedPointer)
-			spawnedCreature:engageCombat(creatureObject)
-			
-			spawnedPointer = spawnMobile("endor", "death_watch_battle_droid", 0, -32.5, -12.0, -8.1, 76, 5996315)
-			spawnedCreature:_setObject(spawnedPointer)
-			spawnedCreature:engageCombat(creatureObject)
-
-			writeData(sceneObject:getObjectID() .. ":dwb:accessEnabled", 0)
-			createEvent(1000 * 60 * 10, "DWB", "enableAccess", terminal)
-		else
-			-- unlock first area
-			targetCellObject:_setObject(getSceneObject(ENTRANCE))
-			
-			if (creature:isGrouped()) then
-				local size = creature:getGroupSize()
-		
-				for i = 0, size - 1, 1 do
-					local pMember = creature:getGroupMember(i)
-				
-					if pMember ~= nil then
-						local groupMember = LuaCreatureObject(pMember)
-						
-						local planet = groupMember:getZoneName()
-						
-						if planet == "endor" then
-							targetCellObject:updateCellPermission(1, pMember)
-							groupMember:sendSystemMessage("@dungeon/death_watch:access_granted")
-							groupMember:setScreenPlayState(2, "death_watch_bunker")
-						end
-					end
-				end 
-			else
-				targetCellObject:updateCellPermission(1, creatureObject)
-				creature:sendSystemMessage("@dungeon/death_watch:access_granted")
-				creature:setScreenPlayState(2, "death_watch_bunker")
-			end
-			
-			--printf(os.time() .. "\n")
-		end
-	elseif number == 2 then
-		--Terminal A: passkey_hall
-		local pPasskeyHall = creature:getContainerObjectByTemplate(PASSKEYHALL)
-		
-		if (pPasskeyHall == nil) then
-			if (enabled == 0) then
-				creature:sendSystemMessage("@dungeon/death_watch:terminal_locked")
-	
-				return 0
-			end
-			-- spawn enemies
-			creature:sendGroupMessage("@dungeon/death_watch:denied_access")
-			
-			writeData(5996314 .. ":dwb:terminalAnextSpawn", 1)
-			createEvent(2 * 1000, "DWB", "spawnNextA", terminal)
-			
-			writeData(sceneObject:getObjectID() .. ":dwb:accessEnabled", 0)
-			createEvent(1000 * 60 * 10, "DWB", "enableAccess", terminal)
-		else
-			-- unlock second area
-			targetCellObject:_setObject(getSceneObject(AREAA))
-			targetCellObject:updateCellPermissionGroup(1, creatureObject)
-			creature:sendGroupMessage("@dungeon/death_watch:access_granted")
-			
-			
-			-- remove passkey
-			local passkeyHall = LuaSceneObject(pPasskeyHall)
-			passkeyHall:destroyObjectFromWorld() 
-			
-			-- screenplaystates for login/logout
-			if (creature:isGrouped()) then
-				size = creature:getGroupSize()
-				
-				local groupMember = LuaCreatureObject(nil)
-				
-				for i=0, size - 1, 1 do
-				
-					pMember = creature:getGroupMember(i)
-					if pMember ~= nil then
-						local groupMember = LuaCreatureObject(pMember)
-						
-						local parentID = groupMember:getParentID()
-					
-						if parentID > 5996313 and parentID < 5996380 then
-							groupMember:setScreenPlayState(4, "death_watch_bunker")
-						end
-						
-					end
-				end 
-			else
-				creature:setScreenPlayState(4, "death_watch_bunker")
-			end
-			
-		end
-	elseif number == 3 then
-		--Terminal B: passkey_storage
-		local pPasskeyStorage = creature:getContainerObjectByTemplate(PASSKEYSTORAGE)
-		
-		if (pPasskeyStorage == nil) then
-			if (enabled == 0) then
-				creature:sendSystemMessage("@dungeon/death_watch:terminal_locked")
-	
-				return 0
-			end
-			-- spawn enemies
-			creature:sendGroupMessage("@dungeon/death_watch:denied_access")
-			
-			writeData(5996314 .. ":dwb:terminalBnextSpawn", 1)
-			createEvent(2 * 1000, "DWB", "spawnNextB", terminal)
-			
-			writeData(sceneObject:getObjectID() .. ":dwb:accessEnabled", 0)
-			createEvent(1000 * 60 * 10, "DWB", "enableAccess", terminal)
-		else
-			-- unlock second area
-			targetCellObject:_setObject(getSceneObject(AREAB))
-			targetCellObject:updateCellPermissionGroup(1, creatureObject)
-			creature:sendGroupMessage("@dungeon/death_watch:access_granted")
-			
-			-- screenplaystates for login/logout
-			if (creature:isGrouped()) then
-				size = creature:getGroupSize()
-				
-				local groupMember = LuaCreatureObject(nil)
-				
-				for i = 0, size - 1, 1 do
-				
-					pMember = creature:getGroupMember(i)
-					if pMember ~= nil then
-						local groupMember = LuaCreatureObject(pMember)
-						
-						local parentID = groupMember:getParentID()
-						
-						if parentID > 5996313 and parentID < 5996380 then
-							groupMember:setScreenPlayState(8, "death_watch_bunker")
-						end
-					
-					end
-				end 
-			else
-				creature:setScreenPlayState(8, "death_watch_bunker")
-			end
-			
-			-- remove passkey
-			local passkeyStorage = LuaSceneObject(pPasskeyStorage)
-			passkeyStorage:destroyObjectFromWorld()			
-		end
-	elseif number == 4 then
-		--Terminal Mines: passkey_mine
-		local pPasskeyMine = creature:getContainerObjectByTemplate(PASSKEYMINE)
-		
-		if (pPasskeyMine == nil) then
-			if (enabled == 0) then
-				creature:sendSystemMessage("@dungeon/death_watch:terminal_locked")
-	
-				return 0
-			end
-			-- spawn enemies
-			creature:sendGroupMessage("@dungeon/death_watch:denied_access")
-			
-			writeData(5996314 .. ":dwb:terminalCnextSpawn", 1)
-			createEvent(2 * 1000, "DWB", "spawnNextC", terminal)
-			
-			writeData(sceneObject:getObjectID() .. ":dwb:accessEnabled", 0)
-			createEvent(1000 * 60 * 10, "DWB", "enableAccess", terminal)
-		else
-			-- unlock third area
-			targetCellObject:_setObject(getSceneObject(MINES))
-			targetCellObject:updateCellPermissionGroup(1, creatureObject)
-			creature:sendGroupMessage("@dungeon/death_watch:access_granted")
-			
-			-- screenplaystates for login/logout
-			if (creature:isGrouped()) then
-				size = creature:getGroupSize()
-				
-				local groupMember = LuaCreatureObject(nil)
-				for i = 0, size - 1, 1 do
-				
-					pMember = creature:getGroupMember(i)
-					if pMember ~= nil then
-						local groupMember = LuaCreatureObject(pMember)
-					
-						local parentID = groupMember:getParentID()
-					
-						if parentID > 5996313 and parentID < 5996380 then
-							groupMember:setScreenPlayState(16, "death_watch_bunker")
-						end
-					
-					end
-				end 
-			else
-				creature:setScreenPlayState(16, "death_watch_bunker")
-			end
-			
-			-- remove passkey
-			local passkeyMine = LuaSceneObject(pPasskeyMine)
-			passkeyMine:destroyObjectFromWorld()			
-		end
-	end
-	
-	
-	return 0
-end
-
-function DWB:spawnNextA(sceneObject)
-	nextSpawn = readData(5996314 .. ":dwb:terminalAnextSpawn")
-	
-	if nextSpawn == 0 then
-		return
-	elseif nextSpawn == 1 then
-		writeData(5996314 .. ":dwb:terminalAnextSpawn", 2)
-		local spawn = specialSpawnMapDWB["rageon_vart_assist1"] 
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextA", sceneObject)
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 102)
-	elseif nextSpawn == 2 then
-		writeData(5996314 .. ":dwb:terminalAnextSpawn", 3)
-		local spawn = specialSpawnMapDWB["rageon_vart_assist2"]
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextA", sceneObject)
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 40)
-	else
-		writeData(5996314 .. ":dwb:terminalAnextSpawn", 0)
-		local spawn = specialSpawnMapDWB["rageon_vart"]
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	end
-	
-end
-
-function DWB:spawnNextB(sceneObject)
-	nextSpawn = readData(5996314 .. ":dwb:terminalBnextSpawn")
-	
-	if nextSpawn == 0 then
-		return
-	elseif nextSpawn == 1 then
-		writeData(5996314 .. ":dwb:terminalBnextSpawn", 2)
-		local spawn = specialSpawnMapDWB["klin_nif_assist1"] 
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextB", sceneObject)
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 31)
-	elseif nextSpawn == 2 then
-		writeData(5996314 .. ":dwb:terminalBnextSpawn", 3)
-		local spawn = specialSpawnMapDWB["klin_nif_assist2"]
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextB", sceneObject)
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 67)
-	else
-		writeData(5996314 .. ":dwb:terminalBnextSpawn", 0)
-		local spawn = specialSpawnMapDWB["klin_nif"]
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	end
-	
-end
-
-function DWB:spawnNextC(sceneObject)
-	nextSpawn = readData(5996314 .. ":dwb:terminalCnextSpawn")
-	
-	if nextSpawn == 0 then
-		return
-	elseif nextSpawn == 1 then
-		writeData(5996314 .. ":dwb:terminalCnextSpawn", 2)
-		local spawn = specialSpawnMapDWB["fenri_dalso_assist1"] 
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextC", sceneObject)
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 37)
-	elseif nextSpawn == 2 then
-		writeData(5996314 .. ":dwb:terminalCnextSpawn", 3)
-		local spawn = specialSpawnMapDWB["fenri_dalso_assist2"]
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextC", sceneObject)
-		
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 21)
-	else
-		writeData(5996314 .. ":dwb:terminalCnextSpawn", 0)
-		local spawn = specialSpawnMapDWB["fenri_dalso_add1"]
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		local spawn = specialSpawnMapDWB["fenri_dalso_add2"]
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		local spawn = specialSpawnMapDWB["fenri_dalso_add3"]
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-		local spawn = specialSpawnMapDWB["fenri_dalso"]
-		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	end
-	
-end
-
-function DWB:lootBox(sceneObject, creatureObject, selectedID)
-	if selectedID ~= 16 then
-		return 0
-	end
-	
-	if TEST == 1 then
-		printf("opening box\n")
-	end
-	
-	local creature = LuaCreatureObject(creatureObject)
-	local container = LuaSceneObject(sceneObject)
-
-   	state = readData(container:getObjectID() .. ":dwb:spawned")
-   	
-   	if state == 1 then
-    	return 0
-	else
-		box = readData(container:getObjectID() .. ":dwb:lootbox")
-    	writeData(container:getObjectID() .. ":dwb:spawned", 1)
-     	
-     	--spawn enemies
-		if box == 1 then
-			local spawn = specialSpawnMapDWB["lootbox1mob1"]
-			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7]) 
-		elseif box == 2 then
-			local spawn = specialSpawnMapDWB["lootbox2mob1"]
-			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7]) 
-		elseif box == 3 then
-			local spawn = specialSpawnMapDWB["lootbox3mob1"]
-			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-			local spawn = specialSpawnMapDWB["lootbox3mob2"]
-			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])  					
-		end
-		
-     	createEvent(240 * 1000, "DWB", "refill", sceneObject)
-     	return 1
-   	end
-end
-
-function DWB:enableAccess(sceneObject)
-	local terminal = LuaSceneObject(sceneObject)
-	writeData(terminal:getObjectID() .. ":dwb:accessEnabled", 1)
-end
-
-function DWB:refill(sceneObject)
-	if (sceneObject == nil) then
-		return
-	end
-	
-	createObserver(OBJECTRADIALUSED, "DWB", "lootBox", sceneObject)
-	
-	local container = LuaSceneObject(sceneObject)
-		
-	writeData(container:getObjectID() .. ":dwb:spawned", 0)
-	
-	if (container:getContainerObjectsSize() == 0) then
-		
-		if TEST == 1 then
-			printf("refilling\n")
-		end
-		
-		-- add items
-		chance = math.random(100)
-		createLoot(sceneObject, "death_watch_bunker_lootbox", 1) 
-	
-		-- second item
-		if chance > 90 then
-   			createLoot(sceneObject, "death_watch_bunker_lootbox", 1)
- 		end
-	else
-		if TEST == 1 then
-			printf("refilling\n")
-		end
-	end
 end

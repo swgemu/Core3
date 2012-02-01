@@ -42,7 +42,7 @@
 
 
 object_tangible_dungeon_death_watch_bunker_filter = object_tangible_dungeon_death_watch_bunker_shared_filter:new {
-
+	objectMenuComponent = {"lua", "death_watch_bunker_filter"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_filter, "object/tangible/dungeon/death_watch_bunker/filter.iff")

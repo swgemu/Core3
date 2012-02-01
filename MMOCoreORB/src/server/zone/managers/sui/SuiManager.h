@@ -52,6 +52,10 @@ which carries forward this exception.
 namespace server {
  namespace zone {
   namespace objects {
+   namespace scene {
+   	   class SceneObject;
+   }
+
    namespace creature {
 	   class CreatureObject;
    }
@@ -69,6 +73,7 @@ namespace server {
 using namespace server::zone::objects::player;
 using namespace server::zone::objects::player::sui;
 using namespace server::zone::objects::creature;
+using namespace server::zone::objects::scene;
 
 namespace server {
  namespace zone {
@@ -149,6 +154,8 @@ namespace server {
 	  	void handleGamblingSlotPayout(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleGamblingSlot(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleGamblingRoulette(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
+
+	  	void sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback);
 
 	  	void setZoneProcessServer(ZoneProcessServer* srv) {
 	  		server = srv;

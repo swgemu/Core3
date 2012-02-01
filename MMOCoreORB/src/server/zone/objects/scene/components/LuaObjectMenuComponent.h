@@ -1,17 +1,49 @@
 /*
- * CampKitMenuComponent
+ * LuaObjectMenuComponent.h
  *
- *  Created on: 1/1/2012
- *      Author: kyle
+ *  Created on: 29/01/2012
+ *      Author: Elvaron
  */
 
-#ifndef DOORCONTROLTERMINALMENUCOMPONENT_H_
-#define DOORCONTROLTERMINALMENUCOMPONENT_H_
+#ifndef LUAOBJECTMENUCOMPONENT_H_
+#define LUAOBJECTMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
+#include "ObjectMenuComponent.h"
 
-class DoorControlTerminalMenuComponent : public TangibleObjectMenuComponent {
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace scene {
+    class SceneObject;
+   }
+
+   namespace creature {
+    class CreatureObject;
+   }
+  }
+
+  namespace packets {
+   namespace object {
+    class ObjectMenuResponse;
+   }
+  }
+
+  class Zone;
+ }
+}
+
+using namespace server::zone::objects::scene;
+using namespace server::zone::objects::creature;
+using namespace server::zone::packets::object;
+
+
+class LuaObjectMenuComponent : public ObjectMenuComponent {
 public:
+
+	String luaClassName;
+
+	LuaObjectMenuComponent(String className);
+	~LuaObjectMenuComponent();
 
 	/**
 	 * Fills the radial options, needs to be overriden
@@ -33,5 +65,4 @@ public:
 
 };
 
-
-#endif /* DOORCONTROLTERMINALMENUCOMPONENT_H_ */
+#endif /* LUAOBJECTMENUCOMPONENT_H_ */

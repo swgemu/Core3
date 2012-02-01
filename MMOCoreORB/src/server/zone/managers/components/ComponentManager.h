@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/scene/components/SceneObjectComponent.h"
+#include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
 
 class ComponentManager : public Singleton<ComponentManager>, public Object {
 protected:
@@ -22,6 +23,15 @@ public:
 	template<class K>
 	K getComponent(const String& name) {
 		return dynamic_cast<K>(components.get(name).get());
+	}
+
+	void putComponent(const String& name, SceneObjectComponent* component) {
+		if (component != NULL)
+			components.put(name, component);
+	}
+
+	int size() {
+		return components.size();
 	}
 };
 

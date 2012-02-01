@@ -5,7 +5,7 @@ clientTemplateFileName = "",
 	 autoRegisterWithPlanetMap = 1,
 	 
 	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = "ObjectMenuComponent",
+	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
 	 containerComponent = "ContainerComponent",
 	gameObjectType = 33554435
 }

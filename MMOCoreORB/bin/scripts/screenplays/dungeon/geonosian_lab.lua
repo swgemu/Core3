@@ -251,8 +251,7 @@ function geonosian_lab_screenplay:keypadSuiCallback(pCreature, pSui, cancelPress
 		
 		--Unlock the door for them.
 		if (pCell ~= nil) then
-			local cell = LuaSceneObject(pCell)
-			cell:updateCellPermission(1, pCreature)
+			updateCellPermission(pCell, 1, pCreature)
 		end
 	else
 		player:sendSystemMessage("@dungeon/geonosian_madbio:bad_code") --The number that you entered is not a valid code for this door.
@@ -270,8 +269,7 @@ function geonosian_lab_screenplay:notifyEnteredLab(pBuilding, pPlayer)
 		local pCell = getSceneObject(v) 
 		
 		if (pCell ~= nil) then
-			local cell = LuaSceneObject(pCell)
-			cell:updateCellPermission(0, pPlayer)
+			updateCellPermission(pCell, 0, pPlayer)
 		end
 	end
 	

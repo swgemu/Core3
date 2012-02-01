@@ -38,7 +38,7 @@ int LuaActiveArea::_setObject(lua_State* L) {
 int LuaActiveArea::_getObject(lua_State* L) {
 	lua_pushlightuserdata(L, realObject.get());
 
-	return 0;
+	return 1;
 }
 
 int LuaActiveArea::getRadius(lua_State* L) {

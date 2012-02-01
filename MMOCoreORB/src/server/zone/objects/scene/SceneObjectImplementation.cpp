@@ -65,6 +65,7 @@ which carries forward this exception.
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/ShowFlyText.h"
 
@@ -109,8 +110,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 			zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>("ZoneComponent");
 		}
 
-		String objectMenuComponentName = templateObject->getObjectMenuComponent();
-		objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
+		objectMenuComponent = (ObjectMenuComponent*)templateObject->getObjectMenuComponent();
 	}
 
 	movementCounter = 0;
@@ -203,9 +203,7 @@ void SceneObjectImplementation::createComponents() {
 			info("zone component null " + zoneComponentClassName + " in " + templateObject->getFullTemplateString());
 		}
 
-		String objectMenuComponentName = templateObject->getObjectMenuComponent();
-		objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
-		//objectMenuComponent->initialize(_this);
+		objectMenuComponent = (ObjectMenuComponent*)templateObject->getObjectMenuComponent();
 
 		String attributeListComponentName = templateObject->getAttributeListComponent();
 		attributeListComponent = ComponentManager::instance()->getComponent<AttributeListComponent*>(attributeListComponentName);
@@ -407,6 +405,23 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		zone->transferObject(_this, -1, true);
 	} else if (parent != NULL && getParent()->isCellObject()) {
 		getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);
+	}
+}
+
+void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
+	objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(name);
+
+	if (objectMenuComponent == NULL) {
+		Lua* lua = DirectorManager::instance()->getLuaInstance();
+		LuaObject test = lua->getGlobalObject(name);
+
+		if (test.isValidTable()) {
+			objectMenuComponent = new LuaObjectMenuComponent(name);
+			info("New Lua ObjectMenuComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			ComponentManager::instance()->putComponent(name, objectMenuComponent);
+		} else {
+			error("ObjectMenuComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
+		}
 	}
 }
 

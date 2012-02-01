@@ -12,6 +12,7 @@
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
 #include "server/zone/objects/player/LuaPlayerObject.h"
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
+#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
@@ -36,8 +37,10 @@
 #include "server/zone/objects/player/sessions/LuaConversationSession.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/sui/LuaSuiManager.h"
 #include "server/zone/objects/player/sui/LuaSuiBox.h"
+#include "server/zone/objects/scene/components/LuaObjectMenuResponse.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -93,6 +96,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
 	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
 	lua_register(luaEngine->getLuaState(), "isZoneEnabled", isZoneEnabled);
+	lua_register(luaEngine->getLuaState(), "getContainerObjectByTemplate", getContainerObjectByTemplate);
+	lua_register(luaEngine->getLuaState(), "updateCellPermission", updateCellPermission);
+	lua_register(luaEngine->getLuaState(), "updateCellPermissionGroup", updateCellPermissionGroup);
 
 	// call for createLoot(SceneObject* container, const String& lootGroup, int level)
 	lua_register(luaEngine->getLuaState(), "createLoot", createLoot);
@@ -180,6 +186,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaTangibleObject>::Register(luaEngine->getLuaState());
 	Luna<LuaSuiManager>::Register(luaEngine->getLuaState());
 	Luna<LuaSuiBox>::Register(luaEngine->getLuaState());
+	Luna<LuaObjectMenuResponse>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
@@ -432,6 +439,134 @@ int DirectorManager::getCreatureObject(lua_State* L) {
 	return 1;
 }
 
+int DirectorManager::getContainerObjectByTemplate(lua_State* L) {
+	SceneObject* container = (SceneObject*)lua_touserdata(L, -3);
+	String objectTemplate = lua_tostring(L, -2);
+	bool checkChildren = lua_toboolean(L, -1);
+
+	uint32 objectCRC = objectTemplate.hashCode();
+
+	if (container == NULL) {
+		instance()->info("getContainerObjectByTemplate: SceneObject NULL", true);
+		lua_pushnil(L);
+
+		return 1;
+	}
+
+	SceneObject* sco = NULL;
+	SceneObject* child = NULL;
+
+	for (int i=0; i< container->getContainerObjectsSize(); i++) {
+		sco = container->getContainerObject(i);
+
+		if (sco == NULL)
+			continue;
+
+		if (sco->getServerObjectCRC() == objectCRC) {
+			lua_pushlightuserdata(L, sco);
+			return 1;
+		}
+
+		if (checkChildren && sco->getContainerObjectsSize() > 0) {
+			for (int j=0; j < sco->getContainerObjectsSize(); j++) {
+				SceneObject* child = sco->getContainerObject(j);
+
+				if (child == NULL)
+					continue;
+
+				if (child->getServerObjectCRC() == objectCRC) {
+					lua_pushlightuserdata(L, child);
+					return 1;
+				}
+			}
+		}
+	}
+
+	lua_pushnil(L);
+
+	return 1;
+}
+
+int DirectorManager::updateCellPermission(lua_State* L) {
+	//realObject->info("getting values",true);
+	SceneObject* sco = (SceneObject*)lua_touserdata(L, -3);
+	int allowEntry = lua_tonumber(L, -2);
+	CreatureObject* obj = (CreatureObject*)lua_touserdata(L, -1);
+
+	//sco->info("allowentry:" + String::valueOf(allowEntry), true);
+	if (obj == NULL) {
+		instance()->info("Object NULL", true);
+		return 0;
+	}
+
+
+	//sco->info("values not NULL", true);
+
+	if (sco == NULL) {
+		obj->info("Cell NULL", true);
+		return 0;
+	}
+
+
+	if (!sco->isCellObject()) {
+		sco->info("Unknown entity error: Cell", true);
+		return 0;
+	}
+
+	if (!obj->isCreatureObject()) {
+		//sco->info("Unknown entity error: Creature", true);
+		obj->info("Unknown entity error: Creature", true);
+		return 0;
+	}
+
+	//sco->info("checks are fine", true);
+
+	BaseMessage* perm = new UpdateCellPermissionsMessage(sco->getObjectID(), allowEntry);
+	obj->sendMessage(perm);
+
+	return 0;
+}
+
+int DirectorManager::updateCellPermissionGroup(lua_State* L) {
+	//realObject->info("getting values",true);
+	SceneObject* sco = (SceneObject*)lua_touserdata(L, -3);
+	int allowEntry = lua_tonumber(L, -2);
+	CreatureObject* obj = (CreatureObject*)lua_touserdata(L, -1);
+	//realObject->info("allowentry:" + String::valueOf(allowEntry), true);
+	if (obj == NULL)
+		return 0;
+
+	//realObject->info("values not NULL", true);
+
+	if (!sco->isCellObject()) {
+		sco->info("Unknown entity error: Cell", true);
+		return 0;
+	}
+
+	if (!obj->isCreatureObject()) {
+		//sco->info("Unknown entity error: Creature", true);
+		obj->info("Unknown entity error: Creature", true);
+		return 0;
+	}
+
+	BaseMessage* perm = new UpdateCellPermissionsMessage(sco->getObjectID(), allowEntry);
+
+	//sco->info("checks are fine", true);
+	if (obj->isGrouped()) {
+		// do group
+		GroupObject* group = obj->getGroup();
+		if (group != NULL) {
+			group->broadcastMessage(perm);
+		}
+	} else {
+		// do single creature
+		obj->sendMessage(perm);
+	}
+
+	return 0;
+}
+
+
 int DirectorManager::addStartingItemsInto(lua_State* L) {
 	CreatureObject* creatureObject = (CreatureObject*)lua_touserdata(L, -2);
 	SceneObject* sceneObject = (SceneObject*)lua_touserdata(L, -1);
@@ -459,9 +594,9 @@ int DirectorManager::addStartingWeaponsInto(lua_State* L) {
 }
 
 int DirectorManager::giveItem(lua_State* L) {
-	int slot = lua_tointeger(L, -1);
-	String objectString = lua_tostring(L, -2);
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -3);
+	String objectString = lua_tostring(L, -2);
+	int slot = lua_tointeger(L, -1);
 
 	if (obj == NULL)
 		return 0;

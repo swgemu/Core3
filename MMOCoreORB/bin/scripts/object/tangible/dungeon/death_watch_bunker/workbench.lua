@@ -42,7 +42,7 @@
 
 
 object_tangible_dungeon_death_watch_bunker_workbench = object_tangible_dungeon_death_watch_bunker_shared_workbench:new {
-
+	objectMenuComponent = {"lua", "death_watch_bunker_workbench"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_workbench, "object/tangible/dungeon/death_watch_bunker/workbench.iff")
