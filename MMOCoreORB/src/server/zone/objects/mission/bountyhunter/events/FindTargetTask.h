@@ -53,7 +53,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace mission {
-namespace bountyhunterdroid {
+namespace bountyhunter {
 namespace events {
 
 class FindTargetTask : public Task, public Logger {
@@ -343,12 +343,12 @@ public:
 };
 
 } // namespace events
-} // namespace bountyhunterdroid
+} // namespace bountyhunter
 } // namespace mission
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::mission::bountyhunterdroid::events;
+using namespace server::zone::objects::mission::bountyhunter::events;
 
 #endif /* FINDTARGETTASK_H_ */

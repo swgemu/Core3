@@ -19,8 +19,8 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.h"
-#include "server/zone/objects/mission/bountyhunterdroid/events/BountyHunterTargetTask.h"
+#include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
+#include "server/zone/objects/mission/bountyhunter/events/BountyHunterTargetTask.h"
 
 void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 	npcTemplateToSpawn = sp;

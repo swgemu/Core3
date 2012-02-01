@@ -83,39 +83,39 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace mission {
-namespace bountyhunterdroid {
+namespace bountyhunter {
 
 class BountyHunterDroid;
 
-} // namespace bountyhunterdroid
+} // namespace bountyhunter
 } // namespace mission
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::mission::bountyhunterdroid;
+using namespace server::zone::objects::mission::bountyhunter;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace mission {
-namespace bountyhunterdroid {
+namespace bountyhunter {
 namespace events {
 
 class BountyHunterTargetTask;
 
 } // namespace events
-} // namespace bountyhunterdroid
+} // namespace bountyhunter
 } // namespace mission
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::mission::bountyhunterdroid::events;
+using namespace server::zone::objects::mission::bountyhunter::events;
 
 #include "server/zone/templates/TemplateReference.h"
 
-#include "server/zone/objects/mission/bountyhunterdroid/events/FindTargetTaskList.h"
+#include "server/zone/objects/mission/bountyhunter/events/FindTargetTaskList.h"
 
 #include "engine/util/Observer.h"
 

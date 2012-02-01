@@ -54,7 +54,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace mission {
-namespace bountyhunterdroid {
+namespace bountyhunter {
 namespace events {
 
 class BountyHunterTargetTask : public Task, public Logger {
@@ -91,7 +91,6 @@ public:
 		cancel();
 	}
 
-	//TODO: refactor this.
 	void run() {
 		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
 
@@ -105,25 +104,14 @@ public:
 			return;
 		}
 
-		Locker locker(player);
+		Locker locker(playerRef);
 
 		if (move) {
-			//Update position.
-			Vector3 direction = nextPosition - currentPosition;
-			Vector3 movementUpdate = direction;
-			movementUpdate.normalize();
-
-			if (direction.length() > 10.0) {
-				currentPosition = currentPosition + (10 * movementUpdate);
-			} else {
-				currentPosition = nextPosition;
-				nextPosition = playerRef->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(playerRef);
-				nextPosition.setZ(0);
-			}
+			updatePosition(playerRef);
 
 			String zoneName = objectiveRef->getMissionObject()->getEndPlanet();
 
-			Zone* zone = player->getZone();
+			Zone* zone = playerRef->getZone();
 
 			if (zone != NULL && zone->getZoneName() == zoneName && playerRef->getWorldPosition().distanceTo(currentPosition) < 500.0) {
 				move = false;
@@ -134,18 +122,32 @@ public:
 		}
 	}
 
+	void updatePosition(CreatureObject* playerRef) {
+		Vector3 direction = nextPosition - currentPosition;
+		Vector3 movementUpdate = direction;
+		movementUpdate.normalize();
+
+		if (direction.length() > 10.0) {
+			currentPosition = currentPosition + (10 * movementUpdate);
+		} else {
+			currentPosition = nextPosition;
+			nextPosition = playerRef->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(playerRef);
+			nextPosition.setZ(0);
+		}
+	}
+
 	Vector3 getTargetPosition() {
 		return currentPosition;
 	}
 };
 
 } // namespace events
-} // namespace bountyhunterdroid
+} // namespace bountyhunter
 } // namespace mission
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::mission::bountyhunterdroid::events;
+using namespace server::zone::objects::mission::bountyhunter::events;
 
 #endif /* BOUNTYHUNTERTARGETTASK_H_ */

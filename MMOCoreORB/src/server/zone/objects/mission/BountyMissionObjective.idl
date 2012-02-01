@@ -54,9 +54,9 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.AiAgent;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
-import server.zone.objects.mission.bountyhunterdroid.BountyHunterDroid;
-import server.zone.objects.mission.bountyhunterdroid.events.BountyHunterTargetTask;
-include server.zone.objects.mission.bountyhunterdroid.events.FindTargetTaskList;
+import server.zone.objects.mission.bountyhunter.BountyHunterDroid;
+import server.zone.objects.mission.bountyhunter.events.BountyHunterTargetTask;
+include server.zone.objects.mission.bountyhunter.events.FindTargetTaskList;
 
 class BountyMissionObjective extends MissionObjective {
 	@dereferenced

@@ -10,7 +10,7 @@
 
 #include "TangibleObjectMenuComponent.h"
 #include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.h"
+#include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
 
 class BountyHunterDroidMenuComponent : public TangibleObjectMenuComponent {
 public:

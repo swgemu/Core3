@@ -13,13 +13,13 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "engine/log/Logger.h"
-#include "server/zone/objects/mission/bountyhunterdroid/events/FindTargetTask.h"
+#include "server/zone/objects/mission/bountyhunter/events/FindTargetTask.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace mission {
-namespace bountyhunterdroid {
+namespace bountyhunter {
 
 /**
  * Class implementing the functionality of the bounty hunter droids.
@@ -42,12 +42,12 @@ private:
 	FindTargetTask* findTarget(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission, bool track);
 };
 
-} // namespace bountyhunterdroid
+} // namespace bountyhunter
 } // namespace mission
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::mission::bountyhunterdroid;
+using namespace server::zone::objects::mission::bountyhunter;
 
 #endif /* BOUNTYHUNTERDROID_H_ */

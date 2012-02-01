@@ -14,9 +14,9 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/mission/bountyhunterdroid/BountyHunterDroid.h"
+#include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
 
-#include "server/zone/objects/mission/bountyhunterdroid/events/BountyHunterTargetTask.h"
+#include "server/zone/objects/mission/bountyhunter/events/BountyHunterTargetTask.h"
 
 /*
  *	BountyMissionObjectiveStub
