@@ -332,6 +332,8 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 	if (useCount == newUseCount)
 		return;
 
+	Locker locker(_this);
+
 	useCount = newUseCount;
 
 	if (useCount < 1) {

@@ -97,7 +97,7 @@ public:
 	void setQuantity(int quantity) {
 
 
-		if (!tano->isFromFactoryCrate() && quantity == 1)
+		if (quantity == 1)
 			quantity = 0;
 
 		addIntUpdate(7, quantity);

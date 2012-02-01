@@ -139,12 +139,20 @@ public:
 					return INVALIDPARAMETERS;
 				}
 
-				ManagedReference<SceneObject*> object = server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1);
+				ManagedReference<TangibleObject*> object = cast<TangibleObject*>(server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1));
 
 				if (object == NULL) {
 					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");
 					return INVALIDPARAMETERS;
 				}
+
+				int quantity = 1;
+
+				if (args.hasMoreTokens())
+					quantity = args.getIntToken();
+
+				if(quantity > 1 && quantity <= 100)
+					object->setUseCount(quantity);
 
 				inventory->broadcastObject(object, true);
 				inventory->transferObject(object, -1, true);
@@ -161,7 +169,7 @@ public:
 				resourceManager->givePlayerResource(creature, resourceName, quantity);
 			}
 		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /giveItem <objectTemplatePath>");
+			creature->sendSystemMessage("SYNTAX: /giveItem <objectTemplatePath> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /giveItem <resource> <resourceName> [<quantity>]");
 
 			return INVALIDPARAMETERS;

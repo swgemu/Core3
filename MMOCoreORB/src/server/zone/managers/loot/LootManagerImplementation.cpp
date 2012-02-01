@@ -223,7 +223,7 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
 
 	// Update the Tano with new values
-	prototype->updateCraftingValues(&craftingValues, false);
+	prototype->updateCraftingValues(&craftingValues, true);
 
 	return prototype;
 }

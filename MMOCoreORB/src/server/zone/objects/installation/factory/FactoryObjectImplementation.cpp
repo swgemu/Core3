@@ -74,7 +74,7 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 		ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
 		if (outputHopper != NULL) {
-			alm->insertAttribute("manufacture_count", outputHopper->getContainerObjectsSize()); //Manufactured Items:
+			alm->insertAttribute("manufacture_count", currentRunCount); //Manufactured Items:
 		}
 	}
 }
