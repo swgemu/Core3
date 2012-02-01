@@ -105,6 +105,8 @@ public:
 			return;
 		}
 
+		Locker locker(player);
+
 		if (move) {
 			//Update position.
 			Vector3 direction = nextPosition - currentPosition;
@@ -121,7 +123,9 @@ public:
 
 			String zoneName = objectiveRef->getMissionObject()->getEndPlanet();
 
-			if (player->getZone()->getZoneName() == zoneName && playerRef->getPosition().distanceTo(currentPosition) < 500.0) {
+			Zone* zone = player->getZone();
+
+			if (zone != NULL && zone->getZoneName() == zoneName && playerRef->getWorldPosition().distanceTo(currentPosition) < 500.0) {
 				move = false;
 				objectiveRef->spawnTarget(zoneName);
 			}
