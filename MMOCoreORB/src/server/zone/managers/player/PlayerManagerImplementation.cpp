@@ -247,6 +247,11 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 
 	player->sendMessage(new LogoutMessage());
 
+	ZoneClientSession* session = player->getClient();
+
+	if(session != NULL)
+		session->disconnect(true);
+
 	return true;
 }
 
