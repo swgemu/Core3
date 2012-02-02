@@ -363,6 +363,10 @@ InstallationDeedImplementation::InstallationDeedImplementation() {
 	surplusMaintenance = 0;
 	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		surplusPower = 0;
 	surplusPower = 0;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		extractionRate = 10000;
+	extractionRate = 10000;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		hopperSizeMax = 100;
+	hopperSizeMax = 100;
 }
 
 void InstallationDeedImplementation::setSurplusMaintenance(unsigned int surplusMaint) {

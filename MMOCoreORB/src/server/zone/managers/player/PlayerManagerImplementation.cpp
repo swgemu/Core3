@@ -32,6 +32,7 @@
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/login/packets/ErrorMessage.h"
+#include "server/zone/packets/player/LogoutMessage.h"
 
 #include "server/zone/objects/tangible/OptionBitmask.h"
 
@@ -236,8 +237,15 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 	if (player == NULL)
 		return false;
 
-	ErrorMessage* errmsg = new ErrorMessage(admin, "You have been kicked", 1);
+	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+
+	if(ghost != NULL)
+		ghost->setLoggingOut();
+
+	ErrorMessage* errmsg = new ErrorMessage(admin, "You have been kicked", 0);
 	player->sendMessage(errmsg);
+
+	player->sendMessage(new LogoutMessage());
 
 	return true;
 }

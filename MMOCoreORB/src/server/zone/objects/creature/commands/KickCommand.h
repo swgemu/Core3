@@ -93,7 +93,7 @@ public:
 			ManagedReference<PlayerManager*> playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->kickUser(player->getFirstName(), creature->getCustomObjectName().toString());
 
-			creature->sendSystemMessage(player->getFirstName() + " crashed.");
+			creature->sendSystemMessage(player->getFirstName() + " kicked.");
 
 		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for kick command.");
