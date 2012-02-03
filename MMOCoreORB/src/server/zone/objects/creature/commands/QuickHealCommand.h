@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
 #include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 class QuickHealCommand : public QueueCommand {
 	int mindCost;
@@ -176,34 +177,26 @@ public:
 			return GENERALERROR;
 		}
 
-		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = cast<Player *>( creatureTarget);
-			Player * p = cast<Player *>( creature);
+		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
 
-			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
-				return GENERALERROR;
-			}
-
-			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
-				return GENERALERROR;
-			}
-		}*/
+		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
+			creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
+			return GENERALERROR;
+		}
 
 		if (creature->getHAM(CreatureAttribute::MIND) < abs(mindCost)) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return GENERALERROR;
 		}
 
 
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 			if (creatureTarget == creature)
-				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
+				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
 			else {
 				StringIdChatParameter stringId("healing_response", "healing_response_63");
 				stringId.setTT(creatureTarget->getObjectID());
-				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
+				creature->sendSystemMessage(stringId); //%NT has no damage to heal.
 			}
 
 			return GENERALERROR;
