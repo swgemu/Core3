@@ -205,7 +205,7 @@ void ForageManagerImplementation::forageGiveItems(CreatureObject* player, bool s
 		else //Exceptional Components
 			lootGroup = 9; // 7 when items implemented
 
-		lootManager->createLoot(inventory, "medicalForage");
+		lootManager->createLoot(inventory, "medical_forage");
 	}
 
 }
