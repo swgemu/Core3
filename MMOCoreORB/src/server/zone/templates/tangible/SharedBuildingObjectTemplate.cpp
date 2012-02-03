@@ -22,6 +22,8 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 		terrainModificationFileName = Lua::getStringParameter(state);
 	} else if (varName == "interiorLayoutFileName") {
 		interiorLayoutFileName = Lua::getStringParameter(state);
+	} else if (varName == "medicalRating") {
+		medicalRating = Lua::getIntParameter(state);
 	} else if (varName == "sign") {
 		LuaObject signObject(state);
 		ChildObject object;

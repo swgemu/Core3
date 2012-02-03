@@ -16,7 +16,6 @@ void CampStructureTemplate::readObject(LuaObject* templateData) {
 	radius = templateData->getFloatField("radius");
 	experience = templateData->getIntField("experience");
 	aggroMod = templateData->getIntField("aggroMod");
-	medicalRating = templateData->getIntField("medicalRating");
 	skillRequired = templateData->getIntField("skillRequired");
 
 	healthWoundRegenRate = templateData->getIntField("healthWoundRegenRate");

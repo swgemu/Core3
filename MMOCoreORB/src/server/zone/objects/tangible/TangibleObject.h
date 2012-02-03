@@ -149,6 +149,8 @@ class WeaponObject;
 
 using namespace server::zone::objects::tangible::weapon;
 
+#include "server/zone/objects/tangible/variables/SkillModMap.h"
+
 #include "server/zone/objects/creature/CreatureFlag.h"
 
 #include "server/zone/objects/tangible/OptionBitmask.h"
@@ -249,6 +251,12 @@ public:
 	TangibleObject();
 
 	void initializeMembers();
+
+	void addTemplateSkillMods(TangibleObject* targetObject);
+
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	void removeTemplateSkillMods(TangibleObject* tangibleObject);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -528,6 +536,12 @@ public:
 
 	void initializeMembers();
 
+	virtual void addTemplateSkillMods(TangibleObject* targetObject);
+
+	virtual void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	virtual void removeTemplateSkillMods(TangibleObject* tangibleObject);
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
@@ -711,6 +725,8 @@ public:
 
 	void initializeMembers();
 
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
+
 	void initializeTransientMembers();
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
@@ -838,6 +854,7 @@ public:
 	FactoryCrate* createFactoryCrate(bool insertSelf);
 
 protected:
+	String _param0_addSkillMod__String_long_bool_;
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 	String _param0_setCustomizationVariable__String_byte_bool_;
 	String _param0_getCustomizationString__String_;

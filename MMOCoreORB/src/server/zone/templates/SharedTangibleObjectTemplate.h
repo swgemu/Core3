@@ -40,6 +40,8 @@ protected:
 
 	bool sliceable;
 
+	VectorMap<String, int64> skillMods;
+
 	Vector<short>* numberExperimentalProperties;
 	Vector<String>* experimentalProperties;
 	Vector<short>* experimentalWeights;
@@ -163,6 +165,14 @@ public:
 
     Vector<Reference<ResourceWeight* > >* getResourceWeights() {
     	return resourceWeights;
+    }
+
+    VectorMap<String, int64>* getSkillMods() {
+    	return &skillMods;
+    }
+
+    int64 getSkillMod(const String& mod) {
+    	return skillMods.get(mod);
     }
 
     bool isSharedTangibleObjectTemplate() {

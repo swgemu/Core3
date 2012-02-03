@@ -42,14 +42,12 @@
 
 
 object_building_tatooine_hospital_tatooine_s02 = object_building_tatooine_shared_hospital_tatooine_s02:new {
-	templateType = HOSPITALBUILDING,	
-	medicalRating = 100,
+	skillMods = {
+		{"private_medical_rating", 100},
+		{"private_med_wound_health", 100},
+		{"private_med_wound_action", 100}
+	},
 
-	healthWoundRegenRate = 100,
-	actionWoundRegenRate = 100,
-	mindWoundRegenRate = 0,
-
-	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 }
 

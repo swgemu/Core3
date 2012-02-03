@@ -446,6 +446,8 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (getZone() == NULL)
 		return;
 
+	addTemplateSkillMods(player);
+
 	int i = 0;
 
 	//If they are inside, and aren't allowed to be, then kick them out!
@@ -482,6 +484,8 @@ void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parenti
 
 	if (getZone() == NULL)
 		return;
+
+	removeTemplateSkillMods(player);
 
 	notifyObservers(ObserverEventType::EXITEDBUILDING, player, parentid);
 }

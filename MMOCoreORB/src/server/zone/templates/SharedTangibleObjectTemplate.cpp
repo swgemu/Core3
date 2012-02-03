@@ -12,7 +12,6 @@
 #include "params/RangedIntCustomizationVariables.h"
 
 SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
-
 	numberExperimentalProperties = new Vector<short>();
 	experimentalProperties = new Vector<String>();
 	experimentalWeights = new Vector<short>();
@@ -23,10 +22,12 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	experimentalPrecision = new Vector<short>();
 
 	resourceWeights = new Vector<Reference<ResourceWeight* > >();
+
+	skillMods.setNoDuplicateInsertPlan();
+	skillMods.setNullValue(0);
 }
 
 SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
-
 	delete numberExperimentalProperties;
 	delete experimentalProperties;
 	delete experimentalWeights;
@@ -95,6 +96,20 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		pvpStatusBitmask = Lua::getIntParameter(state);
 	} else if (varName == "sliceable") {
 		sliceable = Lua::getIntParameter(state);
+	} else if (varName == "skillMods") {
+		LuaObject smods(state);
+		for (int i = 1; i <= smods.getTableSize(); ++i) {
+			lua_rawgeti(state, -1, i);
+			LuaObject mod(state);
+
+			String modName = mod.getStringAt(1);
+			int64 modValue = mod.getLongAt(2);
+
+			skillMods.put(modName, modValue);
+
+			mod.pop();
+		}
+		smods.pop();
 	} else if (varName == "numberExperimentalProperties") {
 		LuaObject numberExperimentalPropertiesList(state);
 		numberExperimentalProperties->removeAll();

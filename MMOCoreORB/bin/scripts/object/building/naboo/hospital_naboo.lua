@@ -42,17 +42,14 @@
 
 
 object_building_naboo_hospital_naboo = object_building_naboo_shared_hospital_naboo:new {
-	templateType = HOSPITALBUILDING,	
-	medicalRating = 100,
+	skillMods = {
+		{"private_medical_rating", 100},
+		{"private_med_wound_health", 100},
+		{"private_med_wound_action", 100}
+	},
 
-	healthWoundRegenRate = 100,
-	actionWoundRegenRate = 100,
-	mindWoundRegenRate = 0,
-	
-	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
-
-
+	
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0.122, z = 0.25, y = -2.16, ow = 0.906308, ox = 0, oy = 0.422618, oz = 0, cellid = 13, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0.14, z = 7.25, y = -2.19, ow = 0.915698, ox = 0, oy = 0.401868, oz = 0, cellid = 13, containmentType = -1},

@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 #include "TangibleObject.h"
-
+#include "variables/SkillModMap.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -692,4 +692,34 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	crate->setUseCount(1);
 
 	return crate;
+}
+
+void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) {
+	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+
+	if (tano == NULL)
+		return;
+
+	VectorMap<String, int64>* mods = tano->getSkillMods();
+
+	for (int i = 0; i < mods->size(); ++i) {
+		VectorMapEntry<String, int64> entry = mods->elementAt(i);
+
+		targetObject->addSkillMod(entry.getKey(), entry.getValue());
+	}
+}
+
+void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) {
+	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+
+	if (tano == NULL)
+		return;
+
+	VectorMap<String, int64>* mods = tano->getSkillMods();
+
+	for (int i = 0; i < mods->size(); ++i) {
+		VectorMapEntry<String, int64> entry = mods->elementAt(i);
+
+		targetObject->addSkillMod(entry.getKey(), entry.getValue() * -1);
+	}
 }

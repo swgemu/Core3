@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.tangible;
 
 import server.zone.objects.scene.SceneObject;
+include server.zone.objects.tangible.variables.SkillModMap;
 import engine.lua.LuaObject;
 import system.util.Vector;
 import system.util.SortedVector;
@@ -170,6 +171,24 @@ class TangibleObject extends SceneObject {
 		sliceable = false;
 		sliced = false;
 	}
+	
+	/**
+	 * Adds this object's skill mod map to the target object's skill mod map
+	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
+	 */
+	@local
+	public abstract native void addTemplateSkillMods(TangibleObject targetObject);
+	
+	public abstract void addSkillMod(final string skillMod, long value, boolean notifyClient = true) {
+		
+	}
+	
+	/**
+	 * Removes this object's skill mod map from the target object's skill mod map
+	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
+	 */
+	@local
+	public abstract native void removeTemplateSkillMods(TangibleObject tangibleObject);
 	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject

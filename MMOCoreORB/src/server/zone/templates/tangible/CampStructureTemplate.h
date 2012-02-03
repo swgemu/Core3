@@ -16,7 +16,6 @@ protected:
 	uint16 duration;
 	uint16 radius;
 	uint16 aggroMod;
-	uint16 medicalRating;
 	uint16 skillRequired;
 	uint16 healthWoundRegenRate;
 	uint16 actionWoundRegenRate;
@@ -51,10 +50,6 @@ public:
 
 	inline int getAggroMod() const {
 		return aggroMod;
-	}
-
-	inline int getMedicalRating() const {
-		return medicalRating;
 	}
 
 	inline int getSkillRequired() const {

@@ -39,8 +39,11 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 		return;
 
 	CreatureObject* player = cast<CreatureObject*> (object);
+
 	if (player == NULL)
 		return;
+
+	camp->addTemplateSkillMods(player);
 
 	if (campObserver == NULL) {
 		campObserver = new CampSiteObserver(_this);
@@ -56,20 +59,16 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 
 	} else {
 
-		StringIdChatParameter stringID("@camp:prose_camp_enter");
+		StringIdChatParameter stringID("camp", "prose_camp_enter");
 		stringID.setTO(terminal->getObjectName()->getDisplayedName());
 		player->sendSystemMessage(stringID);
 
-		player->sendSystemMessage("camp", "sys_camp_heal");
+		player->sendSystemMessage("@camp:sys_camp_heal");
 
 	}
 
 	if (object->isPlayerCreature() && !visitors.contains(object->getObjectID()))
 		visitors.add(object->getObjectID());
-
-	player->addSkillMod("private_med_wound_health", getHealthWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_action", getActionWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_mind", getMindWoundRegenRate(), false);
 
 
 	if (object->isPlayerCreature())
@@ -83,16 +82,14 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 		return;
 
 	CreatureObject* player = cast<CreatureObject*> (object);
+
 	if (player == NULL)
 		return;
 
-	player->addSkillMod("private_med_wound_health", (-1 * getHealthWoundRegenRate()), false);
-	player->addSkillMod("private_med_wound_action", (-1 * getActionWoundRegenRate()), false);
-	player->addSkillMod("private_med_wound_mind", (-1 * getMindWoundRegenRate()), false);
-
+	camp->removeTemplateSkillMods(player);
 
 	if(abandoned || object != campOwner) {
-		StringIdChatParameter stringID("@camp:prose_camp_exit");
+		StringIdChatParameter stringID("camp", "prose_camp_exit");
 		stringID.setTO(terminal->getObjectName()->getDisplayedName());
 		player->sendSystemMessage(stringID);
 		return;
@@ -118,7 +115,7 @@ int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 			abandonTask->cancel();
 
 	if(campOwner != NULL)
-		campOwner->sendSystemMessage("camp", "sys_abandoned_camp");
+		campOwner->sendSystemMessage("@camp:sys_abandoned_camp");
 
 	return 1;
 }
@@ -141,7 +138,7 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 
 	if(campOwner != NULL) {
 		campOwner->dropObserver(ObserverEventType::STARTCOMBAT, campObserver);
-		campOwner->sendSystemMessage("camp", "sys_abandoned_camp");
+		campOwner->sendSystemMessage("@camp:sys_abandoned_camp");
 	}
 }
 
@@ -202,17 +199,20 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 
 	/// Get Ghost
-	PlayerObject* ghost = cast<PlayerObject*> (campOwner->getSlottedObject("ghost"));
+	PlayerObject* ghost = campOwner->getPlayerObject();
+
 	if (ghost != NULL) {
 		ghost->removeOwnedStructure(camp);
 	}
 
 	setOwner(player);
+
 	abandoned = false;
 	currentXp = 0;
 
 	/// Get Ghost
-	ghost = cast<PlayerObject*> (campOwner->getSlottedObject("ghost"));
+	ghost = campOwner->getPlayerObject();
+
 	if (ghost != NULL) {
 		ghost->addOwnedStructure(camp);
 	}

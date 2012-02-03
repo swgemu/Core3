@@ -57,11 +57,13 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		//if (!checkStateMask(creature))
+			//return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		//if (!checkInvalidLocomotions(creature))
+			//return INVALIDLOCOMOTION;
+
+		error("CuiConsentResponseCommand got called!!!!!!!!!!!!!!!!!!!!");
 
 		return SUCCESS;
 	}

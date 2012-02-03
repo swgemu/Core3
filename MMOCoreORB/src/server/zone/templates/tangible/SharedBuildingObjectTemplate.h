@@ -14,6 +14,8 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	StringParam terrainModificationFileName;
 	StringParam interiorLayoutFileName;
 
+	int medicalRating;
+
 	ChildObject sign;
 
 	bool publicStructure;
@@ -53,6 +55,10 @@ public:
 
 	inline ChildObject* getSign() {
 		return &sign;
+	}
+
+	inline int getMedicalRating() const {
+		return medicalRating;
 	}
 };
 
