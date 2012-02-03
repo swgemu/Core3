@@ -27,7 +27,14 @@ hidden_daggers_lieutenant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "loot_kit_items", chance = 10000000}
+			},
+			lootChance = 3300000
+		}
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

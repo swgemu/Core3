@@ -26,7 +26,14 @@ ragtag_lunatic = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "loot_kit_items", chance = 10000000}
+			},
+			lootChance = 3300000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}
 }

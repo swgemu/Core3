@@ -8,8 +8,8 @@ meatlump_loon = Creature:new {
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
-	baseHAM = 81000,
-	baseHAMmax = 99000,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -26,7 +26,14 @@ meatlump_loon = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "loot_kit_items", chance = 10000000}
+			},
+			lootChance = 3300000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

@@ -1,4 +1,4 @@
-ragtag_maniac = Creature:new {
+ragtag_maniac = Creature:new {
 	objectName = "@mob/creature_names:ragtag_maniac",
 	socialGroup = "Rgtg. Gang",
 	pvpFaction = "Thug",
@@ -26,7 +26,14 @@ ragtag_maniac = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "loot_kit_items", chance = 10000000}
+			},
+			lootChance = 3300000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}
 }
