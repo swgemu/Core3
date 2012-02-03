@@ -42,8 +42,9 @@
 
 
 object_building_general_cantina_general = object_building_general_shared_cantina_general:new {
-	templateType = RECREATIONBUILDING,	
-	medicalRating = 100,
+	skillMods = {
+		{"private_med_wound_mind", 100}
+	},
 	planetMapCategory = "cantina"
 }
 

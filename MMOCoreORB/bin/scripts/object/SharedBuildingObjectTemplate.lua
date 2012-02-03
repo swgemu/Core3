@@ -62,9 +62,7 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	--Abilities required to place this structure object. String value of the ability.
 	abilityRequired = "",
-	
-	medicalRating = 0,
-	
+
 	--Sign is a childObject for the default sign of this structure.
 	sign = {templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 0},
 	

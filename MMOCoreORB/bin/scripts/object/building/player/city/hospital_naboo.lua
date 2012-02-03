@@ -42,19 +42,14 @@
 
 
 object_building_player_city_hospital_naboo = object_building_player_city_shared_hospital_naboo:new {
-	templateType = HOSPITALBUILDING,	
-	medicalRating = 100,
-
-	healthWoundRegenRate = 100,
-	actionWoundRegenRate = 100,
-	mindWoundRegenRate = 0,
-
+	skillMods = {
+		{"private_med_wound_mind", 100}
+	},
 	lotSize = 3,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 5,
 	width = 5,
-	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 	cityRankRequired = 3,
 	abilitiesRequired = {"place_hospital"},

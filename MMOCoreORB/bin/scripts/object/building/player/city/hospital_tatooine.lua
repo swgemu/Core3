@@ -42,20 +42,14 @@
 
 
 object_building_player_city_hospital_tatooine = object_building_player_city_shared_hospital_tatooine:new {
-	
-	templateType = HOSPITALBUILDING,	
-	medicalRating = 100,	
-
-	healthWoundRegenRate = 100,
-	actionWoundRegenRate = 100,
-	mindWoundRegenRate = 0,
-
+	skillMods = {
+		{"private_med_wound_mind", 100}
+	},
 	lotSize = 3,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 5,
 	width = 5,
-	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 	cityRankRequired = 3,
 	abilityRequired = "place_hospital",
