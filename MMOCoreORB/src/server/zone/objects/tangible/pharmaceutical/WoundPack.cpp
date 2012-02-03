@@ -339,8 +339,8 @@ int WoundPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		}
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
-	player->sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			player.sendSystemMessage("@error_message:insufficient_skill");
+	player->sendSystemMessage("@error_message:insufficient_skill");
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			return 0;
 	return 0;
 }
@@ -373,8 +373,8 @@ unsigned int WoundPackImplementation::calculatePower(CreatureObject* healer, Cre
 	ZoneServer* zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = 1 + (healer.getSkillMod("private_med_modifier") / 100.0f);
-	float modEnvironment = 1 + (healer->getSkillMod("private_med_modifier") / 100.0f);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);
+	float modEnvironment = 1 + (healer->getSkillMod("private_medical_rating") / 100.0f);
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		return (power * modEnvironment * (100.0f + modSkill) / 10000.0f);

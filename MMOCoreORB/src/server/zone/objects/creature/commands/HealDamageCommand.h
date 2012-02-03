@@ -193,12 +193,12 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) {
 		if (!creature->canTreatInjuries()) {
-			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
+			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
 		}
 
 		if (stimPack == NULL) {
-			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
 
@@ -223,7 +223,7 @@ public:
 		}
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 
@@ -244,7 +244,7 @@ public:
 
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 			if (creatureTarget == creature) {
-				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
+				creature->sendSystemMessage("healing_response:healing_response_61"); //You have no damage to heal.
 			} else {
 				StringIdChatParameter stringId("healing_response", "healing_response_63");
 				stringId.setTT(creatureTarget->getObjectID());
@@ -260,7 +260,7 @@ public:
 			int combatMedicineUse = creature->getSkillMod("combat_healing_ability");
 
 			if (rangedStimPack->getMedicineUseRequired() > combatMedicineUse || !rangedStimPack->getRange(creature)) {
-				creature->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
+				creature->sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
 				return false;
 
 			}

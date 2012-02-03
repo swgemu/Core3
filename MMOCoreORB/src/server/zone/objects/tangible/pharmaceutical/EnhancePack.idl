@@ -138,7 +138,7 @@ class EnhancePack extends PharmaceuticalObject {
 			return 1;
 
 		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
-			player.sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
+			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
 			
 			return 0;
 		} else {
@@ -163,7 +163,7 @@ class EnhancePack extends PharmaceuticalObject {
 		ZoneServer zoneServer = super.getZoneServer();
 		PlayerManager playerManager = zoneServer.getPlayerManager();
 		
-		float modEnvironment = 1 + (healer.getSkillMod("private_med_modifier") / 100.0f);	
+		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);	
 		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 
 		return power * modEnvironment * (100 + modSkill) / 10000;

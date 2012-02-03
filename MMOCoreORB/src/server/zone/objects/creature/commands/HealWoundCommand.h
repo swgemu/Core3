@@ -151,17 +151,17 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, WoundPack* woundPack) {
 		if (!creature->canTreatWounds()) {
-			creature->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
+			creature->sendSystemMessage("@healing_response:enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
 			return false;
 		}
 
 		if (woundPack == NULL) {
-			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
 
-		if (creature->getSkillMod("private_med_modifier") <= 0) {
-			creature->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
+		if (creature->getSkillMod("private_medical_rating") <= 0) {
+			creature->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		}
 
@@ -211,7 +211,7 @@ public:
 		}*/
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 
@@ -285,7 +285,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -346,7 +345,7 @@ public:
 
 		if (creatureTarget->getWounds(attribute) == 0) {
 			if (creatureTarget == creature) {
-				creature->sendSystemMessage("healing_response", "healing_response_67");
+				creature->sendSystemMessage("@healing_response:healing_response_67");
 			} else {
 				//TODO: Patch the tre later to include a %NT.
 				if (creatureTarget->isPlayerCreature()) {

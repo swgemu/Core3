@@ -128,17 +128,17 @@ public:
 			return false;
 
 		if (!enhancer->canTreatWounds()) {
-			enhancer->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
+			enhancer->sendSystemMessage("@healing_response:enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
 			return false;
 		}
 
 		if (enhancePack == NULL) {
-			enhancer->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			enhancer->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
 
-		if (enhancer->getSkillMod("private_med_modifier") <= 0) {
-			enhancer->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
+		if (enhancer->getSkillMod("private_medical_rating") <= 0) {
+			enhancer->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		}
 
@@ -188,7 +188,7 @@ public:
 		}*/
 
 		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCost) {
-			enhancer->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			enhancer->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 
@@ -298,12 +298,12 @@ public:
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL) {
-			creature->sendSystemMessage("healing_response", "healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
+			creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
 			return INVALIDTARGET;
 		}
 
 		if (!object->isPlayerCreature()) {
-			creature->sendSystemMessage("healing_response", "healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
+			creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
 			return INVALIDTARGET;
 		}
 
@@ -318,7 +318,7 @@ public:
 		parseModifier(arguments.toString(), attribute, objectId);
 
 		if (attribute == BuffAttribute::UNKNOWN) {
-			enhancer->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
+			enhancer->sendSystemMessage("@healing_response:healing_response_75"); //You must specify a valid attribute.
 			return GENERALERROR;
 		}
 

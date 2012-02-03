@@ -38,6 +38,7 @@ protected:
 	float speed;
 	float range;
 	String effectName;
+
 public:
 	TendCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
@@ -233,14 +234,14 @@ public:
 		}*/
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return GENERALERROR;
 		}
 
 		if (tendDamage) {
 			if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 				if (creatureTarget == creature)
-					creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
+					creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
 				else {
 					StringIdChatParameter stringId("healing_response", "healing_response_63");
 					stringId.setTT(creatureTarget->getObjectID());
@@ -271,7 +272,7 @@ public:
 
 			if (attribute == CreatureAttribute::UNKNOWN || creatureTarget->getWounds(attribute) == 0) {
 				if (creatureTarget == creature)
-					creature->sendSystemMessage("healing_response", "healing_response_67");
+					creature->sendSystemMessage("@healing_response:healing_response_67");
 				else if (creatureTarget->isPlayerCreature()){
 					creature->sendSystemMessage(creatureTarget->getFirstName()
 							+ " has no wounds of that type to heal.");
@@ -284,7 +285,7 @@ public:
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
 			//if (playerManager->getMedicalFacilityRating(enhancer) <= 0) {
-			float modEnvironment = 1 + (creature->getSkillMod("private_med_modifier") / 100.0f);
+			float modEnvironment = 1 + (creature->getSkillMod("private_medical_rating") / 100.0f);
 			float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
 			float effectiveness = 150.0f;
 
