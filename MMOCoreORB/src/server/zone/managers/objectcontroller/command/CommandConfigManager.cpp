@@ -470,6 +470,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(slashCommand);
 		if (varName == "damageMultiplier")
 			combatCommand->setDamageMultiplier(Lua::getFloatParameter(L));
+		else if (varName == "accuracyBonus")
+			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
 		else if (varName == "speedMultiplier")
 			combatCommand->setSpeedMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "poolsToDamage")
@@ -482,38 +484,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setMindCostMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "forceCostMultiplier")
 			combatCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "knockdownStateChance")
-			combatCommand->setKnockdownStateChance(Lua::getIntParameter(L));
-		else if (varName == "postureDownStateChance")
-			combatCommand->setPostureDownStateChance(Lua::getIntParameter(L));
-		else if (varName == "postureUpStateChance")
-			combatCommand->setPostureUpStateChance(Lua::getIntParameter(L));
-		else if (varName == "dizzyStateChance")
-			combatCommand->setDizzyStateChance(Lua::getIntParameter(L));
-		else if (varName == "blindStateChance")
-			combatCommand->setBlindStateChance(Lua::getIntParameter(L));
-		else if (varName == "stunStateChance")
-			combatCommand->setStunStateChance(Lua::getIntParameter(L));
-		else if (varName == "intimidateStateChance")
-			combatCommand->setIntimidateStateChance(Lua::getIntParameter(L));
-		else if (varName == "nextAttackDelayChance")
-			combatCommand->setNextAttackDelayChance(Lua::getIntParameter(L));
-		else if (varName == "durationStateTime")
-			combatCommand->setDurationStateTime(Lua::getIntParameter(L));
-		else if (varName == "dotDuration")
-			combatCommand->setDotDuration(Lua::getIntParameter(L));
-		else if (varName == "dotType")
-			combatCommand->setDotType(Lua::getLongParameter(L));
-		else if (varName == "dotPool")
-			combatCommand->setDotPool(Lua::getUnsignedByteParameter(L));
-		else if (varName == "dotStrength")
-			combatCommand->setDotStrength(Lua::getIntParameter(L));
-		else if (varName == "dotPotency")
-			combatCommand->setDotPotency(Lua::getFloatParameter(L));
-		else if (varName == "dotDamageOfHit") {
-			combatCommand->setDotDamageOfHit((bool)lua_toboolean(L, -1));
-			command.pop();
-		} else if (varName == "range")
+		else if (varName == "range")
 			combatCommand->setRange(Lua::getIntParameter(L));
 		else if (varName == "areaAction") {
 			combatCommand->setAreaAction((bool)lua_toboolean(L, -1));

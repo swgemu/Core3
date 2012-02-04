@@ -44,12 +44,17 @@
 PolearmLunge1Command = {
         name = "polearmlunge1",
 
-	damageMultiplier = 1,
+	damageMultiplier = 1.5,
 	speedMultiplier = 1.5,
+	accuracyBonus = 10,
+	
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.0,
+	mindCostMultiplier = 0.5,
 
-	animationCRC = hashCode("attack_high_center_light_2"),
+	animationCRC = hashCode("lower_posture_polearm_1"),
 
-	combatSpam = "polearm_sweep",
+	combatSpam = "polearm",
 
 	range = 15,
 
@@ -60,7 +65,7 @@ PolearmLunge1Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	}

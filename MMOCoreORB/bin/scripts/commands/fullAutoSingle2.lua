@@ -52,7 +52,7 @@ FullAutoSingle2Command = {
 
 	animationCRC = hashCode("fire_7_single_medium_face"),
 
-	combatSpam = "s_auto",
+	combatSpam = "s",
 
 	stateEffects = {
 	  StateEffect( 

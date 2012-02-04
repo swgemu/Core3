@@ -24,6 +24,7 @@
 class CombatQueueCommand : public QueueCommand {
 protected:
 	float damageMultiplier;
+	int accuracyBonus;
 	float speedMultiplier;
 	int poolsToDamage;
 
@@ -58,6 +59,7 @@ protected:
 	int areaRange;
 
 	String combatSpam;
+	String stateSpam;
 	uint32 animationCRC;
 	String effectString;
 
@@ -69,6 +71,7 @@ public:
 	CombatQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
 		damageMultiplier = 1;
+		accuracyBonus = 0;
 		speedMultiplier = 1;
 		healthCostMultiplier = 1;
 		actionCostMultiplier = 1;
@@ -161,12 +164,8 @@ public:
 		}
 
 		// only clear aiming states if command was successful
-		if (creature->isAiming())
-			creature->removeStateBuff(CreatureState::AIMING);
-
-		uint32 steadyAim = String("steadyaim").hashCode();
-		if (creature->hasBuff(steadyAim))
-			creature->removeBuff(steadyAim);
+		creature->removeStateBuff(CreatureState::AIMING);
+		creature->removeBuff(String("steadyaim").hashCode());
 
 		return SUCCESS;
 	}
@@ -217,6 +216,10 @@ public:
 
 	inline float getDamageMultiplier() const {
 		return damageMultiplier;
+	}
+
+	inline int getAccuracyBonus() const {
+		return accuracyBonus;
 	}
 
 	inline int getDizzyChance() const {
@@ -285,6 +288,10 @@ public:
 
 	void setDamageMultiplier(float damageMultiplier) {
 		this->damageMultiplier = damageMultiplier;
+	}
+
+	void setAccuracyBonus(int accuracyBonus) {
+		this->accuracyBonus = accuracyBonus;
 	}
 
 	void setHealthCostMultiplier(float f) {
@@ -445,6 +452,10 @@ public:
 
 	void setRange(int i) {
 		this->range = i;
+	}
+
+	bool hasCombatSpam() {
+		return !combatSpam.isEmpty();
 	}
 
 	bool isCombatCommand() {

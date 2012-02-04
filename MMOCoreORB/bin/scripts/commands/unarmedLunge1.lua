@@ -44,12 +44,17 @@
 UnarmedLunge1Command = {
         name = "unarmedlunge1",
 
-	damageMultiplier = 1,
+	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
+	accuracyBonus = 15,
+	
+	healthCostMultiplier = 1.0,
+	actionCostMultiplier = 1.0,
+	mindCostMultiplier = 1.0,
 
-	animationCRC = hashCode("counter_mid_center_light"),
+	animationCRC = hashCode("lower_posture_unarmed_1"),
 
-	combatSpam = "unarmed_sweep",
+	combatSpam = "unarmed",
 
 	range = 15,
 
@@ -60,7 +65,7 @@ UnarmedLunge1Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	}

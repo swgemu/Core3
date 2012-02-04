@@ -49,7 +49,7 @@ PolearmLunge2Command = {
 
 	animationCRC = hashCode("lower_posture_polearm_2"),
 
-	combatSpam = "polearm_knockdown",
+	combatSpam = "polearm",
 
 	range = 20,
 

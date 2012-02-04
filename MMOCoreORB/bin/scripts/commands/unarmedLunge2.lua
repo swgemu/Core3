@@ -49,7 +49,7 @@ UnarmedLunge2Command = {
 
 	animationCRC = hashCode("counter_mid_center_light"),
 
-	combatSpam = "unarmed_knockdown",
+	combatSpam = "unarmed",
 
 	range = 20,
 

@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 Melee1hLunge1Command = {
-        name = "melee1hlunge1",
+	name = "melee1hlunge1",
 
-	damageMultiplier = 1,
-	speedMultiplier = 1.25,
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.5,
+	accuracyBonus = 25,
+	
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 1.0,
 
 	animationCRC = hashCode("lower_posture_1hmelee_1"),
 
-	combatSpam = "sword1_sweep",
+	combatSpam = "sword1",
 
 	range = 15,
 
@@ -60,7 +65,7 @@ Melee1hLunge1Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	}

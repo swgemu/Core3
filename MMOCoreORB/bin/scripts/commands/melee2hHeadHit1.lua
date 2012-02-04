@@ -51,7 +51,7 @@ Melee2hHeadHit1Command = {
 
 	animationCRC = hashCode("combo_2d_medium"),
 
-	combatSpam = "sword2_head",
+	combatSpam = "sword2",
 
 	range = -1
 

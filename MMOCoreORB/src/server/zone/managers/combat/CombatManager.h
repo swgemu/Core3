@@ -129,6 +129,7 @@ public:
 	void declineDuel(CreatureObject* player, CreatureObject* targetPlayer);
 
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
+	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 
 	//all the combat math will go here
 protected:
@@ -147,7 +148,7 @@ protected:
 	/**
 	 * @returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack, 4 - miss
 	 */
-	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int accuracyBonus);
+	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus);
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
 	int calculatePostureModifier(CreatureObject* creature);
@@ -161,7 +162,7 @@ protected:
 	int calculateDamageRange(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
-	float calculateDamage(CreatureObject* attacker, CreatureObject* defender, int poolToDamage);
+	float calculateDamage(CreatureObject* attacker, CreatureObject* defender);
 	float calculateDamage(CreatureObject* attacker, TangibleObject* defender);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 
@@ -171,11 +172,11 @@ protected:
 	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
 	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
-	int applyDamage(CreatureObject* attacker, CreatureObject* defender, float damageMultiplier, int poolsToDamage);
+	int applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);
 
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
-	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolsToDamage);
+	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, float damage, int poolsToDamage);
 	float getArmorPiercing(ArmorObject* armor, WeaponObject* weapon);
 	float getArmorPiercing(AiAgent* defender, WeaponObject* weapon);
 	int getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon);
@@ -193,9 +194,6 @@ protected:
 	 * returns false on insufficient
 	 */
 	bool applySpecialAttackCost(CreatureObject* attacker, const CreatureAttackData& data);
-
-	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
-
 };
 
 

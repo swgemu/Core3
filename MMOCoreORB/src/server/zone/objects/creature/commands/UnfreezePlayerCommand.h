@@ -96,7 +96,7 @@ public:
 
 			Locker playerlocker(targetPlayer);
 
-			targetPlayer->clearState(CreatureState::FROZEN, true);
+			targetPlayer->removeStateBuff(CreatureState::FROZEN);
 			targetPlayer->sendSystemMessage("You have been unfrozen by \'" + player->getFirstName() + "\'");
 
 			targetPlayer->setSpeedMultiplierBase(1.f, true);

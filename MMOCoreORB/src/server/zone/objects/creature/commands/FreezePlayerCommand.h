@@ -96,7 +96,7 @@ public:
 
 			Locker playerlocker(targetPlayer);
 
-			targetPlayer->setState(CreatureState::FROZEN, true);
+			targetPlayer->setRootedState(3600);
 			targetPlayer->sendSystemMessage("You have been frozen by \'" + player->getFirstName() + "\'");
 
 			targetPlayer->setSpeedMultiplierBase(0.f, true);

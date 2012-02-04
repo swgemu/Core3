@@ -63,7 +63,15 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		int res = doCombatAction(creature, target);
+
+		if (res == TOOFAR)
+			creature->sendSystemMessage("cbt_spam", "intim_out_of_range");
+
+		if (res == GENERALERROR)
+			creature->sendSystemMessage("combat_effects", "intimidated_miss");
+
+		return res;
 	}
 
 };

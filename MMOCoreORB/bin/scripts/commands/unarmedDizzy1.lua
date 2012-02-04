@@ -65,7 +65,7 @@ UnarmedDizzy1Command = {
 
 	animationCRC = hashCode("attack_special_wookiee_slap_light"),
 
-	combatSpam = "unarmed_dizzy",
+	combatSpam = "unarmed",
 
 	range = -1
 }

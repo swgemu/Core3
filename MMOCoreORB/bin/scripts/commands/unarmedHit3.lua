@@ -53,7 +53,7 @@ UnarmedHit3Command = {
 
 	animationCRC = hashCode("combo_5a_medium"),
 
-	combatSpam = "unarmed_dam2",
+	combatSpam = "unarmed",
 
 	stateEffects = {
 	  StateEffect( 

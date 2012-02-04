@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-class TauntCommand : public QueueCommand {
+class TauntCommand : public CombatQueueCommand {
 public:
 
 	TauntCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +63,28 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isCreatureObject())
+			return INVALIDTARGET;
+
+		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
+
+		if (targetCreature == NULL)
+			return INVALIDTARGET;
+
+		int res = doCombatAction(creature, target, arguments);
+
+		CombatManager* combatManager = CombatManager::instance();
+
+		if (res == SUCCESS) {
+			targetCreature->getThreatMap()->addAggro(creature, creature->getSkillMod("taunt") * 10, 0);
+			combatManager->broadcastCombatSpam(creature, targetCreature, creature->getWeapon(), 0, "taunt_success");
+		} else
+			combatManager->broadcastCombatSpam(creature, targetCreature, creature->getWeapon(), 0, "taunt_fail");
+
+
+		return res;
 	}
 
 };

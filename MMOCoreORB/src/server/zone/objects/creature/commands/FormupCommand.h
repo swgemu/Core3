@@ -105,11 +105,11 @@ public:
 
 			if (memberPlayer->isDizzied())
 				if (System::random(99) < chance)
-					memberPlayer->clearState(CreatureState::DIZZY, true);
+					memberPlayer->removeStateBuff(CreatureState::DIZZY);
 
 			if (memberPlayer->isStunned())
 				if (System::random(99) < chance)
-					memberPlayer->clearState(CreatureState::STUNNED, true);
+					memberPlayer->removeStateBuff(CreatureState::STUNNED);
 		}
 
 		return true;

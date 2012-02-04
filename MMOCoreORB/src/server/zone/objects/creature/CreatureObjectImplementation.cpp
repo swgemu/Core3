@@ -617,8 +617,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 					}
 				}
 			} else {
-				CreatureObjectDeltaMessage3* dcreo3 =
-						new CreatureObjectDeltaMessage3(_this);
+				CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 				dcreo3->updateState();
 				dcreo3->close();
 
@@ -628,17 +627,14 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			switch (state) {
 			case CreatureState::STUNNED:
 				playEffect("clienteffect/combat_special_defender_stun.cef");
-				showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
 				sendSystemMessage("cbt_spam", "go_stunned_single");
 				break;
 			case CreatureState::BLINDED:
 				playEffect("clienteffect/combat_special_defender_blind.cef");
-				showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
 				sendSystemMessage("cbt_spam", "go_blind_single");
 				break;
 			case CreatureState::DIZZY:
 				playEffect("clienteffect/combat_special_defender_dizzy.cef");
-				showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
 				sendSystemMessage("cbt_spam", "go_dizzy_single");
 				break;
 			case CreatureState::POISONED:
@@ -651,29 +647,24 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				break;
 			case CreatureState::INTIMIDATED:
 				playEffect("clienteffect/combat_special_defender_intimidate.cef");
-				showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 				break;
 			case CreatureState::IMMOBILIZED:
 				//playEffect("clienteffect/combat_special_defender_intimidate.cef");
-				showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
 				break;
 			case CreatureState::FROZEN:
 				//playEffect("clienteffect/combat_special_defender_intimidate.cef");
-				showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
 				break;
 			case CreatureState::RALLIED:
 				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
 				break;
 			case CreatureState::BERSERK:
 				playEffect("clienteffect/combat_special_attacker_berserk.cef");
-				showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
 				break;
 			case CreatureState::AIMING:
 				playEffect("clienteffect/combat_special_attacker_aim.cef");
 				break;
 			case CreatureState::COVER:
 				playEffect("clienteffect/combat_special_attacker_cover.cef");
-				showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
 				sendSystemMessage("cbt_spam", "cover_success_single");
 				break;
 			default:
@@ -704,15 +695,12 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		switch (state) {
 		case CreatureState::STUNNED:
 			sendSystemMessage("cbt_spam", "no_stunned_single");
-			showFlyText("combat_effects", "no_stunned", 0xFF, 0, 0);
 			break;
 		case CreatureState::BLINDED:
 			sendSystemMessage("cbt_spam", "no_blind_single");
-			showFlyText("combat_effects", "no_blind", 0xFF, 0, 0);
 			break;
 		case CreatureState::DIZZY:
 			sendSystemMessage("cbt_spam", "no_dizzy_single");
-			showFlyText("combat_effects", "no_dizzy", 0xFF, 0, 0);
 			break;
 		case CreatureState::POISONED:
 			sendSystemMessage("dot_message", "stop_poisoned");
@@ -727,26 +715,21 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			sendSystemMessage("dot_message", "stop_bleeding");
 			break;
 		case CreatureState::INTIMIDATED:
-			showFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
 			break;
 		case CreatureState::IMMOBILIZED:
-			showFlyText("combat_effects", "no_snare", 0xFF, 0, 0);
 			break;
 		case CreatureState::FROZEN:
-			showFlyText("combat_effects", "no_rooted", 0xFF, 0, 0);
 			break;
 		case CreatureState::RALLIED:
 			showFlyText("combat_effects", "no_rally", 0xFF, 0, 0);
 			break;
 		case CreatureState::BERSERK:
-			showFlyText("combat_effects", "no_berserk", 0xFF, 0, 0);
 			break;
 		case CreatureState::AIMING:
 			break;
 		case CreatureState::COVER: {
 
-			showFlyText("combat_effects", "no_cover", 0xFF, 0, 0);
-
+			// TODO: use the state buff system with this
 			uint32 undercover = String("undercover").hashCode();
 			if (hasBuff(undercover)) {
 				removeBuff(undercover);
@@ -1780,7 +1763,12 @@ float CreatureObjectImplementation::calculateBFRatio() {
 
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
 	if (!hasState(CreatureState::DIZZY)) {
-		addBuff(new StateBuff(_this, CreatureState::DIZZY, durationSeconds));
+		Reference<StateBuff*> state = new StateBuff(_this, CreatureState::DIZZY, durationSeconds);
+
+		state->setStartFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_dizzy", 0xFF, 0, 0);
+
+		addBuff(state);
 	}
 }
 
@@ -1803,7 +1791,12 @@ void CreatureObjectImplementation::setAimingState(int durationSeconds) {
 
 void CreatureObjectImplementation::setRalliedState(int durationSeconds) {
 	if (!hasState(CreatureState::RALLIED)) {
-		addBuff(new StateBuff(_this, CreatureState::RALLIED, durationSeconds));
+		Reference<StateBuff*> state = new StateBuff(_this, CreatureState::RALLIED, durationSeconds);
+
+		state->setStartFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_rally", 0xFF, 0, 0);
+
+		addBuff(state);
 	}
 }
 
@@ -1811,7 +1804,10 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 	setPosture(CreaturePosture::PRONE);
 
 	if (!hasState(CreatureState::COVER)) {
-		Reference<Buff*> buff = new StateBuff(_this, CreatureState::COVER, durationSeconds);
+		Reference<StateBuff*> buff = new StateBuff(_this, CreatureState::COVER, durationSeconds);
+
+		buff->setStartFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
+		buff->setEndFlyText("combat_effects", "no_cover", 0xFF, 0, 0);
 
 		if (hasSkill("combat_rifleman_speed_03")) {
 			buff->setSpeedMultiplierMod(0.5f);
@@ -1827,17 +1823,27 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 
 void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 	if (!hasState(CreatureState::BERSERK)) {
-		StateBuff* state = new StateBuff(_this, CreatureState::BERSERK, duration);
+		Reference<StateBuff*> state = new StateBuff(_this, CreatureState::BERSERK, duration);
 
-		state->setSkillModifier("private_damage_susceptibility", 50);
-		state->setSkillModifier("private_melee_accuracy", -10);
+		state->setStartFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_berserk", 0xFF, 0, 0);
+
+		int mod = getSkillMod("berserk");
+
+		state->setSkillModifier("private_damage_susceptibility", 50 - mod);
+		state->setSkillModifier("private_melee_accuracy_bonus", 10 + mod);
+		state->setSkillModifier("private_melee_damage_bonus", 10 + mod);
+		state->setSkillModifier("private_melee_speed_bonus", 10 + mod);
 
 		addBuff(state);
 	}
 }
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 	if (!hasState(CreatureState::STUNNED)) {
-		StateBuff* state = new StateBuff(_this, CreatureState::STUNNED, durationSeconds);
+		Reference<StateBuff*> state = new StateBuff(_this, CreatureState::STUNNED, durationSeconds);
+
+		state->setStartFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_stunned", 0xFF, 0, 0);
 
 		// FIXME: QA test this damage multiplier, is 9/10 correct?
 		int div = getSkillMod("private_damage_divisor") * 10;
@@ -1857,7 +1863,10 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 
 void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 	if (!hasState(CreatureState::BLINDED)) {
-		StateBuff* state = new StateBuff(_this, CreatureState::BLINDED, durationSeconds);
+		Reference<StateBuff*> state = new StateBuff(_this, CreatureState::BLINDED, durationSeconds);
+
+		state->setStartFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_blind", 0xFF, 0, 0);
 
 		state->setSkillModifier("private_attack_accuracy", -50);
 
@@ -1868,6 +1877,9 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 	if (!hasState(CreatureState::INTIMIDATED)) {
 		StateBuff* state = new StateBuff(_this, CreatureState::INTIMIDATED, durationSeconds);
+
+		state->setStartFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
 
 		int div = getSkillMod("private_max_damage_divisor") * 2;
 		if (div == 0) div = 2;
@@ -1880,21 +1892,32 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 
 void CreatureObjectImplementation::setSnaredState(int durationSeconds) {
 	if (!hasState(CreatureState::IMMOBILIZED)) {
-		addBuff(new StateBuff(_this, CreatureState::IMMOBILIZED, durationSeconds));
+		Reference<StateBuff*> state = new StateBuff(_this, CreatureState::IMMOBILIZED, durationSeconds);
+
+		state->setStartFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_snare", 0xFF, 0, 0);
+
+		addBuff(state);
 	}
 }
 
 void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 	if (!hasState(CreatureState::FROZEN)) {
-		addBuff(new StateBuff(_this, CreatureState::FROZEN, durationSeconds));
+		Reference<StateBuff*> state = new StateBuff(_this, CreatureState::FROZEN, durationSeconds);
+
+		state->setStartFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
+		state->setEndFlyText("combat_effects", "no_rooted", 0xFF, 0, 0);
+
+		addBuff(state);
 	}
 }
 
 bool CreatureObjectImplementation::setNextAttackDelay(int del) {
 	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
-
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
+
+		showFlyText("combat_effects", "warcry_hit", 0x00, 0xFF, 0x00);
 
 		if (isPlayerCreature()) {
 			StringIdChatParameter stringId("combat_effects", "delay_applied_self");

@@ -64,7 +64,15 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		int res = doCombatAction(creature, target);
+
+		if (res == TOOFAR)
+			creature->sendSystemMessage("cbt_spam", "warcry_out_of_range");
+
+		if (res == GENERALERROR)
+			creature->sendSystemMessage("combat_effects", "warcry_miss");
+
+		return res;
 	}
 
 };

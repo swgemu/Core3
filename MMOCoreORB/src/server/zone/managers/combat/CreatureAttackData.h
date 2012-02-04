@@ -19,6 +19,7 @@ protected:
 	CombatQueueCommand* baseCommand;
 
 	float damageMultiplier;
+	int accuracyBonus;
 	float speedMultiplier;
 	int poolsToDamage;
 
@@ -58,6 +59,10 @@ public:
 
     CombatQueueCommand* getCommand() const {
     	return baseCommand;
+    }
+
+    int getAccuracyBonus() const {
+    	return accuracyBonus;
     }
 
     float getActionCostMultiplier() const {

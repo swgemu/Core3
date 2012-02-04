@@ -1,4 +1,4 @@
-ragtag_maniac = Creature:new {
+ragtag_maniac = Creature:new {
 	objectName = "@mob/creature_names:ragtag_maniac",
 	socialGroup = "Rgtg. Gang",
 	pvpFaction = "Thug",

@@ -75,6 +75,8 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 }
 
 uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
+	if (strength == 0) return 0;
+
 	bool increasing = false;
 
 	int oldStrength = getStrength(pool, dotType);

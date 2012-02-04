@@ -53,7 +53,7 @@ UnarmedHit2Command = {
 
 	animationCRC = hashCode("combo_3a_light"),
 
-	combatSpam = "unarmed_dam2",
+	combatSpam = "unarmed",
 
 	range = -1
 }
