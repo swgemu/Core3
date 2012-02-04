@@ -10,7 +10,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 
-FindTargetTask* BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
+Task* BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (droidObject == NULL || player == NULL || mission == NULL) {
 		//TODO: error message.
 		return NULL;
@@ -18,7 +18,7 @@ FindTargetTask* BountyHunterDroid::performAction(int action, SceneObject* droidO
 
 	switch (action) {
 	case CALLDROID:
-		break;
+		return callArakydDroid(droidObject, player, mission);
 	case TRANSMITBIOLOGICALSIGNATURE:
 		break;
 	case FINDTARGET:
@@ -56,4 +56,18 @@ FindTargetTask* BountyHunterDroid::findTarget(SceneObject* droidObject, Creature
 	droidObject->destroyObjectFromWorld(true);
 
 	return findTargetTask;
+}
+
+CallArakydTask* BountyHunterDroid::callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
+	if (mission->getDifficultyLevel() < 3) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		return NULL;
+	}
+
+	Reference<CallArakydTask*> task = new CallArakydTask(player);
+
+	if (task != NULL && !task->isScheduled()) {
+		//Schedule immediately.
+		task->schedule(1);
+	}
 }

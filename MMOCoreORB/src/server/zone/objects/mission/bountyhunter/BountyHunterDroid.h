@@ -14,6 +14,7 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "engine/log/Logger.h"
 #include "server/zone/objects/mission/bountyhunter/events/FindTargetTask.h"
+#include "server/zone/objects/mission/bountyhunter/events/CallArakydTask.h"
 
 namespace server {
 namespace zone {
@@ -36,10 +37,12 @@ public:
 		Logger("BountyHunterDroid") {
 	}
 
-	FindTargetTask* performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
+	Task* performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
 
 private:
 	FindTargetTask* findTarget(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission, bool track);
+
+	CallArakydTask* callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
 };
 
 } // namespace bountyhunter
