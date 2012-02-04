@@ -19,9 +19,11 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 	basePowerRate = templateData->getIntField("basePowerRate");
 
 	LuaObject allowzones = templateData->getObjectField("allowedZones");
+	allowedZones.removeAll(); //Make sure it's empty...
 
-	for (int i = 1; i <= allowzones.getTableSize(); ++i)
+	for (int i = 1; i <= allowzones.getTableSize(); ++i) {
 		allowedZones.put(allowzones.getStringAt(i));
+	}
 
 	allowzones.pop();
 
