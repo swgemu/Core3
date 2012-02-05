@@ -43,6 +43,8 @@ public:
 
 		Locker locker(strongRef);
 
+		Locker clocker(targetRef, strongRef);
+
 		strongRef->doAwarenessCheck(coord, mtime, targetRef);
 	}
 
