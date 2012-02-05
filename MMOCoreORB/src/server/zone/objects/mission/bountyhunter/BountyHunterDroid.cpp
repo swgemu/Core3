@@ -71,7 +71,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		task->schedule(1);
 	}*/
 
-	TaskManager::instance()->executeTask(task);
+	Core::getTaskManager()->executeTask(task);
 
 	return task;
 }
