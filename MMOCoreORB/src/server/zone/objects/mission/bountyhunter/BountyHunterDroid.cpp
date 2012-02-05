@@ -70,4 +70,6 @@ CallArakydTask* BountyHunterDroid::callArakydDroid(SceneObject* droidObject, Cre
 		//Schedule immediately.
 		task->schedule(1);
 	}
+
+	return task;
 }
