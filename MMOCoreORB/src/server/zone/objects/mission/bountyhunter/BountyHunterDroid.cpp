@@ -16,21 +16,26 @@ Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droid
 		return NULL;
 	}
 
+	Reference<Task*> task;
+
 	switch (action) {
 	case CALLDROID:
-		return callArakydDroid(droidObject, player, mission);
+		task = callArakydDroid(droidObject, player, mission);
+		break;
 	case TRANSMITBIOLOGICALSIGNATURE:
 		break;
 	case FINDTARGET:
-		return findTarget(droidObject, player, mission, false);
+		task = findTarget(droidObject, player, mission, false);
+		break;
 	case FINDANDTRACKTARGET:
-		return findTarget(droidObject, player, mission, true);
+		task = findTarget(droidObject, player, mission, true);
+		break;
 	default:
 		//TODO: error message.
 		break;
 	}
 
-	return NULL;
+	return task;
 }
 
 Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObject, CreatureObject* player, MissionObject* mission, bool track) {
