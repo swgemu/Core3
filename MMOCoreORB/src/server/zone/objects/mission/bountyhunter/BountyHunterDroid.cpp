@@ -10,7 +10,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 
-Task* BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
+Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (droidObject == NULL || player == NULL || mission == NULL) {
 		//TODO: error message.
 		return NULL;
@@ -33,7 +33,7 @@ Task* BountyHunterDroid::performAction(int action, SceneObject* droidObject, Cre
 	return NULL;
 }
 
-FindTargetTask* BountyHunterDroid::findTarget(SceneObject* droidObject, CreatureObject* player, MissionObject* mission, bool track) {
+Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObject, CreatureObject* player, MissionObject* mission, bool track) {
 	if (mission->getDifficultyLevel() < 2) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		return NULL;
@@ -58,7 +58,7 @@ FindTargetTask* BountyHunterDroid::findTarget(SceneObject* droidObject, Creature
 	return findTargetTask;
 }
 
-CallArakydTask* BountyHunterDroid::callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
+Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (mission->getDifficultyLevel() < 3) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		return NULL;
@@ -66,10 +66,12 @@ CallArakydTask* BountyHunterDroid::callArakydDroid(SceneObject* droidObject, Cre
 
 	Reference<CallArakydTask*> task = new CallArakydTask(player);
 
-	if (task != NULL && !task->isScheduled()) {
+/*	if (task != NULL && !task->isScheduled()) {
 		//Schedule immediately.
 		task->schedule(1);
-	}
+	}*/
+
+	TaskManager::instance()->executeTask(task);
 
 	return task;
 }

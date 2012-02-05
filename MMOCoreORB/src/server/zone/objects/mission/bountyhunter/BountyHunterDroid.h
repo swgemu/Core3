@@ -37,12 +37,12 @@ public:
 		Logger("BountyHunterDroid") {
 	}
 
-	Task* performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
+	Reference<Task*> performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
 
 private:
-	FindTargetTask* findTarget(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission, bool track);
+	Reference<FindTargetTask*> findTarget(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission, bool track);
 
-	CallArakydTask* callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
+	Reference<CallArakydTask*> callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
 };
 
 } // namespace bountyhunter

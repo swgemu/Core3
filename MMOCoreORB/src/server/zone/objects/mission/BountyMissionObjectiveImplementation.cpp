@@ -224,7 +224,9 @@ void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneO
 		droid = new BountyHunterDroid();
 	}
 
-	droidTasks.add(droid->performAction(action, sceneObject, player, getMissionObject()));
+	Reference<Task*> task = droid->performAction(action, sceneObject, player, getMissionObject());
+
+	droidTasks.add(task);
 }
 
 bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int action) {
