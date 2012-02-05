@@ -469,11 +469,11 @@ function death_watch_rescue_scientist_handler:getNextConversationScreen(conversa
 		elseif (spoken_to_lutin == 1) then
 			nextConversationScreen = conversation:getInitialScreen()
 			creature:setScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
-			message = createParameterMessage(conversingPlayer, "@theme_park/messages:theme_park_credits_pp")
-			if message ~= nil then
-				setParameterDI(message, 487)
-				sendParameterMessage(message)
-			end
+			--message = createParameterMessage(conversingPlayer, "@theme_park/messages:theme_park_credits_pp")
+			--if message ~= nil then
+			--	setParameterDI(message, 487)
+			--	sendParameterMessage(message)
+			--end
 			creature:addCashCredits(487, true)
 		else
 			nextConversationScreen = conversation:getScreen("convoscreen3")
