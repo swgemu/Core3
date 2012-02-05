@@ -28,6 +28,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "showFlyText", &LuaSceneObject::showFlyText },
 		{ "getContainerObject", &LuaSceneObject::getContainerObject },
+		{ "hasFullContainerObjects", &LuaSceneObject::hasFullContainerObjects },
 		{ "getContainerObjectsSize", &LuaSceneObject::getContainerObjectsSize },
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject },
 		{ "transferObject", &LuaSceneObject::transferObject },
@@ -44,6 +45,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getTemplateObjectPath", &LuaSceneObject::getTemplateObjectPath },
 		{ "teleport", &LuaSceneObject::teleport },
 		{ "setObjectMenuComponent", &LuaSceneObject::setObjectMenuComponent },
+		{ "setContainerComponent", &LuaSceneObject::setContainerComponent },
 		{ "switchZone", &LuaSceneObject::switchZone },
 		{ 0, 0 }
 };
@@ -65,6 +67,14 @@ int LuaSceneObject::setObjectMenuComponent(lua_State* L) {
 	String value = lua_tostring(L, -1);
 
 	realObject->setObjectMenuComponent(value);
+
+	return 0;
+}
+
+int LuaSceneObject::setContainerComponent(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	realObject->setContainerComponent(value);
 
 	return 0;
 }
@@ -295,6 +305,14 @@ int LuaSceneObject::getContainerObjectsSize(lua_State* L) {
 	int num = realObject->getContainerObjectsSize();
 
 	lua_pushnumber(L, num);
+
+	return 1;
+}
+
+int LuaSceneObject::hasFullContainerObjects(lua_State* L) {
+	bool full = realObject->hasFullContainerObjects();
+
+	lua_pushboolean(L, full);
 
 	return 1;
 }

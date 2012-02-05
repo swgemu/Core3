@@ -1,5 +1,6 @@
 mand_bunker_technician = Creature:new {
-	objectName = "@mob/creature_names:death_watch_technician",
+	objectName = "",
+	customName = "Labsoll Renuffi (a technican)",
 	socialGroup = "Death Watch",
 	pvpFaction = "Death Watch",
 	faction = "",
@@ -23,13 +24,13 @@ mand_bunker_technician = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mand_bunker_technician.iff"},
 	lootGroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "mand_bunker_technician_convotemplate",
 	attacks = {
 	}
 }

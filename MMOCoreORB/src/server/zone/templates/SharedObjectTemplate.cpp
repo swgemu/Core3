@@ -19,6 +19,7 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	portalLayout = NULL;
 	appearanceTemplate = NULL;
 	objectMenuComponent = NULL;
+	containerComponent = NULL;
 	loadedPortalLayout = false, loadedAppearanceTemplate = false;
 
 	snapToTerrain = false;
@@ -194,7 +195,39 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 	} else if (varName == "attributeListComponent") {
 		attributeListComponent = Lua::getStringParameter(state);
 	} else if (varName == "containerComponent") {
-		containerComponent = Lua::getStringParameter(state);
+		LuaObject componentObject(state);// = templateData->getObjectField("scale");
+		String componentName = "";
+		String componentType = "";
+		if (componentObject.isValidTable()) {
+			if (componentObject.getTableSize() > 1) {
+				componentType = componentObject.getStringAt(1);
+				componentName = componentObject.getStringAt(2);
+			} else {
+				componentType = "unknown";
+				componentName = componentObject.getStringAt(1);
+			}
+
+			componentObject.pop();
+		} else {
+			componentType = "unknown";
+			componentName = Lua::getStringParameter(state);
+		}
+
+		containerComponent = ComponentManager::instance()->getComponent<SceneObjectComponent*>(componentName);
+
+		if (containerComponent == NULL) {
+			Lua* lua = DirectorManager::instance()->getLuaInstance();
+			LuaObject test = lua->getGlobalObject(componentName);
+
+			if (test.isValidTable()) {
+				containerComponent = new LuaContainerComponent(componentName);
+				TemplateManager::instance()->info("New " + componentType + " ContainerComponent created: '" + componentName + "' for " + getFullTemplateString());
+				ComponentManager::instance()->putComponent(componentName, containerComponent);
+			} else {
+				TemplateManager::instance()->error("ContainerComponent of type " + componentType + " not found: '" + componentName + "' for " + getFullTemplateString());
+			}
+		}
+		//containerComponent = Lua::getStringParameter(state);
 	} else if (varName == "totalCellNumber") {
 		totalCellNumber = Lua::getIntParameter(state);
 	} else if (varName == "clientGameObjectType") {

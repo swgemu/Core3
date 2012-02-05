@@ -42,7 +42,7 @@
 
 
 object_tangible_dungeon_death_watch_bunker_crazed_miner_medicine = object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine:new {
-
+	
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_crazed_miner_medicine, "object/tangible/dungeon/death_watch_bunker/crazed_miner_medicine.iff")

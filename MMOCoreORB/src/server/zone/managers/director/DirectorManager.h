@@ -97,10 +97,18 @@ namespace server {
 		static int isZoneEnabled(lua_State* L);
 		static int getFactionPointsCap(lua_State* L);
 		static int getRegion(lua_State* L);
+		static int forcePeace(lua_State* L);
 		static int getObjectTemplatePathByCRC(lua_State* L);
 		static int getContainerObjectByTemplate(lua_State* L);
 		static int updateCellPermission(lua_State* L);
 		static int updateCellPermissionGroup(lua_State* L);
+		static int setParameterDI(lua_State* L);
+		static int setParameterDF(lua_State* L);
+		static int setParameterTO(lua_State* L);
+		static int setParameterTU(lua_State* L);
+		static int setParameterTT(lua_State* L);
+		static int createParameterMessage(lua_State* L);
+		static int sendParameterMessage(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

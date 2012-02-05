@@ -1277,6 +1277,10 @@ function TutorialScreenPlay:stopOfficer1Conversation(creatureObject, playerObjec
 end
 
 function TutorialScreenPlay:stopOfficer1ConversationMessage(creatureObject)
+	if creatureObject == nil then
+		return
+	end
+	
 	local creature = LuaCreatureObject(creatureObject)
 	
 	finished = readData(creature:getObjectID() .. ":tutorial:converse3")
@@ -1302,11 +1306,24 @@ function TutorialScreenPlay:stopOfficer1ConversationMessage(creatureObject)
 		createObserver(OPENCONTAINER, "TutorialScreenPlay", "openDrumEvent", drumRawPointer)
 		createObserver(OBJECTRADIALOPENED, "TutorialScreenPlay", "drumRadial", drumRawPointer)
 		writeData(creature:getObjectID() .. ":tutorial:converse3", 3)
-		createEvent(5000, "TutorialScreenPlay", "stopOfficer1ConversationMessage", creatureObject)
-	elseif finished == 3 then
+		createEvent(5000, "TutorialScreenPlay", "stopOfficer1ConversationMessageTwo", creatureObject)
+	end
+end
+
+function TutorialScreenPlay:stopOfficer1ConversationMessageTwo(creatureObject)
+	if creatureObject == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	finished = readData(creature:getObjectID() .. ":tutorial:converse3")
+	
+	if finished == 3 then
 		writeData(creature:getObjectID() .. ":tutorial:drummessage", 1)
 		writeData(creature:getObjectID() .. ":tutorial:converse3", 4)
-		createEvent(10000, "TutorialScreenPlay", "stopOfficer1ConversationMessage", creatureObject)
+		createEvent(10000, "TutorialScreenPlay", "stopOfficer1ConversationMessageTwo", creatureObject)
+	
 	elseif finished == 4 then
 		status = readData(creature:getObjectID() .. ":tutorial:drummessage")
 		if status == 3 then
@@ -1317,7 +1334,7 @@ function TutorialScreenPlay:stopOfficer1ConversationMessage(creatureObject)
 				creature:playMusicMessage("sound/tut_16_intheboxyouneed.snd")
 			end
 			
-			createEvent(10000, "TutorialScreenplay", "stopOfficer1ConversationMessage", creatureObject)
+			createEvent(10000, "TutorialScreenplay", "stopOfficer1ConversationMessageTwo", creatureObject)
 		end
 	end
 	

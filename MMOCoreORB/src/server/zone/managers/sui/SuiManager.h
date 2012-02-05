@@ -156,6 +156,7 @@ namespace server {
 	  	void handleGamblingRoulette(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	void sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback);
+	  	void sendConfirmSui(SceneObject* terminal, SceneObject* player, String play, String callback, String prompt, String button);
 
 	  	void setZoneProcessServer(ZoneProcessServer* srv) {
 	  		server = srv;

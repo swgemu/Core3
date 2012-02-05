@@ -100,8 +100,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 
 	if (templateObject != NULL) {
-		String containerComp = templateObject->getContainerComponent();
-		containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(containerComp);
+		containerComponent = (ContainerComponent*)templateObject->getContainerComponent();
 
 		String zoneComponentClassName = templateObject->getZoneComponent();
 		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
@@ -188,9 +187,7 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 }
 
 void SceneObjectImplementation::createContainerComponent() {
-	String containerComp = templateObject->getContainerComponent();
-
-	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(containerComp);
+	containerComponent = (ContainerComponent*)templateObject->getContainerComponent();
 }
 
 void SceneObjectImplementation::createComponents() {
@@ -421,6 +418,23 @@ void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
 			ComponentManager::instance()->putComponent(name, objectMenuComponent);
 		} else {
 			error("ObjectMenuComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
+		}
+	}
+}
+
+void SceneObjectImplementation::setContainerComponent(const String& name) {
+	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(name);
+
+	if (containerComponent == NULL) {
+		Lua* lua = DirectorManager::instance()->getLuaInstance();
+		LuaObject test = lua->getGlobalObject(name);
+
+		if (test.isValidTable()) {
+			containerComponent = new LuaContainerComponent(name);
+			info("New Lua ContainerComponent created: '" + name + "' for " + templateObject->getFullTemplateString());
+			ComponentManager::instance()->putComponent(name, containerComponent);
+		} else {
+			error("ContainerComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
 		}
 	}
 }

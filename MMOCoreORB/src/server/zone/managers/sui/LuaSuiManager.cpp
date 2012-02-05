@@ -14,6 +14,7 @@ const char LuaSuiManager::className[] = "LuaSuiManager";
 
 Luna<LuaSuiManager>::RegType LuaSuiManager::Register[] = {
 		{ "sendKeypadSui", &LuaSuiManager::sendKeypadSui },
+		{ "sendConfirmSui", &LuaSuiManager::sendConfirmSui },
 		{ 0, 0 }
 };
 
@@ -31,6 +32,19 @@ int LuaSuiManager::sendKeypadSui(lua_State* L) {
 	SceneObject* keypad = (SceneObject*) lua_touserdata(L, -4);
 
 	realObject->sendKeypadSui(keypad, creatureSceneObject, play, callback);
+
+	return 0;
+}
+
+int LuaSuiManager::sendConfirmSui(lua_State* L) {
+	String button = lua_tostring(L, -1);
+	String prompt = lua_tostring(L, -2);
+	String callback = lua_tostring(L, -3);
+	String play = lua_tostring(L, -4);
+	SceneObject* scno = (SceneObject*)lua_touserdata(L, -5);
+	SceneObject* scno2 = (SceneObject*)lua_touserdata(L, -6);
+
+	realObject->sendConfirmSui(scno2, scno, play, callback, prompt, button);
 
 	return 0;
 }

@@ -50,7 +50,7 @@ clientTemplateFileName = "",
 	 zoneComponent = "ZoneComponent",
 	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
 	 attributeListComponent = "AttributeListComponent",
-	 containerComponent = "ContainerComponent"
+	 containerComponent = {"cpp", "ContainerComponent"}
 }
 
 ObjectTemplates:addTemplate(object_object_base_object_default, "object/object/base/object_default.iff")

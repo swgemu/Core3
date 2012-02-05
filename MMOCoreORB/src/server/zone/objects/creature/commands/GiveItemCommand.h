@@ -72,108 +72,49 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
+		if (!args.hasMoreTokens())
+			return GENERALERROR;
+
+		uint64 targetObjectID = args.getLongToken();
+
+		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(targetObjectID);
+
 		if (object != NULL) {
+
 			if (object->isAttachment()) {
 				Attachment* attachment = cast<Attachment*>( object.get());
 
-				if (!args.hasMoreTokens())
-					return GENERALERROR;
-
-				uint64 targetObjectID = args.getLongToken();
-
-				ManagedReference<SceneObject*> scenObj = server->getZoneServer()->getObject(targetObjectID);
-
-				if (scenObj->isWearableObject()) {
-					WearableObject* wearable = cast<WearableObject*>( scenObj.get());
+				if (sceno->isWearableObject()) {
+					WearableObject* wearable = cast<WearableObject*>( sceno.get());
 					wearable->applyAttachment(creature, attachment);
 					return SUCCESS;
 				}
 
-			} else if (object->isWearableObject() || object->isWeaponObject()) {
-				CreatureObject* player = cast<CreatureObject*>(creature);
-				if (player->getSkillMod("hiring") < 90) {
-					player->sendSystemMessage("You lack the necessary skills to perform that action");
-					return GENERALERROR;
-				}
-				TangibleObject* clothing = cast<TangibleObject*>( object.get());
+			} else if (sceno != NULL) {
+				if (sceno->isVendor()) {
+					if (object->isWearableObject() || object->isWeaponObject()) {
+						CreatureObject* player = cast<CreatureObject*>(creature);
+						if (player->getSkillMod("hiring") < 90) {
+							player->sendSystemMessage("You lack the necessary skills to perform that action");
+							return GENERALERROR;
+						}
+						TangibleObject* clothing = cast<TangibleObject*>( object.get());
 
-				if (!args.hasMoreTokens())
-					return GENERALERROR;
-
-				uint64 targetObjectID = args.getLongToken();
-
-				ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(targetObjectID);
-
-				if (sceno->isVendor() && sceno->isCreatureObject()) {
-					VendorCreature* vendor = dynamic_cast<VendorCreature*>(sceno.get());
-					vendor->addClothingItem(creature, clothing);
-					return SUCCESS;
-
+						if (sceno->isCreatureObject()) {
+							VendorCreature* vendor = dynamic_cast<VendorCreature*>(sceno.get());
+							vendor->addClothingItem(creature, clothing);
+							return SUCCESS;
+						}
+					}
+				} else if (sceno->isCreatureObject()) {
+					String err;
+					if (sceno->canAddObject(object, -1, err) == 0) {
+						sceno->transferObject(object, -1, true);
+					}
 				}
 			}
 		}
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		if (ghost == NULL || !ghost->isPrivileged()) {
-			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
-			return INSUFFICIENTPERMISSION;
-		}
-
-		try {
-			String commandType;
-			args.getStringToken(commandType);
-
-			if (commandType.beginsWith("object")) {
-				Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(commandType.hashCode());
-
-				if (shot == NULL || !shot->isSharedTangibleObjectTemplate()) {
-					creature->sendSystemMessage("Templates must be tangible objects, or descendants of tangible objects, only.");
-					return INVALIDPARAMETERS;
-				}
-
-				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
-
-				if (inventory == NULL || inventory->isContainerFull()) {
-					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
-					return INVALIDPARAMETERS;
-				}
-
-				ManagedReference<TangibleObject*> object = cast<TangibleObject*>(server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1));
-
-				if (object == NULL) {
-					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");
-					return INVALIDPARAMETERS;
-				}
-
-				int quantity = 1;
-
-				if (args.hasMoreTokens())
-					quantity = args.getIntToken();
-
-				if(quantity > 1 && quantity <= 100)
-					object->setUseCount(quantity);
-
-				inventory->broadcastObject(object, true);
-				inventory->transferObject(object, -1, true);
-			} else if (commandType.beginsWith("resource")) {
-				String resourceName;
-				args.getStringToken(resourceName);
-
-				int quantity = 100000;
-
-				if (args.hasMoreTokens())
-					quantity = args.getIntToken();
-
-				ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
-				resourceManager->givePlayerResource(creature, resourceName, quantity);
-			}
-		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /giveItem <objectTemplatePath> [<quantity>]");
-			creature->sendSystemMessage("SYNTAX: /giveItem <resource> <resourceName> [<quantity>]");
-
-			return INVALIDPARAMETERS;
-		}
 
 		return SUCCESS;
 	}

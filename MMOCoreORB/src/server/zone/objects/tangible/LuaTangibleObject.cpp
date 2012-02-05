@@ -13,6 +13,7 @@ const char LuaTangibleObject::className[] = "LuaTangibleObject";
 Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
+		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
 		{ 0, 0 }
 };
 
@@ -21,6 +22,15 @@ LuaTangibleObject::LuaTangibleObject(lua_State *L) : LuaSceneObject(L) {
 }
 
 LuaTangibleObject::~LuaTangibleObject(){
+}
+
+int LuaTangibleObject::setCustomizationVariable(lua_State* L) {
+	String type = lua_tostring(L, -2);
+	byte value = lua_tointeger(L, -1);
+
+	realObject->setCustomizationVariable(type, value, true);
+
+	return 0;
 }
 
 int LuaTangibleObject::setOptionsBitmask(lua_State* L) {

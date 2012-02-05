@@ -969,6 +969,33 @@ void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneOb
 
 }
 
+void SuiManager::sendConfirmSui(SceneObject* terminal, SceneObject* player, String play, String callback, String prompt, String button) {
+
+	if (terminal == NULL)
+		return;
+
+	if (player == NULL || !player->isCreatureObject())
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(player);
+
+	PlayerObject* playerObject = creature->getPlayerObject();
+
+	if (playerObject != NULL) {
+		ManagedReference<SuiMessageBox*> confirmSui = new SuiMessageBox(creature, 0x00);
+		confirmSui->setCallback(new LuaSuiCallback(creature->getZoneServer(), play, callback));
+		confirmSui->setUsingObject(terminal);
+		confirmSui->setPromptText(prompt);
+		confirmSui->setOkButton(true, button);
+		confirmSui->setOtherButton(false, "");
+		confirmSui->setCancelButton(false, "");
+		confirmSui->setForceCloseDistance(32);
+		creature->sendMessage(confirmSui->generateMessage());
+		playerObject->addSuiBox(confirmSui);
+	}
+
+}
+
 void SuiManager::handleAddMilitia(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isInputBox() || cancel != 0)
 		return;

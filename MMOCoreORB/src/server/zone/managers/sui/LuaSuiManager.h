@@ -25,6 +25,7 @@ namespace sui {
 		~LuaSuiManager();
 
 		int sendKeypadSui(lua_State* L);
+		int sendConfirmSui(lua_State* L);
 
 	private:
 		Reference<SuiManager*> realObject;

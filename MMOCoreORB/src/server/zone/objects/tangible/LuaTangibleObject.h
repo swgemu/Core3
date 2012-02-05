@@ -27,6 +27,7 @@ namespace tangible {
 		~LuaTangibleObject();
 
 		int setOptionsBitmask(lua_State *L);
+		int setCustomizationVariable(lua_State *L);
 
 	private:
 		Reference<TangibleObject*> realObject;

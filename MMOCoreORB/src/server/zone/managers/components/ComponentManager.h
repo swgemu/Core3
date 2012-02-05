@@ -12,6 +12,7 @@
 
 #include "server/zone/objects/scene/components/SceneObjectComponent.h"
 #include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
+#include "server/zone/objects/scene/components/LuaContainerComponent.h"
 
 class ComponentManager : public Singleton<ComponentManager>, public Object {
 protected:

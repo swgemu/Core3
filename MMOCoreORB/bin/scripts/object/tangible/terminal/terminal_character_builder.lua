@@ -500,9 +500,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					},
 					"Master", "science_doctor_master"
 				},
-				--"Droid Engineer",
-				--{
-					--"Novice", "crafting_droidengineer_novice",
+				"Droid Engineer",
+				{
+					"Novice", "crafting_droidengineer_novice",
 					--"Production",
 					--{
 						--"Intermediate Droid Production", "crafting_droidengineer_production_01",
@@ -531,8 +531,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 						--"Expert Droid Blueprints", "crafting_droidengineer_blueprints_03",
 						--"Master Droid Blueprints", "crafting_droidengineer_blueprints_04"
 					--},
-					--"Master", "crafting_droidengineer_master"
-				--},
+					"Master", "crafting_droidengineer_master"
+				},
 				"Entertainer",
 				{
 					"Novice", "social_entertainer_novice",

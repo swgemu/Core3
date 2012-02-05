@@ -50,7 +50,7 @@ object_object_base_base_object = object_object_base_shared_base_object:new {
 	 zoneComponent = "ZoneComponent",
 	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
 	 attributeListComponent = "AttributeListComponent",
-	 containerComponent = "ContainerComponent"
+	 containerComponent = {"cpp", "ContainerComponent"}
 }
 
 ObjectTemplates:addTemplate(object_object_base_base_object, "object/object/base/base_object.iff")

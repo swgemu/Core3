@@ -22,15 +22,15 @@ mand_bunker_crazed_miner = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mand_bunker_crazed_miner.iff"},
 	lootGroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "insane_miner_convotemplate",
 	attacks = {
 	}
 }

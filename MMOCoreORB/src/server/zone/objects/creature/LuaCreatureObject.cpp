@@ -76,6 +76,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
 		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
 		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
+		{ "setPvpStatusBitmask", &LuaCreatureObject::setPvpStatusBitmask},
 		{ "addDotState", &LuaCreatureObject::addDotState},
 		{ 0, 0 }
 };
@@ -137,6 +138,13 @@ int LuaCreatureObject::setPosture(lua_State* L) {
 	uint32 posture = (uint32) lua_tonumber(L, -1);
 
 	realObject->setPosture(posture, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::setPvpStatusBitmask(lua_State* L) {
+	int bitmask = lua_tonumber(L, -1);
+	realObject->setPvpStatusBitmask(bitmask, true);
 
 	return 0;
 }
@@ -278,11 +286,13 @@ int LuaCreatureObject::removeScreenPlayState(lua_State* L) {
 	String play = lua_tostring(L, -1);
 	uint64 stateToClear = lua_tointeger(L, -2);
 
-	uint64 stateMask = realObject->getScreenPlayState(play);
+	if (realObject != NULL) {
 
-	if (stateMask & stateToClear)
-		realObject->setScreenPlayState(play, stateMask - stateToClear);
+		uint64 stateMask = realObject->getScreenPlayState(play);
 
+		if (stateMask & stateToClear)
+			realObject->setScreenPlayState(play, stateMask - stateToClear);
+	}
 	return 0;
 }
 

@@ -56,12 +56,13 @@ namespace scene {
 		int getCustomObjectName(lua_State* L);
 		int setCustomObjectName(lua_State* L);
 		int getContainerObjectById(lua_State* L);
+		int hasFullContainerObjects(lua_State* L);
 		int setDirectionalHeading(lua_State* L);
 		int getTemplateObjectPath(lua_State* L);
 		int teleport(lua_State* L);
 		int switchZone(lua_State* L);
 		int setObjectMenuComponent(lua_State* L);
-
+		int setContainerComponent(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

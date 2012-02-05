@@ -6,7 +6,7 @@ clientTemplateFileName = "",
 	 
 	 zoneComponent = "ZoneComponent",
 	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
-	 containerComponent = "ContainerComponent",
+	 containerComponent = {"cpp", "ContainerComponent"},
 	gameObjectType = 33554433,
 	planetMapCategory = "city"
 }

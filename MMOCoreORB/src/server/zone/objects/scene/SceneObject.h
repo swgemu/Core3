@@ -568,6 +568,8 @@ public:
 
 	void setObjectMenuComponent(const String& name);
 
+	void setContainerComponent(const String& name);
+
 	bool isContainerFull();
 
 	bool isShuttleInstallation();
@@ -1139,6 +1141,8 @@ public:
 	ObjectMenuComponent* getObjectMenuComponent();
 
 	void setObjectMenuComponent(const String& name);
+
+	void setContainerComponent(const String& name);
 
 	bool isContainerFull();
 

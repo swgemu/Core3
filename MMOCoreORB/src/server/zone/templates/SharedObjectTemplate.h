@@ -85,7 +85,8 @@ protected:
 	PortalLayout* portalLayout;
 	AppearanceTemplate* appearanceTemplate;
 	bool loadedPortalLayout, loadedAppearanceTemplate;
-	String containerComponent, zoneComponent, attributeListComponent;
+	String zoneComponent, attributeListComponent;
+	SceneObjectComponent* containerComponent;
 	SceneObjectComponent* objectMenuComponent;
 
 	SortedVector<String> loadedDerivedFiles;
@@ -335,7 +336,7 @@ public:
 		return templateFileName;
 	}
 
-    inline String getContainerComponent() {
+    inline SceneObjectComponent* getContainerComponent() {
     	return containerComponent;
     }
 

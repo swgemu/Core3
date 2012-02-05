@@ -6,6 +6,36 @@ DWB = ScreenPlay:new {
 TEST = 0
 
 --------------------------------------------------------------
+--   TODO List                                               -
+--------------------------------------------------------------
+--[[
+* Set customization vars for armor so it's colored
+* Fix Jetpack Z, spawn timer and auto-mount
+* Make Voice Recognition Terminal work
+* Make debris spawn again once the blastromech functionality works
+* Make rebel sidequest's target npc send proper parameter message:
+	code is there, but not sending for some reason
+* Make Haldo auto-attack first and only conversible after some damage done:
+	code is there, but neither forcePeace() nor updating the optionsBitmask to allow conversaton works
+* Make DE10, Executioner's Hack and Mandalorian Wine Schematics work
+* Add working lootable Data Storage Units:
+	Using crafter name once it is changed to Origin Object (anyone else hat EA's Origin?)
+* Add Ventilation Quest
+* Make Advanced Rebreather, Industrial Battery (cleaned and uncleaned) and Alum Sickness Medicine No-Trade
+* Make mobs in crafting rooms despawn after the crafting timer runs out
+]]
+
+-- Unused messages:
+--[[
+ventilation_repair	Alum Mine ventilation system is now operational.
+repair_failed	Mission Failure: The droid was destroyed and the ventilation system is still off.
+protect_tools	Protect the droid while it picks up tools needed to repair the ventilation system.
+protect_fix	Protect the droid while it conducts repairs on the ventilation system.
+entrance_denied	This door is locked. Perhaps you should seek the advice of someone knowledgeable about the Mandalorians on how to enter this base.
+allum_warning	Environmental protection is required beyond this point due to high levels of alum gas.
+]]
+
+--------------------------------------------------------------
 --   Spawn Map for conditionally spawned Creatures           -
 --------------------------------------------------------------
 specialSpawnMapDWB = {
@@ -31,15 +61,34 @@ specialSpawnMapDWB = {
 	fenri_dalso_assist1 = {"death_watch_wraith", 0, 25.8, -60, -172.1, -9, 5996346},
 	fenri_dalso_assist2 = {"death_watch_wraith", 0, 25.8, -60, -172.1, -9, 5996346},
 	haldo1 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
-	haldo2 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
-	haldo3 = {"mand_bunker_crazed_miner", 0, -47.6,-59.8,-123.2,-26,5996362},
+	haldo2 = {"mand_bunker_crazed_miner", 0, -178.7,-60.1,-147.9,12,5996369},
+	haldo3 = {"mand_bunker_crazed_miner", 0, -185,-60.4,-250.5,-138,5996376},
 	lootbox1mob1 = {"death_watch_s_battle_droid", 0, 2.8, -12, 31.8, -120, 5996318},
 	lootbox2mob1 = {"death_watch_s_battle_droid", 0, 7.2, -31.9, -94.5, -8, 5996337},
 	lootbox3mob1 = 	{"death_watch_ghost", 0, -0.6, -32, -39.9, 54, 5996335},
 	lootbox3mob2 = {"death_watch_ghost", 0, 5.2, -32, -40.6, -29, 5996335},
 	jetpackdroid = {"r3", 1, -266.7, -50.0, -85.0, 101, 5996370},
+	tailordroid = {"r3", 1, -143.1, -60.0, -74.3, 33, 5996368},
+	armorsmithdroid = {"r3", 1, -245.2, -60.0, -244.4, -42, 5996374},
+	droidengineerdroid = {"r3", 1, -235.4, -40.0, -84.7, 21, 5996370},
 	entrance1 = {"death_watch_battle_droid", 0, -31.9, -12.0, -3.7, 121, 5996315},
-	entrance2 = {"death_watch_battle_droid", 0, -32.5, -12.0, -8.1, 76, 5996315},
+	entrance2 = {"death_watch_battle_droid", 0, -32.5, -12.0, -8.1, 76, 5996315}, 
+	tailorattack1 = {"death_watch_s_battle_droid", 0,-151.8, -60.0, -83.9, 30, 5996368},
+	tailorattack2 = {"death_watch_wraith", 0, -142.5, -60.0, -93.7, -12, 5996368},
+	tailorattack3 = {"death_watch_ghost", 0,-159.3, -60.0, -92.5, 23, 5996368},
+	tailorattack4 = {"death_watch_bloodguard", 0,-159.5, -60.0, -81.1, 101, 5996368},
+	armorattack1 = {"death_watch_s_battle_droid", 0,-245.2, -59.9, -233.6, 176, 5996374},
+	armorattack2 = {"death_watch_wraith", 0, -238.9, -60.0, -236.4, -127, 5996374},
+	armorattack3 = {"death_watch_ghost", 0,-255.8, -60.0, -239.4, 81, 5996374},
+	armorattack4 = {"death_watch_bloodguard", 0,-242.5, -59.9, -227.9, -150, 5996374},
+	jetpackattack1 = {"death_watch_s_battle_droid", 0,-252.0, -50.0, -88.5, -116, 5996370},
+	jetpackattack2 = {"death_watch_wraith", 0, -255.8, -50.0, -89.4, -34, 5996370},
+	jetpackattack3 = {"death_watch_ghost", 0,-252.1, -50.0, -95.6, -13, 5996370},
+	jetpackattack4 = {"death_watch_bloodguard", 0,-242.4, -50.0, -88.4, -116, 5996370},
+	droidengineerattack1 = {"death_watch_s_battle_droid", 0,-248.6, -40.0, -90.0, 84, 5996370},
+	droidengineerattack2 = {"death_watch_wraith", 0, -241.9, -40.0, -95.8, 23, 5996370},
+	droidengineerattack3 = {"death_watch_ghost", 0,-249.1, -40.0, -85.1, 114, 5996370},
+	droidengineerattack4 = {"death_watch_bloodguard", 0,-254.9, -40.0, -92.7, -130, 5996370},
 }
 
 --------------------------------------------------------------
@@ -281,7 +330,7 @@ spawnMapDWB = 	{
 	
 	-- Quest NPCs:
 	{"mand_bunker_foreman", 1, 27.6, -61.5, -297.6, -112, 5996355},
-	--{"workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328},
+	{"workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328},
 	{"mand_bunker_technician", 1, -23.9, -52, -163.8, 45, 5996378},
 	--{"ventilation_quest_droid", 1, -6.2, -52.0, -119.6, 62, 5996379},
 	{"g12-4j", 1, -80.3, -20, -121, -34, 5996329},
@@ -317,6 +366,34 @@ ALUMGEL = "object/tangible/dungeon/death_watch_bunker/gel_packet.iff"
 MEDICINE = "object/tangible/dungeon/death_watch_bunker/crazed_miner_medicine.iff"
 DRILLBATTERY = "object/tangible/dungeon/death_watch_bunker/drill_battery.iff"
 DRILLBATTERYCLEAN = "object/tangible/dungeon/death_watch_bunker/drill_battery_clean.iff"
+JETPACKBASE = "object/tangible/loot/dungeon/death_watch_bunker/jetpack_base.iff"
+JETPACKSTABILIZER = "object/tangible/loot/dungeon/death_watch_bunker/jetpack_stabilizer.iff"
+DUCTEDFAN = "object/tangible/loot/dungeon/death_watch_bunker/ducted_fan.iff"
+INJECTORTANK = "object/tangible/loot/dungeon/death_watch_bunker/fuel_injector_tank.iff"
+DISPERSIONUNIT = "object/tangible/loot/dungeon/death_watch_bunker/fuel_dispersion_unit.iff"
+BINARYLIQUID = "object/tangible/loot/dungeon/death_watch_bunker/binary_liquid.iff"
+PROTECTIVELIQUID = "object/tangible/loot/dungeon/death_watch_bunker/emulsion_protection.iff"
+
+TARGETITEMS = {
+		--Armorsmith Crafting Terminal
+		{ "object/tangible/wearables/armor/mandalorian/armor_mandalorian_chest_plate.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_boots.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_bicep_l.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_bicep_r.iff" },
+		
+		--Droid Engineer Crafting Terminal
+		{ "object/tangible/wearables/armor/mandalorian/armor_mandalorian_helmet.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_bracer_l.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_bracer_r.iff" },
+		 
+		--Tailor Crafting Terminal
+		{ "object/tangible/wearables/armor/mandalorian/armor_mandalorian_leggings.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_gloves.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_belt.iff" },
+		
+		-- Jetpack Crafting Terminal
+		{ "object/tangible/deed/vehicle_deed/jetpack_deed.iff" },
+	}
 
 SPAWNGROUP = {
 	"",
@@ -376,6 +453,18 @@ TERMINALSKILLS = {
 	"crafting_droidengineer_master",
 	"crafting_tailor_master",
 	"crafting_artisan_master"}
+
+TERMINALSKILLMESSAGE = {
+	"@dungeon/death_watch:master_armorsmith_required",
+	"@dungeon/death_watch:master_droidengineer_required",
+	"@dungeon/death_watch:master_tailor_required",
+	"@dungeon/death_watch:master_artisan_required"}
+
+PARTSTRINGS = {
+	"@dungeon/death_watch:armorsmith_items",
+	"@dungeon/death_watch:droid_engineer_items",
+	"@dungeon/death_watch:tailored_items"
+	}
 
 LOCKTIME = {10,10,10,10,6,6,6}
 
@@ -497,7 +586,6 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access1", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 
 	-- Door Access Terminal A
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -84.4526,-20,-50.504,5996323,-0.707107,0,0.707107,0)
@@ -505,7 +593,6 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access2", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	-- Door Access Terminal B
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -8.3714,-32,-95.3985,5996331,-0.707107,0,0.707107,0)
@@ -513,7 +600,6 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access3", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
 	
 	-- Door Access Terminal Mines
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", 26.1493,-64,-95.4288,5996347,0,0,1,0)
@@ -521,11 +607,11 @@ function DWB:spawnObjects(creatureObject)
 	writeData(5996314 .. ":dwb:access4", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessKeyDoor", spawnedPointer)
-	
 	
 	-- Voice Recognition Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",74.7941,-54,-143.444,5996348,-0.707107,0,0.707107,0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:setCustomObjectName("Voice Control Terminal")
 	
 	-- Armorsmith Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -232.11,-60,-219.996,5996373,0.707107,0,0.707107,0)
@@ -533,13 +619,6 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Armorsmith Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 5)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
-	
-	-- Armorsmith Crafting Terminal (Biceps, Chest, Boots)
-	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-246.097,-60,-245.163,5996374,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 1)
 	
 	-- Droid Engineer Crafting Room Entry Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -230.09,-60,-124.003,5996367,0.707107,0,0.707107,0)
@@ -547,25 +626,126 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Droid Engineer Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 6)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
 	
-	-- Master Droid Engineer Crafting Terminal (Bracer, Helmet)
-	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-234.536,-40,-84.8062,5996370,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 2)
+	-- Master Armorsmith Crafting Droid
+	spawn = specialSpawnMapDWB["armorsmithdroid"]
+	if spawn ~= nil then
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spawnedSceneObject:_setObject(spawnPointer)
+		spawnedSceneObject:setCustomObjectName("Crafting Droid")
+		spawnedSceneObject:setContainerComponent("death_watch_bunker_crafting_droid")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 1)
+		
+		--not necessary, but kept for reference
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:user", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:targetitemindex", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:currentlycrafting", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:alummineral", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:binary", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:protective", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:bharmorpart", 0)
+		
+		droid = spawnedSceneObject:getObjectID()
+		
+		-- Armorsmith Crafting Terminal (Biceps, Chest, Boots)
+		spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-246.097,-60,-245.163,5996374,1,0,0,0)
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_mandalorian_crafting_terminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 1)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:droid", droid)
+	end
 	
-	-- Master Artisan Crafting Terminal (Jetpack)
-	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-265.425,-50.0002,-84.957,5996370,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 4)
+	
+	-- Master Droid Engineer Crafting Droid
+	spawn = specialSpawnMapDWB["droidengineerdroid"]
+	if spawn ~= nil then
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spawnedSceneObject:_setObject(spawnPointer)
+		spawnedSceneObject:setCustomObjectName("Crafting Droid")
+		spawnedSceneObject:setContainerComponent("death_watch_bunker_crafting_droid")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 2)
+		
+		--not necessary, but kept for reference
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:user", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:targetitemindex", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:currentlycrafting", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:alummineral", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:binary", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:protective", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:bharmorpart", 0)
+		
+		droid = spawnedSceneObject:getObjectID()
+		
+		-- Master Droid Engineer Crafting Terminal (Bracer, Helmet)
+		spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-234.536,-40,-84.8062,5996370,1,0,0,0)
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_mandalorian_crafting_terminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 2)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:droid", droid)
+	end
+	
+	
+	-- Master Tailor Crafting Droid
+	spawn = specialSpawnMapDWB["tailordroid"]
+	if spawn ~= nil then
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spawnedSceneObject:_setObject(spawnPointer)
+		spawnedSceneObject:setCustomObjectName("Crafting Droid")
+		spawnedSceneObject:setContainerComponent("death_watch_bunker_crafting_droid")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
+		
+		--not necessary, but kept for reference
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:user", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:targetitemindex", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:currentlycrafting", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:alummineral", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:binary", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:protective", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:bharmorpart", 0)
+		
+		droid = spawnedSceneObject:getObjectID()
+		
+		-- Tailor Crafting Terminal (Pants, Gloves, Belt)
+		spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-141.981,-60,-74.3199,5996368,1,0,0,0)
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_mandalorian_crafting_terminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:droid", droid)
+	end
 	
 	-- Jetpack Crafting Droid
 	spawn = specialSpawnMapDWB["jetpackdroid"]
-	spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Jetpack Crafting Droid")
+	if spawn ~= nil then
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spawnedSceneObject:_setObject(spawnPointer)
+		spawnedSceneObject:setCustomObjectName("Jetpack Crafting Droid")
+		spawnedSceneObject:setContainerComponent("death_watch_bunker_crafting_droid_jetpack")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 4)
+	
+		--This is not necessary, just for reference
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:user", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:targetitemindex", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:currentlycrafting", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:alummineral", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:jetpackbase", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:jetpackstabilizer", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:ductedfan", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:injectortank", 0)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:dispersionunit", 0)
+	
+		droid = spawnedSceneObject:getObjectID()
+		
+		-- Master Artisan Crafting Terminal (Jetpack)
+		spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-265.425,-50.0002,-84.957,5996370,1,0,0,0)
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
+		spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_mandalorian_crafting_terminal")
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 4)
+		writeData(spawnedSceneObject:getObjectID() .. ":dwb:droid", droid)	
+	end
 	
 	-- Tailor Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -151.045,-60,-98.8703,5996365,0,0,1,0)
@@ -573,15 +753,6 @@ function DWB:spawnObjects(creatureObject)
 	spawnedSceneObject:setCustomObjectName("Tailor Crafting Room Entry Terminal")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 7)
-	--createObserver(OBJECTRADIALUSED, "DWB", "accessCraftingDoor", spawnedPointer)
-	
-	-- Tailor Crafting Terminal (Pants, Gloves, Belt)
-	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",-141.981,-60,-74.3199,5996368,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setCustomObjectName("Mandalorian Engineering Unit")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:craftingterminal", 3)
-	
-	--Crafting Droid
 	
 	-- Debris
 	--[[spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff",66.8122,-64,-113.893,5996348,1,0,0,0)
@@ -596,20 +767,51 @@ function DWB:spawnObjects(creatureObject)
 	
 	--Write Data for Foreman
 	writeData(5996314 .. ":dwb:haldo_busy", 0)
-	writeData(5996314 .. ":dwb:battery_busy", 0)
-	writeData(5996314 .. ":dwb:pumps_busy", 0)
+	--writeData(5996314 .. ":dwb:battery_busy", 0)
+	--writeData(5996314 .. ":dwb:pumps_busy", 0)
+	
+	-- Spawn Haldo
+	halnum = math.random(1,3)
+	spawn = specialSpawnMapDWB["haldo" .. halnum]
+	if spawn ~= nil then
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		spawnedSceneObject:_setObject(spawnPointer)
+		writeData(5996314 .. ":dwb:haldo", spawnedSceneObject:getObjectID())
+		createObserver(OBJECTDESTRUCTION, "DWB", "haldo_killed", spawnPointer)
+		--createObserver(DAMAGERECEIVED, "DWB", "haldo_damage", spawnPointer)
+	end
 	
 	-- Water Pressure Valve Control A
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:setCustomObjectName("A")
+	spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_water_valve")
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
+	writeData(5996314 .. ":dwb:valve1", 0)
 	
 	-- Water Pressure Valve Control B
-	--spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
+	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",42.2316,-32,-72.5555,5996340,-0.707107,0,-0.707107,0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:setCustomObjectName("B")
+	spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_water_valve")
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
+	writeData(5996314 .. ":dwb:valve2", 0)
 	
 	-- Water Pressure Valve Control C
-	--spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
+	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",73.7982,-32,-76.4291,5996340,0.707107,0,-0.707107,0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:setCustomObjectName("C")
+	spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_water_valve")
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
+	writeData(5996314 .. ":dwb:valve3", 0)
 	
 	-- Water Pressure Valve Control D
-	--spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
+	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",56.0941,-32,-61.251,5996340,0,0,-1,0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:setCustomObjectName("D")
+	spawnedSceneObject:setObjectMenuComponent("death_watch_bunker_water_valve")
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
+	writeData(5996314 .. ":dwb:valve4", 0)
 	
 	-- Rebreather Filter Dispenser
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/filter_dispenser.iff",-12.8382,-52,-147.565,5996378,0,0,1,0)
@@ -737,12 +939,111 @@ function DWB:lootBox(sceneObject, creatureObject, selectedID)
    	end
 end
 
+function DWB:haldo_killed(creatureObject, playerObject)
+	createEvent(1000 * 240, "DWB", "respawn_haldo", playerObject)
+	num = math.random(1, 100)
+	if num < 30 then
+		creoid = readData(5996314 .. ":dwb:haldo_player")
+		local creo = getSceneObject(creoid)
+		if creo ~= nil then
+			local creature = LuaCreatureObject(creo)
+			creature:sendSystemMessage("@dungeon/death_watch:recovered_battery")
+			
+			creature:setScreenPlayState(2, "death_watch_foreman_stage_failed")
+			
+			local scno = LuaSceneObject(creo)
+			inventory = scno:getSlottedObject("inventory")
+			
+			local pbattery = giveItem(inventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", -1)
+			
+			if (pbattery ~= nil) then
+				local battery = LuaSceneObject(pbattery)
+				battery:sendTo(creo)
+			end
+		end
+	end
+end
+
+function DWB:haldo_damage(creatureObject, playerObject, damage)
+	if creatureObject == nil or playerObject == nil then
+		return 0
+	end
+	
+	local player = LuaCreatureObject(playerObject)
+	local creature = LuaCreatureObject(creatureObject)
+	
+	health = creature:getHAM(0)
+	action = creature:getHAM(3)
+	mind = creature:getHAM(6)
+	
+	maxHealth = creature:getMaxHAM(0)
+	maxAction = creature:getMaxHAM(3)
+	maxMind = creature:getMaxHAM(6)
+	
+	--printf("Health: " .. health .. " Action: " .. action .. " Mind: " .. mind .. "\n")
+	
+	
+	if ((health <= (maxHealth * 0.9)) or (action <= (maxAction * 0.9)) or (mind <= (maxMind * 0.9))) then		
+		spatialChat(creatureObject, "@dungeon/death_watch:help_me")
+		
+		
+		creature:setPvpStatusBitmask(0)
+		forcePeace(creatureObject)
+		creature:setOptionsBitmask(264)
+		local creo = LuaSceneObject(creatureObject)
+		creo:sendTo(playerObject)
+		
+		
+							
+		return 1		
+	end
+	
+	return 0
+end
+
+
+function DWB:diedWhileCrafting(creatureObject, attacker, long)
+	if creatureObject == nil then
+		return 1
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	iscrafting = readData(creature:getObjectID() .. ":dwb:currentlycrafting")
+	
+	if iscrafting == 0 then
+		return 1
+	else
+		id = readData(creature:getObjectID() .. ":dwb:terminal")
+		if id ~= 0 then
+			term = getSceneObject(id)
+			if term ~= nil then
+				creature:sendSystemMessage("@dungeon/death_watch:died_during_crafting")
+				DWB:stopCraftingProcess(creatureObject, term, false, false)
+			end
+		end
+	end
+	
+	return 1
+end
 --------------------------------------------------------------
 --   General Events                                          -
 --------------------------------------------------------------
 function DWB:enableAccess(sceneObject)
 	local terminal = LuaSceneObject(sceneObject)
 	writeData(terminal:getObjectID() .. ":dwb:accessEnabled", 1)
+end
+
+function DWB:respawn_haldo(creatureObject)
+	halnum = math.random(1,3)
+	spawn = specialSpawnMapDWB["haldo" .. halnum]
+	if spawn ~= nil then
+		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+		local spawnedSceneObject = LuaSceneObject(spawnPointer)
+		writeData(5996314 .. ":dwb:haldo", spawnedSceneObject:getObjectID())
+		createObserver(OBJECTDESTRUCTION, "DWB", "haldo_killed", spawnPointer)
+		--createObserver(DAMAGERECEIVED, "DWB", "haldo_damage", spawnPointer)
+	end
 end
 
 function DWB:lockCellsOnly(creatureObject)
@@ -913,6 +1214,57 @@ function DWB:teleportPlayer(creatureObject)
 	creature:teleport(-4657, 14.4, 4322.3, 0)
 	
 	self:lockAll(creatureObject)
+end
+
+function DWB:haldo_timer(creatureObject)
+	if (creatureObject == nil) then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	finished_time = creature:hasScreenPlayState(4, "death_watch_foreman_stage")
+	
+	if finished_time == 0 then
+		creature:removeScreenPlayState(1, "death_watch_foreman_stage")
+		creature:removeScreenPlayState(2, "death_watch_foreman_stage")
+		creature:removeScreenPlayState(4, "death_watch_foreman_stage")
+		creature:sendSystemMessage("@dungeon/death_watch:haldo_failed")
+		creature:setScreenPlayState(1, "death_watch_foreman_stage_failed")
+		createEvent(1000 * 60 * 20, "DWB", "unlock_haldo", creatureObject)
+	end
+end
+
+function DWB:pump_timer(creatureObject)
+	if (creatureObject == nil) then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	finished_time = creature:hasScreenPlayState(64, "death_watch_foreman_stage")
+	
+	if finished_time == 0 then
+		creature:removeScreenPlayState(32, "death_watch_foreman_stage")
+		creature:setScreenPlayState(3, "death_watch_foreman_stage_failed")
+		creature:sendSystemMessage("@dungeon/death_watch:water_pressure_failed")
+	end
+end
+
+function DWB:unlock_haldo(creatureObject)
+	if (creatureObject == nil) then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObjcet)
+	creature:removeScreenPlayState(1, "death_watch_foreman_stage_failed")
+end
+
+function DWB:destroyIngredient(ingredient)
+	if ingredient ~= nil then
+		local object = LuaSceneObject(ingredient)
+		object:destroyObjectFromWorld()
+	end
 end
 
 --------------------------------------------------------------
@@ -1290,16 +1642,222 @@ function DWB:checkDoor(sceneObject, creatureObject)
 		
 		self:unlockForGroup(number, creatureObject, true)
 		
+		cell = getSceneObject(ACCESSCELL[number])
+		if cell == nil then
+			printf("cell nil\n")
+			return
+		end		
+		
 		createEvent(1000 * 60 * 5, "DWB", "removeFromDWB", creatureObject)
 		createEvent(1000 * 60 * 4.5, "DWB", "timeWarning", creatureObject)
+		createEvent(1000 * 60 * 1--[[5.5]], "DWB", "despawnCell", cell)
 	end
 	
 	writeData(terminal:getObjectID() .. ":dwb:accessEnabled", 0)
 	createEvent(1000 * 60 * LOCKTIME[number], "DWB", "enableAccess", sceneObject)
 end
 
+function DWB:despawnCell(pcell)
+	if pcell == nil then
+		return
+	end
+	
+	local cell = LuaSceneObject(pcell)
+	size = cell:getContainerObjectsSize()
+	for i = 0, size - 1, 1 do
+		pointer = cell:getContainerObject(i)
+		if pointer ~= nil then
+			local object = LuaSceneObject(pointer)
+			if object:isCreatureObject() then
+				template = object:getTemplateObjectPath()
+				
+				if string.find(template, "death_watch") ~= nil or string.find(template, "battle_droid") ~= nil then
+					createEvent(1000, "DWB", "despawnCreature", pointer)
+				end
+			end
+		end
+	end
+end
+
+function DWB:despawnCreature(pointer)
+	if pointer ~= nil then
+		local object = LuaSceneObject(pointer)
+		object:destroyObjectFromWorld()
+	end
+end
+
+function DWB:startForemanQuestStage(number, creatureObject)
+	if creatureObject == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	
+	if number == 1 then
+		writeData(5996314 .. ":dwb:haldo_busy", 1)
+		writeData(5996314 .. ":dwb:haldo_player", creature:getObjectID())
+		createEvent(1000 * 60 * 60, "DWB", "haldo_timer", creatureObject)
+	elseif number == 2 then
+		createEvent(1000 * 60 * 10--[[should be 60, but testing]], "DWB", "pump_timer", creatureObject)
+	end
+end
+
+function DWB:storeTime(creatureObject)
+	if creatureObject ~= nil then
+		time = os.time()
+		writeScreenPlayData(creatureObject, "DWB", "time", time)
+	end
+end
+
+function DWB:checkTime(creatureObject)
+	if creatureObject == nil then
+		return false
+	end
+	
+	currenttime = os.time()
+	receivedtime = readScreenPlayData(creatureObject, "DWB", "time")
+	
+	if receivedtime == "" then
+		return false
+	end
+	
+	seconds = os.difftime(currenttime, receivedtime)
+	
+	if (seconds > 216000) then--more then 60 hours passed
+		return true
+	end
+	
+	return false
+end
+
+function DWB:cancelCrafting(term)
+	if term == nil then
+		return
+	end
+	
+	local terminal = LuaSceneObject(term)
+	isCrafting = readData(terminal:getObjectID() .. ":dwb:currentlycrafting")
+	
+	if isCrafting > 0 and isCrafting < 4 then
+		id = readData(terminal:getObjectID() .. ":dwb:user")
+		if id ~= 0 then
+			creatureObject = getSceneObject(id)
+			if creatureObject ~= nil then
+				local creature = LuaCreatureObject(creatureObject)
+				creature:sendSystemMessage("@dungeon/death_watch:took_too_long")
+				DWB:stopCraftingProcess(creatureObject, term, false, true)
+			end
+		end
+	end
+end
+
+function DWB:stopCraftingProcess(creatureObject, droid, successful, teleport)
+	if creatureObject == nil or droid == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(creatureObject)
+	local terminal = LuaSceneObject(droid)
+	number = readData(terminal:getObjectID() .. ":dwb:craftingterminal")  
+	target = readData(terminal:getObjectID() .. ":dwb:targetitemindex")
+	
+	writeData(creature:getObjectID() .. ":dwb:currentlycrafting", 0)
+	writeData(terminal:getObjectID() .. ":dwb:currentlycrafting", 0)
+	
+	if successful == true then
+		local creo = LuaSceneObject(creatureObject)
+		inventory = creo:getSlottedObject("inventory")
+		local targetitems = TARGETITEMS[number]
+		local reward = giveItem(inventory, targetitems[target], -1)
+		
+		if (reward == nil) then
+			return 0
+		end
+		--local rewardObject = LuaTangibleObject(pcure)
+		--tcure:setCustomizationVariable("index_color_1", 51)
+		local rewardObject = LuaSceneObject(reward)
+		rewardObject:sendTo(creatureObject)
+	end
+	
+	writeData(creature:getObjectID() .. ":dwb:terminal", 0)
+	writeData(terminal:getObjectID() .. ":dwb:user", 0)
+	writeData(terminal:getObjectID() .. ":dwb:targetitemindex", 0)
+	
+	
+	if number == 4 then
+		writeData(terminal:getObjectID() .. ":dwb:alummineral", 0)
+		writeData(terminal:getObjectID() .. ":dwb:jetpackbase", 0)
+		writeData(terminal:getObjectID() .. ":dwb:jetpackstabilizer", 0)
+		writeData(terminal:getObjectID() .. ":dwb:ductedfan", 0)
+		writeData(terminal:getObjectID() .. ":dwb:injectortank", 0)
+		writeData(terminal:getObjectID() .. ":dwb:dispersionunit", 0)
+	else
+		writeData(terminal:getObjectID() .. ":dwb:alummineral", 0)
+		writeData(terminal:getObjectID() .. ":dwb:binary", 0)
+		writeData(terminal:getObjectID() .. ":dwb:protective", 0)
+		writeData(terminal:getObjectID() .. ":dwb:bharmorpart", 0)
+	end
+	
+	if teleport == true then
+		createEvent(5000, "DWB", "teleportPlayer", creatureObject)
+	end
+end
+
+function DWB:sendUseTerminalMessage(creatureObject)
+	if creatureObject ~= nil then
+		local creature = LuaCreatureObject(creatureObject)
+		creature:sendSystemMessage("@dungeon/death_watch:use_terminal")
+	end
+end
+
+function DWB:startCraftingProcess(creatureObject, terminal)
+	if creatureObject == nil or terminal == nil then
+		return
+	end
+
+	local creature = LuaCreatureObject(creatureObject)
+	createEvent(1000 * 30, "DWB", "cancelCrafting", terminal)
+	createEvent(1000, "DWB", "sendUseTerminalMessage", creatureObject)
+	writeData(creature:getObjectID() .. ":dwb:currentlycrafting", 1)
+	createObserver(OBJECTDESTRUCTION, "DWB", "diedWhileCrafting", creatureObject)  
+end
+
+function DWB:nextCraftingStep(droid)
+	if droid == nil then
+		return
+	end
+	
+	local terminal = LuaSceneObject(droid)
+	writeData(terminal:getObjectID() .. ":dwb:currentlycrafting", 3)
+	creoid = readData(terminal:getObjectID() .. ":dwb:user")
+	if creoid ~= 0 then
+		creo = getSceneObject(creoid)
+		if creo ~= nil then
+			local creature = LuaCreatureObject(creo)
+			creature:sendSystemMessage("@dungeon/death_watch:use_terminal")
+		end
+	end
+end
+
+function DWB:finishCraftingStep(droid)
+	if droid == nil then
+		return
+	end
+	
+	local terminal = LuaSceneObject(droid)
+	creoid = readData(terminal:getObjectID() .. ":dwb:user")
+	if creoid ~= 0 then
+		creo = getSceneObject(creoid)
+		if creo ~= nil then
+			local creature = LuaCreatureObject(creo)
+			creature:sendSystemMessage("@dungeon/death_watch:crafting_finished")
+			DWB:stopCraftingProcess(creo, droid, true, true)
+		end
+	end
+end
+
 --------------------------------------------------------------
---   LuaMenuComponents                                       -
+--   Lua Components                                       -
 --------------------------------------------------------------
 
 door_control_terminal = {  }
@@ -1367,7 +1925,9 @@ function death_watch_bunker_workbench:handleObjectMenuSelect(sceneObject, player
 	end
 	
 	if (selectedID ~= 117) then
-		printf("Wrong selectedID " .. selectedID .. "\n")
+		if TEST == 1 then
+			printf("Wrong selectedID " .. selectedID .. "\n")
+		end
 		return 0
 	end
 	
@@ -1417,7 +1977,9 @@ function death_watch_bunker_filter:handleObjectMenuSelect(sceneObject, player, s
 	end
 	
 	if (selectedID ~= 117) then
-		printf("Wrong selectedID " .. selectedID .. "\n")
+		if TEST == 1 then
+			printf("Wrong selectedID " .. selectedID .. "\n")
+		end
 		return 0
 	end
 	
@@ -1453,6 +2015,632 @@ function death_watch_bunker_filter:handleObjectMenuSelect(sceneObject, player, s
 	return 0
 end
 
+death_watch_bunker_water_valve = { }
+
+function death_watch_bunker_water_valve:fillObjectMenuResponse(sceneObject, menuResponse, player)
+	local response = LuaObjectMenuResponse(menuResponse)
+	response:addRadialMenuItem(20, 3, "@dungeon/death_watch:mnu_water_valve")
+end
+
+function death_watch_bunker_water_valve:handleObjectMenuSelect(sceneObject, player, selectedID)
+	if (player == nil or sceneObject == nil) then
+		return 0
+	end
+	
+	if (selectedID ~= 20) then
+		if TEST == 1 then
+			printf("Wrong selectedID " .. selectedID .. "\n")
+		end
+		return 0
+	end
+	
+	local creature = LuaCreatureObject(player)
+	
+	started = creature:hasScreenPlayState(32, "death_watch_foreman_stage")
+	finished = creature:hasScreenPlayState(64, "death_watch_foreman_stage")
+	if started == 0 or finished == 1 then
+		creature:sendSystemMessage("@dungeon/death_watch:access_denied")
+		return 0
+	end	
+	
+	local terminal = LuaSceneObject(sceneObject)
+	
+	termnum = readData(terminal:getObjectID() .. ":dwb:terminal")
+	
+	if termnum == 1 then
+		state = readData(5996314 .. ":dwb:valve1")
+		if state % 2 == 0 then
+			creature:sendSystemMessage("@dungeon/death_watch:valve_on")
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:valve_off")
+		end
+		
+		writeData(5996314 .. ":dwb:valve1", state + 1)		
+	
+		state = readData(5996314 .. ":dwb:valve3")
+		writeData(5996314 .. ":dwb:valve3", state + 1)
+		
+	elseif termnum == 2 then
+		state = readData(5996314 .. ":dwb:valve2")
+		if state % 2 == 0 then
+			creature:sendSystemMessage("@dungeon/death_watch:valve_on")
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:valve_off")
+		end
+		
+		writeData(5996314 .. ":dwb:valve2", state + 1)		
+	
+		state = readData(5996314 .. ":dwb:valve1")
+		writeData(5996314 .. ":dwb:valve1", state + 1)
+	elseif termnum == 3 then
+		state = readData(5996314 .. ":dwb:valve3")
+		if state % 2 == 0 then
+			creature:sendSystemMessage("@dungeon/death_watch:valve_on")
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:valve_off")
+		end
+		
+		writeData(5996314 .. ":dwb:valve3", state + 1)		
+	
+		state = readData(5996314 .. ":dwb:valve4")
+		writeData(5996314 .. ":dwb:valve4", state + 1)
+		
+	elseif termnum == 4 then
+		state = readData(5996314 .. ":dwb:valve4")
+		if state % 2 == 0 then
+			creature:sendSystemMessage("@dungeon/death_watch:valve_on")
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:valve_off")
+		end
+		
+		writeData(5996314 .. ":dwb:valve4", state + 1)		
+	end
+	
+	state1 = readData(5996314 .. ":dwb:valve1")
+	state2 = readData(5996314 .. ":dwb:valve2")
+	state3 = readData(5996314 .. ":dwb:valve3")
+	state4 = readData(5996314 .. ":dwb:valve4")
+	
+	if (state1 % 2 == 1 and state2 % 2 == 1 and state3 % 2 == 1 and state4 % 2 == 1) then
+		creature:setScreenPlayState(64, "death_watch_foreman_stage")
+		creature:sendSystemMessage("@dungeon/death_watch:restored_pressure")
+		writeData(5996314 .. ":dwb:valve1", 0)
+		writeData(5996314 .. ":dwb:valve2", 0)
+		writeData(5996314 .. ":dwb:valve3", 0)
+		writeData(5996314 .. ":dwb:valve4", 0)	
+	end
+	
+	return 0
+end
+
+death_watch_bunker_mandalorian_crafting_terminal = { }
+
+function death_watch_bunker_mandalorian_crafting_terminal:fillObjectMenuResponse(sceneObject, menuResponse, player)
+	
+end
+
+function death_watch_bunker_mandalorian_crafting_terminal:handleObjectMenuSelect(sceneObject, player, selectedID)
+	if (player == nil or sceneObject == nil) then
+		return 0
+	end
+	
+	if (selectedID ~= 20) then
+		if TEST == 1 then
+			printf("Wrong selectedID " .. selectedID .. "\n")
+		end
+		return 0
+	end
+	
+	local creature = LuaCreatureObject(player)
+	local factory = LuaSceneObject(sceneObject)
+	term = getSceneObject(readData(factory:getObjectID() .. ":dwb:droid"))
+	
+	if term == nil then
+		return 0
+	end
+	
+	local terminal = LuaSceneObject(term)
+	isCrafting = readData(terminal:getObjectID() .. ":dwb:currentlycrafting")
+	userid = readData(terminal:getObjectID() .. ":dwb:user")
+	
+	if isCrafting < 1 then
+		return 0
+	end
+	
+	if creature:getObjectID() ~= userid then
+		creature:sendSystemMessage("@dungeon/death_watch:same_user_only")
+		return 0
+	end
+	
+	if isCrafting == 2 or isCrafting == 4 then
+		creature:sendSystemMessage("@dungeon/death_watch:crafting_not_yet")
+		return 0
+	end
+	
+	if isCrafting == 1 then
+		local suiManager = LuaSuiManager()
+		suiManager:sendConfirmSui(term, player, "DWB", "craftingConfirmCallback", "@dungeon/death_watch:continue_manufacturing", "@dungeon/death_watch:continue_button")
+	elseif isCrafting == 3 then
+		local suiManager = LuaSuiManager()
+		suiManager:sendConfirmSui(term, player, "DWB", "craftingConfirmCallback", "@dungeon/death_watch:finish_manufacturing", "@dungeon/death_watch:finish_button")
+	end
+			
+	return 0
+end
+
+death_watch_bunker_crafting_droid_jetpack = { }
+
+function death_watch_bunker_crafting_droid_jetpack:canAddObject(droid, ingredient, slot)
+	if ingredient == nil then
+		return false
+	end
+	
+	if slot ~= -1 then
+		return false
+	end
+	
+	local object = LuaSceneObject(ingredient)
+	pParent = object:getParent()
+	
+	if pParent == nil then
+		return false
+	end
+	
+	local parent = LuaSceneObject(pParent)
+	pParent = parent:getParent()
+	
+	if pParent == nil then
+		return false
+	end
+	
+	local parent = LuaSceneObject(pParent)
+	if parent:isCreatureObject() == false then
+		return false
+	end
+	
+	local creature = LuaCreatureObject(pParent) 
+	
+	local terminal = LuaSceneObject(droid)
+	template = object:getTemplateObjectPath()
+	
+	userid = readData(terminal:getObjectID() .. ":dwb:user")
+	
+	if userid ~= 0 and userid ~= creature:getObjectID() then
+		creature:sendSystemMessage("@dungeon/death_watch:same_user_only")
+		return false
+	end	
+	
+	if creature:hasSkill(TERMINALSKILLS[8]) == false then
+		creature:sendSystemMessage(TERMINALSKILLMESSAGE[4])
+		return false
+	end
+	
+	hasMineral = readData(terminal:getObjectID() .. ":dwb:alummineral")
+	hasJetpackBase = readData(terminal:getObjectID() .. ":dwb:jetpackbase")
+	hasJetpackStabilizer = readData(terminal:getObjectID() .. ":dwb:jetpackstabilizer")
+	hasDuctedFan = readData(terminal:getObjectID() .. ":dwb:ductedfan")
+	hasInjectorTank = readData(terminal:getObjectID() .. ":dwb:injectortank")
+	hasDispersionUnit = readData(terminal:getObjectID() .. ":dwb:dispersionunit")
+	
+	if template == JETPACKBASE then
+		if hasJetpackBase == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == JETPACKSTABILIZER then
+		if hasJetpackStabilizer == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == DUCTEDFAN then
+		if hasDuctedFan == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == INJECTORTANK then
+		if hasInjectorTank == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == DISPERSIONUNIT then
+		if hasDispersionUnit == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end 
+	elseif template == ALUMMINERAL then
+		if hasMineral == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	end
+		
+	return false
+end
+
+function death_watch_bunker_crafting_droid_jetpack:transferObject(droid, ingredient, slot)
+	if (ingredient == nil) then
+		return 0
+	end
+
+	if slot == -1 then
+		local object = LuaSceneObject(ingredient)
+		
+		pParent = object:getParent()
+	
+		if pParent == nil then
+			return 0
+		end
+		
+		local parent = LuaSceneObject(pParent)
+		pParent = parent:getParent()
+		
+		if pParent == nil then
+			return 0
+		end
+		
+		local parent = LuaSceneObject(pParent)
+		if parent:isCreatureObject() == false then
+			return 0
+		end
+		
+		local creature = LuaCreatureObject(pParent)
+		
+		local terminal = LuaSceneObject(droid)
+		template = object:getTemplateObjectPath()
+		
+		if template == JETPACKBASE then
+			writeData(terminal:getObjectID() .. ":dwb:jetpackbase", 1)
+		elseif template == JETPACKSTABILIZER then
+			writeData(terminal:getObjectID() .. ":dwb:jetpackstabilizer", 1)
+		elseif template == DUCTEDFAN then
+			writeData(terminal:getObjectID() .. ":dwb:ductedfan", 1)
+		elseif template == INJECTORTANK then
+			writeData(terminal:getObjectID() .. ":dwb:injectortank", 1)
+		elseif template == DISPERSIONUNIT then
+			writeData(terminal:getObjectID() .. ":dwb:dispersionunit", 1)
+		elseif template == ALUMMINERAL then
+			writeData(terminal:getObjectID() .. ":dwb:alummineral", 1)
+		end
+		
+		-- avoid Locker issues
+		createEvent(500, "DWB", "destroyIngredient", ingredient)
+		
+		hasMineral = readData(terminal:getObjectID() .. ":dwb:alummineral")
+		hasJetpackBase = readData(terminal:getObjectID() .. ":dwb:jetpackbase")
+		hasJetpackStabilizer = readData(terminal:getObjectID() .. ":dwb:jetpackstabilizer")
+		hasDuctedFan = readData(terminal:getObjectID() .. ":dwb:ductedfan")
+		hasInjectorTank = readData(terminal:getObjectID() .. ":dwb:injectortank")
+		hasDispersionUnit = readData(terminal:getObjectID() .. ":dwb:dispersionunit")
+		
+		userid = readData(terminal:getObjectID() .. ":dwb:user")
+		if userid == 0 then
+			writeData(terminal:getObjectID() .. ":dwb:user", creature:getObjectID())
+			writeData(creature:getObjectID() .. ":dwb:terminal", terminal:getObjectID())
+		end
+		
+		if (hasMineral == 1 and hasJetpackBase == 1 and hasJetpackStabilizer == 1 and hasDuctedFan == 1 and hasInjectorTank == 1 and hasDispersionUnit == 1) then
+			creature:sendSystemMessage("@dungeon/death_watch:starting_to_craft")
+			writeData(terminal:getObjectID() .. ":dwb:currentlycrafting", 1)
+			writeData(terminal:getObjectID() .. ":dwb:targetitemindex", 1)
+			
+			local spawn = specialSpawnMapDWB["jetpackattack1"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local spawn = specialSpawnMapDWB["jetpackattack2"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local spawn = specialSpawnMapDWB["jetpackattack3"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local spawn = specialSpawnMapDWB["jetpackattack4"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			
+			local spawn = specialSpawnMapDWB["droidengineerattack1"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local spawn = specialSpawnMapDWB["droidengineerattack2"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local spawn = specialSpawnMapDWB["droidengineerattack3"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local spawn = specialSpawnMapDWB["droidengineerattack4"]
+			spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			
+			DWB:startCraftingProcess(pParent, droid)
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:items_still_needed")
+			if hasJetpackBase == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:jetpack_base")	
+			end
+			
+			if hasJetpackStabilizer == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:stabilizer")
+			end
+			
+			if hasDuctedFan == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:ducted_fan")
+			end
+			
+			if hasInjectorTank == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:fuel_injector")
+			end
+			
+			if hasDispersionUnit == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:dispersion")
+			end 
+			
+			if hasMineral == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:alum_mineral")
+			end
+		end
+	end
+
+	return 0
+end
+
+function death_watch_bunker_crafting_droid_jetpack:removeObject(droid, ingredient, slot)
+	return false
+end
+
+death_watch_bunker_crafting_droid = { }
+
+function death_watch_bunker_crafting_droid:canAddObject(droid, ingredient, slot)
+	if ingredient == nil then
+		return false
+	end
+	
+	if slot ~= -1 then
+		return false
+	end
+	
+	local object = LuaSceneObject(ingredient)
+	pParent = object:getParent()
+	
+	if pParent == nil then
+		return false
+	end
+	
+	local parent = LuaSceneObject(pParent)
+	pParent = parent:getParent()
+	
+	if pParent == nil then
+		return false
+	end
+	
+	local parent = LuaSceneObject(pParent)
+	if parent:isCreatureObject() == false then
+		return false
+	end
+	
+	local creature = LuaCreatureObject(pParent) 
+	
+	local terminal = LuaSceneObject(droid)
+	number = readData(terminal:getObjectID() .. ":dwb:craftingterminal")
+	template = object:getTemplateObjectPath()
+	
+	userid = readData(terminal:getObjectID() .. ":dwb:user")
+	
+	if userid ~= 0 and userid ~= creature:getObjectID() then
+		creature:sendSystemMessage("@dungeon/death_watch:same_user_only")
+		return false
+	end	
+	
+	if creature:hasSkill(TERMINALSKILLS[number + 4]) == false then
+		creature:sendSystemMessage(TERMINALSKILLMESSAGE[number])
+		return false
+	end
+	
+	hasMineral = readData(terminal:getObjectID() .. ":dwb:alummineral")
+	hasBL = readData(terminal:getObjectID() .. ":dwb:binary")
+	hasPLC = readData(terminal:getObjectID() .. ":dwb:protective")
+	hasArmorPart = readData(terminal:getObjectID() .. ":dwb:bharmorpart")
+	
+	if template == BINARYLIQUID then
+		if hasBL == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == PROTECTIVELIQUID then
+		if hasPLC == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == ALUMMINERAL then
+		if hasMineral == 0 then
+			return true
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	else
+		local table = DOORS[number + 4]
+		for i,v in ipairs(table) do
+			if template == v then
+				if hasArmorPart == 0 then
+					return true
+				else
+					creature:sendSystemMessage("@dungeon/death_watch:making_something_else")
+				end
+			end
+		end
+	end
+		
+	return false
+end
+
+function death_watch_bunker_crafting_droid:transferObject(droid, ingredient, slot)
+	if (ingredient == nil) then
+		return 0
+	end
+
+	if slot == -1 then
+		local object = LuaSceneObject(ingredient)
+		
+		pParent = object:getParent()
+	
+		if pParent == nil then
+			return 0
+		end
+		
+		local parent = LuaSceneObject(pParent)
+		pParent = parent:getParent()
+		
+		if pParent == nil then
+			return 0
+		end
+		
+		local parent = LuaSceneObject(pParent)
+		if parent:isCreatureObject() == false then
+			return 0
+		end
+		
+		local creature = LuaCreatureObject(pParent)
+		
+		local terminal = LuaSceneObject(droid)
+		number = readData(terminal:getObjectID() .. ":dwb:craftingterminal")
+		template = object:getTemplateObjectPath()
+		
+		if template == BINARYLIQUID then
+			writeData(terminal:getObjectID() .. ":dwb:binary", 1)
+			-- avoid Locker issues
+			createEvent(500, "DWB", "destroyIngredient", ingredient)
+		elseif template == PROTECTIVELIQUID then
+			writeData(terminal:getObjectID() .. ":dwb:protective", 1)
+			-- avoid Locker issues
+			createEvent(500, "DWB", "destroyIngredient", ingredient)
+		elseif template == ALUMMINERAL then
+			writeData(terminal:getObjectID() .. ":dwb:alummineral", 1)
+			-- avoid Locker issues
+			createEvent(500, "DWB", "destroyIngredient", ingredient)
+		else
+			local table = DOORS[number + 4]
+			for i,v in ipairs(table) do
+				if template == v then
+					writeData(terminal:getObjectID() .. ":dwb:bharmorpart", 1)
+					writeData(terminal:getObjectID() .. ":dwb:targetitemindex", i)
+				end
+			end
+			if (readData(terminal:getObjectID() .. ":dwb:bharmorpart") == 1) then
+				-- avoid Locker issues
+				createEvent(500, "DWB", "destroyIngredient", ingredient)
+			else
+				return 0
+			end
+		end
+		
+		hasMineral = readData(terminal:getObjectID() .. ":dwb:alummineral")
+		hasBL = readData(terminal:getObjectID() .. ":dwb:binary")
+		hasPLC = readData(terminal:getObjectID() .. ":dwb:protective")
+		hasArmorPart = readData(terminal:getObjectID() .. ":dwb:bharmorpart")
+		
+		userid = readData(terminal:getObjectID() .. ":dwb:user")
+		if userid == 0 then
+			writeData(terminal:getObjectID() .. ":dwb:user", creature:getObjectID())
+			writeData(creature:getObjectID() .. ":dwb:terminal", terminal:getObjectID())
+		end
+		
+		if (hasMineral == 1 and hasBL == 1 and hasPLC == 1 and hasArmorPart == 1) then
+			creature:sendSystemMessage("@dungeon/death_watch:starting_to_craft")
+			writeData(terminal:getObjectID() .. ":dwb:currentlycrafting", 1)
+			if number == 1 then
+				local spawn = specialSpawnMapDWB["armorattack1"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["armorattack2"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["armorattack3"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["armorattack4"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				
+			elseif number == 2 then
+				local spawn = specialSpawnMapDWB["jetpackattack1"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["jetpackattack2"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["jetpackattack3"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["jetpackattack4"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				
+				local spawn = specialSpawnMapDWB["droidengineerattack1"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["droidengineerattack2"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["droidengineerattack3"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["droidengineerattack4"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			elseif number == 3 then
+				local spawn = specialSpawnMapDWB["tailorattack1"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["tailorattack2"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["tailorattack3"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+				local spawn = specialSpawnMapDWB["tailorattack4"]
+				spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			end
+			
+			DWB:startCraftingProcess(pParent, droid)
+		else
+			creature:sendSystemMessage("@dungeon/death_watch:items_still_needed")
+			if hasBL == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:binary_liquid")	
+			end
+			
+			if hasPLC == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:emulsifier")
+			end
+			
+			if hasArmorPart == 0 then
+				creature:sendSystemMessage(PARTSTRINGS[number])
+			end 
+			
+			if hasMineral == 0 then
+				creature:sendSystemMessage("@dungeon/death_watch:alum_mineral")
+			end
+		end
+	end
+
+	return 0
+end
+
+function death_watch_bunker_crafting_droid:removeObject(droid, ingredient, slot)
+	return false
+end
+
+--------------------------------------------------------------
+--   Sui Callbacks                                           -
+--------------------------------------------------------------
+
+function DWB:craftingConfirmCallback(pCreature, pSui, cancelPressed)
+	local creature = LuaCreatureObject(pCreature)
+	local suiBox = LuaSuiBox(pSui)
+	local pUsingObject = suiBox:getUsingObject()
+	
+	if (pUsingObject == nil) then
+		return 0
+	end
+	
+	local terminal = LuaSceneObject(pUsingObject)
+	
+	step = readData(terminal:getObjectID() .. ":dwb:currentlycrafting")
+	
+	if step == 1 then
+		writeData(terminal:getObjectID() .. ":dwb:currentlycrafting", 2)
+		creature:sendSystemMessage("@dungeon/death_watch:alum_process_begun")
+		createEvent(5 * 1000, "DWB", "nextCraftingStep", pUsingObject)
+	elseif step == 3 then
+		writeData(terminal:getObjectID() .. ":dwb:currentlycrafting", 4)
+		creature:sendSystemMessage("@dungeon/death_watch:aeration_process_begun")
+		createEvent(5 * 1000, "DWB", "finishCraftingStep", pUsingObject)
+	end
+	
+	return 0
+end
+
 --------------------------------------------------------------
 --   Provide Testing Assistance to Players                   -
 --------------------------------------------------------------
@@ -1464,7 +2652,7 @@ function DWB:testSpatial(pDroid, pPlayer)
 	if distance == 0 then
 		return 0
 	elseif distance < 20 then
-		spatialChat(pDroid, "Welcome to the Death Watch Bunker! To ease with testing, these guys behind me can give you Quests. Clone at this Cloning Terminal in case you die.")
+		spatialChat(pDroid, "Welcome to the Death Watch Bunker! To ease with testing, these guys behind me can give you Quests.")
 		createEvent(15 * 1000, "DWB", "testSecond", pDroid)
 		createEvent(200 * 1000, "DWB", "testRepeat", pDroid) 
 		return 1

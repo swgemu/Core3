@@ -15,6 +15,7 @@
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
@@ -76,6 +77,17 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
 	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
+
+	lua_register(luaEngine->getLuaState(), "setParameterDI", setParameterDI);
+	lua_register(luaEngine->getLuaState(), "setParameterDF", setParameterDF);
+	lua_register(luaEngine->getLuaState(), "setParameterTO", setParameterTO);
+	lua_register(luaEngine->getLuaState(), "setParameterTU", setParameterTU);
+	lua_register(luaEngine->getLuaState(), "setParameterTT", setParameterTT);
+	lua_register(luaEngine->getLuaState(), "createParameterMessage", createParameterMessage);
+	lua_register(luaEngine->getLuaState(), "sendParameterMessage", sendParameterMessage);
+
+	lua_register(luaEngine->getLuaState(), "forcePeace", forcePeace);
+
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
 	lua_register(luaEngine->getLuaState(), "deleteSharedMemory", deleteSharedMemory);
@@ -374,6 +386,80 @@ int DirectorManager::spatialChat(lua_State* L) {
 	return 0;
 }
 
+int DirectorManager::sendParameterMessage(lua_State* L) {
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
+	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -1);
+
+	if (creature != NULL && msg != NULL)
+		creature->sendSystemMessage(*msg);
+
+	return 0;
+}
+
+int DirectorManager::createParameterMessage(lua_State* L) {
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
+	String message = lua_tostring(L, -1);
+
+	StringIdChatParameter* msg = (StringIdChatParameter*)new StringIdChatParameter(message);
+
+	if (msg != NULL)
+		lua_pushlightuserdata(L, msg);
+	else
+		lua_pushnil(L);
+
+	return 1;
+}
+
+int DirectorManager::setParameterDI(lua_State* L) {
+	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
+	int di = lua_tonumber(L, -1);
+
+	if (msg != NULL)
+		msg->setDI(di);
+
+	return 0;
+}
+
+int DirectorManager::setParameterDF(lua_State* L) {
+	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
+	float df = lua_tonumber(L, -1);
+
+	if (msg != NULL)
+		msg->setDF(df);
+
+	return 0;
+}
+
+int DirectorManager::setParameterTO(lua_State* L) {
+	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
+	String to = lua_tostring(L, -1);
+
+	if (msg != NULL)
+		msg->setTO(to);
+
+	return 0;
+}
+
+int DirectorManager::setParameterTU(lua_State* L) {
+	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
+	String tu = lua_tostring(L, -1);
+
+	if (msg != NULL)
+		msg->setTU(tu);
+
+	return 0;
+}
+
+int DirectorManager::setParameterTT(lua_State* L) {
+	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
+	String tt = lua_tostring(L, -1);
+
+	if (msg != NULL)
+		msg->setTT(tt);
+
+	return 0;
+}
+
 int DirectorManager::spatialMoodChat(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	ChatManager* chatManager = zoneServer->getChatManager();
@@ -566,6 +652,16 @@ int DirectorManager::updateCellPermissionGroup(lua_State* L) {
 	return 0;
 }
 
+int DirectorManager::forcePeace(lua_State* L) {
+	CreatureObject* creatureObject = (CreatureObject*)lua_touserdata(L, -1);
+
+	if (creatureObject != NULL) {
+		Locker locker(creatureObject);
+		CombatManager::instance()->forcePeace(creatureObject);
+	}
+
+	return 0;
+}
 
 int DirectorManager::addStartingItemsInto(lua_State* L) {
 	CreatureObject* creatureObject = (CreatureObject*)lua_touserdata(L, -2);

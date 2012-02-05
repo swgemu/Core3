@@ -63,6 +63,74 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		StringTokenizer args(arguments.toString());
+
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL || !ghost->isPrivileged()) {
+			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
+			return INSUFFICIENTPERMISSION;
+		}
+
+		try {
+			String commandType;
+			args.getStringToken(commandType);
+
+			if (commandType.beginsWith("createitem")) {
+				String objectTemplate;
+				args.getStringToken(objectTemplate);
+
+				Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(objectTemplate.hashCode());
+
+				if (shot == NULL || !shot->isSharedTangibleObjectTemplate()) {
+					creature->sendSystemMessage("Templates must be tangible objects, or descendants of tangible objects, only.");
+					return INVALIDPARAMETERS;
+				}
+
+				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+				if (inventory == NULL || inventory->isContainerFull()) {
+					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
+					return INVALIDPARAMETERS;
+				}
+
+				ManagedReference<TangibleObject*> object = cast<TangibleObject*>(server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1));
+
+				if (object == NULL) {
+					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");
+					return INVALIDPARAMETERS;
+				}
+
+				int quantity = 1;
+
+				if (args.hasMoreTokens())
+					quantity = args.getIntToken();
+
+				if(quantity > 1 && quantity <= 100)
+					object->setUseCount(quantity);
+
+				inventory->broadcastObject(object, true);
+				inventory->transferObject(object, -1, true);
+			} else if (commandType.beginsWith("createresource")) {
+				String resourceName;
+				args.getStringToken(resourceName);
+
+				int quantity = 100000;
+
+				if (args.hasMoreTokens())
+					quantity = args.getIntToken();
+
+				ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
+				resourceManager->givePlayerResource(creature, resourceName, quantity);
+			}
+		} catch (Exception& e) {
+			creature->sendSystemMessage("SYNTAX: /object createitem <objectTemplatePath> [<quantity>]");
+			creature->sendSystemMessage("SYNTAX: /object createresource <resourceName> [<quantity>]");
+
+			return INVALIDPARAMETERS;
+		}
+
+
 		return SUCCESS;
 	}
 
