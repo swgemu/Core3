@@ -289,7 +289,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 	if (damage != 0 && damageMultiplier != 0 && poolsToDamage != 0)
-		damage = applyDamage(attacker, defender, damageMultiplier, damage, poolsToDamage);
+		damage = applyDamage(attacker, defender, damage, damageMultiplier, poolsToDamage);
 
 	if (defender->hasAttackDelay())
 		defender->removeAttackDelay();

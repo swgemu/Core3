@@ -79,6 +79,7 @@ public:
 
 		if (res == SUCCESS) {
 			targetCreature->getThreatMap()->addAggro(creature, creature->getSkillMod("taunt") * 10, 0);
+			targetCreature->getThreatMap()->setThreatState(creature, ThreatStates::TAUNTED,(uint64)creature->getSkillMod("taunt") / 10, (uint64)creature->getSkillMod("taunt") / 10);
 			combatManager->broadcastCombatSpam(creature, targetCreature, creature->getWeapon(), 0, "taunt_success");
 		} else
 			combatManager->broadcastCombatSpam(creature, targetCreature, creature->getWeapon(), 0, "taunt_fail");
