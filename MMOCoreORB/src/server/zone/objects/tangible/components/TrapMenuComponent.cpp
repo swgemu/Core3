@@ -18,6 +18,12 @@ void TrapMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 	if (!sceneObject->isTangibleObject())
 		return;
 
+	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+	if(tano == NULL)
+		return;
+
+	alm->insertAttribute("counter_uses_remaining", tano->getUseCount());
+
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 }
@@ -26,8 +32,21 @@ int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
-	if (!player->isPlayerCreature())
-		return 0;
+	if(selectedID == 20) {
+		ManagedReference<ZoneServer*> server = player->getZoneServer();
+		if(server == NULL)
+			return 0;
+
+		ObjectController* controller = server->getObjectController();
+		if(controller == NULL)
+			return 0;
+
+		String action = "throwtrap";
+		String args = String::valueOf(sceneObject->getObjectID());
+
+		controller->activateCommand(player, action.hashCode(), 1, player->getTargetID(), args);
+		return 1;
+	}
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }

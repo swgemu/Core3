@@ -176,6 +176,10 @@ public:
 	//
 	static const uint16 DELEGATE_TRANSFER = 321;
 
+	// Ranger 400 - 401
+	static const uint16 RANGER_TRACK_OPTIONS = 400;
+	static const uint16 RANGER_TRACK_RESULTS = 401;
+
 	//Miscellaneous 1000+
 	static const uint16 OBJECT_NAME = 1000;
 	static const uint16 FINDSESSION = 1001;

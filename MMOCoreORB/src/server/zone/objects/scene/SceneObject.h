@@ -646,6 +646,8 @@ public:
 
 	bool isFishingBait();
 
+	bool isTrapObject();
+
 	bool isAttachment();
 
 	bool isCampKit();
@@ -1216,6 +1218,8 @@ public:
 
 	bool isFishingBait();
 
+	bool isTrapObject();
+
 	virtual bool isAttachment();
 
 	virtual bool isCampKit();
@@ -1682,6 +1686,8 @@ public:
 	bool isStructureObject();
 
 	bool isFishingBait();
+
+	bool isTrapObject();
 
 	bool isAttachment();
 

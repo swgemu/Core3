@@ -1421,6 +1421,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isFishingBait() {
 		return gameObjectType == SceneObjectType.FISHINGBAIT;
 	}
+	
+	@read
+	public boolean isTrapObject() {
+		return gameObjectType == SceneObjectType.TRAP;
+	}
 
 	@dirty
 	public abstract boolean isAttachment() {
