@@ -105,7 +105,7 @@ public:
 		if (commandCount >= 5 && miliDifference < 1000) {
 			//creature->clearQueueAction(actioncntr);
 			player->clearQueueAction(actionCount);
-			player->sendSystemMessage("Please stop spamming commands");
+			//player->sendSystemMessage("Please stop spamming commands");
 		} else {
 			if (miliDifference < 1000)
 				client->increaseCommandCount();

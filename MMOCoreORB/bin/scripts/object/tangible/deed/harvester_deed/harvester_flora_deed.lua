@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_harvester_deed_harvester_flora_deed = object_tangible_deed_harvester_deed_shared_harvester_flora_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/installation/mining_organic/mining_organic_flora_farm.iff",
 
 

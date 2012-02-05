@@ -104,6 +104,8 @@ public:
 
 	bool containsPoint(float x, float y);
 
+	void setClientCity(bool val);
+
 	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
 
 	String getRegionName();
@@ -148,7 +150,12 @@ protected:
 
 	String regionName;
 
+	short cityRank;
+
 	ManagedWeakReference<CityRegion* > parent;
+
+private:
+	bool clientCity;
 
 public:
 	CityRegionImplementation(const String& name, CityRegion* par);
@@ -166,6 +173,8 @@ public:
 	SortedVector<ManagedReference<SceneObject* > > getRegionObjectsByPlanetMapCategory(const String& catname);
 
 	bool containsPoint(float x, float y);
+
+	void setClientCity(bool val);
 
 	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
 
@@ -225,6 +234,8 @@ public:
 	void addActiveArea(Zone* zone, float x, float y, float radius);
 
 	bool containsPoint(float x, float y);
+
+	void setClientCity(bool val);
 
 	String getRegionName();
 

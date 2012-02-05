@@ -152,6 +152,7 @@ private:
 	String makeName(int nameLength);
 
 public:
+	NameManager();
 	NameManager(ZoneProcessServer* serv);
 
 	~NameManager();

@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_city_deed_cantina_corellia_deed = object_tangible_deed_city_deed_shared_cantina_corellia_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/cantina_corellia.iff",
 

@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETREGIONNAME__,RPC_GETPARENTREGION__};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_SETCLIENTCITY__BOOL_,RPC_GETREGIONNAME__,RPC_GETPARENTREGION__};
 
 CityRegion::CityRegion(const String& name, CityRegion* par) : Observer(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(name, par);
@@ -118,6 +118,20 @@ bool CityRegion::containsPoint(float x, float y) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->containsPoint(x, y);
+}
+
+void CityRegion::setClientCity(bool val) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCLIENTCITY__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setClientCity(val);
 }
 
 Vector<ManagedReference<SceneObject* > >* CityRegion::getVendorsInCity() {
@@ -281,8 +295,18 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "cityRank") {
+		TypeInfo<short >::parseFromBinaryStream(&cityRank, stream);
+		return true;
+	}
+
 	if (_name == "parent") {
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&parent, stream);
+		return true;
+	}
+
+	if (_name == "clientCity") {
+		TypeInfo<bool >::parseFromBinaryStream(&clientCity, stream);
 		return true;
 	}
 
@@ -333,6 +357,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "cityRank";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<short >::toBinaryStream(&cityRank, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "parent";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -341,8 +373,16 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "clientCity";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&clientCity, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 5 + ObserverImplementation::writeObjectMembers(stream);
+
+	return 7 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 CityRegionImplementation::CityRegionImplementation(const String& name, CityRegion* par) {
@@ -355,6 +395,10 @@ CityRegionImplementation::CityRegionImplementation(const String& name, CityRegio
 	parent = par;
 	// server/zone/objects/region/CityRegion.idl():  		regionName = name;
 	regionName = name;
+	// server/zone/objects/region/CityRegion.idl():  		clientCity = false;
+	clientCity = false;
+	// server/zone/objects/region/CityRegion.idl():  		cityRank = 1;
+	cityRank = 1;
 	// server/zone/objects/region/CityRegion.idl():  		regionObjects.setNoDuplicateInsertPlan();
 	(&regionObjects)->setNoDuplicateInsertPlan();
 	// server/zone/objects/region/CityRegion.idl():  		regionObjects.setNullValue(null);
@@ -394,6 +438,11 @@ bool CityRegionImplementation::containsPoint(float x, float y) {
 	return false;
 }
 
+void CityRegionImplementation::setClientCity(bool val) {
+	// server/zone/objects/region/CityRegion.idl():  		clientCity = val;
+	clientCity = val;
+}
+
 String CityRegionImplementation::getRegionName() {
 	// server/zone/objects/region/CityRegion.idl():  		return regionName;
 	return regionName;
@@ -430,6 +479,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
+	case RPC_SETCLIENTCITY__BOOL_:
+		setClientCity(inv->getBooleanParameter());
+		break;
 	case RPC_GETREGIONNAME__:
 		resp->insertAscii(getRegionName());
 		break;
@@ -461,6 +513,10 @@ void CityRegionAdapter::addActiveArea(Zone* zone, float x, float y, float radius
 
 bool CityRegionAdapter::containsPoint(float x, float y) {
 	return (static_cast<CityRegion*>(stub))->containsPoint(x, y);
+}
+
+void CityRegionAdapter::setClientCity(bool val) {
+	(static_cast<CityRegion*>(stub))->setClientCity(val);
 }
 
 String CityRegionAdapter::getRegionName() {

@@ -46,10 +46,7 @@ object_building_player_city_bank_corellia = object_building_player_city_shared_b
 	baseMaintenanceRate = 0,
 	planetMapCategory = "bank",
 	allowedZones = {"corellia", "talus"},
-	length = 4,
-	width = 4,
 	cityRankRequired = 2,
-	gameObjectType = 4096,
 	abilityRequired = "place_bank",
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 0, z = 0, y = -1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},

@@ -140,7 +140,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	info(String::valueOf(i) + " player structures loaded", true);
 }
 
-int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, uint64 deedID, float x, float y, int angle) {
+int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle) {
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 	if (!planetManager->isBuildingPermittedAt(x, y, creature)) {
@@ -148,10 +148,9 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 		return 1;
 	}
 
+	//Already placing a structure?
 	if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
 		return 1;
-
-	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(server->getZoneServer()->getObject(deedID));
 
 	Locker _lock(deed, creature);
 

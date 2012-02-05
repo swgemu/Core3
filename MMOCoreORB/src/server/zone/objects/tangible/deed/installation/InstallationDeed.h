@@ -53,6 +53,8 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+#include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/deed/Deed.h"
@@ -68,6 +70,8 @@ public:
 	InstallationDeed();
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
+
+	int placeStructure(CreatureObject* creature, float x, float y, int angle);
 
 	void initializeTransientMembers();
 
@@ -129,12 +133,16 @@ protected:
 
 	float hopperSizeMax;
 
+	Reference<PlaceStructureComponent* > placeStructureComponent;
+
 public:
 	InstallationDeedImplementation();
 
 	InstallationDeedImplementation(DummyConstructorParameter* param);
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
+
+	int placeStructure(CreatureObject* creature, float x, float y, int angle);
 
 	void initializeTransientMembers();
 
@@ -202,6 +210,8 @@ public:
 	InstallationDeedAdapter(InstallationDeed* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int placeStructure(CreatureObject* creature, float x, float y, int angle);
 
 	void initializeTransientMembers();
 

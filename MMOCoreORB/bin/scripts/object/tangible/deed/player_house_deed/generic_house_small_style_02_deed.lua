@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_player_house_deed_generic_house_small_style_02_deed = object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/building/player/player_house_generic_small_style_02.iff",
 
 

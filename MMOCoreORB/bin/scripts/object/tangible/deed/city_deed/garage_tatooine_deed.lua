@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_city_deed_garage_tatooine_deed = object_tangible_deed_city_deed_shared_garage_tatooine_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/player_garage_tatooine_style_01.iff",
 

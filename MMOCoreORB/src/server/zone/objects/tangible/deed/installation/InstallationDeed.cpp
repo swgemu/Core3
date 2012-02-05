@@ -14,7 +14,7 @@
  *	InstallationDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__,};
+enum {RPC_PLACESTRUCTURE__CREATUREOBJECT_FLOAT_FLOAT_INT_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__,};
 
 InstallationDeed::InstallationDeed() : Deed(DummyConstructorParameter::instance()) {
 	InstallationDeedImplementation* _implementation = new InstallationDeedImplementation();
@@ -37,6 +37,23 @@ void InstallationDeed::fillAttributeList(AttributeListMessage* alm, CreatureObje
 
 	} else
 		_implementation->fillAttributeList(alm, object);
+}
+
+int InstallationDeed::placeStructure(CreatureObject* creature, float x, float y, int angle) {
+	InstallationDeedImplementation* _implementation = static_cast<InstallationDeedImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PLACESTRUCTURE__CREATUREOBJECT_FLOAT_FLOAT_INT_);
+		method.addObjectParameter(creature);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addSignedIntParameter(angle);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->placeStructure(creature, x, y, angle);
 }
 
 void InstallationDeed::initializeTransientMembers() {
@@ -369,6 +386,14 @@ InstallationDeedImplementation::InstallationDeedImplementation() {
 	hopperSizeMax = 100;
 }
 
+int InstallationDeedImplementation::placeStructure(CreatureObject* creature, float x, float y, int angle) {
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  	}
+	if (placeStructureComponent != NULL){
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  			return placeStructureComponent.placeStructure(creature, this, x, y, angle);
+	return placeStructureComponent->placeStructure(creature, _this, x, y, angle);
+}
+}
+
 void InstallationDeedImplementation::setSurplusMaintenance(unsigned int surplusMaint) {
 	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		surplusMaintenance = surplusMaint;
 	surplusMaintenance = surplusMaint;
@@ -405,6 +430,9 @@ Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_PLACESTRUCTURE__CREATUREOBJECT_FLOAT_FLOAT_INT_:
+		resp->insertSignedInt(placeStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
@@ -431,6 +459,10 @@ Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	}
 
 	return resp;
+}
+
+int InstallationDeedAdapter::placeStructure(CreatureObject* creature, float x, float y, int angle) {
+	return (static_cast<InstallationDeed*>(stub))->placeStructure(creature, x, y, angle);
 }
 
 void InstallationDeedAdapter::initializeTransientMembers() {

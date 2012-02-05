@@ -53,6 +53,7 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.deed.Deed;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.tangible.TangibleObject;
 import system.thread.Thread;
@@ -91,7 +92,7 @@ class StructureManager extends ManagedService implements Logger {
 	
 	private native void loadPlayerStructures();
 
-	public native int placeStructureFromDeed(CreatureObject creature, unsigned long deedID, float x, float y, int angle);
+	public native int placeStructureFromDeed(CreatureObject creature, Deed deed, float x, float y, int angle);
 	
 	/**
 	 * Simply creates and places a structure at the provided coordinates.

@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_harvester_deed_harvester_liquid_deed_medium = object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/installation/mining_liquid/mining_liquid_harvester_style_2.iff",
 
 

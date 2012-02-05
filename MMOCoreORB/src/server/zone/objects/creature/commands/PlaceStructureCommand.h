@@ -47,6 +47,9 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
+#include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
 
 class PlaceStructureCommand : public QueueCommand {
 public:
@@ -85,8 +88,18 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		StructureManager* structureManager = creature->getZone()->getStructureManager();
-		structureManager->placeStructureFromDeed(creature, deedID, x, y, angle);
+		//TODO: Merge BuildingDeed and InstallationDeed into StructureDeed
+		ManagedReference<Deed*> deed = dynamic_cast<Deed*>(server->getZoneServer()->getObject(deedID));
+
+		if (deed != NULL) {
+			if (deed->isBuildingDeed()) {
+				BuildingDeed* bdeed = cast<BuildingDeed*>(deed.get());
+				bdeed->placeStructure(creature, x, y, angle);
+			} else if (deed->isInstallationDeed()) {
+				InstallationDeed* ideed = cast<InstallationDeed*>(deed.get());
+				ideed->placeStructure(creature, x, y, angle);
+			}
+		}
 
 		return SUCCESS;
 	}

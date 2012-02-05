@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_city_deed_garden_tatooine_lrg_03_deed = object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/garden_tatooine_lrg_03.iff"
 }

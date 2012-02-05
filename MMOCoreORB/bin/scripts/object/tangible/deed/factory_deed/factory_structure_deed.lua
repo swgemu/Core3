@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_factory_deed_factory_structure_deed = object_tangible_deed_factory_deed_shared_factory_structure_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/installation/manufacture/structure_factory.iff",
 
 

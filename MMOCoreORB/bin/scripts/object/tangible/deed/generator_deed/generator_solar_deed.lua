@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_generator_deed_generator_solar_deed = object_tangible_deed_generator_deed_shared_generator_solar_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/installation/generators/power_generator_solar_style_1.iff",
 
 

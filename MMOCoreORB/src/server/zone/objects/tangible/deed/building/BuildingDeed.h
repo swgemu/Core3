@@ -63,6 +63,8 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
+#include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/deed/Deed.h"
@@ -82,6 +84,8 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	int placeStructure(CreatureObject* creature, float x, float y, int angle);
 
 	void setSurplusMaintenance(unsigned int surplusMaint);
 
@@ -119,6 +123,8 @@ class BuildingDeedImplementation : public DeedImplementation {
 protected:
 	unsigned int surplusMaintenance;
 
+	Reference<PlaceStructureComponent* > placeStructureComponent;
+
 public:
 	BuildingDeedImplementation();
 
@@ -129,6 +135,8 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	int placeStructure(CreatureObject* creature, float x, float y, int angle);
 
 	void setSurplusMaintenance(unsigned int surplusMaint);
 
@@ -182,6 +190,8 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	int placeStructure(CreatureObject* creature, float x, float y, int angle);
 
 	void setSurplusMaintenance(unsigned int surplusMaint);
 

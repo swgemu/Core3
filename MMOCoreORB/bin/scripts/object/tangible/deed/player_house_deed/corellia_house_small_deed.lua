@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_player_house_deed_corellia_house_small_deed = object_tangible_deed_player_house_deed_shared_corellia_house_small_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/building/player/player_house_corellia_small_style_01.iff",
 
 

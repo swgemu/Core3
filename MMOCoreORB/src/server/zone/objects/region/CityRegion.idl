@@ -68,8 +68,12 @@ class CityRegion extends Observer implements Logger {
 	
 	protected string regionName;
 	
+	protected short cityRank;
+	
 	@weakReference
 	protected CityRegion parent;
+	
+	boolean clientCity;
 
 	public CityRegion(final string name, CityRegion par) {
 		Logger.setLoggingName("CityRegion " + name);
@@ -78,6 +82,10 @@ class CityRegion extends Observer implements Logger {
 		parent = par;
 		
 		regionName = name;
+		
+		clientCity = false;
+		
+		cityRank = 1;
 		
 		regionObjects.setNoDuplicateInsertPlan();
 		regionObjects.setNullValue(null);
@@ -139,6 +147,13 @@ class CityRegion extends Observer implements Logger {
 		}
 
 		return false;
+	}
+	
+	/**
+	 * If this is set to true, then this city region is treated like a clientregion.
+	 */
+	public void setClientCity(boolean val) {
+		clientCity = val;
 	}
 	
 	@local

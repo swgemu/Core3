@@ -50,6 +50,19 @@ which carries forward this exception.
 #include "../../objects/player/Races.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
+NameManager::NameManager() {
+	initialize();
+
+	profaneNames = new Vector<String>(55, 5); //based on the original number of banned words
+	developerNames = new BannedNameSet();
+	reservedNames = new BannedNameSet();
+	fictionNames = new BannedNameSet();
+
+	fillNames();
+
+	setLogging(false);
+}
+
 NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 	server = serv;
 

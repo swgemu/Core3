@@ -90,6 +90,22 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace deed {
+
+class Deed;
+
+} // namespace deed
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::deed;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace structure {
 
 class StructureObject;
@@ -174,7 +190,7 @@ public:
 
 	void initialize();
 
-	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
+	int placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle);
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
@@ -246,7 +262,7 @@ private:
 	void loadPlayerStructures();
 
 public:
-	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
+	int placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle);
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
@@ -319,7 +335,7 @@ public:
 
 	void initialize();
 
-	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
+	int placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle);
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 

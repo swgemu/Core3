@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_guild_deed_naboo_guild_deed = object_tangible_deed_guild_deed_shared_naboo_guild_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/building/player/player_guildhall_naboo_style_01.iff",
 
 

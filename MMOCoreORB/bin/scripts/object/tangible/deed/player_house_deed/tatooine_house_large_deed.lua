@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_player_house_deed_tatooine_house_large_deed = object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/building/player/player_house_tatooine_large_style_01.iff",
 
 

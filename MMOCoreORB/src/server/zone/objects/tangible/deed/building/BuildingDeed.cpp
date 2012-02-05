@@ -16,7 +16,7 @@
  *	BuildingDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_ISBUILDINGDEED__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_PLACESTRUCTURE__CREATUREOBJECT_FLOAT_FLOAT_INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_ISBUILDINGDEED__};
 
 BuildingDeed::BuildingDeed() : Deed(DummyConstructorParameter::instance()) {
 	BuildingDeedImplementation* _implementation = new BuildingDeedImplementation();
@@ -67,6 +67,23 @@ int BuildingDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+int BuildingDeed::placeStructure(CreatureObject* creature, float x, float y, int angle) {
+	BuildingDeedImplementation* _implementation = static_cast<BuildingDeedImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PLACESTRUCTURE__CREATUREOBJECT_FLOAT_FLOAT_INT_);
+		method.addObjectParameter(creature);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addSignedIntParameter(angle);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->placeStructure(creature, x, y, angle);
 }
 
 void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
@@ -254,6 +271,14 @@ BuildingDeedImplementation::BuildingDeedImplementation() {
 	surplusMaintenance = 0;
 }
 
+int BuildingDeedImplementation::placeStructure(CreatureObject* creature, float x, float y, int angle) {
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  	}
+	if (placeStructureComponent != NULL){
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  			return placeStructureComponent.placeStructure(creature, this, x, y, angle);
+	return placeStructureComponent->placeStructure(creature, _this, x, y, angle);
+}
+}
+
 void BuildingDeedImplementation::setSurplusMaintenance(unsigned int surplusMaint) {
 	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		surplusMaintenance = surplusMaint;
 	surplusMaintenance = surplusMaint;
@@ -286,6 +311,9 @@ Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
+	case RPC_PLACESTRUCTURE__CREATUREOBJECT_FLOAT_FLOAT_INT_:
+		resp->insertSignedInt(placeStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		break;
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getUnsignedIntParameter());
 		break;
@@ -308,6 +336,10 @@ void BuildingDeedAdapter::initializeTransientMembers() {
 
 int BuildingDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<BuildingDeed*>(stub))->handleObjectMenuSelect(player, selectedID);
+}
+
+int BuildingDeedAdapter::placeStructure(CreatureObject* creature, float x, float y, int angle) {
+	return (static_cast<BuildingDeed*>(stub))->placeStructure(creature, x, y, angle);
 }
 
 void BuildingDeedAdapter::setSurplusMaintenance(unsigned int surplusMaint) {

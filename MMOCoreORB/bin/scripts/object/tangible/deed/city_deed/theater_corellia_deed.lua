@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_city_deed_theater_corellia_deed = object_tangible_deed_city_deed_shared_theater_corellia_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/theater_corellia.iff",
 

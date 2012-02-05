@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_guild_deed_corellia_guild_deed = object_tangible_deed_guild_deed_shared_corellia_guild_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/building/player/player_guildhall_corellia_style_01.iff",
 
 

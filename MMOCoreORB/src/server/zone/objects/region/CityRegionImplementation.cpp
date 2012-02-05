@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/chat/StringIdChatParameter.h"
 
 void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float radius) {
 	ManagedReference<ActiveArea*> area = cast<ActiveArea*>( ObjectManager::instance()->createObject(String("object/active_area.iff").hashCode(), 0, ""));
@@ -60,7 +62,10 @@ void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float
 
 	if (activeAreas.size() == 0) { //If this is the first active area, set it's planet map category to city.
 		area->setPlanetMapCategory(TemplateManager::instance()->getPlanetMapCategoryByName("city"));
-		area->getObjectName()->setStringId(regionName);
+		if (regionName.beginsWith("@"))
+			area->getObjectName()->setStringId(regionName);
+		else
+			area->setCustomObjectName(regionName, true);
 	}
 
 	//area->insertToZone(zone);
@@ -72,6 +77,15 @@ void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	object->setCityRegion(_this);
 
+	if (!clientCity && object->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(object);
+
+		StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
+		params.setTT(regionName);
+		params.setTO("@city/city:rank" + String::valueOf(cityRank));
+		creature->sendSystemMessage(params);
+	}
+
 	if (object->isVendor()) {
 		Locker locker(_this);
 
@@ -81,6 +95,14 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 	object->setCityRegion(NULL);
+
+	if (!clientCity && object->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(object);
+
+		StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
+		params.setTO(regionName);
+		creature->sendSystemMessage(params);
+	}
 
 	if (object->isVendor()) {
 		Locker locker(_this);

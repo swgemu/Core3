@@ -27,6 +27,8 @@
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
 #include "server/zone/objects/tangible/components/ArtCrateMenuComponent.h"
 #include "server/zone/objects/tangible/components/LootSchematicAttributeListComponent.h"
+#include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
+#include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 
 ComponentManager::ComponentManager() {
@@ -61,4 +63,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("AttributeListComponent", new AttributeListComponent());
 	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());
+
+	components.put("PlaceStructureComponent", new PlaceStructureComponent());
+	components.put("PlaceCityHallComponent", new PlaceCityHallComponent());
 }

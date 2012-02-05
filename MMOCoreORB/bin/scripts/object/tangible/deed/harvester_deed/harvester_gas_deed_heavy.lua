@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_harvester_deed_harvester_gas_deed_heavy = object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/installation/mining_gas/mining_gas_harvester_style_3.iff",
 
 

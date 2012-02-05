@@ -11,7 +11,7 @@ coro_newbie = {
 			spawnLimit = -1,
 			minDifficulty = 7,
 			maxDifficulty = 30,
-			numberToSpawn = 0,
+			numberToSpawn = 5,
 			weighting = 15,
 			size = 15
 		},
@@ -20,7 +20,7 @@ coro_newbie = {
 			spawnLimit = -1,
 			minDifficulty = 20,
 			maxDifficulty = 30,
-			numberToSpawn = 0,
+			numberToSpawn = 5,
 			weighting = 15,
 			size = 25
 		}

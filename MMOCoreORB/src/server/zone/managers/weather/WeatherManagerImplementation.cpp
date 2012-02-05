@@ -328,7 +328,7 @@ void WeatherManagerImplementation::sendWeatherPacket(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
-	Locker playerLocker(player);
+	Locker playerLocker(player, _this);
 
 	ServerWeatherMessage* weatherMessage = new ServerWeatherMessage(_this);
 	player->sendMessage(weatherMessage);

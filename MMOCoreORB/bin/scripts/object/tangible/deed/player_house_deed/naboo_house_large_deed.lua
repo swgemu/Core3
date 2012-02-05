@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_player_house_deed_naboo_house_large_deed = object_tangible_deed_player_house_deed_shared_naboo_house_large_deed:new {
-	templateType = DEED,
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
 	generatedObjectTemplate = "object/building/player/player_house_naboo_large_style_01.iff",
 
 

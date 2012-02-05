@@ -416,6 +416,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 			cityRegionMap->addRegion(cityRegion);
 		}
 
+		cityRegion->setClientCity(true);
 		cityRegion->addActiveArea(zone, x, y, radius);
 	}
 

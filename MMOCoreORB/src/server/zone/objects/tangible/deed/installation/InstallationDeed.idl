@@ -49,12 +49,15 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.deed.Deed;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.area.ActiveArea;
+include server.zone.objects.tangible.deed.components.PlaceStructureComponent;
 
 class InstallationDeed extends Deed {
 	protected unsigned int surplusMaintenance;
 	protected unsigned int surplusPower;
 	protected float extractionRate;
 	protected float hopperSizeMax;
+	
+	protected transient PlaceStructureComponent placeStructureComponent;
 	
 	public InstallationDeed() {		
 		Logger.setLoggingName("InstallationDeed");
@@ -68,6 +71,12 @@ class InstallationDeed extends Deed {
 	
 	@local
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
+	
+	public int placeStructure(CreatureObject creature, float x, float y, int angle) {
+		if (placeStructureComponent != null) {
+			return placeStructureComponent.placeStructure(creature, this, x, y, angle);	
+		}
+	}
 	
 	public native void initializeTransientMembers();
 	
