@@ -831,6 +831,24 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						newPositionY = nextPosition->getY();
 						newPositionZ = nextPosition->getZ();
 					}
+
+					if (showNextMovementPosition) {
+						if (movementMarker != NULL)
+							movementMarker->destroyObjectFromWorld(false);
+
+						movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+
+						movementMarker->initializePosition(newPositionX, newPositionZ, newPositionY);
+						StringBuffer msg;
+						msg << "path distance: " << pathDistance << " maxDist:" << maxDist;
+						movementMarker->setCustomObjectName(msg.toString(), false);
+
+						if (cellObject != NULL) {
+							cellObject->transferObject(movementMarker, -1, true);
+						} else {
+							getZone()->transferObject(movementMarker, -1, false);
+						}
+					}
 				}
 			}
 
@@ -1033,24 +1051,6 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 	}
 
 	broadcastMessage(msg, false);
-
-
-	if (!showNextMovementPosition || point == NULL)
-		return;
-
-	if (movementMarker != NULL)
-		movementMarker->destroyObjectFromWorld(false);
-
-	movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
-
-	movementMarker->initializePosition(point->getPositionX(), point->getPositionZ(), point->getPositionY());
-	movementMarker->setCustomObjectName(getLoggingName(), false);
-
-	if (point->getCell() != NULL) {
-		point->getCell()->transferObject(movementMarker, -1, true);
-	} else {
-		getZone()->transferObject(movementMarker, -1, false);
-	}
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
