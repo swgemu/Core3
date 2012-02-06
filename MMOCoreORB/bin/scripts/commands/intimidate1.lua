@@ -42,13 +42,15 @@
 --true = 1, false = 0
 
 Intimidate1Command = {
-        name = "intimidate1",
+	name = "intimidate1",
 
 	damageMultiplier = 0,
 	speedMultiplier = 1,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
+	
+	accuracySkillMod = "intimidate",
 
 	stateEffects = {
 	  StateEffect( 

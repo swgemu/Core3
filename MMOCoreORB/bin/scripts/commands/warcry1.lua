@@ -49,6 +49,8 @@ Warcry1Command = {
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
+	
+	accuracySkillMod = "warcry",
 
 	stateEffects = {
 	  StateEffect( 

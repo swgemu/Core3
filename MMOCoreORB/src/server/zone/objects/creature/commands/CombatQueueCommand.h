@@ -53,6 +53,8 @@ protected:
 
 	int range;
 
+	String accuracySkillMod;
+
 	bool areaAction;
 	bool coneAction;
 	int coneAngle;
@@ -102,6 +104,8 @@ public:
 
 		//for weapon set -1
 		range = -1;
+
+		accuracySkillMod = "";
 
 		areaRange = 0;
 		areaAction = false;
@@ -208,6 +212,10 @@ public:
 
 	inline int getRange() const {
 		return range;
+	}
+
+	inline String getAccuracySkillMod() const {
+		return accuracySkillMod;
 	}
 
 	inline int getBlindChance() const {
@@ -454,6 +462,10 @@ public:
 		this->range = i;
 	}
 
+	void setAccuracySkillMod(String acc) {
+		this->accuracySkillMod = acc;
+	}
+
 	bool hasCombatSpam() {
 		return !combatSpam.isEmpty();
 	}
@@ -467,7 +479,7 @@ public:
 	}
 
 	// this goes in command in order to allow for overriding for special commands
-	virtual void applyEffect(CreatureObject* creature, uint8 effectType) {
+	virtual void applyEffect(CreatureObject* creature, uint8 effectType, uint32 mod) {
 		CombatManager* combatManager = CombatManager::instance();
 		StateEffect effect = getStateEffect(effectType);
 
@@ -479,7 +491,7 @@ public:
 			creature->setDizziedState(effect.getStateLength());
 			break;
 		case CommandEffect::INTIMIDATE:
-			creature->setIntimidatedState(effect.getStateLength());
+			creature->setIntimidatedState(mod, effect.getStateLength());
 			break;
 		case CommandEffect::STUN:
 			creature->setStunnedState(effect.getStateLength());
@@ -531,7 +543,7 @@ public:
 
 			break;
 		case CommandEffect::NEXTATTACKDELAY:
-			creature->setNextAttackDelay(effect.getStateLength());
+			creature->setNextAttackDelay(mod, effect.getStateLength());
 			break;
 		default:
 			break;

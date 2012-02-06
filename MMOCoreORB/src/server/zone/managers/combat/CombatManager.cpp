@@ -259,7 +259,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 		damage = calculateDamage(attacker, defender) * damageMultiplier;
 
 	damageMultiplier = 1.0f;
-	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus());
+	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 	String combatSpam = data.getCommand()->getCombatSpam();
 	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
 
@@ -1086,7 +1086,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		}
 
 		if (!failed)
-			data.getCommand()->applyEffect(targetCreature, effectType);
+			data.getCommand()->applyEffect(targetCreature, effectType, creature->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 
 		// can move this to scripts, but only these three states have fail messages
 		if (failed) {

@@ -1011,13 +1011,13 @@ class CreatureObject extends TangibleObject {
 	
 	public native void setBlindedState(int durationSeconds = 5);
 
-	public native void setIntimidatedState(int durationSeconds = 15);
+	public native void setIntimidatedState(unsigned int mod, int durationSeconds = 15);
 
 	public native void setSnaredState(int durationSeconds = 20);
 	
 	public native void setRootedState(int durationSeconds = 20);
 
-	public native boolean setNextAttackDelay(int del);
+	public native boolean setNextAttackDelay(unsigned int mod, int del);
 
 	public native void setMeditateState();
 	

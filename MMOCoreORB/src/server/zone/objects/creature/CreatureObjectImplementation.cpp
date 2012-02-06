@@ -1874,7 +1874,7 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 	}
 }
 
-void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
+void CreatureObjectImplementation::setIntimidatedState(uint32 mod, int durationSeconds) {
 	if (!hasState(CreatureState::INTIMIDATED)) {
 		StateBuff* state = new StateBuff(_this, CreatureState::INTIMIDATED, durationSeconds);
 
@@ -1883,6 +1883,8 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 
 		int div = getSkillMod("private_max_damage_divisor") * 2;
 		if (div == 0) div = 2;
+
+		div += mod / 10;
 
 		state->setSkillModifier("private_max_damage_divisor", div);
 
@@ -1912,8 +1914,9 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 	}
 }
 
-bool CreatureObjectImplementation::setNextAttackDelay(int del) {
+bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
 	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
+		del += mod;
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
 

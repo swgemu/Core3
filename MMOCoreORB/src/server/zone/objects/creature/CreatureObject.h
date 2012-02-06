@@ -556,13 +556,13 @@ public:
 
 	void setBlindedState(int durationSeconds = 5);
 
-	void setIntimidatedState(int durationSeconds = 15);
+	void setIntimidatedState(unsigned int mod, int durationSeconds = 15);
 
 	void setSnaredState(int durationSeconds = 20);
 
 	void setRootedState(int durationSeconds = 20);
 
-	bool setNextAttackDelay(int del);
+	bool setNextAttackDelay(unsigned int mod, int del);
 
 	void setMeditateState();
 
@@ -1293,13 +1293,13 @@ public:
 
 	void setBlindedState(int durationSeconds = 5);
 
-	void setIntimidatedState(int durationSeconds = 15);
+	void setIntimidatedState(unsigned int mod, int durationSeconds = 15);
 
 	void setSnaredState(int durationSeconds = 20);
 
 	void setRootedState(int durationSeconds = 20);
 
-	bool setNextAttackDelay(int del);
+	bool setNextAttackDelay(unsigned int mod, int del);
 
 	void setMeditateState();
 
@@ -1870,13 +1870,13 @@ public:
 
 	void setBlindedState(int durationSeconds);
 
-	void setIntimidatedState(int durationSeconds);
+	void setIntimidatedState(unsigned int mod, int durationSeconds);
 
 	void setSnaredState(int durationSeconds);
 
 	void setRootedState(int durationSeconds);
 
-	bool setNextAttackDelay(int del);
+	bool setNextAttackDelay(unsigned int mod, int del);
 
 	void setMeditateState();
 

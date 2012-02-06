@@ -486,6 +486,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "range")
 			combatCommand->setRange(Lua::getIntParameter(L));
+		else if (varName == "accuracySkillMod")
+			combatCommand->setAccuracySkillMod(Lua::getStringParameter(L));
 		else if (varName == "areaAction") {
 			combatCommand->setAreaAction((bool)lua_toboolean(L, -1));
 			command.pop();
