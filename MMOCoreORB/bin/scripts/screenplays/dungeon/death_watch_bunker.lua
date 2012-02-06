@@ -1650,7 +1650,7 @@ function DWB:checkDoor(sceneObject, creatureObject)
 		
 		createEvent(1000 * 60 * 5, "DWB", "removeFromDWB", creatureObject)
 		createEvent(1000 * 60 * 4.5, "DWB", "timeWarning", creatureObject)
-		createEvent(1000 * 60 * 1--[[5.5]], "DWB", "despawnCell", cell)
+		createEvent(1000 * 60 * 5.5, "DWB", "despawnCell", cell)
 	end
 	
 	writeData(terminal:getObjectID() .. ":dwb:accessEnabled", 0)
@@ -1698,7 +1698,7 @@ function DWB:startForemanQuestStage(number, creatureObject)
 		writeData(5996314 .. ":dwb:haldo_player", creature:getObjectID())
 		createEvent(1000 * 60 * 60, "DWB", "haldo_timer", creatureObject)
 	elseif number == 2 then
-		createEvent(1000 * 60 * 10--[[should be 60, but testing]], "DWB", "pump_timer", creatureObject)
+		createEvent(1000 * 60 * 60, "DWB", "pump_timer", creatureObject)
 	end
 end
 
