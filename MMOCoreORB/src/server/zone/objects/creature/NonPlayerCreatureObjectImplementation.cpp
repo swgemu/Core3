@@ -11,8 +11,28 @@
 #include "server/zone/templates/mobile/ConversationScreen.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 
+//#define DEBUG
+
 void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+
 	AiAgentImplementation::notifyPositionUpdate(entry);
+
+	if(getPvpStatusBitmask() == CreatureFlag::NONE)
+		return;
+
+	int radius = 32;
+
+	if(getParent() != NULL && getParent()->isCellObject())
+		radius = 12;
+
+	int awarenessRadius = getFerocity() + radius;
+
+	if(!entry->isInRange(_this, awarenessRadius))
+		return;
+
+#ifdef DEBUG
+	info("Passed range check", true);
+#endif
 
 	SceneObject* scno = cast<SceneObject*>( entry);
 
@@ -25,6 +45,12 @@ void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* 
 
 		if(creo->getPvpStatusBitmask() == CreatureFlag::NONE)
 			return;
+
+		/// If not in combat, ignore creatures in different cells
+		if(!isInCombat() && getParent() != NULL) {
+			if(getParent() != creo->getParent())
+				return;
+		}
 
 		// TODO: determine if creature can be seen by this (mask scent, et. al.)
 
@@ -41,21 +67,26 @@ void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* 
 
 void NonPlayerCreatureObjectImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
 
+#ifdef DEBUG
+	info("Starting doAwarenessCheck", true);
+#endif
+
 	if (isDead() || getZone() == NULL || time == 0)
 		return;
 
-	int radius = 32;
-
-	if(getParent() != NULL && getParent()->isCellObject())
-		radius = 12;
-
-	int awarenessRadius = getFerocity() + radius;
-
-	if(!target->isInRange(_this, awarenessRadius) || !isAggressiveTo(target))
+	if(!isAggressiveTo(target))
 		return;
+
+#ifdef DEBUG
+	info("Passed aggressive check", true);
+#endif
 
 	if(!CollisionManager::checkLineOfSight(target, _this))
 		return;
+
+#ifdef DEBUG
+	info("Passed LOS check", true);
+#endif
 
 	// TODO: another formula that needs tweaking (after player levels get looked at)
 	addDefender(target);

@@ -46,8 +46,10 @@
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 
-//#define SHOW_WALK_PATH
+#define SHOW_WALK_PATH
+//#define DEBUG
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -197,7 +199,7 @@ void AiAgentImplementation::doRecovery() {
 
 	CreatureObject* target = threatMap->getHighestThreatCreature();
 
-	if (target != NULL && !defenderList.contains(target) && !target->isDead())
+	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()))
 		addDefender(target);
 
 	if (target == NULL && defenderList.size() > 0) {
@@ -381,19 +383,18 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 
 bool AiAgentImplementation::tryRetreat() {
 	try {
-		if (homeLocation.getPositionX() == 0 && homeLocation.getPositionY() == 0 && homeLocation.getPositionZ() == 0)
+
+		if(homeLocation.isInRange(_this, 1.5))
 			return false;
 
-		if (lastSuccessfulCombatAction.miliDifference() <= 30000) {
-			return false;
-		} else if (homeLocation.isInRange(_this, 100))
+		if (homeLocation.getPositionX() == 0 && homeLocation.getPositionY() == 0 && homeLocation.getPositionZ() == 0)
 			return false;
 
 		Locker locker(&targetMutex);
 
 		setOblivious();
 
-		showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+		//showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
 		homeLocation.setReached(false);
 
@@ -606,15 +607,28 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 }
 
 void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
+
+#ifdef DEBUG
+	info("Starting activateAwarenessEvent check", true);
+#endif
+
 	if (awarenessEvent == NULL) {
 		awarenessEvent = new AiAwarenessEvent(_this, target);
 
 		awarenessEvent->schedule(1000);
+
+#ifdef DEBUG
+	info("Scheduling new Awareness Event", true);
+#endif
 	}
 
 	if (!awarenessEvent->isScheduled()) {
 		awarenessEvent->setTarget(target);
 		awarenessEvent->schedule(1000);
+
+#ifdef DEBUG
+	info("Rescheduling awareness event", true);
+#endif
 	}
 }
 
@@ -679,7 +693,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	ManagedReference<SceneObject*> strongFollow = followObject.get();
 
 	float newSpeed = runSpeed;
-	if (followObject == NULL && !isFleeing() && !isRetreating()) // TODO: think about implementing a more generic "walk, don't run" criterion
+	if (followObject == NULL && !isFleeing() && !isRetreating() && !isInCombat()) // TODO: think about implementing a more generic "walk, don't run" criterion
 		newSpeed = walkSpeed;
 
 	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;

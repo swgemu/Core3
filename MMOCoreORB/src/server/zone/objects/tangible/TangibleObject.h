@@ -316,6 +316,8 @@ public:
 
 	byte getUnknownByte();
 
+	bool isKiller();
+
 	bool isTicketCollector();
 
 	bool isTicketObject();
@@ -600,6 +602,8 @@ public:
 
 	byte getUnknownByte();
 
+	virtual bool isKiller();
+
 	virtual bool isTicketCollector();
 
 	virtual bool isTicketObject();
@@ -778,6 +782,8 @@ public:
 	void dropFromDefenderLists(TangibleObject* destructor);
 
 	byte getUnknownByte();
+
+	bool isKiller();
 
 	bool isTicketCollector();
 

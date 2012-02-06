@@ -779,7 +779,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	ghost->updateIncapacitationCounter();
 
-	if (ghost->getIncapacitationCounter() < 3) {
+	destructor->removeDefender(destructedObject);
+
+	if (!destructor->isKiller() && ghost->getIncapacitationCounter() < 3) {
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
 
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
@@ -807,7 +809,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		playerCreature->sendSystemMessage(stringId);
 
 	} else {
-		if (!ghost->isFirstIncapacitationExpired()) {
+		if (destructor->isKiller() || !ghost->isFirstIncapacitationExpired()) {
 			killPlayer(destructor, playerCreature, 0);
 		}
 	}

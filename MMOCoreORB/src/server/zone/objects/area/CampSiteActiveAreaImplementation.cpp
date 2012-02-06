@@ -115,7 +115,7 @@ int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 			abandonTask->cancel();
 
 	if(campOwner != NULL)
-		campOwner->sendSystemMessage("camp", "sys_abandoned_camp");
+		campOwner->sendSystemMessage("@camp:sys_abandoned_camp");
 
 	return 1;
 }

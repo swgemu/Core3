@@ -402,6 +402,10 @@ class TangibleObject extends SceneObject {
 		return unknownByte;
 	}
 	
+	public abstract boolean isKiller() {
+		return false;
+	}
+	
 	public abstract boolean isTicketCollector() {
 		return false;
 	}

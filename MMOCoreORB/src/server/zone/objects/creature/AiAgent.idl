@@ -157,6 +157,9 @@ class AiAgent extends CreatureObject {
 		Logger.setLoggingName("AiAgent");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
+		
+		fleeing = false;
+		baby = false;
 	}
 	
 	/**

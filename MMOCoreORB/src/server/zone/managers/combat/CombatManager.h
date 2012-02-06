@@ -131,6 +131,8 @@ public:
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 
+	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
+
 	//all the combat math will go here
 protected:
 
@@ -150,7 +152,6 @@ protected:
 	 */
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus);
 
-	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
 	int calculatePostureModifier(CreatureObject* creature);
 	int calculateTargetPostureModifier(CreatureObject* creature, CreatureObject* targetCreature);
 

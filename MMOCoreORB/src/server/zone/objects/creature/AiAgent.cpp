@@ -1515,6 +1515,10 @@ AiAgentImplementation::AiAgentImplementation() {
 	Logger::setLogging(false);
 	// server/zone/objects/creature/AiAgent.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
+	// server/zone/objects/creature/AiAgent.idl():  		fleeing = false;
+	fleeing = false;
+	// server/zone/objects/creature/AiAgent.idl():  		baby = false;
+	baby = false;
 }
 
 void AiAgentImplementation::finalize() {
