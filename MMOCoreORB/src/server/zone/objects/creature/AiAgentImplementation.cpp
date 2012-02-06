@@ -706,7 +706,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	float newPositionX = 0, newPositionZ = 0, newPositionY = 0;
 	PathFinderManager* pathFinder = PathFinderManager::instance();
-	float maxDist = MIN(maxDistance, newSpeed);
+	//float maxDist = MIN(maxDistance, newSpeed);
+	float maxDist = newSpeed;
 
 	bool found = false;
 	float dist = 0;
@@ -738,6 +739,16 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 		bool remove = true;
 
+		float targetDistance = targetPosition->getWorldPosition().distanceTo(getWorldPosition());
+
+		if (targetDistance > maxDistance)
+			maxDist = MIN(newSpeed, targetDistance - maxDistance);
+		else {
+			delete path;
+
+			return false;
+		}
+
 		for (int i = 1; i < path->size() && !found; ++i) { // i = 0 is our position
 			WorldCoordinates* coord = &path->get(i);
 
@@ -751,11 +762,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 #endif
 
 			if (oldCoord == NULL) {
-				//pathDistance += nextWorldPos.distanceTo(thisWorldPos);
 				oldCoord = &path->get(0);
-			}// else {
-				pathDistance += oldCoord->getWorldPosition().distanceTo(nextWorldPos);
-			//}
+			}
+
+			pathDistance += oldCoord->getWorldPosition().distanceTo(nextWorldPos);
 
 			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent) { //last waypoint
 				cellObject = coord->getCell();
