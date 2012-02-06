@@ -751,11 +751,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 #endif
 
 			if (oldCoord == NULL) {
-				pathDistance += nextWorldPos.distanceTo(thisWorldPos);
+				//pathDistance += nextWorldPos.distanceTo(thisWorldPos);
 				oldCoord = &path->get(0);
-			} else {
+			}// else {
 				pathDistance += oldCoord->getWorldPosition().distanceTo(nextWorldPos);
-			}
+			//}
 
 			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent) { //last waypoint
 				cellObject = coord->getCell();
