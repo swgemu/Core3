@@ -48,7 +48,7 @@
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 
-#define SHOW_WALK_PATH
+//#define SHOW_WALK_PATH
 //#define DEBUG
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -543,6 +543,9 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		moveEvent = NULL;
 	}
 
+	if (movementMarker != NULL)
+		movementMarker->destroyObjectFromWorld(false);
+
 	if (npcTemplate == NULL)
 		return;
 
@@ -701,10 +704,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	newSpeed *= updateTicks;
 
-	float newSpeedSquared = newSpeed * newSpeed;
 	float newPositionX = 0, newPositionZ = 0, newPositionY = 0;
 	PathFinderManager* pathFinder = PathFinderManager::instance();
-	float maxDist = MIN(maxDistance * maxDistance, newSpeedSquared);
+	float maxDist = MIN(maxDistance, newSpeed);
 
 	bool found = false;
 	float dist = 0;
@@ -749,10 +751,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 #endif
 
 			if (oldCoord == NULL) {
-				pathDistance += nextWorldPos.squaredDistanceTo(thisWorldPos);
+				pathDistance += nextWorldPos.distanceTo(thisWorldPos);
 				oldCoord = &path->get(0);
 			} else {
-				pathDistance += oldCoord->getWorldPosition().squaredDistanceTo(nextWorldPos);
+				pathDistance += oldCoord->getWorldPosition().distanceTo(nextWorldPos);
 			}
 
 			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent) { //last waypoint
@@ -761,12 +763,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 				//TODO: calculate height
 				Vector3 noHeightWorldPos(thisWorldPos.getX(), thisWorldPos.getY(), 0);
 				Vector3 noHeightNextWorldPos(nextWorldPos.getX(), nextWorldPos.getY(), 0);
-				dist = noHeightNextWorldPos.squaredDistanceTo(noHeightWorldPos);
+				dist = noHeightNextWorldPos.distanceTo(noHeightWorldPos);
 
 				*nextPosition = *coord;
 				found = true;
 
-				if ((dist <= maxDistance * maxDistance && cellObject == parent)) {
+				if ((dist <= maxDistance && cellObject == parent)) {
 					if (i == path->size() - 1) {
 						patrolPoints.remove(0);
 						remove = false;
@@ -788,7 +790,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 					if (pathDistance > maxDist) {
 						Vector3 oldWorldCoord = oldCoord->getWorldPosition();
 
-						dist = oldWorldCoord.squaredDistanceTo(nextWorldPos);
+						dist = oldWorldCoord.distanceTo(nextWorldPos);
 
 						float distanceToTravel = dist - (pathDistance - maxDist);
 
@@ -796,9 +798,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 							newPositionX = nextPosition->getX();
 							newPositionY = nextPosition->getY();
 						} else {
-							float rest = Math::sqrt(distanceToTravel);
+							//float rest = Math::sqrt(distanceToTravel);
 
-							dist = Math::sqrt(dist);
+							float rest = distanceToTravel;
+
+							//dist = Math::sqrt(dist);
 
 							if (dist != 0 && !isnan(dist)) {
 								dx = nextPosition->getX() - oldCoordinates.getX();
