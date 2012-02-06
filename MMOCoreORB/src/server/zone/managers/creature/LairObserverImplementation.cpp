@@ -207,7 +207,7 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	} else {
 		AiAgent* npc = cast<AiAgent*>( creature.get());
 
-		Locker clocker(npc, lair);
+		//Locker clocker(npc, lair);
 
 		npc->setDespawnOnNoPlayerInRange(false);
 		npc->setHomeLocation(x, z, y);
