@@ -1035,12 +1035,12 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 		return;
 
 	if (movementMarker != NULL)
-		movementMarker->destroyObjectFromWorld();
+		movementMarker->destroyObjectFromWorld(false);
 
 	movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
 
 	movementMarker->initializePosition(point->getPositionX(), point->getPositionZ(), point->getPositionY());
-	movementMarker->setCustomObjectName(getLoggingName());
+	movementMarker->setCustomObjectName(getLoggingName(), false);
 
 	if (point->getCell() != NULL) {
 		point->getCell()->transferObject(movementMarker, -1, true);
