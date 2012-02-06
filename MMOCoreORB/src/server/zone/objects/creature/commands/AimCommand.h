@@ -69,13 +69,9 @@ public:
 			return INVALIDWEAPON;
 		}
 
-		int ret = doCombatAction(creature, target);
+		creature->setAimingState();
 
-		if (ret == SUCCESS) {
-			creature->setAimingState();
-		}
-
-		return ret;
+		return SUCCESS;
 	}
 
 };
