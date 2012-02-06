@@ -1029,6 +1029,23 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 	}
 
 	broadcastMessage(msg, false);
+
+
+	if (!showNextMovementPosition || point == NULL)
+		return;
+
+	if (movementMarker != NULL)
+		movementMarker->destroyObjectFromWorld();
+
+	movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff"), 0);
+
+	movementMarker->initializePosition(point->getPositionX(), point->getPositionZ(), point->getPositionY());
+
+	if (point->getCell() != NULL) {
+		point->getCell()->transferObject(movementMarker, -1, true);
+	} else {
+		getZone()->transferObject(movementMarker, -1, false);
+	}
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {

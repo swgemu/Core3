@@ -458,6 +458,8 @@ public:
 
 	bool hasLoot();
 
+	void setShowNextPosition(bool val);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -514,6 +516,10 @@ protected:
 	ManagedWeakReference<CreatureObject* > lootOwner;
 
 	bool baby;
+
+	bool showNextMovementPosition;
+
+	ManagedReference<SceneObject* > movementMarker;
 
 	bool despawnOnNoPlayerInRange;
 
@@ -728,6 +734,8 @@ public:
 
 	bool hasLoot();
 
+	void setShowNextPosition(bool val);
+
 	WeakReference<AiAgent*> _this;
 
 	operator const AiAgent*();
@@ -918,6 +926,8 @@ public:
 	CreatureObject* getLootOwner();
 
 	bool hasLoot();
+
+	void setShowNextPosition(bool val);
 
 protected:
 	String _param1_validateStateAttack__CreatureObject_String_;

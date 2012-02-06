@@ -38,7 +38,7 @@
  *	AiAgentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOMOVEMENT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_SETLOOTOWNER__CREATUREOBJECT_,RPC_GETLOOTOWNER__,RPC_HASLOOT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOMOVEMENT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_SETLOOTOWNER__CREATUREOBJECT_,RPC_GETLOOTOWNER__,RPC_HASLOOT__,RPC_SETSHOWNEXTPOSITION__BOOL_};
 
 AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
 	AiAgentImplementation* _implementation = new AiAgentImplementation();
@@ -1174,6 +1174,20 @@ bool AiAgent::hasLoot() {
 		return _implementation->hasLoot();
 }
 
+void AiAgent::setShowNextPosition(bool val) {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSHOWNEXTPOSITION__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setShowNextPosition(val);
+}
+
 DistributedObjectServant* AiAgent::_getImplementation() {
 
 	_updated = true;
@@ -1317,6 +1331,16 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
+	if (_name == "showNextMovementPosition") {
+		TypeInfo<bool >::parseFromBinaryStream(&showNextMovementPosition, stream);
+		return true;
+	}
+
+	if (_name == "movementMarker") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&movementMarker, stream);
+		return true;
+	}
+
 	if (_name == "despawnOnNoPlayerInRange") {
 		TypeInfo<bool >::parseFromBinaryStream(&despawnOnNoPlayerInRange, stream);
 		return true;
@@ -1431,6 +1455,22 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "showNextMovementPosition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&showNextMovementPosition, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "movementMarker";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&movementMarker, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "despawnOnNoPlayerInRange";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1488,7 +1528,7 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 15 + CreatureObjectImplementation::writeObjectMembers(stream);
+	return 17 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 AiAgentImplementation::AiAgentImplementation() {
@@ -1499,6 +1539,8 @@ AiAgentImplementation::AiAgentImplementation() {
 	followState = OBLIVIOUS;
 	// server/zone/objects/creature/AiAgent.idl():  		respawnTimer = 0;
 	respawnTimer = 0;
+	// server/zone/objects/creature/AiAgent.idl():  		showNextMovementPosition = true;
+	showNextMovementPosition = true;
 	// server/zone/objects/creature/AiAgent.idl():  		despawnOnNoPlayerInRange = true;
 	despawnOnNoPlayerInRange = true;
 	// server/zone/objects/creature/AiAgent.idl():  		numberOfPlayersInRange = 0;
@@ -1912,6 +1954,11 @@ bool AiAgentImplementation::hasLoot() {
 	return false;
 }
 
+void AiAgentImplementation::setShowNextPosition(bool val) {
+	// server/zone/objects/creature/AiAgent.idl():  		showNextMovementPosition = val;
+	showNextMovementPosition = val;
+}
+
 /*
  *	AiAgentAdapter
  */
@@ -2147,6 +2194,9 @@ Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_HASLOOT__:
 		resp->insertBoolean(hasLoot());
+		break;
+	case RPC_SETSHOWNEXTPOSITION__BOOL_:
+		setShowNextPosition(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -2453,6 +2503,10 @@ CreatureObject* AiAgentAdapter::getLootOwner() {
 
 bool AiAgentAdapter::hasLoot() {
 	return (static_cast<AiAgent*>(stub))->hasLoot();
+}
+
+void AiAgentAdapter::setShowNextPosition(bool val) {
+	(static_cast<AiAgent*>(stub))->setShowNextPosition(val);
 }
 
 /*

@@ -114,6 +114,10 @@ class AiAgent extends CreatureObject {
 	
 	protected boolean baby;
 	
+	//DEBUG
+	protected boolean showNextMovementPosition;
+	protected SceneObject movementMarker;
+	
 	protected boolean despawnOnNoPlayerInRange;
 	
 	//@weakReference
@@ -145,6 +149,8 @@ class AiAgent extends CreatureObject {
 		followState = OBLIVIOUS;
 
 		respawnTimer = 0;
+		
+		showNextMovementPosition = true;
 		
 		despawnOnNoPlayerInRange = true;
 		numberOfPlayersInRange = 0;
@@ -674,5 +680,9 @@ class AiAgent extends CreatureObject {
 	 */
 	public boolean hasLoot() {
 		return false;
+	}
+	
+	public void setShowNextPosition(boolean val) {
+		showNextMovementPosition = val;
 	}
 }
