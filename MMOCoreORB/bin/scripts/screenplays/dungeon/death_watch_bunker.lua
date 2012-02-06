@@ -2703,6 +2703,8 @@ function DWB:test(sceneObject)
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/terminal/terminal_character_builder.iff", -4655,12.5,4293.1,0,0,0,1,0)
 	--doesnt work spawnedPointer = spawnSceneObject("endor", "object/tangible/terminal/terminal_cloning.iff", -4663,14.4,4324.3,0,0,0,1,0)
 	
+	spawnedPointer = spawnSceneObject("endor", "object/tangible/terminal/terminal_character_builder.iff", 27.1,-61.3,-295.5,5996355,0,0,1,0)
+	
 	spawnedPointer = spawnMobile("endor", "imperial_recruiter", 1, -4655.8, 14.4, 4328.3, 179, 0)
 	spawnedPointer = spawnMobile("endor", "rebel_recruiter", 1, -4653.8, 14.4, 4328.3, 179, 0)
 	
