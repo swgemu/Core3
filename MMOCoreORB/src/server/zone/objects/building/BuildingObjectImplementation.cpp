@@ -296,7 +296,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* child = cell->getContainerObject(j);
 
-			if (child != obj) {
+			if (child != obj && child != NULL) {
 				if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
 					//if (is)
 
