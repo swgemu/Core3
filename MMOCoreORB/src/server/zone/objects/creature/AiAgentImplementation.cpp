@@ -50,6 +50,7 @@
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
+//#define SHOW_NEXT_POSITION
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -841,7 +842,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						newPositionY = nextPosition->getY();
 						newPositionZ = nextPosition->getZ();
 					}
-
+#ifdef SHOW_NEXT_POSITION
 					if (showNextMovementPosition) {
 						if (movementMarker != NULL)
 							movementMarker->destroyObjectFromWorld(false);
@@ -859,6 +860,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 							getZone()->transferObject(movementMarker, -1, false);
 						}
 					}
+#endif
 				}
 			}
 
