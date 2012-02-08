@@ -26,7 +26,7 @@ mine_rat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/womp_rat.iff"},
+	templates = {"object/mobile/quenker.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

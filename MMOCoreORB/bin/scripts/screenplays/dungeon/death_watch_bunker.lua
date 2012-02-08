@@ -1213,6 +1213,7 @@ function DWB:teleportPlayer(creatureObject)
 end
 
 function DWB:haldo_timer(creatureObject)
+	writeData(5996314 .. ":dwb:haldo_busy", 0)
 	if (creatureObject == nil) then
 		return
 	end
@@ -2658,7 +2659,7 @@ function DWB:testSpatial(pDroid, pPlayer)
 end
 
 function DWB:testSecond(pDroid)
-	spatialChat(pDroid, "Missing Features: Foreman Quest, Rebreather Quest, Ventilation Quest and Blastromech Control. Known Bugs: Wrong animations for Battle Droids. Looted Schematics not working.")
+	spatialChat(pDroid, "Missing Features: Ventilation Quest and Blastromech Control. Known Bugs: Wrong animations for Battle Droids. Looted Schematics not working.")
 	createEvent(15 * 1000, "DWB", "testThird", pDroid)
 end
 
