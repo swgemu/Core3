@@ -44,6 +44,27 @@
 object_weapon_ranged_grenade_grenade_proton = object_weapon_ranged_grenade_shared_grenade_proton:new {
 
 
+	healthAttackCost = 30,
+	actionAttackCost = 75,
+	mindAttackCost = 65,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -10,
+
+	idealRange = 20,
+	idealAccuracy = 15,
+
+	maxRange = 32,
+	maxRangeAccuracy = -30,
+
+	minDamage = 100,
+	maxDamage = 300,
+
+	attackSpeed = 10,
+
+	woundsRatio = 10,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

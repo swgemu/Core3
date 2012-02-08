@@ -44,6 +44,27 @@
 object_weapon_ranged_heavy_heavy_particle_beam = object_weapon_ranged_heavy_shared_heavy_particle_beam:new {
 
 
+	healthAttackCost = 25,
+	actionAttackCost = 85,
+	mindAttackCost = 25,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -70,
+
+	idealRange = 35,
+	idealAccuracy = 0,
+
+	maxRange = 64,
+	maxRangeAccuracy = -20,
+
+	minDamage = 200,
+	maxDamage = 300,
+
+	attackSpeed = 7.8,
+
+	woundsRatio = 15,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

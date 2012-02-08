@@ -51,7 +51,7 @@ object_weapon_ranged_pistol_pistol_striker = object_weapon_ranged_pistol_shared_
 	attackType = RANGEDATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
-	damageType = ENERGY,
+	damageType = KINETIC,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = NONE,
@@ -82,24 +82,26 @@ object_weapon_ranged_pistol_pistol_striker = object_weapon_ranged_pistol_shared_
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 13,
-	actionAttackCost = 34,
-	mindAttackCost = 22,
+	healthAttackCost = 10,
+	actionAttackCost = 26,
+	mindAttackCost = 17,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
 
-	idealRange = 15,
-	idealAccuracy = 15,
+	idealRange = 20,
+	idealAccuracy = 10,
 
-	maxRange = 45,
-	maxRangeAccuracy = 5,
+	maxRange = 64,
+	maxRangeAccuracy = -70,
 
-	minDamage = 25,
-	maxDamage = 47,
+	minDamage = 35,
+	maxDamage = 60,
 
-	attackSpeed = 4.4,
+	attackSpeed = 3.4,
+
+	woundsRatio = 10,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

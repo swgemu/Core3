@@ -43,6 +43,26 @@
 
 object_weapon_ranged_grenade_grenade_cryoban = object_weapon_ranged_grenade_shared_grenade_cryoban:new {
 
+	healthAttackCost = 40,
+	actionAttackCost = 100,
+	mindAttackCost = 15,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -10,
+
+	idealRange = 20,
+	idealAccuracy = 15,
+
+	maxRange = 32,
+	maxRangeAccuracy = -30,
+
+	minDamage = 20,
+	maxDamage = 250,
+
+	attackSpeed = 7,
+
+	woundsRatio = 10,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT"},

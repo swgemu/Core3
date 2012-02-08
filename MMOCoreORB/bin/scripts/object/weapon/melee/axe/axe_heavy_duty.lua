@@ -54,7 +54,7 @@ object_weapon_melee_axe_axe_heavy_duty = object_weapon_melee_axe_shared_axe_heav
 	damageType = KINETIC,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = MEDIUM,
+	armorPiercing = NONE,
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
@@ -82,25 +82,26 @@ object_weapon_melee_axe_axe_heavy_duty = object_weapon_melee_axe_shared_axe_heav
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 78,
-	actionAttackCost = 40,
-	mindAttackCost = 13,
+	healthAttackCost = 35,
+	actionAttackCost = 25,
+	mindAttackCost = 10,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
 
-	idealRange = 4,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 0,
 
 	maxRange = 5,
-	maxRangeAccuracy = 4,
+	maxRangeAccuracy = 0,
 
-	minDamage = 25,
-	maxDamage = 98,
+	minDamage = 35,
+	maxDamage = 140,
 
-	attackSpeed = 6.5,
+	attackSpeed = 5,
 
+	woundsRatio = 15,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},

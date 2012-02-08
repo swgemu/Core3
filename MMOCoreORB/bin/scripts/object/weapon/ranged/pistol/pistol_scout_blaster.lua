@@ -82,24 +82,26 @@ object_weapon_ranged_pistol_pistol_scout_blaster = object_weapon_ranged_pistol_s
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 13,
-	actionAttackCost = 26,
-	mindAttackCost = 13,
+	healthAttackCost = 10,
+	actionAttackCost = 20,
+	mindAttackCost = 10,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 20,
 
-	idealRange = 15,
-	idealAccuracy = 15,
+	idealRange = 19,
+	idealAccuracy = 0,
 
-	maxRange = 45,
-	maxRangeAccuracy = 5,
+	maxRange = 64,
+	maxRangeAccuracy = -90,
 
-	minDamage = 25,
-	maxDamage = 56,
+	minDamage = 35,
+	maxDamage = 80,
 
-	attackSpeed = 4,
+	attackSpeed = 3.1,
+
+	woundsRatio = 7,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

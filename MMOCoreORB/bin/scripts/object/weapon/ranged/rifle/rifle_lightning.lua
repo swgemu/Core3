@@ -82,24 +82,26 @@ object_weapon_ranged_rifle_rifle_lightning = object_weapon_ranged_rifle_shared_r
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 43,
-	actionAttackCost = 62,
-	mindAttackCost = 36,
+	healthAttackCost = 35,
+	actionAttackCost = 35,
+	mindAttackCost = 15,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -25,
 
-	idealRange = 35,
-	idealAccuracy = 0,
+	idealRange = 30,
+	idealAccuracy = -25,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -80,
 
-	minDamage = 276,
-	maxDamage = 592,
+	minDamage = 10,
+	maxDamage = 185,
 
-	attackSpeed = 6.3,
+	attackSpeed = 5.2,
+
+	woundsRatio = 16,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

@@ -82,25 +82,26 @@ object_weapon_melee_knife_knife_vibroblade = object_weapon_melee_knife_shared_kn
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 12,
-	actionAttackCost = 25,
-	mindAttackCost = 12,
+	healthAttackCost = 10,
+	actionAttackCost = 36,
+	mindAttackCost = 10,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 11,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 5,
 
-	idealRange = -2,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 5,
 
-	maxRange = -2,
-	maxRangeAccuracy = 4,
+	maxRange = 4,
+	maxRangeAccuracy = 5,
 
-	minDamage = 11,
-	maxDamage = 60,
+	minDamage = 15,
+	maxDamage = 85,
 
-	attackSpeed = 4.2,
+	attackSpeed = 3.25,
 
+	woundsRatio = 12,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},

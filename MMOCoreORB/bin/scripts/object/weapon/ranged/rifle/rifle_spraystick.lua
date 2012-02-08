@@ -81,24 +81,26 @@ object_weapon_ranged_rifle_rifle_spraystick = object_weapon_ranged_rifle_shared_
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 16,
-	actionAttackCost = 47,
-	mindAttackCost = 47,
+	healthAttackCost = 12,
+	actionAttackCost = 36,
+	mindAttackCost = 36,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -20,
 
-	idealRange = 35,
+	idealRange = 30,
 	idealAccuracy = 0,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -60,
 
-	minDamage = 7,
-	maxDamage = 77,
+	minDamage = 10,
+	maxDamage = 110,
 
-	attackSpeed = 3,
+	attackSpeed = 2.3,
+
+	woundsRatio = 17,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

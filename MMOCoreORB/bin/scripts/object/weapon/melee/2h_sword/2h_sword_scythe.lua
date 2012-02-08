@@ -54,7 +54,7 @@ object_weapon_melee_2h_sword_2h_sword_scythe = object_weapon_melee_2h_sword_shar
 	damageType = KINETIC,
 	
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = MEDIUM,
+	armorPiercing = LIGHT,
 	
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
@@ -82,25 +82,26 @@ object_weapon_melee_2h_sword_2h_sword_scythe = object_weapon_melee_2h_sword_shar
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 48,
-	actionAttackCost = 73,
-	mindAttackCost = 43,
+	healthAttackCost = 31,
+	actionAttackCost = 76,
+	mindAttackCost = 31,
 	forceCost = 0,
-	
-	pointBlankAccuracy = -8,
+
 	pointBlankRange = 0,
-	
-	idealRange = 16,
-	idealAccuracy = 6,
-	
-	maxRange = -8,
-	maxRangeAccuracy = 5,
+	pointBlankAccuracy = 10,
+
+	idealRange = 5,
+	idealAccuracy = 10,
+
+	maxRange = 5,
+	maxRangeAccuracy = 10,
 
 	minDamage = 40,
-        maxDamage = 210,
-	
-	attackSpeed = 4.7
+	maxDamage = 210,
 
+	attackSpeed = 4.7,
+
+	woundsRatio = 30
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_scythe, "object/weapon/melee/2h_sword/2h_sword_scythe.iff")

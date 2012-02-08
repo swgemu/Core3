@@ -81,24 +81,26 @@ object_weapon_ranged_rifle_rifle_jawa_ion = object_weapon_ranged_rifle_shared_ri
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 16,
-	actionAttackCost = 33,
-	mindAttackCost = 52,
+	healthAttackCost = 12,
+	actionAttackCost = 25,
+	mindAttackCost = 40,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -50,
 
-	idealRange = 35,
+	idealRange = 40,
 	idealAccuracy = 0,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -80,
 
-	minDamage = 56,
-	maxDamage = 105,
+	minDamage = 80,
+	maxDamage = 150,
 
-	attackSpeed = 8.5,
+	attackSpeed = 6.5,
+
+	woundsRatio = 4,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

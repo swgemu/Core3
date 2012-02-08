@@ -82,24 +82,26 @@ object_weapon_ranged_pistol_pistol_dh17 = object_weapon_ranged_pistol_shared_pis
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 23,
-	actionAttackCost = 44,
-	mindAttackCost = 13,
+	healthAttackCost = 18,
+	actionAttackCost = 31,
+	mindAttackCost = 10,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
 
-	idealRange = 15,
-	idealAccuracy = 15,
+	idealRange = 20,
+	idealAccuracy = 10,
 
-	maxRange = 45,
-	maxRangeAccuracy = 5,
+	maxRange = 64,
+	maxRangeAccuracy = -60,
 
-	minDamage = 35,
-	maxDamage = 53,
+	minDamage = 50,
+	maxDamage = 75,
 
-	attackSpeed = 4.2,
+	attackSpeed = 3.2,
+
+	woundsRatio = 10,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

@@ -82,25 +82,26 @@ object_weapon_melee_polearm_lance_controllerfp = object_weapon_melee_polearm_sha
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 26,
-	actionAttackCost = 59,
-	mindAttackCost = 29,
+	healthAttackCost = 20,
+	actionAttackCost = 45,
+	mindAttackCost = 22,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 5,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 10,
 
-	idealRange = 5,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 10,
 
 	maxRange = 5,
-	maxRangeAccuracy = 5,
+	maxRangeAccuracy = 10,
 
-	minDamage = 7,
-	maxDamage = 133,
+	minDamage = 10,
+	maxDamage = 190,
 
-	attackSpeed = 7,
+	attackSpeed = 5.15,
 
+	woundsRatio = 14,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},

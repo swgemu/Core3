@@ -82,25 +82,26 @@ object_weapon_melee_knife_knife_stone_noob = object_weapon_melee_knife_shared_kn
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 6,
-	actionAttackCost = 15,
-	mindAttackCost = 6,
+	healthAttackCost = 11,
+	actionAttackCost = 17,
+	mindAttackCost = 11,
 	forceCost = 0,
-	
-	pointBlankAccuracy = 0,
-	pointBlankRange = 3,
-	
-	idealRange = 3,
-	idealAccuracy = 3,
-	
-	maxRange = 3,
-	maxRangeAccuracy = 4,
 
-	minDamage = 14,
-	maxDamage = 21,
-	
-	attackSpeed = 4.5
+	pointBlankRange = 0,
+	pointBlankAccuracy = -6,
 
+	idealRange = 1,
+	idealAccuracy = -10,
+
+	maxRange = 4,
+	maxRangeAccuracy = -10,
+
+	minDamage = 7,
+	maxDamage = 47,
+
+	attackSpeed = 3,
+
+	woundsRatio = 7
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_knife_stone_noob, "object/weapon/melee/knife/knife_stone_noob.iff")

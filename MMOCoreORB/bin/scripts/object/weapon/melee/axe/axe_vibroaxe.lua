@@ -82,25 +82,26 @@ object_weapon_melee_axe_axe_vibroaxe = object_weapon_melee_axe_shared_axe_vibroa
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 85,
-	actionAttackCost = 52,
-	mindAttackCost = 20,
+	healthAttackCost = 65,
+	actionAttackCost = 40,
+	mindAttackCost = 15,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = -26,
+	pointBlankRange = 0,
+	pointBlankAccuracy = -20,
 
-	idealRange = -26,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = -20,
 
-	maxRange = -26,
-	maxRangeAccuracy = 4,
+	maxRange = 5,
+	maxRangeAccuracy = -20,
 
-	minDamage = 53,
-	maxDamage = 123,
+	minDamage = 75,
+	maxDamage = 175,
 
-	attackSpeed = 6.5,
+	attackSpeed = 5,
 
+	woundsRatio = 20,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},

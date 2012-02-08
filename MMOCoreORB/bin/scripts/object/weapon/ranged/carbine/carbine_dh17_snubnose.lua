@@ -81,24 +81,26 @@ object_weapon_ranged_carbine_carbine_dh17_snubnose = object_weapon_ranged_carbin
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 39,
-	actionAttackCost = 31,
-	mindAttackCost = 16,
+	healthAttackCost = 22,
+	actionAttackCost = 24,
+	mindAttackCost = 12,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -25,
 
-	idealRange = 35,
+	idealRange = 25,
 	idealAccuracy = 0,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -80,
 
-	minDamage = 28,
-	maxDamage = 81,
+	minDamage = 40,
+	maxDamage = 115,
 
-	attackSpeed = 4.5,
+	attackSpeed = 3.5,
+
+	woundsRatio = 9,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

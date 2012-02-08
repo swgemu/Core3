@@ -43,6 +43,27 @@
 
 object_weapon_ranged_grenade_grenade_fallback = object_weapon_ranged_grenade_shared_grenade_fallback:new {
 
+	healthAttackCost = 19,
+	actionAttackCost = 10,
+	mindAttackCost = 23,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -10,
+
+	idealRange = 20,
+	idealAccuracy = 15,
+
+	maxRange = 32,
+	maxRangeAccuracy = -30,
+
+	minDamage = 98,
+	maxDamage = 200,
+
+	attackSpeed = 2.3,
+
+	woundsRatio = 10,
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_grenade_fallback, "object/weapon/ranged/grenade/grenade_fallback.iff")

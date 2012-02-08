@@ -44,6 +44,27 @@
 object_weapon_ranged_heavy_heavy_lightning_beam = object_weapon_ranged_heavy_shared_heavy_lightning_beam:new {
 
 
+	healthAttackCost = 35,
+	actionAttackCost = 75,
+	mindAttackCost = 20,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -20,
+
+	idealRange = 16,
+	idealAccuracy = -20,
+
+	maxRange = 64,
+	maxRangeAccuracy = -80,
+
+	minDamage = 10,
+	maxDamage = 400,
+
+	attackSpeed = 6,
+
+	woundsRatio = 18,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

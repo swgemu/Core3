@@ -81,24 +81,26 @@ object_weapon_ranged_rifle_rifle_laser = object_weapon_ranged_rifle_shared_rifle
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 16,
-	actionAttackCost = 26,
-	mindAttackCost = 68,
+	healthAttackCost = 12,
+	actionAttackCost = 20,
+	mindAttackCost = 52,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -80,
 
-	idealRange = 35,
-	idealAccuracy = 0,
+	idealRange = 60,
+	idealAccuracy = 20,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -50,
 
-	minDamage = 7,
-	maxDamage = 203,
+	minDamage = 10,
+	maxDamage = 290,
 
-	attackSpeed = 8.8,
+	attackSpeed = 6.75,
+
+	woundsRatio = 10,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

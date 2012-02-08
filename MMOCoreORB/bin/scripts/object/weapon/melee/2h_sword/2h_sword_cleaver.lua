@@ -82,25 +82,26 @@ object_weapon_melee_2h_sword_2h_sword_cleaver = object_weapon_melee_2h_sword_sha
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 49,
-	actionAttackCost = 46,
-	mindAttackCost = 26,
+	healthAttackCost = 38,
+	actionAttackCost = 35,
+	mindAttackCost = 20,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 2,
+	pointBlankRange = 0,
+	pointBlankAccuracy = -15,
 
-	idealRange = 2,
-	idealAccuracy = 3,
+	idealRange = 5,
+	idealAccuracy = -15,
 
-	maxRange = 2,
-	maxRangeAccuracy = 5,
+	maxRange = 5,
+	maxRangeAccuracy = -15,
 
-	minDamage = 35,
-	maxDamage = 105,
+	minDamage = 50,
+	maxDamage = 150,
 
-	attackSpeed = 5.3,
+	attackSpeed = 4.1,
 
+	woundsRatio = 27,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},

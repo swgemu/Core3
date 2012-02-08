@@ -43,6 +43,26 @@
 
 object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_heavy_acid_beam:new {
 
+	healthAttackCost = 60,
+	actionAttackCost = 60,
+	mindAttackCost = 15,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -20,
+
+	idealRange = 8,
+	idealAccuracy = -60,
+
+	maxRange = 48,
+	maxRangeAccuracy = -120,
+
+	minDamage = 90,
+	maxDamage = 650,
+
+	attackSpeed = 10.5,
+
+	woundsRatio = 27,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

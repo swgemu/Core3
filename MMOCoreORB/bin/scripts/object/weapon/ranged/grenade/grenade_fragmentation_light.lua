@@ -43,6 +43,27 @@
 
 object_weapon_ranged_grenade_grenade_fragmentation_light = object_weapon_ranged_grenade_shared_grenade_fragmentation_light:new {
 
+	healthAttackCost = 50,
+	actionAttackCost = 50,
+	mindAttackCost = 10,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -10,
+
+	idealRange = 20,
+	idealAccuracy = 15,
+
+	maxRange = 32,
+	maxRangeAccuracy = -30,
+
+	minDamage = 50,
+	maxDamage = 150,
+
+	attackSpeed = 4,
+
+	woundsRatio = 10,
+
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},

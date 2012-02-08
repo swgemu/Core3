@@ -44,6 +44,27 @@
 object_weapon_ranged_grenade_grenade_thermal_detonator = object_weapon_ranged_grenade_shared_grenade_thermal_detonator:new {
 
 
+	healthAttackCost = 75,
+	actionAttackCost = 75,
+	mindAttackCost = 35,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -10,
+
+	idealRange = 20,
+	idealAccuracy = 15,
+
+	maxRange = 32,
+	maxRangeAccuracy = -30,
+
+	minDamage = 100,
+	maxDamage = 400,
+
+	attackSpeed = 5,
+
+	woundsRatio = 10,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

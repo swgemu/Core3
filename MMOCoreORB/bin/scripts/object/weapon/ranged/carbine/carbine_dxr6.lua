@@ -81,26 +81,26 @@ object_weapon_ranged_carbine_carbine_dxr6 = object_weapon_ranged_carbine_shared_
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-
-	healthAttackCost = 33,
-	actionAttackCost = 52,
-	mindAttackCost = 25,
-
+	healthAttackCost = 25,
+	actionAttackCost = 40,
+	mindAttackCost = 19,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -20,
 
-	idealRange = 35,
+	idealRange = 22,
 	idealAccuracy = 0,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -80,
 
-	minDamage = 100,
-	maxDamage = 300,
+	minDamage = 90,
+	maxDamage = 110,
 
-	attackSpeed = 2.4,
+	attackSpeed = 4.6,
+
+	woundsRatio = 15,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

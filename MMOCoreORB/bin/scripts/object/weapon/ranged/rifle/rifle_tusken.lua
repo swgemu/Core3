@@ -81,24 +81,26 @@ object_weapon_ranged_rifle_rifle_tusken = object_weapon_ranged_rifle_shared_rifl
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 13,
-	actionAttackCost = 23,
-	mindAttackCost = 55,
+	healthAttackCost = 10,
+	actionAttackCost = 18,
+	mindAttackCost = 42,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -60,
 
-	idealRange = 35,
-	idealAccuracy = 0,
+	idealRange = 60,
+	idealAccuracy = 20,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -50,
 
-	minDamage = 70,
-	maxDamage = 105,
+	minDamage = 100,
+	maxDamage = 150,
 
-	attackSpeed = 9.1,
+	attackSpeed = 7,
+
+	woundsRatio = 9,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

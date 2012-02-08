@@ -82,24 +82,26 @@ object_weapon_melee_sword_sword_01 = object_weapon_melee_sword_shared_sword_01:n
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 27,
-	actionAttackCost = 29,
-	mindAttackCost = 29,
+	healthAttackCost = 22,
+	actionAttackCost = 22,
+	mindAttackCost = 22,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 5,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 10,
 
-	idealRange = 5,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 10,
 
-	maxRange = 5,
-	maxRangeAccuracy = 5,
+	maxRange = 4,
+	maxRangeAccuracy = 10,
 
 	minDamage = 20,
 	maxDamage = 90,
 
 	attackSpeed = 3.5,
+
+	woundsRatio = 14,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},

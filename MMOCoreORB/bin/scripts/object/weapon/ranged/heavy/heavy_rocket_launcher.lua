@@ -44,6 +44,27 @@
 object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_shared_heavy_rocket_launcher:new {
 
 
+	healthAttackCost = 95,
+	actionAttackCost = 42,
+	mindAttackCost = 23,
+	forceCost = 0,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -30,
+
+	idealRange = 10,
+	idealAccuracy = 50,
+
+	maxRange = 64,
+	maxRangeAccuracy = -80,
+
+	minDamage = 100,
+	maxDamage = 500,
+
+	attackSpeed = 10,
+
+	woundsRatio = 24,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

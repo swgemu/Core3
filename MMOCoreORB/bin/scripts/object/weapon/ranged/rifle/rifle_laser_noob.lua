@@ -81,24 +81,26 @@ object_weapon_ranged_rifle_rifle_laser_noob = object_weapon_ranged_rifle_shared_
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 16,
-	actionAttackCost = 26,
-	mindAttackCost = 68,
+	healthAttackCost = 12,
+	actionAttackCost = 20,
+	mindAttackCost = 25,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = -30,
 
-	idealRange = 35,
-	idealAccuracy = 0,
+	idealRange = 52,
+	idealAccuracy = 10,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = -60,
 
-	minDamage = 7,
-	maxDamage = 103,
+	minDamage = 65,
+	maxDamage = 155,
 
-	attackSpeed = 8.8
+	attackSpeed = 4,
+
+	woundsRatio = 7
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_laser_noob, "object/weapon/ranged/rifle/rifle_laser_noob.iff")

@@ -87,19 +87,21 @@ object_weapon_melee_sword_sword_rantok = object_weapon_melee_sword_shared_sword_
 	mindAttackCost = 25,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 10,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 10,
 
-	idealRange = 10,
-	idealAccuracy = 4,
+	idealRange = 3,
+	idealAccuracy = 10,
 
-	maxRange = 10,
-	maxRangeAccuracy = 4,
+	maxRange = 3,
+	maxRangeAccuracy = 10,
 
 	minDamage = 45,
 	maxDamage = 150,
 
-	attackSpeed = 3.3
+	attackSpeed = 3.3,
+
+	woundsRatio = 20
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_sword_rantok, "object/weapon/melee/sword/sword_rantok.iff")

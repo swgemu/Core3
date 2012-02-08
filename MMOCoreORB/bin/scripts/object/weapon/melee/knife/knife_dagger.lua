@@ -82,25 +82,26 @@ object_weapon_melee_knife_knife_dagger = object_weapon_melee_knife_shared_knife_
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 8,
-	actionAttackCost = 38,
-	mindAttackCost = 8,
+	healthAttackCost = 6,
+	actionAttackCost = 29,
+	mindAttackCost = 6,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 17,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 25,
 
-	idealRange = 17,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 25,
 
-	maxRange = 17,
-	maxRangeAccuracy = 4,
+	maxRange = 4,
+	maxRangeAccuracy = 25,
 
-	minDamage = 14,
-	maxDamage = 32,
+	minDamage = 20,
+	maxDamage = 45,
 
-	attackSpeed = 3.9,
+	attackSpeed = 3,
 
+	woundsRatio = 9,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},

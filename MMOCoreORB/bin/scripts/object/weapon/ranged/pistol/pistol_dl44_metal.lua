@@ -82,24 +82,26 @@ object_weapon_ranged_pistol_pistol_dl44_metal = object_weapon_ranged_pistol_shar
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 13,
-	actionAttackCost = 38,
-	mindAttackCost = 13,
+	healthAttackCost = 10,
+	actionAttackCost = 29,
+	mindAttackCost = 10,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
 
-	idealRange = 15,
+	idealRange = 5,
 	idealAccuracy = 15,
 
-	maxRange = 45,
-	maxRangeAccuracy = 5,
+	maxRange = 64,
+	maxRangeAccuracy = -80,
 
-	minDamage = 14,
-	maxDamage = 70,
+	minDamage = 20,
+	maxDamage = 100,
 
-	attackSpeed = 4.4,
+	attackSpeed = 3.4,
+
+	woundsRatio = 7,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
