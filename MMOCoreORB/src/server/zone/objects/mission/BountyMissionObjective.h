@@ -160,7 +160,9 @@ public:
 
 	int getObjectiveStatus();
 
-	SceneObject* getProbotDroid();
+	SceneObject* getArakydDroid();
+
+	void setArakydDroid(SceneObject* droid);
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 
@@ -245,7 +247,9 @@ public:
 
 	int getObjectiveStatus();
 
-	SceneObject* getProbotDroid();
+	SceneObject* getArakydDroid();
+
+	void setArakydDroid(SceneObject* droid);
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 
@@ -316,7 +320,9 @@ public:
 
 	int getObjectiveStatus();
 
-	SceneObject* getProbotDroid();
+	SceneObject* getArakydDroid();
+
+	void setArakydDroid(SceneObject* droid);
 
 	void performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player);
 

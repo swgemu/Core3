@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 
 namespace server {
 namespace zone {
@@ -58,12 +60,15 @@ namespace events {
 
 class CallArakydTask : public Task, public Logger {
 	ManagedWeakReference<CreatureObject*> player;
+	ManagedWeakReference<BountyMissionObjective*> objective;
 	int time;
+	Vector3 droidPosition;
 
 public:
-	CallArakydTask(CreatureObject* player) :
+	CallArakydTask(CreatureObject* player, BountyMissionObjective* objective) :
 		Logger("FindTargetTask") {
 		this->player = player;
+		this->objective = objective;
 		time = 20;
 	}
 
@@ -73,8 +78,9 @@ public:
 
 	void run() {
 		ManagedReference<CreatureObject*> playerRef = player.get();
+		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
 
-		if (playerRef == NULL) {
+		if (playerRef == NULL || objectiveRef == NULL) {
 			return;
 		}
 
@@ -85,7 +91,8 @@ public:
 			reschedule(15 * 1000);
 			break;
 		case 3: {
-			PlayClientEffectLoc* effect = new PlayClientEffectLoc("clienteffect/probot_delivery.cef", playerRef->getZone()->getZoneName(), playerRef->getPositionX() + 30, playerRef->getPositionZ(), playerRef->getPositionY(), 0, 0);
+			droidPosition = getLandingCoordinates(playerRef);
+			PlayClientEffectLoc* effect = new PlayClientEffectLoc("clienteffect/probot_delivery.cef", playerRef->getZone()->getZoneName(), droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0, 0);
 			playerRef->sendMessage(effect);
 		}
 		case 5:
@@ -96,14 +103,70 @@ public:
 			time -= 1;
 			reschedule(1 * 1000);
 			break;
-		case 0:
-			playerRef->sendSystemMessage("@mission/mission_generic:probe_droid_arrival");
-			//TODO spawn droid.
+		case 0: {
+				playerRef->sendSystemMessage("@mission/mission_generic:probe_droid_arrival");
+				ManagedReference<AiAgent*> droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(String("probot").hashCode(), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
+				objectiveRef->setArakydDroid(droid);
+				droid->setFollowObject(playerRef);
+			}
 			break;
 		default:
 			error("Unknowns state.");
 			break;
 		}
+	}
+
+	Vector3 getLandingCoordinates(CreatureObject* player) {
+		Vector3 position = player->getPosition();
+
+		if (player->getZone() == NULL || player->getZone()->getPlanetManager() == NULL) {
+			return position;
+		}
+
+		PlanetManager* planetManager = player->getZone()->getPlanetManager();
+
+		int distance = 30;
+		int angle = 15;
+
+		do {
+			for (int i = 0; i < 10; i++) {
+				position = player->getWorldCoordinate(distance + System::random(20), angle - System::random(2 * angle));
+
+				if (noInterferingObjects(player, position)) {
+					return position;
+				}
+			}
+
+			distance += 10;
+			angle += 5;
+		} while (distance <= 60);
+
+		return player->getPosition();
+	}
+
+	bool noInterferingObjects(CreatureObject* player, Vector3 position)
+	{
+		SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects =  player->getCloseObjects();
+
+		for (int j = 0; j < closeObjects->size(); j++) {
+			SceneObject* obj = cast<SceneObject*>(closeObjects->get(j).get());
+
+			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+
+			if (objectTemplate != NULL) {
+				float radius = objectTemplate->getNoBuildRadius();
+
+				if (radius > 0) {
+					Vector3 objWorldPos = obj->getWorldPosition();
+
+					if (objWorldPos.squaredDistanceTo(position) < radius * radius) {
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
 	}
 };
 

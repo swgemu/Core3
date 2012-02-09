@@ -9,14 +9,17 @@
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (droidObject == NULL || player == NULL || mission == NULL) {
-		//TODO: error message.
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		return NULL;
 	}
 
-	Reference<Task*> task;
+	Reference<Task*> task = NULL;
+
+	Locker playerLock(player);
 
 	switch (action) {
 	case CALLDROID:
@@ -31,7 +34,7 @@ Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droid
 		task = findTarget(droidObject, player, mission, true);
 		break;
 	default:
-		//TODO: error message.
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		break;
 	}
 
@@ -69,12 +72,20 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		return NULL;
 	}
 
-	Reference<CallArakydTask*> task = new CallArakydTask(player);
+	if (mission->getMissionObjective() == NULL) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_mission");
+		return NULL;
+	}
 
-/*	if (task != NULL && !task->isScheduled()) {
-		//Schedule immediately.
-		task->schedule(1);
-	}*/
+	Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
+	for (int i = 0; i < areas->size(); i++) {
+		if (areas->get(i)->isNoBuildArea()) {
+			player->sendSystemMessage("@mission/mission_generic:probe_droid_bad_location");
+			return NULL;
+		}
+	}
+
+	Reference<CallArakydTask*> task = new CallArakydTask(player, cast<BountyMissionObjective*>(mission->getMissionObjective()));
 
 	Core::getTaskManager()->executeTask(task);
 

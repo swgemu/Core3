@@ -100,7 +100,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::NPCCREATURE);
 	objectFactory.registerObject<JunkdealerCreature>(SceneObjectType::JUNKDEALERCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObjectType::DROIDCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectType::PROBOTCREATURE);
+	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::PROBOTCREATURE);
 	objectFactory.registerObject<VendorCreature>(SceneObjectType::VENDORCREATURE);
 
 	objectFactory.registerObject<CreatureObject>(SceneObjectType::PLAYERCREATURE);

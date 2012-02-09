@@ -118,8 +118,12 @@ class BountyMissionObjective extends MissionObjective {
 		return objectiveStatus;
 	}
 	
-	public SceneObject getProbotDroid() {
+	public SceneObject getArakydDroid() {
 		return activeDroid;
+	}
+	
+	public void setArakydDroid(SceneObject droid) {
+		activeDroid = droid;
 	}
 	
 	public native void performDroidAction(int action, SceneObject sceneObject, CreatureObject player);

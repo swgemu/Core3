@@ -1699,5 +1699,6 @@ includeFile("npc/yavin4/biogenic_scientist_generic_02.lua")
 includeFile("npc/yavin4/biogenic_scientist_geonosian.lua")
 includeFile("npc/yavin4/biogenic_crazyguy.lua")
 includeFile("npc/all/seeker.lua")
+includeFile("npc/all/probot.lua")
 
 includeFile("npc/event/stresstest_shuttleloc_barker.lua")

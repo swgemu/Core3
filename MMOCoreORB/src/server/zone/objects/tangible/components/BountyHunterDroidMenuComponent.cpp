@@ -14,7 +14,7 @@
 #include "server/zone/ZoneServer.h"
 
 void BountyHunterDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (!droidObject->isTangibleObject()) {
+	if (droidObject == NULL || !droidObject->isTangibleObject() || player == NULL) {
 		return;
 	}
 
@@ -107,7 +107,7 @@ bool BountyHunterDroidMenuComponent::playerOwnsTheDroid(SceneObject* droidObject
 		ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
 		if (objective != NULL) {
-			if (droidObject->getObjectID() == objective->getProbotDroid()->getObjectID()) {
+			if (droidObject->getObjectID() == objective->getArakydDroid()->getObjectID()) {
 				return true;
 			}
 		}
