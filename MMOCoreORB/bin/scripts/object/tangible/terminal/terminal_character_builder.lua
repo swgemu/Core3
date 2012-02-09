@@ -1233,6 +1233,30 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Bone Helmet", "object/tangible/wearables/armor/bone/armor_bone_s01_helmet.iff",
 					"Bone Leggings", "object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff"
 				},
+				"Kashyyykian Armor",
+				{
+					"Black Mountain",
+					{
+						"Kashyyykian Black Mountain Left Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_bracer_l.iff",
+						"Kashyyykian Black Mountain Right Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_bracer_r.iff",
+						"Kashyyykian Black Mountain Chest Plate", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_chest_plate.iff",
+						"Kashyyykian Black Mountain Leggings", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_leggings.iff"
+					},
+					"Ceremonial",
+					{
+						"Kashyyykian Ceremonial Left Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_bracer_l.iff",
+						"Kashyyykian Ceremonial Right Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_bracer_r.iff",
+						"Kashyyykian Ceremonial Chest Plate", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_chest_plate.iff",
+						"Kashyyykian Ceremonial Leggings", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_leggings.iff"
+					},
+					"Hunting",
+					{
+						"Kashyyykian Hunting Left Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_bracer_l.iff",
+						"Kashyyykian Hunting Right Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_bracer_r.iff",
+						"Kashyyykian Hunting Chest Plate", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_chest_plate.iff",
+						"Kashyyykian Hunting Leggings", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_leggings.iff"
+					}
+				},
 				"Chitin Armor",
 				{
 					"Chitin Left Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_l.iff",
@@ -1268,25 +1292,25 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				{
 						"Light Jedi Robes",
 						{
-						"Light Jedi Robe 1", "object/tangible/wearables/robe/robe_jedi_light_s01.iff",
-						"Light Jedi Robe 2", "object/tangible/wearables/robe/robe_jedi_light_s02.iff",
-						"Light Jedi Robe 3", "object/tangible/wearables/robe/robe_jedi_light_s03.iff",
-						"Light Jedi Robe 4", "object/tangible/wearables/robe/robe_jedi_light_s04.iff",
-						"Light Jedi Robe 5", "object/tangible/wearables/robe/robe_jedi_light_s05.iff"
+							"Light Jedi Robe 1", "object/tangible/wearables/robe/robe_jedi_light_s01.iff",
+							"Light Jedi Robe 2", "object/tangible/wearables/robe/robe_jedi_light_s02.iff",
+							"Light Jedi Robe 3", "object/tangible/wearables/robe/robe_jedi_light_s03.iff",
+							"Light Jedi Robe 4", "object/tangible/wearables/robe/robe_jedi_light_s04.iff",
+							"Light Jedi Robe 5", "object/tangible/wearables/robe/robe_jedi_light_s05.iff"
 						},
 						
 						"Dark Jedi Robes",
 						{
-						"Dark Jedi Robe 1", "object/tangible/wearables/robe/robe_jedi_dark_s01.iff",
-						"Dark Jedi Robe 2", "object/tangible/wearables/robe/robe_jedi_dark_s02.iff",
-						"Dark Jedi Robe 3", "object/tangible/wearables/robe/robe_jedi_dark_s03.iff",
-						"Dark Jedi Robe 4", "object/tangible/wearables/robe/robe_jedi_dark_s04.iff",
-						"Dark Jedi Robe 5", "object/tangible/wearables/robe/robe_jedi_dark_s05.iff"
+							"Dark Jedi Robe 1", "object/tangible/wearables/robe/robe_jedi_dark_s01.iff",
+							"Dark Jedi Robe 2", "object/tangible/wearables/robe/robe_jedi_dark_s02.iff",
+							"Dark Jedi Robe 3", "object/tangible/wearables/robe/robe_jedi_dark_s03.iff",
+							"Dark Jedi Robe 4", "object/tangible/wearables/robe/robe_jedi_dark_s04.iff",
+							"Dark Jedi Robe 5", "object/tangible/wearables/robe/robe_jedi_dark_s05.iff"
 						}
 				},
 				"Backpacks",
 				{
-				"Backpack 01", "object/tangible/wearables/backpack/backpack_s01.iff"
+					"Backpack 01", "object/tangible/wearables/backpack/backpack_s01.iff"
 				}
 			},
 			"Consumables",
@@ -2103,11 +2127,26 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Light Lightning Cannon", "object/weapon/ranged/rifle/rifle_lightning.iff",
 					"Rocket Launcher", "object/weapon/ranged/heavy/heavy_rocket_launcher.iff"
 				},
-				"Onehanded",
+				"One-handed",
 				{
-					"Ryyk", "object/weapon/melee/sword/sword_blade_ryyk.iff",
+					"Sword", "object/weapon/melee/sword/sword_01.iff",
+					"Sword (noob)", "object/weapon/melee/sword/sword_01_noob.iff",
+					"Curved Sword", "object/weapon/melee/sword/sword_02.iff",
+					"Ryyk Blade", "object/weapon/melee/sword/sword_blade_ryyk.iff",
+					"Curved Nyax Sword", "object/weapon/melee/sword/sword_curved_nyax.iff",
+					"Nyax Sword", "object/weapon/melee/sword/sword_nyax.iff",
+					"Rantok", "object/weapon/melee/sword/sword_rantok.iff",
 					"Survival Knife", "object/weapon/melee/knife/knife_survival.iff",
-					"Stun Baton", "object/weapon/melee/baton/baton_stun.iff"
+					"Dagger", "object/weapon/melee/knife/knife_dagger.iff",
+					"Donkuwah Knife", "object/weapon/melee/knife/knife_donkuwah.iff",
+					"Janta Knife", "object/weapon/melee/knife/knife_janta.iff",
+					"Stone Knife", "object/weapon/melee/knife/knife_stone.iff",
+					"Stone Knife (noob)", "object/weapon/melee/knife/knife_stone_noob.iff",
+					"Vibroblade", "object/weapon/melee/knife/knife_vibroblade.iff",
+					"Jagged Vibroblade", "object/weapon/melee/knife/knife_vibroblade_quest.iff",
+					"Stun Baton", "object/weapon/melee/baton/baton_stun.iff",
+					"Gaderiffi Baton", "object/weapon/melee/baton/baton_gaderiffi.iff",
+					"Black Metal Gaderiffi Baton", "object/weapon/melee/baton/victor_baton_gaderiffi.iff"
 				},
 				"Pistols",
 				{
@@ -2133,10 +2172,17 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Striker Pistol (noob)", "object/weapon/ranged/pistol/pistol_striker_noob.iff",
 					"Tangle Pistol", "object/weapon/ranged/pistol/pistol_tangle.iff"
 				},
-				"Poleam",
+				"Polearms",
 				{
-					"Lance", "object/weapon/melee/polearm/lance_staff_metal.iff",
-					"Wood Staff", "object/weapon/melee/polearm/lance_staff_wood_s1.iff"
+					"Lance", "object/weapon/melee/polearm/lance_controllerfp.iff",
+					"Nightsister Lance", "object/weapon/melee/polearm/lance_controllerfp_nightsister.iff",
+					"Nightsister Energy Lance", "object/weapon/melee/polearm/lance_nightsister.iff",
+					"Janta Staff", "object/weapon/melee/polearm/lance_staff_janta.iff",
+					"Metal Staff", "object/weapon/melee/polearm/lance_staff_metal.iff",
+					"Vibro Lance", "object/weapon/melee/polearm/lance_staff_vibrolance.iff",
+					"Long Vibro Axe", "object/weapon/melee/polearm/polearm_vibro_axe.iff",
+					"Wood Staff", "object/weapon/melee/polearm/lance_staff_wood_s1.iff",
+					"Reinforced Combat Staff", "object/weapon/melee/polearm/lance_staff_wood_s2.iff",
 				},
 				"Rifles",
 				{
@@ -2157,14 +2203,22 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"T21", "object/weapon/ranged/rifle/rifle_t21.iff",
 					"Tusken Rifle", "object/weapon/ranged/rifle/rifle_tusken.iff"
 				},
-				"Twohanded",
+				"Two-handed",
 				{
 					"Two-handed Curved Sword", "object/weapon/melee/2h_sword/2h_sword_katana.iff",
-					"Heavy Axe", "object/weapon/melee/axe/axe_heavy_duty.iff"
+					"Grooved Two-handed Sword", "object/weapon/melee/2h_sword/2h_sword_katana_quest.iff",
+					"Scythe Blade", "object/weapon/melee/2h_sword/2h_sword_scythe.iff",
+					"Power Hammer", "object/weapon/melee/2h_sword/2h_sword_maul.iff",
+					"Two-handed Cleaver", "object/weapon/melee/2h_sword/2h_sword_cleaver.iff",
+					"Black Sun Executioner's Hack", "object/weapon/melee/2h_sword/2h_sword_blacksun_hack.iff",
+					"Gamorrean Battleaxe", "object/weapon/melee/2h_sword/2h_sword_battleaxe_quest.iff",
+					"Heavy Axe", "object/weapon/melee/axe/axe_heavy_duty.iff",
+					"Vibro Axe", "object/weapon/melee/axe/axe_vibro.iff"
 				},
 				"Unarmed",
 				{
-					"Vibro Knuckler", "object/weapon/melee/special/vibroknuckler.iff"
+					"Vibro Knuckler", "object/weapon/melee/special/vibroknuckler.iff",
+					"A Blacksun Razor Knuckler", "object/weapon/melee/special/blacksun_razor.iff"
 				}
 			}
 		}
