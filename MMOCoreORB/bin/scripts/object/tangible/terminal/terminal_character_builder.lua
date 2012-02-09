@@ -2076,18 +2076,32 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Weapons",
 			{
-				"Rifles",
-				{
-					"T21", "object/weapon/ranged/rifle/rifle_t21.iff",
-					"Light Lightning Rifle", "object/weapon/ranged/rifle/rifle_lightning.iff"
-				},
-				"Pistols",
-				{
-					"Scatter", "object/weapon/ranged/pistol/pistol_scatter.iff"
-				},
 				"Carbines",
 				{
-					"DXR6", "object/weapon/ranged/carbine/carbine_dxr6.iff"
+					"CDEF Carbine", "object/weapon/ranged/carbine/carbine_cdef.iff",
+					"Corsec CDEF Carbine", "object/weapon/ranged/carbine/carbine_cdef_corsec.iff",
+					"DH17 Carbine", "object/weapon/ranged/carbine/carbine_dh17.iff",
+					"DH17 Carbine (black)", "object/weapon/ranged/carbine/carbine_dh17_black.iff",
+					"DH17 Short Carbine", "object/weapon/ranged/carbine/carbine_dh17_snubnose.iff",
+					"DXR6 Carbine", "object/weapon/ranged/carbine/carbine_dxr6.iff",
+					"E11 Carbine", "object/weapon/ranged/carbine/carbine_e11.iff",
+					"Enhanced E11 Carbine", "object/weapon/ranged/carbine/carbine_e11_quest.iff",
+					"Lithitanium Carbine", "object/weapon/ranged/carbine/carbine_e11_victor_quest.iff",
+					"EE3 Carbine", "object/weapon/ranged/carbine/carbine_ee3.iff",
+					"Elite Carbine", "object/weapon/ranged/carbine/carbine_elite.iff",
+					"Laser Carbine", "object/weapon/ranged/carbine/carbine_laser.iff",
+					"Nym's Slug-thrower Carbine", "object/weapon/ranged/carbine/carbine_nym_slugthrower.iff"
+				},
+				"Heavy",
+				{
+					"Acid Stream Launcher", "object/weapon/ranged/heavy/heavy_acid_beam.iff",
+					"Beam Rifle", "object/weapon/ranged/rifle/rifle_beam.iff",
+					"Flame Thrower", "object/weapon/ranged/rifle/rifle_flame_thrower.iff",
+					"Heavy Acid Rifle", "object/weapon/ranged/rifle/rifle_acid_beam.iff",
+					"Heavy Particle Beam Cannon", "object/weapon/ranged/heavy/heavy_particle_beam.iff",
+					"Lightning Beam Cannon", "object/weapon/ranged/heavy/heavy_lightning_beam.iff",
+					"Light Lightning Cannon", "object/weapon/ranged/rifle/rifle_lightning.iff",
+					"Rocket Launcher", "object/weapon/ranged/heavy/heavy_rocket_launcher.iff"
 				},
 				"Onehanded",
 				{
@@ -2095,15 +2109,58 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Survival Knife", "object/weapon/melee/knife/knife_survival.iff",
 					"Stun Baton", "object/weapon/melee/baton/baton_stun.iff"
 				},
-				"Twohanded",
+				"Pistols",
 				{
-					"Two-handed Curved Sword", "object/weapon/melee/2h_sword/2h_sword_katana.iff",
-					"Heavy Axe", "object/weapon/melee/axe/axe_heavy_duty.iff"
+					"CDEF Pistol", "object/weapon/ranged/pistol/pistol_cdef.iff",
+					"CDEF Pistol (noob)", "object/weapon/ranged/pistol/pistol_cdef_noob.iff",
+					"Corsec CDEF Pistol", "object/weapon/ranged/pistol/pistol_cdef_corsec.iff",
+					"D18 Pistol", "object/weapon/ranged/pistol/pistol_d18.iff",
+					"DE-10 Pistol", "object/weapon/ranged/pistol/pistol_de_10.iff",
+					"DH17 Pistol", "object/weapon/ranged/pistol/pistol_dh17.iff",
+					"DL44 Pistol", "object/weapon/ranged/pistol/pistol_dl44.iff",
+					"DL44 Metal Pistol", "object/weapon/ranged/pistol/pistol_dl44_metal.iff",
+					"DX2 Pistol", "object/weapon/ranged/pistol/pistol_dx2.iff",
+					"FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5.iff",
+					"Featherweight FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5_quest.iff",
+					"Geonosian Sonic Blaster", "object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff",
+					"Power5 Pistol", "object/weapon/ranged/pistol/pistol_power5.iff",
+					"Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster.iff",
+					"Modified Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster_quest.iff",
+					"Scatter Pistol", "object/weapon/ranged/pistol/pistol_scatter.iff",
+					"Scout Blaster", "object/weapon/ranged/pistol/pistol_scout_blaster.iff",
+					"SR Combat Pistol", "object/weapon/ranged/pistol/pistol_srcombat.iff",
+					"Striker Pistol", "object/weapon/ranged/pistol/pistol_striker.iff",
+					"Striker Pistol (noob)", "object/weapon/ranged/pistol/pistol_striker_noob.iff",
+					"Tangle Pistol", "object/weapon/ranged/pistol/pistol_tangle.iff"
 				},
 				"Poleam",
 				{
 					"Lance", "object/weapon/melee/polearm/lance_staff_metal.iff",
 					"Wood Staff", "object/weapon/melee/polearm/lance_staff_wood_s1.iff"
+				},
+				"Rifles",
+				{
+					"Berserker Rifle", "object/weapon/ranged/rifle/rifle_berserker.iff",
+					"Bowcaster", "object/weapon/ranged/rifle/rifle_bowcaster.iff",
+					"CDEF Rifle", "object/weapon/ranged/rifle/rifle_cdef.iff",
+					"DLT20 Rifle", "object/weapon/ranged/rifle/rifle_dlt20.iff",
+					"DLT20a Rifle", "object/weapon/ranged/rifle/rifle_dlt20a.iff",
+					"E11 Rifle", "object/weapon/ranged/rifle/rifle_e11.iff",
+					"An Ewok Crossbow", "object/weapon/ranged/rifle/rifle_ewok_crossbow.iff",
+					"Jawa Ion Rifle", "object/weapon/ranged/rifle/rifle_jawa_ion.iff",
+					"Laser Rifle", "object/weapon/ranged/rifle/rifle_laser.iff",
+					"Laser Rifle (noob)", "object/weapon/ranged/rifle/rifle_laser_noob.iff",
+					"Lithitanium Rifle", "object/weapon/ranged/rifle/rifle_victor_tusken.iff",
+					"SG82 Rifle", "object/weapon/ranged/rifle/rifle_sg82.iff",
+					"Spraystick", "object/weapon/ranged/rifle/rifle_spraystick.iff",
+					"Tenloss DXR-6 Disruptor Rifle", "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
+					"T21", "object/weapon/ranged/rifle/rifle_t21.iff",
+					"Tusken Rifle", "object/weapon/ranged/rifle/rifle_tusken.iff"
+				},
+				"Twohanded",
+				{
+					"Two-handed Curved Sword", "object/weapon/melee/2h_sword/2h_sword_katana.iff",
+					"Heavy Axe", "object/weapon/melee/axe/axe_heavy_duty.iff"
 				},
 				"Unarmed",
 				{
