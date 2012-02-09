@@ -1237,24 +1237,25 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				{
 					"Black Mountain",
 					{
-						"Kashyyykian Black Mountain Left Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_bracer_l.iff",
-						"Kashyyykian Black Mountain Right Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_bracer_r.iff",
-						"Kashyyykian Black Mountain Chest Plate", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_chest_plate.iff",
-						"Kashyyykian Black Mountain Leggings", "object/tangible/wearables/armor/kashyyykian_black_mtn/kashyyykian_black_mtn_leggings.iff"
+						"Kashyyykian Black Mountain Left Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_bracer_l.iff",
+						"Kashyyykian Black Mountain Right Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_bracer_r.iff",
+						"Kashyyykian Black Mountain Chest Plate", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_chest_plate.iff",
+						"Kashyyykian Black Mountain Leggings", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_leggings.iff"
 					},
+					
 					"Ceremonial",
 					{
-						"Kashyyykian Ceremonial Left Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_bracer_l.iff",
-						"Kashyyykian Ceremonial Right Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_bracer_r.iff",
-						"Kashyyykian Ceremonial Chest Plate", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_chest_plate.iff",
-						"Kashyyykian Ceremonial Leggings", "object/tangible/wearables/armor/kashyyykian_ceremonial/kashyyykian_ceremonial_leggings.iff"
+						"Kashyyykian Ceremonial Left Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_l.iff",
+						"Kashyyykian Ceremonial Right Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_r.iff",
+						"Kashyyykian Ceremonial Chest Plate", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_chest_plate.iff",
+						"Kashyyykian Ceremonial Leggings", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_leggings.iff"
 					},
 					"Hunting",
 					{
-						"Kashyyykian Hunting Left Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_bracer_l.iff",
-						"Kashyyykian Hunting Right Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_bracer_r.iff",
-						"Kashyyykian Hunting Chest Plate", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_chest_plate.iff",
-						"Kashyyykian Hunting Leggings", "object/tangible/wearables/armor/kashyyykian_hunting/kashyyykian_hunting_leggings.iff"
+						"Kashyyykian Hunting Left Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_l.iff",
+						"Kashyyykian Hunting Right Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_r.iff",
+						"Kashyyykian Hunting Chest Plate", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_chest_plate.iff",
+						"Kashyyykian Hunting Leggings", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_leggings.iff"
 					}
 				},
 				"Chitin Armor",
@@ -2179,7 +2180,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Nightsister Energy Lance", "object/weapon/melee/polearm/lance_nightsister.iff",
 					"Janta Staff", "object/weapon/melee/polearm/lance_staff_janta.iff",
 					"Metal Staff", "object/weapon/melee/polearm/lance_staff_metal.iff",
-					"Vibro Lance", "object/weapon/melee/polearm/lance_staff_vibrolance.iff",
+					"Vibro Lance", "object/weapon/melee/polearm/lance_vibrolance.iff",
 					"Long Vibro Axe", "object/weapon/melee/polearm/polearm_vibro_axe.iff",
 					"Wood Staff", "object/weapon/melee/polearm/lance_staff_wood_s1.iff",
 					"Reinforced Combat Staff", "object/weapon/melee/polearm/lance_staff_wood_s2.iff",
