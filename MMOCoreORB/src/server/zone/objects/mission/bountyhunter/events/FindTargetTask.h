@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/Zone.h"
 
 namespace server {
 namespace zone {
@@ -63,6 +64,7 @@ class FindTargetTask : public Task, public Logger {
 	int timeLeft;
 	bool success;
 	bool track;
+	bool arakyd;
 	int trackingsLeft;
 
 	enum states { Init, DroidSent, Searching, Tracking, Completed};
@@ -70,12 +72,13 @@ class FindTargetTask : public Task, public Logger {
 	states state;
 
 public:
-	FindTargetTask(CreatureObject* droid, CreatureObject* player, BountyMissionObjective* objective, bool track) :
+	FindTargetTask(CreatureObject* droid, CreatureObject* player, BountyMissionObjective* objective, bool track, bool arakyd) :
 		Logger("FindTargetTask") {
 		this->droid = droid;
 		this->player = player;
 		this->objective = objective;
 		this->track = track;
+		this->arakyd = arakyd;
 		state = Init;
 
 		if (objective == NULL) {
@@ -109,7 +112,11 @@ public:
 			Locker clocker(droid, player);
 
 			droid->setPosture(CreaturePosture::SITTING, true);
-			player->sendSystemMessage("@mission/mission_generic:seeker_droid_launched");
+			if (arakyd) {
+				player->sendSystemMessage("@mission/mission_generic:probe_droid_takeoff");
+			} else {
+				player->sendSystemMessage("@mission/mission_generic:seeker_droid_launched");
+			}
 			reschedule(10 * 1000);
 			timeLeft -= 10;
 			state = DroidSent;
@@ -128,6 +135,7 @@ public:
 				int randomNumber = System::random(5) + 1;
 				player->sendSystemMessage("@mission/mission_generic:target_not_found_" + String::valueOf(randomNumber));
 				state = Completed;
+				clearActiveDroid();
 			}
 			break;
 		} case Tracking: {
@@ -139,6 +147,16 @@ public:
 			error("Incorrect state.");
 			break;
 		}
+	}
+
+	void clearActiveDroid() {
+		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
+
+		if (objectiveRef == NULL) {
+			return;
+		}
+
+		objectiveRef->setArakydDroid(NULL);
 	}
 
 	void findAndTrackSuccess() {
@@ -163,23 +181,44 @@ public:
 			objective->updateMissionStatus(3);
 		}
 
-		StringIdChatParameter message("@mission/mission_generic:assassin_target_location");
-		message.setDI(getDistanceToTarget());
-		message.setTO("mission/mission_generic", getDirectionToTarget());
-		player->sendSystemMessage(message);
+		if (arakyd) {
+			player->sendSystemMessage("@mission/mission_generic:" + getTargetZoneName());
+		} else {
+			if (getTargetZoneName() == droid->getZone()->getZoneName()) {
+				StringIdChatParameter message("@mission/mission_generic:assassin_target_location");
+				message.setDI(getDistanceToTarget());
+				message.setTO("mission/mission_generic", getDirectionToTarget());
+				player->sendSystemMessage(message);
+			} else {
+				player->sendSystemMessage("@mission/mission_generic:target_not_on_planet");
+			}
+		}
 		if (track) {
 			if (trackingsLeft > 0) {
+				player->sendSystemMessage("@mission/mission_generic:target_continue_tracking");
 				reschedule(calculateTime() * 1000);
 				trackingsLeft--;
 				state = Tracking;
 			} else {
-				//Send out of power message.
-				player->sendSystemMessage("@mission/mission_generic:target_not_found_4");
+				player->sendSystemMessage("@mission/mission_generic:target_track_lost");
+				clearActiveDroid();
 				state = Completed;
 			}
 		} else {
+			clearActiveDroid();
 			state = Completed;
 		}
+	}
+
+	String getTargetZoneName() {
+		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
+
+		if (objectiveRef == NULL) {
+			int randomNumber = System::random(5) + 1;
+			return "target_not_found_" + String::valueOf(randomNumber);
+		}
+
+		return "target_located_" + objectiveRef->getTargetZoneName();
 	}
 
 	bool getSuccess() {

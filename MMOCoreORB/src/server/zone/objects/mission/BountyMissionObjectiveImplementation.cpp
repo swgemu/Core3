@@ -27,6 +27,8 @@ void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTem
 }
 
 void BountyMissionObjectiveImplementation::activate() {
+	activeDroid = NULL;
+
 	if (objectiveStatus != INITSTATUS) {
 		getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
 
@@ -169,7 +171,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 				updateWaypoint();
 			}
 		}
-		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner());
+		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), zone->getZoneName());
 		if (targetTask != NULL && !targetTask->isScheduled()) {
 			targetTask->schedule(10 * 1000);
 		}
@@ -209,7 +211,9 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 
 	mission->updateMissionLocation();
 
-	getPlayerOwner()->sendSystemMessage("@mission/mission_bounty_informant:target_location_received");
+	if (mission->getDifficultyLevel() == 1) {
+		getPlayerOwner()->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
+	}
 }
 
 void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {
@@ -217,8 +221,6 @@ void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneO
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		return;
 	}
-
-	activeDroid = sceneObject;
 
 	if (droid == NULL) {
 		droid = new BountyHunterDroid();
@@ -262,4 +264,13 @@ void BountyMissionObjectiveImplementation::cancelAllTasks() {
 	}
 
 	droidTasks.removeAll();
+}
+
+String BountyMissionObjectiveImplementation::getTargetZoneName() {
+	if (targetTask != NULL) {
+		return targetTask->getTargetZoneName();
+	}
+
+	//No target task, return dungeon1 which is not able to find.
+	return "dungeon1";
 }

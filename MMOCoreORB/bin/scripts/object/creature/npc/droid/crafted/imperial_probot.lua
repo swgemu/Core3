@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_crafted_imperial_probot = object_creature_npc_droid_crafted_shared_imperial_probot:new {
-
+	objectMenuComponent = {"cpp", "BountyHunterDroidMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_imperial_probot, "object/creature/npc/droid/crafted/imperial_probot.iff")

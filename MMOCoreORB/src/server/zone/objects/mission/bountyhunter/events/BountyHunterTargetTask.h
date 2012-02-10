@@ -66,12 +66,14 @@ class BountyHunterTargetTask: public Task, public Logger {
 	Vector3 nextPosition;
 	Vector3 currentPosition;
 	bool move;
+	String zoneName;
 
 public:
-	BountyHunterTargetTask(MissionObject* mission, CreatureObject* player) :
+	BountyHunterTargetTask(MissionObject* mission, CreatureObject* player, const String& zoneName) :
 		Logger("BountyHunterTargetTask") {
 		this->mission = mission;
 		this->player = player;
+		this->zoneName = zoneName;
 
 		objective = cast<BountyMissionObjective*> (
 				mission->getMissionObjective());
@@ -147,6 +149,10 @@ public:
 
 	Vector3 getTargetPosition() {
 		return currentPosition;
+	}
+
+	String getTargetZoneName() {
+		return zoneName;
 	}
 
 	void updateToSpawnableTargetPosition() {

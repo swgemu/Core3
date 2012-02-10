@@ -174,6 +174,8 @@ public:
 
 	void cancelAllTasks();
 
+	String getTargetZoneName();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -182,6 +184,8 @@ protected:
 	BountyMissionObjective(DummyConstructorParameter* param);
 
 	virtual ~BountyMissionObjective();
+
+	String _return_getTargetZoneName;
 
 	friend class BountyMissionObjectiveHelper;
 };
@@ -261,6 +265,8 @@ public:
 
 	void cancelAllTasks();
 
+	String getTargetZoneName();
+
 	WeakReference<BountyMissionObjective*> _this;
 
 	operator const BountyMissionObjective*();
@@ -331,6 +337,8 @@ public:
 	void updateWaypoint();
 
 	void cancelAllTasks();
+
+	String getTargetZoneName();
 
 protected:
 	String _param0_spawnTarget__String_;

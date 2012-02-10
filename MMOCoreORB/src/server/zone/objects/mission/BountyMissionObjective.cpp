@@ -22,7 +22,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -248,6 +248,20 @@ void BountyMissionObjective::cancelAllTasks() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->cancelAllTasks();
+}
+
+String BountyMissionObjective::getTargetZoneName() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTARGETZONENAME__);
+
+		method.executeWithAsciiReturn(_return_getTargetZoneName);
+		return _return_getTargetZoneName;
+	} else
+		return _implementation->getTargetZoneName();
 }
 
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
@@ -558,6 +572,9 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_CANCELALLTASKS__:
 		cancelAllTasks();
 		break;
+	case RPC_GETTARGETZONENAME__:
+		resp->insertAscii(getTargetZoneName());
+		break;
 	default:
 		return NULL;
 	}
@@ -623,6 +640,10 @@ void BountyMissionObjectiveAdapter::updateWaypoint() {
 
 void BountyMissionObjectiveAdapter::cancelAllTasks() {
 	(static_cast<BountyMissionObjective*>(stub))->cancelAllTasks();
+}
+
+String BountyMissionObjectiveAdapter::getTargetZoneName() {
+	return (static_cast<BountyMissionObjective*>(stub))->getTargetZoneName();
 }
 
 /*

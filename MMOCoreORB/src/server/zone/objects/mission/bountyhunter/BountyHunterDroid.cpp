@@ -26,6 +26,7 @@ Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droid
 		task = callArakydDroid(droidObject, player, mission);
 		break;
 	case TRANSMITBIOLOGICALSIGNATURE:
+		task = transmitBiologicalSignature(droidObject, player, mission);
 		break;
 	case FINDTARGET:
 		task = findTarget(droidObject, player, mission, false);
@@ -56,7 +57,7 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 
 	ManagedReference<CreatureObject*> droid = player->getZone()->getCreatureManager()->spawnCreature(String("seeker").hashCode(), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), 0);
 
-	Reference<FindTargetTask*> findTargetTask = new FindTargetTask(droid, player, objective, track);
+	Reference<FindTargetTask*> findTargetTask = new FindTargetTask(droid, player, objective, track, false);
 	findTargetTask->schedule(2000);
 
 	Locker locker(droidObject);
@@ -77,6 +78,13 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		return NULL;
 	}
 
+	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
+
+	if (objective->getArakydDroid() != NULL) {
+		player->sendSystemMessage("@mission/mission_generic:probe_droid_too_many");
+		return NULL;
+	}
+
 	Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 	for (int i = 0; i < areas->size(); i++) {
 		if (areas->get(i)->isNoBuildArea()) {
@@ -89,5 +97,32 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 	Core::getTaskManager()->executeTask(task);
 
+	//Temporary set the arakyd droid to the player object. The call task will overwrite it with correct value.
+	//This is needed to prevent the player from launching more than one droid at a time.
+	objective->setArakydDroid(player);
+
+	Locker locker(droidObject);
+
+	droidObject->destroyObjectFromWorld(true);
+
 	return task;
+}
+
+Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
+	if (mission->getDifficultyLevel() < 3) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		return NULL;
+	}
+
+	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
+
+	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");
+		return NULL;
+	}
+
+	Reference<FindTargetTask*> findTargetTask = new FindTargetTask(cast<CreatureObject*>(droidObject), player, objective, false, true);
+	findTargetTask->schedule(1000);
+
+	return findTargetTask;
 }

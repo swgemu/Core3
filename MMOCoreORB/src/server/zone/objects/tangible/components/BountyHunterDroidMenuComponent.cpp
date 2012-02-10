@@ -75,7 +75,9 @@ bool BountyHunterDroidMenuComponent::playerCanUseSeeker(CreatureObject* player) 
 }
 
 bool BountyHunterDroidMenuComponent::isProbeDroid(SceneObject* droidObject) {
-	return droidObject->getObjectTemplate()->getTemplateFileName() == "mission_bounty_droid_probot";
+	return droidObject->getObjectTemplate()->getTemplateFileName() == "mission_bounty_droid_probot" ||
+			droidObject->getObjectTemplate()->getTemplateFileName() == "probot" ||
+			droidObject->getObjectTemplate()->getTemplateFileName() == "imperial_probot";
 }
 
 bool BountyHunterDroidMenuComponent::isSeekerDroid(SceneObject* droidObject) {
@@ -85,15 +87,7 @@ bool BountyHunterDroidMenuComponent::isSeekerDroid(SceneObject* droidObject) {
 bool BountyHunterDroidMenuComponent::droidIsInPlayerInventory(SceneObject* droidObject, CreatureObject* player) {
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (inventory != NULL) {
-		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-			if (droidObject == inventory->getContainerObject(i)) {
-				return true;
-			}
-		}
-	}
-
-	return false;
+	return droidObject->getParent() == inventory;
 }
 
 bool BountyHunterDroidMenuComponent::droidIsInZone(SceneObject* droidObject) {
@@ -106,7 +100,7 @@ bool BountyHunterDroidMenuComponent::playerOwnsTheDroid(SceneObject* droidObject
 	if (mission != NULL) {
 		ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
-		if (objective != NULL) {
+		if (objective != NULL && objective->getArakydDroid() != NULL) {
 			if (droidObject->getObjectID() == objective->getArakydDroid()->getObjectID()) {
 				return true;
 			}

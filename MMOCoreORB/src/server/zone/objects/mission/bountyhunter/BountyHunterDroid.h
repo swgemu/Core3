@@ -43,6 +43,8 @@ private:
 	Reference<FindTargetTask*> findTarget(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission, bool track);
 
 	Reference<CallArakydTask*> callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission);
+
+	Reference<FindTargetTask*> transmitBiologicalSignature(SceneObject* sceneObject, CreatureObject* player, MissionObject* mission);
 };
 
 } // namespace bountyhunter
