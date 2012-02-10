@@ -51,7 +51,7 @@ object_weapon_ranged_pistol_pistol_launcher = object_weapon_ranged_pistol_shared
 	attackType = RANGEDATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
-	damageType = KINETIC,
+	damageType = BLAST,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = NONE,

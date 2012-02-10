@@ -42,7 +42,41 @@
 
 
 object_weapon_ranged_heavy_heavy_particle_beam = object_weapon_ranged_heavy_shared_heavy_particle_beam:new {
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = ALL,
 
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ENERGY,
+
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
+
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	xpType = "combat_rangedspecialize_heavy",
+
+	-- See http://www.ocdsoft.com/files/certifications.xls
+	certificationsRequired = { "cert_heavy_particle_beam" },
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "heavy_particle_beam_accuracy" },
+
+	creatureAimModifiers = { },
+
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+
+	-- Leave as "dodge" for now, may have additions later
+	defenderSecondaryDefenseModifiers = { },
+
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "heavy_particle_beam_speed" },
+	
+	useCount = 40,
 
 	healthAttackCost = 25,
 	actionAttackCost = 85,

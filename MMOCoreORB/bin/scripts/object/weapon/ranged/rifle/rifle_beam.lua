@@ -53,7 +53,7 @@ object_weapon_ranged_rifle_rifle_beam = object_weapon_ranged_rifle_shared_rifle_
 	damageType = ENERGY,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = LIGHT,
+	armorPiercing = NONE,
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
@@ -61,7 +61,7 @@ object_weapon_ranged_rifle_rifle_beam = object_weapon_ranged_rifle_shared_rifle_
 	xpType = "combat_rangedspecialize_rifle",
 
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_rifle_cdef" },
+	certificationsRequired = { "cert_rifle_beam" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 
@@ -71,13 +71,13 @@ object_weapon_ranged_rifle_rifle_beam = object_weapon_ranged_rifle_shared_rifle_
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "rifle_speed" },
 
 	-- Leave blank for now
-	damageModifiers = { },
+	damageModifiers = { "block" },
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily

@@ -61,7 +61,7 @@ object_weapon_ranged_carbine_carbine_dh17_black = object_weapon_ranged_carbine_s
 	xpType = "combat_rangedspecialize_carbine",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_carbine_cdef" },
+	certificationsRequired = { "cert_carbine_dh17" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "carbine_accuracy" },
 

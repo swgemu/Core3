@@ -42,9 +42,6 @@
 
 
 object_weapon_ranged_rifle_rifle_lightning = object_weapon_ranged_rifle_shared_rifle_lightning:new {
-
-	gameObjectType = 131087,
-
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 

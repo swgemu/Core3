@@ -63,19 +63,19 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_rifle_acid_beam" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "heavy_acid_beam_accuracy" },
+	creatureAccuracyModifiers = { "heavy_rifle_acid_accuracy" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
-	speedModifiers = { "heavy_acid_beam_speed" },
+	speedModifiers = { "heavy_rifle_acid_speed" },
 
 	-- Leave blank for now
-	damageModifiers = { },
+	damageModifiers = { "block" },
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily

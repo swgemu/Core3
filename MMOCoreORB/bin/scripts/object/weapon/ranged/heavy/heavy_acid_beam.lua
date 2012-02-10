@@ -71,7 +71,7 @@ object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_h
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "heavy_acid_beam_speed" },
