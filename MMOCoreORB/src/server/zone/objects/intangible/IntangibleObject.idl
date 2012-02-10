@@ -48,6 +48,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.scene.variables.ContainerPermissions;
 
 class IntangibleObject extends SceneObject {
 	protected unsigned int status;
@@ -56,6 +57,10 @@ class IntangibleObject extends SceneObject {
 		Logger.setLoggingName("IntangibleObject");
 
 		status = 0;
+		
+		super.setContainerInheritPermissionsFromParent(false);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+		super.setContainerDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
 	}
 	
 	public void finalize() {
