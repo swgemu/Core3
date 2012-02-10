@@ -509,7 +509,7 @@ public:
 			creature->setPosture(CreaturePosture::KNOCKEDDOWN);
 			creature->updateKnockdownRecovery();
 			creature->updateLastKnockdown();
-			creature->sendSystemMessage("cbt_spam", "posture_knocked_down");
+			creature->sendSystemMessage("@cbt_spam:posture_knocked_down");
 
 			break;
 		case CommandEffect::POSTUREUP:
@@ -518,11 +518,11 @@ public:
 
 			if (creature->getPosture() == CreaturePosture::PRONE) {
 				creature->setPosture(CreaturePosture::CROUCHED);
-				creature->sendSystemMessage("cbt_spam", "force_posture_change_1");
+				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
 				creature->updatePostureUpRecovery();
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::UPRIGHT);
-				creature->sendSystemMessage("cbt_spam", "force_posture_change_0");
+				creature->sendSystemMessage("@cbt_spam:force_posture_change_0");
 				creature->updatePostureUpRecovery();
 			}
 
@@ -533,11 +533,11 @@ public:
 
 			if (creature->getPosture() == CreaturePosture::UPRIGHT) {
 				creature->setPosture(CreaturePosture::CROUCHED);
-				creature->sendSystemMessage("cbt_spam", "force_posture_change_1");
+				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
 				creature->updatePostureDownRecovery();
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::PRONE);
-				creature->sendSystemMessage("cbt_spam", "force_posture_change_2");
+				creature->sendSystemMessage("@cbt_spam:force_posture_change_2");
 				creature->updatePostureDownRecovery();
 			}
 

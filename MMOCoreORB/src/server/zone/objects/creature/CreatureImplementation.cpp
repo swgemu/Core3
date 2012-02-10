@@ -173,7 +173,7 @@ bool CreatureImplementation::isCamouflaged(CreatureObject* target) {
 
 	if (roll > chance) {
 		uint32 crc = String("skill_buff_mask_scent").hashCode();
-		target->sendSystemMessage("skl_use", "sys_scentmask_break");
+		target->sendSystemMessage("@skl_use:sys_scentmask_break");
 		target->removeBuff(crc);
 	} else {
 		StringIdChatParameter success("skl_use", "sys_scentmask_success");

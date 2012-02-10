@@ -74,7 +74,7 @@ public:
 
 		if (!checkStateMask(creature)) {
 			if(craftingTool != NULL && creature->isPlayerCreature()) {
-				creature->sendSystemMessage("ui_craft", "err_start");
+				creature->sendSystemMessage("@ui_craft:err_start");
 				craftingTool->sendToolStartFailure(creature);
 			}
 			return INVALIDSTATE;
@@ -82,7 +82,7 @@ public:
 
 		if (!checkInvalidLocomotions(creature)) {
 			if(craftingTool != NULL && creature->isPlayerCreature()) {
-				creature->sendSystemMessage("ui_craft", "err_start");
+				creature->sendSystemMessage("@ui_craft:err_start");
 				craftingTool->sendToolStartFailure(creature);
 			}
 			return INVALIDLOCOMOTION;

@@ -46,7 +46,7 @@ public:
 		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
 
 		if(craftingTool == NULL) {
-			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");
+			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
 			return;
 		}
 
@@ -60,7 +60,7 @@ public:
 			craftingTool->removeIngredient(player, tano, slot, counter);
 
 		} else {
-			player->sendSystemMessage("ui_craft","err_invalid_ingredient");
+			player->sendSystemMessage("@ui_craft:err_invalid_ingredient");
 		}
 	}
 };

@@ -118,18 +118,18 @@ public:
 			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return GENERALERROR;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return GENERALERROR;
 			}
 		}*/
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return GENERALERROR;
 		}
 
@@ -143,7 +143,7 @@ public:
 					creature->sendSystemMessage(message.toString());
 				}
 			} else {
-				creature->sendSystemMessage("healing_response","first_aid_self"); //You apply first aid to yourself.
+				creature->sendSystemMessage("@healing_response:first_aid_self"); //You apply first aid to yourself.
 			}
 
 			creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
@@ -165,7 +165,7 @@ public:
 			StringIdChatParameter stringId("healing_response", "healing_response_80");
 			stringId.setTT(creatureTarget->getObjectID());
 		} else {
-			creature->sendSystemMessage("healing_response", "healing_response_78"); //You are not bleeding.
+			creature->sendSystemMessage("@healing_response:healing_response_78"); //You are not bleeding.
 		}
 
 

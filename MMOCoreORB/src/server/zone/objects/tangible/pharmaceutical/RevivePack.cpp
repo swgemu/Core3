@@ -446,8 +446,8 @@ int RevivePackImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		}
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
-	player->sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			player.sendSystemMessage("@error_message:insufficient_skill");
+	player->sendSystemMessage("@error_message:insufficient_skill");
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			return 0;
 	return 0;
 }

@@ -92,7 +92,7 @@ public:
 		}
 
 		if (targetPlayer == player) {
-			player->sendSystemMessage("healing_response", "healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
+			player->sendSystemMessage("@healing_response:healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
 			return;
 		}
 
@@ -112,7 +112,7 @@ public:
 		//Check if target is dead or incapacitated.
 		if (!canDragLiveTarget) {
 			if (!targetPlayer->isDead() && !targetPlayer->isIncapacitated()) {
-				player->sendSystemMessage("healing_response", "healing_response_a7"); //"You may only drag incapacitated or dying players!"
+				player->sendSystemMessage("@healing_response:healing_response_a7"); //"You may only drag incapacitated or dying players!"
 				return;
 			}
 		}
@@ -129,7 +129,7 @@ public:
 				isGroupedWith = true;
 
 			if (!hasConsentFrom && !isGroupedWith) {
-				player->sendSystemMessage("healing_response", "healing_response_b4"); //"You must be grouped with or have consent from your drag target!"
+				player->sendSystemMessage("@healing_response:healing_response_b4"); //"You must be grouped with or have consent from your drag target!"
 				return;
 			}
 		}
@@ -143,10 +143,10 @@ public:
 
 		if (abs((int)heightDifference) > maxRange) {
 			if (heightDifference > 0) {
-				player->sendSystemMessage("healing_response", "healing_response_b2"); //"Your target is too far below you to drag"
+				player->sendSystemMessage("@healing_response:healing_response_b2"); //"Your target is too far below you to drag"
 				return;
 			} else {
-				player->sendSystemMessage("healing_response", "healing_response_b3"); //"Your target is too far above you to drag."
+				player->sendSystemMessage("@healing_response:healing_response_b3"); //"Your target is too far above you to drag."
 				return;
 			}
 		}
@@ -195,7 +195,7 @@ public:
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL || !object->isPlayerCreature() || object == creature) {
-			creature->sendSystemMessage("healing_response", "healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
+			creature->sendSystemMessage("@healing_response:healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
 			return GENERALERROR;
 		}
 
@@ -206,7 +206,7 @@ public:
 
 		//Determine if the player has the proper skill.
 		if (!player->hasSkill("science_medic_injury_speed_02")) {
-			player->sendSystemMessage("healing_response", "healing_response_a9"); //"You lack the ability to drag incapacitated players!"
+			player->sendSystemMessage("@healing_response:healing_response_a9"); //"You lack the ability to drag incapacitated players!"
 			return GENERALERROR;
 		}
 
@@ -214,12 +214,12 @@ public:
 		/*if (target->isPlayer()) {
 			targetPlayer = cast<Player*>(target);
 		} else {
-			player->sendSystemMessage("healing_response", "healing_response_a6"); //"You may only drag players!"
+			player->sendSystemMessage("@healing_response:healing_response_a6"); //"You may only drag players!"
 			return GENERALERROR;
 		}
 
 		if (targetPlayer == player) {
-			player->sendSystemMessage("healing_response", "healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
+			player->sendSystemMessage("@healing_response:healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
 			return GENERALERROR;
 		}*/
 

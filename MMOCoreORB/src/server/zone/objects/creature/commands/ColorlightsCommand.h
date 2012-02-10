@@ -76,7 +76,7 @@ public:
 		effect << "clienteffect/entertainer_color_lights_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");
 
-		creature->sendSystemMessage("performance", "effect_perform_color_lights");
+		creature->sendSystemMessage("@performance:effect_perform_color_lights");
 
 		return SUCCESS;
 	}

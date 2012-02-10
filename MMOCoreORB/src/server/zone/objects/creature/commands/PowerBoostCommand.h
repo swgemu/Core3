@@ -68,7 +68,7 @@ public:
 
 		// Replaced INVALIDLOCOMOTION check to return message if user is not meditating.
 		if(!creature->isMeditating()) {
-			creature->sendSystemMessage("teraskasi", "powerboost_fail"); // You must be meditating to perform that command.
+			creature->sendSystemMessage("@teraskasi:powerboost_fail"); // You must be meditating to perform that command.
 			return GENERALERROR;
 		}
 
@@ -77,7 +77,7 @@ public:
 		uint32 buffcrc = BuffCRC::SKILL_BUFF_POWERBOOST;
 
 		if(player->hasBuff(buffcrc)) {
-			player->sendSystemMessage("teraskasi", "powerboost_active"); // [meditation] You are unable to channel your energies any further.
+			player->sendSystemMessage("@teraskasi:powerboost_active"); // [meditation] You are unable to channel your energies any further.
 			return GENERALERROR;
 		}
 
@@ -94,7 +94,7 @@ public:
 		int duration = 300 + ((meditateMod/100) * 300);
 
 		if(player->getHAM(CreatureAttribute::MIND) <= pbBonus) {
-			player->sendSystemMessage("teraskasi", "powerboost_mind"); // [mediation] You currently lack the mental capacity to focus your energies.
+			player->sendSystemMessage("@teraskasi:powerboost_mind"); // [mediation] You currently lack the mental capacity to focus your energies.
 			return GENERALERROR;
 		}
 

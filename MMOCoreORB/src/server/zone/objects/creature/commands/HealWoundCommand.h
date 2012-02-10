@@ -200,12 +200,12 @@ public:
 			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 		}*/
@@ -329,8 +329,8 @@ public:
 				searchAttribute = findAttribute(creatureTarget, searchAttribute);
 
 				if (searchAttribute == CreatureAttribute::UNKNOWN) {
-					//creature->sendSystemMessage("healing_response", "healing_response_61");
-					creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+					//creature->sendSystemMessage("@healing_response:healing_response_61");
+					creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 					return GENERALERROR;
 				}
 

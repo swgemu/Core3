@@ -92,7 +92,7 @@ public:
 		Reference<Task*> incapTask = player->getPendingTask("incapacitationRecovery");
 
 		if (!creature->isIncapacitated() || incapTask == NULL || !incapTask->isScheduled()) {
-			creature->sendSystemMessage("teraskasi", "forceofwill_fail"); //You must be incapacitated to perform that command.
+			creature->sendSystemMessage("@teraskasi:forceofwill_fail"); //You must be incapacitated to perform that command.
 			return GENERALERROR;
 		}
 
@@ -100,7 +100,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (!player->checkCooldownRecovery("tkaForceOfWill")) {
-			player->sendSystemMessage("teraskasi", "forceofwill_lost"); //You have already expired your opportunity for forced recapacitation.
+			player->sendSystemMessage("@teraskasi:forceofwill_lost"); //You have already expired your opportunity for forced recapacitation.
 			return GENERALERROR;
 		}
 

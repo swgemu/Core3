@@ -125,7 +125,7 @@ public:
 			}
 
 			if (session->isPlayingMusic()) {
-				creature->sendSystemMessage("performance", "already_performing_self");
+				creature->sendSystemMessage("@performance:already_performing_self");
 
 				return GENERALERROR;
 			}
@@ -145,7 +145,7 @@ public:
 				SceneObject* creatureParent = creature->getParent();
 
 				if (creature->getDistanceTo(nala) >= 3 || !nala->isInQuadTree() || (creatureParent == NULL && NULL != nala->getParent())) {
-					creature->sendSystemMessage("elevator_text", "too_far");
+					creature->sendSystemMessage("@elevator_text:too_far");
 
 					return GENERALERROR;
 				}

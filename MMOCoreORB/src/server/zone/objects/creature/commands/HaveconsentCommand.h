@@ -74,7 +74,7 @@ public:
 		ghost->closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
 
 		if (ghost->getConsentListSize() <= 0) {
-			player->sendSystemMessage("error_message", "consent_to_empty"); //You have not granted consent to anyone.
+			player->sendSystemMessage("@error_message:consent_to_empty"); //You have not granted consent to anyone.
 			return GENERALERROR;
 		}
 

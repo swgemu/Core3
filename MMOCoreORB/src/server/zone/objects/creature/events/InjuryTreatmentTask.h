@@ -26,7 +26,7 @@ public:
 		Locker locker(creature);
 
 		creature->removePendingTask(pendingTask);
-		//creature->sendSystemMessage("healing_response", "healing_response_58"); //You are now ready to heal more damage.
+		//creature->sendSystemMessage("@healing_response:healing_response_58"); //You are now ready to heal more damage.
 		creature->sendSystemMessage(message);
 	}
 };

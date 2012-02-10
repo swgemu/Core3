@@ -147,7 +147,7 @@ public:
 			creatureTarget = creature;
 
 		/*if (!target->isPlayer() && !target->isNonPlayerCreature()) {
-			creature->sendSystemMessage("healing_response", "healing_response_99"); //Target must be a player or a creature pet in order to quickheal .
+			creature->sendSystemMessage("@healing_response:healing_response_99"); //Target must be a player or a creature pet in order to quickheal .
 			return GENERALERROR;
 		}
 

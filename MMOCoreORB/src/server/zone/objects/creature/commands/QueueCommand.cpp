@@ -111,13 +111,13 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 	case INVALIDWEAPON: // this only gets returned from combat commands
 		switch (creature->getWeapon()->getAttackType()) {
 		case WeaponObject::RANGEDATTACK:
-			creature->sendSystemMessage("cbt_spam", "no_attack_ranged_single");
+			creature->sendSystemMessage("@cbt_spam:no_attack_ranged_single");
 			break;
 		case WeaponObject::MELEEATTACK:
-			creature->sendSystemMessage("cbt_spam", "no_attack_melee_single");
+			creature->sendSystemMessage("@cbt_spam:no_attack_melee_single");
 			break;
 		default:
-			creature->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
+			creature->sendSystemMessage("@cbt_spam:no_attack_wrong_weapon"); // Can't be done with this weapon
 			break;
 		}
 

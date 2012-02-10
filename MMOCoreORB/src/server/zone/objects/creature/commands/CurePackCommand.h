@@ -112,7 +112,7 @@ public:
 			creature->sendSystemMessage(msgPlayer.toString());
 			creatureTarget->sendSystemMessage(msgTarget.toString());
 		} else {
-			creature->sendSystemMessage("healing_response", msgSelf);
+			creature->sendSystemMessage("@healing_response:" + msgSelf);
 		}
 	}
 
@@ -257,7 +257,7 @@ public:
 		case CreatureState::POISONED:
 			if (!creatureTarget->isPoisoned()) {
 				if (creature == creatureTarget)
-					creature->sendSystemMessage("healing_response", "healing_response_82"); //You are not poisoned.
+					creature->sendSystemMessage("@healing_response:healing_response_82"); //You are not poisoned.
 				else {
 					StringIdChatParameter stringId("healing_response", "healing_response_84");
 					stringId.setTT(creatureTarget->getObjectID());
@@ -269,7 +269,7 @@ public:
 		case CreatureState::DISEASED:
 			if (!creatureTarget->isDiseased()) {
 				if (creature == creatureTarget)
-					creature->sendSystemMessage("healing_response", "healing_response_90"); //You are not diseased.
+					creature->sendSystemMessage("@healing_response:healing_response_90"); //You are not diseased.
 				else {
 					StringIdChatParameter stringId("healing_response", "healing_response_92");
 					stringId.setTT(creatureTarget->getObjectID());
@@ -282,7 +282,7 @@ public:
 		case CreatureState::ONFIRE:
 			if (!creatureTarget->isOnFire()) {
 				if (creature == creatureTarget)
-					creature->sendSystemMessage("healing_response", "healing_response_86"); //You are not on fire.
+					creature->sendSystemMessage("@healing_response:healing_response_86"); //You are not on fire.
 				else {
 					StringIdChatParameter stringId("healing_response", "healing_response_88");
 					stringId.setTT(creatureTarget->getObjectID());
@@ -295,12 +295,12 @@ public:
 		}
 
 		if (!creature->canTreatConditions()) {
-			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
+			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
 		}
 
 		if (curePack == NULL) {
-			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
 
@@ -330,18 +330,18 @@ public:
 			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 		}*/
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 

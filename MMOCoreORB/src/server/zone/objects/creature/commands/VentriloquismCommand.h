@@ -76,7 +76,7 @@ public:
 		effect << "clienteffect/entertainer_ventriloquism_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");
 
-		creature->sendSystemMessage("performance", "effect_perform_ventriloquism");
+		creature->sendSystemMessage("@performance:effect_perform_ventriloquism");
 
 		return SUCCESS;
 	}

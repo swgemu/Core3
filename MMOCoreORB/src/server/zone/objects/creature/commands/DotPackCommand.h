@@ -245,7 +245,7 @@ public:
 
 		//timer
 		if (!creature->checkCooldownRecovery(skillName)) {
-			creature->sendSystemMessage("healing_response", "healing_must_wait");
+			creature->sendSystemMessage("@healing_response:healing_must_wait");
 
 			return GENERALERROR;
 		} else {

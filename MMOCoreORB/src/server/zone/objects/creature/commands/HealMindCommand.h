@@ -116,7 +116,7 @@ public:
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object != NULL && !object->isCreatureObject()) {
-			creature->sendSystemMessage("healing", "heal_mind_invalid_target");
+			creature->sendSystemMessage("@healing:heal_mind_invalid_target");
 			return INVALIDTARGET;
 		} else if (object == NULL)
 			object = creature;
@@ -131,7 +131,7 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (creatureTarget == creature) {
-			creature->sendSystemMessage("healing", "no_heal_mind_self");
+			creature->sendSystemMessage("@healing:no_heal_mind_self");
 			return GENERALERROR;
 		}
 
@@ -168,18 +168,18 @@ public:
 			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return GENERALERROR;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return GENERALERROR;
 			}
 		}*/
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return GENERALERROR;
 		}
 

@@ -325,7 +325,7 @@ class CreatureObject extends TangibleObject {
 	 * @param file stf file name of the message
 	 * @param stringid stf stringid of the message
 	 */
-	public native void sendSystemMessage(final string file, final string stringid);
+	//public native void sendSystemMessage(final string file, final string stringid);
 	
 	/**
 	 * Sends a system message to the client of this object

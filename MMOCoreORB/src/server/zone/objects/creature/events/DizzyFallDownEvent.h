@@ -23,7 +23,7 @@ public:
 
 		if (creature->isDizzied()) {
 			creature->setPosture(CreaturePosture::KNOCKEDDOWN);
-			creature->sendSystemMessage("cbt_spam", "dizzy_fall_down_single");
+			creature->sendSystemMessage("@cbt_spam:dizzy_fall_down_single");
 		}
 
 		creature->removePendingTask("dizzyFallDownEvent");

@@ -330,8 +330,6 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& stringid);
-
 	void sendSystemMessage(StringIdChatParameter& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
@@ -1067,8 +1065,6 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& stringid);
-
 	void sendSystemMessage(StringIdChatParameter& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
@@ -1652,8 +1648,6 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& stringid);
-
 	void sendSlottedObjectsTo(SceneObject* player);
 
 	void setCombatState();
@@ -2144,8 +2138,6 @@ protected:
 	String _param0_sendNewbieTutorialRequest__String_;
 	String _param0_sendNewbieTutorialEnableHudElement__String_bool_;
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
-	String _param0_sendSystemMessage__String_String_;
-	String _param1_sendSystemMessage__String_String_;
 	String _param0_setPerformanceAnimation__String_bool_;
 	String _param0_getSkillModFromBuffs__String_;
 	String _param0_addSkill__String_bool_;

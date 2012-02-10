@@ -53,7 +53,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(player->getSlottedObject("hold_r"));
 
 		if (instrument != NULL) {
-			player->sendSystemMessage("performance", "music_must_unequip");
+			player->sendSystemMessage("@performance:music_must_unequip");
 			return 1;
 		}
 
@@ -63,12 +63,12 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			return 1;
 
 		if (!ghost->hasAbility("startmusic")) {
-			player->sendSystemMessage("performance", "music_lack_skill_instrument");
+			player->sendSystemMessage("@performance:music_lack_skill_instrument");
 			return 1;
 		}
 
 		if (player->getDistanceTo(_this) >= 5)
-			player->sendSystemMessage("elevator_text", "too_far");
+			player->sendSystemMessage("@elevator_text:too_far");
 		else
 			player->executeObjectControllerAction(String("startmusic").hashCode(), getObjectID(), "");
 	}

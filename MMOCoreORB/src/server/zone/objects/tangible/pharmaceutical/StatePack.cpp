@@ -284,8 +284,8 @@ int StatePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		}
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
-	player->sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			player.sendSystemMessage("@error_message:insufficient_skill");
+	player->sendSystemMessage("@error_message:insufficient_skill");
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			return 0;
 	return 0;
 }

@@ -75,7 +75,7 @@ public:
 		if (creature->getHAM(CreatureAttribute::ACTION)  < actioncost) {
 
 			if (creature->isPlayerCreature())
-				(creature)->sendSystemMessage("cbt_spam", "cover_fail_single");
+				(creature)->sendSystemMessage("@cbt_spam:cover_fail_single");
 
 			return GENERALERROR;
 		}
@@ -88,7 +88,7 @@ public:
 			if (System::random(100)  > chance) {
 
 				if (creature->isPlayerCreature())
-					(creature)->sendSystemMessage("cbt_spam", "cover_fail_single");
+					(creature)->sendSystemMessage("@cbt_spam:cover_fail_single");
 
 				return GENERALERROR;
 			}

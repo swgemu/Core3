@@ -68,12 +68,12 @@ public:
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
 		if (session == NULL) {
-			creature->sendSystemMessage("performance", "flourish_not_performing");
+			creature->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
 
 		if (!session->isDancing() && !session->isPlayingMusic()) {
-			creature->sendSystemMessage("performance", "flourish_not_performing");
+			creature->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
 
@@ -86,7 +86,7 @@ public:
 		String fullString = String("flourish") + "+" + args;
 
 		if (!ghost->hasAbility(fullString)) {
-			creature->sendSystemMessage("performance", "flourish_not_valid");
+			creature->sendSystemMessage("@performance:flourish_not_valid");
 			return GENERALERROR;
 		}
 

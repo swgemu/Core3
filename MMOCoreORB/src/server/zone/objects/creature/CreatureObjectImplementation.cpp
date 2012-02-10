@@ -408,16 +408,16 @@ void CreatureObjectImplementation::sendNewbieTutorialEnableHudElement(
 	sendMessage(message);
 }
 
-void CreatureObjectImplementation::sendSystemMessage(const String& file,
-		const String& stringid) {
-	if (!isPlayerCreature())
-		return;
-
-	UnicodeString message("@" + file + ":" + stringid);
-
-	ChatSystemMessage* msg = new ChatSystemMessage(message);
-	sendMessage(msg);
-}
+//void CreatureObjectImplementation::sendSystemMessage(const String& file,
+//		const String& stringid) {
+//	if (!isPlayerCreature())
+//		return;
+//
+//	UnicodeString message("@" + file + ":" + stringid);
+//
+//	ChatSystemMessage* msg = new ChatSystemMessage(message);
+//	sendMessage(msg);
+//}
 
 void CreatureObjectImplementation::sendSystemMessage(
 		StringIdChatParameter& message) {
@@ -627,15 +627,15 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			switch (state) {
 			case CreatureState::STUNNED:
 				playEffect("clienteffect/combat_special_defender_stun.cef");
-				sendSystemMessage("cbt_spam", "go_stunned_single");
+				sendSystemMessage("@cbt_spam:go_stunned_single");
 				break;
 			case CreatureState::BLINDED:
 				playEffect("clienteffect/combat_special_defender_blind.cef");
-				sendSystemMessage("cbt_spam", "go_blind_single");
+				sendSystemMessage("@cbt_spam:go_blind_single");
 				break;
 			case CreatureState::DIZZY:
 				playEffect("clienteffect/combat_special_defender_dizzy.cef");
-				sendSystemMessage("cbt_spam", "go_dizzy_single");
+				sendSystemMessage("@cbt_spam:go_dizzy_single");
 				break;
 			case CreatureState::POISONED:
 				break;
@@ -665,7 +665,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				break;
 			case CreatureState::COVER:
 				playEffect("clienteffect/combat_special_attacker_cover.cef");
-				sendSystemMessage("cbt_spam", "cover_success_single");
+				sendSystemMessage("@cbt_spam:cover_success_single");
 				break;
 			default:
 				break;
@@ -694,25 +694,25 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 
 		switch (state) {
 		case CreatureState::STUNNED:
-			sendSystemMessage("cbt_spam", "no_stunned_single");
+			sendSystemMessage("@cbt_spam:no_stunned_single");
 			break;
 		case CreatureState::BLINDED:
-			sendSystemMessage("cbt_spam", "no_blind_single");
+			sendSystemMessage("@cbt_spam:no_blind_single");
 			break;
 		case CreatureState::DIZZY:
-			sendSystemMessage("cbt_spam", "no_dizzy_single");
+			sendSystemMessage("@cbt_spam:no_dizzy_single");
 			break;
 		case CreatureState::POISONED:
-			sendSystemMessage("dot_message", "stop_poisoned");
+			sendSystemMessage("@dot_message:stop_poisoned");
 			break;
 		case CreatureState::DISEASED:
-			sendSystemMessage("dot_message", "stop_diseased");
+			sendSystemMessage("@dot_message:stop_diseased");
 			break;
 		case CreatureState::ONFIRE:
-			sendSystemMessage("dot_message", "stop_fire");
+			sendSystemMessage("@dot_message:stop_fire");
 			break;
 		case CreatureState::BLEEDING:
-			sendSystemMessage("dot_message", "stop_bleeding");
+			sendSystemMessage("@dot_message:stop_bleeding");
 			break;
 		case CreatureState::INTIMIDATED:
 			break;

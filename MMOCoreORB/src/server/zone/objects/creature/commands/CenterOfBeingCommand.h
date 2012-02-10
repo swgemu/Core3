@@ -73,7 +73,7 @@ public:
 		PlayerObject* ghost = creature->getPlayerObject();
 
 		if (creature->hasBuff(String("centerofbeing").hashCode())) {
-			creature->sendSystemMessage("combat_effects", "already_centered");
+			creature->sendSystemMessage("@combat_effects:already_centered");
 			return GENERALERROR;
 		}
 

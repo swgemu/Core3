@@ -1461,7 +1461,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	ManagedReference<SceneObject*> inventoryObject = inventory->getContainerObject(itemID);
 
 	if (inventoryObject == NULL) {
-		player->sendSystemMessage("container_error_message", "container26");
+		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player, false);
 		return;
 	}
@@ -1560,14 +1560,14 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
 
 	if (receiverInventory->getContainerObjectsSize() + tradeContainer->getTradeSize() >= receiverInventory->getContainerVolumeLimit()) {
-		player->sendSystemMessage("container_error_message", "container19");
-		receiver->sendSystemMessage("container_error_message", "container19");
+		player->sendSystemMessage("@container_error_message:container19");
+		receiver->sendSystemMessage("@container_error_message:container19");
 		return false;
 	}
 
 	if (playerInventory->getContainerObjectsSize() + receiverContainer->getTradeSize() >= playerInventory->getContainerVolumeLimit()) {
-		player->sendSystemMessage("container_error_message", "container19");
-		receiver->sendSystemMessage("container_error_message", "container19");
+		player->sendSystemMessage("@container_error_message:container19");
+		receiver->sendSystemMessage("@container_error_message:container19");
 		return false;
 	}
 
@@ -1705,7 +1705,7 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 		Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( creature->getPendingTask("meditate"));
 		if (meditateTask != NULL) {
 			creature->removePendingTask("meditate");
-			creature->sendSystemMessage("teraskasi", "med_end");
+			creature->sendSystemMessage("@teraskasi:med_end");
 			creature->setMood(creature->getMoodID(), true);
 			creature->clearState(CreatureState::ALERT, true);
 
@@ -1966,7 +1966,7 @@ void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 en
 		return;
 
 	/*if (object->isNonPlayerCreature()) {
-		creature->sendSystemMessage("performance", "dance_watch_npc");
+		creature->sendSystemMessage("@performance:dance_watch_npc");
 		return;
 	}*/
 
@@ -2039,7 +2039,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 		return;
 
 	/*if (object->isNonPlayerCreature()) {
-		creature->sendSystemMessage("performance", "dance_watch_npc");
+		creature->sendSystemMessage("@performance:dance_watch_npc");
 		return;
 	}*/
 

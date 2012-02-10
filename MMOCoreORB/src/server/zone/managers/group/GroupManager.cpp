@@ -70,7 +70,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 		ManagedReference<GroupObject*> group = leader->getGroup();
 
 		if (group->getLeader() != leader) {
-			leader->sendSystemMessage("group", "must_be_leader");
+			leader->sendSystemMessage("@group:must_be_leader");
 			return;
 		}
 	}
@@ -145,7 +145,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 
 		player->updateGroupInviterID(0);
 
-		player->sendSystemMessage("group", "full");
+		player->sendSystemMessage("@group:full");
 		return;
 	}
 
@@ -153,7 +153,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 
 	group->addMember(player);
 	player->updateGroup(group);
-	player->sendSystemMessage("group", "joined_self");
+	player->sendSystemMessage("@group:joined_self");
 
 	ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 
@@ -183,7 +183,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	group->sendTo(leader, true);
 
 	leader->updateGroup(group);
-	leader->sendSystemMessage("group", "formed_self");
+	leader->sendSystemMessage("@group:formed_self");
 
 	if (leader->getGroupInviterID() != 0)
 		leader->updateGroupInviterID(0);
@@ -213,7 +213,7 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 		player->updateGroup(NULL);
 
 		//if (player != NULL && player->isOnline() && !player->isLoggingOut())
-		player->sendSystemMessage("group", "removed");
+		player->sendSystemMessage("@group:removed");
 
 		player->unlock();
 
@@ -252,7 +252,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 		//if he's not the leader. Remove?
 		//After Fix 13 feb 2009 - Bankler
 		if (group->getLeader() != player) {
-			player->sendSystemMessage("group", "must_be_leader");
+			player->sendSystemMessage("@group:must_be_leader");
 			group->unlock();
 			player->wlock();
 			return;
@@ -261,7 +261,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
 
-			play->sendSystemMessage("group", "disbanded");
+			play->sendSystemMessage("@group:disbanded");
 		}
 
 		group->disband();
@@ -298,7 +298,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 		CreatureObject* leader = cast<CreatureObject*>( group->getLeader());
 
 		if (player != leader) {
-			player->sendSystemMessage("group", "must_be_leader");
+			player->sendSystemMessage("@group:must_be_leader");
 
 			group->unlock();
 
@@ -310,14 +310,14 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			for (int i = 0; i < group->getGroupSize(); i++) {
 				CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
 
-				play->sendSystemMessage("group", "disbanded");
+				play->sendSystemMessage("@group:disbanded");
 			}
 			group->disband();
 			disbanded = true;
 		} else {
 			group->removeMember(playerToKick);
 
-			playerToKick->sendSystemMessage("group", "removed");
+			playerToKick->sendSystemMessage("@group:removed");
 
 			playerToKick->info("kicking from group");
 		}
@@ -372,7 +372,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		group->wlock();
 
 		if (group->getLeader() != player) {
-			player->sendSystemMessage("group", "must_be_leader");
+			player->sendSystemMessage("@group:must_be_leader");
 			group->unlock();
 			player->wlock();
 			return;

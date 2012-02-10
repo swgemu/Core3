@@ -100,7 +100,7 @@ public:
 	bool checkRetreat(CreatureObject* creature) {
 
 		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("cbt_spam", "no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
+			creature->sendSystemMessage("@cbt_spam:no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
 			return false;
 		}
 
@@ -111,7 +111,7 @@ public:
 		}
 
 		if (zone->getZoneName() == "dungeon1") {
-			creature->sendSystemMessage("cbt_spam", "burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
+			creature->sendSystemMessage("@cbt_spam:burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
 
 			return false;
 		}
@@ -119,14 +119,14 @@ public:
 		uint32 crc = String("burstrun").hashCode();
 
 		if ((creature->getRunSpeed() > CreatureObjectImplementation::DEFAULTRUNSPEED) && (!creature->hasBuff(crc))) {
-			creature->sendSystemMessage("combat_effects", "burst_run_no");
+			creature->sendSystemMessage("@combat_effects:burst_run_no");
 
 			return false;
 		}
 
 		if (!creature->checkCooldownRecovery("retreat")) {
 			// is there a message for retreat?
-			creature->sendSystemMessage("combat_effects", "burst_run_no");
+			creature->sendSystemMessage("@combat_effects:burst_run_no");
 
 			return false;
 		}
@@ -149,7 +149,7 @@ public:
 		int newHamCost = (int) (100.0f * (1.0f - (runMod / 100.0f)));
 
 		if (!inflictHAM(player, newHamCost, newHamCost, newHamCost)) {
-			player->sendSystemMessage("combat_effects", "burst_run_wait");
+			player->sendSystemMessage("@combat_effects:burst_run_wait");
 			return;
 		}
 

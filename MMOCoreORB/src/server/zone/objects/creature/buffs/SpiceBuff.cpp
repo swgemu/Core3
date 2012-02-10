@@ -208,8 +208,8 @@ SpiceBuffImplementation::SpiceBuffImplementation(CreatureObject* creo, const Str
 }
 
 void SpiceBuffImplementation::activate(bool applyModifiers) {
-	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
-	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_consume");
+	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_consume");
+	BuffImplementation::creature.getForUpdate()->sendSystemMessage("@spice/spice:" + BuffImplementation::buffName + "_consume");
 	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.activate(true);
 	BuffImplementation::activate(true);
 }

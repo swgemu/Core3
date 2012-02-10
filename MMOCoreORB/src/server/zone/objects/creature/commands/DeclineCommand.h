@@ -81,7 +81,7 @@ public:
 		stringId.setTT(creature);
 
 		inviter->sendSystemMessage(stringId);
-		creature->sendSystemMessage("group", "decline_self");
+		creature->sendSystemMessage("@group:decline_self");
 
 		return SUCCESS;
 		/*DECLINE DUEL CODE

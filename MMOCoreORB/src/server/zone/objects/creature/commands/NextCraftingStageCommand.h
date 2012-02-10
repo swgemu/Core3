@@ -79,7 +79,7 @@ public:
 		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
 
 		if(craftingTool == NULL) {
-			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");
+			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
 			return GENERALERROR;
 		}
 

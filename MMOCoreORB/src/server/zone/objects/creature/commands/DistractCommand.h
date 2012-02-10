@@ -76,7 +76,7 @@ public:
 		effect << "clienteffect/entertainer_distract_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");
 
-		creature->sendSystemMessage("performance", "effect_perform_distract");
+		creature->sendSystemMessage("@performance:effect_perform_distract");
 
 		return SUCCESS;
 	}

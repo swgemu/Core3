@@ -572,6 +572,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/appearance/FloorMesh.cpp \
 		server/zone/templates/appearance/MeshAppearanceTemplate.cpp \
+		server/zone/templates/appearance/SmatAppearanceTemplate.cpp \
 		server/zone/templates/appearance/DetailAppearanceTemplate.cpp \
 		server/zone/templates/appearance/PortalLayout.cpp \
 		server/zone/templates/appearance/PathGraph.cpp \

@@ -78,7 +78,7 @@ public:
 	    ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
 
 	    if(craftingTool == NULL) {
-			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");
+			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
 	    	return GENERALERROR;
 	    }
 
@@ -92,7 +92,7 @@ public:
 			craftingTool->selectDraftSchematic(player, index);
 
 		} else {
-			player->sendSystemMessage("ui_craft", "err_no_draft_schematic_selected");
+			player->sendSystemMessage("@ui_craft:err_no_draft_schematic_selected");
 			return GENERALERROR;
 		}
 

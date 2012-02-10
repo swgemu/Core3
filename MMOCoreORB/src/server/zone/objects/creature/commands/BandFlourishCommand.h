@@ -89,13 +89,13 @@ public:
 				if (!musicflourish) {
 					return;
 				}
-				leader->sendSystemMessage("performance", "flourish_perform_band_self"); //"Your band performs a flourish."
+				leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
 				if (leader->isPlayingMusic() && leaderInstrument == instrumentType && session->isAcceptingBandFlourishes()) {
 					session->doFlourish(Integer::valueOf(number));
 				}
 
 			} else { //no instrument specified.
-				leader->sendSystemMessage("performance", "flourish_perform_band_self"); //"Your band performs a flourish."
+				leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
 				if (session->isAcceptingBandFlourishes()) {
 					session->doFlourish(Integer::valueOf(number));
 				}
@@ -191,7 +191,7 @@ public:
 
 	static bool parseOptions(CreatureObject* leader, const String& options, String& stringA, String& stringB) {
 		if (options.isEmpty()) {
-			leader->sendSystemMessage("performance", "band_flourish_format");
+			leader->sendSystemMessage("@performance:band_flourish_format");
 			return false;
 		}
 
@@ -209,7 +209,7 @@ public:
 		}
 
 		if (tokenizer.hasMoreTokens()) {
-			leader->sendSystemMessage("performance", "band_flourish_format");
+			leader->sendSystemMessage("@performance:band_flourish_format");
 			return false;
 		}
 
@@ -222,17 +222,17 @@ public:
 
 		if (session->isAcceptingBandFlourishes()) {
 			if (newstatus == true) {
-				leader->sendSystemMessage("performance", "band_flourish_status_on");
+				leader->sendSystemMessage("@performance:band_flourish_status_on");
 			} else {
 				session->setAcceptingBandFlourishes(false);
-				leader->sendSystemMessage("performance", "band_flourish_off");
+				leader->sendSystemMessage("@performance:band_flourish_off");
 			}
 		} else {
 			if (newstatus == false) {
-				leader->sendSystemMessage("performance", "band_flourish_status_off");
+				leader->sendSystemMessage("@performance:band_flourish_status_off");
 			} else {
 				session->setAcceptingBandFlourishes(true);
-				leader->sendSystemMessage("performance", "band_flourish_on");
+				leader->sendSystemMessage("@performance:band_flourish_on");
 			}
 		}
 
@@ -244,9 +244,9 @@ public:
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
 		if (session->isAcceptingBandFlourishes()) {
-			leader->sendSystemMessage("performance", "band_flourish_status_on");
+			leader->sendSystemMessage("@performance:band_flourish_status_on");
 		} else {
-			leader->sendSystemMessage("performance", "band_flourish_status_off");
+			leader->sendSystemMessage("@performance:band_flourish_status_off");
 		}
 		return;
 	}
@@ -268,7 +268,7 @@ public:
 		CreatureObject* leader = cast<CreatureObject*>(creature);
 
 		if (!creature->isEntertaining()) {
-			leader->sendSystemMessage("performance", "flourish_not_performing");
+			leader->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
 
@@ -282,7 +282,7 @@ public:
 			instrumentType = determineInstrumentType(stringB);
 
 			if (instrumentType < 0) {
-				leader->sendSystemMessage("performance", "flourish_instrument_unknown");
+				leader->sendSystemMessage("@performance:flourish_instrument_unknown");
 				return GENERALERROR;
 			}
 		}
@@ -298,7 +298,7 @@ public:
 				doBandFlourish(leader, stringA, true, instrumentType);
 
 			} else {
-				leader->sendSystemMessage("performance", "flourish_not_performing");
+				leader->sendSystemMessage("@performance:flourish_not_performing");
 				return GENERALERROR;
 			}
 
@@ -313,11 +313,11 @@ public:
 			printStatus(leader);
 
 		} else if (number > 8) {
-			leader->sendSystemMessage("performance", "flourish_not_valid");
+			leader->sendSystemMessage("@performance:flourish_not_valid");
 			return GENERALERROR;
 
 		} else {
-			leader->sendSystemMessage("performance", "band_flourish_format");
+			leader->sendSystemMessage("@performance:band_flourish_format");
 			return GENERALERROR;
 		}
 

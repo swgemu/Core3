@@ -343,11 +343,11 @@ void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
 		currentUserName = player->getFirstName();
 		currentRunCount = 0;
 		if(startFactory())
-			player->sendSystemMessage("manf_station", "activated"); //Station activated
+			player->sendSystemMessage("@manf_station:activated"); //Station activated
 	} else {
 
 		stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
-		player->sendSystemMessage("manf_station", "deactivated"); //Station deactivated
+		player->sendSystemMessage("@manf_station:deactivated"); //Station deactivated
 		currentUserName = "";
 	}
 }

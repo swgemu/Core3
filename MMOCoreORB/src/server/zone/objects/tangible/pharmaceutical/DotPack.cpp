@@ -594,8 +594,8 @@ int DotPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		}
 	if (player->getSkillMod("combat_healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
-	player->sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			player.sendSystemMessage("@error_message:insufficient_skill");
+	player->sendSystemMessage("@error_message:insufficient_skill");
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return 0;
 	return 0;
 }

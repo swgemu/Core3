@@ -68,17 +68,17 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, RevivePack* revivePack) {
 		if (!creatureTarget->isDead()) {
-			creature->sendSystemMessage("healing_response", "healing_response_a4"); //Your target does not require resuscitation!
+			creature->sendSystemMessage("@healing_response:healing_response_a4"); //Your target does not require resuscitation!
 			return 0;
 		}
 
 		if (revivePack == NULL) {
-			creature->sendSystemMessage("healing_response", "cannot_resuscitate_kit"); //You cannot resuscitate someone without a resuscitation kit!
+			creature->sendSystemMessage("@healing_response:cannot_resuscitate_kit"); //You cannot resuscitate someone without a resuscitation kit!
 			return false;
 		}
 
 		if (!creatureTarget->isResuscitable()) {
-			creature->sendSystemMessage("healing_response", "too_dead_to_resuscitate"); //Your target has been dead too long. There is no hope of resuscitation.
+			creature->sendSystemMessage("@healing_response:too_dead_to_resuscitate"); //Your target has been dead too long. There is no hope of resuscitation.
 			return false;
 		}
 
@@ -107,12 +107,12 @@ public:
 			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 		}*/
@@ -131,11 +131,11 @@ public:
 				PlayerObject* ghost = consentOwner->getPlayerObject();
 
 				if (!ghost->hasInConsentList(player->getFirstName().toLowerCase())) {
-					creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
+					creature->sendSystemMessage("@healing_response:must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
 					return false;
 				}
 				/*if (!player->hasConsentFrom(consentOwner)) {
-					creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
+					creature->sendSystemMessage("@healing_response:must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
 					return false;
 				}*/
 			} else {
@@ -145,7 +145,7 @@ public:
 		}
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 
@@ -232,12 +232,12 @@ public:
 		Locker clocker(creatureTarget, creature);
 
 		/*if (!target->isPlayer() && !((CreatureObject*)target)->isPet()) {
-			creature->sendSystemMessage("healing_response", "healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
+			creature->sendSystemMessage("@healing_response:healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
 			return 0;
 		}*/
 
 		if (!creatureTarget->isPlayerCreature()) {
-			creature->sendSystemMessage("healing_response", "healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
+			creature->sendSystemMessage("@healing_response:healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
 			return GENERALERROR;
 		}
 

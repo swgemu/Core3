@@ -70,7 +70,7 @@ class SpiceBuff extends Buff {
 	}
 	
 	public void activate(boolean applyModifiers) { 
-		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
+		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_consume");
 		
 		super.activate(true);
 	}

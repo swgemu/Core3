@@ -75,7 +75,7 @@ public:
 
 			if(surveyTool == NULL && playerCreature->getZone() != NULL)
 				//You must use a survey tool once from the Inventory before you can do this.
-				playerCreature->sendSystemMessage("ui", "survey_notool");
+				playerCreature->sendSystemMessage("@ui:survey_notool");
 
 		}
 

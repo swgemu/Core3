@@ -209,7 +209,7 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 
 	mission->updateMissionLocation();
 
-	getPlayerOwner()->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
+	getPlayerOwner()->sendSystemMessage("@mission/mission_bounty_informant:target_location_received");
 }
 
 void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneObject* sceneObject, CreatureObject* player) {

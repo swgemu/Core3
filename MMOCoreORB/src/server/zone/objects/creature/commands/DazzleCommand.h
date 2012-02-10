@@ -76,7 +76,7 @@ public:
 		effect << "clienteffect/entertainer_dazzle_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");
 
-		creature->sendSystemMessage("performance", "effect_perform_dazzle");
+		creature->sendSystemMessage("@performance:effect_perform_dazzle");
 
 		return SUCCESS;
 	}

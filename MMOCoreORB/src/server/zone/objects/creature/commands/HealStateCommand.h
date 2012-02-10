@@ -135,12 +135,12 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StatePack* statePack) {
 		if (!creature->canTreatStates()) {
-			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
+			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
 		}
 
 		if (statePack == NULL) {
-			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
 
@@ -169,18 +169,18 @@ public:
 			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 		}*/
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 
@@ -264,7 +264,7 @@ public:
 		parseModifier(arguments.toString(), state, objectId);
 
 		if (state == CreatureState::INVALID) {
-			creature->sendSystemMessage("healing_response", "healing_response_70"); //You must specify a valid state type.
+			creature->sendSystemMessage("@healing_response:healing_response_70"); //You must specify a valid state type.
 			return GENERALERROR;
 		}
 
@@ -295,7 +295,7 @@ public:
 
 		if (!creatureTarget->removeStateBuff(state)) {
 			if (creature == creatureTarget)
-				creature->sendSystemMessage("healing_response", "healing_response_72"); //You have no state of that type to heal.
+				creature->sendSystemMessage("@healing_response:healing_response_72"); //You have no state of that type to heal.
 			else {
 				StringIdChatParameter msg("healing_response", "healing_response_74");
 				msg.setTT(creatureTarget->getObjectID());

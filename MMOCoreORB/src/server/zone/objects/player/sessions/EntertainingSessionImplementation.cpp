@@ -290,12 +290,12 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 	if (entertainer->getHAM(CreatureAttribute::ACTION) <= actionDrain) {
 		if (isDancing()) {
 			stopDancing();
-			entertainer->sendSystemMessage("performance", "dance_too_tired");
+			entertainer->sendSystemMessage("@performance:dance_too_tired");
 		}
 
 		if (isPlayingMusic()) {
 			stopPlayingMusic();
-			entertainer->sendSystemMessage("performance", "music_too_tired");
+			entertainer->sendSystemMessage("@performance:music_too_tired");
 		}
 	} else {
 		entertainer->inflictDamage(entertainer, CreatureAttribute::ACTION, actionDrain, false, true);
@@ -331,7 +331,7 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 		return;
 
 	playingMusic = false;
-	entertainer->sendSystemMessage("performance", "music_stop_self");
+	entertainer->sendSystemMessage("@performance:music_stop_self");
 
 	sendEntertainingUpdate(entertainer, 0.8025000095f, entertainer->getPerformanceAnimation(), 0, 0);
 
@@ -382,7 +382,7 @@ void EntertainingSessionImplementation::startDancing(const String& dance, const 
 	performanceName = dance;
 	dancing = true;
 
-	entertainer->sendSystemMessage("performance", "dance_start_self");
+	entertainer->sendSystemMessage("@performance:dance_start_self");
 
 	updateEntertainerMissionStatus(true, MissionObject::DANCER);
 
@@ -396,7 +396,7 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 	performanceName = song;
 	playingMusic = true;
 
-	entertainer->sendSystemMessage("performance", "music_start_self");
+	entertainer->sendSystemMessage("@performance:music_start_self");
 
 	entertainer->setListenToID(entertainer->getObjectID(), true);
 
@@ -438,7 +438,7 @@ void EntertainingSessionImplementation::stopDancing() {
 
 	dancing = false;
 
-	entertainer->sendSystemMessage("performance", "dance_stop_self");
+	entertainer->sendSystemMessage("@performance:dance_stop_self");
 
 	performanceName = "";
 
@@ -547,7 +547,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 	int fid = flourishNumber;
 
 	if (!dancing && !playingMusic) {
-		entertainer->sendSystemMessage("performance", "flourish_not_performing");
+		entertainer->sendSystemMessage("@performance:flourish_not_performing");
 		return;
 	}
 
@@ -580,7 +580,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 	int actionDrain = (int)round((flourishActionDrain * 10 + 0.5) / 10.0); // Round to nearest dec for actual int cost
 
 	if (entertainer->getHAM(CreatureAttribute::ACTION) <= actionDrain) {
-		entertainer->sendSystemMessage("performance", "flourish_too_tired");
+		entertainer->sendSystemMessage("@performance:flourish_too_tired");
 	} else {
 		entertainer->inflictDamage(entertainer, CreatureAttribute::ACTION, actionDrain, false, true);
 
@@ -603,7 +603,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 
 		addFlourishXp(performance->getBaseXp() + performance->getFlourishXpMod());
 
-		entertainer->sendSystemMessage("performance", "flourish_perform");
+		entertainer->sendSystemMessage("@performance:flourish_perform");
 	}
 }
 
@@ -844,8 +844,8 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 		buff->setAttributeModifier(8, (int) round(buffStrength * creature->getBaseHAM(CreatureAttribute::WILLPOWER)));
 		creature->addBuff(buff);
 
-		creature->sendSystemMessage("healing", "performance_enhance_music_focus_d");
-		creature->sendSystemMessage("healing", "performance_enhance_music_willpower_d");
+		creature->sendSystemMessage("@healing:performance_enhance_music_focus_d");
+		creature->sendSystemMessage("@healing:performance_enhance_music_willpower_d");
 		break;
 	}
 	case PerformanceType::DANCE:
@@ -861,7 +861,7 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 		buff->setAttributeModifier(6, (int) round(buffStrength * creature->getBaseHAM(CreatureAttribute::MIND)));
 		creature->addBuff(buff);
 
-		creature->sendSystemMessage("healing", "performance_enhance_dance_mind_d");
+		creature->sendSystemMessage("@healing:performance_enhance_dance_mind_d");
 	}
 	}
 

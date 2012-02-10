@@ -111,7 +111,7 @@ public:
 			/*if (creature->isDizzied()) {
 				if (creature->getPosture() != CreaturePosture::PRONE) {
 					creature->setPosture(CreaturePosture::KNOCKEDDOWN);
-					creature->sendSystemMessage("cbt_spam", "dizzy_fall_down_single");
+					creature->sendSystemMessage("@cbt_spam:dizzy_fall_down_single");
 
 					return SUCCESS;
 				}

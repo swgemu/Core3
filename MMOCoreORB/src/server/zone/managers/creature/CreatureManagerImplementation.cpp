@@ -512,11 +512,11 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 
 	/// Send bonus message
 	if (modifier == 1.2f)
-		player->sendSystemMessage("skl_use", "group_harvest_bonus");
+		player->sendSystemMessage("@skl_use:group_harvest_bonus");
 	else if (modifier == 1.3f)
-		player->sendSystemMessage("skl_use", "group_harvest_bonus_ranger");
+		player->sendSystemMessage("@skl_use:group_harvest_bonus_ranger");
 	else if (modifier == 1.4f)
-		player->sendSystemMessage("skl_use", "group_harvest_bonus_masterranger");
+		player->sendSystemMessage("@skl_use:group_harvest_bonus_masterranger");
 
 	/// Send group spam
 	if (player->isGrouped()) {

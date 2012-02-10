@@ -31,7 +31,7 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 			BuffImplementation::activate(false);
 
 			creature->addMaxHAM(CreatureAttribute::MIND, -(pbTick*20), true);
-			creature->sendSystemMessage("teraskasi", "powerboost_begin"); // [meditation] You focus your mental energies into your physical form.
+			creature->sendSystemMessage("@teraskasi:powerboost_begin"); // [meditation] You focus your mental energies into your physical form.
 
 			// DurationEvent to handle calling the deactivate() when the timer expires.
 			pbBuffEvent = new PowerBoostBuffDurationEvent(creature, _this);
@@ -72,10 +72,10 @@ void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 			activate(false);
 		} else if(counter >= 45 && counter < 65) {
 			if(counter == 45)
-				creature->sendSystemMessage("teraskasi", "powerboost_wane"); // [meditation] You feel the effects of your mental focus begin to wane.
+				creature->sendSystemMessage("@teraskasi:powerboost_wane"); // [meditation] You feel the effects of your mental focus begin to wane.
 			activate(false);
 		} else if(counter >= 65) {
-			creature->sendSystemMessage("teraskasi", "powerboost_end"); // [meditation] You feel the effects of mental focus come to an end.
+			creature->sendSystemMessage("@teraskasi:powerboost_end"); // [meditation] You feel the effects of mental focus come to an end.
 			clearBuffEvent();
 			BuffImplementation::deactivate(false);
 		}

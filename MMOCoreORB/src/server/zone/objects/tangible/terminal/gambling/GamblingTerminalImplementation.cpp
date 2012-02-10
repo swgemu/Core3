@@ -101,7 +101,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 				info(String::valueOf(machineType),true);
 				info(String::valueOf(getObjectID()),true);
 			} else if (invalidPosture(player)) {
-				player->sendSystemMessage("error_message", "wrong_state");
+				player->sendSystemMessage("@error_message:wrong_state");
 				returnValue = false;
 			}
 

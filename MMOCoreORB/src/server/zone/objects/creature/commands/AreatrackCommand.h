@@ -71,7 +71,7 @@ public:
 			return GENERALERROR;
 
 		if(creature->getParent() != NULL && creature->getParent()->isCellObject()) {
-			creature->sendSystemMessage("skl_use", "sys_scan_inside");
+			creature->sendSystemMessage("@skl_use:sys_scan_inside");
 			return GENERALERROR;
 		}
 

@@ -73,12 +73,12 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 	if (isSpice() && player->hasSpice()) {
-		player->sendSystemMessage("spice/spice", "sys_already_spiced"); //You are already under the influence of spices.
+		player->sendSystemMessage("@spice/spice:sys_already_spiced"); //You are already under the influence of spices.
 		return 0;
 	}
 
 	if (player->hasBuff(buffCRC)  && (!isAttributeEffect() || isForagedFood())) {
-		player->sendSystemMessage("combat_effects", "already_affected"); //You are already under the influence of that food. Eating more won't enhance the effect.
+		player->sendSystemMessage("@combat_effects:already_affected"); //You are already under the influence of that food. Eating more won't enhance the effect.
 		return 0;
 	}
 
@@ -95,10 +95,10 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	if (filling > availfill) {
 		if (isFood())
-			player->sendSystemMessage("error_message", "full_food"); //You are too full to eat that.
+			player->sendSystemMessage("@error_message:full_food"); //You are too full to eat that.
 
 		if (isDrink())
-			player->sendSystemMessage("error_message", "full_drink"); //You are too full to drink that.
+			player->sendSystemMessage("@error_message:full_drink"); //You are too full to drink that.
 
 		return 1;
 	}
@@ -133,7 +133,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		int dmghealed = player->healDamage(player, 6, nutrition);
 
 		if (dmghealed <= 0) {
-			player->sendSystemMessage("healing", "no_mind_to_heal_self"); //You have no mind to heal.
+			player->sendSystemMessage("@healing:no_mind_to_heal_self"); //You have no mind to heal.
 			return 0;
 		}
 

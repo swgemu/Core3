@@ -177,12 +177,12 @@ public:
 			CreatureObject* p = cast<CreatureObject*>( enhancer);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				p->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				p->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				p->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				p->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 		}*/

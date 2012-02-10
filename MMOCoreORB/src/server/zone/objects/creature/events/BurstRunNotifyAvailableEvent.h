@@ -63,7 +63,7 @@ public:
 
 		Locker locker(creature);
 
-		creature->sendSystemMessage("combat_effects", "burst_run_not_tired"); //"You are no longer tired.";
+		creature->sendSystemMessage("@combat_effects:burst_run_not_tired"); //"You are no longer tired.";
 	}
 
 };

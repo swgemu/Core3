@@ -124,7 +124,7 @@ public:
 			}
 
 			if (session->isDancing()) {
-				creature->sendSystemMessage("performance", "already_performing_self");
+				creature->sendSystemMessage("@performance:already_performing_self");
 
 				return GENERALERROR;
 			}
@@ -144,12 +144,12 @@ public:
 		String fullString = String("startDance") + "+" + args;
 
 		if (!ghost->hasAbility(fullString)) {
-			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+			creature->sendSystemMessage("@performance:dance_lack_skill_self");
 			return GENERALERROR;
 		}
 
 		if (!performanceManager->hasDanceAnimation(args)) {
-			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+			creature->sendSystemMessage("@performance:dance_lack_skill_self");
 			return GENERALERROR;
 		}
 

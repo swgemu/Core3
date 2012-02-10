@@ -169,7 +169,7 @@ public:
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 			/*if (creatureTarget == creature) {
-				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
+				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
 			} else {
 				StringIdChatParameter stringId("healing_response", "healing_response_63");
 				stringId.setTO(creatureTarget->getObjectID());
@@ -232,12 +232,12 @@ public:
 			Player * p = cast<Player *>( creature);
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 
 			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
 				return false;
 			}
 		}*/

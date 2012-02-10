@@ -135,16 +135,14 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 
 		if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
 
-			playerCreature->sendSystemMessage("system_msg",
-					"prototype_transferred");
+			playerCreature->sendSystemMessage("@system_msg:prototype_transferred");
 			//removeObject(prototype);
 
 			inventory->transferObject(prototype, -1, true);
 
 			status = "@crafting:tool_status_ready";
 		} else {
-			playerCreature->sendSystemMessage("system_msg",
-					"prototype_not_transferred");
+			playerCreature->sendSystemMessage("@system_msg:prototype_not_transferred");
 		}
 
 	}
@@ -189,14 +187,13 @@ void CraftingToolImplementation::requestCraftingSession(CreatureObject* player,
 	/// pre: _this locked
 
 	if (status == "@crafting:tool_status_finished") {
-		player->sendSystemMessage("system_msg", "crafting_tool_full");
+		player->sendSystemMessage("@system_msg:crafting_tool_full");
 		sendToolStartFailure(player);
 		return;
 	}
 
 	if (status == "@crafting:tool_status_working") {
-		player->sendSystemMessage("system_msg",
-				"crafting_tool_creating_prototype");
+		player->sendSystemMessage("@system_msg:crafting_tool_creating_prototype");
 		sendToolStartFailure(player);
 		return;
 	}
@@ -456,7 +453,7 @@ void CraftingToolImplementation::selectDraftSchematic(CreatureObject* player,
 	//		index);
 
 	if (draftschematic == NULL) {
-		player->sendSystemMessage("ui_craft", "err_no_draft_schematic");
+		player->sendSystemMessage("@ui_craft:err_no_draft_schematic");
 		closeCraftingWindow(player, 1);
 		cancelCraftingSession(player);
 		return;
@@ -467,7 +464,7 @@ void CraftingToolImplementation::selectDraftSchematic(CreatureObject* player,
 	if (createSessionObjects(player, draftschematic)) {
 
 		if (getPrototype() == NULL) {
-			player->sendSystemMessage("ui_craft", "err_no_prototype");
+			player->sendSystemMessage("@ui_craft:err_no_prototype");
 			return;
 		}
 
@@ -519,7 +516,7 @@ bool CraftingToolImplementation::createManufactureSchematic(
 	manufactureSchematic->createChildObjects();
 
 	if (manufactureSchematic == NULL) {
-		player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
+		player->sendSystemMessage("@ui_craft:err_no_manf_schematic");
 		closeCraftingWindow(player, 1);
 		cancelCraftingSession(player);
 		return false;
@@ -546,7 +543,7 @@ bool CraftingToolImplementation::createPrototype(CreatureObject* player,
 							draftschematic->getTanoCRC(), 0));
 
 	if (prototype == NULL) {
-		player->sendSystemMessage("ui_craft", "err_no_prototype");
+		player->sendSystemMessage("@ui_craft:err_no_prototype");
 		closeCraftingWindow(player, 1);
 		cancelCraftingSession(player);
 		return false;
@@ -568,12 +565,12 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(
 	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	if (manufactureSchematic == NULL) {
-		player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
+		player->sendSystemMessage("@ui_craft:err_no_manf_schematic");
 		return;
 	}
 
 	if (prototype == NULL) {
-		player->sendSystemMessage("ui_craft", "err_no_prototype");
+		player->sendSystemMessage("@ui_craft:err_no_prototype");
 		return;
 	}
 
@@ -1511,7 +1508,7 @@ void CraftingToolImplementation::depositObject(CreatureObject* player,
 
 	if (inventory->getContainerObjectsSize() < 80) {
 
-		player->sendSystemMessage("system_msg", "prototype_transferred");
+		player->sendSystemMessage("@system_msg:prototype_transferred");
 		//removeObject(prototype);
 
 		inventory->transferObject(prototype, -1, true);
@@ -1520,7 +1517,7 @@ void CraftingToolImplementation::depositObject(CreatureObject* player,
 
 	} else {
 
-		player->sendSystemMessage("system_msg", "prototype_not_transferred");
+		player->sendSystemMessage("@system_msg:prototype_not_transferred");
 		status = "@crafting:tool_status_finished";
 	}
 

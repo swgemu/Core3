@@ -78,11 +78,11 @@ public:
 			Locker clocker(play, creature);
 
 			if (play->getGroupInviterID() != creature->getObjectID()) {
-				creature->sendSystemMessage("group", "must_be_leader");
+				creature->sendSystemMessage("@group:must_be_leader");
 				return GENERALERROR;
 			} else {
 				play->updateGroupInviterID(0);
-				play->sendSystemMessage("group", "uninvite_self");
+				play->sendSystemMessage("@group:uninvite_self");
 
 				StringIdChatParameter stringId;
 				stringId.setStringId("group", "uninvite_target");

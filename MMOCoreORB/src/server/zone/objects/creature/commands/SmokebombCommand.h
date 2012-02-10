@@ -76,7 +76,7 @@ public:
 		effect << "clienteffect/entertainer_smoke_bomb_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");
 
-		creature->sendSystemMessage("performance", "effect_perform_smoke_bomb");
+		creature->sendSystemMessage("@performance:effect_perform_smoke_bomb");
 
 		return SUCCESS;
 	}

@@ -419,7 +419,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 	/*if (player->getHAM(CreatureAttribute::MIND) < 100) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
-		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
+		player->sendSystemMessage("@error_message:survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}*/
 
@@ -519,7 +519,7 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 
 	/*if (player->getHAM(CreatureAttribute::ACTION) < 200) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
-		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
+		player->sendSystemMessage("@error_message:survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}*/
 
@@ -603,10 +603,10 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 
 	if (surveyTool->tryGamble()) {
 		if (System::random(2) == 1) {
-			player->sendSystemMessage("survey", "gamble_success");
+			player->sendSystemMessage("@survey:gamble_success");
 			unitsExtracted *= 5;
 		} else {
-			player->sendSystemMessage("survey", "gamble_fail");
+			player->sendSystemMessage("@survey:gamble_fail");
 		}
 		surveyTool->clearGamble();
 		xpcap = 50;
@@ -616,12 +616,12 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 
 		if (player->getDistanceTo(richSampleLocation) < 10) {
 
-			player->sendSystemMessage("survey", "node_recovery");
+			player->sendSystemMessage("@survey:node_recovery");
 			unitsExtracted *= 5;
 
 		} else {
 
-			player->sendSystemMessage("survey", "node_not_close");
+			player->sendSystemMessage("@survey:node_not_close");
 		}
 
 		surveyTool->clearRichSampleLocation();

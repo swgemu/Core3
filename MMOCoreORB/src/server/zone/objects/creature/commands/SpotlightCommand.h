@@ -76,7 +76,7 @@ public:
 		effect << "clienteffect/entertainer_spot_light_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");
 
-		creature->sendSystemMessage("performance", "effect_perform_spot_light");
+		creature->sendSystemMessage("@performance:effect_perform_spot_light");
 
 		return SUCCESS;
 	}

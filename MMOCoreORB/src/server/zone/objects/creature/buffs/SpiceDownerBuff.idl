@@ -65,7 +65,7 @@ class SpiceDownerBuff extends Buff {
 	}
 	
 	public void activate(boolean applyModifiers) {
-		super.creature.sendSystemMessage("spice/spice", super.buffName + "_downer");
+		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_downer");
 
 		if (super.creature.hasBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME)) {
 			Buff buff = super.creature.getBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME);
@@ -85,7 +85,7 @@ class SpiceDownerBuff extends Buff {
 	}
 
 	public void deactivate(boolean applyModifiers) {
-		super.creature.sendSystemMessage("spice/spice", super.buffName + "_done");
+		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_done");
 
 		super.deactivate(applyModifiers);
 	}

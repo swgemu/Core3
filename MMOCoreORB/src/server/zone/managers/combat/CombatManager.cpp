@@ -1092,17 +1092,17 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		if (failed) {
 			switch (effectType) {
 			case CommandEffect::KNOCKDOWN:
-				creature->sendSystemMessage("cbt_spam", "knockdown_fail");
+				creature->sendSystemMessage("@cbt_spam:knockdown_fail");
 				break;
 			case CommandEffect::POSTUREDOWN:
 			case CommandEffect::POSTUREUP:
-				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
+				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
 				break;
 			case CommandEffect::NEXTATTACKDELAY:
-				creature->sendSystemMessage("combat_effects", "warcry_miss");
+				creature->sendSystemMessage("@combat_effects:warcry_miss");
 				break;
 			case CommandEffect::INTIMIDATE:
-				creature->sendSystemMessage("combat_effects", "intimidated_miss");
+				creature->sendSystemMessage("@combat_effects:intimidated_miss");
 				break;
 			default:
 				break;

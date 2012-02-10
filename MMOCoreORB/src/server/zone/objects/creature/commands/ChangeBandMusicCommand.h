@@ -76,7 +76,7 @@ public:
 		CreatureObject* leader = cast<CreatureObject*>(creature);
 
 		if (!creature->isEntertaining()) {
-			leader->sendSystemMessage("performance", "flourish_not_performing");
+			leader->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
 
@@ -84,12 +84,12 @@ public:
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
 		if (session == NULL) {
-			creature->sendSystemMessage("performance", "music_must_be_performing_self");
+			creature->sendSystemMessage("@performance:music_must_be_performing_self");
 			return GENERALERROR;
 		}
 
 		if (!session->isPlayingMusic()) {
-			creature->sendSystemMessage("performance", "music_must_be_performing_self");
+			creature->sendSystemMessage("@performance:music_must_be_performing_self");
 
 			return GENERALERROR;
 		}

@@ -95,7 +95,7 @@ public:
 			Vector3 playerPosition = creature->getPosition();
 
 			/*if (position.squaredDistanceTo(playerPosition) > 9.f) {
-				creature->sendSystemMessage("ui", "chair_out_of_range");
+				creature->sendSystemMessage("@ui:chair_out_of_range");
 				return GENERALERROR;
 			}*/
 

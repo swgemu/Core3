@@ -77,7 +77,7 @@ public:
 		if (objectsParent == NULL ||
 				objectsParent->isCellObject()) {
 
-			creature->sendSystemMessage("container_error_message", "container03");
+			creature->sendSystemMessage("@container_error_message:container03");
 			return GENERALERROR;
 		}
 

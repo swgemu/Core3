@@ -276,12 +276,12 @@ void SurveyToolImplementation::sendSurveyTo(CreatureObject* player, const String
 	}
 
 	if (player->getParent() != NULL && player->getParent()->isCellObject()) {
-		player->sendSystemMessage("error_message", "survey_in_structure"); //You cannot perform survey-related actions inside a structure.
+		player->sendSystemMessage("@error_message:survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;
 	}
 
 	if (player->isSwimming()) {
-		player->sendSystemMessage("error_message", "survey_swimming");
+		player->sendSystemMessage("@error_message:survey_swimming");
 		return;
 	}
 
@@ -298,7 +298,7 @@ void SurveyToolImplementation::sendSurveyTo(CreatureObject* player, const String
 
 	if (player->getHAM(CreatureAttribute::MIND) < 100) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
-		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
+		player->sendSystemMessage("@error_message:survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}
 
@@ -324,12 +324,12 @@ void SurveyToolImplementation::sendSampleTo(CreatureObject* player, const String
 	}
 
 	if (player->getParent() != NULL && player->getParent()->isCellObject()) {
-		player->sendSystemMessage("error_message", "survey_in_structure"); //You cannot perform survey-related actions inside a structure.
+		player->sendSystemMessage("@error_message:survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;
 	}
 
 	if (player->isSwimming()) {
-		player->sendSystemMessage("error_message", "survey_swimming");
+		player->sendSystemMessage("@error_message:survey_swimming");
 		return;
 	}
 
@@ -339,7 +339,7 @@ void SurveyToolImplementation::sendSampleTo(CreatureObject* player, const String
 
 	if (player->getHAM(CreatureAttribute::ACTION) < 200) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
-		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
+		player->sendSystemMessage("@error_message:survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}
 
@@ -450,7 +450,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(CreatureObject* player, int v
 	newwaypoint->setActive(true);
 
 	ghost->addWaypoint(newwaypoint, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
-	player->sendSystemMessage("survey", "node_waypoint");
+	player->sendSystemMessage("@survey:node_waypoint");
 
 	// Player must be kneeling to sample
 	if (!player->isStanding())
@@ -462,7 +462,7 @@ void SurveyToolImplementation::surveyGnodeMinigame(CreatureObject* player, int v
 	if(value == 1) {
 
 		if(player->getHAM(CreatureAttribute::ACTION) < 300) {
-			player->sendSystemMessage("survey", "gamble_no_action");
+			player->sendSystemMessage("@survey:gamble_no_action");
 			return;
 		}
 

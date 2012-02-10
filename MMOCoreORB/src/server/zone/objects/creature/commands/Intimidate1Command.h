@@ -66,10 +66,10 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR)
-			creature->sendSystemMessage("cbt_spam", "intim_out_of_range");
+			creature->sendSystemMessage("@cbt_spam:intim_out_of_range");
 
 		if (res == GENERALERROR)
-			creature->sendSystemMessage("combat_effects", "intimidated_miss");
+			creature->sendSystemMessage("@combat_effects:intimidated_miss");
 
 		return res;
 	}

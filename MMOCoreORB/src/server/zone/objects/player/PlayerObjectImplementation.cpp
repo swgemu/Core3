@@ -418,7 +418,7 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 	uint32 pvpStatusBitmask = creature->getPvpStatusBitmask();
 
 	if (factionStatus == FactionStatus::COVERT) {
-		creature->sendSystemMessage("faction_recruiter", "covert_complete");
+		creature->sendSystemMessage("@faction_recruiter:covert_complete");
 
 		if (pvpStatusBitmask & CreatureFlag::OVERT)
 			pvpStatusBitmask -= CreatureFlag::OVERT;
@@ -442,7 +442,7 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 		/*if (pvpStatusBitmask & CreatureFlag::BLINK_GREEN)
 			pvpStatusBitmask -= CreatureFlag::BLINK_GREEN;*/
 
-		creature->sendSystemMessage("faction_recruiter", "overt_complete");
+		creature->sendSystemMessage("@faction_recruiter:overt_complete");
 
 		creature->setPvpStatusBitmask(pvpStatusBitmask);
 	} else if (factionStatus == FactionStatus::ONLEAVE) {
@@ -456,7 +456,7 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 			pvpStatusBitmask -= CreatureFlag::BLINK_GREEN;*/
 
 		if (creature->getFaction() != 0)
-			creature->sendSystemMessage("faction_recruiter", "on_leave_complete");
+			creature->sendSystemMessage("@faction_recruiter:on_leave_complete");
 
 		creature->setPvpStatusBitmask(pvpStatusBitmask);
 	}

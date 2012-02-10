@@ -397,8 +397,8 @@ int RangedStimPackImplementation::handleObjectMenuSelect(CreatureObject* player,
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		}
 	if (player->getSkillMod("combat_healing_ability") < StimPackImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
-	player->sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			player.sendSystemMessage("@error_message:insufficient_skill");
+	player->sendSystemMessage("@error_message:insufficient_skill");
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			return 0;
 	return 0;
 }

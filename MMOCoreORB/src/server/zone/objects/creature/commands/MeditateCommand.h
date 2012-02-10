@@ -74,14 +74,14 @@ public:
 		Reference<Task*> task = player->getPendingTask("meditate");
 
 		if (task != NULL) {
-			player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
+			player->sendSystemMessage("@jedi_spam:already_in_meditative_state");
 			return GENERALERROR;
 		}
 
 		// Meditate Task
 		Reference<MeditateTask*> meditateTask = new MeditateTask(player);
 		meditateTask->setMoodString(player->getMoodString());
-		player->sendSystemMessage("teraskasi", "med_begin");
+		player->sendSystemMessage("@teraskasi:med_begin");
 
 		player->setMeditateState();
 
