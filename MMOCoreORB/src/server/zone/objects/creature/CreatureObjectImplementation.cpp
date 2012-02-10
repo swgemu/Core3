@@ -186,6 +186,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	mindWoundHeal = 0;
 
 	setContainerInheritPermissionsFromParent(false);
+	setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+	setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 }
 
 void CreatureObjectImplementation::loadTemplateData(
