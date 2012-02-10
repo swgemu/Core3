@@ -102,31 +102,36 @@ uint8 ContainerImplementation::checkPermission(CreatureObject* player) {
 void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	/*if (checkPermission(player) == 2)
+	if (checkContainerPermission(player, ContainerPermissions::MOVECONTAINER && getParent() != NULL &&
+			getParent()->checkContainerPermission(player, ContainerPermissions::MOVEOUT)))
+
 		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
-		*/
 
 	if (isSliceable() && isContainerLocked() && player->hasSkill("combat_smuggler_novice"))
 		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 }
 
 int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	/*if (selectedID == 50 && checkPermission(player) == 2) {
-		ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
+	if (selectedID == 50) {
+		if (checkContainerPermission(player, ContainerPermissions::MOVECONTAINER && getParent() != NULL &&
+				getParent()->checkContainerPermission(player, ContainerPermissions::MOVEOUT))) {
 
-		inputBox->setPromptTitle("@sui:set_name_title");
-		inputBox->setPromptText("@sui:set_name_prompt");
-		inputBox->setUsingObject(_this);
-		inputBox->setMaxInputSize(255);
+			ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
 
-		inputBox->setDefaultInput(objectName.getCustomString().toString());
+			inputBox->setPromptTitle("@sui:set_name_title");
+			inputBox->setPromptText("@sui:set_name_prompt");
+			inputBox->setUsingObject(_this);
+			inputBox->setMaxInputSize(255);
 
-		player->getPlayerObject()->addSuiBox(inputBox);
-		player->sendMessage(inputBox->generateMessage());
+			inputBox->setDefaultInput(objectName.getCustomString().toString());
 
-		return 0;
+			player->getPlayerObject()->addSuiBox(inputBox);
+			player->sendMessage(inputBox->generateMessage());
 
-	} else */if (selectedID == 69) {
+			return 0;
+		}
+
+	} else if (selectedID == 69) {
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 
@@ -141,8 +146,9 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		return 0;
 
-	} else
-		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
+	}
+
+	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 int ContainerImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
