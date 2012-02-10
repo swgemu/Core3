@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

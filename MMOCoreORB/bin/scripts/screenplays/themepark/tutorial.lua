@@ -319,6 +319,8 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	--drum
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/container/drum/tatt_drum_1.iff", 19, 0, -23, targetCellObject:getObjectID(), 0.71, 0, -0.71, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:setContainerAllowPermission("player", OPEN + MOVEOUT);
+	spawnedSceneObject:setContainerInheritPermissionsFromParent(false)
 	
 	writeData(creature:getObjectID() .. ":tutorial:drum", spawnedSceneObject:getObjectID())
 	

@@ -11,6 +11,8 @@
 #include "../SharedIntangibleObjectTemplate.h"
 
 class SharedPlayerObjectTemplate : public SharedIntangibleObjectTemplate {
+protected:
+	SortedVector<String> playerDefaultGroupPermissions;
 
 public:
 	SharedPlayerObjectTemplate() {
@@ -62,6 +64,56 @@ public:
 		}
 
 		iffStream->closeForm('SPLY');
+	}
+
+	void readObject(LuaObject* templateData) {
+		SharedIntangibleObjectTemplate::readObject(templateData);
+
+		lua_State* L = templateData->getLuaState();
+
+		if (!templateData->isValidTable())
+			return;
+
+		int i = 0;
+
+		lua_pushnil(L);
+		while (lua_next(L, -2) != 0) {
+			// 'key' is at index -2 and 'value' at index -1
+			//printf("%s - %s\n",
+			//		lua_tostring(L, -2), lua_typename(L, lua_type(L, -1)));
+
+			int type = lua_type(L, -2);
+
+			if (type == LUA_TSTRING) {
+				size_t len = 0;
+				const char* varName = lua_tolstring(L, -2, &len);
+
+				parseVariableData(varName, templateData);
+			} else
+				lua_pop(L, 1);
+
+			++i;
+		}
+
+		return;
+	}
+
+	void parseVariableData(const String& varName, LuaObject* templateData) {
+		if (varName == "playerDefaultGroupPermissions") {
+			LuaObject perms(templateData->getLuaState());
+
+			for (int i = 1; i <= perms.getTableSize(); ++i) {
+				playerDefaultGroupPermissions.put(perms.getStringAt(i));
+			}
+
+			perms.pop();
+		} else {
+			templateData->pop();
+		}
+	}
+
+	SortedVector<String>* getPlayerDefaultGroupPermissions() {
+		return &playerDefaultGroupPermissions;;
 	}
 
 };

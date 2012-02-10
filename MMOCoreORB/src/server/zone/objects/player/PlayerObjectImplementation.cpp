@@ -106,6 +106,7 @@ which carries forward this exception.
 #include "server/zone/objects/mission/MissionObject.h"
 #include "FactionStatus.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/templates/intangible/SharedPlayerObjectTemplate.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -145,6 +146,8 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	IntangibleObjectImplementation::loadTemplateData(templateData);
 
+	SharedPlayerObjectTemplate* sply = dynamic_cast<SharedPlayerObjectTemplate*>(templateData);
+
 	characterBitmask = ANONYMOUS;
 
 	adminLevel = 0;
@@ -163,6 +166,8 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	languageID = 0;
 
 	experienceList.setNullValue(0);
+
+	permissionGroups = *(sply->getPlayerDefaultGroupPermissions());
 }
 
 void PlayerObjectImplementation::notifyLoadFromDatabase() {

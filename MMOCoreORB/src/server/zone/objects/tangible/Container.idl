@@ -85,7 +85,7 @@ class Container extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native byte checkPermission(CreatureObject player);
+	
 	
 	
 	/**

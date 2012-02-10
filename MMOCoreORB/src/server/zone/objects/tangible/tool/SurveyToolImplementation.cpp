@@ -61,7 +61,7 @@ which carries forward this exception.
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"
 
 void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

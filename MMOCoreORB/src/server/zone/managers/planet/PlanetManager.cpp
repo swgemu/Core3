@@ -20,6 +20,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
 /*
  *	PlanetManagerStub
  */

@@ -12,7 +12,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/templates/slots/SlotDescriptor.h"
 #include "server/zone/templates/slots/ArrangementDescriptor.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/ServerCore.h"
 
 SharedObjectTemplate::SharedObjectTemplate() {
@@ -45,6 +45,8 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	locationReservationRadius = 0;
 
 	templateType = 0;
+
+	inheritPermissionsFromParent = false;
 }
 
 void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
@@ -232,6 +234,24 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		totalCellNumber = Lua::getIntParameter(state);
 	} else if (varName == "clientGameObjectType") {
 		clientGameObjectType = Lua::getIntParameter(state);
+	} else if (varName == "inheritPermissionsFromParent") {
+		inheritPermissionsFromParent = Lua::getBooleanParameter(state);
+	} else if (varName == "groupPermissions") {
+		groupPermissions.removeAll();
+
+		LuaObject obj(state);
+
+		if (obj.isValidTable()) {
+			for (int i = 1; i <= obj.getTableSize(); +i) {
+				LuaObject group = obj.getObjectAt(i);
+
+				groupPermissions.put(group.getStringAt(1).hashCode(), group.getIntAt(2));
+
+				group.pop();
+			}
+		}
+
+		obj.pop();
 	} else {
 		//Logger::console.error("unknown variable " + varName);
 		templateData->pop();

@@ -63,6 +63,9 @@ namespace scene {
 		int switchZone(lua_State* L);
 		int setObjectMenuComponent(lua_State* L);
 		int setContainerComponent(lua_State* L);
+		int setContainerInheritPermissionsFromParent(lua_State* L);
+		int setContainerAllowPermission(lua_State* L);
+		int setContainerDenyPermission(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

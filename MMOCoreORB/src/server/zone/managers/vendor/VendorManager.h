@@ -15,7 +15,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/auction/Vendor.h"
 #include "VendorOutfitManager.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 

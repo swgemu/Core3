@@ -42,7 +42,7 @@
 
 
 object_installation_base_installation_base = object_installation_base_shared_installation_base:new {
-
+	containerComponent = {"cpp", "StructureContainerComponent"}
 }
 
 ObjectTemplates:addTemplate(object_installation_base_installation_base, "object/installation/base/installation_base.iff")

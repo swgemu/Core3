@@ -58,6 +58,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.managers.planet.PlanetManager;
 include server.zone.objects.region.CityRegion;
+import server.zone.objects.area.ActiveArea;
 
 class VendorTerminal extends Terminal {
 
@@ -66,7 +67,8 @@ class VendorTerminal extends Terminal {
 
 	public VendorTerminal() {
 		Logger.setLoggingName("VendorTerminal");
-		
+	
+		super.getContainerPermissions().setInheritPermissionsFromParent(false);
 	}
 
 	public native void initializeTransientMembers();

@@ -14,6 +14,7 @@
 #include "server/zone/templates/appearance/PathGraph.h"
 #include "CollisionManager.h"
 #include "engine/util/u3d/Funnel.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	if (isnan(pointA.getX()) || isnan(pointA.getY()) || isnan(pointA.getZ()))

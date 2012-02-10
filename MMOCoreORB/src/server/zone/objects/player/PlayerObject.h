@@ -279,8 +279,6 @@ using namespace server::zone::objects::player::sui;
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-#include "system/util/Vector.h"
-
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -292,6 +290,10 @@ using namespace server::zone::objects::player::sui;
 #include "engine/service/proto/BasePacket.h"
 
 #include "engine/service/proto/BaseMessage.h"
+
+#include "system/util/SortedVector.h"
+
+#include "system/util/Vector.h"
 
 #include "system/util/SortedVector.h"
 
@@ -537,6 +539,12 @@ public:
 	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
 	void addSuiBox(SuiBox* sui);
+
+	void addPermissionGroup(const String& group);
+
+	void removePermissionGroup(const String& group);
+
+	SortedVector<String>* getPermissionGroups();
 
 	bool isFirstIncapacitationExpired();
 
@@ -914,6 +922,8 @@ protected:
 
 	VectorMap<String, String> screenPlayData;
 
+	SortedVector<String> permissionGroups;
+
 public:
 	static const int LFG = 1;
 
@@ -1154,6 +1164,12 @@ public:
 	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
 	void addSuiBox(SuiBox* sui);
+
+	void addPermissionGroup(const String& group);
+
+	void removePermissionGroup(const String& group);
+
+	SortedVector<String>* getPermissionGroups();
 
 	bool isFirstIncapacitationExpired();
 
@@ -1582,6 +1598,10 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
+	void addPermissionGroup(const String& group);
+
+	void removePermissionGroup(const String& group);
+
 	bool isFirstIncapacitationExpired();
 
 	void resetIncapacitationCounter();
@@ -1791,6 +1811,8 @@ protected:
 	String _param0_removeFromConsentList__String_;
 	String _param1_setCommandMessageString__int_String_;
 	String _param0_setSavedTerrainName__String_;
+	String _param0_addPermissionGroup__String_;
+	String _param0_removePermissionGroup__String_;
 	String _param0_hasFriend__String_;
 	String _param0_isIgnoring__String_;
 	String _param0_addReverseFriend__String_;

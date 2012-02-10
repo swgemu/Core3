@@ -21,6 +21,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
 #include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {
 	positionX = x;

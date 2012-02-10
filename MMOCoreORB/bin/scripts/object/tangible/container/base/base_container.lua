@@ -42,7 +42,7 @@
 
 
 object_tangible_container_base_base_container = object_tangible_container_base_shared_base_container:new {
-
+	containerComponent = {"cpp", "ContainerObjectComponent"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_base_base_container, "object/tangible/container/base/base_container.iff")

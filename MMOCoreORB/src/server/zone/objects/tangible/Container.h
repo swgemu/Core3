@@ -96,8 +96,6 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	byte checkPermission(CreatureObject* player);
-
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	bool isContainerObject();
@@ -146,8 +144,6 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	byte checkPermission(CreatureObject* player);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
@@ -203,8 +199,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	byte checkPermission(CreatureObject* player);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 

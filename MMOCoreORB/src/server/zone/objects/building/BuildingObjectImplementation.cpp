@@ -21,7 +21,7 @@
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"

@@ -44,6 +44,7 @@
 object_mobile_vendor_bothan_male = object_mobile_vendor_shared_bothan_male:new {
 
 	gameObjectType = 1038,
+	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
 
 	hair = {"object/tangible/hair/bothan/hair_bothan_male_s01.iff","object/tangible/hair/bothan/hair_bothan_male_s02.iff","object/tangible/hair/bothan/hair_bothan_male_s03.iff",

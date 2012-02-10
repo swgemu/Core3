@@ -10,6 +10,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 int PlaceStructureComponent::placeStructure(CreatureObject* creature, Deed* deed, float x, float y, int angle) {
 	StructureManager* structureManager = creature->getZone()->getStructureManager();

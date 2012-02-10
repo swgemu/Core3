@@ -44,6 +44,8 @@ which carries forward this exception.
 #include "ContainerComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
 	if (sceneObject == object) {
@@ -82,6 +84,45 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	}
 
 	return 0;
+}
+
+bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+
+	if (permissions->getOwnerID() == creature->getObjectID()) {
+		return permissions->hasOwnerPermission(permission);
+	}
+
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return false;
+
+	SceneObject* parent = sceneObject->getParent();
+
+	if (permission != ContainerPermissions::MOVECONTAINER && permissions->hasInheritPermissionsFromParent() && parent != NULL && parent != sceneObject) {
+		return parent->checkContainerPermission(creature, permission);
+	} else if (permission == ContainerPermissions::MOVECONTAINER && sceneObject->isStaticObject()) {
+		return false;
+	}
+
+	SortedVector<String>* groups = ghost->getPermissionGroups();
+
+	uint16 allowPermissions = 0, denyPermissions = 0;
+
+	for (int i = 0; i < groups->size(); ++i) {
+		String group = groups->get(i);
+
+		uint16 allow = permissions->getAllowPermissions(group);
+
+		allowPermissions |= allow;
+
+		uint16 deny = permissions->getDenyPermissions(group);
+
+		denyPermissions |= deny;
+	}
+
+	return permission & (allowPermissions & ~denyPermissions);
 }
 
 bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {

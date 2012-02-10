@@ -89,6 +89,9 @@ protected:
 	SceneObjectComponent* containerComponent;
 	SceneObjectComponent* objectMenuComponent;
 
+	bool inheritPermissionsFromParent;
+	HashTable<uint32, uint32> groupPermissions;
+
 	SortedVector<String> loadedDerivedFiles;
 
 public:
@@ -366,6 +369,14 @@ public:
 
 	inline ChildObject* getChildObject(int idx) {
 		return &childObjects.get(idx);
+	}
+
+	bool hasInheritPermissionsFromParent() {
+		return inheritPermissionsFromParent;
+	}
+
+	HashTable<uint32, uint32>* getGroupPermissions() {
+		return &groupPermissions;
 	}
 
 public:

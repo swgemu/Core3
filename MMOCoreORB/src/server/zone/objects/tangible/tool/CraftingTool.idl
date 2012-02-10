@@ -58,6 +58,7 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import system.util.Vector;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.scene.variables.ContainerPermissions;
 
 class CraftingTool extends ToolTangibleObject {
 	
@@ -100,6 +101,11 @@ class CraftingTool extends ToolTangibleObject {
 		status = "@crafting:tool_status_ready";
 		state = 1;
 		effectiveness = -15;
+		
+		super.setContainerInheritPermissionsFromParent(false);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEOUT);
 	}
 	
 	public void initializeTransientMembers() {

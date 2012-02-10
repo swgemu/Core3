@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual
+AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual
 
 ENGINE3_PATH=../../../../MMOEngine
 
@@ -66,6 +66,13 @@ LIBS =	$(SYSTEM_LIBS)  \
 #AM_LDFLAGS = --enable-stdcall-fixup
 
 bin_PROGRAMS = core3 #odb3
+
+
+#engine/engine.h.gch:
+#	$(CXX) $(INCLUDES) $(ENGINE3_PATH)/src/engine/engine.h
+
+#server/zone/objects/scene/SceneObject.h.gch:
+#	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
 core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/creature/buffs/StateBuff.cpp \
@@ -296,6 +303,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/HologrindHolocronMenuComponent.cpp \
 		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/ArtCrateMenuComponent.cpp \
+		server/zone/objects/tangible/components/ContainerObjectComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaContainerComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuResponse.cpp \
@@ -303,6 +311,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/components/AttributeListComponent.cpp \
 		server/zone/objects/player/components/PlayerZoneComponent.cpp \
 		server/zone/objects/building/components/ShuttleZoneComponent.cpp \
+		server/zone/objects/structure/components/StructureContainerComponent.cpp \
 		server/zone/objects/scene/components/ZoneComponent.cpp \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \
@@ -449,6 +458,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/vendor/VendorCreatureImplementation.cpp \
+		server/zone/objects/creature/vendor/VendorContainerComponent.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
@@ -484,6 +494,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/resource/simplexnoise/SimplexNoise.cpp \
 		server/zone/objects/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
+		server/zone/objects/scene/variables/ContainerPermissions.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
@@ -588,6 +599,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		server/zone/templates/customization/AssetCustomizationManagerTemplate.cpp \
 		main.cpp
+		
+
+#BUILT_SOURCES = engine/engine.h.gch \
+#				server/zone/objects/scene/SceneObject.h.gch
+ 
 
 #odb3_SOURCES = \
 #		odb/ObjectDatabaseCore.cpp \

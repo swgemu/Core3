@@ -79,6 +79,20 @@ class PlanetManager;
 
 using namespace server::zone::managers::planet;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 #include "server/zone/objects/tangible/terminal/Terminal.h"

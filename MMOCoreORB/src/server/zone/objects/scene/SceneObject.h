@@ -193,6 +193,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 #include "server/zone/objects/region/CityRegion.h"
 
 #include "engine/log/Logger.h"
@@ -325,6 +327,8 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	void openContainerTo(CreatureObject* player);
+
+	byte checkContainerPermission(CreatureObject* player, unsigned short permission);
 
 	void closeContainerTo(CreatureObject* player, bool notify = true);
 
@@ -644,6 +648,20 @@ public:
 
 	bool isCampStructure();
 
+	ContainerPermissions* getContainerPermissions();
+
+	void setContainerDefaultAllowPermission(unsigned short perm);
+
+	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void setContainerInheritPermissionsFromParent(bool val);
+
+	void setContainerOwnerID(unsigned long long id);
+
+	void setContainerAllowPermission(const String& group, unsigned short perm);
+
+	void setContainerDenyPermission(const String& group, unsigned short perm);
+
 	void setGameObjectType(unsigned int type);
 
 	void setClientObjectCRC(unsigned int objCRC);
@@ -775,6 +793,8 @@ protected:
 
 	unsigned int containerVolumeLimit;
 
+	ContainerPermissions containerPermissions;
+
 	ZoneReference zone;
 
 	ManagedWeakReference<CityRegion* > cityRegion;
@@ -899,6 +919,8 @@ public:
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	virtual void openContainerTo(CreatureObject* player);
+
+	virtual byte checkContainerPermission(CreatureObject* player, unsigned short permission);
 
 	virtual void closeContainerTo(CreatureObject* player, bool notify = true);
 
@@ -1217,6 +1239,20 @@ public:
 	virtual bool isCampKit();
 
 	virtual bool isCampStructure();
+
+	ContainerPermissions* getContainerPermissions();
+
+	void setContainerDefaultAllowPermission(unsigned short perm);
+
+	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void setContainerInheritPermissionsFromParent(bool val);
+
+	void setContainerOwnerID(unsigned long long id);
+
+	void setContainerAllowPermission(const String& group, unsigned short perm);
+
+	void setContainerDenyPermission(const String& group, unsigned short perm);
 
 	void setGameObjectType(unsigned int type);
 
@@ -1683,6 +1719,18 @@ public:
 
 	bool isCampStructure();
 
+	void setContainerDefaultAllowPermission(unsigned short perm);
+
+	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void setContainerInheritPermissionsFromParent(bool val);
+
+	void setContainerOwnerID(unsigned long long id);
+
+	void setContainerAllowPermission(const String& group, unsigned short perm);
+
+	void setContainerDenyPermission(const String& group, unsigned short perm);
+
 	void setGameObjectType(unsigned int type);
 
 	void setClientObjectCRC(unsigned int objCRC);
@@ -1748,6 +1796,8 @@ protected:
 	String _param0_hasSlotDescriptor__String_;
 	String _param0_getSlottedObject__String_;
 	String _param0_dropSlottedObject__String_;
+	String _param0_setContainerAllowPermission__String_short_;
+	String _param0_setContainerDenyPermission__String_short_;
 	String _param0_setLoggingName__String_;
 };
 

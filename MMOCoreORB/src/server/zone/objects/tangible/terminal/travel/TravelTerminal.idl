@@ -57,6 +57,7 @@ import server.zone.objects.tangible.ticket.TicketObject;
 import server.zone.managers.planet.PlanetManager;
 
 include server.zone.managers.planet.PlanetTravelPoint;
+import server.zone.objects.area.ActiveArea;
 
 class TravelTerminal extends Terminal {	
 	@local

@@ -91,6 +91,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/tangible/sign/SignObject.h"
 
+#include "variables/ContainerPermissions.h"
+
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
@@ -1272,6 +1274,11 @@ void SceneObjectImplementation::createChildObjects() {
 		}
 
 		childObjects.put(obj);
+		ContainerPermissions* permissions = obj->getContainerPermissions();
+		permissions->setOwner(getObjectID());
+		permissions->setInheritPermissionsFromParent(false);
+		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
 		obj->initializeChildObject(_this);
 	}

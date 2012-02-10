@@ -13,9 +13,11 @@
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
+#include "server/zone/objects/creature/vendor/VendorContainerComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/ContainerObjectComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LootSchematicMenuComponent.h"
 #include "server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.h"
@@ -30,6 +32,7 @@
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
+#include "server/zone/objects/structure/components/StructureContainerComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -66,4 +69,9 @@ ComponentManager::ComponentManager() {
 
 	components.put("PlaceStructureComponent", new PlaceStructureComponent());
 	components.put("PlaceCityHallComponent", new PlaceCityHallComponent());
+
+	components.put("ContainerObjectComponent", new ContainerObjectComponent());
+	components.put("StructureContainerComponent", new StructureContainerComponent());
+
+	components.put("VendorContainerComponent", new VendorContainerComponent());
 }

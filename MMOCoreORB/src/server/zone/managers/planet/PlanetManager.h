@@ -117,6 +117,20 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/managers/planet/RegionMap.h"

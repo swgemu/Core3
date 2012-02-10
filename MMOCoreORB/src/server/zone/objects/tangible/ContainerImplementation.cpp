@@ -75,7 +75,7 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 	if (!locked)
 		SceneObjectImplementation::sendContainerObjectsTo(player);
 }*/
-
+/*
 uint8 ContainerImplementation::checkPermission(CreatureObject* player) {
 	if (!isASubChildOf(player)) {
 		if (parent == NULL || !getParent()->isCellObject())
@@ -98,19 +98,20 @@ uint8 ContainerImplementation::checkPermission(CreatureObject* player) {
 
 	return 2;
 }
-
+*/
 void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if (checkPermission(player)==2)
+	/*if (checkPermission(player) == 2)
 		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
+		*/
 
 	if (isSliceable() && isContainerLocked() && player->hasSkill("combat_smuggler_novice"))
 		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 }
 
 int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 50 && checkPermission(player) == 2) {
+	/*if (selectedID == 50 && checkPermission(player) == 2) {
 		ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
 
 		inputBox->setPromptTitle("@sui:set_name_title");
@@ -125,7 +126,7 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		return 0;
 
-	} else if (selectedID == 69) {
+	} else */if (selectedID == 69) {
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 

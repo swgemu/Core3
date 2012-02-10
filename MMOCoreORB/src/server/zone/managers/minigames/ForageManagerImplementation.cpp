@@ -12,7 +12,7 @@
 #include "server/zone/objects/area/ForageArea.h"
 #include "server/zone/objects/area/ForageAreaCollection.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 
 void ForageManagerImplementation::startForaging(CreatureObject* player, bool scoutForage) {
 	if (player == NULL)

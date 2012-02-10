@@ -44,6 +44,7 @@
 object_mobile_vendor_trandoshan_female = object_mobile_vendor_shared_trandoshan_female:new {
 
 	gameObjectType = 1038,
+	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
 
 	hair = {"object/tangible/hair/trandoshan/hair_trandoshan_female_s01.iff","object/tangible/hair/trandoshan/hair_trandoshan_female_s02.iff","object/tangible/hair/trandoshan/hair_trandoshan_female_s03.iff",

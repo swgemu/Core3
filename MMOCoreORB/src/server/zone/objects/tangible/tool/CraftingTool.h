@@ -121,6 +121,22 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace variables {
+
+class ContainerPermissions;
+
+} // namespace variables
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene::variables;
+
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"

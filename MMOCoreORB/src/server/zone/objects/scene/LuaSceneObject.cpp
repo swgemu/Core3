@@ -47,7 +47,11 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setObjectMenuComponent", &LuaSceneObject::setObjectMenuComponent },
 		{ "setContainerComponent", &LuaSceneObject::setContainerComponent },
 		{ "switchZone", &LuaSceneObject::switchZone },
+		{ "setContainerInheritPermissionsFromParent", &LuaSceneObject::setContainerInheritPermissionsFromParent},
+		{ "setContainerAllowPermission", &LuaSceneObject::setContainerAllowPermission},
+		{ "setContainerDenyPermission", &LuaSceneObject::setContainerDenyPermission},
 		{ 0, 0 }
+
 };
 
 LuaSceneObject::LuaSceneObject(lua_State *L) {
@@ -392,3 +396,30 @@ int LuaSceneObject::setDirectionalHeading(lua_State* L) {
 
 	return 0;
 }
+
+int LuaSceneObject::setContainerInheritPermissionsFromParent(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+
+	realObject->setContainerInheritPermissionsFromParent(val);
+
+	return 0;
+}
+
+int LuaSceneObject::setContainerAllowPermission(lua_State* L) {
+	String group = lua_tostring(L, -2);
+	uint16 perm = lua_tointeger(L, -1);
+
+	realObject->setContainerAllowPermission(group, perm);
+
+	return 0;
+}
+
+int LuaSceneObject::setContainerDenyPermission(lua_State* L) {
+	String group = lua_tostring(L, -2);
+	uint16 perm = lua_tointeger(L, -1);
+
+	realObject->setContainerDenyPermission(group, perm);
+
+	return 0;
+}
+

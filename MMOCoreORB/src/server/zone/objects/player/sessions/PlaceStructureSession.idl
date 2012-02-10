@@ -52,6 +52,7 @@ import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.structure.StructureManager;
 import server.zone.Zone;
 include server.zone.objects.scene.SessionFacadeType;
+import server.zone.objects.area.ActiveArea;
 
 class PlaceStructureSession extends Facade {
 	protected CreatureObject creatureObject;

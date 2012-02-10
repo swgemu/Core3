@@ -76,7 +76,7 @@ public:
 		StringTokenizer tokenizer(arguments.toString());
 
 		uint64 destinationID = tokenizer.getLongToken();
-		int transferType = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes (I think -1 is remove)
+		int transferType = tokenizer.getIntToken(); // containment type .. -1 container, >=4 slotted container
 		float unknown1 = tokenizer.getFloatToken();
 		float unknown2 = tokenizer.getFloatToken();
 		float unknown3 = tokenizer.getFloatToken();
@@ -88,58 +88,19 @@ public:
 			return GENERALERROR;
 		}
 
-		if (objectToTransfer->isCreatureObject() && !objectToTransfer->isVendor()) {
-			//creature->sendSystemMessage("You cant pickup creatures");
+		if (objectToTransfer->isStaticObject())
 			return GENERALERROR;
-		}
 
-		// Check if the object is a Vendor and if its initalized before attempting to drop/pickup
-		if (objectToTransfer->isVendor()) {
-			SceneObject* vendorObj = objectToTransfer.get();
-			Vendor* vendor = NULL;
-			if (vendorObj->isCreatureObject()) {
-				VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendorObj);
-				vendor = vendorCreature->getVendor();
-			} else if (vendorObj->isTerminal()) {
-				VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(vendorObj);
-				vendor = vendorTerminal->getVendor();
-			}
-
-			if (vendor == NULL)
-				return GENERALERROR;
-
-			if (vendor->getOwnerID() != creature->getObjectID()) {
-				creature->sendSystemMessage("Only the vendor owner can do that.");
-				return GENERALERROR;
-			}
-
-			if (vendor->isInitialized()) {
-				creature->sendSystemMessage("@player_structure:cant_move");
-				return GENERALERROR;
-			}
-		}
+		if (!objectToTransfer->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
+			return GENERALERROR;
 
 		SceneObject* objectsParent = objectToTransfer->getParent();
 
-		// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??
-		if (objectsParent != NULL && objectsParent->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER) {
-			if (objectsParent->isCellObject()) {
+		if (objectsParent == NULL)
+			return GENERALERROR;
 
-				ManagedReference<BuildingObject*> building = cast<BuildingObject*>( objectsParent->getParent());
-
-				if (!building->isOnAdminList(creature->getFirstName())) {
-					return GENERALERROR;
-				}
-
-				if (objectToTransfer->isTerminal() && !objectToTransfer->isVendor())
-					return GENERALERROR;
-			} else {
-				SceneObject* rootParent = objectToTransfer->getRootParent();
-
-				if (rootParent->isPlayerCreature() && rootParent != creature)
-					return GENERALERROR;
-			}
-		}
+		if (!objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+			return GENERALERROR;
 
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
@@ -160,26 +121,15 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEIN))
+			return GENERALERROR;
+
 		ZoneServer* zoneServer = server->getZoneServer();
 		ObjectController* objectController = zoneServer->getObjectController();
 
-		//TODO: This needs to be looked at more!
-		//If transferring the object to a cell, ensure that the creature has permission to drop the item to the cell.
-		if (destinationObject->isCellObject()) {
-			ManagedReference<BuildingObject*> building = cast<BuildingObject*>( destinationObject->getParent());
-
-			if (!building->isOnAdminList(creature->getFirstName())) {
-				return GENERALERROR;
-			}
-
-			//Set the objects position to the creature that is transferring it?
-			objectToTransfer->initializePosition(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
-		}
+		objectToTransfer->initializePosition(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
 
 		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent());
-
-		if (objectsParent == NULL)
-			return GENERALERROR;
 
 		Locker clocker(objectsParent, creature);
 

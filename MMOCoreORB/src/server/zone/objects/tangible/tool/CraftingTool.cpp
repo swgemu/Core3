@@ -20,6 +20,8 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 /*
  *	CraftingToolStub
  */
@@ -731,6 +733,14 @@ CraftingToolImplementation::CraftingToolImplementation() {
 	state = 1;
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		effectiveness = -15;
 	effectiveness = -15;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		super.setContainerInheritPermissionsFromParent(false);
+	ToolTangibleObjectImplementation::setContainerInheritPermissionsFromParent(false);
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
+	ToolTangibleObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::OPEN);
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
+	ToolTangibleObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::MOVEIN);
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEOUT);
+	ToolTangibleObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::MOVEOUT);
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {

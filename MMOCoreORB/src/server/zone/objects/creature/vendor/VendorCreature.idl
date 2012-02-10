@@ -66,6 +66,7 @@ class VendorCreature extends CreatureObject {
 	public VendorCreature() {
 		Logger.setLoggingName("VendorCreature");
 	
+		super.getContainerPermissions().setInheritPermissionsFromParent(false);
 	}
 
 	public native void initializeTransientMembers();

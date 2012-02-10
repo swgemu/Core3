@@ -71,6 +71,7 @@ include engine.lua.LuaObject;
 include server.zone.objects.building.ShuttleMap;
 include server.zone.objects.building.tasks.ShuttleDepartureTask;
 include server.zone.objects.creature.CreaturePosture;
+import server.zone.objects.area.ActiveArea;
 
 class PlanetManager extends ManagedService implements Logger {
 	@weakReference

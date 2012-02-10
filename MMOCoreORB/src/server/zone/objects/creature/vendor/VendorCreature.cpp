@@ -334,6 +334,8 @@ VendorCreatureImplementation::VendorCreatureImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/creature/vendor/VendorCreature.idl():  		Logger.setLoggingName("VendorCreature");
 	Logger::setLoggingName("VendorCreature");
+	// server/zone/objects/creature/vendor/VendorCreature.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(false);
+	CreatureObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(false);
 }
 
 Vendor* VendorCreatureImplementation::getVendor() {

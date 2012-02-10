@@ -14,6 +14,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/harvester/ResourceHarvesterActivatePageMessage.h"
 #include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player->getFirstName()))

@@ -76,20 +76,6 @@ public:
 
 		Locker clocker(objectToOpen, creature);
 
-		if (objectToOpen->isContainerObject()) {
-			Container* container = cast<Container*>( objectToOpen.get());
-			if (container->isContainerLocked() && container->isSliced()) {
-				creature->sendSystemMessage("@slicing/slicing:broken");
-				return GENERALERROR;
-			} else if (container->isContainerLocked()) {
-				creature->sendSystemMessage("@slicing/slicing:locked");
-				return GENERALERROR;
-			} else if (objectToOpen->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
-				// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??
-				objectToOpen->openContainerTo(cast<CreatureObject*>( creature));
-				return SUCCESS;
-			}
-		}
 /*
 		ManagedReference<SceneObject*> objectsParent = objectToOpen->getParent();
 
@@ -104,16 +90,19 @@ public:
 			return GENERALERROR;
 		}*/
 
-		if (objectToOpen->isContainerObject()) {
+	/*	if (objectToOpen->isContainerObject()) {
 			ManagedReference<Container*> container = cast<Container*>(objectToOpen.get());
 			Zone* zone = creature->getZone();
 			if (zone->getZoneName() != "tutorial" && (container->checkPermission(creature) == 0))
 				return GENERALERROR;
 		}
 
-		objectToOpen->openContainerTo(creature);
+*/
+		if (objectToOpen->checkContainerPermission(creature, ContainerPermissions::OPEN)) {
+			objectToOpen->openContainerTo(creature);
 
-		objectToOpen->notifyObservers(ObserverEventType::OPENCONTAINER, creature);
+			objectToOpen->notifyObservers(ObserverEventType::OPENCONTAINER, creature);
+		}
 
 		return SUCCESS;
 	}

@@ -44,6 +44,7 @@
 object_mobile_vendor_rodian_male = object_mobile_vendor_shared_rodian_male:new {
 
 	gameObjectType = 1038,
+	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
 
 	hair = {"object/tangible/hair/rodian/hair_rodian_male_s01.iff","object/tangible/hair/rodian/hair_rodian_male_s02.iff","object/tangible/hair/rodian/hair_rodian_male_s03.iff",

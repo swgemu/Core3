@@ -17,7 +17,7 @@
 #include "server/zone/packets/installation/InstallationObjectMessage6.h"
 
 #include "server/zone/packets/chat/ChatSystemMessage.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

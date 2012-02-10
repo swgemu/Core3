@@ -123,6 +123,8 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	groupInviterID = 0;
 	groupInviteCounter = 0;
 
+	setContainerOwnerID(getObjectID());
+
 	setLoggingName("CreatureObject");
 }
 
@@ -182,6 +184,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	healthWoundHeal = 0;
 	actionWoundHeal = 0;
 	mindWoundHeal = 0;
+
+	setContainerInheritPermissionsFromParent(false);
 }
 
 void CreatureObjectImplementation::loadTemplateData(
@@ -2295,6 +2299,12 @@ void CreatureObjectImplementation::createChildObjects() {
 
 		if (obj == NULL)
 			continue;
+
+		ContainerPermissions* permissions = obj->getContainerPermissions();
+		permissions->setOwner(getObjectID());
+		permissions->setInheritPermissionsFromParent(false);
+		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
 		childObjects.put(obj);
 

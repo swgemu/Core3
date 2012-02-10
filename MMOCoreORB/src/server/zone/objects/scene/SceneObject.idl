@@ -91,6 +91,7 @@ include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
 include server.zone.objects.scene.components.AttributeListComponent;
+include server.zone.objects.scene.variables.ContainerPermissions;
 include server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 import engine.util.u3d.Matrix4;
@@ -113,6 +114,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
+	
+	@dereferenced
+	protected ContainerPermissions containerPermissions;
 
 	@dereferenced
 	protected ZoneReference zone;
@@ -522,6 +526,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@dirty
 	public abstract native void openContainerTo(CreatureObject player);
+	
+	@local
+	public abstract byte checkContainerPermission(CreatureObject player, unsigned short permission) {
+		return containerComponent.checkContainerPermission(this, player, permission);
+	}
 	
 	/**
 	 * Closes the container of a player
@@ -1445,6 +1454,35 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract boolean isCampStructure() {
 		return false;
+	}
+	
+	@local
+	public ContainerPermissions getContainerPermissions() {
+		return containerPermissions;
+	}
+	
+	public void setContainerDefaultAllowPermission(unsigned short perm) {
+		containerPermissions.setDefaultAllowPermission(perm);
+	}
+	
+	public void setContainerDefaultDenyPermission(unsigned short perm) {
+		containerPermissions.setDefaultDenyPermission(perm);
+	}
+	
+	public void setContainerInheritPermissionsFromParent(boolean val) {
+		containerPermissions.setInheritPermissionsFromParent(val);
+	}
+	
+	public void setContainerOwnerID(unsigned long id) {
+		containerPermissions.setOwner(id);
+	}
+	
+	public void setContainerAllowPermission(final string group, unsigned short perm) {
+		containerPermissions.setAllowPermission(group, perm);
+	}
+	
+	public void setContainerDenyPermission(final string group, unsigned short perm) {
+		containerPermissions.setDenyPermission(group, perm);
 	}
 
 	public void setGameObjectType(unsigned int type) {

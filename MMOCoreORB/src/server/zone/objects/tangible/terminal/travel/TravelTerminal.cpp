@@ -14,6 +14,8 @@
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
 /*
  *	TravelTerminalStub
  */

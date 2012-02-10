@@ -93,7 +93,15 @@ public:
 			return SUCCESS;
 		}
 
-		SceneObject* inventory = creature->getSlottedObject("inventory");
+		SceneObject* objectParent = object->getParent();
+
+		if (!object->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
+			return GENERALERROR;
+
+		if (objectParent != NULL && !objectParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+			return GENERALERROR;
+
+		/*SceneObject* inventory = creature->getSlottedObject("inventory");
 		SceneObject* datapad = creature->getSlottedObject("datapad");
 		SceneObject* bank = creature->getSlottedObject("bank");
 
@@ -109,7 +117,10 @@ public:
 			}
 
 			destroyObject(object, creature);
-		}
+		} */
+
+		if (object->isASubChildOf(creature))
+			destroyObject(object, creature);
 
 		return SUCCESS;
 	}

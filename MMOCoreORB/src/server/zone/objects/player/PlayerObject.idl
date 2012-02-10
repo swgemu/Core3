@@ -83,7 +83,8 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
-include system.util.Vector;
+import system.util.Vector;
+import system.util.SortedVector;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -233,6 +234,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected VectorMap<string, string> screenPlayData;
+	
+	@dereferenced
+	protected SortedVector<string> permissionGroups;
 
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -783,6 +787,19 @@ class PlayerObject extends IntangibleObject {
 	public void addSuiBox(SuiBox sui) {
 		unsigned int key = sui.getBoxID();
 		suiBoxes.put(key, sui);
+	}
+	
+	public void addPermissionGroup(final string group) {
+		permissionGroups.put(group);
+	}
+	
+	public void removePermissionGroup(final string group) {
+		permissionGroups.drop(group);
+	}
+	
+	@local
+	public SortedVector<string> getPermissionGroups() {
+		return permissionGroups;
 	}
 	
 	public native boolean isFirstIncapacitationExpired();

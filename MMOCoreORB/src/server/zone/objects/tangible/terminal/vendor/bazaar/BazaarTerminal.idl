@@ -52,6 +52,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import system.util.VectorMap;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
 
 class BazaarTerminal extends VendorTerminal {
 	

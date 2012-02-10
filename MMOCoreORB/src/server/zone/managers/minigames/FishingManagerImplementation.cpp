@@ -19,7 +19,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/minigames/events/FishingEvent.h"

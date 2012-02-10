@@ -18,7 +18,7 @@
  *	ContainerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKPERMISSION__CREATUREOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__,RPC_ISCONTAINERLOCKED__,RPC_SETLOCKEDSTATUS__BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__,RPC_ISCONTAINERLOCKED__,RPC_SETLOCKEDSTATUS__BOOL_};
 
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
 	ContainerImplementation* _implementation = new ContainerImplementation();
@@ -78,20 +78,6 @@ int Container::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
-}
-
-byte Container::checkPermission(CreatureObject* player) {
-	ContainerImplementation* _implementation = static_cast<ContainerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CHECKPERMISSION__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		return method.executeWithByteReturn();
-	} else
-		return _implementation->checkPermission(player);
 }
 
 int Container::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
@@ -327,9 +313,6 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
-	case RPC_CHECKPERMISSION__CREATUREOBJECT_:
-		resp->insertByte(checkPermission(static_cast<CreatureObject*>(inv->getObjectParameter())));
-		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
@@ -355,10 +338,6 @@ void ContainerAdapter::initializeTransientMembers() {
 
 int ContainerAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<Container*>(stub))->handleObjectMenuSelect(player, selectedID);
-}
-
-byte ContainerAdapter::checkPermission(CreatureObject* player) {
-	return (static_cast<Container*>(stub))->checkPermission(player);
 }
 
 int ContainerAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {

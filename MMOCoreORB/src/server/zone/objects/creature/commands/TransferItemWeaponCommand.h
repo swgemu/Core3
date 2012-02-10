@@ -85,6 +85,17 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!objectToTransfer->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
+			return GENERALERROR;
+
+		SceneObject* objectsParent = objectToTransfer->getParent();
+
+		if (objectsParent == NULL)
+			return GENERALERROR;
+
+		if (!objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+			return GENERALERROR;
+
 		if (!objectToTransfer->isWeaponObject() && !objectToTransfer->isInstrument() && !objectToTransfer->isFishingPoleObject()) {
 			creature->error("objectToTransfer is neither a weapon object nor an instrument/fishing pole in transferitemweapon");
 			return GENERALERROR;
@@ -127,7 +138,7 @@ public:
 
 					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
-					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
+					if (!objectController->transferObject(objectToRemove, parent, -1, true))
 						return GENERALERROR;
 				}
 			} else if (transferPreProcess != 0) {

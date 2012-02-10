@@ -44,6 +44,7 @@
 object_mobile_vendor_nikto_male = object_mobile_vendor_shared_nikto_male:new {
 
 	gameObjectType = 1038,
+	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
 
 	hair = {},

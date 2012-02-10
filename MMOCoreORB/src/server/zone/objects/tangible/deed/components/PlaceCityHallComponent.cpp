@@ -11,6 +11,7 @@
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/callbacks/PlaceCityHallSuiCallback.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 int PlaceCityHallComponent::placeStructure(CreatureObject* creature, Deed* deed, float x, float y, int angle) {
 	PlayerObject* ghost = creature->getPlayerObject();

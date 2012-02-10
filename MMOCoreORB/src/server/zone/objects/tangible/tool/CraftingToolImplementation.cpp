@@ -57,7 +57,7 @@
 #include "server/zone/objects/tangible/tool/events/CreateObjectTask.h"
 #include "server/zone/objects/tangible/tool/events/UpdateToolCountdownTask.h"
 #include "server/zone/objects/tangible/component/Component.h"
-
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"

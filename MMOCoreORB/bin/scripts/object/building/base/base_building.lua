@@ -42,7 +42,7 @@
 
 
 object_building_base_base_building = object_building_base_shared_base_building:new {
-
+	containerComponent = {"cpp", "StructureContainerComponent"}
 }
 
 ObjectTemplates:addTemplate(object_building_base_base_building, "object/building/base/base_building.iff")

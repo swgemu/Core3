@@ -18,6 +18,8 @@
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
 /*
  *	VendorTerminalStub
  */
@@ -308,6 +310,8 @@ VendorTerminalImplementation::VendorTerminalImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		Logger.setLoggingName("VendorTerminal");
 	Logger::setLoggingName("VendorTerminal");
+	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(false);
+	TerminalImplementation::getContainerPermissions()->setInheritPermissionsFromParent(false);
 }
 
 void VendorTerminalImplementation::setOwnerID(unsigned long long ownerID) {

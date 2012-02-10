@@ -16,6 +16,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
 /*
  *	PlaceStructureSessionStub
  */

@@ -54,6 +54,7 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.scene.variables.ContainerPermissions;
 
 class FactoryCrate extends TangibleObject {
 
@@ -61,6 +62,11 @@ class FactoryCrate extends TangibleObject {
 	
 	public FactoryCrate() {
 		Logger.setLoggingName("FactoryCrate");
+		
+		super.setContainerInheritPermissionsFromParent(false);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEOUT);
 	}
 	
 	@local

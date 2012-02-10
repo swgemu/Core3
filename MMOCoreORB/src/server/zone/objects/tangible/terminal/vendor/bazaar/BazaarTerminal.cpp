@@ -14,6 +14,8 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
 /*
  *	BazaarTerminalStub
  */

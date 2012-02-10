@@ -22,6 +22,7 @@
 #include "server/zone/managers/minigames/GamblingBet.h"
 #include "engine/service/proto/BaseMessage.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
 	if (terminal == NULL || player == NULL)

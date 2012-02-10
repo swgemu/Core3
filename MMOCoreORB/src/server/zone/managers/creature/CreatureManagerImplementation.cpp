@@ -305,6 +305,10 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 			return false;
 		}
 
+		creatureInventory->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+		creatureInventory->setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+		creatureInventory->setContainerInheritPermissionsFromParent(false);
+
 		creature->transferObject(creatureInventory, 4);
 	}
 
@@ -377,6 +381,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			if (destructedObject->isNonPlayerCreatureObject())
 				destructedObject->setCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
 
+			creatureInventory->setContainerOwnerID(player->getObjectID());
 			lootManager->createLoot(creatureInventory, destructedObject);
 		}
 

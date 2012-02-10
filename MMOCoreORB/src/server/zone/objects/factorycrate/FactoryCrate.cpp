@@ -14,6 +14,8 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 /*
  *	FactoryCrateStub
  */
@@ -341,6 +343,14 @@ FactoryCrateImplementation::FactoryCrateImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		Logger.setLoggingName("FactoryCrate");
 	Logger::setLoggingName("FactoryCrate");
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerInheritPermissionsFromParent(false);
+	TangibleObjectImplementation::setContainerInheritPermissionsFromParent(false);
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
+	TangibleObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::OPEN);
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
+	TangibleObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::MOVEIN);
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEOUT);
+	TangibleObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::MOVEOUT);
 }
 
 bool FactoryCrateImplementation::isFactoryCrate() {

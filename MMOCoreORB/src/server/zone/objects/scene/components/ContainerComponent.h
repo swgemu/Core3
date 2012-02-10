@@ -18,11 +18,15 @@ namespace server {
    namespace scene {
     class SceneObject;
    }
+   namespace creature {
+    class CreatureObject;
+   }
   }
  }
 }
 
 using namespace server::zone::objects::scene;
+using namespace server::zone::objects::creature;
 
 class ContainerComponent : public SceneObjectComponent {
 
@@ -57,6 +61,8 @@ public:
 	 * @return returns 0 on success, or error code
 	 */
 	virtual int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription);
+
+	virtual bool checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission);
 
 	/**
 	 * Is called when this object has been inserted with an object

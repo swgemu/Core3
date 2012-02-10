@@ -44,6 +44,7 @@
 object_mobile_vendor_sullustan_male = object_mobile_vendor_shared_sullustan_male:new {
 
 	gameObjectType = 1038,
+	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
 
 	hair = {},

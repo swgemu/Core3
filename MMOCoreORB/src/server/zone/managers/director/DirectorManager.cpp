@@ -42,6 +42,7 @@
 #include "server/zone/managers/sui/LuaSuiManager.h"
 #include "server/zone/objects/player/sui/LuaSuiBox.h"
 #include "server/zone/objects/scene/components/LuaObjectMenuResponse.h"
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -184,6 +185,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("DISEASED", CreatureState::DISEASED);
 	luaEngine->setGlobalInt("ONFIRE", CreatureState::ONFIRE);
 
+	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
+	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
+	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
 
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());

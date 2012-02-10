@@ -10,6 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/tasks/ShuttleDepartureTask.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);
