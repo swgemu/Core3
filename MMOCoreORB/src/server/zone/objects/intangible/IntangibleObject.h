@@ -33,6 +33,8 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"

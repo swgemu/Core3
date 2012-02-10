@@ -88,7 +88,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (objectToTransfer->isStaticObject())
+		if (objectToTransfer->isStaticObject() || !objectToTransfer->isTangibleObject())
 			return GENERALERROR;
 
 		if (!objectToTransfer->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
@@ -108,6 +108,9 @@ public:
 			creature->error("destinationObject NULL in tansfermisc command");
 			return GENERALERROR;
 		}
+
+		if (destinationObject->isIntangibleObject())
+			return GENERALERROR;
 
 		String errorDescription;
 		int errorNumber = 0;

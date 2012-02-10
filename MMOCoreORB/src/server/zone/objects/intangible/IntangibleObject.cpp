@@ -246,6 +246,12 @@ IntangibleObjectImplementation::IntangibleObjectImplementation() {
 	Logger::setLoggingName("IntangibleObject");
 	// server/zone/objects/intangible/IntangibleObject.idl():  		status = 0;
 	status = 0;
+	// server/zone/objects/intangible/IntangibleObject.idl():  		super.setContainerInheritPermissionsFromParent(false);
+	SceneObjectImplementation::setContainerInheritPermissionsFromParent(false);
+	// server/zone/objects/intangible/IntangibleObject.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+	SceneObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+	// server/zone/objects/intangible/IntangibleObject.idl():  		super.setContainerDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
+	SceneObjectImplementation::setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 }
 
 void IntangibleObjectImplementation::finalize() {

@@ -84,6 +84,17 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!objectToTransfer->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
+			return GENERALERROR;
+
+		SceneObject* objectsParent = objectToTransfer->getParent();
+
+		if (objectsParent == NULL)
+			return GENERALERROR;
+
+		if (!objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+			return GENERALERROR;
+
 		if (!objectToTransfer->isArmorObject()) {
 			creature->error("objectToTransfer is not an armor object in transferitemarmor");
 			return GENERALERROR;
