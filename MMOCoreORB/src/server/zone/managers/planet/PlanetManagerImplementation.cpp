@@ -401,7 +401,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 			regionMap.addRegion(cityRegion);
 		}
 
-		cityRegion->addActiveArea(x, y, radius);
+		cityRegion->addRegion(x, y, radius);
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");

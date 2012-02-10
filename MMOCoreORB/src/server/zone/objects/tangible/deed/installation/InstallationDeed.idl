@@ -76,6 +76,8 @@ class InstallationDeed extends Deed {
 		if (placeStructureComponent != null) {
 			return placeStructureComponent.placeStructure(creature, this, x, y, angle);	
 		}
+		
+		return 1;
 	}
 	
 	public native void initializeTransientMembers();

@@ -75,7 +75,7 @@ public:
 			//The building was successfully placed. Place the city area, and name it.
 			CityRegion* city = new CityRegion(zone, cityName);
 			uint16 radius = CityManagerImplementation::radiusPerRank.get(CityManager::OUTPOST);
-			city->addActiveArea(x, y, radius);
+			city->addRegion(x, y, radius);
 		}
 	}
 };

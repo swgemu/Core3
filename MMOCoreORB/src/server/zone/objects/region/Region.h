@@ -50,32 +50,16 @@ using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
+namespace region {
 
-class CreatureObject;
+class CityRegion;
 
-} // namespace creature
+} // namespace region
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace building {
-namespace city {
-
-class CityHallObject;
-
-} // namespace city
-} // namespace building
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::building::city;
+using namespace server::zone::objects::region;
 
 namespace server {
 namespace zone {
@@ -136,19 +120,13 @@ class Region : public ActiveArea {
 public:
 	Region();
 
+	void setCityRegion(CityRegion* city);
+
+	CityRegion* getCityRegion();
+
 	void notifyEnter(SceneObject* object);
 
-	void sendGreetingMessage(CreatureObject* player);
-
-	void sendDepartingMessage(CreatureObject* player);
-
 	void notifyExit(SceneObject* object);
-
-	void notifyInsertToZone(Zone* zone);
-
-	void notifyRemoveFromZone();
-
-	void despawnCityObjects();
 
 	void addBazaar(BazaarTerminal* ter);
 
@@ -157,10 +135,6 @@ public:
 	int getBazaarCount();
 
 	bool isRegion();
-
-	CityHallObject* getCityHall();
-
-	void setCityHall(CityHallObject* hall);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -190,28 +164,20 @@ class RegionImplementation : public ActiveAreaImplementation {
 protected:
 	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
-	SortedVector<ManagedReference<SceneObject* > > shuttlePorts;
-
-	ManagedReference<CityHallObject* > cityHall;
+	ManagedWeakReference<CityRegion* > cityRegion;
 
 public:
 	RegionImplementation();
 
 	RegionImplementation(DummyConstructorParameter* param);
 
+	void setCityRegion(CityRegion* city);
+
+	CityRegion* getCityRegion();
+
 	void notifyEnter(SceneObject* object);
 
-	void sendGreetingMessage(CreatureObject* player);
-
-	void sendDepartingMessage(CreatureObject* player);
-
 	void notifyExit(SceneObject* object);
-
-	void notifyInsertToZone(Zone* zone);
-
-	void notifyRemoveFromZone();
-
-	void despawnCityObjects();
 
 	void addBazaar(BazaarTerminal* ter);
 
@@ -220,10 +186,6 @@ public:
 	int getBazaarCount();
 
 	bool isRegion();
-
-	CityHallObject* getCityHall();
-
-	void setCityHall(CityHallObject* hall);
 
 	WeakReference<Region*> _this;
 
@@ -268,19 +230,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void setCityRegion(CityRegion* city);
+
+	CityRegion* getCityRegion();
+
 	void notifyEnter(SceneObject* object);
 
-	void sendGreetingMessage(CreatureObject* player);
-
-	void sendDepartingMessage(CreatureObject* player);
-
 	void notifyExit(SceneObject* object);
-
-	void notifyInsertToZone(Zone* zone);
-
-	void notifyRemoveFromZone();
-
-	void despawnCityObjects();
 
 	void addBazaar(BazaarTerminal* ter);
 
@@ -289,10 +245,6 @@ public:
 	int getBazaarCount();
 
 	bool isRegion();
-
-	CityHallObject* getCityHall();
-
-	void setCityHall(CityHallObject* hall);
 
 };
 

@@ -93,7 +93,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObje
 	city->setRegion(cityRegion);
 	cityRegion->initializePosition(city->getPositionX(), 0, city->getPositionY());
 	cityRegion->setRadius(radiusPerRank.get(NEWCITY));
-	cityRegion->setCityHall(city);
+	//cityRegion->setCityHall(city);
 
 	StringId* objectName = cityRegion->getObjectName();
 	objectName->setCustomString(name);

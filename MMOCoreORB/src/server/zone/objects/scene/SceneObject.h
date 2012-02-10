@@ -777,7 +777,7 @@ protected:
 
 	ZoneReference zone;
 
-	Reference<CityRegion* > cityRegion;
+	ManagedWeakReference<CityRegion* > cityRegion;
 
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 

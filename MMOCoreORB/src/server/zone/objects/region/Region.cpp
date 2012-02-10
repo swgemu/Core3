@@ -8,9 +8,7 @@
 
 #include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/building/city/CityHallObject.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -22,7 +20,7 @@
  *	RegionStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_,RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYREMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
+enum {RPC_SETCITYREGION__CITYREGION_ = 6,RPC_GETCITYREGION__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__};
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
@@ -38,6 +36,33 @@ Region::~Region() {
 
 
 
+void Region::setCityRegion(CityRegion* city) {
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCITYREGION__CITYREGION_);
+		method.addObjectParameter(city);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCityRegion(city);
+}
+
+CityRegion* Region::getCityRegion() {
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCITYREGION__);
+
+		return static_cast<CityRegion*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getCityRegion();
+}
+
 void Region::notifyEnter(SceneObject* object) {
 	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -52,34 +77,6 @@ void Region::notifyEnter(SceneObject* object) {
 		_implementation->notifyEnter(object);
 }
 
-void Region::sendGreetingMessage(CreatureObject* player) {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendGreetingMessage(player);
-}
-
-void Region::sendDepartingMessage(CreatureObject* player) {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendDepartingMessage(player);
-}
-
 void Region::notifyExit(SceneObject* object) {
 	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -92,46 +89,6 @@ void Region::notifyExit(SceneObject* object) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyExit(object);
-}
-
-void Region::notifyInsertToZone(Zone* zone) {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__ZONE_);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->notifyInsertToZone(zone);
-}
-
-void Region::notifyRemoveFromZone() {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_NOTIFYREMOVEFROMZONE__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->notifyRemoveFromZone();
-}
-
-void Region::despawnCityObjects() {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DESPAWNCITYOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->despawnCityObjects();
 }
 
 void Region::addBazaar(BazaarTerminal* ter) {
@@ -186,33 +143,6 @@ bool Region::isRegion() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isRegion();
-}
-
-CityHallObject* Region::getCityHall() {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCITYHALL__);
-
-		return static_cast<CityHallObject*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getCityHall();
-}
-
-void Region::setCityHall(CityHallObject* hall) {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETCITYHALL__CITYHALLOBJECT_);
-		method.addObjectParameter(hall);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setCityHall(hall);
 }
 
 DistributedObjectServant* Region::_getImplementation() {
@@ -325,13 +255,8 @@ bool RegionImplementation::readObjectMember(ObjectInputStream* stream, const Str
 		return true;
 	}
 
-	if (_name == "shuttlePorts") {
-		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&shuttlePorts, stream);
-		return true;
-	}
-
-	if (_name == "cityHall") {
-		TypeInfo<ManagedReference<CityHallObject* > >::parseFromBinaryStream(&cityHall, stream);
+	if (_name == "cityRegion") {
+		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
 	}
 
@@ -358,24 +283,16 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "shuttlePorts";
+	_name = "cityRegion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&shuttlePorts, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "cityHall";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<CityHallObject* > >::toBinaryStream(&cityHall, stream);
+	TypeInfo<ManagedWeakReference<CityRegion* > >::toBinaryStream(&cityRegion, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return 2 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
@@ -386,45 +303,30 @@ RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	(&bazaars)->setNullValue(NULL);
 }
 
+void RegionImplementation::setCityRegion(CityRegion* city) {
+	// server/zone/objects/region/Region.idl():  		cityRegion = city;
+	cityRegion = city;
+}
+
+CityRegion* RegionImplementation::getCityRegion() {
+	// server/zone/objects/region/Region.idl():  		return cityRegion;
+	return cityRegion;
+}
+
 void RegionImplementation::notifyEnter(SceneObject* object) {
-	// server/zone/objects/region/Region.idl():  		if 
-	if (object->isTerminal()){
-	// server/zone/objects/region/Region.idl():  			Terminal term = (Terminal) object;
-	Terminal* term = (Terminal*) object;
-	// server/zone/objects/region/Region.idl():  		}
-	if (term->isBazaarTerminal())	// server/zone/objects/region/Region.idl():  				bazaars.put(object.getObjectID(), (BazaarTerminal)object);
-	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
-}
-	// server/zone/objects/region/Region.idl():  	}
-	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl():  			sendGreetingMessage((CreatureObject) object);
-	sendGreetingMessage((CreatureObject*) object);
-}
+	// server/zone/objects/region/Region.idl():  		cityRegion.
+	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
+	return;
+	// server/zone/objects/region/Region.idl():  		cityRegion.notifyEnter(object);
+	cityRegion->notifyEnter(object);
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
-	// server/zone/objects/region/Region.idl():  		if 
-	if (object->isTerminal()){
-	// server/zone/objects/region/Region.idl():  			Terminal term = (Terminal) object;
-	Terminal* term = (Terminal*) object;
-	// server/zone/objects/region/Region.idl():  		}
-	if (term->isBazaarTerminal())	// server/zone/objects/region/Region.idl():  				bazaars.drop(object.getObjectID());
-	(&bazaars)->drop(object->getObjectID());
-}
-	// server/zone/objects/region/Region.idl():  	}
-	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl():  			sendDepartingMessage((CreatureObject) object);
-	sendDepartingMessage((CreatureObject*) object);
-}
-}
-
-void RegionImplementation::notifyRemoveFromZone() {
-	// server/zone/objects/region/Region.idl():  		despawnCityObjects();
-	despawnCityObjects();
-	// server/zone/objects/region/Region.idl():  		super.notifyRemoveFromZone();
-	ActiveAreaImplementation::notifyRemoveFromZone();
-	// server/zone/objects/region/Region.idl():  		updateToDatabaseWithoutChildren();
-	updateToDatabaseWithoutChildren();
+	// server/zone/objects/region/Region.idl():  		cityRegion.
+	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
+	return;
+	// server/zone/objects/region/Region.idl():  		cityRegion.notifyExit(object);
+	cityRegion->notifyExit(object);
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
@@ -447,16 +349,6 @@ bool RegionImplementation::isRegion() {
 	return true;
 }
 
-CityHallObject* RegionImplementation::getCityHall() {
-	// server/zone/objects/region/Region.idl():  		return cityHall;
-	return cityHall;
-}
-
-void RegionImplementation::setCityHall(CityHallObject* hall) {
-	// server/zone/objects/region/Region.idl():  		cityHall = hall;
-	cityHall = hall;
-}
-
 /*
  *	RegionAdapter
  */
@@ -468,26 +360,17 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_SETCITYREGION__CITYREGION_:
+		setCityRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
+		break;
+	case RPC_GETCITYREGION__:
+		resp->insertLong(getCityRegion()->_getObjectID());
+		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
-	case RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_:
-		sendGreetingMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_:
-		sendDepartingMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
 		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
-		break;
-	case RPC_NOTIFYREMOVEFROMZONE__:
-		notifyRemoveFromZone();
-		break;
-	case RPC_DESPAWNCITYOBJECTS__:
-		despawnCityObjects();
 		break;
 	case RPC_ADDBAZAAR__BAZAARTERMINAL_:
 		addBazaar(static_cast<BazaarTerminal*>(inv->getObjectParameter()));
@@ -501,12 +384,6 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISREGION__:
 		resp->insertBoolean(isRegion());
 		break;
-	case RPC_GETCITYHALL__:
-		resp->insertLong(getCityHall()->_getObjectID());
-		break;
-	case RPC_SETCITYHALL__CITYHALLOBJECT_:
-		setCityHall(static_cast<CityHallObject*>(inv->getObjectParameter()));
-		break;
 	default:
 		return NULL;
 	}
@@ -514,32 +391,20 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
+void RegionAdapter::setCityRegion(CityRegion* city) {
+	(static_cast<Region*>(stub))->setCityRegion(city);
+}
+
+CityRegion* RegionAdapter::getCityRegion() {
+	return (static_cast<Region*>(stub))->getCityRegion();
+}
+
 void RegionAdapter::notifyEnter(SceneObject* object) {
 	(static_cast<Region*>(stub))->notifyEnter(object);
 }
 
-void RegionAdapter::sendGreetingMessage(CreatureObject* player) {
-	(static_cast<Region*>(stub))->sendGreetingMessage(player);
-}
-
-void RegionAdapter::sendDepartingMessage(CreatureObject* player) {
-	(static_cast<Region*>(stub))->sendDepartingMessage(player);
-}
-
 void RegionAdapter::notifyExit(SceneObject* object) {
 	(static_cast<Region*>(stub))->notifyExit(object);
-}
-
-void RegionAdapter::notifyInsertToZone(Zone* zone) {
-	(static_cast<Region*>(stub))->notifyInsertToZone(zone);
-}
-
-void RegionAdapter::notifyRemoveFromZone() {
-	(static_cast<Region*>(stub))->notifyRemoveFromZone();
-}
-
-void RegionAdapter::despawnCityObjects() {
-	(static_cast<Region*>(stub))->despawnCityObjects();
 }
 
 void RegionAdapter::addBazaar(BazaarTerminal* ter) {
@@ -556,14 +421,6 @@ int RegionAdapter::getBazaarCount() {
 
 bool RegionAdapter::isRegion() {
 	return (static_cast<Region*>(stub))->isRegion();
-}
-
-CityHallObject* RegionAdapter::getCityHall() {
-	return (static_cast<Region*>(stub))->getCityHall();
-}
-
-void RegionAdapter::setCityHall(CityHallObject* hall) {
-	(static_cast<Region*>(stub))->setCityHall(hall);
 }
 
 /*

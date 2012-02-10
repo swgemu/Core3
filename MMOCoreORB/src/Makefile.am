@@ -252,6 +252,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/mission/MissionObjective.cpp \
+				server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/mission/SurveyMissionObjective.cpp \
 				server/zone/objects/mission/DestroyMissionObjective.cpp \
 				server/zone/objects/mission/DeliverMissionObjective.cpp \
@@ -267,6 +268,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \
 		server/zone/objects/tangible/LuaTangibleObject.cpp \
@@ -274,7 +276,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
-		server/zone/objects/region/CityRegion.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/intangible/ShipControlDeviceImplementation.cpp \

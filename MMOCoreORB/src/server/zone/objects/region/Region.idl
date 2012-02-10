@@ -49,8 +49,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
 import server.zone.objects.area.ActiveArea;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.building.city.CityHallObject;
+import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.region.RegionCenterPoint;
@@ -62,12 +61,9 @@ class Region extends ActiveArea {
 	@dereferenced
 	protected VectorMap<unsigned long, BazaarTerminal> bazaars;
 	
-	@dereferenced
-	protected SortedVector<SceneObject> shuttlePorts;
-	
-//	@weakReference
-	protected CityHallObject cityHall;
-	
+	@weakReference
+	protected CityRegion cityRegion;
+
 	public Region() {
 		super();
 		
@@ -75,55 +71,28 @@ class Region extends ActiveArea {
 		bazaars.setNullValue(null);
 	}
 	
-	public void notifyEnter(SceneObject object) {
-		if (object.isTerminal()) {
-			Terminal term = (Terminal) object;
-			if (term.isBazaarTerminal())
-				bazaars.put(object.getObjectID(), (BazaarTerminal)object);
-		}
-		
-		if (object.isPlayerCreature()) {
-			sendGreetingMessage((CreatureObject) object);
-		}
-		
-		//object planetmapcat is shuttleport, then add to shuttleports vector.
-		//otherwise, die
+	public void setCityRegion(CityRegion city) {
+		cityRegion = city;
 	}
 	
-	public native void sendGreetingMessage(CreatureObject player);
-	public native void sendDepartingMessage(CreatureObject player);
+	public CityRegion getCityRegion() {
+		return cityRegion;
+	}
+	
+	public void notifyEnter(SceneObject object) {
+		if (cityRegion == null)
+			return;
+		
+		cityRegion.notifyEnter(object);
+	}
 	
 	public void notifyExit(SceneObject object) {
-		if (object.isTerminal()) {
-			Terminal term = (Terminal) object;
-			if (term.isBazaarTerminal())
-				bazaars.drop(object.getObjectID());
-
-		}
+		if (cityRegion == null)
+			return;
 		
-		if (object.isPlayerCreature()) {
-			sendDepartingMessage((CreatureObject) object);
-		}
+		cityRegion.notifyExit(object);
 	}
 	
-	/**
-	 * Inserts this object into zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and inserted into zone }
-	 * @param zone Zone object where this object will be inserted
-	 */
-	public native void notifyInsertToZone(Zone zone);
-	
-	public void notifyRemoveFromZone() {
-		despawnCityObjects();
-			
-		super.notifyRemoveFromZone();
-		
-		updateToDatabaseWithoutChildren();
-	}
-	
-	public native void despawnCityObjects();
-
 	public void addBazaar(BazaarTerminal ter) {
 		bazaars.put(ter.getObjectID(), ter);
 	}
@@ -138,14 +107,6 @@ class Region extends ActiveArea {
 	
 	public boolean isRegion() {
 		return true;
-	}
-	
-	public CityHallObject getCityHall() {
-		return cityHall;
-	}
-	
-	public void setCityHall(CityHallObject hall) {
-		cityHall = hall;
 	}
 }
 

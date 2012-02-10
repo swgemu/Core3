@@ -332,7 +332,7 @@ bool VendorTerminalImplementation::isVendorTerminal() {
 
 CityRegion* VendorTerminalImplementation::getCityRegion() {
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  			return super.cityRegion;
-	return TerminalImplementation::cityRegion;
+	return TerminalImplementation::cityRegion.getForUpdate();
 }
 
 /*

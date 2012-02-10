@@ -272,11 +272,13 @@ BuildingDeedImplementation::BuildingDeedImplementation() {
 }
 
 int BuildingDeedImplementation::placeStructure(CreatureObject* creature, float x, float y, int angle) {
-	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  	}
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		return 
 	if (placeStructureComponent != NULL){
 	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  			return placeStructureComponent.placeStructure(creature, this, x, y, angle);
 	return placeStructureComponent->placeStructure(creature, _this, x, y, angle);
 }
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		return 1;
+	return 1;
 }
 
 void BuildingDeedImplementation::setSurplusMaintenance(unsigned int surplusMaint) {

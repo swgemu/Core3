@@ -1,0 +1,86 @@
+/*
+ * CityRegion.h
+ *
+ *  Created on: Feb 9, 2012
+ *      Author: xyborn
+ */
+
+
+package server.zone.objects.region;
+
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.region.Region;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+include system.lang.String;
+include server.chat.StringIdChatParameter;
+include server.zone.ZoneReference;
+include server.zone.objects.scene.variables.StringId;
+
+class CityRegion extends ManagedObject implements Logger {
+	@dereferenced
+	protected StringId regionName;
+
+	@dereferenced
+	protected ZoneReference zone;
+
+	@dereferenced
+	protected SortedVector<Region> regions;
+
+	protected byte cityRank;
+
+	protected string citySpecialization; //We want to implement this with skill mods.
+
+	public static final byte RANK_CLIENT = 0;
+	public static final byte RANK_OUTPOST = 1;
+	public static final byte RANK_VILLAGE = 2;
+	public static final byte RANK_TOWNSHIP = 3;
+	public static final byte RANK_CITY = 4;
+	public static final byte RANK_METROPOLIS = 5;
+
+	public native CityRegion(Zone zne, final string name);
+	
+	public native void notifyEnter(SceneObject object);
+	public native void notifyExit(SceneObject object);
+	
+	public native void addRegion(float x, float y, float radius);
+	
+	public synchronized boolean containsPoint(float x, float y) {
+		for (int i = 0; i < regions.size(); ++i) {
+			Region aa = regions.get(i);
+
+			if (aa.containsPoint(x, y))
+				return true;
+		}
+
+		return false;
+	}
+
+	//Getters
+	public byte getCityRank() {
+		return cityRank;
+	}
+
+	public string getRegionName() {
+		return regionName.getDisplayedName();
+	}
+
+	//Setters
+	public void setRegionName(final unicode name) {
+		regionName.setCustomString(name);
+	}
+
+	public void setRegionName(final string fullPath) {
+		regionName.setStringId(fullPath);
+	}
+	
+	@local
+	public native Vector<SceneObject> getVendorsInCity();
+
+	@local
+	public native void setRegionName(@dereferenced final StringId name);
+
+	public void setCityRank(byte rank) {
+		cityRank = rank;
+	}
+}
