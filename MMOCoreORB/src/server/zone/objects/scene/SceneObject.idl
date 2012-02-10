@@ -91,7 +91,7 @@ include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
 include server.zone.objects.scene.components.AttributeListComponent;
-import server.zone.objects.region.CityRegion;
+include server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 import engine.util.u3d.Matrix4;
 
@@ -844,10 +844,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@read
+	@local
 	public abstract CityRegion getCityRegion() {
 		return cityRegion;
 	}
 	
+	@local
 	public void setCityRegion(CityRegion region) {
 		cityRegion = region;
 	}

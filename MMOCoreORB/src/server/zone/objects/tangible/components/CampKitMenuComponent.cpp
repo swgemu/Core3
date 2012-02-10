@@ -100,52 +100,52 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		int playerSkill = player->getSkillMod("camp");
 		if(playerSkill < campStructureData->getSkillRequired()) {
-			player->sendSystemMessage("camp", "sys_nsf_skill");
+			player->sendSystemMessage("@camp:sys_nsf_skill");
 			return 0;
 		}
 
 		if(player->isInCombat()) {
-			player->sendSystemMessage("camp", "sys_not_in_combat");
+			player->sendSystemMessage("@camp:sys_not_in_combat");
 			return 0;
 		}
 
 		if(player->getParent() != NULL && player->getParent()->isCellObject()) {
-			player->sendSystemMessage("camp", "error_inside");
+			player->sendSystemMessage("@camp:error_inside");
 			return 0;
 		}
 
 		if(!sceneObject->isASubChildOf(player)) {
-			player->sendSystemMessage("camp", "sys_not_in_inventory");
+			player->sendSystemMessage("@camp:sys_not_in_inventory");
 			return 0;
 		}
 
 		if(!player->isStanding() || player->isMounted()) {
-			player->sendSystemMessage("camp", "error_cmd_fail");
+			player->sendSystemMessage("@camp:error_cmd_fail");
 			return 0;
 		}
 
-		if(planetManager->getRegion(player->getPositionX(), player->getPositionY()) != NULL) {
-			player->sendSystemMessage("camp", "error_muni_true");
+		if(planetManager->getRegionAt(player->getPositionX(), player->getPositionY()) != NULL) {
+			player->sendSystemMessage("@camp:error_muni_true");
 			return 0;
 		}
 
 		/// Check for water
 		if(player->isSwimming() || player->isInWater()) {
-			player->sendSystemMessage("camp", "error_in_water");
+			player->sendSystemMessage("@camp:error_in_water");
 			return 0;
 		}
 
 		/// Make sure player doesn't already have a camp setup somewhere else
 		for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
 			if (ghost->getOwnedStructure(i)->isCampStructure()) {
-				player->sendSystemMessage("camp", "sys_already_camping");
+				player->sendSystemMessage("@camp:sys_already_camping");
 				return 0;
 			}
 		}
 
 		/// Check if player is in another camp
 		if(player->getCurrentCamp() != NULL) {
-			player->sendSystemMessage("camp", "error_camp_exists");
+			player->sendSystemMessage("@camp:error_camp_exists");
 			return 0;
 		}
 
@@ -158,13 +158,13 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			SceneObject* scno = cast<SceneObject*>(nearbyObjects.get(i).get());
 			if (scno != NULL && scno->isCampStructure() && scno->getDistanceTo(
 					player) <= scno->getObjectTemplate()->getNoBuildRadius()) {
-				player->sendSystemMessage("camp", "error_camp_too_close");
+				player->sendSystemMessage("@camp:error_camp_too_close");
 				return 0;
 			}
 
 			if (scno != NULL && scno->isBuildingObject() && scno->getDistanceTo(
 					player) <= scno->getObjectTemplate()->getNoBuildRadius()) {
-				player->sendSystemMessage("camp", "error_building_too_close");
+				player->sendSystemMessage("@camp:error_building_too_close");
 				return 0;
 			}
 
@@ -174,7 +174,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 				SortedVector<ManagedReference<Observer* > >* observers = scno->getObservers(ObserverEventType::OBJECTDESTRUCTION);
 				for(int j = 0; j < observers->size(); ++j) {
 					if(observers->get(j)->isObserverType(ObserverType::LAIR)) {
-						player->sendSystemMessage("camp", "error_lair_too_close");
+						player->sendSystemMessage("@camp:error_lair_too_close");
 						return 0;
 					}
 				}
@@ -187,7 +187,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		//	return 0;
 		//}
 
-		player->sendSystemMessage("camp", "starting_camp");
+		player->sendSystemMessage("@camp:starting_camp");
 
 		/// Create Structure
 		StructureObject* structureObject = structureManager->placeStructure(
@@ -240,7 +240,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		ghost->addOwnedStructure(structureObject);
 
-		player->sendSystemMessage("camp", "camp_complete");
+		player->sendSystemMessage("@camp:camp_complete");
 
 		/// Remove Camp
 		TangibleObject* tano = cast<TangibleObject*>(sceneObject);

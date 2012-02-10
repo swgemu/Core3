@@ -54,13 +54,12 @@ import system.util.SortedVector;
 import system.util.VectorMap;
 import system.util.HashTable;
 import system.util.Vector;
-import server.zone.objects.region.CityRegion;
+include server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.region.CityRegion;
 include server.zone.managers.planet.RegionMap;
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.MissionTargetMap;
@@ -77,7 +76,8 @@ class PlanetManager extends ManagedService implements Logger {
 	@weakReference
 	protected Zone zone;
 	
-	protected RegionMap cityRegionMap;
+	@dereferenced
+	protected RegionMap regionMap;
 	
 	@dereferenced
 	protected transient ShuttleMap shuttleMap;
@@ -101,8 +101,6 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	protected transient MissionTargetMap performanceLocations;
 	
-	protected CityRegion mainRegion;
-	
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
@@ -119,8 +117,6 @@ class PlanetManager extends ManagedService implements Logger {
 		shuttleTakeoffDelay = 90000;
 
 		weatherManager = null;
-
-		cityRegionMap = new RegionMap();
 		
 		travelFares.setNullValue(0);
 		travelFares.setNoDuplicateInsertPlan();
@@ -189,12 +185,6 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @return Returns a travel ticket for the route specified, or NULL if it could not be created.
 	 */
 	public native SceneObject createTicket(final string departurePoint, final string arrivalPlanet, final string arrivalPoint);
-	
-	@local
-	@dereferenced
-	public Vector<CityRegion> getRegions(@dereferenced StringId regionName) {
-		return cityRegionMap.getRegions(regionName);
-	}
 
 	public WeatherManager getWeatherManager() {
 		return weatherManager;
@@ -205,12 +195,8 @@ class PlanetManager extends ManagedService implements Logger {
 		return terrainManager;
 	}
 	
-	public CityRegion getRegion(float x, float y) {
-		return cityRegionMap.getRegion(x, y);
-	}
-	
 	public int getRegionCount() {
-		return cityRegionMap.getTotalRegions();
+		return regionMap.getTotalRegions();
 	}
 	
 	public int getNumberOfCities() {
@@ -221,20 +207,32 @@ class PlanetManager extends ManagedService implements Logger {
 		numberOfCities = numberOfCities + 1;
 	}
 	
+	@local
 	public CityRegion getRegion(int index) {
-		return cityRegionMap.getRegion(index);
+		return regionMap.getRegion(index);
 	}
 	
+	@local
+	public CityRegion getRegion(final string region) {
+		return regionMap.getRegion(region);
+	}
+	
+	@local
+	public CityRegion getRegionAt(float x, float y) {
+		return regionMap.getRegionAt(x, y);
+	}
+	
+	@local
 	public void addRegion(CityRegion region) {
-		cityRegionMap.addRegion(region);
+		regionMap.addRegion(region);
 	}
 	
 	public void dropRegion(final string region) {
-		cityRegionMap.dropRegion(region);
+		regionMap.dropRegion(region);
 	}
 	
 	public boolean hasRegion(final string name) {
-		return cityRegionMap.containsRegion(name);
+		return regionMap.containsRegion(name);
 	}
 	
 	public void addPerformanceLocation(SceneObject obj) {
@@ -244,10 +242,6 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public MissionTargetMap getPerformanceLocations() {
 		return performanceLocations;
-	}
-	
-	public CityRegion getMainRegion() {
-		return mainRegion;
 	}
 	
 	/**

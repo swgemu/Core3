@@ -18,13 +18,11 @@
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
-#include "server/zone/objects/region/CityRegion.h"
-
 /*
  *	VendorTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__,RPC_GETCITYREGION__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__,};
 
 VendorTerminal::VendorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	VendorTerminalImplementation* _implementation = new VendorTerminalImplementation();
@@ -165,12 +163,8 @@ bool VendorTerminal::isVendorTerminal() {
 CityRegion* VendorTerminal::getCityRegion() {
 	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETCITYREGION__);
-
-		return static_cast<CityRegion*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getCityRegion();
 }
@@ -338,16 +332,7 @@ bool VendorTerminalImplementation::isVendorTerminal() {
 
 CityRegion* VendorTerminalImplementation::getCityRegion() {
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  			return super.cityRegion;
-	if (TerminalImplementation::cityRegion.getForUpdate() == NULL){
-	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  			return 
-	if (TerminalImplementation::getZone() == NULL)	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  				return null;
-	return NULL;
-	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  			return super.getZone().getPlanetManager().getMainRegion();
-	return TerminalImplementation::getZone()->getPlanetManager()->getMainRegion();
-}
-
-	else 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  			return super.cityRegion;
-	return TerminalImplementation::cityRegion.getForUpdate();
+	return TerminalImplementation::cityRegion;
 }
 
 /*
@@ -384,9 +369,6 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_ISVENDORTERMINAL__:
 		resp->insertBoolean(isVendorTerminal());
-		break;
-	case RPC_GETCITYREGION__:
-		resp->insertLong(getCityRegion()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -425,10 +407,6 @@ bool VendorTerminalAdapter::isVendor() {
 
 bool VendorTerminalAdapter::isVendorTerminal() {
 	return (static_cast<VendorTerminal*>(stub))->isVendorTerminal();
-}
-
-CityRegion* VendorTerminalAdapter::getCityRegion() {
-	return (static_cast<VendorTerminal*>(stub))->getCityRegion();
 }
 
 /*

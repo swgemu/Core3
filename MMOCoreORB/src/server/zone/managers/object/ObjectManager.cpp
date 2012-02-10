@@ -193,6 +193,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::PISTOL);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::RANGEDWEAPON);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::ONEHANDMELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::SPECIALHEAVYWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::HEAVYWEAPON);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::RIFLE);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::CARBINE);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::POLEARM);

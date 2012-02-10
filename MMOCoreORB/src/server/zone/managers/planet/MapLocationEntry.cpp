@@ -80,7 +80,7 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 	} else { // Everything else is just named by the city it's in
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-		ManagedReference<CityRegion *> region = planetManager->getRegion(object->getWorldPositionX(), object->getWorldPositionY());
+		ManagedReference<CityRegion *> region = planetManager->getRegionAt(object->getWorldPositionX(), object->getWorldPositionY());
 
 		if(region != NULL) {
 			newName = region->getRegionName();
@@ -89,19 +89,6 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 
 
 	displayName = newName;
-
-#ifdef DEBUG_PLANETMAP
-	StringBuffer callDebug;
-
-	callDebug << "MapLocationEntry::setObject "
-			<< "oid: " << object->getObjectID()
-			<< " dn:" << object->getObjectName()->getDisplayedName()
-			<< " cat:" << category->getIndex()
-			<< " @ " << object->getWorldPosition().toString()
-			<< " display: " + displayName;
-
-	object->info(callDebug.toString(), true);
-#endif
 }
 
 bool MapLocationEntry::insertToMessage(BaseMessage* message) const {

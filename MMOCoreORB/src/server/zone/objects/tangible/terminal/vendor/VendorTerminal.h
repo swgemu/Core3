@@ -103,21 +103,9 @@ class PlanetManager;
 
 using namespace server::zone::managers::planet;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace region {
-
-class CityRegion;
-
-} // namespace region
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::region;
-
 #include "server/zone/objects/auction/Vendor.h"
+
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -279,8 +267,6 @@ public:
 	bool isVendor();
 
 	bool isVendorTerminal();
-
-	CityRegion* getCityRegion();
 
 };
 

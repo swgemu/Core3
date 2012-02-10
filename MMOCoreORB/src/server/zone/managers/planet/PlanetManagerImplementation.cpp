@@ -38,17 +38,15 @@ void PlanetManagerImplementation::initialize() {
 
 	performanceLocations = new MissionTargetMap();
 
-	mainRegion = new CityRegion("main", NULL);
-	//mainRegion->addActiveArea(zone, 0, 0, zone->getBoundingRadius());
-
 	numberOfCities = 0;
 
 	info("Loading planet.");
 
-	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn"))
+	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn")) {
 		info("Loaded terrain file successfully.");
-	else
+	} else {
 		error("Failed to load terrain file.");
+	}
 
 	planetTravelPointList->setZoneName(zone->getZoneName());
 
@@ -61,16 +59,6 @@ void PlanetManagerImplementation::initialize() {
 	loadPlayerRegions();
 
 	loadStaticTangibleObjects();
-
-#if DEBUG_TRAVEL
-	info("final PlanetTravelPoints: START", true);
-	for (int i = 0; i < planetTravelPointList->size(); ++i) {
-		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
-
-		info(String::valueOf(i) + ") " + ptp->toString(), true);
-	}
-	info("final PlanetTravelPoints: END", true);
-#endif
 
 	weatherManager = new WeatherManager(zone);
 	weatherManager->initialize();
@@ -406,21 +394,17 @@ void PlanetManagerImplementation::loadClientRegions() {
 		row->getValue(2, y);
 		row->getValue(3, radius);
 
-		ManagedReference<CityRegion*> cityRegion = cityRegionMap->getRegion(regionName);
+		Reference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
 
-		//If the cityRegion hasn't already been created, then create it.
 		if (cityRegion == NULL) {
-			cityRegion = new CityRegion(regionName, mainRegion);
-			cityRegion->deploy();
-
-			cityRegionMap->addRegion(cityRegion);
+			cityRegion = new CityRegion(zone, regionName);
+			regionMap.addRegion(cityRegion);
 		}
 
-		cityRegion->setClientCity(true);
-		cityRegion->addActiveArea(zone, x, y, radius);
+		cityRegion->addActiveArea(x, y, radius);
 	}
 
-	info("Added " + String::valueOf(cityRegionMap->getTotalRegions()) + " client regions.");
+	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");
 }
 
 void PlanetManagerImplementation::loadPlayerRegions() {

@@ -48,20 +48,6 @@ using namespace server::zone::objects::building;
 namespace server {
 namespace zone {
 namespace objects {
-namespace region {
-
-class CityRegion;
-
-} // namespace region
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::region;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace scene {
 namespace variables {
 
@@ -131,19 +117,7 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace region {
-
-class CityRegion;
-
-} // namespace region
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::region;
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/managers/planet/RegionMap.h"
 
@@ -214,13 +188,9 @@ public:
 
 	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
-
 	WeatherManager* getWeatherManager();
 
 	TerrainManager* getTerrainManager();
-
-	CityRegion* getRegion(float x, float y);
 
 	int getRegionCount();
 
@@ -229,6 +199,10 @@ public:
 	void increaseNumberOfCities();
 
 	CityRegion* getRegion(int index);
+
+	CityRegion* getRegion(const String& region);
+
+	CityRegion* getRegionAt(float x, float y);
 
 	void addRegion(CityRegion* region);
 
@@ -239,8 +213,6 @@ public:
 	void addPerformanceLocation(SceneObject* obj);
 
 	MissionTargetMap* getPerformanceLocations();
-
-	CityRegion* getMainRegion();
 
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
@@ -284,7 +256,7 @@ class PlanetManagerImplementation : public ManagedServiceImplementation, public 
 protected:
 	ManagedWeakReference<Zone* > zone;
 
-	Reference<RegionMap* > cityRegionMap;
+	RegionMap regionMap;
 
 	ShuttleMap shuttleMap;
 
@@ -305,8 +277,6 @@ protected:
 	Reference<TerrainManager* > terrainManager;
 
 	Reference<MissionTargetMap* > performanceLocations;
-
-	ManagedReference<CityRegion* > mainRegion;
 
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);
@@ -355,13 +325,9 @@ public:
 
 	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
-
 	WeatherManager* getWeatherManager();
 
 	TerrainManager* getTerrainManager();
-
-	CityRegion* getRegion(float x, float y);
 
 	int getRegionCount();
 
@@ -370,6 +336,10 @@ public:
 	void increaseNumberOfCities();
 
 	CityRegion* getRegion(int index);
+
+	CityRegion* getRegion(const String& region);
+
+	CityRegion* getRegionAt(float x, float y);
 
 	void addRegion(CityRegion* region);
 
@@ -380,8 +350,6 @@ public:
 	void addPerformanceLocation(SceneObject* obj);
 
 	MissionTargetMap* getPerformanceLocations();
-
-	CityRegion* getMainRegion();
 
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
@@ -462,25 +430,17 @@ public:
 
 	WeatherManager* getWeatherManager();
 
-	CityRegion* getRegion(float x, float y);
-
 	int getRegionCount();
 
 	int getNumberOfCities();
 
 	void increaseNumberOfCities();
 
-	CityRegion* getRegion(int index);
-
-	void addRegion(CityRegion* region);
-
 	void dropRegion(const String& region);
 
 	bool hasRegion(const String& name);
 
 	void addPerformanceLocation(SceneObject* obj);
-
-	CityRegion* getMainRegion();
 
 	bool isExistingPlanetTravelPoint(const String& pointName);
 

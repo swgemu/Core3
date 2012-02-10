@@ -1123,6 +1123,8 @@ void AuctionManagerImplementation::getPlanetData(CreatureObject* player, Vendor*
 	for (int u = 0; u < planetManager->getRegionCount(); ++u) {
 		ManagedReference<CityRegion*> regionObject = planetManager->getRegion(u);
 
+		/*
+
 		Vector<ManagedReference<SceneObject* > >* vendors = regionObject->getVendorsInCity();
 
 		for (int i = 0; i < vendors->size(); ++i) {
@@ -1142,7 +1144,9 @@ void AuctionManagerImplementation::getPlanetData(CreatureObject* player, Vendor*
 			}
 		}
 
-		delete vendors;
+
+
+		delete vendors;*/
 	}
 
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);
@@ -1173,6 +1177,7 @@ void AuctionManagerImplementation::getRegionData(CreatureObject* player, Vendor*
 
 	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
 
+	/*
 	Vector<ManagedReference<SceneObject* > >* vendors = cityRegion->getVendorsInCity();
 
 	for (int i = 0; i < vendors->size(); ++i) {
@@ -1192,7 +1197,7 @@ void AuctionManagerImplementation::getRegionData(CreatureObject* player, Vendor*
 		}
 	}
 
-	delete vendors;
+	delete vendors;*/
 
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);
 	player->sendMessage(msg);

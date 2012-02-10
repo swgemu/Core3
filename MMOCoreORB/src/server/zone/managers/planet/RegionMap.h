@@ -14,7 +14,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 
 class RegionMap : public ReadWriteLock, public Object {
-	VectorMap<String, ManagedReference<CityRegion*> > regions;
+	VectorMap<String, Reference<CityRegion*> > regions;
 
 public:
 	RegionMap() {
@@ -41,35 +41,17 @@ public:
 		unlock();
 	}
 
-	CityRegion* getRegion(float x, float y) {
-		rlock();
-
-		for (int i = 0; i < regions.size(); ++i) {
-			ManagedReference<CityRegion*> region = regions.get(i);
-
-			if (region->containsPoint(x, y)) {
-				runlock();
-
-				return region;
-			}
-		}
-
-		runlock();
-
-		return NULL;
-	}
-
 	/**
 	 * Gets the first city region in the region map found at the specified coordinates.
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
 	 * @return Returns a city region or NULL if one was not found.
 	 */
-	CityRegion* getCityRegionAt(float x, float y) {
+	CityRegion* getRegionAt(float x, float y) {
 		rlock();
 
 		for (int i = 0; i < regions.size(); ++i) {
-			ManagedReference<CityRegion*> cityRegion = regions.get(i);
+			Reference<CityRegion*> cityRegion = regions.get(i);
 
 			if (cityRegion->containsPoint(x, y)) {
 				runlock();
@@ -80,23 +62,6 @@ public:
 		runlock();
 
 		return NULL;
-	}
-
-	Vector<ManagedReference<CityRegion*> > getRegions(StringId* regionName) {
-		Vector<ManagedReference<CityRegion*> > matches;
-
-		rlock();
-
-		for (int i = 0; i < regions.size(); ++i) {
-			ManagedReference<CityRegion*> region = regions.get(i);
-
-			if (region->getRegionName() == regionName->getDisplayedName())
-				matches.add(region);
-		}
-
-		runlock();
-
-		return matches;
 	}
 
 	inline bool containsRegion(const String& name) {

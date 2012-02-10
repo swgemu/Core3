@@ -2214,7 +2214,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Black Sun Executioner's Hack", "object/weapon/melee/2h_sword/2h_sword_blacksun_hack.iff",
 					"Gamorrean Battleaxe", "object/weapon/melee/2h_sword/2h_sword_battleaxe_quest.iff",
 					"Heavy Axe", "object/weapon/melee/axe/axe_heavy_duty.iff",
-					"Vibro Axe", "object/weapon/melee/axe/axe_vibro.iff"
+					"Vibro Axe", "object/weapon/melee/axe/axe_vibroaxe.iff"
 				},
 				"Unarmed",
 				{

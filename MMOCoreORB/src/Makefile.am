@@ -73,7 +73,6 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/managers/creature/LairObserver.cpp \
 				server/zone/managers/director/ScreenPlayObserver.cpp \
-				server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/ship/SpaceStationObject.cpp \
 				server/zone/objects/ship/FighterShipObject.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
@@ -274,8 +273,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/area/LairSpawnAreaImplementation.cpp \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
-		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
+		server/zone/objects/region/CityRegion.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/intangible/ShipControlDeviceImplementation.cpp \

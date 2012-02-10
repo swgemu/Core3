@@ -42,7 +42,44 @@
 
 
 object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_heavy_acid_beam:new {
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = ALL,
 
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ACID,
+
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = MEDIUM,
+
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	xpType = "combat_rangedspecialize_heavy",
+
+	-- See http://www.ocdsoft.com/files/certifications.xls
+	certificationsRequired = { "cert_heavy_acid_beam" },
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "heavy_acid_beam_accuracy" },
+
+	creatureAimModifiers = { },
+
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+
+	-- Leave as "dodge" for now, may have additions later
+	defenderSecondaryDefenseModifiers = { "block" },
+
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "heavy_acid_beam_speed" },
+	
+	useCount = 40,
+
+	-- Leave blank for now
+	damageModifiers = { },
 	healthAttackCost = 60,
 	actionAttackCost = 60,
 	mindAttackCost = 15,
@@ -57,8 +94,8 @@ object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_h
 	maxRange = 48,
 	maxRangeAccuracy = -120,
 
-	minDamage = 90,
-	maxDamage = 650,
+	minDamage = 120,
+	maxDamage = 700,
 
 	attackSpeed = 10.5,
 

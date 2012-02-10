@@ -900,7 +900,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	int x = closestCloning->getPositionX();
 	int y = closestCloning->getPositionY();
 
-	CityRegion* cr = planetManager->getRegion(x, y);
+	CityRegion* cr = planetManager->getRegionAt(x, y);
 
 	if (cr != NULL) {
 		closestName = cr->getRegionName();
@@ -917,7 +917,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	if (preDesignatedFacility == NULL) {
 		predesignatedName == "None";
 	} else {
-		cr = planetManager->getRegion(preDesignatedFacility->getPositionX(), preDesignatedFacility->getPositionY());
+		cr = planetManager->getRegionAt(preDesignatedFacility->getPositionX(), preDesignatedFacility->getPositionY());
 		if (cr != NULL)
 			predesignatedName = cr->getRegionName();
 		else
@@ -953,7 +953,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 			if (location != NULL && location->isCloningBuildingObject() && location != preDesignatedFacility && location != closestCloning) {
 				//CloningBuildingObject* cbo = dynamic_cast<CloningBuildingObject*>location;
-				CityRegion* cr = planetManager->getRegion(location->getPositionX(), location->getPositionY());
+				CityRegion* cr = planetManager->getRegionAt(location->getPositionX(), location->getPositionY());
 				if (cr != NULL)
 					cloneMenu->addMenuItem(cr->getRegionName() + " (" + String::valueOf((int)player->getDistanceTo(location)) + "m)", location->getObjectID());
 				else

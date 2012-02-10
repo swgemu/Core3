@@ -73,9 +73,9 @@ public:
 
 		if (result == 0) {
 			//The building was successfully placed. Place the city area, and name it.
-			CityRegion* city = new CityRegion(cityName, NULL);
-			uint16 val = CityManagerImplementation::radiusPerRank.get(CityManager::OUTPOST);
-			city->addActiveArea(zone, x, y, val);
+			CityRegion* city = new CityRegion(zone, cityName);
+			uint16 radius = CityManagerImplementation::radiusPerRank.get(CityManager::OUTPOST);
+			city->addActiveArea(x, y, radius);
 		}
 	}
 };
