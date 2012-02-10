@@ -44,6 +44,8 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
 
+	zone->transferObject(region, -1, false);
+
 	regions.put(region);
 }
 

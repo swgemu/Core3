@@ -67,6 +67,8 @@ class Region extends ActiveArea {
 	public Region() {
 		super();
 		
+		super.setNoBuildArea(true);
+		
 		bazaars.setNoDuplicateInsertPlan();
 		bazaars.setNullValue(null);
 	}
