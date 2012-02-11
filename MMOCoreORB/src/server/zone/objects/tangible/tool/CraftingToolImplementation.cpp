@@ -1218,10 +1218,10 @@ void CraftingToolImplementation::customization(CreatureObject* player,
 		return;
 	}
 
-	if(NameManager::instance()->isProfane(name)) {
-		player->sendSystemMessage("Your selected name has been declined because it may contain inappropriate language.  Close the 'customizing' window and try again");
-		return;
-	}
+	//if(NameManager::instance()->isProfane(name)) {
+	//	player->sendSystemMessage("Your selected name has been declined because it may contain inappropriate language.  Close the 'customizing' window and try again");
+	//	return;
+	//}
 
 	if (templateChoice != 0xFF) {
 
