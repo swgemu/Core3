@@ -5,19 +5,20 @@ forage = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "alever_tweth_pek", weight = 800000},
-		{itemTemplate = "etost_ew_zann", weight = 800000},
-		{itemTemplate = "flurr_clie_onion", weight = 800000},
-		{itemTemplate = "foraged_berries", weight = 800000},
-		{itemTemplate = "foraged_fungus", weight = 800000},
-		{itemTemplate = "foraged_grubs", weight = 800000},
-		{itemTemplate = "foraged_livers", weight = 800000},
-		{itemTemplate = "ko_do_fruit", weight = 600000},
-		{itemTemplate = "maroj_melon", weight = 800000},
-		{itemTemplate = "schule_nef", weight = 800000},
-		{itemTemplate = "sijjo_sewi", weight = 800000},
-		{itemTemplate = "sosi_hodor", weight = 800000},
-		{itemTemplate = "wild_snaff", weight = 600000}
+		{itemTemplate = "alever_tweth_pek", weight = 700000},
+		{itemTemplate = "etost_ew_zann", weight = 700000},
+		{itemTemplate = "flurr_clie_onion", weight = 700000},
+		{itemTemplate = "foraged_berries", weight = 700000},
+		{itemTemplate = "foraged_bugs", weight = 900000},
+		{itemTemplate = "foraged_fungus", weight = 700000},
+		{itemTemplate = "foraged_grubs", weight = 700000},
+		{itemTemplate = "foraged_livers", weight = 700000},
+		{itemTemplate = "ko_do_fruit", weight = 700000},
+		{itemTemplate = "maroj_melon", weight = 700000},
+		{itemTemplate = "schule_nef", weight = 700000},
+		{itemTemplate = "sijjo_sewi", weight = 700000},
+		{itemTemplate = "sosi_hodor", weight = 700000},
+		{itemTemplate = "wild_snaff", weight = 700000}
 	}
 }
 
