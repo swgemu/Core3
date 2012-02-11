@@ -45,7 +45,6 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 	region->initializePosition(x, 0, y);
 
 	if (regions.size() <= 0) {
-		System::out << "Naming region " << regionName.getDisplayedName() << endl;
 		region->setPlanetMapCategory(TemplateManager::instance()->getPlanetMapCategoryByName("city"));
 		region->setObjectName(regionName);
 	}
