@@ -394,7 +394,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 		row->getValue(2, y);
 		row->getValue(3, radius);
 
-		Reference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
+		ManagedReference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
 
 		if (cityRegion == NULL) {
 			cityRegion = new CityRegion(zone, regionName);

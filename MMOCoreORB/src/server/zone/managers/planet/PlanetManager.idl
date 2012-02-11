@@ -54,7 +54,7 @@ import system.util.SortedVector;
 import system.util.VectorMap;
 import system.util.HashTable;
 import system.util.Vector;
-include server.zone.objects.region.CityRegion;
+import server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
@@ -208,22 +208,18 @@ class PlanetManager extends ManagedService implements Logger {
 		numberOfCities = numberOfCities + 1;
 	}
 	
-	@local
 	public CityRegion getRegion(int index) {
 		return regionMap.getRegion(index);
 	}
 	
-	@local
 	public CityRegion getRegion(final string region) {
 		return regionMap.getRegion(region);
 	}
 	
-	@local
 	public CityRegion getRegionAt(float x, float y) {
 		return regionMap.getRegionAt(x, y);
 	}
 	
-	@local
 	public void addRegion(CityRegion region) {
 		regionMap.addRegion(region);
 	}

@@ -1214,11 +1214,11 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 		},
 		"Items",
 		{
-			"Attachments",
-			{
-				"Armor Attachment", "object/tangible/gem/armor.iff",
-				"Clothing Attachment", "object/tangible/gem/clothing.iff",	
-			},
+			--"Attachments",
+			--{
+			--	"Armor Attachment", "object/tangible/gem/armor.iff",
+			--	"Clothing Attachment", "object/tangible/gem/clothing.iff",	
+			--},
 			"Armor",
 			{
 				"Bone Armor",
@@ -1571,82 +1571,82 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					{
 						"Player House Deeds",
 						{
-							"Generic Guild Hall Deed", "object/tangible/deed/guild_deed/generic_guild_deed.iff",
-							"Large Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_large_deed.iff",
-							"Large Generic House Deed (Style 2)", "object/tangible/deed/player_house_deed/generic_house_large_style_02_deed.iff",
-							"Medium Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_medium_deed.iff",
-							"Medium Generic House Deed (Style 2)", "object/tangible/deed/player_house_deed/generic_house_medium_style_02_deed.iff",
+							--"Generic Guild Hall Deed", "object/tangible/deed/guild_deed/generic_guild_deed.iff",
+							--"Large Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_large_deed.iff",
+							--"Large Generic House Deed (Style 2)", "object/tangible/deed/player_house_deed/generic_house_large_style_02_deed.iff",
+							--"Medium Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_medium_deed.iff",
+							--"Medium Generic House Deed (Style 2)", "object/tangible/deed/player_house_deed/generic_house_medium_style_02_deed.iff",
 							"Small Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_small_deed.iff",
 							"Small Generic House Deed Floorplan 2", "object/tangible/deed/player_house_deed/generic_house_small_floor_02_deed.iff",
 							"Small Generic House Deed (Style 2)", "object/tangible/deed/player_house_deed/generic_house_small_style_02_deed.iff",
 							"Small Generic House Deed Floorplan 2 (Style 2)", "object/tangible/deed/player_house_deed/generic_house_small_style_02_floor_02_deed.iff"
 						},
-						"City Deeds",
-						{
-							"Large Dantooine Garden", "object/tangible/deed/city_deed/garden_dantooine_lrg_01_deed.iff",
-							"Medium Dantooine Garden", "object/tangible/deed/city_deed/garden_dantooine_med_01_deed.iff",
-							"Small Dantooine Garden", "object/tangible/deed/city_deed/garden_dantooine_sml_01_deed.iff",
-							"Large Dathomir Garden", "object/tangible/deed/city_deed/garden_dathomir_lrg_01_deed.iff",
-							"Medium Dathomir Garden", "object/tangible/deed/city_deed/garden_dathomir_med_01_deed.iff",
-							"Small Dathomir Garden", "object/tangible/deed/city_deed/garden_dathomir_sml_01_deed.iff",
-							"Large Endor Garden", "object/tangible/deed/city_deed/garden_endor_lrg_01_deed.iff",
-							"Medium Endor Garden", "object/tangible/deed/city_deed/garden_endor_med_01_deed.iff",
-							"Small Endor Garden", "object/tangible/deed/city_deed/garden_endor_sml_01_deed.iff"	
-						}
+						--"City Deeds",
+						--{
+							--"Large Dantooine Garden", "object/tangible/deed/city_deed/garden_dantooine_lrg_01_deed.iff",
+							--"Medium Dantooine Garden", "object/tangible/deed/city_deed/garden_dantooine_med_01_deed.iff",
+							--"Small Dantooine Garden", "object/tangible/deed/city_deed/garden_dantooine_sml_01_deed.iff",
+							--"Large Dathomir Garden", "object/tangible/deed/city_deed/garden_dathomir_lrg_01_deed.iff",
+							--"Medium Dathomir Garden", "object/tangible/deed/city_deed/garden_dathomir_med_01_deed.iff",
+							--"Small Dathomir Garden", "object/tangible/deed/city_deed/garden_dathomir_sml_01_deed.iff",
+							--"Large Endor Garden", "object/tangible/deed/city_deed/garden_endor_lrg_01_deed.iff",
+							--"Medium Endor Garden", "object/tangible/deed/city_deed/garden_endor_med_01_deed.iff",
+							--"Small Endor Garden", "object/tangible/deed/city_deed/garden_endor_sml_01_deed.iff"	
+						--}
 					},
 					"Corellia Deeds",
 					{
 						"Player House Deeds",
 						{
-							"Corellian Guild Hall Deed", "object/tangible/deed/guild_deed/corellia_guild_deed.iff",
-							"Large Corellian House Deed", "object/tangible/deed/player_house_deed/corellia_house_large_deed.iff",
-							"Large Corellian House Deed (Style 2)", "object/tangible/deed/player_house_deed/corellia_house_large_style_02_deed.iff",
-							"Medium Corellian House Deed", "object/tangible/deed/player_house_deed/corellia_house_medium_deed.iff",
-							"Medium Corellian House Deed (Style 2)", "object/tangible/deed/player_house_deed/corellia_house_medium_style_02_deed.iff",
+							--"Corellian Guild Hall Deed", "object/tangible/deed/guild_deed/corellia_guild_deed.iff",
+							--"Large Corellian House Deed", "object/tangible/deed/player_house_deed/corellia_house_large_deed.iff",
+							--"Large Corellian House Deed (Style 2)", "object/tangible/deed/player_house_deed/corellia_house_large_style_02_deed.iff",
+							--"Medium Corellian House Deed", "object/tangible/deed/player_house_deed/corellia_house_medium_deed.iff",
+							--"Medium Corellian House Deed (Style 2)", "object/tangible/deed/player_house_deed/corellia_house_medium_style_02_deed.iff",
 							"Small Corellian House Deed", "object/tangible/deed/player_house_deed/corellia_house_small_deed.iff",
 							"Small Corellian House Deed Floorplan 2", "object/tangible/deed/player_house_deed/corellia_house_small_floor_02_deed.iff",
 							"Small Corellian House Deed (Style 2)", "object/tangible/deed/player_house_deed/corellia_house_small_style_02_deed.iff",
 							"Small Corellian House Deed Floorplan 2 (Style 2)", "object/tangible/deed/player_house_deed/corellia_house_small_style_02_floor_02_deed.iff"
 						},
-						"City Deeds",
-						{
-							"Corellia Bank Deed", "object/tangible/deed/city_deed/bank_corellia_deed.iff",
-							"Corellia Cantina Deed", "object/tangible/deed/city_deed/cantina_corellia_deed.iff",
-							"Corellia Garage Deed", "object/tangible/deed/city_deed/garage_corellia_deed.iff",
-							"Corellia Shuttleport Deed", "object/tangible/deed/city_deed/shuttleport_corellia_deed.iff",
-							"Corellia City Hall Deed", "object/tangible/deed/city_deed/cityhall_corellia_deed.iff",
-							"Corellia Cloning Center Deed", "object/tangible/deed/city_deed/cloning_corellia_deed.iff",
-							"Corellia Medical Center Deed", "object/tangible/deed/city_deed/hospital_corellia_deed.iff",
-							"Corellia Theater Deed", "object/tangible/deed/city_deed/theater_corellia_deed.iff",
-							"Large Corellia Garden (Style 1)", "object/tangible/deed/city_deed/garden_corellia_lrg_01_deed.iff",
-							"Large Corellia Garden (Style 2)", "object/tangible/deed/city_deed/garden_corellia_lrg_02_deed.iff",
-							"Large Corellia Garden (Style 3)", "object/tangible/deed/city_deed/garden_corellia_lrg_03_deed.iff",
-							"Large Corellia Garden (Style 4)", "object/tangible/deed/city_deed/garden_corellia_lrg_04_deed.iff",
-							"Large Corellia Garden (Style 5)", "object/tangible/deed/city_deed/garden_corellia_lrg_05_deed.iff",
-							"Medium Corellia Garden (Style 1)", "object/tangible/deed/city_deed/garden_corellia_med_01_deed.iff",
-							"Medium Corellia Garden (Style 2)", "object/tangible/deed/city_deed/garden_corellia_med_02_deed.iff",
-							"Medium Corellia Garden (Style 3)", "object/tangible/deed/city_deed/garden_corellia_med_03_deed.iff",
-							"Medium Corellia Garden (Style 4)", "object/tangible/deed/city_deed/garden_corellia_med_04_deed.iff",
-							"Medium Corellia Garden (Style 5)", "object/tangible/deed/city_deed/garden_corellia_med_05_deed.iff",
-							"Small Corellia Garden (Style 1)", "object/tangible/deed/city_deed/garden_corellia_sml_01_deed.iff",
-							"Small Corellia Garden (Style 2)", "object/tangible/deed/city_deed/garden_corellia_sml_02_deed.iff",
-							"Small Corellia Garden (Style 3)", "object/tangible/deed/city_deed/garden_corellia_sml_03_deed.iff",
-							"Small Corellia Garden (Style 4)", "object/tangible/deed/city_deed/garden_corellia_sml_04_deed.iff",
-							"Small Corellia Garden (Style 5)", "object/tangible/deed/city_deed/garden_corellia_sml_05_deed.iff"
-						}
+						--"City Deeds",
+						--{
+							--"Corellia Bank Deed", "object/tangible/deed/city_deed/bank_corellia_deed.iff",
+							--"Corellia Cantina Deed", "object/tangible/deed/city_deed/cantina_corellia_deed.iff",
+							--"Corellia Garage Deed", "object/tangible/deed/city_deed/garage_corellia_deed.iff",
+							--"Corellia Shuttleport Deed", "object/tangible/deed/city_deed/shuttleport_corellia_deed.iff",
+							--"Corellia City Hall Deed", "object/tangible/deed/city_deed/cityhall_corellia_deed.iff",
+							--"Corellia Cloning Center Deed", "object/tangible/deed/city_deed/cloning_corellia_deed.iff",
+							--"Corellia Medical Center Deed", "object/tangible/deed/city_deed/hospital_corellia_deed.iff",
+							--"Corellia Theater Deed", "object/tangible/deed/city_deed/theater_corellia_deed.iff",
+							--"Large Corellia Garden (Style 1)", "object/tangible/deed/city_deed/garden_corellia_lrg_01_deed.iff",
+							--"Large Corellia Garden (Style 2)", "object/tangible/deed/city_deed/garden_corellia_lrg_02_deed.iff",
+							--"Large Corellia Garden (Style 3)", "object/tangible/deed/city_deed/garden_corellia_lrg_03_deed.iff",
+							--"Large Corellia Garden (Style 4)", "object/tangible/deed/city_deed/garden_corellia_lrg_04_deed.iff",
+							--"Large Corellia Garden (Style 5)", "object/tangible/deed/city_deed/garden_corellia_lrg_05_deed.iff",
+							--"Medium Corellia Garden (Style 1)", "object/tangible/deed/city_deed/garden_corellia_med_01_deed.iff",
+							--"Medium Corellia Garden (Style 2)", "object/tangible/deed/city_deed/garden_corellia_med_02_deed.iff",
+							--"Medium Corellia Garden (Style 3)", "object/tangible/deed/city_deed/garden_corellia_med_03_deed.iff",
+							--"Medium Corellia Garden (Style 4)", "object/tangible/deed/city_deed/garden_corellia_med_04_deed.iff",
+							--"Medium Corellia Garden (Style 5)", "object/tangible/deed/city_deed/garden_corellia_med_05_deed.iff",
+							--"Small Corellia Garden (Style 1)", "object/tangible/deed/city_deed/garden_corellia_sml_01_deed.iff",
+							--"Small Corellia Garden (Style 2)", "object/tangible/deed/city_deed/garden_corellia_sml_02_deed.iff",
+							--"Small Corellia Garden (Style 3)", "object/tangible/deed/city_deed/garden_corellia_sml_03_deed.iff",
+							--"Small Corellia Garden (Style 4)", "object/tangible/deed/city_deed/garden_corellia_sml_04_deed.iff",
+							--"Small Corellia Garden (Style 5)", "object/tangible/deed/city_deed/garden_corellia_sml_05_deed.iff"
+						--}
 					},
 					"Naboo Deeds",
 					{
 						"Player House Deeds",
 						{
-							"Naboo Guild Hall Deed", "object/tangible/deed/guild_deed/naboo_guild_deed.iff",
-							"Large Naboo House Deed", "object/tangible/deed/player_house_deed/naboo_house_large_deed.iff",
-							"Medium Naboo House Deed", "object/tangible/deed/player_house_deed/naboo_house_medium_deed.iff",
+							--"Naboo Guild Hall Deed", "object/tangible/deed/guild_deed/naboo_guild_deed.iff",
+							--"Large Naboo House Deed", "object/tangible/deed/player_house_deed/naboo_house_large_deed.iff",
+							--"Medium Naboo House Deed", "object/tangible/deed/player_house_deed/naboo_house_medium_deed.iff",
 							--"Medium Naboo House Deed (Style 2)", "object/tangible/deed/player_house_deed/naboo_house_medium_style_02_deed.iff",
 							"Small Naboo House Deed", "object/tangible/deed/player_house_deed/naboo_house_small_deed.iff",
 							"Small Naboo House Deed (Style 2)", "object/tangible/deed/player_house_deed/naboo_house_small_style_02_deed.iff"
 						},
-						"City Deeds",
+						--[["City Deeds",
 						{
 							"Naboo Bank Deed", "object/tangible/deed/city_deed/bank_naboo_deed.iff",
 							"Naboo Cantina Deed", "object/tangible/deed/city_deed/cantina_naboo_deed.iff",
@@ -1671,20 +1671,20 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 							"Small Naboo Garden (Style 3)", "object/tangible/deed/city_deed/garden_naboo_sml_03_deed.iff",
 							"Small Naboo Garden (Style 4)", "object/tangible/deed/city_deed/garden_naboo_sml_04_deed.iff",
 							"Small Naboo Garden (Style 5)", "object/tangible/deed/city_deed/garden_naboo_sml_05_deed.iff"
-						}
+						}--]]
 					},
 					"Tatooine Deeds",
 					{
 						"Player House Deeds",
 						{
-							"Tatooine Guild Hall Deed", "object/tangible/deed/guild_deed/tatooine_guild_deed.iff",
-							"Tatooine Guild Hall (Style 2) Deed", "object/tangible/deed/guild_deed/tatooine_guild_style_02_deed.iff",
-							"Large Tatooine House Deed", "object/tangible/deed/player_house_deed/tatooine_house_large_deed.iff",
-							"Medium Tatooine House Deed", "object/tangible/deed/player_house_deed/tatooine_house_medium_deed.iff",
+							--"Tatooine Guild Hall Deed", "object/tangible/deed/guild_deed/tatooine_guild_deed.iff",
+							--"Tatooine Guild Hall (Style 2) Deed", "object/tangible/deed/guild_deed/tatooine_guild_style_02_deed.iff",
+							--"Large Tatooine House Deed", "object/tangible/deed/player_house_deed/tatooine_house_large_deed.iff",
+							--"Medium Tatooine House Deed", "object/tangible/deed/player_house_deed/tatooine_house_medium_deed.iff",
 							"Small Tatooine House Deed", "object/tangible/deed/player_house_deed/tatooine_house_small_deed.iff",
 							"Small Tatooine House Deed (Style 2)", "object/tangible/deed/player_house_deed/tatooine_house_small_style_02_deed.iff"
 						},
-						"City Deeds",
+						--[["City Deeds",
 						{
 							"Tatooine Bank Deed", "object/tangible/deed/city_deed/bank_tatooine_deed.iff",
 							"Tatooine Cantina Deed", "object/tangible/deed/city_deed/cantina_tatooine_deed.iff",
@@ -1709,7 +1709,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 							"Small Tatooine Garden (Style 3)", "object/tangible/deed/city_deed/garden_tatooine_sml_03_deed.iff",
 							"Small Tatooine Garden (Style 4)", "object/tangible/deed/city_deed/garden_tatooine_sml_04_deed.iff",
 							"Small Tatooine Garden (Style 5)", "object/tangible/deed/city_deed/garden_tatooine_sml_05_deed.iff"
-						}
+						}--]]
 					}
 				}
 			},

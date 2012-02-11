@@ -14,7 +14,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 
 class RegionMap : public ReadWriteLock, public Object {
-	VectorMap<String, Reference<CityRegion*> > regions;
+	VectorMap<String, ManagedReference<CityRegion*> > regions;
 
 public:
 	RegionMap() {
@@ -51,7 +51,7 @@ public:
 		rlock();
 
 		for (int i = 0; i < regions.size(); ++i) {
-			Reference<CityRegion*> cityRegion = regions.get(i);
+			CityRegion* cityRegion = regions.get(i);
 
 			if (cityRegion->containsPoint(x, y)) {
 				runlock();

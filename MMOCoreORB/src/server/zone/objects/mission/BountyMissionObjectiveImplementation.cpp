@@ -212,7 +212,7 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 	mission->updateMissionLocation();
 
 	if (mission->getDifficultyLevel() == 1) {
-		getPlayerOwner()->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
+		getPlayerOwner()->sendSystemMessage("@mission/mission_bounty_informant:target_location_received");
 	}
 }
 

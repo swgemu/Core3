@@ -48,6 +48,20 @@ using namespace server::zone::objects::building;
 namespace server {
 namespace zone {
 namespace objects {
+namespace region {
+
+class CityRegion;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 namespace variables {
 
@@ -130,8 +144,6 @@ class ActiveArea;
 } // namespace server
 
 using namespace server::zone::objects::area;
-
-#include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/managers/planet/RegionMap.h"
 
@@ -450,6 +462,14 @@ public:
 
 	void increaseNumberOfCities();
 
+	CityRegion* getRegion(int index);
+
+	CityRegion* getRegion(const String& region);
+
+	CityRegion* getRegionAt(float x, float y);
+
+	void addRegion(CityRegion* region);
+
 	void dropRegion(const String& region);
 
 	bool hasRegion(const String& name);
@@ -473,6 +493,7 @@ protected:
 	String _param0_createTicket__String_String_String_;
 	String _param1_createTicket__String_String_String_;
 	String _param2_createTicket__String_String_String_;
+	String _param0_getRegion__String_;
 	String _param0_dropRegion__String_;
 	String _param0_hasRegion__String_;
 	String _param0_isExistingPlanetTravelPoint__String_;

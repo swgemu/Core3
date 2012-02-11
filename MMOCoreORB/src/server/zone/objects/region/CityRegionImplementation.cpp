@@ -44,6 +44,12 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
 
+	if (regions.size() <= 0) {
+		System::out << "Naming region " << regionName.getDisplayedName() << endl;
+		region->setPlanetMapCategory(TemplateManager::instance()->getPlanetMapCategoryByName("city"));
+		region->setObjectName(regionName);
+	}
+
 	zone->transferObject(region, -1, false);
 
 	regions.put(region);
@@ -61,10 +67,13 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
 	params.setTT(regionName.getDisplayedName());
 
+	String strRank = "@city/city:rank" + String::valueOf(cityRank);
+
 	if (citySpecialization.isEmpty()) {
-		params.setTO("@city/city:rank" + cityRank);
+		params.setTO(strRank);
 	} else {
-		params.setTO(String("@city/city:rank" + cityRank) + ", " + String("@city/city:" + citySpecialization));
+		String strSpec = "@city/city:" + citySpecialization;
+		params.setTO(strRank + ", " + strSpec);
 	}
 
 	creature->sendSystemMessage(params);
