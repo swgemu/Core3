@@ -80,6 +80,10 @@ public:
 			return INVALIDSTATE;
 		}
 
+		if(!craftingTool->isASubChildOf(creature)) {
+			return GENERALERROR;
+		}
+
 		if (!checkInvalidLocomotions(creature)) {
 			if(craftingTool != NULL && creature->isPlayerCreature()) {
 				creature->sendSystemMessage("@ui_craft:err_start");

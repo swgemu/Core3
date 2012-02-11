@@ -75,6 +75,10 @@ public:
 
 		if(craftingTool != NULL) {
 
+			if(!craftingTool->isASubChildOf(creature)) {
+				return GENERALERROR;
+			}
+
 			Locker _locker(craftingTool);
 
 			craftingTool->cancelCraftingSession(player);

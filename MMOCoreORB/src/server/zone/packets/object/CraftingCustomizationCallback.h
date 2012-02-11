@@ -76,6 +76,10 @@ public:
 			return;
 		}
 
+		if(!craftingTool->isASubChildOf(player)) {
+			return;
+		}
+
 		Locker _locker(craftingTool);
 
 		craftingTool->customization(player, name, templateChoice, schematicCount, customizationString);

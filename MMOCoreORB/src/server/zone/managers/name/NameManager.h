@@ -162,7 +162,7 @@ public:
 	bool isProfane(String name);
 
 	int validateName(CreatureObject * obj);
-	int validateName(const String& name, int species);
+	int validateName(const String& name, int species = 0);
 
 	const String makeCreatureName(bool surname = true);
 

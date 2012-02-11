@@ -63,6 +63,10 @@ public:
 			return;
 		}
 
+		if(!craftingTool->isASubChildOf(player)) {
+			return;
+		}
+
 		Locker _locker(craftingTool);
 
 		uint64 lastExperiment = craftingTool->getLastExperimentationTimestamp();

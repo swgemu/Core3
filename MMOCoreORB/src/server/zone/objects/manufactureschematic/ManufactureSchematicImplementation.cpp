@@ -176,8 +176,11 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 
 		ManagedReference<CraftingTool* > craftingTool = cast<CraftingTool*>( parent.get());
 
-		if(craftingTool != NULL)
+		if(craftingTool != NULL && craftingTool->isASubChildOf(player)) {
+			Locker locker(craftingTool);
+
 			craftingTool->synchronizedUIListenForSchematic(playerCreature);
+		}
 	}
 }
 

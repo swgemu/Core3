@@ -53,6 +53,10 @@ public:
 			return;
 		}
 
+		if(!craftingTool->isASubChildOf(player)) {
+			return;
+		}
+
 		ManagedReference<SceneObject* > object = player->getZoneServer()->getObject(objectID);
 
 		if(object != NULL && object->isTangibleObject()) {

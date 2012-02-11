@@ -54,6 +54,7 @@
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/tangible/tool/events/CreateObjectTask.h"
 #include "server/zone/objects/tangible/tool/events/UpdateToolCountdownTask.h"
 #include "server/zone/objects/tangible/component/Component.h"
@@ -1214,6 +1215,11 @@ void CraftingToolImplementation::customization(CreatureObject* player,
 
 	if (prototype == NULL) {
 		sendSlotMessage(player, 0, IngredientSlot::PROTOTYPENOTFOUND);
+		return;
+	}
+
+	if(NameManager::instance()->isProfane(name)) {
+		player->sendSystemMessage("Your selected name has been declined because it may contain inappropriate language.  Close the 'customizing' window and try again");
 		return;
 	}
 

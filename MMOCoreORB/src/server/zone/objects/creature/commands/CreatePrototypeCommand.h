@@ -86,6 +86,10 @@ public:
 			return GENERALERROR;
 		}
 
+		if(!craftingTool->isASubChildOf(creature)) {
+			return GENERALERROR;
+		}
+
 		int clientCounter, practice;
 
 		StringTokenizer tokenizer(arguments.toString());
