@@ -80,7 +80,7 @@ public:
 			return INVALIDSTATE;
 		}
 
-		if(!craftingTool->isASubChildOf(creature)) {
+		if( craftingTool != NULL && !craftingTool->isASubChildOf(creature)) {
 			return GENERALERROR;
 		}
 
