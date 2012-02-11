@@ -120,7 +120,7 @@ corellia_regions = {
 	{"vreni_island_medium_newbie",0,0,0,0,1},
 	{"western_mountain_forest",0,0,0,0,1},
 	{"western_plains",0,0,0,0,1},
-	{"world_spawner",0,0,-1,3,1,"coro_world_easy"},
+	--{"world_spawner",0,0,-1,3,1,"coro_world_easy"},
 }
 
 corellia_static_spawns = {

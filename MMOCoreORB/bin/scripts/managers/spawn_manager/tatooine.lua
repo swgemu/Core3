@@ -217,7 +217,7 @@ tatooine_regions = {
 	{"western_oasis",0,0,0,0,1},
 	{"wind_harvest_complex",0,0,0,0,1},
 	{"wind_harvest_unit",0,0,0,0,1},
-	{"world_spawner",0,0,-1,3,1,"tatooine_creatures_world"},
+	--{"world_spawner",0,0,-1,3,1,"tatooine_creatures_world"},
 }
 
 tatooine_static_spawns = {

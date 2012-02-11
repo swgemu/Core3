@@ -85,7 +85,7 @@ naboo_regions = {
 	{"theed_easy_newbie",-4815,4062,300,1,500,"capper_spineflap"},
 	{"theed_medium_newbie",0,0,0,0,1},
 	{"western_forest",0,0,0,0,1},
-	{"world_spawner",0,0,-1,3,1,"naboo_world_easy"},
+	--{"world_spawner",0,0,-1,3,1,"naboo_world_easy"},
 }
 
 naboo_static_spawns = {
