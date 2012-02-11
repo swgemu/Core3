@@ -359,7 +359,8 @@ bool FactoryObjectImplementation::startFactory() {
 
 	ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
 
-	timer = ((int)schematic->getComplexity()) * 2;
+	/// Lowering timer for test
+	timer = 1;//((int)schematic->getComplexity()) * 2;
 
 	if(!populateSchematicBlueprint(schematic))
 		return false;
