@@ -151,8 +151,7 @@ SceneObject* DraftSchematicImplementation::createManufactureSchematic(SceneObjec
 		return NULL;
 	}
 
-	if(craftingTool != NULL)
-		manuSchematic->setDraftSchematic(craftingTool, _this);
+	manuSchematic->setDraftSchematic(craftingTool, _this);
 
 	return manuSchematic;
 }
