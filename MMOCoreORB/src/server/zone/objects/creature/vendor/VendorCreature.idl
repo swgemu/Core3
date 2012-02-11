@@ -57,6 +57,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.tangible.wearables.WearableObject;
+include server.zone.objects.scene.variables.ContainerPermissions;
 
 class VendorCreature extends CreatureObject {
 
@@ -66,7 +67,12 @@ class VendorCreature extends CreatureObject {
 	public VendorCreature() {
 		Logger.setLoggingName("VendorCreature");
 	
-		super.getContainerPermissions().setInheritPermissionsFromParent(false);
+		super.getContainerPermissions().setInheritPermissionsFromParent(true);
+
+		ContainerPermissions permissions = super.getContainerPermissions();
+		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
+		//permissions.setAllowPermission("owner, ")
 	}
 
 	public native void initializeTransientMembers();
