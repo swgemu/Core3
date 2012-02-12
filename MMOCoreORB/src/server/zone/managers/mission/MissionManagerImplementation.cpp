@@ -1292,6 +1292,10 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObject* player) {
 	Vector3 position;
+
+	if (player->getZone() == NULL)
+		return position;
+
 	bool found = false;
 	float radiusX = player->getZone()->getMaxX() - player->getZone()->getMinX();
 	float radiusY = player->getZone()->getMaxY() - player->getZone()->getMinY();
