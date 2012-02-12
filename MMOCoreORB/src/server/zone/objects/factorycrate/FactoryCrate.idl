@@ -63,9 +63,7 @@ class FactoryCrate extends TangibleObject {
 	
 	public FactoryCrate() {
 		Logger.setLoggingName("FactoryCrate");
-		
-		setOptionsBitmask(OptionBitmask.HASSERIALNUMBER, false);
-		
+
 		super.setContainerInheritPermissionsFromParent(false);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);

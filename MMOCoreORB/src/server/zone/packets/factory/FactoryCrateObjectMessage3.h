@@ -67,7 +67,12 @@ public:
 		insertInt(0);
 		insertInt(0);
 
-		insertInt(crate->getOptionsBitmask());
+		Reference<TangibleObject*> proto = crate->getPrototype();
+
+		if(proto == NULL)
+			insertInt(crate->getOptionsBitmask());
+		else
+			insertInt(proto->getOptionsBitmask());
 
 		int count = crate->getUseCount();
 
