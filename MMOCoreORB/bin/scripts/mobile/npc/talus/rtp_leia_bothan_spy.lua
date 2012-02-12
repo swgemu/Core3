@@ -1,5 +1,5 @@
-rancher = Creature:new {
-	objectName = "@mob/creature_names:farmer_rancher",
+rtp_leia_bothan_spy = Creature:new {
+	objectName = "@mob/creature_names:rtp_leia_bothan_spy",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -11,7 +11,7 @@ rancher = Creature:new {
 	baseHAM = 113,
 	baseHAMmax = 138,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {15,15,15,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,12 +26,13 @@ rancher = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_scout_bothan_male_01.iff"},
+				
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(rancher, "rancher")
+CreatureTemplates:addCreatureTemplate(rtp_leia_bothan_spy, "rtp_leia_bothan_spy")

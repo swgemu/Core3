@@ -27,7 +27,8 @@ bartender = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_fat_human_male_01.iff"},
+	templates = {"object/mobile/dressed_commoner_fat_human_male_01.iff",
+					"object/mobile/dressed_commoner_naboo_human_female_05.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

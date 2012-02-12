@@ -1,4 +1,4 @@
-miner = Creature:new {
+death_watch_miner = Creature:new {
 	objectName = "@mob/creature_names:miner",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
@@ -21,7 +21,7 @@ miner = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -30,10 +30,7 @@ miner = Creature:new {
 	"object/mobile/dressed_mand_miner_aqualish.iff",
 	"object/mobile/dressed_mand_miner_hum_01.iff",
 	"object/mobile/dressed_mand_miner_hum_02.iff",
-	"object/mobile/dressed_mand_miner_hum_03.iff",
-	"object/mobile/dressed_commoner_fat_twilek_male_02.iff",
-	"object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff",
-	"object/mobile/dressed_commoner_tatooine_rodian_male_01.iff"},
+	"object/mobile/dressed_mand_miner_hum_03.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
@@ -41,4 +38,4 @@ miner = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(miner, "miner")
+CreatureTemplates:addCreatureTemplate(death_watch_miner, "death_watch_miner")

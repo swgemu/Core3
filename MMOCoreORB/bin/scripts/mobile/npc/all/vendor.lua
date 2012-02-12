@@ -21,14 +21,16 @@ vendor = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/twilek_female.iff"},
+	templates = {"object/mobile/twilek_female.iff",
+					"object/mobile/dressed_commoner_fat_twilek_female_02.iff",
+					"object/mobile/dressed_commoner_tatooine_bith_female_02.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

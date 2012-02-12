@@ -25,7 +25,7 @@ bounty_hunter = Creature:new {
 	creatureBitmask = KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_bountyhunter_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	attacks = {}

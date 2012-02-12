@@ -26,7 +26,9 @@ explorer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/human_male.iff",
+					"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
+					"object/mobile/dressed_commoner_naboo_human_female_07.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

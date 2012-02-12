@@ -26,7 +26,9 @@ fed_dub_patrolman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_fed_dub_patrol_man_human_male_01.iff"},
+	templates = {"object/mobile/dressed_fed_dub_patrol_man_human_male_01.iff",
+					"object/mobile/dressed_fed_dub_patrolman_human_female_01.iff"},
+				
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

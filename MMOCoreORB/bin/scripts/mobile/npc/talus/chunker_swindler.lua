@@ -25,7 +25,9 @@ chunker_swindler = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

@@ -21,11 +21,12 @@ gambler = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_02.iff",
+					"object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

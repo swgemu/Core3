@@ -25,7 +25,7 @@ smuggler = Creature:new {
 	creatureBitmask = KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}

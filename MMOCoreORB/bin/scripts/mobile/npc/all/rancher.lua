@@ -1,5 +1,5 @@
 rancher = Creature:new {
-	objectName = "rancher",
+	objectName = "@mob/creature_names:farmer_rancher",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -21,11 +21,11 @@ rancher = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	attacks = {}
