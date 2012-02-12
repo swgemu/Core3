@@ -15,6 +15,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
@@ -72,6 +73,19 @@ void CityManagerImplementation::loadLuaConfig() {
 
 	delete lua;
 	lua = NULL;
+}
+
+CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
+	CityRegion* city = new CityRegion(zone, cityName);
+	city->setCityRank(OUTPOST);
+	city->setMayorID(mayor->getObjectID());
+	city->addRegion(x, y, radiusPerRank.get(OUTPOST));
+
+	//TODO: Send email to mayor.
+
+	cities.put(cityName, city);
+
+	return city;
 }
 
 /*

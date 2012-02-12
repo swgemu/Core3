@@ -110,6 +110,8 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
+	bool toggleZoningEnabled();
+
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
@@ -121,6 +123,8 @@ public:
 	bool isMayor(unsigned long long objectid);
 
 	bool isZoningEnabled();
+
+	bool isClientRegion();
 
 	void setRegionName(const UnicodeString& name);
 
@@ -217,6 +221,8 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
+	bool toggleZoningEnabled();
+
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
@@ -228,6 +234,8 @@ public:
 	bool isMayor(unsigned long long objectid);
 
 	bool isZoningEnabled();
+
+	bool isClientRegion();
 
 	void setRegionName(const UnicodeString& name);
 
@@ -304,6 +312,8 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
+	bool toggleZoningEnabled();
+
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
@@ -315,6 +325,8 @@ public:
 	bool isMayor(unsigned long long objectid);
 
 	bool isZoningEnabled();
+
+	bool isClientRegion();
 
 	void setRegionName(const UnicodeString& name);
 

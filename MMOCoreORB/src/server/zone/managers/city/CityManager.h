@@ -45,6 +45,20 @@ class StringIdChatParameter;
 
 using namespace server::chat;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace region {
+
+class CityRegion;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -78,7 +92,11 @@ public:
 
 	bool validateCityName(const String& name);
 
+	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
+
 	byte getCitiesAllowed(byte rank);
+
+	int getTotalCities();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -116,6 +134,8 @@ public:
 
 	static int newCityGracePeriod;
 
+	VectorMap<String, ManagedReference<CityRegion* > > cities;
+
 private:
 	Vector<byte> citiesAllowedPerRank;
 
@@ -142,7 +162,11 @@ public:
 
 	bool validateCityName(const String& name);
 
+	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
+
 	byte getCitiesAllowed(byte rank);
+
+	int getTotalCities();
 
 	WeakReference<CityManager*> _this;
 
@@ -191,10 +215,15 @@ public:
 
 	bool validateCityName(const String& name);
 
+	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
+
 	byte getCitiesAllowed(byte rank);
+
+	int getTotalCities();
 
 protected:
 	String _param0_validateCityName__String_;
+	String _param1_createCity__CreatureObject_String_float_float_;
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

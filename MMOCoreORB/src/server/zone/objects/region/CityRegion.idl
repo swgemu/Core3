@@ -75,6 +75,10 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native boolean hasZoningRights(unsigned long objectid);
 	
+	public boolean toggleZoningEnabled() {
+		return (zoningEnabled = !zoningEnabled);
+	}
+	
 	public boolean containsPoint(float x, float y) {
 		for (int i = 0; i < regions.size(); ++i) {
 			Region aa = regions.get(i);
@@ -100,11 +104,15 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public boolean isMayor(unsigned long objectid) {
-		return mayorID = objectid;
+		return mayorID == objectid;
 	}
 	
 	public boolean isZoningEnabled() {
 		return zoningEnabled;
+	}
+	
+	public boolean isClientRegion() {
+		return cityRank == RANK_CLIENT;
 	}
 
 	//Setters

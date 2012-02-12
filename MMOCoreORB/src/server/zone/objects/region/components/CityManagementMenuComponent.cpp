@@ -34,10 +34,11 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_unregister"); //Unregister City
 	//menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_register"); //Register City
 
-	if (!city->isZoningEnabled())
-		menuResponse->addRadialMenuItemToRadialID(216, 226, 3, "@city/city:zone"); //Enable Zoning
-	else
+	if (city->isZoningEnabled()) {
 		menuResponse->addRadialMenuItemToRadialID(216, 226, 3, "@city/city:unzone"); //Disable Zoning
+	} else {
+		menuResponse->addRadialMenuItemToRadialID(216, 226, 3, "@city/city:zone"); //Enable Zoning
+	}
 
 	menuResponse->addRadialMenuItemToRadialID(216, 218, 3, "@city/city:city_militia"); //Manage Militia
 
@@ -50,5 +51,21 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 }
 
 int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectID) {
+	CityRegion* city = sceneObject->getCityRegion();
+
+	if (city == NULL)
+		return 1;
+
+	switch (selectID) {
+	case 226:
+		if (city->isMayor(player->getObjectID())) {
+			if (city->toggleZoningEnabled()) {
+				player->sendSystemMessage("@city/city:zoning_enabled"); //Your city now has zoning enabled.
+			} else {
+				player->sendSystemMessage("@city/city:zoning_disabled"); //Your city now has zoning disabled.
+			}
+		}
+		break;
+	}
 	return 0;
 }

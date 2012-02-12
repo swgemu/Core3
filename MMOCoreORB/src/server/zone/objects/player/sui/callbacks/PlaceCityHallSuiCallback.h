@@ -72,13 +72,8 @@ public:
 		int result = structureManager->placeStructureFromDeed(creature, deed, x, y, angle);
 
 		if (result == 0) {
-			//The building was successfully placed. Place the city area, and name it.
-			CityRegion* city = new CityRegion(zone, cityName);
-			city->setCityRank(CityManager::OUTPOST);
-			city->setMayorID(creature->getObjectID());
-
-			uint16 radius = CityManagerImplementation::radiusPerRank.get(CityManager::OUTPOST);
-			city->addRegion(x, y, radius);
+			CityManager* cityManager = zone->getCityManager();
+			cityManager->createCity(creature, cityName, x, y);
 		}
 	}
 };

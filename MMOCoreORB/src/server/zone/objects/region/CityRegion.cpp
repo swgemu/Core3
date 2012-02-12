@@ -16,7 +16,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCITYRANK__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_TOGGLEZONINGENABLED__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCITYRANK__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
 
 CityRegion::CityRegion(Zone* zne, const String& name) : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(zne, name);
@@ -161,6 +161,19 @@ bool CityRegion::hasZoningRights(unsigned long long objectid) {
 		return _implementation->hasZoningRights(objectid);
 }
 
+bool CityRegion::toggleZoningEnabled() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_TOGGLEZONINGENABLED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->toggleZoningEnabled();
+}
+
 bool CityRegion::containsPoint(float x, float y) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -241,6 +254,19 @@ bool CityRegion::isZoningEnabled() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isZoningEnabled();
+}
+
+bool CityRegion::isClientRegion() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCLIENTREGION__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isClientRegion();
 }
 
 void CityRegion::setRegionName(const UnicodeString& name) {
@@ -592,6 +618,11 @@ void CityRegionImplementation::removeZoningRights(unsigned long long objectid) {
 	(&zoningRights)->drop(objectid);
 }
 
+bool CityRegionImplementation::toggleZoningEnabled() {
+	// server/zone/objects/region/CityRegion.idl():  		return (zoningEnabled = !zoningEnabled);
+	return (zoningEnabled = !zoningEnabled);
+}
+
 bool CityRegionImplementation::containsPoint(float x, float y) {
 	// server/zone/objects/region/CityRegion.idl():  		}
 	for (	// server/zone/objects/region/CityRegion.idl():  		for (int i = 0;
@@ -624,13 +655,18 @@ unsigned long long CityRegionImplementation::getMayorID() {
 }
 
 bool CityRegionImplementation::isMayor(unsigned long long objectid) {
-	// server/zone/objects/region/CityRegion.idl():  		return mayorID = objectid;
-	return mayorID = objectid;
+	// server/zone/objects/region/CityRegion.idl():  		return mayorID == objectid;
+	return mayorID == objectid;
 }
 
 bool CityRegionImplementation::isZoningEnabled() {
 	// server/zone/objects/region/CityRegion.idl():  		return zoningEnabled;
 	return zoningEnabled;
+}
+
+bool CityRegionImplementation::isClientRegion() {
+	// server/zone/objects/region/CityRegion.idl():  		return cityRank == RANK_CLIENT;
+	return cityRank == RANK_CLIENT;
 }
 
 void CityRegionImplementation::setRegionName(const UnicodeString& name) {
@@ -696,6 +732,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_HASZONINGRIGHTS__LONG_:
 		resp->insertBoolean(hasZoningRights(inv->getUnsignedLongParameter()));
 		break;
+	case RPC_TOGGLEZONINGENABLED__:
+		resp->insertBoolean(toggleZoningEnabled());
+		break;
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
@@ -713,6 +752,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ISZONINGENABLED__:
 		resp->insertBoolean(isZoningEnabled());
+		break;
+	case RPC_ISCLIENTREGION__:
+		resp->insertBoolean(isClientRegion());
 		break;
 	case RPC_SETREGIONNAME__UNICODESTRING_:
 		setRegionName(inv->getUnicodeParameter(_param0_setRegionName__UnicodeString_));
@@ -772,6 +814,10 @@ bool CityRegionAdapter::hasZoningRights(unsigned long long objectid) {
 	return (static_cast<CityRegion*>(stub))->hasZoningRights(objectid);
 }
 
+bool CityRegionAdapter::toggleZoningEnabled() {
+	return (static_cast<CityRegion*>(stub))->toggleZoningEnabled();
+}
+
 bool CityRegionAdapter::containsPoint(float x, float y) {
 	return (static_cast<CityRegion*>(stub))->containsPoint(x, y);
 }
@@ -794,6 +840,10 @@ bool CityRegionAdapter::isMayor(unsigned long long objectid) {
 
 bool CityRegionAdapter::isZoningEnabled() {
 	return (static_cast<CityRegion*>(stub))->isZoningEnabled();
+}
+
+bool CityRegionAdapter::isClientRegion() {
+	return (static_cast<CityRegion*>(stub))->isClientRegion();
 }
 
 void CityRegionAdapter::setRegionName(const UnicodeString& name) {

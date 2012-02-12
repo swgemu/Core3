@@ -10,11 +10,13 @@
 
 #include "server/chat/StringIdChatParameter.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
 /*
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_VALIDATECITYNAME__STRING_,RPC_GETCITIESALLOWED__BYTE_};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
@@ -57,6 +59,23 @@ bool CityManager::validateCityName(const String& name) {
 		return _implementation->validateCityName(name);
 }
 
+CityRegion* CityManager::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_);
+		method.addObjectParameter(mayor);
+		method.addAsciiParameter(cityName);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+
+		return static_cast<CityRegion*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->createCity(mayor, cityName, x, y);
+}
+
 byte CityManager::getCitiesAllowed(byte rank) {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -69,6 +88,19 @@ byte CityManager::getCitiesAllowed(byte rank) {
 		return method.executeWithByteReturn();
 	} else
 		return _implementation->getCitiesAllowed(rank);
+}
+
+int CityManager::getTotalCities() {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTOTALCITIES__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTotalCities();
 }
 
 DistributedObjectServant* CityManager::_getImplementation() {
@@ -218,6 +250,10 @@ CityManagerImplementation::CityManagerImplementation(Zone* zne) {
 	Logger::setGlobalLogging(true);
 	// server/zone/managers/city/CityManager.idl():  		zone = zne;
 	zone = zne;
+	// server/zone/managers/city/CityManager.idl():  		cities.setNoDuplicateInsertPlan();
+	(&cities)->setNoDuplicateInsertPlan();
+	// server/zone/managers/city/CityManager.idl():  		cities.setNullValue(null);
+	(&cities)->setNullValue(NULL);
 	// server/zone/managers/city/CityManager.idl():  		configLoaded = false;
 	configLoaded = false;
 }
@@ -225,6 +261,11 @@ CityManagerImplementation::CityManagerImplementation(Zone* zne) {
 byte CityManagerImplementation::getCitiesAllowed(byte rank) {
 	// server/zone/managers/city/CityManager.idl():  		return citiesAllowedPerRank.get(rank);
 	return (&citiesAllowedPerRank)->get(rank);
+}
+
+int CityManagerImplementation::getTotalCities() {
+	// server/zone/managers/city/CityManager.idl():  		return cities.size();
+	return (&cities)->size();
 }
 
 /*
@@ -244,8 +285,14 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_VALIDATECITYNAME__STRING_:
 		resp->insertBoolean(validateCityName(inv->getAsciiParameter(_param0_validateCityName__String_)));
 		break;
+	case RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_:
+		resp->insertLong(createCity(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createCity__CreatureObject_String_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		break;
 	case RPC_GETCITIESALLOWED__BYTE_:
 		resp->insertByte(getCitiesAllowed(inv->getByteParameter()));
+		break;
+	case RPC_GETTOTALCITIES__:
+		resp->insertSignedInt(getTotalCities());
 		break;
 	default:
 		return NULL;
@@ -262,8 +309,16 @@ bool CityManagerAdapter::validateCityName(const String& name) {
 	return (static_cast<CityManager*>(stub))->validateCityName(name);
 }
 
+CityRegion* CityManagerAdapter::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
+	return (static_cast<CityManager*>(stub))->createCity(mayor, cityName, x, y);
+}
+
 byte CityManagerAdapter::getCitiesAllowed(byte rank) {
 	return (static_cast<CityManager*>(stub))->getCitiesAllowed(rank);
+}
+
+int CityManagerAdapter::getTotalCities() {
+	return (static_cast<CityManager*>(stub))->getTotalCities();
 }
 
 /*

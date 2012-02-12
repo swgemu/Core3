@@ -562,7 +562,6 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 							delete activeAreas;
 						}
 
-
 						return false;
 					}
 				}

@@ -140,6 +140,10 @@ void StructureManagerImplementation::loadPlayerStructures() {
 }
 
 int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle) {
+	//Already placing a structure?
+	if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
+		return 1;
+
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 	if (!planetManager->isBuildingPermittedAt(x, y, creature)) {
@@ -147,9 +151,12 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 		return 1;
 	}
 
-	//Already placing a structure?
-	if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
+	ManagedReference<CityRegion*> city = creature->getCityRegion();
+
+	if (city != NULL && city->isZoningEnabled() && !city->hasZoningRights(creature->getObjectID())) {
+		creature->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
 		return 1;
+	}
 
 	Locker _lock(deed, creature);
 

@@ -51,6 +51,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.chat.StringIdChatParameter;
 import system.util.SortedVector;
 import system.util.VectorMap;
+import server.zone.objects.region.CityRegion;
 
 class CityManager extends ManagedService implements Logger {
 	@weakReference
@@ -64,6 +65,9 @@ class CityManager extends ManagedService implements Logger {
 	
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
+	
+	@dereferenced
+	public transient VectorMap<string, CityRegion> cities;
 	
 	@dereferenced
 	private transient Vector<byte> citiesAllowedPerRank;
@@ -85,6 +89,9 @@ class CityManager extends ManagedService implements Logger {
 		
 		zone = zne;
 		
+		cities.setNoDuplicateInsertPlan();
+		cities.setNullValue(null);
+		
 		configLoaded = false;
 	}
 	
@@ -95,11 +102,17 @@ class CityManager extends ManagedService implements Logger {
 
 	public native boolean validateCityName(final string name);
 	
+	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
+	
 	/**
 	 * Returns the number of cities allowed at this rank on this particular city manager for this zone.
 	 * @param rank The rank to check for the city cap at.
 	 */
 	public byte getCitiesAllowed(byte rank) {
 		return citiesAllowedPerRank.get(rank);
+	}
+	
+	public int getTotalCities() {
+		return cities.size();
 	}
 }

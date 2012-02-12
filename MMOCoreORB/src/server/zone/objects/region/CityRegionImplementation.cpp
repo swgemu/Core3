@@ -56,10 +56,8 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 		region->setObjectName(regionName);
 	}
 
-	if (cityRank == RANK_CLIENT)
+	if (isClientRegion())
 		region->setNoBuildArea(true);
-	else
-		region->setNoBuildArea(false);
 
 	zone->transferObject(region, -1, false);
 
@@ -67,15 +65,15 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
-	if (cityRank == RANK_CLIENT)
+	object->setCityRegion(_this);
+
+	if (isClientRegion())
 		return;
 
 	if (!object->isCreatureObject())
 			return;
 
 	CreatureObject* creature = cast<CreatureObject*>(object);
-
-	creature->setCityRegion(_this);
 
 	StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
 	params.setTT(regionName.getDisplayedName());
@@ -95,15 +93,15 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
-	if (cityRank == RANK_CLIENT)
+	object->setCityRegion(NULL);
+
+	if (isClientRegion())
 		return;
 
 	if (!object->isCreatureObject())
 		return;
 
 	CreatureObject* creature = cast<CreatureObject*>(object);
-
-	creature->setCityRegion(NULL);
 
 	StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
 	params.setTO(regionName.getDisplayedName());
@@ -130,6 +128,9 @@ void CityRegionImplementation::addZoningRights(uint64 objectid, uint32 duration)
 }
 
 bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
+	if (isMilitiaMember(objectid))
+		return true;
+
 	uint32 timestamp = zoningRights.get(objectid);
 
 	if (timestamp == 0)

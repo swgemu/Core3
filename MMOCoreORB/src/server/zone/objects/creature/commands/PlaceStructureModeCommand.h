@@ -79,7 +79,9 @@ public:
 			return GENERALERROR;
 		}
 
-		if (creature->getCityRegion() != NULL) {
+		ManagedReference<CityRegion*> city = creature->getCityRegion();
+
+		if (city != NULL && city->isClientRegion()) {
 			creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 			return INVALIDPARAMETERS;
 		}
