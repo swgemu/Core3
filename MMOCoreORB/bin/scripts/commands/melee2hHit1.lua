@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 Melee2hHit1Command = {
-        name = "melee2hhit1",
+	name = "melee2hhit1",
 
-	damageMultiplier = 2,
+	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
+	accuracyBonus = 10,
+	
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.0,
+	mindCostMultiplier = 0.5,
 
 	animationCRC = hashCode("combo_2c_medium"),
 
-	combatSpam = "sword2",
+	combatSpam = "sword2_dam1",
 
 	range = -1
 }

@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 PolearmLunge1Command = {
-        name = "polearmlunge1",
+	name = "polearmlunge1",
 
 	damageMultiplier = 1.5,
 	speedMultiplier = 1.5,
@@ -54,7 +54,7 @@ PolearmLunge1Command = {
 
 	animationCRC = hashCode("lower_posture_polearm_1"),
 
-	combatSpam = "polearm",
+	combatSpam = "lungestrike",
 
 	range = 15,
 

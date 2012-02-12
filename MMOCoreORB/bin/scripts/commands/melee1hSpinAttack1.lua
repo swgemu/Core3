@@ -42,10 +42,15 @@
 --true = 1, false = 0
 
 Melee1hSpinAttack1Command = {
-        name = "melee1hspinattack1",
+	name = "melee1hspinattack1",
 
-	damageMultiplier = 2,
-	speedMultiplier = 1.45,
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.5,
+	accuracyBonus = 25,
+	
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1.5,
 
 	animationCRC = hashCode("attack_high_right_medium_2"),
 

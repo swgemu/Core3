@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 Melee2hLunge2Command = {
-        name = "melee2hlunge2",
+	name = "melee2hlunge2",
 
-	damageMultiplier = 2,
-	speedMultiplier = 1.5,
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.5,
+	accuracyBonus = 10,
+	
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 0.625,
+	mindCostMultiplier = 0.625,
 
 	animationCRC = hashCode("lower_posture_2hmelee_1"),
 
-	combatSpam = "sword2",
+	combatSpam = "lungeslam",
 
 	range = 20,
 
@@ -60,7 +65,7 @@ Melee2hLunge2Command = {
 		{ "knockdown_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	}

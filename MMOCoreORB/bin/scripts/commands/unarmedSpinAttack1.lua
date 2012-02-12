@@ -42,12 +42,14 @@
 --true = 1, false = 0
 
 UnarmedSpinAttack1Command = {
-        name = "unarmedspinattack1",
+	name = "unarmedspinattack1",
 
 	damageMultiplier = 2,
 	speedMultiplier = 2,
 	areaAction = true,
-	areaRange = 7,
+	areaRange = -1,
+	accuracyBonus = 15,
+	
 	healthCostMultiplier = 1.5,
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,

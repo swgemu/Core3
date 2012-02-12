@@ -42,10 +42,15 @@
 --true = 1, false = 0
 
 PolearmSweep1Command = {
-        name = "polearmsweep1",
+	name = "polearmsweep1",
 
-	damageMultiplier = 2,
+	damageMultiplier = 1.5,
 	speedMultiplier = 1.5,
+	accuracyBonus = 10,
+	
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 1.0,
+	mindCostMultiplier = 1.0,
 
 	stateEffects = {
 	  StateEffect( 
@@ -53,17 +58,15 @@ PolearmSweep1Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		10, 
 		100, 
+		0, 
 		0 
 	  )
 	},
 
 	animationCRC = hashCode("attack_low_right_medium_0"),
 
-	combatSpam = "melee",
-
-	poolsToDamage = RANDOM_ATTRIBUTE,
+	combatSpam = "polearm_sweep",
 
 	range = -1
 }

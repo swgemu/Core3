@@ -42,17 +42,19 @@
 --true = 1, false = 0
 
 UnarmedBlind1Command = {
-        name = "unarmedblind1",
+	name = "unarmedblind1",
 
 	damageMultiplier = 1.5,
-	speedMultiplier = 2,
+	speedMultiplier = 2.0,
+	accuracyBonus = 15,
+	
 	healthCostMultiplier = 1.5,
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
 	animationCRC = hashCode("attack_high_center_light_1"),
 
-	combatSpam = "aryxslash",
+	combatSpam = "unarmed_blind",
 
 	stateEffects = {
 	  StateEffect( 
@@ -61,8 +63,8 @@ UnarmedBlind1Command = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		100, 
-		100, 
-		10 
+		0, 
+		50 
 	  )
 	},
 

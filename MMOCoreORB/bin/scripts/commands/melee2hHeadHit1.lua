@@ -42,16 +42,21 @@
 --true = 1, false = 0
 
 Melee2hHeadHit1Command = {
-        name = "melee2hheadhit1",
+	name = "melee2hheadhit1",
 
-	damageMultiplier = 1.6,
-	speedMultiplier = 1.6,
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.25,
+	accuracyBonus = 10,
+	
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.0,
+	mindCostMultiplier = 0.5,
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
 	animationCRC = hashCode("combo_2d_medium"),
 
-	combatSpam = "sword2",
+	combatSpam = "sword2_head",
 
 	range = -1
 

@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 Melee2hSweep1Command = {
-        name = "melee2hsweep1",
+	name = "melee2hsweep1",
 
 	damageMultiplier = 1.5,
-	speedMultiplier = 1.7,
+	speedMultiplier = 1.5,
+	accuracyBonus = 10,
+	
+	healthCostMultiplier = 0.75,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 0.75,
 
 	animationCRC = hashCode("lower_posture_2hmelee_3"),
 
-	combatSpam = "melee2hsweep1",
+	combatSpam = "sword2_sweep",
 
 	stateEffects = {
 	  StateEffect( 
@@ -58,7 +63,7 @@ Melee2hSweep1Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	},

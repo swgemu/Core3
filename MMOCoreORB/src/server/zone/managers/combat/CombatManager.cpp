@@ -1220,11 +1220,11 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 	if (data.getCommand()->isConeAction()) {
 		range = data.getRange();
+	}
 
-		if (range == -1) {
-			WeaponObject* weapon = attacker->getWeapon();
-			range = weapon->getMaxRange();
-		}
+	if (range < 0) {
+		WeaponObject* weapon = attacker->getWeapon();
+		range = weapon->getMaxRange();
 	}
 
 	try {

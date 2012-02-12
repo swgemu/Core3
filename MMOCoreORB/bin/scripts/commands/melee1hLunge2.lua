@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 Melee1hLunge2Command = {
-        name = "melee1hlunge2",
+	name = "melee1hlunge2",
 
-	damageMultiplier = 2,
-	speedMultiplier = 1.5,
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.5,
+	accuracyBonus = 25,
+	
+	healthCostMultiplier = 0.625,
+	actionCostMultiplier = 0.625,
+	mindCostMultiplier = 1.5,
 
 	animationCRC = hashCode("melee1hlunge2"),
 
-	combatSpam = "sword1",
+	combatSpam = "lungestab",
 
 	range = 20,
 
@@ -60,7 +65,7 @@ Melee1hLunge2Command = {
 		{ "knockdown_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	}

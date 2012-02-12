@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 UnarmedLunge2Command = {
-        name = "unarmedlunge2",
+	name = "unarmedlunge2",
 
-	damageMultiplier = 3,
-	speedMultiplier = 2,
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.0,
+	accuracyBonus = 15,
+	
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
 
 	animationCRC = hashCode("counter_mid_center_light"),
 
-	combatSpam = "unarmed",
+	combatSpam = "lungeshiak",
 
 	range = 20,
 
@@ -60,7 +65,7 @@ UnarmedLunge2Command = {
 		{ "knockdown_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	}

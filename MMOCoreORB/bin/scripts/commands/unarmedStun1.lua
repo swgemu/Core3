@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 UnarmedStun1Command = {
-        name = "unarmedstun1",
+	name = "unarmedstun1",
 
 	damageMultiplier = 1.25,
-	speedMultiplier = 2,
+	speedMultiplier = 20.,
+	accuracyBonus = 15,
+	
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
 
 	animationCRC = hashCode("combo_4c_light"),
 
-	combatSpam = "unarmed",
+	combatSpam = "unarmed_stun",
 
 	stateEffects = {
 	  StateEffect( 
@@ -58,8 +63,8 @@ UnarmedStun1Command = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		100, 
-		100, 
-		10 
+		0, 
+		60 
 	  )
 	},
 

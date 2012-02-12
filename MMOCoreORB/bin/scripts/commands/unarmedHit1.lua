@@ -42,14 +42,19 @@
 --true = 1, false = 0
 
 UnarmedHit1Command = {
-        name = "unarmedhit1",
+	name = "unarmedhit1",
 
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
+	accuracyBonus = 15,
+	
+	healthCostMultiplier = 1.0,
+	actionCostMultiplier = 1.0,
+	mindCostMultiplier = 1.0,
 
 	animationCRC = hashCode("combo_2d_light"),
 
-	combatSpam = "unarmed",
+	combatSpam = "unarmed_dam1",
 
 	range = -1
 }

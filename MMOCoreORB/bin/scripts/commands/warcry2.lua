@@ -67,8 +67,8 @@ Warcry2Command = {
 	effectString = "clienteffect/combat_special_attacker_warcry.cef",
 	range = 15,
 
-	areaAction = true,
-	areaRange = 15,
+	coneAction = true,
+	coneAngle = 30,
 
 	poolsToDamage = 0
 }

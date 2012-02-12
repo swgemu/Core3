@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 UnarmedLunge1Command = {
-        name = "unarmedlunge1",
+	name = "unarmedlunge1",
 
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
@@ -54,7 +54,7 @@ UnarmedLunge1Command = {
 
 	animationCRC = hashCode("lower_posture_unarmed_1"),
 
-	combatSpam = "unarmed",
+	combatSpam = "lungeshiak",
 
 	range = 15,
 

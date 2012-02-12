@@ -54,7 +54,7 @@ Melee2hLunge1Command = {
 
 	animationCRC = hashCode("lower_posture_2hmelee_1"),
 
-	combatSpam = "sword2",
+	combatSpam = "lungeslam",
 
 	range = 15,
 

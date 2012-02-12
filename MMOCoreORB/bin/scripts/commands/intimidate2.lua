@@ -42,13 +42,15 @@
 --true = 1, false = 0
 
 Intimidate2Command = {
-        name = "intimidate2",
+	name = "intimidate2",
 
 	damageMultiplier = 0,
 	speedMultiplier = 1,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
+	
+	accuracySkillMod = "intimidate",
 
 	stateEffects = {
 	  StateEffect( 
@@ -57,7 +59,7 @@ Intimidate2Command = {
 		{ "intimidate_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		100, 
-		100, 
+		0, 
 		120 
 	  )
 	},
