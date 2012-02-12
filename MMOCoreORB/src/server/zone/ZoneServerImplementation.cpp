@@ -306,7 +306,7 @@ void ZoneServerImplementation::shutdown() {
 
 	info("zones shut down", true);
 
-	printInfo(true);
+	info(printInfo(), true);
 
 	info("shut down complete", true);
 }
@@ -506,14 +506,14 @@ int ZoneServerImplementation::getConnectionCount() {
 	return currentPlayers;
 }
 
-void ZoneServerImplementation::printInfo(bool forcedLog) {
+String ZoneServerImplementation::printInfo() {
 	lock();
 
-	Core::getTaskManager()->printInfo();
+	StringBuffer msg;
 
-	/*StringBuffer msg;
-	msg << "MessageQueue - size = " << processor->getMessageQueue()->size();
-	info(msg, forcedLog);*/
+	//msg << Core::getTaskManager()->printInfo() << endl;;
+
+	//msg << "MessageQueue - size = " << processor->getMessageQueue()->size() << endl;
 
 	float packetloss;
 	if (totalSentPackets + totalSentPackets == 0)
@@ -522,19 +522,15 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 		packetloss = (100 * totalResentPackets) / (totalResentPackets + totalSentPackets);
 
 #ifndef WITH_STM
-	StringBuffer msg3;
-	msg3 << "sent packets = " << totalSentPackets << ", resent packets = "
-		<< totalResentPackets << " [" << packetloss << "%]";
-	info(msg3, forcedLog);
+	msg << "sent packets = " << totalSentPackets << ", resent packets = "
+		<< totalResentPackets << " [" << packetloss << "%]" << endl;
 #endif
 
-	StringBuffer msg4;
-	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
-		 << totalDeletedPlayers << " deleted)";
-	info(msg4, forcedLog);
+	msg << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
+		 << totalDeletedPlayers << " deleted)" << endl;
 
 #ifndef WITH_STM
-	ObjectManager::instance()->printInfo();
+	msg << ObjectManager::instance()->printInfo() << endl;
 
 	int totalCreatures = 0;
 
@@ -551,12 +547,12 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 		}
 	}
 
-	StringBuffer msg5;
-	msg5 << dec << totalCreatures << " random creatures spawned";
-	info(msg5, forcedLog);
+	msg << dec << totalCreatures << " random creatures spawned" << endl;
 #endif
 
 	unlock();
+
+	return msg.toString();
 }
 
 void ZoneServerImplementation::printEvents() {

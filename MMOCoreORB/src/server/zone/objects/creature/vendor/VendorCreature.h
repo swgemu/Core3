@@ -93,6 +93,8 @@ using namespace server::zone::objects::tangible::wearables;
 
 #include "server/zone/objects/auction/Vendor.h"
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/LuaObject.h"

@@ -971,10 +971,10 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	return 1;
 }
 
-void ObjectManager::printInfo() {
+String ObjectManager::printInfo() {
 	StringBuffer msg;
 	msg << "total objects in map " << localObjectDirectory.getSize();
-	info(msg.toString(), true);
+	return msg.toString();
 }
 
 UpdateModifiedObjectsThread* ObjectManager::createUpdateModifiedObjectsThread() {

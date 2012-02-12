@@ -141,7 +141,7 @@ namespace zone {
 		 */
 		void persistObject(ManagedObject* object, int persistenceLevel, const String& database);
 
-		void printInfo();
+		String printInfo();
 
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
 		int updatePersistentObject(DistributedObject* object);

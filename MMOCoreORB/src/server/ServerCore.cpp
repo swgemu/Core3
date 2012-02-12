@@ -98,7 +98,7 @@ public:
 	}
 
 	void run() {
-		zoneServer->printInfo(true);
+		ServerCore::console.info(zoneServer->printInfo(), true);
 	}
 };
 
@@ -340,7 +340,7 @@ void ServerCore::handleCommands() {
 					loginServer->printInfo();
 
 				if (zoneServer != NULL)
-					zoneServer->printInfo(true);
+					info(zoneServer->printInfo(), true);
 
 				if (pingServer != NULL)
 					pingServer->printInfo();

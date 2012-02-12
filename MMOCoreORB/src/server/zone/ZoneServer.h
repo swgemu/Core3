@@ -398,7 +398,7 @@ public:
 
 	void addTotalResentPacket(int count);
 
-	void printInfo(bool forcedLog = true);
+	String printInfo();
 
 	void printEvents();
 
@@ -517,6 +517,7 @@ protected:
 
 	String _return_getGalaxyName;
 	String _return_getLoginMessage;
+	String _return_printInfo;
 
 	friend class ZoneServerHelper;
 };
@@ -639,7 +640,7 @@ public:
 
 	void addTotalResentPacket(int count);
 
-	void printInfo(bool forcedLog = true);
+	String printInfo();
 
 	void printEvents();
 
@@ -804,7 +805,7 @@ public:
 
 	void addTotalResentPacket(int count);
 
-	void printInfo(bool forcedLog);
+	String printInfo();
 
 	void printEvents();
 

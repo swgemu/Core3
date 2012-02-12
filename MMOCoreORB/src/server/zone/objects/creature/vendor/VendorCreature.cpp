@@ -334,8 +334,14 @@ VendorCreatureImplementation::VendorCreatureImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/creature/vendor/VendorCreature.idl():  		Logger.setLoggingName("VendorCreature");
 	Logger::setLoggingName("VendorCreature");
-	// server/zone/objects/creature/vendor/VendorCreature.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(false);
-	CreatureObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(false);
+	// server/zone/objects/creature/vendor/VendorCreature.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(true);
+	CreatureObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(true);
+	// server/zone/objects/creature/vendor/VendorCreature.idl():  		ContainerPermissions permissions = super.getContainerPermissions();
+	ContainerPermissions* permissions = CreatureObjectImplementation::getContainerPermissions();
+	// server/zone/objects/creature/vendor/VendorCreature.idl():  		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+	permissions->clearDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+	// server/zone/objects/creature/vendor/VendorCreature.idl():  		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
+	permissions->clearDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 }
 
 Vendor* VendorCreatureImplementation::getVendor() {

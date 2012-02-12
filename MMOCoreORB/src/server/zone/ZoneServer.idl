@@ -195,7 +195,8 @@ class ZoneServer extends ManagedService implements Logger {
 	public native void addTotalResentPacket(int count);
 	
 	@dirty
-	public native void printInfo(boolean forcedLog = true);
+	public native string printInfo();
+	
 	@dirty
 	public native void printEvents();
 	
@@ -398,7 +399,7 @@ class ZoneServer extends ManagedService implements Logger {
 	public Time getStartTimestamp() {
 		return startTimestamp;
 	}
-	
+
 	public void setGalaxyID(int galaxyid) {
 		galaxyID = galaxyid;
 	}
