@@ -118,7 +118,7 @@ public:
 			return false;
 
 		if (requiresIdentical && serial != "" && itemsInSlot > 0) {
-			if (incomingTano->getCraftersSerial() != serial)
+			if (incomingTano->getSerialNumber() != serial)
 				return false;
 		}
 
@@ -161,7 +161,7 @@ public:
 
 		if (contents.isEmpty()) {
 
-			serial = incomingTano->getCraftersSerial();
+			serial = incomingTano->getSerialNumber();
 
 			if (incomingTano->getUseCount() <= needs) {
 

@@ -27,8 +27,6 @@ void FactoryCrateImplementation::initializeTransientMembers() {
 
 void FactoryCrateImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
-
-	setOptionsBitmask(OptionBitmask::FROMFACTORY);
 }
 
 void FactoryCrateImplementation::sendBaselinesTo(SceneObject* player) {
@@ -59,8 +57,8 @@ void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		alm->insertAttribute("crafter", prototype->getCraftersName());
 	}
 
-	if (prototype->getCraftersSerial() != "") {
-		alm->insertAttribute("serial_number", prototype->getCraftersSerial());
+	if (prototype->getSerialNumber() != "") {
+		alm->insertAttribute("serial_number", prototype->getSerialNumber());
 	}
 
 	alm->insertAttribute("factory_count", getUseCount());
@@ -134,7 +132,7 @@ String FactoryCrateImplementation::getCraftersSerial() {
 		return "";
 	}
 
-	return prototype->getCraftersSerial();
+	return prototype->getSerialNumber();
 }
 
 bool FactoryCrateImplementation::extractObjectToParent() {
@@ -152,7 +150,6 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 
 	if (protoclone != NULL) {
 		protoclone->setParent(NULL);
-		protoclone->setOptionsBitmask(OptionBitmask::FROMFACTORY);
 
 		String errorDescription;
 		int errorNumber = 0;
@@ -197,7 +194,6 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 
 	if(protoclone != NULL) {
 		protoclone->setParent(NULL);
-		protoclone->setOptionsBitmask(OptionBitmask::FROMFACTORY);
 		protoclone->setUseCount(count, false);
 
 		if (parent != NULL)
@@ -231,9 +227,6 @@ void FactoryCrateImplementation::split(int newStackSize) {
 		return;
 
 	protoclone->setParent(NULL);
-
-	protoclone->setOptionsBitmask(OptionBitmask::FROMFACTORY);
-	newCrate->setOptionsBitmask(OptionBitmask::FROMFACTORY);
 
 	newCrate->transferObject(protoclone, -1, false);
 

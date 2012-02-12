@@ -532,8 +532,8 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 
 		FactoryCrate* crate = cast<FactoryCrate*>( object.get());
 
-		if(crate->getPrototype() != NULL && crate->getPrototype()->getCraftersSerial() ==
-				prototype->getCraftersSerial() && crate->getUseCount() < FactoryCrate::MAXCAPACITY) {
+		if(crate->getPrototype() != NULL && crate->getPrototype()->getSerialNumber() ==
+				prototype->getSerialNumber() && crate->getUseCount() < FactoryCrate::MAXCAPACITY) {
 
 			return crate;
 		}
@@ -603,7 +603,7 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(
 			}
 
 			key = String::valueOf(prototype->getServerObjectCRC());
-			serial = prototype->getCraftersSerial();
+			serial = prototype->getSerialNumber();
 
 			if(entry->getKey() == key) {
 

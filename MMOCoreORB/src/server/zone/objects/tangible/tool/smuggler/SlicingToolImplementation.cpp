@@ -59,8 +59,8 @@ void SlicingToolImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 		msg->insertAttribute("crafter", craftersName);
 
 	}
-	if (craftersSerial != "") {
-		msg->insertAttribute("serial_number", craftersSerial);
+	if (objectSerial != "") {
+		msg->insertAttribute("serial_number", objectSerial);
 
 	}
 }

@@ -477,6 +477,23 @@ void TangibleObjectImplementation::setOptionsBitmask(uint32 bitmask, bool notify
 	broadcastMessage(dtano3, true);
 }
 
+void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values,
+		bool firstUpdate) {
+	/// I know its kind dirty, but we want generics to have quantities
+	/// Without needing their own classes
+	if (values->hasProperty("quantity")) {
+		setUseCount(values->getCurrentValue("quantity"));
+	}
+
+	if (values->hasProperty("charges")) {
+		setUseCount(values->getCurrentValue("charges"));
+	}
+
+	if (values->hasProperty("charge")) {
+		setUseCount(values->getCurrentValue("charge"));
+	}
+}
+
 void TangibleObjectImplementation::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 
 	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
@@ -671,8 +688,6 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	if (crate == NULL)
 		return NULL;
 
-	crate->setOptionsBitmask(OptionBitmask::FROMFACTORY);
-
 	if (insertSelf) {
 		crate->transferObject(_this, -1, true);
 	} else {
@@ -683,7 +698,6 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 			return NULL;
 
 		protoclone->setParent(NULL);
-		protoclone->setOptionsBitmask(OptionBitmask::FROMFACTORY);
 		crate->transferObject(protoclone, -1, false);
 	}
 

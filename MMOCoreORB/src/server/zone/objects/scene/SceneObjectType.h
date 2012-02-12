@@ -186,16 +186,16 @@ public:
 	const static int ARMORCOMPONENT = 0x40001;
 	const static int CHEMISTRYCOMPONENT = 0x40002;
 	const static int CLOTHINGCOMPONENT = 0x40003;
-	const static int COMMUNITYCRAFTINGCOMPONENT = 0x40004;
-	const static int DROIDCOMPONENT = 0x40005;
-	const static int ELECTRONICSCOMPONENT = 0x40006;
-	const static int GENETICCOMPONENT = 0x40007;
-	const static int LIGHTSABERCRYSTAL = 0x40008;
-	const static int MELEEWEAPONCOMPONENT = 0x40009;
-	const static int MUNITIONCOMPONENT = 0x4000A;
-	const static int RANGEDWEAPONCOMPONENT = 0x4000B;
-	const static int STRUCTURECOMPONENT = 0x4000C;
-	const static int TISSUECOMPONENT = 0x4000D;
+	const static int DROIDCOMPONENT = 0x40004;
+	const static int ELECTRONICSCOMPONENT = 0x40005;
+	const static int MUNITIONCOMPONENT = 0x40006;
+	const static int STRUCTURECOMPONENT = 0x40007;
+	const static int MELEEWEAPONCOMPONENT = 0x40008;
+	const static int RANGEDWEAPONCOMPONENT = 0x40009;
+	const static int TISSUECOMPONENT = 0x4000A;
+	const static int GENETICCOMPONENT = 0x4000B;
+	const static int LIGHTSABERCRYSTAL = 0x4000C;
+	const static int COMMUNITYCRAFTINGCOMPONENT = 0x4000D;
 
 	const static int WEAPONPOWERUP = 0x80000;
 	const static int MELEEWEAPONPOWERUP = 0x80001;

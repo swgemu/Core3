@@ -75,9 +75,6 @@ public:
 			if(!player->isPlayerCreature())
 				return;
 
-			if(player->getDistanceTo(&initialPosition) > 2)
-				return;
-
 			SuiListBox* rangerTrackResults = new SuiListBox(player, SuiWindowType::RANGER_TRACK_RESULTS);
 
 			rangerTrackResults->setPromptTitle("@skl_use:scan_results_t");
@@ -94,55 +91,65 @@ public:
 			SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
 			zone->getInRangeObjects(player->getPositionX(), player->getPositionY(), 512, &objects, true);
 
-			for (int i = 0; i < objects.size(); ++i) {
-				SceneObject* object = cast<SceneObject*>(objects.get(i).get());					results.deleteAll();
+			if(player->getDistanceTo(&initialPosition) < 2 && !player->isInCombat()) {
 
-				if(object == player)
-					continue;
+				for (int i = 0; i < objects.size(); ++i) {
+					SceneObject* object = cast<SceneObject*>(objects.get(i).get());					results.deleteAll();
 
-				if (object->isCreatureObject()) {
-					CreatureObject* creature = cast<CreatureObject*>(object);
-					if(creature == NULL)
+					if(object == player)
 						continue;
 
-					if(creature->isPlayerCreature()) {
-						PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
-						if(ghost != NULL) {
-							if(ghost->isInvisible())
-								continue;
+					if (object->isCreatureObject()) {
+						CreatureObject* creature = cast<CreatureObject*>(object);
+						if(creature == NULL)
+							continue;
+
+						if(creature->isPlayerCreature()) {
+							PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+							if(ghost != NULL) {
+								if(ghost->isInvisible())
+									continue;
+							}
 						}
-					}
 
-					if(type == 0) {
-						if(!creature->isCreature())
+						if(type == 0) {
+							if(!creature->isCreature())
+								continue;
+						} else if(type == 1) {
+							if(!creature->isNonPlayerCreatureObject())
+								continue;
+						} else if(type == 2) {
+							if(!creature->isPlayerCreature())
+								continue;
+						} else {
 							continue;
-					} else if(type == 1) {
-						if(!creature->isNonPlayerCreatureObject())
-							continue;
-					} else if(type == 2) {
-						if(!creature->isPlayerCreature())
-							continue;
-					} else {
-						continue;
+						}
+
+
+						results << creature->getObjectName()->getDisplayedName();
+
+						String direction = "", distance = "";
+
+						if(canGetDirection)
+							direction = getDirection(player, creature);
+						if(canGetDistance)
+							distance = getDistance(player, creature);
+
+						if(!distance.isEmpty() || !direction.isEmpty()) {
+							results << " (" << direction << distance << ")";
+						}
+
+						rangerTrackResults->addMenuItem(results.toString());
 					}
-
-
-					results << creature->getObjectName()->getDisplayedName();
-
-					String direction = "", distance = "";
-
-					if(canGetDirection)
-						direction = getDirection(player, creature);
-					if(canGetDistance)
-						distance = getDistance(player, creature);
-
-					if(!distance.isEmpty() || !direction.isEmpty()) {
-						results << " (" << direction << distance << ")";
-					}
-
-					rangerTrackResults->addMenuItem(results.toString());
 				}
+			} else {
+				rangerTrackResults->addMenuItem("@skl_use:sys_scan_moved");
 			}
+
+			if(player->isInCombat()) {
+				rangerTrackResults->addMenuItem("@skl_use:sys_scan_combat");
+			}
+
 			if(rangerTrackResults->getMenuSize() == 0)
 				rangerTrackResults->addMenuItem("@skl_use:sys_scan_nothing");
 

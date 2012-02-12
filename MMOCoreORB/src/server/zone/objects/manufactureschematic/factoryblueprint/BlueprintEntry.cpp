@@ -88,7 +88,7 @@ void BlueprintEntry::createEntry(TangibleObject* ingredient, bool isIdentical) {
 		key = String::valueOf(ingredient->getServerObjectCRC());
 
 		if(identical)
-			serialNumber = ingredient->getCraftersSerial();
+			serialNumber = ingredient->getSerialNumber();
 		else
 			serialNumber = "";
 

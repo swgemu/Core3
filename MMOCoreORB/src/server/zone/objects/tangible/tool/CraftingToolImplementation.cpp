@@ -164,9 +164,9 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if (craftersSerial != "") {
+	if (objectSerial != "") {
 
-		alm->insertAttribute("serial_number", craftersSerial);
+		alm->insertAttribute("serial_number", objectSerial);
 	}
 }
 
@@ -934,7 +934,7 @@ void CraftingToolImplementation::initialAssembly(CreatureObject* player, int cli
 	prototype->setCraftersName(name);
 
 	String serial = craftingManager->generateSerial();
-	prototype->setCraftersSerial(serial);
+	prototype->setSerialNumber(serial);
 
 	// Update the prototype with new values
 	prototype->updateCraftingValues(craftingValues, manufactureSchematic->isFirstCraftingUpdate());

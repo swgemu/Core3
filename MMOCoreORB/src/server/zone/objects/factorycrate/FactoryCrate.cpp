@@ -343,6 +343,8 @@ FactoryCrateImplementation::FactoryCrateImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		Logger.setLoggingName("FactoryCrate");
 	Logger::setLoggingName("FactoryCrate");
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		setOptionsBitmask(OptionBitmask.HASSERIALNUMBER, false);
+	setOptionsBitmask(OptionBitmask::HASSERIALNUMBER, false);
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerInheritPermissionsFromParent(false);
 	TangibleObjectImplementation::setContainerInheritPermissionsFromParent(false);
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);

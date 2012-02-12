@@ -89,9 +89,9 @@ void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm,
 
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if (craftersSerial != ""){
+	if (objectSerial != ""){
 
-		alm->insertAttribute("serial_number", craftersSerial);
+		alm->insertAttribute("serial_number", objectSerial);
 	}
 }
 

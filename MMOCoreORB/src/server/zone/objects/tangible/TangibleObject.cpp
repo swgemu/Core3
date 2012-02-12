@@ -28,7 +28,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETCRAFTERSSERIAL__STRING_,RPC_SETLEVEL__INT_,RPC_GETCRAFTERSSERIAL__,RPC_ISFROMFACTORYCRATE__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -927,18 +927,18 @@ String TangibleObject::getCraftersName() {
 		return _implementation->getCraftersName();
 }
 
-void TangibleObject::setCraftersSerial(String& serial) {
+void TangibleObject::setSerialNumber(String& serial) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETCRAFTERSSERIAL__STRING_);
+		DistributedMethod method(this, RPC_SETSERIALNUMBER__STRING_);
 		method.addAsciiParameter(serial);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setCraftersSerial(serial);
+		_implementation->setSerialNumber(serial);
 }
 
 void TangibleObject::setLevel(int lev) {
@@ -955,31 +955,18 @@ void TangibleObject::setLevel(int lev) {
 		_implementation->setLevel(lev);
 }
 
-String TangibleObject::getCraftersSerial() {
+String TangibleObject::getSerialNumber() {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETCRAFTERSSERIAL__);
+		DistributedMethod method(this, RPC_GETSERIALNUMBER__);
 
-		method.executeWithAsciiReturn(_return_getCraftersSerial);
-		return _return_getCraftersSerial;
+		method.executeWithAsciiReturn(_return_getSerialNumber);
+		return _return_getSerialNumber;
 	} else
-		return _implementation->getCraftersSerial();
-}
-
-bool TangibleObject::isFromFactoryCrate() {
-	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISFROMFACTORYCRATE__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isFromFactoryCrate();
+		return _implementation->getSerialNumber();
 }
 
 ThreatMap* TangibleObject::getThreatMap() {
@@ -1204,8 +1191,8 @@ bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "craftersSerial") {
-		TypeInfo<String >::parseFromBinaryStream(&craftersSerial, stream);
+	if (_name == "objectSerial") {
+		TypeInfo<String >::parseFromBinaryStream(&objectSerial, stream);
 		return true;
 	}
 
@@ -1348,11 +1335,11 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "craftersSerial";
+	_name = "objectSerial";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&craftersSerial, stream);
+	TypeInfo<String >::toBinaryStream(&objectSerial, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1457,11 +1444,6 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 bool TangibleObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
-}
-
-void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		Logger.info("Unhandled updateCraftingValues for this object type");
-	Logger::info("Unhandled updateCraftingValues for this object type");
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {
@@ -1655,9 +1637,11 @@ String TangibleObjectImplementation::getCraftersName() {
 	return craftersName;
 }
 
-void TangibleObjectImplementation::setCraftersSerial(String& serial) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		craftersSerial = serial;
-	craftersSerial = serial;
+void TangibleObjectImplementation::setSerialNumber(String& serial) {
+	// server/zone/objects/tangible/TangibleObject.idl():  		setOptionsBitmask(OptionBitmask.HASSERIALNUMBER, true);
+	setOptionsBitmask(OptionBitmask::HASSERIALNUMBER, true);
+	// server/zone/objects/tangible/TangibleObject.idl():  		objectSerial = serial;
+	objectSerial = serial;
 }
 
 void TangibleObjectImplementation::setLevel(int lev) {
@@ -1665,14 +1649,9 @@ void TangibleObjectImplementation::setLevel(int lev) {
 	level = lev;
 }
 
-String TangibleObjectImplementation::getCraftersSerial() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return craftersSerial;
-	return craftersSerial;
-}
-
-bool TangibleObjectImplementation::isFromFactoryCrate() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return optionsBitmask & OptionBitmask.FROMFACTORY;
-	return optionsBitmask & OptionBitmask::FROMFACTORY;
+String TangibleObjectImplementation::getSerialNumber() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return objectSerial;
+	return objectSerial;
 }
 
 ThreatMap* TangibleObjectImplementation::getThreatMap() {
@@ -1868,17 +1847,14 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETCRAFTERSNAME__:
 		resp->insertAscii(getCraftersName());
 		break;
-	case RPC_SETCRAFTERSSERIAL__STRING_:
-		setCraftersSerial(inv->getAsciiParameter(_param0_setCraftersSerial__String_));
+	case RPC_SETSERIALNUMBER__STRING_:
+		setSerialNumber(inv->getAsciiParameter(_param0_setSerialNumber__String_));
 		break;
 	case RPC_SETLEVEL__INT_:
 		setLevel(inv->getSignedIntParameter());
 		break;
-	case RPC_GETCRAFTERSSERIAL__:
-		resp->insertAscii(getCraftersSerial());
-		break;
-	case RPC_ISFROMFACTORYCRATE__:
-		resp->insertBoolean(isFromFactoryCrate());
+	case RPC_GETSERIALNUMBER__:
+		resp->insertAscii(getSerialNumber());
 		break;
 	case RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_:
 		setInitialCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter());
@@ -2132,20 +2108,16 @@ String TangibleObjectAdapter::getCraftersName() {
 	return (static_cast<TangibleObject*>(stub))->getCraftersName();
 }
 
-void TangibleObjectAdapter::setCraftersSerial(String& serial) {
-	(static_cast<TangibleObject*>(stub))->setCraftersSerial(serial);
+void TangibleObjectAdapter::setSerialNumber(String& serial) {
+	(static_cast<TangibleObject*>(stub))->setSerialNumber(serial);
 }
 
 void TangibleObjectAdapter::setLevel(int lev) {
 	(static_cast<TangibleObject*>(stub))->setLevel(lev);
 }
 
-String TangibleObjectAdapter::getCraftersSerial() {
-	return (static_cast<TangibleObject*>(stub))->getCraftersSerial();
-}
-
-bool TangibleObjectAdapter::isFromFactoryCrate() {
-	return (static_cast<TangibleObject*>(stub))->isFromFactoryCrate();
+String TangibleObjectAdapter::getSerialNumber() {
+	return (static_cast<TangibleObject*>(stub))->getSerialNumber();
 }
 
 void TangibleObjectAdapter::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {

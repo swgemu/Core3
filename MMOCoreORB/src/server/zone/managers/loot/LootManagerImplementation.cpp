@@ -146,6 +146,9 @@ SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templ
 
 	prototype->createChildObjects();
 
+	String serial = craftingManager->generateSerial();
+	prototype->setSerialNumber(serial);
+
 	CraftingValues craftingValues = templateObject->getCraftingValuesCopy();
 
 	setInitialObjectStats(templateObject, &craftingValues, prototype);

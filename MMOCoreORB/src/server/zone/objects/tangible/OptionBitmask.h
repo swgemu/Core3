@@ -81,7 +81,7 @@ public:
 	static const uint32 UNKNOWN28  = 0x40000000;
 	static const uint32 UNKNOWN29  = 0x80000000;
 
-	static const uint32 FROMFACTORY = UNKNOWN12 | HIDEHAM; //0x00002100;
+	static const uint32 HASSERIALNUMBER = UNKNOWN12 | HIDEHAM; //0x00002100;
 
 };
 

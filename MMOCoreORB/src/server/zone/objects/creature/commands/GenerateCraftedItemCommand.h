@@ -118,7 +118,7 @@ public:
 			prototype->setCraftersName(name);
 
 			String serial = craftingManager->generateSerial();
-			prototype->setCraftersSerial(serial);
+			prototype->setSerialNumber(serial);
 
 			int quantity = 1;
 

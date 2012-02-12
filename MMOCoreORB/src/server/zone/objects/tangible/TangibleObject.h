@@ -382,13 +382,11 @@ public:
 
 	String getCraftersName();
 
-	void setCraftersSerial(String& serial);
+	void setSerialNumber(String& serial);
 
 	void setLevel(int lev);
 
-	String getCraftersSerial();
-
-	bool isFromFactoryCrate();
+	String getSerialNumber();
 
 	ThreatMap* getThreatMap();
 
@@ -408,7 +406,7 @@ protected:
 	virtual ~TangibleObject();
 
 	String _return_getCraftersName;
-	String _return_getCraftersSerial;
+	String _return_getSerialNumber;
 
 	friend class TangibleObjectHelper;
 };
@@ -453,7 +451,7 @@ protected:
 
 	String craftersName;
 
-	String craftersSerial;
+	String objectSerial;
 
 	Reference<ThreatMap* > threatMap;
 
@@ -668,13 +666,11 @@ public:
 
 	virtual String getCraftersName();
 
-	void setCraftersSerial(String& serial);
+	void setSerialNumber(String& serial);
 
 	void setLevel(int lev);
 
-	virtual String getCraftersSerial();
-
-	bool isFromFactoryCrate();
+	virtual String getSerialNumber();
 
 	ThreatMap* getThreatMap();
 
@@ -845,13 +841,11 @@ public:
 
 	String getCraftersName();
 
-	void setCraftersSerial(String& serial);
+	void setSerialNumber(String& serial);
 
 	void setLevel(int lev);
 
-	String getCraftersSerial();
-
-	bool isFromFactoryCrate();
+	String getSerialNumber();
 
 	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
@@ -866,7 +860,7 @@ protected:
 	String _param0_getCustomizationString__String_;
 	String _param0_setCustomizationString__String_;
 	String _param0_setCraftersName__String_;
-	String _param0_setCraftersSerial__String_;
+	String _param0_setSerialNumber__String_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {

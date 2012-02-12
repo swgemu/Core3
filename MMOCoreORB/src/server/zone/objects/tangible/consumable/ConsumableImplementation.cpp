@@ -235,8 +235,8 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if (craftersSerial != ""){
-		alm->insertAttribute("serial_number", craftersSerial);
+	if (objectSerial != ""){
+		alm->insertAttribute("serial_number", objectSerial);
 	}
 
 	switch (effectType) {

@@ -90,7 +90,7 @@ class TangibleObject extends SceneObject {
 	
 	protected byte unknownByte;
 	protected string craftersName;
-	protected string craftersSerial;
+	protected string objectSerial;
 	
 	@transactional
 	protected transient ThreatMap threatMap;
@@ -390,9 +390,7 @@ class TangibleObject extends SceneObject {
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
 	@local
-	public abstract void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		Logger.info("Unhandled updateCraftingValues for this object type");
-	}
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
@@ -550,22 +548,19 @@ class TangibleObject extends SceneObject {
 		return craftersName;
 	}
 	
-	public void setCraftersSerial(string serial) {
-		craftersSerial = serial;
+	public void setSerialNumber(string serial) {
+		setOptionsBitmask(OptionBitmask.HASSERIALNUMBER, true);
+		objectSerial = serial;
 	}
 	
 	public void setLevel(int lev) {
 		level = lev;
 	}
 	
-	public abstract string getCraftersSerial() {
-		return craftersSerial;
+	public abstract string getSerialNumber() {
+		return objectSerial;
 	}
-	
-	public boolean isFromFactoryCrate() {
-		return optionsBitmask & OptionBitmask.FROMFACTORY;
-	}
-	
+
 	@local
 	public ThreatMap getThreatMap() {
 		return threatMap;

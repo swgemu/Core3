@@ -224,8 +224,8 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if (craftersSerial != "") {
-		alm->insertAttribute("serial_number", craftersSerial);
+	if (objectSerial != "") {
+		alm->insertAttribute("serial_number", objectSerial);
 	}
 
 	if (sliced)

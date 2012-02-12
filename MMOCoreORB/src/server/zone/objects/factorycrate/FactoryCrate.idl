@@ -49,6 +49,7 @@ import engine.lua.LuaObject;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
+include server.zone.objects.tangible.OptionBitmask;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
@@ -62,6 +63,8 @@ class FactoryCrate extends TangibleObject {
 	
 	public FactoryCrate() {
 		Logger.setLoggingName("FactoryCrate");
+		
+		setOptionsBitmask(OptionBitmask.HASSERIALNUMBER, false);
 		
 		super.setContainerInheritPermissionsFromParent(false);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);

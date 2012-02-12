@@ -93,6 +93,8 @@ class ContainerPermissions;
 
 using namespace server::zone::objects::scene::variables;
 
+#include "server/zone/objects/tangible/OptionBitmask.h"
+
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "system/util/VectorMap.h"

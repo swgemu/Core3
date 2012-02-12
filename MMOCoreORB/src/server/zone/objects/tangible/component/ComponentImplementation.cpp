@@ -53,8 +53,6 @@ void ComponentImplementation::initializeTransientMembers() {
 	precisionMap.setAllowOverwriteInsertPlan();
 	titleMap.setAllowOverwriteInsertPlan();
 	hiddenMap.setAllowOverwriteInsertPlan();
-
-	setOptionsBitmask(OptionBitmask::FROMFACTORY);
 }
 
 void ComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -69,9 +67,9 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if (craftersSerial != "") {
+	if (objectSerial != "") {
 		if (gameObjectType != SceneObjectType::LIGHTSABERCRYSTAL)
-			alm->insertAttribute("serial_number", craftersSerial);
+			alm->insertAttribute("serial_number", objectSerial);
 	}
 
 	String attribute;

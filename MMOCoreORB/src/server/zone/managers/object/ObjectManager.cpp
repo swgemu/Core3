@@ -115,7 +115,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::HANDARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::FOOTARMOR);
-	objectFactory.registerObject<PsgArmorObject>(SceneObjectType::SHIELDGENERATOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::SHIELDGENERATOR);
 
 	objectFactory.registerObject<ToolTangibleObject>(SceneObjectType::TOOL);
 	objectFactory.registerObject<ToolTangibleObject>(SceneObjectType::REPAIRTOOL);
@@ -267,6 +267,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::TANGIBLE);
 
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::TRAP);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::CAMOKIT);
 
 	objectFactory.registerObject<VehicleControlDevice>(SceneObjectType::VEHICLECONTROLDEVICE);
 	objectFactory.registerObject<ShipControlDevice>(SceneObjectType::SHIPCONTROLDEVICE);
