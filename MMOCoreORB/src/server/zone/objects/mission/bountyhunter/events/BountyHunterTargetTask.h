@@ -75,15 +75,12 @@ public:
 		this->player = player;
 		this->zoneName = zoneName;
 
-		objective = cast<BountyMissionObjective*> (
-				mission->getMissionObjective());
+		objective = cast<BountyMissionObjective*> (mission->getMissionObjective());
 
 		currentPosition.setX(mission->getEndPositionX());
 		currentPosition.setY(mission->getEndPositionX());
 		currentPosition.setZ(0);
-		nextPosition
-				= player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(
-						player);
+		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
 		nextPosition.setZ(0);
 
 		if (mission->getDifficultyLevel() > 1) {
@@ -98,8 +95,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<BountyMissionObjective*> objectiveRef =
-				objective.get();
+		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
 
 		if (objectiveRef == NULL) {
 			return;
@@ -115,23 +111,26 @@ public:
 
 		if (move) {
 			updatePosition(playerRef);
+		}
 
-			String zoneName = objectiveRef->getMissionObject()->getEndPlanet();
+		String zoneName = objectiveRef->getMissionObject()->getEndPlanet();
 
-			Zone* zone = playerRef->getZone();
+		Zone* zone = playerRef->getZone();
 
-			if (zone != NULL && zone->getZoneName() == zoneName
-					&& playerRef->getWorldPosition().distanceTo(currentPosition)
-							< 500.0) {
+		if (zone != NULL && zone->getZoneName() == zoneName) {
+			Vector3 playerPosition = playerRef->getWorldPosition();
+			playerPosition.setZ(0);
+
+			if (playerPosition.distanceTo(currentPosition) < 500.0f) {
 				move = false;
 				objectiveRef->spawnTarget(zoneName);
 			}
-
-			reschedule(10 * 1000);
 		}
+
+		reschedule(10 * 1000);
 	}
 
-	void updatePosition(CreatureObject* playerRef) {
+	void updatePosition(CreatureObject* player) {
 		Vector3 direction = nextPosition - currentPosition;
 		Vector3 movementUpdate = direction;
 		movementUpdate.normalize();
@@ -140,9 +139,7 @@ public:
 			currentPosition = currentPosition + (10 * movementUpdate);
 		} else {
 			currentPosition = nextPosition;
-			nextPosition
-					= playerRef->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(
-							playerRef);
+			nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
 			nextPosition.setZ(0);
 		}
 	}
