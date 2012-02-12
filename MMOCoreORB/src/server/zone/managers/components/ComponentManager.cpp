@@ -34,6 +34,8 @@
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
+#include "server/zone/objects/region/components/CityManagementMenuComponent.h"
+#include "server/zone/objects/region/components/CityVotingMenuComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -76,6 +78,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 
+	components.put("CityManagementMenuComponent", new CityManagementMenuComponent());
+	components.put("CityVotingMenuComponent", new CityVotingMenuComponent());
 	components.put("TrapMenuComponent", new TrapMenuComponent());
-
 }

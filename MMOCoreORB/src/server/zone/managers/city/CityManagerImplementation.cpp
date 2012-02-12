@@ -14,7 +14,6 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/region/Region.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
@@ -75,6 +74,7 @@ void CityManagerImplementation::loadLuaConfig() {
 	lua = NULL;
 }
 
+/*
 void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObject* player, const String& name) {
 	city->setCityName(name);
 
@@ -111,13 +111,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObje
 	cities.put(city->getObjectID(), city);
 
 	//New city established email.
-	UnicodeString subject = "@city/city:new_city_subject"; //New City Established!
 
-	StringIdChatParameter emailBody;
-	emailBody.setStringId("@city/city:new_city_body"); //Congratulations, you have successfully established a new outpost on the frontier!...
-	emailBody.setTO(player->getObjectName());
-
-	sendMailToMayor(city, "@city/city:new_city_from", subject, emailBody);
 }
 
 void CityManagerImplementation::changeCityName(CityHallObject* city, CreatureObject* player, const String& name) {
@@ -137,7 +131,7 @@ void CityManagerImplementation::changeCityName(CityHallObject* city, CreatureObj
 	player->sendSystemMessage("@city/city:name_changed"); //The city name has been successfully changed.
 
 	//TODO: Send email to citizens about name change.
-}
+}*/
 
 bool CityManagerImplementation::validateCityName(const String& name) {
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
@@ -155,6 +149,7 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 	return true;
 }
 
+/*
 void CityManagerImplementation::sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body) {
 	ZoneServer* zoneServer = zone->getZoneServer();
 
@@ -482,4 +477,4 @@ void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, Creatu
 
 	if (citizen->isOnline())
 		citizen->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.
-}
+}*/

@@ -98,11 +98,29 @@ public:
 
 	void addRegion(float x, float y, float radius);
 
+	void addMilitiaMember(unsigned long long objectid);
+
+	void removeMilitiaMember(unsigned long long objectid);
+
+	bool isMilitiaMember(unsigned long long objectid);
+
+	void addZoningRights(unsigned long long objectid, unsigned int duration = 86400);
+
+	void removeZoningRights(unsigned long long objectid);
+
+	bool hasZoningRights(unsigned long long objectid);
+
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
 
 	String getRegionName();
+
+	unsigned long long getMayorID();
+
+	bool isMayor(unsigned long long objectid);
+
+	bool isZoningEnabled();
 
 	void setRegionName(const UnicodeString& name);
 
@@ -113,6 +131,10 @@ public:
 	void setRegionName(const StringId& name);
 
 	void setCityRank(byte rank);
+
+	void setMayorID(unsigned long long id);
+
+	void setZoningEnabled(bool val);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -148,7 +170,15 @@ protected:
 
 	SortedVector<ManagedReference<Region* > > regions;
 
+	VectorMap<unsigned long long, unsigned int> zoningRights;
+
+	SortedVector<unsigned long long> militiaMembers;
+
 	byte cityRank;
+
+	unsigned long long mayorID;
+
+	bool zoningEnabled;
 
 	String citySpecialization;
 
@@ -175,11 +205,29 @@ public:
 
 	void addRegion(float x, float y, float radius);
 
+	void addMilitiaMember(unsigned long long objectid);
+
+	void removeMilitiaMember(unsigned long long objectid);
+
+	bool isMilitiaMember(unsigned long long objectid);
+
+	void addZoningRights(unsigned long long objectid, unsigned int duration = 86400);
+
+	void removeZoningRights(unsigned long long objectid);
+
+	bool hasZoningRights(unsigned long long objectid);
+
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
 
 	String getRegionName();
+
+	unsigned long long getMayorID();
+
+	bool isMayor(unsigned long long objectid);
+
+	bool isZoningEnabled();
 
 	void setRegionName(const UnicodeString& name);
 
@@ -190,6 +238,10 @@ public:
 	void setRegionName(const StringId& name);
 
 	void setCityRank(byte rank);
+
+	void setMayorID(unsigned long long id);
+
+	void setZoningEnabled(bool val);
 
 	WeakReference<CityRegion*> _this;
 
@@ -240,17 +292,39 @@ public:
 
 	void addRegion(float x, float y, float radius);
 
+	void addMilitiaMember(unsigned long long objectid);
+
+	void removeMilitiaMember(unsigned long long objectid);
+
+	bool isMilitiaMember(unsigned long long objectid);
+
+	void addZoningRights(unsigned long long objectid, unsigned int duration);
+
+	void removeZoningRights(unsigned long long objectid);
+
+	bool hasZoningRights(unsigned long long objectid);
+
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
 
 	String getRegionName();
 
+	unsigned long long getMayorID();
+
+	bool isMayor(unsigned long long objectid);
+
+	bool isZoningEnabled();
+
 	void setRegionName(const UnicodeString& name);
 
 	void setRegionName(const String& fullPath);
 
 	void setCityRank(byte rank);
+
+	void setMayorID(unsigned long long id);
+
+	void setZoningEnabled(bool val);
 
 protected:
 	UnicodeString _param0_setRegionName__UnicodeString_;

@@ -14,7 +14,6 @@
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"
-#include "server/zone/objects/building/city/CityHallObject.h"
 
 int TicketCollectorImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20)

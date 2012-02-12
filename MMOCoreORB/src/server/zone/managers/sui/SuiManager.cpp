@@ -74,7 +74,6 @@ which carries forward this exception.
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-#include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/player/sui/keypadbox/SuiKeypadBox.h"
 #include "server/zone/objects/player/sui/callbacks/LuaSuiCallback.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
@@ -197,21 +196,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 		break;
 	case SuiWindowType::FACTORY_SCHEMATIC3BUTTON:
 		handleInsertFactorySchem3(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::CITY_CREATE:
-		handleCreateCity(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::CITY_SET_NAME:
-		handleChangeCityName(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::CITY_ENABLE_ZONING:
-		handleCityEnableZoning(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::CITY_MILITIA:
-		handleManageMilitia(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::CITY_ADD_MILITIA:
-		handleAddMilitia(player, suiBox, cancel, args);
 		break;
 	}
 }
@@ -811,141 +795,6 @@ void SuiManager::handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBo
 	}
 }
 
-void SuiManager::handleCityEnableZoning(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isMessageBox() || cancel != 0)
-		return;
-
-	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
-
-	if (usingObject == NULL || !usingObject->isBuildingObject())
-		return;
-
-	BuildingObject* buildingObject = cast<BuildingObject*>( usingObject.get());
-
-	if (!buildingObject->isCityHallBuilding())
-		return;
-
-	CityHallObject* cityHall = cast<CityHallObject*>( buildingObject);
-
-	Locker _lock(cityHall, player);
-	cityHall->toggleZoningEnabled(player);
-}
-
-void SuiManager::handleChangeCityName(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isInputBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	String cityName = args->get(0).toString();
-
-	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
-
-	if (usingObject == NULL || !usingObject->isBuildingObject())
-		return;
-
-	BuildingObject* building = cast<BuildingObject*>( usingObject.get());
-
-	if (!building->isCityHallBuilding())
-		return;
-
-	CityHallObject* cityHall = cast<CityHallObject*>( building);
-
-	Locker _lock(cityHall, player);
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
-
-	if (cityManager->validateCityName(cityName)) {
-		cityManager->changeCityName(cityHall, player, cityName);
-	} else {
-		player->sendSystemMessage("Invalid name specified for city.");
-		ghost->addSuiBox(suiBox);
-		player->sendMessage(suiBox->generateMessage());
-	}
-}
-
-void SuiManager::handleCreateCity(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isInputBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	String cityName = args->get(0).toString();
-
-	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
-
-	if (usingObject == NULL || !usingObject->isBuildingObject())
-		return;
-
-	BuildingObject* building = cast<BuildingObject*>( usingObject.get());
-
-	if (!building->isCityHallBuilding())
-		return;
-
-	CityHallObject* cityHall = cast<CityHallObject*>( building);
-
-	Locker _lock(cityHall, player);
-
-	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	if (cityManager->validateCityName(cityName)) {
-		cityManager->createNewCity(cityHall, player, cityName);
-	} else {
-		player->sendSystemMessage("Invalid name specified for city.");
-		ghost->addSuiBox(suiBox);
-		player->sendMessage(suiBox->generateMessage());
-	}
-}
-
-void SuiManager::handleManageMilitia(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 2)
-		return;
-
-	bool otherPressed = Bool::valueOf(args->get(0).toString());
-	int index = Integer::valueOf(args->get(1).toString());
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	ManagedReference<SceneObject*> obj = listBox->getUsingObject();
-
-	if (obj == NULL || !obj->isBuildingObject())
-		return;
-
-	BuildingObject* building = cast<BuildingObject*>( obj.get());
-
-	if (!building->isCityHallBuilding())
-		return;
-
-	CityHallObject* city = cast<CityHallObject*>( building);
-
-	Locker _lock(city, player);
-
-	ManagedReference<Zone*> zone = city->getZone();
-
-	if (zone == NULL)
-		return;
-
-	if (otherPressed) {
-		city->sendAddMilitiaMemberTo(player);
-	} else {
-		if (index != -1) {
-			ManagedReference<CityManager*> cityManager = zone->getCityManager();
-
-			uint64 playerID = listBox->getMenuObjectID(index);
-			cityManager->removeMilitiaMember(city, player, playerID);
-		}
-	}
-}
-
 void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback) {
 
 	if (keypad == NULL)
@@ -995,37 +844,4 @@ void SuiManager::sendConfirmSui(SceneObject* terminal, SceneObject* player, Stri
 	}
 
 }
-
-void SuiManager::handleAddMilitia(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isInputBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	String playerName = args->get(0).toString();
-
-	ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
-
-	if (obj == NULL || !obj->isBuildingObject())
-		return;
-
-	BuildingObject* building = cast<BuildingObject*>( obj.get());
-
-	if (!building->isCityHallBuilding())
-		return;
-
-	CityHallObject* city = cast<CityHallObject*>( building);
-
-	Locker _lock(city, player);
-
-	ManagedReference<Zone*> zone = city->getZone();
-
-	if (zone == NULL)
-		return;
-
-	ManagedReference<CityManager*> cityManager = zone->getCityManager();
-	cityManager->addMilitiaMember(city, player, playerName);
-}
-
 

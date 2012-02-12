@@ -12,7 +12,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"
-#include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 
 int TravelTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

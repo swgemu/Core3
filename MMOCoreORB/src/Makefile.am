@@ -169,7 +169,6 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/installation/harvester/HarvesterObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
-				server/zone/objects/building/city/CityHallObject.cpp \
 				server/zone/objects/building/hospital/HospitalBuildingObject.cpp \
 				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
 				server/zone/objects/building/travel/TravelBuildingObject.cpp \
@@ -244,8 +243,6 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/deed/resource/ResourceDeed.cpp \
 				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
-				server/zone/objects/tangible/terminal/city/CityTerminal.cpp \
-				server/zone/objects/tangible/terminal/city/CityVoteTerminal.cpp \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
@@ -292,6 +289,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
+		server/zone/objects/region/components/CityVotingMenuComponent.cpp \
+		server/zone/objects/region/components/CityManagementMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TrapMenuComponent.cpp \
@@ -418,8 +417,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminalImplementation.cpp \
 		server/zone/objects/auction/AuctionItemImplementation.cpp \
-		server/zone/objects/tangible/terminal/city/CityTerminalImplementation.cpp \
-		server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
@@ -503,7 +500,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/LuaBuildingObject.cpp \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
-		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/ValidatedPosition.cpp \
 		server/zone/objects/player/sessions/TrainerConversationSessionImplementation.cpp \

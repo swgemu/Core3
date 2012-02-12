@@ -13,7 +13,6 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/building/city/CityHallObject.h"
 
 #include "server/chat/StringIdChatParameterVector.h"
 #include "server/chat/WaypointChatParameterVector.h"

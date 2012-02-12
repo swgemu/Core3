@@ -46,7 +46,6 @@ which carries forward this exception.
 #define GRANTZONINGRIGHTSCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../building/city/CityHallObject.h"
 
 class GrantZoningRightsCommand : public QueueCommand {
 public:
@@ -57,64 +56,47 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
-
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+		ManagedReference<CityRegion*> city = creature->getCityRegion();
 
-		ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(target);
+		if (city == NULL || !city->isMilitiaMember(creature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:grant_rights_fail"); //You must be the mayor of the city or a member of the city militia to grant zoning rights.
+			return GENERALERROR;
+		}
+
+		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
 
 		if (targetObject == NULL || !targetObject->isPlayerCreature())
 			return INVALIDTARGET;
 
 		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 
-		/*
-		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
-
-		if (activeRegion == NULL || !activeRegion->isRegion()) {
-			player->sendSystemMessage("@city/city:grant_rights_fail"); //You must be the mayor of the city or a member of the city militia to grant zoning rights.
-			return GENERALERROR;
-		}
-
-		Region* region = cast<Region*>( activeRegion.get());
-		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
-
-		if (cityHall == NULL || (!cityHall->isMayor(player->getObjectID()) && !cityHall->isMilitiaMember(player->getObjectID()))) {
-			player->sendSystemMessage("@city/city:grant_rights_fail"); //You must be the mayor of the city or a member of the city militia to grant zoning rights.
-			return GENERALERROR;
-		}
-
-		if (cityHall->isMayor(targetPlayer->getObjectID()) || cityHall->isMilitiaMember(targetPlayer->getObjectID()))
+		if (city->isMayor(target) || city->isMilitiaMember(target))
 			return GENERALERROR; //Cannot revoke the rights of the mayor or a militia member.
 
-		Locker _locker(cityHall);
-
 		//Target already has zoning rights
-		if (cityHall->hasZoningRights(targetPlayer->getObjectID())) {
-			cityHall->removeZoningRights(targetPlayer->getObjectID());
+		if (city->hasZoningRights(target)) {
+			city->removeZoningRights(target);
 
-			player->sendSystemMessage("@city/city:rights_revoked"); //You have revoked their zoning rights.
+			creature->sendSystemMessage("@city/city:rights_revoked"); //You have revoked their zoning rights.
 			targetPlayer->sendSystemMessage("@city/city:rights_revoked_other"); //Your zoning rights have been revoked.
 		} else {
-			cityHall->addZoningRights(targetPlayer->getObjectID());
+			city->addZoningRights(target);
 
 			StringIdChatParameter params;
 			params.setStringId("@city/city:rights_granted"); //You have been granted zoning rights in the city of %TO for 24 hours.
-			params.setTO(region->getObjectName());
+			params.setTO(city->getRegionName());
 			targetPlayer->sendSystemMessage(params);
 
 			params.setStringId("@city/city:rights_granted_self"); //You have granted %TO zoning rights for 24 hours.
-			params.setTO(targetPlayer);
-			player->sendSystemMessage(params);
-		}*/
+			params.setTO(targetPlayer->getObjectName()->getDisplayedName());
+			creature->sendSystemMessage(params);
+		}
 
 		return SUCCESS;
 	}

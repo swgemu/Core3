@@ -26,8 +26,18 @@ class CityRegion extends ManagedObject implements Logger {
 
 	@dereferenced
 	protected SortedVector<Region> regions;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned int> zoningRights;
+	
+	@dereferenced
+	protected SortedVector<unsigned long> militiaMembers;
 
 	protected byte cityRank;
+	
+	protected unsigned long mayorID;
+	
+	protected boolean zoningEnabled;
 
 	protected string citySpecialization; //We want to implement this with skill mods.
 
@@ -45,7 +55,27 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native void addRegion(float x, float y, float radius);
 	
-	public synchronized boolean containsPoint(float x, float y) {
+	public void addMilitiaMember(unsigned long objectid) {
+		militiaMembers.put(objectid);
+	}
+	
+	public void removeMilitiaMember(unsigned long objectid) {
+		militiaMembers.drop(objectid);
+	}
+	
+	public boolean isMilitiaMember(unsigned long objectid) {
+		return (militiaMembers.contains(objectid) || mayorID == objectid);
+	}
+	
+	public native void addZoningRights(unsigned long objectid, unsigned int duration = 86400);
+	
+	public void removeZoningRights(unsigned long objectid) {
+		zoningRights.drop(objectid);
+	}
+	
+	public native boolean hasZoningRights(unsigned long objectid);
+	
+	public boolean containsPoint(float x, float y) {
 		for (int i = 0; i < regions.size(); ++i) {
 			Region aa = regions.get(i);
 
@@ -63,6 +93,18 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public string getRegionName() {
 		return regionName.getDisplayedName();
+	}
+	
+	public unsigned long getMayorID() {
+		return mayorID;
+	}
+	
+	public boolean isMayor(unsigned long objectid) {
+		return mayorID = objectid;
+	}
+	
+	public boolean isZoningEnabled() {
+		return zoningEnabled;
 	}
 
 	//Setters
@@ -82,5 +124,13 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void setCityRank(byte rank) {
 		cityRank = rank;
+	}
+	
+	public void setMayorID(unsigned long id) {
+		mayorID = id;
+	}
+	
+	public void setZoningEnabled(boolean val) {
+		zoningEnabled = val;
 	}
 }

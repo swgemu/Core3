@@ -297,8 +297,6 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl():  		super.setNoBuildArea(true);
-	ActiveAreaImplementation::setNoBuildArea(true);
 	// server/zone/objects/region/Region.idl():  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
 	// server/zone/objects/region/Region.idl():  		bazaars.setNullValue(null);

@@ -15,7 +15,6 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"
-#include "server/zone/objects/building/city/CityHallObject.h"
 
 class RepairVehicleSuiCallback : public SuiCallback {
 public:

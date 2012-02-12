@@ -92,7 +92,7 @@ include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
 include server.zone.objects.scene.components.AttributeListComponent;
 include server.zone.objects.scene.variables.ContainerPermissions;
-include server.zone.objects.region.CityRegion;
+import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 import engine.util.u3d.Matrix4;
 

@@ -24,22 +24,6 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace building {
-namespace city {
-
-class CityHallObject;
-
-} // namespace city
-} // namespace building
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::building::city;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -92,39 +76,9 @@ public:
 
 	void loadLuaConfig();
 
-	void createNewCity(CityHallObject* city, CreatureObject* player, const String& name);
-
-	void changeCityName(CityHallObject* city, CreatureObject* player, const String& name);
-
 	bool validateCityName(const String& name);
 
-	void sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
-
-	void sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
-
-	void handleCityAdvancement(CityHallObject* city);
-
-	void expandCity(CityHallObject* city);
-
-	void contractCity(CityHallObject* city);
-
-	void destroyCity(CityHallObject* city);
-
-	void declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail = true);
-
-	void revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail = true);
-
-	void addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName);
-
-	void removeMilitiaMember(CityHallObject* city, CreatureObject* player, unsigned long long playerID);
-
-	bool checkCitiesCappedAtRank(byte rank);
-
 	byte getCitiesAllowed(byte rank);
-
-	void addCity(CityHallObject* city);
-
-	int getTotalCities();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -158,8 +112,6 @@ public:
 
 	static Vector<byte> citizensPerRank;
 
-	VectorMap<unsigned long long, ManagedReference<CityHallObject* > > cities;
-
 	static int cityUpdateInterval;
 
 	static int newCityGracePeriod;
@@ -188,39 +140,9 @@ public:
 
 	void loadLuaConfig();
 
-	void createNewCity(CityHallObject* city, CreatureObject* player, const String& name);
-
-	void changeCityName(CityHallObject* city, CreatureObject* player, const String& name);
-
 	bool validateCityName(const String& name);
 
-	void sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
-
-	void sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
-
-	void handleCityAdvancement(CityHallObject* city);
-
-	void expandCity(CityHallObject* city);
-
-	void contractCity(CityHallObject* city);
-
-	void destroyCity(CityHallObject* city);
-
-	void declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail = true);
-
-	void revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail = true);
-
-	void addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName);
-
-	void removeMilitiaMember(CityHallObject* city, CreatureObject* player, unsigned long long playerID);
-
-	bool checkCitiesCappedAtRank(byte rank);
-
 	byte getCitiesAllowed(byte rank);
-
-	void addCity(CityHallObject* city);
-
-	int getTotalCities();
 
 	WeakReference<CityManager*> _this;
 
@@ -267,41 +189,12 @@ public:
 
 	void loadLuaConfig();
 
-	void createNewCity(CityHallObject* city, CreatureObject* player, const String& name);
-
-	void changeCityName(CityHallObject* city, CreatureObject* player, const String& name);
-
 	bool validateCityName(const String& name);
-
-	void handleCityAdvancement(CityHallObject* city);
-
-	void expandCity(CityHallObject* city);
-
-	void contractCity(CityHallObject* city);
-
-	void destroyCity(CityHallObject* city);
-
-	void declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail);
-
-	void revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail);
-
-	void addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName);
-
-	void removeMilitiaMember(CityHallObject* city, CreatureObject* player, unsigned long long playerID);
-
-	bool checkCitiesCappedAtRank(byte rank);
 
 	byte getCitiesAllowed(byte rank);
 
-	void addCity(CityHallObject* city);
-
-	int getTotalCities();
-
 protected:
-	String _param2_createNewCity__CityHallObject_CreatureObject_String_;
-	String _param2_changeCityName__CityHallObject_CreatureObject_String_;
 	String _param0_validateCityName__String_;
-	String _param2_addMilitiaMember__CityHallObject_CreatureObject_String_;
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

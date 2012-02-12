@@ -177,7 +177,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::COMMERCEBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::UNIVERSITYBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::GARAGEBUILDING);
-	objectFactory.registerObject<CityHallObject>(SceneObjectType::CITYHALLBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::SALONBUILDING);
 
 
@@ -219,8 +218,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TicketObject>(SceneObjectType::TRAVELTICKET);
 	objectFactory.registerObject<TravelTerminal>(SceneObjectType::TRAVELTERMINAL);
 	objectFactory.registerObject<GuildTerminal>(SceneObjectType::GUILDTERMINAL);
-	objectFactory.registerObject<CityTerminal>(SceneObjectType::CITYTERMINAL);
-	objectFactory.registerObject<CityVoteTerminal>(SceneObjectType::CITYVOTETERMINAL);
 	objectFactory.registerObject<GamblingTerminal>(SceneObjectType::GAMBLINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::CLONING);
 	objectFactory.registerObject<VendorTerminal>(SceneObjectType::VENDORTERMINAL);

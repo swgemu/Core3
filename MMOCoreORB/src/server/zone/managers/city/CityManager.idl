@@ -47,7 +47,6 @@ package server.zone.managers.city;
 import engine.core.ManagedService;
 import engine.log.Logger;
 import server.zone.Zone;
-import server.zone.objects.building.city.CityHallObject;
 import server.zone.objects.creature.CreatureObject;
 import server.chat.StringIdChatParameter;
 import system.util.SortedVector;
@@ -62,9 +61,6 @@ class CityManager extends ManagedService implements Logger {
 	
 	@dereferenced
 	public static transient Vector<byte> citizensPerRank;
-	
-	@dereferenced
-	public VectorMap<unsigned long, CityHallObject> cities;
 	
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
@@ -89,9 +85,6 @@ class CityManager extends ManagedService implements Logger {
 		
 		zone = zne;
 		
-		cities.setNullValue(null);
-		cities.setInsertPlan(3); //ALLOW_OVERWRITE
-		
 		configLoaded = false;
 	}
 	
@@ -99,99 +92,8 @@ class CityManager extends ManagedService implements Logger {
 	 * Loads configuration settings for cities from the lua for the city manager.
 	 */
 	public native void loadLuaConfig();
-	
-	public native void createNewCity(CityHallObject city, CreatureObject player, final string name);
-	
-	public native void changeCityName(CityHallObject city, CreatureObject player, final string name);
-	
+
 	public native boolean validateCityName(final string name);
-	
-	/**
-	 * Sends an email message to the mayor of the city.
-	 * @param city The CityHallObject belonging to the city to send the messages out to.
-	 * @param sendername The mail message's sender's name.
-	 * @param subject The subject line for the mail message.
-	 * @param body A StringIdChatParameter containing the contents of the mail message.
-	 */
-	@local
-	public native void sendMailToMayor(CityHallObject city, final string sendername, final unicode subject, @dereferenced StringIdChatParameter body);
-	
-	/**
-	 * Sends an email message to all citizens of the city.
-	 * @param city The CityHallObject belonging to the city to send the messages out to.
-	 * @param sendername The mail message's sender's name.
-	 * @param subject The subject line for the mail message.
-	 * @param body A StringIdChatParameter containing the contents of the mail message.
-	 */
-	@local
-	public native void sendMailToAllCitizens(CityHallObject city, final string sendername, final unicode subject, @dereferenced StringIdChatParameter body);
-	
-	/**
-	 * Checks to see if the city is eligible for city advancement or not.
-	 * @param city CityHallObject that belongs to the city.
-	 */
-	public native void handleCityAdvancement(CityHallObject city);
-	
-	/**
-	 * Attempts to expand the city to the next rank, and increase its radius, sending out the appropriate mails.
-	 * @params city The city to expand.
-	 */
-	public native void expandCity(CityHallObject city);
-	
-	/**
-	 * Attempts to contract the city to the previous rank, and decrease its radius, sending out the appropriate mails.
-	 * If the city was a new city, then it attempts to destroy the city.
-	 * @params city The city to contract.
-	 */
-	public native void contractCity(CityHallObject city);
-	
-	/**
-	 * Attempts to destroy the city, and all civic structures attached to it.
-	 * @param city CityHallObject representing the city.
-	 */
-	public native void destroyCity(CityHallObject city);
-	
-	/**
-	 * Declares the citizen to the city, and sends out proper mails.
-	 * @param city The city that the citizen is joining.
-	 * @param player The new citizen.
-	 * @param sendMail Should emails be sent to the player and the mayor.
-	 */
-	public native void declareCitizenship(CityHallObject city, CreatureObject player, boolean sendMail = true);
-	
-	/**
-	 * Revokes the citizen from the city, and sends out proper mails.
-	 * @param city The city that the citizen is leaving.
-	 * @param player The old citizen.
-	 * @param sendMail Should emails be sent to the mayor.
-	 */
-	public native void revokeCitizenship(CityHallObject city, CreatureObject player, boolean sendMail = true);
-	
-	/**
-	 * Adds an existing citizen to the rank of militia.
-	 * @pre: city locked, player locked, citizen unlocked, citizen must be online and in range.
-	 * @post: city locked, player locked, citizen unlocked
-	 * @param city The city too promote this citizen to militia of.
-	 * @param player The player doing the adding.
-	 * @param citizenName The citizen's first name being added.
-	 */
-	public native void addMilitiaMember(CityHallObject city, CreatureObject player, final string citizenName);
-	
-	/**
-	 * Removes an existing militia member from the militia and makes them a citizen.
-	 * @pre: city locked, player locked, citizen unlocked, citizen must be online and in range.
-	 * @post: city locked, player locked, citizen unlocked
-	 * @param city The city too remove the citizen from the militia.
-	 * @param player The player doing the removing.
-	 * @param playerID The player object id of the player being removed.
-	 */
-	public native void removeMilitiaMember(CityHallObject city, CreatureObject player, unsigned long playerID);
-	
-	/**
-	 * Checks to see if the planet's city cap has been reached at the particular rank.
-	 * @param rank The rank to check if is capped.
-	 */
-	public native boolean checkCitiesCappedAtRank(byte rank);
 	
 	/**
 	 * Returns the number of cities allowed at this rank on this particular city manager for this zone.
@@ -199,17 +101,5 @@ class CityManager extends ManagedService implements Logger {
 	 */
 	public byte getCitiesAllowed(byte rank) {
 		return citiesAllowedPerRank.get(rank);
-	}
-	
-	/**
-	 * Adds a city to the cities vectormap
-	 * @param city The city hall object to add to the cities vectormap.
-	 */
-	public synchronized void addCity(CityHallObject city) {
-		cities.put(city.getObjectID(), city);
-	}
-	
-	public synchronized int getTotalCities() {
-		return cities.size();
 	}
 }

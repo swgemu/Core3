@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_city = object_tangible_terminal_shared_terminal_city:new {
-	gameObjectType = 16405
+	objectMenuComponent = {"cpp", "CityManagementMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_city, "object/tangible/terminal/terminal_city.iff")

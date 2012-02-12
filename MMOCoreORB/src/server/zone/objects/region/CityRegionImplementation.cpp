@@ -15,6 +15,8 @@
 CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
 	zone = zne;
 
+	zoningEnabled = false;
+
 	cityRank = RANK_CLIENT; //Default to client city
 
 	if (name.beginsWith("@")) {
@@ -22,6 +24,11 @@ CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name
 	} else {
 		regionName.setCustomString(name);
 	}
+
+	mayorID = 0;
+
+	zoningRights.setAllowOverwriteInsertPlan();
+	zoningRights.setNullValue(0);
 
 	setLoggingName("CityRegion " + regionName.getDisplayedName());
 	setLogging(true);
@@ -44,6 +51,9 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
 
+	if (cityRank == RANK_CLIENT)
+		region->setNoBuildArea(true);
+
 	if (regions.size() <= 0) {
 		region->setPlanetMapCategory(TemplateManager::instance()->getPlanetMapCategoryByName("city"));
 		region->setObjectName(regionName);
@@ -62,6 +72,8 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			return;
 
 	CreatureObject* creature = cast<CreatureObject*>(object);
+
+	creature->setCityRegion(_this);
 
 	StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
 	params.setTT(regionName.getDisplayedName());
@@ -89,6 +101,8 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 	CreatureObject* creature = cast<CreatureObject*>(object);
 
+	creature->setCityRegion(_this);
+
 	StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
 	params.setTO(regionName.getDisplayedName());
 
@@ -105,4 +119,20 @@ Vector<ManagedReference<SceneObject*> >* CityRegionImplementation::getVendorsInC
 	Vector<ManagedReference<SceneObject*> >* vendors = new Vector<ManagedReference<SceneObject*> >();
 
 	return vendors;
+}
+
+void CityRegionImplementation::addZoningRights(uint64 objectid, uint32 duration) {
+	Time now;
+
+	zoningRights.put(objectid, duration + now.getTime());
+}
+
+bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
+	uint32 timestamp = zoningRights.get(objectid);
+
+	if (timestamp == 0)
+		return false;
+
+	Time now;
+	return (now.getTime() <= timestamp);
 }
