@@ -544,7 +544,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 		playerManager->awardExperience(player, "scout", xp, true);
 
 
-	if (!creature->hasLoot()) {
+	if (!player->isGrouped() && !creature->hasLoot()) {
 		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(creature->getPendingTask("despawn"));
 
 		if (despawn != NULL) {

@@ -103,7 +103,7 @@ void BuffImplementation::activate(bool applyModifiers) {
 		if (applyModifiers) {
 			applyAttributeModifiers();
 			applySkillModifiers();
-			applyOptionBits();
+			applyStates();
 		}
 
 		buffEvent = new BuffDurationEvent(creature, _this);
@@ -138,7 +138,7 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 		if (removeModifiers) {
 			removeAttributeModifiers();
 			removeSkillModifiers();
-			removeOptionBits();
+			removeStates();
 		}
 
 		if (creature->isPlayerCreature())
@@ -284,15 +284,15 @@ void BuffImplementation::applySkillModifiers() {
 	}
 }
 
-void BuffImplementation::applyOptionBits() {
+void BuffImplementation::applyStates() {
 	if (creature == NULL)
 		return;
 
-	int size = optionBits.size();
+	int size = states.size();
 
 	for (int i = 0; i < size; ++i) {
 
-		creature->setState(optionBits.get(i), true);
+		creature->setState(states.get(i), true);
 	}
 }
 
@@ -361,14 +361,14 @@ void BuffImplementation::removeSkillModifiers() {
 	}
 }
 
-void BuffImplementation::removeOptionBits() {
+void BuffImplementation::removeStates() {
 	if (creature == NULL)
 		return;
 
-	int size = optionBits.size();
+	int size = states.size();
 
 	for (int i = 0; i < size; ++i) {
-		creature->clearState(optionBits.get(i), true);
+		creature->clearState(states.get(i), true);
 	}
 }
 

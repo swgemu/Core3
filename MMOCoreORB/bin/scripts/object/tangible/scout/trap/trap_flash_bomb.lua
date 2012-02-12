@@ -43,6 +43,35 @@
 
 object_tangible_scout_trap_trap_flash_bomb = object_tangible_scout_trap_shared_trap_flash_bomb:new {
 
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 70,
+
+	skillMods = {},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = MIND,
+	minDamage = 200,
+	maxDamage = 300,
+
+	duration = 10,
+	state = BLINDED,
+	defenseMod = "blind_defense",
+
+	successMessage = "trap_flash_bomb_effect",
+	failMessage = "",
+
+	startSpam = "",
+	stopSpam = "",
+
+	animation = "throw_trap_flash_bomb",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

@@ -55,11 +55,14 @@ import server.zone.templates.mobile.CreatureTemplate;
 import server.zone.objects.creature.CreatureObject;
 
 class Creature extends AiAgent {
+	
+	private transient Vector<unsigned long> alreadyHarvested;
 
 	public Creature() {
 		Logger.setLoggingName("Creature");
 		Logger.setLogging(false);
-		Logger.setGlobalLogging(true); 
+		Logger.setGlobalLogging(true);
+		alreadyHarvested = null;
 	}
 
 	public boolean isCreature() {

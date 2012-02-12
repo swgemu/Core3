@@ -43,6 +43,36 @@
 
 object_tangible_scout_trap_trap_ranged_def_1 = object_tangible_scout_trap_shared_trap_ranged_def_1:new {
 
+	-- Glow Juice Trap
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 10,
+
+	skillMods = {{"ranged_defense", -40}},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = HEALTH,
+	minDamage = 40,
+	maxDamage = 75,
+
+	duration = 10,
+	state = 0,
+	defenseMod = "",
+
+	successMessage = "trap_ranged_def_1_effect",
+	failMessage = "trap_ranged_def_1_effect_no",
+
+	startSpam = "ranged_def_1_on",
+	stopSpam = "ranged_def_1_off",
+
+	animation = "throw_trap_ranged_def_1",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

@@ -69,7 +69,7 @@ class Buff extends ManagedObject implements Logger {
 	protected VectorMap<string, int> skillModifiers;
 	
 	@dereferenced
-	protected Vector<unsigned long> optionBits;
+	protected Vector<unsigned long> states;
 
 	protected string buffName;
 	protected float buffDuration;
@@ -148,11 +148,11 @@ class Buff extends ManagedObject implements Logger {
 
 	public native abstract void applyAttributeModifiers();
 	public native abstract void applySkillModifiers();
-	public native abstract void applyOptionBits();
+	public native abstract void applyStates();
 
 	public native abstract void removeAttributeModifiers();
 	public native abstract void removeSkillModifiers();
-	public native abstract void removeOptionBits();
+	public native abstract void removeStates();
 
 	public native void clearBuffEvent();
 
@@ -182,8 +182,8 @@ class Buff extends ManagedObject implements Logger {
 			skillModifiers.put(modname, value);
 	}
 	
-	public void addOptionBit(unsigned long option) {
-		optionBits.add(option);
+	public void addState(unsigned long option) {
+		states.add(option);
 	}
 	
 	public void setSpeedMultiplierMod(float multiplier) {

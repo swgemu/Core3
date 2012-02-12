@@ -43,6 +43,35 @@
 
 object_tangible_scout_trap_trap_tranq_dart = object_tangible_scout_trap_shared_trap_tranq_dart:new {
 
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 20,
+
+	skillMods = {},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = HEALTH,
+	minDamage = 150,
+	maxDamage = 200,
+
+	duration = 10,
+	state = IMMOBILIZED,
+	defenseMod = "",
+
+	successMessage = "trap_tranq_dart_effect",
+	failMessage = "trap_tranq_dart_effect_no",
+
+	startSpam = "",
+	stopSpam = "",
+
+	animation = "throw_trap_tranq_dart",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

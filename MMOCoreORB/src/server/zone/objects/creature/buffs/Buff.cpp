@@ -14,7 +14,7 @@
  *	BuffStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_APPLYOPTIONBITS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_REMOVEOPTIONBITS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_ADDOPTIONBIT__LONG_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTRIBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_APPLYSTATES__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_REMOVESTATES__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_ADDSTATE__LONG_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTRIBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_};
 
 Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) : ManagedObject(DummyConstructorParameter::instance()) {
 	BuffImplementation* _implementation = new BuffImplementation(creo, buffcrc, duration, bufftype);
@@ -177,17 +177,17 @@ void Buff::applySkillModifiers() {
 		_implementation->applySkillModifiers();
 }
 
-void Buff::applyOptionBits() {
+void Buff::applyStates() {
 	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_APPLYOPTIONBITS__);
+		DistributedMethod method(this, RPC_APPLYSTATES__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->applyOptionBits();
+		_implementation->applyStates();
 }
 
 void Buff::removeAttributeModifiers() {
@@ -216,17 +216,17 @@ void Buff::removeSkillModifiers() {
 		_implementation->removeSkillModifiers();
 }
 
-void Buff::removeOptionBits() {
+void Buff::removeStates() {
 	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEOPTIONBITS__);
+		DistributedMethod method(this, RPC_REMOVESTATES__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeOptionBits();
+		_implementation->removeStates();
 }
 
 void Buff::clearBuffEvent() {
@@ -367,18 +367,18 @@ void Buff::setSkillModifier(const String& modname, int value) {
 		_implementation->setSkillModifier(modname, value);
 }
 
-void Buff::addOptionBit(unsigned long long option) {
+void Buff::addState(unsigned long long option) {
 	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDOPTIONBIT__LONG_);
+		DistributedMethod method(this, RPC_ADDSTATE__LONG_);
 		method.addUnsignedLongParameter(option);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addOptionBit(option);
+		_implementation->addState(option);
 }
 
 void Buff::setSpeedMultiplierMod(float multiplier) {
@@ -717,8 +717,8 @@ bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 		return true;
 	}
 
-	if (_name == "optionBits") {
-		TypeInfo<Vector<unsigned long long> >::parseFromBinaryStream(&optionBits, stream);
+	if (_name == "states") {
+		TypeInfo<Vector<unsigned long long> >::parseFromBinaryStream(&states, stream);
 		return true;
 	}
 
@@ -861,11 +861,11 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "optionBits";
+	_name = "states";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Vector<unsigned long long> >::toBinaryStream(&optionBits, stream);
+	TypeInfo<Vector<unsigned long long> >::toBinaryStream(&states, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1098,9 +1098,9 @@ void BuffImplementation::setSkillModifier(const String& modname, int value) {
 	(&skillModifiers)->put(modname, value);
 }
 
-void BuffImplementation::addOptionBit(unsigned long long option) {
-	// server/zone/objects/creature/buffs/Buff.idl():  		optionBits.add(option);
-	(&optionBits)->add(option);
+void BuffImplementation::addState(unsigned long long option) {
+	// server/zone/objects/creature/buffs/Buff.idl():  		states.add(option);
+	(&states)->add(option);
 }
 
 void BuffImplementation::setSpeedMultiplierMod(float multiplier) {
@@ -1208,8 +1208,8 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_APPLYSKILLMODIFIERS__:
 		applySkillModifiers();
 		break;
-	case RPC_APPLYOPTIONBITS__:
-		applyOptionBits();
+	case RPC_APPLYSTATES__:
+		applyStates();
 		break;
 	case RPC_REMOVEATTRIBUTEMODIFIERS__:
 		removeAttributeModifiers();
@@ -1217,8 +1217,8 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_REMOVESKILLMODIFIERS__:
 		removeSkillModifiers();
 		break;
-	case RPC_REMOVEOPTIONBITS__:
-		removeOptionBits();
+	case RPC_REMOVESTATES__:
+		removeStates();
 		break;
 	case RPC_CLEARBUFFEVENT__:
 		clearBuffEvent();
@@ -1250,8 +1250,8 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETSKILLMODIFIER__STRING_INT_:
 		setSkillModifier(inv->getAsciiParameter(_param0_setSkillModifier__String_int_), inv->getSignedIntParameter());
 		break;
-	case RPC_ADDOPTIONBIT__LONG_:
-		addOptionBit(inv->getUnsignedLongParameter());
+	case RPC_ADDSTATE__LONG_:
+		addState(inv->getUnsignedLongParameter());
 		break;
 	case RPC_SETSPEEDMULTIPLIERMOD__FLOAT_:
 		setSpeedMultiplierMod(inv->getFloatParameter());
@@ -1346,8 +1346,8 @@ void BuffAdapter::applySkillModifiers() {
 	(static_cast<Buff*>(stub))->applySkillModifiers();
 }
 
-void BuffAdapter::applyOptionBits() {
-	(static_cast<Buff*>(stub))->applyOptionBits();
+void BuffAdapter::applyStates() {
+	(static_cast<Buff*>(stub))->applyStates();
 }
 
 void BuffAdapter::removeAttributeModifiers() {
@@ -1358,8 +1358,8 @@ void BuffAdapter::removeSkillModifiers() {
 	(static_cast<Buff*>(stub))->removeSkillModifiers();
 }
 
-void BuffAdapter::removeOptionBits() {
-	(static_cast<Buff*>(stub))->removeOptionBits();
+void BuffAdapter::removeStates() {
+	(static_cast<Buff*>(stub))->removeStates();
 }
 
 void BuffAdapter::clearBuffEvent() {
@@ -1402,8 +1402,8 @@ void BuffAdapter::setSkillModifier(const String& modname, int value) {
 	(static_cast<Buff*>(stub))->setSkillModifier(modname, value);
 }
 
-void BuffAdapter::addOptionBit(unsigned long long option) {
-	(static_cast<Buff*>(stub))->addOptionBit(option);
+void BuffAdapter::addState(unsigned long long option) {
+	(static_cast<Buff*>(stub))->addState(option);
 }
 
 void BuffAdapter::setSpeedMultiplierMod(float multiplier) {

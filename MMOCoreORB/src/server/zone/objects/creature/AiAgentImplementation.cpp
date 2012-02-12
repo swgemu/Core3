@@ -700,6 +700,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	if (followObject == NULL && !isFleeing() && !isRetreating() && !isInCombat()) // TODO: think about implementing a more generic "walk, don't run" criterion
 		newSpeed = walkSpeed;
 
+	if(hasState(CreatureState::IMMOBILIZED))
+		newSpeed = newSpeed / 2.f;
+
+	if(hasState(CreatureState::FROZEN))
+		newSpeed = 0.01f;
+
 	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
 	currentSpeed = newSpeed;
 

@@ -43,6 +43,35 @@
 
 object_tangible_scout_trap_trap_melee_def_1 = object_tangible_scout_trap_shared_trap_melee_def_1:new {
 
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 5,
+
+	skillMods = {{"melee_defense", -40}},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = HEALTH,
+	minDamage = 20,
+	maxDamage = 60,
+
+	duration = 10,
+	state = IMMOBILIZED,
+	defenseMod = "",
+
+	successMessage = "trap_melee_def_1_effect",
+	failMessage = "sys_miss",
+
+	startSpam = "melee_def_1_on",
+	stopSpam = "melee_def_1_off",
+
+	animation = "throw_trap_melee_def_1",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

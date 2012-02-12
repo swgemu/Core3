@@ -167,6 +167,7 @@ namespace objects {
 namespace creature {
 
 class CreatureImplementation : public AiAgentImplementation {
+	Reference<Vector<unsigned long long>* > alreadyHarvested;
 
 public:
 	CreatureImplementation();

@@ -252,8 +252,11 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 	if (getZone() == NULL)
 		return 0;
 
-	if (selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236) {
+	if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236) &&
+			canHarvestMe(player)) {
+
 		getZone()->getCreatureManager()->harvest(_this, player, selectedID);
+		alreadyHarvested->add(player->getObjectID());
 
 		return 0;
 	}
@@ -375,21 +378,38 @@ bool CreatureImplementation::hasOrganics() {
 }
 
 bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
+
+
+
 	if (!hasOrganics())
 		return false;
 
-	if (player != lootOwner && lootOwner != NULL) {
-		ManagedReference<GroupObject*> group = lootOwner->getGroup();
+	if (player->getSkillMod("creature_harvesting") < 1)
+		return false;
 
-		if (group == NULL)
-			return false;
+	if(alreadyHarvested == NULL)
+		alreadyHarvested = new Vector<unsigned long long>();
 
-		if (!group->hasMember(player))
+	for(int i = 0; i < alreadyHarvested->size(); ++i) {
+		if(alreadyHarvested->get(i) == player->getObjectID())
 			return false;
 	}
 
-	if (player->hasSkill("outdoors_scout_novice"))
-		return true;
-	else
-		return false;
+	if (lootOwner != NULL) {
+
+		if(player == lootOwner)
+			return true;
+
+		if(player->isGrouped()) {
+			ManagedReference<GroupObject*> group = lootOwner->getGroup();
+
+			if (group == NULL)
+				return false;
+
+			if (group->hasMember(player))
+				return true;
+		}
+	}
+
+	return false;
 }

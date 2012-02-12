@@ -11,7 +11,7 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/TrapTemplate.h"
-
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 void TrapMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
@@ -21,8 +21,6 @@ void TrapMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
 	if(tano == NULL)
 		return;
-
-	alm->insertAttribute("counter_uses_remaining", tano->getUseCount());
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
@@ -37,14 +35,13 @@ int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 		if(server == NULL)
 			return 0;
 
-		ObjectController* controller = server->getObjectController();
-		if(controller == NULL)
-			return 0;
-
-		String action = "throwtrap";
 		String args = String::valueOf(sceneObject->getObjectID());
+		String action = "/throwtrap ";
+		String command = action + args;
 
-		controller->activateCommand(player, action.hashCode(), 1, player->getTargetID(), args);
+
+		player->sendExecuteConsoleCommand(command);
+
 		return 1;
 	}
 

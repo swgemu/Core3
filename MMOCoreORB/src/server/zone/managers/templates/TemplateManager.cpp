@@ -79,6 +79,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
 
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/AppearanceRedirect.h"
@@ -422,11 +423,17 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalLong("STUNNED", CreatureState::STUNNED);
 	luaTemplatesInstance->setGlobalLong("DIZZY", CreatureState::DIZZY);
 	luaTemplatesInstance->setGlobalLong("INTIMIDATED", CreatureState::INTIMIDATED);
+	luaTemplatesInstance->setGlobalLong("IMMOBILIZED", CreatureState::IMMOBILIZED);
+	luaTemplatesInstance->setGlobalLong("FROZEN", CreatureState::FROZEN);
 
 	luaTemplatesInstance->setGlobalShort("NEUTRAL", WearableObject::NEUTRAL);
 	luaTemplatesInstance->setGlobalShort("IMPERIAL", WearableObject::IMPERIAL);
 	luaTemplatesInstance->setGlobalShort("REBEL", WearableObject::REBEL);
 	luaTemplatesInstance->setGlobalShort("COVERT", WearableObject::COVERT);
+
+	luaTemplatesInstance->setGlobalShort("HEALTH", CreatureAttribute::HEALTH);
+	luaTemplatesInstance->setGlobalShort("ACTION", CreatureAttribute::ACTION);
+	luaTemplatesInstance->setGlobalShort("MIND", CreatureAttribute::MIND);
 
 	luaTemplatesInstance->setGlobalShort("ALL", WearableObject::ALL);
 	luaTemplatesInstance->setGlobalShort("ALLSEXES",  WearableObject::ALLSEXES);

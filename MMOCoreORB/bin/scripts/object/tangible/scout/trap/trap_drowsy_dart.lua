@@ -43,6 +43,35 @@
 
 object_tangible_scout_trap_trap_drowsy_dart = object_tangible_scout_trap_shared_trap_drowsy_dart:new {
 
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 5,
+
+	skillMods = {},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = ACTION,
+	minDamage = 20,
+	maxDamage = 50,
+
+	duration = 10,
+	state = DIZZY,
+	defenseMod = "dizzy_defense",
+
+	successMessage = "trap_drowsy_effect",
+	failMessage = "trap_drowsy_effect_no",
+
+	startSpam = "",
+	stopSpam = "",
+
+	animation = "throw_trap_drowsy_dart",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

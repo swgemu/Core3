@@ -42,7 +42,36 @@
 
 
 object_tangible_scout_trap_trap_webber = object_tangible_scout_trap_shared_trap_webber:new {
+	-- Adhesive Mesh
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
 
+	useCount = 5,
+	skillRequired = 30,
+
+	skillMods = {},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = ACTION,
+	minDamage = 120,
+	maxDamage = 200,
+
+	duration = 10,
+	state = FROZEN,
+	defenseMod = "",
+
+	successMessage = "trap_webber_effect",
+	failMessage = "trap_webber_effect_no",
+
+	startSpam = "",
+	stopSpam = "",
+
+	animation = "throw_trap_webber",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

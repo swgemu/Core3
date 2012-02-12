@@ -42,7 +42,36 @@
 
 
 object_tangible_scout_trap_trap_state_def_1 = object_tangible_scout_trap_shared_trap_state_def_1:new {
+	-- Stink Bomb
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
 
+	useCount = 5,
+	skillRequired = 15,
+
+	skillMods = {{"blind_defense", -40},{"dizzy_defense", -40},{"intimidate_defense", -40},{"knockdown_defense", -40},{"stun_defense", -40}},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = HEALTH,
+	minDamage = 110,
+	maxDamage = 170,
+
+	duration = 10,
+	state = DIZZY,
+	defenseMod = "dizzy_defense",
+
+	successMessage = "trap_state_def_1_effect",
+	failMessage = "",
+
+	startSpam = "state_def_1_on",
+	stopSpam = "state_def_1_off",
+
+	animation = "throw_trap_state_def_1",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

@@ -256,6 +256,8 @@ void FactoryObjectImplementation::sendIngredientHopper(CreatureObject* player) {
 		return;
 	}
 
+	inputHopper->sendDestroyTo(player);
+
 	inputHopper->sendWithoutContainerObjectsTo(player);
 	inputHopper->openContainerTo(player);
 }
@@ -267,6 +269,8 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 	if(outputHopper == NULL) {
 		return;
 	}
+
+	outputHopper->sendDestroyTo(player);
 
 	outputHopper->sendWithoutContainerObjectsTo(player);
 	outputHopper->openContainerTo(player);
@@ -359,8 +363,7 @@ bool FactoryObjectImplementation::startFactory() {
 
 	ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
 
-	/// Lowering timer for test
-	timer = 1;//((int)schematic->getComplexity()) * 2;
+	timer = ((int)schematic->getComplexity()) * 2;
 
 	if(!populateSchematicBlueprint(schematic))
 		return false;

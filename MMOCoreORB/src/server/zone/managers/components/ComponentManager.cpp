@@ -18,6 +18,7 @@
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/ContainerObjectComponent.h"
+#include "server/zone/objects/tangible/components/TrapMenuComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LootSchematicMenuComponent.h"
 #include "server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.h"
@@ -74,4 +75,7 @@ ComponentManager::ComponentManager() {
 	components.put("StructureContainerComponent", new StructureContainerComponent());
 
 	components.put("VendorContainerComponent", new VendorContainerComponent());
+
+	components.put("TrapMenuComponent", new TrapMenuComponent());
+
 }

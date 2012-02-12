@@ -43,6 +43,35 @@
 
 object_tangible_scout_trap_trap_enraging_spur = object_tangible_scout_trap_shared_trap_enraging_spur:new {
 
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 10,
+
+	skillMods = {},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = MIND,
+	minDamage = 40,
+	maxDamage = 60,
+
+	duration = 10,
+	state = BLINDED,
+	defenseMod = "blind_defense",
+
+	successMessage = "trap_spur_effect",
+	failMessage = "trap_spur_effect_no",
+
+	startSpam = "",
+	stopSpam = "",
+
+	animation = "throw_trap_enraging_spur",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

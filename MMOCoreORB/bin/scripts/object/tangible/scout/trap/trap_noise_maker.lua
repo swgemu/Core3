@@ -43,6 +43,35 @@
 
 object_tangible_scout_trap_trap_noise_maker = object_tangible_scout_trap_shared_trap_noise_maker:new {
 
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 15,
+
+	skillMods = {},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = MIND,
+	minDamage = 80,
+	maxDamage = 120,
+
+	duration = 10,
+	state = STUNNED,
+	defenseMod = "stun_defense",
+
+	successMessage = "trap_noise_maker_effect",
+	failMessage = "trap_noise_maker_effect_no",
+
+	startSpam = "",
+	stopSpam = "",
+
+	animation = "throw_trap_noise_maker",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},

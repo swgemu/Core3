@@ -43,6 +43,35 @@
 
 object_tangible_scout_trap_trap_sonic_pulse = object_tangible_scout_trap_shared_trap_sonic_pulse:new {
 
+	templateType = TRAP,
+	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+
+	useCount = 5,
+	skillRequired = 80,
+
+	skillMods = {},
+
+	healthCost = 17,
+	actionCost = 30, 
+	mindCost = 17,
+
+	maxRange = 32,
+
+	poolToDamage = HEALTH,
+	minDamage = 200,
+	maxDamage = 450,
+
+	duration = 10,
+	state = STUNNED + DIZZY,
+	defenseMod = "dizzy_defense",
+
+	successMessage = "trap_sonic_pulse_effect",
+	failMessage = "",
+
+	startSpam = "",
+	stopSpam = "",
+
+	animation = "throw_trap_sonic_pulse",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},
