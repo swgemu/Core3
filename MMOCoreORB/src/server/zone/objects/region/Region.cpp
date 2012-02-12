@@ -314,6 +314,8 @@ CityRegion* RegionImplementation::getCityRegion() {
 }
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
+	// server/zone/objects/region/Region.idl():  		super.notifyEnter(object);
+	ActiveAreaImplementation::notifyEnter(object);
 	// server/zone/objects/region/Region.idl():  		cityRegion.
 	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
 	return;
@@ -322,6 +324,8 @@ void RegionImplementation::notifyEnter(SceneObject* object) {
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
+	// server/zone/objects/region/Region.idl():  		super.notifyExit(object);
+	ActiveAreaImplementation::notifyExit(object);
 	// server/zone/objects/region/Region.idl():  		cityRegion.
 	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
 	return;

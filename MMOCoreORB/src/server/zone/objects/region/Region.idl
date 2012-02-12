@@ -80,6 +80,8 @@ class Region extends ActiveArea {
 	}
 	
 	public void notifyEnter(SceneObject object) {
+		super.notifyEnter(object);
+		
 		if (cityRegion == null)
 			return;
 		
@@ -87,6 +89,8 @@ class Region extends ActiveArea {
 	}
 	
 	public void notifyExit(SceneObject object) {
+		super.notifyExit(object);
+		
 		if (cityRegion == null)
 			return;
 		

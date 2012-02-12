@@ -51,13 +51,15 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
 
-	if (cityRank == RANK_CLIENT)
-		region->setNoBuildArea(true);
-
 	if (regions.size() <= 0) {
 		region->setPlanetMapCategory(TemplateManager::instance()->getPlanetMapCategoryByName("city"));
 		region->setObjectName(regionName);
 	}
+
+	if (cityRank == RANK_CLIENT)
+		region->setNoBuildArea(true);
+	else
+		region->setNoBuildArea(false);
 
 	zone->transferObject(region, -1, false);
 
@@ -101,7 +103,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 	CreatureObject* creature = cast<CreatureObject*>(object);
 
-	creature->setCityRegion(_this);
+	creature->setCityRegion(NULL);
 
 	StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
 	params.setTO(regionName.getDisplayedName());

@@ -514,9 +514,6 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 }
 
 bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
-	/*if (cityRegionMap->getCityRegionAt(x, y) == NULL)  //city regionsn create active areas that are no build
-		return true;*/
-
 	Vector<ManagedReference<ActiveArea* > >* activeAreas = NULL;
 	SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects = NULL;
 	bool deleteVector = false;
@@ -536,7 +533,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		deleteVector = true;
 	}
 
-	for (int i = 0; i < activeAreas->size(); ++i)
+	for (int i = 0; i < activeAreas->size(); ++i) {
 		if (activeAreas->get(i)->isNoBuildArea()) {
 			if (deleteVector) {
 				delete closeObjects;
@@ -545,6 +542,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 
 			return false;
 		}
+	}
 
 	if (closeObjects != NULL) {
 		for (int i = 0; i < closeObjects->size(); ++i) {
