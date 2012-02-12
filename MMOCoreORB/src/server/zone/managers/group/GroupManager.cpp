@@ -105,11 +105,11 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 
 	StringIdChatParameter stringId;
 	stringId.setStringId("group", "invite_target");
-	stringId.setTT(leader);
+	stringId.setTT(leader->getObjectName()->getDisplayedName());
 	player->sendSystemMessage(stringId);
 
 	stringId.setStringId("group", "invite_leader");
-	stringId.setTT(player);
+	stringId.setTT(player->getObjectName()->getDisplayedName());
 	leader->sendSystemMessage(stringId);
 }
 

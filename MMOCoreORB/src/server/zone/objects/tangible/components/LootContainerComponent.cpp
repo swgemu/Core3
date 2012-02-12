@@ -21,8 +21,8 @@ int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneO
 
 				if (group != NULL) {
 					StringIdChatParameter params("group", "notify_single_loot"); //[GROUP] %TU looted %TO from %TT.
-					params.setTO(object);
-					params.setTU(creature);
+					params.setTO(object->getObjectName()->getDisplayedName());
+					params.setTU(creature->getObjectName()->getDisplayedName());
 					params.setTT(sceneObject->getParent());
 
 					group->sendSystemMessage(params);
