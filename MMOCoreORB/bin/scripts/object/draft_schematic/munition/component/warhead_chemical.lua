@@ -64,7 +64,7 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"warhead_module_casing", "chemical_containment", "containment_field_coil", "trigger_pulse_prism", "chemical_payload"},
-   ingredientSlotType = {0, 0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 0, 3},
    resourceTypes = {"petrochem_inert_polymer", "copper", "gemstone_armophous", "steel_thoranium", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {15, 25, 15, 25, 1},
    combineTypes = {0, 0, 0, 0, 1},

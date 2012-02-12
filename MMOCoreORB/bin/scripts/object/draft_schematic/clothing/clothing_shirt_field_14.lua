@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_shirt_field_14 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "trim", "binding_and_hardware"},
-   ingredientSlotType = {2, 0, 0},
+   ingredientSlotType = {1, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "fiberplast", "metal"},
    resourceQuantities = {1, 20, 10},
    combineTypes = {1, 0, 0},

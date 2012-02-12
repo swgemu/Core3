@@ -64,7 +64,7 @@ object_draft_schematic_bio_engineer_creature_creature_kwi = object_draft_schemat
 
    ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
    ingredientTitleNames = {"dna_template", "protein_base", "organic_nutrition_materials"},
-   ingredientSlotType = {2, 0, 0},
+   ingredientSlotType = {1, 0, 0},
    resourceTypes = {"object/tangible/component/dna/shared_dna_template_generic.iff", "creature_food", "flora_food"},
    resourceQuantities = {1, 40, 40},
    combineTypes = {1, 0, 0},

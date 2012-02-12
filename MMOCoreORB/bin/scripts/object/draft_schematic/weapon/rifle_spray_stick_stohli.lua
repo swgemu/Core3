@@ -64,7 +64,7 @@ object_draft_schematic_weapon_rifle_spray_stick_stohli = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "chemical_dispersion_controller", "cartridge_feed_unit", "firing_mechanism"},
-   ingredientSlotType = {0, 0, 0, 1, 4, 2},
+   ingredientSlotType = {0, 0, 0, 1, 3, 1},
    resourceTypes = {"metal", "copper_polysteel", "aluminum_chromium", "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff"},
    resourceQuantities = {10, 20, 45, 2, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1},

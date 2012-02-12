@@ -64,7 +64,7 @@ object_draft_schematic_food_dessert_citros_snow_cake = object_draft_schematic_fo
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"sweet_cake_mix", "fruit_filling", "filling_mixture", "additive"},
-   ingredientSlotType = {2, 0, 0, 4},
+   ingredientSlotType = {1, 0, 0, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff", "fruit_fruits", "wheat_wild", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {1, 20, 10, 1},
    combineTypes = {1, 0, 0, 1},

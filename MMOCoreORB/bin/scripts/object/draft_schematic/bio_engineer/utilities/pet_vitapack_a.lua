@@ -64,7 +64,7 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_a = object_draft_sche
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"organic", "inorganic", "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"},
    resourceQuantities = {20, 18, 1, 1},
    combineTypes = {0, 0, 1, 1},

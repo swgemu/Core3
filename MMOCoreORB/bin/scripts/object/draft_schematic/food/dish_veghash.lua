@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_veghash = object_draft_schematic_food_shared_di
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"veghash_meat", "grain_shell", "choya_shell", "seasoning", "additive"},
-   ingredientSlotType = {2, 0, 0, 0, 4},
+   ingredientSlotType = {1, 0, 0, 0, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_dish_soypro.iff", "cereal", "vegetable", "organic", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {1, 15, 5, 5, 1},
    combineTypes = {1, 0, 0, 0, 1},

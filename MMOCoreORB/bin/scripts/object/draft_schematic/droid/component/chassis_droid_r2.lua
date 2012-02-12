@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_chassis_droid_r2 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_body_shell", "secondary_body_structure", "frame", "intellex_iv_computer", "manipulator_arm", "motivator", "sensor_suite"},
-   ingredientSlotType = {0, 0, 2, 2, 2, 2, 2},
+   ingredientSlotType = {0, 0, 1, 1, 1, 1, 1},
    resourceTypes = {"chemical", "chemical", "object/tangible/component/droid/shared_advanced_droid_frame.iff", "object/tangible/component/droid/shared_droid_brain_advanced.iff", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system_advanced.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff"},
    resourceQuantities = {120, 90, 1, 1, 1, 1, 1},
    combineTypes = {0, 0, 1, 1, 1, 1, 1},

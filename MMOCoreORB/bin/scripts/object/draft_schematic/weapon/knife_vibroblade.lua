@@ -64,7 +64,7 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"knife_shaft", "cutting_edge", "grip", "vibro_unit_and_power_cell_brackets", "vibration_generator"},
-   ingredientSlotType = {0, 0, 0, 0, 2},
+   ingredientSlotType = {0, 0, 0, 0, 1},
    resourceTypes = {"steel", "metal_ferrous", "metal", "copper", "object/tangible/component/weapon/shared_vibro_unit.iff"},
    resourceQuantities = {18, 8, 9, 5, 1},
    combineTypes = {0, 0, 0, 0, 1},

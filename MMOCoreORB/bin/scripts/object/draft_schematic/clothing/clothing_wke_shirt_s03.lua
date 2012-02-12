@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_wke_shirt_s03 = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"heavy_shell", "binding_and_weatherproofing", "hardware", "liner_half", "liner_half2"},
-   ingredientSlotType = {0, 0, 2, 2, 2},
+   ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"hide", "petrochem_inert", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {20, 10, 1, 1, 1},
    combineTypes = {0, 0, 1, 1, 1},

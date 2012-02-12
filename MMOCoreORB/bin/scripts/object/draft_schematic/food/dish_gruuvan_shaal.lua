@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_gruuvan_shaal = object_draft_schematic_food_sha
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"lizard_meat", "desert_seasoning", "vegetables", "additive"},
-   ingredientSlotType = {0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"meat_reptillian", "fruit_flowers", "vegetable", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {20, 10, 20, 1},
    combineTypes = {0, 0, 0, 1},

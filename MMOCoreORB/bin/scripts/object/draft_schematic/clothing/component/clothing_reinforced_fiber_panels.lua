@@ -64,7 +64,7 @@ object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = obj
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding", "padding", "reinforcement", "enhancement"},
-   ingredientSlotType = {0, 0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 0, 3},
    resourceTypes = {"fiberplast", "petrochem_inert", "fiberplast", "metal", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"},
    resourceQuantities = {5, 5, 15, 5, 1},
    combineTypes = {0, 0, 0, 0, 1},

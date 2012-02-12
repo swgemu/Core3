@@ -64,7 +64,7 @@ object_draft_schematic_munition_grenade_fragmentation_c_12 = object_draft_schema
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"body_shell", "magnetic_grapple", "timed_dial", "fragmentation_sleeve", "warhead_assembly", "warhead_fusing"},
-   ingredientSlotType = {0, 0, 0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 0, 0, 1, 1},
    resourceTypes = {"steel", "steel", "metal", "metal", "object/tangible/component/munition/shared_warhead_light.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff"},
    resourceQuantities = {3, 2, 4, 8, 1, 1},
    combineTypes = {0, 0, 0, 0, 1, 1},

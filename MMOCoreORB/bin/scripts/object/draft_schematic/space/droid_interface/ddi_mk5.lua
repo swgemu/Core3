@@ -64,7 +64,7 @@ object_draft_schematic_space_droid_interface_ddi_mk5 = object_draft_schematic_sp
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"casing", "neural_network_fibers", "droid_interface_upgrade", "electronic_components", "protective_elements"},
-   ingredientSlotType = {0, 0, 4, 0, 0},
+   ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "fiberplast", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "copper", "ore"},
    resourceQuantities = {1250, 1250, 1, 1250, 1250},
    combineTypes = {0, 0, 1, 0, 0},

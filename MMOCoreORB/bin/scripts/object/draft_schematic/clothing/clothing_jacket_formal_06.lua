@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_jacket_formal_06 = object_draft_schemat
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"binding_and_hardware", "liner", "trim", "shell"},
-   ingredientSlotType = {0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"petrochem_inert_polymer", "hide_wooly", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {20, 25, 1, 1},
    combineTypes = {0, 0, 1, 1},

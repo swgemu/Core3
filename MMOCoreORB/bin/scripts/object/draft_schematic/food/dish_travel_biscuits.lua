@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_travel_biscuits = object_draft_schematic_food_s
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dried_bread", "preservative_wrap", "additive"},
-   ingredientSlotType = {0, 0, 4},
+   ingredientSlotType = {0, 0, 3},
    resourceTypes = {"cereal", "hide", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {3, 8, 1},
    combineTypes = {0, 0, 1},

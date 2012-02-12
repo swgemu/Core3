@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_hat_field_04 = object_draft_schematic_c
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_weatherproofing", "liner"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"steel", "petrochem_inert", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {25, 20, 1},
    combineTypes = {0, 0, 1},

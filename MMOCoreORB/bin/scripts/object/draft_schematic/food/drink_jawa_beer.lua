@@ -64,7 +64,7 @@ object_draft_schematic_food_drink_jawa_beer = object_draft_schematic_food_shared
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "bantha_flavoring", "glass", "additive"},
-   ingredientSlotType = {0, 0, 2, 4},
+   ingredientSlotType = {0, 0, 1, 3},
    resourceTypes = {"cereal", "hide_wooly", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {10, 15, 1, 1},
    combineTypes = {0, 0, 1, 1},

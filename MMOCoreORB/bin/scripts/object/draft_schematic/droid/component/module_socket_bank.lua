@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_module_socket_bank = object_draft_schemat
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"expansion_board", "connector_socket", "attachment_bracket", "shock_buffering", "support_strut", "general_droid_module", "general_droid_module2", "general_droid_module3"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2},
+   ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"metal", "metal", "metal", "chemical", "ore", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff"},
    resourceQuantities = {30, 15, 7, 7, 7, 1, 1, 1},
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_pants_formal_15 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_hardware", "hardware", "lining", "trim"},
-   ingredientSlotType = {1, 0, 2, 1, 1},
+   ingredientSlotType = {1, 0, 1, 1, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_trim.iff"},
    resourceQuantities = {2, 60, 1, 3, 2},
    combineTypes = {1, 0, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_armor_armor_segment_zam = object_draft_schematic_armor_sh
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_zam", "segment_mounting_tabs", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 4},
+   ingredientSlotType = {0, 0, 3},
    resourceTypes = {"metal", "metal", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {14, 3, 1},
    combineTypes = {0, 0, 1},

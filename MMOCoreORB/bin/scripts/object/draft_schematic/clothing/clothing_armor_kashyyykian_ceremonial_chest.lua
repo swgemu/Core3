@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_chest = ob
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"auxilary_coverage", "body", "liner", "hardware_and_attachments", "binding_and_reinforcement", "padding", "armor", "load_bearing_harness", "reinforcement"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 2, 1, 2, 0},
+   ingredientSlotType = {0, 0, 0, 0, 0, 2, 1, 1, 0},
    resourceTypes = {"wood", "hide_leathery", "hide_wooly", "copper", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_padding_segment.iff", "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "fiberplast"},
    resourceQuantities = {40, 40, 40, 20, 10, 2, 4, 1, 10},
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 0},

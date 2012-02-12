@@ -64,7 +64,7 @@ object_draft_schematic_space_booster_booster_mk5 = object_draft_schematic_space_
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"casing", "booster_nozzle", "liquid_fuel", "booster_upgrade", "fuel_mixing_chamber"},
-   ingredientSlotType = {0, 0, 0, 4, 0},
+   ingredientSlotType = {0, 0, 0, 3, 0},
    resourceTypes = {"steel", "aluminum", "fuel_petrochem_liquid", "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk5.iff", "ore"},
    resourceQuantities = {1250, 1250, 1250, 1, 1250},
    combineTypes = {0, 0, 0, 1, 0},

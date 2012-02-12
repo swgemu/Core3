@@ -64,7 +64,7 @@ object_draft_schematic_space_capacitor_capacitor_mk5 = object_draft_schematic_sp
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"casing", "capacitor_charge_core", "cooling_agent", "capacitor_upgrade", "capacitor_outer_shielding"},
-   ingredientSlotType = {0, 0, 0, 4, 0},
+   ingredientSlotType = {0, 0, 0, 3, 0},
    resourceTypes = {"steel", "copper", "gas_inert", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "ore"},
    resourceQuantities = {1250, 1250, 1250, 1, 1250},
    combineTypes = {0, 0, 0, 1, 0},

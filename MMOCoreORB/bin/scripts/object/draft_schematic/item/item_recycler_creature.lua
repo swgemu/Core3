@@ -64,7 +64,7 @@ object_draft_schematic_item_item_recycler_creature = object_draft_schematic_item
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"agitator_motor", "feed_tubes", "chemical_tubing", "metal_slides", "pulverizer", "spinning_blades"},
-   ingredientSlotType = {2, 2, 0, 0, 2, 2},
+   ingredientSlotType = {1, 1, 0, 0, 2, 2},
    resourceTypes = {"object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff", "object/tangible/loot/simple_kit/shared_feed_tubes.iff", "fiberplast", "steel", "object/tangible/loot/simple_kit/shared_pulverizer.iff", "object/tangible/loot/simple_kit/shared_spinning_blade.iff"},
    resourceQuantities = {1, 1, 50, 45, 4, 4},
    combineTypes = {1, 1, 0, 0, 1, 1},

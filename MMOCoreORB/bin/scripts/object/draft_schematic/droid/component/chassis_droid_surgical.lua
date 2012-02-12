@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_chassis_droid_surgical = object_draft_sch
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"frame", "leg_struts", "body_sheath", "hydraulic_system_pumps", "droid_brain", "manipulator_arm", "sensor_suite"},
-   ingredientSlotType = {2, 0, 0, 0, 2, 2, 2},
+   ingredientSlotType = {1, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"object/tangible/component/droid/shared_advanced_droid_frame.iff", "steel", "fiberplast", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain_advanced.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff"},
    resourceQuantities = {1, 60, 30, 30, 1, 1, 1},
    combineTypes = {1, 0, 0, 0, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"axe_head", "shaft", "axe_head_fastener", "reinforcement_core"},
-   ingredientSlotType = {0, 0, 0, 2},
+   ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"iron", "wood", "steel", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
    resourceQuantities = {35, 25, 8, 1},
    combineTypes = {0, 0, 0, 1},

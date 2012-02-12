@@ -64,7 +64,7 @@ object_draft_schematic_space_weapon_wpn_medium_ioncannon = object_draft_schemati
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"casing", "ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding"},
-   ingredientSlotType = {0, 0, 4, 0, 0},
+   ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk2.iff", "gas_inert", "ore_carbonate"},
    resourceQuantities = {125, 125, 1, 125, 125},
    combineTypes = {0, 0, 1, 0, 0},

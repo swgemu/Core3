@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_havla = object_draft_schematic_food_shared_dish
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "starchy_flavoring", "oat_crust", "additive"},
-   ingredientSlotType = {2, 0, 0, 4},
+   ingredientSlotType = {1, 0, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "vegetable_tubers", "oats", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {1, 30, 30, 1},
    combineTypes = {1, 0, 0, 1},

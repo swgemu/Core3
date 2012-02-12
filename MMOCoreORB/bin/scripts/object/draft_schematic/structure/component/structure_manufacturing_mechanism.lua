@@ -64,7 +64,7 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"sub_assembly_frame", "assembly_machinery", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "mini_turbo_generator"},
-   ingredientSlotType = {0, 0, 0, 0, 2},
+   ingredientSlotType = {0, 0, 0, 0, 1},
    resourceTypes = {"steel", "metal_nonferrous", "chemical", "ore", "object/tangible/component/structure/shared_generator_turbine.iff"},
    resourceQuantities = {150, 100, 100, 100, 1},
    combineTypes = {0, 0, 0, 0, 1},

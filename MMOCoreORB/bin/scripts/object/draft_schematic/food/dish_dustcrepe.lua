@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_dustcrepe = object_draft_schematic_food_shared_
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dried_bread", "meat_filling", "additive"},
-   ingredientSlotType = {0, 0, 4},
+   ingredientSlotType = {0, 0, 3},
    resourceTypes = {"wheat", "meat_herbivore", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {5, 10, 1},
    combineTypes = {0, 0, 1},

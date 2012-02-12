@@ -75,7 +75,7 @@ object_weapon_ranged_heavy_heavy_lightning_beam = object_weapon_ranged_heavy_sha
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "heavy_lightning_beam_speed" },
-	
+
 	useCount = 40,
 
 	healthAttackCost = 35,

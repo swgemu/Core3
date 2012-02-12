@@ -64,7 +64,7 @@ object_draft_schematic_chemistry_med_stimpack_d = object_draft_schematic_chemist
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 2, 2, 1},
+   ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"organic", "fiberplast", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {18, 14, 1, 1, 2},
    combineTypes = {0, 0, 1, 1, 1},

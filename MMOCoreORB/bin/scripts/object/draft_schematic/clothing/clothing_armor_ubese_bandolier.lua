@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_bandolier = object_draft_sc
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"auxilary_coverage", "body", "liner"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"iron", "steel", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {15, 5, 1},
    combineTypes = {0, 0, 1},

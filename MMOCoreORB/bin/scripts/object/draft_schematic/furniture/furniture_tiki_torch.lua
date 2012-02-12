@@ -64,7 +64,7 @@ object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_f
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "lighting_module", "torch_module"},
-   ingredientSlotType = {0, 2, 0},
+   ingredientSlotType = {0, 1, 0},
    resourceTypes = {"metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "metal"},
    resourceQuantities = {20, 1, 20},
    combineTypes = {0, 1, 0},

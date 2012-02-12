@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_trimpian = object_draft_schematic_food_shared_d
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"trimpian_meat", "miasra_sauce_base", "miasra_sauce_seasoning", "additive"},
-   ingredientSlotType = {0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"meat", "water", "vegetable_beans", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {10, 15, 5, 1},
    combineTypes = {0, 0, 0, 1},

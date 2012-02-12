@@ -64,7 +64,7 @@ object_draft_schematic_structure_city_shuttleport_tatooine = object_draft_schema
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space", "ticket_droid_chassis"},
-   ingredientSlotType = {0, 0, 0, 2, 1, 1, 2},
+   ingredientSlotType = {0, 0, 0, 2, 1, 1, 1},
    resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/droid/shared_advanced_droid_frame.iff"},
    resourceQuantities = {1550, 2350, 350, 12, 3, 3, 1},
    combineTypes = {0, 0, 0, 1, 1, 1, 1},

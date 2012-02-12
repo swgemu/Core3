@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_chassis_droid_le_repair = object_draft_sc
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"frame", "broadband_transceiver_unit", "droid_brain", "manipulator_arm", "motivator", "sensor_suite"},
-   ingredientSlotType = {2, 0, 2, 2, 2, 2},
+   ingredientSlotType = {1, 0, 1, 1, 1, 1},
    resourceTypes = {"object/tangible/component/droid/shared_advanced_droid_frame.iff", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff"},
    resourceQuantities = {1, 20, 1, 1, 1, 1},
    combineTypes = {1, 0, 1, 1, 1, 1},

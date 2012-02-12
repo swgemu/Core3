@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_karkan_ribenes = object_draft_schematic_food_sh
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"artificial_ribenes_meat", "seasoning", "spit", "additive"},
-   ingredientSlotType = {2, 0, 0, 4},
+   ingredientSlotType = {1, 0, 0, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_dish_soypro.iff", "organic", "wood", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {1, 35, 15, 1},
    combineTypes = {1, 0, 0, 1},

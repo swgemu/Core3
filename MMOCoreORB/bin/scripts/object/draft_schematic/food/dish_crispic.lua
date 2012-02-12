@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_crispic = object_draft_schematic_food_shared_di
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"flaky_crust", "meaty_core", "additive"},
-   ingredientSlotType = {0, 0, 4},
+   ingredientSlotType = {0, 0, 3},
    resourceTypes = {"cereal", "meat", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {15, 10, 1},
    combineTypes = {0, 0, 1},

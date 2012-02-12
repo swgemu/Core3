@@ -64,7 +64,7 @@ object_draft_schematic_weapon_pistol_blaster_power5 = object_draft_schematic_wea
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "scope"},
-   ingredientSlotType = {0, 0, 0, 1, 2, 4},
+   ingredientSlotType = {0, 0, 0, 1, 1, 3},
    resourceTypes = {"iron_plumbum", "metal_ferrous", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {30, 15, 5, 2, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1},

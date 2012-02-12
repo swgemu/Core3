@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_shoes_formal_09 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "trim", "liner", "sole"},
-   ingredientSlotType = {0, 2, 0, 0},
+   ingredientSlotType = {0, 1, 0, 0},
    resourceTypes = {"fiberplast", "object/tangible/component/clothing/shared_trim.iff", "hide", "petrochem_inert"},
    resourceQuantities = {25, 1, 10, 5},
    combineTypes = {0, 1, 0, 0},

@@ -64,7 +64,7 @@ object_draft_schematic_armor_armor_segment_composite = object_draft_schematic_ar
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"segment_layer_assembly_plate", "armor_layer_weld_tabs", "segment_mounting_tabs", "defensive_layer", "defensive_layer_2", "defensive_layer_3", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 0, 4, 4, 4, 4},
+   ingredientSlotType = {0, 0, 0, 3, 3, 3, 3},
    resourceTypes = {"metal", "steel", "steel", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {10, 5, 3, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1, 1},

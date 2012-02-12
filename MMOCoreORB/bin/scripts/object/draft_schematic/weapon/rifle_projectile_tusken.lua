@@ -64,7 +64,7 @@ object_draft_schematic_weapon_rifle_projectile_tusken = object_draft_schematic_w
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "feed_unit", "barrel", "scope", "stock"},
-   ingredientSlotType = {0, 0, 0, 2, 2, 4, 4},
+   ingredientSlotType = {0, 0, 0, 1, 1, 3, 3},
    resourceTypes = {"iron", "metal_ferrous", "metal", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {35, 14, 7, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1, 1},

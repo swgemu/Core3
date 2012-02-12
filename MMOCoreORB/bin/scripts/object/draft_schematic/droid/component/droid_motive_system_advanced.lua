@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_droid_motive_system_advanced = object_dra
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "module_shroud", "primary_chassis_brackets", "shock_buffering", "thermal_shielding", "propulsion_max_controller"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 2},
+   ingredientSlotType = {0, 0, 0, 0, 0, 1},
    resourceTypes = {"copper", "metal", "steel", "chemical", "ore", "object/tangible/component/item/shared_electronic_control_unit.iff"},
    resourceQuantities = {15, 15, 3, 5, 5, 1},
    combineTypes = {0, 0, 0, 0, 0, 1},

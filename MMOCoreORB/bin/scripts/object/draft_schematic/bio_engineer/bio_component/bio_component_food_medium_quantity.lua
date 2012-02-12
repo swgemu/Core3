@@ -64,7 +64,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_medium_quan
 
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"nutrient_base", "hyper_yeast", "yeast_catalyst", "secrets"},
-   ingredientSlotType = {0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"organic", "cereal", "meat_wild", "object/tangible/component/food/secrets/shared_secret_base.iff"},
    resourceQuantities = {25, 20, 20, 1},
    combineTypes = {0, 0, 0, 1},

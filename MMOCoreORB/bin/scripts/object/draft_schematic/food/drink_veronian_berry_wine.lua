@@ -64,7 +64,7 @@ object_draft_schematic_food_drink_veronian_berry_wine = object_draft_schematic_f
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "fruit", "alcohol", "glass", "additive"},
-   ingredientSlotType = {0, 0, 2, 2, 4},
+   ingredientSlotType = {0, 0, 1, 1, 3},
    resourceTypes = {"water", "fruit_berries", "object/tangible/food/crafted/shared_drink_alcohol.iff", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {15, 15, 1, 1, 1},
    combineTypes = {0, 0, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_food_dessert_won_won = object_draft_schematic_food_shared
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"wheat", "water", "fruit_topping", "slimy_glaze", "additive"},
-   ingredientSlotType = {0, 0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 0, 3},
    resourceTypes = {"wheat", "water", "fruit_fruits", "meat", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {10, 10, 5, 5, 1},
    combineTypes = {0, 0, 0, 0, 1},

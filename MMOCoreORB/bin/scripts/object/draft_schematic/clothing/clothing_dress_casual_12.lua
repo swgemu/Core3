@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_dress_casual_12 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "trim_and_binding", "binding_and_hardware"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"fiberplast", "hide", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
    resourceQuantities = {15, 5, 1},
    combineTypes = {0, 0, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_shirt_casual_42 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_hardware"},
-   ingredientSlotType = {2, 0},
+   ingredientSlotType = {1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "fiberplast"},
    resourceQuantities = {1, 30},
    combineTypes = {1, 0},

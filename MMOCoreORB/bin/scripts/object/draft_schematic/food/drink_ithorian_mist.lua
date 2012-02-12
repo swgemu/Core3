@@ -64,7 +64,7 @@ object_draft_schematic_food_drink_ithorian_mist = object_draft_schematic_food_sh
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "alcohol_mixer", "alcohol", "glass", "additive"},
-   ingredientSlotType = {0, 0, 2, 2, 4},
+   ingredientSlotType = {0, 0, 1, 1, 3},
    resourceTypes = {"water", "wheat", "object/tangible/food/crafted/shared_drink_alcohol.iff", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {20, 40, 1, 1, 1},
    combineTypes = {0, 0, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_armor_armor_segment_chitin = object_draft_schematic_armor
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_chitin", "segment_mounting_tabs", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 4},
+   ingredientSlotType = {0, 0, 3},
    resourceTypes = {"bone", "metal_ferrous", "object/tangible/component/armor/shared_armor_segment.iff"},
    resourceQuantities = {15, 5, 1},
    combineTypes = {0, 0, 1},

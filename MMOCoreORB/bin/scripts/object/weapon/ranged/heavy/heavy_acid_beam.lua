@@ -75,7 +75,7 @@ object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_h
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "heavy_acid_beam_speed" },
-	
+
 	useCount = 40,
 
 	-- Leave blank for now

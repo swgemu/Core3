@@ -64,7 +64,7 @@ object_draft_schematic_droid_droid_r3_advanced = object_draft_schematic_droid_sh
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"old_shell_reinforcement", "upgrade_electronics_bay", "base_chassis", "general_droid_module_package", "general_droid_module_package2", "droid_defensive_module", "droid_defensive_module2"},
-   ingredientSlotType = {0, 0, 2, 4, 4, 4, 4},
+   ingredientSlotType = {0, 0, 1, 3, 3, 3, 3},
    resourceTypes = {"chemical", "chemical", "object/tangible/component/droid/shared_r3_droid_chassis.iff", "object/tangible/component/droid/shared_combat_socket_bank.iff", "object/tangible/component/droid/shared_combat_socket_bank.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {90, 190, 1, 1, 1, 1, 1},
    combineTypes = {0, 0, 1, 1, 1, 1, 1},

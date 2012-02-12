@@ -64,7 +64,7 @@ object_draft_schematic_food_drink_blue_milk = object_draft_schematic_food_shared
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"milk", "protein_fortifier", "glass", "additive"},
-   ingredientSlotType = {0, 0, 2, 4},
+   ingredientSlotType = {0, 0, 1, 3},
    resourceTypes = {"milk", "meat", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {10, 5, 1, 1},
    combineTypes = {0, 0, 1, 1},

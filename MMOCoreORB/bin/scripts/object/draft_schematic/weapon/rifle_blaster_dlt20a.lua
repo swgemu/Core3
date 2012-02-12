@@ -64,7 +64,7 @@ object_draft_schematic_weapon_rifle_blaster_dlt20a = object_draft_schematic_weap
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "scope", "stock"},
-   ingredientSlotType = {0, 0, 0, 2, 2, 4, 4},
+   ingredientSlotType = {0, 0, 0, 1, 1, 3, 3},
    resourceTypes = {"metal_ferrous", "metal", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {35, 17, 9, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_weapon_rifle_lightning = object_draft_schematic_weapon_sh
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "conduction_mass", "pulse_insulator", "shock_buffer", "grip_assembly", "powerhandler", "barrel", "scope", "stock"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 0, 2, 2, 4, 4},
+   ingredientSlotType = {0, 0, 0, 0, 0, 0, 1, 1, 3, 3},
    resourceTypes = {"steel_cubirian", "iron_polonium", "metal", "copper", "ore_siliclastic", "petrochem_inert_polymer", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {65, 35, 15, 25, 45, 75, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1},

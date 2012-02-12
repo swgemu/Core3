@@ -64,7 +64,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_medium_flav
 
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"nutrient_base", "flavor_enhancers", "vitamin_enhancers", "secrets"},
-   ingredientSlotType = {0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"seeds", "milk", "flora_food", "object/tangible/component/food/secrets/shared_secret_base.iff"},
    resourceQuantities = {35, 30, 30, 1},
    combineTypes = {0, 0, 0, 1},

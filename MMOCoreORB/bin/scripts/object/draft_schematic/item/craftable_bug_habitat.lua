@@ -64,7 +64,7 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"container", "life_support", "creature_sample"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"metal", "chemical", "object/tangible/container/jar/shared_jar_bugs_s01.iff"},
    resourceQuantities = {20, 10, 1},
    combineTypes = {0, 0, 1},

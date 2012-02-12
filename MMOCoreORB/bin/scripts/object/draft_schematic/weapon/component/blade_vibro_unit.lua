@@ -64,7 +64,7 @@ object_draft_schematic_weapon_component_blade_vibro_unit = object_draft_schemati
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"module_housing", "ultrasonic_vibration_generator", "conductive_circuits", "weapon_enhancement"},
-   ingredientSlotType = {0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"steel", "fuel_petrochem_solid", "copper", "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff"},
    resourceQuantities = {15, 10, 8, 1},
    combineTypes = {0, 0, 0, 1},

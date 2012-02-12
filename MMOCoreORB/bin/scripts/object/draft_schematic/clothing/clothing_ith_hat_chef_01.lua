@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_ith_hat_chef_01 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_weatherproofing", "trim", "liner"},
-   ingredientSlotType = {2, 0, 2, 2},
+   ingredientSlotType = {1, 0, 1, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {1, 40, 1, 1},
    combineTypes = {1, 0, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_space_armor_light_durasteel_plating = object_draft_schema
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"ship_skin", "steel_frame", "armor_upgrade", "absorptive_layer", "plate_lubricant"},
-   ingredientSlotType = {0, 0, 4, 0, 0},
+   ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"aluminum", "steel", "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk1.iff", "ore", "gas_inert"},
    resourceQuantities = {50, 50, 1, 50, 50},
    combineTypes = {0, 0, 1, 0, 0},

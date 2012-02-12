@@ -64,7 +64,7 @@ object_draft_schematic_chemistry_medpack_cure_poison_area_b = object_draft_schem
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "dispersal_mechanism", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 2, 1, 1},
+   ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"meat", "gas_inert", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {20, 20, 1, 3, 2},
    combineTypes = {0, 0, 1, 1, 1},

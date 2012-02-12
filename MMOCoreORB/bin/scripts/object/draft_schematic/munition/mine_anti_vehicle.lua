@@ -64,7 +64,7 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"weapon_casing", "trigger_mechanism", "warhead_compartment", "grounding_pile", "warhead_insulator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2, 4},
+   ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 3},
    resourceTypes = {"metal", "steel_thoranium", "petrochem_inert_polymer", "ore_carbonate", "ore_siliclastic_crism", "object/tangible/component/munition/shared_warhead_medium.iff", "object/tangible/component/munition/shared_warhead_stabilizer.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff", "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff"},
    resourceQuantities = {10, 15, 1, 2, 3, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_sch
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "assembly_frame", "thermal_shielding", "thermal_and_contaminant_shield", "micro_transciever_net", "base_pre_processing_unit", "primary_array_processing_and_control_unit", "sensor_array_wiring_harness"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 4},
+   ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 3},
    resourceTypes = {"steel", "metal", "ore", "gas_inert", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff"},
    resourceQuantities = {10, 6, 3, 15, 3, 1, 1, 1},
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},

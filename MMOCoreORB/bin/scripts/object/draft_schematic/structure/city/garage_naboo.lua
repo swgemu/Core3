@@ -64,7 +64,7 @@ object_draft_schematic_structure_city_garage_naboo = object_draft_schematic_stru
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_structure_and_shell", "insulation_and_covering", "foundation", "wall_sections", "power_supply_unit", "storage_space"},
-   ingredientSlotType = {0, 0, 0, 2, 2, 1},
+   ingredientSlotType = {0, 0, 0, 2, 1, 1},
    resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff"},
    resourceQuantities = {1550, 1800, 350, 6, 1, 4},
    combineTypes = {0, 0, 0, 1, 1, 1},

@@ -75,7 +75,7 @@ object_weapon_ranged_heavy_heavy_particle_beam = object_weapon_ranged_heavy_shar
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "heavy_particle_beam_speed" },
-	
+
 	useCount = 40,
 
 	healthAttackCost = 25,

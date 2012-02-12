@@ -64,7 +64,7 @@ object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:n
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"grip_unit", "reactive_striking_surface", "power_cell_brackets", "reinforcement_core"},
-   ingredientSlotType = {0, 0, 0, 2},
+   ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"iron_kammris", "metal", "copper", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
    resourceQuantities = {75, 40, 24, 1},
    combineTypes = {0, 0, 0, 1},

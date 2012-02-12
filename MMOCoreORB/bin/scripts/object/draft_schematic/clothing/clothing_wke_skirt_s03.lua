@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_wke_skirt_s03 = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "hardware", "skirt_section"},
-   ingredientSlotType = {0, 2, 2, 2},
+   ingredientSlotType = {0, 1, 1, 1},
    resourceTypes = {"fiberplast", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {45, 1, 1, 1},
    combineTypes = {0, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_weapon_pistol_flechette_fwg5 = object_draft_schematic_wea
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "cartridge_feed_unit", "barrel", "scope"},
-   ingredientSlotType = {0, 0, 0, 2, 2, 2, 4},
+   ingredientSlotType = {0, 0, 0, 1, 1, 1, 3},
    resourceTypes = {"iron", "metal_ferrous", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {30, 15, 6, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_item_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "colors", "electronic_control_unit", "color_stowage"},
-   ingredientSlotType = {0, 0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 0, 1, 1},
    resourceTypes = {"metal", "mineral", "mineral", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/droid/shared_droid_storage_compartment.iff"},
    resourceQuantities = {12, 9, 6, 1, 1},
    combineTypes = {0, 0, 0, 1, 1},

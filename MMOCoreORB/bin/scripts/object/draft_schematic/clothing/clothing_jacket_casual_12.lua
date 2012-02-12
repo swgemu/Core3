@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_jacket_casual_12 = object_draft_schemat
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"binding_and_hardware", "liner", "shell"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"petrochem_inert", "fiberplast", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {15, 30, 1},
    combineTypes = {0, 0, 1},

@@ -64,7 +64,7 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism_advanced = obj
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"cartridge_feed_mechanisme", "feed_tray_and_frame", "weapon_enhancement"},
-   ingredientSlotType = {0, 0, 4},
+   ingredientSlotType = {0, 0, 3},
    resourceTypes = {"steel_quadranium", "iron_axidite", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"},
    resourceQuantities = {20, 12, 1},
    combineTypes = {0, 0, 1},

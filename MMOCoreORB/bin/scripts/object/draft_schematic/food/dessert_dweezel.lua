@@ -64,7 +64,7 @@ object_draft_schematic_food_dessert_dweezel = object_draft_schematic_food_shared
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "berry_filling", "starchy_filling", "glaze", "additive"},
-   ingredientSlotType = {2, 0, 0, 0, 4},
+   ingredientSlotType = {1, 0, 0, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "fruit_berries", "vegetable_tubers", "fruit_fruits", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {1, 20, 20, 10, 1},
    combineTypes = {1, 0, 0, 0, 1},

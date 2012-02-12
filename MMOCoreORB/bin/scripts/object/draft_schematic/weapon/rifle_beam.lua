@@ -64,7 +64,7 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "enhanced_cooling_mechanism", "powerhandler", "thermal_control_unit", "barrel", "stock"},
-   ingredientSlotType = {0, 0, 0, 0, 1, 0, 2, 2},
+   ingredientSlotType = {0, 0, 0, 0, 1, 0, 1, 1},
    resourceTypes = {"steel", "iron", "metal", "crystalline_gallinorian", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "ore_carbonate_alantium", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {120, 60, 15, 15, 4, 30, 1, 1},
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},

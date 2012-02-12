@@ -64,7 +64,7 @@ object_draft_schematic_chemistry_medpack_poison_area_action_b = object_draft_sch
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 0, 1, 2, 1},
+   ingredientSlotType = {0, 0, 0, 1, 1, 1},
    resourceTypes = {"metal_nonferrous", "vegetable_fungi", "fuel_petrochem_liquid", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
    resourceQuantities = {10, 15, 20, 2, 1, 2},
    combineTypes = {0, 0, 0, 1, 1, 1},

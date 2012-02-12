@@ -75,7 +75,7 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "heavy_rocket_launcher_speed" },
-	
+
 	useCount = 40,
 
 	healthAttackCost = 95,

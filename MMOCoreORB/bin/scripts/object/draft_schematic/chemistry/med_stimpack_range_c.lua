@@ -64,7 +64,7 @@ object_draft_schematic_chemistry_med_stimpack_range_c = object_draft_schematic_c
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 0, 1, 2, 2},
+   ingredientSlotType = {0, 0, 0, 1, 1, 1},
    resourceTypes = {"aluminum", "organic", "fiberplast", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {8, 15, 15, 2, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1},

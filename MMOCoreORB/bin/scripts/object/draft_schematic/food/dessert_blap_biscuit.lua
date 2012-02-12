@@ -64,7 +64,7 @@ object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_s
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"first_carbosyrup", "second_carbosyrup", "dough", "berry_mix", "additive"},
-   ingredientSlotType = {2, 2, 2, 0, 4},
+   ingredientSlotType = {1, 1, 1, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "fruit_berries", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {1, 1, 1, 10, 1},
    combineTypes = {1, 1, 1, 0, 1},

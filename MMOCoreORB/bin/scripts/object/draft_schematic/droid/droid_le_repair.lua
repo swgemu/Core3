@@ -64,7 +64,7 @@ object_draft_schematic_droid_droid_le_repair = object_draft_schematic_droid_shar
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"frame", "broadband_transceiver_unit", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module", "general_droid_module2", "droid_personality_chip", "droid_defensive_module"},
-   ingredientSlotType = {2, 0, 2, 2, 2, 2, 4, 4, 4, 4},
+   ingredientSlotType = {1, 0, 1, 1, 1, 1, 3, 3, 3, 3},
    resourceTypes = {"object/tangible/component/droid/shared_advanced_droid_frame.iff", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_personality_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {1, 20, 1, 1, 1, 1, 1, 1, 1, 1},
    combineTypes = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1},

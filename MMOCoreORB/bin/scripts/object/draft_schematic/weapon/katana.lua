@@ -64,7 +64,7 @@ object_draft_schematic_weapon_katana = object_draft_schematic_weapon_shared_kata
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"sword_core_jacket", "grip", "jacketed_sword_core"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"steel", "petrochem_inert_polymer", "object/tangible/component/weapon/shared_sword_core.iff"},
    resourceQuantities = {42, 12, 1},
    combineTypes = {0, 0, 1},

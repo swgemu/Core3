@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_backpack_field_06 = object_draft_schema
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"primary_pocket", "secondary_pocket", "tertiary_pocket", "strap_pad", "strap_adjustment", "frame_reinforcement"},
-   ingredientSlotType = {2, 2, 2, 0, 0, 0},
+   ingredientSlotType = {1, 1, 1, 0, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "hide", "metal", "aluminum_titanium"},
    resourceQuantities = {1, 1, 1, 10, 5, 10},
    combineTypes = {1, 1, 1, 0, 0, 0},

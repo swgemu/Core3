@@ -64,7 +64,7 @@ object_draft_schematic_munition_mine_xg = object_draft_schematic_munition_shared
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"weapon_casing", "load_bearing_frame", "activation_panel", "warhead_assembly", "warhead_fusing"},
-   ingredientSlotType = {0, 0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 0, 1, 1},
    resourceTypes = {"metal", "steel", "chemical", "object/tangible/component/munition/shared_warhead_light.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff"},
    resourceQuantities = {8, 3, 2, 1, 1},
    combineTypes = {0, 0, 0, 1, 1},

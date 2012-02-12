@@ -64,7 +64,7 @@ object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_sh
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"wheat", "fruit_filling", "water", "sweet_glaze", "additive"},
-   ingredientSlotType = {0, 0, 0, 2, 4},
+   ingredientSlotType = {0, 0, 0, 1, 3},
    resourceTypes = {"wheat", "fruit_fruits", "water", "object/tangible/food/crafted/shared_dessert_bantha_butter.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {25, 20, 20, 1, 1},
    combineTypes = {0, 0, 0, 1, 1},

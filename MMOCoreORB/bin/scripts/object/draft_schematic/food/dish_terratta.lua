@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_terratta = object_draft_schematic_food_shared_d
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"hide_strips", "meat_strips", "sweet_oil", "mild_milk", "additive"},
-   ingredientSlotType = {0, 0, 2, 0, 4},
+   ingredientSlotType = {0, 0, 1, 0, 3},
    resourceTypes = {"hide_leathery", "meat_herbivore", "object/tangible/food/crafted/shared_dessert_bantha_butter.iff", "milk", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {20, 20, 1, 20, 1},
    combineTypes = {0, 0, 1, 0, 1},

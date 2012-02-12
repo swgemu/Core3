@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_skirt_formal_06 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"skirt", "trim", "extra_trim", "hardware"},
-   ingredientSlotType = {2, 2, 2, 0},
+   ingredientSlotType = {1, 1, 1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_trim.iff", "metal"},
    resourceQuantities = {1, 1, 1, 10},
    combineTypes = {1, 1, 1, 0},

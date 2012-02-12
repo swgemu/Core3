@@ -64,7 +64,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting = object_draft_sc
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_kashyyykian_hunting", "armor_layer_track", "segment_mounting_tabs", "defensive_layer", "defensive_layer_2", "defensive_layer_3", "segment_enhancement"},
-   ingredientSlotType = {0, 0, 0, 4, 4, 4, 4},
+   ingredientSlotType = {0, 0, 0, 3, 3, 3, 3},
    resourceTypes = {"hide_leathery", "bone_avian", "softwood_evergreen", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {15, 10, 5, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 1, 1, 1, 1},

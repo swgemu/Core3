@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_struct_maint_module_3 = object_draft_sche
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "maintenance_module", "transport_database"},
-   ingredientSlotType = {0, 0, 2, 1},
+   ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"aluminum_duralumin", "crystalline_vertex", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
    resourceQuantities = {25, 20, 1, 3},
    combineTypes = {0, 0, 1, 1},

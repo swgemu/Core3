@@ -64,7 +64,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_filli
 
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"nutrient_base", "matter_reactant", "thinning_substance", "secrets"},
-   ingredientSlotType = {0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"organic", "meat_domesticated", "meat_wild", "object/tangible/component/food/secrets/shared_secret_base.iff"},
    resourceQuantities = {20, 20, 20, 1},
    combineTypes = {0, 0, 0, 1},

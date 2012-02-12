@@ -64,7 +64,7 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 1, 2},
+   ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"organic", "inorganic", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {16, 16, 3, 1},
    combineTypes = {0, 0, 1, 1},

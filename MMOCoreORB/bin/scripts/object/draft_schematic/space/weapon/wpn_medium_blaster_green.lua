@@ -64,7 +64,7 @@ object_draft_schematic_space_weapon_wpn_medium_blaster_green = object_draft_sche
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"ship_blaster_core", "weapon_upgrade", "blaster_cooling_mechanism", "energy_shielding", "casing"},
-   ingredientSlotType = {0, 4, 0, 0, 0},
+   ingredientSlotType = {0, 3, 0, 0, 0},
    resourceTypes = {"radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk2.iff", "gas_inert", "ore_carbonate", "steel"},
    resourceQuantities = {125, 1, 125, 125, 125},
    combineTypes = {0, 1, 0, 0, 0},

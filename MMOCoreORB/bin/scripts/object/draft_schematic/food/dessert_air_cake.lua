@@ -64,7 +64,7 @@ object_draft_schematic_food_dessert_air_cake = object_draft_schematic_food_share
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "dough", "fruit_core", "additive"},
-   ingredientSlotType = {2, 2, 0, 4},
+   ingredientSlotType = {1, 1, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "fruit_fruits", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {1, 1, 20, 1},
    combineTypes = {1, 1, 0, 1},

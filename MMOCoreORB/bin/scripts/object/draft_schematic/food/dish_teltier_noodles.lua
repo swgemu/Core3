@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_s
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"thickening_agent", "vegetable_mix", "noodle_dough", "additive"},
-   ingredientSlotType = {0, 0, 2, 4},
+   ingredientSlotType = {0, 0, 1, 3},
    resourceTypes = {"hide", "vegetable", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {20, 20, 1, 1},
    combineTypes = {0, 0, 1, 1},

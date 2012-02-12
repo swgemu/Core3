@@ -64,7 +64,7 @@ object_draft_schematic_space_reactor_fusion_reactor_mk3 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"reactor_casing", "reactor_electrical_core", "reactor_upgrade", "reactor_radioactive_core", "reactor_cooling_system"},
-   ingredientSlotType = {0, 0, 4, 0, 0},
+   ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "copper", "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk3.iff", "radioactive", "gas_inert"},
    resourceQuantities = {250, 250, 1, 250, 250},
    combineTypes = {0, 0, 1, 0, 0},

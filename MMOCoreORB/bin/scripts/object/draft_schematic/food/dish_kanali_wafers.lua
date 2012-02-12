@@ -64,7 +64,7 @@ object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_sha
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "fruit_core", "preservative_wrap", "additive"},
-   ingredientSlotType = {2, 0, 0, 4},
+   ingredientSlotType = {1, 0, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "fruit", "hide", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {1, 20, 20, 1},
    combineTypes = {1, 0, 0, 1},

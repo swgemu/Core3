@@ -64,7 +64,7 @@ object_draft_schematic_weapon_component_blaster_power_handler = object_draft_sch
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"module_assembly", "xciter_circuitry", "circuitry_substrate", "gas_containment_unit", "reactant_source", "weapon_enhancement"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 4},
+   ingredientSlotType = {0, 0, 0, 0, 0, 3},
    resourceTypes = {"petrochem_inert", "copper", "ore", "metal", "gas_reactive", "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff"},
    resourceQuantities = {5, 3, 3, 5, 10, 1},
    combineTypes = {0, 0, 0, 0, 0, 1},

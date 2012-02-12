@@ -64,7 +64,7 @@ object_draft_schematic_item_item_recycler_metal = object_draft_schematic_item_sh
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"power_motor", "heating_element", "chemical_tubing", "liquid_metal_housing", "casing"},
-   ingredientSlotType = {2, 2, 0, 0, 0},
+   ingredientSlotType = {1, 2, 0, 0, 0},
    resourceTypes = {"object/tangible/loot/simple_kit/shared_motor_small_blue.iff", "object/tangible/loot/simple_kit/shared_heating_element.iff", "fiberplast", "steel", "iron"},
    resourceQuantities = {1, 4, 50, 40, 25},
    combineTypes = {1, 1, 0, 0, 0},

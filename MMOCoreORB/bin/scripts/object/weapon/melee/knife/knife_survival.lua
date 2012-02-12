@@ -100,7 +100,7 @@ object_weapon_melee_knife_knife_survival = object_weapon_melee_knife_shared_knif
 	maxDamage = 40,
 
 	attackSpeed = 3.25,
-	
+
 	woundsRatio = 8,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

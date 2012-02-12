@@ -64,7 +64,7 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "shielding_and_insulation", "communication_array", "transportation_module", "survey_control_circuit", "survey_scanning_storage_circuit", "command_interpreter", "navigation_control_circuit"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2, 2},
+   ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    resourceTypes = {"steel_carbonite", "chemical", "chemical", "crystalline_vertex", "radioactive_known", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff"},
    resourceQuantities = {40, 20, 25, 30, 35, 1, 1, 1, 1},
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},

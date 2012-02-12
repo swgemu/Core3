@@ -64,7 +64,7 @@ object_draft_schematic_chemistry_medpack_wound_quickness_c = object_draft_schema
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strenth_compound_2"},
-   ingredientSlotType = {0, 0, 2, 2, 2},
+   ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"seeds", "inorganic", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {18, 18, 1, 1, 1},
    combineTypes = {0, 0, 1, 1, 1},

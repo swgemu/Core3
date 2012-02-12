@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_boots_casual_15 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"boots", "binding_and_hardware", "sole"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"hide", "petrochem_inert", "object/tangible/component/clothing/shared_shoe_sole.iff"},
    resourceQuantities = {30, 10, 1},
    combineTypes = {0, 0, 1},

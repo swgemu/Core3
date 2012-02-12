@@ -64,7 +64,7 @@ object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schem
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"stock", "receiver_assembly", "grip_assembly", "powerhandler", "barrel"},
-   ingredientSlotType = {0, 0, 0, 1, 2},
+   ingredientSlotType = {0, 0, 0, 1, 1},
    resourceTypes = {"copper_mythra", "iron_doonium", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"},
    resourceQuantities = {60, 35, 10, 5, 1},
    combineTypes = {0, 0, 0, 1, 1},

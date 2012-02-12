@@ -64,7 +64,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen1 = object_draft_
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"emitter_shroud", "primary_crystal", "activator", "handgrip", "focusing_crystals", "power_field_insulator", "energizers"},
-   ingredientSlotType = {0, 1, 0, 0, 2, 0, 0},
+   ingredientSlotType = {0, 1, 0, 0, 1, 0, 0},
    resourceTypes = {"mineral", "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff", "metal", "chemical", "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff", "gas", "metal"},
    resourceQuantities = {25, 1, 24, 40, 1, 40, 40},
    combineTypes = {0, 1, 0, 0, 1, 0, 0},

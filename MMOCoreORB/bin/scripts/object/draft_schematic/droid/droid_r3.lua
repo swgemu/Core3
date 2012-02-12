@@ -64,7 +64,7 @@ object_draft_schematic_droid_droid_r3 = object_draft_schematic_droid_shared_droi
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_body_shell", "secondary_body_structure", "frame", "intellex_v_computer", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module_package", "droid_defensive_module"},
-   ingredientSlotType = {0, 0, 2, 1, 2, 2, 2, 4, 4},
+   ingredientSlotType = {0, 0, 1, 1, 1, 1, 1, 3, 3},
    resourceTypes = {"chemical", "chemical", "object/tangible/component/droid/shared_advanced_droid_frame.iff", "object/tangible/component/droid/shared_droid_brain_advanced.iff", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system_advanced.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_combat_socket_bank.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {150, 110, 1, 2, 1, 1, 1, 1, 1},
    combineTypes = {0, 0, 1, 1, 1, 1, 1, 1, 1},

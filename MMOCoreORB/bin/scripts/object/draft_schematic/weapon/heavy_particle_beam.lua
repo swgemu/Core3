@@ -64,7 +64,7 @@ object_draft_schematic_weapon_heavy_particle_beam = object_draft_schematic_weapo
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "enhanced_cooling_mechanism", "powerhandler", "thermal_control_unit", "barrel", "stock"},
-   ingredientSlotType = {0, 0, 0, 0, 2, 0, 2, 4},
+   ingredientSlotType = {0, 0, 0, 0, 1, 0, 1, 3},
    resourceTypes = {"steel", "iron", "metal", "gemstone_crystalline", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "ore_carbonate", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {75, 40, 20, 15, 1, 20, 1, 1},
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},

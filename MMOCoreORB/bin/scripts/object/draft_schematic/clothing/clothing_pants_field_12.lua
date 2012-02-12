@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_pants_field_12 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "hardware", "liner"},
-   ingredientSlotType = {0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"fiberplast", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {20, 10, 1, 1},
    combineTypes = {0, 0, 1, 1},
