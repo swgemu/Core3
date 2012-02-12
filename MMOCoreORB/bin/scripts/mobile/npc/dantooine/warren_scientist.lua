@@ -1,4 +1,4 @@
-scientist = Creature:new {
+warren_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
 	socialGroup = "Warren Teraud",
 	pvpFaction = "Warren Teraud",
@@ -31,4 +31,4 @@ scientist = Creature:new {
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(scientist, "scientist")
+CreatureTemplates:addCreatureTemplate(warren_scientist, "warren_scientist")
