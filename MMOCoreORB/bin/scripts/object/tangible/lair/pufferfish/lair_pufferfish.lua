@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_pufferfish_lair_pufferfish = object_tangible_lair_pufferfish_shared_lair_pufferfish:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_lair_pufferfish, "object/tangible/lair/pufferfish/lair_pufferfish.iff")

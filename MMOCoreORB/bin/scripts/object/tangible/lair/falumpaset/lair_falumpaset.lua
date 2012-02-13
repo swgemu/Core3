@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_falumpaset_lair_falumpaset = object_tangible_lair_falumpaset_shared_lair_falumpaset:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_lair_falumpaset, "object/tangible/lair/falumpaset/lair_falumpaset.iff")

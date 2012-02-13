@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_power_node = object_tangible_lair_base_shared_objective_power_node:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_power_node, "object/tangible/lair/base/objective_power_node.iff")

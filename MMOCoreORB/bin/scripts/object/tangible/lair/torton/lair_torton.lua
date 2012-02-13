@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_torton_lair_torton = object_tangible_lair_torton_shared_lair_torton:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_torton_lair_torton, "object/tangible/lair/torton/lair_torton.iff")

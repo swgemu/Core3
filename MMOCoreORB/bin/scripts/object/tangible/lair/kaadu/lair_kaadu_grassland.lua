@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kaadu_lair_kaadu_grassland = object_tangible_lair_kaadu_shared_lair_kaadu_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaadu_lair_kaadu_grassland, "object/tangible/lair/kaadu/lair_kaadu_grassland.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gackle_bat_lair_gackle_bat_jungle = object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_lair_gackle_bat_jungle, "object/tangible/lair/gackle_bat/lair_gackle_bat_jungle.iff")

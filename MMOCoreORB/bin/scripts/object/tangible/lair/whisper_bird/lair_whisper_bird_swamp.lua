@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_whisper_bird_lair_whisper_bird_swamp = object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_lair_whisper_bird_swamp, "object/tangible/lair/whisper_bird/lair_whisper_bird_swamp.iff")

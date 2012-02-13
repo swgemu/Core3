@@ -268,6 +268,8 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::TRAP);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CAMOKIT);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::LIVESAMPLE);
+
 
 	objectFactory.registerObject<VehicleControlDevice>(SceneObjectType::VEHICLECONTROLDEVICE);
 	objectFactory.registerObject<ShipControlDevice>(SceneObjectType::SHIPCONTROLDEVICE);

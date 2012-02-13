@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_bluefish_lair_bluefish = object_tangible_lair_bluefish_shared_lair_bluefish:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bluefish_lair_bluefish, "object/tangible/lair/bluefish/lair_bluefish.iff")

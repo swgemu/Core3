@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_tanc_mite_lair_tanc_mite = object_tangible_lair_tanc_mite_shared_lair_tanc_mite:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tanc_mite_lair_tanc_mite, "object/tangible/lair/tanc_mite/lair_tanc_mite.iff")

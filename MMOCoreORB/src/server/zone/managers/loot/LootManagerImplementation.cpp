@@ -136,7 +136,7 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 	return credits;
 }
 
-SceneObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level) {
+TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level) {
 	String directTemplateObject = templateObject->getDirectObjectTemplate();
 
 	ManagedReference<TangibleObject*> prototype = dynamic_cast<TangibleObject*> (zoneServer->createObject(directTemplateObject.hashCode(), 2));
@@ -270,26 +270,34 @@ void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 	}
 }
 
-void LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level) {
+void LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level, int useCount) {
 	if (container->hasFullContainerObjects())
 		return;
 
 	Reference<LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
-	if (group == NULL)
+	if (group == NULL) {
+		warning("Loot group template requested does not exist: " + lootGroup);
 		return;
+	}
 
 	//Now we do the second roll for the item out of the group.
 	int roll = System::random(10000000);
 
 	Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(group->getLootItemTemplateForRoll(roll));
 
-	if (itemTemplate == NULL)
+	if (itemTemplate == NULL) {
+		warning("Loot item template requested does not exist: " + group->getLootItemTemplateForRoll(roll));
 		return;
+	}
 
-	SceneObject* obj = createLootObject(itemTemplate, level);
+	TangibleObject* obj = createLootObject(itemTemplate, level);
 
 	if (obj != NULL) {
+
+		if(useCount > 1)
+			obj->setUseCount(useCount, false);
+
 		if (container->transferObject(obj, -1, false))
 			container->broadcastObject(obj, true);
 	}

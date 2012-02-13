@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_borgle_lair_borgle_jungle = object_tangible_lair_borgle_shared_lair_borgle_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_borgle_lair_borgle_jungle, "object/tangible/lair/borgle/lair_borgle_jungle.iff")

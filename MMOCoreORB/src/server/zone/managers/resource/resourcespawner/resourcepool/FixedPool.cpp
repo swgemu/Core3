@@ -60,23 +60,34 @@ FixedPool::~FixedPool() {
 }
 
 void FixedPool::initialize(const String& includes, const String& excludes) {
+	includedResources.setAllowDuplicateInsertPlan();
 	ResourcePool::initialize(includes, excludes);
-
-	/// We need to add a NULL item for each object the pool will fill
-	for (int ii = 0; ii < includedResources.size(); ++ii)
-		this->add(NULL);
 }
 
-void FixedPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
+void FixedPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) {
 
-	for (int ii = 0; ii < includedResources.size(); ++ii) {
+	if(poolSlot.isEmpty()) {
+		resourceSpawn->setSpawnPool(ResourcePool::NOPOOL, "");
+		return;
+	}
 
-		ManagedReference<ResourceSpawn*> spawninpool = this->get(ii);
+	int index = -1;
 
-		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool == NULL) {
-			this->setElementAt(ii, resourceSpawn);
+	for(int i = 0; i < includedResources.size(); ++i) {
+		String resourceType = includedResources.elementAt(i).getKey();
+		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
+
+		if(resourceType == poolSlot && spawn == NULL) {
+			index = i;
 			break;
 		}
+	}
+
+	if(index >= 0) {
+		VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(poolSlot, resourceSpawn);
+		includedResources.setElementAt(index, newEntry);
+	} else {
+		resourceSpawn->setSpawnPool(ResourcePool::NOPOOL, "");
 	}
 
 }
@@ -86,61 +97,74 @@ bool FixedPool::update() {
 	int despawnedCount = 0, spawnedCount = 0;
 
 	StringBuffer buffer;
-	buffer << "Fixed pool updating: ";
-
-	for(int ii = 0; ii < size(); ++ii) {
-
-		ManagedReference<ResourceSpawn* > resourceSpawn = get(ii);
-
-		if(resourceSpawn == NULL) {
-			ManagedReference<ResourceSpawn* > newSpawn =
-					resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
-
-			if (newSpawn != NULL) {
-
-				newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
-				spawnedCount++;
-
-				setElementAt(ii, newSpawn);
-
-				//buffer << "Added: " << newSpawn->getName() << " : " << newSpawn->getType() << endl;
-
-			} else
-				resourceSpawner->info("Resource not valid for Fixed Pool: " + includedResources.get(ii));
-		}
-	}
+	buffer << "FixedPool updating: ";
 
 	/**
 	 * We remove any resources that have despawned from the
-	 * pool
+	 * pool.
 	 */
-	for(int ii = 0; ii < size(); ++ii) {
-		ManagedReference<ResourceSpawn* > spawn = get(ii);
+	for(int i = 0; i < includedResources.size(); ++i) {
 
-		if (spawn != NULL && !spawn->inShift()) {
+		String resourceType = includedResources.elementAt(i).getKey();
+		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
 
-			//buffer << "Removing: " << spawn->getName() << " : " << spawn->getType();
+		if (spawn == NULL || !spawn->inShift()) {
 
-			setElementAt(ii, NULL);
-			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			despawnedCount++;
+			if(spawn != NULL) {
+				resourceSpawner->despawn(spawn);
+				despawnedCount++;
+				//buffer << "Removing: " << spawn->getName() << " : " << spawn->getType();
+			}
 
-			ManagedReference<ResourceSpawn* > newSpawn = NULL;
+			ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->createResourceSpawn(resourceType, excludedResources);
+			if(newSpawn != NULL) {
+				newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL, resourceType);
+				spawnedCount++;
 
-			if(newSpawn == NULL)
-				newSpawn = resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
+				//buffer << " and replacing with " << newSpawn->getName() << " : " << newSpawn->getType() << endl;
 
-			newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
-			spawnedCount++;
-
-			//buffer << " and replacing with " << newSpawn->getName() << " : " << newSpawn->getType() << endl;
-
-			setElementAt(ii, newSpawn);
+				VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(resourceType, newSpawn);
+				includedResources.setElementAt(i, newEntry);
+			} else {
+				warning("Couldn't spawn resource type in FixedPool: " + resourceType);
+			}
 		}
 	}
+
+
 	buffer << "Spawned " << spawnedCount << " Despawned " << despawnedCount;
 	resourceSpawner->info(buffer.toString(), true);
 	return true;
+}
+
+String FixedPool::healthCheck() {
+
+	StringBuffer buffer;
+	buffer << "****** Fixed Pool " << "(" <<  includedResources.size() << ") ************" << endl;
+
+	bool heathly = true;
+
+	for(int i = 0; i < includedResources.size(); ++i) {
+		String resourceType = includedResources.elementAt(i).getKey();
+		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
+
+		bool pass = spawn->isType(resourceType);
+		if(!pass)
+			heathly = false;
+
+		if (spawn != NULL) {
+			buffer << "   " << i << ". " << resourceType << " : "
+					<< (pass ? "Pass" : "Fail") << " ("
+					<< spawn->getType() << ")" << endl;
+		} else {
+			buffer << "   " << i << ". " << resourceType << " : " << ("Fail")
+					<< " ()" << endl;
+			heathly = false;
+		}
+	}
+	buffer << "***********" << (heathly ? "HEALTHY!" : "ERRORS!") << "*****************" << endl;
+
+	return buffer.toString();
 }
 
 void FixedPool::print() {

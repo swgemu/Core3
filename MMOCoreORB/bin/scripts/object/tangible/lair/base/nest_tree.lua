@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_nest_tree = object_tangible_lair_base_shared_nest_tree:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_nest_tree, "object/tangible/lair/base/nest_tree.iff")

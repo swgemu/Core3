@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_stintaril_lair_stintaril_jungle = object_tangible_lair_stintaril_shared_lair_stintaril_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_stintaril_lair_stintaril_jungle, "object/tangible/lair/stintaril/lair_stintaril_jungle.iff")

@@ -185,19 +185,19 @@ void ResourceSpawner::loadResourceSpawns() {
 
 			switch (resourceSpawn->getSpawnPool()) {
 			case ResourcePool::MINIMUMPOOL:
-				minimumPool->addResource(resourceSpawn);
+				minimumPool->addResource(resourceSpawn, resourceSpawn->getPoolSlot());
 				break;
 			case ResourcePool::RANDOMPOOL:
-				randomPool->addResource(resourceSpawn);
+				randomPool->addResource(resourceSpawn, resourceSpawn->getPoolSlot());
 				break;
 			case ResourcePool::FIXEDPOOL:
-				fixedPool->addResource(resourceSpawn);
+				fixedPool->addResource(resourceSpawn, resourceSpawn->getPoolSlot());
 				break;
 			case ResourcePool::NATIVEPOOL:
-				nativePool->addResource(resourceSpawn);
+				nativePool->addResource(resourceSpawn, resourceSpawn->getPoolSlot());
 				break;
 			case ResourcePool::MANUALPOOL:
-				manualPool->addResource(resourceSpawn);
+				manualPool->addResource(resourceSpawn, resourceSpawn->getPoolSlot());
 				break;
 			}
 		}
@@ -222,7 +222,7 @@ ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
 	ResourceSpawn* resourceSpawn = createResourceSpawn(type);
 
 	if (resourceSpawn != NULL)
-		manualPool->add(resourceSpawn);
+		manualPool->addResource(resourceSpawn, "any");
 
 	return resourceSpawn;
 }
@@ -315,6 +315,16 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(
 	String type = includes.get(System::random(includes.size() - 1));
 
 	return createResourceSpawn(type, excludes, zonerestriction);
+}
+
+void ResourceSpawner::despawn(ResourceSpawn* spawn) {
+
+	for(int i = 0; i < spawn->getSpawnMapSize(); ++i) {
+		String zone = spawn->getSpawnMapZone(i);
+		resourceMap->remove(spawn, zone);
+	}
+
+	spawn->setSpawnPool(ResourcePool::NOPOOL, "");
 }
 
 String ResourceSpawner::makeResourceName(bool isOrganic) {
@@ -851,4 +861,15 @@ void ResourceSpawner::listResourcesForPlanetOnScreen(CreatureObject* creature, c
 
 		creature->sendSystemMessage(info.toString());
 	}
+}
+
+String ResourceSpawner::healthCheck() {
+	StringBuffer health;
+	health << minimumPool->healthCheck() << endl;
+	health << fixedPool->healthCheck() << endl;
+	health << randomPool->healthCheck() << endl;
+	health << nativePool->healthCheck() << endl;
+	health << manualPool->healthCheck() << endl;
+
+	return health.toString();
 }

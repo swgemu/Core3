@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_dalyrake_lair_dalyrake = object_tangible_lair_dalyrake_shared_lair_dalyrake:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_lair_dalyrake, "object/tangible/lair/dalyrake/lair_dalyrake.iff")

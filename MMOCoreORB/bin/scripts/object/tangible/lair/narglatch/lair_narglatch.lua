@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_narglatch_lair_narglatch = object_tangible_lair_narglatch_shared_lair_narglatch:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_narglatch_lair_narglatch, "object/tangible/lair/narglatch/lair_narglatch.iff")

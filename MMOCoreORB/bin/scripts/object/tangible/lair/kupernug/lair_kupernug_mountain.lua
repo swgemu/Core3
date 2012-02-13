@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kupernug_lair_kupernug_mountain = object_tangible_lair_kupernug_shared_lair_kupernug_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kupernug_lair_kupernug_mountain, "object/tangible/lair/kupernug/lair_kupernug_mountain.iff")

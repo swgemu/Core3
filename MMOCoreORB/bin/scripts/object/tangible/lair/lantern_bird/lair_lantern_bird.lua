@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_lantern_bird_lair_lantern_bird = object_tangible_lair_lantern_bird_shared_lair_lantern_bird:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_lantern_bird_lair_lantern_bird, "object/tangible/lair/lantern_bird/lair_lantern_bird.iff")

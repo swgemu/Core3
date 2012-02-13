@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_womp_rat_lair_womp_rat = object_tangible_lair_womp_rat_shared_lair_womp_rat:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_womp_rat_lair_womp_rat, "object/tangible/lair/womp_rat/lair_womp_rat.iff")

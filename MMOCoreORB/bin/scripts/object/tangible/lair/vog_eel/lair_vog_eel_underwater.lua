@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vog_eel_lair_vog_eel_underwater = object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_lair_vog_eel_underwater, "object/tangible/lair/vog_eel/lair_vog_eel_underwater.iff")

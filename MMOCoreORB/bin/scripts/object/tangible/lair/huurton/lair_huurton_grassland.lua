@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_huurton_lair_huurton_grassland = object_tangible_lair_huurton_shared_lair_huurton_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_huurton_lair_huurton_grassland, "object/tangible/lair/huurton/lair_huurton_grassland.iff")

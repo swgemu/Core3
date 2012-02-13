@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_crowned_rasp_lair_crowned_rasp = object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_lair_crowned_rasp, "object/tangible/lair/crowned_rasp/lair_crowned_rasp.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_roba_hill_lair_roba_hill = object_tangible_lair_roba_hill_shared_lair_roba_hill:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_roba_hill_lair_roba_hill, "object/tangible/lair/roba_hill/lair_roba_hill.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gurk_lair_gurk_wasteland = object_tangible_lair_gurk_shared_lair_gurk_wasteland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurk_lair_gurk_wasteland, "object/tangible/lair/gurk/lair_gurk_wasteland.iff")

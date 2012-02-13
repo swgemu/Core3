@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_spined_puc_lair_spined_puc_underwater = object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_lair_spined_puc_underwater, "object/tangible/lair/spined_puc/lair_spined_puc_underwater.iff")

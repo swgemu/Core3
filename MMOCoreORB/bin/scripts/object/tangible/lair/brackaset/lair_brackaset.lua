@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_brackaset_lair_brackaset = object_tangible_lair_brackaset_shared_lair_brackaset:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_brackaset_lair_brackaset, "object/tangible/lair/brackaset/lair_brackaset.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vog_eel_lair_vog_eel = object_tangible_lair_vog_eel_shared_lair_vog_eel:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_lair_vog_eel, "object/tangible/lair/vog_eel/lair_vog_eel.iff")

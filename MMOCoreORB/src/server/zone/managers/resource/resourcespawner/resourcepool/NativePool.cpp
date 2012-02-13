@@ -56,7 +56,7 @@ NativePool::NativePool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 }
 
 NativePool::~NativePool() {
-
+	spawnsPerZone.removeAll();
 }
 
 void NativePool::initialize(const String& includes, const String& excludes) {
@@ -65,76 +65,73 @@ void NativePool::initialize(const String& includes, const String& excludes) {
 
 	ResourcePool::initialize(includes, excludes);
 
-	for(int ii = 0; ii < activeResourceZones.size(); ++ii)
-		for(int jj = 0; jj < includedResources.size(); ++jj)
-			this->add(NULL);
+	for(int i = 0; i < activeResourceZones.size(); ++i) {
+		VectorMap<String, ManagedReference<ResourceSpawn*> > spawnZone;
+
+		for(int j = 0; j < includedResources.size(); ++j) {
+			String resource = includedResources.elementAt(j).getKey() + "_" + activeResourceZones.get(i);
+			spawnZone.put(resource, NULL);
+		}
+
+		spawnsPerZone.put(activeResourceZones.get(i), spawnZone);
+	}
 }
 
-void NativePool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
+void NativePool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) {
 
-	for (int ii = 0; ii < activeResourceZones.size(); ++ii) {
-			for (int jj = 0; jj < includedResources.size(); ++jj) {
+	String planet = resourceSpawn->getZoneRestriction();
+	VectorMap<String, ManagedReference<ResourceSpawn*> >* spawnZone = &spawnsPerZone.get(planet);
 
-				int indexoffset = jj + (ii * includedResources.size());
-
-				ManagedReference<ResourceSpawn*> spawninpool = get(indexoffset);
-
-				if (spawninpool == NULL && resourceSpawn->isType(includedResources.get(jj)) &&
-						activeResourceZones.get(ii) == resourceSpawn->getZoneRestriction()) {
-					this->setElementAt(indexoffset, resourceSpawn);
-					return;
-				}
-			}
-		}
+	if(poolSlot.isEmpty()) {
+		resourceSpawn->setSpawnPool(ResourcePool::NOPOOL, "");
+		return;
 	}
+
+	int index = spawnZone->find(poolSlot);
+	if(index >= 0) {
+		VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(poolSlot, resourceSpawn);
+		spawnZone->setElementAt(index, newEntry);
+	} else {
+		resourceSpawn->setSpawnPool(ResourcePool::NOPOOL, "");
+	}
+
+}
 
 bool NativePool::update() {
 
 	int despawnedCount = 0, spawnedCount = 0;
 	StringBuffer buffer;
-	buffer << "Native pool updating: ";
+	buffer << "NativePool updating: ";
 
-	for(int ii = 0; ii < activeResourceZones.size(); ++ii) {
-		for(int jj = 0; jj < includedResources.size(); ++jj) {
+	for(int i = 0; i < spawnsPerZone.size(); ++i) {
+		VectorMap<String, ManagedReference<ResourceSpawn*> >* spawnZone = &spawnsPerZone.get(i);
 
-			int indexoffset = jj + (ii * includedResources.size());
+		for(int j = 0; j < spawnZone->size(); ++j) {
 
-			ManagedReference<ResourceSpawn* > resourceSpawn = get(indexoffset);
+			String resourceType = spawnZone->elementAt(j).getKey();
+			ManagedReference<ResourceSpawn* > spawn = spawnZone->elementAt(j).getValue();
 
-			if(resourceSpawn == NULL) {
+			if (spawn == NULL || !spawn->inShift()) {
 
-				ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->createResourceSpawn(
-						includedResources.get(jj), excludedResources, activeResourceZones.get(ii));
+				if(spawn != NULL) {
+					resourceSpawner->despawn(spawn);
+					despawnedCount++;
+					//buffer << "Removing: " << spawn->getName() << " : " << spawn->getType();
+				}
 
-				if (newSpawn != NULL) {
+			ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->createResourceSpawn(resourceType, excludedResources);
+			if(newSpawn != NULL) {
+				newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL, resourceType);
+				spawnedCount++;
 
-					newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
-					spawnedCount++;
+				//buffer << " and replacing with " << newSpawn->getName() << " : " << newSpawn->getType() << endl;
 
-					setElementAt(indexoffset, newSpawn);
-
-				} else
-					resourceSpawner->info("Resource not valid for Native Pool: " + includedResources.get(jj));
+				VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(resourceType, newSpawn);
+				spawnZone->setElementAt(j, newEntry);
+			} else {
+				warning("Couldn't spawn resource type in NativePool: " + resourceType);
 			}
-		}
-	}
-
-	for(int ii = 0; ii < size(); ++ii) {
-		ManagedReference<ResourceSpawn* > spawn = get(ii);
-
-		if (spawn != NULL && !spawn->inShift()) {
-
-			setElementAt(ii, NULL);
-			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			despawnedCount++;
-
-			ManagedReference<ResourceSpawn* > newSpawn =
-					resourceSpawner->createResourceSpawn(spawn->getType(), excludedResources);
-
-			newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
-			spawnedCount++;
-
-			setElementAt(ii, newSpawn);
+					}
 		}
 	}
 
@@ -143,25 +140,62 @@ bool NativePool::update() {
 	return true;
 }
 
+String NativePool::healthCheck() {
+
+	StringBuffer buffer;
+	buffer << "****** Native Pool Zones " << "(" <<  spawnsPerZone.size() << ") ************" << endl;
+
+	bool heathly = true;
+
+	for(int i = 0; i < spawnsPerZone.size(); ++i) {
+		VectorMap<String, ManagedReference<ResourceSpawn*> > spawnZone = spawnsPerZone.get(i);
+
+		buffer << spawnsPerZone.elementAt(i).getKey() << endl;
+
+		for(int i = 0; i < spawnZone.size(); ++i) {
+			String resourceType = spawnZone.elementAt(i).getKey();
+			ManagedReference<ResourceSpawn* > spawn = spawnZone.elementAt(i).getValue();
+
+			bool pass = spawn->isType(resourceType);
+			if(!pass)
+				heathly = false;
+
+			if(spawn != NULL) {
+				buffer << "   " << i << ". " << resourceType << " : "
+					   << (pass ? "Pass" : "Fail")
+					   << " (" << spawn->getType() << ")" << endl;
+			} else {
+				buffer << "   " << i << ". " << resourceType << " : "
+					   << ("Fail")
+					   << " ()" << endl;
+				heathly = false;
+			}
+		}
+	}
+	buffer << "***********" << (heathly ? "HEALTHY!" : "ERRORS!") << "*****************" << endl;
+
+	return buffer.toString();
+}
+
 void NativePool::print() {
 	info("**** Native Pool ****", true);
 
-	for (int ii = 0; ii < activeResourceZones.size(); ++ii) {
+	for (int i = 0; i < spawnsPerZone.size(); ++i) {
+
+		VectorMap<String, ManagedReference<ResourceSpawn*> > spawnZone = spawnsPerZone.get(i);
 
 		StringBuffer msg2;
-		msg2 << "Zone " << activeResourceZones.get(ii);
+		msg2 << "Zone " << spawnsPerZone.elementAt(i).getKey();
 		info(msg2.toString(), true);
 
-		for (int jj = 0; jj < includedResources.size(); ++jj) {
+		for (int j = 0; j < spawnZone.size(); ++j) {
 
-			int indexoffset = jj + (ii * includedResources.size());
-
-			ManagedReference<ResourceSpawn* > spawn = get(indexoffset);
+			ManagedReference<ResourceSpawn* > spawn = spawnZone.get(j);
 
 			StringBuffer msg3;
 
 			if (spawn != NULL)
-				msg3 <<  get(indexoffset)->getName() << " : "<< get(indexoffset)->getType();
+				msg3 <<  spawn->getName() << " : "<< spawn->getType();
 			else
 				msg3 << "EMPTY";
 

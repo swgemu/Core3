@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_flite_rasp_hill_lair_flite_rasp_hill = object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_hill_lair_flite_rasp_hill, "object/tangible/lair/flite_rasp_hill/lair_flite_rasp_hill.iff")

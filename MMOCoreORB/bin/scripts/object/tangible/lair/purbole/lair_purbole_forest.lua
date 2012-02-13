@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_purbole_lair_purbole_forest = object_tangible_lair_purbole_shared_lair_purbole_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_purbole_lair_purbole_forest, "object/tangible/lair/purbole/lair_purbole_forest.iff")

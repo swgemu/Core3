@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_leaf_medium = object_tangible_lair_base_shared_poi_all_lair_leaf_medium:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_leaf_medium, "object/tangible/lair/base/poi_all_lair_leaf_medium.iff")

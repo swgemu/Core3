@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_cave_small_dark = object_tangible_lair_base_shared_cave_small_dark:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_cave_small_dark, "object/tangible/lair/base/cave_small_dark.iff")

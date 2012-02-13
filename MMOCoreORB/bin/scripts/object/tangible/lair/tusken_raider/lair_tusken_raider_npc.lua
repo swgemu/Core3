@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_tusken_raider_lair_tusken_raider_npc = object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tusken_raider_lair_tusken_raider_npc, "object/tangible/lair/tusken_raider/lair_tusken_raider_npc.iff")

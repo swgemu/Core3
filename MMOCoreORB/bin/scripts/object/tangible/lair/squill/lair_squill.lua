@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_squill_lair_squill = object_tangible_lair_squill_shared_lair_squill:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_squill_lair_squill, "object/tangible/lair/squill/lair_squill.iff")

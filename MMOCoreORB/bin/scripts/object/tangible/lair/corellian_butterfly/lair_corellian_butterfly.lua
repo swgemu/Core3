@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_corellian_butterfly_lair_corellian_butterfly = object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_lair_corellian_butterfly, "object/tangible/lair/corellian_butterfly/lair_corellian_butterfly.iff")

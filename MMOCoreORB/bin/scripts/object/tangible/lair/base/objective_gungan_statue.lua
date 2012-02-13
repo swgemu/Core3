@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_gungan_statue = object_tangible_lair_base_shared_objective_gungan_statue:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_gungan_statue, "object/tangible/lair/base/objective_gungan_statue.iff")

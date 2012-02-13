@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_flewt_lair_flewt_grassland = object_tangible_lair_flewt_shared_lair_flewt_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flewt_lair_flewt_grassland, "object/tangible/lair/flewt/lair_flewt_grassland.iff")

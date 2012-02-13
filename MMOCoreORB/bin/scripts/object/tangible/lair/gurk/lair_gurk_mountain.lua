@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gurk_lair_gurk_mountain = object_tangible_lair_gurk_shared_lair_gurk_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurk_lair_gurk_mountain, "object/tangible/lair/gurk/lair_gurk_mountain.iff")

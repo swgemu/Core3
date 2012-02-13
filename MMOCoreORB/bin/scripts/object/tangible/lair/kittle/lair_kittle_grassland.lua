@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kittle_lair_kittle_grassland = object_tangible_lair_kittle_shared_lair_kittle_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kittle_lair_kittle_grassland, "object/tangible/lair/kittle/lair_kittle_grassland.iff")

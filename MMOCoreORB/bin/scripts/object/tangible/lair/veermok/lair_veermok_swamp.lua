@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_veermok_lair_veermok_swamp = object_tangible_lair_veermok_shared_lair_veermok_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_veermok_lair_veermok_swamp, "object/tangible/lair/veermok/lair_veermok_swamp.iff")

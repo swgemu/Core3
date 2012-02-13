@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_fanned_rawl_lair_fanned_rawl_swamp = object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_lair_fanned_rawl_swamp, "object/tangible/lair/fanned_rawl/lair_fanned_rawl_swamp.iff")

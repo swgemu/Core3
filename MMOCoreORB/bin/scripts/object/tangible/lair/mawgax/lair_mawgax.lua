@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_mawgax_lair_mawgax = object_tangible_lair_mawgax_shared_lair_mawgax:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mawgax_lair_mawgax, "object/tangible/lair/mawgax/lair_mawgax.iff")

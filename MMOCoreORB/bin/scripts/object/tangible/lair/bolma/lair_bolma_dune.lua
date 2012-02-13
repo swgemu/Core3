@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_bolma_lair_bolma_dune = object_tangible_lair_bolma_shared_lair_bolma_dune:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bolma_lair_bolma_dune, "object/tangible/lair/bolma/lair_bolma_dune.iff")

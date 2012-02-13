@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_tusk_cat_lair_tusk_cat = object_tangible_lair_tusk_cat_shared_lair_tusk_cat:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_lair_tusk_cat, "object/tangible/lair/tusk_cat/lair_tusk_cat.iff")

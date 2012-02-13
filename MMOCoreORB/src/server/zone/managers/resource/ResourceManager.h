@@ -172,6 +172,8 @@ public:
 
 	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
 
+	String healthCheck();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -182,6 +184,7 @@ protected:
 	virtual ~ResourceManager();
 
 	String _return_addParentNodeToListBox;
+	String _return_healthCheck;
 
 	friend class ResourceManagerHelper;
 };
@@ -266,6 +269,8 @@ public:
 
 	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
 
+	String healthCheck();
+
 	WeakReference<ResourceManager*> _this;
 
 	operator const ResourceManager*();
@@ -344,6 +349,8 @@ public:
 	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
 
 	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
+
+	String healthCheck();
 
 protected:
 	String _param2_sendResourceListForSurvey__CreatureObject_int_String_;

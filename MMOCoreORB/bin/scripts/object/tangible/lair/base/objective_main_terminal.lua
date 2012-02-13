@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_main_terminal = object_tangible_lair_base_shared_objective_main_terminal:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_main_terminal, "object/tangible/lair/base/objective_main_terminal.iff")

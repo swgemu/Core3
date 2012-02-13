@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_plumed_rasp_lair_plumed_rasp_mountain = object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_lair_plumed_rasp_mountain, "object/tangible/lair/plumed_rasp/lair_plumed_rasp_mountain.iff")

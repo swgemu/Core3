@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_flewt_lair_flewt_forest = object_tangible_lair_flewt_shared_lair_flewt_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flewt_lair_flewt_forest, "object/tangible/lair/flewt/lair_flewt_forest.iff")

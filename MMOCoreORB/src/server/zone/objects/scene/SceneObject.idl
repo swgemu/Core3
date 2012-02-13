@@ -1351,6 +1351,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return gameObjectType == SceneObjectType.INSTRUMENT;
 	}
 	
+	@read
+	public boolean isLiveSample() {
+		return gameObjectType == SceneObjectType.LIVESAMPLE;
+	}
+	
 	@dirty
 	public abstract boolean isInstallationObject() {
 		return false;

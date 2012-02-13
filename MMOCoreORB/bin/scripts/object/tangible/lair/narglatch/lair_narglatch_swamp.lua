@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_narglatch_lair_narglatch_swamp = object_tangible_lair_narglatch_shared_lair_narglatch_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_narglatch_lair_narglatch_swamp, "object/tangible/lair/narglatch/lair_narglatch_swamp.iff")

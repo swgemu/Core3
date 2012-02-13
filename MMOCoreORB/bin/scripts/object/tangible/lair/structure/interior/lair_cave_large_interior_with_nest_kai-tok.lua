@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_interior_lair_cave_large_interior_with_nest_kai_tok = object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_kai_tok:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_lair_cave_large_interior_with_nest_kai_tok, "object/tangible/lair/structure/interior/lair_cave_large_interior_with_nest_kai-tok.iff")

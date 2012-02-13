@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_dwarf_nuna_lair_dwarf_nuna_swamp = object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_lair_dwarf_nuna_swamp, "object/tangible/lair/dwarf_nuna/lair_dwarf_nuna_swamp.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_angler_lair_angler_swamp = object_tangible_lair_angler_shared_lair_angler_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_angler_lair_angler_swamp, "object/tangible/lair/angler/lair_angler_swamp.iff")

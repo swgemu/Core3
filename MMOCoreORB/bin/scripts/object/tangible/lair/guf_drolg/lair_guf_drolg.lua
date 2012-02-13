@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_guf_drolg_lair_guf_drolg = object_tangible_lair_guf_drolg_shared_lair_guf_drolg:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_lair_guf_drolg, "object/tangible/lair/guf_drolg/lair_guf_drolg.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_interior_lair_cave_giant_interior_kimogila = object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_lair_cave_giant_interior_kimogila, "object/tangible/lair/structure/interior/lair_cave_giant_interior_kimogila.iff")

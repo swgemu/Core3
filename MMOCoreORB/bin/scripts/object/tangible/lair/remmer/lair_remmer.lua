@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_remmer_lair_remmer = object_tangible_lair_remmer_shared_lair_remmer:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_remmer_lair_remmer, "object/tangible/lair/remmer/lair_remmer.iff")

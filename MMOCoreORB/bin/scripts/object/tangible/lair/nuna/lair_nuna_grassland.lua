@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_nuna_lair_nuna_grassland = object_tangible_lair_nuna_shared_lair_nuna_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nuna_lair_nuna_grassland, "object/tangible/lair/nuna/lair_nuna_grassland.iff")

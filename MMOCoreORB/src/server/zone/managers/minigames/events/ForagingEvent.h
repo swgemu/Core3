@@ -59,16 +59,16 @@ class ForagingEvent : public Task {
 
 	ManagedReference<CreatureObject*> player;
 	ManagedReference<ZoneServer*> zoneServer;
-	bool scoutForage;
+	int forageType;
 	float forageX;
 	float forageY;
 	String zoneName;
 
 public:
-	ForagingEvent(CreatureObject* player, ZoneServer* zoneServer, bool scoutForage, float playerX, float playerY, const String& planet) : Task() {
+	ForagingEvent(CreatureObject* player, ZoneServer* zoneServer, int type, float playerX, float playerY, const String& planet) : Task() {
 		this->player = player;
 		this->zoneServer = zoneServer;
-		this->scoutForage = scoutForage;
+		this->forageType = type;
 		this->forageX = playerX;
 		this->forageY = playerY;
 		this->zoneName = planet;
@@ -77,7 +77,7 @@ public:
 	void run() {
 		ManagedReference<ForageManager*> forageManager = zoneServer->getForageManager();
 		if (forageManager != NULL)
-			forageManager->finishForaging(player, scoutForage, forageX, forageY, zoneName);
+			forageManager->finishForaging(player, forageType, forageX, forageY, zoneName);
 	}
 };
 

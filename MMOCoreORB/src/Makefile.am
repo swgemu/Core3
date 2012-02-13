@@ -296,6 +296,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TrapMenuComponent.cpp \
+		server/zone/objects/tangible/components/LairMenuComponent.cpp \
 		server/zone/objects/tangible/components/LootSchematicMenuComponent.cpp \
 		server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampKitMenuComponent.cpp \
@@ -381,10 +382,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
 		server/zone/managers/resource/resourcespawner/resourcemap/ResourceMap.cpp \
-		server/zone/managers/resource/resourcespawner/resourcepool/MinimumPool.cpp \
-		server/zone/managers/resource/resourcespawner/resourcepool/RandomPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.cpp \
+		server/zone/managers/resource/resourcespawner/resourcepool/RandomPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
+		server/zone/managers/resource/resourcespawner/resourcepool/MinimumPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
 		server/zone/objects/factorycrate/FactoryCrateImplementation.cpp \

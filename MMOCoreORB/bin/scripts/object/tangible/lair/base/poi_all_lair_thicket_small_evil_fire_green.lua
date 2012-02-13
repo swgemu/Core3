@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_thicket_small_evil_fire_green = object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_thicket_small_evil_fire_green, "object/tangible/lair/base/poi_all_lair_thicket_small_evil_fire_green.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_stormtrooper_lair_stormtrooper_npc = object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_stormtrooper_lair_stormtrooper_npc, "object/tangible/lair/stormtrooper/lair_stormtrooper_npc.iff")

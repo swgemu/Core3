@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_remmer_lair_remmer_grassland = object_tangible_lair_remmer_shared_lair_remmer_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_remmer_lair_remmer_grassland, "object/tangible/lair/remmer/lair_remmer_grassland.iff")

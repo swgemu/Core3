@@ -59,9 +59,9 @@ ManualPool::~ManualPool() {
 
 }
 
-void ManualPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
-	add(resourceSpawn);
-	resourceSpawn->setSpawnPool(ResourcePool::MANUALPOOL);
+void ManualPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) {
+	includedResources.put("any", resourceSpawn);
+	resourceSpawn->setSpawnPool(ResourcePool::MANUALPOOL, "any");
 }
 
 bool ManualPool::update() {
@@ -71,17 +71,18 @@ bool ManualPool::update() {
 	 */
 
 	StringBuffer buffer;
-	buffer << "Manual pool updating: ";
+	buffer << "ManualPool updating: ";
 	int despawnedCount = 0;
 
-	for (int ii = 0; ii < size(); ++ii) {
+	for (int i = 0; i < includedResources.size(); ++i) {
 
-		ManagedReference<ResourceSpawn* > spawn = get(ii);
+		ManagedReference<ResourceSpawn* > spawn = includedResources.get(i);
 
 		if (!spawn->inShift()) {
 
-			removeElement(spawn);
-			spawn->setSpawnPool(ResourcePool::NOPOOL);
+			includedResources.drop(includedResources.elementAt(i).getKey());
+			i--;
+			resourceSpawner->despawn(spawn);
 			despawnedCount++;
 		}
 	}
@@ -92,11 +93,33 @@ bool ManualPool::update() {
 	return true;
 }
 
-void ManualPool::print() {
-	info("**** Manual Pool ****", true);
+String ManualPool::healthCheck() {
 
-	for (int ii = 0; ii < this->size(); ++ii) {
-		ManagedReference<ResourceSpawn* > spawn = this->get(ii);
+	StringBuffer buffer;
+	buffer << "****** ManualPool " << "(" <<  includedResources.size() << ") ************" << endl;
+	for(int i = 0; i < includedResources.size(); ++i) {
+		String resourceType = includedResources.elementAt(i).getKey();
+		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
+
+		if (spawn != NULL) {
+			buffer << "   " << i << ". " << resourceType << " : "
+					<< "Pass ("
+					<< spawn->getType() << endl;
+		} else {
+			buffer << "   " << i << ". " << resourceType << " : " << ("Fail")
+					<< " ()" << endl;
+		}
+	}
+	buffer << "***************************************" << endl;
+
+	return buffer.toString();
+}
+
+void ManualPool::print() {
+	info("**** ManualPool ****", true);
+
+	for (int i = 0; i < includedResources.size(); ++i) {
+		ManagedReference<ResourceSpawn* > spawn = includedResources.get(i);
 
 		StringBuffer msg;
 

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_skreeg_lair_skreeg_jungle = object_tangible_lair_skreeg_shared_lair_skreeg_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_skreeg_lair_skreeg_jungle, "object/tangible/lair/skreeg/lair_skreeg_jungle.iff")

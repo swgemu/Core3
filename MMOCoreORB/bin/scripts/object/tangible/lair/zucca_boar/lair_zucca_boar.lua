@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_zucca_boar_lair_zucca_boar = object_tangible_lair_zucca_boar_shared_lair_zucca_boar:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_lair_zucca_boar, "object/tangible/lair/zucca_boar/lair_zucca_boar.iff")

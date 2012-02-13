@@ -32,10 +32,10 @@ license (or modified versions of such code, with unchanged license).
 You may copy and distribute such a system following the terms of the
 GNU LGPL for Engine3 and the licenses of the other code concerned,
 provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
+and as the GNU LGPheathly = false;L requires distribution of source code.
 
 Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
+to grant this special exceptionspawn for their modified versions;
 it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
@@ -61,23 +61,22 @@ MinimumPool::~MinimumPool() {
 
 void MinimumPool::initialize(const String& includes, const String& excludes) {
 	ResourcePool::initialize(includes, excludes);
-
-	for(int ii = 0; ii < includedResources.size(); ++ii)
-		this->add(NULL);
 }
 
-void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn) {
+void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) {
 
-	for (int ii = 0; ii < includedResources.size(); ++ii) {
-		ManagedReference<ResourceSpawn*> spawninpool = this->get(ii);
-
-		if (resourceSpawn->isType(includedResources.get(ii)) && spawninpool
-				== NULL) {
-			this->setElementAt(ii, resourceSpawn);
-			break;
-		}
+	if(poolSlot.isEmpty()) {
+		resourceSpawn->setSpawnPool(ResourcePool::NOPOOL, "");
+		return;
 	}
 
+	int index = includedResources.find(poolSlot);
+	if(index >= 0) {
+		VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(poolSlot, resourceSpawn);
+		includedResources.setElementAt(index, newEntry);
+	} else {
+		resourceSpawn->setSpawnPool(ResourcePool::NOPOOL, "");
+	}
 }
 
 bool MinimumPool::update() {
@@ -85,56 +84,79 @@ bool MinimumPool::update() {
 	int despawnedCount = 0, spawnedCount = 0;
 
 	StringBuffer buffer;
-	buffer << "Minimum pool updating: ";
-
-	for(int ii = 0; ii < size(); ++ii) {
-
-		ManagedReference<ResourceSpawn* > resourceSpawn = get(ii);
-
-		if(resourceSpawn == NULL) {
-
-			ManagedReference<ResourceSpawn* > newSpawn =
-					resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
-
-			if(newSpawn != NULL) {
-
-				newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
-				spawnedCount++;
-
-				setElementAt(ii, newSpawn);
-
-			} else
-				resourceSpawner->info("Resource not valid for Minimum Pool:" + includedResources.get(ii));
-		}
-	}
+	buffer << "MinimumPool updating: ";
 
 	/**
 	 * We remove any resources that have despawned from the
-	 * pool
+	 * pool.
 	 */
-	for(int ii = 0; ii < size(); ++ii) {
-		ManagedReference<ResourceSpawn* > spawn = get(ii);
+	for(int i = 0; i < includedResources.size(); ++i) {
 
-		if(spawn != NULL && !spawn->inShift()) {
+		String resourceType = includedResources.elementAt(i).getKey();
+		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
 
-			setElementAt(ii, NULL);
-			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			despawnedCount++;
+		if (spawn == NULL || !spawn->inShift()) {
 
-			ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->getFromRandomPool(spawn->getType());
+			ManagedReference<ResourceSpawn* > newSpawn = NULL;
+
+			if(spawn != NULL) {
+				resourceSpawner->despawn(spawn);
+				despawnedCount++;
+				newSpawn = resourceSpawner->getFromRandomPool(spawn->getType());
+				//buffer << "Removing: " << spawn->getName() << " : " << spawn->getType();
+			}
 
 			if(newSpawn == NULL)
-				newSpawn = resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
+				newSpawn = resourceSpawner->createResourceSpawn(resourceType, excludedResources);
 
-			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
+			if(newSpawn != NULL) {
+				newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL, resourceType);
+				spawnedCount++;
 
-			setElementAt(ii, newSpawn);
-			spawnedCount++;
+				//buffer << " and replacing with " << newSpawn->getName() << " : " << newSpawn->getType() << endl;
+
+				VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(resourceType, newSpawn);
+				includedResources.setElementAt(i, newEntry);
+			} else {
+				warning("Couldn't spawn resource type in MinumumPool: " + resourceType);
+			}
 		}
 	}
+
+
 	buffer << "Spawned " << spawnedCount << " Despawned " << despawnedCount;
 	resourceSpawner->info(buffer.toString(), true);
 	return true;
+}
+
+String MinimumPool::healthCheck() {
+
+	StringBuffer buffer;
+	buffer << "****** Minimum Pool " << "(" <<  includedResources.size() << ") ************" << endl;
+
+	bool heathly = true;
+
+	for(int i = 0; i < includedResources.size(); ++i) {
+		String resourceType = includedResources.elementAt(i).getKey();
+		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
+
+		bool pass = spawn->isType(resourceType);
+		if(!pass)
+			heathly = false;
+
+		if (spawn != NULL) {
+			buffer << "   " << i << ". " << resourceType << " : "
+					<< (pass ? "Pass" : "Fail") << " ("
+					<< spawn->getType() << ")" << endl;
+		} else {
+			buffer << "   " << i << ". " << resourceType << " : " << ("Fail")
+					<< " ()" << endl;
+			heathly = false;
+		}
+	}
+	buffer << "***********" << (heathly ? "HEALTHY!" : "ERRORS!") << "*****************" << endl;
+
+	return buffer.toString();
 }
 
 void MinimumPool::print() {

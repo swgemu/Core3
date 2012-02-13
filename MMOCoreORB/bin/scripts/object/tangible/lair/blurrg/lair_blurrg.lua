@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_blurrg_lair_blurrg = object_tangible_lair_blurrg_shared_lair_blurrg:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blurrg_lair_blurrg, "object/tangible/lair/blurrg/lair_blurrg.iff")

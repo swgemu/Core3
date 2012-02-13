@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_rock_shelter_large = object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_rock_shelter_large, "object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff")

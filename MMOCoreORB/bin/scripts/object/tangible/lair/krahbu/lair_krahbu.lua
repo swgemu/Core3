@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_krahbu_lair_krahbu = object_tangible_lair_krahbu_shared_lair_krahbu:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_krahbu_lair_krahbu, "object/tangible/lair/krahbu/lair_krahbu.iff")

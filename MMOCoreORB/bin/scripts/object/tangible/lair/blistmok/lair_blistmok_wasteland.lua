@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_blistmok_lair_blistmok_wasteland = object_tangible_lair_blistmok_shared_lair_blistmok_wasteland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blistmok_lair_blistmok_wasteland, "object/tangible/lair/blistmok/lair_blistmok_wasteland.iff")

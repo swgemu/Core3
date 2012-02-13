@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_angler_lair_angler_underwater = object_tangible_lair_angler_shared_lair_angler_underwater:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_angler_lair_angler_underwater, "object/tangible/lair/angler/lair_angler_underwater.iff")

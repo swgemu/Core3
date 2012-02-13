@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_striped_fish_lair_striped_fish_underwater = object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_lair_striped_fish_underwater, "object/tangible/lair/striped_fish/lair_striped_fish_underwater.iff")

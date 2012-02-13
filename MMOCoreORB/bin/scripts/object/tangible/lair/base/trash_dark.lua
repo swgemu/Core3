@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_trash_dark = object_tangible_lair_base_shared_trash_dark:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_trash_dark, "object/tangible/lair/base/trash_dark.iff")

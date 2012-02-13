@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_crystal_snake_lair_crystal_snake_jungle = object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_lair_crystal_snake_jungle, "object/tangible/lair/crystal_snake/lair_crystal_snake_jungle.iff")

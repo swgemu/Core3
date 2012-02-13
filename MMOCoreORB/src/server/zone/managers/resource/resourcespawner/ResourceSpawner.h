@@ -137,6 +137,8 @@ public:
 	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String>& excludes, const String& zonerestriction = "");
 	ResourceSpawn* createResourceSpawn(const Vector<String>& includes, const Vector<String>& excludes = 0, const String& zonerestriction = "");
 
+	void despawn(ResourceSpawn* spawn);
+
 	ResourceSpawn* manualCreateResourceSpawn(const String& type);
 
 	void sendResourceListForSurvey(CreatureObject* player, const int toolType, const String& surveyType);
@@ -162,6 +164,7 @@ public:
 
 	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
 
+	String healthCheck();
 
 private:
 

@@ -16,7 +16,7 @@
  *	ResourceSpawnStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_STRING_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_GETPOOLSLOT__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
 
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
@@ -95,18 +95,19 @@ void ResourceSpawn::setType(const String& type) {
 		_implementation->setType(type);
 }
 
-void ResourceSpawn::setSpawnPool(int pool) {
+void ResourceSpawn::setSpawnPool(int pool, const String& slot) {
 	ResourceSpawnImplementation* _implementation = static_cast<ResourceSpawnImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETSPAWNPOOL__INT_);
+		DistributedMethod method(this, RPC_SETSPAWNPOOL__INT_STRING_);
 		method.addSignedIntParameter(pool);
+		method.addAsciiParameter(slot);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setSpawnPool(pool);
+		_implementation->setSpawnPool(pool, slot);
 }
 
 void ResourceSpawn::setZoneRestriction(const String& zoneName) {
@@ -358,6 +359,20 @@ int ResourceSpawn::getSpawnPool() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getSpawnPool();
+}
+
+String ResourceSpawn::getPoolSlot() {
+	ResourceSpawnImplementation* _implementation = static_cast<ResourceSpawnImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPOOLSLOT__);
+
+		method.executeWithAsciiReturn(_return_getPoolSlot);
+		return _return_getPoolSlot;
+	} else
+		return _implementation->getPoolSlot();
 }
 
 bool ResourceSpawn::isEnergy() {
@@ -688,6 +703,11 @@ bool ResourceSpawnImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "poolSlot") {
+		TypeInfo<String >::parseFromBinaryStream(&poolSlot, stream);
+		return true;
+	}
+
 	if (_name == "spawnPool") {
 		TypeInfo<int >::parseFromBinaryStream(&spawnPool, stream);
 		return true;
@@ -803,6 +823,14 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "poolSlot";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&poolSlot, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "spawnPool";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -900,7 +928,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 17 + SceneObjectImplementation::writeObjectMembers(stream);
+	return 18 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 ResourceSpawnImplementation::ResourceSpawnImplementation() {
@@ -909,6 +937,8 @@ ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	spawnType = "";
 	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnPool = 0;
 	spawnPool = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	poolSlot = "";
+	poolSlot = "";
 	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnAttributes.setNoDuplicateInsertPlan();
 	(&spawnAttributes)->setNoDuplicateInsertPlan();
 	// server/zone/objects/resource/ResourceSpawn.idl():   	containerReferenceCount = 0;
@@ -952,13 +982,17 @@ void ResourceSpawnImplementation::setType(const String& type) {
 	spawnType = type;
 }
 
-void ResourceSpawnImplementation::setSpawnPool(int pool) {
+void ResourceSpawnImplementation::setSpawnPool(int pool, const String& slot) {
 	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnPool = pool;
 	spawnPool = pool;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	poolSlot = slot;
+	poolSlot = slot;
 	// server/zone/objects/resource/ResourceSpawn.idl():   }
 	if (spawnPool == 0){
 	// server/zone/objects/resource/ResourceSpawn.idl():   		spawnMaps.removeAll();
 	(&spawnMaps)->removeAll();
+	// server/zone/objects/resource/ResourceSpawn.idl():   		poolSlot = "";
+	poolSlot = "";
 }
 }
 
@@ -1072,6 +1106,11 @@ int ResourceSpawnImplementation::getSpawnPool() {
 	return spawnPool;
 }
 
+String ResourceSpawnImplementation::getPoolSlot() {
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return poolSlot;
+	return poolSlot;
+}
+
 bool ResourceSpawnImplementation::isEnergy() {
 	// server/zone/objects/resource/ResourceSpawn.idl():   	return energy;
 	return energy;
@@ -1123,8 +1162,8 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SETTYPE__STRING_:
 		setType(inv->getAsciiParameter(_param0_setType__String_));
 		break;
-	case RPC_SETSPAWNPOOL__INT_:
-		setSpawnPool(inv->getSignedIntParameter());
+	case RPC_SETSPAWNPOOL__INT_STRING_:
+		setSpawnPool(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_setSpawnPool__int_String_));
 		break;
 	case RPC_SETZONERESTRICTION__STRING_:
 		setZoneRestriction(inv->getAsciiParameter(_param0_setZoneRestriction__String_));
@@ -1179,6 +1218,9 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_GETSPAWNPOOL__:
 		resp->insertSignedInt(getSpawnPool());
+		break;
+	case RPC_GETPOOLSLOT__:
+		resp->insertAscii(getPoolSlot());
 		break;
 	case RPC_ISENERGY__:
 		resp->insertBoolean(isEnergy());
@@ -1237,8 +1279,8 @@ void ResourceSpawnAdapter::setType(const String& type) {
 	(static_cast<ResourceSpawn*>(stub))->setType(type);
 }
 
-void ResourceSpawnAdapter::setSpawnPool(int pool) {
-	(static_cast<ResourceSpawn*>(stub))->setSpawnPool(pool);
+void ResourceSpawnAdapter::setSpawnPool(int pool, const String& slot) {
+	(static_cast<ResourceSpawn*>(stub))->setSpawnPool(pool, slot);
 }
 
 void ResourceSpawnAdapter::setZoneRestriction(const String& zoneName) {
@@ -1311,6 +1353,10 @@ unsigned int ResourceSpawnAdapter::getContainerCRC() {
 
 int ResourceSpawnAdapter::getSpawnPool() {
 	return (static_cast<ResourceSpawn*>(stub))->getSpawnPool();
+}
+
+String ResourceSpawnAdapter::getPoolSlot() {
+	return (static_cast<ResourceSpawn*>(stub))->getPoolSlot();
 }
 
 bool ResourceSpawnAdapter::isEnergy() {

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vesp_lair_vesp_mountain = object_tangible_lair_vesp_shared_lair_vesp_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vesp_lair_vesp_mountain, "object/tangible/lair/vesp/lair_vesp_mountain.iff")

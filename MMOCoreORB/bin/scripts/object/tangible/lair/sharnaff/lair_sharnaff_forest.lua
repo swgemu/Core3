@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_sharnaff_lair_sharnaff_forest = object_tangible_lair_sharnaff_shared_lair_sharnaff_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_lair_sharnaff_forest, "object/tangible/lair/sharnaff/lair_sharnaff_forest.iff")

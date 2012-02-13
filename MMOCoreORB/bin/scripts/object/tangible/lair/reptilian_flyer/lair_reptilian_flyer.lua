@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_reptilian_flyer_lair_reptilian_flyer = object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_lair_reptilian_flyer, "object/tangible/lair/reptilian_flyer/lair_reptilian_flyer.iff")

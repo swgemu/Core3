@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_pharple_lair_pharple_wasteland = object_tangible_lair_pharple_shared_lair_pharple_wasteland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pharple_lair_pharple_wasteland, "object/tangible/lair/pharple/lair_pharple_wasteland.iff")

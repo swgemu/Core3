@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_dantari_fire_pit = object_tangible_lair_base_shared_objective_dantari_fire_pit:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_dantari_fire_pit, "object/tangible/lair/base/objective_dantari_fire_pit.iff")

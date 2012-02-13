@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_carrion_spat_lair_carrion_spat = object_tangible_lair_carrion_spat_shared_lair_carrion_spat:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_carrion_spat_lair_carrion_spat, "object/tangible/lair/carrion_spat/lair_carrion_spat.iff")

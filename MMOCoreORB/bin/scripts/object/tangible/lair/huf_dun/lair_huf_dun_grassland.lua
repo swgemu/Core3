@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_huf_dun_lair_huf_dun_grassland = object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_lair_huf_dun_grassland, "object/tangible/lair/huf_dun/lair_huf_dun_grassland.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_horned_rasp_lair_horned_rasp_grassland = object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_horned_rasp_lair_horned_rasp_grassland, "object/tangible/lair/horned_rasp/lair_horned_rasp_grassland.iff")

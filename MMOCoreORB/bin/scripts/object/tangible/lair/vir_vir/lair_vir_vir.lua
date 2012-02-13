@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vir_vir_lair_vir_vir = object_tangible_lair_vir_vir_shared_lair_vir_vir:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_lair_vir_vir, "object/tangible/lair/vir_vir/lair_vir_vir.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_fambaa_lair_fambaa_swamp = object_tangible_lair_fambaa_shared_lair_fambaa_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fambaa_lair_fambaa_swamp, "object/tangible/lair/fambaa/lair_fambaa_swamp.iff")

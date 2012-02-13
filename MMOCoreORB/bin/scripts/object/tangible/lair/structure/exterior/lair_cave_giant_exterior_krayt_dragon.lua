@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_exterior_lair_cave_giant_exterior_krayt_dragon = object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_lair_cave_giant_exterior_krayt_dragon, "object/tangible/lair/structure/exterior/lair_cave_giant_exterior_krayt_dragon.iff")

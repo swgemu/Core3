@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_cu_pa_lair_cu_pa_dune = object_tangible_lair_cu_pa_shared_lair_cu_pa_dune:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_lair_cu_pa_dune, "object/tangible/lair/cu_pa/lair_cu_pa_dune.iff")

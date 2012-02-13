@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gronda_lair_gronda_grassland = object_tangible_lair_gronda_shared_lair_gronda_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gronda_lair_gronda_grassland, "object/tangible/lair/gronda/lair_gronda_grassland.iff")

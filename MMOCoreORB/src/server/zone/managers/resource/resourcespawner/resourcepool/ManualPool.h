@@ -82,17 +82,20 @@ public:
 	void initialize(const String& includes, const String& excludes, int size);
 
 	/**
+	 * Adds resource to this pool
+	 * \param resourceSpawn Spawn object to add to the pool
+	 */
+	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot);
+
+
+	String healthCheck();
+
+	/**
 	 * Print the current state of the Resource Pool
 	 */
 	void print();
 
 private:
-
-	/**
-	 * Adds resource to this pool
-	 * \param resourceSpawn Spawn object to add to the pool
-	 */
-	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
 
 	/**
 	 * The update function checks the ResourceSpawn items

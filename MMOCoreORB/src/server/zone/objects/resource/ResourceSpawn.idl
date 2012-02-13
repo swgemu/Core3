@@ -73,7 +73,9 @@ class ResourceSpawn extends SceneObject {
 	@dereferenced
 	protected VectorMap<string, int> spawnAttributes;
 
+	protected string poolSlot;
 	protected int spawnPool;
+	
 	protected string zoneRestriction;
 	
 	protected int surveyToolType;
@@ -95,6 +97,7 @@ class ResourceSpawn extends SceneObject {
     public ResourceSpawn() {
        	spawnType = "";
        	spawnPool = 0;
+       	poolSlot = "";
        	spawnAttributes.setNoDuplicateInsertPlan();
        	
        	containerReferenceCount = 0;
@@ -146,10 +149,12 @@ class ResourceSpawn extends SceneObject {
     	spawnType = type;
     }
     
-    public void setSpawnPool(int pool) {
+    public void setSpawnPool(int pool, final string slot) {
     	spawnPool = pool;
+    	poolSlot = slot;
     	if(spawnPool == 0) {
     		spawnMaps.removeAll();
+    		poolSlot = "";
     	}
     }
     
@@ -241,6 +246,10 @@ class ResourceSpawn extends SceneObject {
     
     public int getSpawnPool() {
     	return spawnPool;
+    }
+    
+    public string getPoolSlot() {
+    	return poolSlot;
     }
     
     public boolean isEnergy() {

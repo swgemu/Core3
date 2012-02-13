@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_voritor_lizard_lair_voritor_lizard_grassland = object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_lair_voritor_lizard_grassland, "object/tangible/lair/voritor_lizard/lair_voritor_lizard_grassland.iff")

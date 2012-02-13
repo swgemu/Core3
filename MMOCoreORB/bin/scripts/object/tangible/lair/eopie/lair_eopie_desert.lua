@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_eopie_lair_eopie_desert = object_tangible_lair_eopie_shared_lair_eopie_desert:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_eopie_lair_eopie_desert, "object/tangible/lair/eopie/lair_eopie_desert.iff")

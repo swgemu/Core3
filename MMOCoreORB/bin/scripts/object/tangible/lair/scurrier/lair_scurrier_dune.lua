@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_scurrier_lair_scurrier_dune = object_tangible_lair_scurrier_shared_lair_scurrier_dune:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_scurrier_lair_scurrier_dune, "object/tangible/lair/scurrier/lair_scurrier_dune.iff")

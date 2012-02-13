@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_peko_peko_lair_peko_peko_swamp = object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_lair_peko_peko_swamp, "object/tangible/lair/peko_peko/lair_peko_peko_swamp.iff")

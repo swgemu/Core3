@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_earthmound_dark = object_tangible_lair_base_shared_earthmound_dark:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_earthmound_dark, "object/tangible/lair/base/earthmound_dark.iff")

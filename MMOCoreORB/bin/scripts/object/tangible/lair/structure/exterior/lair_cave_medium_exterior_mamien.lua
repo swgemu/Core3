@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_exterior_lair_cave_medium_exterior_mamien = object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_lair_cave_medium_exterior_mamien, "object/tangible/lair/structure/exterior/lair_cave_medium_exterior_mamien.iff")

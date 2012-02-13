@@ -64,17 +64,23 @@ namespace minigames {
 
 class ForageManager : public Observer {
 public:
+	static const int SCOUT = 1;
+
+	static const int MEDICAL = 2;
+
+	static const int LAIR = 3;
+
 	ForageManager(ZoneServer* server);
 
 	void deleteForageAreaCollection(String& playerName);
 
-	void startForaging(CreatureObject* player, bool scoutForage);
+	void startForaging(CreatureObject* player, int forageType);
 
-	void finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet);
+	void finishForaging(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
-	void forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet);
+	bool forageGiveItems(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
-	void forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet);
+	bool forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -101,6 +107,13 @@ namespace managers {
 namespace minigames {
 
 class ForageManagerImplementation : public ObserverImplementation, public Logger {
+public:
+	static const int SCOUT = 1;
+
+	static const int MEDICAL = 2;
+
+	static const int LAIR = 3;
+
 protected:
 	ManagedWeakReference<ZoneServer* > zoneServer;
 
@@ -113,13 +126,13 @@ public:
 
 	void deleteForageAreaCollection(String& playerName);
 
-	void startForaging(CreatureObject* player, bool scoutForage);
+	void startForaging(CreatureObject* player, int forageType);
 
-	void finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet);
+	void finishForaging(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
-	void forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet);
+	bool forageGiveItems(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
-	void forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet);
+	bool forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType);
 
 	WeakReference<ForageManager*> _this;
 
@@ -166,19 +179,20 @@ public:
 
 	void deleteForageAreaCollection(String& playerName);
 
-	void startForaging(CreatureObject* player, bool scoutForage);
+	void startForaging(CreatureObject* player, int forageType);
 
-	void finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet);
+	void finishForaging(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
-	void forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet);
+	bool forageGiveItems(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
-	void forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet);
+	bool forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType);
 
 protected:
 	String _param0_deleteForageAreaCollection__String_;
-	String _param4_finishForaging__CreatureObject_bool_float_float_String_;
-	String _param4_forageGiveItems__CreatureObject_bool_float_float_String_;
-	String _param3_forageGiveResource__CreatureObject_float_float_String_;
+	String _param4_finishForaging__CreatureObject_int_float_float_String_;
+	String _param4_forageGiveItems__CreatureObject_int_float_float_String_;
+	String _param3_forageGiveResource__CreatureObject_float_float_String_String_;
+	String _param4_forageGiveResource__CreatureObject_float_float_String_String_;
 };
 
 class ForageManagerHelper : public DistributedObjectClassHelper, public Singleton<ForageManagerHelper> {

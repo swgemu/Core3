@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_exterior_lair_cave_large_exterior_gulginaw = object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_lair_cave_large_exterior_gulginaw, "object/tangible/lair/structure/exterior/lair_cave_large_exterior_gulginaw.iff")

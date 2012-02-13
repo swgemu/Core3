@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gekk_lair_gekk_forest = object_tangible_lair_gekk_shared_lair_gekk_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gekk_lair_gekk_forest, "object/tangible/lair/gekk/lair_gekk_forest.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_huf_dun_lair_huf_dun = object_tangible_lair_huf_dun_shared_lair_huf_dun:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_lair_huf_dun, "object/tangible/lair/huf_dun/lair_huf_dun.iff")

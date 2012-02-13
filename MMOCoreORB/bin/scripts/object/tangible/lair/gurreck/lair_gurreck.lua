@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gurreck_lair_gurreck = object_tangible_lair_gurreck_shared_lair_gurreck:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurreck_lair_gurreck, "object/tangible/lair/gurreck/lair_gurreck.iff")

@@ -55,6 +55,11 @@ import engine.util.Observer;
 include server.zone.objects.area.ForageMap;
 
 class ForageManager extends Observer implements Logger {
+	
+	public static final int SCOUT = 1;
+	public static final int MEDICAL = 2;
+	public static final int LAIR = 3;
+	
 	@weakReference
 	protected ZoneServer zoneServer;
 
@@ -87,7 +92,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param player CreatureObject who is trying to forage.
 	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
 	 */
-	public native void startForaging(CreatureObject player, boolean scoutForage); 
+	public native void startForaging(CreatureObject player, int forageType); 
 
 
 	/**
@@ -105,7 +110,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void finishForaging(CreatureObject player, boolean scoutForage, float forageX, float forageY, final string planet);
+	public native void finishForaging(CreatureObject player, int forageType, float forageX, float forageY, final string planet);
 
 
 	/**
@@ -120,7 +125,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void forageGiveItems(CreatureObject player, boolean scoutForage, float forageX, float forageY, final string planet);
+	public native boolean forageGiveItems(CreatureObject player, int forageType, float forageX, float forageY, final string planet);
 
 
 
@@ -136,7 +141,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void forageGiveResource(CreatureObject player, float forageX, float forageY, final string planet); 
+	public native boolean forageGiveResource(CreatureObject player, float forageX, float forageY, final string planet, string resType); 
 
 
 

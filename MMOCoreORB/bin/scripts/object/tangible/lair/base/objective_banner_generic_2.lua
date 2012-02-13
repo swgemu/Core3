@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_banner_generic_2 = object_tangible_lair_base_shared_objective_banner_generic_2:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_banner_generic_2, "object/tangible/lair/base/objective_banner_generic_2.iff")

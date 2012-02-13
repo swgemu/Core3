@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kima_lair_kima_mountain = object_tangible_lair_kima_shared_lair_kima_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kima_lair_kima_mountain, "object/tangible/lair/kima/lair_kima_mountain.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_lair_base_nest_ground_lg_dark = object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_lair_base_nest_ground_lg_dark, "object/tangible/lair/base/lair_base_nest_ground_lg_dark.iff")

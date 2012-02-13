@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_langlatch_lair_langlatch_mountain = object_tangible_lair_langlatch_shared_lair_langlatch_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_langlatch_lair_langlatch_mountain, "object/tangible/lair/langlatch/lair_langlatch_mountain.iff")

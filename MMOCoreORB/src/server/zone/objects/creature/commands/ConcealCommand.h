@@ -76,6 +76,10 @@ public:
 			return GENERALERROR;
 		}
 
+		if(targetPlayer->getDistanceTo(creature) > 10.0) {
+			return GENERALERROR;
+		}
+
 		if(targetPlayer->getOptionsBitmask() & CreatureState::MASKSCENT) {
 			creature->sendSystemMessage("@skl_use:sys_target_concealed");
 			return GENERALERROR;

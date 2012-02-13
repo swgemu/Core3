@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_corellian_slice_hound_lair_corellian_slice_hound_grassland = object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_lair_corellian_slice_hound_grassland, "object/tangible/lair/corellian_slice_hound/lair_corellian_slice_hound_grassland.iff")

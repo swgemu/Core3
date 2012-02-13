@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vesp_lair_vesp_desert = object_tangible_lair_vesp_shared_lair_vesp_desert:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vesp_lair_vesp_desert, "object/tangible/lair/vesp/lair_vesp_desert.iff")

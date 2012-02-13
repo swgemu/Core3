@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_krayt_dragon_lair_krayt_dragon_desert = object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_krayt_dragon_lair_krayt_dragon_desert, "object/tangible/lair/krayt_dragon/lair_krayt_dragon_desert.iff")

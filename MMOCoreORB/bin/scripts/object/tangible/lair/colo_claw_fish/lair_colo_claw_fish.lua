@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_colo_claw_fish_lair_colo_claw_fish = object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_colo_claw_fish_lair_colo_claw_fish, "object/tangible/lair/colo_claw_fish/lair_colo_claw_fish.iff")

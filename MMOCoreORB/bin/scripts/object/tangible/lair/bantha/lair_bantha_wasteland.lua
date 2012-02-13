@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_bantha_lair_bantha_wasteland = object_tangible_lair_bantha_shared_lair_bantha_wasteland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bantha_lair_bantha_wasteland, "object/tangible/lair/bantha/lair_bantha_wasteland.iff")

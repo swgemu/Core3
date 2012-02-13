@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vlutore_lair_vlutore = object_tangible_lair_vlutore_shared_lair_vlutore:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vlutore_lair_vlutore, "object/tangible/lair/vlutore/lair_vlutore.iff")

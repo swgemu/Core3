@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_hanadak_lair_hanadak_mountain = object_tangible_lair_hanadak_shared_lair_hanadak_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_hanadak_lair_hanadak_mountain, "object/tangible/lair/hanadak/lair_hanadak_mountain.iff")

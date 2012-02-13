@@ -59,14 +59,14 @@ class ResourceSpawner;
 /**
  * Abstract parent of all ResourcePool objects
  */
-class ResourcePool : public Vector<ManagedReference<ResourceSpawn*> >, public Logger {
+class ResourcePool : public Logger {
 
 protected:
 
 	/**
 	 * List of resources this pool can spawn
 	 */
-	Vector<String> includedResources;
+	VectorMap<String, ManagedReference<ResourceSpawn* > > includedResources;
 
 	/**
 	 * List of resources this pool can't spawn
@@ -102,7 +102,8 @@ public:
 	 */
 	~ResourcePool() {
 		resourceSpawner = NULL;
-		removeAll();
+		includedResources.removeAll();
+		excludedResources.removeAll();
 	}
 
 	/**
@@ -115,7 +116,7 @@ public:
 		String token;
 		while (includeTokens.hasMoreTokens()) {
 			includeTokens.getStringToken(token);
-			includedResources.add(token);
+			includedResources.put(token, NULL);
 		}
 
 		StringTokenizer excludeTokens(excludes);
@@ -129,16 +130,16 @@ public:
 
 	void print() {
 
-		for(int ii = 0; ii < this->size(); ++ii) {
+		for(int i = 0; i < includedResources.size(); ++i) {
 
-			ManagedReference<ResourceSpawn* > spawn = this->get(ii);
+			ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
 
 			StringBuffer msg;
 
 			if (spawn != NULL) {
 				msg << spawn->getName() << " : " << spawn->getType() << endl;
 			} else {
-				msg << "EMPTY : " << includedResources.get(ii) << endl;
+				msg << "EMPTY : " << includedResources.elementAt(i).getKey() << endl;
 			}
 
 			info(msg.toString());
@@ -159,7 +160,9 @@ private:
 	 * from database.
 	 * \param resourceSpawn The resource to add to this pool
 	 */
-	virtual void addResource(ManagedReference<ResourceSpawn*> resourceSpawn) = 0;
+	virtual void addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) = 0;
+
+	virtual String healthCheck() = 0;
 
 	friend class ResourceSpawner;
 };

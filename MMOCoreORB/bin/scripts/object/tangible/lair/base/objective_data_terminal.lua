@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_data_terminal = object_tangible_lair_base_shared_objective_data_terminal:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_data_terminal, "object/tangible/lair/base/objective_data_terminal.iff")

@@ -106,7 +106,7 @@ public:
 
 	void setType(const String& type);
 
-	void setSpawnPool(int pool);
+	void setSpawnPool(int pool, const String& slot);
 
 	void setZoneRestriction(const String& zoneName);
 
@@ -143,6 +143,8 @@ public:
 	unsigned int getContainerCRC();
 
 	int getSpawnPool();
+
+	String getPoolSlot();
 
 	bool isEnergy();
 
@@ -191,6 +193,7 @@ protected:
 	String _return_getFamilyName;
 	String _return_getFinalClass;
 	String _return_getName;
+	String _return_getPoolSlot;
 	String _return_getSpawnMapZone;
 	String _return_getType;
 	String _return_getZoneRestriction;
@@ -221,6 +224,8 @@ protected:
 	Vector<String> stfSpawnClasses;
 
 	VectorMap<String, int> spawnAttributes;
+
+	String poolSlot;
 
 	int spawnPool;
 
@@ -263,7 +268,7 @@ public:
 
 	void setType(const String& type);
 
-	void setSpawnPool(int pool);
+	void setSpawnPool(int pool, const String& slot);
 
 	void setZoneRestriction(const String& zoneName);
 
@@ -300,6 +305,8 @@ public:
 	unsigned int getContainerCRC();
 
 	int getSpawnPool();
+
+	String getPoolSlot();
 
 	bool isEnergy();
 
@@ -394,7 +401,7 @@ public:
 
 	void setType(const String& type);
 
-	void setSpawnPool(int pool);
+	void setSpawnPool(int pool, const String& slot);
 
 	void setZoneRestriction(const String& zoneName);
 
@@ -432,6 +439,8 @@ public:
 
 	int getSpawnPool();
 
+	String getPoolSlot();
+
 	bool isEnergy();
 
 	String getZoneRestriction();
@@ -455,6 +464,7 @@ public:
 protected:
 	String _param0_setName__String_;
 	String _param0_setType__String_;
+	String _param1_setSpawnPool__int_String_;
 	String _param0_setZoneRestriction__String_;
 	String _param0_addClass__String_;
 	String _param0_addStfClass__String_;

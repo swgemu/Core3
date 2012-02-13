@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_rancor_lair_rancor = object_tangible_lair_rancor_shared_lair_rancor:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rancor_lair_rancor, "object/tangible/lair/rancor/lair_rancor.iff")

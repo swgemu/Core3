@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_crystal_snake_lair_crystal_snake_underwater = object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_lair_crystal_snake_underwater, "object/tangible/lair/crystal_snake/lair_crystal_snake_underwater.iff")

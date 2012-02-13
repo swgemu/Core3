@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_malkloc_lair_malkloc_desert = object_tangible_lair_malkloc_shared_lair_malkloc_desert:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_malkloc_lair_malkloc_desert, "object/tangible/lair/malkloc/lair_malkloc_desert.iff")

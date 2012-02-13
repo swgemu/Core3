@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_lair_base_cave_griffon_light = object_tangible_lair_base_shared_lair_base_cave_griffon_light:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_lair_base_cave_griffon_light, "object/tangible/lair/base/lair_base_cave_griffon_light.iff")

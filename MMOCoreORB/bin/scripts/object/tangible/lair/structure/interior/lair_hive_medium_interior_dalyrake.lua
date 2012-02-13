@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_interior_lair_hive_medium_interior_dalyrake = object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrake:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_lair_hive_medium_interior_dalyrake, "object/tangible/lair/structure/interior/lair_hive_medium_interior_dalyrake.iff")

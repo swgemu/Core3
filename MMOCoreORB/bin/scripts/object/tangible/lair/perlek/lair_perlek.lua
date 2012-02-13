@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_perlek_lair_perlek = object_tangible_lair_perlek_shared_lair_perlek:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_perlek_lair_perlek, "object/tangible/lair/perlek/lair_perlek.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_opee_sea_killer_lair_opee_sea_killer = object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_lair_opee_sea_killer, "object/tangible/lair/opee_sea_killer/lair_opee_sea_killer.iff")

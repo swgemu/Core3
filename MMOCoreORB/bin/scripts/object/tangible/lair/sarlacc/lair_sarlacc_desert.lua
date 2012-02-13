@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_sarlacc_lair_sarlacc_desert = object_tangible_lair_sarlacc_shared_lair_sarlacc_desert:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_sarlacc_lair_sarlacc_desert, "object/tangible/lair/sarlacc/lair_sarlacc_desert.iff")

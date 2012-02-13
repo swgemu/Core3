@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_demo_lair_demo = object_tangible_lair_demo_shared_lair_demo:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_demo_lair_demo, "object/tangible/lair/demo/lair_demo.iff")

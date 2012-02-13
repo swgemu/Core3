@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_nest_small_fog_green = object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_nest_small_fog_green, "object/tangible/lair/base/poi_all_lair_nest_small_fog_green.iff")

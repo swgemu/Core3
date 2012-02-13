@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_spined_snake_lair_spined_snake_wasteland = object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/lair_spined_snake_wasteland.iff")

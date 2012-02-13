@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_piket_lair_piket_grassland = object_tangible_lair_piket_shared_lair_piket_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_piket_lair_piket_grassland, "object/tangible/lair/piket/lair_piket_grassland.iff")

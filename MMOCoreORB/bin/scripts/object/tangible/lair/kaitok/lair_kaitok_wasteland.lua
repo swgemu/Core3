@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kaitok_lair_kaitok_wasteland = object_tangible_lair_kaitok_shared_lair_kaitok_wasteland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaitok_lair_kaitok_wasteland, "object/tangible/lair/kaitok/lair_kaitok_wasteland.iff")

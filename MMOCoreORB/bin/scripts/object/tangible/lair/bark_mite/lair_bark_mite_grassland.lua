@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_bark_mite_lair_bark_mite_grassland = object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_lair_bark_mite_grassland, "object/tangible/lair/bark_mite/lair_bark_mite_grassland.iff")

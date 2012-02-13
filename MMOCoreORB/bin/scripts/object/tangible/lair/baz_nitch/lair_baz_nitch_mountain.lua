@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_baz_nitch_lair_baz_nitch_mountain = object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_lair_baz_nitch_mountain, "object/tangible/lair/baz_nitch/lair_baz_nitch_mountain.iff")

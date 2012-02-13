@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_horned_krevol_lair_horned_krevol = object_tangible_lair_horned_krevol_shared_lair_horned_krevol:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_lair_horned_krevol, "object/tangible/lair/horned_krevol/lair_horned_krevol.iff")

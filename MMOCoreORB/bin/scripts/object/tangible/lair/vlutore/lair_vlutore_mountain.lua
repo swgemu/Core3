@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vlutore_lair_vlutore_mountain = object_tangible_lair_vlutore_shared_lair_vlutore_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vlutore_lair_vlutore_mountain, "object/tangible/lair/vlutore/lair_vlutore_mountain.iff")

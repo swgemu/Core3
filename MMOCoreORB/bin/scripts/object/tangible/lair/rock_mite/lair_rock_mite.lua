@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_rock_mite_lair_rock_mite = object_tangible_lair_rock_mite_shared_lair_rock_mite:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_lair_rock_mite, "object/tangible/lair/rock_mite/lair_rock_mite.iff")

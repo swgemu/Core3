@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_ikopi_lair_ikopi_grassland = object_tangible_lair_ikopi_shared_lair_ikopi_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_ikopi_lair_ikopi_grassland, "object/tangible/lair/ikopi/lair_ikopi_grassland.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_npc_lair_npc_general = object_tangible_lair_npc_shared_lair_npc_general:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_npc_lair_npc_general, "object/tangible/lair/npc/lair_npc_general.iff")

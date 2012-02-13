@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kittle_lair_kittle_forest = object_tangible_lair_kittle_shared_lair_kittle_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kittle_lair_kittle_forest, "object/tangible/lair/kittle/lair_kittle_forest.iff")

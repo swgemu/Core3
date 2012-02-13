@@ -66,7 +66,7 @@ class RandomPool : public ResourcePool {
 private:
 
 	/// SIze of pool (From script)
-	int poolSize;
+	Vector<ManagedReference<ResourceSpawn*> > pool;
 
 public:
 	/**
@@ -91,9 +91,11 @@ public:
 	/**
 	 * The minimum pool likes to extract resource from
 	 * the random pool before spawning new resources
-	 * This function is only used int MinimumPool::update()
+	 * This function is only used in MinimumPool::update()
 	 */
 	ResourceSpawn* removeSpawn(const String& type);
+
+	String healthCheck();
 
 	/**
 	 * Print the current state of the Resource Pool
@@ -106,7 +108,7 @@ private:
 	 * Adds resource to this pool
 	 * \param resourceSpawn Spawn object to add to the pool
 	 */
-	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn);
+	void addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot);
 
 	/**
 	 * The update function checks the ResourceSpawn items

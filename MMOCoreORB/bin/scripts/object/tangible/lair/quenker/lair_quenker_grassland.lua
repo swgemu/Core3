@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_quenker_lair_quenker_grassland = object_tangible_lair_quenker_shared_lair_quenker_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_quenker_lair_quenker_grassland, "object/tangible/lair/quenker/lair_quenker_grassland.iff")

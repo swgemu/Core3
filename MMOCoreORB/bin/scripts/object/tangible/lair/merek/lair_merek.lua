@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_merek_lair_merek = object_tangible_lair_merek_shared_lair_merek:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_merek_lair_merek, "object/tangible/lair/merek/lair_merek.iff")

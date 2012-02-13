@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_pharple_lair_pharple = object_tangible_lair_pharple_shared_lair_pharple:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pharple_lair_pharple, "object/tangible/lair/pharple/lair_pharple.iff")

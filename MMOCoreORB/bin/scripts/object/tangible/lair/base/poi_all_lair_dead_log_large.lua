@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_dead_log_large = object_tangible_lair_base_shared_poi_all_lair_dead_log_large:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_dead_log_large, "object/tangible/lair/base/poi_all_lair_dead_log_large.iff")

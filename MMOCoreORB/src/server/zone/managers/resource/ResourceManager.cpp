@@ -22,7 +22,7 @@
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_,RPC_HEALTHCHECK__};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -317,6 +317,20 @@ void ResourceManager::listResourcesForPlanetOnScreen(CreatureObject* creature, c
 		_implementation->listResourcesForPlanetOnScreen(creature, planet);
 }
 
+String ResourceManager::healthCheck() {
+	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HEALTHCHECK__);
+
+		method.executeWithAsciiReturn(_return_healthCheck);
+		return _return_healthCheck;
+	} else
+		return _implementation->healthCheck();
+}
+
 DistributedObjectServant* ResourceManager::_getImplementation() {
 
 	_updated = true;
@@ -535,6 +549,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_:
 		listResourcesForPlanetOnScreen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_listResourcesForPlanetOnScreen__CreatureObject_String_));
 		break;
+	case RPC_HEALTHCHECK__:
+		resp->insertAscii(healthCheck());
+		break;
 	default:
 		return NULL;
 	}
@@ -612,6 +629,10 @@ String ResourceManagerAdapter::addParentNodeToListBox(SuiListBox* sui, const Str
 
 void ResourceManagerAdapter::listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet) {
 	(static_cast<ResourceManager*>(stub))->listResourcesForPlanetOnScreen(creature, planet);
+}
+
+String ResourceManagerAdapter::healthCheck() {
+	return (static_cast<ResourceManager*>(stub))->healthCheck();
 }
 
 /*

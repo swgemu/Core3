@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_tybis_lair_tybis_grassland = object_tangible_lair_tybis_shared_lair_tybis_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tybis_lair_tybis_grassland, "object/tangible/lair/tybis/lair_tybis_grassland.iff")

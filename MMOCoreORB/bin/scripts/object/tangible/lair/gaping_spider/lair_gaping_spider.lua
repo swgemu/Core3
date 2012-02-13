@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gaping_spider_lair_gaping_spider = object_tangible_lair_gaping_spider_shared_lair_gaping_spider:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gaping_spider_lair_gaping_spider, "object/tangible/lair/gaping_spider/lair_gaping_spider.iff")

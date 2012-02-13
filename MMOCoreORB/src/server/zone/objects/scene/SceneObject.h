@@ -618,6 +618,8 @@ public:
 
 	bool isInstrument();
 
+	bool isLiveSample();
+
 	bool isInstallationObject();
 
 	bool isGeneratorObject();
@@ -1212,6 +1214,8 @@ public:
 
 	bool isInstrument();
 
+	bool isLiveSample();
+
 	virtual bool isInstallationObject();
 
 	virtual bool isGeneratorObject();
@@ -1692,6 +1696,8 @@ public:
 	bool isIntangibleObject();
 
 	bool isInstrument();
+
+	bool isLiveSample();
 
 	bool isInstallationObject();
 

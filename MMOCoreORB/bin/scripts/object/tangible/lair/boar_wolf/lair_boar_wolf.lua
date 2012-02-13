@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_boar_wolf_lair_boar_wolf = object_tangible_lair_boar_wolf_shared_lair_boar_wolf:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_lair_boar_wolf, "object/tangible/lair/boar_wolf/lair_boar_wolf.iff")

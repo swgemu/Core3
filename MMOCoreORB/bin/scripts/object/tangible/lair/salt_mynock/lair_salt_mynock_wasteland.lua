@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_salt_mynock_lair_salt_mynock_wasteland = object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_lair_salt_mynock_wasteland, "object/tangible/lair/salt_mynock/lair_salt_mynock_wasteland.iff")

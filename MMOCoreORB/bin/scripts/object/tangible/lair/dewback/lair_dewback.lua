@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_dewback_lair_dewback = object_tangible_lair_dewback_shared_lair_dewback:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dewback_lair_dewback, "object/tangible/lair/dewback/lair_dewback.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_mts_clan_monolith = object_tangible_lair_base_shared_objective_mts_clan_monolith:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_mts_clan_monolith, "object/tangible/lair/base/objective_mts_clan_monolith.iff")

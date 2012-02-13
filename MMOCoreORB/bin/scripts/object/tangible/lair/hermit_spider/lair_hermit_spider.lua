@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_hermit_spider_lair_hermit_spider = object_tangible_lair_hermit_spider_shared_lair_hermit_spider:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_lair_hermit_spider, "object/tangible/lair/hermit_spider/lair_hermit_spider.iff")

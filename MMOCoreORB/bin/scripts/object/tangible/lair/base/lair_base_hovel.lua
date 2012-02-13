@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_lair_base_hovel = object_tangible_lair_base_shared_lair_base_hovel:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_lair_base_hovel, "object/tangible/lair/base/lair_base_hovel.iff")

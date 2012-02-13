@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_bramble_light = object_tangible_lair_base_shared_bramble_light:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_bramble_light, "object/tangible/lair/base/bramble_light.iff")

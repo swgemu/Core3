@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_baz_nitch_lair_baz_nitch_forest = object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_lair_baz_nitch_forest, "object/tangible/lair/baz_nitch/lair_baz_nitch_forest.iff")

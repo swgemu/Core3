@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_bageraset_lair_bageraset_forest = object_tangible_lair_bageraset_shared_lair_bageraset_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bageraset_lair_bageraset_forest, "object/tangible/lair/bageraset/lair_bageraset_forest.iff")

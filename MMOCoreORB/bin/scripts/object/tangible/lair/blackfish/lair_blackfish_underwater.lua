@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_blackfish_lair_blackfish_underwater = object_tangible_lair_blackfish_shared_lair_blackfish_underwater:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blackfish_lair_blackfish_underwater, "object/tangible/lair/blackfish/lair_blackfish_underwater.iff")

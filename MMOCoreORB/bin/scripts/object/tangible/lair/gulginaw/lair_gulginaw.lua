@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gulginaw_lair_gulginaw = object_tangible_lair_gulginaw_shared_lair_gulginaw:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gulginaw_lair_gulginaw, "object/tangible/lair/gulginaw/lair_gulginaw.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_pugoriss_lair_pugoriss_grassland = object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_lair_pugoriss_grassland, "object/tangible/lair/pugoriss/lair_pugoriss_grassland.iff")

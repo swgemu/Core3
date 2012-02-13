@@ -130,13 +130,13 @@ public:
 
 	String getRandomLootableMod();
 
-	SceneObject* createLootObject(LootItemTemplate* templateObject, int level);
+	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level);
 
 	int calculateLootCredits(int level);
 
 	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
+	void createLoot(SceneObject* container, const String& lootGroup, int level = -1, int useCount = 1);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -208,13 +208,13 @@ private:
 	void setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject);
 
 public:
-	SceneObject* createLootObject(LootItemTemplate* templateObject, int level);
+	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level);
 
 	int calculateLootCredits(int level);
 
 	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
+	void createLoot(SceneObject* container, const String& lootGroup, int level = -1, int useCount = 1);
 
 	WeakReference<LootManager*> _this;
 
@@ -267,10 +267,10 @@ public:
 
 	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level);
+	void createLoot(SceneObject* container, const String& lootGroup, int level, int useCount);
 
 protected:
-	String _param1_createLoot__SceneObject_String_int_;
+	String _param1_createLoot__SceneObject_String_int_int_;
 };
 
 class LootManagerHelper : public DistributedObjectClassHelper, public Singleton<LootManagerHelper> {

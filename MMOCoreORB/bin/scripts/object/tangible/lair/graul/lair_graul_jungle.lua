@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_graul_lair_graul_jungle = object_tangible_lair_graul_shared_lair_graul_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_graul_lair_graul_jungle, "object/tangible/lair/graul/lair_graul_jungle.iff")

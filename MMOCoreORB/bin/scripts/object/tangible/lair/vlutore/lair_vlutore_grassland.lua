@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vlutore_lair_vlutore_grassland = object_tangible_lair_vlutore_shared_lair_vlutore_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vlutore_lair_vlutore_grassland, "object/tangible/lair/vlutore/lair_vlutore_grassland.iff")

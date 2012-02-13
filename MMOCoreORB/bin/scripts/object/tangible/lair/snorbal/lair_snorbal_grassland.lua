@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_snorbal_lair_snorbal_grassland = object_tangible_lair_snorbal_shared_lair_snorbal_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_snorbal_lair_snorbal_grassland, "object/tangible/lair/snorbal/lair_snorbal_grassland.iff")

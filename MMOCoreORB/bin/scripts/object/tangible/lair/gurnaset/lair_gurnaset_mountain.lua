@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gurnaset_lair_gurnaset_mountain = object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_lair_gurnaset_mountain, "object/tangible/lair/gurnaset/lair_gurnaset_mountain.iff")

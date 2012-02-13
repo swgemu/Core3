@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_dead_log_large_evil_fire_red = object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_dead_log_large_evil_fire_red, "object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_red.iff")

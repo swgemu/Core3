@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kupernug_lair_kupernug = object_tangible_lair_kupernug_shared_lair_kupernug:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kupernug_lair_kupernug, "object/tangible/lair/kupernug/lair_kupernug.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kliknik_lair_kliknik = object_tangible_lair_kliknik_shared_lair_kliknik:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kliknik_lair_kliknik, "object/tangible/lair/kliknik/lair_kliknik.iff")

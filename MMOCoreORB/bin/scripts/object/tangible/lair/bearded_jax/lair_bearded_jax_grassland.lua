@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_bearded_jax_lair_bearded_jax_grassland = object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_lair_bearded_jax_grassland, "object/tangible/lair/bearded_jax/lair_bearded_jax_grassland.iff")

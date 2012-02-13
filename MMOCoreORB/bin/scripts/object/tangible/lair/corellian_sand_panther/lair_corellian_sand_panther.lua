@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_corellian_sand_panther_lair_corellian_sand_panther = object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_lair_corellian_sand_panther, "object/tangible/lair/corellian_sand_panther/lair_corellian_sand_panther.iff")

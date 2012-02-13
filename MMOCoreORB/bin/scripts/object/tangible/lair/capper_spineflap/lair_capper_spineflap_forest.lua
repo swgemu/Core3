@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_capper_spineflap_lair_capper_spineflap_forest = object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_lair_capper_spineflap_forest, "object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff")

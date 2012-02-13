@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_worrt_lair_worrt = object_tangible_lair_worrt_shared_lair_worrt:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_worrt_lair_worrt, "object/tangible/lair/worrt/lair_worrt.iff")

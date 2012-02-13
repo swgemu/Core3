@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_jellyfish_lair_jellyfish = object_tangible_lair_jellyfish_shared_lair_jellyfish:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_lair_jellyfish, "object/tangible/lair/jellyfish/lair_jellyfish.iff")

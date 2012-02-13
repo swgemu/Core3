@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_condor_dragon_lair_condor_dragon_mountain = object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_lair_condor_dragon_mountain, "object/tangible/lair/condor_dragon/lair_condor_dragon_mountain.iff")

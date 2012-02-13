@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_durni_lair_durni = object_tangible_lair_durni_shared_lair_durni:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_durni_lair_durni, "object/tangible/lair/durni/lair_durni.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kwi_lair_kwi = object_tangible_lair_kwi_shared_lair_kwi:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kwi_lair_kwi, "object/tangible/lair/kwi/lair_kwi.iff")

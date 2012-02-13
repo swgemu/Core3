@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_brambles_large_fog = object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_brambles_large_fog, "object/tangible/lair/base/poi_all_lair_brambles_large_fog.iff")

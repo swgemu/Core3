@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_woolamander_lair_woolamander_jungle = object_tangible_lair_woolamander_shared_lair_woolamander_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_woolamander_lair_woolamander_jungle, "object/tangible/lair/woolamander/lair_woolamander_jungle.iff")

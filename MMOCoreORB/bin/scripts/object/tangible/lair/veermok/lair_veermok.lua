@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_veermok_lair_veermok = object_tangible_lair_veermok_shared_lair_veermok:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_veermok_lair_veermok, "object/tangible/lair/veermok/lair_veermok.iff")

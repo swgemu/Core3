@@ -127,5 +127,7 @@ class ResourceManager extends Observer implements Logger {
 
 	public native void listResourcesForPlanetOnScreen(CreatureObject creature, final string planet);
 
+	public native string healthCheck(); 
+
 }
 

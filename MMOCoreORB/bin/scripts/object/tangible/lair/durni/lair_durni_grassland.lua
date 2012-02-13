@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_durni_lair_durni_grassland = object_tangible_lair_durni_shared_lair_durni_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_durni_lair_durni_grassland, "object/tangible/lair/durni/lair_durni_grassland.iff")

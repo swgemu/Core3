@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_fynock_lair_fynock_forest = object_tangible_lair_fynock_shared_lair_fynock_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fynock_lair_fynock_forest, "object/tangible/lair/fynock/lair_fynock_forest.iff")

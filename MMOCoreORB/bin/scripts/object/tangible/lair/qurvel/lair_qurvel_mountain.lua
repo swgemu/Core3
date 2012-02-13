@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_qurvel_lair_qurvel_mountain = object_tangible_lair_qurvel_shared_lair_qurvel_mountain:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_qurvel_lair_qurvel_mountain, "object/tangible/lair/qurvel/lair_qurvel_mountain.iff")

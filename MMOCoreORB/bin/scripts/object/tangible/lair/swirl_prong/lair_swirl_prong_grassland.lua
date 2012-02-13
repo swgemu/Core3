@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_swirl_prong_lair_swirl_prong_grassland = object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_swirl_prong_lair_swirl_prong_grassland, "object/tangible/lair/swirl_prong/lair_swirl_prong_grassland.iff")

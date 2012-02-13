@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_ronto_lair_ronto = object_tangible_lair_ronto_shared_lair_ronto:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_ronto_lair_ronto, "object/tangible/lair/ronto/lair_ronto.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kima_lair_kima_grassland = object_tangible_lair_kima_shared_lair_kima_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kima_lair_kima_grassland, "object/tangible/lair/kima/lair_kima_grassland.iff")

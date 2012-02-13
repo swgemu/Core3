@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_wooden = object_tangible_lair_base_shared_poi_all_lair_wooden:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_wooden, "object/tangible/lair/base/poi_all_lair_wooden.iff")

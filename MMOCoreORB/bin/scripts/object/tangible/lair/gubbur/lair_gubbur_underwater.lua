@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gubbur_lair_gubbur_underwater = object_tangible_lair_gubbur_shared_lair_gubbur_underwater:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gubbur_lair_gubbur_underwater, "object/tangible/lair/gubbur/lair_gubbur_underwater.iff")

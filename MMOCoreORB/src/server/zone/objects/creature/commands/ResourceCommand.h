@@ -73,6 +73,10 @@ public:
 
 			if(command == "list")
 				listResources(creature, &args);
+
+			if(command == "health")
+				healthCheck(creature, &args);
+
 			else
 				throw Exception();
 
@@ -99,6 +103,15 @@ public:
 
 		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
 		resMan->listResourcesForPlanetOnScreen(creature, planet);
+	}
+
+	void healthCheck(CreatureObject* creature, StringTokenizer* args) {
+		if(creature->getZoneServer() == NULL)
+			return;
+
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+
+		creature->sendSystemMessage(resMan->healthCheck());
 	}
 
 };

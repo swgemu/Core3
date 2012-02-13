@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_verne_lair_verne_forest = object_tangible_lair_verne_shared_lair_verne_forest:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_verne_lair_verne_forest, "object/tangible/lair/verne/lair_verne_forest.iff")

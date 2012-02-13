@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_roba_lair_roba_grassland = object_tangible_lair_roba_shared_lair_roba_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_roba_lair_roba_grassland, "object/tangible/lair/roba/lair_roba_grassland.iff")

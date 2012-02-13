@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kimogila_lair_kimogila = object_tangible_lair_kimogila_shared_lair_kimogila:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kimogila_lair_kimogila, "object/tangible/lair/kimogila/lair_kimogila.iff")

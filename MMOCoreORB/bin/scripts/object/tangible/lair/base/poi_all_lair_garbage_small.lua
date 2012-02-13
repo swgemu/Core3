@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_garbage_small = object_tangible_lair_base_shared_poi_all_lair_garbage_small:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_garbage_small, "object/tangible/lair/base/poi_all_lair_garbage_small.iff")

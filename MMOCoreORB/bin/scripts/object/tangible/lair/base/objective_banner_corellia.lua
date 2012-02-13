@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_banner_corellia = object_tangible_lair_base_shared_objective_banner_corellia:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_objective_banner_corellia, "object/tangible/lair/base/objective_banner_corellia.iff")

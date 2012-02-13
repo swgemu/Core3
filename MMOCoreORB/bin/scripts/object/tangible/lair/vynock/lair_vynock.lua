@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_vynock_lair_vynock = object_tangible_lair_vynock_shared_lair_vynock:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vynock_lair_vynock, "object/tangible/lair/vynock/lair_vynock.iff")

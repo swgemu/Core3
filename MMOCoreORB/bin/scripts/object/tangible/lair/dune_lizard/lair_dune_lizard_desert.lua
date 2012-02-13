@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_dune_lizard_lair_dune_lizard_desert = object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dune_lizard_lair_dune_lizard_desert, "object/tangible/lair/dune_lizard/lair_dune_lizard_desert.iff")

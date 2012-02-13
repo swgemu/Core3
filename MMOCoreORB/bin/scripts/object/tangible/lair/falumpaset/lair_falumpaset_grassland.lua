@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_falumpaset_lair_falumpaset_grassland = object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_lair_falumpaset_grassland, "object/tangible/lair/falumpaset/lair_falumpaset_grassland.iff")

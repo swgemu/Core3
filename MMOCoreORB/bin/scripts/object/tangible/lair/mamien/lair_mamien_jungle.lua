@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_mamien_lair_mamien_jungle = object_tangible_lair_mamien_shared_lair_mamien_jungle:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mamien_lair_mamien_jungle, "object/tangible/lair/mamien/lair_mamien_jungle.iff")

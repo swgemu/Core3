@@ -22,7 +22,7 @@
  *	LootManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_GETRANDOMLOOTABLEMOD__,RPC_CALCULATELOOTCREDITS__INT_,RPC_CREATELOOT__SCENEOBJECT_AIAGENT_,RPC_CREATELOOT__SCENEOBJECT_STRING_INT_};
+enum {RPC_INITIALIZE__ = 6,RPC_GETRANDOMLOOTABLEMOD__,RPC_CALCULATELOOTCREDITS__INT_,RPC_CREATELOOT__SCENEOBJECT_AIAGENT_,RPC_CREATELOOT__SCENEOBJECT_STRING_INT_INT_};
 
 LootManager::LootManager(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman, objMan, server);
@@ -65,7 +65,7 @@ String LootManager::getRandomLootableMod() {
 		return _implementation->getRandomLootableMod();
 }
 
-SceneObject* LootManager::createLootObject(LootItemTemplate* templateObject, int level) {
+TangibleObject* LootManager::createLootObject(LootItemTemplate* templateObject, int level) {
 	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -103,20 +103,21 @@ void LootManager::createLoot(SceneObject* container, AiAgent* creature) {
 		_implementation->createLoot(container, creature);
 }
 
-void LootManager::createLoot(SceneObject* container, const String& lootGroup, int level) {
+void LootManager::createLoot(SceneObject* container, const String& lootGroup, int level, int useCount) {
 	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATELOOT__SCENEOBJECT_STRING_INT_);
+		DistributedMethod method(this, RPC_CREATELOOT__SCENEOBJECT_STRING_INT_INT_);
 		method.addObjectParameter(container);
 		method.addAsciiParameter(lootGroup);
 		method.addSignedIntParameter(level);
+		method.addSignedIntParameter(useCount);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->createLoot(container, lootGroup, level);
+		_implementation->createLoot(container, lootGroup, level, useCount);
 }
 
 DistributedObjectServant* LootManager::_getImplementation() {
@@ -299,8 +300,8 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_CREATELOOT__SCENEOBJECT_AIAGENT_:
 		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter()));
 		break;
-	case RPC_CREATELOOT__SCENEOBJECT_STRING_INT_:
-		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_int_), inv->getSignedIntParameter());
+	case RPC_CREATELOOT__SCENEOBJECT_STRING_INT_INT_:
+		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -325,8 +326,8 @@ void LootManagerAdapter::createLoot(SceneObject* container, AiAgent* creature) {
 	(static_cast<LootManager*>(stub))->createLoot(container, creature);
 }
 
-void LootManagerAdapter::createLoot(SceneObject* container, const String& lootGroup, int level) {
-	(static_cast<LootManager*>(stub))->createLoot(container, lootGroup, level);
+void LootManagerAdapter::createLoot(SceneObject* container, const String& lootGroup, int level, int useCount) {
+	(static_cast<LootManager*>(stub))->createLoot(container, lootGroup, level, useCount);
 }
 
 /*

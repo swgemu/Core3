@@ -14,7 +14,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/area/ActiveArea.h"
 
-void ForageManagerImplementation::startForaging(CreatureObject* player, bool scoutForage) {
+void ForageManagerImplementation::startForaging(CreatureObject* player, int forageType) {
 	if (player == NULL)
 		return;
 
@@ -50,7 +50,7 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, bool sco
 	ManagedReference<ZoneServer*> zoneServer = player->getZoneServer();
 
 	//Queue the foraging task.
-	Reference<Task*> foragingEvent = new ForagingEvent(player, zoneServer, scoutForage, playerX, playerY, player->getZone()->getZoneName());
+	Reference<Task*> foragingEvent = new ForagingEvent(player, zoneServer, forageType, playerX, playerY, player->getZone()->getZoneName());
 	player->addPendingTask("foraging", foragingEvent, 8500);
 
 	player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
@@ -58,7 +58,7 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, bool sco
 
 }
 
-void ForageManagerImplementation::finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& zoneName) {
+void ForageManagerImplementation::finishForaging(CreatureObject* player, int forageType, float forageX, float forageY, const String& zoneName) {
 	if (player == NULL)
 		return;
 
@@ -100,55 +100,63 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, bool sc
 	int chance;
 	int skillMod;
 
-	if (scoutForage) {
+	switch(forageType) {
+	case ForageManager::SCOUT:
+	case ForageManager::LAIR:
 		skillMod = player->getSkillMod("foraging");
 		chance = (int)(15 + (skillMod * 0.8));
-
-	} else {
+		break;
+	case ForageManager::MEDICAL:
 		skillMod = player->getSkillMod("medical_foraging");
 		chance = (int)(15 + (skillMod * 0.6));
+		break;
+	default:
+		skillMod = 20;
+		chance = (int)(15 + (skillMod * 0.6));
+		break;
 	}
 
 	//Determine if player finds an item.
 	if (chance > 100) //There could possibly be +foraging skill tapes.
 		chance = 100;
 
-	if (System::random(100) > chance) {
+	if (System::random(80) > chance) {
 		player->sendSystemMessage("@skl_use:sys_forage_fail"); //"You failed to find anything worth foraging."
 
 	} else {
-		player->sendSystemMessage("@skl_use:sys_forage_success"); //"Your attempt at foraging was a success!
-		forageGiveItems(player, scoutForage, forageX, forageY, zoneName);
+
+		if(forageGiveItems(player, forageType, forageX, forageY, zoneName))
+			player->sendSystemMessage("@skl_use:sys_forage_success"); //"Your attempt at foraging was a success!
+
 	}
 
 	return;
 
 }
 
-void ForageManagerImplementation::forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
+bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet) {
 	if (player == NULL)
-		return;
+		return false;
 
 	Locker playerLocker(player);
 
 	ManagedReference<LootManager*> lootManager = player->getZoneServer()->getLootManager();
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (lootManager == NULL || inventory == NULL)
-		return;
-
-	int level = 1;
-	int itemCount = 1;
-	int lootGroup;
+	if (lootManager == NULL || inventory == NULL) {
+		player->sendSystemMessage("@skl_use:sys_forage_fail");
+		return false;
+	}
 
 	//Check if inventory is full.
 	if (inventory->hasFullContainerObjects()) {
 		player->sendSystemMessage("@skl_use:sys_forage_noroom"); //"Some foraged items were discarded, because your inventory is full."
-		return;
+		return false;
 	}
 
+	int itemCount = 1;
 	//Determine how many items the player finds.
-	if (scoutForage) {
+	if (forageType == ForageManager::SCOUT) {
 		if (player->hasSkill("outdoors_scout_camp_03") && System::random(5) == 1)
 			itemCount += 1;
 		if (player->hasSkill("outdoors_scout_master") && System::random(5) == 1)
@@ -164,89 +172,134 @@ void ForageManagerImplementation::forageGiveItems(CreatureObject* player, bool s
 
 	//Determine what the player finds.
 	int dice;
-	int charges;
+	int useCount = 1;
+	int level = 1;
+	String lootGroup = "";
+	String resName = "";
 
-	if (scoutForage) {
+	if (forageType == ForageManager::SCOUT) {
+
 		for (int i = 0; i < itemCount; i++) {
 			dice = System::random(200);
-			charges = 1;
+			useCount = 1;
+			level = 1;
 
-			if (dice >= 0 && dice < 160)
-				lootGroup = 4; //Forage food.
+			if (dice >= 0 && dice < 160) {
+				lootGroup = "forage_food";
+			} else if (dice > 159 && dice < 200) {
+				lootGroup = "forage_bait";
+				useCount = System::random(4) + 1;
+			} else {
+				lootGroup = "forage_rare";
+			}
 
-			else if (dice > 159 && dice < 200) {
-				lootGroup = 8; //Bait.
-				charges = System::random(4) + 1;
-
-			} else
-				lootGroup = 9; //Rare forage items.
-
-			lootManager->createLoot(inventory, "forage");
+			lootManager->createLoot(inventory, lootGroup, level, useCount);
 		}
 
-	} else { //Medical Forage
+	} else if (forageType == ForageManager::MEDICAL) { //Medical Forage
 		dice = System::random(200);
-		charges = 1;
+		useCount = 1;
+		level = 1;
 
-		if (dice >= 0 && dice < 40) //Forage food.
-			lootGroup = 4;
+		if (dice >= 0 && dice < 40) { //Forage food.
+			lootGroup = "forage_food";
 
-		else if (dice > 39 && dice < 110) { //Resources.
-			forageGiveResource(player, forageX, forageY, planet);
-			return;
+		} else if (dice > 39 && dice < 110) { //Resources.
+			if(forageGiveResource(player, forageX, forageY, planet, resName))
+				return true;
+			else {
+				player->sendSystemMessage("@skl_use:sys_forage_fail");
+				return false;
+			}
+		} else if (dice > 109 && dice < 170) { //Average components.
+			lootGroup = "forage_medical_components";
+			level = 1;
+		} else if (dice > 169 && dice < 200) { //Good components.
+			lootGroup = "forage_medical_components";
+			level = 60;
+		} else { //Exceptional Components
+			lootGroup = "forage_medical_components";
+			level = 200;
 		}
 
-		else if (dice > 109 && dice < 170) //Average components.
-			lootGroup = 5;
+		lootManager->createLoot(inventory, lootGroup, level, useCount);
 
-		else if (dice > 169 && dice < 200) //Good components.
-			lootGroup = 6;
+	} else if (forageType == ForageManager::LAIR) { //Medical Forage
+		dice = System::random(200);
+		useCount = 1;
+		level = 1;
 
-		else //Exceptional Components
-			lootGroup = 9; // 7 when items implemented
+		if (dice >= 0 && dice < 40) { // Live Creatures
+			lootGroup = "forage_live_creatures";
+		}
 
-		lootManager->createLoot(inventory, "medical_forage");
+		else if (dice > 39 && dice < 110) { // Eggs
+			resName = "meat_egg";
+			if(forageGiveResource(player, forageX, forageY, planet, resName))
+				return true;
+			else {
+				player->sendSystemMessage("@skl_use:sys_forage_fail");
+				return false;
+			}
+		}
+
+		else  {//if (dice > 109 && dice < 200) // Horn
+			resName = "bone_horn";
+			if(forageGiveResource(player, forageX, forageY, planet, resName))
+				return true;
+			else {
+				player->sendSystemMessage("@skl_use:sys_forage_fail");
+				return false;
+			}
+		}
+
+		lootManager->createLoot(inventory, lootGroup, level, useCount);
 	}
-
+	return true;
 }
 
-void ForageManagerImplementation::forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet) {
+bool ForageManagerImplementation::forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType) {
 	if (player == NULL)
-		return;
-
-	Locker playerLocker(player);
+		return false;
 
 	ManagedReference<ResourceManager*> resourceManager = player->getZoneServer()->getResourceManager();
 
 	if (resourceManager == NULL)
-		return;
+		return false;
 
-	//Get a list of the flora on the planet.
-	Vector<ManagedReference<ResourceSpawn*> > resources;
-	//resourceManager->getResourceListByType(resources, 3, planet);
-	if (resources.size() < 1)
-		return;
+	ManagedReference<ResourceSpawn*> resource = NULL;
 
-	//Pick a random resource from the list and give it to the player if there is some in the area.
-	ManagedReference<ResourceSpawn*> flora;
-	float density;
-	int key;
-	int quantity = 1; //This can be changed after release to make the skill more useful.
+	if(resType.isEmpty()) {
+		//Get a list of the flora on the planet.
+		Vector<ManagedReference<ResourceSpawn*> > resources;
+		resourceManager->getResourceListByType(resources, 3, planet);
+		if (resources.size() < 1)
+			return false;
 
-	while (resources.size() > 0) {
-		key = System::random(resources.size() - 1);
-		flora = resources.get(key);
-		density = flora->getDensityAt(planet, forageX, forageY);
+		while (resources.size() > 0) {
+			int key = System::random(resources.size() - 1);
+			float density = resources.get(key)->getDensityAt(planet, forageX, forageY);
 
-		if (density <= 0.0 && resources.size() > 1) { //No concentration of this resource near the player.
-			resources.remove(key); //Remove and pick another one.
+			if (density <= 0.0 && resources.size() > 1) { //No concentration of this resource near the player.
+				resources.remove(key); //Remove and pick another one.
 
-		} else { //If there is only one left, we give them that one even if density is 0.
-			resourceManager->harvestResourceToPlayer(player, flora, quantity);
-			break;
+			} else { //If there is only one left, we give them that one even if density is 0.
+				resource = resources.get(key);
+				break;
+			}
 		}
+	} else {
+		if(player->getZone() == NULL)
+			return false;
+
+		resType = resType + "_" + player->getZone()->getZoneName();
+		resource = resourceManager->getCurrentSpawn(resType, player->getZone()->getZoneName());
+
+		if(resource == NULL)
+			return false;
 	}
 
-	return;
-
+	int quantity = System::random(30) + 10;
+	resourceManager->harvestResourceToPlayer(player, resource, quantity);
+	return true;
 }

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_poi_all_lair_insecthill_small_fog_gray = object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_poi_all_lair_insecthill_small_fog_gray, "object/tangible/lair/base/poi_all_lair_insecthill_small_fog_gray.iff")

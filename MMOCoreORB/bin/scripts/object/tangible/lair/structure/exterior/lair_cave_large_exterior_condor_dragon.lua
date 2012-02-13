@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_exterior_lair_cave_large_exterior_condor_dragon = object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_lair_cave_large_exterior_condor_dragon, "object/tangible/lair/structure/exterior/lair_cave_large_exterior_condor_dragon.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_nerf_lair_nerf = object_tangible_lair_nerf_shared_lair_nerf:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nerf_lair_nerf, "object/tangible/lair/nerf/lair_nerf.iff")

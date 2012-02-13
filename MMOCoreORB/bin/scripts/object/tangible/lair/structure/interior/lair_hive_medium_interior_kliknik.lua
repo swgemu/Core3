@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_structure_interior_lair_hive_medium_interior_kliknik = object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_lair_hive_medium_interior_kliknik, "object/tangible/lair/structure/interior/lair_hive_medium_interior_kliknik.iff")

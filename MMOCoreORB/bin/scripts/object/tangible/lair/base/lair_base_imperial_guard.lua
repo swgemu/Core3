@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_lair_base_imperial_guard = object_tangible_lair_base_shared_lair_base_imperial_guard:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_lair_base_imperial_guard, "object/tangible/lair/base/lair_base_imperial_guard.iff")

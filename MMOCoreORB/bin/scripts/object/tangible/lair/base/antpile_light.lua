@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_antpile_light = object_tangible_lair_base_shared_antpile_light:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_antpile_light, "object/tangible/lair/base/antpile_light.iff")

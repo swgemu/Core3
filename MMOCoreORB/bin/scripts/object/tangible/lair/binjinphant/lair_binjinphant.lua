@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_binjinphant_lair_binjinphant = object_tangible_lair_binjinphant_shared_lair_binjinphant:new {
-
+	objectMenuComponent = {"cpp", "LairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_lair_binjinphant, "object/tangible/lair/binjinphant/lair_binjinphant.iff")
