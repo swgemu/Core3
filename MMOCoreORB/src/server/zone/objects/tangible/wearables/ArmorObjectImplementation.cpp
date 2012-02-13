@@ -283,7 +283,6 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 
 		setRating((int) values->getCurrentValue("armor_rating"));
 
-		setMaxCondition((int) values->getCurrentValue("armor_integrity"));
 		setConditionDamage(0);
 	}
 
@@ -293,6 +292,8 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 			"armor_action_encumbrance"));
 	setMindEncumbrance((int) values->getCurrentValue(
 			"armor_mind_encumbrance"));
+
+	setMaxCondition((int) values->getCurrentValue("armor_integrity"));
 
 	float base = values->getCurrentValue("armor_effectiveness");
 
