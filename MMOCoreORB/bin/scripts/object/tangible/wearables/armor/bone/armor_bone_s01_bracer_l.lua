@@ -51,21 +51,21 @@ object_tangible_wearables_armor_bone_armor_bone_s01_bracer_l = object_tangible_w
 	vunerability = KINETIC + BLAST + STUN + HEAT + LIGHTSABER,
 
 	-- These are default Blue Frog stats
-	healthEncumbrance = 1,
-	actionEncumbrance = 1,
-	mindEncumbrance = 1,
+	healthEncumbrance = 6,
+	actionEncumbrance = 8,
+	mindEncumbrance = 4,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
-	kinetic = 15,
-	energy = 15,
-	electricity = 15,
-	stun = 15,
-	blast = 15,
-	heat = 15,
-	cold = 15,
-	acid = 15,
+	kinetic = 0,
+	energy = 20,
+	electricity = 10,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
 	lightSaber = 0,
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},

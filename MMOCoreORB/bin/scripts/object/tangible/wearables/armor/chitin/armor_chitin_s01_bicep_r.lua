@@ -51,20 +51,20 @@ object_tangible_wearables_armor_chitin_armor_chitin_s01_bicep_r = object_tangibl
 	vunerability = STUN + HEAT + COLD + ENERGY + LIGHTSABER,
 
 	-- These are default Blue Frog stats
-	healthEncumbrance = 1,
-	actionEncumbrance = 1,
-	mindEncumbrance = 1,
+	healthEncumbrance = 13,
+	actionEncumbrance = 25,
+	mindEncumbrance = 16,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
-	kinetic = 15,
+	kinetic = 25,
 	energy = 15,
-	electricity = 15,
-	stun = 15,
+	electricity = 0,
+	stun = 0,
 	blast = 15,
-	heat = 15,
-	cold = 15,
+	heat = 0,
+	cold = 0,
 	acid = 15,
 	lightSaber = 0,
 

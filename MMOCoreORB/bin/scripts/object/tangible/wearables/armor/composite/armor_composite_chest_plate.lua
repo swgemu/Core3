@@ -51,21 +51,21 @@ object_tangible_wearables_armor_composite_armor_composite_chest_plate = object_t
 	vunerability = STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
-	healthEncumbrance = 1,
-	actionEncumbrance = 1,
-	mindEncumbrance = 1,
+	healthEncumbrance = 250,
+	actionEncumbrance = 65,
+	mindEncumbrance = 25,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
-	kinetic = 60,
-	energy = 60,
-	electricity = 60,
-	stun = 60,
-	blast = 60,
-	heat = 60,
-	cold = 60,
-	acid = 60,
+	kinetic = 20,
+	energy = 20,
+	electricity = 20,
+	stun = 0,
+	blast = 20,
+	heat = 20,
+	cold = 20,
+	acid = 20,
 	lightSaber = 0,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},

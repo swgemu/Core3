@@ -51,9 +51,9 @@ object_tangible_wearables_armor_nightsister_armor_nightsister_bicep_r_s01 = obje
 	vunerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
-	healthEncumbrance = 1,
-	actionEncumbrance = 1,
-	mindEncumbrance = 1,
+	healthEncumbrance = 25,
+	actionEncumbrance = 50,
+	mindEncumbrance = 25,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
