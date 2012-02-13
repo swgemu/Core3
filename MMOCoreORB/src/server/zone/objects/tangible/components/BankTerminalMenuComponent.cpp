@@ -154,7 +154,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 			ManagedReference<SceneObject*> bank = creature->getSlottedObject("bank");
 			bank->openContainerTo(creature);
 		} else {
-			creature->sendSystemMessage("@newbie_tutorial:bank_info_2");
+			creature->sendSystemMessage("@newbie_tutorial/system_messages:bank_info_2");
 		}
 
 		return 0;
