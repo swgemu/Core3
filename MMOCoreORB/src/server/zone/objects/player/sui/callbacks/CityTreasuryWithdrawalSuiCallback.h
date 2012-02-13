@@ -1,25 +1,25 @@
 /*
- * CitySpecializationSuiCallback.h
+ * CityTreasuryWithdrawalSuiCallback.h
  *
  *  Created on: Feb 13, 2012
  *      Author: xyborn
  */
 
-#ifndef CITYSPECIALIZATIONSUICALLBACK_H_
-#define CITYSPECIALIZATIONSUICALLBACK_H_
+#ifndef CITYTREASURYWITHDRAWALSUICALLBACK_H_
+#define CITYTREASURYWITHDRAWALSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sessions/CitySpecializationSession.h"
+#include "server/zone/objects/player/sui/sessions/CityTreasuryWithdrawalSession.h"
 
-class CitySpecializationSuiCallback : public SuiCallback {
+class CityTreasuryWithdrawalSuiCallback : public SuiCallback {
 public:
-	CitySpecializationSuiCallback(ZoneServer* server)
+	CityTreasuryWithdrawalSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		ManagedReference<CitySpecializationSession*> session = dynamic_cast<CitySpecializationSession*>(player->getActiveSession(SessionFacadeType::CITYSPEC));
+		ManagedReference<CityTreasuryWithdrawalSession*> session = dynamic_cast<CityTreasuryWithdrawalSession*>(player->getActiveSession(SessionFacadeType::CITYSPEC));
 
 		if (session == NULL)
 			return;
@@ -43,4 +43,4 @@ public:
 	}
 };
 
-#endif /* CITYSPECIALIZATIONSUICALLBACK_H_ */
+#endif /* CITYTREASURYWITHDRAWALSUICALLBACK_H_ */

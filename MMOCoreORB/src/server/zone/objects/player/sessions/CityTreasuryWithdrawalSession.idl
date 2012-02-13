@@ -9,14 +9,14 @@ import server.zone.objects.structure.StructureObject;
 import server.zone.managers.structure.StructureManager;
 include server.zone.objects.scene.SessionFacadeType;
 
-class CitySpecializationSession extends Facade {
+class CityTreasuryWithdrawalSession extends Facade {
 	protected CreatureObject creatureObject;
 	protected CityRegion cityRegion;
 	protected SceneObject terminalObject;
 	
-	protected string specialization;
+	protected string reason;
 	
-	public CitySpecializationSession(CreatureObject creature, CityRegion city, SceneObject terminal = null) {
+	public CityTreasuryWithdrawalSession(CreatureObject creature, CityRegion city, SceneObject terminal = null) {
 		Logger.setLoggingName("CitySpecializationSession");
 		Logger.setLogging(true);
 		
@@ -27,10 +27,8 @@ class CitySpecializationSession extends Facade {
 
 	public native int initializeSession();
 	
-	public native int sendConfirmationBox(final string choice);
-	
-	public native int acceptChoice();
-	
+	public native int sendTransferBox();
+
 	public int cancelSession() {
 		creatureObject.dropActiveSession(SessionFacadeType.CITYSPEC);
 		

@@ -18,7 +18,7 @@
  *	CitySpecializationSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_SENDCONFIRMATIONBOX__STRING_,RPC_ACCEPTCHOICE__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETCITYREGION__};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_SENDCONFIRMATIONBOX__STRING_,RPC_ACCEPTCHOICE__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
 CitySpecializationSession::CitySpecializationSession(CreatureObject* creature, CityRegion* city, SceneObject* terminal) : Facade(DummyConstructorParameter::instance()) {
 	CitySpecializationSessionImplementation* _implementation = new CitySpecializationSessionImplementation(creature, city, terminal);
@@ -98,19 +98,6 @@ int CitySpecializationSession::clearSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->clearSession();
-}
-
-CityRegion* CitySpecializationSession::getCityRegion() {
-	CitySpecializationSessionImplementation* _implementation = static_cast<CitySpecializationSessionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCITYREGION__);
-
-		return static_cast<CityRegion*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getCityRegion();
 }
 
 DistributedObjectServant* CitySpecializationSession::_getImplementation() {
@@ -315,11 +302,6 @@ int CitySpecializationSessionImplementation::clearSession() {
 	return 0;
 }
 
-CityRegion* CitySpecializationSessionImplementation::getCityRegion() {
-	// server/zone/objects/player/sessions/CitySpecializationSession.idl():  		return cityRegion;
-	return cityRegion;
-}
-
 /*
  *	CitySpecializationSessionAdapter
  */
@@ -346,9 +328,6 @@ Packet* CitySpecializationSessionAdapter::invokeMethod(uint32 methid, Distribute
 	case RPC_CLEARSESSION__:
 		resp->insertSignedInt(clearSession());
 		break;
-	case RPC_GETCITYREGION__:
-		resp->insertLong(getCityRegion()->_getObjectID());
-		break;
 	default:
 		return NULL;
 	}
@@ -374,10 +353,6 @@ int CitySpecializationSessionAdapter::cancelSession() {
 
 int CitySpecializationSessionAdapter::clearSession() {
 	return (static_cast<CitySpecializationSession*>(stub))->clearSession();
-}
-
-CityRegion* CitySpecializationSessionAdapter::getCityRegion() {
-	return (static_cast<CitySpecializationSession*>(stub))->getCityRegion();
 }
 
 /*

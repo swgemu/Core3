@@ -70,3 +70,88 @@ CitiesAllowed = {
 	tatooine = {20, 20, 20, 15, 10, 10},
 	yavin4 = {0, 0, 0, 0, 0, 0}
 }
+
+CitySpecializations = {
+	{"@city/city:city_spec_sample_rich", { --Sample Rich
+		}
+	},
+	{"@city/city:city_spec_industry", { --Manufacturing Center
+			{"advanced_assembly", 15},
+			{"armor_assembly", 15},
+			{"bio_engineer_assembly", 15},
+			{"booster_assembly", 15},
+			{"chassis_assembly", 15},
+			{"clothing_assembly", 15},
+			{"combat_medicine_assembly", 15},
+			{"creature_assembly", 15},
+			{"droid_assembly", 15},
+			{"engine_assembly", 15},
+			{"food_assembly", 15},
+			{"force_assembly", 15},
+			{"general_assembly", 15},
+			{"grenade_assembly", 15},
+			{"instrument_assembly", 15},
+			{"jedi_saber_assembly", 15},
+			{"medicine_assembly", 15},
+			{"shields_assembly", 15},
+			{"spice_assembly", 15},
+			{"structure_assembly", 15},
+			{"tissue_assembly", 15},
+			{"weapon_assembly", 15}
+		}
+	},
+	{"@city/city:city_spec_doctor", { --Medical Center
+			{"private_medical_rating", 10}
+		}
+	},
+	{"@city/city:city_spec_clone", { --Clone Lab
+			{"private_medical_rating", 10}
+		}
+	},
+	{"@city/city:city_spec_research", { --Research Center
+			{"private_medical_rating", 10}
+		}
+	},
+	{"@city/city:city_spec_missions", { --Improved Job Market
+			{"private_medical_rating", 10}
+		}
+	},
+	{"@city/city:city_spec_entertainer", { --Entertainment District
+			{"private_medical_rating", 10}
+		}
+	},
+	{"@city/city:city_spec_stronghold", { --Stronghold
+			{"melee_defense", 50},
+			{"ranged_defense", 50}
+		}
+	},
+	{"@city/city:city_spec_master_healing", { --Scientific Society
+			{"private_medical_rating", 10}
+		}
+	},
+	{"@city/city:city_spec_master_manufacturing", { --Industrial Society
+			{"advanced_assembly", 15},
+			{"armor_assembly", 15},
+			{"bio_engineer_assembly", 15},
+			{"booster_assembly", 15},
+			{"chassis_assembly", 15},
+			{"clothing_assembly", 15},
+			{"combat_medicine_assembly", 15},
+			{"creature_assembly", 15},
+			{"droid_assembly", 15},
+			{"engine_assembly", 15},
+			{"food_assembly", 15},
+			{"force_assembly", 15},
+			{"general_assembly", 15},
+			{"grenade_assembly", 15},
+			{"instrument_assembly", 15},
+			{"jedi_saber_assembly", 15},
+			{"medicine_assembly", 15},
+			{"shields_assembly", 15},
+			{"spice_assembly", 15},
+			{"structure_assembly", 15},
+			{"tissue_assembly", 15},
+			{"weapon_assembly", 15}
+		}
+	},
+}

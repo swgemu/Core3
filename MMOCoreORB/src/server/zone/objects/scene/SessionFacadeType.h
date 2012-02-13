@@ -20,6 +20,7 @@ public:
 	const static int FIND = 8;
 	const static int CONVERSATION = 9;
 	const static int CITYSPEC = 10;
+	const static int CITYWITHDRAW = 11;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

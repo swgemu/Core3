@@ -17,6 +17,7 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
+#include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
@@ -181,7 +182,7 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 		StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
 
 		Time* timeRemaining = mayor->getCooldownTime("city_specialization");
-		params.setTO(String::valueOf(round(timeRemaining->miliDifference() / 1000.f)) + " seconds");
+		params.setTO(String::valueOf(round(abs(timeRemaining->miliDifference() / 1000.f))) + " seconds");
 		mayor->sendSystemMessage(params);
 	}
 
@@ -234,19 +235,15 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 }
 
 void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
-	PlayerObject* ghost = mayor->getPlayerObject();
-
-	if (ghost == NULL || !city->isMayor(mayor->getObjectID()))
+	if (!city->isMayor(mayor->getObjectID()))
 		return;
 
-	ManagedReference<SuiTransferBox*> transfer = new SuiTransferBox(mayor, SuiWindowType::CITY_TREASURY_WITHDRAWAL);
-	transfer->setPromptTitle("@city/city:treasury_withdraw"); //Treasury Withdrawal
-	transfer->setPromptText("@city/city:treasury_withdraw_prompt"); //Enter the amount you would like to withdraw from the treasury. You can only withdraw between 10,000 and 50,000 credits per day.
-	transfer->addFrom("@city/city:total_funds", String::valueOf(mayor->getBankCredits()), String::valueOf(mayor->getBankCredits()), "1"); //Total funds available
-	transfer->addTo("@city/city:treasury", "10000", "50000", "1"); //Treasury
-	transfer->setUsingObject(terminal);
-	transfer->setForceCloseDistance(16.f);
+	if (!mayor->checkCooldownRecovery("city_withdrawal")) {
+		mayor->sendSystemMessage("@city/city:withdraw_daily"); //You may only withdraw from the city treasury once per day.
+		return;
+	}
 
-	ghost->addSuiBox(transfer);
-	mayor->sendMessage(transfer->generateMessage());
+	CityTreasuryWithdrawalSession* session = new CityTreasuryWithdrawalSession(mayor, city, terminal);
+	mayor->addActiveSession(SessionFacadeType::CITYWITHDRAW, session);
+	session->initializeSession();
 }
