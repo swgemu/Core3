@@ -381,7 +381,9 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			if (destructedObject->isNonPlayerCreatureObject())
 				destructedObject->setCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
 
-			creatureInventory->setContainerOwnerID(player->getObjectID());
+			if (player != NULL)
+				creatureInventory->setContainerOwnerID(player->getObjectID());
+
 			lootManager->createLoot(creatureInventory, destructedObject);
 		}
 
