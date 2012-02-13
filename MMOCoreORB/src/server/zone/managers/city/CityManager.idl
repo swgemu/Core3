@@ -66,6 +66,7 @@ class CityManager extends ManagedService implements Logger {
 	
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
+	public transient static unsigned long citySpecializationCooldown;
 	
 	@dereferenced
 	public transient VectorMap<string, CityRegion> cities;
@@ -105,9 +106,13 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
 	
+	public native void sendStatusReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	
 	public native void promptCitySpecialization(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
 	
 	public native void changeCitySpecialization(CityRegion city, CreatureObject mayor, final string spec);
+	
+	public native void promptWithdrawCityTreasury(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
 	
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
 		if (city.isMayor(mayor.getObjectID())) {

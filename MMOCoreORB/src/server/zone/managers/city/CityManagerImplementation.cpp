@@ -17,11 +17,13 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
+#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
 int CityManagerImplementation::cityUpdateInterval = 0;
 int CityManagerImplementation::newCityGracePeriod = 0;
+uint64 CityManagerImplementation::citySpecializationCooldown = 0;
 
 void CityManagerImplementation::loadLuaConfig() {
 	info("Loading config file.");
@@ -50,6 +52,7 @@ void CityManagerImplementation::loadLuaConfig() {
 	if (!configLoaded) {
 		cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
 		newCityGracePeriod = lua->getGlobalInt("NewCityGracePeriod");
+		citySpecializationCooldown = lua->getGlobalLong("citySpecializationCooldown");
 
 		luaObject = lua->getGlobalObject("CitizensPerRank");
 
@@ -164,341 +167,19 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 	return true;
 }
 
-/*
-void CityManagerImplementation::sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body) {
-	ZoneServer* zoneServer = zone->getZoneServer();
-
-	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
-
-	if (chatManager == NULL)
-		return;
-
-	uint64 mayorID = city->getMayorObjectID();
-
-	ManagedReference<SceneObject*> obj = zoneServer->getObject(mayorID);
-
-	if (obj == NULL || !obj->isPlayerCreature())
-		return;
-
-	CreatureObject* mayor = cast<CreatureObject*>( obj.get());
-
-	chatManager->sendMail(sendername, subject, body, mayor->getFirstName());
-}
-
-void CityManagerImplementation::sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body) {
-	ZoneServer* zoneServer = zone->getZoneServer();
-
-	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
-
-	if (chatManager == NULL)
-		return;
-
-	for (int i = 0; i < city->getCitizenCount(); ++i) {
-		uint64 objid = city->getCitizenObjectID(i);
-		ManagedReference<SceneObject*> obj = zoneServer->getObject(objid);
-
-		if (obj == NULL || !obj->isPlayerCreature())
-			continue;
-
-		CreatureObject* player = cast<CreatureObject*>( obj.get());
-
-		Locker _lock(player);
-
-		chatManager->sendMail(sendername, subject, body, player->getFirstName());
-	}
-}
-
-void CityManagerImplementation::handleCityAdvancement(CityHallObject* city) {
-	if (!city->isCityUpdatePast())
-		return;
-
-	city->rescheduleCityUpdate(cityUpdateInterval);
-
-	uint8 oldRank = city->getCityRank();
-
-	//Can't advance past Metropolis.
-	if (oldRank == METROPOLIS)
-		return;
-
-	int citizens = city->getCitizenCount();
-
-	uint8 thisRankCitizensReq = citizensPerRank.get(oldRank);
-	uint8 nextRankCitizensReq = citizensPerRank.get(oldRank + 1);
-
-	if (citizens < thisRankCitizensReq)
-		contractCity(city);
-	else if (citizens >= nextRankCitizensReq)
-		expandCity(city);
-}
-
-void CityManagerImplementation::contractCity(CityHallObject* city) {
-	uint8 cityRank = city->getCityRank();
-
-	if (cityRank == NEWCITY) {
-		UnicodeString subject = "@city/city:new_city_fail_subject"; //Zoning Permits Rejected!
-
-		StringIdChatParameter mail;
-		mail.setStringId("@city/city:new_city_fail_body"); //We are sorry to inform you that your city failed to receive sufficient interest to remain solvent.  Your zoning applications have been rejected and your city hall has been removed.
-
-		sendMailToMayor(city, "@city/city:new_city_from", subject, mail);
-
-		destroyCity(city);
-		return;
-	}
-
-	--cityRank;
-
-	//TODO: Zoning Permits Invalid if below 10 citizens (but itll still be an outpost?)
-
-	ManagedReference<Region*> region = city->getRegion();
-
-	if (region == NULL)
-		return;
-
-	region->setRadius(radiusPerRank.get(cityRank));
-	city->setCityRank(cityRank);
-
-	region->updateToDatabase();
-	city->updateToDatabaseWithoutChildren();
-
-	UnicodeString subject = "@city/city:city_contract_subject"; //City Contraction!
-
-	StringIdChatParameter mail;
-	mail.setStringId("@city/city:city_contract_body"); //The city of %TO has expanded to rank %DI!  New abilities for your city have been unlocked.  Please check the city advancement report for details.
-	mail.setTO(city->getCityName());
-	mail.setDI(cityRank);
-
-	sendMailToMayor(city, "@city/city:new_city_from", subject, mail);
-}
-
-void CityManagerImplementation::expandCity(CityHallObject* city) {
-	uint8 cityRank = city->getCityRank();
-
-	//Don't allow expansion beyond metropolis.
-	if (cityRank == METROPOLIS)
-		return;
-
-	++cityRank;
-
-	//Check to see that the max number of cities of the next level hasn't been reached.
-	if (checkCitiesCappedAtRank(cityRank)) {
-		UnicodeString subject = "@city/city:city_expand_cap_subject"; //City Expansion Capped!
-
-		StringIdChatParameter mail;
-		mail.setStringId("@city/city:city_expand_cap_body"); //Unfortunately, we must deny your rank and land expansion request as there are too many large cities already on the planet.
-		mail.setTO(city->getCityName());
-		mail.setDI(cityRank);
-
-		sendMailToMayor(city, "@city/city:new_city_from", subject, mail);
-		return;
-	}
-
-	ManagedReference<Region*> region = city->getRegion();
-
-	if (region == NULL)
-		return;
-
-	region->setRadius(radiusPerRank.get(cityRank));
-	city->setCityRank(cityRank);
-
-	region->updateToDatabase();
-	city->updateToDatabaseWithoutChildren();
-
-	if (cityRank == OUTPOST) {
-		UnicodeString subject = "@city/city:new_city_success_subject"; //New City Approved!
-
-		StringIdChatParameter mail;
-		mail.setStringId("@city/city:new_city_success_body"); //Congratulations!  The Planetary Civic Authority has approved your city's zoning permits!  Your city is valid and will begin to grow as citizens join it.
-
-		sendMailToMayor(city, "@city/city:new_city_from", subject, mail);
-	} else {
-		UnicodeString subject = "@city/city:city_expand_subject"; //City Expansion!
-
-		StringIdChatParameter mail;
-		mail.setStringId("@city/city:city_expand_body"); //The city of %TO has expanded to rank %DI!  New abilities for your city have been unlocked.  Please check the city advancement report for details.
-		mail.setTO(city->getCityName());
-		mail.setDI(cityRank);
-
-		sendMailToMayor(city, "@city/city:new_city_from", subject, mail);
-	}
-}
-
-void CityManagerImplementation::destroyCity(CityHallObject* city) {
-	//Delete all the civic structures...
-	//Remove the city region
-	//Remove the city hall
-	//Set the mayors residence = NULL
-	//Send out mails?
-
-	Locker lock(_this);
-	cities.drop(city->getObjectID());
-	city->destroyObjectFromDatabase(true);
-}
-
-
-void CityManagerImplementation::declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
-	uint64 playerID = player->getObjectID();
-
-	if (city->isCitizen(playerID))
-		return;
-
-	city->addCitizen(playerID);
-
-	city->updateToDatabaseWithoutChildren();
-
-	if (!sendMail)
-		return;
-
-	//Send out email
-	ZoneServer* zoneServer = zone->getZoneServer();
-
-	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
-
-	if (chatManager == NULL)
-		return;
-
-	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorObjectID());
-
-	if (obj == NULL || !obj->isPlayerCreature())
-		return;
-
-	CreatureObject* mayor = cast<CreatureObject*>( obj.get());
-
-	String mayorName = mayor->getObjectName()->getDisplayedName();
-
-	//Send email to the citizen declaring citizenship
-	StringIdChatParameter email;
-	UnicodeString subject = "@city/city:new_city_citizen_other_subject"; //Welcome, Citizen!
-	email.setStringId("@city/city:new_city_citizen_other_body"); //Welcome to %TU, citizen!
-	email.setTU(city->getCityName());
-	email.setTT(mayorName);
-
-	chatManager->sendMail(mayorName, subject, email, player->getFirstName());
-
-	email.clear();
-
-	//Send email to the mayor
-	subject = "@city/city:new_city_citizen_subject"; //City Growth: Added Citizen
-	email.setStringId("@city/city:new_city_citizen_body"); //A new citizen has joined your city.
-	email.setTO(player->getObjectName()->getDisplayedName());
-
-	sendMailToMayor(city, "@city/city:new_city_from", subject, email);
-}
-
-void CityManagerImplementation::revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
-	uint64 playerID = player->getObjectID();
-
-	if (!city->isCitizen(playerID))
-		return;
-
-	city->removeCitizen(playerID);
-
-	city->updateToDatabaseWithoutChildren();
-
-	if (!sendMail)
-		return;
-
-	//Send email to the mayor
-	StringIdChatParameter email;
-	UnicodeString subject = "@city/city:lost_city_citizen_subject"; //Lost Citizen!
-	email.setStringId("@city/city:lost_city_citizen_body"); //A citizen has left your city.
-	email.setTO(player->getObjectName()->getDisplayedName());
-
-	sendMailToMayor(city, "@city/city:new_city_from", subject, email);
-}
-
-bool CityManagerImplementation::checkCitiesCappedAtRank(uint8 rank) {
-	int totalCitiesAtRank = 0;
-
-	Locker lock(_this);
-
-	for (int i = 0; i < cities.size(); ++i) {
-		ManagedReference<CityHallObject*> city = cities.get(i);
-
-		if (city != NULL && city->getCityRank() == rank)
-			++totalCitiesAtRank;
-	}
-
-	return getCitiesAllowed(rank) <= totalCitiesAtRank;
-}
-
-void CityManagerImplementation::addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName) {
-	if (!city->isMayor(player->getObjectID())) {
-		//Only the mayor can manage the militia.
-		return;
-	}
-
-	if (!player->hasSkill("social_politician_martial_01")) {
-		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
-		return;
-	}
-
-	ManagedReference<PlayerManager*> playerManager = zone->getZoneServer()->getPlayerManager();
-
-	if (playerManager == NULL)
-		return;
-
-	ManagedReference<CreatureObject*> citizen = playerManager->getPlayer(citizenName);
-
-	if (citizen == NULL)
-		return;
-
-	Locker _lock(citizen);
-
-	if (!city->isCitizen(citizen->getObjectID())) {
-		player->sendSystemMessage("@city/city:not_citizen"); //That player must be a citizen to join the city militia.
-		return;
-	}
-
-	if (!citizen->isOnline() || !citizen->isInRange(player, 32))
-		return;
-
-	//Citizen is eligible to be militia
-	city->addMilitiaMember(citizen->getObjectID()); //Add them to the milita list.
-
-	player->sendSystemMessage("@city/city:added_militia"); //The player has been successfully added to the city militia.
-	citizen->sendSystemMessage("@city/city:added_militia_target"); //You have been added to the city militia.
-
-	city->updateToDatabaseWithoutChildren();
-}
-
-void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, CreatureObject* player, uint64 playerID) {
-	if (!city->isMayor(player->getObjectID())) {
-		//Only the mayor can manage the militia.
-		return;
-	}
-
-	if (!player->hasSkill("social_politician_martial_01")) {
-		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
-		return;
-	}
-
-	if (!city->isMilitiaMember(playerID))
-		return;
-
-	//Citizen is eligible to be removed from the militia
-	city->removeMilitiaMember(playerID); //Remove them from the milita list.
-
-	city->updateToDatabaseWithoutChildren();
-
-	player->sendSystemMessage("@city/city:removed_militia"); //The player has been successfully removed from the city militia.
-
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(playerID);
-
-	if (obj == NULL || !obj->isPlayerCreature())
-		return;
-
-	CreatureObject* citizen = cast<CreatureObject*>( obj.get());
-
-	if (citizen->isOnline())
-		citizen->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.
-}*/
-
 void CityManagerImplementation::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	//if (city->getCityRank() < CityRegion::RANK_TOWNSHIP) {
 		//mayor->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization
 		//return;
 	//}
+
+	if (!mayor->checkCooldownRecovery("city_specialization")) {
+		StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
+
+		Time* timeRemaining = mayor->getCooldownTime("city_specialization");
+		params.setTO(String::valueOf(round(timeRemaining->miliDifference() / 1000.f)) + " seconds");
+		mayor->sendSystemMessage(params);
+	}
 
 	CitySpecializationSession* session = new CitySpecializationSession(mayor, city, terminal);
 	mayor->addActiveSession(SessionFacadeType::CITYSPEC, session);
@@ -506,17 +187,62 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 }
 
 void CityManagerImplementation::changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec) {
-	if (!city->isCitySpecializationChangeAvailable()) {
-		StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
-		params.setTO(city->getSpecializationTimeRemainingString());
-		mayor->sendSystemMessage(params);
-	}
-
 	city->setCitySpecialization(spec);
-	city->updateNextSpecializationChangeTime();
+	mayor->addCooldown("city_specialization", citySpecializationCooldown); //1 week.
 
 	StringIdChatParameter params("city/city", "spec_set"); //The city's specialization has been set to %TO.
 	params.setTO(spec);
 	mayor->sendSystemMessage(params);
+}
 
+void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	/* Status Report - Lists basic information about the city.
+	 * Shows the city name, current Mayor, the waypoint for the city,
+	 * the city radius, number of citizens, number of structures in the city, the city specialization,
+	 * tax information, and the travel cost.
+	 */
+
+	ManagedReference<SuiListBox*> list = new SuiListBox(creature, SuiWindowType::CITY_STATUS_REPORT, 0x00);
+	list->setPromptTitle("@city/city:city_info_t"); //City Status Report
+	list->setPromptText("@city/city:city_info_d"); //A report of the current city follows.
+	list->setUsingObject(terminal);
+	list->setForceCloseDistance(16.f);
+
+	ManagedReference<SceneObject*> mayor = creature->getZoneServer()->getObject(city->getMayorID());
+
+	list->addMenuItem("@city/city:name_prompt " + city->getRegionName()); //Name:
+
+	if (mayor != NULL)
+		list->addMenuItem("@city/city:mayor_prompt " + mayor->getObjectName()->getDisplayedName()); //Mayor:
+
+	StringBuffer location;
+	location << city->getPositionX() << " " << city->getPositionY();
+
+	list->addMenuItem("@city/city:location_prompt " + location.toString()); //Location:
+	list->addMenuItem("@city/city:radius_prompt " + String::valueOf(city->getRadius())); //Radius:
+	list->addMenuItem("@city/city:reg_citizen_prompt " + String::valueOf(city->getRegisteredCitizenCount())); //Registered Citizens:
+	list->addMenuItem("@city/city:structures_prompt " + String::valueOf(city->getStructuresCount())); //Structures:
+	list->addMenuItem("@city/city:specialization_prompt " + city->getCitySpecialization()); //Specialization:
+
+	//TODO: Tax information and travel cost.
+
+	creature->sendMessage(list->generateMessage());
+}
+
+void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL || !city->isMayor(mayor->getObjectID()))
+		return;
+
+	ManagedReference<SuiTransferBox*> transfer = new SuiTransferBox(mayor, SuiWindowType::CITY_TREASURY_WITHDRAWAL);
+	transfer->setPromptTitle("@city/city:treasury_withdraw"); //Treasury Withdrawal
+	transfer->setPromptText("@city/city:treasury_withdraw_prompt"); //Enter the amount you would like to withdraw from the treasury. You can only withdraw between 10,000 and 50,000 credits per day.
+	transfer->addFrom("@city/city:total_funds", String::valueOf(mayor->getBankCredits()), String::valueOf(mayor->getBankCredits()), "1"); //Total funds available
+	transfer->addTo("@city/city:treasury", "10000", "50000", "1"); //Treasury
+	transfer->setUsingObject(terminal);
+	transfer->setForceCloseDistance(16.f);
+
+	ghost->addSuiBox(transfer);
+	mayor->sendMessage(transfer->generateMessage());
 }

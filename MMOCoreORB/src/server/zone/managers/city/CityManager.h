@@ -108,9 +108,13 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
 	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
 	void changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec);
+
+	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -154,6 +158,8 @@ public:
 
 	static int newCityGracePeriod;
 
+	unsigned static long long citySpecializationCooldown;
+
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
 
 private:
@@ -184,9 +190,13 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
 	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
 	void changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec);
+
+	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -243,9 +253,13 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
 	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
 
 	void changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec);
+
+	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

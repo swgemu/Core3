@@ -32,11 +32,10 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected SortedVector<unsigned long> militiaMembers;
-	
-	@dereferenced
-	protected Time nextSpecChange;
 
 	protected byte cityRank;
+	
+	protected int cityTreasury;
 	
 	protected unsigned long mayorID;
 	
@@ -77,9 +76,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public native boolean hasZoningRights(unsigned long objectid);
-	
-	public native string getSpecializationTimeRemainingString();
-	
+
 	public boolean containsPoint(float x, float y) {
 		for (int i = 0; i < regions.size(); ++i) {
 			Region aa = regions.get(i);
@@ -108,6 +105,41 @@ class CityRegion extends ManagedObject implements Logger {
 		return mayorID;
 	}
 	
+	public float getPositionX() {
+		ActiveArea aa = regions.get(0);
+		
+		if (aa == null)
+			return 0.0;
+		
+		return aa.getPositionX();
+	}
+	
+	public float getPositionY() {
+		ActiveArea aa = regions.get(0);
+		
+		if (aa == null)
+			return 0.0;
+		
+		return aa.getPositionY();
+	}
+	
+	public float getRadius() {
+		ActiveArea aa = regions.get(0);
+		
+		if (aa == null)
+			return 0.0;
+		
+		return aa.getRadius();
+	}
+	
+	public int getRegisteredCitizenCount() {
+		return 0;
+	}
+	
+	public int getStructuresCount() {
+		return 0;
+	}
+	
 	public string getCitySpecialization() {
 		return citySpecialization;
 	}
@@ -123,10 +155,6 @@ class CityRegion extends ManagedObject implements Logger {
 	public boolean isClientRegion() {
 		return cityRank == RANK_CLIENT;
 	}
-	
-	public boolean isCitySpecializationChangeAvailable() {
-		return nextSpecChange.isPast();
-	}
 
 	//Setters
 	public void setRegionName(final unicode name) {
@@ -135,11 +163,6 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public void setCitySpecialization(final string spec) {
 		citySpecialization = spec;
-	}
-	
-	public void updateNextSpecializationChangeTime() {
-		nextSpecChange.updateToCurrentTime();
-		nextSpecChange.addMiliTime(604800000); //Add 1 Week
 	}
 
 	public void setRegionName(final string fullPath) {

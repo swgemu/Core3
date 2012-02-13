@@ -18,13 +18,20 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if (city == NULL)
 		return;
 
-	menuResponse->addRadialMenuItem(211, 3, "@city/city:city_info"); //City Info
+	//City Information is available to anyone using the terminal and includes the options
+		//Status Report, Citizenship Report, Structure Report, City Advancement, Maintenance Report, Treasury Report
+	//and Treasury Deposit
+
+	//
+
+	menuResponse->addRadialMenuItem(211, 3, "@city/city:city_info"); //City Information
 	menuResponse->addRadialMenuItemToRadialID(211, 212, 3, "@city/city:city_status"); //Status Report
 	menuResponse->addRadialMenuItemToRadialID(211, 213, 3, "@city/city:city_citizens"); //Citizenship Report
 	menuResponse->addRadialMenuItemToRadialID(211, 214, 3, "@city/city:city_structures"); //Structure Report
 	menuResponse->addRadialMenuItemToRadialID(211, 223, 3, "@city/city:city_rank"); //City Advancement
 	menuResponse->addRadialMenuItemToRadialID(211, 224, 3, "@city/city:city_maint"); //Maintenance Report
 	menuResponse->addRadialMenuItemToRadialID(211, 215, 3, "@city/city:treasury_status"); //Treasury Report
+	menuResponse->addRadialMenuItemToRadialID(211, 239, 3, "@city/city:treasury_deposit"); //Treasury Deposit
 
 	if (!city->isMayor(player->getObjectID()))
 		return;
@@ -68,6 +75,12 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	CityManager* cityManager = zone->getCityManager();
 
 	switch (selectID) {
+	case 212: //Status Report
+		cityManager->sendStatusReport(city, player, sceneObject);
+		break;
+	case 221: //Withdraw Treasury
+		cityManager->promptWithdrawCityTreasury(city, player, sceneObject);
+		break;
 	case 225: //Set City Specialization
 		cityManager->promptCitySpecialization(city, player, sceneObject);
 		break;

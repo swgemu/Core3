@@ -110,8 +110,6 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
-	String getSpecializationTimeRemainingString();
-
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
@@ -122,6 +120,16 @@ public:
 
 	unsigned long long getMayorID();
 
+	float getPositionX();
+
+	float getPositionY();
+
+	float getRadius();
+
+	int getRegisteredCitizenCount();
+
+	int getStructuresCount();
+
 	String getCitySpecialization();
 
 	bool isMayor(unsigned long long objectid);
@@ -130,13 +138,9 @@ public:
 
 	bool isClientRegion();
 
-	bool isCitySpecializationChangeAvailable();
-
 	void setRegionName(const UnicodeString& name);
 
 	void setCitySpecialization(const String& spec);
-
-	void updateNextSpecializationChangeTime();
 
 	void setRegionName(const String& fullPath);
 
@@ -161,7 +165,6 @@ protected:
 
 	String _return_getCitySpecialization;
 	String _return_getRegionName;
-	String _return_getSpecializationTimeRemainingString;
 
 	friend class CityRegionHelper;
 };
@@ -190,9 +193,9 @@ protected:
 
 	SortedVector<unsigned long long> militiaMembers;
 
-	Time nextSpecChange;
-
 	byte cityRank;
+
+	int cityTreasury;
 
 	unsigned long long mayorID;
 
@@ -235,8 +238,6 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
-	String getSpecializationTimeRemainingString();
-
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
@@ -247,6 +248,16 @@ public:
 
 	unsigned long long getMayorID();
 
+	float getPositionX();
+
+	float getPositionY();
+
+	float getRadius();
+
+	int getRegisteredCitizenCount();
+
+	int getStructuresCount();
+
 	String getCitySpecialization();
 
 	bool isMayor(unsigned long long objectid);
@@ -255,13 +266,9 @@ public:
 
 	bool isClientRegion();
 
-	bool isCitySpecializationChangeAvailable();
-
 	void setRegionName(const UnicodeString& name);
 
 	void setCitySpecialization(const String& spec);
-
-	void updateNextSpecializationChangeTime();
 
 	void setRegionName(const String& fullPath);
 
@@ -336,8 +343,6 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
-	String getSpecializationTimeRemainingString();
-
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
@@ -348,6 +353,16 @@ public:
 
 	unsigned long long getMayorID();
 
+	float getPositionX();
+
+	float getPositionY();
+
+	float getRadius();
+
+	int getRegisteredCitizenCount();
+
+	int getStructuresCount();
+
 	String getCitySpecialization();
 
 	bool isMayor(unsigned long long objectid);
@@ -356,13 +371,9 @@ public:
 
 	bool isClientRegion();
 
-	bool isCitySpecializationChangeAvailable();
-
 	void setRegionName(const UnicodeString& name);
 
 	void setCitySpecialization(const String& spec);
-
-	void updateNextSpecializationChangeTime();
 
 	void setRegionName(const String& fullPath);
 

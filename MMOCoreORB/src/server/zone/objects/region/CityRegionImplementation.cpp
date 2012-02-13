@@ -16,7 +16,9 @@
 CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
 	zone = zne;
 
-	zoningEnabled = false;
+	zoningEnabled = true;
+
+	cityTreasury = 0;
 
 	cityRank = RANK_CLIENT; //Default to client city
 
@@ -139,12 +141,4 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 
 	Time now;
 	return (now.getTime() <= timestamp);
-}
-
-String CityRegionImplementation::getSpecializationTimeRemainingString() {
-	StringBuffer str;
-
-	uint32 timeremaining;
-
-	return str.toString();
 }

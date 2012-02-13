@@ -44,6 +44,7 @@
 ------------------------------
 --  Global City Settings
 ------------------------------
+CitySpecializationCooldown = 604800000 --Milliseconds: 1 Week = 604800000
 CityUpdateInterval = 15 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
 NewCityGracePeriod = 60
 CitizensPerRank = {1, 2, 5, 10, 15, 20}
