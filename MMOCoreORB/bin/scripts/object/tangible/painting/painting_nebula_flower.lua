@@ -42,7 +42,8 @@
 
 
 object_tangible_painting_painting_nebula_flower = object_tangible_painting_shared_painting_nebula_flower:new {
-
+	objectName = "@frn_n:painting_nebula_orchid",
+	detailedDescription = "@frn_d:painting_nebula_orchid",
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_painting_nebula_flower, "object/tangible/painting/painting_nebula_flower.iff")
