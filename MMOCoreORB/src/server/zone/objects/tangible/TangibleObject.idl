@@ -456,7 +456,7 @@ class TangibleObject extends SceneObject {
 	public boolean isTangibleObject() {
 		return true;
 	}
-
+	
 	public void getCustomizationString(string variables) {
 		customizationVariables.getData(variables);
 	}
@@ -548,10 +548,7 @@ class TangibleObject extends SceneObject {
 		return craftersName;
 	}
 	
-	public void setSerialNumber(string serial) {
-		setOptionsBitmask(OptionBitmask.HASSERIALNUMBER, true);
-		objectSerial = serial;
-	}
+	public native void setSerialNumber(final string serial);
 	
 	public void setLevel(int lev) {
 		level = lev;

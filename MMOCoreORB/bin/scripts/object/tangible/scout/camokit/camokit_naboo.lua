@@ -43,6 +43,9 @@
 
 object_tangible_scout_camokit_camokit_naboo = object_tangible_scout_camokit_shared_camokit_naboo:new {
 
+	templateType = CAMOKIT,
+
+	effectiveZone = "naboo",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

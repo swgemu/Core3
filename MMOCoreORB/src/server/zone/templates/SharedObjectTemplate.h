@@ -161,6 +161,7 @@ public:
 	const static int RECREATIONBUILDING = 0x4000025;
 	const static int TRAP = 0x4000026;
 	const static int STRUCTUREDEED = 0x4000027;
+	const static int CAMOKIT = 0x4000028;
 
 public:
 	SharedObjectTemplate();
@@ -586,6 +587,10 @@ public:
 	}
 
 	virtual bool isCampKitTemplate() {
+		return false;
+	}
+
+	virtual bool isCamoKitTemplate() {
 		return false;
 	}
 

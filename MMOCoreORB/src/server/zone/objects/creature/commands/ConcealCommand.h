@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CONCEALCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/templates/tangible/CamoKitTemplate.h"
 
 class ConcealCommand : public QueueCommand {
 public:
@@ -62,6 +63,105 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ManagedReference<CreatureObject*> targetPlayer = cast<CreatureObject*> (
+				server->getZoneServer()->getObject(target));
+
+		if(targetPlayer == NULL || creature->getZone() == NULL) {
+			return INVALIDTARGET;
+		}
+
+		if(!targetPlayer->isPlayerCreature()) {
+			creature->sendSystemMessage("@skl_use:sys_conceal_notplayer");
+			return GENERALERROR;
+		}
+
+		if(targetPlayer->getOptionsBitmask() & CreatureState::MASKSCENT) {
+			creature->sendSystemMessage("@skl_use:sys_target_concealed");
+			return GENERALERROR;
+		}
+
+		/// Check if anything is attackable in range
+		SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
+		creature->getZone()->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), 32, &objects, true);
+
+		for (int i = 0; i < objects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+
+			if (object->isCreatureObject()) {
+				CreatureObject* creo = cast<CreatureObject*>(object);
+
+				if(!creo->isDead() && creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) {
+					creature->sendSystemMessage("@skl_use:sys_conceal_othersclose");
+					return GENERALERROR;
+				}
+			}
+		}
+
+		String zoneName = creature->getZone()->getZoneName();
+
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+		if(inventory == NULL)
+			return GENERALERROR;
+
+		ManagedReference<TangibleObject*> usableKit = NULL;
+
+		for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+			TangibleObject* item = cast<TangibleObject*>(inventory->getContainerObject(i));
+
+			if(item == NULL || !item->isCamoKit())
+				continue;
+
+			SharedObjectTemplate* templateData =
+					TemplateManager::instance()->getTemplate(
+							item->getServerObjectCRC());
+			if (templateData == NULL) {
+				error("No template for: " + item->getServerObjectCRC());
+				return GENERALERROR;
+			}
+
+			CamoKitTemplate* camoKitData = cast<CamoKitTemplate*> (templateData);
+			if (camoKitData == NULL) {
+				error("No camoKitData for: " + camoKitData->getServerObjectCRC());
+				return GENERALERROR;
+			}
+
+			if(zoneName == camoKitData->getEffectiveZone()
+					&& item->getUseCount() >= 1) {
+
+				usableKit = item;
+				break;
+			}
+		}
+
+		if(usableKit == NULL) {
+			creature->sendSystemMessage("@skl_use:sys_conceal_nokit");
+			return GENERALERROR;
+		}
+
+		StringIdChatParameter startStringId("skl_use", "sys_conceal_start");
+		StringIdChatParameter endStringId("skl_use", "sys_conceal_stop");
+
+		uint32 crc = String("skill_buff_mask_scent").hashCode();
+		int camoMod = creature->getSkillMod("camouflage");
+		int cdReduction = ((float)(camoMod / 100.0f)) * 45;
+		int duration = 60 + (((float)(camoMod / 100.0f)) * 200);
+
+
+		ManagedReference<Buff*> buff = new Buff(targetPlayer, crc, duration, BuffType::SKILL);
+		buff->addState(CreatureState::MASKSCENT);
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
+
+		if(targetPlayer != creature) {
+			StringIdChatParameter param("skl_use","sys_conceal_apply");
+			param.setTT(targetPlayer->getFirstName());
+			creature->sendSystemMessage(param);
+		}
+
+		targetPlayer->addBuff(buff);
+
+		usableKit->decreaseUseCount(creature);
 
 		return SUCCESS;
 	}

@@ -48,6 +48,7 @@
 #include "server/zone/templates/tangible/CampKitTemplate.h"
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
 #include "server/zone/templates/tangible/TrapTemplate.h"
+#include "server/zone/templates/tangible/CamoKitTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
 #include "server/zone/templates/universe/SharedJediManagerTemplate.h"
@@ -390,6 +391,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<VendorCreatureTemplate>(SharedObjectTemplate::VENDORCREATURE);
 	templateFactory.registerObject<CampStructureTemplate>(SharedObjectTemplate::CAMPSTRUCTURE);
 	templateFactory.registerObject<TrapTemplate>(SharedObjectTemplate::TRAP);
+	templateFactory.registerObject<CamoKitTemplate>(SharedObjectTemplate::CAMOKIT);
 }
 
 void TemplateManager::registerFunctions() {
@@ -549,6 +551,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("HOSPITALBUILDING", SharedObjectTemplate::HOSPITALBUILDING);
 	luaTemplatesInstance->setGlobalInt("RECREATIONBUILDING", SharedObjectTemplate::RECREATIONBUILDING);
 	luaTemplatesInstance->setGlobalInt("TRAP", SharedObjectTemplate::TRAP);
+	luaTemplatesInstance->setGlobalInt("CAMOKIT", SharedObjectTemplate::CAMOKIT);
 
 }
 

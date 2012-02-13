@@ -382,7 +382,7 @@ public:
 
 	String getCraftersName();
 
-	void setSerialNumber(String& serial);
+	void setSerialNumber(const String& serial);
 
 	void setLevel(int lev);
 
@@ -666,7 +666,7 @@ public:
 
 	virtual String getCraftersName();
 
-	void setSerialNumber(String& serial);
+	void setSerialNumber(const String& serial);
 
 	void setLevel(int lev);
 
@@ -841,7 +841,7 @@ public:
 
 	String getCraftersName();
 
-	void setSerialNumber(String& serial);
+	void setSerialNumber(const String& serial);
 
 	void setLevel(int lev);
 

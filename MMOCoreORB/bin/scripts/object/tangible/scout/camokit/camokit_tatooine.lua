@@ -43,6 +43,9 @@
 
 object_tangible_scout_camokit_camokit_tatooine = object_tangible_scout_camokit_shared_camokit_tatooine:new {
 
+	templateType = CAMOKIT,
+
+	effectiveZone = "tatooine",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

@@ -67,7 +67,7 @@ public:
 			return GENERALERROR;
 
 
-		uint32 crc = String("skill_buff_mask_scent").hashCode();
+		uint32 crc = String("skill_buff_mask_scent_self").hashCode();
 
 		if (creature->hasBuff(crc)) {
 			creature->sendSystemMessage("@skl_use:sys_scentmask_fail");
@@ -89,7 +89,7 @@ public:
 
 		creature->addBuff(buff);
 
-		creature->updateCooldownTimer("skill_buff_mask_scent", (60 - cdReduction) * 1000);
+		creature->updateCooldownTimer("skill_buff_mask_scent_self", (60 - cdReduction) * 1000);
 
 		return SUCCESS;
 	}
@@ -101,14 +101,19 @@ public:
 			return false;
 		}
 
-		if(creature->hasBuff(String("skill_buff_mask_scent").hashCode())) {
+		/*if(creature->getOptionsBitmask() & CreatureState::CONCEALED) {
+			creature->sendSystemMessage("@skl_use:sys_scentmask_concealed");
+			return false;
+		}*/
+
+		if(creature->getOptionsBitmask() & CreatureState::MASKSCENT) {
 			creature->sendSystemMessage("@skl_use:sys_scentmask_already");
 			return false;
 		}
 
-		if (!creature->checkCooldownRecovery("skill_buff_mask_scent")) {
+		if (!creature->checkCooldownRecovery("skill_buff_mask_scent_self")) {
 			StringIdChatParameter waitTime("@skl_use:sys_scentmask_delay");
-			int timeLeft = (creature->getCooldownTime("skill_buff_mask_scent")->getMiliTime() / 1000) - System::getTime();
+			int timeLeft = (creature->getCooldownTime("skill_buff_mask_scent_self")->getMiliTime() / 1000) - System::getTime();
 			waitTime.setDI(timeLeft);
 
 			creature->sendSystemMessage(waitTime);

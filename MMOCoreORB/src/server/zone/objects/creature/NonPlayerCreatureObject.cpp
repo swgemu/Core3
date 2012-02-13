@@ -12,7 +12,7 @@
  *	NonPlayerCreatureObjectStub
  */
 
-enum {RPC_ISNONPLAYERCREATUREOBJECT__ = 6,};
+enum {RPC_ISNONPLAYERCREATUREOBJECT__ = 6,RPC_ISCAMOUFLAGED__CREATUREOBJECT_};
 
 NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorParameter::instance()) {
 	NonPlayerCreatureObjectImplementation* _implementation = new NonPlayerCreatureObjectImplementation();
@@ -57,6 +57,20 @@ void NonPlayerCreatureObject::doAwarenessCheck(Coordinate& start, unsigned long 
 
 	} else
 		_implementation->doAwarenessCheck(start, time, target);
+}
+
+bool NonPlayerCreatureObject::isCamouflaged(CreatureObject* target) {
+	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCAMOUFLAGED__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCamouflaged(target);
 }
 
 DistributedObjectServant* NonPlayerCreatureObject::_getImplementation() {
@@ -198,6 +212,11 @@ bool NonPlayerCreatureObjectImplementation::isNonPlayerCreatureObject() {
 	return true;
 }
 
+bool NonPlayerCreatureObjectImplementation::isCamouflaged(CreatureObject* target) {
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl():  		return isConcealed(target);
+	return isConcealed(target);
+}
+
 /*
  *	NonPlayerCreatureObjectAdapter
  */
@@ -212,6 +231,9 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_ISNONPLAYERCREATUREOBJECT__:
 		resp->insertBoolean(isNonPlayerCreatureObject());
 		break;
+	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
+		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
 	default:
 		return NULL;
 	}
@@ -221,6 +243,10 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 
 bool NonPlayerCreatureObjectAdapter::isNonPlayerCreatureObject() {
 	return (static_cast<NonPlayerCreatureObject*>(stub))->isNonPlayerCreatureObject();
+}
+
+bool NonPlayerCreatureObjectAdapter::isCamouflaged(CreatureObject* target) {
+	return (static_cast<NonPlayerCreatureObject*>(stub))->isCamouflaged(target);
 }
 
 /*

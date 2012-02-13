@@ -67,4 +67,8 @@ class NonPlayerCreatureObject extends AiAgent {
 	
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
+	
+	public boolean isCamouflaged(CreatureObject target) {
+		return isConcealed(target);
+	}
 }

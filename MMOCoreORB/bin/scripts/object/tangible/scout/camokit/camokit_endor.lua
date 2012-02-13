@@ -43,6 +43,9 @@
 
 object_tangible_scout_camokit_camokit_endor = object_tangible_scout_camokit_shared_camokit_endor:new {
 
+	templateType = CAMOKIT,
+
+	effectiveZone = "endor",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

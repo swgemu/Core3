@@ -1013,6 +1013,99 @@ void AiAgentImplementation::doMovement() {
 	activateMovementEvent();
 }
 
+bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
+
+	/// Check masked scent
+	if (!target->hasState(CreatureState::MASKSCENT)) {
+		if(camouflagedObjects.contains(target)) {
+			camouflagedObjects.removeElement(target);
+		}
+		return false;
+	}
+
+	/// Don't do anything if object is ignored (Camo / Masked Scent)
+	if (camouflagedObjects.contains(target))
+		return true;
+
+	int camoSkill = target->getSkillMod("mask_scent");
+	int creatureLevel = getLevel();
+	int chance = (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100;
+	int roll = System::random(100);
+
+	if (roll > chance) {
+		uint32 crc = String("skill_buff_mask_scent_self").hashCode();
+
+		if(target->hasBuff(crc)) {
+			target->sendSystemMessage("@skl_use:sys_scentmask_break");
+			target->removeBuff(crc);
+		}
+
+	} else {
+		StringIdChatParameter success("skl_use", "sys_scentmask_success");
+		success.setTT(getObjectName()->getDisplayedName());
+
+		target->sendSystemMessage(success);
+
+		camouflagedObjects.add(target);
+
+		PlayerObject* ghost = cast<PlayerObject*> (target->getSlottedObject(
+				"ghost"));
+		if (ghost != NULL)
+			ghost->addExperience("scout", (creatureLevel * 2), true);
+		return true;
+	}
+
+	return false;
+}
+
+bool AiAgentImplementation::isConcealed(CreatureObject* target) {
+
+	/// Check masked scent state
+	if (!target->hasState(CreatureState::MASKSCENT)) {
+		if(camouflagedObjects.contains(target)) {
+			camouflagedObjects.removeElement(target);
+		}
+		return false;
+	}
+
+	/// Don't do anything if object is ignored (Camo / Masked Scent)
+	if (camouflagedObjects.contains(target))
+		return true;
+
+	/// Check if camo breaks
+	int camoSkill = 125;
+	int creatureLevel = getLevel();
+	int chance = (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100;
+	int roll = System::random(100);
+
+	if (roll > chance) {
+		uint32 crc = String("skill_buff_mask_scent").hashCode();
+		if(target->hasBuff(crc)) {
+			target->sendSystemMessage("@skl_use:sys_conceal_stop");
+			target->removeBuff(crc);
+		}
+
+	} else {
+
+		StringIdChatParameter success("skl_use", "sys_scentmask_success");
+		success.setTT(getObjectName()->getDisplayedName());
+
+		target->sendSystemMessage(success);
+		camouflagedObjects.add(target);
+
+		/// Only rangers get scouting exp
+		if(target->hasSkill("outdoors_ranger_novice")) {
+			PlayerObject* ghost = cast<PlayerObject*> (target->getSlottedObject(
+					"ghost"));
+			if (ghost != NULL)
+				ghost->addExperience("scout", (creatureLevel * 2), true);
+		}
+		return true;
+	}
+
+	return false;
+}
+
 void AiAgentImplementation::activateMovementEvent() {
 	if (getZone() == NULL)
 		return;

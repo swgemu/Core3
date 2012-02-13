@@ -43,6 +43,9 @@
 
 object_tangible_scout_camokit_camokit_rori = object_tangible_scout_camokit_shared_camokit_rori:new {
 
+	templateType = CAMOKIT,
+
+	effectiveZone = "rori",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

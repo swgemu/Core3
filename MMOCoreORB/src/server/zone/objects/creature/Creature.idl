@@ -75,6 +75,9 @@ class Creature extends AiAgent {
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
 	
+	public boolean isCamouflaged(CreatureObject target) {
+		return isScentMasked(target) || isConcealed(target);
+	}
 	public native void runAway(CreatureObject target);
 	
 	@local
@@ -97,9 +100,6 @@ class Creature extends AiAgent {
 	public native boolean hasOrganics();
 	
 	public native boolean canHarvestMe(CreatureObject player);
-	
-	public native boolean isCamouflaged(CreatureObject target);
-
 	
 	public boolean isBaby() {
 		return super.baby;

@@ -302,6 +302,8 @@ public:
 
 	void doMovement();
 
+	bool isCamouflaged(CreatureObject* target);
+
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
@@ -574,7 +576,13 @@ public:
 
 	void doMovement();
 
+	virtual bool isCamouflaged(CreatureObject* target);
+
 protected:
+	bool isScentMasked(CreatureObject* target);
+
+	bool isConcealed(CreatureObject* target);
+
 	bool findNextPosition(float maxDistance, WorldCoordinates* nextPosition);
 
 public:
@@ -794,6 +802,8 @@ public:
 	void doRecovery();
 
 	void doMovement();
+
+	bool isCamouflaged(CreatureObject* target);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 

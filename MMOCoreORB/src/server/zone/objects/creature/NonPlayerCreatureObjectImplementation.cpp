@@ -17,7 +17,7 @@ void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* 
 
 	AiAgentImplementation::notifyPositionUpdate(entry);
 
-	if(getPvpStatusBitmask() == CreatureFlag::NONE)
+	if(getPvpStatusBitmask() == CreatureFlag::NONE  || isDead())
 		return;
 
 	int radius = 32;
@@ -44,6 +44,9 @@ void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* 
 		CreatureObject* creo = cast<CreatureObject*>(scno);
 
 		if(creo->getPvpStatusBitmask() == CreatureFlag::NONE)
+			return;
+
+		if(isCamouflaged(creo))
 			return;
 
 		/// If not in combat, ignore creatures in different cells

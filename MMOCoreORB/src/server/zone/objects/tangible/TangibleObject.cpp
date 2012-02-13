@@ -927,7 +927,7 @@ String TangibleObject::getCraftersName() {
 		return _implementation->getCraftersName();
 }
 
-void TangibleObject::setSerialNumber(String& serial) {
+void TangibleObject::setSerialNumber(const String& serial) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1637,13 +1637,6 @@ String TangibleObjectImplementation::getCraftersName() {
 	return craftersName;
 }
 
-void TangibleObjectImplementation::setSerialNumber(String& serial) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		setOptionsBitmask(OptionBitmask.HASSERIALNUMBER, true);
-	setOptionsBitmask(OptionBitmask::HASSERIALNUMBER, true);
-	// server/zone/objects/tangible/TangibleObject.idl():  		objectSerial = serial;
-	objectSerial = serial;
-}
-
 void TangibleObjectImplementation::setLevel(int lev) {
 	// server/zone/objects/tangible/TangibleObject.idl():  		level = lev;
 	level = lev;
@@ -2108,7 +2101,7 @@ String TangibleObjectAdapter::getCraftersName() {
 	return (static_cast<TangibleObject*>(stub))->getCraftersName();
 }
 
-void TangibleObjectAdapter::setSerialNumber(String& serial) {
+void TangibleObjectAdapter::setSerialNumber(const String& serial) {
 	(static_cast<TangibleObject*>(stub))->setSerialNumber(serial);
 }
 

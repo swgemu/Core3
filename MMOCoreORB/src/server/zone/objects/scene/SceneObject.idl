@@ -1440,14 +1440,19 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isTrapObject() {
 		return gameObjectType == SceneObjectType.TRAP;
 	}
+	
+	@dirty
+	public boolean isCamoKit() {
+		return templateObject.isCamoKitTemplate();
+	}
 
 	@dirty
 	public abstract boolean isAttachment() {
 		return false;
 	}
 	
-	@dirty
-	public abstract boolean isCampKit() {
+	@read
+	public boolean isCampKit() {
 		return gameObjectType == SceneObjectType.CAMPKIT;
 	}
 	

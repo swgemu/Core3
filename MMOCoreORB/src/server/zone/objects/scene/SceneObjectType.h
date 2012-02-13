@@ -115,6 +115,8 @@ public:
 	const static int OPERATIONSCHAIR = 0x2025;
 	const static int TURRETACCESSLADDER = 0x2026;
 	const static int CONTAINER2 = 0x2027;
+
+	/// THESE ARE MADE UP
 	const static int CAMOKIT = 0x2028;
 	const static int LOOTKIT = 0x2029;
 	const static int FISH = 0x202A;
@@ -129,6 +131,7 @@ public:
 	const static int REVIVEPACK = 0x2033;
 	const static int STATICLOOTCONTAINER = 0x2034;
 	const static int PLAYERLOOTCRATE = 0x2035;
+	/// End of made up
 
 	const static int TERMINAL = 0x4000;
 	const static int BANK = 0x4001;

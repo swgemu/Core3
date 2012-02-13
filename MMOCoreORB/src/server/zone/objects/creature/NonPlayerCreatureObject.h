@@ -60,6 +60,8 @@ public:
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
+	bool isCamouflaged(CreatureObject* target);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -96,6 +98,8 @@ public:
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
+
+	bool isCamouflaged(CreatureObject* target);
 
 	WeakReference<NonPlayerCreatureObject*> _this;
 
@@ -141,6 +145,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool isNonPlayerCreatureObject();
+
+	bool isCamouflaged(CreatureObject* target);
 
 };
 

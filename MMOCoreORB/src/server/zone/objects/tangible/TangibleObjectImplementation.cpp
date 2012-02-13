@@ -170,6 +170,13 @@ void TangibleObjectImplementation::synchronizedUIStopListen(SceneObject* player,
 
 }
 
+void TangibleObjectImplementation::setSerialNumber(const String& serial) {
+	uint32 bitmask = getOptionsBitmask();
+	bitmask |= OptionBitmask::HASSERIALNUMBER;
+	setOptionsBitmask(bitmask);
+	objectSerial = serial;
+}
+
 void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 	if (defender == _this)
 		return;
@@ -299,6 +306,9 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 	}
 
 	alm->insertAttribute("volume", volume);
+
+	if(useCount > 1)
+		alm->insertAttribute("quantity", useCount);
 }
 
 void TangibleObjectImplementation::setCustomizationVariable(byte type, byte value, bool notifyClient) {

@@ -256,7 +256,9 @@ void FactoryObjectImplementation::sendIngredientHopper(CreatureObject* player) {
 		return;
 	}
 
+	inputHopper->closeContainerTo(player, true);
 	inputHopper->sendDestroyTo(player);
+
 
 	inputHopper->sendWithoutContainerObjectsTo(player);
 	inputHopper->openContainerTo(player);
@@ -270,6 +272,7 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 		return;
 	}
 
+	outputHopper->closeContainerTo(player, true);
 	outputHopper->sendDestroyTo(player);
 
 	outputHopper->sendWithoutContainerObjectsTo(player);

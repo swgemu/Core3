@@ -104,6 +104,8 @@ public:
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
+	bool isCamouflaged(CreatureObject* target);
+
 	void runAway(CreatureObject* target);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
@@ -117,8 +119,6 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
-
-	bool isCamouflaged(CreatureObject* target);
 
 	bool isBaby();
 
@@ -180,6 +180,8 @@ public:
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
+	bool isCamouflaged(CreatureObject* target);
+
 	void runAway(CreatureObject* target);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
@@ -193,8 +195,6 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
-
-	bool isCamouflaged(CreatureObject* target);
 
 	bool isBaby();
 
@@ -259,6 +259,8 @@ public:
 
 	bool isCreature();
 
+	bool isCamouflaged(CreatureObject* target);
+
 	void runAway(CreatureObject* target);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
@@ -270,8 +272,6 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
-
-	bool isCamouflaged(CreatureObject* target);
 
 	bool isBaby();
 

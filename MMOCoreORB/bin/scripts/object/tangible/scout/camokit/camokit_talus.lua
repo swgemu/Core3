@@ -43,6 +43,9 @@
 
 object_tangible_scout_camokit_camokit_talus = object_tangible_scout_camokit_shared_camokit_talus:new {
 
+	templateType = CAMOKIT,
+
+	effectiveZone = "talus",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
