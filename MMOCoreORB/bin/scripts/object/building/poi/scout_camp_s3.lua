@@ -82,6 +82,12 @@ object_building_poi_scout_camp_s3 = object_building_poi_shared_scout_camp_s3:new
 			cellid = -1, 
 			containmentType = -1},
 
+{templateFile = "object/tangible/camp/camp_chair_s2.iff", 
+			x = 2.2829, z = 0, y = -2.4205, 
+			ox = 0, oy = -0.2722, oz = 0, ow = 0.9627, 
+			cellid = -1, 
+			containmentType = -1},
+
 		{templateFile = "object/tangible/camp/camp_chair_s2.iff", 
 			x = -.5, z = 0, y = 2.6, 
 			ox = 0, oy = .95, oz = 0, ow = .314, 

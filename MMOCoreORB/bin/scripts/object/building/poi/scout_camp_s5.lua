@@ -49,8 +49,7 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 	
 	skillMods = {{"private_medical_rating", 100}, {"private_med_wound_health", 100}, {"private_med_wound_action", 100}, {"private_aggro_mod", 100}},
 
-	aggroMod = 100,
-	
+	aggroMod = 100,	
 	duration = 3600,
 	radius = 20,
 	experience = 0,
@@ -59,7 +58,7 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
 			x = -4.5, z = 0, y = 12.3, 
-			ox = 0, oy = .95, oz = 0, ow = 0.1, 
+			ox = 0, oy = .35, oz = 0, ow = 0.1, 
 			cellid = -1, 
 			containmentType = -1},
 
@@ -76,8 +75,8 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 			containmentType = -1},
 
 		{templateFile = "object/tangible/crafting/station/public_food_station.iff", 
-			x = 10.5, z = 0, y = -2, 
-			ox = 0, oy = .72, oz = 0, ow = -.75, 
+			x = 6.65, z = 0, y = -3.35, 
+			ox = 0, oy = .5465, oz = 0, ow = -.8929, 
 			cellid = -1, 
 			containmentType = -1},
 
@@ -88,43 +87,49 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
-			x = -3.1, z = 0, y = 1.7, 
-			ox = 0, oy = 0, oz = .0, ow = -.75, 
+			x = -2.0662, z = 0, y = 4.5670, 
+			ox = 0, oy = 0.942641, oz = 0, ow = -.3338, 
+			cellid = -1, 
+			containmentType = -1},
+
+		{templateFile = "object/tangible/camp/camp_chair_s3.iff",  
+			x = -2.0757, z = 0, y = 2.4670,
+			ox = 0, oy = 0.3664, oz = .0, ow = -0.9304, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
-			x = -4.7, z = 0, y = 3.6, 
-			ox = 0, oy = .7, oz = 0, ow = .75, 
+			x = -4.2253, z = 0, y = 2.7173, 
+			ox = 0, oy = -0.4924, oz = 0, ow = -0.8702, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
-			x = -2.5, z = 0, y = -.3, 
-			ox = 0, oy = .7, oz = 0, ow = -.75, 
+			x = -2.5194, z = 0, y = -.7496, 
+			ox = 0, oy = 0.5735, oz = 0, ow = -0.8191, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
-			x = -4.1, z = 0, y = -1.7, 
-			ox = 0, oy = 0, oz = 0, ow = -.75, 
+			x = -4.5974, z = 0, y = -1.6490, 
+			ox = 0, oy = -0.1736, oz = 0, ow = -0.9848, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
-			x = -5.7, z = 0, y = -0.2, 
-			ox = 0, oy = -.7, oz = 0, ow = -.75, 
+			x = -5.3197, z = 0, y = 0.6384, 
+			ox = 0, oy = -0.8828, oz = 0, ow = -0.4693, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
-			x = -7.7, z = 0, y = 1.7, 
-			ox = 0, oy = 0, oz = 0, ow = -.75, 
+			x = -7.7, z = 0, y = 1.7086, 
+			ox = 0, oy = 0.0, oz = 0, ow = 1.0, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s3.iff", 
-			x = -7.7, z = 0, y = 4.0, 
+			x = -7.7, z = 0, y = 3.8, 
 			ox = 0, oy = 1, oz = 0, ow = 0, 
 			cellid = -1, 
 			containmentType = -1},

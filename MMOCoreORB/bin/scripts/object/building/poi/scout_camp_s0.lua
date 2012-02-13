@@ -65,19 +65,19 @@ object_building_poi_scout_camp_s0 = object_building_poi_shared_scout_camp_s0:new
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/campfire_logs_ash.iff", 
-			x = 0.506110, z = 0, y = 0.596347, 
+			x = 0.806110, z = 0, y = -0.1, 
 			ox = 0, oy = 0, oz = 0, ow = 0, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/static/particle/particle_campfire_style_1.iff", 
-			x = 0.506110, z = 0, y = 0.596347, 
+			x = 0.806110, z = 0, y = -0.1, 
 			ox = 0, oy = 0, oz = 0, ow = 0, 
 			cellid = -1, 
 			containmentType = -1},
 
 		{templateFile = "object/tangible/camp/camp_chair_s1.iff", 
-			x = .863, z = 0, y = -2.85, 
+			x = .863, z = 0, y = -2.75, 
 			ox = 0, oy = 0, oz = -.009319, ow = -.999957, 
 			cellid = -1, 
 			containmentType = -1}
