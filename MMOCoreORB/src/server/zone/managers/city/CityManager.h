@@ -160,6 +160,10 @@ public:
 
 	unsigned static long long citySpecializationCooldown;
 
+	static int cityVotingDuration;
+
+	unsigned static long long treasuryWithdrawalCooldown;
+
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
 
 private:

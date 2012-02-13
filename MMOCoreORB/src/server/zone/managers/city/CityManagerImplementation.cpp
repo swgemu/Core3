@@ -24,6 +24,8 @@ Vector<uint16> CityManagerImplementation::radiusPerRank;
 int CityManagerImplementation::cityUpdateInterval = 0;
 int CityManagerImplementation::newCityGracePeriod = 0;
 uint64 CityManagerImplementation::citySpecializationCooldown = 0;
+int CityManagerImplementation::cityVotingDuration = 0;
+uint64 CityManagerImplementation::treasuryWithdrawalCooldown = 0;
 
 void CityManagerImplementation::loadLuaConfig() {
 	info("Loading config file.");
@@ -52,7 +54,9 @@ void CityManagerImplementation::loadLuaConfig() {
 	if (!configLoaded) {
 		cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
 		newCityGracePeriod = lua->getGlobalInt("NewCityGracePeriod");
-		citySpecializationCooldown = lua->getGlobalLong("citySpecializationCooldown");
+		citySpecializationCooldown = lua->getGlobalLong("CitySpecializationCooldown");
+		cityVotingDuration = lua->getGlobalInt("CityVotingDuration");
+		treasuryWithdrawalCooldown = lua->getGlobalLong("TreasuryWithdrawalCooldown");
 
 		luaObject = lua->getGlobalObject("CitizensPerRank");
 

@@ -67,6 +67,8 @@ class CityManager extends ManagedService implements Logger {
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
 	public transient static unsigned long citySpecializationCooldown;
+	public transient static int cityVotingDuration;
+	public transient static unsigned long treasuryWithdrawalCooldown;
 	
 	@dereferenced
 	public transient VectorMap<string, CityRegion> cities;
