@@ -10,13 +10,15 @@
 
 #include "server/chat/StringIdChatParameter.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "server/zone/objects/region/CityRegion.h"
 
 /*
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
@@ -74,6 +76,53 @@ CityRegion* CityManager::createCity(CreatureObject* mayor, const String& cityNam
 		return static_cast<CityRegion*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createCity(mayor, cityName, x, y);
+}
+
+void CityManager::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->promptCitySpecialization(city, mayor, terminal);
+}
+
+void CityManager::changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
+		method.addAsciiParameter(spec);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->changeCitySpecialization(city, mayor, spec);
+}
+
+void CityManager::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->toggleZoningEnabled(city, mayor);
 }
 
 byte CityManager::getCitiesAllowed(byte rank) {
@@ -258,6 +307,26 @@ CityManagerImplementation::CityManagerImplementation(Zone* zne) {
 	configLoaded = false;
 }
 
+void CityManagerImplementation::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
+	// server/zone/managers/city/CityManager.idl():  	}
+	if (city->isMayor(mayor->getObjectID())){
+	// server/zone/managers/city/CityManager.idl():  			boolean val = city.isZoningEnabled();
+	bool val = city->isZoningEnabled();
+	// server/zone/managers/city/CityManager.idl():  			city.setZoningEnabled(!val);
+	city->setZoningEnabled(!val);
+	// server/zone/managers/city/CityManager.idl():  			}
+	if (!val){
+	// server/zone/managers/city/CityManager.idl():  				mayor.sendSystemMessage("@city/city:zoning_enabled");
+	mayor->sendSystemMessage("@city/city:zoning_enabled");
+}
+
+	else {
+	// server/zone/managers/city/CityManager.idl():  				mayor.sendSystemMessage("@city/city:zoning_disabled");
+	mayor->sendSystemMessage("@city/city:zoning_disabled");
+}
+}
+}
+
 byte CityManagerImplementation::getCitiesAllowed(byte rank) {
 	// server/zone/managers/city/CityManager.idl():  		return citiesAllowedPerRank.get(rank);
 	return (&citiesAllowedPerRank)->get(rank);
@@ -288,6 +357,15 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_:
 		resp->insertLong(createCity(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createCity__CreatureObject_String_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
+	case RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
+		promptCitySpecialization(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_:
+		changeCitySpecialization(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_changeCitySpecialization__CityRegion_CreatureObject_String_));
+		break;
+	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
+		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_GETCITIESALLOWED__BYTE_:
 		resp->insertByte(getCitiesAllowed(inv->getByteParameter()));
 		break;
@@ -311,6 +389,18 @@ bool CityManagerAdapter::validateCityName(const String& name) {
 
 CityRegion* CityManagerAdapter::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
 	return (static_cast<CityManager*>(stub))->createCity(mayor, cityName, x, y);
+}
+
+void CityManagerAdapter::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+	(static_cast<CityManager*>(stub))->promptCitySpecialization(city, mayor, terminal);
+}
+
+void CityManagerAdapter::changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec) {
+	(static_cast<CityManager*>(stub))->changeCitySpecialization(city, mayor, spec);
+}
+
+void CityManagerAdapter::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
+	(static_cast<CityManager*>(stub))->toggleZoningEnabled(city, mayor);
 }
 
 byte CityManagerAdapter::getCitiesAllowed(byte rank) {

@@ -19,6 +19,7 @@ public:
 	const static int DESTROYSTRUCTURE = 7;
 	const static int FIND = 8;
 	const static int CONVERSATION = 9;
+	const static int CITYSPEC = 10;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

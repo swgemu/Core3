@@ -16,6 +16,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
@@ -492,3 +493,30 @@ void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, Creatu
 	if (citizen->isOnline())
 		citizen->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.
 }*/
+
+void CityManagerImplementation::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+	//if (city->getCityRank() < CityRegion::RANK_TOWNSHIP) {
+		//mayor->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization
+		//return;
+	//}
+
+	CitySpecializationSession* session = new CitySpecializationSession(mayor, city, terminal);
+	mayor->addActiveSession(SessionFacadeType::CITYSPEC, session);
+	session->initializeSession();
+}
+
+void CityManagerImplementation::changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec) {
+	if (!city->isCitySpecializationChangeAvailable()) {
+		StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
+		params.setTO(city->getSpecializationTimeRemainingString());
+		mayor->sendSystemMessage(params);
+	}
+
+	city->setCitySpecialization(spec);
+	city->updateNextSpecializationChangeTime();
+
+	StringIdChatParameter params("city/city", "spec_set"); //The city's specialization has been set to %TO.
+	params.setTO(spec);
+	mayor->sendSystemMessage(params);
+
+}

@@ -12,10 +12,10 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
-include system.lang.String;
 include server.chat.StringIdChatParameter;
 include server.zone.ZoneReference;
 include server.zone.objects.scene.variables.StringId;
+include system.lang.Time;
 
 class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
@@ -32,6 +32,9 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected SortedVector<unsigned long> militiaMembers;
+	
+	@dereferenced
+	protected Time nextSpecChange;
 
 	protected byte cityRank;
 	
@@ -75,9 +78,7 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native boolean hasZoningRights(unsigned long objectid);
 	
-	public boolean toggleZoningEnabled() {
-		return (zoningEnabled = !zoningEnabled);
-	}
+	public native string getSpecializationTimeRemainingString();
 	
 	public boolean containsPoint(float x, float y) {
 		for (int i = 0; i < regions.size(); ++i) {
@@ -94,6 +95,10 @@ class CityRegion extends ManagedObject implements Logger {
 	public byte getCityRank() {
 		return cityRank;
 	}
+	
+	public Zone getZone() {
+		return zone.get();
+	}
 
 	public string getRegionName() {
 		return regionName.getDisplayedName();
@@ -101,6 +106,10 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public unsigned long getMayorID() {
 		return mayorID;
+	}
+	
+	public string getCitySpecialization() {
+		return citySpecialization;
 	}
 	
 	public boolean isMayor(unsigned long objectid) {
@@ -114,10 +123,23 @@ class CityRegion extends ManagedObject implements Logger {
 	public boolean isClientRegion() {
 		return cityRank == RANK_CLIENT;
 	}
+	
+	public boolean isCitySpecializationChangeAvailable() {
+		return nextSpecChange.isPast();
+	}
 
 	//Setters
 	public void setRegionName(final unicode name) {
 		regionName.setCustomString(name);
+	}
+	
+	public void setCitySpecialization(final string spec) {
+		citySpecialization = spec;
+	}
+	
+	public void updateNextSpecializationChangeTime() {
+		nextSpecChange.updateToCurrentTime();
+		nextSpecChange.addMiliTime(604800000); //Add 1 Week
 	}
 
 	public void setRegionName(final string fullPath) {

@@ -7,8 +7,10 @@
 
 #include "CityManagementMenuComponent.h"
 #include "../CityRegion.h"
+#include "server/zone/Zone.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/city/CityManager.h"
 
 void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	CityRegion* city = sceneObject->getCityRegion();
@@ -56,15 +58,21 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	if (city == NULL)
 		return 1;
 
+	Locker lock(city, player);
+
+	Zone* zone = sceneObject->getZone();
+
+	if (zone == NULL)
+		return 1;
+
+	CityManager* cityManager = zone->getCityManager();
+
 	switch (selectID) {
-	case 226:
-		if (city->isMayor(player->getObjectID())) {
-			if (city->toggleZoningEnabled()) {
-				player->sendSystemMessage("@city/city:zoning_enabled"); //Your city now has zoning enabled.
-			} else {
-				player->sendSystemMessage("@city/city:zoning_disabled"); //Your city now has zoning disabled.
-			}
-		}
+	case 225: //Set City Specialization
+		cityManager->promptCitySpecialization(city, player, sceneObject);
+		break;
+	case 226: //Toggle Zoning Enabled
+		cityManager->toggleZoningEnabled(city, player);
 		break;
 	}
 	return 0;

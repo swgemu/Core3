@@ -146,6 +146,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
+				server/zone/objects/player/sessions/CitySpecializationSession.cpp \
 				server/zone/objects/player/sessions/EntertainingSession.cpp \
 				server/zone/objects/player/sessions/MigrateStatsSession.cpp \
 				server/zone/objects/player/sessions/ImageDesignSession.cpp \
@@ -502,6 +503,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/ValidatedPosition.cpp \
+		server/zone/objects/player/sessions/CitySpecializationSessionImplementation.cpp \
 		server/zone/objects/player/sessions/TrainerConversationSessionImplementation.cpp \
 		server/zone/objects/player/sessions/LuaConversationSession.cpp \
 		server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp \

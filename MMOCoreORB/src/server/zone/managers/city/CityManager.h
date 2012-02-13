@@ -48,6 +48,20 @@ using namespace server::chat;
 namespace server {
 namespace zone {
 namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace region {
 
 class CityRegion;
@@ -93,6 +107,12 @@ public:
 	bool validateCityName(const String& name);
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
+
+	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
+
+	void changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec);
+
+	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
 
@@ -164,6 +184,12 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
+
+	void changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec);
+
+	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
+
 	byte getCitiesAllowed(byte rank);
 
 	int getTotalCities();
@@ -217,6 +243,12 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
+
+	void changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec);
+
+	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
+
 	byte getCitiesAllowed(byte rank);
 
 	int getTotalCities();
@@ -224,6 +256,7 @@ public:
 protected:
 	String _param0_validateCityName__String_;
 	String _param1_createCity__CreatureObject_String_float_float_;
+	String _param2_changeCitySpecialization__CityRegion_CreatureObject_String_;
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

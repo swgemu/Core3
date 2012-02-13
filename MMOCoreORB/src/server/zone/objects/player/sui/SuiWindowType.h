@@ -113,6 +113,8 @@ public:
 	static const uint16 CITY_SET_NAME = 113;
 	static const uint16 CITY_MILITIA = 114;
 	static const uint16 CITY_ADD_MILITIA = 115;
+	static const uint16 CITY_SPEC = 116;
+	static const uint16 CITY_SPEC_CONFIRM = 117;
 
 	//Structure 141 - 170
 	static const uint16 STRUCTURE_STATUS = 141;

@@ -51,6 +51,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.chat.StringIdChatParameter;
 import system.util.SortedVector;
 import system.util.VectorMap;
+import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
 
 class CityManager extends ManagedService implements Logger {
@@ -103,6 +104,23 @@ class CityManager extends ManagedService implements Logger {
 	public native boolean validateCityName(final string name);
 	
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
+	
+	public native void promptCitySpecialization(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
+	
+	public native void changeCitySpecialization(CityRegion city, CreatureObject mayor, final string spec);
+	
+	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
+		if (city.isMayor(mayor.getObjectID())) {
+			boolean val = city.isZoningEnabled();
+			city.setZoningEnabled(!val);
+			
+			if (!val) {
+				mayor.sendSystemMessage("@city/city:zoning_enabled"); //Your city now has zoning enabled.
+			} else {
+				mayor.sendSystemMessage("@city/city:zoning_disabled"); //Your city now has zoning disabled.
+			}
+		}
+	}
 	
 	/**
 	 * Returns the number of cities allowed at this rank on this particular city manager for this zone.

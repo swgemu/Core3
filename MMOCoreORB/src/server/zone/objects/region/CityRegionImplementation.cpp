@@ -11,6 +11,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
 	zone = zne;
@@ -78,13 +79,13 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
 	params.setTT(regionName.getDisplayedName());
 
-	String strRank = "@city/city:rank" + String::valueOf(cityRank);
+	UnicodeString strRank = StringIdManager::instance()->getStringId(String("@city/city:rank" + String::valueOf(cityRank)).hashCode());
 
 	if (citySpecialization.isEmpty()) {
 		params.setTO(strRank);
 	} else {
-		String strSpec = "@city/city:" + citySpecialization;
-		params.setTO(strRank + ", " + strSpec);
+		UnicodeString citySpec = StringIdManager::instance()->getStringId(citySpecialization.hashCode());
+		params.setTO(strRank + ", " + citySpec);
 	}
 
 	creature->sendSystemMessage(params);
@@ -138,4 +139,12 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 
 	Time now;
 	return (now.getTime() <= timestamp);
+}
+
+String CityRegionImplementation::getSpecializationTimeRemainingString() {
+	StringBuffer str;
+
+	uint32 timeremaining;
+
+	return str.toString();
 }

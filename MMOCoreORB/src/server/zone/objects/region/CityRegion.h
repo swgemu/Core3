@@ -63,13 +63,13 @@ class Zone;
 
 using namespace server::zone;
 
-#include "system/lang/String.h"
-
 #include "server/chat/StringIdChatParameter.h"
 
 #include "server/zone/ZoneReference.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/lang/Time.h"
 
 namespace server {
 namespace zone {
@@ -110,15 +110,19 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
-	bool toggleZoningEnabled();
+	String getSpecializationTimeRemainingString();
 
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
 
+	Zone* getZone();
+
 	String getRegionName();
 
 	unsigned long long getMayorID();
+
+	String getCitySpecialization();
 
 	bool isMayor(unsigned long long objectid);
 
@@ -126,7 +130,13 @@ public:
 
 	bool isClientRegion();
 
+	bool isCitySpecializationChangeAvailable();
+
 	void setRegionName(const UnicodeString& name);
+
+	void setCitySpecialization(const String& spec);
+
+	void updateNextSpecializationChangeTime();
 
 	void setRegionName(const String& fullPath);
 
@@ -149,7 +159,9 @@ protected:
 
 	virtual ~CityRegion();
 
+	String _return_getCitySpecialization;
 	String _return_getRegionName;
+	String _return_getSpecializationTimeRemainingString;
 
 	friend class CityRegionHelper;
 };
@@ -177,6 +189,8 @@ protected:
 	VectorMap<unsigned long long, unsigned int> zoningRights;
 
 	SortedVector<unsigned long long> militiaMembers;
+
+	Time nextSpecChange;
 
 	byte cityRank;
 
@@ -221,15 +235,19 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
-	bool toggleZoningEnabled();
+	String getSpecializationTimeRemainingString();
 
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
 
+	Zone* getZone();
+
 	String getRegionName();
 
 	unsigned long long getMayorID();
+
+	String getCitySpecialization();
 
 	bool isMayor(unsigned long long objectid);
 
@@ -237,7 +255,13 @@ public:
 
 	bool isClientRegion();
 
+	bool isCitySpecializationChangeAvailable();
+
 	void setRegionName(const UnicodeString& name);
+
+	void setCitySpecialization(const String& spec);
+
+	void updateNextSpecializationChangeTime();
 
 	void setRegionName(const String& fullPath);
 
@@ -312,15 +336,19 @@ public:
 
 	bool hasZoningRights(unsigned long long objectid);
 
-	bool toggleZoningEnabled();
+	String getSpecializationTimeRemainingString();
 
 	bool containsPoint(float x, float y);
 
 	byte getCityRank();
 
+	Zone* getZone();
+
 	String getRegionName();
 
 	unsigned long long getMayorID();
+
+	String getCitySpecialization();
 
 	bool isMayor(unsigned long long objectid);
 
@@ -328,7 +356,13 @@ public:
 
 	bool isClientRegion();
 
+	bool isCitySpecializationChangeAvailable();
+
 	void setRegionName(const UnicodeString& name);
+
+	void setCitySpecialization(const String& spec);
+
+	void updateNextSpecializationChangeTime();
 
 	void setRegionName(const String& fullPath);
 
@@ -340,6 +374,7 @@ public:
 
 protected:
 	UnicodeString _param0_setRegionName__UnicodeString_;
+	String _param0_setCitySpecialization__String_;
 	String _param0_setRegionName__String_;
 };
 
