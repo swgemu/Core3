@@ -26,9 +26,9 @@ royal_imperial_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/royal_guard.iff"},
 	lootGroups = {},
-	weapons = {"stormtrooper_weapons"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}
