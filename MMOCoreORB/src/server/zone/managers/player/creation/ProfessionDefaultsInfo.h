@@ -60,7 +60,7 @@ public:
 
 				SortedVector<String> items;
 
-				for (int j = 1; j < chunkPTMP->getChunksSize() - 1; ++j) {
+				for (int j = 1; j < chunkPTMP->getChunksSize(); ++j) {
 					Chunk* chunkItem = iffStream->openChunk('ITEM');
 					int unk1 = chunkItem->readInt();
 					String itemTemplate;
