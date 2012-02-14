@@ -95,9 +95,13 @@ class CityTreasuryWithdrawalSession : public Facade {
 public:
 	CityTreasuryWithdrawalSession(CreatureObject* creature, CityRegion* city, SceneObject* terminal = NULL);
 
+	void setReason(const String& r);
+
 	int initializeSession();
 
-	int sendTransferBox();
+	int sendTransferBox(const String& reason);
+
+	int withdrawCredits(int value);
 
 	int cancelSession();
 
@@ -144,9 +148,13 @@ public:
 
 	CityTreasuryWithdrawalSessionImplementation(DummyConstructorParameter* param);
 
+	void setReason(const String& r);
+
 	int initializeSession();
 
-	int sendTransferBox();
+	int sendTransferBox(const String& reason);
+
+	int withdrawCredits(int value);
 
 	int cancelSession();
 
@@ -195,14 +203,21 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void setReason(const String& r);
+
 	int initializeSession();
 
-	int sendTransferBox();
+	int sendTransferBox(const String& reason);
+
+	int withdrawCredits(int value);
 
 	int cancelSession();
 
 	int clearSession();
 
+protected:
+	String _param0_setReason__String_;
+	String _param0_sendTransferBox__String_;
 };
 
 class CityTreasuryWithdrawalSessionHelper : public DistributedObjectClassHelper, public Singleton<CityTreasuryWithdrawalSessionHelper> {

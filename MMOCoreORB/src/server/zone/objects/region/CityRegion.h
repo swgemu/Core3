@@ -132,6 +132,8 @@ public:
 
 	String getCitySpecialization();
 
+	int getCityTreasury();
+
 	bool isMayor(unsigned long long objectid);
 
 	bool isZoningEnabled();
@@ -143,6 +145,14 @@ public:
 	void setCitySpecialization(const String& spec);
 
 	void setRegionName(const String& fullPath);
+
+	void setCityTreasury(int val);
+
+	int addToCityTreasury(int val);
+
+	int subtractFromCityTreasury(int val);
+
+	int getMaxWithdrawal();
 
 	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
 
@@ -260,6 +270,8 @@ public:
 
 	String getCitySpecialization();
 
+	int getCityTreasury();
+
 	bool isMayor(unsigned long long objectid);
 
 	bool isZoningEnabled();
@@ -271,6 +283,14 @@ public:
 	void setCitySpecialization(const String& spec);
 
 	void setRegionName(const String& fullPath);
+
+	void setCityTreasury(int val);
+
+	int addToCityTreasury(int val);
+
+	int subtractFromCityTreasury(int val);
+
+	int getMaxWithdrawal();
 
 	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
 
@@ -365,6 +385,8 @@ public:
 
 	String getCitySpecialization();
 
+	int getCityTreasury();
+
 	bool isMayor(unsigned long long objectid);
 
 	bool isZoningEnabled();
@@ -376,6 +398,14 @@ public:
 	void setCitySpecialization(const String& spec);
 
 	void setRegionName(const String& fullPath);
+
+	void setCityTreasury(int val);
+
+	int addToCityTreasury(int val);
+
+	int subtractFromCityTreasury(int val);
+
+	int getMaxWithdrawal();
 
 	void setCityRank(byte rank);
 

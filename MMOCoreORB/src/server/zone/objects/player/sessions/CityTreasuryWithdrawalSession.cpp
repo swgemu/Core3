@@ -18,7 +18,7 @@
  *	CityTreasuryWithdrawalSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_SENDTRANSFERBOX__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
+enum {RPC_SETREASON__STRING_ = 6,RPC_INITIALIZESESSION__,RPC_SENDTRANSFERBOX__STRING_,RPC_WITHDRAWCREDITS__INT_,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
 CityTreasuryWithdrawalSession::CityTreasuryWithdrawalSession(CreatureObject* creature, CityRegion* city, SceneObject* terminal) : Facade(DummyConstructorParameter::instance()) {
 	CityTreasuryWithdrawalSessionImplementation* _implementation = new CityTreasuryWithdrawalSessionImplementation(creature, city, terminal);
@@ -34,6 +34,20 @@ CityTreasuryWithdrawalSession::~CityTreasuryWithdrawalSession() {
 
 
 
+void CityTreasuryWithdrawalSession::setReason(const String& r) {
+	CityTreasuryWithdrawalSessionImplementation* _implementation = static_cast<CityTreasuryWithdrawalSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETREASON__STRING_);
+		method.addAsciiParameter(r);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setReason(r);
+}
+
 int CityTreasuryWithdrawalSession::initializeSession() {
 	CityTreasuryWithdrawalSessionImplementation* _implementation = static_cast<CityTreasuryWithdrawalSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -47,17 +61,32 @@ int CityTreasuryWithdrawalSession::initializeSession() {
 		return _implementation->initializeSession();
 }
 
-int CityTreasuryWithdrawalSession::sendTransferBox() {
+int CityTreasuryWithdrawalSession::sendTransferBox(const String& reason) {
 	CityTreasuryWithdrawalSessionImplementation* _implementation = static_cast<CityTreasuryWithdrawalSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDTRANSFERBOX__);
+		DistributedMethod method(this, RPC_SENDTRANSFERBOX__STRING_);
+		method.addAsciiParameter(reason);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->sendTransferBox();
+		return _implementation->sendTransferBox(reason);
+}
+
+int CityTreasuryWithdrawalSession::withdrawCredits(int value) {
+	CityTreasuryWithdrawalSessionImplementation* _implementation = static_cast<CityTreasuryWithdrawalSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_WITHDRAWCREDITS__INT_);
+		method.addSignedIntParameter(value);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->withdrawCredits(value);
 }
 
 int CityTreasuryWithdrawalSession::cancelSession() {
@@ -276,6 +305,11 @@ CityTreasuryWithdrawalSessionImplementation::CityTreasuryWithdrawalSessionImplem
 	terminalObject = terminal;
 }
 
+void CityTreasuryWithdrawalSessionImplementation::setReason(const String& r) {
+	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		reason = r;
+	reason = r;
+}
+
 int CityTreasuryWithdrawalSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		creatureObject.dropActiveSession(SessionFacadeType.CITYSPEC);
 	creatureObject->dropActiveSession(SessionFacadeType::CITYSPEC);
@@ -299,11 +333,17 @@ Packet* CityTreasuryWithdrawalSessionAdapter::invokeMethod(uint32 methid, Distri
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_SETREASON__STRING_:
+		setReason(inv->getAsciiParameter(_param0_setReason__String_));
+		break;
 	case RPC_INITIALIZESESSION__:
 		resp->insertSignedInt(initializeSession());
 		break;
-	case RPC_SENDTRANSFERBOX__:
-		resp->insertSignedInt(sendTransferBox());
+	case RPC_SENDTRANSFERBOX__STRING_:
+		resp->insertSignedInt(sendTransferBox(inv->getAsciiParameter(_param0_sendTransferBox__String_)));
+		break;
+	case RPC_WITHDRAWCREDITS__INT_:
+		resp->insertSignedInt(withdrawCredits(inv->getSignedIntParameter()));
 		break;
 	case RPC_CANCELSESSION__:
 		resp->insertSignedInt(cancelSession());
@@ -318,12 +358,20 @@ Packet* CityTreasuryWithdrawalSessionAdapter::invokeMethod(uint32 methid, Distri
 	return resp;
 }
 
+void CityTreasuryWithdrawalSessionAdapter::setReason(const String& r) {
+	(static_cast<CityTreasuryWithdrawalSession*>(stub))->setReason(r);
+}
+
 int CityTreasuryWithdrawalSessionAdapter::initializeSession() {
 	return (static_cast<CityTreasuryWithdrawalSession*>(stub))->initializeSession();
 }
 
-int CityTreasuryWithdrawalSessionAdapter::sendTransferBox() {
-	return (static_cast<CityTreasuryWithdrawalSession*>(stub))->sendTransferBox();
+int CityTreasuryWithdrawalSessionAdapter::sendTransferBox(const String& reason) {
+	return (static_cast<CityTreasuryWithdrawalSession*>(stub))->sendTransferBox(reason);
+}
+
+int CityTreasuryWithdrawalSessionAdapter::withdrawCredits(int value) {
+	return (static_cast<CityTreasuryWithdrawalSession*>(stub))->withdrawCredits(value);
 }
 
 int CityTreasuryWithdrawalSessionAdapter::cancelSession() {

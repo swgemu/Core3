@@ -116,6 +116,8 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void promptWithdrawCityTreasury(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
 	
+	public native void withdrawFromCityTreasury(CityRegion city, CreatureObject mayor, int value, SceneObject terminal = null);
+	
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
 		if (city.isMayor(mayor.getObjectID())) {
 			boolean val = city.isZoningEnabled();

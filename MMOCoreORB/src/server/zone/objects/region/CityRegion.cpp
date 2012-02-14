@@ -16,7 +16,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCITYRANK__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGISTEREDCITIZENCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCITYRANK__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGISTEREDCITIZENCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
 
 CityRegion::CityRegion(Zone* zne, const String& name) : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(zne, name);
@@ -308,6 +308,19 @@ String CityRegion::getCitySpecialization() {
 		return _implementation->getCitySpecialization();
 }
 
+int CityRegion::getCityTreasury() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCITYTREASURY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCityTreasury();
+}
+
 bool CityRegion::isMayor(unsigned long long objectid) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -388,6 +401,61 @@ void CityRegion::setRegionName(const String& fullPath) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setRegionName(fullPath);
+}
+
+void CityRegion::setCityTreasury(int val) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCITYTREASURY__INT_);
+		method.addSignedIntParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCityTreasury(val);
+}
+
+int CityRegion::addToCityTreasury(int val) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDTOCITYTREASURY__INT_);
+		method.addSignedIntParameter(val);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->addToCityTreasury(val);
+}
+
+int CityRegion::subtractFromCityTreasury(int val) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SUBTRACTFROMCITYTREASURY__INT_);
+		method.addSignedIntParameter(val);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->subtractFromCityTreasury(val);
+}
+
+int CityRegion::getMaxWithdrawal() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMAXWITHDRAWAL__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getMaxWithdrawal();
 }
 
 Vector<ManagedReference<SceneObject* > >* CityRegion::getVendorsInCity() {
@@ -805,6 +873,11 @@ String CityRegionImplementation::getCitySpecialization() {
 	return citySpecialization;
 }
 
+int CityRegionImplementation::getCityTreasury() {
+	// server/zone/objects/region/CityRegion.idl():  		return cityTreasury;
+	return cityTreasury;
+}
+
 bool CityRegionImplementation::isMayor(unsigned long long objectid) {
 	// server/zone/objects/region/CityRegion.idl():  		return mayorID == objectid;
 	return mayorID == objectid;
@@ -833,6 +906,40 @@ void CityRegionImplementation::setCitySpecialization(const String& spec) {
 void CityRegionImplementation::setRegionName(const String& fullPath) {
 	// server/zone/objects/region/CityRegion.idl():  		regionName.setStringId(fullPath);
 	(&regionName)->setStringId(fullPath);
+}
+
+void CityRegionImplementation::setCityTreasury(int val) {
+	// server/zone/objects/region/CityRegion.idl():  		cityTreasury = val;
+	cityTreasury = val;
+}
+
+int CityRegionImplementation::addToCityTreasury(int val) {
+	// server/zone/objects/region/CityRegion.idl():  		cityTreasury = cityTreasury + val;
+	cityTreasury = cityTreasury + val;
+	// server/zone/objects/region/CityRegion.idl():  		return 
+	if (cityTreasury < 0){
+	// server/zone/objects/region/CityRegion.idl():  			cityTreasury = 0;
+	cityTreasury = 0;
+}
+	// server/zone/objects/region/CityRegion.idl():  		return cityTreasury;
+	return cityTreasury;
+}
+
+int CityRegionImplementation::subtractFromCityTreasury(int val) {
+	// server/zone/objects/region/CityRegion.idl():  		cityTreasury = cityTreasury - val;
+	cityTreasury = cityTreasury - val;
+	// server/zone/objects/region/CityRegion.idl():  		return 
+	if (cityTreasury < 0){
+	// server/zone/objects/region/CityRegion.idl():  			cityTreasury = 0;
+	cityTreasury = 0;
+}
+	// server/zone/objects/region/CityRegion.idl():  		return cityTreasury;
+	return cityTreasury;
+}
+
+int CityRegionImplementation::getMaxWithdrawal() {
+	// server/zone/objects/region/CityRegion.idl():  		return 10000 * cityRank;
+	return 10000 * cityRank;
 }
 
 void CityRegionImplementation::setCityRank(byte rank) {
@@ -921,6 +1028,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETCITYSPECIALIZATION__:
 		resp->insertAscii(getCitySpecialization());
 		break;
+	case RPC_GETCITYTREASURY__:
+		resp->insertSignedInt(getCityTreasury());
+		break;
 	case RPC_ISMAYOR__LONG_:
 		resp->insertBoolean(isMayor(inv->getUnsignedLongParameter()));
 		break;
@@ -938,6 +1048,18 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETREGIONNAME__STRING_:
 		setRegionName(inv->getAsciiParameter(_param0_setRegionName__String_));
+		break;
+	case RPC_SETCITYTREASURY__INT_:
+		setCityTreasury(inv->getSignedIntParameter());
+		break;
+	case RPC_ADDTOCITYTREASURY__INT_:
+		resp->insertSignedInt(addToCityTreasury(inv->getSignedIntParameter()));
+		break;
+	case RPC_SUBTRACTFROMCITYTREASURY__INT_:
+		resp->insertSignedInt(subtractFromCityTreasury(inv->getSignedIntParameter()));
+		break;
+	case RPC_GETMAXWITHDRAWAL__:
+		resp->insertSignedInt(getMaxWithdrawal());
 		break;
 	case RPC_SETCITYRANK__BYTE_:
 		setCityRank(inv->getByteParameter());
@@ -1035,6 +1157,10 @@ String CityRegionAdapter::getCitySpecialization() {
 	return (static_cast<CityRegion*>(stub))->getCitySpecialization();
 }
 
+int CityRegionAdapter::getCityTreasury() {
+	return (static_cast<CityRegion*>(stub))->getCityTreasury();
+}
+
 bool CityRegionAdapter::isMayor(unsigned long long objectid) {
 	return (static_cast<CityRegion*>(stub))->isMayor(objectid);
 }
@@ -1057,6 +1183,22 @@ void CityRegionAdapter::setCitySpecialization(const String& spec) {
 
 void CityRegionAdapter::setRegionName(const String& fullPath) {
 	(static_cast<CityRegion*>(stub))->setRegionName(fullPath);
+}
+
+void CityRegionAdapter::setCityTreasury(int val) {
+	(static_cast<CityRegion*>(stub))->setCityTreasury(val);
+}
+
+int CityRegionAdapter::addToCityTreasury(int val) {
+	return (static_cast<CityRegion*>(stub))->addToCityTreasury(val);
+}
+
+int CityRegionAdapter::subtractFromCityTreasury(int val) {
+	return (static_cast<CityRegion*>(stub))->subtractFromCityTreasury(val);
+}
+
+int CityRegionAdapter::getMaxWithdrawal() {
+	return (static_cast<CityRegion*>(stub))->getMaxWithdrawal();
 }
 
 void CityRegionAdapter::setCityRank(byte rank) {

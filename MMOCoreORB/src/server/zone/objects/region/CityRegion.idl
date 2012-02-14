@@ -144,6 +144,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return citySpecialization;
 	}
 	
+	public int getCityTreasury() {
+		return cityTreasury;
+	}
+	
 	public boolean isMayor(unsigned long objectid) {
 		return mayorID == objectid;
 	}
@@ -167,6 +171,34 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void setRegionName(final string fullPath) {
 		regionName.setStringId(fullPath);
+	}
+	
+	public void setCityTreasury(int val) {
+		cityTreasury = val;
+	}
+	
+	public int addToCityTreasury(int val) {
+		cityTreasury = cityTreasury + val;
+		
+		if (cityTreasury < 0) {
+			cityTreasury = 0;
+		}
+		
+		return cityTreasury;
+	}
+	
+	public int subtractFromCityTreasury(int val) {
+		cityTreasury = cityTreasury - val;
+		
+		if (cityTreasury < 0) {
+			cityTreasury = 0;
+		}
+		
+		return cityTreasury;
+	}
+	
+	public int getMaxWithdrawal() {
+		return 10000 * cityRank;
 	}
 	
 	@local

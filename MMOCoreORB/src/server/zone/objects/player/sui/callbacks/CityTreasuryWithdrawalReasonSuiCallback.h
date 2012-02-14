@@ -19,7 +19,7 @@ public:
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		ManagedReference<CityTreasuryWithdrawalSession*> session = dynamic_cast<CityTreasuryWithdrawalSession*>(player->getActiveSession(SessionFacadeType::CITYSPEC));
+		ManagedReference<CityTreasuryWithdrawalSession*> session = dynamic_cast<CityTreasuryWithdrawalSession*>(player->getActiveSession(SessionFacadeType::CITYWITHDRAW));
 
 		if (session == NULL)
 			return;
@@ -30,8 +30,7 @@ public:
 		}
 
 		String reason = args->get(0).toString();
-
-		System::out << reason << endl;
+		session->sendTransferBox(reason);
 	}
 };
 

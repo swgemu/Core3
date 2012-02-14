@@ -24,10 +24,16 @@ class CityTreasuryWithdrawalSession extends Facade {
 		cityRegion = city;
 		terminalObject = terminal;
 	}
+	
+	public void setReason(final string r) {
+		reason = r;
+	}
 
 	public native int initializeSession();
 	
-	public native int sendTransferBox();
+	public native int sendTransferBox(final string reason);
+	
+	public native int withdrawCredits(int value);
 
 	public int cancelSession() {
 		creatureObject.dropActiveSession(SessionFacadeType.CITYSPEC);

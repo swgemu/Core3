@@ -116,6 +116,8 @@ public:
 
 	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -202,6 +204,8 @@ public:
 
 	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -264,6 +268,8 @@ public:
 	void changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec);
 
 	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
+
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

@@ -247,3 +247,49 @@ void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, Cre
 	mayor->addActiveSession(SessionFacadeType::CITYWITHDRAW, session);
 	session->initializeSession();
 }
+
+void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal) {
+	/**
+	string/en/city/city.stf	264	treasury_withdraw_from	City Treasury Authority
+	string/en/city/city.stf	265	treasury_withdraw_subject	City Treasury Withdrawal
+	string/en/city/city.stf	266	treasury_withdraw_body	Attention! Mayor %TO has made a withdrawal from the City Treasury. Amount: %DI Reason: %TT - Treasury Authority
+	 */
+	if (city->getCityTreasury() <= 0) {
+		mayor->sendSystemMessage("@city/city:no_money"); //There isn't any money to transfer!
+		return;
+	}
+
+	ManagedReference<CityTreasuryWithdrawalSession*> session = dynamic_cast<CityTreasuryWithdrawalSession*>(mayor->getActiveSession(SessionFacadeType::CITYWITHDRAW));
+
+	if (session == NULL)
+		return;
+
+	if (!mayor->checkCooldownRecovery("city_withdrawal")) {
+		mayor->sendSystemMessage("@city/city:withdraw_daily"); //You may only withdraw from the city treasury once per day.
+		session->cancelSession();
+		return;
+	}
+
+	int maxWithdrawal = MIN(city->getMaxWithdrawal(), city->getCityTreasury());
+
+	if (value < 0) {
+		mayor->sendSystemMessage("@city/city:withdraw_treasury"); //You must select a positive amount to withdraw from the treasury.
+		session->cancelSession();
+		return;
+	}
+
+	if (value > maxWithdrawal) {
+		mayor->sendSystemMessage("@city/city:withdraw_treasury_error"); //Unable to complete withdraw. Please try again.
+		session->cancelSession();
+		return;
+	}
+
+	mayor->addBankCredits(value, true);
+	city->subtractFromCityTreasury(value);
+
+	mayor->addCooldown("city_withdrawal", CityManagerImplementation::treasuryWithdrawalCooldown);
+
+	//tODO: Send some message about receiving credits.
+
+	//TODO: Send mail
+}

@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/sessions/CityTreasuryWithdrawalSession.h"
+#include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 
 class CityTreasuryWithdrawalSuiCallback : public SuiCallback {
 public:
@@ -24,22 +24,14 @@ public:
 		if (session == NULL)
 			return;
 
-		if (!suiBox->isListBox() || player == NULL || cancelPressed || args->size() <= 0) {
+		if (!suiBox->isTransferBox() || player == NULL || cancelPressed || args->size() <= 0) {
 			session->cancelSession();
 			return;
 		}
 
-		int index = Integer::valueOf(args->get(0).toString());
+		int value = Integer::valueOf(args->get(0).toString());
 
-		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
-
-		if (index < 0 || index > listBox->getMenuSize()) {
-			session->cancelSession();
-			return;
-		}
-
-		String choice = listBox->getMenuItemName(index);
-		session->sendConfirmationBox(choice);
+		session->withdrawCredits(value);
 	}
 };
 
