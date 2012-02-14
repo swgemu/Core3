@@ -119,7 +119,7 @@ class LootManager extends ManagedService implements Logger {
 
 	public native void createLoot(SceneObject container, AiAgent creature);
 	
-	public native void createLoot(SceneObject container, final string lootGroup, int level = -1, int useCount = 1);
+	public native void createLoot(SceneObject container, final string lootGroup, int level = -1);
 	
 	//public native void generateStats(final string lootTemplate, CraftingValues)
 

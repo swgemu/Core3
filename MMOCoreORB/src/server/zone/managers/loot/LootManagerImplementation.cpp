@@ -270,7 +270,7 @@ void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 	}
 }
 
-void LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level, int useCount) {
+void LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level) {
 	if (container->hasFullContainerObjects())
 		return;
 
@@ -294,9 +294,6 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 	TangibleObject* obj = createLootObject(itemTemplate, level);
 
 	if (obj != NULL) {
-
-		if(useCount > 1)
-			obj->setUseCount(useCount, false);
 
 		if (container->transferObject(obj, -1, false))
 			container->broadcastObject(obj, true);

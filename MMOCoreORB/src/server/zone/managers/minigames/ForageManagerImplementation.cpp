@@ -172,7 +172,6 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 
 	//Determine what the player finds.
 	int dice;
-	int useCount = 1;
 	int level = 1;
 	String lootGroup = "";
 	String resName = "";
@@ -181,24 +180,21 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 
 		for (int i = 0; i < itemCount; i++) {
 			dice = System::random(200);
-			useCount = 1;
 			level = 1;
 
 			if (dice >= 0 && dice < 160) {
 				lootGroup = "forage_food";
 			} else if (dice > 159 && dice < 200) {
 				lootGroup = "forage_bait";
-				useCount = System::random(4) + 1;
 			} else {
 				lootGroup = "forage_rare";
 			}
 
-			lootManager->createLoot(inventory, lootGroup, level, useCount);
+			lootManager->createLoot(inventory, lootGroup, level);
 		}
 
 	} else if (forageType == ForageManager::MEDICAL) { //Medical Forage
 		dice = System::random(200);
-		useCount = 1;
 		level = 1;
 
 		if (dice >= 0 && dice < 40) { //Forage food.
@@ -222,11 +218,10 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 			level = 200;
 		}
 
-		lootManager->createLoot(inventory, lootGroup, level, useCount);
+		lootManager->createLoot(inventory, lootGroup, level);
 
 	} else if (forageType == ForageManager::LAIR) { //Medical Forage
 		dice = System::random(200);
-		useCount = 1;
 		level = 1;
 
 		if (dice >= 0 && dice < 40) { // Live Creatures
@@ -253,7 +248,7 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 			}
 		}
 
-		lootManager->createLoot(inventory, lootGroup, level, useCount);
+		lootManager->createLoot(inventory, lootGroup, level);
 	}
 	return true;
 }

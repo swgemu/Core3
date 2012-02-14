@@ -136,7 +136,7 @@ public:
 
 	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level = -1, int useCount = 1);
+	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -214,7 +214,7 @@ public:
 
 	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level = -1, int useCount = 1);
+	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 
 	WeakReference<LootManager*> _this;
 
@@ -267,10 +267,10 @@ public:
 
 	void createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level, int useCount);
+	void createLoot(SceneObject* container, const String& lootGroup, int level);
 
 protected:
-	String _param1_createLoot__SceneObject_String_int_int_;
+	String _param1_createLoot__SceneObject_String_int_;
 };
 
 class LootManagerHelper : public DistributedObjectClassHelper, public Singleton<LootManagerHelper> {
