@@ -4,7 +4,7 @@ foraged_liquid_delivery_suspension = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\component\chemistry\liquid_delivery_suspension.iff",
+	directObjectTemplate = "object/tangible/component/chemistry/liquid_delivery_suspension.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

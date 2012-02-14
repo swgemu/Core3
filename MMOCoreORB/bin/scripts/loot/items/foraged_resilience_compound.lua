@@ -4,7 +4,7 @@ foraged_resilience_compound = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\component\chemistry\resilience_compound.iff",
+	directObjectTemplate = "object/tangible/component/chemistry/resilience_compound.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

@@ -4,7 +4,7 @@ foraged_solid_delivery_shell = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\component\chemistry\solid_delivery_shell.iff",
+	directObjectTemplate = "object/tangible/component/chemistry/solid_delivery_shell.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

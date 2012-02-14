@@ -4,7 +4,7 @@ foraged_biologic_effect_controller = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\component\chemistry\biologic_effect_controller.iff",
+	directObjectTemplate = "object/tangible/component/chemistry/biologic_effect_controller.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

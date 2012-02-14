@@ -4,7 +4,7 @@ foraged_release_mechanism_duration = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\component\chemistry\release_mechanism_duration.iff",
+	directObjectTemplate = "object/tangible/component/chemistry/release_mechanism_duration.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

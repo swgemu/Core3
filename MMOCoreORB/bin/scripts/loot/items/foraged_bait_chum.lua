@@ -6,6 +6,7 @@ foraged_bait_chum = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/fishing/bait/bait_chum.iff",
 	craftingValues = {
+		{"quantity",1,6},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

@@ -4,7 +4,7 @@ foraged_infection_amplifier = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\component\chemistry\infection_amplifier.iff",
+	directObjectTemplate = "object/tangible/component/chemistry/infection_amplifier.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

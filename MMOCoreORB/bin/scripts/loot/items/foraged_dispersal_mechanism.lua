@@ -4,7 +4,7 @@ foraged_dispersal_mechanism = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\component\chemistry\dispersal_mechanism.iff",
+	directObjectTemplate = "object/tangible/component/chemistry/dispersal_mechanism.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

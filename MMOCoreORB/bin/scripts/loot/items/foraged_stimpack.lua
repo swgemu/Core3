@@ -4,7 +4,7 @@ foraged_stimpack = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object\tangible\medicine\stimpack_sm_s1.iff",
+	directObjectTemplate = "object/tangible/medicine/stimpack_sm_s1.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},
