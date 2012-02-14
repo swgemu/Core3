@@ -46,6 +46,7 @@ which carries forward this exception.
 #define OBJECTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/loot/LootManager.h"
 
 class ObjectCommand : public QueueCommand {
 public:
@@ -111,6 +112,28 @@ public:
 
 				inventory->broadcastObject(object, true);
 				inventory->transferObject(object, -1, true);
+			} else if (commandType.beginsWith("createloot")) {
+				String lootGroup;
+				args.getStringToken(lootGroup);
+
+				int level = 1;
+
+				if (args.hasMoreTokens())
+					level = args.getIntToken();
+
+				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+				if (inventory == NULL || inventory->isContainerFull()) {
+					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
+					return INVALIDPARAMETERS;
+				}
+
+				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
+
+				if (lootManager == NULL)
+					return INVALIDPARAMETERS;
+
+				lootManager->createLoot(inventory, lootGroup, level);
 			} else if (commandType.beginsWith("createresource")) {
 				String resourceName;
 				args.getStringToken(resourceName);
@@ -126,6 +149,7 @@ public:
 		} catch (Exception& e) {
 			creature->sendSystemMessage("SYNTAX: /object createitem <objectTemplatePath> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createresource <resourceName> [<quantity>]");
+			creature->sendSystemMessage("SYNTAX: /object createloot <loottemplate> [<level>]");
 
 			return INVALIDPARAMETERS;
 		}
