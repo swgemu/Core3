@@ -482,6 +482,7 @@ public:
 	virtual void applyEffect(CreatureObject* creature, uint8 effectType, uint32 mod) {
 		CombatManager* combatManager = CombatManager::instance();
 		StateEffect effect = getStateEffect(effectType);
+		Reference<Buff*> buff = NULL;
 
 		switch (effectType) {
 		case CommandEffect::BLIND:
@@ -544,6 +545,24 @@ public:
 			break;
 		case CommandEffect::NEXTATTACKDELAY:
 			creature->setNextAttackDelay(mod, effect.getStateLength());
+			break;
+		case CommandEffect::HEALTHDEGRADE:
+			buff = new Buff(creature, String("healthdegrade").hashCode(), effect.getStateLength(), BuffType::STATE);
+			buff->setAttributeModifier(CreatureAttribute::CONSTITUTION, -1*effect.getStateStrength());
+			buff->setAttributeModifier(CreatureAttribute::STRENGTH, -1*effect.getStateStrength());
+			creature->addBuff(buff);
+			break;
+		case CommandEffect::ACTIONDEGRADE:
+			buff = new Buff(creature, String("actiondegrade").hashCode(), effect.getStateLength(), BuffType::STATE);
+			buff->setAttributeModifier(CreatureAttribute::QUICKNESS, -1*effect.getStateStrength());
+			buff->setAttributeModifier(CreatureAttribute::STAMINA, -1*effect.getStateStrength());
+			creature->addBuff(buff);
+			break;
+		case CommandEffect::MINDDEGRADE:
+			buff = new Buff(creature, String("minddegrade").hashCode(), effect.getStateLength(), BuffType::STATE);
+			buff->setAttributeModifier(CreatureAttribute::FOCUS, -1*effect.getStateStrength());
+			buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -1*effect.getStateStrength());
+			creature->addBuff(buff);
 			break;
 		default:
 			break;

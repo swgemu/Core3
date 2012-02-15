@@ -42,13 +42,14 @@
 --true = 1, false = 0
 
 LegShot2Command = {
-        name = "legshot2",
+	name = "legshot2",
 
-	damageMultiplier = 3.0,
-	speedMultiplier = 1.5,
+	damageMultiplier = 2,
+	speedMultiplier = 2,
 	healthCostMultiplier = 0.5,
-	actionCostMultiplier = 1.3,
-	mindCostMultiplier = 1.2,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
+	accuracyBonus = 25,
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 

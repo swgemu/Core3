@@ -42,13 +42,14 @@
 --true = 1, false = 0
 
 SuppressionFire1Command = {
-        name = "suppressionfire1",
+	name = "suppressionfire1",
 
-	damageMultiplier = 2.3,
-	speedMultiplier = 2.0,
-	healthCostMultiplier = 1.9,
-	actionCostMultiplier = 1.4,
-	mindCostMultiplier = 0.6,
+	damageMultiplier = 1,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 1.75,
+	actionCostMultiplier = 1.25,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 25,
 
 	stateEffects = {
 	  StateEffect( 
@@ -57,12 +58,10 @@ SuppressionFire1Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	},
-
-	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	animationCRC = hashCode("fire_area_light"),
 

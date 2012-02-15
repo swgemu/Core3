@@ -42,29 +42,39 @@
 --true = 1, false = 0
 
 ActionShot1Command = {
-        name = "actionshot1",
+	name = "actionshot1",
 
 	damageMultiplier = 1.5,
-	speedMultiplier = 1.6,
-	healthCostMultiplier = 1.9,
-	actionCostMultiplier = 1.4,
-	mindCostMultiplier = 0.6,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 1.75,
+	actionCostMultiplier = 1.25,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 25,
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
 	animationCRC = hashCode("fire_3_single_light"),
 
 	combatSpam = "kneecapshot",
-
-	dotEffects = {
-	  DotEffect( 
-		BLEEDING_EFFECT, 
-		{ "resistance_bleeding" },
-		ACTION_ATTRIBUTE,
-		true,
-		100,
-		30, 
-		30
+	    
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		100, 
+		0, 
+		0 
+	  ),
+	  StateEffect( 
+		ACTIONDEGRADE_EFFECT, 
+		{}, 
+		{}, 
+		{}, 
+		100, 
+		100, 
+		30 
 	  )
 	},
 

@@ -42,31 +42,18 @@
 --true = 1, false = 0
 
 DiveShotCommand = {
-        name = "diveshot",
+	name = "diveshot",
 
-	damageMultiplier = 2.5,
-	speedMultiplier = 1.8,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 2,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.75,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 50,
 
-	animationCRC = hashCode("fire_1_special_single_light"),
+	animationCRC = hashCode("fire_acrobatic"),
 
 	combatSpam = "diveshot",
-
-	poolsToDamage = HEALTH_ATTRIBUTE,
-
-	dotEffects = {
-	  DotEffect( 
-		BLEEDING_EFFECT, 
-		{ "resistance_bleeding" },
-		HEALTH_ATTRIBUTE,
-		true,
-		100,
-		30, 
-		30
-	  )
-	},
 
 	range = -1
 

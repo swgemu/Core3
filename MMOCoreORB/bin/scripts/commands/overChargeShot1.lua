@@ -42,13 +42,14 @@
 --true = 1, false = 0
 
 OverChargeShot1Command = {
-        name = "overchargeshot1",
+	name = "overchargeshot1",
 
-	damageMultiplier = 2.5,
-	speedMultiplier = 2,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 2,
+	speedMultiplier = 1.25,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 15,
 
 	animationCRC = hashCode("fire_1_special_single_medium"),
 

@@ -64,10 +64,24 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		creature->setPosture(CreaturePosture::PRONE);
+		creature->setPosture(CreaturePosture::PRONE, false);
+		Reference<CreatureObject*> defender = cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+		if (defender == NULL)
+			creature->doCombatAnimation(creature,String("tumble").hashCode(),0);
+		else
+			creature->doCombatAnimation(defender,String("tumble_facing").hashCode(),0);
 
-		Reference<Task*> task = new AnimationTask(creature, "tumble_to_kneeling");
-		task->schedule(500);
+		Reference<StateBuff*> buff = new StateBuff(creature, CreatureState::TUMBLING, 1);
+
+		buff->setSkillModifier("melee_defense", 50);
+		buff->setSkillModifier("ranged_defense", 50);
+
+		creature->addBuff(buff);
+
+		CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
+		pmsg->updatePosture();
+		pmsg->close();
+		creature->broadcastMessage(pmsg, true);
 
 		return SUCCESS;
 	}

@@ -262,7 +262,7 @@ void BuffImplementation::applyAttributeModifiers() {
 		if (fillAttributesOnBuff) {
 			//creature->setHAM(attribute, attributeval - creature->getWounds(attribute));
 			creature->healDamage(creature, attribute, attributeval, true);
-		} else
+		} else if (value >= 0)
 			creature->healDamage(creature, attribute, value);
 	}
 

@@ -44,15 +44,16 @@
 FullAutoSingle1Command = {
         name = "fullautosingle1",
 
-	damageMultiplier = 1.35,
-	speedMultiplier = 1.15,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 2,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 1.75,
+	actionCostMultiplier = 2.5,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 25,
 
 	animationCRC = hashCode("fire_5_special_single_medium"),
 
-	combatSpam = "multishot",
+	combatSpam = "fullautoattack",
 
 	stateEffects = {
 	  StateEffect( 
@@ -61,8 +62,8 @@ FullAutoSingle1Command = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
-		10 
+		0, 
+		30 
 	  ),
 	  StateEffect( 
 		BLIND_EFFECT, 
@@ -70,8 +71,8 @@ FullAutoSingle1Command = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
-		10 
+		0, 
+		30 
 	  ),
 	  StateEffect( 
 		STUN_EFFECT, 
@@ -79,8 +80,8 @@ FullAutoSingle1Command = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
-		10 
+		0, 
+		30 
 	  )
 	},
 

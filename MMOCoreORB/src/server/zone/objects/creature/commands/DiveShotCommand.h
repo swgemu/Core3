@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 
 class DiveShotCommand : public CombatQueueCommand {
 public:
@@ -74,8 +75,12 @@ public:
 		if (ret != SUCCESS)
 			return ret;
 
-		creature->setPosture(CreaturePosture::PRONE);
-		creature->doAnimation("tumble_to_kneeling");
+		creature->setPosture(CreaturePosture::PRONE, false);
+
+		CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
+		pmsg->updatePosture();
+		pmsg->close();
+		creature->broadcastMessage(pmsg, true);
 
 		return SUCCESS;
 	}

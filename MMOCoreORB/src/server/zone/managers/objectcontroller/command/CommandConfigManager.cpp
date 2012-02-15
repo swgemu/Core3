@@ -407,6 +407,9 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("POSTUREUP_EFFECT", CommandEffect::POSTUREUP);
 	setGlobalInt("POSTUREDOWN_EFFECT", CommandEffect::POSTUREDOWN);
 	setGlobalInt("NEXTATTACKDELAY_EFFECT", CommandEffect::NEXTATTACKDELAY);
+	setGlobalInt("HEALTHDEGRADE_EFFECT", CommandEffect::HEALTHDEGRADE);
+	setGlobalInt("ACTIONDEGRADE_EFFECT", CommandEffect::ACTIONDEGRADE);
+	setGlobalInt("MINDDEGRADE_EFFECT", CommandEffect::MINDDEGRADE);
 	setGlobalInt("POISONED_EFFECT", CommandEffect::POISONED);
 	setGlobalInt("BLEEDING_EFFECT", CommandEffect::BLEEDING);
 	setGlobalInt("DISEASED_EFFECT", CommandEffect::DISEASED);

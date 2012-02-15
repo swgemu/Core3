@@ -42,29 +42,30 @@
 --true = 1, false = 0
 
 MindShot1Command = {
-        name = "mindshot1",
+	name = "mindshot1",
 
-	damageMultiplier = 1.5,
-	speedMultiplier = 1.8,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 1,
+	speedMultiplier = 1,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 2,
+	accuracyBonus = 5,
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
 	animationCRC = hashCode("fire_1_special_single_medium_face"),
 
 	combatSpam = "headshot",
-
-	dotEffects = {
-	  DotEffect( 
-		BLEEDING_EFFECT, 
-		{ "resistance_bleeding" },
-		MIND_ATTRIBUTE,
-		true,
-		100,
-		30, 
-		30
+	    
+	stateEffects = {
+	  StateEffect( 
+		MINDDEGRADE_EFFECT, 
+		{}, 
+		{}, 
+		{}, 
+		100, 
+		100, 
+		30 
 	  )
 	},
 

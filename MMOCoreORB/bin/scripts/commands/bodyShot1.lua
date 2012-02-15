@@ -42,13 +42,14 @@
 --true = 1, false = 0
 
 BodyShot1Command = {
-        name = "bodyshot1",
+	name = "bodyshot1",
 
-	damageMultiplier = 1.5,
-	speedMultiplier = 1.2,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 2,
+	speedMultiplier = 1,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.75,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 50,
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 

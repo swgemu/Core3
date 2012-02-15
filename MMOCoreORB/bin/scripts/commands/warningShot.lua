@@ -42,13 +42,14 @@
 --true = 1, false = 0
 
 WarningShotCommand = {
-        name = "warningshot",
+	name = "warningshot",
 
-	damageMultiplier = 1.15,
-	speedMultiplier = 1.5,
-	healthCostMultiplier = 1.9,
-	actionCostMultiplier = 1.4,
-	mindCostMultiplier = 0.6,
+	damageMultiplier = 0.25,
+	speedMultiplier = 2,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	accuracyBonus = 15,
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

@@ -74,8 +74,12 @@ public:
 		if (ret != SUCCESS)
 			return ret;
 
-		creature->setPosture(CreaturePosture::UPRIGHT);
-		creature->doAnimation("tumble_to_kneeling");
+		creature->setPosture(CreaturePosture::UPRIGHT, false);
+
+		CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
+		pmsg->updatePosture();
+		pmsg->close();
+		creature->broadcastMessage(pmsg, true);
 
 		return SUCCESS;
 	}

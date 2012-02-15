@@ -42,21 +42,21 @@
 --true = 1, false = 0
 
 PointBlankArea1Command = {
-        name = "pointblankarea1",
+	name = "pointblankarea1",
 
-	damageMultiplier = 1.5,
-	speedMultiplier = 1.05,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 2,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.25,
+	mindCostMultiplier = 0.5,
 	coneAngle = 60,
 	coneAction = true,
 
 	animationCRC = hashCode("fire_area_no_trails_light"),
 
-	combatSpam = "coveringfire",
+	combatSpam = "pointblankblast",
 
-	range = 10
+	range = 12
 }
 
 AddCommand(PointBlankArea1Command)
