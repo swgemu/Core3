@@ -1336,7 +1336,7 @@ function TutorialScreenPlay:stopOfficer1ConversationMessageTwo(creatureObject)
 				creature:playMusicMessage("sound/tut_16_intheboxyouneed.snd")
 			end
 			
-			createEvent(10000, "TutorialScreenplay", "stopOfficer1ConversationMessageTwo", creatureObject)
+			createEvent(10000, "TutorialScreenPlay", "stopOfficer1ConversationMessageTwo", creatureObject)
 		end
 	end
 	
