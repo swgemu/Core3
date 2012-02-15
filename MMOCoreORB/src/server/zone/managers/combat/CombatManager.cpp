@@ -834,6 +834,38 @@ float CombatManager::getArmorPiercing(AiAgent* defender, WeaponObject* weapon) {
 		return pow(0.50, armorReduction - armorPiercing);
 }
 
+float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* defender) {
+	float damage = 0;
+
+	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
+
+	int maxDamageMuliplier = attacker->getSkillMod("private_max_damage_multiplier");
+	int maxDamageDivisor = attacker->getSkillMod("private_max_damage_divisor");
+
+	float diff = maxDamage - minDamage;
+
+	if (maxDamageMuliplier != 0)
+		diff *= maxDamageMuliplier;
+
+	if (maxDamageDivisor != 0)
+		diff /= maxDamageDivisor;
+
+	if (diff >= 0)
+		damage = System::random(diff) + (int)minDamage;
+
+	damage += getDamageModifier(attacker, weapon);
+
+	if (attacker->isPlayerCreature()) {
+		if (!weapon->isCertifiedFor(attacker))
+			damage /= 5;
+	}
+
+	//info("damage to be dealt is " + String::valueOf(damage), true);
+
+	return damage * 10;
+}
+
 float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender) {
 	float damage = 0;
 
@@ -1193,7 +1225,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 		return 0;
 	}
 
-	int damage = System::random(1000);
+	int damage = calculateDamage(attacker, defender);
 
 	defender->inflictDamage(attacker, 0, damage, true);
 
