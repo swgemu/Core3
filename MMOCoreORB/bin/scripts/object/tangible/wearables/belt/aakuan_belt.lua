@@ -43,7 +43,7 @@
 
 object_tangible_wearables_belt_aakuan_belt = object_tangible_wearables_belt_shared_aakuan_belt:new {
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOIDS
+	playerUseMask = ALL
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_belt_aakuan_belt, "object/tangible/wearables/belt/aakuan_belt.iff")

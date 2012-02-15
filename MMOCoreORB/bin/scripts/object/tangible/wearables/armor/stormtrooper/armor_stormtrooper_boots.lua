@@ -45,7 +45,7 @@ object_tangible_wearables_armor_stormtrooper_armor_stormtrooper_boots = object_t
 	templateType = ARMOROBJECT,
 
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOID_IMPERIALS + HUMANOID_FOOTWEAR,
+	playerUseMask = HUMANOID_IMPERIALS,
 	
 	-- Damage types in WeaponObject
 	vunerability = ELECTRICITY + ACID + STUN + LIGHTSABER,

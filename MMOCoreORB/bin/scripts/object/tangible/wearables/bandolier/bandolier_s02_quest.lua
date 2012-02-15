@@ -43,7 +43,7 @@
 
 object_tangible_wearables_bandolier_bandolier_s02_quest = object_tangible_wearables_bandolier_shared_bandolier_s02_quest:new {
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOIDS + WOOKIEES + ITHORIANS
+	playerUseMask = ALL
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_bandolier_s02_quest, "object/tangible/wearables/bandolier/bandolier_s02_quest.iff")
