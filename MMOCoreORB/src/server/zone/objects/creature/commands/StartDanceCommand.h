@@ -83,7 +83,7 @@ public:
 
 			String abilityName = ability->getAbilityName();
 
-			if (abilityName.indexOf("startdance") != -1) {
+			if (abilityName.indexOf("startDance") != -1) {
 				int args = abilityName.indexOf("+");
 
 				if (args != -1) {
