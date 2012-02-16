@@ -45,7 +45,7 @@ object_tangible_wearables_armor_marine_armor_marine_boots = object_tangible_wear
 	templateType = ARMOROBJECT,
 
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOID_REBELS + HUMANOID_FOOTWEAR,
+	playerUseMask = HUMANOID_REBELS,
 	
 	-- Damage types in WeaponObject
 	vunerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
