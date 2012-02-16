@@ -196,6 +196,9 @@ class CreatureObject extends TangibleObject {
 	protected transient byte actionWoundHeal;
 	protected transient byte mindWoundHeal;
 	
+	protected transient byte currentWeather;
+	protected transient byte currentWind;
+	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
@@ -1607,4 +1610,21 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public native CampSiteActiveArea getCurrentCamp();
+	
+	public byte getCurrentWeather() {
+		return currentWeather;
+	}
+	
+	public void setCurrentWeather(byte value) {
+		currentWeather = value;
+	}
+	
+	public byte getCurrentWind() {
+		return currentWind;
+	}
+	
+	public void setCurrentWind(byte value) {
+		currentWind = value;
+	}
+
 }

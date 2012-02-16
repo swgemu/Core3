@@ -122,6 +122,8 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 
 	groupInviterID = 0;
 	groupInviteCounter = 0;
+	currentWeather = 0;
+	currentWind = 0;
 
 	setContainerOwnerID(getObjectID());
 

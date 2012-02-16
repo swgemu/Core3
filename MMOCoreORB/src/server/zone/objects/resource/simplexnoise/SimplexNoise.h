@@ -1,5 +1,5 @@
 // SimplexNoise
-// Copyright © 2003-2005, Stefan Gustavson
+// Copyright ï¿½ 2003-2005, Stefan Gustavson
 //
 // Contact: stegu@itn.liu.se
 //
@@ -33,6 +33,9 @@
  * on some platforms. A templatized version of SimplexNoise could be useful.
  */
 
+#ifndef SIMPLEXNOISE_H_
+#define SIMPLEXNOISE_H_
+
 class SimplexNoise {
 
   public:
@@ -62,3 +65,5 @@ class SimplexNoise {
     static float  grad( int hash, float x, float y, float z, float t );
 
 };
+
+#endif /*SIMPLEXNOISE_H_*/

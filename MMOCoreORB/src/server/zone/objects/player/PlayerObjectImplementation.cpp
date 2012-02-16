@@ -326,9 +326,6 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	sendFriendLists();
 
-	ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
-	weatherManager->sendWeatherPacket(creature);
-
 	if (creature->isDead()) {
 		//If the player is dead, see if they already have a clone box. If so, resend it.
 		ManagedReference<SuiBox*> cloneBox = getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST);
@@ -340,6 +337,13 @@ void PlayerObjectImplementation::notifySceneReady() {
 			//Otherwise, send them a new one.
 			server->getPlayerManager()->sendActivateCloneRequest(creature);
 		}
+	}
+
+	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
+		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
+		creature->setCurrentWind((byte)System::random(200));
+		creature->setCurrentWeather(0xFF);
+		weatherManager->sendWeatherTo(creature);
 	}
 }
 
@@ -1288,6 +1292,11 @@ void PlayerObjectImplementation::doRecovery() {
 			&& (commandQueue->size() == 0) && creature->isNextActionPast()) {
 		creature->sendExecuteConsoleCommand("/attack");
 		//enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
+	}
+
+	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
+		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
+		weatherManager->sendWeatherTo(creature);
 	}
 
 	activateRecovery();

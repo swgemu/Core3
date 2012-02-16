@@ -51,15 +51,15 @@ which carries forward this exception.
 
 class ServerWeatherMessage : public BaseMessage {
 public:
-	ServerWeatherMessage(WeatherManager* weatherManager) : BaseMessage() {
+	ServerWeatherMessage(int weather, float windx, float windMag, float windy) : BaseMessage() {
 
 		insertShort(0x03);
 		insertInt(0x486356EA);
-		insertInt(weatherManager->getWeatherID());
+		insertInt(weather);
 
-		insertFloat(weatherManager->getWindX());
-		insertFloat(0.0f);
-		insertFloat(weatherManager->getWindY());
+		insertFloat(windx);
+		insertFloat(windMag);
+		insertFloat(windy);
 
 	}
 

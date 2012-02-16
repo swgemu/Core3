@@ -58,270 +58,184 @@
 -- Acceptable values: 0 or 1
 -- Default: 1
 
--- startingWeatherID: This determines which weather is in place when the server starts.
+-- defaultWeather: This determines which weather is in place when the server starts.
 -- Acceptable values: 0, 1, 2, 3, 4, 5
 -- A value of 5 will cause a random weather ID from 0-2 at startup.
 -- Default: 5
 
--- levelZeroChance (percent)
--- levelOneChance (percent)
--- levelTwoChance (percent)
--- levelThreeChance (percent)
--- levelFourChance (percent)
--- These determine the chance each weather ID will be selected when new weather is chosen.
--- Acceptable range: 0-100. These values must combine to equal 100.
--- Default: 70, 14, 9, 5, 2
-
--- windChangeChance (percent): Determines the chance of the wind direction changing when the weather ID transitions between 3-4. 
--- Acceptable range: 0 to 100
--- Default: 50
-
--- newWeatherTimeMin (seconds): Determines the minimum amount of time until new weather is chosen after the previously selected weather is reached.
--- Acceptable Range: 0 to less than or equal to newWeatherTimeMax
--- Default: 600 (10 minutes)
-
-
--- newWeatherTimeMax (seconds): Determines the maximum amount of time until new weather is chosen after the previously selected weather is reached.
--- Acceptable Range: 0 to 100000
--- Default: 1800 (30 minutes)
-
-
--- transitionTimeMin (seconds): Determines the minimum amount of time until the weather transitions toward the selected weather again.
--- Acceptable Range: 0 to less than or equal to transitionTimeMax
--- Default: 120 (2 minutes)
-
-
--- transitionTimeMax (seconds): Determines the maximum amount of time until the weather transitions toward the selected weather again.
--- Acceptable Range: 0 to 100000
--- Default: 600 (10 minutes)
+-- weatherStability: This determines volitility in most factors for weather.
+-- Acceptable values: 0-100
+-- A value of 95 will have the following effect:
+--  Base Weather:
+--	0: 96%
+--	1: 2.5%
+--	2: 1.25%
+--	3: < 1 so 0%
+--	4: < 1 so 0%
+--   Storm Patterns: 95% of storms will be mild, 5% medium to extreme
+-- A value of 60 will have the following effect:
+--  Base Weather:
+--	0: 68%
+--	1: 20%
+--	2: 6.66%
+--	3: 3.33%
+--	4: 2%
+--   Storm Patterns: 60% of storms will be mild, 40% medium to extreme
 
 -----------------------------------------------------------
 
 -- ***Optional Sandstorm Hindrance Feature***
 
--- This feature is only in effect (ticks) when weather ID = 4 (severe) on Tatooine and Lok.
+-- This feature is only in effect (ticks) when weather ID = 4 (severe)
 
--- sandstormEffectsEnabled: Determines whether the optional sandstorm hindrance feature is enabled.
+-- hasDamagingSandstorms: Determines whether the optional sandstorm hindrance feature is enabled.
 -- Acceptable values: 0 or 1
 -- Default value: 0
 
 
--- sandstormWounds: Determines how many wounds a player can receive to his primary HAM bars per sandstorm "tick".
+-- sandstormDamage: Determines how many wounds a player can receive to his primary HAM bars per sandstorm "tick".
 -- Acceptable range: 0 to 500
--- Default: 15 (Tatooine), 10 (Lok)
-
--- sandstormWoundsMitigation: Determines how many wounds to subtract per protective item the player is wearing (5 items max).
--- Acceptable range: 0 to 500
--- Default: 3 (Tatooine), 2 (Lok)
-
-
--- sandstormKnockdownChance: Determines the percent chance that a player will be knocked down per sandstorm "tick".
--- Acceptable range: 0 to 100
--- Default: 40 (Tatooine), 30 (Lok)
-
-
--- sandstormKnockdownModifier: Determines how much knockdown chance will be added (armour) or subtracted (protective
--- clothing) per item the player is wearing (5 items max).
--- Acceptable range: 0 to 100
--- Default: 4 (Tatooine), 4 (Lok)
-
-
--- sandstormTickTime (seconds): Determines how often the sandstorm hindrances will be applied to players not in a structure or camp.
--- Acceptable range: 5 to 60 
--- Default: 10
+-- Default: 70 (Tatooine), 50 (Lok)
 
 -----------------------------------------------------------
 
 -----------------
 --   Corellia
 -----------------
-corellia_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-}
+corellia = {
+	weatherEnabled = 1,
 
------------------
---   Dantooine
------------------
-dantooine_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-}
+	defaultWeather = 0, -- Sunny
 
------------------
---   Dathomir
------------------
-dathomir_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-}
+	averageWeatherDuration = 3600, -- In seconds
 
------------------
---    Endor
------------------
-endor_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-}
-
------------------
---     Lok
------------------
-lok_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-	sandstormEffectsEnabled = 1,
-	sandstormWounds = 10,
-	sandstormWoundsMitigation = 2,
-	sandstormKnockdownChance = 30,
-	sandstormKnockdownModifier = 4,
-	sandstormTickTime = 10,
-}
-
------------------
---    Naboo
------------------
-naboo_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-}
-
------------------
---     Rori
------------------
-rori_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-}
-
------------------
---    Talus
------------------
-talus_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
+	weatherStability = 90, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
 }
 
 -----------------
 --   Tatooine 
 -----------------
-tatooine_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
-	sandstormEffectsEnabled = 1,
-	sandstormWounds = 15,
-	sandstormWoundsMitigation = 3,
-	sandstormKnockdownChance = 40,
-	sandstormKnockdownModifier = 4,
-	sandstormTickTime = 10,
+tatooine = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 70, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+
+	hasDamagingSandstorms = 0,
+
+	sandstormDamage = 70, -- 40 = Annoying, 100 = deadly
+}
+
+
+-----------------
+--   Dantooine
+-----------------
+dantooine = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 85, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+}
+
+-----------------
+--   Dathomir
+-----------------
+dathomir = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 50, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+}
+
+-----------------
+--    Endor
+-----------------
+endor = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 90, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+}
+
+-----------------
+--     Lok
+-----------------
+lok = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 60, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+
+	hasDamagingSandstorms = 0,
+
+	sandstormDamage = 50, -- 30 = Annoying, 50 = deadly
+}
+
+-----------------
+--    Naboo
+-----------------
+naboo = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 90, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+}
+
+-----------------
+--     Rori
+-----------------
+rori = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 80, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+}
+
+-----------------
+--    Talus
+-----------------
+talus = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 80, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
 }
 
 -----------------
 --    Yavin4
 -----------------
-yavin4_weather = {
-	weatherEnabled = 0,
-	startingWeatherID = 5,
-	levelZeroChance = 70,
-	levelOneChance = 14,
-	levelTwoChance = 9,
-	levelThreeChance = 5,
-	levelFourChance = 2,
-	windChangeChance = 50,
-	newWeatherTimeMin = 600,
-	newWeatherTimeMax = 1800,
-	transitionTimeMin = 120,
-	transitionTimeMax = 600,
+yavin4 = {
+	weatherEnabled = 1,
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 70, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
 }
 
 

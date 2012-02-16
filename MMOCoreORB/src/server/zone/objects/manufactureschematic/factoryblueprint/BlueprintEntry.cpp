@@ -124,7 +124,7 @@ void BlueprintEntry::insertFactoryIngredient(SuiListBox* ingredientList) {
 	sendstring << displayedName;
 
 	if(type == "component")
-		sendstring << " (" << serialNumber << ")";
+		sendstring  << serialNumber ;
 
 	sendstring << ":\\>200" << quantity;
 

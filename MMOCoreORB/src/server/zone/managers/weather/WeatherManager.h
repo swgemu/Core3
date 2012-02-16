@@ -65,21 +65,7 @@ class WeatherChangeEvent;
 
 using namespace server::zone::managers::weather::events;
 
-namespace server {
-namespace zone {
-namespace managers {
-namespace weather {
-namespace events {
-
-class SandstormTickEvent;
-
-} // namespace events
-} // namespace weather
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::weather::events;
+#include "server/zone/managers/weather/weathermaps/WeatherMap.h"
 
 #include "engine/core/ManagedService.h"
 
@@ -98,17 +84,23 @@ namespace weather {
 
 class WeatherManager : public ManagedService {
 public:
+	static const int CLEAR = 0;
+
+	static const int LIGHTSTORM = 1;
+
+	static const int STORM = 2;
+
+	static const int HEAVYSTORM = 3;
+
+	static const int EXTREMESTORM = 4;
+
 	WeatherManager(Zone* planet);
 
 	void initialize();
 
-	void generateNewWeather();
+	void createNewWeatherPattern();
 
-	void weatherTransition();
-
-	void sendWeatherPacket(CreatureObject* player);
-
-	void sandstormTick();
+	void sendWeatherTo(CreatureObject* player);
 
 	void enableWeather(CreatureObject* player);
 
@@ -116,23 +108,9 @@ public:
 
 	void changeWeather(CreatureObject* player, int newWeather);
 
-	void weatherInfo(CreatureObject* player);
-
-	void setWeatherID(unsigned int value);
-
-	unsigned int getWeatherID();
-
 	bool isWeatherEnabled();
 
 	void setWeatherEnabled(bool value);
-
-	void setWindX(float value);
-
-	void setWindY(float value);
-
-	float getWindX();
-
-	float getWindY();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -159,107 +137,75 @@ namespace managers {
 namespace weather {
 
 class WeatherManagerImplementation : public ManagedServiceImplementation, public Logger {
+public:
+	static const int CLEAR = 0;
+
+	static const int LIGHTSTORM = 1;
+
+	static const int STORM = 2;
+
+	static const int HEAVYSTORM = 3;
+
+	static const int EXTREMESTORM = 4;
+
+private:
 	ManagedWeakReference<Zone* > zone;
 
 	bool weatherEnabled;
 
-	unsigned int weatherID;
+	byte baseWeather;
 
-	unsigned int targetWeatherID;
+	unsigned int averageWeatherDuration;
 
-	unsigned int levelZeroChance;
+	unsigned int weatherStability;
 
-	unsigned int levelOneChance;
+	bool hasDamagingSandstorms;
 
-	unsigned int levelTwoChance;
+	Reference<WeatherMap* > currentMap;
 
-	unsigned int levelThreeChance;
+	Vector<float> windX;
 
-	unsigned int levelFourChance;
+	Vector<float> windY;
 
-	unsigned int windChangeChance;
+	Vector<float> windMagnitude;
 
-	unsigned int newWeatherTimeMin;
-
-	unsigned int newWeatherTimeMax;
-
-	unsigned int transitionTimeMin;
-
-	unsigned int transitionTimeMax;
-
-	bool sandstormEffectsEnabled;
-
-	unsigned int sandstormWounds;
-
-	unsigned int sandstormWoundsMitigation;
-
-	unsigned int sandstormKnockdownChance;
-
-	unsigned int sandstormKnockdownModifier;
-
-	unsigned int sandstormTickTime;
-
-	float windX;
-
-	float windY;
+	int sandstormDamage;
 
 protected:
 	Reference<WeatherChangeEvent* > weatherChangeEvent;
-
-	Reference<SandstormTickEvent* > sandstormTickEvent;
 
 public:
 	WeatherManagerImplementation(Zone* planet);
 
 	WeatherManagerImplementation(DummyConstructorParameter* param);
 
+	void initialize();
+
 private:
 	bool loadLuaConfig();
 
 	void loadDefaultValues();
 
-	void changeWindDirection();
+public:
+	void createNewWeatherPattern();
 
-	void broadcastWeather(bool sendPacket, bool doSandstormDamage);
+	void sendWeatherTo(CreatureObject* player);
 
+private:
 	void applySandstormDamage(CreatureObject* player);
 
-	void calculateSandstormProtection(CreatureObject* player, Vector<int>& sandstormCoverings);
+	int calculateSandstormProtection(CreatureObject* player);
 
 public:
-	void initialize();
-
-	void generateNewWeather();
-
-	void weatherTransition();
-
-	void sendWeatherPacket(CreatureObject* player);
-
-	void sandstormTick();
-
 	void enableWeather(CreatureObject* player);
 
 	void disableWeather(CreatureObject* player);
 
 	void changeWeather(CreatureObject* player, int newWeather);
 
-	void weatherInfo(CreatureObject* player);
-
-	void setWeatherID(unsigned int value);
-
-	unsigned int getWeatherID();
-
 	bool isWeatherEnabled();
 
 	void setWeatherEnabled(bool value);
-
-	void setWindX(float value);
-
-	void setWindY(float value);
-
-	float getWindX();
-
-	float getWindY();
 
 	WeakReference<WeatherManager*> _this;
 
@@ -306,13 +252,9 @@ public:
 
 	void initialize();
 
-	void generateNewWeather();
+	void createNewWeatherPattern();
 
-	void weatherTransition();
-
-	void sendWeatherPacket(CreatureObject* player);
-
-	void sandstormTick();
+	void sendWeatherTo(CreatureObject* player);
 
 	void enableWeather(CreatureObject* player);
 
@@ -320,23 +262,9 @@ public:
 
 	void changeWeather(CreatureObject* player, int newWeather);
 
-	void weatherInfo(CreatureObject* player);
-
-	void setWeatherID(unsigned int value);
-
-	unsigned int getWeatherID();
-
 	bool isWeatherEnabled();
 
 	void setWeatherEnabled(bool value);
-
-	void setWindX(float value);
-
-	void setWindY(float value);
-
-	float getWindX();
-
-	float getWindY();
 
 };
 

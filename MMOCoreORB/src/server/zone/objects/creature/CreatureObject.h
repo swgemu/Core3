@@ -844,6 +844,14 @@ public:
 
 	CampSiteActiveArea* getCurrentCamp();
 
+	byte getCurrentWeather();
+
+	void setCurrentWeather(byte value);
+
+	byte getCurrentWind();
+
+	void setCurrentWind(byte value);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -1001,6 +1009,10 @@ protected:
 	byte actionWoundHeal;
 
 	byte mindWoundHeal;
+
+	byte currentWeather;
+
+	byte currentWind;
 
 public:
 	static const int HUMAN = 0;
@@ -1579,6 +1591,14 @@ public:
 
 	CampSiteActiveArea* getCurrentCamp();
 
+	byte getCurrentWeather();
+
+	void setCurrentWeather(byte value);
+
+	byte getCurrentWind();
+
+	void setCurrentWind(byte value);
+
 	WeakReference<CreatureObject*> _this;
 
 	operator const CreatureObject*();
@@ -2131,6 +2151,14 @@ public:
 	bool isVendorCreature();
 
 	CampSiteActiveArea* getCurrentCamp();
+
+	byte getCurrentWeather();
+
+	void setCurrentWeather(byte value);
+
+	byte getCurrentWind();
+
+	void setCurrentWind(byte value);
 
 protected:
 	String _param0_sendSystemMessage__String_;

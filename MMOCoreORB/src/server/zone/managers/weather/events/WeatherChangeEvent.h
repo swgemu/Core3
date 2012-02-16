@@ -57,29 +57,18 @@ namespace events {
 class WeatherChangeEvent : public Task {
 
 	ManagedReference<WeatherManager*> weatherManager;
-	bool newWeather;
 
 public:
 	WeatherChangeEvent(WeatherManager* weatherManager) : Task() {
 		this->weatherManager = weatherManager;
-		this->newWeather = true;
 	}
 
 	void run() {
 
 		if (weatherManager != NULL) {
-			if (newWeather)
-				weatherManager->generateNewWeather();
-			else
-				weatherManager->weatherTransition();
+			weatherManager->createNewWeatherPattern();
 		}
 	}
-
-	void setNewWeather(bool newValue) {
-		this->newWeather = newValue;
-	}
-
-
 
 };
 

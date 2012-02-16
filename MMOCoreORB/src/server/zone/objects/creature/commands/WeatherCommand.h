@@ -43,9 +43,6 @@ public:
 		} else if (command == "disable") {
 			weatherManager->disableWeather(player);
 
-		} else if (command == "info") {
-			weatherManager->weatherInfo(player);
-
 		} else if (command == "change") {
 			if (!tokenizer.hasMoreTokens()) {
 				sendSyntax(player);

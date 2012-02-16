@@ -1073,8 +1073,12 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		return true;
 
 	/// Check if camo breaks
-	int camoSkill = 125;
+	int camoSkill = 100;
 	int creatureLevel = getLevel();
+
+	if(isNonPlayerCreatureObject())
+		creatureLevel *= 2;
+
 	int chance = (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100;
 	int roll = System::random(100);
 
@@ -1087,10 +1091,6 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	} else {
 
-		StringIdChatParameter success("skl_use", "sys_scentmask_success");
-		success.setTT(getObjectName()->getDisplayedName());
-
-		target->sendSystemMessage(success);
 		camouflagedObjects.add(target);
 
 		/// Only rangers get scouting exp

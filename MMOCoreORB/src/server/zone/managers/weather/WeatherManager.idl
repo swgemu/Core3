@@ -52,55 +52,55 @@ import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.weather.events.WeatherChangeEvent;
-import server.zone.managers.weather.events.SandstormTickEvent;
+include server.zone.managers.weather.weathermaps.WeatherMap;
 import system.util.Vector;
 
 class WeatherManager extends ManagedService implements Logger {
-	@weakReference
-	private Zone zone;
-
-	private boolean weatherEnabled;
-
-	private unsigned int weatherID;
-	private unsigned int targetWeatherID;
-
-	private unsigned int levelZeroChance;
-	private unsigned int levelOneChance;
-	private unsigned int levelTwoChance;
-	private unsigned int levelThreeChance;
-	private unsigned int levelFourChance;
-
-	private unsigned int windChangeChance;
-
-	private unsigned int newWeatherTimeMin;
-	private unsigned int newWeatherTimeMax;
-
-	private unsigned int transitionTimeMin;
-	private unsigned int transitionTimeMax;
-
-
-	private boolean sandstormEffectsEnabled;
-	private unsigned int sandstormWounds;
-	private unsigned int sandstormWoundsMitigation;
-	private unsigned int sandstormKnockdownChance;
-	private unsigned int sandstormKnockdownModifier;
-	private unsigned int sandstormTickTime;
-
 	
-	private float windX;
-	private float windY; 
+	public static final int CLEAR = 0;
+	public static final int LIGHTSTORM = 1;
+	public static final int STORM = 2;
+	public static final int HEAVYSTORM = 3;
+	public static final int EXTREMESTORM = 4;
+	
+	@weakReference
+	private transient Zone zone;
+
+	private transient boolean weatherEnabled;
+
+	private transient byte baseWeather;
+
+	private transient unsigned int averageWeatherDuration;
+
+	private transient unsigned int weatherStability;
+	
+	private transient boolean hasDamagingSandstorms;
+
+	private transient WeatherMap currentMap;
+	
+	@dereferenced
+	private transient Vector<float> windX;
+	
+	@dereferenced
+	private transient Vector<float> windY;
+	
+	@dereferenced
+	private transient Vector<float> windMagnitude;
+	
+	private transient int sandstormDamage;
 
 	protected transient WeatherChangeEvent weatherChangeEvent;
-
-	protected transient SandstormTickEvent sandstormTickEvent;
-
 
 	public WeatherManager(Zone planet) {
 		zone = planet;
 	}
 
 	
-	//PRIVATE METHODS
+	/**
+	 * Initializes the weather manager events and some of the customization variables.
+	 * Calls loadLuaConfig() to read in the lua values and schedules the weather change event. 
+	 */
+	public native void initialize();
 
 	/**
 	 * Loads the weather customization values from the lua script.
@@ -114,29 +114,18 @@ class WeatherManager extends ManagedService implements Logger {
 	 */
 	private native void loadDefaultValues();
 
-
 	/**
-	 * Changes the direction the wind is blowing. It is called only when the weather ID
-	 * is 3-4 because it causes the clouds to redraw and it looks bad if they are visible.
-	 * (You cannot see the clouds when the weather ID is 3-4)
-	 * @pre Locks the weather manager for the duration of the method.
+	 * Creates a new weather map
 	 */
-	private native void changeWindDirection();
+	public native void createNewWeatherPattern();
 
 
 	/**
-	 * This method is used for iterating through the players on the planet for the purposes of: 
-	 * 1) Notifying all players on the planet when the weather changes.
-	 * 2) Applying sandstorm effects to the players on the planet.
-	 * @pre Locks the weather manager for the duration of the method.
-	 * @pre Locks the chat manager for the duration of the method as we utilize the PlayerMap there.
-	 * @pre Locks each player as we iterate through the Player Map and send them the new weather.
-	 * @post The weather manager, chat manager, and players are unlocked.
-	 * @param sendPacket Determines if we will send a weather packet to players.
-	 * @param doSandstormDamage Determines if we will apply sandstorm damage to exposed players.
+	 * Sends the ServerWeatherMessage packet to the players.
+	 * @pre Locks the player for the duration of the method.
+	 * @param player The player who will receive the new weather information.
 	 */
-	private native void broadcastWeather(boolean sendPacket, boolean doSandstormDamage);
-
+	public native void sendWeatherTo(CreatureObject player);
 
 	/**
 	 * Applies sandstorm effects to exposed players on the planet.
@@ -158,69 +147,11 @@ class WeatherManager extends ManagedService implements Logger {
 	 * @param sandstormCoverings A Vector created in applySandstormDamage() that will store 
 	 * the number of clothing and armour pieces the player is wearing.
 	 */
-	private native void calculateSandstormProtection(CreatureObject player, @dereferenced Vector<int> sandstormCoverings);
+	private native int calculateSandstormProtection(CreatureObject player);
 	
-
-
-
-	//PUBLIC METHODS
-
-	/**
-	 * Initializes the weather manager events and some of the customization variables.
-	 * Calls loadLuaConfig() to read in the lua values and schedules the weather change event. 
-	 */
-	public native void initialize();
-
-
-	/**
-	 * Selects a new target weather that the planet will transition to.
-	 * It then calls weatherTransition() to execute the weather change.
-	 * @pre Locks Weather Manager for the duration of the method.
-	 * @post Weather Manager is unlocked.
-	 */
-	public native void generateNewWeather();
-
-
-	/**
-	 * Handles the gradual change of weather.
-	 * This method modifies the current weather ID and wind direction, updates
-	 * the players, initiates sandstorm effects and schedules the weather change events.
-	 * @pre Locks Weather Manager for the duration of the method.
-	 * @post Weather Manager is unlocked.
-	 */
-	public native void weatherTransition();
-
-
-	/**
-	 * Sends the ServerWeatherMessage packet to the players.
-	 * @pre Locks the player for the duration of the method.
-	 * @param player The player who will receive the new weather information.
-	 */
-	public native void sendWeatherPacket(CreatureObject player);
-
-
-	/**
-	 * This method utilizes broadcastWeather() to apply sandstorm effects to players.
-	 * It then reschedules itself and loops based on sandstormTickTime.
-	 * @pre Locks Weather Manager for the duration of the method.
-	 * @post Weather Manager is unlocked.
-	 */
-	public native void sandstormTick();
-
-
 	public native void enableWeather(CreatureObject player);
 	public native void disableWeather(CreatureObject player);
 	public native void changeWeather(CreatureObject player, int newWeather);
-	public native void weatherInfo(CreatureObject player);
-
-
-	public void setWeatherID(unsigned int value) {
-		weatherID = value;
-	}
-
-	public unsigned int getWeatherID() {
-		return weatherID;
-	}
 
 	public boolean isWeatherEnabled() {
 		return weatherEnabled;
@@ -229,24 +160,5 @@ class WeatherManager extends ManagedService implements Logger {
 	public void setWeatherEnabled(boolean value) {
 		weatherEnabled = value;
 	}
-
-	public void setWindX(float value) {
-		windX = value;
-	}
-
-	public void setWindY(float value) {
-		windY = value;
-	}
-
-	public float getWindX() {
-		return windX;
-	}
-
-	public float getWindY() {
-		return windY;
-	}
-
-
-
 }
 

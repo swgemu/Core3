@@ -9,6 +9,8 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/weather/WeatherManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
