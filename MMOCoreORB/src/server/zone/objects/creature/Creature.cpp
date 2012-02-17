@@ -18,7 +18,7 @@
  *	CreatureStub
  */
 
-enum {RPC_ISCREATURE__ = 6,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -34,6 +34,19 @@ Creature::~Creature() {
 
 
 
+void Creature::initializeTransientMembers() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
+
 bool Creature::isCreature() {
 	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -45,24 +58,6 @@ bool Creature::isCreature() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCreature();
-}
-
-void Creature::notifyPositionUpdate(QuadTreeEntry* entry) {
-	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->notifyPositionUpdate(entry);
-}
-
-void Creature::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
-	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->doAwarenessCheck(start, time, target);
 }
 
 bool Creature::isCamouflaged(CreatureObject* target) {
@@ -518,6 +513,9 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
+		break;
 	case RPC_ISCREATURE__:
 		resp->insertBoolean(isCreature());
 		break;
@@ -574,6 +572,10 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void CreatureAdapter::initializeTransientMembers() {
+	(static_cast<Creature*>(stub))->initializeTransientMembers();
 }
 
 bool CreatureAdapter::isCreature() {

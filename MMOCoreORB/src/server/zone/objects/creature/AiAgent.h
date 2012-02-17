@@ -245,6 +245,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
 
+#include "server/zone/objects/scene/components/AiInterfaceComponent.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
@@ -303,6 +305,10 @@ public:
 	void doMovement();
 
 	bool isCamouflaged(CreatureObject* target);
+
+	bool isScentMasked(CreatureObject* target);
+
+	bool isConcealed(CreatureObject* target);
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
@@ -387,6 +393,8 @@ public:
 	void setFollowObject(SceneObject* obj);
 
 	void setTargetObject(SceneObject* obj);
+
+	SceneObject* getFollowObject();
 
 	void selectWeapon();
 
@@ -578,15 +586,15 @@ public:
 
 	virtual bool isCamouflaged(CreatureObject* target);
 
-protected:
 	bool isScentMasked(CreatureObject* target);
 
 	bool isConcealed(CreatureObject* target);
 
+protected:
 	bool findNextPosition(float maxDistance, WorldCoordinates* nextPosition);
 
 public:
-	virtual void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
+	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
@@ -669,6 +677,8 @@ public:
 	void setFollowObject(SceneObject* obj);
 
 	void setTargetObject(SceneObject* obj);
+
+	SceneObject* getFollowObject();
 
 	void selectWeapon();
 
@@ -805,6 +815,10 @@ public:
 
 	bool isCamouflaged(CreatureObject* target);
 
+	bool isScentMasked(CreatureObject* target);
+
+	bool isConcealed(CreatureObject* target);
+
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void checkNewAngle();
@@ -872,6 +886,8 @@ public:
 	void setFollowObject(SceneObject* obj);
 
 	void setTargetObject(SceneObject* obj);
+
+	SceneObject* getFollowObject();
 
 	void selectWeapon();
 

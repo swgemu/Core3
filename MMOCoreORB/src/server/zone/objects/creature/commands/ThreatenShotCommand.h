@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-class ThreatenShotCommand : public QueueCommand {
+class ThreatenShotCommand : public CombatQueueCommand {
 public:
 
 	ThreatenShotCommand(const String& name, ZoneProcessServer* server)

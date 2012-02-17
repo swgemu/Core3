@@ -91,7 +91,7 @@ namespace objects {
 namespace intangible {
 
 class VehicleControlObserverImplementation : public ObserverImplementation {
-	ManagedReference<VehicleControlDevice* > vehicleControlDevice;
+	ManagedWeakReference<VehicleControlDevice* > vehicleControlDevice;
 
 public:
 	VehicleControlObserverImplementation(VehicleControlDevice* device);

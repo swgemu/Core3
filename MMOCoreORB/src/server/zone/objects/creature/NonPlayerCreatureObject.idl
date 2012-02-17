@@ -58,15 +58,16 @@ class NonPlayerCreatureObject extends AiAgent {
 		Logger.setGlobalLogging(true);
 	}
 	
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+	
 	public boolean isNonPlayerCreatureObject() {
 		return true;
 	}
-	
-	@local
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
-	
-	@local
-	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
 	
 	public boolean isCamouflaged(CreatureObject target) {
 		return isConcealed(target);

@@ -12,7 +12,7 @@
  *	NonPlayerCreatureObjectStub
  */
 
-enum {RPC_ISNONPLAYERCREATUREOBJECT__ = 6,RPC_ISCAMOUFLAGED__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISNONPLAYERCREATUREOBJECT__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_};
 
 NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorParameter::instance()) {
 	NonPlayerCreatureObjectImplementation* _implementation = new NonPlayerCreatureObjectImplementation();
@@ -28,6 +28,19 @@ NonPlayerCreatureObject::~NonPlayerCreatureObject() {
 
 
 
+void NonPlayerCreatureObject::initializeTransientMembers() {
+	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
+
 bool NonPlayerCreatureObject::isNonPlayerCreatureObject() {
 	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -39,24 +52,6 @@ bool NonPlayerCreatureObject::isNonPlayerCreatureObject() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isNonPlayerCreatureObject();
-}
-
-void NonPlayerCreatureObject::notifyPositionUpdate(QuadTreeEntry* entry) {
-	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->notifyPositionUpdate(entry);
-}
-
-void NonPlayerCreatureObject::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
-	NonPlayerCreatureObjectImplementation* _implementation = static_cast<NonPlayerCreatureObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->doAwarenessCheck(start, time, target);
 }
 
 bool NonPlayerCreatureObject::isCamouflaged(CreatureObject* target) {
@@ -228,6 +223,9 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
+		break;
 	case RPC_ISNONPLAYERCREATUREOBJECT__:
 		resp->insertBoolean(isNonPlayerCreatureObject());
 		break;
@@ -239,6 +237,10 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	}
 
 	return resp;
+}
+
+void NonPlayerCreatureObjectAdapter::initializeTransientMembers() {
+	(static_cast<NonPlayerCreatureObject*>(stub))->initializeTransientMembers();
 }
 
 bool NonPlayerCreatureObjectAdapter::isNonPlayerCreatureObject() {

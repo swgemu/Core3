@@ -54,11 +54,9 @@ class NonPlayerCreatureObject : public AiAgent {
 public:
 	NonPlayerCreatureObject();
 
+	void initializeTransientMembers();
+
 	bool isNonPlayerCreatureObject();
-
-	void notifyPositionUpdate(QuadTreeEntry* entry);
-
-	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	bool isCamouflaged(CreatureObject* target);
 
@@ -93,11 +91,9 @@ public:
 
 	NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	bool isNonPlayerCreatureObject();
-
-	void notifyPositionUpdate(QuadTreeEntry* entry);
-
-	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	bool isCamouflaged(CreatureObject* target);
 
@@ -143,6 +139,8 @@ public:
 	NonPlayerCreatureObjectAdapter(NonPlayerCreatureObject* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	bool isNonPlayerCreatureObject();
 

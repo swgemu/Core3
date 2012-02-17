@@ -98,11 +98,9 @@ class Creature : public AiAgent {
 public:
 	Creature();
 
+	void initializeTransientMembers();
+
 	bool isCreature();
-
-	void notifyPositionUpdate(QuadTreeEntry* entry);
-
-	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	bool isCamouflaged(CreatureObject* target);
 
@@ -174,11 +172,9 @@ public:
 
 	CreatureImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	bool isCreature();
-
-	void notifyPositionUpdate(QuadTreeEntry* entry);
-
-	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	bool isCamouflaged(CreatureObject* target);
 
@@ -256,6 +252,8 @@ public:
 	CreatureAdapter(Creature* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	bool isCreature();
 

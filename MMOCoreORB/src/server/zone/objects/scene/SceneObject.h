@@ -207,6 +207,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 
+#include "server/zone/objects/scene/components/AiInterfaceComponent.h"
+
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
 #include "engine/log/Logger.h"
@@ -750,6 +752,8 @@ public:
 
 	void setTransformForCollisionMatrix(Matrix4* mat);
 
+	Vector<AiInterfaceComponent*>* getAiInterfaceComponents();
+
 	void initializeChildObject(SceneObject* controllerObject);
 
 	bool isInWater();
@@ -798,6 +802,8 @@ protected:
 	Reference<AttributeListComponent* > attributeListComponent;
 
 	Reference<ContainerComponent* > containerComponent;
+
+	Vector<AiInterfaceComponent*> aiInterfaceComponents;
 
 	Reference<Matrix4* > transformForCollisionMatrix;
 
@@ -1345,6 +1351,8 @@ public:
 	Matrix4* getTransformForCollisionMatrix();
 
 	void setTransformForCollisionMatrix(Matrix4* mat);
+
+	Vector<AiInterfaceComponent*>* getAiInterfaceComponents();
 
 	virtual void initializeChildObject(SceneObject* controllerObject);
 

@@ -3234,6 +3234,15 @@ void SceneObject::setTransformForCollisionMatrix(Matrix4* mat) {
 		_implementation->setTransformForCollisionMatrix(mat);
 }
 
+Vector<AiInterfaceComponent*>* SceneObject::getAiInterfaceComponents() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getAiInterfaceComponents();
+}
+
 void SceneObject::initializeChildObject(SceneObject* controllerObject) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -4578,6 +4587,11 @@ Matrix4* SceneObjectImplementation::getTransformForCollisionMatrix() {
 void SceneObjectImplementation::setTransformForCollisionMatrix(Matrix4* mat) {
 	// server/zone/objects/scene/SceneObject.idl():  		transformForCollisionMatrix = mat;
 	transformForCollisionMatrix = mat;
+}
+
+Vector<AiInterfaceComponent*>* SceneObjectImplementation::getAiInterfaceComponents() {
+	// server/zone/objects/scene/SceneObject.idl():  		return aiInterfaceComponents;
+	return (&aiInterfaceComponents);
 }
 
 /*

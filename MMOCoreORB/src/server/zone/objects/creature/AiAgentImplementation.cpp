@@ -47,6 +47,8 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
+#include "server/zone/managers/components/ComponentManager.h"
+#include "server/zone/objects/creature/components/AiDefaultComponent.h"
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -183,7 +185,15 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
+	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiDefaultComponent*>("AiDefaultComponent"));
 	npcTemplate = NULL;
+}
+
+void AiAgentImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
+	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
+		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
+		interface->doAwarenessCheck(_this, start, time, target);
+	}
 }
 
 void AiAgentImplementation::doRecovery() {

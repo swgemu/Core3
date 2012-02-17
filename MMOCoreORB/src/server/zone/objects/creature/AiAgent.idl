@@ -76,6 +76,7 @@ import server.zone.objects.player.PlayerObject;
 include server.zone.objects.player.FactionStatus;
 include system.thread.Mutex;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
+include server.zone.objects.scene.components.AiInterfaceComponent;
 
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
@@ -197,16 +198,14 @@ class AiAgent extends CreatureObject {
 		return false;
 	}
 	
-	protected native boolean isScentMasked(CreatureObject target);
+	public native boolean isScentMasked(CreatureObject target);
 
-	protected native boolean isConcealed(CreatureObject target);
+	public native boolean isConcealed(CreatureObject target);
 	
 	protected native boolean findNextPosition(float maxDistance, WorldCoordinates nextPosition);
 	
 	@local
-	public abstract void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target) {
-		
-	}
+	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
 	
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
@@ -478,6 +477,10 @@ class AiAgent extends CreatureObject {
 				followObject = obj;
 			}
 		}
+	}
+	
+	public SceneObject getFollowObject() {
+		return followObject;
 	}
 	
 	public native void selectWeapon();

@@ -38,7 +38,7 @@
  *	AiAgentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOMOVEMENT__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_SETLOOTOWNER__CREATUREOBJECT_,RPC_GETLOOTOWNER__,RPC_HASLOOT__,RPC_SETSHOWNEXTPOSITION__BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOMOVEMENT__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_SETLOOTOWNER__CREATUREOBJECT_,RPC_GETLOOTOWNER__,RPC_HASLOOT__,RPC_SETSHOWNEXTPOSITION__BOOL_};
 
 AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
 	AiAgentImplementation* _implementation = new AiAgentImplementation();
@@ -171,6 +171,34 @@ bool AiAgent::isCamouflaged(CreatureObject* target) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCamouflaged(target);
+}
+
+bool AiAgent::isScentMasked(CreatureObject* target) {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISSCENTMASKED__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isScentMasked(target);
+}
+
+bool AiAgent::isConcealed(CreatureObject* target) {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCONCEALED__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isConcealed(target);
 }
 
 void AiAgent::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
@@ -729,6 +757,19 @@ void AiAgent::setTargetObject(SceneObject* obj) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setTargetObject(obj);
+}
+
+SceneObject* AiAgent::getFollowObject() {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFOLLOWOBJECT__);
+
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getFollowObject();
 }
 
 void AiAgent::selectWeapon() {
@@ -1585,9 +1626,6 @@ bool AiAgentImplementation::isCamouflaged(CreatureObject* target) {
 	return false;
 }
 
-void AiAgentImplementation::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
-}
-
 void AiAgentImplementation::clearPatrolPoints() {
 	// server/zone/objects/creature/AiAgent.idl():  		}
 {
@@ -1740,6 +1778,11 @@ void AiAgentImplementation::setTargetObject(SceneObject* obj) {
 	followObject = obj;
 }
 }
+}
+
+SceneObject* AiAgentImplementation::getFollowObject() {
+	// server/zone/objects/creature/AiAgent.idl():  		return followObject;
+	return followObject;
 }
 
 bool AiAgentImplementation::isRetreating() {
@@ -2019,6 +2062,12 @@ Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
 		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
+	case RPC_ISSCENTMASKED__CREATUREOBJECT_:
+		resp->insertBoolean(isScentMasked(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
+	case RPC_ISCONCEALED__CREATUREOBJECT_:
+		resp->insertBoolean(isConcealed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
@@ -2120,6 +2169,9 @@ Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETTARGETOBJECT__SCENEOBJECT_:
 		setTargetObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_GETFOLLOWOBJECT__:
+		resp->insertLong(getFollowObject()->_getObjectID());
 		break;
 	case RPC_SELECTWEAPON__:
 		selectWeapon();
@@ -2267,6 +2319,14 @@ bool AiAgentAdapter::isCamouflaged(CreatureObject* target) {
 	return (static_cast<AiAgent*>(stub))->isCamouflaged(target);
 }
 
+bool AiAgentAdapter::isScentMasked(CreatureObject* target) {
+	return (static_cast<AiAgent*>(stub))->isScentMasked(target);
+}
+
+bool AiAgentAdapter::isConcealed(CreatureObject* target) {
+	return (static_cast<AiAgent*>(stub))->isConcealed(target);
+}
+
 int AiAgentAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<AiAgent*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
@@ -2401,6 +2461,10 @@ void AiAgentAdapter::setFollowObject(SceneObject* obj) {
 
 void AiAgentAdapter::setTargetObject(SceneObject* obj) {
 	(static_cast<AiAgent*>(stub))->setTargetObject(obj);
+}
+
+SceneObject* AiAgentAdapter::getFollowObject() {
+	return (static_cast<AiAgent*>(stub))->getFollowObject();
 }
 
 void AiAgentAdapter::selectWeapon() {

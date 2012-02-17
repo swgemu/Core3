@@ -20,130 +20,14 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/components/ComponentManager.h"
+#include "server/zone/objects/creature/components/AiCreatureComponent.h"
 
 //#define DEBUG
 
-void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-
-	AiAgentImplementation::notifyPositionUpdate(entry);
-
-	if(getPvpStatusBitmask() == CreatureFlag::NONE || isDead())
-		return;
-
-	int radius = 32;
-
-	if(getParent() != NULL && getParent()->isCellObject())
-		radius = 12;
-
-	int awarenessRadius = getFerocity() + radius;
-
-	if(!entry->isInRange(_this, awarenessRadius))
-		return;
-
-#ifdef DEBUG
-	info("Passed range check", true);
-#endif
-
-	SceneObject* scno = cast<SceneObject*>( entry);
-
-	// don't worry about this if no one's around, and do it for any creature
-	if (scno == _this || numberOfPlayersInRange <= 0  || !scno->isCreatureObject() || isRetreating() || isFleeing() || isInCombat())
-		return;
-
-	if (followObject == NULL || followObject == scno) {
-		CreatureObject* creo = cast<CreatureObject*>( scno);
-
-		if(creo->getPvpStatusBitmask() == CreatureFlag::NONE)
-			return;
-
-		/// If not in combat, ignore creatures in different cells
-		if(!isInCombat() && getParent() != NULL) {
-			if(getParent() != creo->getParent())
-				return;
-		}
-
-		// TODO: determine if creature can be seen by this (mask scent, et. al.)
-
-		// determine if creature can be a threat
-		if (creo->isAiAgent()) {
-			AiAgent* aio = cast<AiAgent*>(creo);
-			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
-				return;
-		} else if (this->isAttackableBy(creo) && isInRange(scno, 15) && !creo->isDead()) { //no aigent<->aigent combat for now
-			activateAwarenessEvent(creo);
-		}
-	}
-}
-
-void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
-
-#ifdef DEBUG
-	info("Starting doAwarenessCheck", true);
-#endif
-
-	if (isDead() || getZone() == NULL || time == 0 || target->isDead())
-		return;
-
-	if(!isAggressiveTo(target))
-		return;
-
-#ifdef DEBUG
-	info("Passed aggressive check", true);
-#endif
-
-	if(!CollisionManager::checkLineOfSight(target, _this))
-		return;
-
-#ifdef DEBUG
-	info("Passed LOS check", true);
-#endif
-
-	if(isCamouflaged(target))
-		return;
-
-	// calculate average speed
-	Vector3 deltaV(target->getPositionX() - start.getPositionX(), target->getPositionY() - start.getPositionY(), 0);
-	float avgSpeed = deltaV.squaredLength() / (time) * 1000000;
-
-	// set frightened or threatened
-	// TODO: weight this by ferocity/level difference
-	if (isStalker() && isAggressiveTo(target)) {
-		if (followObject == NULL)
-			setStalkObject(target);
-		else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed()))
-			addDefender(target);
-	} else if (isAggressiveTo(target))
-		addDefender(target);
-	else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed())) {
-		setOblivious();
-	} else if (followObject == NULL) {
-		setWatchObject(target);
-		showFlyText("npc_reaction/flytext", "alert", 0xFF, 0, 0);
-	} else if (followObject->isCreatureObject() && target == followObject) {
-		ManagedReference<CreatureObject*> creo = dynamic_cast<CreatureObject*>(followObject.get());
-		// determine if frightened or threatened
-		if (creo->isAiAgent()) {
-			AiAgent* aio = cast<AiAgent*>(creo.get());
-			if (getFerocity() > aio->getFerocity() && getLevel() >= aio->getLevel())
-				addDefender(aio);
-			else if (getLevel() < aio->getLevel()) {
-				if (!tryRetreat())
-					runAway(target);
-			} else
-				setOblivious();
-		} else if (creo->isPlayerCreature()) {
-			CreatureObject* play = cast<CreatureObject*>(creo.get());
-			// TODO: tweak this formula based on feedback
-			if ((getFerocity() * getLevel() / 4) < play->getLevel()) {
-				if (!tryRetreat())
-					runAway(target);
-			} else
-				addDefender(play);
-		}
-	}
-
-	activateRecovery();
-	activateMovementEvent();
+void CreatureImplementation::initializeTransientMembers() {
+	AiAgentImplementation::initializeTransientMembers();
+	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiCreatureComponent*>("AiCreatureComponent"));
 }
 
 void CreatureImplementation::runAway(CreatureObject* target) {

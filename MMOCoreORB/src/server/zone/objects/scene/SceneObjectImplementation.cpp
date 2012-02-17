@@ -87,6 +87,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "server/zone/objects/scene/components/AiDummyComponent.h"
 #include "PositionUpdateTask.h"
 
 #include "server/zone/objects/tangible/sign/SignObject.h"
@@ -113,6 +114,9 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 		objectMenuComponent = (ObjectMenuComponent*)templateObject->getObjectMenuComponent();
 	}
+
+	Reference<AiInterfaceComponent*> dummy = ComponentManager::instance()->getComponent<AiDummyComponent*>("AiDummyComponent");
+	aiInterfaceComponents.add(dummy);
 
 	movementCounter = 0;
 
@@ -929,16 +933,10 @@ void SceneObjectImplementation::notifyCloseContainer(CreatureObject* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	if (_this == NULL || entry == NULL || _this == entry)
-		return;
-
-//#ifdef WITH_STM
-	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
-//#else
-
-
-	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
-//#endif
+	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
+		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
+		interface->notifyPositionUpdate(_this, entry);
+	}
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {

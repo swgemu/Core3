@@ -151,7 +151,7 @@ bool VehicleControlObserverImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 
 	if (_name == "vehicleControlDevice") {
-		TypeInfo<ManagedReference<VehicleControlDevice* > >::parseFromBinaryStream(&vehicleControlDevice, stream);
+		TypeInfo<ManagedWeakReference<VehicleControlDevice* > >::parseFromBinaryStream(&vehicleControlDevice, stream);
 		return true;
 	}
 
@@ -174,7 +174,7 @@ int VehicleControlObserverImplementation::writeObjectMembers(ObjectOutputStream*
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<VehicleControlDevice* > >::toBinaryStream(&vehicleControlDevice, stream);
+	TypeInfo<ManagedWeakReference<VehicleControlDevice* > >::toBinaryStream(&vehicleControlDevice, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -189,15 +189,18 @@ VehicleControlObserverImplementation::VehicleControlObserverImplementation(Vehic
 }
 
 int VehicleControlObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/intangible/VehicleControlObserver.idl():  		CreatureObject 
+	// server/zone/objects/intangible/VehicleControlObserver.idl():  		if 
 	if (eventType != ObserverEventType::STARTCOMBAT){
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  			return 1;
 	return 1;
 }
-	// server/zone/objects/intangible/VehicleControlObserver.idl():  		CreatureObject creature = (CreatureObject) observable;
+	// server/zone/objects/intangible/VehicleControlObserver.idl():  		return 
+	if (vehicleControlDevice != NULL){
+	// server/zone/objects/intangible/VehicleControlObserver.idl():  			CreatureObject creature = (CreatureObject) observable;
 	CreatureObject* creature = (CreatureObject*) observable;
-	// server/zone/objects/intangible/VehicleControlObserver.idl():  		vehicleControlDevice.cancelSpawnObject(creature);
+	// server/zone/objects/intangible/VehicleControlObserver.idl():  			vehicleControlDevice.cancelSpawnObject(creature);
 	vehicleControlDevice->cancelSpawnObject(creature);
+}
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  		return 1;
 	return 1;
 }

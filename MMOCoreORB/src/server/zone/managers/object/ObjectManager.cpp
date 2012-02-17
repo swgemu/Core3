@@ -816,9 +816,10 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 		return NULL;
 	}
 
+	object->initializeTransientMembers();
+
 	if (persistenceLevel > 0) {
 		object->setPersistent(persistenceLevel);
-		object->initializeTransientMembers();
 
 		updatePersistentObject(object);
 

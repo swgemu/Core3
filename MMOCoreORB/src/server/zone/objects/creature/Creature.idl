@@ -64,16 +64,17 @@ class Creature extends AiAgent {
 		Logger.setGlobalLogging(true);
 		alreadyHarvested = null;
 	}
+	
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
 
 	public boolean isCreature() {
 		return true;
 	}
-	
-	@local
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
-	
-	@local
-	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
 	
 	public boolean isCamouflaged(CreatureObject target) {
 		return isScentMasked(target) || isConcealed(target);
