@@ -82,7 +82,7 @@ void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<TangibleObject>(6);
-	objectFactory.registerObject<TangibleObject>(SceneObjectType::GENERALTANGIBLEOBJECT);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::LAIR);
 	objectFactory.registerObject<StaticObject>(SceneObjectType::FLORA);
 
 	objectFactory.registerObject<LairSpawnArea>(SceneObjectType::LAIRSPAWNAREA);
@@ -153,7 +153,7 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<WaypointObject>(SceneObjectType::WAYPOINT);
 
-	objectFactory.registerObject<WearableObject>(SceneObjectType::WEARABLE);
+	objectFactory.registerObject<WearableObject>(SceneObjectType::JEWELRY);
 	objectFactory.registerObject<WearableObject>(SceneObjectType::RING);
 	objectFactory.registerObject<WearableObject>(SceneObjectType::BRACELET);
 	objectFactory.registerObject<WearableObject>(SceneObjectType::NECKLACE);
@@ -170,7 +170,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::TRAVELBUILDING);
 	objectFactory.registerObject<RecreationBuildingObject>(SceneObjectType::RECREATIONBUILDING);
 	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::STARPORTBUILDING);
-	objectFactory.registerObject<BuildingObject>(SceneObjectType::FACTIONPERKBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::FACTIONBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::HOTELBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::THEATERBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::COMBATBUILDING);
@@ -260,7 +260,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::WOOKIEGARB);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::MISCCLOTHING);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::SKIRT);
-	objectFactory.registerObject<ClothingObject>(SceneObjectType::ITHOGARB);
+	//objectFactory.registerObject<ClothingObject>(SceneObjectType::ITHOGARB);
 	objectFactory.registerObject<FishingPoleObject>(SceneObjectType::FISHINGPOLE);
 	objectFactory.registerObject<FishingBaitObject>(SceneObjectType::FISHINGBAIT);
 	objectFactory.registerObject<FishObject>(SceneObjectType::FISH);

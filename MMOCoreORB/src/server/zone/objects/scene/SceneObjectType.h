@@ -10,14 +10,20 @@
 
 class SceneObjectType {
 public:
-	const static int CELLOBJECT = 11; //This is marked as 0x00 in the client types xls
-	const static int PLAYEROBJECT = 12;
+
+	const static int OBJECT = 0; // Needs Research
+	const static int CORPSE = 1; // Needs Research
 	const static int GROUPOBJECT = 0x02;
 	const static int GUILDOBJECT = 0x03;
+	const static int LAIR = 0x04;
+	const static int STATICOBJECT = 0x05;
+	const static int LOADBEACON = 8; // Needs Research
 
-	const static int GENERALTANGIBLEOBJECT = 4;
-	const static int STATICOBJECT = 5;
+	/// Not in client ********
+	const static int CELLOBJECT = 11; //This is marked as 0x00 in the client types xls
+	const static int PLAYEROBJECT = 12;
 	const static int VENDORTERMINAL = 7;
+	/// End not in client *******
 
 	const static int ARMOR = 0x100;
 	const static int BODYARMOR = 0x101;
@@ -31,7 +37,10 @@ public:
 
 	const static int BUILDING = 0x200;
 	const static int MUNICIPALBUILDING = 0x201;
-	const static int FACTIONPERKBUILDING = 0x203;
+	const static int PLAYERBUILDING = 0x202;
+	const static int FACTIONBUILDING = 0x203;
+
+	/// Not in client *********
 	const static int TUTORIALBUILDING = 0x204;
 	const static int HOSPITALBUILDING = 0x205;
 	const static int RECREATIONBUILDING = 0x206;
@@ -47,24 +56,29 @@ public:
 	const static int GARAGEBUILDING = 0x210;
 	const static int CITYHALLBUILDING = 0x211;
 	const static int SALONBUILDING = 0x212;
+	/// End not in client *************
 
-	const static int CREATURE = 0x400;
-	const static int NPCCREATURE = 0x401;
-	const static int DROIDCREATURE = 0x402;
-	const static int PROBOTCREATURE = 0x403;
-	const static int PLAYERCREATURE = 0x409;
+	const static int CREATURE = 0x400;  // ENTITY
+	const static int NPCCREATURE = 0x401; // CHARACTER
+	const static int DROIDCREATURE = 0x402; // DROID
+	const static int PROBOTCREATURE = 0x403; // PROBEDROID
+	//const static int CREATURE = 0x404;
+
+	/// Not in client **********
+	const static int PLAYERCREATURE = 0x409; // CREATURE
 	const static int TRAINERCREATURE = 0x40A;
 	const static int JUNKDEALERCREATURE = 0x40C;
 	const static int INFORMANTCREATURE = 0x40D;
 	const static int VENDORCREATURE = 0x40E;
+	/// End not in client ************
 
-	const static int INTANGIBLE = 0x800;
+	const static int INTANGIBLE = 0x800;  // DATA
 	const static int DRAFTSCHEMATIC = 0x801;
 	const static int MANUFACTURINGSCHEMATIC = 0x802;
 	const static int MISSIONOBJECT = 0x803;
 	const static int TOKEN = 0x804;
 	const static int WAYPOINT = 0x805;
-	const static int DATA2 = 0x806;
+	const static int DATA2 = 0x806;  // DATA
 	const static int PETCONTROLDEVICE = 0x807;
 	const static int VEHICLECONTROLDEVICE = 0x808;
 	const static int SHIPCONTROLDEVICE = 0x80A;
@@ -76,20 +90,27 @@ public:
 	const static int HARVESTER = 0x1003;
 	const static int TURRET = 0x1004;
 	const static int MINEFIELD = 0x1005;
+
+	/// Not in client **********
 	const static int GARAGEINSTALLATION = 0x1006;
 	const static int SHUTTLEINSTALLATION = 0x1007;
+	/// End **************
 
-	const static int TANGIBLE = 0x2000;
+	const static int TANGIBLE = 0x2000;  // MISC
 	const static int AMMUNITION = 0x2001;
 	const static int CHEMICAL = 0x2002;
+	//const static int ? = 0x2003;
+	//const static int ? = 0x2004;
 	const static int CONTAINER = 0x2005;
 	const static int CRAFTINGSTATION = 0x2006;
+	//const static int ? = 0x2007;
 	const static int ELECTRONICS = 0x2008;
 	const static int FLORA = 0x2009;
 	const static int FOOD = 0x200A;
 	const static int FURNITURE = 0x200B;
 	const static int INSTRUMENT = 0x200C;
 	const static int PHARMACEUTICAL = 0x200D;
+	//const static int ? = 0x200E;
 	const static int SIGN = 0x200F;
 	const static int COUNTER = 0x2010;
 	const static int FACTORYCRATE = 0x2011;
@@ -116,11 +137,11 @@ public:
 	const static int TURRETACCESSLADDER = 0x2026;
 	const static int CONTAINER2 = 0x2027;
 
-	/// THESE ARE MADE UP
+	/// Not in client *****************
 	const static int CAMOKIT = 0x2028;
 	const static int LOOTKIT = 0x2029;
 	const static int FISH = 0x202A;
-	const static int LAIR = 0x202B;
+	//const static int LAIR = 0x202B;
 	const static int STIMPACK = 0x202C;
 	const static int RANGEDSTIMPACK = 0x202D;
 	const static int ENHANCEPACK = 0x202E;
@@ -131,27 +152,33 @@ public:
 	const static int REVIVEPACK = 0x2033;
 	const static int STATICLOOTCONTAINER = 0x2034;
 	const static int PLAYERLOOTCRATE = 0x2035;
-	/// End of made up
+	/// End Not in client **************
 
 	const static int TERMINAL = 0x4000;
 	const static int BANK = 0x4001;
-	const static int BAZAAR = 0x4002;
+	const static int BAZAAR = 0x4002; // COMMODITIESTERMINAL
 	const static int CLONING = 0x4003;
 	const static int INSURANCE = 0x4004;
+	const static int MANAGEMENTTERMINAL = 0x4005;
 	const static int MISSIONTERMINAL = 0x4006;
+	const static int PERMISSIONSTERMINAL = 0x4007;
 	const static int PLAYERTERMINALSTRUCTURE = 0x4008;
 	const static int SHIPPINGTERMINAL = 0x4009;
+	//const static int TRAVELTERMINAL = 0x400A; -- This is in the client, (See 0x4012)
 	const static int SPACETERMINAL = 0x400B;
+
+	/// Not in client **************
 	const static int INTERACTIVETERMINAL = 0x400C;
 	const static int NEWBIETUTORIALTERMINAL = 0x400F;
 	const static int CHARACTERBUILDERTERMINAL = 0x4010;
 	const static int TICKETCOLLECTOR = 0x4011;
-	const static int TRAVELTERMINAL = 0x4012;
+	const static int TRAVELTERMINAL = 0x4012; // not in the client (See 0x400A)
 	const static int ELEVATORTERMINAL = 0x4013;
 	const static int GUILDTERMINAL = 0x4014;
 	const static int CITYTERMINAL = 0x4015;
 	const static int CITYVOTETERMINAL = 0x4016;
 	const static int GAMBLINGTERMINAL = 0x4017;
+	/// end not in client ***************
 
 	const static int TOOL = 0x8000;
 	const static int CRAFTINGTOOL = 0x8001;
@@ -159,12 +186,15 @@ public:
 	const static int REPAIRTOOL = 0x8003;
 	const static int CAMPKIT = 0x8004;
 	const static int SHIPCOMPONENTREPAIRITEM = 0x8005;
+
+	// Not in client ******************
 	const static int SLICINGTOOL = 0x8006;
 	const static int MOLECULARCLAMP = 0x8007;
 	const static int FLOWANALYZER = 0x8008;
 	const static int LASERKNIFE = 0x8009;
 	const static int WEAPONUPGRADEKIT = 0x800A;
 	const static int ARMORUPGRADEKIT = 0x800B;
+	// End Not in client *****************
 
 	const static int VEHICLE = 0x10000;
 	const static int HOVERVEHICLE = 0x10001;
@@ -182,8 +212,11 @@ public:
 	const static int PISTOL = 0x2000A;
 	const static int CARBINE = 0x2000B;
 	const static int RIFLE = 0x2000C;
+
+	// Not in client **************
 	const static int GRENADE = 0x2000E;
 	const static int LIGHTNINGRIFLE = 0x2000F;
+	// End Not in client *************
 
 	const static int COMPONENT = 0x40000;
 	const static int ARMORCOMPONENT = 0x40001;
@@ -208,7 +241,16 @@ public:
 	const static int MINEPOWERUP = 0x80005;
 	const static int SPECIALHEAVYWEAPONPOWERUP = 0x80006;
 
-	const static int WEARABLE = 0x200000;
+	const static int ARMORPOWERUP = 0x100000;
+	const static int BODYARMORPOWERUP = 0x100001;
+	const static int HEADARMORPOWERUP = 0x100002;
+	const static int MISCARMORPOWERUP = 0x100003;
+	const static int LEGARMORPOWERUP = 0x100004;
+	const static int ARMARMORPOWERUP = 0x100005;
+	const static int HANDARMORPOWERUP = 0x100006;
+	const static int FOOTARMORPOWERUP = 0x100007;
+
+	const static int JEWELRY = 0x200000;
 	const static int RING = 0x200001;
 	const static int BRACELET = 0x200002;
 	const static int NECKLACE = 0x200003;
@@ -226,9 +268,11 @@ public:
 	const static int ORGANICFOOD = 0x400009;
 	const static int ORGANICHIDE = 0x40000A;
 	const static int ORGANICSTRUCTURAL = 0x40000B;
-	const static int QUESTREOURCE = 0x40000C;
+	const static int QUESTREOURCE = 0x40000C; // Resource Container?
 
+	// Not in client ************
 	const static int RESOURCESPAWN = 0x410000;
+	// **************************
 
 	const static int DEED = 0x800000;
 	const static int BUILDINGDEED = 0x800001;
@@ -236,7 +280,10 @@ public:
 	const static int PETDEED = 0x800003;
 	const static int DROIDDEED = 0x800004;
 	const static int VEHICLEDEED = 0x800005;
+
+	// Not in client **********
 	const static int RESOURCEDEED = 0x800006;
+	// ************************
 
 	const static int CLOTHING = 0x1000000;
 	const static int BANDOLIER = 0x1000001;
@@ -257,9 +304,12 @@ public:
 	const static int WOOKIEGARB = 0x1000010;
 	const static int MISCCLOTHING = 0x1000011;
 	const static int SKIRT = 0x1000012;
-	const static int ITHOGARB = 0x1000013;
+
+	//Seems unused in server and not in client
+	//const static int ITHOGARB = 0x1000013;
 
 
+	// Not in client ************
 	const static int BADGEAREA = 0x2000000;
 	const static int REGIONAREA = 0x2000001;
 	const static int MISSIONSPAWNAREA = 0x2000002;
@@ -281,6 +331,7 @@ public:
 	const static int SHIPCAPITAL = 0x20000002;
 	const static int SHIPSTATION = 0x20000003;
 	const static int SHIPTRANSPORT = 0x20000004;
+	//*******************************
 
 	const static int SHIPATTACHMENT = 0x40000000;
 	const static int SHIPREACTOR = 0x40000001;
@@ -291,6 +342,9 @@ public:
 	const static int SHIPWEAPONCAPACITOR = 0x40000006;
 	const static int SHIPBOOSTER = 0x40000007;
 	const static int SHIPDRIODINTERFACE = 0x40000008;
+	const static int HANGER = 0x40000009;
+	const static int TARGETINGSTATION = 0x4000000A;
+	const static int BRIDGE = 0x4000000B;
 	const static int SHIPCHASSIS = 0x4000000C;
 	const static int SHIPMISSILE = 0x4000000D;
 	const static int SHIPCOUNTERMEASURE = 0x4000000E;

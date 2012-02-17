@@ -132,7 +132,7 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 
 	//object->get
 
-	int inRangeTanos = object->inRangeObjects(SceneObjectType::GENERALTANGIBLEOBJECT, 128.f);
+	int inRangeTanos = object->inRangeObjects(SceneObjectType::LAIR, 128.f);
 
 	if (inRangeTanos > 4)
 		return;
