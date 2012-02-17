@@ -98,7 +98,7 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	void addRegion(float x, float y, float radius);
+	Region* addRegion(float x, float y, float radius);
 
 	void addMilitiaMember(unsigned long long objectid);
 
@@ -238,7 +238,7 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	void addRegion(float x, float y, float radius);
+	Region* addRegion(float x, float y, float radius);
 
 	void addMilitiaMember(unsigned long long objectid);
 
@@ -355,7 +355,7 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	void addRegion(float x, float y, float radius);
+	Region* addRegion(float x, float y, float radius);
 
 	void addMilitiaMember(unsigned long long objectid);
 

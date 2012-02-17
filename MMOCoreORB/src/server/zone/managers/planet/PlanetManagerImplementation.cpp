@@ -29,6 +29,7 @@
 #include "server/zone/objects/area/BadgeActiveArea.h"
 
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
 #include "PlanetTravelPoint.h"
@@ -400,7 +401,12 @@ void PlanetManagerImplementation::loadClientRegions() {
 			regionMap.addRegion(cityRegion);
 		}
 
-		cityRegion->addRegion(x, y, radius);
+		ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius);
+
+		if (region != NULL)
+			region->setMunicipalZone(true);
+
+		cityRegion->addRegion(x, y, radius * 2);
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");

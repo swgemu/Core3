@@ -53,7 +53,9 @@ import server.zone.objects.creature.CreatureObject;
 class ActiveArea extends SceneObject {
 	protected float radius2;
 	
-	protected boolean noBuildArea; 
+	protected boolean noBuildArea;
+	
+	protected boolean municipalZone;
 	
 	protected unsigned long cellObjectID;
 	
@@ -63,6 +65,8 @@ class ActiveArea extends SceneObject {
 		cellObjectID = 0;
 		
 		noBuildArea = false;
+		
+		municipalZone = false;
 		
 		Logger.setLoggingName("ActiveArea");
 	}
@@ -106,6 +110,10 @@ class ActiveArea extends SceneObject {
 		noBuildArea = val;
 	}
 	
+	public void setMunicipalZone(boolean val) {
+		municipalZone = val;
+	}
+	
 	public void setRadius(float r) {
 		super.setRadius(r);
 		
@@ -114,6 +122,10 @@ class ActiveArea extends SceneObject {
 	
 	public abstract boolean isCampArea() {
 		return false;
+	}
+	
+	public boolean isMunicipalZone() {
+		return municipalZone;
 	}
 	
 	public unsigned long getCellObjectID() {

@@ -59,7 +59,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 	
-	public native void addRegion(float x, float y, float radius);
+	public native Region addRegion(float x, float y, float radius);
 	
 	public void addMilitiaMember(unsigned long objectid) {
 		militiaMembers.put(objectid);

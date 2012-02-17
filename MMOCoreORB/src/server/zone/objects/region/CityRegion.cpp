@@ -75,7 +75,7 @@ void CityRegion::notifyExit(SceneObject* object) {
 		_implementation->notifyExit(object);
 }
 
-void CityRegion::addRegion(float x, float y, float radius) {
+Region* CityRegion::addRegion(float x, float y, float radius) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -86,9 +86,9 @@ void CityRegion::addRegion(float x, float y, float radius) {
 		method.addFloatParameter(y);
 		method.addFloatParameter(radius);
 
-		method.executeWithVoidReturn();
+		return static_cast<Region*>(method.executeWithObjectReturn());
 	} else
-		_implementation->addRegion(x, y, radius);
+		return _implementation->addRegion(x, y, radius);
 }
 
 void CityRegion::addMilitiaMember(unsigned long long objectid) {
@@ -999,7 +999,7 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_ADDREGION__FLOAT_FLOAT_FLOAT_:
-		addRegion(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertLong(addRegion(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	case RPC_ADDMILITIAMEMBER__LONG_:
 		addMilitiaMember(inv->getUnsignedLongParameter());
@@ -1113,8 +1113,8 @@ void CityRegionAdapter::notifyExit(SceneObject* object) {
 	(static_cast<CityRegion*>(stub))->notifyExit(object);
 }
 
-void CityRegionAdapter::addRegion(float x, float y, float radius) {
-	(static_cast<CityRegion*>(stub))->addRegion(x, y, radius);
+Region* CityRegionAdapter::addRegion(float x, float y, float radius) {
+	return (static_cast<CityRegion*>(stub))->addRegion(x, y, radius);
 }
 
 void CityRegionAdapter::addMilitiaMember(unsigned long long objectid) {

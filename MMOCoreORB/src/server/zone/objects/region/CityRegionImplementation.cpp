@@ -37,16 +37,16 @@ void CityRegionImplementation::initialize(Zone* zne, const String& name) {
 	setLogging(true);
 }
 
-void CityRegionImplementation::addRegion(float x, float y, float radius) {
+Region* CityRegionImplementation::addRegion(float x, float y, float radius) {
 	if (zone == NULL) {
-		return;
+		return NULL;
 	}
 
 	String temp = "object/region_area.iff";
 	SceneObject* obj = zone->getZoneServer()->createObject(temp.hashCode(), 1);
 
 	if (obj == NULL || !obj->isRegion()) {
-		return;
+		return NULL;
 	}
 
 	Region* region = cast<Region*>(obj);
@@ -65,6 +65,8 @@ void CityRegionImplementation::addRegion(float x, float y, float radius) {
 	zone->transferObject(region, -1, false);
 
 	regions.put(region);
+
+	return region;
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {

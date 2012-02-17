@@ -12,7 +12,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -180,6 +180,20 @@ void ActiveArea::setNoBuildArea(bool val) {
 		_implementation->setNoBuildArea(val);
 }
 
+void ActiveArea::setMunicipalZone(bool val) {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMUNICIPALZONE__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMunicipalZone(val);
+}
+
 void ActiveArea::setRadius(float r) {
 	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -205,6 +219,19 @@ bool ActiveArea::isCampArea() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCampArea();
+}
+
+bool ActiveArea::isMunicipalZone() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISMUNICIPALZONE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isMunicipalZone();
 }
 
 unsigned long long ActiveArea::getCellObjectID() {
@@ -349,6 +376,11 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "municipalZone") {
+		TypeInfo<bool >::parseFromBinaryStream(&municipalZone, stream);
+		return true;
+	}
+
 	if (_name == "cellObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&cellObjectID, stream);
 		return true;
@@ -385,6 +417,14 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "municipalZone";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&municipalZone, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "cellObjectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -394,7 +434,7 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + SceneObjectImplementation::writeObjectMembers(stream);
+	return 4 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
@@ -405,6 +445,8 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 	cellObjectID = 0;
 	// server/zone/objects/area/ActiveArea.idl():  		noBuildArea = false;
 	noBuildArea = false;
+	// server/zone/objects/area/ActiveArea.idl():  		municipalZone = false;
+	municipalZone = false;
 	// server/zone/objects/area/ActiveArea.idl():  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }
@@ -437,6 +479,11 @@ void ActiveAreaImplementation::setNoBuildArea(bool val) {
 	noBuildArea = val;
 }
 
+void ActiveAreaImplementation::setMunicipalZone(bool val) {
+	// server/zone/objects/area/ActiveArea.idl():  		municipalZone = val;
+	municipalZone = val;
+}
+
 void ActiveAreaImplementation::setRadius(float r) {
 	// server/zone/objects/area/ActiveArea.idl():  		super.setRadius(r);
 	SceneObjectImplementation::setRadius(r);
@@ -447,6 +494,11 @@ void ActiveAreaImplementation::setRadius(float r) {
 bool ActiveAreaImplementation::isCampArea() {
 	// server/zone/objects/area/ActiveArea.idl():  		return false;
 	return false;
+}
+
+bool ActiveAreaImplementation::isMunicipalZone() {
+	// server/zone/objects/area/ActiveArea.idl():  		return municipalZone;
+	return municipalZone;
 }
 
 unsigned long long ActiveAreaImplementation::getCellObjectID() {
@@ -503,11 +555,17 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETNOBUILDAREA__BOOL_:
 		setNoBuildArea(inv->getBooleanParameter());
 		break;
+	case RPC_SETMUNICIPALZONE__BOOL_:
+		setMunicipalZone(inv->getBooleanParameter());
+		break;
 	case RPC_SETRADIUS__FLOAT_:
 		setRadius(inv->getFloatParameter());
 		break;
 	case RPC_ISCAMPAREA__:
 		resp->insertBoolean(isCampArea());
+		break;
+	case RPC_ISMUNICIPALZONE__:
+		resp->insertBoolean(isMunicipalZone());
 		break;
 	case RPC_GETCELLOBJECTID__:
 		resp->insertLong(getCellObjectID());
@@ -566,12 +624,20 @@ void ActiveAreaAdapter::setNoBuildArea(bool val) {
 	(static_cast<ActiveArea*>(stub))->setNoBuildArea(val);
 }
 
+void ActiveAreaAdapter::setMunicipalZone(bool val) {
+	(static_cast<ActiveArea*>(stub))->setMunicipalZone(val);
+}
+
 void ActiveAreaAdapter::setRadius(float r) {
 	(static_cast<ActiveArea*>(stub))->setRadius(r);
 }
 
 bool ActiveAreaAdapter::isCampArea() {
 	return (static_cast<ActiveArea*>(stub))->isCampArea();
+}
+
+bool ActiveAreaAdapter::isMunicipalZone() {
+	return (static_cast<ActiveArea*>(stub))->isMunicipalZone();
 }
 
 unsigned long long ActiveAreaAdapter::getCellObjectID() {
