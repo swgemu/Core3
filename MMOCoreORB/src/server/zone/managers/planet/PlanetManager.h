@@ -196,8 +196,6 @@ public:
 
 	void loadClientRegions();
 
-	void loadPlayerRegions();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -329,8 +327,6 @@ public:
 
 	void loadClientRegions();
 
-	void loadPlayerRegions();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -439,8 +435,6 @@ public:
 	void initialize();
 
 	void loadClientRegions();
-
-	void loadPlayerRegions();
 
 	void loadBadgeAreas();
 

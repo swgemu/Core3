@@ -56,7 +56,6 @@ void PlanetManagerImplementation::initialize() {
 
 	loadBadgeAreas();
 	loadPerformanceLocations();
-	loadPlayerRegions();
 
 	loadStaticTangibleObjects();
 
@@ -405,68 +404,6 @@ void PlanetManagerImplementation::loadClientRegions() {
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");
-}
-
-void PlanetManagerImplementation::loadPlayerRegions() {
-	StringBuffer msg;
-	msg << "PlanetManagerImplementation::loadRegions()";
-	info(msg.toString());
-	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-
-	ObjectDatabase* cityRegionsDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
-
-	if (cityRegionsDatabase == NULL)
-		error("PlanetManagerImplementation::loadPlayerRegions(): There was an error loading the 'cityregions' database.");
-
-	info("Loading player regions");
-
-	int i = 0;
-
-	try {
-		String currentZoneName = zone->getZoneName();
-		ObjectDatabaseIterator iterator(cityRegionsDatabase);
-
-		uint64 objectID;
-		ObjectInputStream* objectData = new ObjectInputStream(2000);
-
-		String zoneName;
-		int gameObjectType = 0;
-
-		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<String>("zone", &zoneName, objectData)) {
-				objectData->clear();
-				continue;
-			}
-
-			if (zoneName != currentZoneName) {
-				objectData->clear();
-				continue;
-			}
-
-			SceneObject* object = server->getZoneServer()->getObject(objectID);
-
-			if (object != NULL) {
-				//object->info("loaded player structure into world");
-				++i;
-			} else {
-				error("could not load region " + String::hexvalueOf((int64)objectID));
-			}
-
-			objectData->clear();
-		}
-
-		delete objectData;
-
-	} catch (DatabaseException& e) {
-		StringBuffer err;
-		err << "Loading Player Structures, exception: " << e.getMessage();
-		error(err);
-		return;
-	}
-
-	numberOfCities += i;
-
-	info(String("Loaded " + String::valueOf(i)) + " player regions", true);
 }
 
 void PlanetManagerImplementation::initializeTransientMembers() {

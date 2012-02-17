@@ -50,7 +50,11 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte RANK_CITY = 4;
 	public static final byte RANK_METROPOLIS = 5;
 
-	public native CityRegion(Zone zne, final string name);
+	public CityRegion(Zone zne, final string name) {
+		initialize(zne, name);
+	}
+	
+	public native void initialize(Zone zne, final string name);
 	
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);

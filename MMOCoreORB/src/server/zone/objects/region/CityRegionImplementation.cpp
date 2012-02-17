@@ -13,7 +13,7 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
+void CityRegionImplementation::initialize(Zone* zne, const String& name) {
 	zone = zne;
 
 	zoningEnabled = true;

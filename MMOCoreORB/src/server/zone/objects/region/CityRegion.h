@@ -92,6 +92,8 @@ public:
 
 	CityRegion(Zone* zne, const String& name);
 
+	void initialize(Zone* zne, const String& name);
+
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
@@ -230,6 +232,8 @@ public:
 
 	CityRegionImplementation(DummyConstructorParameter* param);
 
+	void initialize(Zone* zne, const String& name);
+
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
@@ -345,6 +349,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initialize(Zone* zne, const String& name);
+
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
@@ -414,6 +420,7 @@ public:
 	void setZoningEnabled(bool val);
 
 protected:
+	String _param1_initialize__Zone_String_;
 	UnicodeString _param0_setRegionName__UnicodeString_;
 	String _param0_setCitySpecialization__String_;
 	String _param0_setRegionName__String_;

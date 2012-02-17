@@ -31,7 +31,7 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItemToRadialID(211, 223, 3, "@city/city:city_rank"); //City Advancement
 	menuResponse->addRadialMenuItemToRadialID(211, 224, 3, "@city/city:city_maint"); //Maintenance Report
 	menuResponse->addRadialMenuItemToRadialID(211, 215, 3, "@city/city:treasury_status"); //Treasury Report
-	menuResponse->addRadialMenuItemToRadialID(211, 239, 3, "@city/city:treasury_deposit"); //Treasury Deposit
+	menuResponse->addRadialMenuItemToRadialID(211, 220, 3, "@city/city:treasury_deposit"); //Treasury Deposit
 
 	if (!city->isMayor(player->getObjectID()))
 		return;
@@ -53,7 +53,6 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 
 	menuResponse->addRadialMenuItemToRadialID(216, 219, 3, "@city/city:treasury_taxes"); //Adjust Taxes
 
-	menuResponse->addRadialMenuItemToRadialID(216, 220, 3, "@city/city:treasury_deposit"); //Treasury Deposit
 	menuResponse->addRadialMenuItemToRadialID(216, 221, 3, "@city/city:treasury_withdraw"); //Treasury Withdraw
 
 	menuResponse->addRadialMenuItemToRadialID(216, 225, 3, "@city/city:city_specializations"); //City Specialization
@@ -77,6 +76,11 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	switch (selectID) {
 	case 212: //Status Report
 		cityManager->sendStatusReport(city, player, sceneObject);
+		break;
+	case 215: //Treasury Report
+		break;
+	case 220: //Treasury Deposit
+		cityManager->promptDepositCityTreasury(city, player, sceneObject);
 		break;
 	case 221: //Withdraw Treasury
 		cityManager->promptWithdrawCityTreasury(city, player, sceneObject);

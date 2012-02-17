@@ -104,6 +104,8 @@ public:
 
 	void loadLuaConfig();
 
+	void loadCityRegions();
+
 	bool validateCityName(const String& name);
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
@@ -116,7 +118,11 @@ public:
 
 	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
 	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+
+	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -192,6 +198,8 @@ public:
 
 	void loadLuaConfig();
 
+	void loadCityRegions();
+
 	bool validateCityName(const String& name);
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
@@ -204,7 +212,11 @@ public:
 
 	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
 	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+
+	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -257,6 +269,8 @@ public:
 
 	void loadLuaConfig();
 
+	void loadCityRegions();
+
 	bool validateCityName(const String& name);
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
@@ -269,7 +283,11 @@ public:
 
 	void promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
 
+	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
 	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal);
+
+	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

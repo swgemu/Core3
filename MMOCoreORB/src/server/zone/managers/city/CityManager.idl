@@ -103,6 +103,8 @@ class CityManager extends ManagedService implements Logger {
 	 * Loads configuration settings for cities from the lua for the city manager.
 	 */
 	public native void loadLuaConfig();
+	
+	public native void loadCityRegions();
 
 	public native boolean validateCityName(final string name);
 	
@@ -116,7 +118,11 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void promptWithdrawCityTreasury(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
 	
+	public native void promptDepositCityTreasury(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	
 	public native void withdrawFromCityTreasury(CityRegion city, CreatureObject mayor, int value, SceneObject terminal = null);
+	
+	public native void depositToCityTreasury(CityRegion city, CreatureObject creature, int value);
 	
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
 		if (city.isMayor(mayor.getObjectID())) {

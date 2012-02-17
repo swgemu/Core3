@@ -18,7 +18,7 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
@@ -45,6 +45,19 @@ void CityManager::loadLuaConfig() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->loadLuaConfig();
+}
+
+void CityManager::loadCityRegions() {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LOADCITYREGIONS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->loadCityRegions();
 }
 
 bool CityManager::validateCityName(const String& name) {
@@ -142,6 +155,22 @@ void CityManager::promptWithdrawCityTreasury(CityRegion* city, CreatureObject* m
 		_implementation->promptWithdrawCityTreasury(city, mayor, terminal);
 }
 
+void CityManager::promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->promptDepositCityTreasury(city, creature, terminal);
+}
+
 void CityManager::withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal) {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -157,6 +186,22 @@ void CityManager::withdrawFromCityTreasury(CityRegion* city, CreatureObject* may
 		method.executeWithVoidReturn();
 	} else
 		_implementation->withdrawFromCityTreasury(city, mayor, value, terminal);
+}
+
+void CityManager::depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->depositToCityTreasury(city, creature, value);
 }
 
 void CityManager::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
@@ -400,6 +445,9 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_LOADLUACONFIG__:
 		loadLuaConfig();
 		break;
+	case RPC_LOADCITYREGIONS__:
+		loadCityRegions();
+		break;
 	case RPC_VALIDATECITYNAME__STRING_:
 		resp->insertBoolean(validateCityName(inv->getAsciiParameter(_param0_validateCityName__String_)));
 		break;
@@ -418,8 +466,14 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
 		promptWithdrawCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
+		promptDepositCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_:
 		withdrawFromCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_:
+		depositToCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
 		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -439,6 +493,10 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 void CityManagerAdapter::loadLuaConfig() {
 	(static_cast<CityManager*>(stub))->loadLuaConfig();
+}
+
+void CityManagerAdapter::loadCityRegions() {
+	(static_cast<CityManager*>(stub))->loadCityRegions();
 }
 
 bool CityManagerAdapter::validateCityName(const String& name) {
@@ -465,8 +523,16 @@ void CityManagerAdapter::promptWithdrawCityTreasury(CityRegion* city, CreatureOb
 	(static_cast<CityManager*>(stub))->promptWithdrawCityTreasury(city, mayor, terminal);
 }
 
+void CityManagerAdapter::promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	(static_cast<CityManager*>(stub))->promptDepositCityTreasury(city, creature, terminal);
+}
+
 void CityManagerAdapter::withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal) {
 	(static_cast<CityManager*>(stub))->withdrawFromCityTreasury(city, mayor, value, terminal);
+}
+
+void CityManagerAdapter::depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value) {
+	(static_cast<CityManager*>(stub))->depositToCityTreasury(city, creature, value);
 }
 
 void CityManagerAdapter::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {

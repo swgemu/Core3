@@ -19,18 +19,17 @@ public:
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		ManagedReference<CityTreasuryWithdrawalSession*> session = dynamic_cast<CityTreasuryWithdrawalSession*>(player->getActiveSession(SessionFacadeType::CITYSPEC));
+		ManagedReference<CityTreasuryWithdrawalSession*> session = dynamic_cast<CityTreasuryWithdrawalSession*>(player->getActiveSession(SessionFacadeType::CITYWITHDRAW));
 
 		if (session == NULL)
 			return;
 
-		if (!suiBox->isTransferBox() || player == NULL || cancelPressed || args->size() <= 0) {
+		if (!suiBox->isTransferBox() || player == NULL || cancelPressed || args->size() <= 1) {
 			session->cancelSession();
 			return;
 		}
 
-		int value = Integer::valueOf(args->get(0).toString());
-
+		int value = Integer::valueOf(args->get(1).toString());
 		session->withdrawCredits(value);
 	}
 };

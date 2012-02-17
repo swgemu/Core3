@@ -118,6 +118,7 @@ public:
 	static const uint16 CITY_STATUS_REPORT = 118;
 	static const uint16 CITY_TREASURY_WITHDRAWAL = 119;
 	static const uint16 CITY_TREASURY_WITHDRAWAL_REASON = 120;
+	static const uint16 CITY_TREASURY_DEPOSIT = 121;
 
 	//Structure 141 - 170
 	static const uint16 STRUCTURE_STATUS = 141;

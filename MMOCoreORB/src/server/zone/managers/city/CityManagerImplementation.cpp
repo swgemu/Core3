@@ -19,6 +19,7 @@
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 #include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
+#include "server/zone/objects/player/sui/callbacks/CityTreasuryDepositSuiCallback.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
@@ -82,10 +83,68 @@ void CityManagerImplementation::loadLuaConfig() {
 
 	delete lua;
 	lua = NULL;
+
+	loadCityRegions();
+}
+
+void CityManagerImplementation::loadCityRegions() {
+	info("Loading city regions.");
+
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+
+	ObjectDatabase* cityRegionsDB = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+
+	if (cityRegionsDB == NULL) {
+		error("Could not load the city regions database.");
+		return;
+	}
+
+	int i = 0;
+
+	try {
+		String zoneName = zone->getZoneName();
+		ObjectDatabaseIterator iterator(cityRegionsDB);
+
+		ObjectInputStream* objectData = new ObjectInputStream(2000);
+
+		uint64 objectID;
+		String zoneReference;
+
+		while (iterator.getNextKeyAndValue(objectID, objectData)) {
+			if (!Serializable::getVariable<String>("zone", &zoneReference, objectData)) {
+				objectData->clear();
+				continue;
+			}
+
+			if (zoneName != zoneReference) {
+				objectData->clear();
+				continue;
+			}
+
+			CityRegion* object = dynamic_cast<CityRegion*>(Core::getObjectBroker()->lookUp(objectID));
+
+			if (object != NULL) {
+				++i;
+				cities.put(object->getRegionName(), object);
+			} else {
+				error("Failed to load city region with objectid: " + String::valueOf(objectID));
+			}
+
+			objectData->clear();
+		}
+
+		delete objectData;
+	} catch (DatabaseException& e) {
+		error("Failed loading city regions: " + e.getMessage());
+		return;
+	}
+
+	info("Loaded " + String::valueOf(cities.size()) + " player city regions.", true);
 }
 
 CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
-	CityRegion* city = new CityRegion(zone, cityName);
+	ManagedReference<CityRegion*> city = new CityRegion(zone, cityName);
+	ObjectManager::instance()->persistObject(city, 1, "cityregions");
 	city->setCityRank(OUTPOST);
 	city->setMayorID(mayor->getObjectID());
 	city->addRegion(x, y, radiusPerRank.get(OUTPOST));
@@ -97,64 +156,6 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	return city;
 }
 
-/*
-void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObject* player, const String& name) {
-	city->setCityName(name);
-
-	city->setMayorObjectID(player->getObjectID());
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ghost->setDeclaredResidence(city);
-	declareCitizenship(city, player, false);
-
-	city->rescheduleCityUpdate(newCityGracePeriod);
-
-	//Create the city region
-	uint32 crc = String("object/region_area.iff").hashCode();
-
-	Region* cityRegion = cast<Region*>(ObjectManager::instance()->createObject(crc, 2, "cityregions"));
-	city->setRegion(cityRegion);
-	cityRegion->initializePosition(city->getPositionX(), 0, city->getPositionY());
-	cityRegion->setRadius(radiusPerRank.get(NEWCITY));
-	//cityRegion->setCityHall(city);
-
-	StringId* objectName = cityRegion->getObjectName();
-	objectName->setCustomString(name);
-
-	//cityRegion->insertToZone(zone);
-	zone->transferObject(cityRegion, -1, true);
-
-	cityRegion->updateToDatabase();
-	city->updateToDatabaseWithoutChildren();
-
-	//zone->getPlanetManager()->addRegion(cityRegion);
-
-	Locker lock(_this);
-
-	cities.put(city->getObjectID(), city);
-
-	//New city established email.
-
-}
-
-void CityManagerImplementation::changeCityName(CityHallObject* city, CreatureObject* player, const String& name) {
-	city->setCityName(name);
-
-	ManagedReference<Region*> cityRegion = city->getRegion();
-
-	if (cityRegion != NULL) {
-		StringId* objectName = cityRegion->getObjectName();
-		objectName->setCustomString(name);
-
-		cityRegion->updateToDatabase();
-	}
-
-	city->updateToDatabaseWithoutChildren();
-
-	player->sendSystemMessage("@city/city:name_changed"); //The city name has been successfully changed.
-
-	//TODO: Send email to citizens about name change.
-}*/
 
 bool CityManagerImplementation::validateCityName(const String& name) {
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
@@ -186,7 +187,7 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 		mayor->sendSystemMessage(params);
 	}
 
-	CitySpecializationSession* session = new CitySpecializationSession(mayor, city, terminal);
+	ManagedReference<CitySpecializationSession*> session = new CitySpecializationSession(mayor, city, terminal);
 	mayor->addActiveSession(SessionFacadeType::CITYSPEC, session);
 	session->initializeSession();
 }
@@ -243,7 +244,7 @@ void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, Cre
 		return;
 	}
 
-	CityTreasuryWithdrawalSession* session = new CityTreasuryWithdrawalSession(mayor, city, terminal);
+	ManagedReference<CityTreasuryWithdrawalSession*> session = new CityTreasuryWithdrawalSession(mayor, city, terminal);
 	mayor->addActiveSession(SessionFacadeType::CITYWITHDRAW, session);
 	session->initializeSession();
 }
@@ -289,7 +290,51 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 
 	mayor->addCooldown("city_withdrawal", CityManagerImplementation::treasuryWithdrawalCooldown);
 
+	session->cancelSession();
+
 	//tODO: Send some message about receiving credits.
 
 	//TODO: Send mail
+}
+
+void CityManagerImplementation::promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	ManagedReference<SuiTransferBox*> transfer = new SuiTransferBox(creature, SuiWindowType::CITY_TREASURY_DEPOSIT);
+	transfer->setPromptTitle("@city/city:treasury_deposit"); //Treasury Deposit
+	transfer->setPromptText("@city/city:treasury_deposit_d"); //Enter the amount you would like to transfer to the treasury.
+	transfer->addFrom("@city/city:total_funds", String::valueOf(creature->getCashCredits()), String::valueOf(creature->getCashCredits()), "1");
+	transfer->addTo("@city/city:treasury", "0", "0", "1");
+	transfer->setUsingObject(terminal);
+	transfer->setForceCloseDistance(16.f);
+	transfer->setCallback(new CityTreasuryDepositSuiCallback(creature->getZoneServer(), city));
+
+	ghost->addSuiBox(transfer);
+	creature->sendMessage(transfer->generateMessage());
+}
+
+void CityManagerImplementation::depositToCityTreasury(CityRegion* city, CreatureObject* creature, int amount) {
+	int cash = creature->getCashCredits();
+
+	int total = cash - amount;
+
+	if (total < 1 || amount > cash) {
+		creature->sendSystemMessage("@city/city:positive_deposit"); //You must select a positive amount to transfer to the treasury.
+		return;
+	}
+
+	//if (total > creature->getCashCredits()) {
+		//Player doesn't have that many credits
+		//return;
+	//}
+
+	city->addToCityTreasury(total);
+	creature->subtractCashCredits(total);
+
+	StringIdChatParameter params("city/city", "deposit_treasury"); //You deposit %DI credits into the treasury.
+	params.setDI(total);
+	creature->sendSystemMessage(params);
 }

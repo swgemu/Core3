@@ -16,7 +16,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCITYRANK__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGISTEREDCITIZENCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
+enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCITYRANK__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGISTEREDCITIZENCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
 
 CityRegion::CityRegion(Zone* zne, const String& name) : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(zne, name);
@@ -31,6 +31,21 @@ CityRegion::~CityRegion() {
 }
 
 
+
+void CityRegion::initialize(Zone* zne, const String& name) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZE__ZONE_STRING_);
+		method.addObjectParameter(zne);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initialize(zne, name);
+}
 
 void CityRegion::notifyEnter(SceneObject* object) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
@@ -772,6 +787,12 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	return 10 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
+CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
+	_initializeImplementation();
+	// server/zone/objects/region/CityRegion.idl():  		initialize(zne, name);
+	initialize(zne, name);
+}
+
 void CityRegionImplementation::addMilitiaMember(unsigned long long objectid) {
 	// server/zone/objects/region/CityRegion.idl():  		militiaMembers.put(objectid);
 	(&militiaMembers)->put(objectid);
@@ -968,6 +989,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INITIALIZE__ZONE_STRING_:
+		initialize(static_cast<Zone*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_initialize__Zone_String_));
+		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
@@ -1075,6 +1099,10 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void CityRegionAdapter::initialize(Zone* zne, const String& name) {
+	(static_cast<CityRegion*>(stub))->initialize(zne, name);
 }
 
 void CityRegionAdapter::notifyEnter(SceneObject* object) {
