@@ -438,8 +438,8 @@ AttachmentImplementation::AttachmentImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/attachment/Attachment.idl():  		Logger.setLoggingName("Attachment");
 	Logger::setLoggingName("Attachment");
-	// server/zone/objects/tangible/attachment/Attachment.idl():  		skillModMap.setNullValue(null);
-	(&skillModMap)->setNullValue(NULL);
+	// server/zone/objects/tangible/attachment/Attachment.idl():  		skillModMap.setNullValue(0);
+	(&skillModMap)->setNullValue(0);
 	// server/zone/objects/tangible/attachment/Attachment.idl():  		skillModMap.setNoDuplicateInsertPlan();
 	(&skillModMap)->setNoDuplicateInsertPlan();
 }

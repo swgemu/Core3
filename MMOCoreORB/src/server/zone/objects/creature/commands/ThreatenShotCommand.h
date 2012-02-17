@@ -51,7 +51,7 @@ class ThreatenShotCommand : public CombatQueueCommand {
 public:
 
 	ThreatenShotCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 

@@ -54,8 +54,8 @@ void VendorCreatureImplementation::loadTemplateData(SharedObjectTemplate* templa
 }
 
 void VendorCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-if (!vendor.isInitialized())
-	CreatureObjectImplementation::fillObjectMenuResponse(menuResponse, player);
+	if (!vendor.isInitialized())
+		CreatureObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 

@@ -105,7 +105,7 @@ public:
 	static const int EVALUATIONCOOLDOWN = 24000;
 
 protected:
-	ManagedReference<TangibleObject*> self;
+	ManagedWeakReference<TangibleObject*> self;
 	CooldownTimerMap cooldownTimerMap;
 	WeakReference<CreatureObject*> currentThreat;
 	ThreatMatrix threatMatrix;

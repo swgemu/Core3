@@ -75,7 +75,7 @@ class Attachment extends TangibleObject {
 	public Attachment() {
 		Logger.setLoggingName("Attachment");
 
-		skillModMap.setNullValue(null);
+		skillModMap.setNullValue(0);
 		skillModMap.setNoDuplicateInsertPlan();
 				
 		//generateSkillMods();
