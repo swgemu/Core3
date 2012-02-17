@@ -16,7 +16,7 @@
  *	WeatherManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_CREATENEWWEATHERPATTERN__,RPC_SENDWEATHERTO__CREATUREOBJECT_,RPC_ENABLEWEATHER__CREATUREOBJECT_,RPC_DISABLEWEATHER__CREATUREOBJECT_,RPC_CHANGEWEATHER__CREATUREOBJECT_INT_,RPC_ISWEATHERENABLED__,RPC_SETWEATHERENABLED__BOOL_};
+enum {RPC_INITIALIZE__ = 6,RPC_CREATENEWWEATHERPATTERN__,RPC_SENDWEATHERTO__CREATUREOBJECT_,RPC_ENABLEWEATHER__CREATUREOBJECT_,RPC_DISABLEWEATHER__CREATUREOBJECT_,RPC_CHANGEWEATHER__CREATUREOBJECT_INT_,RPC_ISWEATHERENABLED__,RPC_SETWEATHERENABLED__BOOL_,RPC_PRINTINFO__CREATUREOBJECT_};
 
 WeatherManager::WeatherManager(Zone* planet) : ManagedService(DummyConstructorParameter::instance()) {
 	WeatherManagerImplementation* _implementation = new WeatherManagerImplementation(planet);
@@ -140,6 +140,20 @@ void WeatherManager::setWeatherEnabled(bool value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setWeatherEnabled(value);
+}
+
+void WeatherManager::printInfo(CreatureObject* player) {
+	WeatherManagerImplementation* _implementation = static_cast<WeatherManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PRINTINFO__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->printInfo(player);
 }
 
 DistributedObjectServant* WeatherManager::_getImplementation() {
@@ -317,6 +331,9 @@ Packet* WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETWEATHERENABLED__BOOL_:
 		setWeatherEnabled(inv->getBooleanParameter());
 		break;
+	case RPC_PRINTINFO__CREATUREOBJECT_:
+		printInfo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -354,6 +371,10 @@ bool WeatherManagerAdapter::isWeatherEnabled() {
 
 void WeatherManagerAdapter::setWeatherEnabled(bool value) {
 	(static_cast<WeatherManager*>(stub))->setWeatherEnabled(value);
+}
+
+void WeatherManagerAdapter::printInfo(CreatureObject* player) {
+	(static_cast<WeatherManager*>(stub))->printInfo(player);
 }
 
 /*

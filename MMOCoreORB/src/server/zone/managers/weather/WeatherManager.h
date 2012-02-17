@@ -112,6 +112,8 @@ public:
 
 	void setWeatherEnabled(bool value);
 
+	void printInfo(CreatureObject* player);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -207,6 +209,8 @@ public:
 
 	void setWeatherEnabled(bool value);
 
+	void printInfo(CreatureObject* player);
+
 	WeakReference<WeatherManager*> _this;
 
 	operator const WeatherManager*();
@@ -265,6 +269,8 @@ public:
 	bool isWeatherEnabled();
 
 	void setWeatherEnabled(bool value);
+
+	void printInfo(CreatureObject* player);
 
 };
 

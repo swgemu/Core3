@@ -57,6 +57,10 @@ public:
 
 			weatherManager->changeWeather(player, weatherID);
 
+		} else if (command == "info") {
+
+			weatherManager->printInfo(player);
+
 		} else {
 			sendSyntax(player);
 			return 1;

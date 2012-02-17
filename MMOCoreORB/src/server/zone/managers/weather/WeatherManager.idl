@@ -160,5 +160,7 @@ class WeatherManager extends ManagedService implements Logger {
 	public void setWeatherEnabled(boolean value) {
 		weatherEnabled = value;
 	}
+	
+	public native void printInfo(CreatureObject player);
 }
 

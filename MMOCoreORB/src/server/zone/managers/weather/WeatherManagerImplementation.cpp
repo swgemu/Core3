@@ -27,6 +27,7 @@ void WeatherManagerImplementation::initialize() {
 	setGlobalLogging(true);
 	setLogging(true);
 
+	weatherEnabled = true;
 	weatherChangeEvent = NULL;
 
 	//Load weather configuration from the luas.
@@ -36,8 +37,6 @@ void WeatherManagerImplementation::initialize() {
 		loadDefaultValues();
 	} else
 		info("Loading from Lua was successful.");
-
-	createNewWeatherPattern();
 
 	windX.removeAll();
 	windY.removeAll();
@@ -49,6 +48,7 @@ void WeatherManagerImplementation::initialize() {
 		windMagnitude.add(((float)System::random(200) / 100.f) - 1);
 	}
 
+	createNewWeatherPattern();
 }
 
 bool WeatherManagerImplementation::loadLuaConfig() {
@@ -132,8 +132,14 @@ void WeatherManagerImplementation::createNewWeatherPattern() {
 	int duration = System::random(averageWeatherDuration) + (averageWeatherDuration / 2);
 	currentMap = new WeatherMap(weatherStability, zone->getMinX(), zone->getMaxX(), zone->getMinY(), zone->getMaxY(), duration);
 
-	weatherChangeEvent = new WeatherChangeEvent(_this);
-	weatherChangeEvent->schedule((duration * 1.5) * 1000);
+	if(weatherChangeEvent != NULL) {
+		if(weatherChangeEvent->isScheduled())
+			weatherChangeEvent->cancel();
+	} else {
+		weatherChangeEvent = new WeatherChangeEvent(_this);
+	}
+
+	weatherChangeEvent->reschedule((duration * 1.5) * 1000);
 }
 
 void WeatherManagerImplementation::sendWeatherTo(CreatureObject* player) {
@@ -332,8 +338,14 @@ void WeatherManagerImplementation::changeWeather(CreatureObject* player, int new
 	Locker weatherManagerLocker(_this);
 
 	if(newWeather == 5)
-		createNewWeatherPattern();
+		baseWeather = System::random(5);
 	else {
 		baseWeather = newWeather;
 	}
+}
+
+void WeatherManagerImplementation::printInfo(CreatureObject* player) {
+	StringBuffer message;
+	message << "Base: " << baseWeather << " " << currentMap->printInfo(player->getPositionX(), player->getPositionY());
+	player->sendSystemMessage(message.toString());
 }

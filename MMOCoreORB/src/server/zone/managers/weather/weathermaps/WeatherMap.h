@@ -63,7 +63,6 @@ protected:
 	uint32 seed;  /// Random value to determine map shape
 	float modifier; /// Value to determine map type (ore, or other)
 	float density; /// Max density of map
-	float currentDensity;
 	uint64 startTime;
 	uint64 endTime;
 
@@ -122,30 +121,58 @@ public:
 
 	byte getWeatherAt(float x, float y) {
 
-		float current = time(0) - startTime;
+		if(time(0) > endTime)
+			return 0;
+
+
+		float mid = (endTime - startTime) / 2.f;
+		float current = abs(time(0) - startTime);
 		float end = endTime - startTime;
 
-		if(current > end)
-			return 0;
+		if(current > mid)
+			current = end - current;
 
-		currentDensity = (current / end) * density;
+		float currentDensity = (current / mid) * density;
 		x -= minX;
 		y = maxY - y;
-		float value = SimplexNoise::noise(x * modifier, y * modifier, seed * modifier);
 
-		if(value < 0)
-			return 0;
+		// [0,1]
+		float value = (SimplexNoise::noise(x * modifier, y * modifier, seed * modifier) + 1) / 2.0f;
 
-		return (byte)(((value * currentDensity) * 100) / 2);
+		byte weather = (byte)(((value * currentDensity) * 100) / 20.f);
+
+		return weather;
 	}
 
 	uint64 getEndTime() {
 		return endTime;
 	}
 
-	void print() {
-		System::out << "Seed: " << seed << " Modifier: "
-				<< modifier << " Current Density: " << currentDensity << endl;
+	String printInfo(float x, float y) {
+
+		float mid = (endTime - startTime) / 2.f;
+		float current = abs(time(0) - startTime);
+		float end = endTime - startTime;
+
+		if(current > mid)
+			current = end - current;
+
+		float currentDensity = (current / mid) * density;
+		x -= minX;
+		y = maxY - y;
+
+		// [0,1]
+		float value = (SimplexNoise::noise(x * modifier, y * modifier, seed * modifier) + 1) / 2.0f;
+
+		StringBuffer valueString;
+		valueString << "Density: " << density << " Density: " << currentDensity
+				//<< " Value: " << String::valueOf(value)
+				<< " Equation: " << String::valueOf((((value * currentDensity) * 100) / 20.f))
+				<< " Weather: " << String::valueOf((byte)(((value * currentDensity) * 100) / 20.f))
+				<< " Seed: " << seed
+				<< " time: " << time(0) - startTime << "/" << endTime - startTime;
+
+		return valueString.toString();
 	}
 
 private:
@@ -160,9 +187,9 @@ private:
 		modifier = .00017;
 
 		if(System::random(100) > weatherStability) {
-			density = (System::random(40) + 60) / 100.0f;
+			density = (System::random(30) + 60) / 100.0f;
 		} else {
-			density = (System::random(100 - weatherStability + 40)) / 100.0f;
+			density = (System::random(100 - weatherStability + 30) + 20) / 100.0f;
 		}
 
 		if(density > 1)
