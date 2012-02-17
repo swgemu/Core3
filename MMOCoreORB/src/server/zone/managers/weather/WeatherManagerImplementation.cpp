@@ -151,8 +151,8 @@ void WeatherManagerImplementation::sendWeatherTo(CreatureObject* player) {
 	else
 		currentWeather = baseWeather;
 
-	if(currentWeather > 4)
-		currentWeather = 4;
+	if(currentWeather > 0)
+		currentWeather = 0;
 
 	if(hasDamagingSandstorms && currentWeather == WeatherManager::EXTREMESTORM) {
 		applySandstormDamage(player);
