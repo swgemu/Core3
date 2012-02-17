@@ -45,7 +45,7 @@ object_tangible_crafting_station_structure_station = object_tangible_crafting_st
 
 	templateType = CRAFTINGSTATION,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},

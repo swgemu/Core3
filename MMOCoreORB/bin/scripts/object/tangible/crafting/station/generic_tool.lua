@@ -45,7 +45,7 @@ object_tangible_crafting_station_generic_tool = object_tangible_crafting_station
 
 	templateType = CRAFTINGTOOL,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},

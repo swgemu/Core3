@@ -45,7 +45,7 @@ object_tangible_crafting_station_clothing_repair = object_tangible_crafting_stat
 
 	-- templateType = 0,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},

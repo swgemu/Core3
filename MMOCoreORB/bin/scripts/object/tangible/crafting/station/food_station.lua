@@ -45,7 +45,7 @@ object_tangible_crafting_station_food_station = object_tangible_crafting_station
 
 	templateType = CRAFTINGSTATION,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},

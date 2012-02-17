@@ -45,7 +45,7 @@ object_tangible_crafting_station_weapon_tool = object_tangible_crafting_station_
 
 	templateType = CRAFTINGTOOL,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},

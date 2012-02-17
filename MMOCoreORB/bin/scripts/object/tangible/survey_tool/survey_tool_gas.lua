@@ -45,7 +45,7 @@ object_tangible_survey_tool_survey_tool_gas = object_tangible_survey_tool_shared
 
 	templateType = SURVEYTOOL,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},

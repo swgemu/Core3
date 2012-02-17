@@ -44,7 +44,7 @@
 object_tangible_crafting_station_public_food_station = object_tangible_crafting_station_shared_public_food_station:new {
    templateType = CRAFTINGSTATION,
 
-   playerUseMask = 65535,
+   playerUseMask = ALL,
 
    customizationOptions = {},
    customizationDefaults = {},

@@ -45,7 +45,7 @@ object_tangible_survey_tool_survey_tool_wind = object_tangible_survey_tool_share
 
 	templateType = SURVEYTOOL,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},

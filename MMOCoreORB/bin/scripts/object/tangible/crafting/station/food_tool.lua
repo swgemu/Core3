@@ -45,7 +45,7 @@ object_tangible_crafting_station_food_tool = object_tangible_crafting_station_sh
 
 	templateType = CRAFTINGTOOL,
 
-	playerUseMask = 65535,
+	playerUseMask = ALL,
 
 	customizationOptions = {},
 	customizationDefaults = {},
