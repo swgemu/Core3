@@ -59,6 +59,7 @@ include server.zone.objects.scene.ObserverEventType;
 
 class VehicleControlObserver extends Observer {
 	
+	@weakReference
 	VehicleControlDevice vehicleControlDevice;
 	
 	public VehicleControlObserver(VehicleControlDevice device) {
@@ -69,9 +70,11 @@ class VehicleControlObserver extends Observer {
 		if (eventType != ObserverEventType.STARTCOMBAT) {
 			return 1;
 		}
-		
-		CreatureObject creature = (CreatureObject) observable;
-		vehicleControlDevice.cancelSpawnObject(creature);
+
+		if (vehicleControlDevice != null) {
+			CreatureObject creature = (CreatureObject) observable;
+			vehicleControlDevice.cancelSpawnObject(creature);
+		}
 		
 		return 1;
 	}
