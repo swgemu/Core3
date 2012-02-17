@@ -103,7 +103,8 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	updateStatus(1);
 
-	player->dropObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
+	if (vehicleControlObserver != NULL)
+		player->dropObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
 }
 
 void VehicleControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
@@ -113,7 +114,8 @@ void VehicleControlDeviceImplementation::cancelSpawnObject(CreatureObject* playe
 		player->removePendingTask("call_mount");
 	}
 
-	player->dropObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
+	if (vehicleControlObserver != NULL)
+		player->dropObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
 }
 
 void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
