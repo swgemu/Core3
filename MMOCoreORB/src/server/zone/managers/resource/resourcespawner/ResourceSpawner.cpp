@@ -172,14 +172,17 @@ void ResourceSpawner::loadResourceSpawns() {
 								objectID));
 		//ObjectDatabaseManager::instance()->commitLocalTransaction();
 
-		if (resourceSpawn == NULL || !resourceSpawn->inShift()) {
-			if (resourceSpawn == NULL)
-				error(
-						"Trying to load object as ResourceSpawn that is not a resource spawn");
+		if (resourceSpawn == NULL) {
+			error("Trying to load object as ResourceSpawn that is not a resource spawn");
 			continue;
 		}
 
 		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
+
+		if (!resourceSpawn->inShift()) {
+			despawn(resourceSpawn);
+			continue;
+		}
 
 		if (resourceSpawn->getSpawnPool() != 0) {
 
