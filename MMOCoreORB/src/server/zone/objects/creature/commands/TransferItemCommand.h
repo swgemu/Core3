@@ -63,6 +63,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		creature->info("transfer item command");
+
 		return SUCCESS;
 	}
 

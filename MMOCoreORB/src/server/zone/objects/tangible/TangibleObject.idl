@@ -98,48 +98,8 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected DeltaVector<SceneObject> defenderList;
 	
-	protected unsigned short playerUseMask;
-	
 	protected boolean sliceable;
-	protected boolean sliced;
-	
-	//item mask
-	public static final unsigned short MALE = 0x01;
-	public static final unsigned short FEMALE = 0x02;
-
-	public static final unsigned short HUMAN = 0x004;
-	public static final unsigned short TRANDOSHAN = 0x008;
-	public static final unsigned short TWILEK = 0x010;
-	public static final unsigned short BOTHAN = 0x020;
-	public static final unsigned short ZABRAK = 0x040;
-	public static final unsigned short RODIAN = 0x080;
-	public static final unsigned short MONCALAMARI = 0x100;
-	public static final unsigned short WOOKIEE = 0x200;
-	public static final unsigned short SULLUSTAN = 0x400;
-	public static final unsigned short ITHORIAN = 0x800;
-
-	public static final unsigned short NEUTRAL = 0x1000;
-	public static final unsigned short IMPERIAL = 0x2000;
-	public static final unsigned short REBEL = 0x4000;
-	public static final unsigned short COVERT = 0x8000;
-	
-	public static final unsigned short ALL = 0xFFFF;
-	public static final unsigned short ALLSEXES = 0x03;// MALE | FEMALE;
-	public static final unsigned short ALLFACTIONS = 0xF000; //NEUTRAL | IMPERIAL | REBEL | COVERT;
-	public static final unsigned short HUMANOIDS = 0xF5FF;//ALL & ~(WOOKIEE | ITHORIAN);
-	public static final unsigned short HUMANOID_FOOTWEAR = 0xF5F7;//HUMANOIDS & ~TRANDOSHAN;
-	public static final unsigned short HUMANOID_HANDWEAR = 0xF5F7;//HUMANOIDS & ~TRANDOSHAN;
-	public static final unsigned short HUMANOID_HEADWEAR = 0xF5EF;//HUMANOIDS & ~TWILEK;
-	public static final unsigned short HUMANOID_MALES = 0xF5FD;//HUMANOIDS & ~FEMALE;
-	public static final unsigned short HUMANOID_FEMALES = 0xF5FE;//HUMANOIDS & ~MALE;
-	public static final unsigned short HUMANOID_IMPERIALS = 0x15FF;//HUMANOIDS & ~(REBEL | NEUTRAL | COVERT);
-	public static final unsigned short HUMANOID_REBELS = 0x45FF;//HUMANOIDS & ~(IMPERIAL | NEUTRAL | COVERT);
-	public static final unsigned short NO_RODIANS = 0xFF7F;//ALL & ~RODIAN;
-	public static final unsigned short NO_MONCALAMARI = 0xFEFF;//ALL & ~MONCALAMARI;
-	public static final unsigned short NO_WOOKIES = 0xFDFF;//ALL & ~WOOKIEE;
-	public static final unsigned short WOOKIEES = 0xF203;//WOOKIEE | ALLSEXES | ALLFACTIONS;
-	public static final unsigned short ITHORIANS = 0xF803;//ITHORIAN | ALLSEXES | ALLFACTIONS;
-	public static final unsigned short TWILEKS = 0xF013;//TWILEK | ALLSEXES | ALLFACTIONS;
+	protected boolean sliced;	
 	
 	/**
 	 * TangibleObject constructor, used to initialized the object
@@ -475,10 +435,6 @@ class TangibleObject extends SceneObject {
 	
 	public boolean isDestroyed() {
 		return conditionDamage > maxCondition;
-	}
-	
-	public unsigned int getPlayerUseMask() {
-		return playerUseMask;
 	}
 	
 	public void setFaction(unsigned int crc) {

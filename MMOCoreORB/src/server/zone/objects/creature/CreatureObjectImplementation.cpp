@@ -1641,61 +1641,6 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 	}
 }
 
-uint32 CreatureObjectImplementation::getWearableMask() {
-	uint16 characterMask = 0;
-
-	if (this->isRebel())
-		characterMask |= WearableObject::REBEL;
-	else if (this->isImperial())
-		characterMask |= WearableObject::IMPERIAL;
-	else
-		characterMask |= WearableObject::NEUTRAL;
-
-	/*if (this->isOnLeave())
-	 characterMask |= WearableObject::COVERT;*/
-
-	switch (species) {
-	case 0: // HUMAN
-		characterMask |= WearableObject::HUMAN;
-		break;
-	case 2: // TRANDOSHAN
-		characterMask |= WearableObject::TRANDOSHAN;
-		break;
-	case 6: // TWILEK
-		characterMask |= WearableObject::TWILEK;
-		break;
-	case 5: // BOTHAN
-		characterMask |= WearableObject::BOTHAN;
-		break;
-	case 7: // ZABRAK
-		characterMask |= WearableObject::ZABRAK;
-		break;
-	case 1: // RODIAN
-		characterMask |= WearableObject::RODIAN;
-		break;
-	case 3: //MONCALAMARI
-		characterMask |= WearableObject::MONCALAMARI;
-		break;
-	case 4: //WOOKIEE:
-		characterMask |= WearableObject::WOOKIEE;
-		break;
-	case 49: //SULLUSTAN:
-		characterMask |= WearableObject::SULLUSTAN;
-		break;
-	case 33: //ITHORIAN:
-		characterMask |= WearableObject::ITHORIAN;
-		break;
-	}
-
-	if (gender == MALE)
-		characterMask |= WearableObject::MALE;
-	else if (gender == FEMALE)
-		characterMask |= WearableObject::FEMALE;
-
-	return characterMask;
-
-}
-
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
 	if (object->isWeaponObject())
 		setWeapon( cast<WeaponObject*> (object));

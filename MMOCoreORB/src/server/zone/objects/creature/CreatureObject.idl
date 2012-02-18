@@ -877,14 +877,6 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	/**
-	 * Returns character mask to check against wearable player use mask
-	 * @pre {}
-	 * @post {}
-	 * 
-	 */
-	public native unsigned int getWearableMask();
-	
-	/**
 	 * Updates creatureLinkID with specified object
 	 * @pre { this is locked }
 	 * @post { this is locked }

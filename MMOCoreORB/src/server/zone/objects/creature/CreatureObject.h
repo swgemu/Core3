@@ -490,8 +490,6 @@ public:
 
 	void setControlDevice(ControlDevice* device);
 
-	unsigned int getWearableMask();
-
 	void setCreatureLink(CreatureObject* object, bool notifyClient = true);
 
 	void executeObjectControllerAction(unsigned int actionCRC);
@@ -1237,8 +1235,6 @@ public:
 
 	void setControlDevice(ControlDevice* device);
 
-	unsigned int getWearableMask();
-
 	void setCreatureLink(CreatureObject* object, bool notifyClient = true);
 
 	void executeObjectControllerAction(unsigned int actionCRC);
@@ -1819,8 +1815,6 @@ public:
 	bool clearState(unsigned long long state, bool notifyClient);
 
 	void setControlDevice(ControlDevice* device);
-
-	unsigned int getWearableMask();
 
 	void setCreatureLink(CreatureObject* object, bool notifyClient);
 

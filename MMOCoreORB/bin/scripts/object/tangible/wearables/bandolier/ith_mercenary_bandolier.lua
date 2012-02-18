@@ -42,8 +42,8 @@
 
 
 object_tangible_wearables_bandolier_ith_mercenary_bandolier = object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = ITHORIANS
+	playerRaces = { "object/creature/player/ithorian_male.iff",
+				"object/creature/player/ithorian_female.iff" },
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_ith_mercenary_bandolier, "object/tangible/wearables/bandolier/ith_mercenary_bandolier.iff")

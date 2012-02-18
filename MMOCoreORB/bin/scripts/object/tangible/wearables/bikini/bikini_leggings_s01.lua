@@ -42,7 +42,14 @@
 
 
 object_tangible_wearables_bikini_bikini_leggings_s01 = object_tangible_wearables_bikini_shared_bikini_leggings_s01:new {
-	playerUseMask = HUMANOID_FEMALES,
+	playerRaces = { "object/creature/player/bothan_female.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_female.iff" },
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

@@ -42,8 +42,22 @@
 
 
 object_tangible_wearables_necklace_necklace_platinum_pin = object_tangible_wearables_necklace_shared_necklace_platinum_pin:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOIDS
+	playerRaces = { "object/creature/player/bothan_male.iff",
+				"object/creature/player/bothan_female.iff",
+				"object/creature/player/human_male.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_male.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_male.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_male.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_male.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_male.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_male.iff",
+				"object/creature/player/zabrak_female.iff" },
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_necklace_platinum_pin, "object/tangible/wearables/necklace/necklace_platinum_pin.iff")

@@ -42,8 +42,13 @@
 
 
 object_tangible_wearables_boots_singing_mountain_clan_boots = object_tangible_wearables_boots_shared_singing_mountain_clan_boots:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOID_FOOTWEAR + HUMANOID_FEMALES
+	playerRaces = { "object/creature/player/bothan_female.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_female.iff" },
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_singing_mountain_clan_boots, "object/tangible/wearables/boots/singing_mountain_clan_boots.iff")

@@ -85,8 +85,6 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	targetable = tanoData->getTargetable();
 
-	playerUseMask = tanoData->getPlayerUseMask();
-
 	maxCondition = tanoData->getMaxCondition();
 
 	useCount = tanoData->getUseCount();
@@ -95,6 +93,8 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	pvpStatusBitmask = tanoData->getPvpStatusBitmask();
 
 	sliceable = tanoData->getSliceable();
+
+	faction = tanoData->getFaction();
 
 	threatMap = new ThreatMap(_this);
 }

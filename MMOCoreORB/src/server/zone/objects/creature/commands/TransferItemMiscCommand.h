@@ -69,6 +69,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		creature->info("transfer item misc");
+
 		/*StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
 		creature->info(infoMsg.toString(), true);*/

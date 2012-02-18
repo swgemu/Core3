@@ -28,7 +28,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -724,19 +724,6 @@ bool TangibleObject::isDestroyed() {
 		return _implementation->isDestroyed();
 }
 
-unsigned int TangibleObject::getPlayerUseMask() {
-	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETPLAYERUSEMASK__);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return _implementation->getPlayerUseMask();
-}
-
 void TangibleObject::setFaction(unsigned int crc) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1201,11 +1188,6 @@ bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "playerUseMask") {
-		TypeInfo<unsigned short >::parseFromBinaryStream(&playerUseMask, stream);
-		return true;
-	}
-
 	if (_name == "sliceable") {
 		TypeInfo<bool >::parseFromBinaryStream(&sliceable, stream);
 		return true;
@@ -1351,14 +1333,6 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerUseMask";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<unsigned short >::toBinaryStream(&playerUseMask, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "sliceable";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1376,7 +1350,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 18 + SceneObjectImplementation::writeObjectMembers(stream);
+	return 17 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation() {
@@ -1542,11 +1516,6 @@ SceneObject* TangibleObjectImplementation::getMainDefender() {
 bool TangibleObjectImplementation::isDestroyed() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage > maxCondition;
 	return conditionDamage > maxCondition;
-}
-
-unsigned int TangibleObjectImplementation::getPlayerUseMask() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return playerUseMask;
-	return playerUseMask;
 }
 
 void TangibleObjectImplementation::setFaction(unsigned int crc) {
@@ -1795,9 +1764,6 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISDESTROYED__:
 		resp->insertBoolean(isDestroyed());
 		break;
-	case RPC_GETPLAYERUSEMASK__:
-		resp->insertInt(getPlayerUseMask());
-		break;
 	case RPC_SETFACTION__INT_:
 		setFaction(inv->getUnsignedIntParameter());
 		break;
@@ -2039,10 +2005,6 @@ SceneObject* TangibleObjectAdapter::getMainDefender() {
 
 bool TangibleObjectAdapter::isDestroyed() {
 	return (static_cast<TangibleObject*>(stub))->isDestroyed();
-}
-
-unsigned int TangibleObjectAdapter::getPlayerUseMask() {
-	return (static_cast<TangibleObject*>(stub))->getPlayerUseMask();
 }
 
 void TangibleObjectAdapter::setFaction(unsigned int crc) {

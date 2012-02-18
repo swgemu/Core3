@@ -44,8 +44,8 @@
 object_tangible_wearables_armor_kashyyykian_hunting_armor_kashyyykian_hunting_chest_plate = object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_chest_plate:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = WOOKIEES,
+	playerRaces = { "object/creature/player/wookiee_male.iff",
+				"object/creature/player/wookiee_female.iff" },
 
 	-- Damage types in WeaponObject
 	vunerability = STUN + LIGHTSABER,

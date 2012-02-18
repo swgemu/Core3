@@ -40,6 +40,8 @@ protected:
 
 	bool sliceable;
 
+	int faction;
+
 	VectorMap<String, int64> skillMods;
 
 	Vector<short>* numberExperimentalProperties;
@@ -50,6 +52,7 @@ protected:
 	Vector<int>* experimentalMin;
 	Vector<int>* experimentalMax;
 	Vector<short>* experimentalPrecision;
+	Vector<uint32>* playerRaces;
 
 	Vector<Reference<ResourceWeight* > >* resourceWeights;
 	//CustomizationVariableMapping customizationVariableMapping;
@@ -107,6 +110,10 @@ public:
 		return playerUseMask;
 	}
 
+    inline int getFaction() const {
+    	return faction;
+    }
+
 	inline StructureFootprint* getStructureFootprint() const {
 		return structureFootprint;
 	}
@@ -161,6 +168,10 @@ public:
 
     Vector<short >* getExperimentalPrecision() {
         return experimentalPrecision;
+    }
+
+    Vector<uint32>* getPlayerRaces() {
+    	return playerRaces;
     }
 
     Vector<Reference<ResourceWeight* > >* getResourceWeights() {

@@ -42,7 +42,7 @@
 
 
 object_tangible_base_tangible_craftable = object_tangible_base_shared_tangible_craftable:new {
-	playerUseMask = ALL,
+	playerRaces = { },
 	
 	level = 10,
 	

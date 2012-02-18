@@ -42,8 +42,8 @@
 
 
 object_tangible_wearables_hat_hat_twilek_s04 = object_tangible_wearables_hat_shared_hat_twilek_s04:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = TWILEKS,
+	playerRaces = { "object/creature/player/twilek_male.iff",
+				"object/creature/player/twilek_female.iff" },
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

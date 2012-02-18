@@ -44,8 +44,20 @@
 object_tangible_wearables_armor_ubese_armor_ubese_boots = object_tangible_wearables_armor_ubese_shared_armor_ubese_boots:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOID_FOOTWEAR,
+	playerRaces = { "object/creature/player/bothan_male.iff",
+				"object/creature/player/bothan_female.iff",
+				"object/creature/player/human_male.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_male.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_male.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_male.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/twilek_male.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_male.iff",
+				"object/creature/player/zabrak_female.iff" },
 
 	-- Damage types in WeaponObject
 	vunerability = HEAT + COLD + STUN + LIGHTSABER,

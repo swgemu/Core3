@@ -6,6 +6,8 @@
  */
 
 #include "PlayerContainerComponent.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
@@ -16,18 +18,32 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	if (object->isTangibleObject() && containmentType == 4) {
 		TangibleObject* wearable = cast<TangibleObject*>( object);
 
-		uint16 charMask = creo->getWearableMask();
-		uint16 objMask = wearable->getPlayerUseMask();
+		SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(wearable->getObjectTemplate());
+		Vector<uint32>* races = tanoData->getPlayerRaces();
+		String race = creo->getObjectTemplate()->getFullTemplateString();
 
-		uint16 maskRes = ~objMask & charMask;
-
-		if (maskRes != 0) {
-			/*StringBuffer maskResol;
-						maskResol << "returned maskRes :" << maskRes;
-						info(maskResol.toString(), true);*/
+		if (!races->contains(race.hashCode())) {
 			errorDescription = "You lack the necessary requirements to wear this object";
 
 			return TransferErrorCode::PLAYERUSEMASKERROR;
+		}
+
+		if (creo->isPlayerCreature()) {
+			if (!wearable->isNeutral()) {
+				ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
+
+				if (wearable->isImperial() && (playerObject->getFactionStatus() == FactionStatus::ONLEAVE || !creo->isImperial())) {
+					errorDescription = "You lack the necessary requirements to wear this object";
+
+					return TransferErrorCode::PLAYERUSEMASKERROR;
+				}
+
+				if (wearable->isRebel() && (playerObject->getFactionStatus() == FactionStatus::ONLEAVE || !creo->isRebel())) {
+					errorDescription = "You lack the necessary requirements to wear this object";
+
+					return TransferErrorCode::PLAYERUSEMASKERROR;
+				}
+			}
 		}
 	}
 

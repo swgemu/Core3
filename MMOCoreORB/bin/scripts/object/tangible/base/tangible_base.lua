@@ -42,7 +42,7 @@
 
 
 object_tangible_base_tangible_base = object_tangible_base_shared_tangible_base:new {
-	playerUseMask = ALL,
+	playerRaces = {  },
 	
 	level = 10,
 	

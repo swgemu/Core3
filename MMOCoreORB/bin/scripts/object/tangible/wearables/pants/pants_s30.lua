@@ -42,8 +42,22 @@
 
 
 object_tangible_wearables_pants_pants_s30 = object_tangible_wearables_pants_shared_pants_s30:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOIDS,
+	playerRaces = { "object/creature/player/bothan_male.iff",
+				"object/creature/player/bothan_female.iff",
+				"object/creature/player/human_male.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_male.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_male.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_male.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_male.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_male.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_male.iff",
+				"object/creature/player/zabrak_female.iff" },
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

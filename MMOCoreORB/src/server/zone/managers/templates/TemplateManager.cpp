@@ -403,21 +403,6 @@ void TemplateManager::registerFunctions() {
 }
 
 void TemplateManager::registerGlobals() {
-	//ItemMasks
-	luaTemplatesInstance->setGlobalShort("MALE", WearableObject::MALE);
-	luaTemplatesInstance->setGlobalShort("FEMALE", WearableObject::FEMALE);
-
-	luaTemplatesInstance->setGlobalShort("HUMAN", WearableObject::HUMAN);
-	luaTemplatesInstance->setGlobalShort("TRANDOSHAN", WearableObject::TRANDOSHAN);
-	luaTemplatesInstance->setGlobalShort("TWILEK", WearableObject::TWILEK);
-	luaTemplatesInstance->setGlobalShort("BOTHAN", WearableObject::BOTHAN);
-	luaTemplatesInstance->setGlobalShort("ZABRAK", WearableObject::ZABRAK);
-	luaTemplatesInstance->setGlobalShort("RODIAN", WearableObject::RODIAN);
-	luaTemplatesInstance->setGlobalShort("MONCALAMARI", WearableObject::MONCALAMARI);
-	luaTemplatesInstance->setGlobalShort("WOOKIEE", WearableObject::WOOKIEE);
-	luaTemplatesInstance->setGlobalShort("SULLUSTAN", WearableObject::SULLUSTAN);
-	luaTemplatesInstance->setGlobalShort("ITHORIAN", WearableObject::ITHORIAN);
-
 	luaTemplatesInstance->setGlobalLong("DISEASED", CreatureState::DISEASED);
 	luaTemplatesInstance->setGlobalLong("ONFIRE", CreatureState::ONFIRE);
 	luaTemplatesInstance->setGlobalLong("POISONED", CreatureState::POISONED);
@@ -428,27 +413,9 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalLong("IMMOBILIZED", CreatureState::IMMOBILIZED);
 	luaTemplatesInstance->setGlobalLong("FROZEN", CreatureState::FROZEN);
 
-	luaTemplatesInstance->setGlobalShort("NEUTRAL", WearableObject::NEUTRAL);
-	luaTemplatesInstance->setGlobalShort("IMPERIAL", WearableObject::IMPERIAL);
-	luaTemplatesInstance->setGlobalShort("REBEL", WearableObject::REBEL);
-	luaTemplatesInstance->setGlobalShort("COVERT", WearableObject::COVERT);
-
 	luaTemplatesInstance->setGlobalShort("HEALTH", CreatureAttribute::HEALTH);
 	luaTemplatesInstance->setGlobalShort("ACTION", CreatureAttribute::ACTION);
 	luaTemplatesInstance->setGlobalShort("MIND", CreatureAttribute::MIND);
-
-	luaTemplatesInstance->setGlobalShort("ALL", WearableObject::ALL);
-	luaTemplatesInstance->setGlobalShort("ALLSEXES",  WearableObject::ALLSEXES);
-	luaTemplatesInstance->setGlobalShort("ALLFACTIONS", WearableObject::ALLFACTIONS);
-	luaTemplatesInstance->setGlobalShort("HUMANOIDS", WearableObject::HUMANOIDS);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_FOOTWEAR", WearableObject::HUMANOID_FOOTWEAR);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_MALES", WearableObject::HUMANOID_MALES);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_FEMALES", WearableObject::HUMANOID_FEMALES);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_IMPERIALS", WearableObject::HUMANOID_IMPERIALS);
-	luaTemplatesInstance->setGlobalShort("HUMANOID_REBELS", WearableObject::HUMANOID_REBELS);
-	luaTemplatesInstance->setGlobalShort("WOOKIEES", WearableObject::WOOKIEES);
-	luaTemplatesInstance->setGlobalShort("ITHORIANS", WearableObject::ITHORIANS);
-	luaTemplatesInstance->setGlobalShort("TWILEKS", WearableObject::TWILEKS);
 
 	luaTemplatesInstance->setGlobalInt("KINETIC", WeaponObject::KINETIC);
 	luaTemplatesInstance->setGlobalInt("ENERGY", WeaponObject::ENERGY);

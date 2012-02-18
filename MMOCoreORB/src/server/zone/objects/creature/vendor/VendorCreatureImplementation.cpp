@@ -166,11 +166,11 @@ void VendorCreatureImplementation::addClothingItem(CreatureObject* player, Tangi
 	if (player->getObjectID() != vendor.getOwnerID())
 		return;
 
-	uint16 clothingMask = clothing->getPlayerUseMask();
-	uint16 vendorMask = getWearableMask();
-	uint16 maskRes = ~clothingMask & vendorMask;
+	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(clothing->getObjectTemplate());
+	Vector<uint32>* races = tanoData->getPlayerRaces();
+	String race = getObjectTemplate()->getFullTemplateString();
 
-	if (maskRes != 0) {
+	if (!races->contains(race.hashCode())) {
 		//TODO: Change this so the vendor speaks it can't wear that item. like live.
 		player->sendSystemMessage("That vendor lacks the necessary requirements to wear this object");
 		return;

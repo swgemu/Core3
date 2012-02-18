@@ -162,7 +162,6 @@ void PlayerCreationManager::loadProfessionDefaultsInfo() {
 	for (int i = 0; i < pfdt.getTotalPaths(); ++i) {
 		String name = pfdt.getSkillNameAt(i);
 		String path = pfdt.getPathBySkillName(name);
-
 		iffStream = templateManager->openIffFile(path);
 
 		if (iffStream == NULL)
@@ -174,6 +173,7 @@ void PlayerCreationManager::loadProfessionDefaultsInfo() {
 		delete iffStream;
 
 		professionDefaultsInfo.put(name, pdi);
+		//info("Loading: " + pfdt.getSkillNameAt(i) + " Path: " + pfdt.getPathBySkillName(pfdt.getSkillNameAt(i)), true);
 	}
 
 	//Now we want to load the profession mods.
@@ -587,10 +587,17 @@ void PlayerCreationManager::addStartingItems(CreatureObject* creature, const Str
 	for (int i = 0; i < items->size(); ++i) {
 		String itemTemplate = items->get(i);
 
+		//instance()->info("Add Starting Items: " + itemTemplate, true);
+
 		ManagedReference<SceneObject*> item = zoneServer->createObject(itemTemplate.hashCode(), 1);
 
-		if (item != NULL)
-			creature->transferObject(item, 4, false);
+		if (item != NULL) {
+			String error;
+			if (creature->canAddObject(item, 4, error) == 0) {
+				creature->transferObject(item, 4, false);
+			}
+		}
+
 	}
 
 	// Get inventory.
@@ -626,18 +633,20 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 	for (int i = 0; i < itemTemplates->size(); ++i) {
 		String itemTemplate = itemTemplates->get(i);
 
+		//instance()->info("Add Profession Starting Items: " + itemTemplate, true);
+
 		ManagedReference<SceneObject*> item;
 
 		try {
 			item = zoneServer->createObject(itemTemplate.hashCode(), 1);
 		} catch (Exception& e) {
-
 		}
 
-		if (item != NULL)
-			creature->transferObject(item, 4, false);
-		else
-			error("could not create profession item " + itemTemplate);
+		if (item != NULL) {
+			String error;
+			if (creature->canAddObject(item, 4, error) == 0)
+				creature->transferObject(item, 4, false);
+		}
 	}
 
 	// Get inventory.
@@ -841,8 +850,10 @@ void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String
 			for (int i = 0; i < startingItems->size(); ++i) {
 				ManagedReference<SceneObject*> item = zoneServer->createObject(startingItems->get(i).hashCode(), 1);
 
-				if (item != NULL && inventory != NULL)
+				if (item != NULL && inventory != NULL) {
 					inventory->transferObject(item, -1, false);
+				}
+
 			}
 		}
 	}

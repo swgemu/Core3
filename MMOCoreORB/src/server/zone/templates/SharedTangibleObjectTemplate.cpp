@@ -20,6 +20,7 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	experimentalMin = new Vector<int>();
 	experimentalMax = new Vector<int>();
 	experimentalPrecision = new Vector<short>();
+	playerRaces = new Vector<uint32>();
 
 	resourceWeights = new Vector<Reference<ResourceWeight* > >();
 
@@ -36,7 +37,7 @@ SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
 	delete experimentalMin;
 	delete experimentalMax;
 	delete experimentalPrecision;
-
+	delete playerRaces;
 	delete resourceWeights;
 }
 
@@ -96,6 +97,28 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		pvpStatusBitmask = Lua::getIntParameter(state);
 	} else if (varName == "sliceable") {
 		sliceable = Lua::getIntParameter(state);
+	} else if (varName == "faction") {
+		String factionString = Lua::getStringParameter(state);
+		faction = factionString.toLowerCase().hashCode();
+	} else if (varName == "playerRaces") {
+		LuaObject races(state);
+
+		// Inherited lists need to be tossed if a new list is about to be created
+		if (playerRaces->size() != 0) {
+			playerRaces->removeAll();
+		}
+
+		for (int i = 1; i <= races.getTableSize(); ++i) {
+			String race = races.getStringAt(i);
+
+			if (!playerRaces->contains(race.hashCode())) {
+				playerRaces->add(race.hashCode());
+			}
+
+
+		}
+
+		races.pop();
 	} else if (varName == "skillMods") {
 		LuaObject smods(state);
 		for (int i = 1; i <= smods.getTableSize(); ++i) {

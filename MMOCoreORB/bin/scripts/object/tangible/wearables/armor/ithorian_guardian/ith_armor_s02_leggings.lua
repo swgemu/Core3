@@ -45,8 +45,8 @@ object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_leggings = objec
 
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = ITHORIANS,
+	playerRaces = { "object/creature/player/ithorian_male.iff",
+				"object/creature/player/ithorian_female.iff" },
 
 	-- Damage types in WeaponObject
 	vunerability = ACID + STUN + LIGHTSABER,

@@ -44,8 +44,14 @@
 object_tangible_wearables_armor_singing_mountain_clan_armor_smc_s01_bracer_r = object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOID_FEMALES,
+	playerRaces = { "object/creature/player/bothan_female.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_female.iff" },
 	
 	-- Damage types in WeaponObject
 	vunerability = HEAT + ACID + STUN + LIGHTSABER,

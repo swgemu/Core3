@@ -42,8 +42,8 @@
 
 
 object_tangible_wearables_wookiee_wke_lifeday_robe = object_tangible_wearables_wookiee_shared_wke_lifeday_robe:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = WOOKIEES
+	playerRaces = { "object/creature/player/wookiee_male.iff",
+				"object/creature/player/wookiee_female.iff" },
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_wke_lifeday_robe, "object/tangible/wearables/wookiee/wke_lifeday_robe.iff")

@@ -44,8 +44,14 @@
 object_tangible_wearables_armor_nightsister_armor_nightsister_bicep_r_s01 = object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOID_FEMALES,
+	playerRaces = { "object/creature/player/bothan_female.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_female.iff" },
 	
 	-- Damage types in WeaponObject
 	vunerability = ELECTRICITY + ACID + STUN + LIGHTSABER,

@@ -44,8 +44,8 @@
 object_tangible_wearables_armor_kashyyykian_black_mtn_armor_kashyyykian_black_mtn_bracer_l = object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_l:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = WOOKIEES,
+	playerRaces = { "object/creature/player/wookiee_male.iff",
+				"object/creature/player/wookiee_female.iff"},
 
 	-- Damage types in WeaponObject
 	vunerability = HEAT + COLD + STUN + LIGHTSABER,
