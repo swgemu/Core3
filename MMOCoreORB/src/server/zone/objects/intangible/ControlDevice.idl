@@ -53,7 +53,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.creature.CreatureObject;
-
+include server.zone.objects.scene.variables.ContainerPermissions;
 
 class ControlDevice extends IntangibleObject {
 	protected TangibleObject controlledObject;
@@ -64,6 +64,12 @@ class ControlDevice extends IntangibleObject {
 		Logger.setLoggingName("ControlDevice");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
+		
+		super.getContainerPermissions().setInheritPermissionsFromParent(true);
+
+		ContainerPermissions permissions = super.getContainerPermissions();
+		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
 	}
 	
 	/**
