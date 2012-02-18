@@ -345,6 +345,12 @@ void WeatherManagerImplementation::changeWeather(CreatureObject* player, int new
 }
 
 void WeatherManagerImplementation::printInfo(CreatureObject* player) {
+
+	if(currentMap == NULL) {
+		player->sendSystemMessage("The weather currently is " + baseWeather);
+		return;
+	}
+
 	StringBuffer message;
 	message << "Base: " << baseWeather << " " << currentMap->printInfo(player->getPositionX(), player->getPositionY());
 	player->sendSystemMessage(message.toString());
