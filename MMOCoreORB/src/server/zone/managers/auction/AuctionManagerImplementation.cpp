@@ -497,14 +497,14 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		UnicodeString subject1("@auction:subject_instant_buyer");
 		StringIdChatParameter body1("@auction:buyer_success");
 		body1.setTO(item->getItemName());
-		body1.setTT(item->getOwnerName());
+		body1.setTT(item->getBidderName());
 		body1.setDI(price1);
 
 		// Setup the mail to the seller
 		UnicodeString subject2("@auction:subject_instant_seller");
 		StringIdChatParameter body2("@auction:seller_success");
 		body2.setTO(item->getItemName());
-		body2.setTT(item->getBidderName());
+		body2.setTT(item->getOwnerName());
 		body2.setDI(price1);
 
 		//Send the Mail
