@@ -1296,7 +1296,9 @@ void PlayerObjectImplementation::doRecovery() {
 
 	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
 		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
-		weatherManager->sendWeatherTo(creature);
+
+		if (weatherManager != NULL)
+			weatherManager->sendWeatherTo(creature);
 	}
 
 	activateRecovery();
