@@ -282,7 +282,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	String firstName;
 
 	if (sender->isPlayerCreature())
-		firstName = (cast<CreatureObject*>(sender))->getFirstName();
+		firstName = (cast<CreatureObject*>(sender))->getFirstName().toLowerCase();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sender->getCloseObjects();
 
@@ -666,6 +666,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	}
 
 	CreatureObject* player = cast<CreatureObject*>(receiver.get());
+	PlayerObject* ghost = player->getPlayerObject();
 
 	/*StringIdChatParameter test("base_player", "sale_fee");
 	test.setDI(100);
@@ -682,8 +683,6 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	ObjectManager::instance()->persistObject(mail, 1, "mail");
 
 	Locker _locker(player);
-
-	PlayerObject* ghost = player->getPlayerObject();
 
 	ghost->addPersistentMessage(mail->getObjectID());
 

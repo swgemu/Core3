@@ -84,6 +84,29 @@ public:
 			return;
 
 		ChatManager* chatManager = server->getChatManager();
+
+		uint64 receiverObjectID = server->getPlayerManager()->getObjectID(recipientName);
+
+		if (receiverObjectID == 0) {
+			return;
+		}
+
+		ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
+
+		if (receiver == NULL || !receiver->isPlayerCreature())
+			return;
+
+		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
+		PlayerObject* ghost = receiverPlayer->getPlayerObject();
+
+		if (ghost->isIgnoring(player->getFirstName().toLowerCase())) {
+			StringIdChatParameter err("ui_pm", "recipient_ignored_prose");
+			err.setTT(recipientName);
+			player->sendSystemMessage(err);
+
+			return;
+		}
+
 		int result = chatManager->sendMail(player->getFirstName(), header, body, recipientName, &stringIdParameters, &waypointParameters);
 
 		ChatOnSendPersistentMessage* cospm = new ChatOnSendPersistentMessage(sequence, result);
