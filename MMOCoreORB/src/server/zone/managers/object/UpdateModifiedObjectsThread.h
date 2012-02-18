@@ -10,6 +10,17 @@
 
 #include "engine/engine.h"
 
+namespace server {
+ namespace zone {
+  namespace managers {
+   namespace object {
+    class ObjectManager;
+   }
+  }
+ }
+}
+
+using namespace server::zone::managers::object;
 
 class UpdateModifiedObjectsThread : public Thread {
 	ObjectManager* objectManager;

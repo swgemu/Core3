@@ -21,7 +21,7 @@
 #include "server/chat/ChatManager.h"
 #include "UpdateModifiedObjectsTask.h"
 #include "engine/db/berkley/BTransaction.h"
-#include "CommitMasterTransactionTask.h"
+#include "CommitMasterTransactionThread.h"
 #include "ObjectVersionUpdateManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
@@ -67,6 +67,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	for (int i = 0; i < INITIALUPDATEMODIFIEDOBJECTSTHREADS; ++i) {
 		createUpdateModifiedObjectsThread();
 	}
+
+	CommitMasterTransactionThread::instance()->start();
 }
 
 ObjectManager::~ObjectManager() {
@@ -1167,9 +1169,8 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 	Core::getTaskManager()->unblockTaskManager(lockers);
 	delete lockers;
 //#endif
-	Reference<CommitMasterTransactionTask*> watchDog = new CommitMasterTransactionTask(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask, galaxyId, resultSet);
-	watchDog->schedule(500);
 
+	CommitMasterTransactionThread::instance()->startWatch(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask, galaxyId, resultSet);
 
 
 #ifndef WITH_STM

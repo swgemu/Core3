@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-conversion-null -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual
+AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual
 
 ENGINE3_PATH=../../../../MMOEngine
 
@@ -357,6 +357,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/object/ObjectVersionUpdateManager.cpp \
 		server/zone/managers/object/UpdateModifiedObjectsThread.cpp \
+		server/zone/managers/object/CommitMasterTransactionThread.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
 		server/zone/managers/planet/MapLocationTable.cpp \
 		server/zone/managers/planet/MapLocationEntry.cpp \
