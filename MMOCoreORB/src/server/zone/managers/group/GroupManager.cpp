@@ -66,6 +66,11 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 
 	Locker clocker(player, leader);
 
+	if (player == leader) {
+		leader->sendSystemMessage("@group:invite_no_target_self");
+		return;
+	}
+
 	if (leader->isGrouped()) {
 		ManagedReference<GroupObject*> group = leader->getGroup();
 
