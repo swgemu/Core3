@@ -47,6 +47,8 @@ which carries forward this exception.
 #include "server/zone/objects/creature/variables/Skill.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/badges/Badge.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/datatables/DataTableIff.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
@@ -255,6 +257,21 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		//Update maximum experience.
 		updateXpLimits(ghost);
 
+		if (skillName.contains("master")) {
+			uint32 badge = Badge::getID(skillName);
+
+			if (badge == -1 && skillName == "crafting_shipwright_master") {
+				badge = Badge::getID("crafting_shipwright");
+			}
+
+			if (badge != -1) {
+				ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+
+				if (playerManager != NULL) {
+					playerManager->awardBadge(ghost, badge);
+				}
+			}
+		}
 	}
 
 	/// Update client with new values for things like Terrain Negotiation
