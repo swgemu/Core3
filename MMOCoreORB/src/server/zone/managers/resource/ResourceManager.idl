@@ -48,6 +48,7 @@ import engine.core.ManagedObject;
 import engine.lua.Lua;
 import engine.log.Logger;
 import server.zone.ZoneServer;
+import server.zone.Zone;
 import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
 import server.zone.objects.creature.CreatureObject;
@@ -88,7 +89,12 @@ class ResourceManager extends Observer implements Logger {
 		zoneServer = server;
 		processor = impl;
 		objectManager = objectMan;
+	
+		resourceSpawner = new ResourceSpawner(server, impl, objectMan);
+	
+		Logger.info("ResourceManager started");
 	}
+	
 	
 	public native void stop();
 	public native void initialize();
@@ -128,6 +134,11 @@ class ResourceManager extends Observer implements Logger {
 	public native void listResourcesForPlanetOnScreen(CreatureObject creature, final string planet);
 
 	public native string healthCheck(); 
+	
+	@local
+	public void addZone(Zone zone) {
+		resourceSpawner.addZone(zone.getZoneName());
+	}
 
 }
 

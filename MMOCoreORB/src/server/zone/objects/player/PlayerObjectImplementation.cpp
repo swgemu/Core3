@@ -341,9 +341,11 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
 		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
-		creature->setCurrentWind((byte)System::random(200));
-		creature->setCurrentWeather(0xFF);
-		weatherManager->sendWeatherTo(creature);
+		if(weatherManager != NULL) {
+			creature->setCurrentWind((byte)System::random(200));
+			creature->setCurrentWeather(0xFF);
+			weatherManager->sendWeatherTo(creature);
+		}
 	}
 }
 

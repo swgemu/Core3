@@ -6,6 +6,8 @@
 
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/Zone.h"
+
 #include "server/zone/ZoneProcessServer.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
@@ -22,7 +24,7 @@
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_,RPC_HEALTHCHECK__};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_,RPC_HEALTHCHECK__,};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -331,6 +333,15 @@ String ResourceManager::healthCheck() {
 		return _implementation->healthCheck();
 }
 
+void ResourceManager::addZone(Zone* zone) {
+	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->addZone(zone);
+}
+
 DistributedObjectServant* ResourceManager::_getImplementation() {
 
 	_updated = true;
@@ -470,6 +481,7 @@ int ResourceManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
+	Reference<ResourceSpawner*> _ref0;
 	// server/zone/managers/resource/ResourceManager.idl():  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
 	// server/zone/managers/resource/ResourceManager.idl():  		Logger.setLogging(true);
@@ -482,6 +494,15 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server,
 	processor = impl;
 	// server/zone/managers/resource/ResourceManager.idl():  		objectManager = objectMan;
 	objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl():  		resourceSpawner = new ResourceSpawner(server, impl, objectMan);
+	resourceSpawner = _ref0 = new ResourceSpawner(server, impl, objectMan);
+	// server/zone/managers/resource/ResourceManager.idl():  		Logger.info("ResourceManager started");
+	Logger::info("ResourceManager started");
+}
+
+void ResourceManagerImplementation::addZone(Zone* zone) {
+	// server/zone/managers/resource/ResourceManager.idl():  		resourceSpawner.addZone(zone.getZoneName());
+	resourceSpawner->addZone(zone->getZoneName());
 }
 
 /*

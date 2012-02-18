@@ -56,10 +56,6 @@ void ResourceManagerImplementation::initialize() {
 	lua = new Lua();
 	lua->init();
 
-	info("building resource tree");
-	resourceSpawner = new ResourceSpawner(zoneServer.get(), processor, objectManager);
-
-	info("loading configuration");
 	if(!loadConfigData()) {
 
 		loadDefaultConfig();
@@ -69,10 +65,7 @@ void ResourceManagerImplementation::initialize() {
 
 	resourceSpawner->init();
 
-	info("starting resource spawner");
 	startResourceSpawner();
-	info("resource manager initialized");
-
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
@@ -106,17 +99,6 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 bool ResourceManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
-
-	String zonesString = lua->getGlobalString("activeZones");
-
-	StringTokenizer zonesTokens(zonesString);
-	zonesTokens.setDelimeter(",");
-
-	while(zonesTokens.hasMoreTokens()) {
-		String token;
-		zonesTokens.getStringToken(token);
-		resourceSpawner->addPlanet(token);
-	}
 
 	shiftInterval = lua->getGlobalInt("averageShiftTime");
 
@@ -161,16 +143,16 @@ bool ResourceManagerImplementation::loadConfigData() {
 
 void ResourceManagerImplementation::loadDefaultConfig() {
 
-	resourceSpawner->addPlanet("corellia");
-	resourceSpawner->addPlanet("lok");
-	resourceSpawner->addPlanet("yavin4");
-	resourceSpawner->addPlanet("dantooine");
-	resourceSpawner->addPlanet("dathomir");
-	resourceSpawner->addPlanet("naboo");
-	resourceSpawner->addPlanet("rori");
-	resourceSpawner->addPlanet("talus");
-	resourceSpawner->addPlanet("tatooine");
-	resourceSpawner->addPlanet("endor");
+	resourceSpawner->addZone("corellia");
+	resourceSpawner->addZone("lok");
+	resourceSpawner->addZone("yavin4");
+	resourceSpawner->addZone("dantooine");
+	resourceSpawner->addZone("dathomir");
+	resourceSpawner->addZone("naboo");
+	resourceSpawner->addZone("rori");
+	resourceSpawner->addZone("talus");
+	resourceSpawner->addZone("tatooine");
+	resourceSpawner->addZone("endor");
 
 	shiftInterval = 7200000;
 	resourceSpawner->setSpawningParameters(86400, 90, 1000, 0);
@@ -372,6 +354,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 			tanod3->setQuantity(rcno->getQuantity());
 			tanod3->close();
 			player->sendMessage(tanod3);
+			return;
 		} else {
 			rcno->destroyObjectFromWorld(true);
 			rcno->destroyObjectFromDatabase(true);

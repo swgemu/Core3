@@ -24,6 +24,16 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+
 class ZoneProcessServer;
 
 } // namespace zone
@@ -174,6 +184,8 @@ public:
 
 	String healthCheck();
 
+	void addZone(Zone* zone);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -270,6 +282,8 @@ public:
 	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
 
 	String healthCheck();
+
+	void addZone(Zone* zone);
 
 	WeakReference<ResourceManager*> _this;
 

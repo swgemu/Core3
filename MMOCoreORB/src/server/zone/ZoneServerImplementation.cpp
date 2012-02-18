@@ -197,6 +197,9 @@ void ZoneServerImplementation::initialize() {
 	lootManager->deploy("LootManager");
 	lootManager->initialize();
 
+	resourceManager = new ResourceManager(_this, processor, objectManager);
+	resourceManager->deploy("ResourceManager");
+
 	startZones();
 
 	startManagers();
@@ -234,8 +237,6 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	resourceManager = new ResourceManager(_this, processor, objectManager);
-	resourceManager->deploy("ResourceManager");
 	resourceManager->initialize();
 
 	auctionManager = new AuctionManager(_this);

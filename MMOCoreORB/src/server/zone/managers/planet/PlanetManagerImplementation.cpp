@@ -12,6 +12,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/weather/WeatherManager.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 
 #include "engine/util/iffstream/IffStream.h"
 #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
@@ -60,8 +61,7 @@ void PlanetManagerImplementation::initialize() {
 
 	loadStaticTangibleObjects();
 
-	weatherManager = new WeatherManager(zone);
-	weatherManager->initialize();
+	weatherManager == NULL;
 }
 
 void PlanetManagerImplementation::loadLuaConfig() {
@@ -76,6 +76,29 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	LuaObject luaObject = lua->getGlobalObject(planetName);
 
 	if (luaObject.isValidTable()) {
+
+		bool weatherEnabled = luaObject.getIntField("weatherEnabled");
+		if(weatherEnabled) {
+			weatherManager = new WeatherManager(zone);
+			weatherManager->initialize();
+			info("Weather Enabled", true);
+		} else {
+			info("Weather Disabled", true);
+		}
+
+		bool resourcesEnabled = luaObject.getIntField("resourcesEnabled");
+		if(resourcesEnabled) {
+			ManagedReference<ResourceManager*> resourceMan = zone->getZoneServer()->getResourceManager();
+			if(resourceMan != NULL) {
+				resourceMan->addZone(zone);
+				info("Resources Enabled", true);
+			} else {
+				error("ResourceManager Missing");
+			}
+		} else {
+			info("Resources Disabled", true);
+		}
+
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
 		planetTravelPointList->readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();

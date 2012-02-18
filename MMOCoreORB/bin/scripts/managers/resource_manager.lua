@@ -40,9 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---  These indicate zone names where resources spawn
-activeZones = "corellia,tatooine,lok,naboo,rori,endor,talus,yavin4,dathomir,dantooine"
-
 averageShiftTime = 7200000 -- In milliseconds
   --  This is the time between each time the Resource Manager schedules
   --  itself to run again.

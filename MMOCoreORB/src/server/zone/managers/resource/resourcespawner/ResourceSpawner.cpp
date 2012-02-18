@@ -119,8 +119,8 @@ void ResourceSpawner::initializeNativePool(const String& includes,
 	nativePool->initialize(includes, excludes);
 }
 
-void ResourceSpawner::addPlanet(const String& planetName) {
-	activeResourceZones.add(planetName);
+void ResourceSpawner::addZone(const String& zoneName) {
+	activeResourceZones.add(zoneName);
 }
 
 void ResourceSpawner::addJtlResource(const String& resourceName) {
@@ -153,7 +153,6 @@ void ResourceSpawner::start() {
 }
 
 void ResourceSpawner::loadResourceSpawns() {
-	info("Building Resource Map");
 
 	ObjectDatabase* resourceDatabase =
 			ObjectDatabaseManager::instance()->loadObjectDatabase("resourcespawns",
