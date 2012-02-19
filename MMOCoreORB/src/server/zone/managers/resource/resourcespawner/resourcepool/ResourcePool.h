@@ -100,7 +100,7 @@ public:
 	/**
 	 * Deconstructor
 	 */
-	~ResourcePool() {
+	virtual ~ResourcePool() {
 		resourceSpawner = NULL;
 		includedResources.removeAll();
 		excludedResources.removeAll();

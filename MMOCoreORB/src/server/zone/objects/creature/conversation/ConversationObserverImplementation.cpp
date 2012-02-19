@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/conversation/ConversationManager.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
+#include "server/zone/packets/object/StopNpcConversation.h"
 
 ConversationObserverImplementation::ConversationObserverImplementation(ConversationTemplate* conversationTemplate) {
 	this->conversationTemplate = conversationTemplate;
@@ -55,21 +56,28 @@ ConversationObserverImplementation::ConversationObserverImplementation(Conversat
 int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	//Verify needed parameters
 	if (eventType != ObserverEventType::CONVERSE && eventType != ObserverEventType::STARTCONVERSATION &&
-		eventType != ObserverEventType::SELECTCONVERSATION && eventType != ObserverEventType::STOPCONVERSATION) {
+		eventType != ObserverEventType::SELECTCONVERSATION && eventType != ObserverEventType::STOPCONVERSATION &&
+		eventType != ObserverEventType::POSITIONCHANGED) {
 		//Incorrect event type.
 		return 0;
 	}
-	if (observable == NULL || arg1 == NULL) {
+
+	if (observable == NULL)
 		return 0;
-	}
+
+	if (arg1 == NULL && eventType != ObserverEventType::POSITIONCHANGED)
+		return 0;
 
 	//Try to convert parameters to correct types.
-	CreatureObject* npc;
-	CreatureObject* player;
+	CreatureObject* npc = NULL;
+	CreatureObject* player = NULL;
 	int selectedOption;
 	try {
 		npc = cast<CreatureObject* >(observable);
-		player = cast<CreatureObject* >(arg1);
+
+		if (arg1 != NULL)
+			player = cast<CreatureObject* >(arg1);
+
 		if (arg2 < std::numeric_limits<int>::min()) {
 			selectedOption = std::numeric_limits<int>::min();
 		} else if (arg2 > std::numeric_limits<int>::max()) {
@@ -77,49 +85,71 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		} else {
 			selectedOption = arg2;
 		}
-	}
-	catch (...) {
+	} catch (...) {
 		//Failed to convert parameters. Keep observer.
 		return 0;
 	}
 
-	//Call event method if conversation ended.
-	if (eventType == ObserverEventType::STOPCONVERSATION) {
-		//Cancel any active session.
-		cancelConversationSession(player);
+	switch (eventType) {
+	case ObserverEventType::POSITIONCHANGED:
+		if (npc != NULL) { //the observable in this case is the player
+			ManagedReference<ConversationSession*> session = dynamic_cast<ConversationSession*>(npc->getActiveSession(SessionFacadeType::CONVERSATION));
+
+			if (session != NULL) {
+				if (npc->getDistanceTo(session->getNPC()) > 7.f) {
+					cancelConversationSession(npc, session->getNPC(), true);
+					return 0;
+				}
+			}
+
+		}
+
+		return 0;
+
+	case ObserverEventType::STOPCONVERSATION:
+		cancelConversationSession(player, npc);
 		//Keep observer.
 		return 0;
-	} else {
-		if (eventType == ObserverEventType::STARTCONVERSATION) {
-			//Cancel any existing sessions.
-			cancelConversationSession(player);
-			//Create a new session.
-			createConversationSession(player);
-		}
-		//Select next conversation screen.
-		Reference<ConversationScreen*> conversationScreen = getNextConversationScreen(player, selectedOption, npc);
 
-		if (conversationScreen != NULL) {
-			//Modify the conversation screen.
-			conversationScreen = runScreenHandlers(player, npc, selectedOption, conversationScreen);
-		}
-
-		//Send the conversation screen to the player.
-		sendConversationScreenToPlayer(player, npc, conversationScreen);
-
-		if (conversationScreen == NULL)
-			cancelConversationSession(player);
+	case ObserverEventType::STARTCONVERSATION: {
+		//Cancel any existing sessions.
+		cancelConversationSession(player, npc);
+		//Create a new session.
+		createConversationSession(player, npc);
+		createPositionObserver(player);
+		break;
 	}
+	default:
+		break;
+	}
+
+	//Select next conversation screen.
+	Reference<ConversationScreen*> conversationScreen = getNextConversationScreen(player, selectedOption, npc);
+
+	if (conversationScreen != NULL) {
+		//Modify the conversation screen.
+		conversationScreen = runScreenHandlers(player, npc, selectedOption, conversationScreen);
+	}
+
+	//Send the conversation screen to the player.
+	sendConversationScreenToPlayer(player, npc, conversationScreen);
+
+	if (conversationScreen == NULL)
+		cancelConversationSession(player, npc);
 
 	//Keep the observer.
 	return 0;
 }
 
-void ConversationObserverImplementation::createConversationSession(CreatureObject* conversingPlayer) {
-	conversingPlayer->addActiveSession(SessionFacadeType::CONVERSATION, new ConversationSession());
+void ConversationObserverImplementation::createConversationSession(CreatureObject* conversingPlayer, CreatureObject* npc) {
+	conversingPlayer->addActiveSession(SessionFacadeType::CONVERSATION, new ConversationSession(npc));
 }
 
-void ConversationObserverImplementation::cancelConversationSession(CreatureObject* conversingPlayer) {
+void ConversationObserverImplementation::createPositionObserver(CreatureObject* player) {
+	player->registerObserver(ObserverEventType::POSITIONCHANGED, _this);
+}
+
+void ConversationObserverImplementation::cancelConversationSession(CreatureObject* conversingPlayer, CreatureObject* npc, bool forceClose) {
 	ManagedReference<Facade*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION);
 
 	if (session != NULL) {
@@ -127,6 +157,11 @@ void ConversationObserverImplementation::cancelConversationSession(CreatureObjec
 	}
 
 	conversingPlayer->dropActiveSession(SessionFacadeType::CONVERSATION);
+
+	conversingPlayer->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
+
+	if (forceClose)
+		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, npc->getObjectID()));
 }
 
 ConversationScreen* ConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {

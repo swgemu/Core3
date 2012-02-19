@@ -11,6 +11,20 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
 #include "server/zone/objects/player/sessions/ConversationSession.h"
@@ -25,7 +39,7 @@ namespace sessions {
 
 class TrainerConversationSession : public ConversationSession {
 public:
-	TrainerConversationSession();
+	TrainerConversationSession(CreatureObject* npc);
 
 	void clearTrainableSkills();
 
@@ -92,7 +106,7 @@ class TrainerConversationSessionImplementation : public ConversationSessionImple
 	String selectedSkill;
 
 public:
-	TrainerConversationSessionImplementation();
+	TrainerConversationSessionImplementation(CreatureObject* npc);
 
 	TrainerConversationSessionImplementation(DummyConstructorParameter* param);
 

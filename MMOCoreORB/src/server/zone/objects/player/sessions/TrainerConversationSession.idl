@@ -47,6 +47,7 @@ package server.zone.objects.player.sessions;
 import engine.util.Facade;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sessions.ConversationSession;
+import server.zone.objects.creature.CreatureObject;
 
 class TrainerConversationSession extends ConversationSession {
 	@dereferenced
@@ -59,7 +60,9 @@ class TrainerConversationSession extends ConversationSession {
 
 	private string selectedSkill;
 
-	public native TrainerConversationSession();
+	public TrainerConversationSession(CreatureObject npc) {
+		super(npc);
+	}
 
 	public native void clearTrainableSkills();
 

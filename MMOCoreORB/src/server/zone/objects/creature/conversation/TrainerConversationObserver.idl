@@ -56,6 +56,6 @@ class TrainerConversationObserver extends ConversationObserver {
 
 	public native TrainerConversationObserver(ConversationTemplate conversationTemplate);
 
-	protected abstract native void createConversationSession(CreatureObject conversingPlayer);
+	protected abstract native void createConversationSession(CreatureObject conversingPlayer, CreatureObject npc);
 }
 

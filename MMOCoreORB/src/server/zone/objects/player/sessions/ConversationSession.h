@@ -25,6 +25,20 @@ class ConversationScreen;
 
 using namespace server::zone::templates::mobile;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
 #include "engine/util/Facade.h"
@@ -37,11 +51,13 @@ namespace sessions {
 
 class ConversationSession : public Facade {
 public:
-	ConversationSession();
+	ConversationSession(CreatureObject* conversingCreature);
 
 	void setLastConversationScreen(ConversationScreen* screen);
 
 	ConversationScreen* getLastConversationScreen();
+
+	CreatureObject* getNPC();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -70,16 +86,21 @@ namespace player {
 namespace sessions {
 
 class ConversationSessionImplementation : public FacadeImplementation {
+protected:
 	Reference<ConversationScreen* > lastConversationScreen;
 
+	ManagedWeakReference<CreatureObject* > npc;
+
 public:
-	ConversationSessionImplementation();
+	ConversationSessionImplementation(CreatureObject* conversingCreature);
 
 	ConversationSessionImplementation(DummyConstructorParameter* param);
 
 	void setLastConversationScreen(ConversationScreen* screen);
 
 	ConversationScreen* getLastConversationScreen();
+
+	CreatureObject* getNPC();
 
 	WeakReference<ConversationSession*> _this;
 
@@ -123,6 +144,8 @@ public:
 	ConversationSessionAdapter(ConversationSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	CreatureObject* getNPC();
 
 };
 

@@ -4,14 +4,16 @@
 
 #include "TrainerConversationSession.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	TrainerConversationSessionStub
  */
 
 enum {RPC_CLEARTRAINABLESKILLS__ = 6,RPC_ADDTRAINABLESKILL__STRING_,RPC_GETTRAINABLESKILLS__INT_,RPC_GETTRAINABLESKILLSCOUNT__,RPC_CLEARNEXTSKILLS__,RPC_ADDNEXTSKILL__STRING_,RPC_GETNEXTSKILL__INT_,RPC_GETNEXTSKILLSCOUNT__,RPC_SETSELECTEDSKILL__STRING_,RPC_GETSELECTEDSKILL__,RPC_GETMASTERSKILL__,RPC_SETMASTERSKILL__STRING_};
 
-TrainerConversationSession::TrainerConversationSession() : ConversationSession(DummyConstructorParameter::instance()) {
-	TrainerConversationSessionImplementation* _implementation = new TrainerConversationSessionImplementation();
+TrainerConversationSession::TrainerConversationSession(CreatureObject* npc) : ConversationSession(DummyConstructorParameter::instance()) {
+	TrainerConversationSessionImplementation* _implementation = new TrainerConversationSessionImplementation(npc);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -364,6 +366,10 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 
 
 	return 4 + ConversationSessionImplementation::writeObjectMembers(stream);
+}
+
+TrainerConversationSessionImplementation::TrainerConversationSessionImplementation(CreatureObject* npc) : ConversationSessionImplementation(npc) {
+	_initializeImplementation();
 }
 
 void TrainerConversationSessionImplementation::addTrainableSkill(String& skillName) {

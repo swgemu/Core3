@@ -6,14 +6,16 @@
 
 #include "server/zone/templates/mobile/ConversationScreen.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	ConversationSessionStub
  */
 
-enum {};
+enum {RPC_GETNPC__};
 
-ConversationSession::ConversationSession() : Facade(DummyConstructorParameter::instance()) {
-	ConversationSessionImplementation* _implementation = new ConversationSessionImplementation();
+ConversationSession::ConversationSession(CreatureObject* conversingCreature) : Facade(DummyConstructorParameter::instance()) {
+	ConversationSessionImplementation* _implementation = new ConversationSessionImplementation(conversingCreature);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -42,6 +44,19 @@ ConversationScreen* ConversationSession::getLastConversationScreen() {
 
 	} else
 		return _implementation->getLastConversationScreen();
+}
+
+CreatureObject* ConversationSession::getNPC() {
+	ConversationSessionImplementation* _implementation = static_cast<ConversationSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETNPC__);
+
+		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getNPC();
 }
 
 DistributedObjectServant* ConversationSession::_getImplementation() {
@@ -154,6 +169,11 @@ bool ConversationSessionImplementation::readObjectMember(ObjectInputStream* stre
 		return true;
 	}
 
+	if (_name == "npc") {
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&npc, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -177,14 +197,24 @@ int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "npc";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&npc, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 1 + FacadeImplementation::writeObjectMembers(stream);
+
+	return 2 + FacadeImplementation::writeObjectMembers(stream);
 }
 
-ConversationSessionImplementation::ConversationSessionImplementation() {
+ConversationSessionImplementation::ConversationSessionImplementation(CreatureObject* conversingCreature) {
 	_initializeImplementation();
 	// server/zone/objects/player/sessions/ConversationSession.idl():  		lastConversationScreen = null;
 	lastConversationScreen = NULL;
+	// server/zone/objects/player/sessions/ConversationSession.idl():  		npc = conversingCreature;
+	npc = conversingCreature;
 }
 
 void ConversationSessionImplementation::setLastConversationScreen(ConversationScreen* screen) {
@@ -195,6 +225,11 @@ void ConversationSessionImplementation::setLastConversationScreen(ConversationSc
 ConversationScreen* ConversationSessionImplementation::getLastConversationScreen() {
 	// server/zone/objects/player/sessions/ConversationSession.idl():  		return lastConversationScreen;
 	return lastConversationScreen;
+}
+
+CreatureObject* ConversationSessionImplementation::getNPC() {
+	// server/zone/objects/player/sessions/ConversationSession.idl():  		return npc;
+	return npc;
 }
 
 /*
@@ -208,11 +243,18 @@ Packet* ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_GETNPC__:
+		resp->insertLong(getNPC()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+CreatureObject* ConversationSessionAdapter::getNPC() {
+	return (static_cast<ConversationSession*>(stub))->getNPC();
 }
 
 /*

@@ -67,6 +67,6 @@ TrainerConversationObserverImplementation::TrainerConversationObserverImplementa
 	registerScreenHandler(TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID, &trainerScreenHandlers.trainedMasterScreenHandler);
 }
 
-void TrainerConversationObserverImplementation::createConversationSession(CreatureObject* conversingPlayer) {
-	conversingPlayer->addActiveSession(SessionFacadeType::CONVERSATION, new TrainerConversationSession());
+void TrainerConversationObserverImplementation::createConversationSession(CreatureObject* conversingPlayer, CreatureObject* npc) {
+	conversingPlayer->addActiveSession(SessionFacadeType::CONVERSATION, new TrainerConversationSession(npc));
 }

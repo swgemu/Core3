@@ -85,14 +85,16 @@ private:
 	ConversationScreen* getConversationScreen(const String& screenName);
 
 protected:
-	virtual void createConversationSession(CreatureObject* conversingPlayer);
+	virtual void createConversationSession(CreatureObject* conversingPlayer, CreatureObject* npc);
 
 	void registerScreenHandler(const String& screenId, ScreenHandler* screenHandler);
 
 	void removeScreenHandler(const String& screenId);
 
+	void createPositionObserver(CreatureObject* player);
+
 private:
-	void cancelConversationSession(CreatureObject* conversingPlayer);
+	void cancelConversationSession(CreatureObject* conversingPlayer, CreatureObject* npc, bool forceClose = false);
 
 public:
 	virtual ConversationScreen* getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);

@@ -71,7 +71,7 @@ class ConversationObserver extends Observer implements Logger {
 		return conversationTemplate.getScreen(screenName);
 	}
 
-	protected abstract native void createConversationSession(CreatureObject conversingPlayer);
+	protected abstract native void createConversationSession(CreatureObject conversingPlayer, CreatureObject npc);
 
 	protected void registerScreenHandler(final string screenId, ScreenHandler screenHandler) {
 		if (!screenHandlers.contains(screenId)) {
@@ -84,8 +84,10 @@ class ConversationObserver extends Observer implements Logger {
 			screenHandlers.drop(screenId);
 		}
 	}
+	
+	protected native void createPositionObserver(CreatureObject player);
 
-	private native void cancelConversationSession(CreatureObject conversingPlayer);
+	private native void cancelConversationSession(CreatureObject conversingPlayer, CreatureObject npc, boolean forceClose = false);
 
 	@local
 	public abstract native ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, CreatureObject conversingNPC);

@@ -66,7 +66,7 @@ public:
 	TrainerConversationObserverImplementation(DummyConstructorParameter* param);
 
 protected:
-	virtual void createConversationSession(CreatureObject* conversingPlayer);
+	virtual void createConversationSession(CreatureObject* conversingPlayer, CreatureObject* npc);
 
 public:
 	WeakReference<TrainerConversationObserver*> _this;

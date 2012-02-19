@@ -44,10 +44,6 @@ which carries forward this exception.
 
 #include "TrainerConversationSession.h"
 
-TrainerConversationSessionImplementation::TrainerConversationSessionImplementation() {
-	selectedSkill = "";
-}
-
 void TrainerConversationSessionImplementation::clearTrainableSkills() {
 	while (trainableSkills.size() > 0) {
 		trainableSkills.remove(0);
