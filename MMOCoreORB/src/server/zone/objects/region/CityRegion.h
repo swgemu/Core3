@@ -120,13 +120,15 @@ public:
 
 	void removeCitizen(unsigned long long citizenID);
 
-	bool containsCitizen(unsigned long long citizenID);
+	bool isCitizen(unsigned long long citizenID);
 
 	int getCitizenCount();
 
 	byte getCityRank();
 
 	CitizenList* getCitizenList();
+
+	CitizenList* getMilitiaMembers();
 
 	Zone* getZone();
 
@@ -139,8 +141,6 @@ public:
 	float getPositionY();
 
 	float getRadius();
-
-	int getRegisteredCitizenCount();
 
 	int getStructuresCount();
 
@@ -215,7 +215,7 @@ protected:
 
 	VectorMap<unsigned long long, unsigned int> zoningRights;
 
-	SortedVector<unsigned long long> militiaMembers;
+	CitizenList militiaMembers;
 
 	CitizenList citizenList;
 
@@ -274,13 +274,15 @@ public:
 
 	void removeCitizen(unsigned long long citizenID);
 
-	bool containsCitizen(unsigned long long citizenID);
+	bool isCitizen(unsigned long long citizenID);
 
 	int getCitizenCount();
 
 	byte getCityRank();
 
 	CitizenList* getCitizenList();
+
+	CitizenList* getMilitiaMembers();
 
 	Zone* getZone();
 
@@ -293,8 +295,6 @@ public:
 	float getPositionY();
 
 	float getRadius();
-
-	int getRegisteredCitizenCount();
 
 	int getStructuresCount();
 
@@ -401,7 +401,7 @@ public:
 
 	void removeCitizen(unsigned long long citizenID);
 
-	bool containsCitizen(unsigned long long citizenID);
+	bool isCitizen(unsigned long long citizenID);
 
 	int getCitizenCount();
 
@@ -418,8 +418,6 @@ public:
 	float getPositionY();
 
 	float getRadius();
-
-	int getRegisteredCitizenCount();
 
 	int getStructuresCount();
 

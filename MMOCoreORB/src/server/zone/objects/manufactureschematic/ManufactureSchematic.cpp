@@ -885,6 +885,14 @@ ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	prototype = NULL;
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		firstCraftingUpdate = true;
 	firstCraftingUpdate = true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(true);
+	IntangibleObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(true);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		ContainerPermissions permissions = super.getContainerPermissions();
+	ContainerPermissions* permissions = IntangibleObjectImplementation::getContainerPermissions();
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+	permissions->clearDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
+	permissions->clearDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 }
 
 void ManufactureSchematicImplementation::initializeTransientMembers() {

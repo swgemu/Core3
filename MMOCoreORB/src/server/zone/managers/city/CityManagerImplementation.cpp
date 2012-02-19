@@ -19,7 +19,10 @@
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 #include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/callbacks/CityTreasuryDepositSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityAddMilitiaMemberSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
@@ -227,7 +230,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 
 	list->addMenuItem("@city/city:location_prompt " + location.toString()); //Location:
 	list->addMenuItem("@city/city:radius_prompt " + String::valueOf(city->getRadius())); //Radius:
-	list->addMenuItem("@city/city:reg_citizen_prompt " + String::valueOf(city->getRegisteredCitizenCount())); //Registered Citizens:
+	list->addMenuItem("@city/city:reg_citizen_prompt " + String::valueOf(city->getCitizenCount())); //Registered Citizens:
 	list->addMenuItem("@city/city:structures_prompt " + String::valueOf(city->getStructuresCount())); //Structures:
 	list->addMenuItem("@city/city:specialization_prompt " + city->getCitySpecialization()); //Specialization:
 
@@ -421,4 +424,90 @@ void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObje
 
 	city->removeCitizen(creature->getObjectID());
 
+}
+
+void CityManagerImplementation::sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!ghost->hasAbility("manage_militia")) {
+		creature->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_MILITIA);
+	listbox->setPromptTitle("@city/city:militia_t"); //Manage Militia
+	listbox->setPromptText("@city/city:militia_d"); //Below is a list of current city militia members. These citizens have the ability to ban visitors from accessing city services as well as the ability to attack visitors for the purposes of law enforcement. To add a new citizen to the militia select "Add Militia Member" and hit OK. To remove someone from the militia, select their name and hit OK.
+	listbox->setUsingObject(terminal);
+	listbox->setForceCloseDistance(16.f);
+	listbox->setCallback(new CityManageMilitiaSuiCallback(creature->getZoneServer(), city));
+
+	listbox->addMenuItem("@city/city:militia_new_t", 0); //Add Militia Member
+
+	CitizenList* militiaMembers = city->getMilitiaMembers();
+
+	for (int i = 0; i < militiaMembers->size(); ++i) {
+		ManagedReference<SceneObject*> militant = creature->getZoneServer()->getObject(militiaMembers->get(i));
+
+		if (militant != NULL)
+			listbox->addMenuItem(militant->getObjectName()->getDisplayedName(), militant->getObjectID());
+	}
+
+	ghost->addSuiBox(listbox);
+	creature->sendMessage(listbox->generateMessage());
+}
+
+void CityManagerImplementation::promptAddMilitiaMember(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	ManagedReference<SuiInputBox*> input = new SuiInputBox(creature, SuiWindowType::CITY_ADD_MILITIA);
+	input->setPromptTitle("@city/city:militia_new_t"); //Add Militia Member
+	input->setPromptText("@city/city:militia_new_d");
+	input->setUsingObject(terminal);
+	input->setForceCloseDistance(16.f);
+	input->setCallback(new CityAddMilitiaMemberSuiCallback(zone->getZoneServer(), city));
+
+	ghost->addSuiBox(input);
+	creature->sendMessage(input->generateMessage());
+}
+
+void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName) {
+	if (!city->isMayor(mayor->getObjectID()))
+		return;
+
+	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
+	uint64 militiaid = playerManager->getObjectID(playerName);
+
+	if (militiaid == mayor->getObjectID())
+		return; //Cannot add the mayor.
+
+	if (militiaid == 0 || city->isCitizen(militiaid)) {
+		mayor->sendSystemMessage("@city/city:not_citizen"); //That player must be a citizen to join the city militia.
+		return;
+	}
+
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(militiaid);
+
+	if (obj != NULL && obj->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(obj.get());
+		creature->sendSystemMessage("@city/city:added_militia_target"); //You have been added to the city militia.
+	}
+
+	city->addMilitiaMember(militiaid);
+}
+
+void CityManagerImplementation::removeMilitiaMember(CityRegion* city, uint64 militiaid) {
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(militiaid);
+
+	if (obj != NULL && obj->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(obj.get());
+		creature->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.
+	}
+
+	city->removeMilitiaMember(militiaid);
 }

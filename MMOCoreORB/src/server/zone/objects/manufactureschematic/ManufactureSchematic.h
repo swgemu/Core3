@@ -95,6 +95,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.h"
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 #include "system/lang/ref/Reference.h"
 
 #include "engine/service/proto/BaseMessage.h"

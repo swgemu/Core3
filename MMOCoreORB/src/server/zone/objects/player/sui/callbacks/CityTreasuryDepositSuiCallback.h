@@ -14,7 +14,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 
 class CityTreasuryDepositSuiCallback : public SuiCallback {
-	CityRegion* cityRegion;
+	ManagedWeakReference<CityRegion*> cityRegion;
 
 public:
 	CityTreasuryDepositSuiCallback(ZoneServer* server, CityRegion* region)
@@ -29,10 +29,15 @@ public:
 
 		int amount = Integer::valueOf(args->get(0).toString());
 
-		Locker lock(cityRegion, player);
+		ManagedReference<CityRegion*> city = cityRegion.get();
 
-		CityManager* cityManager = cityRegion->getZone()->getCityManager();
-		cityManager->depositToCityTreasury(cityRegion, player, amount);
+		if (city == NULL)
+			return;
+
+		Locker lock(city, player);
+
+		CityManager* cityManager = city->getZone()->getCityManager();
+		cityManager->depositToCityTreasury(city, player, amount);
 	}
 };
 

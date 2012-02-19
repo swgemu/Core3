@@ -629,6 +629,7 @@ void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 	if (!isCondemned()){
 		signNameToSet = signName;
 	}
+
 	if (signObject != NULL) {
 		signObject->setCustomObjectName(signNameToSet, notifyClient);
 	}

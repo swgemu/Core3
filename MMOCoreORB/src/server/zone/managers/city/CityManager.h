@@ -134,6 +134,14 @@ public:
 
 	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
 
+	void sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void promptAddMilitiaMember(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
+
+	void removeMilitiaMember(CityRegion* city, unsigned long long militiaid);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -238,6 +246,14 @@ public:
 
 	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
 
+	void sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void promptAddMilitiaMember(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
+
+	void removeMilitiaMember(CityRegion* city, unsigned long long militiaid);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -319,6 +335,14 @@ public:
 
 	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
 
+	void sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void promptAddMilitiaMember(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
+
+	void removeMilitiaMember(CityRegion* city, unsigned long long militiaid);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -329,6 +353,7 @@ protected:
 	String _param0_validateCityName__String_;
 	String _param1_createCity__CreatureObject_String_float_float_;
 	String _param2_changeCitySpecialization__CityRegion_CreatureObject_String_;
+	String _param2_addMilitiaMember__CityRegion_CreatureObject_String_;
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

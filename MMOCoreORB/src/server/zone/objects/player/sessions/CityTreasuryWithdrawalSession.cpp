@@ -221,17 +221,17 @@ bool CityTreasuryWithdrawalSessionImplementation::readObjectMember(ObjectInputSt
 		return true;
 
 	if (_name == "creatureObject") {
-		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
 	}
 
 	if (_name == "cityRegion") {
-		TypeInfo<ManagedReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
+		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
 	}
 
 	if (_name == "terminalObject") {
-		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
+		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
 		return true;
 	}
 
@@ -259,7 +259,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&creatureObject, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&creatureObject, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -267,7 +267,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<CityRegion* > >::toBinaryStream(&cityRegion, stream);
+	TypeInfo<ManagedWeakReference<CityRegion* > >::toBinaryStream(&cityRegion, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -275,7 +275,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&terminalObject, stream);
+	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&terminalObject, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -293,8 +293,8 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 
 CityTreasuryWithdrawalSessionImplementation::CityTreasuryWithdrawalSessionImplementation(CreatureObject* creature, CityRegion* city, SceneObject* terminal) {
 	_initializeImplementation();
-	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		Logger.setLoggingName("CitySpecializationSession");
-	Logger::setLoggingName("CitySpecializationSession");
+	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		Logger.setLoggingName("CityTreasuryWithdrawalSession");
+	Logger::setLoggingName("CityTreasuryWithdrawalSession");
 	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
 	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		creatureObject = creature;
@@ -311,8 +311,8 @@ void CityTreasuryWithdrawalSessionImplementation::setReason(const String& r) {
 }
 
 int CityTreasuryWithdrawalSessionImplementation::cancelSession() {
-	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		creatureObject.dropActiveSession(SessionFacadeType.CITYSPEC);
-	creatureObject->dropActiveSession(SessionFacadeType::CITYSPEC);
+	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		creatureObject.dropActiveSession(SessionFacadeType.CITYWITHDRAW);
+	creatureObject->dropActiveSession(SessionFacadeType::CITYWITHDRAW);
 	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		return 0;
 	return 0;
 }

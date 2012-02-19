@@ -32,7 +32,7 @@ class CityRegion extends ManagedObject implements Logger {
 	protected VectorMap<unsigned long, unsigned int> zoningRights;
 	
 	@dereferenced
-	protected SortedVector<unsigned long> militiaMembers;
+	protected CitizenList militiaMembers;
 	
 	@dereferenced
 	protected CitizenList citizenList;
@@ -110,7 +110,7 @@ class CityRegion extends ManagedObject implements Logger {
 		citizenList.drop(citizenID);
 	}
 	
-	public boolean containsCitizen(unsigned long citizenID) {
+	public boolean isCitizen(unsigned long citizenID) {
 		return citizenList.contains(citizenID);
 	}
 	
@@ -126,6 +126,11 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	public CitizenList getCitizenList() {
 		return citizenList;
+	}
+	
+	@local
+	public CitizenList getMilitiaMembers() {
+		return militiaMembers;
 	}
 	
 	public Zone getZone() {
@@ -165,10 +170,6 @@ class CityRegion extends ManagedObject implements Logger {
 			return 0.0;
 		
 		return aa.getRadius();
-	}
-	
-	public int getRegisteredCitizenCount() {
-		return 0;
 	}
 	
 	public int getStructuresCount() {

@@ -75,6 +75,7 @@ bin_PROGRAMS = core3 #odb3
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
 core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
+				server/zone/objects/player/sessions/CityRemoveMilitiaSession.cpp \
 				server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
 				server/zone/objects/area/LairSpawnArea.cpp \
@@ -274,6 +275,8 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
+		server/zone/objects/player/sessions/CityRemoveMilitiaSessionImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \

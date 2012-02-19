@@ -21,6 +21,7 @@ public:
 	const static int CONVERSATION = 9;
 	const static int CITYSPEC = 10;
 	const static int CITYWITHDRAW = 11;
+	const static int CITYMILITIA = 12;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

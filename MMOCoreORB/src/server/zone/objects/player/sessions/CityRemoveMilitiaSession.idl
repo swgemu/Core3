@@ -9,7 +9,7 @@ import server.zone.objects.structure.StructureObject;
 import server.zone.managers.structure.StructureManager;
 include server.zone.objects.scene.SessionFacadeType;
 
-class CityTreasuryWithdrawalSession extends Facade {
+class CityRemoveMilitiaSession extends Facade {
 	@weakReference
 	protected CreatureObject creatureObject;
 	
@@ -19,29 +19,28 @@ class CityTreasuryWithdrawalSession extends Facade {
 	@weakReference
 	protected SceneObject terminalObject;
 	
-	protected string reason;
+	protected unsigned long militiaID;
 	
-	public CityTreasuryWithdrawalSession(CreatureObject creature, CityRegion city, SceneObject terminal = null) {
-		Logger.setLoggingName("CityTreasuryWithdrawalSession");
+	public CityRemoveMilitiaSession(CreatureObject creature, CityRegion city, unsigned long militiaid, SceneObject terminal = null) {
+		Logger.setLoggingName("CityRemoveMilitiaSession");
 		Logger.setLogging(true);
 		
 		creatureObject = creature;
 		cityRegion = city;
 		terminalObject = terminal;
+		
+		militiaID = militiaid;
+		
 	}
 	
-	public void setReason(final string r) {
-		reason = r;
+	public unsigned long getMilitiaID() {
+		return militiaID;
 	}
 
 	public native int initializeSession();
-	
-	public native int sendTransferBox(final string reason);
-	
-	public native int withdrawCredits(int value);
 
 	public int cancelSession() {
-		creatureObject.dropActiveSession(SessionFacadeType.CITYWITHDRAW);
+		creatureObject.dropActiveSession(SessionFacadeType.CITYMILITIA);
 		
 		return 0;
 	}
