@@ -12,11 +12,14 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/city/CityManager.h"
 
 void CityRegionImplementation::initialize(Zone* zne, const String& name) {
 	zone = zne;
 
 	zoningEnabled = true;
+
+	registered = false;
 
 	cityTreasury = 0;
 
@@ -49,15 +52,10 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius) {
 		return NULL;
 	}
 
-	Region* region = cast<Region*>(obj);
+	ManagedReference<Region*> region = cast<Region*>(obj);
 	region->setCityRegion(_this);
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
-
-	if (regions.size() <= 0) {
-		region->setPlanetMapCategory(TemplateManager::instance()->getPlanetMapCategoryByName("city"));
-		region->setObjectName(regionName);
-	}
 
 	if (isClientRegion())
 		region->setNoBuildArea(true);

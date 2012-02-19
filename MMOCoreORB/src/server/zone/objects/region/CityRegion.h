@@ -130,6 +130,8 @@ public:
 
 	CitizenList* getMilitiaMembers();
 
+	bool isRegistered();
+
 	Zone* getZone();
 
 	String getRegionName();
@@ -141,6 +143,10 @@ public:
 	float getPositionY();
 
 	float getRadius();
+
+	Region* getRegion(int idx);
+
+	int getRegionsCount();
 
 	int getStructuresCount();
 
@@ -175,6 +181,8 @@ public:
 	void setCityRank(byte rank);
 
 	void setMayorID(unsigned long long id);
+
+	void setRegistered(bool val);
 
 	void setZoningEnabled(bool val);
 
@@ -228,6 +236,8 @@ protected:
 	unsigned long long mayorID;
 
 	bool zoningEnabled;
+
+	bool registered;
 
 	Time nextExpansionTime;
 
@@ -286,6 +296,8 @@ public:
 
 	CitizenList* getMilitiaMembers();
 
+	bool isRegistered();
+
 	Zone* getZone();
 
 	String getRegionName();
@@ -297,6 +309,10 @@ public:
 	float getPositionY();
 
 	float getRadius();
+
+	Region* getRegion(int idx);
+
+	int getRegionsCount();
 
 	int getStructuresCount();
 
@@ -331,6 +347,8 @@ public:
 	void setCityRank(byte rank);
 
 	void setMayorID(unsigned long long id);
+
+	void setRegistered(bool val);
 
 	void setZoningEnabled(bool val);
 
@@ -411,6 +429,8 @@ public:
 
 	byte getCityRank();
 
+	bool isRegistered();
+
 	Zone* getZone();
 
 	String getRegionName();
@@ -422,6 +442,10 @@ public:
 	float getPositionY();
 
 	float getRadius();
+
+	Region* getRegion(int idx);
+
+	int getRegionsCount();
 
 	int getStructuresCount();
 
@@ -452,6 +476,8 @@ public:
 	void setCityRank(byte rank);
 
 	void setMayorID(unsigned long long id);
+
+	void setRegistered(bool val);
 
 	void setZoningEnabled(bool val);
 

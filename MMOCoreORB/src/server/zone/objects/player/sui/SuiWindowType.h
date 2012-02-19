@@ -123,6 +123,7 @@ public:
 	static const uint16 CITY_REMOVE_MILITIA = 123;
 	static const uint16 CITY_TREASURY_REPORT = 124;
 	static const uint16 CITY_ADVANCEMENT = 125;
+	static const uint16 CITY_REGISTER = 126;
 
 	//Structure 141 - 170
 	static const uint16 STRUCTURE_STATUS = 141;

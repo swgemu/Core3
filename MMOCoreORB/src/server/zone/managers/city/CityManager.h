@@ -150,6 +150,14 @@ public:
 
 	void sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	void promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void promptUnregisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void registerCity(CityRegion* city, CreatureObject* mayor);
+
+	void unregisterCity(CityRegion* city, CreatureObject* mayor);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -270,6 +278,14 @@ public:
 
 	void sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	void promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void promptUnregisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void registerCity(CityRegion* city, CreatureObject* mayor);
+
+	void unregisterCity(CityRegion* city, CreatureObject* mayor);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -366,6 +382,14 @@ public:
 	void removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid);
 
 	void sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void promptUnregisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void registerCity(CityRegion* city, CreatureObject* mayor);
+
+	void unregisterCity(CityRegion* city, CreatureObject* mayor);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

@@ -426,8 +426,12 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 		ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius);
 
-		if (region != NULL)
+		if (region != NULL) {
+			if (cityRegion->getRegionsCount() == 1) //Register the first region only.
+				zone->registerObjectWithPlanetaryMap(region);
+
 			region->setMunicipalZone(true);
+		}
 
 		cityRegion->addRegion(x, y, radius * 2);
 	}

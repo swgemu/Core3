@@ -18,7 +18,7 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
@@ -403,6 +403,68 @@ void CityManager::sendCityAdvancement(CityRegion* city, CreatureObject* creature
 		_implementation->sendCityAdvancement(city, creature, terminal);
 }
 
+void CityManager::promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->promptRegisterCity(city, creature, terminal);
+}
+
+void CityManager::promptUnregisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->promptUnregisterCity(city, creature, terminal);
+}
+
+void CityManager::registerCity(CityRegion* city, CreatureObject* mayor) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->registerCity(city, mayor);
+}
+
+void CityManager::unregisterCity(CityRegion* city, CreatureObject* mayor) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->unregisterCity(city, mayor);
+}
+
 void CityManager::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -713,6 +775,18 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
 		sendCityAdvancement(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
+		promptRegisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
+		promptUnregisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_:
+		registerCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_:
+		unregisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
 		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
@@ -823,6 +897,22 @@ void CityManagerAdapter::removeMilitiaMember(CityRegion* city, CreatureObject* m
 
 void CityManagerAdapter::sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	(static_cast<CityManager*>(stub))->sendCityAdvancement(city, creature, terminal);
+}
+
+void CityManagerAdapter::promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	(static_cast<CityManager*>(stub))->promptRegisterCity(city, creature, terminal);
+}
+
+void CityManagerAdapter::promptUnregisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	(static_cast<CityManager*>(stub))->promptUnregisterCity(city, creature, terminal);
+}
+
+void CityManagerAdapter::registerCity(CityRegion* city, CreatureObject* mayor) {
+	(static_cast<CityManager*>(stub))->registerCity(city, mayor);
+}
+
+void CityManagerAdapter::unregisterCity(CityRegion* city, CreatureObject* mayor) {
+	(static_cast<CityManager*>(stub))->unregisterCity(city, mayor);
 }
 
 void CityManagerAdapter::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {

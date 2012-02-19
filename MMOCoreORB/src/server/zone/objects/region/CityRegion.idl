@@ -45,6 +45,8 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	protected boolean zoningEnabled;
 	
+	protected boolean registered;
+	
 	@dereferenced
 	protected Time nextExpansionTime;
 	
@@ -118,7 +120,6 @@ class CityRegion extends ManagedObject implements Logger {
 		return citizenList.size();
 	}
 
-	//Getters
 	public byte getCityRank() {
 		return cityRank;
 	}
@@ -131,6 +132,10 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	public CitizenList getMilitiaMembers() {
 		return militiaMembers;
+	}
+	
+	public boolean isRegistered() {
+		return registered;
 	}
 	
 	public Zone getZone() {
@@ -170,6 +175,14 @@ class CityRegion extends ManagedObject implements Logger {
 			return 0.0;
 		
 		return aa.getRadius();
+	}
+	
+	public Region getRegion(int idx) {
+		return regions.get(idx);
+	}
+	
+	public int getRegionsCount() {
+		return regions.size();
 	}
 	
 	public int getStructuresCount() {
@@ -249,6 +262,10 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public void setMayorID(unsigned long id) {
 		mayorID = id;
+	}
+	
+	public void setRegistered(boolean val) {
+		registered = val;
 	}
 	
 	public void setZoningEnabled(boolean val) {

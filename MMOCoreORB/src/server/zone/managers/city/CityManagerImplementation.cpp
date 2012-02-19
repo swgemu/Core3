@@ -19,10 +19,12 @@
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 #include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/callbacks/CityTreasuryDepositSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CityAddMilitiaMemberSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityRegisterSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
@@ -676,4 +678,76 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 	//pop_req_next_rankPop. Req. for Next Rank:
 
 	creature->sendMessage(listbox->generateMessage());
+}
+
+void CityManagerImplementation::promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(creature->getObjectID()))
+		return;
+
+	if (!ghost->hasAbility("city_map")) {
+		creature->sendSystemMessage("@city/city:cant_register"); //You lack the ability to register your city!
+		return;
+	}
+
+	if (city->getCityRank() < TOWNSHIP) {
+		creature->sendSystemMessage("@city/city:cant_register_rank"); //Your city must be rank 3 (Township) to be registered on the planetary map.
+		return;
+	}
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::CITY_REGISTER);
+	box->setPromptTitle("@city/city:register_t"); //Register City
+	box->setPromptText("@city/city:register_d");
+	box->setUsingObject(terminal);
+	box->setForceCloseDistance(16.f);
+	box->setCallback(new CityRegisterSuiCallback(zone->getZoneServer(), city));
+
+	ghost->addSuiBox(box);
+	creature->sendMessage(box->generateMessage());
+}
+
+void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(creature->getObjectID()))
+		return;
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::CITY_REGISTER);
+	box->setPromptTitle("@city/city:unregister_t"); //Unregister City
+	box->setPromptText("@city/city:unregister_d");
+	box->setUsingObject(terminal);
+	box->setForceCloseDistance(16.f);
+	box->setCallback(new CityRegisterSuiCallback(zone->getZoneServer(), city, true));
+
+	ghost->addSuiBox(box);
+	creature->sendMessage(box->generateMessage());
+}
+
+void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* mayor) {
+	city->setRegistered(true);
+
+	ManagedReference<Region*> aa = city->getRegion(0);
+	zone->registerObjectWithPlanetaryMap(aa);
+
+	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
+
+	//TODO: Register all city structures in city.
+}
+
+void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject* mayor) {
+	city->setRegistered(false);
+
+	ManagedReference<Region*> aa = city->getRegion(0);
+	zone->unregisterObjectWithPlanetaryMap(aa);
+
+	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
+
+	//TODO: Unregister all city structures in city.
 }

@@ -1,8 +1,8 @@
 region_area = SharedObjectTemplate:new {
 	clientTemplateFileName = "", 
-	planetMapCategory = "",
+	planetMapCategory = "city",
 	planetMapSubCategory = "",
-	autoRegisterWithPlanetMap = 1,
+	autoRegisterWithPlanetMap = 0,
 	 
 	zoneComponent = "ZoneComponent",
 	objectMenuComponent = {"cpp", "ObjectMenuComponent"},

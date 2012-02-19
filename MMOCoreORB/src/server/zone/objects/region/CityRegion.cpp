@@ -16,7 +16,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
+enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
 
 CityRegion::CityRegion(Zone* zne, const String& name) : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(zne, name);
@@ -277,6 +277,19 @@ CitizenList* CityRegion::getMilitiaMembers() {
 		return _implementation->getMilitiaMembers();
 }
 
+bool CityRegion::isRegistered() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISREGISTERED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRegistered();
+}
+
 Zone* CityRegion::getZone() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -354,6 +367,33 @@ float CityRegion::getRadius() {
 		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getRadius();
+}
+
+Region* CityRegion::getRegion(int idx) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREGION__INT_);
+		method.addSignedIntParameter(idx);
+
+		return static_cast<Region*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getRegion(idx);
+}
+
+int CityRegion::getRegionsCount() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREGIONSCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getRegionsCount();
 }
 
 int CityRegion::getStructuresCount() {
@@ -579,6 +619,20 @@ void CityRegion::setMayorID(unsigned long long id) {
 		_implementation->setMayorID(id);
 }
 
+void CityRegion::setRegistered(bool val) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETREGISTERED__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setRegistered(val);
+}
+
 void CityRegion::setZoningEnabled(bool val) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -762,6 +816,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "registered") {
+		TypeInfo<bool >::parseFromBinaryStream(&registered, stream);
+		return true;
+	}
+
 	if (_name == "nextExpansionTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextExpansionTime, stream);
 		return true;
@@ -867,6 +926,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "registered";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&registered, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "nextExpansionTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -884,7 +951,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 12 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 13 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
@@ -964,6 +1031,11 @@ CitizenList* CityRegionImplementation::getMilitiaMembers() {
 	return (&militiaMembers);
 }
 
+bool CityRegionImplementation::isRegistered() {
+	// server/zone/objects/region/CityRegion.idl():  		return registered;
+	return registered;
+}
+
 Zone* CityRegionImplementation::getZone() {
 	// server/zone/objects/region/CityRegion.idl():  		return zone.get();
 	return (&zone)->get();
@@ -1007,6 +1079,16 @@ float CityRegionImplementation::getRadius() {
 	return 0.0;
 	// server/zone/objects/region/CityRegion.idl():  		return aa.getRadius();
 	return aa->getRadius();
+}
+
+Region* CityRegionImplementation::getRegion(int idx) {
+	// server/zone/objects/region/CityRegion.idl():  		return regions.get(idx);
+	return (&regions)->get(idx);
+}
+
+int CityRegionImplementation::getRegionsCount() {
+	// server/zone/objects/region/CityRegion.idl():  		return regions.size();
+	return (&regions)->size();
 }
 
 int CityRegionImplementation::getStructuresCount() {
@@ -1098,6 +1180,11 @@ void CityRegionImplementation::setMayorID(unsigned long long id) {
 	mayorID = id;
 }
 
+void CityRegionImplementation::setRegistered(bool val) {
+	// server/zone/objects/region/CityRegion.idl():  		registered = val;
+	registered = val;
+}
+
 void CityRegionImplementation::setZoningEnabled(bool val) {
 	// server/zone/objects/region/CityRegion.idl():  		zoningEnabled = val;
 	zoningEnabled = val;
@@ -1172,6 +1259,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETCITYRANK__:
 		resp->insertByte(getCityRank());
 		break;
+	case RPC_ISREGISTERED__:
+		resp->insertBoolean(isRegistered());
+		break;
 	case RPC_GETZONE__:
 		resp->insertLong(getZone()->_getObjectID());
 		break;
@@ -1189,6 +1279,12 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETRADIUS__:
 		resp->insertFloat(getRadius());
+		break;
+	case RPC_GETREGION__INT_:
+		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case RPC_GETREGIONSCOUNT__:
+		resp->insertSignedInt(getRegionsCount());
 		break;
 	case RPC_GETSTRUCTURESCOUNT__:
 		resp->insertSignedInt(getStructuresCount());
@@ -1234,6 +1330,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETMAYORID__LONG_:
 		setMayorID(inv->getUnsignedLongParameter());
+		break;
+	case RPC_SETREGISTERED__BOOL_:
+		setRegistered(inv->getBooleanParameter());
 		break;
 	case RPC_SETZONINGENABLED__BOOL_:
 		setZoningEnabled(inv->getBooleanParameter());
@@ -1312,6 +1411,10 @@ byte CityRegionAdapter::getCityRank() {
 	return (static_cast<CityRegion*>(stub))->getCityRank();
 }
 
+bool CityRegionAdapter::isRegistered() {
+	return (static_cast<CityRegion*>(stub))->isRegistered();
+}
+
 Zone* CityRegionAdapter::getZone() {
 	return (static_cast<CityRegion*>(stub))->getZone();
 }
@@ -1334,6 +1437,14 @@ float CityRegionAdapter::getPositionY() {
 
 float CityRegionAdapter::getRadius() {
 	return (static_cast<CityRegion*>(stub))->getRadius();
+}
+
+Region* CityRegionAdapter::getRegion(int idx) {
+	return (static_cast<CityRegion*>(stub))->getRegion(idx);
+}
+
+int CityRegionAdapter::getRegionsCount() {
+	return (static_cast<CityRegion*>(stub))->getRegionsCount();
 }
 
 int CityRegionAdapter::getStructuresCount() {
@@ -1394,6 +1505,10 @@ void CityRegionAdapter::setCityRank(byte rank) {
 
 void CityRegionAdapter::setMayorID(unsigned long long id) {
 	(static_cast<CityRegion*>(stub))->setMayorID(id);
+}
+
+void CityRegionAdapter::setRegistered(bool val) {
+	(static_cast<CityRegion*>(stub))->setRegistered(val);
 }
 
 void CityRegionAdapter::setZoningEnabled(bool val) {

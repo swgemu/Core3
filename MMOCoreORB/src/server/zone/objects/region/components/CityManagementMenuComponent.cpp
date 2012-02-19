@@ -39,9 +39,11 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItem(216, 3, "@city/city:city_management"); //City Management
 	menuResponse->addRadialMenuItemToRadialID(216, 217, 3, "@city/city:city_name"); //Change City Name
 
-	//TODO: This should be a toggle.
-	menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_unregister"); //Unregister City
-	//menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_register"); //Register City
+	if (city->isRegistered()) {
+		menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_unregister"); //Unregister City
+	} else {
+		menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_register"); //Register City
+	}
 
 	if (city->isZoningEnabled()) {
 		menuResponse->addRadialMenuItemToRadialID(216, 226, 3, "@city/city:unzone"); //Disable Zoning
