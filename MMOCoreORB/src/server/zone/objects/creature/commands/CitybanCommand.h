@@ -62,70 +62,74 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( creature);
+		ZoneServer* zserv = creature->getZoneServer();
 
-		ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> targetObject = zserv->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature())
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+			try {
+				String targetFirstName;
+				UnicodeTokenizer tokenizer(arguments);
+				tokenizer.getStringToken(targetFirstName);
+
+				targetObject = zserv->getPlayerManager()->getPlayer(targetFirstName);
+			} catch (Exception& e) {
+				return INVALIDPARAMETERS;
+			}
+		}
+
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
 			return INVALIDTARGET;
+		}
 
-		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
+		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
 
-		ManagedReference<CityRegion*> cityRegion = player->getCityRegion();
+		ManagedReference<CityRegion*> city = creature->getCityRegion();
 
-		if (cityRegion == NULL)
-			return GENERALERROR;
-
-		/* TODO: Reimplement
-		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
-
-		if (cityHall == NULL)
-			return GENERALERROR;
-
-		Locker _locker(cityHall);
-
-		//Can't ban someone who's already been banned
-		if (cityHall->isBanned(target))
-			return GENERALERROR;
-
-		if (!cityHall->isMayor(player->getObjectID()) && !cityHall->isMilitiaMember(player->getObjectID())) {
-			player->sendSystemMessage("@city/city:not_militia"); //You must be a member of the city militia to use this command.
+		if (city == NULL) {
+			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.
 			return GENERALERROR;
 		}
 
-		if (targetPlayer->getPlayerObject()->isPrivileged()) {
-			player->sendSystemMessage("@city/city:not_csr_ban"); //You cannot ban a Customer Service Representative from the city!
+		Locker lock(city, creature);
 
-			StringIdChatParameter params;
-			params.setStringId("@city/city:csr_ban_attempt_msg");
-			params.setTT(player);
-			params.setTO(cityHall->getCityName());
-			targetPlayer->sendSystemMessage(params); //%TT tried to /cityBan you from %TO!
+		if (city->isBanned(targetCreature->getObjectID()))
+			return INVALIDTARGET; //They are already banned.
+
+		if (!city->isMilitiaMember(creature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:not_militia"); //You must be a member of the city militia to use this command.
 			return GENERALERROR;
 		}
 
-		if (cityHall->isCitizen(target)) {
-			player->sendSystemMessage("@city/city:not_citizen_ban"); //You can't city ban a citizen of the city!
+		ManagedReference<PlayerObject*> ghost = targetCreature->getPlayerObject();
+
+		if (ghost != NULL && ghost->isPrivileged()) {
+			//Can't ban a CSR
+			creature->sendSystemMessage("@city/city:not_csr_ban"); //You cannot ban a Customer Service Representative from the city!
+
+			StringIdChatParameter params("city/city", "csr_ban_attempt_msg");
+			params.setTT(creature->getObjectName()->getDisplayedName());
+			params.setTO(city->getRegionName());
+
+			targetCreature->sendSystemMessage(params); //%TT tried to /cityBan you from %TO!
 			return GENERALERROR;
 		}
 
-		cityHall->addBannedPlayer(target);
-		cityHall->updateToDatabaseWithoutChildren();
+		if (city->isCitizen(targetCreature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:not_citizen_ban"); //You can't city ban a citizen of the city!
+			return GENERALERROR;
+		}
 
-		targetPlayer->sendSystemMessage("@city/city:city_banned"); //You have been banned from the this city.  You may no longer use any city services.
+		city->addBannedPlayer(targetCreature->getObjectID());
 
-		StringIdChatParameter params;
-		params.setStringId("@city/city:city_ban_done");
-		params.setTT(targetPlayer);
-		player->sendSystemMessage(params); //%TT has been banned from the city and is no longer able to access city services.
+		targetCreature->sendSystemMessage("@city/city:city_banned"); //You have been banned from the this city.  You may no longer use any city services.
 
-		*/
+		StringIdChatParameter params("city/city", "city_ban_done");
+		params.setTT(targetCreature->getObjectName()->getDisplayedName());
+		creature->sendSystemMessage(params); //%TT has been banned from the city and is no longer able to access city services.
 
 		return SUCCESS;
 	}

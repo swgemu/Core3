@@ -36,6 +36,9 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected CitizenList citizenList;
+	
+	@dereferenced
+	protected CitizenList bannedList;
 
 	protected byte cityRank;
 	
@@ -112,6 +115,14 @@ class CityRegion extends ManagedObject implements Logger {
 		citizenList.drop(citizenID);
 	}
 	
+	public void addBannedPlayer(unsigned long playerid) {
+		bannedList.put(playerid);
+	}
+	
+	public void removeBannedPlayer(unsigned long playerid) {
+		bannedList.drop(playerid);
+	}
+	
 	public boolean isCitizen(unsigned long citizenID) {
 		return citizenList.contains(citizenID);
 	}
@@ -124,6 +135,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return cityRank;
 	}
 	
+	public boolean isBanned(unsigned long playerID) {
+		return bannedList.contains(playerID);
+	}
+	
 	@local
 	public CitizenList getCitizenList() {
 		return citizenList;
@@ -132,6 +147,11 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	public CitizenList getMilitiaMembers() {
 		return militiaMembers;
+	}
+	
+	@local
+	public CitizenList getBannedPlayers() {
+		return bannedList;
 	}
 	
 	public boolean isRegistered() {

@@ -120,15 +120,23 @@ public:
 
 	void removeCitizen(unsigned long long citizenID);
 
+	void addBannedPlayer(unsigned long long playerid);
+
+	void removeBannedPlayer(unsigned long long playerid);
+
 	bool isCitizen(unsigned long long citizenID);
 
 	int getCitizenCount();
 
 	byte getCityRank();
 
+	bool isBanned(unsigned long long playerID);
+
 	CitizenList* getCitizenList();
 
 	CitizenList* getMilitiaMembers();
+
+	CitizenList* getBannedPlayers();
 
 	bool isRegistered();
 
@@ -229,6 +237,8 @@ protected:
 
 	CitizenList citizenList;
 
+	CitizenList bannedList;
+
 	byte cityRank;
 
 	int cityTreasury;
@@ -286,15 +296,23 @@ public:
 
 	void removeCitizen(unsigned long long citizenID);
 
+	void addBannedPlayer(unsigned long long playerid);
+
+	void removeBannedPlayer(unsigned long long playerid);
+
 	bool isCitizen(unsigned long long citizenID);
 
 	int getCitizenCount();
 
 	byte getCityRank();
 
+	bool isBanned(unsigned long long playerID);
+
 	CitizenList* getCitizenList();
 
 	CitizenList* getMilitiaMembers();
+
+	CitizenList* getBannedPlayers();
 
 	bool isRegistered();
 
@@ -423,11 +441,17 @@ public:
 
 	void removeCitizen(unsigned long long citizenID);
 
+	void addBannedPlayer(unsigned long long playerid);
+
+	void removeBannedPlayer(unsigned long long playerid);
+
 	bool isCitizen(unsigned long long citizenID);
 
 	int getCitizenCount();
 
 	byte getCityRank();
+
+	bool isBanned(unsigned long long playerID);
 
 	bool isRegistered();
 

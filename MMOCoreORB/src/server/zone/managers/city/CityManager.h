@@ -158,6 +158,8 @@ public:
 
 	void unregisterCity(CityRegion* city, CreatureObject* mayor);
 
+	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -286,6 +288,8 @@ public:
 
 	void unregisterCity(CityRegion* city, CreatureObject* mayor);
 
+	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -390,6 +394,8 @@ public:
 	void registerCity(CityRegion* city, CreatureObject* mayor);
 
 	void unregisterCity(CityRegion* city, CreatureObject* mayor);
+
+	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

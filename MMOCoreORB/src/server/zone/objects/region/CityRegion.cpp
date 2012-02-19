@@ -16,7 +16,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
+enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
 
 CityRegion::CityRegion(Zone* zne, const String& name) : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(zne, name);
@@ -219,6 +219,34 @@ void CityRegion::removeCitizen(unsigned long long citizenID) {
 		_implementation->removeCitizen(citizenID);
 }
 
+void CityRegion::addBannedPlayer(unsigned long long playerid) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDBANNEDPLAYER__LONG_);
+		method.addUnsignedLongParameter(playerid);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addBannedPlayer(playerid);
+}
+
+void CityRegion::removeBannedPlayer(unsigned long long playerid) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEBANNEDPLAYER__LONG_);
+		method.addUnsignedLongParameter(playerid);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeBannedPlayer(playerid);
+}
+
 bool CityRegion::isCitizen(unsigned long long citizenID) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -259,6 +287,20 @@ byte CityRegion::getCityRank() {
 		return _implementation->getCityRank();
 }
 
+bool CityRegion::isBanned(unsigned long long playerID) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISBANNED__LONG_);
+		method.addUnsignedLongParameter(playerID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isBanned(playerID);
+}
+
 CitizenList* CityRegion::getCitizenList() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -275,6 +317,15 @@ CitizenList* CityRegion::getMilitiaMembers() {
 
 	} else
 		return _implementation->getMilitiaMembers();
+}
+
+CitizenList* CityRegion::getBannedPlayers() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getBannedPlayers();
 }
 
 bool CityRegion::isRegistered() {
@@ -796,6 +847,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "bannedList") {
+		TypeInfo<CitizenList >::parseFromBinaryStream(&bannedList, stream);
+		return true;
+	}
+
 	if (_name == "cityRank") {
 		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
 		return true;
@@ -894,6 +950,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "bannedList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<CitizenList >::toBinaryStream(&bannedList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "cityRank";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -951,7 +1015,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 13 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 14 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
@@ -1006,6 +1070,16 @@ void CityRegionImplementation::removeCitizen(unsigned long long citizenID) {
 	(&citizenList)->drop(citizenID);
 }
 
+void CityRegionImplementation::addBannedPlayer(unsigned long long playerid) {
+	// server/zone/objects/region/CityRegion.idl():  		bannedList.put(playerid);
+	(&bannedList)->put(playerid);
+}
+
+void CityRegionImplementation::removeBannedPlayer(unsigned long long playerid) {
+	// server/zone/objects/region/CityRegion.idl():  		bannedList.drop(playerid);
+	(&bannedList)->drop(playerid);
+}
+
 bool CityRegionImplementation::isCitizen(unsigned long long citizenID) {
 	// server/zone/objects/region/CityRegion.idl():  		return citizenList.contains(citizenID);
 	return (&citizenList)->contains(citizenID);
@@ -1021,6 +1095,11 @@ byte CityRegionImplementation::getCityRank() {
 	return cityRank;
 }
 
+bool CityRegionImplementation::isBanned(unsigned long long playerID) {
+	// server/zone/objects/region/CityRegion.idl():  		return bannedList.contains(playerID);
+	return (&bannedList)->contains(playerID);
+}
+
 CitizenList* CityRegionImplementation::getCitizenList() {
 	// server/zone/objects/region/CityRegion.idl():  		return citizenList;
 	return (&citizenList);
@@ -1029,6 +1108,11 @@ CitizenList* CityRegionImplementation::getCitizenList() {
 CitizenList* CityRegionImplementation::getMilitiaMembers() {
 	// server/zone/objects/region/CityRegion.idl():  		return militiaMembers;
 	return (&militiaMembers);
+}
+
+CitizenList* CityRegionImplementation::getBannedPlayers() {
+	// server/zone/objects/region/CityRegion.idl():  		return bannedList;
+	return (&bannedList);
 }
 
 bool CityRegionImplementation::isRegistered() {
@@ -1250,6 +1334,12 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_REMOVECITIZEN__LONG_:
 		removeCitizen(inv->getUnsignedLongParameter());
 		break;
+	case RPC_ADDBANNEDPLAYER__LONG_:
+		addBannedPlayer(inv->getUnsignedLongParameter());
+		break;
+	case RPC_REMOVEBANNEDPLAYER__LONG_:
+		removeBannedPlayer(inv->getUnsignedLongParameter());
+		break;
 	case RPC_ISCITIZEN__LONG_:
 		resp->insertBoolean(isCitizen(inv->getUnsignedLongParameter()));
 		break;
@@ -1258,6 +1348,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCITYRANK__:
 		resp->insertByte(getCityRank());
+		break;
+	case RPC_ISBANNED__LONG_:
+		resp->insertBoolean(isBanned(inv->getUnsignedLongParameter()));
 		break;
 	case RPC_ISREGISTERED__:
 		resp->insertBoolean(isRegistered());
@@ -1399,6 +1492,14 @@ void CityRegionAdapter::removeCitizen(unsigned long long citizenID) {
 	(static_cast<CityRegion*>(stub))->removeCitizen(citizenID);
 }
 
+void CityRegionAdapter::addBannedPlayer(unsigned long long playerid) {
+	(static_cast<CityRegion*>(stub))->addBannedPlayer(playerid);
+}
+
+void CityRegionAdapter::removeBannedPlayer(unsigned long long playerid) {
+	(static_cast<CityRegion*>(stub))->removeBannedPlayer(playerid);
+}
+
 bool CityRegionAdapter::isCitizen(unsigned long long citizenID) {
 	return (static_cast<CityRegion*>(stub))->isCitizen(citizenID);
 }
@@ -1409,6 +1510,10 @@ int CityRegionAdapter::getCitizenCount() {
 
 byte CityRegionAdapter::getCityRank() {
 	return (static_cast<CityRegion*>(stub))->getCityRank();
+}
+
+bool CityRegionAdapter::isBanned(unsigned long long playerID) {
+	return (static_cast<CityRegion*>(stub))->isBanned(playerID);
 }
 
 bool CityRegionAdapter::isRegistered() {

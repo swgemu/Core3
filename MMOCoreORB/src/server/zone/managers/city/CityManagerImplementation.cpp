@@ -674,8 +674,14 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 	listbox->setUsingObject(terminal);
 	listbox->setForceCloseDistance(16.f);
 
+	//City Abilities:
+	//bank Bank
+	//cantina  Cantina
+
 	//pop_req_current_rankPop. Req. for Current Rank:
 	//pop_req_next_rankPop. Req. for Next Rank:
+	listbox->addMenuItem(""); //Current Rity Rank
+	listbox->addMenuItem(""); //Current Population
 
 	creature->sendMessage(listbox->generateMessage());
 }
@@ -750,4 +756,11 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
 
 	//TODO: Unregister all city structures in city.
+}
+
+void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+	//adjust_taxes_t Adjust Taxes
+	//adjust_taxes_d Select the tax you wish to adjust from the list below.
+	//cant_tax You lack the knowledge to manage the city's taxes.
+	//manage_taxes
 }

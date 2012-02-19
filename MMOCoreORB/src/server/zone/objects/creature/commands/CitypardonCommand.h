@@ -56,59 +56,57 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
-
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( creature);
+		ZoneServer* zserv = creature->getZoneServer();
 
-		ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> targetObject = zserv->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature())
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+			try {
+				String targetFirstName;
+				UnicodeTokenizer tokenizer(arguments);
+				tokenizer.getStringToken(targetFirstName);
+
+				targetObject = zserv->getPlayerManager()->getPlayer(targetFirstName);
+			} catch (Exception& e) {
+				return INVALIDPARAMETERS;
+			}
+		}
+
+		if (targetObject == NULL || !targetObject->isCreatureObject())
 			return INVALIDTARGET;
 
-		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
+		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
 
-		/*
-		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
+		ManagedReference<CityRegion*> city = creature->getCityRegion();
 
-		if (activeRegion == NULL || !activeRegion->isRegion())
-			return GENERALERROR;
-
-		Region* region = cast<Region*>( activeRegion.get());
-
-		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
-
-		if (cityHall == NULL)
-			return GENERALERROR;
-
-		Locker _locker(cityHall);
-
-		//Can't unban someone who isn't banned...
-		if (!cityHall->isBanned(target))
-			return GENERALERROR;
-
-		if (!cityHall->isMayor(player->getObjectID()) && !cityHall->isMilitiaMember(player->getObjectID())) {
-			player->sendSystemMessage("@city/city:not_militia"); //You must be a member of the city militia to use this command.
+		if (city == NULL) {
+			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.
 			return GENERALERROR;
 		}
 
-		cityHall->removeBannedPlayer(target);
-		cityHall->updateToDatabaseWithoutChildren();
+		Locker lock(city, creature);
 
-		targetPlayer->sendSystemMessage("@city/city:city_pardoned"); //You have been pardoned and are once again able to use city services.
+		if (!city->isBanned(targetCreature->getObjectID()))
+			return INVALIDTARGET; //They aren't even banned...
 
-		StringIdChatParameter params;
-		params.setStringId("@city/city:city_pardon_done");
-		params.setTT(targetPlayer);
-		player->sendSystemMessage(params); //%TT has been pardoned and is now able to use city services.
-		*/
+		if (!city->isMilitiaMember(creature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:not_militia"); //You must be a member of the city militia to use this command.
+			return GENERALERROR;
+		}
+
+		city->removeBannedPlayer(targetCreature->getObjectID());
+
+		targetCreature->sendSystemMessage("@city/city:city_pardoned"); //You have been pardoned and are once again able to use city services.
+
+		StringIdChatParameter params("city/city", "city_pardon_done"); //%TT has been pardoned and is now able to use city services.
+		params.setTT(targetCreature->getObjectName()->getDisplayedName());
+		creature->sendSystemMessage(params);
 
 		return SUCCESS;
 	}
