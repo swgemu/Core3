@@ -93,6 +93,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/managers/radial/RadialOptions.h"
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"

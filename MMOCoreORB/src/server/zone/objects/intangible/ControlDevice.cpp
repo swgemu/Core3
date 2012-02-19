@@ -279,6 +279,14 @@ ControlDeviceImplementation::ControlDeviceImplementation() {
 	Logger::setLogging(false);
 	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
+	// server/zone/objects/intangible/ControlDevice.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(true);
+	IntangibleObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(true);
+	// server/zone/objects/intangible/ControlDevice.idl():  		ContainerPermissions permissions = super.getContainerPermissions();
+	ContainerPermissions* permissions = IntangibleObjectImplementation::getContainerPermissions();
+	// server/zone/objects/intangible/ControlDevice.idl():  		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+	permissions->clearDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+	// server/zone/objects/intangible/ControlDevice.idl():  		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
+	permissions->clearDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 }
 
 void ControlDeviceImplementation::updateToDatabaseAllObjects(bool startTask) {

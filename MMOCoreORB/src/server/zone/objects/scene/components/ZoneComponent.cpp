@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/packets/scene/GameSceneChangedMessage.h"
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) {
 	info("inserting to zone");
@@ -296,9 +297,9 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 		return;
 	}
 
-	//removeObject(sceneObject, false);
-	//if (zone == NULL)
-	sceneObject->destroyObjectFromWorld(true);
+	sceneObject->sendMessage(new GameSceneChangedMessage());
+
+	sceneObject->destroyObjectFromWorld(false);
 
 	SceneObject* newParent = sceneObject->getZoneServer()->getObject(parentID);
 
@@ -310,8 +311,10 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
-	if (newParent != NULL && zone == newZone) {
+	if (newParent != NULL) {
 		newParent->transferObject(sceneObject, -1, false);
+
+		sceneObject->sendToOwner(true);
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
 

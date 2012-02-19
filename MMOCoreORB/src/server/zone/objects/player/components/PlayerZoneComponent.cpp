@@ -90,6 +90,11 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		}
 
 		ghost->setSavedParentID(0);
+
+		ghost->setTeleporting(true);
+		ghost->updateLastValidatedPosition();
+		player->setMovementCounter(0);
+		ghost->setClientLastMovementStamp(0);
 	}
 
 	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
