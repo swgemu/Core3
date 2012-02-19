@@ -28,10 +28,24 @@ void CampSiteActiveAreaImplementation::init(CampStructureTemplate* campData) {
 }
 
 void CampSiteActiveAreaImplementation::startTasks() {
-	despawnTask = new CampDespawnTask(_this);
-	abandonTask = new CampAbandonTask(_this);
-	abandonTask->schedule(CampSiteActiveArea::ABANDONTIME);
+	if(despawnTask == NULL) {
+		despawnTask = new CampDespawnTask(_this);
+	} else {
+		if(despawnTask->isScheduled())
+			despawnTask->cancel();
+	}
+
+
+	if(abandonTask == NULL) {
+		abandonTask = new CampAbandonTask(_this);
+	} else {
+		if(abandonTask->isScheduled())
+			abandonTask->cancel();
+	}
+
 	despawnTask->schedule(CampSiteActiveArea::DESPAWNTIME);
+	abandonTask->schedule(CampSiteActiveArea::ABANDONTIME);
+
 }
 
 void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
