@@ -12,7 +12,7 @@ bounty_hunter_armor_looted = {
 		{itemTemplate = "bh_armor_chest_plate", weight = 1000000},
 		{itemTemplate = "bh_armor_gloves", weight =      1000000},
 		{itemTemplate = "bh_armor_bicep_l", weight =     1000000},
-		{itemTemplate = "bh_armor_picep_r", weight =     1000000},
+		{itemTemplate = "bh_armor_bicep_r", weight =     1000000},
 		{itemTemplate = "bh_armor_bracer_l", weight =    1000000},
 		{itemTemplate = "bh_armor_bracer_r", weight =    1000000},
 	}

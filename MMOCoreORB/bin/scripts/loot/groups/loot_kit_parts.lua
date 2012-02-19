@@ -48,7 +48,7 @@ loot_kit_parts = {
 		{itemTemplate = "sculpture_adhesive", weight = 5000},
 		{itemTemplate = "sculpture_goldinlay_1", weight = 10000},
 		{itemTemplate = "sculpture_goldinlay_2", weight = 10000},
-		{itemTemplate = "sculpture_structure_01", weight = 280000},
+		{itemTemplate = "sculpture_structure_1", weight = 280000},
 		{itemTemplate = "sculpture_structure_2", weight = 280000},
 		{itemTemplate = "sculpture_structure_3", weight = 280000},
 		{itemTemplate = "sculpture_structure_4", weight = 280000},
