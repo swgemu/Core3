@@ -39,7 +39,7 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
 
-*/
+ */
 
 #include "ZoneComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
@@ -297,15 +297,18 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 		return;
 	}
 
+	SceneObject* newParent = sceneObject->getZoneServer()->getObject(parentID);
+
+	if (newParent->getZone() == NULL)
+		return;
+
+	if (newPositionZ == 0) {
+		newPositionZ = newZone->getHeight(newPostionX, newPositionY);
+	}
+
 	sceneObject->sendMessage(new GameSceneChangedMessage());
 
 	sceneObject->destroyObjectFromWorld(false);
-
-	SceneObject* newParent = sceneObject->getZoneServer()->getObject(parentID);
-
-	if(newPositionZ == 0) {
-		newPositionZ = newZone->getHeight(newPostionX, newPositionY);
-	}
 
 	Locker locker(newZone);
 
@@ -318,7 +321,7 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
 
-/*		if (newParent != NULL)
+		/*		if (newParent != NULL)
 			newParent->transferObject(sceneObject, -1, false);*/
 	}
 }
