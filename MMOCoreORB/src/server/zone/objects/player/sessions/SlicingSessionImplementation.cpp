@@ -64,7 +64,8 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 	if (inventory == NULL)
 		return;
 
-	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER) {
+	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER
+			&& tangible->getGameObjectType() != SceneObjectType::MISSIONTERMINAL) {
 		player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
 		return;
 	}
