@@ -60,6 +60,7 @@ include server.zone.objects.manufactureschematic.IngredientSlots;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.manufactureschematic.factoryblueprint.FactoryBlueprint;
 include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
+include server.zone.objects.scene.variables.ContainerPermissions;
 
 class ManufactureSchematic extends IntangibleObject {
 
@@ -100,6 +101,12 @@ class ManufactureSchematic extends IntangibleObject {
 		
 		prototype = null;
 		firstCraftingUpdate = true;
+		
+		super.getContainerPermissions().setInheritPermissionsFromParent(true);
+
+		ContainerPermissions permissions = super.getContainerPermissions();
+		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
+		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
 	}
 
 	public void initializeTransientMembers() {
