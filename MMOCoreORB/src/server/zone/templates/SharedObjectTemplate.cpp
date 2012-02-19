@@ -46,6 +46,8 @@ SharedObjectTemplate::SharedObjectTemplate() {
 
 	templateType = 0;
 
+	autoRegisterWithPlanetMap = false;
+
 	inheritPermissionsFromParent = false;
 }
 
@@ -138,6 +140,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		planetMapCategory = templateManager->getPlanetMapCategoryByName(Lua::getStringParameter(state));
 	} else if (varName == "planetMapSubCategory") {
 		planetMapSubCategory = templateManager->getPlanetMapCategoryByName(Lua::getStringParameter(state));
+	} else if (varName == "autoRegisterWithPlanetMap") {
+		autoRegisterWithPlanetMap = (bool) Lua::getByteParameter(state);
 	} else if (varName == "childObjects") {
 		LuaObject luaItemList(state);// = templateData->getObjectField("childObjects");
 

@@ -94,6 +94,11 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	case 221: //Withdraw Treasury
 		cityManager->promptWithdrawCityTreasury(city, player, sceneObject);
 		break;
+	case 222: //Register/Unregister
+		if (city->isRegistered())
+			cityManager->promptRegisterCity(city, player, sceneObject);
+		else
+			cityManager->promptUnregisterCity(city, player, sceneObject);
 	case 223: //City Advancement
 		cityManager->sendCityAdvancement(city, player, sceneObject);
 		break;

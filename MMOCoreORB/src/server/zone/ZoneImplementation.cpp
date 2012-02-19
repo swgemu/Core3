@@ -321,7 +321,11 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap->put(object->getObjectID(), object);
-	registerObjectWithPlanetaryMap(object);
+
+	Reference<SharedObjectTemplate*> objectTemplate = object->getObjectTemplate();
+
+	if (objectTemplate == NULL || objectTemplate->isAutoRegistering())
+		registerObjectWithPlanetaryMap(object);
 }
 
 //TODO: Do we need to send out some type of update when this happens?

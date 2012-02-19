@@ -74,6 +74,7 @@ protected:
 
 	Reference<PlanetMapCategory*> planetMapCategory;
 	Reference<PlanetMapCategory*> planetMapSubCategory;
+	bool autoRegisterWithPlanetMap;
 
 	String fullTemplateString;
 	String templateFileName;
@@ -362,6 +363,10 @@ public:
 
 	inline PlanetMapCategory* getPlanetMapSubCategory() const {
 		return planetMapSubCategory;
+	}
+
+	inline bool isAutoRegistering() {
+		return autoRegisterWithPlanetMap;
 	}
 
 	inline int getChildObjectsSize() {
