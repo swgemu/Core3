@@ -297,9 +297,9 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 		return;
 	}
 
-	SceneObject* newParent = sceneObject->getZoneServer()->getObject(parentID);
+	ManagedReference<SceneObject*> newParent = sceneObject->getZoneServer()->getObject(parentID);
 
-	if (newParent->getZone() == NULL)
+	if (newParent != NULL && newParent->getZone() == NULL)
 		return;
 
 	if (newPositionZ == 0) {
