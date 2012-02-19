@@ -132,7 +132,7 @@ public:
 
 	void registerCitizen(CityRegion* city, CreatureObject* creature);
 
-	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
+	void unregisterCitizen(CityRegion* city, CreatureObject* creature, bool inactive = false);
 
 	void sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
@@ -244,7 +244,7 @@ public:
 
 	void registerCitizen(CityRegion* city, CreatureObject* creature);
 
-	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
+	void unregisterCitizen(CityRegion* city, CreatureObject* creature, bool inactive = false);
 
 	void sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
@@ -333,7 +333,7 @@ public:
 
 	void registerCitizen(CityRegion* city, CreatureObject* creature);
 
-	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
+	void unregisterCitizen(CityRegion* city, CreatureObject* creature, bool inactive);
 
 	void sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 

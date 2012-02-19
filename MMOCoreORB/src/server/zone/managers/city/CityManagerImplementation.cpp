@@ -384,12 +384,6 @@ void CityManagerImplementation::expandCityRegion(CityRegion* city) {
 }
 
 void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
-	/*
-	string/en/city/city.stf	6	new_city_citizen_subject	City Growth: Added Citizen
-	string/en/city/city.stf	7	new_city_citizen_body	A new citizen has joined your city. Citizen Name: %TO
-	string/en/city/city.stf	10	new_city_citizen_other_subject	Welcome, Citizen!
-	string/en/city/city.stf	11	new_city_citizen_other_body	Welcome to %TU, citizen! Congratulations, you have become a fully enfranchised citizen of the city of %TU and are now subject to the benefits and rights accorded such a status. As a citizen of the city you have the ability to vote in local issues as well as in the weekly mayoral election. If you are a politician, you are now able to run for election yourself. You may also now be appointed to the city Militia. We thank you for joining our family, Mayor %TT
-	*/
 	ZoneServer* zserv = zone->getZoneServer();
 	ChatManager* chatManager = zserv->getChatManager();
 
@@ -413,11 +407,27 @@ void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject
 	city->addCitizen(creature->getObjectID());
 }
 
-void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature) {
-	/*
-	 string/en/city/city.stf	323	lost_citizen_subject	Lost Citizen!
-	 string/en/city/city.stf	324	lost_citizen_body	A citizen has left your city by using the revoke option on the city terminal. Citizen Name: %TO
-	 */
+void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature, bool inactive) {
+	ZoneServer* zserv = zone->getZoneServer();
+	ChatManager* chatManager = zserv->getChatManager();
+
+	ManagedReference<SceneObject*> mayor = zserv->getObject(city->getMayorID());
+
+	if (mayor != NULL && mayor->isCreatureObject()) {
+		CreatureObject* mayorCreature = cast<CreatureObject*>(mayor.get());
+
+		StringIdChatParameter params("city/city", "lost_citizen_body"); //A citizen has left your city by using the revoke option on the city terminal. Citizen Name: %TO
+		params.setTO(creature->getObjectName()->getDisplayedName());
+
+		UnicodeString subject = "@city/city:lost_citizen_subject";
+
+		if (inactive) {
+			params.setStringId("city/city", "lost_inactive_citizen_body"); //A citizen has been removed due to six weeks inactivity.  If they return, they can rejoin the city by redeclaring at their residence.
+			subject = "@city/city:lost_inactive_citizen_subject"; //Lost Inactive Citizen!
+		}
+
+		chatManager->sendMail("@city/city:new_city_from", subject, params, mayorCreature->getFirstName(), NULL);
+	}
 
 	city->removeCitizen(creature->getObjectID());
 
