@@ -31,12 +31,11 @@ void WeatherManagerImplementation::initialize() {
 	weatherChangeEvent = NULL;
 
 	//Load weather configuration from the luas.
-	info("Loading configuration from Lua.");
+	//info("Loading configuration from Lua.");
 	if(!loadLuaConfig()) {
 		info("ERROR in Lua config. Loading default values.");
 		loadDefaultValues();
-	} else
-		info("Loading from Lua was successful.");
+	}
 
 	windX.removeAll();
 	windY.removeAll();
@@ -49,6 +48,8 @@ void WeatherManagerImplementation::initialize() {
 	}
 
 	createNewWeatherPattern();
+
+	 info("Enabled");
 }
 
 bool WeatherManagerImplementation::loadLuaConfig() {

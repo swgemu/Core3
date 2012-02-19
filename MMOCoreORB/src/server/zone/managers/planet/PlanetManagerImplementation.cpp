@@ -81,7 +81,6 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		if(weatherEnabled) {
 			weatherManager = new WeatherManager(zone);
 			weatherManager->initialize();
-			info("Weather Enabled", true);
 		} else {
 			info("Weather Disabled", true);
 		}
