@@ -18,12 +18,6 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if (city == NULL)
 		return;
 
-	//City Information is available to anyone using the terminal and includes the options
-		//Status Report, Citizenship Report, Structure Report, City Advancement, Maintenance Report, Treasury Report
-	//and Treasury Deposit
-
-	//
-
 	menuResponse->addRadialMenuItem(211, 3, "@city/city:city_info"); //City Information
 	menuResponse->addRadialMenuItemToRadialID(211, 212, 3, "@city/city:city_status"); //Status Report
 	menuResponse->addRadialMenuItemToRadialID(211, 213, 3, "@city/city:city_citizens"); //Citizenship Report
@@ -96,9 +90,10 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		break;
 	case 222: //Register/Unregister
 		if (city->isRegistered())
-			cityManager->promptRegisterCity(city, player, sceneObject);
-		else
 			cityManager->promptUnregisterCity(city, player, sceneObject);
+		else
+			cityManager->promptRegisterCity(city, player, sceneObject);
+		break;
 	case 223: //City Advancement
 		cityManager->sendCityAdvancement(city, player, sceneObject);
 		break;
