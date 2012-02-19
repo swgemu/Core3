@@ -317,7 +317,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 	if (!toSellParent->isContainerObject() && !auctionMap->containsAuction(objectToSell->getObjectID()) && !auctionMap->containsVendorItem(objectToSell->getObjectID())) {
 		error("trying to add object to the vendor that is not in a valid container");
-		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::NOTOWN);
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 		player->sendMessage(soldMessage);
 		return;
 	}
