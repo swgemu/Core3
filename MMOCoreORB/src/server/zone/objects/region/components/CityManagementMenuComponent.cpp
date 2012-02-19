@@ -13,7 +13,7 @@
 #include "server/zone/managers/city/CityManager.h"
 
 void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	CityRegion* city = sceneObject->getCityRegion();
+	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
 	if (city == NULL)
 		return;
@@ -61,7 +61,7 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 }
 
 int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectID) {
-	CityRegion* city = sceneObject->getCityRegion();
+	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
 	if (city == NULL)
 		return 1;
