@@ -315,14 +315,10 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
 	if (newParent != NULL) {
-		newParent->transferObject(sceneObject, -1, false);
-
-		sceneObject->sendToOwner(true);
+		if (newParent->transferObject(sceneObject, -1, false))
+			sceneObject->sendToOwner(true);
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
-
-		/*		if (newParent != NULL)
-			newParent->transferObject(sceneObject, -1, false);*/
 	}
 }
 
