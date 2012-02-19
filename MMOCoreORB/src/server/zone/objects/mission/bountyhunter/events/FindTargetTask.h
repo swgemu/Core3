@@ -114,37 +114,45 @@ class FindTargetTask : public Task, public Logger {
 			player->sendSystemMessage("@mission/mission_generic:target_not_found_" + String::valueOf(randomNumber));
 		}
 
-		objective->setArakydDroid(NULL);
+		if (arakyd) {
+			objective->setArakydDroid(NULL);
+		}
 		state = Completed;
 	}
 
 	void tracking(CreatureObject* player, BountyMissionObjective* objective) {
 		if (success) {
-			findAndTrackSuccess(player, objective);
-
-			if (trackingsLeft > 0) {
-				player->sendSystemMessage("@mission/mission_generic:target_continue_tracking");
-				reschedule(calculateTime(player) * 1000);
-				trackingsLeft--;
-				state = Tracking;
+			if (findAndTrackSuccess(player, objective)) {
+				if (trackingsLeft > 0) {
+					player->sendSystemMessage("@mission/mission_generic:target_continue_tracking");
+					reschedule(calculateTime(player) * 1000);
+					trackingsLeft--;
+					state = Tracking;
+				} else {
+					player->sendSystemMessage("@mission/mission_generic:target_track_lost");
+					if (arakyd) {
+						objective->setArakydDroid(NULL);
+					}
+					state = Completed;
+				}
 			} else {
-				player->sendSystemMessage("@mission/mission_generic:target_track_lost");
-				objective->setArakydDroid(NULL);
 				state = Completed;
 			}
 		} else {
 			int randomNumber = System::random(5) + 1;
 			player->sendSystemMessage("@mission/mission_generic:target_not_found_" + String::valueOf(randomNumber));
-			objective->setArakydDroid(NULL);
+			if (arakyd) {
+				objective->setArakydDroid(NULL);
+			}
 			state = Completed;
 		}
 	}
 
-	void findAndTrackSuccess(CreatureObject* player, BountyMissionObjective* objective) {
+	bool findAndTrackSuccess(CreatureObject* player, BountyMissionObjective* objective) {
 		Locker locker(player);
 
 		if (objective->getPlayerOwner() == NULL) {
-			return;
+			return false;
 		}
 
 		objective->updateMissionStatus(2);
@@ -159,8 +167,11 @@ class FindTargetTask : public Task, public Logger {
 				player->sendSystemMessage(message);
 			} else {
 				player->sendSystemMessage("@mission/mission_generic:target_not_on_planet");
+				return false;
 			}
 		}
+
+		return true;
 	}
 
 	bool getSuccess(CreatureObject* player, BountyMissionObjective* objective) {
@@ -312,6 +323,11 @@ public:
 
 		if (player == NULL || objective == NULL) {
 			return;
+		}
+
+		if (state != Init && !arakyd && player->getZone() != NULL && player->getZone()->getZoneName() != zoneName) {
+			//Fail seekers if player leaves zone.
+			success = false;
 		}
 
 		switch(state) {

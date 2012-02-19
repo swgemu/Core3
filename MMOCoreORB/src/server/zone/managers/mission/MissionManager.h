@@ -168,9 +168,7 @@ public:
 
 	MissionManager(ZoneServer* srv, ZoneProcessServer* impl);
 
-	void loadNpcObjectsToSpawn();
-
-	void loadCraftingMissionItems();
+	void loadLuaSettings();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
@@ -302,9 +300,11 @@ private:
 protected:
 	MissionNpcSpawnMap missionNpcSpawnMap;
 
-	SortedVector<unsigned int> npcObjectTemplatesToSpawn;
-
 	Vector<String> craftingMissionItems;
+
+	Vector<String> bhTargetZones;
+
+	VectorMap<unsigned int, Vector<String>*> bhTargetsAtMissionLevel;
 
 	bool enableFactionalCraftingMissions;
 
@@ -319,9 +319,7 @@ public:
 
 	MissionManagerImplementation(DummyConstructorParameter* param);
 
-	void loadNpcObjectsToSpawn();
-
-	void loadCraftingMissionItems();
+	void loadLuaSettings();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
@@ -460,9 +458,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void loadNpcObjectsToSpawn();
-
-	void loadCraftingMissionItems();
+	void loadLuaSettings();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 

@@ -171,7 +171,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 				updateWaypoint();
 			}
 		}
-		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), zone->getZoneName());
+		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
 		if (targetTask != NULL && !targetTask->isScheduled()) {
 			targetTask->schedule(10 * 1000);
 		}

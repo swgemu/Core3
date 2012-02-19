@@ -70,10 +70,13 @@ class MissionManager extends Observer implements Logger {
 	protected MissionNpcSpawnMap missionNpcSpawnMap;
 	
 	@dereferenced
-	protected SortedVector<unsigned int> npcObjectTemplatesToSpawn;
+	protected Vector<string> craftingMissionItems;
 	
 	@dereferenced
-	protected Vector<string> craftingMissionItems;
+	protected Vector<string> bhTargetZones;
+	
+	@dereferenced
+	protected VectorMap<unsigned int, Vector<string> > bhTargetsAtMissionLevel;
 	
 	protected boolean enableFactionalCraftingMissions;
 	
@@ -91,17 +94,14 @@ class MissionManager extends Observer implements Logger {
 		enableFactionalReconMissions = false;
 		enableFactionalEntertainerMissions = false;
 		
-		Logger.setLoggingName("MissionManager");		
-
-		loadNpcObjectsToSpawn();
+		Logger.setLoggingName("MissionManager");
 		
 		missionNpcSpawnMap.loadSpawnPointsFromLua();
 		
-		loadCraftingMissionItems();
+		loadLuaSettings();
 	}
 	
-	public native void loadNpcObjectsToSpawn();
-	public native void loadCraftingMissionItems();
+	public native void loadLuaSettings();
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, CreatureObject player, int counter);
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, CreatureObject player);

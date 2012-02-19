@@ -35,27 +35,7 @@
 #include "server/zone/Zone.h"
 #include "server/db/ServerDatabase.h"
 
-void MissionManagerImplementation::loadNpcObjectsToSpawn() {
-	String query = "SELECT * FROM mission_manager_spawn_bounty";
-
-	Reference<ResultSet*> res = NULL;
-
-	try {
-		res = ServerDatabase::instance()->executeQuery(query);
-
-		while (res->next()) {
-			String templateName = res->getString(1);
-
-			npcObjectTemplatesToSpawn.add(templateName.hashCode());
-		}
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	}
-
-	info("loaded " + String::valueOf(npcObjectTemplatesToSpawn.size()) + " npc objects to spawn.", true);
-}
-
-void MissionManagerImplementation::loadCraftingMissionItems() {
+void MissionManagerImplementation::loadLuaSettings() {
 	try {
 		Lua* lua = new Lua();
 		lua->init();
@@ -69,6 +49,28 @@ void MissionManagerImplementation::loadCraftingMissionItems() {
 		}
 
 		items.pop();
+
+		LuaObject zones = lua->getGlobalObject("bh_target_zones");
+
+		for (int i = 1; i <= zones.getTableSize(); i++) {
+			info("Zone " + zones.getStringAt(i), true);
+			bhTargetZones.add(zones.getStringAt(i));
+		}
+
+		zones.pop();
+
+		LuaObject targetsAtMissionLevel = lua->getGlobalObject("bh_targets_at_mission_level");
+
+		for (unsigned int i = 1; i <= 3; i++) {
+			bhTargetsAtMissionLevel.put(i, new Vector<String>());
+			LuaObject level = targetsAtMissionLevel.getObjectField("level" + String::valueOf(i));
+			for (int j = 1; j <= level.getTableSize(); j++) {
+				bhTargetsAtMissionLevel.get(i)->add(level.getStringAt(j));
+			}
+			level.pop();
+		}
+
+		targetsAtMissionLevel.pop();
 
 		String value = lua->getGlobalString("enable_factional_crafting_missions");
 
@@ -287,18 +289,7 @@ void MissionManagerImplementation::createReconMissionObjectives(MissionObject* m
 }
 
 void MissionManagerImplementation::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
-	uint32 templateCRC = npcObjectTemplatesToSpawn.get(System::random(npcObjectTemplatesToSpawn.size() - 1));
-	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
-
-	if (templateObject == NULL) {
-		removeMission(mission, player);
-		error("incorrect template object in createBountyMission " + String::valueOf(templateCRC));
-		return;
-	}
-
 	ManagedReference<BountyMissionObjective*> objective = new BountyMissionObjective(mission);
-
-	objective->setNpcTemplateToSpawn(templateObject);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
@@ -675,8 +666,14 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 	Vector3 endPos = getRandomBountyTargetPosition(player);
 	String planet = player->getZone()->getZoneName();
+	if (difficulty == 3 && bhTargetZones.size() > 0) {
+		int randomNumber = System::random(bhTargetZones.size() - 1);
+		planet = bhTargetZones.get(randomNumber);
+	}
 	mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
-	mission->setTargetOptionalTemplate("bodyguard");
+
+	String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)difficulty)->get(System::random(bhTargetsAtMissionLevel.get((unsigned int)difficulty)->size() - 1));
+	mission->setTargetOptionalTemplate(targetTemplate);
 
 	CreatureTemplate* creoTemplate = CreatureTemplateManager::instance()->getTemplate(mission->getTargetOptionalTemplate());
 
