@@ -51,7 +51,9 @@ public:
 		}
 
 		CityManager* cityManager = city->getZone()->getCityManager();
-		cityManager->removeMilitiaMember(city, session->getMilitiaID());
+		cityManager->removeMilitiaMember(city, player, session->getMilitiaID());
+
+		session->cancelSession();
 	}
 };
 

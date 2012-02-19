@@ -140,7 +140,7 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void addMilitiaMember(CityRegion city, CreatureObject mayor, final string playerName);
 	
-	public native void removeMilitiaMember(CityRegion city, unsigned long militiaid);
+	public native void removeMilitiaMember(CityRegion city, CreatureObject mayor, unsigned long militiaid);
 
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
 		if (city.isMayor(mayor.getObjectID())) {

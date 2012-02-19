@@ -343,9 +343,6 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city, Creature
 	creature->sendSystemMessage(params);
 }
 
-void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
-}
-
 void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
@@ -486,22 +483,35 @@ void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObjec
 	if (militiaid == mayor->getObjectID())
 		return; //Cannot add the mayor.
 
-	if (militiaid == 0 || city->isCitizen(militiaid)) {
+	if (militiaid == 0) {
+		mayor->sendSystemMessage("@city/city:cant_find_player"); //The system was unable to find that player.  Make sure they are standing within 10 meters of the city terminal and try again.
+		return;
+	}
+
+	if (!city->isCitizen(militiaid)) {
 		mayor->sendSystemMessage("@city/city:not_citizen"); //That player must be a citizen to join the city militia.
 		return;
 	}
 
 	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(militiaid);
 
-	if (obj != NULL && obj->isCreatureObject()) {
-		CreatureObject* creature = cast<CreatureObject*>(obj.get());
-		creature->sendSystemMessage("@city/city:added_militia_target"); //You have been added to the city militia.
+	if (obj == NULL || !obj->isCreatureObject() || !obj->isInRange(mayor, 16.f)) {
+		mayor->sendSystemMessage("@city/city:cannot_find_citizen"); //Unable to find that citizen.
+		return;
 	}
+
+	CreatureObject* creature = cast<CreatureObject*>(obj.get());
+	creature->sendSystemMessage("@city/city:added_militia_target"); //You have been added to the city militia.
+
+	mayor->sendSystemMessage("@city/city:added_militia"); //The player has been successfully added to the city militia.
 
 	city->addMilitiaMember(militiaid);
 }
 
-void CityManagerImplementation::removeMilitiaMember(CityRegion* city, uint64 militiaid) {
+void CityManagerImplementation::removeMilitiaMember(CityRegion* city, CreatureObject* mayor, uint64 militiaid) {
+	if (!city->isMayor(mayor->getObjectID()))
+		return;
+
 	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(militiaid);
 
 	if (obj != NULL && obj->isCreatureObject()) {
@@ -509,5 +519,20 @@ void CityManagerImplementation::removeMilitiaMember(CityRegion* city, uint64 mil
 		creature->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.
 	}
 
+	mayor->sendSystemMessage("@city/city:removed_militia"); //The player has been successfully removed from the city militia.
+
 	city->removeMilitiaMember(militiaid);
+}
+
+void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	//@city/city:treasury_balance_t
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_TREASURY_REPORT);
+	listbox->setPromptTitle("@city/city:treasury_balance_t"); //Treasury Balance
+	listbox->setPromptText("@city/city:treasury_balance_d"); //A report on the current treasury follows.
+	listbox->setUsingObject(terminal);
+	listbox->setForceCloseDistance(16.f);
+
+	listbox->addMenuItem("@city/city:treasury " + String::valueOf(city->getCityTreasury()));
+
+	creature->sendMessage(listbox->generateMessage());
 }

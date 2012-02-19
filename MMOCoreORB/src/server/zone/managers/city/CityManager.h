@@ -140,7 +140,7 @@ public:
 
 	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
 
-	void removeMilitiaMember(CityRegion* city, unsigned long long militiaid);
+	void removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -252,7 +252,7 @@ public:
 
 	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
 
-	void removeMilitiaMember(CityRegion* city, unsigned long long militiaid);
+	void removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -341,7 +341,7 @@ public:
 
 	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
 
-	void removeMilitiaMember(CityRegion* city, unsigned long long militiaid);
+	void removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

@@ -18,7 +18,7 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_EXPANDCITYREGION__CITYREGION_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_LONG_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_EXPANDCITYREGION__CITYREGION_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
@@ -328,19 +328,20 @@ void CityManager::addMilitiaMember(CityRegion* city, CreatureObject* mayor, cons
 		_implementation->addMilitiaMember(city, mayor, playerName);
 }
 
-void CityManager::removeMilitiaMember(CityRegion* city, unsigned long long militiaid) {
+void CityManager::removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid) {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEMILITIAMEMBER__CITYREGION_LONG_);
+		DistributedMethod method(this, RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_);
 		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
 		method.addUnsignedLongParameter(militiaid);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeMilitiaMember(city, militiaid);
+		_implementation->removeMilitiaMember(city, mayor, militiaid);
 }
 
 void CityManager::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
@@ -638,8 +639,8 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_:
 		addMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_addMilitiaMember__CityRegion_CreatureObject_String_));
 		break;
-	case RPC_REMOVEMILITIAMEMBER__CITYREGION_LONG_:
-		removeMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+	case RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_:
+		removeMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
 		break;
 	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
 		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -733,8 +734,8 @@ void CityManagerAdapter::addMilitiaMember(CityRegion* city, CreatureObject* mayo
 	(static_cast<CityManager*>(stub))->addMilitiaMember(city, mayor, playerName);
 }
 
-void CityManagerAdapter::removeMilitiaMember(CityRegion* city, unsigned long long militiaid) {
-	(static_cast<CityManager*>(stub))->removeMilitiaMember(city, militiaid);
+void CityManagerAdapter::removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid) {
+	(static_cast<CityManager*>(stub))->removeMilitiaMember(city, mayor, militiaid);
 }
 
 void CityManagerAdapter::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
