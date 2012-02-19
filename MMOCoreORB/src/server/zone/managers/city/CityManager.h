@@ -124,6 +124,16 @@ public:
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
+	void sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void expandCityRegion(CityRegion* city);
+
+	void sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void registerCitizen(CityRegion* city, CreatureObject* creature);
+
+	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -218,6 +228,16 @@ public:
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
+	void sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void expandCityRegion(CityRegion* city);
+
+	void sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void registerCitizen(CityRegion* city, CreatureObject* creature);
+
+	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	byte getCitiesAllowed(byte rank);
@@ -288,6 +308,16 @@ public:
 	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal);
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
+
+	void sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void expandCityRegion(CityRegion* city);
+
+	void sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void registerCitizen(CityRegion* city, CreatureObject* creature);
+
+	void unregisterCitizen(CityRegion* city, CreatureObject* creature);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

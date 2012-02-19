@@ -211,161 +211,9 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 
 	//Remove the deed from it's container.
 	deed->destroyObjectFromWorld(true);
+
 	return 0;
 }
-/*
-int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* player, uint64 deedID, float x, float y, int angle) {
-	ZoneServer* zoneServer = player->getZoneServer();
-	ObjectManager* objectManager = ObjectManager::instance();
-
-	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (playerObject == NULL || inventory == NULL)
-		return 1;
-
-	ManagedReference<SceneObject*> obj = zoneServer->getObject(deedID);
-
-	if (obj == NULL || !obj->isDeedObject()) {
-		player->sendSystemMessage("@player_structure:not_a_deed"); //That is not a deed.
-		return 1;
-	}
-
-	if (!obj->isASubChildOf(player) && !obj->isASubChildOf(inventory)) {
-		player->sendSystemMessage("@player_structure:no_possession"); //You no longer are in possession of the deed for this structure. Aborting construction.
-		return 1;
-	}
-
-	Deed* deed = cast<Deed*>( obj.get());
-
-	String structureTemplateString = deed->getGeneratedObjectTemplate();
-	uint32 structureTemplateCRC = structureTemplateString.hashCode();
-
-	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplateCRC));
-
-	if (ssot == NULL) {
-		player->error("Invalid template (" + structureTemplateString + ") used in placeStructureFromDeed.");
-		return 1;
-	}
-
-	String abilityRequired = ssot->getAbilityRequired();
-
-	if (!abilityRequired.isEmpty() && !player->getPlayerObject()->hasSkill(abilityRequired)) {
-		player->sendSystemMessage("@player_structure:" + abilityRequired);
-		return 1;
-	}
-
-	PlanetManager* planetManager = zone->getPlanetManager();
-	StringId errorStf;
-
-	if (planetManager->isNoBuildArea(x, y, errorStf)) {
-		StringIdChatParameter sendString("player_structure", "city_too_close"); //You cannot place here. It is too close to %TO.
-		sendString.setTO(errorStf.getFile(), errorStf.getStringID());
-		player->sendSystemMessage(sendString);
-
-		return 1;
-	}
-
-
-	ManagedReference<Region*> region = planetManager->getRegion(x, y);
-	ManagedReference<CityHallObject*> cityHall = NULL;
-
-	uint8 reqRank = ssot->getCityRankRequired();
-
-	if (region != NULL) {
-		cityHall = region->getCityHall();
-
-		if (cityHall != NULL) {
-			uint8 cityRank = cityHall->getCityRank();
-
-			if (cityHall->isZoningEnabled() && !cityHall->hasZoningRights(player->getObjectID())) {
-				player->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
-				return 1;
-			}
-
-			if (cityRank < reqRank) {
-				StringIdChatParameter params;
-				params.setStringId("@city/city:rank_req"); //The city must be at least rank %DI (%TO) in order for you to place this structure.
-				params.setDI(reqRank);
-				params.setTO("@city/city:rank" + String::valueOf(reqRank));
-
-				player->sendSystemMessage(params);
-				return 1;
-			}
-		}
-	} else {
-		if (reqRank > 0) {
-			player->sendSystemMessage("@city/city:build_no_city"); //You must be in a city to place that structure.
-			return 1;
-		}
-	}
-
-
-	int lotsRemaining = player->getLotsRemaining();
-	int lotsRequired = 0;
-
-	//If the player is not an admin, then find out how many lots are required.
-	if (playerObject != NULL && !playerObject->isPrivileged())
-		lotsRequired = ssot->getLotSize();
-
-	if (lotsRemaining < lotsRequired) {
-		StringIdChatParameter stringId;
-		stringId.setStringId("@player_structure:not_enough_lots"); //This structure requires %DI lots.
-		stringId.setDI(lotsRequired);
-
-		player->sendSystemMessage(stringId);
-		return 1;
-	}
-
-	ManagedReference<SceneObject*> sobj = objectManager->createObject(structureTemplateCRC, 1, "playerstructures");
-
-	//Make sure its a valid Structure Object
-	if (sobj == NULL || !sobj->isStructureObject()) {
-		if (sobj != NULL)
-			sobj->destroyObjectFromDatabase(true);
-
-		player->error("Object created was not a valid structure object in placeStructure.");
-		return 1;
-	}
-
-	StructureObject* structureObject = cast<StructureObject*>( sobj.get());
-
-	//Check requisites.
-	if (!structureObject->checkRequisitesForPlacement(player)) {
-		structureObject->destroyObjectFromDatabase(true);
-		return 1;
-	}
-
-	//Surplus Maintenance and Power
-	if (deed->isBuildingDeed()) {
-		BuildingDeed* buildingDeed = cast<BuildingDeed*>( deed);
-
-		structureObject->setSurplusMaintenance(buildingDeed->getSurplusMaintenance());
-	}
-
-	if (deed->isInstallationDeed()) {
-		InstallationDeed* installationDeed = cast<InstallationDeed*>( deed);
-
-		structureObject->setSurplusMaintenance(installationDeed->getSurplusMaintenance());
-		structureObject->setSurplusPower(installationDeed->getSurplusPower());
-	}
-
-	player->setLotsRemaining(lotsRemaining - lotsRequired);
-
-	//Remove the deed from it's container.
-	ManagedReference<SceneObject*> deedContainer = deed->getParent();
-
-	if (deedContainer != NULL)
-		deedContainer->removeObject(deed, true);
-
-	Quaternion direction;
-	Vector3 unity(0, 1, 0);
-	direction.rotate(unity, angle);
-
-	constructStructure(player, structureObject, ssot, deedID, x, y, direction);
-
-	return 0;
-}*/
 
 StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle) {
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
@@ -508,56 +356,69 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 		return 1;
 	}
 
-	PlayerObject* ghost = player->getPlayerObject();
+	if (!player->checkCooldownRecovery("declare_residence")) {
+		Time* timeremaining = player->getCooldownTime("declare_residence");
+		StringIdChatParameter params("player_structure", "change_residence_time"); //You cannot change residence for %NO hours.
+		params.setTO(String::valueOf(ceil(timeremaining->miliDifference() / 3600.f * 1000.f)));
 
-	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
-
-	if (declaredResidence != NULL && declaredResidence->isCityHallBuilding()) {
-		player->sendSystemMessage("@city/city:mayor_residence_change"); //As a city Mayor, your residence is always the city hall of the city in which you are mayor.  You cannot declare a new residence.
+		player->sendSystemMessage(params);
 		return 1;
 	}
 
-	ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( structureObject);
+	ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>(structureObject);
 
 	if (!buildingObject->isOwnerOf(player)) {
 		player->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
 		return 1;
 	}
 
-	//@player_structure:change_residence_time You cannot change residence for %NO hours.
+	PlayerObject* ghost = player->getPlayerObject();
+	uint64 objectid = player->getObjectID();
 
-	if (declaredResidence == buildingObject) {
-		player->sendSystemMessage("@player_structure:already_residence"); //This building is already your residence.
-		return 1;
+	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
+	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
+
+	CityManager* cityManager = zone->getCityManager();
+
+	if (declaredResidence != NULL) {
+		if (declaredResidence == buildingObject) {
+			player->sendSystemMessage("@player_structure:already_residence"); //This building is already your residence.
+			return 1;
+		}
+
+		ManagedReference<CityRegion*> residentCity = declaredResidence->getCityRegion();
+
+		if (residentCity != NULL) {
+			Locker lock(residentCity, player);
+
+			if (residentCity->isMayor(objectid)) {
+				player->sendSystemMessage("@city/city:mayor_residence_change"); //As a city Mayor, your residence is always the city hall of the city in which you are mayor.  You cannot declare a new residence.
+				return 1;
+			}
+
+			cityManager->unregisterCitizen(residentCity, player);
+		}
+
+		player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
+	} else {
+		player->sendSystemMessage("@player_structure:declared_residency"); //You have declared your residency here.
 	}
 
-	if (declaredResidence == NULL) {
-		player->sendSystemMessage("@player_structure:declared_residency"); //You have declared your residency here.
-	} else {
-		player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
+	if (cityRegion != NULL) {
+		Locker lock(cityRegion, player);
+
+		if (cityRegion->isMayor(objectid)) {
+			player->sendSystemMessage("@city/city:mayor_residence_change"); //As a city Mayor, your residence is always the city hall of the city in which you are mayor.  You cannot declare a new residence.
+			return 1;
+		}
+
+		cityManager->registerCitizen(cityRegion, player);
 	}
 
 	//Set the characters home location to this structure.
 	ghost->setDeclaredResidence(buildingObject);
 
-
-	//If in a city, add to the cities citizens
-	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
-
-	if (cityRegion == NULL)
-		return 0; //Not in a city.
-
-	/* TODO: Reimplement
-	ManagedReference<CityHallObject*> cityHall = region->getCityHall();
-
-	ManagedReference<CityManager*> cityManager = zone->getCityManager();
-
-	if (cityHall != NULL && !cityHall->isCitizen(player->getObjectID()))
-		cityManager->declareCitizenship(cityHall, player);
-
-	//Just need to save the players declared residence
-	player->updateToDatabaseWithoutChildren();
-	*/
+	player->addCooldown("declare_residence", 24 * 3600); //1 day
 
 	return 0;
 }

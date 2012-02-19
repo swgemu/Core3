@@ -42,14 +42,12 @@
 
 
 object_building_player_city_cityhall_tatooine = object_building_player_city_shared_cityhall_tatooine:new {
-
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 7,
 	width = 9,
 	planetMapCategory = "cityhall",
-	gameObjectType = 529,
 	cityRankRequired = 0,
 	abilityRequired = "place_cityhall",
 	childObjects = {

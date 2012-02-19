@@ -18,7 +18,7 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_EXPANDCITYREGION__CITYREGION_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
@@ -202,6 +202,82 @@ void CityManager::depositToCityTreasury(CityRegion* city, CreatureObject* creatu
 		method.executeWithVoidReturn();
 	} else
 		_implementation->depositToCityTreasury(city, creature, value);
+}
+
+void CityManager::sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendTreasuryReport(city, creature, terminal);
+}
+
+void CityManager::expandCityRegion(CityRegion* city) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_EXPANDCITYREGION__CITYREGION_);
+		method.addObjectParameter(city);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->expandCityRegion(city);
+}
+
+void CityManager::sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendCitizenshipReport(city, creature, terminal);
+}
+
+void CityManager::registerCitizen(CityRegion* city, CreatureObject* creature) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->registerCitizen(city, creature);
+}
+
+void CityManager::unregisterCitizen(CityRegion* city, CreatureObject* creature) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->unregisterCitizen(city, creature);
 }
 
 void CityManager::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
@@ -475,6 +551,21 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_:
 		depositToCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
+	case RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
+		sendTreasuryReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_EXPANDCITYREGION__CITYREGION_:
+		expandCityRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
+		break;
+	case RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
+		sendCitizenshipReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_:
+		registerCitizen(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_:
+		unregisterCitizen(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
 		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
@@ -533,6 +624,26 @@ void CityManagerAdapter::withdrawFromCityTreasury(CityRegion* city, CreatureObje
 
 void CityManagerAdapter::depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value) {
 	(static_cast<CityManager*>(stub))->depositToCityTreasury(city, creature, value);
+}
+
+void CityManagerAdapter::sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	(static_cast<CityManager*>(stub))->sendTreasuryReport(city, creature, terminal);
+}
+
+void CityManagerAdapter::expandCityRegion(CityRegion* city) {
+	(static_cast<CityManager*>(stub))->expandCityRegion(city);
+}
+
+void CityManagerAdapter::sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	(static_cast<CityManager*>(stub))->sendCitizenshipReport(city, creature, terminal);
+}
+
+void CityManagerAdapter::registerCitizen(CityRegion* city, CreatureObject* creature) {
+	(static_cast<CityManager*>(stub))->registerCitizen(city, creature);
+}
+
+void CityManagerAdapter::unregisterCitizen(CityRegion* city, CreatureObject* creature) {
+	(static_cast<CityManager*>(stub))->unregisterCitizen(city, creature);
 }
 
 void CityManagerAdapter::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {

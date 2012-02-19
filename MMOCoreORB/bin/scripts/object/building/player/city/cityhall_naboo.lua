@@ -48,7 +48,6 @@ object_building_player_city_cityhall_naboo = object_building_player_city_shared_
 	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 7,
 	width = 9,
-	gameObjectType = 529,
 	cityRankRequired = 0,
 	abilityRequired = "place_cityhall",
 	childObjects = {

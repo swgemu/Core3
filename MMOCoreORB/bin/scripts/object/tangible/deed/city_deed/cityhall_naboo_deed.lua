@@ -43,7 +43,7 @@
 
 object_tangible_deed_city_deed_cityhall_naboo_deed = object_tangible_deed_city_deed_shared_cityhall_naboo_deed:new {
 	templateType = STRUCTUREDEED,
-	placeStructureComponent = "PlaceStructureComponent",
+	placeStructureComponent = "PlaceCityHallComponent",
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/cityhall_naboo.iff",
 

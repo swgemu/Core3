@@ -16,7 +16,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCITYRANK__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGISTEREDCITIZENCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
+enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_CONTAINSCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGISTEREDCITIZENCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETZONINGENABLED__BOOL_};
 
 CityRegion::CityRegion(Zone* zne, const String& name) : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(zne, name);
@@ -191,6 +191,61 @@ bool CityRegion::containsPoint(float x, float y) {
 		return _implementation->containsPoint(x, y);
 }
 
+void CityRegion::addCitizen(unsigned long long citizenID) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDCITIZEN__LONG_);
+		method.addUnsignedLongParameter(citizenID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addCitizen(citizenID);
+}
+
+void CityRegion::removeCitizen(unsigned long long citizenID) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVECITIZEN__LONG_);
+		method.addUnsignedLongParameter(citizenID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeCitizen(citizenID);
+}
+
+bool CityRegion::containsCitizen(unsigned long long citizenID) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CONTAINSCITIZEN__LONG_);
+		method.addUnsignedLongParameter(citizenID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->containsCitizen(citizenID);
+}
+
+int CityRegion::getCitizenCount() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCITIZENCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCitizenCount();
+}
+
 byte CityRegion::getCityRank() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -202,6 +257,15 @@ byte CityRegion::getCityRank() {
 		return method.executeWithByteReturn();
 	} else
 		return _implementation->getCityRank();
+}
+
+CitizenList* CityRegion::getCitizenList() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCitizenList();
 }
 
 Zone* CityRegion::getZone() {
@@ -663,6 +727,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "citizenList") {
+		TypeInfo<CitizenList >::parseFromBinaryStream(&citizenList, stream);
+		return true;
+	}
+
 	if (_name == "cityRank") {
 		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
 		return true;
@@ -680,6 +749,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 
 	if (_name == "zoningEnabled") {
 		TypeInfo<bool >::parseFromBinaryStream(&zoningEnabled, stream);
+		return true;
+	}
+
+	if (_name == "nextExpansionTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&nextExpansionTime, stream);
 		return true;
 	}
 
@@ -743,6 +817,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "citizenList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<CitizenList >::toBinaryStream(&citizenList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "cityRank";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -775,6 +857,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "nextExpansionTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&nextExpansionTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "citySpecialization";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -784,7 +874,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 10 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 12 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
@@ -829,9 +919,34 @@ bool CityRegionImplementation::containsPoint(float x, float y) {
 	return false;
 }
 
+void CityRegionImplementation::addCitizen(unsigned long long citizenID) {
+	// server/zone/objects/region/CityRegion.idl():  		citizenList.put(citizenID);
+	(&citizenList)->put(citizenID);
+}
+
+void CityRegionImplementation::removeCitizen(unsigned long long citizenID) {
+	// server/zone/objects/region/CityRegion.idl():  		citizenList.drop(citizenID);
+	(&citizenList)->drop(citizenID);
+}
+
+bool CityRegionImplementation::containsCitizen(unsigned long long citizenID) {
+	// server/zone/objects/region/CityRegion.idl():  		return citizenList.contains(citizenID);
+	return (&citizenList)->contains(citizenID);
+}
+
+int CityRegionImplementation::getCitizenCount() {
+	// server/zone/objects/region/CityRegion.idl():  		return citizenList.size();
+	return (&citizenList)->size();
+}
+
 byte CityRegionImplementation::getCityRank() {
 	// server/zone/objects/region/CityRegion.idl():  		return cityRank;
 	return cityRank;
+}
+
+CitizenList* CityRegionImplementation::getCitizenList() {
+	// server/zone/objects/region/CityRegion.idl():  		return citizenList;
+	return (&citizenList);
 }
 
 Zone* CityRegionImplementation::getZone() {
@@ -1022,6 +1137,18 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
+	case RPC_ADDCITIZEN__LONG_:
+		addCitizen(inv->getUnsignedLongParameter());
+		break;
+	case RPC_REMOVECITIZEN__LONG_:
+		removeCitizen(inv->getUnsignedLongParameter());
+		break;
+	case RPC_CONTAINSCITIZEN__LONG_:
+		resp->insertBoolean(containsCitizen(inv->getUnsignedLongParameter()));
+		break;
+	case RPC_GETCITIZENCOUNT__:
+		resp->insertSignedInt(getCitizenCount());
+		break;
 	case RPC_GETCITYRANK__:
 		resp->insertByte(getCityRank());
 		break;
@@ -1143,6 +1270,22 @@ bool CityRegionAdapter::hasZoningRights(unsigned long long objectid) {
 
 bool CityRegionAdapter::containsPoint(float x, float y) {
 	return (static_cast<CityRegion*>(stub))->containsPoint(x, y);
+}
+
+void CityRegionAdapter::addCitizen(unsigned long long citizenID) {
+	(static_cast<CityRegion*>(stub))->addCitizen(citizenID);
+}
+
+void CityRegionAdapter::removeCitizen(unsigned long long citizenID) {
+	(static_cast<CityRegion*>(stub))->removeCitizen(citizenID);
+}
+
+bool CityRegionAdapter::containsCitizen(unsigned long long citizenID) {
+	return (static_cast<CityRegion*>(stub))->containsCitizen(citizenID);
+}
+
+int CityRegionAdapter::getCitizenCount() {
+	return (static_cast<CityRegion*>(stub))->getCitizenCount();
 }
 
 byte CityRegionAdapter::getCityRank() {

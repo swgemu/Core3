@@ -55,8 +55,8 @@ namespace server {
     namespace buffs {
 
 		class BuffDurationEvent : public Task {
-			ManagedReference<CreatureObject*> creatureObject;
-			ManagedReference<Buff*> buffObject;
+			ManagedWeakReference<CreatureObject*> creatureObject;
+			ManagedWeakReference<Buff*> buffObject;
 
 		public:
 			BuffDurationEvent(CreatureObject* creature, Buff* buff) : Task((int) buff->getBuffDuration() * 1000) {

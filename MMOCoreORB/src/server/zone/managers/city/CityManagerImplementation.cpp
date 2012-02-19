@@ -20,6 +20,7 @@
 #include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/objects/player/sui/callbacks/CityTreasuryDepositSuiCallback.h"
+#include "server/zone/objects/region/CitizenList.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
@@ -337,4 +338,87 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city, Creature
 	StringIdChatParameter params("city/city", "deposit_treasury"); //You deposit %DI credits into the treasury.
 	params.setDI(total);
 	creature->sendSystemMessage(params);
+}
+
+void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+}
+
+void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	//Check if they already have the window open.
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::CITY_CITIZEN_REPORT))
+		return;
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_CITIZEN_REPORT);
+	listbox->setPromptTitle("@city/city:citizen_list_t"); //City Citizenship Report
+	listbox->setPromptText("@city/city:citizen_list_d"); //The following is a list of the currently declared citizens (residents) of this city. All citizens are elligible to vote.
+	listbox->setUsingObject(terminal);
+	listbox->setForceCloseDistance(16.f);
+
+	CitizenList* citizenList = city->getCitizenList();
+
+	ZoneServer* zserv = zone->getZoneServer();
+
+	for (int i = 0; i < citizenList->size(); ++i) {
+		ManagedReference<SceneObject*> citizen = zserv->getObject(citizenList->get(i));
+
+		if (citizen != NULL)
+			listbox->addMenuItem(citizen->getObjectName()->getDisplayedName());
+	}
+
+	ghost->addSuiBox(listbox);
+	creature->sendMessage(listbox->generateMessage());
+}
+
+void CityManagerImplementation::expandCityRegion(CityRegion* city) {
+	//First, find out what rank the city is at.
+	//Next, find out if it qualifies to increase/decrease.
+		//How many citizens does the city have.
+	//If it requires no change, then return.
+	//If it increases, then expand the active areas and incorporate new structures into city.
+	//If it decreases, then contract the active areas and exclude old structures, and destroy civic structures that are no longer supported.
+}
+
+void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
+	/*
+	string/en/city/city.stf	6	new_city_citizen_subject	City Growth: Added Citizen
+	string/en/city/city.stf	7	new_city_citizen_body	A new citizen has joined your city. Citizen Name: %TO
+	string/en/city/city.stf	10	new_city_citizen_other_subject	Welcome, Citizen!
+	string/en/city/city.stf	11	new_city_citizen_other_body	Welcome to %TU, citizen! Congratulations, you have become a fully enfranchised citizen of the city of %TU and are now subject to the benefits and rights accorded such a status. As a citizen of the city you have the ability to vote in local issues as well as in the weekly mayoral election. If you are a politician, you are now able to run for election yourself. You may also now be appointed to the city Militia. We thank you for joining our family, Mayor %TT
+	*/
+	ZoneServer* zserv = zone->getZoneServer();
+	ChatManager* chatManager = zserv->getChatManager();
+
+	ManagedReference<SceneObject*> mayor = zserv->getObject(city->getMayorID());
+
+	if (mayor != NULL && mayor->isCreatureObject()) {
+		CreatureObject* mayorCreature = cast<CreatureObject*>(mayor.get());
+
+		StringIdChatParameter params("city/city", "new_city_citizen_body");
+		params.setTO(creature->getObjectName()->getDisplayedName());
+		chatManager->sendMail("@city/city:new_city_from", "@city/city:new_city_citizen_subject", params, mayorCreature->getFirstName(), NULL);
+
+		params.setStringId("city/city", "new_city_citizen_other_body");
+		params.setTU(city->getRegionName());
+		params.setTT(mayorCreature->getObjectName()->getDisplayedName());
+
+		chatManager->sendMail("@city/city:new_city_from", "@city/city:new_city_citizen_other_subject", params, creature->getFirstName(), NULL);
+
+	}
+
+	city->addCitizen(creature->getObjectID());
+}
+
+void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature) {
+	/*
+	 string/en/city/city.stf	323	lost_citizen_subject	Lost Citizen!
+	 string/en/city/city.stf	324	lost_citizen_body	A citizen has left your city by using the revoke option on the city terminal. Citizen Name: %TO
+	 */
+
+	city->removeCitizen(creature->getObjectID());
+
 }

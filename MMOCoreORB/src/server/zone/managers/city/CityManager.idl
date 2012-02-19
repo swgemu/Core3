@@ -124,6 +124,16 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void depositToCityTreasury(CityRegion city, CreatureObject creature, int value);
 	
+	public native void sendTreasuryReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	
+	public native void expandCityRegion(CityRegion city);
+	
+	public native void sendCitizenshipReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	
+	public native void registerCitizen(CityRegion city, CreatureObject creature);
+	
+	public native void unregisterCitizen(CityRegion city, CreatureObject creature);
+	
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
 		if (city.isMayor(mayor.getObjectID())) {
 			boolean val = city.isZoningEnabled();

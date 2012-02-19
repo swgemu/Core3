@@ -71,6 +71,8 @@ using namespace server::zone;
 
 #include "system/lang/Time.h"
 
+#include "server/zone/objects/region/CitizenList.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -114,7 +116,17 @@ public:
 
 	bool containsPoint(float x, float y);
 
+	void addCitizen(unsigned long long citizenID);
+
+	void removeCitizen(unsigned long long citizenID);
+
+	bool containsCitizen(unsigned long long citizenID);
+
+	int getCitizenCount();
+
 	byte getCityRank();
+
+	CitizenList* getCitizenList();
 
 	Zone* getZone();
 
@@ -205,6 +217,8 @@ protected:
 
 	SortedVector<unsigned long long> militiaMembers;
 
+	CitizenList citizenList;
+
 	byte cityRank;
 
 	int cityTreasury;
@@ -212,6 +226,8 @@ protected:
 	unsigned long long mayorID;
 
 	bool zoningEnabled;
+
+	Time nextExpansionTime;
 
 	String citySpecialization;
 
@@ -254,7 +270,17 @@ public:
 
 	bool containsPoint(float x, float y);
 
+	void addCitizen(unsigned long long citizenID);
+
+	void removeCitizen(unsigned long long citizenID);
+
+	bool containsCitizen(unsigned long long citizenID);
+
+	int getCitizenCount();
+
 	byte getCityRank();
+
+	CitizenList* getCitizenList();
 
 	Zone* getZone();
 
@@ -370,6 +396,14 @@ public:
 	bool hasZoningRights(unsigned long long objectid);
 
 	bool containsPoint(float x, float y);
+
+	void addCitizen(unsigned long long citizenID);
+
+	void removeCitizen(unsigned long long citizenID);
+
+	bool containsCitizen(unsigned long long citizenID);
+
+	int getCitizenCount();
 
 	byte getCityRank();
 

@@ -46,6 +46,8 @@ which carries forward this exception.
 #define DECLARERESIDENCECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 class DeclareresidenceCommand : public QueueCommand {
 public:
@@ -56,63 +58,21 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		Locker _lock(ghost);
-
-		if (ghost == NULL)
-			return INVALIDPARAMETERS;
-
 		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObjectType::BUILDING);
 
-		if (obj == NULL)
-			return INVALIDTARGET;
+		if (obj == NULL || !obj->isStructureObject())
+			return INVALIDPARAMETERS;
 
-		Locker _slock(obj, ghost);
+		StructureObject* structure = cast<StructureObject*>(obj.get());
 
-		ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
-
-		if (declaredResidence != NULL) {
-			if (declaredResidence == obj) {
-				creature->sendSystemMessage("@player_structure:already_residence"); //This building is already your residence.
-				return GENERALERROR;
-			}
-
-			Time* cooldownTime = creature->getCooldownTime("declareresidence");
-
-			if (cooldownTime != NULL && cooldownTime->isFuture()) {
-				int hours = (int) round((float) abs((float) cooldownTime->miliDifference()) / 3600000.f); //Divided by 1 hour.
-
-				StringIdChatParameter param("@player_structure:change_residence_time"); //You cannot change residence for %NO hours)
-				param.setTO(String::valueOf(hours));
-
-				creature->sendSystemMessage(param);
-
-				return GENERALERROR;
-			}
-		}
-
-		BuildingObject* building = cast<BuildingObject*>( obj.get());
-
-		if (!ghost->isOwnedStructure(building)) {
-			creature->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
-			return INVALIDTARGET;
-		}
-
-		ghost->setDeclaredResidence(building);
-
-		creature->addCooldown("declareresidence", 86400000); //24 hours
-
-		creature->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
-
-		//TODO: Make a citizen of the city if in one.
+		StructureManager* structureManager = creature->getZone()->getStructureManager();
+		structureManager->declareResidence(creature, structure);
 
 		return SUCCESS;
 	}
