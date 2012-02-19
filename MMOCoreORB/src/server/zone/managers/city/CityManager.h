@@ -88,7 +88,7 @@ namespace city {
 
 class CityManager : public ManagedService {
 public:
-	static const byte NEWCITY = 0;
+	static const byte CLIENT = 0;
 
 	static const byte OUTPOST = 1;
 
@@ -110,6 +110,14 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void processCityUpdate(CityRegion* city);
+
+	void contractCity(CityRegion* city);
+
+	void expandCity(CityRegion* city);
+
+	void destroyCity(CityRegion* city);
+
 	void sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
@@ -126,8 +134,6 @@ public:
 
 	void sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
-	void expandCityRegion(CityRegion* city);
-
 	void sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void registerCitizen(CityRegion* city, CreatureObject* creature);
@@ -141,6 +147,8 @@ public:
 	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
 
 	void removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid);
+
+	void sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -198,7 +206,7 @@ private:
 	bool configLoaded;
 
 public:
-	static const byte NEWCITY = 0;
+	static const byte CLIENT = 0;
 
 	static const byte OUTPOST = 1;
 
@@ -222,6 +230,14 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void processCityUpdate(CityRegion* city);
+
+	void contractCity(CityRegion* city);
+
+	void expandCity(CityRegion* city);
+
+	void destroyCity(CityRegion* city);
+
 	void sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
@@ -238,8 +254,6 @@ public:
 
 	void sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
-	void expandCityRegion(CityRegion* city);
-
 	void sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void registerCitizen(CityRegion* city, CreatureObject* creature);
@@ -253,6 +267,8 @@ public:
 	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
 
 	void removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid);
+
+	void sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
@@ -311,6 +327,14 @@ public:
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
+	void processCityUpdate(CityRegion* city);
+
+	void contractCity(CityRegion* city);
+
+	void expandCity(CityRegion* city);
+
+	void destroyCity(CityRegion* city);
+
 	void sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	void promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
@@ -327,8 +351,6 @@ public:
 
 	void sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
-	void expandCityRegion(CityRegion* city);
-
 	void sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	void registerCitizen(CityRegion* city, CreatureObject* creature);
@@ -342,6 +364,8 @@ public:
 	void addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName);
 
 	void removeMilitiaMember(CityRegion* city, CreatureObject* mayor, unsigned long long militiaid);
+
+	void sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

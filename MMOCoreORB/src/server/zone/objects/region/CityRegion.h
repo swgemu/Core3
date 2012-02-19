@@ -178,6 +178,8 @@ public:
 
 	void setZoningEnabled(bool val);
 
+	void setRadius(float rad);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -332,6 +334,8 @@ public:
 
 	void setZoningEnabled(bool val);
 
+	void setRadius(float rad);
+
 	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
@@ -450,6 +454,8 @@ public:
 	void setMayorID(unsigned long long id);
 
 	void setZoningEnabled(bool val);
+
+	void setRadius(float rad);
 
 protected:
 	String _param1_initialize__Zone_String_;

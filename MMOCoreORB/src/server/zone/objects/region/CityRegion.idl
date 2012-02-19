@@ -254,4 +254,12 @@ class CityRegion extends ManagedObject implements Logger {
 	public void setZoningEnabled(boolean val) {
 		zoningEnabled = val;
 	}
+	
+	public void setRadius(float rad) {
+		if (regions.size() <= 0)
+			return;
+		
+		ActiveArea aa = regions.get(0);
+		aa.setRadius(rad);
+	}
 }

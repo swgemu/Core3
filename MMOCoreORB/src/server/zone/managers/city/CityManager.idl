@@ -79,7 +79,7 @@ class CityManager extends ManagedService implements Logger {
 	private transient boolean configLoaded;
 	
 	//City Ranks
-	public static final byte NEWCITY = 0;
+	public static final byte CLIENT = 0;
 	public static final byte OUTPOST = 1;
 	public static final byte VILLAGE = 2;
 	public static final byte TOWNSHIP = 3;
@@ -110,6 +110,14 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
 	
+	public native void processCityUpdate(CityRegion city);
+	
+	public native void contractCity(CityRegion city);
+	
+	public native void expandCity(CityRegion city);
+	
+	public native void destroyCity(CityRegion city);
+	
 	public native void sendStatusReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
 	
 	public native void promptCitySpecialization(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
@@ -126,8 +134,6 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void sendTreasuryReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
 	
-	public native void expandCityRegion(CityRegion city);
-	
 	public native void sendCitizenshipReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
 	
 	public native void registerCitizen(CityRegion city, CreatureObject creature);
@@ -141,6 +147,8 @@ class CityManager extends ManagedService implements Logger {
 	public native void addMilitiaMember(CityRegion city, CreatureObject mayor, final string playerName);
 	
 	public native void removeMilitiaMember(CityRegion city, CreatureObject mayor, unsigned long militiaid);
+	
+	public native void sendCityAdvancement(CityRegion city, CreatureObject creature, SceneObject terminal = null);
 
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
 		if (city.isMayor(mayor.getObjectID())) {

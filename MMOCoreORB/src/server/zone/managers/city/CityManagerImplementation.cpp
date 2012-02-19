@@ -366,21 +366,134 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 	for (int i = 0; i < citizenList->size(); ++i) {
 		ManagedReference<SceneObject*> citizen = zserv->getObject(citizenList->get(i));
 
-		if (citizen != NULL)
-			listbox->addMenuItem(citizen->getObjectName()->getDisplayedName());
+		if (citizen != NULL) {
+			String name = citizen->getObjectName()->getDisplayedName();
+
+			if (city->isMilitiaMember(citizen->getObjectID()))
+				name += "@city/city:militia_suffix";
+
+			listbox->addMenuItem(name);
+		}
 	}
 
 	ghost->addSuiBox(listbox);
 	creature->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::expandCityRegion(CityRegion* city) {
-	//First, find out what rank the city is at.
-	//Next, find out if it qualifies to increase/decrease.
-		//How many citizens does the city have.
-	//If it requires no change, then return.
-	//If it increases, then expand the active areas and incorporate new structures into city.
-	//If it decreases, then contract the active areas and exclude old structures, and destroy civic structures that are no longer supported.
+void CityManagerImplementation::processCityUpdate(CityRegion* city) {
+	uint8 cityRank = city->getCityRank();
+	uint16 radius = city->getRadius();
+
+	if (cityRank == CLIENT)
+		return; //It's a client region.
+
+	int citizens = city->getCitizenCount();
+
+	int maintainCitizens = citizensPerRank.get(cityRank - 1);
+	int advanceCitizens = citizensPerRank.get(cityRank);
+
+	if (maintainCitizens > citizens) {
+		contractCity(city);
+	}
+
+	if (advanceCitizens >= citizens) {
+		expandCity(city);
+	}
+
+	//TODO: Taxation
+	//TODO: Deduct Maintenance
+	//TODO: Election
+	//TODO: Set next update cycle.
+}
+
+void CityManagerImplementation::contractCity(CityRegion* city) {
+	uint8 newRank = city->getCityRank() - 1;
+
+	if (newRank == CLIENT) {
+		destroyCity(city);
+		return;
+	}
+
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(city->getMayorID());
+
+	if (obj != NULL && obj->isCreatureObject()) {
+		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
+
+		//Send out contraction mail.
+		StringIdChatParameter params("city/city", "city_contract_body");
+		params.setTO(city->getRegionName());
+		params.setDI(newRank);
+
+		UnicodeString subject = "@city/city:city_contract_subject";
+
+		if (newRank == OUTPOST) {
+			params.setStringId("city/city", "city_invalid_body");
+			subject = "@city/city:city_invalid_subject";
+		}
+
+		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
+	}
+
+	//TODO: Destroy civic structures.
+	//TODO: Remove citizens outside city limits.
+
+	city->setCityRank(newRank);
+	city->setRadius(radiusPerRank.get(newRank - 1));
+}
+
+void CityManagerImplementation::expandCity(CityRegion* city) {
+	uint8 currentRank = city->getCityRank();
+	uint8 newRank = city->getCityRank() + 1;
+
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(city->getMayorID());
+
+	if (obj != NULL && obj->isCreatureObject()) {
+		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
+
+		//Send out expansion mail.
+		StringIdChatParameter params("city/city", "city_expand_body");
+		params.setTO(city->getRegionName());
+		params.setDI(newRank);
+
+		UnicodeString subject = "@city/city:city_expand_subject";
+
+		if (currentRank == METROPOLIS) {
+			params.setStringId("city/city", "city_expand_cap_body"); //Capped
+			params.setDI(currentRank);
+
+			subject = "@city/city:city_expand_cap_subject";
+		}
+
+		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
+	}
+
+	if (currentRank == METROPOLIS)
+		return;
+
+	//TODO: Add new citizens within limits.
+
+	city->setCityRank(newRank);
+	city->setRadius(radiusPerRank.get(newRank - 1));
+}
+
+void CityManagerImplementation::destroyCity(CityRegion* city) {
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(city->getMayorID());
+
+	if (obj != NULL && obj->isCreatureObject()) {
+		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
+
+		//Send out contraction mail.
+		StringIdChatParameter params("city/city", "city_contract_body");
+		params.setTO(city->getRegionName());
+		//params.setDI(newRank);
+
+		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		chatManager->sendMail("@city/city:new_city_from", "@city/city:city_contract_subject", params, mayor->getFirstName(), NULL);
+	}
+
+	//TODO: Destroy civic structures.
 }
 
 void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
@@ -543,6 +656,24 @@ void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObj
 	listbox->setForceCloseDistance(16.f);
 
 	listbox->addMenuItem("@city/city:treasury " + String::valueOf(city->getCityTreasury()));
+
+	creature->sendMessage(listbox->generateMessage());
+}
+
+void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	StringIdChatParameter params("city/city", "city_update_eta"); //Next City Update: %TO
+	params.setTO("Not implemented yet.");
+
+	creature->sendSystemMessage(params);
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_ADVANCEMENT);
+	listbox->setPromptTitle("@city/city:rank_info_t"); //City Rank Info
+	listbox->setPromptText("@city/city:rank_info_d"); //The following report shows the current city rank, the current city population, the abilities of the city and the population required for the next rank.  If you have met your rank requirement, the city will advance in rank during the next city update.  Check the maintenance report for a projected time to the next update.
+	listbox->setUsingObject(terminal);
+	listbox->setForceCloseDistance(16.f);
+
+	//pop_req_current_rankPop. Req. for Current Rank:
+	//pop_req_next_rankPop. Req. for Next Rank:
 
 	creature->sendMessage(listbox->generateMessage());
 }
