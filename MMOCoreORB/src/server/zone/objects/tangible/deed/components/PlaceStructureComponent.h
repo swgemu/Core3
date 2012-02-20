@@ -18,20 +18,26 @@ namespace creature {
 }
 namespace tangible {
 namespace deed {
-	class Deed;
+namespace structure {
+	class StructureDeed;
 }
+}
+}
+namespace structure {
+	class StructureObject;
 }
 }
 }
 }
 
 using namespace server::zone::objects::creature;
-using namespace server::zone::objects::tangible::deed;
-
+using namespace server::zone::objects::tangible::deed::structure;
+using namespace server::zone::objects::structure;
 
 class PlaceStructureComponent : public SceneObjectComponent {
 public:
-	virtual int placeStructure(CreatureObject* creature, Deed* deed, float x, float y, int angle);
+	virtual int placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle);
+	virtual int notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure);
 };
 
 

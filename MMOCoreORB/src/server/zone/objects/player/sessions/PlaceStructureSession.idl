@@ -47,7 +47,7 @@ package server.zone.objects.player.sessions;
 import engine.util.Facade;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.tangible.deed.Deed;
+import server.zone.objects.tangible.deed.structure.StructureDeed;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.structure.StructureManager;
 import server.zone.Zone;
@@ -56,7 +56,7 @@ import server.zone.objects.area.ActiveArea;
 
 class PlaceStructureSession extends Facade {
 	protected CreatureObject creatureObject;
-	protected Deed deedObject;
+	protected StructureDeed deedObject;
 	
 	protected float positionX;
 	protected float positionY;
@@ -67,7 +67,7 @@ class PlaceStructureSession extends Facade {
 	
 	protected Zone zone;
 	
-	public PlaceStructureSession(CreatureObject creature, Deed deed) {
+	public PlaceStructureSession(CreatureObject creature, StructureDeed deed) {
 		Logger.setLoggingName("PlaceStructureSession");
 		Logger.setLogging(true);
 		

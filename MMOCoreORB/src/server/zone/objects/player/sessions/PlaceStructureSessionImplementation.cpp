@@ -12,15 +12,14 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/scene/SessionFacadeType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
-#include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/objects/area/ActiveArea.h"
 
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {
@@ -78,21 +77,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	structureObject->setDeedObjectID(deedObject->getObjectID());
 
-	//TODO: Encapsulate this better?
-	//Set the power and maintenance back from the deed to the structure.
-	if (deedObject->isBuildingDeed()) {
-		BuildingDeed* buildingDeed = cast<BuildingDeed*>( deedObject.get());
-		structureObject->setSurplusMaintenance(buildingDeed->getSurplusMaintenance());
-	} else if (deedObject->isInstallationDeed()) {
-		InstallationDeed* installationDeed = cast<InstallationDeed*>( deedObject.get());
-		structureObject->setSurplusMaintenance(installationDeed->getSurplusMaintenance());
-		structureObject->setSurplusPower(installationDeed->getSurplusPower());
-		ManagedReference<InstallationObject*> installationObject = cast<InstallationObject*>(structureObject.get());
-		installationObject->setExtractionRate(installationDeed->getExtractionRate());
-		installationObject->setHopperSizeMax(installationDeed->getHopperSizeMax());
-
-
-	}
+	deedObject->notifyStructurePlaced(creatureObject, structureObject);
 
 	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();
 
@@ -122,7 +107,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 		}
 
 		if (structureObject->isBuildingObject()) {
-			BuildingObject* building = cast<BuildingObject*>( structureObject.get());
+			BuildingObject* building = cast<BuildingObject*>(structureObject.get());
 			building->setCustomObjectName(creatureObject->getFirstName() + "'s House", true); //Set the house sign.
 		}
 	}

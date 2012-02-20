@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
@@ -98,7 +98,7 @@ public:
 		if (!obj->isASubChildOf(inventory))
 			return GENERALERROR; //Deed must be in inventory...
 
-		Deed* deed = cast<Deed*>( obj.get());
+		Deed* deed = cast<Deed*>(obj.get());
 
 		TemplateManager* templateManager = TemplateManager::instance();
 

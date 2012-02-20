@@ -75,6 +75,7 @@ bin_PROGRAMS = core3 #odb3
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
 core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
+				server/zone/objects/tangible/deed/structure/StructureDeed.cpp \
 				server/zone/objects/player/sessions/CityRemoveMilitiaSession.cpp \
 				server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
@@ -241,8 +242,6 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/attachment/Attachment.cpp \
 				server/zone/objects/tangible/deed/Deed.cpp \
 				server/zone/objects/tangible/deed/vehicle/VehicleDeed.cpp \
-				server/zone/objects/tangible/deed/building/BuildingDeed.cpp \
-				server/zone/objects/tangible/deed/installation/InstallationDeed.cpp \
 				server/zone/objects/tangible/deed/resource/ResourceDeed.cpp \
 				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
@@ -275,6 +274,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
 		server/zone/objects/player/sessions/CityRemoveMilitiaSessionImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
@@ -431,8 +431,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
 		server/zone/objects/tangible/sign/SignObjectImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \

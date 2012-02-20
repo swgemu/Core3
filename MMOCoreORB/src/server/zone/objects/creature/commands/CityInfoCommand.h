@@ -49,14 +49,12 @@ which carries forward this exception.
 
 class CityInfoCommand : public QueueCommand {
 public:
-
 	CityInfoCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 

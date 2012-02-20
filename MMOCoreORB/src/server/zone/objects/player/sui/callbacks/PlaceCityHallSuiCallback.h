@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/name/NameManager.h"
@@ -20,14 +20,14 @@
 
 class PlaceCityHallSuiCallback : public SuiCallback {
 	ManagedWeakReference<Zone*> zone;
-	ManagedWeakReference<Deed*> deed;
+	ManagedWeakReference<StructureDeed*> deed;
 
 	float x;
 	float y;
 	int angle;
 
 public:
-	PlaceCityHallSuiCallback(Zone* zone, Deed* deed, float x, float y, int angle)
+	PlaceCityHallSuiCallback(Zone* zone, StructureDeed* deed, float x, float y, int angle)
 			: SuiCallback(zone->getZoneServer()) {
 
 		this->zone = zone;
@@ -42,6 +42,11 @@ public:
 			return;
 
 		if (args->size() < 0)
+			return;
+
+		ManagedReference<Zone*> zone = this->zone.get();
+
+		if (zone == NULL)
 			return;
 
 		String cityName = args->get(0).toString();

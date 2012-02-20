@@ -44,16 +44,18 @@ namespace zone {
 namespace objects {
 namespace tangible {
 namespace deed {
+namespace structure {
 
-class Deed;
+class StructureDeed;
 
+} // namespace structure
 } // namespace deed
 } // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::tangible::deed;
+using namespace server::zone::objects::tangible::deed::structure;
 
 namespace server {
 namespace zone {
@@ -119,7 +121,7 @@ namespace sessions {
 
 class PlaceStructureSession : public Facade {
 public:
-	PlaceStructureSession(CreatureObject* creature, Deed* deed);
+	PlaceStructureSession(CreatureObject* creature, StructureDeed* deed);
 
 	int initializeSession();
 
@@ -161,7 +163,7 @@ class PlaceStructureSessionImplementation : public FacadeImplementation {
 protected:
 	ManagedReference<CreatureObject* > creatureObject;
 
-	ManagedReference<Deed* > deedObject;
+	ManagedReference<StructureDeed* > deedObject;
 
 	float positionX;
 
@@ -174,7 +176,7 @@ protected:
 	ManagedReference<Zone* > zone;
 
 public:
-	PlaceStructureSessionImplementation(CreatureObject* creature, Deed* deed);
+	PlaceStructureSessionImplementation(CreatureObject* creature, StructureDeed* deed);
 
 	PlaceStructureSessionImplementation(DummyConstructorParameter* param);
 

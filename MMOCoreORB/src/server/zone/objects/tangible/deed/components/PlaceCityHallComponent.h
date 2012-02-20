@@ -12,7 +12,8 @@
 
 class PlaceCityHallComponent : public PlaceStructureComponent {
 public:
-	int placeStructure(CreatureObject* creature, Deed* deed, float x, float y, int angle);
+	int placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle);
+	int notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure);
 };
 
 

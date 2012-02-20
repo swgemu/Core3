@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
@@ -24,7 +24,7 @@
 
 enum {RPC_INITIALIZESESSION__ = 6,RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_,RPC_COMPLETESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
-PlaceStructureSession::PlaceStructureSession(CreatureObject* creature, Deed* deed) : Facade(DummyConstructorParameter::instance()) {
+PlaceStructureSession::PlaceStructureSession(CreatureObject* creature, StructureDeed* deed) : Facade(DummyConstructorParameter::instance()) {
 	PlaceStructureSessionImplementation* _implementation = new PlaceStructureSessionImplementation(creature, deed);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -217,7 +217,7 @@ bool PlaceStructureSessionImplementation::readObjectMember(ObjectInputStream* st
 	}
 
 	if (_name == "deedObject") {
-		TypeInfo<ManagedReference<Deed* > >::parseFromBinaryStream(&deedObject, stream);
+		TypeInfo<ManagedReference<StructureDeed* > >::parseFromBinaryStream(&deedObject, stream);
 		return true;
 	}
 
@@ -273,7 +273,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<Deed* > >::toBinaryStream(&deedObject, stream);
+	TypeInfo<ManagedReference<StructureDeed* > >::toBinaryStream(&deedObject, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -321,7 +321,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	return 7 + FacadeImplementation::writeObjectMembers(stream);
 }
 
-PlaceStructureSessionImplementation::PlaceStructureSessionImplementation(CreatureObject* creature, Deed* deed) {
+PlaceStructureSessionImplementation::PlaceStructureSessionImplementation(CreatureObject* creature, StructureDeed* deed) {
 	_initializeImplementation();
 	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		Logger.setLoggingName("PlaceStructureSession");
 	Logger::setLoggingName("PlaceStructureSession");

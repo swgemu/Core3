@@ -14,23 +14,19 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/deed/Deed.h"
-
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 
 /*
  *	StructureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_DEED_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_,RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_STRUCTUREDEED_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_,RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -59,13 +55,13 @@ void StructureManager::initialize() {
 		_implementation->initialize();
 }
 
-int StructureManager::placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle) {
+int StructureManager::placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle) {
 	StructureManagerImplementation* _implementation = static_cast<StructureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_DEED_FLOAT_FLOAT_INT_);
+		DistributedMethod method(this, RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_STRUCTUREDEED_FLOAT_FLOAT_INT_);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(deed);
 		method.addFloatParameter(x);
@@ -449,8 +445,8 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_DEED_FLOAT_FLOAT_INT_:
-		resp->insertSignedInt(placeStructureFromDeed(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Deed*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+	case RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_STRUCTUREDEED_FLOAT_FLOAT_INT_:
+		resp->insertSignedInt(placeStructureFromDeed(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureDeed*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
 		break;
 	case RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_:
 		resp->insertLong(placeStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_placeStructure__CreatureObject_String_float_float_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
@@ -502,7 +498,7 @@ void StructureManagerAdapter::initialize() {
 	(static_cast<StructureManager*>(stub))->initialize();
 }
 
-int StructureManagerAdapter::placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle) {
+int StructureManagerAdapter::placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle) {
 	return (static_cast<StructureManager*>(stub))->placeStructureFromDeed(creature, deed, x, y, angle);
 }
 

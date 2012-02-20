@@ -372,7 +372,7 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 			String name = citizen->getObjectName()->getDisplayedName();
 
 			if (city->isMilitiaMember(citizen->getObjectID()))
-				name += "@city/city:militia_suffix";
+				name += " (Militia)";
 
 			listbox->addMenuItem(name);
 		}

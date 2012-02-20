@@ -76,36 +76,6 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace deed {
-
-class Deed;
-
-} // namespace deed
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::deed;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace structure {
 
 class StructureObject;
@@ -150,16 +120,18 @@ namespace zone {
 namespace objects {
 namespace tangible {
 namespace deed {
+namespace structure {
 
-class Deed;
+class StructureDeed;
 
+} // namespace structure
 } // namespace deed
 } // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::tangible::deed;
+using namespace server::zone::objects::tangible::deed::structure;
 
 #include "server/zone/managers/templates/TemplateManager.h"
 
@@ -190,7 +162,7 @@ public:
 
 	void initialize();
 
-	int placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle);
+	int placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle);
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
@@ -262,7 +234,7 @@ private:
 	void loadPlayerStructures();
 
 public:
-	int placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle);
+	int placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle);
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
@@ -335,7 +307,7 @@ public:
 
 	void initialize();
 
-	int placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle);
+	int placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle);
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 

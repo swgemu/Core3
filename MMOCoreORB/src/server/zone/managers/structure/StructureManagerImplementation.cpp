@@ -41,8 +41,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/chat/ChatManager.h"
 
-#include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
-#include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
@@ -139,7 +138,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	info(String::valueOf(i) + " player structures loaded", true);
 }
 
-int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, Deed* deed, float x, float y, int angle) {
+int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle) {
 	//Already placing a structure?
 	if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
 		return 1;
@@ -459,7 +458,7 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 
 	Locker _locker(structureObject);
 
-	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(zone->getZoneServer()->getObject(structureObject->getDeedObjectID()));
+	ManagedReference<StructureDeed*> deed = dynamic_cast<StructureDeed*>(zone->getZoneServer()->getObject(structureObject->getDeedObjectID()));
 	structureObject->setDeedObjectID(0); //Set this to 0 so the deed doesn't get destroyed with the structure.
 
 	int maint = structureObject->getSurplusMaintenance();
@@ -475,14 +474,8 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 			creature->sendSystemMessage("@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!
 			return session->cancelSession();
 		} else {
-			//TODO: Find a cleaner way of handling this.
-			if (deed->isBuildingDeed())
-				(cast<BuildingDeed*>(deed.get()))->setSurplusMaintenance(maint - redeedCost);
-			else if (deed->isInstallationDeed()) {
-				InstallationDeed* installationDeed = cast<InstallationDeed*>( deed.get());
-				installationDeed->setSurplusMaintenance(maint - redeedCost);
-				installationDeed->setSurplusPower(structureObject->getSurplusPower());
-			}
+			deed->setSurplusMaintenance(maint - redeedCost);
+			deed->setSurplusPower(structureObject->getSurplusPower());
 
 			inventory->transferObject(deed, -1, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
