@@ -82,7 +82,7 @@ object_weapon_melee_2h_sword_2h_sword_maul = object_weapon_melee_2h_sword_shared
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_sword_2h_maul" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "twohandedmelee_accuracy" },
+	creatureAccuracyModifiers = { "twohandmelee_accuracy" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "melee_defense" },

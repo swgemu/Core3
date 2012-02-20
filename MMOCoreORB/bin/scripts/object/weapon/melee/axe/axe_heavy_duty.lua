@@ -82,7 +82,7 @@ object_weapon_melee_axe_axe_heavy_duty = object_weapon_melee_axe_shared_axe_heav
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_axe_heavy_duty" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "twohandedmelee_accuracy" },
+	creatureAccuracyModifiers = { "twohandmelee_accuracy" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "melee_defense" },

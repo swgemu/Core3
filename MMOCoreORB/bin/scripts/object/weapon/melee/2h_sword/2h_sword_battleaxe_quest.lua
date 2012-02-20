@@ -82,7 +82,7 @@ object_weapon_melee_2h_sword_2h_sword_battleaxe_quest = object_weapon_melee_2h_s
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_sword_2h_axe" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "twohandedmelee_accuracy" },
+	creatureAccuracyModifiers = { "twohandmelee_accuracy" },
 	
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "melee_defense" },

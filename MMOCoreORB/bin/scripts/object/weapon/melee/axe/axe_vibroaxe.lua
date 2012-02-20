@@ -82,7 +82,7 @@ object_weapon_melee_axe_axe_vibroaxe = object_weapon_melee_axe_shared_axe_vibroa
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_axe_vibro" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "twohandedmelee_accuracy" },
+	creatureAccuracyModifiers = { "twohandmelee_accuracy" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "melee_defense" },

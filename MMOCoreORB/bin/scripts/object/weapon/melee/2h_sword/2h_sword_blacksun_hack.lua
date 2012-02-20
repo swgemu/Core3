@@ -82,7 +82,7 @@ object_weapon_melee_2h_sword_2h_sword_blacksun_hack = object_weapon_melee_2h_swo
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_sword_techniques2" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "twohandedmelee_accuracy" },
+	creatureAccuracyModifiers = { "twohandmelee_accuracy" },
 	
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "melee_defense" },
