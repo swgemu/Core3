@@ -153,7 +153,7 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	ObjectManager::instance()->persistObject(city, 1, "cityregions");
 	city->setCityRank(OUTPOST);
 	city->setMayorID(mayor->getObjectID());
-	city->addRegion(x, y, radiusPerRank.get(OUTPOST));
+	city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1));
 
 	//TODO: Send email to mayor.
 
