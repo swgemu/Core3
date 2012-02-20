@@ -116,10 +116,6 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 	if (object->isActiveArea())
 		return insertActiveArea(newZone, dynamic_cast<ActiveArea*>(object));
 
-	Vector<ManagedReference<ActiveArea*> >* activeAreas = object->getActiveAreas();
-
-	activeAreas->removeAll();
-
 	Locker zoneLocker(newZone);
 
 	if (object->isInQuadTree() && newZone != zone) {
