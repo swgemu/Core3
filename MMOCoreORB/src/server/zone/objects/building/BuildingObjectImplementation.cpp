@@ -277,7 +277,8 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 	addInRangeObject(object, false);
 
-	getZone()->updateActiveAreas(object);
+	if (getZone() != NULL)
+		getZone()->updateActiveAreas(object);
 
 	object->notifyInsertToZone(getZone());
 
