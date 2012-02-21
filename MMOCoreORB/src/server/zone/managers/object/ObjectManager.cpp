@@ -974,7 +974,13 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	return 1;
 }
 
-String ObjectManager::printInfo() {
+void ObjectManager::printInfo() {
+	StringBuffer msg;
+	msg << "total objects in map " << localObjectDirectory.getSize();
+	info(msg.toString(), true);
+}
+
+String ObjectManager::getInfo() {
 	StringBuffer msg;
 	msg << "total objects in map " << localObjectDirectory.getSize();
 	return msg.toString();

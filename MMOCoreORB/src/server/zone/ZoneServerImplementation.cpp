@@ -307,7 +307,7 @@ void ZoneServerImplementation::shutdown() {
 
 	info("zones shut down", true);
 
-	info(printInfo(), true);
+	printInfo();
 
 	info("shut down complete", true);
 }
@@ -507,13 +507,11 @@ int ZoneServerImplementation::getConnectionCount() {
 	return currentPlayers;
 }
 
-String ZoneServerImplementation::printInfo() {
+void ZoneServerImplementation::printInfo() {
 	lock();
 
 	StringBuffer msg;
-
-	//msg << Core::getTaskManager()->printInfo() << endl;;
-
+	msg << Core::getTaskManager()->getInfo(false) << endl;;
 	//msg << "MessageQueue - size = " << processor->getMessageQueue()->size() << endl;
 
 	float packetloss;
@@ -531,7 +529,54 @@ String ZoneServerImplementation::printInfo() {
 		 << totalDeletedPlayers << " deleted)" << endl;
 
 #ifndef WITH_STM
-	msg << ObjectManager::instance()->printInfo() << endl;
+	msg << ObjectManager::instance()->getInfo() << endl;
+
+	int totalCreatures = 0;
+
+	for (int i = 0; i < zones->size(); ++i) {
+		ManagedReference<Zone*> zone = zones->get(i);
+
+		if (zone != NULL) {
+			CreatureManager* manager = zone->getCreatureManager();
+
+			if (manager != NULL) {
+				totalCreatures += manager->getSpawnedRandomCreatures();
+				//creatureEvents += manager->creatureEventsSize();
+			}
+		}
+	}
+
+	msg << dec << totalCreatures << " random creatures spawned" << endl;
+#endif
+
+	unlock();
+
+	info(msg.toString(), true);
+}
+
+String ZoneServerImplementation::getInfo() {
+	lock();
+
+	StringBuffer msg;
+	msg << Core::getTaskManager()->getInfo(false) << endl;;
+	//msg << "MessageQueue - size = " << processor->getMessageQueue()->size() << endl;
+
+	float packetloss;
+	if (totalSentPackets + totalSentPackets == 0)
+		packetloss = 0.0f;
+	else
+		packetloss = (100 * totalResentPackets) / (totalResentPackets + totalSentPackets);
+
+#ifndef WITH_STM
+	msg << "sent packets = " << totalSentPackets << ", resent packets = "
+		<< totalResentPackets << " [" << packetloss << "%]" << endl;
+#endif
+
+	msg << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
+		 << totalDeletedPlayers << " deleted)" << endl;
+
+#ifndef WITH_STM
+	msg << ObjectManager::instance()->getInfo() << endl;
 
 	int totalCreatures = 0;
 

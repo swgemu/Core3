@@ -195,7 +195,10 @@ class ZoneServer extends ManagedService implements Logger {
 	public native void addTotalResentPacket(int count);
 	
 	@dirty
-	public native string printInfo();
+	public native void printInfo();
+	
+	@dirty
+	public native string getInfo();
 	
 	@dirty
 	public native void printEvents();

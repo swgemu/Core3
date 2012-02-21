@@ -23,7 +23,7 @@ public:
 
 		SuiMessageBox* box = new SuiMessageBox(creature, 0);
 		box->setPromptTitle("Server Information");
-		box->setPromptText(zserv->printInfo());
+		box->setPromptText(zserv->getInfo());
 
 		ghost->addSuiBox(box);
 		creature->sendMessage(box->generateMessage());
