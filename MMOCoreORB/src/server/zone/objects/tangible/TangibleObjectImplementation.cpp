@@ -74,7 +74,7 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 
 	setLoggingName("TangibleObject");
 
-	if (faction !=  0x16148850 || faction != 0xDB4ACC54) {
+	if (faction !=  0x16148850 && faction != 0xDB4ACC54) {
 		faction = 0;
 	}
 }
