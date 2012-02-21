@@ -589,6 +589,9 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 	if (zone != NULL)
 		delete _locker;
 
+	if (getZone() != NULL)
+		getZone()->updateActiveAreas(object);
+
 	return 0;
 }
 
