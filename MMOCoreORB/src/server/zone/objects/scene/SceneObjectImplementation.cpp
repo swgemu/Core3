@@ -404,7 +404,8 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 
 void SceneObjectImplementation::notifyLoadFromDatabase() {
 	if (zone != NULL) {
-		//insertToZone(getZone());
+		activeAreas.removeAll();
+
 		zone->transferObject(_this, -1, true);
 	} else if (parent != NULL && getParent()->isCellObject()) {
 		getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);
