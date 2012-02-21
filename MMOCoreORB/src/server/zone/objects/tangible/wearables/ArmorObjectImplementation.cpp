@@ -357,10 +357,15 @@ void ArmorObjectImplementation::setProtection(CraftingValues* craftingValues, bo
 		else
 			setProtectionValue(type, base);
 	} else {
-		if (value + base > 80.0f)
+		if(isVulnerable(type)){
+			if(firstUpdate) {
+				setProtectionValue(type, value);
+			}
+		} else if (value + base > 80.0f) {
 			setProtectionValue(type, 80.0f);
-		else
+		} else {
 			setProtectionValue(type, value + base);
+		}
 	}
 }
 
