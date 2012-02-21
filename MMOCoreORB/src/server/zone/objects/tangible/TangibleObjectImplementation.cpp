@@ -73,6 +73,10 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 	threatMap = new ThreatMap(_this);
 
 	setLoggingName("TangibleObject");
+
+	if (faction !=  0x16148850 || faction != 0xDB4ACC54) {
+		faction = 0;
+	}
 }
 
 void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
