@@ -194,11 +194,8 @@ public:
 
 		Zone* zone = playerRef->getZone();
 
-		if (position.getX() < zone->getMaxX() && position.getX()
-				> zone->getMinX() && position.getY() < zone->getMaxY()
-				&& position.getY() > zone->getMinY()) {
-			if (zone->getPlanetManager()->isBuildingPermittedAt(
-					position.getX(), position.getY(), NULL)) {
+		if (zone->isWithinBoundaries(position)) {
+			if (zone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
 				return true;
 			}
 		}

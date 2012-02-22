@@ -89,7 +89,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 	position.set(newX, height, newY);
 
-	while (((terrain->getWaterHeight(newX, newY, waterHeight) && waterHeight > height)
+	while ((!zone->isWithinBoundaries(position) ||
+			(terrain->getWaterHeight(newX, newY, waterHeight) && waterHeight > height)
 			|| CollisionManager::checkSphereCollision(position, 25.f , zone)) && tries < 20) {
 		newX = spawnActiveArea->getPositionX() + (distance - (float) System::random(distance * 2));
 		newY = spawnActiveArea->getPositionY() + (distance - (float) System::random(distance * 2));

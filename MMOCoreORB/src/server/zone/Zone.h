@@ -236,6 +236,8 @@ public:
 
 	float getMaxY();
 
+	bool isWithinBoundaries(const Vector3& position);
+
 	float getBoundingRadius();
 
 	void registerObjectWithPlanetaryMap(SceneObject* object);
@@ -367,6 +369,8 @@ public:
 	float getMinY();
 
 	float getMaxY();
+
+	bool isWithinBoundaries(const Vector3& position);
 
 	float getBoundingRadius();
 

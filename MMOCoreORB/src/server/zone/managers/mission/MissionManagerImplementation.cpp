@@ -1074,26 +1074,21 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	bool foundPosition = false;
 	Vector3 position;
 
+	if (player->getZone() == NULL) {
+		return;
+	}
+
 	while (!foundPosition) {
 		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360));
 
-		if (position.getX() > player->getZone()->getMaxX() - 500) {
-			position.setX(player->getZone()->getMaxX());
-		} else if (position.getX() < player->getZone()->getMinX() + 500) {
-			position.setX(player->getZone()->getMinX());
-		}
-		if (position.getY() > player->getZone()->getMaxY() - 500) {
-			position.setY(player->getZone()->getMaxY());
-		} else if (position.getY() < player->getZone()->getMinY() + 500) {
-			position.setY(player->getZone()->getMinY());
-		}
+		if (player->getZone()->isWithinBoundaries(position)) {
+			//Check if it is a position where you can build and away from any travel points.
+			if (player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
+				ManagedReference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(position);
 
-		//Check if it is a position where you can build and away from any travel points.
-		if (player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
-			ManagedReference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(position);
-
-			if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
-				foundPosition = true;
+				if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
+					foundPosition = true;
+				}
 			}
 		}
 	}
@@ -1301,8 +1296,7 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	while (!found) {
 		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
-		if (position.getX() > player->getZone()->getMinX() && position.getX() < player->getZone()->getMaxX() &&
-				position.getY() > player->getZone()->getMinY() && position.getY() < player->getZone()->getMaxY()) {
+		if (player->getZone()->isWithinBoundaries(position)) {
 			found = player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
 		}
 	}

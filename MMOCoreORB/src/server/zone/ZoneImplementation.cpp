@@ -483,6 +483,22 @@ float ZoneImplementation::getMaxY() {
 	return planetManager->getTerrainManager()->getMax();
 }
 
+bool ZoneImplementation::isWithinBoundaries(const Vector3& position) {
+	//Remove 1/16th of the size to match client limits. NOTE: it has not been verified to work like this in the client.
+	//Normal zone size is 8192, 1/16th of that is 512 resulting in 7680 as the boundary value.
+	float maxX = getMaxX() * 15 / 16;
+	float minX = getMinX() * 15 / 16;
+	float maxY = getMaxY() * 15 / 16;
+	float minY = getMinY() * 15 / 16;
+
+	if (maxX >= position.getX() && minX <= position.getX() &&
+			maxY >= position.getY() && minY <= position.getY()) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 float ZoneImplementation::getBoundingRadius() {
 	return planetManager->getTerrainManager()->getMax();
 }

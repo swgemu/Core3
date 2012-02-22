@@ -422,6 +422,15 @@ float Zone::getMaxY() {
 		return _implementation->getMaxY();
 }
 
+bool Zone::isWithinBoundaries(const Vector3& position) {
+	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isWithinBoundaries(position);
+}
+
 float Zone::getBoundingRadius() {
 	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
