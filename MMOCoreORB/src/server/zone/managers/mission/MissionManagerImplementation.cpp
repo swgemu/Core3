@@ -893,13 +893,7 @@ void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObjec
 
 void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureObject* player, MissionObject* mission, const int faction, const int missionType) {
 	//Generate difficulty for mission. How far away missions can be.
-	int difficulty = 1;
-
-	if (missionType == MissionObject::DANCER && player->hasSkill("social_dancer_novice")) {
-		difficulty = 2;
-	} else if (missionType == MissionObject::MUSICIAN && player->hasSkill("social_musician_novice")) {
-		difficulty = 2;
-	}
+	int difficulty = 2;
 
 	int randomRange = System::random(difficulty - 1) + 1;
 
