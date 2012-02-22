@@ -659,7 +659,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setMissionTargetName("???");
+	mission->setMissionTargetName(nm->makeCreatureName());
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_bounty_target.iff").hashCode()));
 
 	mission->setFaction(faction);

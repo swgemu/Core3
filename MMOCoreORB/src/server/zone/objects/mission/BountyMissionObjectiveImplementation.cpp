@@ -85,26 +85,28 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	Zone* zone = zoneServer->getZone(zoneName);
 	CreatureManager* cmng = zone->getCreatureManager();
 
-	ManagedReference<CreatureObject*> npcCreature = NULL;
-
 	if (npcTarget == NULL) {
 		Vector3 position = getTargetPosition();
-		//TODO: verify that it is a good position to spawn the target at i.e. not in water, not in a house etc. generate a random coordinate within 100 m if so and try that instead.
+
 		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(mission->getTargetOptionalTemplate().hashCode(), 0, position.getX(), zone->getHeight(position.getX(), position.getY()), position.getY(), 0));
 
-		ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
-		ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
+		if (npcTarget != NULL) {
+			npcTarget->setCustomObjectName(mission->getTargetName(), true);
 
-		npcTarget->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer1);
+			ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
+			ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
 
-		observers.put(observer1);
+			npcTarget->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer1);
 
-		ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this);
-		ObjectManager::instance()->persistObject(observer2, 1, "missionobservers");
+			observers.put(observer1);
 
-		npcTarget->registerObserver(ObserverEventType::DAMAGERECEIVED, observer2);
+			ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this);
+			ObjectManager::instance()->persistObject(observer2, 1, "missionobservers");
 
-		observers.put(observer2);
+			npcTarget->registerObserver(ObserverEventType::DAMAGERECEIVED, observer2);
+
+			observers.put(observer2);
+		}
 	}
 }
 
