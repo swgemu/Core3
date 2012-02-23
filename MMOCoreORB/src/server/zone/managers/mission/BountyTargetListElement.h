@@ -16,7 +16,8 @@ class BountyTargetListElement {
 	bool canHaveNewMissions;
 	Vector<String> activeBountyHunters;
 
-	BountyTargetListElement(String targetName, int reward) {
+public:
+	BountyTargetListElement(const String& targetName, int reward) {
 		this->targetName = targetName;
 		this->reward = reward;
 		canHaveNewMissions = true;
@@ -34,6 +35,10 @@ class BountyTargetListElement {
 		return reward;
 	}
 
+	void setReward(int reward) {
+		this->reward = reward;
+	}
+
 	bool getCanHaveNewMissions() {
 		return canHaveNewMissions;
 	}
@@ -46,11 +51,11 @@ class BountyTargetListElement {
 		return activeBountyHunters.size();
 	}
 
-	int addBountyHunter(String bountyHunterName) {
+	void addBountyHunter(const String& bountyHunterName) {
 		activeBountyHunters.add(bountyHunterName);
 	}
 
-	void removeBountyHunter(String bountyHunterName) {
+	void removeBountyHunter(const String& bountyHunterName) {
 		activeBountyHunters.removeElement(bountyHunterName);
 	}
 };

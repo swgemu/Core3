@@ -56,6 +56,7 @@ import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.stringid.StringIdManager;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
+include server.zone.managers.mission.BountyTargetListElement;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 import server.zone.managers.creature.LairSpawn;
@@ -78,6 +79,9 @@ class MissionManager extends Observer implements Logger {
 	@dereferenced
 	protected VectorMap<unsigned int, Vector<string> > bhTargetsAtMissionLevel;
 	
+	@dereferenced
+	protected VectorMap<string, BountyTargetListElement> jediBountyList;
+	
 	protected boolean enableFactionalCraftingMissions;
 	
 	protected boolean enableFactionalReconMissions;
@@ -89,6 +93,8 @@ class MissionManager extends Observer implements Logger {
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
 		processor = impl;
+		
+		jediBountyList.setNoDuplicateInsertPlan();
 
 		enableFactionalCraftingMissions = false;
 		enableFactionalReconMissions = false;
@@ -164,4 +170,10 @@ class MissionManager extends Observer implements Logger {
 	public native string getDeliveryMissionFileName(final int faction);
 	public native int getDeliverMissionNumberOfMissions(final int faction);
 	public native int getDeliverMissionSpawnType(final int faction);
+	
+	public native void addJediToBountyList(final string jediName, int reward);
+	public native void removeJediFromBountyList(final string jediName);
+	public native void updateJediBountyReward(final string jediName, int reward);
+	public native void addBountyHunterToJediBounty(final string jediName, final string bountyHunterName);
+	public native void removeBountyHunterToJediBounty(final string jediName, final string bountyHunterName);
 }

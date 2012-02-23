@@ -1314,3 +1314,44 @@ MissionObject* MissionManagerImplementation::getBountyHunterMission(CreatureObje
 
 	return NULL;
 }
+
+void MissionManagerImplementation::addJediToBountyList(const String& jediName, int reward) {
+	if (jediBountyList.contains(jediName)) {
+		jediBountyList.get(jediName)->setCanHaveNewMissions(true);
+	} else {
+		jediBountyList.put(jediName, new BountyTargetListElement(jediName, reward));
+	}
+}
+
+void MissionManagerImplementation::removeJediFromBountyList(const String& jediName) {
+	if (jediBountyList.contains(jediName)) {
+		if (jediBountyList.get(jediName)->numberOfActiveMissions() > 0) {
+			jediBountyList.get(jediName)->setCanHaveNewMissions(false);
+		} else {
+			jediBountyList.remove(jediBountyList.find(jediName));
+		}
+	}
+}
+
+void MissionManagerImplementation::updateJediBountyReward(const String& jediName, int reward) {
+	if (jediBountyList.contains(jediName)) {
+		jediBountyList.get(jediName)->setReward(reward);
+	}
+}
+
+void MissionManagerImplementation::addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
+	if (jediBountyList.contains(jediName)) {
+		jediBountyList.get(jediName)->addBountyHunter(bountyHunterName);
+	}
+}
+
+void MissionManagerImplementation::removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
+	if (jediBountyList.contains(jediName)) {
+		jediBountyList.get(jediName)->removeBountyHunter(bountyHunterName);
+
+		if (!jediBountyList.get(jediName)->getCanHaveNewMissions() &&
+				jediBountyList.get(jediName)->numberOfActiveMissions() == 0) {
+			jediBountyList.remove(jediBountyList.find(jediName));
+		}
+	}
+}

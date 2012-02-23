@@ -149,6 +149,8 @@ using namespace server::zone::templates::mobile;
 
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
 
+#include "server/zone/managers/mission/BountyTargetListElement.h"
+
 #include "server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.h"
 
 #include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
@@ -264,6 +266,16 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
+	void addJediToBountyList(const String& jediName, int reward);
+
+	void removeJediFromBountyList(const String& jediName);
+
+	void updateJediBountyReward(const String& jediName, int reward);
+
+	void addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+
+	void removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -305,6 +317,8 @@ protected:
 	Vector<String> bhTargetZones;
 
 	VectorMap<unsigned int, Vector<String>*> bhTargetsAtMissionLevel;
+
+	VectorMap<String, BountyTargetListElement*> jediBountyList;
 
 	bool enableFactionalCraftingMissions;
 
@@ -414,6 +428,16 @@ public:
 	int getDeliverMissionNumberOfMissions(const int faction);
 
 	int getDeliverMissionSpawnType(const int faction);
+
+	void addJediToBountyList(const String& jediName, int reward);
+
+	void removeJediFromBountyList(const String& jediName);
+
+	void updateJediBountyReward(const String& jediName, int reward);
+
+	void addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+
+	void removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
 
 	WeakReference<MissionManager*> _this;
 
@@ -550,8 +574,25 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
+	void addJediToBountyList(const String& jediName, int reward);
+
+	void removeJediFromBountyList(const String& jediName);
+
+	void updateJediBountyReward(const String& jediName, int reward);
+
+	void addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+
+	void removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+
 protected:
 	String _param1_createSpawnPoint__CreatureObject_String_;
+	String _param0_addJediToBountyList__String_int_;
+	String _param0_removeJediFromBountyList__String_;
+	String _param0_updateJediBountyReward__String_int_;
+	String _param0_addBountyHunterToJediBounty__String_String_;
+	String _param1_addBountyHunterToJediBounty__String_String_;
+	String _param0_removeBountyHunterToJediBounty__String_String_;
+	String _param1_removeBountyHunterToJediBounty__String_String_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {
