@@ -28,7 +28,7 @@
  *	MissionManagerStub
  */
 
-enum {RPC_LOADLUASETTINGS__ = 6,RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_HANDLEMISSIONACCEPT__MISSIONTERMINAL_MISSIONOBJECT_CREATUREOBJECT_,RPC_HANDLEMISSIONABORT__MISSIONOBJECT_CREATUREOBJECT_,RPC_REMOVEMISSION__MISSIONOBJECT_CREATUREOBJECT_,RPC_POPULATEMISSIONLIST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_RANDOMGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_BOOL_INT_,RPC_RANDOMIZEGENERICBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICENTERTAINERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_INT_,RPC_RANDOMIZEGENERICHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICSURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZESURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZECRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZERECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_CREATEMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATESURVEYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDESTROYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDELIVERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEENTERTAINERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEHUNTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATERECONMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATECRAFTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_GETRANDOMFREENPCSPAWNPOINT__INT_FLOAT_FLOAT_INT_,RPC_RETURNSPAWNPOINT__NPCSPAWNPOINT_,RPC_CREATESPAWNPOINT__CREATUREOBJECT_STRING_,RPC_GETBOUNTYHUNTERMISSION__CREATUREOBJECT_,RPC_GETDELIVERYMISSIONFILENAME__INT_,RPC_GETDELIVERMISSIONNUMBEROFMISSIONS__INT_,RPC_GETDELIVERMISSIONSPAWNTYPE__INT_,RPC_ADDJEDITOBOUNTYLIST__STRING_INT_,RPC_REMOVEJEDIFROMBOUNTYLIST__STRING_,RPC_UPDATEJEDIBOUNTYREWARD__STRING_INT_,RPC_ADDBOUNTYHUNTERTOJEDIBOUNTY__STRING_STRING_,RPC_REMOVEBOUNTYHUNTERTOJEDIBOUNTY__STRING_STRING_};
+enum {RPC_LOADLUASETTINGS__ = 6,RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_HANDLEMISSIONACCEPT__MISSIONTERMINAL_MISSIONOBJECT_CREATUREOBJECT_,RPC_HANDLEMISSIONABORT__MISSIONOBJECT_CREATUREOBJECT_,RPC_REMOVEMISSION__MISSIONOBJECT_CREATUREOBJECT_,RPC_POPULATEMISSIONLIST__MISSIONTERMINAL_CREATUREOBJECT_INT_,RPC_RANDOMGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_BOOL_INT_,RPC_RANDOMIZEGENERICBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICENTERTAINERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_INT_,RPC_RANDOMIZEGENERICHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZEGENERICSURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_,RPC_RANDOMIZESURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZECRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZERECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_RANDOMIZEREBELRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_,RPC_CREATEMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATESURVEYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDESTROYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEDELIVERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEENTERTAINERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEHUNTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATERECONMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_CREATECRAFTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_,RPC_GETRANDOMFREENPCSPAWNPOINT__INT_FLOAT_FLOAT_INT_,RPC_RETURNSPAWNPOINT__NPCSPAWNPOINT_,RPC_CREATESPAWNPOINT__CREATUREOBJECT_STRING_,RPC_GETBOUNTYHUNTERMISSION__CREATUREOBJECT_,RPC_GETDELIVERYMISSIONFILENAME__INT_,RPC_GETDELIVERMISSIONNUMBEROFMISSIONS__INT_,RPC_GETDELIVERMISSIONSPAWNTYPE__INT_,RPC_ADDJEDITOBOUNTYLIST__LONG_INT_,RPC_REMOVEJEDIFROMBOUNTYLIST__LONG_,RPC_UPDATEJEDIBOUNTYREWARD__LONG_INT_,RPC_ADDBOUNTYHUNTERTOJEDIBOUNTY__LONG_LONG_,RPC_REMOVEBOUNTYHUNTERTOJEDIBOUNTY__LONG_LONG_};
 
 MissionManager::MissionManager(ZoneServer* srv, ZoneProcessServer* impl) : Observer(DummyConstructorParameter::instance()) {
 	MissionManagerImplementation* _implementation = new MissionManagerImplementation(srv, impl);
@@ -771,78 +771,78 @@ int MissionManager::getDeliverMissionSpawnType(const int faction) {
 		return _implementation->getDeliverMissionSpawnType(faction);
 }
 
-void MissionManager::addJediToBountyList(const String& jediName, int reward) {
+void MissionManager::addJediToBountyList(unsigned long long targetId, int reward) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDJEDITOBOUNTYLIST__STRING_INT_);
-		method.addAsciiParameter(jediName);
+		DistributedMethod method(this, RPC_ADDJEDITOBOUNTYLIST__LONG_INT_);
+		method.addUnsignedLongParameter(targetId);
 		method.addSignedIntParameter(reward);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addJediToBountyList(jediName, reward);
+		_implementation->addJediToBountyList(targetId, reward);
 }
 
-void MissionManager::removeJediFromBountyList(const String& jediName) {
+void MissionManager::removeJediFromBountyList(unsigned long long targetId) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEJEDIFROMBOUNTYLIST__STRING_);
-		method.addAsciiParameter(jediName);
+		DistributedMethod method(this, RPC_REMOVEJEDIFROMBOUNTYLIST__LONG_);
+		method.addUnsignedLongParameter(targetId);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeJediFromBountyList(jediName);
+		_implementation->removeJediFromBountyList(targetId);
 }
 
-void MissionManager::updateJediBountyReward(const String& jediName, int reward) {
+void MissionManager::updateJediBountyReward(unsigned long long targetId, int reward) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UPDATEJEDIBOUNTYREWARD__STRING_INT_);
-		method.addAsciiParameter(jediName);
+		DistributedMethod method(this, RPC_UPDATEJEDIBOUNTYREWARD__LONG_INT_);
+		method.addUnsignedLongParameter(targetId);
 		method.addSignedIntParameter(reward);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->updateJediBountyReward(jediName, reward);
+		_implementation->updateJediBountyReward(targetId, reward);
 }
 
-void MissionManager::addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
+void MissionManager::addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDBOUNTYHUNTERTOJEDIBOUNTY__STRING_STRING_);
-		method.addAsciiParameter(jediName);
-		method.addAsciiParameter(bountyHunterName);
+		DistributedMethod method(this, RPC_ADDBOUNTYHUNTERTOJEDIBOUNTY__LONG_LONG_);
+		method.addUnsignedLongParameter(targetId);
+		method.addUnsignedLongParameter(bountyHunterId);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addBountyHunterToJediBounty(jediName, bountyHunterName);
+		_implementation->addBountyHunterToJediBounty(targetId, bountyHunterId);
 }
 
-void MissionManager::removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
+void MissionManager::removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEBOUNTYHUNTERTOJEDIBOUNTY__STRING_STRING_);
-		method.addAsciiParameter(jediName);
-		method.addAsciiParameter(bountyHunterName);
+		DistributedMethod method(this, RPC_REMOVEBOUNTYHUNTERTOJEDIBOUNTY__LONG_LONG_);
+		method.addUnsignedLongParameter(targetId);
+		method.addUnsignedLongParameter(bountyHunterId);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeBountyHunterToJediBounty(jediName, bountyHunterName);
+		_implementation->removeBountyHunterToJediBounty(targetId, bountyHunterId);
 }
 
 DistributedObjectServant* MissionManager::_getImplementation() {
@@ -975,8 +975,8 @@ bool MissionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "jediBountyList") {
-		TypeInfo<VectorMap<String, BountyTargetListElement*> >::parseFromBinaryStream(&jediBountyList, stream);
+	if (_name == "playerBountyList") {
+		TypeInfo<VectorMap<unsigned long long, BountyTargetListElement*> >::parseFromBinaryStream(&playerBountyList, stream);
 		return true;
 	}
 
@@ -1050,11 +1050,11 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "jediBountyList";
+	_name = "playerBountyList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<String, BountyTargetListElement*> >::toBinaryStream(&jediBountyList, stream);
+	TypeInfo<VectorMap<unsigned long long, BountyTargetListElement*> >::toBinaryStream(&playerBountyList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1092,8 +1092,8 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, Zone
 	server = srv;
 	// server/zone/managers/mission/MissionManager.idl():  		processor = impl;
 	processor = impl;
-	// server/zone/managers/mission/MissionManager.idl():  		jediBountyList.setNoDuplicateInsertPlan();
-	(&jediBountyList)->setNoDuplicateInsertPlan();
+	// server/zone/managers/mission/MissionManager.idl():  		playerBountyList.setNoDuplicateInsertPlan();
+	(&playerBountyList)->setNoDuplicateInsertPlan();
 	// server/zone/managers/mission/MissionManager.idl():  		enableFactionalCraftingMissions = false;
 	enableFactionalCraftingMissions = false;
 	// server/zone/managers/mission/MissionManager.idl():  		enableFactionalReconMissions = false;
@@ -1257,20 +1257,20 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETDELIVERMISSIONSPAWNTYPE__INT_:
 		resp->insertSignedInt(getDeliverMissionSpawnType(inv->getSignedIntParameter()));
 		break;
-	case RPC_ADDJEDITOBOUNTYLIST__STRING_INT_:
-		addJediToBountyList(inv->getAsciiParameter(_param0_addJediToBountyList__String_int_), inv->getSignedIntParameter());
+	case RPC_ADDJEDITOBOUNTYLIST__LONG_INT_:
+		addJediToBountyList(inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_REMOVEJEDIFROMBOUNTYLIST__STRING_:
-		removeJediFromBountyList(inv->getAsciiParameter(_param0_removeJediFromBountyList__String_));
+	case RPC_REMOVEJEDIFROMBOUNTYLIST__LONG_:
+		removeJediFromBountyList(inv->getUnsignedLongParameter());
 		break;
-	case RPC_UPDATEJEDIBOUNTYREWARD__STRING_INT_:
-		updateJediBountyReward(inv->getAsciiParameter(_param0_updateJediBountyReward__String_int_), inv->getSignedIntParameter());
+	case RPC_UPDATEJEDIBOUNTYREWARD__LONG_INT_:
+		updateJediBountyReward(inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_ADDBOUNTYHUNTERTOJEDIBOUNTY__STRING_STRING_:
-		addBountyHunterToJediBounty(inv->getAsciiParameter(_param0_addBountyHunterToJediBounty__String_String_), inv->getAsciiParameter(_param1_addBountyHunterToJediBounty__String_String_));
+	case RPC_ADDBOUNTYHUNTERTOJEDIBOUNTY__LONG_LONG_:
+		addBountyHunterToJediBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
 		break;
-	case RPC_REMOVEBOUNTYHUNTERTOJEDIBOUNTY__STRING_STRING_:
-		removeBountyHunterToJediBounty(inv->getAsciiParameter(_param0_removeBountyHunterToJediBounty__String_String_), inv->getAsciiParameter(_param1_removeBountyHunterToJediBounty__String_String_));
+	case RPC_REMOVEBOUNTYHUNTERTOJEDIBOUNTY__LONG_LONG_:
+		removeBountyHunterToJediBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -1463,24 +1463,24 @@ int MissionManagerAdapter::getDeliverMissionSpawnType(const int faction) {
 	return (static_cast<MissionManager*>(stub))->getDeliverMissionSpawnType(faction);
 }
 
-void MissionManagerAdapter::addJediToBountyList(const String& jediName, int reward) {
-	(static_cast<MissionManager*>(stub))->addJediToBountyList(jediName, reward);
+void MissionManagerAdapter::addJediToBountyList(unsigned long long targetId, int reward) {
+	(static_cast<MissionManager*>(stub))->addJediToBountyList(targetId, reward);
 }
 
-void MissionManagerAdapter::removeJediFromBountyList(const String& jediName) {
-	(static_cast<MissionManager*>(stub))->removeJediFromBountyList(jediName);
+void MissionManagerAdapter::removeJediFromBountyList(unsigned long long targetId) {
+	(static_cast<MissionManager*>(stub))->removeJediFromBountyList(targetId);
 }
 
-void MissionManagerAdapter::updateJediBountyReward(const String& jediName, int reward) {
-	(static_cast<MissionManager*>(stub))->updateJediBountyReward(jediName, reward);
+void MissionManagerAdapter::updateJediBountyReward(unsigned long long targetId, int reward) {
+	(static_cast<MissionManager*>(stub))->updateJediBountyReward(targetId, reward);
 }
 
-void MissionManagerAdapter::addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
-	(static_cast<MissionManager*>(stub))->addBountyHunterToJediBounty(jediName, bountyHunterName);
+void MissionManagerAdapter::addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId) {
+	(static_cast<MissionManager*>(stub))->addBountyHunterToJediBounty(targetId, bountyHunterId);
 }
 
-void MissionManagerAdapter::removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
-	(static_cast<MissionManager*>(stub))->removeBountyHunterToJediBounty(jediName, bountyHunterName);
+void MissionManagerAdapter::removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId) {
+	(static_cast<MissionManager*>(stub))->removeBountyHunterToJediBounty(targetId, bountyHunterId);
 }
 
 /*

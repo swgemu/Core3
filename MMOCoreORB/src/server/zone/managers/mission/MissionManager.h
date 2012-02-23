@@ -266,15 +266,15 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
-	void addJediToBountyList(const String& jediName, int reward);
+	void addJediToBountyList(unsigned long long targetId, int reward);
 
-	void removeJediFromBountyList(const String& jediName);
+	void removeJediFromBountyList(unsigned long long targetId);
 
-	void updateJediBountyReward(const String& jediName, int reward);
+	void updateJediBountyReward(unsigned long long targetId, int reward);
 
-	void addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+	void addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -318,7 +318,7 @@ protected:
 
 	VectorMap<unsigned int, Vector<String>*> bhTargetsAtMissionLevel;
 
-	VectorMap<String, BountyTargetListElement*> jediBountyList;
+	VectorMap<unsigned long long, BountyTargetListElement*> playerBountyList;
 
 	bool enableFactionalCraftingMissions;
 
@@ -429,15 +429,15 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
-	void addJediToBountyList(const String& jediName, int reward);
+	void addJediToBountyList(unsigned long long targetId, int reward);
 
-	void removeJediFromBountyList(const String& jediName);
+	void removeJediFromBountyList(unsigned long long targetId);
 
-	void updateJediBountyReward(const String& jediName, int reward);
+	void updateJediBountyReward(unsigned long long targetId, int reward);
 
-	void addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+	void addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	WeakReference<MissionManager*> _this;
 
@@ -574,25 +574,18 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
-	void addJediToBountyList(const String& jediName, int reward);
+	void addJediToBountyList(unsigned long long targetId, int reward);
 
-	void removeJediFromBountyList(const String& jediName);
+	void removeJediFromBountyList(unsigned long long targetId);
 
-	void updateJediBountyReward(const String& jediName, int reward);
+	void updateJediBountyReward(unsigned long long targetId, int reward);
 
-	void addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+	void addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName);
+	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 protected:
 	String _param1_createSpawnPoint__CreatureObject_String_;
-	String _param0_addJediToBountyList__String_int_;
-	String _param0_removeJediFromBountyList__String_;
-	String _param0_updateJediBountyReward__String_int_;
-	String _param0_addBountyHunterToJediBounty__String_String_;
-	String _param1_addBountyHunterToJediBounty__String_String_;
-	String _param0_removeBountyHunterToJediBounty__String_String_;
-	String _param1_removeBountyHunterToJediBounty__String_String_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

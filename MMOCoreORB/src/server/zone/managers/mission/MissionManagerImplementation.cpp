@@ -1315,43 +1315,43 @@ MissionObject* MissionManagerImplementation::getBountyHunterMission(CreatureObje
 	return NULL;
 }
 
-void MissionManagerImplementation::addJediToBountyList(const String& jediName, int reward) {
-	if (jediBountyList.contains(jediName)) {
-		jediBountyList.get(jediName)->setCanHaveNewMissions(true);
+void MissionManagerImplementation::addJediToBountyList(unsigned long long int targetId, int reward) {
+	if (playerBountyList.contains(targetId)) {
+		playerBountyList.get(targetId)->setCanHaveNewMissions(true);
 	} else {
-		jediBountyList.put(jediName, new BountyTargetListElement(jediName, reward));
+		playerBountyList.put(targetId, new BountyTargetListElement(targetId, reward));
 	}
 }
 
-void MissionManagerImplementation::removeJediFromBountyList(const String& jediName) {
-	if (jediBountyList.contains(jediName)) {
-		if (jediBountyList.get(jediName)->numberOfActiveMissions() > 0) {
-			jediBountyList.get(jediName)->setCanHaveNewMissions(false);
+void MissionManagerImplementation::removeJediFromBountyList(unsigned long long int targetId) {
+	if (playerBountyList.contains(targetId)) {
+		if (playerBountyList.get(targetId)->numberOfActiveMissions() > 0) {
+			playerBountyList.get(targetId)->setCanHaveNewMissions(false);
 		} else {
-			jediBountyList.remove(jediBountyList.find(jediName));
+			playerBountyList.remove(playerBountyList.find(targetId));
 		}
 	}
 }
 
-void MissionManagerImplementation::updateJediBountyReward(const String& jediName, int reward) {
-	if (jediBountyList.contains(jediName)) {
-		jediBountyList.get(jediName)->setReward(reward);
+void MissionManagerImplementation::updateJediBountyReward(unsigned long long int targetId, int reward) {
+	if (playerBountyList.contains(targetId)) {
+		playerBountyList.get(targetId)->setReward(reward);
 	}
 }
 
-void MissionManagerImplementation::addBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
-	if (jediBountyList.contains(jediName)) {
-		jediBountyList.get(jediName)->addBountyHunter(bountyHunterName);
+void MissionManagerImplementation::addBountyHunterToJediBounty(unsigned long long int targetId, unsigned long long int bountyHunterId) {
+	if (playerBountyList.contains(targetId)) {
+		playerBountyList.get(targetId)->addBountyHunter(bountyHunterId);
 	}
 }
 
-void MissionManagerImplementation::removeBountyHunterToJediBounty(const String& jediName, const String& bountyHunterName) {
-	if (jediBountyList.contains(jediName)) {
-		jediBountyList.get(jediName)->removeBountyHunter(bountyHunterName);
+void MissionManagerImplementation::removeBountyHunterToJediBounty(unsigned long long int targetId, unsigned long long int bountyHunterId) {
+	if (playerBountyList.contains(targetId)) {
+		playerBountyList.get(targetId)->removeBountyHunter(bountyHunterId);
 
-		if (!jediBountyList.get(jediName)->getCanHaveNewMissions() &&
-				jediBountyList.get(jediName)->numberOfActiveMissions() == 0) {
-			jediBountyList.remove(jediBountyList.find(jediName));
+		if (!playerBountyList.get(targetId)->getCanHaveNewMissions() &&
+				playerBountyList.get(targetId)->numberOfActiveMissions() == 0) {
+			playerBountyList.remove(playerBountyList.find(targetId));
 		}
 	}
 }

@@ -80,7 +80,7 @@ class MissionManager extends Observer implements Logger {
 	protected VectorMap<unsigned int, Vector<string> > bhTargetsAtMissionLevel;
 	
 	@dereferenced
-	protected VectorMap<string, BountyTargetListElement> jediBountyList;
+	protected VectorMap<unsigned long, BountyTargetListElement> playerBountyList;
 	
 	protected boolean enableFactionalCraftingMissions;
 	
@@ -94,7 +94,7 @@ class MissionManager extends Observer implements Logger {
 		server = srv;
 		processor = impl;
 		
-		jediBountyList.setNoDuplicateInsertPlan();
+		playerBountyList.setNoDuplicateInsertPlan();
 
 		enableFactionalCraftingMissions = false;
 		enableFactionalReconMissions = false;
@@ -171,9 +171,9 @@ class MissionManager extends Observer implements Logger {
 	public native int getDeliverMissionNumberOfMissions(final int faction);
 	public native int getDeliverMissionSpawnType(final int faction);
 	
-	public native void addJediToBountyList(final string jediName, int reward);
-	public native void removeJediFromBountyList(final string jediName);
-	public native void updateJediBountyReward(final string jediName, int reward);
-	public native void addBountyHunterToJediBounty(final string jediName, final string bountyHunterName);
-	public native void removeBountyHunterToJediBounty(final string jediName, final string bountyHunterName);
+	public native void addJediToBountyList(unsigned long targetId, int reward);
+	public native void removeJediFromBountyList(unsigned long targetId);
+	public native void updateJediBountyReward(unsigned long targetId, int reward);
+	public native void addBountyHunterToJediBounty(unsigned long targetId, unsigned long bountyHunterId);
+	public native void removeBountyHunterToJediBounty(unsigned long targetId, unsigned long bountyHunterId);
 }

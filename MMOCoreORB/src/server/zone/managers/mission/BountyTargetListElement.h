@@ -11,14 +11,14 @@
 #include "system/util/Vector.h"
 
 class BountyTargetListElement {
-	String targetName;
+	unsigned long long int targetObjectId;
 	int reward;
 	bool canHaveNewMissions;
-	Vector<String> activeBountyHunters;
+	Vector<unsigned long long int> activeBountyHunters;
 
 public:
-	BountyTargetListElement(const String& targetName, int reward) {
-		this->targetName = targetName;
+	BountyTargetListElement(unsigned long long int targetObjectId, int reward) {
+		this->targetObjectId = targetObjectId;
 		this->reward = reward;
 		canHaveNewMissions = true;
 		activeBountyHunters.removeAll();
@@ -27,8 +27,8 @@ public:
 	~BountyTargetListElement() {
 	}
 
-	String getTargetName() {
-		return targetName;
+	unsigned long long int getTargetName() {
+		return targetObjectId;
 	}
 
 	int getReward() {
@@ -51,12 +51,12 @@ public:
 		return activeBountyHunters.size();
 	}
 
-	void addBountyHunter(const String& bountyHunterName) {
-		activeBountyHunters.add(bountyHunterName);
+	void addBountyHunter(unsigned long long int bountyHunterId) {
+		activeBountyHunters.add(bountyHunterId);
 	}
 
-	void removeBountyHunter(const String& bountyHunterName) {
-		activeBountyHunters.removeElement(bountyHunterName);
+	void removeBountyHunter(unsigned long long int bountyHunterId) {
+		activeBountyHunters.removeElement(bountyHunterId);
 	}
 };
 
