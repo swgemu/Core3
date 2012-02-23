@@ -13,6 +13,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
 
 void CityRegionImplementation::initializeTransientMembers() {
@@ -83,7 +84,7 @@ void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
 		return;
 
 	if (cityUpdateEvent == NULL) {
-		cityUpdateEvent = new CityUpdateEvent(_this, zone->getZoneServer());
+		cityUpdateEvent = new CityUpdateEvent(_this, ServerCore::getZoneServer());
 	} else if (cityUpdateEvent->isScheduled()) {
 		cityUpdateEvent->cancel();
 	}
