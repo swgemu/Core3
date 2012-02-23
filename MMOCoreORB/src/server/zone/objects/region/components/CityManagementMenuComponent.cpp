@@ -62,12 +62,7 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 	Locker lock(city, player);
 
-	Zone* zone = sceneObject->getZone();
-
-	if (zone == NULL)
-		return 1;
-
-	CityManager* cityManager = zone->getCityManager();
+	CityManager* cityManager = player->getZoneServer()->getCityManager();
 
 	switch (selectID) {
 	case 212: //Status Report

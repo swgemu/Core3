@@ -50,7 +50,7 @@ public:
 			return;
 		}
 
-		CityManager* cityManager = city->getZone()->getCityManager();
+		CityManager* cityManager = server->getCityManager();
 		cityManager->removeMilitiaMember(city, player, session->getMilitiaID());
 
 		session->cancelSession();

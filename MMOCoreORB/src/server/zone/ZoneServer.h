@@ -321,6 +321,20 @@ class GuildManager;
 
 using namespace server::zone::managers::guild;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace city {
+
+class CityManager;
+
+} // namespace city
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::city;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -466,6 +480,8 @@ public:
 
 	ChatManager* getChatManager();
 
+	CityManager* getCityManager();
+
 	ObjectController* getObjectController();
 
 	MissionManager* getMissionManager();
@@ -552,6 +568,8 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 	ManagedReference<ChatManager* > chatManager;
 
 	ManagedReference<RadialManager* > radialManager;
+
+	ManagedReference<CityManager* > cityManager;
 
 	ManagedReference<ResourceManager* > resourceManager;
 
@@ -709,6 +727,8 @@ public:
 	PlayerManager* getPlayerManager();
 
 	ChatManager* getChatManager();
+
+	CityManager* getCityManager();
 
 	ObjectController* getObjectController();
 
@@ -874,6 +894,8 @@ public:
 	PlayerManager* getPlayerManager();
 
 	ChatManager* getChatManager();
+
+	CityManager* getCityManager();
 
 	ObjectController* getObjectController();
 

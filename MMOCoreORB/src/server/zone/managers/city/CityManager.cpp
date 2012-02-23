@@ -4,7 +4,7 @@
 
 #include "CityManager.h"
 
-#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -18,10 +18,10 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETCITIESALLOWED__BYTE_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETTOTALCITIES__};
 
-CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
-	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
+CityManager::CityManager(ZoneServer* zserv) : ManagedService(DummyConstructorParameter::instance()) {
+	CityManagerImplementation* _implementation = new CityManagerImplementation(zserv);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -496,20 +496,6 @@ void CityManager::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
 		_implementation->toggleZoningEnabled(city, mayor);
 }
 
-byte CityManager::getCitiesAllowed(byte rank) {
-	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCITIESALLOWED__BYTE_);
-		method.addByteParameter(rank);
-
-		return method.executeWithByteReturn();
-	} else
-		return _implementation->getCitiesAllowed(rank);
-}
-
 int CityManager::getTotalCities() {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -628,11 +614,6 @@ bool CityManagerImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zone") {
-		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -648,19 +629,11 @@ int CityManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zone";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<Zone* > >::toBinaryStream(&zone, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 1 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
-CityManagerImplementation::CityManagerImplementation(Zone* zne) {
+CityManagerImplementation::CityManagerImplementation(ZoneServer* zserv) {
 	_initializeImplementation();
 	// server/zone/managers/city/CityManager.idl():  		Logger.setLoggingName("CityManager");
 	Logger::setLoggingName("CityManager");
@@ -668,8 +641,8 @@ CityManagerImplementation::CityManagerImplementation(Zone* zne) {
 	Logger::setLogging(false);
 	// server/zone/managers/city/CityManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/city/CityManager.idl():  		zone = zne;
-	zone = zne;
+	// server/zone/managers/city/CityManager.idl():  		zoneServer = zserv;
+	zoneServer = zserv;
 	// server/zone/managers/city/CityManager.idl():  		cities.setNoDuplicateInsertPlan();
 	(&cities)->setNoDuplicateInsertPlan();
 	// server/zone/managers/city/CityManager.idl():  		cities.setNullValue(null);
@@ -696,11 +669,6 @@ void CityManagerImplementation::toggleZoningEnabled(CityRegion* city, CreatureOb
 	mayor->sendSystemMessage("@city/city:zoning_disabled");
 }
 }
-}
-
-byte CityManagerImplementation::getCitiesAllowed(byte rank) {
-	// server/zone/managers/city/CityManager.idl():  		return citiesAllowedPerRank.get(rank);
-	return (&citiesAllowedPerRank)->get(rank);
 }
 
 int CityManagerImplementation::getTotalCities() {
@@ -808,9 +776,6 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
 		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_GETCITIESALLOWED__BYTE_:
-		resp->insertByte(getCitiesAllowed(inv->getByteParameter()));
 		break;
 	case RPC_GETTOTALCITIES__:
 		resp->insertSignedInt(getTotalCities());
@@ -940,10 +905,6 @@ void CityManagerAdapter::promptAdjustTaxes(CityRegion* city, CreatureObject* may
 
 void CityManagerAdapter::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
 	(static_cast<CityManager*>(stub))->toggleZoningEnabled(city, mayor);
-}
-
-byte CityManagerAdapter::getCitiesAllowed(byte rank) {
-	return (static_cast<CityManager*>(stub))->getCitiesAllowed(rank);
 }
 
 int CityManagerAdapter::getTotalCities() {

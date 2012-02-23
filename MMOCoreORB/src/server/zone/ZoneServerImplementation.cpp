@@ -74,6 +74,7 @@ which carries forward this exception.
 #include "managers/creature/CreatureManager.h"
 #include "managers/faction/FactionManager.h"
 #include "managers/director/DirectorManager.h"
+#include "managers/city/CityManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -116,6 +117,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	stringIdManager = NULL;
 	creatureTemplateManager = NULL;
 	guildManager = NULL;
+	cityManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -163,7 +165,7 @@ void ZoneServerImplementation::initialize() {
 	processor->deploy("ZoneProcessServer");
 	processor->initialize();
 
-	zones = new VectorMap<String, ManagedReference<Zone* > >();
+	zones = new VectorMap<String, ManagedReference<Zone*> >();
 
 	objectManager = ObjectManager::instance();
 	objectManager->setZoneProcessor(processor);
@@ -199,6 +201,10 @@ void ZoneServerImplementation::initialize() {
 
 	resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
+
+	cityManager = new CityManager(_this);
+	cityManager->deploy("CityManager");
+	cityManager->loadLuaConfig();
 
 	startZones();
 
@@ -268,6 +274,8 @@ void ZoneServerImplementation::startManagers() {
 
 	//start global screne plays
 	DirectorManager::instance()->startGlobalScreenPlays();
+
+	cityManager->loadCityRegions();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
@@ -329,6 +337,7 @@ void ZoneServerImplementation::stopManagers() {
 	missionManager = NULL;
 	fishingManager = NULL;
 	guildManager = NULL;
+	cityManager = NULL;
 
 	info("managers stopped", true);
 }

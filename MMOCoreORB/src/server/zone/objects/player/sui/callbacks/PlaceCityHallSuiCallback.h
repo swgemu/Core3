@@ -77,7 +77,7 @@ public:
 		int result = structureManager->placeStructureFromDeed(creature, deed, x, y, angle);
 
 		if (result == 0) {
-			CityManager* cityManager = zone->getCityManager();
+			CityManager* cityManager = server->getCityManager();
 			cityManager->createCity(creature, cityName, x, y);
 		}
 	}

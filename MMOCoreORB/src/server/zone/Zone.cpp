@@ -12,8 +12,6 @@
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
-#include "server/zone/managers/city/CityManager.h"
-
 #include "server/zone/managers/creature/CreatureManager.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -26,7 +24,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : SceneObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -303,19 +301,6 @@ StructureManager* Zone::getStructureManager() {
 		return static_cast<StructureManager*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getStructureManager();
-}
-
-CityManager* Zone::getCityManager() {
-	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCITYMANAGER__);
-
-		return static_cast<CityManager*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getCityManager();
 }
 
 ZoneServer* Zone::getZoneServer() {
@@ -688,11 +673,6 @@ StructureManager* ZoneImplementation::getStructureManager() {
 	return structureManager;
 }
 
-CityManager* ZoneImplementation::getCityManager() {
-	// server/zone/Zone.idl():  		return cityManager;
-	return cityManager;
-}
-
 ZoneServer* ZoneImplementation::getZoneServer() {
 	// server/zone/Zone.idl():  		return server;
 	return server;
@@ -778,9 +758,6 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETSTRUCTUREMANAGER__:
 		resp->insertLong(getStructureManager()->_getObjectID());
-		break;
-	case RPC_GETCITYMANAGER__:
-		resp->insertLong(getCityManager()->_getObjectID());
 		break;
 	case RPC_GETZONESERVER__:
 		resp->insertLong(getZoneServer()->_getObjectID());
@@ -886,10 +863,6 @@ PlanetManager* ZoneAdapter::getPlanetManager() {
 
 StructureManager* ZoneAdapter::getStructureManager() {
 	return (static_cast<Zone*>(stub))->getStructureManager();
-}
-
-CityManager* ZoneAdapter::getCityManager() {
-	return (static_cast<Zone*>(stub))->getCityManager();
 }
 
 ZoneServer* ZoneAdapter::getZoneServer() {

@@ -6,6 +6,7 @@
  */
 
 #include "CityRegion.h"
+#include "events/CityUpdateEvent.h"
 #include "server/zone/Zone.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/SceneObject.h"
@@ -14,9 +15,21 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/city/CityManager.h"
 
-void CityRegionImplementation::initialize(Zone* zne, const String& name) {
-	zone = zne;
+void CityRegionImplementation::initializeTransientMembers() {
+	ManagedObjectImplementation::initializeTransientMembers();
 
+	if (cityRank == CityManager::CLIENT)
+		return;
+
+	int seconds = -1 * round(nextUpdateTime.miliDifference() / 1000.f);
+
+	if (seconds < 0) //If the update occurred in the past, force an immediate update.
+		seconds = 0;
+
+	rescheduleUpdateEvent(seconds);
+}
+
+void CityRegionImplementation::initialize() {
 	zoningEnabled = true;
 
 	registered = false;
@@ -25,18 +38,16 @@ void CityRegionImplementation::initialize(Zone* zne, const String& name) {
 
 	cityRank = RANK_CLIENT; //Default to client city
 
-	if (name.beginsWith("@")) {
-		regionName.setStringId(name);
-	} else {
-		regionName.setCustomString(name);
-	}
-
 	mayorID = 0;
+
+	zone = NULL;
+
+	cityUpdateEvent = NULL;
 
 	zoningRights.setAllowOverwriteInsertPlan();
 	zoningRights.setNullValue(0);
 
-	setLoggingName("CityRegion " + regionName.getDisplayedName());
+	setLoggingName("CityRegion");
 	setLogging(true);
 }
 
@@ -65,6 +76,20 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius) {
 	regions.put(region);
 
 	return region;
+}
+
+void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
+	if (cityRank == CityManager::CLIENT)
+		return;
+
+	if (cityUpdateEvent == NULL) {
+		cityUpdateEvent = new CityUpdateEvent(_this, zone->getZoneServer());
+	} else if (cityUpdateEvent->isScheduled()) {
+		cityUpdateEvent->cancel();
+	}
+
+	cityUpdateEvent->schedule(seconds * 1000);
+	Core::getTaskManager()->getNextExecutionTime(cityUpdateEvent, nextUpdateTime);
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
@@ -141,4 +166,8 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 
 	Time now;
 	return (now.getTime() <= timestamp);
+}
+
+void CityRegionImplementation::setZone(Zone* zne) {
+	zone = zne;
 }

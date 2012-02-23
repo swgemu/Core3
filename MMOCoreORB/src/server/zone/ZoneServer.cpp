@@ -52,11 +52,13 @@
 
 #include "server/zone/managers/guild/GuildManager.h"
 
+#include "server/zone/managers/city/CityManager.h"
+
 /*
  *	ZoneServerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__,RPC_GETINFO__,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADLOGINMESSAGE__,RPC_CHANGELOGINMESSAGE__STRING_,RPC_GETLOGINMESSAGE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__,RPC_GETINFO__,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETCITYMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADLOGINMESSAGE__,RPC_CHANGELOGINMESSAGE__STRING_,RPC_GETLOGINMESSAGE__};
 
 ZoneServer::ZoneServer(ConfigManager* config) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(config);
@@ -698,6 +700,19 @@ ChatManager* ZoneServer::getChatManager() {
 		return _implementation->getChatManager();
 }
 
+CityManager* ZoneServer::getCityManager() {
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCITYMANAGER__);
+
+		return static_cast<CityManager*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getCityManager();
+}
+
 ObjectController* ZoneServer::getObjectController() {
 	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1065,6 +1080,11 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "cityManager") {
+		TypeInfo<ManagedReference<CityManager* > >::parseFromBinaryStream(&cityManager, stream);
+		return true;
+	}
+
 	if (_name == "resourceManager") {
 		TypeInfo<ManagedReference<ResourceManager* > >::parseFromBinaryStream(&resourceManager, stream);
 		return true;
@@ -1209,6 +1229,14 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<ManagedReference<RadialManager* > >::toBinaryStream(&radialManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CityManager* > >::toBinaryStream(&cityManager, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1373,7 +1401,7 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 24 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 25 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 void ZoneServerImplementation::fixScheduler() {
@@ -1462,6 +1490,11 @@ PlayerManager* ZoneServerImplementation::getPlayerManager() {
 ChatManager* ZoneServerImplementation::getChatManager() {
 	// server/zone/ZoneServer.idl():  		return chatManager;
 	return chatManager;
+}
+
+CityManager* ZoneServerImplementation::getCityManager() {
+	// server/zone/ZoneServer.idl():  		return cityManager;
+	return cityManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
@@ -1678,6 +1711,9 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCHATMANAGER__:
 		resp->insertLong(getChatManager()->_getObjectID());
+		break;
+	case RPC_GETCITYMANAGER__:
+		resp->insertLong(getCityManager()->_getObjectID());
 		break;
 	case RPC_GETOBJECTCONTROLLER__:
 		resp->insertLong(getObjectController()->_getObjectID());
@@ -1913,6 +1949,10 @@ PlayerManager* ZoneServerAdapter::getPlayerManager() {
 
 ChatManager* ZoneServerAdapter::getChatManager() {
 	return (static_cast<ZoneServer*>(stub))->getChatManager();
+}
+
+CityManager* ZoneServerAdapter::getCityManager() {
+	return (static_cast<ZoneServer*>(stub))->getCityManager();
 }
 
 ObjectController* ZoneServerAdapter::getObjectController() {

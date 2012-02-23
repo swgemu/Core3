@@ -66,7 +66,7 @@ int CityTreasuryWithdrawalSessionImplementation::withdrawCredits(int value) {
 	if (cityRegion == NULL)
 		return cancelSession();
 
-	CityManager* cityManager = cityRegion->getZone()->getCityManager();
+	CityManager* cityManager = creatureObject->getZoneServer()->getCityManager();
 	cityManager->withdrawFromCityTreasury(cityRegion, creatureObject, value, terminalObject);
 
 	return 1;

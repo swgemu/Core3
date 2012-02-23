@@ -57,7 +57,6 @@ import server.zone.managers.structure.StructureManager;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
-import server.zone.managers.city.CityManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.util.VectorMap;
@@ -87,8 +86,6 @@ class Zone extends SceneObject {
 	private transient PlanetManager planetManager;
 	
 	private transient StructureManager structureManager;
-	
-	private transient CityManager cityManager;
 	
 	private transient CreatureManager creatureManager;
 	
@@ -173,11 +170,6 @@ class Zone extends SceneObject {
 	@dirty
 	public StructureManager getStructureManager() {
 		return structureManager;
-	}
-	
-	@dirty
-	public CityManager getCityManager() {
-		return cityManager;
 	}
 
 	@dirty

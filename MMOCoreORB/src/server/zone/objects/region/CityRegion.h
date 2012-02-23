@@ -73,6 +73,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/region/CitizenList.h"
 
+#include "server/zone/objects/region/events/CityUpdateEvent.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -92,15 +94,19 @@ public:
 
 	static const byte RANK_METROPOLIS = 5;
 
-	CityRegion(Zone* zne, const String& name);
+	CityRegion();
 
-	void initialize(Zone* zne, const String& name);
+	void initialize();
+
+	void initializeTransientMembers();
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
 	Region* addRegion(float x, float y, float radius);
+
+	void rescheduleUpdateEvent(unsigned int seconds);
 
 	void addMilitiaMember(unsigned long long objectid);
 
@@ -167,6 +173,8 @@ public:
 	bool isZoningEnabled();
 
 	bool isClientRegion();
+
+	void setZone(Zone* zne);
 
 	void setRegionName(const UnicodeString& name);
 
@@ -249,7 +257,9 @@ protected:
 
 	bool registered;
 
-	Time nextExpansionTime;
+	Time nextUpdateTime;
+
+	Reference<CityUpdateEvent* > cityUpdateEvent;
 
 	String citySpecialization;
 
@@ -266,17 +276,21 @@ public:
 
 	static const byte RANK_METROPOLIS = 5;
 
-	CityRegionImplementation(Zone* zne, const String& name);
+	CityRegionImplementation();
 
 	CityRegionImplementation(DummyConstructorParameter* param);
 
-	void initialize(Zone* zne, const String& name);
+	void initialize();
+
+	void initializeTransientMembers();
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
 	Region* addRegion(float x, float y, float radius);
+
+	void rescheduleUpdateEvent(unsigned int seconds);
 
 	void addMilitiaMember(unsigned long long objectid);
 
@@ -343,6 +357,8 @@ public:
 	bool isZoningEnabled();
 
 	bool isClientRegion();
+
+	void setZone(Zone* zne);
 
 	void setRegionName(const UnicodeString& name);
 
@@ -415,13 +431,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initialize(Zone* zne, const String& name);
+	void initialize();
+
+	void initializeTransientMembers();
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
 	Region* addRegion(float x, float y, float radius);
+
+	void rescheduleUpdateEvent(unsigned int seconds);
 
 	void addMilitiaMember(unsigned long long objectid);
 
@@ -483,6 +503,8 @@ public:
 
 	bool isClientRegion();
 
+	void setZone(Zone* zne);
+
 	void setRegionName(const UnicodeString& name);
 
 	void setCitySpecialization(const String& spec);
@@ -508,7 +530,6 @@ public:
 	void setRadius(float rad);
 
 protected:
-	String _param1_initialize__Zone_String_;
 	UnicodeString _param0_setRegionName__UnicodeString_;
 	String _param0_setCitySpecialization__String_;
 	String _param0_setRegionName__String_;

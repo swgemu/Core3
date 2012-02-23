@@ -27,6 +27,7 @@
 #include "server/zone/objects/player/sui/callbacks/CityRegisterSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 
+CitiesAllowed CityManagerImplementation::citiesAllowedPerRank;
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
 int CityManagerImplementation::cityUpdateInterval = 0;
@@ -36,9 +37,7 @@ int CityManagerImplementation::cityVotingDuration = 0;
 uint64 CityManagerImplementation::treasuryWithdrawalCooldown = 0;
 
 void CityManagerImplementation::loadLuaConfig() {
-	info("Loading config file.");
-
-	String zoneName = zone->getZoneName();
+	info("Loading configuration file.", true);
 
 	Lua* lua = new Lua();
 	lua->init();
@@ -48,53 +47,63 @@ void CityManagerImplementation::loadLuaConfig() {
 	LuaObject luaObject = lua->getGlobalObject("CitiesAllowed");
 
 	if (luaObject.isValidTable()) {
-		LuaObject rankTable = luaObject.getObjectField(zoneName);
+		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject planetCitiesAllowed = luaObject.getObjectAt(i);
 
-		for (int i = 1; i <= rankTable.getTableSize(); ++i)
-			citiesAllowedPerRank.add(rankTable.getIntAt(i));
+			if (planetCitiesAllowed.isValidTable()) {
+				String planet = planetCitiesAllowed.getStringAt(1);
+				LuaObject citiesAllowed = planetCitiesAllowed.getObjectAt(2);
 
-		rankTable.pop();
+				if (citiesAllowed.isValidTable()) {
+					Vector<byte> table;
+
+					for (int j = 1; j <= citiesAllowed.getTableSize(); ++j) {
+						table.add(citiesAllowed.getIntAt(j));
+					}
+
+					citiesAllowedPerRank.put(planet, table);
+				}
+
+				citiesAllowed.pop();
+			}
+
+			planetCitiesAllowed.pop();
+		}
 	}
 
 	luaObject.pop();
 
 	//Only load the static values on the first zone.
-	if (!configLoaded) {
-		cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
-		newCityGracePeriod = lua->getGlobalInt("NewCityGracePeriod");
-		citySpecializationCooldown = lua->getGlobalLong("CitySpecializationCooldown");
-		cityVotingDuration = lua->getGlobalInt("CityVotingDuration");
-		treasuryWithdrawalCooldown = lua->getGlobalLong("TreasuryWithdrawalCooldown");
+	cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
+	newCityGracePeriod = lua->getGlobalInt("NewCityGracePeriod");
+	citySpecializationCooldown = lua->getGlobalLong("CitySpecializationCooldown");
+	cityVotingDuration = lua->getGlobalInt("CityVotingDuration");
+	treasuryWithdrawalCooldown = lua->getGlobalLong("TreasuryWithdrawalCooldown");
 
-		luaObject = lua->getGlobalObject("CitizensPerRank");
+	luaObject = lua->getGlobalObject("CitizensPerRank");
 
-		if (luaObject.isValidTable()) {
-			for (int i = 1; i <= luaObject.getTableSize(); ++i)
-				citizensPerRank.add(luaObject.getIntAt(i));
-		}
-
-		luaObject.pop();
-
-		luaObject = lua->getGlobalObject("RadiusPerRank");
-
-		if (luaObject.isValidTable()) {
-			for (int i = 1; i <= luaObject.getTableSize(); ++i)
-				radiusPerRank.add(luaObject.getIntAt(i));
-		}
-
-		luaObject.pop();
-
-		configLoaded = true;
+	if (luaObject.isValidTable()) {
+		for (int i = 1; i <= luaObject.getTableSize(); ++i)
+			citizensPerRank.add(luaObject.getIntAt(i));
 	}
+
+	luaObject.pop();
+
+	luaObject = lua->getGlobalObject("RadiusPerRank");
+
+	if (luaObject.isValidTable()) {
+		for (int i = 1; i <= luaObject.getTableSize(); ++i)
+			radiusPerRank.add(luaObject.getIntAt(i));
+	}
+
+	luaObject.pop();
 
 	delete lua;
 	lua = NULL;
-
-	loadCityRegions();
 }
 
 void CityManagerImplementation::loadCityRegions() {
-	info("Loading city regions.");
+	info("Loading any remaining city regions.", true);
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 
@@ -108,25 +117,13 @@ void CityManagerImplementation::loadCityRegions() {
 	int i = 0;
 
 	try {
-		String zoneName = zone->getZoneName();
 		ObjectDatabaseIterator iterator(cityRegionsDB);
 
 		ObjectInputStream* objectData = new ObjectInputStream(2000);
 
 		uint64 objectID;
-		String zoneReference;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<String>("zone", &zoneReference, objectData)) {
-				objectData->clear();
-				continue;
-			}
-
-			if (zoneName != zoneReference) {
-				objectData->clear();
-				continue;
-			}
-
 			CityRegion* object = dynamic_cast<CityRegion*>(Core::getObjectBroker()->lookUp(objectID));
 
 			if (object != NULL) {
@@ -149,11 +146,14 @@ void CityManagerImplementation::loadCityRegions() {
 }
 
 CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
-	ManagedReference<CityRegion*> city = new CityRegion(zone, cityName);
+	ManagedReference<CityRegion*> city = new CityRegion();
 	ObjectManager::instance()->persistObject(city, 1, "cityregions");
+	city->setRegionName(UnicodeString(cityName));
+	city->setZone(mayor->getZone());
 	city->setCityRank(OUTPOST);
 	city->setMayorID(mayor->getObjectID());
 	city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1));
+	city->rescheduleUpdateEvent(cityUpdateInterval * 60); //Minutes
 
 	//TODO: Send email to mayor.
 
@@ -164,17 +164,8 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 
 
 bool CityManagerImplementation::validateCityName(const String& name) {
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
-	//ManagedReference<NameManager*> nameManager;
-
-	if (name.length() < 3)
+	if (cities.contains(name))
 		return false;
-
-	if (planetManager->hasRegion(name))
-		return false;
-
-	//Check name filter
-	//if (nameManager->)
 
 	return true;
 }
@@ -220,7 +211,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	list->setUsingObject(terminal);
 	list->setForceCloseDistance(16.f);
 
-	ManagedReference<SceneObject*> mayor = creature->getZoneServer()->getObject(city->getMayorID());
+	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
 
 	list->addMenuItem("@city/city:name_prompt " + city->getRegionName()); //Name:
 
@@ -316,7 +307,7 @@ void CityManagerImplementation::promptDepositCityTreasury(CityRegion* city, Crea
 	transfer->addTo("@city/city:treasury", "0", "0", "1");
 	transfer->setUsingObject(terminal);
 	transfer->setForceCloseDistance(16.f);
-	transfer->setCallback(new CityTreasuryDepositSuiCallback(creature->getZoneServer(), city));
+	transfer->setCallback(new CityTreasuryDepositSuiCallback(zoneServer, city));
 
 	ghost->addSuiBox(transfer);
 	creature->sendMessage(transfer->generateMessage());
@@ -363,10 +354,8 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 
 	CitizenList* citizenList = city->getCitizenList();
 
-	ZoneServer* zserv = zone->getZoneServer();
-
 	for (int i = 0; i < citizenList->size(); ++i) {
-		ManagedReference<SceneObject*> citizen = zserv->getObject(citizenList->get(i));
+		ManagedReference<SceneObject*> citizen = zoneServer->getObject(citizenList->get(i));
 
 		if (citizen != NULL) {
 			String name = citizen->getObjectName()->getDisplayedName();
@@ -383,8 +372,10 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 }
 
 void CityManagerImplementation::processCityUpdate(CityRegion* city) {
-	uint8 cityRank = city->getCityRank();
-	uint16 radius = city->getRadius();
+	info("Processing city update: " + city->getRegionName());
+
+	int cityRank = city->getCityRank();
+	float radius = city->getRadius();
 
 	if (cityRank == CLIENT)
 		return; //It's a client region.
@@ -394,13 +385,16 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	int maintainCitizens = citizensPerRank.get(cityRank - 1);
 	int advanceCitizens = citizensPerRank.get(cityRank);
 
+	//System::out << "maintainCitizens: " << maintainCitizens << endl;
+	//System::out << "advanceCitizens: " << advanceCitizens << endl;
+
 	if (maintainCitizens > citizens) {
 		contractCity(city);
-	}
-
-	if (advanceCitizens >= citizens) {
+	} else if (advanceCitizens >= citizens) {
 		expandCity(city);
 	}
+
+	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
 
 	//TODO: Taxation
 	//TODO: Deduct Maintenance
@@ -416,7 +410,7 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 		return;
 	}
 
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(city->getMayorID());
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
@@ -433,7 +427,7 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 			subject = "@city/city:city_invalid_subject";
 		}
 
-		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		ChatManager* chatManager = zoneServer->getChatManager();
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 	}
 
@@ -448,7 +442,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 	uint8 currentRank = city->getCityRank();
 	uint8 newRank = city->getCityRank() + 1;
 
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(city->getMayorID());
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
@@ -467,7 +461,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 			subject = "@city/city:city_expand_cap_subject";
 		}
 
-		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		ChatManager* chatManager = zoneServer->getChatManager();
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 	}
 
@@ -481,7 +475,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(city->getMayorID());
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
@@ -491,7 +485,7 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 		params.setTO(city->getRegionName());
 		//params.setDI(newRank);
 
-		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		ChatManager* chatManager = zoneServer->getChatManager();
 		chatManager->sendMail("@city/city:new_city_from", "@city/city:city_contract_subject", params, mayor->getFirstName(), NULL);
 	}
 
@@ -499,10 +493,9 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
-	ZoneServer* zserv = zone->getZoneServer();
-	ChatManager* chatManager = zserv->getChatManager();
+	ChatManager* chatManager = zoneServer->getChatManager();
 
-	ManagedReference<SceneObject*> mayor = zserv->getObject(city->getMayorID());
+	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
 
 	if (mayor != NULL && mayor->isCreatureObject()) {
 		CreatureObject* mayorCreature = cast<CreatureObject*>(mayor.get());
@@ -523,10 +516,9 @@ void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject
 }
 
 void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature, bool inactive) {
-	ZoneServer* zserv = zone->getZoneServer();
-	ChatManager* chatManager = zserv->getChatManager();
+	ChatManager* chatManager = zoneServer->getChatManager();
 
-	ManagedReference<SceneObject*> mayor = zserv->getObject(city->getMayorID());
+	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
 
 	if (mayor != NULL && mayor->isCreatureObject()) {
 		CreatureObject* mayorCreature = cast<CreatureObject*>(mayor.get());
@@ -564,14 +556,14 @@ void CityManagerImplementation::sendManageMilitia(CityRegion* city, CreatureObje
 	listbox->setPromptText("@city/city:militia_d"); //Below is a list of current city militia members. These citizens have the ability to ban visitors from accessing city services as well as the ability to attack visitors for the purposes of law enforcement. To add a new citizen to the militia select "Add Militia Member" and hit OK. To remove someone from the militia, select their name and hit OK.
 	listbox->setUsingObject(terminal);
 	listbox->setForceCloseDistance(16.f);
-	listbox->setCallback(new CityManageMilitiaSuiCallback(creature->getZoneServer(), city));
+	listbox->setCallback(new CityManageMilitiaSuiCallback(zoneServer, city));
 
 	listbox->addMenuItem("@city/city:militia_new_t", 0); //Add Militia Member
 
 	CitizenList* militiaMembers = city->getMilitiaMembers();
 
 	for (int i = 0; i < militiaMembers->size(); ++i) {
-		ManagedReference<SceneObject*> militant = creature->getZoneServer()->getObject(militiaMembers->get(i));
+		ManagedReference<SceneObject*> militant = zoneServer->getObject(militiaMembers->get(i));
 
 		if (militant != NULL)
 			listbox->addMenuItem(militant->getObjectName()->getDisplayedName(), militant->getObjectID());
@@ -592,7 +584,7 @@ void CityManagerImplementation::promptAddMilitiaMember(CityRegion* city, Creatur
 	input->setPromptText("@city/city:militia_new_d");
 	input->setUsingObject(terminal);
 	input->setForceCloseDistance(16.f);
-	input->setCallback(new CityAddMilitiaMemberSuiCallback(zone->getZoneServer(), city));
+	input->setCallback(new CityAddMilitiaMemberSuiCallback(zoneServer, city));
 
 	ghost->addSuiBox(input);
 	creature->sendMessage(input->generateMessage());
@@ -602,7 +594,7 @@ void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObjec
 	if (!city->isMayor(mayor->getObjectID()))
 		return;
 
-	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
+	PlayerManager* playerManager = zoneServer->getPlayerManager();
 	uint64 militiaid = playerManager->getObjectID(playerName);
 
 	if (militiaid == mayor->getObjectID())
@@ -618,7 +610,7 @@ void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObjec
 		return;
 	}
 
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(militiaid);
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(militiaid);
 
 	if (obj == NULL || !obj->isCreatureObject() || !obj->isInRange(mayor, 16.f)) {
 		mayor->sendSystemMessage("@city/city:cannot_find_citizen"); //Unable to find that citizen.
@@ -637,7 +629,7 @@ void CityManagerImplementation::removeMilitiaMember(CityRegion* city, CreatureOb
 	if (!city->isMayor(mayor->getObjectID()))
 		return;
 
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(militiaid);
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(militiaid);
 
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* creature = cast<CreatureObject*>(obj.get());
@@ -710,7 +702,7 @@ void CityManagerImplementation::promptRegisterCity(CityRegion* city, CreatureObj
 	box->setPromptText("@city/city:register_d");
 	box->setUsingObject(terminal);
 	box->setForceCloseDistance(16.f);
-	box->setCallback(new CityRegisterSuiCallback(zone->getZoneServer(), city));
+	box->setCallback(new CityRegisterSuiCallback(zoneServer, city));
 
 	ghost->addSuiBox(box);
 	creature->sendMessage(box->generateMessage());
@@ -730,7 +722,7 @@ void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureO
 	box->setPromptText("@city/city:unregister_d");
 	box->setUsingObject(terminal);
 	box->setForceCloseDistance(16.f);
-	box->setCallback(new CityRegisterSuiCallback(zone->getZoneServer(), city, true));
+	box->setCallback(new CityRegisterSuiCallback(zoneServer, city, true));
 
 	ghost->addSuiBox(box);
 	creature->sendMessage(box->generateMessage());
@@ -740,7 +732,7 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 	city->setRegistered(true);
 
 	ManagedReference<Region*> aa = city->getRegion(0);
-	zone->registerObjectWithPlanetaryMap(aa);
+	aa->getZone()->registerObjectWithPlanetaryMap(aa);
 
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
 
@@ -751,7 +743,7 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 	city->setRegistered(false);
 
 	ManagedReference<Region*> aa = city->getRegion(0);
-	zone->unregisterObjectWithPlanetaryMap(aa);
+	aa->getZone()->unregisterObjectWithPlanetaryMap(aa);
 
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
 

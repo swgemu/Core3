@@ -78,12 +78,8 @@ int CitySpecializationSessionImplementation::sendConfirmationBox(const String& c
 }
 
 int CitySpecializationSessionImplementation::acceptChoice() {
-	Zone* zone = cityRegion->getZone();
-
-	if (zone != NULL) {
-		CityManager* cityManager = zone->getCityManager();
-		cityManager->changeCitySpecialization(cityRegion, creatureObject, specialization);
-	}
+	CityManager* cityManager = creatureObject->getZoneServer()->getCityManager();
+	cityManager->changeCitySpecialization(cityRegion, creatureObject, specialization);
 
 	return cancelSession();
 }

@@ -66,20 +66,6 @@ using namespace server::zone::managers::planet;
 namespace server {
 namespace zone {
 namespace managers {
-namespace city {
-
-class CityManager;
-
-} // namespace city
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::city;
-
-namespace server {
-namespace zone {
-namespace managers {
 namespace creature {
 
 class CreatureManager;
@@ -218,8 +204,6 @@ public:
 
 	StructureManager* getStructureManager();
 
-	CityManager* getCityManager();
-
 	ZoneServer* getZoneServer();
 
 	CreatureManager* getCreatureManager();
@@ -282,8 +266,6 @@ class ZoneImplementation : public SceneObjectImplementation {
 	ManagedReference<PlanetManager* > planetManager;
 
 	ManagedReference<StructureManager* > structureManager;
-
-	ManagedReference<CityManager* > cityManager;
 
 	ManagedReference<CreatureManager* > creatureManager;
 
@@ -351,8 +333,6 @@ public:
 	PlanetManager* getPlanetManager();
 
 	StructureManager* getStructureManager();
-
-	CityManager* getCityManager();
 
 	ZoneServer* getZoneServer();
 
@@ -452,8 +432,6 @@ public:
 	PlanetManager* getPlanetManager();
 
 	StructureManager* getStructureManager();
-
-	CityManager* getCityManager();
 
 	ZoneServer* getZoneServer();
 

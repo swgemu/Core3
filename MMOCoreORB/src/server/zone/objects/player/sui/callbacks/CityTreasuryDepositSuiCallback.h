@@ -36,7 +36,7 @@ public:
 
 		Locker lock(city, player);
 
-		CityManager* cityManager = city->getZone()->getCityManager();
+		CityManager* cityManager = server->getCityManager();
 		cityManager->depositToCityTreasury(city, player, amount);
 	}
 };

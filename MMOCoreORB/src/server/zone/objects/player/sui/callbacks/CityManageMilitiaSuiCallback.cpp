@@ -31,7 +31,7 @@ void CityManageMilitiaSuiCallback::run(CreatureObject* player, SuiBox* suiBox, b
 
 	uint64 objectid = listBox->getMenuObjectID(index);
 
-	CityManager* cityManager = city->getZone()->getCityManager();
+	CityManager* cityManager = server->getCityManager();
 
 	if (objectid == 0) { //Add militia member dialog
 		cityManager->promptAddMilitiaMember(city, player, suiBox->getUsingObject());

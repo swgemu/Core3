@@ -377,7 +377,7 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
 
-	CityManager* cityManager = zone->getCityManager();
+	CityManager* cityManager = server->getZoneServer()->getCityManager();
 
 	if (declaredResidence != NULL) {
 		if (declaredResidence == buildingObject) {

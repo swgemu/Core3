@@ -16,10 +16,10 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ZONE_STRING_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETZONE__ZONE_,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
 
-CityRegion::CityRegion(Zone* zne, const String& name) : ManagedObject(DummyConstructorParameter::instance()) {
-	CityRegionImplementation* _implementation = new CityRegionImplementation(zne, name);
+CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
+	CityRegionImplementation* _implementation = new CityRegionImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -32,19 +32,30 @@ CityRegion::~CityRegion() {
 
 
 
-void CityRegion::initialize(Zone* zne, const String& name) {
+void CityRegion::initialize() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INITIALIZE__ZONE_STRING_);
-		method.addObjectParameter(zne);
-		method.addAsciiParameter(name);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->initialize(zne, name);
+		_implementation->initialize();
+}
+
+void CityRegion::initializeTransientMembers() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
 }
 
 void CityRegion::notifyEnter(SceneObject* object) {
@@ -89,6 +100,20 @@ Region* CityRegion::addRegion(float x, float y, float radius) {
 		return static_cast<Region*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->addRegion(x, y, radius);
+}
+
+void CityRegion::rescheduleUpdateEvent(unsigned int seconds) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RESCHEDULEUPDATEEVENT__INT_);
+		method.addUnsignedIntParameter(seconds);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->rescheduleUpdateEvent(seconds);
 }
 
 void CityRegion::addMilitiaMember(unsigned long long objectid) {
@@ -527,6 +552,20 @@ bool CityRegion::isClientRegion() {
 		return _implementation->isClientRegion();
 }
 
+void CityRegion::setZone(Zone* zne) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETZONE__ZONE_);
+		method.addObjectParameter(zne);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setZone(zne);
+}
+
 void CityRegion::setRegionName(const UnicodeString& name) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -877,8 +916,8 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "nextExpansionTime") {
-		TypeInfo<Time >::parseFromBinaryStream(&nextExpansionTime, stream);
+	if (_name == "nextUpdateTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&nextUpdateTime, stream);
 		return true;
 	}
 
@@ -998,11 +1037,11 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nextExpansionTime";
+	_name = "nextUpdateTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Time >::toBinaryStream(&nextExpansionTime, stream);
+	TypeInfo<Time >::toBinaryStream(&nextUpdateTime, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1018,10 +1057,10 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	return 14 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
-CityRegionImplementation::CityRegionImplementation(Zone* zne, const String& name) {
+CityRegionImplementation::CityRegionImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/CityRegion.idl():  		initialize(zne, name);
-	initialize(zne, name);
+	// server/zone/objects/region/CityRegion.idl():  		initialize();
+	initialize();
 }
 
 void CityRegionImplementation::addMilitiaMember(unsigned long long objectid) {
@@ -1295,8 +1334,11 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_INITIALIZE__ZONE_STRING_:
-		initialize(static_cast<Zone*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_initialize__Zone_String_));
+	case RPC_INITIALIZE__:
+		initialize();
+		break;
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
@@ -1306,6 +1348,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ADDREGION__FLOAT_FLOAT_FLOAT_:
 		resp->insertLong(addRegion(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		break;
+	case RPC_RESCHEDULEUPDATEEVENT__INT_:
+		rescheduleUpdateEvent(inv->getUnsignedIntParameter());
 		break;
 	case RPC_ADDMILITIAMEMBER__LONG_:
 		addMilitiaMember(inv->getUnsignedLongParameter());
@@ -1397,6 +1442,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISCLIENTREGION__:
 		resp->insertBoolean(isClientRegion());
 		break;
+	case RPC_SETZONE__ZONE_:
+		setZone(static_cast<Zone*>(inv->getObjectParameter()));
+		break;
 	case RPC_SETREGIONNAME__UNICODESTRING_:
 		setRegionName(inv->getUnicodeParameter(_param0_setRegionName__UnicodeString_));
 		break;
@@ -1440,8 +1488,12 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-void CityRegionAdapter::initialize(Zone* zne, const String& name) {
-	(static_cast<CityRegion*>(stub))->initialize(zne, name);
+void CityRegionAdapter::initialize() {
+	(static_cast<CityRegion*>(stub))->initialize();
+}
+
+void CityRegionAdapter::initializeTransientMembers() {
+	(static_cast<CityRegion*>(stub))->initializeTransientMembers();
 }
 
 void CityRegionAdapter::notifyEnter(SceneObject* object) {
@@ -1454,6 +1506,10 @@ void CityRegionAdapter::notifyExit(SceneObject* object) {
 
 Region* CityRegionAdapter::addRegion(float x, float y, float radius) {
 	return (static_cast<CityRegion*>(stub))->addRegion(x, y, radius);
+}
+
+void CityRegionAdapter::rescheduleUpdateEvent(unsigned int seconds) {
+	(static_cast<CityRegion*>(stub))->rescheduleUpdateEvent(seconds);
 }
 
 void CityRegionAdapter::addMilitiaMember(unsigned long long objectid) {
@@ -1574,6 +1630,10 @@ bool CityRegionAdapter::isZoningEnabled() {
 
 bool CityRegionAdapter::isClientRegion() {
 	return (static_cast<CityRegion*>(stub))->isClientRegion();
+}
+
+void CityRegionAdapter::setZone(Zone* zne) {
+	(static_cast<CityRegion*>(stub))->setZone(zne);
 }
 
 void CityRegionAdapter::setRegionName(const UnicodeString& name) {

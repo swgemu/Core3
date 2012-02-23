@@ -274,6 +274,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/region/events/CityUpdateEvent.cpp \
 		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
 		server/zone/objects/player/sessions/CityRemoveMilitiaSessionImplementation.cpp \

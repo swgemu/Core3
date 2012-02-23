@@ -46,23 +46,28 @@ package server.zone.managers.city;
 
 import engine.core.ManagedService;
 import engine.log.Logger;
-import server.zone.Zone;
+import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.chat.StringIdChatParameter;
 import system.util.SortedVector;
 import system.util.VectorMap;
+import system.util.Vector;
+import system.util.HashTable;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
+include server.zone.managers.city.CitiesAllowed;
 
 class CityManager extends ManagedService implements Logger {
-	@weakReference
-	private Zone zone;
+	private transient ZoneServer zoneServer;
 	
 	@dereferenced
 	public static transient Vector<unsigned short> radiusPerRank;
 	
 	@dereferenced
 	public static transient Vector<byte> citizensPerRank;
+	
+	@dereferenced
+	private transient static CitiesAllowed citiesAllowedPerRank;
 	
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
@@ -72,9 +77,6 @@ class CityManager extends ManagedService implements Logger {
 	
 	@dereferenced
 	public transient VectorMap<string, CityRegion> cities;
-	
-	@dereferenced
-	private transient Vector<byte> citiesAllowedPerRank;
 	
 	private transient boolean configLoaded;
 	
@@ -86,12 +88,12 @@ class CityManager extends ManagedService implements Logger {
 	public static final byte CITY = 4;
 	public static final byte METROPOLIS = 5;
 	
-	public CityManager(Zone zne) {
+	public CityManager(ZoneServer zserv) {
 		Logger.setLoggingName("CityManager");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		
-		zone = zne;
+		zoneServer = zserv;
 		
 		cities.setNoDuplicateInsertPlan();
 		cities.setNullValue(null);
@@ -171,14 +173,6 @@ class CityManager extends ManagedService implements Logger {
 				mayor.sendSystemMessage("@city/city:zoning_disabled"); //Your city now has zoning disabled.
 			}
 		}
-	}
-	
-	/**
-	 * Returns the number of cities allowed at this rank on this particular city manager for this zone.
-	 * @param rank The rank to check for the city cap at.
-	 */
-	public byte getCitiesAllowed(byte rank) {
-		return citiesAllowedPerRank.get(rank);
 	}
 	
 	public int getTotalCities() {

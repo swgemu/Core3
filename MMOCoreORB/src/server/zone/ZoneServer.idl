@@ -87,6 +87,7 @@ import server.zone.managers.minigames.ForageManager;
 import server.zone.managers.stringid.StringIdManager;
 import server.zone.managers.creature.CreatureTemplateManager;
 import server.zone.managers.guild.GuildManager;
+import server.zone.managers.city.CityManager;
 
 class ZoneServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
@@ -105,6 +106,7 @@ class ZoneServer extends ManagedService implements Logger {
 	private PlayerManager playerManager;
 	private ChatManager chatManager;
 	private RadialManager radialManager;
+	private CityManager cityManager;
 
 	private ResourceManager resourceManager;
 	private CraftingManager craftingManager;
@@ -332,6 +334,11 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public ChatManager getChatManager() {
 		return chatManager;
+	}
+	
+	@dirty
+	public CityManager getCityManager() {
+		return cityManager;
 	}
 	
 	@dirty

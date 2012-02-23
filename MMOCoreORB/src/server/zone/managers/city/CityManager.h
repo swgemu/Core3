@@ -14,7 +14,7 @@
 namespace server {
 namespace zone {
 
-class Zone;
+class ZoneServer;
 
 } // namespace zone
 } // namespace server
@@ -73,6 +73,8 @@ class CityRegion;
 
 using namespace server::zone::objects::region;
 
+#include "server/zone/managers/city/CitiesAllowed.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -80,6 +82,10 @@ using namespace server::zone::objects::region;
 #include "system/util/SortedVector.h"
 
 #include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
+
+#include "system/util/HashTable.h"
 
 namespace server {
 namespace zone {
@@ -100,7 +106,7 @@ public:
 
 	static const byte METROPOLIS = 5;
 
-	CityManager(Zone* zne);
+	CityManager(ZoneServer* zserv);
 
 	void loadLuaConfig();
 
@@ -162,8 +168,6 @@ public:
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
-	byte getCitiesAllowed(byte rank);
-
 	int getTotalCities();
 
 	DistributedObjectServant* _getImplementation();
@@ -191,13 +195,17 @@ namespace managers {
 namespace city {
 
 class CityManagerImplementation : public ManagedServiceImplementation, public Logger {
-	ManagedWeakReference<Zone* > zone;
+	ManagedReference<ZoneServer* > zoneServer;
 
 public:
 	static Vector<unsigned short> radiusPerRank;
 
 	static Vector<byte> citizensPerRank;
 
+private:
+	static CitiesAllowed citiesAllowedPerRank;
+
+public:
 	static int cityUpdateInterval;
 
 	static int newCityGracePeriod;
@@ -211,8 +219,6 @@ public:
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
 
 private:
-	Vector<byte> citiesAllowedPerRank;
-
 	bool configLoaded;
 
 public:
@@ -228,7 +234,7 @@ public:
 
 	static const byte METROPOLIS = 5;
 
-	CityManagerImplementation(Zone* zne);
+	CityManagerImplementation(ZoneServer* zserv);
 
 	CityManagerImplementation(DummyConstructorParameter* param);
 
@@ -291,8 +297,6 @@ public:
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
-
-	byte getCitiesAllowed(byte rank);
 
 	int getTotalCities();
 
@@ -398,8 +402,6 @@ public:
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
-
-	byte getCitiesAllowed(byte rank);
 
 	int getTotalCities();
 

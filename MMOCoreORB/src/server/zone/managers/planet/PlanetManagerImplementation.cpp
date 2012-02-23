@@ -419,7 +419,9 @@ void PlanetManagerImplementation::loadClientRegions() {
 		ManagedReference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
 
 		if (cityRegion == NULL) {
-			cityRegion = new CityRegion(zone, regionName);
+			cityRegion = new CityRegion();
+			cityRegion->setRegionName(regionName);
+			cityRegion->setZone(zone);
 			regionMap.addRegion(cityRegion);
 		}
 

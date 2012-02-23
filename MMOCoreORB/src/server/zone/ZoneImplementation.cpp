@@ -47,7 +47,6 @@ which carries forward this exception.
 #include "ZoneProcessServer.h"
 #include "objects/scene/SceneObject.h"
 #include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
@@ -84,7 +83,6 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 
 	planetManager = NULL;
 	structureManager = NULL;
-	cityManager = NULL;
 }
 
 void ZoneImplementation::createContainerComponent() {
@@ -99,8 +97,6 @@ void ZoneImplementation::initializePrivateData() {
 	creatureManager = new CreatureManager(_this);
 	creatureManager->deploy("CreatureManager " + zoneName);
 	creatureManager->setZoneProcessor(processor);
-
-	cityManager = new CityManager(_this);
 }
 
 void ZoneImplementation::finalize() {
@@ -133,8 +129,6 @@ void ZoneImplementation::startManagers() {
 	structureManager->initialize();
 
 	creatureManager->initialize();
-
-	cityManager->loadLuaConfig();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 

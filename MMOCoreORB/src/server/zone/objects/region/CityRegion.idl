@@ -17,6 +17,7 @@ include server.zone.ZoneReference;
 include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
 include server.zone.objects.region.CitizenList;
+include server.zone.objects.region.events.CityUpdateEvent;
 
 class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
@@ -51,9 +52,9 @@ class CityRegion extends ManagedObject implements Logger {
 	protected boolean registered;
 	
 	@dereferenced
-	protected Time nextExpansionTime;
+	protected Time nextUpdateTime;
 	
-	//protected transient CityExpansionEvent cityExpansionEvent;
+	protected transient CityUpdateEvent cityUpdateEvent;
 
 	protected string citySpecialization; //We want to implement this with skill mods.
 
@@ -63,18 +64,20 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte RANK_TOWNSHIP = 3;
 	public static final byte RANK_CITY = 4;
 	public static final byte RANK_METROPOLIS = 5;
-
-	public CityRegion(Zone zne, final string name) {
-		initialize(zne, name);
+	
+	public CityRegion() {
+		initialize();
 	}
 	
-	public native void initialize(Zone zne, final string name);
-	//public native void initializeTransientMembers();
+	public native void initialize();
+	public native void initializeTransientMembers();
 	
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 	
 	public native Region addRegion(float x, float y, float radius);
+	
+	public native void rescheduleUpdateEvent(unsigned int seconds);
 	
 	public void addMilitiaMember(unsigned long objectid) {
 		militiaMembers.put(objectid);
@@ -230,6 +233,8 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	//Setters
+	public native void setZone(Zone zne);
+	
 	public void setRegionName(final unicode name) {
 		regionName.setCustomString(name);
 	}

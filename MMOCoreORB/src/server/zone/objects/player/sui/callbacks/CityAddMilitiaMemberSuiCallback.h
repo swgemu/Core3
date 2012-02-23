@@ -48,7 +48,7 @@ public:
 
 		String playerName = args->get(0).toString();
 
-		CityManager* cityManager = cityRegion->getZone()->getCityManager();
+		CityManager* cityManager = server->getCityManager();
 		cityManager->addMilitiaMember(city, player, playerName);
 	}
 };

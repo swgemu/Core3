@@ -46,7 +46,7 @@ public:
 
 		Locker lock(city, player);
 
-		CityManager* cityManager = city->getZone()->getCityManager();
+		CityManager* cityManager = server->getCityManager();
 
 		if (unregister) {
 			cityManager->unregisterCity(city, player);

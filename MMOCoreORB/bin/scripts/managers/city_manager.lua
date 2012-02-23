@@ -47,7 +47,7 @@
 CitySpecializationCooldown = 604800000 --Milliseconds: 1 Week = 604800000
 TreasuryWithdrawalCooldown = 86400000 --Milliseconds: 1 Day = 86400000
 CityVotingDuration = 1814400 --Seconds until the next vote occurs.
-CityUpdateInterval = 5 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
+CityUpdateInterval = 30 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
 NewCityGracePeriod = 60 --Minutes before a new city has to reach rank 1 citizens before it decays.
 
 CitizensPerRank = {1, 5, 10, 15, 20}
@@ -60,16 +60,16 @@ RadiusPerRank = {150, 200, 300, 400, 450}
 --{rank1, rank2, rank3, rank4, rank5}
 -- -1 = 255 cities which is the max amount
 CitiesAllowed = {
-	corellia = {20, 20, 15, 10, 10},
-	dantooine = {50, 50, 30, 20, 20},
-	dathomir = {0, 0, 0, 0, 0},
-	endor = {0, 0, 0, 0, 0},
-	lok = {50, 50, 30, 20, 20},
-	naboo = {20, 20, 15, 10, 10},
-	rori = {50, 50, 30, 20, 20},
-	talus = {50, 50, 30, 20, 20},
-	tatooine = {20, 20, 15, 10, 10},
-	yavin4 = {0, 0, 0, 0, 0}
+	{"corellia", {20, 20, 15, 10, 10}},
+	{"dantooine", {50, 50, 30, 20, 20}},
+	{"dathomir", {0, 0, 0, 0, 0}},
+	{"endor", {0, 0, 0, 0, 0}},
+	{"lok", {50, 50, 30, 20, 20}},
+	{"naboo", {20, 20, 15, 10, 10}},
+	{"rori", {50, 50, 30, 20, 20}},
+	{"talus", {50, 50, 30, 20, 20}},
+	{"tatooine", {20, 20, 15, 10, 10}},
+	{"yavin4", {0, 0, 0, 0, 0}}
 }
 
 CitySpecializations = {
