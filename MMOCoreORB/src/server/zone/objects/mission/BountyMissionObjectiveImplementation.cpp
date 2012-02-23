@@ -168,14 +168,15 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 
 	switch (objectiveStatus) {
 	case INITSTATUS:
+		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
+		if (targetTask != NULL && !targetTask->isScheduled()) {
+			targetTask->schedule(10 * 1000);
+		}
+
 		if (informantLevel == 1) {
 			if (zone->getZoneName() == mission->getEndPlanet()) {
 				updateWaypoint();
 			}
-		}
-		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
-		if (targetTask != NULL && !targetTask->isScheduled()) {
-			targetTask->schedule(10 * 1000);
 		}
 		objectiveStatus = HASBIOSIGNATURESTATUS;
 		break;
@@ -214,7 +215,7 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 	mission->updateMissionLocation();
 
 	if (mission->getDifficultyLevel() == 1) {
-		getPlayerOwner()->sendSystemMessage("mission/mission_bounty_informant:target_location_received");
+		getPlayerOwner()->sendSystemMessage("@mission/mission_bounty_informant:target_location_received");
 	}
 }
 

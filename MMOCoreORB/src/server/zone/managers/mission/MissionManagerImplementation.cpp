@@ -53,7 +53,6 @@ void MissionManagerImplementation::loadLuaSettings() {
 		LuaObject zones = lua->getGlobalObject("bh_target_zones");
 
 		for (int i = 1; i <= zones.getTableSize(); i++) {
-			info("Zone " + zones.getStringAt(i), true);
 			bhTargetZones.add(zones.getStringAt(i));
 		}
 
