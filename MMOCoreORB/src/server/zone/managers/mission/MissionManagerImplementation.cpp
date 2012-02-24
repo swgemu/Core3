@@ -642,50 +642,98 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	}
 
 	int difficulty = 1;
+	int randomTexts = 25;
 	if (player->hasSkill("combat_bountyhunter_investigation_03")) {
 		difficulty = 3;
 	} else if (player->hasSkill("combat_bountyhunter_investigation_01")) {
 		difficulty = 2;
+		randomTexts = 50;
 	}
 
 	NameManager* nm = processor->getNameManager();
 
-	int randTexts = System::random(24) + 1;
+	bool npcTarget = true;
+	if (difficulty == 3) {
+		int compareValue = playerBountyList.size() > 50 ? 50 : playerBountyList.size();
+		if (System::random(100) < compareValue) {
+			npcTarget = false;
+			randomTexts = 6;
+		}
+	}
+
+	int randTexts = System::random(randomTexts - 1) + 1;
 
 	mission->setMissionNumber(randTexts);
 
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
-	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setMissionTargetName(nm->makeCreatureName());
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_bounty_target.iff").hashCode()));
 
+	mission->setMissionDifficulty(difficulty);
 	mission->setFaction(faction);
 
-	Vector3 endPos = getRandomBountyTargetPosition(player);
-	String planet = player->getZone()->getZoneName();
-	if (difficulty == 3 && bhTargetZones.size() > 0) {
-		int randomNumber = System::random(bhTargetZones.size() - 1);
-		planet = bhTargetZones.get(randomNumber);
+	if (npcTarget) {
+		mission->setCreatorName(nm->makeCreatureName());
+
+		mission->setMissionTargetName(nm->makeCreatureName());
+
+		Vector3 endPos = getRandomBountyTargetPosition(player);
+		String planet = player->getZone()->getZoneName();
+		if (difficulty == 3 && bhTargetZones.size() > 0) {
+			int randomNumber = System::random(bhTargetZones.size() - 1);
+			planet = bhTargetZones.get(randomNumber);
+		}
+		mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
+
+		String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)difficulty)->get(System::random(bhTargetsAtMissionLevel.get((unsigned int)difficulty)->size() - 1));
+		mission->setTargetOptionalTemplate(targetTemplate);
+
+		CreatureTemplate* creoTemplate = CreatureTemplateManager::instance()->getTemplate(mission->getTargetOptionalTemplate());
+
+		int reward = 1000;
+
+		if (creoTemplate != NULL) {
+			reward = creoTemplate->getLevel() * (200 + System::random(200));
+		}
+
+		mission->setRewardCredits(reward);
+
+		String diffString = "easy";
+
+		if (difficulty == 3) {
+			diffString = "hard";
+		} else if (difficulty == 2) {
+			diffString = "medium";
+		}
+
+		mission->setMissionTitle("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
+	} else {
+		BountyTargetListElement* target = getRandomPlayerBounty();
+
+		ZoneServer* zoneServer = player->getZoneServer();
+		if (zoneServer != NULL) {
+			ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(target->getTargetId()));
+
+			if (creature != NULL) {
+				String name = creature->getFirstName() + " " + creature->getLastName();
+				name = name.trim();
+				mission->setMissionTargetName(name);
+			}
+		}
+
+		mission->setCreatorName("GALACTIC EMPIRE");
+
+		mission->setEndPosition(0, 0, "", true);
+
+		mission->setTargetOptionalTemplate("");
+
+		mission->setRewardCredits(target->getReward());
+
+		mission->setMissionTitle("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "d");
 	}
-	mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
-
-	String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)difficulty)->get(System::random(bhTargetsAtMissionLevel.get((unsigned int)difficulty)->size() - 1));
-	mission->setTargetOptionalTemplate(targetTemplate);
-
-	CreatureTemplate* creoTemplate = CreatureTemplateManager::instance()->getTemplate(mission->getTargetOptionalTemplate());
-
-	int reward = 1000;
-
-	if (creoTemplate != NULL) {
-		reward = creoTemplate->getLevel() * (200 + System::random(200));
-	}
-
-	mission->setRewardCredits(reward);
-	mission->setMissionDifficulty(difficulty);
-	mission->setMissionTitle("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "t");
-	mission->setMissionDescription("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::BOUNTY);
 }
@@ -1277,7 +1325,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObject* player) {
 	Vector3 position;
-
+	//TODO use correct zone.
 	if (player->getZone() == NULL)
 		return position;
 
@@ -1328,7 +1376,9 @@ void MissionManagerImplementation::removeJediFromBountyList(unsigned long long i
 		if (playerBountyList.get(targetId)->numberOfActiveMissions() > 0) {
 			playerBountyList.get(targetId)->setCanHaveNewMissions(false);
 		} else {
+			BountyTargetListElement* target = playerBountyList.get(targetId);
 			playerBountyList.remove(playerBountyList.find(targetId));
+			delete target;
 		}
 	}
 }
@@ -1351,7 +1401,37 @@ void MissionManagerImplementation::removeBountyHunterToJediBounty(unsigned long 
 
 		if (!playerBountyList.get(targetId)->getCanHaveNewMissions() &&
 				playerBountyList.get(targetId)->numberOfActiveMissions() == 0) {
+			BountyTargetListElement* target = playerBountyList.get(targetId);
 			playerBountyList.remove(playerBountyList.find(targetId));
+			delete target;
 		}
 	}
+}
+
+BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty() {
+	if (playerBountyList.size() <= 0) {
+		return NULL;
+	}
+
+	bool found = false;
+	int retries = 20;
+
+	while (!found && retries-- > 0) {
+		int index = System::random(playerBountyList.size() - 1);
+		BountyTargetListElement* randomTarget = playerBountyList.get(index);
+
+		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6) {
+			return randomTarget;
+		}
+	}
+
+	for (int i = 0; i < playerBountyList.size(); i++) {
+		BountyTargetListElement* randomTarget = playerBountyList.get(i);
+
+		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6) {
+			return randomTarget;
+		}
+	}
+
+	return NULL;
 }

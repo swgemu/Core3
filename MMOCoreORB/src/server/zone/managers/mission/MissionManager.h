@@ -276,6 +276,8 @@ public:
 
 	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
+	BountyTargetListElement* getRandomPlayerBounty();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -439,6 +441,8 @@ public:
 
 	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
+	BountyTargetListElement* getRandomPlayerBounty();
+
 	WeakReference<MissionManager*> _this;
 
 	operator const MissionManager*();
@@ -583,6 +587,8 @@ public:
 	void addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+
+	BountyTargetListElement* getRandomPlayerBounty();
 
 protected:
 	String _param1_createSpawnPoint__CreatureObject_String_;

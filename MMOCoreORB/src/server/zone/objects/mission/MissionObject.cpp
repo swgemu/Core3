@@ -239,7 +239,7 @@ void MissionObject::setStartPosition(float posX, float posY, const String& plane
 		_implementation->setStartPosition(posX, posY, planet, notifyClient);
 }
 
-void MissionObject::setEndPosition(float posX, float posY, String& planetName, bool notifyClient) {
+void MissionObject::setEndPosition(float posX, float posY, const String& planet, bool notifyClient) {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -248,12 +248,12 @@ void MissionObject::setEndPosition(float posX, float posY, String& planetName, b
 		DistributedMethod method(this, RPC_SETENDPOSITION__FLOAT_FLOAT_STRING_BOOL_);
 		method.addFloatParameter(posX);
 		method.addFloatParameter(posY);
-		method.addAsciiParameter(planetName);
+		method.addAsciiParameter(planet);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setEndPosition(posX, posY, planetName, notifyClient);
+		_implementation->setEndPosition(posX, posY, planet, notifyClient);
 }
 
 void MissionObject::setCreatorName(const String& name, bool notifyClient) {
@@ -1750,8 +1750,8 @@ void MissionObjectAdapter::setStartPosition(float posX, float posY, const String
 	(static_cast<MissionObject*>(stub))->setStartPosition(posX, posY, planet, notifyClient);
 }
 
-void MissionObjectAdapter::setEndPosition(float posX, float posY, String& planetName, bool notifyClient) {
-	(static_cast<MissionObject*>(stub))->setEndPosition(posX, posY, planetName, notifyClient);
+void MissionObjectAdapter::setEndPosition(float posX, float posY, const String& planet, bool notifyClient) {
+	(static_cast<MissionObject*>(stub))->setEndPosition(posX, posY, planet, notifyClient);
 }
 
 void MissionObjectAdapter::setCreatorName(const String& name, bool notifyClient) {

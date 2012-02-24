@@ -147,7 +147,16 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		if (getPlayerOwner() != NULL && attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
 				attacker->isPlayerCreature() && objectiveStatus == HASBIOSIGNATURESTATUS) {
 			updateMissionStatus(mission->getDifficultyLevel());
-			attacker->getZoneServer()->getChatManager()->broadcastMessage(npcTarget, "@mission/mission_bounty_neutral_easy:m" + String::valueOf(mission->getMissionNumber()) + "v", 0, 0, 0);
+
+			String diffString = "easy";
+
+			if (mission->getDifficultyLevel() == 3) {
+				diffString = "hard";
+			} else if (mission->getDifficultyLevel() == 2) {
+				diffString = "medium";
+			}
+
+			attacker->getZoneServer()->getChatManager()->broadcastMessage(npcTarget, "@mission/mission_bounty_neutral_" + diffString + ":m" + String::valueOf(mission->getMissionNumber()) + "v", 0, 0, 0);
 			return 1;
 		}
 	}

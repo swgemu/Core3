@@ -245,10 +245,10 @@ uint32 MissionObjectImplementation::getStartPlanetCRC() {
 	return startPlanet.hashCode();
 }
 
-void MissionObjectImplementation::setEndPosition(float posX, float posY, String& planetName, bool notifyClient) {
+void MissionObjectImplementation::setEndPosition(float posX, float posY, const String& planet, bool notifyClient) {
 	endPositionX = posX;
 	endPositionY = posY;
-	endPlanet = planetName;
+	endPlanet = planet;
 
 	if (!notifyClient)
 		return;
