@@ -45,7 +45,7 @@ object_draft_schematic_clothing_clothing_wke_hood_s02 = object_draft_schematic_c
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Wookiee Sage\'s Hood",
+   customObjectName = "Wookiee Sage\\\'s Hood",
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
