@@ -15,8 +15,12 @@
 #include "server/zone/objects/area/ActiveArea.h"
 
 int PlaceStructureComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) {
-	StructureManager* structureManager = creature->getZone()->getStructureManager();
-	structureManager->placeStructureFromDeed(creature, deed, x, y, angle);
+	Zone* zone = creature->getZone();
+
+	if (zone != NULL) {
+		StructureManager* structureManager = creature->getZone()->getStructureManager();
+		structureManager->placeStructureFromDeed(creature, deed, x, y, angle);
+	}
 
 	return 0;
 }
