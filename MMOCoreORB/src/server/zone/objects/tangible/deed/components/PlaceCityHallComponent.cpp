@@ -22,6 +22,11 @@ int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* 
 	if (ghost == NULL)
 		return 1;
 
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL)
+		return 1;
+
 	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 
 	if (declaredResidence != NULL) {
