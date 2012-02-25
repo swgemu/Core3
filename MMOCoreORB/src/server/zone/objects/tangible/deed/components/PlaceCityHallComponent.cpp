@@ -58,6 +58,7 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 
 		if (city != NULL && city->isMayor(creature->getObjectID())) {
 			city->addCitizen(creature->getObjectID());
+			city->setCityHall(structure);
 		}
 	}
 

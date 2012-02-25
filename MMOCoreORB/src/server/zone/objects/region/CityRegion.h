@@ -55,6 +55,20 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -107,6 +121,8 @@ public:
 	Region* addRegion(float x, float y, float radius);
 
 	void rescheduleUpdateEvent(unsigned int seconds);
+
+	void destroyActiveAreas();
 
 	void addMilitiaMember(unsigned long long objectid);
 
@@ -176,6 +192,8 @@ public:
 
 	bool isClientRegion();
 
+	StructureObject* getCityHall();
+
 	void setZone(Zone* zne);
 
 	void setRegionName(const UnicodeString& name);
@@ -206,6 +224,8 @@ public:
 
 	void setRadius(float rad);
 
+	void setCityHall(StructureObject* building);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -235,6 +255,8 @@ namespace region {
 
 class CityRegionImplementation : public ManagedObjectImplementation, public Logger {
 protected:
+	ManagedReference<StructureObject* > cityHall;
+
 	StringId regionName;
 
 	ZoneReference zone;
@@ -294,6 +316,8 @@ public:
 
 	void rescheduleUpdateEvent(unsigned int seconds);
 
+	void destroyActiveAreas();
+
 	void addMilitiaMember(unsigned long long objectid);
 
 	void removeMilitiaMember(unsigned long long objectid);
@@ -362,6 +386,8 @@ public:
 
 	bool isClientRegion();
 
+	StructureObject* getCityHall();
+
 	void setZone(Zone* zne);
 
 	void setRegionName(const UnicodeString& name);
@@ -391,6 +417,8 @@ public:
 	void setZoningEnabled(bool val);
 
 	void setRadius(float rad);
+
+	void setCityHall(StructureObject* building);
 
 	WeakReference<CityRegion*> _this;
 
@@ -446,6 +474,8 @@ public:
 	Region* addRegion(float x, float y, float radius);
 
 	void rescheduleUpdateEvent(unsigned int seconds);
+
+	void destroyActiveAreas();
 
 	void addMilitiaMember(unsigned long long objectid);
 
@@ -509,6 +539,8 @@ public:
 
 	bool isClientRegion();
 
+	StructureObject* getCityHall();
+
 	void setZone(Zone* zne);
 
 	void setRegionName(const UnicodeString& name);
@@ -534,6 +566,8 @@ public:
 	void setZoningEnabled(bool val);
 
 	void setRadius(float rad);
+
+	void setCityHall(StructureObject* building);
 
 protected:
 	UnicodeString _param0_setRegionName__UnicodeString_;

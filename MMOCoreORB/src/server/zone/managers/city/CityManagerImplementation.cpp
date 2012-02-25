@@ -14,6 +14,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
@@ -481,12 +482,19 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
 
 		//Send out contraction mail.
-		StringIdChatParameter params("city/city", "city_contract_body");
-		params.setTO(city->getRegionName());
-		//params.setDI(newRank);
+		StringIdChatParameter params("city/city", "new_city_fail_body");
 
 		ChatManager* chatManager = zoneServer->getChatManager();
-		chatManager->sendMail("@city/city:new_city_from", "@city/city:city_contract_subject", params, mayor->getFirstName(), NULL);
+		chatManager->sendMail("@city/city:new_city_from", "@city/city:new_city_fail_subject", params, mayor->getFirstName(), NULL);
+	}
+
+	city->destroyActiveAreas();
+
+	ManagedReference<StructureObject*> cityhall = city->getCityHall();
+
+	if (cityhall != NULL) {
+		cityhall->destroyObjectFromWorld(false);
+		cityhall->destroyObjectFromDatabase(true);
 	}
 
 	//TODO: Destroy civic structures.

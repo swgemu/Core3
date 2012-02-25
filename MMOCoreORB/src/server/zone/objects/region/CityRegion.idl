@@ -11,6 +11,7 @@ package server.zone.objects.region;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.structure.StructureObject;
 import server.zone.Zone;
 include server.chat.StringIdChatParameter;
 include server.zone.ZoneReference;
@@ -20,6 +21,8 @@ include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
 
 class CityRegion extends ManagedObject implements Logger {
+	protected StructureObject cityHall;
+	
 	@dereferenced
 	protected StringId regionName;
 
@@ -78,6 +81,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public native Region addRegion(float x, float y, float radius);
 	
 	public native void rescheduleUpdateEvent(unsigned int seconds);
+	
+	public native void destroyActiveAreas();
 	
 	public void addMilitiaMember(unsigned long objectid) {
 		militiaMembers.put(objectid);
@@ -233,6 +238,10 @@ class CityRegion extends ManagedObject implements Logger {
 	public boolean isClientRegion() {
 		return cityRank == RANK_CLIENT;
 	}
+	
+	public StructureObject getCityHall() {
+		return cityHall;
+	}
 
 	//Setters
 	public native void setZone(Zone zne);
@@ -300,4 +309,8 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public native void setRadius(float rad);
+	
+	public void setCityHall(StructureObject building) {
+		cityHall = building;
+	}
 }

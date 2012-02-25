@@ -12,6 +12,7 @@
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/ServerCore.h"
@@ -39,6 +40,8 @@ void CityRegionImplementation::initialize() {
 	cityTreasury = 0;
 
 	cityRank = RANK_CLIENT; //Default to client city
+
+	cityHall = NULL;
 
 	mayorID = 0;
 
@@ -188,4 +191,17 @@ void CityRegionImplementation::setRadius(float rad) {
 
 	zone->removeObject(aa, NULL, false);
 	zone->transferObject(aa, -1, false);
+}
+
+void CityRegionImplementation::destroyActiveAreas() {
+	for (int i = 0; i < regions.size(); ++i) {
+		ManagedReference<Region*> aa = regions.get(i);
+
+		if (aa != NULL) {
+			aa->destroyObjectFromWorld(false);
+			aa->destroyObjectFromDatabase(true);
+
+			regions.drop(aa);
+		}
+	}
 }
