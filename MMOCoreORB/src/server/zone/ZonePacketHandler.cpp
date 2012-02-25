@@ -229,7 +229,7 @@ Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message*
 
 		StringBuffer buffer;
 		buffer << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
-		info(buffer);
+//		info(buffer);
 
 		MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
 

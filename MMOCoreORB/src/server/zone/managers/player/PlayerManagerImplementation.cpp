@@ -2128,9 +2128,15 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 
 	StructureObject* structure = NULL;
 	float distance = 16000;
+	
+	Zone* zone = creature->getZone();
+	
+	if (zone == NULL) {
+		return NULL;
+	}
 
 	//We need to search nearby for an installation that belongs to the player.
-	Locker _locker(creature->getZone());
+	Locker _locker(zone);
 
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = creature->getCloseObjects();
 

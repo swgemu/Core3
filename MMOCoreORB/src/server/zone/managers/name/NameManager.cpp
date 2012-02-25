@@ -237,7 +237,7 @@ void NameManager::fillNames() {
 }
 
 
-inline bool NameManager::isProfane(String name) {
+bool NameManager::isProfane(String name) {
 	uint16 i;
 
 	name = name.toLowerCase();

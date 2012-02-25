@@ -115,7 +115,7 @@ void ServerCore::initialize() {
 		mantisDatabase = new MantisDatabase(configManager);
 
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
-		orb = DistributedObjectBroker::initialize(orbaddr, 44496);
+		orb = DistributedObjectBroker::initialize(orbaddr, 44459);
 
 		orb->setCustomObjectManager(objectManager);
 

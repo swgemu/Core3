@@ -96,9 +96,14 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		cast<CreatureObject*>(controlledObject.get())->setCreatureLink(player);
 		cast<CreatureObject*>(controlledObject.get())->setControlDevice(_this);
 	}
+	
+	Zone* zone = player->getZone();
+	
+	if (zone == NULL)
+		return;
 
 	//controlledObject->insertToZone(player->getZone());
-	player->getZone()->transferObject(controlledObject, -1, true);
+	zone->transferObject(controlledObject, -1, true);
 	controlledObject->inflictDamage(player, 0, System::random(50), true);
 
 	updateStatus(1);
