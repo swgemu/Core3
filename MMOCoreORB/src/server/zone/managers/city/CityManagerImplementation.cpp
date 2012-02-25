@@ -385,8 +385,8 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	int maintainCitizens = citizensPerRank.get(cityRank - 1);
 	int advanceCitizens = citizensPerRank.get(cityRank);
 
-	System::out << "maintainCitizens: " << maintainCitizens << endl;
-	System::out << "advanceCitizens: " << advanceCitizens << endl;
+	//System::out << "maintainCitizens: " << maintainCitizens << endl;
+	//System::out << "advanceCitizens: " << advanceCitizens << endl;
 
 	if (citizens < maintainCitizens) {
 		contractCity(city);
@@ -655,11 +655,6 @@ void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObj
 }
 
 void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
-	StringIdChatParameter params("city/city", "city_update_eta"); //Next City Update: %TO
-	params.setTO("Not implemented yet.");
-
-	creature->sendSystemMessage(params);
-
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_ADVANCEMENT);
 	listbox->setPromptTitle("@city/city:rank_info_t"); //City Rank Info
 	listbox->setPromptText("@city/city:rank_info_d"); //The following report shows the current city rank, the current city population, the abilities of the city and the population required for the next rank.  If you have met your rank requirement, the city will advance in rank during the next city update.  Check the maintenance report for a projected time to the next update.
@@ -670,10 +665,17 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 	//bank Bank
 	//cantina  Cantina
 
+	int rank = city->getCityRank();
+
+	int currentRank = citizensPerRank.get(rank);
+	int nextRank = citizensPerRank.get(rank + 1);
+
 	//pop_req_current_rankPop. Req. for Current Rank:
 	//pop_req_next_rankPop. Req. for Next Rank:
-	listbox->addMenuItem(""); //Current Rity Rank
-	listbox->addMenuItem(""); //Current Population
+	listbox->addMenuItem("@city/city:city_rank_prompt @city/city:rank" + String::valueOf(rank));
+	listbox->addMenuItem("@city/city:reg_citizen_prompt " + String::valueOf(city->getCitizenCount()));
+	listbox->addMenuItem("@city/city:pop_req_current_rank " + String::valueOf(currentRank));
+	listbox->addMenuItem("@city/city:pop_req_next_rank " + String::valueOf(nextRank));
 
 	creature->sendMessage(listbox->generateMessage());
 }
@@ -762,4 +764,64 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObje
 	//adjust_taxes_d Select the tax you wish to adjust from the list below.
 	//cant_tax You lack the knowledge to manage the city's taxes.
 	//manage_taxes
+}
+
+void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	//TODO: Encapsulate this, and clean up.
+	int seconds = city->getTimeToUpdate();
+	int days = floor(seconds / 24 * 3600);
+	seconds -= days * 3600 * 24;
+	int hours = floor(seconds / 3600);
+	seconds -= hours * 3600;
+	int minutes = floor(seconds / 60);
+	seconds -= minutes * 60;
+
+	StringBuffer buffer;
+
+	if (days > 0) {
+		buffer << days << " day";
+
+		if (days > 1)
+			buffer << "s";
+
+		if (hours > 0 || minutes > 0 || seconds > 0)
+			buffer << ", ";
+	}
+
+	if (hours > 0) {
+		buffer << hours << " hour";
+
+		if (hours > 1)
+			buffer << "s";
+
+		if (minutes > 0 || seconds > 0)
+			buffer << ", ";
+	}
+
+	if (minutes > 0) {
+		buffer << minutes << " minute";
+
+		if (minutes > 1)
+			buffer << "s";
+
+		if (seconds > 0)
+			buffer << ", ";
+	}
+
+	if (seconds > 0) {
+		buffer << seconds << " second";
+
+		if (seconds > 1)
+			buffer << "s";
+	}
+
+	String updateStr = buffer.toString();
+
+	if (updateStr.isEmpty())
+		updateStr = "Now";
+
+	StringIdChatParameter params("city/city", "city_update_eta"); //Next City Update: %TO
+	params.setTO(updateStr);
+
+	creature->sendSystemMessage(params);
 }

@@ -132,6 +132,8 @@ public:
 
 	bool isCitizen(unsigned long long citizenID);
 
+	int getTimeToUpdate();
+
 	int getCitizenCount();
 
 	byte getCityRank();
@@ -316,6 +318,8 @@ public:
 
 	bool isCitizen(unsigned long long citizenID);
 
+	int getTimeToUpdate();
+
 	int getCitizenCount();
 
 	byte getCityRank();
@@ -466,6 +470,8 @@ public:
 	void removeBannedPlayer(unsigned long long playerid);
 
 	bool isCitizen(unsigned long long citizenID);
+
+	int getTimeToUpdate();
 
 	int getCitizenCount();
 

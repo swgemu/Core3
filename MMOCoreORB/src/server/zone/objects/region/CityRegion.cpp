@@ -16,7 +16,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETZONE__ZONE_,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_SETZONE__ZONE_,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -284,6 +284,19 @@ bool CityRegion::isCitizen(unsigned long long citizenID) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCitizen(citizenID);
+}
+
+int CityRegion::getTimeToUpdate() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTIMETOUPDATE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTimeToUpdate();
 }
 
 int CityRegion::getCitizenCount() {
@@ -1313,16 +1326,6 @@ void CityRegionImplementation::setZoningEnabled(bool val) {
 	zoningEnabled = val;
 }
 
-void CityRegionImplementation::setRadius(float rad) {
-	// server/zone/objects/region/CityRegion.idl():  		ActiveArea 
-	if ((&regions)->size() <= 0)	// server/zone/objects/region/CityRegion.idl():  			return;
-	return;
-	// server/zone/objects/region/CityRegion.idl():  		ActiveArea aa = regions.get(0);
-	ActiveArea* aa = (&regions)->get(0);
-	// server/zone/objects/region/CityRegion.idl():  		aa.setRadius(rad);
-	aa->setRadius(rad);
-}
-
 /*
  *	CityRegionAdapter
  */
@@ -1387,6 +1390,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ISCITIZEN__LONG_:
 		resp->insertBoolean(isCitizen(inv->getUnsignedLongParameter()));
+		break;
+	case RPC_GETTIMETOUPDATE__:
+		resp->insertSignedInt(getTimeToUpdate());
 		break;
 	case RPC_GETCITIZENCOUNT__:
 		resp->insertSignedInt(getCitizenCount());
@@ -1558,6 +1564,10 @@ void CityRegionAdapter::removeBannedPlayer(unsigned long long playerid) {
 
 bool CityRegionAdapter::isCitizen(unsigned long long citizenID) {
 	return (static_cast<CityRegion*>(stub))->isCitizen(citizenID);
+}
+
+int CityRegionAdapter::getTimeToUpdate() {
+	return (static_cast<CityRegion*>(stub))->getTimeToUpdate();
 }
 
 int CityRegionAdapter::getCitizenCount() {

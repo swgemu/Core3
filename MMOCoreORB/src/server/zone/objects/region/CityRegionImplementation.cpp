@@ -8,6 +8,7 @@
 #include "CityRegion.h"
 #include "events/CityUpdateEvent.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -94,6 +95,10 @@ void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
 	Core::getTaskManager()->getNextExecutionTime(cityUpdateEvent, nextUpdateTime);
 }
 
+int CityRegionImplementation::getTimeToUpdate() {
+	return round(nextUpdateTime.miliDifference() / -1000.f);
+}
+
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	object->setCityRegion(_this);
 
@@ -172,4 +177,15 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 
 void CityRegionImplementation::setZone(Zone* zne) {
 	zone = zne;
+}
+
+void CityRegionImplementation::setRadius(float rad) {
+	if (regions.size() <= 0)
+		return;
+
+	ManagedReference<ActiveArea*> aa = regions.get(0).get();
+	aa->setRadius(rad);
+
+	zone->removeObject(aa, NULL, false);
+	zone->transferObject(aa, -1, false);
 }

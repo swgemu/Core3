@@ -166,6 +166,8 @@ public:
 
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
@@ -296,6 +298,8 @@ public:
 
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
@@ -400,6 +404,8 @@ public:
 	void unregisterCity(CityRegion* city, CreatureObject* mayor);
 
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
+
+	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 

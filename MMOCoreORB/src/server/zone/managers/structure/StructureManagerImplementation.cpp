@@ -358,7 +358,7 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 	if (!player->checkCooldownRecovery("declare_residence")) {
 		Time* timeremaining = player->getCooldownTime("declare_residence");
 		StringIdChatParameter params("player_structure", "change_residence_time"); //You cannot change residence for %NO hours.
-		params.setTO(String::valueOf(ceil(timeremaining->miliDifference() / 3600.f * 1000.f)));
+		params.setTO(String::valueOf(ceil(timeremaining->miliDifference() / 3600.f * -1000.f)));
 
 		player->sendSystemMessage(params);
 		return 1;
@@ -417,7 +417,7 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 	//Set the characters home location to this structure.
 	ghost->setDeclaredResidence(buildingObject);
 
-	player->addCooldown("declare_residence", 24 * 3600); //1 day
+	player->addCooldown("declare_residence", 24 * 3600 * 1000); //1 day
 
 	return 0;
 }

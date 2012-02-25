@@ -92,6 +92,9 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	case 223: //City Advancement
 		cityManager->sendCityAdvancement(city, player, sceneObject);
 		break;
+	case 224: //Maintenance Report
+		cityManager->sendMaintenanceReport(city, player, sceneObject);
+		break;
 	case 225: //Set City Specialization
 		cityManager->promptCitySpecialization(city, player, sceneObject);
 		break;

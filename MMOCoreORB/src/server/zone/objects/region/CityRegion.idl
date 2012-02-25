@@ -130,6 +130,8 @@ class CityRegion extends ManagedObject implements Logger {
 		return citizenList.contains(citizenID);
 	}
 	
+	public native int getTimeToUpdate();
+	
 	public int getCitizenCount() {
 		return citizenList.size();
 	}
@@ -297,11 +299,5 @@ class CityRegion extends ManagedObject implements Logger {
 		zoningEnabled = val;
 	}
 	
-	public void setRadius(float rad) {
-		if (regions.size() <= 0)
-			return;
-		
-		ActiveArea aa = regions.get(0);
-		aa.setRadius(rad);
-	}
+	public native void setRadius(float rad);
 }
