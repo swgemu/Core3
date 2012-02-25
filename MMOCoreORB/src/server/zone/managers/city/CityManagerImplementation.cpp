@@ -769,10 +769,13 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObje
 void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	//TODO: Encapsulate this, and clean up.
 	int seconds = city->getTimeToUpdate();
-	int days = floor(seconds / 24 * 3600);
-	seconds -= days * 3600 * 24;
+
+	int days = floor(seconds / 86400);
+	seconds -= days * 86400;
+
 	int hours = floor(seconds / 3600);
 	seconds -= hours * 3600;
+
 	int minutes = floor(seconds / 60);
 	seconds -= minutes * 60;
 
