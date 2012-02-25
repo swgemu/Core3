@@ -64,10 +64,10 @@ object_draft_schematic_droid_component_playback_module = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"recording_material", "wave_synthesis", "sound_emission_device"},
-   ingredientSlotType = {0, 0, 0},
+   ingredientSlotType = {0, 1, 0},
    resourceTypes = {"petrochem_inert_polymer", "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff", "metal_ferrous"},
    resourceQuantities = {30, 1, 20},
-   combineTypes = {0, 0, 0},
+   combineTypes = {0, 1, 0},
    contribution = {100, 100, 100},
 
 

@@ -64,10 +64,10 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "colors", "electronic_control_unit", "color_stowage"},
-   ingredientSlotType = {0, 0, 0, 0, 0},
+   ingredientSlotType = {0, 0, 0, 1, 1},
    resourceTypes = {"metal", "mineral", "mineral", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/droid/shared_droid_storage_compartment.iff"},
    resourceQuantities = {16, 6, 3, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0},
+   combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

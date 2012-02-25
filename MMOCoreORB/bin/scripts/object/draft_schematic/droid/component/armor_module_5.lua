@@ -64,10 +64,10 @@ object_draft_schematic_droid_component_armor_module_5 = object_draft_schematic_d
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "armor_filler", "stress_resist_plate", "reinforcement_layer"},
-   ingredientSlotType = {0, 0, 0, 0},
+   ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"steel_duralloy", "metal_ferrous", "aluminum_linksteel", "object/tangible/component/armor/shared_armor_segment_composite.iff"},
    resourceQuantities = {65, 15, 20, 1},
-   combineTypes = {0, 0, 0, 0},
+   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

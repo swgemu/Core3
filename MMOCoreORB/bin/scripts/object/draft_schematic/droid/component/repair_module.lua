@@ -64,10 +64,10 @@ object_draft_schematic_droid_component_repair_module = object_draft_schematic_dr
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "repair_tools", "repair_expert_system"},
-   ingredientSlotType = {0, 0, 0, 0},
+   ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"metal", "gas_inert", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff"},
    resourceQuantities = {5, 2, 35, 1},
-   combineTypes = {0, 0, 0, 0},
+   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

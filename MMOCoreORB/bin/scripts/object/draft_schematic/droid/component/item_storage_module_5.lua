@@ -64,10 +64,10 @@ object_draft_schematic_droid_component_item_storage_module_5 = object_draft_sche
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "thermal_shielding", "cargo_management_unit", "cargo_restraints", "inventory_smart_indexer"},
-   ingredientSlotType = {0, 0, 0, 0, 0},
+   ingredientSlotType = {0, 0, 0, 0, 1},
    resourceTypes = {"steel_neutronium", "ore_extrusive_lidium", "gas_inert", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff"},
    resourceQuantities = {18, 10, 5, 8, 1},
-   combineTypes = {0, 0, 0, 0, 0},
+   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 
