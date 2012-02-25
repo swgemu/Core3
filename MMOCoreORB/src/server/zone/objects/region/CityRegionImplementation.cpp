@@ -68,6 +68,7 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius) {
 	region->setCityRegion(_this);
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
+	region->setObjectName(regionName);
 
 	if (isClientRegion())
 		region->setNoBuildArea(true);

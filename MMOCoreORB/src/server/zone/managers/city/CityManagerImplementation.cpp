@@ -385,12 +385,12 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	int maintainCitizens = citizensPerRank.get(cityRank - 1);
 	int advanceCitizens = citizensPerRank.get(cityRank);
 
-	//System::out << "maintainCitizens: " << maintainCitizens << endl;
-	//System::out << "advanceCitizens: " << advanceCitizens << endl;
+	System::out << "maintainCitizens: " << maintainCitizens << endl;
+	System::out << "advanceCitizens: " << advanceCitizens << endl;
 
-	if (maintainCitizens > citizens) {
+	if (citizens < maintainCitizens) {
 		contractCity(city);
-	} else if (advanceCitizens >= citizens) {
+	} else if (citizens >= advanceCitizens) {
 		expandCity(city);
 	}
 
@@ -729,9 +729,15 @@ void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureO
 }
 
 void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* mayor) {
+	Reference<PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+
+	if (cityCat == NULL)
+		return;
+
 	city->setRegistered(true);
 
 	ManagedReference<Region*> aa = city->getRegion(0);
+	aa->setPlanetMapCategory(cityCat);
 	aa->getZone()->registerObjectWithPlanetaryMap(aa);
 
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
@@ -744,6 +750,7 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 
 	ManagedReference<Region*> aa = city->getRegion(0);
 	aa->getZone()->unregisterObjectWithPlanetaryMap(aa);
+	aa->setPlanetMapCategory(NULL);
 
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
 

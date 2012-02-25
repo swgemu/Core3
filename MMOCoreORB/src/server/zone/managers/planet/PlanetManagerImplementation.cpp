@@ -398,6 +398,8 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getZoneName() + ".iff");
 
+	Reference<PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+
 	if (iffStream == NULL) {
 		info("No client regions found.");
 		return;
@@ -428,8 +430,10 @@ void PlanetManagerImplementation::loadClientRegions() {
 		ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius);
 
 		if (region != NULL) {
-			if (cityRegion->getRegionsCount() == 1) //Register the first region only.
+			if (cityRegion->getRegionsCount() == 1) {//Register the first region only.
+				region->setPlanetMapCategory(cityCat);
 				zone->registerObjectWithPlanetaryMap(region);
+			}
 
 			region->setMunicipalZone(true);
 		}
