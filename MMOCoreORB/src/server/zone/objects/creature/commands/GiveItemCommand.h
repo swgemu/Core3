@@ -81,6 +81,17 @@ public:
 
 		if (object != NULL) {
 
+			SceneObject* objectsParent = object->getParent();
+
+			if (objectsParent == NULL)
+				return GENERALERROR;
+
+			if (!objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+				return GENERALERROR;
+
+			if (!object->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
+				return GENERALERROR;
+
 			if (object->isAttachment()) {
 				Attachment* attachment = cast<Attachment*>( object.get());
 
