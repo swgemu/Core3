@@ -375,8 +375,18 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	info("Processing city update: " + city->getRegionName());
 
-	int cityRank = city->getCityRank();
-	float radius = city->getRadius();
+	int cityRank;
+	float radius;
+
+	//TODO: fix this
+	try {
+		cityRank = city->getCityRank();
+		radius = city->getRadius();
+	} catch (Exception& e) {
+		error(e.getMessage() + "in CityManagerImplementation::processCityUpdate");
+
+		return;
+	}
 
 	if (cityRank == CLIENT)
 		return; //It's a client region.
