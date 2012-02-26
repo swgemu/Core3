@@ -688,6 +688,9 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 
 	int rank = city->getCityRank();
 
+	if (rank - 1 >= citizensPerRank.size() || rank >= citizensPerRank.size())
+		return;
+
 	int currentRank = citizensPerRank.get(rank - 1);
 	int nextRank = citizensPerRank.get(rank);
 
