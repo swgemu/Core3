@@ -49,6 +49,7 @@ object_installation_mining_liquid_mining_liquid_harvester_style_1 = object_insta
 	basePowerRate = 25,
 	length = 1,
 	width = 1,
+	objectMenuComponent = "StructureTerminalMenuComponent",
 	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_1.iff"
 }
 

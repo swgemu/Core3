@@ -117,6 +117,8 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 	int startingBank;
 	int skillPoints;
 
+	bool freeGodMode;
+
 	void loadLuaConfig();
 	void loadRacialCreationData();
 	void loadDefaultCharacterItems();

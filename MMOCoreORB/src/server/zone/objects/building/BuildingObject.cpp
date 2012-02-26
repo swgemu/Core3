@@ -8,11 +8,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 #include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 
 #include "server/zone/ZoneServer.h"
 

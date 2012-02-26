@@ -228,10 +228,6 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
@@ -359,10 +355,6 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
@@ -479,8 +471,6 @@ public:
 	void initializeTransientMembers();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 

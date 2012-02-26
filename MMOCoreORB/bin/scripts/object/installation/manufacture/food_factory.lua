@@ -48,6 +48,7 @@ object_installation_manufacture_food_factory = object_installation_manufacture_s
 	basePowerRate = 50,
 	width = 3,
 	length = 3,
+	objectMenuComponent = "StructureTerminalMenuComponent",
 	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.iff",
 	craftingTabsSupported = {4,64,128,256,8192} -- See DraftSchematicObjectTemplate,h for list
 }

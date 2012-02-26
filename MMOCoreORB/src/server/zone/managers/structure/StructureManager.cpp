@@ -26,7 +26,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_STRUCTUREDEED_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_,RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_STRUCTUREDEED_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTPAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_SCENEOBJECT_,RPC_PAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_INT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -195,22 +195,6 @@ void StructureManager::promptNameStructure(CreatureObject* creature, StructureOb
 		_implementation->promptNameStructure(creature, structure, object);
 }
 
-void StructureManager::promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal) {
-	StructureManagerImplementation* _implementation = static_cast<StructureManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_);
-		method.addObjectParameter(creature);
-		method.addObjectParameter(structure);
-		method.addBooleanParameter(allowWithdrawal);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->promptManageMaintenance(creature, structure, allowWithdrawal);
-}
-
 void StructureManager::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
 	StructureManagerImplementation* _implementation = static_cast<StructureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -269,6 +253,38 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature, S
 		method.executeWithVoidReturn();
 	} else
 		_implementation->promptPayUncondemnMaintenance(creature, structure);
+}
+
+void StructureManager::promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal) {
+	StructureManagerImplementation* _implementation = static_cast<StructureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROMPTPAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(structure);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->promptPayMaintenance(structure, creature, terminal);
+}
+
+void StructureManager::payMaintenance(StructureObject* structure, CreatureObject* creature, int amount) {
+	StructureManagerImplementation* _implementation = static_cast<StructureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_INT_);
+		method.addObjectParameter(structure);
+		method.addObjectParameter(creature);
+		method.addSignedIntParameter(amount);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->payMaintenance(structure, creature, amount);
 }
 
 DistributedObjectServant* StructureManager::_getImplementation() {
@@ -472,9 +488,6 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_:
 		promptNameStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		break;
-	case RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_:
-		promptManageMaintenance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
-		break;
 	case RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_:
 		promptDeleteAllItems(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
 		break;
@@ -486,6 +499,12 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		break;
 	case RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_:
 		promptPayUncondemnMaintenance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_PROMPTPAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_SCENEOBJECT_:
+		promptPayMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_PAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_INT_:
+		payMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -534,10 +553,6 @@ void StructureManagerAdapter::promptNameStructure(CreatureObject* creature, Stru
 	(static_cast<StructureManager*>(stub))->promptNameStructure(creature, structure, object);
 }
 
-void StructureManagerAdapter::promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal) {
-	(static_cast<StructureManager*>(stub))->promptManageMaintenance(creature, structure, allowWithdrawal);
-}
-
 void StructureManagerAdapter::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
 	(static_cast<StructureManager*>(stub))->promptDeleteAllItems(creature, structure);
 }
@@ -552,6 +567,14 @@ void StructureManagerAdapter::moveFirstItemTo(CreatureObject* creature, Structur
 
 void StructureManagerAdapter::promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure) {
 	(static_cast<StructureManager*>(stub))->promptPayUncondemnMaintenance(creature, structure);
+}
+
+void StructureManagerAdapter::promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal) {
+	(static_cast<StructureManager*>(stub))->promptPayMaintenance(structure, creature, terminal);
+}
+
+void StructureManagerAdapter::payMaintenance(StructureObject* structure, CreatureObject* creature, int amount) {
+	(static_cast<StructureManager*>(stub))->payMaintenance(structure, creature, amount);
 }
 
 /*

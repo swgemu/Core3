@@ -49,6 +49,7 @@ object_installation_mining_liquid_mining_liquid_moisture_harvester = object_inst
 	basePowerRate = 25,
 	width = 1,
 	length = 1,
+	objectMenuComponent = "StructureTerminalMenuComponent",
 	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_1.iff"
 }
 

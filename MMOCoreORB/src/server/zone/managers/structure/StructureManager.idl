@@ -144,15 +144,7 @@ class StructureManager extends ManagedService implements Logger {
 	 * @param object Optional terminal to be used for sui
 	 */
 	public native void promptNameStructure(CreatureObject creature, StructureObject structure, TangibleObject object);
-	
-	/**
-	 * Sends a Sui prompt to the player asking them to withdraw/deposit maintenance for the structure.
-	 * @param creature The creature receiving the prompt.
-	 * @param structure The structure receiving the maintenance.
-	 * @param allowWithdrawal Whether this structure can have maintenance withdrawn from its maintenance pool.
-	 */
-	public native void promptManageMaintenance(CreatureObject creature, StructureObject structure, boolean allowWithdrawal = true);
-	
+
 	/**
 	 * Sends a Sui prompt to the player asking if they wish to delete all the items in their house.
 	 * @param creature The player receiving the prompt.
@@ -181,5 +173,21 @@ class StructureManager extends ManagedService implements Logger {
 	 * @param structure The condemned structure.
 	 */
 	public native void promptPayUncondemnMaintenance(CreatureObject creature, StructureObject structure);
+	
+	/**
+	 * Sends the transfer box prompting for maintenance to be paid.
+	 * @param structure The structure being paid maintenance too.
+	 * @param creature The creature attempting to pay maintenance.
+	 * @param terminal The terminal used in the process. Defaults to null.
+	 */
+	public native void promptPayMaintenance(StructureObject structure, CreatureObject creature, SceneObject terminal = null);
+	
+	/**
+	 * Attempts to pay the requested amount to the structure, and notifies the creature.
+	 * @param structure The structure being paid maintenance.
+	 * @param creature The creature attempting to pay maintenance.
+	 * @param amount The amount to pay maintenance.
+	 */
+	public native void payMaintenance(StructureObject structure, CreatureObject creature, int amount);
 }
 

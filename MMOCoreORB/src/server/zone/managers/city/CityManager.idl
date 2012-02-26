@@ -47,6 +47,7 @@ package server.zone.managers.city;
 import engine.core.ManagedService;
 import engine.log.Logger;
 import server.zone.ZoneServer;
+import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 import server.chat.StringIdChatParameter;
 import system.util.SortedVector;
@@ -109,6 +110,8 @@ class CityManager extends ManagedService implements Logger {
 	public native void loadCityRegions();
 
 	public native boolean validateCityName(final string name);
+	
+	public native boolean isCityInRange(Zone zone, float x, float y);
 	
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
 	

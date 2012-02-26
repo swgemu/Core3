@@ -47,7 +47,7 @@ object_installation_mining_organic_mining_organic_creature_farm = object_install
 	basePowerRate = 25,
 	width = 3,
 	length = 3,
-
+	objectMenuComponent = "StructureTerminalMenuComponent",
 	installationType = -1
 }
 

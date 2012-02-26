@@ -49,6 +49,7 @@ object_installation_mining_liquid_mining_liquid_moisture_harvester_heavy = objec
 	basePowerRate = 75,
 	length = 3,
 	width = 3,
+	objectMenuComponent = "StructureTerminalMenuComponent",
 	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.iff"
 }
 

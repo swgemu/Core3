@@ -23,6 +23,16 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace creature {
 
@@ -113,6 +123,8 @@ public:
 	void loadCityRegions();
 
 	bool validateCityName(const String& name);
+
+	bool isCityInRange(Zone* zone, float x, float y);
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
@@ -246,6 +258,8 @@ public:
 
 	bool validateCityName(const String& name);
 
+	bool isCityInRange(Zone* zone, float x, float y);
+
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
 	void processCityUpdate(CityRegion* city);
@@ -352,6 +366,8 @@ public:
 	void loadCityRegions();
 
 	bool validateCityName(const String& name);
+
+	bool isCityInRange(Zone* zone, float x, float y);
 
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 

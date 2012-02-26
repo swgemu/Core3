@@ -63,8 +63,6 @@ which carries forward this exception.
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
-//#define FREE_GOD_MODE
-
 PlayerCreationManager::PlayerCreationManager()
 		: Logger("PlayerCreationManager") {
 
@@ -79,6 +77,8 @@ PlayerCreationManager::PlayerCreationManager()
 
 	startingCash = 100;
 	startingBank = 1000;
+
+	freeGodMode = false;
 
 	loadRacialCreationData();
 	loadDefaultCharacterItems();
@@ -292,6 +292,7 @@ void PlayerCreationManager::loadLuaConfig() {
 	startingCash = lua->getGlobalInt("startingCash");
 	startingBank = lua->getGlobalInt("startingBank");
 	skillPoints = lua->getGlobalInt("skillPoints");
+	freeGodMode = lua->getGlobalByte("freeGodMode");
 
 	loadLuaStartingItems(lua);
 
@@ -437,42 +438,39 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 		ghost->setAccountID(client->getAccountID());
 
-#ifndef FREE_GOD_MODE
-		try {
-			uint32 accID = client->getAccountID();
+		if (!freeGodMode) {
+			try {
+				uint32 accID = client->getAccountID();
 
-			String query = "SELECT username FROM accounts WHERE account_id = " + String::valueOf(accID);
+				String query = "SELECT username FROM accounts WHERE account_id = " + String::valueOf(accID);
 
-			Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
-
-			if (res->next()) {
-				String accountName = res->getString(0);
-
-				query = "SELECT access_level from mantis_user_table where username = '" + accountName;
-				query += "'";
-
-				res = MantisDatabase::instance()->executeQuery(query);
+				Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 				if (res->next()) {
-					uint32 level = res->getUnsignedInt(0);
+					String accountName = res->getString(0);
 
-					if (level > 25) {
-						ghost->setAdminLevel(2);
-						skillManager->addAbility(ghost, "admin", false);
+					query = "SELECT access_level from mantis_user_table where username = '" + accountName;
+					query += "'";
+
+					res = MantisDatabase::instance()->executeQuery(query);
+
+					if (res->next()) {
+						uint32 level = res->getUnsignedInt(0);
+
+						if (level > 25) {
+							ghost->setAdminLevel(2);
+							skillManager->addAbility(ghost, "admin", false);
+						}
 					}
 				}
-			}
 
-		} catch (Exception& e) {
-			error(e.getMessage());
+			} catch (Exception& e) {
+				error(e.getMessage());
+			}
+		} else {
+			ghost->setAdminLevel(2);
+			skillManager->addAbility(ghost, "admin", false);
 		}
-#else
-		//********************************
-		// Uncomment to make all new players admins
-		ghost->setAdminLevel(2);
-		skillManager->addAbility(ghost, "admin", false);
-		//********************************
-#endif
 
 		if (doTutorial)
 			playerManager->createTutorialBuilding(playerCreature);

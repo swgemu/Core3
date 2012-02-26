@@ -253,7 +253,6 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/auction/Vendor.cpp \
 				server/zone/objects/auction/events/VendorCheckTask.cpp \
 				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
-				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
@@ -274,6 +273,7 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/region/events/CityUpdateEvent.cpp \
 		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
@@ -428,7 +428,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
-		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \

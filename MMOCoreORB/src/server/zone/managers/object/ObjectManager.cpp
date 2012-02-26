@@ -214,7 +214,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Terminal>(SceneObjectType::BANK);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectType::NEWBIETUTORIALTERMINAL);
 	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObjectType::CHARACTERBUILDERTERMINAL);
-	objectFactory.registerObject<StructureTerminal>(SceneObjectType::PLAYERTERMINALSTRUCTURE);
+	objectFactory.registerObject<Terminal>(SceneObjectType::PLAYERTERMINALSTRUCTURE);
 	objectFactory.registerObject<ElevatorTerminal>(SceneObjectType::ELEVATORTERMINAL);
 	objectFactory.registerObject<TicketCollector>(SceneObjectType::TICKETCOLLECTOR);
 	objectFactory.registerObject<TicketObject>(SceneObjectType::TRAVELTICKET);

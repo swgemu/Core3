@@ -43,7 +43,6 @@
 
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
@@ -66,7 +65,7 @@
 #include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/StructureManageMaintenanceSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayUncondemnMaintenanceSuiCallback.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
@@ -80,31 +79,23 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	ObjectDatabase* playerStructuresDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("playerstructures", true);
 
 	if (playerStructuresDatabase == NULL) {
-		error("StructureManagerImplementation::loadPlayerStructures(): There was an error loading the 'playerstructures' database.");
-
+		error("Could not load the player structures database.");
 		return;
 	}
 
 	int i = 0;
 
 	try {
-		//uint64 currentZoneObjectID = zone->_getObjectID();
 		String zoneName = zone->getZoneName();
 		ObjectDatabaseIterator iterator(playerStructuresDatabase);
 
 		uint64 objectID;
 		ObjectInputStream* objectData = new ObjectInputStream(2000);
 
-		int gameObjectType = 0;
 		String zoneReference;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
 			if (!Serializable::getVariable<String>("zone", &zoneReference, objectData)) {
-				objectData->clear();
-				continue;
-			}
-
-			if (!Serializable::getVariable<int>("gameObjectType", &gameObjectType, objectData)) {
 				objectData->clear();
 				continue;
 			}
@@ -120,7 +111,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				//object->info("loaded player structure into world");
 				++i;
 			} else {
-				error("could not load structure " + String::valueOf(objectID));
+				error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
 			}
 
 			objectData->clear();
@@ -129,13 +120,13 @@ void StructureManagerImplementation::loadPlayerStructures() {
 		delete objectData;
 	} catch (DatabaseException& e) {
 		StringBuffer err;
-		err << "Loading Player Structures, exception: " << e.getMessage();
+		err << "Database exception: " << e.getMessage();
 		error(err);
 
 		return;
 	}
 
-	info(String::valueOf(i) + " player structures loaded", true);
+	info(String::valueOf(i) + " player structures loaded.", true);
 }
 
 int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle) {
@@ -631,37 +622,6 @@ void StructureManagerImplementation::promptNameStructure(CreatureObject* creatur
 	creature->sendMessage(inputBox->generateMessage());
 }
 
-void StructureManagerImplementation::promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal) {
-	int availableCredits = creature->getCashCredits();
-
-	if (availableCredits <= 0) {
-		creature->sendSystemMessage("@player_structure:no_money"); //You do not have any money to pay maintenance.
-		return;
-	}
-
-	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-	if (ghost == NULL) {
-		return;
-	}
-
-	//Get the most up to date maintenance count.
-	structure->updateStructureStatus();
-
-	int surplusMaintenance = (int) floor((float)structure->getSurplusMaintenance());
-
-	ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(creature, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
-	sui->setCallback(new StructureManageMaintenanceSuiCallback(server->getZoneServer()));
-	sui->setPromptTitle("@player_structure:select_amount"); //Select Amount
-	sui->setUsingObject(structure);
-	sui->setPromptText("@player_structure:select_maint_amount \n@player_structure:current_maint_pool " + String::valueOf(surplusMaintenance));
-	sui->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
-	sui->addTo("@player_structure:to_pay", "0", "0", "1");
-
-	ghost->addSuiBox(sui);
-	creature->sendMessage(sui->generateMessage());
-}
-
 void StructureManagerImplementation::promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -712,4 +672,57 @@ void StructureManagerImplementation::promptPayUncondemnMaintenance(CreatureObjec
 
 	ghost->addSuiBox(sui);
 	creature->sendMessage(sui->generateMessage());
+}
+
+void StructureManagerImplementation::promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal) {
+	int availableCredits = creature->getCashCredits();
+
+	if (availableCredits <= 0) {
+		creature->sendSystemMessage("@player_structure:no_money"); //You do not have any money to pay maintenance.
+		return;
+	}
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	//Get the most up to date maintenance count.
+	structure->updateStructureStatus();
+
+	int surplusMaintenance = (int) floor((float)structure->getSurplusMaintenance());
+
+	ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(creature, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
+	sui->setCallback(new StructurePayMaintenanceSuiCallback(server->getZoneServer()));
+	sui->setPromptTitle("@player_structure:select_amount"); //Select Amount
+	sui->setUsingObject(structure);
+	sui->setPromptText("@player_structure:select_maint_amount \n@player_structure:current_maint_pool " + String::valueOf(surplusMaintenance));
+	sui->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
+	sui->addTo("@player_structure:to_pay", "0", "0", "1");
+
+	ghost->addSuiBox(sui);
+	creature->sendMessage(sui->generateMessage());
+}
+
+void StructureManagerImplementation::payMaintenance(StructureObject* structure, CreatureObject* creature, int amount) {
+	if (!creature->isInRange(structure, 16.f)) {
+		creature->sendSystemMessage("@player_structure:pay_out_of_range"); //You have moved out of range of your original /payMaintenance target. Aborting...
+		return;
+	}
+
+	int cash = creature->getCashCredits();
+
+	if (cash < amount) {
+		creature->sendSystemMessage("@player_structure:insufficient_funds"); //You have insufficient funds to make this deposit.
+		return;
+	}
+
+	StringIdChatParameter params("base_player", "prose_pay_success");
+	params.setTT(structure->getObjectName()->getDisplayedName());
+	params.setDI(amount);
+
+	creature->sendSystemMessage(params);
+
+	creature->subtractCashCredits(amount);
+	structure->addMaintenance(amount);
 }

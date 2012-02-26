@@ -17,7 +17,6 @@
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/PathNode.h"
 #include "server/zone/templates/appearance/PathGraph.h"
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"

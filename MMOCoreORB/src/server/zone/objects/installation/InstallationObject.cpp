@@ -34,7 +34,7 @@
  *	InstallationObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,};
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
@@ -93,30 +93,6 @@ void InstallationObject::loadTemplateData(SharedObjectTemplate* templateData) {
 
 	} else
 		_implementation->loadTemplateData(templateData);
-}
-
-void InstallationObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->fillObjectMenuResponse(menuResponse, player);
-}
-
-int InstallationObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
-		method.addObjectParameter(player);
-		method.addByteParameter(selectedID);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationObject::broadcastMessage(BasePacket* message, bool sendSelf) {
@@ -897,9 +873,6 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
-		break;
 	case RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_:
 		broadcastMessage(static_cast<BasePacket*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		break;
@@ -1003,10 +976,6 @@ void InstallationObjectAdapter::initializeTransientMembers() {
 
 void InstallationObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	(static_cast<InstallationObject*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
-}
-
-int InstallationObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<InstallationObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf) {

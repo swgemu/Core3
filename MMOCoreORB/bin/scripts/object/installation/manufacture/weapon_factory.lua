@@ -46,6 +46,7 @@ object_installation_manufacture_weapon_factory = object_installation_manufacture
 	lotSize = 1,
 	baseMaintenanceRate = 50,
 	basePowerRate = 50,
+	objectMenuComponent = "StructureTerminalMenuComponent",
 	length = 3,
 	width = 3,
 	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.iff",

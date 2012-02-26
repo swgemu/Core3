@@ -83,7 +83,6 @@
 #include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 #include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"

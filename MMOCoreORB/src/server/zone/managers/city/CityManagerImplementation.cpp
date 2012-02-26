@@ -675,10 +675,8 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 
 	int rank = city->getCityRank();
 
-	int currentRank = citizensPerRank.get(rank);
-	
-	if (currentRank < citizensPerRank.size() - 1) {
-	int nextRank = citizensPerRank.get(rank + 1);
+	int currentRank = citizensPerRank.get(rank - 1);
+	int nextRank = citizensPerRank.get(rank);
 
 	//pop_req_current_rankPop. Req. for Current Rank:
 	//pop_req_next_rankPop. Req. for Next Rank:
@@ -686,7 +684,6 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 	listbox->addMenuItem("@city/city:reg_citizen_prompt " + String::valueOf(city->getCitizenCount()));
 	listbox->addMenuItem("@city/city:pop_req_current_rank " + String::valueOf(currentRank));
 	listbox->addMenuItem("@city/city:pop_req_next_rank " + String::valueOf(nextRank));
-	}
 
 	creature->sendMessage(listbox->generateMessage());
 }
@@ -838,4 +835,8 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 	params.setTO(updateStr);
 
 	creature->sendSystemMessage(params);
+}
+
+bool CityManagerImplementation::isCityInRange(Zone* zone, float x, float y) {
+	return true;
 }

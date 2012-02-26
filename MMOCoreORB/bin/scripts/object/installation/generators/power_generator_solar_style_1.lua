@@ -48,7 +48,8 @@ object_installation_generators_power_generator_solar_style_1 = object_installati
 	installationType = 1,
 	basePowerRate = 0,
 	width = 3,
-	length = 3
+	length = 3,
+	objectMenuComponent = "StructureTerminalMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_power_generator_solar_style_1, "object/installation/generators/power_generator_solar_style_1.iff")

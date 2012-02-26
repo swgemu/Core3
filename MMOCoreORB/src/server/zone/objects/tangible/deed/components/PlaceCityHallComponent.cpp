@@ -57,7 +57,6 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 
 	if (ghost != NULL && structure->isBuildingObject()) {
 		ghost->setDeclaredResidence(((BuildingObject*) structure));
-		//We also need to add him to the citizens...
 
 		ManagedReference<CityRegion*> city = structure->getCityRegion();
 

@@ -180,8 +180,6 @@ public:
 
 	void promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object);
 
-	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal = true);
-
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
@@ -189,6 +187,10 @@ public:
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
 
 	void promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure);
+
+	void promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void payMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -252,8 +254,6 @@ public:
 
 	void promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object);
 
-	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal = true);
-
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
@@ -261,6 +261,10 @@ public:
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
 
 	void promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure);
+
+	void promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void payMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
 
 	WeakReference<StructureManager*> _this;
 
@@ -325,8 +329,6 @@ public:
 
 	void promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object);
 
-	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal);
-
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
@@ -334,6 +336,10 @@ public:
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
 
 	void promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure);
+
+	void promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal);
+
+	void payMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
 
 protected:
 	String _param1_placeStructure__CreatureObject_String_float_float_int_;

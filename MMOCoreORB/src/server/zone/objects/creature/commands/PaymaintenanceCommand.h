@@ -75,18 +75,24 @@ public:
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
 
-		StructureObject* structure = cast<StructureObject*>( obj.get());
+		StructureObject* structure = cast<StructureObject*>(obj.get());
 
-		int amount = 0;
+		ManagedReference<Zone*> zone = structure->getZone();
+
+		if (zone == NULL)
+			return INVALIDPARAMETERS;
+
+		StructureManager* structureManager = zone->getStructureManager();
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
-			amount = tokenizer.getIntToken();
-		} catch (Exception& e) {
-			return INVALIDPARAMETERS;
-		}
+			int amount = tokenizer.getIntToken();
 
-		//structure->addMaintenance(amount);
+			if (amount > 0)
+				structureManager->payMaintenance(structure, creature, amount);
+		} catch (Exception& e) {
+			structureManager->promptPayMaintenance(structure, creature);
+		}
 
 		return SUCCESS;
 	}

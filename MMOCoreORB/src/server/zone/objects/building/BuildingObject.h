@@ -42,20 +42,6 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace tangible {
 namespace sign {
 
@@ -68,24 +54,6 @@ class SignObject;
 } // namespace server
 
 using namespace server::zone::objects::tangible::sign;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace terminal {
-namespace structure {
-
-class StructureTerminal;
-
-} // namespace structure
-} // namespace terminal
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::terminal::structure;
 
 namespace server {
 namespace zone {
