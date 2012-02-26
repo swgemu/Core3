@@ -1054,7 +1054,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 					obj->setConditionDamage((int)(obj->getConditionDamage() + (0.01 * obj->getMaxCondition()) ), true);
 					//Set uninsured
 					uint32 bitmask = obj->getOptionsBitmask();
-					bitmask &= OptionBitmask::INSURED;
+					bitmask -= OptionBitmask::INSURED;
 					obj->setOptionsBitmask(bitmask);
 				} else {
 					//5% Decay for uninsured items
