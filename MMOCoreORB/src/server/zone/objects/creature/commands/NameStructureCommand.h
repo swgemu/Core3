@@ -65,6 +65,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		creature->sendSystemMessage("Temporarily disabled while being worked on.");
+		return GENERALERROR;
+
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
@@ -74,7 +77,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		StructureObject* structure = cast<StructureObject*>( obj.get());
+		StructureObject* structure = cast<StructureObject*>(obj.get());
 
 		Locker _lock(structure, creature);
 
