@@ -1,5 +1,5 @@
 --Should all created players start with God Mode? 1 = yes, 0 = no
-freeGodMode = 1;
+freeGodMode = 0;
 --How many cash credits new characters start with after creating a character (changed during test phase, normal value is 100)
 --startingCash = 100
 startingCash = 100000
