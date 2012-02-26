@@ -469,6 +469,7 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 			deed->setSurplusPower(structureObject->getSurplusPower());
 
 			inventory->transferObject(deed, -1, true);
+			inventory->broadcastObject(deed, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 		}
 	} else {
