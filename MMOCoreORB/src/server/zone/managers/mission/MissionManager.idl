@@ -171,10 +171,10 @@ class MissionManager extends Observer implements Logger {
 	public native int getDeliverMissionNumberOfMissions(final int faction);
 	public native int getDeliverMissionSpawnType(final int faction);
 	
-	public native void addJediToBountyList(unsigned long targetId, int reward);
-	public native void removeJediFromBountyList(unsigned long targetId);
-	public native void updateJediBountyReward(unsigned long targetId, int reward);
-	public native void addBountyHunterToJediBounty(unsigned long targetId, unsigned long bountyHunterId);
-	public native void removeBountyHunterToJediBounty(unsigned long targetId, unsigned long bountyHunterId);
+	public native void addPlayerToBountyList(unsigned long targetId, int reward);
+	public native void removePlayerFromBountyList(unsigned long targetId);
+	public native void updatePlayerBountyReward(unsigned long targetId, int reward);
+	public native void addBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
+	public native void removeBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
 	public native BountyTargetListElement getRandomPlayerBounty();
 }

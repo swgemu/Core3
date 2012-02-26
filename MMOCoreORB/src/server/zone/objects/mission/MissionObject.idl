@@ -74,12 +74,13 @@ class MissionObject extends IntangibleObject {
 	
 	protected float startPositionX;
 	protected float startPositionY;
-	//protected unsigned int startPlanetCRC;
 	protected string startPlanet;
 	
 	protected float endPositionX;
 	protected float endPositionY;
 	protected string endPlanet;
+	
+	protected unsigned long targetObjectId;
 	
 	@dereferenced
 	protected StringId missionDescription;
@@ -143,6 +144,8 @@ class MissionObject extends IntangibleObject {
 
 		missionTarget = null;
 		missionTargetDest = null;
+		
+		targetObjectId = 0;
 		
 		faction = FACTIONNEUTRAL;
 		
@@ -349,5 +352,13 @@ class MissionObject extends IntangibleObject {
 	
 	public string getTemplateString2() {
 		return templateString2;
+	}
+	
+	public unsigned long getTargetObjectId() {
+		return targetObjectId;
+	}
+	
+	public void setTargetObjectId(unsigned long id) {
+		targetObjectId = id;
 	}
 }

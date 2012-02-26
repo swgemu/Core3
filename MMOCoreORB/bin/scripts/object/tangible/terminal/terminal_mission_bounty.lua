@@ -45,7 +45,8 @@ object_tangible_terminal_terminal_mission_bounty = object_tangible_terminal_shar
 	planetMapCategory = "terminal",
 	planetMapSubCategory = "terminal_mission",
 	templateType = MISSIONTERMINAL,
-	missionTerminalType = "bounty"
+	missionTerminalType = "bounty",
+	objectMenuComponent = {"cpp", "BountyHunterDroidMenuComponent"}
 
 }
 

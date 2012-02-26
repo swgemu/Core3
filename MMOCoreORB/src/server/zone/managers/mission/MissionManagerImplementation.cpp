@@ -655,7 +655,8 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	bool npcTarget = true;
 	if (difficulty == 3) {
 		int compareValue = playerBountyList.size() > 50 ? 50 : playerBountyList.size();
-		if (System::random(100) < compareValue) {
+		//TODO: remove * 10.
+		if (System::random(100) < compareValue * 10) {
 			npcTarget = false;
 			randomTexts = 6;
 		}
@@ -711,6 +712,8 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
 	} else {
 		BountyTargetListElement* target = getRandomPlayerBounty();
+
+		mission->setTargetObjectId(target->getTargetId());
 
 		ZoneServer* zoneServer = player->getZoneServer();
 		if (zoneServer != NULL) {
@@ -1363,7 +1366,8 @@ MissionObject* MissionManagerImplementation::getBountyHunterMission(CreatureObje
 	return NULL;
 }
 
-void MissionManagerImplementation::addJediToBountyList(unsigned long long int targetId, int reward) {
+void MissionManagerImplementation::addPlayerToBountyList(uint64 targetId, int reward) {
+	info("Adding player: " + String::valueOf(targetId), true);
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->setCanHaveNewMissions(true);
 	} else {
@@ -1371,7 +1375,7 @@ void MissionManagerImplementation::addJediToBountyList(unsigned long long int ta
 	}
 }
 
-void MissionManagerImplementation::removeJediFromBountyList(unsigned long long int targetId) {
+void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
 	if (playerBountyList.contains(targetId)) {
 		if (playerBountyList.get(targetId)->numberOfActiveMissions() > 0) {
 			playerBountyList.get(targetId)->setCanHaveNewMissions(false);
@@ -1383,19 +1387,19 @@ void MissionManagerImplementation::removeJediFromBountyList(unsigned long long i
 	}
 }
 
-void MissionManagerImplementation::updateJediBountyReward(unsigned long long int targetId, int reward) {
+void MissionManagerImplementation::updatePlayerBountyReward(uint64 targetId, int reward) {
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->setReward(reward);
 	}
 }
 
-void MissionManagerImplementation::addBountyHunterToJediBounty(unsigned long long int targetId, unsigned long long int bountyHunterId) {
+void MissionManagerImplementation::addBountyHunterToPlayerBounty(uint64 targetId, uint64 bountyHunterId) {
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->addBountyHunter(bountyHunterId);
 	}
 }
 
-void MissionManagerImplementation::removeBountyHunterToJediBounty(unsigned long long int targetId, unsigned long long int bountyHunterId) {
+void MissionManagerImplementation::removeBountyHunterToPlayerBounty(uint64 targetId, uint64 bountyHunterId) {
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->removeBountyHunter(bountyHunterId);
 

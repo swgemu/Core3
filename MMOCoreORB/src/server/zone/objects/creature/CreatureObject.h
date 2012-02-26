@@ -498,6 +498,8 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target);
+
 	void sendConversationStartTo(SceneObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
@@ -1243,6 +1245,8 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target);
+
 	virtual void sendConversationStartTo(SceneObject* player);
 
 	virtual void selectConversationOption(int option, SceneObject* obj);
@@ -1823,6 +1827,8 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target);
 
 	void sendConversationStartTo(SceneObject* player);
 

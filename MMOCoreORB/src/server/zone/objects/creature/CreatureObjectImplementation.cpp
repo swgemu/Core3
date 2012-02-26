@@ -50,6 +50,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
@@ -82,6 +83,7 @@
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
@@ -2225,7 +2227,37 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
+	if (isInBountyMission(_this, object) || isInBountyMission(object, _this))
+		return true;
+
 	return false;
+}
+
+bool CreatureObjectImplementation::isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target) {
+	if (bountyHunter == NULL) {
+		return false;
+	}
+
+	ZoneServer* zoneServer = bountyHunter->getZoneServer();
+
+	if (zoneServer == NULL) {
+		return false;
+	}
+
+	MissionManager* missionManager = zoneServer->getMissionManager();
+
+	if (missionManager == NULL) {
+		return false;
+	}
+
+
+	ManagedReference<MissionObject*> mission = missionManager->getBountyHunterMission(bountyHunter);
+
+	if (mission == NULL || target == NULL) {
+		return false;
+	}
+
+	return mission->getTargetObjectId() == target->getObjectID();
 }
 
 int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {

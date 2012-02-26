@@ -898,6 +898,14 @@ class CreatureObject extends TangibleObject {
 	public native boolean isAttackableBy(CreatureObject object);
 	
 	/**
+	 * Evaluates if the bounty hunter has a mission with the target.
+	 * @param bountyHunter the bounty hunter.
+	 * @param target the target.
+	 * @return true if bounty hunter has a mission with the target.
+	 */
+	public native boolean isInBountyMission(CreatureObject bountyHunter, CreatureObject target);
+	
+	/**
 	 * sends the conversation list 
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }

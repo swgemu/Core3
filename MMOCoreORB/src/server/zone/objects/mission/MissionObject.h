@@ -270,6 +270,10 @@ public:
 
 	String getTemplateString2();
 
+	unsigned long long getTargetObjectId();
+
+	void setTargetObjectId(unsigned long long id);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -336,6 +340,8 @@ protected:
 	float endPositionY;
 
 	String endPlanet;
+
+	unsigned long long targetObjectId;
 
 	StringId missionDescription;
 
@@ -508,6 +514,10 @@ public:
 
 	String getTemplateString2();
 
+	unsigned long long getTargetObjectId();
+
+	void setTargetObjectId(unsigned long long id);
+
 	WeakReference<MissionObject*> _this;
 
 	operator const MissionObject*();
@@ -658,6 +668,10 @@ public:
 	String getTemplateString1();
 
 	String getTemplateString2();
+
+	unsigned long long getTargetObjectId();
+
+	void setTargetObjectId(unsigned long long id);
 
 protected:
 	String _param0_setMissionDescription__String_String_bool_;

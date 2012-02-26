@@ -33,6 +33,8 @@ void BountyHunterDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidOb
 			menuResponse->addRadialMenuItemToRadialID(138, 137, 3, "@mission/mission_generic:probe_droid_find_target"); //Find Bounty Target
 			menuResponse->addRadialMenuItemToRadialID(138, 136, 3, "@mission/mission_generic:probe_droid_track_target"); //Find and Track Target
 		}
+	} else if (droidObject->getObjectTemplate()->getTemplateFileName() == "terminal_mission_bounty") {
+		menuResponse->addRadialMenuItem(138, 3, "TEST: register as bounty target"); //Call
 	}
 }
 
@@ -61,6 +63,8 @@ int BountyHunterDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObj
 			performDroidAction(BountyHunterDroid::FINDANDTRACKTARGET, droidObject, player);
 			return 0;
 		}
+	} else if (droidObject->getObjectTemplate()->getTemplateFileName() == "terminal_mission_bounty") {
+		player->getZoneServer()->getMissionManager()->addPlayerToBountyList(player->getObjectID(), 10000);
 	}
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(droidObject, player, selectedID);

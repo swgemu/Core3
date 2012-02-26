@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/Zone.h"
 
 namespace server {
@@ -191,7 +192,7 @@ class FindTargetTask : public Task, public Logger {
 			checkedSkillMods = maximumSkillMod;
 		}
 
-		int checkValue = checkedSkillMods - getTargetLevel(objective);
+		int checkValue = checkedSkillMods - getTargetLevel(player, objective);
 		if (checkValue < 5) {
 			checkValue = 5;
 		} else if (checkValue > 95) {
@@ -225,17 +226,28 @@ class FindTargetTask : public Task, public Logger {
 		return time + System::random(time / 2);
 	}
 
-	int getTargetLevel(BountyMissionObjective* objective) {
+	int getTargetLevel(CreatureObject* player, BountyMissionObjective* objective) {
 		String targetTemplateName = objective->getMissionObject()->getTargetOptionalTemplate();
 
-		CreatureTemplate* creoTempl = CreatureTemplateManager::instance()->getTemplate(targetTemplateName.hashCode());
+		if (targetTemplateName != "") {
+			CreatureTemplate* creoTempl = CreatureTemplateManager::instance()->getTemplate(targetTemplateName.hashCode());
 
-		if (creoTempl != NULL) {
-			return creoTempl->getLevel();
+			if (creoTempl != NULL) {
+				return creoTempl->getLevel();
+			} else {
+				error("Could not find template for target.");
+				return 0;
+			}
 		} else {
-			error("Could not find template for target.");
-			return 0;
+			ManagedReference<CreatureObject*> target = cast<CreatureObject*>(player->getZone()->getZoneServer()->getObject(objective->getMissionObject()->getTargetObjectId()));
+
+			if (target != NULL) {
+				//TODO: modify this to better suit the calculation.
+				return player->getZone()->getZoneServer()->getPlayerManager()->calculatePlayerLevel(target);
+			}
 		}
+
+		return 0;
 	}
 
 	int getDistanceToTarget(CreatureObject* player, BountyMissionObjective* objective) {

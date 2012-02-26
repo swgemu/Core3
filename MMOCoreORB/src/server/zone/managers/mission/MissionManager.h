@@ -266,15 +266,15 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
-	void addJediToBountyList(unsigned long long targetId, int reward);
+	void addPlayerToBountyList(unsigned long long targetId, int reward);
 
-	void removeJediFromBountyList(unsigned long long targetId);
+	void removePlayerFromBountyList(unsigned long long targetId);
 
-	void updateJediBountyReward(unsigned long long targetId, int reward);
+	void updatePlayerBountyReward(unsigned long long targetId, int reward);
 
-	void addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void addBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void removeBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	BountyTargetListElement* getRandomPlayerBounty();
 
@@ -431,15 +431,15 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
-	void addJediToBountyList(unsigned long long targetId, int reward);
+	void addPlayerToBountyList(unsigned long long targetId, int reward);
 
-	void removeJediFromBountyList(unsigned long long targetId);
+	void removePlayerFromBountyList(unsigned long long targetId);
 
-	void updateJediBountyReward(unsigned long long targetId, int reward);
+	void updatePlayerBountyReward(unsigned long long targetId, int reward);
 
-	void addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void addBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void removeBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	BountyTargetListElement* getRandomPlayerBounty();
 
@@ -578,15 +578,15 @@ public:
 
 	int getDeliverMissionSpawnType(const int faction);
 
-	void addJediToBountyList(unsigned long long targetId, int reward);
+	void addPlayerToBountyList(unsigned long long targetId, int reward);
 
-	void removeJediFromBountyList(unsigned long long targetId);
+	void removePlayerFromBountyList(unsigned long long targetId);
 
-	void updateJediBountyReward(unsigned long long targetId, int reward);
+	void updatePlayerBountyReward(unsigned long long targetId, int reward);
 
-	void addBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void addBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToJediBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void removeBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	BountyTargetListElement* getRandomPlayerBounty();
 

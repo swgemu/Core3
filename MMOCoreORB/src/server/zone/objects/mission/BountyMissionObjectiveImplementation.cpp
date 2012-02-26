@@ -78,8 +78,9 @@ void BountyMissionObjectiveImplementation::complete() {
 }
 
 void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
-	if (npcTarget != NULL && npcTarget->isInQuadTree())
+	if ((npcTarget != NULL && npcTarget->isInQuadTree()) || mission->getTargetOptionalTemplate() == "") {
 		return;
+	}
 
 	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
 	Zone* zone = zoneServer->getZone(zoneName);
@@ -169,39 +170,29 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 		return;
 	}
 
-	Zone* zone = getPlayerOwner()->getZone();
-
-	if (zone == NULL) {
-		return;
-	}
-
 	switch (objectiveStatus) {
 	case INITSTATUS:
-		targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
-		if (targetTask != NULL && !targetTask->isScheduled()) {
-			targetTask->schedule(10 * 1000);
+		if (mission->getTargetOptionalTemplate() != "") {
+			targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
+			if (targetTask != NULL && !targetTask->isScheduled()) {
+				targetTask->schedule(10 * 1000);
+			}
 		}
 
 		if (informantLevel == 1) {
-			if (zone->getZoneName() == mission->getEndPlanet()) {
-				updateWaypoint();
-			}
+			updateWaypoint();
 		}
 		objectiveStatus = HASBIOSIGNATURESTATUS;
 		break;
 	case HASBIOSIGNATURESTATUS:
 		if (informantLevel > 1) {
-			if (zone->getZoneName() == mission->getEndPlanet()) {
-				updateWaypoint();
-			}
+			updateWaypoint();
 		}
 		objectiveStatus = HASTALKED;
 		break;
 	case HASTALKED:
 		if (informantLevel > 1) {
-			if (zone->getZoneName() == mission->getEndPlanet()) {
-				updateWaypoint();
-			}
+			updateWaypoint();
 		}
 		break;
 	default:
@@ -253,8 +244,21 @@ bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int ac
 }
 
 Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {
-	if (targetTask != NULL) {
-		return targetTask->getTargetPosition();
+	if (mission->getTargetOptionalTemplate() != "") {
+		if (targetTask != NULL) {
+			return targetTask->getTargetPosition();
+		}
+	} else {
+		uint64 targetId = mission->getTargetObjectId();
+
+		ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+		if (zoneServer != NULL) {
+			ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(targetId));
+
+			if (creature != NULL) {
+				return creature->getWorldPosition();
+			}
+		}
 	}
 
 	Vector3 empty;
@@ -279,8 +283,21 @@ void BountyMissionObjectiveImplementation::cancelAllTasks() {
 }
 
 String BountyMissionObjectiveImplementation::getTargetZoneName() {
-	if (targetTask != NULL) {
-		return targetTask->getTargetZoneName();
+	if (mission->getTargetOptionalTemplate() != "") {
+		if (targetTask != NULL) {
+			return targetTask->getTargetZoneName();
+		}
+	} else {
+		uint64 targetId = mission->getTargetObjectId();
+
+		ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+		if (zoneServer != NULL) {
+			ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(targetId));
+
+			if (creature != NULL && creature->getZone() != NULL) {
+				return creature->getZone()->getZoneName();
+			}
+		}
 	}
 
 	//No target task, return dungeon1 which is not able to find.
