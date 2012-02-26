@@ -393,7 +393,7 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 	int citizens = city->getCitizenCount();
 
-	if (cityRank - 1 >= citizensPerRank.size())
+	if (cityRank - 1 >= citizensPerRank.size() || cityRank >= citizensPerRank.size())
 		return;
 
 	int maintainCitizens = citizensPerRank.get(cityRank - 1);
