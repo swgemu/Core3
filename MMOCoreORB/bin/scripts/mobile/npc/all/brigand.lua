@@ -32,6 +32,7 @@ brigand = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 	}
+	--outfit = "testoutfit"
 }
 
 CreatureTemplates:addCreatureTemplate(brigand, "brigand")

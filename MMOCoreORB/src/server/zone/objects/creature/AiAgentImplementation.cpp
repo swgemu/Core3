@@ -170,7 +170,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 								tano->setCustomizationVariable(cust->elementAt(j).getKey(), cust->elementAt(j).getValue());
 							}
 
-							transferObject(tano, 4);
+							transferObject(tano, 4, false);
 						}
 
 					}

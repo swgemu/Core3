@@ -196,6 +196,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 			} else {
 				TemplateManager::instance()->error("ObjectMenuComponent of type " + componentType + " not found: '" + componentName + "' for " + getFullTemplateString());
 			}
+
+			test.pop();
 		}
 
 	} else if (varName == "attributeListComponent") {
@@ -232,6 +234,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 			} else {
 				TemplateManager::instance()->error("ContainerComponent of type " + componentType + " not found: '" + componentName + "' for " + getFullTemplateString());
 			}
+
+			test.pop();
 		}
 		//containerComponent = Lua::getStringParameter(state);
 	} else if (varName == "totalCellNumber") {

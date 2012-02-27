@@ -82,7 +82,7 @@ public:
 	}
 
 	void readObject(LuaObject* luaObject) {
-		for (int i = 1; i < luaObject->getTableSize(); ++i) {
+		for (int i = 1; i <= luaObject->getTableSize(); ++i) {
 			LuaObject obj = luaObject->getObjectAt(i);
 
 			OutfitTangibleObject outfit;

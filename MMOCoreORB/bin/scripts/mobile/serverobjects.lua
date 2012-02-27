@@ -98,3 +98,6 @@ includeFile("all/veermok_scavenger.lua")
 includeFile("all/veermok_be.lua")
 includeFile("all/voritor_dasher.lua")
 includeFile("all/wild_bladeblack_boar.lua")
+
+-- Outfits
+includeFile("outfits/testoutfit.lua")

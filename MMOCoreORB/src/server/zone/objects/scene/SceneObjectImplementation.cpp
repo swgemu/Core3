@@ -426,6 +426,8 @@ void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
 		} else {
 			error("ObjectMenuComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
 		}
+
+		test.pop();
 	}
 }
 
@@ -443,6 +445,8 @@ void SceneObjectImplementation::setContainerComponent(const String& name) {
 		} else {
 			error("ContainerComponent not found: '" + name + "' for " + templateObject->getFullTemplateString());
 		}
+
+		test.pop();
 	}
 }
 
