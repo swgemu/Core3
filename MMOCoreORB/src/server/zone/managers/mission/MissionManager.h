@@ -278,7 +278,7 @@ public:
 
 	void removeBountyHunterFromPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	BountyTargetListElement* getRandomPlayerBounty();
+	BountyTargetListElement* getRandomPlayerBounty(CreatureObject* player);
 
 	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
 
@@ -449,7 +449,7 @@ public:
 
 	void removeBountyHunterFromPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	BountyTargetListElement* getRandomPlayerBounty();
+	BountyTargetListElement* getRandomPlayerBounty(CreatureObject* player);
 
 	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
 
@@ -600,7 +600,7 @@ public:
 
 	void removeBountyHunterFromPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	BountyTargetListElement* getRandomPlayerBounty();
+	BountyTargetListElement* getRandomPlayerBounty(CreatureObject* player);
 
 	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
 

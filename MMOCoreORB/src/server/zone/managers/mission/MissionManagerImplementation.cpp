@@ -718,31 +718,35 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		mission->setMissionTitle("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
 	} else {
-		BountyTargetListElement* target = getRandomPlayerBounty();
+		BountyTargetListElement* target = getRandomPlayerBounty(player);
 
-		mission->setTargetObjectId(target->getTargetId());
+		if (target != NULL) {
+			mission->setTargetObjectId(target->getTargetId());
 
-		ZoneServer* zoneServer = player->getZoneServer();
-		if (zoneServer != NULL) {
-			ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(target->getTargetId()));
+			ZoneServer* zoneServer = player->getZoneServer();
+			if (zoneServer != NULL) {
+				ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(target->getTargetId()));
 
-			if (creature != NULL) {
-				String name = creature->getFirstName() + " " + creature->getLastName();
-				name = name.trim();
-				mission->setMissionTargetName(name);
+				if (creature != NULL) {
+					String name = creature->getFirstName() + " " + creature->getLastName();
+					name = name.trim();
+					mission->setMissionTargetName(name);
+				}
 			}
+
+			randTexts = target->getTargetId() % randomTexts;
+
+			mission->setCreatorName("GALACTIC EMPIRE");
+
+			mission->setEndPosition(0, 0, "", true);
+
+			mission->setTargetOptionalTemplate("");
+
+			mission->setRewardCredits(target->getReward());
+
+			mission->setMissionTitle("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "t");
+			mission->setMissionDescription("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "d");
 		}
-
-		mission->setCreatorName("GALACTIC EMPIRE");
-
-		mission->setEndPosition(0, 0, "", true);
-
-		mission->setTargetOptionalTemplate("");
-
-		mission->setRewardCredits(target->getReward());
-
-		mission->setMissionTitle("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "t");
-		mission->setMissionDescription("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "d");
 	}
 
 	mission->setTypeCRC(MissionObject::BOUNTY);
@@ -1428,7 +1432,7 @@ void MissionManagerImplementation::removeBountyHunterFromPlayerBounty(uint64 tar
 	}
 }
 
-BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty() {
+BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(CreatureObject* player) {
 	Locker listLocker(&playerBountyListMutex);
 
 	if (playerBountyList.size() <= 0) {
@@ -1442,7 +1446,8 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty() {
 		int index = System::random(playerBountyList.size() - 1);
 		BountyTargetListElement* randomTarget = playerBountyList.get(index);
 
-		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6) {
+		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
+				randomTarget->getTargetId() != player->getObjectID()) {
 			return randomTarget;
 		}
 	}
@@ -1450,7 +1455,8 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty() {
 	for (int i = 0; i < playerBountyList.size(); i++) {
 		BountyTargetListElement* randomTarget = playerBountyList.get(i);
 
-		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6) {
+		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
+				randomTarget->getTargetId() != player->getObjectID()) {
 			return randomTarget;
 		}
 	}

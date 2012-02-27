@@ -180,7 +180,7 @@ class MissionManager extends Observer implements Logger {
 	public native void updatePlayerBountyReward(unsigned long targetId, int reward);
 	public native void addBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
 	public native void removeBountyHunterFromPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
-	public native BountyTargetListElement getRandomPlayerBounty();
+	public native BountyTargetListElement getRandomPlayerBounty(CreatureObject player);
 	public native void completePlayerBounty(unsigned long targetId, unsigned long bountyHunter);
 	public native void failPlayerBountyMission(unsigned long bountyHunter);
 }
