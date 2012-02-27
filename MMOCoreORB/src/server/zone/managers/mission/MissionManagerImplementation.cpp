@@ -103,6 +103,13 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 		return;
 	}
 
+	if (missionTerminal->isBountyTerminal()) {
+		if (!player->hasSkill("combat_bountyhunter_novice")) {
+			player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
+			return;
+		}
+	}
+
 	ManagedReference<SceneObject*> missionBag = player->getSlottedObject("mission_bag");
 
 	if (missionBag == NULL)
