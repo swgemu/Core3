@@ -87,7 +87,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 	Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 	for (int i = 0; i < areas->size(); i++) {
-		if (areas->get(i)->isNoBuildArea()) {
+		if (areas->get(i)->isMunicipalZone()) {
 			player->sendSystemMessage("@mission/mission_generic:probe_droid_bad_location");
 			return NULL;
 		}
