@@ -118,6 +118,14 @@ public:
 	}
 
 	/**
+	 * Get the list of active bounty hunters.
+	 * @return list of active bounty hunters.
+	 */
+	Vector<uint64>* getActiveBountyHunters() {
+		return &activeBountyHunters;
+	}
+
+	/**
 	 * Load the object from a stream.
 	 * @param stream stream to load from.
 	 * @return true if successful.

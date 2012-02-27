@@ -2272,6 +2272,10 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
+int CreatureObjectImplementation::notifyObjectKillObservers(TangibleObject* killer) {
+	notifyObservers(ObserverEventType::PLAYERKILLED, killer, 0);
+}
+
 void CreatureObjectImplementation::createChildObjects() {
 	ZoneServer* zoneServer = server->getZoneServer();
 

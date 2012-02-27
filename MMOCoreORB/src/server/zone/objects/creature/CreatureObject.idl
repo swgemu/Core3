@@ -953,6 +953,14 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
+	/**
+	 * Is called when this object is killed
+	 * @pre { this, killer locked }
+	 * @post { this, killer locked }
+	 * @param killer The killer.
+	 */
+	public native int notifyObjectKillObservers(TangibleObject killer);
+	
 	public native void setFactionRank(int rank, boolean notifyClient = true);
 	
 	public native string getFirstName();

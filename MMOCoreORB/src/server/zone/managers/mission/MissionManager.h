@@ -159,6 +159,8 @@ using namespace server::zone::templates::mobile;
 
 #include "engine/util/Observer.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -274,9 +276,13 @@ public:
 
 	void addBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void removeBountyHunterFromPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	BountyTargetListElement* getRandomPlayerBounty();
+
+	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
+
+	void failPlayerBountyMission(unsigned long long bountyHunter);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -321,6 +327,8 @@ protected:
 	VectorMap<unsigned int, Vector<String>*> bhTargetsAtMissionLevel;
 
 	VectorMap<unsigned long long, BountyTargetListElement*> playerBountyList;
+
+	Mutex playerBountyListMutex;
 
 	bool enableFactionalCraftingMissions;
 
@@ -439,9 +447,13 @@ public:
 
 	void addBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void removeBountyHunterFromPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	BountyTargetListElement* getRandomPlayerBounty();
+
+	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
+
+	void failPlayerBountyMission(unsigned long long bountyHunter);
 
 	WeakReference<MissionManager*> _this;
 
@@ -586,9 +598,13 @@ public:
 
 	void addBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
-	void removeBountyHunterToPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
+	void removeBountyHunterFromPlayerBounty(unsigned long long targetId, unsigned long long bountyHunterId);
 
 	BountyTargetListElement* getRandomPlayerBounty();
+
+	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
+
+	void failPlayerBountyMission(unsigned long long bountyHunter);
 
 protected:
 	String _param1_createSpawnPoint__CreatureObject_String_;

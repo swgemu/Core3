@@ -22,7 +22,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -88,6 +88,19 @@ void BountyMissionObjective::complete() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->complete();
+}
+
+void BountyMissionObjective::fail() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_FAIL__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->fail();
 }
 
 void BountyMissionObjective::spawnTarget(const String& zoneName) {
@@ -542,6 +555,9 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_COMPLETE__:
 		complete();
 		break;
+	case RPC_FAIL__:
+		fail();
+		break;
 	case RPC_SPAWNTARGET__STRING_:
 		spawnTarget(inv->getAsciiParameter(_param0_spawnTarget__String_));
 		break;
@@ -600,6 +616,10 @@ void BountyMissionObjectiveAdapter::abort() {
 
 void BountyMissionObjectiveAdapter::complete() {
 	(static_cast<BountyMissionObjective*>(stub))->complete();
+}
+
+void BountyMissionObjectiveAdapter::fail() {
+	(static_cast<BountyMissionObjective*>(stub))->fail();
 }
 
 void BountyMissionObjectiveAdapter::spawnTarget(const String& zoneName) {

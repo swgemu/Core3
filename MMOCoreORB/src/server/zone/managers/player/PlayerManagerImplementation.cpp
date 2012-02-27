@@ -860,6 +860,8 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	CombatManager::instance()->freeDuelList(player, false);
 
+	player->notifyObjectKillObservers(attacker);
+
 	/*Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(10 * 1000);*/
 }

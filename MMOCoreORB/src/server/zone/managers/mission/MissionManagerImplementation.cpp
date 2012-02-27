@@ -1367,7 +1367,8 @@ MissionObject* MissionManagerImplementation::getBountyHunterMission(CreatureObje
 }
 
 void MissionManagerImplementation::addPlayerToBountyList(uint64 targetId, int reward) {
-	info("Adding player: " + String::valueOf(targetId), true);
+	Locker listLocker(&playerBountyListMutex);
+
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->setCanHaveNewMissions(true);
 	} else {
@@ -1376,6 +1377,8 @@ void MissionManagerImplementation::addPlayerToBountyList(uint64 targetId, int re
 }
 
 void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
+	Locker listLocker(&playerBountyListMutex);
+
 	if (playerBountyList.contains(targetId)) {
 		if (playerBountyList.get(targetId)->numberOfActiveMissions() > 0) {
 			playerBountyList.get(targetId)->setCanHaveNewMissions(false);
@@ -1388,18 +1391,24 @@ void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
 }
 
 void MissionManagerImplementation::updatePlayerBountyReward(uint64 targetId, int reward) {
+	Locker listLocker(&playerBountyListMutex);
+
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->setReward(reward);
 	}
 }
 
 void MissionManagerImplementation::addBountyHunterToPlayerBounty(uint64 targetId, uint64 bountyHunterId) {
+	Locker listLocker(&playerBountyListMutex);
+
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->addBountyHunter(bountyHunterId);
 	}
 }
 
-void MissionManagerImplementation::removeBountyHunterToPlayerBounty(uint64 targetId, uint64 bountyHunterId) {
+void MissionManagerImplementation::removeBountyHunterFromPlayerBounty(uint64 targetId, uint64 bountyHunterId) {
+	Locker listLocker(&playerBountyListMutex);
+
 	if (playerBountyList.contains(targetId)) {
 		playerBountyList.get(targetId)->removeBountyHunter(bountyHunterId);
 
@@ -1413,6 +1422,8 @@ void MissionManagerImplementation::removeBountyHunterToPlayerBounty(uint64 targe
 }
 
 BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty() {
+	Locker listLocker(&playerBountyListMutex);
+
 	if (playerBountyList.size() <= 0) {
 		return NULL;
 	}
@@ -1438,4 +1449,40 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty() {
 	}
 
 	return NULL;
+}
+
+void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 bountyHunter) {
+	Locker listLocker(&playerBountyListMutex);
+
+	if (playerBountyList.contains(targetId)) {
+		BountyTargetListElement* target = playerBountyList.get(targetId);
+		Vector<uint64>* activeBountyHunters = target->getActiveBountyHunters();
+
+		for (int i = 0; i < activeBountyHunters->size(); i++) {
+			if (activeBountyHunters->get(i) != bountyHunter) {
+				//Fail mission.
+				failPlayerBountyMission(activeBountyHunters->get(i));
+			}
+		}
+
+		playerBountyList.remove(playerBountyList.find(targetId));
+	}
+}
+
+void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) {
+	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(server->getObject(bountyHunter));
+
+	if (creature != NULL) {
+		Locker creatureLock(creature);
+
+		ManagedReference<MissionObject*> mission = getBountyHunterMission(creature);
+
+		if (mission != NULL) {
+			ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
+
+			if (objective != NULL) {
+				objective->fail();
+			}
+		}
+	}
 }

@@ -61,6 +61,7 @@ include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 import server.zone.managers.creature.LairSpawn;
 import server.zone.templates.mobile.CreatureTemplate;
+import system.thread.Mutex;
 
 class MissionManager extends Observer implements Logger {
 	@weakReference
@@ -81,6 +82,9 @@ class MissionManager extends Observer implements Logger {
 	
 	@dereferenced
 	protected VectorMap<unsigned long, BountyTargetListElement> playerBountyList;
+	
+	@dereferenced
+	protected transient Mutex playerBountyListMutex;
 	
 	protected boolean enableFactionalCraftingMissions;
 	
@@ -175,6 +179,8 @@ class MissionManager extends Observer implements Logger {
 	public native void removePlayerFromBountyList(unsigned long targetId);
 	public native void updatePlayerBountyReward(unsigned long targetId, int reward);
 	public native void addBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
-	public native void removeBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
+	public native void removeBountyHunterFromPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
 	public native BountyTargetListElement getRandomPlayerBounty();
+	public native void completePlayerBounty(unsigned long targetId, unsigned long bountyHunter);
+	public native void failPlayerBountyMission(unsigned long bountyHunter);
 }

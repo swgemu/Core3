@@ -104,6 +104,7 @@ class BountyMissionObjective extends MissionObjective {
 	public native void activate();
 	public native void abort();
 	public native void complete();
+	public native void fail();
 	
 	public native void spawnTarget(final string zoneName);
 	

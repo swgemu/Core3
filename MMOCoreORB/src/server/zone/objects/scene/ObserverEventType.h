@@ -46,7 +46,7 @@ public:
 	const static int OBJECTRADIALOPENED = 34; // ManagedObject arg1 = player who opened the radial
 	const static int ENTEREDBUILDING = 35; // ManagedObject arg1 = player who entered the building, long arg2 = 1 if condemned or not allowed in
 	const static int EXITEDBUILDING = 36; // ManagedObject arg1 = player who left building
-
+	const static int PLAYERKILLED = 37; // ManagedObject arg1 = killer, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */
