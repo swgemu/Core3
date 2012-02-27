@@ -63,7 +63,7 @@ int BountyHunterDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObj
 			performDroidAction(BountyHunterDroid::FINDANDTRACKTARGET, droidObject, player);
 			return 0;
 		}
-	} else if (droidObject->getObjectTemplate()->getTemplateFileName() == "terminal_mission_bounty") {
+	} else if (selectedID == 138 && droidObject->getObjectTemplate()->getTemplateFileName() == "terminal_mission_bounty") {
 		player->getZoneServer()->getMissionManager()->addPlayerToBountyList(player->getObjectID(), 10000);
 	}
 
