@@ -54,8 +54,8 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	cityRankRequired = 3,
 	abilitiesRequired = {"place_hospital"},
 	childObjects = {
-			{templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = 9.4, z = 2, y = 10.32, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 7.48, z = 0.188325, y = 1.5, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = 4, containmentType = -1}
+			{templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = 9.4, z = 2, y = 10.32, ox = 0, oy = 0.707107, oz = 0, ow = 0, cellid = -1, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 7.48, z = 0.188325, y = 1.5, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = 3, containmentType = -1}
 	}
 }
 

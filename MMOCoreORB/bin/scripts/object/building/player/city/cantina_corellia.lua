@@ -54,7 +54,7 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 	cityRankRequired = 2,
 	abilityRequired = "place_cantina",
 	childObjects = {
-			{templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = 3.5, z = 2, y = 13.65, ox = 0, oy = 1, oz = 0, ow = 0.0001, cellid = -1, containmentType = -1},
+			{templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = 3.5, z = 2, y = 13.65, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -4.1, z = 0.750001, y = 6.1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1}
 	}
 }
