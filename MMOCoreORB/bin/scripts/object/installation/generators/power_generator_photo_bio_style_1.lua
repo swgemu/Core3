@@ -47,7 +47,7 @@ object_installation_generators_power_generator_photo_bio_style_1 = object_instal
 	basePowerRate = 0,
 	width = 3,
 	length = 3,
-	objectMenuComponent = "StructureTerminalMenuComponent"
+	objectMenuComponent = "InstallationObjectMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_power_generator_photo_bio_style_1, "object/installation/generators/power_generator_photo_bio_style_1.iff")

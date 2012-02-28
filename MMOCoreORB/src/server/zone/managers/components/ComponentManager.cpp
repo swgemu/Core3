@@ -34,6 +34,8 @@
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
+#include "server/zone/objects/installation/components/InstallationObjectMenuComponent.h"
+#include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
 #include "server/zone/objects/region/components/CityManagementMenuComponent.h"
@@ -80,6 +82,8 @@ ComponentManager::ComponentManager() {
 	components.put("PlaceStructureComponent", new PlaceStructureComponent());
 	components.put("PlaceCityHallComponent", new PlaceCityHallComponent());
 	components.put("StructureTerminalMenuComponent", new StructureTerminalMenuComponent());
+	components.put("FactoryObjectMenuComponent", new FactoryObjectMenuComponent());
+	components.put("InstallationObjectMenuComponent", new InstallationObjectMenuComponent());
 
 	components.put("ContainerObjectComponent", new ContainerObjectComponent());
 	components.put("StructureContainerComponent", new StructureContainerComponent());

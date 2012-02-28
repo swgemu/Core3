@@ -273,6 +273,8 @@ core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
+		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/region/events/CityUpdateEvent.cpp \
 		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \

@@ -16,7 +16,7 @@
  *	FactoryObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,};
 
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
@@ -74,30 +74,6 @@ void FactoryObject::fillAttributeList(AttributeListMessage* msg, CreatureObject*
 
 	} else
 		_implementation->fillAttributeList(msg, object);
-}
-
-void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->fillObjectMenuResponse(menuResponse, player);
-}
-
-int FactoryObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
-		method.addObjectParameter(player);
-		method.addByteParameter(selectedID);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 bool FactoryObject::isFactory() {
@@ -465,9 +441,6 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
-		break;
 	case RPC_ISFACTORY__:
 		resp->insertBoolean(isFactory());
 		break;
@@ -514,10 +487,6 @@ void FactoryObjectAdapter::initializeTransientMembers() {
 
 void FactoryObjectAdapter::notifyLoadFromDatabase() {
 	(static_cast<FactoryObject*>(stub))->notifyLoadFromDatabase();
-}
-
-int FactoryObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<FactoryObject*>(stub))->handleObjectMenuSelect(player, selectedID);
 }
 
 bool FactoryObjectAdapter::isFactory() {

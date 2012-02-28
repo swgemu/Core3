@@ -46,7 +46,7 @@ object_installation_manufacture_weapon_installation = object_installation_manufa
 	lotSize = 1,
 	baseMaintenanceRate = 50,
 	basePowerRate = 50,
-	objectMenuComponent = "StructureTerminalMenuComponent"
+	objectMenuComponent = "FactoryObjectMenuComponent"
 
 
 }

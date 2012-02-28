@@ -89,10 +89,6 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
 	bool isFactory();
 
 	void createChildObjects();
@@ -163,10 +159,6 @@ public:
 	void notifyLoadFromDatabase();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
-
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isFactory();
 
@@ -254,8 +246,6 @@ public:
 	void initializeTransientMembers();
 
 	void notifyLoadFromDatabase();
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isFactory();
 

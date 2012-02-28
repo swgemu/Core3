@@ -79,61 +79,6 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 	}
 }
 
-void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (!isOnAdminList(player->getFirstName()))
-		return;
-
-	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
-
-
-	menuResponse->addRadialMenuItem(29, 3, "@manf_station:options"); //Options
-
-	if(getContainerObjectsSize() > 0) {
-		if(!operating)
-			menuResponse->addRadialMenuItemToRadialID(29, 69, 3, "@manf_station:activate"); //Start manufacturing objects.
-		else
-			menuResponse->addRadialMenuItemToRadialID(29, 69, 3, "@manf_station:deactivate"); //Stop manufacturing objects.
-
-		if(!operating)
-			menuResponse->addRadialMenuItemToRadialID(29, 68, 3, "@manf_station:ingredients"); //List ingredients needed for station
-	}
-
-	if(!operating) {
-		menuResponse->addRadialMenuItemToRadialID(29, 197, 3, "@manf_station:schematic"); //Access schematic slot.
-		menuResponse->addRadialMenuItemToRadialID(29, 195, 3, "@manf_station:input_hopper"); //Access station ingredient hopper
-		menuResponse->addRadialMenuItemToRadialID(29, 196, 3, "@manf_station:output_hopper"); //Access station output hopper
-	}
-}
-
-int FactoryObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (!isOnAdminList(player->getFirstName()))
-		return 1;
-
-	switch (selectedID) {
-	case 195: /// Send ingredient Hopper
-		sendIngredientHopper(player);
-		break;
-	case 29:
-	case 196: /// Send output Hopper
-		sendOutputHopper(player);
-		break;
-	case 197: /// Schematic Slot
-		sendInsertManuSui(player);
-		break;
-	case 68: /// Send ingredients list
-		sendIngredientsNeededSui(player);
-		break;
-	case 69: /// Send schematic requirements
-		handleOperateToggle(player);
-		break;
-
-	default:
-		InstallationObjectImplementation::handleObjectMenuSelect(player, selectedID);
-	}
-
-	return 0;
-}
-
 /*
  * Opens a SUI with all manufacturing schematics available for the player to insert into factory
  */

@@ -49,7 +49,7 @@ object_installation_mining_organic_mining_organic_flora_farm_heavy = object_inst
 	basePowerRate = 75,
 	width = 3,
 	length = 3,
-	objectMenuComponent = "StructureTerminalMenuComponent",
+	objectMenuComponent = "InstallationObjectMenuComponent",
 	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.iff"
 }
 
