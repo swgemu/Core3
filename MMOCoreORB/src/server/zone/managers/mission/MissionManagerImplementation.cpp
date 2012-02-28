@@ -180,6 +180,17 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 		return;
 	}
 
+	if (mission->getTypeCRC() == MissionObject::BOUNTY) {
+		Locker listLocker(&playerBountyListMutex);
+
+		BountyTargetListElement* bounty = playerBountyList.get(mission->getTargetObjectId());
+
+		if (bounty == NULL || !bounty->getCanHaveNewMissions()) {
+			player->sendSystemMessage("Mission has expired.");
+			return;
+		}
+	}
+
 	datapad->transferObject(mission, -1, true);
 
 	createMissionObjectives(mission, missionTerminal, player);
@@ -734,7 +745,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 				}
 			}
 
-			randTexts = target->getTargetId() % randomTexts;
+			randTexts = (target->getTargetId() % randomTexts) + 1;
 
 			mission->setCreatorName("GALACTIC EMPIRE");
 
