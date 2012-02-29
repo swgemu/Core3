@@ -1144,7 +1144,8 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 		return;
 	}
 
-	while (!foundPosition) {
+	int maximumNumberOfTries = 20;
+	while (!foundPosition && maximumNumberOfTries-- > 0) {
 		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360));
 
 		if (player->getZone()->isWithinBoundaries(position)) {
@@ -1157,6 +1158,10 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 				}
 			}
 		}
+	}
+
+	if (!foundPosition) {
+		return;
 	}
 
 	NameManager* nm = processor->getNameManager();
