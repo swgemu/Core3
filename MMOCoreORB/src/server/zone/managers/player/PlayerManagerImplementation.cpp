@@ -943,7 +943,8 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	//TODO: Add force shrine locations for force sensitives
 
 	//Check if predesignated is on this planet or not.
-	if (preDesignatedFacility != NULL && preDesignatedFacility->getZone()->getZoneName() == zone->getZoneName())
+	Zone* facilityZone = preDesignatedFacility->getZone();
+	if (preDesignatedFacility != NULL && facilityZone != NULL && facilityZone->getZoneName() == zone->getZoneName())
 		cloneMenu->addMenuItem("@base_player:revive_bind", preDesignatedFacility->getObjectID());
 
 	// Adding major ones
