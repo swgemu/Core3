@@ -14,7 +14,7 @@
 #include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/LuaContainerComponent.h"
 
-class ComponentManager : public Singleton<ComponentManager>, public Object {
+class ComponentManager : public Singleton<ComponentManager>, public Object, public ReadWriteLock {
 protected:
 	HashTable<String, Reference<SceneObjectComponent*> > components;
 
@@ -23,10 +23,25 @@ public:
 
 	template<class K>
 	K getComponent(const String& name) {
-		return dynamic_cast<K>(components.get(name).get());
+		K comp;
+
+		rlock();
+
+		try {
+			comp = dynamic_cast<K>(components.get(name).get());
+		} catch (...) {
+			runlock();
+			throw;
+		}
+
+		runlock();
+
+		return comp;
 	}
 
 	void putComponent(const String& name, SceneObjectComponent* component) {
+		Locker locker(this);
+
 		if (component != NULL)
 			components.put(name, component);
 	}

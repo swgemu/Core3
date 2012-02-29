@@ -1371,8 +1371,8 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 	if (targetGhost->requestedDuelTo(player)) {
 		BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer,
 				targetPlayer->getPvpStatusBitmask()
-						+ CreatureFlag::ATTACKABLE
-						+ CreatureFlag::AGGRESSIVE);
+						| CreatureFlag::ATTACKABLE
+						| CreatureFlag::AGGRESSIVE);
 		player->sendMessage(pvpstat);
 
 		StringIdChatParameter stringId("duel", "accept_self");
@@ -1380,8 +1380,8 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 		player->sendSystemMessage(stringId);
 
 		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player,
-				player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE
-						+ CreatureFlag::AGGRESSIVE);
+				player->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE
+						| CreatureFlag::AGGRESSIVE);
 		targetPlayer->sendMessage(pvpstat2);
 
 		StringIdChatParameter stringId2("duel", "accept_target");
