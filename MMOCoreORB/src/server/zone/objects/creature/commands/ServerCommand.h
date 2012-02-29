@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "VendorInfoCommand.h"
 #include "RevisionInfoCommand.h"
 #include "ServerInfoCommand.h"
+#include "PlayerManagerCommand.h"
 
 #include "ServerCommandFactory.h"
 
@@ -66,6 +67,7 @@ public:
 		methodFactory.registerMethod<VendorInfoCommand>("vendorinfo");
 		methodFactory.registerMethod<RevisionInfoCommand>("revision");
 		methodFactory.registerMethod<ServerInfoCommand>("info");
+		methodFactory.registerMethod<PlayerManagerCommand>("PlayerManagerCommand");
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
