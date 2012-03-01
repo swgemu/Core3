@@ -401,6 +401,8 @@ bool AiAgentImplementation::tryRetreat() {
 		if (homeLocation.getPositionX() == 0 && homeLocation.getPositionY() == 0 && homeLocation.getPositionZ() == 0)
 			return false;
 
+		CombatManager::instance()->forcePeace(_this);
+
 		Locker locker(&targetMutex);
 
 		setOblivious();
@@ -413,8 +415,6 @@ bool AiAgentImplementation::tryRetreat() {
 
 		patrolPoints.removeAll();
 		patrolPoints.add(homeLocation);
-
-		CombatManager::instance()->forcePeace(_this);
 
 		activateMovementEvent();
 	} catch (Exception& e) {
