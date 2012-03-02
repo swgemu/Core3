@@ -177,6 +177,7 @@ public:
 
 			StringIdChatParameter message;
 			ManagedReference<Buff*> buff = NULL;
+			int damage = 0;
 
 			if (hit) {
 
@@ -198,15 +199,17 @@ public:
 				String stopSpam = trapData->getStopSpam();
 				if(!stopSpam.isEmpty())
 					buff->setEndFlyText("trap/trap", stopSpam,  0xFF, 0, 0);
+
+				damage = System::random(trapData->getMaxDamage() - trapData->getMinDamage()) + trapData->getMinDamage();
+
 			} else {
 				message.setStringId("trap/trap" , trapData->getFailMessage());
 			}
 
 			message.setTT(targetCreature->getObjectName()->getDisplayedName());
 
-			int damage = System::random(trapData->getMaxDamage() - trapData->getMinDamage()) + trapData->getMinDamage();
 
-			ThrowTrapTask* trapTask = new ThrowTrapTask(creature, targetCreature, buff, message, trapData->getPoolToDamage(), damage);
+			ThrowTrapTask* trapTask = new ThrowTrapTask(creature, targetCreature, buff, message, trapData->getPoolToDamage(), damage, hit);
 			creature->addPendingTask("throwtrap", trapTask, 2300);
 
 			creature->inflictDamage(creature, CreatureAttribute::HEALTH, trapData->getHealthCost(), false);

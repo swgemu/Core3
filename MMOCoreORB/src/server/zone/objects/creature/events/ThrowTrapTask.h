@@ -25,15 +25,17 @@ class ThrowTrapTask : public Task {
 	StringIdChatParameter message;
 	int damage;
 	short pool;
+	bool hit;
 public:
 	ThrowTrapTask(CreatureObject* p, CreatureObject* t,
-			Buff* b, StringIdChatParameter m, short po, int d) : Task(2700) {
+			Buff* b, StringIdChatParameter m, short po, int d, bool h) : Task(2300) {
 		player = p;
 		target = t;
 		buff = b;
 		message = m;
 		damage = d;
 		pool = po;
+		hit = h;
 	}
 
 	virtual ~ThrowTrapTask() {
@@ -48,13 +50,21 @@ public:
 		player->removePendingTask("throwtrap");
 		player->sendSystemMessage(message);
 
-		Locker locker(target);
+		if(hit) {
+			Locker locker(target);
 
-		if(buff != NULL) {
-			target->addBuff(buff);
+			if(buff != NULL) {
+				target->addBuff(buff);
+			}
+
+			target->inflictDamage(player, pool, damage, true);
+
+			//Not sure on exact xp value, estimate now and update later
+			int xp = target->getLevel() * 5;
+			ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+			if(playerManager != NULL)
+				playerManager->awardExperience(player, "trapping", xp, true);
 		}
-
-		target->inflictDamage(player, pool, damage, true);
 
 	}
 };

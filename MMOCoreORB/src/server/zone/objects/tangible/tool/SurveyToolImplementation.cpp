@@ -334,6 +334,7 @@ void SurveyToolImplementation::sendSampleTo(CreatureObject* player, const String
 	}
 
 	if (player->isMounted()) {
+		player->sendSystemMessage("@error_message:survey_standing");
 		return;
 	}
 
