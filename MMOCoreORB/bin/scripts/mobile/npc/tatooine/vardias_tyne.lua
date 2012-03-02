@@ -24,15 +24,17 @@ vardias_tyne = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/vardias_tyne.iff"},
+	templates = {"object/mobile/dressed_tatooine_vardias_tyne.iff"},
 	lootGroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "vardias_tyne_convotemplate",
+	outfit = "vardias_tyne_outfit",
 	attacks = {
 	}
+	
 }
 
 CreatureTemplates:addCreatureTemplate(vardias_tyne, "vardias_tyne")

@@ -36,6 +36,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getGameObjectType", &LuaSceneObject::getGameObjectType },
 		{ "faceObject", &LuaSceneObject::faceObject },
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
+		{ "destroyObjectFromDatabase", &LuaSceneObject::destroyObjectFromDatabase },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
@@ -351,6 +352,12 @@ int LuaSceneObject::updateDirection(lua_State* L) {
 
 int LuaSceneObject::destroyObjectFromWorld(lua_State* L) {
 	realObject->destroyObjectFromWorld(true);
+
+	return 0;
+}
+
+int LuaSceneObject::destroyObjectFromDatabase(lua_State* L) {
+	realObject->destroyObjectFromDatabase(true);
 
 	return 0;
 }

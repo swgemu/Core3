@@ -56,3 +56,4 @@ includeFile("tangible/mission/mission_informant_spawner_hard.lua")
 includeFile("tangible/mission/mission_informant_spawner_medium.lua")
 includeFile("tangible/mission/mission_recon_target.lua")
 includeFile("tangible/mission/mission_terminal.lua")
+

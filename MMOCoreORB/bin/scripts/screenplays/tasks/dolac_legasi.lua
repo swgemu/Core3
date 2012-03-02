@@ -415,11 +415,13 @@ function dolac_legasi_screenplay:despawnQuest1(objectID)
 	if (pPrisoner ~= nil) then
 		local prisoner = LuaSceneObject(pPrisoner)
 		prisoner:destroyObjectFromWorld()
+		prisoner:destroyObjectFromDatabase()
 	end
 	
 	if (pTamer ~= nil) then
 		local tamer = LuaSceneObject(pTamer)
 		tamer:destroyObjectFromWorld()
+		tamer:destroyObjectFromDatabase()
 	end
 	
 	self:deleteObjectData(objectID, "prisoner")
@@ -436,11 +438,13 @@ function dolac_legasi_screenplay:despawnQuest2(objectID, pSithAltar)
 	if (pDjk ~= nil) then
 		local djk = LuaSceneObject(pDjk)
 		djk:destroyObjectFromWorld()
+		djk:destroyObjectFromDatabase()
 	end 
 
 	if (pSithAltar ~= nil) then
 		local sithAltar = LuaSceneObject(pSithAltar)
 		sithAltar:destroyObjectFromWorld()
+		sithAltar:destroyObjectFromDatabase()
 	end
 	
 	self:deleteObjectData(objectID, "djk")
@@ -459,6 +463,7 @@ function dolac_legasi_screenplay:despawnQuest3(objectID)
 	if (pSpellweaver ~= nil) then
 		local spellweaver = LuaSceneObject(pSpellweaver)
 		spellweaver:destroyObjectFromWorld()
+		spellweaver:destroyObjectFromDatabase()
 	end
 	
 	local pProtector1 = getCreatureObject(protector1ID)
@@ -466,6 +471,7 @@ function dolac_legasi_screenplay:despawnQuest3(objectID)
 	if (pProtector1 ~= nil) then
 		local protector1 = LuaSceneObject(pProtector1)
 		protector1:destroyObjectFromWorld()
+		protector1:destroyObjectFromDatabase()
 	end
 	
 	local pProtector2 = getCreatureObject(protector2ID)
@@ -473,6 +479,7 @@ function dolac_legasi_screenplay:despawnQuest3(objectID)
 	if (pProtector2 ~= nil) then
 		local protector2 = LuaSceneObject(pProtector2)
 		protector2:destroyObjectFromWorld()
+		protector2:destroyObjectFromDatabase()
 	end
 	
 	local pDjm = getCreatureObject(djmID)
@@ -480,6 +487,7 @@ function dolac_legasi_screenplay:despawnQuest3(objectID)
 	if (pDjm ~= nil) then
 		local djm = LuaSceneObject(pDjm)
 		djm:destroyObjectFromWorld()
+		djm:destroyObjectFromDatabase()
 	end
 	
 	self:deleteSpawnedSetting("spellweaver")

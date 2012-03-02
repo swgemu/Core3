@@ -101,3 +101,4 @@ includeFile("all/wild_bladeblack_boar.lua")
 
 -- Outfits
 includeFile("outfits/testoutfit.lua")
+includeFile("outfits/vardias_tyne_outfit.lua")

@@ -49,6 +49,7 @@ namespace scene {
 		int getGameObjectType(lua_State* L);
 		int faceObject(lua_State* L);
 		int destroyObjectFromWorld(lua_State* L);
+		int destroyObjectFromDatabase(lua_State* L);
 		int updateDirection(lua_State* L);
 		int isCreatureObject(lua_State* L);
 		int getZoneName(lua_State* L);
