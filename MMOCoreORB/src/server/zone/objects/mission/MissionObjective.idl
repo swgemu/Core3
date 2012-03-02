@@ -53,6 +53,7 @@ import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
 import engine.log.Logger;
 import engine.core.ManagedObject;
+import server.zone.objects.mission.events.FailMissionAfterCertainTimeTask;
 
 class MissionObjective extends ManagedObject implements Logger {
 	@dereferenced
@@ -62,11 +63,18 @@ class MissionObjective extends ManagedObject implements Logger {
 	protected MissionObject mission;
 	
 	protected unsigned int objectiveType;
+	
+	@dereferenced
+	protected Time missionStartTime;
+	
+	protected FailMissionAfterCertainTimeTask failTask;
 
 	public MissionObjective(MissionObject parent) {
 		mission = parent;
 		
 		Logger.setLoggingName("MissionObjective");
+		
+		missionStartTime.updateToCurrentTime();
 	}
 	
 	/**
@@ -80,15 +88,12 @@ class MissionObjective extends ManagedObject implements Logger {
 		return 1;
 	}
 	
-	public abstract void activate() {
-		
-	}
+	public native abstract void activate();
 	
-	public abstract void abort() {
-		
-	}
-	
+	public native abstract void abort();
+
 	public native abstract void complete();
+	public native abstract void fail();
 	
 	public MissionObject getMissionObject() {
 		return mission;

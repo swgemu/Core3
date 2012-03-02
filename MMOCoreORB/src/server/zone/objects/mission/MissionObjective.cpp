@@ -12,11 +12,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
+
 /*
  *	MissionObjectiveStub
  */
 
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__};
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__};
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
@@ -100,6 +102,19 @@ void MissionObjective::complete() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->complete();
+}
+
+void MissionObjective::fail() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_FAIL__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->fail();
 }
 
 MissionObject* MissionObjective::getMissionObject() {
@@ -287,6 +302,16 @@ bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream,
 		return true;
 	}
 
+	if (_name == "missionStartTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&missionStartTime, stream);
+		return true;
+	}
+
+	if (_name == "failTask") {
+		TypeInfo<Reference<FailMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&failTask, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -326,8 +351,24 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "missionStartTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&missionStartTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 3 + ManagedObjectImplementation::writeObjectMembers(stream);
+	_name = "failTask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<FailMissionAfterCertainTimeTask* > >::toBinaryStream(&failTask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 5 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {
@@ -336,17 +377,13 @@ MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* pa
 	mission = parent;
 	// server/zone/objects/mission/MissionObjective.idl():  		Logger.setLoggingName("MissionObjective");
 	Logger::setLoggingName("MissionObjective");
+	// server/zone/objects/mission/MissionObjective.idl():  		missionStartTime.updateToCurrentTime();
+	(&missionStartTime)->updateToCurrentTime();
 }
 
 int MissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	// server/zone/objects/mission/MissionObjective.idl():  		return 1;
 	return 1;
-}
-
-void MissionObjectiveImplementation::activate() {
-}
-
-void MissionObjectiveImplementation::abort() {
 }
 
 MissionObject* MissionObjectiveImplementation::getMissionObject() {
@@ -384,6 +421,9 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		break;
 	case RPC_COMPLETE__:
 		complete();
+		break;
+	case RPC_FAIL__:
+		fail();
 		break;
 	case RPC_GETMISSIONOBJECT__:
 		resp->insertLong(getMissionObject()->_getObjectID());
@@ -425,6 +465,10 @@ void MissionObjectiveAdapter::abort() {
 
 void MissionObjectiveAdapter::complete() {
 	(static_cast<MissionObjective*>(stub))->complete();
+}
+
+void MissionObjectiveAdapter::fail() {
+	(static_cast<MissionObjective*>(stub))->fail();
 }
 
 MissionObject* MissionObjectiveAdapter::getMissionObject() {

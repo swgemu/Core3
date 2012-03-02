@@ -19,6 +19,8 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void ReconMissionObjectiveImplementation::activate() {
+	MissionObjectiveImplementation::activate();
+
 	if (mission == NULL)
 		return;
 
@@ -58,6 +60,8 @@ void ReconMissionObjectiveImplementation::activate() {
 }
 
 void ReconMissionObjectiveImplementation::abort() {
+	MissionObjectiveImplementation::abort();
+
 	if (locationActiveArea != NULL)
 		locationActiveArea->destroyObjectFromWorld(true);
 }

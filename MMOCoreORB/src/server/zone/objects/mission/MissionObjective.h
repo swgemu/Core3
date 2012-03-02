@@ -67,6 +67,22 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace mission {
+namespace events {
+
+class FailMissionAfterCertainTimeTask;
+
+} // namespace events
+} // namespace mission
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::mission::events;
+
 #include "engine/util/Observer.h"
 
 #include "engine/util/Observable.h"
@@ -95,6 +111,8 @@ public:
 	void abort();
 
 	void complete();
+
+	void fail();
 
 	MissionObject* getMissionObject();
 
@@ -138,6 +156,10 @@ protected:
 
 	unsigned int objectiveType;
 
+	Time missionStartTime;
+
+	Reference<FailMissionAfterCertainTimeTask* > failTask;
+
 public:
 	MissionObjectiveImplementation(MissionObject* parent);
 
@@ -152,6 +174,8 @@ public:
 	virtual void abort();
 
 	virtual void complete();
+
+	virtual void fail();
 
 	MissionObject* getMissionObject();
 
@@ -215,6 +239,8 @@ public:
 	void abort();
 
 	void complete();
+
+	void fail();
 
 	MissionObject* getMissionObject();
 

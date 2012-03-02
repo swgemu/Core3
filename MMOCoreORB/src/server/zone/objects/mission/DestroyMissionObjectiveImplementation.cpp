@@ -38,6 +38,8 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 }
 
 void DestroyMissionObjectiveImplementation::activate() {
+	MissionObjectiveImplementation::activate();
+
 	if ((observers.size() != 0 && lairObject != NULL) || mission == NULL) {
 		return;
 	}
@@ -149,6 +151,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 }
 
 void DestroyMissionObjectiveImplementation::abort() {
+	MissionObjectiveImplementation::abort();
+
 	if (observers.size() != 0) {
 		ManagedReference<MissionObserver*> observer = observers.get(0);
 

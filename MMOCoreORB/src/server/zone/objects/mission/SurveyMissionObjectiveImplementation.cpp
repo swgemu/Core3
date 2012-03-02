@@ -16,6 +16,8 @@
 #include "server/zone/ZoneServer.h"
 
 void SurveyMissionObjectiveImplementation::activate() {
+	MissionObjectiveImplementation::activate();
+
 	if (observers.size() != 0) {
 		return;
 	}
@@ -34,6 +36,8 @@ void SurveyMissionObjectiveImplementation::activate() {
 }
 
 void SurveyMissionObjectiveImplementation::abort() {
+	MissionObjectiveImplementation::abort();
+
 	if (observers.size() == 0)
 		return;
 

@@ -26,6 +26,8 @@
 #include "MissionObserver.h"
 
 void DeliverMissionObjectiveImplementation::activate() {
+	MissionObjectiveImplementation::activate();
+
 	if (!activateWithResult()) {
 		//Send error message to player.
 		CreatureObject* owner = getPlayerOwner();
@@ -151,6 +153,8 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 }
 
 void DeliverMissionObjectiveImplementation::abort() {
+	MissionObjectiveImplementation::abort();
+
 	despawnNpcs();
 }
 

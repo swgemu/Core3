@@ -27,6 +27,8 @@ void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTem
 }
 
 void BountyMissionObjectiveImplementation::activate() {
+	MissionObjectiveImplementation::activate();
+
 	activeDroid = NULL;
 
 	if (objectiveStatus != INITSTATUS) {
@@ -62,6 +64,8 @@ void BountyMissionObjectiveImplementation::activate() {
 }
 
 void BountyMissionObjectiveImplementation::abort() {
+	MissionObjectiveImplementation::abort();
+
 	cancelAllTasks();
 
 	getPlayerOwner()->getZoneServer()->getMissionManager()->removeBountyHunterFromPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
@@ -119,12 +123,6 @@ void BountyMissionObjectiveImplementation::complete() {
 	getPlayerOwner()->getZoneServer()->getMissionManager()->completePlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
 
 	MissionObjectiveImplementation::complete();
-}
-
-void BountyMissionObjectiveImplementation::fail() {
-	getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
-	abort();
-	removeMissionFromPlayer();
 }
 
 void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {

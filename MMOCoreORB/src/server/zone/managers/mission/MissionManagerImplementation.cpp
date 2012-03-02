@@ -183,11 +183,13 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	if (mission->getTypeCRC() == MissionObject::BOUNTY) {
 		Locker listLocker(&playerBountyListMutex);
 
-		BountyTargetListElement* bounty = playerBountyList.get(mission->getTargetObjectId());
+		if (mission->getTargetObjectId() != 0) {
+			BountyTargetListElement* bounty = playerBountyList.get(mission->getTargetObjectId());
 
-		if (bounty == NULL || !bounty->getCanHaveNewMissions()) {
-			player->sendSystemMessage("Mission has expired.");
-			return;
+			if (bounty == NULL || !bounty->getCanHaveNewMissions()) {
+				player->sendSystemMessage("Mission has expired.");
+				return;
+			}
 		}
 	}
 
@@ -861,7 +863,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 
 	NameManager* nm = processor->getNameManager();
 	mission->setCreatorName(nm->makeCreatureName());
-	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode())->getObjectName());
+	mission->setMissionTargetName(nm->makeCreatureName());
 
 	String planet = player->getZone()->getZoneName();
 	mission->setStartPlanet(planet);
@@ -1510,6 +1512,9 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 			ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
 			if (objective != NULL) {
+				if (objective->getPlayerOwner() != NULL) {
+					objective->getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
+				}
 				objective->fail();
 			}
 		}

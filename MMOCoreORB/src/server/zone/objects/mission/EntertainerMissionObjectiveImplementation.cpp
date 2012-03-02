@@ -18,6 +18,8 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void EntertainerMissionObjectiveImplementation::activate() {
+	MissionObjectiveImplementation::activate();
+
 	if (observers.size() > 0) {
 		return;
 	}
@@ -72,6 +74,8 @@ void EntertainerMissionObjectiveImplementation::activate() {
 }
 
 void EntertainerMissionObjectiveImplementation::abort() {
+	MissionObjectiveImplementation::abort();
+
 	clearLocationActiveAreaAndObservers();
 }
 

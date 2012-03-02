@@ -14,6 +14,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
+#include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
@@ -30,6 +31,18 @@ CreatureObject* MissionObjectiveImplementation::getPlayerOwner() {
 		return cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
 	else
 		return NULL;
+}
+
+void MissionObjectiveImplementation::activate() {
+	uint64 twoDays = 48 * 60 * 60 * 1000;
+	uint64 timeRemaining = twoDays -  missionStartTime.miliDifference();
+
+	if (timeRemaining < 1) {
+		timeRemaining = 1;
+	}
+
+	failTask = new FailMissionAfterCertainTimeTask(_this);
+	failTask->schedule(timeRemaining);
 }
 
 void MissionObjectiveImplementation::complete() {
@@ -54,6 +67,12 @@ void MissionObjectiveImplementation::complete() {
 	awardFactionPoints();
 
 	removeMissionFromPlayer();
+}
+
+void MissionObjectiveImplementation::abort() {
+	if (failTask != NULL && failTask->isScheduled()) {
+		failTask->cancel();
+	}
 }
 
 void MissionObjectiveImplementation::awardFactionPoints() {
@@ -98,4 +117,9 @@ void MissionObjectiveImplementation::removeMissionFromPlayer() {
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
 	missionManager->removeMission(mission, player);
+}
+
+void MissionObjectiveImplementation::fail() {
+	abort();
+	removeMissionFromPlayer();
 }

@@ -20,6 +20,8 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 
 void HuntingMissionObjectiveImplementation::activate() {
+	MissionObjectiveImplementation::activate();
+
 	if (observers.size() != 0)
 		return;
 
@@ -36,6 +38,8 @@ void HuntingMissionObjectiveImplementation::activate() {
 }
 
 void HuntingMissionObjectiveImplementation::abort() {
+	MissionObjectiveImplementation::abort();
+
 	if (observers.size() != 0) {
 		for (int i = 0; i < observers.size(); i++) {
 			ManagedReference<MissionObserver*> observer = observers.get(i);
