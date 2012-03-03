@@ -609,7 +609,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	// Remove all resources - Not recovering them
 	if (assemblyResult == CraftingManager::CRITICALFAILURE) {
 
-		createPrototype(player, draftSchematic);
+		createPrototypeObject(draftSchematic);
 
 		state = 2;
 
