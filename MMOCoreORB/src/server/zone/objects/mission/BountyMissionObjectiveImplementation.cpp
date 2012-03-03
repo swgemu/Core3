@@ -288,7 +288,7 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 		waypoint = mission->createWaypoint();
 	}
 
-	waypoint->setPlanetCRC(getPlayerOwner()->getPlanetCRC());
+	waypoint->setPlanetCRC(getTargetZoneName().hashCode());
 	Vector3 position = getTargetPosition();
 	waypoint->setPosition(position.getX(), 0, position.getY());
 	waypoint->setActive(true);
