@@ -88,7 +88,7 @@ int LootManager::calculateLootCredits(int level) {
 		return _implementation->calculateLootCredits(level);
 }
 
-void LootManager::createLoot(SceneObject* container, AiAgent* creature) {
+bool LootManager::createLoot(SceneObject* container, AiAgent* creature) {
 	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -98,12 +98,12 @@ void LootManager::createLoot(SceneObject* container, AiAgent* creature) {
 		method.addObjectParameter(container);
 		method.addObjectParameter(creature);
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		_implementation->createLoot(container, creature);
+		return _implementation->createLoot(container, creature);
 }
 
-void LootManager::createLoot(SceneObject* container, const String& lootGroup, int level) {
+bool LootManager::createLoot(SceneObject* container, const String& lootGroup, int level) {
 	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -114,9 +114,9 @@ void LootManager::createLoot(SceneObject* container, const String& lootGroup, in
 		method.addAsciiParameter(lootGroup);
 		method.addSignedIntParameter(level);
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		_implementation->createLoot(container, lootGroup, level);
+		return _implementation->createLoot(container, lootGroup, level);
 }
 
 DistributedObjectServant* LootManager::_getImplementation() {
@@ -297,10 +297,10 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(calculateLootCredits(inv->getSignedIntParameter()));
 		break;
 	case RPC_CREATELOOT__SCENEOBJECT_AIAGENT_:
-		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter()));
+		resp->insertBoolean(createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter())));
 		break;
 	case RPC_CREATELOOT__SCENEOBJECT_STRING_INT_:
-		createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_int_), inv->getSignedIntParameter());
+		resp->insertBoolean(createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_int_), inv->getSignedIntParameter()));
 		break;
 	default:
 		return NULL;
@@ -321,12 +321,12 @@ int LootManagerAdapter::calculateLootCredits(int level) {
 	return (static_cast<LootManager*>(stub))->calculateLootCredits(level);
 }
 
-void LootManagerAdapter::createLoot(SceneObject* container, AiAgent* creature) {
-	(static_cast<LootManager*>(stub))->createLoot(container, creature);
+bool LootManagerAdapter::createLoot(SceneObject* container, AiAgent* creature) {
+	return (static_cast<LootManager*>(stub))->createLoot(container, creature);
 }
 
-void LootManagerAdapter::createLoot(SceneObject* container, const String& lootGroup, int level) {
-	(static_cast<LootManager*>(stub))->createLoot(container, lootGroup, level);
+bool LootManagerAdapter::createLoot(SceneObject* container, const String& lootGroup, int level) {
+	return (static_cast<LootManager*>(stub))->createLoot(container, lootGroup, level);
 }
 
 /*

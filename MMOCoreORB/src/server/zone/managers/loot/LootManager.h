@@ -134,9 +134,9 @@ public:
 
 	int calculateLootCredits(int level);
 
-	void createLoot(SceneObject* container, AiAgent* creature);
+	bool createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
+	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -212,9 +212,9 @@ public:
 
 	int calculateLootCredits(int level);
 
-	void createLoot(SceneObject* container, AiAgent* creature);
+	bool createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level = -1);
+	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 
 	WeakReference<LootManager*> _this;
 
@@ -265,9 +265,9 @@ public:
 
 	int calculateLootCredits(int level);
 
-	void createLoot(SceneObject* container, AiAgent* creature);
+	bool createLoot(SceneObject* container, AiAgent* creature);
 
-	void createLoot(SceneObject* container, const String& lootGroup, int level);
+	bool createLoot(SceneObject* container, const String& lootGroup, int level);
 
 protected:
 	String _param1_createLoot__SceneObject_String_int_;

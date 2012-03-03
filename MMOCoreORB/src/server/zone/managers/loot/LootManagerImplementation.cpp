@@ -78,18 +78,22 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 	SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
 
 	if (tanoTemplate != NULL) {
+		Vector<String>* titles = tanoTemplate->getExperimentalGroupTitles();
 		Vector<String>* props = tanoTemplate->getExperimentalSubGroupTitles();
 		Vector<int>* mins = tanoTemplate->getExperimentalMin();
 		Vector<int>* maxs = tanoTemplate->getExperimentalMax();
 		Vector<short>* prec = tanoTemplate->getExperimentalPrecision();
 
 		for (int i = 0; i < props->size(); ++i) {
+			String title = titles->get(i);
 			String property = props->get(i);
 
 			if (craftingValues->hasProperty(property))
 				continue;
 
 			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false);
+			if(title == "null")
+				craftingValues->setHidden(property);
 		}
 	}
 
@@ -224,6 +228,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	craftingValues.recalculateValues(false);
 
 	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
+	craftingValues.setHidden("creatureLevel");
 
 	// Update the Tano with new values
 	prototype->updateCraftingValues(&craftingValues, true);
@@ -231,11 +236,11 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	return prototype;
 }
 
-void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* creature) {
+bool LootManagerImplementation::createLoot(SceneObject* container, AiAgent* creature) {
 	LootGroupCollection* lootCollection = creature->getLootGroups();
 
 	if (lootCollection == NULL)
-		return;
+		return false;
 
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		LootGroupCollectionEntry* entry = lootCollection->get(i);
@@ -268,17 +273,19 @@ void LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 			break;
 		}
 	}
+
+	return true;
 }
 
-void LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level) {
+bool LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level) {
 	if (container->hasFullContainerObjects())
-		return;
+		return false;
 
 	Reference<LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
 	if (group == NULL) {
 		warning("Loot group template requested does not exist: " + lootGroup);
-		return;
+		return false;
 	}
 
 	//Now we do the second roll for the item out of the group.
@@ -288,14 +295,17 @@ void LootManagerImplementation::createLoot(SceneObject* container, const String&
 
 	if (itemTemplate == NULL) {
 		warning("Loot item template requested does not exist: " + group->getLootItemTemplateForRoll(roll));
-		return;
+		return false;
 	}
 
 	TangibleObject* obj = createLootObject(itemTemplate, level);
 
-	if (obj != NULL) {
+	if (obj == NULL)
+		return false;
 
-		if (container->transferObject(obj, -1, false))
-			container->broadcastObject(obj, true);
-	}
+	if (container->transferObject(obj, -1, false))
+		container->broadcastObject(obj, true);
+
+
+	return true;
 }

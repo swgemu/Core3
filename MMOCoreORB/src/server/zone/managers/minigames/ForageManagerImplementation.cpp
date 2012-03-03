@@ -208,13 +208,13 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 				return false;
 			}
 		} else if (dice > 109 && dice < 170) { //Average components.
-			lootGroup = "forage_medical_components";
+			lootGroup = "forage_medical_component";
 			level = 1;
 		} else if (dice > 169 && dice < 200) { //Good components.
-			lootGroup = "forage_medical_components";
+			lootGroup = "forage_medical_component";
 			level = 60;
 		} else { //Exceptional Components
-			lootGroup = "forage_medical_components";
+			lootGroup = "forage_medical_component";
 			level = 200;
 		}
 
@@ -248,7 +248,10 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 			}
 		}
 
-		lootManager->createLoot(inventory, lootGroup, level);
+		if(!lootManager->createLoot(inventory, lootGroup, level)) {
+			player->sendSystemMessage("Unable to create loot for lootgroup " + lootGroup);
+			return false;
+		}
 	}
 	return true;
 }
