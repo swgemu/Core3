@@ -1045,7 +1045,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	// Decay
 	if (typeofdeath == 0 /*|| (typeofdeath == 2 && cloningBuilding-> ADD FACTION CHECK FOR CLONING HERE )*/) {
 
-		Vector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
+		SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
 		for (int i = 0; i < insurableItems.size(); i++) {
 			SceneObject* item = insurableItems.get(i);
 
@@ -2495,8 +2495,9 @@ StartingLocation* PlayerManagerImplementation::getStartingLocation(const String&
 	return NULL;
 }
 
-Vector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurableItems(CreatureObject* player, bool onlyInsurable) {
-	Vector<ManagedReference<SceneObject*> > insurableItems;
+SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurableItems(CreatureObject* player, bool onlyInsurable) {
+	SortedVector<ManagedReference<SceneObject*> > insurableItems;
+	insurableItems.setNoDuplicateInsertPlan();
 
 	if (player == NULL)
 		return insurableItems;
@@ -2515,9 +2516,9 @@ Vector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurabl
 			TangibleObject* item = cast<TangibleObject*>( container);
 
 			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
-				insurableItems.add(item);
+				insurableItems.put(item);
 			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
-				insurableItems.add(item);
+				insurableItems.put(item);
 			}
 		}
 
@@ -2530,9 +2531,9 @@ Vector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurabl
 			TangibleObject* item = cast<TangibleObject*>( object);
 
 			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
-				insurableItems.add(item);
+				insurableItems.put(item);
 			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
-				insurableItems.add(item);
+				insurableItems.put(item);
 			}
 		}
 	}

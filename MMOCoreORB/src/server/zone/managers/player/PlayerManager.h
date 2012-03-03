@@ -209,6 +209,8 @@ using namespace server::zone::objects::tangible::threat;
 
 #include "system/util/VectorMap.h"
 
+#include "system/util/SortedVector.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/util/Observer.h"
@@ -260,7 +262,7 @@ public:
 
 	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
 
-	Vector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
+	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
 	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
 
@@ -436,7 +438,7 @@ public:
 
 	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
 
-	Vector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
+	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
 	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
 
