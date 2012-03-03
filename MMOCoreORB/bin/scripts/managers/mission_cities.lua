@@ -8,7 +8,7 @@ cities = {
 	{ "dantooine", "Dantooine Mining Outpost", -640, 2486, 135 },
 	{ "dantooine", "Dantooine Agro Outpost", 1588, -6399, 135 },
 	{ "dantooine", "Dantooine Imperial Outpost", -4224, -2400, 250 },
-	{ "dathomir", "Dathomir Outpost", 599, 3046, 110 },
+	{ "dathomir", "Trade Outpost", 599, 3046, 110 },
 	{ "dathomir", "Science Outpost", -85, -1600, 125 },
 	{ "endor", "Smuggler Outpost", -905, 1584, 130 },
 	{ "endor", "Research Outpost", 3221, -3471, 100 },

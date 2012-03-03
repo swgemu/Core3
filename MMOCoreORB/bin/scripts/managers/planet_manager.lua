@@ -94,7 +94,7 @@ dathomir = {
 	resourcesEnabled = 1,
 
 	planetTravelPoints = {
-		{name = "Dathomir Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravelAllowed = 1},
+		{name = "Trade Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravelAllowed = 1},
 		{name = "Science Outpost", x = -49.021923, z = 18, y = -1584.7278, interplanetaryTravelAllowed = 1} 
 	},
 	
