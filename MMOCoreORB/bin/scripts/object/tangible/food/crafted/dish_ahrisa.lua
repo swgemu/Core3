@@ -50,8 +50,8 @@ object_tangible_food_crafted_dish_ahrisa = object_tangible_food_crafted_shared_d
 
 	effectType = 1,
 
-	fillingMin = 16,
-	fillingMax = 60,
+	fillingMin = 60,
+	fillingMax = 16,
 	flavorMin = 540,
 	flavorMax = 1080,
 	nutritionMin = 11,
