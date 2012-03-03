@@ -51,12 +51,8 @@ which carries forward this exception.
 class ForageCommand : public QueueCommand {
 public:
 
-	bool scoutForage;
-
 	ForageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-
-		scoutForage = true; // True = Forage, False = Medical Forage
 
 	}
 
@@ -74,7 +70,7 @@ public:
 		if (creature->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>(creature);
 			ForageManager* forageManager = player->getZoneServer()->getForageManager();
-			forageManager->startForaging(player, scoutForage);
+			forageManager->startForaging(player, ForageManager::SCOUT);
 		}
 
 		return SUCCESS;

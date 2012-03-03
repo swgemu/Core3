@@ -220,7 +220,7 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 
 		lootManager->createLoot(inventory, lootGroup, level);
 
-	} else if (forageType == ForageManager::LAIR) { //Medical Forage
+	} else if (forageType == ForageManager::LAIR) { //Lair Search
 		dice = System::random(200);
 		level = 1;
 
@@ -290,8 +290,12 @@ bool ForageManagerImplementation::forageGiveResource(CreatureObject* player, flo
 		resType = resType + "_" + player->getZone()->getZoneName();
 		resource = resourceManager->getCurrentSpawn(resType, player->getZone()->getZoneName());
 
-		if(resource == NULL)
+		if(resource == NULL) {
+			StringBuffer message;
+			message << "Resource type not available: " << resType << " on " << player->getZone()->getZoneName();
+			warning(message.toString());
 			return false;
+		}
 	}
 
 	int quantity = System::random(30) + 10;
