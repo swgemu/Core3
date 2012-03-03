@@ -55,6 +55,11 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 		return NULL;
 	}
 
+	if (player->isRidingCreature() || player->isRidingMount()) {
+		player->sendSystemMessage("@error_message:survey_on_mount");
+		return NULL;
+	}
+
 	ManagedReference<CreatureObject*> droid = player->getZone()->getCreatureManager()->spawnCreature(String("seeker").hashCode(), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), 0);
 
 	Reference<FindTargetTask*> findTargetTask = new FindTargetTask(droid, player, objective, track, false);
@@ -93,6 +98,11 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		}
 	}
 
+	if (player->isRidingCreature() || player->isRidingMount()) {
+		player->sendSystemMessage("@error_message:survey_on_mount");
+		return NULL;
+	}
+
 	Reference<CallArakydTask*> task = new CallArakydTask(player, cast<BountyMissionObjective*>(mission->getMissionObjective()));
 
 	Core::getTaskManager()->executeTask(task);
@@ -118,6 +128,11 @@ Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneO
 
 	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");
+		return NULL;
+	}
+
+	if (player->isRidingCreature() || player->isRidingMount()) {
+		player->sendSystemMessage("@error_message:survey_on_mount");
 		return NULL;
 	}
 
