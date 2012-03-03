@@ -92,6 +92,7 @@ public:
 
 		pointerParameter = par.pointerParameter;
 		stringID = par.stringID;
+		customName = par.customName;
 
 		return *this;
 	}
@@ -148,7 +149,11 @@ public:
 	}
 
 	inline String getDisplayedName() {
-		return customName.toString();
+		if (customName.isEmpty()) {
+			return stringID.getFullPath();
+		} else {
+			return customName.toString();
+		}
 	}
 
 	inline String& getFileParameter() {

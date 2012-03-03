@@ -52,6 +52,7 @@ StringIdParameter::StringIdParameter(const StringIdParameter& par) : Object(), S
 
 	pointerParameter = par.pointerParameter;
 	stringID = par.stringID;
+	customName = par.customName;
 }
 
 void StringIdParameter::set(SceneObject* obj) {

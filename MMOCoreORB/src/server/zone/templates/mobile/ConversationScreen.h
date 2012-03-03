@@ -81,7 +81,7 @@ public:
 		return !linkedScreenID.isEmpty();
 	}
 
-	inline void setOptionText(StringIdChatParameter optionText) {
+	inline void setOptionText(const StringIdChatParameter& optionText) {
 		this->optionText = optionText;
 	}
 };
@@ -139,7 +139,7 @@ public:
 		Reference<ConversationOption*> opt = options.get(idx);
 
 		if (opt != NULL)
-			text = customText.toString();
+			text = opt->getOptionText().getFullPath();
 
 		return text;
 	}
@@ -165,7 +165,12 @@ public:
 	 * @param npc The npc the player is talking to.
 	 */
 	void sendTo(CreatureObject* player, CreatureObject* npc) {
-		NpcConversationMessage* message = new NpcConversationMessage(player, dialogText);
+		NpcConversationMessage* message;
+
+		if (customText.isEmpty())
+			message = new NpcConversationMessage(player, dialogText);
+		else
+			message = new NpcConversationMessage(player, customText);
 
 		//Encapsulate this logic better?
 		StringList* optionsList = new StringList(player);
@@ -176,7 +181,7 @@ public:
 			if (option == NULL)
 				continue;
 
-			optionsList->insertOption(customText);
+			optionsList->insertOption(option->getOptionText().getFullPath());
 		}
 
 		player->sendMessage(message);
