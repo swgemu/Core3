@@ -51,12 +51,19 @@ void BountyMissionObjectiveImplementation::activate() {
 		ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
 
 		if (target != NULL) {
-			ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-			ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+			ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
+			ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
 
-			target->registerObserver(ObserverEventType::PLAYERKILLED, observer);
+			target->registerObserver(ObserverEventType::PLAYERKILLED, observer1);
 
-			observers.put(observer);
+			observers.put(observer1);
+
+			ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this);
+			ObjectManager::instance()->persistObject(observer2, 1, "missionobservers");
+
+			getPlayerOwner()->registerObserver(ObserverEventType::PLAYERKILLED, observer2);
+
+			observers.put(observer2);
 
 			getPlayerOwner()->getZoneServer()->getMissionManager()->addPlayerToBountyList(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
 		}
@@ -110,6 +117,11 @@ void BountyMissionObjectiveImplementation::abort() {
 				target->dropObserver(ObserverEventType::PLAYERKILLED, observer1);
 				observers.drop(observer1);
 			}
+
+			ManagedReference<MissionObserver*> observer2 = observers.get(1);
+
+			getPlayerOwner()->dropObserver(ObserverEventType::PLAYERKILLED, observer2);
+			observers.drop(observer2);
 		}
 	}
 }
@@ -217,11 +229,17 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 			return 0;
 		}
 
-		if (getPlayerOwner() != NULL && killer != NULL && getPlayerOwner()->getObjectID() == killer->getObjectID()) {
-			//Target killed by player, complete mission.
-			complete();
-
-			return 1;
+		if (getPlayerOwner() != NULL && killer != NULL) {
+			if (getPlayerOwner()->getObjectID() == killer->getObjectID()) {
+				//Target killed by player, complete mission.
+				complete();
+				return 1;
+			} else if (mission->getTargetObjectId() == killer->getObjectID() ||
+					(npcTarget != NULL && npcTarget->getObjectID() == killer->getObjectID())) {
+				//Player killed by target, fail mission.
+				fail();
+				return 1;
+			}
 		}
 	}
 
