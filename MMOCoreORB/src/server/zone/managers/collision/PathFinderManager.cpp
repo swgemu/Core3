@@ -81,6 +81,12 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	Vector3 transformedPosition = transformToModelSpace(pointA.getPoint(), building);
 
 	PathNode* nearestEntranceNode = exteriorPathGraph->findNearestNode(transformedPosition);
+
+	if (nearestEntranceNode == NULL) {
+		error("NULL entrance node for building " + templateObject->getFullTemplateString());
+		delete path;
+		return NULL;
+	}
 	//PathNode* nearestTargetNode = targetPathGraph->findNearestNode(pointB.getPoint());
 	TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), targetFloorMesh);
 
