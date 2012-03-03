@@ -367,6 +367,11 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 }
 
 void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, CreatureObject* player) {
+	if (player->isIncapacitated()) {
+		player->sendSystemMessage("You cannot abort a mission while incapacitated.");
+		return;
+	}
+
 	mission->abort();
 
 	removeMission(mission, player);
