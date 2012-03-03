@@ -331,8 +331,18 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 }
 
 void CraftingSessionImplementation::sendIngredientForUIListen() {
-	if (manufactureSchematic == NULL)
+
+	if (crafter == NULL) {
 		return;
+	}
+
+	if (manufactureSchematic == NULL) {
+		return;
+	}
+
+	if (prototype == NULL) {
+		return;
+	}
 
 	// Object Controller w/ Ingredients ***************************
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
