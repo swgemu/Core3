@@ -89,8 +89,10 @@ public:
 		insertAscii(id->getFile());
 		insertInt(0);
 		insertAscii(id->getStringID());
+	}
 
-		insertUnicode(id->getCustomString());
+	inline void insertCustomName(const UnicodeString& name) {
+		insertUnicode(name);
 	}
 
 	//

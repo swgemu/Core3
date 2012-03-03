@@ -120,7 +120,7 @@ void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
 	int repairCost = calculateRepairCost(player);
 	int totalFunds = player->getBankCredits();
 
-	listbox->addMenuItem("@pet/pet_menu:vehicle_prompt " + getObjectName()->getDisplayedName()); //Vehicle:
+	listbox->addMenuItem("@pet/pet_menu:vehicle_prompt " + getDisplayedName()); //Vehicle:
 	listbox->addMenuItem("@pet/pet_menu:repair_cost_prompt " + String::valueOf(repairCost)); //Repair Cost:
 	listbox->addMenuItem("@pet/pet_menu:total_funds_prompt " + String::valueOf(totalFunds)); //Total Funds Available:
 

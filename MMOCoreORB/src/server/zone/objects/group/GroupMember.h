@@ -58,7 +58,7 @@ public:
 
 		if (creature != NULL) {
 			StringId* stringId = creature->getObjectName();
-			name = stringId->getCustomString().toString();
+			name = creature->getCustomObjectName().toString();
 		}
 
 		name.toBinaryStream(stream);

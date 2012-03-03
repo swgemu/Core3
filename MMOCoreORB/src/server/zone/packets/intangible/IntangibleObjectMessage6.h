@@ -58,8 +58,8 @@ public:
 		// should be "monster_detail" for creature mounts (Although it seems to have no effect) and other itno's use
 		// the _n or _name files here.
 		StringId stringId;
-		stringId.setStringId(itno->getDetailedDescription());
 		insertStringId(&stringId);
+		insertCustomName(itno->getDetailedDescription());
 
 		setSize();
 	}

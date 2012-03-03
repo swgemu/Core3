@@ -46,18 +46,18 @@ which carries forward this exception.
 #ifndef UPDATETOOLCOUNTDOWNTASK_H_
 #define UPDATETOOLCOUNTDOWNTASK_H_
 
-#include "../CraftingTool.h"
+
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
 class UpdateToolCountdownTask : public Task {
-	ManagedReference<CraftingTool* > craftingTool;
-	ManagedReference<CreatureObject* > player;
+	ManagedReference<TangibleObject* > craftingTool;
+	ManagedReference<CreatureObject* > crafter;
 	int timeLeft;
 
 public:
-	UpdateToolCountdownTask(CreatureObject* pl, CraftingTool* tool, int time) : Task() {
+	UpdateToolCountdownTask(CreatureObject* pl, TangibleObject* tool, int time) : Task() {
 		craftingTool = tool;
-		player = pl;
+		crafter = pl;
 		timeLeft = time;
 	}
 
@@ -67,7 +67,7 @@ public:
 			dtano3->updateCraftingTimer(timeLeft);
 			dtano3->close();
 
-			player->sendMessage(dtano3);
+			crafter->sendMessage(dtano3);
 		} catch (Exception& e) {
 			System::out << "Unreported exception caught in UpdateToolCountdownEvent::activate\n";
 		}

@@ -16,7 +16,7 @@
  *	ResourceSpawnStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_STRING_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_GETPOOLSLOT__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_ISRESOURCESPAWN__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_STRING_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_GETPOOLSLOT__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
 
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
@@ -65,6 +65,19 @@ void ResourceSpawn::decreaseContainerReferenceCount() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->decreaseContainerReferenceCount();
+}
+
+bool ResourceSpawn::isResourceSpawn() {
+	ResourceSpawnImplementation* _implementation = static_cast<ResourceSpawnImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISRESOURCESPAWN__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isResourceSpawn();
 }
 
 void ResourceSpawn::setName(const String& name) {
@@ -972,6 +985,11 @@ void ResourceSpawnImplementation::finalize() {
 	Logger::info("trying to delete ResourceSpawn: " + spawnName);
 }
 
+bool ResourceSpawnImplementation::isResourceSpawn() {
+	// server/zone/objects/resource/ResourceSpawn.idl():  		return true;
+	return true;
+}
+
 void ResourceSpawnImplementation::setName(const String& name) {
 	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnName = name;
 	spawnName = name;
@@ -1156,6 +1174,9 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_DECREASECONTAINERREFERENCECOUNT__:
 		decreaseContainerReferenceCount();
 		break;
+	case RPC_ISRESOURCESPAWN__:
+		resp->insertBoolean(isResourceSpawn());
+		break;
 	case RPC_SETNAME__STRING_:
 		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
@@ -1269,6 +1290,10 @@ void ResourceSpawnAdapter::initializeTransientMembers() {
 
 void ResourceSpawnAdapter::decreaseContainerReferenceCount() {
 	(static_cast<ResourceSpawn*>(stub))->decreaseContainerReferenceCount();
+}
+
+bool ResourceSpawnAdapter::isResourceSpawn() {
+	return (static_cast<ResourceSpawn*>(stub))->isResourceSpawn();
 }
 
 void ResourceSpawnAdapter::setName(const String& name) {

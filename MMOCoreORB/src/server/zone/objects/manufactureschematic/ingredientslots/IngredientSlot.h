@@ -1,3 +1,4 @@
+
 /*
 Copyright (C) 2007 <SWGEmu>
 
@@ -51,15 +52,14 @@ class IngredientSlot : public Serializable, public Logger {
 
 protected:
 
-	ManagedReference<SceneObject* > craftingTool;
-	String type;
-	int requiredQuantity;
-	int slottype;
-	String serial;
-	ManagedReference<SceneObject* > previousParent;
+	String contentType;
 
-	bool requiresIdentical;
+	int requiredQuantity;
+
+	bool identical;
 	bool optional;
+
+	short clientSlotType;
 
 public:
 
@@ -102,23 +102,17 @@ public:
 	static const short WEIRDFAILEDMESSAGE = 0x1D; // Hey nonny nonny tra la la!
 
 public:
-	IngredientSlot(String t, int q){
-
-		type = t;
-		requiredQuantity = q;
+	IngredientSlot(){
 		setLogging(false);
 	}
 
 	IngredientSlot(const IngredientSlot& slot) : Object(), Serializable(), Logger() {
-		craftingTool = slot.craftingTool;
-		type = slot.type;
 		requiredQuantity = slot.requiredQuantity;
-		slottype = slot.slottype;
-		serial = slot.serial;
-		previousParent = slot.previousParent;
-
-		requiresIdentical = slot.requiresIdentical;
+		identical = slot.identical;
 		optional = slot.optional;
+		contentType = slot.contentType;
+
+		clientSlotType = slot.clientSlotType;
 
 		setLogging(false);
 	}
@@ -135,79 +129,90 @@ public:
 		return TransactionalObjectCloner<IngredientSlot>::clone(this);
 	}
 
-	bool isType(int type) {
-		return type == slottype;
+	int getClientSlotType() {
+		return clientSlotType;
 	}
 
-	int getSlotType() {
-		return slottype;
+	void setOptional(bool value) {
+		optional = value;
 	}
 
 	bool isOptional() {
-		return optional;
+		return optional == true;
 	}
 
-	virtual inline void init(const int size){
-
+	void setIdentical(bool value) {
+		identical = value;
 	}
 
-	virtual inline void cleanup(){
-
+	bool requiresIdentical() {
+		return identical == true;
 	}
 
-	virtual inline int getQuantity() {
-
-		return 0;
+	void setContentType(const String& value) {
+		contentType = value;
 	}
 
-	inline int getRequiredQuantity() {
+	void setQuantityNeeded(int value) {
+		requiredQuantity = value;
+	}
 
+	int getQuantityNeeded() {
 		return requiredQuantity;
 	}
 
-	virtual inline bool add(CreatureObject* player, TangibleObject* tano) {
-
+	virtual bool add(CreatureObject* player, ManagedReference<TangibleObject*> tano) {
 		return false;
 	}
 
-	virtual inline bool remove(CreatureObject* player){
+	inline bool removeAll(CreatureObject* player) {
+		return returnToParents(player);
+	}
 
+	virtual bool returnToParents(CreatureObject* player) {
 		return false;
 	}
 
-	virtual inline TangibleObject* get() {
-
-		return NULL;
-	}
-
-	virtual inline bool isComplete() {
+	virtual bool isFull() {
 		return false;
 	}
 
-	inline bool isIdentical() {
-		return (slottype == OPTIONALIDENTICALSLOT ||
-				slottype == IDENTICALSLOT);
+	virtual bool isEmpty() {
+		return true;
 	}
 
-	virtual inline bool hasItem() {
-		return false;
-	}
-
-	virtual inline uint64 getObjectID() {
+	virtual inline int size() {
 		return 0;
 	}
 
-	virtual inline bool returnObjectToParent() {;
+	virtual void print(){
+	}
+
+	virtual int getSlotQuantity() {
+		return -1;
+	}
+
+	virtual bool isResourceSlot() {
 		return false;
 	}
 
-	SceneObject* getPreviousParent() {
-		return previousParent;
+	virtual bool isComponentSlot() {
+		return false;
 	}
 
-	virtual void print(){
 
-
+	virtual Vector<uint64> getOIDVector() {
+		return NULL;
 	}
+
+	virtual Vector<int> getQuantityVector() {
+		return NULL;
+	}
+
+	virtual SceneObject* getFactoryIngredient() {
+		return NULL;
+	}
+
+
 };
 #endif /*INGREDIENTSLOT_H_*/

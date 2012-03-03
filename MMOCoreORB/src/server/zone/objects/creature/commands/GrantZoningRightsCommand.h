@@ -94,7 +94,7 @@ public:
 			targetPlayer->sendSystemMessage(params);
 
 			params.setStringId("@city/city:rights_granted_self"); //You have granted %TO zoning rights for 24 hours.
-			params.setTO(targetPlayer->getObjectName()->getDisplayedName());
+			params.setTO(targetPlayer->getDisplayedName());
 			creature->sendSystemMessage(params);
 		}
 

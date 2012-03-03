@@ -57,6 +57,7 @@ public:
 		insertFloat(1.0);
 
 		insertStringId(crate->getObjectName());
+		insertCustomName(crate->getCustomObjectName());
 
 		insertInt(crate->getVolume());
 

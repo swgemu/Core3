@@ -54,7 +54,6 @@ include server.zone.objects.draftschematic.draftslot.DraftSlot;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.area.ActiveArea;
 import system.util.Vector;
 
 class DraftSchematic extends IntangibleObject {

@@ -72,34 +72,24 @@ public:
 		if(!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<CreatureObject* > player = cast<CreatureObject*>( creature);
+		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
 
-		PlayerObject* ghost = player->getPlayerObject();
-
-		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
-
-		if(craftingTool == NULL) {
-			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
-			return GENERALERROR;
-		}
-
-		if(!craftingTool->isASubChildOf(creature)) {
+		if(session == NULL) {
+			warning("Trying to move to next crafting stage when no session exists");
 			return GENERALERROR;
 		}
 
 		StringTokenizer tokenizer(arguments.toString());
 
+		int clientCounter = 0;
+
 		if(tokenizer.hasMoreTokens()) {
 
-			int stage = tokenizer.getIntToken();
-
-			craftingTool->nextCraftingStage(player, stage);
-
-		} else {
-
-			craftingTool->nextCraftingStage(player, 0);
-
+			clientCounter = tokenizer.getIntToken();
 		}
+
+		Locker locker(session);
+		session->nextCraftingStage(clientCounter);
 
 		return SUCCESS;
 	}

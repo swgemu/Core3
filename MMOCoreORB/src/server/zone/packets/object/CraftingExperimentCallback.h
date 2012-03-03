@@ -13,7 +13,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
-
+#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 
 class CraftingExperimentCallback : public MessageCallback {
 
@@ -54,38 +54,15 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = static_cast<CreatureObject*>(client->getPlayer());
 
-		PlayerObject* ghost = player->getPlayerObject();
+		Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
 
-		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
-
-		if(craftingTool == NULL) {
-			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
+		if(session == NULL) {
+			warning("Trying to experiment when no session exists");
 			return;
 		}
 
-		if(!craftingTool->isASubChildOf(player)) {
-			return;
-		}
-
-		Locker _locker(craftingTool);
-
-		uint64 lastExperiment = craftingTool->getLastExperimentationTimestamp();
-
-		if(Time::currentNanoTime() - lastExperiment > 500000000)
-
-			craftingTool->experiment(player, numRowsAttempted, expString, clientCounter);
-
-		else {
-			/// If someone tried to do the experimentation cheat, they get here
-			ObjectControllerMessage* objMsg =
-					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0113);
-			objMsg->insertInt(0x105);
-
-			objMsg->insertInt(craftingTool->getExperimentationResult()); // Get last result
-			objMsg->insertByte(clientCounter);
-
-			player->sendMessage(objMsg);
-		}
+		Locker locker(session);
+		session->experiment(numRowsAttempted, expString, clientCounter);
 	}
 };
 

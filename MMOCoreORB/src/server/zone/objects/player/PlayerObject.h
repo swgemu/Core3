@@ -582,10 +582,6 @@ public:
 
 	SurveyTool* getSurveyTool();
 
-	CraftingTool* getLastCraftingToolUsed();
-
-	void setLastCraftingToolUsed(CraftingTool* tool);
-
 	void setTeleporting(bool val);
 
 	int getNumBadges();
@@ -871,8 +867,6 @@ protected:
 	ManagedWeakReference<BuildingObject* > cloningFacility;
 
 	ManagedWeakReference<SurveyTool* > surveyTool;
-
-	ManagedReference<CraftingTool* > lastCraftingToolUsed;
 
 	SortedVector<unsigned long long> persistentMessages;
 
@@ -1206,10 +1200,6 @@ public:
 	void setSurveyTool(SurveyTool* tool);
 
 	SurveyTool* getSurveyTool();
-
-	CraftingTool* getLastCraftingToolUsed();
-
-	void setLastCraftingToolUsed(CraftingTool* tool);
 
 	void setTeleporting(bool val);
 
@@ -1637,10 +1627,6 @@ public:
 	void setSurveyTool(SurveyTool* tool);
 
 	SurveyTool* getSurveyTool();
-
-	CraftingTool* getLastCraftingToolUsed();
-
-	void setLastCraftingToolUsed(CraftingTool* tool);
 
 	void setTeleporting(bool val);
 

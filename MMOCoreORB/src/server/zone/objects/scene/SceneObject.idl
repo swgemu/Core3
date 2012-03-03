@@ -160,6 +160,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected int planetMapCategory;
 	protected int planetMapSubCategory;
 	
+	protected unicode customName;
+	
 	protected transient SharedObjectTemplate templateObject;
 	
 	/**
@@ -509,7 +511,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this locked }
 	 */
 	public abstract void setCustomObjectName(final unicode name, boolean notifyClient) {
-		objectName.setCustomString(name);
+		customName = name;
 	}
 
 	/**
@@ -1209,7 +1211,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public unicode getCustomObjectName() {
-		return objectName.getCustomString();
+		return customName;
 	}
 
 	@read
@@ -1337,6 +1339,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dirty
 	public abstract boolean isResourceContainer() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isResourceSpawn() {
 		return false;
 	}
 	
@@ -1683,5 +1690,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native abstract void initializeChildObject(SceneObject controllerObject);
 	
 	public native boolean isInWater();
+
+	public native string getDisplayedName();
 }
 

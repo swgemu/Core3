@@ -108,7 +108,7 @@ public:
 				SceneObject* item = insurableItems.get(i);
 
 				if (item != NULL)
-					suiInsuranceMenuBox->addMenuItem(item->getObjectName()->getDisplayedName(), item->getObjectID());
+					suiInsuranceMenuBox->addMenuItem(item->getDisplayedName(), item->getObjectID());
 			}
 
 			suiInsuranceMenuBox->setCancelButton(true, "Cancel");

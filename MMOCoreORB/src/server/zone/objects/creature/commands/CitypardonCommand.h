@@ -105,7 +105,7 @@ public:
 		targetCreature->sendSystemMessage("@city/city:city_pardoned"); //You have been pardoned and are once again able to use city services.
 
 		StringIdChatParameter params("city/city", "city_pardon_done"); //%TT has been pardoned and is now able to use city services.
-		params.setTT(targetCreature->getObjectName()->getDisplayedName());
+		params.setTT(targetCreature->getDisplayedName());
 		creature->sendSystemMessage(params);
 
 		return SUCCESS;

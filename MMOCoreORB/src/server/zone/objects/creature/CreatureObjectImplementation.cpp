@@ -1245,7 +1245,7 @@ void CreatureObjectImplementation::updateLocomotion() {
 }
 
 UnicodeString CreatureObjectImplementation::getCreatureName() {
-	return objectName.getCustomString();
+	return getCustomObjectName();
 }
 
 void CreatureObjectImplementation::updateGroupInviterID(uint64 id,
@@ -2146,7 +2146,7 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 String CreatureObjectImplementation::getFirstName() {
-	UnicodeString fullName = objectName.getCustomString();
+	UnicodeString fullName = getCustomObjectName();
 
 	int idx = fullName.indexOf(' ');
 
@@ -2160,7 +2160,7 @@ String CreatureObjectImplementation::getFirstName() {
 String CreatureObjectImplementation::getLastName() {
 	UnicodeString lastName;
 
-	UnicodeString fullName = objectName.getCustomString();
+	UnicodeString fullName = getCustomObjectName();
 	UnicodeTokenizer tokenizer(fullName);
 
 	if (tokenizer.hasMoreTokens())

@@ -553,7 +553,7 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::STRUCTURE_STATUS);
 	status->setPromptTitle("@player_structure:structure_status_t"); //Structure Status
-	status->setPromptText("@player_structure:structure_name_prompt " + structure->getObjectName()->getDisplayedName()); //Structure Name:
+	status->setPromptText("@player_structure:structure_name_prompt " + structure->getDisplayedName()); //Structure Name:
 	status->setUsingObject(structure);
 	status->setOkButton(true, "@refresh");
 	status->setCancelButton(true, "@cancel");
@@ -719,7 +719,7 @@ void StructureManagerImplementation::payMaintenance(StructureObject* structure, 
 	}
 
 	StringIdChatParameter params("base_player", "prose_pay_success");
-	params.setTT(structure->getObjectName()->getDisplayedName());
+	params.setTT(structure->getDisplayedName());
 	params.setDI(amount);
 
 	creature->sendSystemMessage(params);

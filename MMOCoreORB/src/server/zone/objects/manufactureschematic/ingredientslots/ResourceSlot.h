@@ -52,103 +52,72 @@
 
 class ResourceSlot: public IngredientSlot {
 
-	ManagedReference<ResourceContainer* > contents;
+	int quantity;
+	VectorMap<ManagedReference<SceneObject*>, int> parents;
+	ManagedReference<ResourceSpawn*> currentSpawn;
 
 public:
-	ResourceSlot(SceneObject* tool, String t, int q) :
-		IngredientSlot(t, q) {
-
-		craftingTool = tool;
-		slottype = RESOURCESLOT;
-		contents = NULL;
-
+	ResourceSlot() : IngredientSlot() {
 		setLoggingName("ResourceSlot");
-
-		optional = false;
+		quantity = 0;
+		clientSlotType = 4;
+		parents.setAllowDuplicateInsertPlan();
 	}
 
 	ResourceSlot(const ResourceSlot& slot) : Object(), IngredientSlot(slot) {
-		contents = slot.contents;
-
 		setLoggingName("ResourceSlot");
+		quantity = slot.quantity;
+		parents.setAllowDuplicateInsertPlan();
 	}
 
 	~ResourceSlot() {
 
-		cleanup();
 	}
-
 
 	Object* clone() {
 		return new ResourceSlot(*this);
 	}
 
-	inline void cleanup() {
-		contents = NULL;
-	}
+	bool add(CreatureObject* player, ManagedReference<TangibleObject*> tano) {
 
-	inline int getQuantity() {
+		/// Must be a resource container to proceed, and
+		if (tano->isResourceContainer()) {
 
-		if (contents != NULL)
-			return contents->getQuantity();
-		else
-			return 0;
-	}
+			ResourceContainer* incomingResource = cast<ResourceContainer*>(tano.get());
 
-	bool add(CreatureObject* player, TangibleObject* tano) {
+			/// Get spawn object
+			ManagedReference<ResourceSpawn* > spawn = incomingResource->getSpawnObject();
 
-		/// Must be a resource container to proceed
-		if (tano->isResourceContainer() && getQuantity() < requiredQuantity) {
-
-			previousParent = tano->getParent();
-
-			ResourceContainer* incomingResource = cast<ResourceContainer*>( tano);
-
-			/// Verify the resource is the right type
-			if(!incomingResource->getSpawnObject()->isType(type))
+			if(spawn == NULL)
 				return false;
 
-			if (contents != NULL) {
+			/// Verify the resource is the right type
+			if(!incomingResource->getSpawnObject()->isType(contentType))
+				return false;
 
-				int needs = requiredQuantity - contents->getQuantity();
+			if (currentSpawn == NULL) {
+				currentSpawn = spawn;
+			}
 
-				if(incomingResource->getQuantity() > needs) {
+			int slotNeeds = requiredQuantity - quantity;
+			int currentQuantity = 0;
 
-					incomingResource->setQuantity(incomingResource->getQuantity() - needs);
-					contents->setQuantity(contents->getQuantity() + needs);
+			ManagedReference<SceneObject*> parent = incomingResource->getParent();
 
-				} else {
-					contents->setQuantity(contents->getQuantity() + incomingResource->getQuantity());
-					incomingResource->setQuantity(0);
-				}
+			if(incomingResource->getQuantity() >= slotNeeds) {
 
-			} else if (contents == NULL && incomingResource->getQuantity() > requiredQuantity) {
-
-				ResourceSpawn* spawn = incomingResource->getSpawnObject();
-
-				incomingResource->setQuantity(incomingResource->getQuantity() - requiredQuantity);
-
-				contents = spawn->createResource(requiredQuantity);
-
-				contents->setParent(NULL);
-				craftingTool->transferObject(contents, -1, false);
-
-				contents->sendTo(player, true);
-				contents->sendAttributeListTo(player);
+				incomingResource->setQuantity(incomingResource->getQuantity() - slotNeeds, true);
+				quantity += slotNeeds;
+				currentQuantity = slotNeeds;
 
 			} else {
-
-				contents = incomingResource;
-
-				/*if(contents->getParent() != NULL)
-					contents->getParent()->removeObject(contents, true);*/
-				craftingTool->transferObject(contents, -1, true);
-
-				if(previousParent != NULL) {
-					//previousParent->removeObject(incomingResource, true);
-					incomingResource->destroyObjectFromWorld(true);
-				}
+				quantity += incomingResource->getQuantity();
+				incomingResource->setQuantity(0);
+				currentQuantity = incomingResource->getQuantity();
 			}
+
+			VectorMapEntry<ManagedReference<SceneObject*>, int > entry(parent, currentQuantity);
+			parents.add(entry);
 
 			return true;
 		}
@@ -156,81 +125,88 @@ public:
 		return false;
 	}
 
-	inline bool remove(CreatureObject* player) {
+	bool returnToParents(CreatureObject* player) {
 
-		return returnObjectToParent();
-	}
+		if(parents.size() == 0)
+			return true;
 
-	inline TangibleObject* get() {
-
-		return cast<TangibleObject*>( contents.get());
-	}
-
-	inline bool isComplete() {
-		return (contents->getQuantity() == requiredQuantity);
-	}
-
-	inline bool hasItem() {
-		return contents != NULL;
-	}
-
-	inline uint64 getObjectID() {
-		if(contents == NULL)
-			return 0;
-		else
-			return contents->getObjectID();
-	}
-
-	inline bool returnObjectToParent() {
-
-		if(contents == NULL || previousParent == NULL || contents->getQuantity() > requiredQuantity)
+		if(currentSpawn == NULL) {
+			warning("Spawn is null when trying to return resources");
 			return false;
-
-		if(contents->getParent() != NULL) {
-			//contents->getParent()->removeObject(contents, true);
-			contents->destroyObjectFromWorld(true);
 		}
 
-		// Check inventory for resource and add if existing
-		for (int i = 0; i < previousParent->getContainerObjectsSize(); ++i) {
-			ManagedReference<SceneObject*> object =
-					previousParent->getContainerObject(i);
+		for(int i = 0; i < parents.size(); ++i) {
 
-			if (object->isResourceContainer()) {
-				ManagedReference<ResourceContainer*> resource = cast<ResourceContainer*>( object.get());
+			SceneObject* parent = parents.elementAt(i).getKey();
 
-				if (resource->getSpawnName() == contents->getSpawnName()) {
-					int newStackSize = resource->getQuantity() + contents->getQuantity();
+			if(parent == NULL)
+				continue;
 
-					if(newStackSize <= ResourceContainer::MAXSIZE) {
-						resource->setQuantity(newStackSize);
-						contents = NULL;
-						return true;
-					} else {
-						resource->setQuantity(ResourceContainer::MAXSIZE);
-						contents->setQuantity(newStackSize - ResourceContainer::MAXSIZE);
+			bool found = false;
+			// Check inventory for resource and add if existing
+			for (int j = 0; j < parent->getContainerObjectsSize(); ++j) {
+				ManagedReference<SceneObject*> object = parent->getContainerObject(j);
+
+				if (object->isResourceContainer()) {
+					ManagedReference<ResourceContainer*> resource = cast<ResourceContainer*>( object.get());
+
+					if (resource->getSpawnName() == currentSpawn->getName()) {
+						resource->setQuantity(resource->getQuantity() + parents.get(i));
+						found = true;
+						break;
 					}
-
 				}
+			}
+
+			if(!found) {
+				parent->transferObject(currentSpawn->createResource(parents.get(i)), -1, true);
 			}
 		}
 
-		previousParent->transferObject(contents, -1, true);
-		contents = NULL;
+		parents.removeAll();
+		currentSpawn = NULL;
+		quantity = 0;
 		return true;
 	}
 
-	void print() {
-		if (contents == NULL) {
-
-			System::out << "Slot is EMPTY" << endl;
-
-		} else {
-
-			System::out << "Name: "
-					<< contents->getCustomObjectName().toString() << endl;
-			System::out << "Quantity: " << contents->getQuantity() << endl;
-		}
+	int getSlotQuantity() {
+		return quantity;
 	}
+
+	bool isFull() {
+		return quantity == requiredQuantity;
+	}
+
+	bool isEmpty() {
+		return quantity == 0;
+	}
+
+	bool isResourceSlot() {
+		return true;
+	}
+
+	ResourceSpawn* getCurrentSpawn() {
+		return currentSpawn;
+	}
+
+	SceneObject* getFactoryIngredient() {
+		return getCurrentSpawn();
+	}
+
+	Vector<uint64> getOIDVector() {
+		Vector<uint64> oid;
+		if(currentSpawn != NULL)
+			oid.add(currentSpawn->getObjectID());
+		return oid;
+	}
+
+	Vector<int> getQuantityVector() {
+		Vector<int> oid;
+
+		oid.add(quantity);
+
+		return oid;
+	}
+
 };
 #endif /*RESOURCESLOT_H_*/

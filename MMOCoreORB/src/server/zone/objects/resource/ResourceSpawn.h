@@ -102,6 +102,8 @@ public:
 
 	void decreaseContainerReferenceCount();
 
+	bool isResourceSpawn();
+
 	void setName(const String& name);
 
 	void setType(const String& type);
@@ -264,6 +266,8 @@ public:
 
 	void decreaseContainerReferenceCount();
 
+	bool isResourceSpawn();
+
 	void setName(const String& name);
 
 	void setType(const String& type);
@@ -396,6 +400,8 @@ public:
 	void initializeTransientMembers();
 
 	void decreaseContainerReferenceCount();
+
+	bool isResourceSpawn();
 
 	void setName(const String& name);
 

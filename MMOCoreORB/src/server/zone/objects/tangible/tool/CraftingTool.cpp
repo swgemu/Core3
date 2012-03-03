@@ -10,8 +10,6 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/managers/crafting/CraftingManager.h"
-
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -22,11 +20,13 @@
 
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 /*
  *	CraftingToolStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_,RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_,RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_,RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_,RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_,RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_,RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_,RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_SETREADY__,RPC_ISBUSY__,RPC_SETBUSY__,RPC_ISFINISHED__,RPC_SETFINISHED__,RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_STRING_,RPC_GETTOOLTYPE__,RPC_GETEFFECTIVENESS__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,};
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
@@ -132,6 +132,86 @@ bool CraftingTool::isReady() {
 		return _implementation->isReady();
 }
 
+void CraftingTool::setReady() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETREADY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setReady();
+}
+
+bool CraftingTool::isBusy() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISBUSY__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isBusy();
+}
+
+void CraftingTool::setBusy() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBUSY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBusy();
+}
+
+bool CraftingTool::isFinished() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISFINISHED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isFinished();
+}
+
+void CraftingTool::setFinished() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETFINISHED__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setFinished();
+}
+
+void CraftingTool::sendToolStartFailure(CreatureObject* player, const String& message) {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_STRING_);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(message);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendToolStartFailure(player, message);
+}
+
 int CraftingTool::getToolType() {
 	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -143,6 +223,32 @@ int CraftingTool::getToolType() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getToolType();
+}
+
+float CraftingTool::getEffectiveness() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETEFFECTIVENESS__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getEffectiveness();
+}
+
+float CraftingTool::getComplexityLevel() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOMPLEXITYLEVEL__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getComplexityLevel();
 }
 
 TangibleObject* CraftingTool::getPrototype() {
@@ -178,308 +284,6 @@ Vector<unsigned int>* CraftingTool::getToolTabs() {
 
 	} else
 		return _implementation->getToolTabs();
-}
-
-void CraftingTool::requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(craftingStation);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->requestCraftingSession(player, craftingStation);
-}
-
-void CraftingTool::sendToolStartFailure(CreatureObject* player) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendToolStartFailure(player);
-}
-
-void CraftingTool::cancelCraftingSession(CreatureObject* player) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->cancelCraftingSession(player);
-}
-
-void CraftingTool::clearCraftingSession() {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CLEARCRAFTINGSESSION__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->clearCraftingSession();
-}
-
-void CraftingTool::selectDraftSchematic(CreatureObject* player, int index) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(index);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->selectDraftSchematic(player, index);
-}
-
-bool CraftingTool::createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(draftschematic);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->createSessionObjects(player, draftschematic);
-}
-
-bool CraftingTool::createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(draftschematic);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->createManufactureSchematic(player, draftschematic);
-}
-
-bool CraftingTool::createPrototype(CreatureObject* player, DraftSchematic* draftschematic) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(draftschematic);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->createPrototype(player, draftschematic);
-}
-
-void CraftingTool::synchronizedUIListenForSchematic(CreatureObject* player) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->synchronizedUIListenForSchematic(player);
-}
-
-void CraftingTool::addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(tano);
-		method.addSignedIntParameter(slot);
-		method.addSignedIntParameter(clientCounter);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addIngredient(player, tano, slot, clientCounter);
-}
-
-void CraftingTool::removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(tano);
-		method.addSignedIntParameter(slot);
-		method.addSignedIntParameter(clientCounter);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeIngredient(player, tano, slot, clientCounter);
-}
-
-void CraftingTool::nextCraftingStage(CreatureObject* player, int clientCounter) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(clientCounter);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->nextCraftingStage(player, clientCounter);
-}
-
-void CraftingTool::experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(numRowsAttempted);
-		method.addAsciiParameter(expString);
-		method.addSignedIntParameter(clientCounter);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->experiment(player, numRowsAttempted, expString, clientCounter);
-}
-
-void CraftingTool::customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_);
-		method.addObjectParameter(player);
-		method.addAsciiParameter(name);
-		method.addByteParameter(templateChoice);
-		method.addSignedIntParameter(schematicCount);
-		method.addAsciiParameter(customization);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->customization(player, name, templateChoice, schematicCount, customization);
-}
-
-void CraftingTool::createPrototype(CreatureObject* player, int clientCounter, int practice) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(clientCounter);
-		method.addSignedIntParameter(practice);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createPrototype(player, clientCounter, practice);
-}
-
-void CraftingTool::createManfSchematic(CreatureObject* player, int clientCounter) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(clientCounter);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createManfSchematic(player, clientCounter);
-}
-
-void CraftingTool::createObject(CreatureObject* player, int timer, bool create) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(timer);
-		method.addBooleanParameter(create);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createObject(player, timer, create);
-}
-
-void CraftingTool::depositObject(CreatureObject* player, bool practice) {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_);
-		method.addObjectParameter(player);
-		method.addBooleanParameter(practice);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->depositObject(player, practice);
-}
-
-unsigned long long CraftingTool::getLastExperimentationTimestamp() {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETLASTEXPERIMENTATIONTIMESTAMP__);
-
-		return method.executeWithUnsignedLongReturn();
-	} else
-		return _implementation->getLastExperimentationTimestamp();
-}
-
-int CraftingTool::getExperimentationResult() {
-	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETEXPERIMENTATIONRESULT__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getExperimentationResult();
 }
 
 DistributedObjectServant* CraftingTool::_getImplementation() {
@@ -587,6 +391,11 @@ bool CraftingToolImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "status") {
+		TypeInfo<String >::parseFromBinaryStream(&status, stream);
+		return true;
+	}
+
 	if (_name == "type") {
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
@@ -597,38 +406,13 @@ bool CraftingToolImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
-	if (_name == "status") {
-		TypeInfo<String >::parseFromBinaryStream(&status, stream);
-		return true;
-	}
-
 	if (_name == "complexityLevel") {
 		TypeInfo<int >::parseFromBinaryStream(&complexityLevel, stream);
 		return true;
 	}
 
-	if (_name == "craftingManager") {
-		TypeInfo<ManagedReference<CraftingManager* > >::parseFromBinaryStream(&craftingManager, stream);
-		return true;
-	}
-
 	if (_name == "enabledTabs") {
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&enabledTabs, stream);
-		return true;
-	}
-
-	if (_name == "currentSchematicList") {
-		TypeInfo<Vector<ManagedReference<DraftSchematic* > > >::parseFromBinaryStream(&currentSchematicList, stream);
-		return true;
-	}
-
-	if (_name == "craftingStation") {
-		TypeInfo<ManagedReference<CraftingStation* > >::parseFromBinaryStream(&craftingStation, stream);
-		return true;
-	}
-
-	if (_name == "state") {
-		TypeInfo<int >::parseFromBinaryStream(&state, stream);
 		return true;
 	}
 
@@ -647,6 +431,14 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "status";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&status, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "type";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -663,27 +455,11 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "status";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&status, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "complexityLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<int >::toBinaryStream(&complexityLevel, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "craftingManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<CraftingManager* > >::toBinaryStream(&craftingManager, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -695,32 +471,8 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentSchematicList";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Vector<ManagedReference<DraftSchematic* > > >::toBinaryStream(&currentSchematicList, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-	_name = "craftingStation";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<CraftingStation* > >::toBinaryStream(&craftingStation, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "state";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&state, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-
-	return 9 + ToolTangibleObjectImplementation::writeObjectMembers(stream);
+	return 5 + ToolTangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 CraftingToolImplementation::CraftingToolImplementation() {
@@ -729,8 +481,6 @@ CraftingToolImplementation::CraftingToolImplementation() {
 	Logger::setLoggingName("CraftingTool");
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		status = "@crafting:tool_status_ready";
 	status = "@crafting:tool_status_ready";
-	// server/zone/objects/tangible/tool/CraftingTool.idl():  		state = 1;
-	state = 1;
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		effectiveness = -15;
 	effectiveness = -15;
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		super.setContainerInheritPermissionsFromParent(false);
@@ -746,12 +496,8 @@ CraftingToolImplementation::CraftingToolImplementation() {
 void CraftingToolImplementation::initializeTransientMembers() {
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingTool.idl():  		lastExperimentationTimestamp = 0;
-	lastExperimentationTimestamp = 0;
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		}
 	if (getContainerObjectsSize() == 0){
-	// server/zone/objects/tangible/tool/CraftingTool.idl():  			state = 1;
-	state = 1;
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  			status = "@crafting:tool_status_ready";
 	status = "@crafting:tool_status_ready";
 }
@@ -772,24 +518,49 @@ bool CraftingToolImplementation::isReady() {
 	return status == "@crafting:tool_status_ready";
 }
 
+void CraftingToolImplementation::setReady() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		status = "@crafting:tool_status_ready";
+	status = "@crafting:tool_status_ready";
+}
+
+bool CraftingToolImplementation::isBusy() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return status == "@crafting:tool_status_working";
+	return status == "@crafting:tool_status_working";
+}
+
+void CraftingToolImplementation::setBusy() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		status = "@crafting:tool_status_working";
+	status = "@crafting:tool_status_working";
+}
+
+bool CraftingToolImplementation::isFinished() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return status == "@crafting:tool_status_finished";
+	return status == "@crafting:tool_status_finished";
+}
+
+void CraftingToolImplementation::setFinished() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		status = "@crafting:tool_status_finished";
+	status = "@crafting:tool_status_finished";
+}
+
 int CraftingToolImplementation::getToolType() {
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return type;
 	return type;
 }
 
+float CraftingToolImplementation::getEffectiveness() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return effectiveness;
+	return effectiveness;
+}
+
+float CraftingToolImplementation::getComplexityLevel() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return complexityLevel;
+	return complexityLevel;
+}
+
 ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
-}
-
-unsigned long long CraftingToolImplementation::getLastExperimentationTimestamp() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return lastExperimentationTimestamp;
-	return lastExperimentationTimestamp;
-}
-
-int CraftingToolImplementation::getExperimentationResult() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return experimentationResult;
-	return experimentationResult;
 }
 
 /*
@@ -815,74 +586,38 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_ISREADY__:
 		resp->insertBoolean(isReady());
 		break;
+	case RPC_SETREADY__:
+		setReady();
+		break;
+	case RPC_ISBUSY__:
+		resp->insertBoolean(isBusy());
+		break;
+	case RPC_SETBUSY__:
+		setBusy();
+		break;
+	case RPC_ISFINISHED__:
+		resp->insertBoolean(isFinished());
+		break;
+	case RPC_SETFINISHED__:
+		setFinished();
+		break;
+	case RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_STRING_:
+		sendToolStartFailure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendToolStartFailure__CreatureObject_String_));
+		break;
 	case RPC_GETTOOLTYPE__:
 		resp->insertSignedInt(getToolType());
+		break;
+	case RPC_GETEFFECTIVENESS__:
+		resp->insertFloat(getEffectiveness());
+		break;
+	case RPC_GETCOMPLEXITYLEVEL__:
+		resp->insertFloat(getComplexityLevel());
 		break;
 	case RPC_GETPROTOTYPE__:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
 	case RPC_GETMANUFACTURESCHEMATIC__:
 		resp->insertLong(getManufactureSchematic()->_getObjectID());
-		break;
-	case RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_:
-		requestCraftingSession(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CraftingStation*>(inv->getObjectParameter()));
-		break;
-	case RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_:
-		sendToolStartFailure(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_:
-		cancelCraftingSession(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_CLEARCRAFTINGSESSION__:
-		clearCraftingSession();
-		break;
-	case RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_:
-		selectDraftSchematic(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
-		break;
-	case RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_:
-		resp->insertBoolean(createSessionObjects(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter())));
-		break;
-	case RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_:
-		resp->insertBoolean(createManufactureSchematic(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter())));
-		break;
-	case RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_:
-		resp->insertBoolean(createPrototype(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter())));
-		break;
-	case RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_:
-		synchronizedUIListenForSchematic(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_:
-		addIngredient(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
-		break;
-	case RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_:
-		removeIngredient(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
-		break;
-	case RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_:
-		nextCraftingStage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
-		break;
-	case RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_:
-		experiment(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__CreatureObject_int_String_int_), inv->getSignedIntParameter());
-		break;
-	case RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_:
-		customization(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_customization__CreatureObject_String_byte_int_String_), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param4_customization__CreatureObject_String_byte_int_String_));
-		break;
-	case RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_:
-		createPrototype(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
-		break;
-	case RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_:
-		createManfSchematic(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
-		break;
-	case RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_:
-		createObject(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter());
-		break;
-	case RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_:
-		depositObject(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
-		break;
-	case RPC_GETLASTEXPERIMENTATIONTIMESTAMP__:
-		resp->insertLong(getLastExperimentationTimestamp());
-		break;
-	case RPC_GETEXPERIMENTATIONRESULT__:
-		resp->insertSignedInt(getExperimentationResult());
 		break;
 	default:
 		return NULL;
@@ -907,8 +642,40 @@ bool CraftingToolAdapter::isReady() {
 	return (static_cast<CraftingTool*>(stub))->isReady();
 }
 
+void CraftingToolAdapter::setReady() {
+	(static_cast<CraftingTool*>(stub))->setReady();
+}
+
+bool CraftingToolAdapter::isBusy() {
+	return (static_cast<CraftingTool*>(stub))->isBusy();
+}
+
+void CraftingToolAdapter::setBusy() {
+	(static_cast<CraftingTool*>(stub))->setBusy();
+}
+
+bool CraftingToolAdapter::isFinished() {
+	return (static_cast<CraftingTool*>(stub))->isFinished();
+}
+
+void CraftingToolAdapter::setFinished() {
+	(static_cast<CraftingTool*>(stub))->setFinished();
+}
+
+void CraftingToolAdapter::sendToolStartFailure(CreatureObject* player, const String& message) {
+	(static_cast<CraftingTool*>(stub))->sendToolStartFailure(player, message);
+}
+
 int CraftingToolAdapter::getToolType() {
 	return (static_cast<CraftingTool*>(stub))->getToolType();
+}
+
+float CraftingToolAdapter::getEffectiveness() {
+	return (static_cast<CraftingTool*>(stub))->getEffectiveness();
+}
+
+float CraftingToolAdapter::getComplexityLevel() {
+	return (static_cast<CraftingTool*>(stub))->getComplexityLevel();
 }
 
 TangibleObject* CraftingToolAdapter::getPrototype() {
@@ -917,86 +684,6 @@ TangibleObject* CraftingToolAdapter::getPrototype() {
 
 ManufactureSchematic* CraftingToolAdapter::getManufactureSchematic() {
 	return (static_cast<CraftingTool*>(stub))->getManufactureSchematic();
-}
-
-void CraftingToolAdapter::requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation) {
-	(static_cast<CraftingTool*>(stub))->requestCraftingSession(player, craftingStation);
-}
-
-void CraftingToolAdapter::sendToolStartFailure(CreatureObject* player) {
-	(static_cast<CraftingTool*>(stub))->sendToolStartFailure(player);
-}
-
-void CraftingToolAdapter::cancelCraftingSession(CreatureObject* player) {
-	(static_cast<CraftingTool*>(stub))->cancelCraftingSession(player);
-}
-
-void CraftingToolAdapter::clearCraftingSession() {
-	(static_cast<CraftingTool*>(stub))->clearCraftingSession();
-}
-
-void CraftingToolAdapter::selectDraftSchematic(CreatureObject* player, int index) {
-	(static_cast<CraftingTool*>(stub))->selectDraftSchematic(player, index);
-}
-
-bool CraftingToolAdapter::createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic) {
-	return (static_cast<CraftingTool*>(stub))->createSessionObjects(player, draftschematic);
-}
-
-bool CraftingToolAdapter::createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic) {
-	return (static_cast<CraftingTool*>(stub))->createManufactureSchematic(player, draftschematic);
-}
-
-bool CraftingToolAdapter::createPrototype(CreatureObject* player, DraftSchematic* draftschematic) {
-	return (static_cast<CraftingTool*>(stub))->createPrototype(player, draftschematic);
-}
-
-void CraftingToolAdapter::synchronizedUIListenForSchematic(CreatureObject* player) {
-	(static_cast<CraftingTool*>(stub))->synchronizedUIListenForSchematic(player);
-}
-
-void CraftingToolAdapter::addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
-	(static_cast<CraftingTool*>(stub))->addIngredient(player, tano, slot, clientCounter);
-}
-
-void CraftingToolAdapter::removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
-	(static_cast<CraftingTool*>(stub))->removeIngredient(player, tano, slot, clientCounter);
-}
-
-void CraftingToolAdapter::nextCraftingStage(CreatureObject* player, int clientCounter) {
-	(static_cast<CraftingTool*>(stub))->nextCraftingStage(player, clientCounter);
-}
-
-void CraftingToolAdapter::experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter) {
-	(static_cast<CraftingTool*>(stub))->experiment(player, numRowsAttempted, expString, clientCounter);
-}
-
-void CraftingToolAdapter::customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization) {
-	(static_cast<CraftingTool*>(stub))->customization(player, name, templateChoice, schematicCount, customization);
-}
-
-void CraftingToolAdapter::createPrototype(CreatureObject* player, int clientCounter, int practice) {
-	(static_cast<CraftingTool*>(stub))->createPrototype(player, clientCounter, practice);
-}
-
-void CraftingToolAdapter::createManfSchematic(CreatureObject* player, int clientCounter) {
-	(static_cast<CraftingTool*>(stub))->createManfSchematic(player, clientCounter);
-}
-
-void CraftingToolAdapter::createObject(CreatureObject* player, int timer, bool create) {
-	(static_cast<CraftingTool*>(stub))->createObject(player, timer, create);
-}
-
-void CraftingToolAdapter::depositObject(CreatureObject* player, bool practice) {
-	(static_cast<CraftingTool*>(stub))->depositObject(player, practice);
-}
-
-unsigned long long CraftingToolAdapter::getLastExperimentationTimestamp() {
-	return (static_cast<CraftingTool*>(stub))->getLastExperimentationTimestamp();
-}
-
-int CraftingToolAdapter::getExperimentationResult() {
-	return (static_cast<CraftingTool*>(stub))->getExperimentationResult();
 }
 
 /*

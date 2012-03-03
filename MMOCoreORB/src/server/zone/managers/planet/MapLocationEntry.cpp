@@ -56,7 +56,7 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 		return;
 
 	// Default is the result of getDisplayedName()
-	String newName = object->getObjectName()->getDisplayedName();
+	String newName = object->getDisplayedName();
 
 	if(object->isCreatureObject()) { // Try FirstName + FastName if it's a creature
 		CreatureObject* creature = cast<CreatureObject*>(object.get());

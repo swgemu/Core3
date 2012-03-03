@@ -70,6 +70,7 @@ class StringIdParameter : public Serializable {
 protected:
 	uint64 pointerParameter;
 	StringId stringID;
+	UnicodeString customName;
 
 	StringIdParameter() : Serializable() {
 		addSerializableVariables();
@@ -79,6 +80,7 @@ private:
 	inline void addSerializableVariables() {
 		addSerializableVariable("stringID", &stringID);
 		addSerializableVariable("pointerParameter", &pointerParameter);
+		addSerializableVariable("customName", &customName);
 	}
 
 public:
@@ -118,19 +120,19 @@ public:
 	void set(const UnicodeString& us) {
 		clear();
 
-		stringID.setCustomString(us);
+		customName = us;
 	}
 
 	void set(const String& cs) {
 		clear();
 
-		stringID.setCustomString(UnicodeString(cs));
+		customName = UnicodeString(cs);
 	}
 
 	void set(const char* cstr) {
 		clear();
 
-		stringID.setCustomString(UnicodeString(cstr));
+		customName = UnicodeString(cstr);
 	}
 
 	inline uint32 size() const {
@@ -142,7 +144,11 @@ public:
 	}
 
 	inline UnicodeString& getUnicodeParameter() {
-		return stringID.getCustomString();
+		return customName;
+	}
+
+	inline String getDisplayedName() {
+		return customName.toString();
 	}
 
 	inline String& getFileParameter() {

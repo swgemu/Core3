@@ -910,7 +910,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		if (zone->getZoneName() == "tutorial") {
 			closestName = "Aboard a Space Station";
 		} else {
-			closestName = closestCloning->getObjectName()->getDisplayedName();
+			closestName = closestCloning->getDisplayedName();
 		}
 	}
 
@@ -923,7 +923,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		if (cr != NULL)
 			predesignatedName = cr->getRegionName();
 		else
-			predesignatedName = preDesignatedFacility->getObjectName()->getDisplayedName();
+			predesignatedName = preDesignatedFacility->getDisplayedName();
 	}
 
 	if (predesignatedName == "")
@@ -960,7 +960,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 				if (cr != NULL)
 					cloneMenu->addMenuItem(cr->getRegionName() + " (" + String::valueOf((int)player->getDistanceTo(location)) + "m)", location->getObjectID());
 				else
-					cloneMenu->addMenuItem(location->getObjectName()->getDisplayedName() + " (" + String::valueOf((int)player->getDistanceTo(location)) + "m)", location->getObjectID());
+					cloneMenu->addMenuItem(location->getDisplayedName() + " (" + String::valueOf((int)player->getDistanceTo(location)) + "m)", location->getObjectID());
 			}
 		}
 	}
@@ -2225,7 +2225,7 @@ void PlayerManagerImplementation::updateAdminLevel(CreatureObject* player, const
 	//Send deltas
 	if (targetPlayer->isOnline()) {
 		TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(targetPlayer);
-		tanod3->updateName(targetPlayer->getObjectName()->getDisplayedName());
+		tanod3->updateName(targetPlayer->getDisplayedName());
 		tanod3->close();
 		targetPlayer->broadcastMessage(tanod3, true);
 

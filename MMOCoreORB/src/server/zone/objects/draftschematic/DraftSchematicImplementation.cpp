@@ -48,15 +48,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
-/*#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"*/
 
 void DraftSchematicImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -151,7 +143,9 @@ SceneObject* DraftSchematicImplementation::createManufactureSchematic(SceneObjec
 		return NULL;
 	}
 
-	manuSchematic->setDraftSchematic(craftingTool, _this);
+	manuSchematic->createChildObjects();
+
+	manuSchematic->setDraftSchematic(_this);
 
 	return manuSchematic;
 }

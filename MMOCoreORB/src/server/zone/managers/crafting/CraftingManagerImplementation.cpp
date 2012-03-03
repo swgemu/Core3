@@ -44,6 +44,7 @@
 
 #include "CraftingManager.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/ResourceSlot.h"
 
 void CraftingManagerImplementation::initialize() {
 	schematicMap = SchematicMap::instance();
@@ -124,30 +125,16 @@ float CraftingManagerImplementation::calculateAssemblyValueModifier(int assembly
 
 
 	if(assemblyResult == CraftingManager::AMAZINGSUCCESS)
+			return 1.2f;
+
+	float result = assemblyResult * .1;
+
+	return 1.1f - result;
+
+	/*if(assemblyResult == CraftingManager::AMAZINGSUCCESS)
 		return 1.2f;
 	else
-		return 1.0f;
-
-	/*float results = ((3.4 / Math::ln(assemblyResult + 4)) - 1.1111);
-
-	// Unless we want amazing assemblies to get a bonus, we cap the madifier at 1
-
-	if (results > 1.00) {
-
-		if (results < 1.05) {
-
-			results = 1.0f;
-
-		} else {
-
-			results = 1.2f;
-
-		}
-
-	}
-
-	return results;*/
-
+		return 1.0f;*/
 }
 
 float CraftingManagerImplementation::getAssemblyPercentage(float value) {
@@ -284,22 +271,24 @@ float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manu
 
 	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 
-		Reference<IngredientSlot* > ingredientslot = manufactureSchematic->getIngredientSlot(i);
+		Reference<IngredientSlot* > ingredientslot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftslot = manufactureSchematic->getDraftSchematic()->getDraftSlot(i);
 
-		if(!ingredientslot->isType(IngredientSlot::RESOURCESLOT))
+		/// If resource slot, continue
+		if(!ingredientslot->isResourceSlot())
 			continue;
 
-		ManagedReference<ResourceContainer* > resourceContainer = cast<ResourceContainer*>(ingredientslot->get());
+		ResourceSlot* resSlot = cast<ResourceSlot*>(ingredientslot.get());
 
-		if(resourceContainer == NULL)
+		if(resSlot == NULL)
 			continue;
 
-		ManagedReference<ResourceSpawn* > spawn = resourceContainer->getSpawnObject();
+		ManagedReference<ResourceSpawn* > spawn = resSlot->getCurrentSpawn();
 
-		// FIXME
-		if (spawn == NULL)
+		if (spawn == NULL) {
+			error("Spawn object is null when running getWeightedValue");
 			return 0.0f;
+		}
 
 		int combineType = draftslot->getCombineType();
 
@@ -379,6 +368,9 @@ void CraftingManagerImplementation::experimentRow(CraftingValues* craftingValues
 
 			if (newValue > craftingValues->getMaxPercentage(subtitle))
 				newValue = craftingValues->getMaxPercentage(subtitle);
+
+			if (newValue < 0)
+				newValue = 0;
 
 			craftingValues->setCurrentPercentage(subtitle, newValue);
 		}

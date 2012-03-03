@@ -87,6 +87,10 @@ public:
 		return identical;
 	}
 
+	void setIdentical(bool value) {
+		identical = value;
+	}
+
 	/// Getter for type
 	String getType() {
 		return type;
@@ -102,7 +106,7 @@ public:
 		return serialNumber;
 	}
 
-	/// Getter for serial
+	/// Getter for displayed name
 	String getDisplayedName() {
 		return displayedName;
 	}
@@ -110,6 +114,10 @@ public:
 	/// getter for quantity
 	int getQuantity() {
 		return quantity;
+	}
+
+	void setQuantity(int value) {
+		quantity = value;
 	}
 
 	/// increase for quantity
@@ -122,15 +130,27 @@ public:
 		matchingHopperItems.add(object);
 	}
 
+	void setDisplayedName(String value) {
+		displayedName = value;
+	}
+
+	void setType(String value) {
+		type = value;
+	}
+
+	void setKey(String value) {
+		key = value;
+	}
+
+	void setSerial(String value) {
+		serialNumber = value;
+	}
+
 	void setHopper(SceneObject* hopper) {
 		inputHopper = hopper;
 	}
 
 private:
-
-	/// Populates members
-	void createEntry(TangibleObject* ingredient, bool isIdentical);
-
 
 	/// Adds members to be serialized
 	void addSerializableVariables();

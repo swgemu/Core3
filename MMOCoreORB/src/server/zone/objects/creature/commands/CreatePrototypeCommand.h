@@ -76,20 +76,6 @@ public:
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
-		PlayerObject* ghost = player->getPlayerObject();
-
-		ManagedReference<CraftingTool*> craftingTool =
-				ghost->getLastCraftingToolUsed();
-
-		if (craftingTool == NULL) {
-			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
-			return GENERALERROR;
-		}
-
-		if(!craftingTool->isASubChildOf(creature)) {
-			return GENERALERROR;
-		}
-
 		int clientCounter, practice;
 
 		StringTokenizer tokenizer(arguments.toString());
@@ -104,12 +90,15 @@ public:
 		else
 			practice = 1;
 
+		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
 
-		String type;
+		if(session == NULL) {
+			warning("Trying to create manf schematic when no session exists");
+			return GENERALERROR;
+		}
 
-		Locker _locker(craftingTool);
-
-		craftingTool->createPrototype(player, clientCounter, practice);
+		Locker locker(session);
+		session->createPrototype(clientCounter, practice);
 
 		return SUCCESS;
 	}

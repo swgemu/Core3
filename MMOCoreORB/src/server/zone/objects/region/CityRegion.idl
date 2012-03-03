@@ -25,6 +25,8 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected StringId regionName;
+	
+	protected string customRegionName;
 
 	@dereferenced
 	protected ZoneReference zone;
@@ -172,9 +174,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return zone.get();
 	}
 
-	public string getRegionName() {
-		return regionName.getDisplayedName();
-	}
+	public native string getRegionName();
 	
 	public unsigned long getMayorID() {
 		return mayorID;
@@ -246,8 +246,8 @@ class CityRegion extends ManagedObject implements Logger {
 	//Setters
 	public native void setZone(Zone zne);
 	
-	public void setRegionName(final unicode name) {
-		regionName.setCustomString(name);
+	public void setCustomRegionName(final string name) {
+		customRegionName = name;
 	}
 	
 	public void setCitySpecialization(final string spec) {

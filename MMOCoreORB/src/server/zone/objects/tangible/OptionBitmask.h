@@ -61,7 +61,7 @@ public:
 	static const uint32 UNKNOWN9   = 0x00000400;
 	static const uint32 QUESTGIVER = 0x00000800; //Info Icon 1 in creatures
 	static const uint32 VEHICLE    = 0x00001000; //Vehicles will only appear with this bit enabled
-	static const uint32 UNKNOWN12  = 0x00002000;
+	static const uint32 HASSERIAL  = 0x00002000; // Has a serial number
 	static const uint32 UNKNOWN13  = 0x00004000;
 	static const uint32 QUESTDONE  = 0x00008000; //Info Icon 2 in creatures
 	static const uint32 UNKNOWN14  = 0x00010000;
@@ -80,8 +80,6 @@ public:
 	static const uint32 UNKNOWN27  = 0x20000000;
 	static const uint32 UNKNOWN28  = 0x40000000;
 	static const uint32 UNKNOWN29  = 0x80000000;
-
-	static const uint32 HASSERIALNUMBER = UNKNOWN12 | HIDEHAM; //0x00002100;
 
 };
 

@@ -122,7 +122,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	objectName = npcTemplate->getObjectName();
 
-	objectName.setCustomString(templateData->getCustomName());
+	setCustomObjectName(templateData->getCustomName(), false);
 
 	String currentLogName = getLoggingName();
 
@@ -340,12 +340,12 @@ void AiAgentImplementation::selectWeapon() {
 		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
 			currentWeapon->destroyObjectFromWorld(false);
 
-			//info("removed weapon " + currentWeapon->getObjectName()->getDisplayedName(), true);
+			//info("removed weapon " + currentWeapon->getDisplayedName(), true);
 		}
 
 		if (finalWeap != defaultWeapon) {
 
-			//info("selected weapon " + finalWeap->getObjectName()->getDisplayedName(), true);
+			//info("selected weapon " + finalWeap->getDisplayedName(), true);
 
 			transferObject(finalWeap, 4, false);
 			broadcastObject(finalWeap, false);
@@ -1052,7 +1052,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 
 	} else {
 		StringIdChatParameter success("skl_use", "sys_scentmask_success");
-		success.setTT(getObjectName()->getDisplayedName());
+		success.setTT(getDisplayedName());
 
 		target->sendSystemMessage(success);
 

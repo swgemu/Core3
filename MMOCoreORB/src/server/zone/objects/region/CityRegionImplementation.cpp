@@ -114,7 +114,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	CreatureObject* creature = cast<CreatureObject*>(object);
 
 	StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
-	params.setTT(regionName.getDisplayedName());
+	params.setTT(getRegionName());
 
 	UnicodeString strRank = StringIdManager::instance()->getStringId(String("@city/city:rank" + String::valueOf(cityRank)).hashCode());
 
@@ -142,7 +142,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	CreatureObject* creature = cast<CreatureObject*>(object);
 
 	StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
-	params.setTO(regionName.getDisplayedName());
+	params.setTO(getRegionName());
 
 	creature->sendSystemMessage(params);
 
@@ -204,4 +204,11 @@ void CityRegionImplementation::destroyActiveAreas() {
 			regions.drop(aa);
 		}
 	}
+}
+
+String CityRegionImplementation::getRegionName() {
+	if(!customRegionName.isEmpty())
+		return customRegionName;
+
+	return regionName.getFullPath();
 }

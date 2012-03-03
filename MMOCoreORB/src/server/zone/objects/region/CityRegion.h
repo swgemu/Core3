@@ -196,7 +196,7 @@ public:
 
 	void setZone(Zone* zne);
 
-	void setRegionName(const UnicodeString& name);
+	void setCustomRegionName(const String& name);
 
 	void setCitySpecialization(const String& spec);
 
@@ -258,6 +258,8 @@ protected:
 	ManagedReference<StructureObject* > cityHall;
 
 	StringId regionName;
+
+	String customRegionName;
 
 	ZoneReference zone;
 
@@ -390,7 +392,7 @@ public:
 
 	void setZone(Zone* zne);
 
-	void setRegionName(const UnicodeString& name);
+	void setCustomRegionName(const String& name);
 
 	void setCitySpecialization(const String& spec);
 
@@ -543,7 +545,7 @@ public:
 
 	void setZone(Zone* zne);
 
-	void setRegionName(const UnicodeString& name);
+	void setCustomRegionName(const String& name);
 
 	void setCitySpecialization(const String& spec);
 
@@ -570,7 +572,7 @@ public:
 	void setCityHall(StructureObject* building);
 
 protected:
-	UnicodeString _param0_setRegionName__UnicodeString_;
+	String _param0_setCustomRegionName__String_;
 	String _param0_setCitySpecialization__String_;
 	String _param0_setRegionName__String_;
 };

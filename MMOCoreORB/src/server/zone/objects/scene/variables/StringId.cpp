@@ -44,48 +44,39 @@ which carries forward this exception.
 
 #include "StringId.h"
 
-StringId::StringId() : Serializable() {
-	addSerializableVariables();
+StringId::StringId() : Object() {
+	file = "";
+	filler = 0;
+	stringID = "";
 }
 
-StringId::StringId(const StringId& id) : Object(), Serializable() {
+StringId::StringId(const StringId& id) : Object() {
 	file = id.file;
+	filler = 0;
 	stringID = id.stringID;
-
-	customName = id.customName;
-
-	addSerializableVariables();
 }
 
-StringId::StringId(const String& fullPath) : Serializable() {
+StringId::StringId(const String& fullPath) : Object() {
 	setStringId(fullPath);
-
-	addSerializableVariables();
+	filler = 0;
 }
 
-StringId::StringId(const char * fullPath) : Serializable() {
+StringId::StringId(const char * fullPath) : Object() {
 	setStringId(String(fullPath));
-
-	addSerializableVariables();
+	filler = 0;
 }
 
-StringId::StringId(const String& fil, const String& stringId) : Serializable() {
+StringId::StringId(const String& fil, const String& stringId) : Object() {
 	file = fil;
 	stringID = stringId;
-
-	addSerializableVariables();
+	filler = 0;
 }
 
-StringId::StringId(const UnicodeString& custom) : Serializable() {
-	customName = custom;
-
-	addSerializableVariables();
-}
 
 void StringId::clear() {
 	file = "";
 	stringID = "";
-	customName.clear();
+	filler = 0;
 }
 
 void StringId::setStringId(const String& fullPath) {
@@ -99,15 +90,5 @@ void StringId::setStringId(const String& fullPath) {
 		tokenizer.getStringToken(file);
 		tokenizer.getStringToken(stringID);
 	}
-}
-
-String StringId::getDisplayedName() {
-
-	if(customName.isEmpty()) {
-		return "@" + file + ":" + stringID;
-	} else {
-		return customName.toString();
-	}
-
 }
 

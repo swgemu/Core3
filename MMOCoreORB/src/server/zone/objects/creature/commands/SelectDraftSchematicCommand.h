@@ -73,32 +73,28 @@ public:
 
 	    ManagedReference<CreatureObject* > player = creature;
 
-		PlayerObject* ghost = player->getPlayerObject();
+		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
 
-	    ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
-
-	    if(craftingTool == NULL) {
-			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
-	    	return GENERALERROR;
-	    }
-
-		if(!craftingTool->isASubChildOf(creature)) {
+		if(session == NULL) {
+			warning("Trying to select draft schematic when no session exists");
 			return GENERALERROR;
 		}
 
 		StringTokenizer tokenizer(arguments.toString());
 
+		int index = 0;
+
 		if(tokenizer.hasMoreTokens()) {
 
-			int index = tokenizer.getIntToken();
-
-			Locker locker(craftingTool);
-			craftingTool->selectDraftSchematic(player, index);
+			index = tokenizer.getIntToken();
 
 		} else {
 			player->sendSystemMessage("@ui_craft:err_no_draft_schematic_selected");
 			return GENERALERROR;
 		}
+
+		Locker locker(session);
+		session->selectDraftSchematic(index);
 
 		return SUCCESS;
 	}

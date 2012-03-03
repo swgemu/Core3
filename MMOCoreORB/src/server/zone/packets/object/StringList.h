@@ -63,12 +63,6 @@ public:
 		updateOptionCount();
 	}
 
-	void insertOption(StringIdChatParameter& sid) {
-		//sid.insertToMessage(this);
-		insertUnicode(UnicodeString(sid.getDisplayedName()));
-		updateOptionCount();
-	}
-
 	void insertOption(const String& option) {
 		insertUnicode(UnicodeString(option));
 		updateOptionCount();

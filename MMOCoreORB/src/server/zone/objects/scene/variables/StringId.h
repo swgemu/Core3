@@ -54,17 +54,11 @@ namespace objects {
 namespace scene {
 namespace variables {
 
-class StringId : public Serializable {
+class StringId : public virtual Object {
 protected:
 	String file;
+	int filler;
 	String stringID;
-	UnicodeString customName;
-
-	inline void addSerializableVariables() {
-		addSerializableVariable("file", &file);
-		addSerializableVariable("stringID", &stringID);
-		addSerializableVariable("customName", &customName);
-	}
 
 public:
 	StringId();
@@ -72,7 +66,6 @@ public:
 	StringId(const char * cstr);
 	StringId(const String& fullPath);
 	StringId(const String& fil, const String& stringId);
-	StringId(const UnicodeString& custom);
 
 	StringId& operator=(const StringId& id) {
 		if (&id == this)
@@ -80,10 +73,20 @@ public:
 
 		file = id.file;
 		stringID = id.stringID;
-
-		customName = id.customName;
+		filler = id.filler;
 
 		return *this;
+	}
+
+	bool operator==(const StringId& id) const {
+		if (&id == this)
+			return true;
+
+		if(file == id.file &&
+				stringID == id.stringID)
+			return true;
+
+		return false;
 	}
 
 	int compareTo(const StringId& id) const {
@@ -97,8 +100,7 @@ public:
 	}
 
 	String getFullPath() const {
-		String str = "@" + file + ":" + stringID;
-		return str;
+		return "@" + file + ":" + stringID;
 	}
 
 	inline String& getFile() {
@@ -109,32 +111,38 @@ public:
 		return stringID;
 	}
 
-	inline UnicodeString& getCustomString() {
-		return customName;
-	}
-
-	String getDisplayedName();
-
 	inline uint32 size() const {
-		return customName.length() * 2 + file.length() + stringID.length();
+		return file.length() + stringID.length();
 	}
 
 	inline bool isEmpty() const {
-		if (customName.isEmpty() && file.isEmpty())
+		if (file.isEmpty())
 			return true;
 
 		return false;
 	}
 
-	inline void setCustomString(const UnicodeString& custom) {
-		customName = custom;
-	}
 
 	void setStringId(const String& fullPath);
 
 	inline void setStringId(const String& file, const String& id) {
 		StringId::file = file;
 		StringId::stringID = id;
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return file.toBinaryStream(stream) &&
+				TypeInfo<int >::toBinaryStream(&filler, stream) &&
+				stringID.toBinaryStream(stream);
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+
+		file.parseFromBinaryStream(stream);
+		TypeInfo<int >::parseFromBinaryStream(&filler, stream);
+		stringID.parseFromBinaryStream(stream);
+
+		return true;
 	}
 };
 

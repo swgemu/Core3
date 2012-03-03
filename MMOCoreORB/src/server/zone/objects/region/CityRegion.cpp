@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETREGIONNAME__UNICODESTRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -607,18 +607,18 @@ void CityRegion::setZone(Zone* zne) {
 		_implementation->setZone(zne);
 }
 
-void CityRegion::setRegionName(const UnicodeString& name) {
+void CityRegion::setCustomRegionName(const String& name) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETREGIONNAME__UNICODESTRING_);
-		method.addUnicodeParameter(name);
+		DistributedMethod method(this, RPC_SETCUSTOMREGIONNAME__STRING_);
+		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setRegionName(name);
+		_implementation->setCustomRegionName(name);
 }
 
 void CityRegion::setCitySpecialization(const String& spec) {
@@ -921,6 +921,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "customRegionName") {
+		TypeInfo<String >::parseFromBinaryStream(&customRegionName, stream);
+		return true;
+	}
+
 	if (_name == "zone") {
 		TypeInfo<ZoneReference >::parseFromBinaryStream(&zone, stream);
 		return true;
@@ -1014,6 +1019,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<StringId >::toBinaryStream(&regionName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "customRegionName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&customRegionName, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1122,7 +1135,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 15 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 16 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 CityRegionImplementation::CityRegionImplementation() {
@@ -1232,11 +1245,6 @@ Zone* CityRegionImplementation::getZone() {
 	return (&zone)->get();
 }
 
-String CityRegionImplementation::getRegionName() {
-	// server/zone/objects/region/CityRegion.idl():  		return regionName.getDisplayedName();
-	return (&regionName)->getDisplayedName();
-}
-
 unsigned long long CityRegionImplementation::getMayorID() {
 	// server/zone/objects/region/CityRegion.idl():  		return mayorID;
 	return mayorID;
@@ -1317,9 +1325,9 @@ StructureObject* CityRegionImplementation::getCityHall() {
 	return cityHall;
 }
 
-void CityRegionImplementation::setRegionName(const UnicodeString& name) {
-	// server/zone/objects/region/CityRegion.idl():  		regionName.setCustomString(name);
-	(&regionName)->setCustomString(name);
+void CityRegionImplementation::setCustomRegionName(const String& name) {
+	// server/zone/objects/region/CityRegion.idl():  		customRegionName = name;
+	customRegionName = name;
 }
 
 void CityRegionImplementation::setCitySpecialization(const String& spec) {
@@ -1522,8 +1530,8 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETZONE__ZONE_:
 		setZone(static_cast<Zone*>(inv->getObjectParameter()));
 		break;
-	case RPC_SETREGIONNAME__UNICODESTRING_:
-		setRegionName(inv->getUnicodeParameter(_param0_setRegionName__UnicodeString_));
+	case RPC_SETCUSTOMREGIONNAME__STRING_:
+		setCustomRegionName(inv->getAsciiParameter(_param0_setCustomRegionName__String_));
 		break;
 	case RPC_SETCITYSPECIALIZATION__STRING_:
 		setCitySpecialization(inv->getAsciiParameter(_param0_setCitySpecialization__String_));
@@ -1728,8 +1736,8 @@ void CityRegionAdapter::setZone(Zone* zne) {
 	(static_cast<CityRegion*>(stub))->setZone(zne);
 }
 
-void CityRegionAdapter::setRegionName(const UnicodeString& name) {
-	(static_cast<CityRegion*>(stub))->setRegionName(name);
+void CityRegionAdapter::setCustomRegionName(const String& name) {
+	(static_cast<CityRegion*>(stub))->setCustomRegionName(name);
 }
 
 void CityRegionAdapter::setCitySpecialization(const String& spec) {

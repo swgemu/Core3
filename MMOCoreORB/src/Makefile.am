@@ -77,6 +77,7 @@ bin_PROGRAMS = core3 #odb3
 core3_IDLS =	server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/deed/structure/StructureDeed.cpp \
 				server/zone/objects/player/sessions/CityRemoveMilitiaSession.cpp \
+				server/zone/objects/player/sessions/crafting/CraftingSession.cpp \
 				server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
 				server/zone/objects/area/LairSpawnArea.cpp \
@@ -280,6 +281,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
 		server/zone/objects/player/sessions/CityRemoveMilitiaSessionImplementation.cpp \
+		server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \

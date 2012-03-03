@@ -55,20 +55,6 @@ using namespace server::zone::packets::object;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace crafting {
-
-class CraftingManager;
-
-} // namespace crafting
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::crafting;
-
-namespace server {
-namespace zone {
 namespace objects {
 namespace area {
 
@@ -137,9 +123,21 @@ class ContainerPermissions;
 
 using namespace server::zone::objects::scene::variables;
 
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
 
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -187,53 +185,29 @@ public:
 
 	bool isReady();
 
+	void setReady();
+
+	bool isBusy();
+
+	void setBusy();
+
+	bool isFinished();
+
+	void setFinished();
+
+	void sendToolStartFailure(CreatureObject* player, const String& message);
+
 	int getToolType();
+
+	float getEffectiveness();
+
+	float getComplexityLevel();
 
 	TangibleObject* getPrototype();
 
 	ManufactureSchematic* getManufactureSchematic();
 
 	Vector<unsigned int>* getToolTabs();
-
-	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation = NULL);
-
-	void sendToolStartFailure(CreatureObject* player);
-
-	void cancelCraftingSession(CreatureObject* player);
-
-	void clearCraftingSession();
-
-	void selectDraftSchematic(CreatureObject* player, int index);
-
-	bool createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic);
-
-	bool createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic);
-
-	bool createPrototype(CreatureObject* player, DraftSchematic* draftschematic);
-
-	void synchronizedUIListenForSchematic(CreatureObject* player);
-
-	void addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
-
-	void removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
-
-	void nextCraftingStage(CreatureObject* player, int clientCounter);
-
-	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
-
-	void customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization);
-
-	void createPrototype(CreatureObject* player, int clientCounter, int practice);
-
-	void createManfSchematic(CreatureObject* player, int clientCounter);
-
-	void createObject(CreatureObject* player, int timer, bool create);
-
-	void depositObject(CreatureObject* player, bool practice);
-
-	unsigned long long getLastExperimentationTimestamp();
-
-	int getExperimentationResult();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -263,35 +237,15 @@ namespace tool {
 
 class CraftingToolImplementation : public ToolTangibleObjectImplementation {
 protected:
+	String status;
+
 	int type;
 
 	float effectiveness;
 
-	String status;
-
 	int complexityLevel;
 
-	ManagedReference<CraftingManager* > craftingManager;
-
 	Vector<unsigned int> enabledTabs;
-
-	Vector<ManagedReference<DraftSchematic* > > currentSchematicList;
-
-	ManagedReference<CraftingStation* > craftingStation;
-
-	int state;
-
-	int insertCounter;
-
-	int experimentationPointsTotal;
-
-	int experimentationPointsUsed;
-
-	int assemblyResult;
-
-	int experimentationResult;
-
-	unsigned long long lastExperimentationTimestamp;
 
 public:
 	static const int CLOTHING = 1;
@@ -328,85 +282,29 @@ public:
 
 	bool isReady();
 
+	void setReady();
+
+	bool isBusy();
+
+	void setBusy();
+
+	bool isFinished();
+
+	void setFinished();
+
+	void sendToolStartFailure(CreatureObject* player, const String& message);
+
 	int getToolType();
+
+	float getEffectiveness();
+
+	float getComplexityLevel();
 
 	TangibleObject* getPrototype();
 
 	ManufactureSchematic* getManufactureSchematic();
 
 	Vector<unsigned int>* getToolTabs();
-
-	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation = NULL);
-
-private:
-	void sendStart(CreatureObject* player);
-
-public:
-	void sendToolStartFailure(CreatureObject* player);
-
-	void cancelCraftingSession(CreatureObject* player);
-
-	void clearCraftingSession();
-
-private:
-	void closeCraftingWindow(CreatureObject* player, int clientCounter);
-
-	void locateCraftingStation(CreatureObject* player, int toolType);
-
-public:
-	void selectDraftSchematic(CreatureObject* player, int index);
-
-	bool createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic);
-
-	bool createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic);
-
-	bool createPrototype(CreatureObject* player, DraftSchematic* draftschematic);
-
-	void synchronizedUIListenForSchematic(CreatureObject* player);
-
-	void addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
-
-private:
-	void sendIngredientAddSuccess(CreatureObject* player, int slot, int clientCounter);
-
-public:
-	void removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
-
-private:
-	void sendIngredientRemoveSuccess(CreatureObject* player, int slot, int clientCounter);
-
-	void sendSlotMessage(CreatureObject* player, int clientCounter, int message);
-
-public:
-	void nextCraftingStage(CreatureObject* player, int clientCounter);
-
-private:
-	void initialAssembly(CreatureObject* player, int counter);
-
-	void finishAssembly(CreatureObject* player, int clientCounter);
-
-public:
-	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
-
-	void customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization);
-
-private:
-	void finishStage1(CreatureObject* player, int clientCounter);
-
-	void finishStage2(CreatureObject* player, int clientCounter);
-
-public:
-	void createPrototype(CreatureObject* player, int clientCounter, int practice);
-
-	void createManfSchematic(CreatureObject* player, int clientCounter);
-
-	void createObject(CreatureObject* player, int timer, bool create);
-
-	void depositObject(CreatureObject* player, bool practice);
-
-	unsigned long long getLastExperimentationTimestamp();
-
-	int getExperimentationResult();
 
 	WeakReference<CraftingTool*> _this;
 
@@ -459,56 +357,30 @@ public:
 
 	bool isReady();
 
+	void setReady();
+
+	bool isBusy();
+
+	void setBusy();
+
+	bool isFinished();
+
+	void setFinished();
+
+	void sendToolStartFailure(CreatureObject* player, const String& message);
+
 	int getToolType();
+
+	float getEffectiveness();
+
+	float getComplexityLevel();
 
 	TangibleObject* getPrototype();
 
 	ManufactureSchematic* getManufactureSchematic();
 
-	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation);
-
-	void sendToolStartFailure(CreatureObject* player);
-
-	void cancelCraftingSession(CreatureObject* player);
-
-	void clearCraftingSession();
-
-	void selectDraftSchematic(CreatureObject* player, int index);
-
-	bool createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic);
-
-	bool createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic);
-
-	bool createPrototype(CreatureObject* player, DraftSchematic* draftschematic);
-
-	void synchronizedUIListenForSchematic(CreatureObject* player);
-
-	void addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
-
-	void removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
-
-	void nextCraftingStage(CreatureObject* player, int clientCounter);
-
-	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
-
-	void customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization);
-
-	void createPrototype(CreatureObject* player, int clientCounter, int practice);
-
-	void createManfSchematic(CreatureObject* player, int clientCounter);
-
-	void createObject(CreatureObject* player, int timer, bool create);
-
-	void depositObject(CreatureObject* player, bool practice);
-
-	unsigned long long getLastExperimentationTimestamp();
-
-	int getExperimentationResult();
-
 protected:
-	String _param2_experiment__CreatureObject_int_String_int_;
-	String _param1_customization__CreatureObject_String_byte_int_String_;
-	String _param4_customization__CreatureObject_String_byte_int_String_;
+	String _param1_sendToolStartFailure__CreatureObject_String_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

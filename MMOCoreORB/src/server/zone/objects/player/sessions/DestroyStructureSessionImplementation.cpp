@@ -51,7 +51,7 @@ int DestroyStructureSessionImplementation::initializeSession() {
 	sui->setCancelButton(true, "@no");
 	sui->setOkButton(true, "@yes");
 	sui->setUsingObject(structureObject);
-	sui->setPromptTitle(structureObject->getObjectName()->getDisplayedName());
+	sui->setPromptTitle(structureObject->getDisplayedName());
 	sui->setPromptText(entry.toString());
 
 	sui->addMenuItem("@player_structure:can_redeed_alert " + redeed);

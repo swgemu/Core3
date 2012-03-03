@@ -146,7 +146,7 @@ void ResourceContainerImplementation::split(int newStackSize) {
 		setQuantity(getQuantity() - newStackSize);
 	} else {
 		StringBuffer errorMessage;
-		errorMessage << "Unable to split resource in container type: " << parent->getGameObjectType() << " " << parent->getObjectName()->getDisplayedName();
+		errorMessage << "Unable to split resource in container type: " << parent->getGameObjectType() << " " << parent->getDisplayedName();
 		error(errorMessage.toString());
 	}
 }

@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 class GenerateCraftedItemCommand : public QueueCommand {
 public:
@@ -116,6 +117,8 @@ public:
 			// Set Crafter name and generate serial number
 			String name = "System Generated";
 			prototype->setCraftersName(name);
+
+			prototype->setCustomObjectName(StringIdManager::instance()->getStringId(prototype->getDisplayedName().hashCode()), false);
 
 			String serial = craftingManager->generateSerial();
 			prototype->setSerialNumber(serial);

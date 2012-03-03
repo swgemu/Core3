@@ -54,13 +54,18 @@ include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.area.ActiveArea;
+include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.packets.object.ObjectControllerMessage;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
-include server.zone.objects.manufactureschematic.IngredientSlots;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.manufactureschematic.factoryblueprint.FactoryBlueprint;
 include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
 include server.zone.objects.scene.variables.ContainerPermissions;
+include server.zone.objects.manufactureschematic.variables.StringIdDeltaVector;
+include server.zone.objects.manufactureschematic.variables.Uint64VectorDeltaVector;
+include server.zone.objects.manufactureschematic.variables.IntVectorDeltaVector;
+include server.zone.packets.DeltaMessage;
+//include server.zone.packets.manufactureschematic.ManufactureSchematicObjectDeltaMessage7;
 
 class ManufactureSchematic extends IntangibleObject {
 
@@ -69,16 +74,35 @@ class ManufactureSchematic extends IntangibleObject {
 	protected float dataSize;
 	protected int manufactureLimit;
 	protected float complexity;
-	protected unsigned int crcToSend; 
 	protected CreatureObject crafter;
-	protected boolean firstCraftingUpdate;
 	
 	@dereferenced
 	protected FactoryBlueprint factoryBlueprint;
 	
 	@dereferenced
-	protected transient IngredientSlots ingredientSlots;
+	protected transient Vector<Reference<IngredientSlot> > ingredientSlots;
+
+	@dereferenced
+	protected transient StringIdDeltaVector ingredientNames;
 	
+	@dereferenced
+	protected transient DeltaVector<int> ingredientTypes;
+	
+	@dereferenced
+	protected transient Uint64VectorDeltaVector slotOIDs;
+	
+	@dereferenced
+	protected transient IntVectorDeltaVector slotQuantities;
+	
+	@dereferenced
+	protected transient DeltaVector<float> slotQualities;
+	
+	@dereferenced
+	protected transient DeltaVector<int> slotClean;
+	
+	@dereferenced
+	protected transient DeltaVector<int> slotIndexes;
+
 	protected boolean assembled;
 	protected boolean completed;
 	protected transient int ingredientCounter;
@@ -100,7 +124,6 @@ class ManufactureSchematic extends IntangibleObject {
 		craftingValues = new CraftingValues();
 		
 		prototype = null;
-		firstCraftingUpdate = true;
 		
 		super.getContainerPermissions().setInheritPermissionsFromParent(true);
 
@@ -113,6 +136,7 @@ class ManufactureSchematic extends IntangibleObject {
 		super.initializeTransientMembers();
 		
 	}
+	
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -140,6 +164,15 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param player SceneObject that will receive the baselines 
 	 */
 	public native void sendBaselinesTo(SceneObject player);
+
+	/**
+	 * Sends the baseline7 message of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	private native void sendMsco7(SceneObject player);
+
 	
 	/**
 	 * Calls the appropriate UI Listener Function
@@ -163,20 +196,21 @@ class ManufactureSchematic extends IntangibleObject {
 		return true;
 	}
 	
-	public native void setDraftSchematic(SceneObject craftingTool, DraftSchematic schematic);
+	public native void setDraftSchematic(DraftSchematic schematic);
 	
-	public native void initializeIngredientSlots(SceneObject craftingTool, DraftSchematic schematic);
+	private native void initializeIngredientSlots();
+
+	public native int addIngredientToSlot(CreatureObject player, TangibleObject tano, int slot);
 	
-	public native void cleanupIngredientSlots();
+	public native int removeIngredientFromSlot(CreatureObject player, TangibleObject tano, int slot);
+	
+	private native void sendDelta7(IngredientSlot ingredientSlot, int slot, CreatureObject player);
+	
+	public native void cleanupIngredientSlots(CreatureObject player);
 	
 	public DraftSchematic getDraftSchematic() {
 		return draftSchematic;
 	}
-	
-	@local
-	public native IngredientSlot getIngredientSlot(int index);
-	
-	public native int getSlotCount();
 	
 	public void increaseComplexity() {
 		complexity++;
@@ -190,15 +224,7 @@ class ManufactureSchematic extends IntangibleObject {
 	public float getComplexity() {
 		return complexity;
 	}
-	
-	public boolean isFirstCraftingUpdate() {
-		return firstCraftingUpdate;
-	}
-	
-	public void setFirstCraftingUpdateComplete() {
-		firstCraftingUpdate = false;
-	}
-	
+
 	public native boolean isReadyForAssembly();
 	
 	public void setAssembled() {
@@ -215,6 +241,15 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	public boolean isCompleted() {
 		return completed;
+	}
+	
+	public int getSlotCount() {
+		return ingredientSlots.size();
+	}
+	
+	@local
+	public IngredientSlot getSlot(int i) {
+		return ingredientSlots.get(i);
 	}
 	
 	public void setCrafter(CreatureObject player) {
@@ -243,7 +278,7 @@ class ManufactureSchematic extends IntangibleObject {
 		return experimentingCounterPrevious;
 	}
 	
-	public void updateIngredientCounter() {
+	private void updateIngredientCounter() {
 		ingredientCounter += 4;
 	}
 	
@@ -265,9 +300,14 @@ class ManufactureSchematic extends IntangibleObject {
 		return prototype;
 	}
 	
-	public native void canManufactureItem(string type, string displayedName);
+	public void canManufactureItem(string type, string displayedName) {
+		factoryBlueprint.canManufactureItem(type, displayedName);
+	}
 	
-	public native void manufactureItem();
+	public void manufactureItem() {
+		factoryBlueprint.manufactureItem();
+		setManufactureLimit(getManufactureLimit() - 1);
+	}
 	
 	public native void createFactoryBlueprint();
 	
@@ -276,5 +316,7 @@ class ManufactureSchematic extends IntangibleObject {
 	}
 	
 	@local
-	public native BlueprintEntry getBlueprintEntry(int i);
+	public BlueprintEntry getBlueprintEntry(int i) {
+		return factoryBlueprint.getConsolidatedEntry(i);
+	}
 }

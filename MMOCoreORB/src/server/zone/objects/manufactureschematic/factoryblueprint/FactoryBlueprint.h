@@ -24,7 +24,7 @@ public:
 
 	FactoryBlueprint& operator=(const FactoryBlueprint& blueprint);
 
-	void addIngredient(TangibleObject* ingredient, bool isIdentical);
+	void addIngredient(SceneObject* ingredient, int quantity, bool isIdentical);
 
 	void addConsolidatedEntry(BlueprintEntry* entry);
 

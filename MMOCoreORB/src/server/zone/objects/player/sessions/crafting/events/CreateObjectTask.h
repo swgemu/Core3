@@ -45,26 +45,44 @@
 #ifndef CREATEOBJECTTASK_H_
 #define CREATEOBJECTTASK_H_
 
-#include "../CraftingTool.h"
-
 class CreateObjectTask : public Task {
 
-	ManagedReference<CraftingTool* > craftingTool;
-	ManagedReference<CreatureObject* > player;
-
-	bool practice;
+	ManagedReference<CraftingTool*> craftingTool;
+	ManagedReference<CreatureObject*> crafter;
 
 public:
-	CreateObjectTask(CreatureObject* pl, CraftingTool* tool, bool prac) : Task() {
+	CreateObjectTask(CreatureObject* player, CraftingTool* tool) : Task() {
+
 		craftingTool = tool;
-		player = pl;
-		practice = prac;
+		crafter = player;
 	}
 
 	void run() {
-		Locker locker(player);
 
-		craftingTool->depositObject(player, practice);
+		ManagedReference<TangibleObject*> prototype = craftingTool->getPrototype();
+
+		if (prototype == NULL)
+			return;
+
+		prototype->setPersistent(1);
+
+		Locker locker(craftingTool);
+
+		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
+
+		if (inventory != NULL && !inventory->isContainerFull()) {
+
+			crafter->sendSystemMessage("@system_msg:prototype_transferred");
+
+			inventory->transferObject(prototype, -1, true);
+
+			craftingTool->setReady();
+
+		} else {
+
+			crafter->sendSystemMessage("@system_msg:prototype_not_transferred");
+			craftingTool->setFinished();
+		}
 	}
 };
 

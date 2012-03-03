@@ -52,8 +52,8 @@ which carries forward this exception.
 
 class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectDeltaMessage3(uint64 sceneObjSchematic)
-			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 3) {
+	ManufactureSchematicObjectDeltaMessage3(SceneObject* schematic)
+			: DeltaMessage(schematic->getObjectID(), 0x4D53434F, 3) {
 	}
 
 	void updateComplexity(float complexity) {

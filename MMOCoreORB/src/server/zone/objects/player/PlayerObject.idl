@@ -170,13 +170,10 @@ class PlayerObject extends IntangibleObject {
 	@weakReference
 	protected BuildingObject cloningFacility;
 	
-	/// Crafting and Surveying
 	/// Reference to last used Survey Tool
 	@weakReference
 	protected SurveyTool surveyTool;
 
-	protected transient CraftingTool lastCraftingToolUsed;
-	
 	@dereferenced
 	protected SortedVector<unsigned long> persistentMessages;
 	
@@ -880,14 +877,6 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public SurveyTool getSurveyTool() {
 		return surveyTool;
-	}
-	
-	public CraftingTool getLastCraftingToolUsed() {
-		return lastCraftingToolUsed;
-	}
-	
-	public void setLastCraftingToolUsed(CraftingTool tool) {
-		lastCraftingToolUsed = tool;
 	}
 	
 	public void setTeleporting(boolean val) {

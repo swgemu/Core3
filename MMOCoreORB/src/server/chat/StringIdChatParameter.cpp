@@ -45,31 +45,36 @@ which carries forward this exception.
 #include "StringIdChatParameter.h"
 
 StringIdChatParameter::StringIdChatParameter() : StringId() {
-	addSerializableVariables();
+	unknownByte = 0;
+	DI = 0;
+	DF = 0;
 }
 
 StringIdChatParameter::StringIdChatParameter(const StringId& id) : StringId(id) {
-	addSerializableVariables();
+	unknownByte = 0;
+	DI = 0;
+	DF = 0;
 }
 
 StringIdChatParameter::StringIdChatParameter(const char * cstr) : StringId (cstr) {
-	addSerializableVariables();
+	unknownByte = 0;
+	DI = 0;
+	DF = 0;
 }
 
 StringIdChatParameter::StringIdChatParameter(const String& fullPath) : StringId (fullPath) {
-	addSerializableVariables();
+	unknownByte = 0;
+	DI = 0;
+	DF = 0;
 }
 
 StringIdChatParameter::StringIdChatParameter(const String& fil, const String& stringId) : StringId(fil, stringId) {
-	addSerializableVariables();
+	unknownByte = 0;
+	DI = 0;
+	DF = 0;
 }
 
-StringIdChatParameter::StringIdChatParameter(const UnicodeString& custom) : StringId(custom) {
-	addSerializableVariables();
-}
-
-StringIdChatParameter::StringIdChatParameter(const StringIdChatParameter& custom) : Object(), ChatParameter(), StringId(custom) {
-	addSerializableVariables();
+StringIdChatParameter::StringIdChatParameter(const StringIdChatParameter& custom) : ChatParameter(), StringId(custom) {
 
 	TT = custom.TT;
 	TU = custom.TU;
@@ -112,3 +117,28 @@ void StringIdChatParameter::addToPacketStream(Message* packet) {
 void StringIdChatParameter::parse(Message* message) {
 
 }
+
+bool StringIdChatParameter::toBinaryStream(ObjectOutputStream* stream) {
+
+	StringId::toBinaryStream(stream);
+
+	return TT.toBinaryStream(stream) &&
+			TU.toBinaryStream(stream) &&
+			TO.toBinaryStream(stream) &&
+			TypeInfo<uint32 >::toBinaryStream(&DI, stream) &&
+			TypeInfo<float >::toBinaryStream(&DF, stream);
+}
+
+bool StringIdChatParameter::parseFromBinaryStream(ObjectInputStream* stream) {
+
+	StringId::parseFromBinaryStream(stream);
+
+	TT.parseFromBinaryStream(stream);
+	TU.parseFromBinaryStream(stream);
+	TO.parseFromBinaryStream(stream);
+	TypeInfo<uint32 >::parseFromBinaryStream(&DI, stream);
+	TypeInfo<float >::parseFromBinaryStream(&DF, stream);
+
+	return true;
+}
+

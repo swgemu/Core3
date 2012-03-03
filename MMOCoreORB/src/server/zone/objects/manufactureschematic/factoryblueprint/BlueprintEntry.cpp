@@ -9,7 +9,7 @@
 #include "server/zone/objects/resource/ResourceContainer.h"
 
 BlueprintEntry::BlueprintEntry() : Serializable() {
-
+	serialNumber = "";
 	addSerializableVariables();
 }
 
@@ -21,13 +21,6 @@ BlueprintEntry::BlueprintEntry(const BlueprintEntry& entry) : Object(), Serializ
 	serialNumber = entry.serialNumber;
 	identical = entry.identical;
 	quantity = entry.quantity;
-
-	addSerializableVariables();
-}
-
-BlueprintEntry::BlueprintEntry(TangibleObject* ingredient, bool isIdentical) : Serializable() {
-
-	createEntry(ingredient, isIdentical);
 
 	addSerializableVariables();
 }
@@ -70,41 +63,10 @@ bool BlueprintEntry::equals(BlueprintEntry* entry) {
 			(identical == entry->identical));
 }
 
-void BlueprintEntry::createEntry(TangibleObject* ingredient, bool isIdentical) {
-
-	identical = isIdentical;
-
-	if (ingredient->isResourceContainer()) {
-
-		ResourceContainer* rcnoObject = cast<ResourceContainer*>( ingredient);
-
-		key = rcnoObject->getSpawnName();
-
-		displayedName = key;
-
-		type = "resource";
-	} else {
-
-		key = String::valueOf(ingredient->getServerObjectCRC());
-
-		if(identical)
-			serialNumber = ingredient->getSerialNumber();
-		else
-			serialNumber = "";
-
-		displayedName = ingredient->getObjectName()->getDisplayedName();
-
-		type = "component";
-	}
-
-	quantity = ingredient->getUseCount();
-	clearMatches();
-}
-
 void BlueprintEntry::addSerializableVariables() {
 	addSerializableVariable("type", &type);
 	addSerializableVariable("key", &key);
-	addSerializableVariable("displayName", &displayedName);
+	addSerializableVariable("displayedName", &displayedName);
 	addSerializableVariable("serialNumber", &serialNumber);
 	addSerializableVariable("identical", &identical);
 	addSerializableVariable("quantity", &quantity);
@@ -113,7 +75,7 @@ void BlueprintEntry::addSerializableVariables() {
 void BlueprintEntry::insertSchematicAttribute(AttributeListMessage* alm) {
 
 	String name = "cat_manf_schem_ing_resource.\""
-			+ displayedName + serialNumber;
+			+ displayedName + " " + serialNumber;
 
 	alm->insertAttribute(name, quantity);
 }
@@ -202,7 +164,7 @@ void BlueprintEntry::print() {
 	System::out << "Matching Items:" << endl;
 	for(int i = 0; i < matchingHopperItems.size(); ++i) {
 		TangibleObject* object = matchingHopperItems.get(i);
-		System::out << object->getObjectID() << " " << object->getObjectName()->getDisplayedName() << " " << object->getUseCount() << endl;
+		System::out << object->getObjectID() << " " << object->getDisplayedName() << " " << object->getUseCount() << endl;
 	}
 
 	System::out << "*******************" << endl;

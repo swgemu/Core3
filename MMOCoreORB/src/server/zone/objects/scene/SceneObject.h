@@ -614,6 +614,8 @@ public:
 
 	bool isResourceContainer();
 
+	bool isResourceSpawn();
+
 	bool isComponent();
 
 	bool isIntangibleObject();
@@ -758,6 +760,8 @@ public:
 
 	bool isInWater();
 
+	String getDisplayedName();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -769,6 +773,7 @@ protected:
 
 	String _return_getArrangementDescriptor;
 	String _return_getDetailedDescription;
+	String _return_getDisplayedName;
 	String _return_getLoggingName;
 	String _return_getObjectNameStringIdFile;
 	String _return_getObjectNameStringIdName;
@@ -850,6 +855,8 @@ protected:
 	int planetMapCategory;
 
 	int planetMapSubCategory;
+
+	UnicodeString customName;
 
 	Reference<SharedObjectTemplate* > templateObject;
 
@@ -1214,6 +1221,8 @@ public:
 
 	virtual bool isResourceContainer();
 
+	virtual bool isResourceSpawn();
+
 	virtual bool isComponent();
 
 	virtual bool isIntangibleObject();
@@ -1357,6 +1366,8 @@ public:
 	virtual void initializeChildObject(SceneObject* controllerObject);
 
 	bool isInWater();
+
+	String getDisplayedName();
 
 	WeakReference<SceneObject*> _this;
 
@@ -1699,6 +1710,8 @@ public:
 
 	bool isResourceContainer();
 
+	bool isResourceSpawn();
+
 	bool isComponent();
 
 	bool isIntangibleObject();
@@ -1814,6 +1827,8 @@ public:
 	void initializeChildObject(SceneObject* controllerObject);
 
 	bool isInWater();
+
+	String getDisplayedName();
 
 protected:
 	String _param0_info__String_bool_;

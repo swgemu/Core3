@@ -69,6 +69,7 @@ public:
 
 
 		insertStringId(mi->getObjectName());
+		insertCustomName(mi->getCustomObjectName());
 
 		//Volume
 		insertInt(0);

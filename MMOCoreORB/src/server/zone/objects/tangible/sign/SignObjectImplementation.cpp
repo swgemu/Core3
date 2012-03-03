@@ -26,7 +26,7 @@ int SignObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 void SignObjectImplementation::sendSignNameTo(CreatureObject* player) {
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::NONE);
 	suiBox->setPromptTitle("@sui:swg"); //Star Wars Galaxies
-	suiBox->setPromptText(objectName.getDisplayedName());
+	suiBox->setPromptText(getDisplayedName());
 
 	player->sendMessage(suiBox->generateMessage());
 }

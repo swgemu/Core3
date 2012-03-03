@@ -100,7 +100,7 @@ public:
 		CreatureObject* targetCreature = cast<CreatureObject*>( obj.get());
 
 		StringIdChatParameter params;
-		params.setTU(targetCreature->getObjectName()->getDisplayedName());
+		params.setTU(targetCreature->getDisplayedName());
 
 		if (!creature->isInGuild()) {
 			params.setStringId("@base_player:guildstatus_not_in_guild"); //%TU is not in a guild.

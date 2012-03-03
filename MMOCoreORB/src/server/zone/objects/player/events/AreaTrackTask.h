@@ -126,7 +126,7 @@ public:
 						}
 
 
-						results << creature->getObjectName()->getDisplayedName();
+						results << creature->getDisplayedName();
 
 						String direction = "", distance = "";
 

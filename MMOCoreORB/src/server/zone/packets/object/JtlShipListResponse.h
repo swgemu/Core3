@@ -33,7 +33,7 @@ public:
 		ManagedReference<ActiveArea*> region = terminal->getActiveRegion();
 
 		if (region != NULL && region->isRegion())
-			insertAscii(region->getObjectName()->getDisplayedName());
+			insertAscii(region->getDisplayedName());
 		else
 			insertAscii(terminal->getZone()->getZoneName());
 		*/

@@ -56,6 +56,7 @@ public:
 
 		insertInt(0);
 		insertStringId(stao->getObjectName());
+		insertCustomName(stao->getCustomObjectName());
 		insertInt(0xFF);
 
 		setSize();

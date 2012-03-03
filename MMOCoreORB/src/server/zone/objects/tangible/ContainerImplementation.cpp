@@ -123,7 +123,7 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			inputBox->setUsingObject(_this);
 			inputBox->setMaxInputSize(255);
 
-			inputBox->setDefaultInput(objectName.getCustomString().toString());
+			inputBox->setDefaultInput(getCustomObjectName().toString());
 
 			player->getPlayerObject()->addSuiBox(inputBox);
 			player->sendMessage(inputBox->generateMessage());

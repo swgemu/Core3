@@ -72,7 +72,7 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	CreatureObject* owner = cast<CreatureObject*>( strongOwnerRef.get());
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
-	String sender = vendorRef->getObjectName()->getDisplayedName();
+	String sender = vendorRef->getDisplayedName();
 	UnicodeString subject("@auction:vendor_status_subject");
 
 	if (cman == NULL || owner == NULL)
@@ -83,11 +83,11 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 
 	if (isEmpty) {
 		StringIdChatParameter body("@auction:vendor_status_empty");
-		body.setTO(vendorRef->getObjectName()->getDisplayedName());
+		body.setTO(vendorRef->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
 	} else {
 		StringIdChatParameter body("@auction:vendor_status_normal");
-		body.setTO(vendorRef->getObjectName()->getDisplayedName());
+		body.setTO(vendorRef->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
 	}
 
@@ -102,7 +102,7 @@ void Vendor::sendVendorDestroyMail() {
 	CreatureObject* owner = cast<CreatureObject*>( strongOwnerRef.get());
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
-	String sender = vendorRef->getObjectName()->getDisplayedName();
+	String sender = vendorRef->getDisplayedName();
 	UnicodeString subject("@auction:vendor_status_subject");
 
 	if (cman == NULL || owner == NULL)
@@ -111,7 +111,7 @@ void Vendor::sendVendorDestroyMail() {
 	Locker playerLocker(owner);
 
 	StringIdChatParameter body("@auction:vendor_status_deleted");
-	body.setTO(vendorRef->getObjectName()->getDisplayedName());
+	body.setTO(vendorRef->getDisplayedName());
 	cman->sendMail(sender, subject, body, owner->getFirstName());
 
 }

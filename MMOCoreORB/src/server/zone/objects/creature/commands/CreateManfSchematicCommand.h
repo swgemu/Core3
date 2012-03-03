@@ -74,37 +74,23 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( creature);
-
-		PlayerObject* ghost = player->getPlayerObject();
-
-		ManagedReference<CraftingTool*> craftingTool =
-				ghost->getLastCraftingToolUsed();
-
-		if (craftingTool == NULL) {
-			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
-			return GENERALERROR;
-		}
-
-		if(!craftingTool->isASubChildOf(creature)) {
-			return GENERALERROR;
-		}
-
-		int clientCounter;
-
 		StringTokenizer tokenizer(arguments.toString());
+		int clientCounter = 0;
 
 		if(tokenizer.hasMoreTokens())
 			clientCounter = tokenizer.getIntToken();
 		else
 			return GENERALERROR;
 
+		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
 
-		String type;
+		if(session == NULL) {
+			warning("Trying to create manf schematic when no session exists");
+			return GENERALERROR;
+		}
 
-		Locker _locker(craftingTool);
-
-		craftingTool->createManfSchematic(player, clientCounter);
+		Locker locker(session);
+		session->createManufactureSchematic(clientCounter);
 
 		return SUCCESS;
 	}

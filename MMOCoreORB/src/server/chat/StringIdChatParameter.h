@@ -79,18 +79,6 @@ protected:
 
 	byte unknownByte;
 
-	inline void addSerializableVariables() {
-		addSerializableVariable("TT", &TT);
-		addSerializableVariable("TU", &TU);
-		addSerializableVariable("TO", &TO);
-		addSerializableVariable("DI", &DI);
-		addSerializableVariable("DF", &DF);
-
-		unknownByte = 0;
-		DI = 0;
-		DF = 0;
-	}
-
 	/**
 	* Inserts stf string identifier and variables into a packet
 	* @pre { packet is a valid Message }
@@ -105,8 +93,10 @@ public:
 	StringIdChatParameter(const char * cstr);
 	StringIdChatParameter(const String& fullPath);
 	StringIdChatParameter(const String& fil, const String& stringId);
-	StringIdChatParameter(const UnicodeString& custom);
 	StringIdChatParameter(const StringIdChatParameter& custom);
+
+	bool toBinaryStream(ObjectOutputStream* stream);
+	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 	StringIdChatParameter& operator=(const StringIdChatParameter& id) {
 		if (this == &id)

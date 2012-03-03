@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "ManufactureSchematic.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
@@ -53,8 +54,12 @@ which carries forward this exception.
 #include "server/zone/packets/scene/UpdateContainmentMessage.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
 
 #include "ingredientslots/ResourceSlot.h"
 #include "ingredientslots/ComponentSlot.h"
@@ -114,7 +119,7 @@ void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClos
 }
 
 void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
-	if (!player->isPlayerCreature())
+	if (!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
 
 	CreatureObject* playerCreature = cast<CreatureObject*>( player);
@@ -130,7 +135,7 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 	// MSCO6
 	ManufactureSchematicObjectMessage6* msco6 =
-		new ManufactureSchematicObjectMessage6(getObjectID(), crcToSend);
+		new ManufactureSchematicObjectMessage6(getObjectID(), draftSchematic->getClientObjectCRC());
 	player->sendMessage(msco6);
 
 	// MSCO8
@@ -145,106 +150,330 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 }
 
-IngredientSlot* ManufactureSchematicImplementation::getIngredientSlot(int index) {
-	if(index < ingredientSlots.size())
-		return ingredientSlots.get(index);
-
-	return NULL;
-}
-
-void ManufactureSchematicImplementation::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
+void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schematic) {
 	draftSchematic = schematic;
-
-	if(draftSchematic != NULL) {
-		initializeIngredientSlots(craftingTool, draftSchematic);
-		crcToSend = draftSchematic->getClientObjectCRC();
-	}
-}
-
-int ManufactureSchematicImplementation::getSlotCount() {
-	return ingredientSlots.size();
 }
 
 void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
 
-	if(!player->isPlayerCreature())
+	if(!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
 
-	ManagedReference<CreatureObject* > playerCreature = cast<CreatureObject*>( player);
-
-	if (parent != NULL && getParent()->isCraftingTool()) {
-
-		ManagedReference<CraftingTool* > craftingTool = cast<CraftingTool*>( parent.get());
-
-		if(craftingTool != NULL && craftingTool->isASubChildOf(player)) {
-			Locker locker(craftingTool);
-
-			craftingTool->synchronizedUIListenForSchematic(playerCreature);
-		}
+	Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
+	if(session == NULL) {
+		return;
 	}
+
+	initializeIngredientSlots();
+
+	sendMsco7(player);
+
+	/// Send session packets for UI listen
+	Locker locker(session);
+	session->sendIngredientForUIListen();
+}
+
+void ManufactureSchematicImplementation::sendMsco7(SceneObject* player) {
+
+	ManufactureSchematicObjectMessage7* mcso7 = new ManufactureSchematicObjectMessage7(_this);
+
+	/// Slot names
+	ingredientNames.insertToMessage(mcso7);
+
+	/// Slot types
+	ingredientTypes.insertToMessage(mcso7);
+
+	/// Slot OID's
+	slotOIDs.insertToMessage(mcso7);
+
+	/// Slot Quantities
+	slotQuantities.insertToMessage(mcso7);
+
+	/// Slot Quantities
+	slotQualities.insertToMessage(mcso7);
+
+	/// Slot Clean
+	slotClean.insertToMessage(mcso7);
+
+	/// Slot Index
+	slotIndexes.insertToMessage(mcso7);
+
+	/// Experimenting names
+	int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+
+	mcso7->insertInt(titleCount);
+	mcso7->insertInt(titleCount);
+
+	for (int i = 0; i < titleCount; i++) {
+		String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+
+		mcso7->insertAscii("crafting");
+		mcso7->insertInt(0);
+		mcso7->insertAscii(title);
+	}
+	// ************
+
+	/// Experimenting values
+	mcso7->insertInt(titleCount);
+	mcso7->insertInt(titleCount);
+
+	for (int i = 0; i < titleCount; i++) {
+		String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+		mcso7->insertFloat(craftingValues->getCurrentPercentageAverage(title));
+	}
+	// ************
+
+	/// Useless values - always 0 Experiment offset
+	mcso7->insertInt(titleCount);
+	mcso7->insertInt(titleCount);
+
+	for (int i = 0; i < titleCount; i++)
+		mcso7->insertInt(0);
+	// ************
+
+	/// always 1 Max experimentation value
+	mcso7->insertInt(titleCount);
+	mcso7->insertInt(titleCount);
+
+	for (int i = 0; i < titleCount; i++)
+		mcso7->insertFloat(1);
+	// ************
+
+	// Customization name
+	mcso7->insertInt(0);
+	mcso7->insertInt(0);
+	// ************
+
+	/// Pallete List
+	mcso7->insertInt(0);
+	mcso7->insertInt(0);
+	// ************
+
+	/// Pallete Start Index
+	mcso7->insertInt(0);
+	mcso7->insertInt(0);
+	// ************
+
+	/// Pallete End index
+	mcso7->insertInt(0);
+	mcso7->insertInt(0);
+	// ************
+
+	/// Pallete List
+	mcso7->insertInt(0);
+	mcso7->insertInt(0);
+	// ************
+
+	/// Customization Counter
+	mcso7->insertByte(0);
+	// ************
+
+	/// Risk Factor
+	mcso7->insertFloat(0);
+	// ************
+
+	// Template List
+	mcso7->insertInt(0);
+	mcso7->insertInt(0);
+	// ************
+
+	/// Ingredient Counter
+	mcso7->insertByte(getIngredientCounter());
+	// ************
+
+	// Ready
+	mcso7->insertByte(1);
+	// ************
+
+	mcso7->setSize();
+
+	player->sendMessage(mcso7);
 }
 
 void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
 
 }
 
-void ManufactureSchematicImplementation::initializeIngredientSlots(
-		SceneObject* tool, DraftSchematic* schematic) {
+void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
-	cleanupIngredientSlots();
+	if(draftSchematic == NULL)
+		return;
+
+	ingredientSlots.removeAll();
 	craftingValues->clearAll();
 
 	assembled = false;
 	completed = false;
-	complexity = schematic->getComplexity();
+	complexity = draftSchematic->getComplexity();
 	manufactureLimit = 0;
-	firstCraftingUpdate = true;
 	ingredientCounter = draftSchematic->getDraftSlotCount() * 4;
-
-	Reference<IngredientSlot* > ingredientSlot = NULL;
-	Reference<DraftSlot* > draftSlot = NULL;
-
-	if (tool == NULL)
-		return;
 
 	for (int i = 0; i < draftSchematic->getDraftSlotCount(); ++i) {
 
-		draftSlot = draftSchematic->getDraftSlot(i);
+		Reference<IngredientSlot* > ingredientSlot = NULL;
+		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
 
-		String type = draftSlot->getResourceType();
-		int quantity = draftSlot->getQuantity();
+		ingredientNames.add(StringId(draftSlot->getStringId()));
+		ingredientTypes.add(0);
+		slotOIDs.add(Vector<uint64>());
+		slotQuantities.add(Vector<int>());
+		slotQualities.add(0);
+		slotClean.add(0xFFFFFFFF);
+		slotIndexes.add(i);
 
 		switch (draftSlot->getSlotType()) {
 		case IngredientSlot::RESOURCESLOT:
-			ingredientSlot = new ResourceSlot(tool, type, quantity);
-			break;
+			ingredientSlot = new ResourceSlot();
+			ingredientSlot->setOptional(false);
+			ingredientSlot->setIdentical(true);
+		break;
 		case IngredientSlot::IDENTICALSLOT:
-			ingredientSlot = new ComponentSlot(tool, type, quantity, true, false, IngredientSlot::IDENTICALSLOT);
+			ingredientSlot = new ComponentSlot();
+			ingredientSlot->setOptional(false);
+			ingredientSlot->setIdentical(true);
 			break;
 		case IngredientSlot::MIXEDSLOT:
-			ingredientSlot = new ComponentSlot(tool, type, quantity, false, false, IngredientSlot::MIXEDSLOT);
+			ingredientSlot = new ComponentSlot();
+			ingredientSlot->setOptional(false);
+			ingredientSlot->setIdentical(false);
 			break;
 		case IngredientSlot::OPTIONALIDENTICALSLOT:
-			ingredientSlot = new ComponentSlot(tool, type, quantity, true, true, IngredientSlot::OPTIONALIDENTICALSLOT);
+			ingredientSlot = new ComponentSlot();
+			ingredientSlot->setOptional(true);
+			ingredientSlot->setIdentical(true);
 			break;
 		case IngredientSlot::OPTIONALMIXEDSLOT:
-			ingredientSlot = new ComponentSlot(tool, type, quantity, false, true, IngredientSlot::OPTIONALMIXEDSLOT);
+			ingredientSlot = new ComponentSlot();
+			ingredientSlot->setOptional(true);
+			ingredientSlot->setIdentical(false);
 			break;
 		}
+
+		ingredientSlot->setContentType(draftSlot->getResourceType());
+		ingredientSlot->setQuantityNeeded(draftSlot->getQuantity());
 
 		ingredientSlots.add(ingredientSlot.get());
 	}
 }
 
-void ManufactureSchematicImplementation::cleanupIngredientSlots() {
+int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot) {
+
+
+	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
+
+	if(ingredientSlot->isFull())
+		return IngredientSlot::FULL;
+
+	if(!ingredientSlot->add(player, tano))
+		return IngredientSlot::INVALIDINGREDIENT;
+
+
+	// DMSCO6 ***************************************************
+	ManufactureSchematicObjectDeltaMessage6* dMsco6 =
+			new ManufactureSchematicObjectDeltaMessage6(_this);
+
+	dMsco6->insertToResourceSlot(slot);
+	dMsco6->close();
+
+	player->sendMessage(dMsco6);
+	// End DMSCO6 ********************************************F*******
+
+	/// Delta 7
+	sendDelta7(ingredientSlot, slot, player);
+
+	// Start DMSCO3 ***********************************************************
+	// Updates the Complexity
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+				new ManufactureSchematicObjectDeltaMessage3(_this);
+	dMsco3->updateComplexity(getComplexity());
+	dMsco3->close();
+
+	player->sendMessage(dMsco3);
+	// End DMSCO3 *************************************************************
+
+	return IngredientSlot::OK;
+}
+
+int ManufactureSchematicImplementation::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {
+
+	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
+
+	if(!ingredientSlot->removeAll(player))
+		return IngredientSlot::BADTARGETCONTAINER;
+
+	/// Send delta 7
+	sendDelta7(ingredientSlot, slot, player);
+
+	// Start DMSCO3 ***********************************************************
+	// Updates the Complexity
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+			new ManufactureSchematicObjectDeltaMessage3(_this);
+	dMsco3->updateComplexity(getComplexity());
+	dMsco3->close();
+
+	player->sendMessage(dMsco3);
+	// End DMSCO3 *************************************************************
+
+	return IngredientSlot::OK;
+}
+
+void ManufactureSchematicImplementation::sendDelta7(IngredientSlot* ingredientSlot, int slot, CreatureObject* player) {
+	// DMSCO7 ***************************************************
+
+	ManufactureSchematicObjectDeltaMessage7* dmcso7 = new ManufactureSchematicObjectDeltaMessage7(_this);
+
+	/// Update slot type
+	int type = ingredientSlot->getClientSlotType();
+	if(ingredientSlot->isEmpty())
+		type = 0;
+
+	if(ingredientTypes.get(slot) != type) {
+		dmcso7->insertShort(1);
+		ingredientTypes.set(slot, type, dmcso7);
+	}
+
+	/// Update list of OID's
+	Vector<uint64> oidchanges = ingredientSlot->getOIDVector();
+	if(slotOIDs.get(slot).size() != oidchanges.size()) {
+		updateIngredientCounter();
+		dmcso7->insertShort(2);
+		slotOIDs.set(slot, oidchanges, dmcso7);
+	}
+
+	/// Update list of quantities
+	dmcso7->insertShort(3);
+	slotQuantities.set(slot, ingredientSlot->getQuantityVector(), dmcso7);
+
+
+	/// Update pointless clean slot
+	int clean = 0;
+	if(ingredientSlot->isEmpty())
+		clean = 0xFFFFFFFF;
+
+	dmcso7->insertShort(5);
+	slotClean.set(slot, clean, dmcso7);
+
+	/// The Odd update
+	dmcso7->startUpdate(7);
+	dmcso7->insertByte(ingredientCounter);
+	//*****************
+
+	dmcso7->close();
+
+	player->sendMessage(dmcso7);
+	// End DMSCO7 ***************************************************
+}
+
+
+void ManufactureSchematicImplementation::cleanupIngredientSlots(CreatureObject* player) {
 
 	while (ingredientSlots.size() > 0) {
-		Reference<IngredientSlot* > slot = ingredientSlots.remove(0).get();
+		Reference<IngredientSlot*>  slot = ingredientSlots.remove(0);
 
 		if (slot != NULL) {
 
-			if(!assembled && slot->hasItem())
-				slot->returnObjectToParent();
+			if(!assembled)
+				slot->returnToParents(player);
 
 			slot = NULL;
 		}
@@ -260,7 +489,7 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 		if(slot->isOptional())
 			continue;
 
-		if(slot == NULL || !slot->hasItem() || !slot->isComplete())
+		if(slot == NULL || !slot->isFull())
 			return false;
 	}
 	return true;
@@ -276,38 +505,19 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 
 	createFactoryBlueprint();
 
-	cleanupIngredientSlots();
+	ingredientSlots.removeAll();
 }
 
 void ManufactureSchematicImplementation::createFactoryBlueprint() {
 
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
-		Reference<IngredientSlot*> ingredientSlot = getIngredientSlot(i);
+		Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(i);
 
-		if (ingredientSlot == NULL || ingredientSlot->get() == NULL)
+		if (ingredientSlot == NULL || ingredientSlot->getFactoryIngredient() == NULL) {
+			warning("NULL ingredient in createFactoryBlueprint");
 			continue;
+		}
 
-		TangibleObject* ingredient = ingredientSlot->get();
-
-		if(ingredient->getParent() != NULL)
-			//ingredient->getParent()->removeObject(ingredient, true);
-			ingredient->destroyObjectFromWorld(true);
-
-		ingredient->setUseCount(ingredientSlot->getRequiredQuantity(), false);
-
-		factoryBlueprint.addIngredient(ingredient, ingredientSlot->isIdentical());
+		factoryBlueprint.addIngredient(ingredientSlot->getFactoryIngredient(), ingredientSlot->getQuantityNeeded(), ingredientSlot->requiresIdentical());
 	}
-}
-
-BlueprintEntry* ManufactureSchematicImplementation::getBlueprintEntry(int i) {
-	return factoryBlueprint.getConsolidatedEntry(i);
-}
-
-void ManufactureSchematicImplementation::canManufactureItem(String &type, String &displayedName) {
-	factoryBlueprint.canManufactureItem(type, displayedName);
-}
-
-void ManufactureSchematicImplementation::manufactureItem() {
-	factoryBlueprint.manufactureItem();
-	setManufactureLimit(getManufactureLimit() - 1);
 }

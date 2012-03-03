@@ -61,15 +61,13 @@ public:
 
 		StringId* stringId = tano->getObjectName();
 
-		insertAscii(stringId->getFile());
-		insertInt(0);
-		insertAscii(stringId->getStringID());
+		insertStringId(stringId);
 
 		if (tano->isPlayerCreature() && (cast<CreatureObject*>(tano))->getPlayerObject() != NULL && (cast<CreatureObject*>(tano))->getPlayerObject()->isPrivileged()) {
-			UnicodeString name = stringId->getCustomString();
+			UnicodeString name = tano->getCustomObjectName();
 			insertUnicode(name + " \\#ffff00[SWGEmu-Staff]\\#.");
 		} else
-			insertUnicode(stringId->getCustomString());
+			insertUnicode(tano->getCustomObjectName());
 
 		insertInt(tano->getVolume());
 

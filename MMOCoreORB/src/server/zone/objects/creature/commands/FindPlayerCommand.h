@@ -105,7 +105,7 @@ public:
 		suiBox->setPromptTitle("Find Player Results");
 
 		StringBuffer text;
-		text << "Player Name:\t  " << targetObject->getObjectName()->getDisplayedName() << "\n";
+		text << "Player Name:\t  " << targetObject->getDisplayedName() << "\n";
 
 		text << "Online Status:\t  " << (targetGhost->isOffline() ? "\\#ff3300 Offline" : "\\#00ff33 Online") << "\\#.\n";
 

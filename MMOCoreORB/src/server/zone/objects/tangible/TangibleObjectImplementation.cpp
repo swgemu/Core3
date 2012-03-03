@@ -65,7 +65,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
+#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -176,7 +176,7 @@ void TangibleObjectImplementation::synchronizedUIStopListen(SceneObject* player,
 
 void TangibleObjectImplementation::setSerialNumber(const String& serial) {
 	uint32 bitmask = getOptionsBitmask();
-	bitmask |= OptionBitmask::HASSERIALNUMBER;
+	bitmask |= OptionBitmask::HASSERIAL;
 	setOptionsBitmask(bitmask);
 	objectSerial = serial;
 }
@@ -463,7 +463,7 @@ int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageT
 }
 
 void TangibleObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	objectName.setCustomString(name);
+	customName = name;
 
 	if (!notifyClient)
 		return;
@@ -603,66 +603,68 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 
 	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 
-		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getIngredientSlot(i);
+		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
 
-		if (ingredientSlot != NULL) {
+		if(ingredientSlot == NULL || !ingredientSlot->isComponentSlot())
+			continue;
 
-			ManagedReference<TangibleObject*> tano = ingredientSlot->get();
+		ComponentSlot* compSlot = cast<ComponentSlot*>(ingredientSlot.get());
 
-			if (tano == NULL)
-				continue;
+		if(compSlot == NULL)
+			continue;
 
-			if (tano->isComponent()) {
+		ManagedReference<TangibleObject*> tano = compSlot->getPrototype();
 
-				ManagedReference<Component*> component = cast<Component*>( tano.get());
+		if (tano == NULL || !tano->isComponent())
+			continue;
 
-				for (int j = 0; j < component->getPropertyCount(); ++j) {
+		ManagedReference<Component*> component = cast<Component*>( tano.get());
 
-					property = component->getProperty(j); // charges
+		for (int j = 0; j < component->getPropertyCount(); ++j) {
 
-					modified = true;
+			property = component->getProperty(j); // charges
 
-					if (craftingValues->hasProperty(property) && !component->getAttributeHidden(property)) {
+			modified = true;
 
-						max = craftingValues->getMaxValue(property);
+			if (craftingValues->hasProperty(property) && !component->getAttributeHidden(property)) {
 
-						min = craftingValues->getMinValue(property);
+				max = craftingValues->getMaxValue(property);
 
-						hidden = craftingValues->isHidden(property);
+				min = craftingValues->getMinValue(property);
 
-						currentvalue = craftingValues->getCurrentValue(property);
+				hidden = craftingValues->isHidden(property);
 
-						propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
+				currentvalue = craftingValues->getCurrentValue(property);
 
-						currentvalue += propertyvalue;
-						min += propertyvalue;
-						max += propertyvalue;
+				propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
 
-						craftingValues->setMinValue(property, min);
-						craftingValues->setMaxValue(property, max);
+				currentvalue += propertyvalue;
+				min += propertyvalue;
+				max += propertyvalue;
 
-						if (draftSlot->getCombineType() == CraftingManager::COMPONENTLINEAR) {
+				craftingValues->setMinValue(property, min);
+				craftingValues->setMaxValue(property, max);
 
-							craftingValues->setCurrentValue(property, currentvalue);
+				if (draftSlot->getCombineType() == CraftingManager::COMPONENTLINEAR) {
 
-						} else if (draftSlot->getCombineType() == CraftingManager::COMPONENTPERCENTAGE) {
+					craftingValues->setCurrentValue(property, currentvalue);
 
-							craftingValues->setCurrentPercentage(property, currentvalue);
+				} else if (draftSlot->getCombineType() == CraftingManager::COMPONENTPERCENTAGE) {
 
-						}
-					} else if(!component->getAttributeHidden(property)) {
+					craftingValues->setCurrentPercentage(property, currentvalue);
 
-						currentvalue = component->getAttributeValue(property);
-						precision = component->getAttributePrecision(property);
-						experimentalTitle = component->getAttributeTitle(property);
-
-						craftingValues->addExperimentalProperty(experimentalTitle, property, currentvalue, currentvalue, precision, false);
-						craftingValues->setCurrentPercentage(property, .5f);
-						craftingValues->setMaxPercentage(property, 1.0f);
-						craftingValues->setCurrentValue(property, currentvalue);
-					}
 				}
+			} else if(!component->getAttributeHidden(property)) {
+
+				currentvalue = component->getAttributeValue(property);
+				precision = component->getAttributePrecision(property);
+				experimentalTitle = component->getAttributeTitle(property);
+
+				craftingValues->addExperimentalProperty(experimentalTitle, property, currentvalue, currentvalue, precision, false);
+				craftingValues->setCurrentPercentage(property, .5f);
+				craftingValues->setMaxPercentage(property, 1.0f);
+				craftingValues->setCurrentValue(property, currentvalue);
 			}
 		}
 	}

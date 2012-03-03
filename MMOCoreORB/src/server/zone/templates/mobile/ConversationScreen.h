@@ -92,6 +92,8 @@ class ConversationScreen : public Object {
 	//TODO: Consider multiple dialog texts that can be displayed for screens
 	StringIdChatParameter dialogText;
 
+	UnicodeString customText;
+
 	Vector<Reference<ConversationOption*> > options;
 
 	bool stopConversation;
@@ -137,7 +139,7 @@ public:
 		Reference<ConversationOption*> opt = options.get(idx);
 
 		if (opt != NULL)
-			text = opt->getOptionText().getDisplayedName();
+			text = customText.toString();
 
 		return text;
 	}
@@ -174,7 +176,7 @@ public:
 			if (option == NULL)
 				continue;
 
-			optionsList->insertOption(option->getOptionText());
+			optionsList->insertOption(customText);
 		}
 
 		player->sendMessage(message);
@@ -267,8 +269,8 @@ public:
 		dialogText.setStringId(fullPath);
 	}
 
-	inline void setCustomDialogText(const UnicodeString& customText) {
-		dialogText.setCustomString(customText);
+	inline void setCustomDialogText(const UnicodeString& custom) {
+		customText = custom;
 	}
 
 	inline void setDialogText(const StringIdChatParameter& param) {

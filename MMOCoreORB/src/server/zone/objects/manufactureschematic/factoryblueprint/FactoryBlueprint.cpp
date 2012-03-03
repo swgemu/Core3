@@ -6,6 +6,7 @@
  */
 
 #include "FactoryBlueprint.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 FactoryBlueprint::FactoryBlueprint() :  Serializable() {
 
@@ -44,10 +45,37 @@ FactoryBlueprint& FactoryBlueprint::operator=(const FactoryBlueprint& blueprint)
 }
 
 
-void FactoryBlueprint::addIngredient(TangibleObject* ingredient, bool isIdentical) {
-	BlueprintEntry entry(ingredient, isIdentical);
-	completeEntries.add(entry);
+void FactoryBlueprint::addIngredient(SceneObject* ingredient, int quantity, bool isIdentical) {
+	BlueprintEntry entry;
 
+	entry.setIdentical(isIdentical);
+
+	if (ingredient->isResourceSpawn()) {
+
+		ManagedReference<ResourceSpawn*> spawn = cast<ResourceSpawn*>(ingredient);
+
+		entry.setKey(spawn->getName());
+		entry.setDisplayedName(spawn->getName());
+		entry.setType("resource");
+		entry.setQuantity(quantity);
+
+	} else {
+
+		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(ingredient);
+
+		entry.setKey(String::valueOf(tano->getServerObjectCRC()));
+		entry.setDisplayedName(tano->getDisplayedName());
+		entry.setType("component");
+		entry.setQuantity(quantity);
+
+		if(isIdentical)
+			entry.setSerial(tano->getSerialNumber());
+		else
+			entry.setSerial("");
+
+	}
+
+	completeEntries.add(entry);
 	addConsolidatedEntry(&entry);
 }
 

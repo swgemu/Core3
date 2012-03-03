@@ -97,7 +97,7 @@ public:
 
 		ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::MEDIC_DIAGNOSE);
 
-		String patient = creatureTarget->getObjectName()->getDisplayedName();
+		String patient = creatureTarget->getDisplayedName();
 
 		StringBuffer title;
 		title << "Patient " << patient;

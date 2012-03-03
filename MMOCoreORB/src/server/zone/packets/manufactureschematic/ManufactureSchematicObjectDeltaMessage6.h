@@ -48,12 +48,10 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-
 class ManufactureSchematicObjectDeltaMessage6 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectDeltaMessage6(uint64 sceneObjSchematic) 
-			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 6) {
+	ManufactureSchematicObjectDeltaMessage6(SceneObject* schematic)
+			: DeltaMessage(schematic->getObjectID(), 0x4D53434F, 6) {
 	}
 	
 	void insertToResourceSlot(int slotNumber){

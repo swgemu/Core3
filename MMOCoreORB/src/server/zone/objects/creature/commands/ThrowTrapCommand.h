@@ -206,7 +206,7 @@ public:
 				message.setStringId("trap/trap" , trapData->getFailMessage());
 			}
 
-			message.setTT(targetCreature->getObjectName()->getDisplayedName());
+			message.setTT(targetCreature->getDisplayedName());
 
 
 			ThrowTrapTask* trapTask = new ThrowTrapTask(creature, targetCreature, buff, message, trapData->getPoolToDamage(), damage, hit);

@@ -12,8 +12,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/area/ActiveArea.h"
-
 /*
  *	DraftSchematicStub
  */

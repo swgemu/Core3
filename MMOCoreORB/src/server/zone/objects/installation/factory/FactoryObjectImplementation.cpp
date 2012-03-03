@@ -298,7 +298,7 @@ void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
 			player->sendSystemMessage("@manf_station:activated"); //Station activated
 	} else {
 
-		stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
+		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
 		player->sendSystemMessage("@manf_station:deactivated"); //Station deactivated
 		currentUserName = "";
 	}
@@ -369,15 +369,15 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 
 		/*WaypointObject* newwaypoint = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
 
-		newwaypoint->setCustomName(UnicodeString(this->getObjectName()->getDisplayedName()));
+		newwaypoint->setCustomName(UnicodeString(this->getDisplayedName()));
 		newwaypoint->setPlanetCRC(Planet::getPlanetCRC(getZone()->getPlanetName()));
 		newwaypoint->setPosition(this->getPositionX(), this->getPositionZ(), this->getPositionY());
 		newwaypoint->setColor(WaypointObject::COLOR_BLUE);
 		newwaypoint->setActive(false);
 
-		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUserName, newwaypoint);*/
+		chatManager->sendMail(getDisplayedName(), subject, emailBody, currentUserName, newwaypoint);*/
 
-		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUserName);
+		chatManager->sendMail(getDisplayedName(), subject, emailBody, currentUserName);
 	}
 }
 
@@ -386,12 +386,12 @@ void FactoryObjectImplementation::stopFactory(String &type, String &displayedNam
 	if(type == "resource") {
 
 		if(displayedName == "")
-			stopFactory("manf_no_unknown_resource", getObjectName()->getDisplayedName(), "", -1);
+			stopFactory("manf_no_unknown_resource", getDisplayedName(), "", -1);
 		else
-			stopFactory("manf_no_named_resource", getObjectName()->getDisplayedName(), displayedName, -1);
+			stopFactory("manf_no_named_resource", getDisplayedName(), displayedName, -1);
 
 	} else {
-		stopFactory("manf_no_component", getObjectName()->getDisplayedName(), displayedName, -1);
+		stopFactory("manf_no_component", getDisplayedName(), displayedName, -1);
 	}
 }
 
@@ -453,7 +453,7 @@ void FactoryObjectImplementation::createNewObject() {
 
 		//removeObject(schematic);
 		schematic->destroyObjectFromWorld(true);
-		stopFactory("manf_done", getObjectName()->getDisplayedName(), "",
+		stopFactory("manf_done", getDisplayedName(), "",
 				currentRunCount);
 
 	} else if (pending != NULL)

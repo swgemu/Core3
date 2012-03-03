@@ -270,9 +270,7 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
    	if (units != 0)
    		newResource->setQuantity(units);
 
-   	StringId customString;
-   	customString.setCustomString(getFamilyName());
-   	newResource->setObjectName(customString);
+   	newResource->setCustomObjectName(getFamilyName(), false);
 
    	++containerReferenceCount;
 

@@ -10,9 +10,9 @@
 
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
+
 
 class CraftingRemoveIngredientCallback : public MessageCallback {
 	uint64 objectID;
@@ -41,31 +41,24 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
 
-		PlayerObject* ghost = player->getPlayerObject();
+		Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
 
-		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
-
-		if(craftingTool == NULL) {
-			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
-			return;
-		}
-
-		if(!craftingTool->isASubChildOf(player)) {
+		if(session == NULL) {
+			warning("Trying to add an ingredient when no session exists");
 			return;
 		}
 
 		ManagedReference<SceneObject* > object = player->getZoneServer()->getObject(objectID);
 
-		if(object != NULL && object->isTangibleObject()) {
-
-			Locker _locker(craftingTool);
-
-			TangibleObject* tano = cast<TangibleObject*>( object.get());
-			craftingTool->removeIngredient(player, tano, slot, counter);
-
-		} else {
+		if(object == NULL || !object->isTangibleObject()) {
 			player->sendSystemMessage("@ui_craft:err_invalid_ingredient");
+			return;
 		}
+
+		Locker locker(session);
+
+		TangibleObject* tano = cast<TangibleObject*>( object.get());
+		session->removeIngredient(tano, slot, counter);
 	}
 };
 

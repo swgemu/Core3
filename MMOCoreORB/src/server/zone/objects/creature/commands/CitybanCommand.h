@@ -111,7 +111,7 @@ public:
 			creature->sendSystemMessage("@city/city:not_csr_ban"); //You cannot ban a Customer Service Representative from the city!
 
 			StringIdChatParameter params("city/city", "csr_ban_attempt_msg");
-			params.setTT(creature->getObjectName()->getDisplayedName());
+			params.setTT(creature->getDisplayedName());
 			params.setTO(city->getRegionName());
 
 			targetCreature->sendSystemMessage(params); //%TT tried to /cityBan you from %TO!
@@ -128,7 +128,7 @@ public:
 		targetCreature->sendSystemMessage("@city/city:city_banned"); //You have been banned from the this city.  You may no longer use any city services.
 
 		StringIdChatParameter params("city/city", "city_ban_done");
-		params.setTT(targetCreature->getObjectName()->getDisplayedName());
+		params.setTT(targetCreature->getDisplayedName());
 		creature->sendSystemMessage(params); //%TT has been banned from the city and is no longer able to access city services.
 
 		return SUCCESS;

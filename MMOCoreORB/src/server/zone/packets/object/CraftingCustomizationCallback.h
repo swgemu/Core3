@@ -67,24 +67,15 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = static_cast<CreatureObject*>(client->getPlayer());
 
-		PlayerObject* ghost = player->getPlayerObject();
+		Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
 
-		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
-
-		if(craftingTool == NULL) {
-			player->sendSystemMessage("@ui_craft:err_no_crafting_tool");
+		if(session == NULL) {
+			warning("Trying to customize when no session exists");
 			return;
 		}
 
-		if(!craftingTool->isASubChildOf(player)) {
-			return;
-		}
-
-		Locker _locker(craftingTool);
-
-		craftingTool->customization(player, name, templateChoice, schematicCount, customizationString);
-
-
+		Locker locker(session);
+		session->customization(name, templateChoice, schematicCount, customizationString);
 	}
 };
 

@@ -50,43 +50,25 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.managers.crafting.CraftingManager;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import system.util.Vector;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.scene.variables.ContainerPermissions;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 class CraftingTool extends ToolTangibleObject {
 	
+	protected string status;
 	protected int type;
 	protected float effectiveness;
-	protected string status;
+	
 	protected int complexityLevel;
-	
-	protected CraftingManager craftingManager;
-	
+
 	@dereferenced
 	protected Vector<unsigned int> enabledTabs;
-	
-	@dereferenced
-	protected Vector<DraftSchematic> currentSchematicList;
-
-	protected CraftingStation craftingStation;
-	
-	protected int state;
-	protected transient int insertCounter;
-	
-	protected transient int experimentationPointsTotal;
-	protected transient int experimentationPointsUsed;
-	
-	protected transient int assemblyResult;
-	protected transient int experimentationResult;
-
-	protected transient unsigned long lastExperimentationTimestamp;
 
 	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
 	public static final int FOOD = 2; // Food and Chemical Crafting Tool
@@ -99,7 +81,6 @@ class CraftingTool extends ToolTangibleObject {
 	public CraftingTool() {
 		Logger.setLoggingName("CraftingTool");
 		status = "@crafting:tool_status_ready";
-		state = 1;
 		effectiveness = -15;
 		
 		super.setContainerInheritPermissionsFromParent(false);
@@ -110,9 +91,7 @@ class CraftingTool extends ToolTangibleObject {
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		lastExperimentationTimestamp = 0;
 		if(getContainerObjectsSize() == 0) {
-			state = 1;
 			status = "@crafting:tool_status_ready";
 		} else {
 			status = "@crafting:tool_status_finished";
@@ -150,14 +129,58 @@ class CraftingTool extends ToolTangibleObject {
 		return true;
 	}
 	
+	/**
+	 * Crafting tool state is ready
+	 */
 	public boolean isReady() {
 		return status == "@crafting:tool_status_ready";
 	}
 	
+	public void setReady() {
+		status = "@crafting:tool_status_ready";
+	}
+	
+	/**
+	 * Crafting tool state is busy (crafting something)
+	 */
+	public boolean isBusy() {
+		return status == "@crafting:tool_status_working";
+	}
+	
+	public void setBusy() {
+		status = "@crafting:tool_status_working";
+	}
+	
+	/**
+	 * Crafting tool state is Finished (Something in hopper)
+	 */
+	public boolean isFinished() {
+		return status == "@crafting:tool_status_finished";
+	}
+	
+	public void setFinished() {
+		status = "@crafting:tool_status_finished";
+	}
+	
+	/**
+	 * Sends message to player if the tool is unable 
+	 * to start
+	 */
+	public native void sendToolStartFailure(CreatureObject player, final string message);
+	
+
 	public int getToolType() {
 		return type;
 	}
 	
+	public float getEffectiveness() {
+		return effectiveness;
+	}
+	
+	public float getComplexityLevel() {
+		return complexityLevel;
+	}
+
 	public native TangibleObject getPrototype();
 	
 	public ManufactureSchematic getManufactureSchematic() {
@@ -166,69 +189,5 @@ class CraftingTool extends ToolTangibleObject {
 	
 	@local
 	public native Vector<unsigned int> getToolTabs();
-	
-	public native void requestCraftingSession(CreatureObject player, CraftingStation craftingStation = null);
-	
-	private native void sendStart(CreatureObject player);
-	
-	public native void sendToolStartFailure(CreatureObject player);
-	
-	public native void cancelCraftingSession(CreatureObject player);
-	
-	public native void clearCraftingSession();
-	
-	private native void closeCraftingWindow(CreatureObject player, int clientCounter);
-	
-	private native void locateCraftingStation(CreatureObject player, int toolType);
-
-	public native void selectDraftSchematic(CreatureObject player, int index);
-	
-	public native boolean createSessionObjects(CreatureObject player, DraftSchematic draftschematic);
-	
-	public native boolean createManufactureSchematic(CreatureObject player, DraftSchematic draftschematic);
-	
-	public native boolean createPrototype(CreatureObject player, DraftSchematic draftschematic);
-
-	public native void synchronizedUIListenForSchematic(CreatureObject player);
-	
-	public native void addIngredient(CreatureObject player, TangibleObject tano, int slot, int clientCounter);
-	
-	private native void sendIngredientAddSuccess(CreatureObject player, int slot, int clientCounter);
-	
-	public native void removeIngredient(CreatureObject player, TangibleObject tano, int slot, int clientCounter);
-	
-	private native void sendIngredientRemoveSuccess(CreatureObject player, int slot, int clientCounter);
-	
-	private native void sendSlotMessage(CreatureObject player, int clientCounter, int message);
-	
-	public native void nextCraftingStage(CreatureObject player, int clientCounter);
-
-	private native void initialAssembly(CreatureObject player, int counter);
-	
-	private native void finishAssembly(CreatureObject player, int clientCounter);
-
-	public native void experiment(CreatureObject player, int numRowsAttempted, string expString, int clientCounter);
-	
-	public native void customization(CreatureObject player, string name, byte templateChoice, int schematicCount, string customization);
-
-	private native void finishStage1(CreatureObject player, int clientCounter);
-	
-	private native void finishStage2(CreatureObject player, int clientCounter);
-
-	public native void createPrototype(CreatureObject player, int clientCounter, int practice);
-
-	public native void createManfSchematic(CreatureObject player, int clientCounter);
-	
-	public native void createObject(CreatureObject player, int timer, boolean create);
-	
-	public native void depositObject(CreatureObject player, boolean practice);
-
-	public unsigned long getLastExperimentationTimestamp() {
-		return lastExperimentationTimestamp;
-	}
-	
-	public int getExperimentationResult() {
-		return experimentationResult;
-	}
 
 }

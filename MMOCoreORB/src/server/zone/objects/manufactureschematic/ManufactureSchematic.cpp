@@ -18,7 +18,7 @@
  *	ManufactureSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_UPDATEINGREDIENTCOUNTER__,RPC_GETINGREDIENTCOUNTER__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_,RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_,RPC_GETDRAFTSCHEMATIC__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_GETSLOTCOUNT__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_GETINGREDIENTCOUNTER__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
@@ -128,47 +128,64 @@ bool ManufactureSchematic::isManufactureSchematic() {
 		return _implementation->isManufactureSchematic();
 }
 
-void ManufactureSchematic::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
+void ManufactureSchematic::setDraftSchematic(DraftSchematic* schematic) {
 	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_);
-		method.addObjectParameter(craftingTool);
+		DistributedMethod method(this, RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDraftSchematic(craftingTool, schematic);
+		_implementation->setDraftSchematic(schematic);
 }
 
-void ManufactureSchematic::initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic) {
+int ManufactureSchematic::addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot) {
 	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_);
-		method.addObjectParameter(craftingTool);
-		method.addObjectParameter(schematic);
+		DistributedMethod method(this, RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(tano);
+		method.addSignedIntParameter(slot);
 
-		method.executeWithVoidReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		_implementation->initializeIngredientSlots(craftingTool, schematic);
+		return _implementation->addIngredientToSlot(player, tano, slot);
 }
 
-void ManufactureSchematic::cleanupIngredientSlots() {
+int ManufactureSchematic::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {
 	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CLEANUPINGREDIENTSLOTS__);
+		DistributedMethod method(this, RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(tano);
+		method.addSignedIntParameter(slot);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->removeIngredientFromSlot(player, tano, slot);
+}
+
+void ManufactureSchematic::cleanupIngredientSlots(CreatureObject* player) {
+	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->cleanupIngredientSlots();
+		_implementation->cleanupIngredientSlots(player);
 }
 
 DraftSchematic* ManufactureSchematic::getDraftSchematic() {
@@ -182,28 +199,6 @@ DraftSchematic* ManufactureSchematic::getDraftSchematic() {
 		return static_cast<DraftSchematic*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getDraftSchematic();
-}
-
-IngredientSlot* ManufactureSchematic::getIngredientSlot(int index) {
-	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getIngredientSlot(index);
-}
-
-int ManufactureSchematic::getSlotCount() {
-	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSLOTCOUNT__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getSlotCount();
 }
 
 void ManufactureSchematic::increaseComplexity() {
@@ -243,32 +238,6 @@ float ManufactureSchematic::getComplexity() {
 		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getComplexity();
-}
-
-bool ManufactureSchematic::isFirstCraftingUpdate() {
-	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISFIRSTCRAFTINGUPDATE__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isFirstCraftingUpdate();
-}
-
-void ManufactureSchematic::setFirstCraftingUpdateComplete() {
-	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setFirstCraftingUpdateComplete();
 }
 
 bool ManufactureSchematic::isReadyForAssembly() {
@@ -334,6 +303,28 @@ bool ManufactureSchematic::isCompleted() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCompleted();
+}
+
+int ManufactureSchematic::getSlotCount() {
+	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSLOTCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getSlotCount();
+}
+
+IngredientSlot* ManufactureSchematic::getSlot(int i) {
+	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getSlot(i);
 }
 
 void ManufactureSchematic::setCrafter(CreatureObject* player) {
@@ -410,19 +401,6 @@ int ManufactureSchematic::getExperimentingCounterPrevious() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getExperimentingCounterPrevious();
-}
-
-void ManufactureSchematic::updateIngredientCounter() {
-	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_UPDATEINGREDIENTCOUNTER__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->updateIngredientCounter();
 }
 
 int ManufactureSchematic::getIngredientCounter() {
@@ -685,18 +663,8 @@ bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* str
 		return true;
 	}
 
-	if (_name == "crcToSend") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&crcToSend, stream);
-		return true;
-	}
-
 	if (_name == "crafter") {
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&crafter, stream);
-		return true;
-	}
-
-	if (_name == "firstCraftingUpdate") {
-		TypeInfo<bool >::parseFromBinaryStream(&firstCraftingUpdate, stream);
 		return true;
 	}
 
@@ -790,27 +758,11 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "crcToSend";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<unsigned int >::toBinaryStream(&crcToSend, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "crafter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&crafter, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "firstCraftingUpdate";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<bool >::toBinaryStream(&firstCraftingUpdate, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -871,7 +823,7 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 15 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 13 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
@@ -883,8 +835,6 @@ ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	craftingValues = _ref0 = new CraftingValues();
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		prototype = null;
 	prototype = NULL;
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		firstCraftingUpdate = true;
-	firstCraftingUpdate = true;
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(true);
 	IntangibleObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(true);
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		ContainerPermissions permissions = super.getContainerPermissions();
@@ -926,16 +876,6 @@ float ManufactureSchematicImplementation::getComplexity() {
 	return complexity;
 }
 
-bool ManufactureSchematicImplementation::isFirstCraftingUpdate() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return firstCraftingUpdate;
-	return firstCraftingUpdate;
-}
-
-void ManufactureSchematicImplementation::setFirstCraftingUpdateComplete() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		firstCraftingUpdate = false;
-	firstCraftingUpdate = false;
-}
-
 void ManufactureSchematicImplementation::setAssembled() {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		assembled = true;
 	assembled = true;
@@ -954,6 +894,16 @@ void ManufactureSchematicImplementation::setCompleted() {
 bool ManufactureSchematicImplementation::isCompleted() {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return completed;
 	return completed;
+}
+
+int ManufactureSchematicImplementation::getSlotCount() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return ingredientSlots.size();
+	return (&ingredientSlots)->size();
+}
+
+IngredientSlot* ManufactureSchematicImplementation::getSlot(int i) {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return ingredientSlots.get(i);
+	return (&ingredientSlots)->get(i);
 }
 
 void ManufactureSchematicImplementation::setCrafter(CreatureObject* player) {
@@ -1013,9 +963,26 @@ TangibleObject* ManufactureSchematicImplementation::getPrototype() {
 	return prototype;
 }
 
+void ManufactureSchematicImplementation::canManufactureItem(String& type, String& displayedName) {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		factoryBlueprint.canManufactureItem(type, displayedName);
+	(&factoryBlueprint)->canManufactureItem(type, displayedName);
+}
+
+void ManufactureSchematicImplementation::manufactureItem() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		factoryBlueprint.manufactureItem();
+	(&factoryBlueprint)->manufactureItem();
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		setManufactureLimit(getManufactureLimit() - 1);
+	setManufactureLimit(getManufactureLimit() - 1);
+}
+
 int ManufactureSchematicImplementation::getBlueprintSize() {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return factoryBlueprint.getConsolidatedSize();
 	return (&factoryBlueprint)->getConsolidatedSize();
+}
+
+BlueprintEntry* ManufactureSchematicImplementation::getBlueprintEntry(int i) {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return factoryBlueprint.getConsolidatedEntry(i);
+	return (&factoryBlueprint)->getConsolidatedEntry(i);
 }
 
 /*
@@ -1047,20 +1014,20 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_ISMANUFACTURESCHEMATIC__:
 		resp->insertBoolean(isManufactureSchematic());
 		break;
-	case RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_:
-		setDraftSchematic(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()));
+	case RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_:
+		setDraftSchematic(static_cast<DraftSchematic*>(inv->getObjectParameter()));
 		break;
-	case RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_:
-		initializeIngredientSlots(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()));
+	case RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_:
+		resp->insertSignedInt(addIngredientToSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
-	case RPC_CLEANUPINGREDIENTSLOTS__:
-		cleanupIngredientSlots();
+	case RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_:
+		resp->insertSignedInt(removeIngredientFromSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		break;
+	case RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_:
+		cleanupIngredientSlots(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_GETDRAFTSCHEMATIC__:
 		resp->insertLong(getDraftSchematic()->_getObjectID());
-		break;
-	case RPC_GETSLOTCOUNT__:
-		resp->insertSignedInt(getSlotCount());
 		break;
 	case RPC_INCREASECOMPLEXITY__:
 		increaseComplexity();
@@ -1070,12 +1037,6 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case RPC_GETCOMPLEXITY__:
 		resp->insertFloat(getComplexity());
-		break;
-	case RPC_ISFIRSTCRAFTINGUPDATE__:
-		resp->insertBoolean(isFirstCraftingUpdate());
-		break;
-	case RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__:
-		setFirstCraftingUpdateComplete();
 		break;
 	case RPC_ISREADYFORASSEMBLY__:
 		resp->insertBoolean(isReadyForAssembly());
@@ -1092,6 +1053,9 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_ISCOMPLETED__:
 		resp->insertBoolean(isCompleted());
 		break;
+	case RPC_GETSLOTCOUNT__:
+		resp->insertSignedInt(getSlotCount());
+		break;
 	case RPC_SETCRAFTER__CREATUREOBJECT_:
 		setCrafter(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
@@ -1106,9 +1070,6 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__:
 		resp->insertSignedInt(getExperimentingCounterPrevious());
-		break;
-	case RPC_UPDATEINGREDIENTCOUNTER__:
-		updateIngredientCounter();
 		break;
 	case RPC_GETINGREDIENTCOUNTER__:
 		resp->insertSignedInt(getIngredientCounter());
@@ -1168,24 +1129,24 @@ bool ManufactureSchematicAdapter::isManufactureSchematic() {
 	return (static_cast<ManufactureSchematic*>(stub))->isManufactureSchematic();
 }
 
-void ManufactureSchematicAdapter::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
-	(static_cast<ManufactureSchematic*>(stub))->setDraftSchematic(craftingTool, schematic);
+void ManufactureSchematicAdapter::setDraftSchematic(DraftSchematic* schematic) {
+	(static_cast<ManufactureSchematic*>(stub))->setDraftSchematic(schematic);
 }
 
-void ManufactureSchematicAdapter::initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic) {
-	(static_cast<ManufactureSchematic*>(stub))->initializeIngredientSlots(craftingTool, schematic);
+int ManufactureSchematicAdapter::addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot) {
+	return (static_cast<ManufactureSchematic*>(stub))->addIngredientToSlot(player, tano, slot);
 }
 
-void ManufactureSchematicAdapter::cleanupIngredientSlots() {
-	(static_cast<ManufactureSchematic*>(stub))->cleanupIngredientSlots();
+int ManufactureSchematicAdapter::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {
+	return (static_cast<ManufactureSchematic*>(stub))->removeIngredientFromSlot(player, tano, slot);
+}
+
+void ManufactureSchematicAdapter::cleanupIngredientSlots(CreatureObject* player) {
+	(static_cast<ManufactureSchematic*>(stub))->cleanupIngredientSlots(player);
 }
 
 DraftSchematic* ManufactureSchematicAdapter::getDraftSchematic() {
 	return (static_cast<ManufactureSchematic*>(stub))->getDraftSchematic();
-}
-
-int ManufactureSchematicAdapter::getSlotCount() {
-	return (static_cast<ManufactureSchematic*>(stub))->getSlotCount();
 }
 
 void ManufactureSchematicAdapter::increaseComplexity() {
@@ -1198,14 +1159,6 @@ void ManufactureSchematicAdapter::decreaseComplexity() {
 
 float ManufactureSchematicAdapter::getComplexity() {
 	return (static_cast<ManufactureSchematic*>(stub))->getComplexity();
-}
-
-bool ManufactureSchematicAdapter::isFirstCraftingUpdate() {
-	return (static_cast<ManufactureSchematic*>(stub))->isFirstCraftingUpdate();
-}
-
-void ManufactureSchematicAdapter::setFirstCraftingUpdateComplete() {
-	(static_cast<ManufactureSchematic*>(stub))->setFirstCraftingUpdateComplete();
 }
 
 bool ManufactureSchematicAdapter::isReadyForAssembly() {
@@ -1228,6 +1181,10 @@ bool ManufactureSchematicAdapter::isCompleted() {
 	return (static_cast<ManufactureSchematic*>(stub))->isCompleted();
 }
 
+int ManufactureSchematicAdapter::getSlotCount() {
+	return (static_cast<ManufactureSchematic*>(stub))->getSlotCount();
+}
+
 void ManufactureSchematicAdapter::setCrafter(CreatureObject* player) {
 	(static_cast<ManufactureSchematic*>(stub))->setCrafter(player);
 }
@@ -1246,10 +1203,6 @@ int ManufactureSchematicAdapter::getExperimentingCounter() {
 
 int ManufactureSchematicAdapter::getExperimentingCounterPrevious() {
 	return (static_cast<ManufactureSchematic*>(stub))->getExperimentingCounterPrevious();
-}
-
-void ManufactureSchematicAdapter::updateIngredientCounter() {
-	(static_cast<ManufactureSchematic*>(stub))->updateIngredientCounter();
 }
 
 int ManufactureSchematicAdapter::getIngredientCounter() {

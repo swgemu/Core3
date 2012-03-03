@@ -135,6 +135,10 @@ class ResourceSpawn extends SceneObject {
 	
 	public native void decreaseContainerReferenceCount();
         
+	
+	public boolean isResourceSpawn() {
+		return true;
+	}
     /**
 	 * Sets the resource spawn with the system generated name
 	 * @pre { }

@@ -65,20 +65,6 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace area {
-
-class ActiveArea;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
-
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
 #include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"

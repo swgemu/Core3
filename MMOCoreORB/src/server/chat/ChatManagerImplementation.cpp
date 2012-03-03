@@ -753,9 +753,6 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (obj == NULL || !obj->isPlayerCreature())
 		return IM_OFFLINE;
 
-	if (body.getCustomString().length() > PM_MAXSIZE)
-		return IM_TOOLONG;
-
 	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
 
 	if (receiver->getPlayerObject()->isIgnoring(sendername))

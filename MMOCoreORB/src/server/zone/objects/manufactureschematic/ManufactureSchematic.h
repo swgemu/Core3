@@ -83,11 +83,11 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
@@ -96,6 +96,14 @@ using namespace server::zone::objects::area;
 #include "server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.h"
 
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
+#include "server/zone/objects/manufactureschematic/variables/StringIdDeltaVector.h"
+
+#include "server/zone/objects/manufactureschematic/variables/Uint64VectorDeltaVector.h"
+
+#include "server/zone/objects/manufactureschematic/variables/IntVectorDeltaVector.h"
+
+#include "server/zone/packets/DeltaMessage.h"
 
 #include "system/lang/ref/Reference.h"
 
@@ -128,27 +136,21 @@ public:
 
 	bool isManufactureSchematic();
 
-	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
+	void setDraftSchematic(DraftSchematic* schematic);
 
-	void initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic);
+	int addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot);
 
-	void cleanupIngredientSlots();
+	int removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot);
+
+	void cleanupIngredientSlots(CreatureObject* player);
 
 	DraftSchematic* getDraftSchematic();
-
-	IngredientSlot* getIngredientSlot(int index);
-
-	int getSlotCount();
 
 	void increaseComplexity();
 
 	void decreaseComplexity();
 
 	float getComplexity();
-
-	bool isFirstCraftingUpdate();
-
-	void setFirstCraftingUpdateComplete();
 
 	bool isReadyForAssembly();
 
@@ -159,6 +161,10 @@ public:
 	void setCompleted();
 
 	bool isCompleted();
+
+	int getSlotCount();
+
+	IngredientSlot* getSlot(int i);
 
 	void setCrafter(CreatureObject* player);
 
@@ -171,8 +177,6 @@ public:
 	int getExperimentingCounter();
 
 	int getExperimentingCounterPrevious();
-
-	void updateIngredientCounter();
 
 	int getIngredientCounter();
 
@@ -230,15 +234,25 @@ protected:
 
 	float complexity;
 
-	unsigned int crcToSend;
-
 	ManagedReference<CreatureObject* > crafter;
-
-	bool firstCraftingUpdate;
 
 	FactoryBlueprint factoryBlueprint;
 
-	IngredientSlots ingredientSlots;
+	Vector<Reference<IngredientSlot*> > ingredientSlots;
+
+	StringIdDeltaVector ingredientNames;
+
+	DeltaVector<int> ingredientTypes;
+
+	Uint64VectorDeltaVector slotOIDs;
+
+	IntVectorDeltaVector slotQuantities;
+
+	DeltaVector<float> slotQualities;
+
+	DeltaVector<int> slotClean;
+
+	DeltaVector<int> slotIndexes;
 
 	bool assembled;
 
@@ -269,33 +283,39 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+private:
+	void sendMsco7(SceneObject* player);
+
+public:
 	virtual void synchronizedUIListen(SceneObject* player, int value);
 
 	virtual void synchronizedUIStopListen(SceneObject* player, int value);
 
 	bool isManufactureSchematic();
 
-	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
+	void setDraftSchematic(DraftSchematic* schematic);
 
-	void initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic);
+private:
+	void initializeIngredientSlots();
 
-	void cleanupIngredientSlots();
+public:
+	int addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot);
+
+	int removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot);
+
+private:
+	void sendDelta7(IngredientSlot* ingredientSlot, int slot, CreatureObject* player);
+
+public:
+	void cleanupIngredientSlots(CreatureObject* player);
 
 	DraftSchematic* getDraftSchematic();
-
-	IngredientSlot* getIngredientSlot(int index);
-
-	int getSlotCount();
 
 	void increaseComplexity();
 
 	void decreaseComplexity();
 
 	float getComplexity();
-
-	bool isFirstCraftingUpdate();
-
-	void setFirstCraftingUpdateComplete();
 
 	bool isReadyForAssembly();
 
@@ -306,6 +326,10 @@ public:
 	void setCompleted();
 
 	bool isCompleted();
+
+	int getSlotCount();
+
+	IngredientSlot* getSlot(int i);
 
 	void setCrafter(CreatureObject* player);
 
@@ -319,8 +343,10 @@ public:
 
 	int getExperimentingCounterPrevious();
 
+private:
 	void updateIngredientCounter();
 
+public:
 	int getIngredientCounter();
 
 	void setManufactureLimit(int limit);
@@ -396,25 +422,21 @@ public:
 
 	bool isManufactureSchematic();
 
-	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
+	void setDraftSchematic(DraftSchematic* schematic);
 
-	void initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic);
+	int addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot);
 
-	void cleanupIngredientSlots();
+	int removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot);
+
+	void cleanupIngredientSlots(CreatureObject* player);
 
 	DraftSchematic* getDraftSchematic();
-
-	int getSlotCount();
 
 	void increaseComplexity();
 
 	void decreaseComplexity();
 
 	float getComplexity();
-
-	bool isFirstCraftingUpdate();
-
-	void setFirstCraftingUpdateComplete();
 
 	bool isReadyForAssembly();
 
@@ -426,6 +448,8 @@ public:
 
 	bool isCompleted();
 
+	int getSlotCount();
+
 	void setCrafter(CreatureObject* player);
 
 	CreatureObject* getCrafter();
@@ -435,8 +459,6 @@ public:
 	int getExperimentingCounter();
 
 	int getExperimentingCounterPrevious();
-
-	void updateIngredientCounter();
 
 	int getIngredientCounter();
 

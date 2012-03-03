@@ -56,6 +56,7 @@ public:
 
 		insertFloat(1);
 		insertStringId(itno->getObjectName());
+		insertCustomName(itno->getCustomObjectName());
 
 		insertInt(0); // ?
 		insertInt(itno->getStatus());

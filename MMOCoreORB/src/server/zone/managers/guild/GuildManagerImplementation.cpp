@@ -218,7 +218,7 @@ void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, 
 	guildInfo << "Abbreviation: " << guild->getGuildAbbrev() << "\n";
 
 	if (guildLeader != NULL && guildLeader->isPlayerCreature())
-		guildInfo << "Guild Leader: " << guildLeader->getObjectName()->getDisplayedName() << "\n";
+		guildInfo << "Guild Leader: " << guildLeader->getDisplayedName() << "\n";
 	else
 		guildInfo << "Guild Leader: None\n";
 
@@ -316,7 +316,7 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 			continue;
 
 		CreatureObject* member = cast<CreatureObject*>( obj.get());
-		suiBox->addMenuItem(member->getObjectName()->getDisplayedName(), playerID);
+		suiBox->addMenuItem(member->getDisplayedName(), playerID);
 	}
 
 	suiBox->setCancelButton(true, "@cancel");
@@ -373,7 +373,7 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 
 		CreatureObject* sponsoredPlayer = cast<CreatureObject*>( obj.get());
 
-		suiBox->addMenuItem(sponsoredPlayer->getObjectName()->getDisplayedName(), playerID);
+		suiBox->addMenuItem(sponsoredPlayer->getDisplayedName(), playerID);
 	}
 
 	player->getPlayerObject()->addSuiBox(suiBox);
@@ -662,8 +662,8 @@ void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player
 
 	//Send emails
 	params.setStringId("@guildmail:sponsor_text"); //%TU has sponsored %TT for membership in the guild.
-	params.setTU(player->getObjectName()->getDisplayedName());
-	params.setTT(target->getObjectName()->getDisplayedName());
+	params.setTU(player->getDisplayedName());
+	params.setTT(target->getDisplayedName());
 
 	sendGuildMail("@guildmail:sponsor_subject", params, guild);
 }
@@ -692,13 +692,13 @@ void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, u
 
 	StringIdChatParameter params;
 	params.setStringId("@guild:accept_self"); //You accept %TU for membership in %TT.
-	params.setTU(target->getObjectName()->getDisplayedName());
+	params.setTU(target->getDisplayedName());
 	params.setTT(guild->getGuildName());
 	player->sendSystemMessage(params);
 
 	params.setStringId("@guildmail:accept_text"); //%TU has accepted %TT into the guild as a member.
-	params.setTU(player->getObjectName()->getDisplayedName());
-	params.setTT(target->getObjectName()->getDisplayedName());
+	params.setTU(player->getDisplayedName());
+	params.setTT(target->getDisplayedName());
 	sendGuildMail("@guildmail:accept_subject", params, guild);
 
 	params.setTT(guild->getGuildName());
@@ -784,13 +784,13 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 
 	StringIdChatParameter params;
 	params.setStringId("@guild:kick_self"); //You remove %TU from %TT.
-	params.setTU(target->getObjectName()->getDisplayedName());
+	params.setTU(target->getDisplayedName());
 	params.setTT(guild->getGuildName());
 	player->sendSystemMessage(params);
 
 	if (target->isOnline()) {
 		params.setStringId("@guild:kick_target"); //%TU has removed you from %TT.
-		params.setTU(player->getObjectName()->getDisplayedName());
+		params.setTU(player->getDisplayedName());
 		target->sendSystemMessage(params);
 
 		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(target);
@@ -807,8 +807,8 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 	}
 
 	params.setStringId("@guildmail:kick_text"); //%TU has removed %TT from the guild.
-	params.setTU(player->getObjectName()->getDisplayedName());
-	params.setTT(target->getObjectName()->getDisplayedName());
+	params.setTU(player->getDisplayedName());
+	params.setTT(target->getDisplayedName());
 	sendGuildMail("@guildmail:kick_subject", params, guild);
 }
 
@@ -837,13 +837,13 @@ void GuildManagerImplementation::setMemberTitle(CreatureObject* player, Creature
 
 	StringIdChatParameter params;
 	params.setStringId("@guild:title_self"); //You set %TU's guild title to '%TT'.
-	params.setTU(target->getObjectName()->getDisplayedName());
+	params.setTU(target->getDisplayedName());
 	params.setTT(title);
 	player->sendSystemMessage(params);
 
 	if (target->isOnline()) {
 		params.setStringId("@guild:title_target"); //%TU has set your guild title to '%TT'.
-		params.setTU(player->getObjectName()->getDisplayedName());
+		params.setTU(player->getDisplayedName());
 		target->sendSystemMessage(params);
 	}
 
@@ -1022,7 +1022,7 @@ void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject*
 	}
 
 	params.setStringId("@guildmail:leave_text"); //%TU has removed themselves from the guild.
-	params.setTU(player->getObjectName()->getDisplayedName());
+	params.setTU(player->getDisplayedName());
 
 	sendGuildMail("@guildmail:leave_subject", params, guild);
 }

@@ -74,7 +74,7 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 	} else {
 
 		StringIdChatParameter stringID("camp", "prose_camp_enter");
-		stringID.setTO(terminal->getObjectName()->getDisplayedName());
+		stringID.setTO(terminal->getDisplayedName());
 		player->sendSystemMessage(stringID);
 
 		player->sendSystemMessage("@camp:sys_camp_heal");
@@ -104,7 +104,7 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 
 	if(abandoned || object != campOwner) {
 		StringIdChatParameter stringID("camp", "prose_camp_exit");
-		stringID.setTO(terminal->getObjectName()->getDisplayedName());
+		stringID.setTO(terminal->getDisplayedName());
 		player->sendSystemMessage(stringID);
 		return;
 	}

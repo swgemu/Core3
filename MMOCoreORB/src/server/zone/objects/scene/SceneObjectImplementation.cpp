@@ -1352,3 +1352,10 @@ bool SceneObjectImplementation::isInWater() {
 
 	return planetManager->isInWater(getPositionX(), getPositionY());
 }
+
+String SceneObjectImplementation::getDisplayedName() {
+	if(!customName.isEmpty())
+		return customName.toString();
+
+	return objectName.getFullPath();
+}

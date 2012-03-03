@@ -226,7 +226,7 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::CAMP_STATUS);
 	suiBox->setPromptTitle("@camp:mnu_status");
 	suiBox->setUsingObject(terminal);
-	suiBox->setPromptText(terminal->getObjectName()->getDisplayedName());
+	suiBox->setPromptText(terminal->getDisplayedName());
 
 	StringBuffer owner, time, visitors;
 	owner << "Owner: " << campArea->getOwner()->getFirstName() << " " <<

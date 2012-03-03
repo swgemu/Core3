@@ -217,7 +217,7 @@ void AuctionManagerImplementation::checkAuctions() {
 					waypoint->setPlanetCRC(vendorRef->getPlanetCRC());
 					waypoint->setPosition(waypointX, 0, waypointY);
 
-					waypoint->setCustomName(vendorRef->getObjectName()->getDisplayedName());
+					waypoint->setCustomName(vendorRef->getDisplayedName());
 
 					StringIdChatParameter body2("@auction:buyer_success");
 					body2.setTO(item->getItemName());
@@ -401,7 +401,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		}
 
 		ManagedReference<CreatureObject*> strongOwnerRef = cast<CreatureObject*>(strongRef.get());
-		strongOwnerRef->sendSystemMessage(player->getFirstName() + " has offered an item to " + terminal->getObjectName()->getDisplayedName());
+		strongOwnerRef->sendSystemMessage(player->getFirstName() + " has offered an item to " + terminal->getDisplayedName());
 	}
 
 	BaseMessage* msg = new ItemSoldMessage(objectid, 0);
@@ -459,7 +459,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	waypoint->setPlanetCRC(vendorRef->getPlanetCRC());
 	waypoint->setPosition(waypointX, 0, waypointY);
 
-	waypoint->setCustomName(vendorRef->getObjectName()->getDisplayedName());
+	waypoint->setCustomName(vendorRef->getDisplayedName());
 
 	if (!item->isOnBazaar()) {
 		//Setup the mail to the vendor owner
@@ -813,7 +813,7 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 
 	StringId* objectName = objectToSell->getObjectName();
 
-	String name = objectName->getCustomString().toString();
+	String name = objectToSell->getCustomObjectName().toString();
 
 	if (name.length() < 2)
 		objectName->getFullPath(name);

@@ -149,7 +149,7 @@ void CityManagerImplementation::loadCityRegions() {
 CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
 	ManagedReference<CityRegion*> city = new CityRegion();
 	ObjectManager::instance()->persistObject(city, 1, "cityregions");
-	city->setRegionName(UnicodeString(cityName));
+	city->setCustomRegionName(cityName);
 	city->setZone(mayor->getZone());
 	city->setCityRank(OUTPOST);
 	city->setMayorID(mayor->getObjectID());
@@ -217,7 +217,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	list->addMenuItem("@city/city:name_prompt " + city->getRegionName()); //Name:
 
 	if (mayor != NULL)
-		list->addMenuItem("@city/city:mayor_prompt " + mayor->getObjectName()->getDisplayedName()); //Mayor:
+		list->addMenuItem("@city/city:mayor_prompt " + mayor->getDisplayedName()); //Mayor:
 
 	StringBuffer location;
 	location << city->getPositionX() << " " << city->getPositionY();
@@ -359,7 +359,7 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 		ManagedReference<SceneObject*> citizen = zoneServer->getObject(citizenList->get(i));
 
 		if (citizen != NULL) {
-			String name = citizen->getObjectName()->getDisplayedName();
+			String name = citizen->getDisplayedName();
 
 			if (city->isMilitiaMember(citizen->getObjectID()))
 				name += " (Militia)";
@@ -522,12 +522,12 @@ void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject
 		CreatureObject* mayorCreature = cast<CreatureObject*>(mayor.get());
 
 		StringIdChatParameter params("city/city", "new_city_citizen_body");
-		params.setTO(creature->getObjectName()->getDisplayedName());
+		params.setTO(creature->getDisplayedName());
 		chatManager->sendMail("@city/city:new_city_from", "@city/city:new_city_citizen_subject", params, mayorCreature->getFirstName(), NULL);
 
 		params.setStringId("city/city", "new_city_citizen_other_body");
 		params.setTU(city->getRegionName());
-		params.setTT(mayorCreature->getObjectName()->getDisplayedName());
+		params.setTT(mayorCreature->getDisplayedName());
 
 		chatManager->sendMail("@city/city:new_city_from", "@city/city:new_city_citizen_other_subject", params, creature->getFirstName(), NULL);
 
@@ -545,7 +545,7 @@ void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObje
 		CreatureObject* mayorCreature = cast<CreatureObject*>(mayor.get());
 
 		StringIdChatParameter params("city/city", "lost_citizen_body"); //A citizen has left your city by using the revoke option on the city terminal. Citizen Name: %TO
-		params.setTO(creature->getObjectName()->getDisplayedName());
+		params.setTO(creature->getDisplayedName());
 
 		UnicodeString subject = "@city/city:lost_citizen_subject";
 
@@ -587,7 +587,7 @@ void CityManagerImplementation::sendManageMilitia(CityRegion* city, CreatureObje
 		ManagedReference<SceneObject*> militant = zoneServer->getObject(militiaMembers->get(i));
 
 		if (militant != NULL)
-			listbox->addMenuItem(militant->getObjectName()->getDisplayedName(), militant->getObjectID());
+			listbox->addMenuItem(militant->getDisplayedName(), militant->getObjectID());
 	}
 
 	ghost->addSuiBox(listbox);
