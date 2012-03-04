@@ -231,7 +231,7 @@ void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
 	if (!isStaticBuilding()) {
 		info("sending building object destroy");
 
-		SceneObjectImplementation::destroy(player->getClient());
+		SceneObjectImplementation::sendDestroyTo(player);
 	}
 }
 

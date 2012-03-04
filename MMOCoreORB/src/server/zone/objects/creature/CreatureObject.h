@@ -267,6 +267,8 @@ using namespace server::zone;
 
 #include "system/lang/Long.h"
 
+#include "engine/service/proto/BasePacket.h"
+
 namespace server {
 namespace zone {
 namespace objects {

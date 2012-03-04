@@ -368,24 +368,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract int canBeDestroyed(CreatureObject player) {
 		return 0;
 	}
-	
-	/**
-	 * Sends a SceneObjectCreateMessage of this object to client
-	 * @pre { this object is locked }
-	 * @post {this object is locked, client received the SceneObjectCreateMessage message }
-	 * @param client ZoneClientSession that will receive the message
-	 */
-	@dirty
-	public native void create(ZoneClientSession client);
-
-	/**
-	 * Sends a SceneObjectDestroyMessage of this object to client
-	 * @pre { this object is locked }
-	 * @post { this object is locked, client received the destroy message }
-	 * @param client ZoneClientSession that will receive the message
-	 */
-	@dirty
-	public native void destroy(ZoneClientSession client);
 
 	/**
 	 * Sends a SceneObjectCloseMessage of this object to client
@@ -394,7 +376,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param client ZoneClientSession that will receive the message
 	 */
 	@dirty
-	public native void close(ZoneClientSession client);
+	protected native void close(SceneObject client);
 
 	/**
 	 * Sends an UpdateContainmentMessage to client that adds/links this object to its parent object 
@@ -404,7 +386,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param containmentType arrangement type?
 	 */
 	@dirty
-	public native void link(ZoneClientSession client, unsigned int containmentType = 4);
+	protected native void link(SceneObject client, unsigned int containmentType = 4);
 
 	/**
 	 * Creates a new UpdateContainmentMessage that adds/links this object to the specified objectID

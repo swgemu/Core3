@@ -306,14 +306,6 @@ public:
 
 	int canBeDestroyed(CreatureObject* player);
 
-	void create(ZoneClientSession* client);
-
-	void destroy(ZoneClientSession* client);
-
-	void close(ZoneClientSession* client);
-
-	void link(ZoneClientSession* client, unsigned int containmentType = 4);
-
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
 	void sendTo(SceneObject* player, bool doClose);
@@ -915,14 +907,12 @@ public:
 
 	virtual int canBeDestroyed(CreatureObject* player);
 
-	void create(ZoneClientSession* client);
+protected:
+	void close(SceneObject* client);
 
-	void destroy(ZoneClientSession* client);
+	void link(SceneObject* client, unsigned int containmentType = 4);
 
-	void close(ZoneClientSession* client);
-
-	void link(ZoneClientSession* client, unsigned int containmentType = 4);
-
+public:
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
 	virtual void sendTo(SceneObject* player, bool doClose);
@@ -1459,14 +1449,6 @@ public:
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	int canBeDestroyed(CreatureObject* player);
-
-	void create(ZoneClientSession* client);
-
-	void destroy(ZoneClientSession* client);
-
-	void close(ZoneClientSession* client);
-
-	void link(ZoneClientSession* client, unsigned int containmentType);
 
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType);
 

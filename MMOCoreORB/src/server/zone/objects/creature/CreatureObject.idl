@@ -80,6 +80,7 @@ include server.zone.objects.creature.CreatureState;
 include server.zone.objects.creature.SpeedMultiplierModChanges;
 include server.zone.objects.creature.variables.Skill;
 import system.lang.Long;
+import engine.service.proto.BasePacket;
 
 class CreatureObject extends TangibleObject {
 	protected transient ZoneClientSession owner;

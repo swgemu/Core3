@@ -223,20 +223,13 @@ void SceneObjectImplementation::createComponents() {
 	}
 }
 
-
-void SceneObjectImplementation::create(ZoneClientSession* client) {
-	BaseMessage* msg = new SceneObjectCreateMessage(_this);
-
-	client->sendMessage(msg);
-}
-
-void SceneObjectImplementation::close(ZoneClientSession* client) {
+void SceneObjectImplementation::close(SceneObject* client) {
 	BaseMessage* msg = new SceneObjectCloseMessage(_this);
 
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containmentType) {
+void SceneObjectImplementation::link(SceneObject* client, uint32 containmentType) {
 	BaseMessage* msg = new UpdateContainmentMessage(_this, getParent(), containmentType);
 	client->sendMessage(msg);
 }
@@ -332,12 +325,8 @@ uint64 SceneObjectImplementation::getObjectID() {
 }
 
 void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
-	ManagedReference<ZoneClientSession*> client = player->getClient();
-
-	if (client == NULL)
-		return;
-
-	create(client);
+	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+	player->sendMessage(msg);
 
 	/*if (parent != NULL)
 		link(client.get(), containmentType);*/
@@ -347,16 +336,11 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 	sendSlottedObjectsTo(player);
 	sendContainerObjectsTo(player);
 
-	SceneObjectImplementation::close(client);
+	SceneObjectImplementation::close(player);
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (isStaticObject())
-		return;
-
-	ManagedReference<ZoneClientSession*> client = player->getClient();
-
-	if (client == NULL)
 		return;
 
 	/*StringBuffer msg;
@@ -365,10 +349,11 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	msg << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
 	info(msg.toString(), true);*/
 
-	create(client);
+	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+	player->sendMessage(msg);
 
 	if (parent != NULL)
-		link(client.get(), containmentType);
+		link(player, containmentType);
 
 	sendBaselinesTo(player);
 
@@ -377,7 +362,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	sendSlottedObjectsTo(player);
 
 	if (doClose) {
-		SceneObjectImplementation::close(client);
+		SceneObjectImplementation::close(player);
 		//info("sending close", true);
 	}
 }
@@ -386,19 +371,15 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 	if (isStaticObject())
 		return;
 
-	ManagedReference<ZoneClientSession*> client = player->getClient();
-
-	if (client == NULL)
-		return;
-
-	create(client);
+	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+	player->sendMessage(msg);
 
 	if (parent != NULL)
-		link(client.get(), containmentType);
+		link(player, containmentType);
 
 	sendBaselinesTo(player);
 
-	SceneObjectImplementation::close(client);
+	SceneObjectImplementation::close(player);
 }
 
 void SceneObjectImplementation::notifyLoadFromDatabase() {
@@ -493,7 +474,8 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 	msg << "sending destroy to " << player->getLoggingName();
 	info(msg.toString(), true);*/
 
-	destroy(player->getClient());
+	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
+	player->sendMessage(msg);
 }
 
 void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
@@ -519,16 +501,6 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 
 	if (alm != NULL)
 		object->sendMessage(alm);
-}
-
-void SceneObjectImplementation::destroy(ZoneClientSession* client) {
-	if (client == NULL)
-		return;
-
-	//info("sending destroy", true);
-
-	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
-	client->sendMessage(msg);
 }
 
 void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
