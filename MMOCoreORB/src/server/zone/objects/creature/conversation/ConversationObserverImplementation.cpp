@@ -162,7 +162,7 @@ void ConversationObserverImplementation::cancelConversationSession(CreatureObjec
 
 	conversingPlayer->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
 
-	if (forceClose)
+	if (forceClose && npc != NULL)
 		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, npc->getObjectID()));
 }
 
