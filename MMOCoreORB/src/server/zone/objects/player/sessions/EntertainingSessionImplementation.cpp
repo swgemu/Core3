@@ -862,6 +862,7 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 		creature->addBuff(buff);
 
 		creature->sendSystemMessage("@healing:performance_enhance_dance_mind_d");
+		break;
 	}
 	}
 

@@ -79,7 +79,12 @@ namespace server {
 
  public:
 	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1, Param2Type param2) {
-		 return objectCreator.get(uniqueID)(param1, param2);
+		 CreateObjectFunc func = objectCreator.get(uniqueID);
+
+		 if (func != NULL)
+			 return func(param1, param2);
+		 else
+			 return NULL;
 	 }
 
 	 template<typename ClassType> bool registerObject(UniqueIdType uniqueID) {
