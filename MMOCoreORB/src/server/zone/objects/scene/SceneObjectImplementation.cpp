@@ -76,7 +76,6 @@ which carries forward this exception.
 #include "server/zone/ZoneReference.h"
 
 #include "variables/StringId.h"
-#include "events/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/area/ActiveArea.h"

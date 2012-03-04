@@ -58,13 +58,11 @@ namespace minigames {
 namespace events {
 
 class GamblingEvent : public Task {
-	ManagedReference<ZoneServer*> zoneServer;
 	ManagedReference<GamblingTerminal*> gamblingTerminal;
 	int gameCount;
 
 public:
-	GamblingEvent(GamblingTerminal* gamblingTerm, int counter, ZoneServer* server) : Task() {
-		zoneServer = server;
+	GamblingEvent(GamblingTerminal* gamblingTerm, int counter) : Task() {
 		gamblingTerminal = gamblingTerm;
 		gameCount = counter;
 	}
@@ -75,7 +73,7 @@ public:
 
 			//player->info("activating command queue action");
 
-			ManagedReference<GamblingManager*> manager = zoneServer->getGamblingManager();
+			ManagedReference<GamblingManager*> manager = gamblingTerminal->getZoneProcessServer()->getGamblingManager();
 			//gamblingTerminal->setState(state+1);
 			if ((gamblingTerminal->getState() != GamblingTerminal::NOGAMERUNNING) && (gamblingTerminal->getGameCount() == gameCount)) {
 				manager->continueGame(gamblingTerminal);

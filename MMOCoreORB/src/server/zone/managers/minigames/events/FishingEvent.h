@@ -57,28 +57,28 @@ namespace minigames {
 namespace events {
 
 class FishingEvent : public Task {
-	ManagedReference<CreatureObject*> player;
-	ManagedReference<ZoneServer*> zoneServer;
+	ManagedWeakReference<CreatureObject*> player;
 	int fishingState;
 
 public:
-	FishingEvent(CreatureObject* player, ZoneServer* zoneServer, int fishingState) : Task(7000) {
+	FishingEvent(CreatureObject* player, int fishingState) : Task(7000) {
 		this->player = player;
-		this->zoneServer = zoneServer;
 		this->fishingState = fishingState;
 	}
 
 	void run() {
 		// FIXME
-		/*if (player == NULL)
-			return;*/
+		ManagedReference<CreatureObject*> strong = player.get();
+
+		if (strong == NULL)
+			return;
 
 		try {
-			Locker _locker(player);
+			Locker _locker(strong);
 
 			//player->info("activating command queue action");
 
-			ManagedReference<FishingManager*> manager = zoneServer->getFishingManager();
+			ManagedReference<FishingManager*> manager = player->getZoneProcessServer()->getFishingManager();
 			//Locker lockerManager(manager);
 			//player->removePendingTask("fishing");
 			if (fishingState != FishingManagerImplementation::NOTFISHING) {

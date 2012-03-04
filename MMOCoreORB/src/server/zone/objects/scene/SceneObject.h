@@ -690,6 +690,8 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServer* srv);
 
+	ZoneProcessServer* getZoneProcessServer();
+
 	void setZone(Zone* zone);
 
 	void setObjectName(StringId& stringID);
@@ -1296,6 +1298,8 @@ public:
 	void setServerObjectCRC(unsigned int objCRC);
 
 	void setZoneProcessServer(ZoneProcessServer* srv);
+
+	ZoneProcessServer* getZoneProcessServer();
 
 	void setZone(Zone* zone);
 

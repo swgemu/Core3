@@ -52,7 +52,7 @@ int FishingPoleObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 }
 
 void FishingPoleObjectImplementation::doFishing(CreatureObject* player) {
-	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+	ManagedReference<FishingManager*> manager = server->getFishingManager();
 
 	if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
 		manager->stopFishing(player, manager->getFishBoxID(player), true);
@@ -63,7 +63,7 @@ void FishingPoleObjectImplementation::doFishing(CreatureObject* player) {
 }
 
 String FishingPoleObjectImplementation::getText(CreatureObject* player) {
-	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+	ManagedReference<FishingManager*> manager = server->getFishingManager();
 	String text = "@fishing:mnu_start_fishing";
 
 	if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
@@ -74,7 +74,7 @@ String FishingPoleObjectImplementation::getText(CreatureObject* player) {
 }
 
 bool FishingPoleObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
-	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+	ManagedReference<FishingManager*> manager = server->getFishingManager();
 	if ((parent.get() != NULL) && (getParent()->isPlayerCreature())) {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(parent.get());
 		if ((player != NULL) && (object->isFishingBait())) {

@@ -115,10 +115,6 @@ class ZoneServer extends ManagedService implements Logger {
 	private MissionManager missionManager;
 	private GuildManager guildManager;
 	
-	private FishingManager fishingManager;
-	private GamblingManager gamblingManager;
-	private ForageManager forageManager;
-	
 	private transient StringIdManager stringIdManager;
 	
 	private transient CreatureTemplateManager creatureTemplateManager;
@@ -379,21 +375,6 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public AuctionManager getAuctionManager() {
 		return auctionManager;
-	}
-	
-	@dirty
-	public FishingManager getFishingManager() {
-		return fishingManager;
-	}
-	
-	@dirty
-	public GamblingManager getGamblingManager() {
-		return gamblingManager;
-	}
-
-	@dirty
-	public ForageManager getForageManager() {
-		return forageManager;
 	}
 	
 	public native Account getAccount(unsigned int accountID);

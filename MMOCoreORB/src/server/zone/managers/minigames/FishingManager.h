@@ -212,7 +212,7 @@ public:
 
 	static const int MISHAP = 45;
 
-	FishingManager(ZoneServer* server);
+	FishingManager();
 
 	void initializeBaitStatus();
 
@@ -304,11 +304,11 @@ public:
 
 	void removeSplash(SceneObject* splash);
 
-	void createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash);
+	void createFishingSplashEvent(CreatureObject* player, SceneObject* splash);
 
 	void createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
 
-	FishingEvent* createFishingEvent(CreatureObject* player, ZoneServer* zoneServer, int state);
+	FishingEvent* createFishingEvent(CreatureObject* player, int state);
 
 	void stopFishingEvent(CreatureObject* player);
 
@@ -342,8 +342,6 @@ namespace minigames {
 
 class FishingManagerImplementation : public ObserverImplementation, public Logger {
 protected:
-	ManagedWeakReference<ZoneServer* > zoneServer;
-
 	Vector<String> miscLoot;
 
 	Vector<String> rareLoot;
@@ -361,8 +359,6 @@ protected:
 	Vector<String> property;
 
 	Vector<String> baitStatus;
-
-	VectorMap<ManagedReference<CreatureObject* >, FishingSession*> sessions;
 
 public:
 	static const int NOTFISHING = 0;
@@ -419,7 +415,7 @@ public:
 
 	static const int MISHAP = 45;
 
-	FishingManagerImplementation(ZoneServer* server);
+	FishingManagerImplementation();
 
 	FishingManagerImplementation(DummyConstructorParameter* param);
 
@@ -513,11 +509,11 @@ public:
 
 	void removeSplash(SceneObject* splash);
 
-	void createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash);
+	void createFishingSplashEvent(CreatureObject* player, SceneObject* splash);
 
 	void createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
 
-	FishingEvent* createFishingEvent(CreatureObject* player, ZoneServer* zoneServer, int state);
+	FishingEvent* createFishingEvent(CreatureObject* player, int state);
 
 	void stopFishingEvent(CreatureObject* player);
 
@@ -652,7 +648,7 @@ public:
 
 	void removeSplash(SceneObject* splash);
 
-	void createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash);
+	void createFishingSplashEvent(CreatureObject* player, SceneObject* splash);
 
 	void stopFishingEvent(CreatureObject* player);
 

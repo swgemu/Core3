@@ -93,6 +93,48 @@ using namespace server::zone::managers::objectcontroller;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace minigames {
+
+class FishingManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class GamblingManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class ForageManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace building {
 namespace cloning {

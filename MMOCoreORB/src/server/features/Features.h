@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class Features : public VectorMap<String, String> {
+class Features : public HashTable<String, String> {
 
 public:
 	Features();
@@ -56,7 +56,7 @@ public:
 	bool loadFeatures();
 
 	inline bool hasFeature(const String& key) {
-		return contains(key);
+		return containsKey(key);
 	}
 };
 

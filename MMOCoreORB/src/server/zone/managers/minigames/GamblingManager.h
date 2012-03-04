@@ -114,7 +114,7 @@ namespace minigames {
 
 class GamblingManager : public Observer {
 public:
-	GamblingManager(ZoneServer* server);
+	GamblingManager();
 
 	Vector<String>* getRoulette();
 
@@ -202,8 +202,6 @@ namespace minigames {
 
 class GamblingManagerImplementation : public ObserverImplementation, public Logger {
 protected:
-	ManagedReference<ZoneServer* > zoneServer;
-
 	VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > slotGames;
 
 	VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > rouletteGames;
@@ -219,7 +217,7 @@ protected:
 	Vector<int> rouletteTimer;
 
 public:
-	GamblingManagerImplementation(ZoneServer* server);
+	GamblingManagerImplementation();
 
 	GamblingManagerImplementation(DummyConstructorParameter* param);
 

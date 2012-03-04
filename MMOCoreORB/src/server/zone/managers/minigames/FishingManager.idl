@@ -61,10 +61,7 @@ import engine.util.Observable;
 import server.zone.managers.minigames.FishingSession;
 include server.zone.objects.scene.ObserverEventType;
 
-class FishingManager extends Observer implements Logger {
-	@weakReference
-	protected ZoneServer zoneServer;
-	
+class FishingManager extends Observer implements Logger {	
 	@dereferenced
 	protected Vector<string> miscLoot;
 	
@@ -92,8 +89,8 @@ class FishingManager extends Observer implements Logger {
 	@dereferenced
 	protected Vector<string> baitStatus;
 
-	@dereferenced
-	protected VectorMap<CreatureObject, FishingSession> sessions;
+	/*@dereferenced
+	protected VectorMap<CreatureObject, FishingSession> sessions;*/
 
 	public static final int NOTFISHING = 0;
 	public static final int WAITING = 1;
@@ -127,12 +124,7 @@ class FishingManager extends Observer implements Logger {
 	public static final int PROCEED = 17;
 	public static final int MISHAP = 45;
 	
-	public FishingManager(ZoneServer server) {
-		zoneServer = server;
-		
-		sessions.setNullValue(null);
-		sessions.setNoDuplicateInsertPlan();
-		
+	public FishingManager() {				
 		initializeFishType();
 		initializeFishLength();
 		initializeLoot();
@@ -654,7 +646,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param zoneServer ZoneServer used
 	 * @param splash SceneObject to remove later
 	 */
-	public native void createFishingSplashEvent(CreatureObject player, ZoneServer zoneServer, SceneObject splash);
+	public native void createFishingSplashEvent(CreatureObject player, SceneObject splash);
 	
 	/**
 	 * Creates a FishingSession
@@ -684,7 +676,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param state FishingState the player is in
 	 */
 	@local
-	public native FishingEvent createFishingEvent(CreatureObject player, ZoneServer zoneServer, int state);
+	public native FishingEvent createFishingEvent(CreatureObject player, int state);
 	
 	/**
 	 * Stops Fishing Event

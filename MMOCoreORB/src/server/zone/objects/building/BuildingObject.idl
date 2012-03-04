@@ -70,9 +70,6 @@ class BuildingObject extends StructureObject {
 	
 	protected unsigned long deedObjectID;
 	
-	@transactional
-	protected transient QuadTree quadTree;
-
 	protected int accessFee;
 	
 	public boolean publicStructure;
@@ -83,9 +80,6 @@ class BuildingObject extends StructureObject {
 	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
-
-		quadTree = null;//new QuadTree(-1024, -1024, 1024, 1024);
-		//QuadTree.setSize(-1024, -1024, 1024, 1024);
 		
 		super.closeobjects = new SortedVector<QuadTreeEntry>();
 		super.closeobjects.setNoDuplicateInsertPlan();

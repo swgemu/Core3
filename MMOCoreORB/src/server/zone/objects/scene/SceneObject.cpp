@@ -2864,6 +2864,15 @@ void SceneObject::setZoneProcessServer(ZoneProcessServer* srv) {
 		_implementation->setZoneProcessServer(srv);
 }
 
+ZoneProcessServer* SceneObject::getZoneProcessServer() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getZoneProcessServer();
+}
+
 void SceneObject::setZone(Zone* zone) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -4498,6 +4507,11 @@ void SceneObjectImplementation::setServerObjectCRC(unsigned int objCRC) {
 void SceneObjectImplementation::setZoneProcessServer(ZoneProcessServer* srv) {
 	// server/zone/objects/scene/SceneObject.idl():  		server = srv;
 	server = srv;
+}
+
+ZoneProcessServer* SceneObjectImplementation::getZoneProcessServer() {
+	// server/zone/objects/scene/SceneObject.idl():  		return server;
+	return server;
 }
 
 void SceneObjectImplementation::setDirection(float fw, float fx, float fy, float fz) {

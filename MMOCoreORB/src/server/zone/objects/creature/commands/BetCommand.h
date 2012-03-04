@@ -77,7 +77,7 @@ public:
 			if (player == NULL)
 				return GENERALERROR;
 
-			GamblingManager* gamblingManager = server->getZoneServer()->getGamblingManager();
+			GamblingManager* gamblingManager = server->getGamblingManager();
 
 			if (gamblingManager == NULL)
 				return GENERALERROR;

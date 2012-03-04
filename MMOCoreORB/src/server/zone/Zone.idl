@@ -61,8 +61,9 @@ import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.util.VectorMap;
 import system.util.SortedVector;
-
-
+import server.zone.managers.minigames.FishingManager;
+import server.zone.managers.minigames.GamblingManager;
+import server.zone.managers.minigames.ForageManager;
 include server.zone.managers.planet.HeightMap;
 include server.zone.managers.object.ObjectMap;
 include server.zone.managers.planet.MapLocationTable;

@@ -1523,6 +1523,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		server = srv;
 	}
 	
+	@local
+	public ZoneProcessServer getZoneProcessServer() {
+		return server;
+	}
+	
 	public native void setZone(Zone zone);
 	
 	@local

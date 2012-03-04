@@ -61,6 +61,9 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/PathGraph.h"
 
+#include "managers/minigames/FishingManager.h"
+#include "managers/minigames/GamblingManager.h"
+#include "managers/minigames/ForageManager.h"
 
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
 	processor = serv;

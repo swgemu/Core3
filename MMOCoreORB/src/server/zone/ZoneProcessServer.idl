@@ -59,6 +59,9 @@ import server.zone.managers.player.PlayerManager;
 import server.zone.managers.skill.SkillManager;
 import server.zone.managers.object.ObjectManager;
 import server.zone.managers.vendor.VendorManager;
+import server.zone.managers.minigames.FishingManager;
+import server.zone.managers.minigames.GamblingManager;
+import server.zone.managers.minigames.ForageManager;
 
 class ZoneProcessServer extends ManagedService {
 	@weak
@@ -79,6 +82,10 @@ class ZoneProcessServer extends ManagedService {
 	transient protected SuiManager suiManager;
 	
 	transient protected SkillManager professionManager;
+	
+	private transient FishingManager fishingManager;
+	private transient GamblingManager gamblingManager;
+	private transient ForageManager forageManager;
 
 	@weak
 	transient protected ObjectController objectController;
@@ -151,6 +158,21 @@ class ZoneProcessServer extends ManagedService {
 	@dirty
 	public SuiManager getSuiManager() {
 		return suiManager;
+	}
+	
+	@dirty
+	public FishingManager getFishingManager() {
+		return fishingManager;
+	}
+	
+	@dirty
+	public GamblingManager getGamblingManager() {
+		return gamblingManager;
+	}
+
+	@dirty
+	public ForageManager getForageManager() {
+		return forageManager;
 	}
 
 	/*UserManager getUserManager() {

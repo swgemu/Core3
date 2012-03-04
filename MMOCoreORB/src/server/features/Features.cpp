@@ -45,8 +45,7 @@ which carries forward this exception.
 #include "Features.h"
 
 Features::Features()
-	: VectorMap<String, String>() {
-	setInsertPlan(NO_DUPLICATE);
+	: HashTable<String, String>() {
 }
 
 Features::~Features() {
@@ -54,8 +53,11 @@ Features::~Features() {
 
 bool Features::loadFeatures() {
 	Lua* lua = new Lua();
+
 	if (!lua->runFile("conf/features.lua"))
 		return false;
+
+	delete lua;
 
 	return true;
 }

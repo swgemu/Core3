@@ -58,13 +58,11 @@ namespace events {
 
 class FishingSplashEvent : public Task {
 	ManagedReference<CreatureObject*> player;
-	ManagedReference<ZoneServer*> zoneServer;
 	ManagedReference<SceneObject*> splash;
 
 public:
-	FishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash) : Task(1000) {
+	FishingSplashEvent(CreatureObject* player, SceneObject* splash) : Task(1000) {
 		this->player = player;
-		this->zoneServer = zoneServer;
 		this->splash = splash;
 	}
 
@@ -74,7 +72,7 @@ public:
 
 			//player->info("activating command queue action");
 
-			ManagedReference<FishingManager*> manager = zoneServer->getFishingManager();
+			ManagedReference<FishingManager*> manager = player->getZoneProcessServer()->getFishingManager();
 
 			manager->removeSplash(splash);
 

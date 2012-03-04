@@ -70,7 +70,7 @@ public:
 
 	static const int LAIR = 3;
 
-	ForageManager(ZoneServer* server);
+	ForageManager();
 
 	void deleteForageAreaCollection(String& playerName);
 
@@ -115,12 +115,10 @@ public:
 	static const int LAIR = 3;
 
 protected:
-	ManagedWeakReference<ZoneServer* > zoneServer;
-
 	ForageMap forageAreas;
 
 public:
-	ForageManagerImplementation(ZoneServer* server);
+	ForageManagerImplementation();
 
 	ForageManagerImplementation(DummyConstructorParameter* param);
 

@@ -256,8 +256,6 @@ protected:
 
 	unsigned long long deedObjectID;
 
-	Reference<QuadTree* > quadTree;
-
 	int accessFee;
 
 public:

@@ -58,7 +58,7 @@
  *	ZoneServerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__,RPC_GETINFO__,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETCITYMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADLOGINMESSAGE__,RPC_CHANGELOGINMESSAGE__STRING_,RPC_GETLOGINMESSAGE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__,RPC_GETINFO__,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETCITYMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADLOGINMESSAGE__,RPC_CHANGELOGINMESSAGE__STRING_,RPC_GETLOGINMESSAGE__};
 
 ZoneServer::ZoneServer(ConfigManager* config) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(config);
@@ -817,45 +817,6 @@ AuctionManager* ZoneServer::getAuctionManager() {
 		return _implementation->getAuctionManager();
 }
 
-FishingManager* ZoneServer::getFishingManager() {
-	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETFISHINGMANAGER__);
-
-		return static_cast<FishingManager*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getFishingManager();
-}
-
-GamblingManager* ZoneServer::getGamblingManager() {
-	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETGAMBLINGMANAGER__);
-
-		return static_cast<GamblingManager*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getGamblingManager();
-}
-
-ForageManager* ZoneServer::getForageManager() {
-	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETFORAGEMANAGER__);
-
-		return static_cast<ForageManager*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getForageManager();
-}
-
 Account* ZoneServer::getAccount(unsigned int accountID) {
 	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1115,21 +1076,6 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "fishingManager") {
-		TypeInfo<ManagedReference<FishingManager* > >::parseFromBinaryStream(&fishingManager, stream);
-		return true;
-	}
-
-	if (_name == "gamblingManager") {
-		TypeInfo<ManagedReference<GamblingManager* > >::parseFromBinaryStream(&gamblingManager, stream);
-		return true;
-	}
-
-	if (_name == "forageManager") {
-		TypeInfo<ManagedReference<ForageManager* > >::parseFromBinaryStream(&forageManager, stream);
-		return true;
-	}
-
 	if (_name == "totalSentPackets") {
 		TypeInfo<int >::parseFromBinaryStream(&totalSentPackets, stream);
 		return true;
@@ -1288,30 +1234,6 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fishingManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<FishingManager* > >::toBinaryStream(&fishingManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "gamblingManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<GamblingManager* > >::toBinaryStream(&gamblingManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "forageManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<ForageManager* > >::toBinaryStream(&forageManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "totalSentPackets";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1401,7 +1323,7 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 25 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 22 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 void ZoneServerImplementation::fixScheduler() {
@@ -1535,21 +1457,6 @@ LootManager* ZoneServerImplementation::getLootManager() {
 AuctionManager* ZoneServerImplementation::getAuctionManager() {
 	// server/zone/ZoneServer.idl():  		return auctionManager;
 	return auctionManager;
-}
-
-FishingManager* ZoneServerImplementation::getFishingManager() {
-	// server/zone/ZoneServer.idl():  		return fishingManager;
-	return fishingManager;
-}
-
-GamblingManager* ZoneServerImplementation::getGamblingManager() {
-	// server/zone/ZoneServer.idl():  		return gamblingManager;
-	return gamblingManager;
-}
-
-ForageManager* ZoneServerImplementation::getForageManager() {
-	// server/zone/ZoneServer.idl():  		return forageManager;
-	return forageManager;
 }
 
 SkillManager* ZoneServerImplementation::getSkillManager() {
@@ -1738,15 +1645,6 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETAUCTIONMANAGER__:
 		resp->insertLong(getAuctionManager()->_getObjectID());
-		break;
-	case RPC_GETFISHINGMANAGER__:
-		resp->insertLong(getFishingManager()->_getObjectID());
-		break;
-	case RPC_GETGAMBLINGMANAGER__:
-		resp->insertLong(getGamblingManager()->_getObjectID());
-		break;
-	case RPC_GETFORAGEMANAGER__:
-		resp->insertLong(getForageManager()->_getObjectID());
 		break;
 	case RPC_GETACCOUNT__INT_:
 		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
@@ -1985,18 +1883,6 @@ LootManager* ZoneServerAdapter::getLootManager() {
 
 AuctionManager* ZoneServerAdapter::getAuctionManager() {
 	return (static_cast<ZoneServer*>(stub))->getAuctionManager();
-}
-
-FishingManager* ZoneServerAdapter::getFishingManager() {
-	return (static_cast<ZoneServer*>(stub))->getFishingManager();
-}
-
-GamblingManager* ZoneServerAdapter::getGamblingManager() {
-	return (static_cast<ZoneServer*>(stub))->getGamblingManager();
-}
-
-ForageManager* ZoneServerAdapter::getForageManager() {
-	return (static_cast<ZoneServer*>(stub))->getForageManager();
 }
 
 Account* ZoneServerAdapter::getAccount(unsigned int accountID) {

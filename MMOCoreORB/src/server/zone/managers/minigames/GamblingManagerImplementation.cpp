@@ -388,7 +388,7 @@ void GamblingManagerImplementation::startGame(GamblingTerminal* terminal) {
 void GamblingManagerImplementation::createEvent(GamblingTerminal* terminal, int time) {
 	if ((terminal != NULL) && (time > 0) && (time < 60000)) {
 
-		terminal->setEvent(new GamblingEvent(terminal, terminal->getGameCount(), zoneServer));
+		terminal->setEvent(new GamblingEvent(terminal, terminal->getGameCount()));
 		terminal->getEvent()->schedule(time);
 	}
 }

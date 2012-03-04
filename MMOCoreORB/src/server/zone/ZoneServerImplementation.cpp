@@ -111,9 +111,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	resourceManager = NULL;
 	craftingManager = NULL;
 	lootManager = NULL;
-	fishingManager = NULL;
-	gamblingManager = NULL;
-	forageManager = NULL;
+
 	stringIdManager = NULL;
 	creatureTemplateManager = NULL;
 	guildManager = NULL;
@@ -255,15 +253,6 @@ void ZoneServerImplementation::startManagers() {
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");
 
-	fishingManager = new FishingManager(_this);
-	fishingManager->deploy();
-
-	gamblingManager = new GamblingManager(_this);
-	gamblingManager->deploy();
-
-	forageManager = new ForageManager(_this);
-	forageManager->deploy();
-
 	guildManager = new GuildManager(_this, processor);
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
@@ -335,7 +324,6 @@ void ZoneServerImplementation::stopManagers() {
 	lootManager = NULL;
 	auctionManager = NULL;
 	missionManager = NULL;
-	fishingManager = NULL;
 	guildManager = NULL;
 	cityManager = NULL;
 

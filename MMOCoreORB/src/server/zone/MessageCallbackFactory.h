@@ -79,16 +79,10 @@ namespace server {
 
  public:
 	 BaseClassType createObject(UniqueIdType uniqueID, Param1Type param1, Param2Type param2) {
-		 if (!objectCreator.containsKey(uniqueID))
-			 return NULL;
-
 		 return objectCreator.get(uniqueID)(param1, param2);
 	 }
 
 	 template<typename ClassType> bool registerObject(UniqueIdType uniqueID) {
-		 if (objectCreator.containsKey(uniqueID))
-			 return false;
-
 		 objectCreator.put(uniqueID, &CreateObject<BaseClassType, Param1Type, Param2Type, ClassType>);
 
 		 return true;

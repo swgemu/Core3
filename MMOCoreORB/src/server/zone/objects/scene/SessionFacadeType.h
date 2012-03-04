@@ -22,6 +22,7 @@ public:
 	const static int CITYSPEC = 10;
 	const static int CITYWITHDRAW = 11;
 	const static int CITYMILITIA = 12;
+	const static int FISHING = 13;
 
 	const static int CRAFTING = 50;
 };

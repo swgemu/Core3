@@ -58,16 +58,14 @@ namespace events {
 class ForagingEvent : public Task {
 
 	ManagedReference<CreatureObject*> player;
-	ManagedReference<ZoneServer*> zoneServer;
 	int forageType;
 	float forageX;
 	float forageY;
 	String zoneName;
 
 public:
-	ForagingEvent(CreatureObject* player, ZoneServer* zoneServer, int type, float playerX, float playerY, const String& planet) : Task() {
+	ForagingEvent(CreatureObject* player, int type, float playerX, float playerY, const String& planet) : Task() {
 		this->player = player;
-		this->zoneServer = zoneServer;
 		this->forageType = type;
 		this->forageX = playerX;
 		this->forageY = playerY;
@@ -75,7 +73,8 @@ public:
 	}
 
 	void run() {
-		ManagedReference<ForageManager*> forageManager = zoneServer->getForageManager();
+		ManagedReference<ForageManager*> forageManager = player->getZoneProcessServer()->getForageManager();
+
 		if (forageManager != NULL)
 			forageManager->finishForaging(player, forageType, forageX, forageY, zoneName);
 	}

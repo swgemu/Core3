@@ -22,8 +22,8 @@
 
 enum {RPC_INITIALIZESLOTTIMER__,RPC_INITIALIZEROULETTETIMER__,RPC_INITIALIZESLOTS__,RPC_INITIALIZEROULETTERED__,RPC_INITIALIZEROULETTE__,RPC_NOTIFY__SCENEOBJECT_,RPC_ISHIGH__INT_,RPC_ISLOW__INT_,RPC_ISEVEN__INT_,RPC_ISODD__INT_,RPC_ISBLACK__INT_,RPC_ISRED__INT_,RPC_HANDLESLOT__CREATUREOBJECT_BOOL_BOOL_,RPC_BET__CREATUREOBJECT_INT_INT_INT_,RPC_BET__GAMBLINGTERMINAL_CREATUREOBJECT_INT_INT_,RPC_STARTGAME__CREATUREOBJECT_INT_,RPC_STARTGAME__GAMBLINGTERMINAL_,RPC_LEAVETERMINAL__CREATUREOBJECT_INT_,RPC_REGISTERPLAYER__GAMBLINGTERMINAL_CREATUREOBJECT_,RPC_REFRESHROULETTEMENU__CREATUREOBJECT_,RPC_CONTINUEGAME__GAMBLINGTERMINAL_,RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_,RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_,RPC_CREATEWINDOW__GAMBLINGTERMINAL_CREATUREOBJECT_,RPC_CREATEPAYOUTWINDOW__CREATUREOBJECT_,RPC_CREATESLOTWINDOW__CREATUREOBJECT_INT_,RPC_CREATEROULETTEWINDOW__CREATUREOBJECT_,RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_,RPC_ISPLAYING__CREATUREOBJECT_};
 
-GamblingManager::GamblingManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
-	GamblingManagerImplementation* _implementation = new GamblingManagerImplementation(server);
+GamblingManager::GamblingManager() : Observer(DummyConstructorParameter::instance()) {
+	GamblingManagerImplementation* _implementation = new GamblingManagerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -566,11 +566,6 @@ bool GamblingManagerImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneServer") {
-		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
-		return true;
-	}
-
 	if (_name == "slotGames") {
 		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::parseFromBinaryStream(&slotGames, stream);
 		return true;
@@ -621,14 +616,6 @@ int GamblingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneServer";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "slotGames";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -686,13 +673,11 @@ int GamblingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + ObserverImplementation::writeObjectMembers(stream);
+	return 7 + ObserverImplementation::writeObjectMembers(stream);
 }
 
-GamblingManagerImplementation::GamblingManagerImplementation(ZoneServer* server) {
+GamblingManagerImplementation::GamblingManagerImplementation() {
 	_initializeImplementation();
-	// server/zone/managers/minigames/GamblingManager.idl():  		zoneServer = server;
-	zoneServer = server;
 	// server/zone/managers/minigames/GamblingManager.idl():  		initializeRoulette();
 	initializeRoulette();
 	// server/zone/managers/minigames/GamblingManager.idl():  		initializeRouletteRed();

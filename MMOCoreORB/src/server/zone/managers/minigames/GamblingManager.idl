@@ -61,7 +61,6 @@ include engine.util.Observer;
 
 
 class GamblingManager extends Observer implements Logger {
-	protected ZoneServer zoneServer;
 
 	@dereferenced
 	protected VectorMap<CreatureObject, GamblingTerminal> slotGames;
@@ -87,9 +86,7 @@ class GamblingManager extends Observer implements Logger {
 	@dereferenced
 	protected Vector<int> rouletteTimer;
 	
-	public GamblingManager(ZoneServer server) {
-		zoneServer = server;
-			
+	public GamblingManager() {
 		initializeRoulette();
 		initializeRouletteRed();
 		initializeSlots();

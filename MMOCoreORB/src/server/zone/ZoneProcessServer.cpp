@@ -28,11 +28,17 @@
 
 #include "server/zone/managers/vendor/VendorManager.h"
 
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/minigames/ForageManager.h"
+
 /*
  *	ZoneProcessServerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_GETZONESERVER__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,};
+enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_GETZONESERVER__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__};
 
 ZoneProcessServer::ZoneProcessServer(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneProcessServerImplementation* _implementation = new ZoneProcessServerImplementation(server);
@@ -161,6 +167,45 @@ SuiManager* ZoneProcessServer::getSuiManager() {
 
 	} else
 		return _implementation->getSuiManager();
+}
+
+FishingManager* ZoneProcessServer::getFishingManager() {
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFISHINGMANAGER__);
+
+		return static_cast<FishingManager*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getFishingManager();
+}
+
+GamblingManager* ZoneProcessServer::getGamblingManager() {
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETGAMBLINGMANAGER__);
+
+		return static_cast<GamblingManager*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getGamblingManager();
+}
+
+ForageManager* ZoneProcessServer::getForageManager() {
+	ZoneProcessServerImplementation* _implementation = static_cast<ZoneProcessServerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFORAGEMANAGER__);
+
+		return static_cast<ForageManager*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getForageManager();
 }
 
 DistributedObjectServant* ZoneProcessServer::_getImplementation() {
@@ -335,6 +380,21 @@ SuiManager* ZoneProcessServerImplementation::getSuiManager() {
 	return suiManager;
 }
 
+FishingManager* ZoneProcessServerImplementation::getFishingManager() {
+	// server/zone/ZoneProcessServer.idl():  		return fishingManager;
+	return fishingManager;
+}
+
+GamblingManager* ZoneProcessServerImplementation::getGamblingManager() {
+	// server/zone/ZoneProcessServer.idl():  		return gamblingManager;
+	return gamblingManager;
+}
+
+ForageManager* ZoneProcessServerImplementation::getForageManager() {
+	// server/zone/ZoneProcessServer.idl():  		return forageManager;
+	return forageManager;
+}
+
 /*
  *	ZoneProcessServerAdapter
  */
@@ -361,6 +421,15 @@ Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_GETCHATMANAGER__:
 		resp->insertLong(getChatManager()->_getObjectID());
 		break;
+	case RPC_GETFISHINGMANAGER__:
+		resp->insertLong(getFishingManager()->_getObjectID());
+		break;
+	case RPC_GETGAMBLINGMANAGER__:
+		resp->insertLong(getGamblingManager()->_getObjectID());
+		break;
+	case RPC_GETFORAGEMANAGER__:
+		resp->insertLong(getForageManager()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -386,6 +455,18 @@ PlayerManager* ZoneProcessServerAdapter::getPlayerManager() {
 
 ChatManager* ZoneProcessServerAdapter::getChatManager() {
 	return (static_cast<ZoneProcessServer*>(stub))->getChatManager();
+}
+
+FishingManager* ZoneProcessServerAdapter::getFishingManager() {
+	return (static_cast<ZoneProcessServer*>(stub))->getFishingManager();
+}
+
+GamblingManager* ZoneProcessServerAdapter::getGamblingManager() {
+	return (static_cast<ZoneProcessServer*>(stub))->getGamblingManager();
+}
+
+ForageManager* ZoneProcessServerAdapter::getForageManager() {
+	return (static_cast<ZoneProcessServer*>(stub))->getForageManager();
 }
 
 /*

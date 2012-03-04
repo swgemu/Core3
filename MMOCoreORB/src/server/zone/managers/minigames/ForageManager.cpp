@@ -16,8 +16,8 @@
 
 enum {RPC_DELETEFORAGEAREACOLLECTION__STRING_ = 6,RPC_STARTFORAGING__CREATUREOBJECT_INT_,RPC_FINISHFORAGING__CREATUREOBJECT_INT_FLOAT_FLOAT_STRING_,RPC_FORAGEGIVEITEMS__CREATUREOBJECT_INT_FLOAT_FLOAT_STRING_,RPC_FORAGEGIVERESOURCE__CREATUREOBJECT_FLOAT_FLOAT_STRING_STRING_};
 
-ForageManager::ForageManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
-	ForageManagerImplementation* _implementation = new ForageManagerImplementation(server);
+ForageManager::ForageManager() : Observer(DummyConstructorParameter::instance()) {
+	ForageManagerImplementation* _implementation = new ForageManagerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -218,11 +218,6 @@ bool ForageManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneServer") {
-		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
-		return true;
-	}
-
 	if (_name == "forageAreas") {
 		TypeInfo<ForageMap >::parseFromBinaryStream(&forageAreas, stream);
 		return true;
@@ -243,14 +238,6 @@ int ForageManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneServer";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "forageAreas";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -260,13 +247,11 @@ int ForageManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + ObserverImplementation::writeObjectMembers(stream);
+	return 1 + ObserverImplementation::writeObjectMembers(stream);
 }
 
-ForageManagerImplementation::ForageManagerImplementation(ZoneServer* server) {
+ForageManagerImplementation::ForageManagerImplementation() {
 	_initializeImplementation();
-	// server/zone/managers/minigames/ForageManager.idl():  		zoneServer = server;
-	zoneServer = server;
 	// server/zone/managers/minigames/ForageManager.idl():  		Logger.setLoggingName("ForageManager");
 	Logger::setLoggingName("ForageManager");
 	// server/zone/managers/minigames/ForageManager.idl():  		Logger.setLogging(true);

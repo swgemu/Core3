@@ -58,6 +58,10 @@ which carries forward this exception.
 #include "managers/vendor/VendorManager.h"
 
 #include "managers/objectcontroller/ObjectController.h"
+#include "managers/minigames/FishingManager.h"
+#include "managers/minigames/GamblingManager.h"
+#include "managers/minigames/ForageManager.h"
+
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* server) {
 	zoneServer = server;
@@ -73,6 +77,10 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	zonePacketHandler = NULL;
 
 	vendorManager = NULL;
+
+	fishingManager = NULL;
+	gamblingManager = NULL;
+	forageManager = NULL;
 }
 
 void ZoneProcessServerImplementation::finalize() {
@@ -87,6 +95,10 @@ void ZoneProcessServerImplementation::finalize() {
 	professionManager = NULL;
 
 	vendorManager = NULL;
+
+	fishingManager = NULL;
+	gamblingManager = NULL;
+	forageManager = NULL;
 }
 
 void ZoneProcessServerImplementation::initialize() {
@@ -109,5 +121,14 @@ void ZoneProcessServerImplementation::initialize() {
 	professionManager = SkillManager::instance();
 	//professionManager->setObjectController(objectController);
 	//professionManager->initialize();
+
+	fishingManager = new FishingManager();
+	fishingManager->deploy();
+
+	gamblingManager = new GamblingManager();
+	gamblingManager->deploy();
+
+	forageManager = new ForageManager();
+	forageManager->deploy();
 
 }

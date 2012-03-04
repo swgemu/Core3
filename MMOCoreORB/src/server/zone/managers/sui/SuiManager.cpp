@@ -493,7 +493,7 @@ void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint
 }
 
 void SuiManager::handleGamblingRoulette(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
+	GamblingManager* manager = server->getGamblingManager();
 
 	if (cancel != 0)
 		manager->leaveTerminal(player, 0);
@@ -508,7 +508,7 @@ void SuiManager::handleGamblingSlot(CreatureObject* player, SuiBox* suiBox, uint
 
 	bool otherPressed = Bool::valueOf(args->get(0).toString());
 
-	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
+	GamblingManager* manager = server->getGamblingManager();
 	manager->handleSlot(player, (bool) cancel, otherPressed);
 
 	//TODO: This might resend suis.
@@ -527,7 +527,7 @@ void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uin
 
 	int index = Integer::valueOf(args->get(0).toString());
 
-	FishingManager* manager = player->getZone()->getZoneServer()->getFishingManager();
+	FishingManager* manager = server->getFishingManager();
 
 	manager->setNextAction(player, index + 1);
 

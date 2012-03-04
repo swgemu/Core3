@@ -60,15 +60,11 @@ class ForageManager extends Observer implements Logger {
 	public static final int MEDICAL = 2;
 	public static final int LAIR = 3;
 	
-	@weakReference
-	protected ZoneServer zoneServer;
-
 	@dereferenced
 	protected ForageMap forageAreas;
 
 
-	public ForageManager(ZoneServer server) {
-		zoneServer = server;
+	public ForageManager() {
 		Logger.setLoggingName("ForageManager");
 		Logger.setLogging(true);
 		forageAreas.setNullValue(null);

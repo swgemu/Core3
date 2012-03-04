@@ -26,10 +26,10 @@
  *	FishingManagerStub
  */
 
-enum {RPC_INITIALIZEBAITSTATUS__ = 6,RPC_INITIALIZEPROPERTY__,RPC_INITIALIZEACTION__,RPC_INITIALIZESTATE__,RPC_INITIALIZEFISHTYPE__,RPC_INITIALIZEFISHLENGTH__,RPC_INITIALIZELOOT__,RPC_INITIALIZECOLOR__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_CHECKFISHINGONPOSITIONUPDATE__CREATUREOBJECT_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_SCENEOBJECT_,RPC_STARTFISHING__CREATUREOBJECT_,RPC_STOPFISHING__CREATUREOBJECT_INT_BOOL_,RPC_FISHINGSTEP__CREATUREOBJECT_,RPC_SUCCESS__CREATUREOBJECT_INT_SCENEOBJECT_INT_,RPC_GETTIME__,RPC_SENDREWARD__CREATUREOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_CREATEWINDOW__CREATUREOBJECT_INT_,RPC_CLOSEMENU__CREATUREOBJECT_INT_,RPC_VEGETATION__SCENEOBJECT_,RPC_DENSITY__SCENEOBJECT_,RPC_GETFISH__CREATUREOBJECT_,RPC_GETNEXTACTION__CREATUREOBJECT_,RPC_SETNEXTACTION__CREATUREOBJECT_INT_,RPC_GETPOLE__CREATUREOBJECT_,RPC_GETBAIT__CREATUREOBJECT_,RPC_GETFISHBOXID__CREATUREOBJECT_,RPC_SETFISHBOXID__CREATUREOBJECT_INT_,RPC_GETFISHINGSTATE__CREATUREOBJECT_,RPC_SETFISHINGSTATE__CREATUREOBJECT_INT_,RPC_GETFISHMARKER__CREATUREOBJECT_,RPC_SETFISHMARKER__CREATUREOBJECT_SCENEOBJECT_,RPC_FREEBAIT__CREATUREOBJECT_,RPC_FISHINGPROCEED__CREATUREOBJECT_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_,RPC_MISHAPEVENT__STRING_CREATUREOBJECT_INT_BOOL_STRING_,RPC_LOSEBAIT__CREATUREOBJECT_,RPC_ANIMATE__CREATUREOBJECT_INT_,RPC_CREATEMARKER__FLOAT_FLOAT_FLOAT_ZONE_,RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_CREATUREOBJECT_,RPC_ISPLAYING__CREATUREOBJECT_,RPC_UPDATEMARKER__CREATUREOBJECT_SCENEOBJECT_BOOL_,RPC_REMOVEMARKER__CREATUREOBJECT_SCENEOBJECT_,RPC_REMOVESPLASH__SCENEOBJECT_,RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_ZONESERVER_SCENEOBJECT_,RPC_STOPFISHINGEVENT__CREATUREOBJECT_,};
+enum {RPC_INITIALIZEBAITSTATUS__ = 6,RPC_INITIALIZEPROPERTY__,RPC_INITIALIZEACTION__,RPC_INITIALIZESTATE__,RPC_INITIALIZEFISHTYPE__,RPC_INITIALIZEFISHLENGTH__,RPC_INITIALIZELOOT__,RPC_INITIALIZECOLOR__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_CHECKFISHINGONPOSITIONUPDATE__CREATUREOBJECT_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_SCENEOBJECT_,RPC_STARTFISHING__CREATUREOBJECT_,RPC_STOPFISHING__CREATUREOBJECT_INT_BOOL_,RPC_FISHINGSTEP__CREATUREOBJECT_,RPC_SUCCESS__CREATUREOBJECT_INT_SCENEOBJECT_INT_,RPC_GETTIME__,RPC_SENDREWARD__CREATUREOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_CREATEWINDOW__CREATUREOBJECT_INT_,RPC_CLOSEMENU__CREATUREOBJECT_INT_,RPC_VEGETATION__SCENEOBJECT_,RPC_DENSITY__SCENEOBJECT_,RPC_GETFISH__CREATUREOBJECT_,RPC_GETNEXTACTION__CREATUREOBJECT_,RPC_SETNEXTACTION__CREATUREOBJECT_INT_,RPC_GETPOLE__CREATUREOBJECT_,RPC_GETBAIT__CREATUREOBJECT_,RPC_GETFISHBOXID__CREATUREOBJECT_,RPC_SETFISHBOXID__CREATUREOBJECT_INT_,RPC_GETFISHINGSTATE__CREATUREOBJECT_,RPC_SETFISHINGSTATE__CREATUREOBJECT_INT_,RPC_GETFISHMARKER__CREATUREOBJECT_,RPC_SETFISHMARKER__CREATUREOBJECT_SCENEOBJECT_,RPC_FREEBAIT__CREATUREOBJECT_,RPC_FISHINGPROCEED__CREATUREOBJECT_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_,RPC_MISHAPEVENT__STRING_CREATUREOBJECT_INT_BOOL_STRING_,RPC_LOSEBAIT__CREATUREOBJECT_,RPC_ANIMATE__CREATUREOBJECT_INT_,RPC_CREATEMARKER__FLOAT_FLOAT_FLOAT_ZONE_,RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_CREATUREOBJECT_,RPC_ISPLAYING__CREATUREOBJECT_,RPC_UPDATEMARKER__CREATUREOBJECT_SCENEOBJECT_BOOL_,RPC_REMOVEMARKER__CREATUREOBJECT_SCENEOBJECT_,RPC_REMOVESPLASH__SCENEOBJECT_,RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_SCENEOBJECT_,RPC_STOPFISHINGEVENT__CREATUREOBJECT_,};
 
-FishingManager::FishingManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
-	FishingManagerImplementation* _implementation = new FishingManagerImplementation(server);
+FishingManager::FishingManager() : Observer(DummyConstructorParameter::instance()) {
+	FishingManagerImplementation* _implementation = new FishingManagerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -693,20 +693,19 @@ void FishingManager::removeSplash(SceneObject* splash) {
 		_implementation->removeSplash(splash);
 }
 
-void FishingManager::createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash) {
+void FishingManager::createFishingSplashEvent(CreatureObject* player, SceneObject* splash) {
 	FishingManagerImplementation* _implementation = static_cast<FishingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_ZONESERVER_SCENEOBJECT_);
+		DistributedMethod method(this, RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_SCENEOBJECT_);
 		method.addObjectParameter(player);
-		method.addObjectParameter(zoneServer);
 		method.addObjectParameter(splash);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->createFishingSplashEvent(player, zoneServer, splash);
+		_implementation->createFishingSplashEvent(player, splash);
 }
 
 void FishingManager::createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood) {
@@ -718,13 +717,13 @@ void FishingManager::createFishingSession(CreatureObject* player, FishingEvent* 
 		_implementation->createFishingSession(player, event, marker, nextAction, fish, boxID, fishingState, mood);
 }
 
-FishingEvent* FishingManager::createFishingEvent(CreatureObject* player, ZoneServer* zoneServer, int state) {
+FishingEvent* FishingManager::createFishingEvent(CreatureObject* player, int state) {
 	FishingManagerImplementation* _implementation = static_cast<FishingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->createFishingEvent(player, zoneServer, state);
+		return _implementation->createFishingEvent(player, state);
 }
 
 void FishingManager::stopFishingEvent(CreatureObject* player) {
@@ -855,11 +854,6 @@ bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneServer") {
-		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
-		return true;
-	}
-
 	if (_name == "miscLoot") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&miscLoot, stream);
 		return true;
@@ -905,11 +899,6 @@ bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "sessions") {
-		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, FishingSession*> >::parseFromBinaryStream(&sessions, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -925,14 +914,6 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneServer";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "miscLoot";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1005,26 +986,12 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "sessions";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, FishingSession*> >::toBinaryStream(&sessions, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 11 + ObserverImplementation::writeObjectMembers(stream);
+	return 9 + ObserverImplementation::writeObjectMembers(stream);
 }
 
-FishingManagerImplementation::FishingManagerImplementation(ZoneServer* server) {
+FishingManagerImplementation::FishingManagerImplementation() {
 	_initializeImplementation();
-	// server/zone/managers/minigames/FishingManager.idl():  		zoneServer = server;
-	zoneServer = server;
-	// server/zone/managers/minigames/FishingManager.idl():  		sessions.setNullValue(null);
-	(&sessions)->setNullValue(NULL);
-	// server/zone/managers/minigames/FishingManager.idl():  		sessions.setNoDuplicateInsertPlan();
-	(&sessions)->setNoDuplicateInsertPlan();
 	// server/zone/managers/minigames/FishingManager.idl():  		initializeFishType();
 	initializeFishType();
 	// server/zone/managers/minigames/FishingManager.idl():  		initializeFishLength();
@@ -1329,8 +1296,8 @@ Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_REMOVESPLASH__SCENEOBJECT_:
 		removeSplash(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
-	case RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_ZONESERVER_SCENEOBJECT_:
-		createFishingSplashEvent(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ZoneServer*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+	case RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_SCENEOBJECT_:
+		createFishingSplashEvent(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_STOPFISHINGEVENT__CREATUREOBJECT_:
 		stopFishingEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -1514,8 +1481,8 @@ void FishingManagerAdapter::removeSplash(SceneObject* splash) {
 	(static_cast<FishingManager*>(stub))->removeSplash(splash);
 }
 
-void FishingManagerAdapter::createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash) {
-	(static_cast<FishingManager*>(stub))->createFishingSplashEvent(player, zoneServer, splash);
+void FishingManagerAdapter::createFishingSplashEvent(CreatureObject* player, SceneObject* splash) {
+	(static_cast<FishingManager*>(stub))->createFishingSplashEvent(player, splash);
 }
 
 void FishingManagerAdapter::stopFishingEvent(CreatureObject* player) {

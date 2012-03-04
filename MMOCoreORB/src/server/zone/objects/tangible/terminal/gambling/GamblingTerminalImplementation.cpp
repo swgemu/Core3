@@ -157,7 +157,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 }
 
 void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
-	ManagedReference<GamblingManager*> gamblingManager = server->getZoneServer()->getGamblingManager();
+	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
 
 	Locker _locker(_this);
 	switch (machineType) {
@@ -279,7 +279,7 @@ void GamblingTerminalImplementation::closeAllMenus() {
 }
 
 void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
-	ManagedReference<GamblingManager*> gamblingManager = server->getZoneServer()->getGamblingManager();
+	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
 
 	Locker _locker(_this);
 	switch (machineType) {

@@ -169,6 +169,48 @@ class VendorManager;
 
 using namespace server::zone::managers::vendor;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class FishingManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class GamblingManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class ForageManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
 #include "engine/core/ManagedService.h"
 
 namespace server {
@@ -199,6 +241,12 @@ public:
 	ChatManager* getChatManager();
 
 	SuiManager* getSuiManager();
+
+	FishingManager* getFishingManager();
+
+	GamblingManager* getGamblingManager();
+
+	ForageManager* getForageManager();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -238,6 +286,14 @@ protected:
 
 	Reference<SkillManager* > professionManager;
 
+private:
+	ManagedReference<FishingManager* > fishingManager;
+
+	ManagedReference<GamblingManager* > gamblingManager;
+
+	ManagedReference<ForageManager* > forageManager;
+
+protected:
 	ManagedReference<ObjectController* > objectController;
 
 public:
@@ -268,6 +324,12 @@ public:
 	ChatManager* getChatManager();
 
 	SuiManager* getSuiManager();
+
+	FishingManager* getFishingManager();
+
+	GamblingManager* getGamblingManager();
+
+	ForageManager* getForageManager();
 
 	WeakReference<ZoneProcessServer*> _this;
 
@@ -319,6 +381,12 @@ public:
 	PlayerManager* getPlayerManager();
 
 	ChatManager* getChatManager();
+
+	FishingManager* getFishingManager();
+
+	GamblingManager* getGamblingManager();
+
+	ForageManager* getForageManager();
 
 };
 

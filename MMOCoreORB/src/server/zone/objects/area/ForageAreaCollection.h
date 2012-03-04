@@ -64,7 +64,7 @@ public:
     	forageAreas.add(newArea);
 
     	//Queue cleanup event.
-    	cleanupEvent = new ForageCleanupEvent(player->getFirstName(), player->getZoneServer());
+    	cleanupEvent = new ForageCleanupEvent(player->getFirstName(), player->getZoneProcessServer());
     	cleanupEvent->schedule(1800000); //30 minutes
 	}
 
@@ -87,6 +87,7 @@ public:
 				case 0: //Zone is time expired, delete.
 					forageAreas.remove(i);
 					i -= 1; //Indexes of remaining areas shift down 1 when deleting an element, so compensate.
+					break;
 
 				case 1: //Player is not in area, but it's not expired either.
 					break;

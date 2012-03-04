@@ -16,6 +16,12 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/minigames/ForageManager.h"
+
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"

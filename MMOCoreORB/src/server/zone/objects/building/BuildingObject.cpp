@@ -945,8 +945,6 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	Reference<SortedVector<ManagedReference<QuadTreeEntry* > >*> _ref0;
 	// server/zone/objects/building/BuildingObject.idl():  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl():  		quadTree = null;
-	quadTree = NULL;
 	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects = new SortedVector<QuadTreeEntry>();
 	StructureObjectImplementation::closeobjects = _ref0 = new SortedVector<ManagedReference<QuadTreeEntry* > >();
 	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects.setNoDuplicateInsertPlan();

@@ -40,7 +40,7 @@ int LairMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 				player->getDistanceTo(sceneObject) < 8) {
 
 			CreatureObject* playerCreature = cast<CreatureObject*>(player);
-			ForageManager* forageManager = player->getZoneServer()->getForageManager();
+			ForageManager* forageManager = player->getZoneProcessServer()->getForageManager();
 			forageManager->startForaging(playerCreature, ForageManager::LAIR);
 			return 0;
 		}

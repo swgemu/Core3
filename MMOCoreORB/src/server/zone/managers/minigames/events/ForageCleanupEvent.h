@@ -56,12 +56,12 @@ namespace events {
 class ForageCleanupEvent : public Task {
 
 public:
-	ForageCleanupEvent(String name, ZoneServer* zoneServer);
+	ForageCleanupEvent(const String& name, ZoneProcessServer* zoneServer);
 
 	void run();
 
 	String playerName;
-	ManagedReference<ZoneServer*> zoneServer;
+	ManagedReference<ZoneProcessServer*> zoneServer;
 
 };
 

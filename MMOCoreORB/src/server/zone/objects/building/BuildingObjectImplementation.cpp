@@ -342,22 +342,16 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
-	//quadTree->insert(entry);
-	//remove when done
 	//return;
 }
 
 void BuildingObjectImplementation::remove(QuadTreeEntry* entry) {
-	/*if (entry->isInQuadTree())
-		quadTree->remove(entry);*/
 }
 
 void BuildingObjectImplementation::update(QuadTreeEntry* entry) {
-	//quadTree->update(entry);
 }
 
 void BuildingObjectImplementation::inRange(QuadTreeEntry* entry, float range) {
-	//quadTree->inRange(entry, range);
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) {

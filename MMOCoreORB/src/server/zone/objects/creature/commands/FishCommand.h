@@ -67,7 +67,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (creature->isPlayerCreature()) {
-			ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+			ManagedReference<FishingManager*> manager = server->getFishingManager();
 
 			CreatureObject* player = cast<CreatureObject*>(creature);
 

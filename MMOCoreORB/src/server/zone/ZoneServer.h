@@ -498,12 +498,6 @@ public:
 
 	AuctionManager* getAuctionManager();
 
-	FishingManager* getFishingManager();
-
-	GamblingManager* getGamblingManager();
-
-	ForageManager* getForageManager();
-
 	Account* getAccount(unsigned int accountID);
 
 	SkillManager* getSkillManager();
@@ -582,12 +576,6 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 	ManagedReference<MissionManager* > missionManager;
 
 	ManagedReference<GuildManager* > guildManager;
-
-	ManagedReference<FishingManager* > fishingManager;
-
-	ManagedReference<GamblingManager* > gamblingManager;
-
-	ManagedReference<ForageManager* > forageManager;
 
 	Reference<StringIdManager* > stringIdManager;
 
@@ -745,12 +733,6 @@ public:
 	LootManager* getLootManager();
 
 	AuctionManager* getAuctionManager();
-
-	FishingManager* getFishingManager();
-
-	GamblingManager* getGamblingManager();
-
-	ForageManager* getForageManager();
 
 	Account* getAccount(unsigned int accountID);
 
@@ -912,12 +894,6 @@ public:
 	LootManager* getLootManager();
 
 	AuctionManager* getAuctionManager();
-
-	FishingManager* getFishingManager();
-
-	GamblingManager* getGamblingManager();
-
-	ForageManager* getForageManager();
 
 	Account* getAccount(unsigned int accountID);
 
