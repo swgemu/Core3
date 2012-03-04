@@ -96,7 +96,9 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 			ManagedReference<ConversationSession*> session = dynamic_cast<ConversationSession*>(npc->getActiveSession(SessionFacadeType::CONVERSATION));
 
 			if (session != NULL) {
-				if (npc->getDistanceTo(session->getNPC()) > 7.f) {
+				ManagedReference<CreatureObject*> sessionNpc = session->getNPC();
+
+				if (sessionNpc == NULL || npc->getDistanceTo(sessionNpc) > 7.f) {
 					cancelConversationSession(npc, session->getNPC(), true);
 					return 0;
 				}
