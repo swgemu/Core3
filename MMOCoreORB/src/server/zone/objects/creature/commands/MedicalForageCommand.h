@@ -69,7 +69,7 @@ public:
 
 		if (creature->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>(creature);
-			ForageManager* forageManager = player->getZoneServer()->getForageManager();
+			ForageManager* forageManager = server->getForageManager();
 			forageManager->startForaging(player, ForageManager::MEDICAL);
 		}
 
