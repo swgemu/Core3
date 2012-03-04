@@ -286,13 +286,14 @@ void SurveyToolImplementation::sendSurveyTo(CreatureObject* player, const String
 	}
 
 	if (player->isMounted()) {
-		float height = player->getZone()->getHeight(player->getPositionX(), player->getPositionY());
-		float waterHeight;
-
-		if(player->getZone()->getPlanetManager()->getTerrainManager()->getWaterHeight(player->getPositionX(), player->getPositionY(), waterHeight)) {
-
-			if(waterHeight > height)
-				return;
+		if(player->isInWater()) {
+			player->sendSystemMessage("@error_message:survey_cant");
+			return;
+		}
+	} else {
+		if(player->getPosture() != CreaturePosture::UPRIGHT) {
+			player->sendSystemMessage("@error_message:survey_standing");
+			return;
 		}
 	}
 
@@ -334,7 +335,7 @@ void SurveyToolImplementation::sendSampleTo(CreatureObject* player, const String
 	}
 
 	if (player->isMounted()) {
-		player->sendSystemMessage("@error_message:survey_standing");
+		player->sendSystemMessage("@error_message:survey_on_mount");
 		return;
 	}
 

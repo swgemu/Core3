@@ -300,6 +300,13 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 		return;
 
 	ingredientSlots.removeAll();
+	ingredientNames.removeAll(NULL);
+	ingredientTypes.removeAll(NULL);
+	slotOIDs.removeAll(NULL);
+	slotQuantities.removeAll(NULL);
+	slotQualities.removeAll(NULL);
+	slotClean.removeAll(NULL);;
+	slotIndexes.removeAll(NULL);
 	craftingValues->clearAll();
 
 	assembled = false;

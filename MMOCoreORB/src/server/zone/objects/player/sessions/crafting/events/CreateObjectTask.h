@@ -49,20 +49,25 @@ class CreateObjectTask : public Task {
 
 	ManagedReference<CraftingTool*> craftingTool;
 	ManagedReference<CreatureObject*> crafter;
+	bool practice;
 
 public:
-	CreateObjectTask(CreatureObject* player, CraftingTool* tool) : Task() {
+	CreateObjectTask(CreatureObject* player, CraftingTool* tool, bool pract) : Task() {
 
 		craftingTool = tool;
 		crafter = player;
+		practice = pract;
 	}
 
 	void run() {
 
 		ManagedReference<TangibleObject*> prototype = craftingTool->getPrototype();
 
-		if (prototype == NULL)
+		if (prototype == NULL || practice) {
+			craftingTool->removeAllContainerObjects();
+			craftingTool->setReady();
 			return;
+		}
 
 		prototype->setPersistent(1);
 

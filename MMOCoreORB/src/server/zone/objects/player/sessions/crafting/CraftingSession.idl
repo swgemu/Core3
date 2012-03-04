@@ -42,9 +42,7 @@ class CraftingSession extends Facade {
 	
 	protected transient byte assemblyResult;
 	protected transient byte experimentationResult;
-	
-	protected transient boolean practice;
-	
+
 	/// For experiment hacking attempts
 	protected transient unsigned long lastExperimentTime;
 	

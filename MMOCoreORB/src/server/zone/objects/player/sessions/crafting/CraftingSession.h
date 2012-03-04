@@ -231,8 +231,6 @@ protected:
 
 	byte experimentationResult;
 
-	bool practice;
-
 	unsigned long long lastExperimentTime;
 
 public:

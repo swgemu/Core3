@@ -265,15 +265,6 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 		crafter->sendMessage(dplay9);
 		// End Dplay9 *****************************************************
 
-		// Dtano3 ********************************************************
-		// Update Condition Damage
-		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(
-				prototype);
-		dtano3->updateConditionDamage();
-		dtano3->close();
-		crafter->sendMessage(dtano3);
-		// End Dtano3 *****************************************************
-
 	} else {
 		crafter->sendSystemMessage("This type of object has not yet been implemented");
 	}
@@ -333,6 +324,10 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 void CraftingSessionImplementation::sendIngredientForUIListen() {
 
 	if (crafter == NULL) {
+		return;
+	}
+
+	if (craftingTool == NULL) {
 		return;
 	}
 
@@ -958,13 +953,13 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool prac
 		String xpType = manufactureSchematic->getDraftSchematic()->getXpType();
 		int xp = manufactureSchematic->getDraftSchematic()->getXpAmount();
 
-		if (practice != 0) {
+		if (!practice) {
 
 			startCreationTasks(manufactureSchematic->getComplexity() * 2, false);
 
 		} else {
 
-			// This is for practiceing
+			// This is for practicing
 			startCreationTasks(manufactureSchematic->getComplexity() * 2, true);
 			xp *= 1.05f;
 		}
@@ -983,14 +978,12 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool prac
 }
 
 
-void CraftingSessionImplementation::startCreationTasks(int timer, bool pract) {
+void CraftingSessionImplementation::startCreationTasks(int timer, bool practice) {
 
 	int timer2 = 1;
 
 	Reference<UpdateToolCountdownTask*> updateToolCountdownTask;
-	Reference<CreateObjectTask*> createObjectTask = new CreateObjectTask(crafter, craftingTool);
-
-	practice = pract;
+	Reference<CreateObjectTask*> createObjectTask = new CreateObjectTask(crafter, craftingTool, practice);
 
 	ManagedReference<ZoneServer*> server = crafter->getZoneServer();
 
@@ -998,9 +991,6 @@ void CraftingSessionImplementation::startCreationTasks(int timer, bool pract) {
 
 		Locker locker(craftingTool);
 		craftingTool->setBusy();
-
-		if(!practice)
-			craftingTool->transferObject(prototype, -1, true);
 
 		while (timer > 0) {
 			updateToolCountdownTask = new UpdateToolCountdownTask(crafter,
@@ -1015,9 +1005,7 @@ void CraftingSessionImplementation::startCreationTasks(int timer, bool pract) {
 			timer = 0;
 		}
 
-		updateToolCountdownTask = new UpdateToolCountdownTask(crafter, craftingTool,
-				timer);
-
+		updateToolCountdownTask = new UpdateToolCountdownTask(crafter, craftingTool, timer);
 		updateToolCountdownTask->schedule(timer2);
 		createObjectTask->schedule(timer2);
 	}

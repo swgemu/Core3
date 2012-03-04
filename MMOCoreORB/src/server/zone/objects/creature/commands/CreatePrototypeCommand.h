@@ -98,7 +98,7 @@ public:
 		}
 
 		Locker locker(session);
-		session->createPrototype(clientCounter, practice);
+		session->createPrototype(clientCounter, (practice == 0));
 
 		return SUCCESS;
 	}
