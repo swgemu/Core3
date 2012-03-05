@@ -20,7 +20,7 @@
  *	CraftingStationStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SENDINPUTHOPPER__CREATUREOBJECT_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__};
 
 CraftingStation::CraftingStation() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingStationImplementation* _implementation = new CraftingStationImplementation();
@@ -89,6 +89,20 @@ void CraftingStation::fillAttributeList(AttributeListMessage* msg, CreatureObjec
 
 	} else
 		_implementation->fillAttributeList(msg, object);
+}
+
+void CraftingStation::sendInputHopper(CreatureObject* player) {
+	CraftingStationImplementation* _implementation = static_cast<CraftingStationImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDINPUTHOPPER__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendInputHopper(player);
 }
 
 void CraftingStation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -397,6 +411,9 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
+	case RPC_SENDINPUTHOPPER__CREATUREOBJECT_:
+		sendInputHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_ISCRAFTINGSTATION__:
 		resp->insertBoolean(isCraftingStation());
 		break;
@@ -428,6 +445,10 @@ void CraftingStationAdapter::initializeTransientMembers() {
 
 int CraftingStationAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<CraftingStation*>(stub))->handleObjectMenuSelect(player, selectedID);
+}
+
+void CraftingStationAdapter::sendInputHopper(CreatureObject* player) {
+	(static_cast<CraftingStation*>(stub))->sendInputHopper(player);
 }
 
 bool CraftingStationAdapter::isCraftingStation() {

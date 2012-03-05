@@ -227,9 +227,7 @@ class ManufactureSchematic extends IntangibleObject {
 
 	public native boolean isReadyForAssembly();
 	
-	public void setAssembled() {
-		assembled = true;
-	}
+	public native void setAssembled();
 	
 	public boolean isAssembled() {
 		return assembled;

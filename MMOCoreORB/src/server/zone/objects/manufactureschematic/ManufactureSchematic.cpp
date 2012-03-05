@@ -876,11 +876,6 @@ float ManufactureSchematicImplementation::getComplexity() {
 	return complexity;
 }
 
-void ManufactureSchematicImplementation::setAssembled() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		assembled = true;
-	assembled = true;
-}
-
 bool ManufactureSchematicImplementation::isAssembled() {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return assembled;
 	return assembled;

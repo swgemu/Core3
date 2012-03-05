@@ -874,6 +874,7 @@ void CraftingValues::clearAll() {
 	valuesToSend.removeAll();
 	schematic = NULL;
 	player = NULL;
+	clearSlots();
 }
 
 String CraftingValues::toString() {

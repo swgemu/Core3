@@ -358,6 +358,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 		ingredientSlot->setContentType(draftSlot->getResourceType());
 		ingredientSlot->setQuantityNeeded(draftSlot->getQuantity());
+		ingredientSlot->setSlotName(draftSlot->getStringId().getStringID());
 
 		ingredientSlots.add(ingredientSlot.get());
 	}
@@ -500,6 +501,22 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 			return false;
 	}
 	return true;
+}
+
+void ManufactureSchematicImplementation::setAssembled() {
+	assembled = true;
+	craftingValues->clearSlots();
+
+	for (int i = 0; i < ingredientSlots.size(); ++i) {
+		Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(i);
+
+		if (ingredientSlot == NULL) {
+			warning("NULL ingredient in setAssembled");
+			continue;
+		}
+
+		craftingValues->setSlot(ingredientSlot->getSlotName(), ingredientSlot->isFull());
+	}
 }
 
 void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {

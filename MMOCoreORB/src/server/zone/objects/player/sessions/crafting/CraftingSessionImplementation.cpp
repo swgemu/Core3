@@ -451,22 +451,19 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 
 	if (manufactureSchematic == NULL) {
-		sendSlotMessage(0, IngredientSlot::NOSCHEMATIC);
+		sendSlotMessage(clientCounter, IngredientSlot::NOSCHEMATIC);
 		return;
 	}
 
 	if (prototype == NULL) {
-		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
+		sendSlotMessage(clientCounter, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
 
 	// Make sure all the require resources are there, if not, return them to inventory and close tool
 	if (!manufactureSchematic->isReadyForAssembly()) {
 
-		closeCraftingWindow(clientCounter);
-
-		cancelSession();
-
+		sendSlotMessage(clientCounter, IngredientSlot::PARTIALASSEMBLE);
 		return;
 	}
 
@@ -610,9 +607,6 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	crafter->sendMessage(objMsg);
 	// End Object Controller ******************************************
-
-	// If the window is closed now, this sets the resources to no be recoverable
-	manufactureSchematic->setAssembled();
 
 	// Remove all resources - Not recovering them
 	if (assemblyResult == CraftingManager::CRITICALFAILURE) {

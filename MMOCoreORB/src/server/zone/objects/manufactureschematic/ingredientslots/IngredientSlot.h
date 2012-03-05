@@ -52,6 +52,7 @@ class IngredientSlot : public Serializable, public Logger {
 
 protected:
 
+	String slotName;
 	String contentType;
 
 	int requiredQuantity;
@@ -171,6 +172,14 @@ public:
 
 	virtual bool returnToParents(CreatureObject* player) {
 		return false;
+	}
+
+	void setSlotName(const String& name) {
+		slotName = name;
+	}
+
+	const String& getSlotName() {
+		return slotName;
 	}
 
 	virtual bool isFull() {

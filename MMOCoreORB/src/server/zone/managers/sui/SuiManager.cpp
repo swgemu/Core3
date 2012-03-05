@@ -706,6 +706,8 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				return;
 			}
 
+			item->createChildObjects();
+
 			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 			item->sendTo(player, true);
 			inventory->transferObject(item, -1, true);

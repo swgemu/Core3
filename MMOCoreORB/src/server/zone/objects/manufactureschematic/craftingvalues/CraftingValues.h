@@ -94,6 +94,7 @@ class CraftingValues : public Serializable, public Logger {
 
 	ManagedReference<ManufactureSchematic*> schematic;
 	ManagedReference<CreatureObject*> player;
+	VectorMap<String, bool> slots;
 
 public:
 
@@ -179,6 +180,21 @@ public:
 
 	inline int getExperimentalPropertyTitleSize(){
 		return experimentalValuesMap.size();
+	}
+
+	inline void setSlot(const String& value, bool filled) {
+		slots.put(value, filled);
+	}
+
+	inline void clearSlots() {
+		slots.removeAll();
+	}
+
+	inline bool hasSlotFilled(const String& name) {
+		if(!slots.contains(name))
+			return false;
+
+		return slots.get(name);
 	}
 
 	inline int getVisibleExperimentalPropertyTitleSize(){

@@ -115,6 +115,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	void sendInputHopper(CreatureObject* player);
+
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCraftingStation();
@@ -177,6 +179,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	void sendInputHopper(CreatureObject* player);
+
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCraftingStation();
@@ -237,6 +241,8 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void sendInputHopper(CreatureObject* player);
 
 	bool isCraftingStation();
 

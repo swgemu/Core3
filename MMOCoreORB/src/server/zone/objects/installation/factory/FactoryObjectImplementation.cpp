@@ -201,9 +201,8 @@ void FactoryObjectImplementation::sendIngredientHopper(CreatureObject* player) {
 		return;
 	}
 
-	inputHopper->closeContainerTo(player, true);
 	inputHopper->sendDestroyTo(player);
-
+	inputHopper->closeContainerTo(player, true);
 
 	inputHopper->sendWithoutContainerObjectsTo(player);
 	inputHopper->openContainerTo(player);
@@ -217,8 +216,8 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 		return;
 	}
 
-	outputHopper->closeContainerTo(player, true);
 	outputHopper->sendDestroyTo(player);
+	outputHopper->closeContainerTo(player, true);
 
 	outputHopper->sendWithoutContainerObjectsTo(player);
 	outputHopper->openContainerTo(player);
@@ -436,7 +435,7 @@ void FactoryObjectImplementation::createNewObject() {
 		crate = createNewFactoryCrate(prototype);
 	else {
 		Locker locker(crate);
-		crate->setUseCount(crate->getUseCount() + 1);
+		crate->setUseCount(crate->getUseCount() + 1, true);
 	}
 
 	if (crate == NULL) {
@@ -506,7 +505,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return NULL;
 	}
 
-	outputHopper->transferObject(crate, -1, false);
+	outputHopper->transferObject(crate, -1, true);
 
 	return crate;
 }

@@ -96,6 +96,9 @@ class CraftingStation extends ToolTangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
+	public native void sendInputHopper(CreatureObject player);
+
+	
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
