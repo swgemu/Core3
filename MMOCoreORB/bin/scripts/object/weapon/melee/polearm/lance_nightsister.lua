@@ -122,6 +122,15 @@ object_weapon_melee_polearm_lance_nightsister = object_weapon_melee_polearm_shar
 
 	attackSpeed = 3.0
 
+
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expDurability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRange", "midRangeMod", "maxRange", "attackHealthCost", "attackActionCost", "attackMindCost"},
+	experimentalMin = {0, 0, 23, 213, 40, 11, 750, -5, -5, 6, -5, 6, 20, 42, 32},
+	experimentalMax = {0, 0, 35, 305, 63, 25, 1500, 10, 10, 6, 10, 6, 38, 78, 54},
+	experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 10, 10, 0, 10, 0, 10, 10, 10},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_lance_nightsister, "object/weapon/melee/polearm/lance_nightsister.iff")

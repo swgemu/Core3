@@ -43,6 +43,39 @@
 
 object_draft_schematic_armor_armor_segment_ris = object_draft_schematic_armor_shared_armor_segment_ris:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "R.I.S. Armor Segment",
+
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 1, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 40, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+   ingredientTitleNames = {"segment_layer_assembly_plate", "armor_layer_weld_tabs", "segment_mounting_tabs", "reinforcement_matrix", "flexor_matrix", "defensive_layer", "segment_enhancement", "defensive_layer_2"},
+   ingredientSlotType = {0, 0, 0, 1, 1, 3, 3, 3},
+   resourceTypes = {"aluminum_titanium", "ore_intrusive_chanlon", "fiberplast_rori", "object/tangible/component/armor/shared_bone_fragment_woolamander_harrower.iff", "object/tangible/component/armor/shared_hide_gurk_king.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff", "object/tangible/component/armor/shared_armor_layer_ris.iff"},
+   resourceQuantities = {160, 160, 75, 1, 1, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/component/armor/armor_segment_ris.iff",
+
+   additionalTemplates = {
+              "object/tangible/component/armor/shared_armor_segment.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_ris, "object/draft_schematic/armor/armor_segment_ris.iff")

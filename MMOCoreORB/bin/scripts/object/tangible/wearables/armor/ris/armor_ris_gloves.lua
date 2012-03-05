@@ -79,6 +79,15 @@ object_tangible_wearables_armor_ris_armor_ris_gloves = object_tangible_wearables
 	cold = 15,
 	acid = 15,
 	lightSaber = 0
+
+	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "expDurability", "expQuality", "expResistance", "expDurability", "expDurability", "expDurability", "null", "null", "expResistance", "null"},
+	experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+	experimentalMin = {0, 0, 0, 1000, 5, 30000, 13, 26, 9, 1, 1, 5, 0},
+	experimentalMax = {0, 0, 0, 1000, 50, 50000, 22, 44, 16, 1, 1, 70, 0},
+	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_armor_ris_gloves, "object/tangible/wearables/armor/ris/armor_ris_gloves.iff")

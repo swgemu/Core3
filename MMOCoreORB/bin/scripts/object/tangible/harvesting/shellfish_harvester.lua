@@ -43,6 +43,15 @@
 
 object_tangible_harvesting_shellfish_harvester = object_tangible_harvesting_shared_shellfish_harvester:new {
 
+
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "expEffectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitPoints", "useModifier"},
+	experimentalMin = {0, 0, 1000, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 2},
 }
 
 ObjectTemplates:addTemplate(object_tangible_harvesting_shellfish_harvester, "object/tangible/harvesting/shellfish_harvester.iff")

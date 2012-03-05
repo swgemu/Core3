@@ -51,7 +51,7 @@ object_draft_schematic_scout_item_trap_sonic_pulse = object_draft_schematic_scou
    complexity = 15, 
    size = 1, 
 
-   xpType = "trapping", 
+   xpType = "camp", 
    xp = 90, 
 
    assemblySkill = "general_assembly", 

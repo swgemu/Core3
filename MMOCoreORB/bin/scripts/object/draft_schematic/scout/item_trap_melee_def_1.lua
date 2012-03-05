@@ -51,7 +51,7 @@ object_draft_schematic_scout_item_trap_melee_def_1 = object_draft_schematic_scou
    complexity = 2, 
    size = 1, 
 
-   xpType = "trapping", 
+   xpType = "camp", 
    xp = 12, 
 
    assemblySkill = "general_assembly", 

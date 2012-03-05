@@ -43,6 +43,38 @@
 
 object_draft_schematic_armor_component_armor_layer_ris = object_draft_schematic_armor_component_shared_armor_layer_ris:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "R.I.S. Armor Layer",
+
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 35, 
+   size = 3, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 120, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+   ingredientTitleNames = {"armor_layer_frame", "defensive_layer_microlattice", "blast_harmonics_absorbtion_medium", "reinforcement_matrix"},
+   ingredientSlotType = {0, 0, 0, 1},
+   resourceTypes = {"copper_polysteel", "crystalline_laboi_mineral_crystal", "ore_intrusive_oridium", "object/tangible/component/armor/shared_feather_peko_albatross.iff"},
+   resourceQuantities = {135, 85, 100, 1},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/component/armor/armor_layer_ris.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_armor_layer_ris, "object/draft_schematic/armor/component/armor_layer_ris.iff")

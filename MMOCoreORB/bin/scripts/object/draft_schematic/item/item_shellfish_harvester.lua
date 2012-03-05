@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_item_shellfish_harvester = object_draft_schematic_item_shared_item_shellfish_harvester:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Shellfish Harvesting Tool",
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 140, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"frame", "locater_array", "power_cell"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"aluminum", "copper", "gemstone_crystalline"},
+   resourceQuantities = {40, 25, 5},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/harvesting/shellfish_harvester.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_shellfish_harvester, "object/draft_schematic/item/item_shellfish_harvester.iff")

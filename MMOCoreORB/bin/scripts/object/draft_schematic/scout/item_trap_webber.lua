@@ -51,7 +51,7 @@ object_draft_schematic_scout_item_trap_webber = object_draft_schematic_scout_sha
    complexity = 13, 
    size = 1, 
 
-   xpType = "trapping", 
+   xpType = "camp", 
    xp = 70, 
 
    assemblySkill = "general_assembly", 

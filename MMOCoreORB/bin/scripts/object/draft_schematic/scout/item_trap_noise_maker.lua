@@ -51,7 +51,7 @@ object_draft_schematic_scout_item_trap_noise_maker = object_draft_schematic_scou
    complexity = 7, 
    size = 1, 
 
-   xpType = "trapping", 
+   xpType = "camp", 
    xp = 30, 
 
    assemblySkill = "general_assembly", 

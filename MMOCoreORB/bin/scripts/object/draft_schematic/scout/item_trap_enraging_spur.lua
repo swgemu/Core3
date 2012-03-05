@@ -51,7 +51,7 @@ object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_sc
    complexity = 4, 
    size = 1, 
 
-   xpType = "trapping", 
+   xpType = "camp", 
    xp = 16, 
 
    assemblySkill = "general_assembly", 

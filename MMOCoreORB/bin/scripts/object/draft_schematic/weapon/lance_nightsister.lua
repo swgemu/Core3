@@ -43,6 +43,38 @@
 
 object_draft_schematic_weapon_lance_nightsister = object_draft_schematic_weapon_shared_lance_nightsister:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Nightsister Energy Lance Schematic",
+
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 35, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 250, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapons_systems_experimentation", 
+   customizationSkill = "weapon_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"lance_shaft", "vibro_unit_and_power_cell_brackets", "grip", "vibration_generator"},
+   ingredientSlotType = {0, 0, 0, 1},
+   resourceTypes = {"steel_quadranium", "copper_polysteel", "metal", "object/tangible/component/weapon/shared_vibro_unit_nightsister.iff"},
+   resourceQuantities = {60, 30, 15, 2},
+   combineTypes = {0, 0, 0, 1},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/weapon/melee/polearm/lance_nightsister.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lance_nightsister, "object/draft_schematic/weapon/lance_nightsister.iff")
