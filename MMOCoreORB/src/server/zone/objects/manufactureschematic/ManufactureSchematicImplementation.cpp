@@ -166,6 +166,8 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 
 	initializeIngredientSlots();
 
+	possibleSyncIssue = false;
+
 	sendMsco7(player);
 
 	/// Send session packets for UI listen
@@ -368,26 +370,47 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 
 
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
+	bool wasEmpty = false;
 
 	if(ingredientSlot->isFull())
 		return IngredientSlot::FULL;
+
+	if(ingredientSlot->isEmpty())
+		wasEmpty = true;
 
 	if(!ingredientSlot->add(player, tano))
 		return IngredientSlot::INVALIDINGREDIENT;
 
 
-	// DMSCO6 ***************************************************
-	ManufactureSchematicObjectDeltaMessage6* dMsco6 =
-			new ManufactureSchematicObjectDeltaMessage6(_this);
+	if(wasEmpty) {
 
-	dMsco6->insertToResourceSlot(slot);
-	dMsco6->close();
+		updateIngredientCounter();
+		increaseComplexity();
 
-	player->sendMessage(dMsco6);
-	// End DMSCO6 ********************************************F*******
+		// DMSCO6 ***************************************************
+		ManufactureSchematicObjectDeltaMessage6* dMsco6 =
+				new ManufactureSchematicObjectDeltaMessage6(_this);
 
-	/// Delta 7
-	sendDelta7(ingredientSlot, slot, player);
+		dMsco6->insertToResourceSlot(slot);
+		dMsco6->close();
+
+		player->sendMessage(dMsco6);
+		// End DMSCO6 ****************************************************
+
+		sendDelta7(ingredientSlot, slot, player);
+
+		if(possibleSyncIssue) {
+			sendMsco7(player);
+			possibleSyncIssue = false;
+		}
+
+	} else {
+
+		possibleSyncIssue = true;
+		/// Delta 7
+		sendDelta7(ingredientSlot, slot, player);
+	}
+
 
 	// Start DMSCO3 ***********************************************************
 	// Updates the Complexity
@@ -408,6 +431,9 @@ int ManufactureSchematicImplementation::removeIngredientFromSlot(CreatureObject*
 
 	if(!ingredientSlot->removeAll(player))
 		return IngredientSlot::BADTARGETCONTAINER;
+
+	decreaseComplexity();
+	updateIngredientCounter();
 
 	/// Send delta 7
 	sendDelta7(ingredientSlot, slot, player);
@@ -435,18 +461,14 @@ void ManufactureSchematicImplementation::sendDelta7(IngredientSlot* ingredientSl
 	if(ingredientSlot->isEmpty())
 		type = 0;
 
-	if(ingredientTypes.get(slot) != type) {
-		dmcso7->insertShort(1);
-		ingredientTypes.set(slot, type, dmcso7);
-	}
+	dmcso7->insertShort(1);
+	ingredientTypes.set(slot, type, dmcso7);
+
 
 	/// Update list of OID's
-	Vector<uint64> oidchanges = ingredientSlot->getOIDVector();
-	if(slotOIDs.get(slot).size() != oidchanges.size()) {
-		updateIngredientCounter();
-		dmcso7->insertShort(2);
-		slotOIDs.set(slot, oidchanges, dmcso7);
-	}
+	dmcso7->insertShort(2);
+	slotOIDs.set(slot, ingredientSlot->getOIDVector(), dmcso7);
+
 
 	/// Update list of quantities
 	dmcso7->insertShort(3);

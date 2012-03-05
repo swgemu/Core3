@@ -103,11 +103,13 @@ class ManufactureSchematic extends IntangibleObject {
 	@dereferenced
 	protected transient DeltaVector<int> slotIndexes;
 
-	protected boolean assembled;
-	protected boolean completed;
+	protected transient boolean assembled;
+	protected transient boolean completed;
 	protected transient int ingredientCounter;
-	protected int experimentingCounter;
-	protected int experimentingCounterPrevious;
+	protected transient int experimentingCounter;
+	protected transient int experimentingCounterPrevious;
+	
+	protected transient boolean possibleSyncIssue;
 	
 	@transactional
 	protected transient CraftingValues craftingValues;

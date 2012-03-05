@@ -264,6 +264,8 @@ protected:
 
 	int experimentingCounterPrevious;
 
+	bool possibleSyncIssue;
+
 	Reference<CraftingValues* > craftingValues;
 
 	Vector<byte> customizationOptions;

@@ -120,7 +120,7 @@ object_weapon_melee_polearm_lance_nightsister = object_weapon_melee_polearm_shar
 	maxDamage = 214,
 
 
-	attackSpeed = 3.0
+	attackSpeed = 3.0,
 
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

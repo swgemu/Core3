@@ -673,26 +673,6 @@ bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* str
 		return true;
 	}
 
-	if (_name == "assembled") {
-		TypeInfo<bool >::parseFromBinaryStream(&assembled, stream);
-		return true;
-	}
-
-	if (_name == "completed") {
-		TypeInfo<bool >::parseFromBinaryStream(&completed, stream);
-		return true;
-	}
-
-	if (_name == "experimentingCounter") {
-		TypeInfo<int >::parseFromBinaryStream(&experimentingCounter, stream);
-		return true;
-	}
-
-	if (_name == "experimentingCounterPrevious") {
-		TypeInfo<int >::parseFromBinaryStream(&experimentingCounterPrevious, stream);
-		return true;
-	}
-
 	if (_name == "customizationOptions") {
 		TypeInfo<Vector<byte> >::parseFromBinaryStream(&customizationOptions, stream);
 		return true;
@@ -774,38 +754,6 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "assembled";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<bool >::toBinaryStream(&assembled, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "completed";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<bool >::toBinaryStream(&completed, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "experimentingCounter";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&experimentingCounter, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "experimentingCounterPrevious";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&experimentingCounterPrevious, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "customizationOptions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -823,7 +771,7 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 13 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 9 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
