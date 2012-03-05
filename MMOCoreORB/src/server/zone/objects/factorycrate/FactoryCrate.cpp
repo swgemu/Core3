@@ -20,7 +20,7 @@
  *	FactoryCrateStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETCRAFTERSSERIAL__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETSERIALNUMBER__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
 
 FactoryCrate::FactoryCrate() : TangibleObject(DummyConstructorParameter::instance()) {
 	FactoryCrateImplementation* _implementation = new FactoryCrateImplementation();
@@ -160,18 +160,18 @@ String FactoryCrate::getCraftersName() {
 		return _implementation->getCraftersName();
 }
 
-String FactoryCrate::getCraftersSerial() {
+String FactoryCrate::getSerialNumber() {
 	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETCRAFTERSSERIAL__);
+		DistributedMethod method(this, RPC_GETSERIALNUMBER__);
 
-		method.executeWithAsciiReturn(_return_getCraftersSerial);
-		return _return_getCraftersSerial;
+		method.executeWithAsciiReturn(_return_getSerialNumber);
+		return _return_getSerialNumber;
 	} else
-		return _implementation->getCraftersSerial();
+		return _implementation->getSerialNumber();
 }
 
 bool FactoryCrate::extractObjectToParent() {
@@ -390,8 +390,8 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_GETCRAFTERSNAME__:
 		resp->insertAscii(getCraftersName());
 		break;
-	case RPC_GETCRAFTERSSERIAL__:
-		resp->insertAscii(getCraftersSerial());
+	case RPC_GETSERIALNUMBER__:
+		resp->insertAscii(getSerialNumber());
 		break;
 	case RPC_EXTRACTOBJECTTOPARENT__:
 		resp->insertBoolean(extractObjectToParent());
@@ -437,8 +437,8 @@ String FactoryCrateAdapter::getCraftersName() {
 	return (static_cast<FactoryCrate*>(stub))->getCraftersName();
 }
 
-String FactoryCrateAdapter::getCraftersSerial() {
-	return (static_cast<FactoryCrate*>(stub))->getCraftersSerial();
+String FactoryCrateAdapter::getSerialNumber() {
+	return (static_cast<FactoryCrate*>(stub))->getSerialNumber();
 }
 
 bool FactoryCrateAdapter::extractObjectToParent() {

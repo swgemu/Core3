@@ -123,7 +123,7 @@ String FactoryCrateImplementation::getCraftersName() {
 	return prototype->getCraftersName();
 }
 
-String FactoryCrateImplementation::getCraftersSerial() {
+String FactoryCrateImplementation::getSerialNumber() {
 
 	TangibleObject* prototype = getPrototype();
 

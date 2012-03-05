@@ -134,7 +134,7 @@ public:
 
 	String getCraftersName();
 
-	String getCraftersSerial();
+	String getSerialNumber();
 
 	bool extractObjectToParent();
 
@@ -152,7 +152,7 @@ protected:
 	virtual ~FactoryCrate();
 
 	String _return_getCraftersName;
-	String _return_getCraftersSerial;
+	String _return_getSerialNumber;
 
 	friend class FactoryCrateHelper;
 };
@@ -197,7 +197,7 @@ public:
 
 	String getCraftersName();
 
-	String getCraftersSerial();
+	String getSerialNumber();
 
 	bool extractObjectToParent();
 
@@ -262,7 +262,7 @@ public:
 
 	String getCraftersName();
 
-	String getCraftersSerial();
+	String getSerialNumber();
 
 	bool extractObjectToParent();
 

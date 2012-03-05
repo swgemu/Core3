@@ -606,7 +606,7 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
 
-		if(ingredientSlot == NULL || !ingredientSlot->isComponentSlot())
+		if(ingredientSlot == NULL || !ingredientSlot->isComponentSlot() || !ingredientSlot->isFull())
 			continue;
 
 		ComponentSlot* compSlot = cast<ComponentSlot*>(ingredientSlot.get());

@@ -122,6 +122,7 @@ public:
 			if (crate != NULL && crate->getPrototype()->getSerialNumber() != tano->getSerialNumber()) {
 				return false;
 			} else {
+
 				if (incomingTano->getSerialNumber() != tano->getSerialNumber())
 					return false;
 			}

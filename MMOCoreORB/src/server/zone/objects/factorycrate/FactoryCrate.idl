@@ -116,7 +116,7 @@ class FactoryCrate extends TangibleObject {
 	
 	public native string getCraftersName();
 	
-	public native string getCraftersSerial();
+	public native string getSerialNumber();
 	
 	public native boolean extractObjectToParent();
 	
