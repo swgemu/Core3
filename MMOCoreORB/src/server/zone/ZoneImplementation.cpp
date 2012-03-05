@@ -122,11 +122,6 @@ void ZoneImplementation::initializeTransientMembers() {
 }
 
 void ZoneImplementation::startManagers() {
-	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
-	//	return;
-
-	//heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
-
 	planetManager->initialize();
 
 	structureManager->initialize();

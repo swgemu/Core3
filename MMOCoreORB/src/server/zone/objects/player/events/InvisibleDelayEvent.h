@@ -76,6 +76,9 @@ public:
 
 				ManagedReference<Zone*> zone = player->getZone();
 
+				if (zone == NULL)
+					return;
+
 				Locker zoneLocker(zone);
 
 				if (!targetGhost->isInvisible()) {

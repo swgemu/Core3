@@ -69,6 +69,7 @@ int FactoryObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	default:
 		InstallationObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
+		break;
 	}
 
 	return 0;

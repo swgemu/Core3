@@ -229,12 +229,16 @@ void ZoneServerImplementation::startZones() {
 		Zone* zone = new Zone(processor, zoneName);
 		zone->createContainerComponent();
 		zone->initializePrivateData();
-//		zone->_setObjectID(~0 - i);
 		zone->deploy("Zone " + zoneName);
 
 		zones->put(zoneName, zone);
+	}
 
-		zone->startManagers();
+	for (int i = 0; i < zones->size(); ++i) {
+		Zone* zone = zones->get(i);
+
+		if (zone != NULL)
+			zone->startManagers();
 	}
 }
 
@@ -261,10 +265,10 @@ void ZoneServerImplementation::startManagers() {
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();
 
+	cityManager->loadCityRegions();
+
 	//start global screne plays
 	DirectorManager::instance()->startGlobalScreenPlays();
-
-	cityManager->loadCityRegions();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
