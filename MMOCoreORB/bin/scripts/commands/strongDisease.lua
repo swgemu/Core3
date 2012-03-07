@@ -45,10 +45,11 @@ StrongDiseaseCommand = {
         name = "strongdisease",
 	dotEffects = {
 	  DotEffect( 
-		DISEASED_EFFECT, 
+		DISEASED, 
 		{ "resistance_disease" },
-		HEALTH_ATTRIBUTE,
+		HEALTH,
 		true,
+		125,
 		100,
 		80, 
 		50

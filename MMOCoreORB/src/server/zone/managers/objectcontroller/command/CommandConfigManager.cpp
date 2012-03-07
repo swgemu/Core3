@@ -337,10 +337,10 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalLong("CRAFTING_STATE", CreatureState::CRAFTING);
 	setGlobalLong("GLOWINGJEDI_STATE", CreatureState::GLOWINGJEDI);
 	setGlobalLong("MASKSCENT_STATE", CreatureState::MASKSCENT);
-	setGlobalLong("POISONED_STATE", CreatureState::POISONED);
-	setGlobalLong("BLEEDING_STATE", CreatureState::BLEEDING);
-	setGlobalLong("DISEASED_STATE", CreatureState::DISEASED);
-	setGlobalLong("ONFIRE_STATE", CreatureState::ONFIRE);
+	setGlobalLong("POISONED", CreatureState::POISONED);
+	setGlobalLong("BLEEDING", CreatureState::BLEEDING);
+	setGlobalLong("DISEASED", CreatureState::DISEASED);
+	setGlobalLong("ONFIRE", CreatureState::ONFIRE);
 	setGlobalLong("RIDINGMOUNT_STATE", CreatureState::RIDINGMOUNT);
 	setGlobalLong("MOUNTEDCREATURE_STATE", CreatureState::MOUNTEDCREATURE);
 	setGlobalLong("PILOTINGSHIP_STATE", CreatureState::PILOTINGSHIP);
@@ -380,6 +380,10 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("MIND_ATTRIBUTE", CombatManager::MIND);
 	setGlobalInt("RANDOM_ATTRIBUTE", CombatManager::RANDOM);
 
+	setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
+	setGlobalInt("ACTION", CreatureAttribute::ACTION);
+	setGlobalInt("MIND", CreatureAttribute::MIND);
+
 	// weapons
 	// TODO: make valid weapons into a mask and check all combat commands
 	setGlobalInt("MELEEWEAPON_WEAPON", CombatManager::MELEEWEAPON);
@@ -410,10 +414,6 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("HEALTHDEGRADE_EFFECT", CommandEffect::HEALTHDEGRADE);
 	setGlobalInt("ACTIONDEGRADE_EFFECT", CommandEffect::ACTIONDEGRADE);
 	setGlobalInt("MINDDEGRADE_EFFECT", CommandEffect::MINDDEGRADE);
-	setGlobalInt("POISONED_EFFECT", CommandEffect::POISONED);
-	setGlobalInt("BLEEDING_EFFECT", CommandEffect::BLEEDING);
-	setGlobalInt("DISEASED_EFFECT", CommandEffect::DISEASED);
-	setGlobalInt("ONFIRE_EFFECT", CommandEffect::ONFIRE);
 }
 
 int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
@@ -525,6 +525,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 				lua_rawgeti(L, -1, i);
 				LuaObject dot(L);
 				combatCommand->addDotEffect(DotEffect(dot));
+				System::out << "count " << combatCommand->getDotEffects()->size()<< endl;
 				dot.pop();
 			}
 

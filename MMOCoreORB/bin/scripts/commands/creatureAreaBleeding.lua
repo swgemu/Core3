@@ -45,10 +45,11 @@ CreatureAreaBleedingCommand = {
         name = "creatureareableeding",
 	dotEffects = {
 	  DotEffect( 
-		BLEEDING_EFFECT, 
+		BLEEDING, 
 		{ "resistance_bleeding" },
-		HEALTH_ATTRIBUTE,
+		HEALTH,
 		true,
+		125,
 		100,
 		50, 
 		10

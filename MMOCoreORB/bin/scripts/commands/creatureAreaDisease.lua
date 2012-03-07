@@ -45,10 +45,11 @@ CreatureAreaDiseaseCommand = {
         name = "creatureareadisease",
 	dotEffects = {
 	  DotEffect( 
-		DISEASED_EFFECT, 
+		DISEASED, 
 		{ "resistance_disease" },
-		HEALTH_ATTRIBUTE,
+		HEALTH,
 		true,
+		125,
 		50,
 		50, 
 		10

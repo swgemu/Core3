@@ -47,8 +47,9 @@ MildPoisonCommand = {
 	  DotEffect( 
 		POISONED_EFFECT, 
 		{ "resistance_poison" },
-		HEALTH_ATTRIBUTE,
+		HEALTH,
 		true,
+		125,
 		30,
 		30, 
 		10

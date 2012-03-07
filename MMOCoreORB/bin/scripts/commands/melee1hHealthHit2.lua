@@ -55,10 +55,11 @@ Melee1hHealthHit2Command = {
 
 	dotEffects = {
 	  DotEffect( 
-		BLEEDING_EFFECT, 
+		BLEEDING, 
 		{ "resistance_bleeding" },
-		HEALTH_ATTRIBUTE,
+		HEALTH,
 		true,
+		125,
 		100,
 		60, 
 		60
