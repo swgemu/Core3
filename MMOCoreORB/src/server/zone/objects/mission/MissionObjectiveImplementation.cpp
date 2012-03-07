@@ -113,10 +113,12 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 void MissionObjectiveImplementation::removeMissionFromPlayer() {
 	CreatureObject* player = getPlayerOwner();
 
-	ZoneServer* zoneServer = player->getZoneServer();
-	MissionManager* missionManager = zoneServer->getMissionManager();
+	if (player != NULL) {
+		ZoneServer* zoneServer = player->getZoneServer();
+		MissionManager* missionManager = zoneServer->getMissionManager();
 
-	missionManager->removeMission(mission, player);
+		missionManager->removeMission(mission, player);
+	}
 }
 
 void MissionObjectiveImplementation::fail() {
