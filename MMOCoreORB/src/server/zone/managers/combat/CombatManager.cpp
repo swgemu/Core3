@@ -316,7 +316,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 
 		//info("entering addDotState", true);
 
-		defender->addDotState(effect.getDotType(), effect.isDotDamageofHit() ? appliedDamage : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist);
+		defender->addDotState(effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist);
 	}
 }
 
