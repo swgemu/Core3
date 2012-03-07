@@ -418,7 +418,7 @@ public:
 
 	long long getSkillModFromBuffs(const String& skillMod);
 
-	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
+	int addDotState(unsigned long long dotType, unsigned long long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
 	bool healDot(unsigned long long dotType, int reduction);
 
@@ -1167,7 +1167,7 @@ public:
 
 	long long getSkillModFromBuffs(const String& skillMod);
 
-	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
+	int addDotState(unsigned long long dotType, unsigned long long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
 	bool healDot(unsigned long long dotType, int reduction);
 
@@ -1758,7 +1758,7 @@ public:
 
 	long long getSkillModFromBuffs(const String& skillMod);
 
-	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
+	int addDotState(unsigned long long dotType, unsigned long long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
 	bool healDot(unsigned long long dotType, int reduction);
 

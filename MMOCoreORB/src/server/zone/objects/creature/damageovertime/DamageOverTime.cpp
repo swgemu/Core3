@@ -135,7 +135,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 			power = doBleedingTick(victim);
 
 			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(9000);
+			nextTick.addMiliTime(10000);
 		}
 		break;
 	case CreatureState::POISONED:
@@ -146,7 +146,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 			power = doPoisonTick(victim);
 
 			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(9000);
+			nextTick.addMiliTime(10000);
 		}
 		break;
 	case CreatureState::DISEASED:
@@ -157,7 +157,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 			power = doDiseaseTick(victim);
 
 			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(19000);
+			nextTick.addMiliTime(40000);
 		}
 		break;
 	case CreatureState::ONFIRE:
@@ -168,7 +168,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 			power = doFireTick(victim);
 
 			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(9000);
+			nextTick.addMiliTime(10000);
 		}
 		break;
 	}
@@ -257,7 +257,7 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 
 	//victim->addDamage(attacker,power);
 
-	victim->addShockWounds((int)(strength * 0.75f));
+	victim->addShockWounds((int)(strength * 0.075f));
 
 	victim->playEffect("clienteffect/dot_diseased.cef","");
 

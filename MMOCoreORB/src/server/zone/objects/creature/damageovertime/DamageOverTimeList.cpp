@@ -9,17 +9,15 @@
 #include "../CreatureObject.h"
 
 uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
-	if (!hasDot())
-		return 0;
-
 	uint64 states = 0;
+	uint64 statesBefore = 0;
 
 	for (int i = 0; i < size(); ++i) {
-		uint64 type = elementAt(i).getKey();
 		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 
 		for (int j = 0; j < vector->size(); ++j) {
 			DamageOverTime* dot = &vector->elementAt(j);
+			statesBefore |= dot->getType();
 
 			if (dot->nextTickPast()) {
 				dot->applyDot(victim);
@@ -37,9 +35,25 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 				--j;
 			}
 		}
+	}
 
-		if ((states & type) == 0)
-			victim->clearState(type);
+	int statesRemoved = states ^ statesBefore;
+
+	if( statesRemoved & CreatureState::BLEEDING )
+	{
+		victim->clearState(CreatureState::BLEEDING);
+	}
+	if( statesRemoved & CreatureState::POISONED )
+	{
+		victim->clearState(CreatureState::POISONED);
+	}
+	if( statesRemoved & CreatureState::DISEASED )
+	{
+		victim->clearState(CreatureState::DISEASED);
+	}
+	if( statesRemoved & CreatureState::ONFIRE )
+	{
+		victim->clearState(CreatureState::ONFIRE);
 	}
 
 	if (nextTick.isPast()) {
@@ -53,62 +67,48 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 }
 
 int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
-	if (contains(dotType)) {
-		Vector<DamageOverTime>* vector = &get(dotType);
-		VectorMap<uint8, int> poolStrength;
-		poolStrength.setNullValue(0);
-		poolStrength.setAllowOverwriteInsertPlan();
+	Vector<DamageOverTime>* vector;
+	int strength = 0;
 
-		for (int i = 0; i < vector->size(); ++i) {
-			DamageOverTime* oldDot = &vector->get(i);
-
-			if (!oldDot->isPast()) {
-				int newStrength = poolStrength.get(pool);
-				poolStrength.put(oldDot->getAttribute(), newStrength += oldDot->getStrength());
+	for(int i = 0; i < size(); i++)
+	{
+		vector = &elementAt(i).getValue();
+		for(int j = 0; j < vector->size(); j++)
+		{
+			DamageOverTime* currentDot = &vector->elementAt(j);
+			if(currentDot->getType() == dotType && (currentDot->getAttribute() == pool))
+			{
+				if (!currentDot->isPast()) {
+					strength+=currentDot->getStrength();
+				}
 			}
 		}
-
-		return poolStrength.get(pool);
 	}
-
-	return 0;
+	return strength;
 }
 
-uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
+uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
 	if (strength == 0) return 0;
-
-	bool increasing = false;
-
 	int oldStrength = getStrength(pool, dotType);
-
-	/*if (oldStrength >= strength)
-		return strength;
-	else */if (oldStrength > 0)
-		increasing = true;
-
 	float dotReductionMod = 1.0f;
 
 	if (defense > 0)
 		dotReductionMod -= (float) defense / 125.0f;
 
-	//System::out << "dot reduction (" << defense << ")= " << dotReductionMod << "\n";
-
 	int redStrength = (int)(strength * dotReductionMod);
 	float redPotency = potency * dotReductionMod;
 
-	//System::out << "Strength : " << strength << " => " << redStrength << "\n";
-	//System::out << "Potency: " << potency << " => " << redPotency << "\n";
-
 	// hitChance may need modification when poison resist packs are added, include 5% hit and 5% miss
 	if (!(redPotency > System::random(125) || redPotency > System::random(125))) {
-		//info("potency % miss", true);
 		return 0;
 	}
+	//only 1 disease per bar allowed
+	if(dotType == CreatureState::DISEASED)
+	{
+		objectID = Long::hashCode(CreatureState::DISEASED);
 
-	//System::out << "Adding dot strength " << redStrength << endl;
-
+	}
 	DamageOverTime newDot(dotType, pool, redStrength, duration, redPotency);
-
 	int dotPower = newDot.initDot(victim);
 	victim->setState(dotType);
 
@@ -119,20 +119,27 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint6
 	else if (nTime.compareTo(nextTick) > 0)
 		nextTick = nTime;
 
-	if (contains(dotType)) {
-		Vector<DamageOverTime>* vector = &get(dotType);
+	uint64 key = generateKey(dotType, pool, objectID);
+
+	if (contains(key)) {
+		Vector<DamageOverTime>* vector = &get(key);
+		vector->removeAll();
 		vector->add(newDot);
+		//System::out << "Replacing Dot" << endl;
 	} else {
 		Vector<DamageOverTime> newVector;
 		newVector.add(newDot);
-
-		put(dotType, newVector);
+		put(key, newVector);
+		//System::out << "New Dot" << endl;
 	}
-
-	if (increasing)
-		sendIncreaseMessage(victim, dotType);
-	else
+	if(oldStrength == 0)
+	{
 		sendStartMessage(victim, dotType);
+	}
+	else
+	{
+		sendIncreaseMessage(victim, dotType);
+	}
 
 	dot = true;
 

@@ -15,7 +15,6 @@ class DamageOverTimeList : public VectorMap<uint64, Vector<DamageOverTime> > {
 protected:
 	Time nextTick;
 	bool dot;
-
 public:
 	DamageOverTimeList() {
 		setNoDuplicateInsertPlan();
@@ -29,7 +28,7 @@ public:
 	}
 
 	uint64 activateDots(CreatureObject* victim);
-	uint32 addDot(CreatureObject* victim, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense);
+	uint32 addDot(CreatureObject* victim, uint64 parentObjectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense);
 	bool healState(CreatureObject* victim, uint64 dotType, float reduction);
 	void clear(CreatureObject* creature);
 
@@ -39,6 +38,16 @@ public:
 	void sendDecreaseMessage(CreatureObject* victim, uint64 type);
 
 	int getStrength(uint8 pool, uint64 dotType);
+
+	uint64 generateKey(uint64 dotType, uint8 pool, uint64 parentObjectID)
+	{
+		//System::out << "oid: " << objectID << " pool: " << pool << " dotType: " << dotType << endl;
+		uint64 key = parentObjectID;
+		key ^= Long::hashCode((uint64)pool);
+		key ^= Long::hashCode((uint64)dotType);
+		//System::out << "key " << key << endl;
+		return key;
+	}
 
 	inline void setNextTick(Time time) {
 		nextTick = time;

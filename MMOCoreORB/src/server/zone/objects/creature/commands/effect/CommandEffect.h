@@ -22,11 +22,6 @@ public:
 	static const uint8 HEALTHDEGRADE = 9;
 	static const uint8 ACTIONDEGRADE = 10;
 	static const uint8 MINDDEGRADE = 11;
-
-	static const uint8 POISONED = 100;
-	static const uint8 BLEEDING = 101;
-	static const uint8 DISEASED = 102;
-	static const uint8 ONFIRE = 103;
 };
 
 

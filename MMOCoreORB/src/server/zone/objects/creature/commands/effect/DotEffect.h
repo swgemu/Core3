@@ -12,7 +12,7 @@
 
 class DotEffect : public Object {
 protected:
-	uint8 dotType;
+	uint32 dotType;
 	Vector<String> defenderStateDefenseModifers;
 	uint8 dotPool;
 	bool dotDamageofHit;
@@ -78,7 +78,7 @@ public:
 
     void loadDot(LuaObject dot)
     {
-        dotType = dot.getByteField("dotType");
+        dotType = dot.getIntField("dotType");
         dotPool = dot.getByteField("dotPool");
         LuaObject dohBool = dot.getObjectField("dotDamageofHit");
         lua_State *L = dohBool.getLuaState();
@@ -120,7 +120,7 @@ public:
         return dotStrength;
     }
 
-    uint8 getDotType() const
+    uint32 getDotType() const
     {
         return dotType;
     }
@@ -160,7 +160,7 @@ public:
         this->dotStrength = dotStrength;
     }
 
-    void setDotType(uint8 dotType)
+    void setDotType(uint32 dotType)
     {
         this->dotType = dotType;
     }

@@ -295,7 +295,8 @@ function geonosian_lab_screenplay:notifyEnteredPoisonGas(pActiveArea, pMovingObj
 				if (self:hasRebreather(movingObject) == 1) then
 					player:sendSystemMessage("@dungeon/geonosian_madbio:gasmask") --Your gasmask diffuses the poison gas and you are able to breathe with no difficulty.
 				else
-					player:addDotState(POISONED, math.random(20) + 80, HEALTH, 10000, 40.0, 0)
+					local activeArea = LuaSceneObject(pActiveArea)
+					player:addDotState(POISONED, activeArea:getObjectID(), math.random(20) + 80, HEALTH, 10000, 40.0, 0)
 					player:sendSystemMessage("@dungeon/geonosian_madbio:toxic_fumes") --You breathe in toxic fumes!
 				end
 			end

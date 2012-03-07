@@ -644,8 +644,8 @@ class CreatureObject extends TangibleObject {
 		return creatureBuffs.getModifierByName(skillMod);
 	}
 	
-	public int addDotState(unsigned long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense) {
-		return damageOverTimeList.addDot(this, duration, dotType, type, strength, potency, defense);
+	public int addDotState(unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense) {
+		return damageOverTimeList.addDot(this, objectID, duration, dotType, type, strength, potency, defense);
 	}
 
 	public boolean healDot(unsigned long dotType, int reduction) {

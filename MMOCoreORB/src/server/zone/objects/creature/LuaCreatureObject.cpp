@@ -109,13 +109,14 @@ int LuaCreatureObject::_getObject(lua_State* L) {
 int LuaCreatureObject::addDotState(lua_State* L) {
 	//addDotState(unsigned long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense)
 	uint32 defense = lua_tointeger(L, -1);
-	float potency = lua_tonumber(L, -2);
-	uint32 duration = lua_tointeger(L, -3);
-	byte type = lua_tointeger(L, -4);
-	uint32 strength = lua_tointeger(L, -5);
-	uint64 dotType = lua_tointeger(L, -6);
+	uint32 objectID = lua_tointeger(L, -2);
+	float potency = lua_tonumber(L, -3);
+	uint32 duration = lua_tointeger(L, -4);
+	byte type = lua_tointeger(L, -5);
+	uint32 strength = lua_tointeger(L, -6);
+	uint64 dotType = lua_tointeger(L, -7);
 
-	realObject->addDotState(dotType, strength, type, duration, potency, defense);
+	realObject->addDotState(dotType, objectID, strength, type, duration, potency, defense);
 
 	return 0;
 }

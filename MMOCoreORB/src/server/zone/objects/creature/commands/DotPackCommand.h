@@ -176,7 +176,7 @@ public:
 
 			creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison"));
+			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPack->getObjectID(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison"));
 		} else {
 			StringIdChatParameter stringId("healing", "apply_disease_self");
 			stringId.setTT(creatureTarget->getObjectID());
@@ -188,7 +188,7 @@ public:
 
 			creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(CreatureState::DISEASED, dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease"));
+			dotDMG = creatureTarget->addDotState(CreatureState::DISEASED, dotPack->getObjectID(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease"));
 		}
 
 		if (dotDMG) {
@@ -310,7 +310,7 @@ public:
 
 			creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison"));
+			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPack->getObjectID(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison"));
 		} else {
 			StringIdChatParameter stringId("healing", "apply_disease_self");
 			stringId.setTT(creatureTarget->getObjectID());
@@ -322,7 +322,7 @@ public:
 
 			creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(CreatureState::DISEASED, dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease"));
+			dotDMG = creatureTarget->addDotState(CreatureState::DISEASED, dotPack->getObjectID(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease"));
 		}
 
 		if (dotDMG) {
