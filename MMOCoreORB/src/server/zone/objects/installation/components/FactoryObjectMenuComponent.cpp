@@ -20,7 +20,7 @@ void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 	if (!factory->isOnAdminList(player->getFirstName()))
 		return;
 
-	//InstallationObjectMenuComponent::fillObjectMenuResponse(menuResponse, player);
+	InstallationObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	menuResponse->addRadialMenuItem(29, 3, "@manf_station:options"); //Options
 
