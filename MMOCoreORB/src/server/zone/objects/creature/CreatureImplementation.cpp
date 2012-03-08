@@ -93,7 +93,6 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 			canHarvestMe(player)) {
 
 		getZone()->getCreatureManager()->harvest(_this, player, selectedID);
-		alreadyHarvested->add(player->getObjectID());
 
 		return 0;
 	}
@@ -214,39 +213,38 @@ bool CreatureImplementation::hasOrganics() {
 	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
 }
 
+void CreatureImplementation::addAlreadyHarvested(CreatureObject* player) {
+	if (alreadyHarvested == NULL)
+		alreadyHarvested = new SortedVector<unsigned long long>();
+
+	alreadyHarvested->put(player->getObjectID());
+}
+
+void CreatureImplementation::notifyDespawn(Zone* zone) {
+	alreadyHarvested = NULL;
+
+	AiAgentImplementation::notifyDespawn(zone);
+}
+
 bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
-
-
-
 	if (!hasOrganics())
 		return false;
 
 	if (player->getSkillMod("creature_harvesting") < 1)
 		return false;
 
-	if(alreadyHarvested == NULL)
-		alreadyHarvested = new Vector<unsigned long long>();
+	if (alreadyHarvested != NULL && alreadyHarvested->contains(player->getObjectID()))
+		return false;
 
-	for(int i = 0; i < alreadyHarvested->size(); ++i) {
-		if(alreadyHarvested->get(i) == player->getObjectID())
-			return false;
-	}
+	uint64 lootOwnerID = getContainerPermissions()->getOwnerID();
 
-	if (lootOwner != NULL) {
+	if (player->getObjectID() == lootOwnerID)
+		return true;
 
-		if(player == lootOwner)
-			return true;
+	ManagedReference<GroupObject*> group = player->getGroup();
 
-		if(player->isGrouped()) {
-			ManagedReference<GroupObject*> group = lootOwner->getGroup();
-
-			if (group == NULL)
-				return false;
-
-			if (group->hasMember(player))
-				return true;
-		}
-	}
+	if (group != NULL && group->hasMember(lootOwnerID))
+		return true;
 
 	return false;
 }

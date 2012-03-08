@@ -88,6 +88,8 @@ public:
 
 	bool hasMember(SceneObject* player);
 
+	bool hasMember(unsigned long long player);
+
 	void startChatRoom();
 
 	void destroyChatRoom();
@@ -175,6 +177,8 @@ public:
 	void makeLeader(SceneObject* player);
 
 	bool hasMember(SceneObject* player);
+
+	bool hasMember(unsigned long long player);
 
 	void startChatRoom();
 
@@ -268,6 +272,8 @@ public:
 	void makeLeader(SceneObject* player);
 
 	bool hasMember(SceneObject* player);
+
+	bool hasMember(unsigned long long player);
 
 	void startChatRoom();
 

@@ -127,6 +127,16 @@ bool GroupObjectImplementation::hasMember(SceneObject* player) {
 	return false;
 }
 
+bool GroupObjectImplementation::hasMember(uint64 player) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* play = groupMembers.get(i);
+
+		if (play->getObjectID() == player)
+			return true;
+	}
+
+	return false;
+}
 
 void GroupObjectImplementation::makeLeader(SceneObject* player) {
 	if (groupMembers.size() < 2)
@@ -235,8 +245,7 @@ void GroupObjectImplementation::addGroupModifiers() {
 
 	if (getLeader() != NULL) {
 		if (getLeader()->isPlayerCreature()) {
-
-			ManagedReference<CreatureObject*> leader = cast<CreatureObject*>( getLeader());
+			CreatureObject* leader = cast<CreatureObject*>( getLeader());
 
 			Reference<SquadLeaderBonusTask*> bonusTask = new SquadLeaderBonusTask(leader);
 

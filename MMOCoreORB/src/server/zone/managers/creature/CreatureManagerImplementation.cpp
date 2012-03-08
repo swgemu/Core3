@@ -371,8 +371,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		if (playerManager != NULL)
 			playerManager->disseminateExperience(destructedObject, &copyThreatMap);
 
-		destructedObject->setLootOwner(player);
-
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
 		if (creatureInventory != NULL) {
@@ -545,6 +543,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	if(playerManager != NULL)
 		playerManager->awardExperience(player, "scout", xp, true);
 
+	creature->addAlreadyHarvested(player);
 
 	if (!player->isGrouped() && !creature->hasLoot()) {
 		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(creature->getPendingTask("despawn"));

@@ -110,9 +110,6 @@ class AiAgent extends CreatureObject {
 	
 	protected transient CreatureTemplate npcTemplate;
 	
-	@weakReference
-	protected transient CreatureObject lootOwner;
-	
 	protected boolean baby;
 	
 	//DEBUG
@@ -157,7 +154,6 @@ class AiAgent extends CreatureObject {
 		numberOfPlayersInRange = 0;
 
 		npcTemplate = null;
-		lootOwner = null;
 		
 		loadedOutfit = false;
 		
@@ -671,14 +667,6 @@ class AiAgent extends CreatureObject {
 	
 	public boolean isAiAgent() {
 		return true;
-	}
-	
-	public void setLootOwner(CreatureObject owner) {
-		lootOwner = owner;
-	}
-	
-	public CreatureObject getLootOwner() {
-		return lootOwner;
 	}
 	
 	@local

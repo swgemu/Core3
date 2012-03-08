@@ -460,10 +460,6 @@ public:
 
 	bool isAiAgent();
 
-	void setLootOwner(CreatureObject* owner);
-
-	CreatureObject* getLootOwner();
-
 	CreatureTemplate* getCreatureTemplate();
 
 	bool hasLoot();
@@ -522,8 +518,6 @@ protected:
 	Vector<ManagedReference<SceneObject* > > camouflagedObjects;
 
 	Reference<CreatureTemplate* > npcTemplate;
-
-	ManagedWeakReference<CreatureObject* > lootOwner;
 
 	bool baby;
 
@@ -744,10 +738,6 @@ public:
 
 	bool isAiAgent();
 
-	void setLootOwner(CreatureObject* owner);
-
-	CreatureObject* getLootOwner();
-
 	CreatureTemplate* getCreatureTemplate();
 
 	bool hasLoot();
@@ -946,10 +936,6 @@ public:
 	float getRespawnTimer();
 
 	bool isAiAgent();
-
-	void setLootOwner(CreatureObject* owner);
-
-	CreatureObject* getLootOwner();
 
 	bool hasLoot();
 

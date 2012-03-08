@@ -91,6 +91,7 @@ class GroupObject extends SceneObject {
 	public native void makeLeader(SceneObject player);
 
 	public native boolean hasMember(SceneObject player);
+	public native boolean hasMember(unsigned long player);
 
 	public native void startChatRoom();
 	public native void destroyChatRoom();

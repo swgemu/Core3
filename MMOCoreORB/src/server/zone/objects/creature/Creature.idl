@@ -53,10 +53,11 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.templates.mobile.CreatureTemplate;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.Zone;
 
 class Creature extends AiAgent {
 	
-	private transient Vector<unsigned long> alreadyHarvested;
+	private transient SortedVector<unsigned long> alreadyHarvested;
 
 	public Creature() {
 		Logger.setLoggingName("Creature");
@@ -101,6 +102,10 @@ class Creature extends AiAgent {
 	public native boolean hasOrganics();
 	
 	public native boolean canHarvestMe(CreatureObject player);
+	
+	public native void addAlreadyHarvested(CreatureObject player);
+	
+	public native void notifyDespawn(Zone zone);
 	
 	public boolean isBaby() {
 		return super.baby;

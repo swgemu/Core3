@@ -18,6 +18,7 @@ public:
 
 	void run() {
 		Locker playerLocker(player);
+
 		if (player->isGrouped()) {
 			ManagedReference<GroupObject*> group = player->getGroup();
 			if (group == NULL)

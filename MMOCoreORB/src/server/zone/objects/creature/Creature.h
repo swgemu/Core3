@@ -81,6 +81,16 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "engine/core/ManagedObject.h"
@@ -117,6 +127,10 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
+
+	void addAlreadyHarvested(CreatureObject* player);
+
+	void notifyDespawn(Zone* zone);
 
 	bool isBaby();
 
@@ -165,7 +179,7 @@ namespace objects {
 namespace creature {
 
 class CreatureImplementation : public AiAgentImplementation {
-	Reference<Vector<unsigned long long>* > alreadyHarvested;
+	Reference<SortedVector<unsigned long long>* > alreadyHarvested;
 
 public:
 	CreatureImplementation();
@@ -191,6 +205,10 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
+
+	void addAlreadyHarvested(CreatureObject* player);
+
+	void notifyDespawn(Zone* zone);
 
 	bool isBaby();
 
@@ -270,6 +288,10 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
+
+	void addAlreadyHarvested(CreatureObject* player);
+
+	void notifyDespawn(Zone* zone);
 
 	bool isBaby();
 

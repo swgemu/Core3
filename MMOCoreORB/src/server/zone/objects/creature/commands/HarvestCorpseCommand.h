@@ -69,8 +69,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<SceneObject* > object =
-				server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
@@ -123,13 +122,14 @@ public:
 		}
 
 		if (cr->canHarvestMe(player)) {
-			if (cr->getZone() == NULL)
-				return GENERALERROR;
-
 			Locker clocker(cr, player);
 
 			if (!cr->isDead())
 				return GENERALERROR;
+
+			if (cr->getZone() == NULL)
+				return GENERALERROR;
+
 
 			ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
 			manager->harvest(cr, player, type);

@@ -14,7 +14,7 @@
  *	GroupObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_HASMEMBER__LONG_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
@@ -160,6 +160,20 @@ bool GroupObject::hasMember(SceneObject* player) {
 
 		DistributedMethod method(this, RPC_HASMEMBER__SCENEOBJECT_);
 		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasMember(player);
+}
+
+bool GroupObject::hasMember(unsigned long long player) {
+	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASMEMBER__LONG_);
+		method.addUnsignedLongParameter(player);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -626,6 +640,9 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_HASMEMBER__SCENEOBJECT_:
 		resp->insertBoolean(hasMember(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
+	case RPC_HASMEMBER__LONG_:
+		resp->insertBoolean(hasMember(inv->getUnsignedLongParameter()));
+		break;
 	case RPC_STARTCHATROOM__:
 		startChatRoom();
 		break;
@@ -711,6 +728,10 @@ void GroupObjectAdapter::makeLeader(SceneObject* player) {
 }
 
 bool GroupObjectAdapter::hasMember(SceneObject* player) {
+	return (static_cast<GroupObject*>(stub))->hasMember(player);
+}
+
+bool GroupObjectAdapter::hasMember(unsigned long long player) {
 	return (static_cast<GroupObject*>(stub))->hasMember(player);
 }
 
