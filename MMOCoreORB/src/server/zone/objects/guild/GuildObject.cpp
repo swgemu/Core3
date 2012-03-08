@@ -14,7 +14,7 @@
  *	GuildObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__CREATUREOBJECT_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_GETMEMBER__INT_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__CREATUREOBJECT_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
 
 GuildObject::GuildObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GuildObjectImplementation* _implementation = new GuildObjectImplementation();
@@ -123,6 +123,20 @@ GuildMemberInfo* GuildObject::getMember(unsigned long long playerID) {
 
 	} else
 		return _implementation->getMember(playerID);
+}
+
+unsigned long long GuildObject::getMember(int index) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMEMBER__INT_);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return _implementation->getMember(index);
 }
 
 void GuildObject::addSponsoredPlayer(unsigned long long playerID) {
@@ -858,6 +872,9 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_HASMEMBER__LONG_:
 		resp->insertBoolean(hasMember(inv->getUnsignedLongParameter()));
 		break;
+	case RPC_GETMEMBER__INT_:
+		resp->insertLong(getMember(inv->getSignedIntParameter()));
+		break;
 	case RPC_ADDSPONSOREDPLAYER__LONG_:
 		addSponsoredPlayer(inv->getUnsignedLongParameter());
 		break;
@@ -965,6 +982,10 @@ void GuildObjectAdapter::removeMember(unsigned long long playerID) {
 
 bool GuildObjectAdapter::hasMember(unsigned long long playerID) {
 	return (static_cast<GuildObject*>(stub))->hasMember(playerID);
+}
+
+unsigned long long GuildObjectAdapter::getMember(int index) {
+	return (static_cast<GuildObject*>(stub))->getMember(index);
 }
 
 void GuildObjectAdapter::addSponsoredPlayer(unsigned long long playerID) {

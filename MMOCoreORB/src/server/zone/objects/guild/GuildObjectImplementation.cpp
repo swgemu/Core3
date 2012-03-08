@@ -38,6 +38,10 @@ bool GuildObjectImplementation::hasMember(uint64 playerID) {
 	return guildMembers.contains(playerID);
 }
 
+uint64 GuildObjectImplementation::getMember(int index) {
+	return guildMembers.get(index).getPlayerID();
+}
+
 GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
 	Locker locker(_this);
 

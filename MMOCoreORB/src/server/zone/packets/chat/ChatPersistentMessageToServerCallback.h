@@ -13,6 +13,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
 
 #include "server/chat/StringIdChatParameterVector.h"
 #include "server/chat/WaypointChatParameterVector.h"
@@ -77,24 +78,56 @@ public:
 		message->parseAscii(recipientName);
 	}
 
-	void run() {
+	int sendMail(const String& recipient) {
+		if (recipient == "guild") {
+			ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+			ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+			if (guild == NULL)
+				return 0;
+
+			if (!guild->hasMailPermission(player->getObjectID())) {
+				player->sendSystemMessage("@guild:generic_fail_no_permission");
+				return 0;
+			}
+
+			Locker locker(guild);
+
+			int max = guild->getTotalMembers();
+
+			for (int i = 0; i < max; ++i) {
+				uint64 oid = guild->getMember(i);
+
+				ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(oid);
+
+				if (receiver == NULL || !receiver->isPlayerCreature())
+					continue;
+
+				CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
+
+				sendMailToPlayer(receiverPlayer->getFirstName());
+			}
+
+			return 0;
+		}
+
+		return sendMailToPlayer(recipient);
+	}
+
+	int sendMailToPlayer(const String& recipientName) {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
-
-		if (player == NULL)
-			return;
-
 		ChatManager* chatManager = server->getChatManager();
 
 		uint64 receiverObjectID = server->getPlayerManager()->getObjectID(recipientName);
 
 		if (receiverObjectID == 0) {
-			return;
+			return 0;
 		}
 
 		ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
 
 		if (receiver == NULL || !receiver->isPlayerCreature())
-			return;
+			return 0;
 
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
 		PlayerObject* ghost = receiverPlayer->getPlayerObject();
@@ -104,10 +137,34 @@ public:
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);
 
-			return;
+			return ChatManager::IM_IGNORED;
 		}
 
-		int result = chatManager->sendMail(player->getFirstName(), header, body, recipientName, &stringIdParameters, &waypointParameters);
+		return chatManager->sendMail(player->getFirstName(), header, body, recipientName, &stringIdParameters, &waypointParameters);
+	}
+
+	void run() {
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+
+		if (player == NULL)
+			return;
+
+		int result = 0;
+
+		StringTokenizer tokenizer(recipientName);
+		tokenizer.setDelimeter(";");
+
+		if (tokenizer.hasMoreTokens()) {
+			String receiver;
+
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(receiver);
+
+				sendMail(receiver);
+			}
+		} else {
+			result = sendMailToPlayer(recipientName);
+		}
 
 		ChatOnSendPersistentMessage* cospm = new ChatOnSendPersistentMessage(sequence, result);
 		player->sendMessage(cospm);

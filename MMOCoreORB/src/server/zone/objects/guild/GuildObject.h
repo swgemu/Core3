@@ -110,6 +110,8 @@ public:
 
 	GuildMemberInfo* getMember(unsigned long long playerID);
 
+	unsigned long long getMember(int index);
+
 	void addSponsoredPlayer(unsigned long long playerID);
 
 	void removeSponsoredPlayer(unsigned long long playerID);
@@ -247,6 +249,8 @@ public:
 
 	GuildMemberInfo* getMember(unsigned long long playerID);
 
+	unsigned long long getMember(int index);
+
 	void addSponsoredPlayer(unsigned long long playerID);
 
 	void removeSponsoredPlayer(unsigned long long playerID);
@@ -355,6 +359,8 @@ public:
 	void removeMember(unsigned long long playerID);
 
 	bool hasMember(unsigned long long playerID);
+
+	unsigned long long getMember(int index);
 
 	void addSponsoredPlayer(unsigned long long playerID);
 
