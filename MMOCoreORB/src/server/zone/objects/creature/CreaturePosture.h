@@ -74,6 +74,17 @@ public:
 		canSeeHeightMod = 0;
 	}
 
+	CreatureMovementEntry(const CreatureMovementEntry& m) : Variable() {
+		posture = m.posture;
+		stationary = m.stationary;
+		slow = m.slow;
+		fast = m.fast;
+		movementScale = m.movementScale;
+		accelerationScale = m.accelerationScale;
+		turnScale = m.turnScale;
+		canSeeHeightMod = m.canSeeHeightMod;
+	}
+
 	bool operator==(CreatureMovementEntry entry) {
 		return posture == entry.posture; // only need posture here because I am sure that these are unique to entries
 	}
@@ -132,24 +143,24 @@ public:
 	static const uint8 INCAPACITATED = 13;
 	static const uint8 DEAD = 14;
 
-	VectorMap<uint8, CreatureMovementEntry> movementTable;
+	HashTable<uint8, CreatureMovementEntry> movementTable;
 
 	CreaturePosture() {}
 
 	~CreaturePosture() {}
 
 	uint8 getLocomotion(uint8 pos, uint8 speed) {
-		CreatureMovementEntry move = movementTable.get(pos);
+		CreatureMovementEntry* move = &movementTable.get(pos);
 
 		switch (speed) {
 		case CreatureLocomotion::STATIONARY:
-			return move.stationary;
+			return move->stationary;
 			break;
 		case CreatureLocomotion::SLOW:
-			return move.slow;
+			return move->slow;
 			break;
 		case CreatureLocomotion::FAST:
-			return move.fast;
+			return move->fast;
 			break;
 		default:
 			return CreatureLocomotion::INVALID;
