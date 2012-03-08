@@ -192,7 +192,8 @@ function vardias_tyne_screenplay:notifyDefeatedRhalia(pVictim, pAttacker)
 	end
 			
 	local player = LuaCreatureObject(pOwner)
-	local playerObject = LuaPlayerObject(pOwner)
+	local pointerPlayerObject = player:getPlayerObject()
+	local playerObject = LuaPlayerObject(pointerPlayerObject)
 	vardias_tyne_screenplay:setState(player, vardias_tyne_screenplay.states.quest1.defeated)
 	local pVardiasWaypoint = playerObject:addWaypoint("tatooine", "Vardias Tyne", "Vardias Tyne", 104, -5382,WAYPOINTBLUE, true, true)
 	player:sendSystemMessage("Return to Vardias Tyne")

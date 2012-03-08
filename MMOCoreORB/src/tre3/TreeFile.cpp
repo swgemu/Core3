@@ -82,6 +82,7 @@ void TreeFile::readHeader(FileInputStream* fileStream) {
 		break;
 	default:
 		error("Unknown Tree version: " + String::valueOf(version));
+		break;
 	}
 
 	readFileBlock(fileStream);

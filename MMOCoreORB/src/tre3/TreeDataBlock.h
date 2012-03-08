@@ -75,6 +75,7 @@ public:
 		case 0: //Data is uncompressed
 		default:
 			fileStream->read(uncompressedData, uncompressedSize);
+			break;
 		}
 
 		return uncompressedData;
