@@ -57,7 +57,12 @@ object_tangible_instrument_base_instrument_base = object_tangible_instrument_bas
 				"object/creature/player/twilek_male.iff",
 				"object/creature/player/twilek_female.iff",
 				"object/creature/player/zabrak_male.iff",
-				"object/creature/player/zabrak_female.iff" }
+				"object/creature/player/zabrak_female.iff",
+				"object/creature/player/wookiee_female.iff",
+				"object/creature/player/wookiee_male.iff",
+				"object/creature/player/ithorian_female.iff",
+				"object/creature/player/ithorian_male.iff"
+				 }
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_base_instrument_base, "object/tangible/instrument/base/instrument_base.iff")
