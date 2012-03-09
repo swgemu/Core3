@@ -68,6 +68,8 @@ public:
 	}
 
 	void run() {
+		Locker locker(player);
+
 		try {
 
 			player->removePendingTask("areatrack");
@@ -75,7 +77,7 @@ public:
 			if(!player->isPlayerCreature())
 				return;
 
-			SuiListBox* rangerTrackResults = new SuiListBox(player, SuiWindowType::RANGER_TRACK_RESULTS);
+			ManagedReference<SuiListBox*> rangerTrackResults = new SuiListBox(player, SuiWindowType::RANGER_TRACK_RESULTS);
 
 			rangerTrackResults->setPromptTitle("@skl_use:scan_results_t");
 			rangerTrackResults->setPromptText("@skl_use:scan_results_d");
@@ -94,7 +96,8 @@ public:
 			if(player->getDistanceTo(&initialPosition) < 2 && !player->isInCombat()) {
 
 				for (int i = 0; i < objects.size(); ++i) {
-					SceneObject* object = cast<SceneObject*>(objects.get(i).get());					results.deleteAll();
+					SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+					results.deleteAll();
 
 					if(object == player)
 						continue;
