@@ -577,7 +577,6 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	}
 
 	if (!foundPosition) {
-		info("Couldn't find start pos for destroy mission.", true);
 		return;
 	}
 
