@@ -14,13 +14,22 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/Zone.h"
 
+bool InstrumentImplementation::canDropInstrument() {
+	SceneObject* parent = getParent();
+
+	if (isInQuadTree() || (parent != NULL && parent->isCellObject()))
+		return false;
+
+	return true;
+}
+
 int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (instrumentType != OMNIBOX && instrumentType != NALARGON) {
 		return 1;
 	}
 
 	if (selectedID == 69) {
-		if (isInQuadTree())
+		if (!canDropInstrument())
 			return 1;
 
 		SceneObject* playerParent = player->getParent();
@@ -47,7 +56,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		}
 
 	} else if (selectedID == 20) {
-		if (!isInQuadTree())
+		if (getZone() == NULL)
 			return 1;
 
 		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(player->getSlottedObject("hold_r"));
@@ -67,9 +76,9 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			return 1;
 		}
 
-		if (player->getDistanceTo(_this) >= 5)
+		if (player->getDistanceTo(_this) >= 5) {
 			player->sendSystemMessage("@elevator_text:too_far");
-		else
+		} else
 			player->executeObjectControllerAction(String("startmusic").hashCode(), getObjectID(), "");
 	}
 

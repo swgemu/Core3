@@ -168,6 +168,8 @@ public:
 
 	void spawnOutside(CreatureObject* spawner);
 
+	bool canDropInstrument();
+
 	int getInstrumentType();
 
 	CreatureObject* getSpawnerPlayer();
@@ -253,6 +255,8 @@ public:
 
 	void spawnOutside(CreatureObject* spawner);
 
+	bool canDropInstrument();
+
 	int getInstrumentType();
 
 	CreatureObject* getSpawnerPlayer();
@@ -317,6 +321,8 @@ public:
 	void spawnInAdminCell(CreatureObject* spawner);
 
 	void spawnOutside(CreatureObject* spawner);
+
+	bool canDropInstrument();
 
 	int getInstrumentType();
 

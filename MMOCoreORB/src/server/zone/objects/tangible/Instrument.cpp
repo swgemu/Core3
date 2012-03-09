@@ -24,7 +24,7 @@
  *	InstrumentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SPAWNINFOREIGNCELL__CREATUREOBJECT_,RPC_SPAWNINADMINCELL__CREATUREOBJECT_,RPC_SPAWNOUTSIDE__CREATUREOBJECT_,RPC_GETINSTRUMENTTYPE__,RPC_GETSPAWNERPLAYER__,RPC_SETSPAWNERPLAYER__CREATUREOBJECT_,RPC_ISBEINGUSED__,RPC_SETBEINGUSED__BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SPAWNINFOREIGNCELL__CREATUREOBJECT_,RPC_SPAWNINADMINCELL__CREATUREOBJECT_,RPC_SPAWNOUTSIDE__CREATUREOBJECT_,RPC_CANDROPINSTRUMENT__,RPC_GETINSTRUMENTTYPE__,RPC_GETSPAWNERPLAYER__,RPC_SETSPAWNERPLAYER__CREATUREOBJECT_,RPC_ISBEINGUSED__,RPC_SETBEINGUSED__BOOL_};
 
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
 	InstrumentImplementation* _implementation = new InstrumentImplementation();
@@ -139,6 +139,19 @@ void Instrument::spawnOutside(CreatureObject* spawner) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->spawnOutside(spawner);
+}
+
+bool Instrument::canDropInstrument() {
+	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANDROPINSTRUMENT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->canDropInstrument();
 }
 
 int Instrument::getInstrumentType() {
@@ -440,7 +453,7 @@ void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 }
 
 	else 	// server/zone/objects/tangible/Instrument.idl():  	}
-	if (!isInQuadTree()){
+	if (canDropInstrument()){
 	// server/zone/objects/tangible/Instrument.idl():  			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 	menuResponse->addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 }
@@ -500,6 +513,9 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SPAWNOUTSIDE__CREATUREOBJECT_:
 		spawnOutside(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_CANDROPINSTRUMENT__:
+		resp->insertBoolean(canDropInstrument());
+		break;
 	case RPC_GETINSTRUMENTTYPE__:
 		resp->insertSignedInt(getInstrumentType());
 		break;
@@ -544,6 +560,10 @@ void InstrumentAdapter::spawnInAdminCell(CreatureObject* spawner) {
 
 void InstrumentAdapter::spawnOutside(CreatureObject* spawner) {
 	(static_cast<Instrument*>(stub))->spawnOutside(spawner);
+}
+
+bool InstrumentAdapter::canDropInstrument() {
+	return (static_cast<Instrument*>(stub))->canDropInstrument();
 }
 
 int InstrumentAdapter::getInstrumentType() {

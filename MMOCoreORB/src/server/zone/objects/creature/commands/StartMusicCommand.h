@@ -144,7 +144,7 @@ public:
 				instrument = cast<Instrument*>( nala.get());
 				SceneObject* creatureParent = creature->getParent();
 
-				if (creature->getDistanceTo(nala) >= 3 || !nala->isInQuadTree() || (creatureParent == NULL && NULL != nala->getParent())) {
+				if (creature->getDistanceTo(nala) >= 3 || nala->getZone() == NULL || (creatureParent == NULL && NULL != nala->getParent())) {
 					creature->sendSystemMessage("@elevator_text:too_far");
 
 					return GENERALERROR;

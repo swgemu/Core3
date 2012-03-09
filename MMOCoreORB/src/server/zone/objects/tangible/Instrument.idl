@@ -141,10 +141,10 @@ class Instrument extends TangibleObject {
 		if (instrumentType != OMNIBOX && instrumentType != NALARGON) {
 			return;
 		}
-	
+			
 		if (beingUsed) {
 			return;
-		} else if (!isInQuadTree()) {
+		} else if (canDropInstrument()) {
 			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 		}
 	}
@@ -162,6 +162,8 @@ class Instrument extends TangibleObject {
 	public native void spawnInForeignCell(CreatureObject spawner);
 	public native void spawnInAdminCell(CreatureObject spawner);
 	public native void spawnOutside(CreatureObject spawner);
+	
+	public native boolean canDropInstrument();
 	
 	public int getInstrumentType() {
 		return instrumentType;
