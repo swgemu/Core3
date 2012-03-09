@@ -102,7 +102,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 
 	if (templateObject != NULL) {
-		containerComponent = (ContainerComponent*)templateObject->getContainerComponent();
+		containerComponent = cast<ContainerComponent*>(templateObject->getContainerComponent());
 
 		String zoneComponentClassName = templateObject->getZoneComponent();
 		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
@@ -111,7 +111,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 			zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>("ZoneComponent");
 		}
 
-		objectMenuComponent = (ObjectMenuComponent*)templateObject->getObjectMenuComponent();
+		objectMenuComponent = cast<ObjectMenuComponent*>(templateObject->getObjectMenuComponent());
 	}
 
 	Reference<AiInterfaceComponent*> dummy = ComponentManager::instance()->getComponent<AiDummyComponent*>("AiDummyComponent");
@@ -205,7 +205,7 @@ void SceneObjectImplementation::createComponents() {
 			info("zone component null " + zoneComponentClassName + " in " + templateObject->getFullTemplateString());
 		}
 
-		objectMenuComponent = (ObjectMenuComponent*)templateObject->getObjectMenuComponent();
+		objectMenuComponent = cast<ObjectMenuComponent*>(templateObject->getObjectMenuComponent());
 
 		String attributeListComponentName = templateObject->getAttributeListComponent();
 		attributeListComponent = ComponentManager::instance()->getComponent<AttributeListComponent*>(attributeListComponentName);

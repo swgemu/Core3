@@ -525,7 +525,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 				lua_rawgeti(L, -1, i);
 				LuaObject dot(L);
 				combatCommand->addDotEffect(DotEffect(dot));
-				System::out << "count " << combatCommand->getDotEffects()->size()<< endl;
+				//System::out << "count " << combatCommand->getDotEffects()->size()<< endl;
 				dot.pop();
 			}
 
