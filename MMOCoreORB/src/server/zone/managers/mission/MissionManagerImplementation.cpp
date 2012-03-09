@@ -513,6 +513,10 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 }
 
 void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction) {
+	if (player->getZone() == NULL) {
+		return;
+	}
+
 	LairSpawn* randomLairSpawn = getRandomLairSpawn(player);
 
 	if (randomLairSpawn == NULL) {
@@ -550,7 +554,33 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	mission->setMissionNumber(randTexts);
 
-	Vector3 startPos = player->getWorldCoordinate(System::random(1000) + 1000, (float)System::random(360));
+	Vector3 startPos;
+
+	bool foundPosition = false;
+	int maximumNumberOfTries = 20;
+	while (!foundPosition && maximumNumberOfTries-- > 0) {
+		foundPosition = true;
+		startPos = player->getWorldCoordinate(System::random(1000) + 1000, (float)System::random(360));
+
+		if (player->getZone()->isWithinBoundaries(startPos)) {
+			//Check that the position is outside cities.
+			Vector<ManagedReference<ActiveArea* > >* activeAreas;
+			activeAreas = new SortedVector<ManagedReference<ActiveArea*> >();
+			player->getZone()->getInRangeActiveAreas(startPos.getX(), startPos.getY(), cast<SortedVector<ManagedReference<ActiveArea*> >*>(activeAreas), true);
+			for (int i = 0; i < activeAreas->size(); ++i) {
+				if (activeAreas->get(i)->isMunicipalZone()) {
+					delete activeAreas;
+					foundPosition = false;
+				}
+			}
+		}
+	}
+
+	if (!foundPosition) {
+		info("Couldn't find start pos for destroy mission.", true);
+		return;
+	}
+
 	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
 	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getZone()->getZoneName());
