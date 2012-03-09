@@ -564,12 +564,10 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 		if (player->getZone()->isWithinBoundaries(startPos)) {
 			//Check that the position is outside cities.
-			Vector<ManagedReference<ActiveArea* > >* activeAreas;
-			activeAreas = new SortedVector<ManagedReference<ActiveArea*> >();
-			player->getZone()->getInRangeActiveAreas(startPos.getX(), startPos.getY(), cast<SortedVector<ManagedReference<ActiveArea*> >*>(activeAreas), true);
-			for (int i = 0; i < activeAreas->size(); ++i) {
-				if (activeAreas->get(i)->isMunicipalZone()) {
-					delete activeAreas;
+			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+			player->getZone()->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
+			for (int i = 0; i < activeAreas.size(); ++i) {
+				if (activeAreas.get(i)->isMunicipalZone()) {
 					foundPosition = false;
 				}
 			}
