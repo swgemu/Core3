@@ -128,6 +128,7 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	currentWind = 0;
 
 	setContainerOwnerID(getObjectID());
+	setMood(moodID);
 
 	setLoggingName("CreatureObject");
 }
