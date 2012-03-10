@@ -164,6 +164,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SortedVector<CreatureObject> duelList;
 	
+	@dereferenced
+	protected SortedVector<CreatureObject> bountyLockList;
+	
 	@weakReference
 	protected BuildingObject declaredResidence;
 	
@@ -1230,4 +1233,22 @@ class PlayerObject extends IntangibleObject {
 		starterProfession = profession;
 	}
 
+	public void addToBountyLockList(CreatureObject player) {
+		bountyLockList.put(player);
+	}
+	
+	public boolean isInBountyLockList(CreatureObject player) {
+		return bountyLockList.contains(player);
+	}
+	
+	public void removeFromBountyLockList(CreatureObject player) {
+		if (bountyLockList.contains(player)) {
+			bountyLockList.drop(player);
+		}
+	}
+	
+	public boolean isBountyLocked()
+	{
+		return bountyLockList.size() > 0;
+	}
 }

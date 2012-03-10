@@ -139,4 +139,7 @@ class BountyMissionObjective extends MissionObjective {
 	public native void cancelAllTasks();
 	
 	public native string getTargetZoneName();
+	
+	public native void addToBountyLock();
+	public native void removeFromBountyLock();
 }

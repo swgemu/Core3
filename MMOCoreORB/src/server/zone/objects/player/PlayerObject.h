@@ -754,6 +754,14 @@ public:
 
 	void setStarterProfession(String& profession);
 
+	void addToBountyLockList(CreatureObject* player);
+
+	bool isInBountyLockList(CreatureObject* player);
+
+	void removeFromBountyLockList(CreatureObject* player);
+
+	bool isBountyLocked();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -861,6 +869,8 @@ protected:
 	TradeContainer tradeContainer;
 
 	SortedVector<ManagedReference<CreatureObject* > > duelList;
+
+	SortedVector<ManagedReference<CreatureObject* > > bountyLockList;
 
 	ManagedWeakReference<BuildingObject* > declaredResidence;
 
@@ -1373,6 +1383,14 @@ public:
 
 	void setStarterProfession(String& profession);
 
+	void addToBountyLockList(CreatureObject* player);
+
+	bool isInBountyLockList(CreatureObject* player);
+
+	void removeFromBountyLockList(CreatureObject* player);
+
+	bool isBountyLocked();
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1771,6 +1789,14 @@ public:
 	String getStarterProfession();
 
 	void setStarterProfession(String& profession);
+
+	void addToBountyLockList(CreatureObject* player);
+
+	bool isInBountyLockList(CreatureObject* player);
+
+	void removeFromBountyLockList(CreatureObject* player);
+
+	bool isBountyLocked();
 
 protected:
 	String _param0_addExperience__String_int_bool_;

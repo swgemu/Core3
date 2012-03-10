@@ -22,7 +22,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__,RPC_ADDTOBOUNTYLOCK__,RPC_REMOVEFROMBOUNTYLOCK__};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -262,6 +262,32 @@ String BountyMissionObjective::getTargetZoneName() {
 		return _return_getTargetZoneName;
 	} else
 		return _implementation->getTargetZoneName();
+}
+
+void BountyMissionObjective::addToBountyLock() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDTOBOUNTYLOCK__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addToBountyLock();
+}
+
+void BountyMissionObjective::removeFromBountyLock() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEFROMBOUNTYLOCK__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeFromBountyLock();
 }
 
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
@@ -575,6 +601,12 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_GETTARGETZONENAME__:
 		resp->insertAscii(getTargetZoneName());
 		break;
+	case RPC_ADDTOBOUNTYLOCK__:
+		addToBountyLock();
+		break;
+	case RPC_REMOVEFROMBOUNTYLOCK__:
+		removeFromBountyLock();
+		break;
 	default:
 		return NULL;
 	}
@@ -644,6 +676,14 @@ void BountyMissionObjectiveAdapter::cancelAllTasks() {
 
 String BountyMissionObjectiveAdapter::getTargetZoneName() {
 	return (static_cast<BountyMissionObjective*>(stub))->getTargetZoneName();
+}
+
+void BountyMissionObjectiveAdapter::addToBountyLock() {
+	(static_cast<BountyMissionObjective*>(stub))->addToBountyLock();
+}
+
+void BountyMissionObjectiveAdapter::removeFromBountyLock() {
+	(static_cast<BountyMissionObjective*>(stub))->removeFromBountyLock();
 }
 
 /*

@@ -176,6 +176,10 @@ public:
 
 	String getTargetZoneName();
 
+	void addToBountyLock();
+
+	void removeFromBountyLock();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -267,6 +271,10 @@ public:
 
 	String getTargetZoneName();
 
+	void addToBountyLock();
+
+	void removeFromBountyLock();
+
 	WeakReference<BountyMissionObjective*> _this;
 
 	operator const BountyMissionObjective*();
@@ -339,6 +347,10 @@ public:
 	void cancelAllTasks();
 
 	String getTargetZoneName();
+
+	void addToBountyLock();
+
+	void removeFromBountyLock();
 
 protected:
 	String _param0_spawnTarget__String_;
