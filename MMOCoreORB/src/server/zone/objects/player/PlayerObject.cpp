@@ -3746,6 +3746,8 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 	(&persistentMessages)->setNoDuplicateInsertPlan();
 	// server/zone/objects/player/PlayerObject.idl():  		consentList.setNoDuplicateInsertPlan();
 	(&consentList)->setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerObject.idl():  		bountyLockList.setNoDuplicateInsertPlan();
+	(&bountyLockList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/player/PlayerObject.idl():  		accountID = 0;
 	accountID = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		teachingOrLearning = false;
@@ -4575,11 +4577,8 @@ bool PlayerObjectImplementation::isInBountyLockList(CreatureObject* player) {
 }
 
 void PlayerObjectImplementation::removeFromBountyLockList(CreatureObject* player) {
-	// server/zone/objects/player/PlayerObject.idl():  	}
-	if ((&bountyLockList)->contains(player)){
-	// server/zone/objects/player/PlayerObject.idl():  			bountyLockList.drop(player);
+	// server/zone/objects/player/PlayerObject.idl():  		bountyLockList.drop(player);
 	(&bountyLockList)->drop(player);
-}
 }
 
 bool PlayerObjectImplementation::isBountyLocked() {

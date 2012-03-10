@@ -276,6 +276,7 @@ class PlayerObject extends IntangibleObject {
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
+		bountyLockList.setNoDuplicateInsertPlan();
 
 		accountID = 0;		
 		
@@ -1242,13 +1243,10 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public void removeFromBountyLockList(CreatureObject player) {
-		if (bountyLockList.contains(player)) {
-			bountyLockList.drop(player);
-		}
+		bountyLockList.drop(player);
 	}
 	
-	public boolean isBountyLocked()
-	{
+	public boolean isBountyLocked() {
 		return bountyLockList.size() > 0;
 	}
 }
