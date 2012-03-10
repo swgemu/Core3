@@ -207,10 +207,17 @@ void CreatureObjectImplementation::loadTemplateData(
 	slopeModPercent = creoData->getSlopeModPercent();
 	slopeModAngle = creoData->getSlopeModAngle();
 	swimHeight = creoData->getSwimHeight();
+
 	if (creoData->getMaxScale() == 0)
 		height = creoData->getMinScale();
 	else
 		height = creoData->getMaxScale();
+
+	if (height <= SMALL_NUM)
+		height = 1.0;
+
+	//info("loaded with height: " + String::valueOf(height), true);
+
 	level = creoData->getLevel();
 
 	encumbrances.removeAll();

@@ -20,6 +20,7 @@
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "QueueCommand.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 
 class CombatQueueCommand : public QueueCommand {
 protected:

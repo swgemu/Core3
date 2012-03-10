@@ -57,6 +57,7 @@ which carries forward this exception.
 
 int main(int argc, char* argv[]) {
 	try {
+
 		SortedVector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
 			arguments.put(argv[i]);
