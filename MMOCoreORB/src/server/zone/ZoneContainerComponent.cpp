@@ -16,6 +16,9 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	if (newZone == NULL)
 		return false;
 
+	if (!activeArea->isDeplyoed())
+		activeArea->deploy();
+
 	Zone* zone = activeArea->getZone();
 
 	ManagedReference<SceneObject*> thisLocker = activeArea;

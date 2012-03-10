@@ -499,7 +499,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 			waypoint = cast<WaypointObject*>( server->createObject(0xc456e788, 1));
 
 		// Update new waypoint
-		waypoint->setCustomName(UnicodeString("Resource Survey"));
+		waypoint->setCustomObjectName(UnicodeString("Resource Survey"), false);
 		waypoint->setPlanetCRC(player->getZone()->getZoneCRC());
 		waypoint->setPosition(maxX, 0, maxY);
 		waypoint->setColor(WaypointObject::COLOR_BLUE);

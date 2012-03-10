@@ -69,7 +69,7 @@ void WaypointChatParameter::set(WaypointObject* obj) {
 	color = obj->getColor();
 	active = obj->isActive();
 	planetCRC = obj->getPlanetCRC();
-	waypointName = obj->getCustomName();
+	waypointName = obj->getCustomObjectName();
 	unknownInt = 0;
 }
 

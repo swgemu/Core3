@@ -86,10 +86,6 @@ public:
 
 	unsigned int getPlanetCRC();
 
-	void setCustomName(const UnicodeString& name);
-
-	UnicodeString getCustomName();
-
 	void setColor(byte newColor);
 
 	void setActive(byte newStatus);
@@ -121,8 +117,6 @@ protected:
 
 	String _return_getDetailedDescription;
 
-	UnicodeString _return_getCustomName;
-
 	friend class WaypointObjectHelper;
 };
 
@@ -145,8 +139,6 @@ protected:
 	unsigned long long unknown;
 
 	unsigned int planetCRC;
-
-	UnicodeString customName;
 
 	String detailedDescription;
 
@@ -194,10 +186,6 @@ public:
 	void setPlanetCRC(unsigned int crc);
 
 	unsigned int getPlanetCRC();
-
-	void setCustomName(const UnicodeString& name);
-
-	UnicodeString getCustomName();
 
 	void setColor(byte newColor);
 
@@ -268,10 +256,6 @@ public:
 
 	unsigned int getPlanetCRC();
 
-	void setCustomName(const UnicodeString& name);
-
-	UnicodeString getCustomName();
-
 	void setColor(byte newColor);
 
 	void setActive(byte newStatus);
@@ -293,7 +277,6 @@ public:
 	void setDetailedDescription(const String& desc);
 
 protected:
-	UnicodeString _param0_setCustomName__UnicodeString_;
 	String _param0_setDetailedDescription__String_;
 };
 

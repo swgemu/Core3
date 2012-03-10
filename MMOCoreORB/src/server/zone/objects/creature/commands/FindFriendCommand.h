@@ -119,7 +119,7 @@ public:
 		ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
 		obj->setPlanetCRC(planet.hashCode());
 		obj->setPosition(x, z, y);
-		obj->setCustomName(name);
+		obj->setCustomObjectName(name, false);
 		obj->setSpecialTypeID(WaypointObject::SPECIALTYPE_FINDFRIEND);
 		obj->setActive(true);
 

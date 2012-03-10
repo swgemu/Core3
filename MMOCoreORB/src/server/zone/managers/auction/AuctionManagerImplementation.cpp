@@ -217,7 +217,7 @@ void AuctionManagerImplementation::checkAuctions() {
 					waypoint->setPlanetCRC(vendorRef->getPlanetCRC());
 					waypoint->setPosition(waypointX, 0, waypointY);
 
-					waypoint->setCustomName(vendorRef->getDisplayedName());
+					waypoint->setCustomObjectName(vendorRef->getDisplayedName(), false);
 
 					StringIdChatParameter body2("@auction:buyer_success");
 					body2.setTO(item->getItemName());
@@ -459,7 +459,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	waypoint->setPlanetCRC(vendorRef->getPlanetCRC());
 	waypoint->setPosition(waypointX, 0, waypointY);
 
-	waypoint->setCustomName(vendorRef->getDisplayedName());
+	waypoint->setCustomObjectName(vendorRef->getDisplayedName(), false);
 
 	if (!item->isOnBazaar()) {
 		//Setup the mail to the vendor owner

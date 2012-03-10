@@ -111,7 +111,7 @@ public:
 			uint64& key = getKeyAt(i);
 			ManagedReference<WaypointObject*> value = getValueAt(i);
 
-			if (name == value->getCustomName().toString())
+			if (name == value->getCustomObjectName().toString())
 				return key;
 		}
 

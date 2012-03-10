@@ -92,7 +92,7 @@ public:
 			ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
 			obj->setPlanetCRC(planet.hashCode());
 			obj->setPosition(x, z, y);
-			obj->setCustomName(name);
+			obj->setCustomObjectName(name, false);
 			obj->setActive(true);
 
 			playerObject->addWaypoint(obj, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?

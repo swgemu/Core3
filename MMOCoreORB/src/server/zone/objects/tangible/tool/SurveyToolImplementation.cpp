@@ -444,7 +444,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(CreatureObject* player, int v
 	}
 
 	// Update new waypoint
-	newwaypoint->setCustomName(UnicodeString("Resource Survey"));
+	newwaypoint->setCustomObjectName(UnicodeString("Resource Survey"), false);
 	newwaypoint->setPlanetCRC(player->getZone()->getZoneCRC());
 	newwaypoint->setPosition(richSampleLocation->getPositionX(), 0, richSampleLocation->getPositionY());
 	newwaypoint->setColor(WaypointObject::COLOR_BLUE);

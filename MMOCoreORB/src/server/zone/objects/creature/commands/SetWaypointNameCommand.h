@@ -88,7 +88,7 @@ public:
 		if (waypoint->getSpecialTypeID() != 0)
 			waypoint->setSpecialTypeID(0);
 
-		waypoint->setCustomName(arguments);
+		waypoint->setCustomObjectName(arguments, false);
 		waypoint->toggleStatus();
 
 		ghost->setWaypoint(waypoint, true);

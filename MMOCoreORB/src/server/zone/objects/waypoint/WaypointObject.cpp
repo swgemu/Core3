@@ -12,7 +12,7 @@
  *	WaypointObjectStub
  */
 
-enum {RPC_SETCELLID__INT_,RPC_SETPLANETCRC__INT_,RPC_GETPLANETCRC__,RPC_SETCUSTOMNAME__UNICODESTRING_,RPC_GETCUSTOMNAME__,RPC_SETCOLOR__BYTE_,RPC_SETACTIVE__BYTE_,RPC_SETUNKNOWN__LONG_,RPC_SETSPECIALTYPEID__INT_,RPC_GETSPECIALTYPEID__,RPC_TOGGLESTATUS__,RPC_ISACTIVE__,RPC_GETCOLOR__,RPC_GETDETAILEDDESCRIPTION__,RPC_SETDETAILEDDESCRIPTION__STRING_};
+enum {RPC_SETCELLID__INT_,RPC_SETPLANETCRC__INT_,RPC_GETPLANETCRC__,RPC_SETCOLOR__BYTE_,RPC_SETACTIVE__BYTE_,RPC_SETUNKNOWN__LONG_,RPC_SETSPECIALTYPEID__INT_,RPC_GETSPECIALTYPEID__,RPC_TOGGLESTATUS__,RPC_ISACTIVE__,RPC_GETCOLOR__,RPC_GETDETAILEDDESCRIPTION__,RPC_SETDETAILEDDESCRIPTION__STRING_};
 
 WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	WaypointObjectImplementation* _implementation = new WaypointObjectImplementation();
@@ -85,34 +85,6 @@ unsigned int WaypointObject::getPlanetCRC() {
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getPlanetCRC();
-}
-
-void WaypointObject::setCustomName(const UnicodeString& name) {
-	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETCUSTOMNAME__UNICODESTRING_);
-		method.addUnicodeParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setCustomName(name);
-}
-
-UnicodeString WaypointObject::getCustomName() {
-	WaypointObjectImplementation* _implementation = static_cast<WaypointObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCUSTOMNAME__);
-
-		method.executeWithUnicodeReturn(_return_getCustomName);
-		return _return_getCustomName;
-	} else
-		return _implementation->getCustomName();
 }
 
 void WaypointObject::setColor(byte newColor) {
@@ -371,11 +343,6 @@ bool WaypointObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "customName") {
-		TypeInfo<UnicodeString >::parseFromBinaryStream(&customName, stream);
-		return true;
-	}
-
 	if (_name == "detailedDescription") {
 		TypeInfo<String >::parseFromBinaryStream(&detailedDescription, stream);
 		return true;
@@ -435,14 +402,6 @@ int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "customName";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<UnicodeString >::toBinaryStream(&customName, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "detailedDescription";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -476,7 +435,7 @@ int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 7 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 WaypointObjectImplementation::WaypointObjectImplementation() {
@@ -498,16 +457,6 @@ void WaypointObjectImplementation::setPlanetCRC(unsigned int crc) {
 unsigned int WaypointObjectImplementation::getPlanetCRC() {
 	// server/zone/objects/waypoint/WaypointObject.idl():  		return planetCRC;
 	return planetCRC;
-}
-
-void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
-	// server/zone/objects/waypoint/WaypointObject.idl():  		customName = name;
-	customName = name;
-}
-
-UnicodeString WaypointObjectImplementation::getCustomName() {
-	// server/zone/objects/waypoint/WaypointObject.idl():  		return customName;
-	return customName;
 }
 
 void WaypointObjectImplementation::setColor(byte newColor) {
@@ -575,12 +524,6 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETPLANETCRC__:
 		resp->insertInt(getPlanetCRC());
 		break;
-	case RPC_SETCUSTOMNAME__UNICODESTRING_:
-		setCustomName(inv->getUnicodeParameter(_param0_setCustomName__UnicodeString_));
-		break;
-	case RPC_GETCUSTOMNAME__:
-		resp->insertUnicode(getCustomName());
-		break;
 	case RPC_SETCOLOR__BYTE_:
 		setColor(inv->getByteParameter());
 		break;
@@ -628,14 +571,6 @@ void WaypointObjectAdapter::setPlanetCRC(unsigned int crc) {
 
 unsigned int WaypointObjectAdapter::getPlanetCRC() {
 	return (static_cast<WaypointObject*>(stub))->getPlanetCRC();
-}
-
-void WaypointObjectAdapter::setCustomName(const UnicodeString& name) {
-	(static_cast<WaypointObject*>(stub))->setCustomName(name);
-}
-
-UnicodeString WaypointObjectAdapter::getCustomName() {
-	return (static_cast<WaypointObject*>(stub))->getCustomName();
 }
 
 void WaypointObjectAdapter::setColor(byte newColor) {

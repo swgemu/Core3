@@ -13,8 +13,6 @@ class WaypointObject extends IntangibleObject {
 
 	protected unsigned long unknown;//? cell object id maybe
 	protected unsigned int planetCRC;
-
-	protected unicode customName;
 	
 	protected string detailedDescription;
 
@@ -58,15 +56,7 @@ class WaypointObject extends IntangibleObject {
 	public unsigned int getPlanetCRC() {
 		return planetCRC;
 	}
-	
-	public void setCustomName(final unicode name) {
-		customName = name;
-	}
-	
-	public unicode getCustomName() {
-		return customName;
-	}
-	
+		
 	public void setColor(byte newColor) {
 		color = newColor;
 	}

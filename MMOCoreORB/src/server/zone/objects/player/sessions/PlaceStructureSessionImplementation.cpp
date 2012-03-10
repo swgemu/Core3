@@ -86,7 +86,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 		//Create Waypoint
 		ManagedReference<WaypointObject*> waypointObject = cast<WaypointObject*>( zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1));
-		waypointObject->setCustomName(structureObject->getDisplayedName());
+		waypointObject->setCustomObjectName(structureObject->getDisplayedName(), false);
 		waypointObject->setActive(true);
 		waypointObject->setPosition(positionX, 0, positionY);
 		waypointObject->setPlanetCRC(zone->getZoneCRC());

@@ -74,7 +74,7 @@ void FindSessionImplementation::addWaypoint(float x, float y, const String& name
 
 	wpt->setPlanetCRC(planet.hashCode());
 	wpt->setPosition(x, 0, y);
-	wpt->setCustomName(name);
+	wpt->setCustomObjectName(name, false);
 	wpt->setActive(true);
 	wpt->setSpecialTypeID(WaypointObject::SPECIALTYPE_FIND);
 	msg.setStringId("@base_player:prose_find_set"); // An active waypoint has be set to the nearest '%TO'.

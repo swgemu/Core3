@@ -557,7 +557,7 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool chec
 		doRemove = true;
 
 	if (!doRemove && checkName) {
-		String name = waypoint->getCustomName().toString();
+		String name = waypoint->getCustomObjectName().toString();
 		waypointID = waypointList.find(name);
 
 		if(waypointID != 0)

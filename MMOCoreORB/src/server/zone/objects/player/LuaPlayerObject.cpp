@@ -115,7 +115,7 @@ int LuaPlayerObject::addWaypoint(lua_State* L) {
 	bool notifyClient = lua_toboolean(L, -1);
 
 	ManagedReference<WaypointObject*> waypoint = realObject->addWaypoint(planet, x, y, false);
-	waypoint->setCustomName(customName);
+	waypoint->setCustomObjectName(customName, false);
 	waypoint->setColor(color);
 	waypoint->setActive(active);
 
