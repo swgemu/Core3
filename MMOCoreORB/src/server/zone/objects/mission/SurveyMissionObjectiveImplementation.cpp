@@ -22,16 +22,14 @@ void SurveyMissionObjectiveImplementation::activate() {
 		return;
 	}
 
-	if(mission != NULL) {
-		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
-		if (player != NULL) {
-			ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-			ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	if (player != NULL) {
+		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
+		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
 
-			player->registerObserver(ObserverEventType::SURVEY, observer);
+		player->registerObserver(ObserverEventType::SURVEY, observer);
 
-			observers.put(observer);
-		}
+		observers.put(observer);
 	}
 }
 
@@ -43,16 +41,12 @@ void SurveyMissionObjectiveImplementation::abort() {
 
 	ManagedReference<MissionObserver*> observer = observers.get(0);
 
-	if (mission != NULL) {
-
-		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
-
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	if (player != NULL) {
 		player->dropObserver(ObserverEventType::SURVEY, observer);
+		observer->destroyObjectFromDatabase();
+		observers.drop(observer);
 	}
-
-	observer->destroyObjectFromDatabase();
-
-	observers.drop(observer);
 }
 
 void SurveyMissionObjectiveImplementation::complete() {
@@ -62,26 +56,34 @@ void SurveyMissionObjectiveImplementation::complete() {
 
 int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::SURVEY) {
-		CreatureObject* player = cast<CreatureObject*>( mission->getParentRecursively(SceneObjectType::PLAYERCREATURE));
+		ManagedReference<CreatureObject*> player = getPlayerOwner();
+		if (player == NULL) {
+			return 0;
+		}
+
 		ResourceSpawn* sampledSpawn = cast<ResourceSpawn*>( arg1);
 
 		int sampledDensity = (int)arg2;
 		if (sampledSpawn->getFamilyName() == spawnFamily && (sampledDensity >= efficiency)) {
-
-			if (!player->isInRange(missionGiver, 1024)) {
+			Vector3 startPosition;
+			startPosition.setX(mission->getStartPositionX());
+			startPosition.setY(mission->getStartPositionY());
+			float distance = startPosition.distanceTo(player->getWorldPosition());
+			if (distance > 1024.0f) {
 				complete();
 
 				return 1;
 			} else {
 				StringIdChatParameter stringId("mission/mission_generic", "survey_too_close");
 				stringId.setDI(1024);
-				stringId.setDF(player->getDistanceTo(missionGiver));
+				stringId.setDF(distance);
 				player->sendSystemMessage(stringId);
 
 				return 0;
 			}
-		} else
+		} else {
 			return 0;
+		}
 	}
 
 	observer->destroyObjectFromDatabase();

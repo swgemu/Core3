@@ -56,7 +56,6 @@ import engine.core.ManagedObject;
 class SurveyMissionObjective extends MissionObjective {
 	protected string spawnFamily;
 	protected unsigned int efficiency;
-	protected SceneObject missionGiver;
 	
 	public SurveyMissionObjective(MissionObject mission) {
 		super(mission);
@@ -86,10 +85,6 @@ class SurveyMissionObjective extends MissionObjective {
 	
 	public void setSpawnFamily(string spf) {
 		spawnFamily = spf;
-	}
-	
-	public void setMissionGiver(SceneObject object) {
-		missionGiver = object;
 	}
 	
 	public void setEfficiency(unsigned int eff) {

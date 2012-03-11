@@ -272,7 +272,6 @@ void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* 
 	String spawnName = mission->getTargetName();
 
 	objective->setSpawnFamily(spawnName);
-	objective->setMissionGiver(missionTerminal);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 

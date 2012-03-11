@@ -96,8 +96,6 @@ public:
 
 	void setSpawnFamily(String& spf);
 
-	void setMissionGiver(SceneObject* object);
-
 	void setEfficiency(unsigned int eff);
 
 	DistributedObjectServant* _getImplementation();
@@ -130,8 +128,6 @@ protected:
 
 	unsigned int efficiency;
 
-	ManagedReference<SceneObject* > missionGiver;
-
 public:
 	SurveyMissionObjectiveImplementation(MissionObject* mission);
 
@@ -150,8 +146,6 @@ public:
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setSpawnFamily(String& spf);
-
-	void setMissionGiver(SceneObject* object);
 
 	void setEfficiency(unsigned int eff);
 
@@ -209,8 +203,6 @@ public:
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setSpawnFamily(String& spf);
-
-	void setMissionGiver(SceneObject* object);
 
 	void setEfficiency(unsigned int eff);
 
