@@ -206,9 +206,7 @@ class PlayerObject extends IntangibleObject {
 	protected int onlineStatus;
 	
 	protected int skillPoints; //TODO: This could be encapsulated in the skill list.
-	
-	protected transient boolean teachingOrLearning; //TODO: Replace with a session.
-	
+		
 	protected int pvpRating;
 
 	protected int factionStatus;
@@ -280,8 +278,6 @@ class PlayerObject extends IntangibleObject {
 
 		accountID = 0;		
 		
-		teachingOrLearning = false;
-
 		invisible = false;
 		
 		factionStatus = 0;

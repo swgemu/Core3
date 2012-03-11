@@ -1015,6 +1015,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					&& !items->get(i)->isOnBazaar() && !items->get(i)->isOfferToVendor())
 				reply->addItemToList(items->get(i));
 		}
+		//TODO: intented no break; ?
 	case 9: // Offers to vendor (not the Owner)
 		for (int i = 0; i < items->size(); i++) {
 			AuctionItem* item = items->get(i);

@@ -791,18 +791,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return 0;
 	}
 	
-	/*public boolean hasNotifiedSentObject(SceneObject object) {
-		return notifiedSentObjects.contains(object);
-	}
-	
-	public int addNotifiedSentObject(SceneObject object) {
-		return notifiedSentObjects.put(object);
-	}
-	
-	public void removeNotifiedSentObject(SceneObject object) {
-		notifiedSentObjects.drop(object);
-	}*/
-	
 	public void addActiveArea(ActiveArea area) {
 		activeAreas.put(area);
 	}

@@ -3750,8 +3750,6 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 	(&bountyLockList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/player/PlayerObject.idl():  		accountID = 0;
 	accountID = 0;
-	// server/zone/objects/player/PlayerObject.idl():  		teachingOrLearning = false;
-	teachingOrLearning = false;
 	// server/zone/objects/player/PlayerObject.idl():  		invisible = false;
 	invisible = false;
 	// server/zone/objects/player/PlayerObject.idl():  		factionStatus = 0;

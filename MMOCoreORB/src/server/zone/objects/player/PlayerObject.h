@@ -902,8 +902,6 @@ protected:
 
 	int skillPoints;
 
-	bool teachingOrLearning;
-
 	int pvpRating;
 
 	int factionStatus;
