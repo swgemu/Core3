@@ -36,6 +36,7 @@ void WorldSnapshotIff::readObject(IffStream* iffStream) {
 	case '0000':
 	default:
 		System::out << "ERROR: Unhandled WorldSnapshotIff version: " << version << endl;
+		break;
 	}
 
 	Chunk* otnl = iffStream->openChunk('OTNL');

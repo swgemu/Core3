@@ -1330,3 +1330,8 @@ String SceneObjectImplementation::getDisplayedName() {
 
 	return objectName.getFullPath();
 }
+
+bool SceneObjectImplementation::setTransformForCollisionMatrixIfNull(Matrix4* mat) {
+	// server/zone/objects/scene/SceneObject.idl():  		transformForCollisionMatrix.compareAndSet(null, mat);
+	return transformForCollisionMatrix.compareAndSet(NULL, mat);
+}

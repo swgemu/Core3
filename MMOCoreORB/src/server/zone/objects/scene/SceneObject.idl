@@ -1645,11 +1645,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@local
-	public void setTransformForCollisionMatrix(Matrix4 mat) {
-		transformForCollisionMatrix = mat;
-	}
+	public native boolean setTransformForCollisionMatrixIfNull(Matrix4 mat);
 	
-
 	@local
 	public Vector<AiInterfaceComponent> getAiInterfaceComponents() {
 		return aiInterfaceComponents;

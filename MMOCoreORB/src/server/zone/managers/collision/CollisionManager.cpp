@@ -362,7 +362,7 @@ Reference<Matrix4*> CollisionManager::getTransformMatrix(SceneObject* model) {
 		//Matrix4 modelMatrix;
 		modelMatrix = new Matrix4(translationMatrix * rotateMatrix);
 
-		model->setTransformForCollisionMatrix(modelMatrix);
+		model->setTransformForCollisionMatrixIfNull(modelMatrix);
 	}
 
 	return modelMatrix;

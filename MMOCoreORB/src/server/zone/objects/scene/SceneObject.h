@@ -746,7 +746,7 @@ public:
 
 	Matrix4* getTransformForCollisionMatrix();
 
-	void setTransformForCollisionMatrix(Matrix4* mat);
+	bool setTransformForCollisionMatrixIfNull(Matrix4* mat);
 
 	Vector<AiInterfaceComponent*>* getAiInterfaceComponents();
 
@@ -1353,7 +1353,7 @@ public:
 
 	Matrix4* getTransformForCollisionMatrix();
 
-	void setTransformForCollisionMatrix(Matrix4* mat);
+	bool setTransformForCollisionMatrixIfNull(Matrix4* mat);
 
 	Vector<AiInterfaceComponent*>* getAiInterfaceComponents();
 

@@ -3190,13 +3190,13 @@ Matrix4* SceneObject::getTransformForCollisionMatrix() {
 		return _implementation->getTransformForCollisionMatrix();
 }
 
-void SceneObject::setTransformForCollisionMatrix(Matrix4* mat) {
+bool SceneObject::setTransformForCollisionMatrixIfNull(Matrix4* mat) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->setTransformForCollisionMatrix(mat);
+		return _implementation->setTransformForCollisionMatrixIfNull(mat);
 }
 
 Vector<AiInterfaceComponent*>* SceneObject::getAiInterfaceComponents() {
@@ -4584,11 +4584,6 @@ SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {
 Matrix4* SceneObjectImplementation::getTransformForCollisionMatrix() {
 	// server/zone/objects/scene/SceneObject.idl():  		return transformForCollisionMatrix;
 	return transformForCollisionMatrix;
-}
-
-void SceneObjectImplementation::setTransformForCollisionMatrix(Matrix4* mat) {
-	// server/zone/objects/scene/SceneObject.idl():  		transformForCollisionMatrix = mat;
-	transformForCollisionMatrix = mat;
 }
 
 Vector<AiInterfaceComponent*>* SceneObjectImplementation::getAiInterfaceComponents() {
