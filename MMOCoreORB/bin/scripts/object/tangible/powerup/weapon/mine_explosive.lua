@@ -43,6 +43,23 @@
 
 object_tangible_powerup_weapon_mine_explosive = object_tangible_powerup_weapon_shared_mine_explosive:new {
 
+	templateType = POWERUP,
+
+	pupType = "Mine",
+
+	baseName = "Mine Powerup",
+
+	primary = {
+		{"damageRadius", "Concussion", "cat_pup.pup_wpn_damage_radius"}, 
+		{"maxDamage", "Clustered", "cat_pup.pup_wpn_damage_max"}, 
+  		{"minDamage", "Directional", "cat_pup.pup_wpn_damage_min"},
+	},
+
+	secondary = {
+		{"woundsRatio", "Bomblet-Generating", "cat_pup.pup_wpn_wound_chance"}
+	},
+
+	factoryCrateSize = 10,
 
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},

@@ -43,6 +43,27 @@
 
 object_tangible_powerup_weapon_melee_generic = object_tangible_powerup_weapon_shared_melee_generic:new {
 
+	templateType = POWERUP,
+
+	pupType = "Melee",
+
+	baseName = "Melee Powerup",
+
+	primary = {
+		{"idealRange", "Ideal Range", "cat_pup.pup_wpn_range_mid"}, 
+		{"healthAttackCost", "Balancing", "cat_pup.pup_wpn_attack_cost_health"}, 
+  		{"mindAttackCost", "Compensating", "cat_pup.pup_wpn_attack_cost_mind"},
+		{"pointBlankAccuracy", "Precision", "cat_pup.pup_wpn_range_attack_mod_zero"}
+	},
+
+	secondary = {
+		{"idealAccuracy", "Accuracy", "cat_pup.pup_wpn_range_attack_mod_mid"}, 
+		{"attackSpeed", "Control Enhancement", "cat_pup.pup_wpn_attack_speed"}, 
+		{"woundsRatio", "Wounding", "cat_pup.pup_wpn_wound_chance"}, 
+		{"maxDamage", "Refining", "cat_pup.pup_wpn_damage_max"}
+	},
+
+	factoryCrateSize = 10,
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

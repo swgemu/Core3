@@ -13,6 +13,7 @@
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "server/zone/objects/player/sessions/SlicingSession.h"
@@ -65,7 +66,7 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	woundsRatio = weaponTemplate->getWoundsRatio();
 
-	area = weaponTemplate->getArea();
+	damageRadius = weaponTemplate->getArea();
 
 	float templateAttackSpeed = weaponTemplate->getAttackSpeed();
 
@@ -80,31 +81,6 @@ void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* weao3 = new WeaponObjectMessage3(_this);
 	player->sendMessage(weao3);
-}
-
-int WeaponObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 69) {
-		if (isSliced()) {
-			player->sendSystemMessage("@slicing/slicing:already_sliced");
-			return 0;
-		}
-
-		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
-		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
-
-		if (session != NULL) {
-			player->sendSystemMessage("@slicing/slicing:already_slicing");
-			return 0;
-		}
-
-		//Create Session
-		session = new SlicingSession(player);
-		session->initalizeSlicingMenu(player, _this);
-
-		return 0;
-
-	} else
-		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -164,8 +140,8 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	alm->insertAttribute("wpn_attack_speed", spdtxt.toString());
 
-	/*if (area != 0.0f)
-		alm->insertAttribute("area", Math::getPrecision(area, 0));*/
+	if (getDamageRadius() != 0.0f)
+		alm->insertAttribute("area", Math::getPrecision(getDamageRadius(), 0));
 
 	//Damage Information
 	StringBuffer dmgtxt;
@@ -264,10 +240,12 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		alm->insertAttribute("serial_number", objectSerial);
 	}
 
+	if(hasPowerup())
+		powerupObject->fillAttributeList(alm, object);
+
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
 
-	//generatePowerup(alm);
 }
 
 void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -354,4 +332,19 @@ bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
 	}
 
 	return true;
+}
+
+void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
+	if (hasPowerup()) {
+		powerupObject->decreaseUses();
+		sendAttributeListTo(player);
+		if (powerupObject->getUses() < 1) {
+			StringIdChatParameter message("powerup", "prose_pup_expire"); //The powerup on your %TT has expired.
+			message.setTT(getDisplayedName());
+
+			player->sendSystemMessage(message);
+
+			powerupObject = NULL;
+		}
+	}
 }

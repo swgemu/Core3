@@ -704,6 +704,13 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	if (crate == NULL)
 		return NULL;
 
+	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+
+	if (tanoData == NULL)
+		return NULL;
+
+	crate->setMaxCapacity(tanoData->getFactoryCrateSize());
+
 	if (insertSelf) {
 		crate->transferObject(_this, -1, true);
 	} else {

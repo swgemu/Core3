@@ -73,6 +73,7 @@
 #include "server/zone/templates/tangible/VendorCreatureTemplate.h"
 #include "server/zone/templates/tangible/ContainerTemplate.h"
 #include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
+#include "server/zone/templates/tangible/PowerupTemplate.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -392,6 +393,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<CampStructureTemplate>(SharedObjectTemplate::CAMPSTRUCTURE);
 	templateFactory.registerObject<TrapTemplate>(SharedObjectTemplate::TRAP);
 	templateFactory.registerObject<CamoKitTemplate>(SharedObjectTemplate::CAMOKIT);
+	templateFactory.registerObject<PowerupTemplate>(SharedObjectTemplate::POWERUP);
 }
 
 void TemplateManager::registerFunctions() {
@@ -519,6 +521,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("RECREATIONBUILDING", SharedObjectTemplate::RECREATIONBUILDING);
 	luaTemplatesInstance->setGlobalInt("TRAP", SharedObjectTemplate::TRAP);
 	luaTemplatesInstance->setGlobalInt("CAMOKIT", SharedObjectTemplate::CAMOKIT);
+	luaTemplatesInstance->setGlobalInt("POWERUP", SharedObjectTemplate::POWERUP);
 
 }
 

@@ -46,6 +46,8 @@ which carries forward this exception.
 #define APPLYPOWERUPCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/powerup/PowerupObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 class ApplyPowerupCommand : public QueueCommand {
 public:
@@ -63,7 +65,51 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		StringTokenizer args(arguments.toString());
+
+		ManagedReference<PowerupObject*> pup = cast<PowerupObject*>(server->getZoneServer()->getObject(target));
+
+		if (pup == NULL)
+			return GENERALERROR;
+
+		if (!args.hasMoreTokens())
+			return GENERALERROR;
+
+		uint64 targetObjectID = args.getLongToken();
+
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(server->getZoneServer()->getObject(targetObjectID));
+
+		if (weapon == NULL)
+			return GENERALERROR;
+
+		if((weapon->isRangedWeapon() && pup->isRanged()) ||
+				(weapon->isMeleeWeapon() && pup->isMelee()) ||
+				(weapon->isThrownWeapon() && pup->isThrown()) ||
+				(weapon->isMineWeapon() && pup->isMine())) {
+
+			if(!weapon->hasPowerup()) {
+
+				weapon->applyPowerup(creature, pup);
+
+				StringIdChatParameter message("powerup", "prose_pup_apply"); //You powerup your %TT with %TU.
+				message.setTT(weapon->getDisplayedName());
+				message.setTU(pup->getDisplayedName());
+
+				creature->sendSystemMessage(message);
+
+			} else {
+
+				StringIdChatParameter message("powerup", "prose_already_powered"); //Your %TT already has a powerup.
+				message.setTT(weapon->getDisplayedName());
+
+				creature->sendSystemMessage(message);
+
+			}
+
+			return SUCCESS;
+		}
+
+		return GENERALERROR;
 	}
 
 };

@@ -214,7 +214,6 @@ public:
 	const static int RIFLE = 0x2000C;
 
 	// Not in client **************
-	const static int GRENADE = 0x2000E;
 	const static int LIGHTNINGRIFLE = 0x2000F;
 	// End Not in client *************
 

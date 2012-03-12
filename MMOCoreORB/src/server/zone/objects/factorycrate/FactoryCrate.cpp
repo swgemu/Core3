@@ -20,7 +20,7 @@
  *	FactoryCrateStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETSERIALNUMBER__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORYCRATE__,RPC_GETMAXCAPACITY__,RPC_SETMAXCAPACITY__INT_,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETSERIALNUMBER__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
 
 FactoryCrate::FactoryCrate() : TangibleObject(DummyConstructorParameter::instance()) {
 	FactoryCrateImplementation* _implementation = new FactoryCrateImplementation();
@@ -116,6 +116,33 @@ bool FactoryCrate::isFactoryCrate() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isFactoryCrate();
+}
+
+int FactoryCrate::getMaxCapacity() {
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMAXCAPACITY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getMaxCapacity();
+}
+
+void FactoryCrate::setMaxCapacity(int value) {
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMAXCAPACITY__INT_);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMaxCapacity(value);
 }
 
 void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
@@ -320,6 +347,11 @@ bool FactoryCrateImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "maxCapacity") {
+		TypeInfo<int >::parseFromBinaryStream(&maxCapacity, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -335,14 +367,24 @@ int FactoryCrateImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "maxCapacity";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxCapacity, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + TangibleObjectImplementation::writeObjectMembers(stream);
+
+	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 FactoryCrateImplementation::FactoryCrateImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		Logger.setLoggingName("FactoryCrate");
 	Logger::setLoggingName("FactoryCrate");
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		maxCapacity = 100;
+	maxCapacity = 100;
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerInheritPermissionsFromParent(false);
 	TangibleObjectImplementation::setContainerInheritPermissionsFromParent(false);
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
@@ -356,6 +398,16 @@ FactoryCrateImplementation::FactoryCrateImplementation() {
 bool FactoryCrateImplementation::isFactoryCrate() {
 	// server/zone/objects/factorycrate/FactoryCrate.idl():  		return true;
 	return true;
+}
+
+int FactoryCrateImplementation::getMaxCapacity() {
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		return maxCapacity;
+	return maxCapacity;
+}
+
+void FactoryCrateImplementation::setMaxCapacity(int value) {
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		maxCapacity = value;
+	maxCapacity = value;
 }
 
 /*
@@ -380,6 +432,12 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case RPC_ISFACTORYCRATE__:
 		resp->insertBoolean(isFactoryCrate());
+		break;
+	case RPC_GETMAXCAPACITY__:
+		resp->insertSignedInt(getMaxCapacity());
+		break;
+	case RPC_SETMAXCAPACITY__INT_:
+		setMaxCapacity(inv->getSignedIntParameter());
 		break;
 	case RPC_SETUSECOUNT__INT_BOOL_:
 		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
@@ -423,6 +481,14 @@ int FactoryCrateAdapter::handleObjectMenuSelect(CreatureObject* player, byte sel
 
 bool FactoryCrateAdapter::isFactoryCrate() {
 	return (static_cast<FactoryCrate*>(stub))->isFactoryCrate();
+}
+
+int FactoryCrateAdapter::getMaxCapacity() {
+	return (static_cast<FactoryCrate*>(stub))->getMaxCapacity();
+}
+
+void FactoryCrateAdapter::setMaxCapacity(int value) {
+	(static_cast<FactoryCrate*>(stub))->setMaxCapacity(value);
 }
 
 void FactoryCrateAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {

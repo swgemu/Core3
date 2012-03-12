@@ -74,7 +74,7 @@ StringIdChatParameter::StringIdChatParameter(const String& fil, const String& st
 	DF = 0;
 }
 
-StringIdChatParameter::StringIdChatParameter(const StringIdChatParameter& custom) : ChatParameter(), StringId(custom) {
+StringIdChatParameter::StringIdChatParameter(const StringIdChatParameter& custom) : Object(), ChatParameter(), StringId(custom) {
 
 	TT = custom.TT;
 	TU = custom.TU;

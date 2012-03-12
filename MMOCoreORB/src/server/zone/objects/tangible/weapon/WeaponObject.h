@@ -89,6 +89,22 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace powerup {
+
+class PowerupObject;
+
+} // namespace powerup
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::powerup;
+
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/scene/SceneObjectType.h"
@@ -167,8 +183,6 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCertifiedFor(CreatureObject* object);
@@ -233,6 +247,10 @@ public:
 
 	void setWoundsRatio(float value);
 
+	float getDamageRadius();
+
+	void setDamageRadius(float value);
+
 	int getHealthAttackCost();
 
 	void setHealthAttackCost(int value);
@@ -277,7 +295,17 @@ public:
 
 	bool isTwoHandMeleeWeapon();
 
+	bool isMineWeapon();
+
 	bool isWeaponObject();
+
+	bool hasPowerup();
+
+	void applyPowerup(CreatureObject* player, PowerupObject* pup);
+
+	PowerupObject* removePowerup();
+
+	void decreasePowerupUses(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -339,7 +367,7 @@ protected:
 
 	float maxDamage;
 
-	float area;
+	float damageRadius;
 
 	float woundsRatio;
 
@@ -350,6 +378,8 @@ protected:
 	int mindAttackCost;
 
 	int forceCost;
+
+	ManagedReference<PowerupObject* > powerupObject;
 
 	Reference<SharedWeaponObjectTemplate* > weaponTemplate;
 
@@ -414,8 +444,6 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCertifiedFor(CreatureObject* object);
@@ -480,6 +508,10 @@ public:
 
 	void setWoundsRatio(float value);
 
+	float getDamageRadius();
+
+	void setDamageRadius(float value);
+
 	int getHealthAttackCost();
 
 	void setHealthAttackCost(int value);
@@ -524,7 +556,17 @@ public:
 
 	bool isTwoHandMeleeWeapon();
 
+	bool isMineWeapon();
+
 	bool isWeaponObject();
+
+	bool hasPowerup();
+
+	void applyPowerup(CreatureObject* player, PowerupObject* pup);
+
+	PowerupObject* removePowerup();
+
+	void decreasePowerupUses(CreatureObject* player);
 
 	WeakReference<WeaponObject*> _this;
 
@@ -572,8 +614,6 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isCertifiedFor(CreatureObject* object);
 
@@ -623,6 +663,10 @@ public:
 
 	void setWoundsRatio(float value);
 
+	float getDamageRadius();
+
+	void setDamageRadius(float value);
+
 	int getHealthAttackCost();
 
 	void setHealthAttackCost(int value);
@@ -667,7 +711,17 @@ public:
 
 	bool isTwoHandMeleeWeapon();
 
+	bool isMineWeapon();
+
 	bool isWeaponObject();
+
+	bool hasPowerup();
+
+	void applyPowerup(CreatureObject* player, PowerupObject* pup);
+
+	PowerupObject* removePowerup();
+
+	void decreasePowerupUses(CreatureObject* player);
 
 };
 

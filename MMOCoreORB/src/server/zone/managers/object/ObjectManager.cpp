@@ -311,6 +311,14 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObjectType::STRUCTURECOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::TISSUECOMPONENT);
 
+	objectFactory.registerObject<PowerupObject>(SceneObjectType::WEAPONPOWERUP);
+	objectFactory.registerObject<PowerupObject>(SceneObjectType::MELEEWEAPONPOWERUP);
+	objectFactory.registerObject<PowerupObject>(SceneObjectType::RANGEDWEAPONPOWERUP);
+	objectFactory.registerObject<PowerupObject>(SceneObjectType::THROWNWEAPONPOWERUP);
+	objectFactory.registerObject<PowerupObject>(SceneObjectType::HEAVYWEAPONPOWERUP);
+	objectFactory.registerObject<PowerupObject>(SceneObjectType::MINEPOWERUP);
+	objectFactory.registerObject<PowerupObject>(SceneObjectType::SPECIALHEAVYWEAPONPOWERUP);
+
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPATTACHMENT);
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPREACTOR);
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPENGINE);

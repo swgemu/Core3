@@ -43,6 +43,8 @@
 
 object_weapon_base_base_weapon = object_weapon_base_shared_base_weapon:new {
 
+	objectMenuComponent = {"cpp", "WeaponObjectMenuComponent"},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_base_base_weapon, "object/weapon/base/base_weapon.iff")

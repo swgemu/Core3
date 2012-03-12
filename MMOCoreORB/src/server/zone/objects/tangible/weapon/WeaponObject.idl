@@ -55,6 +55,7 @@ include server.zone.objects.scene.SceneObjectType;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.tangible.powerup.PowerupObject;
 import system.util.Vector;
 
 class WeaponObject extends TangibleObject {
@@ -82,7 +83,7 @@ class WeaponObject extends TangibleObject {
 	protected float minDamage;
 	protected float maxDamage;
 	
-	protected float area;
+	protected float damageRadius;
 	
 	protected float woundsRatio;
 	
@@ -90,6 +91,8 @@ class WeaponObject extends TangibleObject {
 	protected int actionAttackCost;
 	protected int mindAttackCost;
 	protected int forceCost;
+	
+	protected PowerupObject powerupObject;
 	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
 	
@@ -145,7 +148,7 @@ class WeaponObject extends TangibleObject {
 		
 		woundsRatio = 0;
 		
-		area = 0;
+		damageRadius = 0;
 		
 		attackSpeed = 1;
 		
@@ -171,16 +174,6 @@ class WeaponObject extends TangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-	/**
-	 * Handles the radial selection sent by the client, must be overriden by inherited objects
-	 * @pre { this object is locked, player is locked }
-	 * @post { this object is locked, player is locked }
-	 * @param player CreatureObject that selected the option
-	 * @param selectedID selected menu id
-	 * @returns 0 if successfull
-	 */
-	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
@@ -240,6 +233,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public int getPointBlankAccuracy() {
+		
+		if(powerupObject != null) 
+			return pointBlankAccuracy + powerupObject.getPowerupStat("pointBlankAccuracy");
+		
 		return pointBlankAccuracy;
 	}
 	
@@ -252,6 +249,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public int getIdealRange() {
+		
+		if(powerupObject != null) 
+			return idealRange + powerupObject.getPowerupStat("idealRange");
+		
 		return idealRange;
 	}
 	
@@ -260,6 +261,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public int getMaxRange() {
+		
+		if(powerupObject != null) 
+			return maxRange + powerupObject.getPowerupStat("maxRange");
+		
 		return maxRange;
 	}
 	
@@ -268,6 +273,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public int getIdealAccuracy() {
+		
+		if(powerupObject != null) 
+			return idealAccuracy + powerupObject.getPowerupStat("idealAccuracy");
+		
 		return idealAccuracy;
 	}
 	
@@ -280,6 +289,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public int getMaxRangeAccuracy() {
+		
+		if(powerupObject != null) 
+			return maxRangeAccuracy + powerupObject.getPowerupStat("maxRangeAccuracy");
+		
 		return maxRangeAccuracy;
 	}
 	
@@ -288,6 +301,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public float getAttackSpeed() {
+		
+		if(powerupObject != null) 
+			return attackSpeed + powerupObject.getPowerupStat("attackSpeed");
+
 		return attackSpeed;
 	}
 	
@@ -296,6 +313,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public float getMaxDamage() {
+		
+		if(powerupObject != null) 
+			return maxDamage + powerupObject.getPowerupStat("maxDamage");
+		
 		return maxDamage;
 	}
 	
@@ -304,6 +325,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public float getMinDamage() {
+		
+		if(powerupObject != null) 
+			return minDamage + powerupObject.getPowerupStat("minDamage");
+		
 		return minDamage;
 	}
 	
@@ -312,6 +337,10 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public float getWoundsRatio() {
+		
+		if(powerupObject != null) 
+			return woundsRatio + powerupObject.getPowerupStat("woundsRatio");
+	
 		return woundsRatio;
 	}
 	
@@ -319,7 +348,26 @@ class WeaponObject extends TangibleObject {
 		woundsRatio = value;
 	}
 	
+	public float getDamageRadius() {
+		
+		if(powerupObject != null) 
+			return damageRadius + powerupObject.getPowerupStat("damageRadius");
+	
+		return damageRadius;
+	}
+	
+	public void setDamageRadius(float value) {
+		damageRadius = value;
+	}
+	
 	public int getHealthAttackCost() {
+		
+		if(powerupObject != null)  {
+			int cost = healthAttackCost - powerupObject.getPowerupStat("healthAttackCost");
+			if(cost < 1)
+				cost = 1;
+			return cost;
+		}
 		return healthAttackCost;
 	}
 	
@@ -328,6 +376,14 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public int getActionAttackCost() {
+		
+		if(powerupObject != null)  {
+			int cost = actionAttackCost - powerupObject.getPowerupStat("actionAttackCost");
+			if(cost < 1)
+				cost = 1;
+			return cost;
+		}
+		
 		return actionAttackCost;
 	}
 	
@@ -336,6 +392,14 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public int getMindAttackCost() {
+		
+		if(powerupObject != null)  {
+			int cost = mindAttackCost - powerupObject.getPowerupStat("mindAttackCost");
+			if(cost < 1)
+				cost = 1;
+			return cost;
+		}
+		
 		return mindAttackCost;
 	}
 	
@@ -407,8 +471,38 @@ class WeaponObject extends TangibleObject {
 		return super.gameObjectType == SceneObjectType.TWOHANDMELEEWEAPON;
 	}
 	
+	public boolean isMineWeapon() {
+		return super.gameObjectType == SceneObjectType.MINE;
+	}
+	
 	public boolean isWeaponObject() {
 		return true;
 	}
+	
+	public boolean hasPowerup() {
+		return powerupObject != null;
+	}
+	
+	public void applyPowerup(CreatureObject player, PowerupObject pup) {
+		if(!hasPowerup()) {
+			powerupObject = pup;
+			
+			if(pup.getParent() != null)
+				pup.getParent().removeObject(pup, null, true);
+		
+			sendAttributeListTo(player);
+		}
+	}
+	
+	public PowerupObject removePowerup() {
+		if(hasPowerup()) {
+			PowerupObject pup = powerupObject;
+			powerupObject = null;
+			return pup;
+		}
+		return null;
+	}
+	
+	public native void decreasePowerupUses(CreatureObject player);
 
 }

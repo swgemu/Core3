@@ -43,6 +43,23 @@
 
 object_tangible_powerup_weapon_thrown_wiring = object_tangible_powerup_weapon_shared_thrown_wiring:new {
 
+	templateType = POWERUP,
+
+	pupType = "Thrown",
+
+	baseName = "Wiring Powerup",
+
+	primary = {
+		{"attackSpeed", "Short-Fuse", "cat_pup.pup_wpn_attack_speed"}, 
+  		{"maxDamage", "Core-Alignment", "cat_pup.pup_wpn_damage_max"},
+	},
+
+	secondary = {
+		{"woundsRatio", "Shrapnel", "cat_pup.pup_wpn_wound_chance"}
+	},
+
+	factoryCrateSize = 10,
+
 
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},

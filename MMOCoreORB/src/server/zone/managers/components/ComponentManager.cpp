@@ -30,6 +30,7 @@
 #include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
 #include "server/zone/objects/tangible/components/ArtCrateMenuComponent.h"
+#include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LootSchematicAttributeListComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
@@ -101,4 +102,6 @@ ComponentManager::ComponentManager() {
 	components.put("AiDefaultComponent", new AiDefaultComponent());
 	components.put("AiCreatureComponent", new AiCreatureComponent());
 	components.put("AiNPCComponent", new AiNPCComponent());
+
+	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
 }

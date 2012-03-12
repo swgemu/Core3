@@ -38,6 +38,8 @@ protected:
 
 	int useCount;
 
+	int factoryCrateSize;
+
 	bool sliceable;
 
 	int faction;
@@ -104,6 +106,10 @@ public:
 
 	inline int getUseCount() const {
 		return useCount;
+	}
+
+	inline int getFactoryCrateSize() const {
+		return factoryCrateSize;
 	}
 
     inline uint16 getPlayerUseMask() const {

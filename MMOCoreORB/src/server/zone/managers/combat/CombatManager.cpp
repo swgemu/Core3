@@ -1214,6 +1214,8 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	if (wounded)
 		defender->addShockWounds(1, true);
 
+	weapon->decreasePowerupUses(attacker);
+
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
 

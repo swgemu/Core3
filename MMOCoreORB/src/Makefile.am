@@ -74,7 +74,8 @@ bin_PROGRAMS = core3 #odb3
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_IDLS =	server/zone/managers/minigames/FishingSession.cpp \
+core3_IDLS =	server/zone/objects/tangible/powerup/PowerupObject.cpp \
+				server/zone/managers/minigames/FishingSession.cpp \
 				server/zone/objects/intangible/VehicleControlObserver.cpp \
 				server/zone/objects/tangible/deed/structure/StructureDeed.cpp \
 				server/zone/objects/player/sessions/CityRemoveMilitiaSession.cpp \
@@ -275,6 +276,7 @@ core3_IDLS =	server/zone/managers/minigames/FishingSession.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
@@ -316,6 +318,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/ArtCrateMenuComponent.cpp \
 		server/zone/objects/tangible/components/ContainerObjectComponent.cpp \
+		server/zone/objects/tangible/components/WeaponObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaContainerComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuResponse.cpp \

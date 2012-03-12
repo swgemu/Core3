@@ -43,6 +43,27 @@
 
 object_tangible_powerup_weapon_ranged_grip = object_tangible_powerup_weapon_shared_ranged_grip:new {
 
+	templateType = POWERUP,
+
+	pupType = "Ranged",
+
+	baseName = "Grip",
+
+	primary = {
+		{"attackSpeed", "Hair-Trigger", "cat_pup.pup_wpn_attack_speed"}, 
+		{"idealRange", "Ergonomic", "cat_pup.pup_wpn_range_mid"}, 
+  		{"actionAttackCost", "Lightened", "cat_pup.pup_wpn_attack_cost_action"},
+		{"idealAccuracy", "Fitted Grip", "cat_pup.pup_wpn_range_attack_mod_mid"}
+	},
+
+	secondary = {
+		{"maxDamage", "Aiming", "cat_pup.pup_wpn_damage_max"}, 
+		{"maxRangeAccuracy", "Steadying", "cat_pup.pup_wpn_range_attack_mod_max"}, 
+		{"woundsRatio", "Reckoning", "cat_pup.pup_wpn_wound_chance"}, 
+		{"healthAttackCost", "Recoil-Deadening", "cat_pup.pup_wpn_attack_cost_health"}
+	},
+
+	factoryCrateSize = 10,
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

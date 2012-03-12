@@ -110,8 +110,6 @@ namespace factorycrate {
 
 class FactoryCrate : public TangibleObject {
 public:
-	static const int MAXCAPACITY = 100;
-
 	FactoryCrate();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -127,6 +125,10 @@ public:
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isFactoryCrate();
+
+	int getMaxCapacity();
+
+	void setMaxCapacity(int value);
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
@@ -170,9 +172,10 @@ namespace objects {
 namespace factorycrate {
 
 class FactoryCrateImplementation : public TangibleObjectImplementation {
-public:
-	static const int MAXCAPACITY = 100;
+protected:
+	int maxCapacity;
 
+public:
 	FactoryCrateImplementation();
 
 	FactoryCrateImplementation(DummyConstructorParameter* param);
@@ -190,6 +193,10 @@ public:
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	virtual bool isFactoryCrate();
+
+	int getMaxCapacity();
+
+	void setMaxCapacity(int value);
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
@@ -255,6 +262,10 @@ public:
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isFactoryCrate();
+
+	int getMaxCapacity();
+
+	void setMaxCapacity(int value);
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient);
 

@@ -43,6 +43,26 @@
 
 object_tangible_powerup_weapon_ranged_barrel = object_tangible_powerup_weapon_shared_ranged_barrel:new {
 
+	templateType = POWERUP,
+
+	pupType = "Ranged",
+
+	baseName = "Barrel",
+
+	primary = {
+		{"healthAttackCost", "Ported", "cat_pup.pup_wpn_attack_cost_health"}, 
+		{"pointBlankAccuracy", "Smoothed", "cat_pup.pup_wpn_range_attack_mod_zero"}, 
+  		{"woundsRatio", "Taper-Bored", "cat_pup.pup_wpn_wound_chance"}
+	},
+
+	secondary = {
+		{"idealAccuracy", "Alignment", "cat_pup.pup_wpn_range_attack_mod_mid"}, 
+		{"maxDamage", "Concentration", "cat_pup.pup_wpn_damage_max"}, 
+		{"mindAttackCost", "Dampening", "cat_pup.pup_wpn_attack_cost_mind"}, 
+		{"idealRange", "Condensing", "cat_pup.pup_wpn_range_mid"}
+	},
+
+	factoryCrateSize = 10,
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

@@ -49,6 +49,8 @@ object_tangible_base_tangible_base = object_tangible_base_shared_tangible_base:n
 	maxCondition = 1000,
 	
 	useCount = 1,
+
+	factoryCrateSize = 100,
 	
 	optionsBitmask = 256, --Default all objects to not display ham bars.
 	pvpStatusBitmask = 0,

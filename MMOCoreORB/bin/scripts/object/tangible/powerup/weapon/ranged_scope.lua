@@ -43,6 +43,27 @@
 
 object_tangible_powerup_weapon_ranged_scope = object_tangible_powerup_weapon_shared_ranged_scope:new {
 
+	templateType = POWERUP,
+
+	pupType = "Ranged",
+
+	baseName = "Scope",
+
+	primary = {
+		{"mindAttackCost", "Powered", "cat_pup.pup_wpn_attack_cost_mind"}, 
+		{"idealAccuracy", "Ranged", "cat_pup.pup_wpn_range_attack_mod_mid"}, 
+  		{"maxRangeAccuracy", "Calibrated", "cat_pup.pup_wpn_range_attack_mod_max"},
+		{"minDamage", "Precision", "cat_pup.pup_wpn_damage_min"}
+	},
+
+	secondary = {
+		{"woundsRatio", "Pin-Pointed", "cat_pup.pup_wpn_wound_chance"}, 
+		{"attackSpeed", "Targeting", "cat_pup.pup_wpn_attack_speed"}, 
+		{"actionAttackCost", "Tracking", "cat_pup.pup_wpn_attack_cost_action"}
+	},
+
+	factoryCrateSize = 10,
+
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

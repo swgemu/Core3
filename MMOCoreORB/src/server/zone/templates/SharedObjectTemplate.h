@@ -163,6 +163,7 @@ public:
 	const static int TRAP = 0x4000026;
 	const static int STRUCTUREDEED = 0x4000027;
 	const static int CAMOKIT = 0x4000028;
+	const static int POWERUP = 0x4000029;
 
 public:
 	SharedObjectTemplate();

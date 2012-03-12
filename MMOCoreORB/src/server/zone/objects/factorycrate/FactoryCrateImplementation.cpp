@@ -27,6 +27,8 @@ void FactoryCrateImplementation::initializeTransientMembers() {
 
 void FactoryCrateImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
+
+
 }
 
 void FactoryCrateImplementation::sendBaselinesTo(SceneObject* player) {

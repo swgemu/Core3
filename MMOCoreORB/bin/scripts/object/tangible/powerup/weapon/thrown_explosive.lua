@@ -43,6 +43,22 @@
 
 object_tangible_powerup_weapon_thrown_explosive = object_tangible_powerup_weapon_shared_thrown_explosive:new {
 
+	templateType = POWERUP,
+
+	pupType = "Thrown",
+
+	baseName = "Explosive Powerup",
+
+	primary = {
+		{"damageRadius", "Compress", "cat_pup.pup_wpn_damage_radius"}, 
+  		{"minDamage", "Ionizing", "cat_pup.pup_wpn_damage_min"},
+	},
+
+	secondary = {
+		{"woundsRatio", "Shearing", "cat_pup.pup_wpn_wound_chance"}
+	},
+
+	factoryCrateSize = 10,
 
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},

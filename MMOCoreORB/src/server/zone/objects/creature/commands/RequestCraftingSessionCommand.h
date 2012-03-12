@@ -156,7 +156,7 @@ public:
 			}
 
 		} else {
-			creature->sendSystemMessage("You do not possess a tool required by this station");
+			creature->sendSystemMessage("There are no tools available for this station");
 			return INVALIDTARGET;
 		}
 

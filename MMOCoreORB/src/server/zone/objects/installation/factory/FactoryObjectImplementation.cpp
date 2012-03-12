@@ -480,7 +480,7 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 		FactoryCrate* crate = cast<FactoryCrate*>( object.get());
 
 		if(crate->getPrototype() != NULL && crate->getPrototype()->getSerialNumber() ==
-				prototype->getSerialNumber() && crate->getUseCount() < FactoryCrate::MAXCAPACITY) {
+				prototype->getSerialNumber() && crate->getUseCount() < crate->getMaxCapacity()) {
 
 			return crate;
 		}
