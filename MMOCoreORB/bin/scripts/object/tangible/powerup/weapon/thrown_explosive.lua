@@ -44,9 +44,9 @@
 object_tangible_powerup_weapon_thrown_explosive = object_tangible_powerup_weapon_shared_thrown_explosive:new {
 
 
-	numberExperimentalProperties = {1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "XX", "XX"},
-	experimentalWeights = {1, 1, 1, 1},
+	numberExperimentalProperties = {1, 1, 1, 2},
+	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "effect"},
 	experimentalMin = {0, 0, 1000, 1},
