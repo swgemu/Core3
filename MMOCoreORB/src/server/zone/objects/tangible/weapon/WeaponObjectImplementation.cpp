@@ -337,8 +337,8 @@ bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
 void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
 	if (hasPowerup()) {
 		powerupObject->decreaseUses();
-		sendAttributeListTo(player);
 		if (powerupObject->getUses() < 1) {
+			Locker locker(_this);
 			StringIdChatParameter message("powerup", "prose_pup_expire"); //The powerup on your %TT has expired.
 			message.setTT(getDisplayedName());
 
@@ -346,5 +346,6 @@ void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
 
 			powerupObject = NULL;
 		}
+		sendAttributeListTo(player);
 	}
 }

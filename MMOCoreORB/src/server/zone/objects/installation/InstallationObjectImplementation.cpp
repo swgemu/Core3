@@ -54,10 +54,11 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	//TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	//Add the owner name to the examine window.
-	ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
+	if (obj != NULL && obj->isCreatureObject() && isOnAdminList(object->getFirstName())) {
 
-	if (obj != NULL && obj->isCreatureObject()) {
+		//Add the owner name to the examine window.
+		ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
+
 		CreatureObject* owner = cast<CreatureObject*>( obj.get());
 
 		String fullName = owner->getCustomObjectName().toString();

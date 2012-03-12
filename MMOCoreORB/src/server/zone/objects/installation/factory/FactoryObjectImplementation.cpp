@@ -71,6 +71,22 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 	InstallationObjectImplementation::fillAttributeList(alm, object);
 
 	if (operating && isOnAdminList(object->getFirstName())) {
+
+		ManagedReference<ManufactureSchematic*> schematic =
+				dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
+
+		if(schematic == NULL)
+			return;
+
+		ManagedReference<TangibleObject*> prototype =
+				dynamic_cast<TangibleObject*>(schematic->getPrototype());
+
+		if (prototype != NULL) {
+			alm->insertAttribute("manufacture_object", prototype->getDisplayedName());
+		}
+
+		alm->insertAttribute("manufacture_time", timer);
+
 		ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
 		if (outputHopper != NULL) {
