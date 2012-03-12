@@ -69,6 +69,15 @@ void MissionObjectiveImplementation::complete() {
 	removeMissionFromPlayer();
 }
 
+void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {
+	if (makePersistent) {
+		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+	} else if (!observer->isDeplyoed())
+		observer->deploy();
+
+	observers.put(observer);
+}
+
 void MissionObjectiveImplementation::abort() {
 	if (failTask != NULL && failTask->isScheduled()) {
 		failTask->cancel();

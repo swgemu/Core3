@@ -40,7 +40,7 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 void DestroyMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();
 
-	if ((observers.size() != 0 && lairObject != NULL) || mission == NULL) {
+	if ((hasObservers() && lairObject != NULL) || mission == NULL) {
 		return;
 	}
 
@@ -134,13 +134,11 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 		if (lairObject != NULL) {
 			ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-			ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+			addObserver(observer, true);
 
 			Locker locker(lairObject);
 
 			lairObject->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
-
-			observers.put(observer);
 		}
 
 	}
@@ -153,8 +151,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 void DestroyMissionObjectiveImplementation::abort() {
 	MissionObjectiveImplementation::abort();
 
-	if (observers.size() != 0) {
-		ManagedReference<MissionObserver*> observer = observers.get(0);
+	if (hasObservers()) {
+		ManagedReference<MissionObserver*> observer = getObserver(0);
 
 		CreatureObject* player = getPlayerOwner();
 
@@ -164,12 +162,11 @@ void DestroyMissionObjectiveImplementation::abort() {
 			Locker locker(lairObject);
 
 			lairObject->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
-			observer->destroyObjectFromDatabase();
 			lairObject->destroyObjectFromWorld(true);
 
 			lairObject = NULL;
 
-			observers.drop(observer);
+			dropObserver(observer, true);
 		}
 			//spawnActiveArea->destroyObjectFromDatabase(true);
 	}

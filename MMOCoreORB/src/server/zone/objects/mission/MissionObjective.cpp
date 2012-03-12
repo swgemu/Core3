@@ -18,7 +18,7 @@
  *	MissionObjectiveStub
  */
 
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__};
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_,RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_,RPC_GETOBSERVERCOUNT__,RPC_REMOVEALLOBSERVERS__,RPC_GETOBSERVER__INT_,RPC_HASOBSERVERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__};
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
@@ -63,6 +63,89 @@ int MissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned in
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+}
+
+void MissionObjective::addObserver(MissionObserver* observer, bool makePersistent) {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_);
+		method.addObjectParameter(observer);
+		method.addBooleanParameter(makePersistent);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addObserver(observer, makePersistent);
+}
+
+void MissionObjective::dropObserver(MissionObserver* observer, bool removeFromDatabase) {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_);
+		method.addObjectParameter(observer);
+		method.addBooleanParameter(removeFromDatabase);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->dropObserver(observer, removeFromDatabase);
+}
+
+int MissionObjective::getObserverCount() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETOBSERVERCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getObserverCount();
+}
+
+void MissionObjective::removeAllObservers() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEALLOBSERVERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeAllObservers();
+}
+
+MissionObserver* MissionObjective::getObserver(int index) {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETOBSERVER__INT_);
+		method.addSignedIntParameter(index);
+
+		return static_cast<MissionObserver*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getObserver(index);
+}
+
+bool MissionObjective::hasObservers() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASOBSERVERS__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasObservers();
 }
 
 void MissionObjective::activate() {
@@ -386,6 +469,34 @@ int MissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observe
 	return 1;
 }
 
+void MissionObjectiveImplementation::dropObserver(MissionObserver* observer, bool removeFromDatabase) {
+	// server/zone/objects/mission/MissionObjective.idl():  		observers.
+	if (removeFromDatabase)	// server/zone/objects/mission/MissionObjective.idl():  			observer.destroyObjectFromDatabase();
+	observer->destroyObjectFromDatabase();
+	// server/zone/objects/mission/MissionObjective.idl():  		observers.drop(observer);
+	(&observers)->drop(observer);
+}
+
+int MissionObjectiveImplementation::getObserverCount() {
+	// server/zone/objects/mission/MissionObjective.idl():  		return observers.size();
+	return (&observers)->size();
+}
+
+void MissionObjectiveImplementation::removeAllObservers() {
+	// server/zone/objects/mission/MissionObjective.idl():  		observers.removeAll();
+	(&observers)->removeAll();
+}
+
+MissionObserver* MissionObjectiveImplementation::getObserver(int index) {
+	// server/zone/objects/mission/MissionObjective.idl():  		return observers.get(index);
+	return (&observers)->get(index);
+}
+
+bool MissionObjectiveImplementation::hasObservers() {
+	// server/zone/objects/mission/MissionObjective.idl():  		return observers.size() != 0;
+	return (&observers)->size() != 0;
+}
+
 MissionObject* MissionObjectiveImplementation::getMissionObject() {
 	// server/zone/objects/mission/MissionObjective.idl():  		return mission;
 	return mission;
@@ -412,6 +523,24 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		break;
+	case RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_:
+		addObserver(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		break;
+	case RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_:
+		dropObserver(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		break;
+	case RPC_GETOBSERVERCOUNT__:
+		resp->insertSignedInt(getObserverCount());
+		break;
+	case RPC_REMOVEALLOBSERVERS__:
+		removeAllObservers();
+		break;
+	case RPC_GETOBSERVER__INT_:
+		resp->insertLong(getObserver(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case RPC_HASOBSERVERS__:
+		resp->insertBoolean(hasObservers());
 		break;
 	case RPC_ACTIVATE__:
 		activate();
@@ -453,6 +582,30 @@ void MissionObjectiveAdapter::destroyObjectFromDatabase() {
 
 int MissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	return (static_cast<MissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+}
+
+void MissionObjectiveAdapter::addObserver(MissionObserver* observer, bool makePersistent) {
+	(static_cast<MissionObjective*>(stub))->addObserver(observer, makePersistent);
+}
+
+void MissionObjectiveAdapter::dropObserver(MissionObserver* observer, bool removeFromDatabase) {
+	(static_cast<MissionObjective*>(stub))->dropObserver(observer, removeFromDatabase);
+}
+
+int MissionObjectiveAdapter::getObserverCount() {
+	return (static_cast<MissionObjective*>(stub))->getObserverCount();
+}
+
+void MissionObjectiveAdapter::removeAllObservers() {
+	(static_cast<MissionObjective*>(stub))->removeAllObservers();
+}
+
+MissionObserver* MissionObjectiveAdapter::getObserver(int index) {
+	return (static_cast<MissionObjective*>(stub))->getObserver(index);
+}
+
+bool MissionObjectiveAdapter::hasObservers() {
+	return (static_cast<MissionObjective*>(stub))->hasObservers();
 }
 
 void MissionObjectiveAdapter::activate() {

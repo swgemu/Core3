@@ -20,7 +20,7 @@
 void EntertainerMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();
 
-	if (observers.size() > 0) {
+	if (hasObservers()) {
 		return;
 	}
 
@@ -52,14 +52,12 @@ void EntertainerMissionObjectiveImplementation::activate() {
 	Locker locationLocker(locationActiveArea);
 
 	ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
-	ObjectManager::instance()->persistObject(observer1, 1, "missionobservers");
+	addObserver(observer1, true);
 	locationActiveArea->registerObserver(ObserverEventType::ENTEREDAREA, observer1);
-	observers.put(observer1);
 
 	ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this);
-	ObjectManager::instance()->persistObject(observer2, 1, "missionobservers");
+	addObserver(observer2, true);
 	locationActiveArea->registerObserver(ObserverEventType::EXITEDAREA, observer2);
-	observers.put(observer2);
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
@@ -83,8 +81,8 @@ void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObserv
 	if (locationActiveArea != NULL) {
 		Locker locationLocker(locationActiveArea);
 
-		for (int i = 0; i < observers.size(); i++) {
-			ManagedReference<MissionObserver*> observer = observers.get(i);
+		for (int i = 0; i < getObserverCount(); i++) {
+			ManagedReference<MissionObserver*> observer = getObserver(i);
 
 			if (i == 0) {
 				locationActiveArea->dropObserver(ObserverEventType::ENTEREDAREA, observer);
@@ -93,7 +91,7 @@ void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObserv
 			}
 		}
 
-		observers.removeAll();
+		removeAllObservers();
 
 		locationLocker.release();
 

@@ -106,6 +106,18 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	void addObserver(MissionObserver* observer, bool makePersistent);
+
+	void dropObserver(MissionObserver* observer, bool removeFromDatabase);
+
+	int getObserverCount();
+
+	void removeAllObservers();
+
+	MissionObserver* getObserver(int index);
+
+	bool hasObservers();
+
 	void activate();
 
 	void abort();
@@ -149,9 +161,9 @@ namespace objects {
 namespace mission {
 
 class MissionObjectiveImplementation : public ManagedObjectImplementation, public Logger {
-protected:
 	SortedVector<ManagedReference<MissionObserver* > > observers;
 
+protected:
 	ManagedWeakReference<MissionObject* > mission;
 
 	unsigned int objectiveType;
@@ -168,6 +180,18 @@ public:
 	virtual void destroyObjectFromDatabase();
 
 	virtual int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void addObserver(MissionObserver* observer, bool makePersistent);
+
+	void dropObserver(MissionObserver* observer, bool removeFromDatabase);
+
+	int getObserverCount();
+
+	void removeAllObservers();
+
+	MissionObserver* getObserver(int index);
+
+	bool hasObservers();
 
 	virtual void activate();
 
@@ -233,6 +257,18 @@ public:
 	void destroyObjectFromDatabase();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void addObserver(MissionObserver* observer, bool makePersistent);
+
+	void dropObserver(MissionObserver* observer, bool removeFromDatabase);
+
+	int getObserverCount();
+
+	void removeAllObservers();
+
+	MissionObserver* getObserver(int index);
+
+	bool hasObservers();
 
 	void activate();
 

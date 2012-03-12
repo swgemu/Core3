@@ -22,7 +22,7 @@
 void HuntingMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();
 
-	if (observers.size() != 0)
+	if (hasObservers())
 		return;
 
 	targetsKilled = 15 * getMissionObject()->getDifficultyLevel();
@@ -30,30 +30,26 @@ void HuntingMissionObjectiveImplementation::activate() {
 	CreatureObject* player = getPlayerOwner();
 
 	ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-	ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+	addObserver(observer, true);
 
 	Locker locker(player);
 	player->registerObserver(ObserverEventType::KILLEDCREATURE, observer);
-	observers.put(observer);
 }
 
 void HuntingMissionObjectiveImplementation::abort() {
 	MissionObjectiveImplementation::abort();
 
-	if (observers.size() != 0) {
-		for (int i = 0; i < observers.size(); i++) {
-			ManagedReference<MissionObserver*> observer = observers.get(i);
+	for (int i = 0; i < getObserverCount(); i++) {
+		ManagedReference<MissionObserver*> observer = getObserver(i);
 
-			CreatureObject* player = getPlayerOwner();
+		CreatureObject* player = getPlayerOwner();
 
-			if (player != NULL) {
-				Locker locker(player);
+		if (player != NULL) {
+			Locker locker(player);
 
-				player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
-				observer->destroyObjectFromDatabase();
+			player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
 
-				observers.drop(observer);
-			}
+			dropObserver(observer, true);
 		}
 	}
 }

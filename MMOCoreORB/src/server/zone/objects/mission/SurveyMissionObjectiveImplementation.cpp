@@ -18,39 +18,36 @@
 void SurveyMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();
 
-	if (observers.size() != 0) {
+	if (hasObservers()) {
 		return;
 	}
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 	if (player != NULL) {
 		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
-		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+		addObserver(observer, true);
 
 		player->registerObserver(ObserverEventType::SURVEY, observer);
-
-		observers.put(observer);
 	}
 }
 
 void SurveyMissionObjectiveImplementation::abort() {
 	MissionObjectiveImplementation::abort();
 
-	if (observers.size() == 0)
+	if (!hasObservers())
 		return;
 
-	ManagedReference<MissionObserver*> observer = observers.get(0);
+	ManagedReference<MissionObserver*> observer = getObserver(0);
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 	if (player != NULL) {
 		player->dropObserver(ObserverEventType::SURVEY, observer);
-		observer->destroyObjectFromDatabase();
-		observers.drop(observer);
+
+		dropObserver(observer, true);
 	}
 }
 
 void SurveyMissionObjectiveImplementation::complete() {
-
 	MissionObjectiveImplementation::complete();
 }
 
@@ -86,8 +83,7 @@ int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		}
 	}
 
-	observer->destroyObjectFromDatabase();
-	observers.drop(observer);
+	dropObserver(observer, true);
 
 	updateToDatabase();
 
