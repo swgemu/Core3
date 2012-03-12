@@ -51,8 +51,8 @@ import server.zone.Zone;
 
 class PowerupObject extends TangibleObject {
 
-	public protected static final float MAXPRIMARY = 33.16;
-	public protected static final float MAXSECONDARY = 16.33;
+	public transient static float MAXPRIMARY;
+	public transient static float MAXSECONDARY;
 	
 	@dereferenced
 	protected PowerupStatVector modifiers;
@@ -61,7 +61,9 @@ class PowerupObject extends TangibleObject {
 	
 	protected string type;
 	
-	public PowerupObject() {		
+	public PowerupObject() {
+		uses = 0;
+		
 		Logger.setLoggingName("PowerupObject");
 	}
 	

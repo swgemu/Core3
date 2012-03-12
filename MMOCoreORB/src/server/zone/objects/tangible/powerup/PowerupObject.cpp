@@ -301,6 +301,8 @@ int PowerupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 PowerupObjectImplementation::PowerupObjectImplementation() {
 	_initializeImplementation();
+	// server/zone/objects/tangible/powerup/PowerupObject.idl():  		uses = 0;
+	uses = 0;
 	// server/zone/objects/tangible/powerup/PowerupObject.idl():  		Logger.setLoggingName("PowerupObject");
 	Logger::setLoggingName("PowerupObject");
 }

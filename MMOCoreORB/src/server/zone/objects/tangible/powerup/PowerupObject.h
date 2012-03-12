@@ -82,11 +82,12 @@ namespace tangible {
 namespace powerup {
 
 class PowerupObjectImplementation : public TangibleObjectImplementation {
+public:
+	static float MAXPRIMARY;
+
+	static float MAXSECONDARY;
+
 protected:
-	static const float MAXPRIMARY = 33.16;
-
-	static const float MAXSECONDARY = 16.33;
-
 	PowerupStatVector modifiers;
 
 	int uses;

@@ -10,6 +10,9 @@
 #include "server/zone/templates/tangible/PowerupTemplate.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+float PowerupObjectImplementation::MAXPRIMARY = 33.16;
+float PowerupObjectImplementation::MAXSECONDARY = 16.33;
+
 void PowerupObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
 	if(getParent() != NULL)
